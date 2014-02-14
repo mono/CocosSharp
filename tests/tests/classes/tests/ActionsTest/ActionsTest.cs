@@ -1333,9 +1333,9 @@ namespace tests
             var move_back = move.Reverse();
             var seq = new CCSequence(move, move_back);
             var rfe = new CCRepeatForever (seq);
-            m_kathia.RunAction(rfe);
-            m_tamara.RunAction((CCAction) (rfe.Copy()));
-            m_grossini.RunAction((CCAction) (rfe.Copy()));
+			m_kathia.RunAction(rfe);
+            m_tamara.RunAction(rfe);
+            m_grossini.RunAction(rfe);
         }
 
         public override string subtitle()
