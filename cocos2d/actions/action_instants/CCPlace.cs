@@ -2,42 +2,53 @@
 {
     public class CCPlace : CCActionInstant
     {
-        private CCPoint m_tPosition;
+		public CCPoint Position { get; private set; }
 
 
         #region Constructors
 
-        protected CCPlace()
-        {
-        }
-
-        protected CCPlace(CCPlace place) : base(place)
-        {
-            InitWithPosition(m_tPosition);
-        }
-
         public CCPlace(CCPoint pos)
         {
-            InitWithPosition(pos);
-        }
-
-        private void InitWithPosition(CCPoint pos)
-        {
-            m_tPosition = pos;
+            Position = pos;
         }
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCPlaceState (this, target);
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCPlace(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_pTarget.Position = m_tPosition;
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
+
+//        protected internal override void StartWithTarget(CCNode target)
+//        {
+//            base.StartWithTarget(target);
+//            m_pTarget.Position = Position;
+//        }
     }
+
+	public class CCPlaceState : CCFiniteTimeActionState
+	{
+		protected CCPoint Position { get; set; }
+
+		public CCPlaceState (CCPlace action, CCNode target)
+			: base(action, target)
+		{ 
+			Position = action.Position;
+			Target.Position = Position;
+		}
+
+		// This can be taken out once CCActionInstant has it's State separated
+		public override void Step(float dt)
+		{
+			Update(1);
+		}
+	}
+
 }
