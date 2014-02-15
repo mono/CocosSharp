@@ -1174,7 +1174,7 @@ namespace tests
                 new CCRotateTo (0.5f, 20));
 
             var rep1 = new CCRepeat (seq, 10);
-            var rep2 = new CCRepeatForever ((CCActionInterval)(seq.Copy()));
+            var rep2 = new CCRepeatForever (seq);
 
             m_tamara.RunAction(rep1);
             m_kathia.RunAction(rep2);
