@@ -21,7 +21,7 @@ namespace tests
         ACTION_BLINK_LAYER,
         ACTION_FADE_LAYER,
         ACTION_TINT_LAYER,
-		//ACTION_ANIMATE_LAYER,
+		ACTION_ANIMATE_LAYER,
         ACTION_SEQUENCE_LAYER,
         ACTION_SEQUENCE2_LAYER,
         ACTION_SPAWN_LAYER,
@@ -108,9 +108,9 @@ namespace tests
                 case (int) ActionTest.ACTION_TINT_LAYER:
                     pLayer = new ActionTint();
                     break;
-//                case (int) ActionTest.ACTION_ANIMATE_LAYER:
-//                    pLayer = new ActionAnimate();
-//                    break;
+                case (int) ActionTest.ACTION_ANIMATE_LAYER:
+                    pLayer = new ActionAnimate();
+                    break;
                 case (int) ActionTest.ACTION_SEQUENCE_LAYER:
                     pLayer = new ActionSequence();
                     break;
