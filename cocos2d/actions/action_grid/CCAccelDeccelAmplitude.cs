@@ -2,38 +2,40 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCAccelDeccelAmplitude : CCActionInterval
+    public class CCAccelDeccelAmplitude : CCAccelAmplitude
     {
-        protected float m_fRate;
-        protected CCActionInterval m_pOther;
-
-        public float Rate
-        {
-            get { return m_fRate; }
-            set { m_fRate = value; }
-        }
-
-
         #region Constructors
 
-        public CCAccelDeccelAmplitude(CCAction pAction, float duration) : base(duration)
+        public CCAccelDeccelAmplitude(CCAction pAction, float duration) : base(pAction, duration)
         {
-            InitWithAction(pAction);
-        }
-
-        private void InitWithAction(CCAction pAction)
-        {
-            m_fRate = 1.0f;
-            m_pOther = pAction as CCActionInterval;
         }
 
         #endregion Constructors
 
 
-        protected internal override void StartWithTarget(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            base.StartWithTarget(target);
-            m_pOther.StartWithTarget(target);
+            return new CCAccelDeccelAmplitudeState(this, target);
+        }
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            return new CCAccelDeccelAmplitude(OtherAction.Reverse(), Duration);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCAccelDeccelAmplitudeState : CCAccelAmplitudeState
+    {
+        protected CCAccelDeccelAmplitude AccelDeccelAmplitudeAction
+        {
+            get { return Action as CCAccelDeccelAmplitude; }
+        }
+
+        public CCAccelDeccelAmplitudeState(CCAccelDeccelAmplitude action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
@@ -46,12 +48,9 @@ namespace CocosSharp
                 f = 1 - f;
             }
 
-            ((m_pOther)).AmplitudeRate = (float) Math.Pow(f, m_fRate);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCAccelDeccelAmplitude(m_pOther.Reverse(), m_fDuration);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow(f, AccelDeccelAmplitudeAction.Rate);
         }
     }
+
+    #endregion Action state
 }

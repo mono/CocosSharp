@@ -8,13 +8,18 @@ namespace tests
 {
 	public class TurnOffTilesDemo : CCSequence
     {
-		public TurnOffTilesDemo (float t)
+        public static TurnOffTilesDemo CreateWithDuration(float t)
         {
-			var fadeout = new CCTurnOffTiles(t, new CCGridSize(48, 32), 25);
-			var back = fadeout.Reverse();
-			var delay = new CCDelayTime (0.5f);
+            var fadeout = new CCTurnOffTiles(t, new CCGridSize(48, 32), 25);
+            var back = fadeout.Reverse();
+            var delay = new CCDelayTime (0.5f);
+            var actions = new CCFiniteTimeAction[] {fadeout, delay, back};
 
-			Actions = new CCFiniteTimeAction[] {fadeout, delay, back};
+            return new TurnOffTilesDemo(actions);
+        }
+
+        public TurnOffTilesDemo(params CCFiniteTimeAction[] actions) : base(actions)
+        {
         }
     }
 }

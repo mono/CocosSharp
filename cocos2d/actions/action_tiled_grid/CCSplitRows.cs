@@ -27,15 +27,8 @@ namespace CocosSharp
 {
     public class CCSplitRows : CCTiledGrid3DAction
     {
-        protected int m_nRows;
-        protected CCSize m_winSize;
+        protected internal int Rows { get; private set; }
 
-
-		protected int Rows
-		{
-			get { return m_nRows; }
-			set { m_nRows = value; }
-		}
 
         #region Constructors
 
@@ -48,36 +41,37 @@ namespace CocosSharp
         /// </summary>
         public CCSplitRows(float duration, int nRows) : base(duration, new CCGridSize(1, nRows))
         {
-            InitCCSplitRows(nRows);
-        }
-
-        // Perform deep copy of CCSplitRows
-        public CCSplitRows(CCSplitRows splitRows) : base(splitRows)
-        {
-            InitCCSplitRows(splitRows.m_nRows);
-        }
-
-        /// <summary>
-        /// initializes the action with the number of rows to split and the duration
-        /// </summary>
-        private void InitCCSplitRows(int nRows)
-        {
-            m_nRows = nRows;
+            Rows = nRows;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCSplitRows(this);
+            return new CCSplitRowsState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCSplitRowsState : CCTiledGrid3DActionState
+    {
+        protected CCSize WinSize { get; private set; }
+
+
+        public CCSplitRowsState(CCSplitRows action, CCNode target) : base(action, target)
+        {
+            WinSize = CCDirector.SharedDirector.WinSizeInPixels;
         }
 
         public override void Update(float time)
         {
             int j;
+            CCGridSize gridSize = GridAction.GridSize;
 
-            for (j = 0; j < m_sGridSize.Y; ++j)
+            for (j = 0; j < gridSize.Y; ++j)
             {
                 CCQuad3 coords = OriginalTile(0, j);
                 float direction = 1;
@@ -87,19 +81,16 @@ namespace CocosSharp
                     direction = -1;
                 }
 
-                coords.BottomLeft.X += direction * m_winSize.Width * time;
-                coords.BottomRight.X += direction * m_winSize.Width * time;
-                coords.TopLeft.X += direction * m_winSize.Width * time;
-                coords.TopRight.X += direction * m_winSize.Width * time;
+                coords.BottomLeft.X += direction * WinSize.Width * time;
+                coords.BottomRight.X += direction * WinSize.Width * time;
+                coords.TopLeft.X += direction * WinSize.Width * time;
+                coords.TopRight.X += direction * WinSize.Width * time;
 
                 SetTile(0, j, ref coords);
             }
         }
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
-        }
     }
+
+    #endregion Action state
 }

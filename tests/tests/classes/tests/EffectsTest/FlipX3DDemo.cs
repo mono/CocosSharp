@@ -4,14 +4,18 @@ namespace tests
 {
 	public class FlipX3DDemo : CCSequence
     {
-		public FlipX3DDemo (float t) 
-			: base()
-		{
-			var flipX = new CCFlipX3D (t);
-			var flipX_Reverse = flipX.Reverse ();
-			var delay = new CCDelayTime (2);
+        public static FlipX3DDemo CreateWithDuration(float t)
+        {
+            var flipX = new CCFlipX3D(t);
+            var flipX_Reverse = flipX.Reverse();
+            var delay = new CCDelayTime (2);
+            var actions = new CCFiniteTimeAction[] { flipX, delay, flipX_Reverse};
 
-			this.Actions = new CCFiniteTimeAction[] { flipX, delay, flipX_Reverse};
+            return new FlipX3DDemo(actions);
+        }
+
+        public FlipX3DDemo (params CCFiniteTimeAction[] actions) : base(actions) 
+		{
 		}
     }
 }

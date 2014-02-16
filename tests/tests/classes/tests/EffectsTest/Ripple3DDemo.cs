@@ -8,14 +8,11 @@ namespace tests
 {
     public class Ripple3DDemo : CCRipple3D
     {
+        static readonly CCSize contentSize = TextLayer.BaseNode.ContentSize;
 
-		public Ripple3DDemo(float t) : base (t, new CCGridSize(32, 24))
+        public Ripple3DDemo(float t) 
+            : base (t, new CCGridSize(32, 24), contentSize.Center, contentSize.Width, 4, 160)
 		{
-			var size = TextLayer.BaseNode.ContentSize;
-			Position = size.Center;
-			Radius = size.Width;
-			Waves = 4;
-			Amplitude = 160;
 		}
 
     }

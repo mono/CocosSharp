@@ -8,12 +8,10 @@ namespace tests
 {
     public class TwirlDemo : CCTwirl
     {
-		public TwirlDemo (float t) : base (t, new CCGridSize(12, 8))  
+        static readonly CCSize winSize = CCDirector.SharedDirector.WinSize;
+
+        public TwirlDemo (float t) : base (t, new CCGridSize(12, 8), winSize.Center, 1, 2.5f)  
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
-			Position = size.Center;
-			Twirls = 1;
-			Amplitude = 2.5f;
         }
     }
 }

@@ -2,72 +2,59 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCWaves3D : CCGrid3DAction
+    public class CCWaves3D : CCLiquid
     {
-        protected float m_fAmplitude;
-        protected float m_fAmplitudeRate;
-        protected int m_nWaves;
-
-        public float Amplitude
-        {
-            get { return m_fAmplitude; }
-            set { m_fAmplitude = value; }
-        }
-
-        public override float AmplitudeRate
-        {
-            get { return m_fAmplitudeRate; }
-            set { m_fAmplitudeRate = value; }
-        }
-
-		public int Waves
-		{
-			get { return m_nWaves; }
-			set { m_nWaves = value; }
-		}
-
-
+    
         #region Constructors
 
-		public CCWaves3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) : base(duration, gridSize)
+        public CCWaves3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) : base(duration, gridSize, waves, amplitude)
         {
-            InitWaves3D(waves, amplitude);
-        }
-
-        // Perform deep copy of CCWaves3D
-        public CCWaves3D(CCWaves3D waves3d) : base(waves3d)
-        {
-            InitWaves3D(waves3d.m_nWaves, waves3d.m_fAmplitude);
-        }
-
-        private void InitWaves3D(int waves, float amplitude)
-        {
-            m_nWaves = waves;
-            m_fAmplitude = amplitude;
-            m_fAmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWaves3D(this);
+            return new CCWaves3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCWaves3DState : CCLiquidState
+    {
+        protected CCWaves3D Waves3DAction
+        { 
+            get { return Action as CCWaves3D; } 
+        }
+
+        public CCWaves3DState(CCWaves3D action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
-            for (i = 0; i < m_sGridSize.X + 1; ++i)
+            CCWaves3D waves3DAction = Waves3DAction;
+            CCGridSize gridSize = waves3DAction.GridSize;
+            int waves = waves3DAction.Waves;
+            float amplitude = StateAmplitudeRate;
+
+            for (i = 0; i < gridSize.X + 1; ++i)
             {
-                for (j = 0; j < m_sGridSize.Y + 1; ++j)
+                for (j = 0; j < gridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    v.Z += ((float) Math.Sin((float) Math.PI * time * m_nWaves * 2 + (v.Y + v.X) * .01f) * m_fAmplitude *
-                            m_fAmplitudeRate);
+                    v.Z += ((float) Math.Sin((float) Math.PI * time * waves * 2 + (v.Y + v.X) * .01f) * amplitude *
+                        StateAmplitudeRate);
                     SetVertex(i, j, ref v);
                 }
             }
         }
+
     }
+
+    #endregion Action state
 }

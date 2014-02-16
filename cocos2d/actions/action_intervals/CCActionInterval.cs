@@ -136,7 +136,7 @@ namespace CocosSharp
                 Debug.Assert(false);
                 return 0;
             }
-            set { Debug.Assert(false); }
+            protected set { Debug.Assert(false); }
         }
     }
 
@@ -156,11 +156,21 @@ namespace CocosSharp
 			get { return m_elapsed >= Duration; }
 		}
 
+        protected CCActionInterval IntervalAction
+        {
+            get { return Action as CCActionInterval; }
+        }
+
+        // Amplitude rate can dynamically change as action is run (e.g. CCAccelAmplitude)
+        // Therefore, we need to store the rate as a state variable
+        protected internal float StateAmplitudeRate { get; set; }
+
 		public CCActionIntervalState (CCActionInterval action, CCNode target)
 			: base(action, target)
 		{ 
 			m_elapsed = 0.0f;
 			m_bFirstTick = true;
+            StateAmplitudeRate = action.AmplitudeRate;
 		}
 
 		public override void Step(float dt)

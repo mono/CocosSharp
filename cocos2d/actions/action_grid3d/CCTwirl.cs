@@ -4,98 +4,83 @@ namespace CocosSharp
 {
     public class CCTwirl : CCGrid3DAction
     {
-        protected float m_fAmplitude;
-        protected float m_fAmplitudeRate;
-        protected int m_nTwirls;
-        protected CCPoint m_position;
-        protected CCPoint m_positionInPixels;
+        private CCPoint position;
 
+        public float Amplitude { get; private set; }
+        public override float AmplitudeRate { get; protected set; }
+        public int Twirls { get; private set; }
+        public CCPoint PositionInPixels { get; private set; }
         public CCPoint Position
         {
-            get { return m_position; }
+            get { return position; }
             set
             {
-				var scale = CCDirector.SharedDirector.ContentScaleFactor;
-                m_position = value;
-				m_positionInPixels.X = value.X * scale;
-				m_positionInPixels.Y = value.Y * scale;
+                position = value;
+                PositionInPixels = value * CCDirector.SharedDirector.ContentScaleFactor;
             }
         }
 
-        public float Amplitude
-        {
-            get { return m_fAmplitude; }
-            set { m_fAmplitude = value; }
-        }
-
-        public override float AmplitudeRate
-        {
-            get { return m_fAmplitudeRate; }
-            set { m_fAmplitudeRate = value; }
-        }
-
-		protected int Twirls
-		{
-			get { return m_nTwirls; }
-			set { m_nTwirls = value; }
-		}
 
         #region Constructors
 
-
-		public CCTwirl (float duration, CCGridSize gridSize)
-			: this (duration, gridSize, CCPoint.Zero)
+		public CCTwirl(float duration, CCGridSize gridSize)
+			: this(duration, gridSize, CCPoint.Zero)
 		{ }
 
 		public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls= 0, float amplitude = 0) : base(duration, gridSize)
         {
-            InitCCTwirl(position, twirls, amplitude);
-        }
-
-        public CCTwirl(CCTwirl twirl) : base(twirl)
-        {
-            InitCCTwirl(twirl.Position, twirl.m_nTwirls, twirl.m_fAmplitude);
-        }
-
-        private void InitCCTwirl(CCPoint position, int twirls, float amplitude)
-        {  
-			m_positionInPixels = CCPoint.Zero;
             Position = position;
-            m_nTwirls = twirls;
-            m_fAmplitude = amplitude;
-            m_fAmplitudeRate = 1.0f;
+            Twirls = twirls;
+            Amplitude = amplitude;
+            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCTwirl(this);
+            return new CCTwirlState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCTwirlState : CCGrid3DActionState
+    {
+        protected CCTwirl TwirlAction
+        { 
+            get { return Action as CCTwirl; } 
+        }
+
+        public CCTwirlState(CCTwirl action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
-            CCPoint c = m_positionInPixels;
+            CCTwirl twirlAction = TwirlAction;
+            CCGridSize gridSize = twirlAction.GridSize;
+            CCPoint avg = CCPoint.Zero;
+            CCPoint c = twirlAction.PositionInPixels;
+            float amplitude = twirlAction.Amplitude;
+            int twirls = twirlAction.Twirls;
 
-			var avg = CCPoint.Zero;
-
-            for (i = 0; i < (m_sGridSize.X + 1); ++i)
+            for (i = 0; i < (gridSize.X + 1); ++i)
             {
-                for (j = 0; j < (m_sGridSize.Y + 1); ++j)
+                for (j = 0; j < (gridSize.Y + 1); ++j)
                 {
+                    CCVertex3F v = OriginalVertex(i,j);
 
-					CCVertex3F v = OriginalVertex(i,j);
-
-					avg.X = i - (m_sGridSize.X / 2.0f);
-					avg.Y = j - (m_sGridSize.Y / 2.0f);
+                    avg.X = i - (gridSize.X / 2.0f);
+                    avg.Y = j - (gridSize.Y / 2.0f);
 
                     var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
-                    float amp = 0.1f * m_fAmplitude * m_fAmplitudeRate;
-                    float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * m_nTwirls * 2) *
-                              amp;
+                    float amp = 0.1f * amplitude * StateAmplitudeRate;
+                    float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * twirls * 2) * amp;
 
                     float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);
                     float dy = (float) Math.Cos(a) * (v.Y - c.Y) - (float) Math.Sin(a) * (v.X - c.X);
@@ -103,9 +88,12 @@ namespace CocosSharp
                     v.X = c.X + dx;
                     v.Y = c.Y + dy;
 
-					SetVertex(i,j, ref v);
+                    SetVertex(i,j, ref v);
                 }
             }
         }
+
     }
+
+    #endregion Action state
 }

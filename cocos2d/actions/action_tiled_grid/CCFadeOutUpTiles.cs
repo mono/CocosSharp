@@ -49,9 +49,27 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCFadeOutUpTilesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFadeOutUpTilesState : CCFadeOutTRTilesState
+    {
+        public CCFadeOutUpTilesState(CCFadeOutUpTiles action, CCNode target) : base(action, target)
+        {
+        }
+
+
+        #region Tile transform
+
         public override float TestFunc(CCGridSize pos, float time)
         {
-            float fy = m_sGridSize.Y * time;
+            float fy = GridAction.GridSize.Y * time;
             if (fy == 0f)
             {
                 return (1f);
@@ -62,7 +80,7 @@ namespace CocosSharp
         public override void TransformTile(CCGridSize pos, float distance)
         {
             CCQuad3 coords = OriginalTile(pos);
-            CCPoint step = m_pTarget.Grid.Step;
+            CCPoint step = Target.Grid.Step;
 
             float dy = (step.Y / 2) * (1.0f - distance);
 
@@ -73,5 +91,9 @@ namespace CocosSharp
 
             SetTile(pos, ref coords);
         }
+
+        #endregion Tile transform
     }
+
+    #endregion Action state
 }

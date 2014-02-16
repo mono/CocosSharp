@@ -29,35 +29,20 @@ namespace CocosSharp
 {
     public class CCWavesTiles3D : CCTiledGrid3DAction
     {
-        protected float m_fAmplitude;
-        protected float m_fAmplitudeRate;
-        protected int m_nWaves;
-
         /// <summary>
         /// waves amplitude 
         /// </summary>
         /// <returns></returns>
-        public float Amplitude
-        {
-            get { return m_fAmplitude; }
-            set { m_fAmplitude = value; }
-        }
+        protected internal float Amplitude { get; private set; }
 
         /// <summary>
         /// waves amplitude rate
         /// </summary>
         /// <returns></returns>
-        public override float AmplitudeRate
-        {
-            get { return m_fAmplitudeRate; }
-            set { m_fAmplitudeRate = value; }
-        }
+        public override float AmplitudeRate { get; protected set; }
+        protected internal int Waves { get; private set; }
 
-		protected int Waves
-		{
-			get { return m_nWaves; }
-			set { m_nWaves = value; }
-		}
+
         #region Constructors
 
         public CCWavesTiles3D()
@@ -67,48 +52,54 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
-		public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) : base(duration, gridSize)
+		public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) 
+            : base(duration, gridSize)
         {
-            InitCCWavesTiles3D(waves, amplitude);
-        }
-
-        // Perform deep copy of CCWavesTiles3D
-        public CCWavesTiles3D(CCWavesTiles3D wavesTiles) : base(wavesTiles)
-        {
-            InitCCWavesTiles3D(wavesTiles.m_nWaves, wavesTiles.m_fAmplitude);
-        }
-
-        /// <summary>
-        ///  initializes the action with a number of waves, the waves amplitude, the grid size and the duration 
-        /// </summary>
-        private void InitCCWavesTiles3D(int waves, float amplitude)
-        {
-            m_nWaves = waves;
-            m_fAmplitude = amplitude;
-            m_fAmplitudeRate = 1.0f;
+            Waves = waves;
+            Amplitude = amplitude;
+            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWavesTiles3D(this);
+            return new CCWavesTiles3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCWavesTiles3DState : CCTiledGrid3DActionState
+    {
+        protected CCWavesTiles3D WavesTiles3DAction 
+        { 
+            get { return Action as CCWavesTiles3D; } 
+        }
+
+        public CCWavesTiles3DState(CCWavesTiles3D action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
+            CCWavesTiles3D wavesTiles3DAction = WavesTiles3DAction;
+            CCGridSize gridSize = wavesTiles3DAction.GridSize;
+            int waves = wavesTiles3DAction.Waves;
+            float amplitude = wavesTiles3DAction.Amplitude;
+            float ampRate = StateAmplitudeRate;
 
-            for (i = 0; i < m_sGridSize.X; i++)
+            for (i = 0; i < gridSize.X; i++)
             {
-                for (j = 0; j < m_sGridSize.Y; j++)
+                for (j = 0; j < gridSize.Y; j++)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
 
-                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 +
-                                                            (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) *
-                                           m_fAmplitude * m_fAmplitudeRate);
+                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * waves * 2 +
+                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * amplitude * ampRate);
                     coords.BottomRight.Z = coords.BottomLeft.Z;
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;
@@ -118,4 +109,6 @@ namespace CocosSharp
             }
         }
     }
+
+    #endregion Action state
 }

@@ -4,14 +4,14 @@ namespace CocosSharp
 {
     public class CCGridAction : CCActionInterval
     {
-        protected CCGridSize m_sGridSize;
+        protected internal CCGridSize GridSize { get; private set; }
 
-        public virtual CCGridBase Grid
-        {
-            set { }
-            get { return null; }
+
+        // Take me out later - See comments in CCAction
+        public override bool HasState 
+        { 
+            get { return true; }
         }
-
 
         #region Constructors
 
@@ -25,41 +25,49 @@ namespace CocosSharp
 
         public CCGridAction(float duration, CCGridSize gridSize) : this(duration)
         {
-            InitCCGridAction(gridSize);
-        }
-
-        // Perform deep copy of CCGridAction
-        public CCGridAction(CCGridAction gridAction) : base(gridAction)
-        {
-            InitCCGridAction(gridAction.m_sGridSize);
-        }
-
-        private void InitCCGridAction(CCGridSize gridSize)
-        {
-            m_sGridSize = gridSize; 
+            GridSize = gridSize; 
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCGridAction(this);
+            return new CCGridActionState(this, target);
         }
 
-        protected internal override void StartWithTarget(CCNode target)
+        public override CCFiniteTimeAction Reverse()
         {
-            base.StartWithTarget(target);
+            return new CCReverseTime(this);
+        }
+    }
 
-            CCNode t = m_pTarget;
-            CCGridBase targetGrid = t.Grid;
+
+    #region Action state
+
+    public class CCGridActionState : CCActionIntervalState
+    {
+        public virtual CCGridBase Grid 
+        { 
+            get { return null; } 
+            protected set { } 
+        }
+
+        protected CCGridAction GridAction
+        {
+            get { return Action as CCGridAction; }
+        }
+
+        public CCGridActionState(CCGridAction action, CCNode target) : base(action, target)
+        {
+            CCGridSize gridSize = action.GridSize;
+            CCGridBase targetGrid = Target.Grid;
 
             if (targetGrid != null && targetGrid.ReuseGrid > 0)
             {
                 Grid = targetGrid;
 
-                if (targetGrid.Active && targetGrid.GridSize.X == m_sGridSize.X
-                    && targetGrid.GridSize.Y == m_sGridSize.Y /*&& dynamic_cast<CCGridBase*>(targetGrid) != NULL*/)
+                if (targetGrid.Active && targetGrid.GridSize.X == gridSize.X && targetGrid.GridSize.Y == gridSize.Y)
                 {
                     targetGrid.Reuse();
                 }
@@ -77,14 +85,11 @@ namespace CocosSharp
 
                 CCGridBase newgrid = Grid;
 
-                t.Grid = newgrid;
-                t.Grid.Active = true;
+                Target.Grid = newgrid;
+                Target.Grid.Active = true;
             }
         }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCReverseTime(this);
-        }
     }
+
+    #endregion Action state
 }

@@ -29,28 +29,10 @@ namespace CocosSharp
     /// @brief CCTurnOffTiles action.
     /// Turn off the files in random order
     /// </summary>
-    public class CCTurnOffTiles : CCTiledGrid3DAction
-    {
-        private CCQuad3 m_pZero;
-        protected int m_nSeed;
-        protected int m_nTilesCount;
-        protected int[] m_pTilesOrder;
-
-
-		protected int Seed
-		{
-			get { return m_nSeed; }
-			set { m_nSeed = value; }
-		}
-
+    public class CCTurnOffTiles : CCShuffleTiles
+    { 
+    
         #region Constructors
-
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCTurnOffTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
-        {
-        }
 
         public CCTurnOffTiles()
         {
@@ -59,25 +41,75 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-		public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed) : base(duration, gridSize)
+        public CCTurnOffTiles(float duration, CCGridSize gridSize, int seed=CCShuffleTiles.NoSeedSpecified) 
+            : base(gridSize, duration, seed)
         {
-            InitCCTurnOffTiles(seed);
-        }
-
-        // Perform a deep copy of CCTurnOffTiles
-        public CCTurnOffTiles (CCTurnOffTiles turnOffTiles): base(turnOffTiles)
-        {
-            InitCCTurnOffTiles(turnOffTiles.m_nSeed);
-        }
-
-        private void InitCCTurnOffTiles(int seed)
-        {
-            m_nSeed = seed;
-            m_pTilesOrder = null;
         }
 
         #endregion Constructors
 
+
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCTurnOffTilesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCTurnOffTilesState : CCTiledGrid3DActionState
+    {
+        protected int TilesCount { get; private set; }
+        protected int[] TilesOrder { get; private set; }
+        private CCQuad3 zero;
+
+
+        public CCTurnOffTilesState(CCTurnOffTiles action, CCNode target) : base(action, target)
+        {
+            int i;
+
+            if (action.Seed != CCShuffleTiles.NoSeedSpecified)
+            {
+                CCRandom.Next(action.Seed);
+            }
+
+            CCGridSize gridSize = action.GridSize;
+            TilesCount = gridSize.X * gridSize.Y;
+            TilesOrder = new int[TilesCount];
+
+            for (i = 0; i < TilesCount; ++i)
+            {
+                TilesOrder[i] = i;
+            }
+
+            Shuffle(TilesOrder, TilesCount);
+        }
+
+        public override void Update(float time)
+        {
+            int i, l, t;
+
+            l = (int) (time * TilesCount);
+            CCGridSize gridSize = GridAction.GridSize;
+
+            for (i = 0; i < TilesCount; i++)
+            {
+                t = TilesOrder[i];
+                var tilePos = new CCGridSize(t / gridSize.Y, t % gridSize.Y);
+
+                if (i < l)
+                {
+                    TurnOffTile(tilePos);
+                }
+                else
+                {
+                    TurnOnTile(tilePos);
+                }
+            }
+        }
+
+        #region Tile shuffling
 
         public void Shuffle(int[] pArray, int nLen)
         {
@@ -99,56 +131,11 @@ namespace CocosSharp
 
         public void TurnOffTile(CCGridSize pos)
         {
-            SetTile(pos, ref m_pZero);
+            SetTile(pos, ref zero);
         }
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCTurnOffTiles(this);
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            int i;
-
-            base.StartWithTarget(target);
-
-            if (m_nSeed != -1)
-            {
-                CCRandom.Next(m_nSeed);
-            }
-
-            m_nTilesCount = m_sGridSize.X * m_sGridSize.Y;
-            m_pTilesOrder = new int[m_nTilesCount];
-
-            for (i = 0; i < m_nTilesCount; ++i)
-            {
-                m_pTilesOrder[i] = i;
-            }
-
-            Shuffle(m_pTilesOrder, m_nTilesCount);
-        }
-
-        public override void Update(float time)
-        {
-            int i, l, t;
-
-            l = (int) (time * m_nTilesCount);
-
-            for (i = 0; i < m_nTilesCount; i++)
-            {
-                t = m_pTilesOrder[i];
-                var tilePos = new CCGridSize(t / m_sGridSize.Y, t % m_sGridSize.Y);
-
-                if (i < l)
-                {
-                    TurnOffTile(tilePos);
-                }
-                else
-                {
-                    TurnOnTile(tilePos);
-                }
-            }
-        }
+        #endregion Tile shuffling
     }
+
+    #endregion Action state
 }

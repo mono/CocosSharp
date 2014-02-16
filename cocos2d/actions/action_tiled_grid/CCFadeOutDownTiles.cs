@@ -49,9 +49,28 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCFadeOutDownTilesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFadeOutDownTilesState : CCFadeOutUpTilesState
+    {
+        public CCFadeOutDownTilesState(CCFadeOutDownTiles action, CCNode target) : base(action, target)
+        {
+        }
+
+
+        #region Tile transform
+
         public override float TestFunc(CCGridSize pos, float time)
         {
-            var n = new CCPoint((m_sGridSize.X * (1.0f - time)), (m_sGridSize.Y * (1.0f - time)));
+            CCGridSize gridSize = GridAction.GridSize;
+            var n = new CCPoint((gridSize.X * (1.0f - time)), (gridSize.Y * (1.0f - time)));
             if (pos.Y == 0)
             {
                 return 1.0f;
@@ -59,5 +78,9 @@ namespace CocosSharp
 
             return (float) Math.Pow(n.Y / pos.Y, 6);
         }
+
+        #endregion Tile transform
     }
+
+    #endregion Action state
 }

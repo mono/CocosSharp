@@ -18,6 +18,26 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCPageTurn3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCPageTurn3DState : CCGrid3DActionState
+    {
+        protected CCPageTurn3D PageTurn3DAction
+        { 
+            get { return Action as CCPageTurn3D; } 
+        }
+
+        public CCPageTurn3DState(CCPageTurn3D action, CCNode target) : base(action, target)
+        {
+        }
+
         public override void Update(float time)
         {
             float tt = Math.Max(0, time - 0.25f);
@@ -25,17 +45,20 @@ namespace CocosSharp
             float ay = -100 - deltaAy;
 
             float deltaTheta = -MathHelper.PiOver2 * (float) Math.Sqrt(time);
-            float theta = /*0.01f */ +MathHelper.PiOver2 + deltaTheta;
+            float theta = /*            0.01f */ +MathHelper.PiOver2 + deltaTheta;
 
             var sinTheta = (float) Math.Sin(theta);
             var cosTheta = (float) Math.Cos(theta);
 
-            for (int i = 0; i <= m_sGridSize.X; ++i)
+            CCPageTurn3D pageTurn3DAction = PageTurn3DAction;
+            CCGridSize gridSize = pageTurn3DAction.GridSize;
+
+            for (int i = 0; i <= gridSize.X; ++i)
             {
-                for (int j = 0; j <= m_sGridSize.Y; ++j)
+                for (int j = 0; j <= gridSize.Y; ++j)
                 {
                     // Get original vertex
-					CCVertex3F p = OriginalVertex(i, j);
+                    CCVertex3F p = OriginalVertex(i, j);
 
                     var R = (float) Math.Sqrt((p.X * p.X) + ((p.Y - ay) * (p.Y - ay)));
                     float r = R * sinTheta;
@@ -70,9 +93,12 @@ namespace CocosSharp
                     }
 
                     // Set new coords
-					SetVertex(i, j, ref p);
+                    SetVertex(i, j, ref p);
                 }
             }
         }
+    
     }
+
+    #endregion Action state
 }

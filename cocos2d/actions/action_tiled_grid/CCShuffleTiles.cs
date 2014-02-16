@@ -22,6 +22,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
+using System.Linq;
 
 namespace CocosSharp
 {
@@ -31,10 +32,9 @@ namespace CocosSharp
     /// </summary>
     public class CCShuffleTiles : CCTiledGrid3DAction
     {
-        protected int m_nSeed;
-        protected int m_nTilesCount;
-        protected CCTile[] m_pTiles;
-        protected int[] m_pTilesOrder;
+        protected internal const int NoSeedSpecified = -1;
+
+        protected internal int Seed { get; private set; }
 
 
         #region Constructors
@@ -46,29 +46,89 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>
-        public CCShuffleTiles(CCGridSize gridSize, float duration, int seed) : base(duration, gridSize)
+        public CCShuffleTiles(CCGridSize gridSize, float duration, int seed=NoSeedSpecified) 
+            : base(duration, gridSize)
         {
-            InitCCShuffleTiles(seed);
-        }
-
-        // Perform deep copy of CCShuffleTiles
-        public CCShuffleTiles(CCShuffleTiles shuffleTiles) : base(shuffleTiles)
-        {
-            InitCCShuffleTiles(shuffleTiles.m_nSeed);
-        }
-
-        /// <summary>
-        /// initializes the action with a random seed, the grid size and the duration
-        /// </summary>
-        private void InitCCShuffleTiles(int seed)
-        {
-            m_nSeed = seed;
-            m_pTilesOrder = null;
-            m_pTiles = null;
         }
 
         #endregion Constructors
+   
 
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCShuffleTilesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCShuffleTilesState : CCTiledGrid3DActionState
+    {
+        protected int TilesCount { get; private set; }
+        protected CCTile[] Tiles { get; private set; }
+        protected int[] TilesOrder { get; private set; }
+
+        protected CCShuffleTiles ShuffleTilesAction
+        { 
+            get { return Action as CCShuffleTiles; } 
+        }
+
+        public CCShuffleTilesState(CCShuffleTiles action, CCNode target) : base(action, target)
+        {
+
+            CCGridSize gridSize = action.GridSize;
+            TilesCount = gridSize.X * gridSize.Y;
+            int[] shuffledTilesOrder = Enumerable.Range (0, TilesCount).ToArray();
+            int i, j, f=0;
+
+            if (action.Seed != CCShuffleTiles.NoSeedSpecified)
+            {
+                CCRandom.Next(action.Seed);
+            }
+
+
+            Shuffle(ref shuffledTilesOrder, TilesCount);
+            TilesOrder = shuffledTilesOrder;
+
+            Tiles = new CCTile[TilesCount];
+
+            for (i = 0; i < gridSize.X; ++i)
+            {
+                for (j = 0; j < gridSize.Y; ++j)
+                {
+                    Tiles[f] = new CCTile
+                    {
+                        Position = new CCPoint(i, j),
+                        StartPosition = new CCPoint(i, j),
+                        Delta = GetDelta(i, j)
+                    };
+
+                    f++;
+                }
+            }
+        }
+            
+        public override void Update(float time)
+        {
+            CCGridSize gridSize = GridAction.GridSize;
+            int i, j, f = 0;
+
+            for (i = 0; i < gridSize.X; ++i)
+            {
+                for (j = 0; j < gridSize.Y; ++j)
+                {
+                    CCTile item = Tiles[f];
+                    item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
+                    PlaceTile(i, j, item);
+
+                    f++;
+                }
+            }
+        }
+
+
+        #region Tile Shuffling 
 
         public void Shuffle(ref int[] pArray, int nLen)
         {
@@ -82,37 +142,39 @@ namespace CocosSharp
             }
         }
 
-        public CCGridSize GetDelta(CCGridSize pos)
+        protected CCGridSize GetDelta(CCGridSize pos)
         {
-			var pos2 = CCPoint.Zero;
+            CCGridSize gridSize = GridAction.GridSize;
+            var pos2 = CCPoint.Zero;
 
-            int idx = pos.X * m_sGridSize.Y + pos.Y;
-			int tileOrder = m_pTilesOrder [idx];
+            int idx = pos.X * gridSize.Y + pos.Y;
+            int tileOrder = TilesOrder[idx];
 
-			pos2.X = (tileOrder / m_sGridSize.Y);
-			pos2.Y = (tileOrder % m_sGridSize.Y);
+            pos2.X = (tileOrder / gridSize.Y);
+            pos2.Y = (tileOrder % gridSize.Y);
 
             return new CCGridSize((int) (pos2.X - pos.X), (int) (pos2.Y - pos.Y));
         }
 
-		public CCGridSize GetDelta(int x, int y)
-		{
-			var pos2 = CCPoint.Zero;
+        protected CCGridSize GetDelta(int x, int y)
+        {
+            CCGridSize gridSize = GridAction.GridSize;
+            var pos2 = CCPoint.Zero;
 
-			int idx = x * m_sGridSize.Y + y;
-			int tileOrder = m_pTilesOrder [idx];
+            int idx = x * gridSize.Y + y;
+            int tileOrder = TilesOrder[idx];
 
-			pos2.X = (tileOrder / m_sGridSize.Y);
-			pos2.Y = (tileOrder % m_sGridSize.Y);
+            pos2.X = (tileOrder / gridSize.Y);
+            pos2.Y = (tileOrder % gridSize.Y);
 
-			return new CCGridSize((int) (pos2.X - x), (int) (pos2.Y - y));
-		}
+            return new CCGridSize((int) (pos2.X - x), (int) (pos2.Y - y));
+        }
 
-        public void PlaceTile(CCGridSize pos, CCTile tile)
+        protected void PlaceTile(CCGridSize pos, CCTile tile)
         {
             CCQuad3 coords = OriginalTile(pos);
 
-            CCPoint step = m_pTarget.Grid.Step;
+            CCPoint step = Target.Grid.Step;
             coords.BottomLeft.X += (int) (tile.Position.X * step.X);
             coords.BottomLeft.Y += (int) (tile.Position.Y * step.Y);
 
@@ -128,91 +190,28 @@ namespace CocosSharp
             SetTile(pos, ref coords);
         }
 
-		public void PlaceTile(int x, int y, CCTile tile)
-		{
-			CCQuad3 coords = OriginalTile(x,y);
-
-			CCPoint step = m_pTarget.Grid.Step;
-			coords.BottomLeft.X += (int) (tile.Position.X * step.X);
-			coords.BottomLeft.Y += (int) (tile.Position.Y * step.Y);
-
-			coords.BottomRight.X += (int) (tile.Position.X * step.X);
-			coords.BottomRight.Y += (int) (tile.Position.Y * step.Y);
-
-			coords.TopLeft.X += (int) (tile.Position.X * step.X);
-			coords.TopLeft.Y += (int) (tile.Position.Y * step.Y);
-
-			coords.TopRight.X += (int) (tile.Position.X * step.X);
-			coords.TopRight.Y += (int) (tile.Position.Y * step.Y);
-
-			SetTile(x, y, ref coords);
-		}
-
-        protected internal override void StartWithTarget(CCNode target)
+        protected void PlaceTile(int x, int y, CCTile tile)
         {
-            base.StartWithTarget(target);
+            CCQuad3 coords = OriginalTile(x,y);
 
-            if (m_nSeed != -1)
-            {
-                m_nSeed = CCRandom.Next();
-            }
+            CCPoint step = Target.Grid.Step;
+            coords.BottomLeft.X += (int) (tile.Position.X * step.X);
+            coords.BottomLeft.Y += (int) (tile.Position.Y * step.Y);
 
-            m_nTilesCount = m_sGridSize.X * m_sGridSize.Y;
-            m_pTilesOrder = new int[m_nTilesCount];
-            int i, j;
-            int k;
+            coords.BottomRight.X += (int) (tile.Position.X * step.X);
+            coords.BottomRight.Y += (int) (tile.Position.Y * step.Y);
 
-            /**
-             * Use k to loop. Because m_nTilesCount is unsigned int,
-             * and i is used later for int.
-             */
-            for (k = 0; k < m_nTilesCount; ++k)
-            {
-                m_pTilesOrder[k] = k;
-            }
+            coords.TopLeft.X += (int) (tile.Position.X * step.X);
+            coords.TopLeft.Y += (int) (tile.Position.Y * step.Y);
 
-            Shuffle(ref m_pTilesOrder, m_nTilesCount);
+            coords.TopRight.X += (int) (tile.Position.X * step.X);
+            coords.TopRight.Y += (int) (tile.Position.Y * step.Y);
 
-            m_pTiles = new CCTile[m_nTilesCount];
-
-            int f = 0;
-            for (i = 0; i < m_sGridSize.X; ++i)
-            {
-                for (j = 0; j < m_sGridSize.Y; ++j)
-                {
-                    m_pTiles[f] = new CCTile
-                        {
-                            Position = new CCPoint(i, j),
-                            StartPosition = new CCPoint(i, j),
-                            Delta = GetDelta(i, j)
-                        };
-
-                    f++;
-                }
-            }
+            SetTile(x, y, ref coords);
         }
 
-        public override void Update(float time)
-        {
-            int i, j;
-
-            int f = 0;
-            for (i = 0; i < m_sGridSize.X; ++i)
-            {
-                for (j = 0; j < m_sGridSize.Y; ++j)
-                {
-                    CCTile item = m_pTiles[f];
-                    item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
-                    PlaceTile(i, j, item);
-
-                    f++;
-                }
-            }
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCShuffleTiles(this);
-        }
+        #endregion Tile Shuffling
     }
+
+    #endregion Action state
 }

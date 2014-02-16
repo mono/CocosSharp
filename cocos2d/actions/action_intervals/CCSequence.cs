@@ -7,57 +7,40 @@ namespace CocosSharp
     {
         protected CCFiniteTimeAction[] actionSequences = new CCFiniteTimeAction[2];
 
-		public virtual CCFiniteTimeAction[]  Actions
-		{
-			get 
-			{
-				return actionSequences;
-			}
+        protected internal virtual CCFiniteTimeAction[]  Actions { get; private set; }
 
-			protected set 
-			{
-				// Check to make sure we are immutable after creation
-				Debug.Assert((actionSequences.Length == 2) || 
-					(actionSequences[0] == null && actionSequences[1] == null), 
-					"Can not change the actions after creation, you must create a new CCSequence object");
-
-				var actions = value;
-
-				var prev = actions[0];
-
-				// Can't call base(duration) because we need to calculate duration here
-				float combinedDuration = actions.Sum(action => action.Duration);
-				Duration = combinedDuration;
-
-				if (actions.Length == 1)
-				{
-					InitCCSequence(prev, new CCExtraAction());
-				}
-				else
-				{
-					// Basically what we are doing here is creating a whole bunch of 
-					// nested CCSequences from the actions.
-					for (int i = 1; i < actions.Length - 1; i++)
-					{
-						prev = new CCSequence(prev, actions[i]);
-					}
-
-					InitCCSequence(prev, actions[actions.Length - 1]);
-				}
-
-			}
-		}
 
         #region Constructors
 
-        public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base(action1.Duration + action2.Duration)
-        {
-			InitCCSequence (action1, action2);
-        }
-
         public CCSequence(params CCFiniteTimeAction[] actions) : base()
         {
-			Actions = actions;
+            // Check to make sure we are immutable after creation
+            Debug.Assert((actionSequences.Length == 2) || 
+                (actionSequences[0] == null && actionSequences[1] == null), 
+                "Can not change the actions after creation, you must create a new CCSequence object");
+
+            Actions = actions;
+
+            if (actions.Count() > 0) 
+            {
+                var prev = actions[0];
+
+                // Can't call base(duration) because we need to calculate duration here
+                float combinedDuration = actions.Sum (act => act.Duration);
+                Duration = combinedDuration;
+
+                if (actions.Length == 1) {
+                    InitCCSequence (prev, new CCExtraAction ());
+                } else {
+                    // Basically what we are doing here is creating a whole bunch of 
+                    // nested CCSequences from the actions.
+                    for (int i = 1; i < actions.Length - 1; i++) {
+                        prev = new CCSequence (prev, actions[i]);
+                    }
+
+                    InitCCSequence (prev, actions[actions.Length - 1]);
+                }
+            }
         }
 
         private void InitCCSequence(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)

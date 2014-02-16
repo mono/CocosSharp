@@ -40,7 +40,6 @@ namespace tests
             public override CCPoint Position
             {
                 get { return m_pLens3D.Position; }
-                set { m_pLens3D.Position = value; }
             }
 
             public Lens3DTarget (CCLens3D pAction)

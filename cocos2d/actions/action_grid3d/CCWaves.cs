@@ -2,103 +2,77 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCWaves : CCGrid3DAction
+    public class CCWaves : CCLiquid
     {
-        protected bool m_bHorizontal;
-        protected bool m_bVertical;
-        protected float m_fAmplitude;
-        protected float m_fAmplitudeRate;
-        protected int m_nWaves;
-
-        public float Amplitude
-        {
-            get { return m_fAmplitude; }
-            set { m_fAmplitude = value; }
-        }
-
-        public override float AmplitudeRate
-        {
-            get { return m_fAmplitudeRate; }
-            set { m_fAmplitudeRate = value; }
-        }
-
-		protected int Waves
-		{
-			get { return m_nWaves; }
-			set { m_nWaves = value; }
-		}
-
-		protected bool Vertical
-		{
-			get { return m_bVertical; }
-			set { m_bVertical = value; }
-		}
-
-		protected bool Horizontal
-		{
-			get { return m_bHorizontal; }
-			set { m_bHorizontal = value; }
-		}
+        protected internal bool Vertical { get; private set; }
+        protected internal bool Horizontal { get; private set; }
 
 
 		#region Constructors
 
 		public CCWaves(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0, bool horizontal = true, bool vertical = true)
-            : base(duration, gridSize)
+            : base(duration, gridSize, waves, amplitude)
         {
-            InitCCWaves(waves, amplitude, horizontal, vertical);
-        }
-
-        // Perform deep copy of CCWaves
-        public CCWaves(CCWaves waves) : base(waves)
-        {
-            InitCCWaves(waves.m_nWaves, waves.m_fAmplitude, waves.m_bHorizontal, waves.m_bVertical);
-        }
-
-        private void InitCCWaves(int waves, float amplitude, bool horizontal, bool vertical)
-        {
-            m_nWaves = waves;
-            m_fAmplitude = amplitude;
-            m_fAmplitudeRate = 1.0f;
-            m_bHorizontal = horizontal;
-            m_bVertical = vertical;
+            Horizontal = horizontal;
+            Vertical = vertical;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCWaves(this);
+            return new CCWavesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCWavesState : CCLiquidState
+    {
+        protected CCWaves WavesAction
+        { 
+            get { return Action as CCWaves; } 
+        }
+
+        public CCWavesState(CCWaves action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
+            CCWaves wavesAction = WavesAction;
+            CCGridSize gridSize = wavesAction.GridSize;
+            int waves = wavesAction.Waves;
+            float amplitude = wavesAction.Amplitude;
+            float ampRate = StateAmplitudeRate;
 
-            for (i = 0; i < m_sGridSize.X + 1; ++i)
+            for (i = 0; i < gridSize.X + 1; ++i)
             {
-                for (j = 0; j < m_sGridSize.Y + 1; ++j)
+                for (j = 0; j < gridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
 
-                    if (m_bVertical)
+                    if (wavesAction.Vertical)
                     {
                         v.X = (v.X +
-                               ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.Y * .01f) * m_fAmplitude *
-                                m_fAmplitudeRate));
+                            ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.Y * .01f) * amplitude * ampRate));
                     }
 
-                    if (m_bHorizontal)
+                    if (wavesAction.Horizontal)
                     {
                         v.Y = (v.Y +
-                               ((float) Math.Sin(time * (float) Math.PI * m_nWaves * 2 + v.X * .01f) * m_fAmplitude *
-                                m_fAmplitudeRate));
+                            ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.X * .01f) * amplitude * ampRate));
                     }
 
                     SetVertex(i, j, ref v);
                 }
             }
         }
+
     }
+
+    #endregion Action state
 }

@@ -53,10 +53,58 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCFadeOutTRTilesState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFadeOutTRTilesState : CCTiledGrid3DActionState
+    {
+        public CCFadeOutTRTilesState(CCFadeOutTRTiles action, CCNode target) : base(action, target)
+        {
+        }
+
+        public override void Update(float time)
+        {
+            int i, j;
+            CCGridSize gridSize = GridAction.GridSize;
+            CCGridSize newGrid;
+
+            for (i = 0; i < gridSize.X; ++i)
+            {
+                newGrid.X = i;
+                for (j = 0; j < gridSize.Y; ++j)
+                {
+                    newGrid.Y = j;
+                    float distance = TestFunc(newGrid, time);
+                    if (distance == 0)
+                    {
+                        TurnOffTile(newGrid);
+                    }
+                    else if (distance < 1)
+                    {
+                        TransformTile(newGrid, distance);
+                    }
+                    else
+                    {
+                        TurnOnTile(newGrid);
+                    }
+                }
+            }
+        }
+
+
+        #region Tile transform
+
         public virtual float TestFunc(CCGridSize pos, float time)
         {
-            float px = m_sGridSize.X * time;
-            float py = m_sGridSize.Y * time;
+            CCGridSize gridSize = GridAction.GridSize;
+            float px = gridSize.X * time;
+            float py = gridSize.Y * time;
             if ((px + py) == 0.0f)
             {
                 return 1.0f;
@@ -81,7 +129,7 @@ namespace CocosSharp
         public virtual void TransformTile(CCGridSize pos, float distance)
         {
             CCQuad3 coords = OriginalTile(pos);
-            CCPoint step = m_pTarget.Grid.Step;
+            CCPoint step = Target.Grid.Step;
 
             float dx = (step.X / 2) * (1.0f - distance);
             float dy = (step.Y / 2) * (1.0f - distance);
@@ -101,31 +149,8 @@ namespace CocosSharp
             SetTile(pos, ref coords);
         }
 
-        public override void Update(float time)
-        {
-            int i, j;
-            CCGridSize grid;
-            for (i = 0; i < m_sGridSize.X; ++i)
-            {
-                grid.X = i;
-                for (j = 0; j < m_sGridSize.Y; ++j)
-                {
-                    grid.Y = j;
-                    float distance = TestFunc(grid, time);
-                    if (distance == 0)
-                    {
-                        TurnOffTile(grid);
-                    }
-                    else if (distance < 1)
-                    {
-                        TransformTile(grid, distance);
-                    }
-                    else
-                    {
-                        TurnOnTile(grid);
-                    }
-                }
-            }
-        }
+        #endregion Tile transform
     }
+
+    #endregion Action state
 }

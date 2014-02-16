@@ -30,21 +30,9 @@ namespace CocosSharp
     /// </summary>
     public class CCShatteredTiles3D : CCTiledGrid3DAction
     {
-        protected bool m_bOnce;
-        protected bool m_bShatterZ;
-        protected int m_nRandrange;
+        protected internal bool ShatterZ { get; private set; }
+        protected internal int Range { get; private set; }
 
-		protected bool ShatterZ
-		{
-			get { return m_bShatterZ; }
-			set { m_bShatterZ = value; }
-		}
-
-		protected int Range
-		{
-			get { return m_nRandrange; }
-			set { m_nRandrange = value; }
-		}
 
         #region Constructors
 
@@ -57,73 +45,81 @@ namespace CocosSharp
         /// </summary>
 		public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange = 0, bool bShatterZ = true) : base(duration, gridSize)
         {
-            InitCCShatteredTiles3D(nRange, bShatterZ);
-        }
-
-        // Perform deep copy of CCShatteredTiles3D
-        public CCShatteredTiles3D(CCShatteredTiles3D shatteredTiles) : base(shatteredTiles)
-        {
-            InitCCShatteredTiles3D(shatteredTiles.m_nRandrange, shatteredTiles.m_bShatterZ);
-        }
-
-        /// <summary>
-        /// initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration
-        /// </summary>
-        private void InitCCShatteredTiles3D(int nRange, bool bShatterZ)
-        {
-            m_bOnce = false;
-            m_nRandrange = nRange;
-            m_bShatterZ = bShatterZ;
+            Range = nRange;
+            ShatterZ = bShatterZ;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCShatteredTiles3D(this);
+            return new CCShatteredTiles3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCShatteredTiles3DState : CCTiledGrid3DActionState
+    {
+        protected bool ShatterOnce { get; private set; }
+
+
+        protected CCShatteredTiles3D ShatteredTiles3DAction 
+        { 
+            get { return Action as CCShatteredTiles3D; } 
+        }
+
+        public CCShatteredTiles3DState(CCShatteredTiles3D action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-			var doubleRange = m_nRandrange * 2;
+            CCShatteredTiles3D shatteredTiles3DAction = ShatteredTiles3DAction;
+            CCGridSize gridSize = shatteredTiles3DAction.GridSize;
+            int range = shatteredTiles3DAction.Range;
+            var doubleRange = range * 2;
 
-            if (m_bOnce == false)
+            if (ShatterOnce == false)
             {
-                for (i = 0; i < m_sGridSize.X; ++i)
+                for (i = 0; i < gridSize.X; ++i)
                 {
-                    for (j = 0; j < m_sGridSize.Y; ++j)
+                    for (j = 0; j < gridSize.Y; ++j)
                     {
                         CCQuad3 coords = OriginalTile(i, j);
 
                         // X
-                        coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.BottomRight.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.TopLeft.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.TopRight.X += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - range;
+                        coords.BottomRight.X += (CCRandom.Next() % doubleRange) - range;
+                        coords.TopLeft.X += (CCRandom.Next() % doubleRange) - range;
+                        coords.TopRight.X += (CCRandom.Next() % doubleRange) - range;
 
                         // Y
-                        coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                        coords.TopRight.Y += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                        coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - range;
+                        coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - range;
+                        coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - range;
+                        coords.TopRight.Y += (CCRandom.Next() % doubleRange) - range;
 
-                        if (m_bShatterZ)
+                        if (shatteredTiles3DAction.ShatterZ)
                         {
-                            coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                            coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                            coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
-                            coords.TopRight.Z += (CCRandom.Next() % doubleRange) - m_nRandrange;
+                            coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - range;
+                            coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - range;
+                            coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - range;
+                            coords.TopRight.Z += (CCRandom.Next() % doubleRange) - range;
                         }
 
                         SetTile(i, j, ref coords);
                     }
                 }
 
-                m_bOnce = true;
+                ShatterOnce = true;
             }
         }
     }
+
+    #endregion Action state
 }

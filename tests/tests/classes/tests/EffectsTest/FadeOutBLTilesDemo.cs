@@ -8,13 +8,19 @@ namespace tests
 {
 	public class FadeOutBLTilesDemo : CCSequence
     {
-		public FadeOutBLTilesDemo(float t)
+        public static FadeOutBLTilesDemo CreateWithDuration(float t)
         {
-			var fadeout = new CCFadeOutBLTiles(t, new CCGridSize(16, 12));
-			var back = fadeout.Reverse();
-			var delay = new CCDelayTime (0.5f);
+            var fadeout = new CCFadeOutBLTiles(t, new CCGridSize(16, 12));
+            var back = fadeout.Reverse();
+            var delay = new CCDelayTime (0.5f);
+            var actions = new CCFiniteTimeAction[] {fadeout, delay, back};
 
-			Actions = new CCFiniteTimeAction[] {fadeout, delay, back};
+            return new FadeOutBLTilesDemo(actions);
         }
+
+        public FadeOutBLTilesDemo(params CCFiniteTimeAction[] actions) : base(actions)
+        {
+        }
+
     }
 }

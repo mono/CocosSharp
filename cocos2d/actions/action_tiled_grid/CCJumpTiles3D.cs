@@ -29,33 +29,13 @@ namespace CocosSharp
 {
     public class CCJumpTiles3D : CCTiledGrid3DAction
     {
-        protected float m_fAmplitude;
-        protected float m_fAmplitudeRate;
-        protected int m_nJumps;
-
         /// <summary>
         /// amplitude of the sin
         /// </summary>
-        public float Amplitude
-        {
-            get { return m_fAmplitude; }
-            set { m_fAmplitude = value; }
-        }
+        public float Amplitude { get; private set; }
+        public override float AmplitudeRate { get; protected set; }
+        protected internal int NumberOfJumps { get; private set; }
 
-        /// <summary>
-        ///  amplitude rate 
-        /// </summary>
-        public override float AmplitudeRate
-        {
-            get { return m_fAmplitudeRate; }
-            set { m_fAmplitudeRate = value; }
-        }
-
-		protected int NumberOfJumps
-		{
-			get { return m_nJumps; }
-			set { m_nJumps = value; }
-		}
 
         #region Constructors
 
@@ -65,43 +45,49 @@ namespace CocosSharp
 
 		public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0) : base(duration, gridSize)
         {
-            InitCCJumpTiles3D(numberOfJumps, amplitude);
-        }
-
-        public CCJumpTiles3D(CCJumpTiles3D jumpTiles) : base(jumpTiles)
-        {
-            InitCCJumpTiles3D(jumpTiles.m_nJumps, jumpTiles.m_fAmplitude);
-        }
-
-        /// <summary>
-        /// initializes the action with the number of jumps, the sin amplitude, the grid size and the duration 
-        /// </summary>
-        private void InitCCJumpTiles3D(int numberOfJumps, float amplitude)
-        {
-            m_nJumps = numberOfJumps;
-            m_fAmplitude = amplitude;
-            m_fAmplitudeRate = 1.0f;
+            NumberOfJumps = numberOfJumps;
+            Amplitude = amplitude;
+            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCJumpTiles3D(this);
+            return new CCJumpTiles3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCJumpTiles3DState : CCTiledGrid3DActionState
+    {
+        protected CCJumpTiles3D JumpTiles3DAction 
+        { 
+            get { return Action as CCJumpTiles3D; } 
+        }
+
+        public CCJumpTiles3DState(CCJumpTiles3D action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
         {
             int i, j;
+            CCJumpTiles3D jumpTiles3DAction = JumpTiles3DAction;
+            CCGridSize gridSize = jumpTiles3DAction.GridSize;
+            int numOfJumps = jumpTiles3DAction.NumberOfJumps;
+            float amplitude = jumpTiles3DAction.Amplitude;
+            float ampRate = StateAmplitudeRate;
 
-            float sinz = ((float) Math.Sin((float) Math.PI * time * m_nJumps * 2) * m_fAmplitude * m_fAmplitudeRate);
-            var sinz2 =
-                (float) (Math.Sin((float) Math.PI * (time * m_nJumps * 2 + 1)) * m_fAmplitude * m_fAmplitudeRate);
+            float sinz = ((float) Math.Sin((float) Math.PI * time * numOfJumps * 2) * amplitude * ampRate);
+            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * numOfJumps * 2 + 1)) * amplitude * ampRate);
 
-            for (i = 0; i < m_sGridSize.X; i++)
+            for (i = 0; i < gridSize.X; i++)
             {
-                for (j = 0; j < m_sGridSize.Y; j++)
+                for (j = 0; j < gridSize.Y; j++)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
 
@@ -120,9 +106,11 @@ namespace CocosSharp
                         coords.TopRight.Z += sinz2;
                     }
 
-					SetTile(i, j, ref coords);
+                    SetTile(i, j, ref coords);
                 }
             }
         }
     }
+
+    #endregion Action state
 }

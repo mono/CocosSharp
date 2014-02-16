@@ -10,12 +10,23 @@ namespace CocosSharp
         {
         }
 
-        public CCFlipY3D(CCFlipY3D flipY3D) : base(flipY3D)
-        {
-        }
-
         #endregion Constructors
 
+
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCFlipY3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFlipY3DState : CCFlipX3DState
+    {
+        public CCFlipY3DState(CCFlipY3D action, CCNode target) : base(action, target)
+        {
+        }
 
         public override void Update(float time)
         {
@@ -81,10 +92,7 @@ namespace CocosSharp
             v.Z -= diff.Z;
             SetVertex(d, ref v);
         }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCFlipY3D(this);
-        }
     }
+
+    #endregion Action state
 }

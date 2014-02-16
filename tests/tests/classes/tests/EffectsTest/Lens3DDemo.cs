@@ -8,13 +8,11 @@ namespace tests
 {
     public class Lens3DDemo : CCLens3D
     {
+        static readonly CCSize contentSize = TextLayer.BaseNode.ContentSize;
 
         public Lens3DDemo(float t)
-            : base(t, new CCGridSize(15, 10))
+            : base(t, new CCGridSize(15, 10), contentSize.Center, contentSize.Height)
         {
-            var size = TextLayer.BaseNode.ContentSize;
-			Position = size.Center; 
-			Radius = size.Height;
 			//Concave = true;
         }
 

@@ -9,20 +9,6 @@ namespace CocosSharp
 
         public CCFlipX3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
-            InitCCFlipX3D(duration, gridSize);
-        }
-
-		public CCFlipX3D(float duration) : this(duration, CCGridSize.One)
-        { }
-
-        // Perform a deep copy of CCFlipX3D
-        public CCFlipX3D(CCFlipX3D flipX3D) : base(flipX3D)
-        {
-            InitCCFlipX3D(flipX3D.m_fDuration, flipX3D.m_sGridSize);
-        }
-
-        private void InitCCFlipX3D(float duration, CCGridSize gridSize)
-        {
             if (gridSize.X != 1 || gridSize.Y != 1)
             {
                 // Grid size must be (1,1)
@@ -30,12 +16,26 @@ namespace CocosSharp
             }
         }
 
+        public CCFlipX3D(float duration) : this(duration, CCGridSize.One)
+        { 
+        }
+
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
+        protected internal override CCActionState StartAction(CCNode target)
         {
-            return new CCFlipX3D(this);
+            return new CCFlipX3DState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCFlipX3DState : CCGrid3DActionState
+    {
+        public CCFlipX3DState(CCFlipX3D action, CCNode target) : base(action, target)
+        {
         }
 
         public override void Update(float time)
@@ -48,8 +48,8 @@ namespace CocosSharp
             CCVertex3F v0, v1, v;
             var diff = new CCVertex3F();
 
-			v0 = OriginalVertex(1,1);
-			v1 = OriginalVertex(0,0);
+            v0 = OriginalVertex(1,1);
+            v1 = OriginalVertex(0,0);
 
             float x0 = v0.X;
             float x1 = v1.X;
@@ -103,4 +103,6 @@ namespace CocosSharp
             SetVertex(d, ref v);
         }
     }
+
+    #endregion Action state
 }

@@ -8,13 +8,18 @@ namespace tests
 {
 	public class ShuffleTilesDemo : CCSequence
     {
-		public ShuffleTilesDemo (float t)
+        public static ShuffleTilesDemo CreateWithDuration(float t)
         {
-			var shuffle = new CCShuffleTiles(new CCGridSize(16, 12), t, 25);
-			var shuffle_back = shuffle.Reverse();
-			var delay = new CCDelayTime (2);
+            var shuffle = new CCShuffleTiles(new CCGridSize(16, 12), t, 25);
+            var shuffle_back = shuffle.Reverse();
+            var delay = new CCDelayTime (2);
+            var actions = new CCFiniteTimeAction[]{shuffle, delay, shuffle_back};
 
-			Actions = new CCFiniteTimeAction[] {shuffle, delay, shuffle_back};
+            return new ShuffleTilesDemo(actions);
+        }
+
+        public ShuffleTilesDemo(params CCFiniteTimeAction[] actions) : base(actions) 
+        {
         }
     }
 }

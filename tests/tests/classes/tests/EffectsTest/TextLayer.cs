@@ -75,13 +75,13 @@ namespace tests
             switch (nIndex)
             {
                 case 0:
-					return new Shaky3DDemo (t);
+					return new Shaky3DDemo(t);
                 case 1:
 					return new Waves3DDemo(t);
                 case 2:
-					return new FlipX3DDemo(t);
+                    return FlipX3DDemo.CreateWithDuration(t);
                 case 3:
-					return new FlipY3DDemo(t);
+                    return FlipY3DDemo.CreateWithDuration(t);
                 case 4:
                     return new Lens3DDemo(t);
                 case 5:
@@ -97,17 +97,17 @@ namespace tests
                 case 10:
 					return new ShatteredTiles3DDemo(t);
                 case 11:
-					return new ShuffleTilesDemo(t);
+                    return ShuffleTilesDemo.CreateWithDuration(t);
                 case 12:
-					return new FadeOutTRTilesDemo(t);
+                    return FadeOutTRTilesDemo.CreateWithDuration(t);
                 case 13:
-					return new FadeOutBLTilesDemo(t);
+                    return FadeOutBLTilesDemo.CreateWithDuration(t);
                 case 14:
-					return new FadeOutUpTilesDemo(t);
+                    return FadeOutUpTilesDemo.CreateWithDuration(t);
                 case 15:
-					return new FadeOutDownTilesDemo(t);
+                    return FadeOutDownTilesDemo.CreateWithDuration(t);
                 case 16:
-					return new TurnOffTilesDemo(t);
+                    return TurnOffTilesDemo.CreateWithDuration(t);
                 case 17:
 					return new WavesTiles3DDemo(t);
                 case 18:

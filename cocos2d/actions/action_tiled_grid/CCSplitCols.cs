@@ -27,14 +27,8 @@ namespace CocosSharp
 {
     public class CCSplitCols : CCTiledGrid3DAction
     {
-        protected int m_nCols;
-        protected CCSize m_winSize;
+        protected internal int Columns { get; private set; }
 
-		protected int Columns
-		{
-			get { return m_nCols; }
-			set { m_nCols = value; }
-		}
 
         #region Constructors
 
@@ -47,36 +41,37 @@ namespace CocosSharp
         /// </summary>
         public CCSplitCols(float duration, int nCols) : base(duration, new CCGridSize(nCols, 1))
         {
-            InitCCSplitCols(nCols);
+            Columns = nCols;
         }
-
-        // Perform deep copy of CCSplitCols
-        public CCSplitCols(CCSplitCols splitCols) : base(splitCols)
-        {
-            InitCCSplitCols(splitCols.m_nCols);
-        }
-
-        /// <summary>
-        ///  initializes the action with the number of columns to split and the duration 
-        /// </summary>
-        private void InitCCSplitCols(int nCols)
-        {
-            m_nCols = nCols;
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCSplitCols(this);
-        }
-
+            
         #endregion Constructors
 
+
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCSplitColsState(this, target);
+        }
+    }
+
+
+    #region Action state
+
+    public class CCSplitColsState : CCTiledGrid3DActionState
+    {
+        protected CCSize WinSize { get; private set; }
+
+
+        public CCSplitColsState(CCSplitCols action, CCNode target) : base(action, target)
+        {
+            WinSize = CCDirector.SharedDirector.WinSizeInPixels;
+        }
 
         public override void Update(float time)
         {
             int i;
 
-            for (i = 0; i < m_sGridSize.X; ++i)
+            CCGridSize gridSize = GridAction.GridSize;
+            for (i = 0; i < gridSize.X; ++i)
             {
                 CCQuad3 coords = OriginalTile(i, 0);
                 float direction = 1;
@@ -86,19 +81,16 @@ namespace CocosSharp
                     direction = -1;
                 }
 
-                coords.BottomLeft.Y += direction * m_winSize.Height * time;
-                coords.BottomRight.Y += direction * m_winSize.Height * time;
-                coords.TopLeft.Y += direction * m_winSize.Height * time;
-                coords.TopRight.Y += direction * m_winSize.Height * time;
+                coords.BottomLeft.Y += direction * WinSize.Height * time;
+                coords.BottomRight.Y += direction * WinSize.Height * time;
+                coords.TopLeft.Y += direction * WinSize.Height * time;
+                coords.TopRight.Y += direction * WinSize.Height * time;
 
                 SetTile(i, 0, ref coords);
             }
         }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_winSize = CCDirector.SharedDirector.WinSizeInPixels;
-        }
+            
     }
+
+    #endregion Action state
 }
