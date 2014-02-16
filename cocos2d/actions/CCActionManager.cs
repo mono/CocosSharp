@@ -247,7 +247,8 @@ namespace CocosSharp
 				var state = action.StartAction (target);
 				element.ActionStates.Add (state);
 			} else {
-					action.StartWithTarget (target);
+				action.StartWithTarget (target);
+				element.ActionStates.Add (null);
 			}
         }
 
