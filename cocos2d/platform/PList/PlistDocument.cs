@@ -80,11 +80,9 @@ namespace CocosSharp
 				// as per http://forums.xamarin.com/discussion/4421/assets-file-seek when you read an Asset 
 				// you can not perform a seek on it.  
 				// So we copy it to a memory stream and assign it back to the data variable to be used.
-				using (var copyStream = new MemoryStream ())
-				{
-					data.CopyTo (copyStream);
-					data = copyStream;
-				}
+				var copyStream = new MemoryStream ();
+				data.CopyTo (copyStream);
+				data = copyStream;
 			}
 #endif
 			byte[] magicHeader = new byte[8];
