@@ -89,6 +89,16 @@ namespace CocosSharp
             set { m_pobTexture = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the texture filename.
+        /// </summary>
+        /// <value>The texture filename.</value>
+        public string TextureFilename
+        {
+            get { return m_strTextureFilename; }
+            set { m_strTextureFilename = value; }
+        }
+
         #endregion
 
 

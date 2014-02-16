@@ -262,7 +262,7 @@ namespace CocosSharp
 						spriteSourceSize
 					);
 
-
+                    spriteFrame.TextureFilename = name;
 					_spriteFrames [name] = spriteFrame;
 				}
 			}
@@ -400,6 +400,7 @@ namespace CocosSharp
 						);
 				}
 
+                spriteFrame.TextureFilename = pair.Key;
 				_spriteFrames[pair.Key] = spriteFrame;
 			}
             AutoCreateAliasList();
