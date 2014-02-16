@@ -10,52 +10,77 @@ namespace CocosSharp
 
     public class CCActionTween : CCActionInterval
     {
-        protected float m_fDelta;
-        protected float m_fFrom, m_fTo;
-        protected string m_strKey;
-        protected Action<float, string> _tweenAction;
+		public float From { get; private set; }
+		public float To { get; private set; }
+		public string Key { get; private set; }
+		public Action<float, string> TweenAction { get; private set; }
 
 
         #region Constructors
 
         public CCActionTween(float aDuration, string key, float from, float to)
+			: base(aDuration)
         {
-            m_strKey = key;
-            m_fTo = to;
-            m_fFrom = from;
+            Key = key;
+            To = to;
+			From = from;
         }
 
         public CCActionTween(float aDuration, string key, float from, float to, Action<float,string> tweenAction) : this(aDuration, key, from, to)
         {
-            _tweenAction = tweenAction;
+            TweenAction = tweenAction;
         }
 
         #endregion Constructors
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCActionTweenState (this, target);
 
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            Debug.Assert(target is ICCActionTweenDelegate, "target must implement CCActionTweenDelegate");
-            base.StartWithTarget(target);
-            m_fDelta = m_fTo - m_fFrom;
-        }
-
-        public override void Update(float dt)
-        {
-            float amt = m_fTo - m_fDelta * (1 - dt);
-            if (_tweenAction != null)
-            {
-                _tweenAction(amt, m_strKey);
-            }
-            else if(m_pTarget is ICCActionTweenDelegate)
-            {
-                ((ICCActionTweenDelegate)m_pTarget).UpdateTweenAction(amt, m_strKey);
-            }
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCActionTween(m_fDuration, m_strKey, m_fTo, m_fFrom, _tweenAction);
+            return new CCActionTween(Duration, Key, To, From, TweenAction);
         }
     }
+
+	public class CCActionTweenState : CCActionIntervalState
+	{
+		protected float delta;
+		protected float From { get; private set; }
+		protected float To { get; private set; }
+		protected string Key { get; private set; }
+		protected Action<float, string> TweenAction { get; private set; }
+
+		public CCActionTweenState (CCActionTween action, CCNode target)
+			: base(action, target)
+		{ 
+			Debug.Assert(Target is ICCActionTweenDelegate, "target must implement CCActionTweenDelegate");
+			TweenAction = action.TweenAction;
+			From = action.From;
+			To = action.To;
+			Key = action.Key;
+			delta = To - From;
+		}
+
+		public override void Update(float dt)
+		{
+			float amt = To - delta * (1 - dt);
+			if (TweenAction != null)
+			{
+				TweenAction(amt, Key);
+			}
+			else if(Target is ICCActionTweenDelegate)
+			{
+				((ICCActionTweenDelegate)Target).UpdateTweenAction(amt, Key);
+			}
+		}
+
+	}
 }
