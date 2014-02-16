@@ -1673,7 +1673,7 @@ namespace tests
 
         public override string title()
         {
-            return "tacked Move + Jump actions";
+			return "Stacked Move + Jump actions";
         }
     }
 
