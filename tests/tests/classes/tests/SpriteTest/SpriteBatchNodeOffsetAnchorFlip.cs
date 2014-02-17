@@ -12,6 +12,12 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
+			// We only need to define these once
+			CCFlipY flip = new CCFlipY(true);
+			CCFlipY flip_back = new CCFlipY(false);
+			CCDelayTime delay = new CCDelayTime (1);
+			CCFiniteTimeAction seq = new CCSequence(delay, flip, delay, flip_back);
+
             for (int i = 0; i < 3; i++)
             {
                 CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
@@ -70,11 +76,7 @@ namespace tests
 
                 animFrames = null;
 
-                CCFlipY flip = new CCFlipY(true);
-                CCFlipY flip_back = new CCFlipY(false);
-                CCDelayTime delay = new CCDelayTime (1);
-                CCFiniteTimeAction seq = new CCSequence((CCFiniteTimeAction)delay, (CCFiniteTimeAction)flip, (CCFiniteTimeAction)delay.Copy(null), (CCFiniteTimeAction)flip_back);
-                sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq));
+				sprite.RepeatForever(seq);
 
                 spritebatch.AddChild(sprite, i);
             }
