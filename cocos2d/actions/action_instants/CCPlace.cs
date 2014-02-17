@@ -33,22 +33,15 @@
 
     }
 
-	public class CCPlaceState : CCFiniteTimeActionState
+	public class CCPlaceState : CCActionInstantState
 	{
-		protected CCPoint Position { get; set; }
 
 		public CCPlaceState (CCPlace action, CCNode target)
 			: base(action, target)
 		{ 
-			Position = action.Position;
-			Target.Position = Position;
+			Target.Position = action.Position;
 		}
 
-		// This can be taken out once CCActionInstant has it's State separated
-		public override void Step(float dt)
-		{
-			Update(1);
-		}
 	}
 
 }
