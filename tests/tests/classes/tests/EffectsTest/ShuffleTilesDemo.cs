@@ -6,20 +6,16 @@ using CocosSharp;
 
 namespace tests
 {
-	public class ShuffleTilesDemo : CCSequence
+	public class ShuffleTilesDemo
     {
-        public static ShuffleTilesDemo CreateWithDuration(float t)
+		public static CCActionInterval ActionWithDuration(float t)
         {
             var shuffle = new CCShuffleTiles(new CCGridSize(16, 12), t, 25);
             var shuffle_back = shuffle.Reverse();
             var delay = new CCDelayTime (2);
-            var actions = new CCFiniteTimeAction[]{shuffle, delay, shuffle_back};
 
-            return new ShuffleTilesDemo(actions);
+			return new CCSequence(shuffle, delay, shuffle_back);
         }
 
-        public ShuffleTilesDemo(params CCFiniteTimeAction[] actions) : base(actions) 
-        {
-        }
     }
 }

@@ -79,9 +79,9 @@ namespace tests
                 case 1:
 					return new Waves3DDemo(t);
                 case 2:
-                    return FlipX3DDemo.CreateWithDuration(t);
-                case 3:
-                    return FlipY3DDemo.CreateWithDuration(t);
+					return FlipX3DDemo.ActionWithDuration(t);
+				case 3:
+					return FlipY3DDemo.ActionWithDuration(t);
                 case 4:
                     return new Lens3DDemo(t);
                 case 5:
@@ -97,17 +97,17 @@ namespace tests
                 case 10:
 					return new ShatteredTiles3DDemo(t);
                 case 11:
-                    return ShuffleTilesDemo.CreateWithDuration(t);
+                    return ShuffleTilesDemo.ActionWithDuration(t);
                 case 12:
-                    return FadeOutTRTilesDemo.CreateWithDuration(t);
+                    return FadeOutTRTilesDemo.ActionWithDuration(t);
                 case 13:
-                    return FadeOutBLTilesDemo.CreateWithDuration(t);
+                    return FadeOutBLTilesDemo.ActionWithDuration(t);
                 case 14:
-                    return FadeOutUpTilesDemo.CreateWithDuration(t);
+                    return FadeOutUpTilesDemo.ActionWithDuration(t);
                 case 15:
-                    return FadeOutDownTilesDemo.CreateWithDuration(t);
+                    return FadeOutDownTilesDemo.ActionWithDuration(t);
                 case 16:
-                    return TurnOffTilesDemo.CreateWithDuration(t);
+                    return TurnOffTilesDemo.ActionWithDuration(t);
                 case 17:
 					return new WavesTiles3DDemo(t);
                 case 18:

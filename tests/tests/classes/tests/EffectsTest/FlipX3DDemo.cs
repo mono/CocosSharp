@@ -2,20 +2,15 @@ using CocosSharp;
 
 namespace tests
 {
-	public class FlipX3DDemo : CCSequence
-    {
-        public static FlipX3DDemo CreateWithDuration(float t)
-        {
-            var flipX = new CCFlipX3D(t);
-            var flipX_Reverse = flipX.Reverse();
-            var delay = new CCDelayTime (2);
-            var actions = new CCFiniteTimeAction[] { flipX, delay, flipX_Reverse};
-
-            return new FlipX3DDemo(actions);
-        }
-
-        public FlipX3DDemo (params CCFiniteTimeAction[] actions) : base(actions) 
+	public class FlipX3DDemo
+	{
+		public static CCActionInterval ActionWithDuration(float t)
 		{
+			CCFlipX3D flipx = new CCFlipX3D(t);
+			CCFiniteTimeAction flipx_back = flipx.Reverse();
+			CCDelayTime delay = new CCDelayTime (2);
+
+			return new CCSequence(flipx, delay, flipx_back);
 		}
-    }
+	}
 }

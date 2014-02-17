@@ -6,20 +6,15 @@ using CocosSharp;
 
 namespace tests
 {
-	public class FadeOutBLTilesDemo : CCSequence
+	public class FadeOutBLTilesDemo
     {
-        public static FadeOutBLTilesDemo CreateWithDuration(float t)
+		public static CCActionInterval ActionWithDuration(float t)
         {
             var fadeout = new CCFadeOutBLTiles(t, new CCGridSize(16, 12));
             var back = fadeout.Reverse();
             var delay = new CCDelayTime (0.5f);
-            var actions = new CCFiniteTimeAction[] {fadeout, delay, back};
 
-            return new FadeOutBLTilesDemo(actions);
-        }
-
-        public FadeOutBLTilesDemo(params CCFiniteTimeAction[] actions) : base(actions)
-        {
+			return new CCSequence(fadeout, delay, back);
         }
 
     }
