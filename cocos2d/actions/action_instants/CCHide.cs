@@ -8,27 +8,34 @@
         {
         }
 
-        protected CCHide(CCHide hide) : base(hide)
-        {
-        }
-
         #endregion Constructors
 
+		/// <summary>
+		/// Start the hide operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCHideState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            target.Visible = false;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
             return (new CCShow());
         }
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCHide(this);
-        }
     }
+
+	public class CCHideState : CCActionInstantState
+	{
+
+		public CCHideState (CCHide action, CCNode target)
+			: base(action, target)
+		{	
+			target.Visible = false;
+		}
+
+	}
+
 }

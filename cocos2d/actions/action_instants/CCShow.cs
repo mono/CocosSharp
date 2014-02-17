@@ -8,27 +8,34 @@
         {
         }
 
-        protected CCShow(CCShow show) : base(show)
-        {
-        }
-
         #endregion Constructors
 
+		/// <summary>
+		/// Start the show operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCShowState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            target.Visible = true;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
             return (new CCHide());
         }
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCShow(this);
-        }
     }
+
+	public class CCShowState : CCActionInstantState
+	{
+
+		public CCShowState (CCShow action, CCNode target)
+			: base(action, target)
+		{	
+			target.Visible = true;
+		}
+
+	}
+
 }
