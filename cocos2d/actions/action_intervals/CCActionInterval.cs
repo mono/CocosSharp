@@ -133,7 +133,8 @@ namespace CocosSharp
         {
             get
             {
-                Debug.Assert(false);
+				// We need to look at this closer.  Am commenting the Dubug.Assert out for now
+				//Debug.Assert(false);
                 return 0;
             }
             protected set { Debug.Assert(false); }
