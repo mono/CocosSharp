@@ -385,6 +385,9 @@ namespace CocosSharp
     /// </summary>
     public struct CCGridSize
     {
+		public static readonly CCGridSize Zero = new CCGridSize(0,0);
+		public static readonly CCGridSize One = new CCGridSize(1,1);
+
         public CCGridSize(int inx, int iny)
         {
             X = inx;
