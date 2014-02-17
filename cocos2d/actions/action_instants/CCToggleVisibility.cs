@@ -8,22 +8,29 @@
         {
         }
 
-        protected CCToggleVisibility(CCToggleVisibility toggleVisibility) : base(toggleVisibility)
-        {
-        }
-
         #endregion Constructors
 
+		/// <summary>
+		/// Start the hide operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCToggleVisibilityState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCToggleVisibility(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            target.Visible = !target.Visible;
-        }
     }
+
+	public class CCToggleVisibilityState : CCActionInstantState
+	{
+
+		public CCToggleVisibilityState (CCToggleVisibility action, CCNode target)
+			: base(action, target)
+		{	
+			target.Visible = !target.Visible;
+		}
+
+	}
+
 }

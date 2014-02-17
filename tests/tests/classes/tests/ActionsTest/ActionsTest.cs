@@ -1260,9 +1260,10 @@ namespace tests
             //   Sequence should work both with IntervalAction and InstantActions
             var move1 = new CCMoveBy (1, new CCPoint(250, 0));
             var move2 = new CCMoveBy (1, new CCPoint(0, 50));
-            var tog1 = new CCToggleVisibility();
-            var tog2 = new CCToggleVisibility();
-            var seq = new CCSequence(move1, tog1, move2, tog2, move1.Reverse());
+			var toggle = new CCToggleVisibility();
+
+			var seq = new CCSequence(move1, toggle, move2, toggle, move1.Reverse());
+
             var action = new CCRepeat ((new CCSequence(seq, seq.Reverse())), 3);
 
             // Test:
