@@ -25,6 +25,7 @@ namespace CocosSharp
 
     public class CCWaves3DState : CCLiquidState
     {
+
         protected CCWaves3D Waves3DAction
         { 
             get { return Action as CCWaves3D; } 
@@ -40,9 +41,9 @@ namespace CocosSharp
             CCWaves3D waves3DAction = Waves3DAction;
             CCGridSize gridSize = waves3DAction.GridSize;
             int waves = waves3DAction.Waves;
-            float amplitude = StateAmplitudeRate;
+			float amplitude = waves3DAction.Amplitude;
 
-            for (i = 0; i < gridSize.X + 1; ++i)
+			for (i = 0; i < gridSize.X + 1; ++i)
             {
                 for (j = 0; j < gridSize.Y + 1; ++j)
                 {
