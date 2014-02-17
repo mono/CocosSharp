@@ -12,7 +12,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo action = new CCProgressTo(2, 100);
+			var progressTo = new CCProgressTo(2, 100);
 
             /**
            *  Our image on the left should be a radial progress indicator, clockwise
@@ -22,7 +22,7 @@ namespace tests
             AddChild(left);
             left.Midpoint = new CCPoint(0.25f, 0.75f);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(new CCRepeatForever ((CCActionInterval) action.Copy()));
+			left.RepeatForever(progressTo);
 
             /**
            *  Our image on the left should be a radial progress indicator, counter clockwise
@@ -37,7 +37,7 @@ namespace tests
            */
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(new CCRepeatForever ((CCActionInterval) action.Copy()));
+			right.RepeatForever(progressTo);
         }
 
         public override string subtitle()

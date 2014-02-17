@@ -2,61 +2,57 @@ namespace CocosSharp
 {
     public class CCProgressFromTo : CCActionInterval
     {
-        protected float m_fFrom;
-        protected float m_fTo;
-
+		public float PercentFrom { get; protected set; }
+		public float PercentTo { get; protected set; }
 
         #region Constructors
-
-        protected CCProgressFromTo()
-        {
-        }
 
         /// <summary>
         /// Creates and initializes the action with a duration, a "from" percentage and a "to" percentage
         /// </summary>
-        public CCProgressFromTo(float duration, float fFromPercentage, float fToPercentage) : base(duration)
+        public CCProgressFromTo(float duration, float fromPercentage, float toPercentage) : base(duration)
         {
-            InitCCProgressFromTo(fFromPercentage, fToPercentage);
-        }
-
-        // Perform deep copy of CCProgressFromTo
-        public CCProgressFromTo(CCProgressFromTo progress) : base(progress)
-        {
-            InitCCProgressFromTo(progress.m_fFrom, progress.m_fTo);
-        }
-
-        /// <summary>
-        /// Initializes the action with a duration, a "from" percentage and a "to" percentage
-        /// </summary>
-        private void InitCCProgressFromTo(float fFromPercentage, float fToPercentage)
-        {
-            m_fTo = fToPercentage;
-            m_fFrom = fFromPercentage;
+			PercentTo = toPercentage;
+            PercentFrom = fromPercentage;
         }
 
         #endregion Constructors
 
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCProgressFromTo(this);
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCProgressFromToState (this, target);
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCProgressFromTo(m_fDuration, m_fTo, m_fFrom);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            ((CCProgressTimer) (m_pTarget)).Percentage = m_fFrom;
-        }
+		public override bool HasState {
+			get {
+				return true;
+			}
+		}
 
-        public override void Update(float time)
-        {
-            ((CCProgressTimer) (m_pTarget)).Percentage = m_fFrom + (m_fTo - m_fFrom) * time;
-        }
     }
+
+	public class CCProgressFromToState : CCActionIntervalState
+	{
+
+		protected float PercentFrom { get; set; }
+		protected float PercentTo { get; set; }
+
+		public CCProgressFromToState (CCProgressFromTo action, CCNode target)
+			: base(action, target)
+		{ 
+			PercentTo = action.PercentTo;
+			PercentFrom = action.PercentFrom;
+
+			((CCProgressTimer) (Target)).Percentage = PercentFrom;
+		}
+
+		public override void Update(float time)
+		{
+			((CCProgressTimer) (Target)).Percentage = PercentFrom + (PercentTo - PercentFrom) * time;
+		}
+
+	}
+
 }

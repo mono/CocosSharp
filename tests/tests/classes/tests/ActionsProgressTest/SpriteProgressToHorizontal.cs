@@ -13,8 +13,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to1 = new CCProgressTo(2, 100);
-            CCProgressTo to2 = new CCProgressTo(2, 100);
+			var progressTo = new CCProgressTo(2, 100);
 
             CCProgressTimer left = new CCProgressTimer(s_pPathSister1);
             left.Type = CCProgressTimerType.Bar;
@@ -24,7 +23,7 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(new CCRepeatForever (to1));
+			left.RepeatForever (progressTo);
 
             CCProgressTimer right = new CCProgressTimer(s_pPathSister2);
             right.Type = CCProgressTimerType.Bar;
@@ -34,7 +33,7 @@ namespace tests
             right.BarChangeRate = new CCPoint(1, 0);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(new CCRepeatForever (to2));
+			right.RepeatForever(progressTo);
         }
 
         public override string subtitle()

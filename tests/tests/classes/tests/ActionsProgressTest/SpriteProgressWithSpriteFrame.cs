@@ -10,7 +10,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to = new CCProgressTo(6, 100);
+			var progressTo = new CCProgressTo(6, 100);
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("zwoptex/grossini.plist");
 
@@ -22,7 +22,7 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+			left.RepeatForever(progressTo);
 
             CCProgressTimer middle = new CCProgressTimer(new CCSprite("grossini_dance_02.png"));
             middle.Type = CCProgressTimerType.Bar;
@@ -32,7 +32,7 @@ namespace tests
             middle.BarChangeRate = new CCPoint(1, 1);
             AddChild(middle);
             middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+			middle.RepeatForever(progressTo);
 
             CCProgressTimer right = new CCProgressTimer(new CCSprite("grossini_dance_03.png"));
             right.Type = CCProgressTimerType.Radial;
@@ -42,7 +42,7 @@ namespace tests
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
+			right.RepeatForever(progressTo);
         }
 
         public override string subtitle()

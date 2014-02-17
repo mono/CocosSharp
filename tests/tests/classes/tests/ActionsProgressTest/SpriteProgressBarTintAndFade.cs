@@ -13,11 +13,11 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCProgressTo to = new CCProgressTo(6, 100);
-            CCAction tint = new CCSequence(new CCTintTo (1, 255, 0, 0),
+			var progressTo = new CCProgressTo(6, 100);
+			var tint = new CCSequence(new CCTintTo (1, 255, 0, 0),
                                               new CCTintTo (1, 0, 255, 0),
                                               new CCTintTo (1, 0, 0, 255));
-            CCAction fade = new CCSequence(new CCFadeTo (1.0f, 0),
+			var fade = new CCSequence(new CCFadeTo (1.0f, 0),
                                               new CCFadeTo (1.0f, 255));
 
             CCProgressTimer left = new CCProgressTimer(new CCSprite(s_pPathSister1));
@@ -29,8 +29,8 @@ namespace tests
             left.BarChangeRate = new CCPoint(1, 0);
             AddChild(left);
             left.Position = new CCPoint(100, s.Height / 2);
-            left.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
-            left.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
+			left.RepeatForever(progressTo);
+			left.RepeatForever(tint);
 
             left.AddChild(new CCLabelTTF("Tint", "arial", 20.0f));
 
@@ -42,8 +42,8 @@ namespace tests
             middle.BarChangeRate = new CCPoint(1, 1);
             AddChild(middle);
             middle.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            middle.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
-            middle.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
+			middle.RepeatForever(progressTo);
+			middle.RepeatForever(fade);
 
             middle.AddChild(new CCLabelTTF("Fade", "arial", 20.0f));
 
@@ -55,9 +55,9 @@ namespace tests
             right.BarChangeRate = new CCPoint(0, 1);
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
-            right.RunAction(new CCRepeatForever ((CCActionInterval) to.Copy()));
-            right.RunAction(new CCRepeatForever ((CCActionInterval) tint.Copy()));
-            right.RunAction(new CCRepeatForever ((CCActionInterval) fade.Copy()));
+			right.RepeatForever(progressTo);
+			right.RepeatForever(tint);
+			right.RepeatForever(fade);
 
             right.AddChild(new CCLabelTTF("Tint and Fade", "arial", 20.0f));
         }
