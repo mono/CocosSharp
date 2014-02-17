@@ -2,48 +2,50 @@
 {
     public class CCFlipY : CCActionInstant
     {
-        private bool m_bFlipY;
+		public bool FlipY { get; private set; }
 
 
         #region Constructors
 
-        public CCFlipY()
-        {
-        }
-
         public CCFlipY(bool y)
         {
-            InitWithFlipY(y);
-        }
-
-        protected virtual bool InitWithFlipY(bool y)
-        {
-            m_bFlipY = y;
-            return true;
-        }
-
-        protected CCFlipY(CCFlipY flipY) : base(flipY)
-        {
-            InitWithFlipY(m_bFlipY);
+            FlipY = y;
         }
 
         #endregion Constructors
 
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            ((CCSprite) (target)).FlipY = m_bFlipY;
-        }
+		/// <summary>
+		/// Start the flip operation on the given target which must be a CCSprite.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFlipYState (this, target);
+
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCFlipY(!m_bFlipY);
+            return new CCFlipY(!FlipY);
         }
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCFlipY(this);
-        }
     }
+
+	public class CCFlipYState : CCActionInstantState
+	{
+
+		public CCFlipYState (CCFlipY action, CCNode target)
+			: base(action, target)
+		{	
+
+			if (!(target is CCSprite))
+			{
+				throw (new System.NotSupportedException("FlipX and FlipY actions only work on CCSprite instances."));
+			}
+			((CCSprite) (target)).FlipY = action.FlipY;		
+		}
+
+	}
+
 }

@@ -2,55 +2,49 @@
 {
     public class CCFlipX : CCActionInstant
     {
-        private bool m_bFlipX;
+		public bool FlipX { get; private set; }
 
 
         #region Constructors
 
-        protected CCFlipX()
-        {
-        }
-
         public CCFlipX(bool x)
         {
-            InitWithFlipX(x);
-        }
-
-        protected CCFlipX(CCFlipX flipX) : base(flipX)
-        {
-            InitWithFlipX(m_bFlipX);
-        }
-
-        private void InitWithFlipX(bool x)
-        {
-            m_bFlipX = x;
+			FlipX = x;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the flip operation on the given target which must be a CCSprite.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFlipXState (this, target);
 
-        /// <summary>
-        /// Start the flip operation on the given target which must be a CCSprite.
-        /// </summary>
-        /// <param name="target"></param>
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            if (!(target is CCSprite))
-            {
-                throw (new System.NotSupportedException("FlipX and FlipY actions only work on CCSprite instances."));
-            }
-            ((CCSprite) (target)).FlipX = m_bFlipX;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCFlipX(!m_bFlipX);
+			return new CCFlipX(!FlipX);
         }
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCFlipX(this);
-        }
     }
+
+	public class CCFlipXState : CCActionInstantState
+	{
+
+		public CCFlipXState (CCFlipX action, CCNode target)
+			: base(action, target)
+		{	
+
+			if (!(target is CCSprite))
+			{
+				throw (new System.NotSupportedException("FlipX and FlipY actions only work on CCSprite instances."));
+			}
+			((CCSprite) (target)).FlipX = action.FlipX;		
+		}
+
+	}
+
 }

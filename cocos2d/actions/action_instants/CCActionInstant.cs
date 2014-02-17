@@ -2,10 +2,6 @@ namespace CocosSharp
 {
     public class CCActionInstant : CCFiniteTimeAction
     {
-        public override bool IsDone
-        {
-            get { return true; }
-        }
 
         #region Constructors
 
@@ -13,31 +9,51 @@ namespace CocosSharp
         {
         }
 
-        protected CCActionInstant(CCActionInstant actionInstant) : base(actionInstant)
-        {
-        }
+		protected CCActionInstant (float d) 
+			: base (d)
+		{	}
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCActionInstantState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCActionInstant(this);
-        }
+		}
 
-        public override void Step(float dt)
-        {
-            Update(1);
-        }
-
-        public override void Update(float time)
-        {
-            // ignore
-        }
+		public override bool HasState {
+			get {
+				return true;
+			}
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return (CCFiniteTimeAction) Copy();
+			return new CCActionInstant(Duration);
         }
     }
+
+	public class CCActionInstantState : CCFiniteTimeActionState
+	{
+
+		public CCActionInstantState (CCActionInstant action, CCNode target)
+			: base(action, target)
+		{	}
+
+		public override bool IsDone
+		{
+			get { return true; }
+		}
+
+		public override void Step(float dt)
+		{
+			Update(1);
+		}
+
+		public override void Update(float time)
+		{
+			// ignore
+		}
+	}
+
 }
