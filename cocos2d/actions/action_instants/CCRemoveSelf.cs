@@ -7,48 +7,53 @@ namespace CocosSharp
 {
     public class CCRemoveSelf : CCActionInstant
     {
-        protected bool m_bIsNeedCleanUp;
-
+		public bool IsNeedCleanUp { get; private set; }
 
         #region Constructors
 
         public CCRemoveSelf()
-        {
-            InitCCRemoveSelf(true);
-        }
+			: this (true)
+        {    }
 
         public CCRemoveSelf(bool isNeedCleanUp)
         {
-            InitCCRemoveSelf(isNeedCleanUp);
-        }
-
-        protected CCRemoveSelf(CCRemoveSelf removeSelf)
-            : base(removeSelf)
-        {
-            InitCCRemoveSelf(removeSelf.m_bIsNeedCleanUp);
-        }
-
-        private void InitCCRemoveSelf(bool isNeedCleanUp)
-        {
-            m_bIsNeedCleanUp = isNeedCleanUp;
+            IsNeedCleanUp = isNeedCleanUp;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the hide operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCRemoveSelfState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCRemoveSelf(this);
-        }
+		}
 
-        public override void Update(float time)
-        {
-            m_pTarget.RemoveFromParentAndCleanup(m_bIsNeedCleanUp);
-        }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRemoveSelf(this);
+			return new CCRemoveSelf(IsNeedCleanUp);
         }
     }
+
+	public class CCRemoveSelfState : CCActionInstantState
+	{
+		protected bool IsNeedCleanUp { get; set; }
+
+		public CCRemoveSelfState (CCRemoveSelf action, CCNode target)
+			: base(action, target)
+		{	
+			IsNeedCleanUp = action.IsNeedCleanUp;
+		}
+
+		public override void Update(float time)
+		{
+			Target.RemoveFromParentAndCleanup(IsNeedCleanUp);
+		}
+
+	}
+
 }
