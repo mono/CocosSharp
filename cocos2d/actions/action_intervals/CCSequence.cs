@@ -3,57 +3,58 @@ using System.Linq;
 
 namespace CocosSharp
 {
-    public class CCSequence : CCActionInterval
-    {
-        protected CCFiniteTimeAction[] actionSequences = new CCFiniteTimeAction[2];
+	public class CCSequence : CCActionInterval
+	{
+		public CCFiniteTimeAction[] Actions { get; private set; }
 
-        protected internal virtual CCFiniteTimeAction[]  Actions { get; private set; }
+		#region Constructors
 
+		public CCSequence(CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base(action1.Duration + action2.Duration)
+		{
+			Actions = new CCFiniteTimeAction[2];
+			InitCCSequence (action1, action2);
+		}
 
-        #region Constructors
+		public CCSequence(params CCFiniteTimeAction[] actions) : base()
+		{
 
-        public CCSequence(params CCFiniteTimeAction[] actions) : base()
-        {
-            // Check to make sure we are immutable after creation
-            Debug.Assert((actionSequences.Length == 2) || 
-                (actionSequences[0] == null && actionSequences[1] == null), 
-                "Can not change the actions after creation, you must create a new CCSequence object");
+			Actions = new CCFiniteTimeAction[2];
 
-            Actions = actions;
+			var prev = actions[0];
 
-            if (actions.Count() > 0) 
-            {
-                var prev = actions[0];
+			// Can't call base(duration) because we need to calculate duration here
+			float combinedDuration = actions.Sum(action => action.Duration);
+			Duration = combinedDuration;
 
-                // Can't call base(duration) because we need to calculate duration here
-                float combinedDuration = actions.Sum (act => act.Duration);
-                Duration = combinedDuration;
+			if (actions.Length == 1)
+			{
+				InitCCSequence(prev, new CCExtraAction());
+			}
+			else
+			{
+				// Basically what we are doing here is creating a whole bunch of 
+				// nested CCSequences from the actions.
+				for (int i = 1; i < actions.Length - 1; i++)
+				{
+					prev = new CCSequence(prev, actions[i]);
+				}
 
-                if (actions.Length == 1) {
-                    InitCCSequence (prev, new CCExtraAction ());
-                } else {
-                    // Basically what we are doing here is creating a whole bunch of 
-                    // nested CCSequences from the actions.
-                    for (int i = 1; i < actions.Length - 1; i++) {
-                        prev = new CCSequence (prev, actions[i]);
-                    }
+				InitCCSequence(prev, actions[actions.Length - 1]);
+			}
 
-                    InitCCSequence (prev, actions[actions.Length - 1]);
-                }
-            }
-        }
+		}
 
-        private void InitCCSequence(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
-        {
-            Debug.Assert(actionOne != null);
-            Debug.Assert(actionTwo != null);
+		private void InitCCSequence(CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
+		{
+			Debug.Assert(actionOne != null);
+			Debug.Assert(actionTwo != null);
 
-            actionSequences[0] = actionOne;
-            actionSequences[1] = actionTwo;
+			Actions[0] = actionOne;
+			Actions[1] = actionTwo;
 
-        }
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
@@ -67,11 +68,11 @@ namespace CocosSharp
 			get { return true; }
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCSequence(actionSequences[1].Reverse(), actionSequences[0].Reverse());
-        }
-    }
+		public override CCFiniteTimeAction Reverse()
+		{
+			return new CCSequence(Actions[1].Reverse(), Actions[0].Reverse());
+		}
+	}
 
 	public class CCSequenceState : CCActionIntervalState
 	{
