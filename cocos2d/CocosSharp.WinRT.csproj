@@ -969,8 +969,8 @@
     <Compile Include=".\predefine\CCTouch.cs">
       <LogicalName>predefine\CCTouch</LogicalName>
     </Compile>
-    <Compile Include=".\predefine\ccTypes.cs">
-      <LogicalName>predefine\ccTypes</LogicalName>
+    <Compile Include=".\predefine\CCTypes.cs">
+      <LogicalName>predefine\CCTypes</LogicalName>
     </Compile>
     <Compile Include=".\Properties\AssemblyInfo.cs">
       <LogicalName>Properties\AssemblyInfo</LogicalName>
