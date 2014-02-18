@@ -43,13 +43,11 @@ namespace CocosSharp
             int i, j;
 
             CCPoint vect = CCPoint.Zero;
-            CCGridSize gridSize = action.GridSize;
 
-            for (i = 0; i < gridSize.X + 1; ++i)
+            for (i = 0; i < CachedGridSize.X + 1; ++i)
             {
-                for (j = 0; j < gridSize.Y + 1; ++j)
+                for (j = 0; j < CachedGridSize.Y + 1; ++j)
                 {
-
                     CCVertex3F v = OriginalVertex(i, j);
                     vect = action.Position - new CCPoint(v.X, v.Y);
 

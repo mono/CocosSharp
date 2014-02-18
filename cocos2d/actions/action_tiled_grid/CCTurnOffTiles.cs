@@ -91,12 +91,11 @@ namespace CocosSharp
             int i, l, t;
 
             l = (int) (time * TilesCount);
-            CCGridSize gridSize = GridAction.GridSize;
 
             for (i = 0; i < TilesCount; i++)
             {
                 t = TilesOrder[i];
-                var tilePos = new CCGridSize(t / gridSize.Y, t % gridSize.Y);
+                var tilePos = new CCGridSize(t / CachedGridSize.Y, t % CachedGridSize.Y);
 
                 if (i < l)
                 {

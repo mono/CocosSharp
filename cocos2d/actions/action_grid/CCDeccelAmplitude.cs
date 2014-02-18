@@ -29,18 +29,13 @@ namespace CocosSharp
 
     public class CCDeccelAmplitudeState : CCAccelAmplitudeState
     {
-        protected CCDeccelAmplitude DeccelAmplitudeAction
-        {
-            get { return Action as CCDeccelAmplitude; }
-        }
-
         public CCDeccelAmplitudeState(CCDeccelAmplitude action, CCNode target) : base(action, target)
         {
         }
 
         public override void Update(float time)
         {
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow((1 - time), DeccelAmplitudeAction.Rate);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow((1 - time), CachedRate);
             OtherActionState.Update(time);
         }
     }

@@ -32,36 +32,31 @@ namespace CocosSharp
 
     public class CCLiquidState : CCGrid3DActionState
     {
-        protected CCLiquid LiquidAction 
-        { 
-            get { return Action as CCLiquid; } 
-        }
+        public float CachedAmplitude { get; private set; }
+        public int CachedWaves { get; private set; }
+
 
         public CCLiquidState(CCLiquid action, CCNode target) : base(action, target)
         {
+            CachedAmplitude = action.Amplitude;
+            CachedWaves = action.Waves;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            CCLiquid liquidAction = LiquidAction;
-            CCGridSize gridSize = liquidAction.GridSize;
-
-            for (i = 1; i < gridSize.X; ++i)
+            for (i = 1; i < CachedGridSize.X; ++i)
             {
-                for (j = 1; j < gridSize.Y; ++j)
+                for (j = 1; j < CachedGridSize.Y; ++j)
                 {
-                    int waves = liquidAction.Waves;
-                    float amplitude = liquidAction.Amplitude;
-                    float ampRate = StateAmplitudeRate;
                     CCVertex3F v = OriginalVertex(i, j);
                     v.X = (v.X +
-                        ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.X * .01f) * amplitude *
-                            ampRate));
+                        ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.X * .01f) * CachedAmplitude *
+                            StateAmplitudeRate));
                     v.Y = (v.Y +
-                        ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.Y * .01f) * amplitude *
-                            ampRate));
+                        ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.Y * .01f) * CachedAmplitude *
+                            StateAmplitudeRate));
                     SetVertex(i, j, ref v);
                 }
             }

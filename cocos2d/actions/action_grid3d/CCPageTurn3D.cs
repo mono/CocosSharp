@@ -29,11 +29,6 @@ namespace CocosSharp
 
     public class CCPageTurn3DState : CCGrid3DActionState
     {
-        protected CCPageTurn3D PageTurn3DAction
-        { 
-            get { return Action as CCPageTurn3D; } 
-        }
-
         public CCPageTurn3DState(CCPageTurn3D action, CCNode target) : base(action, target)
         {
         }
@@ -45,17 +40,14 @@ namespace CocosSharp
             float ay = -100 - deltaAy;
 
             float deltaTheta = -MathHelper.PiOver2 * (float) Math.Sqrt(time);
-            float theta = /*            0.01f */ +MathHelper.PiOver2 + deltaTheta;
+            float theta = MathHelper.PiOver2 + deltaTheta;
 
             var sinTheta = (float) Math.Sin(theta);
             var cosTheta = (float) Math.Cos(theta);
 
-            CCPageTurn3D pageTurn3DAction = PageTurn3DAction;
-            CCGridSize gridSize = pageTurn3DAction.GridSize;
-
-            for (int i = 0; i <= gridSize.X; ++i)
+            for (int i = 0; i <= CachedGridSize.X; ++i)
             {
-                for (int j = 0; j <= gridSize.Y; ++j)
+                for (int j = 0; j <= CachedGridSize.Y; ++j)
                 {
                     // Get original vertex
                     CCVertex3F p = OriginalVertex(i, j);

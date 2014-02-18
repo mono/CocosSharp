@@ -29,11 +29,6 @@ namespace CocosSharp
 
     public class CCAccelDeccelAmplitudeState : CCAccelAmplitudeState
     {
-        protected CCAccelDeccelAmplitude AccelDeccelAmplitudeAction
-        {
-            get { return Action as CCAccelDeccelAmplitude; }
-        }
-
         public CCAccelDeccelAmplitudeState(CCAccelDeccelAmplitude action, CCNode target) : base(action, target)
         {
         }
@@ -48,7 +43,7 @@ namespace CocosSharp
                 f = 1 - f;
             }
 
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow(f, AccelDeccelAmplitudeAction.Rate);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow(f, CachedRate);
         }
     }
 

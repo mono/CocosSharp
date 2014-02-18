@@ -31,40 +31,36 @@ namespace CocosSharp
 
     public class CCWavesState : CCLiquidState
     {
-        protected CCWaves WavesAction
-        { 
-            get { return Action as CCWaves; } 
-        }
+        protected bool CachedVertical { get; private set; }
+        protected bool CachedHorizontal { get; private set; }
 
         public CCWavesState(CCWaves action, CCNode target) : base(action, target)
         {
+            CachedVertical = action.Vertical;
+            CachedHorizontal = action.Horizontal;
         }
 
         public override void Update(float time)
         {
             int i, j;
-            CCWaves wavesAction = WavesAction;
-            CCGridSize gridSize = wavesAction.GridSize;
-            int waves = wavesAction.Waves;
-            float amplitude = wavesAction.Amplitude;
             float ampRate = StateAmplitudeRate;
 
-            for (i = 0; i < gridSize.X + 1; ++i)
+            for (i = 0; i < CachedGridSize.X + 1; ++i)
             {
-                for (j = 0; j < gridSize.Y + 1; ++j)
+                for (j = 0; j < CachedGridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
 
-                    if (wavesAction.Vertical)
+                    if (CachedVertical)
                     {
                         v.X = (v.X +
-                            ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.Y * .01f) * amplitude * ampRate));
+                            ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.Y * .01f) * CachedAmplitude * ampRate));
                     }
 
-                    if (wavesAction.Horizontal)
+                    if (CachedHorizontal)
                     {
                         v.Y = (v.Y +
-                            ((float) Math.Sin(time * (float) Math.PI * waves * 2 + v.X * .01f) * amplitude * ampRate));
+                            ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.X * .01f) * CachedAmplitude * ampRate));
                     }
 
                     SetVertex(i, j, ref v);

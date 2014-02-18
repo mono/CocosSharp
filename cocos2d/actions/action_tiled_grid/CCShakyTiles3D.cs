@@ -60,47 +60,44 @@ namespace CocosSharp
 
     public class CCShakyTiles3DState : CCTiledGrid3DActionState
     {
-        protected CCShakyTiles3D ShakyTiles3DAction 
-        { 
-            get { return Action as CCShakyTiles3D; } 
-        }
+        protected bool CachedShakeZ { get; private set; }
+        protected int CachedRange { get; private set; }
 
         public CCShakyTiles3DState(CCShakyTiles3D action, CCNode target) : base(action, target)
         {
+            CachedShakeZ = action.ShakeZ;
+            CachedRange = action.Range;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            CCShakyTiles3D shakyTiles3DAction = ShakyTiles3DAction;
-            CCGridSize gridSize = shakyTiles3DAction.GridSize;
-            int range = shakyTiles3DAction.Range;
-            var doubleRange = range * 2;
+            var doubleRange = CachedRange * 2;
 
-            for (i = 0; i < gridSize.X; ++i)
+            for (i = 0; i < CachedGridSize.X; ++i)
             {
-                for (j = 0; j < gridSize.Y; ++j)
+                for (j = 0; j < CachedGridSize.Y; ++j)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
                     // X
-                    coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - range;
-                    coords.BottomRight.X += (CCRandom.Next() % doubleRange) - range;
-                    coords.TopLeft.X += (CCRandom.Next() % doubleRange) - range;
-                    coords.TopRight.X += (CCRandom.Next() % doubleRange) - range;
+                    coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.BottomRight.X += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.TopLeft.X += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.TopRight.X += (CCRandom.Next() % doubleRange) - CachedRange;
 
                     // Y
-                    coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - range;
-                    coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - range;
-                    coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - range;
-                    coords.TopRight.Y += (CCRandom.Next() % doubleRange) - range;
+                    coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - CachedRange;
+                    coords.TopRight.Y += (CCRandom.Next() % doubleRange) - CachedRange;
 
-                    if (shakyTiles3DAction.ShakeZ)
+                    if (CachedShakeZ)
                     {
-                        coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - range;
-                        coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - range;
-                        coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - range;
-                        coords.TopRight.Z += (CCRandom.Next() % doubleRange) - range;
+                        coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - CachedRange;
+                        coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - CachedRange;
+                        coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - CachedRange;
+                        coords.TopRight.Z += (CCRandom.Next() % doubleRange) - CachedRange;
                     }
 
                     SetTile(i, j, ref coords);

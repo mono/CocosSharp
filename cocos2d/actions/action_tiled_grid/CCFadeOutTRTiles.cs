@@ -71,13 +71,12 @@ namespace CocosSharp
         public override void Update(float time)
         {
             int i, j;
-            CCGridSize gridSize = GridAction.GridSize;
             CCGridSize newGrid;
 
-            for (i = 0; i < gridSize.X; ++i)
+            for (i = 0; i < CachedGridSize.X; ++i)
             {
                 newGrid.X = i;
-                for (j = 0; j < gridSize.Y; ++j)
+                for (j = 0; j < CachedGridSize.Y; ++j)
                 {
                     newGrid.Y = j;
                     float distance = TestFunc(newGrid, time);
@@ -102,9 +101,8 @@ namespace CocosSharp
 
         public virtual float TestFunc(CCGridSize pos, float time)
         {
-            CCGridSize gridSize = GridAction.GridSize;
-            float px = gridSize.X * time;
-            float py = gridSize.Y * time;
+            float px = CachedGridSize.X * time;
+            float py = CachedGridSize.Y * time;
             if ((px + py) == 0.0f)
             {
                 return 1.0f;

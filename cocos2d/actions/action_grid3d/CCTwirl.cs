@@ -4,7 +4,7 @@ namespace CocosSharp
 {
     public class CCTwirl : CCGrid3DAction
     {
-        private CCPoint position;
+        CCPoint position;
 
         public float Amplitude { get; private set; }
         public override float AmplitudeRate { get; protected set; }
@@ -49,37 +49,36 @@ namespace CocosSharp
 
     public class CCTwirlState : CCGrid3DActionState
     {
-        protected CCTwirl TwirlAction
-        { 
-            get { return Action as CCTwirl; } 
-        }
+        protected float CachedAmplitude { get; private set; }
+        protected int CachedTwirls { get; private set; }
+        protected CCPoint CachedPositionInPixels { get; private set; }
 
         public CCTwirlState(CCTwirl action, CCNode target) : base(action, target)
         {
+            CachedAmplitude = action.Amplitude;
+            CachedTwirls = action.Twirls;
+            CachedPositionInPixels = action.PositionInPixels;
         }
 
         public override void Update(float time)
         {
             int i, j;
-            CCTwirl twirlAction = TwirlAction;
-            CCGridSize gridSize = twirlAction.GridSize;
             CCPoint avg = CCPoint.Zero;
-            CCPoint c = twirlAction.PositionInPixels;
-            float amplitude = twirlAction.Amplitude;
-            int twirls = twirlAction.Twirls;
+            CCPoint c = CachedPositionInPixels;
+            int twirls = CachedTwirls;
 
-            for (i = 0; i < (gridSize.X + 1); ++i)
+            for (i = 0; i < (CachedGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (gridSize.Y + 1); ++j)
+                for (j = 0; j < (CachedGridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(i,j);
 
-                    avg.X = i - (gridSize.X / 2.0f);
-                    avg.Y = j - (gridSize.Y / 2.0f);
+                    avg.X = i - (CachedGridSize.X / 2.0f);
+                    avg.Y = j - (CachedGridSize.Y / 2.0f);
 
                     var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
-                    float amp = 0.1f * amplitude * StateAmplitudeRate;
+                    float amp = 0.1f * CachedAmplitude * StateAmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * twirls * 2) * amp;
 
                     float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);
