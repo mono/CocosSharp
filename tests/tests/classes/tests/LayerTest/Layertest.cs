@@ -111,7 +111,7 @@ namespace tests
         {
             for (int i = 0; i < 3; i++)
             {
-                CCLayer l = new CCLayerColor();
+				CCLayer l = new CCLayerColor(new CCColor4B(0,255,0));
                 CCSprite img = null;
                 switch (i)
                 {
@@ -127,13 +127,14 @@ namespace tests
                 }
                 img.AnchorPoint = CCPoint.Zero;
                 img.Position = CCPoint.Zero;
+				l.ContentSize = img.ContentSize;
                 l.AddChild(img);
                 l.Position = new CCPoint(128f, 128f);
                 child.AddLayer(l);
             }
-            child.InAction = new CCFadeIn(1);
+			child.InAction = new CCFadeIn(1);
             AddChild(child);
-            Schedule(new Action<float>(AutoMultiplex), 3f);
+			Schedule(new Action<float>(AutoMultiplex), 3f);
         }
 
         public override string title()
@@ -147,9 +148,19 @@ namespace tests
         }
 
         private Random rand = new Random();
+		private int lastRandom = 0;
+
         private void AutoMultiplex(float dt)
         {
-            child.SwitchTo(rand.Next(3));
+			//CCLog.Log ("Switched");
+			var newRand = -1;
+			// make sure we always change to a new one
+			do {
+				newRand = rand.Next (3);
+			} while (lastRandom == newRand);
+			lastRandom = newRand;
+
+			child.SwitchTo(newRand);
         }
     }
 }

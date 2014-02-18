@@ -45,17 +45,17 @@ namespace tests
         {
             switch (nIndex)
             {
-			case 36: return new Sprite1();
+				case 0: return new Sprite1();
                 case 1: return new SpriteBatchNode1();
                 case 2: return new SpriteFrameTest();
                 case 3: return new SpriteFrameAliasNameTest();
                 case 4: return new SpriteAnchorPoint();
-			case 5: return new SpriteBatchNodeAnchorPoint();
+				case 5: return new SpriteBatchNodeAnchorPoint();
                 case 6: return new SpriteOffsetAnchorRotation();
                 case 7: return new SpriteBatchNodeOffsetAnchorRotation();
                 case 8: return new SpriteOffsetAnchorScale();
                 case 9: return new SpriteBatchNodeOffsetAnchorScale();
-			case 10: return new SpriteAnimationSplit();
+				case 10: return new SpriteAnimationSplit();
                 case 11: return new SpriteColorOpacity();
                 case 12: return new SpriteBatchNodeColorOpacity();
                 case 13: return new SpriteZOrder();
@@ -66,11 +66,11 @@ namespace tests
                 case 18: return new SpriteBatchNodeReorderIssue767();
                 case 19: return new SpriteZVertex();
                 case 20: return new SpriteBatchNodeZVertex();
-			case 21: return new Sprite6();
+				case 21: return new Sprite6();
                 case 22: return new SpriteFlip();
                 case 23: return new SpriteBatchNodeFlip();
-			case 24: return new SpriteAliased();
-			case 25: return new SpriteBatchNodeAliased();
+				case 24: return new SpriteAliased();
+				case 25: return new SpriteBatchNodeAliased();
                 case 26: return new SpriteNewTexture();
                 case 27: return new SpriteBatchNodeNewTexture();
                 case 28: return new SpriteHybrid();
@@ -80,9 +80,9 @@ namespace tests
                 case 32: return new SpriteChildrenVisibilityIssue665();
                 case 33: return new SpriteChildrenAnchorPoint();
                 case 34: return new SpriteBatchNodeChildrenAnchorPoint();
-			case 35: return new SpriteBatchNodeChildrenScale();
-			case 0: return new SpriteChildrenChildren();
-			case 37: return new SpriteBatchNodeChildrenChildren();
+				case 35: return new SpriteBatchNodeChildrenScale();
+				case 36: return new SpriteChildrenChildren();
+				case 37: return new SpriteBatchNodeChildrenChildren();
                 case 38: return new SpriteNilTexture();
                 case 39: return new SpriteSubclass();
                 case 40: return new AnimationCache();

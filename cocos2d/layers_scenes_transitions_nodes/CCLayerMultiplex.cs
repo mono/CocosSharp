@@ -291,7 +291,7 @@ namespace CocosSharp
                     {
                         outLayer.RunAction(
                             new CCSequence(
-                                (CCFiniteTimeAction)m_OutAction.Copy(),
+								(CCFiniteTimeAction)m_OutAction,
                                 new CCCallFunc(() => RemoveChild(outLayer, true))
                                 )
                             );
@@ -329,7 +329,7 @@ namespace CocosSharp
             // Run the in-action on the new layer
             if (m_InAction != null)
             {
-                m_pLayers[n].RunAction(m_InAction.Copy());
+                m_pLayers[n].RunAction(m_InAction);
             }
             return (m_pLayers[m_nEnabledLayer]);
         }
