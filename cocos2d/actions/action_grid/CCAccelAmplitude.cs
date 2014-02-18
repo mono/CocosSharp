@@ -41,22 +41,18 @@ namespace CocosSharp
 
     public class CCAccelAmplitudeState : CCActionIntervalState
     {
+        protected float CachedRate { get; private set; }
         protected CCActionIntervalState OtherActionState { get; private set; }
-
-        protected CCAccelAmplitude AccelAmplitudeAction
-        {
-            get { return Action as CCAccelAmplitude; }
-        }
             
         public CCAccelAmplitudeState(CCAccelAmplitude action, CCNode target) : base(action, target)
         {
+            CachedRate = action.Rate;
             OtherActionState = (CCActionIntervalState)action.OtherAction.StartAction(target);
         }
 
         public override void Update(float time)
         {
-            CCAccelAmplitude ampAction = AccelAmplitudeAction;
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow(time, ampAction.Rate);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow(time, CachedRate);
             OtherActionState.Update(time);
         }
     }

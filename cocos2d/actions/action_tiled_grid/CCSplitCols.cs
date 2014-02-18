@@ -70,8 +70,7 @@ namespace CocosSharp
         {
             int i;
 
-            CCGridSize gridSize = GridAction.GridSize;
-            for (i = 0; i < gridSize.X; ++i)
+            for (i = 0; i < CachedGridSize.X; ++i)
             {
                 CCQuad3 coords = OriginalTile(i, 0);
                 float direction = 1;

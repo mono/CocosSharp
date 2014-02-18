@@ -38,8 +38,7 @@ namespace CocosSharp
         {
             get
             {
-                CCGridSize gridSize = GridAction.GridSize;
-                tiledGrid3D = new CCTiledGrid3D(gridSize);
+                tiledGrid3D = new CCTiledGrid3D(CachedGridSize);
                 return tiledGrid3D;
             }
             protected set

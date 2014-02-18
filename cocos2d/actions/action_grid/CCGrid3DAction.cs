@@ -34,21 +34,19 @@ namespace CocosSharp
 
     public class CCGrid3DActionState : CCGridActionState
     {
-        private CCGrid3D grid3D;
+        CCGrid3D grid3D;
 
         public override CCGridBase Grid
         {
             get
             {
-                CCGridSize gridSize = GridAction.GridSize;
-
                 if (Target != null && !Target.ContentSize.Equals(CCSize.Zero))
                 {
-                    grid3D = new CCGrid3D(gridSize, Target.ContentSize.PointsToPixels());
+                    grid3D = new CCGrid3D(CachedGridSize, Target.ContentSize.PointsToPixels());
                 }
                 else
                 {
-                    grid3D = new CCGrid3D(gridSize);
+                    grid3D = new CCGrid3D(CachedGridSize);
                 }
 
                 return grid3D;

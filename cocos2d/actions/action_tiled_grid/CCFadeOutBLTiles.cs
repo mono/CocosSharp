@@ -65,8 +65,7 @@ namespace CocosSharp
 
         public override float TestFunc(CCGridSize pos, float time)
         {
-            CCGridSize gridSize = GridAction.GridSize;
-            var n = new CCPoint((gridSize.X * (1.0f - time)), (gridSize.Y * (1.0f - time)));
+            var n = new CCPoint((CachedGridSize.X * (1.0f - time)), (CachedGridSize.Y * (1.0f - time)));
             if ((pos.X + pos.Y) == 0)
             {
                 return 1.0f;

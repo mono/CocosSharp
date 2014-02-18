@@ -74,32 +74,27 @@ namespace CocosSharp
 
     public class CCWavesTiles3DState : CCTiledGrid3DActionState
     {
-        protected CCWavesTiles3D WavesTiles3DAction 
-        { 
-            get { return Action as CCWavesTiles3D; } 
-        }
+        protected float CachedAmplitude { get; private set; }
+        protected int CachedWaves { get; private set; }
 
         public CCWavesTiles3DState(CCWavesTiles3D action, CCNode target) : base(action, target)
         {
+            CachedAmplitude = action.Amplitude;
+            CachedWaves = action.Waves;
         }
 
         public override void Update(float time)
         {
             int i, j;
-            CCWavesTiles3D wavesTiles3DAction = WavesTiles3DAction;
-            CCGridSize gridSize = wavesTiles3DAction.GridSize;
-            int waves = wavesTiles3DAction.Waves;
-            float amplitude = wavesTiles3DAction.Amplitude;
-            float ampRate = StateAmplitudeRate;
 
-            for (i = 0; i < gridSize.X; i++)
+            for (i = 0; i < CachedGridSize.X; i++)
             {
-                for (j = 0; j < gridSize.Y; j++)
+                for (j = 0; j < CachedGridSize.Y; j++)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
 
-                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * waves * 2 +
-                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * amplitude * ampRate);
+                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 +
+                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * CachedAmplitude * StateAmplitudeRate);
                     coords.BottomRight.Z = coords.BottomLeft.Z;
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;

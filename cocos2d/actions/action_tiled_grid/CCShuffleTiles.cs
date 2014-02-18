@@ -69,14 +69,9 @@ namespace CocosSharp
         protected CCTile[] Tiles { get; private set; }
         protected int[] TilesOrder { get; private set; }
 
-        protected CCShuffleTiles ShuffleTilesAction
-        { 
-            get { return Action as CCShuffleTiles; } 
-        }
 
         public CCShuffleTilesState(CCShuffleTiles action, CCNode target) : base(action, target)
         {
-
             CCGridSize gridSize = action.GridSize;
             TilesCount = gridSize.X * gridSize.Y;
             int[] shuffledTilesOrder = Enumerable.Range (0, TilesCount).ToArray();
@@ -111,12 +106,11 @@ namespace CocosSharp
             
         public override void Update(float time)
         {
-            CCGridSize gridSize = GridAction.GridSize;
             int i, j, f = 0;
 
-            for (i = 0; i < gridSize.X; ++i)
+            for (i = 0; i < CachedGridSize.X; ++i)
             {
-                for (j = 0; j < gridSize.Y; ++j)
+                for (j = 0; j < CachedGridSize.Y; ++j)
                 {
                     CCTile item = Tiles[f];
                     item.Position = new CCPoint((item.Delta.X * time), (item.Delta.Y * time));
@@ -144,28 +138,26 @@ namespace CocosSharp
 
         protected CCGridSize GetDelta(CCGridSize pos)
         {
-            CCGridSize gridSize = GridAction.GridSize;
             var pos2 = CCPoint.Zero;
 
-            int idx = pos.X * gridSize.Y + pos.Y;
+            int idx = pos.X * CachedGridSize.Y + pos.Y;
             int tileOrder = TilesOrder[idx];
 
-            pos2.X = (tileOrder / gridSize.Y);
-            pos2.Y = (tileOrder % gridSize.Y);
+            pos2.X = (tileOrder / CachedGridSize.Y);
+            pos2.Y = (tileOrder % CachedGridSize.Y);
 
             return new CCGridSize((int) (pos2.X - pos.X), (int) (pos2.Y - pos.Y));
         }
 
         protected CCGridSize GetDelta(int x, int y)
         {
-            CCGridSize gridSize = GridAction.GridSize;
             var pos2 = CCPoint.Zero;
 
-            int idx = x * gridSize.Y + y;
+            int idx = x * CachedGridSize.Y + y;
             int tileOrder = TilesOrder[idx];
 
-            pos2.X = (tileOrder / gridSize.Y);
-            pos2.Y = (tileOrder % gridSize.Y);
+            pos2.X = (tileOrder / CachedGridSize.Y);
+            pos2.Y = (tileOrder % CachedGridSize.Y);
 
             return new CCGridSize((int) (pos2.X - x), (int) (pos2.Y - y));
         }

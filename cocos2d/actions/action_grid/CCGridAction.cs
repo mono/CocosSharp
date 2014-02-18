@@ -47,27 +47,24 @@ namespace CocosSharp
 
     public class CCGridActionState : CCActionIntervalState
     {
+        protected CCGridSize CachedGridSize { get; private set; }
+
         public virtual CCGridBase Grid 
         { 
             get { return null; } 
             protected set { } 
         }
 
-        protected CCGridAction GridAction
-        {
-            get { return Action as CCGridAction; }
-        }
-
         public CCGridActionState(CCGridAction action, CCNode target) : base(action, target)
         {
-            CCGridSize gridSize = action.GridSize;
+            CachedGridSize = action.GridSize;
             CCGridBase targetGrid = Target.Grid;
 
             if (targetGrid != null && targetGrid.ReuseGrid > 0)
             {
                 Grid = targetGrid;
 
-                if (targetGrid.Active && targetGrid.GridSize.X == gridSize.X && targetGrid.GridSize.Y == gridSize.Y)
+                if (targetGrid.Active && targetGrid.GridSize.X == CachedGridSize.X && targetGrid.GridSize.Y == CachedGridSize.Y)
                 {
                     targetGrid.Reuse();
                 }

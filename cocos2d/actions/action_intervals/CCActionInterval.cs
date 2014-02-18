@@ -171,7 +171,7 @@ namespace CocosSharp
 		{ 
 			m_elapsed = 0.0f;
 			m_bFirstTick = true;
-            StateAmplitudeRate = action.AmplitudeRate;
+            StateAmplitudeRate = 1.0f;
 		}
 
 		public override void Step(float dt)

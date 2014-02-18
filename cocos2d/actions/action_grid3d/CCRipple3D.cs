@@ -37,40 +37,34 @@ namespace CocosSharp
 
     public class CCRipple3DState : CCLiquidState
     {
-        protected CCRipple3D Ripple3DAction
-        { 
-            get { return Action as CCRipple3D; } 
-        }
+        protected CCPoint CachedPosition { get; private set; }
+        protected float CachedRadius { get; private set; }
 
         public CCRipple3DState(CCRipple3D action, CCNode target) : base(action, target)
         {
+            CachedPosition = action.Position;
+            CachedRadius = action.Radius;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            CCRipple3D ripple3DAction = Ripple3DAction;
-            CCGridSize gridSize = ripple3DAction.GridSize;
-            int waves = ripple3DAction.Waves;
-            float amplitude = ripple3DAction.Amplitude;
-            float radius = ripple3DAction.Radius;
-
-            for (i = 0; i < (gridSize.X + 1); ++i)
+            for (i = 0; i < (CachedGridSize.X + 1); ++i)
             {
-                for (j = 0; j < (gridSize.Y + 1); ++j)
+                for (j = 0; j < (CachedGridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
 
-                    CCPoint diff = ripple3DAction.Position - new CCPoint(v.X, v.Y);
+                    CCPoint diff = CachedPosition- new CCPoint(v.X, v.Y);
                     float r = diff.Length;
 
-                    if (r < radius)
+                    if (r < CachedRadius)
                     {
-                        r = radius - r;
-                        float r1 = r / radius;
+                        r = CachedRadius - r;
+                        float r1 = r / CachedRadius;
                         float rate = r1 * r1;
-                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * waves * 2 + r * 0.1f) * amplitude *
+                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * CachedWaves * 2 + r * 0.1f) * CachedAmplitude *
                             StateAmplitudeRate * rate);
                     }
 

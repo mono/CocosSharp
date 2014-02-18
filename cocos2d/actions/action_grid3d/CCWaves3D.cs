@@ -25,12 +25,6 @@ namespace CocosSharp
 
     public class CCWaves3DState : CCLiquidState
     {
-
-        protected CCWaves3D Waves3DAction
-        { 
-            get { return Action as CCWaves3D; } 
-        }
-
         public CCWaves3DState(CCWaves3D action, CCNode target) : base(action, target)
         {
         }
@@ -38,17 +32,13 @@ namespace CocosSharp
         public override void Update(float time)
         {
             int i, j;
-            CCWaves3D waves3DAction = Waves3DAction;
-            CCGridSize gridSize = waves3DAction.GridSize;
-            int waves = waves3DAction.Waves;
-			float amplitude = waves3DAction.Amplitude;
 
-			for (i = 0; i < gridSize.X + 1; ++i)
+            for (i = 0; i < CachedGridSize.X + 1; ++i)
             {
-                for (j = 0; j < gridSize.Y + 1; ++j)
+                for (j = 0; j < CachedGridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    v.Z += ((float) Math.Sin((float) Math.PI * time * waves * 2 + (v.Y + v.X) * .01f) * amplitude *
+                    v.Z += ((float) Math.Sin((float) Math.PI * time * CachedWaves * 2 + (v.Y + v.X) * .01f) * CachedAmplitude *
                         StateAmplitudeRate);
                     SetVertex(i, j, ref v);
                 }
