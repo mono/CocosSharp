@@ -40,39 +40,36 @@ namespace tests
             CCMenuItemFont.FontName = "arial";
             CCMenuItemFont.FontSize = 28;
 
-            CCLabelBMFont label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel item1 = new CCMenuItemLabel(label, this.menuCallback2);
-            CCMenuItemFont item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
+			var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
+			var item1 = new CCMenuItemLabel(label, this.menuCallback2);
+			var item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
 
-            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
-            CCMenuItemSprite item3 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
+			var item3 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
+			var menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
             item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);
             item3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 100);
-            CCJumpBy jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
-            item2.RunAction(new CCRepeatForever (
-                                        (CCActionInterval)(new CCSequence(jump, jump.Reverse()))
-                                        )
-                            );
-            CCActionInterval spin1 = new CCRotateBy (3, 360);
-            CCActionInterval spin2 = (CCActionInterval)(spin1.Copy());
-            CCActionInterval spin3 = (CCActionInterval)(spin1.Copy());
 
-            item1.RunAction(new CCRepeatForever (spin1));
-            item2.RunAction(new CCRepeatForever (spin2));
-            item3.RunAction(new CCRepeatForever (spin3));
+			var jump = new CCJumpBy (3, new CCPoint(400, 0), 50, 4);
+			item2.RepeatForever(jump, jump.Reverse());
+
+			var spin1 = new CCRotateBy (3, 360);
+
+			item1.RepeatForever(spin1);
+			item2.RepeatForever(spin1);
+			item3.RepeatForever(spin1);
 
             AddChild(menu);
         }
