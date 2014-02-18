@@ -4,59 +4,60 @@ namespace CocosSharp
 {
     public class CCCallFuncO : CCCallFunc
     {
-        private Action<object> m_pCallFuncO;
-        private object m_pObject;
-
-        public object Object
-        {
-            get { return m_pObject; }
-            set { m_pObject = value; }
-        }
-
+		public Action<object> CallFunctionO { get; private set; }
+		public object Object { get; private set; }
 
         #region Constructors
 
         public CCCallFuncO()
         {
-            m_pObject = null;
-            m_pCallFuncO = null;
+            Object = null;
+            CallFunctionO = null;
         }
 
         public CCCallFuncO(Action<object> selector, object pObject) : this()
         {
-            InitCCCallFuncO(selector, pObject);
-        }
-
-        protected CCCallFuncO(CCCallFuncO callFuncO) : base(callFuncO)
-        {
-            InitCCCallFuncO(callFuncO.m_pCallFuncO, callFuncO.m_pObject);
-        }
-
-        private void InitCCCallFuncO(Action<object> selector, object pObject)
-        {
-            m_pObject = pObject;
-            m_pCallFuncO = selector;
+            Object = pObject;
+            CallFunctionO = selector;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the Call Function operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCCallFuncOState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCCallFuncO(this);
-        }
+		}
 
-        public override void Execute()
-        {
-            if (null != m_pCallFuncO)
-            {
-                m_pCallFuncO(m_pObject);
-            }
-
-            //if (CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()) {
-            //    CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()->executeCallFunc0(
-            //            m_scriptFuncName.c_str(), m_pObject);
-            //}
-        }
     }
+
+	public class CCCallFuncOState : CCCallFuncState
+	{
+		protected Action<object> CallFunctionO { get; set; }
+		protected object Object { get; set; }
+
+		public CCCallFuncOState (CCCallFuncO action, CCNode target)
+			: base(action, target)
+		{	
+			CallFunctionO = action.CallFunctionO;
+			Object = action.Object;
+		}
+
+		public override void Execute()
+		{
+			if (null != CallFunctionO)
+			{
+				CallFunctionO(Object);
+			}
+
+			//if (CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()) {
+			//    CCScriptEngineManager::sharedScriptEngineManager()->getScriptEngine()->executeCallFunc0(
+			//            m_scriptFuncName.c_str(), m_pObject);
+			//}
+		}
+	}
 }

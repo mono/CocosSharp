@@ -4,8 +4,7 @@ namespace CocosSharp
 {
     public class CCCallFuncN : CCCallFunc
     {
-        private Action<CCNode> m_pCallFuncN;
-
+		public Action<CCNode> CallFunctionN { get; private set; }
 
         #region Constructors
 
@@ -15,36 +14,44 @@ namespace CocosSharp
 
         public CCCallFuncN(Action<CCNode> selector) : base()
         {
-            InitCCCallFuncN(selector);
-        }
-
-        public CCCallFuncN(CCCallFuncN callFuncN) : base(callFuncN)
-        {
-            InitCCCallFuncN(callFuncN.m_pCallFuncN);
-        }
-
-        private void InitCCCallFuncN(Action<CCNode> selector)
-        {
-            m_pCallFuncN = selector;
+            CallFunctionN = selector;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the Call Function operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCCallFuncNState (this, target);
 
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCCallFuncN(this);
-        }
+		}
 
-        public override void Execute()
-        {
-            if (null != m_pCallFuncN)
-            {
-                m_pCallFuncN(m_pTarget);
-            }
-            //if (m_nScriptHandler) {
-            //    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithobject(m_nScriptHandler, m_pTarget, "CCNode");
-            //}
-        }
     }
+
+	public class CCCallFuncNState : CCCallFuncState
+	{
+
+		protected Action<CCNode> CallFunctionN { get; set; }
+
+		public CCCallFuncNState (CCCallFuncN action, CCNode target)
+			: base(action, target)
+		{	
+			CallFunctionN = action.CallFunctionN;
+		}
+
+		public override void Execute()
+		{
+			if (null != CallFunctionN)
+			{
+				CallFunctionN(Target);
+			}
+			//if (m_nScriptHandler) {
+			//    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithobject(m_nScriptHandler, m_pTarget, "CCNode");
+			//}
+		}
+
+	}
 }

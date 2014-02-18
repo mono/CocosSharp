@@ -4,51 +4,63 @@ namespace CocosSharp
 {
     public class CCCallFunc : CCActionInstant
     {
-        private Action m_pCallFunc;
-        protected string m_scriptFuncName;
-
+		public Action CallFunction { get; private set;}
+		public string ScriptFuncName { get; private set; }
 
         #region Constructors
 
         public CCCallFunc()
         {
-            m_scriptFuncName = "";
-            m_pCallFunc = null;
+			ScriptFuncName = "";
+			CallFunction = null;
         }
 
         public CCCallFunc(Action selector) : base()
         {
-            m_pCallFunc = selector;
-        }
-
-        protected CCCallFunc(CCCallFunc callFunc) : base(callFunc)
-        {
-            m_pCallFunc = callFunc.m_pCallFunc;
-            m_scriptFuncName = callFunc.m_scriptFuncName;
+			CallFunction = selector;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the Call Function operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCCallFuncState (this, target);
 
-        public virtual void Execute()
-        {
-            if (null != m_pCallFunc)
-            {
-                m_pCallFunc();
-            }
-            //if (m_nScriptHandler) {
-            //    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this);
-            //}
-        }
+		}
 
-        public override void Update(float time)
-        {
-            Execute();
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCCallFunc(this);
-        }
     }
+
+	public class CCCallFuncState : CCActionInstantState
+	{
+
+		protected Action CallFunction { get; set;}
+		protected string ScriptFuncName { get; set; }
+
+		public CCCallFuncState (CCCallFunc action, CCNode target)
+			: base(action, target)
+		{	
+			CallFunction = action.CallFunction;
+			ScriptFuncName = action.ScriptFuncName;
+		}
+
+		public virtual void Execute()
+		{
+			if (null != CallFunction)
+			{
+				CallFunction();
+			}
+			//if (m_nScriptHandler) {
+			//    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this);
+			//}
+		}
+
+		public override void Update(float time)
+		{
+			Execute();
+		}
+	}
 }

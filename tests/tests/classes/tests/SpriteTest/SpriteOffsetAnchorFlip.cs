@@ -12,6 +12,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
+			// we only need to define the actions once
 			var flip = new CCFlipY(true);
 			var flip_back = flip.Reverse();
 			var delay = new CCDelayTime (1);
