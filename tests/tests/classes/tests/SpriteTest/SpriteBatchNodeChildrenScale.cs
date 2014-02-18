@@ -16,8 +16,8 @@ namespace tests
 
             CCNode aParent;
             CCSprite sprite1, sprite2;
-            CCActionInterval rot = new CCRotateBy (10, 360);
-            CCAction seq = new CCRepeatForever (rot);
+			var rot = new CCRotateBy (10, 360);
+			var seq = new CCRepeatForever (rot);
 
             //
             // Children + Scale using Sprite
@@ -49,7 +49,7 @@ namespace tests
             sprite1.Position = new CCPoint(3 * s.Width / 4, s.Height / 4);
             sprite1.ScaleX = -0.5f;
             sprite1.ScaleY = 2.0f;
-            sprite1.RunAction((CCAction)(seq.Copy()));
+            sprite1.RunAction(seq);
 
             sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
@@ -69,7 +69,7 @@ namespace tests
             sprite1.Position = (new CCPoint(s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = (1.5f);
             sprite1.ScaleY = -0.5f;
-            sprite1.RunAction((CCAction)(seq.Copy()));
+            sprite1.RunAction(seq);
 
             sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));
@@ -88,7 +88,7 @@ namespace tests
             sprite1.Position = (new CCPoint(3 * s.Width / 4, 2 * s.Height / 3));
             sprite1.ScaleX = 1.5f;
             sprite1.ScaleY = -0.5f;
-            sprite1.RunAction((CCAction)(seq.Copy()));
+            sprite1.RunAction(seq);
 
             sprite2 = new CCSprite("grossinis_sister2.png");
             sprite2.Position = (new CCPoint(50, 0));

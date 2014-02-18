@@ -12,20 +12,20 @@ namespace tests
         {
             // small capacity. Testing resizing.
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
+			var batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
 
-            CCActionInterval rotate = new CCRotateBy (10, 360);
-            CCAction action = new CCRepeatForever (rotate);
+			var rotate = new CCRotateBy (10, 360);
+			var action = new CCRepeatForever (rotate);
             for (int i = 0; i < 3; i++)
             {
-                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85, 121 * 1, 85, 121));
+				var sprite = new CCSprite(batch.Texture, new CCRect(85, 121 * 1, 85, 121));
                 sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
-                CCSprite point = new CCSprite("Images/r1");
+				var point = new CCSprite("Images/r1");
                 point.Scale = 0.25f;
                 point.Position = sprite.Position;
                 AddChild(point, 1);
@@ -45,8 +45,7 @@ namespace tests
 
                 point.Position = sprite.Position;
 
-                CCAction copy = (CCAction)(action.Copy());
-                sprite.RunAction(copy);
+				sprite.RunAction(action);
                 batch.AddChild(sprite, i);
             }
         }

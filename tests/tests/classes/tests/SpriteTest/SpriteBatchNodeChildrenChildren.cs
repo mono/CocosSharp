@@ -10,17 +10,17 @@ namespace tests
     {
         public SpriteBatchNodeChildrenChildren()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/ghosts.plist");
 
             CCSpriteBatchNode aParent;
             CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
-            CCActionInterval rot = new CCRotateBy (10, 360);
-            CCAction seq = new CCRepeatForever (rot);
+			var rot = new CCRotateBy (10, 360);
+			var seq = new CCRepeatForever (rot);
 
-            CCActionInterval rot_back = (CCActionInterval)rot.Reverse();
-            CCAction rot_back_fe = new CCRepeatForever (rot_back);
+			var rot_back = rot.Reverse();
+			var rot_back_fe = new CCRepeatForever (rot_back);
 
             //
             // SpriteBatchNode: 3 levels of children
@@ -33,23 +33,23 @@ namespace tests
             // parent
             l1 = new CCSprite("father.gif");
             l1.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            l1.RunAction((CCAction)(seq.Copy()));
+			l1.RunAction(seq);
             aParent.AddChild(l1);
-            CCSize l1Size = l1.ContentSize;
+			var l1Size = l1.ContentSize;
 
             // child left
             l2a = new CCSprite("sister1.gif");
             l2a.Position = (new CCPoint(-50 + l1Size.Width / 2, 0 + l1Size.Height / 2));
-            l2a.RunAction((CCAction)(rot_back_fe.Copy()));
+			l2a.RunAction(rot_back_fe);
             l1.AddChild(l2a);
-            CCSize l2aSize = l2a.ContentSize;
+			var l2aSize = l2a.ContentSize;
 
             // child right
             l2b = new CCSprite("sister2.gif");
             l2b.Position = (new CCPoint(+50 + l1Size.Width / 2, 0 + l1Size.Height / 2));
-            l2b.RunAction((CCAction)(rot_back_fe.Copy()));
+			l2b.RunAction(rot_back_fe);
             l1.AddChild(l2b);
-            CCSize l2bSize = l2a.ContentSize;
+			var l2bSize = l2a.ContentSize;
 
 
             // child left bottom
