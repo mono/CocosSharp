@@ -2,53 +2,58 @@
 {
     public class CCFadeTo : CCActionInterval
     {
-        protected byte m_fromOpacity;
-        protected byte m_toOpacity;
 
+		public byte ToOpacity { get; private set; }
 
         #region Constructors
 
         public CCFadeTo(float duration, byte opacity) : base(duration)
         {
-            InitCCFaceTo(opacity);
-        }
-
-        protected CCFadeTo(CCFadeTo fadeTo) : base(fadeTo)
-        {
-            InitCCFaceTo(fadeTo.m_toOpacity);
-        }
-
-        private void InitCCFaceTo(byte opacity)
-        {
-                m_toOpacity = opacity;
+			ToOpacity = opacity;
         }
 
         #endregion Constructors
 
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFadeToState (this, target);
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCFadeTo(this);
-        }
+		}
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-
-            var pRGBAProtocol = target as ICCColor;
-            if (pRGBAProtocol != null)
-            {
-                m_fromOpacity = pRGBAProtocol.Opacity;
-            }
-        }
-
-        public override void Update(float time)
-        {
-            var pRGBAProtocol = m_pTarget as ICCColor;
-            if (pRGBAProtocol != null)
-            {
-                pRGBAProtocol.Opacity = (byte) (m_fromOpacity + (m_toOpacity - m_fromOpacity) * time);
-            }
-        }
+		// Take me out later - See comments in CCAction
+		public override bool HasState 
+		{ 
+			get { return true; }
+		}
     }
+
+	public class CCFadeToState : CCActionIntervalState
+	{
+
+		protected byte FromOpacity { get; set; }
+		protected byte ToOpacity { get; set; }
+
+		public CCFadeToState (CCFadeTo action, CCNode target)
+			: base(action, target)
+		{	           
+			ToOpacity = action.ToOpacity;
+
+			var pRGBAProtocol = target as ICCColor;
+			if (pRGBAProtocol != null)
+			{
+				FromOpacity = pRGBAProtocol.Opacity;
+			}
+		}
+
+		public override void Update(float time)
+		{
+			var pRGBAProtocol = Target as ICCColor;
+			if (pRGBAProtocol != null)
+			{
+				pRGBAProtocol.Opacity = (byte) (FromOpacity + (ToOpacity - FromOpacity) * time);
+			}
+		}
+	}
+
+
 }
