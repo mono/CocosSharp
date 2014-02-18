@@ -2,8 +2,7 @@
 {
     public class CCReuseGrid : CCActionInstant
     {
-        protected int m_nTimes;
-
+		public int Times { get; private set; }
 
         #region Constructors
 
@@ -13,20 +12,34 @@
 
         public CCReuseGrid(int times)
         {
-            m_nTimes = times;
+            Times = times;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the reuse grid operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCReuseGridState (this, target);
 
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
+		}
 
-            if (m_pTarget.Grid != null && m_pTarget.Grid.Active)
-            {
-                m_pTarget.Grid.ReuseGrid += m_nTimes;
-            }
-        }
     }
+
+	public class CCReuseGridState : CCActionInstantState
+	{
+		public CCReuseGridState (CCReuseGrid action, CCNode target)
+			: base(action, target)
+		{	
+			CCGridBase grid = Target.Grid;
+			if (grid != null && grid.Active)
+			{
+				grid.ReuseGrid += action.Times;
+			}
+		}
+
+	}
 }
