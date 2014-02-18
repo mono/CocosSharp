@@ -12,18 +12,14 @@ namespace tests
 			var move = new CCJumpBy (5, new CCPoint(380, 0), 100, 4);
             var move_back = move.Reverse();
 
-            /* In cocos2d-iphone, the type of action's target is 'id', so it supports using the instance of 'CCLens3D' as its target.
-                While in cocos2d-x, the target of action only supports CCNode or its subclass,
-                so we make an encapsulation for CCLens3D to achieve that.
-            */
-			var target = new Lens3DTarget(lens);
+            CCLens3DState lensState = _bgNode.RunAction(lens) as CCLens3DState;
 
-			// Please make sure the target has been added to its parent.
-			AddChild(target);
+            var target = new Lens3DTarget(lensState);
 
-			target.AddActions(false, move, move_back);
+            // Please make sure the target has been added to its parent.
+            AddChild(target);
 
-			_bgNode.RunAction(lens);
+            target.AddActions(false, move, move_back);
         }
 
         public override string title()
@@ -35,16 +31,17 @@ namespace tests
 
         private class Lens3DTarget : CCNode
         {
-            private CCLens3D m_pLens3D;
+            CCLens3DState lensState;
 
             public override CCPoint Position
             {
-                get { return m_pLens3D.Position; }
+                get { return lensState.CachedPosition; }
+                set { lensState.CachedPosition = value; }
             }
 
-            public Lens3DTarget (CCLens3D pAction)
+            public Lens3DTarget (CCLens3DState state)
             {
-                m_pLens3D = pAction;
+                lensState = state;
             }
         }
 

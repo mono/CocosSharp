@@ -224,7 +224,7 @@ namespace CocosSharp
             }
         }
 
-		public void AddAction(CCAction action, CCNode target, bool paused = false)
+        public CCActionState AddAction(CCAction action, CCNode target, bool paused = false)
         {
             Debug.Assert(action != null);
             Debug.Assert(target != null);
@@ -243,13 +243,17 @@ namespace CocosSharp
             Debug.Assert(!element.Actions.Contains(action));
             element.Actions.Add(action);
 
+            CCActionState state = null;
+
 			if (action.HasState) {
-				var state = action.StartAction (target);
+				state = action.StartAction (target);
 				element.ActionStates.Add (state);
 			} else {
 				action.StartWithTarget (target);
 				element.ActionStates.Add (null);
 			}
+
+            return state;
         }
 
         public void RemoveAllActions()

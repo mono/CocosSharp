@@ -1,5 +1,6 @@
 using System;
 
+
 namespace CocosSharp
 {
     public class CCLens3D : CCGrid3DAction
@@ -38,7 +39,20 @@ namespace CocosSharp
 
     public class CCLens3DState : CCGrid3DActionState
     {
+        public CCPoint CachedPosition { get; set; }
+        public float CachedRadius { get; set; }
+        public float CachedLensEffect { get; set; }
+        public bool CachedConcave { get; set; }
+
         public CCLens3DState(CCLens3D action, CCNode target) : base(action, target)
+        {
+            CachedPosition = action.Position;
+            CachedRadius = action.Radius;
+            CachedLensEffect = action.LensEffect;
+            CachedConcave = action.Concave;
+        }
+
+        public override void Update(float time)
         {
             int i, j;
 
@@ -49,10 +63,10 @@ namespace CocosSharp
                 for (j = 0; j < CachedGridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    vect = action.Position - new CCPoint(v.X, v.Y);
+                    vect = CachedPosition - new CCPoint(v.X, v.Y);
 
                     float r = vect.Length;
-                    float radius = action.Radius;
+                    float radius = CachedRadius;
 
                     if (r < radius)
                     {
@@ -63,7 +77,7 @@ namespace CocosSharp
                             pre_log = 0.001f;
                         }
 
-                        float lensEffect = action.LensEffect;
+                        float lensEffect = CachedLensEffect;
                         float l = (float) Math.Log(pre_log) * lensEffect;
                         float new_r = (float) Math.Exp(l) * radius;
 
@@ -72,7 +86,7 @@ namespace CocosSharp
                             vect = CCPoint.Normalize(vect);
 
                             CCPoint new_vect = vect * new_r;
-                            v.Z += (action.Concave ? -1.0f : 1.0f) * new_vect.Length * lensEffect;
+                            v.Z += (CachedConcave ? -1.0f : 1.0f) * new_vect.Length * lensEffect;
                         }
                     }
 
@@ -80,7 +94,6 @@ namespace CocosSharp
                 }
             }
         }
-
     }
 
     #endregion Action state

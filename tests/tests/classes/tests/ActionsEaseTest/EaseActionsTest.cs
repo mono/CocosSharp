@@ -106,13 +106,13 @@ namespace tests
                                                 delay);
 
             var a2 = m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
-            a2.Tag = 1;
+            //a2.Tag = 1;
 
             var a1 = m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq2));
-            a1.Tag = 1;
+            //a1.Tag = 1;
 
             var a = m_kathia.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
-            a.Tag = 1;
+            //a.Tag = 1;
 
             Schedule(testStopAction, 6.25f);
         }
