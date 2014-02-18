@@ -1312,41 +1312,41 @@ namespace CocosSharp
             }
         }
 
-		public CCAction Repeat (uint times, params CCFiniteTimeAction[] actions)
+        public CCActionState Repeat (uint times, params CCFiniteTimeAction[] actions)
 		{
 			return RunAction (new CCRepeat (new CCSequence(actions), times));
 
 		}
 
-		public CCAction Repeat (uint times, CCActionInterval action)
+        public CCActionState Repeat (uint times, CCActionInterval action)
 		{
 			return RunAction (new CCRepeat (action, times));
 		}
 
-		public CCAction RepeatForever (params CCFiniteTimeAction[] actions)
+        public CCActionState RepeatForever (params CCFiniteTimeAction[] actions)
 		{
 			return RunAction (new CCRepeatForever (actions));
 
 		}
 
-		public CCAction RepeatForever (CCActionInterval action)
+        public CCActionState RepeatForever(CCActionInterval action)
 		{
 			return RunAction (new CCRepeatForever (action));
 		}
 
-        public CCAction RunAction(CCAction action)
+        public CCActionState RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-            m_pActionManager.AddAction(action, this, !m_bRunning);
-            return action;
+            CCActionState actionState = m_pActionManager.AddAction(action, this, !m_bRunning);
+            return actionState;
         }
 
-		public CCAction RunActions(params CCFiniteTimeAction[] actions)
+        public CCActionState RunActions(params CCFiniteTimeAction[] actions)
 		{
 			Debug.Assert(actions != null, "Argument must be non-nil");
-			var action = new CCSequence (actions);
-			m_pActionManager.AddAction(action, this, !m_bRunning);
-			return action;
+			var action = new CCSequence(actions);
+            CCActionState actionState = m_pActionManager.AddAction(action, this, !m_bRunning);
+            return actionState;
 		}
 
         public void StopAllActions()
