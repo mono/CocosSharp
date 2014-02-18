@@ -10,8 +10,8 @@ namespace tests
             TouchEnabled = true;
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCRotateBy rotate = new CCRotateBy (10, 360);
-            CCRepeatForever action = new CCRepeatForever (rotate);
+			var rotate = new CCRotateBy (10, 360);
+
             for (int i = 0; i < 3; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini");
@@ -37,8 +37,8 @@ namespace tests
 
                 point.Position = (sprite.Position);
 
-                var copy = (CCRepeatForever) action.Copy();
-                sprite.RunAction(copy);
+				sprite.RepeatForever(rotate);
+
                 AddChild(sprite, i);
             }
         }

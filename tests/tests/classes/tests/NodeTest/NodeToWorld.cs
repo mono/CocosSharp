@@ -11,26 +11,25 @@ namespace tests
             //  - It tests different anchor Points
             //  - It tests different children anchor points
 
-            CCSprite back = new CCSprite(TestResource.s_back3);
+			var back = new CCSprite(TestResource.s_back3);
             AddChild(back, -10);
             back.AnchorPoint = (new CCPoint(0, 0));
-            CCSize backSize = back.ContentSize;
+			var backSize = back.ContentSize;
 
-            CCMenuItem item = new CCMenuItemImage(TestResource.s_PlayNormal, TestResource.s_PlaySelect);
-            CCMenu menu = new CCMenu(item);
+			var item = new CCMenuItemImage(TestResource.s_PlayNormal, TestResource.s_PlaySelect);
+			var menu = new CCMenu(item);
             menu.AlignItemsVertically();
-            menu.Position = (new CCPoint(backSize.Width / 2, backSize.Height / 2));
+            menu.Position = new CCPoint(backSize.Width / 2, backSize.Height / 2);
             back.AddChild(menu);
 
-            CCActionInterval rot = new CCRotateBy (5, 360);
-            CCAction fe = new CCRepeatForever (rot);
-            item.RunAction(fe);
+			var rot = new CCRotateBy (5, 360);
 
-            CCActionInterval move = new CCMoveBy (3, new CCPoint(200, 0));
-            var move_back = (CCActionInterval) move.Reverse();
-            CCFiniteTimeAction seq = new CCSequence(move, move_back);
-            CCAction fe2 = new CCRepeatForever ((CCActionInterval) seq);
-            back.RunAction(fe2);
+			item.RepeatForever(rot);
+
+			var move = new CCMoveBy (3, new CCPoint(200, 0));
+            var move_back = move.Reverse();
+
+			back.RepeatForever(move, move_back);
         }
 
         public override string title()

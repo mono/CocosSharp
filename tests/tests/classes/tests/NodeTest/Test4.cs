@@ -22,7 +22,7 @@ namespace tests
         public void delay2(float dt)
         {
             var node = (CCSprite) (GetChildByTag(2));
-            CCAction action1 = new CCRotateBy (1, 360);
+			var action1 = new CCRotateBy (1, 360);
             node.RunAction(action1);
         }
 

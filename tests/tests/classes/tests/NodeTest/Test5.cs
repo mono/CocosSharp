@@ -15,13 +15,16 @@ namespace tests
             sp1.Position = (new CCPoint(100, 160));
             sp2.Position = (new CCPoint(380, 160));
 
-            CCRotateBy rot = new CCRotateBy (2, 360);
-            var rot_back = rot.Reverse() as CCActionInterval;
-            CCAction forever = new CCRepeatForever ((CCActionInterval)new CCSequence(rot, rot_back));
-            forever2 = (CCAction) (forever.Copy());
-            forever.Tag = (101);
-            forever2.Tag = (102);
+			var rot = new CCRotateBy (2, 360);
+            var rot_back = rot.Reverse();
 
+			var forever = new CCRepeatForever (rot, rot_back) { Tag = 101 };
+
+			// Since Actions are immutable to set the tag differently we need to 
+			// create a new action.  Notice that the same actions can be used in
+			// this case instead of copying them as well.
+			forever2 = new CCRepeatForever (rot, rot_back) { Tag = 102 };
+            
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
             AddChild(sp2, 0, CocosNodeTestStaticLibrary.kTagSprite2);
 
@@ -30,13 +33,12 @@ namespace tests
 
             // Sprite 1 should run and run
             // Sprite 2 should stop
-
             sp1.RunAction(forever);
             sp2.RunAction(forever2);
 
             // Experiment with removing sp2 and re-adding it after cleanup to reproduce an error in child management
-//            ScheduleOnce(Stage2OfTest, 2.0f);
-            Schedule(addAndRemove, 2.0f);
+			//ScheduleOnce(Stage2OfTest, 2.0f);
+			Schedule(addAndRemove, 2.0f);
         }
 
         public void Stage2OfTest(float dt)
@@ -45,7 +47,7 @@ namespace tests
             CCLog.Log("Node test #5, stage 2, remove right side sprite and re-add it");
             RemoveChild(sp2, true);
             AddChild(sp2, 0, CocosNodeTestStaticLibrary.kTagSprite2);
-            sp2.RunAction(forever2.Copy());
+            sp2.RunAction(forever2);
             Schedule(addAndRemove, 2.0f);
         }
 

@@ -16,12 +16,8 @@ namespace tests
             sp2.Position = (new CCPoint(380, 160));
 
             CCActionInterval rot = new CCRotateBy (2, 360);
-            var rot_back = rot.Reverse() as CCActionInterval;
-            CCAction forever1 = new CCRepeatForever ((CCActionInterval)new CCSequence(rot, rot_back));
-            var forever11 = (CCAction) (forever1.Copy());
-
-            var forever2 = (CCAction) (forever1.Copy());
-            var forever21 = (CCAction) (forever1.Copy());
+            var rot_back = rot.Reverse();
+			var forever1 = new CCRepeatForever (rot, rot_back);
 
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
             sp1.AddChild(sp11);
@@ -29,9 +25,9 @@ namespace tests
             sp2.AddChild(sp21);
 
             sp1.RunAction(forever1);
-            sp11.RunAction(forever11);
-            sp2.RunAction(forever2);
-            sp21.RunAction(forever21);
+            sp11.RunAction(forever1);
+			sp2.RunAction(forever1);
+            sp21.RunAction(forever1);
 
             Schedule(addAndRemove, 2.0f);
         }
