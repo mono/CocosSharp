@@ -30,7 +30,7 @@ namespace tests
     public class TextureTestScene : TestScene
     {
 
-        private static int TEST_CASE_COUNT = 6;
+		private static int TEST_CASE_COUNT = 7;
 
         private static int sceneIdx = -1;
 
@@ -58,9 +58,9 @@ namespace tests
                 case 5:
                     pLayer = new TextureAsync();
                     break;
-
-                    //case 0:
-                    //    pLayer = new TextureAlias(); break;
+				case 6:
+					pLayer = new TextureAlias(); 
+					break;
                     //case 1:
                     //    pLayer = new TextureMipMap(); break;
                     //case 2:
@@ -1026,13 +1026,12 @@ namespace tests
             sprite2.IsAntialiased = false;
 
             // scale them to show
-            CCScaleBy sc = new CCScaleBy(3, 8.0f);
-            CCScaleBy sc_back = (CCScaleBy) (sc.Reverse());
-            CCRepeatForever scaleforever = new CCRepeatForever((CCActionInterval) (new CCSequence(sc, sc_back)));
-            CCRepeatForever scaleToo = (CCRepeatForever) (scaleforever.Copy());
+			var sc = new CCScaleBy(3, 8.0f);
+			var sc_back = sc.Reverse();
+            CCRepeatForever scaleforever = new CCRepeatForever(sc, sc_back);
 
             sprite2.RunAction(scaleforever);
-            sprite.RunAction(scaleToo);
+			sprite.RunAction(scaleforever);
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
         }
 
