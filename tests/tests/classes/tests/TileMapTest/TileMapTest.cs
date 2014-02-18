@@ -346,15 +346,12 @@ namespace tests
             CCFadeIn fadein = new CCFadeIn  (2);
             CCScaleTo scaleback = new CCScaleTo(1, 1);
             CCCallFuncN finish = new CCCallFuncN(removeSprite);
-            CCSequence seq0 = new CCSequence(move, rotate, scale, opacity, fadein, scaleback, finish);
-            var seq1 = (CCActionInterval) (seq0.Copy());
-            var seq2 = (CCActionInterval) (seq0.Copy());
-            var seq3 = (CCActionInterval) (seq0.Copy());
+			CCSequence sequence = new CCSequence(move, rotate, scale, opacity, fadein, scaleback, finish);
 
-            tile0.RunAction(seq0);
-            tile1.RunAction(seq1);
-            tile2.RunAction(seq2);
-            tile3.RunAction(seq3);
+			tile0.RunAction(sequence);
+			tile1.RunAction(sequence);
+			tile2.RunAction(sequence);
+			tile3.RunAction(sequence);
 
 
             m_gid = layer.TileGIDAt(new CCPoint(0, 63));
