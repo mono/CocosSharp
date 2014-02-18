@@ -22,18 +22,18 @@ namespace tests
             m_time = 0;
 
             //CCLayerColor col = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
-            CCLayerColor col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
+			var col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
             AddChild(col, -10);
 
-            CCLabelBMFont label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			var label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
 
             // testing anchors
             label1.AnchorPoint = new CCPoint(0, 0);
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
-            CCActionInterval fade = new CCFadeOut  (1.0f);
-            CCFiniteTimeAction fade_in = fade.Reverse();
-            CCFiniteTimeAction seq = new CCSequence(fade, fade_in);
-            CCAction repeat = new CCRepeatForever ((CCActionInterval)seq);
+			var fade = new CCFadeOut  (1.0f);
+			var fade_in = fade.Reverse();
+			var seq = new CCSequence(fade, fade_in);
+			var repeat = new CCRepeatForever (seq);
             label1.RunAction(repeat);
 
 
@@ -41,14 +41,14 @@ namespace tests
             // color and opacity work OK because bitmapFontAltas2 loads a BMP image (not a PNG image)
             // If you want to use both opacity and color, it is recommended to use NON premultiplied images like BMP images
             // Of course, you can also tell XCode not to compress PNG images, but I think it doesn't work as expected
-            CCLabelBMFont label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			var label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
             label2.AnchorPoint = new CCPoint(0.5f, 0.5f);
             label2.Color = ccRED;
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.RunAction((CCAction)(repeat.Copy()));
+            label2.RunAction(repeat);
 
-            CCLabelBMFont label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			var label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
             label3.AnchorPoint = new CCPoint(1, 1);
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
