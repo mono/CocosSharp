@@ -272,22 +272,21 @@ namespace CocosSharp
             CCSprite AChar = (CCSprite)label.GetChildByTag(12);
 
 
-            CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction rot_4ever = new CCRepeatForever (rotate);
+			var rotate = new CCRotateBy (2, 360);
+			var rot_4ever = new CCRepeatForever (rotate);
 
-            CCActionInterval scale = new CCScaleBy(2, 1.5f);
+			var scale = new CCScaleBy(2, 1.5f);
             //CCActionInterval scale_back = scale.reverse();
             CCActionInterval scale_back = null;
-            CCFiniteTimeAction scale_seq = new CCSequence(scale, scale_back, null);
-            CCAction scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);
+			var scale_seq = new CCSequence(scale, scale_back);
+			var scale_4ever = new CCRepeatForever ((CCActionInterval)scale_seq);
 
-            CCActionInterval jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
-            CCAction jump_4ever = new CCRepeatForever (jump);
+			var jump = new CCJumpBy (0.5f, new CCPoint(), 60, 1);
+			var jump_4ever = new CCRepeatForever (jump);
 
-            CCActionInterval fade_out = new CCFadeOut  (1);
-            CCActionInterval fade_in = new CCFadeIn  (1);
-            CCFiniteTimeAction seq = new CCSequence(fade_out, fade_in, null);
-            CCAction fade_4ever = new CCRepeatForever ((CCActionInterval)seq);
+			var fade_out = new CCFadeOut  (1);
+			var fade_in = new CCFadeIn  (1);
+			var fade_4ever = new CCRepeatForever (fade_out, fade_in);
 
             BChar.RunAction(rot_4ever);
             BChar.RunAction(scale_4ever);
@@ -301,7 +300,7 @@ namespace CocosSharp
             label2.Position = new CCPoint(s.Width / 2.0f, 80);
 
             CCSprite lastChar = (CCSprite)label2.GetChildByTag(3);
-            lastChar.RunAction((CCAction)(rot_4ever.Copy()));
+            lastChar.RunAction(rot_4ever);
 
             //schedule( schedule_selector(Atlas4::step), 0.1f);
             base.Schedule(step, 0.1f);
