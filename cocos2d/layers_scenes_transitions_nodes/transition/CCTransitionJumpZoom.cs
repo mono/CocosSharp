@@ -22,7 +22,7 @@ namespace CocosSharp
             CCActionInterval scaleOut = new CCScaleTo(m_fDuration / 4, 0.5f);
 
             CCSequence jumpZoomOut = (new CCSequence(scaleOut, jump));
-            CCSequence jumpZoomIn = (new CCSequence((CCActionInterval)jump.Copy(), scaleIn));
+            CCSequence jumpZoomIn = (new CCSequence(jump, scaleIn));
 
             CCActionInterval delay = new CCDelayTime (m_fDuration / 2);
 
