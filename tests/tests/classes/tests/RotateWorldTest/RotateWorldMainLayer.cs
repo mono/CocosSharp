@@ -45,9 +45,9 @@ namespace tests
             CCAction rot = new CCRotateBy (8, 720);
 
             blue.RunAction(rot);
-            red.RunAction((CCAction)(rot.Copy()));
-            green.RunAction((CCAction)(rot.Copy()));
-            white.RunAction((CCAction)(rot.Copy()));
+            red.RunAction(rot);
+            green.RunAction(rot);
+            white.RunAction(rot);
         }
 
         public static new RotateWorldMainLayer node()
