@@ -85,24 +85,25 @@ namespace tests
             sister2.Position = new CCPoint( s.Width*2/3, s.Height/2);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
+			// Define our delay time
+			var delay = new CCDelayTime (1);
+
+			layer1.RepeatForever(
                         new CCFadeTo(4, 0),
                         new CCFadeTo(4, 255),
-                        new CCDelayTime(1))
-                    )
+						delay
                 );
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCDelayTime(1))
-                    )
+			// We only have to define them once.
+			var fadeTo11 = new CCFadeTo (2, 0);
+			var fadeTo12 = new CCFadeTo (2, 255);
+
+			sister1.RepeatForever(
+						fadeTo11,
+						fadeTo12,
+						fadeTo11,
+						fadeTo12,
+						delay
                 );
     
     
@@ -143,25 +144,26 @@ namespace tests
             sister2.Position = new CCPoint(s.Width * 2 / 3, 0);
             label.Position = new CCPoint(s.Width / 2, 0);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCFadeTo(4, 0),
-                        new CCFadeTo(4, 255),
-                        new CCDelayTime(1))
-                    )
-                );
+			// Define our delay time
+			var delay = new CCDelayTime (1);
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCDelayTime(1))
-                    )
-                );
+			layer1.RepeatForever(
+				new CCFadeTo(4, 0),
+				new CCFadeTo(4, 255),
+				delay
+			);
+
+			// We only have to define them once.
+			var fadeTo11 = new CCFadeTo (2, 0);
+			var fadeTo12 = new CCFadeTo (2, 255);
+
+			sister1.RepeatForever(
+				fadeTo11,
+				fadeTo12,
+				fadeTo11,
+				fadeTo12,
+				delay
+			);
 
 
             // Enable cascading in scene
@@ -201,25 +203,26 @@ namespace tests
             sister2.Position = new CCPoint(s.Width * 2 / 3, 0);
             label.Position = new CCPoint(s.Width / 2, 0);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCFadeTo(4, 0),
-                        new CCFadeTo(4, 255),
-                        new CCDelayTime(1))
-                    )
-                );
+			// Define our delay time
+			var delay = new CCDelayTime (1);
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCFadeTo(2, 0),
-                        new CCFadeTo(2, 255),
-                        new CCDelayTime(1))
-                    )
-                );
+			layer1.RepeatForever(
+				new CCFadeTo(4, 0),
+				new CCFadeTo(4, 255),
+				delay
+			);
+
+			// We only have to define them once.
+			var fadeTo11 = new CCFadeTo (2, 0);
+			var fadeTo12 = new CCFadeTo (2, 255);
+
+			sister1.RepeatForever(
+				fadeTo11,
+				fadeTo12,
+				fadeTo11,
+				fadeTo12,
+				delay
+			);
         }
 
         public override string title()
@@ -252,26 +255,23 @@ namespace tests
             sister2.Position = new CCPoint(s.Width * 2 / 3, s.Height / 2);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(6, 255, 0, 255),
-                        new CCTintTo(6, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			// Define our delay time
+			var delay = new CCDelayTime (1);
+
+			layer1.RepeatForever (
+                new CCTintTo(6, 255, 0, 255),
+                new CCTintTo(6, 255, 255, 255),
+				delay
                 );
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(2, 255, 255, 0),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 0, 255, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 255, 0, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			sister1.RepeatForever (
+                new CCTintTo(2, 255, 255, 0),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 0, 255, 255),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 255, 0, 255),
+                new CCTintTo(2, 255, 255, 255),
+				delay
                 );
 
             // Enable cascading in scene
@@ -311,26 +311,23 @@ namespace tests
             sister2.Position = new CCPoint(s.Width * 2 / 3, 0);
             label.Position = new CCPoint(s.Width / 2, 0);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(6, 255, 0, 255),
-                        new CCTintTo(6, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			// Define our delay time
+			var delay = new CCDelayTime (1);
+
+			layer1.RepeatForever (
+                new CCTintTo(6, 255, 0, 255),
+                new CCTintTo(6, 255, 255, 255),
+				delay
                 );
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(2, 255, 255, 0),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 0, 255, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 255, 0, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			sister1.RepeatForever (
+                new CCTintTo(2, 255, 255, 0),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 0, 255, 255),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 255, 0, 255),
+                new CCTintTo(2, 255, 255, 255),
+				delay
                 );
 
             // Enable cascading in scene
@@ -370,26 +367,23 @@ namespace tests
             sister2.Position = new CCPoint(s.Width * 2 / 3, 0);
             label.Position = new CCPoint(s.Width / 2, 0);
 
-            layer1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(6, 255, 0, 255),
-                        new CCTintTo(6, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			// Define our delay time
+			var delay = new CCDelayTime (1);
+
+			layer1.RepeatForever (
+                new CCTintTo(6, 255, 0, 255),
+                new CCTintTo(6, 255, 255, 255),
+				delay
                 );
 
-            sister1.RunAction(
-                new CCRepeatForever(
-                    new CCSequence(
-                        new CCTintTo(2, 255, 255, 0),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 0, 255, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCTintTo(2, 255, 0, 255),
-                        new CCTintTo(2, 255, 255, 255),
-                        new CCDelayTime(1))
-                    )
+			sister1.RepeatForever (
+                new CCTintTo(2, 255, 255, 0),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 0, 255, 255),
+                new CCTintTo(2, 255, 255, 255),
+                new CCTintTo(2, 255, 0, 255),
+                new CCTintTo(2, 255, 255, 255),
+				delay
                 );
         }
 
