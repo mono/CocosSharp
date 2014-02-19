@@ -2,15 +2,15 @@ namespace CocosSharp
 {
     public class CCRotateBy : CCActionInterval
     {
-        protected float m_fAngleX;
-        protected float m_fAngleY;
+		public float AngleX { get; private set; }
+		public float AngleY { get; private set; }
 
         #region Constructors
 
         public CCRotateBy(float duration, float fDeltaAngleX, float fDeltaAngleY) : base(duration)
         {
-			m_fAngleX = fDeltaAngleX;
-			m_fAngleY = fDeltaAngleY;
+			AngleX = fDeltaAngleX;
+			AngleY = fDeltaAngleY;
         }
 
         public CCRotateBy(float duration, float fDeltaAngle) : this(duration, fDeltaAngle, fDeltaAngle)
@@ -18,16 +18,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-		public float AngleX
-		{
-			get { return m_fAngleX; }
-		}
-
-		public float AngleY
-		{
-			get { return m_fAngleY; }
-		}
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
@@ -43,25 +33,25 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRotateBy(m_fDuration, -m_fAngleX, -m_fAngleY);
+            return new CCRotateBy(m_fDuration, -AngleX, -AngleY);
         }
     }
 
 	public class CCRotateByState : CCActionIntervalState
 	{
 
-		protected float m_fAngleX;
-		protected float m_fAngleY;
-		protected float m_fStartAngleX;
-		protected float m_fStartAngleY;
+		protected float AngleX { get; set; }
+		protected float AngleY { get; set; }
+		protected float StartAngleX { get; set; }
+		protected float StartAngleY { get; set; }
 
 		public CCRotateByState (CCRotateBy action, CCNode target)
 			: base(action, target)
 		{ 
-			m_fAngleX = action.AngleX;
-			m_fAngleY = action.AngleY;
-			m_fStartAngleX = target.RotationX;
-			m_fStartAngleY = target.RotationY;
+			AngleX = action.AngleX;
+			AngleY = action.AngleY;
+			StartAngleX = target.RotationX;
+			StartAngleY = target.RotationY;
 
 		}
 
@@ -70,8 +60,8 @@ namespace CocosSharp
 			// XXX: shall I add % 360
 			if (Target != null)
 			{
-				Target.RotationX = m_fStartAngleX + m_fAngleX * time;
-				Target.RotationY = m_fStartAngleY + m_fAngleY * time;
+				Target.RotationX = StartAngleX + AngleX * time;
+				Target.RotationY = StartAngleY + AngleY * time;
 			}
 		}
 
