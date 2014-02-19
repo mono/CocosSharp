@@ -6,23 +6,33 @@ namespace CocosSharp
     // Extra action for making a CCSequence or CCSpawn when only adding one action to it.
     internal class CCExtraAction : CCFiniteTimeAction
     {
-        public override CCAction Copy()
-        {
-            return new CCExtraAction();
-        }
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCExtraAction();
         }
 
-        public override void Step(float dt)
-        {
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCExtraActionState (this, target);
 
-        public override void Update(float time)
-        {
-        }
+		}
+
+		#region Internal State 
+		public class CCExtraActionState : CCFiniteTimeActionState
+		{
+
+			public CCExtraActionState (CCExtraAction action, CCNode target)
+				: base(action, target)
+			{ 	}
+
+			public override void Step(float dt)
+			{	}
+
+			public override void Update(float time)
+			{	}
+		}
+		#endregion
+
     }
 
     public class CCActionInterval : CCFiniteTimeAction
