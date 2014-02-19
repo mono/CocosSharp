@@ -7,6 +7,35 @@ namespace CocosSharp
 {
 
 
+    /// <summary>
+    /// From http://stackoverflow.com/questions/10889743/cocos2d-2-0-3-numbers-on-the-bottom-left by Steffen Itterheim:
+    /// 
+    /// 82    -- number of draw calls
+    /// 0.016 -- time it took to render the frame
+    /// 60.0  -- frames per second
+    /// 
+    /// The first number (82) is the number of draw calls (which is fairly high). Typically each node that renders
+    /// something on the screen (sprites, labels, particle fx, etc) increases that number by one. If you use
+    /// a CCSpriteBatchNode and add 100 sprites to it, it will increase the draw call only by 1.
+    /// 
+    /// 82 is a pretty high draw call number - depending on the game's complexity and assuming it is well optimized to
+    /// reduce draw calls, the number of draw calls should be around 10 to 40. Assuming all 82 draw calls are sprites,
+    /// then creating a texture atlas out of the sprite images (use TexturePacker, Zwoptex, SpriteHelper) in order to
+    /// use CCSpriteBatchNode you could reduce the number of draw calls to 1. Draw calls are expensive, so it is very
+    /// important to keep that number down.
+    /// 
+    /// The time it took to render a frame is in milliseconds. Since you need to draw a new frame every 0.016666666
+    /// seconds in order to achieve 60 frames per second (1/60 = 0,0166…) this number can tell you how close your game
+    /// is to dropping below 60 fps. Yours is pretty close, you have practically no room left for additional game logic
+    /// or visuals before the framerate will drop below 60 fps.
+    /// 
+    /// The last number is the number of frames per second. This value, like the previous one, is averaged over several
+    /// frames so that it doesn't fluctuate as much (makes it hard to read).
+    /// 
+    /// PS: one other thing to keep in mind is that the bottom two values become misleading can not be compared for
+    /// framerates below 15 fps. For example cocos2d might show 0.0 for the time it took to render a frame at such
+    /// a low framerate.
+    /// </summary>
     public class CCStats
     {
 
@@ -33,17 +62,13 @@ namespace CocosSharp
         CCLabelAtlas m_pGCLabel;
 
 
-        public CCStats ()
-        {
-            m_pStopwatch = new Stopwatch();
-        }
-
-
         public void Prepare ()
         {
             if (m_pFPSLabel == null) {
                 CCTexture2D texture;
                 CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
+
+                m_pStopwatch = new Stopwatch();
 
                 try {
                     texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444) : textureCache.TextureForKey ("cc_fps_images");
