@@ -27,7 +27,7 @@ namespace tests
             //
 
             aParent = new CCSpriteBatchNode("animations/ghosts");
-            aParent.Texture.GenerateMipmap();
+			//aParent.Texture.GenerateMipmap();
             AddChild(aParent);
 
             // parent
