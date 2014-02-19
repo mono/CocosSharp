@@ -72,7 +72,7 @@ namespace CocosSharp
                         break;
                     }
 
-                    pNewArray.Add(pElement.DeepCopy());
+                    pNewArray.Add(pElement.Copy());
                 }
             }
 

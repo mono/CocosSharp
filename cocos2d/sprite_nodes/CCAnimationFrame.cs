@@ -33,7 +33,7 @@ namespace CocosSharp
 
         protected CCAnimationFrame(CCAnimationFrame animFrame)
         {
-            InitCCAnimationFrame(animFrame.m_pSpriteFrame.DeepCopy(), animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
+            InitCCAnimationFrame(animFrame.m_pSpriteFrame.Copy(), animFrame.m_fDelayUnits, animFrame.m_pUserInfo);
         }
 
         private void InitCCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
@@ -46,7 +46,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public CCAnimationFrame DeepCopy()
+        public CCAnimationFrame Copy()
         {
             return new CCAnimationFrame(this);
         }
