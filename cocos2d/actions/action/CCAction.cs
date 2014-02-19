@@ -8,33 +8,15 @@ namespace CocosSharp
 
     public class CCAction
     {
-        protected int m_nTag;
-        protected CCNode m_pOriginalTarget;
-        protected CCNode m_pTarget;
-
-
-        public CCNode Target
-        {
-            get { return m_pTarget; }
-            set { m_pTarget = value; }
-        }
-
-        public CCNode OriginalTarget
-        {
-            get { return m_pOriginalTarget; }
-        }
-
-        public int Tag
-        {
-            get { return m_nTag; }
-            set { m_nTag = value; }
-        }
+		public int Tag { get; set; }
+		public CCNode OriginalTarget { get; private set; }
+		public CCNode Target { get; protected set; }
 
         #region Constructors
 
         public CCAction()
         {
-            m_nTag = (int) CCActionTag.Invalid;
+            Tag = (int) CCActionTag.Invalid;
         }
 
 
