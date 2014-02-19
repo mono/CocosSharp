@@ -1192,8 +1192,6 @@ namespace CocosSharp
 
             // reset director's member variables to fit visible rect
             CCDirector.SharedDirector.m_obWinSizeInPoints = DesignResolutionSize;
-
-            CCDirector.SharedDirector.CreateStatsLabel();
             CCDirector.SharedDirector.SetGlDefaultValues();
         }
 
