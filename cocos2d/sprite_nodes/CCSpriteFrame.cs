@@ -119,7 +119,7 @@ namespace CocosSharp
             InitCCSpriteFrame(pobTexture, rect, originalSize);
         }
 
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect) : this(pobTexture, rect, rect.Size)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect) : this(pobTexture, rect.PointsToPixels(), rect.PointsToPixels().Size)
         {
         }
 
