@@ -33,12 +33,6 @@ namespace CocosSharp
             return new CCMoveBy(m_fDuration, new CCPoint(-m_positionDelta.X, -m_positionDelta.Y));
         }
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
     }
 
 	public class CCMoveByState : CCActionIntervalState

@@ -25,12 +25,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCRotateBy(m_fDuration, -AngleX, -AngleY);

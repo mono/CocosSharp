@@ -902,13 +902,6 @@ namespace CocosSharp
 
 		}
 
-		// Tempory work property to be taken out after we have separated out the state.
-		// This shoud be overridden in all classes that have been separated
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             return this;
@@ -962,14 +955,6 @@ namespace CocosSharp
 			return new CCBRotateToState (this, target);
 
 		}
-
-		// Tempory work property to be taken out after we have separated out the state.
-		// This shoud be overridden in all classes that have been separated
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
 
         public override CCFiniteTimeAction Reverse()
         {
@@ -1026,14 +1011,6 @@ namespace CocosSharp
 
 		}
 
-		// Tempory work property to be taken out after we have separated out the state.
-		// This shoud be overridden in all classes that have been separated
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
-
 		public override CCFiniteTimeAction Reverse()
 		{
 			Debug.Assert(false, "reverse() is not supported in CCBRotateTo");
@@ -1084,13 +1061,6 @@ namespace CocosSharp
 		{
 			return new CCBRotateYToState (this, target);
 
-		}
-
-		// Tempory work property to be taken out after we have separated out the state.
-		// This shoud be overridden in all classes that have been separated
-		public override bool HasState 
-		{ 
-			get { return true; }
 		}
 
         public override CCFiniteTimeAction Reverse()

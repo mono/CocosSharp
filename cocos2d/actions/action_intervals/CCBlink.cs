@@ -18,13 +18,6 @@
 			return new CCBlinkState (this, target);
 
 		}
-
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCBlink(Duration, Times);

@@ -30,12 +30,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
 		public override CCFiniteTimeAction Reverse()
         {
             return new CCRepeatForever(InnerAction.Reverse() as CCActionInterval);

@@ -19,12 +19,6 @@ namespace CocosSharp
 			return new CCTintToState (this, target);
 
 		}
-
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
     }
 
 	public class CCTintToState : CCActionIntervalState

@@ -130,7 +130,7 @@ namespace CocosSharp
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
-			return null; //new CCActionIntervalState (this, target);
+			return new CCActionIntervalState (this, target);
 
 		}
 

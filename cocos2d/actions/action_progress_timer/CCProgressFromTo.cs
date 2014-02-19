@@ -24,13 +24,6 @@ namespace CocosSharp
 			return new CCProgressFromToState (this, target);
 
 		}
-
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
     }
 
 	public class CCProgressFromToState : CCActionIntervalState

@@ -26,12 +26,6 @@ namespace CocosSharp
 			return new CCRotateToState (this, target);
 
 		}
-
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
     }
 
 

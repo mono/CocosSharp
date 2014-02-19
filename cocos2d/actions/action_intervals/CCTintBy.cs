@@ -94,12 +94,6 @@ namespace CocosSharp
 
 		}
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
 			return new CCTintBy(Duration, (short) -DeltaR, (short) -DeltaG, (short) -DeltaB);

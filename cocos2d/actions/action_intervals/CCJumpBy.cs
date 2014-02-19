@@ -37,13 +37,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCJumpBy(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);

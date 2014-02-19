@@ -22,12 +22,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
 			CCBezierConfig r;

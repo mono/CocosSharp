@@ -38,12 +38,6 @@ namespace CocosSharp
 
 		}
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         /// <summary>
         /// Reverses the current parallel sequence.
         /// </summary>
