@@ -55,12 +55,6 @@ namespace CocosSharp
 
 		}
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             var pOldArray = Animation.Frames;
@@ -78,7 +72,7 @@ namespace CocosSharp
                         break;
                     }
 
-                    pNewArray.Add(pElement.DeepCopy());
+                    pNewArray.Add(pElement.Copy());
                 }
             }
 

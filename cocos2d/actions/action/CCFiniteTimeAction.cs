@@ -22,16 +22,11 @@ namespace CocosSharp
             m_fDuration = d;
         }
 
-        public CCFiniteTimeAction(CCFiniteTimeAction finiteTimeAction) : base(finiteTimeAction)
-        {
-            m_fDuration = finiteTimeAction.Duration;
-        }
-
         #endregion Constructors
       
 		protected internal override CCActionState StartAction (CCNode target)
 		{
-			return null; //new CCFiniteTimeActionState (this, target);
+			return new CCFiniteTimeActionState (this, target);
 
 		}
 

@@ -7,12 +7,6 @@ namespace CocosSharp
         public float Rate { get; private set; }
         protected internal CCActionInterval OtherAction { get; private set; }
 
-        // Take me out later - See comments in CCAction
-        public override bool HasState 
-        { 
-            get { return true; }
-        }
-            
         #region Constructors
 
         public CCAccelAmplitude(CCAction pAction, float duration) : base(duration)

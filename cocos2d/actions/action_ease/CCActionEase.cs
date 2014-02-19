@@ -4,13 +4,6 @@ namespace CocosSharp
     {
         protected internal CCActionInterval InnerAction { get; private set; }
 
-        // Take me out later - See comments in CCAction
-        public override bool HasState 
-        { 
-            get { return true; }
-        }
-
-
         #region Constructors
 
         // This can be taken out once all the classes that extend it have had their constructors created.

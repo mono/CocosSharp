@@ -35,12 +35,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
     }
 
 	public class CCSkewToState : CCActionIntervalState

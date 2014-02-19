@@ -144,7 +144,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public CCSpriteFrame DeepCopy()
+        public CCSpriteFrame Copy()
         {
             return new CCSpriteFrame(this);
         }

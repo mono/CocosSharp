@@ -515,7 +515,7 @@ namespace CocosSharp
                 if (_jsControlled)
                 {
                     string callbackName = string.Format("{0}:{1}", selectorTarget, selectorName);
-                    CCCallFunc callback = (CCCallFunc) _keyframeCallFuncs[callbackName].Copy();
+                    CCCallFunc callback = (CCCallFunc) _keyframeCallFuncs[callbackName];
 
                     if (callback != null)
                     {
@@ -598,7 +598,7 @@ namespace CocosSharp
 
                 gain = float.Parse(keyVal[3].GetStringValue());
 
-                actions.Add(CCBSoundEffect.ActionWithSoundFile(soundFile, pitch, pan, gain));
+				actions.Add(new CCBSoundEffect(soundFile, pitch, pan, gain));
             }
 
             if (actions.Count < 1) return null;
@@ -806,148 +806,155 @@ namespace CocosSharp
 
     public class CCBSetSpriteFrame : CCActionInstant
     {
-        private CCSpriteFrame _spriteFrame;
+		internal CCSpriteFrame SpriteFrame { get; set; }
 
         /** creates a Place action with a position */
 
-        public CCBSetSpriteFrame()
-        {
-        }
+//        public CCBSetSpriteFrame()
+//        {
+//        }
 
         public CCBSetSpriteFrame(CCSpriteFrame pSpriteFrame)
         {
-            InitWithSpriteFrame(pSpriteFrame);
+
+			SpriteFrame = pSpriteFrame;
         }
 
-        protected virtual bool InitWithSpriteFrame(CCSpriteFrame pSpriteFrame)
-        {
-            _spriteFrame = pSpriteFrame;
-            return true;
-        }
+		/// <summary>
+		/// Start the show operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBSetSpriteFrameState (this, target);
 
-        public override void Update(float time)
-        {
-            ((CCSprite) m_pTarget).DisplayFrame = _spriteFrame;
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            CCBSetSpriteFrame pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBSetSpriteFrame) (pZone);
-            }
-            else
-            {
-                pRet = new CCBSetSpriteFrame();
-                pZone =  (pRet);
-            }
-
-            pRet.InitWithSpriteFrame(_spriteFrame);
-            base.Copy(pZone);
-            return pRet;
-        }
+		}
+//        public override void Update(float time)
+//        {
+//			((CCSprite) m_pTarget).DisplayFrame = SpriteFrame;
+//        }
+//
+//        public override object Copy(ICCCopyable pZone)
+//        {
+//            CCBSetSpriteFrame pRet;
+//
+//            if (pZone != null)
+//            {
+//                pRet = (CCBSetSpriteFrame) (pZone);
+//            }
+//            else
+//            {
+//                pRet = new CCBSetSpriteFrame();
+//                pZone =  (pRet);
+//            }
+//
+//            pRet.InitWithSpriteFrame(S);
+//            base.Copy(pZone);
+//            return pRet;
+//        }
 
         public override CCFiniteTimeAction Reverse()
         {
-            return (CCFiniteTimeAction) this.Copy();
+            return this;
         }
+
     }
+
+	internal class CCBSetSpriteFrameState : CCActionInstantState
+	{
+		private CCSpriteFrame SpriteFrame { get; set; }
+
+		public CCBSetSpriteFrameState (CCBSetSpriteFrame action, CCNode target)
+			: base(action, target)
+		{	
+			SpriteFrame = action.SpriteFrame;
+		}
+
+		public override void Update(float time)
+		{
+			((CCSprite) Target).DisplayFrame = SpriteFrame;
+		}
+	}
 
     public class CCBSoundEffect : CCActionInstant
     {
-        public static CCBSoundEffect ActionWithSoundFile(string file, float pitch, float pan, float gain)
+
+		public string SoundFile { get; private set; }
+		public float Pitch { get; private set; }
+		public float Pan { get; private set; }
+		public float Gain { get; private set; }
+
+		public CCBSoundEffect (string file, float pitch, float pan, float gain)
         {
-            CCBSoundEffect pRet = new CCBSoundEffect();
-            pRet.InitWithSoundFile(file, pitch, pan, gain);
-            return pRet;
+            SoundFile = file;
+            Pitch = pitch;
+            Pan = pan;
+            Gain = gain;
         }
 
-        public bool InitWithSoundFile(string file, float pitch, float pan, float gain)
-        {
-            _soundFile = file;
-            _pitch = pitch;
-            _pan = pan;
-            _gain = gain;
-            return true;
-        }
+		/// <summary>
+		/// Start the CCBRotateTo operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBSoundEffectState (this, target);
 
-        // Overrides
-        public override void Update(float time)
-        {
-            CCSimpleAudioEngine.SharedEngine.PlayEffect(_soundFile);
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            CCBSoundEffect pRet;
-
-            if (pZone != null)
-            {
-                pRet = (CCBSoundEffect)(pZone);
-            }
-            else
-            {
-                pRet = new CCBSoundEffect();
-                pZone = (pRet);
-            }
-
-            pRet.InitWithSoundFile(_soundFile, _pitch, _pan, _gain);
-            base.Copy(pZone);
-            return pRet;
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return (CCFiniteTimeAction) this.Copy();
+            return this;
         }
 
-        private string _soundFile;
-        private float _pitch, _pan, _gain;
+		private class CCBSoundEffectState : CCActionInstantState
+		{
+			protected string SoundFile { get; set; }
+			protected float Pitch { get; set; }
+			protected float Pan { get; set; }
+			protected float Gain { get; set; }
+
+			public CCBSoundEffectState (CCBSoundEffect action, CCNode target)
+				: base(action, target)
+			{	
+				SoundFile = action.SoundFile;
+				Pitch = action.Pitch;
+				Pan = action.Pan;
+				Gain = action.Gain;
+			}
+
+			public override void Update(float time)
+			{
+				CCSimpleAudioEngine.SharedEngine.PlayEffect(SoundFile);
+			}
+
+		}
+
+
     }
 
     public class CCBRotateTo : CCActionInterval
     {
-        private float _diffAngle;
-        private float _dstAngle;
-        private float _startAngle;
-
+		internal float DstAngle { get; private set; }
 
         #region Constructors
 
-        public CCBRotateTo()
-        {
-        }
-
         public CCBRotateTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitCCBRotateTo(fAngle);
-        }
-
-        // Perform deep copy of CCBRotateTo
-        public CCBRotateTo(CCBRotateTo rotateTo) : base(rotateTo)
-        {
-            InitCCBRotateTo(rotateTo._dstAngle);
-        }
-
-        private void InitCCBRotateTo(float fAngle)
-        {
-            _dstAngle = fAngle;
+            DstAngle = fAngle;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the CCBRotateTo operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBRotateToState (this, target);
 
-        public override void Update(float time)
-        {
-            m_pTarget.Rotation = _startAngle + (_diffAngle * time);
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCBRotateTo(this);
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
@@ -955,114 +962,106 @@ namespace CocosSharp
             return null;
         }
 
-        protected internal override void StartWithTarget(CCNode node)
-        {
-            base.StartWithTarget(node);
-            _startAngle = m_pTarget.Rotation;
-            _diffAngle = _dstAngle - _startAngle;
-        }
+		private class CCBRotateToState : CCActionIntervalState
+		{
+			private float DstAngle { get; set; }
+			private float diffAngle;
+			private float startAngle;
+
+			public CCBRotateToState (CCBRotateTo action, CCNode target)
+				: base(action, target)
+			{	
+				DstAngle = action.DstAngle;
+				startAngle = Target.Rotation;
+				diffAngle = DstAngle - startAngle;
+			}
+
+			public override void Update(float time)
+			{
+				Target.Rotation = startAngle + (diffAngle * time);
+			}
+
+		}
+
     }
+
 
     public class CCBRotateXTo : CCActionInterval
     {
+
+		internal float DstAngle { get; set; }
+
         #region Constructors
 
-        public CCBRotateXTo()
-        {
-        }
 
         public CCBRotateXTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitCCBRotateXTo(fAngle);
-        }
-
-        // Perform deep copy of CCBRotateXTo
-        public CCBRotateXTo(CCBRotateXTo rotateXTo) : base(rotateXTo)
-        {
-            InitCCBRotateXTo(rotateXTo._dstAngle);
-        }
-
-        private void InitCCBRotateXTo(float fAngle)
-        {
-            _dstAngle = fAngle;
+			DstAngle = fAngle;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the CCBRotateXTo operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBRotateXToState (this, target);
 
-        // Overrides
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            m_pOriginalTarget = target;
-            m_pTarget = target;
-            m_elapsed = 0.0f;
-            m_bFirstTick = true;
-            _startAngle = m_pTarget.RotationX;
-            _diffAngle = _dstAngle - _startAngle;
-        }
+		}
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCBRotateXTo(this);
-        }
+		public override CCFiniteTimeAction Reverse()
+		{
+			Debug.Assert(false, "reverse() is not supported in CCBRotateTo");
+			return null;
+		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            Debug.Assert(false, "reverse() is not supported in CCBRotateXTo");
-            return null;
-        }
+		private class CCBRotateXToState : CCActionIntervalState
+		{
+			private float DstAngle { get; set; }
+			private float diffAngle;
+			private float startAngle;
 
-        public override void Update(float time)
-        {
-            m_pTarget.RotationX = _startAngle + (_diffAngle * time);
-        }
+			public CCBRotateXToState (CCBRotateXTo action, CCNode target)
+				: base(action, target)
+			{	
+				DstAngle = action.DstAngle;
+	            startAngle = Target.RotationX;
+				diffAngle = DstAngle - startAngle;
+			}
 
-        private float _startAngle;
-        private float _dstAngle;
-        private float _diffAngle;
+			public override void Update(float time)
+			{
+				Target.RotationX = startAngle + (diffAngle * time);
+			}
+		}
+
     }
 
     public class CCBRotateYTo : CCActionInterval
     {
-        #region Constructors
 
-        public CCBRotateYTo()
-        {
-        }
+		internal float DstAngle { get; set; }
+
+        #region Constructors
 
         public CCBRotateYTo(float fDuration, float fAngle) : base(fDuration)
         {
-            InitCCBRotateYTo(fAngle);
-        }
-
-        public CCBRotateYTo(CCBRotateYTo rotateYTo) : base(rotateYTo)
-        {
-            InitCCBRotateYTo(rotateYTo._dstAngle);
-        }
-
-        private void InitCCBRotateYTo(float fAngle)
-        {
-            _dstAngle = fAngle;
+			DstAngle = fAngle;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the CCBRotateYTo operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBRotateYToState (this, target);
 
-        // Overrides
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            m_pOriginalTarget = target;
-            m_pTarget = target;
-            m_elapsed = 0.0f;
-            m_bFirstTick = true;
-            _startAngle = m_pTarget.RotationY;
-            _diffAngle = _dstAngle - _startAngle;
-        }
-
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCBRotateYTo(this);
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
@@ -1070,57 +1069,73 @@ namespace CocosSharp
             return null;
         }
 
-        public override void Update(float time)
-        {
-            m_pTarget.RotationY = _startAngle + (_diffAngle * time);
-        }
 
-        private float _startAngle;
-        private float _dstAngle;
-        private float _diffAngle;
+		private class CCBRotateYToState : CCActionIntervalState
+		{
+			private float DstAngle { get; set; }
+			private float diffAngle;
+			private float startAngle;
+
+			public CCBRotateYToState (CCBRotateYTo action, CCNode target)
+				: base(action, target)
+			{	
+				DstAngle = action.DstAngle;
+				startAngle = Target.RotationY;
+				diffAngle = DstAngle - startAngle;
+			}
+
+			public override void Update(float time)
+			{
+				Target.RotationY = startAngle + (diffAngle * time);
+			}
+		}
+
     }
 
     class CCBEaseInstant : CCActionEase
     {
         #region Constructors
 
-        public CCBEaseInstant()
-        {
-        }
-
         public CCBEaseInstant(CCActionInterval pAction) : base(pAction)
-        {
-        }
-
-        // Perform deep copy of CCBEaseInstant
-        public CCBEaseInstant(CCBEaseInstant easeInstant) : base(easeInstant)
         {
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the EaseInstant operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCBEaseInstantState (this, target);
 
-        public override object Copy(ICCCopyable pZone)
-        {
-            return new CCBEaseInstant(this);
-        }
+		}
 
         public override CCFiniteTimeAction Reverse()
         {
             return new CCBEaseInstant((CCActionInterval)InnerAction.Reverse());
         }
 
-        public override void Update(float time)
-        {
-            if (time < 0)
-            {
-                InnerAction.Update(0);
-            }
-            else
-            {
-                InnerAction.Update(1);
-            }
-        }
+		private class CCBEaseInstantState : CCActionEaseState
+		{
+
+			public CCBEaseInstantState (CCBEaseInstant action, CCNode target)
+				: base(action, target)
+			{	}
+
+			public override void Update(float time)
+			{
+				if (time < 0)
+				{
+					InnerActionState.Update(0);
+				}
+				else
+				{
+					InnerActionState.Update(1);
+				}
+			}
+		}
     }
 
 }

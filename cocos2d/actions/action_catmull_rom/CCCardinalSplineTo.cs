@@ -30,12 +30,6 @@ namespace CocosSharp
 
 		}
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             List<CCPoint> pReverse = Points.ToList();

@@ -38,12 +38,6 @@ namespace CocosSharp
 
 		}
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         /// <summary>
         /// Reverses the current parallel sequence.
         /// </summary>
@@ -75,10 +69,7 @@ namespace CocosSharp
 
 			for (int i = 0; i < Actions.Length; i++)
 			{
-				if (!Actions [i].HasState)
-					Actions [i].StartWithTarget (target);
-				else
-					ActionStates [i] = (CCFiniteTimeActionState) Actions [i].StartAction (target);
+				ActionStates [i] = (CCFiniteTimeActionState) Actions [i].StartAction (target);
 			}
 		}
 
@@ -86,10 +77,7 @@ namespace CocosSharp
 		{
 			for (int i = 0; i < Actions.Length; i++)
 			{
-				if (!Actions [i].HasState)
-					Actions [i].Stop ();
-				else
-					ActionStates [i].Stop ();
+				ActionStates [i].Stop ();
 			}
 			base.Stop();
 		}
@@ -98,10 +86,7 @@ namespace CocosSharp
 		{
 			for (int i = 0; i < Actions.Length; i++)
 			{
-				if (!Actions [i].HasState)
-					Actions [i].Update (time);
-				else
-					ActionStates [i].Update (time);
+				ActionStates [i].Update (time);
 			}
 		}
 	}

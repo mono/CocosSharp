@@ -12,17 +12,7 @@ namespace CocosSharp
 
         public CCRepeat(CCFiniteTimeAction action, uint times) : base(action.Duration * times)
         {
-            InitWithAction(action, times);
-        }
 
-        // Perform deep copy of CCRepeat
-        protected CCRepeat(CCRepeat repeat) : base(repeat)
-        {
-            InitWithAction(new CCFiniteTimeAction(repeat.InnerAction), repeat.Times);
-        }
-
-        private void InitWithAction(CCFiniteTimeAction action, uint times)
-        {
             Times = times;
             InnerAction = action;
 
@@ -41,12 +31,6 @@ namespace CocosSharp
 		{
 			return new CCRepeatState (this, target);
 
-		}
-
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
 		}
 
         public override CCFiniteTimeAction Reverse()
@@ -75,20 +59,13 @@ namespace CocosSharp
 			ActionInstant = action.ActionInstant;
 
 			NextDt = InnerAction.Duration / Duration;
-			if (!InnerAction.HasState) 
-			{
-				action.StartWithTarget (target);
-				InnerAction.StartWithTarget (target);
-			} 
-			else 
-			{
-				InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction (target);
-			}
+
+			InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction (target);
 		}
 
 		public override void Stop()
 		{
-			InnerAction.Stop();
+			InnerActionState.Stop();
 			base.Stop();
 		}
 
@@ -98,26 +75,15 @@ namespace CocosSharp
 		{
 			if (dt >= NextDt)
 			{
-				if (!InnerAction.HasState)
-					while (dt > NextDt && Total < Times)
-					{
-						InnerAction.Update(1.0f);
-						Total++;
+				while (dt > NextDt && Total < Times)
+				{
+					InnerActionState.Update(1.0f);
+					Total++;
 
-						InnerAction.Stop();
-						InnerAction.StartWithTarget(Target);
-						NextDt += InnerAction.Duration / m_fDuration;
-					}
-				else
-					while (dt > NextDt && Total < Times)
-					{
-						InnerActionState.Update(1.0f);
-						Total++;
-
-						InnerActionState.Stop();
-						InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction(Target);
-						NextDt += InnerAction.Duration / m_fDuration;
-					}
+					InnerActionState.Stop();
+					InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction(Target);
+					NextDt += InnerAction.Duration / m_fDuration;
+				}
 
 				// fix for issue #1288, incorrect end value of repeat
 				if (dt >= 1.0f && Total < Times)
@@ -128,37 +94,22 @@ namespace CocosSharp
 				// don't set an instant action back or update it, it has no use because it has no duration
 				if (!ActionInstant)
 				{
-					if (!InnerAction.HasState)
-						if (Total == Times)
-						{
-							InnerAction.Update(1f);
-							InnerAction.Stop();
-						}
-						else
-						{
-							// issue #390 prevent jerk, use right update
-							InnerAction.Update(dt - (NextDt - InnerAction.Duration / m_fDuration));
-						}
+					if (Total == Times)
+					{
+						InnerActionState.Update(1f);
+						InnerActionState.Stop();
+					}
 					else
-						if (Total == Times)
-						{
-							InnerActionState.Update(1f);
-							InnerActionState.Stop();
-						}
-						else
-						{
-							// issue #390 prevent jerk, use right update
-							InnerActionState.Update(dt - (NextDt - InnerAction.Duration / m_fDuration));
-						}
+					{
+						// issue #390 prevent jerk, use right update
+						InnerActionState.Update(dt - (NextDt - InnerAction.Duration / m_fDuration));
+					}
 
 				}
 			}
 			else
 			{
-				if (!InnerAction.HasState)
-					InnerAction.Update((dt * Times) % 1.0f);
-				else
-					InnerActionState.Update((dt * Times) % 1.0f);
+				InnerActionState.Update((dt * Times) % 1.0f);
 			}
 		}
 

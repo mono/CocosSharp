@@ -30,12 +30,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
 		public override CCFiniteTimeAction Reverse()
         {
             return new CCRepeatForever(InnerAction.Reverse() as CCActionInterval);
@@ -52,33 +46,18 @@ namespace CocosSharp
 			: base(action, target)
 		{ 
 			InnerAction = action.InnerAction;
-			if (InnerAction.HasState)
-				InnerActionState = (CCActionIntervalState)InnerAction.StartAction (target);
-			else
-				InnerAction.StartWithTarget (target);
+			InnerActionState = (CCActionIntervalState)InnerAction.StartAction (target);
 		}
 
 		public override void Step(float dt)
 		{
-			if (!InnerAction.HasState) {
-				InnerAction.Step (dt);
+			InnerActionState.Step (dt);
 
-				if (InnerAction.IsDone) {
-					float diff = InnerAction.Elapsed - InnerAction.Duration;
-					InnerAction.StartWithTarget (Target);
-					InnerAction.Step (0f);
-					InnerAction.Step (diff);
-				}
-			} else {
-
-				InnerActionState.Step (dt);
-
-				if (InnerActionState.IsDone) {
-					float diff = InnerActionState.Elapsed - InnerActionState.Duration;
-					InnerActionState = (CCActionIntervalState)InnerAction.StartAction(Target);
-					InnerActionState.Step (0f);
-					InnerActionState.Step (diff);
-				}
+			if (InnerActionState.IsDone) {
+				float diff = InnerActionState.Elapsed - InnerActionState.Duration;
+				InnerActionState = (CCActionIntervalState)InnerAction.StartAction(Target);
+				InnerActionState.Step (0f);
+				InnerActionState.Step (diff);
 			}
 		}
 

@@ -2,16 +2,16 @@ namespace CocosSharp
 {
     public class CCRotateTo : CCActionInterval
     {
-        protected float m_fDstAngleX;
-        protected float m_fDstAngleY;
+		public float DistanceAngleX { get; private set; }
+		public float DistanceAngleY { get; private set; }
 
 
         #region Constructors
 
         public CCRotateTo(float duration, float fDeltaAngleX, float fDeltaAngleY) : base(duration)
         {
-			m_fDstAngleX = fDeltaAngleX;
-			m_fDstAngleY = fDeltaAngleY;
+			DistanceAngleX = fDeltaAngleX;
+			DistanceAngleY = fDeltaAngleY;
 
         }
 
@@ -21,26 +21,10 @@ namespace CocosSharp
 
         #endregion Constructors
 
-		public float DistanceAngleX
-		{
-			get { return m_fDstAngleX; }
-		}
-
-		public float DistanceAngleY
-		{
-			get { return m_fDstAngleY; }
-		}
-
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCRotateToState (this, target);
 
-		}
-
-		public override bool HasState {
-			get {
-				return true;
-			}
 		}
     }
 
@@ -49,16 +33,16 @@ namespace CocosSharp
 	{
 		protected float m_fDiffAngleY;
 		protected float m_fDiffAngleX;
-		protected float m_fDstAngleX;
-		protected float m_fDstAngleY;
+		protected float DistanceAngleX { get; set; }
+		protected float DistanceAngleY { get; set; }
 		protected float m_fStartAngleX;
 		protected float m_fStartAngleY;
 
 		public CCRotateToState (CCRotateTo action, CCNode target)
 			: base(action, target)
 		{ 
-			m_fDstAngleX = action.DistanceAngleX;
-			m_fDstAngleY = action.DistanceAngleY;
+			DistanceAngleX = action.DistanceAngleX;
+			DistanceAngleY = action.DistanceAngleY;
 
 			// Calculate X
 			m_fStartAngleX = Target.RotationX;
@@ -71,7 +55,7 @@ namespace CocosSharp
 				m_fStartAngleX = m_fStartAngleX % -360.0f;
 			}
 
-			m_fDiffAngleX = m_fDstAngleX - m_fStartAngleX;
+			m_fDiffAngleX = DistanceAngleX - m_fStartAngleX;
 			if (m_fDiffAngleX > 180)
 			{
 				m_fDiffAngleX -= 360;
@@ -93,7 +77,7 @@ namespace CocosSharp
 				m_fStartAngleY = m_fStartAngleY % -360.0f;
 			}
 
-			m_fDiffAngleY = m_fDstAngleY - m_fStartAngleY;
+			m_fDiffAngleY = DistanceAngleY - m_fStartAngleY;
 			if (m_fDiffAngleY > 180)
 			{
 				m_fDiffAngleY -= 360;

@@ -33,13 +33,6 @@ namespace CocosSharp
 
         protected internal CCNode FollowedNode { get; private set; }
 
-        // Take me out later - See comments in CCAction
-        public override bool HasState 
-        { 
-            get { return true; }
-        }
-
-
         #region Constructors
 
         public CCFollow(CCNode followedNode, CCRect rect)

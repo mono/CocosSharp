@@ -74,12 +74,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCSpawn(ActionOne.Reverse(), ActionTwo.Reverse());
@@ -100,28 +94,14 @@ namespace CocosSharp
 			ActionOne = action.ActionOne;
 			ActionTwo = action.ActionTwo;
 
-			if (!ActionOne.HasState)
-				ActionOne.StartWithTarget (target);
-			else
-				ActionStateOne = (CCFiniteTimeActionState)ActionOne.StartAction (target);
-
-			if (!ActionTwo.HasState)
-				ActionTwo.StartWithTarget (target);
-			else
-				ActionStateTwo = (CCFiniteTimeActionState)ActionTwo.StartAction (target);
+			ActionStateOne = (CCFiniteTimeActionState)ActionOne.StartAction (target);
+			ActionStateTwo = (CCFiniteTimeActionState)ActionTwo.StartAction (target);
 		}
 
 		public override void Stop()
 		{
-			if (ActionStateOne == null)
-				ActionOne.Stop();
-			else
-				ActionStateOne.Stop();
-
-			if (ActionStateTwo == null)
-				ActionTwo.Stop ();
-			else
-				ActionStateTwo.Stop ();
+			ActionStateOne.Stop();
+			ActionStateTwo.Stop ();
 
 			base.Stop();
 		}
@@ -130,18 +110,12 @@ namespace CocosSharp
 		{
 			if (ActionOne != null)
 			{
-				if (ActionStateOne == null)
-					ActionOne.Update (time);
-				else
-					ActionStateOne.Update (time);
+				ActionStateOne.Update (time);
 			}
 
 			if (ActionTwo != null)
 			{
-				if (ActionStateTwo == null)
-					ActionTwo.Update (time);
-				else
-					ActionStateTwo.Update (time);
+				ActionStateTwo.Update (time);
 			}
 		}
 

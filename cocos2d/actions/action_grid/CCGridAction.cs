@@ -6,13 +6,6 @@ namespace CocosSharp
     {
         protected internal CCGridSize GridSize { get; private set; }
 
-
-        // Take me out later - See comments in CCAction
-        public override bool HasState 
-        { 
-            get { return true; }
-        }
-
         #region Constructors
 
         public CCGridAction()

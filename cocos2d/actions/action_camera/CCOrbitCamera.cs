@@ -8,128 +8,129 @@ namespace CocosSharp
     /// </summary>
     public class CCOrbitCamera : CCActionCamera
     {
-        protected float m_fAngleX;
-        protected float m_fAngleZ;
-        protected float m_fDeltaAngleX;
-        protected float m_fDeltaAngleZ;
-        protected float m_fDeltaRadius;
-        protected float m_fRadDeltaX;
-        protected float m_fRadDeltaZ;
-        protected float m_fRadX;
-        protected float m_fRadZ;
-        protected float m_fRadius;
+		public float AngleX { get; private set; }
+		public float AngleZ { get; private set; }
+		public float DeltaAngleX { get; private set; }
+		public float DeltaAngleZ { get; private set; }
+		public float DeltaRadius { get; private set; }
+		public float Radius { get; private set; }
 
 
         #region Constructors
 
-        public CCOrbitCamera()
-        {
-            m_fRadius = 0.0f;
-            m_fDeltaRadius = 0.0f;
-            m_fAngleZ = 0.0f;
-            m_fDeltaAngleZ = 0.0f;
-            m_fAngleX = 0.0f;
-            m_fDeltaAngleX = 0.0f;
-            m_fRadZ = 0.0f;
-            m_fRadDeltaZ = 0.0f;
-            m_fRadX = 0.0f;
-            m_fRadDeltaX = 0.0f;
-        }
-
-        protected CCOrbitCamera(CCOrbitCamera copy) : base(copy)
-        {
-            InitCCOrbitCamera(copy.m_fRadius, copy.m_fDeltaRadius, copy.m_fAngleZ, copy.m_fDeltaAngleZ, 
-                copy.m_fAngleX, copy.m_fDeltaAngleX);
-        }
-
         public CCOrbitCamera(float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
                              float deltaAngleX) : base(t)
         {
-            InitCCOrbitCamera(radius, deltaRadius, angleZ, deltaAngleZ, angleX, deltaAngleX);
-        }
-
-        private void InitCCOrbitCamera(float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX, float deltaAngleX)
-        {
-            m_fRadius = radius;
-            m_fDeltaRadius = deltaRadius;
-            m_fAngleZ = angleZ;
-            m_fDeltaAngleZ = deltaAngleZ;
-            m_fAngleX = angleX;
-            m_fDeltaAngleX = deltaAngleX;
-
-            m_fRadDeltaZ = CCMacros.CCDegreesToRadians(deltaAngleZ);
-            m_fRadDeltaX = CCMacros.CCDegreesToRadians(deltaAngleX);
+            Radius = radius;
+            DeltaRadius = deltaRadius;
+            AngleZ = angleZ;
+            DeltaAngleZ = deltaAngleZ;
+            AngleX = angleX;
+            DeltaAngleX = deltaAngleX;
         }
 
         #endregion Constructors
 
+		/// <summary>
+		/// Start the Orbit Camera operation on the given target.
+		/// </summary>
+		/// <param name="target"></param>
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCOrbitCameraState (this, target);
 
-        public void SphericalRadius(out float newRadius, out float zenith, out float azimuth)
-        {
-            float ex, ey, ez, cx, cy, cz, x, y, z;
-            float r; // radius
-            float s;
+		}
 
-            CCCamera pCamera = m_pTarget.Camera;
-            pCamera.GetEyeXyz(out ex, out ey, out ez);
-            pCamera.GetCenterXyz(out cx, out cy, out cz);
-
-            x = ex - cx;
-            y = ey - cy;
-            z = ez - cz;
-
-            r = (float) Math.Sqrt(x * x + y * y + z * z);
-            s = (float) Math.Sqrt(x * x + y * y);
-            if (s == 0.0f)
-                s = float.Epsilon;
-            if (r == 0.0f)
-                r = float.Epsilon;
-
-            zenith = (float) Math.Acos(z / r);
-            if (x < 0)
-                azimuth = (float) Math.PI - (float) Math.Sin(y / s);
-            else
-                azimuth = (float) Math.Sin(y / s);
-
-            newRadius = r / CCCamera.GetZEye();
-        }
-
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCOrbitCamera(this);
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-
-            float r, zenith, azimuth;
-            SphericalRadius(out r, out zenith, out azimuth);
-
-            if (float.IsNaN(m_fRadius))
-                m_fRadius = r;
-
-            if (float.IsNaN(m_fAngleZ))
-                m_fAngleZ = CCMacros.CCRadiansToDegrees(zenith);
-
-            if (float.IsNaN(m_fAngleX))
-                m_fAngleX = CCMacros.CCRadiansToDegrees(azimuth);
-
-            m_fRadZ = CCMacros.CCDegreesToRadians(m_fAngleZ);
-            m_fRadX = CCMacros.CCDegreesToRadians(m_fAngleX);
-        }
-
-        public override void Update(float time)
-        {
-            float r = (m_fRadius + m_fDeltaRadius * time) * CCCamera.GetZEye();
-            float za = m_fRadZ + m_fRadDeltaZ * time;
-            float xa = m_fRadX + m_fRadDeltaX * time;
-
-            float i = (float) Math.Sin(za) * (float) Math.Cos(xa) * r + m_fCenterXOrig;
-            float j = (float) Math.Sin(za) * (float) Math.Sin(xa) * r + m_fCenterYOrig;
-            float k = (float) Math.Cos(za) * r + m_fCenterZOrig;
-
-            m_pTarget.Camera.SetEyeXyz(i, j, k);
-        }
     }
+
+	public class CCOrbitCameraState : CCActionCameraState
+	{
+
+		protected float AngleX { get; set; }
+		protected float AngleZ { get; set; }
+		protected float DeltaAngleX { get; set; }
+		protected float DeltaAngleZ { get; set; }
+		protected float DeltaRadius { get; set; }
+		protected float RadDeltaX  { get; set; }
+		protected float RadDeltaZ { get; set; }
+		protected float RadX { get; set; }
+		protected float RadZ { get; set; }
+		protected float Radius { get; set; }
+
+		public CCOrbitCameraState (CCOrbitCamera action, CCNode target)
+			: base(action, target)
+		{	
+			AngleX = action.AngleX;
+			AngleZ = action.AngleZ;
+			DeltaAngleX = action.DeltaAngleX;
+			DeltaAngleZ = action.DeltaAngleZ;
+			DeltaRadius = action.DeltaRadius;
+			Radius = action.Radius;
+
+			RadDeltaZ = CCMacros.CCDegreesToRadians(DeltaAngleZ);
+			RadDeltaX = CCMacros.CCDegreesToRadians(DeltaAngleX);
+
+			// Only calculate the SpericalRadius when needed.
+			if (float.IsNaN (Radius) || float.IsNaN (AngleZ) || float.IsNaN (AngleX)) 
+			{
+				float r, zenith, azimuth;
+				SphericalRadius (out r, out zenith, out azimuth);
+
+				if (float.IsNaN (Radius))
+					Radius = r;
+
+				if (float.IsNaN (AngleZ))
+					AngleZ = CCMacros.CCRadiansToDegrees (zenith);
+
+				if (float.IsNaN (AngleX))
+					AngleX = CCMacros.CCRadiansToDegrees (azimuth);
+			}
+
+			RadZ = CCMacros.CCDegreesToRadians(AngleZ);
+			RadX = CCMacros.CCDegreesToRadians(AngleX);
+		}
+
+		private void SphericalRadius(out float newRadius, out float zenith, out float azimuth)
+		{
+			float ex, ey, ez, cx, cy, cz, x, y, z;
+			float r; // radius
+			float s;
+
+			CCCamera pCamera = Target.Camera;
+			pCamera.GetEyeXyz(out ex, out ey, out ez);
+			pCamera.GetCenterXyz(out cx, out cy, out cz);
+
+			x = ex - cx;
+			y = ey - cy;
+			z = ez - cz;
+
+			r = (float) Math.Sqrt(x * x + y * y + z * z);
+			s = (float) Math.Sqrt(x * x + y * y);
+			if (s == 0.0f)
+				s = float.Epsilon;
+			if (r == 0.0f)
+				r = float.Epsilon;
+
+			zenith = (float) Math.Acos(z / r);
+			if (x < 0)
+				azimuth = (float) Math.PI - (float) Math.Sin(y / s);
+			else
+				azimuth = (float) Math.Sin(y / s);
+
+			newRadius = r / CCCamera.GetZEye();
+		}
+
+		public override void Update(float time)
+		{
+			float r = (Radius + DeltaRadius * time) * CCCamera.GetZEye();
+			float za = RadZ + RadDeltaZ * time;
+			float xa = RadX + RadDeltaX * time;
+
+			float i = (float) Math.Sin(za) * (float) Math.Cos(xa) * r + centerXOrig;
+			float j = (float) Math.Sin(za) * (float) Math.Sin(xa) * r + centerYOrig;
+			float k = (float) Math.Cos(za) * r + centerZOrig;
+
+			Target.Camera.SetEyeXyz(i, j, k);
+		}
+	}
 }

@@ -6,23 +6,33 @@ namespace CocosSharp
     // Extra action for making a CCSequence or CCSpawn when only adding one action to it.
     internal class CCExtraAction : CCFiniteTimeAction
     {
-        public override CCAction Copy()
-        {
-            return new CCExtraAction();
-        }
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCExtraAction();
         }
 
-        public override void Step(float dt)
-        {
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCExtraActionState (this, target);
 
-        public override void Update(float time)
-        {
-        }
+		}
+
+		#region Internal State 
+		public class CCExtraActionState : CCFiniteTimeActionState
+		{
+
+			public CCExtraActionState (CCExtraAction action, CCNode target)
+				: base(action, target)
+			{ 	}
+
+			public override void Step(float dt)
+			{	}
+
+			public override void Update(float time)
+			{	}
+		}
+		#endregion
+
     }
 
     public class CCActionInterval : CCFiniteTimeAction
@@ -33,11 +43,6 @@ namespace CocosSharp
         public float Elapsed
         {
             get { return m_elapsed; }
-        }
-
-        public override bool IsDone
-        {
-            get { return m_elapsed >= Duration; }
         }
 
         // Used by CCSequence and CCParallel
@@ -77,50 +82,11 @@ namespace CocosSharp
             this.Duration = d;
         }
 
-        // Perform a deep copy of CCACtionInterval
-        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
-        {
-            this.Duration = actionInterval.Duration;
-        }
-
         #endregion Constructors
-
-
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCActionInterval(this);
-        }
-
-        public override void Step(float dt)
-        {
-            if (m_bFirstTick)
-            {
-                m_bFirstTick = false;
-                m_elapsed = 0f;
-            }
-            else
-            {
-                m_elapsed += dt;
-            }
-
-            Update(Math.Max(0f,
-                            Math.Min(1, m_elapsed /
-                                        Math.Max(m_fDuration, float.Epsilon)
-                                )
-                       )
-                );
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_elapsed = 0.0f;
-            m_bFirstTick = true;
-        }
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
-			return null; //new CCActionIntervalState (this, target);
+			return new CCActionIntervalState (this, target);
 
 		}
 

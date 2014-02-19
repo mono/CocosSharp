@@ -120,7 +120,7 @@ namespace CocosSharp
 
         #endregion Constructors
 
-        public CCAnimation DeepCopy()
+        public CCAnimation Copy()
         {
             return new CCAnimation(this);
         }

@@ -31,12 +31,6 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
             return new CCSkewBy(m_fDuration, -m_fSkewX, -m_fSkewY);
