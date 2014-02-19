@@ -49,36 +49,36 @@ namespace CocosSharp
 
     public class CCTwirlState : CCGrid3DActionState
     {
-        protected float CachedAmplitude { get; private set; }
-        protected int CachedTwirls { get; private set; }
-        protected CCPoint CachedPositionInPixels { get; private set; }
+        public float Amplitude { get; set; }
+        public int Twirls { get; set; }
+        public CCPoint PositionInPixels { get; set; }
 
         public CCTwirlState(CCTwirl action, CCNode target) : base(action, target)
         {
-            CachedAmplitude = action.Amplitude;
-            CachedTwirls = action.Twirls;
-            CachedPositionInPixels = action.PositionInPixels;
+            Amplitude = action.Amplitude;
+            Twirls = action.Twirls;
+            PositionInPixels = action.PositionInPixels;
         }
 
         public override void Update(float time)
         {
             int i, j;
             CCPoint avg = CCPoint.Zero;
-            CCPoint c = CachedPositionInPixels;
-            int twirls = CachedTwirls;
+            CCPoint c = PositionInPixels;
+            int twirls = Twirls;
 
-            for (i = 0; i < (CachedGridSize.X + 1); ++i)
+            for (i = 0; i < (GridSize.X + 1); ++i)
             {
-                for (j = 0; j < (CachedGridSize.Y + 1); ++j)
+                for (j = 0; j < (GridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(i,j);
 
-                    avg.X = i - (CachedGridSize.X / 2.0f);
-                    avg.Y = j - (CachedGridSize.Y / 2.0f);
+                    avg.X = i - (GridSize.X / 2.0f);
+                    avg.Y = j - (GridSize.Y / 2.0f);
 
                     var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
-                    float amp = 0.1f * CachedAmplitude * StateAmplitudeRate;
+                    float amp = 0.1f * Amplitude * StateAmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * twirls * 2) * amp;
 
                     float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);

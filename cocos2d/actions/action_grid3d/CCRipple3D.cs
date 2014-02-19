@@ -37,34 +37,34 @@ namespace CocosSharp
 
     public class CCRipple3DState : CCLiquidState
     {
-        protected CCPoint CachedPosition { get; private set; }
-        protected float CachedRadius { get; private set; }
+        public CCPoint Position { get; set; }
+        public float Radius { get; set; }
 
         public CCRipple3DState(CCRipple3D action, CCNode target) : base(action, target)
         {
-            CachedPosition = action.Position;
-            CachedRadius = action.Radius;
+            Position = action.Position;
+            Radius = action.Radius;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            for (i = 0; i < (CachedGridSize.X + 1); ++i)
+            for (i = 0; i < (GridSize.X + 1); ++i)
             {
-                for (j = 0; j < (CachedGridSize.Y + 1); ++j)
+                for (j = 0; j < (GridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
 
-                    CCPoint diff = CachedPosition- new CCPoint(v.X, v.Y);
+                    CCPoint diff = Position- new CCPoint(v.X, v.Y);
                     float r = diff.Length;
 
-                    if (r < CachedRadius)
+                    if (r < Radius)
                     {
-                        r = CachedRadius - r;
-                        float r1 = r / CachedRadius;
+                        r = Radius - r;
+                        float r1 = r / Radius;
                         float rate = r1 * r1;
-                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * CachedWaves * 2 + r * 0.1f) * CachedAmplitude *
+                        v.Z += ((float) Math.Sin(time * MathHelper.Pi * Waves * 2 + r * 0.1f) * Amplitude *
                             StateAmplitudeRate * rate);
                     }
 

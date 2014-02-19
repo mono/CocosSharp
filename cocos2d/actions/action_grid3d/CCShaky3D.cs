@@ -29,30 +29,30 @@ namespace CocosSharp
 
     public class CCShaky3DState : CCGrid3DActionState
     {
-        protected bool CachedShake { get; private set; }
-        protected int CachedRange { get; private set; }
+        public bool Shake { get; set; }
+        public int Range { get; set; }
 
         public CCShaky3DState(CCShaky3D action, CCNode target) : base(action, target)
         {
-            CachedShake = action.Shake;
-            CachedRange = action.Range;
+            Shake = action.Shake;
+            Range = action.Range;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            for (i = 0; i < (CachedGridSize.X + 1); ++i)
+            for (i = 0; i < (GridSize.X + 1); ++i)
             {
-                for (j = 0; j < (CachedGridSize.Y + 1); ++j)
+                for (j = 0; j < (GridSize.Y + 1); ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    v.X += (CCRandom.Next() % (CachedRange * 2)) - CachedRange;
-                    v.Y += (CCRandom.Next() % (CachedRange * 2)) - CachedRange;
+                    v.X += (CCRandom.Next() % (Range * 2)) - Range;
+                    v.Y += (CCRandom.Next() % (Range * 2)) - Range;
 
-                    if (CachedShake)
+                    if (Shake)
                     {
-                        v.Z += (CCRandom.Next() % (CachedRange * 2)) - CachedRange;
+                        v.Z += (CCRandom.Next() % (Range * 2)) - Range;
                     }
 
                     SetVertex(i, j, ref v);

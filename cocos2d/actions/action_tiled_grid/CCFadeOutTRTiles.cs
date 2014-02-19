@@ -73,10 +73,10 @@ namespace CocosSharp
             int i, j;
             CCGridSize newGrid;
 
-            for (i = 0; i < CachedGridSize.X; ++i)
+            for (i = 0; i < GridSize.X; ++i)
             {
                 newGrid.X = i;
-                for (j = 0; j < CachedGridSize.Y; ++j)
+                for (j = 0; j < GridSize.Y; ++j)
                 {
                     newGrid.Y = j;
                     float distance = TestFunc(newGrid, time);
@@ -101,8 +101,8 @@ namespace CocosSharp
 
         public virtual float TestFunc(CCGridSize pos, float time)
         {
-            float px = CachedGridSize.X * time;
-            float py = CachedGridSize.Y * time;
+            float px = GridSize.X * time;
+            float py = GridSize.Y * time;
             if ((px + py) == 0.0f)
             {
                 return 1.0f;

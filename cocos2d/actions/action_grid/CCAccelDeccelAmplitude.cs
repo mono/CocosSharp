@@ -43,7 +43,7 @@ namespace CocosSharp
                 f = 1 - f;
             }
 
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow(f, CachedRate);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow(f, Rate);
         }
     }
 

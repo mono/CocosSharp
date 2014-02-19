@@ -39,17 +39,17 @@ namespace CocosSharp
 
     public class CCLens3DState : CCGrid3DActionState
     {
-        public CCPoint CachedPosition { get; set; }
-        public float CachedRadius { get; set; }
-        public float CachedLensEffect { get; set; }
-        public bool CachedConcave { get; set; }
+        public CCPoint Position { get; set; }
+        public float Radius { get; set; }
+        public float LensEffect { get; set; }
+        public bool Concave { get; set; }
 
         public CCLens3DState(CCLens3D action, CCNode target) : base(action, target)
         {
-            CachedPosition = action.Position;
-            CachedRadius = action.Radius;
-            CachedLensEffect = action.LensEffect;
-            CachedConcave = action.Concave;
+            Position = action.Position;
+            Radius = action.Radius;
+            LensEffect = action.LensEffect;
+            Concave = action.Concave;
         }
 
         public override void Update(float time)
@@ -58,15 +58,15 @@ namespace CocosSharp
 
             CCPoint vect = CCPoint.Zero;
 
-            for (i = 0; i < CachedGridSize.X + 1; ++i)
+            for (i = 0; i < GridSize.X + 1; ++i)
             {
-                for (j = 0; j < CachedGridSize.Y + 1; ++j)
+                for (j = 0; j < GridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    vect = CachedPosition - new CCPoint(v.X, v.Y);
+                    vect = Position - new CCPoint(v.X, v.Y);
 
                     float r = vect.Length;
-                    float radius = CachedRadius;
+                    float radius = Radius;
 
                     if (r < radius)
                     {
@@ -77,7 +77,7 @@ namespace CocosSharp
                             pre_log = 0.001f;
                         }
 
-                        float lensEffect = CachedLensEffect;
+                        float lensEffect = LensEffect;
                         float l = (float) Math.Log(pre_log) * lensEffect;
                         float new_r = (float) Math.Exp(l) * radius;
 
@@ -86,7 +86,7 @@ namespace CocosSharp
                             vect = CCPoint.Normalize(vect);
 
                             CCPoint new_vect = vect * new_r;
-                            v.Z += (CachedConcave ? -1.0f : 1.0f) * new_vect.Length * lensEffect;
+                            v.Z += (Concave ? -1.0f : 1.0f) * new_vect.Length * lensEffect;
                         }
                     }
 

@@ -35,7 +35,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow((1 - time), CachedRate);
+            OtherActionState.StateAmplitudeRate = (float)Math.Pow((1 - time), Rate);
             OtherActionState.Update(time);
         }
     }

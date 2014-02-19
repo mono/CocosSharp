@@ -42,11 +42,11 @@ namespace CocosSharp
             {
                 if (Target != null && !Target.ContentSize.Equals(CCSize.Zero))
                 {
-                    grid3D = new CCGrid3D(CachedGridSize, Target.ContentSize.PointsToPixels());
+                    grid3D = new CCGrid3D(GridSize, Target.ContentSize.PointsToPixels());
                 }
                 else
                 {
-                    grid3D = new CCGrid3D(CachedGridSize);
+                    grid3D = new CCGrid3D(GridSize);
                 }
 
                 return grid3D;

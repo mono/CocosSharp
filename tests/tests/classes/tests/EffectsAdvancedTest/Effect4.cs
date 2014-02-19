@@ -35,8 +35,8 @@ namespace tests
 
             public override CCPoint Position
             {
-                get { return lensState.CachedPosition; }
-                set { lensState.CachedPosition = value; }
+                get { return lensState.Position; }
+                set { lensState.Position = value; }
             }
 
             public Lens3DTarget (CCLens3DState state)

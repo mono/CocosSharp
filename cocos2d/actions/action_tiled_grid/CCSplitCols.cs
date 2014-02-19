@@ -70,7 +70,7 @@ namespace CocosSharp
         {
             int i;
 
-            for (i = 0; i < CachedGridSize.X; ++i)
+            for (i = 0; i < GridSize.X; ++i)
             {
                 CCQuad3 coords = OriginalTile(i, 0);
                 float direction = 1;

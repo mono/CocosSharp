@@ -45,9 +45,9 @@ namespace CocosSharp
             var sinTheta = (float) Math.Sin(theta);
             var cosTheta = (float) Math.Cos(theta);
 
-            for (int i = 0; i <= CachedGridSize.X; ++i)
+            for (int i = 0; i <= GridSize.X; ++i)
             {
-                for (int j = 0; j <= CachedGridSize.Y; ++j)
+                for (int j = 0; j <= GridSize.Y; ++j)
                 {
                     // Get original vertex
                     CCVertex3F p = OriginalVertex(i, j);

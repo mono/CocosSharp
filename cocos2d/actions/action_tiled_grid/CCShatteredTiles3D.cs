@@ -63,47 +63,47 @@ namespace CocosSharp
 
     public class CCShatteredTiles3DState : CCTiledGrid3DActionState
     {
-        protected bool CachedShatterZ { get; private set; }
-        protected int CachedRange { get; private set; }
+        public bool ShatterZ { get; set; }
+        public int Range { get; private set; }
         protected bool ShatterOnce { get; private set; }
 
         public CCShatteredTiles3DState(CCShatteredTiles3D action, CCNode target) : base(action, target)
         {
-            CachedRange = action.Range;
-            CachedShatterZ = action.ShatterZ;
+            Range = action.Range;
+            ShatterZ = action.ShatterZ;
         }
 
         public override void Update(float time)
         {
             int i, j;
-            var doubleRange = CachedRange * 2;
+            var doubleRange = Range * 2;
 
             if (ShatterOnce == false)
             {
-                for (i = 0; i < CachedGridSize.X; ++i)
+                for (i = 0; i < GridSize.X; ++i)
                 {
-                    for (j = 0; j < CachedGridSize.Y; ++j)
+                    for (j = 0; j < GridSize.Y; ++j)
                     {
                         CCQuad3 coords = OriginalTile(i, j);
 
                         // X
-                        coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.BottomRight.X += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.TopLeft.X += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.TopRight.X += (CCRandom.Next() % doubleRange) - CachedRange;
+                        coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - Range;
+                        coords.BottomRight.X += (CCRandom.Next() % doubleRange) - Range;
+                        coords.TopLeft.X += (CCRandom.Next() % doubleRange) - Range;
+                        coords.TopRight.X += (CCRandom.Next() % doubleRange) - Range;
 
                         // Y
-                        coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - CachedRange;
-                        coords.TopRight.Y += (CCRandom.Next() % doubleRange) - CachedRange;
+                        coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - Range;
+                        coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - Range;
+                        coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - Range;
+                        coords.TopRight.Y += (CCRandom.Next() % doubleRange) - Range;
 
-                        if (CachedShatterZ)
+                        if (ShatterZ)
                         {
-                            coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - CachedRange;
-                            coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - CachedRange;
-                            coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - CachedRange;
-                            coords.TopRight.Z += (CCRandom.Next() % doubleRange) - CachedRange;
+                            coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - Range;
+                            coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - Range;
+                            coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - Range;
+                            coords.TopRight.Z += (CCRandom.Next() % doubleRange) - Range;
                         }
 
                         SetTile(i, j, ref coords);

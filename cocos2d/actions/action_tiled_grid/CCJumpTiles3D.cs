@@ -64,26 +64,26 @@ namespace CocosSharp
 
     public class CCJumpTiles3DState : CCTiledGrid3DActionState
     {
-        protected float CachedAmplitude { get; private set; }
-        protected int CachedNumberOfJumps { get; private set; }
+        public float Amplitude { get; set; }
+        protected int NumberOfJumps { get; set; }
 
 
         public CCJumpTiles3DState(CCJumpTiles3D action, CCNode target) : base(action, target)
         {
-            CachedAmplitude = action.Amplitude;
-            CachedNumberOfJumps = action.NumberOfJumps;
+            Amplitude = action.Amplitude;
+            NumberOfJumps = action.NumberOfJumps;
         }
 
         public override void Update(float time)
         {
             int i, j;
 
-            float sinz = ((float) Math.Sin((float) Math.PI * time * CachedNumberOfJumps * 2) * CachedAmplitude * StateAmplitudeRate);
-            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * CachedNumberOfJumps * 2 + 1)) * CachedAmplitude * StateAmplitudeRate);
+            float sinz = ((float) Math.Sin((float) Math.PI * time * NumberOfJumps * 2) * Amplitude * StateAmplitudeRate);
+            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * StateAmplitudeRate);
 
-            for (i = 0; i < CachedGridSize.X; i++)
+            for (i = 0; i < GridSize.X; i++)
             {
-                for (j = 0; j < CachedGridSize.Y; j++)
+                for (j = 0; j < GridSize.Y; j++)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
 

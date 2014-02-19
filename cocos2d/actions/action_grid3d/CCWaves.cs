@@ -31,13 +31,13 @@ namespace CocosSharp
 
     public class CCWavesState : CCLiquidState
     {
-        protected bool CachedVertical { get; private set; }
-        protected bool CachedHorizontal { get; private set; }
+        public bool Vertical { get; set; }
+        public bool Horizontal { get; set; }
 
         public CCWavesState(CCWaves action, CCNode target) : base(action, target)
         {
-            CachedVertical = action.Vertical;
-            CachedHorizontal = action.Horizontal;
+            Vertical = action.Vertical;
+            Horizontal = action.Horizontal;
         }
 
         public override void Update(float time)
@@ -45,22 +45,22 @@ namespace CocosSharp
             int i, j;
             float ampRate = StateAmplitudeRate;
 
-            for (i = 0; i < CachedGridSize.X + 1; ++i)
+            for (i = 0; i < GridSize.X + 1; ++i)
             {
-                for (j = 0; j < CachedGridSize.Y + 1; ++j)
+                for (j = 0; j < GridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
 
-                    if (CachedVertical)
+                    if (Vertical)
                     {
                         v.X = (v.X +
-                            ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.Y * .01f) * CachedAmplitude * ampRate));
+                            ((float) Math.Sin(time * (float) Math.PI * Waves * 2 + v.Y * .01f) * Amplitude * ampRate));
                     }
 
-                    if (CachedHorizontal)
+                    if (Horizontal)
                     {
                         v.Y = (v.Y +
-                            ((float) Math.Sin(time * (float) Math.PI * CachedWaves * 2 + v.X * .01f) * CachedAmplitude * ampRate));
+                            ((float) Math.Sin(time * (float) Math.PI * Waves * 2 + v.X * .01f) * Amplitude * ampRate));
                     }
 
                     SetVertex(i, j, ref v);

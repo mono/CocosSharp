@@ -33,12 +33,12 @@ namespace CocosSharp
         {
             int i, j;
 
-            for (i = 0; i < CachedGridSize.X + 1; ++i)
+            for (i = 0; i < GridSize.X + 1; ++i)
             {
-                for (j = 0; j < CachedGridSize.Y + 1; ++j)
+                for (j = 0; j < GridSize.Y + 1; ++j)
                 {
                     CCVertex3F v = OriginalVertex(i, j);
-                    v.Z += ((float) Math.Sin((float) Math.PI * time * CachedWaves * 2 + (v.Y + v.X) * .01f) * CachedAmplitude *
+                    v.Z += ((float) Math.Sin((float) Math.PI * time * Waves * 2 + (v.Y + v.X) * .01f) * Amplitude *
                         StateAmplitudeRate);
                     SetVertex(i, j, ref v);
                 }
