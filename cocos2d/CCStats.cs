@@ -40,130 +40,140 @@ namespace CocosSharp
     {
 
 
-        int _GCCount;
-        bool m_bEnabled;
-        uint m_uTotalFrames = 0;
-        float m_fAccumDt = 0.0f;
-        uint m_uUpdateCount;
-        float m_fAccumDraw;
-        uint m_uDrawCount;
-        float m_fAccumUpdate;
+        int gcCounter;
+        bool isInitialized, isEnabled;
+        uint totalFrames = 0;
+        float deltaAll = 0.0f;
+        uint updateCount;
+        float totalDrawTime;
+        uint totalDrawCount;
+        float totalUpdateTime;
         float startTime;
 
-        Stopwatch m_pStopwatch;
+        Stopwatch stopwatch;
 
-        WeakReference _wk = new WeakReference(new object());
+        WeakReference gcWeakRef = new WeakReference(new object());
 
-        CCLabelAtlas m_pFPSLabel;
-        CCLabelAtlas m_pUpdateTimeLabel;
-        CCLabelAtlas m_pDrawTimeLabel;
-        CCLabelAtlas m_pDrawsLabel;
-        CCLabelAtlas m_pMemoryLabel;
-        CCLabelAtlas m_pGCLabel;
+        CCLabelAtlas fpsLabel;
+        CCLabelAtlas updateTimeLabel;
+        CCLabelAtlas drawTimeLabel;
+        CCLabelAtlas drawCallLabel;
+        CCLabelAtlas memoryLabel;
+        CCLabelAtlas gcLabel;
 
 
-        public void Prepare ()
+        public bool IsInitialized {
+            get { return isInitialized; }
+        }
+
+
+        public bool IsEnabled {
+            get { return isEnabled; }
+            set {
+                isEnabled = value;
+
+                if (value) {
+                    stopwatch.Reset ();
+                    stopwatch.Start ();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Initialize the stats display.
+        /// </summary>
+        public void Initialize ()
         {
-            if (m_pFPSLabel == null) {
+            if (!isInitialized) {
                 CCTexture2D texture;
                 CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
-                m_pStopwatch = new Stopwatch();
+                stopwatch = new Stopwatch();
 
                 try {
                     texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", SurfaceFormat.Bgra4444) : textureCache.TextureForKey ("cc_fps_images");
 
                     if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0)) {
-                        m_bEnabled = false;
+                        CCLog.Log ("CCStats: Failed to create stats texture");
+
                         return;
                     }
-                } catch (Exception) {
-                    // MonoGame may not allow texture.fromstream, so catch this exception here
-                    // and disable the stats
-                    m_bEnabled = false;
+                } catch (Exception ex) {
+                    // MonoGame may not allow texture.fromstream,
+                    // so catch this exception here and disable the stats
+                    CCLog.Log ("CCStats: Failed to create stats texture:");
+                    CCLog.Log (ex.ToString ());
+
                     return;
                 }
 
                 try {
                     texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
 
-                    m_pFPSLabel = new CCLabelAtlas ("00.0", texture, 4, 8, '.');
-                    m_pFPSLabel.IgnoreContentScaleFactor = false;
+                    fpsLabel = new CCLabelAtlas ("00.0 FPS", texture, 4, 8, '.');
+                    fpsLabel.IgnoreContentScaleFactor = true;
 
-                    m_pUpdateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-                    m_pUpdateTimeLabel.IgnoreContentScaleFactor = false;
+                    updateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
+                    updateTimeLabel.IgnoreContentScaleFactor = true;
 
-                    m_pDrawTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-                    m_pDrawTimeLabel.IgnoreContentScaleFactor = false;
+                    drawTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
+                    drawTimeLabel.IgnoreContentScaleFactor = true;
 
-                    m_pDrawsLabel = new CCLabelAtlas ("000", texture, 4, 8, '.');
-                    m_pDrawsLabel.IgnoreContentScaleFactor = false;
+                    drawCallLabel = new CCLabelAtlas ("000", texture, 4, 8, '.');
+                    drawCallLabel.IgnoreContentScaleFactor = true;
 
-                    m_pMemoryLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-                    m_pMemoryLabel.IgnoreContentScaleFactor = false;
-                    m_pMemoryLabel.Color = new CCColor3B (35, 185, 255);
+                    memoryLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
+                    memoryLabel.IgnoreContentScaleFactor = true;
+                    memoryLabel.Color = new CCColor3B (35, 185, 255);
 
-                    m_pGCLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-                    m_pGCLabel.IgnoreContentScaleFactor = false;
-                    m_pGCLabel.Color = new CCColor3B (255, 196, 54);
+                    gcLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
+                    gcLabel.IgnoreContentScaleFactor = true;
+                    gcLabel.Color = new CCColor3B (255, 196, 54);
                 } catch (Exception ex) {
-                    m_pFPSLabel = null;
-                    m_bEnabled = false;
-
-                    CCLog.Log ("Failed to create the stats labels.");
+                    CCLog.Log ("CCStats: Failed to create stats labels:");
                     CCLog.Log (ex.ToString ());
 
                     return;
                 }
             }
 
-            const float factor = 2.0f;
+            const float factor = 1.0f;
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
-            m_pFPSLabel.Scale = factor;
-            m_pUpdateTimeLabel.Scale = factor;
-            m_pDrawTimeLabel.Scale = factor;
-            m_pDrawsLabel.Scale = factor;
-            m_pMemoryLabel.Scale = factor;
-            m_pGCLabel.Scale = factor;
+            fpsLabel.Scale = factor;
+            updateTimeLabel.Scale = factor;
+            drawTimeLabel.Scale = factor;
+            drawCallLabel.Scale = factor;
+            memoryLabel.Scale = factor;
+            gcLabel.Scale = factor;
 
-            m_pMemoryLabel.Position = new CCPoint (2 * factor, 31 * factor) + pos;
-            m_pGCLabel.Position = new CCPoint (2 * factor, 25 * factor) + pos;
-            m_pDrawsLabel.Position = new CCPoint (2 * factor, 19 * factor) + pos;
-            m_pUpdateTimeLabel.Position = new CCPoint (2 * factor, 13 * factor) + pos;
-            m_pDrawTimeLabel.Position = new CCPoint (2 * factor, 7 * factor) + pos;
-            m_pFPSLabel.Position = new CCPoint (2 * factor, 1 * factor) + pos;
-        }
+            memoryLabel.Position = new CCPoint (2 * factor, 31 * factor) + pos;
+            gcLabel.Position = new CCPoint (2 * factor, 25 * factor) + pos;
+            drawCallLabel.Position = new CCPoint (2 * factor, 19 * factor) + pos;
+            updateTimeLabel.Position = new CCPoint (2 * factor, 13 * factor) + pos;
+            drawTimeLabel.Position = new CCPoint (2 * factor, 7 * factor) + pos;
+            fpsLabel.Position = new CCPoint (2 * factor, 1 * factor) + pos;
 
-
-        public bool Enabled {
-            get { return m_bEnabled; }
-            set {
-                m_bEnabled = value;
-
-                if (value) {
-                    m_pStopwatch.Reset ();
-                    m_pStopwatch.Start ();
-                }
-            }
+            isInitialized = true;
         }
 
 
         public void UpdateStart ()
         {
-            if (m_bEnabled)
-                startTime = (float)m_pStopwatch.Elapsed.TotalMilliseconds;
+            if (isEnabled)
+                startTime = (float)stopwatch.Elapsed.TotalMilliseconds;
         }
 
 
         public void UpdateEnd (float delta)
         {
-            if (m_bEnabled) {
-                m_fAccumDt += delta;
+            if (isEnabled) {
+                deltaAll += delta;
 
-                if (m_bEnabled) {
-                    m_uUpdateCount++;
-                    m_fAccumUpdate += (float)m_pStopwatch.Elapsed.TotalMilliseconds - startTime;
+                if (isEnabled) {
+                    updateCount++;
+                    totalUpdateTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
                 }
             }
         }
@@ -171,37 +181,36 @@ namespace CocosSharp
 
         public void Draw ()
         {
-            if (m_bEnabled) {
-                m_uTotalFrames++;
-                m_uDrawCount++;
-                m_fAccumDraw += (float)m_pStopwatch.Elapsed.TotalMilliseconds - startTime;
+            if (isEnabled) {
+                totalFrames++;
+                totalDrawCount++;
+                totalDrawTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
 
-                if (!_wk.IsAlive) {
-                    _GCCount++;
-                    _wk = new WeakReference (new object ());
+                if (!gcWeakRef.IsAlive) {
+                    gcCounter++;
+                    gcWeakRef = new WeakReference (new object ());
                 }
 
-                if (m_pFPSLabel != null && m_pUpdateTimeLabel != null && m_pDrawsLabel != null) {
-                    if (m_fAccumDt > CCMacros.CCDirectorStatsUpdateIntervalInSeconds) {
-                        m_pFPSLabel.Text = (String.Format ("{0:00.0}", m_uDrawCount / m_fAccumDt));
-
-                        m_pUpdateTimeLabel.Text = (String.Format ("{0:0.000}", m_fAccumUpdate / m_uUpdateCount));
-                        m_pDrawTimeLabel.Text = (String.Format ("{0:0.000}", m_fAccumDraw / m_uDrawCount));
-                        m_pDrawsLabel.Text = (String.Format ("{0:000}", CCDrawManager.DrawCount));
-
-                        m_fAccumDt = m_fAccumDraw = m_fAccumUpdate = 0;
-                        m_uDrawCount = m_uUpdateCount = 0;
-
-                        m_pMemoryLabel.Text = String.Format ("{0}", GC.GetTotalMemory (false));
-                        m_pGCLabel.Text = String.Format ("{0}", _GCCount);
+                if (isInitialized) {
+                    if (deltaAll > CCMacros.CCDirectorStatsUpdateIntervalInSeconds) {
+                        fpsLabel.Text = (String.Format ("{0:00.0}", totalDrawCount / deltaAll));
+                        updateTimeLabel.Text = (String.Format ("{0:0.000}", totalUpdateTime / updateCount));
+                        drawTimeLabel.Text = (String.Format ("{0:0.000}", totalDrawTime / totalDrawCount));
+                        drawCallLabel.Text = (String.Format ("{0:000}", CCDrawManager.DrawCount));
+                        
+                        deltaAll = totalDrawTime = totalUpdateTime = 0;
+                        totalDrawCount = updateCount = 0;
+                        
+                        memoryLabel.Text = String.Format ("{0}", GC.GetTotalMemory (false));
+                        gcLabel.Text = String.Format ("{0}", gcCounter);
                     }
 
-                    m_pDrawsLabel.Visit ();
-                    m_pFPSLabel.Visit ();
-                    m_pUpdateTimeLabel.Visit ();
-                    m_pDrawTimeLabel.Visit ();
-                    m_pMemoryLabel.Visit ();
-                    m_pGCLabel.Visit ();
+                    drawCallLabel.Visit ();
+                    fpsLabel.Visit ();
+                    updateTimeLabel.Visit ();
+                    drawTimeLabel.Visit ();
+                    memoryLabel.Visit ();
+                    gcLabel.Visit ();
                 }
             }    
         }

@@ -302,8 +302,8 @@ namespace CocosSharp
         /// </summary>
         /// <value><c>true</c> if stats is displayed; otherwise, <c>false</c>.</value>
         public bool DisplayStats {
-            get { return m_pStats.Enabled; }
-            set { m_pStats.Enabled = value; }
+            get { return m_pStats.IsEnabled; }
+            set { m_pStats.IsEnabled = value; }
         }
 
         #region Constructors
@@ -710,7 +710,7 @@ namespace CocosSharp
             m_obWinSizeInPoints = CCDrawManager.DesignResolutionSize;
 
             // Prepare stats
-            m_pStats.Prepare ();
+            m_pStats.Initialize ();
 
             SetGlDefaultValues();
 
