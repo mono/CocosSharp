@@ -24,12 +24,6 @@ namespace CocosSharp
             return new CCSpeedState(this, target);
         }
 
-		// Take me out later - See comments in CCAction
-		public override bool HasState 
-		{ 
-			get { return true; }
-		}
-
         public virtual CCActionInterval Reverse()
         {
             return (CCActionInterval) (CCAction) new CCSpeed((CCActionInterval)InnerAction.Reverse(), Speed);

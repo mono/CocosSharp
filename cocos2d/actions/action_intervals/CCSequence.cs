@@ -104,10 +104,7 @@ namespace CocosSharp
 			// Issue #1305
 			if (last != - 1)
 			{
-				if (!actionSequences[last].HasState)
-					actionSequences[last].Stop();
-				else
-					actionStates[last].Stop();
+				actionStates[last].Stop();
 			}
 		}
 
@@ -115,11 +112,7 @@ namespace CocosSharp
 		{
 			if (last > -1 && (actionSequences[last] is CCRepeat || actionSequences[last] is CCRepeatForever))
 			{
-				if (!actionSequences[last].HasState)
-					// Repeats are step based, not update
-					actionSequences[last].Step(dt);
-				else
-					actionStates[last].Step(dt);
+				actionStates[last].Step(dt);
 			}
 			else
 			{
@@ -156,82 +149,42 @@ namespace CocosSharp
 			{
 				if (last == -1)
 				{
-					if (!actionSequences [0].HasState) {
-						// action[0] was skipped, execute it.
-						actionSequences [0].StartWithTarget (Target);
-						actionSequences [0].Update (1.0f);
-						actionSequences [0].Stop ();
-					} else {
-						// action[0] was skipped, execute it.
-						actionSequences [0].StartWithTarget (Target);
-						actionStates [0] = (CCFiniteTimeActionState)actionSequences [0].StartAction (Target);
-						actionStates [0].Update (1.0f);
-						actionStates [0].Stop ();
-					}
+					// action[0] was skipped, execute it.
+					actionStates [0] = (CCFiniteTimeActionState)actionSequences [0].StartAction (Target);
+					actionStates [0].Update (1.0f);
+					actionStates [0].Stop ();
 				}
 				else if (last == 0)
 				{
-					if (!actionSequences [0].HasState) {
-						// switching to action 1. stop action 0.
-						actionSequences [0].Update (1.0f);
-						actionSequences [0].Stop ();
-					} else {
-						actionStates [0].Update (1.0f);
-						actionStates [0].Stop ();
-					}
+					actionStates [0].Update (1.0f);
+					actionStates [0].Stop ();
 				}
 			}
 			else if (found == 0 && last == 1)
 			{
-				if (!actionSequences [0].HasState) {
-					// Reverse mode ?
-					// XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
-					// since it will require a hack to know if an action is on reverse mode or not.
-					// "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
-					actionSequences [1].Update (0);
-					actionSequences [1].Stop ();
-				} else {
-					// Reverse mode ?
-					// XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
-					// since it will require a hack to know if an action is on reverse mode or not.
-					// "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
-					actionStates [1].Update (0);
-					actionStates [1].Stop ();
-
-				}
-			}
-
-			if (!actionSequences [found].HasState) {
-				// Last action found and it is done.
-				if (found == last && actionSequences [found].IsDone) {
-					return;
-				}
-
-
-				// Last action found and it is done
-				if (found != last || bRestart) {
-					actionSequences [found].StartWithTarget (Target);
-				}
-
-				actionSequences [found].Update (new_t);
-				last = found;
-			} else {
-
-				// Last action found and it is done.
-				if (found == last && actionStates [found].IsDone) {
-					return;
-				}
-
-
-				// Last action found and it is done
-				if (found != last || bRestart) {
-					actionStates [found] =  (CCFiniteTimeActionState)actionSequences [found].StartAction (Target);
-				}
-
-				actionStates [found].Update (new_t);
-				last = found;
+				// Reverse mode ?
+				// XXX: Bug. this case doesn't contemplate when _last==-1, found=0 and in "reverse mode"
+				// since it will require a hack to know if an action is on reverse mode or not.
+				// "step" should be overriden, and the "reverseMode" value propagated to inner Sequences.
+				actionStates [1].Update (0);
+				actionStates [1].Stop ();
 
 			}
+
+			// Last action found and it is done.
+			if (found == last && actionStates [found].IsDone) {
+				return;
+			}
+
+
+			// Last action found and it is done
+			if (found != last || bRestart) {
+				actionStates [found] =  (CCFiniteTimeActionState)actionSequences [found].StartAction (Target);
+			}
+
+			actionStates [found].Update (new_t);
+			last = found;
+
 		}
 
 

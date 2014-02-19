@@ -21,15 +21,9 @@ namespace CocosSharp
 
 		}
 
-		public override bool HasState {
-			get {
-				return true;
-			}
-		}
-
         public override CCFiniteTimeAction Reverse()
         {
-			return new CCActionCamera(Duration);
+			return new CCReverseTime(this);
         }
     }
 

@@ -40,28 +40,18 @@ namespace CocosSharp
 			ForcedTarget = action.ForcedTarget;
 			TargetedAction = action.TargetedAction;
 
-			if (!TargetedAction.HasState)
-				TargetedAction.StartWithTarget(ForcedTarget);
-			else
-				ActionState = (CCFiniteTimeActionState)TargetedAction.StartAction(ForcedTarget);
+			ActionState = (CCFiniteTimeActionState)TargetedAction.StartAction(ForcedTarget);
 
 		}
 
 		public override void Stop()
 		{
-
-			if (!TargetedAction.HasState)
-				TargetedAction.Stop();
-			else
-				ActionState.Stop();
+			ActionState.Stop();
 		}
 
 		public override void Update(float time)
 		{
-			if (!TargetedAction.HasState)
-				TargetedAction.Update(time);
-			else
-				ActionState.Update(time);
+			ActionState.Update(time);
 		}
 
 

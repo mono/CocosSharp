@@ -50,44 +50,21 @@ namespace CocosSharp
 
                         m_pCurrentTarget.CurrentActionSalvaged = false;
 
-						if (m_pCurrentTarget.CurrentAction.HasState) 
-						{
-							m_pCurrentTarget.CurrentActionState.Step (dt);
+						m_pCurrentTarget.CurrentActionState.Step (dt);
 
-							if (m_pCurrentTarget.CurrentActionSalvaged) {
-								// The currentAction told the node to remove it. To prevent the action from
-								// accidentally deallocating itself before finishing its step, we retained
-								// it. Now that step is done, it's safe to release it.
+						if (m_pCurrentTarget.CurrentActionSalvaged) {
+							// The currentAction told the node to remove it. To prevent the action from
+							// accidentally deallocating itself before finishing its step, we retained
+							// it. Now that step is done, it's safe to release it.
 
-								//m_pCurrentTarget->currentAction->release();
-							} else if (m_pCurrentTarget.CurrentActionState.IsDone) {
-								m_pCurrentTarget.CurrentActionState.Stop ();
+							//m_pCurrentTarget->currentAction->release();
+						} else if (m_pCurrentTarget.CurrentActionState.IsDone) {
+							m_pCurrentTarget.CurrentActionState.Stop ();
 
-								CCActionState actionState = m_pCurrentTarget.CurrentActionState;
-								// Make currentAction nil to prevent removeAction from salvaging it.
-								m_pCurrentTarget.CurrentAction = null;
-								RemoveAction (actionState);
-							}
-
-						} 
-						else 
-						{
-							m_pCurrentTarget.CurrentAction.Step (dt);
-
-							if (m_pCurrentTarget.CurrentActionSalvaged) {
-								// The currentAction told the node to remove it. To prevent the action from
-								// accidentally deallocating itself before finishing its step, we retained
-								// it. Now that step is done, it's safe to release it.
-
-								//m_pCurrentTarget->currentAction->release();
-							} else if (m_pCurrentTarget.CurrentAction.IsDone) {
-								m_pCurrentTarget.CurrentAction.Stop ();
-
-								CCAction action = m_pCurrentTarget.CurrentAction;
-								// Make currentAction nil to prevent removeAction from salvaging it.
-								m_pCurrentTarget.CurrentAction = null;
-								RemoveAction (action);
-							}
+							CCActionState actionState = m_pCurrentTarget.CurrentActionState;
+							// Make currentAction nil to prevent removeAction from salvaging it.
+							m_pCurrentTarget.CurrentAction = null;
+							RemoveAction (actionState);
 						}
                         m_pCurrentTarget.CurrentAction = null;
                     }
@@ -245,13 +222,8 @@ namespace CocosSharp
 
             CCActionState state = null;
 
-			if (action.HasState) {
-				state = action.StartAction (target);
-				element.ActionStates.Add (state);
-			} else {
-				action.StartWithTarget (target);
-				element.ActionStates.Add (null);
-			}
+			state = action.StartAction (target);
+			element.ActionStates.Add (state);
 
             return state;
         }
@@ -375,21 +347,10 @@ namespace CocosSharp
                 {
                     CCAction action = element.Actions[i];
 
-					if (action.HasState) 
-					{
-						if (action.Tag == tag && element.ActionStates[i].OriginalTarget == target) {
-							RemoveActionAtIndex (i, element);
-							tagFound = true;
-							break;
-						}
-					} 
-					else 
-					{
-						if (action.Tag == tag && action.OriginalTarget == target) {
-							RemoveActionAtIndex (i, element);
-							tagFound = true;
-							break;
-						}
+					if (action.Tag == tag && element.ActionStates[i].OriginalTarget == target) {
+						RemoveActionAtIndex (i, element);
+						tagFound = true;
+						break;
 					}
                 }
 

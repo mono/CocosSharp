@@ -45,11 +45,6 @@ namespace CocosSharp
             get { return m_elapsed; }
         }
 
-        public override bool IsDone
-        {
-            get { return m_elapsed >= Duration; }
-        }
-
         // Used by CCSequence and CCParallel
         // In general though, subclasses should aim to call the base constructor, rather than this explicitly
         public override float Duration
@@ -87,46 +82,7 @@ namespace CocosSharp
             this.Duration = d;
         }
 
-        // Perform a deep copy of CCACtionInterval
-        protected internal CCActionInterval(CCActionInterval actionInterval) : base(actionInterval)
-        {
-            this.Duration = actionInterval.Duration;
-        }
-
         #endregion Constructors
-
-
-        public override object Copy(ICCCopyable zone)
-        {
-            return new CCActionInterval(this);
-        }
-
-        public override void Step(float dt)
-        {
-            if (m_bFirstTick)
-            {
-                m_bFirstTick = false;
-                m_elapsed = 0f;
-            }
-            else
-            {
-                m_elapsed += dt;
-            }
-
-            Update(Math.Max(0f,
-                            Math.Min(1, m_elapsed /
-                                        Math.Max(m_fDuration, float.Epsilon)
-                                )
-                       )
-                );
-        }
-
-        protected internal override void StartWithTarget(CCNode target)
-        {
-            base.StartWithTarget(target);
-            m_elapsed = 0.0f;
-            m_bFirstTick = true;
-        }
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{

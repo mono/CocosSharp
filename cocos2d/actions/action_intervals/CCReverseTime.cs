@@ -37,34 +37,19 @@ namespace CocosSharp
 			: base(action, target)
 		{	
 			Other = action.Other;
-			if (!Other.HasState) {
-				//action.StartWithTarget (target);
-				Other.StartWithTarget (target);
-			} 
-			else 
-			{
-				OtherState = (CCFiniteTimeActionState) Other.StartAction (target);
-			}
+			OtherState = (CCFiniteTimeActionState) Other.StartAction (target);
 		}
 
 		public override void Stop()
 		{
-			if (!Other.HasState) {
-				Other.Stop ();
-				//Action.Stop ();
-			} else {
-				OtherState.Stop ();
-			}
+			OtherState.Stop ();
 		}
 
 		public override void Update(float time)
 		{
 			if (Other != null)
 			{
-				if (!Other.HasState)
-					Other.Update (1 - time);
-				else
-					OtherState.Update (1 - time);
+				OtherState.Update (1 - time);
 			}
 		}
 
