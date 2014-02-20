@@ -30,7 +30,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -67,9 +67,6 @@
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <AssemblyName>cocos2d-xna.iOS</AssemblyName>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
