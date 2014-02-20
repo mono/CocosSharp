@@ -98,10 +98,6 @@
       <Name>testsContent.iOS %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
-      <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
-      <Name>cocos2d.Content.Pipeline.Importers</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
