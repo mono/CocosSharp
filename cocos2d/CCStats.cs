@@ -111,7 +111,7 @@ namespace CocosSharp
                 try {
                     texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
 
-                    fpsLabel = new CCLabelAtlas ("00.0 FPS", texture, 4, 8, '.');
+                    fpsLabel = new CCLabelAtlas ("00.0", texture, 4, 8, '.');
                     fpsLabel.IgnoreContentScaleFactor = true;
 
                     updateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
@@ -148,12 +148,12 @@ namespace CocosSharp
             memoryLabel.Scale = factor;
             gcLabel.Scale = factor;
 
-            memoryLabel.Position = new CCPoint (2 * factor, 31 * factor) + pos;
-            gcLabel.Position = new CCPoint (2 * factor, 25 * factor) + pos;
-            drawCallLabel.Position = new CCPoint (2 * factor, 19 * factor) + pos;
-            updateTimeLabel.Position = new CCPoint (2 * factor, 13 * factor) + pos;
-            drawTimeLabel.Position = new CCPoint (2 * factor, 7 * factor) + pos;
-            fpsLabel.Position = new CCPoint (2 * factor, 1 * factor) + pos;
+            memoryLabel.Position = new CCPoint (4 * factor, 44 * factor) + pos;
+            gcLabel.Position = new CCPoint (4 * factor, 36 * factor) + pos;
+            drawCallLabel.Position = new CCPoint (4 * factor, 28 * factor) + pos;
+            updateTimeLabel.Position = new CCPoint (4 * factor, 20 * factor) + pos;
+            drawTimeLabel.Position = new CCPoint (4 * factor, 12 * factor) + pos;
+            fpsLabel.Position = new CCPoint (4 * factor, 4 * factor) + pos;
 
             isInitialized = true;
         }
