@@ -181,18 +181,6 @@ namespace CocosSharp
             }
         }
 
-        [Obsolete("Use Label Property")]
-        public void SetString(string label)
-        {
-            Text = label;
-        }
-        
-        [Obsolete("Use Label Property")]
-        public string GetString() 
-        {
-            return Text;
-        }
-
         #endregion
 
         public override string ToString()
