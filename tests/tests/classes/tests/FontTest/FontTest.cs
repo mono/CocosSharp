@@ -124,7 +124,6 @@ namespace tests.FontTest
             rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
             leftColor.Position = new CCPoint(0, s.Height / 2);
-            ;
             centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
             rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
 

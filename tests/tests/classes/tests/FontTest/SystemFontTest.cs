@@ -143,83 +143,86 @@ namespace tests.FontTest
 		private const int kTagLabel3 = 3;
 		private const int kTagLabel4 = 4;
 
+		private CCSize blockSize;
+		private CCSize size;
+		private float fontSize = 26;
+
+
 		public SystemFontTest()
 		{
-			CCSize s = CCDirector.SharedDirector.WinSize;
+			size = CCDirector.SharedDirector.WinSize;
+
 			CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
 			CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
 			CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
 			CCMenu menu = new CCMenu(item1, item2, item3);
 			menu.Position = CCPoint.Zero;
-			item1.Position = new CCPoint(s.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
-			item2.Position = new CCPoint(s.Width / 2, item2.ContentSize.Height / 2);
-			item3.Position = new CCPoint(s.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+			item1.Position = new CCPoint(size.Width / 2 - item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
+			item2.Position = new CCPoint(size.Width / 2, item2.ContentSize.Height / 2);
+			item3.Position = new CCPoint(size.Width / 2 + item2.ContentSize.Width * 2, item2.ContentSize.Height / 2);
 			AddChild(menu, 1);
 
-            var blockSize = new CCSize(s.Width / 3, 200);
+			blockSize = new CCSize(size.Width / 3, 200);
 
-            CCLayerColor leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width,
-                                                      blockSize.Height);
-            CCLayerColor centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width,
-                                                        blockSize.Height);
-            CCLayerColor rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width,
-                                                       blockSize.Height);
+			var leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width,
+				blockSize.Height);
+			var centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width,
+				blockSize.Height);
+			var rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width,
+				blockSize.Height);
 
-            leftColor.IgnoreAnchorPointForPosition = false;
-            centerColor.IgnoreAnchorPointForPosition = false;
-            rightColor.IgnoreAnchorPointForPosition = false;
+			leftColor.IgnoreAnchorPointForPosition = false;
+			centerColor.IgnoreAnchorPointForPosition = false;
+			rightColor.IgnoreAnchorPointForPosition = false;
 
-            leftColor.AnchorPoint = new CCPoint(0, 0.5f);
-            centerColor.AnchorPoint = new CCPoint(0, 0.5f);
-            rightColor.AnchorPoint = new CCPoint(0, 0.5f);
+			leftColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
+			centerColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
+			rightColor.AnchorPoint = CCPoint.AnchorMiddleLeft;
 
-            leftColor.Position = new CCPoint(0, s.Height / 2);
-            ;
-            centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
-            rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+			leftColor.Position = new CCPoint(0, size.Height / 2);
+			centerColor.Position = new CCPoint(blockSize.Width, size.Height / 2);
+			rightColor.Position = new CCPoint(blockSize.Width * 2, size.Height / 2);
 
-            AddChild(leftColor, -1);
-            AddChild(rightColor, -1);
-            AddChild(centerColor, -1);
+			AddChild(leftColor, -1);
+			AddChild(rightColor, -1);
+			AddChild(centerColor, -1);
 
 			showFont(SystemFontTestScene.restartAction());
 		}
 
 		public void showFont(string pFont)
 		{
-			CCSize s = CCDirector.SharedDirector.WinSize;
-
-			var blockSize = new CCSize(s.Width / 3, 200);
-			float fontSize = 26;
 
 			RemoveChildByTag(kTagLabel1, true);
 			RemoveChildByTag(kTagLabel2, true);
 			RemoveChildByTag(kTagLabel3, true);
 			RemoveChildByTag(kTagLabel4, true);
 
-
-			var top = new CCLabel(pFont,"Arial", 24);
+			var top = new CCLabel(pFont,"Helvetica", 32);
 
 			var left = new CCLabel("alignment left", pFont, fontSize,
-			                                 blockSize, CCTextAlignment.Left,
-			                                 SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				blockSize, CCTextAlignment.Left,
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+
 			var center = new CCLabel("alignment center", pFont, fontSize,
-			                                   blockSize, CCTextAlignment.Center,
-			                                   SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				blockSize, CCTextAlignment.Center,
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+
 			var right = new CCLabel("alignment right", pFont, fontSize,
-			                                  blockSize, CCTextAlignment.Right,
-			                                  SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
+				blockSize, CCTextAlignment.Right,
+				SystemFontTestScene.verticalAlignment[SystemFontTestScene.vAlignIdx]);
 
 			top.AnchorPoint = new CCPoint(0.5f, 1);
-			left.AnchorPoint = new CCPoint(0, 0.5f);
-			center.AnchorPoint = new CCPoint(0, 0.5f);
-			right.AnchorPoint = new CCPoint(0, 0.5f);
+			left.AnchorPoint = CCPoint.AnchorMiddleLeft;
+			center.AnchorPoint = CCPoint.AnchorMiddleLeft;
+			right.AnchorPoint = CCPoint.AnchorMiddleLeft;
 
-			top.Position = new CCPoint(s.Width / 2, s.Height - 20);
-			left.Position = new CCPoint(0, s.Height / 2);
-			center.Position = new CCPoint(blockSize.Width, s.Height / 2);
-			right.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
+			top.Position = new CCPoint(size.Width / 2, size.Height - 20);
+			left.Position = new CCPoint(0, size.Height / 2);
+			center.Position = new CCPoint(blockSize.Width, size.Height / 2);
+
+			right.Position = new CCPoint(blockSize.Width * 2, size.Height / 2);
 
 			AddChild(left, 0, kTagLabel1);
 			AddChild(right, 0, kTagLabel2);

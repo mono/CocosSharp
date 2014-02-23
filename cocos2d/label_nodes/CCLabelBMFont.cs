@@ -471,7 +471,7 @@ namespace CocosSharp
                 }
             }
 
-            totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
+			totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
             nextFontPositionY = 0 -
                                 (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
 
@@ -555,7 +555,7 @@ namespace CocosSharp
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
-                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+						(float) (nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor()));
                 fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
@@ -851,16 +851,16 @@ namespace CocosSharp
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
+						lineWidth = lastChar.Position.X + lastChar.ContentSize.PointsToPixels().Width / 2.0f;
 
                         float shift = 0;
                         switch (m_pHAlignment)
                         {
                             case CCTextAlignment.Center:
-                                shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
+							shift = ContentSize.PointsToPixels().Width / 2.0f - lineWidth / 2.0f;
                                 break;
                             case CCTextAlignment.Right:
-                                shift = ContentSize.Width - lineWidth;
+							shift = ContentSize.PointsToPixels().Width - lineWidth;
                                 break;
                             default:
                                 break;
@@ -901,15 +901,11 @@ namespace CocosSharp
                     }
                 }
 
-                float yOffset = 0;
+				float yOffset = m_tDimensions.Height - m_pConfiguration.m_nCommonHeight * lineNumber;
 
                 if (m_pVAlignment == CCVerticalTextAlignment.Center)
                 {
-                    yOffset = m_tDimensions.Height / 2f - (m_pConfiguration.m_nCommonHeight * lineNumber) / 2f;
-                }
-                else
-                {
-                    yOffset = m_tDimensions.Height - m_pConfiguration.m_nCommonHeight * lineNumber;
+					yOffset /= 2f;
                 }
 
                 for (int i = 0; i < str_len; i++)
@@ -922,12 +918,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-            return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * m_fScaleX - (sp.ContentSize.PointsToPixels().Width * m_fScaleX * sp.AnchorPointInPoints.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-            return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * m_fScaleX + (sp.ContentSize.PointsToPixels().Width * m_fScaleX * sp.AnchorPointInPoints.X);
         }
 
 

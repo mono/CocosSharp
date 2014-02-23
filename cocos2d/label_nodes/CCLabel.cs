@@ -123,7 +123,7 @@ namespace CocosSharp
             InitializeFont(fontName, fontSize, text);
             m_FontName = fontName;
             m_FontSize = fontSize;
-            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions.PointsToPixels(), hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
+            base.InitCCLabelBMFont(text, GetFontKey(fontName, fontSize), dimensions, hAlignment, vAlignment, CCPoint.Zero, m_pTexture);
         }
 
         #endregion Constructors
