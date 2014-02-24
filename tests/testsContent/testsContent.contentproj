@@ -1329,6 +1329,11 @@
       <Importer>TMXImporter</Importer>
       <Processor>TMXProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-32.spritefont">
+      <Name>MarkerFelt-32</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="animations\ghosts.plist">
