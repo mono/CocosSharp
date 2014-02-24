@@ -765,9 +765,6 @@
     <Compile Include=".\menu_nodes\CCMenuItem.cs">
       <LogicalName>menu_nodes\CCMenuItem</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemAtlasFont.cs">
-      <LogicalName>menu_nodes\CCMenuItemAtlasFont</LogicalName>
-    </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemFont.cs">
       <LogicalName>menu_nodes\CCMenuItemFont</LogicalName>
     </Compile>
@@ -776,9 +773,6 @@
     </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemLabel.cs">
       <LogicalName>menu_nodes\CCMenuItemLabel</LogicalName>
-    </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemSprite.cs">
-      <LogicalName>menu_nodes\CCMenuItemSprite</LogicalName>
     </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemToggle.cs">
       <LogicalName>menu_nodes\CCMenuItemToggle</LogicalName>
