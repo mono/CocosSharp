@@ -38,7 +38,7 @@ namespace tests
             TouchEnabled = true;
 
             // ask director the the window size
-            CCSize size = CCDirector.SharedDirector.WinSize;
+			var size = CCDirector.SharedDirector.WinSize;
 
             // create and initialize a Label
             m_pLabelShouldRetain = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
@@ -48,10 +48,10 @@ namespace tests
             m_pArrowsShouldRetain = new CCSprite("Images/arrows");
 
             uint fontSize = 20;
-            CCMenuItemFont longSentences = new CCMenuItemFont("Long Flowing Sentences", fontSize, stringChanged);
-            CCMenuItemFont lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", fontSize, stringChanged);
-            CCMenuItemFont mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", fontSize, stringChanged);
-            CCMenu stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
+			var longSentences = new CCMenuItemFont("Long Flowing Sentences", fontSize, stringChanged);
+			var lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", fontSize, stringChanged);
+			var mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", fontSize, stringChanged);
+			var stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
             longSentences.Color = CCTypes.CCRed;
@@ -62,10 +62,10 @@ namespace tests
 
             fontSize = 30;
 
-            CCMenuItemFont left = new CCMenuItemFont("Left", fontSize, alignmentChanged);
-            CCMenuItemFont center = new CCMenuItemFont("Center", fontSize, alignmentChanged);
-            CCMenuItemFont right = new CCMenuItemFont("Right", fontSize, alignmentChanged);
-            CCMenu alignmentMenu = new CCMenu(left, center, right);
+			var left = new CCMenuItemFont("Left", fontSize, alignmentChanged);
+			var center = new CCMenuItemFont("Center", fontSize, alignmentChanged);
+			var right = new CCMenuItemFont("Right", fontSize, alignmentChanged);
+			var alignmentMenu = new CCMenu(left, center, right);
             alignmentMenu.AlignItemsHorizontallyWithPadding(alignmentItemPadding);
 
             center.Color = CCTypes.CCRed;
@@ -75,7 +75,7 @@ namespace tests
             right.Tag = (RightAlign);
 
             // position the label on the center of the screen
-            m_pLabelShouldRetain.Position = new CCPoint(size.Width / 2, size.Height / 2);
+			m_pLabelShouldRetain.Position = size.Center;
 
             m_pArrowsBarShouldRetain.Visible = (false);
 

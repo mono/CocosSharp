@@ -17,14 +17,14 @@ namespace tests
                 string str;
                 //sprintf(str, "-%d-", i);
                 str = string.Format("-{0}-", i);
-                CCLabelBMFont label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
+				var label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
                 AddChild(label);
 
-                CCSize s = CCDirector.SharedDirector.WinSize;
+				var s = CCDirector.SharedDirector.WinSize;
 
-                CCPoint p = new CCPoint(CCMacros.CCRandomBetween0And1() * s.Width, CCMacros.CCRandomBetween0And1() * s.Height);
+				var p = new CCPoint(CCMacros.CCRandomBetween0And1() * s.Width, CCMacros.CCRandomBetween0And1() * s.Height);
                 label.Position = p;
-                label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                label.AnchorPoint = CCPoint.AnchorMiddle;
             }
         }
 

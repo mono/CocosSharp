@@ -21,8 +21,8 @@ namespace tests
 
 			var s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label.Position = s.Center;
+			label.AnchorPoint = CCPoint.AnchorMiddle;
 
 
 			var BChar = (CCSprite)label.GetChildByTag(0);
@@ -67,14 +67,10 @@ namespace tests
         public virtual void step(float dt)
         {
             m_time += dt;
-            //char string[10] = {0};
-            string Stepstring;
-            //sprintf(string, "%04.1f", m_time);
-            Stepstring = string.Format("{0,4:f1}", m_time);
-            // 	std::string string;
-            // 	string.format("%04.1f", m_time);
 
-            CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
+			var Stepstring = string.Format("{0,4:f1}", m_time);
+
+			var label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
             label1.Text = (Stepstring);
         }
 

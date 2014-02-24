@@ -15,12 +15,12 @@ namespace tests
         {
             m_time = 0;
 
-            CCLabelAtlas label1 = new CCLabelAtlas("123 Test", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+			var label1 = new CCLabelAtlas("123 Test", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label1, 0, (int)TagSprite.kTagSprite1);
             label1.Position = new CCPoint(10, 100);
             label1.Opacity = 200;
 
-            CCLabelAtlas label2 = new CCLabelAtlas("0123456789", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+			var label2 = new CCLabelAtlas("0123456789", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label2, 0, (int)TagSprite.kTagSprite2);
             label2.Position = new CCPoint(10, 200);
             label2.Opacity = 32;
@@ -38,10 +38,10 @@ namespace tests
             Stepstring = string.Format("{0,2:f2} Test", m_time);
             //Stepstring.format("%2.2f Test", m_time);
 
-            CCLabelAtlas label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
+			var label1 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite1);
             label1.Text = (Stepstring);
 
-            CCLabelAtlas label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
+			var label2 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagSprite2);
             //sprintf(Stepstring, "%d", (int)m_time);
             Stepstring = m_time.ToString();
             Stepstring = string.Format("{0:d}", (int)m_time);

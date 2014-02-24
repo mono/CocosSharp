@@ -6,22 +6,20 @@ namespace tests
     {
         public LabelTTFA8Test()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
+			var layer = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
             AddChild(layer, -10);
 
             // CCLabelBMFont
-            CCLabelTTF label1 = new CCLabelTTF("Testing A8 Format", "Marker Felt", 38);
+			var label1 = new CCLabelTTF("Testing A8 Format", "MarkerFelt", 38);
             AddChild(label1);
             label1.Color = CCTypes.CCRed;
-            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
+			label1.Position = s.Center;
 
-            CCFadeOut fadeOut = new CCFadeOut  (2);
-            CCFadeIn fadeIn = new CCFadeIn  (2);
-            CCFiniteTimeAction seq = new CCSequence(fadeOut, fadeIn);
-            CCRepeatForever forever = new CCRepeatForever ((CCActionInterval) seq);
-            label1.RunAction(forever);
+			var fadeOut = new CCFadeOut  (2);
+			var fadeIn = new CCFadeIn  (2);
+			label1.RepeatForever(fadeIn, fadeOut);
         }
 
         public override string title()

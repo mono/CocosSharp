@@ -54,8 +54,8 @@ namespace tests
 
 
 			var s = CCDirector.SharedDirector.WinSize;
-            label1.Position = new CCPoint();
-            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
+			label1.Position = CCPoint.Zero;
+			label2.Position = s.Center;
             label3.Position = new CCPoint(s.Width, s.Height);
 
             base.Schedule(step);

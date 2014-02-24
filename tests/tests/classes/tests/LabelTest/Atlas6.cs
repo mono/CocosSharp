@@ -15,17 +15,17 @@ namespace tests
             label = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            label.AnchorPoint = CCPoint.AnchorMiddle;
 
             label = new CCLabelBMFont("fafefifofu", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            label.AnchorPoint = CCPoint.AnchorMiddle;
 
             label = new CCLabelBMFont("aeiou", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            label.AnchorPoint = CCPoint.AnchorMiddle;
         }
 
         public override string title()

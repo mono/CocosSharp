@@ -6,7 +6,7 @@ namespace tests
     {
         public BMFontInit()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
             var bmFont = new CCLabelBMFont();
             //CCLabelBMFont* bmFont = [CCLabelBMFont create:@"Foo" fntFile:@"arial-unicode-26"];
@@ -23,7 +23,7 @@ namespace tests
 
         public override string subtitle()
         {
-            return "Test for support of init method without parameters.";
+			return "Test for support of CCLabelBMFont constructor without parameters.";
         }
     }
 }

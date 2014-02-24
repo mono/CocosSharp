@@ -6,10 +6,10 @@ namespace tests
     {
         public TTFFontInit()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
             var font = new CCLabelTTF();
-            font.FontName = "Marker Felt";
+            font.FontName = "MarkerFelt";
             font.FontSize = 38;
             font.Text = ("It is working!");
             AddChild(font);
@@ -23,7 +23,7 @@ namespace tests
 
         public override string subtitle()
         {
-            return "Test for support of init method without parameters.";
+			return "Test for support of CCLabelTTF() constructor without parameters.";
         }
     }
 }

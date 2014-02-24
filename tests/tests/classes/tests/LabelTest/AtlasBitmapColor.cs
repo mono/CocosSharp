@@ -28,29 +28,29 @@ namespace tests
             G = 255,
             B = 0
         };
+
         public AtlasBitmapColor()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelBMFont label = null;
-            label = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
+			var label = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
             label.Color = ccBLUE;
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, s.Height / 4);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label.AnchorPoint = CCPoint.AnchorMiddle;
 
             label = new CCLabelBMFont("Red", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label.AnchorPoint = CCPoint.AnchorMiddle;
             label.Color = ccRED;
 
             label = new CCLabelBMFont("G", "fonts/bitmapFontTest5.fnt");
             AddChild(label);
             label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label.AnchorPoint = CCPoint.AnchorMiddle;
             label.Color = ccGREEN;
-            label.Text = ("Green");
+            label.Text = "Green";
         }
 
         public override string title()
