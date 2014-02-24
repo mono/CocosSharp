@@ -2,54 +2,56 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCMenuItemFont : CCMenuItemLabel
+    public class CCMenuItemFont : CCMenuItemLabelTTF
     {
-        protected string m_strFontName;
-        protected uint m_uFontSize;
+        uint fontSize;
+        string fontName;
 
-        public static uint FontSize
-        {
-            get { return _fontSize; }
-            set { _fontSize = value; }
-        }
 
-        public static string FontName
-        {
-            get { return _fontName; }
-            set { _fontName = value; }
-        }
+        #region Properties
 
-        public uint FontSizeObj
-        {
-            set
+        public uint FontSize 
+        { 
+            get { return fontSize; }
+            set 
             {
-                m_uFontSize = value;
+                fontSize = value;
                 RecreateLabel();
             }
-            get { return m_uFontSize; }
         }
 
-        public string FontNameObj
-        {
-            set
+        public string FontName 
+        { 
+            get { return fontName; }
+            set 
             {
-                m_strFontName = value;
+                fontName = value;
                 RecreateLabel();
             }
-            get { return m_strFontName; }
         }
+
+        #endregion Properties
 
 
         #region Constructors
 
-        public CCMenuItemFont (string value) : this(value, null)
-        { }
-
-        public CCMenuItemFont (string value, Action<object> selector) 
-            : base (new CCLabelTTF(value, _fontName, _fontSize), selector)
+        public CCMenuItemFont (string labelString, string fontNameIn = "arial", uint fontSizeIn = 32, Action<object> selector = null) 
+            : base(new CCLabelTTF(labelString, fontNameIn, fontSizeIn), selector)
         {
-            m_strFontName = _fontName;
-            m_uFontSize = _fontSize;
+            fontSize = fontSizeIn;
+            fontName = fontNameIn;
+        }
+
+        public CCMenuItemFont (string labelString, uint fontSizeIn = 32, Action<object> selector = null) : this(labelString, "arial", fontSizeIn, selector)
+        {
+        }
+
+        public CCMenuItemFont (string labelString, Action<object> selector = null) : this(labelString, "arial", 32, selector)
+        {
+        }
+
+        public CCMenuItemFont (string labelString) : this(labelString, "arial", 32, null)
+        {
         }
 
         #endregion Constructors
@@ -57,8 +59,8 @@ namespace CocosSharp
 
         protected void RecreateLabel()
         {
-            CCLabelTTF label = new CCLabelTTF((m_pLabel as ICCTextContainer).Text, m_strFontName, m_uFontSize);
-            Label = label;
+            CCLabelTTF label = new CCLabelTTF(LabelTTF.Text, FontName, FontSize);
+            LabelTTF = label;
         }
     }
 }

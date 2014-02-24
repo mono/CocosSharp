@@ -12,11 +12,10 @@ namespace tests.Extensions
 
 			var pMenu = new CCMenu();
 			pMenu.Position = CCPoint.Zero;
-			CCMenuItemFont.FontName = "arial";
-			CCMenuItemFont.FontSize = 24;
+
 			for (int i = 0; i < ExtensionsTestScene.TEST_MAX_COUNT; ++i)
 			{
-				var pItem = new CCMenuItemFont(ExtensionsTestScene.testsName[i], menuCallback);
+                var pItem = new CCMenuItemFont(ExtensionsTestScene.testsName[i], "arial", 24, menuCallback);
 				pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * ExtensionsTestScene.LINE_SPACE);
 				pMenu.AddChild(pItem, ExtensionsTestScene.kItemTagBasic + i);
 			}

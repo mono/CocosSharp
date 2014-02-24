@@ -19,8 +19,8 @@ namespace tests
 
             CCLabelTTF label1 = new CCLabelTTF("Compressed Interpolation: Enabled", "arial", 26);
             CCLabelTTF label2 = new CCLabelTTF("Compressed Interpolation: Disabled", "arial", 26);
-            CCMenuItemLabel item1 = new CCMenuItemLabel(label1);
-            CCMenuItemLabel item2 = new CCMenuItemLabel(label2);
+            CCMenuItemLabelTTF item1 = new CCMenuItemLabelTTF(label1);
+            CCMenuItemLabelTTF item2 = new CCMenuItemLabelTTF(label2);
             CCMenuItemToggle item = new CCMenuItemToggle((toggleItem), item1, item2);
 
             CCMenu menu = new CCMenu(item);

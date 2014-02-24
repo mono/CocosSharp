@@ -20,10 +20,10 @@ namespace tests
             lastRenderedCount = 0;
             quantityParticles = particles;
 
-            CCMenuItemFont.FontSize = 64;
-            CCMenuItemFont decrease = new CCMenuItemFont(" - ", onDecrease);
+            uint fontSize = 64;
+            CCMenuItemFont decrease = new CCMenuItemFont(" - ", fontSize, onDecrease);
             decrease.Color = new CCColor3B(0, 200, 20);
-            CCMenuItemFont increase = new CCMenuItemFont(" + ", onIncrease);
+            CCMenuItemFont increase = new CCMenuItemFont(" + ", fontSize, onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = new CCMenu(decrease, increase);
@@ -46,7 +46,7 @@ namespace tests
             AddChild(pMenu, 1, PerformanceParticleTest.kTagMenuLayer);
 
             // Sub Tests
-            CCMenuItemFont.FontSize = 38;
+            fontSize = 38;
             CCMenu pSubMenu = new CCMenu(null);
             for (int i = 1; i <= 6; ++i)
             {
@@ -54,7 +54,7 @@ namespace tests
                 string str;
                 //sprintf(str, "%d ", i);
                 str = string.Format("{0:G}", i);
-                CCMenuItemFont itemFont = new CCMenuItemFont(str, testNCallback);
+                CCMenuItemFont itemFont = new CCMenuItemFont(str, fontSize, testNCallback);
                 itemFont.Tag = i;
                 pSubMenu.AddChild(itemFont, 10);
 

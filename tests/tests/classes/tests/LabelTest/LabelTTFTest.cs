@@ -20,11 +20,11 @@ namespace tests
 
             AddChild(colorLayer);
 
-            CCMenuItemFont.FontSize = 30;
+            uint fontSize = 30;
             CCMenu menu = new CCMenu(
-                new CCMenuItemFont("Left", setAlignmentLeft),
-                new CCMenuItemFont("Center", setAlignmentCenter),
-                new CCMenuItemFont("Right", setAlignmentRight)
+                new CCMenuItemFont("Left", fontSize, setAlignmentLeft),
+                new CCMenuItemFont("Center", fontSize, setAlignmentCenter),
+                new CCMenuItemFont("Right", fontSize, setAlignmentRight)
                 );
             menu.AlignItemsVerticallyWithPadding(4);
             menu.Position = new CCPoint(50, s.Height / 2 - 20);

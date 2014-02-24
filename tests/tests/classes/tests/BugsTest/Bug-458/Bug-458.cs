@@ -25,13 +25,12 @@ namespace tests
             //		[question setContentSize:CGSizeMake(50,50)];
             //		[question2 setContentSize:CGSizeMake(50,50)];
 
-            CCMenuItemSprite sprite = new CCMenuItemSprite(question2, question, this, selectAnswer);
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(0, 0, 255, 255), 100, 100);
+            CCMenuItemImage sprite = new CCMenuItemImage(question2, question, selectAnswer);
 
-
-            CCLayerColor layer2 = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 100, 100);
-            CCMenuItemSprite sprite2 = new CCMenuItemSprite(layer, layer2, this, selectAnswer);
-            CCMenu menu = new CCMenu(sprite, sprite2, null);
+            //CCLayerColor layer = new CCLayerColor(new CCColor4B(0, 0, 255, 255), 100, 100);
+            //CCLayerColor layer2 = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 100, 100);
+            //CCMenuItemImage sprite2 = new CCMenuItemImage(layer, layer2, this, selectAnswer);
+            CCMenu menu = new CCMenu(sprite, null);
             menu.AlignItemsVerticallyWithPadding(100);
             menu.Position = new CCPoint(size.Width / 2, size.Height / 2);
 

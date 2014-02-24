@@ -158,7 +158,7 @@ namespace CocosSharp
                 rightShoulder == CCGamePadButtonStatus.Pressed)
             {
                 CCMenuItem item = FocusedItem;
-                item.Selected();
+                item.Selected = true;
                 m_pSelectedItem = item;
                 m_eState = CCMenuState.TrackingTouch;
             }
@@ -173,7 +173,7 @@ namespace CocosSharp
                     if (item != null && m_pSelectedItem == item)
                     {
                         // Activate this item
-                        item.Unselected();
+                        item.Selected = false;
                         item.Activate();
                         m_eState = CCMenuState.Waiting;
                         m_pSelectedItem = null;
@@ -233,7 +233,7 @@ namespace CocosSharp
             {
                 if (m_pSelectedItem != null)
                 {
-                    m_pSelectedItem.Unselected();
+                    m_pSelectedItem.Selected = false;
                     m_pSelectedItem = null;
                 }
                 m_eState = CCMenuState.Waiting;
@@ -280,7 +280,7 @@ namespace CocosSharp
             if (m_pSelectedItem != null)
             {
                 m_eState = CCMenuState.TrackingTouch;
-                m_pSelectedItem.Selected();
+                m_pSelectedItem.Selected = true;
                 return true;
             }
             return false;
@@ -291,7 +291,7 @@ namespace CocosSharp
             Debug.Assert(m_eState == CCMenuState.TrackingTouch, "[Menu TouchEnded] -- invalid state");
             if (m_pSelectedItem != null)
             {
-                m_pSelectedItem.Unselected();
+                m_pSelectedItem.Selected = false;
                 m_pSelectedItem.Activate();
             }
             m_eState = CCMenuState.Waiting;
@@ -302,7 +302,7 @@ namespace CocosSharp
             Debug.Assert(m_eState == CCMenuState.TrackingTouch, "[Menu ccTouchCancelled] -- invalid state");
             if (m_pSelectedItem != null)
             {
-                m_pSelectedItem.Unselected();
+                m_pSelectedItem.Selected = false;
             }
             m_eState = CCMenuState.Waiting;
         }
@@ -315,14 +315,14 @@ namespace CocosSharp
             {
                 if (m_pSelectedItem != null)
                 {
-                    m_pSelectedItem.Unselected();
+                    m_pSelectedItem.Selected = false;
                 }
 
                 m_pSelectedItem = currentItem;
 
                 if (m_pSelectedItem != null)
                 {
-                    m_pSelectedItem.Selected();
+                    m_pSelectedItem.Selected = true;
                 }
             }
         }

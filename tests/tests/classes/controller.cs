@@ -54,7 +54,7 @@ namespace tests
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
                 var label = new CCLabelTTF(Tests.g_aTestNames[i], "arial", 24);
-                var pMenuItem = new CCMenuItemLabel(label, menuCallback);
+                var pMenuItem = new CCMenuItemLabelTTF(label, menuCallback);
 
                 pMenuItem.UserData = i;
                 m_pItemMenu.AddChild(pMenuItem, 10000);
@@ -97,7 +97,7 @@ namespace tests
 
         private void SelectMenuItem()
         {
-            _Items[_CurrentItemIndex].Selected();
+            _Items[_CurrentItemIndex].Selected = true;
             if (_menuIndicator != null)
             {
                 _menuIndicator.Position = new CCPoint(
@@ -109,7 +109,7 @@ namespace tests
 
         private void NextMenuItem() 
         {
-            _Items[_CurrentItemIndex].Unselected();
+            _Items[_CurrentItemIndex].Selected = false;
             _CurrentItemIndex = (_CurrentItemIndex + 1) % _Items.Count;
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             m_pItemMenu.Position = (new CCPoint(0, _HomePosition.Y + _CurrentItemIndex * LINE_SPACE));
@@ -118,7 +118,7 @@ namespace tests
         }
         private void PreviousMenuItem() 
         {
-            _Items[_CurrentItemIndex].Unselected();
+            _Items[_CurrentItemIndex].Selected = false;
             _CurrentItemIndex--;
             if(_CurrentItemIndex < 0) {
                 _CurrentItemIndex = _Items.Count - 1;
@@ -153,7 +153,7 @@ namespace tests
             {
                 // Select the menu
                 _Items[_CurrentItemIndex].Activate();
-                _Items[_CurrentItemIndex].Unselected();
+                _Items[_CurrentItemIndex].Selected = false;
             }
         }
 

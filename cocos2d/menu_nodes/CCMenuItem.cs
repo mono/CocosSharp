@@ -9,29 +9,11 @@ namespace CocosSharp
     /// </summary>
     public class CCMenuItem : CCNodeRGBA
     {
-        public const int kCurrentItem = 32767;
-        public const uint kZoomActionTag = 0xc0c05002;
-        protected static uint _fontSize = 32;
-        protected static string _fontName = "arial";
-        protected static bool _fontNameRelease = false;
+        #region Properties
 
-        protected bool m_bIsEnabled;
-        protected bool m_bIsSelected;
-
-        protected string m_functionName;
-        protected Action<object> m_pfnSelector;
-
-
-        public virtual bool Enabled
-        {
-            get { return m_bIsEnabled; }
-            set { m_bIsEnabled = value; }
-        }
-
-        public virtual bool IsSelected
-        {
-            get { return m_bIsSelected; }
-        }
+        public virtual bool Enabled { get; set; }
+        public virtual bool Selected { get; set; }
+        public Action<object> Target { get; set; }
 
         /// <summary>
         /// Returns the outside box
@@ -39,13 +21,18 @@ namespace CocosSharp
         /// <returns></returns>
         public CCRect Rectangle
         {
-            get {
-                return new CCRect (m_obPosition.X - m_obContentSize.Width * m_obAnchorPoint.X,
-                    m_obPosition.Y - m_obContentSize.Height * m_obAnchorPoint.Y,
-                    m_obContentSize.Width,
-                    m_obContentSize.Height);
+            get 
+            {
+                return new CCRect (Position.X - ContentSize.Width * AnchorPoint.X,
+                    Position.Y - ContentSize.Height * AnchorPoint.Y,
+                    ContentSize.Width,
+                    ContentSize.Height);
             }
         }
+
+        protected CCActionState ZoomActionState { get; set; }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -53,68 +40,24 @@ namespace CocosSharp
         public CCMenuItem() : this(null)
         {
         }
-
-        /// <summary>
-        /// Creates a CCMenuItem with a target/selector
-        /// </summary>
-        /// <param name="selector"></param>
-        /// <returns></returns>
-        public CCMenuItem(Action<object> selector)
-        {
-            InitCCMenuItem(selector);
-        }
-
-        /// <summary>
-        /// Initializes a CCMenuItem with a target/selector
-        /// </summary>
-        /// <param name="selector"></param>
-        /// <returns></returns>
-        private void InitCCMenuItem(Action<object> selector)
+            
+        public CCMenuItem(Action<object> target)
         {
             AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_pfnSelector = selector;
-            m_bIsEnabled = true;
-            m_bIsSelected = false;
+            Target = target;
+            Enabled = true;
         }
 
         #endregion Constructors
 
-
-        /// <summary>
-        /// Activate the item
-        /// </summary>
         public virtual void Activate()
         {
-            if (m_bIsEnabled)
+            if (Enabled && Target !=null)
             {
-                if (m_pfnSelector != null)
-                {
-                    m_pfnSelector(this);
-                }
-
-                //if (m_functionName.size() && CCScriptEngineManager.sharedScriptEngineManager().getScriptEngine())
-                //{
-                //CCScriptEngineManager.sharedScriptEngineManager().getScriptEngine().executeCallFuncN(m_functionName.c_str(), this);
-                //}
+                Target(this);
             }
         }
-
-        /// <summary>
-        /// The item was selected (not activated), similar to "mouse-over"
-        /// </summary>
-        public virtual void Selected()
-        {
-            m_bIsSelected = true;
-        }
-
-        /// <summary>
-        /// The item was unselected
-        /// </summary>
-        public virtual void Unselected()
-        {
-            m_bIsSelected = false;
-        }
-
+            
         /// <summary>
         /// Register a script function, the function is called in activete
         /// If pszFunctionName is NULL, then unregister it.
@@ -124,14 +67,5 @@ namespace CocosSharp
         {
             throw new NotImplementedException("CCMenuItem.RegisterScriptHandler is not supported in this version of Cocos2d-XNA");
         }
-
-		/// <summary>
-		/// set the target/selector of the menu item
-		/// </summary>
-		/// <param name="selector"></param>
-		public Action<object> Target
-		{
-			set { m_pfnSelector = value; }
-		}
     }
 }
