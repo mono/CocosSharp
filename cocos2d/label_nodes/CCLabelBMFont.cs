@@ -471,9 +471,11 @@ namespace CocosSharp
                 }
             }
 
-			totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
+			var commonHeight = m_pConfiguration.m_nCommonHeight;
+
+			totalHeight = commonHeight * quantityOfLines;
             nextFontPositionY = 0 -
-                                (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
+				(commonHeight - commonHeight * quantityOfLines);
 
             CCBMFontConfiguration.CCBMFontDef fontDef = null;
             CCRect rect;
@@ -485,7 +487,7 @@ namespace CocosSharp
                 if (c == '\n')
                 {
                     nextFontPositionX = 0;
-                    nextFontPositionY -= m_pConfiguration.m_nCommonHeight;
+					nextFontPositionY -= commonHeight;
                     continue;
                 }
 
@@ -506,7 +508,7 @@ namespace CocosSharp
                 }
 
                 rect = fontDef.rect;
-                rect = rect.PixelsToPoints();
+				rect = rect.PixelsToPoints();
 
                 rect.Origin.X += m_tImageOffset.X;
                 rect.Origin.Y += m_tImageOffset.Y;
@@ -552,11 +554,13 @@ namespace CocosSharp
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
+
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
-						(float) (nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor()));
-                fontChar.Position = fontPos.PixelsToPoints();
+						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f);
+
+				fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
                 nextFontPositionX += fontDef.xAdvance + kerningAmount;
@@ -584,14 +588,15 @@ namespace CocosSharp
             {
                 tmpSize.Width = longestLine;
             }
-            tmpSize.Height = totalHeight;
+			tmpSize.Height = totalHeight;
+			var dimensions = m_tDimensions;
 
             tmpSize = new CCSize(
-                m_tDimensions.Width > 0 ? m_tDimensions.Width : tmpSize.Width,
-                m_tDimensions.Height > 0 ? m_tDimensions.Height : tmpSize.Height
+				dimensions.Width > 0 ? dimensions.Width : tmpSize.Width,
+				dimensions.Height > 0 ? dimensions.Height : tmpSize.Height
                 );
 
-            ContentSize = tmpSize.PixelsToPoints();
+			ContentSize = tmpSize.PixelsToPoints();
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
@@ -635,6 +640,7 @@ namespace CocosSharp
             {
                 return;
             }
+
             if (m_tDimensions.Width > 0)
             {
                 // Step 1: Make multiline
@@ -744,7 +750,7 @@ namespace CocosSharp
                     }
 
                     // Out of bounds.
-                    if (GetLetterPosXRight(characterSprite) - startOfLine > m_tDimensions.Width)
+					if (GetLetterPosXRight(characterSprite) - startOfLine > m_tDimensions.Width)
                     {
                         if (!m_bLineBreakWithoutSpaces)
                         {
@@ -851,16 +857,16 @@ namespace CocosSharp
                         if (lastChar == null)
                             continue;
 
-						lineWidth = lastChar.Position.X + lastChar.ContentSize.PointsToPixels().Width / 2.0f;
+						lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
                         switch (m_pHAlignment)
                         {
                             case CCTextAlignment.Center:
-							shift = ContentSize.PointsToPixels().Width / 2.0f - lineWidth / 2.0f;
+								shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
                                 break;
                             case CCTextAlignment.Right:
-							shift = ContentSize.PointsToPixels().Width - lineWidth;
+								shift = ContentSize.Width - lineWidth;
                                 break;
                             default:
                                 break;
@@ -918,12 +924,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-			return sp.Position.X * m_fScaleX - (sp.ContentSize.PointsToPixels().Width * m_fScaleX * sp.AnchorPointInPoints.X);
+			return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-			return sp.Position.X * m_fScaleX + (sp.ContentSize.PointsToPixels().Width * m_fScaleX * sp.AnchorPointInPoints.X);
+			return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
 
