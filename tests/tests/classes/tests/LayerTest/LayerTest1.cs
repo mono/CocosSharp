@@ -127,7 +127,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
-            layer1.CascadeColorEnabled = false;
+            layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 
@@ -186,7 +186,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
-            layer1.CascadeColorEnabled = false;
+            layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 
@@ -294,7 +294,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
-            layer1.CascadeColorEnabled = false;
+            layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 
@@ -350,7 +350,7 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
-            layer1.CascadeColorEnabled = false;
+            layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 

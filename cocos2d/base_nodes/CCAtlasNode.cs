@@ -46,7 +46,7 @@ namespace CocosSharp
 
         #region ICCRGBAProtocol Members
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return m_bIsOpacityModifyRGB; }
             set

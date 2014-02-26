@@ -25,7 +25,7 @@ namespace CocosSharp
                 {
                     var parentColor = CCTypes.CCWhite;
                     var parent = m_pParent as ICCColor;
-                    if (parent != null && parent.CascadeColorEnabled)
+                    if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
                     }
@@ -51,7 +51,7 @@ namespace CocosSharp
                 {
                     byte parentOpacity = 255;
                     var pParent = m_pParent as ICCColor;
-                    if (pParent != null && pParent.CascadeOpacityEnabled)
+                    if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
                     }
@@ -65,19 +65,19 @@ namespace CocosSharp
             get { return _displayedOpacity; }
         }
 
-        public virtual bool IsOpacityModifyRGB
+        public virtual bool IsColorModifiedByOpacity
         {
             get { return false; }
             set { }
         }
                             
-        public virtual bool CascadeColorEnabled
+        public virtual bool IsColorCascaded
         {
             get { return _cascadeColorEnabled; }
             set { _cascadeColorEnabled = value; }
         }
 
-        public virtual bool CascadeOpacityEnabled
+        public virtual bool IsOpacityCascaded
         {
             get { return _cascadeOpacityEnabled; }
             set { _cascadeOpacityEnabled = value; }

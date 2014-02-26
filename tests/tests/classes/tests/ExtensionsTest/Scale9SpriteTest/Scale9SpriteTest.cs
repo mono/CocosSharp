@@ -570,8 +570,8 @@ namespace tests.Extensions
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
             var rgba = new CCLayerRGBA();
-            rgba.CascadeColorEnabled = true;
-            rgba.CascadeOpacityEnabled = true;
+            rgba.IsColorCascaded = true;
+            rgba.IsOpacityCascaded = true;
             AddChild(rgba);
 
             CCLog.Log("S9CascadeOpacityAndColor ...");

@@ -43,7 +43,7 @@ namespace CocosSharp
             set { }
         }
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return false; }
             set { }

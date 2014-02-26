@@ -61,7 +61,7 @@ namespace CocosSharp
                 return base.Text;
             }
             set {
-                if (m_sInitialString != value)
+                if (labelText != value)
                 {
                     InitializeFont (FontName, FontSize, value);
                     base.Text = value;
@@ -147,10 +147,10 @@ namespace CocosSharp
 
             CCBMFontConfiguration fontConfig;
 
-            if (!s_pConfigurations.TryGetValue(fontKey, out fontConfig))
+            if (!fontConfigurations.TryGetValue(fontKey, out fontConfig))
             {
                 fontConfig = new CCBMFontConfiguration();
-                s_pConfigurations.Add(fontKey, fontConfig);
+                fontConfigurations.Add(fontKey, fontConfig);
             }
 
             for (int i = 0; i < charset.Length; i++)
@@ -266,7 +266,7 @@ namespace CocosSharp
         {
             if (m_bFontDirty)
             {
-                m_pConfiguration = InitializeFont(m_FontName, m_FontSize, Text);
+                FontConfiguration = InitializeFont(m_FontName, m_FontSize, Text);
                 m_bFontDirty = false;
             }
 

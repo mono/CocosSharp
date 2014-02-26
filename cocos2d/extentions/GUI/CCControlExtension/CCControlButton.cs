@@ -240,7 +240,7 @@ namespace CocosSharp
             // Set the default color and opacity
             Color = new CCColor3B(255, 255, 255);
             Opacity = 255;
-            IsOpacityModifyRGB = true;
+            IsColorModifiedByOpacity = true;
 
             // Initialize the dispatch table
 

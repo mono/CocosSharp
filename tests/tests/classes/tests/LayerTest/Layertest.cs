@@ -91,8 +91,8 @@ namespace tests
             
             if (rgba != null)
             {
-                rgba.CascadeColorEnabled = true;
-                rgba.CascadeOpacityEnabled = enable;
+                rgba.IsColorCascaded = true;
+                rgba.IsOpacityCascaded = enable;
             }
 
             if (node.ChildrenCount > 0)

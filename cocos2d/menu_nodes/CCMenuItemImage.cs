@@ -165,8 +165,8 @@ namespace CocosSharp
 
             ContentSize = NormalImage.ContentSize;
 
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
+            IsColorCascaded = true;
+            IsOpacityCascaded = true;
             ZoomBehaviorOnTouch = true;
         }
 

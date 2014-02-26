@@ -77,8 +77,8 @@ namespace CocosSharp
             SelectedMenuItem = null;
             MenuState = CCMenuState.Waiting;
 
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
+            IsColorCascaded = true;
+            IsOpacityCascaded = true;
 
             CCSize contentSize = CCDirector.SharedDirector.WinSize;
             ContentSize = contentSize;

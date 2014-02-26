@@ -51,7 +51,7 @@ namespace CocosSharp
 	     @since v0.8
 	     */
 
-        bool IsOpacityModifyRGB { get; set; }
+        bool IsColorModifiedByOpacity { get; set; }
 
         /** returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity);
 	     @since v0.8
@@ -60,7 +60,7 @@ namespace CocosSharp
         /**
          *  whether or not color should be propagated to its children.
          */
-        bool CascadeColorEnabled { get; set; }
+        bool IsColorCascaded { get; set; }
 
         /** 
         *  recursive method that updates display color 
@@ -70,7 +70,7 @@ namespace CocosSharp
         /** 
          *  whether or not opacity should be propagated to its children.
          */
-        bool CascadeOpacityEnabled { get; set; }
+        bool IsOpacityCascaded { get; set; }
 
         /**
          *  recursive method that updates the displayed opacity.

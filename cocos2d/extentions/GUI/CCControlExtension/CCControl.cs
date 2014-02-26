@@ -113,7 +113,7 @@ namespace CocosSharp
 
         #region RGBA Protocol
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return _isOpacityModifyRGB; }
             set
@@ -127,7 +127,7 @@ namespace CocosSharp
                         var item = m_pChildren.Elements[i] as ICCColor;
                         if (item != null)
                         {
-                            item.IsOpacityModifyRGB = value;
+                            item.IsColorModifiedByOpacity = value;
                         }
                     }
                 }

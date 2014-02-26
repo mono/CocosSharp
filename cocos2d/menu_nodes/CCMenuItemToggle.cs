@@ -85,8 +85,8 @@ namespace CocosSharp
             // Set the property to 0 to ensure the first toggle item is added as a node child
             SelectedIndex = 0;
 
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
+            IsColorCascaded = true;
+            IsOpacityCascaded = true;
         }
 
         public CCMenuItemToggle(params CCMenuItem[] items)

@@ -55,7 +55,7 @@ namespace tests
         {
             switch (nIndex)
             {
-                case 0: return new LabelAtlasTest();
+			case 17: return new LabelAtlasTest();
                 case 1: return new LabelAtlasColorTest();
                 case 2: return new Atlas3();
                 case 3: return new Atlas4();
@@ -72,7 +72,7 @@ namespace tests
 			case 14: return new LabelTTFMultiline();
 			case 15: return new LabelTTFChinese();
 			case 16: return new LabelBMFontChinese();
-			case 17: return new BitmapFontMultiLineAlignment();
+			case 0: return new BitmapFontMultiLineAlignment();
 			case 18: return new LabelTTFA8Test();
 			case 19: return new BMFontOneAtlas();
 			case 20: return new BMFontUnicode();

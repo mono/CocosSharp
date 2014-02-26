@@ -46,8 +46,8 @@ namespace CocosSharp
             OriginalScale = 1.0f;
             ColorBackup = CCTypes.CCWhite;
             DisabledColor = new CCColor3B(126, 126, 126);
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
+            IsColorCascaded = true;
+            IsOpacityCascaded = true;
         }
 
         #endregion Constructors
