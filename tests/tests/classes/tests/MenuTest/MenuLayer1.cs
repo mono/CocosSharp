@@ -38,9 +38,12 @@ namespace tests
             base.TouchEnabled = true;
             // Font Item
 
-            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
+			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
+			// modify this here to make sure we have the correct sizes when they are passed.
+			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints());
+			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints());
+			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints());
 
             CCMenuItemImage item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
