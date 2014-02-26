@@ -18,32 +18,30 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var label = new CCLabelTTF(title(), "arial", 32);
+			AddChild(label, TestScene.TITLE_LEVEL);
+			label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 30);
 
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 32);
-            AddChild(label, 1);
-            label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
+			var strSubtitle = subtitle();
+			if (!string.IsNullOrEmpty(strSubtitle))
+			{
+				var l = new CCLabelTTF(strSubtitle, "Thonburi", 16);
+				AddChild(l, TestScene.TITLE_LEVEL);
+				l.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 60);
+			}
 
-            string strSubtitle = subtitle();
-            if (!string.IsNullOrEmpty(strSubtitle))
-            {
-                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
-                AddChild(l, 1);
-                l.Position = (new CCPoint(s.Width / 2, s.Height - 80));
-            }
+			var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
+			var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
+			var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+			var menu = new CCMenu(item1, item2, item3);
 
-            CCMenu menu = new CCMenu(item1, item2, item3);
+			menu.Position = CCPoint.Zero;
+			item1.Position = new CCPoint (CCVisibleRect.Center.X - item2.ContentSize.Width * 2, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+			item2.Position = new CCPoint (CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+			item3.Position = new CCPoint (CCVisibleRect.Center.X + item2.ContentSize.Width * 2, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-
-            AddChild(menu, 1);
+			AddChild(menu, TestScene.MENU_LEVEL);
         }
 
         public void restartCallback(object pSender)
