@@ -55,7 +55,7 @@ namespace tests
             CCLog.Log("SceneTestLayer2#onEnter");
             base.OnEnter();
             _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
-            _TheMenu.AlignItemsVerticallyWithPadding(12f);
+            _TheMenu.AlignItemsVertically(12f);
         }
 
         public void onReplaceScene(object pSender)

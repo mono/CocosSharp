@@ -122,7 +122,7 @@ namespace CocosSharp
                 base.Selected = value;
                 UpdateImagesVisibility();
 
-                if (Selected) 
+                if (Selected && (ZoomActionState == null || ZoomActionState.IsDone)) 
                 {
                     OriginalScale = Scale;
                 }

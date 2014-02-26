@@ -21,7 +21,7 @@ namespace CocosSharp
                     float zoomScale = (Selected == true) ? OriginalScale * 1.2f : OriginalScale;
                     CCAction zoomAction = new CCScaleTo(0.1f, zoomScale); 
 
-                    if (Selected) 
+                    if(Selected && (ZoomActionState == null || ZoomActionState.IsDone)) 
                     {
                         OriginalScale = Scale;
                     }

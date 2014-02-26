@@ -24,9 +24,12 @@ namespace CocosSharp
         /// Removes the given focusable node
         /// </summary>
         /// <param name="f"></param>
-        public void Remove(ICCFocusable f)
+        public void Remove(params ICCFocusable[] focusItems)
         {
-            _FocusList.Remove(f);
+            foreach (ICCFocusable f in focusItems) 
+            {
+                _FocusList.Remove(f);
+            }
         }
 
         /// <summary>
@@ -35,18 +38,21 @@ namespace CocosSharp
         /// given node has focus, the focus is disabled.
         /// </summary>
         /// <param name="f"></param>
-        public void Add(ICCFocusable f)
+        public void Add(params ICCFocusable[] focusItems)
         {
-            LinkedListNode<ICCFocusable> i = _FocusList.AddLast(f);
-            if (f.HasFocus)
+            foreach (ICCFocusable f in focusItems) 
             {
-                if (_Current == null)
+                LinkedListNode<ICCFocusable> i = _FocusList.AddLast(f);
+                if (f.HasFocus) 
                 {
-                    _Current = i;
-                }
-                else
-                {
-                    f.HasFocus = false;
+                    if (_Current == null) 
+                    {
+                        _Current = i;
+                    } 
+                    else 
+                    {
+                        f.HasFocus = false;
+                    }
                 }
             }
         }

@@ -39,7 +39,7 @@ namespace tests
             CCLog.Log("SceneTestLayer1#onEnter");
             base.OnEnter();
             _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
-            _TheMenu.AlignItemsVerticallyWithPadding(12f);
+            _TheMenu.AlignItemsVertically(12f);
         }
 
         public override void OnEnterTransitionDidFinish()
