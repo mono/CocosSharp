@@ -97,14 +97,18 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-        public void AddChild(CCMenuItem menuItem, int zOrder)
+        public void AddChild(CCMenuItem menuItem)
+        {
+            this.AddChild(menuItem, menuItem.ZOrder);
+        }
+        
+        public void AddChild(CCMenuItem menuItem, int zOrder, int tag=0)
         {
             base.AddChild(menuItem, zOrder);
 
             menuItems.Add(menuItem);
         }
-
+        
         public void RemoveChild(CCMenuItem menuItem, bool cleanup)
         {
             if (SelectedMenuItem == menuItem)
