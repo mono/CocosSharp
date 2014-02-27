@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4964B64B-B76A-4D9D-91CB-BFDA0A1845CE}</ProjectGuid>
+    <ProjectGuid>{58B144AA-9409-439B-AEB0-144A1EA483E9}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -52,6 +52,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="label_nodes\CCLabel-Android.cs" />
+    <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="Actions\action\CCAction.cs" />
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
