@@ -202,12 +202,12 @@ namespace CocosSharp
 
     public class CCMenuItemLabelTTF : CCMenuItemLabelBase
     {
-        CCLabelTTF labelTTF;
+        CCLabelTtf labelTTF;
 
 
         #region Properties
 
-        public CCLabelTTF LabelTTF
+        public CCLabelTtf LabelTTF
         {
             get { return labelTTF; }
             set
@@ -243,7 +243,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCMenuItemLabelTTF(CCLabelTTF labelTTF, Action<object> target = null) : base(target)
+        public CCMenuItemLabelTTF(CCLabelTtf labelTTF, Action<object> target = null) : base(target)
         {
             LabelTTF = labelTTF;
         }

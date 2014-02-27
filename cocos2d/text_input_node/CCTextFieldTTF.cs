@@ -6,7 +6,7 @@ namespace CocosSharp
 {
 	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 
-    public class CCTextFieldTTF : CCLabelTTF, ICCTargetedTouchDelegate
+    public class CCTextFieldTTF : CCLabelTtf, ICCTargetedTouchDelegate
     {
         private IAsyncResult m_pGuideShowHandle;
         private string m_sEditTitle = "Input";

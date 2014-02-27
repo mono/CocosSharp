@@ -630,7 +630,7 @@
     <Compile Include=".\label_nodes\CCLabelBMFont.cs">
       <LogicalName>label_nodes\CCLabelBMFont</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCLabelTTF.cs">
+    <Compile Include=".\label_nodes\CCLabelTtf.cs">
       <LogicalName>label_nodes\CCLabelTTF</LogicalName>
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\CCLayer.cs">

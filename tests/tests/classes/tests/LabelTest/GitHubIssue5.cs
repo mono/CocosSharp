@@ -8,13 +8,13 @@ namespace tests
 {
     public class GitHubIssue5 : AtlasDemo
     {
-        private CCLabelTTF _TestLabel;
+        private CCLabelTtf _TestLabel;
         private int _Index = 0;
 
         public GitHubIssue5()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            _TestLabel = new CCLabelTTF("", "Arial", 10);
+            _TestLabel = new CCLabelTtf("", "Arial", 10);
             AddChild(_TestLabel);
             _TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }

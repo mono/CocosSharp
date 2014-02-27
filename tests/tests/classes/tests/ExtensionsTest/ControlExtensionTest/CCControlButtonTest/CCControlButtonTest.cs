@@ -74,7 +74,7 @@ namespace tests.Extensions
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
-			var titleButton = new CCLabelTTF(title, "Arial", 30);
+			var titleButton = new CCLabelTtf(title, "Arial", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -147,7 +147,7 @@ namespace tests.Extensions
             var backgroundButton = new CCScale9SpriteFile("extensions/button");
             var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 
-            var titleButton = new CCLabelTTF(title, "Arial", 30);
+            var titleButton = new CCLabelTtf(title, "Arial", 30);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -166,7 +166,7 @@ namespace tests.Extensions
             backgroundButton.CapInsets = inset;
             backgroundHighlightedButton.CapInsets = inset;
 
-            var titleButton = new CCLabelTTF(title, "Arial", 30);
+            var titleButton = new CCLabelTtf(title, "Arial", 30);
 
             titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -194,7 +194,7 @@ namespace tests.Extensions
 			CCSize screenSize = CCDirector.SharedDirector.WinSize;
 
 			// Add a label in which the button events will be displayed
-			setDisplayValueLabel(new CCLabelTTF("No Event", "Arial", 32));
+			setDisplayValueLabel(new CCLabelTtf("No Event", "Arial", 32));
 			m_pDisplayValueLabel.AnchorPoint = new CCPoint(0.5f, -1);
 			m_pDisplayValueLabel.Position = new CCPoint(screenSize.Width / 2.0f, screenSize.Height / 2.0f);
 			AddChild(m_pDisplayValueLabel, 1);
@@ -203,7 +203,7 @@ namespace tests.Extensions
 			var backgroundButton = new CCScale9SpriteFile("extensions/button");
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
     
-			var titleButton = new CCLabelTTF("Touch Me!", "Arial", 30);
+			var titleButton = new CCLabelTtf("Touch Me!", "Arial", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 
@@ -272,9 +272,9 @@ namespace tests.Extensions
 			m_pDisplayValueLabel.Text = ("Touch Cancel");
 		}
 	
-		private CCLabelTTF m_pDisplayValueLabel; 
-		public virtual CCLabelTTF getDisplayValueLabel() { return m_pDisplayValueLabel; } 
-		public virtual void setDisplayValueLabel(CCLabelTTF var)   
+		private CCLabelTtf m_pDisplayValueLabel; 
+		public virtual CCLabelTtf getDisplayValueLabel() { return m_pDisplayValueLabel; } 
+		public virtual void setDisplayValueLabel(CCLabelTtf var)   
 		{ 
 			if (m_pDisplayValueLabel != var) 
 			{ 
@@ -345,7 +345,7 @@ namespace tests.Extensions
 			var backgroundHighlightedButton = new CCScale9SpriteFile("extensions/buttonHighlighted");
 			backgroundHighlightedButton.PreferredSize = new CCSize(55, 55);  // Set the prefered size
     
-			var titleButton = new CCLabelTTF(title, "Arial", 30);
+			var titleButton = new CCLabelTtf(title, "Arial", 30);
 
 			titleButton.Color = new CCColor3B(159, 168, 176);
 

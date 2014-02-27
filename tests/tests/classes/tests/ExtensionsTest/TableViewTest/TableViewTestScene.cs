@@ -105,7 +105,7 @@ namespace tests.Extensions
                 sprite.Position = new CCPoint(0, 0);
                 cell.AddChild(sprite);
 
-                var label = new CCLabelTTF(str, "Helvetica", 20.0f);
+                var label = new CCLabelTtf(str, "Helvetica", 20.0f);
                 label.Position = CCPoint.Zero;
                 label.AnchorPoint = CCPoint.Zero;
                 label.Tag = 123;
@@ -113,7 +113,7 @@ namespace tests.Extensions
             }
             else
             {
-                var label = (CCLabelTTF) cell.GetChildByTag(123);
+                var label = (CCLabelTtf) cell.GetChildByTag(123);
                 label.Text = (str);
             }
 

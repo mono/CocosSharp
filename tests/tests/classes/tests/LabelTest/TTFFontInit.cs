@@ -8,7 +8,7 @@ namespace tests
         {
 			var s = CCDirector.SharedDirector.WinSize;
 
-            var font = new CCLabelTTF();
+            var font = new CCLabelTtf();
             font.FontName = "MarkerFelt";
             font.FontSize = 38;
             font.Text = ("It is working!");

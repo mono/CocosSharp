@@ -304,14 +304,14 @@ namespace tests
             // add title and subtitle
             var str = title();
             var pTitle = str;
-            var label = new CCLabelTTF(pTitle, "arial", 32);
+            var label = new CCLabelTtf(pTitle, "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             var strSubtitle = subtitle();
             if (! strSubtitle.Equals(""))
             {
-                var l = new CCLabelTTF(strSubtitle, "arial", 16);
+                var l = new CCLabelTtf(strSubtitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 60);
             }
@@ -601,7 +601,7 @@ namespace tests
             box.IgnoreAnchorPointForPosition = false;
             box.Position = new CCPoint(s.Width / 2, s.Height - 100 - box.ContentSize.Height / 2);
             this.AddChild(box);
-            CCLabelTTF label = new CCLabelTTF("Standard cocos2d Skew", "Marker Felt", 16);
+            CCLabelTtf label = new CCLabelTtf("Standard cocos2d Skew", "Marker Felt", 16);
             label.Position = new CCPoint(s.Width / 2, s.Height - 100 + label.ContentSize.Height);
             this.AddChild(label);
             CCSkewBy actionTo = new CCSkewBy(2, 360, 0);
@@ -615,7 +615,7 @@ namespace tests
             box.IgnoreAnchorPointForPosition = false;
             box.Position = new CCPoint(s.Width / 2, s.Height - 250 - box.ContentSize.Height / 2);
             this.AddChild(box);
-            label = new CCLabelTTF("Rotational Skew", "Marker Felt", 16);
+            label = new CCLabelTtf("Rotational Skew", "Marker Felt", 16);
             label.Position = new CCPoint(s.Width / 2, s.Height - 250 + label.ContentSize.Height / 2);
             this.AddChild(label);
             CCRotateBy actionTo2 = new CCRotateBy(2, 360, 0);
@@ -965,7 +965,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 1 called", "arial", 16);
+            var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -974,7 +974,7 @@ namespace tests
         public void callback2(CCNode sender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 2 called", "arial", 16);
+            var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -983,7 +983,7 @@ namespace tests
         public void callback3(CCNode sender, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 3 called", "arial", 16);
+            var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
             AddChild(label);
@@ -1026,7 +1026,7 @@ namespace tests
         public void callback1()
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 1 called", "arial", 16);
+            var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
@@ -1035,7 +1035,7 @@ namespace tests
         public void callback2(CCNode pSender)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 2 called", "arial", 16);
+            var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
@@ -1044,7 +1044,7 @@ namespace tests
         public void callback3(CCNode target, object data)
         {
             var s = CCDirector.SharedDirector.WinSize;
-            var label = new CCLabelTTF("callback 3 called", "arial", 16);
+            var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
         }

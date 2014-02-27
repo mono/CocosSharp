@@ -50,7 +50,7 @@ namespace tests
 
 	        for (int i = 0; i < m_nTestCount; ++i)
 	        {
-                CCLabelTTF label = new CCLabelTTF(testItems[i], "arial", 24);
+                CCLabelTtf label = new CCLabelTtf(testItems[i], "arial", 24);
                 CCMenuItemLabelTTF pMenuItem = new CCMenuItemLabelTTF(label, menuCallback);
 		
 		        m_pItmeMenu.AddChild(pMenuItem, i + 10000);

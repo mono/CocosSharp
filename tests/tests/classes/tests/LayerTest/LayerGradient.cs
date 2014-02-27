@@ -17,8 +17,8 @@ namespace tests
 
             this.TouchEnabled = true;
 
-            CCLabelTTF label1 = new CCLabelTTF("Compressed Interpolation: Enabled", "arial", 26);
-            CCLabelTTF label2 = new CCLabelTTF("Compressed Interpolation: Disabled", "arial", 26);
+            CCLabelTtf label1 = new CCLabelTtf("Compressed Interpolation: Enabled", "arial", 26);
+            CCLabelTtf label2 = new CCLabelTtf("Compressed Interpolation: Disabled", "arial", 26);
             CCMenuItemLabelTTF item1 = new CCMenuItemLabelTTF(label1);
             CCMenuItemLabelTTF item2 = new CCMenuItemLabelTTF(label2);
             CCMenuItemToggle item = new CCMenuItemToggle((toggleItem), item1, item2);

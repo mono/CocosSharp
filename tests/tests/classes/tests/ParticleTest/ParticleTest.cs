@@ -183,11 +183,11 @@ namespace tests
             TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 28);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 100, kLabelTag);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            CCLabelTTF tapScreen = new CCLabelTTF(subtitle(), "arial", 20);
+            CCLabelTtf tapScreen = new CCLabelTtf(subtitle(), "arial", 20);
             tapScreen.Position = new CCPoint(s.Width / 2, s.Height - 80);
             AddChild(tapScreen, 100);
 
@@ -243,7 +243,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var pLabel = (CCLabelTTF) (GetChildByTag(kLabelTag));
+            var pLabel = (CCLabelTtf) (GetChildByTag(kLabelTag));
             pLabel.Text = (title());
         }
 

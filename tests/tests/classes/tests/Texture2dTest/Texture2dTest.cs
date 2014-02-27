@@ -186,14 +186,14 @@ namespace tests
 
             CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 26);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1, (int) (enumTag.kTagLabel));
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (strSubtitle.Length > 0)
             {
-                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
+                CCLabelTtf l = new CCLabelTtf(strSubtitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
@@ -1443,7 +1443,7 @@ namespace tests
 
             CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF label = new CCLabelTTF("Loading...", "Marker Felt", 32);
+            CCLabelTtf label = new CCLabelTtf("Loading...", "Marker Felt", 32);
             label.Position = size.Center;
             AddChild(label, 10);
 

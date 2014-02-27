@@ -43,7 +43,7 @@ namespace tests
 #if NETFX_CORE
             CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
 #else
-            CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
+            CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif
             versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, s.Height - 18f);
             versionLabel.HorizontalAlignment = CCTextAlignment.Left;
@@ -53,7 +53,7 @@ namespace tests
             m_pItemMenu = new CCMenu();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
-                var label = new CCLabelTTF(Tests.g_aTestNames[i], "arial", 24);
+                var label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 24);
                 var pMenuItem = new CCMenuItemLabelTTF(label, menuCallback);
 
                 pMenuItem.UserData = i;

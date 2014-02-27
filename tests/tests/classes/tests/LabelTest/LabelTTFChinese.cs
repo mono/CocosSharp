@@ -11,7 +11,7 @@ namespace tests
         public LabelTTFChinese()
         {
 			var size = CCDirector.SharedDirector.WinSize;
-			var pLable = new CCLabelTTF("中国", "Marker Felt", 30);
+			var pLable = new CCLabelTtf("中国", "Marker Felt", 30);
 			pLable.Position = size.Center;
             AddChild(pLable);
         }

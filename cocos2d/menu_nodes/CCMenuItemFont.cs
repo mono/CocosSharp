@@ -36,7 +36,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCMenuItemFont (string labelString, string fontNameIn = "arial", uint fontSizeIn = 32, Action<object> selector = null) 
-            : base(new CCLabelTTF(labelString, fontNameIn, fontSizeIn), selector)
+            : base(new CCLabelTtf(labelString, fontNameIn, fontSizeIn), selector)
         {
             fontSize = fontSizeIn;
             fontName = fontNameIn;
@@ -59,7 +59,7 @@ namespace CocosSharp
 
         protected void RecreateLabel()
         {
-            CCLabelTTF label = new CCLabelTTF(LabelTTF.Text, FontName, FontSize);
+            CCLabelTtf label = new CCLabelTtf(LabelTTF.Text, FontName, FontSize);
             LabelTTF = label;
         }
     }

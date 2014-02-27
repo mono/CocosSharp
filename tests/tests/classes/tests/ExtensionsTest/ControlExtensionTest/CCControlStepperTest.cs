@@ -5,9 +5,9 @@ namespace tests.Extensions
 {
     public class CCControlStepperTest : CCControlScene
     {
-        protected CCLabelTTF _displayValueLabel;
+        protected CCLabelTtf _displayValueLabel;
 
-        public CCLabelTTF DisplayValueLabel
+        public CCLabelTtf DisplayValueLabel
         {
             get { return _displayValueLabel; }
             set { _displayValueLabel = value; }
@@ -29,7 +29,7 @@ namespace tests.Extensions
             background.Position = new CCPoint(layer_width + background.ContentSize.Width / 2.0f, 0);
             layer.AddChild(background);
 
-            DisplayValueLabel = new CCLabelTTF("0", "Arial", 26);
+            DisplayValueLabel = new CCLabelTtf("0", "Arial", 26);
 
             _displayValueLabel.Position = background.Position;
             layer.AddChild(_displayValueLabel);

@@ -37,7 +37,7 @@ namespace tests
                 sprite_b.Position = new CCPoint(s.Width / 2, s.Height / 2);
                 AddChild(sprite_b);
 
-                CCMenuItemLabelTTF label = new CCMenuItemLabelTTF(new CCLabelTTF("Flip Me", "Helvetica", 24), callBack);
+                CCMenuItemLabelTTF label = new CCMenuItemLabelTTF(new CCLabelTtf("Flip Me", "Helvetica", 24), callBack);
                 CCMenu menu = new CCMenu(label);
                 menu.Position = new CCPoint(s.Width - 200.0f, 50.0f);
                 AddChild(menu);

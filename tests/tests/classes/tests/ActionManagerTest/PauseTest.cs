@@ -26,7 +26,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF l = new CCLabelTTF("After 5 seconds grossini should move", "arial", 16);
+            CCLabelTtf l = new CCLabelTtf("After 5 seconds grossini should move", "arial", 16);
             AddChild(l);
             l.Position = (new CCPoint(s.Width / 2, 245));
 

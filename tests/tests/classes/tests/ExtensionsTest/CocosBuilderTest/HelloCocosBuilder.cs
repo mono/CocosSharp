@@ -5,7 +5,7 @@ namespace tests.Extensions
 {
     public class HelloCocosBuilderLayer : BaseLayer
     {
-        public CCLabelTTF mTestTitleLabelTTF;
+        public CCLabelTtf mTestTitleLabelTTF;
         public CCSprite mBurstSprite;
 
         public int mCustomPropertyInt;

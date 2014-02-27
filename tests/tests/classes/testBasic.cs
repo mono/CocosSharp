@@ -32,7 +32,7 @@ namespace tests
             base.OnEnter();
 
             //add the menu item for back to main menu
-			var label = new CCLabelTTF("MainMenu", "arial", 20);
+			var label = new CCLabelTtf("MainMenu", "arial", 20);
 			var pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
 
 			var pMenu = new CCMenu(pMenuItem);

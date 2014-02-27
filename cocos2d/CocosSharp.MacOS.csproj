@@ -72,9 +72,7 @@
     <Reference Include="zlib.net">
       <HintPath>external lib\zlib.net.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Mono\MonoMac\v0.0\Mono.MonoMac.targets" />
@@ -251,7 +249,6 @@
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
-    <Compile Include="label_nodes\CCLabelTTF.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
@@ -441,6 +438,7 @@
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="label_nodes\CCLabelTtf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">

@@ -18,7 +18,7 @@ namespace tests
             label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
 
             // CCLabelTTF
-			var label2 = new CCLabelTTF("", "arial", 24);
+			var label2 = new CCLabelTtf("", "arial", 24);
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
@@ -35,7 +35,7 @@ namespace tests
         public void updateStrings(float dt)
         {
 			var label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
-			var label2 = (CCLabelTTF)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
+			var label2 = (CCLabelTtf)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
 			var label3 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
 
             if (!setEmpty)

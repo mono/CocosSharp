@@ -13,7 +13,7 @@ namespace tests
 			var s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-			var center = new CCLabelTTF("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
+			var center = new CCLabelTtf("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
                 "Paint Boy", 32, 
                 new CCSize(s.Width / 2, 200), 
                 CCTextAlignment.Center);

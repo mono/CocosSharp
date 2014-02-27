@@ -28,7 +28,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // Title
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 32);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new CCColor3B(255, 255, 40);
@@ -37,7 +37,7 @@ namespace tests
             string strSubTitle = subtitle();
             if (strSubTitle.Length > 0)
             {
-                CCLabelTTF l = new CCLabelTTF(strSubTitle, "arial", 16);
+                CCLabelTtf l = new CCLabelTtf(strSubTitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }
@@ -57,7 +57,7 @@ namespace tests
             menu.Position = new CCPoint(s.Width / 2, s.Height / 2 + 15);
             AddChild(menu, 1);
 
-            CCLabelTTF infoLabel = new CCLabelTTF("0 nodes", "arial", 30);
+            CCLabelTtf infoLabel = new CCLabelTtf("0 nodes", "arial", 30);
             infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height / 2 - 15);
             AddChild(infoLabel, 1, PerformanceNodeChildrenTest.kTagInfoLayer);
@@ -105,7 +105,7 @@ namespace tests
         {
             if (quantityOfNodes != lastRenderedCount)
             {
-                CCLabelTTF infoLabel = (CCLabelTTF)GetChildByTag(PerformanceNodeChildrenTest.kTagInfoLayer);
+                CCLabelTtf infoLabel = (CCLabelTtf)GetChildByTag(PerformanceNodeChildrenTest.kTagInfoLayer);
                 infoLabel.Text = (string.Format("{0} nodes", quantityOfNodes));
 
                 lastRenderedCount = quantityOfNodes;

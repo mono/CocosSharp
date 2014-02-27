@@ -27,14 +27,14 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 18);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 18);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (strSubtitle != null)
             {
-                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 22);
+                CCLabelTtf l = new CCLabelTtf(strSubtitle, "arial", 22);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
             }

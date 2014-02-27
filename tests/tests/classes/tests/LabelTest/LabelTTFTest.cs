@@ -7,7 +7,7 @@ namespace tests
     {
         private CCTextAlignment m_eHorizAlign;
         private CCVerticalTextAlignment m_eVertAlign;
-        private CCLabelTTF m_plabel;
+        private CCLabelTtf m_plabel;
 
         public LabelTTFTest()
         {
@@ -58,7 +58,7 @@ namespace tests
                 m_plabel.RemoveFromParentAndCleanup(true);
             }
 
-            m_plabel = new CCLabelTTF(getCurrentAlignment(), "MarkerFelt", 32,
+            m_plabel = new CCLabelTtf(getCurrentAlignment(), "MarkerFelt", 32,
                                          blockSize, m_eHorizAlign, m_eVertAlign);
 
             m_plabel.AnchorPoint = new CCPoint(0, 0);

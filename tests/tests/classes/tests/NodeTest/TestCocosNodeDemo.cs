@@ -18,14 +18,14 @@ namespace tests
         {
             base.OnEnter();
 
-			var label = new CCLabelTTF(title(), "arial", 32);
+			var label = new CCLabelTtf(title(), "arial", 32);
 			AddChild(label, TestScene.TITLE_LEVEL);
 			label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 30);
 
 			var strSubtitle = subtitle();
 			if (!string.IsNullOrEmpty(strSubtitle))
 			{
-				var l = new CCLabelTTF(strSubtitle, "Thonburi", 16);
+				var l = new CCLabelTtf(strSubtitle, "Thonburi", 16);
 				AddChild(l, TestScene.TITLE_LEVEL);
 				l.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 60);
 			}

@@ -28,7 +28,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCLabelTTF l = new CCLabelTTF("Should not crash", "arial", 16);
+            CCLabelTtf l = new CCLabelTtf("Should not crash", "arial", 16);
             AddChild(l);
             l.Position = (new CCPoint(s.Width / 2, 245));
 
