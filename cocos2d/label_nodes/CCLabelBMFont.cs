@@ -567,7 +567,7 @@ namespace CocosSharp
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
-						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f);
+						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
 
 				fontChar.Position = fontPos.PixelsToPoints();
 
