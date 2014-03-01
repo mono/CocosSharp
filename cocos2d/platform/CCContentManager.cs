@@ -41,8 +41,8 @@ namespace CocosSharp
 
             // .FNT Reader
             ContentTypeReaderManager.AddTypeCreator(
-                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CocosSharp.CCBMFontConfiguration+CCBMFontDef, CocosSharp, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
-                () => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMFontDef>()
+                "Microsoft.Xna.Framework.Content.DictionaryReader`2[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[CocosSharp.CCBMFontConfiguration+CCBMGlyphDef, CocosSharp, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+                () => new DictionaryReader<Int32, CCBMFontConfiguration.CCBMGlyphDef>()
 
                 );
 
@@ -75,7 +75,7 @@ namespace CocosSharp
                 );
 
             ContentTypeReaderManager.AddTypeCreator(
-		"Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCBMFontConfiguration+CCBMFontPadding, CocosSharp, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
+		"Microsoft.Xna.Framework.Content.ReflectiveReader`1[[CocosSharp.CCBMFontConfiguration+CCBMGlyphPadding, CocosSharp, Version=2.0.3.0, Culture=neutral, PublicKeyToken=null]]",
                 () => new CCBMFontPaddingtReader()
 
                 );

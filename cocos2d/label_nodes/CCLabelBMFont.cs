@@ -433,12 +433,12 @@ namespace CocosSharp
             int ret = 0;
             int key = (first << 16) | (second & 0xffff);
 
-            if (FontConfiguration.m_pKerningDictionary != null)
+            if (FontConfiguration.GlyphKernings != null)
             {
                 CCBMFontConfiguration.CCKerningHashElement element;
-                if (FontConfiguration.m_pKerningDictionary.TryGetValue(key, out element))
+                if (FontConfiguration.GlyphKernings.TryGetValue(key, out element))
                 {
-                    ret = element.amount;
+                    ret = element.Amount;
                 }
             }
             return ret;
@@ -480,13 +480,13 @@ namespace CocosSharp
                 }
             }
 
-			var commonHeight = FontConfiguration.m_nCommonHeight;
+			var commonHeight = FontConfiguration.CommonHeight;
 
 			totalHeight = commonHeight * quantityOfLines;
             nextFontPositionY = 0 -
 				(commonHeight - commonHeight * quantityOfLines);
 
-            CCBMFontConfiguration.CCBMFontDef fontDef = null;
+            CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
             CCRect rect;
 
             for (int i = 0; i < stringLen; i++)
@@ -510,13 +510,13 @@ namespace CocosSharp
                 kerningAmount = this.KerningAmountForFirst(prev, c);
 
                 // unichar is a short, and an int is needed on HASH_FIND_INT
-                if (!FontConfiguration.m_pFontDefDictionary.TryGetValue(c, out fontDef))
+                if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
                 {
                     CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int) c);
                     continue;
                 }
 
-                rect = fontDef.rect;
+                rect = fontDef.Subrect;
 				rect = rect.PixelsToPoints();
 
                 rect.Origin.X += ImageOffset.X;
@@ -562,17 +562,17 @@ namespace CocosSharp
                 fontChar.SetTextureRect(rect, false, rect.Size);
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
-                int yOffset = FontConfiguration.m_nCommonHeight - fontDef.yOffset;
+                int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
 
                 var fontPos =
                     new CCPoint(
-                        (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
+                        (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
 						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
 
 				fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
-                nextFontPositionX += fontDef.xAdvance + kerningAmount;
+                nextFontPositionX += fontDef.XAdvance + kerningAmount;
                 prev = c;
 
                 if (longestLine < nextFontPositionX)
@@ -589,9 +589,9 @@ namespace CocosSharp
             // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
             // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
             // box
-            if (fontDef.xAdvance < fontDef.rect.Size.Width)
+            if (fontDef.XAdvance < fontDef.Subrect.Size.Width)
             {
-                tmpSize.Width = longestLine + fontDef.rect.Size.Width - fontDef.xAdvance;
+                tmpSize.Width = longestLine + fontDef.Subrect.Size.Width - fontDef.XAdvance;
             }
             else
             {
@@ -916,7 +916,7 @@ namespace CocosSharp
                     }
                 }
 
-				float yOffset = labelDimensions.Height - FontConfiguration.m_nCommonHeight * lineNumber;
+				float yOffset = labelDimensions.Height - FontConfiguration.CommonHeight * lineNumber;
 
                 if (vertAlignment == CCVerticalTextAlignment.Center)
                 {

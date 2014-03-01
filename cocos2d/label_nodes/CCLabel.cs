@@ -156,7 +156,7 @@ namespace CocosSharp
             for (int i = 0; i < charset.Length; i++)
             {
                 var ch = charset[i];
-                if (!fontConfig.m_pFontDefDictionary.ContainsKey(ch) && chars.IndexOf(ch) == -1)
+                if (!fontConfig.Glyphs.ContainsKey(ch) && chars.IndexOf(ch) == -1)
                 {
                     chars.Add(ch);
                 }
@@ -169,7 +169,7 @@ namespace CocosSharp
 
             CreateFont(fontName, fontSize * CCMacros.CCContentScaleFactor(), chars);
 
-            fontConfig.m_nCommonHeight = (int)Math.Ceiling(GetFontHeight());
+            fontConfig.CommonHeight = (int)Math.Ceiling(GetFontHeight());
 
             int[] data = null;
 
@@ -238,17 +238,17 @@ namespace CocosSharp
 
                         var info = GetKerningInfo(chars[i]);
 
-                        var fontDef = new CCBMFontConfiguration.CCBMFontDef()
+                        var fontDef = new CCBMFontConfiguration.CCBMGlyphDef()
                         {
-                            charID = chars[i],
-                            rect = new CCRect(region.x, region.y, region.width, region.height),
-                            xOffset = minX, // + (int)Math.Ceiling(info.A),
-                            yOffset = minY,
-                            xAdvance = (int)Math.Ceiling(info.A + info.B + info.C)
+                            Character = chars[i],
+                            Subrect = new CCRect(region.x, region.y, region.width, region.height),
+                            XOffset = minX, // + (int)Math.Ceiling(info.A),
+                            YOffset = minY,
+                            XAdvance = (int)Math.Ceiling(info.A + info.B + info.C)
                         };
 
                         fontConfig.CharacterSet.Add(chars[i]);
-                        fontConfig.m_pFontDefDictionary.Add(chars[i], fontDef);
+                        fontConfig.Glyphs.Add(chars[i], fontDef);
                     }
                     else
                     {
