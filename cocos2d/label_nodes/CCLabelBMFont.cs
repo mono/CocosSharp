@@ -10,12 +10,12 @@ namespace CocosSharp
     {
         public const int AutomaticWidth = -1;
 
-        public static Dictionary<string, CCBMFontConfiguration> fontConfigurations = new Dictionary<string, CCBMFontConfiguration>();
+        internal static Dictionary<string, CCBMFontConfiguration> fontConfigurations = new Dictionary<string, CCBMFontConfiguration>();
 
         protected bool lineBreakWithoutSpaces;
         protected CCTextAlignment horzAlignment = CCTextAlignment.Center;
         protected CCVerticalTextAlignment vertAlignment = CCVerticalTextAlignment.Top;
-		protected CCBMFontConfiguration FontConfiguration { get; set; }
+		internal CCBMFontConfiguration FontConfiguration { get; set; }
         protected string fntConfigFile;
         protected string labelInitialText;
 		protected string labelText = string.Empty;

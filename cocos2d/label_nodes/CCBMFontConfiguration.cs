@@ -1,26 +1,33 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework.Content;
+
+[assembly: InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")]
 
 namespace CocosSharp
 {
+
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
 #endif
-    public class CCBMFontConfiguration
+    internal sealed class CCBMFontConfiguration
     {
+        // Due to a bug in MonoGame's Custom Content loading not being able to recognize properties that are not
+        // marked public we have to leave the Serialized information as variables and not properties.
+        // This is an inconsistency with how XNA works.  Until this bug is fixed this needs to remain as it is.
         [ContentSerializer]
-        internal int CommonHeight { get; set; }
+        internal int CommonHeight;// { get; set; }
 
         [ContentSerializer]
-        internal Dictionary<int, CCBMGlyphDef> Glyphs { get; set; }
+        internal Dictionary<int, CCBMGlyphDef> Glyphs; // { get; set; }
 
         [ContentSerializer]
-        internal Dictionary<int, CCKerningHashElement> GlyphKernings { get; set; }
+        internal Dictionary<int, CCKerningHashElement> GlyphKernings; // { get; set; }
 
         [ContentSerializer]
-        public string AtlasName { get; set; }
+        internal string AtlasName; // { get; set; }
 
         [ContentSerializer]
         internal CCBMGlyphPadding Padding;
@@ -41,7 +48,7 @@ namespace CocosSharp
             }
         }
 
-        internal CCBMFontConfiguration()
+        public CCBMFontConfiguration()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
             CharacterSet = new List<int>();
@@ -374,7 +381,7 @@ namespace CocosSharp
 
         #region Nested type: CCBMGlyphPadding
 
-        internal struct CCBMGlyphPadding
+        public struct CCBMGlyphPadding
         {
             // padding left
             public int Bottom { get; set; }
@@ -393,7 +400,7 @@ namespace CocosSharp
 
         #region Nested type: CCKerningHashElement
 
-        internal struct CCKerningHashElement
+        public struct CCKerningHashElement
         {
             public int Amount { get; set; }
 

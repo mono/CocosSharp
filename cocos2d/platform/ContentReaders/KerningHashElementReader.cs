@@ -15,8 +15,8 @@ namespace CocosSharp
             var key = input.ReadInt32 ();
             
             var objectSize = new CCBMFontConfiguration.CCKerningHashElement();
-            objectSize.amount = amount;
-            objectSize.key = key;
+            objectSize.Amount = amount;
+            objectSize.Key = key;
             
             return objectSize;
         }
