@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CocosSharp
 {
-    public class KerningHashElementReader : ContentTypeReader<CCBMFontConfiguration.CCKerningHashElement>
+    internal class KerningHashElementReader : ContentTypeReader<CCBMFontConfiguration.CCKerningHashElement>
     {
         public KerningHashElementReader()
         {

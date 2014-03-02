@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CocosSharp
 {
-    public class CCBMFontPaddingtReader : ContentTypeReader<CCBMFontConfiguration.CCBMGlyphPadding>
+    internal class CCBMFontPaddingtReader : ContentTypeReader<CCBMFontConfiguration.CCBMGlyphPadding>
     {
         public CCBMFontPaddingtReader()
         {
