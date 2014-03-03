@@ -360,13 +360,13 @@ namespace CocosSharp
             int quantity = (m_pobTextureAtlas.Capacity + 1) * 4 / 3;
 
             CCLog.Log(string.Format(
-                "cocos2d: CCSpriteBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
+                "CocosSharp: CCSpriteBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
                 m_pobTextureAtlas.Capacity, quantity));
 
             if (!m_pobTextureAtlas.ResizeCapacity(quantity))
             {
                 // serious problems
-                CCLog.Log("cocos2d: WARNING: Not enough memory to resize the atlas");
+                CCLog.Log("CocosSharp: WARNING: Not enough memory to resize the atlas");
                 Debug.Assert(false, "Not enough memory to resize the atla");
             }
         }
