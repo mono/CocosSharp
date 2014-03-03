@@ -34,10 +34,6 @@ namespace CocosSharp
     
         #region Constructors
 
-        public CCTurnOffTiles()
-        {
-        }
-
         /// <summary>
         /// creates the action with a random seed, the grid size and the duration 
         /// </summary>

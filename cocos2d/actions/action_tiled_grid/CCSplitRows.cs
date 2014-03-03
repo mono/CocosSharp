@@ -32,10 +32,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCSplitRows()
-        {
-        }
-
         /// <summary>
         ///  creates the action with the number of rows to split and the duration 
         /// </summary>

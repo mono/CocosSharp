@@ -6,15 +6,16 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCTiledGrid3DAction()
-        {
-        }
-
         public CCTiledGrid3DAction(float duration) : base(duration)
         {
         }
 
-        public CCTiledGrid3DAction(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        public CCTiledGrid3DAction(float duration, CCGridSize gridSize) : this(duration, gridSize, 0)
+        {
+        }
+
+        protected CCTiledGrid3DAction(float duration, CCGridSize gridSize, float amplitude) 
+            : base(duration, gridSize, amplitude)
         {
         }
 

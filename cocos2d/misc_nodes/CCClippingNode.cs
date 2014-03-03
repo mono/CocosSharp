@@ -4,27 +4,10 @@ namespace CocosSharp
 {
     public class CCClippingNode : CCNode
     {
-        protected CCNode m_pStencil;
-        protected float m_fAlphaThreshold;
-        protected bool m_bInverted;
+        public bool Inverted { get; set; }
+        public CCNode Stencil { get; set; }
+        public float AlphaThreshold { get; set; }
 
-        public bool Inverted
-        {
-            get { return m_bInverted; }
-            set { m_bInverted = value; }
-        }
-
-        public CCNode Stencil
-        {
-            get { return m_pStencil; }
-            set { m_pStencil = value; }
-        }
-
-        public float AlphaThreshold
-        {
-            get { return m_fAlphaThreshold; }
-            set { m_fAlphaThreshold = value; }
-        }
 
 
         #region Constructors
@@ -35,14 +18,9 @@ namespace CocosSharp
 
         public CCClippingNode(CCNode stencil)
         {
-            InitCCClippingNode(stencil);
-        }
-
-        private void InitCCClippingNode(CCNode stencil)
-        {
-            m_pStencil = stencil;
-            m_fAlphaThreshold = 1;
-            m_bInverted = false;
+            Stencil = stencil;
+            AlphaThreshold = 1;
+            Inverted = false;
         }
 
         #endregion Constructors
@@ -51,44 +29,47 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            if (m_pStencil != null)
+
+            if (Stencil != null)
             {
-                m_pStencil.OnEnter();
+                Stencil.OnEnter();
             }
         }
 
         public override void OnExit()
         {
-            if (m_pStencil != null)
+            if (Stencil != null)
             {
-                m_pStencil.OnExit();
+                Stencil.OnExit();
             }
             base.OnExit();
         }
 
         public override void OnExitTransitionDidStart()
         {
-            if (m_pStencil != null)
+            if (Stencil != null)
             {
-                m_pStencil.OnExitTransitionDidStart();
+                Stencil.OnExitTransitionDidStart();
             }
+
             base.OnExitTransitionDidStart();
         }
 
         public override void OnEnterTransitionDidFinish()
         {
             base.OnEnterTransitionDidFinish();
-            if (m_pStencil != null)
+
+            if (Stencil != null)
             {
-                m_pStencil.OnEnterTransitionDidFinish();
+                Stencil.OnEnterTransitionDidFinish();
             }
         }
 
         public override void Visit()
         {
-            if (m_pStencil == null || !m_pStencil.Visible)
+            if (Stencil == null || !Stencil.Visible)
             {
-                if (m_bInverted)
+                if (Inverted)
                 {
                     // draw everything
                     base.Visit();
@@ -96,12 +77,12 @@ namespace CocosSharp
                 return;
             }
 
-            if (CCDrawManager.BeginDrawMask(m_bInverted, m_fAlphaThreshold))
+            if (CCDrawManager.BeginDrawMask(Inverted, AlphaThreshold))
             {
                 CCDrawManager.PushMatrix();
                 Transform();
                 
-                m_pStencil.Visit();
+                Stencil.Visit();
 
                 CCDrawManager.PopMatrix();
 

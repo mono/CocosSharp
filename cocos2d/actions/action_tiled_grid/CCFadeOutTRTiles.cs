@@ -35,10 +35,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCFadeOutTRTiles()
-        {
-        }
-
         public CCFadeOutTRTiles(float duration) : base(duration)
         {
         }

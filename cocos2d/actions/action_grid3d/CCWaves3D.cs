@@ -39,7 +39,7 @@ namespace CocosSharp
                 {
                     CCVertex3F v = OriginalVertex(i, j);
                     v.Z += ((float) Math.Sin((float) Math.PI * time * Waves * 2 + (v.Y + v.X) * .01f) * Amplitude *
-                        StateAmplitudeRate);
+                        AmplitudeRate);
                     SetVertex(i, j, ref v);
                 }
             }

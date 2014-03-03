@@ -56,6 +56,7 @@
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="Actions\action\CCFollow.cs" />
     <Compile Include="Actions\action\CCSpeed.cs" />
+	<Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="Actions\action_camera\CCActionCamera.cs" />
     <Compile Include="Actions\action_camera\CCOrbitCamera.cs" />
     <Compile Include="Actions\action_catmull_rom\CCCardinalSplineTo.cs" />

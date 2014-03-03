@@ -29,35 +29,18 @@ namespace CocosSharp
 {
     public class CCWavesTiles3D : CCTiledGrid3DAction
     {
-        /// <summary>
-        /// waves amplitude 
-        /// </summary>
-        /// <returns></returns>
-        protected internal float Amplitude { get; private set; }
-
-        /// <summary>
-        /// waves amplitude rate
-        /// </summary>
-        /// <returns></returns>
-        public override float AmplitudeRate { get; protected set; }
         protected internal int Waves { get; private set; }
 
 
         #region Constructors
 
-        public CCWavesTiles3D()
-        {
-        }
-
         /// <summary>
         /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
         /// </summary>
 		public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) 
-            : base(duration, gridSize)
+            : base(duration, gridSize, amplitude)
         {
             Waves = waves;
-            Amplitude = amplitude;
-            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
@@ -74,12 +57,10 @@ namespace CocosSharp
 
     public class CCWavesTiles3DState : CCTiledGrid3DActionState
     {
-        public float Amplitude { get; set; }
         public int Waves { get; set; }
 
         public CCWavesTiles3DState(CCWavesTiles3D action, CCNode target) : base(action, target)
         {
-            Amplitude = action.Amplitude;
             Waves = action.Waves;
         }
 
@@ -94,7 +75,7 @@ namespace CocosSharp
                     CCQuad3 coords = OriginalTile(i, j);
 
                     coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * Waves * 2 +
-                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * Amplitude * StateAmplitudeRate);
+                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * Amplitude * AmplitudeRate);
                     coords.BottomRight.Z = coords.BottomLeft.Z;
                     coords.TopLeft.Z = coords.BottomLeft.Z;
                     coords.TopRight.Z = coords.BottomLeft.Z;

@@ -36,10 +36,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCShatteredTiles3D()
-        {
-        }
-
         /// <summary>
         /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
         /// </summary>

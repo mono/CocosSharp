@@ -2,23 +2,24 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCGridAction : CCActionInterval
+    public class CCGridAction : CCAmplitudeAction
     {
         protected internal CCGridSize GridSize { get; private set; }
 
-        #region Constructors
 
-        public CCGridAction()
-        {
-        }
+        #region Constructors
 
         public CCGridAction(float duration) : base(duration)
         {
         }
 
-        public CCGridAction(float duration, CCGridSize gridSize) : this(duration)
+        public CCGridAction(float duration, CCGridSize gridSize) : this(duration, gridSize, 0)
         {
-            GridSize = gridSize; 
+        }
+
+        protected CCGridAction(float duration, CCGridSize gridSize, float amplitude) : base(duration, amplitude)
+        {
+            GridSize = gridSize;
         }
 
         #endregion Constructors
@@ -38,7 +39,7 @@ namespace CocosSharp
 
     #region Action state
 
-    public class CCGridActionState : CCActionIntervalState
+    public class CCGridActionState : CCAmplitudeActionState
     {
         protected CCGridSize GridSize { get; private set; }
 

@@ -3,10 +3,11 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
-    public class CCRipple3D : CCLiquid
+    public class CCRipple3D : CCGrid3DAction
     {
         public CCPoint Position { get; private set; }
         public float Radius { get; private set; }
+        public int Waves { get; private set; }
 
 
         #region Constructors
@@ -17,10 +18,11 @@ namespace CocosSharp
 		}
 
 		public CCRipple3D(float duration, CCGridSize gridSize, CCPoint position, float radius, int waves, float amplitude) 
-            : base(duration, gridSize, waves, amplitude)
+            : base(duration, gridSize, amplitude)
         {
             Position = position;
             Radius = radius;
+            Waves = waves;
         }
 
         #endregion Constructors
@@ -35,15 +37,18 @@ namespace CocosSharp
 
     #region Action state
 
-    public class CCRipple3DState : CCLiquidState
+    public class CCRipple3DState : CCGrid3DActionState
     {
         public CCPoint Position { get; set; }
         public float Radius { get; set; }
+        public int Waves { get; set; }
+
 
         public CCRipple3DState(CCRipple3D action, CCNode target) : base(action, target)
         {
             Position = action.Position;
             Radius = action.Radius;
+            Waves = action.Waves;
         }
 
         public override void Update(float time)
@@ -65,7 +70,7 @@ namespace CocosSharp
                         float r1 = r / Radius;
                         float rate = r1 * r1;
                         v.Z += ((float) Math.Sin(time * MathHelper.Pi * Waves * 2 + r * 0.1f) * Amplitude *
-                            StateAmplitudeRate * rate);
+                            AmplitudeRate * rate);
                     }
 
                     SetVertex(i, j, ref v);
