@@ -1,9 +1,12 @@
-using System;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework.Content;
+
+[assembly: InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")]
+[assembly: InternalsVisibleTo("Microsoft.Xna.Framework.Content")]
 
 namespace CocosSharp
 {
-    public class CCRectReader : ContentTypeReader<CCRect>
+    internal class CCRectReader : ContentTypeReader<CCRect>
     {
         public CCRectReader()
         {
