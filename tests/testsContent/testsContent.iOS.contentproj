@@ -1610,6 +1610,11 @@
       <Importer>TMXImporter</Importer>
       <Processor>TMXProcessor</Processor>
     </Compile>
+    <Compile Include="fonts\MarkerFelt-32.spritefont">
+      <Name>MarkerFelt-32</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>MGSpriteFontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="fonts\Paint Boy.ttf">
       <Name>Paint Boy</Name>
     </None>
