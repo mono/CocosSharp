@@ -43,7 +43,7 @@ namespace CocosSharp
         public override void Update(float time)
         {
             int i, j;
-            float ampRate = StateAmplitudeRate;
+            float ampRate = AmplitudeRate;
 
             for (i = 0; i < GridSize.X + 1; ++i)
             {

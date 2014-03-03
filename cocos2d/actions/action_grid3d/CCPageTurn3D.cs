@@ -7,10 +7,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCPageTurn3D()
-        {
-        }
-
         public CCPageTurn3D(float duration, CCGridSize gridSize) : base(duration, gridSize)
         {
         }

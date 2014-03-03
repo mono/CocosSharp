@@ -8,15 +8,16 @@ namespace CocosSharp
 
         #region Constructors
 
-        protected CCGrid3DAction()
-        {
-        }
-
         protected CCGrid3DAction(float duration) : base(duration)
         {
         }
 
-        protected CCGrid3DAction(float duration, CCGridSize gridSize) : base(duration, gridSize)
+        protected CCGrid3DAction(float duration, CCGridSize gridSize) : this(duration, gridSize, 0)
+        {
+        }
+
+        protected CCGrid3DAction(float duration, CCGridSize gridSize, float amplitude) 
+            : base(duration, gridSize, amplitude)
         {
         }
 

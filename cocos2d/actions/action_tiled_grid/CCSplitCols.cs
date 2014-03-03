@@ -32,10 +32,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCSplitCols()
-        {
-        }
-
         /// <summary>
         /// creates the action with the number of columns to split and the duration
         /// </summary>

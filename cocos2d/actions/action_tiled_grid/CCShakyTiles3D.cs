@@ -33,10 +33,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCShakyTiles3D()
-        {
-        }
-
         /// <summary>
         /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>

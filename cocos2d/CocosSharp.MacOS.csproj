@@ -439,6 +439,7 @@
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
     <Compile Include="label_nodes\CCLabelTtf.cs" />
+    <Compile Include="Actions\action\CCAmplitudeAction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
