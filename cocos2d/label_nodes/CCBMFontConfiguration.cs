@@ -37,7 +37,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public static CCBMFontConfiguration FontConfigurationWithFile(string fntFile)
+        internal static CCBMFontConfiguration FontConfigurationWithFile(string fntFile)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace CocosSharp
             }
         }
 
-        public CCBMFontConfiguration()
+        internal CCBMFontConfiguration()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
             CharacterSet = new List<int>();
@@ -62,7 +62,7 @@ namespace CocosSharp
         
 
         // Content pipeline makes use of this constructor
-        public CCBMFontConfiguration(string data, string fntFile) : base()
+        internal CCBMFontConfiguration(string data, string fntFile) : base()
         {
             Glyphs = new Dictionary<int, CCBMGlyphDef>();
             CharacterSet = new List<int>();
