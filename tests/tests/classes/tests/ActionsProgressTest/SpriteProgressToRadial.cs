@@ -23,7 +23,7 @@ namespace tests
 
             CCProgressTimer right = new CCProgressTimer(s_pPathBlock);
             right.Type = CCProgressTimerType.Radial;
-            right.ReverseProgress = true;
+            right.ReverseDirection = true;
             AddChild(right);
             right.Position = new CCPoint(s.Width - 100, s.Height / 2);
 			right.RepeatForever(progressTo);
