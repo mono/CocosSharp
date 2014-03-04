@@ -600,10 +600,40 @@ namespace CocosSharp
             }
         }
 
-		// This would be called after UnscheduleAll has been called to restart the actions
+		/// <summary>
+		/// Gets a value indicating whether the ActionManager is active.
+		/// The ActionManager can be stopped from processing actions by calling UnscheduleAll() method.
+		/// </summary>
+		/// <value><c>true</c> if the ActionManager active and ready to process Actions; otherwise, <c>false</c>.</value>
+		public bool IsActionManagerActive
+		{
+			get {
+
+				var target = CCDirector.SharedDirector.ActionManager;
+
+				LinkedListNode<ListEntry> next;
+
+				for (LinkedListNode<ListEntry> node = m_pUpdatesNegList.First; node != null; node = next)
+				{
+					next = node.Next;
+					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// Starts the action manager.  		
+		/// This would be called after UnscheduleAll() method has been called to restart the ActionManager.
+		/// </summary>
 		public void StartActionManager()
 		{
-			ScheduleUpdateForTarget (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
+			if (!IsActionManagerActive)
+				ScheduleUpdateForTarget (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
 		}
 
         public void UnscheduleAll()
@@ -761,27 +791,6 @@ namespace CocosSharp
                 elementUpdate.Entry.Paused = false;
             }
         }
-
-		public bool IsActionManagerActive
-		{
-			get {
-
-				var target = CCDirector.SharedDirector.ActionManager;
-
-				LinkedListNode<ListEntry> next;
-
-				for (LinkedListNode<ListEntry> node = m_pUpdatesNegList.First; node != null; node = next)
-				{
-					next = node.Next;
-					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-		}
 
         public bool IsTargetPaused(ICCUpdatable target)
         {
