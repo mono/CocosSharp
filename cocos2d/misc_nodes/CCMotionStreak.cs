@@ -27,7 +27,7 @@ namespace CocosSharp
         public CCTexture2D Texture { get; set; }
         public CCBlendFunc BlendFunc { get; set; }
         public bool FastMode { get; set; }
-        public bool StartingPositionInitialized { get; set; }
+        public bool StartingPositionInitialized { get; private set; }
 
         public override CCPoint Position
         {
