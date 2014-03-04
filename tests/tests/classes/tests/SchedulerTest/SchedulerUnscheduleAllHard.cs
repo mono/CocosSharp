@@ -10,6 +10,8 @@ namespace tests
     public class SchedulerUnscheduleAllHard : SchedulerTestLayer
     {
 
+		private static CCRotateBy rotateBy = new CCRotateBy(3.0f, 360);
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -17,9 +19,9 @@ namespace tests
 			var s = CCDirector.SharedDirector.WinSize;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
-			sprite.Position = new CCPoint(s.Width/2, s.Height/2);
+			sprite.Position = s.Center;
 			AddChild(sprite);
-			sprite.RepeatForever(new CCRotateBy(3.0f, 360));
+			sprite.RepeatForever(rotateBy);
 
             Schedule(tick1, 0.5f);
             Schedule(tick2, 1.0f);

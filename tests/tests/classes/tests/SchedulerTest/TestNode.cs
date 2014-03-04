@@ -8,12 +8,17 @@ namespace tests
 {
     public class TestNode : CCNode
     {
-        public void initWithString(string pStr, int priority)
-        {
-            m_pstring = pStr;
-            ScheduleUpdateWithPriority(priority);
-        }
+		private string printString;
 
-        private string m_pstring;
+		public TestNode(string printString, int priority)
+		{
+			this.printString = printString;
+			ScheduleUpdateWithPriority(priority);
+		}
+
+		public override void Update (float dt)
+		{
+			CCLog.Log (printString);
+		}
     }
 }
