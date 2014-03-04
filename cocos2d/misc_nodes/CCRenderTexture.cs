@@ -7,56 +7,47 @@ namespace CocosSharp
 {
     public partial class CCRenderTexture : CCNode
     {
-        private bool m_bFirstUsage = true;
-        protected SurfaceFormat m_ePixelFormat;
-        private RenderTarget2D m_pRenderTarget2D;
-        protected CCSprite m_pSprite;
-        protected CCTexture2D m_pTexture;
+        bool firstUsage = true;
+        RenderTarget2D renderTarget2D;
 
-        public CCSprite Sprite
-        {
-            get { return m_pSprite; }
-            set { m_pSprite = value; }
-        }
+
+        public CCSprite Sprite { get; set; }
+        protected CCTexture2D Texture { get; private set; }
+        protected SurfaceFormat PixelFormat { get; private set; }
 
 
         #region Constructors
 
         public CCRenderTexture()
         {
-            m_ePixelFormat = SurfaceFormat.Color;
+            PixelFormat = SurfaceFormat.Color;
         }
 
-        public CCRenderTexture(int w, int h) : this(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
+        public CCRenderTexture(int w, int h) 
+            : this(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, SurfaceFormat format) : this(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents)
+        public CCRenderTexture(int w, int h, SurfaceFormat format) 
+            : this(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, SurfaceFormat format, DepthFormat depthFormat, RenderTargetUsage usage)
-        {
-            InitCCRenderTexture(w, h, format, depthFormat, usage);
-        }
-
-        private void InitCCRenderTexture(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+        public CCRenderTexture(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
 
-            m_pRenderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
+            firstUsage = true;
+            renderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);
 
-            m_pTexture = new CCTexture2D(m_pRenderTarget2D, colorFormat, true, false);
-            m_pTexture.IsAntialiased = false;
+            Texture = new CCTexture2D(renderTarget2D, colorFormat, true, false);
+            Texture.IsAntialiased = false;
 
-            m_bFirstUsage = true;
+            Sprite = new CCSprite(Texture);
+            Sprite.BlendFunc = CCBlendFunc.AlphaBlend;
 
-            m_pSprite = new CCSprite(m_pTexture);
-            //m_pSprite.scaleY = -1;
-            m_pSprite.BlendFunc = CCBlendFunc.AlphaBlend;
-
-            AddChild(m_pSprite);
+            AddChild(Sprite);
         }
 
         #endregion Constructors
@@ -67,7 +58,7 @@ namespace CocosSharp
             // Save the current matrix
             CCDrawManager.PushMatrix();
 
-            CCSize texSize = m_pTexture.ContentSizeInPixels;
+            CCSize texSize = Texture.ContentSizeInPixels;
 
             // Calculate the adjustment ratios based on the old and new projections
             CCDirector director = CCDirector.SharedDirector;
@@ -75,7 +66,7 @@ namespace CocosSharp
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 
-            CCDrawManager.SetRenderTarget(m_pTexture);
+            CCDrawManager.SetRenderTarget(Texture);
 
             CCDrawManager.SetViewPort(0, 0, (int) texSize.Width, (int) texSize.Height);
 
@@ -87,10 +78,10 @@ namespace CocosSharp
 
             CCDrawManager.MultMatrix(ref projection);
 
-            if (m_bFirstUsage)
+            if (firstUsage)
             {
                 CCDrawManager.Clear(Color.Transparent);
-                m_bFirstUsage = false;
+                firstUsage = false;
             }
         }
 
@@ -147,11 +138,11 @@ namespace CocosSharp
         {
             if (format == CCImageFormat.Png)
             {
-                m_pTexture.SaveAsPng(stream, m_pTexture.PixelsWide, m_pTexture.PixelsHigh);
+                Texture.SaveAsPng(stream, Texture.PixelsWide, Texture.PixelsHigh);
             }
             else if (format == CCImageFormat.Jpg)
             {
-                m_pTexture.SaveAsJpeg(stream, m_pTexture.PixelsWide, m_pTexture.PixelsHigh);
+                Texture.SaveAsJpeg(stream, Texture.PixelsWide, Texture.PixelsHigh);
             }
             else
             {

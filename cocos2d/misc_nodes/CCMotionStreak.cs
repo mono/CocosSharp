@@ -7,36 +7,37 @@ namespace CocosSharp
 {
     public class CCMotionStreak : CCNodeRGBA, ICCTexture
     {
-        protected bool m_bFastMode;
-        protected bool m_bStartingPositionInitialized;
-        private float m_fFadeDelta;
-        private float m_fMinSeg;
-        private float m_fStroke;
-        private float[] m_pPointState;
-        private CCPoint[] m_pPointVertexes;
-        /** texture used for the motion streak */
-        private CCTexture2D m_pTexture;
-        private CCV3F_C4B_T2F[] m_pVertices;
-        private CCBlendFunc m_tBlendFunc;
-        private CCPoint m_tPositionR;
+        // ivars
+        int maxPoints;
+        int numOfPoints;
+        int previousNumOfPoints;
 
-        private int m_uMaxPoints;
-        private int m_uNuPoints;
-        private int m_uPreviousNuPoints;
+        float fadeDelta;
+        float minSeg;
+        float stroke;
+        float[] pointState;
 
-        /** Pointers */
+        CCPoint positionR;
+        CCPoint[] pointVertexes;
+        CCV3F_C4B_T2F[] vertices;
+
+
+        #region Properties
+
+        public CCTexture2D Texture { get; set; }
+        public CCBlendFunc BlendFunc { get; set; }
+        public bool FastMode { get; set; }
+        public bool StartingPositionInitialized { get; set; }
 
         public override CCPoint Position
         {
             set
             {
-                m_bStartingPositionInitialized = true;
-                m_tPositionR = value;
+                StartingPositionInitialized = true;
+                positionR = value;
             }
         }
-
-        #region RGBA Protocol
-
+            
         public override byte Opacity
         {
             get { return 0; }
@@ -49,47 +50,14 @@ namespace CocosSharp
             set { }
         }
 
-        #endregion
-
-        #region ICCTextureProtocol Members
-
-        public CCTexture2D Texture
-        {
-            get { return m_pTexture; }
-            set { m_pTexture = value; }
-        }
-
-        public CCBlendFunc BlendFunc
-        {
-            set { m_tBlendFunc = value; }
-            get { return (m_tBlendFunc); }
-        }
-
-        #endregion
-
-        public bool FastMode
-        {
-            get { return m_bFastMode; }
-            set { m_bFastMode = value; }
-        }
-
-        public bool StartingPositionInitialized
-        {
-            get { return m_bStartingPositionInitialized; }
-            set { m_bStartingPositionInitialized = value; }
-        }
+        #endregion Properties
 
 
         #region Constructors
 
         public CCMotionStreak()
         {
-            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
-        }
-
-        public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
-        {
-            InitCCMotionStreak(fade, minSeg, stroke, color, texture);
+            BlendFunc = CCBlendFunc.NonPremultiplied;
         }
 
         public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, string path) 
@@ -97,166 +65,91 @@ namespace CocosSharp
         {
         }
 
-        private void InitCCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, CCTexture2D texture)
+        public CCMotionStreak(float fade, float minSegIn, float strokeIn, CCColor3B color, CCTexture2D texture)
         {
-            Position = CCPoint.Zero;
             AnchorPoint = CCPoint.Zero;
             IgnoreAnchorPointForPosition = true;
-            m_bStartingPositionInitialized = false;
-
-            m_tPositionR = CCPoint.Zero;
-            m_bFastMode = true;
-            m_fMinSeg = (minSeg == -1.0f) ? stroke / 5.0f : minSeg;
-            m_fMinSeg *= m_fMinSeg;
-
-            m_fStroke = stroke;
-            m_fFadeDelta = 1.0f / fade;
-
-            m_uMaxPoints = (int) (fade * 60.0f) + 2;
-            m_uNuPoints = 0;
-            m_pPointState = new float[m_uMaxPoints];
-            m_pPointVertexes = new CCPoint[m_uMaxPoints];
-
-            m_pVertices = new CCV3F_C4B_T2F[(m_uMaxPoints + 1) * 2];
-
-            // Set blend mode
-            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
-
+            StartingPositionInitialized = false;
+            FastMode = true;
             Texture = texture;
             Color = color;
+            stroke = strokeIn;
+            BlendFunc = CCBlendFunc.NonPremultiplied;
+
+            minSeg = (minSegIn == -1.0f) ? stroke / 5.0f : minSegIn;
+            minSeg *= minSeg;
+
+            fadeDelta = 1.0f / fade;
+
+            maxPoints = (int) (fade * 60.0f) + 2;
+
+            pointState = new float[maxPoints];
+            pointVertexes = new CCPoint[maxPoints];
+            vertices = new CCV3F_C4B_T2F[(maxPoints + 1) * 2];
+
             ScheduleUpdate();
         }
 
         #endregion Constructors
 
 
-        public void TintWithColor(CCColor3B colors)
-        {
-            Color = colors;
+        #region Drawing
 
-            for (int i = 0; i < m_uNuPoints * 2; i++)
-            {
-                m_pVertices[i].Colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
-            }
+        protected override void Draw()
+        {
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.VertexColorEnabled = true;
+            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, vertices, 0, numOfPoints * 2 - 2);
         }
 
-        public override void Update(float delta)
+        #endregion Drawing
+
+
+        #region Updating
+
+        static bool VertexLineIntersect(float Ax, float Ay, float Bx, float By, float Cx, 
+            float Cy, float Dx, float Dy, out float T)
         {
-            if (!m_bStartingPositionInitialized)
-            {
-                return;
-            }
+            float distAB, theCos, theSin, newX;
 
-            delta *= m_fFadeDelta;
+            T = 0;
 
-            int newIdx, newIdx2, i, i2;
-            int mov = 0;
+            // FAIL: Line undefined
+            if ((Ax == Bx && Ay == By) || (Cx == Dx && Cy == Dy)) return false;
 
-            // Update current points
-            for (i = 0; i < m_uNuPoints; i++)
-            {
-                m_pPointState[i] -= delta;
+            //  Translate system to make A the origin
+            Bx -= Ax;
+            By -= Ay;
+            Cx -= Ax;
+            Cy -= Ay;
+            Dx -= Ax;
+            Dy -= Ay;
 
-                if (m_pPointState[i] <= 0)
-                {
-                    mov++;
-                }
-                else
-                {
-                    newIdx = i - mov;
+            // Length of segment AB
+            distAB = (float) Math.Sqrt(Bx * Bx + By * By);
 
-                    if (mov > 0)
-                    {
-                        // Move data
-                        m_pPointState[newIdx] = m_pPointState[i];
+            // Rotate the system so that point B is on the positive X axis.
+            theCos = Bx / distAB;
+            theSin = By / distAB;
+            newX = Cx * theCos + Cy * theSin;
+            Cy = Cy * theCos - Cx * theSin;
+            Cx = newX;
+            newX = Dx * theCos + Dy * theSin;
+            Dy = Dy * theCos - Dx * theSin;
+            Dx = newX;
 
-                        // Move point
-                        m_pPointVertexes[newIdx] = m_pPointVertexes[i];
+            // FAIL: Lines are parallel.
+            if (Cy == Dy) return false;
 
-                        // Move vertices
-                        i2 = i * 2;
-                        newIdx2 = newIdx * 2;
-                        m_pVertices[newIdx2].Vertices = m_pVertices[i2].Vertices;
-                        m_pVertices[newIdx2 + 1].Vertices = m_pVertices[i2 + 1].Vertices;
+            // Discover the relative position of the intersection in the line AB
+            T = (Dx + (Cx - Dx) * Dy / (Dy - Cy)) / distAB;
 
-                        // Move color
-                        m_pVertices[newIdx2].Colors = m_pVertices[i2].Colors;
-                        m_pVertices[newIdx2 + 1].Colors = m_pVertices[i2 + 1].Colors;
-                    }
-                    else
-                    {
-                        newIdx2 = newIdx * 2;
-                    }
-
-                    m_pVertices[newIdx2].Colors.A = m_pVertices[newIdx2 + 1].Colors.A = (byte) (m_pPointState[newIdx] * 255.0f);
-                }
-            }
-            m_uNuPoints -= mov;
-
-            // Append new point
-            bool appendNewPoint = true;
-            if (m_uNuPoints >= m_uMaxPoints)
-            {
-                appendNewPoint = false;
-            }
-
-            else if (m_uNuPoints > 0)
-            {
-                bool a1 = m_pPointVertexes[m_uNuPoints - 1].DistanceSQ(ref m_tPositionR) < m_fMinSeg;
-                bool a2 = (m_uNuPoints != 1) && (m_pPointVertexes[m_uNuPoints - 2].DistanceSQ(ref m_tPositionR) < (m_fMinSeg * 2.0f));
-
-                if (a1 || a2)
-                {
-                    appendNewPoint = false;
-                }
-            }
-
-            if (appendNewPoint)
-            {
-                m_pPointVertexes[m_uNuPoints] = m_tPositionR;
-                m_pPointState[m_uNuPoints] = 1.0f;
-
-                // Color asignation
-                int offset = m_uNuPoints * 2;
-                m_pVertices[offset].Colors = m_pVertices[offset + 1].Colors = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, 255);
-
-                // Generate polygon
-                if (m_uNuPoints > 0 && m_bFastMode)
-                {
-                    if (m_uNuPoints > 1)
-                    {
-                        VertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, m_uNuPoints, 1);
-                    }
-                    else
-                    {
-                        VertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, 0, 2);
-                    }
-                }
-
-                m_uNuPoints++;
-            }
-
-            if (!m_bFastMode)
-            {
-                VertexLineToPolygon(m_pPointVertexes, m_fStroke, m_pVertices, 0, m_uNuPoints);
-            }
-
-            // Updated Tex Coords only if they are different than previous step
-            if (m_uNuPoints > 0 && m_uPreviousNuPoints != m_uNuPoints)
-            {
-                float texDelta = 1.0f / m_uNuPoints;
-                for (i = 0; i < m_uNuPoints; i++)
-                {
-                    m_pVertices[i * 2].TexCoords = new CCTex2F(0, texDelta * i);
-                    m_pVertices[i * 2 + 1].TexCoords = new CCTex2F(1, texDelta * i);
-                }
-
-                m_uPreviousNuPoints = m_uNuPoints;
-            }
+            // Success.
+            return true;
         }
 
-
-        private void VertexLineToPolygon(CCPoint[] points, float stroke, CCV3F_C4B_T2F[] vertices, int offset, int nuPoints)
+        static void VertexLineToPolygon(CCPoint[] points, float stroke, CCV3F_C4B_T2F[] vertices, int offset, int nuPoints)
         {
             nuPoints += offset;
             if (nuPoints <= 1) return;
@@ -327,7 +220,7 @@ namespace CocosSharp
                 CCVertex3F p4 = vertices[idx1 + 1].Vertices;
 
                 float s;
-                bool fixVertex = !ccVertexLineIntersect(p1.X, p1.Y, p4.X, p4.Y, p2.X, p2.Y, p3.X, p3.Y, out s);
+                bool fixVertex = !VertexLineIntersect(p1.X, p1.Y, p4.X, p4.Y, p2.X, p2.Y, p3.X, p3.Y, out s);
                 if (!fixVertex)
                 {
                     if (s < 0.0f || s > 1.0f)
@@ -344,57 +237,137 @@ namespace CocosSharp
             }
         }
 
-        private bool ccVertexLineIntersect(float Ax, float Ay, float Bx, float By, float Cx, float Cy, float Dx, float Dy, out float T)
+        void Reset()
         {
-            float distAB, theCos, theSin, newX;
-
-            T = 0;
-
-            // FAIL: Line undefined
-            if ((Ax == Bx && Ay == By) || (Cx == Dx && Cy == Dy)) return false;
-
-            //  Translate system to make A the origin
-            Bx -= Ax;
-            By -= Ay;
-            Cx -= Ax;
-            Cy -= Ay;
-            Dx -= Ax;
-            Dy -= Ay;
-
-            // Length of segment AB
-            distAB = (float) Math.Sqrt(Bx * Bx + By * By);
-
-            // Rotate the system so that point B is on the positive X axis.
-            theCos = Bx / distAB;
-            theSin = By / distAB;
-            newX = Cx * theCos + Cy * theSin;
-            Cy = Cy * theCos - Cx * theSin;
-            Cx = newX;
-            newX = Dx * theCos + Dy * theSin;
-            Dy = Dy * theCos - Dx * theSin;
-            Dx = newX;
-
-            // FAIL: Lines are parallel.
-            if (Cy == Dy) return false;
-
-            // Discover the relative position of the intersection in the line AB
-            T = (Dx + (Cx - Dx) * Dy / (Dy - Cy)) / distAB;
-
-            // Success.
-            return true;
+            numOfPoints = 0;
         }
 
-        private void Reset()
+        public void TintWithColor(CCColor3B colors)
         {
-            m_uNuPoints = 0;
+            Color = colors;
+
+            for (int i = 0; i < numOfPoints * 2; i++)
+            {
+                vertices[i].Colors = new CCColor4B(colors.R, colors.G, colors.B, 255);
+            }
         }
 
-        protected override void Draw()
+        public override void Update(float delta)
         {
-            CCDrawManager.BlendFunc(m_tBlendFunc);
-            CCDrawManager.BindTexture(m_pTexture);
-            CCDrawManager.VertexColorEnabled = true;
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, m_pVertices, 0, m_uNuPoints * 2 - 2);
+            if (!StartingPositionInitialized)
+            {
+                return;
+            }
+
+            delta *= fadeDelta;
+
+            int newIdx, newIdx2, i, i2;
+            int mov = 0;
+
+            // Update current points
+            for (i = 0; i < numOfPoints; i++)
+            {
+                pointState[i] -= delta;
+
+                if (pointState[i] <= 0)
+                {
+                    mov++;
+                }
+                else
+                {
+                    newIdx = i - mov;
+
+                    if (mov > 0)
+                    {
+                        // Move data
+                        pointState[newIdx] = pointState[i];
+
+                        // Move point
+                        pointVertexes[newIdx] = pointVertexes[i];
+
+                        // Move vertices
+                        i2 = i * 2;
+                        newIdx2 = newIdx * 2;
+                        vertices[newIdx2].Vertices = vertices[i2].Vertices;
+                        vertices[newIdx2 + 1].Vertices = vertices[i2 + 1].Vertices;
+
+                        // Move color
+                        vertices[newIdx2].Colors = vertices[i2].Colors;
+                        vertices[newIdx2 + 1].Colors = vertices[i2 + 1].Colors;
+                    }
+                    else
+                    {
+                        newIdx2 = newIdx * 2;
+                    }
+
+                    vertices[newIdx2].Colors.A = vertices[newIdx2 + 1].Colors.A = (byte) (pointState[newIdx] * 255.0f);
+                }
+            }
+
+            numOfPoints -= mov;
+
+            // Append new point
+            bool appendNewPoint = true;
+            if (numOfPoints >= maxPoints)
+            {
+                appendNewPoint = false;
+            }
+
+            else if (numOfPoints > 0)
+            {
+                bool a1 = pointVertexes[numOfPoints - 1].DistanceSQ(ref positionR) < minSeg;
+                bool a2 = (numOfPoints != 1) && (pointVertexes[numOfPoints - 2].DistanceSQ(ref positionR) < (minSeg * 2.0f));
+
+                if (a1 || a2)
+                {
+                    appendNewPoint = false;
+                }
+            }
+
+            if (appendNewPoint)
+            {
+                pointVertexes[numOfPoints] = positionR;
+                pointState[numOfPoints] = 1.0f;
+
+                // Color asignation
+                int offset = numOfPoints * 2;
+                vertices[offset].Colors = vertices[offset + 1].Colors = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, 255);
+
+                // Generate polygon
+                if (numOfPoints > 0 && FastMode)
+                {
+                    if (numOfPoints > 1)
+                    {
+                        VertexLineToPolygon(pointVertexes, stroke, vertices, numOfPoints, 1);
+                    }
+                    else
+                    {
+                        VertexLineToPolygon(pointVertexes, stroke, vertices, 0, 2);
+                    }
+                }
+
+                numOfPoints++;
+            }
+
+            if (!FastMode)
+            {
+                VertexLineToPolygon(pointVertexes, stroke, vertices, 0, numOfPoints);
+            }
+
+            // Updated Tex Coords only if they are different than previous step
+            if (numOfPoints > 0 && previousNumOfPoints != numOfPoints)
+            {
+                float texDelta = 1.0f / numOfPoints;
+                for (i = 0; i < numOfPoints; i++)
+                {
+                    vertices[i * 2].TexCoords = new CCTex2F(0, texDelta * i);
+                    vertices[i * 2 + 1].TexCoords = new CCTex2F(1, texDelta * i);
+                }
+
+                previousNumOfPoints = numOfPoints;
+            }
         }
+
+        #endregion Updating
     }
 }
