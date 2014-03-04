@@ -186,9 +186,9 @@ namespace CocosSharp
 {
     public class CCScheduler
     {
-        public const uint kCCRepeatForever = uint.MaxValue - 1;
-        public const int kCCPrioritySystem = int.MinValue;
-        public const int kCCPriorityNonSystemMin = kCCPrioritySystem + 1;
+        public const uint RepeatForever = uint.MaxValue - 1;
+        public const int PrioritySystem = int.MinValue;
+        public const int PriorityNonSystemMin = PrioritySystem + 1;
 
         private readonly Dictionary<ICCUpdatable, HashTimeEntry> m_pHashForTimers =
             new Dictionary<ICCUpdatable, HashTimeEntry>();
@@ -602,7 +602,7 @@ namespace CocosSharp
 
         public void UnscheduleAll()
         {
-            UnscheduleAllWithMinPriority(int.MinValue);
+			UnscheduleAllWithMinPriority(PrioritySystem);
         }
 
         public void UnscheduleAllWithMinPriority(int minPriority)
