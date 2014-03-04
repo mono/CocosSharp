@@ -78,9 +78,9 @@ namespace CocosSharp
         string m_sSaveFileName = "SceneList.dat";
         string m_sSceneSaveFileName = "Scene{0}.dat";
 #endif
-        CCActionManager m_pActionManager;
+		CCActionManager m_pActionManager;
         CCKeypadDispatcher m_pKeypadDispatcher;
-        CCKeyboardDispatcher m_pKeyboardDispatcher;
+		CCKeyboardDispatcher m_pKeyboardDispatcher;
         CCScene m_pNextScene;
         CCNode m_pNotificationNode;
         ICCDirectorDelegate m_pProjectionDelegate;
@@ -331,7 +331,7 @@ namespace CocosSharp
 
             // projection delegate if "Custom" projection is used
             m_pProjectionDelegate = null;
-            
+
             // stats
             m_pStats = new CCStats ();
 
@@ -343,7 +343,7 @@ namespace CocosSharp
 
             m_obWinSizeInPoints = CCSize.Zero;
 
-            // m_pobOpenGLView = null;
+            //m_pobOpenGLView = null;
 
             m_fContentScaleFactor = 1.0f;
 
@@ -352,8 +352,8 @@ namespace CocosSharp
 
             // action manager
             m_pActionManager = new CCActionManager();
-            m_pScheduler.ScheduleUpdateForTarget(m_pActionManager, CCScheduler.kCCPrioritySystem, false);
-
+            m_pScheduler.Schedule (m_pActionManager, CCScheduler.PrioritySystem, false);
+            
             // touchDispatcher
             m_pTouchDispatcher = new CCTouchDispatcher();
             m_pTouchDispatcher.Init();
@@ -370,7 +370,7 @@ namespace CocosSharp
             #endif
 
             // create autorelease pool
-            // CCPoolManager::sharedPoolManager()->push();
+            //CCPoolManager::sharedPoolManager()->push();
 
             m_NeedsInit = false;
         }
@@ -639,7 +639,7 @@ namespace CocosSharp
         {
             // Start stats measuring
             m_pStats.UpdateStart ();
-            
+
             if (!m_bPaused)
             {
                 if (m_bNextDeltaTimeZero)
@@ -653,7 +653,7 @@ namespace CocosSharp
                 }
 
                 // In Seconds
-                m_pScheduler.update(m_fDeltaTime);
+                m_pScheduler.Update(m_fDeltaTime);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.

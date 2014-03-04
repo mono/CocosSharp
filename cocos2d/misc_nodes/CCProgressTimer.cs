@@ -5,11 +5,8 @@ namespace CocosSharp
 {
     public enum CCProgressTimerType
     {
-        /// Radial Counter-Clockwise
-        Radial,
-
-        /// Bar
-        Bar,
+        Radial, // Radial Counter-Clockwise
+        Bar,    // Bar
     }
 
 /**
@@ -21,147 +18,120 @@ namespace CocosSharp
 
     public class CCProgressTimer : CCNodeRGBA
     {
-        private const int kProgressTextureCoordsCount = 4;
-        //kProgressTextureCoords holds points {0,1} {0,0} {1,0} {1,1} we can represent it as bits
-        private const uint kCCProgressTextureCoords = 0x4b;
+        const int ProgressTextureCoordsCount = 4;
+        const uint ProgressTextureCoords = 0x4b;    // ProgressTextureCoords holds points {0,1} {0,0} {1,0} {1,1} we can represent it as bits
 
-        private static short[] s_pIndexes;
+        // ivars
+        bool reverseDirection;
+        CCProgressTimerType type;
+        float percentage;
+        CCSprite sprite;
+        CCPoint midpoint;
 
-        protected bool m_bReverseDirection;
-        protected CCProgressTimerType m_eType;
-        protected float m_fPercentage;
-        protected int m_nVertexDataCount;
-        protected CCSprite m_pSprite;
-        protected CCV3F_C4B_T2F[] m_pVertexData;
-        protected CCPoint m_tBarChangeRate;
-        protected CCPoint m_tMidpoint;
+        CCV3F_C4B_T2F[] vertexData;
+        short[] vertexIndices;
 
-        /**    Change the percentage to change progress. */
+
+        #region Properties
+
+        public CCPoint BarChangeRate { get; set; }
 
         public CCProgressTimerType Type
         {
-            get { return m_eType; }
+            get { return type; }
             set
             {
-                if (value != m_eType)
+                if (value != type)
                 {
-                    //    release all previous information
-                    if (m_pVertexData != null)
-                    {
-                        m_pVertexData = null;
-                        m_nVertexDataCount = 0;
-                    }
+                    type = value;
 
-                    m_eType = value;
+                    vertexData = null;
+                    RefreshVertexIndices();
                 }
             }
         }
 
-        /** Percentages are from 0 to 100 */
-
         public float Percentage
         {
-            get { return m_fPercentage; }
+            get { return percentage; }
             set
             {
-                if (m_fPercentage != value)
+                if (percentage != value)
                 {
-                    m_fPercentage = MathHelper.Clamp(value, 0, 100);
+                    percentage = MathHelper.Clamp(value, 0, 100);
                     UpdateProgress();
                 }
             }
         }
 
-        /** The image to show the progress percentage, retain */
-
         public CCSprite Sprite
         {
-            get { return m_pSprite; }
+            get { return sprite; }
             set
             {
-                if (m_pSprite != value)
+                if (sprite != value)
                 {
-                    m_pSprite = value;
+                    sprite = value;
                     ContentSize = value.ContentSize;
 
-                    //    Everytime we set a new sprite, we free the current vertex data
-                    if (m_pVertexData != null)
-                    {
-                        m_pVertexData = null;
-                        m_nVertexDataCount = 0;
-                    }
+                    vertexData = null;
                 }
             }
         }
-
-        /** Initializes a progress timer with the sprite as the shape the timer goes through */
-
-        public bool ReverseProgress
+        
+        public bool ReverseDirection
         {
+            get { return reverseDirection; }
             set
             {
-                if (m_bReverseDirection != value)
+                if (reverseDirection != value)
                 {
-                    m_bReverseDirection = value;
+                    reverseDirection = value;
 
-                    //    release all previous information
-                    m_pVertexData = null;
-                    m_nVertexDataCount = 0;
+                    vertexData = null;
                 }
             }
         }
 
         public CCPoint Midpoint
         {
-            get { return m_tMidpoint; }
+            get { return midpoint; }
             set
             {
-                m_tMidpoint.X = MathHelper.Clamp(value.X, 0, 1);
-                m_tMidpoint.Y = MathHelper.Clamp(value.Y, 0, 1);
+                midpoint.X = MathHelper.Clamp(value.X, 0, 1);
+                midpoint.Y = MathHelper.Clamp(value.Y, 0, 1);
             }
         }
 
-        public CCPoint BarChangeRate
-        {
-            get { return m_tBarChangeRate; }
-            set { m_tBarChangeRate = value; }
-        }
-
-        public bool ReverseDirection
-        {
-            get { return m_bReverseDirection; }
-            set { m_bReverseDirection = value; }
-        }
-
-        #region RGBA Protocol
+        // Overriden properties
 
         public override CCColor3B Color
         {
-            get { return m_pSprite.Color; }
+            get { return Sprite.Color; }
             set
             {
-                m_pSprite.Color = value;
+                Sprite.Color = value;
                 UpdateColor();
             }
         }
 
         public override byte Opacity
         {
-            get { return m_pSprite.Opacity; }
+            get { return Sprite.Opacity; }
             set
             {
-                m_pSprite.Opacity = value;
+                Sprite.Opacity = value;
                 UpdateColor();
             }
         }
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return false; }
             set { }
         }
 
-        #endregion
+        #endregion Properties
 
 
         #region Constructors
@@ -170,157 +140,173 @@ namespace CocosSharp
         {
         }
 
-        /** Creates a progress timer with the sprite as the shape the timer goes through */
-
         public CCProgressTimer(CCSprite sp)
         {
-            InitCCProgressTimer(sp);
-        }
-
-        private void InitCCProgressTimer(CCSprite sp)
-        {
-            Percentage = 0.0f;
-            m_pVertexData = null;
-            m_nVertexDataCount = 0;
-
             AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_eType = CCProgressTimerType.Radial;
-            m_bReverseDirection = false;
+            Type = CCProgressTimerType.Radial;
             Midpoint = new CCPoint(0.5f, 0.5f);
             BarChangeRate = new CCPoint(1, 1);
             Sprite = sp;
 
-            // shader program
-            //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+            UpdateProgress();
         }
 
         #endregion Constructors
 
 
+        #region Drawing
+
         protected override void Draw()
         {
-            if (m_pVertexData == null || m_pSprite == null)
-                return;
-
-            CCDrawManager.BindTexture(Sprite.Texture);
-            CCDrawManager.BlendFunc(m_pSprite.BlendFunc);
-
-            var count = (m_nVertexDataCount - 2);
-
-            if (s_pIndexes == null || s_pIndexes.Length < count * 3)
+            if (vertexData != null && sprite != null) 
             {
-                s_pIndexes = new short[count * 3];
-            }
+                CCDrawManager.BindTexture(Sprite.Texture);
+                CCDrawManager.BlendFunc(Sprite.BlendFunc);
 
-            if (m_eType == CCProgressTimerType.Radial)
-            {
-                //FAN
-                for (int i = 0; i < count; i++)
-                {
-                    var i3 = i * 3;
-                    s_pIndexes[i3 + 0] = 0;
-                    s_pIndexes[i3 + 1] = (short) (i + 1);
-                    s_pIndexes[i3 + 2] = (short) (i + 2);
-                }
-
-                CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
-                                                    s_pIndexes, 0, count);
-            }
-            else if (m_eType == CCProgressTimerType.Bar)
-            {
-                //TRIANGLE STRIP
-                for (int i = 0; i < count; i++)
-                {
-                    var i3 = i * 3;
-                    s_pIndexes[i3 + 0] = (short) (i + 0);
-                    s_pIndexes[i3 + 1] = (short) (i + 1);
-                    s_pIndexes[i3 + 2] = (short) (i + 2);
-                }
-
-                if (!m_bReverseDirection)
-                {
-                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
-                                                        s_pIndexes, 0, count);
-                }
-                else
-                {
-                    CCDrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, m_pVertexData, 0, m_nVertexDataCount,
-                                                        s_pIndexes, 0, count);
-                }
+                CCDrawManager.DrawIndexedPrimitives (PrimitiveType.TriangleList, vertexData, 0, 
+                    vertexData.Length, vertexIndices, 0, vertexData.Length - 2);
             }
         }
 
-        protected CCTex2F TextureCoordFromAlphaPoint(CCPoint alpha)
+        #endregion Drawing
+
+
+        #region Vertex data
+
+        CCTex2F TextureCoordFromAlphaPoint(CCPoint alpha)
         {
-            var ret = new CCTex2F(0.0f, 0.0f);
-            if (m_pSprite == null)
+            CCTex2F ret = new CCTex2F(0.0f, 0.0f);
+
+            if (Sprite != null) 
             {
-                return ret;
+                CCV3F_C4B_T2F_Quad quad = Sprite.Quad;
+
+                CCPoint min = new CCPoint (quad.BottomLeft.TexCoords.U, quad.BottomLeft.TexCoords.V);
+                CCPoint max = new CCPoint (quad.TopRight.TexCoords.U, quad.TopRight.TexCoords.V);
+
+                //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
+                if (Sprite.IsTextureRectRotated) 
+                {
+                    float tmp = alpha.X;
+                    alpha.X = alpha.Y;
+                    alpha.Y = tmp;
+                }
+
+                ret = new CCTex2F(min.X * (1f - alpha.X) + max.X * alpha.X, min.Y * (1f - alpha.Y) + max.Y * alpha.Y);
             }
-
-            CCV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
-
-            var min = new CCPoint(quad.BottomLeft.TexCoords.U, quad.BottomLeft.TexCoords.V);
-            var max = new CCPoint(quad.TopRight.TexCoords.U, quad.TopRight.TexCoords.V);
-
-            //  Fix bug #1303 so that progress timer handles sprite frame texture rotation
-            if (m_pSprite.IsTextureRectRotated)
-            {
-                float tmp = alpha.X;
-                alpha.X = alpha.Y;
-                alpha.Y = tmp;
-            }
-            return new CCTex2F(min.X * (1f - alpha.X) + max.X * alpha.X, min.Y * (1f - alpha.Y) + max.Y * alpha.Y);
-        }
-
-        protected CCVertex3F VertexFromAlphaPoint(CCPoint alpha)
-        {
-            var ret = new CCVertex3F(0.0f, 0.0f, 0.0f);
-
-            if (m_pSprite == null)
-            {
-                return ret;
-            }
-
-            CCV3F_C4B_T2F_Quad quad = m_pSprite.Quad;
-
-            var min = new CCPoint(quad.BottomLeft.Vertices.X, quad.BottomLeft.Vertices.Y);
-            var max = new CCPoint(quad.TopRight.Vertices.X, quad.TopRight.Vertices.Y);
-
-            ret.X = min.X * (1f - alpha.X) + max.X * alpha.X;
-            ret.Y = min.Y * (1f - alpha.Y) + max.Y * alpha.Y;
 
             return ret;
         }
 
-        protected void UpdateProgress()
+        CCVertex3F VertexFromAlphaPoint(CCPoint alpha)
         {
-            switch (m_eType)
+            CCVertex3F ret = new CCVertex3F(0.0f, 0.0f, 0.0f);
+
+            if (Sprite != null) 
+            {
+                CCV3F_C4B_T2F_Quad quad = Sprite.Quad;
+
+                CCPoint min = new CCPoint(quad.BottomLeft.Vertices.X, quad.BottomLeft.Vertices.Y);
+                CCPoint max = new CCPoint(quad.TopRight.Vertices.X, quad.TopRight.Vertices.Y);
+
+                ret.X = min.X * (1f - alpha.X) + max.X * alpha.X;
+                ret.Y = min.Y * (1f - alpha.Y) + max.Y * alpha.Y;
+            }
+
+            return ret;
+        }
+
+        CCPoint BoundaryTexCoord(int index)
+        {
+            if (index < ProgressTextureCoordsCount)
+            {
+                if (ReverseDirection)
+                {
+                    return new CCPoint((ProgressTextureCoords >> (7 - (index << 1))) & 1,
+                        (ProgressTextureCoords >> (7 - ((index << 1) + 1))) & 1);
+                }
+                return new CCPoint((ProgressTextureCoords >> ((index << 1) + 1)) & 1,
+                    (ProgressTextureCoords >> (index << 1)) & 1);
+            }
+            return CCPoint.Zero;
+        }
+
+        void UpdateProgress()
+        {
+            switch(Type)
             {
                 case CCProgressTimerType.Radial:
                     UpdateRadial();
+                    RefreshVertexIndices();
+                    UpdateColor();
                     break;
                 case CCProgressTimerType.Bar:
                     UpdateBar();
+                    RefreshVertexIndices();
+                    UpdateColor();
                     break;
                 default:
                     break;
             }
         }
 
-        protected void UpdateBar()
+        void RefreshVertexIndices()
         {
-            if (m_pSprite == null)
+            if (vertexData != null) 
+            {
+                int count = (vertexData.Length - 2);
+                int i3;
+                vertexIndices = new short[count * 3];
+
+                if (Type == CCProgressTimerType.Radial) 
+                {
+                    // Fan
+                    for (int i = 0; i < count; i++) 
+                    {
+                        i3 = i * 3;
+                        vertexIndices [i3 + 0] = 0;
+                        vertexIndices [i3 + 1] = (short)(i + 1);
+                        vertexIndices [i3 + 2] = (short)(i + 2);
+                    }
+                } 
+                else if (Type == CCProgressTimerType.Bar) 
+                {
+                    // Triangle strip
+                    for (int i = 0; i < count; i++) 
+                    {
+                        i3 = i * 3;
+                        vertexIndices [i3 + 0] = (short)(i + 0);
+                        vertexIndices [i3 + 1] = (short)(i + 1);
+                        vertexIndices [i3 + 2] = (short)(i + 2);
+                    }
+                }
+            }
+        }
+
+        void UpdateColor()
+        {
+            if (Sprite != null && vertexData != null)
+            {
+                CCColor4B sc = Sprite.Quad.TopLeft.Colors;
+                for (int i = 0; i < vertexData.Length; ++i)
+                {
+                    vertexData[i].Colors = sc;
+                }
+            }
+        }
+
+        void UpdateBar()
+        {
+            if (Sprite == null)
             {
                 return;
             }
 
-            float alpha = m_fPercentage / 100.0f;
-            CCPoint alphaOffset =
-                new CCPoint(1.0f * (1.0f - m_tBarChangeRate.X) + alpha * m_tBarChangeRate.X,
-                            1.0f * (1.0f - m_tBarChangeRate.Y) + alpha * m_tBarChangeRate.Y) * 0.5f;
-            CCPoint min = m_tMidpoint - alphaOffset;
-            CCPoint max = m_tMidpoint + alphaOffset;
+            float alpha = Percentage / 100.0f;
+            CCPoint alphaOffset = new CCPoint(1.0f * (1.0f - BarChangeRate.X) + alpha * BarChangeRate.X, 
+                1.0f * (1.0f - BarChangeRate.Y) + alpha * BarChangeRate.Y) * 0.5f;
+            CCPoint min = Midpoint - alphaOffset;
+            CCPoint max = Midpoint + alphaOffset;
 
             if (min.X < 0f)
             {
@@ -347,70 +333,67 @@ namespace CocosSharp
             }
 
 
-            if (!m_bReverseDirection)
+            if (!ReverseDirection)
             {
-                if (m_pVertexData == null)
+                if (vertexData == null)
                 {
-                    m_nVertexDataCount = 4;
-                    m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
+                    vertexData = new CCV3F_C4B_T2F[4];
                 }
                 //    TOPLEFT
-                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
-                m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
+                vertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
+                vertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
 
                 //    BOTLEFT
-                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
-                m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
+                vertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
+                vertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
 
                 //    TOPRIGHT
-                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
-                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
+                vertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
+                vertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
 
                 //    BOTRIGHT
-                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
-                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
+                vertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
+                vertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
             }
             else
             {
-                if (m_pVertexData == null)
+                if (vertexData == null)
                 {
-                    m_nVertexDataCount = 8;
-                    m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
+                    vertexData = new CCV3F_C4B_T2F[8];
 
-                    //    TOPLEFT 1
-                    m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 1));
-                    m_pVertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(0, 1));
+                    // TOPLEFT 1
+                    vertexData[0].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 1));
+                    vertexData[0].Vertices = VertexFromAlphaPoint(new CCPoint(0, 1));
 
-                    //    BOTLEFT 1
-                    m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 0));
-                    m_pVertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(0, 0));
+                    // BOTLEFT 1
+                    vertexData[1].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(0, 0));
+                    vertexData[1].Vertices = VertexFromAlphaPoint(new CCPoint(0, 0));
 
-                    //    TOPRIGHT 2
-                    m_pVertexData[6].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 1));
-                    m_pVertexData[6].Vertices = VertexFromAlphaPoint(new CCPoint(1, 1));
+                    // TOPRIGHT 2
+                    vertexData[6].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 1));
+                    vertexData[6].Vertices = VertexFromAlphaPoint(new CCPoint(1, 1));
 
-                    //    BOTRIGHT 2
-                    m_pVertexData[7].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 0));
-                    m_pVertexData[7].Vertices = VertexFromAlphaPoint(new CCPoint(1, 0));
+                    // BOTRIGHT 2
+                    vertexData[7].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(1, 0));
+                    vertexData[7].Vertices = VertexFromAlphaPoint(new CCPoint(1, 0));
                 }
 
-                //    TOPRIGHT 1
-                m_pVertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
-                m_pVertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
+                // TOPRIGHT 1
+                vertexData[2].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, max.Y));
+                vertexData[2].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, max.Y));
 
-                //    BOTRIGHT 1
-                m_pVertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
-                m_pVertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
+                // BOTRIGHT 1
+                vertexData[3].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(min.X, min.Y));
+                vertexData[3].Vertices = VertexFromAlphaPoint(new CCPoint(min.X, min.Y));
 
-                //    TOPLEFT 2
-                m_pVertexData[4].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
-                m_pVertexData[4].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
+                // TOPLEFT 2
+                vertexData[4].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, max.Y));
+                vertexData[4].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, max.Y));
 
-                //    BOTLEFT 2
-                m_pVertexData[5].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
-                m_pVertexData[5].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
+                // BOTLEFT 2
+                vertexData[5].TexCoords = TextureCoordFromAlphaPoint(new CCPoint(max.X, min.Y));
+                vertexData[5].Vertices = VertexFromAlphaPoint(new CCPoint(max.X, min.Y));
             }
-            UpdateColor();
         }
 
         ///
@@ -422,21 +405,22 @@ namespace CocosSharp
         //    It now deals with flipped texture. If you run into this problem, just use the
         //    sprite property and enable the methods flipX, flipY.
         ///
-        protected void UpdateRadial()
+        void UpdateRadial()
         {
-            if (m_pSprite == null)
+            if (Sprite == null)
             {
                 return;
             }
-            float alpha = m_fPercentage / 100f;
 
-            float angle = 2f * (MathHelper.Pi) * (m_bReverseDirection ? alpha : 1.0f - alpha);
+            float alpha = Percentage / 100f;
+
+            float angle = 2f * (MathHelper.Pi) * (ReverseDirection ? alpha : 1.0f - alpha);
 
             //    We find the vector to do a hit detection based on the percentage
             //    We know the first vector is the one @ 12 o'clock (top,mid) so we rotate
             //    from that by the progress angle around the m_tMidpoint pivot
-            var topMid = new CCPoint(m_tMidpoint.X, 1f);
-            CCPoint percentagePt = CCPoint.RotateByAngle(topMid, m_tMidpoint, angle);
+            var topMid = new CCPoint(Midpoint.X, 1f);
+            CCPoint percentagePt = CCPoint.RotateByAngle(topMid, Midpoint, angle);
 
 
             int index = 0;
@@ -464,27 +448,27 @@ namespace CocosSharp
 
                 float min_t = float.MaxValue;
 
-                for (int i = 0; i <= kProgressTextureCoordsCount; ++i)
+                for (int i = 0; i <= ProgressTextureCoordsCount; ++i)
                 {
-                    int pIndex = (i + (kProgressTextureCoordsCount - 1)) % kProgressTextureCoordsCount;
+                    int pIndex = (i + (ProgressTextureCoordsCount - 1)) % ProgressTextureCoordsCount;
 
-                    CCPoint edgePtA = BoundaryTexCoord(i % kProgressTextureCoordsCount);
+                    CCPoint edgePtA = BoundaryTexCoord(i % ProgressTextureCoordsCount);
                     CCPoint edgePtB = BoundaryTexCoord(pIndex);
 
                     //    Remember that the top edge is split in half for the 12 o'clock position
                     //    Let's deal with that here by finding the correct endpoints
                     if (i == 0)
                     {
-                        edgePtB = CCPoint.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
+                        edgePtB = CCPoint.Lerp(edgePtA, edgePtB, 1 - Midpoint.X);
                     }
                     else if (i == 4)
                     {
-                        edgePtA = CCPoint.Lerp(edgePtA, edgePtB, 1 - m_tMidpoint.X);
+                        edgePtA = CCPoint.Lerp(edgePtA, edgePtB, 1 - Midpoint.X);
                     }
 
                     //    s and t are returned by ccpLineIntersect
                     float s = 0, t = 0;
-                    if (CCPoint.LineIntersect(edgePtA, edgePtB, m_tMidpoint, percentagePt, ref s, ref t))
+                    if (CCPoint.LineIntersect(edgePtA, edgePtB, Midpoint, percentagePt, ref s, ref t))
                     {
                         //    Since our hit test is on rays we have to deal with the top edge
                         //    being in split in half so we have to test as a segment
@@ -512,7 +496,7 @@ namespace CocosSharp
                 }
 
                 //    Now that we have the minimum magnitude we can use that to find our intersection
-                hit = m_tMidpoint + ((percentagePt - m_tMidpoint) * min_t);
+                hit = Midpoint + ((percentagePt - Midpoint) * min_t);
             }
 
 
@@ -520,74 +504,41 @@ namespace CocosSharp
             //    the 3 is for the m_tMidpoint, 12 o'clock point and hitpoint position.
 
             bool sameIndexCount = true;
-            if (m_nVertexDataCount != index + 3)
+            if (vertexData != null && vertexData.Length != index + 3)
             {
                 sameIndexCount = false;
-                m_pVertexData = null;
+                vertexData = null;
             }
 
-
-            if (m_pVertexData == null)
+            if (vertexData == null)
             {
-                m_nVertexDataCount = index + 3;
-                m_pVertexData = new CCV3F_C4B_T2F[m_nVertexDataCount];
+                vertexData = new CCV3F_C4B_T2F[index + 3];
             }
-
-            UpdateColor();
 
             if (!sameIndexCount)
             {
                 //    First we populate the array with the m_tMidpoint, then all
                 //    vertices/texcoords/colors of the 12 'o clock start and edges and the hitpoint
-                m_pVertexData[0].TexCoords = TextureCoordFromAlphaPoint(m_tMidpoint);
-                m_pVertexData[0].Vertices = VertexFromAlphaPoint(m_tMidpoint);
+                vertexData[0].TexCoords = TextureCoordFromAlphaPoint(Midpoint);
+                vertexData[0].Vertices = VertexFromAlphaPoint(Midpoint);
 
-                m_pVertexData[1].TexCoords = TextureCoordFromAlphaPoint(topMid);
-                m_pVertexData[1].Vertices = VertexFromAlphaPoint(topMid);
+                vertexData[1].TexCoords = TextureCoordFromAlphaPoint(topMid);
+                vertexData[1].Vertices = VertexFromAlphaPoint(topMid);
 
                 for (int i = 0; i < index; ++i)
                 {
                     CCPoint alphaPoint = BoundaryTexCoord(i);
-                    m_pVertexData[i + 2].TexCoords = TextureCoordFromAlphaPoint(alphaPoint);
-                    m_pVertexData[i + 2].Vertices = VertexFromAlphaPoint(alphaPoint);
+                    vertexData[i + 2].TexCoords = TextureCoordFromAlphaPoint(alphaPoint);
+                    vertexData[i + 2].Vertices = VertexFromAlphaPoint(alphaPoint);
                 }
             }
 
-            //    hitpoint will go last
-            m_pVertexData[m_nVertexDataCount - 1].TexCoords = TextureCoordFromAlphaPoint(hit);
-            m_pVertexData[m_nVertexDataCount - 1].Vertices = VertexFromAlphaPoint(hit);
+            // hitpoint will go last
+            vertexData[vertexData.Length - 1].TexCoords = TextureCoordFromAlphaPoint(hit);
+            vertexData[vertexData.Length - 1].Vertices = VertexFromAlphaPoint(hit);
         }
 
-        protected void UpdateColor()
-        {
-            if (m_pSprite == null)
-            {
-                return;
-            }
-
-            if (m_pVertexData != null)
-            {
-                CCColor4B sc = m_pSprite.Quad.TopLeft.Colors;
-                for (int i = 0; i < m_nVertexDataCount; ++i)
-                {
-                    m_pVertexData[i].Colors = sc;
-                }
-            }
-        }
-
-        protected CCPoint BoundaryTexCoord(int index)
-        {
-            if (index < kProgressTextureCoordsCount)
-            {
-                if (m_bReverseDirection)
-                {
-                    return new CCPoint((kCCProgressTextureCoords >> (7 - (index << 1))) & 1,
-                                       (kCCProgressTextureCoords >> (7 - ((index << 1) + 1))) & 1);
-                }
-                return new CCPoint((kCCProgressTextureCoords >> ((index << 1) + 1)) & 1,
-                                   (kCCProgressTextureCoords >> (index << 1)) & 1);
-            }
-            return CCPoint.Zero;
-        }
+        #endregion Vertex data
+            
     }
 }

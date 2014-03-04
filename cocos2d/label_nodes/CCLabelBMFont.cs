@@ -8,29 +8,29 @@ namespace CocosSharp
 {
     public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer, ICCColor
     {
-        public const int kCCLabelAutomaticWidth = -1;
+        public const int AutomaticWidth = -1;
 
-        public static Dictionary<string, CCBMFontConfiguration> s_pConfigurations = new Dictionary<string, CCBMFontConfiguration>();
+        internal static Dictionary<string, CCBMFontConfiguration> fontConfigurations = new Dictionary<string, CCBMFontConfiguration>();
 
-        protected bool m_bLineBreakWithoutSpaces;
-        protected CCTextAlignment m_pHAlignment = CCTextAlignment.Center;
-        protected CCVerticalTextAlignment m_pVAlignment = CCVerticalTextAlignment.Top;
-        protected CCBMFontConfiguration m_pConfiguration;
-        protected string m_sFntFile;
-        protected string m_sInitialString;
-        protected string m_sString = "";
-        protected CCPoint m_tImageOffset;
-        protected CCSize m_tDimensions;
+        protected bool lineBreakWithoutSpaces;
+        protected CCTextAlignment horzAlignment = CCTextAlignment.Center;
+        protected CCVerticalTextAlignment vertAlignment = CCVerticalTextAlignment.Top;
+		internal CCBMFontConfiguration FontConfiguration { get; set; }
+        protected string fntConfigFile;
+        protected string labelInitialText;
+		protected string labelText = string.Empty;
+		protected CCPoint ImageOffset { get; set; }
+        protected CCSize labelDimensions;
         protected CCSprite m_pReusedChar;
-        protected bool m_bLabelDirty;
+		protected bool IsDirty { get; set; }
 
-        protected byte m_cDisplayedOpacity = 255;
-        protected byte m_cRealOpacity = 255;
-        protected CCColor3B m_tDisplayedColor = CCTypes.CCWhite;
-        protected CCColor3B m_tRealColor = CCTypes.CCWhite;
-        protected bool m_bCascadeColorEnabled = true;
-        protected bool m_bCascadeOpacityEnabled = true;
-        protected bool m_bIsOpacityModifyRGB = false;
+        protected byte displayedOpacity = 255;
+        protected byte realOpacity = 255;
+        protected CCColor3B displayedColor = CCTypes.CCWhite;
+        protected CCColor3B realColor = CCTypes.CCWhite;
+        protected bool isColorCascaded = true;
+        protected bool isOpacityCascaded = true;
+        protected bool isColorModifiedByOpacity = false;
 
 
         public override CCPoint AnchorPoint
@@ -41,7 +41,7 @@ namespace CocosSharp
                 if (!m_obAnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
-                    m_bLabelDirty = true;
+                    IsDirty = true;
                 }
             }
         }
@@ -51,8 +51,11 @@ namespace CocosSharp
             get { return base.Scale; }
             set
             {
-                base.Scale = value;
-                m_bLabelDirty = true;
+				if (!value.Equals(base.Scale)) 
+				{
+					base.Scale = value;
+					IsDirty = true;
+				}
             }
         }
 
@@ -61,8 +64,11 @@ namespace CocosSharp
             get { return base.ScaleX; }
             set
             {
-                base.ScaleX = value;
-                UpdateLabel();
+				if (!value.Equals(base.ScaleX)) 
+				{
+					base.ScaleX = value;
+					IsDirty = true;
+				}
             }
         }
 
@@ -71,91 +77,94 @@ namespace CocosSharp
             get { return base.ScaleY; }
             set
             {
-                base.ScaleY = value;
-                m_bLabelDirty = true;
+				if (!value.Equals(base.ScaleY)) 
+				{
+					base.ScaleY = value;
+					IsDirty = true;
+				}
             }
         }
 
         public CCTextAlignment HorizontalAlignment
         {
-            get { return m_pHAlignment; }
+            get { return horzAlignment; }
             set
             {
-                if (m_pHAlignment != value)
+                if (horzAlignment != value)
                 {
-                    m_pHAlignment = value;
-                    m_bLabelDirty = true;
+                    horzAlignment = value;
+                    IsDirty = true;
                 }
             }
         }
 
         public CCVerticalTextAlignment VerticalAlignment
         {
-            get { return m_pVAlignment; }
+            get { return vertAlignment; }
             set
             {
-                if (m_pVAlignment != value)
+                if (vertAlignment != value)
                 {
-                    m_pVAlignment = value;
-                    m_bLabelDirty = true;
+                    vertAlignment = value;
+                    IsDirty = true;
                 }
             }
         }
 
         public CCSize Dimensions
         {
-            get { return m_tDimensions; }
+            get { return labelDimensions; }
             set
             {
-                if (m_tDimensions != value)
+                if (labelDimensions != value)
                 {
-                    m_tDimensions = value;
-                    m_bLabelDirty = true;
+                    labelDimensions = value;
+                    IsDirty = true;
                 }
             }
         }
 
         public bool LineBreakWithoutSpace
         {
-            get { return m_bLineBreakWithoutSpaces; }
+            get { return lineBreakWithoutSpaces; }
             set
             {
-                m_bLineBreakWithoutSpaces = value;
-                m_bLabelDirty = true;
+                lineBreakWithoutSpaces = value;
+                IsDirty = true;
             }
         }
 
         public string FntFile
         {
-            get { return m_sFntFile; }
+            get { return fntConfigFile; }
             set
             {
-                if (value != null && m_sFntFile != value)
+                if (value != null && fntConfigFile != value)
                 {
                     CCBMFontConfiguration newConf = FNTConfigLoadFile(value);
 
                     Debug.Assert(newConf != null, "CCLabelBMFont: Impossible to create font. Please check file");
 
-                    m_sFntFile = value;
+                    fntConfigFile = value;
 
-                    m_pConfiguration = newConf;
+                    FontConfiguration = newConf;
 
-                    Texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
+                    Texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
 
-                    m_bLabelDirty = true;
+                    IsDirty = true;
                 }
             }
         }
 
         public virtual string Text
         {
-            get { return m_sInitialString; }
+            get { return labelInitialText; }
             set
             {
-                if (m_sInitialString != value)
+                if (labelInitialText != value)
                 {
-                    m_sInitialString = value;
-                    m_bLabelDirty = true;
+                    labelInitialText = value;
+                    IsDirty = true;
                 }
             }
         }
@@ -165,16 +174,16 @@ namespace CocosSharp
 
         public virtual CCColor3B Color
         {
-            get { return m_tRealColor; }
+            get { return realColor; }
             set
             {
-                m_tDisplayedColor = m_tRealColor = value;
+                displayedColor = realColor = value;
 
-                if (m_bCascadeColorEnabled)
+                if (isColorCascaded)
                 {
                     var parentColor = CCTypes.CCWhite;
                     var parent = m_pParent as ICCColor;
-                    if (parent != null && parent.CascadeColorEnabled)
+                    if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
                     }
@@ -186,21 +195,21 @@ namespace CocosSharp
 
         public virtual CCColor3B DisplayedColor
         {
-            get { return m_tDisplayedColor; }
+            get { return displayedColor; }
         }
 
         public virtual byte Opacity
         {
-            get { return m_cRealOpacity; }
+            get { return realOpacity; }
             set
             {
-                m_cDisplayedOpacity = m_cRealOpacity = value;
+                displayedOpacity = realOpacity = value;
 
-                if (m_bCascadeOpacityEnabled)
+                if (isOpacityCascaded)
                 {
                     byte parentOpacity = 255;
                     var pParent = m_pParent as ICCColor;
-                    if (pParent != null && pParent.CascadeOpacityEnabled)
+                    if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
                     }
@@ -211,15 +220,15 @@ namespace CocosSharp
 
         public virtual byte DisplayedOpacity
         {
-            get { return m_cDisplayedOpacity; }
+            get { return displayedOpacity; }
         }
 
-        public virtual bool IsOpacityModifyRGB
+        public virtual bool IsColorModifiedByOpacity
         {
-            get { return m_bIsOpacityModifyRGB; }
+            get { return isColorModifiedByOpacity; }
             set
             {
-                m_bIsOpacityModifyRGB = value;
+                isColorModifiedByOpacity = value;
                 if (m_pChildren != null && m_pChildren.count > 0)
                 {
                     for (int i = 0, count = m_pChildren.count; i < count; i++)
@@ -227,32 +236,32 @@ namespace CocosSharp
                         var item = m_pChildren.Elements[i] as ICCColor;
                         if (item != null)
                         {
-                            item.IsOpacityModifyRGB = value;
+                            item.IsColorModifiedByOpacity = value;
                         }
                     }
                 }
             }
         }
 
-        public virtual bool CascadeColorEnabled
+        public virtual bool IsColorCascaded
         {
             get { return false; }
-            set { m_bCascadeColorEnabled = value; }
+            set { isColorCascaded = value; }
         }
 
-        public virtual bool CascadeOpacityEnabled
+        public virtual bool IsOpacityCascaded
         {
             get { return false; }
-            set { m_bCascadeOpacityEnabled = value; }
+            set { isOpacityCascaded = value; }
         }
 
         #endregion
 
         public static void FNTConfigRemoveCache()
-        {
-            if (s_pConfigurations != null)
+		{
+            if (fontConfigurations != null)
             {
-                s_pConfigurations.Clear();
+                fontConfigurations.Clear();
             }
         }
 
@@ -305,10 +314,10 @@ namespace CocosSharp
             InitCCLabelBMFont(str, fntFile, dimensions, hAlignment, vAlignment, imageOffset, texture);
         }
 
-        protected void InitCCLabelBMFont(string theString, string fntFile, CCSize dimentions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
+        protected void InitCCLabelBMFont(string theString, string fntFile, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, 
             CCPoint imageOffset, CCTexture2D texture)
         {
-            Debug.Assert(m_pConfiguration == null, "re-init is no longer supported");
+            Debug.Assert(FontConfiguration == null, "re-init is no longer supported");
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
                          "Invalid params for CCLabelBMFont");
 
@@ -321,15 +330,15 @@ namespace CocosSharp
                     return;
                 }
 
-                m_pConfiguration = newConf;
+                FontConfiguration = newConf;
 
-                m_sFntFile = fntFile;
+                fntConfigFile = fntFile;
 
                 if (texture == null)
                 {
                     try
                     {
-                        texture = CCTextureCache.SharedTextureCache.AddImage(m_pConfiguration.AtlasName);
+                        texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
                     }
                     catch (Exception)
                     {
@@ -338,14 +347,14 @@ namespace CocosSharp
                         {
                             texture =
                                 CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images",
-                                                                                                  m_pConfiguration
+                                                                                                  FontConfiguration
                                                                                                       .AtlasName));
                         }
                         catch (Exception)
                         {
                             // Lastly, try <font_path>/images/<font_name>
-                            string dir = System.IO.Path.GetDirectoryName(m_pConfiguration.AtlasName);
-                            string fname = System.IO.Path.GetFileName(m_pConfiguration.AtlasName);
+                            string dir = System.IO.Path.GetDirectoryName(FontConfiguration.AtlasName);
+                            string fname = System.IO.Path.GetFileName(FontConfiguration.AtlasName);
                             string newName = System.IO.Path.Combine(System.IO.Path.Combine(dir, "images"), fname);
                             texture = CCTextureCache.SharedTextureCache.AddImage(newName);
                         }
@@ -364,22 +373,22 @@ namespace CocosSharp
 
             base.InitCCSpriteBatchNode(texture, theString.Length);
 
-            m_tDimensions = dimentions;
+			this.labelDimensions = dimensions;
 
-            m_pHAlignment = hAlignment;
-            m_pVAlignment = vAlignment;
+            horzAlignment = hAlignment;
+            vertAlignment = vAlignment;
 
-            m_cDisplayedOpacity = m_cRealOpacity = 255;
-            m_tDisplayedColor = m_tRealColor = CCTypes.CCWhite;
-            m_bCascadeOpacityEnabled = true;
-            m_bCascadeColorEnabled = true;
+            displayedOpacity = realOpacity = 255;
+            displayedColor = realColor = CCTypes.CCWhite;
+            isOpacityCascaded = true;
+            isColorCascaded = true;
 
             m_obContentSize = CCSize.Zero;
 
-            m_bIsOpacityModifyRGB = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
+            isColorModifiedByOpacity = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            m_tImageOffset = imageOffset;
+            ImageOffset = imageOffset;
 
             m_pReusedChar = new CCSprite();
             m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
@@ -393,28 +402,28 @@ namespace CocosSharp
 
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
         {
-            m_tDisplayedColor.R = (byte) (m_tRealColor.R * parentColor.R / 255.0f);
-            m_tDisplayedColor.G = (byte) (m_tRealColor.G * parentColor.G / 255.0f);
-            m_tDisplayedColor.B = (byte) (m_tRealColor.B * parentColor.B / 255.0f);
+            displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
+            displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
+            displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
 
             if (m_pChildren != null)
             {
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(m_tDisplayedColor);
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(displayedColor);
                 }
             }
         }
 
         public virtual void UpdateDisplayedOpacity(byte parentOpacity)
         {
-            m_cDisplayedOpacity = (byte) (m_cRealOpacity * parentOpacity / 255.0f);
+            displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
 
             if (m_pChildren != null)
             {
                 for (int i = 0, count = m_pChildren.count; i < count; i++)
                 {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
                 }
             }
         }
@@ -424,12 +433,12 @@ namespace CocosSharp
             int ret = 0;
             int key = (first << 16) | (second & 0xffff);
 
-            if (m_pConfiguration.m_pKerningDictionary != null)
+            if (FontConfiguration.GlyphKernings != null)
             {
                 CCBMFontConfiguration.CCKerningHashElement element;
-                if (m_pConfiguration.m_pKerningDictionary.TryGetValue(key, out element))
+                if (FontConfiguration.GlyphKernings.TryGetValue(key, out element))
                 {
-                    ret = element.amount;
+                    ret = element.Amount;
                 }
             }
             return ret;
@@ -449,14 +458,14 @@ namespace CocosSharp
 
             int quantityOfLines = 1;
 
-            if (String.IsNullOrEmpty(m_sString))
+            if (String.IsNullOrEmpty(labelText))
             {
                 return;
             }
 
-            int stringLen = m_sString.Length;
+            int stringLen = labelText.Length;
 
-            var charSet = m_pConfiguration.CharacterSet;
+            var charSet = FontConfiguration.CharacterSet;
             if (charSet.Count == 0)
             {
                 throw (new InvalidOperationException(
@@ -465,33 +474,35 @@ namespace CocosSharp
 
             for (int i = 0; i < stringLen - 1; ++i)
             {
-                if (m_sString[i] == '\n')
+                if (labelText[i] == '\n')
                 {
                     quantityOfLines++;
                 }
             }
 
-            totalHeight = m_pConfiguration.m_nCommonHeight * quantityOfLines;
-            nextFontPositionY = 0 -
-                                (m_pConfiguration.m_nCommonHeight - m_pConfiguration.m_nCommonHeight * quantityOfLines);
+			var commonHeight = FontConfiguration.CommonHeight;
 
-            CCBMFontConfiguration.CCBMFontDef fontDef = null;
+			totalHeight = commonHeight * quantityOfLines;
+            nextFontPositionY = 0 -
+				(commonHeight - commonHeight * quantityOfLines);
+
+            CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
             CCRect rect;
 
             for (int i = 0; i < stringLen; i++)
             {
-                char c = m_sString[i];
+                char c = labelText[i];
 
                 if (c == '\n')
                 {
                     nextFontPositionX = 0;
-                    nextFontPositionY -= m_pConfiguration.m_nCommonHeight;
+					nextFontPositionY -= commonHeight;
                     continue;
                 }
 
                 if (charSet.IndexOf(c) == -1)
                 {
-                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
+					CCLog.Log("CocosSharp: CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
                               (int) c);
                     continue;
                 }
@@ -499,17 +510,17 @@ namespace CocosSharp
                 kerningAmount = this.KerningAmountForFirst(prev, c);
 
                 // unichar is a short, and an int is needed on HASH_FIND_INT
-                if (!m_pConfiguration.m_pFontDefDictionary.TryGetValue(c, out fontDef))
+                if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
                 {
-                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int) c);
+					CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int) c);
                     continue;
                 }
 
-                rect = fontDef.rect;
-                rect = rect.PixelsToPoints();
+                rect = fontDef.Subrect;
+				rect = rect.PixelsToPoints();
 
-                rect.Origin.X += m_tImageOffset.X;
-                rect.Origin.Y += m_tImageOffset.Y;
+                rect.Origin.X += ImageOffset.X;
+                rect.Origin.Y += ImageOffset.Y;
 
                 CCSprite fontChar;
 
@@ -540,26 +551,28 @@ namespace CocosSharp
                     }
 
                     // Apply label properties
-                    fontChar.IsOpacityModifyRGB = m_bIsOpacityModifyRGB;
+                    fontChar.IsColorModifiedByOpacity = isColorModifiedByOpacity;
 
                     // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-                    fontChar.UpdateDisplayedColor(m_tDisplayedColor);
-                    fontChar.UpdateDisplayedOpacity(m_cDisplayedOpacity);
+                    fontChar.UpdateDisplayedColor(displayedColor);
+                    fontChar.UpdateDisplayedOpacity(displayedOpacity);
                 }
 
                 // updating previous sprite
                 fontChar.SetTextureRect(rect, false, rect.Size);
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
-                int yOffset = m_pConfiguration.m_nCommonHeight - fontDef.yOffset;
+                int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
+
                 var fontPos =
                     new CCPoint(
-                        (float) nextFontPositionX + fontDef.xOffset + fontDef.rect.Size.Width * 0.5f + kerningAmount,
-                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
-                fontChar.Position = fontPos.PixelsToPoints();
+                        (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
+						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+
+				fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
-                nextFontPositionX += fontDef.xAdvance + kerningAmount;
+                nextFontPositionX += fontDef.XAdvance + kerningAmount;
                 prev = c;
 
                 if (longestLine < nextFontPositionX)
@@ -576,33 +589,34 @@ namespace CocosSharp
             // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
             // to adjust the width of the string to take this into account, or the character will overlap the end of the bounding
             // box
-            if (fontDef.xAdvance < fontDef.rect.Size.Width)
+            if (fontDef.XAdvance < fontDef.Subrect.Size.Width)
             {
-                tmpSize.Width = longestLine + fontDef.rect.Size.Width - fontDef.xAdvance;
+                tmpSize.Width = longestLine + fontDef.Subrect.Size.Width - fontDef.XAdvance;
             }
             else
             {
                 tmpSize.Width = longestLine;
             }
-            tmpSize.Height = totalHeight;
+			tmpSize.Height = totalHeight;
+			var tmpDimensions = labelDimensions;
 
             tmpSize = new CCSize(
-                m_tDimensions.Width > 0 ? m_tDimensions.Width : tmpSize.Width,
-                m_tDimensions.Height > 0 ? m_tDimensions.Height : tmpSize.Height
+				tmpDimensions.Width > 0 ? tmpDimensions.Width : tmpSize.Width,
+				tmpDimensions.Height > 0 ? tmpDimensions.Height : tmpSize.Height
                 );
 
-            ContentSize = tmpSize.PixelsToPoints();
+			ContentSize = tmpSize.PixelsToPoints();
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
         {
             if (!needUpdateLabel)
             {
-                m_sString = newString;
+                labelText = newString;
             }
             else
             {
-                m_sInitialString = newString;
+                labelInitialText = newString;
             }
 
             UpdateString(needUpdateLabel);
@@ -629,16 +643,17 @@ namespace CocosSharp
 
         protected void UpdateLabel()
         {
-            SetString(m_sInitialString, false);
+            SetString(labelInitialText, false);
 
-            if (m_sString == null)
+            if (labelText == null)
             {
                 return;
             }
-            if (m_tDimensions.Width > 0)
+
+            if (labelDimensions.Width > 0)
             {
                 // Step 1: Make multiline
-                string str_whole = m_sString;
+                string str_whole = labelText;
                 int stringLength = str_whole.Length;
                 var multiline_string = new StringBuilder(stringLength);
                 var last_word = new StringBuilder(stringLength);
@@ -744,9 +759,9 @@ namespace CocosSharp
                     }
 
                     // Out of bounds.
-                    if (GetLetterPosXRight(characterSprite) - startOfLine > m_tDimensions.Width)
+					if (GetLetterPosXRight(characterSprite) - startOfLine > labelDimensions.Width)
                     {
-                        if (!m_bLineBreakWithoutSpaces)
+                        if (!lineBreakWithoutSpaces)
                         {
                             last_word.Append(character);
 
@@ -825,16 +840,16 @@ namespace CocosSharp
             }
 
             // Step 2: Make alignment
-            if (m_pHAlignment != CCTextAlignment.Left)
+            if (horzAlignment != CCTextAlignment.Left)
             {
                 int i = 0;
 
                 int lineNumber = 0;
-                int str_len = m_sString.Length;
+                int str_len = labelText.Length;
                 var last_line = new CCRawList<char>();
                 for (int ctr = 0; ctr <= str_len; ++ctr)
                 {
-                    if (ctr == str_len || m_sString[ctr] == '\n')
+                    if (ctr == str_len || labelText[ctr] == '\n')
                     {
                         float lineWidth = 0.0f;
                         int line_length = last_line.Count;
@@ -851,16 +866,16 @@ namespace CocosSharp
                         if (lastChar == null)
                             continue;
 
-                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
+						lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
-                        switch (m_pHAlignment)
+                        switch (horzAlignment)
                         {
                             case CCTextAlignment.Center:
-                                shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
+								shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
                                 break;
                             case CCTextAlignment.Right:
-                                shift = ContentSize.Width - lineWidth;
+								shift = ContentSize.Width - lineWidth;
                                 break;
                             default:
                                 break;
@@ -885,31 +900,27 @@ namespace CocosSharp
                         continue;
                     }
 
-                    last_line.Add(m_sString[ctr]);
+                    last_line.Add(labelText[ctr]);
                 }
             }
 
-            if (m_pVAlignment != CCVerticalTextAlignment.Bottom && m_tDimensions.Height > 0)
+            if (vertAlignment != CCVerticalTextAlignment.Bottom && labelDimensions.Height > 0)
             {
                 int lineNumber = 1;
-                int str_len = m_sString.Length;
+                int str_len = labelText.Length;
                 for (int ctr = 0; ctr < str_len; ++ctr)
                 {
-                    if (m_sString[ctr] == '\n')
+                    if (labelText[ctr] == '\n')
                     {
                         lineNumber++;
                     }
                 }
 
-                float yOffset = 0;
+				float yOffset = labelDimensions.Height - FontConfiguration.CommonHeight * lineNumber;
 
-                if (m_pVAlignment == CCVerticalTextAlignment.Center)
+                if (vertAlignment == CCVerticalTextAlignment.Center)
                 {
-                    yOffset = m_tDimensions.Height / 2f - (m_pConfiguration.m_nCommonHeight * lineNumber) / 2f;
-                }
-                else
-                {
-                    yOffset = m_tDimensions.Height - m_pConfiguration.m_nCommonHeight * lineNumber;
+					yOffset /= 2f;
                 }
 
                 for (int i = 0; i < str_len; i++)
@@ -922,12 +933,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-            return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-            return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
         }
 
 
@@ -935,10 +946,10 @@ namespace CocosSharp
         {
             CCBMFontConfiguration pRet;
 
-            if (!s_pConfigurations.TryGetValue(file, out pRet))
+            if (!fontConfigurations.TryGetValue(file, out pRet))
             {
                 pRet = CCBMFontConfiguration.FontConfigurationWithFile(file);
-                s_pConfigurations.Add(file, pRet);
+                fontConfigurations.Add(file, pRet);
             }
 
             return pRet;
@@ -946,10 +957,10 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            if (m_bLabelDirty)
+            if (IsDirty)
             {
                 UpdateLabel();
-                m_bLabelDirty = false;
+                IsDirty = false;
             }
 
             base.Draw();

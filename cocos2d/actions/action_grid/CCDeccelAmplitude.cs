@@ -6,7 +6,8 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCDeccelAmplitude(CCAction pAction, float duration) : base(pAction, duration)
+        public CCDeccelAmplitude(CCAmplitudeAction pAction, float duration, float deccRate = 1.0f) 
+            : base(pAction, duration, deccRate)
         {
         }
 
@@ -20,7 +21,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCDeccelAmplitude(OtherAction.Reverse(), Duration);
+            return new CCDeccelAmplitude((CCAmplitudeAction)OtherAction.Reverse(), Duration, Rate);
         }
     }
 
@@ -35,7 +36,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            OtherActionState.StateAmplitudeRate = (float)Math.Pow((1 - time), Rate);
+            OtherActionState.AmplitudeRate = (float)Math.Pow((1 - time), Rate);
             OtherActionState.Update(time);
         }
     }

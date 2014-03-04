@@ -60,7 +60,7 @@ namespace tests
                 else
                 {
                     // TIP: but padding is configurable
-                    menu.AlignItemsHorizontallyWithPadding(40);
+                    menu.AlignItemsHorizontally(40);
                     CCPoint p = menu.Position;
                     menu.Position = new CCPoint(p.X - 0, p.Y - 30);
                 }
@@ -82,7 +82,7 @@ namespace tests
                 else
                 {
                     // TIP: but padding is configurable
-                    menu.AlignItemsVerticallyWithPadding(40);
+                    menu.AlignItemsVertically(40);
                     CCPoint p = menu.Position;
                     menu.Position = new CCPoint(p.X - 100, p.Y);
                 }

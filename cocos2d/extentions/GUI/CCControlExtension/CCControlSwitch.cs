@@ -64,8 +64,8 @@ namespace CocosSharp
 
         /** Creates a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
 
-        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTTF onLabel,
-            CCLabelTTF offLabel)
+        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTtf onLabel,
+            CCLabelTtf offLabel)
         {
             InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
         }
@@ -80,7 +80,7 @@ namespace CocosSharp
         /** Initializes a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
 
         private void InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTTF onLabel, CCLabelTTF offLabel)
+            CCLabelTtf onLabel, CCLabelTtf offLabel)
         {
             Debug.Assert(maskSprite != null, "Mask must not be nil.");
             Debug.Assert(onSprite != null, "onSprite must not be nil.");
@@ -242,9 +242,9 @@ namespace CocosSharp
         private float _onPosition;
         private float _sliderXPosition;
         private CCSprite _maskSprite;
-        private CCLabelTTF _offLabel;
+        private CCLabelTtf _offLabel;
         private CCSprite _offSprite;
-        private CCLabelTTF _onLabel;
+        private CCLabelTtf _onLabel;
         private CCSprite _onSprite;
 
         public CCControlSwitchSprite()
@@ -296,13 +296,13 @@ namespace CocosSharp
             set { _thumbSprite = value; }
         }
 
-        public CCLabelTTF OnLabel
+        public CCLabelTtf OnLabel
         {
             get { return _onLabel; }
             set { _onLabel = value; }
         }
 
-        public CCLabelTTF OffLabel
+        public CCLabelTtf OffLabel
         {
             get { return _offLabel; }
             set { _offLabel = value; }
@@ -344,7 +344,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTTF onLabel, CCLabelTTF offLabel)
+            CCLabelTtf onLabel, CCLabelTtf offLabel)
         {
             CCRect rect = maskSprite.TextureRect;
             rect.Origin.X = rect.Origin.Y = 0;
@@ -357,7 +357,7 @@ namespace CocosSharp
         }
 
         private void InitCCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTTF onLabel, CCLabelTTF offLabel)
+            CCLabelTtf onLabel, CCLabelTtf offLabel)
         {
             // Sets the default values
             _onPosition = 0;

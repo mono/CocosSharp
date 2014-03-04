@@ -94,66 +94,40 @@ namespace CocosSharp
         {
             throw new NotImplementedException();
         }
-
-        public virtual float AmplitudeRate
-        {
-            get
-            {
-				// We need to look at this closer.  Am commenting the Dubug.Assert out for now
-				//Debug.Assert(false);
-                return 0;
-            }
-            protected set { Debug.Assert(false); }
-        }
     }
 
 	public class CCActionIntervalState : CCFiniteTimeActionState
 	{
+        protected bool FirstTick { get; private set; }
+        public float Elapsed { get; private set; }
 
-		protected bool m_bFirstTick = true;
-		protected float m_elapsed;
-
-		public float Elapsed
-		{
-			get { return m_elapsed; }
-		}
 
 		public override bool IsDone
 		{
-			get { return m_elapsed >= Duration; }
+            get { return Elapsed >= Duration; }
 		}
-
-        protected CCActionInterval IntervalAction
-        {
-            get { return Action as CCActionInterval; }
-        }
-
-        // Amplitude rate can dynamically change as action is run (e.g. CCAccelAmplitude)
-        // Therefore, we need to store the rate as a state variable
-        protected internal float StateAmplitudeRate { get; set; }
-
+        
 		public CCActionIntervalState (CCActionInterval action, CCNode target)
 			: base(action, target)
 		{ 
-			m_elapsed = 0.0f;
-			m_bFirstTick = true;
-            StateAmplitudeRate = 1.0f;
+            Elapsed = 0.0f;
+            FirstTick = true;
 		}
 
 		public override void Step(float dt)
 		{
-			if (m_bFirstTick)
+            if (FirstTick)
 			{
-				m_bFirstTick = false;
-				m_elapsed = 0f;
+                FirstTick = false;
+                Elapsed = 0f;
 			}
 			else
 			{
-				m_elapsed += dt;
+                Elapsed += dt;
 			}
 
 			Update(Math.Max(0f,
-				Math.Min(1, m_elapsed /
+                Math.Min(1, Elapsed /
 					Math.Max(m_fDuration, float.Epsilon)
 				)
 			)

@@ -11,7 +11,7 @@ namespace tests
             CCSprite p = new CCSprite(TestResource.s_back3);
             AddChild(p, 0);
             p.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-            p.Opacity = 128;
+			//p.Opacity = 50;
 
             CCSprite sprite;
             CCOrbitCamera orbit;
@@ -57,10 +57,12 @@ namespace tests
         {
             base.OnEnter();
             CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection3D);
+			CCDirector.SharedDirector.SetDepthTest (true);
         }
 
         public override void OnExit()
         {
+			CCDirector.SharedDirector.SetDepthTest (false);
             CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }

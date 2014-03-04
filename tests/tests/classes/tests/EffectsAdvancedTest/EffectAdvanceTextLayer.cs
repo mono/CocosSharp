@@ -67,7 +67,7 @@ namespace tests
 			var sc2_back = sc2.Reverse();
 			tamara.RepeatForever(sc2, sc2_back);
 
-			var label = new CCLabelTTF(title(), "arial", 28);
+			var label = new CCLabelTtf(title(), "arial", 28);
 
             label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
 			AddChild(label,TestScene.TITLE_LEVEL);
@@ -75,7 +75,7 @@ namespace tests
 
 			if (!string.IsNullOrEmpty(subtitle())) 
 			{
-				var subLabel = new CCLabelTTF(subtitle(), "arial", 20);
+				var subLabel = new CCLabelTtf(subtitle(), "arial", 20);
 				subLabel.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 100);
 				AddChild(subLabel,TestScene.TITLE_LEVEL);
 				//label.Tag = EffectAdvanceScene.kTagLabel;

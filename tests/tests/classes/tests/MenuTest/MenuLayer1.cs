@@ -28,51 +28,47 @@ namespace tests
 {
     public class MenuLayer1 : CCLayer
     {
-        protected CCMenuItemLabel m_disabledItem;
+        protected CCMenuItemLabelAtlas m_disabledItem;
         private string s_SendScore = "Images/SendScoreButton";
         private string s_MenuItem = "Images/menuitemsprite";
         private string s_PressSendScore = "Images/SendScoreButtonPressed";
 
         public MenuLayer1()
         {
-            CCMenuItemFont.FontSize = 30;
-            CCMenuItemFont.FontName = "arial";
             base.TouchEnabled = true;
             // Font Item
 
-            CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-            CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-            CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
+			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
+			// modify this here to make sure we have the correct sizes when they are passed.
+			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints());
+			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints());
+			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints());
 
-            CCMenuItemSprite item1 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled,
-                                                          this.menuCallback);
+            CCMenuItemImage item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
             // Image Item
             CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
 
             // Label Item (LabelAtlas)
             CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
-            CCMenuItemLabel item3 = new CCMenuItemLabel(labelAtlas, this.menuCallbackDisabled);
+            CCMenuItemLabelAtlas item3 = new CCMenuItemLabelAtlas(labelAtlas, this.menuCallbackDisabled);
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
 
             // Font Item
-            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", this.menuCallbackEnable);
-
-            item4.FontSizeObj = 20;
-            item4.FontNameObj = "arial";
+            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", "arial", 20, this.menuCallbackEnable);
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
-            CCMenuItemLabel item5 = new CCMenuItemLabel(label, this.menuCallbackConfig);
+            CCMenuItemLabelBMFont item5 = new CCMenuItemLabelBMFont(label, this.menuCallbackConfig);
 
 
             // Testing issue #500
             item5.Scale = 0.8f;
 
             // Events
-            CCMenuItemFont.FontName = "arial";
-            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
+            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", "arial", 30, menuCallbackPriorityTest);
 
             // Font Item
             CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);

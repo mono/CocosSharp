@@ -27,7 +27,7 @@ namespace Box2D.TestBed
             //#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
             //    CCLabelBMFont* label = new CCLabelBMFont(view.title().c_str(),  "fonts/arial16.fnt");
             //#else    
-            CCLabelTTF label = new CCLabelTTF(view.title(), "arial", 18);
+            CCLabelTtf label = new CCLabelTtf(view.title(), "arial", 18);
             //#endif
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 12);

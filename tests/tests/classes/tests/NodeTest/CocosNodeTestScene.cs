@@ -6,35 +6,39 @@ namespace tests
     {
         private static int sceneIdx = -1;
 
-        private static int MAX_LAYER = 12;
+		private static int MAX_LAYER = 14;
 
         public static CCLayer createCocosNodeLayer(int nIndex)
         {
             switch (nIndex)
             {
-            case 0:
-                return new Test2();
-            case 1:
+			case 0:
+				return new CameraTest1 ();
+			case 1: 
+				return new CameraCenterTest ();
+			case 2:
+				return new Test2 ();
+			case 3:
                 return new Test4();
-            case 2:
+			case 4:
                 return new Test5();
-            case 3:
+			case 5:
                 return new Test6();
-            case 4:
+			case 6:
                 return new StressTest1();
-            case 5:
+			case 7:
                 return new StressTest2();
-            case 6:
+			case 8:
                 return new NodeToWorld();
-            case 7:
+			case 9:
+				return new NodeToWorld3D();
+			case 10:
                 return new SchedulerTest1();
-            case 8:
+			case 11:
                 return new CameraOrbitTest();
-            case 9:
+			case 12:
                 return new CameraZoomTest();
-            case 10:
-                return new CameraCenterTest();
-            case 11:
+			case 13:
                 return new ConvertToNode();            
             }
 
@@ -58,7 +62,7 @@ namespace tests
             sceneIdx++;
             sceneIdx = sceneIdx % MAX_LAYER;
 
-            CCLayer pLayer = createCocosNodeLayer(sceneIdx);
+			var pLayer = createCocosNodeLayer(sceneIdx);
 
             return pLayer;
         }
@@ -70,21 +74,21 @@ namespace tests
             if (sceneIdx < 0)
                 sceneIdx += total;
 
-            CCLayer pLayer = createCocosNodeLayer(sceneIdx);
+			var pLayer = createCocosNodeLayer(sceneIdx);
 
             return pLayer;
         }
 
         public static CCLayer restartCocosNodeAction()
         {
-            CCLayer pLayer = createCocosNodeLayer(sceneIdx);
+			var pLayer = createCocosNodeLayer(sceneIdx);
 
             return pLayer;
         }
 
         public override void runThisTest()
         {
-            CCLayer pLayer = nextCocosNodeAction();
+			var pLayer = nextCocosNodeAction();
             AddChild(pLayer);
 
             CCDirector.SharedDirector.ReplaceScene(this);

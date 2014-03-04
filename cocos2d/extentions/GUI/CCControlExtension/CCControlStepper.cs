@@ -21,9 +21,9 @@ namespace CocosSharp
         protected bool _continuous;
         protected float _maximumValue;
         protected float _minimumValue;
-        protected CCLabelTTF _minusLabel;
+        protected CCLabelTtf _minusLabel;
         protected CCSprite _minusSprite;
-        protected CCLabelTTF _plusLabel;
+        protected CCLabelTtf _plusLabel;
         protected CCSprite _plusSprite;
         protected float _stepValue;
         protected bool _touchInsideFlag;
@@ -44,13 +44,13 @@ namespace CocosSharp
             set { _plusSprite = value; }
         }
 
-        public CCLabelTTF MinusLabel
+        public CCLabelTtf MinusLabel
         {
             get { return _minusLabel; }
             set { _minusLabel = value; }
         }
 
-        public CCLabelTTF PlusLabel
+        public CCLabelTtf PlusLabel
         {
             get { return _plusLabel; }
             set { _plusLabel = value; }
@@ -166,7 +166,7 @@ namespace CocosSharp
                                                 minusSprite.ContentSize.Height / 2);
             AddChild(_minusSprite);
 
-            MinusLabel = new CCLabelTTF("-", ControlStepperLabelFont, 38);
+            MinusLabel = new CCLabelTtf("-", ControlStepperLabelFont, 38);
             _minusLabel.Color = ControlStepperLabelColorDisabled;
             _minusLabel.Position = new CCPoint(_minusSprite.ContentSize.Width / 2,
                                                _minusSprite.ContentSize.Height / 2);
@@ -179,7 +179,7 @@ namespace CocosSharp
                             minusSprite.ContentSize.Height / 2);
             AddChild(_plusSprite);
 
-            PlusLabel = new CCLabelTTF("+", ControlStepperLabelFont, 38);
+            PlusLabel = new CCLabelTtf("+", ControlStepperLabelFont, 38);
             _plusLabel.Color = ControlStepperLabelColorEnabled;
             _plusLabel.Position = _plusSprite.ContentSize.Center;
             _plusSprite.AddChild(_plusLabel);
@@ -348,7 +348,7 @@ namespace CocosSharp
         {
             _autorepeatCount = -1;
 
-            Schedule(Update, kAutorepeatDeltaTime, CCScheduler.kCCRepeatForever, kAutorepeatDeltaTime * 3);
+            Schedule(Update, kAutorepeatDeltaTime, CCScheduler.RepeatForever, kAutorepeatDeltaTime * 3);
         }
 
         /** Stop the autorepeat. */

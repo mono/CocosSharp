@@ -31,10 +31,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCFadeOutBLTiles()
-        {
-        }
-
         /// <summary>
         /// creates the action with the grid size and the duration
         /// </summary>

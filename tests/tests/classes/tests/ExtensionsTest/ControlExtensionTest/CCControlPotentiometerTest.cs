@@ -5,9 +5,9 @@ namespace tests.Extensions
 {
     internal class CCControlPotentiometerTest : CCControlScene
     {
-        private CCLabelTTF _displayValueLabel;
+        private CCLabelTtf _displayValueLabel;
 
-        public CCLabelTTF DisplayValueLabel
+        public CCLabelTtf DisplayValueLabel
         {
             get { return _displayValueLabel; }
             set { _displayValueLabel = value; }
@@ -31,7 +31,7 @@ namespace tests.Extensions
 
             layer_width += background.ContentSize.Width;
 
-            DisplayValueLabel = new CCLabelTTF("", "Arial", 30);
+            DisplayValueLabel = new CCLabelTtf("", "Arial", 30);
 
             _displayValueLabel.Position = background.Position;
             layer.AddChild(_displayValueLabel);

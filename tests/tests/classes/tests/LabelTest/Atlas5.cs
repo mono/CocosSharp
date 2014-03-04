@@ -10,16 +10,16 @@ namespace tests
     {
         public Atlas5()
         {
-            CCLabelBMFont label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
+			var label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
-            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            label.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label.Position = s.Center;
+			label.AnchorPoint = CCPoint.AnchorMiddle;
         }
         public override string title()
-        {
+		{
             return "CCLabelBMFont";
         }
 

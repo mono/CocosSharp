@@ -51,7 +51,7 @@ namespace tests
             m_pMenu1.AddChild(item1);
             m_pMenu1.AddChild(item2);
 
-            m_pMenu1.AlignItemsVerticallyWithPadding(2);
+            m_pMenu1.AlignItemsVertically(2);
 
             AddChild(m_pMenu1);
 
@@ -89,12 +89,12 @@ namespace tests
         {
             if (m_bPriority)
             {
-                m_pMenu2.SetHandlerPriority(CCMenu.kCCMenuHandlerPriority + 20);
+                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority + 20);
                 m_bPriority = false;
             }
             else
             {
-                m_pMenu2.SetHandlerPriority(CCMenu.kCCMenuHandlerPriority - 20);
+                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority - 20);
                 m_bPriority = true;
             }
         }

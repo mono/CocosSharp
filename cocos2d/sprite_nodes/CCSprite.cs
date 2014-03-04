@@ -413,7 +413,7 @@ namespace CocosSharp
             }
         }
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return m_bOpacityModifyRGB; }
             set
@@ -994,12 +994,12 @@ namespace CocosSharp
             if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
             {
                 m_sBlendFunc = CCBlendFunc.NonPremultiplied;
-                IsOpacityModifyRGB = false;
+                IsColorModifiedByOpacity = false;
             }
             else
             {
                 m_sBlendFunc = CCBlendFunc.AlphaBlend;
-                IsOpacityModifyRGB = true;
+                IsColorModifiedByOpacity = true;
             }
         }
     }

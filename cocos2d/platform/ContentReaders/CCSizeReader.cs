@@ -1,9 +1,13 @@
-using System;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework.Content;
+
+[assembly: InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")]
+[assembly: InternalsVisibleTo("Microsoft.Xna.Framework.Content")]
+
 
 namespace CocosSharp
 {
-    public class CCSizeReader : ContentTypeReader<CCSize>
+    internal class CCSizeReader : ContentTypeReader<CCSize>
     {
         public CCSizeReader()
         {

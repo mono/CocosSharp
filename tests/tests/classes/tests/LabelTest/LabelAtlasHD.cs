@@ -10,14 +10,14 @@ namespace tests
     {
         public LabelAtlasHD()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			var s = CCDirector.SharedDirector.WinSize;
 
             // CCLabelBMFont
-            CCLabelAtlas label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
-            label1.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			var label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
+			label1.AnchorPoint = CCPoint.AnchorMiddle;
 
             AddChild(label1);
-            label1.Position = new CCPoint(s.Width / 2, s.Height / 2);
+			label1.Position = s.Center;
         }
 
         public override string title()

@@ -291,12 +291,12 @@ namespace CocosSharp
                 }
                 else
                 {
-                    CCLog.Log("cocos2d: removeAction: Action not found");
+                    CCLog.Log("CocosSharp: removeAction: Action not found");
                 }
             }
             else
             {
-                CCLog.Log("cocos2d: removeAction: Target not found");
+                CCLog.Log("CocosSharp: removeAction: Target not found");
             }
         }
 
@@ -319,12 +319,12 @@ namespace CocosSharp
 				}
 				else
 				{
-					CCLog.Log("cocos2d: removeAction: Action not found");
+					CCLog.Log("CocosSharp: removeAction: Action not found");
 				}
 			}
 			else
 			{
-				CCLog.Log("cocos2d: removeAction: Target not found");
+				CCLog.Log("CocosSharp: removeAction: Target not found");
 			}
 		}
 

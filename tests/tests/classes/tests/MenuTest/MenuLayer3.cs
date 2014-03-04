@@ -37,19 +37,19 @@ namespace tests
         string s_MenuItem = "Images/menuitemsprite";
         public MenuLayer3()
         {
-            CCMenuItemFont.FontName = "arial";
-            CCMenuItemFont.FontSize = 28;
-
 			var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
-			var item1 = new CCMenuItemLabel(label, this.menuCallback2);
-			var item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
+            var item1 = new CCMenuItemLabelBMFont(label, this.menuCallback2);
+            var item2 = new CCMenuItemFont("--- Go Back ---", "arial", 28, this.menuCallback);
 
-			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
-			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
-			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
+			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
+			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
+			// modify this here to make sure we have the correct sizes when they are passed.
+			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints());
+			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints());
+			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints());
 
 
-			var item3 = new CCMenuItemSprite(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
+            var item3 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 

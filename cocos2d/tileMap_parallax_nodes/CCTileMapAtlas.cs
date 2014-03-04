@@ -62,7 +62,7 @@ namespace CocosSharp
             Color value = m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width];
             if (value.R == 0)
             {
-                CCLog.Log("cocos2d: Value.r must be non 0.");
+                CCLog.Log("CocosSharp: Value.r must be non 0.");
             }
             else
             {

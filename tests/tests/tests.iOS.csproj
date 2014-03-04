@@ -1267,6 +1267,7 @@
     <Content Include="Content\hd\extensions\stepper-plus.xnb" />
     <Content Include="Content\hd\ccb\burst.xnb" />
     <Content Include="Content\hd\animations\dragon_animation.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-32.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />

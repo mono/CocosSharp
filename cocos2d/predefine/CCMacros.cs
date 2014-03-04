@@ -74,60 +74,9 @@ namespace CocosSharp
             return angle * 57.29577951f; // PI * 180
         }
 
-        [Obsolete("use float.Epsilon instead")]
-        public static readonly float FLT_EPSILON = float.Epsilon; // Was:  1.192092896e-07F;
-
         public static float CCContentScaleFactor()
         {
             return CCDirector.SharedDirector.ContentScaleFactor;
-        }
-
-        [Obsolete("use CCRect.PixelsToPoints")]
-        public static CCRect CCRectanglePixelsToPoints(CCRect pixels)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCRect(
-                pixels.Origin.X / cs, pixels.Origin.Y / cs,
-                pixels.Size.Width / cs, pixels.Size.Height / cs
-                );
-        }
-
-        [Obsolete("use CCRect.PointsToPixels")]
-        public static CCRect CCRectanglePointsToPixels(CCRect points)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCRect(
-                points.Origin.X * cs, points.Origin.Y * cs,
-                points.Size.Width * cs, points.Size.Height * cs
-                );
-        }
-
-        [Obsolete("use CCSize.PixelsToPoints")]
-        public static CCSize CCSizePixelsToPoints(CCSize size)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCSize(size.Width / cs, size.Height / cs);
-        }
-
-        [Obsolete("use CCSize.PointsToPixels")]
-        public static CCSize CCSizePointsToPixels(CCSize size)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCSize(size.Width * cs, size.Height * cs);
-        }
-
-        [Obsolete("use CCPoint.PixelsToPoints")]
-        public static CCPoint CCPointPixelsToPoints(CCPoint point)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCPoint(point.X / cs, point.Y / cs);
-        }
-
-        [Obsolete("use CCPoint.PointsToPixels")]
-        public static CCPoint CCPointPointsToPixels(CCPoint point)
-        {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
-            return new CCPoint(point.X * cs, point.Y * cs);
         }
 
         public static CCRect PixelsToPoints(this CCRect r)
@@ -164,27 +113,6 @@ namespace CocosSharp
         {
             var cs = CCDirector.SharedDirector.ContentScaleFactor;
             return new CCPoint(p.X * cs, p.Y * cs);
-        }
-
-        /*
-         * Macros of CCGeometry.h
-         */
-        [Obsolete("Use the CCPoint ctor")]
-        public static CCPoint CCPointMake(float x, float y)
-        {
-            return new CCPoint(x, y);
-        }
-
-        [Obsolete("Use the CCSize ctor")]
-        public static CCSize CCSizeMake(float width, float height)
-        {
-            return new CCSize(width, height);
-        }
-
-        [Obsolete("Use the CCRect ctor")]
-        public static CCRect CCRectMake(float x, float y, float width, float height)
-        {
-            return new CCRect(x, y, width, height);
         }
 
         /*

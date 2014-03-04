@@ -1,4 +1,5 @@
 using CocosSharp;
+using Microsoft.Xna.Framework;
 
 namespace tests
 {
@@ -69,4 +70,111 @@ namespace tests
             return "Sprites should rotate at the same speed";
         }
     }
+
+	public class CameraTest1 : TestCocosNodeDemo
+	{
+		public CameraTest1()
+		{
+			var s = CCDirector.SharedDirector.WinSize;
+
+			var sprite1 = new CCSprite(TestResource.s_back3);
+			AddChild (sprite1);
+			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);
+			sprite1.Scale = 0.5f;
+
+			var sprite2 = new CCSprite(TestResource.s_back3);
+			AddChild (sprite2);
+			sprite2.Position = new CCPoint (3 * s.Width / 4, s.Height / 2);
+			sprite2.Scale = 0.5f;
+
+			var camera = new CCOrbitCamera(10, 0, 1, 0, 360, 0, 0);
+
+			sprite1.RunAction( camera );
+			sprite2.RunAction( camera );
+
+
+		}
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
+			CCDirector.SharedDirector.SetDepthTest (true);
+		}
+
+		public override void OnExit ()
+		{
+			base.OnExit ();
+			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+			CCDirector.SharedDirector.SetDepthTest (false);
+		}
+
+		public override string title()
+		{
+			return "Camera Test 1";
+		}
+
+		public override string subtitle()
+		{
+			return "Both images should rotate with a 3D effect";
+		}
+	}
+
+	// This test does not work right now because CCAffineTransform does not support 3D yet
+	public class CameraTest2 : TestCocosNodeDemo
+	{
+		public CameraTest2()
+		{
+			var s = CCDirector.SharedDirector.WinSize;
+
+			var sprite1 = new CCSprite(TestResource.s_back3);
+			AddChild (sprite1);
+			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);
+			sprite1.Scale = 0.5f;
+
+			var sprite2 = new CCSprite(TestResource.s_back3);
+			AddChild (sprite2);
+			sprite2.Position = new CCPoint (3 * s.Width / 4, s.Height / 2);
+			sprite2.Scale = 0.5f;
+
+			Microsoft.Xna.Framework.Vector3 eye, center, up;
+
+			eye = new Microsoft.Xna.Framework.Vector3 (150, 0, 200);
+			center = Microsoft.Xna.Framework.Vector3.Zero;
+			up = new Microsoft.Xna.Framework.Vector3 (0, 1, 0);
+
+			var lookAt = Microsoft.Xna.Framework.Matrix.CreateLookAt (eye, center, up);
+
+			CCAffineTransform ct = new CCAffineTransform (lookAt.M11, lookAt.M12, lookAt.M13, lookAt.M14, lookAt.Translation.X, lookAt.Translation.Y);
+			ct = CCAffineTransform.Identity;
+			ct.XnaMatrix = lookAt;
+			sprite1.AdditionalTransform = ct;
+		}
+
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
+			CCDirector.SharedDirector.SetDepthTest (true);
+		}
+
+		public override void OnExit ()
+		{
+			base.OnExit ();
+			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+			CCDirector.SharedDirector.SetDepthTest (false);
+		}
+
+		public override string title()
+		{
+			return "Camera Test 2";
+		}
+
+		public override string subtitle()
+		{
+			return "Both images should look the same";
+		}
+	}
+
 }

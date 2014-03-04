@@ -81,6 +81,7 @@
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="actions\action\CCFollow.cs" />
     <Compile Include="actions\action\CCSpeed.cs" />
+	<Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="actions\action_camera\CCActionCamera.cs" />
     <Compile Include="actions\action_camera\CCOrbitCamera.cs" />
     <Compile Include="actions\action_catmull_rom\CCCardinalSplineTo.cs" />
@@ -200,7 +201,7 @@
     <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
-    <Compile Include="label_nodes\CCLabelTTF.cs" />
+    <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="label_nodes\CCLabelUtilities-Gdi.cs" />
     <Compile Include="label_nodes\CCLabelUtilities.cs" />
     <Compile Include="platform\CCContentManager.cs" />
@@ -314,11 +315,9 @@
     <Compile Include="Math\CCSplineMath.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
-    <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemImage.cs" />
     <Compile Include="menu_nodes\CCMenuItemLabel.cs" />
-    <Compile Include="menu_nodes\CCMenuItemSprite.cs" />
     <Compile Include="menu_nodes\CCMenuItemToggle.cs" />
     <Compile Include="misc_nodes\CCMotionStreak.cs" />
     <Compile Include="misc_nodes\CCProgressTimer.cs" />

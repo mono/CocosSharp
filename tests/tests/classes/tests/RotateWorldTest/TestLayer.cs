@@ -18,7 +18,7 @@ namespace tests
             //CCMutableArray *array = [UIFont familyNames];
             //for( CCString *s in array )
             //	NSLog( s );
-            CCLabelTTF label = new CCLabelTTF("cocos2d", "arial", 64);
+            CCLabelTtf label = new CCLabelTtf("cocos2d", "arial", 64);
             label.Position = new CCPoint(x / 2, y / 2);
             AddChild(label);
         }

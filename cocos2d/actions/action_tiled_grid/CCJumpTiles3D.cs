@@ -32,22 +32,15 @@ namespace CocosSharp
         /// <summary>
         /// amplitude of the sin
         /// </summary>
-        public float Amplitude { get; private set; }
-        public override float AmplitudeRate { get; protected set; }
         protected internal int NumberOfJumps { get; private set; }
 
 
         #region Constructors
 
-        public CCJumpTiles3D()
-        {
-        }
-
-		public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0) : base(duration, gridSize)
+        public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0) 
+            : base(duration, gridSize, amplitude)
         {
             NumberOfJumps = numberOfJumps;
-            Amplitude = amplitude;
-            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
@@ -64,13 +57,11 @@ namespace CocosSharp
 
     public class CCJumpTiles3DState : CCTiledGrid3DActionState
     {
-        public float Amplitude { get; set; }
         protected int NumberOfJumps { get; set; }
 
 
         public CCJumpTiles3DState(CCJumpTiles3D action, CCNode target) : base(action, target)
         {
-            Amplitude = action.Amplitude;
             NumberOfJumps = action.NumberOfJumps;
         }
 
@@ -78,8 +69,8 @@ namespace CocosSharp
         {
             int i, j;
 
-            float sinz = ((float) Math.Sin((float) Math.PI * time * NumberOfJumps * 2) * Amplitude * StateAmplitudeRate);
-            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * StateAmplitudeRate);
+            float sinz = ((float) Math.Sin((float) Math.PI * time * NumberOfJumps * 2) * Amplitude * AmplitudeRate);
+            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * AmplitudeRate);
 
             for (i = 0; i < GridSize.X; i++)
             {

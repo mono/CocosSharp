@@ -28,12 +28,12 @@ namespace tests.Extensions
 			AddChild(ribbon);
     
 			// Add the title
-			setSceneTitleLabel(new CCLabelTTF(" ", "Arial", 12));
+			setSceneTitleLabel(new CCLabelTtf(" ", "Arial", 12));
 			m_pSceneTitleLabel.Position = new CCPoint(screensize.Width / 2, screensize.Height - m_pSceneTitleLabel.ContentSize.Height / 2 - 5);
 			AddChild(m_pSceneTitleLabel, 1);
 
             // Add the subtitle
-            setSceneSubtitleLabel(new CCLabelTTF(" ", "Arial", 12));
+            setSceneSubtitleLabel(new CCLabelTtf(" ", "Arial", 12));
 		    m_pSceneSubtitleLabel.Position = new CCPoint(screensize.Width / 2,
 		                                                 screensize.Height - m_pSceneTitleLabel.ContentSize.Height -
 		                                                 m_pSceneSubtitleLabel.ContentSize.Height / 2 - 10);
@@ -75,9 +75,9 @@ namespace tests.Extensions
 			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
 		}
 
-		private CCLabelTTF m_pSceneTitleLabel; 
-		public virtual CCLabelTTF getSceneTitleLabel() { return m_pSceneTitleLabel; } 
-		public virtual void setSceneTitleLabel(CCLabelTTF var)   
+		private CCLabelTtf m_pSceneTitleLabel; 
+		public virtual CCLabelTtf getSceneTitleLabel() { return m_pSceneTitleLabel; } 
+		public virtual void setSceneTitleLabel(CCLabelTtf var)   
 		{ 
 			if (m_pSceneTitleLabel != var) 
 			{ 
@@ -85,9 +85,9 @@ namespace tests.Extensions
 			} 
 		}
 
-        private CCLabelTTF m_pSceneSubtitleLabel;
-        public virtual CCLabelTTF getSceneSubtitleLabel() { return m_pSceneSubtitleLabel; }
-        public virtual void setSceneSubtitleLabel(CCLabelTTF var)
+        private CCLabelTtf m_pSceneSubtitleLabel;
+        public virtual CCLabelTtf getSceneSubtitleLabel() { return m_pSceneSubtitleLabel; }
+        public virtual void setSceneSubtitleLabel(CCLabelTtf var)
         {
             if (m_pSceneSubtitleLabel != var)
             {

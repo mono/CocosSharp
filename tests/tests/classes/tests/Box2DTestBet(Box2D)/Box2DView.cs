@@ -18,7 +18,7 @@ namespace Box2D.TestBed
             TouchEnabled = true;
             KeyboardEnabled = true;
 
-            ScheduleUpdate();
+            Schedule ();
 
             m_entry = TestEntries.TestList[entryId];
             m_test = m_entry.CreateFcn();

@@ -27,10 +27,10 @@ namespace tests
             lastRenderedCount = 0;
             quantityNodes = 0;
 
-            CCMenuItemFont.FontSize = 64;
-            CCMenuItemFont decrease = new CCMenuItemFont(" - ", onDecrease);
+            uint fontSize = 64;
+            CCMenuItemFont decrease = new CCMenuItemFont(" - ", fontSize, onDecrease);
             decrease.Color = new CCColor3B(0, 200, 20);
-            CCMenuItemFont increase = new CCMenuItemFont(" + ", onIncrease);
+            CCMenuItemFont increase = new CCMenuItemFont(" + ", fontSize, onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = new CCMenu(decrease, increase);
@@ -38,7 +38,7 @@ namespace tests
             menu.Position = new CCPoint(s.Width / 2, s.Height - 65);
             AddChild(menu, 1);
 
-            CCLabelTTF infoLabel = new CCLabelTTF("0 nodes", "Marker Felt", 30);
+            CCLabelTtf infoLabel = new CCLabelTtf("0 nodes", "Marker Felt", 30);
             infoLabel.Color = new CCColor3B(0, 200, 20);
             infoLabel.Position = new CCPoint(s.Width / 2, s.Height - 90);
             AddChild(infoLabel, 1, PerformanceSpriteTest.kTagInfoLayer);
@@ -48,13 +48,13 @@ namespace tests
             AddChild(pMenu, 1, PerformanceSpriteTest.kTagMenuLayer);
 
             // Sub Tests
-            CCMenuItemFont.FontSize = 32;
+            fontSize = 32;
             CCMenu pSubMenu = new CCMenu(null);
             for (int i = 1; i <= 9; ++i)
             {
                 //char str[10] = {0};
                 var str = string.Format("{0}", i);
-                CCMenuItemFont itemFont = new CCMenuItemFont(str, testNCallback);
+                CCMenuItemFont itemFont = new CCMenuItemFont(str, fontSize, testNCallback);
                 itemFont.Tag = i;
                 pSubMenu.AddChild(itemFont, 10);
 
@@ -71,7 +71,7 @@ namespace tests
             AddChild(pSubMenu, 2);
 
             // add title label
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 38);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 38);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 32);
             label.Color = new CCColor3B(255, 255, 40);
@@ -84,7 +84,7 @@ namespace tests
         {
             if (quantityNodes != lastRenderedCount)
             {
-                CCLabelTTF infoLabel = (CCLabelTTF)GetChildByTag(PerformanceSpriteTest.kTagInfoLayer);
+                CCLabelTtf infoLabel = (CCLabelTtf)GetChildByTag(PerformanceSpriteTest.kTagInfoLayer);
                 var str = string.Format("{0} nodes", quantityNodes);
                 infoLabel.Text = (str);
 

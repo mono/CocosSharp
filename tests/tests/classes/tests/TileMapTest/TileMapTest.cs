@@ -1365,8 +1365,8 @@ namespace tests
         protected const string s_pPathSister1 = "Images/grossinis_sister1";
         public const int kTagTileMap = 1;
 
-        protected CCLabelTTF m_label;
-        protected CCLabelTTF m_subtitle;
+        protected CCLabelTtf m_label;
+        protected CCLabelTtf m_subtitle;
 
         private string s_pPathB1 = "Images/b1";
         private string s_pPathB2 = "Images/b2";
@@ -1389,14 +1389,14 @@ namespace tests
             _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
             _GamePadTriggerDelegate =  new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
 
-            m_label = new CCLabelTTF("", "arial", 28);
+            m_label = new CCLabelTtf("", "arial", 28);
             AddChild(m_label, 1);
             m_label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
             string strSubtitle = subtitle();
             if (! string.IsNullOrEmpty(strSubtitle))
             {
-                CCLabelTTF l = new CCLabelTTF(strSubtitle, "arial", 16);
+                CCLabelTtf l = new CCLabelTtf(strSubtitle, "arial", 16);
                 AddChild(l, 1);
                 l.Position = new CCPoint(s.Width / 2, s.Height - 80);
 

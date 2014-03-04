@@ -8,7 +8,6 @@ namespace tests
 {
     public class Atlas3 : AtlasDemo
     {
-        //ccTime	m_time;
         float m_time;
         CCColor3B ccRED = new CCColor3B
         {
@@ -21,20 +20,19 @@ namespace tests
         {
             m_time = 0;
 
-            //CCLayerColor col = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
-			var col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
+			var col = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
+			//var col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
             AddChild(col, -10);
 
 			var label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
 
             // testing anchors
-            label1.AnchorPoint = new CCPoint(0, 0);
+			label1.AnchorPoint = CCPoint.AnchorLowerLeft;
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
+
 			var fade = new CCFadeOut  (1.0f);
 			var fade_in = fade.Reverse();
-			var seq = new CCSequence(fade, fade_in);
-			var repeat = new CCRepeatForever (seq);
-            label1.RunAction(repeat);
+			label1.RepeatForever ( fade, fade_in);
 
 
             // VERY IMPORTANT
@@ -43,23 +41,24 @@ namespace tests
             // Of course, you can also tell XCode not to compress PNG images, but I think it doesn't work as expected
 			var label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
-            label2.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			label2.AnchorPoint = CCPoint.AnchorMiddle;
             label2.Color = ccRED;
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.RunAction(repeat);
+
+			label2.RepeatForever( new CCTintTo (1, 255, 0, 0), new CCTintTo (1, 0, 255, 0), new CCTintTo (1, 0, 0, 255));
 
 			var label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
-            label3.AnchorPoint = new CCPoint(1, 1);
+			label3.AnchorPoint = CCPoint.AnchorUpperRight;
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
 
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
-            label1.Position = new CCPoint();
-            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
+			var s = CCDirector.SharedDirector.WinSize;
+			label1.Position = CCPoint.Zero;
+			label2.Position = s.Center;
             label3.Position = new CCPoint(s.Width, s.Height);
 
-            base.Schedule(step);//:@selector(step:)];
+            base.Schedule(step);
         }
 
         public virtual void step(float dt)
@@ -68,14 +67,14 @@ namespace tests
             string stepString;
             stepString = string.Format("{0,2:f2} Test j", m_time);
 
-            CCLabelBMFont label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
-            label1.Text = (stepString);
+			var label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
+            label1.Text = stepString;
 
-            CCLabelBMFont label2 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-            label2.Text = (stepString);
+			var label2 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
+            label2.Text = stepString;
 
-            CCLabelBMFont label3 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
-            label3.Text = (stepString);
+			var label3 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
+            label3.Text = stepString;
         }
 
         public override string title()

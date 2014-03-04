@@ -41,7 +41,7 @@ namespace tests
             var sc2_back = sc2.Reverse();
 			Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
 
-            var label = new CCLabelTTF(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
+            var label = new CCLabelTtf(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
 
             label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
             AddChild(label);

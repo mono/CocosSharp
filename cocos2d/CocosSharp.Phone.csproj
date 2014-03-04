@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{47EE6CE6-493D-4967-944A-5E55B71AA9FD}</ProjectGuid>
+    <ProjectGuid>{F2C5422D-4464-4494-9EB1-2C9EA9DC3C21}</ProjectGuid>
     <ProjectTypeGuids>{6D335F3A-9D43-41b4-9D22-F6F17C4BE596};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">Windows Phone</Platform>
@@ -73,6 +73,7 @@
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="actions\action\CCFollow.cs" />
     <Compile Include="actions\action\CCSpeed.cs" />
+	<Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="actions\action_camera\CCActionCamera.cs" />
     <Compile Include="actions\action_camera\CCOrbitCamera.cs" />
     <Compile Include="actions\action_catmull_rom\CCCardinalSplineTo.cs" />
@@ -251,7 +252,7 @@
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
-    <Compile Include="label_nodes\CCLabelTTF.cs" />
+    <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
@@ -296,11 +297,9 @@
     <Compile Include="Math\CCSplineMath.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
-    <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemImage.cs" />
     <Compile Include="menu_nodes\CCMenuItemLabel.cs" />
-    <Compile Include="menu_nodes\CCMenuItemSprite.cs" />
     <Compile Include="menu_nodes\CCMenuItemToggle.cs" />
     <Compile Include="misc_nodes\CCClippingNode.cs" />
     <Compile Include="misc_nodes\CCDrawNode.cs" />

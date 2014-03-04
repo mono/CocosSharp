@@ -32,13 +32,13 @@ namespace tests
         public void schedUpdate(float dt)
         {
             Unschedule(schedUpdate);
-            base.ScheduleUpdate();
+            base.Schedule ();
             Schedule(stopUpdate, 2.0f);
         }
 
         public void stopUpdate(float dt)
         {
-            UnscheduleUpdate();
+            Unschedule ();
             Unschedule(stopUpdate);
         }
     }

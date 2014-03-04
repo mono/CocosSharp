@@ -23,21 +23,21 @@ namespace CocosSharp
             {
                 if (spriteFrame != null)
                 {
-                    ((CCMenuItemImage) node).SetNormalSpriteFrame(spriteFrame);
+                    ((CCMenuItemImage)node).NormalImageSpriteFrame = spriteFrame;
                 }
             }
             else if (propertyName == PROPERTY_SELECTEDDISPLAYFRAME)
             {
                 if (spriteFrame != null)
                 {
-                    ((CCMenuItemImage) node).SetSelectedSpriteFrame(spriteFrame);
+                    ((CCMenuItemImage)node).SelectedImageSpriteFrame = spriteFrame;
                 }
             }
             else if (propertyName == PROPERTY_DISABLEDDISPLAYFRAME)
             {
                 if (spriteFrame != null)
                 {
-                    ((CCMenuItemImage) node).SetDisabledSpriteFrame(spriteFrame);
+                    ((CCMenuItemImage) node).DisabledImageSpriteFrame = spriteFrame;
                 }
             }
             else

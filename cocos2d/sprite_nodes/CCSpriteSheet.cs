@@ -117,7 +117,7 @@ namespace CocosSharp
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
 
-                CCLog.Log("cocos2d: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
+                CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
 			plistFilePath = Path.GetDirectoryName (texturePath);
@@ -380,7 +380,7 @@ namespace CocosSharp
 						{
 							if (_spriteFramesAliases[oneAlias] != null)
 							{
-								CCLog.Log("cocos2d: WARNING: an alias with name {0} already exists", oneAlias);
+								CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
 							}
 						}
 
@@ -440,18 +440,18 @@ namespace CocosSharp
                 {
                     if (!_spriteFrames.TryGetValue(key, out frame))
                     {
-                        CCLog.Log("cocos2d: CCSpriteFrameCache: Frame '{0}' not found", key);
+                        CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", key);
                     }
                 }
             }
 
             if (frame != null)
             {
-                CCLog.Log("cocos2d: {0} frame {1}", name, frame.Rect.ToString());
+                CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
             }
             else
             {
-                CCLog.Log("cocos2d: CCSpriteFrameCache: Frame '{0}' not found", name);
+                CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", name);
             }
             
             return frame;

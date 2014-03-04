@@ -9,37 +9,30 @@ namespace CocosSharp
 {
     public class CCDrawNode : CCNode
     {
-        private CCRawList<VertexPositionColor> m_pVertices;
-        private CCBlendFunc m_sBlendFunc;
-        private bool m_bDirty;
+        CCRawList<VertexPositionColor> vertices;
+        bool dirty;
 
         /** draw a polygon with a fill color and line color */
 
-        private struct ExtrudeVerts
+        struct ExtrudeVerts
         {
             public CCPoint offset;
             public CCPoint n;
         }
 
-        public CCBlendFunc BlendFunc
-        {
-            get { return m_sBlendFunc; }
-            set { m_sBlendFunc = value; }
-        }
+        public CCBlendFunc BlendFunc { get; set; }
 
 
         #region Constructors
 
         public CCDrawNode()
         {
-            m_sBlendFunc = CCBlendFunc.AlphaBlend;
-            m_pVertices = new CCRawList<VertexPositionColor>(512);
+            BlendFunc = CCBlendFunc.AlphaBlend;
+            vertices = new CCRawList<VertexPositionColor>(512);
         }
 
         #endregion Constructors
 
-
-        /** draw a dot at a position, with a given radius and color */
 
         public void DrawDot(CCPoint pos, float radius, CCColor4F color)
         {
@@ -50,19 +43,17 @@ namespace CocosSharp
             var c = new VertexPositionColor(new Vector3(pos.X + radius, pos.Y + radius, 0), cl); //{ 1.0,  1.0}
             var d = new VertexPositionColor(new Vector3(pos.X + radius, pos.Y - radius, 0), cl); //{ 1.0, -1.0}
 
-            m_pVertices.Add(a);
-            m_pVertices.Add(b);
-            m_pVertices.Add(c);
+            vertices.Add(a);
+            vertices.Add(b);
+            vertices.Add(c);
 
-            m_pVertices.Add(a);
-            m_pVertices.Add(c);
-            m_pVertices.Add(d);
+            vertices.Add(a);
+            vertices.Add(c);
+            vertices.Add(d);
 
-            m_bDirty = true;
+            dirty = true;
         }
-
-        /** draw a segment with a radius and color */
-
+        
         public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
         {
             var cl = new Color(color.R, color.G, color.B, color.A);
@@ -84,31 +75,31 @@ namespace CocosSharp
             var v6 = a - (nw - tw);
             var v7 = a + (nw + tw);
 
-            m_pVertices.Add(new VertexPositionColor(v0, cl)); //__t(v2fneg(v2fadd(n, t)))
-            m_pVertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
-            m_pVertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))}
+            vertices.Add(new VertexPositionColor(v0, cl)); //__t(v2fneg(v2fadd(n, t)))
+            vertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
+            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))}
 
-            m_pVertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            m_pVertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
-            m_pVertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
+            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
+            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
 
-            m_pVertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            m_pVertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            m_pVertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
+            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
+            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
 
-            m_pVertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            m_pVertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            m_pVertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
+            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
 
-            m_pVertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
-            m_pVertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            m_pVertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
+            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
+            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
 
-            m_pVertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
-            m_pVertices.Add(new VertexPositionColor(v7, cl)); //__t(v2fadd(n, t))
-            m_pVertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+            vertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
+            vertices.Add(new VertexPositionColor(v7, cl)); //__t(v2fadd(n, t))
+            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
 
-            m_bDirty = true;
+            dirty = true;
         }
 
         public void DrawCircle(CCPoint center, float radius, CCColor4B color)
@@ -132,6 +123,7 @@ namespace CocosSharp
                 verts.Add(v1);
                 theta += increment;
             }
+
             CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
             DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
         }
@@ -177,9 +169,9 @@ namespace CocosSharp
                 var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
                 var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
 
-                m_pVertices.Add(new VertexPositionColor(v0, fillColor)); //__t(v2fzero)
-                m_pVertices.Add(new VertexPositionColor(v1, fillColor)); //__t(v2fzero)
-                m_pVertices.Add(new VertexPositionColor(v2, fillColor)); //__t(v2fzero)
+                vertices.Add(new VertexPositionColor(v0, fillColor)); //__t(v2fzero)
+                vertices.Add(new VertexPositionColor(v1, fillColor)); //__t(v2fzero)
+                vertices.Add(new VertexPositionColor(v2, fillColor)); //__t(v2fzero)
             }
 
             for (int i = 0; i < count; i++)
@@ -200,13 +192,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * borderWidth));
                     var outer1 = (v1 + (offset1 * borderWidth));
 
-                    m_pVertices.Add(new VertexPositionColor(inner0, borderColor)); //__t(v2fneg(n0))
-                    m_pVertices.Add(new VertexPositionColor(inner1, borderColor)); //__t(v2fneg(n0))
-                    m_pVertices.Add(new VertexPositionColor(outer1, borderColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(inner0, borderColor)); //__t(v2fneg(n0))
+                    vertices.Add(new VertexPositionColor(inner1, borderColor)); //__t(v2fneg(n0))
+                    vertices.Add(new VertexPositionColor(outer1, borderColor)); //__t(n0)
 
-                    m_pVertices.Add(new VertexPositionColor(inner0, borderColor)); //__t(v2fneg(n0))
-                    m_pVertices.Add(new VertexPositionColor(outer0, borderColor)); //__t(n0)
-                    m_pVertices.Add(new VertexPositionColor(outer1, borderColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(inner0, borderColor)); //__t(v2fneg(n0))
+                    vertices.Add(new VertexPositionColor(outer0, borderColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(outer1, borderColor)); //__t(n0)
                 }
                 else
                 {
@@ -215,37 +207,35 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * 0.5f));
                     var outer1 = (v1 + (offset1 * 0.5f));
 
-                    m_pVertices.Add(new VertexPositionColor(inner0, fillColor)); //__t(v2fzero)
-                    m_pVertices.Add(new VertexPositionColor(inner1, fillColor)); //__t(v2fzero)
-                    m_pVertices.Add(new VertexPositionColor(outer1, fillColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(inner0, fillColor)); //__t(v2fzero)
+                    vertices.Add(new VertexPositionColor(inner1, fillColor)); //__t(v2fzero)
+                    vertices.Add(new VertexPositionColor(outer1, fillColor)); //__t(n0)
 
-                    m_pVertices.Add(new VertexPositionColor(inner0, fillColor)); //__t(v2fzero)
-                    m_pVertices.Add(new VertexPositionColor(outer0, fillColor)); //__t(n0)
-                    m_pVertices.Add(new VertexPositionColor(outer1, fillColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(inner0, fillColor)); //__t(v2fzero)
+                    vertices.Add(new VertexPositionColor(outer0, fillColor)); //__t(n0)
+                    vertices.Add(new VertexPositionColor(outer1, fillColor)); //__t(n0)
                 }
             }
 
-            m_bDirty = true;
+            dirty = true;
         }
-
-        /** Clear the geometry in the node's buffer. */
 
         public void Clear()
         {
-            m_pVertices.Clear();
+            vertices.Clear();
         }
 
         protected override void Draw()
         {
-            if (m_bDirty)
+            if (dirty)
             {
                 //TODO: Set vertices to buffer
-                m_bDirty = false;
+                dirty = false;
             }
 
             CCDrawManager.TextureEnabled = false;
-            CCDrawManager.BlendFunc(m_sBlendFunc);
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleList, m_pVertices.Elements, 0, m_pVertices.Count / 3);
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleList, vertices.Elements, 0, vertices.Count / 3);
         }
     }
 }

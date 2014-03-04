@@ -124,7 +124,6 @@ namespace tests.FontTest
             rightColor.AnchorPoint = new CCPoint(0, 0.5f);
 
             leftColor.Position = new CCPoint(0, s.Height / 2);
-            ;
             centerColor.Position = new CCPoint(blockSize.Width, s.Height / 2);
             rightColor.Position = new CCPoint(blockSize.Width * 2, s.Height / 2);
 
@@ -147,14 +146,14 @@ namespace tests.FontTest
             RemoveChildByTag(kTagLabel3, true);
             RemoveChildByTag(kTagLabel4, true);
 
-            CCLabelTTF top = new CCLabelTTF(pFont, "Arial", 24);
-            CCLabelTTF left = new CCLabelTTF("alignment left", pFont, fontSize,
+            CCLabelTtf top = new CCLabelTtf(pFont, "Arial", 24);
+            CCLabelTtf left = new CCLabelTtf("alignment left", pFont, fontSize,
                                              blockSize, CCTextAlignment.Left,
                                              FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTTF center = new CCLabelTTF("alignment center", pFont, fontSize,
+            CCLabelTtf center = new CCLabelTtf("alignment center", pFont, fontSize,
                                                blockSize, CCTextAlignment.Center,
                                                FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
-            CCLabelTTF right = new CCLabelTTF("alignment right", pFont, fontSize,
+            CCLabelTtf right = new CCLabelTtf("alignment right", pFont, fontSize,
                                               blockSize, CCTextAlignment.Right,
                                               FontTestScene.verticalAlignment[FontTestScene.vAlignIdx]);
 

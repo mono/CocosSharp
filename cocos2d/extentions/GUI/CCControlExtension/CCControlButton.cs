@@ -193,11 +193,11 @@ namespace CocosSharp
         }
 
         public CCControlButton(string title, string fontName, float fontSize) 
-            : this(new CCLabelTTF(title, fontName, fontSize), new CCNode()) 
+            : this(new CCLabelTtf(title, fontName, fontSize), new CCNode()) 
         {
         }
 
-        public CCControlButton(CCNode sprite) : this(new CCLabelTTF("", "Arial", 30), sprite)
+        public CCControlButton(CCNode sprite) : this(new CCLabelTtf("", "Arial", 30), sprite)
         {
         }
 
@@ -240,7 +240,7 @@ namespace CocosSharp
             // Set the default color and opacity
             Color = new CCColor3B(255, 255, 255);
             Opacity = 255;
-            IsOpacityModifyRGB = true;
+            IsColorModifiedByOpacity = true;
 
             // Initialize the dispatch table
 
@@ -643,13 +643,13 @@ namespace CocosSharp
             {
                 title = String.Empty;
             }
-            SetTitleLabelForState(new CCLabelTTF(title, fntFile, 12), state);
+            SetTitleLabelForState(new CCLabelTtf(title, fntFile, 12), state);
         }
 
         public virtual string GetTitleTtfForState(CCControlState state)
         {
             var label = (ICCTextContainer) GetTitleLabelForState(state);
-            var labelTtf = label as CCLabelTTF;
+            var labelTtf = label as CCLabelTtf;
             if (labelTtf != null)
             {
                 return labelTtf.FontName;
@@ -662,7 +662,7 @@ namespace CocosSharp
             var label = (ICCTextContainer) GetTitleLabelForState(state);
             if (label != null)
             {
-                var labelTtf = label as CCLabelTTF;
+                var labelTtf = label as CCLabelTtf;
                 if (labelTtf != null)
                 {
                     labelTtf.FontSize = size;
@@ -672,7 +672,7 @@ namespace CocosSharp
 
         public virtual float GetTitleTtfSizeForState(CCControlState state)
         {
-            var labelTtf = GetTitleLabelForState(state) as CCLabelTTF;
+            var labelTtf = GetTitleLabelForState(state) as CCLabelTtf;
             if (labelTtf != null)
             {
                 return labelTtf.FontSize;

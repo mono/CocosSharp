@@ -630,7 +630,7 @@
     <Compile Include=".\label_nodes\CCLabelBMFont.cs">
       <LogicalName>label_nodes\CCLabelBMFont</LogicalName>
     </Compile>
-    <Compile Include=".\label_nodes\CCLabelTTF.cs">
+    <Compile Include=".\label_nodes\CCLabelTtf.cs">
       <LogicalName>label_nodes\CCLabelTTF</LogicalName>
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\CCLayer.cs">
@@ -765,9 +765,6 @@
     <Compile Include=".\menu_nodes\CCMenuItem.cs">
       <LogicalName>menu_nodes\CCMenuItem</LogicalName>
     </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemAtlasFont.cs">
-      <LogicalName>menu_nodes\CCMenuItemAtlasFont</LogicalName>
-    </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemFont.cs">
       <LogicalName>menu_nodes\CCMenuItemFont</LogicalName>
     </Compile>
@@ -776,9 +773,6 @@
     </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemLabel.cs">
       <LogicalName>menu_nodes\CCMenuItemLabel</LogicalName>
-    </Compile>
-    <Compile Include=".\menu_nodes\CCMenuItemSprite.cs">
-      <LogicalName>menu_nodes\CCMenuItemSprite</LogicalName>
     </Compile>
     <Compile Include=".\menu_nodes\CCMenuItemToggle.cs">
       <LogicalName>menu_nodes\CCMenuItemToggle</LogicalName>

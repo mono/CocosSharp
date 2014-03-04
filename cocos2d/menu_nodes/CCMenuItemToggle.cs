@@ -1,41 +1,47 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CocosSharp
 {
     public class CCMenuItemToggle : CCMenuItem
     {
-        public List<CCMenuItem> m_pSubItems;
-        private int m_uSelectedIndex;
+        CCMenuItem previouslySelectedItem;
+        int selectedIndex;
 
+
+        #region Properties
+
+        public List<CCMenuItem> SubItems { get; set; }
+
+        public CCMenuItem SelectedItem 
+        {
+            get { return SubItems[SelectedIndex]; }
+        }
 
         public int SelectedIndex
         {
-            get { return m_uSelectedIndex; }
+            get { return selectedIndex; }
             set
             {
-                if (value != m_uSelectedIndex && m_pSubItems.Count > 0)
+                if (value != selectedIndex && SubItems.Count > 0)
                 {
-                    m_uSelectedIndex = value;
-                    var currentItem = (CCMenuItem) GetChildByTag(kCurrentItem);
-                    if (currentItem != null)
+                    selectedIndex = value;
+                    if (previouslySelectedItem != null)
                     {
-                        currentItem.RemoveFromParentAndCleanup(false);
+                        previouslySelectedItem.RemoveFromParentAndCleanup(false);
                     }
 
-                    CCMenuItem item = m_pSubItems[m_uSelectedIndex];
-                    AddChild(item, 0, kCurrentItem);
-                    CCSize s = item.ContentSize;
-                    ContentSize = s;
-                    item.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                    CCMenuItem selectedItem = SubItems[selectedIndex];
+                    AddChild(selectedItem, 0);
+
+                    CCSize itemContentSize = selectedItem.ContentSize;
+                    ContentSize = itemContentSize;
+                    selectedItem.Position = new CCPoint(itemContentSize.Width / 2, itemContentSize.Height / 2);
+
+                    previouslySelectedItem = selectedItem;
                 }
             }
-        }
-
-        public List<CCMenuItem> SubItems
-        {
-            get { return m_pSubItems; }
-            set { m_pSubItems = value; }
         }
 
         public override bool Enabled
@@ -44,18 +50,43 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                foreach (CCMenuItem item in m_pSubItems)
+                if (SubItems != null) 
                 {
-                    item.Enabled = value;
+                    foreach (CCMenuItem item in SubItems) {
+                        item.Enabled = value;
+                    }
                 }
             }
         }
 
+        public override bool Selected 
+        {
+            set
+            {
+                base.Selected = value;
+                SubItems[selectedIndex].Selected = value;
+            }
+        }
+
+        #endregion Properties
+
+
         #region Constructors
 
-        public CCMenuItemToggle() 
-            : base(null)
-        {   
+        public CCMenuItemToggle(Action<object> target, params CCMenuItem[] items)
+            : base(target)
+        {
+            Debug.Assert(items != null && items.Length > 0, "List of toggle items must be non-empty");
+
+            SubItems = new List<CCMenuItem>(items);
+
+            selectedIndex = int.MaxValue;
+
+            // Set the property to 0 to ensure the first toggle item is added as a node child
+            SelectedIndex = 0;
+
+            IsColorCascaded = true;
+            IsOpacityCascaded = true;
         }
 
         public CCMenuItemToggle(params CCMenuItem[] items)
@@ -63,60 +94,18 @@ namespace CocosSharp
         {
         }
 
-        public CCMenuItemToggle(Action<object> selector, params CCMenuItem[] items)
-            : base(selector)
-        {
-            InitCCMenuItemToggle(items);
-        }
-
-        private void InitCCMenuItemToggle(CCMenuItem[] items)
-        {
-            m_pSubItems = new List<CCMenuItem>();
-            foreach (CCMenuItem item in items)
-            {
-                m_pSubItems.Add(item);
-            }
-            m_uSelectedIndex = int.MaxValue;
-            SelectedIndex = 0;
-
-            CascadeColorEnabled = true;
-            CascadeOpacityEnabled = true;
-        }
-
         #endregion Constructors
 
-
-        public void AddSubItem(CCMenuItem item)
-        {
-            m_pSubItems.Add(item);
-        }
-
-        public CCMenuItem SelectedItem
-        {
-            get { return m_pSubItems[m_uSelectedIndex]; }
-        }
-
+                    
         public override void Activate()
         {
             // update index
-            if (m_bIsEnabled)
+            if (Enabled)
             {
-                int newIndex = (m_uSelectedIndex + 1) % m_pSubItems.Count;
+                int newIndex = (SelectedIndex + 1) % SubItems.Count;
                 SelectedIndex = newIndex;
             }
             base.Activate();
-        }
-
-        public override void Selected()
-        {
-            base.Selected();
-            m_pSubItems[m_uSelectedIndex].Selected();
-        }
-
-        public override void Unselected()
-        {
-            base.Unselected();
-            m_pSubItems[m_uSelectedIndex].Unselected();
         }
     }
 }

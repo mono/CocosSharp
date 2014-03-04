@@ -674,12 +674,12 @@ namespace CocosSharp
             base.OnEnter();
 
             // udpate after action in run!
-            ScheduleUpdateWithPriority(1);
+            Schedule (1);
         }
 
         public override void OnExit()
         {
-            UnscheduleUpdate();
+            Unschedule ();
 
             base.OnExit();
         }
@@ -997,7 +997,7 @@ namespace CocosSharp
 
                             if (m_uParticleCount == 0 && m_bIsAutoRemoveOnFinish)
                             {
-                                UnscheduleUpdate();
+                                Unschedule ();
                                 m_pParent.RemoveChild(this, true);
                                 return;
                             }

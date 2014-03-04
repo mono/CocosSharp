@@ -176,7 +176,7 @@ namespace CocosSharp
                         {
                             if (m_pSpriteFramesAliases[oneAlias] != null)
                             {
-                                CCLog.Log("cocos2d: WARNING: an alias with name {0} already exists", oneAlias);
+                                CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
                             }
                         }
                         if (!m_pSpriteFramesAliases.Keys.Contains(oneAlias))
@@ -239,7 +239,7 @@ namespace CocosSharp
                 // append .png
                 texturePath = texturePath + ".png";
 
-                CCLog.Log("cocos2d: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
+                CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
             CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(texturePath);
@@ -250,7 +250,7 @@ namespace CocosSharp
             }
             else
             {
-                CCLog.Log("cocos2d: CCSpriteFrameCache: Couldn't load texture");
+                CCLog.Log("CocosSharp: CCSpriteFrameCache: Couldn't load texture");
             }
         }
 
@@ -266,7 +266,7 @@ namespace CocosSharp
             }
             else
             {
-                CCLog.Log("cocos2d: CCSpriteFrameCache: couldn't load texture file. File not found {0}", textureFileName);
+                CCLog.Log("CocosSharp: CCSpriteFrameCache: couldn't load texture file. File not found {0}", textureFileName);
             }
         }
 
@@ -422,14 +422,14 @@ namespace CocosSharp
                 {
                     if (!m_pSpriteFrames.TryGetValue(key, out frame))
                     {
-                        CCLog.Log("cocos2d: CCSpriteFrameCahce: Frame '{0}' not found", pszName);
+                        CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", pszName);
                     }
                 }
             }
 
             if (frame != null)
             {
-                CCLog.Log("cocos2d: {0} frame {1}", pszName, frame.Rect.ToString());
+                CCLog.Log("CocosSharp: {0} frame {1}", pszName, frame.Rect.ToString());
             }
             return frame;
         }

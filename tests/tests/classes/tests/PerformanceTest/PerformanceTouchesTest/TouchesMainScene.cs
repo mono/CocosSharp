@@ -44,11 +44,11 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // add title
-            CCLabelTTF label = new CCLabelTTF(title(), "arial", 32);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
             CCNode ccnode = new CCNode();
-            ccnode.ScheduleUpdate();
+            ccnode.Schedule ();
 
             m_plabel = new CCLabelBMFont("00.0", "fonts/arial16.fnt");
             m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);

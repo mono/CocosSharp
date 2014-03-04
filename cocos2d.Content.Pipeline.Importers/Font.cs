@@ -15,7 +15,7 @@ namespace CocosSharp.Content.Pipeline.Importers
     }
 
     [ContentProcessor(DisplayName = "CocosSharp - Font")]
-    public class CocosFontProcessor : ContentProcessor<string, CCBMFontConfiguration>
+    internal class CocosFontProcessor : ContentProcessor<string, CCBMFontConfiguration>
     {
         public override CCBMFontConfiguration Process(string fileName, ContentProcessorContext context)
         {

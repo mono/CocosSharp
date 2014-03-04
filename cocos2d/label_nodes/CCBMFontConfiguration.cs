@@ -1,49 +1,43 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework.Content;
+
+[assembly: InternalsVisibleTo("CocosSharp.Content.Pipeline.Importers")]
+[assembly: InternalsVisibleTo("Microsoft.Xna.Framework.Content")]
 
 namespace CocosSharp
 {
+
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
 #endif
-    public class CCBMFontConfiguration
+    internal sealed class CCBMFontConfiguration
     {
+        // Due to a bug in MonoGame's Custom Content loading not being able to recognize properties that are not
+        // marked public we have to leave the Serialized information as variables and not properties.
+        // This is an inconsistency with how XNA works.  Until this bug is fixed this needs to remain as it is.
         [ContentSerializer]
-        internal int m_nCommonHeight;
-
-        [ContentSerializer]
-        internal Dictionary<int, CCBMFontDef> m_pFontDefDictionary = new Dictionary<int, CCBMFontDef>();
-
-        [ContentSerializer]
-        internal Dictionary<int, CCKerningHashElement> m_pKerningDictionary = new Dictionary<int, CCKerningHashElement>();
+        internal int CommonHeight;// { get; set; }
 
         [ContentSerializer]
-        internal string m_sAtlasName;
+        internal Dictionary<int, CCBMGlyphDef> Glyphs; // { get; set; }
 
         [ContentSerializer]
-        internal CCBMFontPadding m_tPadding;
+        internal Dictionary<int, CCKerningHashElement> GlyphKernings; // { get; set; }
 
-        private List<int> m_pCharacterSet = new List<int>();
+        [ContentSerializer]
+        internal string AtlasName; // { get; set; }
 
-        public string AtlasName
-        {
-            get { return m_sAtlasName; }
-            set { m_sAtlasName = value; }
-        }
-        
-        
-        public List<int> CharacterSet
-        {
-            set { m_pCharacterSet = value; }
-            get { return m_pCharacterSet; }
-        }
+        [ContentSerializer]
+        internal CCBMGlyphPadding Padding;
 
+        public List<int> CharacterSet { get; set; }
 
         #region Constructors
 
-        public static CCBMFontConfiguration FontConfigurationWithFile(string fntFile)
+        internal static CCBMFontConfiguration FontConfigurationWithFile(string fntFile)
         {
             try
             {
@@ -57,24 +51,27 @@ namespace CocosSharp
 
         internal CCBMFontConfiguration()
         {
+            Glyphs = new Dictionary<int, CCBMGlyphDef>();
+            CharacterSet = new List<int>();
+            GlyphKernings = new Dictionary<int, CCKerningHashElement>();
         }
 
-        internal CCBMFontConfiguration(string fntFile) : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
-        {
-        }
+        internal CCBMFontConfiguration(string fntFile)
+            : this(CCContentManager.SharedContentManager.Load<string>(fntFile), fntFile)
+        { }
+        
 
         // Content pipeline makes use of this constructor
-        public CCBMFontConfiguration(string data, string fntFile)
+        internal CCBMFontConfiguration(string data, string fntFile) : base()
         {
-            InitWithString(data, fntFile);
-        }
+            Glyphs = new Dictionary<int, CCBMGlyphDef>();
+            CharacterSet = new List<int>();
+            GlyphKernings = new Dictionary<int, CCKerningHashElement>();
 
-        private void InitWithString(string data, string fntFile)
-        {
-            m_pKerningDictionary.Clear();
-            m_pFontDefDictionary.Clear();
+            GlyphKernings.Clear();
+            Glyphs.Clear();
 
-            m_pCharacterSet = ParseConfigFile(data, fntFile);
+            CharacterSet = ParseConfigFile(data, fntFile);
         }
 
         #endregion Constructors
@@ -139,12 +136,12 @@ namespace CocosSharp
                 else if (line.StartsWith("char"))
                 {
                     // Parse the current line and create a new CharDef
-                    var characterDefinition = new CCBMFontDef();
+                    var characterDefinition = new CCBMGlyphDef();
                     parseCharacterDefinition(line, characterDefinition);
 
-                    m_pFontDefDictionary.Add(characterDefinition.charID, characterDefinition);
+                    Glyphs.Add(characterDefinition.Character, characterDefinition);
 
-                    validCharsString.Add(characterDefinition.charID);
+                    validCharsString.Add(characterDefinition.Character);
                 }
                 //else if (line.StartsWith("kernings count"))
                 //{
@@ -159,7 +156,7 @@ namespace CocosSharp
             return validCharsString;
         }
 
-        private void parseCharacterDefinition(string line, CCBMFontDef characterDefinition)
+        private void parseCharacterDefinition(string line, CCBMGlyphDef characterDefinition)
         {
             //////////////////////////////////////////////////////////////////////////
             // line to parse:
@@ -170,50 +167,50 @@ namespace CocosSharp
             int index = line.IndexOf("id=");
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            characterDefinition.charID = CocosSharp.CCUtils.CCParseInt(value.Replace("id=", ""));
+            characterDefinition.Character = CocosSharp.CCUtils.CCParseInt(value.Replace("id=", ""));
             //CCAssert(characterDefinition->charID < kCCBMFontMaxChars, "BitmpaFontAtlas: CharID bigger than supported");
 
             // Character x
             index = line.IndexOf("x=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Origin.X = CocosSharp.CCUtils.CCParseFloat(value.Replace("x=", ""));
+            characterDefinition.Subrect.Origin.X = CocosSharp.CCUtils.CCParseFloat(value.Replace("x=", ""));
 
             // Character y
             index = line.IndexOf("y=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Origin.Y = CocosSharp.CCUtils.CCParseFloat(value.Replace("y=", ""));
+            characterDefinition.Subrect.Origin.Y = CocosSharp.CCUtils.CCParseFloat(value.Replace("y=", ""));
 
             // Character width
             index = line.IndexOf("width=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Size.Width = CocosSharp.CCUtils.CCParseFloat(value.Replace("width=", ""));
+            characterDefinition.Subrect.Size.Width = CocosSharp.CCUtils.CCParseFloat(value.Replace("width=", ""));
 
             // Character height
             index = line.IndexOf("height=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.rect.Size.Height = CocosSharp.CCUtils.CCParseFloat(value.Replace("height=", ""));
+            characterDefinition.Subrect.Size.Height = CocosSharp.CCUtils.CCParseFloat(value.Replace("height=", ""));
 
             // Character xoffset
             index = line.IndexOf("xoffset=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.xOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("xoffset=", ""));
+            characterDefinition.XOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("xoffset=", ""));
 
             // Character yoffset
             index = line.IndexOf("yoffset=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.yOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("yoffset=", ""));
+            characterDefinition.YOffset = CocosSharp.CCUtils.CCParseInt(value.Replace("yoffset=", ""));
 
             // Character xadvance
             index = line.IndexOf("xadvance=");
             index2 = line.IndexOf(' ', index);
             value = line.Substring(index, index2 - index);
-            characterDefinition.xAdvance = CocosSharp.CCUtils.CCParseInt(value.Replace("xadvance=", ""));
+            characterDefinition.XAdvance = CocosSharp.CCUtils.CCParseInt(value.Replace("xadvance=", ""));
         }
 
         // info face
@@ -232,10 +229,10 @@ namespace CocosSharp
 
             value = value.Replace("padding=", "");
             string[] temp = value.Split(',');
-            m_tPadding.top = CocosSharp.CCUtils.CCParseInt(temp[0]);
-            m_tPadding.right = CocosSharp.CCUtils.CCParseInt(temp[1]);
-            m_tPadding.bottom = CocosSharp.CCUtils.CCParseInt(temp[2]);
-            m_tPadding.left = CocosSharp.CCUtils.CCParseInt(temp[3]);
+            Padding.Top = CocosSharp.CCUtils.CCParseInt(temp[0]);
+            Padding.Right = CocosSharp.CCUtils.CCParseInt(temp[1]);
+            Padding.Bottom = CocosSharp.CCUtils.CCParseInt(temp[2]);
+            Padding.Left = CocosSharp.CCUtils.CCParseInt(temp[3]);
 
             //CCLOG("cocos2d: padding: %d,%d,%d,%d", m_tPadding.left, m_tPadding.top, m_tPadding.right, m_tPadding.bottom);
         }
@@ -252,7 +249,7 @@ namespace CocosSharp
             int index = line.IndexOf("lineHeight=");
             int index2 = line.IndexOf(' ', index);
             string value = line.Substring(index, index2 - index);
-            m_nCommonHeight = CocosSharp.CCUtils.CCParseInt(value.Replace("lineHeight=", ""));
+            CommonHeight = CocosSharp.CCUtils.CCParseInt(value.Replace("lineHeight=", ""));
 
             // scaleW. sanity check
             index = line.IndexOf("scaleW=") + "scaleW=".Length;
@@ -299,7 +296,7 @@ namespace CocosSharp
             index2 = line.IndexOf('"', index);
             value = line.Substring(index, index2 - index);
 
-            m_sAtlasName = CocosSharp.CCFileUtils.FullPathFromRelativeFile(value, fntFile);
+            AtlasName = CocosSharp.CCFileUtils.FullPathFromRelativeFile(value, fntFile);
         }
 
         private void parseKerningEntry(string line)
@@ -333,9 +330,9 @@ namespace CocosSharp
             try
             {
                 var element = new CCKerningHashElement();
-                element.amount = amount;
-                element.key = (first << 16) | (second & 0xffff);
-                m_pKerningDictionary.Add(element.key, element);
+                element.Amount = amount;
+                element.Key = (first << 16) | (second & 0xffff);
+                GlyphKernings.Add(element.Key, element);
             }
             catch (Exception)
             {
@@ -345,70 +342,70 @@ namespace CocosSharp
 
         private void purgeKerningDictionary()
         {
-            m_pKerningDictionary.Clear();
+            GlyphKernings.Clear();
         }
 
-        #region Nested type: ccBMFontDef
+        #region Nested type: CCBMGlyphDef
 
         /// <summary>
-        /// BMFont definition
+        /// CCBMFont definition
         /// </summary>
-        public class CCBMFontDef
+        internal class CCBMGlyphDef
         {
             /// <summary>
             /// ID of the character
             /// </summary>
-            public int charID;
+            public int Character { get; set; }
 
             /// <summary>
             /// origin and size of the font
             /// </summary>
-            public CCRect rect;
+            public CCRect Subrect;
 
             /// <summary>
             /// The amount to move the current position after drawing the character (in pixels)
             /// </summary>
-            public int xAdvance;
+            public int XAdvance { get; set; }
 
             /// <summary>
             /// The X amount the image should be offset when drawing the image (in pixels)
             /// </summary>
-            public int xOffset;
+            public int XOffset { get; set; }
 
             /// <summary>
             /// The Y amount the image should be offset when drawing the image (in pixels)
             /// </summary>
-            public int yOffset;
+            public int YOffset { get; set; }
         }
 
         #endregion
 
-        #region Nested type: ccBMFontPadding
+        #region Nested type: CCBMGlyphPadding
 
-        internal struct CCBMFontPadding
+        public struct CCBMGlyphPadding
         {
             // padding left
-            public int bottom;
-            public int left;
+            public int Bottom { get; set; }
+            public int Left { get; set; }
 
             // padding top
 
             // padding right
-            public int right;
-            public int top;
+            public int Right { get; set; }
+            public int Top { get; set; }
 
             // padding bottom
         }
 
         #endregion
 
-        #region Nested type: tKerningHashElement
+        #region Nested type: CCKerningHashElement
 
         public struct CCKerningHashElement
         {
-            public int amount;
+            public int Amount { get; set; }
 
-            public int key; //key for the hash. 16-bit for 1st element, 16-bit for 2nd element
+            public int Key { get; set; } //key for the hash. 16-bit for 1st element, 16-bit for 2nd element
         }
 
         #endregion

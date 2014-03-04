@@ -10,14 +10,14 @@ namespace tests.classes
             base.OnEnter();
 
             // add title and subtitle
-            var label = new CCLabelTTF(Title(), "Arial", 32);
+            var label = new CCLabelTtf(Title(), "Arial", 32);
             AddChild(label, 9999);
             label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 30);
 
             string strSubtitle = Subtitle();
             if (!string.IsNullOrEmpty(strSubtitle))
             {
-                var l = new CCLabelTTF(strSubtitle, "Thonburi", 16);
+                var l = new CCLabelTtf(strSubtitle, "Thonburi", 16);
                 AddChild(l, 9999);
                 l.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 60);
             }

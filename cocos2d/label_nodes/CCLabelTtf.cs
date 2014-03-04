@@ -3,7 +3,7 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCLabelTTF : CCSprite, ICCTextContainer
+    public class CCLabelTtf : CCSprite, ICCTextContainer
     {
         private float m_fFontSize;
         private CCTextAlignment m_hAlignment;
@@ -95,22 +95,22 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLabelTTF () : this("", "Helvetica", 12.0f)
+        public CCLabelTtf () : this("", "Helvetica", 12.0f)
         {
         }
 
-        public CCLabelTTF (string text, string fontName, float fontSize) : 
+        public CCLabelTtf (string text, string fontName, float fontSize) : 
         this (text, fontName, fontSize, CCSize.Zero, CCTextAlignment.Center,
             CCVerticalTextAlignment.Top)
         { 
         }
 
-        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
+        public CCLabelTtf (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment) :
         this (text, fontName, fontSize, dimensions, hAlignment, CCVerticalTextAlignment.Top)
         { 
         }
 
-        public CCLabelTTF (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
+        public CCLabelTtf (string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
         {
             InitCCLabelTTF(text, fontName, fontSize, dimensions, hAlignment, vAlignment);
         }
@@ -179,18 +179,6 @@ namespace CocosSharp
                 }
                 //            Dirty = true;
             }
-        }
-
-        [Obsolete("Use Label Property")]
-        public void SetString(string label)
-        {
-            Text = label;
-        }
-        
-        [Obsolete("Use Label Property")]
-        public string GetString() 
-        {
-            return Text;
         }
 
         #endregion

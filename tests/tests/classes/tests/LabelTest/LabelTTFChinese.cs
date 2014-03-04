@@ -10,9 +10,9 @@ namespace tests
     {
         public LabelTTFChinese()
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
-            CCLabelTTF pLable = new CCLabelTTF("中国", "Marker Felt", 30);
-            pLable.Position = new CCPoint(size.Width / 2, size.Height / 2);
+			var size = CCDirector.SharedDirector.WinSize;
+			var pLable = new CCLabelTtf("中国", "Marker Felt", 30);
+			pLable.Position = size.Center;
             AddChild(pLable);
         }
 
@@ -31,9 +31,9 @@ namespace tests
     {
         public LabelBMFontChinese()
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
+			var size = CCDirector.SharedDirector.WinSize;
             var pLable = new CCLabelBMFont("中国", "fonts/bitmapFontChinese.fnt");
-            pLable.Position = new CCPoint(size.Width / 2, size.Height / 2);
+			pLable.Position = size.Center;
             AddChild(pLable);
         }
 

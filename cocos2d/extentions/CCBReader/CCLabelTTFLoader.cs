@@ -14,14 +14,14 @@ namespace CocosSharp
 
         public override CCNode CreateCCNode()
         {
-            return new CCLabelTTF();
+            return new CCLabelTtf();
         }
 
         protected override void OnHandlePropTypeColor3(CCNode node, CCNode parent, string propertyName, CCColor3B color, CCBReader reader)
         {
             if (propertyName == PROPERTY_COLOR)
             {
-                ((CCLabelTTF) node).Color = color;
+                ((CCLabelTtf) node).Color = color;
             }
             else
             {
@@ -33,7 +33,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_OPACITY)
             {
-                ((CCLabelTTF) node).Opacity = pByte;
+                ((CCLabelTtf) node).Opacity = pByte;
             }
             else
             {
@@ -46,7 +46,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_BLENDFUNC)
             {
-                ((CCLabelTTF) node).BlendFunc = blendFunc;
+                ((CCLabelTtf) node).BlendFunc = blendFunc;
             }
             else
             {
@@ -58,7 +58,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_FONTNAME)
             {
-                ((CCLabelTTF) node).FontName = fontTTF;
+                ((CCLabelTtf) node).FontName = fontTTF;
             }
             else
             {
@@ -70,7 +70,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_STRING)
             {
-                ((CCLabelTTF) node).Text = (pText);
+                ((CCLabelTtf) node).Text = (pText);
             }
             else
             {
@@ -82,7 +82,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_FONTSIZE)
             {
-                ((CCLabelTTF) node).FontSize = floatScale;
+                ((CCLabelTtf) node).FontSize = floatScale;
             }
             else
             {
@@ -95,11 +95,11 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_HORIZONTALALIGNMENT)
             {
-                ((CCLabelTTF) node).HorizontalAlignment = (CCTextAlignment)pIntegerLabeled;
+                ((CCLabelTtf) node).HorizontalAlignment = (CCTextAlignment)pIntegerLabeled;
             }
             else if (propertyName == PROPERTY_VERTICALALIGNMENT)
             {
-                ((CCLabelTTF) node).VerticalAlignment = (CCVerticalTextAlignment)pIntegerLabeled;
+                ((CCLabelTtf) node).VerticalAlignment = (CCVerticalTextAlignment)pIntegerLabeled;
             }
             else
             {
@@ -111,7 +111,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_DIMENSIONS)
             {
-                ((CCLabelTTF) node).Dimensions = pSize;
+                ((CCLabelTtf) node).Dimensions = pSize;
             }
             else
             {

@@ -80,9 +80,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
-      <Private>False</Private>
-    </Reference>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ball-hd.mask" />
@@ -2420,8 +2418,6 @@
     <Content Include="Content\hd\extensions\stepper-plus.xnb" />
     <Content Include="Content\hd\fonts\font-issue1343.fnt.xnb" />
     <Content Include="Content\hd\fonts\font-issue1343.xnb" />
-    <Content Include="Content\hd\fonts\konqa32.fnt.xnb" />
-    <Content Include="Content\hd\fonts\konqa32.xnb" />
     <Content Include="Content\hd\fonts\labelatlas.xnb" />
     <Content Include="Content\hd\fonts\larabie-16.plist.xnb" />
     <Content Include="Content\hd\fonts\larabie-16.xnb" />
@@ -2482,6 +2478,12 @@
     <Content Include="Content\hd\Images\grossini_dance_12.xnb" />
     <Content Include="Content\hd\Images\grossini_dance_13.xnb" />
     <Content Include="Content\hd\Images\grossini_dance_14.xnb" />
+    <Content Include="Content\hd\fonts\konqa32.xnb" />
+    <Content Include="Content\hd\fonts\konqa32.fnt.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-16.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-18.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
+    <Content Include="Content\fonts\MarkerFelt-32.xnb" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

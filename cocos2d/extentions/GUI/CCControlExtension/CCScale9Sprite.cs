@@ -156,7 +156,7 @@ namespace CocosSharp
             }
         }
 
-        public override bool IsOpacityModifyRGB
+        public override bool IsColorModifiedByOpacity
         {
             get { return _opacityModifyRGB; }
             set
@@ -169,7 +169,7 @@ namespace CocosSharp
                         var node = _scale9Image.Children[i] as ICCColor;
                         if (node != null)
                         {
-                            node.IsOpacityModifyRGB = value;
+                            node.IsColorModifiedByOpacity = value;
                         }
                     }
                 }

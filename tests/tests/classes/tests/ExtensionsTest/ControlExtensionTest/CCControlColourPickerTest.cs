@@ -8,7 +8,7 @@ namespace tests.Extensions
 {
     class CCControlColourPickerTest : CCControlScene
     {
-        public CCLabelTTF ColorLabel
+        public CCLabelTtf ColorLabel
         {
             get { return _colorLabel; }
             set { _colorLabel = value; }
@@ -47,7 +47,7 @@ namespace tests.Extensions
 
             layer_width += background.ContentSize.Width;
 
-            _colorLabel = new CCLabelTTF("#color", "Arial", 26);
+            _colorLabel = new CCLabelTtf("#color", "Arial", 26);
 
             _colorLabel.Position = background.Position;
             layer.AddChild(_colorLabel);
@@ -68,7 +68,7 @@ namespace tests.Extensions
             _colorLabel.Text = string.Format("#{0:X00}{1:X00}{2:X00}", pPicker.Color.R, pPicker.Color.G, pPicker.Color.B);
         }
 
-        private CCLabelTTF _colorLabel;
+        private CCLabelTtf _colorLabel;
 
         public new static CCScene sceneWithTitle(string title)
         {

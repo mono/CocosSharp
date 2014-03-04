@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6E02AFD1-C476-4F9A-A9A8-CAAC4B03783A}</ProjectGuid>
+    <ProjectGuid>{64725C5B-A1BC-4974-8538-A1158BABF572}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -56,6 +56,7 @@
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="Actions\action\CCFollow.cs" />
     <Compile Include="Actions\action\CCSpeed.cs" />
+	<Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="Actions\action_camera\CCActionCamera.cs" />
     <Compile Include="Actions\action_camera\CCOrbitCamera.cs" />
     <Compile Include="Actions\action_catmull_rom\CCCardinalSplineTo.cs" />
@@ -230,7 +231,7 @@
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
-    <Compile Include="label_nodes\CCLabelTTF.cs" />
+    <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="label_nodes\CCLabel-Android.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayer.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerColor.cs" />
@@ -276,11 +277,9 @@
     <Compile Include="Math\CCSplineMath.cs" />
     <Compile Include="menu_nodes\CCMenu.cs" />
     <Compile Include="menu_nodes\CCMenuItem.cs" />
-    <Compile Include="menu_nodes\CCMenuItemAtlasFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemFont.cs" />
     <Compile Include="menu_nodes\CCMenuItemImage.cs" />
     <Compile Include="menu_nodes\CCMenuItemLabel.cs" />
-    <Compile Include="menu_nodes\CCMenuItemSprite.cs" />
     <Compile Include="menu_nodes\CCMenuItemToggle.cs" />
     <Compile Include="misc_nodes\CCMotionStreak.cs" />
     <Compile Include="misc_nodes\CCProgressTimer.cs" />

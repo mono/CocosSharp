@@ -6,8 +6,6 @@ namespace CocosSharp
     {
         CCPoint position;
 
-        public float Amplitude { get; private set; }
-        public override float AmplitudeRate { get; protected set; }
         public int Twirls { get; private set; }
         public CCPoint PositionInPixels { get; private set; }
         public CCPoint Position
@@ -27,12 +25,11 @@ namespace CocosSharp
 			: this(duration, gridSize, CCPoint.Zero)
 		{ }
 
-		public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls= 0, float amplitude = 0) : base(duration, gridSize)
+        public CCTwirl(float duration, CCGridSize gridSize, CCPoint position, int twirls= 0, float amplitude = 0) 
+            : base(duration, gridSize, amplitude)
         {
             Position = position;
             Twirls = twirls;
-            Amplitude = amplitude;
-            AmplitudeRate = 1.0f;
         }
 
         #endregion Constructors
@@ -49,13 +46,11 @@ namespace CocosSharp
 
     public class CCTwirlState : CCGrid3DActionState
     {
-        public float Amplitude { get; set; }
         public int Twirls { get; set; }
         public CCPoint PositionInPixels { get; set; }
 
         public CCTwirlState(CCTwirl action, CCNode target) : base(action, target)
         {
-            Amplitude = action.Amplitude;
             Twirls = action.Twirls;
             PositionInPixels = action.PositionInPixels;
         }
@@ -78,7 +73,7 @@ namespace CocosSharp
 
                     var r = (float) Math.Sqrt((avg.X * avg.X + avg.Y * avg.Y));
 
-                    float amp = 0.1f * Amplitude * StateAmplitudeRate;
+                    float amp = 0.1f * Amplitude * AmplitudeRate;
                     float a = r * (float) Math.Cos((float) Math.PI / 2.0f + time * (float) Math.PI * twirls * 2) * amp;
 
                     float dx = (float) Math.Sin(a) * (v.Y - c.Y) + (float) Math.Cos(a) * (v.X - c.X);

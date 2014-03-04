@@ -32,7 +32,7 @@ namespace tests
 			left.RepeatForever(progressTo);
 			left.RepeatForever(tint);
 
-            left.AddChild(new CCLabelTTF("Tint", "arial", 20.0f));
+            left.AddChild(new CCLabelTtf("Tint", "arial", 20.0f));
 
             CCProgressTimer middle = new CCProgressTimer(new CCSprite(s_pPathSister2));
             middle.Type = CCProgressTimerType.Bar;
@@ -45,7 +45,7 @@ namespace tests
 			middle.RepeatForever(progressTo);
 			middle.RepeatForever(fade);
 
-            middle.AddChild(new CCLabelTTF("Fade", "arial", 20.0f));
+            middle.AddChild(new CCLabelTtf("Fade", "arial", 20.0f));
 
             CCProgressTimer right = new CCProgressTimer(new CCSprite(s_pPathSister2));
             right.Type = CCProgressTimerType.Bar;
@@ -59,7 +59,7 @@ namespace tests
 			right.RepeatForever(tint);
 			right.RepeatForever(fade);
 
-            right.AddChild(new CCLabelTTF("Tint and Fade", "arial", 20.0f));
+            right.AddChild(new CCLabelTtf("Tint and Fade", "arial", 20.0f));
         }
 
         public override string subtitle()

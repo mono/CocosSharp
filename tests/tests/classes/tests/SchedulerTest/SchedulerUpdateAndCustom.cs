@@ -11,7 +11,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            ScheduleUpdate();
+            Schedule ();
             Schedule(tick);
             Schedule(stopSelectors, 0.4f);
         }

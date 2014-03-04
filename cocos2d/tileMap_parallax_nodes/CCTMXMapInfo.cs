@@ -257,7 +257,7 @@ namespace CocosSharp
                 string version = attributeDict["version"];
                 if (version != "1.0")
                 {
-                    CCLog.Log("cocos2d: TMXFormat: Unsupported TMX version: {0}", version);
+                    CCLog.Log("CocosSharp: TMXFormat: Unsupported TMX version: {0}", version);
                 }
                 string orientationStr = attributeDict["orientation"];
                 if (orientationStr == "orthogonal")
@@ -267,7 +267,7 @@ namespace CocosSharp
                 else if (orientationStr == "hexagonal")
                     pTMXMapInfo.Orientation = (int) (CCTMXOrientation.Hex);
                 else
-                    CCLog.Log("cocos2d: TMXFomat: Unsupported orientation: {0}", pTMXMapInfo.Orientation);
+                    CCLog.Log("CocosSharp: TMXFomat: Unsupported orientation: {0}", pTMXMapInfo.Orientation);
 
                 CCSize sMapSize;
                 sMapSize.Width = CCUtils.CCParseFloat(attributeDict["width"]);

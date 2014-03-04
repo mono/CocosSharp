@@ -45,9 +45,9 @@ namespace tests
             TouchEnabled = true;
 
             // Save Image menu
-            CCMenuItemFont.FontSize = 16;
-            CCMenuItem item1 = new CCMenuItemFont("Save Image", saveImage);
-            CCMenuItem item2 = new CCMenuItemFont("Clear", clearImage);
+            uint fontSize = 16;
+            CCMenuItem item1 = new CCMenuItemFont("Save Image", fontSize, saveImage);
+            CCMenuItem item2 = new CCMenuItemFont("Clear", fontSize, clearImage);
             var menu = new CCMenu(item1, item2);
             AddChild(menu);
             menu.AlignItemsVertically();
