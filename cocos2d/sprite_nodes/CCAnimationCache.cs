@@ -141,7 +141,7 @@ namespace CocosSharp
                 if (frameNames == null)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
+                        "CocosSharp: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
                         pElement.Key);
                     continue;
                 }
@@ -168,14 +168,14 @@ namespace CocosSharp
                 if (frames.Count == 0)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: None of the frames for animation '{0}' were found in the CCSpriteFrameCache. Animation is not being added to the Animation Cache.",
+                        "CocosSharp: CCAnimationCache: None of the frames for animation '{0}' were found in the CCSpriteFrameCache. Animation is not being added to the Animation Cache.",
                         pElement.Key);
                     continue;
                 }
                 else if (frames.Count != frameNames.Count)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: An animation in your dictionary refers to a frame which is not in the CCSpriteFrameCache. Some or all of the frames for the animation '{0}' may be missing.",
+                        "CocosSharp: CCAnimationCache: An animation in your dictionary refers to a frame which is not in the CCSpriteFrameCache. Some or all of the frames for the animation '{0}' may be missing.",
                         pElement.Key);
                 }
 
@@ -202,7 +202,7 @@ namespace CocosSharp
                 if (frameArray == null)
                 {
                     CCLog.Log(
-                        "cocos2d: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
+                        "CocosSharp: CCAnimationCache: Animation '{0}' found in dictionary without any frames - cannot add to animation cache.",
                         name);
                     continue;
                 }
