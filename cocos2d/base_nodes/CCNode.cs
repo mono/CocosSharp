@@ -868,7 +868,7 @@ namespace CocosSharp
 
             if (child == null)
             {
-                CCLog.Log("cocos2d: removeChildByTag: child not found!");
+                CCLog.Log("CocosSharp: removeChildByTag: child not found!");
             }
             else
             {

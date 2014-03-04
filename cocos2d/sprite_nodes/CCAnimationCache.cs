@@ -80,7 +80,7 @@ namespace CocosSharp
 
             if (animations == null)
             {
-                CCLog.Log("cocos2d: CCAnimationCache: No animations were found in provided dictionary.");
+                CCLog.Log("CocosSharp: CCAnimationCache: No animations were found in provided dictionary.");
                 return;
             }
 
