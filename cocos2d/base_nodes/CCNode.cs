@@ -1400,12 +1400,12 @@ namespace CocosSharp
 
         public void ScheduleUpdateWithPriority(int priority)
         {
-            m_pScheduler.ScheduleUpdateForTarget(this, priority, !m_bRunning);
+            m_pScheduler.Schedule (this, priority, !m_bRunning);
         }
 
         public void UnscheduleUpdate()
         {
-            m_pScheduler.UnscheduleUpdateForTarget(this);
+            m_pScheduler.Unschedule(this);
         }
 
         public void Schedule(Action<float> selector)
@@ -1423,7 +1423,7 @@ namespace CocosSharp
             Debug.Assert(selector != null, "Argument must be non-nil");
             Debug.Assert(interval >= 0, "Argument must be positive");
 
-            m_pScheduler.ScheduleSelector(selector, this, interval, repeat, delay, !m_bRunning);
+            m_pScheduler.Schedule (selector, this, interval, repeat, delay, !m_bRunning);
         }
 
         public void ScheduleOnce(Action<float> selector, float delay)
@@ -1437,17 +1437,17 @@ namespace CocosSharp
             if (selector == null)
                 return;
 
-            m_pScheduler.UnscheduleSelector(selector, this);
+            m_pScheduler.Unschedule(selector, this);
         }
 
         public void UnscheduleAllSelectors()
         {
-            m_pScheduler.UnscheduleAllForTarget(this);
+            m_pScheduler.UnscheduleAll(this);
         }
 
         public void ResumeSchedulerAndActions()
         {
-            m_pScheduler.ResumeTarget(this);
+            m_pScheduler.Resume(this);
             m_pActionManager.ResumeTarget(this);
         }
 

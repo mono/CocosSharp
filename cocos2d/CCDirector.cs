@@ -387,7 +387,7 @@ namespace CocosSharp
             m_pScheduler = new CCScheduler();
             // action manager
             m_pActionManager = new CCActionManager();
-            m_pScheduler.ScheduleUpdateForTarget(m_pActionManager, CCScheduler.PrioritySystem, false);
+            m_pScheduler.Schedule (m_pActionManager, CCScheduler.PrioritySystem, false);
             // touchDispatcher
             m_pTouchDispatcher = new CCTouchDispatcher();
             m_pTouchDispatcher.Init();
@@ -690,7 +690,7 @@ namespace CocosSharp
                 }
 
                 // In Seconds
-                m_pScheduler.update(m_fDeltaTime);
+                m_pScheduler.Update(m_fDeltaTime);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.
