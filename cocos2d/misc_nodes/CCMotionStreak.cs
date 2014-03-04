@@ -87,7 +87,7 @@ namespace CocosSharp
             pointVertexes = new CCPoint[maxPoints];
             vertices = new CCV3F_C4B_T2F[(maxPoints + 1) * 2];
 
-            ScheduleUpdate();
+            Schedule ();
         }
 
         #endregion Constructors

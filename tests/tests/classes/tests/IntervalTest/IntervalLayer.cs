@@ -36,7 +36,7 @@ namespace tests
             m_label3 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
             m_label4 = new CCLabelBMFont("0", "fonts/bitmapFontTest4.fnt");
 
-            ScheduleUpdate();
+            Schedule ();
 
             Schedule(step1);
             Schedule(step2, 0);

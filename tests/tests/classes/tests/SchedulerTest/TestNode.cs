@@ -13,7 +13,7 @@ namespace tests
 		public TestNode(string printString, int priority)
 		{
 			this.printString = printString;
-			ScheduleUpdateWithPriority(priority);
+			Schedule (priority);
 		}
 
 		public override void Update (float dt)

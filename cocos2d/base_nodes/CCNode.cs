@@ -1393,57 +1393,57 @@ namespace CocosSharp
             }
         }
 
-        public void ScheduleUpdate()
-        {
-            ScheduleUpdateWithPriority(0);
-        }
+		public void Schedule ()
+		{
+			Schedule (0);
+		}
 
-        public void ScheduleUpdateWithPriority(int priority)
-        {
-            m_pScheduler.Schedule (this, priority, !m_bRunning);
-        }
+		public void Schedule (int priority)
+		{
+			m_pScheduler.Schedule (this, priority, !m_bRunning);
+		}
 
-        public void UnscheduleUpdate()
-        {
-            m_pScheduler.Unschedule(this);
-        }
+		public void Unschedule ()
+		{
+			m_pScheduler.Unschedule (this);
+		}
 
-        public void Schedule(Action<float> selector)
-        {
-            Schedule(selector, 0.0f, CCScheduler.RepeatForever, 0.0f);
-        }
+		public void Schedule (Action<float> selector)
+		{
+			Schedule (selector, 0.0f, CCScheduler.RepeatForever, 0.0f);
+		}
 
-        public void Schedule(Action<float> selector, float interval)
-        {
-            Schedule(selector, interval, CCScheduler.RepeatForever, 0.0f);
-        }
+		public void Schedule (Action<float> selector, float interval)
+		{
+			Schedule (selector, interval, CCScheduler.RepeatForever, 0.0f);
+		}
 
-        public void Schedule(Action<float> selector, float interval, uint repeat, float delay)
-        {
-            Debug.Assert(selector != null, "Argument must be non-nil");
-            Debug.Assert(interval >= 0, "Argument must be positive");
+		public void Schedule (Action<float> selector, float interval, uint repeat, float delay)
+		{
+			Debug.Assert (selector != null, "Argument must be non-nil");
+			Debug.Assert (interval >= 0, "Argument must be positive");
 
-            m_pScheduler.Schedule (selector, this, interval, repeat, delay, !m_bRunning);
-        }
+			m_pScheduler.Schedule (selector, this, interval, repeat, delay, !m_bRunning);
+		}
 
-        public void ScheduleOnce(Action<float> selector, float delay)
-        {
-            Schedule(selector, 0.0f, 0, delay);
-        }
+		public void ScheduleOnce (Action<float> selector, float delay)
+		{
+			Schedule (selector, 0.0f, 0, delay);
+		}
 
-        public void Unschedule(Action<float> selector)
-        {
-            // explicit nil handling
-            if (selector == null)
-                return;
+		public void Unschedule (Action<float> selector)
+		{
+			// explicit nil handling
+			if (selector == null)
+				return;
 
-            m_pScheduler.Unschedule(selector, this);
-        }
+			m_pScheduler.Unschedule (selector, this);
+		}
 
-        public void UnscheduleAllSelectors()
-        {
-            m_pScheduler.UnscheduleAll(this);
-        }
+		public void UnscheduleAllSelectors ()
+		{
+			m_pScheduler.UnscheduleAll (this);
+		}
 
         public void ResumeSchedulerAndActions()
         {

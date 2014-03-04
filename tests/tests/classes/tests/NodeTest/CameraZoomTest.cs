@@ -33,7 +33,7 @@ namespace tests
 
             m_z = 0;
 
-            ScheduleUpdate();
+            Schedule ();
         }
 
         public override void Update(float dt)

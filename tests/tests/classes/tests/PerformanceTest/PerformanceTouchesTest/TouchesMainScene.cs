@@ -48,7 +48,7 @@ namespace tests
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
             CCNode ccnode = new CCNode();
-            ccnode.ScheduleUpdate();
+            ccnode.Schedule ();
 
             m_plabel = new CCLabelBMFont("00.0", "fonts/arial16.fnt");
             m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);
