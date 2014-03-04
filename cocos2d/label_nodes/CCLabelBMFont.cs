@@ -502,7 +502,7 @@ namespace CocosSharp
 
                 if (charSet.IndexOf(c) == -1)
                 {
-                    CCLog.Log("Cocos2D.CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
+					CCLog.Log("CocosSharp: CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
                               (int) c);
                     continue;
                 }
@@ -512,7 +512,7 @@ namespace CocosSharp
                 // unichar is a short, and an int is needed on HASH_FIND_INT
                 if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
                 {
-                    CCLog.Log("cocos2d::CCLabelBMFont: characer not found {0}", (int) c);
+					CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int) c);
                     continue;
                 }
 
