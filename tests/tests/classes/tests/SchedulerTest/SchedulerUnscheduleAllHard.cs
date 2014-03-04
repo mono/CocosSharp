@@ -10,8 +10,6 @@ namespace tests
     public class SchedulerUnscheduleAllHard : SchedulerTestLayer
     {
 
-		private bool actionManagerActive;
-
         public override void OnEnter()
         {
             base.OnEnter();
@@ -23,8 +21,6 @@ namespace tests
 			AddChild(sprite);
 			sprite.RepeatForever(new CCRotateBy(3.0f, 360));
 
-			actionManagerActive = true;
-
             Schedule(tick1, 0.5f);
             Schedule(tick2, 1.0f);
             Schedule(tick3, 1.5f);
@@ -34,10 +30,13 @@ namespace tests
 
 		public override void OnExit ()
 		{
+
+			var actionManagerActive = CCDirector.SharedDirector.Scheduler.IsActionManagerActive;
+
 			if(!actionManagerActive) {
 				// Restore the director's action manager.
 				var director = CCDirector.SharedDirector;
-				director.Scheduler.ScheduleUpdateForTarget (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
+				director.Scheduler.StartActionManager ();
 			}
 
 			base.OnExit ();
@@ -76,7 +75,6 @@ namespace tests
         public void unscheduleAll(float dt)
         {
              CCDirector.SharedDirector.Scheduler.UnscheduleAll();
-			actionManagerActive = false;
         }
     }
 }

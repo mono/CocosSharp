@@ -600,8 +600,15 @@ namespace CocosSharp
             }
         }
 
+		// This would be called after UnscheduleAll has been called to restart the actions
+		public void StartActionManager()
+		{
+			ScheduleUpdateForTarget (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
+		}
+
         public void UnscheduleAll()
         {
+			// This also stops ActionManger from updating which means all actions are stopped as well.
 			UnscheduleAllWithMinPriority(PrioritySystem);
         }
 
@@ -754,6 +761,27 @@ namespace CocosSharp
                 elementUpdate.Entry.Paused = false;
             }
         }
+
+		public bool IsActionManagerActive
+		{
+			get {
+
+				var target = CCDirector.SharedDirector.ActionManager;
+
+				LinkedListNode<ListEntry> next;
+
+				for (LinkedListNode<ListEntry> node = m_pUpdatesNegList.First; node != null; node = next)
+				{
+					next = node.Next;
+					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
 
         public bool IsTargetPaused(ICCUpdatable target)
         {
