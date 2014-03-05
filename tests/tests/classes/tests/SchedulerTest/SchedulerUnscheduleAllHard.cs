@@ -46,12 +46,12 @@ namespace tests
 
         public override string title()
         {
-            return "Unschedule All selectors #2";
+			return "Unschedule All selectors (HARD)";
         }
 
         public override string subtitle()
         {
-            return "Unschedules all selectors after 4s. Uses CCScheduler. See console";
+			return "Unschedules all user selectors after 4s. Action will stop. See console";
         }
 
         public void tick1(float dt)
