@@ -38,7 +38,7 @@ namespace tests
 
         public void stopSelectors(float dt)
         {
-            base.UnscheduleAllSelectors();
+            base.UnscheduleAll();
         }
     }
 }

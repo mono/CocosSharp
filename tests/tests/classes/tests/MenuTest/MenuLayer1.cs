@@ -144,7 +144,7 @@ namespace tests
         public void allowTouches(float dt)
         {
             CCDirector.SharedDirector.TouchDispatcher.SetPriority(-128 + 1, this);
-            base.UnscheduleAllSelectors();
+            base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
 
