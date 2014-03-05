@@ -5,12 +5,11 @@ using CocosSharp;
 
 namespace CocosSharp
 {
-    //
-    // CCTimer
-    //
-    /** @brief Light weight timer */
 
-    public class CCTimer : ICCUpdatable
+	/// <summary>
+	/// Light weight timer
+	/// </summary>
+	internal class CCTimer : ICCUpdatable
     {
 		private CCScheduler Scheduler { get; set; }
 		private readonly ICCUpdatable target;
@@ -24,7 +23,7 @@ namespace CocosSharp
         //private int m_nScriptHandler;
 		private uint timesExecuted;
 
-		public float OriginalInterval { get; set; }
+		public float OriginalInterval { get; internal set; }
 		public float Interval { get; set; }
 		public Action<float> Selector { get; set; }
 
@@ -103,7 +102,8 @@ namespace CocosSharp
                             CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(this, m_fElapsed);
                         }
                         */
-                        Interval = OriginalInterval - (elapsed - Interval);
+						//Interval = OriginalInterval - (elapsed - Interval);
+						elapsed = 0;
                     }
                 }
                 else
@@ -148,7 +148,7 @@ namespace CocosSharp
                             }
                             */
 
-                            Interval = OriginalInterval - (elapsed - Interval);
+							//Interval = OriginalInterval - (elapsed - Interval);
                             elapsed = 0;
                             timesExecuted += 1;
                         }
@@ -167,19 +167,19 @@ namespace CocosSharp
     }
 }
 
-/** @brief Scheduler is responsible for triggering the scheduled callbacks.
-    You should not use NSTimer. Instead use this class.
-
-    There are 2 different types of callbacks (selectors):
-
-    - update selector: the 'update' selector will be called every frame. You can customize the priority.
-    - custom selector: A custom selector will be called every frame, or with a custom interval of time
-
-    The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
-    */
-
 namespace CocosSharp
 {
+	/// <summary>
+	/// Scheduler is responsible for triggering the scheduled callbacks.
+	/// You should not use NSTimer. Instead use this class.
+	///
+	/// There are 2 different types of callbacks (selectors):
+	/// 
+	/// - update selector: the 'update' selector will be called every frame. You can customize the priority.
+	/// - custom selector: A custom selector will be called every frame, or with a custom interval of time
+	///
+	/// The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
+	/// </summary>
     public class CCScheduler
     {
         public const uint RepeatForever = uint.MaxValue - 1;
@@ -364,7 +364,7 @@ namespace CocosSharp
          If paused is YES, then it won't be called until it is resumed.
          If 'interval' is 0, it will be called every frame, but if so, it's recommended to use 'scheduleUpdateForTarget:' instead.
          If the selector is already scheduled, then only the interval parameter will be updated without re-scheduling it again.
-         repeat let the action be repeated repeat + 1 times, use kCCRepeatForever to let the action run continuously
+         repeat let the action be repeated repeat + 1 times, use RepeatForever to let the action run continuously
          delay is the amount of time the action will wait before it'll start
 
          @since v0.99.3, repeat and delay added in v1.1
