@@ -392,7 +392,7 @@ namespace CocosSharp
                 {
                     if (element != null)
                     {
-                        Debug.Assert(element.Paused == paused);
+						Debug.Assert(element.Paused == paused, "CCScheduler.Schedule: All are paused");
                     }
                 }
                 if (element != null)
@@ -707,7 +707,8 @@ namespace CocosSharp
             foreach (HashTimeEntry element in hashForTimers.Values)
             {
                 element.Paused = true;
-                idsWithSelectors.Add(element.Target);
+				if (!idsWithSelectors.Contains(element.Target))
+                	idsWithSelectors.Add(element.Target);
             }
 
             // Updates selectors
@@ -718,7 +719,8 @@ namespace CocosSharp
                     if (element.Priority >= minPriority)
                     {
                         element.Paused = true;
-                        idsWithSelectors.Add(element.Target);
+						if (!idsWithSelectors.Contains(element.Target))
+	                        idsWithSelectors.Add(element.Target);
                     }
                 }
             }
@@ -728,7 +730,8 @@ namespace CocosSharp
                 foreach (ListEntry element in updates0List)
                 {
                     element.Paused = true;
-                    idsWithSelectors.Add(element.Target);
+					if (!idsWithSelectors.Contains(element.Target))
+						idsWithSelectors.Add(element.Target);
                 }
             }
 
@@ -739,7 +742,8 @@ namespace CocosSharp
                     if (element.Priority >= minPriority)
                     {
                         element.Paused = true;
-                        idsWithSelectors.Add(element.Target);
+						if (!idsWithSelectors.Contains(element.Target))
+	                        idsWithSelectors.Add(element.Target);
                     }
                 }
             }
