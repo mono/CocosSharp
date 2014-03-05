@@ -106,7 +106,7 @@ namespace tests
             label.Color = new CCColor3B(0, 0, 255);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            ScheduleUpdate();
+            Schedule ();
         }
 
 

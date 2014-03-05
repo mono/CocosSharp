@@ -50,7 +50,7 @@ namespace tests
 
         public void unscheduleAll(float dt)
         {
-            UnscheduleAllSelectors();
+            UnscheduleAll();
         }
     }
 }

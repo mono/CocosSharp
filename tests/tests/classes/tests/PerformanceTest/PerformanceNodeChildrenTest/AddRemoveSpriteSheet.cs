@@ -49,7 +49,7 @@ namespace tests
 
             base.initWithQuantityOfNodes(nNodes);
 
-            ScheduleUpdate();
+            Schedule ();
         }
 
         public override void Update(float dt)

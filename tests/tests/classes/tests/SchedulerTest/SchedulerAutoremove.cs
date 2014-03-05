@@ -8,8 +8,10 @@ namespace tests
 {
     public class SchedulerAutoremove : SchedulerTestLayer
     {
-        public virtual void onEnter()
-        {
+		private float accum;
+
+		public override void OnEnter ()
+		{
             base.OnEnter();
 
             Schedule(autoremove, 0.5f);
@@ -30,7 +32,7 @@ namespace tests
         public void autoremove(float dt)
         {
             accum += dt;
-            CCLog.Log("Time: %f", accum);
+			CCLog.Log("Time: {0}", accum);
 
             if (accum > 3)
             {
@@ -41,9 +43,8 @@ namespace tests
 
         public void tick(float dt)
         {
-            CCLog.Log("This scheduler should not be removed");
+			CCLog.Log("This scheduler should not be removed");
         }
 
-        private float accum;
     }
 }

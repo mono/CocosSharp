@@ -15,7 +15,7 @@ namespace tests
 
             Schedule(tick1, 0.5f);
             Schedule(tick2, 0.5f);
-            Schedule(pause, 0.5f);
+			Schedule(pause, 3.0f);
         }
 
         public override string title()

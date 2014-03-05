@@ -5,35 +5,30 @@ using CocosSharp;
 
 namespace CocosSharp
 {
-    //
-    // CCTimer
-    //
-    /** @brief Light weight timer */
 
-    public class CCTimer : ICCUpdatable
+	/// <summary>
+	/// Light weight timer
+	/// </summary>
+	internal class CCTimer : ICCUpdatable
     {
-        private CCScheduler _scheduler;
-        private readonly ICCUpdatable m_pTarget;
+		private CCScheduler Scheduler { get; set; }
+		private readonly ICCUpdatable target;
 
-        private readonly bool m_bRunForever;
-        private readonly float m_fDelay;
-        private readonly uint m_uRepeat; //0 = once, 1 is 2 x executed
-        private float m_fElapsed;
-        private bool m_bUseDelay;
+		private readonly bool runForever;
+		private readonly float delay;
+		private readonly uint repeat; //0 = once, 1 is 2 x executed
+		private float elapsed;
+		private bool useDelay;
 
         //private int m_nScriptHandler;
-        private uint m_uTimesExecuted;
+		private uint timesExecuted;
 
-        public float OriginalInterval;
-        public float Interval;
-        public Action<float> Selector;
+		public float OriginalInterval { get; internal set; }
+		public float Interval { get; set; }
+		public Action<float> Selector { get; set; }
 
 
         #region Constructors
-
-        public CCTimer()
-        {
-        }
 
         /** Initializes a timer with a target and a selector. 
          */
@@ -55,16 +50,16 @@ namespace CocosSharp
         public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector, float seconds,
                        uint repeat, float delay)
         {
-            _scheduler = scheduler;
-            m_pTarget = target;
-            Selector = selector;
-            m_fElapsed = -1;
-            OriginalInterval = seconds;
-            Interval = seconds;
-            m_fDelay = delay;
-            m_bUseDelay = delay > 0f;
-            m_uRepeat = repeat;
-            m_bRunForever = m_uRepeat == uint.MaxValue;
+			this.Scheduler = scheduler;
+			this.target = target;
+			this.Selector = selector;
+			this.elapsed = -1;
+			this.OriginalInterval = seconds;
+			this.Interval = seconds;
+			this.delay = delay;
+			this.useDelay = delay > 0f;
+			this.repeat = repeat;
+			this.runForever = repeat == uint.MaxValue;
         }
 
         /*
@@ -83,22 +78,22 @@ namespace CocosSharp
 
         public void Update(float dt)
         {
-            if (m_fElapsed == -1)
+            if (elapsed == -1)
             {
-                m_fElapsed = 0;
-                m_uTimesExecuted = 0;
+                elapsed = 0;
+                timesExecuted = 0;
             }
             else
             {
-                if (m_bRunForever && !m_bUseDelay)
+                if (runForever && !useDelay)
                 {
                     //standard timer usage
-                    m_fElapsed += dt;
-                    if (m_fElapsed >= Interval)
+                    elapsed += dt;
+                    if (elapsed >= Interval)
                     {
                         if (Selector != null)
                         {
-                            Selector(m_fElapsed);
+                            Selector(elapsed);
                         }
 
                         /*
@@ -107,21 +102,22 @@ namespace CocosSharp
                             CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(this, m_fElapsed);
                         }
                         */
-                        Interval = OriginalInterval - (m_fElapsed - Interval);
+						//Interval = OriginalInterval - (elapsed - Interval);
+						elapsed = 0;
                     }
                 }
                 else
                 {
                     //advanced usage
-                    m_fElapsed += dt;
+                    elapsed += dt;
 
-                    if (m_bUseDelay)
+                    if (useDelay)
                     {
-                        if (m_fElapsed >= m_fDelay)
+                        if (elapsed >= delay)
                         {
                             if (Selector != null)
                             {
-                                Selector(m_fElapsed);
+                                Selector(elapsed);
                             }
 
                             /*
@@ -131,18 +127,18 @@ namespace CocosSharp
                             }
                             */
 
-                            m_fElapsed = m_fElapsed - m_fDelay;
-                            m_uTimesExecuted += 1;
-                            m_bUseDelay = false;
+                            elapsed = elapsed - delay;
+                            timesExecuted += 1;
+                            useDelay = false;
                         }
                     }
                     else
                     {
-                        if (m_fElapsed >= Interval)
+                        if (elapsed >= Interval)
                         {
                             if (Selector != null)
                             {
-                                Selector(m_fElapsed);
+                                Selector(elapsed);
                             }
 
                             /*
@@ -152,16 +148,16 @@ namespace CocosSharp
                             }
                             */
 
-                            Interval = OriginalInterval - (m_fElapsed - Interval);
-                            m_fElapsed = 0;
-                            m_uTimesExecuted += 1;
+							//Interval = OriginalInterval - (elapsed - Interval);
+                            elapsed = 0;
+                            timesExecuted += 1;
                         }
                     }
 
-                    if (!m_bRunForever && m_uTimesExecuted > m_uRepeat)
+                    if (!runForever && timesExecuted > repeat)
                     {
                         //unschedule timer
-                        _scheduler.UnscheduleSelector(Selector, m_pTarget);
+                        Scheduler.Unschedule(Selector, target);
                     }
                 }
             }
@@ -171,48 +167,53 @@ namespace CocosSharp
     }
 }
 
-/** @brief Scheduler is responsible for triggering the scheduled callbacks.
-    You should not use NSTimer. Instead use this class.
-
-    There are 2 different types of callbacks (selectors):
-
-    - update selector: the 'update' selector will be called every frame. You can customize the priority.
-    - custom selector: A custom selector will be called every frame, or with a custom interval of time
-
-    The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
-    */
-
 namespace CocosSharp
 {
+	/// <summary>
+	/// Scheduler is responsible for triggering the scheduled callbacks.
+	/// You should not use NSTimer. Instead use this class.
+	///
+	/// There are 2 different types of callbacks (selectors):
+	/// 
+	/// - update selector: the 'update' selector will be called every frame. You can customize the priority.
+	/// - custom selector: A custom selector will be called every frame, or with a custom interval of time
+	///
+	/// The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'.
+	/// </summary>
     public class CCScheduler
     {
-        public const uint kCCRepeatForever = uint.MaxValue - 1;
-        public const int kCCPrioritySystem = int.MinValue;
-        public const int kCCPriorityNonSystemMin = kCCPrioritySystem + 1;
+        public const uint RepeatForever = uint.MaxValue - 1;
+        public const int PrioritySystem = int.MinValue;
+        public const int PriorityNonSystemMin = PrioritySystem + 1;
 
-        private readonly Dictionary<ICCUpdatable, HashTimeEntry> m_pHashForTimers =
+		private readonly Dictionary<ICCUpdatable, HashTimeEntry> hashForTimers =
             new Dictionary<ICCUpdatable, HashTimeEntry>();
 
-        private readonly Dictionary<ICCUpdatable, HashUpdateEntry> m_pHashForUpdates =
+		private readonly Dictionary<ICCUpdatable, HashUpdateEntry> hashForUpdates =
             new Dictionary<ICCUpdatable, HashUpdateEntry>();
 
         // hash used to fetch quickly the list entries for pause,delete,etc
-        private readonly LinkedList<ListEntry> m_pUpdates0List = new LinkedList<ListEntry>(); // list priority == 0
-        private readonly LinkedList<ListEntry> m_pUpdatesNegList = new LinkedList<ListEntry>(); // list of priority < 0
-        private readonly LinkedList<ListEntry> m_pUpdatesPosList = new LinkedList<ListEntry>(); // list priority > 0
+		private readonly LinkedList<ListEntry> updates0List = new LinkedList<ListEntry>(); // list priority == 0
+		private readonly LinkedList<ListEntry> updatesNegList = new LinkedList<ListEntry>(); // list of priority < 0
+		private readonly LinkedList<ListEntry> updatesPosList = new LinkedList<ListEntry>(); // list priority > 0
 
-        private HashTimeEntry m_pCurrentTarget;
-        private bool m_bCurrentTargetSalvaged;
-        private bool m_bUpdateHashLocked;
+		private HashTimeEntry currentTarget;
+		private bool isCurrentTargetSalvaged;
+		private bool isUpdateHashLocked;
 
-        public float TimeScale = 1.0f;
+		public float TimeScale { get; set; }
 
-        private static HashTimeEntry[] s_pTmpHashSelectorArray = new HashTimeEntry[128];
-        private static ICCUpdatable[] s_pTmpSelectorArray = new ICCUpdatable[128];
+		private static HashTimeEntry[] tmpHashSelectorArray = new HashTimeEntry[128];
+		private static ICCUpdatable[] tmpSelectorArray = new ICCUpdatable[128];
 
-        internal void update(float dt)
+		internal CCScheduler ()
+		{
+			TimeScale = 1.0f;
+		}
+
+		internal void Update (float dt)
         {
-            m_bUpdateHashLocked = true;
+            isUpdateHashLocked = true;
 
             try
             {
@@ -225,7 +226,7 @@ namespace CocosSharp
 
                 // updates with priority < 0
                 //foreach (ListEntry entry in _updatesNegList)
-                for (LinkedListNode<ListEntry> node = m_pUpdatesNegList.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (!node.Value.Paused && !node.Value.MarkedForDeletion)
@@ -236,7 +237,7 @@ namespace CocosSharp
 
                 // updates with priority == 0
                 //foreach (ListEntry entry in _updates0List)
-                for (LinkedListNode<ListEntry> node = m_pUpdates0List.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updates0List.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (!node.Value.Paused && !node.Value.MarkedForDeletion)
@@ -246,7 +247,7 @@ namespace CocosSharp
                 }
 
                 // updates with priority > 0
-                for (LinkedListNode<ListEntry> node = m_pUpdatesPosList.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updatesPosList.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (!node.Value.Paused && !node.Value.MarkedForDeletion)
@@ -256,26 +257,26 @@ namespace CocosSharp
                 }
 
                 // Iterate over all the custom selectors
-                var count = m_pHashForTimers.Keys.Count;
-                if (s_pTmpSelectorArray.Length < count)
+                var count = hashForTimers.Keys.Count;
+                if (tmpSelectorArray.Length < count)
                 {
-                    s_pTmpSelectorArray = new ICCUpdatable[s_pTmpSelectorArray.Length * 2];
+                    tmpSelectorArray = new ICCUpdatable[tmpSelectorArray.Length * 2];
                 }
-                m_pHashForTimers.Keys.CopyTo(s_pTmpSelectorArray, 0);
+                hashForTimers.Keys.CopyTo(tmpSelectorArray, 0);
 
                 for (int i = 0; i < count; i++)
                 {
-                    ICCUpdatable key = s_pTmpSelectorArray[i];
-                    if (!m_pHashForTimers.ContainsKey(key))
+                    ICCUpdatable key = tmpSelectorArray[i];
+                    if (!hashForTimers.ContainsKey(key))
                     {
                         continue;
                     }
-                    HashTimeEntry elt = m_pHashForTimers[key];
+                    HashTimeEntry elt = hashForTimers[key];
 
-                    m_pCurrentTarget = elt;
-                    m_bCurrentTargetSalvaged = false;
+                    currentTarget = elt;
+                    isCurrentTargetSalvaged = false;
 
-                    if (!m_pCurrentTarget.Paused)
+                    if (!currentTarget.Paused)
                     {
                         // The 'timers' array may change while inside this loop
                         for (elt.TimerIndex = 0; elt.TimerIndex < elt.Timers.Count; ++elt.TimerIndex)
@@ -292,9 +293,9 @@ namespace CocosSharp
                     }
 
                     // only delete currentTarget if no actions were scheduled during the cycle (issue #481)
-                    if (m_bCurrentTargetSalvaged && m_pCurrentTarget.Timers.Count == 0)
+                    if (isCurrentTargetSalvaged && currentTarget.Timers.Count == 0)
                     {
-                        RemoveHashElement(m_pCurrentTarget);
+                        RemoveHashElement(currentTarget);
                     }
                 }
                 /*
@@ -318,34 +319,34 @@ namespace CocosSharp
 
                 // delete all updates that are marked for deletion
                 // updates with priority < 0
-                for (LinkedListNode<ListEntry> node = m_pUpdatesNegList.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (node.Value.MarkedForDeletion)
                     {
-                        m_pUpdatesNegList.Remove(node);
+                        updatesNegList.Remove(node);
                         RemoveUpdateFromHash(node.Value);
                     }
                 }
 
                 // updates with priority == 0
-                for (LinkedListNode<ListEntry> node = m_pUpdates0List.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updates0List.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (node.Value.MarkedForDeletion)
                     {
-                        m_pUpdates0List.Remove(node);
+                        updates0List.Remove(node);
                         RemoveUpdateFromHash(node.Value);
                     }
                 }
 
                 // updates with priority > 0
-                for (LinkedListNode<ListEntry> node = m_pUpdatesPosList.First; node != null; node = next)
+                for (LinkedListNode<ListEntry> node = updatesPosList.First; node != null; node = next)
                 {
                     next = node.Next;
                     if (node.Value.MarkedForDeletion)
                     {
-                        m_pUpdatesPosList.Remove(node);
+                        updatesPosList.Remove(node);
                         RemoveUpdateFromHash(node.Value);
                     }
                 }
@@ -354,8 +355,8 @@ namespace CocosSharp
             {
                 // Always do this just in case there is a problem
 
-                m_bUpdateHashLocked = false;
-                m_pCurrentTarget = null;
+                isUpdateHashLocked = false;
+                currentTarget = null;
             }
         }
 
@@ -363,13 +364,13 @@ namespace CocosSharp
          If paused is YES, then it won't be called until it is resumed.
          If 'interval' is 0, it will be called every frame, but if so, it's recommended to use 'scheduleUpdateForTarget:' instead.
          If the selector is already scheduled, then only the interval parameter will be updated without re-scheduling it again.
-         repeat let the action be repeated repeat + 1 times, use kCCRepeatForever to let the action run continuously
+         repeat let the action be repeated repeat + 1 times, use RepeatForever to let the action run continuously
          delay is the amount of time the action will wait before it'll start
 
          @since v0.99.3, repeat and delay added in v1.1
          */
 
-        public void ScheduleSelector(Action<float> selector, ICCUpdatable target, float interval, uint repeat,
+        public void Schedule (Action<float> selector, ICCUpdatable target, float interval, uint repeat,
                                      float delay, bool paused)
         {
             Debug.Assert(selector != null);
@@ -377,12 +378,12 @@ namespace CocosSharp
 
             HashTimeEntry element;
 
-            lock (m_pHashForTimers)
+            lock (hashForTimers)
             {
-                if (!m_pHashForTimers.TryGetValue(target, out element))
+                if (!hashForTimers.TryGetValue(target, out element))
                 {
                     element = new HashTimeEntry { Target = target };
-                    m_pHashForTimers[target] = element;
+                    hashForTimers[target] = element;
 
                     // Is this the 1st element ? Then set the pause level to all the selectors of this target
                     element.Paused = paused;
@@ -431,11 +432,11 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void ScheduleUpdateForTarget(ICCUpdatable targt, int priority, bool paused)
+        public void Schedule (ICCUpdatable targt, int priority, bool paused)
         {
             HashUpdateEntry element;
 
-            if (m_pHashForUpdates.TryGetValue(targt, out element))
+            if (hashForUpdates.TryGetValue(targt, out element))
             {
                 Debug.Assert(element.Entry.MarkedForDeletion);
 
@@ -449,15 +450,15 @@ namespace CocosSharp
             // is an special list for updates with priority 0
             if (priority == 0)
             {
-                AppendIn(m_pUpdates0List, targt, paused);
+                AppendIn(updates0List, targt, paused);
             }
             else if (priority < 0)
             {
-                PriorityIn(m_pUpdatesNegList, targt, priority, paused);
+                PriorityIn(updatesNegList, targt, priority, paused);
             }
             else
             {
-                PriorityIn(m_pUpdatesPosList, targt, priority, paused);
+                PriorityIn(updatesPosList, targt, priority, paused);
             }
         }
 
@@ -466,7 +467,7 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void UnscheduleSelector(Action<float> selector, ICCUpdatable target)
+		public void Unschedule (Action<float> selector, ICCUpdatable target)
         {
             // explicity handle nil arguments when removing an object
             if (selector == null || target == null)
@@ -475,7 +476,7 @@ namespace CocosSharp
             }
 
             HashTimeEntry element;
-            if (m_pHashForTimers.TryGetValue(target, out element))
+            if (hashForTimers.TryGetValue(target, out element))
             {
                 for (int i = 0; i < element.Timers.Count; i++)
                 {
@@ -498,9 +499,9 @@ namespace CocosSharp
 
                         if (element.Timers.Count == 0)
                         {
-                            if (m_pCurrentTarget == element)
+                            if (currentTarget == element)
                             {
-                                m_bCurrentTargetSalvaged = true;
+                                isCurrentTargetSalvaged = true;
                             }
                             else
                             {
@@ -519,7 +520,7 @@ namespace CocosSharp
     	     @since v0.99.3
     	     */
 
-        public void UnscheduleAllForTarget(ICCUpdatable target)
+		public void UnscheduleAll (ICCUpdatable target)
         {
             // explicit NULL handling
             if (target == null)
@@ -530,7 +531,7 @@ namespace CocosSharp
             // custom selectors           
             HashTimeEntry element;
 
-            if (m_pHashForTimers.TryGetValue(target, out element))
+            if (hashForTimers.TryGetValue(target, out element))
             {
                 if (element.Timers.Contains(element.CurrentTimer))
                 {
@@ -538,9 +539,9 @@ namespace CocosSharp
                 }
                 element.Timers.Clear();
 
-                if (m_pCurrentTarget == element)
+                if (currentTarget == element)
                 {
-                    m_bCurrentTargetSalvaged = true;
+                    isCurrentTargetSalvaged = true;
                 }
                 else
                 {
@@ -549,7 +550,7 @@ namespace CocosSharp
             }
 
             // update selector
-            UnscheduleUpdateForTarget(target);
+            Unschedule(target);
         }
 
         /*
@@ -579,7 +580,7 @@ namespace CocosSharp
         }
         */
 
-        public void UnscheduleUpdateForTarget(ICCUpdatable target)
+		public void Unschedule (ICCUpdatable target)
         {
             if (target == null)
             {
@@ -587,9 +588,9 @@ namespace CocosSharp
             }
 
             HashUpdateEntry element;
-            if (m_pHashForUpdates.TryGetValue(target, out element))
+            if (hashForUpdates.TryGetValue(target, out element))
             {
-                if (m_bUpdateHashLocked)
+                if (isUpdateHashLocked)
                 {
                     element.Entry.MarkedForDeletion = true;
                 }
@@ -600,57 +601,94 @@ namespace CocosSharp
             }
         }
 
-        public void UnscheduleAll()
+		/// <summary>
+		/// Gets a value indicating whether the ActionManager is active.
+		/// The ActionManager can be stopped from processing actions by calling UnscheduleAll() method.
+		/// </summary>
+		/// <value><c>true</c> if the ActionManager active and ready to process Actions; otherwise, <c>false</c>.</value>
+		public bool IsActionManagerActive
+		{
+			get {
+
+				var target = CCDirector.SharedDirector.ActionManager;
+
+				LinkedListNode<ListEntry> next;
+
+				for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
+				{
+					next = node.Next;
+					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
+
+		/// <summary>
+		/// Starts the action manager.  		
+		/// This would be called after UnscheduleAll() method has been called to restart the ActionManager.
+		/// </summary>
+		public void StartActionManager()
+		{
+			if (!IsActionManagerActive)
+				Schedule  (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
+		}
+
+		public void UnscheduleAll ()
         {
-            UnscheduleAllWithMinPriority(int.MinValue);
+			// This also stops ActionManger from updating which means all actions are stopped as well.
+			UnscheduleAll (PrioritySystem);
         }
 
-        public void UnscheduleAllWithMinPriority(int minPriority)
+		public void UnscheduleAll (int minPriority)
         {
-            var count = m_pHashForTimers.Values.Count;
-            if (s_pTmpHashSelectorArray.Length < count)
+            var count = hashForTimers.Values.Count;
+            if (tmpHashSelectorArray.Length < count)
             {
-                s_pTmpHashSelectorArray = new HashTimeEntry[s_pTmpHashSelectorArray.Length * 2];
+                tmpHashSelectorArray = new HashTimeEntry[tmpHashSelectorArray.Length * 2];
             }
 
-            m_pHashForTimers.Values.CopyTo(s_pTmpHashSelectorArray, 0);
+            hashForTimers.Values.CopyTo(tmpHashSelectorArray, 0);
 
             for (int i = 0; i < count; i++)
             {
                 // Element may be removed in unscheduleAllSelectorsForTarget
-                UnscheduleAllForTarget(s_pTmpHashSelectorArray[i].Target);
+                UnscheduleAll(tmpHashSelectorArray[i].Target);
             }
 
             // Updates selectors
-            if (minPriority < 0 && m_pUpdatesNegList.Count > 0)
+            if (minPriority < 0 && updatesNegList.Count > 0)
             {
-                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(m_pUpdatesNegList);
+                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(updatesNegList);
                 foreach (ListEntry entry in copy)
                 {
                     if (entry.Priority >= minPriority)
                     {
-                        UnscheduleAllForTarget(entry.Target);
+                        UnscheduleAll(entry.Target);
                     }
                 }
             }
 
-            if (minPriority <= 0 && m_pUpdates0List.Count > 0)
+            if (minPriority <= 0 && updates0List.Count > 0)
             {
-                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(m_pUpdates0List);
+                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(updates0List);
                 foreach (ListEntry entry in copy)
                 {
-                    UnscheduleAllForTarget(entry.Target);
+                    UnscheduleAll(entry.Target);
                 }
             }
 
-            if (m_pUpdatesPosList.Count > 0)
+            if (updatesPosList.Count > 0)
             {
-                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(m_pUpdatesPosList);
+                LinkedList<ListEntry> copy = new LinkedList<ListEntry>(updatesPosList);
                 foreach (ListEntry entry in copy)
                 {
                     if (entry.Priority >= minPriority)
                     {
-                        UnscheduleAllForTarget(entry.Target);
+                        UnscheduleAll(entry.Target);
                     }
                 }
             }
@@ -658,15 +696,15 @@ namespace CocosSharp
 
         public List<ICCUpdatable> PauseAllTargets()
         {
-            return PauseAllTargetsWithMinPriority(int.MinValue);
+            return PauseAllTargets(int.MinValue);
         }
 
-        public List<ICCUpdatable> PauseAllTargetsWithMinPriority(int minPriority)
+        public List<ICCUpdatable> PauseAllTargets(int minPriority)
         {
             var idsWithSelectors = new List<ICCUpdatable>();
 
             // Custom Selectors
-            foreach (HashTimeEntry element in m_pHashForTimers.Values)
+            foreach (HashTimeEntry element in hashForTimers.Values)
             {
                 element.Paused = true;
                 idsWithSelectors.Add(element.Target);
@@ -675,7 +713,7 @@ namespace CocosSharp
             // Updates selectors
             if (minPriority < 0)
             {
-                foreach (ListEntry element in m_pUpdatesNegList)
+                foreach (ListEntry element in updatesNegList)
                 {
                     if (element.Priority >= minPriority)
                     {
@@ -687,7 +725,7 @@ namespace CocosSharp
 
             if (minPriority <= 0)
             {
-                foreach (ListEntry element in m_pUpdates0List)
+                foreach (ListEntry element in updates0List)
                 {
                     element.Paused = true;
                     idsWithSelectors.Add(element.Target);
@@ -696,7 +734,7 @@ namespace CocosSharp
 
             if (minPriority < 0)
             {
-                foreach (ListEntry element in m_pUpdatesPosList)
+                foreach (ListEntry element in updatesPosList)
                 {
                     if (element.Priority >= minPriority)
                     {
@@ -709,47 +747,47 @@ namespace CocosSharp
             return idsWithSelectors;
         }
 
-        public void ResumeTargets(List<ICCUpdatable> targetsToResume)
-        {
-            foreach (ICCUpdatable target in targetsToResume)
-            {
-                ResumeTarget(target);
-            }
-        }
-
         public void PauseTarget(ICCUpdatable target)
         {
             Debug.Assert(target != null);
 
             // custom selectors
             HashTimeEntry entry;
-            if (m_pHashForTimers.TryGetValue(target, out entry))
+            if (hashForTimers.TryGetValue(target, out entry))
             {
                 entry.Paused = true;
             }
 
             // Update selector
             HashUpdateEntry updateEntry;
-            if (m_pHashForUpdates.TryGetValue(target, out updateEntry))
+            if (hashForUpdates.TryGetValue(target, out updateEntry))
             {
                 updateEntry.Entry.Paused = true;
             }
         }
 
-        public void ResumeTarget(ICCUpdatable target)
+		public void Resume (List<ICCUpdatable> targetsToResume)
+		{
+			foreach (ICCUpdatable target in targetsToResume)
+			{
+				Resume(target);
+			}
+		}
+
+		public void Resume (ICCUpdatable target)
         {
             Debug.Assert(target != null);
 
             // custom selectors
             HashTimeEntry element;
-            if (m_pHashForTimers.TryGetValue(target, out element))
+            if (hashForTimers.TryGetValue(target, out element))
             {
                 element.Paused = false;
             }
 
             // Update selector
             HashUpdateEntry elementUpdate;
-            if (m_pHashForUpdates.TryGetValue(target, out elementUpdate))
+            if (hashForUpdates.TryGetValue(target, out elementUpdate))
             {
                 elementUpdate.Entry.Paused = false;
             }
@@ -761,14 +799,14 @@ namespace CocosSharp
 
             // Custom selectors
             HashTimeEntry element;
-            if (m_pHashForTimers.TryGetValue(target, out element))
+            if (hashForTimers.TryGetValue(target, out element))
             {
                 return element.Paused;
             }
 
             // We should check update selectors if target does not have custom selectors
             HashUpdateEntry elementUpdate;
-            if (m_pHashForUpdates.TryGetValue(target, out elementUpdate))
+            if (hashForUpdates.TryGetValue(target, out elementUpdate))
             {
                 return elementUpdate.Entry.Paused;
             }
@@ -778,7 +816,7 @@ namespace CocosSharp
 
         private void RemoveHashElement(HashTimeEntry element)
         {
-            m_pHashForTimers.Remove(element.Target);
+            hashForTimers.Remove(element.Target);
 
             element.Timers.Clear();
             element.Target = null;
@@ -787,14 +825,14 @@ namespace CocosSharp
         private void RemoveUpdateFromHash(ListEntry entry)
         {
             HashUpdateEntry element;
-            if (m_pHashForUpdates.TryGetValue(entry.Target, out element))
+            if (hashForUpdates.TryGetValue(entry.Target, out element))
             {
                 // list entry
                 element.List.Remove(entry);
                 element.Entry = null;
 
                 // hash entry
-                m_pHashForUpdates.Remove(entry.Target);
+                hashForUpdates.Remove(entry.Target);
 
                 element.Target = null;
             }
@@ -841,7 +879,7 @@ namespace CocosSharp
                     Entry = listElement
                 };
 
-            m_pHashForUpdates.Add(target, hashElement);
+            hashForUpdates.Add(target, hashElement);
         }
 
         private void AppendIn(LinkedList<ListEntry> list, ICCUpdatable target, bool paused)
@@ -863,7 +901,7 @@ namespace CocosSharp
                     Entry = listElement
                 };
 
-            m_pHashForUpdates.Add(target, hashElement);
+            hashForUpdates.Add(target, hashElement);
         }
 
         #region Nested type: HashSelectorEntry

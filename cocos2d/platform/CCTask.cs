@@ -56,7 +56,7 @@ namespace CocosSharp
                     if (taskCompleted != null)
                     {
                         var scheduler = CCDirector.SharedDirector.Scheduler;
-                        scheduler.ScheduleSelector(f => taskCompleted(null), _taskSelector, 0, 0, 0, false);
+                        scheduler.Schedule (f => taskCompleted(null), _taskSelector, 0, 0, 0, false);
                     }
                 }
                 );

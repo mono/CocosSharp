@@ -24,21 +24,21 @@ namespace tests
             return "Update schedules in 2 secs. Stops 2 sec later. See console";
         }
 
-        public void update(float dt)
-        {
+		public override void Update (float dt)
+		{
             CCLog.Log("update called:{0}", dt);
         }
 
         public void schedUpdate(float dt)
         {
             Unschedule(schedUpdate);
-            base.ScheduleUpdate();
+            Schedule ();
             Schedule(stopUpdate, 2.0f);
         }
 
         public void stopUpdate(float dt)
         {
-            UnscheduleUpdate();
+            Unschedule ();
             Unschedule(stopUpdate);
         }
     }

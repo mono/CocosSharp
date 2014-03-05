@@ -1325,7 +1325,7 @@ namespace tests
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = new CCParticleBatchNode(ignore.Texture);
-            ignore.UnscheduleUpdate();
+            ignore.Unschedule ();
 
             for (int i = 0; i < 2; i++)
             {

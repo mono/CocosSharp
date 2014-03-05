@@ -8,38 +8,26 @@ namespace tests
 {
     public class SchedulerUpdate : SchedulerTestLayer
     {
-        public virtual void onEnter()
-        {
+		public override void OnEnter ()
+		{
             base.OnEnter();
 
-            TestNode d = new TestNode();
-            string pStr = "---";
-            d.initWithString(pStr, 50);
+			TestNode d = new TestNode("---", 50);
             AddChild(d);
 
-            TestNode b = new TestNode();
-            pStr = "3rd";
-            b.initWithString(pStr, 0);
+			TestNode b = new TestNode("3rd", 0);
             AddChild(b);
 
-            TestNode a = new TestNode();
-            pStr = "1st";
-            a.initWithString(pStr, -10);
+			TestNode a = new TestNode("1st", -10);
             AddChild(a);
 
-            TestNode c = new TestNode();
-            pStr = "4th";
-            c.initWithString(pStr, 10);
+			TestNode c = new TestNode("4th", 10);
             AddChild(c);
 
-            TestNode e = new TestNode();
-            pStr = "5th";
-            e.initWithString(pStr, 20);
+			TestNode e = new TestNode("5th", 20);
             AddChild(e);
 
-            TestNode f = new TestNode();
-            pStr = "2nd";
-            f.initWithString(pStr, -5);
+			TestNode f = new TestNode("2nd", -5);
             AddChild(f);
 
             Schedule(removeUpdates, 4.0f);
@@ -65,7 +53,7 @@ namespace tests
                 {
                     break;
                 }
-                item.UnscheduleAllSelectors();
+                item.UnscheduleAll();
             }
         }
     }
