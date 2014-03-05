@@ -62,7 +62,7 @@ namespace tests
 
 			// Add a menu item to resume the Scheduled actions.
 			uint fontSize = 32;
-			string fontName = "arial";
+			string fontName = "MarkerFelt";
 
 			var menu = new CCMenu(
 				new CCMenuItemFont("Resume", fontName, fontSize, resume)

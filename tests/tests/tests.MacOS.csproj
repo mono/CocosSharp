@@ -2480,10 +2480,18 @@
     <Content Include="Content\hd\Images\grossini_dance_14.xnb" />
     <Content Include="Content\hd\fonts\konqa32.xnb" />
     <Content Include="Content\hd\fonts\konqa32.fnt.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-16.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-18.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
-    <Content Include="Content\fonts\MarkerFelt-32.xnb" />
+    <Content Include="Assets\Content\fonts\MarkerFelt-16.xnb">
+      <Link>Content\fonts\MarkerFelt-16.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-18.xnb">
+      <Link>Content\fonts\MarkerFelt-18.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-22.xnb">
+      <Link>Content\fonts\MarkerFelt-22.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\fonts\MarkerFelt-32.xnb">
+      <Link>Content\fonts\MarkerFelt-32.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
