@@ -226,7 +226,7 @@ namespace tests
 		public void pause(float dt)
 		{
 			CCLog.Log ("Pausing");
-			pausedTargets = CCDirector.SharedDirector.Scheduler.PauseAllTargets(CCScheduler.PriorityNonSystemMin);
+			pausedTargets = CCDirector.SharedDirector.Scheduler.PauseAllTargets(CCSchedulePriority.User);
 
 		}
 
