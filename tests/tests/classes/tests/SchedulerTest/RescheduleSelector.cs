@@ -12,9 +12,9 @@ namespace tests
         {
             base.OnEnter();
 
-            m_fInterval = 1.0f;
-            m_nTicks = 0;
-            Schedule(schedUpdate, m_fInterval);
+            interval = 1.0f;
+            ticks = 0;
+            Schedule(schedUpdate, interval);
         }
 
         public override string title()
@@ -29,16 +29,16 @@ namespace tests
 
         public void schedUpdate(float dt)
         {
-            m_nTicks++;
-            CCLog.Log("schedUpdate: %.2f", dt);
-            if (m_nTicks > 3)
+            ticks++;
+			CCLog.Log("schedUpdate: {0:F2}", dt);
+            if (ticks > 3)
             {
-                m_fInterval += 1.0f;
-                Schedule(schedUpdate, m_fInterval);
-                m_nTicks = 0;
+                interval += 1.0f;
+                Schedule(schedUpdate, interval);
+                ticks = 0;
             }
         }
-        private float m_fInterval;
-        private int m_nTicks;
+		private float interval;
+		private int ticks;
     }
 }

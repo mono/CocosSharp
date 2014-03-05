@@ -16,7 +16,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
-        static int MAX_TESTS = 8;
+		static int MAX_TESTS = 9;
         static int sceneIdx = -1;
 
 
@@ -42,6 +42,8 @@ namespace tests
                     pLayer = new SchedulerUpdateAndCustom(); break;
                 case 7:
                     pLayer = new SchedulerUpdateFromCustom(); break;
+				case 8:
+					pLayer = new RescheduleSelector(); break;
                 default:
                     break;
             }
