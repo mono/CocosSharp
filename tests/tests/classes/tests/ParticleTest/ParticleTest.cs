@@ -532,7 +532,7 @@ namespace tests
 
             // emitter position
             m_emitter.Position = new CCPoint(160, 240);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 4;
@@ -560,7 +560,7 @@ namespace tests
             // size, in pixels
             m_emitter.StartSize = 80.0f;
             m_emitter.StartSizeVar = 40.0f;
-            m_emitter.EndSize = CCParticleSystem.kParticleStartSizeEqualToEndSize;
+            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -619,7 +619,7 @@ namespace tests
 
             // emitter position
             m_emitter.Position = new CCPoint(160, 240);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 3;
@@ -647,7 +647,7 @@ namespace tests
             // size, in pixels
             m_emitter.StartSize = 30.0f;
             m_emitter.StartSizeVar = 00.0f;
-            m_emitter.EndSize = CCParticleSystem.kParticleStartSizeEqualToEndSize;
+            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -861,7 +861,7 @@ namespace tests
 
             // emitter position
             m_emitter.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 2.0f;
@@ -1031,7 +1031,7 @@ namespace tests
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
+            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
 
             // radius mode
             m_emitter.EmitterMode = CCEmitterMode.Radius;
@@ -1054,7 +1054,7 @@ namespace tests
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
             m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 5;
@@ -1082,7 +1082,7 @@ namespace tests
             // size, in pixels
             m_emitter.StartSize = 32;
             m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.kCCParticleStartSizeEqualToEndSize;
+            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -1112,7 +1112,7 @@ namespace tests
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
+            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
 
             // radius mode
             m_emitter.EmitterMode = CCEmitterMode.Radius;
@@ -1120,7 +1120,7 @@ namespace tests
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (100);
             m_emitter.StartRadiusVar = (0);
-            m_emitter.EndRadius = (CCParticleSystem.kCCParticleStartRadiusEqualToEndRadius);
+            m_emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
             m_emitter.EndRadiusVar = (0);
 
             // radius mode: degrees per second
@@ -1135,7 +1135,7 @@ namespace tests
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
             m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 4;
@@ -1163,7 +1163,7 @@ namespace tests
             // size, in pixels
             m_emitter.StartSize = 32;
             m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.kCCParticleStartSizeEqualToEndSize;
+            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -1193,7 +1193,7 @@ namespace tests
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.kCCParticleDurationInfinity;
+            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
 
             // radius mode
             m_emitter.EmitterMode = CCEmitterMode.Radius;
@@ -1201,7 +1201,7 @@ namespace tests
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (50);
             m_emitter.StartRadiusVar = (0);
-            m_emitter.EndRadius = (CCParticleSystem.kCCParticleStartRadiusEqualToEndRadius);
+            m_emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
             m_emitter.EndRadiusVar = (0);
 
             // radius mode: degrees per second
@@ -1216,7 +1216,7 @@ namespace tests
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
             m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PosVar = new CCPoint(0, 0);
+            m_emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
             m_emitter.Life = 5;
@@ -1244,7 +1244,7 @@ namespace tests
             // size, in pixels
             m_emitter.StartSize = 16;
             m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.kCCParticleStartSizeEqualToEndSize;
+            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
             m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
@@ -1524,7 +1524,7 @@ namespace tests
             BlendAdditive = (false);
 
             // duration
-            Duration = (kCCParticleDurationInfinity);
+            Duration = (ParticleDurationInfinity);
 
             // Gravity Mode
             EmitterMode = CCEmitterMode.Gravity;
@@ -1548,7 +1548,7 @@ namespace tests
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
-            PosVar = (CCPoint.Zero);
+            PositionVar = (CCPoint.Zero);
 
             // life of particles
             Life = (0.5f);
@@ -1557,7 +1557,7 @@ namespace tests
             // size, in pixels
             StartSize = (25.0f);
             StartSizeVar = (0);
-            EndSize = (kCCParticleStartSizeEqualToEndSize);
+            EndSize = (ParticleStartSizeEqualToEndSize);
 
             // emits per seconds
             EmissionRate = (TotalParticles / Life);
@@ -1565,22 +1565,15 @@ namespace tests
             // color of particles
             StartColor = (new CCColor4F(50, 50, 50, 50));
             EndColor = (new CCColor4F(0, 0, 0, 0));
-
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColorVar = new CCColor4F();
+            EndColorVar = new CCColor4F();
 
             Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/particles"));
         }
 
         public override void Update(float dt)
         {
-            m_fEmitCounter = 0;
+            EmitCounter = 0;
             base.Update(dt);
         }
     }
@@ -1787,7 +1780,7 @@ namespace tests
                 particleSystem.Texture = (m_pBatchNode.Texture);
 
                 // duration
-                particleSystem.Duration = CCParticleSystem.kCCParticleDurationInfinity;
+                particleSystem.Duration = CCParticleSystem.ParticleDurationInfinity;
 
                 // radius mode
                 particleSystem.EmitterMode = CCEmitterMode.Radius;
@@ -1795,7 +1788,7 @@ namespace tests
                 // radius mode: 100 pixels from center
                 particleSystem.StartRadius = (100);
                 particleSystem.StartRadiusVar = (0);
-                particleSystem.EndRadius = (CCParticleSystem.kCCParticleStartRadiusEqualToEndRadius);
+                particleSystem.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
                 particleSystem.EndRadiusVar = (0); // not used when start == end
 
                 // radius mode: degrees per second
@@ -1809,7 +1802,7 @@ namespace tests
                 particleSystem.AngleVar = (0);
 
                 // emitter position
-                particleSystem.PosVar = (CCPoint.Zero);
+                particleSystem.PositionVar = (CCPoint.Zero);
 
                 // life of particles
                 particleSystem.Life = (4);
@@ -1839,7 +1832,7 @@ namespace tests
                 // size, in pixels
                 particleSystem.StartSize = (32);
                 particleSystem.StartSizeVar = (0);
-                particleSystem.EndSize = CCParticleSystem.kCCParticleStartSizeEqualToEndSize;
+                particleSystem.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
                 // emits per second
                 particleSystem.EmissionRate = (particleSystem.TotalParticles / particleSystem.Life);
