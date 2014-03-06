@@ -14,33 +14,33 @@ namespace CocosSharp
 
     public class CCKeypadDispatcher 
     {
-        protected List<CCKeypadHandler> m_pDelegates = new List<CCKeypadHandler>();
-        protected bool m_bLocked;
-        protected bool m_bToAdd;
-        protected bool m_bToRemove;
+        protected List<CCKeypadHandler> delegates = new List<CCKeypadHandler>();
+        protected bool isLocked;
+        protected bool isToAdd;
+        protected bool isToRemove;
 
-        protected List<ICCKeypadDelegate> m_pHandlersToAdd = new List<ICCKeypadDelegate>();
-        protected List<ICCKeypadDelegate> m_pHandlersToRemove = new List<ICCKeypadDelegate>();
+        protected List<ICCKeypadDelegate> handlersToAdd = new List<ICCKeypadDelegate>();
+        protected List<ICCKeypadDelegate> handlersToRemove = new List<ICCKeypadDelegate>();
 
         /**
         @brief add delegate to concern keypad msg
         */
 
-        public void AddDelegate(ICCKeypadDelegate pDelegate)
+        public void AddDelegate(ICCKeypadDelegate keyPadDelegate)
         {
-            if (pDelegate == null)
+            if (keyPadDelegate == null)
             {
                 return;
             }
 
-            if (!m_bLocked)
+            if (!isLocked)
             {
-                ForceAddDelegate(pDelegate);
+                ForceAddDelegate(keyPadDelegate);
             }
             else
             {
-                m_pHandlersToAdd.Add(pDelegate);
-                m_bToAdd = true;
+                handlersToAdd.Add(keyPadDelegate);
+                isToAdd = true;
             }
         }
 
@@ -48,21 +48,21 @@ namespace CocosSharp
         @brief remove the delegate from the delegates who concern keypad msg
         */
 
-        public void RemoveDelegate(ICCKeypadDelegate pDelegate)
+        public void RemoveDelegate(ICCKeypadDelegate keypadDelegate)
         {
-            if (pDelegate == null)
+            if (keypadDelegate == null)
             {
                 return;
             }
 
-            if (!m_bLocked)
+            if (!isLocked)
             {
-                ForceRemoveDelegate(pDelegate);
+                ForceRemoveDelegate(keypadDelegate);
             }
             else
             {
-                m_pHandlersToRemove.Add(pDelegate);
-                m_bToRemove = true;
+                handlersToRemove.Add(keypadDelegate);
+                isToRemove = true;
             }
         }
 
@@ -70,10 +70,10 @@ namespace CocosSharp
         @brief force add the delegate
         */
 
-        public void ForceAddDelegate(ICCKeypadDelegate pDelegate)
+        public void ForceAddDelegate(ICCKeypadDelegate keypadDelegate)
         {
-            CCKeypadHandler pHandler = CCKeypadHandler.HandlerWithDelegate(pDelegate);
-            m_pDelegates.Add(pHandler);
+            CCKeypadHandler pHandler = CCKeypadHandler.HandlerWithDelegate(keypadDelegate);
+            delegates.Add(pHandler);
         }
 
         /**
@@ -82,11 +82,11 @@ namespace CocosSharp
 
         public void ForceRemoveDelegate(ICCKeypadDelegate pDelegate)
         {
-            for (int i = 0; i < m_pDelegates.Count; i++)
+            for (int i = 0; i < delegates.Count; i++)
             {
-                if (m_pDelegates[i].Delegate == pDelegate)
+                if (delegates[i].Delegate == pDelegate)
                 {
-                    m_pDelegates.RemoveAt(i);
+                    delegates.RemoveAt(i);
                     break;
                 }
             }
@@ -96,18 +96,18 @@ namespace CocosSharp
         @brief dispatch the key pad msg
         */
 
-        public bool DispatchKeypadMsg(CCKeypadMSGType nMsgType)
+        public bool DispatchKeypadMsg(CCKeypadMSGType keypadMsgType)
         {
-            m_bLocked = true;
+            isLocked = true;
 
-            if (m_pDelegates.Count > 0)
+            if (delegates.Count > 0)
             {
-                for (int i = 0; i < m_pDelegates.Count; i++)
+                for (int i = 0; i < delegates.Count; i++)
                 {
-                    CCKeypadHandler pHandler = m_pDelegates[i];
+                    CCKeypadHandler pHandler = delegates[i];
                     ICCKeypadDelegate pDelegate = pHandler.Delegate;
 
-                    switch (nMsgType)
+                    switch (keypadMsgType)
                     {
                         case CCKeypadMSGType.BackClicked:
                             pDelegate.KeyBackClicked();
@@ -120,26 +120,26 @@ namespace CocosSharp
                 }
             }
 
-            m_bLocked = false;
+            isLocked = false;
 
-            if (m_bToRemove)
+            if (isToRemove)
             {
-                m_bToRemove = false;
-                for (int i = 0; i < m_pHandlersToRemove.Count; ++i)
+                isToRemove = false;
+                for (int i = 0; i < handlersToRemove.Count; ++i)
                 {
-                    ForceRemoveDelegate(m_pHandlersToRemove[i]);
+                    ForceRemoveDelegate(handlersToRemove[i]);
                 }
-                m_pHandlersToRemove.Clear();
+                handlersToRemove.Clear();
             }
 
-            if (m_bToAdd)
+            if (isToAdd)
             {
-                m_bToAdd = false;
-                for (int i = 0; i < m_pHandlersToAdd.Count; ++i)
+                isToAdd = false;
+                for (int i = 0; i < handlersToAdd.Count; ++i)
                 {
-                    ForceAddDelegate(m_pHandlersToAdd[i]);
+                    ForceAddDelegate(handlersToAdd[i]);
                 }
-                m_pHandlersToAdd.Clear();
+                handlersToAdd.Clear();
             }
 
             return true;

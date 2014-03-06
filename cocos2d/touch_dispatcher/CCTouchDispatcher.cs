@@ -6,31 +6,45 @@ namespace CocosSharp
 {
     public class CCTouchDispatcher : ICCEGLTouchDelegate
     {
-        private static List<CCTouch> pMutableTouches;
-        private bool m_bDispatchEvents;
-        private bool m_bLocked;
-        private bool m_bToAdd;
-        private bool m_bToQuit;
-        private bool m_bToRemove;
-        private List<CCTouchHandler> m_pHandlersToAdd;
-        private List<object> m_pHandlersToRemove;
-        protected List<CCTouchHandler> m_pStandardHandlers;
-        protected List<CCTouchHandler> m_pTargetedHandlers;
+		private static List<CCTouch> mutableTouches;
 
-        /// <summary>
-        /// Whether or not the events are going to be dispatched. Default: true
-        /// </summary>
-        public bool IsDispatchEvents
-        {
-            get { return m_bDispatchEvents; }
-            set { m_bDispatchEvents = value; }
-        }
+		/// <summary>
+		/// Whether or not the events are going to be dispatched. Default: true
+		/// </summary>
+		public bool IsDispatchEvents { get; set; }
+
+		private bool locked;
+		private bool toAdd;
+		private bool toQuit;
+		private bool toRemove;
+		private List<CCTouchHandler> handlersToAdd;
+		private List<object> handlersToRemove;
+		internal List<CCTouchHandler> StandardHandlers { get; set; }
+		internal List<CCTouchHandler> TargetedHandlers { get; set; }
+
+		#region Constructors
+		public CCTouchDispatcher()
+		{
+			IsDispatchEvents = true;
+			TargetedHandlers = new List<CCTouchHandler>();
+			StandardHandlers = new List<CCTouchHandler>();
+
+			handlersToAdd = new List<CCTouchHandler>();
+			handlersToRemove = new List<object>();
+
+			toRemove = false;
+			toAdd = false;
+			toQuit = false;
+			locked = false;
+
+		}
+		#endregion
 
         #region IEGLTouchDelegate Members
 
         public virtual void TouchesBegan(List<CCTouch> touches)
         {
-            if (m_bDispatchEvents)
+            if (IsDispatchEvents)
             {
                 Touches(touches, (int) CCTouchType.Began);
             }
@@ -38,7 +52,7 @@ namespace CocosSharp
 
         public virtual void TouchesMoved(List<CCTouch> touches)
         {
-            if (m_bDispatchEvents)
+            if (IsDispatchEvents)
             {
                 Touches(touches, (int) CCTouchType.Moved);
             }
@@ -46,7 +60,7 @@ namespace CocosSharp
 
         public virtual void TouchesEnded(List<CCTouch> touches)
         {
-            if (m_bDispatchEvents)
+            if (IsDispatchEvents)
             {
                 Touches(touches, (int) CCTouchType.Ended);
             }
@@ -54,7 +68,7 @@ namespace CocosSharp
 
         public virtual void TouchesCancelled(List<CCTouch> touches)
         {
-            if (m_bDispatchEvents)
+            if (IsDispatchEvents)
             {
                 Touches(touches, (int) CCTouchType.Cancelled);
             }
@@ -62,39 +76,22 @@ namespace CocosSharp
 
         #endregion
 
-        public bool Init()
-        {
-            m_bDispatchEvents = true;
-            m_pTargetedHandlers = new List<CCTouchHandler>();
-            m_pStandardHandlers = new List<CCTouchHandler>();
-
-            m_pHandlersToAdd = new List<CCTouchHandler>();
-            m_pHandlersToRemove = new List<object>();
-
-            m_bToRemove = false;
-            m_bToAdd = false;
-            m_bToQuit = false;
-            m_bLocked = false;
-
-            return true;
-        }
-
         /// <summary>
         /// Adds a standard touch delegate to the dispatcher's list.
         /// See StandardTouchDelegate description.
         /// IMPORTANT: The delegate will be retained.
         /// </summary>
-        public void AddStandardDelegate(ICCStandardTouchDelegate pDelegate, int nPriority)
+		public void AddStandardDelegate(ICCStandardTouchDelegate touchDelegate, int touchPriority)
         {
-            CCTouchHandler pHandler = CCStandardTouchHandler.HandlerWithDelegate(pDelegate, nPriority);
-            if (!m_bLocked)
+			CCTouchHandler touchHandler = new CCStandardTouchHandler (touchDelegate, touchPriority);
+            if (!locked)
             {
-                ForceAddHandler(pHandler, m_pStandardHandlers);
+                ForceAddHandler(touchHandler, StandardHandlers);
             }
             else
             {
-                m_pHandlersToAdd.Add(pHandler);
-                m_bToAdd = true;
+                handlersToAdd.Add(touchHandler);
+                toAdd = true;
             }
         }
 
@@ -103,17 +100,17 @@ namespace CocosSharp
         /// See TargetedTouchDelegate description.
         /// IMPORTANT: The delegate will be retained.
         /// </summary>
-        public void AddTargetedDelegate(ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallowsTouches)
+        public void AddTargetedDelegate(ICCTargetedTouchDelegate touchDelegate, int touchPriority, bool isSwallowsTouches)
         {
-            CCTouchHandler pHandler = CCTargetedTouchHandler.HandlerWithDelegate(pDelegate, nPriority, bSwallowsTouches);
-            if (!m_bLocked)
+			CCTouchHandler pHandler = new CCTargetedTouchHandler (touchDelegate, touchPriority, isSwallowsTouches);
+            if (!locked)
             {
-                ForceAddHandler(pHandler, m_pTargetedHandlers);
+                ForceAddHandler(pHandler, TargetedHandlers);
             }
             else
             {
-                m_pHandlersToAdd.Add(pHandler);
-                m_bToAdd = true;
+                handlersToAdd.Add(pHandler);
+                toAdd = true;
             }
         }
 
@@ -121,21 +118,21 @@ namespace CocosSharp
         /// Removes a touch delegate.
         /// The delegate will be released
         /// </summary>
-        public void RemoveDelegate(ICCTouchDelegate pDelegate)
+        public void RemoveDelegate(ICCTouchDelegate touchDelegate)
         {
-            if (pDelegate == null)
+            if (touchDelegate == null)
             {
                 return;
             }
 
-            if (!m_bLocked)
+            if (!locked)
             {
-                ForceRemoveDelegate(pDelegate);
+                ForceRemoveDelegate(touchDelegate);
             }
             else
             {
-                m_pHandlersToRemove.Add(pDelegate);
-                m_bToRemove = true;
+                handlersToRemove.Add(touchDelegate);
+                toRemove = true;
             }
         }
 
@@ -144,13 +141,13 @@ namespace CocosSharp
         /// </summary>
         public void RemoveAllDelegates()
         {
-            if (!m_bLocked)
+            if (!locked)
             {
                 ForceRemoveAllDelegates();
             }
             else
             {
-                m_bToQuit = true;
+                toQuit = true;
             }
         }
 
@@ -158,44 +155,44 @@ namespace CocosSharp
         /// Changes the priority of a previously added delegate. 
         /// The lower the number, the higher the priority
         /// </summary>
-        public void SetPriority(int nPriority, ICCTouchDelegate pDelegate)
+        public void SetPriority(int touchPriority, ICCTouchDelegate touchDelegate)
         {
-            CCTouchHandler handler = FindHandler(pDelegate);
-            handler.Priority = nPriority;
+            CCTouchHandler handler = FindHandler(touchDelegate);
+            handler.Priority = touchPriority;
 
-            RearrangeHandlers(m_pTargetedHandlers);
-            RearrangeHandlers(m_pStandardHandlers);
+            RearrangeHandlers(TargetedHandlers);
+            RearrangeHandlers(StandardHandlers);
         }
 
-        public void Touches(List<CCTouch> pTouches, int uIndex)
+        public void Touches(List<CCTouch> touches, int index)
         {
-            m_bLocked = true;
+            locked = true;
 
             // optimization to prevent a mutable copy when it is not necessary
-            int uTargetedHandlersCount = m_pTargetedHandlers.Count;
-            int uStandardHandlersCount = m_pStandardHandlers.Count;
+            int uTargetedHandlersCount = TargetedHandlers.Count;
+            int uStandardHandlersCount = StandardHandlers.Count;
             bool bNeedsMutableSet = (uTargetedHandlersCount > 0 && uStandardHandlersCount > 0);
 
             if (bNeedsMutableSet)
             {
-                CCTouch[] tempArray = pTouches.ToArray();
-                pMutableTouches = tempArray.ToList();
+                CCTouch[] tempArray = touches.ToArray();
+                mutableTouches = tempArray.ToList();
             }
             else
             {
-                pMutableTouches = pTouches;
+                mutableTouches = touches;
             }
 
-            var sHelper = (CCTouchType) uIndex;
+            var sHelper = (CCTouchType) index;
 
             // process the target handlers 1st
             if (uTargetedHandlersCount > 0)
             {
                 #region CCTargetedTouchHandler
 
-                foreach (CCTouch pTouch in pTouches)
+                foreach (CCTouch pTouch in touches)
                 {
-                    foreach (CCTargetedTouchHandler pHandler in m_pTargetedHandlers)
+                    foreach (CCTargetedTouchHandler pHandler in TargetedHandlers)
                     {
                         var pDelegate = (ICCTargetedTouchDelegate) (pHandler.Delegate);
 
@@ -237,7 +234,7 @@ namespace CocosSharp
                         {
                             if (bNeedsMutableSet)
                             {
-                                pMutableTouches.Remove(pTouch);
+                                mutableTouches.Remove(pTouch);
                             }
 
                             break;
@@ -249,26 +246,26 @@ namespace CocosSharp
             }
 
             // process standard handlers 2nd
-            if (uStandardHandlersCount > 0 && pMutableTouches.Count > 0)
+            if (uStandardHandlersCount > 0 && mutableTouches.Count > 0)
             {
                 #region CCStandardTouchHandler
 
-                foreach (CCStandardTouchHandler pHandler in m_pStandardHandlers)
+                foreach (CCStandardTouchHandler pHandler in StandardHandlers)
                 {
                     var pDelegate = (ICCStandardTouchDelegate) pHandler.Delegate;
                     switch (sHelper)
                     {
                         case CCTouchType.Began:
-                            pDelegate.TouchesBegan(pMutableTouches);
+                            pDelegate.TouchesBegan(mutableTouches);
                             break;
                         case CCTouchType.Moved:
-                            pDelegate.TouchesMoved(pMutableTouches);
+                            pDelegate.TouchesMoved(mutableTouches);
                             break;
                         case CCTouchType.Ended:
-                            pDelegate.TouchesEnded(pMutableTouches);
+                            pDelegate.TouchesEnded(mutableTouches);
                             break;
                         case CCTouchType.Cancelled:
-                            pDelegate.TouchesCancelled(pMutableTouches);
+                            pDelegate.TouchesCancelled(mutableTouches);
                             break;
                     }
                 }
@@ -278,36 +275,36 @@ namespace CocosSharp
 
             if (bNeedsMutableSet)
             {
-                pMutableTouches = null;
+                mutableTouches = null;
             }
 
             //
             // Optimization. To prevent a [handlers copy] which is expensive
             // the add/removes/quit is done after the iterations
             //
-            m_bLocked = false;
-            if (m_bToRemove)
+            locked = false;
+            if (toRemove)
             {
-                m_bToRemove = false;
-                for (int i = 0; i < m_pHandlersToRemove.Count; ++i)
+                toRemove = false;
+                for (int i = 0; i < handlersToRemove.Count; ++i)
                 {
-                    ForceRemoveDelegate((ICCTouchDelegate) m_pHandlersToRemove[i]);
+                    ForceRemoveDelegate((ICCTouchDelegate) handlersToRemove[i]);
                 }
-                m_pHandlersToRemove.Clear();
+                handlersToRemove.Clear();
             }
 
-            if (m_bToAdd)
+            if (toAdd)
             {
-                m_bToAdd = false;
-                foreach (CCTouchHandler pHandler in m_pHandlersToAdd)
+                toAdd = false;
+                foreach (CCTouchHandler pHandler in handlersToAdd)
                 {
                     if (pHandler is CCTargetedTouchHandler && pHandler.Delegate is ICCTargetedTouchDelegate)
                     {
-                        ForceAddHandler(pHandler, m_pTargetedHandlers);
+                        ForceAddHandler(pHandler, TargetedHandlers);
                     }
                     else if (pHandler is CCStandardTouchHandler && pHandler.Delegate is ICCStandardTouchDelegate)
                     {
-                        ForceAddHandler(pHandler, m_pStandardHandlers);
+                        ForceAddHandler(pHandler, StandardHandlers);
                     }
                     else
                     {
@@ -315,29 +312,29 @@ namespace CocosSharp
                     }
                 }
 
-                m_pHandlersToAdd.Clear();
+                handlersToAdd.Clear();
             }
 
-            if (m_bToQuit)
+            if (toQuit)
             {
-                m_bToQuit = false;
+                toQuit = false;
                 ForceRemoveAllDelegates();
             }
         }
 
-        public CCTouchHandler FindHandler(ICCTouchDelegate pDelegate)
+        public CCTouchHandler FindHandler(ICCTouchDelegate touchDelegate)
         {
-            foreach (CCTouchHandler handler in m_pTargetedHandlers)
+            foreach (CCTouchHandler handler in TargetedHandlers)
             {
-                if (handler.Delegate == pDelegate)
+                if (handler.Delegate == touchDelegate)
                 {
                     return handler;
                 }
             }
 
-            foreach (CCTouchHandler handler in m_pStandardHandlers)
+            foreach (CCTouchHandler handler in StandardHandlers)
             {
-                if (handler.Delegate == pDelegate)
+                if (handler.Delegate == touchDelegate)
                 {
                     return handler;
                 }
@@ -346,70 +343,70 @@ namespace CocosSharp
             return null;
         }
 
-        protected void ForceRemoveDelegate(ICCTouchDelegate pDelegate)
+        protected void ForceRemoveDelegate(ICCTouchDelegate touchDelegate)
         {
             // remove handler from m_pStandardHandlers
-            foreach (CCTouchHandler pHandler in m_pStandardHandlers)
+            foreach (CCTouchHandler pHandler in StandardHandlers)
             {
-                if (pHandler != null && pHandler.Delegate == pDelegate)
+                if (pHandler != null && pHandler.Delegate == touchDelegate)
                 {
-                    m_pStandardHandlers.Remove(pHandler);
+                    StandardHandlers.Remove(pHandler);
                     break;
                 }
             }
 
             // remove handler from m_pTargetedHandlers
-            foreach (CCTouchHandler pHandler in m_pTargetedHandlers)
+            foreach (CCTouchHandler pHandler in TargetedHandlers)
             {
-                if (pHandler != null && pHandler.Delegate == pDelegate)
+                if (pHandler != null && pHandler.Delegate == touchDelegate)
                 {
-                    m_pTargetedHandlers.Remove(pHandler);
+                    TargetedHandlers.Remove(pHandler);
                     break;
                 }
             }
         }
 
-        protected void ForceAddHandler(CCTouchHandler pHandler, List<CCTouchHandler> pArray)
+        protected void ForceAddHandler(CCTouchHandler touchHandler, List<CCTouchHandler> touchHandlers)
         {
             int u = 0;
-            for (int i = 0; i < pArray.Count; i++)
+            for (int i = 0; i < touchHandlers.Count; i++)
             {
-                CCTouchHandler h = pArray[i];
+                CCTouchHandler h = touchHandlers[i];
 
                 if (h != null)
                 {
-                    if (h.Priority < pHandler.Priority)
+                    if (h.Priority < touchHandler.Priority)
                     {
                         ++u;
                     }
 
-                    if (h.Delegate == pHandler.Delegate)
+                    if (h.Delegate == touchHandler.Delegate)
                     {
                         return;
                     }
                 }
             }
 
-            pArray.Insert(u, pHandler);
+            touchHandlers.Insert(u, touchHandler);
         }
 
         protected void ForceRemoveAllDelegates()
         {
-            m_pStandardHandlers.Clear();
-            m_pTargetedHandlers.Clear();
+            StandardHandlers.Clear();
+            TargetedHandlers.Clear();
         }
 
-        protected void RearrangeHandlers(List<CCTouchHandler> pArray)
+        protected void RearrangeHandlers(List<CCTouchHandler> touchHandlers)
         {
-            pArray.Sort(Less);
+            touchHandlers.Sort(Less);
         }
 
         /// <summary>
         /// Used for sort
         /// </summary>
-        private int Less(CCTouchHandler p1, CCTouchHandler p2)
+		private int Less(CCTouchHandler handler1, CCTouchHandler handler2)
         {
-            return p1.Priority - p2.Priority;
+			return handler1.Priority - handler2.Priority;
         }
     }
 

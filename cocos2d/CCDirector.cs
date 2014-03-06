@@ -277,7 +277,6 @@ namespace CocosSharp
             
             // touchDispatcher
             TouchDispatcher = new CCTouchDispatcher();
-            TouchDispatcher.Init();
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
