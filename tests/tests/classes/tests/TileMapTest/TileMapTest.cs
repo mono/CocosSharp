@@ -1787,7 +1787,7 @@ namespace tests
             // fix bug #486, #419. 
             // "test" is not the default value in CCDirector.setGLDefaultValues()
             // but TransitionTest may setDepthTest(false), we should revert it here
-            CCDirector.SharedDirector.SetDepthTest(true);
+            CCDirector.SharedDirector.IsUseDepthTesting = true;
 
             CCDirector.SharedDirector.ReplaceScene(this);
         }

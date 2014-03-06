@@ -70,7 +70,7 @@ namespace tests
             // This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
             // TransitionTests and TileTests may have set the DepthTest to true so we need
             // to make sure we reset it.
-            CCDirector.SharedDirector.SetDepthTest(false);
+            CCDirector.SharedDirector.IsUseDepthTesting = false;
 
             switch (nIndex)
             {

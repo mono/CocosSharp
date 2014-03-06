@@ -10,7 +10,7 @@ namespace tests
     {
         public PageTransitionForward (float t, CCScene s) : base (t, s, false)
         {
-            CCDirector.SharedDirector.SetDepthTest(true);
+            CCDirector.SharedDirector.IsUseDepthTesting = true;
         }
     }
 }
