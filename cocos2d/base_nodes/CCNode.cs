@@ -725,7 +725,7 @@ namespace CocosSharp
             StopAllActions();
 
             // timers
-            UnscheduleAllSelectors();
+            UnscheduleAll();
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -1387,7 +1387,7 @@ namespace CocosSharp
             {
                 if (value != m_pScheduler)
                 {
-                    UnscheduleAllSelectors();
+                    UnscheduleAll();
                     m_pScheduler = value;
                 }
             }
@@ -1410,12 +1410,12 @@ namespace CocosSharp
 
 		public void Schedule (Action<float> selector)
 		{
-			Schedule (selector, 0.0f, CCScheduler.RepeatForever, 0.0f);
+			Schedule (selector, 0.0f, CCSchedulePriority.RepeatForever, 0.0f);
 		}
 
 		public void Schedule (Action<float> selector, float interval)
 		{
-			Schedule (selector, interval, CCScheduler.RepeatForever, 0.0f);
+			Schedule (selector, interval, CCSchedulePriority.RepeatForever, 0.0f);
 		}
 
 		public void Schedule (Action<float> selector, float interval, uint repeat, float delay)
@@ -1440,7 +1440,7 @@ namespace CocosSharp
 			m_pScheduler.Unschedule (selector, this);
 		}
 
-		public void UnscheduleAllSelectors ()
+		public void UnscheduleAll ()
 		{
 			m_pScheduler.UnscheduleAll (this);
 		}

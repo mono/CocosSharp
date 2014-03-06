@@ -53,7 +53,7 @@ namespace tests
                 {
                     break;
                 }
-                item.UnscheduleAllSelectors();
+                item.UnscheduleAll();
             }
         }
     }

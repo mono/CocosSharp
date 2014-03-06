@@ -150,7 +150,7 @@ namespace CocosSharp
 
             CCDirector.SharedDirector.Projection = m_directorProjection;
 
-            if (target.Camera.Dirty)
+            if (target.Camera.IsDirty)
             {
                 CCPoint offset = target.AnchorPointInPoints;
 

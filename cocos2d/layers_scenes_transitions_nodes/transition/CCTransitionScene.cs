@@ -151,7 +151,7 @@ namespace CocosSharp
 
             // Before replacing, save the "send cleanup to scene"
             CCDirector director = CCDirector.SharedDirector;
-            m_bIsSendCleanupToScene = director.IsSendCleanupToScene();
+            m_bIsSendCleanupToScene = director.IsSendCleanupToScene;
             director.ReplaceScene(m_pInScene);
 
             // issue #267

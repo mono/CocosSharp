@@ -12,9 +12,9 @@ namespace tests
         {
             base.OnEnter();
 
-            m_fInterval = 1.0f;
-            m_nTicks = 0;
-            Schedule(schedUpdate, m_fInterval);
+            interval = 1.0f;
+            ticks = 0;
+            Schedule(schedUpdate, interval);
         }
 
         public override string title()
@@ -29,16 +29,43 @@ namespace tests
 
         public void schedUpdate(float dt)
         {
-            m_nTicks++;
-            CCLog.Log("schedUpdate: %.2f", dt);
-            if (m_nTicks > 3)
+            ticks++;
+			CCLog.Log("schedUpdate: {0:F4}", dt);
+            if (ticks > 3)
             {
-                m_fInterval += 1.0f;
-                Schedule(schedUpdate, m_fInterval);
-                m_nTicks = 0;
+                interval += 1.0f;
+                Schedule(schedUpdate, interval);
+                ticks = 0;
             }
         }
-        private float m_fInterval;
-        private int m_nTicks;
+		private float interval;
+		private int ticks;
     }
+
+	public class SchedulerDelayAndRepeat : SchedulerTestLayer
+	{
+		public override void OnEnter()
+		{
+			base.OnEnter();
+
+			Schedule(update, 0, 4 , 3.0f);
+			CCLog.Log("update is scheduled should begin after 3 seconds");
+
+		}
+
+		public override string title()
+		{
+			return "Schedule with delay of 3 sec, repeat 4 times";
+		}
+
+		public override string subtitle()
+		{
+			return "After 5 x executed, method unscheduled. See console";
+		}
+
+		public void update(float dt)
+		{
+			CCLog.Log("update called: {0}", dt);
+		}
+	}
 }

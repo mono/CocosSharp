@@ -38,7 +38,7 @@ namespace tests
         {
             CCLog.Log("SceneTestLayer1#onEnter");
             base.OnEnter();
-            _PopMenuItem.Visible = CCDirector.SharedDirector.CanPopScene;
+            _PopMenuItem.Visible = CCDirector.SharedDirector.IsCanPopScene;
             _TheMenu.AlignItemsVertically(12f);
         }
 

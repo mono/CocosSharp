@@ -99,14 +99,14 @@ namespace tests
 		{
 			base.OnEnter ();
 			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
-			CCDirector.SharedDirector.SetDepthTest (true);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
 			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
-			CCDirector.SharedDirector.SetDepthTest (false);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()
@@ -156,14 +156,14 @@ namespace tests
 		{
 			base.OnEnter ();
 			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
-			CCDirector.SharedDirector.SetDepthTest (true);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
 			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
-			CCDirector.SharedDirector.SetDepthTest (false);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()
