@@ -30,7 +30,7 @@ namespace tests
         public void schedUpdate(float dt)
         {
             ticks++;
-			CCLog.Log("schedUpdate: {0:F2}", dt);
+			CCLog.Log("schedUpdate: {0:F4}", dt);
             if (ticks > 3)
             {
                 interval += 1.0f;
@@ -41,4 +41,31 @@ namespace tests
 		private float interval;
 		private int ticks;
     }
+
+	public class SchedulerDelayAndRepeat : SchedulerTestLayer
+	{
+		public override void OnEnter()
+		{
+			base.OnEnter();
+
+			Schedule(update, 0, 4 , 3.0f);
+			CCLog.Log("update is scheduled should begin after 3 seconds");
+
+		}
+
+		public override string title()
+		{
+			return "Schedule with delay of 3 sec, repeat 4 times";
+		}
+
+		public override string subtitle()
+		{
+			return "After 5 x executed, method unscheduled. See console";
+		}
+
+		public void update(float dt)
+		{
+			CCLog.Log("update called: {0}", dt);
+		}
+	}
 }

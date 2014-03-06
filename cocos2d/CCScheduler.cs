@@ -169,6 +169,18 @@ namespace CocosSharp
 
 namespace CocosSharp
 {
+
+	/// <summary>
+	/// Defines the predefined Priority Types used by CCScheduler 
+	/// </summary>
+	public static class CCSchedulePriority
+	{
+		// We will define this as a static class since we can not define and enum with the way uint.MaxValue is represented.
+		public const uint RepeatForever = uint.MaxValue - 1;
+		public const int System = int.MinValue;
+		public const int User = System + 1;
+	}
+
 	/// <summary>
 	/// Scheduler is responsible for triggering the scheduled callbacks.
 	/// You should not use NSTimer. Instead use this class.
@@ -182,9 +194,9 @@ namespace CocosSharp
 	/// </summary>
     public class CCScheduler
     {
-        public const uint RepeatForever = uint.MaxValue - 1;
-        public const int PrioritySystem = int.MinValue;
-        public const int PriorityNonSystemMin = PrioritySystem + 1;
+		//public const uint CCSchedulePriority.RepeatForever = uint.MaxValue - 1;
+		//public const int CCSchedulePriority.System = int.MinValue;
+		//public const int CCSchedulePriority.NonSystemMin = CCSchedulePriority.System + 1;
 
 		private readonly Dictionary<ICCUpdatable, HashTimeEntry> hashForTimers =
             new Dictionary<ICCUpdatable, HashTimeEntry>();
@@ -392,7 +404,7 @@ namespace CocosSharp
                 {
                     if (element != null)
                     {
-                        Debug.Assert(element.Paused == paused);
+						Debug.Assert(element.Paused == paused, "CCScheduler.Schedule: All are paused");
                     }
                 }
                 if (element != null)
@@ -634,13 +646,13 @@ namespace CocosSharp
 		public void StartActionManager()
 		{
 			if (!IsActionManagerActive)
-				Schedule  (CCDirector.SharedDirector.ActionManager, CCScheduler.PrioritySystem, false);
+				Schedule  (CCDirector.SharedDirector.ActionManager, CCSchedulePriority.System, false);
 		}
 
 		public void UnscheduleAll ()
         {
 			// This also stops ActionManger from updating which means all actions are stopped as well.
-			UnscheduleAll (PrioritySystem);
+			UnscheduleAll (CCSchedulePriority.System);
         }
 
 		public void UnscheduleAll (int minPriority)
@@ -707,7 +719,8 @@ namespace CocosSharp
             foreach (HashTimeEntry element in hashForTimers.Values)
             {
                 element.Paused = true;
-                idsWithSelectors.Add(element.Target);
+				if (!idsWithSelectors.Contains(element.Target))
+                	idsWithSelectors.Add(element.Target);
             }
 
             // Updates selectors
@@ -718,7 +731,8 @@ namespace CocosSharp
                     if (element.Priority >= minPriority)
                     {
                         element.Paused = true;
-                        idsWithSelectors.Add(element.Target);
+						if (!idsWithSelectors.Contains(element.Target))
+	                        idsWithSelectors.Add(element.Target);
                     }
                 }
             }
@@ -728,7 +742,8 @@ namespace CocosSharp
                 foreach (ListEntry element in updates0List)
                 {
                     element.Paused = true;
-                    idsWithSelectors.Add(element.Target);
+					if (!idsWithSelectors.Contains(element.Target))
+						idsWithSelectors.Add(element.Target);
                 }
             }
 
@@ -739,7 +754,8 @@ namespace CocosSharp
                     if (element.Priority >= minPriority)
                     {
                         element.Paused = true;
-                        idsWithSelectors.Add(element.Target);
+						if (!idsWithSelectors.Contains(element.Target))
+	                        idsWithSelectors.Add(element.Target);
                     }
                 }
             }

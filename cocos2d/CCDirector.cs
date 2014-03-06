@@ -387,7 +387,7 @@ namespace CocosSharp
             m_pScheduler = new CCScheduler();
             // action manager
             m_pActionManager = new CCActionManager();
-            m_pScheduler.Schedule (m_pActionManager, CCScheduler.PrioritySystem, false);
+            m_pScheduler.Schedule (m_pActionManager, CCSchedulePriority.System, false);
             // touchDispatcher
             m_pTouchDispatcher = new CCTouchDispatcher();
             m_pTouchDispatcher.Init();

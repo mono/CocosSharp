@@ -16,7 +16,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(this);
         }
 
-		static int MAX_TESTS = 9;
+		static int MAX_TESTS = 13;
         static int sceneIdx = -1;
 
 
@@ -24,29 +24,49 @@ namespace tests
         {
             CCLayer pLayer = null;
 
-            switch (nIndex)
-            {
-                case 0:
-                    pLayer = new SchedulerAutoremove(); break;
-                case 1:
-                    pLayer = new SchedulerPauseResume(); break;
-                case 2:
-                    pLayer = new SchedulerUnscheduleAll(); break;
-                case 3:
-                    pLayer = new SchedulerUnscheduleAllHard(); break;
-                case 4:
-                    pLayer = new SchedulerSchedulesAndRemove(); break;
-                case 5:
-                    pLayer = new SchedulerUpdate(); break;
-                case 6:
-                    pLayer = new SchedulerUpdateAndCustom(); break;
-                case 7:
-                    pLayer = new SchedulerUpdateFromCustom(); break;
-				case 8:
-					pLayer = new RescheduleSelector(); break;
-                default:
-                    break;
-            }
+			switch (nIndex) {
+			case 0:
+				pLayer = new SchedulerAutoremove ();
+				break;
+			case 1:
+				pLayer = new SchedulerPauseResume ();
+				break;
+			case 2:
+				pLayer = new SchedulerPauseResumeAll ();
+				break;
+			case 3:
+				pLayer = new SchedulerPauseResumeUser ();
+				break;
+			case 4:
+				pLayer = new SchedulerUnscheduleAll ();
+				break;
+			case 5:
+				pLayer = new SchedulerUnscheduleAllHard ();
+				break;
+			case 6:
+				pLayer = new SchedulerUnscheduleAllUserLevel ();
+				break;
+			case 7:
+				pLayer = new SchedulerSchedulesAndRemove ();
+				break;
+			case 8:
+				pLayer = new SchedulerUpdate ();
+				break;
+			case 9:
+				pLayer = new SchedulerUpdateAndCustom ();
+				break;
+			case 10:
+				pLayer = new SchedulerUpdateFromCustom ();
+				break;
+			case 11:
+				pLayer = new RescheduleSelector ();
+				break;
+			case 12:
+				pLayer = new SchedulerDelayAndRepeat ();
+				break;
+			default:
+				break;
+			}
 
             return pLayer;
         }

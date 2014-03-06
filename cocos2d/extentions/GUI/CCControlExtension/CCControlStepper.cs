@@ -348,7 +348,7 @@ namespace CocosSharp
         {
             _autorepeatCount = -1;
 
-            Schedule(Update, kAutorepeatDeltaTime, CCScheduler.RepeatForever, kAutorepeatDeltaTime * 3);
+            Schedule(Update, kAutorepeatDeltaTime, CCSchedulePriority.RepeatForever, kAutorepeatDeltaTime * 3);
         }
 
         /** Stop the autorepeat. */
