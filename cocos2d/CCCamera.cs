@@ -45,28 +45,23 @@ namespace CocosSharp
     /// </summary>
     public class CCCamera
     {
-        protected bool m_bDirty;
-        protected float m_fCenterX;
-        protected float m_fCenterY;
-        protected float m_fCenterZ;
-        protected float m_fEyeX;
-        protected float m_fEyeY;
-        protected float m_fEyeZ;
+		protected float CenterX { get; set; }
+		protected float CenterY { get; set; }
+		protected float CenterZ { get; set; }
+		protected float EyeX { get; set; }
+		protected float EyeY { get; set; }
+		protected float EyeZ { get; set; }
 
-        protected float m_fUpX;
-        protected float m_fUpY;
-        protected float m_fUpZ;
-        private Matrix m_lookupMatrix;
+		protected float UpX { get; set; }
+		protected float UpY { get; set; }
+		protected float UpZ { get; set; }
+		private Matrix lookupMatrix;
 
 
         /// <summary>
         ///  sets \ get the dirty value
         /// </summary>
-        public bool Dirty
-        {
-            get { return m_bDirty; }
-            set { m_bDirty = value; }
-        }
+		public bool IsDirty { get; protected set; }
 
 
         #region Constructors
@@ -81,7 +76,7 @@ namespace CocosSharp
 
         public override string ToString()
         {
-            return String.Format("<CCCamera | center = ({0},{1},{2})>", m_fCenterX, m_fCenterY, m_fCenterZ);
+            return String.Format("<CCCamera | center = ({0},{1},{2})>", CenterX, CenterY, CenterZ);
         }
 
         /// <summary>
@@ -89,18 +84,18 @@ namespace CocosSharp
         /// </summary>
         public void Restore()
         {
-            m_fEyeX = m_fEyeY = 0.0f;
-            m_fEyeZ = GetZEye();
+            EyeX = EyeY = 0.0f;
+            EyeZ = GetZEye();
 
-            m_fCenterX = m_fCenterY = m_fCenterZ = 0.0f;
+            CenterX = CenterY = CenterZ = 0.0f;
 
-            m_fUpX = 0.0f;
-            m_fUpY = 1.0f;
-            m_fUpZ = 0.0f;
+            UpX = 0.0f;
+            UpY = 1.0f;
+            UpZ = 0.0f;
 
-            m_lookupMatrix = Matrix.Identity;
+            lookupMatrix = Matrix.Identity;
 
-            m_bDirty = false;
+            IsDirty = false;
         }
 
         /// <summary>
@@ -108,15 +103,15 @@ namespace CocosSharp
         /// </summary>
         public void Locate()
         {
-            if (m_bDirty)
+            if (IsDirty)
             {
-                m_lookupMatrix = Matrix.CreateLookAt(new Vector3(m_fEyeX, m_fEyeY, m_fEyeZ),
-                                                     new Vector3(m_fCenterX, m_fCenterY, m_fCenterZ),
-                                                     new Vector3(m_fUpX, m_fUpY, m_fUpZ));
-                m_bDirty = false;
+                lookupMatrix = Matrix.CreateLookAt(new Vector3(EyeX, EyeY, EyeZ),
+                                                     new Vector3(CenterX, CenterY, CenterZ),
+                                                     new Vector3(UpX, UpY, UpZ));
+                IsDirty = false;
             }
 
-            CCDrawManager.MultMatrix(ref m_lookupMatrix);
+            CCDrawManager.MultMatrix(ref lookupMatrix);
         }
 
         /// <summary>
@@ -127,11 +122,11 @@ namespace CocosSharp
         /// <param name="fEyeZ"></param>
         public void SetEyeXyz(float fEyeX, float fEyeY, float fEyeZ)
         {
-            m_fEyeX = fEyeX;
-            m_fEyeY = fEyeY;
-            m_fEyeZ = fEyeZ;
+            EyeX = fEyeX;
+            EyeY = fEyeY;
+            EyeZ = fEyeZ;
 
-            m_bDirty = true;
+            IsDirty = true;
         }
 
         /// <summary>
@@ -142,11 +137,11 @@ namespace CocosSharp
         /// <param name="fCenterZ"></param>
         public void SetCenterXyz(float fCenterX, float fCenterY, float fCenterZ)
         {
-            m_fCenterX = fCenterX;
-            m_fCenterY = fCenterY;
-            m_fCenterZ = fCenterZ;
+            CenterX = fCenterX;
+            CenterY = fCenterY;
+            CenterZ = fCenterZ;
 
-            m_bDirty = true;
+            IsDirty = true;
         }
 
         /// <summary>
@@ -157,11 +152,11 @@ namespace CocosSharp
         /// <param name="fUpZ"></param>
         public void SetUpXyz(float fUpX, float fUpY, float fUpZ)
         {
-            m_fUpX = fUpX;
-            m_fUpY = fUpY;
-            m_fUpZ = fUpZ;
+            UpX = fUpX;
+            UpY = fUpY;
+            UpZ = fUpZ;
 
-            m_bDirty = true;
+            IsDirty = true;
         }
 
         /// <summary>
@@ -172,9 +167,9 @@ namespace CocosSharp
         /// <param name="pEyeZ"></param>
         public void GetEyeXyz(out float pEyeX, out float pEyeY, out float pEyeZ)
         {
-            pEyeX = m_fEyeX;
-            pEyeY = m_fEyeY;
-            pEyeZ = m_fEyeZ;
+            pEyeX = EyeX;
+            pEyeY = EyeY;
+            pEyeZ = EyeZ;
         }
 
         /// <summary>
@@ -185,9 +180,9 @@ namespace CocosSharp
         /// <param name="pCenterZ"></param>
         public void GetCenterXyz(out float pCenterX, out float pCenterY, out float pCenterZ)
         {
-            pCenterX = m_fCenterX;
-            pCenterY = m_fCenterY;
-            pCenterZ = m_fCenterZ;
+            pCenterX = CenterX;
+            pCenterY = CenterY;
+            pCenterZ = CenterZ;
         }
 
         /// <summary>
@@ -198,9 +193,9 @@ namespace CocosSharp
         /// <param name="pUpZ"></param>
         public void GetUpXyz(out float pUpX, out float pUpY, out float pUpZ)
         {
-            pUpX = m_fUpX;
-            pUpY = m_fUpY;
-            pUpZ = m_fUpZ;
+            pUpX = UpX;
+            pUpY = UpY;
+            pUpZ = UpZ;
         }
 
         /// <summary>
