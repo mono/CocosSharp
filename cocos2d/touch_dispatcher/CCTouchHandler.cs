@@ -6,57 +6,30 @@ namespace CocosSharp
     /// </summary>
     public class CCTouchHandler
     {
-        protected int m_nEnabledSelectors;
-        protected int m_nPriority;
-        protected ICCTouchDelegate m_pDelegate;
+		/// <summary>
+		/// enabled selectors 
+		/// </summary>
+		public int EnabledSelectors { get; set; }
 
         /// <summary>
         /// delegate
         /// </summary>
-        public ICCTouchDelegate Delegate
-        {
-            get { return m_pDelegate; }
-            set { m_pDelegate = value; }
-        }
+		public ICCTouchDelegate Delegate { get; set; }
 
-        /// <summary>
+		/// <summary>
         /// priority
         /// </summary>
-        public int Priority
-        {
-            get { return m_nPriority; }
-            set { m_nPriority = value; }
+		public int Priority { get; set; }
+
+		/// <summary>
+		/// initializes a TouchHandler with a delegate and a priority 
+		/// </summary>
+		public CCTouchHandler ( ICCTouchDelegate touchDelegate, int touchPriority )
+		{
+            Delegate = touchDelegate;
+            Priority = touchPriority;
+            EnabledSelectors = 0;
         }
 
-        /// <summary>
-        /// enabled selectors 
-        /// </summary>
-        public int EnabledSelectors
-        {
-            get { return m_nEnabledSelectors; }
-            set { m_nEnabledSelectors = value; }
-        }
-
-        /// <summary>
-        /// initializes a TouchHandler with a delegate and a priority 
-        /// </summary>
-        public virtual bool InitWithDelegate(ICCTouchDelegate pDelegate, int nPriority)
-        {
-            m_pDelegate = pDelegate;
-            m_nPriority = nPriority;
-            m_nEnabledSelectors = 0;
-
-            return true;
-        }
-
-        /// <summary>
-        /// allocates a TouchHandler with a delegate and a priority 
-        /// </summary>
-        public static CCTouchHandler Create(ICCTouchDelegate pDelegate, int nPriority)
-        {
-            var pHandler = new CCTouchHandler();
-            pHandler.InitWithDelegate(pDelegate, nPriority);
-            return pHandler;
-        }
     }
 }

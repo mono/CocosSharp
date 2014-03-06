@@ -254,7 +254,6 @@ namespace CocosSharp
             }
         }
 
-
         #region Constructors
 
         protected CCDirector()
@@ -311,7 +310,6 @@ namespace CocosSharp
             Scheduler.Schedule (ActionManager, CCSchedulePriority.System, false);
             // touchDispatcher
             TouchDispatcher = new CCTouchDispatcher();
-            TouchDispatcher.Init();
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
