@@ -11,13 +11,15 @@ namespace tests
         public AppDelegate(Game game, GraphicsDeviceManager graphics)
             : base(game, graphics)
         {
-            s_pSharedApplication = this;
-			CCDrawManager.InitializeDisplay(game, graphics, DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
+
+            // Set our supported orientations for those that can use them
+			SupportedOrientations = DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft;
 
 #if WINDOWS_PHONE8
             HandleMediaStateAutomatically = false; // Bug in MonoGame - https://github.com/Cocos2DXNA/cocos2d-xna/issues/325
 #endif
-            game.Window.AllowUserResizing = true;
+            AllowUserResizing = true;
+
             graphics.PreferMultiSampling = false;
 
 #if WINDOWS || WINDOWSGL || WINDOWSDX 

@@ -11,7 +11,6 @@ namespace CocosSharp
 
     public abstract class CCApplication : DrawableGameComponent
     {
-        protected static CCApplication s_pSharedApplication;
         private readonly List<CCTouch> endedTouches = new List<CCTouch>();
         private readonly Dictionary<int, LinkedListNode<CCTouch>> m_pTouchMap = new Dictionary<int, LinkedListNode<CCTouch>>();
         private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
@@ -32,6 +31,9 @@ namespace CocosSharp
         public CCApplication(Game game, IGraphicsDeviceService service)
             : base(game)
         {
+
+            SharedApplication = this;
+
             if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
             {
                 Game.Services.AddService(typeof(IGraphicsDeviceService), service);
@@ -50,6 +52,8 @@ namespace CocosSharp
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
 
+			// We will call this here as the last step
+			CCDrawManager.InitializeDisplay (game, (GraphicsDeviceManager)service);
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
@@ -132,7 +136,7 @@ namespace CocosSharp
 
         public override void Initialize()
         {
-            s_pSharedApplication = this;
+            SharedApplication = this;
 
             InitInstance();
 
@@ -186,6 +190,21 @@ namespace CocosSharp
         protected virtual void HandleGesture(GestureSample gesture)
         {
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
+        }
+
+		public bool AllowUserResizing
+		{
+			get { return Game.Window.AllowUserResizing; }
+			set { Game.Window.AllowUserResizing = value; }
+		}
+
+        public DisplayOrientation SupportedOrientations
+        {
+            get { return CCDrawManager.SupportedOrientations; }
+            set 
+            {
+                CCDrawManager.SupportedOrientations = value;
+            }
         }
 
         #region GamePad Support
@@ -526,10 +545,7 @@ namespace CocosSharp
         /// Get current applicaiton instance.
         /// </summary>
         /// <value> Current application instance pointer. </value>
-        public static CCApplication SharedApplication
-        {
-            get { return s_pSharedApplication; }
-        }
+		public static CCApplication SharedApplication { get ; protected set; }
 
         /// <summary>
         /// Implement for initialize OpenGL instance, set source path, etc...

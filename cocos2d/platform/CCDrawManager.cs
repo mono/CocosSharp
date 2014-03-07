@@ -91,6 +91,16 @@ namespace CocosSharp
 
         private static bool m_bNeedReinitResources;
 
+		public static bool AllowUserResizing
+		{
+			get 
+			{
+				return true;
+			}
+
+		}
+
+
         public static bool VertexColorEnabled
         {
             get { return m_vertexColorEnabled; }
@@ -309,11 +319,13 @@ namespace CocosSharp
             pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; // PreserveContents or problems with backgrounds not showing up
         }
 
-        public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics, DisplayOrientation supportedOrientations)
+		public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics)
         {
             m_GraphicsDeviceMgr = graphics;
             m_bHasStencilBuffer = (graphics.PreferredDepthStencilFormat == DepthFormat.Depth24Stencil8);
-            SetOrientation(supportedOrientations, false);
+
+            // We will not call this from here anymore see SupportedOrientations
+            //SetOrientation(supportedOrientations, false);
 
 #if ANDROID || WINDOWS_PHONE
             graphics.IsFullScreen = true;
@@ -1194,6 +1206,15 @@ namespace CocosSharp
             CCDirector.SharedDirector.WinSizeInPoints = DesignResolutionSize;
             CCDirector.SharedDirector.SetGlDefaultValues();
         }
+
+		public static DisplayOrientation SupportedOrientations
+		{
+			get { return m_GraphicsDeviceMgr.SupportedOrientations; }
+			set 
+			{
+				SetOrientation(value, false);
+			}
+		}
 
         public static void SetOrientation(DisplayOrientation supportedOrientations)
         {
