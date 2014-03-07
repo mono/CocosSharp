@@ -13,7 +13,7 @@ namespace tests
         protected CCSprite m_pBall;
         protected double m_fLastTime;
 
-        public override void DidAccelerate(CCAcceleration pAccelerationValue)
+		public override void DidAccelerate(CCAcceleration accelerationValue)
         {
             CCDirector pDir = CCDirector.SharedDirector;
             CCSize winSize = pDir.WinSize;
@@ -29,10 +29,20 @@ namespace tests
             CCPoint ptNow = m_pBall.Position;
             CCPoint ptTemp = pDir.ConvertToUi(ptNow);
 
-            //CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2}", pAccelerationValue.X, pAccelerationValue.Y, pAccelerationValue.Z);
+			var orientation = CCApplication.SharedApplication.CurrentOrientation;
+
+			CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
 #if ANDROID
-            ptTemp.X -= (float) pAccelerationValue.X * 9.81f;
-            ptTemp.Y += (float) pAccelerationValue.Y * 9.81f;
+			if (orientation == DisplayOrientation.LandscapeRight)
+			{
+				ptTemp.X -= (float) accelerationValue.X * 9.81f;
+				ptTemp.Y -= (float) accelerationValue.Y * 9.81f;
+			}
+			else
+			{
+				ptTemp.X += (float) accelerationValue.X * 9.81f;
+				ptTemp.Y += (float) accelerationValue.Y * 9.81f;
+			}
 #else
             //ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
             //ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;

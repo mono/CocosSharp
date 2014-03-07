@@ -28,6 +28,7 @@ namespace CocosSharp
         public GameTime GameTime;
 
         private bool _initialized;
+		public DisplayOrientation CurrentOrientation { get; private set; }
 
         public CCApplication(Game game, IGraphicsDeviceService service = null)
             : base(game)
@@ -60,12 +61,19 @@ namespace CocosSharp
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
+			game.Window.OrientationChanged += OrientationChanged;
 
 			// We will call this here as the last step
 			CCDrawManager.InitializeDisplay (game, (GraphicsDeviceManager)service);
         }
 
+        void OrientationChanged (object sender, EventArgs e)
+        {
+			CurrentOrientation = Game.Window.CurrentOrientation;
+        }
+
         protected bool HandleMediaStateAutomatically { get; set; }
+
 
         private void GameActivated(object sender, EventArgs e)
         {
@@ -168,7 +176,7 @@ namespace CocosSharp
 #if !PSM &&!NETFX_CORE
             if (CCDirector.SharedDirector.Accelerometer != null)
             {
-                CCDirector.SharedDirector.Accelerometer.Update();
+				CCDirector.SharedDirector.Accelerometer.Update();
             }
 #endif
             // Process touch events 

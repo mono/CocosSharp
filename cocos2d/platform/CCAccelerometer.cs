@@ -126,14 +126,21 @@ namespace CocosSharp
         private void UpdateAccelerationValue(string acceleration)
         {
             string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
+
             // The format of the string is {X: 0000 Y: 0000 Z: 0000}
             // Here we need to parse differently so that we can get a constant value back
             //  Cocos2D-XNA mapps the Sensor reading of the X value to be our Y value
             //  and the Y value to our X value.  Also the values need to be negated so that 
             //  it maps correctly.
+			#if ANDROID
+			m_obAccelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+			m_obAccelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+			m_obAccelerationValue.Z = float.Parse(temp[3]);
+			#else
             m_obAccelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
             m_obAccelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
             m_obAccelerationValue.Z = float.Parse(temp[3]);
+			#endif
 
         }
 
@@ -150,7 +157,7 @@ namespace CocosSharp
 
 #endif
 
-        public void Update()
+		public void Update()
         {
             if (m_pAccelDelegate != null)
             {
