@@ -31,9 +31,9 @@ namespace tests
 
 			var orientation = CCApplication.SharedApplication.CurrentOrientation;
 
-			CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
-#if ANDROID
-			if (orientation == DisplayOrientation.LandscapeRight)
+			//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
+#if ANDROID || WINDOWS_PHONE8
+            if (orientation == DisplayOrientation.LandscapeRight)
 			{
 				ptTemp.X -= (float) accelerationValue.X * 9.81f;
 				ptTemp.Y -= (float) accelerationValue.Y * 9.81f;
@@ -46,8 +46,8 @@ namespace tests
 #else
             //ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
             //ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;
-            ptTemp.X += (float)pAccelerationValue.X * 9.81f;
-            ptTemp.Y += (float)pAccelerationValue.Y * 9.81f;
+            ptTemp.X += (float)accelerationValue.X * 9.81f;
+            ptTemp.Y += (float)accelerationValue.Y * 9.81f;
 #endif
 
             CCPoint ptNext = pDir.ConvertToGl(ptTemp);
