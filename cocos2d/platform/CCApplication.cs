@@ -29,7 +29,7 @@ namespace CocosSharp
 
         private bool _initialized;
 
-        public CCApplication(Game game, IGraphicsDeviceService service)
+        public CCApplication(Game game, IGraphicsDeviceService service = null)
             : base(game)
         {
 
@@ -37,7 +37,15 @@ namespace CocosSharp
 
             if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
             {
-                Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+                if (service == null)
+                    service = new GraphicsDeviceManager (game);
+
+                // if we still do not have a service after creating the GraphicsDeviceManager
+                // we need to stop somewhere and issue a warning.
+                if (Game.Services.GetService (typeof(IGraphicsDeviceService)) == null) 
+                {
+                    Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+                }
             }
 
 			CCDrawManager.GraphicsDeviceService = service;
@@ -227,7 +235,7 @@ namespace CocosSharp
 		{ 
 			get 
 			{
-				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
@@ -238,7 +246,7 @@ namespace CocosSharp
 			}
 			set
 			{
-				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
@@ -252,7 +260,7 @@ namespace CocosSharp
 		{ 
 			get 
 			{
-				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
@@ -263,7 +271,7 @@ namespace CocosSharp
 			}
 			set
 			{
-				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
@@ -272,6 +280,14 @@ namespace CocosSharp
 
 			}
 		}
+
+        public GraphicsDeviceManager GraphicsDeviceManager
+        {
+            get 
+            {
+                return Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
+            }
+        }
 
         #region GamePad Support
         public event CCGamePadButtonDelegate GamePadButtonUpdate;

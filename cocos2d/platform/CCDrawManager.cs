@@ -339,7 +339,8 @@ namespace CocosSharp
 
 		public static IGraphicsDeviceService GraphicsDeviceService
         {
-			set {
+			set 
+            {
 				var service = value;
 				m_graphicsService = service;
 				m_presentationParameters = new PresentationParameters () {

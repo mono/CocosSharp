@@ -1,14 +1,14 @@
-﻿using System.Reflection;
+﻿using System;
 using Microsoft.Xna.Framework;
-using CocosSharp;
 using Microsoft.Xna.Framework.Graphics;
+using CocosSharp;
 
 
 namespace tests
 {
     public class AppDelegate : CCApplication
     {
-        public AppDelegate(Game game, GraphicsDeviceManager graphics)
+        public AppDelegate(Game game, GraphicsDeviceManager graphics = null)
             : base(game, graphics)
         {
 
@@ -20,7 +20,7 @@ namespace tests
 #endif
             AllowUserResizing = true;
 
-			graphics.PreferMultiSampling = false;
+            GraphicsDeviceManager.PreferMultiSampling = false;
 
 #if WINDOWS || WINDOWSGL || WINDOWSDX 
             PreferredBackBufferWidth = 1024;
@@ -30,6 +30,7 @@ namespace tests
 			PreferredBackBufferWidth = 960;
 			PreferredBackBufferHeight = 640;
 #endif
+
         }
 
         /// <summary>
@@ -66,6 +67,7 @@ namespace tests
             director.DisplayStats = true;
             // set FPS. the default value is 1.0/60 if you don't call this
             director.AnimationInterval = 1.0 / 60;
+
             CCSize designSize = new CCSize(480, 320);
 
             if (CCDrawManager.FrameSize.Height > 320)
