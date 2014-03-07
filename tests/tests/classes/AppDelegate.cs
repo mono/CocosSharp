@@ -20,15 +20,15 @@ namespace tests
 #endif
             AllowUserResizing = true;
 
-            graphics.PreferMultiSampling = false;
+			graphics.PreferMultiSampling = false;
 
 #if WINDOWS || WINDOWSGL || WINDOWSDX 
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
+            PreferredBackBufferWidth = 1024;
+            PreferredBackBufferHeight = 768;
 #endif
 #if MACOS
-			graphics.PreferredBackBufferWidth = 960;
-			graphics.PreferredBackBufferHeight = 640;
+			PreferredBackBufferWidth = 960;
+			PreferredBackBufferHeight = 640;
 #endif
         }
 
@@ -49,9 +49,6 @@ namespace tests
         /// </returns>
         public override bool ApplicationDidFinishLaunching()
         {
-            //initialize director
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.SetOpenGlView();
 
             CCSpriteFontCache.FontScale = 0.6f;
             CCSpriteFontCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
@@ -64,17 +61,18 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abberancy", 26);
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
+			CCDirector director = CCDirector.SharedDirector;
             // turn on display FPS
-            pDirector.DisplayStats = true;
+            director.DisplayStats = true;
             // set FPS. the default value is 1.0/60 if you don't call this
-            pDirector.AnimationInterval = 1.0 / 60;
+            director.AnimationInterval = 1.0 / 60;
             CCSize designSize = new CCSize(480, 320);
 
             if (CCDrawManager.FrameSize.Height > 320)
             {
 				CCSize resourceSize = new CCSize(960, 640);
                 CCContentManager.SharedContentManager.SearchPaths.Add("hd");
-				pDirector.ContentScaleFactor = resourceSize.Height / designSize.Height;
+				director.ContentScaleFactor = resourceSize.Height / designSize.Height;
             }
 
             CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
@@ -101,7 +99,7 @@ namespace tests
             */
 
             pScene.AddChild(pLayer);
-            pDirector.RunWithScene(pScene);
+            director.RunWithScene(pScene);
 
             return true;
         }

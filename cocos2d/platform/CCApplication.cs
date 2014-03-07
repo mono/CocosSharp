@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,7 +33,7 @@ namespace CocosSharp
             : base(game)
         {
 
-            SharedApplication = this;
+			SharedApplication = this;
 
             if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
             {
@@ -140,6 +141,11 @@ namespace CocosSharp
 
             InitInstance();
 
+			// Initialize our Director
+			// We are moving the initialization from the overriding class to here so the 
+			// user does not have to deal with doing this thiemselves and cluttering up their codebase.
+			CCDirector.SharedDirector.SetOpenGlView();
+
             base.Initialize();
         }
 
@@ -206,6 +212,66 @@ namespace CocosSharp
                 CCDrawManager.SupportedOrientations = value;
             }
         }
+
+		public CCSize PreferredBackBufferSize
+		{
+			get { return new CCSize (PreferredBackBufferWidth, PreferredBackBufferHeight); }
+			set 
+			{
+				PreferredBackBufferWidth = (int)value.Width;
+				PreferredBackBufferHeight = (int)value.Height;
+			}
+		}
+
+		public int PreferredBackBufferWidth 
+		{ 
+			get 
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null) 
+					return manager.PreferredBackBufferWidth;
+
+				return 0;
+			}
+			set
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+					manager.PreferredBackBufferWidth = value;
+
+			}
+		}
+
+		public int PreferredBackBufferHeight 
+		{ 
+			get 
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null) 
+					return manager.PreferredBackBufferHeight;
+
+				return 0;
+			}
+			set
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+					manager.PreferredBackBufferHeight = value;
+
+			}
+		}
 
         #region GamePad Support
         public event CCGamePadButtonDelegate GamePadButtonUpdate;
