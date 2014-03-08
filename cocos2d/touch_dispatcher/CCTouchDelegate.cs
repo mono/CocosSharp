@@ -5,7 +5,7 @@ namespace CocosSharp
 {
     public class CCTouchDelegate : ICCTouchDelegate
     {
-        protected Dictionary<int, string> m_pEventTypeFuncMap;
+		protected Dictionary<int, string> EventTypeFuncMap { get; set; }
 
         /// <summary>
         /// ! call the release() in child(layer or menu)
@@ -24,45 +24,45 @@ namespace CocosSharp
         /// <summary>
         /// functions for script call back
         /// </summary>
-        public void RegisterScriptTouchHandler(int eventType, string pszScriptFunctionName)
+        public void RegisterScriptTouchHandler(int eventType, string scriptFunctionName)
         {
-            if (m_pEventTypeFuncMap == null)
+            if (EventTypeFuncMap == null)
             {
-                m_pEventTypeFuncMap = new Dictionary<int, string>();
+                EventTypeFuncMap = new Dictionary<int, string>();
             }
 
-            (m_pEventTypeFuncMap)[eventType] = pszScriptFunctionName;
+            (EventTypeFuncMap)[eventType] = scriptFunctionName;
         }
 
         public bool IsScriptHandlerExist(int eventType)
         {
-            if (m_pEventTypeFuncMap != null)
+            if (EventTypeFuncMap != null)
             {
 #if NETFX_CORE
                 return this.m_pEventTypeFuncMap != null && this.m_pEventTypeFuncMap[eventType].Length != 0;
 #else
-                return (m_pEventTypeFuncMap)[eventType].Count() != 0;
+                return (EventTypeFuncMap)[eventType].Count() != 0;
 #endif
             }
 
             return false;
         }
 
-        public void ExcuteScriptTouchHandler(int eventType, CCTouch pTouch)
+        public void ExcuteScriptTouchHandler(int eventType, CCTouch touch)
         {
-            if (m_pEventTypeFuncMap != null && CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine != null)
+            if (EventTypeFuncMap != null && CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine != null)
             {
-                CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine.ExecuteTouchEvent((m_pEventTypeFuncMap)[eventType],
-                                                                                                 pTouch);
+                CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine.ExecuteTouchEvent((EventTypeFuncMap)[eventType],
+                                                                                                 touch);
             }
         }
 
-        public void ExcuteScriptTouchesHandler(int eventType, List<CCTouch> pTouches)
+        public void ExcuteScriptTouchesHandler(int eventType, List<CCTouch> touches)
         {
-            if (m_pEventTypeFuncMap != null && CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine != null)
+            if (EventTypeFuncMap != null && CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine != null)
             {
-                CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine.ExecuteTouchesEvent((m_pEventTypeFuncMap)[eventType],
-                                                                                                   pTouches);
+                CCScriptEngineManager.SharedScriptEngineManager.ScriptEngine.ExecuteTouchesEvent((EventTypeFuncMap)[eventType],
+                                                                                                   touches);
             }
         }
     }

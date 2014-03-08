@@ -433,8 +433,8 @@
     <Compile Include=".\CCContent.cs">
       <LogicalName>CCContent</LogicalName>
     </Compile>
-    <Compile Include=".\CCFPSImage.cs">
-      <LogicalName>CCFPSImage</LogicalName>
+    <Compile Include=".\CCStats.cs">
+      <LogicalName>CCStats</LogicalName>
     </Compile>
     <Compile Include=".\CCDirector.cs">
       <LogicalName>CCDirector</LogicalName>
@@ -1195,7 +1195,7 @@
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

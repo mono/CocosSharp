@@ -4,16 +4,16 @@ namespace CocosSharp
 {
     public class CCDisplayLinkDirector : CCDirector
     {
-        private bool m_bInvalid;
+		private bool isInvalid;
 
         public override double AnimationInterval
         {
             get { return base.AnimationInterval; }
             set
             {
-                m_dAnimationInterval = value;
+				base.AnimationInterval = value;
 
-                if (!m_bInvalid)
+                if (!isInvalid)
                 {
                     StopAnimation();
                     StartAnimation();
@@ -23,23 +23,23 @@ namespace CocosSharp
 
         public override void StopAnimation()
         {
-            m_bInvalid = true;
+            isInvalid = true;
         }
 
         public override void StartAnimation()
         {
-            m_bInvalid = false;
-            CCApplication.SharedApplication.AnimationInterval = m_dAnimationInterval;
+            isInvalid = false;
+            CCApplication.SharedApplication.AnimationInterval = AnimationInterval;
         }
 
         public override void MainLoop(GameTime gameTime)
         {
-            if (m_bPurgeDirecotorInNextLoop)
+            if (IsPurgeDirectorInNextLoop)
             {
                 PurgeDirector();
-                m_bPurgeDirecotorInNextLoop = false;
+                IsPurgeDirectorInNextLoop = false;
             }
-            else if (!m_bInvalid)
+            else if (!isInvalid)
             {
                 DrawScene(gameTime);
             }

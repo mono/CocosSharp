@@ -206,7 +206,6 @@
     <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
-    <Compile Include="CCFPSImage.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
@@ -464,6 +463,7 @@
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="CCStats.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

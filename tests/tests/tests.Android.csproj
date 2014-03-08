@@ -2074,6 +2074,12 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-16.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-18.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-32.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-Thin-12.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-Thin-18.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-22.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
@@ -2090,7 +2096,7 @@
       <Name>box2d.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\cocos2d\CocosSharp.Android.csproj">
-      <Project>{6e02afd1-c476-4f9a-a9a8-caac4b03783a}</Project>
+      <Project>{64725C5B-A1BC-4974-8538-A1158BABF572}</Project>
       <Name>CocosSharp.Android</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">

@@ -15,31 +15,13 @@ namespace tests
 
         public Game1()
         {
-            graphics = new GraphicsDeviceManager(this);
 
             Content.RootDirectory = "Content";
-
-            graphics.IsFullScreen = false;
-
-			// Keep this at Depth24 or the PageUp and PageDown transitions will not work
-			graphics.PreferredDepthStencilFormat = DepthFormat.Depth24;
-
-#if WINDOWS || MACOS
-            graphics.PreferredBackBufferWidth = 1024;
-            graphics.PreferredBackBufferHeight = 768;
-#endif
-            
-            // Frame rate is 30 fps by default for Windows Phone.
-            // Divide by 2 to make it 60 fps
-            TargetElapsedTime = TimeSpan.FromTicks(333333 / 2);
-            IsFixedTimeStep = true;
-
-            IsMouseVisible = true;
 
             // Extend battery life under lock.
             //InactiveSleepTime = TimeSpan.FromSeconds(1);
 
-            CCApplication application = new AppDelegate(this, graphics);
+            CCApplication application = new AppDelegate(this);
             Components.Add(application);
 
 #if !WINDOWS_PHONE && !XBOX && !WINRT && !WINDOWSDX && !NETFX_CORE
@@ -47,12 +29,7 @@ namespace tests
             //this.Components.Add(component);
 #endif
         }
-
-        void graphics_DeviceCreated(object sender, EventArgs e)
-        {
-            CCLog.Log("Graphics device was created!");
-        }
-
+            
 #if OUYA
         protected override void Draw(GameTime gameTime)
         {

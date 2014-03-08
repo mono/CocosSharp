@@ -179,7 +179,7 @@
     <Compile Include="actions\action_tiled_grid\CCTurnOffTiles.cs" />
     <Compile Include="actions\action_tiled_grid\CCWavesTiles3D.cs" />
     <Compile Include="actions\action_tiled_grid\CCTile.cs" />
-    <Compile Include="CCFPSImage.cs" />
+    <Compile Include="CCStats.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
@@ -458,7 +458,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

@@ -113,7 +113,7 @@ namespace tests
         public static CCTransitionScene createTransition(int nIndex, float t, CCScene s)
         {
             // fix bug #486, without setDepthTest(false), FlipX,Y will flickers
-            CCDirector.SharedDirector.SetDepthTest(false);
+            CCDirector.SharedDirector.IsUseDepthTesting = false;
 
             switch (nIndex)
             {

@@ -163,7 +163,6 @@
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCContent.cs" />
-    <Compile Include="CCFPSImage.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
@@ -417,6 +416,7 @@
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
+    <Compile Include="CCStats.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

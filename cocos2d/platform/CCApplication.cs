@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,7 +12,6 @@ namespace CocosSharp
 
     public abstract class CCApplication : DrawableGameComponent
     {
-        protected static CCApplication s_pSharedApplication;
         private readonly List<CCTouch> endedTouches = new List<CCTouch>();
         private readonly Dictionary<int, LinkedListNode<CCTouch>> m_pTouchMap = new Dictionary<int, LinkedListNode<CCTouch>>();
         private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
@@ -28,13 +28,25 @@ namespace CocosSharp
         public GameTime GameTime;
 
         private bool _initialized;
+		public DisplayOrientation CurrentOrientation { get; private set; }
 
-        public CCApplication(Game game, IGraphicsDeviceService service)
+        public CCApplication(Game game, IGraphicsDeviceService service = null)
             : base(game)
         {
+
+			SharedApplication = this;
+
             if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
             {
-                Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+                if (service == null)
+                    service = new GraphicsDeviceManager (game);
+
+                // if we still do not have a service after creating the GraphicsDeviceManager
+                // we need to stop somewhere and issue a warning.
+                if (Game.Services.GetService (typeof(IGraphicsDeviceService)) == null) 
+                {
+                    Game.Services.AddService(typeof(IGraphicsDeviceService), service);
+                }
             }
 
 			CCDrawManager.GraphicsDeviceService = service;
@@ -49,10 +61,19 @@ namespace CocosSharp
             game.Activated += GameActivated;
             game.Deactivated += GameDeactivated;
             game.Exiting += GameExiting;
+			game.Window.OrientationChanged += OrientationChanged;
 
+			// We will call this here as the last step
+			CCDrawManager.InitializeDisplay (game, (GraphicsDeviceManager)service);
+        }
+
+        void OrientationChanged (object sender, EventArgs e)
+        {
+			CurrentOrientation = Game.Window.CurrentOrientation;
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
+
 
         private void GameActivated(object sender, EventArgs e)
         {
@@ -132,9 +153,14 @@ namespace CocosSharp
 
         public override void Initialize()
         {
-            s_pSharedApplication = this;
+            SharedApplication = this;
 
             InitInstance();
+
+			// Initialize our Director
+			// We are moving the initialization from the overriding class to here so the 
+			// user does not have to deal with doing this thiemselves and cluttering up their codebase.
+			CCDirector.SharedDirector.SetOpenGlView();
 
             base.Initialize();
         }
@@ -150,7 +176,7 @@ namespace CocosSharp
 #if !PSM &&!NETFX_CORE
             if (CCDirector.SharedDirector.Accelerometer != null)
             {
-                CCDirector.SharedDirector.Accelerometer.Update();
+				CCDirector.SharedDirector.Accelerometer.Update();
             }
 #endif
             // Process touch events 
@@ -186,6 +212,89 @@ namespace CocosSharp
         protected virtual void HandleGesture(GestureSample gesture)
         {
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
+        }
+
+		public bool AllowUserResizing
+		{
+			get { return Game.Window.AllowUserResizing; }
+			set { Game.Window.AllowUserResizing = value; }
+		}
+
+        public DisplayOrientation SupportedOrientations
+        {
+            get { return CCDrawManager.SupportedOrientations; }
+            set 
+            {
+                CCDrawManager.SupportedOrientations = value;
+            }
+        }
+
+		public CCSize PreferredBackBufferSize
+		{
+			get { return new CCSize (PreferredBackBufferWidth, PreferredBackBufferHeight); }
+			set 
+			{
+				PreferredBackBufferWidth = (int)value.Width;
+				PreferredBackBufferHeight = (int)value.Height;
+			}
+		}
+
+		public int PreferredBackBufferWidth 
+		{ 
+			get 
+			{
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null) 
+					return manager.PreferredBackBufferWidth;
+
+				return 0;
+			}
+			set
+			{
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+					manager.PreferredBackBufferWidth = value;
+
+			}
+		}
+
+		public int PreferredBackBufferHeight 
+		{ 
+			get 
+			{
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null) 
+					return manager.PreferredBackBufferHeight;
+
+				return 0;
+			}
+			set
+			{
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+					manager.PreferredBackBufferHeight = value;
+
+			}
+		}
+
+        public GraphicsDeviceManager GraphicsDeviceManager
+        {
+            get 
+            {
+                return Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager;
+            }
         }
 
         #region GamePad Support
@@ -526,10 +635,7 @@ namespace CocosSharp
         /// Get current applicaiton instance.
         /// </summary>
         /// <value> Current application instance pointer. </value>
-        public static CCApplication SharedApplication
-        {
-            get { return s_pSharedApplication; }
-        }
+		public static CCApplication SharedApplication { get ; protected set; }
 
         /// <summary>
         /// Implement for initialize OpenGL instance, set source path, etc...

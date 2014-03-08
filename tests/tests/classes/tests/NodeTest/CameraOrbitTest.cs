@@ -57,12 +57,12 @@ namespace tests
         {
             base.OnEnter();
             CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection3D);
-			CCDirector.SharedDirector.SetDepthTest (true);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (true);
         }
 
         public override void OnExit()
         {
-			CCDirector.SharedDirector.SetDepthTest (false);
+			CCDirector.SharedDirector.IsUseDepthTesting =  (false);
             CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }

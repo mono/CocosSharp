@@ -162,7 +162,7 @@
     <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
-    <Compile Include="CCFPSImage.cs" />
+    <Compile Include="CCStats.cs" />
     <Compile Include="CCContent.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
@@ -416,7 +416,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Sce\Sce.Psm.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
