@@ -40,7 +40,7 @@ namespace CocosSharp
                     (sender, args) =>
                     {
                         var scheduler = CCDirector.SharedDirector.Scheduler;
-                        scheduler.ScheduleSelector(f => taskCompleted(worker), _taskSelector, 0, 0, 0, false);
+                        scheduler.Schedule (f => taskCompleted(worker), _taskSelector, 0, 0, 0, false);
                     };
             }
 
