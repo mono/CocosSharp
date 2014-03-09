@@ -760,23 +760,8 @@
       <Processor>CocosPListProcessor</Processor>
       <SubType>Designer</SubType>
     </Compile>
-    <Compile Include="Images\BoilingFoam.plist">
-      <Name>BoilingFoam</Name>
-      <Importer>CocosPListImporter</Importer>
-      <Processor>CocosPListProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\BurstPipe.plist">
-      <Name>BurstPipe</Name>
-      <Processor>CocosPListProcessor</Processor>
-      <Importer>CocosPListImporter</Importer>
-    </Compile>
     <Compile Include="Images\debian.plist">
       <Name>debian</Name>
-      <Importer>CocosPListImporter</Importer>
-      <Processor>CocosPListProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\ExplodingRing.plist">
-      <Name>ExplodingRing</Name>
       <Importer>CocosPListImporter</Importer>
       <Processor>CocosPListProcessor</Processor>
     </Compile>
@@ -790,11 +775,6 @@
       <Importer>CocosPListImporter</Importer>
       <Processor>CocosPListProcessor</Processor>
     </Compile>
-    <Compile Include="Images\LavaFlow.plist">
-      <Name>LavaFlow</Name>
-      <Importer>TextImporter</Importer>
-      <Processor>TextProcessor</Processor>
-    </Compile>
     <Compile Include="Images\Spiral.plist">
       <Name>Spiral</Name>
       <Importer>CocosPListImporter</Importer>
@@ -802,11 +782,6 @@
     </Compile>
     <Compile Include="Images\Upsidedown.plist">
       <Name>Upsidedown</Name>
-      <Importer>CocosPListImporter</Importer>
-      <Processor>CocosPListProcessor</Processor>
-    </Compile>
-    <Compile Include="Images\CometPlist.plist">
-      <Name>CometPlist</Name>
       <Importer>CocosPListImporter</Importer>
       <Processor>CocosPListProcessor</Processor>
     </Compile>
@@ -2628,6 +2603,53 @@
     </Compile>
     <Compile Include="hd\Images\grossini_dance_14.png">
       <Name>grossini_dance_14</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\particleTexture.png">
+      <Name>particleTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\PeasTexture.png">
+      <Name>PeasTexture</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="Images\phoenixLeftWing.png">
+      <Name>phoenixLeftWing</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\BoilingFoam.png">
+      <Name>BoilingFoam</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\LavaFlow.png">
+      <Name>LavaFlow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\BurstPipe.png">
+      <Name>BurstPipe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Images\ExplodingRing.png">
+      <Name>ExplodingRing</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
