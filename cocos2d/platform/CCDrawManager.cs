@@ -308,7 +308,13 @@ namespace CocosSharp
         private static PresentationParameters m_presentationParameters = new PresentationParameters();
         private static GraphicsDeviceManager m_GraphicsDeviceMgr;
 
-        private static void UpdatePresentationParametrs(GraphicsDeviceManager manager)
+
+        internal static void UpdatePresentationParameters()
+        {
+            UpdatePresentationParameters(m_GraphicsDeviceMgr);
+        }
+
+        private static void UpdatePresentationParameters(GraphicsDeviceManager manager)
         {
             var pp = m_presentationParameters;
 
@@ -354,7 +360,7 @@ namespace CocosSharp
 				var manager = service as GraphicsDeviceManager;
 
 				if (manager != null) {
-					UpdatePresentationParametrs (manager);
+					UpdatePresentationParameters (manager);
 
 					manager.PreparingDeviceSettings += GraphicsPreparingDeviceSettings;
 				} else {
@@ -1333,7 +1339,7 @@ namespace CocosSharp
                 */
             }
 #endif
-            UpdatePresentationParametrs(m_GraphicsDeviceMgr);
+            UpdatePresentationParameters(m_GraphicsDeviceMgr);
 
             m_GraphicsDeviceMgr.ApplyChanges();
         }

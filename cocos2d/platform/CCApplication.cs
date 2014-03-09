@@ -35,7 +35,7 @@ namespace CocosSharp
         {
 
 			SharedApplication = this;
-
+ 
             if (Game.Services.GetService(typeof(IGraphicsDeviceService)) == null)
             {
                 if (service == null)
@@ -229,16 +229,6 @@ namespace CocosSharp
             }
         }
 
-		public CCSize PreferredBackBufferSize
-		{
-			get { return new CCSize (PreferredBackBufferWidth, PreferredBackBufferHeight); }
-			set 
-			{
-				PreferredBackBufferWidth = (int)value.Width;
-				PreferredBackBufferHeight = (int)value.Height;
-			}
-		}
-
 		public int PreferredBackBufferWidth 
 		{ 
 			get 
@@ -258,8 +248,11 @@ namespace CocosSharp
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-				if (manager != null)
-					manager.PreferredBackBufferWidth = value;
+                if (manager != null)
+                {
+                    manager.PreferredBackBufferWidth = value;
+                    CCDrawManager.UpdatePresentationParameters();
+                }
 
 			}
 		}
@@ -274,7 +267,7 @@ namespace CocosSharp
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
 				if (manager != null) 
 					return manager.PreferredBackBufferHeight;
-
+                    
 				return 0;
 			}
 			set
@@ -283,8 +276,11 @@ namespace CocosSharp
 				var manager = service as GraphicsDeviceManager;
 
 				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-				if (manager != null)
-					manager.PreferredBackBufferHeight = value;
+                if (manager != null)
+                {
+                    manager.PreferredBackBufferHeight = value;
+                    CCDrawManager.UpdatePresentationParameters();
+                }
 
 			}
 		}
