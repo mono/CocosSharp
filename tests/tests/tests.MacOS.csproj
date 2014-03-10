@@ -1943,9 +1943,6 @@
     <Content Include="Assets\Content\Particles\debian.xnb">
       <Link>Content\Particles\debian.xnb</Link>
     </Content>
-    <Content Include="Assets\Content\Particles\particleTexture.xnb">
-      <Link>Content\Particles\particleTexture.xnb</Link>
-    </Content>
     <Content Include="Assets\Content\animations\animations-2.plist.xnb">
       <Link>Content\animations\animations-2.plist.xnb</Link>
     </Content>
