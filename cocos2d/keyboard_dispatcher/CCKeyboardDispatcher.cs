@@ -6,28 +6,28 @@ namespace CocosSharp
 {
 	public class CCKeyboardDispatcher
 	{
-		protected List<CCKeyboardHandler> m_pDelegates = new List<CCKeyboardHandler> ();
-		protected bool m_bLocked;
-		protected bool m_bToAdd;
-		protected bool m_bToRemove;
-		protected List<ICCKeyboardDelegate> m_pHandlersToAdd = new List<ICCKeyboardDelegate> ();
-		protected List<ICCKeyboardDelegate> m_pHandlersToRemove = new List<ICCKeyboardDelegate> ();
+		protected List<CCKeyboardHandler> delegates = new List<CCKeyboardHandler> ();
+		protected bool locked;
+		protected bool toAdd;
+		protected bool toRemove;
+		protected List<ICCKeyboardDelegate> handlersToAdd = new List<ICCKeyboardDelegate> ();
+		protected List<ICCKeyboardDelegate> handlersToRemove = new List<ICCKeyboardDelegate> ();
 
 		/**
         @brief add delegate to concern keypad msg
         */
 
-		public void AddDelegate (ICCKeyboardDelegate pDelegate)
+		public void AddDelegate (ICCKeyboardDelegate keyboardDelegate)
 		{
-			if (pDelegate == null) {
+			if (keyboardDelegate == null) {
 				return;
 			}
 
-			if (!m_bLocked) {
-				ForceAddDelegate (pDelegate);
+			if (!locked) {
+				ForceAddDelegate (keyboardDelegate);
 			} else {
-				m_pHandlersToAdd.Add (pDelegate);
-				m_bToAdd = true;
+				handlersToAdd.Add (keyboardDelegate);
+				toAdd = true;
 			}
 		}
 
@@ -35,17 +35,17 @@ namespace CocosSharp
         @brief remove the delegate from the delegates who concern keypad msg
         */
 
-		public void RemoveDelegate (ICCKeyboardDelegate pDelegate)
+		public void RemoveDelegate (ICCKeyboardDelegate keyboardDelegate)
 		{
-			if (pDelegate == null) {
+			if (keyboardDelegate == null) {
 				return;
 			}
 
-			if (!m_bLocked) {
-				ForceRemoveDelegate (pDelegate);
+			if (!locked) {
+				ForceRemoveDelegate (keyboardDelegate);
 			} else {
-				m_pHandlersToRemove.Add (pDelegate);
-				m_bToRemove = true;
+				handlersToRemove.Add (keyboardDelegate);
+				toRemove = true;
 			}
 		}
 
@@ -53,33 +53,34 @@ namespace CocosSharp
         @brief force add the delegate
         */
 
-		public void ForceAddDelegate (ICCKeyboardDelegate pDelegate)
+		public void ForceAddDelegate (ICCKeyboardDelegate keyboardDelegate)
 		{
-			CCKeyboardHandler pHandler = new CCKeyboardHandler (pDelegate);
-			m_pDelegates.Add (pHandler);
+			CCKeyboardHandler pHandler = new CCKeyboardHandler (keyboardDelegate);
+			delegates.Add (pHandler);
 		}
 
 		/**
         @brief force remove the delegate
         */
 
-		public void ForceRemoveDelegate (ICCKeyboardDelegate pDelegate)
+		public void ForceRemoveDelegate (ICCKeyboardDelegate keyboardDelegate)
 		{
-			for (int i = 0; i < m_pDelegates.Count; i++) {
-				if (m_pDelegates [i].Delegate == pDelegate) {
-					m_pDelegates.RemoveAt (i);
+			for (int i = 0; i < delegates.Count; i++) {
+				if (delegates [i].Delegate == keyboardDelegate) 
+				{
+					delegates.RemoveAt (i);
 					break;
 				}
 			}
 		}
 
 
-		private KeyboardState m_priorKeyboardState;
+		private KeyboardState priorKeyboardState;
 
 		public bool DispatchKeyboardState ()
 		{
 
-			if (m_pDelegates.Count == 0)
+			if (delegates.Count == 0)
 				return false;
 
 			// Read the current keyboard state
@@ -89,17 +90,17 @@ namespace CocosSharp
 			// Loop for each possible pressed key (those that are pressed this update)
 			Keys[] keys = currentKeyState.GetPressedKeys();
 
-			m_bLocked = true;
+			locked = true;
 
-			if (m_pDelegates.Count > 0) {
-				for (int i = 0; i < m_pDelegates.Count; i++) {
-					CCKeyboardHandler pHandler = m_pDelegates [i];
+			if (delegates.Count > 0) {
+				for (int i = 0; i < delegates.Count; i++) {
+					CCKeyboardHandler pHandler = delegates [i];
 					ICCKeyboardDelegate pDelegate = pHandler.Delegate;
 
 					if ((pDelegate.KeyboardMode & CCKeyboardMode.KeyPressed) == CCKeyboardMode.KeyPressed) {
 						for (int k = 0; k < keys.Length; k++) {
 							// Was this key up during the last update?
-							if (m_priorKeyboardState.IsKeyUp (keys [k])) {
+							if (priorKeyboardState.IsKeyUp (keys [k])) {
 								// Yes, so this key has been pressed
 								//CCLog.Log("Pressed: " + keys[i].ToString());
 								pDelegate.KeyPressed (keys [k]);
@@ -119,7 +120,7 @@ namespace CocosSharp
 
 					if ((pDelegate.KeyboardMode & CCKeyboardMode.KeyReleased) == CCKeyboardMode.KeyReleased) {
 						// Loop for each possible released key (those that were pressed last update)
-						keys = m_priorKeyboardState.GetPressedKeys ();
+						keys = priorKeyboardState.GetPressedKeys ();
 
 						for (int k = 0; k < keys.Length; k++) {
 							// Is this key now up?
@@ -133,26 +134,26 @@ namespace CocosSharp
 				}
 			}
 
-			m_bLocked = false;
+			locked = false;
 
-			if (m_bToRemove) {
-				m_bToRemove = false;
-				for (int i = 0; i < m_pHandlersToRemove.Count; ++i) {
-					ForceRemoveDelegate (m_pHandlersToRemove [i]);
+			if (toRemove) {
+				toRemove = false;
+				for (int i = 0; i < handlersToRemove.Count; ++i) {
+					ForceRemoveDelegate (handlersToRemove [i]);
 				}
-				m_pHandlersToRemove.Clear ();
+				handlersToRemove.Clear ();
 			}
 
-			if (m_bToAdd) {
-				m_bToAdd = false;
-				for (int i = 0; i < m_pHandlersToAdd.Count; ++i) {
-					ForceAddDelegate (m_pHandlersToAdd [i]);
+			if (toAdd) {
+				toAdd = false;
+				for (int i = 0; i < handlersToAdd.Count; ++i) {
+					ForceAddDelegate (handlersToAdd [i]);
 				}
-				m_pHandlersToAdd.Clear ();
+				handlersToAdd.Clear ();
 			}
 
 			// Store the state for the next loop
-			m_priorKeyboardState = currentKeyState;
+			priorKeyboardState = currentKeyState;
 
 			return true;
 		}

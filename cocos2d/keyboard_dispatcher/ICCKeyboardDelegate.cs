@@ -15,13 +15,13 @@ namespace CocosSharp
 	public interface ICCKeyboardDelegate
 	{
 		// Key was pressed
-		void KeyPressed(Keys key);
+		void KeyPressed(Keys keys);
 
 		// Current Keyboard State
 		void KeyboardCurrentState(KeyboardState currentState);
 
 		// Key was released
-		void KeyReleased(Keys key);
+		void KeyReleased(Keys keys);
 
 		CCKeyboardMode KeyboardMode { get; set; }
 
@@ -29,27 +29,12 @@ namespace CocosSharp
 
 	public class CCKeyboardHandler 
 	{
-		protected ICCKeyboardDelegate m_pDelegate;
-
-		public CCKeyboardHandler (ICCKeyboardDelegate pDelegate)
+		public CCKeyboardHandler (ICCKeyboardDelegate keyboardDelegate)
 		{
-			InitWithDelegate (pDelegate);
+			Delegate = keyboardDelegate;
 		}
 
-		public ICCKeyboardDelegate Delegate
-		{
-			get { return m_pDelegate; }
-			set { m_pDelegate = value; }
-		}
-
-		/** initializes a CCKeyboardHandler with a delegate */
-
-		public virtual bool InitWithDelegate(ICCKeyboardDelegate pDelegate)
-		{
-			m_pDelegate = pDelegate;
-			return true;
-		}
-
+		public ICCKeyboardDelegate Delegate { get; set; }
 	}
 }
 
