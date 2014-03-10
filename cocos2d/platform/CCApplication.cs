@@ -191,6 +191,8 @@ namespace CocosSharp
 
             ProcessKeyboard();
 
+			ProcessMouse ();
+
             CCDirector.SharedDirector.Update(gameTime);
 
             base.Update(gameTime);
@@ -473,6 +475,23 @@ namespace CocosSharp
 
         }
         #endregion
+
+		#region Mouse support
+		private MouseState priorMouseState;
+
+		private void ProcessMouse()
+		{
+			// Read the current Mouse state
+			MouseState currentMouseState = Mouse.GetState();
+
+			if (currentMouseState != priorMouseState)
+				CCDirector.SharedDirector.MouseDispatcher.DispatchMouseState ();
+
+			// Store the state for the next loop
+			priorMouseState = currentMouseState;
+
+		}
+		#endregion
 
         private CCPoint TransformPoint(float x, float y) {
             CCPoint newPoint;

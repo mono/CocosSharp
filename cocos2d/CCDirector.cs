@@ -97,6 +97,7 @@ namespace CocosSharp
 		public CCKeypadDispatcher KeypadDispatcher  { get; set; }
 		public CCKeyboardDispatcher KeyboardDispatcher { get; set; }
 		public CCTouchDispatcher TouchDispatcher { get; set; }
+		public CCMouseDispatcher MouseDispatcher { get; set; }
 
         /// <summary>
         /// returns a shared instance of the director
@@ -283,6 +284,9 @@ namespace CocosSharp
 
             // KeyboardDispatcher
             KeyboardDispatcher = new CCKeyboardDispatcher();
+
+			// MouseDispatcher
+			MouseDispatcher = new CCMouseDispatcher();
 
             // Accelerometer
             #if !PSM &&!NETFX_CORE

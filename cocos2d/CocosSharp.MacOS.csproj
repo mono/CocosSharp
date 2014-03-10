@@ -440,6 +440,8 @@
     <Compile Include="CCStats.cs" />
     <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="Actions\action\CCAmplitudeAction.cs" />
+    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
+    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
@@ -447,7 +449,7 @@
       <Name>box2d.MacOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
-      <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
+      <Project>{5C3DC4FF-FE5A-4B94-B4A6-6F79E63F3130}</Project>
       <Name>Lidgren.Network.MacOS</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
@@ -460,5 +462,6 @@
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
     <Folder Include="keyboard_dispatcher\" />
+    <Folder Include="mouse_dispatcher\" />
   </ItemGroup>
 </Project>

@@ -66,7 +66,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
+	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, ICCMouseDelegate, IComparer<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -120,12 +120,14 @@ namespace CocosSharp
         private string m_sName;
 
         // input variables
-        private bool m_bKeypadEnabled;
-		private bool m_bKeyboardEnabled;
+		private bool keypadEnabled;
+		private bool keyboardEnabled;
+		private bool mouseEnabled;
         private bool m_bGamePadEnabled;
         private bool m_bTouchEnabled;
-        private CCTouchMode m_eTouchMode = CCTouchMode.OneByOne;
-		private CCKeyboardMode m_eKeyboardMode = CCKeyboardMode.All;
+		private CCTouchMode touchMode = CCTouchMode.OneByOne;
+		private CCKeyboardMode keyboardMode = CCKeyboardMode.All;
+		private CCMouseMode mouseMode = CCMouseMode.All;
         private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
 
@@ -1171,17 +1173,22 @@ namespace CocosSharp
             CCDirector director = CCDirector.SharedDirector;
 
             // add this node to concern the kaypad msg
-            if (m_bKeypadEnabled)
+            if (keypadEnabled)
             {
                 director.KeypadDispatcher.AddDelegate(this);
             }
 
 			// tell the director that this node is interested in Keyboard message
-			if (m_bKeyboardEnabled)
+			if (keyboardEnabled)
 			{
 				director.KeyboardDispatcher.AddDelegate(this);
 			}
 
+			// tell the director that this node is interested in Mouse messages
+			if (mouseEnabled) 
+			{
+				director.MouseDispatcher.AddDelegate (this);
+			}
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
@@ -1246,14 +1253,19 @@ namespace CocosSharp
                 //unregisterScriptTouchHandler();
             }
 
-            if (m_bKeypadEnabled)
+            if (keypadEnabled)
             {
                 director.KeypadDispatcher.RemoveDelegate(this);
             }
 
-			if (m_bKeyboardEnabled)
+			if (keyboardEnabled)
 			{
 				director.KeyboardDispatcher.RemoveDelegate(this);
+			}
+
+			if (mouseEnabled) 
+			{
+				director.MouseDispatcher.RemoveDelegate (this);
 			}
 
             if (GamePadEnabled && director.GamePadEnabled)
@@ -1700,7 +1712,7 @@ namespace CocosSharp
                 return;
             }
             */
-            if (m_eTouchMode == CCTouchMode.AllAtOnce)
+            if (touchMode == CCTouchMode.AllAtOnce)
             {
                 pDispatcher.AddStandardDelegate(this, 0);
             }
@@ -1712,12 +1724,12 @@ namespace CocosSharp
 
         public CCTouchMode TouchMode
         {
-            get { return m_eTouchMode; }
+            get { return touchMode; }
             set
             {
-                if (m_eTouchMode != value)
+                if (touchMode != value)
                 {
-                    m_eTouchMode = value;
+                    touchMode = value;
 
                     if (m_bTouchEnabled)
                     {
@@ -1772,12 +1784,12 @@ namespace CocosSharp
 
         public virtual bool KeypadEnabled
         {
-            get { return m_bKeypadEnabled; }
+            get { return keypadEnabled; }
             set
             {
-                if (value != m_bKeypadEnabled)
+                if (value != keypadEnabled)
                 {
-                    m_bKeypadEnabled = value;
+                    keypadEnabled = value;
 
                     if (m_bRunning)
                     {
@@ -1796,12 +1808,12 @@ namespace CocosSharp
 
 		public virtual bool KeyboardEnabled
 		{
-			get { return m_bKeyboardEnabled; }
+			get { return keyboardEnabled; }
 			set
 			{
-				if (value != m_bKeyboardEnabled)
+				if (value != keyboardEnabled)
 				{
-					m_bKeyboardEnabled = value;
+					keyboardEnabled = value;
 
 					if (m_bRunning)
 					{
@@ -1820,12 +1832,48 @@ namespace CocosSharp
 
 		public virtual CCKeyboardMode KeyboardMode
 		{
-			get { return m_eKeyboardMode; }
+			get { return keyboardMode; }
 			set
 			{
-				if (m_eKeyboardMode != value)
+				if (keyboardMode != value)
 				{
-					m_eKeyboardMode = value;
+					keyboardMode = value;
+				}
+			}
+		}
+
+		public virtual bool MouseEnabled
+		{
+			get { return mouseEnabled; }
+			set
+			{
+				if (value != mouseEnabled)
+				{
+					mouseEnabled = value;
+
+					if (m_bRunning)
+					{
+						if (value)
+						{
+							CCDirector.SharedDirector.MouseDispatcher.AddDelegate(this);
+						}
+						else
+						{
+							CCDirector.SharedDirector.MouseDispatcher.RemoveDelegate(this);
+						}
+					}
+				}
+			}
+		}
+
+		public virtual CCMouseMode MouseMode
+		{
+			get { return mouseMode; }
+			set
+			{
+				if (mouseMode != value)
+				{
+					mouseMode = value;
 				}
 			}
 		}
@@ -1910,6 +1958,21 @@ namespace CocosSharp
 
 		public virtual void KeyboardCurrentState (KeyboardState currentState)
 		{ }
+
+		#endregion
+
+		#region Mouse Support
+		// Mouse moved
+		public virtual void MouseMove (int x, int y) {}
+
+		// Mouse scroll
+		public virtual void MouseScroll (int delta) {}
+
+		// Mouse button pressed
+		public virtual void MouseDown (CCMouseButton buttons, int x, int y) {}
+
+		// Mouse button released
+		public virtual void MouseUp (CCMouseButton button, int x, int y) {}
 
 		#endregion
 
