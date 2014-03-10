@@ -621,6 +621,8 @@
     </Compile>
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
     <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
+    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
+    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
     <Compile Include=".\label_nodes\CCBMFontConfiguration.cs">
       <LogicalName>label_nodes\CCBMFontConfiguration</LogicalName>
     </Compile>

@@ -411,6 +411,8 @@
     <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
     <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
     <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
+    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
+    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
