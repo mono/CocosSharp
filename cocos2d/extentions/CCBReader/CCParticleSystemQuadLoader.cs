@@ -47,7 +47,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_POSVAR)
             {
-                ((CCParticleSystemQuad) node).PosVar = point;
+                ((CCParticleSystemQuad) node).PositionVar = point;
             }
             else if (propertyName == PROPERTY_GRAVITY)
             {

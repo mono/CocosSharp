@@ -193,7 +193,7 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>posVar</string>
+						<string>PositionVar</string>
 						<key>type</key>
 						<string>Point</string>
 						<key>value</key>
@@ -468,7 +468,7 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>posVar</string>
+						<string>PositionVar</string>
 						<key>type</key>
 						<string>Point</string>
 						<key>value</key>

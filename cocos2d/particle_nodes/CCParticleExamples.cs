@@ -86,61 +86,70 @@ namespace CocosSharp
         private void InitCCParticleFire()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
             // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: radial acceleration
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 60;
-            modeA.speedVar = 20;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 60;
+            gravityMode.SpeedVar = 20;
+            GravityMode = gravityMode;
 
             // starting angle
-            m_fAngle = 90;
-            m_fAngleVar = 10;
+            Angle = 90;
+            AngleVar = 10;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             SetPosition(winSize.Width / 2, 60);
-            m_tPosVar = new CCPoint(40, 20);
+            PositionVar = new CCPoint(40, 20);
 
             // life of particles
-            m_fLife = 3;
-            m_fLifeVar = 0.25f;
+            Life = 3;
+            LifeVar = 0.25f;
 
 
             // size, in pixels
-            m_fStartSize = 54.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 54.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per frame
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.76f;
-            m_tStartColor.G = 0.25f;
-            m_tStartColor.B = 0.12f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            CCColor4F startColor;
+            startColor.R = 0.76f;
+            startColor.G = 0.25f;
+            startColor.B = 0.12f;
+            startColor.A = 1.0f;
+            StartColor = startColor;
+
+            CCColor4F startColorVar;
+            startColorVar.R = 0.0f;
+            startColorVar.G = 0.0f;
+            startColorVar.B = 0.0f;
+            startColorVar.A = 0.0f;
+            StartColorVar = startColorVar;
+
+            CCColor4F endColor;
+            endColor.R = 0.0f;
+            endColor.G = 0.0f;
+            endColor.B = 0.0f;
+            endColor.A = 1.0f;
+            EndColor = endColor;
+
+            CCColor4F endColorVar;
+            endColorVar.R = 0.0f;
+            endColorVar.G = 0.0f;
+            endColorVar.B = 0.0f;
+            endColorVar.A = 0.0f;
+            EndColorVar = endColorVar;
 
             // additive
             BlendAdditive = true;
@@ -162,59 +171,63 @@ namespace CocosSharp
         private void InitCCParticleFireworks()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
             // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, -90);
-
-            // Gravity Mode:  radial
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            //  Gravity Mode: speed of particles
-            modeA.speed = 180;
-            modeA.speedVar = 50;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, -90);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 180;
+            gravityMode.SpeedVar = 50;
+            GravityMode = gravityMode;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 20;
+            Angle = 90;
+            AngleVar = 20;
 
             // life of particles
-            m_fLife = 3.5f;
-            m_fLifeVar = 1;
+            Life = 3.5f;
+            LifeVar = 1;
 
             // emits per frame
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.5f;
-            m_tStartColor.G = 0.5f;
-            m_tStartColor.B = 0.5f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.5f;
-            m_tStartColorVar.G = 0.5f;
-            m_tStartColorVar.B = 0.5f;
-            m_tStartColorVar.A = 0.1f;
-            m_tEndColor.R = 0.1f;
-            m_tEndColor.G = 0.1f;
-            m_tEndColor.B = 0.1f;
-            m_tEndColor.A = 0.2f;
-            m_tEndColorVar.R = 0.1f;
-            m_tEndColorVar.G = 0.1f;
-            m_tEndColorVar.B = 0.1f;
-            m_tEndColorVar.A = 0.2f;
+            StartColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+
+            CCColor4F startColorVar;
+            startColorVar.R = 0.5f;
+            startColorVar.G = 0.5f;
+            startColorVar.B = 0.5f;
+            startColorVar.A = 0.1f;
+            StartColorVar = startColorVar;
+
+            CCColor4F endColor;
+            endColor.R = 0.1f;
+            endColor.G = 0.1f;
+            endColor.B = 0.1f;
+            endColor.A = 0.2f;
+            EndColor = endColor;
+
+            CCColor4F endColorVar;
+            endColorVar.R = 0.1f;
+            endColorVar.G = 0.1f;
+            endColorVar.B = 0.1f;
+            endColorVar.A = 0.2f;
+            EndColorVar = endColorVar;
 
             // size, in pixels
-            m_fStartSize = 8.0f;
-            m_fStartSizeVar = 2.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 8.0f;
+            StartSizeVar = 2.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // additive
             BlendAdditive = false;
@@ -243,61 +256,47 @@ namespace CocosSharp
             BlendAdditive = true;
 
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
+
 
             // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity mode: radial acceleration
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            // Gravity mode: speed of particles
-            modeA.speed = 20;
-            modeA.speedVar = 5;
-
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 20;
+            gravityMode.SpeedVar = 5;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 360;
+            Angle = 90;
+            AngleVar = 360;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 1;
-            m_fLifeVar = 0.5f;
+            Life = 1;
+            LifeVar = 0.5f;
 
             // size, in pixels
-            m_fStartSize = 30.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 30.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per seconds
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.76f;
-            m_tStartColor.G = 0.25f;
-            m_tStartColor.B = 0.12f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.76f, 0.25f, 0.12f, 1.0f);
+            StartColorVar = new CCColor4F();
+            EndColor = new CCColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+            EndColorVar = new CCColor4F();
 
             Texture = CCParticleExample.DefaultTexture;
         }
@@ -316,64 +315,47 @@ namespace CocosSharp
         private void InitCCParticleGalaxy()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 60;
-            modeA.speedVar = 10;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = -80;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 80;
-            modeA.tangentialAccelVar = 0;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = -80;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 60;
+            gravityMode.SpeedVar = 10;
+            gravityMode.TangentialAccel = 80;
+            gravityMode.TangentialAccelVar = 0;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 360;
+            Angle = 90;
+            AngleVar = 360;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 4;
-            m_fLifeVar = 1;
+            Life = 4;
+            LifeVar = 1;
 
             // size, in pixels
-            m_fStartSize = 37.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 37.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.12f;
-            m_tStartColor.G = 0.25f;
-            m_tStartColor.B = 0.76f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.12f, 0.25f, 0.76f, 1.0f);
+            StartColorVar = new CCColor4F();
+            EndColor = new CCColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = true;
@@ -392,64 +374,47 @@ namespace CocosSharp
         private void InitCCParticleFlower()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 80;
-            modeA.speedVar = 10;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = -60;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 15;
-            modeA.tangentialAccelVar = 0;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = -60;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 80;
+            gravityMode.SpeedVar = 10;
+            gravityMode.TangentialAccel = 15;
+            gravityMode.TangentialAccelVar = 0;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 360;
+            Angle = 90;
+            AngleVar = 360;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 4;
-            m_fLifeVar = 1;
+            Life = 4;
+            LifeVar = 1;
 
             // size, in pixels
-            m_fStartSize = 30.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 30.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.50f;
-            m_tStartColor.G = 0.50f;
-            m_tStartColor.B = 0.50f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.5f;
-            m_tStartColorVar.G = 0.5f;
-            m_tStartColorVar.B = 0.5f;
-            m_tStartColorVar.A = 0.5f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.5f);
+            EndColor = new CCColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = true;
@@ -468,64 +433,47 @@ namespace CocosSharp
         private void InitCCParticleMeteor()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(-200, 200);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 15;
-            modeA.speedVar = 5;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 0;
-            modeA.tangentialAccelVar = 0;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(-200, 200);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 15;
+            gravityMode.SpeedVar = 5;
+            gravityMode.TangentialAccel = 0;
+            gravityMode.TangentialAccelVar = 0;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 360;
+            Angle = 90;
+            AngleVar = 360;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 2;
-            m_fLifeVar = 1;
+            Life = 2;
+            LifeVar = 1;
 
             // size, in pixels
-            m_fStartSize = 60.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 60.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.2f;
-            m_tStartColor.G = 0.4f;
-            m_tStartColor.B = 0.7f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.2f;
-            m_tStartColorVar.A = 0.1f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.2f, 0.4f, 0.7f, 1.0f);
+            StartColorVar = new CCColor4F(0.0f, 0.0f, 0.2f, 0.1f);
+            EndColor = new CCColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = true;
@@ -544,64 +492,47 @@ namespace CocosSharp
         private void InitCCParticleSpiral()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 150;
-            modeA.speedVar = 0;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = -380;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 45;
-            modeA.tangentialAccelVar = 0;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = -380;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 150;
+            gravityMode.SpeedVar = 0;
+            gravityMode.TangentialAccel = 45;
+            gravityMode.TangentialAccelVar = 0;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 0;
+            Angle = 90;
+            AngleVar = 0;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 12;
-            m_fLifeVar = 0;
+            Life = 12;
+            LifeVar = 0;
 
             // size, in pixels
-            m_fStartSize = 20.0f;
-            m_fStartSizeVar = 0.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 20.0f;
+            StartSizeVar = 0.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.5f;
-            m_tStartColor.G = 0.5f;
-            m_tStartColor.B = 0.5f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.5f;
-            m_tStartColorVar.G = 0.5f;
-            m_tStartColorVar.B = 0.5f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.5f;
-            m_tEndColor.G = 0.5f;
-            m_tEndColor.B = 0.5f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.5f;
-            m_tEndColorVar.G = 0.5f;
-            m_tEndColorVar.B = 0.5f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
+            EndColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
+            EndColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
 
             // additive
             BlendAdditive = false;
@@ -620,63 +551,47 @@ namespace CocosSharp
         private void InitCCParticleExplosion()
         {
             // duration
-            m_fDuration = 0.1f;
+            Duration = 0.1f;
 
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 70;
-            modeA.speedVar = 40;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 0;
-            modeA.tangentialAccelVar = 0;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 70;
+            gravityMode.SpeedVar = 40;
+            gravityMode.TangentialAccel = 0;
+            gravityMode.TangentialAccelVar = 0;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 360;
+            Angle = 90;
+            AngleVar = 360;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
-            m_tPosVar = CCPoint.Zero;
+            PositionVar = CCPoint.Zero;
 
             // life of particles
-            m_fLife = 5.0f;
-            m_fLifeVar = 2;
+            Life = 5.0f;
+            LifeVar = 2;
 
             // size, in pixels
-            m_fStartSize = 15.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 15.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = m_uTotalParticles / m_fDuration;
+            EmissionRate = TotalParticles / Duration;
 
             // color of particles
-            m_tStartColor.R = 0.7f;
-            m_tStartColor.G = 0.1f;
-            m_tStartColor.B = 0.2f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.5f;
-            m_tStartColorVar.G = 0.5f;
-            m_tStartColorVar.B = 0.5f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.5f;
-            m_tEndColor.G = 0.5f;
-            m_tEndColor.B = 0.5f;
-            m_tEndColor.A = 0.0f;
-            m_tEndColorVar.R = 0.5f;
-            m_tEndColorVar.G = 0.5f;
-            m_tEndColorVar.B = 0.5f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.7f, 0.1f, 0.2f, 1.0f);
+            StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
+            EndColor = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
+            EndColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
+
 
             // additive
             BlendAdditive = false;
@@ -695,60 +610,45 @@ namespace CocosSharp
         private void InitCCParticleSmoke()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // Emitter mode: Gravity Mode
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, 0);
-
-            // Gravity Mode: radial acceleration
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 0;
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 25;
-            modeA.speedVar = 10;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, 0);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 0;
+            gravityMode.Speed = 25;
+            gravityMode.SpeedVar = 10;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = 90;
-            m_fAngleVar = 5;
+            Angle = 90;
+            AngleVar = 5;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, 0);
-            m_tPosVar = new CCPoint(20, 0);
+            PositionVar = new CCPoint(20, 0);
 
             // life of particles
-            m_fLife = 4;
-            m_fLifeVar = 1;
+            Life = 4;
+            LifeVar = 1;
 
             // size, in pixels
-            m_fStartSize = 60.0f;
-            m_fStartSizeVar = 10.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 60.0f;
+            StartSizeVar = 10.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per frame
-            m_fEmissionRate = m_uTotalParticles / m_fLife;
+            EmissionRate = TotalParticles / Life;
 
             // color of particles
-            m_tStartColor.R = 0.8f;
-            m_tStartColor.G = 0.8f;
-            m_tStartColor.B = 0.8f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.02f;
-            m_tStartColorVar.G = 0.02f;
-            m_tStartColorVar.B = 0.02f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.0f;
-            m_tEndColor.G = 0.0f;
-            m_tEndColor.B = 0.0f;
-            m_tEndColor.A = 1.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.8f, 0.8f, 0.8f, 1.0f);
+            StartColorVar = new CCColor4F(0.02f, 0.02f, 0.02f, 0.0f);
+            EndColor = new CCColor4F(0.0f, 0.0f, 0.0f, 1.0f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = false;
@@ -767,64 +667,47 @@ namespace CocosSharp
         private void InitCCParticleSnow()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
             // set gravity mode.
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(0, -1);
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 5;
-            modeA.speedVar = 1;
-
-            // Gravity Mode: radial
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 1;
-
-            // Gravity mode: tagential
-            modeA.tangentialAccel = 0;
-            modeA.tangentialAccelVar = 1;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(0, -1);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 1;
+            gravityMode.TangentialAccel = 0;
+            gravityMode.TangentialAccelVar = 1;
+            gravityMode.Speed = 5;
+            gravityMode.SpeedVar = 1;
+            GravityMode = gravityMode;
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height + 10);
-            m_tPosVar = new CCPoint(winSize.Width / 2, 0);
+            PositionVar = new CCPoint(winSize.Width / 2, 0);
 
             // angle
-            m_fAngle = -90;
-            m_fAngleVar = 5;
+            Angle = -90;
+            AngleVar = 5;
 
             // life of particles
-            m_fLife = 45;
-            m_fLifeVar = 15;
+            Life = 45;
+            LifeVar = 15;
 
             // size, in pixels
-            m_fStartSize = 10.0f;
-            m_fStartSizeVar = 5.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 10.0f;
+            StartSizeVar = 5.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = 10;
+            EmissionRate = 10;
 
             // color of particles
-            m_tStartColor.R = 1.0f;
-            m_tStartColor.G = 1.0f;
-            m_tStartColor.B = 1.0f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 1.0f;
-            m_tEndColor.G = 1.0f;
-            m_tEndColor.B = 1.0f;
-            m_tEndColor.A = 0.0f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f);
+            StartColorVar = new CCColor4F();
+            EndColor = new CCColor4F(1.0f, 1.0f, 1.0f, 0.0f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = false;
@@ -843,64 +726,47 @@ namespace CocosSharp
         private void InitCCParticleRain()
         {
             // duration
-            m_fDuration = kCCParticleDurationInfinity;
+            Duration = ParticleDurationInfinity;
 
-            m_nEmitterMode = CCEmitterMode.Gravity;
+            EmitterMode = CCEmitterMode.Gravity;
 
-            // Gravity Mode: gravity
-            modeA.gravity = new CCPoint(10, -10);
-
-            // Gravity Mode: radial
-            modeA.radialAccel = 0;
-            modeA.radialAccelVar = 1;
-
-            // Gravity Mode: tagential
-            modeA.tangentialAccel = 0;
-            modeA.tangentialAccelVar = 1;
-
-            // Gravity Mode: speed of particles
-            modeA.speed = 130;
-            modeA.speedVar = 30;
+            GravityMoveMode gravityMode = new GravityMoveMode();
+            gravityMode.Gravity = new CCPoint(10, -10);
+            gravityMode.RadialAccel = 0;
+            gravityMode.RadialAccelVar = 1;
+            gravityMode.TangentialAccel = 0;
+            gravityMode.TangentialAccelVar = 1;
+            gravityMode.Speed = 130;
+            gravityMode.SpeedVar = 30;
+            GravityMode = gravityMode;
 
             // angle
-            m_fAngle = -90;
-            m_fAngleVar = 5;
+            Angle = -90;
+            AngleVar = 5;
 
 
             // emitter position
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             Position = new CCPoint(winSize.Width / 2, winSize.Height);
-            m_tPosVar = new CCPoint(winSize.Width / 2, 0);
+            PositionVar = new CCPoint(winSize.Width / 2, 0);
 
             // life of particles
-            m_fLife = 4.5f;
-            m_fLifeVar = 0;
+            Life = 4.5f;
+            LifeVar = 0;
 
             // size, in pixels
-            m_fStartSize = 4.0f;
-            m_fStartSizeVar = 2.0f;
-            m_fEndSize = kCCParticleStartSizeEqualToEndSize;
+            StartSize = 4.0f;
+            StartSizeVar = 2.0f;
+            EndSize = ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_fEmissionRate = 20;
+            EmissionRate = 20;
 
             // color of particles
-            m_tStartColor.R = 0.7f;
-            m_tStartColor.G = 0.8f;
-            m_tStartColor.B = 1.0f;
-            m_tStartColor.A = 1.0f;
-            m_tStartColorVar.R = 0.0f;
-            m_tStartColorVar.G = 0.0f;
-            m_tStartColorVar.B = 0.0f;
-            m_tStartColorVar.A = 0.0f;
-            m_tEndColor.R = 0.7f;
-            m_tEndColor.G = 0.8f;
-            m_tEndColor.B = 1.0f;
-            m_tEndColor.A = 0.5f;
-            m_tEndColorVar.R = 0.0f;
-            m_tEndColorVar.G = 0.0f;
-            m_tEndColorVar.B = 0.0f;
-            m_tEndColorVar.A = 0.0f;
+            StartColor = new CCColor4F(0.7f, 0.8f, 1.0f, 1.0f);
+            StartColorVar = new CCColor4F();
+            EndColor = new CCColor4F(0.7f, 0.8f, 1.0f, 0.5f);
+            EndColorVar = new CCColor4F();
 
             // additive
             BlendAdditive = false;

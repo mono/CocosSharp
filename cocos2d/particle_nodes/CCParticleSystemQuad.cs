@@ -43,10 +43,10 @@ namespace CocosSharp
             float wide = pointRect.Size.Width;
             float high = pointRect.Size.Height;
 
-            if (m_pTexture != null)
+            if (Texture != null)
             {
-                wide = m_pTexture.PixelsWide;
-                high = m_pTexture.PixelsHigh;
+                wide = Texture.PixelsWide;
+                high = Texture.PixelsHigh;
             }
 
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
@@ -69,18 +69,18 @@ namespace CocosSharp
 
             CCV3F_C4B_T2F_Quad[] quads;
             int start, end;
-            if (m_pBatchNode != null)
+            if (BatchNode != null)
             {
-                quads = m_pBatchNode.TextureAtlas.m_pQuads.Elements;
-                m_pBatchNode.TextureAtlas.Dirty = true;
-                start = m_uAtlasIndex;
-                end = m_uAtlasIndex + m_uTotalParticles;
+                quads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                BatchNode.TextureAtlas.Dirty = true;
+                start = AtlasIndex;
+                end = AtlasIndex + TotalParticles;
             }
             else
             {
                 quads = m_pQuads.Elements;
                 start = 0;
-                end = m_uTotalParticles;
+                end = TotalParticles;
             }
 
             for (int i = start; i < end; i++)
@@ -103,7 +103,7 @@ namespace CocosSharp
         public void SetTextureWithRect(CCTexture2D texture, CCRect rect)
         {
             // Only update the texture if is different from the current one
-            if (m_pTexture == null || texture.Name != m_pTexture.Name)
+            if (Texture == null || texture.Name != Texture.Name)
             {
                 base.Texture = texture;
             }
@@ -126,7 +126,7 @@ namespace CocosSharp
                          "QuadParticle only supports SpriteFrames with no offsets");
 
             // update texture before updating texture rect
-            if (m_pTexture != null || spriteFrame.Texture.Name != m_pTexture.Name)
+            if (Texture != null || spriteFrame.Texture.Name != Texture.Name)
             {
                 Texture = spriteFrame.Texture;
             }
@@ -138,19 +138,19 @@ namespace CocosSharp
         {
             CCPoint newPosition;
 
-            if (m_ePositionType == CCPositionType.Free || m_ePositionType == CCPositionType.Relative)
+            if (PositionType == CCPositionType.Free || PositionType == CCPositionType.Relative)
             {
-                newPosition.X = particle.pos.X - (s_currentPosition.X - particle.startPos.X);
-                newPosition.Y = particle.pos.Y - (s_currentPosition.Y - particle.startPos.Y);
+                newPosition.X = particle.Position.X - (s_currentPosition.X - particle.StartPosition.X);
+                newPosition.Y = particle.Position.Y - (s_currentPosition.Y - particle.StartPosition.Y);
             }
             else
             {
-                newPosition = particle.pos;
+                newPosition = particle.Position;
             }
 
             // translate newPos to correct position, since matrix transform isn't performed in batchnode
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
-            if (m_pBatchNode != null)
+            if (BatchNode != null)
             {
                 newPosition.X += m_obPosition.X;
                 newPosition.Y += m_obPosition.Y;
@@ -158,19 +158,19 @@ namespace CocosSharp
 
             CCColor4B color;
             
-            if  (m_bOpacityModifyRGB)
+            if  (OpacityModifyRGB)
             {
-                color.R = (byte) (particle.color.R * particle.color.A * 255);
-                color.G = (byte) (particle.color.G * particle.color.A * 255);
-                color.B = (byte) (particle.color.B * particle.color.A * 255);
-                color.A = (byte)(particle.color.A * 255);
+                color.R = (byte) (particle.Color.R * particle.Color.A * 255);
+                color.G = (byte) (particle.Color.G * particle.Color.A * 255);
+                color.B = (byte) (particle.Color.B * particle.Color.A * 255);
+                color.A = (byte)(particle.Color.A * 255);
             }
             else
             {
-                color.R = (byte)(particle.color.R * 255);
-                color.G = (byte)(particle.color.G * 255);
-                color.B = (byte)(particle.color.B * 255);
-                color.A = (byte)(particle.color.A * 255);
+                color.R = (byte)(particle.Color.R * 255);
+                color.G = (byte)(particle.Color.G * 255);
+                color.B = (byte)(particle.Color.B * 255);
+                color.A = (byte)(particle.Color.A * 255);
             }
 
             quad.BottomLeft.Colors = color;
@@ -179,8 +179,8 @@ namespace CocosSharp
             quad.TopRight.Colors = color;
 
             // vertices
-            float size_2 = particle.size / 2;
-            if (particle.rotation != 0.0)
+            float size_2 = particle.Size / 2;
+            if (particle.Rotation != 0.0)
             {
                 float x1 = -size_2;
                 float y1 = -size_2;
@@ -190,7 +190,7 @@ namespace CocosSharp
                 float x = newPosition.X;
                 float y = newPosition.Y;
 
-                float r = -CCMathHelper.ToRadians(particle.rotation);
+                float r = -CCMathHelper.ToRadians(particle.Rotation);
                 float cr = CCMathHelper.Cos(r);
                 float sr = CCMathHelper.Sin(r);
                 float ax = x1 * cr - y1 * sr + x;
@@ -248,40 +248,39 @@ namespace CocosSharp
 
             s_currentPosition = CCPoint.Zero;
             
-            if (m_ePositionType == CCPositionType.Free)
+            if (PositionType == CCPositionType.Free)
             {
                 s_currentPosition = ConvertToWorldSpace(CCPoint.Zero);
             }
-            else if (m_ePositionType == CCPositionType.Relative)
+            else if (PositionType == CCPositionType.Relative)
             {
                 s_currentPosition = m_obPosition;
             }
 
             CCV3F_C4B_T2F_Quad[] quads;
-            if (m_pBatchNode != null)
+            if (BatchNode != null)
             {
-                quads = m_pBatchNode.TextureAtlas.m_pQuads.Elements;
-                m_pBatchNode.TextureAtlas.Dirty = true;
+                quads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                BatchNode.TextureAtlas.Dirty = true;
             }
             else
             {
                 quads = m_pQuads.Elements;
             }
 
-            var particles = m_pParticles;
-            var count = m_uParticleCount;
-            if (m_pBatchNode != null)
+            var count = ParticleCount;
+            if (BatchNode != null)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref quads[m_uAtlasIndex + particles[i].atlasIndex], ref particles[i]);
+                    UpdateQuad(ref quads[AtlasIndex + Particles[i].AtlasIndex], ref Particles[i]);
                 }
             }
             else
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref quads[i], ref particles[i]);
+                    UpdateQuad(ref quads[i], ref Particles[i]);
                 }
             }
         }
@@ -289,14 +288,14 @@ namespace CocosSharp
         // overriding draw method
         protected override void Draw()
         {
-            Debug.Assert(m_pBatchNode == null, "draw should not be called when added to a particleBatchNode");
-            //Debug.Assert(m_uParticleIdx == m_uParticleCount, "Abnormal error in particle quad");
+            Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
+            //Debug.Assert(m_uParticleIdx == ParticleCount, "Abnormal error in particle quad");
 
             //updateQuadsWithParticles();
 
-            CCDrawManager.BindTexture(m_pTexture);
-            CCDrawManager.BlendFunc(m_tBlendFunc);
-            CCDrawManager.DrawQuads(m_pQuads, 0, m_uParticleCount);
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.DrawQuads(m_pQuads, 0, ParticleCount);
         }
 
         public override int TotalParticles
@@ -305,9 +304,9 @@ namespace CocosSharp
             {
                 // If we are setting the total numer of particles to a number higher
                 // than what is allocated, we need to allocate new arrays
-                if (value > m_uAllocatedParticles)
+                if (value > AllocatedParticles)
                 {
-                    m_pParticles = new CCParticle[value];
+                    Particles = new CCParticle[value];
 
                     if (m_pQuads == null)
                     {
@@ -318,29 +317,29 @@ namespace CocosSharp
                         m_pQuads.Capacity = value;
                     }
 
-                    m_uTotalParticles = value;
+                    base.TotalParticles = value;
 
                     // Init particles
-                    if (m_pBatchNode != null)
+                    if (BatchNode != null)
                     {
-                        for (int i = 0; i < m_uTotalParticles; i++)
+                        for (int i = 0; i < TotalParticles; i++)
                         {
-                            m_pParticles[i].atlasIndex = i;
+                            Particles[i].AtlasIndex = i;
                         }
                     }
                 }
                 else
                 {
-                    m_uTotalParticles = value;
+                    base.TotalParticles = value;
                 }
             }
         }
 
         private bool AllocMemory()
         {
-            Debug.Assert(m_pBatchNode == null, "Memory should not be alloced when not using batchNode");
+            Debug.Assert(BatchNode == null, "Memory should not be alloced when not using batchNode");
             Debug.Assert((m_pQuads == null), "Memory already alloced");
-            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(m_uTotalParticles);
+            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(TotalParticles);
             return true;
         }
 
@@ -348,9 +347,9 @@ namespace CocosSharp
         {
             set
             {
-                if (m_pBatchNode != value)
+                if (BatchNode != value)
                 {
-                    CCParticleBatchNode oldBatch = m_pBatchNode;
+                    CCParticleBatchNode oldBatch = BatchNode;
 
                     base.BatchNode = value;
 
@@ -364,9 +363,9 @@ namespace CocosSharp
                     else if (oldBatch == null)
                     {
                         // copy current state to batch
-                        var batchQuads = m_pBatchNode.TextureAtlas.m_pQuads.Elements;
-                        m_pBatchNode.TextureAtlas.Dirty = true;
-                        Array.Copy(m_pQuads.Elements, 0, batchQuads, m_uAtlasIndex, m_uTotalParticles);
+                        var batchQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                        BatchNode.TextureAtlas.Dirty = true;
+                        Array.Copy(m_pQuads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
                         m_pQuads = null;
                     }
                 }
@@ -375,54 +374,54 @@ namespace CocosSharp
 
         public CCParticleSystemQuad Clone()
         {
-            var p = new CCParticleSystemQuad(m_uTotalParticles);
+            var p = new CCParticleSystemQuad(TotalParticles);
 
             // angle
-            p.m_fAngle = m_fAngle;
-            p.m_fAngleVar = m_fAngleVar;
+            p.Angle = Angle;
+            p.AngleVar = AngleVar;
 
             // duration
-            p.m_fDuration = m_fDuration;
+            p.Duration = Duration;
 
             // blend function 
-            p.m_tBlendFunc = m_tBlendFunc;
+            p.BlendFunc = BlendFunc;
 
             // color
-            p.m_tStartColor = m_tStartColor;
-            p.m_tStartColorVar = m_tStartColorVar;
-            p.m_tEndColor = m_tEndColor;
-            p.m_tEndColorVar = m_tEndColorVar;
+            p.StartColor = StartColor;
+            p.StartColorVar = StartColorVar;
+            p.EndColor = EndColor;
+            p.EndColorVar = EndColorVar;
 
             // particle size
-            p.m_fStartSize = m_fStartSize;
-            p.m_fStartSizeVar = m_fStartSizeVar;
-            p.m_fEndSize = m_fEndSize;
-            p.m_fEndSizeVar = m_fEndSizeVar;
+            p.StartSize = StartSize;
+            p.StartSizeVar = StartSizeVar;
+            p.EndSize = EndSize;
+            p.EndSizeVar = EndSizeVar;
 
             // position
             p.Position = Position;
-            p.m_tPosVar = m_tPosVar;
+            p.PositionVar = PositionVar;
 
             // Spinning
-            p.m_fStartSpin = m_fStartSpin;
-            p.m_fStartSpinVar = m_fStartSpinVar;
-            p.m_fEndSpin = m_fEndSpin;
-            p.m_fEndSpinVar = m_fEndSpinVar;
+            p.StartSpin = StartSpin;
+            p.StartSpinVar = StartSpinVar;
+            p.EndSpin = EndSpin;
+            p.EndSpinVar = EndSpinVar;
 
-            p.m_nEmitterMode = m_nEmitterMode;
+            p.EmitterMode = EmitterMode;
 
-            p.modeA = modeA;
-            p.modeB = modeB;
+            p.GravityMode = GravityMode;
+            p.RadialMode = RadialMode;
 
             // life span
-            p.m_fLife = m_fLife;
-            p.m_fLifeVar = m_fLifeVar;
+            p.Life = Life;
+            p.LifeVar = LifeVar;
 
             // emission Rate
-            p.m_fEmissionRate = m_fEmissionRate;
+            p.EmissionRate = EmissionRate;
 
-            p.m_bOpacityModifyRGB = m_bOpacityModifyRGB;
-            p.m_pTexture = m_pTexture;
+            p.OpacityModifyRGB = OpacityModifyRGB;
+            p.Texture = Texture;
 
             p.AutoRemoveOnFinish = AutoRemoveOnFinish;
 

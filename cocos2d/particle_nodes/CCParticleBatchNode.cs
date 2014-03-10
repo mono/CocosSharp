@@ -406,14 +406,14 @@ namespace CocosSharp
 
         private void IncreaseAtlasCapacityTo(int quantity)
         {
-            CCLog.Log("cocos2d: CCParticleBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
+            CCLog.Log("CocosSharp: CCParticleBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
                       TextureAtlas.Capacity,
                       quantity);
 
             if (!TextureAtlas.ResizeCapacity(quantity))
             {
                 // serious problems
-                CCLog.Log("cocos2d: WARNING: Not enough memory to resize the atlas");
+                CCLog.Log("CocosSharp: WARNING: Not enough memory to resize the atlas");
                 Debug.Assert(false, "XXX: CCParticleBatchNode #increaseAtlasCapacity SHALL handle this assert");
             }
         }

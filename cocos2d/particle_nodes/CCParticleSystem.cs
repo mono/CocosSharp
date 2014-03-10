@@ -25,10 +25,6 @@ namespace CocosSharp
     //  cocos2d uses a another approach, but the results are almost identical. 
     //
 
-    /**
-    Structure that contains the values of each particle
-    */
-
     public enum CCEmitterMode
     {
         Gravity,    
@@ -57,7 +53,7 @@ namespace CocosSharp
         CCTexture2D texture;
         CCBlendFunc blendFunc = CCBlendFunc.AlphaBlend;
         GravityMoveMode gravityMode;
-        CircularMoveMode circularMode;
+        RadialMoveMode radialMode;
 
 
         #region Structures
@@ -74,7 +70,7 @@ namespace CocosSharp
             internal bool RotationIsDir { get; set; }
         }
 
-        protected struct CircularMoveMode
+        protected struct RadialMoveMode
         {
             internal float EndRadius { get; set; }
             internal float EndRadiusVar { get; set; }
@@ -87,37 +83,35 @@ namespace CocosSharp
         protected struct CCParticle
         {
             internal int AtlasIndex { get; set; }
-            internal CCColor4F color;
-            internal CCColor4F deltaColor;
 
-            internal float deltaRotation;
-            internal float deltaSize;
+            internal float TimeToLive { get; set; }
+            internal float Rotation { get; set; }
+            internal float Size { get; set; }
+            internal float DeltaRotation { get; set; }
+            internal float DeltaSize { get; set; }
 
-            public ModeA modeA;
-            public ModeB modeB;
-            public CCPoint pos;
-            public float rotation;
-            public float size;
-            public CCPoint startPos;
-            public float timeToLive;
+            internal CCPoint Position { get; set; }
+            internal CCPoint StartPosition { get; set; }
 
-            // Mode A: gravity, direction, radial accel, tangential accel
+            internal CCColor4F Color { get; set; }
+            internal CCColor4F DeltaColor { get; set; }
 
-            public struct ModeA
+            internal GravityParticleMoveMode GravityParticleMode { get; set; }
+            internal RadialParticleMoveMode RadialParticleMode { get; set; }
+
+            internal struct GravityParticleMoveMode
             {
-                public CCPoint dir;
-                public float radialAccel;
-                public float tangentialAccel;
-            };
-                
-            // Mode B: radius mode
+                internal CCPoint Direction { get; set; }
+                internal float RadialAccel { get; set; }
+                internal float TangentialAccel { get; set; }
+            }
 
-            public struct ModeB
+            internal struct RadialParticleMoveMode
             {
-                public float angle;
-                public float degreesPerSecond;
-                public float deltaRadius;
-                public float radius;
+                internal float Angle { get; set; }
+                internal float Radius { get; set; }
+                internal float DegreesPerSecond { get; set; }
+                internal float DeltaRadius { get; set; }
             }
         }
 
@@ -169,6 +163,16 @@ namespace CocosSharp
             get { return (ParticleCount == totalParticles); }
         }
 
+        public virtual int TotalParticles
+        {
+            get { return totalParticles; }
+            set
+            {
+                Debug.Assert(value <= AllocatedParticles, "Particle: resizing particle array only supported for quads");
+                totalParticles = value;
+            }
+        }
+
         public CCBlendFunc BlendFunc
         {
             get { return blendFunc; }
@@ -177,7 +181,7 @@ namespace CocosSharp
                 if (blendFunc.Source != value.Source || blendFunc.Destination != value.Destination)
                 {
                     blendFunc = value;
-                    updateBlendFunc();
+                    UpdateBlendFunc();
                 }
             }
         }
@@ -205,16 +209,6 @@ namespace CocosSharp
             }
         }
 
-        public virtual int TotalParticles
-        {
-            get { return totalParticles; }
-            set
-            {
-                Debug.Assert(value <= AllocatedParticles, "Particle: resizing particle array only supported for quads");
-                totalParticles = value;
-            }
-        }
-
         public virtual CCParticleBatchNode BatchNode
         {
             get { return batchNode; }
@@ -236,8 +230,19 @@ namespace CocosSharp
             }
         }
 
-        // We want to have an explicit ivar for these modes so that
-        // we can set individual structure fields without having to copy the entire struct
+        public virtual CCTexture2D Texture
+        {
+            get { return texture; }
+            set
+            {
+                if (Texture != value)
+                {
+                    texture = value;
+                    UpdateBlendFunc();
+                }
+            }
+        }
+
         protected GravityMoveMode GravityMode 
         { 
             get 
@@ -248,10 +253,14 @@ namespace CocosSharp
             set { gravityMode = value; }
         }
 
-        protected CircularMoveMode CircularMode 
+        protected RadialMoveMode RadialMode 
         { 
-            get { return circularMode; } 
-            set { circularMode = value; }
+            get 
+            { 
+                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
+                return radialMode; 
+            } 
+            set { radialMode = value; }
         }
 
         // Gravity mode
@@ -306,88 +315,41 @@ namespace CocosSharp
 
 
         // Radius mode
+
         public float StartRadius
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.StartRadius;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.StartRadius = value;
-            }
+            get { return RadialMode.StartRadius; }
+            set { radialMode.StartRadius = value; }
         }
 
         public float StartRadiusVar
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.StartRadiusVar;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.StartRadiusVar = value;
-            }
+            get { return RadialMode.StartRadiusVar; }
+            set { radialMode.StartRadiusVar = value; }
         }
 
         public float EndRadius
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.EndRadius;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.EndRadius = value;
-            }
+            get { return RadialMode.EndRadius; }
+            set { radialMode.EndRadius = value; }
         }
 
         public float EndRadiusVar
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.EndRadiusVar;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.EndRadiusVar = value;
-            }
+            get { return RadialMode.EndRadiusVar; }
+            set { radialMode.EndRadiusVar = value; }
         }
 
         public float RotatePerSecond
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.RotatePerSecond;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.RotatePerSecond = value;
-            }
+            get { return RadialMode.RotatePerSecond; }
+            set { radialMode.RotatePerSecond = value; }
         }
 
         public float RotatePerSecondVar
         {
-            get
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                return CircularMode.RotatePerSecondVar;
-            }
-            set
-            {
-                Debug.Assert(EmitterMode == CCEmitterMode.Radius, "Particle Mode should be Radius");
-                circularMode.RotatePerSecondVar = value;
-            }
+            get { return RadialMode.RotatePerSecondVar; }
+            set { radialMode.RotatePerSecondVar = value; }
         }
 
         #endregion Properties
@@ -410,7 +372,30 @@ namespace CocosSharp
             InitWithTotalParticles(numberOfParticles);
         }
 
-        private void InitCCParticleSystem(PlistDictionary dictionary)
+        protected virtual void InitWithTotalParticles(int numberOfParticles)
+        {
+            TotalParticles = numberOfParticles;
+            AllocatedParticles = numberOfParticles;
+
+            BlendFunc = CCBlendFunc.AlphaBlend;
+            PositionType = CCPositionType.Free;
+            EmitterMode = CCEmitterMode.Gravity;
+
+            IsActive = true;
+            AutoRemoveOnFinish = false;
+
+            Particles = new CCParticle[TotalParticles];
+
+            if (BatchNode != null)
+            {
+                for (int i = 0; i < TotalParticles; i++)
+                {
+                    Particles[i].AtlasIndex = i;
+                }
+            }
+        }
+
+        void InitCCParticleSystem(PlistDictionary dictionary)
         {
             int maxParticles = dictionary["maxParticles"].AsInt;
 
@@ -477,9 +462,8 @@ namespace CocosSharp
             EndSpin = dictionary["rotationEnd"].AsFloat;
             EndSpinVar = dictionary["rotationEndVariance"].AsFloat;
 
-            EmitterMode = (CCEmitterMode) dictionary["emitterType"].AsInt;
+            EmitterMode = (CCEmitterMode)dictionary["emitterType"].AsInt;
 
-            // Mode A: Gravity + tangential accel + radial accel
             if (EmitterMode == CCEmitterMode.Gravity)
             {
                 GravityMoveMode newGravityMode = new GravityMoveMode();
@@ -491,28 +475,27 @@ namespace CocosSharp
 
                 newGravityMode.Speed = dictionary["speed"].AsFloat;
                 newGravityMode.SpeedVar = dictionary["speedVariance"].AsFloat;
-
                 newGravityMode.RadialAccel = dictionary["radialAcceleration"].AsFloat;
                 newGravityMode.RadialAccelVar = dictionary["radialAccelVariance"].AsFloat;
-
                 newGravityMode.TangentialAccel = dictionary["tangentialAcceleration"].AsFloat;
                 newGravityMode.TangentialAccelVar = dictionary["tangentialAccelVariance"].AsFloat;
-
                 newGravityMode.RotationIsDir = dictionary["rotationIsDir"].AsBool;
 
                 GravityMode = newGravityMode;
             }
 
-                // or Mode B: radius movement
             else if (EmitterMode == CCEmitterMode.Radius)
             {
-                CircularMoveMode newCircularMode = new CircularMoveMode();
-                newCircularMode.StartRadius = dictionary["maxRadius"].AsFloat;
-                newCircularMode.StartRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
-                newCircularMode.EndRadius = dictionary["minRadius"].AsFloat;
-                newCircularMode.EndRadiusVar = 0.0f;
-                newCircularMode.RotatePerSecond = dictionary["rotatePerSecond"].AsFloat;
-                newCircularMode.RotatePerSecondVar = dictionary["rotatePerSecondVariance"].AsFloat;
+                RadialMoveMode newRadialMode = new RadialMoveMode();
+
+                newRadialMode.StartRadius = dictionary["maxRadius"].AsFloat;
+                newRadialMode.StartRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
+                newRadialMode.EndRadius = dictionary["minRadius"].AsFloat;
+                newRadialMode.EndRadiusVar = 0.0f;
+                newRadialMode.RotatePerSecond = dictionary["rotatePerSecond"].AsFloat;
+                newRadialMode.RotatePerSecondVar = dictionary["rotatePerSecondVariance"].AsFloat;
+
+                RadialMode = newRadialMode;
             }
             else
             {
@@ -520,22 +503,22 @@ namespace CocosSharp
                 return;
             }
 
+            LoadParticleTexture(dictionary);
+        }
 
+        void LoadParticleTexture(PlistDictionary dictionary)
+        {
             // Don't get the internal texture if a batchNode is used
             if (BatchNode == null)
             {
-                // Set a compatible default for the alpha transfer
                 OpacityModifyRGB = false;
 
-                // texture        
-                // Try to get the texture from the cache
                 string textureName = dictionary["textureFileName"].AsString;
 
                 CCTexture2D tex = null;
 
                 if (!string.IsNullOrEmpty(textureName))
                 {
-                    // set not pop-up message box when load image failed
                     bool bNotify = CCFileUtils.IsPopupNotify;
                     CCFileUtils.IsPopupNotify = false;
                     try
@@ -547,7 +530,6 @@ namespace CocosSharp
                         tex = null;
                     }
 
-                    // reset the value of UIImage notify
                     CCFileUtils.IsPopupNotify = bNotify;
                 }
 
@@ -558,17 +540,20 @@ namespace CocosSharp
                 else
                 {
                     string textureData = dictionary["textureImageData"].AsString;
-                    Debug.Assert(!string.IsNullOrEmpty(textureData), string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
+                    Debug.Assert(!string.IsNullOrEmpty(textureData), 
+                        string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
 
                     int dataLen = textureData.Length;
                     if (dataLen != 0)
                     {
 
                         var dataBytes = Convert.FromBase64String(textureData);
-                        Debug.Assert(dataBytes != null, string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
+                        Debug.Assert(dataBytes != null, 
+                            string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
 
                         var imageBytes = Inflate(dataBytes);
-                        Debug.Assert(imageBytes != null, string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
+                        Debug.Assert(imageBytes != null, 
+                            string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
 
                         try
                         {
@@ -578,245 +563,34 @@ namespace CocosSharp
                         {
                             CCLog.Log(ex.ToString());
                             Texture = CCParticleExample.DefaultTexture;
-                            //throw (new NotSupportedException("Embedded textureImageData is a format that this platform does not understand. Use PNG, GIF, or JPEG for your particle systems."));
                         }
                     }
                 }
 
-                Debug.Assert(Texture != null, string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
-            }
-        }
-
-        protected virtual void InitWithTotalParticles(int numberOfParticles)
-        {
-            TotalParticles = numberOfParticles;
-            AllocatedParticles = numberOfParticles;
-
-            BlendFunc = CCBlendFunc.AlphaBlend;
-            PositionType = CCPositionType.Free;
-            EmitterMode = CCEmitterMode.Gravity;
-
-            IsActive = true;
-            AutoRemoveOnFinish = false;
-
-            Particles = new CCParticle[TotalParticles];
-
-            if (BatchNode != null)
-            {
-                for (int i = 0; i < TotalParticles; i++)
-                {
-                    Particles[i].AtlasIndex = i;
-                }
+                Debug.Assert(Texture != null, 
+                    string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
             }
         }
 
         #endregion Constructors
 
 
-        /// <summary>
-        /// Decompresses the given data stream from its source ZIP or GZIP format.
-        /// </summary>
-        /// <param name="dataBytes"></param>
-        /// <returns></returns>
-        private static byte[] Inflate(byte[] dataBytes)
-        {
-
-            byte[] outputBytes = null;
-            var zipInputStream = new ZipInputStream(new MemoryStream(dataBytes));
-
-            if (zipInputStream.CanDecompressEntry) {
-
-                MemoryStream zipoutStream = new MemoryStream();
-#if XBOX
-                byte[] buf = new byte[4096];
-                int amt = -1;
-                while (true)
-                {
-                    amt = zipInputStream.Read(buf, 0, buf.Length);
-                    if (amt == -1)
-                    {
-                        break;
-                    }
-                    zipoutStream.Write(buf, 0, amt);
-                }
-#else
-                zipInputStream.CopyTo(zipoutStream);
-#endif
-                outputBytes = zipoutStream.ToArray();
-            }
-            else {
-
-                try {
-                var gzipInputStream = 
-                    new GZipInputStream(new MemoryStream(dataBytes));
-
-
-                MemoryStream zipoutStream = new MemoryStream();
-
-#if XBOX
-                byte[] buf = new byte[4096];
-                int amt = -1;
-                while (true)
-                {
-                    amt = gzipInputStream.Read(buf, 0, buf.Length);
-                    if (amt == -1)
-                    {
-                        break;
-                    }
-                    zipoutStream.Write(buf, 0, amt);
-                }
-#else
-                gzipInputStream.CopyTo(zipoutStream);
-#endif
-                outputBytes = zipoutStream.ToArray();
-                }
-                catch (Exception exc)
-                {
-                    CCLog.Log("Error decompressing image data: " + exc.Message);
-                }
-
-            }
-
-            return outputBytes;
-        }
-
         public override void OnEnter()
         {
             base.OnEnter();
 
-            // udpate after action in run!
-            Schedule (1);
+            Schedule(1);
         }
 
         public override void OnExit()
         {
-            Unschedule ();
+            Unschedule();
 
             base.OnExit();
         }
 
-        private bool AddParticle()
-        {
-            if (IsFull)
-            {
-                return false;
-            }
 
-            InitParticle(ref Particles[ParticleCount]);
-            ++ParticleCount;
-
-            return true;
-        }
-
-        private void InitParticle(ref CCParticle particle)
-        {
-            // timeToLive
-            // no negative life. prevent division by 0
-            particle.timeToLive = Math.Max(0, Life + LifeVar * CCRandom.Float_Minus1_1());
-
-            // position
-            particle.pos.X = SourcePosition.X + PositionVar.X * CCRandom.Float_Minus1_1();
-            particle.pos.Y = SourcePosition.Y + PositionVar.Y * CCRandom.Float_Minus1_1();
-
-            // Color
-            CCColor4F start;
-            start.R = MathHelper.Clamp(StartColor.R + StartColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
-            start.G = MathHelper.Clamp(StartColor.G + StartColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
-            start.B = MathHelper.Clamp(StartColor.B + StartColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
-            start.A = MathHelper.Clamp(StartColor.A + StartColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
-
-            CCColor4F end;
-            end.R = MathHelper.Clamp(EndColor.R + EndColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
-            end.G = MathHelper.Clamp(EndColor.G + EndColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
-            end.B = MathHelper.Clamp(EndColor.B + EndColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
-            end.A = MathHelper.Clamp(EndColor.A + EndColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
-
-            particle.color = start;
-            particle.deltaColor.R = (end.R - start.R) / particle.timeToLive;
-            particle.deltaColor.G = (end.G - start.G) / particle.timeToLive;
-            particle.deltaColor.B = (end.B - start.B) / particle.timeToLive;
-            particle.deltaColor.A = (end.A - start.A) / particle.timeToLive;
-
-            float startS = StartSize + StartSizeVar * CCRandom.Float_Minus1_1();
-            startS = Math.Max(0, startS); // No negative value
-
-            particle.size = startS;
-
-            if (EndSize == ParticleStartSizeEqualToEndSize)
-            {
-                particle.deltaSize = 0;
-            }
-            else
-            {
-                float endS = EndSize + EndSizeVar * CCRandom.Float_Minus1_1();
-                endS = Math.Max(0, endS); // No negative values
-                particle.deltaSize = (endS - startS) / particle.timeToLive;
-            }
-
-            float startA = StartSpin + StartSpinVar * CCRandom.Float_Minus1_1();
-            float endA = EndSpin + EndSpinVar * CCRandom.Float_Minus1_1();
-            particle.rotation = startA;
-            particle.deltaRotation = (endA - startA) / particle.timeToLive;
-
-            if (PositionType == CCPositionType.Free)
-            {
-                particle.startPos = ConvertToWorldSpace(CCPoint.Zero);
-            }
-            else if (PositionType == CCPositionType.Relative)
-            {
-                particle.startPos = m_obPosition;
-            }
-
-            // direction
-            float a = MathHelper.ToRadians(Angle + AngleVar * CCRandom.Float_Minus1_1());
-
-            // Mode Gravity: A
-            if (EmitterMode == CCEmitterMode.Gravity)
-            {
-                var v = new CCPoint(CCMathHelper.Cos(a), CCMathHelper.Sin(a));
-
-                float s = GravityMode.Speed + GravityMode.SpeedVar * CCRandom.Float_Minus1_1();
-
-                // direction
-                particle.modeA.dir = v * s;
-
-                // radial accel
-                particle.modeA.radialAccel = GravityMode.RadialAccel + GravityMode.RadialAccelVar * CCRandom.Float_Minus1_1();
-
-
-                // tangential accel
-                particle.modeA.tangentialAccel = GravityMode.TangentialAccel + GravityMode.TangentialAccelVar * CCRandom.Float_Minus1_1();
-
-                // rotation is dir
-                if (GravityMode.RotationIsDir)
-                {
-                    particle.rotation = -MathHelper.ToDegrees(CCPoint.ToAngle(particle.modeA.dir));
-                }
-            }
-
-                // Mode Radius: B
-            else
-            {
-                // Set the default diameter of the particle from the source position
-                float startRadius = CircularMode.StartRadius + CircularMode.StartRadiusVar * CCRandom.Float_Minus1_1();
-                float endRadius = CircularMode.EndRadius + CircularMode.EndRadiusVar * CCRandom.Float_Minus1_1();
-
-                particle.modeB.radius = startRadius;
-
-                if (CircularMode.EndRadius == ParticleStartRadiusEqualToEndRadius)
-                {
-                    particle.modeB.deltaRadius = 0;
-                }
-                else
-                {
-                    particle.modeB.deltaRadius = (endRadius - startRadius) / particle.timeToLive;
-                }
-
-                particle.modeB.angle = a;
-                particle.modeB.degreesPerSecond =
-                    MathHelper.ToRadians(CircularMode.RotatePerSecond + CircularMode.RotatePerSecondVar * CCRandom.Float_Minus1_1());
-            }
-        }
+        #region Particle management
 
         public void StopSystem()
         {
@@ -831,18 +605,127 @@ namespace CocosSharp
             Elapsed = 0;
             for (int i = 0; i < ParticleCount; ++i)
             {
-                Particles[i].timeToLive = 0;
+                Particles[i].TimeToLive = 0;
             }
         }
 
-        private bool UpdateParticle(ref CCParticle p, float dt)
+        bool AddParticle()
         {
-            // life
-            p.timeToLive -= dt;
-
-            if (p.timeToLive > 0)
+            if (IsFull)
             {
-                // Mode A: gravity, direction, tangential accel & radial accel
+                return false;
+            }
+
+            InitParticle(ref Particles[ParticleCount]);
+            ++ParticleCount;
+
+            return true;
+        }
+
+        void InitParticle(ref CCParticle particle)
+        {
+            float timeToLive = Math.Max(0, Life + LifeVar * CCRandom.Float_Minus1_1());
+            particle.TimeToLive = timeToLive;
+
+            CCPoint position;
+            position.X = SourcePosition.X + PositionVar.X * CCRandom.Float_Minus1_1();
+            position.Y = SourcePosition.Y + PositionVar.Y * CCRandom.Float_Minus1_1();
+            particle.Position = position;
+
+            CCColor4F start;
+            start.R = MathHelper.Clamp(StartColor.R + StartColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
+            start.G = MathHelper.Clamp(StartColor.G + StartColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
+            start.B = MathHelper.Clamp(StartColor.B + StartColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
+            start.A = MathHelper.Clamp(StartColor.A + StartColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
+            particle.Color = start;
+
+            CCColor4F end;
+            end.R = MathHelper.Clamp(EndColor.R + EndColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
+            end.G = MathHelper.Clamp(EndColor.G + EndColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
+            end.B = MathHelper.Clamp(EndColor.B + EndColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
+            end.A = MathHelper.Clamp(EndColor.A + EndColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
+
+            CCColor4F deltaColor;
+            deltaColor.R = (end.R - start.R) / timeToLive;
+            deltaColor.G = (end.G - start.G) / timeToLive;
+            deltaColor.B = (end.B - start.B) / timeToLive;
+            deltaColor.A = (end.A - start.A) / timeToLive;
+            particle.DeltaColor = deltaColor;
+
+            float startSize = Math.Max(0, StartSize + StartSizeVar * CCRandom.Float_Minus1_1());
+            particle.Size = startSize;
+
+            if (EndSize == ParticleStartSizeEqualToEndSize)
+            {
+                particle.DeltaSize = 0;
+            }
+            else
+            {
+                float endS = EndSize + EndSizeVar * CCRandom.Float_Minus1_1();
+                endS = Math.Max(0, endS);
+                particle.DeltaSize = (endS - startSize) / timeToLive;
+            }
+
+            float startSpin = StartSpin + StartSpinVar * CCRandom.Float_Minus1_1();
+            float endSpin = EndSpin + EndSpinVar * CCRandom.Float_Minus1_1();
+            particle.Rotation = startSpin;
+            particle.DeltaRotation = (endSpin - startSpin) / timeToLive;
+
+            if (PositionType == CCPositionType.Free)
+            {
+                particle.StartPosition = ConvertToWorldSpace(CCPoint.Zero);
+            }
+            else if (PositionType == CCPositionType.Relative)
+            {
+                particle.StartPosition = m_obPosition;
+            }
+
+            // direction
+            float a = MathHelper.ToRadians(Angle + AngleVar * CCRandom.Float_Minus1_1());
+
+            if(EmitterMode == CCEmitterMode.Gravity)
+            {
+                CCPoint v = new CCPoint(CCMathHelper.Cos(a), CCMathHelper.Sin(a));
+                float s = GravityMode.Speed + GravityMode.SpeedVar * CCRandom.Float_Minus1_1();
+
+                CCParticle.GravityParticleMoveMode gravParticleMode = new CCParticle.GravityParticleMoveMode();
+                gravParticleMode.Direction = v * s;
+                gravParticleMode.RadialAccel = GravityMode.RadialAccel + GravityMode.RadialAccelVar * CCRandom.Float_Minus1_1();
+                gravParticleMode.TangentialAccel = GravityMode.TangentialAccel + GravityMode.TangentialAccelVar * CCRandom.Float_Minus1_1();
+                particle.GravityParticleMode = gravParticleMode;
+
+                if (GravityMode.RotationIsDir)
+                {
+                    particle.Rotation = -MathHelper.ToDegrees(CCPoint.ToAngle(particle.GravityParticleMode.Direction));
+                }
+            }
+
+            else
+            {
+                // Set the default diameter of the particle from the source position
+                float startRadius = RadialMode.StartRadius + RadialMode.StartRadiusVar * CCRandom.Float_Minus1_1();
+                float endRadius = RadialMode.EndRadius + RadialMode.EndRadiusVar * CCRandom.Float_Minus1_1();
+
+                CCParticle.RadialParticleMoveMode radialParticleMode = new CCParticle.RadialParticleMoveMode();
+                radialParticleMode.Radius = startRadius;
+
+                radialParticleMode.DeltaRadius = (RadialMode.EndRadius == ParticleStartRadiusEqualToEndRadius) ? 
+                    0 : (endRadius - startRadius) / timeToLive;
+                    
+                radialParticleMode.Angle = a;
+                radialParticleMode.DegreesPerSecond =
+                    MathHelper.ToRadians(RadialMode.RotatePerSecond + RadialMode.RotatePerSecondVar * CCRandom.Float_Minus1_1());
+
+                particle.RadialParticleMode = radialParticleMode;
+            }
+        }
+
+        bool UpdateParticle(ref CCParticle p, float dt)
+        {
+            p.TimeToLive -= dt;
+
+            if (p.TimeToLive > 0)
+            {
                 if (EmitterMode == CCEmitterMode.Gravity)
                 {
                     float radial_x = 0;
@@ -851,8 +734,9 @@ namespace CocosSharp
                     float tmp_x, tmp_y;
                     float tangential_x, tangential_y;
 
-                    float x = p.pos.X;
-                    float y = p.pos.Y;
+                    CCPoint pos = p.Position;
+                    float x = pos.X;
+                    float y = pos.Y;
 
                     if (x != 0 || y != 0)
                     {
@@ -861,164 +745,79 @@ namespace CocosSharp
                         radial_x = x * l;
                         radial_y = y * l;
                     }
+
                     tangential_x = radial_x;
                     tangential_y = radial_y;
 
-                    //radial = CCPoint.ccpMult(radial, p.modeA.RadialAccel);
-                    radial_x *= p.modeA.radialAccel;
-                    radial_y *= p.modeA.radialAccel;
+                    CCParticle.GravityParticleMoveMode gravityMode = p.GravityParticleMode;
 
+                    float radialAccel = gravityMode.RadialAccel;
+                    radial_x *= radialAccel;
+                    radial_y *= radialAccel;
 
-                    // tangential acceleration
+                    float tangentAccel = gravityMode.TangentialAccel;
                     float newy = tangential_x;
                     tangential_x = -tangential_y;
                     tangential_y = newy;
-                    //tangential = CCPoint.ccpMult(tangential, p.modeA.TangentialAccel);
-                    tangential_x *= p.modeA.tangentialAccel;
-                    tangential_y *= p.modeA.tangentialAccel;
+                    tangential_x *= tangentAccel;
+                    tangential_y *= tangentAccel;
 
-                    // (gravity + radial + tangential) * dt
-                    //tmp = CCPoint.ccpAdd(CCPoint.ccpAdd(radial, tangential), modeA.Gravity);
-                    //tmp = CCPoint.ccpMult(tmp, dt);
-                    //p.modeA.dir = CCPoint.ccpAdd(p.modeA.dir, tmp);
-                    //tmp = CCPoint.ccpMult(p.modeA.dir, dt);
-                    //p.pos = CCPoint.ccpAdd(p.pos, tmp);
+                    CCPoint gravity = GravityMode.Gravity;
+                    tmp_x = (radial_x + tangential_x + gravity.X) * dt;
+                    tmp_y = (radial_y + tangential_y + gravity.Y) * dt;
 
-                    tmp_x = (radial_x + tangential_x + GravityMode.Gravity.X) * dt;
-                    tmp_y = (radial_y + tangential_y + GravityMode.Gravity.Y) * dt;
+                    CCPoint direction = gravityMode.Direction;
+                    direction.X += tmp_x;
+                    direction.Y += tmp_y;
+                    gravityMode.Direction = direction;
+                    p.GravityParticleMode = gravityMode;
 
-                    p.modeA.dir.X += tmp_x;
-                    p.modeA.dir.Y += tmp_y;
-
-                    p.pos.X += p.modeA.dir.X * dt;
-                    p.pos.Y += p.modeA.dir.Y * dt;
+                    CCPoint position = p.Position;
+                    position.X += direction.X * dt;
+                    position.Y += direction.Y * dt;
+                    p.Position = position;
                 }
 
-                    // Mode B: radius movement
                 else
                 {
-                    // Update the angle and radius of the particle.
-                    p.modeB.angle += p.modeB.degreesPerSecond * dt;
-                    p.modeB.radius += p.modeB.deltaRadius * dt;
+                    CCParticle.RadialParticleMoveMode radialMode = p.RadialParticleMode;
 
-                    p.pos.X = -CCMathHelper.Cos(p.modeB.angle) * p.modeB.radius;
-                    p.pos.Y = -CCMathHelper.Sin(p.modeB.angle) * p.modeB.radius;
+                    radialMode.Angle += radialMode.DegreesPerSecond * dt;
+                    radialMode.Radius += radialMode.DeltaRadius * dt;
+
+                    CCPoint position = p.Position;
+                    position.X = -CCMathHelper.Cos(radialMode.Angle) * radialMode.Radius;
+                    position.Y = -CCMathHelper.Sin(radialMode.Angle) * radialMode.Radius;
+                    p.Position = position;
+
+                    p.RadialParticleMode = radialMode;
                 }
 
-                // color
-                p.color.R += (p.deltaColor.R * dt);
-                p.color.G += (p.deltaColor.G * dt);
-                p.color.B += (p.deltaColor.B * dt);
-                p.color.A += (p.deltaColor.A * dt);
+                CCColor4F color = p.Color;
+                color.R += (p.DeltaColor.R * dt);
+                color.G += (p.DeltaColor.G * dt);
+                color.B += (p.DeltaColor.B * dt);
+                color.A += (p.DeltaColor.A * dt);
+                p.Color = color;
 
-                // size
-                p.size += (p.deltaSize * dt);
-                if (p.size < 0)
+                p.Size += (p.DeltaSize * dt);
+                if (p.Size < 0)
                 {
-                    p.size = 0;
+                    p.Size = 0;
                 }
 
-                // angle
-                p.rotation += (p.deltaRotation * dt);
+                p.Rotation += (p.DeltaRotation * dt);
 
                 return true;
             }
+
             return false;
         }
 
-
-        // ParticleSystem - MainLoop
-        public override void Update(float dt)
-        {
-            {
-                if (IsActive && EmissionRate > 0)
-                {
-                    float rate = 1.0f / EmissionRate;
-                    //issue #1201, prevent bursts of particles, due to too high emitCounter
-                    if (ParticleCount < TotalParticles)
-                    {
-                        EmitCounter += dt;
-                    }
-
-                    while (ParticleCount < TotalParticles && EmitCounter > rate)
-                    {
-                        InitParticle(ref Particles[ParticleCount]);
-                        ++ParticleCount;
-                        EmitCounter -= rate;
-                    }
-
-                    Elapsed += dt;
-
-                    if (Duration != -1 && Duration < Elapsed)
-                    {
-                        StopSystem();
-                    }
-                }
-
-                int index = 0;
-
-                /*
-                CCPoint currentPosition = CCPoint.Zero;
-                if (m_ePositionType == CCPositionType.kCCPositionTypeFree)
-                {
-                    currentPosition = convertToWorldSpace(CCPoint.Zero);
-                }
-                else if (m_ePositionType == CCPositionType.kCCPositionTypeRelative)
-                {
-                    currentPosition = m_tPosition;
-                }
-                */
+        #endregion Particle management
 
 
-                if (m_bVisible)
-                {
-                    while (index < ParticleCount)
-                    {
-                        if (UpdateParticle(ref Particles[index], dt))
-                        {
-                            // update particle counter
-                            ++index;
-                        }
-                        else
-                        {
-                            // life < 0
-                            int currentIndex = Particles[index].AtlasIndex;
-                            if (index != ParticleCount - 1)
-                            {
-                                Particles[index] = Particles[ParticleCount - 1];
-                            }
-
-                            if (BatchNode != null)
-                            {
-                                //disable the switched particle
-                                BatchNode.DisableParticle(AtlasIndex + currentIndex);
-
-                                //switch indexes
-                                Particles[ParticleCount - 1].AtlasIndex = currentIndex;
-                            }
-
-                            --ParticleCount;
-
-                            if (ParticleCount == 0 && AutoRemoveOnFinish)
-                            {
-                                Unschedule ();
-                                m_pParent.RemoveChild(this, true);
-                                return;
-                            }
-                        }
-                    } //while
-                }
-            }
-
-            UpdateQuadsWithParticles();
-
-            if (BatchNode == null)
-            {
-                PostStep();
-            }
-
-            //CC_PROFILER_STOP_CATEGORY(kCCProfilerCategoryParticles , "CCParticleSystem - update");
-        }
+        #region Updating system
 
         public void UpdateWithNoTime()
         {
@@ -1035,22 +834,84 @@ namespace CocosSharp
             // should be overriden
         }
 
-        #region ParticleSystem - CCTexture protocol
-
-        public virtual CCTexture2D Texture
+        // ParticleSystem - MainLoop
+        public override void Update(float dt)
         {
-            get { return texture; }
-            set
+            if (IsActive && EmissionRate > 0)
             {
-                if (Texture != value)
+                float rate = 1.0f / EmissionRate;
+
+                //issue #1201, prevent bursts of particles, due to too high emitCounter
+                if (ParticleCount < TotalParticles)
                 {
-                    texture = value;
-                    updateBlendFunc();
+                    EmitCounter += dt;
                 }
+
+                while (ParticleCount < TotalParticles && EmitCounter > rate)
+                {
+                    InitParticle(ref Particles[ParticleCount]);
+                    ++ParticleCount;
+                    EmitCounter -= rate;
+                }
+
+                Elapsed += dt;
+
+                if (Duration != -1 && Duration < Elapsed)
+                {
+                    StopSystem();
+                }
+            }
+
+            int index = 0;
+
+            if (Visible)
+            {
+                while (index < ParticleCount)
+                {
+                    if (UpdateParticle(ref Particles[index], dt))
+                    {
+                        // update particle counter
+                        ++index;
+                    }
+                    else
+                    {
+                        // life < 0
+                        int currentIndex = Particles[index].AtlasIndex;
+                        if (index != ParticleCount - 1)
+                        {
+                            Particles[index] = Particles[ParticleCount - 1];
+                        }
+
+                        if (BatchNode != null)
+                        {
+                            //disable the switched particle
+                            BatchNode.DisableParticle(AtlasIndex + currentIndex);
+
+                            //switch indexes
+                            Particles[ParticleCount - 1].AtlasIndex = currentIndex;
+                        }
+
+                        --ParticleCount;
+
+                        if (ParticleCount == 0 && AutoRemoveOnFinish)
+                        {
+                            Unschedule();
+                            Parent.RemoveChild(this, true);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            UpdateQuadsWithParticles();
+
+            if (BatchNode == null)
+            {
+                PostStep();
             }
         }
 
-        private void updateBlendFunc()
+        void UpdateBlendFunc()
         {
             Debug.Assert(BatchNode == null, "Can't change blending functions when the particle is being batched");
 
@@ -1074,8 +935,72 @@ namespace CocosSharp
             }
         }
 
-        #endregion
+        #endregion Updating system
 
+        /// <summary>
+        /// Decompresses the given data stream from its source ZIP or GZIP format.
+        /// </summary>
+        /// <param name="dataBytes"></param>
+        /// <returns></returns>
+        private static byte[] Inflate(byte[] dataBytes)
+        {
 
+            byte[] outputBytes = null;
+            var zipInputStream = new ZipInputStream(new MemoryStream(dataBytes));
+
+            if (zipInputStream.CanDecompressEntry) 
+            {
+                MemoryStream zipoutStream = new MemoryStream();
+#if XBOX
+                byte[] buf = new byte[4096];
+                int amt = -1;
+                while (true)
+                {
+                    amt = zipInputStream.Read(buf, 0, buf.Length);
+                    if (amt == -1)
+                    {
+                        break;
+                    }
+                    zipoutStream.Write(buf, 0, amt);
+                }
+#else
+                zipInputStream.CopyTo(zipoutStream);
+#endif
+                outputBytes = zipoutStream.ToArray();
+            }
+            else 
+            {
+                try 
+                {
+                    var gzipInputStream = new GZipInputStream(new MemoryStream(dataBytes));
+
+                    MemoryStream zipoutStream = new MemoryStream();
+
+#if XBOX
+                    byte[] buf = new byte[4096];
+                    int amt = -1;
+                    while (true)
+                    {
+                        amt = gzipInputStream.Read(buf, 0, buf.Length);
+                        if (amt == -1)
+                        {
+                            break;
+                        }
+                        zipoutStream.Write(buf, 0, amt);
+                    }
+#else
+                    gzipInputStream.CopyTo(zipoutStream);
+#endif
+                    outputBytes = zipoutStream.ToArray();
+                }
+                    
+                catch (Exception exc)
+                {
+                    CCLog.Log("Error decompressing image data: " + exc.Message);
+                }
+            }
+
+            return outputBytes;
+        }
     }
 }
