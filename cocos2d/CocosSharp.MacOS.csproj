@@ -132,7 +132,6 @@
     <Compile Include="Actions\action_instants\CCFlipY.cs" />
     <Compile Include="Actions\action_instants\CCHide.cs" />
     <Compile Include="Actions\action_instants\CCPlace.cs" />
-    <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
     <Compile Include="Actions\action_instants\CCReuseGrid.cs" />
     <Compile Include="Actions\action_instants\CCShow.cs" />
     <Compile Include="Actions\action_instants\CCStopGrid.cs" />
@@ -442,6 +441,7 @@
     <Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
     <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
+    <Compile Include="Actions\action_instants\CCRemoveSelf.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
