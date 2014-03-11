@@ -1280,8 +1280,9 @@ namespace tests
             m_background = null;
 
             var system = new CCParticleSystemQuad("Particles/SpinningPeas");
-            system.SetTextureWithRect(CCTextureCache.SharedTextureCache.AddImage("Images/particles"),
-                                      new CCRect(0, 0, 32, 32));
+            system.Texture = (CCTextureCache.SharedTextureCache.AddImage ("Images/particles"));
+            system.TextureRect = new CCRect(0, 0, 32, 32);
+
             AddChild(system, 10);
             m_emitter = system;
 
@@ -1294,7 +1295,8 @@ namespace tests
             m_nIndex = (m_nIndex + 1) % 4;
             var rect = new CCRect(m_nIndex * 32, 0, 32, 32);
             var system = (CCParticleSystemQuad) m_emitter;
-            system.SetTextureWithRect(m_emitter.Texture, rect);
+            system.Texture = m_emitter.Texture;
+            system.TextureRect = rect;
         }
 
         public override string title()

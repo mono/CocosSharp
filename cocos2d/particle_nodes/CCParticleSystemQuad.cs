@@ -7,7 +7,117 @@ namespace CocosSharp
 {
     public class CCParticleSystemQuad : CCParticleSystem
     {
-        private CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads; // quads to be rendered
+        // ivars
+        CCRawList<CCV3F_C4B_T2F_Quad> quads;
+        CCPoint currentPosition;
+
+
+        #region Properties
+
+        public override int TotalParticles
+        {
+            set
+            {
+                // If we are setting the total numer of particles to a number higher
+                // than what is allocated, we need to allocate new arrays
+                if (value > AllocatedParticles)
+                {
+                    Particles = new CCParticle[value];
+
+                    if (quads == null)
+                    {
+                        quads = new CCRawList<CCV3F_C4B_T2F_Quad>(value); 
+                    }
+                    else
+                    {
+                        quads.Capacity = value;
+                    }
+
+                    AllocatedParticles = value;
+                    base.TotalParticles = value;
+
+                    if(BatchNode != null)
+                    {
+                        for (int i = 0; i < TotalParticles; i++)
+                        {
+                            Particles[i].AtlasIndex = i;
+                        }
+                    }
+                }
+                else
+                {
+                    base.TotalParticles = value;
+                }
+            }
+        }
+
+        public override CCTexture2D Texture
+        {
+            set
+            {
+                CCSize s = value.ContentSize;
+
+                // Only update the texture if is different from the current one
+                if (Texture == null || value.Name != Texture.Name)
+                {
+                    base.Texture = value;
+
+                    TextureRect = new CCRect(0, 0, s.Width, s.Height);
+                }
+
+            }
+        }
+
+        public CCRect TextureRect
+        {
+            set { UpdateTexCoords(value); }
+        }
+
+        public CCSpriteFrame SpriteFrame
+        {
+            set {
+
+                Debug.Assert (value.OffsetInPixels.Equals(CCPoint.Zero),
+                    "QuadParticle only supports SpriteFrames with no offsets");
+
+                // update texture before updating texture rect
+                if (Texture != null || value.Texture.Name != Texture.Name) 
+                {
+                    Texture = value.Texture;
+                }
+            }
+        }
+
+        public override CCParticleBatchNode BatchNode
+        {
+            set
+            {
+                if (BatchNode != value)
+                {
+                    CCParticleBatchNode oldBatch = BatchNode;
+
+                    base.BatchNode = value;
+
+                    if (value == null)
+                    {
+                        Debug.Assert(BatchNode == null, "Memory should not be alloced when not using batchNode");
+                        Debug.Assert((quads == null), "Memory already alloced");
+                        quads = new CCRawList<CCV3F_C4B_T2F_Quad>(TotalParticles);
+                        Texture = oldBatch.Texture;
+                    }
+
+                    else if (oldBatch == null)
+                    {
+                        var batchQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                        BatchNode.TextureAtlas.Dirty = true;
+                        Array.Copy(quads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
+                        quads = null;
+                    }
+                }
+            }
+        }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -21,24 +131,29 @@ namespace CocosSharp
         }
 
         public CCParticleSystemQuad(string plistFile) : base(plistFile)
-        { 
-        }
-
-        protected override void InitWithTotalParticles(int numberOfParticles)
         {
-            base.InitWithTotalParticles(numberOfParticles);
-
-            AllocMemory();
         }
 
         #endregion Constructors
 
 
+        protected override void Draw()
+        {
+            Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
+
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.DrawQuads(quads, 0, ParticleCount);
+        }
+
+
+        #region Updating quads
+
         // pointRect should be in Texture coordinates, not pixel coordinates
-        private void InitTexCoordsWithRect(CCRect pointRect)
+        void UpdateTexCoords(CCRect pointRect)
         {
             // convert to Tex coords
-            var rect = pointRect.PointsToPixels();
+            CCRect rect = pointRect.PointsToPixels();
 
             float wide = pointRect.Size.Width;
             float high = pointRect.Size.Height;
@@ -62,86 +177,48 @@ namespace CocosSharp
 #endif
             // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
-            // Important. Texture in cocos2d are inverted, so the Y component should be inverted
+            // Important. Textures in CocosSharp are inverted, so the Y component should be inverted
             float tmp = top;
             top = bottom;
             bottom = tmp;
 
-            CCV3F_C4B_T2F_Quad[] quads;
+            CCV3F_C4B_T2F_Quad[] rawQuads;
             int start, end;
             if (BatchNode != null)
             {
-                quads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                rawQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
                 BatchNode.TextureAtlas.Dirty = true;
                 start = AtlasIndex;
                 end = AtlasIndex + TotalParticles;
             }
             else
             {
-                quads = m_pQuads.Elements;
+                rawQuads = quads.Elements;
                 start = 0;
                 end = TotalParticles;
             }
 
             for (int i = start; i < end; i++)
             {
-                // bottom-left vertex:
-                quads[i].BottomLeft.TexCoords.U = left;
-                quads[i].BottomLeft.TexCoords.V = bottom;
-                // bottom-right vertex:
-                quads[i].BottomRight.TexCoords.U = right;
-                quads[i].BottomRight.TexCoords.V = bottom;
-                // top-left vertex:
-                quads[i].TopLeft.TexCoords.U = left;
-                quads[i].TopLeft.TexCoords.V = top;
-                // top-right vertex:
-                quads[i].TopRight.TexCoords.U = right;
-                quads[i].TopRight.TexCoords.V = top;
+                rawQuads[i].BottomLeft.TexCoords.U = left;
+                rawQuads[i].BottomLeft.TexCoords.V = bottom;
+                rawQuads[i].BottomRight.TexCoords.U = right;
+                rawQuads[i].BottomRight.TexCoords.V = bottom;
+                rawQuads[i].TopLeft.TexCoords.U = left;
+                rawQuads[i].TopLeft.TexCoords.V = top;
+                rawQuads[i].TopRight.TexCoords.U = right;
+                rawQuads[i].TopRight.TexCoords.V = top;
             }
         }
 
-        public void SetTextureWithRect(CCTexture2D texture, CCRect rect)
-        {
-            // Only update the texture if is different from the current one
-            if (Texture == null || texture.Name != Texture.Name)
-            {
-                base.Texture = texture;
-            }
-
-            InitTexCoordsWithRect(rect);
-        }
-
-        public override CCTexture2D Texture
-        {
-            set
-            {
-                CCSize s = value.ContentSize;
-                SetTextureWithRect(value, new CCRect(0, 0, s.Width, s.Height));
-            }
-        }
-
-        public void SetDisplayFrame(CCSpriteFrame spriteFrame)
-        {
-            Debug.Assert(spriteFrame.OffsetInPixels.Equals(CCPoint.Zero),
-                         "QuadParticle only supports SpriteFrames with no offsets");
-
-            // update texture before updating texture rect
-            if (Texture != null || spriteFrame.Texture.Name != Texture.Name)
-            {
-                Texture = spriteFrame.Texture;
-            }
-        }
-
-        private static CCPoint s_currentPosition;
-
-        private void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticle particle)
+        void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticle particle)
         {
             CCPoint newPosition;
 
-            if (PositionType == CCPositionType.Free || PositionType == CCPositionType.Relative)
+            if(PositionType == CCPositionType.Free || PositionType == CCPositionType.Relative)
             {
-                newPosition.X = particle.Position.X - (s_currentPosition.X - particle.StartPosition.X);
-                newPosition.Y = particle.Position.Y - (s_currentPosition.Y - particle.StartPosition.Y);
+                newPosition.X = particle.Position.X - (currentPosition.X - particle.StartPosition.X);
+                newPosition.Y = particle.Position.Y - (currentPosition.Y - particle.StartPosition.Y);
             }
             else
             {
@@ -150,7 +227,7 @@ namespace CocosSharp
 
             // translate newPos to correct position, since matrix transform isn't performed in batchnode
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
-            if (BatchNode != null)
+            if(BatchNode != null)
             {
                 newPosition.X += m_obPosition.X;
                 newPosition.Y += m_obPosition.Y;
@@ -158,7 +235,7 @@ namespace CocosSharp
 
             CCColor4B color;
             
-            if  (OpacityModifyRGB)
+            if(OpacityModifyRGB)
             {
                 color.R = (byte) (particle.Color.R * particle.Color.A * 255);
                 color.G = (byte) (particle.Color.G * particle.Color.A * 255);
@@ -239,33 +316,33 @@ namespace CocosSharp
         }
 
 
-        public override void UpdateQuadsWithParticles()
+        public override void UpdateQuads()
         {
-            if (!m_bVisible)
+            if (!Visible)
             {
                 return;
             }
 
-            s_currentPosition = CCPoint.Zero;
+            currentPosition = CCPoint.Zero;
             
             if (PositionType == CCPositionType.Free)
             {
-                s_currentPosition = ConvertToWorldSpace(CCPoint.Zero);
+                currentPosition = ConvertToWorldSpace(CCPoint.Zero);
             }
             else if (PositionType == CCPositionType.Relative)
             {
-                s_currentPosition = m_obPosition;
+                currentPosition = Position;
             }
 
-            CCV3F_C4B_T2F_Quad[] quads;
+            CCV3F_C4B_T2F_Quad[] rawQuads;
             if (BatchNode != null)
             {
-                quads = BatchNode.TextureAtlas.m_pQuads.Elements;
+                rawQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
                 BatchNode.TextureAtlas.Dirty = true;
             }
             else
             {
-                quads = m_pQuads.Elements;
+                rawQuads = quads.Elements;
             }
 
             var count = ParticleCount;
@@ -273,159 +350,18 @@ namespace CocosSharp
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref quads[AtlasIndex + Particles[i].AtlasIndex], ref Particles[i]);
+                    UpdateQuad(ref rawQuads[AtlasIndex + Particles[i].AtlasIndex], ref Particles[i]);
                 }
             }
             else
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref quads[i], ref Particles[i]);
+                    UpdateQuad(ref rawQuads[i], ref Particles[i]);
                 }
             }
         }
 
-        // overriding draw method
-        protected override void Draw()
-        {
-            Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
-            //Debug.Assert(m_uParticleIdx == ParticleCount, "Abnormal error in particle quad");
-
-            //updateQuadsWithParticles();
-
-            CCDrawManager.BindTexture(Texture);
-            CCDrawManager.BlendFunc(BlendFunc);
-            CCDrawManager.DrawQuads(m_pQuads, 0, ParticleCount);
-        }
-
-        public override int TotalParticles
-        {
-            set
-            {
-                // If we are setting the total numer of particles to a number higher
-                // than what is allocated, we need to allocate new arrays
-                if (value > AllocatedParticles)
-                {
-                    Particles = new CCParticle[value];
-
-                    if (m_pQuads == null)
-                    {
-                        m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(value); 
-                    }
-                    else
-                    {
-                        m_pQuads.Capacity = value;
-                    }
-
-                    base.TotalParticles = value;
-
-                    // Init particles
-                    if (BatchNode != null)
-                    {
-                        for (int i = 0; i < TotalParticles; i++)
-                        {
-                            Particles[i].AtlasIndex = i;
-                        }
-                    }
-                }
-                else
-                {
-                    base.TotalParticles = value;
-                }
-            }
-        }
-
-        private bool AllocMemory()
-        {
-            Debug.Assert(BatchNode == null, "Memory should not be alloced when not using batchNode");
-            Debug.Assert((m_pQuads == null), "Memory already alloced");
-            m_pQuads = new CCRawList<CCV3F_C4B_T2F_Quad>(TotalParticles);
-            return true;
-        }
-
-        public override CCParticleBatchNode BatchNode
-        {
-            set
-            {
-                if (BatchNode != value)
-                {
-                    CCParticleBatchNode oldBatch = BatchNode;
-
-                    base.BatchNode = value;
-
-                    // NEW: is self render ?
-                    if (value == null)
-                    {
-                        AllocMemory();
-                        Texture = oldBatch.Texture;
-                    }
-                        // OLD: was it self render ? cleanup
-                    else if (oldBatch == null)
-                    {
-                        // copy current state to batch
-                        var batchQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
-                        BatchNode.TextureAtlas.Dirty = true;
-                        Array.Copy(m_pQuads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
-                        m_pQuads = null;
-                    }
-                }
-            }
-        }
-
-        public CCParticleSystemQuad Clone()
-        {
-            var p = new CCParticleSystemQuad(TotalParticles);
-
-            // angle
-            p.Angle = Angle;
-            p.AngleVar = AngleVar;
-
-            // duration
-            p.Duration = Duration;
-
-            // blend function 
-            p.BlendFunc = BlendFunc;
-
-            // color
-            p.StartColor = StartColor;
-            p.StartColorVar = StartColorVar;
-            p.EndColor = EndColor;
-            p.EndColorVar = EndColorVar;
-
-            // particle size
-            p.StartSize = StartSize;
-            p.StartSizeVar = StartSizeVar;
-            p.EndSize = EndSize;
-            p.EndSizeVar = EndSizeVar;
-
-            // position
-            p.Position = Position;
-            p.PositionVar = PositionVar;
-
-            // Spinning
-            p.StartSpin = StartSpin;
-            p.StartSpinVar = StartSpinVar;
-            p.EndSpin = EndSpin;
-            p.EndSpinVar = EndSpinVar;
-
-            p.EmitterMode = EmitterMode;
-
-            p.GravityMode = GravityMode;
-            p.RadialMode = RadialMode;
-
-            // life span
-            p.Life = Life;
-            p.LifeVar = LifeVar;
-
-            // emission Rate
-            p.EmissionRate = EmissionRate;
-
-            p.OpacityModifyRGB = OpacityModifyRGB;
-            p.Texture = Texture;
-
-            p.AutoRemoveOnFinish = AutoRemoveOnFinish;
-
-            return p;
-        }
+        #endregion Updating quads
     }
 }

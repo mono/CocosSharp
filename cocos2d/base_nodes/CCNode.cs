@@ -444,6 +444,7 @@ namespace CocosSharp
         public CCRawList<CCNode> Children
         {
             get { return m_pChildren; }
+            protected set { m_pChildren = value; }
         }
 
         public int ChildrenCount

@@ -124,7 +124,7 @@ namespace CocosSharp
         public bool AutoRemoveOnFinish { get; set; }
         public bool OpacityModifyRGB { get; set; }
 
-        protected int AllocatedParticles { get; private set; }
+        protected int AllocatedParticles { get; set; }
         public int ParticleCount { get; private set; }
         public int AtlasIndex { get; set; }
 
@@ -361,18 +361,12 @@ namespace CocosSharp
         {  
         }
 
-        public CCParticleSystem(string plistFile)
+        public CCParticleSystem(string plistFile) 
+            : this(CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile).Root.AsDictionary)
         {
-            PlistDocument doc = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile);
-            InitCCParticleSystem(doc.Root.AsDictionary);
         }
 
         protected CCParticleSystem(int numberOfParticles)
-        {
-            InitWithTotalParticles(numberOfParticles);
-        }
-
-        protected virtual void InitWithTotalParticles(int numberOfParticles)
         {
             TotalParticles = numberOfParticles;
             AllocatedParticles = numberOfParticles;
@@ -395,12 +389,8 @@ namespace CocosSharp
             }
         }
 
-        void InitCCParticleSystem(PlistDictionary dictionary)
+        CCParticleSystem(PlistDictionary dictionary) : this(dictionary["maxParticles"].AsInt)
         {
-            int maxParticles = dictionary["maxParticles"].AsInt;
-
-            InitWithTotalParticles(maxParticles);
-
             Duration = dictionary["duration"].AsFloat;
             Life = dictionary["particleLifespan"].AsFloat;
             LifeVar = dictionary["particleLifespanVariance"].AsFloat;
@@ -824,7 +814,7 @@ namespace CocosSharp
             Update(0.0f);
         }
 
-        public virtual void UpdateQuadsWithParticles()
+        public virtual void UpdateQuads()
         {
             // should be overriden
         }
@@ -903,7 +893,7 @@ namespace CocosSharp
                 }
             }
 
-            UpdateQuadsWithParticles();
+            UpdateQuads();
 
             if (BatchNode == null)
             {
