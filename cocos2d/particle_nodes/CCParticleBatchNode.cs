@@ -110,9 +110,9 @@ namespace CocosSharp
         {
             int index = 0;
 
-            for (int i = 0; i < m_pChildren.count; i++)
+            for (int i = 0; i < Children.count; i++)
             {
-                var child = (CCParticleSystem) m_pChildren.Elements[i];
+                var child = (CCParticleSystem) Children.Elements[i];
                 child.AtlasIndex = index;
                 index += child.TotalParticles;
             }
@@ -365,7 +365,7 @@ namespace CocosSharp
         /// <returns>The index on [start,end)</returns>
         int SearchNewPositionInChildrenForZ(int start, int end, int z)
         {
-            int count = Children.Count;
+            int count = Children.count;
 
             for (int i = 0; i < count; i++)
             {
@@ -389,8 +389,7 @@ namespace CocosSharp
                          "CCParticleBatchNode only supports CCQuadParticleSystems as children");
             Debug.Assert(m_pChildren.Contains(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
 
-            var pChild = (CCParticleSystem) child;
-            base.RemoveChild(pChild, cleanup);
+            CCParticleSystem pChild = (CCParticleSystem) child;
 
             // remove child helper
             TextureAtlas.RemoveQuadsAtIndex(pChild.AtlasIndex, pChild.TotalParticles);
@@ -398,10 +397,12 @@ namespace CocosSharp
             // after memmove of data, empty the quads at the end of array
             TextureAtlas.FillWithEmptyQuadsFromIndex(TextureAtlas.TotalQuads, pChild.TotalParticles);
 
-            // paticle could be reused for self rendering
+            // particle could be reused for self rendering
             pChild.BatchNode = null;
 
             UpdateAllAtlasIndexes();
+
+            base.RemoveChild(pChild, cleanup);
         }
 
         public void RemoveChildAtIndex(int index, bool doCleanup)
@@ -411,7 +412,7 @@ namespace CocosSharp
 
         public override void RemoveAllChildrenWithCleanup(bool doCleanup)
         {
-            for (int i = 0; i < Children.Count; i++)
+            for (int i = 0; i < Children.count; i++)
             {
                 ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }

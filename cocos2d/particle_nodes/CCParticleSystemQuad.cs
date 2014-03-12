@@ -24,13 +24,13 @@ namespace CocosSharp
                 {
                     Particles = new CCParticle[value];
 
-                    if (quads == null)
+                    if (Quads == null) 
                     {
-                        quads = new CCRawList<CCV3F_C4B_T2F_Quad>(value); 
-                    }
-                    else
+                        Quads = new CCRawList<CCV3F_C4B_T2F_Quad> (value); 
+                    } 
+                    else 
                     {
-                        quads.Capacity = value;
+                        Quads.Capacity = value;
                     }
 
                     AllocatedParticles = value;
@@ -38,7 +38,7 @@ namespace CocosSharp
 
                     if(BatchNode != null)
                     {
-                        for (int i = 0; i < TotalParticles; i++)
+                        for (int i = 0; i < value; i++)
                         {
                             Particles[i].AtlasIndex = i;
                         }
@@ -64,28 +64,12 @@ namespace CocosSharp
 
                     TextureRect = new CCRect(0, 0, s.Width, s.Height);
                 }
-
             }
         }
 
         public CCRect TextureRect
         {
-            set { UpdateTexCoords(value); }
-        }
-
-        public CCSpriteFrame SpriteFrame
-        {
-            set {
-
-                Debug.Assert (value.OffsetInPixels.Equals(CCPoint.Zero),
-                    "QuadParticle only supports SpriteFrames with no offsets");
-
-                // update texture before updating texture rect
-                if (Texture != null || value.Texture.Name != Texture.Name) 
-                {
-                    Texture = value.Texture;
-                }
-            }
+            set { ResetTexCoords(value); }
         }
 
         public override CCParticleBatchNode BatchNode
@@ -100,9 +84,10 @@ namespace CocosSharp
 
                     if (value == null)
                     {
-                        Debug.Assert(BatchNode == null, "Memory should not be alloced when not using batchNode");
-                        Debug.Assert((quads == null), "Memory already alloced");
-                        quads = new CCRawList<CCV3F_C4B_T2F_Quad>(TotalParticles);
+                        Debug.Assert (BatchNode == null, "Memory should not be alloced when not using batchNode");
+                        Debug.Assert ((quads == null), "Memory already alloced");
+
+                        Quads = new CCRawList<CCV3F_C4B_T2F_Quad> (TotalParticles);
                         Texture = oldBatch.Texture;
                     }
 
@@ -111,8 +96,25 @@ namespace CocosSharp
                         var batchQuads = BatchNode.TextureAtlas.m_pQuads.Elements;
                         BatchNode.TextureAtlas.Dirty = true;
                         Array.Copy(quads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
-                        quads = null;
+                        Quads = null;
                     }
+                }
+            }
+        }
+
+        CCRawList<CCV3F_C4B_T2F_Quad> Quads
+        {
+            get { return quads; }
+            set 
+            {
+                CCRawList<CCV3F_C4B_T2F_Quad> oldQuads = quads;
+                quads = value;
+
+                if (Texture!= null && quads != null && quads != oldQuads) 
+                {
+                    CCSize texSize = Texture.ContentSize;
+                    // Load the quads with tex coords
+                    ResetTexCoords(new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height));
                 }
             }
         }
@@ -132,6 +134,7 @@ namespace CocosSharp
 
         public CCParticleSystemQuad(string plistFile) : base(plistFile)
         {
+            int totalPart = TotalParticles;
         }
 
         #endregion Constructors
@@ -150,7 +153,7 @@ namespace CocosSharp
         #region Updating quads
 
         // pointRect should be in Texture coordinates, not pixel coordinates
-        void UpdateTexCoords(CCRect pointRect)
+        void ResetTexCoords(CCRect pointRect)
         {
             // convert to Tex coords
             CCRect rect = pointRect.PointsToPixels();
@@ -193,7 +196,7 @@ namespace CocosSharp
             }
             else
             {
-                rawQuads = quads.Elements;
+                rawQuads = Quads.Elements;
                 start = 0;
                 end = TotalParticles;
             }
@@ -342,7 +345,7 @@ namespace CocosSharp
             }
             else
             {
-                rawQuads = quads.Elements;
+                rawQuads = Quads.Elements;
             }
 
             var count = ParticleCount;
@@ -363,5 +366,63 @@ namespace CocosSharp
         }
 
         #endregion Updating quads
+
+
+        public CCParticleSystemQuad Clone()
+        {
+            var p = new CCParticleSystemQuad(TotalParticles);
+
+            // angle
+            p.Angle = Angle;
+            p.AngleVar = AngleVar;
+
+            // duration
+            p.Duration = Duration;
+
+            // blend function 
+            p.BlendFunc = BlendFunc;
+
+            // color
+            p.StartColor = StartColor;
+            p.StartColorVar = StartColorVar;
+            p.EndColor = EndColor;
+            p.EndColorVar = EndColorVar;
+
+            // particle size
+            p.StartSize = StartSize;
+            p.StartSizeVar = StartSizeVar;
+            p.EndSize = EndSize;
+            p.EndSizeVar = EndSizeVar;
+
+            // position
+            p.Position = Position;
+            p.PositionVar = PositionVar;
+
+            // Spinning
+            p.StartSpin = StartSpin;
+            p.StartSpinVar = StartSpinVar;
+            p.EndSpin = EndSpin;
+            p.EndSpinVar = EndSpinVar;
+
+            p.EmitterMode = EmitterMode;
+
+            p.GravityMode = GravityMode;
+            p.RadialMode = RadialMode;
+
+            // life span
+            p.Life = Life;
+            p.LifeVar = LifeVar;
+
+            // emission Rate
+            p.EmissionRate = EmissionRate;
+
+            p.OpacityModifyRGB = OpacityModifyRGB;
+            p.Texture = Texture;
+
+            p.AutoRemoveOnFinish = AutoRemoveOnFinish;
+
+            return p;
+        }
+
     }
 }

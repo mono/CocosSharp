@@ -379,14 +379,6 @@ namespace CocosSharp
             AutoRemoveOnFinish = false;
 
             Particles = new CCParticle[TotalParticles];
-
-            if (BatchNode != null)
-            {
-                for (int i = 0; i < TotalParticles; i++)
-                {
-                    Particles[i].AtlasIndex = i;
-                }
-            }
         }
 
         CCParticleSystem(PlistDictionary dictionary) : this(dictionary["maxParticles"].AsInt)
