@@ -66,7 +66,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, ICCMouseDelegate, IComparer<CCNode>
+	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -98,6 +98,7 @@ namespace CocosSharp
         internal protected uint m_uOrderOfArrival;
         private int m_nTag;
         internal int m_nZOrder;
+		protected CCEventDispatcher eventDispatcher;
         protected CCActionManager m_pActionManager;
         protected CCCamera m_pCamera;
         protected CCRawList<CCNode> m_pChildren;
@@ -127,7 +128,6 @@ namespace CocosSharp
         private bool m_bTouchEnabled;
 		private CCTouchMode touchMode = CCTouchMode.OneByOne;
 		private CCKeyboardMode keyboardMode = CCKeyboardMode.All;
-		private CCMouseMode mouseMode = CCMouseMode.All;
         private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
 
@@ -151,6 +151,7 @@ namespace CocosSharp
             CCDirector director = CCDirector.SharedDirector;
             m_pActionManager = director.ActionManager;
             m_pScheduler = director.Scheduler;
+			eventDispatcher = director.EventDispatcher;
 
         }
 
@@ -677,6 +678,9 @@ namespace CocosSharp
 			SetTransformIsDirty();
 		}
 
+		public float LocalZOrder { get; set; }
+		public float GlobalZOrder { get; set; }
+
 		#region Cleaning up
 
         private bool m_bCleaned = false;
@@ -729,6 +733,9 @@ namespace CocosSharp
 
             // timers
             UnscheduleAll();
+
+			eventDispatcher.RemoveEventListeners (this);
+			eventDispatcher = null;
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -1167,7 +1174,7 @@ namespace CocosSharp
                 }
             }
 
-            ResumeSchedulerAndActions();
+            Resume();
 
             m_bRunning = true;
 
@@ -1183,12 +1190,6 @@ namespace CocosSharp
 			if (keyboardEnabled)
 			{
 				director.KeyboardDispatcher.AddDelegate(this);
-			}
-
-			// tell the director that this node is interested in Mouse messages
-			if (mouseEnabled) 
-			{
-				director.MouseDispatcher.AddDelegate (this);
 			}
 
             if (GamePadEnabled && director.GamePadEnabled)
@@ -1264,11 +1265,6 @@ namespace CocosSharp
 				director.KeyboardDispatcher.RemoveDelegate(this);
 			}
 
-			if (mouseEnabled) 
-			{
-				director.MouseDispatcher.RemoveDelegate (this);
-			}
-
             if (GamePadEnabled && director.GamePadEnabled)
             {
                 CCApplication application = CCApplication.SharedApplication;
@@ -1299,6 +1295,17 @@ namespace CocosSharp
                 }
             }
         }
+		#region Events
+		public CCEventDispatcher EventDispatcher
+		{
+			get { return eventDispatcher; }
+			set 
+			{
+				eventDispatcher = value;
+			}
+		}
+
+		#endregion
 
         #region Actions
 
@@ -1458,16 +1465,18 @@ namespace CocosSharp
 			m_pScheduler.UnscheduleAll (this);
 		}
 
-        public void ResumeSchedulerAndActions()
+        public void Resume()
         {
             m_pScheduler.Resume(this);
             m_pActionManager.ResumeTarget(this);
+			eventDispatcher.Resume (this);
         }
 
         public void PauseSchedulerAndActions()
         {
             m_pScheduler.PauseTarget(this);
             m_pActionManager.PauseTarget(this);
+			eventDispatcher.Pause (this);
         }
 
 
@@ -1839,42 +1848,6 @@ namespace CocosSharp
 				if (keyboardMode != value)
 				{
 					keyboardMode = value;
-				}
-			}
-		}
-
-		public virtual bool MouseEnabled
-		{
-			get { return mouseEnabled; }
-			set
-			{
-				if (value != mouseEnabled)
-				{
-					mouseEnabled = value;
-
-					if (m_bRunning)
-					{
-						if (value)
-						{
-							CCDirector.SharedDirector.MouseDispatcher.AddDelegate(this);
-						}
-						else
-						{
-							CCDirector.SharedDirector.MouseDispatcher.RemoveDelegate(this);
-						}
-					}
-				}
-			}
-		}
-
-		public virtual CCMouseMode MouseMode
-		{
-			get { return mouseMode; }
-			set
-			{
-				if (mouseMode != value)
-				{
-					mouseMode = value;
 				}
 			}
 		}

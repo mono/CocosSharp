@@ -21,7 +21,8 @@ namespace CocosSharp
 
         public CCEventListenerMouse() : base(CCEventListenerType.MOUSE, LISTENER_ID)
         {
-
+			// Set our call back action to be called on mouse events so they can be 
+			// propagated to the listener.
             Action<CCEvent> listener = mEvent =>
                 {
                     var mouseEvent = (CCEventMouse)mEvent;

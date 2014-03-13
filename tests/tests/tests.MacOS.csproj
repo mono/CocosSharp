@@ -1152,6 +1152,7 @@
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
     <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
+    <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />
@@ -2537,5 +2538,6 @@
     <Folder Include="Content\" />
     <Folder Include="classes\tests\Box2DTestBet%28Box2D%29\" />
     <Folder Include="Content\hd\" />
+    <Folder Include="classes\tests\EventDispatcherTest\" />
   </ItemGroup>
 </Project>

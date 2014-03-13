@@ -440,11 +440,11 @@ namespace CocosSharp
             {
                 for (int i = 0; i < pChildren.count; i++)
                 {
-                    pChildren.Elements[i].ResumeSchedulerAndActions();
+                    pChildren.Elements[i].Resume();
                 }
             }
 
-            _container.ResumeSchedulerAndActions();
+            _container.Resume();
         }
 
 

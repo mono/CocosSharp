@@ -29,7 +29,7 @@ namespace CocosSharp
         /// <summary>
         /// The current target that this event is working on
         /// </summary>
-        public CCNode CurrentTarget { get; protected set; }
+		public CCNode CurrentTarget { get; internal set; }
 
         internal CCEvent(CCEventType type)
         {

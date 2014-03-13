@@ -8,14 +8,21 @@ namespace CocosSharp
     internal class CCEventListenerVector
     {
 
-        List<CCEventListener> sceneGraphListeners = new List<CCEventListener>(100);
-        List<CCEventListener> fixedListeners = new List<CCEventListener>(100);
+		List<CCEventListener> sceneGraphListeners;
+		List<CCEventListener> fixedListeners;
+		public int Gt0Index { get; set; }
 
         public int Size
         {
             get
             {
-                return sceneGraphListeners.Count + fixedListeners.Count;
+				int size = 0;
+				if (sceneGraphListeners != null)
+					size += sceneGraphListeners.Count;
+				if (fixedListeners != null)
+					size += fixedListeners.Count;
+
+				return size;
             }
         }
 
@@ -23,35 +30,55 @@ namespace CocosSharp
         {
             get
             {
-                return sceneGraphListeners.Count == 0 && fixedListeners.Count == 0;
+				return (sceneGraphListeners == null || sceneGraphListeners.Count == 0) 
+					&& (fixedListeners == null || fixedListeners.Count == 0);
             }
         }
 
         public CCEventListenerVector()
         {
-
+			Gt0Index = 0;
         }
 
         public void PushBack(CCEventListener listener)
         {
-            if (listener.FixePriority == 0)
+			if (listener.FixedPriority == 0)
             {
+				if (sceneGraphListeners == null) 
+				{
+					sceneGraphListeners = new List<CCEventListener> (100);
+				}
+
                 sceneGraphListeners.Add(listener);
             }
             else
             {
+				if (fixedListeners == null) 
+				{
+					fixedListeners = new List<CCEventListener> (100);
+				}
+
+
                 fixedListeners.Add(listener);
             }
         }
 
         public void ClearSceneGraphListeners()
         {
-            sceneGraphListeners.Clear();
+			if (sceneGraphListeners != null) 
+			{
+				sceneGraphListeners.Clear ();
+				sceneGraphListeners = null;
+			}
         }
 
         public void ClearFixedListeners()
         {
-            fixedListeners.Clear();
+			if (fixedListeners != null) 
+			{
+				fixedListeners.Clear ();
+				fixedListeners = null;
+			}
         }
 
         public void Clear()

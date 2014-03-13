@@ -91,9 +91,39 @@ namespace tests
             _CurrentItemIndex = 0;
             SelectMenuItem();
 
-			MouseEnabled = true;
-			MouseMode = CCMouseMode.ScrollWheel;
+			var mouseListener = new CCEventListenerMouse();
+			mouseListener.OnMouseScroll = OnMouseScroll;
+			EventDispatcher.AddEventListener (mouseListener, this);
         }
+
+		void OnMouseScroll(CCEventMouse mouseEvent)
+		{
+
+			// Due to a bug in MonoGame the menu will jump around on Mac when hitting the top element
+			// https://github.com/mono/MonoGame/issues/2276
+			var delta = mouseEvent.ScrollY;
+
+			CCSize winSize = CCDirector.SharedDirector.WinSize;
+			var curPos = m_pItemMenu.Position;
+			var nextPos = curPos;
+			nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / LINE_SPACE;
+
+			if (nextPos.Y < 0) 
+			{
+				m_pItemMenu.Position = CCPoint.Zero;
+				return;
+			}
+
+			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+			{
+				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+				return;
+			}
+
+			m_pItemMenu.Position = nextPos;
+			s_tCurPos   = nextPos;
+		}
+
 
         private CCPoint _HomePosition;
         private CCPoint _LastPosition;
@@ -257,34 +287,6 @@ namespace tests
             s_tCurPos = nextPos;
         }
 
-		public override void MouseScroll (int delta)
-		{
-			base.MouseScroll (delta);
-
-			CCSize winSize = CCDirector.SharedDirector.WinSize;
-			var curPos = m_pItemMenu.Position;
-			var nextPos = curPos;
-			nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / 8;
-
-			if (nextPos.Y < 0) 
-			{
-				m_pItemMenu.Position = CCPoint.Zero;
-				return;
-			}
-
-			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
-			{
-				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
-				return;
-			}
-
-			m_pItemMenu.Position = nextPos;
-			s_tCurPos   = nextPos;
-
-		}
-
-
-
         public static TestScene CreateTestScene(int nIdx)
         {
             CCDirector.SharedDirector.PurgeCachedData();
@@ -404,6 +406,9 @@ namespace tests
                 case(int)TestCases.TEST_MULTITOUCH:
                     pScene = new MultiTouchTestScene();
                     break;
+				case(int)TestCases.TEST_EVENTDISPATCHER:
+					pScene = new EventDispatcherTestScene();
+					break;
                 default:
                     break;
             }

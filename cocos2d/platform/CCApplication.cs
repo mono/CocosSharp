@@ -484,9 +484,104 @@ namespace CocosSharp
 			// Read the current Mouse state
 			MouseState currentMouseState = Mouse.GetState();
 
-			if (currentMouseState != priorMouseState)
-				CCDirector.SharedDirector.MouseDispatcher.DispatchMouseState ();
+			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
 
+			if (currentMouseState == priorMouseState || !dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
+//			if (!dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
+			{
+				priorMouseState = currentMouseState;
+				return;
+			}
+
+
+			CCPoint pos;
+			int posX = 0;
+			int posY = 0;
+
+#if NETFX_CORE
+			pos = TransformPoint(priorMouseState.X, priorMouseState.Y);
+			pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
+#else
+			pos = CCDrawManager.ScreenToWorld(priorMouseState.X, priorMouseState.Y);
+#endif
+
+			// We will only do the cast once.
+			posX = (int)pos.X;
+			posY = (int)pos.Y;
+
+			var mouseEvent = new CCEventMouse (CCMouseEventType.MOUSE_MOVE);
+			mouseEvent.CursorX = posX;
+			mouseEvent.CursorY = posY;
+
+			dispatcher.DispatchEvent (mouseEvent);
+
+			CCMouseButton mouseButton = CCMouseButton.None;
+			if (priorMouseState.LeftButton == ButtonState.Released && currentMouseState.LeftButton == ButtonState.Pressed) 
+			{
+				mouseButton |= CCMouseButton.LeftButton;
+			}
+			if (priorMouseState.RightButton == ButtonState.Released && currentMouseState.RightButton == ButtonState.Pressed) 
+			{
+				mouseButton |= CCMouseButton.RightButton;
+			}
+			if (priorMouseState.MiddleButton == ButtonState.Released && currentMouseState.MiddleButton == ButtonState.Pressed) 
+			{
+				mouseButton |= CCMouseButton.MiddleButton;
+			}
+			if (priorMouseState.XButton1 == ButtonState.Released && currentMouseState.XButton1 == ButtonState.Pressed) 
+			{
+				mouseButton |= CCMouseButton.ExtraButton1;
+			}
+			if (priorMouseState.XButton2 == ButtonState.Released && currentMouseState.XButton2 == ButtonState.Pressed) 
+			{
+				mouseButton |= CCMouseButton.ExtraButton1;
+			}
+
+			if (mouseButton > 0) 
+			{
+				mouseEvent.MouseEventType = CCMouseEventType.MOUSE_DOWN;
+				mouseEvent.MouseButton = mouseButton;
+				dispatcher.DispatchEvent (mouseEvent);
+			}
+
+			mouseButton = CCMouseButton.None;
+			if (priorMouseState.LeftButton == ButtonState.Pressed && currentMouseState.LeftButton == ButtonState.Released) 
+			{
+				mouseButton |= CCMouseButton.LeftButton;
+			}
+			if (priorMouseState.RightButton == ButtonState.Pressed && currentMouseState.RightButton == ButtonState.Released) 
+			{
+				mouseButton |= CCMouseButton.RightButton;
+			}
+			if (priorMouseState.MiddleButton == ButtonState.Pressed && currentMouseState.MiddleButton == ButtonState.Released) 
+			{
+				mouseButton |= CCMouseButton.MiddleButton;
+			}
+			if (priorMouseState.XButton1 == ButtonState.Pressed && currentMouseState.XButton1 == ButtonState.Released) 
+			{
+				mouseButton |= CCMouseButton.ExtraButton1;
+			}
+			if (priorMouseState.XButton2 == ButtonState.Pressed && currentMouseState.XButton2 == ButtonState.Released) 
+			{
+				mouseButton |= CCMouseButton.ExtraButton1;
+			}
+			if (mouseButton > 0) 
+			{
+				mouseEvent.MouseEventType = CCMouseEventType.MOUSE_UP;
+				mouseEvent.MouseButton = mouseButton;
+				dispatcher.DispatchEvent (mouseEvent);
+			}
+
+			if (priorMouseState.ScrollWheelValue != currentMouseState.ScrollWheelValue) {
+				var delta = priorMouseState.ScrollWheelValue - currentMouseState.ScrollWheelValue;
+				if (delta != 0) {
+					mouseEvent.MouseEventType = CCMouseEventType.MOUSE_SCROLL;
+					mouseEvent.ScrollX = 0;
+					mouseEvent.ScrollY = delta;
+					dispatcher.DispatchEvent (mouseEvent);
+					//Console.WriteLine ("mouse scroll: " + mouseEvent.ScrollY);
+				}
+			}
 			// Store the state for the next loop
 			priorMouseState = currentMouseState;
 

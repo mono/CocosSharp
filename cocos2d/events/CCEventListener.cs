@@ -24,7 +24,7 @@ namespace CocosSharp
     public class CCEventListener : IDisposable
     {
 
-        protected virtual string ListenerID { get; set; }
+		internal virtual string ListenerID { get; set; }
 
         /// <summary>
         /// Whether the listener is paused
@@ -34,28 +34,28 @@ namespace CocosSharp
         /// <summary>
         /// Whether the listener has been added to dispatcher.
         /// </summary>
-        protected virtual bool IsRegistered { get; set; }
+		internal virtual bool IsRegistered { get; set; }
 
         /// <summary>
         /// Event listener type
         /// </summary>
-        protected virtual CCEventListenerType Type { get; set; }
+		internal virtual CCEventListenerType Type { get; set; }
 
         /// <summary>
         /// The priority of event listener
         /// The higher the number, the higher the priority, 0 is for scene graph base priority.
         /// </summary>
-        internal virtual int FixePriority { get; set; }
+		internal virtual int FixedPriority { get; set; }
 
         /// <summary>
         /// Scene graph based priority
         /// </summary>
-        protected virtual CCNode SceneGraphPriorty { get; set; }
+		internal virtual CCNode SceneGraphPriority { get; set; }
 
         /// <summary>
         /// Event callback function
         /// </summary>
-        protected Action<CCEvent> OnEvent { get; set; }
+		internal Action<CCEvent> OnEvent { get; set; }
 
         protected CCEventListener() 
         {
@@ -144,36 +144,5 @@ namespace CocosSharp
         }
 
     }
-
-    public class CCNode
-    {
-
-    }
-
-    //NS_CC_BEGIN
-
-    //EventListener::EventListener()
-    //{}
-
-    //EventListener::~EventListener() 
-    //{
-    //    CCLOGINFO("In the destructor of EventListener. %p", this);
-    //}
-
-    //bool EventListener::init(Type t, const ListenerID& listenerID, const std::function<void(Event*)>& callback)
-    //{
-    //    _onEvent = callback;
-    //    _type = t;
-    //    _listenerID = listenerID;
-    //    _isRegistered = false;
-    //    _paused = true;
-
-    //    return true;
-    //}
-
-    //bool EventListener::checkAvailable()
-    //{ 
-    //    return (_onEvent != nullptr);
-    //}
 
 }

@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace CocosSharp
 {
@@ -15,9 +13,19 @@ namespace CocosSharp
         MOUSE_SCROLL,
     }
 
+	[Flags]
+	public enum CCMouseButton
+	{
+		None = 0x0,
+		LeftButton = 0x1,
+		MiddleButton = 0x2,
+		RightButton = 0x4,
+		ExtraButton1 = 0x8,
+		ExtraButton2 = 0x16
+	}
     public class CCEventMouse : CCEvent
     {
-        public CCMouseEventType MouseEventType { get; protected set; }
+		public CCMouseEventType MouseEventType { get; internal set; }
 
         // Set mouse scroll data 
         public float ScrollX { get; internal set; }
@@ -27,13 +35,12 @@ namespace CocosSharp
         public float CursorX { get; internal set; }
         public float CursorY { get; internal set; }
 
-        public int MouseButton { get; internal set; }
+		public CCMouseButton MouseButton { get; internal set; }
 
         internal CCEventMouse(CCMouseEventType mouseEventType)
             : base (CCEventType.MOUSE)
         {
             MouseEventType = mouseEventType;
-
         }
     }
 }
