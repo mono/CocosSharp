@@ -73,7 +73,7 @@ namespace CocosSharp
 		const string saveFileName = "SceneList.dat";
 		const string sceneSaveFileName = "Scene{0}.dat";
 #endif
-
+		public CCEventDispatcher EventDispatcher { get; set; }
 		public CCActionManager ActionManager { get; set; }
 		public virtual double AnimationInterval { get; set; }
 		public float ContentScaleFactor { get; set; }
@@ -97,7 +97,6 @@ namespace CocosSharp
 		public CCKeypadDispatcher KeypadDispatcher  { get; set; }
 		public CCKeyboardDispatcher KeyboardDispatcher { get; set; }
 		public CCTouchDispatcher TouchDispatcher { get; set; }
-		public CCMouseDispatcher MouseDispatcher { get; set; }
 
         /// <summary>
         /// returns a shared instance of the director
@@ -276,6 +275,9 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Scheduler.Schedule (ActionManager, CCSchedulePriority.System, false);
             
+			// EventDispatcher
+			EventDispatcher = new CCEventDispatcher ();
+
             // touchDispatcher
             TouchDispatcher = new CCTouchDispatcher();
 
@@ -284,9 +286,6 @@ namespace CocosSharp
 
             // KeyboardDispatcher
             KeyboardDispatcher = new CCKeyboardDispatcher();
-
-			// MouseDispatcher
-			MouseDispatcher = new CCMouseDispatcher();
 
             // Accelerometer
             #if !PSM &&!NETFX_CORE
@@ -948,11 +947,17 @@ namespace CocosSharp
                     if (IsSendCleanupToScene)
                     {
                         RunningScene.Cleanup();
-
-                        GC.Collect();
                     }
                 }
             }
+
+			// This is so that we get rid of the listeners in Cocos2d-x they use a release on the object
+			// so that event listeners are detached.  We do not control when an object is released so
+			// we call this directly.
+			if (RunningScene != null) 
+			{
+				RunningScene.Dispose ();
+			}
 
             RunningScene = nextScene;
             nextScene = null;

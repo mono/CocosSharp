@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOS\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME</DefineConstants>
+    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME;DUMP_LISTENER_ITEM_PRIORITY_INFO</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
@@ -439,9 +439,13 @@
     <Compile Include="CCStats.cs" />
     <Compile Include="label_nodes\CCLabelTtf.cs" />
     <Compile Include="Actions\action\CCAmplitudeAction.cs" />
-    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
-    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
     <Compile Include="Actions\action_instants\CCRemoveSelf.cs" />
+    <Compile Include="events\CCEvent.cs" />
+    <Compile Include="events\CCEventDispatcher.cs" />
+    <Compile Include="events\CCEventListener.cs" />
+    <Compile Include="events\CCEventListenerMouse.cs" />
+    <Compile Include="events\CCEventListenerVector.cs" />
+    <Compile Include="events\CCEventMouse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
@@ -462,6 +466,6 @@
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
     <Folder Include="keyboard_dispatcher\" />
-    <Folder Include="mouse_dispatcher\" />
+    <Folder Include="events\" />
   </ItemGroup>
 </Project>
