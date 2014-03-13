@@ -466,6 +466,8 @@ namespace CocosSharp
         /// <param name="fixedPriority"></param>
         public void SetPriority(CCEventListener listener, int fixedPriority)
         {
+			if (listener == null)
+				return;
 
         }
 
@@ -720,7 +722,7 @@ namespace CocosSharp
 //				return _nodePriorityMap[l1->getSceneGraphPriority()] > _nodePriorityMap[l2->getSceneGraphPriority()];
 //			});
 //
-			if (nodePriorityMap.Count > 0)
+			//if (nodePriorityMap.Count > 0)
 				sceneGraphListeners.Sort((a,b) => 
 					{
 						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
