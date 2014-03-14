@@ -127,7 +127,6 @@ namespace CocosSharp
         private bool m_bGamePadEnabled;
         private bool m_bTouchEnabled;
 		private CCTouchMode touchMode = CCTouchMode.OneByOne;
-		private CCKeyboardMode keyboardMode = CCKeyboardMode.All;
         private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
 

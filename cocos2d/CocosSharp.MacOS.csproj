@@ -432,8 +432,6 @@
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
     <Compile Include="label_nodes\CCLabel-CoreGraphics.cs" />
-    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
     <Compile Include="CCStats.cs" />
@@ -467,7 +465,6 @@
     <Folder Include="support\Converters\" />
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
-    <Folder Include="keyboard_dispatcher\" />
     <Folder Include="events\" />
   </ItemGroup>
 </Project>
