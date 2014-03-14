@@ -16,7 +16,6 @@ namespace Box2D.TestBed
         public bool initWithEntryID(int entryId)
         {
             TouchEnabled = true;
-            KeyboardEnabled = true;
 
             Schedule ();
 

@@ -95,7 +95,6 @@ namespace CocosSharp
 
 		// Dispatchers
 		public CCKeypadDispatcher KeypadDispatcher  { get; set; }
-		public CCKeyboardDispatcher KeyboardDispatcher { get; set; }
 		public CCTouchDispatcher TouchDispatcher { get; set; }
 
         /// <summary>
@@ -283,9 +282,6 @@ namespace CocosSharp
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
-
-            // KeyboardDispatcher
-            KeyboardDispatcher = new CCKeyboardDispatcher();
 
             // Accelerometer
             #if !PSM &&!NETFX_CORE

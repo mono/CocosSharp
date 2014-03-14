@@ -105,9 +105,9 @@ namespace CocosSharp
                 //        ret = customEvent->getEventName();
                 //    }
                 //    break;
-                //case CCEventType.KEYBOARD:
-                //    ret = CCEventListenerKeyboard.LISTENER_ID;
-                //    break;
+                case CCEventType.KEYBOARD:
+                    ret = CCEventListenerKeyboard.LISTENER_ID;
+                    break;
                 case CCEventType.MOUSE:
                     ret = CCEventListenerMouse.LISTENER_ID;
                     break;

@@ -12,6 +12,7 @@ namespace tests
 	public enum EventDispatchTests
 	{
 		EVENT_MOUSE = 0,
+		TEST_LABEL_KEYBOARD,
 		TEST_CASE_COUNT
 	};
 
@@ -24,18 +25,21 @@ namespace tests
 
 		public static CCLayer CreateLayer(int index)
 		{
-			CCLayer pLayer = null;
+			CCLayer testLayer = null;
 
 			switch (index)
 			{
 			case (int) EventDispatchTests.EVENT_MOUSE:
-				pLayer = new MouseEventTest();
+				testLayer = new MouseEventTest();
+				break;
+			case (int) EventDispatchTests.TEST_LABEL_KEYBOARD:
+				testLayer = new LabelKeyboardEventTest();
 				break;
 			default:
 				break;
 			}
 
-			return pLayer;
+			return testLayer;
 		}
 
 		protected override void NextTestCase()
@@ -56,9 +60,9 @@ namespace tests
 			++sceneIndex;
 			sceneIndex = sceneIndex % (int)EventDispatchTests.TEST_CASE_COUNT;
 
-			var pLayer = CreateLayer(sceneIndex);
+			var testLayer = CreateLayer(sceneIndex);
 
-			return pLayer;
+			return testLayer;
 		}
 
 		public static CCLayer BackAction()
@@ -67,16 +71,16 @@ namespace tests
 			if (sceneIndex < 0)
 				sceneIndex += (int)EventDispatchTests.TEST_CASE_COUNT;
 
-			var pLayer = CreateLayer(sceneIndex);
+			var testLayer = CreateLayer(sceneIndex);
 
-			return pLayer;
+			return testLayer;
 		}
 
 		public static CCLayer RestartAction()
 		{
-			var pLayer = CreateLayer(sceneIndex);
+			var testLayer = CreateLayer(sceneIndex);
 
-			return pLayer;
+			return testLayer;
 		}
 
 
@@ -92,8 +96,6 @@ namespace tests
 
 	public class EventDispatcherTest : CCLayer
 	{
-		//static int sceneIdx = -1;
-
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
@@ -127,17 +129,28 @@ namespace tests
 
 		public void RestartCallback(object pSender)
 		{
-			EventDispatcherTestScene.RestartAction ();
+			CCScene s = new EventDispatcherTestScene();
+			s.AddChild(EventDispatcherTestScene.RestartAction ());
+
+			CCDirector.SharedDirector.ReplaceScene(s);
 		}
 
 		public void NextCallback(object pSender)
 		{
-			EventDispatcherTestScene.NextAction ();
+
+			CCScene s = new EventDispatcherTestScene();
+			s.AddChild(EventDispatcherTestScene.NextAction ());
+
+			CCDirector.SharedDirector.ReplaceScene(s);
 		}
 
 		public void BackCallback(object pSender)
 		{
-			EventDispatcherTestScene.BackAction ();
+
+			CCScene s = new EventDispatcherTestScene();
+			s.AddChild(EventDispatcherTestScene.BackAction ());
+
+			CCDirector.SharedDirector.ReplaceScene(s);
 		}
 
 		public virtual string title()
@@ -224,4 +237,46 @@ namespace tests
 
 	}
 
+	public class LabelKeyboardEventTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var statusLabel = new CCLabelTtf("No keyboard event received!", "arial", 20);
+			statusLabel.Position = origin + size.Center;
+			AddChild(statusLabel);
+
+			// Create our Keyboard Listener
+			var listener = new CCEventListenerKeyboard();
+
+			// We will use Lambda expressions to attach the event process
+			listener.OnKeyPressed = (keyboardEvent) => {
+				var labelText = string.Format("Key {0} was pressed.", keyboardEvent.Keys);
+				statusLabel.Text = labelText;
+			};
+			listener.OnKeyReleased = (keyboardEvent) => {
+				var labelText = string.Format("Key {0} was released.", keyboardEvent.Keys);
+				statusLabel.Text = labelText;
+			};
+
+			// Now we tell the event dispatcher that the status label is interested in keyboard events
+			CCDirector.SharedDirector.EventDispatcher.AddEventListener(listener, statusLabel);		
+		}
+
+		public override string title()
+		{
+			return "Label Receives Keyboard Event";;
+		}
+
+		public override string subtitle()
+		{
+			return "Please click keyboard\n(Only available on Desktop and Android)";
+		}
+
+	}
 }

@@ -451,27 +451,65 @@ namespace CocosSharp
         #endregion
 
         #region Keyboard support
-        private KeyboardState m_priorKeyboardState;
+		private KeyboardState priorKeyboardState;
 
         private void ProcessKeyboard()
         {
 			// Read the current keyboard state
-            KeyboardState currentKeyState = Keyboard.GetState();
+			KeyboardState currentKeyboardState = Keyboard.GetState();
+
+			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+
+			if (currentKeyboardState == priorKeyboardState || !dispatcher.IsEventListenersFor(CCEventListenerKeyboard.LISTENER_ID) )
+			{
+				priorKeyboardState = currentKeyboardState;
+				return;
+			}
+
 
 			// Check for Keypad interaction
-            if(currentKeyState.IsKeyUp(Keys.Back) && m_priorKeyboardState.IsKeyDown(Keys.Back)) 
+			if(currentKeyboardState.IsKeyUp(Keys.Back) && priorKeyboardState.IsKeyDown(Keys.Back)) 
             {
                 CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
             }
-            else if(currentKeyState.IsKeyUp(Keys.Home) && m_priorKeyboardState.IsKeyDown(Keys.Home)) 
+			else if(currentKeyboardState.IsKeyUp(Keys.Home) && priorKeyboardState.IsKeyDown(Keys.Home)) 
             {
                 CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
             }
 
-			CCDirector.SharedDirector.KeyboardDispatcher.DispatchKeyboardState ();
+			var keyboardEvent = new CCEventKeyboard (CCKeyboardEventType.KEYBOARD_PRESS);
+
+			// Check for pressed/released keys.
+			// Loop for each possible pressed key (those that are pressed this update)
+			Keys[] keys = currentKeyboardState.GetPressedKeys();
+
+			for (int k = 0; k < keys.Length; k++) {
+				// Was this key up during the last update?
+				if (priorKeyboardState.IsKeyUp (keys [k])) {
+
+					// Yes, so this key has been pressed
+					//CCLog.Log("Pressed: " + keys[i].ToString());
+					keyboardEvent.Keys = keys [k];
+					dispatcher.DispatchEvent (keyboardEvent);
+				}
+			}
+
+			// Loop for each possible released key (those that were pressed last update)
+			keys = priorKeyboardState.GetPressedKeys ();
+			keyboardEvent.KeyboardEventType = CCKeyboardEventType.KEYBOARD_RELEASE;
+			for (int k = 0; k < keys.Length; k++) {
+				// Is this key now up?
+				if (currentKeyboardState.IsKeyUp (keys [k])) {
+					// Yes, so this key has been released
+					//CCLog.Log("Released: " + keys[i].ToString());
+					keyboardEvent.Keys = keys [k];
+					dispatcher.DispatchEvent (keyboardEvent);
+
+				}
+			}
 
 			// Store the state for the next loop
-            m_priorKeyboardState = currentKeyState;
+			priorKeyboardState = currentKeyboardState;
 
         }
         #endregion
@@ -487,7 +525,6 @@ namespace CocosSharp
 			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
 
 			if (currentMouseState == priorMouseState || !dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
-//			if (!dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
 			{
 				priorMouseState = currentMouseState;
 				return;

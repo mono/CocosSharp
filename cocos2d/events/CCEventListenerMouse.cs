@@ -19,6 +19,12 @@ namespace CocosSharp
         // Event callback function for Mouse Scroll events
         public Action<CCEventMouse> OnMouseScroll { get; set; }
 
+		public override bool IsAvailable {
+			get {
+				return true;
+			}
+		}
+
         public CCEventListenerMouse() : base(CCEventListenerType.MOUSE, LISTENER_ID)
         {
 			// Set our call back action to be called on mouse events so they can be 

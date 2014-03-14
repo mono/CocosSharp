@@ -66,7 +66,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, ICCKeyboardDelegate, IComparer<CCNode>
+	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -678,8 +678,8 @@ namespace CocosSharp
 			SetTransformIsDirty();
 		}
 
-		public float LocalZOrder { get; set; }
-		public float GlobalZOrder { get; set; }
+		public int LocalZOrder { get; set; }
+		public int GlobalZOrder { get; set; }
 
 		#region Cleaning up
 
@@ -782,7 +782,7 @@ namespace CocosSharp
         public void AddChild(CCNode child)
         {
             Debug.Assert(child != null, "Argument must be no-null");
-            AddChild(child, child.ZOrder, child.Tag);
+			AddChild(child, child.LocalZOrder, child.Tag);
         }
 
         public void AddChild(CCNode child, int zOrder)
@@ -826,6 +826,7 @@ namespace CocosSharp
             ChangedChildTag(child, kCCNodeTagInvalid, tag);
 
             child.m_nZOrder = z;
+			child.LocalZOrder = z;
         }
         #endregion
 
@@ -1008,13 +1009,14 @@ namespace CocosSharp
             m_bReorderChildDirty = true;
             child.m_uOrderOfArrival = s_globalOrderOfArrival++;
             child.m_nZOrder = zOrder;
+			child.LocalZOrder = zOrder;
         }
         
         #region Child Sorting
 
-        int IComparer<CCNode>.Compare(CCNode n1, CCNode n2)
+		int IComparer<CCNode>.Compare(CCNode n1, CCNode n2)
         {
-            if (n1.m_nZOrder < n2.m_nZOrder || (n1.m_nZOrder == n2.m_nZOrder && n1.m_uOrderOfArrival < n2.m_uOrderOfArrival))
+			if (n1.LocalZOrder < n2.LocalZOrder || (n1.LocalZOrder == n2.LocalZOrder && n1.m_uOrderOfArrival < n2.m_uOrderOfArrival))
             {
                 return -1;
             }
@@ -1027,6 +1029,20 @@ namespace CocosSharp
             return 1;
         }
 
+		public int CompareTo(CCNode that)
+		{
+			if (this.LocalZOrder < that.LocalZOrder || (this.LocalZOrder == that.LocalZOrder && this.m_uOrderOfArrival < that.m_uOrderOfArrival))
+			{
+				return -1;
+			}
+
+			if (this == that)
+			{
+				return 0;
+			}
+
+			return 1;
+		}
         public virtual void SortAllChildren()
         {
             if (m_bReorderChildDirty)
@@ -1186,12 +1202,6 @@ namespace CocosSharp
                 director.KeypadDispatcher.AddDelegate(this);
             }
 
-			// tell the director that this node is interested in Keyboard message
-			if (keyboardEnabled)
-			{
-				director.KeyboardDispatcher.AddDelegate(this);
-			}
-
             if (GamePadEnabled && director.GamePadEnabled)
             {
                 if (!m_bGamePadDelegatesInited)
@@ -1259,11 +1269,6 @@ namespace CocosSharp
             {
                 director.KeypadDispatcher.RemoveDelegate(this);
             }
-
-			if (keyboardEnabled)
-			{
-				director.KeyboardDispatcher.RemoveDelegate(this);
-			}
 
             if (GamePadEnabled && director.GamePadEnabled)
             {
@@ -1815,42 +1820,6 @@ namespace CocosSharp
                 }
             }
         }
-
-		public virtual bool KeyboardEnabled
-		{
-			get { return keyboardEnabled; }
-			set
-			{
-				if (value != keyboardEnabled)
-				{
-					keyboardEnabled = value;
-
-					if (m_bRunning)
-					{
-						if (value)
-						{
-							CCDirector.SharedDirector.KeyboardDispatcher.AddDelegate(this);
-						}
-						else
-						{
-							CCDirector.SharedDirector.KeyboardDispatcher.RemoveDelegate(this);
-						}
-					}
-				}
-			}
-		}
-
-		public virtual CCKeyboardMode KeyboardMode
-		{
-			get { return keyboardMode; }
-			set
-			{
-				if (keyboardMode != value)
-				{
-					keyboardMode = value;
-				}
-			}
-		}
 
         public virtual bool GamePadEnabled
         {
