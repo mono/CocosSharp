@@ -442,7 +442,6 @@
     <Compile Include="events\CCEventDispatcher.cs" />
     <Compile Include="events\CCEventListener.cs" />
     <Compile Include="events\CCEventListenerMouse.cs" />
-    <Compile Include="events\CCEventListenerVector.cs" />
     <Compile Include="events\CCEventMouse.cs" />
     <Compile Include="events\CCEventListenerKeyboard.cs" />
     <Compile Include="events\CCEventKeyboard.cs" />
