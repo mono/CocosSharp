@@ -174,7 +174,9 @@ namespace CocosSharp
             GameTime = gameTime;
 
 #if !PSM &&!NETFX_CORE
-            if (CCDirector.SharedDirector.Accelerometer != null)
+			if (CCDirector.SharedDirector.Accelerometer != null 
+				&& CCDirector.SharedDirector.Accelerometer.IsEnabled
+				&& CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
             {
 				CCDirector.SharedDirector.Accelerometer.Update();
             }

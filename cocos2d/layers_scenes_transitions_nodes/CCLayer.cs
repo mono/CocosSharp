@@ -294,7 +294,7 @@ namespace CocosSharp
             if (m_bIsAccelerometerEnabled)
             {
 #if !PSM &&!NETFX_CORE
-                director.Accelerometer.SetDelegate(this);
+				director.Accelerometer.IsEnabled = true;
 #endif
 			}
         }
@@ -307,6 +307,9 @@ namespace CocosSharp
             {
                 //CCDirector director = CCDirector.SharedDirector;
                 //director.Accelerometer.setDelegate(null);
+#if !PSM &&!NETFX_CORE
+				CCDirector.SharedDirector.Accelerometer.IsEnabled = false;
+#endif
             }
 
             base.OnExit();
@@ -340,7 +343,7 @@ namespace CocosSharp
                     if (m_bRunning)
                     {
                         CCDirector pDirector = CCDirector.SharedDirector;
-                        pDirector.Accelerometer.SetDelegate(value ? this : null);
+						pDirector.Accelerometer.IsEnabled = value;
                     }
                 }
 #else

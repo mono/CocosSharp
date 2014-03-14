@@ -67,7 +67,7 @@ namespace CocosSharp
 		bool isNeedsInit = true;
 		CCScene nextScene;
 
-#if !PSM &&!NETFX_CORE
+#if !PSM && !NETFX_CORE
 		public CCAccelerometer Accelerometer { get; set; }
 		const string storageDirName = "CocosSharpDirector";
 		const string saveFileName = "SceneList.dat";

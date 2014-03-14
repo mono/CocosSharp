@@ -13,6 +13,7 @@ namespace tests
 	{
 		EVENT_MOUSE = 0,
 		TEST_LABEL_KEYBOARD,
+		TEST_ACCELEROMETER,
 		TEST_CASE_COUNT
 	};
 
@@ -34,6 +35,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_LABEL_KEYBOARD:
 				testLayer = new LabelKeyboardEventTest();
+				break;
+			case (int) EventDispatchTests.TEST_ACCELEROMETER:
+				testLayer = new SpriteAccelerationEventTest();
 				break;
 			default:
 				break;
@@ -279,4 +283,62 @@ namespace tests
 		}
 
 	}
+
+	public class SpriteAccelerationEventTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			AccelerometerEnabled = true;
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var sprite = new CCSprite(TestResource.s_Ball);
+			sprite.Position = origin + size.Center;
+			AddChild(sprite);
+
+			// Create our Accelerometer Listener
+			var listener = new CCEventListenerAccelerometer();
+
+			// We will use Lambda expressions to attach the event process
+			listener.OnAccelerate = (acceleration) => {
+				var ballSize  = sprite.ContentSize;
+				var acc = acceleration.Acceleration;
+				var ptNow  = sprite.Position;
+
+				//CCLog.Log("acc: x = {0}, y = {1}", acc.X, acc.Y);
+
+				ptNow.X += (float)acc.X * 9.81f;
+				ptNow.Y += (float)acc.Y * 9.81f;
+
+				ptNow.X = MathHelper.Clamp(ptNow.X, (float)(CCVisibleRect.Left.X+ballSize.Width / 2.0), (float)(CCVisibleRect.Right.X - ballSize.Width / 2.0));
+				ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(CCVisibleRect.Bottom.Y+ballSize.Height / 2.0), (float)(CCVisibleRect.Top.Y - ballSize.Height / 2.0));
+				sprite.Position = ptNow;
+			};
+
+			// Now we tell the event dispatcher that the sprite is interested in Accelerometer events
+			CCDirector.SharedDirector.EventDispatcher.AddEventListener(listener, sprite);		
+		}
+
+		public override void OnExit ()
+		{
+			base.OnExit ();
+			AccelerometerEnabled = false;
+
+		}
+		public override string title()
+		{
+			return "Sprite Receives Acceleration Event";
+		}
+
+		public override string subtitle()
+		{
+			return "Please move your device\n(Only available on mobile and emulated on Desktop)";
+		}
+
+	}
+
 }

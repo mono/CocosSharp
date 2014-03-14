@@ -16,7 +16,7 @@ namespace CocosSharp
 	{
 		public CCKeyboardEventType KeyboardEventType { get; internal set; }
 
-		// Set mouse scroll data 
+		// Set the Keys data 
 		public Keys Keys { get; internal set; }
 
 		internal CCEventKeyboard(CCKeyboardEventType keyboardEventType)

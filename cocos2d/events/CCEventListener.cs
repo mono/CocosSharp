@@ -11,7 +11,7 @@ namespace CocosSharp
         TOUCH_ALL_AT_ONCE,
         KEYBOARD,
         MOUSE,
-        ACCELERATION,
+        ACCELEROMETER,
         CUSTOM
     }
 

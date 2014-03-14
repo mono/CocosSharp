@@ -96,9 +96,9 @@ namespace CocosSharp
             string ret = string.Empty;
             switch (listenerEvent.Type)
             {
-                //case CCEventType.ACCELERATION:
-                //    ret = CCEventListenerAcceleration.LISTENER_ID;
-                //    break;
+                case CCEventType.ACCELERATION:
+                    ret = CCEventListenerAccelerometer.LISTENER_ID;
+                    break;
                 //case CCEventType.CUSTOM:
                 //    {
                 //        auto customEvent = static_cast<EventCustom*>(event);
@@ -1062,7 +1062,7 @@ namespace CocosSharp
 
 		}
 
-		public bool IsEventListenersFor ( string listenerId)
+		internal bool IsEventListenersFor ( string listenerId)
 		{
 			return listenerMap.ContainsKey (listenerId);
 		}
