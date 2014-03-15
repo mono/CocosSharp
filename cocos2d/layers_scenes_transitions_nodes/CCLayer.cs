@@ -31,7 +31,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCLayer : CCNode, ICCAccelerometerDelegate
+    public class CCLayer : CCNode
     {
         private bool m_bIsAccelerometerEnabled;
 
@@ -40,17 +40,22 @@ namespace CocosSharp
         private CCRect m_tSaveScissorRect;
         private bool m_bNoDrawChildren;
 
+		private bool isTouchEnabled;
+		private CCTouchMode touchMode;
+
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
         /// </summary>
         protected CCClipMode m_childClippingMode = CCClipMode.None;
+
+		#region Constructors
 
         public CCLayer(CCClipMode clipMode)
         {
             m_childClippingMode = clipMode;
 
             TouchMode = CCTouchMode.AllAtOnce;
-
+			TouchEnabled = false;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             m_bIgnoreAnchorPointForPosition = true;
 
@@ -69,6 +74,178 @@ namespace CocosSharp
         public CCLayer() : this(CCClipMode.None)
         {
         }
+
+		#endregion
+		private CCEventListener TouchListener { get; set; }
+
+		public bool IsTouchEnabled
+		{
+			get { return isTouchEnabled; }
+
+			set 
+			{
+				if (value != isTouchEnabled) 
+				{
+
+					isTouchEnabled = value;
+
+					if (isTouchEnabled) 
+					{
+						if (TouchMode == CCTouchMode.AllAtOnce) 
+						{
+							// Register Touch Event
+							var touchListener = new CCEventListenerTouchAllAtOnce();
+
+							touchListener.OnTouchesBegan = TouchesBegan;
+							touchListener.OnTouchesMoved = TouchesMoved;
+							touchListener.OnTouchesEnded = TouchesEnded;
+							touchListener.OnTouchesCancelled = TouchesCancelled;
+
+							EventDispatcher.AddEventListener(touchListener, this);
+
+							TouchListener = touchListener;
+						} 
+						else 
+						{
+							// Register Touch Event
+							var touchListener = new CCEventListenerTouchOneByOne();
+							touchListener.IsSwallowTouches = true;
+
+							touchListener.OnTouchBegan = TouchBegan;
+							touchListener.OnTouchMoved = TouchMoved;
+							touchListener.OnTouchEnded = TouchEnded;
+							touchListener.OnTouchCancelled = TouchCancelled;
+
+							EventDispatcher.AddEventListener(touchListener, this);
+
+							TouchListener = touchListener;
+
+						}
+					}
+				}
+				else
+				{
+					EventDispatcher.RemoveEventListener(TouchListener);
+					TouchListener = null;
+				}
+			}
+		}
+
+		public CCTouchMode TouchMode
+		{
+			get { return touchMode; }
+			set
+			{
+				if (touchMode != value)
+				{
+					touchMode = value;
+
+					if (IsTouchEnabled)
+					{
+						IsTouchEnabled = false;
+						IsTouchEnabled = true;
+					}
+				}
+			}
+		}
+
+		protected virtual void TouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchesHandler(EventTouch::EventCode::BEGAN, touches, event);
+//			return;
+//			}
+			#endif
+		}
+
+		protected virtual void TouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchesHandler(EventTouch::EventCode::MOVED, touches, event);
+//			return;
+//			}
+			#endif
+
+		}
+
+		protected virtual void TouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchesHandler(EventTouch::EventCode::ENDED, touches, event);
+//			return;
+//			}
+			#endif
+		}
+
+		protected virtual void TouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchesHandler(EventTouch::EventCode::CANCELLED, touches, event);
+//			return;
+//			}
+			#endif
+		}
+
+		// Layer touch callbacks
+
+		protected virtual bool TouchBegan(CCTouch touch, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			return executeScriptTouchHandler(EventTouch::EventCode::BEGAN, touch, event) == 0 ? false : true;
+//			}
+			#endif
+			Debug.Assert(false, "Layer#TouchBegan override me");
+			return true;
+
+		}
+
+		protected virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchHandler(EventTouch::EventCode::MOVED, touch, event);
+//			return;
+//			}
+			#endif
+
+		}
+
+		protected virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchHandler(EventTouch::EventCode::ENDED, touch, event);
+//			return;
+//			}
+			#endif
+
+		}
+
+		protected virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
+		{
+			#if CC_ENABLE_SCRIPT_BINDING
+//			if (kScriptTypeLua == _scriptType)
+//			{
+//			executeScriptTouchHandler(EventTouch::EventCode::CANCELLED, touch, event);
+//			return;
+//			}
+			#endif
+
+		}    
+
+
 
 
         public CCClipMode ChildClippingMode
@@ -350,10 +527,6 @@ namespace CocosSharp
                 m_bIsAccelerometerEnabled = false;
 #endif
 			}
-        }
-
-        public virtual void DidAccelerate(CCAcceleration pAccelerationValue)
-        {
         }
     }
 }

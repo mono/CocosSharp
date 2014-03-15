@@ -34,7 +34,15 @@ namespace CocosSharp
         internal CCEvent(CCEventType type)
         {
             Type = type;
-            IsStopped = true;
+			IsStopped = false;
         }
+
+		/// <summary>
+		/// Stops propagation for current event
+		/// </summary>
+		public void StopPropogation()
+		{
+			IsStopped = true;
+		}
     }
 }

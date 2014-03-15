@@ -636,8 +636,9 @@ namespace CocosSharp
 
         private void ProcessTouch()
         {
-            if (m_pDelegate != null)
-            {
+			//if (m_pDelegate != null)
+			if (CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID))
+			{
                 newTouches.Clear();
                 movedTouches.Clear();
                 endedTouches.Clear();
@@ -743,20 +744,30 @@ namespace CocosSharp
                             throw new ArgumentOutOfRangeException();
                     }
                 }
+					var touchEvent = new CCEventTouch(CCEventCode.BEGAN);
 
                 if (newTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesBegan(newTouches);
+						touchEvent.Touches = newTouches;
+						//m_pDelegate.TouchesBegan(newTouches);
+						CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
                 }
 
                 if (movedTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesMoved(movedTouches);
+						touchEvent.EventCode = CCEventCode.MOVED;
+						touchEvent.Touches = movedTouches;
+						CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
+
+						//m_pDelegate.TouchesMoved(movedTouches);
                 }
 
                 if (endedTouches.Count > 0)
                 {
-                    m_pDelegate.TouchesEnded(endedTouches);
+						//m_pDelegate.TouchesEnded(endedTouches);
+						touchEvent.EventCode = CCEventCode.ENDED;
+						touchEvent.Touches = endedTouches;
+						CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
                 }
             }
         }

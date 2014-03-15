@@ -309,21 +309,21 @@ namespace CocosSharp
         {
 			switch (listenerType) 
 			{
-//			case CCEventListenerType.TOUCH_ONE_BY_ONE:
-//				RemoveEventListeners (CCEventListenerTouchOneByOne.ListenerID);
-//				break;
-//			case CCEventListenerType.TOUCH_ALL_AT_ONCE:
-//				RemoveEventListeners (CCEventListenerTouchAllAtOnce.ListenerID);
-//				break;
+			case CCEventListenerType.TOUCH_ONE_BY_ONE:
+				RemoveEventListeners (CCEventListenerTouchOneByOne.LISTENER_ID);
+				break;
+			case CCEventListenerType.TOUCH_ALL_AT_ONCE:
+				RemoveEventListeners (CCEventListenerTouchAllAtOnce.LISTENER_ID);
+				break;
 			case CCEventListenerType.MOUSE:
 				RemoveEventListeners (CCEventListenerMouse.LISTENER_ID);
 				break;
-//			case CCEventListenerType.ACCELERATION:
-//				RemoveEventListeners (CCEventListenerAcceleration.ListenerID);
-//				break;
-//			case CCEventListenerType.KEYBOARD:
-//				RemoveEventListeners (CCEventListenerKeyboard.ListenerID);
-//				break;
+			case CCEventListenerType.ACCELEROMETER:
+				RemoveEventListeners (CCEventListenerAccelerometer.LISTENER_ID);
+				break;
+			case CCEventListenerType.KEYBOARD:
+				RemoveEventListeners (CCEventListenerKeyboard.LISTENER_ID);
+				break;
 
 			default:
 				Debug.Assert (false, "Invalid listener type!");
@@ -476,6 +476,213 @@ namespace CocosSharp
         /// </summary>
 		public bool IsEnabled { get; set; }
 
+		/// <summary>
+		/// Touch event needs to be processed different with other events since it needs support ALL_AT_ONCE and ONE_BY_NONE mode.
+		/// </summary>
+		/// <param name="touchEvent"></param>
+		void DispatchTouchEvent(CCEventTouch touchEvent)
+		{
+			SortEventListeners(CCEventListenerTouchOneByOne.LISTENER_ID);
+			SortEventListeners(CCEventListenerTouchAllAtOnce.LISTENER_ID);
+
+			var oneByOneListeners = GetListeners(CCEventListenerTouchOneByOne.LISTENER_ID);
+			var allAtOnceListeners = GetListeners(CCEventListenerTouchAllAtOnce.LISTENER_ID);
+
+			// If there aren't any touch listeners, return directly.
+			if (oneByOneListeners == null && allAtOnceListeners == null)
+				return;
+
+			bool isNeedsMutableSet = (oneByOneListeners != null && allAtOnceListeners != null);
+
+			var originalTouches = touchEvent.Touches;
+			var mutableTouchesArray = new CCTouch[originalTouches.Count];
+			originalTouches.CopyTo (mutableTouchesArray);
+			var mutableTouchesIter = 0;
+			var mutableTouches = mutableTouchesArray.ToList ();
+
+			//
+			// process the target handlers 1st
+			//
+			if (oneByOneListeners != null)
+			{
+
+				foreach (var touchesIter in originalTouches)
+				{
+					bool isSwallowed = false;
+					Func<CCEventListener, bool> onTouchEvent = delegate(CCEventListener l)
+					{ 
+						var listener = (CCEventListenerTouchOneByOne)l;
+
+						// Skip if the listener was removed.
+						if (!listener.IsRegistered)
+							return false;
+
+						touchEvent.CurrentTarget = listener.SceneGraphPriority;
+
+						var name = touchEvent.CurrentTarget.Name;
+						bool isClaimed = false;
+						var removed = new List<CCTouch>();
+
+						var eventCode = touchEvent.EventCode;
+
+						if (eventCode == CCEventCode.BEGAN)
+						{
+							if (listener.OnTouchBegan != null)
+							{
+								isClaimed = listener.OnTouchBegan(touchesIter, touchEvent);
+								if (isClaimed && listener.IsRegistered)
+								{
+									listener.ClaimedTouches.Add(touchesIter);
+								}
+							}
+						}
+						else if (listener.ClaimedTouches.Count > 0
+							&& (removed = listener.ClaimedTouches.FindAll(t => t == touchesIter)).Count > 0)
+						{
+
+							isClaimed = true;
+
+							switch (eventCode)
+							{
+							case CCEventCode.MOVED:
+								if (listener.OnTouchMoved != null)
+								{
+									listener.OnTouchMoved(touchesIter, touchEvent);
+								}
+								break;
+							case CCEventCode.ENDED:
+								if (listener.OnTouchEnded != null)
+								{
+									listener.OnTouchEnded(touchesIter, touchEvent);
+								}
+								if (listener.IsRegistered)
+								{
+
+									listener.ClaimedTouches.RemoveAll(t => removed.Contains(t));
+								}
+								break;
+							case CCEventCode.CANCELLED:
+								if (listener.OnTouchCancelled != null)
+								{
+									listener.OnTouchCancelled(touchesIter, touchEvent);
+								}
+								if (listener.IsRegistered)
+								{
+									listener.ClaimedTouches.RemoveAll(t => removed.Contains(t));
+								}
+								break;
+							default:
+								Debug.Assert(false, "The eventcode is invalid.");
+								break;
+							}
+						}
+
+						// If the event was stopped, return directly.
+						if (touchEvent.IsStopped)
+						{
+							UpdateListeners(touchEvent);
+							return true;
+						}
+
+						Debug.Assert(touchesIter.Id == mutableTouches[mutableTouchesIter].Id, "");
+
+						if (isClaimed && listener.IsRegistered && listener.IsSwallowTouches)
+						{
+							if (isNeedsMutableSet)
+							{
+								mutableTouches.RemoveAt(mutableTouchesIter);
+								//++mutableTouchesIter;
+								isSwallowed = true;
+							}
+							return true;
+						}
+
+						return false;
+					};
+
+					//
+					DispatchEventToListeners(oneByOneListeners, onTouchEvent);
+					if (touchEvent.IsStopped)
+					{
+						return;
+					}
+
+					if (!isSwallowed)
+						++mutableTouchesIter;
+				}
+			}
+
+			//
+			// process standard handlers 2nd
+			//
+			if (allAtOnceListeners != null && mutableTouches.Count > 0)
+			{
+
+				Func<CCEventListener, bool> onTouchesEvent = delegate(CCEventListener l)
+				{ 
+
+					var listener = (CCEventListenerTouchAllAtOnce)l;
+
+					// Skip if the listener was removed.
+					if (!listener.IsRegistered)
+						return false;
+
+					touchEvent.CurrentTarget = listener.SceneGraphPriority;
+
+					switch (touchEvent.EventCode)
+					{
+					case CCEventCode.BEGAN:
+						if (listener.OnTouchesBegan != null)
+						{
+							listener.OnTouchesBegan(mutableTouches, touchEvent);
+						}
+						break;
+					case CCEventCode.MOVED:
+						if (listener.OnTouchesMoved != null)
+						{
+							listener.OnTouchesMoved(mutableTouches, touchEvent);
+						}
+						break;
+
+					case CCEventCode.ENDED:
+						if (listener.OnTouchesEnded != null)
+						{
+							listener.OnTouchesEnded(mutableTouches, touchEvent);
+						}
+						break;
+					case CCEventCode.CANCELLED:
+						if (listener.OnTouchesCancelled != null)
+						{
+							listener.OnTouchesCancelled(mutableTouches, touchEvent);
+						}
+						break;
+					default:
+						Debug.Assert(false, "The eventcode is invalid.");
+						break;
+					}
+
+					// If the event was stopped, return directly.
+					if (touchEvent.IsStopped)
+					{
+						UpdateListeners(touchEvent);
+						return true;
+					}
+
+					return false;
+				};
+
+				DispatchEventToListeners(allAtOnceListeners, onTouchesEvent);
+				if (touchEvent.IsStopped)
+				{
+					return;
+				}
+			}
+
+			UpdateListeners(touchEvent);
+
+		}
+
+
         /// <summary>
         /// Dispatches the event
         /// Also removes all EventListeners marked for deletion from the event dispatcher list.
@@ -488,15 +695,15 @@ namespace CocosSharp
 
 			UpdateDirtyFlagForSceneGraph();
 
-
-			//DispatchGuard guard(_inDispatch);
-
-//			if (event->getType() == Event::Type::TOUCH)
-//			{
-//				dispatchTouchEvent(static_cast<EventTouch*>(event));
-//				return;
-//			}
 			inDispatch++;
+
+			if (eventToDispatch.Type == CCEventType.TOUCH)
+			{
+				DispatchTouchEvent((CCEventTouch)eventToDispatch);
+				inDispatch--;
+				return;
+			}
+
 
 			var listenerID = CCEventDispatcher.GetListenerID(eventToDispatch);
 
@@ -722,7 +929,6 @@ namespace CocosSharp
 //				return _nodePriorityMap[l1->getSceneGraphPriority()] > _nodePriorityMap[l2->getSceneGraphPriority()];
 //			});
 //
-			//if (nodePriorityMap.Count > 0)
 				sceneGraphListeners.Sort((a,b) => 
 					{
 						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
@@ -740,8 +946,10 @@ namespace CocosSharp
 			Console.WriteLine("----------------------- " + nodePriorityMap.Count + " -----------------------");
 			foreach (var l in sceneGraphListeners)
 			{
-			if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-				Console.WriteLine("listener priority: node [{0}], priority {1}", l.SceneGraphPriority, nodePriorityMap[l.SceneGraphPriority]);
+				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
+					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority]);
+				else
+					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1);
 			}
 #endif
         }
@@ -755,6 +963,11 @@ namespace CocosSharp
 
         }
 
+		/// <summary>
+		/// Gets event the listener list for the event listener type.
+		/// </summary>
+		/// <returns>The listeners.</returns>
+		/// <param name="listenerID">Listener I.</param>
 		CCEventListenerVector GetListeners(string listenerID)
 		{
 			if (listenerMap.ContainsKey(listenerID))
@@ -912,7 +1125,7 @@ namespace CocosSharp
 
 			if (forEvent.Type == CCEventType.TOUCH) 
 			{
-//				UpdateListeners (EventListenerToucheOneByOne.LISTENER_ID);
+				UpdateListeners (CCEventListenerTouchOneByOne.LISTENER_ID);
 //				UpdateListeners (EventListenerAllAtOnce.LISTENER_ID);
 			} 
 			else 
@@ -946,12 +1159,6 @@ namespace CocosSharp
 			}
 
         }
-
-        /// <summary>
-        /// Touch event needs to be processed different with other events since it needs support ALL_AT_ONCE and ONE_BY_NONE mode.
-        /// </summary>
-        /// <param name="touchEvent"></param>
-        //void DispatchTouchEvent(CCEventTouch touchEvent);
     
         /// <summary>
         /// Associates node with event listener

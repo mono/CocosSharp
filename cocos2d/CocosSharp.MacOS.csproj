@@ -447,6 +447,9 @@
     <Compile Include="events\CCEventKeyboard.cs" />
     <Compile Include="events\CCEventListenerAccelerometer.cs" />
     <Compile Include="events\CCEventAccelerate.cs" />
+    <Compile Include="events\EventListenerTouchOneByOne.cs" />
+    <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\EventListenerTouchAllAtOnce.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
