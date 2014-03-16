@@ -1712,6 +1712,9 @@
     <Compile Include="..\tests\tests\classes\tests\ZwoptexTest\ZwoptexTestScene.cs">
       <Link>classes\tests\ZwoptexTest\ZwoptexTestScene</Link>
     </Compile>
+	  <Compile Include="..\tests\tests\classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs">
+		  <Link>classes\tests\EventDispatcherTest\EventDispatcherTestDemo</Link>
+	  </Compile>	  
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>

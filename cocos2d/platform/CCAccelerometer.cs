@@ -141,15 +141,20 @@ namespace CocosSharp
             //  Cocos2D-XNA mapps the Sensor reading of the X value to be our Y value
             //  and the Y value to our X value.  Also the values need to be negated so that 
             //  it maps correctly.
-			#if ANDROID
+#if ANDROID 
 			accelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-			accelerationValue.Y = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+			accelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
 			accelerationValue.Z = float.Parse(temp[3]);
-			#else
+
+#elif WINDOWS_PHONE8
+            accelerationValue.Y = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            accelerationValue.Z = float.Parse(temp[3]);
+#else
 			accelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
 			accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
 			accelerationValue.Z = float.Parse(temp[3]);
-			#endif
+#endif
 
         }
 
@@ -194,7 +199,7 @@ namespace CocosSharp
                     stateValue.Normalize();
 
                     accelerationValue.X = stateValue.X;
-					accelerationValue.Y = -stateValue.Y;
+					accelerationValue.Y = stateValue.Y;
                     accelerationValue.Z = stateValue.Z;
                     accelerationValue.TimeStamp = DateTime.Now.Ticks;
                 }
