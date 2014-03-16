@@ -143,7 +143,7 @@ namespace CocosSharp
             //  it maps correctly.
 #if ANDROID 
 			accelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-			accelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+			accelerationValue.Y = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
 			accelerationValue.Z = float.Parse(temp[3]);
 
 #elif WINDOWS_PHONE8
