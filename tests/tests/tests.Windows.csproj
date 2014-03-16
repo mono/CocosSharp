@@ -621,6 +621,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
+	<Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
