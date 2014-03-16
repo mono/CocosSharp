@@ -36,7 +36,7 @@ namespace tests
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
 #if NETFX_CORE
-            CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
+            CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
 #else
             CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif

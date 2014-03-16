@@ -144,7 +144,7 @@ namespace CocosSharp
 			if (!listener.IsAvailable)
 				return;
 			#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-			Console.WriteLine("-----  Add > " + node + " --  Available > " + listener.IsAvailable + " ---------------------");
+			CCLog.Log("-----  Add > " + node + " --  Available > " + listener.IsAvailable + " ---------------------");
 			#endif
 			listener.SceneGraphPriority = node;
 			listener.FixedPriority = 0;
@@ -343,7 +343,7 @@ namespace CocosSharp
 			if (nodeListenersMap.ContainsKey(target))
             {
 				#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-				Console.WriteLine("-----  Remove > " + target + " -----------------------");
+				CCLog.Log("-----  Remove > " + target + " -----------------------");
 				//			foreach (var l in sceneGraphListeners)
 				//			{
 				//				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
@@ -943,13 +943,13 @@ namespace CocosSharp
 
 
 #if DUMP_LISTENER_ITEM_PRIORITY_INFO
-			Console.WriteLine("----------------------- " + nodePriorityMap.Count + " -----------------------");
+			CCLog.Log("----------------------- " + nodePriorityMap.Count + " -----------------------");
 			foreach (var l in sceneGraphListeners)
 			{
 				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority], l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
+                    CCLog.Log("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority], l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
 				else
-					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1, l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
+                    CCLog.Log("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1, l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
 			}
 #endif
         }
