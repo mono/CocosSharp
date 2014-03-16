@@ -192,9 +192,9 @@ namespace CocosSharp
                     if (keyboardState.IsKeyDown(Keys.Right))
                         stateValue.X = .1f;
                     if (keyboardState.IsKeyDown(Keys.Up))
-                        stateValue.Y = -.1f;
-                    if (keyboardState.IsKeyDown(Keys.Down))
                         stateValue.Y = .1f;
+                    if (keyboardState.IsKeyDown(Keys.Down))
+						stateValue.Y = -.1f;
 
                     stateValue.Normalize();
 

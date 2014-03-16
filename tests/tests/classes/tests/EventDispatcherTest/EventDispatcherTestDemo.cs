@@ -323,6 +323,9 @@ namespace tests
 					ptNow.X += (float)acc.X * 9.81f;
 					ptNow.Y += (float)acc.Y * 9.81f;
 				}
+				#else
+				ptNow.X += (float)acc.X * 9.81f;
+				ptNow.Y += (float)acc.Y * 9.81f;
 				#endif
 				ptNow.X = MathHelper.Clamp(ptNow.X, (float)(CCVisibleRect.Left.X+ballSize.Width / 2.0), (float)(CCVisibleRect.Right.X - ballSize.Width / 2.0));
 				ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(CCVisibleRect.Bottom.Y+ballSize.Height / 2.0), (float)(CCVisibleRect.Top.Y - ballSize.Height / 2.0));
