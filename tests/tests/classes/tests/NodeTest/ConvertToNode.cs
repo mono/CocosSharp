@@ -7,7 +7,11 @@ namespace tests
     {
         public ConvertToNode()
         {
-            TouchEnabled = true;
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);    
+
             CCSize s = CCDirector.SharedDirector.WinSize;
 
 			var rotate = new CCRotateBy (10, 360);
@@ -48,9 +52,24 @@ namespace tests
             return "Convert To Node Space";
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-            base.TouchesEnded(touches);
+			foreach( var touch in touches)
+			{
+				var location = touch.Location;
+
+				for( int i = 0; i < 3; i++)
+				{
+					var node = GetChildByTag(100+i);
+					CCPoint p1, p2;
+
+					p1 = node.ConvertToNodeSpaceAr(location);
+					p2 = node.ConvertToNodeSpace(location);
+
+					CCLog.Log("AR: x={0:f2}, y={1:f2} -- Not AR: x={2:f2}, y={3:f2}", p1.X, p1.Y, p2.X, p2.Y);
+				}
+			}    
+
         }
 
         public override string subtitle()

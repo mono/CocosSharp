@@ -42,7 +42,12 @@ namespace tests
 
             m_pBrush.Color = new CCColor3B (Color.Red);
             m_pBrush.Opacity = 20;
-            TouchEnabled = true;
+
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
 
             // Save Image menu
             uint fontSize = 16;
@@ -64,7 +69,7 @@ namespace tests
             return "Press 'Save Image' to create an snapshot of the render texture";
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
             CCPoint start = touch.Location;

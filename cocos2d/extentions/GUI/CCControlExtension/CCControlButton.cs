@@ -217,7 +217,17 @@ namespace CocosSharp
             _titleLabelDispatchTable = new Dictionary<CCControlState, CCNode>();
             _backgroundSpriteDispatchTable = new Dictionary<CCControlState, CCNode>();
 
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             _isPushed = false;
             _zoomOnTouchDown = true;
 
@@ -399,7 +409,7 @@ namespace CocosSharp
         }
 
         //events
-        public override bool TouchBegan(CCTouch pTouch)
+		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!IsTouchInside(pTouch) || !Enabled)
             {
@@ -413,7 +423,7 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!Enabled || !IsPushed || Selected)
             {
@@ -448,7 +458,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             _state = CCControlState.Normal;
             _isPushed = false;
@@ -469,7 +479,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchCancelled(CCTouch pTouch)
+		void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
         {
             _state = CCControlState.Normal;
             _isPushed = false;

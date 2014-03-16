@@ -87,7 +87,15 @@ namespace CocosSharp
 
         private void InitCCControlSaturationBrightnessPicker(CCNode target, CCPoint pos)
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             // Add background and slider sprites
             _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerBackground.png", target, pos, CCPoint.Zero);
             _overlay = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPickerOverlay.png", target, pos, CCPoint.Zero);
@@ -192,7 +200,7 @@ namespace CocosSharp
         }
 
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (!Enabled || !Visible)
             {
@@ -206,7 +214,7 @@ namespace CocosSharp
             return CheckSliderPosition(touchLocation);
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             // Get the touch location
             CCPoint touchLocation = GetTouchLocation(touch);

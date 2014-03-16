@@ -20,13 +20,24 @@ namespace tests.classes.tests.Box2DTestBet
         public bool initWithEntryID(int entryId)
         {
 
-            TouchEnabled = true;
+			//TouchEnabled = true;
 
             Schedule(tick);
 
             m_entry = TestEntries.TestList[entryId];
             m_test = m_entry.CreateFcn();
             m_test.Initialize();
+
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             return true;
         }
@@ -59,7 +70,7 @@ namespace tests.classes.tests.Box2DTestBet
             pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
 
@@ -71,7 +82,7 @@ namespace tests.classes.tests.Box2DTestBet
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);
@@ -79,7 +90,7 @@ namespace tests.classes.tests.Box2DTestBet
             m_test.MouseMove(new Vector2(nodePosition.X, nodePosition.Y));
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);

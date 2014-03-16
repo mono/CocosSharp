@@ -676,7 +676,7 @@ namespace CocosSharp
 		}
 
 		public int LocalZOrder { get; set; }
-		public int GlobalZOrder { get; set; }
+		public float GlobalZOrder { get; set; }
 
 		#region Cleaning up
 
@@ -704,6 +704,7 @@ namespace CocosSharp
 
 			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
 			this.Cleanup();
+			eventDispatcher.RemoveEventListeners (this);
 			eventDispatcher = null;
 		}
 
@@ -732,7 +733,7 @@ namespace CocosSharp
             // timers
             UnscheduleAll();
 
-			eventDispatcher.RemoveEventListeners (this);
+			//eventDispatcher.RemoveEventListeners (this);
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {

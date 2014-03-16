@@ -51,6 +51,9 @@ namespace CocosSharp
         protected CCPoint _touchPoint;
         protected CCSize _viewSize;
 
+		private bool isTouchEnabled;
+		private CCEventListener TouchListener;
+
         public float MinScale
         {
             get { return _minScale; }
@@ -86,16 +89,41 @@ namespace CocosSharp
 
         public override bool TouchEnabled
         {
-            get { return base.TouchEnabled; }
+			get { return isTouchEnabled; }
             set
             {
-                base.TouchEnabled = value;
-                if (!value)
-                {
-                    _dragging = false;
-                    _touchMoved = false;
-                    _touches.Clear();
-                }
+
+				if (value != isTouchEnabled) 
+				{
+
+					isTouchEnabled = value;
+
+					if (isTouchEnabled) 
+					{
+
+						// Register Touch Event
+						var touchListener = new CCEventListenerTouchOneByOne();
+						touchListener.IsSwallowTouches = true;
+
+						touchListener.OnTouchBegan = TouchBegan;
+						touchListener.OnTouchMoved = TouchMoved;
+						touchListener.OnTouchEnded = TouchEnded;
+						touchListener.OnTouchCancelled = TouchCancelled;
+
+						EventDispatcher.AddEventListener(touchListener, this);
+
+						TouchListener = touchListener;
+
+					}
+				}
+				else
+				{
+					_dragging = false;
+					_touchMoved = false;
+					_touches.Clear();
+					EventDispatcher.RemoveEventListener(TouchListener);
+					TouchListener = null;
+				}
             }
         }
 
@@ -262,10 +290,10 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
-        }
+//        public override void RegisterWithTouchDispatcher()
+//        {
+//            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
+//        }
 
         /**
         * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
@@ -460,7 +488,7 @@ namespace CocosSharp
 
         /** override functions */
         // optional
-        public override bool TouchBegan(CCTouch pTouch)
+		public virtual bool TouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -502,7 +530,7 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		public virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -582,7 +610,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchEnded(CCTouch touch)
+		public virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -605,7 +633,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchCancelled(CCTouch touch)
+		public virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {

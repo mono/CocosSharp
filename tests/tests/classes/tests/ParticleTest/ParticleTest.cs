@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using CocosSharp;
 using Random = CocosSharp.CCRandom;
 
@@ -180,8 +181,6 @@ namespace tests
         {
             m_emitter = null;
 
-            TouchEnabled = true;
-
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 100, kLabelTag);
@@ -245,6 +244,13 @@ namespace tests
 
             var pLabel = (CCLabelTtf) (GetChildByTag(kLabelTag));
             pLabel.Text = (title());
+
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesBegan = onTouchesBegan;
+			listener.OnTouchesMoved = onTouchesMoved;
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);
         }
 
         public virtual string title()
@@ -292,20 +298,20 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            return true;
+			onTouchesEnded (touches, touchEvent);
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            TouchEnded(touch);
+			onTouchesEnded (touches, touchEvent);
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-
-            var convertedLocation = touch.Location;
+			var touch = touches [0];
+			var convertedLocation = touch.Location;
 
             var pos = new CCPoint(0, 0);
             if (m_background != null)
@@ -1310,7 +1316,7 @@ namespace tests
         }
     }
 
-    public class ParticleReorder : ParticleDemo
+	public class ParticleReorder : ParticleDemo
     {
         private int m_nOrder;
 

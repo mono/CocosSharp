@@ -327,8 +327,8 @@ namespace tests
             item1.Position = new CCPoint(s.Width / 2 - 100, 30);
             item2.Position = new CCPoint(s.Width / 2, 30);
             item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-
-            AddChild(menu, 1);
+			menu.Name = title ();
+			AddChild(menu, TestScene.MENU_LEVEL);
         }
 
         public override void OnExit()
@@ -1576,8 +1576,11 @@ namespace tests
 
             centerSprites(0);
     
-            TouchEnabled = true;
-    
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);    
+
             CCSize s = CCDirector.SharedDirector.WinSize;
             AddNewSpriteWithCoords(new CCPoint(s.Width/2, s.Height/2));
         }
@@ -1602,7 +1605,7 @@ namespace tests
             // override me
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var touch in touches)
             {

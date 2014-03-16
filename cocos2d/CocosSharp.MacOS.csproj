@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOS\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME;DUMP_LISTENER_ITEM_PRIORITY_INFO</DefineConstants>
+    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>

@@ -1,4 +1,9 @@
-﻿using System;
+﻿
+// used for testing
+#define DUMP_LISTENER_ITEM_PRIORITY_INFO
+
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -135,17 +140,12 @@ namespace CocosSharp
         {
 			Debug.Assert((listener != null && node != null), "Invalid parameters.");
 			Debug.Assert(!listener.IsRegistered, "The listener has been registered.");
-			#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-			Console.WriteLine("-----  Add > " + node + " --  Available > " + listener.IsAvailable + " ---------------------");
-			//			foreach (var l in sceneGraphListeners)
-			//			{
-			//				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-			//					Console.WriteLine("listener priority: node [{0}], priority {1}", l.SceneGraphPriority, nodePriorityMap[l.SceneGraphPriority]);
-			//			}
-			#endif
+
 			if (!listener.IsAvailable)
 				return;
-
+			#if DUMP_LISTENER_ITEM_PRIORITY_INFO
+			Console.WriteLine("-----  Add > " + node + " --  Available > " + listener.IsAvailable + " ---------------------");
+			#endif
 			listener.SceneGraphPriority = node;
 			listener.FixedPriority = 0;
 			listener.IsRegistered = true;
@@ -934,11 +934,11 @@ namespace CocosSharp
 						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
 							return 0;
 						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority))
-							return -1;
-						if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
 							return 1;
+						if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
+							return -1;
 
-						return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]);
+						return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]) * -1;
 					});
 
 
@@ -947,9 +947,9 @@ namespace CocosSharp
 			foreach (var l in sceneGraphListeners)
 			{
 				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority]);
+					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority], l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
 				else
-					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1);
+					Console.WriteLine("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1, l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
 			}
 #endif
         }

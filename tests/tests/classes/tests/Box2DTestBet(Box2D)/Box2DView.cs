@@ -15,7 +15,14 @@ namespace Box2D.TestBed
 
         public bool initWithEntryID(int entryId)
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+
+			EventDispatcher.AddEventListener(touchListener, -10);
 
             Schedule ();
 
@@ -44,13 +51,13 @@ namespace Box2D.TestBed
             m_test.InternalDraw(settings);
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
-        }
+//        public override void RegisterWithTouchDispatcher()
+//        {
+//            CCDirector pDirector = CCDirector.SharedDirector;
+//            pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
+//        }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
 
@@ -62,7 +69,7 @@ namespace Box2D.TestBed
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);

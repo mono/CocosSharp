@@ -101,7 +101,14 @@ namespace CocosSharp
 
         private void InitCCControlHuePicker(CCNode target, CCPoint pos)
         {
-            TouchEnabled = true;
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             // Add background and slider sprites
             Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target,
                                                                           pos, CCPoint.Zero);
@@ -157,7 +164,7 @@ namespace CocosSharp
             return false;
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (!Enabled || !Visible)
             {
@@ -171,7 +178,7 @@ namespace CocosSharp
             return CheckSliderPosition(touchLocation);
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             // Get the touch location
             CCPoint touchLocation = GetTouchLocation(pTouch);

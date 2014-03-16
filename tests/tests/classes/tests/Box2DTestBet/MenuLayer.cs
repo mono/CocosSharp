@@ -17,7 +17,14 @@ namespace tests.classes.tests.Box2DTestBet
 
             m_entryID = entryId;
 
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
 
             Box2DView view = Box2DView.viewWithEntryID(entryId);
             AddChild(view, 0, kTagBox2DNode);
@@ -82,23 +89,23 @@ namespace tests.classes.tests.Box2DTestBet
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
-        }
+//        public override void RegisterWithTouchDispatcher()
+//        {
+//            CCDirector pDirector = CCDirector.SharedDirector;
+//            pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
+//        }
 
-        public override bool TouchBegan(CCTouch touch)
-        {
-            return true;
-        }
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
+		{
+			return true;
+		}
 
-        public override void TouchMoved(CCTouch touch)
-        {
-            CCPoint diff = touch.Delta;
-            CCNode node = GetChildByTag(kTagBox2DNode);
-            node.Position = node.Position + diff;
-        }
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
+		{
+			CCPoint diff = touch.Delta;
+			CCNode node = GetChildByTag(kTagBox2DNode);
+			node.Position = node.Position + diff;
+		}
 
         public static MenuLayer menuWithEntryID(int entryId)
         {

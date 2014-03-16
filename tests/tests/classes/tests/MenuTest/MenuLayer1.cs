@@ -33,9 +33,20 @@ namespace tests
         private string s_MenuItem = "Images/menuitemsprite";
         private string s_PressSendScore = "Images/SendScoreButtonPressed";
 
+		CCEventListenerTouchOneByOne touchListener;
+
         public MenuLayer1()
         {
-            base.TouchEnabled = true;
+			// Register Touch Event
+			touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, 1);
             // Font Item
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
@@ -119,31 +130,26 @@ namespace tests
             ((CCLayerMultiplex) m_pParent).SwitchTo(4);
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, -128 + 1, true);
-        }
-
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             return true;
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
         }
 
-        public override void TouchCancelled(CCTouch touch)
+		void onTouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
         }
 
         public void allowTouches(float dt)
         {
-            CCDirector.SharedDirector.TouchDispatcher.SetPriority(-128 + 1, this);
+			CCDirector.SharedDirector.EventDispatcher.SetPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -161,7 +167,7 @@ namespace tests
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
-            CCDirector.SharedDirector.TouchDispatcher.SetPriority(-128 - 1, this);
+			CCDirector.SharedDirector.EventDispatcher.SetPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }

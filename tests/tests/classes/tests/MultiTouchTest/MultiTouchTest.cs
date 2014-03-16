@@ -10,8 +10,17 @@ namespace tests
     {
         public MultiTouchTestLayer()
         {
-            TouchEnabled = true;
-        }
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesBegan = onTouchesBegan;
+			listener.OnTouchesMoved = onTouchesMoved;
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);   
+
+			var title = new CCLabelTtf("Please touch the screen!", "", 24);
+			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);
+			AddChild(title);
+		}
 
         private CCColor3B[] s_TouchColors = new CCColor3B[] 
         {
@@ -24,13 +33,7 @@ namespace tests
 
         private static Dictionary<int, TouchPoint> s_dic = new Dictionary<int, TouchPoint>();
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            base.RegisterWithTouchDispatcher();
-            CCDirector.SharedDirector.TouchDispatcher.AddStandardDelegate(this, 0);
-        }
-
-        public override void TouchesBegan(List<CCTouch> touches)
+		public void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var item in touches)
             {
@@ -46,7 +49,7 @@ namespace tests
             }
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		public void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach(var item in touches)
             {
@@ -57,7 +60,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		public void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var item in touches )
             {

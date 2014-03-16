@@ -148,7 +148,16 @@ namespace CocosSharp
             Debug.Assert(minusSprite != null, "Minus sprite must be not nil");
             Debug.Assert(plusSprite != null, "Plus sprite must be not nil");
 
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             // Set the default values
             _autorepeat = true;
@@ -239,7 +248,7 @@ namespace CocosSharp
         }
 
         //events
-        public override bool TouchBegan(CCTouch pTouch)
+		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!IsTouchInside(pTouch) || !Enabled || !Visible)
             {
@@ -259,7 +268,7 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             if (IsTouchInside(pTouch))
             {
@@ -292,7 +301,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             _minusSprite.Color = CCTypes.CCWhite;
             _plusSprite.Color = CCTypes.CCWhite;

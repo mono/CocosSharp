@@ -38,7 +38,14 @@ namespace CocosSharp
 
         private void InitCCControlColourPicker()
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             // Cache the sprites
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("extensions/CCControlColourPickerSpriteSheet.plist");
 
@@ -168,7 +175,7 @@ namespace CocosSharp
             _colourPicker.UpdateDraggerWithHSV(_hsv);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             return false;
         }

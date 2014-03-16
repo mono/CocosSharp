@@ -47,8 +47,8 @@ namespace tests
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
-            CCNode ccnode = new CCNode();
-            ccnode.Schedule ();
+
+			Schedule ();
 
             m_plabel = new CCLabelBMFont("00.0", "fonts/arial16.fnt");
             m_plabel.Position = new CCPoint(s.Width / 2, s.Height / 2);
@@ -78,8 +78,7 @@ namespace tests
 
                 //char str[32] = {0};
                 string str;
-                //sprintf(str, "%.1f %.1f %.1f %.1f", frameRateB, frameRateM, frameRateE, frameRateC);
-                str = string.Format("{0:1f},{1:1f},{2:1f},{3:1f}", frameRateB, frameRateM, frameRateE, frameRateC);
+				str = string.Format("{0:f1},{1:f1},{2:f1},{3:f1}", frameRateB, frameRateM, frameRateE, frameRateC);
                 m_plabel.Text = (str);
             }
         }

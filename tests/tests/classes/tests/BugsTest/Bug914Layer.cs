@@ -27,7 +27,14 @@ namespace tests
         {
             // always call "super" init
             // Apple recommends to re-assign "self" with the "super" return value
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             // ask director the the window size
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCLayerColor layer;
@@ -58,14 +65,14 @@ namespace tests
             AddChild(label);
         }
 
-        public void ccTouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCLog.Log("Number of touches: %d", touches.Count);
         }
 
-        public void ccTouchesBegan(List<CCTouch> touches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            ccTouchesMoved(touches);
+			onTouchesMoved(touches, touchEvent);
         }
 
         public void restart(object sender)

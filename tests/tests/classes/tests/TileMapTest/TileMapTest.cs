@@ -1381,7 +1381,12 @@ namespace tests
 
         public TileDemo()
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
@@ -1553,21 +1558,9 @@ namespace tests
             pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            return true;
-        }
-
-        public override void TouchEnded(CCTouch touch)
-        {
-        }
-
-        public override void TouchCancelled(CCTouch touch)
-        {
-        }
-
-        public override void TouchMoved(CCTouch touch)
-        {
+			var touch = touches [0];
             CCPoint diff = touch.Delta;
             CCNode node = GetChildByTag(kTagTileMap);
             CCPoint currentPos = node.Position;

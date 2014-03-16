@@ -14,7 +14,12 @@ namespace tests
 
         public SpriteBatchNodeNewTexture()
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
@@ -63,7 +68,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags. kTagSpriteBatchNode);
 
@@ -71,7 +76,7 @@ namespace tests
                 batch.Texture=m_texture2;
             else
                 batch.Texture=m_texture1;   
-            //base.ccTouchesEnded(touches, event_);
+
         }
 
         public override string title()

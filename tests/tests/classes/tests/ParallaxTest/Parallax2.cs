@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CocosSharp;
 
 namespace tests
@@ -10,7 +11,9 @@ namespace tests
 
         public Parallax2()
         {
-            TouchEnabled = true;
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesMoved = onTouchesMoved;
+			EventDispatcher.AddEventListener(listener, this);  
 
             // Top Layer, a simple image
             CCSprite cocosImage = new CCSprite(s_Power);
@@ -52,7 +55,7 @@ namespace tests
             // top image is moved at a ratio of 3.0x, 2.5y
             voidNode.AddChild(cocosImage, 2, new CCPoint(3.0f, 2.5f), new CCPoint(200, 1000));
 
-            AddChild(voidNode, -1, kTagTileMap); // 0, (int)KTag.kTagNode);
+			AddChild(voidNode, -1, (int)KTag.kTagNode); // 0, (int)KTag.kTagNode);
         }
 
         public override void RegisterWithTouchDispatcher()
@@ -60,21 +63,14 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            return true;
-        }
 
-        public override void TouchMoved(CCTouch touch)
-        {
-            var touchLocation = touch.Location;
-            var prevLocation = touch.PreviousLocation;
+			var diff = touches[0].Delta;
 
-            CCPoint diff = touchLocation - prevLocation;
-
-            CCNode node = GetChildByTag(kTagTileMap); // (int) KTag.kTagNode);
-            CCPoint currentPos = node.Position;
-            node.Position = currentPos + diff;
+			var node = GetChildByTag((int)KTag.kTagNode);
+			var currentPos = node.Position;
+			node.Position = currentPos + diff;
         }
 
         public override string title()
