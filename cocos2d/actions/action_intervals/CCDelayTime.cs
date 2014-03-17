@@ -18,7 +18,7 @@
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCDelayTime(m_fDuration);
+            return new CCDelayTime(Duration);
         }
     }
 
