@@ -33,50 +33,93 @@ namespace CocosSharp
 {
     public class CCLayer : CCNode
     {
-        private bool m_bIsAccelerometerEnabled;
+        bool isAccelerometerEnabled;
+        bool isTouchEnabled;
+        bool restoreScissor;
+        bool noDrawChildren;
 
-        private CCRenderTexture m_pRenderTexture;
-        private bool m_bRestoreScissor;
-        private CCRect m_tSaveScissorRect;
-        private bool m_bNoDrawChildren;
+        CCTouchMode touchMode;
+        CCRenderTexture renderTexture;
+        CCRect saveScissorRect;
+        CCClipMode childClippingMode;
 
-        private bool isTouchEnabled;
-        private CCTouchMode touchMode;
+
+        #region Properties
+
+        CCEventListener TouchListener { get; set; }
 
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
         /// </summary>
-        protected CCClipMode m_childClippingMode = CCClipMode.None;
-
-        #region Constructors
-
-        public CCLayer(CCClipMode clipMode)
+        public CCClipMode ChildClippingMode
         {
-            m_childClippingMode = clipMode;
-
-            TouchMode = CCTouchMode.AllAtOnce;
-            TouchEnabled = false;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_bIgnoreAnchorPointForPosition = true;
-
-            CCDirector director = CCDirector.SharedDirector;
-            if (director != null)
+            get { return childClippingMode; }
+            set
             {
-                ContentSize = director.WinSize;
-                m_bIsAccelerometerEnabled = false;
-                m_bDidInit = true;
+                if (childClippingMode != value)
+                {
+                    childClippingMode = value;
+                    InitClipping();
+                }
             }
         }
 
-        /// <summary>
-        /// Default layer constructor that does not use clipping.
-        /// </summary>
-        public CCLayer() : this(CCClipMode.None)
+        public override CCSize ContentSize
         {
+            get { return base.ContentSize; }
+            set
+            {
+                base.ContentSize = value;
+                InitClipping();
+            }
         }
 
-        #endregion
-        private CCEventListener TouchListener { get; set; }
+        public bool AccelerometerEnabled
+        {
+            get 
+            { 
+                #if !PSM
+                return isAccelerometerEnabled; 
+                #else
+                return false;
+                #endif
+            }
+            set 
+            {
+                #if !PSM &&!NETFX_CORE
+                if (value != isAccelerometerEnabled)
+                {
+                    isAccelerometerEnabled = value;
+
+                    if (IsRunning)
+                    {
+                        CCDirector pDirector = CCDirector.SharedDirector;
+                        pDirector.Accelerometer.IsEnabled = value;
+                    }
+                }
+                #else
+                isAccelerometerEnabled = false;
+                #endif
+            }
+        }
+
+        public CCTouchMode TouchMode
+        {
+            get { return touchMode; }
+            set
+            {
+                if (touchMode != value)
+                {
+                    touchMode = value;
+
+                    if (IsTouchEnabled)
+                    {
+                        IsTouchEnabled = false;
+                        IsTouchEnabled = true;
+                    }
+                }
+            }
+        }
 
         public bool IsTouchEnabled
         {
@@ -119,7 +162,6 @@ namespace CocosSharp
                             EventDispatcher.AddEventListener(touchListener, this);
 
                             TouchListener = touchListener;
-
                         }
                     }
                 }
@@ -131,43 +173,101 @@ namespace CocosSharp
             }
         }
 
-        public CCTouchMode TouchMode
-        {
-            get { return touchMode; }
-            set
-            {
-                if (touchMode != value)
-                {
-                    touchMode = value;
+        #endregion Properties
 
-                    if (IsTouchEnabled)
-                    {
-                        IsTouchEnabled = false;
-                        IsTouchEnabled = true;
-                    }
-                }
+
+        #region Constructors
+
+        public CCLayer(CCClipMode clipMode)
+        {
+            ChildClippingMode = clipMode;
+
+            TouchMode = CCTouchMode.AllAtOnce;
+            TouchEnabled = false;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            IgnoreAnchorPointForPosition = true;
+
+            CCDirector director = CCDirector.SharedDirector;
+            if (director != null)
+            {
+                ContentSize = director.WinSize;
             }
         }
+
+        public CCLayer() : this(CCClipMode.None)
+        {
+        }
+
+        void InitClipping()
+        {
+            if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
+            {
+                if (renderTexture == null || renderTexture.ContentSize.Width < ContentSize.Width 
+                    || renderTexture.ContentSize.Height < ContentSize.Height)
+                {
+                    renderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height);
+                    renderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
+                }
+                renderTexture.Sprite.TextureRect = new CCRect(0, 0, ContentSize.Width, ContentSize.Height);
+            }
+            else
+            {
+                renderTexture = null;
+            }
+        }
+
+        #endregion Constructors
+
+
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            CCDirector director = CCDirector.SharedDirector;
+            CCApplication application = CCApplication.SharedApplication;
+
+            if (isAccelerometerEnabled)
+            {
+                #if !PSM &&!NETFX_CORE
+                director.Accelerometer.IsEnabled = true;
+                #endif
+            }
+        }
+
+        public override void OnExit()
+        {
+            if (isAccelerometerEnabled)
+            {
+                #if !PSM &&!NETFX_CORE
+                CCDirector.SharedDirector.Accelerometer.IsEnabled = false;
+                #endif
+            }
+
+            base.OnExit();
+        }
+
+
+        #region Event handling
 
         protected virtual void TouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchesHandler(EventTouch::EventCode::BEGAN, touches, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchesHandler(EventTouch::EventCode::BEGAN, touches, event);
+//          return;
+//          }
             #endif
         }
 
         protected virtual void TouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchesHandler(EventTouch::EventCode::MOVED, touches, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchesHandler(EventTouch::EventCode::MOVED, touches, event);
+//          return;
+//          }
             #endif
 
         }
@@ -175,22 +275,22 @@ namespace CocosSharp
         protected virtual void TouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchesHandler(EventTouch::EventCode::ENDED, touches, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchesHandler(EventTouch::EventCode::ENDED, touches, event);
+//          return;
+//          }
             #endif
         }
 
         protected virtual void TouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchesHandler(EventTouch::EventCode::CANCELLED, touches, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchesHandler(EventTouch::EventCode::CANCELLED, touches, event);
+//          return;
+//          }
             #endif
         }
 
@@ -199,10 +299,10 @@ namespace CocosSharp
         protected virtual bool TouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          return executeScriptTouchHandler(EventTouch::EventCode::BEGAN, touch, event) == 0 ? false : true;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          return executeScriptTouchHandler(EventTouch::EventCode::BEGAN, touch, event) == 0 ? false : true;
+//          }
             #endif
             Debug.Assert(false, "Layer#TouchBegan override me");
             return true;
@@ -212,11 +312,11 @@ namespace CocosSharp
         protected virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchHandler(EventTouch::EventCode::MOVED, touch, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchHandler(EventTouch::EventCode::MOVED, touch, event);
+//          return;
+//          }
             #endif
 
         }
@@ -224,11 +324,11 @@ namespace CocosSharp
         protected virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchHandler(EventTouch::EventCode::ENDED, touch, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchHandler(EventTouch::EventCode::ENDED, touch, event);
+//          return;
+//          }
             #endif
 
         }
@@ -236,42 +336,19 @@ namespace CocosSharp
         protected virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
             #if CC_ENABLE_SCRIPT_BINDING
-            //          if (kScriptTypeLua == _scriptType)
-            //          {
-            //          executeScriptTouchHandler(EventTouch::EventCode::CANCELLED, touch, event);
-            //          return;
-            //          }
+//          if (kScriptTypeLua == _scriptType)
+//          {
+//          executeScriptTouchHandler(EventTouch::EventCode::CANCELLED, touch, event);
+//          return;
+//          }
             #endif
 
-        }    
-
-
-
-
-        public CCClipMode ChildClippingMode
-        {
-            get { return m_childClippingMode; }
-            set
-            {
-                if (m_childClippingMode != value)
-                {
-                    m_childClippingMode = value;
-                    InitClipping();
-                }
-            }
         }
 
-        public override CCSize ContentSize
-        {
-            get { return base.ContentSize; }
-            set
-            {
-                base.ContentSize = value;
-                InitClipping();
-            }
-        }
+        #endregion Event handling
 
-        private bool m_bDidInit = false;
+
+        #region Visiting and drawing
 
         public override void Visit()
         {
@@ -280,7 +357,7 @@ namespace CocosSharp
             {
                 return;
             }
-            if (m_childClippingMode == CCClipMode.None)
+            if (ChildClippingMode == CCClipMode.None)
             {
                 base.Visit();
                 return;
@@ -288,9 +365,9 @@ namespace CocosSharp
 
             CCDrawManager.PushMatrix();
 
-            if (m_pGrid != null && m_pGrid.Active)
+            if (Grid != null && Grid.Active)
             {
-                m_pGrid.BeforeDraw();
+                Grid.BeforeDraw();
                 TransformAncestors();
             }
 
@@ -298,19 +375,19 @@ namespace CocosSharp
 
             BeforeDraw();
 
-            if (!m_bNoDrawChildren && m_pChildren != null)
+            if (!noDrawChildren && Children != null)
             {
                 SortAllChildren();
 
-                CCNode[] arrayData = m_pChildren.Elements;
-                int count = m_pChildren.count;
+                CCNode[] arrayData = Children.Elements;
+                int count = Children.Count;
                 int i = 0;
 
                 // draw children zOrder < 0
                 for (; i < count; i++)
                 {
                     CCNode child = arrayData[i];
-                    if (child.m_nZOrder < 0)
+                    if (child.ZOrder < 0)
                     {
                         child.Visit();
                     }
@@ -320,7 +397,6 @@ namespace CocosSharp
                     }
                 }
 
-                // this draw
                 Draw();
 
                 // draw children zOrder >= 0
@@ -336,39 +412,23 @@ namespace CocosSharp
 
             AfterDraw();
 
-            if (m_pGrid != null && m_pGrid.Active)
+            if (Grid != null && Grid.Active)
             {
-                m_pGrid.AfterDraw(this);
+                Grid.AfterDraw(this);
             }
 
             CCDrawManager.PopMatrix();
         }
 
-        private void InitClipping()
+        void BeforeDraw()
         {
-            if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
-            {
-                if (m_pRenderTexture == null || m_pRenderTexture.ContentSize.Width < ContentSize.Width || m_pRenderTexture.ContentSize.Height < ContentSize.Height)
-                {
-                    m_pRenderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height);
-                    m_pRenderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
-                }
-                m_pRenderTexture.Sprite.TextureRect = new CCRect(0, 0, ContentSize.Width, ContentSize.Height);
-            }
-            else
-            {
-                m_pRenderTexture = null;
-            }
-        }
+            noDrawChildren = false;
 
-        private void BeforeDraw()
-        {
-            m_bNoDrawChildren = false;
-
-            if (m_childClippingMode == CCClipMode.Bounds)
+            if (ChildClippingMode == CCClipMode.Bounds)
             {
                 // We always clip to the bounding box
-                var rect = new CCRect(0, 0, m_obContentSize.Width, m_obContentSize.Height);
+                CCSize contentSize = ContentSize;
+                var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
                 var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform());
 
                 var winSize = CCDirector.SharedDirector.WinSize;
@@ -385,7 +445,7 @@ namespace CocosSharp
 
                 if (!bounds.IntersectsRect(prevScissorRect))
                 {
-                    m_bNoDrawChildren = true;
+                    noDrawChildren = true;
                     return;
                 }
 
@@ -396,137 +456,64 @@ namespace CocosSharp
 
                 if (CCDrawManager.ScissorRectEnabled)
                 {
-                    m_bRestoreScissor = true;
+                    restoreScissor = true;
                 }
                 else
                 {
                     CCDrawManager.ScissorRectEnabled = true;
                 }
 
-                m_tSaveScissorRect = prevScissorRect;
+                saveScissorRect = prevScissorRect;
 
                 CCDrawManager.SetScissorInPoints(minX, minY, maxX - minX, maxY - minY);
             }
-            else if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
+            else if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
             {
-                m_tSaveScissorRect = CCDrawManager.ScissorRect;
-                m_bRestoreScissor = CCDrawManager.ScissorRectEnabled;
+                saveScissorRect = CCDrawManager.ScissorRect;
+                restoreScissor = CCDrawManager.ScissorRectEnabled;
 
                 CCDrawManager.ScissorRectEnabled = false;
 
                 CCDrawManager.PushMatrix();
                 CCDrawManager.SetIdentityMatrix();
 
-                m_pRenderTexture.BeginWithClear(0, 0, 0, 0);
+                renderTexture.BeginWithClear(0, 0, 0, 0);
             }
         }
 
-        /**
-     * retract what's done in beforeDraw so that there's no side effect to
-     * other nodes.
-     */
-        private void AfterDraw()
+        void AfterDraw()
         {
-            if (m_childClippingMode != CCClipMode.None)
+            if (ChildClippingMode != CCClipMode.None)
             {
-                if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
+                if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
                 {
-                    m_pRenderTexture.End();
+                    renderTexture.End();
 
                     CCDrawManager.PopMatrix();
                 }
 
-                if (m_bRestoreScissor)
+                if (restoreScissor)
                 {
                     CCDrawManager.SetScissorInPoints(
-                        m_tSaveScissorRect.Origin.X, m_tSaveScissorRect.Origin.Y,
-                        m_tSaveScissorRect.Size.Width, m_tSaveScissorRect.Size.Height);
+                        saveScissorRect.Origin.X, saveScissorRect.Origin.Y,
+                        saveScissorRect.Size.Width, saveScissorRect.Size.Height);
 
                     CCDrawManager.ScissorRectEnabled = true;
 
-                    m_bRestoreScissor = false;
+                    restoreScissor = false;
                 }
                 else
                 {
                     CCDrawManager.ScissorRectEnabled = false;
                 }
 
-                if (m_childClippingMode == CCClipMode.BoundsWithRenderTarget)
+                if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
                 {
-                    m_pRenderTexture.Sprite.Visit();
+                    renderTexture.Sprite.Visit();
                 }
             }
         }
 
-        public override void OnEnter()
-        {
-
-            // then iterate over all the children
-            base.OnEnter();
-
-            CCDirector director = CCDirector.SharedDirector;
-            CCApplication application = CCApplication.SharedApplication;
-
-            // add this layer to concern the Accelerometer Sensor
-            if (m_bIsAccelerometerEnabled)
-            {
-                #if !PSM &&!NETFX_CORE
-                director.Accelerometer.IsEnabled = true;
-                #endif
-            }
-        }
-
-        public override void OnExit()
-        {
-
-            // remove this layer from the delegates who concern Accelerometer Sensor
-            if (m_bIsAccelerometerEnabled)
-            {
-                //CCDirector director = CCDirector.SharedDirector;
-                //director.Accelerometer.setDelegate(null);
-                #if !PSM &&!NETFX_CORE
-                CCDirector.SharedDirector.Accelerometer.IsEnabled = false;
-                #endif
-            }
-
-            base.OnExit();
-        }
-
-        public override void OnEnterTransitionDidFinish()
-        {
-            //if (m_bIsAccelerometerEnabled)
-            //{
-            //    CCDirector.SharedDirector.Accelerometer.SetDelegate(this);
-            //}
-
-            base.OnEnterTransitionDidFinish();
-        }
-
-        public bool AccelerometerEnabled
-        {
-            get { 
-                #if !PSM
-                return m_bIsAccelerometerEnabled; 
-                #else
-                return(false);
-                #endif
-            }
-            set {
-                #if !PSM &&!NETFX_CORE
-                if (value != m_bIsAccelerometerEnabled)
-                {
-                    m_bIsAccelerometerEnabled = value;
-
-                    if (m_bRunning)
-                    {
-                        CCDirector pDirector = CCDirector.SharedDirector;
-                        pDirector.Accelerometer.IsEnabled = value;
-                    }
-                }
-                #else
-                m_bIsAccelerometerEnabled = false;
-                #endif
-            }
-        }
+        #endregion Visiting and drawing
     }
 }
