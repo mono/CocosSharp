@@ -122,10 +122,8 @@ namespace CocosSharp
 
         // input variables
 		private bool keypadEnabled;
-		private bool keyboardEnabled;
-		private bool mouseEnabled;
         private bool m_bGamePadEnabled;
-        private bool m_bTouchEnabled;
+		private bool m_bTouchEnabled;
 		private CCTouchMode touchMode = CCTouchMode.OneByOne;
         private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
@@ -678,7 +676,7 @@ namespace CocosSharp
 		}
 
 		public int LocalZOrder { get; set; }
-		public int GlobalZOrder { get; set; }
+		public float GlobalZOrder { get; set; }
 
 		#region Cleaning up
 
@@ -706,6 +704,8 @@ namespace CocosSharp
 
 			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
 			this.Cleanup();
+			eventDispatcher.RemoveEventListeners (this);
+			eventDispatcher = null;
 		}
 
         protected virtual void ResetCleanState()
@@ -733,8 +733,7 @@ namespace CocosSharp
             // timers
             UnscheduleAll();
 
-			eventDispatcher.RemoveEventListeners (this);
-			eventDispatcher = null;
+			//eventDispatcher.RemoveEventListeners (this);
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -1173,13 +1172,6 @@ namespace CocosSharp
         public virtual void OnEnter()
         {
 
-            // register 'parent' nodes first
-            // since events are propagated in reverse order
-            if (m_bTouchEnabled)
-            {
-                RegisterWithTouchDispatcher();
-            }
-
             if (m_pChildren != null && m_pChildren.count > 0)
             {
                 CCNode[] elements = m_pChildren.Elements;
@@ -1257,12 +1249,6 @@ namespace CocosSharp
         {
 
             CCDirector director = CCDirector.SharedDirector;
-
-            if (m_bTouchEnabled)
-            {
-                director.TouchDispatcher.RemoveDelegate(this);
-                //unregisterScriptTouchHandler();
-            }
 
             if (keypadEnabled)
             {
@@ -1480,7 +1466,8 @@ namespace CocosSharp
         {
             m_pScheduler.PauseTarget(this);
             m_pActionManager.PauseTarget(this);
-			eventDispatcher.Pause (this);
+			if (eventDispatcher != null)
+				eventDispatcher.Pause (this);
         }
 
 
@@ -1840,7 +1827,7 @@ namespace CocosSharp
 
         #region ICCStandardTouchDelegate Members
 
-        public virtual void TouchesBegan(List<CCTouch> touches)
+		public virtual void TouchesBegan(List<CCTouch> touches)
         {
         }
 

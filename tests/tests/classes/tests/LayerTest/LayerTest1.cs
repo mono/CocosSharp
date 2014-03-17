@@ -15,7 +15,12 @@ namespace tests
         {
             base.OnEnter();
 
-            this.TouchEnabled = true;
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesBegan = onTouchesBegan;
+			listener.OnTouchesMoved = onTouchesMoved;
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
@@ -30,11 +35,6 @@ namespace tests
             return "ColorLayer resize (tap & move)";
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, kCCMenuTouchPriority + 1, true);
-        }
-
         public void updateSize(CCPoint touchLocation)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
@@ -43,21 +43,19 @@ namespace tests
             l.ContentSize = newSize;
         }
 
-        public override bool TouchBegan(CCTouch touche)
-        {
-            updateSize(touche.Location);
-            return true;
-        }
-
-        public override void TouchMoved(CCTouch touche)
-        {
-            updateSize(touche.Location);
-        }
-
-        public override void TouchEnded(CCTouch touche)
-        {
-            updateSize(touche.Location);
-        }
+		void onTouchesBegan (List<CCTouch> touches, CCEvent touchEvent)
+		{
+			onTouchesMoved (touches, touchEvent);
+		}
+		void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
+		{
+			var touchLocation = touches[0].Location;
+			updateSize (touchLocation);
+		}
+		void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
+		{
+			onTouchesMoved (touches, touchEvent);
+		}
     }
 
     

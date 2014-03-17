@@ -15,7 +15,10 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            this.TouchEnabled = true;
+
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesMoved = onTouchesMoved;
+			EventDispatcher.AddEventListener(listener, this); 
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
@@ -26,7 +29,7 @@ namespace tests
             streak.Position = (new CCPoint(s.Width / 2, s.Height / 2));
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             streak.Position = touches[0].Location;
         }

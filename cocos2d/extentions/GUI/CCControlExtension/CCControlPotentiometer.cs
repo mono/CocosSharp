@@ -133,7 +133,15 @@ namespace CocosSharp
 
         private void InitCCControlPotentiometer(CCSprite trackSprite, CCProgressTimer progressTimer, CCSprite thumbSprite)
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
 
             ProgressTimer = progressTimer;
             ThumbSprite = thumbSprite;
@@ -163,7 +171,7 @@ namespace CocosSharp
             return distance < Math.Min(ContentSize.Width / 2, ContentSize.Height / 2);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (!IsTouchInside(touch) || !Enabled || !Visible)
             {
@@ -177,14 +185,14 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint location = GetTouchLocation(touch);
 
             PotentiometerMoved(location);
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             PotentiometerEnded(CCPoint.Zero);
         }

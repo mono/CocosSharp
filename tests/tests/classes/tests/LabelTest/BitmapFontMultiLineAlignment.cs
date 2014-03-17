@@ -35,7 +35,14 @@ namespace tests
 
         public BitmapFontMultiLineAlignment()
         {
-			TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
 
             // ask director the the window size
 			var size = CCDirector.SharedDirector.WinSize;
@@ -149,7 +156,7 @@ namespace tests
             snapArrowsToEdge();
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches)
+		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches[0];
             CCPoint location = touch.LocationInView;
@@ -161,7 +168,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> pTouches)
+		void onTouchesEnded(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             drag = false;
             snapArrowsToEdge();
@@ -169,7 +176,7 @@ namespace tests
             arrowsBar.Visible = false;
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches)
+		void onTouchesMoved(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             if (!drag)
             {

@@ -27,12 +27,7 @@ namespace tests
             var pCloseItem = new CCMenuItemImage(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
             var pMenu = new CCMenu(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
-#if !XBOX && !OUYA
-            TouchEnabled = true;
-#else
-            GamePadEnabled = true;
-			KeypadEnabled = true;
-#endif
+
 #if WINDOWS || WINDOWSGL || MACOS
 			GamePadEnabled = true;
 #endif
@@ -41,7 +36,7 @@ namespace tests
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
 #if NETFX_CORE
-            CCLabelTTF versionLabel = new CCLabelTTF("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
+            CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
 #else
             CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
 #endif
@@ -91,9 +86,21 @@ namespace tests
             _CurrentItemIndex = 0;
             SelectMenuItem();
 
+#if !XBOX && !OUYA
 			var mouseListener = new CCEventListenerMouse();
 			mouseListener.OnMouseScroll = OnMouseScroll;
 			EventDispatcher.AddEventListener (mouseListener, this);
+
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+#else
+			GamePadEnabled = true;
+			KeypadEnabled = true;
+#endif
+
         }
 
 		void OnMouseScroll(CCEventMouse mouseEvent)
@@ -253,14 +260,14 @@ namespace tests
             CCApplication.SharedApplication.Game.Exit();
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches)
+		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
 
             m_tBeginPos = touch.Location;
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches)
+		void onTouchesMoved(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
 

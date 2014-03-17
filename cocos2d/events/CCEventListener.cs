@@ -11,7 +11,7 @@ namespace CocosSharp
         TOUCH_ALL_AT_ONCE,
         KEYBOARD,
         MOUSE,
-        ACCELERATION,
+        ACCELEROMETER,
         CUSTOM
     }
 
@@ -140,7 +140,7 @@ namespace CocosSharp
             // the managed resources will anyways be released when GC 
             // runs the next time.
             Dispose(false);
-            Console.WriteLine("In the finalizer of CCEventListener. {0}", this);
+            CCLog.Log("In the finalizer of CCEventListener. {0}", this);
         }
 
     }

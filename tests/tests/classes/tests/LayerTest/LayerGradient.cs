@@ -15,7 +15,10 @@ namespace tests
 
             AddChild(layer1, 0, kTagLayer);
 
-            this.TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesMoved = onTouchesMoved;
+			EventDispatcher.AddEventListener(touchListener, this);
 
             CCLabelTtf label1 = new CCLabelTtf("Compressed Interpolation: Enabled", "arial", 26);
             CCLabelTtf label2 = new CCLabelTtf("Compressed Interpolation: Disabled", "arial", 26);
@@ -29,7 +32,7 @@ namespace tests
             menu.Position = (new CCPoint(s.Width / 2, 100));
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 

@@ -24,7 +24,13 @@ namespace tests
 
             m_pItmeMenu.Position = BugsTestScene.s_tCurPos;
             AddChild(m_pItmeMenu);
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
         }
 
         public void menuCallback(object pSender)
@@ -71,9 +77,9 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(pScene);
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            foreach (var it in pTouches)
+			foreach (var it in touches)
             {
                 CCTouch touch = it;
                 var m_tBeginPos = touch.Location;
@@ -81,9 +87,9 @@ namespace tests
 
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            foreach (var it in pTouches)
+			foreach (var it in touches)
             {
                 CCTouch touch = it;
 

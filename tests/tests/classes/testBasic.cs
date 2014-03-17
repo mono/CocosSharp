@@ -39,8 +39,8 @@ namespace tests
 			var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 50, CCVisibleRect.Bottom.Y + 25);
             pMenu.Position = CCPoint.Zero;
 			pMenuItem.Position = visiblePoint;
-
-            AddChild(pMenu, 1);
+			pMenu.Name = "MainMenu";
+			AddChild(pMenu, MENU_LEVEL);
             CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
         }

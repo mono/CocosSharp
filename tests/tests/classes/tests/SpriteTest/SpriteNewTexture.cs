@@ -15,7 +15,12 @@ namespace tests
 
         public SpriteNewTexture()
         {
-            base.TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             CCNode node = new CCNode ();
             AddChild(node, 0, (int)kTags.kTagSpriteBatchNode);
@@ -66,7 +71,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             base.TouchesEnded(touches);
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);

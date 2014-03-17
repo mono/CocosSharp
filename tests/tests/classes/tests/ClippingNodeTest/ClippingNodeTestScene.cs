@@ -462,7 +462,10 @@ namespace tests.Clipping
 
             this.AddChild(m_pOuterClipper);
 
-            this.TouchEnabled = true;
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesBegan = onTouchesBegan;
+
+			EventDispatcher.AddEventListener(listener, this);    
         }
 
         public override string title()
@@ -497,7 +500,7 @@ namespace tests.Clipping
             m_pOuterClipper.RunAction(new CCSequence(new CCScaleBy(0.05f, 0.95f), new CCScaleTo(0.125f, 1)));
         }
 
-        public override void TouchesBegan(List<CCTouch> touches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
             CCPoint point =
@@ -557,10 +560,17 @@ namespace tests.Clipping
 
             m_bScrolling = false;
 
-            TouchEnabled = true;
-        }
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
 
-        public override void TouchesBegan(List<CCTouch> touches)
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);        
+		}
+
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
@@ -570,7 +580,7 @@ namespace tests.Clipping
             m_lastPoint = point;
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (!m_bScrolling)
             {
@@ -585,7 +595,7 @@ namespace tests.Clipping
             m_lastPoint = point;
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             if (!m_bScrolling)
             {

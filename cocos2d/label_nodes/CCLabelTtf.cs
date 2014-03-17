@@ -125,7 +125,7 @@ namespace CocosSharp
             m_tDimensions = new CCSize(dimensions.Width, dimensions.Height);
             m_hAlignment = hAlignment;
             m_vAlignment = vAlignment;
-            m_pFontName = fontName;
+			m_pFontName = (!string.IsNullOrEmpty(fontName.Trim())) ? fontName : "arial";
             m_fFontSize = fontSize;
 
             this.Text = text;          

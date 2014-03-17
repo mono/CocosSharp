@@ -343,6 +343,7 @@
     <Compile Include="classes\tests\EffectsTest\Waves3DDemo.cs" />
     <Compile Include="classes\tests\EffectsTest\WavesDemo.cs" />
     <Compile Include="classes\tests\EffectsTest\WavesTiles3DDemo.cs" />
+    <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\AnimationTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\BaseLayer.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\ButtonTest.cs" />

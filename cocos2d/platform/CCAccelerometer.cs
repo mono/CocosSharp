@@ -14,11 +14,14 @@ namespace CocosSharp
 #endif
 
         private const float TG3_GRAVITY_EARTH = 9.80665f;
-        private ICCAccelerometerDelegate m_pAccelDelegate;
-        private readonly CCAcceleration m_obAccelerationValue = new CCAcceleration();
+		private ICCAccelerometerDelegate m_pAccelDelegate;
+		private readonly CCAcceleration accelerationValue = new CCAcceleration();
 
-        private bool m_bActive;
-        private bool m_bEmulation;
+		private CCEventAccelerate accelerateEvent = new CCEventAccelerate ();
+
+		private bool IsActive { get; set; }
+		private bool IsEmulating { get; set; }
+		private bool isEnabled = false;
 
         static CCAccelerometer()
         {
@@ -33,70 +36,76 @@ namespace CocosSharp
                 CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
             }
 #endif
+
         }
+
+		internal bool IsEnabled 
+		{
+			get { return isEnabled; }
+
+			set 
+			{
+				isEnabled = value;
+				if (isEnabled && !IsActive)
+				{
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
+					try
+					{
+						if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
+						{
+							accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
+							accelerometer.Start();
+							IsActive = true;
+						}
+						else
+						{
+							IsActive = false;
+						}
+					}
+					catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
+					{
+						IsActive = false;
+					}
+#endif
+					if (!IsActive)
+					{
+						IsActive = true;
+						IsEmulating = true;
+					}
+					else
+					{
+						IsEmulating = false;
+					}
+				}
+				else
+				{
+					if (IsActive && !IsEmulating)
+					{
+#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
+						if (accelerometer != null)
+						{
+						    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
+						    accelerometer.Stop();
+						}
+#endif
+					}
+
+					ResetAccelerometer();
+
+					IsActive = false;
+					IsEmulating = false;
+				}
+
+			}
+		}
+
 
         private void ResetAccelerometer()
         {
-            m_obAccelerationValue.X = 0;
-            m_obAccelerationValue.Y = 0;
-            m_obAccelerationValue.Z = 0;
+            accelerationValue.X = 0;
+            accelerationValue.Y = 0;
+            accelerationValue.Z = 0;
         }
-
-        public void SetDelegate(ICCAccelerometerDelegate pDelegate)
-        {
-            m_pAccelDelegate = pDelegate;
-
-            if (pDelegate != null && !m_bActive)
-            {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
-                    try
-                {
-                    if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
-                    {
-                        accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
-                        accelerometer.Start();
-                        m_bActive = true;
-                    }
-                    else
-                    {
-                        m_bActive = false;
-                    }
-                }
-                catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
-                {
-                    m_bActive = false;
-                }
-#endif
-                if (!m_bActive)
-                {
-                    m_bActive = true;
-                    m_bEmulation = true;
-                }
-                else
-                {
-                    m_bEmulation = false;
-                }
-            }
-            else
-            {
-                if (m_bActive && !m_bEmulation)
-                {
-#if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
-                    //if (accelerometer != null)
-                    //{
-                    //    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
-                    //    accelerometer.Stop();
-                    //}
-#endif
-                }
-                
-                ResetAccelerometer();
-
-                m_bActive = false;
-                m_bEmulation = false;
-            }
-        }
-
 
 #if !WINDOWS && !PSM && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
         private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
@@ -120,7 +129,7 @@ namespace CocosSharp
             // store the accelerometer value in our acceleration object to be updated.
             UpdateAccelerationValue(val.ToString());
   
-            m_obAccelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
+			accelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
         }
 
         private void UpdateAccelerationValue(string acceleration)
@@ -132,15 +141,20 @@ namespace CocosSharp
             //  Cocos2D-XNA mapps the Sensor reading of the X value to be our Y value
             //  and the Y value to our X value.  Also the values need to be negated so that 
             //  it maps correctly.
-			#if ANDROID
-			m_obAccelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-			m_obAccelerationValue.Y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
-			m_obAccelerationValue.Z = float.Parse(temp[3]);
-			#else
-            m_obAccelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            m_obAccelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
-            m_obAccelerationValue.Z = float.Parse(temp[3]);
-			#endif
+#if ANDROID 
+			accelerationValue.X = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+			accelerationValue.Y = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+			accelerationValue.Z = float.Parse(temp[3]);
+
+#elif WINDOWS_PHONE8
+            accelerationValue.Y = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            accelerationValue.Z = float.Parse(temp[3]);
+#else
+			accelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+			accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+			accelerationValue.Z = float.Parse(temp[3]);
+#endif
 
         }
 
@@ -159,9 +173,11 @@ namespace CocosSharp
 
 		public void Update()
         {
-            if (m_pAccelDelegate != null)
-            {
-                if (m_bEmulation)
+			
+			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+			if (dispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
+			{
+                if (IsEmulating)
                 {
                     // if we're in the emulator, we'll generate a fake acceleration value using the arrow keys
                     // press the pause/break key to toggle keyboard input for the emulator
@@ -176,20 +192,21 @@ namespace CocosSharp
                     if (keyboardState.IsKeyDown(Keys.Right))
                         stateValue.X = .1f;
                     if (keyboardState.IsKeyDown(Keys.Up))
-                        stateValue.Y = -.1f;
-                    if (keyboardState.IsKeyDown(Keys.Down))
                         stateValue.Y = .1f;
+                    if (keyboardState.IsKeyDown(Keys.Down))
+						stateValue.Y = -.1f;
 
                     stateValue.Normalize();
 
-                    m_obAccelerationValue.X = stateValue.X;
-                    m_obAccelerationValue.Y = stateValue.Y;
-                    m_obAccelerationValue.Z = stateValue.Z;
-                    m_obAccelerationValue.TimeStamp = DateTime.Now.Ticks;
+                    accelerationValue.X = stateValue.X;
+					accelerationValue.Y = stateValue.Y;
+                    accelerationValue.Z = stateValue.Z;
+                    accelerationValue.TimeStamp = DateTime.Now.Ticks;
                 }
 
-                m_pAccelDelegate.DidAccelerate(m_obAccelerationValue);
-            }
+				accelerateEvent.Acceleration = accelerationValue;
+				dispatcher.DispatchEvent (accelerateEvent);
+			}
         }
     }
 }

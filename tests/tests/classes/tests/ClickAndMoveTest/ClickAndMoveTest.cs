@@ -34,7 +34,10 @@ namespace tests
     {
         public MainLayer()
         {
-            base.TouchEnabled = true;
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);    
 
             CCSprite sprite = new CCSprite(ClickAndMoveTest.s_pPathGrossini);
 
@@ -53,7 +56,7 @@ namespace tests
                                                                 ));
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             //base.ccTouchesEnded(touches, event_);
             object it = touches.First();

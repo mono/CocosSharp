@@ -19,8 +19,15 @@ namespace tests
 
         public RenderTextureZbuffer()
         {
-            //this->setIsTouchEnabled(true);
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);        
+
             CCSize size = CCDirector.SharedDirector.WinSize;
             CCLabelTtf label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);
             label.Position = new CCPoint(size.Width / 2, size.Height * 0.25f);
@@ -77,7 +84,7 @@ namespace tests
             sp9.Color = CCTypes.CCYellow;
         }
 
-        public override void TouchesBegan(List<CCTouch> touches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {
@@ -95,7 +102,7 @@ namespace tests
             }
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {
@@ -113,7 +120,7 @@ namespace tests
             }
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             renderScreenShot();
         }

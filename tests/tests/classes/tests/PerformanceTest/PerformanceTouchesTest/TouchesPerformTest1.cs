@@ -17,7 +17,16 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, this);
         }
 
         public override string title()
@@ -30,23 +39,23 @@ namespace tests
             CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             numberOfTouchesB++;
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             numberOfTouchesM++;
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             numberOfTouchesE++;
         }
 
-        public override void TouchCancelled(CCTouch touch)
+		void onTouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
             numberOfTouchesC++;
         }

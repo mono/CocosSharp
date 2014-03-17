@@ -15,8 +15,6 @@ namespace tests
         {
             base.OnEnter();
 
-            this.TouchEnabled = true;
-
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
 
@@ -67,8 +65,6 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-
-            this.TouchEnabled = true;
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 

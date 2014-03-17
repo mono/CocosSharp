@@ -602,6 +602,7 @@
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
+    <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -998,9 +999,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\Particles\LavaFlow.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Content\Particles\particleTexture.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\Particles\Phoenix.xnb">
@@ -2131,4 +2129,7 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Classes\tests\EventDispatcherTest\" />
+  </ItemGroup>
 </Project>

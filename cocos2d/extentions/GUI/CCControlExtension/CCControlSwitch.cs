@@ -87,7 +87,17 @@ namespace CocosSharp
             Debug.Assert(offSprite != null, "offSprite must not be nil.");
             Debug.Assert(thumbSprite != null, "thumbSprite must not be nil.");
 
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
             _on = true;
 
             _switchSprite = new CCControlSwitchSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
@@ -171,16 +181,16 @@ namespace CocosSharp
         }
 
         //events
-        public override bool TouchBegan(CCTouch pTouch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
-            if (!IsTouchInside(pTouch) || !Enabled)
+			if (!IsTouchInside(touch) || !Enabled)
             {
                 return false;
             }
 
             _moved = false;
 
-            CCPoint location = LocationFromTouch(pTouch);
+			CCPoint location = LocationFromTouch(touch);
 
             _initialTouchXPosition = location.X - _switchSprite.SliderXPosition;
 
@@ -190,7 +200,7 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
             location = new CCPoint(location.X - _initialTouchXPosition, 0);
@@ -200,7 +210,7 @@ namespace CocosSharp
             _switchSprite.SliderXPosition = location.X;
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
 
@@ -216,7 +226,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchCancelled(CCTouch pTouch)
+		void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
 

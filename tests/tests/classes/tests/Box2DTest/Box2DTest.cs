@@ -85,7 +85,12 @@ namespace tests
 
         public Box2DTestLayer()
         {
-            TouchEnabled = true;
+
+			var listener = new CCEventListenerTouchAllAtOnce();
+			listener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(listener, this);    
+
             AccelerometerEnabled = true;
             CCSize s = CCDirector.SharedDirector.WinSize;
             // init physics
@@ -305,7 +310,7 @@ namespace tests
 #endif
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             //Add a new body/atlas sprite at the touched location
             foreach (CCTouch touch in touches)

@@ -16,7 +16,15 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+			touchListener.OnTouchesEnded = onTouchesEnded;
+			touchListener.OnTouchesCancelled = onTouchesCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, this);
         }
 
         public override string title()
@@ -24,29 +32,24 @@ namespace tests
             return "Standard touches";
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddStandardDelegate(this, 0);
-        }
-
-        public override void TouchesBegan(List<CCTouch> touches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             numberOfTouchesB += touches.Count;
         }
 
-        public override void TouchesMoved(List<CCTouch> touches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             numberOfTouchesM += touches.Count;
         }
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             numberOfTouchesE += touches.Count;
         }
 
-        public override void TouchesCancelled(List<CCTouch> touches)
+		void onTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
         {
-            numberOfTouchesC += touches.Count;
+			numberOfTouchesC += touches.Count;
         }
     }
 }

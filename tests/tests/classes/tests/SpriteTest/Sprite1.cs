@@ -133,7 +133,11 @@ namespace tests
     {
         public Sprite1()
         {
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+			touchListener.OnTouchesEnded = onTouchesEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
 
             CCSize s = CCDirector.SharedDirector.WinSize;
             addNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
@@ -176,7 +180,7 @@ namespace tests
         }
 
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {

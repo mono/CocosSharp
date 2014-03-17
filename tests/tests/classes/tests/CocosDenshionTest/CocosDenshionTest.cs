@@ -61,7 +61,13 @@ namespace tests
 	        m_pItmeMenu.Position = new CCPoint(0,0);
 	        AddChild(m_pItmeMenu);
 
-	        this.TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchAllAtOnce();
+
+			touchListener.OnTouchesBegan = onTouchesBegan;
+			touchListener.OnTouchesMoved = onTouchesMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);   
 
 	        // preload background music and effect
 	        CCSimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));
@@ -159,16 +165,16 @@ namespace tests
 	
         }
 
-        public override void TouchesBegan(List<CCTouch> pTouches)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            CCTouch touch = pTouches.FirstOrDefault();
+			CCTouch touch = touches.FirstOrDefault();
 
             var m_tBeginPos = touch.Location;
         }
 
-        public override void TouchesMoved(List<CCTouch> pTouches)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            CCTouch touch = pTouches.FirstOrDefault();
+			CCTouch touch = touches.FirstOrDefault();
 
 	        CCPoint touchLocation = touch.LocationInView;	
 	        touchLocation = CCDirector.SharedDirector.ConvertToGl( touchLocation );

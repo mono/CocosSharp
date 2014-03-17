@@ -186,7 +186,16 @@ namespace CocosSharp
             Debug.Assert(thumbSprite != null, "Thumb sprite must be not nil");
 
             IgnoreAnchorPointForPosition = false;
-            TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
 
             BackgroundSprite = backgroundSprite;
             ProgressSprite = progressSprite;
@@ -271,7 +280,7 @@ namespace CocosSharp
             return rect.ContainsPoint(touchLocation);
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (!IsTouchInside(touch) || !Enabled || !Visible)
                 return false;
@@ -281,13 +290,13 @@ namespace CocosSharp
             return true;
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
             SliderMoved(location);
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             SliderEnded(CCPoint.Zero);
         }

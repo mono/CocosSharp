@@ -89,6 +89,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\WindowsStore\x86\Release\</OutputPath>
@@ -103,6 +104,19 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="label_nodes\CCLabel-Gdi.cs" />
+    <Compile Include="actions\action\CCAmplitudeAction.cs" />
+    <Compile Include="events\CCEvent.cs" />
+    <Compile Include="events\CCEventAccelerate.cs" />
+    <Compile Include="events\CCEventDispatcher.cs" />
+    <Compile Include="events\CCEventKeyboard.cs" />
+    <Compile Include="events\CCEventListener.cs" />
+    <Compile Include="events\CCEventListenerAccelerometer.cs" />
+    <Compile Include="events\CCEventListenerKeyboard.cs" />
+    <Compile Include="events\CCEventListenerMouse.cs" />
+    <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
+    <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
+    <Compile Include="events\CCEventMouse.cs" />
+    <Compile Include="events\CCEventTouch.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
@@ -619,10 +633,6 @@
     <Compile Include=".\keypad_dispatcher\CCKeypadDispatcher.cs">
       <LogicalName>keypad_dispatcher\CCKeypadDispatcher</LogicalName>
     </Compile>
-    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
-    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
     <Compile Include=".\label_nodes\CCBMFontConfiguration.cs">
       <LogicalName>label_nodes\CCBMFontConfiguration</LogicalName>
     </Compile>

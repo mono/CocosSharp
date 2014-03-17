@@ -137,9 +137,13 @@ namespace tests
             do
             {
 
-                TouchEnabled = true;
-                CCSize s = CCDirector.SharedDirector.WinSize;
+				// Register Touch Event
+				var touchListener = new CCEventListenerTouchAllAtOnce();
+				touchListener.OnTouchesEnded = onTouchesEnded;
 
+				EventDispatcher.AddEventListener(touchListener, this);
+
+                CCSize s = CCDirector.SharedDirector.WinSize;
 
                 CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);
@@ -176,7 +180,7 @@ namespace tests
         }
 
 
-        public override void TouchesEnded(List<CCTouch> touches)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
 
             foreach (CCTouch touch in touches)

@@ -13,7 +13,7 @@ namespace tests
         protected CCSprite m_pBall;
         protected double m_fLastTime;
 
-		public override void DidAccelerate(CCAcceleration accelerationValue)
+		public void DidAccelerate(CCAcceleration accelerationValue)
         {
             CCDirector pDir = CCDirector.SharedDirector;
             CCSize winSize = pDir.WinSize;

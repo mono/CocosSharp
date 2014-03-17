@@ -80,7 +80,15 @@ namespace CocosSharp
     {
         public KeyboardNotificationLayer()
         {
-            base.TouchEnabled = true;
+			// Register Touch Event
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
         }
 
         public virtual string subtitle()
@@ -93,18 +101,13 @@ namespace CocosSharp
             throw new NotFiniteNumberException();
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
-        }
-
-        public override bool TouchBegan(CCTouch pTouch)
+		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             m_beginPos = pTouch.Location;
             return true;
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             if (m_pTrackNode == null)
             {

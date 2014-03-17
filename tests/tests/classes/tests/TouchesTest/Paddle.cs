@@ -37,14 +37,14 @@ namespace tests
         kPaddleStateUngrabbed
     }
 
-    public class Paddle : CCSprite//, ICCTargetedTouchDelegate
+    public class Paddle : CCSprite
     {
         PaddleState m_state;
 
         public Paddle (CCTexture2D aTexture) : base (aTexture)
         {
             m_state = PaddleState.kPaddleStateUngrabbed;
-            TouchEnabled = true;
+            
         }
 
         public CCRect rect()
@@ -56,6 +56,16 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
+
+			// Register Touch Event
+			var listener = new CCEventListenerTouchOneByOne();
+			listener.IsSwallowTouches = true;
+
+			listener.OnTouchBegan = onTouchBegan;
+			listener.OnTouchMoved = onTouchMoved;
+			listener.OnTouchEnded = onTouchEnded;
+
+			EventDispatcher.AddEventListener(listener, this);
         }
 
         public override void OnExit()
@@ -68,7 +78,7 @@ namespace tests
             return rect().ContainsPoint(ConvertTouchToNodeSpaceAr(touch));
         }
 
-        public override bool TouchBegan(CCTouch touch)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (m_state != PaddleState.kPaddleStateUngrabbed) return false;
             if (!containsTouchLocation(touch)) return false;
@@ -77,9 +87,9 @@ namespace tests
             return true;
         }
 
-        public override void TouchMoved(CCTouch touch)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
-            // If it weren't for the TouchDispatcher, you would need to keep a reference
+			// If it weren't for the CCEventDispatcher, you would need to keep a reference
             // to the touch from touchBegan and check that the current touch is the same
             // as that one.
             // Actually, it would be even more complicated since in the Cocos dispatcher
@@ -93,15 +103,11 @@ namespace tests
             base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             Debug.Assert(m_state == PaddleState.kPaddleStateGrabbed, "Paddle - Unexpected state!");
             m_state = PaddleState.kPaddleStateUngrabbed;
         }
 
-//        public void TouchCancelled(CCTouch pTouch)
-//        {
-//            throw new NotImplementedException();
-//        }
     }
 }

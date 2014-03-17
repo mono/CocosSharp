@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOS\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME;DUMP_LISTENER_ITEM_PRIORITY_INFO</DefineConstants>
+    <DefineConstants>DEBUG;MONOMAC;OPENGL;MACOS;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
@@ -442,10 +442,14 @@
     <Compile Include="events\CCEventDispatcher.cs" />
     <Compile Include="events\CCEventListener.cs" />
     <Compile Include="events\CCEventListenerMouse.cs" />
-    <Compile Include="events\CCEventListenerVector.cs" />
     <Compile Include="events\CCEventMouse.cs" />
     <Compile Include="events\CCEventListenerKeyboard.cs" />
     <Compile Include="events\CCEventKeyboard.cs" />
+    <Compile Include="events\CCEventListenerAccelerometer.cs" />
+    <Compile Include="events\CCEventAccelerate.cs" />
+    <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
+    <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">

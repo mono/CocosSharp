@@ -16,7 +16,7 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_TOUCH_ENABLED)
             {
-                ((CCLayer) node).TouchEnabled = pCheck;
+				//((CCLayer) node).TouchEnabled = pCheck;
             }
             else if (propertyName == PROPERTY_ACCELEROMETER_ENABLED)
             {
