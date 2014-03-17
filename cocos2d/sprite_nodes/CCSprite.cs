@@ -723,7 +723,7 @@ namespace CocosSharp
             if (Dirty)
             {
                 // If it is not visible, or one of its ancestors is not visible, then do nothing:
-                if (!m_bVisible ||
+                if (!Visible ||
                     (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
                 {
                     m_sQuad.BottomRight.Vertices =
@@ -835,7 +835,7 @@ namespace CocosSharp
 
                 m_pobBatchNode.AppendChild(sprite);
 
-                if (!m_bReorderChildDirty)
+                if (!ReorderChildDirty)
                 {
                     SetReorderChildDirtyRecursively();
                 }
@@ -855,7 +855,7 @@ namespace CocosSharp
                 return;
             }
 
-            if (m_pobBatchNode != null && !m_bReorderChildDirty)
+            if (m_pobBatchNode != null && !ReorderChildDirty)
             {
                 SetReorderChildDirtyRecursively();
                 m_pobBatchNode.ReorderBatch(true);
@@ -893,7 +893,7 @@ namespace CocosSharp
 
         public override void SortAllChildren()
         {
-            if (m_bReorderChildDirty)
+            if (ReorderChildDirty)
             {
                 var elements = m_pChildren.Elements;
                 int count = m_pChildren.count;
@@ -908,16 +908,16 @@ namespace CocosSharp
                     }
                 }
 
-                m_bReorderChildDirty = false;
+                ReorderChildDirty = false;
             }
         }
 
         public virtual void SetReorderChildDirtyRecursively()
         {
             //only set parents flag the first time
-            if (!m_bReorderChildDirty)
+            if (!ReorderChildDirty)
             {
-                m_bReorderChildDirty = true;
+                ReorderChildDirty = true;
                 CCNode node = m_pParent;
                 while (node != null && node != m_pobBatchNode)
                 {

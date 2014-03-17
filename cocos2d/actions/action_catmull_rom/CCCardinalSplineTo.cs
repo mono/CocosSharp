@@ -35,7 +35,7 @@ namespace CocosSharp
             List<CCPoint> pReverse = Points.ToList();
             pReverse.Reverse();
 
-            return new CCCardinalSplineTo(m_fDuration, pReverse, Tension);
+            return new CCCardinalSplineTo(Duration, pReverse, Tension);
         }
 
     }
@@ -169,7 +169,7 @@ namespace CocosSharp
                 p = abs;
             }
 
-            return new CCCardinalSplineBy(m_fDuration, copyConfig, Tension);
+            return new CCCardinalSplineBy(Duration, copyConfig, Tension);
         }
 
     }

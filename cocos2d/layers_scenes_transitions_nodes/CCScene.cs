@@ -17,7 +17,7 @@ namespace CocosSharp
         /// </summary>
         public CCScene() : base()
         {
-            m_bIgnoreAnchorPointForPosition = true;
+            IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             ContentSize = CCDirector.SharedDirector.WinSize;
         }

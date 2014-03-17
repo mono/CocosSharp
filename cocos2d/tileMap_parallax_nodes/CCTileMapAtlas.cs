@@ -36,7 +36,7 @@ namespace CocosSharp
 
             m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
             UpdateAtlasValues();
-            ContentSize = new CCSize(m_pTGAInfo.width * m_uItemWidth, m_pTGAInfo.height * m_uItemHeight);
+            ContentSize = new CCSize(m_pTGAInfo.width * ItemWidth, m_pTGAInfo.height * ItemHeight);
         }
 
         #endregion Constructors 
@@ -108,14 +108,14 @@ namespace CocosSharp
             int x = pos.X;
             int y = pos.Y;
 
-            float row = (float)(value.R % m_uItemsPerRow);
-            float col = (float)(value.R / m_uItemsPerRow);
+            float row = (float)(value.R % ItemsPerRow);
+            float col = (float)(value.R / ItemsPerRow);
 
-            float textureWide = (m_pTextureAtlas.Texture.PixelsWide);
-            float textureHigh = (m_pTextureAtlas.Texture.PixelsHigh);
+            float textureWide = (TextureAtlas.Texture.PixelsWide);
+            float textureHigh = (TextureAtlas.Texture.PixelsHigh);
 
-            float itemWidthInPixels = m_uItemWidth * CCMacros.CCContentScaleFactor();
-            float itemHeightInPixels = m_uItemHeight * CCMacros.CCContentScaleFactor();
+            float itemWidthInPixels = ItemWidth * CCMacros.CCContentScaleFactor();
+            float itemHeightInPixels = ItemHeight * CCMacros.CCContentScaleFactor();
 
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
             float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
@@ -140,17 +140,17 @@ namespace CocosSharp
             quad.BottomRight.TexCoords.U = right;
             quad.BottomRight.TexCoords.V = bottom;
 
-            quad.BottomLeft.Vertices.X = (x * m_uItemWidth);
-            quad.BottomLeft.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomLeft.Vertices.X = (x * ItemWidth);
+            quad.BottomLeft.Vertices.Y = (y * ItemHeight);
             quad.BottomLeft.Vertices.Z = 0.0f;
-            quad.BottomRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.BottomRight.Vertices.Y = (y * m_uItemHeight);
+            quad.BottomRight.Vertices.X = (x * ItemWidth + ItemWidth);
+            quad.BottomRight.Vertices.Y = (y * ItemHeight);
             quad.BottomRight.Vertices.Z = 0.0f;
-            quad.TopLeft.Vertices.X = (x * m_uItemWidth);
-            quad.TopLeft.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopLeft.Vertices.X = (x * ItemWidth);
+            quad.TopLeft.Vertices.Y = (y * ItemHeight + ItemHeight);
             quad.TopLeft.Vertices.Z = 0.0f;
-            quad.TopRight.Vertices.X = (x * m_uItemWidth + m_uItemWidth);
-            quad.TopRight.Vertices.Y = (y * m_uItemHeight + m_uItemHeight);
+            quad.TopRight.Vertices.X = (x * ItemWidth + ItemWidth);
+            quad.TopRight.Vertices.Y = (y * ItemHeight + ItemHeight);
             quad.TopRight.Vertices.Z = 0.0f;
 
             var color = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
@@ -159,7 +159,7 @@ namespace CocosSharp
             quad.BottomRight.Colors = color;
             quad.BottomLeft.Colors = color;
 
-            m_pTextureAtlas.UpdateQuad(ref quad, index);
+            TextureAtlas.UpdateQuad(ref quad, index);
         }
 
         public override void UpdateAtlasValues()

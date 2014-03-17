@@ -24,7 +24,7 @@ namespace CocosSharp
 		public CCJumpToState (CCJumpBy action, CCNode target)
 			: base(action, target)
 		{ 
-			m_delta = new CCPoint(m_delta.X - m_startPosition.X, m_delta.Y - m_startPosition.Y);
+			Delta = new CCPoint(Delta.X - StartPosition.X, Delta.Y - StartPosition.Y);
 		}
 	}
 

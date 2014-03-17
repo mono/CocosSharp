@@ -57,7 +57,7 @@ namespace CocosSharp
             TouchMode = CCTouchMode.AllAtOnce;
 			TouchEnabled = false;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_bIgnoreAnchorPointForPosition = true;
+            IgnoreAnchorPointForPosition = true;
 
             CCDirector director = CCDirector.SharedDirector;
             if (director != null)
@@ -517,7 +517,7 @@ namespace CocosSharp
                 {
                     m_bIsAccelerometerEnabled = value;
 
-                    if (m_bRunning)
+                    if (Running)
                     {
                         CCDirector pDirector = CCDirector.SharedDirector;
 						pDirector.Accelerometer.IsEnabled = value;

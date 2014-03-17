@@ -27,7 +27,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCRotateBy(m_fDuration, -AngleX, -AngleY);
+            return new CCRotateBy(Duration, -AngleX, -AngleY);
         }
     }
 

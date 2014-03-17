@@ -30,7 +30,7 @@ namespace CocosSharp
             r.ControlPoint1 = BezierConfig.ControlPoint2 + -BezierConfig.EndPosition;
             r.ControlPoint2 = BezierConfig.ControlPoint1 + -BezierConfig.EndPosition;
 
-            var action = new CCBezierBy(m_fDuration, r);
+            var action = new CCBezierBy(Duration, r);
             return action;
         }
     }

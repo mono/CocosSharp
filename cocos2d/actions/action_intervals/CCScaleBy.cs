@@ -23,7 +23,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCScaleBy(m_fDuration, 1 / m_fEndScaleX, 1 / m_fEndScaleY);
+            return new CCScaleBy(Duration, 1 / EndScaleX, 1 / EndScaleY);
         }
 
     }
@@ -34,8 +34,8 @@ namespace CocosSharp
 		public CCScaleByState (CCScaleTo action, CCNode target)
 			: base(action, target)
 		{ 
-			m_fDeltaX = m_fStartScaleX * m_fEndScaleX - m_fStartScaleX;
-			m_fDeltaY = m_fStartScaleY * m_fEndScaleY - m_fStartScaleY;
+			DeltaX = StartScaleX * EndScaleX - StartScaleX;
+			DeltaY = StartScaleY * EndScaleY - StartScaleY;
 		}
 
 	}

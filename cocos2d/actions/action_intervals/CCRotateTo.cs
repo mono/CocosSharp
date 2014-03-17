@@ -31,12 +31,12 @@ namespace CocosSharp
 
 	public class CCRotateToState : CCActionIntervalState
 	{
-		protected float m_fDiffAngleY;
-		protected float m_fDiffAngleX;
+		protected float DiffAngleY;
+		protected float DiffAngleX;
 		protected float DistanceAngleX { get; set; }
 		protected float DistanceAngleY { get; set; }
-		protected float m_fStartAngleX;
-		protected float m_fStartAngleY;
+		protected float StartAngleX;
+		protected float StartAngleY;
 
 		public CCRotateToState (CCRotateTo action, CCNode target)
 			: base(action, target)
@@ -45,47 +45,47 @@ namespace CocosSharp
 			DistanceAngleY = action.DistanceAngleY;
 
 			// Calculate X
-			m_fStartAngleX = Target.RotationX;
-			if (m_fStartAngleX > 0)
+			StartAngleX = Target.RotationX;
+			if (StartAngleX > 0)
 			{
-				m_fStartAngleX = m_fStartAngleX % 360.0f;
+				StartAngleX = StartAngleX % 360.0f;
 			}
 			else
 			{
-				m_fStartAngleX = m_fStartAngleX % -360.0f;
+				StartAngleX = StartAngleX % -360.0f;
 			}
 
-			m_fDiffAngleX = DistanceAngleX - m_fStartAngleX;
-			if (m_fDiffAngleX > 180)
+			DiffAngleX = DistanceAngleX - StartAngleX;
+			if (DiffAngleX > 180)
 			{
-				m_fDiffAngleX -= 360;
+				DiffAngleX -= 360;
 			}
-			if (m_fDiffAngleX < -180)
+			if (DiffAngleX < -180)
 			{
-				m_fDiffAngleX += 360;
+				DiffAngleX += 360;
 			}
 
 			//Calculate Y: It's duplicated from calculating X since the rotation wrap should be the same
-			m_fStartAngleY = Target.RotationY;
+			StartAngleY = Target.RotationY;
 
-			if (m_fStartAngleY > 0)
+			if (StartAngleY > 0)
 			{
-				m_fStartAngleY = m_fStartAngleY % 360.0f;
+				StartAngleY = StartAngleY % 360.0f;
 			}
 			else
 			{
-				m_fStartAngleY = m_fStartAngleY % -360.0f;
+				StartAngleY = StartAngleY % -360.0f;
 			}
 
-			m_fDiffAngleY = DistanceAngleY - m_fStartAngleY;
-			if (m_fDiffAngleY > 180)
+			DiffAngleY = DistanceAngleY - StartAngleY;
+			if (DiffAngleY > 180)
 			{
-				m_fDiffAngleY -= 360;
+				DiffAngleY -= 360;
 			}
 
-			if (m_fDiffAngleY < -180)
+			if (DiffAngleY < -180)
 			{
-				m_fDiffAngleY += 360;
+				DiffAngleY += 360;
 			}
 		}
 
@@ -93,8 +93,8 @@ namespace CocosSharp
 		{
 			if (Target != null)
 			{
-				Target.RotationX = m_fStartAngleX + m_fDiffAngleX * time;
-				Target.RotationY = m_fStartAngleY + m_fDiffAngleY * time;
+				Target.RotationX = StartAngleX + DiffAngleX * time;
+				Target.RotationY = StartAngleY + DiffAngleY * time;
 			}
 		}
 

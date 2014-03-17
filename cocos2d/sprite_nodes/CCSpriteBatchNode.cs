@@ -104,7 +104,7 @@ namespace CocosSharp
             // The alternative is to have a void CCSprite#visit, but
             // although this is less mantainable, is faster
             //
-            if (!m_bVisible)
+            if (!Visible)
             {
                 return;
             }
@@ -200,7 +200,7 @@ namespace CocosSharp
         //override sortAllChildren
         public override void SortAllChildren()
         {
-            if (m_bReorderChildDirty)
+            if (ReorderChildDirty)
             {
                 int j = 0, count = m_pChildren.count;
                 CCNode[] elements = m_pChildren.Elements;
@@ -226,7 +226,7 @@ namespace CocosSharp
                     }
                 }
 
-                m_bReorderChildDirty = false;
+                ReorderChildDirty = false;
             }
         }
 
@@ -327,7 +327,7 @@ namespace CocosSharp
 
         public void ReorderBatch(bool reorder)
         {
-            m_bReorderChildDirty = reorder;
+            ReorderChildDirty = reorder;
         }
 
         protected override void Draw()
@@ -535,7 +535,7 @@ namespace CocosSharp
         // addChild helper, faster than insertChild
         public void AppendChild(CCSprite sprite)
         {
-            m_bReorderChildDirty = true;
+            ReorderChildDirty = true;
             sprite.BatchNode = this;
             sprite.Dirty = true;
 
