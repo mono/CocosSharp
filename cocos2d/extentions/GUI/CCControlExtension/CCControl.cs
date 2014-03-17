@@ -207,11 +207,6 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, _defaultTouchPriority, true);
-        }
-
         /**
          * Sends action messages for the given control events.
          *

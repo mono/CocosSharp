@@ -87,7 +87,7 @@ namespace CocosSharp
             }
         }
 
-        public override bool TouchEnabled
+        public bool TouchEnabled
         {
 			get { return isTouchEnabled; }
             set

@@ -73,7 +73,6 @@ namespace tests
 
 		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-            base.TouchesEnded(touches);
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);
 
             var children = node.Children;

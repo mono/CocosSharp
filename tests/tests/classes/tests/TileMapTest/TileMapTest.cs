@@ -1523,7 +1523,7 @@ namespace tests
         {
             base.OnExit();
             CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.TouchDispatcher.RemoveDelegate(this);
+			//pDirector.TouchDispatcher.RemoveDelegate(this);
             CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
             CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
             CCApplication.SharedApplication.GamePadStickUpdate -= _GamePadStickDelegate;
@@ -1550,12 +1550,6 @@ namespace tests
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.backTileMapAction());
             CCDirector.SharedDirector.ReplaceScene(s);
-        }
-
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)

@@ -87,16 +87,16 @@ namespace tests
 
         private void togglePriorityCallback(object pSender)
         {
-            if (m_bPriority)
-            {
-                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority + 20);
-                m_bPriority = false;
-            }
-            else
-            {
-                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority - 20);
-                m_bPriority = true;
-            }
+//            if (m_bPriority)
+//            {
+//                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority + 20);
+//                m_bPriority = false;
+//            }
+//            else
+//            {
+//                m_pMenu2.HandlerPriority = (CCMenu.DefaultMenuHandlerPriority - 20);
+//                m_bPriority = true;
+//            }
         }
     }
 }

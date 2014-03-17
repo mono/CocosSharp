@@ -193,7 +193,7 @@ namespace CocosSharp
             CheckTouchState();
         }
 
-        public override bool TouchBegan(CCTouch pTouch)
+        public bool TouchBegan(CCTouch pTouch)
         {
             var pos = ConvertTouchToNodeSpace(pTouch);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
@@ -203,12 +203,12 @@ namespace CocosSharp
             return false;
         }
 
-        public override void TouchMoved(CCTouch pTouch)
+        public void TouchMoved(CCTouch pTouch)
         {
             //nothing
         }
 
-        public override void TouchEnded(CCTouch pTouch)
+        public void TouchEnded(CCTouch pTouch)
         {
             var pos = ConvertTouchToNodeSpace(pTouch);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
@@ -217,7 +217,7 @@ namespace CocosSharp
             }
         }
 
-        public override void TouchCancelled(CCTouch pTouch)
+        public void TouchCancelled(CCTouch pTouch)
         {
             //nothing
         }

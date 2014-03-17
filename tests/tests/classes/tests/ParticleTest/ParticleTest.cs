@@ -293,11 +293,6 @@ namespace tests
             }
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, false);
-        }
-
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
 			onTouchesEnded (touches, touchEvent);

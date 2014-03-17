@@ -54,11 +54,6 @@ namespace CocosSharp
             }
         }
 
-        public int HandlerPriority
-        {
-            set { CCDirector.SharedDirector.TouchDispatcher.SetPriority(value, this); }
-        }
-
         #endregion Properties
 
 
@@ -66,7 +61,6 @@ namespace CocosSharp
 
         public CCMenu(params CCMenuItem[] items)
         {
-            TouchPriority = DefaultMenuHandlerPriority;
 
             Enabled = true;
 
@@ -184,10 +178,6 @@ namespace CocosSharp
             return touchedMenuItem;
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, DefaultMenuHandlerPriority, true);
-        }
 
 		bool TouchBegan(CCTouch touch, CCEvent touchEvent)
 		{

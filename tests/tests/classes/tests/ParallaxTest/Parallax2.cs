@@ -58,11 +58,6 @@ namespace tests
 			AddChild(voidNode, -1, (int)KTag.kTagNode); // 0, (int)KTag.kTagNode);
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
-        }
-
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
 

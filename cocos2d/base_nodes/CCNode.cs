@@ -66,7 +66,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-	public class CCNode : ICCUpdatable, ICCFocusable, ICCTargetedTouchDelegate, ICCStandardTouchDelegate, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
+	public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
     {
         /// <summary>
         /// Use this to determine if a tag has been set on the node.
@@ -1691,98 +1691,6 @@ namespace CocosSharp
         }
         */
 
-        public virtual void RegisterWithTouchDispatcher()
-        {
-            CCTouchDispatcher pDispatcher = CCDirector.SharedDirector.TouchDispatcher;
-
-            /*
-            if (m_pScriptHandlerEntry)
-            {
-                if (m_pScriptHandlerEntry->isMultiTouches())
-                {
-                    pDispatcher->addStandardDelegate(this, 0);
-                    LUALOG("[LUA] Add multi-touches event handler: %d", m_pScriptHandlerEntry->getHandler());
-                }
-                else
-                {
-                    pDispatcher->addTargetedDelegate(this,
-                                         m_pScriptHandlerEntry->getPriority(),
-                                         m_pScriptHandlerEntry->getSwallowsTouches());
-                    LUALOG("[LUA] Add touch event handler: %d", m_pScriptHandlerEntry->getHandler());
-                }
-                return;
-            }
-            */
-            if (touchMode == CCTouchMode.AllAtOnce)
-            {
-                pDispatcher.AddStandardDelegate(this, 0);
-            }
-            else
-            {
-                pDispatcher.AddTargetedDelegate(this, m_nTouchPriority, true);
-            }
-        }
-
-        public CCTouchMode TouchMode
-        {
-            get { return touchMode; }
-            set
-            {
-                if (touchMode != value)
-                {
-                    touchMode = value;
-
-                    if (m_bTouchEnabled)
-                    {
-                        TouchEnabled = false;
-                        TouchEnabled = true;
-                    }
-                }
-            }
-        }
-
-        public virtual bool TouchEnabled
-        {
-            get { return m_bTouchEnabled; }
-            set
-            {
-                if (m_bTouchEnabled != value)
-                {
-                    m_bTouchEnabled = value;
-
-                    if (Running)
-                    {
-                        if (value)
-                        {
-                            RegisterWithTouchDispatcher();
-                        }
-                        else
-                        {
-                            CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
-                        }
-                    }
-                }
-            }
-        }
-
-        public virtual int TouchPriority
-        {
-            get { return m_nTouchPriority; }
-            set
-            {
-                if (m_nTouchPriority != value)
-                {
-                    m_nTouchPriority = value;
-
-                    if (Running)
-                    {
-                        TouchEnabled = false;
-                        TouchEnabled = true;
-                    }
-                }
-            }
-        }
-
         public virtual bool KeypadEnabled
         {
             get { return keypadEnabled; }
@@ -1823,52 +1731,6 @@ namespace CocosSharp
             }
         }
 
-        #region touches
-
-        #region ICCStandardTouchDelegate Members
-
-		public virtual void TouchesBegan(List<CCTouch> touches)
-        {
-        }
-
-        public virtual void TouchesMoved(List<CCTouch> touches)
-        {
-        }
-
-        public virtual void TouchesEnded(List<CCTouch> touches)
-        {
-        }
-
-        public virtual void TouchesCancelled(List<CCTouch> touches)
-        {
-        }
-
-        #endregion
-
-        #region ICCTargetedTouchDelegate Members
-
-        public virtual bool TouchBegan(CCTouch touch)
-        {
-            return true;
-        }
-
-        public virtual void TouchMoved(CCTouch touch)
-        {
-        }
-
-        public virtual void TouchEnded(CCTouch touch)
-        {
-        }
-
-        public virtual void TouchCancelled(CCTouch touch)
-        {
-        }
-
-        #endregion
-
-        #endregion
-
-
         public virtual void KeyBackClicked()
         {
         }
@@ -1887,21 +1749,6 @@ namespace CocosSharp
 
 		public virtual void KeyboardCurrentState (KeyboardState currentState)
 		{ }
-
-		#endregion
-
-		#region Mouse Support
-		// Mouse moved
-		public virtual void MouseMove (int x, int y) {}
-
-		// Mouse scroll
-		public virtual void MouseScroll (int delta) {}
-
-		// Mouse button pressed
-		public virtual void MouseDown (CCMouseButton buttons, int x, int y) {}
-
-		// Mouse button released
-		public virtual void MouseUp (CCMouseButton button, int x, int y) {}
 
 		#endregion
 

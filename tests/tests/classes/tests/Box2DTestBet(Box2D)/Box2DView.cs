@@ -21,6 +21,7 @@ namespace Box2D.TestBed
 
 			touchListener.OnTouchBegan = onTouchBegan;
 			touchListener.OnTouchMoved = onTouchMoved;
+			//touchListener.OnTouchCancelled = onTouchCancelled;
 
 			EventDispatcher.AddEventListener(touchListener, -10);
 
@@ -77,7 +78,7 @@ namespace Box2D.TestBed
             m_test.MouseMove(new b2Vec2(nodePosition.X, nodePosition.Y));
         }
 
-        public override void TouchEnded(CCTouch touch)
+		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);

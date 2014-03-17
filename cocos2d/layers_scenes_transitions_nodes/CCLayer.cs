@@ -182,8 +182,6 @@ namespace CocosSharp
         {
             ChildClippingMode = clipMode;
 
-            TouchMode = CCTouchMode.AllAtOnce;
-            TouchEnabled = false;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             IgnoreAnchorPointForPosition = true;
 

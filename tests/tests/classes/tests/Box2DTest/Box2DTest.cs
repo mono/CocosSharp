@@ -54,7 +54,7 @@ namespace tests
             }
 
             // Rot, Translate Matrix
-            m_sTransform = new CCAffineTransform(c, s,
+			var m_sTransform = new CCAffineTransform(c, s,
                                                  -s, c,
                                                  x, y);
 

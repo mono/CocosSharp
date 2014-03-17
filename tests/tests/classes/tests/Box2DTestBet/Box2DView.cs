@@ -64,12 +64,6 @@ namespace tests.classes.tests.Box2DTestBet
             //CCDrawManager.PopMatrix();
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector pDirector = CCDirector.SharedDirector;
-            pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
-        }
-
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.Location;

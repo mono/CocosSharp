@@ -634,7 +634,7 @@ namespace CocosSharp
         #endregion
 
 
-        public override void TouchEnded(CCTouch pTouch)
+        public void TouchEnded(CCTouch pTouch)
         {
             if (!Visible)
             {
@@ -655,77 +655,76 @@ namespace CocosSharp
                 _touchedCell = null;
             }
 
-            base.TouchEnded(pTouch);
         }
 
-        public override bool TouchBegan(CCTouch pTouch)
-        {
-            if (!Visible)
-            {
-                return false;
-            }
-            
-            bool touchResult = base.TouchBegan(pTouch);
-
-            if (_touches.Count == 1)
-            {
-                var point = Container.ConvertTouchToNodeSpace(pTouch);
-                var index = _indexFromOffset(point);
-                if (index == CCArrayForObjectSorting.CC_INVALID_INDEX)
-                {
-                    _touchedCell = null;
-                }
-                else
-                {
-                    _touchedCell = CellAtIndex(index); 
-                }
-
-                if (_touchedCell != null && _tableViewDelegate != null)
-                {
-                    _tableViewDelegate.TableCellHighlight(this, _touchedCell);
-                }
-            }
-            else if (_touchedCell != null)
-            {
-                if (_tableViewDelegate != null)
-                {
-                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
-                }
-
-                _touchedCell = null;
-            }
-
-            return touchResult;
-        }
-
-        public override void TouchMoved(CCTouch touch)
-        {
-            base.TouchMoved(touch);
-
-            if (_touchedCell != null && IsTouchMoved)
-            {
-                if (_tableViewDelegate != null)
-                {
-                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
-                }
-
-                _touchedCell = null;
-            }
-        }
-
-        public override void TouchCancelled(CCTouch touch)
-        {
-            base.TouchCancelled(touch);
-
-            if (_touchedCell != null)
-            {
-                if (_tableViewDelegate != null)
-                {
-                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
-                }
-
-                _touchedCell = null;
-            }
-        }
+//        public bool TouchBegan(CCTouch pTouch)
+//        {
+//            if (!Visible)
+//            {
+//                return false;
+//            }
+//            
+//			//bool touchResult = base.TouchBegan(pTouch);
+//
+//            if (_touches.Count == 1)
+//            {
+//                var point = Container.ConvertTouchToNodeSpace(pTouch);
+//                var index = _indexFromOffset(point);
+//                if (index == CCArrayForObjectSorting.CC_INVALID_INDEX)
+//                {
+//                    _touchedCell = null;
+//                }
+//                else
+//                {
+//                    _touchedCell = CellAtIndex(index); 
+//                }
+//
+//                if (_touchedCell != null && _tableViewDelegate != null)
+//                {
+//                    _tableViewDelegate.TableCellHighlight(this, _touchedCell);
+//                }
+//            }
+//            else if (_touchedCell != null)
+//            {
+//                if (_tableViewDelegate != null)
+//                {
+//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                }
+//
+//                _touchedCell = null;
+//            }
+//
+//            return touchResult;
+//        }
+//
+//        public void TouchMoved(CCTouch touch)
+//        {
+//            base.TouchMoved(touch);
+//
+//            if (_touchedCell != null && IsTouchMoved)
+//            {
+//                if (_tableViewDelegate != null)
+//                {
+//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                }
+//
+//                _touchedCell = null;
+//            }
+//        }
+//
+//        public void TouchCancelled(CCTouch touch)
+//        {
+//            base.TouchCancelled(touch);
+//
+//            if (_touchedCell != null)
+//            {
+//                if (_tableViewDelegate != null)
+//                {
+//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                }
+//
+//                _touchedCell = null;
+//            }
+//        }
     }
 }

@@ -34,11 +34,6 @@ namespace tests
             return "Targeted touches";
         }
 
-        public override void RegisterWithTouchDispatcher()
-        {
-            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
-        }
-
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             numberOfTouchesB++;

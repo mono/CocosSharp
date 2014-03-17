@@ -33,7 +33,7 @@ namespace tests
 
         private static Dictionary<int, TouchPoint> s_dic = new Dictionary<int, TouchPoint>();
 
-		public void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var item in touches)
             {
@@ -49,7 +49,7 @@ namespace tests
             }
         }
 
-		public void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
+		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach(var item in touches)
             {
@@ -60,7 +60,7 @@ namespace tests
             }
         }
 
-		public void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var item in touches )
             {
@@ -71,9 +71,9 @@ namespace tests
             }
         }
 
-        public override void TouchesCancelled(List<CCTouch> touches)
+		void onTouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
         {
-            TouchesEnded(touches);
+			onTouchesEnded(touches, touchEvent);
         }
 
     }

@@ -71,7 +71,6 @@ namespace tests
 
                 addNewSpriteWithCoords(location);
             }
-            base.TouchesEnded(touches);
         }
 
         public override string title()
