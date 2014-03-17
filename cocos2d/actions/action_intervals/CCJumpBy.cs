@@ -2,63 +2,47 @@ namespace CocosSharp
 {
     public class CCJumpBy : CCActionInterval
     {
-        protected CCPoint m_delta;
-        protected float m_height;
-        protected uint m_nJumps;
-
         #region Constructors
 
         public CCJumpBy(float duration, CCPoint position, float height, uint jumps) : base(duration)
         {
-            m_delta = position;
-            m_height = height;
-            m_nJumps = jumps;
+            Position = position;
+            Height = height;
+            Jumps = jumps;
         }
 
         #endregion Constructors
 
-		public CCPoint Position
-		{
-			get { return m_delta; }
-		}
-
-		public float Height
-		{
-			get { return m_height; }
-		}
-		public uint Jumps
-		{
-			get { return m_nJumps; }
-		}
+        public CCPoint Position { get; protected set; }
+        public float Height { get; protected set; }
+        public uint Jumps { get; protected set; }
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCJumpByState (this, target);
-
 		}
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCJumpBy(m_fDuration, new CCPoint(-m_delta.X, -m_delta.Y), m_height, m_nJumps);
+            return new CCJumpBy(Duration, new CCPoint(-Position.X, -Position.Y), Height, Jumps);
         }
     }
 
 	public class CCJumpByState : CCActionIntervalState
 	{
-
-		protected CCPoint m_delta;
-		protected float m_height;
-		protected uint m_nJumps;
-		protected CCPoint m_startPosition;
-		protected CCPoint m_previousPos;
+		protected CCPoint Delta;
+		protected float Height;
+		protected uint Jumps;
+		protected CCPoint StartPosition;
+		protected CCPoint P;
 
 		public CCJumpByState (CCJumpBy action, CCNode target)
 			: base(action, target)
 		{ 
-			m_delta = action.Position;
-			m_height = action.Height;
-			m_nJumps = action.Jumps;
-			m_previousPos = m_startPosition = target.Position;
+			Delta = action.Position;
+			Height = action.Height;
+			Jumps = action.Jumps;
+			P = StartPosition = target.Position;
 		}
 
 		public override void Update(float time)
@@ -66,20 +50,20 @@ namespace CocosSharp
 			if (Target != null)
 			{
 				// Is % equal to fmodf()???
-				float frac = (time * m_nJumps) % 1f;
-				float y = m_height * 4f * frac * (1f - frac);
-				y += m_delta.Y * time;
-				float x = m_delta.X * time;
+				float frac = (time * Jumps) % 1f;
+				float y = Height * 4f * frac * (1f - frac);
+				y += Delta.Y * time;
+				float x = Delta.X * time;
 
 				CCPoint currentPos = Target.Position;
 
-				CCPoint diff = currentPos - m_previousPos;
-				m_startPosition = diff + m_startPosition;
+				CCPoint diff = currentPos - P;
+				StartPosition = diff + StartPosition;
 
-				CCPoint newPos = m_startPosition + new CCPoint(x,y);
+				CCPoint newPos = StartPosition + new CCPoint(x,y);
 				Target.Position = newPos;
 
-				m_previousPos = newPos;
+				P = newPos;
 			}
 		}
 	}

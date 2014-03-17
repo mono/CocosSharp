@@ -3,7 +3,7 @@ namespace CocosSharp
     public class CCRepeat : CCActionInterval
     {
 		public bool ActionInstant { get; private set; }
-        protected float m_fNextDt;
+        protected float NextDt;
 		public CCFiniteTimeAction InnerAction { get; private set; }
 		public uint Times { get; private set; }
 		public uint Total { get; private set; }
@@ -82,7 +82,7 @@ namespace CocosSharp
 
 					InnerActionState.Stop();
 					InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction(Target);
-					NextDt += InnerAction.Duration / m_fDuration;
+					NextDt += InnerAction.Duration / Duration;
 				}
 
 				// fix for issue #1288, incorrect end value of repeat
@@ -102,7 +102,7 @@ namespace CocosSharp
 					else
 					{
 						// issue #390 prevent jerk, use right update
-						InnerActionState.Update(dt - (NextDt - InnerAction.Duration / m_fDuration));
+						InnerActionState.Update(dt - (NextDt - InnerAction.Duration / Duration));
 					}
 
 				}

@@ -6,8 +6,8 @@ namespace CocosSharp
 
         public CCSkewBy(float t, float deltaSkewX, float deltaSkewY) : base(t, deltaSkewX, deltaSkewY)
         {
-			m_fSkewX = deltaSkewX;
-			m_fSkewY = deltaSkewY;
+			SkewX = deltaSkewX;
+			SkewY = deltaSkewY;
         }
 
 		public CCSkewBy(float t, float deltaSkewXY) : this(t, deltaSkewXY, deltaSkewXY)
@@ -17,12 +17,12 @@ namespace CocosSharp
 
 		public float SkewByX
 		{
-			get { return m_fSkewX; }
+			get { return SkewX; }
 		}
 
 		public float SkewByY
 		{
-			get { return m_fSkewY; }
+			get { return SkewY; }
 		}
 
 		protected internal override CCActionState StartAction (CCNode target)
@@ -33,7 +33,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            return new CCSkewBy(m_fDuration, -m_fSkewX, -m_fSkewY);
+            return new CCSkewBy(Duration, -SkewX, -SkewY);
         }
     }
 
@@ -44,10 +44,10 @@ namespace CocosSharp
 			: base(action, target)
 		{ 
 
-			m_fDeltaX = m_fSkewX = action.SkewByX;
-			m_fDeltaY = m_fSkewY = action.SkewByY;
-            m_fEndSkewX = m_fStartSkewX + m_fDeltaX;
-            m_fEndSkewY = m_fStartSkewY + m_fDeltaY;
+			DeltaX = SkewX = action.SkewByX;
+			DeltaY = SkewY = action.SkewByY;
+            EndSkewX = StartSkewX + DeltaX;
+            EndSkewY = StartSkewY + DeltaY;
 		}
 	}
 }

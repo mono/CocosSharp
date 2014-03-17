@@ -37,13 +37,9 @@ namespace CocosSharp
 
     public class CCActionInterval : CCFiniteTimeAction
     {
-        protected bool m_bFirstTick = true;
-        protected float m_elapsed;
+        protected bool FirstTick = true;
 
-        public float Elapsed
-        {
-            get { return m_elapsed; }
-        }
+        public float Elapsed { get; protected set; }
 
         // Used by CCSequence and CCParallel
         // In general though, subclasses should aim to call the base constructor, rather than this explicitly
@@ -65,8 +61,8 @@ namespace CocosSharp
                 }
 
                 base.Duration = newDuration;
-                m_elapsed = 0;
-                m_bFirstTick = true;
+                Elapsed = 0;
+                FirstTick = true;
             }
         }
 
@@ -128,7 +124,7 @@ namespace CocosSharp
 
 			Update(Math.Max(0f,
                 Math.Min(1, Elapsed /
-					Math.Max(m_fDuration, float.Epsilon)
+                    Math.Max(Duration, float.Epsilon)
 				)
 			)
 			);
