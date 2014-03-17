@@ -22,9 +22,9 @@ namespace CocosSharp
 			for (int i = 0; i < Actions.Length; i++)
 			{
 				var actionDuration = Actions[i].Duration;
-				if (actionDuration < m_fDuration)
+				if (actionDuration < Duration)
 				{
-					Actions[i] = new CCSequence(Actions[i], new CCDelayTime(m_fDuration - actionDuration));
+					Actions[i] = new CCSequence(Actions[i], new CCDelayTime(Duration - actionDuration));
 				}
 			}
         }

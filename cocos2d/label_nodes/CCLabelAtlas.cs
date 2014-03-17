@@ -15,18 +15,18 @@ namespace CocosSharp
             {            
                 // TODO: Check for null????
                 int len = value.Length;
-                if (len > m_pTextureAtlas.TotalQuads)
+                if (len > TextureAtlas.TotalQuads)
                 {
-                    m_pTextureAtlas.ResizeCapacity(len);
+                    TextureAtlas.ResizeCapacity(len);
                 }
                 
                 m_sString = value;
                 
                 UpdateAtlasValues();
                 
-                ContentSize = new CCSize(len * m_uItemWidth, m_uItemHeight);
+                ContentSize = new CCSize(len * ItemWidth, ItemHeight);
                 
-                m_uQuadsToDraw = len;
+                QuadsToDraw = len;
 
             }
         }
@@ -76,24 +76,24 @@ namespace CocosSharp
         {
             int n = m_sString.Length;
 
-            CCTexture2D texture = m_pTextureAtlas.Texture;
+            CCTexture2D texture = TextureAtlas.Texture;
 
             float textureWide = texture.PixelsWide;
             float textureHigh = texture.PixelsHigh;
 
-            float itemWidthInPixels = m_uItemWidth * CCMacros.CCContentScaleFactor();
-            float itemHeightInPixels = m_uItemHeight * CCMacros.CCContentScaleFactor();
-            if (m_bIgnoreContentScaleFactor)
+            float itemWidthInPixels = ItemWidth * CCMacros.CCContentScaleFactor();
+            float itemHeightInPixels = ItemHeight * CCMacros.CCContentScaleFactor();
+            if (IgnoreContentScaleFactor)
             {
-                itemWidthInPixels = m_uItemWidth;
-                itemHeightInPixels = m_uItemHeight;
+                itemWidthInPixels = ItemWidth;
+                itemHeightInPixels = ItemHeight;
             }
 
             for (int i = 0; i < n; i++)
             {
                 var a = (char) (m_sString[i] - m_cMapStartChar);
-                float row = (a % m_uItemsPerRow);
-                float col = (a / m_uItemsPerRow);
+                float row = (a % ItemsPerRow);
+                float col = (a / ItemsPerRow);
 
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
     // Issue #938. Don't use texStepX & texStepY
@@ -120,24 +120,24 @@ namespace CocosSharp
                 quad.BottomRight.TexCoords.U = right;
                 quad.BottomRight.TexCoords.V = bottom;
 
-                quad.BottomLeft.Vertices.X = i * m_uItemWidth;
+                quad.BottomLeft.Vertices.X = i * ItemWidth;
                 quad.BottomLeft.Vertices.Y = 0.0f;
                 quad.BottomLeft.Vertices.Z = 0.0f;
-                quad.BottomRight.Vertices.X = i * m_uItemWidth + m_uItemWidth;
+                quad.BottomRight.Vertices.X = i * ItemWidth + ItemWidth;
                 quad.BottomRight.Vertices.Y = 0.0f;
                 quad.BottomRight.Vertices.Z = 0.0f;
-                quad.TopLeft.Vertices.X = i * m_uItemWidth;
-                quad.TopLeft.Vertices.Y = m_uItemHeight;
+                quad.TopLeft.Vertices.X = i * ItemWidth;
+                quad.TopLeft.Vertices.Y = ItemHeight;
                 quad.TopLeft.Vertices.Z = 0.0f;
-                quad.TopRight.Vertices.X = i * m_uItemWidth + m_uItemWidth;
-                quad.TopRight.Vertices.Y = m_uItemHeight;
+                quad.TopRight.Vertices.X = i * ItemWidth + ItemWidth;
+                quad.TopRight.Vertices.Y = ItemHeight;
                 quad.TopRight.Vertices.Z = 0.0f;
 
 
                 quad.TopLeft.Colors = quad.TopRight.Colors = quad.BottomLeft.Colors = quad.BottomRight.Colors =
                     new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
 
-                m_pTextureAtlas.UpdateQuad(ref quad, i);
+                TextureAtlas.UpdateQuad(ref quad, i);
             }
         }
     }
