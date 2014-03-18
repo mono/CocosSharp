@@ -6,6 +6,7 @@ namespace CocosSharp
     {
 		public CCFiniteTimeAction Other { get; private set; }
 
+
         #region Constructors
 
         public CCReverseTime(CCFiniteTimeAction action) : base(action.Duration)
@@ -14,6 +15,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{

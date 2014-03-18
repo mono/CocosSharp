@@ -126,9 +126,9 @@ namespace CocosSharp
 			float za = RadZ + RadDeltaZ * time;
 			float xa = RadX + RadDeltaX * time;
 
-			float i = (float) Math.Sin(za) * (float) Math.Cos(xa) * r + centerXOrig;
-			float j = (float) Math.Sin(za) * (float) Math.Sin(xa) * r + centerYOrig;
-			float k = (float) Math.Cos(za) * r + centerZOrig;
+            float i = (float) Math.Sin(za) * (float) Math.Cos(xa) * r + CenterXOrig;
+            float j = (float) Math.Sin(za) * (float) Math.Sin(xa) * r + CenterYOrig;
+            float k = (float) Math.Cos(za) * r + CenterZOrig;
 
 			Target.Camera.SetEyeXyz(i, j, k);
 		}

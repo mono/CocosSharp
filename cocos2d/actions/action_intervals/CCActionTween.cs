@@ -46,7 +46,7 @@ namespace CocosSharp
 
 	public class CCActionTweenState : CCActionIntervalState
 	{
-		protected float delta;
+        protected float Delta;
 		protected float From { get; private set; }
 		protected float To { get; private set; }
 		protected string Key { get; private set; }
@@ -60,12 +60,12 @@ namespace CocosSharp
 			From = action.From;
 			To = action.To;
 			Key = action.Key;
-			delta = To - From;
+            Delta = To - From;
 		}
 
 		public override void Update(float dt)
 		{
-			float amt = To - delta * (1 - dt);
+            float amt = To - Delta * (1 - dt);
 			if (TweenAction != null)
 			{
 				TweenAction(amt, Key);

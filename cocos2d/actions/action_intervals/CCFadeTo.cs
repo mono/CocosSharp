@@ -2,8 +2,8 @@
 {
     public class CCFadeTo : CCActionInterval
     {
-
 		public byte ToOpacity { get; private set; }
+
 
         #region Constructors
 
@@ -14,6 +14,7 @@
 
         #endregion Constructors
 
+
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCFadeToState (this, target);
@@ -23,7 +24,6 @@
 
 	public class CCFadeToState : CCActionIntervalState
 	{
-
 		protected byte FromOpacity { get; set; }
 		protected byte ToOpacity { get; set; }
 

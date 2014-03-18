@@ -6,6 +6,7 @@ namespace CocosSharp
     {
 		public CCBezierConfig BezierConfig { get; private set; }
 
+
         #region Constructors
 
         public CCBezierBy(float t, CCBezierConfig config) : base(t)
@@ -13,8 +14,8 @@ namespace CocosSharp
 			BezierConfig = config;
         }
 
-
         #endregion Constructors
+
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{

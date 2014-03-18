@@ -40,7 +40,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            InnerActionState.Update(CCEaseMath.ElasticIn(time, EaseElasticAction.Period));
+            InnerActionState.Update(CCEaseMath.ElasticIn(time, Period));
         }
     }
 

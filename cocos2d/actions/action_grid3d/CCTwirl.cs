@@ -11,7 +11,7 @@ namespace CocosSharp
         public CCPoint Position
         {
             get { return position; }
-            set
+            private set
             {
                 position = value;
                 PositionInPixels = value * CCDirector.SharedDirector.ContentScaleFactor;

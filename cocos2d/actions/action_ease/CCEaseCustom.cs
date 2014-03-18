@@ -6,7 +6,6 @@ namespace CocosSharp
     {
         public Func<float, float> EaseFunc { get; private set; }
 
-
         #region Constructors
 
         public CCEaseCustom(CCActionInterval pAction, Func<float, float> easeFunc) : base(pAction)
@@ -33,18 +32,16 @@ namespace CocosSharp
 
     public class CCEaseCustomState : CCActionEaseState
     {
-        protected CCEaseCustom EaseCustomAction 
-        { 
-            get { return Action as CCEaseCustom; } 
-        }
+        protected Func<float, float> EaseFunc { get; private set; }
 
         public CCEaseCustomState(CCEaseCustom action, CCNode target) : base(action, target)
         {
+            EaseFunc = action.EaseFunc;
         }
 
         public override void Update(float time)
         {
-            InnerActionState.Update(EaseCustomAction.EaseFunc(time));
+            InnerActionState.Update(EaseFunc(time));
         }
     }
 

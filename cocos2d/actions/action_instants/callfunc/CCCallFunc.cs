@@ -53,9 +53,6 @@ namespace CocosSharp
 			{
 				CallFunction();
 			}
-			//if (m_nScriptHandler) {
-			//    CCScriptEngineManager::sharedManager()->getScriptEngine()->executeCallFuncActionEvent(this);
-			//}
 		}
 
 		public override void Update(float time)

@@ -18,7 +18,6 @@ namespace CocosSharp
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCTargetedActionState (this, target);
-
 		}
 
 		public override CCFiniteTimeAction Reverse()
@@ -36,12 +35,10 @@ namespace CocosSharp
 		public CCTargetedActionState (CCTargetedAction action, CCNode target)
 			: base(action, target)
 		{	
-
 			ForcedTarget = action.ForcedTarget;
 			TargetedAction = action.TargetedAction;
 
 			ActionState = (CCFiniteTimeActionState)TargetedAction.StartAction(ForcedTarget);
-
 		}
 
 		public override void Stop()

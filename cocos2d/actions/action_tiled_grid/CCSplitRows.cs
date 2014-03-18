@@ -56,7 +56,6 @@ namespace CocosSharp
     {
         protected CCSize WinSize { get; private set; }
 
-
         public CCSplitRowsState(CCSplitRows action, CCNode target) : base(action, target)
         {
             WinSize = CCDirector.SharedDirector.WinSizeInPixels;

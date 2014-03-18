@@ -88,10 +88,10 @@ namespace CocosSharp
 
         #endregion Constructors
 
+
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCTintByState (this, target);
-
 		}
 
         public override CCFiniteTimeAction Reverse()
@@ -103,7 +103,6 @@ namespace CocosSharp
 
 	public class CCTintByState : CCActionIntervalState
 	{
-
 		protected short DeltaB { get; set; }
 		protected short DeltaG { get; set; }
 		protected short DeltaR { get; set; }

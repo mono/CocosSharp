@@ -2,6 +2,8 @@ namespace CocosSharp
 {
     public class CCMoveTo : CCMoveBy
     {
+        protected CCPoint EndPosition;
+
         #region Constructors
 
         public CCMoveTo(float duration, CCPoint position): base(duration, position)
@@ -38,8 +40,7 @@ namespace CocosSharp
 			if (Target != null)
 			{
 				CCPoint currentPos = Target.Position;
-				CCPoint diff = currentPos - PreviousPosition;
-				//m_startPosition = m_startPosition + diff;
+
 				CCPoint newPos = StartPosition + PositionDelta * time;
 				Target.Position = newPos;
 				PreviousPosition = newPos;

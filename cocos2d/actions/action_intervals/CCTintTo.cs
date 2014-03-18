@@ -23,7 +23,6 @@ namespace CocosSharp
 
 	public class CCTintToState : CCActionIntervalState
 	{
-
 		protected CCColor3B ColorFrom { get; set; }
 		protected CCColor3B ColorTo { get; set; }
 

@@ -12,7 +12,6 @@ namespace CocosSharp
         {
 			DistanceAngleX = fDeltaAngleX;
 			DistanceAngleY = fDeltaAngleY;
-
         }
 
         public CCRotateTo(float duration, float fDeltaAngle) : this(duration, fDeltaAngle, fDeltaAngle)
@@ -24,7 +23,6 @@ namespace CocosSharp
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCRotateToState (this, target);
-
 		}
     }
 

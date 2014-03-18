@@ -2,6 +2,10 @@ namespace CocosSharp
 {
     public class CCJumpBy : CCActionInterval
     {
+        public CCPoint Position { get; protected set; }
+        public float Height { get; protected set; }
+        public uint Jumps { get; protected set; }
+
         #region Constructors
 
         public CCJumpBy(float duration, CCPoint position, float height, uint jumps) : base(duration)
@@ -12,10 +16,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-        public CCPoint Position { get; protected set; }
-        public float Height { get; protected set; }
-        public uint Jumps { get; protected set; }
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{

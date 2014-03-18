@@ -17,7 +17,6 @@ namespace CocosSharp
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCProgressToState (this, target);
-
 		}
 
     }

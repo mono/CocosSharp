@@ -22,13 +22,11 @@ namespace CocosSharp
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCProgressFromToState (this, target);
-
 		}
     }
 
 	public class CCProgressFromToState : CCActionIntervalState
 	{
-
 		protected float PercentFrom { get; set; }
 		protected float PercentTo { get; set; }
 

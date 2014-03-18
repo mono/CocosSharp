@@ -31,13 +31,11 @@ namespace CocosSharp
 
     public class CCEaseRateActionState : CCActionEaseState
     {
-        protected CCEaseRateAction EaseRateAction 
-        { 
-            get { return Action as CCEaseRateAction; } 
-        }
+        protected float Rate { get; private set; }
 
         public CCEaseRateActionState(CCEaseRateAction action, CCNode target) : base(action, target)
         {
+            Rate = action.Rate;
         }
 
         public override void Update(float time)

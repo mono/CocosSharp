@@ -35,7 +35,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            InnerActionState.Update((float)Math.Pow(time, EaseRateAction.Rate));
+            InnerActionState.Update((float)Math.Pow(time, Rate));
         }
     }
 

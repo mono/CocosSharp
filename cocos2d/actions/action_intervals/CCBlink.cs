@@ -4,6 +4,7 @@
     {
 		public uint Times { get; private set; }
 
+
         #region Constructors
 
         public CCBlink(float duration, uint uBlinks) : base(duration)
@@ -12,6 +13,7 @@
         }
 
         #endregion Constructors
+
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{

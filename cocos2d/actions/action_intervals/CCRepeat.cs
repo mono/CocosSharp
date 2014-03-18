@@ -3,7 +3,6 @@ namespace CocosSharp
     public class CCRepeat : CCActionInterval
     {
 		public bool ActionInstant { get; private set; }
-        protected float NextDt;
 		public CCFiniteTimeAction InnerAction { get; private set; }
 		public uint Times { get; private set; }
 		public uint Total { get; private set; }

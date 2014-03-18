@@ -36,13 +36,11 @@ namespace CocosSharp
 
     public class CCEaseElasticState : CCActionEaseState
     {
-        protected CCEaseElastic EaseElasticAction 
-        { 
-            get { return Action as CCEaseElastic; } 
-        }
+        protected float Period { get; private set; }
 
         public CCEaseElasticState(CCEaseElastic action, CCNode target) : base(action, target)
         {
+            Period = action.Period;
         }
     }
 

@@ -2,8 +2,6 @@ namespace CocosSharp
 {
     public class CCMoveBy : CCActionInterval
     {
-        protected CCPoint EndPosition;
-
         #region Constructors
 
         public CCMoveBy(float duration, CCPoint position) : base(duration)

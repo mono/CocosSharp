@@ -18,8 +18,8 @@ namespace CocosSharp
 			Tension = tension;
         }
  
-
         #endregion Constructors
+
 
 		public List<CCPoint> Points { get; protected set; }
 		public float Tension { get; protected set; }

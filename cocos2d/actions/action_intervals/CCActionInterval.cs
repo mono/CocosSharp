@@ -18,6 +18,7 @@ namespace CocosSharp
 		}
 
 		#region Internal State 
+
 		public class CCExtraActionState : CCFiniteTimeActionState
 		{
 
@@ -31,6 +32,7 @@ namespace CocosSharp
 			public override void Update(float time)
 			{	}
 		}
+
 		#endregion
 
     }

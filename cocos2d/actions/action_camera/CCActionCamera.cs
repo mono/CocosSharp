@@ -29,27 +29,26 @@ namespace CocosSharp
 
 	public class CCActionCameraState : CCActionIntervalState
 	{
+        protected float CenterXOrig;
+        protected float CenterYOrig;
+        protected float CenterZOrig;
 
-		protected float centerXOrig;
-		protected float centerYOrig;
-		protected float centerZOrig;
+        protected float EyeXOrig;
+        protected float EyeYOrig;
+        protected float EyeZOrig;
 
-		protected float eyeXOrig;
-		protected float eyeYOrig;
-		protected float eyeZOrig;
-
-		protected float upXOrig;
-		protected float upYOrig;
-		protected float upZOrig;
+        protected float UpXOrig;
+        protected float UpYOrig;
+        protected float UpZOrig;
 
 		public CCActionCameraState (CCActionCamera action, CCNode target)
 			: base(action, target)
 		{	
 			CCCamera camera = target.Camera;
 
-			camera.GetCenterXyz(out centerXOrig, out centerYOrig, out centerZOrig);
-			camera.GetEyeXyz(out eyeXOrig, out eyeYOrig, out eyeZOrig);
-			camera.GetUpXyz(out upXOrig, out upYOrig, out upZOrig);
+            camera.GetCenterXyz(out CenterXOrig, out CenterYOrig, out CenterZOrig);
+            camera.GetEyeXyz(out EyeXOrig, out EyeYOrig, out EyeZOrig);
+            camera.GetUpXyz(out UpXOrig, out UpYOrig, out UpZOrig);
 		}
 
 	}

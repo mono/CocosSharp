@@ -31,7 +31,6 @@ namespace CocosSharp
     {
         public int Waves { get; set; }
 
-
         public CCLiquidState(CCLiquid action, CCNode target) : base(action, target)
         {
             Waves = action.Waves;

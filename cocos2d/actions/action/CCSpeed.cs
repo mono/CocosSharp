@@ -35,12 +35,8 @@ namespace CocosSharp
 
     public class CCSpeedState : CCActionState
     {
+        public float Speed { get; private set; }
         protected CCActionIntervalState InnerActionState { get; private set; }
-
-        protected CCSpeed SpeedAction
-        {
-            get { return Action as CCSpeed; }
-        }
 
         public override bool IsDone
         {
@@ -50,6 +46,7 @@ namespace CocosSharp
         public CCSpeedState(CCSpeed action, CCNode target) : base(action, target)
         {
             InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction(target);
+            Speed = action.Speed;
         }
 
         public override void Stop()
@@ -60,7 +57,7 @@ namespace CocosSharp
 
         public override void Step(float dt)
         {
-            InnerActionState.Step(dt * SpeedAction.Speed);
+            InnerActionState.Step(dt * Speed);
         }
     }
 

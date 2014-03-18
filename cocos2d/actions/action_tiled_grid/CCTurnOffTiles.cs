@@ -58,8 +58,7 @@ namespace CocosSharp
     {
         protected int TilesCount { get; private set; }
         protected int[] TilesOrder { get; private set; }
-        private CCQuad3 zero;
-
+        CCQuad3 zero;
 
         public CCTurnOffTilesState(CCTurnOffTiles action, CCNode target) : base(action, target)
         {

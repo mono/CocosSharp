@@ -35,7 +35,7 @@ namespace CocosSharp
 
         public override void Update(float time)
         {
-            float actionRate = EaseRateAction.Rate;
+            float actionRate = Rate;
             time *= 2;
 
             if (time < 1)

@@ -17,12 +17,6 @@ namespace CocosSharp
         private CCAnimate(CCAnimation pAnimation, float totalDuration) : base(totalDuration)
         {
             Debug.Assert(totalDuration == pAnimation.Duration * pAnimation.Loops);
-
-            InitCCAnimate(pAnimation);
-        }
-
-        private void InitCCAnimate(CCAnimation pAnimation)
-        {
             Debug.Assert(pAnimation != null);
 
             Animation = pAnimation;
@@ -48,6 +42,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
@@ -87,9 +82,9 @@ namespace CocosSharp
 
 		protected CCAnimation Animation { get; private set; }
 		protected List<float> SplitTimes { get; private set; }
-		protected int nextFrame;
-		protected CCSpriteFrame originalFrame;
-		private uint executedLoops;
+        protected int NextFrame;
+        protected CCSpriteFrame OriginalFrame;
+        private uint ExecutedLoops;
 
 
 		public CCAnimateState (CCAnimate action, CCNode target)
@@ -100,22 +95,22 @@ namespace CocosSharp
 
 			var pSprite = (CCSprite) (target);
 
-			originalFrame = null;
+            OriginalFrame = null;
 
 			if (Animation.RestoreOriginalFrame)
 			{
-				originalFrame = pSprite.DisplayFrame;
+                OriginalFrame = pSprite.DisplayFrame;
 			}
 
-			nextFrame = 0;
-			executedLoops = 0;
+            NextFrame = 0;
+            ExecutedLoops = 0;
 		}
 
 		public override void Stop()
 		{
 			if (Animation.RestoreOriginalFrame && Target != null)
 			{
-				((CCSprite) (Target)).DisplayFrame = originalFrame;
+                ((CCSprite) (Target)).DisplayFrame = OriginalFrame;
 			}
 
 			base.Stop();
@@ -130,10 +125,10 @@ namespace CocosSharp
 
 				// new loop?  If so, reset frame counter
 				var loopNumber = (uint) t;
-				if (loopNumber > executedLoops)
+                if (loopNumber > ExecutedLoops)
 				{
-					nextFrame = 0;
-					executedLoops++;
+                    NextFrame = 0;
+                    ExecutedLoops++;
 				}
 
 				// new t for animations
@@ -143,7 +138,7 @@ namespace CocosSharp
 			var frames = Animation.Frames;
 			int numberOfFrames = frames.Count;
 
-			for (int i = nextFrame; i < numberOfFrames; i++)
+            for (int i = NextFrame; i < numberOfFrames; i++)
 			{
 				float splitTime = SplitTimes[i];
 
@@ -161,7 +156,7 @@ namespace CocosSharp
 					{
 						//TODO: [[NSNotificationCenter defaultCenter] postNotificationName:CCAnimationFrameDisplayedNotification object:target_ userInfo:dict];
 					}
-					nextFrame = i + 1;
+                    NextFrame = i + 1;
 				}
 				// Issue 1438. Could be more than one frame per tick, due to low frame rate or frame delta < 1/FPS
 				else
