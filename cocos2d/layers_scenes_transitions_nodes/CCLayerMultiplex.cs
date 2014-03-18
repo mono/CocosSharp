@@ -11,40 +11,38 @@ namespace CocosSharp
     /// </summary>
     public class CCLayerMultiplex : CCLayerRGBA
     {
-        /// <summary>
-        /// Indicates no layer to be displayed.
-        /// </summary>
         public const int NoLayer = -1;
-        /// <summary>
+
         /// Offset used to preserve uniqueness for the layer tags. This is necessary
         /// to allow for SwitchTo(index) and SwitchTo(Layer.Tag) to work properly.
-        /// </summary>
-        private const int kTagOffsetForUniqueness = 5000;
-        /// <summary>
-        /// Current index of the active layer.
-        /// </summary>
-        protected int m_nEnabledLayer=NoLayer;
-        protected Dictionary<int, CCLayer> m_pLayers = new Dictionary<int,CCLayer>();
-        private CCAction m_InAction, m_OutAction;
+        const int TagOffsetForUniqueness = 5000;
+
+        List<int> layersInOrder = new List<int>();      // The list of layers in their insertion order.
+
+
+        #region Properties
+
         public bool ShowFirstLayerOnEnter { get; set; }
+        protected int EnabledLayer { get; set; }        // Current index of the active layer.
 
-        /// <summary>
-        /// The action to play on the layer that becomes the active layer
-        /// </summary>
-        public CCAction InAction
+        public CCAction InAction { get; set; }          // The action to play on the layer that becomes the active layer
+        public CCAction OutAction { get; set; }         // The action to play on the active layer when it becomes inactive.
+
+        protected Dictionary<int, CCLayer> Layers { get; set; }
+
+        public virtual CCLayer ActiveLayer
         {
-            get { return (m_InAction); }
-            set { m_InAction = value; }
+            get
+            {
+                if (Layers == null || EnabledLayer == NoLayer)
+                {
+                    return null;
+                }
+                return Layers[EnabledLayer];
+            }
         }
 
-        /// <summary>
-        /// The action to play on the active layer when it becomes inactive.
-        /// </summary>
-        public CCAction OutAction
-        {
-            get { return (m_OutAction); }
-            set { m_OutAction = value; }
-        }
+        #endregion Properties
 
 
         #region Constructors
@@ -52,212 +50,162 @@ namespace CocosSharp
         public CCLayerMultiplex() : base()
         {
             ShowFirstLayerOnEnter = true;
+            EnabledLayer = NoLayer;
+            Layers = new Dictionary<int, CCLayer>();
         }
 
-        /// <summary>
-        ///  creates a CCLayerMultiplex with one or more layers using a variable argument list. 
-        /// </summary>
-        /// <param name="layer"></param>
-        /// <param name="?"></param>
-        /// <returns></returns>
         public CCLayerMultiplex (params CCLayer[] layers) : this(null, null, layers)
         {
-        }
-
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layers) : this()
-        {
-            if (layers != null) 
-            {
-                InitWithLayers (layers);
-            }
-
-            m_InAction = inAction;
-            m_OutAction = outAction;
         }
 
         public CCLayerMultiplex(CCAction inAction, CCAction outAction) : this(inAction, outAction, null)
         {
         }
 
-        private void InitWithLayers(params CCLayer[] layer)
+        public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layers) : this()
         {
-            m_pLayers = new Dictionary<int, CCLayer>();
-            for (int i = 0; i < layer.Length; i++)
+            InAction = inAction;
+            OutAction = outAction;
+
+            foreach(CCLayer layer in layers)
             {
-                m_pLayers[i] = layer[i];
-                if (layer[i].Tag != CCNode.kCCNodeTagInvalid)
-                {
-                    m_pLayers[layer[i].Tag + kTagOffsetForUniqueness] = layer[i];
-                }
+                AddLayer(layer);
             }
         }
 
         #endregion Constructors
 
-
-        /// <summary>
-        /// The list of layers in their insertion order.
-        /// </summary>
-        private List<int> _LayersInOrder = new List<int>();
-
-        /// <summary>
-        /// Switches to the first layer.
-        /// </summary>
-        /// <returns></returns>
-        public CCLayer SwitchToFirstLayer()
-        {
-            if (_LayersInOrder.Count == 0)
-            {
-                return (null);
-            }
-            return (SwitchTo(_LayersInOrder[0]));
-        }
-
-        /// <summary>
-        /// Switches to the next logical layer that was added to the multiplexer. Switches to the
-        /// first layer when no layer is active.
-        /// </summary>
-        public CCLayer SwitchToNextLayer()
-        {
-            if (_LayersInOrder.Count == 0)
-            {
-                return (null);
-            }
-            int idx = -1;
-            if (m_nEnabledLayer != -1)
-            {
-                for(int z = 0; z < _LayersInOrder.Count; z++)
-                {
-                    int ix = _LayersInOrder[z];
-                    if (m_pLayers[ix] != null)
-                    {
-                        if ((m_nEnabledLayer > kTagOffsetForUniqueness) && m_pLayers[ix].Tag == (m_nEnabledLayer - kTagOffsetForUniqueness))
-                        {
-                            idx = z;
-                            break;
-                        }
-                        else if(ix == m_nEnabledLayer) {
-                            idx = z;
-                            break;
-                        }
-                    }
-                }
-                idx = (idx + 1) % _LayersInOrder.Count;
-            }
-            else
-            {
-                idx = 0;
-            }
-            if (idx == -1)
-            {
-                idx = 0;
-            }
-            return(SwitchTo(_LayersInOrder[idx]));
-        }
-
-        /// <summary>
-        /// Switches to the previous logical layer that was added to the multiplexer. Switches to the
-        /// first layer when no layer is active.
-        /// </summary>
-        public CCLayer SwitchToPreviousLayer()
-        {
-            if (_LayersInOrder.Count == 0)
-            {
-                return (null);
-            }
-            int idx = -1;
-            if (m_nEnabledLayer != -1)
-            {
-                for (int z = 0; z < _LayersInOrder.Count; z++)
-                {
-                    int ix = _LayersInOrder[z];
-                    if (m_pLayers[ix] != null)
-                    {
-                        if ((m_nEnabledLayer > kTagOffsetForUniqueness) && m_pLayers[ix].Tag == (m_nEnabledLayer - kTagOffsetForUniqueness))
-                        {
-                            idx = z;
-                            break;
-                        }
-                        else if (ix == m_nEnabledLayer)
-                        {
-                            idx = z;
-                            break;
-                        }
-                    }
-                }
-                idx = idx - 1;
-                if (idx < 0)
-                {
-                    idx = _LayersInOrder.Count - 1;
-                }
-            }
-            else
-            {
-                idx = 0;
-            }
-            return(SwitchTo(_LayersInOrder[idx]));
-        }
-
-        /// <summary>
-        /// Adds the given layer to the list of layers to multiplex. The CCNode.Tag is used
-        /// as thelayer tag, but is offset by the kTagOffsetForUniqueness constant.
-        /// </summary>
-        /// <param name="layer"></param>
-        public void AddLayer(CCLayer layer)
-        {
-            if (m_pLayers == null)
-            {
-                InitWithLayers(layer);
-            }
-            else
-            {
-                int ix = m_pLayers.Count;
-                m_pLayers[ix] = layer;
-                _LayersInOrder.Add(ix);
-                if (layer.Tag != CCNode.kCCNodeTagInvalid)
-                {
-                    m_pLayers[layer.Tag + kTagOffsetForUniqueness] = layer;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns the active layer that was last selected. This method will return null
-        /// if no layer has been selected.
-        /// </summary>
-        public virtual CCLayer ActiveLayer
-        {
-            get
-            {
-                if (m_pLayers == null || m_nEnabledLayer == -1)
-                {
-                    return (null);
-                }
-                return (m_pLayers[m_nEnabledLayer]);
-            }
-        }
-
-        /// <summary>
-        /// This will switch to the first layer if the ShowFirstLayerOnEnter flag is true 
-        /// and there is a layer in the list of multiplexed layers.
-        /// </summary>
         public override void OnEnter()
         {
-            if (m_nEnabledLayer == -1 && m_pLayers.Count > 0 && ShowFirstLayerOnEnter)
+            if (EnabledLayer == -1 && Layers.Count > 0 && ShowFirstLayerOnEnter)
             {
                 SwitchTo(0);
             }
+
             base.OnEnter();
         }
 
         /// <summary>
-        /// Hides the current display layer and sets the current enabled layer to none.
-        /// The out action is played for the current display layer. Calling this method
-        /// will also set ShowFirstLayerOnEnter to false.
+        /// Adds the given layer to the list of layers to multiplex. The CCNode.Tag is used
+        /// as thelayer tag, but is offset by the TagOffsetForUniqueness constant.
         /// </summary>
+        /// <param name="layer"></param>
+        public void AddLayer(CCLayer layer)
+        {
+            int ix = Layers.Count;
+            Layers[ix] = layer;
+            layersInOrder.Add(ix);
+            if (layer.Tag != CCNode.kCCNodeTagInvalid)
+            {
+                Layers[layer.Tag + TagOffsetForUniqueness] = layer;
+            }
+        }
+
+
+        #region Switching layers
+
+        public CCLayer SwitchToFirstLayer()
+        {
+            if (layersInOrder.Count == 0)
+            {
+                return null;
+            }
+            return SwitchTo(layersInOrder[0]);
+        }
+
+        // Calling this method will set ShowFirstLayerOnEnter to false.
         public void SwitchToNone() 
         {
             SwitchTo(NoLayer);
+        }
+
+        // Switches to the new layer and removes the old layer from management.
+        public CCLayer SwitchToAndRemovePreviousLayer(int n)
+        {
+            var prevLayer = EnabledLayer;
+            CCLayer l = SwitchTo(n);
+            Layers[prevLayer] = null;
+            return l;
+        }
+
+        public CCLayer SwitchToNextLayer()
+        {
+            if (layersInOrder.Count == 0)
+            {
+                return null;
+            }
+            int idx = NoLayer;
+            if (EnabledLayer != NoLayer)
+            {
+                for(int z = 0; z < layersInOrder.Count; z++)
+                {
+                    int ix = layersInOrder[z];
+                    if (Layers[ix] != null)
+                    {
+                        if ((EnabledLayer > TagOffsetForUniqueness) 
+                            && Layers[ix].Tag == (EnabledLayer - TagOffsetForUniqueness))
+                        {
+                            idx = z;
+                            break;
+                        }
+                        else if(ix == EnabledLayer) 
+                        {
+                            idx = z;
+                            break;
+                        }
+                    }
+                }
+                idx = (idx + 1) % layersInOrder.Count;
+            }
+            else
+            {
+                idx = 0;
+            }
+            if (idx == NoLayer)
+            {
+                idx = 0;
+            }
+            return SwitchTo(layersInOrder[idx]);
+        }
+
+        public CCLayer SwitchToPreviousLayer()
+        {
+            if (layersInOrder.Count == 0)
+            {
+                return null;
+            }
+            int idx = NoLayer;
+            if (EnabledLayer != NoLayer)
+            {
+                for (int z = 0; z < layersInOrder.Count; z++)
+                {
+                    int ix = layersInOrder[z];
+                    if (Layers[ix] != null)
+                    {
+                        if ((EnabledLayer > TagOffsetForUniqueness) 
+                            && Layers[ix].Tag == (EnabledLayer - TagOffsetForUniqueness))
+                        {
+                            idx = z;
+                            break;
+                        }
+                        else if (ix == EnabledLayer)
+                        {
+                            idx = z;
+                            break;
+                        }
+                    }
+                }
+                idx -= 1;
+                if (idx < 0)
+                {
+                    idx = layersInOrder.Count - 1;
+                }
+            }
+            else
+            {
+                idx = 0;
+            }
+            return SwitchTo(layersInOrder[idx]);
         }
 
         /// <summary>
@@ -269,32 +217,32 @@ namespace CocosSharp
         /// <returns>The layer that is going to be shown. This can return null if the SwitchTo layer is NoLayer</returns>
         public CCLayer SwitchTo(int n)
         {
-            if (n != -1)
+            if (n != NoLayer)
             {
-                if (m_nEnabledLayer == n || m_nEnabledLayer == (n + kTagOffsetForUniqueness))
+                if (EnabledLayer == n || EnabledLayer == (n + TagOffsetForUniqueness))
                 {
-                    // no-op
-                    if (m_nEnabledLayer == -1)
+                    if (EnabledLayer == NoLayer)
                     {
-                        return (null);
+                        return null;
                     }
-                    return (m_pLayers[m_nEnabledLayer]);
+                    return Layers[EnabledLayer];
                 }
             }
-            if (m_nEnabledLayer != -1)
+
+            if (EnabledLayer != NoLayer)
             {
                 CCLayer outLayer = null;
-                if (m_pLayers.ContainsKey(m_nEnabledLayer))
+                if (Layers.ContainsKey(EnabledLayer))
                 {
-                    outLayer = m_pLayers[m_nEnabledLayer];
-                    if (m_OutAction != null)
+                    outLayer = Layers[EnabledLayer];
+                    if (OutAction != null)
                     {
                         outLayer.RunAction(
                             new CCSequence(
-								(CCFiniteTimeAction)m_OutAction,
+                                (CCFiniteTimeAction)OutAction,
                                 new CCCallFunc(() => RemoveChild(outLayer, true))
-                                )
-                            );
+                            )
+                        );
                     }
                     else
                     {
@@ -302,50 +250,42 @@ namespace CocosSharp
                     }
                 }
                 // We have no enabled layer at this point
-                m_nEnabledLayer = NoLayer;
+                EnabledLayer = NoLayer;
             }
+
             // When NoLayer, the multiplexer shows nothing.
             if (n == NoLayer)
             {
                 ShowFirstLayerOnEnter = false;
-                return (null);
+                return null;
             }
-            if (!m_pLayers.ContainsKey(n))
+
+            if (!Layers.ContainsKey(n))
             {
-                int f = n + kTagOffsetForUniqueness;
-                if (m_pLayers.ContainsKey(f))
+                int f = n + TagOffsetForUniqueness;
+                if (Layers.ContainsKey(f))
                 {
                     n = f;
                 }
                 else
                 {
                     // Invalid index - layer not found
-                    return(null);
+                    return null;
                 }
             }
+
             // Set the active layer
-            AddChild(m_pLayers[n]);
-            m_nEnabledLayer = n;
-            // Run the in-action on the new layer
-            if (m_InAction != null)
+            AddChild(Layers[n]);
+            EnabledLayer = n;
+
+            if (InAction != null)
             {
-                m_pLayers[n].RunAction(m_InAction);
+                Layers[n].RunAction(InAction);
             }
-            return (m_pLayers[m_nEnabledLayer]);
+
+            return Layers[EnabledLayer];
         }
 
-
-        /// <summary>
-        /// Switches to the new layer and removes the old layer from management. 
-        /// </summary>
-        /// <param name="n"></param>
-        /// <returns></returns>
-        public CCLayer SwitchToAndReleaseMe(int n)
-        {
-            var prevLayer = m_nEnabledLayer;
-            CCLayer l = SwitchTo(n);
-            m_pLayers[prevLayer] = null;
-            return (l);
-        }
+        #endregion Switching
     }
 }

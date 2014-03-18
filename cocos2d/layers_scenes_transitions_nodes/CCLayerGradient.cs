@@ -52,23 +52,21 @@ namespace CocosSharp
 
     public class CCLayerGradient : CCLayerColor
     {
-        private CCPoint m_AlongVector;
+        // Whether or not the interpolation will be compressed in order to display all the colors of the gradient both in canonical and non canonical vectors
+        bool compressedInterpolation; 
 
-        /// <summary>
-        /// Whether or not the interpolation will be compressed in order to display all the colors of the gradient both in canonical and non canonical vectors
-        /// Default: YES
-        /// </summary>
-        private bool m_bCompressedInterpolation;
+        byte endOpacity;
+        byte startOpacity;
 
-        private byte m_cEndOpacity;
-        private byte m_cStartOpacity;
+        CCPoint alongVector;
+        CCColor3B endColor;
 
-        private CCColor3B m_endColor;
 
+        #region Properties
 
         public CCColor3B StartColor
         {
-            get { return _realColor; }
+            get { return RealColor; }
             set
             {
                 base.Color = value;
@@ -78,40 +76,40 @@ namespace CocosSharp
 
         public CCColor3B EndColor
         {
-            get { return m_endColor; }
+            get { return endColor; }
             set
             {
-                m_endColor = value;
+                endColor = value;
                 UpdateColor();
             }
         }
 
         public byte StartOpacity
         {
-            get { return m_cStartOpacity; }
+            get { return startOpacity; }
             set
             {
-                m_cStartOpacity = value;
+                startOpacity = value;
                 UpdateColor();
             }
         }
 
         public byte EndOpacity
         {
-            get { return m_cEndOpacity; }
+            get { return endOpacity; }
             set
             {
-                m_cEndOpacity = value;
+                endOpacity = value;
                 UpdateColor();
             }
         }
 
         public CCPoint Vector
         {
-            get { return m_AlongVector; }
+            get { return alongVector; }
             set
             {
-                m_AlongVector = value;
+                alongVector = value;
                 UpdateColor();
             }
         }
@@ -119,24 +117,18 @@ namespace CocosSharp
 
         public bool IsCompressedInterpolation
         {
-            get { return m_bCompressedInterpolation; }
+            get { return compressedInterpolation; }
             set
             {
-                m_bCompressedInterpolation = value;
+                compressedInterpolation = value;
                 UpdateColor();
             }
         }
 
+        #endregion Properties
+
 
         #region Constructors
-
-        /// <summary>
-        /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
-        /// </summary>
-        public CCLayerGradient (CCColor4B start, CCColor4B end, CCPoint v) : base(new CCColor4B(start.R, start.G, start.B, 255))
-        {
-            InitCCLayerGradient(start, end, v);
-        }
 
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end.
@@ -151,25 +143,22 @@ namespace CocosSharp
 
         public CCLayerGradient(byte startOpacity, byte endOpacity)
         {
-            m_cStartOpacity = startOpacity;
-            m_cEndOpacity = endOpacity;
+            StartOpacity = startOpacity;
+            EndOpacity = endOpacity;
         }
 
         /// <summary>
-        /// Initializes the CCLayer with a gradient between start and end in the direction of v.
+        /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
         /// </summary>
-        private void InitCCLayerGradient(CCColor4B start, CCColor4B end, CCPoint v)
+        public CCLayerGradient (CCColor4B start, CCColor4B end, CCPoint gradientDirection) 
+            : base(new CCColor4B(start.R, start.G, start.B, 255))
         {
-            m_endColor = new CCColor3B();
-            m_endColor.R = end.R;
-            m_endColor.G = end.G;
-            m_endColor.B = end.B;
+            EndColor = new CCColor3B(end.R, end.G, end.B);
+            StartOpacity = start.A;
+            EndOpacity = end.A;
+            IsCompressedInterpolation = true;
 
-            m_cEndOpacity = end.A;
-            m_cStartOpacity = start.A;
-            m_AlongVector = v;
-
-            m_bCompressedInterpolation = true;
+            alongVector = gradientDirection;
         }
 
         #endregion Constructors
@@ -179,40 +168,40 @@ namespace CocosSharp
         {
             base.UpdateColor();
 
-            float h = m_AlongVector.Length;
+            float h = alongVector.Length;
             if (h == 0)
                 return;
 
             double c = Math.Sqrt(2.0);
-            var u = new CCPoint(m_AlongVector.X / h, m_AlongVector.Y / h);
+            var u = new CCPoint(alongVector.X / h, alongVector.Y / h);
 
             // Compressed Interpolation mode
-            if (m_bCompressedInterpolation)
+            if (IsCompressedInterpolation)
             {
                 float h2 = 1 / (Math.Abs(u.X) + Math.Abs(u.Y));
                 u = u * (h2 * (float) c);
             }
 
-            float opacityf = _displayedOpacity / 255.0f;
+            float opacityf = DisplayedOpacity / 255.0f;
 
             var S = new CCColor4B
                 {
-                    R = _displayedColor.R,
-                    G = _displayedColor.G,
-                    B = _displayedColor.B,
-                    A = (byte) (m_cStartOpacity * opacityf)
+                    R = DisplayedColor.R,
+                    G = DisplayedColor.G,
+                    B = DisplayedColor.B,
+                    A = (byte) (StartOpacity * opacityf)
                 };
 
             var E = new CCColor4B
                 {
-                    R = m_endColor.R,
-                    G = m_endColor.G,
-                    B = m_endColor.B,
-                    A = (byte) (m_cEndOpacity * opacityf)
+                    R = EndColor.R,
+                    G = EndColor.G,
+                    B = EndColor.B,
+                    A = (byte) (EndOpacity * opacityf)
                 };
 
             // (-1, -1)
-            m_pSquareVertices[0].Color = new Color(
+            SquareVertices[0].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c + u.X + u.Y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.X + u.Y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c + u.X + u.Y) / (2.0f * c))),
@@ -220,7 +209,7 @@ namespace CocosSharp
                 );
 
             // (1, -1)
-            m_pSquareVertices[1].Color = new Color(
+            SquareVertices[1].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c - u.X + u.Y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.X + u.Y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c - u.X + u.Y) / (2.0f * c))),
@@ -228,7 +217,7 @@ namespace CocosSharp
                 );
 
             // (-1, 1)
-            m_pSquareVertices[2].Color = new Color(
+            SquareVertices[2].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c + u.X - u.Y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c + u.X - u.Y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c + u.X - u.Y) / (2.0f * c))),
@@ -236,7 +225,7 @@ namespace CocosSharp
                 );
 
             // (1, 1)
-            m_pSquareVertices[3].Color = new Color(
+            SquareVertices[3].Color = new Color(
                 (byte) (E.R + (S.R - E.R) * ((c - u.X - u.Y) / (2.0f * c))),
                 (byte) (E.G + (S.G - E.G) * ((c - u.X - u.Y) / (2.0f * c))),
                 (byte) (E.B + (S.B - E.B) * ((c - u.X - u.Y) / (2.0f * c))),

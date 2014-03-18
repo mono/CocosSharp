@@ -36,48 +36,26 @@ namespace CocosSharp
     /// </summary>
     public class CCLayerColor : CCLayerRGBA, ICCBlendable
     {
-        protected VertexPositionColor[] m_pSquareVertices = new VertexPositionColor[4];
-        protected CCBlendFunc m_tBlendFunc;
+        protected VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
-        /// <summary>
-        /// override contentSize
-        /// </summary>
+        #region Properties
+
+        public virtual CCBlendFunc BlendFunc { get; set; }
+
         public override CCSize ContentSize
         {
             get { return base.ContentSize; }
             set
             {
                 //1, 2, 3, 3
-                m_pSquareVertices[1].Position.X = value.Width;
-                m_pSquareVertices[2].Position.Y = value.Height;
-                m_pSquareVertices[3].Position.X = value.Width;
-                m_pSquareVertices[3].Position.Y = value.Height;
-
-                //m_pSquareVertices[1].Position.X = value.Height;
-                //m_pSquareVertices[2].Position.Y = value.Width;
-                //m_pSquareVertices[3].Position.X = value.Width;
-                //m_pSquareVertices[3].Position.Y = value.Height;
+                SquareVertices[1].Position.X = value.Width;
+                SquareVertices[2].Position.Y = value.Height;
+                SquareVertices[3].Position.X = value.Width;
+                SquareVertices[3].Position.Y = value.Height;
 
                 base.ContentSize = value;
             }
         }
-
-
-        #region ICCBlendProtocol Members
-
-        /// <summary>
-        /// BlendFunction. Conforms to CCBlendProtocol protocol 
-        /// </summary>
-        public virtual CCBlendFunc BlendFunc
-        {
-            get { return m_tBlendFunc; }
-            set { m_tBlendFunc = value; }
-        }
-
-        #endregion
-
-
-        #region RGBA Protocol
 
         public override CCColor3B Color
         {
@@ -99,21 +77,13 @@ namespace CocosSharp
             }
         }
 
-        #endregion
+        #endregion Properties
 
 
         #region Constructors
 
         public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
         {
-        }
-
-        /// <summary>
-        /// creates a CCLayer with color, width and height in Points
-        /// </summary>
-        public CCLayerColor (CCColor4B color, float width, float height) : base()
-        {
-            InitCCLayerColor(color, width, height);
         }
 
         /// <summary>
@@ -124,10 +94,15 @@ namespace CocosSharp
         }
 
         /// <summary>
-        /// initializes a CCLayer with color, width and height in Points
+        /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        private void InitCCLayerColor(CCColor4B color, float width, float height)
+        public CCLayerColor (CCColor4B color, float width, float height) : base()
         {
+            DisplayedColor = new CCColor3B(color.R, color.G, color.B);
+            RealColor = DisplayedColor;
+            DisplayedOpacity = RealOpacity = color.A;
+            BlendFunc = CCBlendFunc.NonPremultiplied;
+
             if (width == 0.0f || height == 0.0f) 
             {
                 CCSize s = CCDirector.SharedDirector.WinSize;
@@ -135,28 +110,32 @@ namespace CocosSharp
                 height = s.Height;
             }
 
-            // default blend function
-            m_tBlendFunc = CCBlendFunc.NonPremultiplied;
-
-            _displayedColor.R = _realColor.R = color.R;
-            _displayedColor.G = _realColor.G = color.G;
-            _displayedColor.B = _realColor.B = color.B;
-            _displayedOpacity = _realOpacity = color.A;
-
-            for (int i = 0; i < m_pSquareVertices.Length; i++)
-            {
-                m_pSquareVertices[i].Position.X = 0.0f;
-                m_pSquareVertices[i].Position.Y = 0.0f;
-            }
-
-            UpdateColor();
             ContentSize = new CCSize(width, height);
+            UpdateColor();
         }
 
         #endregion Constructors
 
 
-        #region changesize
+        protected override void Draw()
+        {
+            CCDrawManager.TextureEnabled = false;
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
+        }
+
+        protected virtual void UpdateColor()
+        {
+            var color = new Color(DisplayedColor.R / 255.0f, DisplayedColor.G / 255.0f, DisplayedColor.B / 255.0f, DisplayedOpacity / 255.0f);
+
+            SquareVertices[0].Color = color;
+            SquareVertices[1].Color = color;
+            SquareVertices[2].Color = color;
+            SquareVertices[3].Color = color;
+        }
+
+
+        #region Change size
 
         /// <summary>
         /// change width in Points
@@ -187,24 +166,7 @@ namespace CocosSharp
             ContentSize = new CCSize(w, h);
         }
 
-        #endregion
-
-        protected override void Draw()
-        {
-            CCDrawManager.TextureEnabled = false;
-            CCDrawManager.BlendFunc(m_tBlendFunc);
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  m_pSquareVertices, 0, 2);
-        }
-
-        protected virtual void UpdateColor()
-        {
-            var color = new Color(_displayedColor.R / 255.0f, _displayedColor.G / 255.0f, _displayedColor.B / 255.0f, _displayedOpacity / 255.0f);
-
-            m_pSquareVertices[0].Color = color;
-            m_pSquareVertices[1].Color = color;
-            m_pSquareVertices[2].Color = color;
-            m_pSquareVertices[3].Color = color;
-        }
+        #endregion Change size
     }
 
 }

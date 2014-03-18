@@ -88,6 +88,16 @@ namespace CocosSharp
         public byte G;
         public byte B;
 
+        public static CCColor3B operator *(CCColor3B p1, CCColor3B p2)
+        {
+            return new CCColor3B((byte)(p1.R * p2.R), (byte)(p1.G * p2.G), (byte)(p1.B * p2.B));
+        }
+
+        public static CCColor3B operator /(CCColor3B p1, float div)
+        {
+            return new CCColor3B((byte)(p1.R / div), (byte)(p1.G / div), (byte)(p1.B / div));
+        }
+
         public static implicit operator Color(CCColor3B point)
         {
             return new Color(point.R, point.G, point.B);
