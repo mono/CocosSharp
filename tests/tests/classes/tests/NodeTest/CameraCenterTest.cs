@@ -16,7 +16,7 @@ namespace tests
             sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 5 * 1, s.Height / 5 * 1);
-            sprite.Color = CCTypes.CCRed;
+            sprite.Color = CCColor3B.Red;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
@@ -26,7 +26,7 @@ namespace tests
             sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 1, s.Height / 5 * 4));
-            sprite.Color = CCTypes.CCBlue;
+            sprite.Color = CCColor3B.Blue;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
@@ -36,7 +36,7 @@ namespace tests
             sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 1));
-            sprite.Color = CCTypes.CCYellow;
+            sprite.Color = CCColor3B.Yellow;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
@@ -45,7 +45,7 @@ namespace tests
             sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 4));
-            sprite.Color = CCTypes.CCGreen;
+            sprite.Color = CCColor3B.Green;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
@@ -54,7 +54,7 @@ namespace tests
             sprite = new CCSprite("Images/white-512x512");
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-            sprite.Color = CCTypes.CCWhite;
+            sprite.Color = CCColor3B.White;
             sprite.TextureRect = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));

@@ -39,54 +39,37 @@ namespace CocosSharp
     /// </summary>
     public struct CCColor3B
     {
-        //ccColor3B predefined colors
-        //! White color (255,255,255)
         public static readonly CCColor3B White = new CCColor3B(255, 255, 255);
-        //! Yellow color (255,255,0)
         public static readonly CCColor3B Yellow = new CCColor3B(255, 255, 0);
-        //! Blue color (0,0,255)
         public static readonly CCColor3B Blue = new CCColor3B(0, 0, 255);
-        //! Green Color (0,255,0)
         public static readonly CCColor3B Green = new CCColor3B(0, 255, 0);
-        //! Red Color (255,0,0,)
         public static readonly CCColor3B Red = new CCColor3B(255, 0, 0);
-        //! Magenta Color (255,0,255)
         public static readonly CCColor3B Magenta = new CCColor3B(255, 0, 255);
-        //! Black Color (0,0,0)
         public static readonly CCColor3B Black = new CCColor3B(0, 0, 0);
-        //! Orange Color (255,127,0)
         public static readonly CCColor3B Orange = new CCColor3B(255, 127, 0);
-        //! Gray Color (166,166,166)
         public static readonly CCColor3B Gray = new CCColor3B(166, 166, 166);
 
-        /*
-        public CCColor3B()
-        {
-            r = 0;
-            g = 0;
-            b = 0;
-        }
-        */
-        public CCColor3B(byte inr, byte ing, byte inb)
+        public byte R { get; set; }
+        public byte G { get; set; }
+        public byte B { get; set; }
+
+        #region Constructors
+
+        public CCColor3B(byte inr, byte ing, byte inb) : this()
         {
             R = inr;
             G = ing;
             B = inb;
         }
 
-        /// <summary>
-        /// Convert Color value of XNA Framework to CCColor3B type
-        /// </summary>
-        public CCColor3B(Microsoft.Xna.Framework.Color color)
+        public CCColor3B(CCColor4B color4B): this(color4B.R, color4B.G, color4B.B)
         {
-            R = color.R;
-            G = color.G;
-            B = color.B;
         }
 
-        public byte R;
-        public byte G;
-        public byte B;
+        #endregion Constructors
+
+
+        #region Operators
 
         public static CCColor3B operator *(CCColor3B p1, CCColor3B p2)
         {
@@ -98,10 +81,35 @@ namespace CocosSharp
             return new CCColor3B((byte)(p1.R / div), (byte)(p1.G / div), (byte)(p1.B / div));
         }
 
-        public static implicit operator Color(CCColor3B point)
+        public static bool operator ==(CCColor3B p1, CCColor3B p2)
         {
-            return new Color(point.R, point.G, point.B);
+            return p1.R == p2.R && p1.G == p2.G && p1.B == p2.B;
         }
+
+        public static bool operator !=(CCColor3B p1, CCColor3B p2)
+        {
+            return p1.R != p2.R || p1.G != p2.G || p1.B != p2.B;
+        }
+
+        public override int GetHashCode()
+        {
+            return (unchecked (R ^ G ^ B));
+        }
+
+        public override bool Equals(object obj)        
+        {            
+            if (!(obj is CCColor3B))                
+                return false;             
+
+            return Equals((CCColor3B)obj);        
+        }         
+
+        public bool Equals(CCColor3B other)        
+        {            
+            return this == other;       
+        } 
+
+        #endregion Operators
     }
 
     /// <summary>
@@ -110,41 +118,28 @@ namespace CocosSharp
     /// </summary>
     public struct CCColor4B
     {
-        //ccColor4B predefined colors
-        //! White color (255,255,255)
         public static readonly CCColor4B White = new CCColor4B(255, 255, 255, 255);
-        //! Yellow color (255,255,0)
         public static readonly CCColor4B Yellow = new CCColor4B(255, 255, 0, 255);
-        //! Blue color (0,0,255)
         public static readonly CCColor4B Blue = new CCColor4B(0, 0, 255, 255);
-        //! Green Color (0,255,0)
         public static readonly CCColor4B Green = new CCColor4B(0, 255, 0, 255);
-        //! Red Color (255,0,0,)
         public static readonly CCColor4B Red = new CCColor4B(255, 0, 0, 255);
-        //! Magenta Color (255,0,255)
         public static readonly CCColor4B Magenta = new CCColor4B(255, 0, 255, 255);
-        //! Black Color (0,0,0)
         public static readonly CCColor4B Black = new CCColor4B(0, 0, 0, 255);
-        //! Orange Color (255,127,0)
         public static readonly CCColor4B Orange = new CCColor4B(255, 127, 0, 255);
-        //! Gray Color (166,166,166)
         public static readonly CCColor4B Gray = new CCColor4B(166, 166, 166, 255);
-
-        public byte R;
-        public byte G;
-        public byte B;
-        public byte A;
+        public static readonly CCColor4B AliceBlue = new CCColor4B(240, 248, 255, 255);
+        public static readonly CCColor4B Aquamarine = new CCColor4B (127, 255, 212, 255);
 
 
-        public CCColor4B(byte inr, byte ing, byte inb)
-        {
-            R = inr;
-            G = ing;
-            B = inb;
-            A = 255;
-        }
+        public byte R { get; set; }
+        public byte G { get; set; }
+        public byte B { get; set; }
+        public byte A { get; set; }
 
-        public CCColor4B(byte inr, byte ing, byte inb, byte ina)
+
+        #region Constructors
+
+        public CCColor4B(byte inr, byte ing, byte inb, byte ina) : this()
         {
             R = inr;
             G = ing;
@@ -152,24 +147,12 @@ namespace CocosSharp
             A = ina;
         }
 
-        public CCColor4B(float inr, float ing, float inb, float ina)
+        public CCColor4B(byte inr, byte ing, byte inb) : this(inr, ing, inb, 255)
         {
-            R = (byte)inr;
-            G = (byte)ing;
-            B = (byte)inb;
-            A = (byte)ina;
         }
 
-        /// <summary>
-        /// Convert Color value of XNA Framework to CCColor4B type
-        /// </summary>
-        public CCColor4B(Microsoft.Xna.Framework.Color color)
-        {
-            R = color.R;
-            G = color.G;
-            B = color.B;
-            A = color.A;
-        }
+        #endregion Constructors
+
 
         public override string ToString()
         {
@@ -182,19 +165,17 @@ namespace CocosSharp
             return (new CCColor4B(byte.Parse(f[0]), byte.Parse(f[1]), byte.Parse(f[2]), byte.Parse(f[3])));
         }
 
-        public static implicit operator Color(CCColor4B point)
+
+        #region Operators
+
+        public static CCColor4B operator *(CCColor4B p1, CCColor4B p2)
         {
-            return new Color(point.R, point.G, point.B, point.A);
+            return new CCColor4B((byte)(p1.R * p2.R), (byte)(p1.G * p2.G), (byte)(p1.B * p2.B), (byte)(p1.A * p2.A));
         }
 
-        public static implicit operator CCColor3B(CCColor4B point)
+        public static CCColor4B operator /(CCColor4B p1, float div)
         {
-            return new CCColor3B(point.R, point.G, point.B);
-        }
-
-        public static implicit operator CCColor4B(CCColor3B point)
-        {
-            return new CCColor4B(point.R, point.G, point.B, 255);
+            return new CCColor4B((byte)(p1.R / div), (byte)(p1.G / div), (byte)(p1.B / div), (byte)(p1.A / div));
         }
 
         public static bool operator ==(CCColor4B p1, CCColor4B p2)
@@ -207,18 +188,38 @@ namespace CocosSharp
             return p1.R != p2.R || p1.G != p2.G || p1.B != p2.B || p1.A != p2.A;
         }
 
+        public override int GetHashCode()
+        {
+            return (unchecked (R ^ G ^ B ^ A));
+        }
+
+        public override bool Equals(object obj)        
+        {            
+            if (!(obj is CCColor4B))                
+                return false;             
+
+            return Equals((CCColor4B)obj);        
+        }         
+
+        public bool Equals(CCColor4B other)        
+        {            
+            return this == other;       
+        } 
+
+        #endregion Operators
+
+
         public static CCColor4B Lerp(CCColor4B value1, CCColor4B value2, float amount)
         {
-            CCColor4B color;
- 
+            CCColor4B color = new CCColor4B();
+
             color.A = (byte)(value1.A + ((value2.A - value1.A) * amount));
             color.R = (byte)(value1.R + ((value2.R - value1.R) * amount));
             color.G = (byte)(value1.G + ((value2.G - value1.G) * amount));
             color.B = (byte)(value1.B + ((value2.B - value1.B) * amount));
- 
+
             return color;
         }
- 
     }
 
     /// <summary>
@@ -233,6 +234,14 @@ namespace CocosSharp
             G = ing;
             B = inb;
             A = ina;
+        }
+
+        public CCColor4F(CCColor3B c) : this(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f)
+        {
+        }
+
+        public CCColor4F(CCColor4B c) : this(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f)
+        {
         }
 
         public float R;
@@ -254,6 +263,16 @@ namespace CocosSharp
         public static implicit operator Color(CCColor4F point)
         {
             return new Color(point.R, point.G, point.B, point.A);
+        }
+            
+        public static bool operator ==(CCColor4F a, CCColor4F b)
+        {
+            return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
+        }
+
+        public static bool operator !=(CCColor4F a, CCColor4F b)
+        {
+            return a.R != b.R || a.G != b.G || a.B != b.B || a.A != b.A;
         }
     }
 
@@ -876,94 +895,5 @@ namespace CocosSharp
         Center,
         Bottom
     }
-
-    public class CCTypes
-    {
-        //ccColor3B predefined colors
-        //! White color (255,255,255)
-        public static readonly CCColor3B CCWhite = new CCColor3B(255, 255, 255);
-        //! Yellow color (255,255,0)
-        public static readonly CCColor3B CCYellow = new CCColor3B(255, 255, 0);
-        //! Blue color (0,0,255)
-        public static readonly CCColor3B CCBlue = new CCColor3B(0, 0, 255);
-        //! Green Color (0,255,0)
-        public static readonly CCColor3B CCGreen = new CCColor3B(0, 255, 0);
-        //! Red Color (255,0,0,)
-        public static readonly CCColor3B CCRed = new CCColor3B(255, 0, 0);
-        //! Magenta Color (255,0,255)
-        public static readonly CCColor3B CCMagenta = new CCColor3B(255, 0, 255);
-        //! Black Color (0,0,0)
-        public static readonly CCColor3B CCBlack = new CCColor3B(0, 0, 0);
-        //! Orange Color (255,127,0)
-        public static readonly CCColor3B CCOrange = new CCColor3B(255, 127, 0);
-        //! Gray Color (166,166,166)
-        public static readonly CCColor3B CCGray = new CCColor3B(166, 166, 166);
-
-        //! helper macro that creates an ccColor3B type
-        static public CCColor3B CreateColor(byte r, byte g, byte b)
-        {
-            CCColor3B c = new CCColor3B(r, g, b);
-            return c;
-        }
-
-        //! helper macro that creates an ccColor4B type
-        public static CCColor4B CreateColor(byte r, byte g, byte b, byte o)
-        {
-            CCColor4B c = new CCColor4B(r, g, b, o);
-            return c;
-        }
-
-        /** Returns a ccColor4F from a ccColor3B. Alpha will be 1.
-         @since v0.99.1
-         */
-        public static CCColor4F CreateColor(CCColor3B c)
-        {
-            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f);
-            return c4;
-        }
-
-        /** Returns a ccColor4F from a ccColor4B.
-         @since v0.99.1
-         */
-        public static CCColor4F CreateColor(CCColor4B c)
-        {
-            CCColor4F c4 = new CCColor4F(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f);
-            return c4;
-        }
-
-        /** returns YES if both ccColor4F are equal. Otherwise it returns NO.
-         @since v0.99.1
-         */
-        public static bool ColorsAreEqual(CCColor4F a, CCColor4F b)
-        {
-            return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
-        }
-
-        public static CCVertex2F Vertex2(float x, float y)
-        {
-            CCVertex2F c = new CCVertex2F(x, y);
-            return c;
-        }
-
-        public static CCVertex3F Vertex3(float x, float y, float z)
-        {
-            CCVertex3F c = new CCVertex3F(x, y, z);
-            return c;
-        }
-
-        public static CCTex2F Tex2(float u, float v)
-        {
-            CCTex2F t = new CCTex2F(u, v);
-            return t;
-        }
-
-        //! helper function to create a ccGridSize
-        public static CCGridSize GridSize(int x, int y)
-        {
-            CCGridSize v = new CCGridSize(x, y);
-            return v;
-        }
-    }
-
-}//namespace   cocos2d 
+}
 

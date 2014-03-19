@@ -26,8 +26,8 @@ namespace CocosSharp
 
         protected byte displayedOpacity = 255;
         protected byte realOpacity = 255;
-        protected CCColor3B displayedColor = CCTypes.CCWhite;
-        protected CCColor3B realColor = CCTypes.CCWhite;
+        protected CCColor3B displayedColor = CCColor3B.White;
+        protected CCColor3B realColor = CCColor3B.White;
         protected bool isColorCascaded = true;
         protected bool isOpacityCascaded = true;
         protected bool isColorModifiedByOpacity = false;
@@ -181,7 +181,7 @@ namespace CocosSharp
 
                 if (isColorCascaded)
                 {
-                    var parentColor = CCTypes.CCWhite;
+                    var parentColor = CCColor3B.White;
                     var parent = m_pParent as ICCColor;
                     if (parent != null && parent.IsColorCascaded)
                     {
@@ -379,7 +379,7 @@ namespace CocosSharp
             vertAlignment = vAlignment;
 
             displayedOpacity = realOpacity = 255;
-            displayedColor = realColor = CCTypes.CCWhite;
+            displayedColor = realColor = CCColor3B.White;
             isOpacityCascaded = true;
             isColorCascaded = true;
 

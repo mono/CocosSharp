@@ -44,7 +44,7 @@ namespace CocosSharp
             InitCCTransitionFade(color);
         }
 
-        public CCTransitionFade (float t, CCScene scene) : this (t, scene, new CCColor3B(Color.Black))
+        public CCTransitionFade (float t, CCScene scene) : this (t, scene, CCColor3B.Black)
         {
         }
 

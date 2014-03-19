@@ -100,7 +100,7 @@ namespace CocosSharp
                 y = 16;
             }
 
-            CCActionInterval action = ActionWithSize(CCTypes.GridSize(x, y));
+            CCActionInterval action = ActionWithSize(new CCGridSize(x, y));
 
             if (!m_bBack)
             {

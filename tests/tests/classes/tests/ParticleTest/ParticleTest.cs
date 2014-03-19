@@ -177,7 +177,7 @@ namespace tests
         public CCSprite m_background;
         public CCParticleSystem m_emitter;
 
-        public ParticleDemo() : base(CCTypes.CreateColor(127, 127, 127, 255))
+        public ParticleDemo() : base(new CCColor4B(127, 127, 127, 255))
         {
             m_emitter = null;
 
@@ -1320,7 +1320,7 @@ namespace tests
             base.OnEnter();
 
             m_nOrder = 0;
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1419,7 +1419,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1468,7 +1468,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1587,7 +1587,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1619,7 +1619,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1655,7 +1655,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1698,7 +1698,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1768,7 +1768,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1878,7 +1878,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 
@@ -1922,7 +1922,7 @@ namespace tests
         {
             base.OnEnter();
 
-            Color = CCTypes.CCBlack;
+            Color = CCColor3B.Black;
             RemoveChild(m_background, true);
             m_background = null;
 

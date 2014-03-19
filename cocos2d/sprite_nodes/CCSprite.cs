@@ -618,10 +618,10 @@ namespace CocosSharp
                 float y2 = y1 + m_obRect.Size.Height;
 
                 // Don't update Z.
-                m_sQuad.BottomLeft.Vertices = CCTypes.Vertex3(x1, y1, 0);
-                m_sQuad.BottomRight.Vertices = CCTypes.Vertex3(x2, y1, 0);
-                m_sQuad.TopLeft.Vertices = CCTypes.Vertex3(x1, y2, 0);
-                m_sQuad.TopRight.Vertices = CCTypes.Vertex3(x2, y2, 0);
+                m_sQuad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
+                m_sQuad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
+                m_sQuad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
+                m_sQuad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
             }
         }
 

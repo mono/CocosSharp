@@ -19,14 +19,14 @@ namespace tests
 
             sprite = new CCSprite();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = CCTypes.CCRed;
+            sprite.Color = CCColor3B.Red;
             sprite.Opacity = 128;
             sprite.Position = (new CCPoint(3 * s.Width / 4, s.Height / 2));
             AddChild(sprite, 100);
 
             sprite = new CCSprite();
             sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = CCTypes.CCBlue;
+            sprite.Color = CCColor3B.Blue;
             sprite.Opacity = 128;
             sprite.Position = (new CCPoint(1 * s.Width / 4, s.Height / 2));
             AddChild(sprite, 100);

@@ -8,7 +8,7 @@ namespace tests
         private static int MAX_LAYER = 22;
 		public static CCNode BaseNode;
 
-		public TextLayer() : base(CCTypes.CreateColor(32, 128, 32, 255))
+        public TextLayer() : base(new CCColor4B(32, 128, 32, 255))
         {
             //BaseNode = new CCNode();
 			//BaseNode.ContentSize = CCVisibleRect.VisibleRect.Size;

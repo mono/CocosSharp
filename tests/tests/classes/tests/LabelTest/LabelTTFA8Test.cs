@@ -14,7 +14,7 @@ namespace tests
             // CCLabelBMFont
 			var label1 = new CCLabelTtf("Testing A8 Format", "MarkerFelt", 38);
             AddChild(label1);
-            label1.Color = CCTypes.CCRed;
+            label1.Color = CCColor3B.Red;
 			label1.Position = s.Center;
 
 			var fadeOut = new CCFadeOut  (2);

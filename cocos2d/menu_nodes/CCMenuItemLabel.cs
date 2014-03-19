@@ -44,7 +44,7 @@ namespace CocosSharp
         protected CCMenuItemLabelBase(Action<object> target = null) : base(target)
         {
             OriginalScale = 1.0f;
-            ColorBackup = CCTypes.CCWhite;
+            ColorBackup = CCColor3B.White;
             DisabledColor = new CCColor3B(126, 126, 126);
             IsColorCascaded = true;
             IsOpacityCascaded = true;

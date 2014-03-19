@@ -62,7 +62,7 @@ namespace tests
 			var stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
-            longSentences.Color = CCTypes.CCRed;
+            longSentences.Color = CCColor3B.Red;
             lastSentenceItem = longSentences;
             longSentences.Tag = LongSentences;
             lineBreaks.Tag = LineBreaks;
@@ -77,7 +77,7 @@ namespace tests
 			var alignmentMenu = new CCMenu(left, center, right);
             alignmentMenu.AlignItemsHorizontally(alignmentItemPadding);
 
-            center.Color = CCTypes.CCRed;
+            center.Color = CCColor3B.Red;
             m_pLastAlignmentItem = center;
             left.Tag = LeftAlign;
             center.Tag = CenterAlign;
@@ -107,8 +107,8 @@ namespace tests
         private void stringChanged(object sender)
         {
             var item = (CCMenuItemFont) sender;
-            item.Color = CCTypes.CCRed;
-            m_pLastAlignmentItem.Color = CCTypes.CCWhite;
+            item.Color = CCColor3B.Red;
+            m_pLastAlignmentItem.Color = CCColor3B.White;
             m_pLastAlignmentItem = item;
 
             switch (item.Tag)
@@ -133,8 +133,8 @@ namespace tests
         private void alignmentChanged(object sender)
         {
             var item = (CCMenuItemFont) sender;
-            item.Color = CCTypes.CCRed;
-            m_pLastAlignmentItem.Color = CCTypes.CCWhite;
+            item.Color = CCColor3B.Red;
+            m_pLastAlignmentItem.Color = CCColor3B.White;
             m_pLastAlignmentItem = item;
 
             switch (item.Tag)

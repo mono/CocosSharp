@@ -70,12 +70,12 @@ namespace CocosSharp
 //			if (_bitmap == null || (_bitmap.Width < width || _bitmap.Height < height))
 //			{
 
-				_bitmap = CCLabelUtilities.CreateBitmap (width, height);
+            _bitmap = CCLabelUtilities.CreateBitmap (width, height);
 			//}
 
 			//if (_brush == null)
 			//{
-				_brush = new CCColor4B(Microsoft.Xna.Framework.Color.White);
+            _brush = CCColor4B.White;
 			//}
 		}
 

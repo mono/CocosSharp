@@ -291,8 +291,8 @@ namespace CocosSharp
 
                 _touchedPart = CCControlStepperPart.PartNone;
 
-                _minusSprite.Color = CCTypes.CCWhite;
-                _plusSprite.Color = CCTypes.CCWhite;
+                _minusSprite.Color = CCColor3B.White;
+                _plusSprite.Color = CCColor3B.White;
 
                 if (_autorepeat)
                 {
@@ -303,8 +303,8 @@ namespace CocosSharp
 
 		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
-            _minusSprite.Color = CCTypes.CCWhite;
-            _plusSprite.Color = CCTypes.CCWhite;
+            _minusSprite.Color = CCColor3B.White;
+            _plusSprite.Color = CCColor3B.White;
 
             if (_autorepeat)
             {
@@ -331,23 +331,23 @@ namespace CocosSharp
             {
                 _touchedPart = CCControlStepperPart.PartMinus;
 
-                _minusSprite.Color = CCTypes.CCGray;
-                _plusSprite.Color = CCTypes.CCWhite;
+                _minusSprite.Color = CCColor3B.Gray;
+                _plusSprite.Color = CCColor3B.White;
             }
             else if (location.X >= _minusSprite.ContentSize.Width
                      && _value < _maximumValue)
             {
                 _touchedPart = CCControlStepperPart.PartPlus;
 
-                _minusSprite.Color = CCTypes.CCWhite;
-                _plusSprite.Color = CCTypes.CCGray;
+                _minusSprite.Color = CCColor3B.White;
+                _plusSprite.Color = CCColor3B.Gray;
             }
             else
             {
                 _touchedPart = CCControlStepperPart.PartNone;
 
-                _minusSprite.Color = CCTypes.CCWhite;
-                _plusSprite.Color = CCTypes.CCWhite;
+                _minusSprite.Color = CCColor3B.White;
+                _plusSprite.Color = CCColor3B.White;
             }
         }
 

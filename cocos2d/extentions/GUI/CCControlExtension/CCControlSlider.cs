@@ -233,7 +233,7 @@ namespace CocosSharp
         protected void SliderBegan(CCPoint location)
         {
             Selected = true;
-            ThumbSprite.Color = CCTypes.CCGray;
+            ThumbSprite.Color = CCColor3B.Gray;
             Value = ValueForLocation(location);
         }
 
@@ -248,7 +248,7 @@ namespace CocosSharp
             {
                 Value = ValueForLocation(_thumbSprite.Position);
             }
-            _thumbSprite.Color = CCTypes.CCWhite;
+            _thumbSprite.Color = CCColor3B.White;
             Selected = false;
         }
 

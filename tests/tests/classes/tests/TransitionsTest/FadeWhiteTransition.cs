@@ -8,7 +8,7 @@ namespace tests
 {
     public class FadeWhiteTransition : CCTransitionFade
     {
-        public FadeWhiteTransition (float t, CCScene s) : base (t, s, CCTypes.CCWhite)
+        public FadeWhiteTransition (float t, CCScene s) : base (t, s, CCColor3B.White)
         {  }
 
     }

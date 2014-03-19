@@ -146,7 +146,7 @@ namespace CocosSharp
             ItemWidth = tileWidth;
             ItemHeight = tileHeight;
 
-            ColorUnmodified = CCTypes.CCWhite;
+            ColorUnmodified = CCColor3B.White;
             IsOpacityModifyRGB = true;
 
             BlendFunc = CCBlendFunc.AlphaBlend; 

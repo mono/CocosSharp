@@ -32,7 +32,7 @@ namespace CocosSharp
 
                 if (_cascadeColorEnabled)
                 {
-                    var parentColor = CCTypes.CCWhite;
+                    var parentColor = CCColor3B.White;
                     var parent = m_pParent as ICCColor;
                     if (parent != null && parent.IsColorCascaded)
                     {
@@ -96,8 +96,8 @@ namespace CocosSharp
         {
             _displayedOpacity = 255;
             _realOpacity = 255;
-            _displayedColor = CCTypes.CCWhite;
-            _realColor = CCTypes.CCWhite;
+            _displayedColor = CCColor3B.White;
+            _realColor = CCColor3B.White;
             _cascadeColorEnabled = false;
             _cascadeOpacityEnabled = false;
         }

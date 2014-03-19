@@ -81,7 +81,7 @@ namespace tests
             sp9.VertexZ = -400;
 
             sp9.Scale = 2;
-            sp9.Color = CCTypes.CCYellow;
+            sp9.Color = CCColor3B.Yellow;
         }
 
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
@@ -155,7 +155,7 @@ namespace tests
             sprite.Opacity = 182;
             //sprite.IsFlipY = true;
             AddChild(sprite, 999999);
-            sprite.Color = CCTypes.CCGreen;
+            sprite.Color = CCColor3B.Green;
 
             sprite.RunAction(
                 new CCSequence(

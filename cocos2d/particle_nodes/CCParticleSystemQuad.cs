@@ -236,7 +236,7 @@ namespace CocosSharp
                 newPosition.Y += m_obPosition.Y;
             }
 
-            CCColor4B color;
+            CCColor4B color = new CCColor4B();
             
             if(OpacityModifyRGB)
             {

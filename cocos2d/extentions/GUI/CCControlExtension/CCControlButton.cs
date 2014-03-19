@@ -567,7 +567,7 @@ namespace CocosSharp
                     return color;
                 }
             }
-            return CCTypes.CCWhite;
+            return CCColor3B.White;
         }
 
         /**
