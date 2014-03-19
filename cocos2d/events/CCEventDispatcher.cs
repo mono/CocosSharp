@@ -1,6 +1,6 @@
 ﻿
 // used for testing
-#define DUMP_LISTENER_ITEM_PRIORITY_INFO
+//#define DUMP_LISTENER_ITEM_PRIORITY_INFO
 
 
 using System;

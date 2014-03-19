@@ -11,7 +11,8 @@ namespace tests
 
 	public enum EventDispatchTests
 	{
-		EVENT_MOUSE = 0,
+		TOUCHABLE_SPRITE_TEST = 0,
+		EVENT_MOUSE,
 		TEST_LABEL_KEYBOARD,
 		TEST_ACCELEROMETER,
 		TEST_CASE_COUNT
@@ -30,6 +31,9 @@ namespace tests
 
 			switch (index)
 			{
+			case (int) EventDispatchTests.TOUCHABLE_SPRITE_TEST:
+				testLayer = new TouchableSpriteTest();
+				break;
 			case (int) EventDispatchTests.EVENT_MOUSE:
 				testLayer = new MouseEventTest();
 				break;
@@ -353,5 +357,93 @@ namespace tests
 		}
 
 	}
+
+	public class TouchableSpriteTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var sprite1 = new CCSprite("Images/CyanSquare.png");
+			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+			AddChild(sprite1, 10);
+
+			var sprite2 = new CCSprite("Images/MagentaSquare.png");
+			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+			AddChild(sprite2, 20);
+
+			var sprite3 = new CCSprite("Images/YellowSquare.png");
+			sprite3.Position = CCPoint.Zero;
+			sprite2.AddChild(sprite3, 1);
+
+
+			// Make sprite1 touchable
+			var listener1 = new CCEventListenerTouchOneByOne ();
+			listener1.IsSwallowTouches = true;
+
+			listener1.OnTouchBegan = (touch, touchEvent) => 
+			{
+				var target = (CCSprite)touchEvent.CurrentTarget;
+
+				var locationInNode = target.ConvertToNodeSpace(touch.Location);
+				var s = target.ContentSize;
+				CCRect rect = new CCRect(0, 0, s.Width, s.Height);
+
+				if (rect.ContainsPoint(locationInNode))
+				{
+					CCLog.Log("sprite began... x = {0}, y = {1}", locationInNode.X, locationInNode.Y);
+					target.Opacity = 180;
+					return true;
+				}
+				return false;
+			};
+
+			listener1.OnTouchMoved = (touch, touchEvent) => 
+			{
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				target.Position += touch.Delta;
+			};
+
+			listener1.OnTouchEnded = (touch, touchEvent) => 
+			{
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				CCLog.Log("sprite onTouchesEnded.. ");
+				target.Opacity = 255;
+				if (target == sprite2)
+				{
+					sprite1.LocalZOrder = 100;
+				}
+				else if(target == sprite1)
+				{
+					sprite1.LocalZOrder = 0;
+				}
+			};
+
+
+
+			EventDispatcher.AddEventListener(listener1, sprite1);
+		}
+
+		public override void OnExit ()
+		{
+			base.OnExit ();
+
+		}
+		public override string title()
+		{
+			return "Touchable Sprite Test";
+		}
+
+		public override string subtitle()
+		{
+			return "Please drag the blocks";
+		}
+
+	}
+
 
 }

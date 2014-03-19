@@ -2490,6 +2490,27 @@
     <Content Include="Assets\Content\fonts\MarkerFelt-32.xnb">
       <Link>Content\fonts\MarkerFelt-32.xnb</Link>
     </Content>
+    <Content Include="Assets\Content\Images\CyanSquare.xnb">
+      <Link>Content\Images\CyanSquare.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\CyanTriangle.xnb">
+      <Link>Content\Images\CyanTriangle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\MagentaSquare.xnb">
+      <Link>Content\Images\MagentaSquare.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\Images\YellowTriangle.xnb">
+      <Link>Content\Images\YellowTriangle.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\hd\Images\CyanSquare.xnb">
+      <Link>Content\hd\Images\CyanSquare.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\hd\Images\MagentaSquare.xnb">
+      <Link>Content\hd\Images\MagentaSquare.xnb</Link>
+    </Content>
+    <Content Include="Assets\Content\hd\Images\YellowSquare.xnb">
+      <Link>Content\hd\Images\YellowSquare.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2532,6 +2553,9 @@
     </None>
     <None Include="Assets\Content\fonts\tahoma.ttf">
       <Link>Content\fonts\tahoma.ttf</Link>
+    </None>
+    <None Include="Assets\Content\Images\YellowSquare.xnb">
+      <Link>Content\Images\YellowSquare.xnb</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
