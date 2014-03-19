@@ -1,6 +1,6 @@
 ﻿
 // used for testing
-#define DUMP_LISTENER_ITEM_PRIORITY_INFO2
+#define DUMP_LISTENER_ITEM_PRIORITY_INFO
 
 
 using System;
@@ -26,8 +26,6 @@ namespace CocosSharp
 
     public class CCEventDispatcher
     {
-
-        CCEventListenerVector eventListeners;
 
         /// <summary>
         /// The listeners to be added after dispatching event
@@ -78,7 +76,6 @@ namespace CocosSharp
         /// </summary>
         public CCEventDispatcher()
         {
-            eventListeners = new CCEventListenerVector();
             toBeAddedListeners = new List<CCEventListener>(50);
 
             listenerMap = new Dictionary<string, CCEventListenerVector>();
@@ -185,21 +182,19 @@ namespace CocosSharp
 			for (int x = 0; x < listeners.Count; x++)
 			{
 				var l = listeners [x];
-				if (l == listener) 
-				{
+				if (l == listener) {
 					l.IsRegistered = false;
-				}
-				if (l.SceneGraphPriority != null) 
-				{
-					DissociateNodeAndEventListener (l.SceneGraphPriority, l);
-				}
+				
+					if (l.SceneGraphPriority != null) {
+						DissociateNodeAndEventListener (l.SceneGraphPriority, l);
+					}
 
-				if (inDispatch == 0) 
-				{
-					listeners.Remove (l);
-				}
+					if (inDispatch == 0) {
+						listeners.Remove (l);
+					}
 
-				return true;
+					return true;
+				}
 			}
 			return false;
 		}
@@ -215,38 +210,16 @@ namespace CocosSharp
 
 			bool isFound = false;
 
-//			var removeListenerInVector = [&](std::vector<EventListener*>* listeners){
-//				if (listeners == null)
-//					return;
-//
-//				for (auto iter = listeners->begin(); iter != listeners->end(); ++iter)
-//				{
-//					auto l = *iter;
-//					if (l == listener)
-//					{
-//						CC_SAFE_RETAIN(l);
-//						l->setRegistered(false);
-//						if (l->getSceneGraphPriority() != nullptr)
-//						{
-//							dissociateNodeAndEventListener(l->getSceneGraphPriority(), l);
-//						}
-//
-//						if (_inDispatch == 0)
-//						{
-//							listeners->erase(iter);
-//							CC_SAFE_RELEASE(l);
-//						}
-//
-//						isFound = true;
-//						break;
-//					}
-//				}
-//			};
-//
+#if DUMP_LISTENER_ITEM_PRIORITY_INFO
+			CCLog.Log("-----  Remove > " + listener + " -----------------------");
+#endif
+
 			var listenerIds = listenerMap.Keys;
+
 			foreach (var listenerId in listenerIds)
 			{
 				var listeners = listenerMap [listenerId];
+				//var listeners = iter.Value;
 				var fixedPriorityListeners = listeners.FixedPriorityListeners;
 				var sceneGraphPriorityListeners = listeners.SceneGraphPriorityListeners;
 
@@ -267,24 +240,16 @@ namespace CocosSharp
 
 				if (listeners.IsEmpty)
 				{
-					priorityDirtyFlagMap.Remove(listenerId);
-					var list = listeners;
+					priorityDirtyFlagMap.Remove (listenerId);
 					listenerMap.Remove (listenerId);
-					//listeners = listenerMap.erase(iter);
-					//					CC_SAFE_DELETE(list);
 				}
-//				else
-//				{
-//					++iter;
-//				}
-//
+
 				if (isFound)
 					break;
 			}
 
 			if (isFound)
 			{
-				//CC_SAFE_RELEASE(listener);
 				listener.Dispose ();
 			}
 			else
@@ -344,24 +309,13 @@ namespace CocosSharp
 
 			if (nodeListenersMap.ContainsKey(target))
             {
-				#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-				CCLog.Log("-----  Remove > " + target + " -----------------------");
-//							foreach (var l in sceneGraphListeners)
-//							{
-//								if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-//									Console.WriteLine("listener priority: node [{0}], priority {1}", l.SceneGraphPriority, nodePriorityMap[l.SceneGraphPriority]);
-//							}
-				#endif
-				var listeners2 = nodeListenersMap[target];
-				var listenersCopy2 = new CCEventListener[listeners2.Count];
-				listeners2.CopyTo(listenersCopy2);
-				var listeners = nodeListenersMap [target];
-				for (int x = 0; x < listeners.Count; x++)
+				var nodeListeners = nodeListenersMap[target];
+				var listenersCopy2 = new CCEventListener[nodeListeners.Count];
+				nodeListeners.CopyTo(listenersCopy2);
+
+				for (int x = 0; x < listenersCopy2.Length; x++)
                 {
-					var listener = listeners [x];
-					#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-					CCLog.Log("-----  Remove > " + listener + " -----------------------");
-					#endif
+					var listener = listenersCopy2 [x];
                     RemoveEventListener(listener);
                 }
             }
@@ -957,8 +911,8 @@ namespace CocosSharp
 			{
 				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
                     CCLog.Log("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, nodePriorityMap[l.SceneGraphPriority], l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
-				else
-                    CCLog.Log("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1, l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
+//				else
+//                    CCLog.Log("listener priority: node ({0}[{1}]), priority {2}, localZ {3}, globalZ {4}", l.SceneGraphPriority, l.SceneGraphPriority.Name, -1, l.SceneGraphPriority.LocalZOrder, l.SceneGraphPriority.GlobalZOrder);
 			}
 #endif
         }

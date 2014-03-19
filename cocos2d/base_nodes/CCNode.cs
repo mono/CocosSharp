@@ -713,7 +713,8 @@ namespace CocosSharp
 				for (int i = 0, count = m_pChildren.count; i < count; i++)
 				{
 					elements[i].OnExit();
-					eventDispatcher.RemoveEventListeners (elements [i]);
+					//eventDispatcher.RemoveEventListeners (elements [i]);
+					elements [i].Dispose ();
 					elements [i].Parent = null;
 				}
 			}
