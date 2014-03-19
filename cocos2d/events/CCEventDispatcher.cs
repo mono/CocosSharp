@@ -1,6 +1,6 @@
 ﻿
 // used for testing
-#define DUMP_LISTENER_ITEM_PRIORITY_INFO
+#define DUMP_LISTENER_ITEM_PRIORITY_INFO2
 
 
 using System;
@@ -143,9 +143,7 @@ namespace CocosSharp
 
 			if (!listener.IsAvailable)
 				return;
-			#if DUMP_LISTENER_ITEM_PRIORITY_INFO
-			CCLog.Log("-----  Add > " + node + " --  Available > " + listener.IsAvailable + " ---------------------");
-			#endif
+
 			listener.SceneGraphPriority = node;
 			listener.FixedPriority = 0;
 			listener.IsRegistered = true;
@@ -184,8 +182,9 @@ namespace CocosSharp
 			if (listeners == null)
 				return false;
 
-			foreach (var l in listeners) 
+			for (int x = 0; x < listeners.Count; x++)
 			{
+				var l = listeners [x];
 				if (l == listener) 
 				{
 					l.IsRegistered = false;
@@ -244,9 +243,10 @@ namespace CocosSharp
 //				}
 //			};
 //
-			foreach (var listeners in listenerMap.Values)
+			var listenerIds = listenerMap.Keys;
+			foreach (var listenerId in listenerIds)
 			{
-				//				var listeners = iter->second;
+				var listeners = listenerMap [listenerId];
 				var fixedPriorityListeners = listeners.FixedPriorityListeners;
 				var sceneGraphPriorityListeners = listeners.SceneGraphPriorityListeners;
 
@@ -267,9 +267,9 @@ namespace CocosSharp
 
 				if (listeners.IsEmpty)
 				{
-					priorityDirtyFlagMap.Remove(listener.ListenerID);
+					priorityDirtyFlagMap.Remove(listenerId);
 					var list = listeners;
-					listenerMap.Remove (listener.ListenerID);
+					listenerMap.Remove (listenerId);
 					//listeners = listenerMap.erase(iter);
 					//					CC_SAFE_DELETE(list);
 				}
@@ -289,12 +289,14 @@ namespace CocosSharp
 			}
 			else
 			{
-				foreach (var iter in toBeAddedListeners)
+				for (int iter = 0; iter < toBeAddedListeners.Count; iter++)
 				{
-					if (iter == listener)
+					var l = toBeAddedListeners [iter];
+
+					if (l == listener)
 					{
 						listener.Dispose ();
-						toBeAddedListeners.Remove(iter);
+						toBeAddedListeners.Remove(l);
 						break;
 					}
 				}
@@ -344,17 +346,22 @@ namespace CocosSharp
             {
 				#if DUMP_LISTENER_ITEM_PRIORITY_INFO
 				CCLog.Log("-----  Remove > " + target + " -----------------------");
-				//			foreach (var l in sceneGraphListeners)
-				//			{
-				//				if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
-				//					Console.WriteLine("listener priority: node [{0}], priority {1}", l.SceneGraphPriority, nodePriorityMap[l.SceneGraphPriority]);
-				//			}
+//							foreach (var l in sceneGraphListeners)
+//							{
+//								if (nodePriorityMap.ContainsKey(l.SceneGraphPriority))
+//									Console.WriteLine("listener priority: node [{0}], priority {1}", l.SceneGraphPriority, nodePriorityMap[l.SceneGraphPriority]);
+//							}
 				#endif
-				var listeners = nodeListenersMap[target];
-				var listenersCopy = new CCEventListener[listeners.Count];
-				listeners.CopyTo(listenersCopy);
-				foreach (var listener in listenersCopy)
+				var listeners2 = nodeListenersMap[target];
+				var listenersCopy2 = new CCEventListener[listeners2.Count];
+				listeners2.CopyTo(listenersCopy2);
+				var listeners = nodeListenersMap [target];
+				for (int x = 0; x < listeners.Count; x++)
                 {
+					var listener = listeners [x];
+					#if DUMP_LISTENER_ITEM_PRIORITY_INFO
+					CCLog.Log("-----  Remove > " + listener + " -----------------------");
+					#endif
                     RemoveEventListener(listener);
                 }
             }
@@ -519,7 +526,6 @@ namespace CocosSharp
 
 						touchEvent.CurrentTarget = listener.SceneGraphPriority;
 
-						var name = touchEvent.CurrentTarget.Name;
 						bool isClaimed = false;
 						var removed = new List<CCTouch>();
 
@@ -755,6 +761,9 @@ namespace CocosSharp
         {
             if (inDispatch == 0)
             {
+				#if DUMP_LISTENER_ITEM_PRIORITY_INFO
+				CCLog.Log("-----  Add > --  Available > " + listener.IsAvailable + " ------{0}------{1}---------", listener, listener.SceneGraphPriority);
+				#endif
                 ForceAddEventListener(listener);
             }
             else

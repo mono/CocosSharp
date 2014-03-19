@@ -443,7 +443,7 @@ namespace CocosSharp
 
         public void Pause(object sender)
         {
-            _container.PauseSchedulerAndActions();
+            _container.Pause();
 
             var pChildren = _container.Children;
 
@@ -451,7 +451,7 @@ namespace CocosSharp
             {
                 for (int i = 0; i < pChildren.count; i++)
                 {
-                    pChildren.Elements[i].PauseSchedulerAndActions();
+                    pChildren.Elements[i].Pause();
                 }
             }
         }

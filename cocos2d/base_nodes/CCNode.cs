@@ -699,12 +699,25 @@ namespace CocosSharp
 		{
 			if (disposing) 
 			{
-				// Dispose of managed resources
+
 			}
 
 			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
 			this.Cleanup();
+			// Dispose of managed resources
 			eventDispatcher.RemoveEventListeners (this);
+
+			if (m_pChildren != null && m_pChildren.count > 0)
+			{
+				CCNode[] elements = m_pChildren.Elements;
+				for (int i = 0, count = m_pChildren.count; i < count; i++)
+				{
+					elements[i].OnExit();
+					eventDispatcher.RemoveEventListeners (elements [i]);
+					elements [i].Parent = null;
+				}
+			}
+
 			eventDispatcher = null;
 		}
 
@@ -725,15 +738,16 @@ namespace CocosSharp
         {
             if (m_bCleaned == true)
             {
-                return;
+				return;
             }
+
+			//eventDispatcher.RemoveEventListeners (this);
+
             // actions
             StopAllActions();
 
             // timers
             UnscheduleAll();
-
-			//eventDispatcher.RemoveEventListeners (this);
 
             if (m_pChildren != null && m_pChildren.count > 0)
             {
@@ -1265,7 +1279,7 @@ namespace CocosSharp
                 application.GamePadTriggerUpdate -= m_OnGamePadTriggerUpdateDelegate;
             }
 
-            PauseSchedulerAndActions();
+            Pause();
 
             Running = false;
 
@@ -1462,7 +1476,7 @@ namespace CocosSharp
 			eventDispatcher.Resume (this);
         }
 
-        public void PauseSchedulerAndActions()
+        public void Pause()
         {
             m_pScheduler.PauseTarget(this);
             m_pActionManager.PauseTarget(this);

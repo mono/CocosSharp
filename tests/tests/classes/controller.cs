@@ -52,7 +52,7 @@ namespace tests
                 var pMenuItem = new CCMenuItemLabelTTF(label, menuCallback);
 
                 pMenuItem.UserData = i;
-                m_pItemMenu.AddChild(pMenuItem, 10000);
+				m_pItemMenu.AddChild(pMenuItem, i + 10000);
 #if XBOX || OUYA
                 pMenuItem.Position = new CCPoint(s.Width / 2, -(i + 1) * LINE_SPACE);
 #else
@@ -79,6 +79,24 @@ namespace tests
 
             AddChild(pMenu, 1);
 
+			// add listeners
+#if !XBOX && !OUYA
+			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+
+			EventDispatcher.AddEventListener(touchListener, this);
+
+			var mouseListener = new CCEventListenerMouse();
+			mouseListener.OnMouseScroll = onMouseScroll;
+			EventDispatcher.AddEventListener (mouseListener, this);
+
+#else
+			GamePadEnabled = true;
+			KeypadEnabled = true;
+#endif
+
             _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
             _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
 
@@ -86,50 +104,8 @@ namespace tests
             _CurrentItemIndex = 0;
             SelectMenuItem();
 
-#if !XBOX && !OUYA
-			var mouseListener = new CCEventListenerMouse();
-			mouseListener.OnMouseScroll = OnMouseScroll;
-			EventDispatcher.AddEventListener (mouseListener, this);
-
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-			touchListener.OnTouchesBegan = onTouchesBegan;
-			touchListener.OnTouchesMoved = onTouchesMoved;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-#else
-			GamePadEnabled = true;
-			KeypadEnabled = true;
-#endif
 
         }
-
-		void OnMouseScroll(CCEventMouse mouseEvent)
-		{
-
-			// Due to a bug in MonoGame the menu will jump around on Mac when hitting the top element
-			// https://github.com/mono/MonoGame/issues/2276
-			var delta = mouseEvent.ScrollY;
-
-			CCSize winSize = CCDirector.SharedDirector.WinSize;
-			var curPos = m_pItemMenu.Position;
-			var nextPos = curPos;
-			nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / LINE_SPACE;
-
-			if (nextPos.Y < 0) 
-			{
-				m_pItemMenu.Position = CCPoint.Zero;
-				return;
-			}
-
-			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
-			{
-				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
-				return;
-			}
-
-			m_pItemMenu.Position = nextPos;
-			s_tCurPos   = nextPos;
-		}
 
 
         private CCPoint _HomePosition;
@@ -260,16 +236,14 @@ namespace tests
             CCApplication.SharedApplication.Game.Exit();
         }
 
-		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
+		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
-            CCTouch touch = pTouches.FirstOrDefault();
-
             m_tBeginPos = touch.Location;
+			return true;
         }
 
-		void onTouchesMoved(List<CCTouch> pTouches, CCEvent touchEvent)
+		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
-            CCTouch touch = pTouches.FirstOrDefault();
 
             var touchLocation = touch.Location;
             float nMoveY = touchLocation.Y - m_tBeginPos.Y;
@@ -293,6 +267,35 @@ namespace tests
             m_tBeginPos = touchLocation;
             s_tCurPos = nextPos;
         }
+
+		void onMouseScroll(CCEventMouse mouseEvent)
+		{
+
+			// Due to a bug in MonoGame the menu will jump around on Mac when hitting the top element
+			// https://github.com/mono/MonoGame/issues/2276
+			var delta = mouseEvent.ScrollY;
+
+			CCSize winSize = CCDirector.SharedDirector.WinSize;
+			var curPos = m_pItemMenu.Position;
+			var nextPos = curPos;
+			nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / LINE_SPACE;
+
+			if (nextPos.Y < 0) 
+			{
+				m_pItemMenu.Position = CCPoint.Zero;
+				return;
+			}
+
+			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+			{
+				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+				return;
+			}
+
+			m_pItemMenu.Position = nextPos;
+			s_tCurPos   = nextPos;
+		}
+
 
         public static TestScene CreateTestScene(int nIdx)
         {
