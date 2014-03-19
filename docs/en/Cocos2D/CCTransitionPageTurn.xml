@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTransitionPageTurn : Cocos2D.CCTransitionScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionPageTurn extends Cocos2D.CCTransitionScene" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

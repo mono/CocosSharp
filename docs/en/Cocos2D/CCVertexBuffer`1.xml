@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCVertexBuffer&lt;T&gt; : Cocos2D.CCGraphicsResource where T : struct" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCVertexBuffer`1&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt; extends Cocos2D.CCGraphicsResource" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>

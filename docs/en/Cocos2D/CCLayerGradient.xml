@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCLayerGradient : Cocos2D.CCLayerColor" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerGradient extends Cocos2D.CCLayerColor" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

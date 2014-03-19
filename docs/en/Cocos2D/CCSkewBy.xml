@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCSkewBy : Cocos2D.CCSkewTo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewBy extends Cocos2D.CCSkewTo" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

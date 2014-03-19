@@ -58,9 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\box2d.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CocosSharp, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\cocos2d-xna.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\bin\WindowsGL\Debug\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class PlistInteger : Cocos2D.PlistObject&lt;int&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistInteger extends Cocos2D.PlistObject`1&lt;int32&gt;" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

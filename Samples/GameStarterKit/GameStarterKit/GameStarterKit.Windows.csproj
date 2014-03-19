@@ -64,8 +64,8 @@
     <Reference Include="box2d">
       <HintPath>..\..\..\cocos2d\bin\x86\Debug\box2d.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\cocos2d\bin\x86\Debug\cocos2d-xna.dll</HintPath>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\cocos2d\bin\x86\Debug\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\cocos2d\bin\x86\Debug\ICSharpCode.SharpZipLib.dll</HintPath>

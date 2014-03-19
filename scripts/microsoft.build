@@ -23,15 +23,15 @@
   </target>
 
   <target name="buildwindows" description="Build Windows" depends="clean">
-      <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.Windows.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.Windows.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.Windows.sln /t:Build /p:Configuration=Release" />
   </target>
 
   <target name="buildwindowsphone7" description="Build Windows Phone 7" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
-        <exec program="msbuild " commandline='cocos2d-xna.sln /t:Clean /p:Configuration=Release /p:Platform="Windows Phone"' />
-        <exec program="msbuild " commandline='cocos2d-xna.sln /t:Build /p:Configuration=Release /p:Platform="Windows Phone"' />
+        <exec program="msbuild " commandline='CocosSharp.sln /t:Clean /p:Configuration=Release /p:Platform="Windows Phone"' />
+        <exec program="msbuild " commandline='CocosSharp.sln /t:Build /p:Configuration=Release /p:Platform="Windows Phone"' />
       </if>
     </if>
   </target>
@@ -39,8 +39,8 @@
   <target name="buildxbox360" description="Build XBox 360" depends="clean">
     <if test="${os == 'Win32NT'}">
       <if test="${file::exists('c:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v4.0\Microsoft.Xna.GameStudio.Windows Phone.targets')}">
-        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
-        <exec program="msbuild " commandline='cocos2d-xna.XBox360.sln /t:Build /p:Configuration=Release /p:Platform="XBox 360"' />
+        <exec program="msbuild " commandline='CocosSharp.XBox360.sln /t:Clean /p:Configuration=Release /p:Platform="XBox 360"' />
+        <exec program="msbuild " commandline='CocosSharp.XBox360.sln /t:Build /p:Configuration=Release /p:Platform="XBox 360"' />
       </if>
     </if>
   </target>

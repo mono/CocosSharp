@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCCatmullRomBy : Cocos2D.CCCardinalSplineBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCatmullRomBy extends Cocos2D.CCCardinalSplineBy" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

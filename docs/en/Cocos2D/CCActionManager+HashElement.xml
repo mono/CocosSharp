@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="protected class CCActionManager.HashElement" />
   <TypeSignature Language="ILAsm" Value=".class nested protected auto ansi beforefieldinit CCActionManager/HashElement extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

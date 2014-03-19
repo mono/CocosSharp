@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTransitionFadeUp : Cocos2D.CCTransitionFadeTR" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionFadeUp extends Cocos2D.CCTransitionFadeTR" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTextFieldTTF : Cocos2D.CCLabelTTF, Cocos2D.ICCIMEDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextFieldTTF extends Cocos2D.CCLabelTTF implements class Cocos2D.ICCIMEDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

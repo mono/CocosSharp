@@ -61,8 +61,8 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\..\..\cocos2d\Bin\Windows\Release\cocos2d-xna.dll</HintPath>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\..\..\cocos2d\Bin\Windows\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\..\cocos2d\Bin\Windows\Release\ICSharpCode.SharpZipLib.dll</HintPath>

@@ -6,8 +6,8 @@ using System.Resources;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("cocos2d-xna")]
-[assembly: AssemblyProduct("cocos2d-xna")]
+[assembly: AssemblyTitle("CocosSharp")]
+[assembly: AssemblyProduct("CocosSharp")]
 
 #if OUYA
 [assembly: AssemblyDescription("Cocos2D-XNA for Ouya")]

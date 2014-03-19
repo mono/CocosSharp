@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTimer : Cocos2D.ICCSelectorProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTimer extends System.Object implements class Cocos2D.ICCSelectorProtocol" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

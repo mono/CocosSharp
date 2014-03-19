@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCV2F_C4B_T2F_Quad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCV2F_C4B_T2F_Quad extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

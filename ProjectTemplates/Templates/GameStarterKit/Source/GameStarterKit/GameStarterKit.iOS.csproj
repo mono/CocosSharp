@@ -106,9 +106,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\box2diOS.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna.iOS, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="CocosSharp.iOS, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\cocos2d-xna.iOS.dll</HintPath>
+      <HintPath>..\..\..\..\..\cocos2d\Bin\iPhone\Release\CocosSharp.iOS.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

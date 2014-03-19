@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCCardinalSplineTo : Cocos2D.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCardinalSplineTo extends Cocos2D.CCActionInterval" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

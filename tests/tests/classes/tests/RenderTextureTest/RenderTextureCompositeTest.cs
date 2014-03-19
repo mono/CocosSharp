@@ -8,7 +8,7 @@ namespace tests
 {
     /// <summary>
     /// This test exercised code form user Arkiliknam, (c) by "Arkiliknam" 2013. Please see:
-    /// https://cocos2dxna.codeplex.com/discussions/438585
+    /// https://github.com/mono/CocosSharp/discussions/438585
     /// </summary>
     public class RenderTextureCompositeTest : RenderTextureTestDemo
     {

@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCInputScene : Cocos2D.CCScene, Cocos2D.ICCAccelerometerDelegate, Cocos2D.ICCKeypadDelegate, Cocos2D.ICCStandardTouchDelegate, Cocos2D.ICCTargetedTouchDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCInputScene extends Cocos2D.CCScene implements class Cocos2D.ICCAccelerometerDelegate, class Cocos2D.ICCKeypadDelegate, class Cocos2D.ICCStandardTouchDelegate, class Cocos2D.ICCTargetedTouchDelegate, class Cocos2D.ICCTouchDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

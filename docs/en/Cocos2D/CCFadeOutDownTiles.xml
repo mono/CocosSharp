@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCFadeOutDownTiles : Cocos2D.CCFadeOutUpTiles" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutDownTiles extends Cocos2D.CCFadeOutUpTiles" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

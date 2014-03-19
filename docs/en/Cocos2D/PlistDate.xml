@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class PlistDate : Cocos2D.PlistObject&lt;DateTime&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistDate extends Cocos2D.PlistObject`1&lt;valuetype System.DateTime&gt;" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

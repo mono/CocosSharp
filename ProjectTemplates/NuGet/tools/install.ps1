@@ -1,6 +1,6 @@
 param($installPath, $toolsPath, $package, $project)
 
-$allowedReferences = @("cocos2d-xna","box2d","ICSharpCode.SharpZipLib","MonoGame.Framework")
+$allowedReferences = @("CocosSharp","box2d","ICSharpCode.SharpZipLib","MonoGame.Framework")
 
 write-host "Running install.ps1 for $package"
 

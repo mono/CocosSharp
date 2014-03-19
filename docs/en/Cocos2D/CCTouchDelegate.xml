@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTouchDelegate : Cocos2D.ICCTouchDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDelegate extends System.Object implements class Cocos2D.ICCTouchDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

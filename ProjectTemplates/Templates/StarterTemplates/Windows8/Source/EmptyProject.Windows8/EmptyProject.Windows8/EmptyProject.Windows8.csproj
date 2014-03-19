@@ -124,8 +124,8 @@
     <Reference Include="box2d">
       <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\box2d.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\cocos2d-xna.dll</HintPath>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\Windows8\Release\ICSharpCode.SharpZipLib.dll</HintPath>

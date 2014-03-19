@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCScaleBy : Cocos2D.CCScaleTo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScaleBy extends Cocos2D.CCScaleTo" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

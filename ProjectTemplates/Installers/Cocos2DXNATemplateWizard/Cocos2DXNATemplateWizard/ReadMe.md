@@ -6,7 +6,7 @@ and Web projects, so that references and links may be specified.
 This assembly must be signed.
 
 Generate a test template.
-cocos2d-xna\ProjectTemplates\Installers\Cocos2DXNATemplateWizard\Cocos2DXNATemplateWizard\bin\Release>sn -T Cocos2DXNATemplateWizard.dll
+CocosSharp\ProjectTemplates\Installers\Cocos2DXNATemplateWizard\Cocos2DXNATemplateWizard\bin\Release>sn -T Cocos2DXNATemplateWizard.dll
 
 
-Cocos2DSNATemplate.pfx - password is cocos2d-xna
+Cocos2DSNATemplate.pfx - password is CocosSharp

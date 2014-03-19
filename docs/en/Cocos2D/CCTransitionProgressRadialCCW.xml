@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTransitionProgressRadialCCW : Cocos2D.CCTransitionProgress" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionProgressRadialCCW extends Cocos2D.CCTransitionProgress" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public abstract class CCReusedObject&lt;T&gt; where T : CCReusedObject&lt;T&gt;new()" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCReusedObject`1&lt;.ctor (class Cocos2D.CCReusedObject`1&lt;!T&gt;) T&gt; extends System.Object" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <TypeParameters>

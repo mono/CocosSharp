@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public interface ICCStandardTouchDelegate : Cocos2D.ICCTouchDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCStandardTouchDelegate implements class Cocos2D.ICCTouchDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>

@@ -26,4 +26,4 @@ Execute the following:
 msbuild GameStarterKitInstaller.sln /p:Configuration=Release
 
 Example:
-cocos2d-xna\ProjectTemplates\GameStarterKit\VSIX\GameStarterKitInstaller>msbuild GameStarterKitInstaller.sln /p:Configuration=Release
+CocosSharp\ProjectTemplates\GameStarterKit\VSIX\GameStarterKitInstaller>msbuild GameStarterKitInstaller.sln /p:Configuration=Release
