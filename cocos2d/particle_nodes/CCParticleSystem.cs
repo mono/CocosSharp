@@ -396,28 +396,28 @@ namespace CocosSharp
             blendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
             BlendFunc = blendFunc;
 
-            CCColor4F startColor;
+            CCColor4F startColor = new CCColor4F();
             startColor.R = dictionary["startColorRed"].AsFloat;
             startColor.G = dictionary["startColorGreen"].AsFloat;
             startColor.B = dictionary["startColorBlue"].AsFloat;
             startColor.A = dictionary["startColorAlpha"].AsFloat;
             StartColor = startColor;
 
-            CCColor4F startColorVar;
+            CCColor4F startColorVar = new CCColor4F();
             startColorVar.R = dictionary["startColorVarianceRed"].AsFloat;
             startColorVar.G = dictionary["startColorVarianceGreen"].AsFloat;
             startColorVar.B = dictionary["startColorVarianceBlue"].AsFloat;
             startColorVar.A = dictionary["startColorVarianceAlpha"].AsFloat;
             StartColorVar = startColorVar;
 
-            CCColor4F endColor;
+            CCColor4F endColor = new CCColor4F();
             endColor.R = dictionary["finishColorRed"].AsFloat;
             endColor.G = dictionary["finishColorGreen"].AsFloat;
             endColor.B = dictionary["finishColorBlue"].AsFloat;
             endColor.A = dictionary["finishColorAlpha"].AsFloat;
             EndColor = endColor;
 
-            CCColor4F endColorVar;
+            CCColor4F endColorVar = new CCColor4F();
             endColorVar.R = dictionary["finishColorVarianceRed"].AsFloat;
             endColorVar.G = dictionary["finishColorVarianceGreen"].AsFloat;
             endColorVar.B = dictionary["finishColorVarianceBlue"].AsFloat;
@@ -614,20 +614,20 @@ namespace CocosSharp
             position.Y = SourcePosition.Y + PositionVar.Y * CCRandom.Float_Minus1_1();
             particle.Position = position;
 
-            CCColor4F start;
+            CCColor4F start = new CCColor4F();
             start.R = MathHelper.Clamp(StartColor.R + StartColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
             start.G = MathHelper.Clamp(StartColor.G + StartColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
             start.B = MathHelper.Clamp(StartColor.B + StartColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
             start.A = MathHelper.Clamp(StartColor.A + StartColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
             particle.Color = start;
 
-            CCColor4F end;
+            CCColor4F end = new CCColor4F();
             end.R = MathHelper.Clamp(EndColor.R + EndColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
             end.G = MathHelper.Clamp(EndColor.G + EndColorVar.G * CCRandom.Float_Minus1_1(), 0, 1);
             end.B = MathHelper.Clamp(EndColor.B + EndColorVar.B * CCRandom.Float_Minus1_1(), 0, 1);
             end.A = MathHelper.Clamp(EndColor.A + EndColorVar.A * CCRandom.Float_Minus1_1(), 0, 1);
 
-            CCColor4F deltaColor;
+            CCColor4F deltaColor = new CCColor4F();
             deltaColor.R = (end.R - start.R) / timeToLive;
             deltaColor.G = (end.G - start.G) / timeToLive;
             deltaColor.B = (end.B - start.B) / timeToLive;

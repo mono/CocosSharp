@@ -33,6 +33,8 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    #region Colors
+
     /// <summary>
     /// RGB color composed of bytes 3 bytes
     /// @since v0.8
@@ -228,7 +230,15 @@ namespace CocosSharp
     /// </summary>
     public struct CCColor4F
     {
-        public CCColor4F(float inr, float ing, float inb, float ina)
+        public float R { get; set; }
+        public float G { get; set; }
+        public float B { get; set; }
+        public float A { get; set; }
+
+
+        #region Constructors
+
+        public CCColor4F(float inr, float ing, float inb, float ina) : this()
         {
             R = inr;
             G = ing;
@@ -244,10 +254,8 @@ namespace CocosSharp
         {
         }
 
-        public float R;
-        public float G;
-        public float B;
-        public float A;
+        #endregion Constructors
+
 
         public override string ToString()
         {
@@ -260,11 +268,14 @@ namespace CocosSharp
             return (new CCColor4F(float.Parse(f[0]), float.Parse(f[1]), float.Parse(f[2]), float.Parse(f[3])));
         }
 
+
+        #region Operators
+
         public static implicit operator Color(CCColor4F point)
         {
             return new Color(point.R, point.G, point.B, point.A);
         }
-            
+
         public static bool operator ==(CCColor4F a, CCColor4F b)
         {
             return a.R == b.R && a.G == b.G && a.B == b.B && a.A == b.A;
@@ -274,7 +285,35 @@ namespace CocosSharp
         {
             return a.R != b.R || a.G != b.G || a.B != b.B || a.A != b.A;
         }
+
+        public override int GetHashCode()
+        {
+            // Components should be clamped between 0.0f and 1.0f
+            // Therefore scale them up to get an int between 0 and 400
+            float scaledSum = (R + G + B + A) * 100.0f;
+            return (int)scaledSum;
+        }
+
+        public override bool Equals(object obj)        
+        {            
+            if (!(obj is CCColor4F))                
+                return false;             
+
+            return Equals((CCColor4F)obj);        
+        }         
+
+        public bool Equals(CCColor4F other)        
+        {            
+            return this == other;       
+        } 
+
+        #endregion Operators
     }
+
+    #endregion Colors
+
+
+    #region Vertices
 
     /// <summary>
     /// A vertex composed of 2 floats: x, y
@@ -282,22 +321,23 @@ namespace CocosSharp
     /// </summary>
     public struct CCVertex2F
     {
-        /*
-        public ccVertex2F()
-        {
-            x = 0.0f;
-            y = 0.0f;
-        }
-        */
+        public float X { get; set; }
+        public float Y { get; set; }
 
-        public CCVertex2F(float inx, float iny)
+
+        #region Constructors
+
+        public CCVertex2F(float inx, float iny) : this()
         {
             X = inx;
             Y = iny;
         }
 
-        public float X;
-        public float Y;
+        public CCVertex2F(CCVertex3F ver3) : this(ver3.X, ver3.Y)
+        {
+        }
+
+        #endregion Constructors
     }
 
     /// <summary>
@@ -308,22 +348,33 @@ namespace CocosSharp
     {
         public static readonly CCVertex3F Zero = new CCVertex3F();
 
-        public CCVertex3F(float inx, float iny, float inz)
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+
+
+        #region Constructors
+        
+        public CCVertex3F(float inx, float iny, float inz) : this()
         {
             X = inx;
             Y = iny;
             Z = inz;
         }
 
-        public float X;
-        public float Y;
-        public float Z;
+        #endregion Constructors
+
 
         public override string ToString()
         {
-            return String.Format("ccVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
+            return String.Format("CCVertex3F x:{0}, y:{1}, z:{2}", X, Y, Z);
         }
     }
+
+    #endregion Vertices
+
+
+    #region Tex coords
 
     /// <summary>
     /// A texcoord composed of 2 floats: u, y
@@ -331,27 +382,25 @@ namespace CocosSharp
     /// </summary>
     public struct CCTex2F
     {
-        /*
-        public ccTex2F()
-        {
-            u = 0.0f;
-            v = 0.0f;
-        }
-        */
-        public CCTex2F(float inu, float inv)
+        public float U { get; set; }
+        public float V { get; set; }
+
+        public CCTex2F(float inu, float inv) : this()
         {
             U = inu;
             V = inv;
         }
 
-        public float U;
-        public float V;
-
         public override string ToString()
         {
-            return String.Format("ccTex2F u:{0}, v:{1}", U, V);
+            return String.Format("CCTex2F u:{0}, v:{1}", U, V);
         }
     }
+
+    #endregion Tex coords
+
+
+
 
     /// <summary>
     /// Point Sprite component

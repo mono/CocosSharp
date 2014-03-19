@@ -97,28 +97,28 @@ namespace CocosSharp
             EmitterMode = CCEmitterMode.Gravity;
             EmissionRate = TotalParticles / Life;
 
-            CCColor4F startColor;
+            CCColor4F startColor = new CCColor4F();
             startColor.R = 0.76f;
             startColor.G = 0.25f;
             startColor.B = 0.12f;
             startColor.A = 1.0f;
             StartColor = startColor;
 
-            CCColor4F startColorVar;
+            CCColor4F startColorVar = new CCColor4F();
             startColorVar.R = 0.0f;
             startColorVar.G = 0.0f;
             startColorVar.B = 0.0f;
             startColorVar.A = 0.0f;
             StartColorVar = startColorVar;
 
-            CCColor4F endColor;
+            CCColor4F endColor = new CCColor4F();
             endColor.R = 0.0f;
             endColor.G = 0.0f;
             endColor.B = 0.0f;
             endColor.A = 1.0f;
             EndColor = endColor;
 
-            CCColor4F endColorVar;
+            CCColor4F endColorVar = new CCColor4F();
             endColorVar.R = 0.0f;
             endColorVar.G = 0.0f;
             endColorVar.B = 0.0f;
@@ -163,21 +163,21 @@ namespace CocosSharp
 
             StartColor = new CCColor4F (0.5f, 0.5f, 0.5f, 1.0f);
 
-            CCColor4F startColorVar;
+            CCColor4F startColorVar = new CCColor4F();
             startColorVar.R = 0.5f;
             startColorVar.G = 0.5f;
             startColorVar.B = 0.5f;
             startColorVar.A = 0.1f;
             StartColorVar = startColorVar;
 
-            CCColor4F endColor;
+            CCColor4F endColor = new CCColor4F();
             endColor.R = 0.1f;
             endColor.G = 0.1f;
             endColor.B = 0.1f;
             endColor.A = 0.2f;
             EndColor = endColor;
 
-            CCColor4F endColorVar;
+            CCColor4F endColorVar = new CCColor4F();
             endColorVar.R = 0.1f;
             endColorVar.G = 0.1f;
             endColorVar.B = 0.1f;

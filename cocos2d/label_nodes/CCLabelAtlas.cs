@@ -109,7 +109,7 @@ namespace CocosSharp
 #endif
                 // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
-                CCV3F_C4B_T2F_Quad quad;
+                CCV3F_C4B_T2F_Quad quad = new CCV3F_C4B_T2F_Quad();
               
                 quad.TopLeft.TexCoords.U = left;
                 quad.TopLeft.TexCoords.V = top;
