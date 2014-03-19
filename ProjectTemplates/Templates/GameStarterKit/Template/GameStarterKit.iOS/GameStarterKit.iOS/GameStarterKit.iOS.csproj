@@ -96,8 +96,8 @@
     <Reference Include="box2diOS">
       <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\box2diOS.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna.iOS">
-      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\cocos2d-xna.iOS.dll</HintPath>
+    <Reference Include="CocosSharp.iOS">
+      <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\CocosSharp.iOS.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\..\..\..\..\cocos2d\bin\iPhone\Release\ICSharpCode.SharpZipLib.dll</HintPath>

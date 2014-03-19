@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCControl : Cocos2D.CCLayerRGBA" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControl extends Cocos2D.CCLayerRGBA" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

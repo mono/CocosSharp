@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCLabelBMFont : Cocos2D.CCSpriteBatchNode, Cocos2D.ICCLabelProtocol, Cocos2D.ICCRGBAProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends Cocos2D.CCSpriteBatchNode implements class Cocos2D.ICCLabelProtocol, class Cocos2D.ICCRGBAProtocol" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

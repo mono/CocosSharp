@@ -1,6 +1,6 @@
 SetCompressor /SOLID /FINAL lzma
 
-!define FrameworkPath "C:\Users\Jacob Anderson\Documents\GitHub\cocos2d-xna"
+!define FrameworkPath "C:\Users\Jacob Anderson\Documents\GitHub\CocosSharp"
 !define VERSION "3.0"
 !define REVISION "0.0"
 !define INSTALLERFILENAME "Cocos2dXNA"
@@ -211,7 +211,7 @@ Section "Start Menu Shortcuts" Menu
 	CreateShortCut "$SMPROGRAMS\Cocos2D XNA\Uninstall.lnk" "$PROGRAMFILES\${APPNAME}\v${VERSION}\uninstall.exe" "" "$PROGRAMFILES\${APPNAME}\v${VERSION}\uninstall.exe" 0
 	;CreateShortCut "$SMPROGRAMS\Cocos2D XNA\GettingStarted.lnk" "$PROGRAMFILES\${APPNAME}\v${VERSION}\GettingStarted.pdf" "" "$PROGRAMFILES\${APPNAME}\v${VERSION}\GettingStarted.pdf" 0
 	CreateShortCut "$SMPROGRAMS\Cocos2D XNA\Templates.lnk" "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA" "" "$DOCUMENTS\Visual Studio 2010\Templates\ProjectTemplates\Visual C#\Cocos2D-XNA" 0
-	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "URL" "http://cocos2dxna.codeplex.com"
+	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "URL" "http://github.com/mono/CocosSharp"
 	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "IconFile" "$PROGRAMFILES\${APPNAME}\v${VERSION}\Icon.ico"
 	WriteINIStr "$SMPROGRAMS\Cocos2D XNA\Project Web Site.url" "InternetShortcut" "IconIndex" "0"
 

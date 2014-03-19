@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="cocos2d-xna" Version="2.0.3.0">
+    <Assembly Name="CocosSharp" Version="2.0.3.0">
       <Attributes>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyCompany("Open Source Software Provided As-Is")</AttributeName>
@@ -12,10 +12,10 @@
           <AttributeName>System.Reflection.AssemblyDescription("")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyProduct("cocos2d-xna")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyProduct("CocosSharp")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyTitle("cocos2d-xna")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyTitle("CocosSharp")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyTrademark("")</AttributeName>
@@ -482,7 +482,7 @@
       <Type Name="CCSimpleAudioEngine" Kind="Class" />
     </Namespace>
   </Types>
-  <Title>cocos2d-xna</Title>
+  <Title>CocosSharp</Title>
   <ExtensionMethods>
     <ExtensionMethod>
       <Targets>

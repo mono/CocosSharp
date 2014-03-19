@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCParticleMeteor : Cocos2D.CCParticleSystemQuad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleMeteor extends Cocos2D.CCParticleSystemQuad" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

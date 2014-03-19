@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class PlistBoolean : Cocos2D.PlistObject&lt;bool&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistBoolean extends Cocos2D.PlistObject`1&lt;bool&gt;" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

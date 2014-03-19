@@ -4,6 +4,6 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>C:\Xamarin\cocos2d-xna\ProjectTemplates\Templates\ContentBuilder\Source\Cocos2DContentBuilder\Cocos2DContentBuilder\Content\fonts\MarkerFelt-22.spritefont</File>
+    <File>C:\Xamarin\CocosSharp\ProjectTemplates\Templates\ContentBuilder\Source\Cocos2DContentBuilder\Cocos2DContentBuilder\Content\fonts\MarkerFelt-22.spritefont</File>
   </SourceFiles>
 </SourceFileCollection>

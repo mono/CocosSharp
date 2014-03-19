@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public abstract class CCApplication : Microsoft.Xna.Framework.DrawableGameComponent" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCApplication extends Microsoft.Xna.Framework.DrawableGameComponent" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

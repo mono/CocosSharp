@@ -90,26 +90,26 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="box2diOS">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\box2diOS.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\box2diOS.dll</HintPath>
     </Reference>
-    <Reference Include="cocos2d-xna">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\cocos2d-xna.dll</HintPath>
+    <Reference Include="CocosSharp">
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\Lidgren.Network.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
     <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\..\cocos2d-xna\cocos2d\Bin\iPhoneSimulator\Release\zlib.net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\CocosSharp\cocos2d\Bin\iPhoneSimulator\Release\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />

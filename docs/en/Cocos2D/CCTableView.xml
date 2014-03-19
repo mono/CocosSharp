@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTableView : Cocos2D.CCScrollView, Cocos2D.ICCScrollViewDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTableView extends Cocos2D.CCScrollView implements class Cocos2D.ICCScrollViewDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

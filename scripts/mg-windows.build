@@ -38,14 +38,14 @@
 
   <target name="buildwindows" description="Build Windows" depends="clean">
     <if test="${os == 'Win32NT'}">
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsGL.sln /t:Build /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Clean /p:Configuration=Release" />
-      <exec program="msbuild " commandline="cocos2d-xna.WindowsDX.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsGL.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsGL.sln /t:Build /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsDX.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline="CocosSharp.WindowsDX.sln /t:Build /p:Configuration=Release" />
     </if>
     <if test="${os == 'Unix'}">
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release cocos2d-xna.WindowsGL.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release cocos2d-xna.WindowsGL.sln" />
+      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release CocosSharp.WindowsGL.sln" />
+      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release CocosSharp.WindowsGL.sln" />
     </if>
   </target>
 

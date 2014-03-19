@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCControlSwitchSprite : Cocos2D.CCSprite, Cocos2D.ICCActionTweenDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitchSprite extends Cocos2D.CCSprite implements class Cocos2D.ICCActionTweenDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

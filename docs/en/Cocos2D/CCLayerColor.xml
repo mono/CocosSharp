@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCLayerColor : Cocos2D.CCLayerRGBA, Cocos2D.ICCBlendProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends Cocos2D.CCLayerRGBA implements class Cocos2D.ICCBlendProtocol" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

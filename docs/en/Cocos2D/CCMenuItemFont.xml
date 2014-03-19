@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCMenuItemFont : Cocos2D.CCMenuItemLabel" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends Cocos2D.CCMenuItemLabel" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

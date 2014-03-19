@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCEaseElasticInOut : Cocos2D.CCEaseElastic" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseElasticInOut extends Cocos2D.CCEaseElastic" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

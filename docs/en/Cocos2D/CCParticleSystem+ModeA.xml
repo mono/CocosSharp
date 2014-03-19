@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="protected struct CCParticleSystem.ModeA" />
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/ModeA extends System.ValueType" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

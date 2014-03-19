@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public struct CCBMFontConfiguration.CCKerningHashElement" />
   <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit CCBMFontConfiguration/CCKerningHashElement extends System.ValueType" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

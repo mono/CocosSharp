@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public delegate void CCGamePadDPadDelegate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, PlayerIndex player);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadDPadDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public enum CCMouseButtons" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCMouseButtons extends System.Enum" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

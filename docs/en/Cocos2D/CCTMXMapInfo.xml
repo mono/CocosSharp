@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTMXMapInfo : Cocos2D.ICCSAXDelegator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXMapInfo extends System.Object implements class Cocos2D.ICCSAXDelegator" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

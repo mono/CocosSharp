@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTransitionSlideInB : Cocos2D.CCTransitionSlideInL" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInB extends Cocos2D.CCTransitionSlideInL" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

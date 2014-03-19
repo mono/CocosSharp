@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class PlistNull : Cocos2D.PlistObject&lt;Nullable&lt;int&gt;&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistNull extends Cocos2D.PlistObject`1&lt;valuetype System.Nullable`1&lt;int32&gt;&gt;" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

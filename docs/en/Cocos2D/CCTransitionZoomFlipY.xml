@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCTransitionZoomFlipY : Cocos2D.CCTransitionSceneOriented" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionZoomFlipY extends Cocos2D.CCTransitionSceneOriented" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

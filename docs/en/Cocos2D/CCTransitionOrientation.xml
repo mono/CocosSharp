@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public enum CCTransitionOrientation" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTransitionOrientation extends System.Enum" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

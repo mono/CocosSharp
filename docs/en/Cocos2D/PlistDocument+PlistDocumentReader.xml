@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class PlistDocument.PlistDocumentReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.PlistDocument&gt;" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit PlistDocument/PlistDocumentReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;class Cocos2D.PlistDocument&gt;" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

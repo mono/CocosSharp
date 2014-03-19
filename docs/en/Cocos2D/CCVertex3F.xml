@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public struct CCVertex3F" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCVertex3F extends System.ValueType" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

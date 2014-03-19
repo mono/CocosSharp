@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCFlipX3D : Cocos2D.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFlipX3D extends Cocos2D.CCGrid3DAction" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>

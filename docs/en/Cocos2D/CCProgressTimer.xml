@@ -3,7 +3,7 @@
   <TypeSignature Language="C#" Value="public class CCProgressTimer : Cocos2D.CCNodeRGBA" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTimer extends Cocos2D.CCNodeRGBA" />
   <AssemblyInfo>
-    <AssemblyName>cocos2d-xna</AssemblyName>
+    <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
