@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using CocosSharp;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 namespace tests
 {
 

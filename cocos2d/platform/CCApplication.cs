@@ -491,7 +491,7 @@ namespace CocosSharp
 
 					// Yes, so this key has been pressed
 					//CCLog.Log("Pressed: " + keys[i].ToString());
-					keyboardEvent.Keys = keys [k];
+					keyboardEvent.Keys = (CCKeys)keys [k];
 					dispatcher.DispatchEvent (keyboardEvent);
 				}
 			}
@@ -504,7 +504,7 @@ namespace CocosSharp
 				if (currentKeyboardState.IsKeyUp (keys [k])) {
 					// Yes, so this key has been released
 					//CCLog.Log("Released: " + keys[i].ToString());
-					keyboardEvent.Keys = keys [k];
+					keyboardEvent.Keys = (CCKeys)keys [k];
 					dispatcher.DispatchEvent (keyboardEvent);
 
 				}
