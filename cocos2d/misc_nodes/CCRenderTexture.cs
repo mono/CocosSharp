@@ -24,16 +24,16 @@ namespace CocosSharp
         }
 
         public CCRenderTexture(int w, int h) 
-			: this(w, h, CCSurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
+			: this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
 		public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
-            : this(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents)
+			: this(w, h, format, CCDepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
-		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());

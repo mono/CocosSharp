@@ -22,6 +22,15 @@ namespace CocosSharp
         BoundsWithRenderTarget
     }
 
+	// conform to XNA 4.0
+	public enum CCDepthFormat
+	{
+		None = -1,
+		Depth16 = 54,
+		Depth24 = 51,
+		Depth24Stencil8 = 48,		
+	}
+
     public static class CCDrawManager
     {
         private const int DefaultQuadBufferSize = 1024 * 4;
@@ -83,7 +92,7 @@ namespace CocosSharp
         private static CCSize m_obDesignResolutionSize;
         private static CCResolutionPolicy m_eResolutionPolicy = CCResolutionPolicy.UnKnown;
         private static float m_fFrameZoomFactor = 1.0f;
-        private static DepthFormat m_PlatformDepthFormat = DepthFormat.Depth24;
+		private static CCDepthFormat m_PlatformDepthFormat = CCDepthFormat.Depth24;
         // ref: http://www.khronos.org/registry/gles/extensions/NV/GL_NV_texture_npot_2D_mipmap.txt
         private static bool m_AllowNonPower2Textures = true;
 
@@ -432,13 +441,13 @@ namespace CocosSharp
                 switch(s) 
                 {
                     case "GL_OES_depth24":
-                        m_PlatformDepthFormat = DepthFormat.Depth24;
+						m_PlatformDepthFormat = CCDepthFormat.Depth24;
                         break;
                     case "GL_IMG_texture_npot":
                         m_AllowNonPower2Textures = true;
                         break;
                     case "GL_NV_depth_nonlinear": // nVidia Depth 16 non-linear
-                        m_PlatformDepthFormat = DepthFormat.Depth16;
+						m_PlatformDepthFormat = CCDepthFormat.Depth16;
                         break;
                     case "GL_NV_texture_npot_2D_mipmap": // nVidia - nPot textures and mipmaps
                         m_AllowNonPower2Textures = true;
@@ -863,21 +872,21 @@ namespace CocosSharp
         {
             CCSize size = pTexture.ContentSizeInPixels;
             var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
-                                             m_PlatformDepthFormat, usage);
+				m_PlatformDepthFormat, usage);
             pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true, false);
         }
 
         public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
         {
-            return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, DepthFormat.None, usage);
+			return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, CCDepthFormat.None, usage);
         }
 
 		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, RenderTargetUsage usage)
         {
-            return CreateRenderTarget(width, height, colorFormat, DepthFormat.None, usage);
+			return CreateRenderTarget(width, height, colorFormat, CCDepthFormat.None, usage);
         }
 
-		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, DepthFormat depthFormat,
+		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat,
                                                         RenderTargetUsage usage)
         {
             if (!m_AllowNonPower2Textures)
@@ -885,7 +894,7 @@ namespace CocosSharp
                 width = CCUtils.CCNextPOT(width);
                 height = CCUtils.CCNextPOT(height);
             }
-			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, depthFormat, 0, usage);
+			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, (DepthFormat)depthFormat, 0, usage);
         }
 
         public static Texture2D CreateTexture2D(int width, int height)

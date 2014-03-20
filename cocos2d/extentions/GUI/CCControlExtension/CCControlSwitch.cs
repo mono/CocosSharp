@@ -429,7 +429,7 @@ namespace CocosSharp
             var rt = new CCRenderTexture(
                 (int) _maskSprite.ContentSizeInPixels.Width,
                 (int) _maskSprite.ContentSizeInPixels.Height,
-				CCSurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents
+				CCSurfaceFormat.Color, CCDepthFormat.None, RenderTargetUsage.DiscardContents
                 );
 
             rt.BeginWithClear(0, 0, 0, 0);
