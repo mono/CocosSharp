@@ -821,34 +821,6 @@ namespace CocosSharp
 		}
         
 
-//		void RemoveAllListenersInVector (List<CCEventListener> listenerVector, string listenerId)
-//		{
-//			if (listenerVector == null)
-//				return;
-//
-//			for (auto iter = listenerVector->begin(); iter != listenerVector->end();)
-//			{
-//				auto l = *iter;
-//				l->setRegistered(false);
-//				if (l->getSceneGraphPriority() != nullptr)
-//				{
-//					dissociateNodeAndEventListener(l->getSceneGraphPriority(), l);
-//				}
-//
-//				if (_inDispatch == 0)
-//				{
-//					iter = listenerVector->erase(iter);
-//					CC_SAFE_RELEASE(l);
-//				}
-//				else
-//				{
-//					++iter;
-//				}
-//			}
-//
-//		}
-
-    
         /// <summary>
         /// Removes all listeners with the same event listener ID
         /// </summary>
