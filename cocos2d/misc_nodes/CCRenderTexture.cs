@@ -13,27 +13,27 @@ namespace CocosSharp
 
         public CCSprite Sprite { get; set; }
         protected CCTexture2D Texture { get; private set; }
-        protected SurfaceFormat PixelFormat { get; private set; }
+		protected CCSurfaceFormat PixelFormat { get; private set; }
 
 
         #region Constructors
 
         public CCRenderTexture()
         {
-            PixelFormat = SurfaceFormat.Color;
+			PixelFormat = CCSurfaceFormat.Color;
         }
 
         public CCRenderTexture(int w, int h) 
-            : this(w, h, SurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
+			: this(w, h, CCSurfaceFormat.Color, DepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, SurfaceFormat format) 
+		public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
             : this(w, h, format, DepthFormat.None, RenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, SurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
+		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, DepthFormat depthFormat, RenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());

@@ -49,9 +49,53 @@ namespace CocosSharp
         public Object Data;
     }
 
+	public enum CCSurfaceFormat
+	{
+		Color = 0,
+		Bgr565 = 1,
+		Bgra5551 = 2,
+		Bgra4444 = 3,
+		Dxt1 = 4,
+		Dxt3 = 5,
+		Dxt5 = 6,
+		NormalizedByte2 = 7,
+		NormalizedByte4 = 8,
+		Rgba1010102 = 9,
+		Rg32 = 10,
+		Rgba64 = 11,
+		Alpha8 = 12,
+		Single = 13,
+		Vector2 = 14,
+		Vector4 = 15,
+		HalfSingle = 16,
+		HalfVector2 = 17,
+		HalfVector4 = 18,
+		HdrBlendable = 19,
+
+		// BGRA formats are required for compatibility with WPF D3DImage.
+		Bgr32 = 20,     // B8G8R8X8
+		Bgra32 = 21,    // B8G8R8A8
+
+		// Good explanation of compressed formats for mobile devices (aimed at Android, but describes PVRTC)
+		// http://developer.motorola.com/docstools/library/understanding-texture-compression/
+
+		// PowerVR texture compression (iOS and Android)
+		RgbPvrtc2Bpp = 50,
+		RgbPvrtc4Bpp = 51,
+		RgbaPvrtc2Bpp = 52,
+		RgbaPvrtc4Bpp = 53,
+
+		// Ericcson Texture Compression (Android)
+		RgbEtc1 = 60,
+
+		// DXT1 also has a 1-bit alpha form
+		Dxt1a = 70,
+	}
+
+
     public class CCTexture2D : CCGraphicsResource
     {
-        public static SurfaceFormat DefaultAlphaPixelFormat = SurfaceFormat.Color;
+		public static CCSurfaceFormat DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
         public static bool OptimizeForPremultipliedAlpha = true;
         public static bool DefaultIsAntialiased = true;
 
@@ -79,13 +123,13 @@ namespace CocosSharp
             RefreshAntialiasSetting ();
         }
         
-        public CCTexture2D (int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) 
+		public CCTexture2D (int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap) 
             : this()
         {
             Init(pixelsWide, pixelsHigh, pixelFormat, premultipliedAlpha, mipMap);
         }
 
-        public CCTexture2D(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat)
+		public CCTexture2D(int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat)
             : this(pixelsWide, pixelsHigh, pixelFormat, true, false)
         {   }
 
@@ -94,13 +138,13 @@ namespace CocosSharp
         {
         }
 
-        public CCTexture2D(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
+		public CCTexture2D(byte[] data, CCSurfaceFormat pixelFormat, bool mipMap)
             : this()
         {
             InitWithData(data, pixelFormat, mipMap);
         }
 
-        public CCTexture2D(byte[] data, SurfaceFormat pixelFormat)
+		public CCTexture2D(byte[] data, CCSurfaceFormat pixelFormat)
             : this()
         {
             InitWithData(data, pixelFormat, false);
@@ -121,7 +165,7 @@ namespace CocosSharp
         {
         }
         
-        public CCTexture2D (Stream stream, SurfaceFormat pixelFormat) 
+		public CCTexture2D (Stream stream, CCSurfaceFormat pixelFormat) 
             : this()
         {
             InitWithStream(stream, pixelFormat);
@@ -139,20 +183,20 @@ namespace CocosSharp
         {
         }
 
-        public CCTexture2D(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
+		public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
             : this()
         {
             InitWithTexture(texture, format, premultipliedAlpha, managed);
         }
 
-        public CCTexture2D(Texture2D texture, SurfaceFormat format)
+		public CCTexture2D(Texture2D texture, CCSurfaceFormat format)
             : this()
         {
             InitWithTexture(texture, format, true, false);
         }
 
         public CCTexture2D(Texture2D texture) 
-            : this(texture, texture.Format, true, false)
+			: this(texture, (CCSurfaceFormat)texture.Format, true, false)
         {
         }
 
@@ -170,7 +214,7 @@ namespace CocosSharp
             get { return (m_Texture2D != null && !m_Texture2D.IsDisposed); }
         }
 
-        public Texture2D XNATexture
+		internal Texture2D XNATexture
         {
             get
             {
@@ -185,10 +229,10 @@ namespace CocosSharp
         /// <summary>
         ///     pixel format of the texture
         /// </summary>
-        public SurfaceFormat PixelFormat
+		public CCSurfaceFormat PixelFormat
         {
-            get { return m_ePixelFormat; }
-            set { m_ePixelFormat = value; }
+			get { return (CCSurfaceFormat)m_ePixelFormat; }
+			set { m_ePixelFormat = (SurfaceFormat)value; }
         }
 
         /// <summary>
@@ -406,11 +450,11 @@ namespace CocosSharp
 
         #region Initialization
 
-        private void Init(int pixelsWide, int pixelsHigh, SurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap)
+		private void Init(int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat, bool premultipliedAlpha, bool mipMap)
         {
             try
             {
-                var texture = new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, pixelFormat);
+				var texture = new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, (SurfaceFormat)pixelFormat);
 
                 if (InitWithTexture(texture, pixelFormat, premultipliedAlpha, false))
                 {
@@ -428,13 +472,13 @@ namespace CocosSharp
         }
 
         // Bool return type is used by CCTextureCache
-        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat)
+		internal bool InitWithData(byte[] data, CCSurfaceFormat pixelFormat)
         {
             return InitWithData(data, pixelFormat, false);
         }
 
         // Bool return type is used by CCTextureCache
-        internal bool InitWithData(byte[] data, SurfaceFormat pixelFormat, bool mipMap)
+		internal bool InitWithData(byte[] data, CCSurfaceFormat pixelFormat, bool mipMap)
         {
             if (data == null)
             {
@@ -469,7 +513,7 @@ namespace CocosSharp
             return false;
         }
 
-        private void InitWithStream(Stream stream, SurfaceFormat pixelFormat)
+		private void InitWithStream(Stream stream, CCSurfaceFormat pixelFormat)
         {
             Texture2D texture;
             try
@@ -486,19 +530,19 @@ namespace CocosSharp
             }
         }
 
-        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap)
+		internal bool InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap)
             where T : struct
         {
             return InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh, premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
         }
         
         // Bool return value used by CCTextureCache
-        internal bool InitWithRawData<T>(T[] data, SurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
+		internal bool InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
                                        bool premultipliedAlpha, bool mipMap, CCSize contentSize) where T : struct
         {
             try
             {
-                var texture = LoadRawData(data, pixelsWide, pixelsHigh, pixelFormat, mipMap);
+				var texture = LoadRawData(data, pixelsWide, pixelsHigh, (SurfaceFormat)pixelFormat, mipMap);
 
                 if (InitWithTexture(texture, pixelFormat, premultipliedAlpha, false))
                 {
@@ -669,7 +713,7 @@ namespace CocosSharp
 
                 CCDrawManager.SetRenderTarget((RenderTarget2D)null);
 
-                if (InitWithTexture(renderTarget, renderTarget.Format, true, false))
+				if (InitWithTexture(renderTarget, (CCSurfaceFormat)renderTarget.Format, true, false))
                 {
                     m_CacheInfo.CacheType = CCTextureCacheType.String;
                     m_CacheInfo.Data = new CCStringCache()
@@ -693,7 +737,7 @@ namespace CocosSharp
 
         // Method called externally by CCDrawManager
         // Bool return type is used by CCTexture2D methods
-        internal bool InitWithTexture(Texture2D texture, SurfaceFormat format, bool premultipliedAlpha, bool managed)
+		internal bool InitWithTexture(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
         {
             m_bManaged = managed;
 
@@ -704,7 +748,7 @@ namespace CocosSharp
 
             if (OptimizeForPremultipliedAlpha && !premultipliedAlpha)
             {
-                m_Texture2D = ConvertToPremultiplied(texture, format);
+				m_Texture2D = ConvertToPremultiplied(texture, (SurfaceFormat)format);
 
                 if (!m_bManaged)
                 {
@@ -714,9 +758,9 @@ namespace CocosSharp
             }
             else
             {
-                if (texture.Format != format)
+				if (texture.Format != (SurfaceFormat)format)
                 {
-                    m_Texture2D = ConvertSurfaceFormat(texture, format);
+					m_Texture2D = ConvertSurfaceFormat(texture, (SurfaceFormat)format);
 
                     if (!m_bManaged)
                     {
@@ -824,7 +868,7 @@ namespace CocosSharp
                     break;
 
                 case CCTextureCacheType.Data:
-                    InitWithData((byte[])m_CacheInfo.Data, m_ePixelFormat, m_bHasMipmaps);
+					InitWithData((byte[])m_CacheInfo.Data, (CCSurfaceFormat)m_ePixelFormat, m_bHasMipmaps);
                     break;
 
                 case CCTextureCacheType.RawData:
@@ -872,7 +916,7 @@ namespace CocosSharp
         {
             if (!m_bHasMipmaps)
             {
-                var target = new RenderTarget2D(CCDrawManager.GraphicsDevice, PixelsWide, PixelsHigh, true, PixelFormat,
+				var target = new RenderTarget2D(CCDrawManager.GraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
                                                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
                 CCDrawManager.SetRenderTarget(target);

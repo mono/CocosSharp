@@ -872,12 +872,12 @@ namespace CocosSharp
             return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, DepthFormat.None, usage);
         }
 
-        public static RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat colorFormat, RenderTargetUsage usage)
+		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, RenderTargetUsage usage)
         {
             return CreateRenderTarget(width, height, colorFormat, DepthFormat.None, usage);
         }
 
-        public static RenderTarget2D CreateRenderTarget(int width, int height, SurfaceFormat colorFormat, DepthFormat depthFormat,
+		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, DepthFormat depthFormat,
                                                         RenderTargetUsage usage)
         {
             if (!m_AllowNonPower2Textures)
@@ -885,7 +885,7 @@ namespace CocosSharp
                 width = CCUtils.CCNextPOT(width);
                 height = CCUtils.CCNextPOT(height);
             }
-            return new RenderTarget2D(graphicsDevice, width, height, false, colorFormat, depthFormat, 0, usage);
+			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, depthFormat, 0, usage);
         }
 
         public static Texture2D CreateTexture2D(int width, int height)

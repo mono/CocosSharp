@@ -150,37 +150,37 @@ namespace tests
                     break;
 
                 case 2:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
                     batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 
                 case 3:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
                     batchNode = new CCSpriteBatchNode("Images/grossinis_sister1", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 5:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
                     batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                 case 6:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
                     batchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 100);
                     p.AddChild(batchNode, 0);
                     break;
 
                     ///
                 case 8:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
                     batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
                 case 9:
-                    CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Bgra4444;
+					CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Bgra4444;
                     batchNode = new CCSpriteBatchNode("Images/spritesheet1", 100);
                     p.AddChild(batchNode, 0);
                     break;
@@ -194,7 +194,7 @@ namespace tests
             //    batchNode.retain();
             //}
 
-            CCTexture2D.DefaultAlphaPixelFormat = SurfaceFormat.Color;
+			CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
         }
     }
 }

@@ -145,7 +145,7 @@ namespace CocosSharp
 			return texture;
 		}
 
-        public CCTexture2D AddImage(byte[] data, string assetName, SurfaceFormat format)
+		public CCTexture2D AddImage(byte[] data, string assetName, CCSurfaceFormat format)
         {
             lock (m_pDictLock)
             {
@@ -191,7 +191,7 @@ namespace CocosSharp
                 {
                     texture = new CCTexture2D();
                     
-                    if (texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize))
+					if (texture.InitWithRawData(data, (CCSurfaceFormat)format, width, height, premultiplied, mipMap, contentSize))
                     {
                         m_pTextures.Add(assetName, texture);
                     }

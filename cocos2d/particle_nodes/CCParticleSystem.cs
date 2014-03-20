@@ -539,7 +539,7 @@ namespace CocosSharp
 
                         try
                         {
-                            Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, SurfaceFormat.Color);
+							Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
                         }
                         catch (Exception ex)
                         {

@@ -272,7 +272,7 @@ namespace CocosSharp
 
             if (m_bTextureDirty)
             {
-                m_pTexture.InitWithRawData(m_pData, SurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
+				m_pTexture.InitWithRawData(m_pData, CCSurfaceFormat.Color, m_nWidth, m_nHeight, true, false);
                 m_bTextureDirty = false;
             }
 
