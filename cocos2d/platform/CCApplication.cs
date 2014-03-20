@@ -637,7 +637,8 @@ namespace CocosSharp
         private void ProcessTouch()
         {
 			//if (m_pDelegate != null)
-			if (CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID))
+			if (CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
+                || CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
 			{
                 newTouches.Clear();
                 movedTouches.Clear();
