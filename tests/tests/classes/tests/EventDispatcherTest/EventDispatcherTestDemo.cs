@@ -380,7 +380,6 @@ namespace tests
 			sprite3.Position = CCPoint.Zero;
 			sprite2.AddChild(sprite3, 1);
 
-
 			// Make sprite1 touchable
 			var listener1 = new CCEventListenerTouchOneByOne ();
 			listener1.IsSwallowTouches = true;
@@ -411,7 +410,7 @@ namespace tests
 			listener1.OnTouchEnded = (touch, touchEvent) => 
 			{
 				var target = (CCSprite)touchEvent.CurrentTarget;
-				CCLog.Log("sprite onTouchesEnded.. ");
+				CCLog.Log("sprite onTouchesEnded..");
 				target.Opacity = 255;
 				if (target == sprite2)
 				{
@@ -426,6 +425,36 @@ namespace tests
 
 
 			EventDispatcher.AddEventListener(listener1, sprite1);
+			EventDispatcher.AddEventListener (listener1.Copy(), sprite2);
+			EventDispatcher.AddEventListener (listener1.Copy(), sprite3);
+
+			var removeAllTouchItem = new CCMenuItemFont("Remove All Touch Listeners", (sender) => {
+				var senderItem = (CCMenuItemFont)sender;
+				senderItem.LabelTTF.Text = "Only Next item could be clicked";
+
+				EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
+
+				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
+			
+
+				nextItem.FontSize = 16;
+				nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
+
+				var menu2 = new CCMenu(nextItem);
+				menu2.Position = CCPoint.Zero;
+				menu2.AnchorPoint = CCPoint.AnchorLowerLeft;
+				this.AddChild(menu2);
+			});
+
+			removeAllTouchItem.FontSize = 16;
+			removeAllTouchItem.Position = CCVisibleRect.Right + new CCPoint(-100, 0);
+
+			var menu = new CCMenu(removeAllTouchItem);
+			menu.Position = CCPoint.Zero;
+			menu.AnchorPoint = CCPoint.AnchorLowerLeft;
+			AddChild(menu);
+
+
 		}
 
 		public override void OnExit ()
