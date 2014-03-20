@@ -820,6 +820,34 @@ namespace CocosSharp
 			}
 		}
         
+
+//		void RemoveAllListenersInVector (List<CCEventListener> listenerVector, string listenerId)
+//		{
+//			if (listenerVector == null)
+//				return;
+//
+//			for (auto iter = listenerVector->begin(); iter != listenerVector->end();)
+//			{
+//				auto l = *iter;
+//				l->setRegistered(false);
+//				if (l->getSceneGraphPriority() != nullptr)
+//				{
+//					dissociateNodeAndEventListener(l->getSceneGraphPriority(), l);
+//				}
+//
+//				if (_inDispatch == 0)
+//				{
+//					iter = listenerVector->erase(iter);
+//					CC_SAFE_RELEASE(l);
+//				}
+//				else
+//				{
+//					++iter;
+//				}
+//			}
+//
+//		}
+
     
         /// <summary>
         /// Removes all listeners with the same event listener ID
@@ -827,6 +855,58 @@ namespace CocosSharp
         /// <param name="?"></param>
         void RemoveEventListeners (string listenerID)
         {
+			if (listenerMap.ContainsKey(listenerID))
+			{
+				var listeners = listenerMap[listenerID];
+				var fixedPriorityListeners = listeners.FixedPriorityListeners;
+				var sceneGraphPriorityListeners = listeners.SceneGraphPriorityListeners;
+
+				Action<List<CCEventListener>> RemoveAllListenersInVector = (listenerVector) => 
+				{
+					if (listenerVector == null)
+						return;
+
+					for (int x = 0; x < listenerVector.Count; x++)
+					{
+						var l = listenerVector[x];
+						l.IsRegistered = false;
+						if (l.SceneGraphPriority != null)
+						{
+							DissociateNodeAndEventListener(l.SceneGraphPriority, l);
+						}
+
+						if (inDispatch == 0)
+						{
+							listenerVector.Remove(l);
+						}
+					}
+				};
+
+				RemoveAllListenersInVector(sceneGraphPriorityListeners);
+				RemoveAllListenersInVector(fixedPriorityListeners);
+
+				// Remove the dirty flag according the 'listenerID'.
+				// No need to check whether the dispatcher is dispatching event.
+				priorityDirtyFlagMap.Remove(listenerID);
+
+				if (inDispatch == 0)
+				{
+					listeners.Clear ();
+					listenerMap.Remove(listenerID);
+				}
+			}
+
+			for (int iter = 0; iter < toBeAddedListeners.Count; iter++)
+			{
+				var l = toBeAddedListeners [iter];
+
+				if (l.ListenerID == listenerID)
+				{
+					l.Dispose ();
+					toBeAddedListeners.Remove(l);
+					break;
+				}
+			}
 
         }
     
@@ -1089,7 +1169,7 @@ namespace CocosSharp
 			if (forEvent.Type == CCEventType.TOUCH) 
 			{
 				UpdateListeners (CCEventListenerTouchOneByOne.LISTENER_ID);
-//				UpdateListeners (EventListenerAllAtOnce.LISTENER_ID);
+				UpdateListeners (CCEventListenerTouchAllAtOnce.LISTENER_ID);
 			} 
 			else 
 			{

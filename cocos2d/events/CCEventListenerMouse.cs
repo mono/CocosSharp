@@ -57,5 +57,19 @@ namespace CocosSharp
                 };
             OnEvent = listener;
         }
+
+		internal CCEventListenerMouse(CCEventListenerMouse mouse)
+			: this()
+		{
+			OnMouseDown = mouse.OnMouseDown;
+			OnMouseMove = mouse.OnMouseMove;
+			OnMouseUp = mouse.OnMouseUp;
+			OnMouseScroll = mouse.OnMouseScroll;
+		}
+
+		public CCEventListener Copy()
+		{
+			return new CCEventListenerMouse (this);
+		}
     }
 }

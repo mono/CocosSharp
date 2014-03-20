@@ -51,6 +51,18 @@ namespace CocosSharp
 			};
 			OnEvent = listener;
 		}	
+
+		internal CCEventListenerKeyboard(CCEventListenerKeyboard keyboard)
+			: this()
+		{
+			OnKeyPressed = keyboard.OnKeyPressed;
+			OnKeyReleased = keyboard.OnKeyReleased;
+		}
+
+		public override CCEventListener Copy()
+		{
+			return new CCEventListenerKeyboard (this);
+		}
 	}
 }
 

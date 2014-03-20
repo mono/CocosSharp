@@ -29,6 +29,17 @@ namespace CocosSharp
 
 			OnEvent = listener;
 		}	
+
+		internal CCEventListenerAccelerometer (CCEventListenerAccelerometer accelerometer)
+			: this()
+		{
+			OnAccelerate = accelerometer.OnAccelerate;
+		}
+
+		public override CCEventListener Copy()
+		{
+			return new CCEventListenerAccelerometer (this);
+		}
 	}
 }
 

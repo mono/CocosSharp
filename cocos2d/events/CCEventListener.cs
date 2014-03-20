@@ -82,6 +82,14 @@ namespace CocosSharp
             OnEvent = callback;
         }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CocosSharp.CCEventListener"/> class using the event listener passed
+		/// </summary>
+		/// <param name="eventListener">Event listener.</param>
+		protected CCEventListener(CCEventListener eventListener)
+		{
+			//throw new NotImplementedException ();
+		}
 
         /// <summary>
         /// Checks whether the listener is available. 
@@ -94,7 +102,7 @@ namespace CocosSharp
         // Clones the listener, its subclasses have to override this method.
         public virtual CCEventListener Copy()
         {
-            // TODO: fix me
+			// TODO: fix me to do something
             return new CCEventListener();
         }
 

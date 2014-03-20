@@ -37,37 +37,25 @@ namespace CocosSharp
 		public CCEventListenerTouchOneByOne() : base(CCEventListenerType.TOUCH_ONE_BY_ONE, LISTENER_ID)
 		{
 			ClaimedTouches = new List<CCTouch> ();
-//			// Set our call back action to be called on touch events so they can be 
-//			// propagated to the listener.
-//			Action<CCEvent> listener = tEvent =>
-//			{
-//				var touchEvent = (CCEventTouch)tEvent;
-//				switch (touchEvent.EventCode)
-//				{
-//				case CCEventCode.BEGAN:
-//					if (OnTouchBegin != null)
-//						OnTouchBegin(touchEvent);
-//					break;
-//				case CCEventCode.ENDED:
-//					if (OnTouchEnded != null)
-//						OnTouchEnded(touchEvent);
-//					break;
-//				case CCEventCode.MOVED:
-//					if (OnTouchMoved != null)
-//						OnTouchMoved(touchEvent);
-//					break;
-//				case CCEventCode.CANCELLED:
-//					if (OnTouchCancelled != null)
-//						OnTouchCancelled(touchEvent);
-//					break;
-//
-//				default:
-//					break;
-//				}
-//
-//			};
-//			OnEvent = listener;
 		}	
+
+		internal CCEventListenerTouchOneByOne(CCEventListenerTouchOneByOne eventListener) 
+			: this()
+		{
+			OnTouchBegan = eventListener.OnTouchBegan;
+			OnTouchMoved = eventListener.OnTouchMoved;
+			OnTouchEnded = eventListener.OnTouchEnded;
+			OnTouchCancelled = eventListener.OnTouchCancelled;
+
+            ClaimedTouches.AddRange(eventListener.ClaimedTouches);
+			IsSwallowTouches = eventListener.IsSwallowTouches;
+
+		}
+
+		public override CCEventListener Copy()
+		{
+			return new CCEventListenerTouchOneByOne (this);
+		}
 	}
 }
 

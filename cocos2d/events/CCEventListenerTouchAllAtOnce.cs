@@ -32,7 +32,21 @@ namespace CocosSharp
 
 
 		public CCEventListenerTouchAllAtOnce() : base(CCEventListenerType.TOUCH_ALL_AT_ONCE, LISTENER_ID)
-		{	}	
+		{	}
+
+		internal CCEventListenerTouchAllAtOnce (CCEventListenerTouchAllAtOnce eventListener) 
+			: this()
+		{
+			OnTouchesBegan = eventListener.OnTouchesBegan;
+			OnTouchesMoved = eventListener.OnTouchesMoved;
+			OnTouchesEnded = eventListener.OnTouchesEnded;
+			OnTouchesCancelled = eventListener.OnTouchesCancelled;
+		}
+
+		public override CCEventListener Copy()
+		{
+			return new CCEventListenerTouchAllAtOnce (this);
+		}
 	}
 }
 
