@@ -17,7 +17,7 @@ namespace tests
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // create a render texture, this is what we are going to draw into
-			m_pTarget = new CCRenderTexture((int) s.Width, (int) s.Height, CCSurfaceFormat.Color, CCDepthFormat.None, RenderTargetUsage.PreserveContents);
+			m_pTarget = new CCRenderTexture((int) s.Width, (int) s.Height, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
 
 			// Let's clear the rendertarget here so that we start off fresh.
 			// Some platforms do not seem to be initializing the rendertarget color so this will make sure the background shows up colored instead of 

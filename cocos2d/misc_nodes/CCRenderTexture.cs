@@ -5,6 +5,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
+
+	public enum CCRenderTargetUsage
+	{
+		DiscardContents,
+		PreserveContents,
+		PlatformContents
+	}
+
     public partial class CCRenderTexture : CCNode
     {
         bool firstUsage = true;
@@ -24,16 +32,16 @@ namespace CocosSharp
         }
 
         public CCRenderTexture(int w, int h) 
-			: this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, RenderTargetUsage.DiscardContents)
+			: this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
 		public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
-			: this(w, h, format, CCDepthFormat.None, RenderTargetUsage.DiscardContents)
+			: this(w, h, format, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
-		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, RenderTargetUsage usage)
+		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, CCRenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());

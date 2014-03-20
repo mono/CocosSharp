@@ -868,7 +868,7 @@ namespace CocosSharp
             }
         }
 
-        public static void CreateRenderTarget(CCTexture2D pTexture, RenderTargetUsage usage)
+		public static void CreateRenderTarget(CCTexture2D pTexture, CCRenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
             var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
@@ -876,25 +876,25 @@ namespace CocosSharp
             pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true, false);
         }
 
-        public static RenderTarget2D CreateRenderTarget(int width, int height, RenderTargetUsage usage)
+		public static RenderTarget2D CreateRenderTarget(int width, int height, CCRenderTargetUsage usage)
         {
 			return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, CCDepthFormat.None, usage);
         }
 
-		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, RenderTargetUsage usage)
+		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCRenderTargetUsage usage)
         {
 			return CreateRenderTarget(width, height, colorFormat, CCDepthFormat.None, usage);
         }
 
 		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat,
-                                                        RenderTargetUsage usage)
+			CCRenderTargetUsage usage)
         {
             if (!m_AllowNonPower2Textures)
             {
                 width = CCUtils.CCNextPOT(width);
                 height = CCUtils.CCNextPOT(height);
             }
-			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, (DepthFormat)depthFormat, 0, usage);
+			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, (DepthFormat)depthFormat, 0, (RenderTargetUsage)usage);
         }
 
         public static Texture2D CreateTexture2D(int width, int height)

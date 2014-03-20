@@ -9,7 +9,7 @@ namespace CocosSharp
 
         public void Grab(CCTexture2D pTexture)
         {
-            CCDrawManager.CreateRenderTarget(pTexture, RenderTargetUsage.DiscardContents);
+			CCDrawManager.CreateRenderTarget(pTexture, CCRenderTargetUsage.DiscardContents);
         }
 
         public void BeforeRender(CCTexture2D pTexture)

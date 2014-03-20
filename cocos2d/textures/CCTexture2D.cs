@@ -665,7 +665,7 @@ namespace CocosSharp
                 //*  for render to texture
                 RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget(
                     (int)dimensions.Width, (int)dimensions.Height,
-                    DefaultAlphaPixelFormat, RenderTargetUsage.DiscardContents
+					DefaultAlphaPixelFormat, CCRenderTargetUsage.DiscardContents
                     );
 
                 CCDrawManager.SetRenderTarget(renderTarget);
