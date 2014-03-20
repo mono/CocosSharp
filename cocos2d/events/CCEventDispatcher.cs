@@ -939,22 +939,17 @@ namespace CocosSharp
 			VisitTarget(rootNode, true);
 
 			// After sort: priority < 0, > 0
+			sceneGraphListeners.Sort((a,b) => 
+				{
+					if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
+						return 0;
+					if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority))
+						return 1;
+					if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
+						return -1;
 
-//			std::sort(sceneGraphListeners->begin(), sceneGraphListeners->end(), [this](const EventListener* l1, const EventListener* l2) {
-//				return _nodePriorityMap[l1->getSceneGraphPriority()] > _nodePriorityMap[l2->getSceneGraphPriority()];
-//			});
-//
-				sceneGraphListeners.Sort((a,b) => 
-					{
-						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
-							return 0;
-						if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority))
-							return 1;
-						if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
-							return -1;
-
-						return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]) * -1;
-					});
+					return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]) * -1;
+				});
 
 
 #if DUMP_LISTENER_ITEM_PRIORITY_INFO
@@ -975,6 +970,36 @@ namespace CocosSharp
         /// <param name="?"></param>
         void SortEventListenersOfFixedPriority(string listenerID)
         {
+			var listeners = GetListeners(listenerID);
+
+			if (listeners == null)
+				return;
+
+			var fixedListeners = listeners.FixedPriorityListeners;
+			if (fixedListeners == null)
+				return;
+
+			// After sort: priority < 0, > 0
+			fixedListeners.Sort((a,b) => a.FixedPriority.CompareTo(b.FixedPriority));
+
+			// FIXME: Should use binary search
+			int index = 0;
+			foreach (var listener in fixedListeners)
+			{
+				if (listener.FixedPriority >= 0)
+					break;
+				++index;
+			}
+
+			listeners.Gt0Index = index;
+
+#if DUMP_LISTENER_ITEM_PRIORITY_INFO
+			CCLog.Log("-----------------------------------");
+			foreach (var l in fixedListeners)
+			{
+				CCLog.Log("listener priority: node {0}, fixed {1}", l.SceneGraphPriority, l.FixedPriority);
+			}    
+#endif
 
         }
 
@@ -1233,7 +1258,7 @@ namespace CocosSharp
 			{
 				Debug.Assert (listeners.Gt0Index <= fixedPriorityListeners.Count, "Out of range exception!");
 
-				if (fixedPriorityListeners.Count == 0)
+				if (fixedPriorityListeners.Count > 0)
 				{
 					for (; i < listeners.Gt0Index; ++i)
 					{

@@ -12,6 +12,7 @@ namespace tests
 	public enum EventDispatchTests
 	{
 		TOUCHABLE_SPRITE_TEST = 0,
+		FIXED_PRIORITY_TEST,
 		EVENT_MOUSE,
 		TEST_LABEL_KEYBOARD,
 		TEST_ACCELEROMETER,
@@ -33,6 +34,9 @@ namespace tests
 			{
 			case (int) EventDispatchTests.TOUCHABLE_SPRITE_TEST:
 				testLayer = new TouchableSpriteTest();
+				break;
+			case (int) EventDispatchTests.FIXED_PRIORITY_TEST:
+				testLayer = new FixedPriorityTest();
 				break;
 			case (int) EventDispatchTests.EVENT_MOUSE:
 				testLayer = new MouseEventTest();
@@ -474,5 +478,113 @@ namespace tests
 
 	}
 
+	public class FixedPriorityTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var sprite1 = new TouchableSprite (30);
+			var texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+			sprite1.Texture = texture;
+			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+			AddChild(sprite1, 10);
+
+			var sprite2 = new TouchableSprite (20);
+			texture = CCTextureCache.SharedTextureCache.AddImage("Images/MagentaSquare.png");
+			sprite2.Texture = texture;
+			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+			AddChild(sprite2, 20);
+
+			var sprite3 = new TouchableSprite (10);
+			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
+			sprite3.Texture = texture;
+			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite3.Position = CCPoint.Zero;
+			sprite2.AddChild(sprite3, 1);
+
+		}
+
+		public override string title()
+		{
+			return "Fixed priority test";
+		}
+
+		public override string subtitle()
+		{
+			return "Fixed Priority, Blue: 30, Red: 20, Yellow: 10\n The lower value the higher priority will be.";
+		}
+
+	}
+
+	class TouchableSprite : CCSprite
+	{
+
+		CCEventListenerTouchOneByOne Listener { get; set; }
+		int FixedPriority { get; set; }
+		bool IsRemoveListenerOnTouchEnded { get; set; }
+
+		public TouchableSprite(int priority = 0)
+		{
+			FixedPriority = priority;
+			IsRemoveListenerOnTouchEnded = false;
+		}
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+			var listener = new CCEventListenerTouchOneByOne();
+			listener.IsSwallowTouches = true;
+
+			listener.OnTouchBegan = (CCTouch touch, CCEvent rouchEvent) => 
+			{
+
+				var locationInNode = ConvertToNodeSpace(touch.Location);
+				var s = ContentSize;
+				var rect = new CCRect(0, 0, s.Width, s.Height);
+
+				if (rect.ContainsPoint(locationInNode))
+				{
+					Color = CCColor3B.Red;
+					return true;
+				}
+				return false;
+			};
+
+			listener.OnTouchEnded = (CCTouch touch, CCEvent rouchEvent) =>
+			{
+				Color = CCColor3B.White;
+
+				if (IsRemoveListenerOnTouchEnded)
+				{
+					EventDispatcher.RemoveEventListener(Listener);
+				}
+			};
+
+			if (FixedPriority != 0)
+			{
+				EventDispatcher.AddEventListener(listener, FixedPriority);
+			}
+			else
+			{
+				EventDispatcher.AddEventListener(listener, this);
+			}
+
+			Listener = listener;
+
+		}
+
+		public override void OnExit ()
+		{
+			EventDispatcher.RemoveEventListener(Listener);
+			base.OnExit ();
+		}
+	}
 
 }
