@@ -1289,7 +1289,7 @@ namespace CocosSharp
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
                 m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
             }
-			m_GraphicsDeviceMgr.SupportedOrientations = (CCDisplayOrientation)supportedOrientations;
+			m_GraphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
 #endif
 
 #if WINDOWS_PHONE

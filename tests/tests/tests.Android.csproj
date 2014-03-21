@@ -2078,6 +2078,13 @@
     <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-Thin-12.xnb" />
     <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-Thin-18.xnb" />
     <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-22.xnb" />
+    <AndroidAsset Include="Assets\Content\Images\CyanSquare.xnb" />
+    <AndroidAsset Include="Assets\Content\Images\CyanTriangle.xnb" />
+    <AndroidAsset Include="Assets\Content\Images\MagentaSquare.xnb" />
+    <AndroidAsset Include="Assets\Content\Images\YellowTriangle.xnb" />
+    <AndroidAsset Include="Assets\Content\hd\Images\CyanSquare.xnb" />
+    <AndroidAsset Include="Assets\Content\hd\Images\MagentaSquare.xnb" />
+    <AndroidAsset Include="Assets\Content\hd\Images\YellowSquare.xnb" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
