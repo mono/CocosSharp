@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using Microsoft.Xna.Framework.Input;
 
 namespace CocosSharp
 {
@@ -17,11 +19,118 @@ namespace CocosSharp
 
 		// Set the Keys data 
 		public CCKeys Keys { get; internal set; }
+		public CCKeyboardState KeyboardState { get; internal set; }
 
 		internal CCEventKeyboard(CCKeyboardEventType keyboardEventType)
 			: base (CCEventType.KEYBOARD)
 		{
 			KeyboardEventType = keyboardEventType;
+		}
+	}
+
+	/// <summary>
+	/// Identifies the state of a keyboard key.
+	/// </summary>
+	public enum CCKeyState
+	{
+		/// <summary>
+		/// Key is released.
+		/// </summary>
+		Up,
+
+		/// <summary>
+		/// Key is pressed.
+		/// </summary>
+		Down,
+	}
+
+	/// <summary>
+	/// Holds the state of keystrokes by a keyboard.
+	/// </summary>
+	public struct CCKeyboardState
+	{
+
+		internal KeyboardState KeyboardState { get; set; }
+
+		/// <summary>
+		/// Returns an array of values holding keys that are currently being pressed.
+		/// </summary>
+		/// <returns>The keys that are currently being pressed.</returns>
+		public CCKeys[] GetPressedKeys()
+		{
+			var pressedKeys = KeyboardState.GetPressedKeys ().ToList().ConvertAll(i => (CCKeys)i).ToArray();
+			return pressedKeys;
+		}
+
+		/// <summary>
+		/// Returns the state of a specified key.
+		/// </summary>
+		/// <param name="key">The key to query.</param>
+		/// <returns>The state of the key.</returns>
+		public CCKeyState this[CCKeys key]
+		{
+			get { return (CCKeyState)KeyboardState[(Microsoft.Xna.Framework.Input.Keys)key]; }
+		}
+
+		/// <summary>
+		/// Gets whether given key is currently being pressed.
+		/// </summary>
+		/// <param name="key">The key to query.</param>
+		/// <returns>true if the key is pressed; false otherwise.</returns>
+		public bool IsKeyDown(CCKeys key)
+		{
+			return KeyboardState.IsKeyDown((Keys)key);
+		}
+
+		/// <summary>
+		/// Gets whether given key is currently being not pressed.
+		/// </summary>
+		/// <param name="key">The key to query.</param>
+		/// <returns>true if the key is not pressed; false otherwise.</returns>
+		public bool IsKeyUp(CCKeys key)
+		{
+			return KeyboardState.IsKeyUp((Keys)key);;
+		}
+
+		/// <summary>
+		/// Gets the hash code for <see cref="KeyboardState"/> instance.
+		/// </summary>
+		/// <returns>Hash code of the object.</returns>
+		public override int GetHashCode()
+		{
+			return KeyboardState.GetHashCode();
+		}
+
+		/// <summary>
+		/// Compares whether two <see cref="KeyboardState"/> instances are equal.
+		/// </summary>
+		/// <param name="a"><see cref="KeyboardState"/> instance to the left of the equality operator.</param>
+		/// <param name="b"><see cref="KeyboardState"/> instance to the right of the equality operator.</param>
+		/// <returns>true if the instances are equal; false otherwise.</returns>
+		public static bool operator ==(CCKeyboardState a, CCKeyboardState b)
+		{
+			return a.KeyboardState == b.KeyboardState;
+		}
+
+		/// <summary>
+		/// Compares whether two <see cref="KeyboardState"/> instances are not equal.
+		/// </summary>
+		/// <param name="a"><see cref="KeyboardState"/> instance to the left of the inequality operator.</param>
+		/// <param name="b"><see cref="KeyboardState"/> instance to the right of the inequality operator.</param>
+		/// <returns>true if the instances are different; false otherwise.</returns>
+		public static bool operator !=(CCKeyboardState a, CCKeyboardState b)
+		{
+			return !(a.KeyboardState == b.KeyboardState);
+		}
+
+		/// <summary>
+		/// Compares whether current instance is equal to specified object.
+		/// </summary>
+		/// <param name="obj">The <see cref="KeyboardState"/> to compare.</param>
+		/// <returns>true if the provided <see cref="KeyboardState"/> instance is same with current; false otherwise.</returns>
+		public override bool Equals(object obj)
+		{
+			return obj is CCKeyboardState && this == (CCKeyboardState)obj;
 		}
 	}
 

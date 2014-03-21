@@ -491,6 +491,9 @@ namespace CocosSharp
             }
 
 			var keyboardEvent = new CCEventKeyboard (CCKeyboardEventType.KEYBOARD_PRESS);
+			var keyboardState = new CCKeyboardState () { KeyboardState = currentKeyboardState };
+
+			keyboardEvent.KeyboardState = keyboardState;
 
 			// Check for pressed/released keys.
 			// Loop for each possible pressed key (those that are pressed this update)
