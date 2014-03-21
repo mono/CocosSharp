@@ -471,9 +471,6 @@
     <Compile Include=".\cocoa\CCGeometry.cs">
       <LogicalName>cocoa\CCGeometry</LogicalName>
     </Compile>
-    <Compile Include=".\cocoa\ICCCopyable.cs">
-      <LogicalName>cocoa\ICopyable</LogicalName>
-    </Compile>
     <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>

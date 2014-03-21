@@ -4,7 +4,7 @@ using System;
 
 namespace CocosSharp
 {
-    public partial class CCSpriteFrame : ICCCopyable<CCSpriteFrame>
+    public partial class CCSpriteFrame
     {
         #region properties
 

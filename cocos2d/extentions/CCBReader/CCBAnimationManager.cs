@@ -834,24 +834,6 @@ namespace CocosSharp
 //			((CCSprite) m_pTarget).DisplayFrame = SpriteFrame;
 //        }
 //
-//        public override object Copy(ICCCopyable pZone)
-//        {
-//            CCBSetSpriteFrame pRet;
-//
-//            if (pZone != null)
-//            {
-//                pRet = (CCBSetSpriteFrame) (pZone);
-//            }
-//            else
-//            {
-//                pRet = new CCBSetSpriteFrame();
-//                pZone =  (pRet);
-//            }
-//
-//            pRet.InitWithSpriteFrame(S);
-//            base.Copy(pZone);
-//            return pRet;
-//        }
 
         public override CCFiniteTimeAction Reverse()
         {

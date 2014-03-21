@@ -203,7 +203,6 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="CCDisplayLinkDirector.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
-    <Compile Include="cocoa\ICCCopyable.cs" />
     <Compile Include="effects\CCGridBase.cs" />
     <Compile Include="extentions\CCBReader\CCBAnimationManager.cs" />
     <Compile Include="extentions\CCBReader\CCBFileLoader.cs" />

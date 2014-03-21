@@ -427,7 +427,6 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
     <Compile Include="support\image_support\CCTGAlib.cs" />
-    <Compile Include="cocoa\ICCCopyable.cs" />
     <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
     <Compile Include="label_nodes\CCLabelUtilities.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />

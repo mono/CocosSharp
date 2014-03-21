@@ -2,7 +2,7 @@
 
 namespace CocosSharp
 {
-    public class CCAnimationFrame : ICCCopyable<CCAnimationFrame>
+    public class CCAnimationFrame
     {
         private float m_fDelayUnits;
         private CCSpriteFrame m_pSpriteFrame;

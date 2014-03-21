@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CocosSharp
 {
-    public class CCAnimation : ICCCopyable<CCAnimation>
+    public class CCAnimation
     {
         protected bool m_bRestoreOriginalFrame;
         protected float m_fDelayPerUnit;
