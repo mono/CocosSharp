@@ -701,11 +701,13 @@ namespace CocosSharp
 			{
 
 			}
+            // Dispose of managed resources
 
 			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
 			this.Cleanup();
-			// Dispose of managed resources
-			eventDispatcher.RemoveEventListeners (this);
+
+            if (eventDispatcher != null)
+    			eventDispatcher.RemoveEventListeners (this);
 
 			if (m_pChildren != null && m_pChildren.count > 0)
 			{
