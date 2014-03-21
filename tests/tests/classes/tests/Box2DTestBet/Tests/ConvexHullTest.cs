@@ -1,7 +1,9 @@
+using System.Linq;
 using FarseerPhysics.Common;
 using FarseerPhysics.Common.ConvexHull;
 using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
+using CocosSharp;
 
 namespace FarseerPhysics.TestBed.Tests
 {
@@ -59,9 +61,9 @@ namespace FarseerPhysics.TestBed.Tests
                 DebugView.DrawPoint(_pointCloud3[i], 0.1f, Color.Yellow);
             }
 
-            DebugView.DrawPolygon(_melkman.ToArray(), _melkman.Count, Color.Red);
-            DebugView.DrawPolygon(_giftWrap.ToArray(), _giftWrap.Count, Color.Green);
-            DebugView.DrawPolygon(_chainHull.ToArray(), _chainHull.Count, Color.Blue);
+			DebugView.DrawPolygon(_melkman.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _melkman.Count, Color.Red);
+			DebugView.DrawPolygon(_giftWrap.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _giftWrap.Count, Color.Green);
+			DebugView.DrawPolygon(_chainHull.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _chainHull.Count, Color.Blue);
             DebugView.EndCustomDraw();
 
             base.Update(settings, gameTime);

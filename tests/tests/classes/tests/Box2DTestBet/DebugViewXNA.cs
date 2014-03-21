@@ -30,7 +30,7 @@ namespace FarseerPhysics.DebugViews
         private SpriteBatch _batch;
         private SpriteFont _font;
         private GraphicsDevice _device;
-        private Vector2[] _tempVertices = new Vector2[Settings.MaxPolygonVertices];
+		private CCVector2[] _tempVertices = new CCVector2[Settings.MaxPolygonVertices];
         private List<StringData> _stringData;
 
         private Matrix _localProjection;
@@ -71,7 +71,7 @@ namespace FarseerPhysics.DebugViews
 #else
         public Rectangle PerformancePanelBounds = new Rectangle(250, 100, 200, 100);
 #endif
-        private Vector2[] _background = new Vector2[4];
+		private CCVector2[] _background = new CCVector2[4];
         public bool Enabled = true;
 
 #if XBOX || WINDOWS_PHONE || OUYA
@@ -366,12 +366,12 @@ namespace FarseerPhysics.DebugViews
             DrawString(PerformancePanelBounds.Right + 10, PerformancePanelBounds.Bottom - 15, "Min: " + _min);
 
             //Draw background.
-            _background[0] = new Vector2(PerformancePanelBounds.X, PerformancePanelBounds.Y);
-            _background[1] = new Vector2(PerformancePanelBounds.X,
+			_background[0] = new CCVector2(PerformancePanelBounds.X, PerformancePanelBounds.Y);
+			_background[1] = new CCVector2(PerformancePanelBounds.X,
                                          PerformancePanelBounds.Y + PerformancePanelBounds.Height);
-            _background[2] = new Vector2(PerformancePanelBounds.X + PerformancePanelBounds.Width,
+			_background[2] = new CCVector2(PerformancePanelBounds.X + PerformancePanelBounds.Width,
                                          PerformancePanelBounds.Y + PerformancePanelBounds.Height);
-            _background[3] = new Vector2(PerformancePanelBounds.X + PerformancePanelBounds.Width,
+			_background[3] = new CCVector2(PerformancePanelBounds.X + PerformancePanelBounds.Width,
                                          PerformancePanelBounds.Y);
 
             DrawSolidPolygon(_background, 4, Color.DarkGray, true);
@@ -407,11 +407,11 @@ namespace FarseerPhysics.DebugViews
 
         public void DrawAABB(ref AABB aabb, Color color)
         {
-            Vector2[] verts = new Vector2[4];
-            verts[0] = new Vector2(aabb.LowerBound.X, aabb.LowerBound.Y);
-            verts[1] = new Vector2(aabb.UpperBound.X, aabb.LowerBound.Y);
-            verts[2] = new Vector2(aabb.UpperBound.X, aabb.UpperBound.Y);
-            verts[3] = new Vector2(aabb.LowerBound.X, aabb.UpperBound.Y);
+			CCVector2[] verts = new CCVector2[4];
+			verts[0] = new CCVector2(aabb.LowerBound.X, aabb.LowerBound.Y);
+			verts[1] = new CCVector2(aabb.UpperBound.X, aabb.LowerBound.Y);
+			verts[2] = new CCVector2(aabb.UpperBound.X, aabb.UpperBound.Y);
+			verts[3] = new CCVector2(aabb.LowerBound.X, aabb.UpperBound.Y);
 
             DrawPolygon(verts, 4, color);
         }
@@ -520,10 +520,10 @@ namespace FarseerPhysics.DebugViews
 
                         for (int i = 0; i < vertexCount; ++i)
                         {
-                            _tempVertices[i] = MathUtils.Multiply(ref xf, poly.Vertices[i]);
+							_tempVertices[i] = (CCVector2)MathUtils.Multiply(ref xf, poly.Vertices[i]);
                         }
 
-                        DrawSolidPolygon(_tempVertices, vertexCount, color);
+						DrawSolidPolygon(_tempVertices, vertexCount, color);
                     }
                     break;
 
@@ -555,12 +555,15 @@ namespace FarseerPhysics.DebugViews
             }
         }
 
-        public override void DrawPolygon(Vector2[] vertices, int count, float red, float green, float blue)
+		public override void DrawPolygon(Vector2[] vertices, int count, float red, float green, float blue)
         {
-            DrawPolygon(vertices, count, new Color(red, green, blue));
+			var verts = new CCVector2[vertices.Length];
+			vertices.CopyTo (verts, 0);
+			DrawPolygon(verts, count, new Color(red, green, blue));
+		
         }
 
-        public void DrawPolygon(Vector2[] vertices, int count, Color color)
+		public void DrawPolygon(CCVector2[] vertices, int count, Color color)
         {
             if (!_primitiveBatch.IsReady())
             {
@@ -576,17 +579,19 @@ namespace FarseerPhysics.DebugViews
             _primitiveBatch.AddVertex(ref vertices[0], color, PrimitiveType.LineList);
         }
 
-        public override void DrawSolidPolygon(Vector2[] vertices, int count, float red, float green, float blue)
+		public override void DrawSolidPolygon(Vector2[] vertices, int count, float red, float green, float blue)
         {
-            DrawSolidPolygon(vertices, count, new Color(red, green, blue), true);
+			var verts = new CCVector2[ vertices.Length ];
+			vertices.CopyTo (verts, 0);
+			DrawSolidPolygon(verts, count, new Color(red, green, blue), true);
         }
 
-        public void DrawSolidPolygon(Vector2[] vertices, int count, Color color)
+		public void DrawSolidPolygon(CCVector2[] vertices, int count, Color color)
         {
             DrawSolidPolygon(vertices, count, color, true);
         }
 
-        public void DrawSolidPolygon(Vector2[] vertices, int count, Color color, bool outline)
+		public void DrawSolidPolygon(CCVector2[] vertices, int count, Color color, bool outline)
         {
             if (!_primitiveBatch.IsReady())
             {
@@ -615,10 +620,10 @@ namespace FarseerPhysics.DebugViews
 
         public override void DrawCircle(Vector2 center, float radius, float red, float green, float blue)
         {
-            DrawCircle(center, radius, new Color(red, green, blue));
+			DrawCircle((CCVector2)center, radius, new Color(red, green, blue));
         }
 
-        public void DrawCircle(Vector2 center, float radius, Color color)
+		public void DrawCircle(CCVector2 center, float radius, Color color)
         {
             if (!_primitiveBatch.IsReady())
             {
@@ -629,10 +634,10 @@ namespace FarseerPhysics.DebugViews
 
             for (int i = 0, count = CircleSegments; i < count; i++)
             {
-                Vector2 v1 = center + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
-                Vector2 v2 = center +
+				CCVector2 v1 = center + radius * new CCVector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+				CCVector2 v2 = center +
                              radius *
-                             new Vector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
+					new CCVector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
 
                 _primitiveBatch.AddVertex(ref v1, color, PrimitiveType.LineList);
                 _primitiveBatch.AddVertex(ref v2, color, PrimitiveType.LineList);
@@ -644,10 +649,10 @@ namespace FarseerPhysics.DebugViews
         public override void DrawSolidCircle(Vector2 center, float radius, Vector2 axis, float red, float green,
                                              float blue)
         {
-            DrawSolidCircle(center, radius, axis, new Color(red, green, blue));
+			DrawSolidCircle((CCVector2)center, radius, axis, new Color(red, green, blue));
         }
 
-        public void DrawSolidCircle(Vector2 center, float radius, Vector2 axis, Color color)
+		public void DrawSolidCircle(CCVector2 center, float radius, CCVector2 axis, Color color)
         {
             if (!_primitiveBatch.IsReady())
             {
@@ -658,15 +663,15 @@ namespace FarseerPhysics.DebugViews
 
             Color colorFill = color * 0.5f;
 
-            Vector2 v0 = center + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+			CCVector2 v0 = center + radius * new CCVector2((float)Math.Cos(theta), (float)Math.Sin(theta));
             theta += increment;
 
             for (int i = 1; i < CircleSegments - 1; i++)
             {
-                Vector2 v1 = center + radius * new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta));
-                Vector2 v2 = center +
+				CCVector2 v1 = center + radius * new CCVector2((float)Math.Cos(theta), (float)Math.Sin(theta));
+				CCVector2 v2 = center +
                              radius *
-                             new Vector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
+					new CCVector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
 
                 _primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
                 _primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
@@ -681,10 +686,10 @@ namespace FarseerPhysics.DebugViews
 
         public override void DrawSegment(Vector2 start, Vector2 end, float red, float green, float blue)
         {
-            DrawSegment(start, end, new Color(red, green, blue));
+			DrawSegment(start, end, new Color(red, green, blue));
         }
 
-        public void DrawSegment(Vector2 start, Vector2 end, Color color)
+		public void DrawSegment(CCVector2 start, CCVector2 end, Color color)
         {
             if (!_primitiveBatch.IsReady())
             {
@@ -706,14 +711,14 @@ namespace FarseerPhysics.DebugViews
             DrawSegment(p1, p2, Color.Green);
         }
 
-        public void DrawPoint(Vector2 p, float size, Color color)
+		public void DrawPoint(CCVector2 p, float size, Color color)
         {
-            Vector2[] verts = new Vector2[4];
+			CCVector2[] verts = new CCVector2[4];
             float hs = size / 2.0f;
-            verts[0] = p + new Vector2(-hs, -hs);
-            verts[1] = p + new Vector2(hs, -hs);
-            verts[2] = p + new Vector2(hs, hs);
-            verts[3] = p + new Vector2(-hs, hs);
+			verts[0] = p + new CCVector2(-hs, -hs);
+			verts[1] = p + new CCVector2(hs, -hs);
+			verts[2] = p + new CCVector2(hs, hs);
+			verts[3] = p + new CCVector2(-hs, hs);
 
             DrawSolidPolygon(verts, 4, color, true);
         }
@@ -744,15 +749,15 @@ namespace FarseerPhysics.DebugViews
             Matrix endMatrix = Matrix.CreateTranslation(end.X, end.Y, 0);
 
             // Setup arrow end shape
-            Vector2[] verts = new Vector2[3];
-            verts[0] = new Vector2(0, 0);
-            verts[1] = new Vector2(-halfWidth, -length);
-            verts[2] = new Vector2(halfWidth, -length);
+			CCVector2[] verts = new CCVector2[3];
+			verts[0] = new CCVector2(0, 0);
+			verts[1] = new CCVector2(-halfWidth, -length);
+			verts[2] = new CCVector2(halfWidth, -length);
 
             // Rotate end shape
-            Vector2.Transform(verts, ref rotMatrix, verts);
+			CCVector2.Transform(verts, ref rotMatrix, verts);
             // Translate end shape
-            Vector2.Transform(verts, ref endMatrix, verts);
+			CCVector2.Transform(verts, ref endMatrix, verts);
 
             // Draw arrow end shape
             DrawSolidPolygon(verts, 3, color, false);
@@ -762,16 +767,16 @@ namespace FarseerPhysics.DebugViews
                 // Create translation matrix for start
                 Matrix startMatrix = Matrix.CreateTranslation(start.X, start.Y, 0);
                 // Setup arrow start shape
-                Vector2[] baseVerts = new Vector2[4];
-                baseVerts[0] = new Vector2(-halfWidth, length / 4);
-                baseVerts[1] = new Vector2(halfWidth, length / 4);
-                baseVerts[2] = new Vector2(halfWidth, 0);
-                baseVerts[3] = new Vector2(-halfWidth, 0);
+				CCVector2[] baseVerts = new CCVector2[4];
+				baseVerts[0] = new CCVector2(-halfWidth, length / 4);
+				baseVerts[1] = new CCVector2(halfWidth, length / 4);
+				baseVerts[2] = new CCVector2(halfWidth, 0);
+				baseVerts[3] = new CCVector2(-halfWidth, 0);
 
                 // Rotate start shape
-                Vector2.Transform(baseVerts, ref rotMatrix, baseVerts);
+				CCVector2.Transform(baseVerts, ref rotMatrix, baseVerts);
                 // Translate start shape
-                Vector2.Transform(baseVerts, ref startMatrix, baseVerts);
+				CCVector2.Transform(baseVerts, ref startMatrix, baseVerts);
                 // Draw start shape
                 DrawSolidPolygon(baseVerts, 4, color, false);
             }
