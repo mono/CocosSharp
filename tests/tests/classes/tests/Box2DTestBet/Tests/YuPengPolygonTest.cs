@@ -24,6 +24,7 @@
 */
 
 using System.Collections.Generic;
+using System.Linq;
 using FarseerPhysics.Common;
 using FarseerPhysics.Common.PolygonManipulation;
 using FarseerPhysics.TestBed.Framework;
@@ -81,7 +82,7 @@ namespace FarseerPhysics.TestBed.Tests
             {
                 if (_polygons[i] != null)
                 {
-                    Vector2[] array = _polygons[i].ToArray();
+					CCVector2[] array = _polygons[i].ToList().ConvertAll(ii=> (CCVector2)ii).ToArray();
                     Color col = Color.SteelBlue;
                     if (!_polygons[i].IsCounterClockWise())
                     {

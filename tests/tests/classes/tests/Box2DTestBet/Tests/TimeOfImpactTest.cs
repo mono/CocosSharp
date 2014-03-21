@@ -28,6 +28,8 @@ using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using FarseerPhysics.TestBed.Framework;
 using Microsoft.Xna.Framework;
+using System.Linq;
+using CocosSharp;
 
 namespace FarseerPhysics.TestBed.Tests
 {
@@ -94,7 +96,7 @@ namespace FarseerPhysics.TestBed.Tests
             {
                 vertices[i] = MathUtils.Multiply(ref transformA, _shapeA.Vertices[i]);
             }
-            DebugView.DrawPolygon(vertices, _shapeA.Vertices.Count, new Color(0.9f, 0.9f, 0.9f));
+			DebugView.DrawPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _shapeA.Vertices.Count, new Color(0.9f, 0.9f, 0.9f));
 
             Transform transformB;
             sweepB.GetTransform(out transformB, 0.0f);
@@ -103,21 +105,21 @@ namespace FarseerPhysics.TestBed.Tests
             {
                 vertices[i] = MathUtils.Multiply(ref transformB, _shapeB.Vertices[i]);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.5f, 0.9f, 0.5f));
+			DebugView.DrawPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _shapeB.Vertices.Count, new Color(0.5f, 0.9f, 0.5f));
 
             sweepB.GetTransform(out transformB, output.T);
             for (int i = 0; i < _shapeB.Vertices.Count; ++i)
             {
                 vertices[i] = MathUtils.Multiply(ref transformB, _shapeB.Vertices[i]);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.5f, 0.7f, 0.9f));
+			DebugView.DrawPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _shapeB.Vertices.Count, new Color(0.5f, 0.7f, 0.9f));
 
             sweepB.GetTransform(out transformB, 1.0f);
             for (int i = 0; i < _shapeB.Vertices.Count; ++i)
             {
                 vertices[i] = MathUtils.Multiply(ref transformB, _shapeB.Vertices[i]);
             }
-            DebugView.DrawPolygon(vertices, _shapeB.Vertices.Count, new Color(0.9f, 0.5f, 0.5f));
+			DebugView.DrawPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _shapeB.Vertices.Count, new Color(0.9f, 0.5f, 0.5f));
             DebugView.EndCustomDraw();
         }
     }

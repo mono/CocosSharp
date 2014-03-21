@@ -25,6 +25,8 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
+using CocosSharp;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
@@ -85,7 +87,7 @@ namespace FarseerPhysics.TestBed.Tests
                             vertices[i] = MathUtils.Multiply(ref xf, poly.Vertices[i]);
                         }
 
-                        DebugDraw.DrawSolidPolygon(vertices, vertexCount, color);
+					DebugDraw.DrawSolidPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), vertexCount, color);
                     }
                     break;
             }

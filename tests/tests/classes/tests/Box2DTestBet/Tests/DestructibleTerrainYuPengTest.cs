@@ -1,6 +1,7 @@
 #if NETFX_CORE
 using System.Collections.Generic;
 #endif
+using System.Linq;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
@@ -94,7 +95,7 @@ namespace FarseerPhysics.TestBed.Tests
             Vertices tempshape = new Vertices(_clipCircle);
             tempshape.Translate(ref _mousePos);
             DebugView.BeginCustomDraw();
-            DebugView.DrawPolygon(tempshape.ToArray(), _clipCircle.Count, color);
+			DebugView.DrawPolygon(tempshape.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _clipCircle.Count, color);
             DebugView.EndCustomDraw();
         }
 
