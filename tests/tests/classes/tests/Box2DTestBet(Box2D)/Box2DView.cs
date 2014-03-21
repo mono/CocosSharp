@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Box2D.Common;
 using CocosSharp;
-using Microsoft.Xna.Framework.Input;
 
 namespace Box2D.TestBed
 {
@@ -12,18 +11,25 @@ namespace Box2D.TestBed
         private int m_entryID;
 
         private Settings settings = new Settings();
+		CCEventListenerTouchOneByOne touchListener;
 
         public bool initWithEntryID(int entryId)
         {
 			// Register Touch Event
-			var touchListener = new CCEventListenerTouchOneByOne();
+			touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
 
 			touchListener.OnTouchBegan = onTouchBegan;
 			touchListener.OnTouchMoved = onTouchMoved;
-			//touchListener.OnTouchCancelled = onTouchCancelled;
+			touchListener.OnTouchEnded = onTouchEnded;
 
 			EventDispatcher.AddEventListener(touchListener, -10);
+
+			var keyboardListener = new CCEventListenerKeyboard ();
+			keyboardListener.OnKeyPressed = onKeyPressed;
+			keyboardListener.OnKeyReleased = onKeyReleased;
+
+			EventDispatcher.AddEventListener (keyboardListener, this);
 
             Schedule ();
 
@@ -52,11 +58,12 @@ namespace Box2D.TestBed
             m_test.InternalDraw(settings);
         }
 
-//        public override void RegisterWithTouchDispatcher()
-//        {
-//            CCDirector pDirector = CCDirector.SharedDirector;
-//            pDirector.TouchDispatcher.AddTargetedDelegate(this, -10, true);
-//        }
+		public override void OnExit ()
+		{
+			if (touchListener != null)
+				EventDispatcher.RemoveEventListener (touchListener);
+			base.OnExit ();
+		}
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
@@ -65,9 +72,8 @@ namespace Box2D.TestBed
             CCPoint nodePosition = ConvertToNodeSpace(touchLocation);
             //    NSLog(@"pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
 
-            m_test.MouseDown(new b2Vec2(nodePosition.X, nodePosition.Y));
+			return m_test.MouseDown(new b2Vec2(nodePosition.X, nodePosition.Y));
 
-            return true;
         }
 
 		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
@@ -88,48 +94,48 @@ namespace Box2D.TestBed
 
         //virtual void accelerometer(UIAccelerometer* accelerometer, CCAcceleration* acceleration);
 
-        public override void KeyPressed(Keys key)
+		void onKeyPressed(CCEventKeyboard keyEvent)
         {
-            var result = Convert(new Keys[] {key});
+			var result = Convert( keyEvent );
             if (result.Length > 0)
             {
                 m_test.Keyboard(result[0]);
             }
         }
 
-        public override void KeyReleased(Keys key)
+		void onKeyReleased(CCEventKeyboard keyEvent)
         {
-            var result = Convert(new Keys[] { key });
+			var result = Convert( keyEvent );
             if (result.Length > 0)
             {
                 m_test.KeyboardUp(result[0]);
             }
         }
 
-        private KeyboardState _keyboardState;
+		//        private KeyboardState _keyboardState;
 
-        public override void KeyboardCurrentState(KeyboardState currentState)
-        {
-            _keyboardState = currentState;
-        }
+//        public override void KeyboardCurrentState(KeyboardState currentState)
+//        {
+//            _keyboardState = currentState;
+//        }
 
-        public string Convert(Keys[] keys)
+		public string Convert(CCEventKeyboard keyEvent)
         {
             string output = "";
 
-            var state = new List<Keys>(_keyboardState.GetPressedKeys());
+			var state = new List<CCKeys>(keyEvent.KeyboardState.GetPressedKeys());
 
-            bool usesShift = (state.Contains(Keys.LeftShift) || state.Contains(Keys.RightShift));
+			bool usesShift = (state.Contains(CCKeys.LeftShift) || state.Contains(CCKeys.RightShift));
 
-            foreach (Keys key in keys)
+			foreach (CCKeys key in state)
             {
-                if (key >= Keys.A && key <= Keys.Z)
+				if (key >= CCKeys.A && key <= CCKeys.Z)
                     output += key.ToString();
-                else if (key >= Keys.NumPad0 && key <= Keys.NumPad9)
-                    output += ((int) (key - Keys.NumPad0)).ToString();
-                else if (key >= Keys.D0 && key <= Keys.D9)
+				else if (key >= CCKeys.NumPad0 && key <= CCKeys.NumPad9)
+                    output += ((int) (key - CCKeys.NumPad0)).ToString();
+				else if (key >= CCKeys.D0 && key <= CCKeys.D9)
                 {
-                    string num = ((int) (key - Keys.D0)).ToString();
+					string num = ((int) (key - CCKeys.D0)).ToString();
 
                     #region special num chars
 
@@ -197,21 +203,21 @@ namespace Box2D.TestBed
 
                     output += num;
                 }
-                else if (key == Keys.OemComma)
+                else if (key == CCKeys.OemComma)
                     output += ",";
-                else if (key == Keys.OemPeriod)
+                else if (key == CCKeys.OemPeriod)
                     output += ".";
-                else if (key == Keys.OemTilde)
+                else if (key == CCKeys.OemTilde)
                     output += "'";
-                else if (key == Keys.Space)
+                else if (key == CCKeys.Space)
                     output += " ";
-                else if (key == Keys.OemMinus)
+                else if (key == CCKeys.OemMinus)
                     output += "-";
-                else if (key == Keys.OemPlus)
+                else if (key == CCKeys.OemPlus)
                     output += "+";
-                else if (key == Keys.OemQuestion && usesShift)
+                else if (key == CCKeys.OemQuestion && usesShift)
                     output += "?";
-                else if (key == Keys.Back) //backspace
+                else if (key == CCKeys.Back) //backspace
                     output += "\b";
 
                 if (!usesShift) //shouldn't need to upper because it's automagically in upper case
