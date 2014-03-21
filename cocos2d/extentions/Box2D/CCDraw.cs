@@ -10,9 +10,9 @@ namespace CocosSharp
 {
     public static class b2VecHelper
     {
-        public static Vector2 ToVector2(this b2Vec2 vec)
+        public static CCVector2 ToCCVector2(this b2Vec2 vec)
         {
-            return new Vector2(vec.x, vec.y);
+            return new CCVector2(vec.x, vec.y);
         }
 
         public static Color ToColor(this b2Color color)
@@ -54,12 +54,12 @@ namespace CocosSharp
 
             for (int i = 0; i < vertexCount - 1; i++)
             {
-                _primitiveBatch.AddVertex(vertices[i].ToVector2(), col, PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(vertices[i + 1].ToVector2(), col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(vertices[i].ToCCVector2(), col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), col, PrimitiveType.LineList);
             }
 
-            _primitiveBatch.AddVertex(vertices[vertexCount - 1].ToVector2(), col, PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(vertices[0].ToVector2(), col, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), col, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(vertices[0].ToCCVector2(), col, PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -79,9 +79,9 @@ namespace CocosSharp
 
             for (int i = 1; i < vertexCount - 1; i++)
             {
-                _primitiveBatch.AddVertex(vertices[0].ToVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(vertices[i].ToVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(vertices[i + 1].ToVector2(), colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(vertices[0].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(vertices[i].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                _primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
             }
 
             DrawPolygon(vertices, vertexCount, color);
@@ -97,14 +97,14 @@ namespace CocosSharp
             double theta = 0.0;
 
             var col = color.ToColor();
-            Vector2 centr = center.ToVector2();
+            CCVector2 centr = center.ToCCVector2();
 
             for (int i = 0, count = CircleSegments; i < count; i++)
             {
-                Vector2 v1 = centr + radius * new Vector2((float) Math.Cos(theta), (float) Math.Sin(theta));
-                Vector2 v2 = centr +
+                CCVector2 v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
+                CCVector2 v2 = centr +
                              radius *
-                             new Vector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+                             new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
                 _primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
                 _primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
@@ -123,16 +123,16 @@ namespace CocosSharp
             double theta = 0.0;
 
             var colorFill = color.ToColor() * 0.5f;
-            var centr = center.ToVector2();
+            var centr = center.ToCCVector2();
 
-            Vector2 v0 = center.ToVector2() + radius * new Vector2((float) Math.Cos(theta), (float) Math.Sin(theta));
+            CCVector2 v0 = center.ToCCVector2() + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
             theta += increment;
 
             for (int i = 1; i < CircleSegments - 1; i++)
             {
-                var v1 = centr + radius * new Vector2((float) Math.Cos(theta), (float) Math.Sin(theta));
+                var v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
                 var v2 = centr +
-                         radius * new Vector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+                         radius * new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
                 _primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
                 _primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
@@ -151,8 +151,8 @@ namespace CocosSharp
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
-            _primitiveBatch.AddVertex(p1.ToVector2(), color.ToColor(), PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(p2.ToVector2(), color.ToColor(), PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToColor(), PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToColor(), PrimitiveType.LineList);
         }
 
         public override void DrawTransform(b2Transform xf)
@@ -212,7 +212,7 @@ namespace CocosSharp
             {
                 _stringBuilder.Length = 0;
                 _stringBuilder.AppendFormat(_stringData[i].S, _stringData[i].Args);
-                _batch.DrawString(_spriteFont, _stringBuilder, new Vector2(_stringData[i].X, _stringData[i].Y),
+                _batch.DrawString(_spriteFont, _stringBuilder, new CCVector2(_stringData[i].X, _stringData[i].Y),
                     _stringData[i].Color);
             }
 

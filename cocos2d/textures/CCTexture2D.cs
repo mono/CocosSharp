@@ -65,10 +65,10 @@ namespace CocosSharp
 		Rgba64 = 11,
 		Alpha8 = 12,
 		Single = 13,
-		Vector2 = 14,
+		CCVector2 = 14,
 		Vector4 = 15,
 		HalfSingle = 16,
-		HalfVector2 = 17,
+		HalfCCVector2 = 17,
 		HalfVector4 = 18,
 		HdrBlendable = 19,
 
@@ -594,7 +594,7 @@ namespace CocosSharp
 
                 if (dimensions.Equals(CCSize.Zero))
                 {
-                    Vector2 temp = font.MeasureString(text);
+                    CCVector2 temp = font.MeasureString(text);
                     dimensions.Width = temp.X * scale;
                     dimensions.Height = temp.Y * scale;
                 }
@@ -690,7 +690,7 @@ namespace CocosSharp
                 {
                     string line = textList[j];
 
-                    var position = new Vector2(0, nextY);
+                    var position = new CCVector2(0, nextY);
 
                     if (hAlignment == CCTextAlignment.Right)
                     {
@@ -701,7 +701,7 @@ namespace CocosSharp
                         position.X = (dimensions.Width - font.MeasureString(line).X * scale) / 2.0f;
                     }
 
-                    sb.DrawString(font, line, position, Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+                    sb.DrawString(font, line, position, Color.White, 0f, CCVector2.Zero, scale, SpriteEffects.None, 0);
 
                     nextY += font.LineSpacing * scale;
                 }
@@ -924,7 +924,7 @@ namespace CocosSharp
                 SpriteBatch sb = CCDrawManager.spriteBatch;
 
                 sb.Begin();
-                sb.Draw(m_Texture2D, Vector2.Zero, Color.White);
+                sb.Draw(m_Texture2D, CCVector2.Zero, Color.White);
                 sb.End();
 
                 if (!m_bManaged)
@@ -954,7 +954,7 @@ namespace CocosSharp
 
             CCDrawManager.SetRenderTarget(renderTarget);
             CCDrawManager.spriteBatch.Begin();
-            CCDrawManager.spriteBatch.Draw(texture, new Vector2(0, 0), Color.White);
+            CCDrawManager.spriteBatch.Draw(texture, new CCVector2(0, 0), Color.White);
             CCDrawManager.spriteBatch.End();
             CCDrawManager.SetRenderTarget((CCTexture2D)null);
 

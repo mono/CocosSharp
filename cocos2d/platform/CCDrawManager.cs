@@ -661,7 +661,7 @@ namespace CocosSharp
                 graphicsDevice.SetRenderTarget(null);
 
                 spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-                spriteBatch.Draw(m_renderTarget, new Vector2(0, 0), Color.White);
+				spriteBatch.Draw(m_renderTarget, new Vector2(0, 0), Color.White);
                 spriteBatch.End();
             }
 

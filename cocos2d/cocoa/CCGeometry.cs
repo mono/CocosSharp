@@ -26,6 +26,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.Xna.Framework;
+using System.Runtime.Serialization;
+using System.Globalization;
 
 namespace CocosSharp
 {
@@ -67,7 +69,7 @@ namespace CocosSharp
             Y = pt.Y;
         }
 
-        public CCPoint(Vector2 v)
+        public CCPoint(CCVector2 v)
         {
             X = v.X;
             Y = v.Y;
@@ -651,14 +653,14 @@ namespace CocosSharp
 #endif
         }
 
-        public static implicit operator CCPoint(Vector2 point)
+        public static implicit operator CCPoint(CCVector2 point)
         {
              return new CCPoint(point.X, point.Y);
         }
 
-        public static implicit operator Vector2(CCPoint point)
+        public static implicit operator CCVector2(CCPoint point)
         {
-            return new Vector2(point.X, point.Y);
+            return new CCVector2(point.X, point.Y);
         }
 
         public static implicit operator Vector3(CCPoint point)
@@ -1031,4 +1033,541 @@ namespace CocosSharp
 #endif
         }
     }
+
+	[DataContract]
+	public struct CCVector2 : IEquatable<CCVector2>
+	{
+		#region Private Fields
+
+		private static CCVector2 zeroVector = new CCVector2(0f, 0f);
+		private static CCVector2 unitVector = new CCVector2(1f, 1f);
+		private static CCVector2 unitXVector = new CCVector2(1f, 0f);
+		private static CCVector2 unitYVector = new CCVector2(0f, 1f);
+
+		#endregion Private Fields
+
+
+		#region Public Fields
+
+		[DataMember]
+		public float X;
+
+		[DataMember]
+		public float Y;
+
+		#endregion Public Fields
+
+
+		#region Properties
+
+		public static CCVector2 Zero
+		{
+			get { return zeroVector; }
+		}
+
+		public static CCVector2 One
+		{
+			get { return unitVector; }
+		}
+
+		public static CCVector2 UnitX
+		{
+			get { return unitXVector; }
+		}
+
+		public static CCVector2 UnitY
+		{
+			get { return unitYVector; }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		public CCVector2(float x, float y)
+		{
+			this.X = x;
+			this.Y = y;
+		}
+
+		public CCVector2(float value)
+		{
+			this.X = value;
+			this.Y = value;
+		}
+
+		#endregion Constructors
+
+
+		#region Public Methods
+
+		public static CCVector2 Add(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X += value2.X;
+			value1.Y += value2.Y;
+			return value1;
+		}
+
+		public static void Add(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X + value2.X;
+			result.Y = value1.Y + value2.Y;
+		}
+
+		public static CCVector2 Barycentric(CCVector2 value1, CCVector2 value2, CCVector2 value3, float amount1, float amount2)
+		{
+			return new CCVector2(
+				MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2),
+				MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2));
+		}
+
+		public static void Barycentric(ref CCVector2 value1, ref CCVector2 value2, ref CCVector2 value3, float amount1, float amount2, out CCVector2 result)
+		{
+			result = new CCVector2(
+				MathHelper.Barycentric(value1.X, value2.X, value3.X, amount1, amount2),
+				MathHelper.Barycentric(value1.Y, value2.Y, value3.Y, amount1, amount2));
+		}
+
+		public static CCVector2 CatmullRom(CCVector2 value1, CCVector2 value2, CCVector2 value3, CCVector2 value4, float amount)
+		{
+			return new CCVector2(
+				MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
+				MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
+		}
+
+		public static void CatmullRom(ref CCVector2 value1, ref CCVector2 value2, ref CCVector2 value3, ref CCVector2 value4, float amount, out CCVector2 result)
+		{
+			result = new CCVector2(
+				MathHelper.CatmullRom(value1.X, value2.X, value3.X, value4.X, amount),
+				MathHelper.CatmullRom(value1.Y, value2.Y, value3.Y, value4.Y, amount));
+		}
+
+		public static CCVector2 Clamp(CCVector2 value1, CCVector2 min, CCVector2 max)
+		{
+			return new CCVector2(
+				MathHelper.Clamp(value1.X, min.X, max.X),
+				MathHelper.Clamp(value1.Y, min.Y, max.Y));
+		}
+
+		public static void Clamp(ref CCVector2 value1, ref CCVector2 min, ref CCVector2 max, out CCVector2 result)
+		{
+			result = new CCVector2(
+				MathHelper.Clamp(value1.X, min.X, max.X),
+				MathHelper.Clamp(value1.Y, min.Y, max.Y));
+		}
+
+		public static float Distance(CCVector2 value1, CCVector2 value2)
+		{
+			float v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+			return (float)Math.Sqrt((v1 * v1) + (v2 * v2));
+		}
+
+		public static void Distance(ref CCVector2 value1, ref CCVector2 value2, out float result)
+		{
+			float v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+			result = (float)Math.Sqrt((v1 * v1) + (v2 * v2));
+		}
+
+		public static float DistanceSquared(CCVector2 value1, CCVector2 value2)
+		{
+			float v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+			return (v1 * v1) + (v2 * v2);
+		}
+
+		public static void DistanceSquared(ref CCVector2 value1, ref CCVector2 value2, out float result)
+		{
+			float v1 = value1.X - value2.X, v2 = value1.Y - value2.Y;
+			result = (v1 * v1) + (v2 * v2);
+		}
+
+		public static CCVector2 Divide(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X /= value2.X;
+			value1.Y /= value2.Y;
+			return value1;
+		}
+
+		public static void Divide(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X / value2.X;
+			result.Y = value1.Y / value2.Y;
+		}
+
+		public static CCVector2 Divide(CCVector2 value1, float divider)
+		{
+			float factor = 1 / divider;
+			value1.X *= factor;
+			value1.Y *= factor;
+			return value1;
+		}
+
+		public static void Divide(ref CCVector2 value1, float divider, out CCVector2 result)
+		{
+			float factor = 1 / divider;
+			result.X = value1.X * factor;
+			result.Y = value1.Y * factor;
+		}
+
+		public static float Dot(CCVector2 value1, CCVector2 value2)
+		{
+			return (value1.X * value2.X) + (value1.Y * value2.Y);
+		}
+
+		public static void Dot(ref CCVector2 value1, ref CCVector2 value2, out float result)
+		{
+			result = (value1.X * value2.X) + (value1.Y * value2.Y);
+		}
+
+		public override bool Equals(object obj)
+		{
+			if(obj is CCVector2)
+			{
+				return Equals((CCVector2)obj);
+			}
+
+			return false;
+		}
+
+		public bool Equals(CCVector2 other)
+		{
+			return (X == other.X) && (Y == other.Y);
+		}
+
+		public static CCVector2 Reflect(CCVector2 vector, CCVector2 normal)
+		{
+			CCVector2 result;
+			float val = 2.0f * ((vector.X * normal.X) + (vector.Y * normal.Y));
+			result.X = vector.X - (normal.X * val);
+			result.Y = vector.Y - (normal.Y * val);
+			return result;
+		}
+
+		public static void Reflect(ref CCVector2 vector, ref CCVector2 normal, out CCVector2 result)
+		{
+			float val = 2.0f * ((vector.X * normal.X) + (vector.Y * normal.Y));
+			result.X = vector.X - (normal.X * val);
+			result.Y = vector.Y - (normal.Y * val);
+		}
+
+		public override int GetHashCode()
+		{
+			return X.GetHashCode() + Y.GetHashCode();
+		}
+
+		public static CCVector2 Hermite(CCVector2 value1, CCVector2 tangent1, CCVector2 value2, CCVector2 tangent2, float amount)
+		{
+			CCVector2 result = new CCVector2();
+			Hermite(ref value1, ref tangent1, ref value2, ref tangent2, amount, out result);
+			return result;
+		}
+
+		public static void Hermite(ref CCVector2 value1, ref CCVector2 tangent1, ref CCVector2 value2, ref CCVector2 tangent2, float amount, out CCVector2 result)
+		{
+			result.X = MathHelper.Hermite(value1.X, tangent1.X, value2.X, tangent2.X, amount);
+			result.Y = MathHelper.Hermite(value1.Y, tangent1.Y, value2.Y, tangent2.Y, amount);
+		}
+
+		public float Length()
+		{
+			return (float)Math.Sqrt((X * X) + (Y * Y));
+		}
+
+		public float LengthSquared()
+		{
+			return (X * X) + (Y * Y);
+		}
+
+		public static CCVector2 Lerp(CCVector2 value1, CCVector2 value2, float amount)
+		{
+			return new CCVector2(
+				MathHelper.Lerp(value1.X, value2.X, amount),
+				MathHelper.Lerp(value1.Y, value2.Y, amount));
+		}
+
+		public static void Lerp(ref CCVector2 value1, ref CCVector2 value2, float amount, out CCVector2 result)
+		{
+			result = new CCVector2(
+				MathHelper.Lerp(value1.X, value2.X, amount),
+				MathHelper.Lerp(value1.Y, value2.Y, amount));
+		}
+
+		public static CCVector2 Max(CCVector2 value1, CCVector2 value2)
+		{
+			return new CCVector2(value1.X > value2.X ? value1.X : value2.X, 
+				value1.Y > value2.Y ? value1.Y : value2.Y);
+		}
+
+		public static void Max(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X > value2.X ? value1.X : value2.X;
+			result.Y = value1.Y > value2.Y ? value1.Y : value2.Y;
+		}
+
+		public static CCVector2 Min(CCVector2 value1, CCVector2 value2)
+		{
+			return new CCVector2(value1.X < value2.X ? value1.X : value2.X, 
+				value1.Y < value2.Y ? value1.Y : value2.Y); 
+		}
+
+		public static void Min(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X < value2.X ? value1.X : value2.X;
+			result.Y = value1.Y < value2.Y ? value1.Y : value2.Y;
+		}
+
+		public static CCVector2 Multiply(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X *= value2.X;
+			value1.Y *= value2.Y;
+			return value1;
+		}
+
+		public static CCVector2 Multiply(CCVector2 value1, float scaleFactor)
+		{
+			value1.X *= scaleFactor;
+			value1.Y *= scaleFactor;
+			return value1;
+		}
+
+		public static void Multiply(ref CCVector2 value1, float scaleFactor, out CCVector2 result)
+		{
+			result.X = value1.X * scaleFactor;
+			result.Y = value1.Y * scaleFactor;
+		}
+
+		public static void Multiply(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X * value2.X;
+			result.Y = value1.Y * value2.Y;
+		}
+
+		public static CCVector2 Negate(CCVector2 value)
+		{
+			value.X = -value.X;
+			value.Y = -value.Y;
+			return value;
+		}
+
+		public static void Negate(ref CCVector2 value, out CCVector2 result)
+		{
+			result.X = -value.X;
+			result.Y = -value.Y;
+		}
+
+		public void Normalize()
+		{
+			float val = 1.0f / (float)Math.Sqrt((X * X) + (Y * Y));
+			X *= val;
+			Y *= val;
+		}
+
+		public static CCVector2 Normalize(CCVector2 value)
+		{
+			float val = 1.0f / (float)Math.Sqrt((value.X * value.X) + (value.Y * value.Y));
+			value.X *= val;
+			value.Y *= val;
+			return value;
+		}
+
+		public static void Normalize(ref CCVector2 value, out CCVector2 result)
+		{
+			float val = 1.0f / (float)Math.Sqrt((value.X * value.X) + (value.Y * value.Y));
+			result.X = value.X * val;
+			result.Y = value.Y * val;
+		}
+
+		public static CCVector2 SmoothStep(CCVector2 value1, CCVector2 value2, float amount)
+		{
+			return new CCVector2(
+				MathHelper.SmoothStep(value1.X, value2.X, amount),
+				MathHelper.SmoothStep(value1.Y, value2.Y, amount));
+		}
+
+		public static void SmoothStep(ref CCVector2 value1, ref CCVector2 value2, float amount, out CCVector2 result)
+		{
+			result = new CCVector2(
+				MathHelper.SmoothStep(value1.X, value2.X, amount),
+				MathHelper.SmoothStep(value1.Y, value2.Y, amount));
+		}
+
+		public static CCVector2 Subtract(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X -= value2.X;
+			value1.Y -= value2.Y;
+			return value1;
+		}
+
+		public static void Subtract(ref CCVector2 value1, ref CCVector2 value2, out CCVector2 result)
+		{
+			result.X = value1.X - value2.X;
+			result.Y = value1.Y - value2.Y;
+		}
+
+		public static CCVector2 Transform(CCVector2 position, Matrix matrix)
+		{
+			Transform(ref position, ref matrix, out position);
+			return position;
+		}
+
+		public static void Transform(ref CCVector2 position, ref Matrix matrix, out CCVector2 result)
+		{
+			result = new CCVector2((position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41,
+				(position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42);
+		}
+
+		public static CCVector2 Transform(CCVector2 position, Quaternion quat)
+		{
+			Transform(ref position, ref quat, out position);
+			return position;
+		}
+
+		public static void Transform(ref CCVector2 position, ref Quaternion quat, out CCVector2 result)
+		{
+			Quaternion v = new Quaternion(position.X, position.Y, 0, 0), i, t;
+			Quaternion.Inverse(ref quat, out i);
+			Quaternion.Multiply(ref quat, ref v, out t);
+			Quaternion.Multiply(ref t, ref i, out v);
+
+			result = new CCVector2(v.X, v.Y);
+		}
+
+		public static void Transform (
+			CCVector2[] sourceArray,
+			ref Matrix matrix,
+			CCVector2[] destinationArray)
+		{
+			Transform(sourceArray, 0, ref matrix, destinationArray, 0, sourceArray.Length);
+		}
+
+
+		public static void Transform (
+			CCVector2[] sourceArray,
+			int sourceIndex,
+			ref Matrix matrix,
+			CCVector2[] destinationArray,
+			int destinationIndex,
+			int length)
+		{
+			for (int x = 0; x < length; x++) {
+				var position = sourceArray[sourceIndex + x];
+				var destination = destinationArray[destinationIndex + x];
+				destination.X = (position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41;
+				destination.Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42;
+				destinationArray[destinationIndex + x] = destination;
+			}
+		}
+
+		public static CCVector2 TransformNormal(CCVector2 normal, Matrix matrix)
+		{
+			CCVector2.TransformNormal(ref normal, ref matrix, out normal);
+			return normal;
+		}
+
+		public static void TransformNormal(ref CCVector2 normal, ref Matrix matrix, out CCVector2 result)
+		{
+			result = new CCVector2((normal.X * matrix.M11) + (normal.Y * matrix.M21),
+				(normal.X * matrix.M12) + (normal.Y * matrix.M22));
+		}
+
+		public override string ToString()
+		{
+			CultureInfo currentCulture = CultureInfo.CurrentCulture;
+			return string.Format(currentCulture, "{{X:{0} Y:{1}}}", new object[] { 
+				this.X.ToString(currentCulture), this.Y.ToString(currentCulture) });
+		}
+
+		#endregion Public Methods
+
+
+		#region Operators
+
+		public static CCVector2 operator -(CCVector2 value)
+		{
+			value.X = -value.X;
+			value.Y = -value.Y;
+			return value;
+		}
+
+
+		public static bool operator ==(CCVector2 value1, CCVector2 value2)
+		{
+			return value1.X == value2.X && value1.Y == value2.Y;
+		}
+
+
+		public static bool operator !=(CCVector2 value1, CCVector2 value2)
+		{
+			return value1.X != value2.X || value1.Y != value2.Y;
+		}
+
+
+		public static CCVector2 operator +(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X += value2.X;
+			value1.Y += value2.Y;
+			return value1;
+		}
+
+
+		public static CCVector2 operator -(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X -= value2.X;
+			value1.Y -= value2.Y;
+			return value1;
+		}
+
+
+		public static CCVector2 operator *(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X *= value2.X;
+			value1.Y *= value2.Y;
+			return value1;
+		}
+
+
+		public static CCVector2 operator *(CCVector2 value, float scaleFactor)
+		{
+			value.X *= scaleFactor;
+			value.Y *= scaleFactor;
+			return value;
+		}
+
+
+		public static CCVector2 operator *(float scaleFactor, CCVector2 value)
+		{
+			value.X *= scaleFactor;
+			value.Y *= scaleFactor;
+			return value;
+		}
+
+
+		public static CCVector2 operator /(CCVector2 value1, CCVector2 value2)
+		{
+			value1.X /= value2.X;
+			value1.Y /= value2.Y;
+			return value1;
+		}
+
+
+		public static CCVector2 operator /(CCVector2 value1, float divider)
+		{
+			float factor = 1 / divider;
+			value1.X *= factor;
+			value1.Y *= factor;
+			return value1;
+		}
+
+		public static implicit operator CCVector2(Vector2 point)
+		{
+			return new CCVector2(point.X, point.Y);
+		}
+
+		public static implicit operator Vector2(CCVector2 point)
+		{
+			return new Vector2(point.X, point.Y);
+		}
+		#endregion Operators
+	}
+
 }

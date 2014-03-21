@@ -116,12 +116,12 @@ namespace CocosSharp
             return _hasBegun;
         }
 
-        public void AddVertex(Vector2 vertex, Color color, PrimitiveType primitiveType)
+        public void AddVertex(CCVector2 vertex, Color color, PrimitiveType primitiveType)
         {
             AddVertex(ref vertex, color, primitiveType);
         }
 
-        public void AddVertex(ref Vector2 vertex, Color color, PrimitiveType primitiveType)
+        public void AddVertex(ref CCVector2 vertex, Color color, PrimitiveType primitiveType)
         {
             if (!_hasBegun)
             {

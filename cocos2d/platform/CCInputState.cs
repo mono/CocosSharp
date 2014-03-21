@@ -259,13 +259,13 @@ namespace CocosSharp
         ///   Expressed as: 
         ///   current mouse position - last mouse position.
         /// </summary>
-        public Vector2 MouseVelocity
+        public CCVector2 MouseVelocity
         {
             get
             {
                 return (
-                           new Vector2(CurrentMouseState.X, CurrentMouseState.Y) -
-                           new Vector2(LastMouseState.X, LastMouseState.Y)
+                           new CCVector2(CurrentMouseState.X, CurrentMouseState.Y) -
+                           new CCVector2(LastMouseState.X, LastMouseState.Y)
                        );
             }
         }
