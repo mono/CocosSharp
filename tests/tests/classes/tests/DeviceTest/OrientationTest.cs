@@ -11,7 +11,7 @@ namespace tests
     {
         static int MAX_LAYER = 1;
         static int sceneIdx = -1;
-        public static DisplayOrientation s_currentOrientation = DisplayOrientation.LandscapeLeft;
+		public static CCDisplayOrientation s_currentOrientation = CCDisplayOrientation.LandscapeLeft;
 
         public OrientationTest()
         {
@@ -160,15 +160,15 @@ namespace tests
         {
             switch (s_currentOrientation)
             {
-                case DisplayOrientation.LandscapeLeft:
-                    s_currentOrientation = DisplayOrientation.Portrait;
+			case CCDisplayOrientation.LandscapeLeft:
+				s_currentOrientation = CCDisplayOrientation.Portrait;
+                break;
+			case CCDisplayOrientation.Portrait:
+				s_currentOrientation = CCDisplayOrientation.LandscapeRight;
                     break;
-                case DisplayOrientation.Portrait:
-                    s_currentOrientation = DisplayOrientation.LandscapeRight;
-                    break;
-                case DisplayOrientation.LandscapeRight:
-                    s_currentOrientation = DisplayOrientation.LandscapeLeft;
-                    break;
+			case CCDisplayOrientation.LandscapeRight:
+				s_currentOrientation = CCDisplayOrientation.LandscapeLeft;
+                break;
             }
             CCDrawManager.SetOrientation(s_currentOrientation);
         }
@@ -221,7 +221,7 @@ namespace tests
         }
         public override void runThisTest()
         {
-            OrientationTest.s_currentOrientation = DisplayOrientation.LandscapeLeft;
+			OrientationTest.s_currentOrientation = CCDisplayOrientation.LandscapeLeft;
             CCLayer pLayer = OrientationTest.NextOrientationTestCase();
             AddChild(pLayer);
 

@@ -320,7 +320,7 @@ namespace tests
 
 				//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
 				#if ANDROID || WINDOWS_PHONE8
-				if (orientation == DisplayOrientation.LandscapeRight)
+				if (orientation == CCDisplayOrientation.LandscapeRight)
 				{
 					ptNow.X -= (float) acc.X * 9.81f;
 					ptNow.Y -= (float) acc.Y * 9.81f;

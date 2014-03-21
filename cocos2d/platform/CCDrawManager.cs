@@ -1223,32 +1223,32 @@ namespace CocosSharp
             CCDirector.SharedDirector.SetGlDefaultValues();
         }
 
-		public static DisplayOrientation SupportedOrientations
+		public static CCDisplayOrientation SupportedOrientations
 		{
-			get { return m_GraphicsDeviceMgr.SupportedOrientations; }
+			get { return (CCDisplayOrientation)m_GraphicsDeviceMgr.SupportedOrientations; }
 			set 
 			{
-				SetOrientation(value, false);
+				SetOrientation((CCDisplayOrientation)value, false);
 			}
 		}
 
-        public static void SetOrientation(DisplayOrientation supportedOrientations)
+		public static void SetOrientation(CCDisplayOrientation supportedOrientations)
         {
             SetOrientation(supportedOrientations, true);
         }
 
-        private static void SetOrientation(DisplayOrientation supportedOrientations, bool bUpdateDimensions)
+		private static void SetOrientation(CCDisplayOrientation supportedOrientations, bool bUpdateDimensions)
         {
-            bool ll = (supportedOrientations & DisplayOrientation.LandscapeLeft) == DisplayOrientation.LandscapeLeft;
-            bool lr = (supportedOrientations & DisplayOrientation.LandscapeRight) == DisplayOrientation.LandscapeRight;
-            bool p = (supportedOrientations & DisplayOrientation.Portrait) == DisplayOrientation.Portrait;
+			bool ll = (supportedOrientations & CCDisplayOrientation.LandscapeLeft) == CCDisplayOrientation.LandscapeLeft;
+			bool lr = (supportedOrientations & CCDisplayOrientation.LandscapeRight) == CCDisplayOrientation.LandscapeRight;
+			bool p = (supportedOrientations & CCDisplayOrientation.Portrait) == CCDisplayOrientation.Portrait;
 
             bool onlyLandscape = (ll || lr) && !p;
             bool onlyPortrait = !(ll || lr) && p;
 #if WINDOWS || WINDOWSGL || WINDOWS_PHONE
             bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == DisplayOrientation.Default);
 #else
-            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == 0);
+			bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & (DisplayOrientation)supportedOrientations) == 0);
 #endif
             if (bSwapDims && (ll || lr))
             {
@@ -1289,7 +1289,7 @@ namespace CocosSharp
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
                 m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
             }
-            m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
+			m_GraphicsDeviceMgr.SupportedOrientations = (CCDisplayOrientation)supportedOrientations;
 #endif
 
 #if WINDOWS_PHONE
@@ -1311,7 +1311,7 @@ namespace CocosSharp
                     m_GraphicsDeviceMgr.PreferredBackBufferHeight = 800;
                 }
             }
-            m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
+			m_GraphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
 #endif
 #if IOS || IPHONE
             if (bSwapDims)
@@ -1324,7 +1324,7 @@ namespace CocosSharp
                 m_GraphicsDeviceMgr.PreferredBackBufferWidth = preferredBackBufferHeight;
                 m_GraphicsDeviceMgr.PreferredBackBufferHeight = preferredBackBufferWidth;
             }
-            m_GraphicsDeviceMgr.SupportedOrientations = supportedOrientations;
+			m_GraphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
 #endif
 #if WINDOWS || WINDOWSGL
             if (bSwapDims)

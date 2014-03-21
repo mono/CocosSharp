@@ -13,7 +13,7 @@ namespace tests
         {
 
             // Set our supported orientations for those that can use them
-			SupportedOrientations = DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft;
+			SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
 
 #if WINDOWS_PHONE8
             HandleMediaStateAutomatically = false; // Bug in MonoGame - https://github.com/Cocos2DXNA/cocos2d-xna/issues/325

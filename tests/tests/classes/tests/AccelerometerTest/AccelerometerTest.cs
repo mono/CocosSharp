@@ -33,7 +33,7 @@ namespace tests
 
 			//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
 #if ANDROID || WINDOWS_PHONE8
-            if (orientation == DisplayOrientation.LandscapeRight)
+			if (orientation == CCDisplayOrientation.LandscapeRight)
 			{
 				ptTemp.X -= (float) accelerationValue.X * 9.81f;
 				ptTemp.Y -= (float) accelerationValue.Y * 9.81f;

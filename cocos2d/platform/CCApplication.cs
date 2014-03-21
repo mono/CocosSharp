@@ -10,6 +10,17 @@ using Microsoft.Xna.Framework.Input.Touch;
 namespace CocosSharp
 {
 
+	[Flags]
+	public enum CCDisplayOrientation
+	{
+		Default = 0,
+		LandscapeLeft = 1,
+		LandscapeRight = 2,
+		Portrait = 4,
+		PortraitDown = 8,
+		Unknown = 16
+	}
+
     public abstract class CCApplication : DrawableGameComponent
     {
         private readonly List<CCTouch> endedTouches = new List<CCTouch>();
@@ -28,7 +39,7 @@ namespace CocosSharp
         public GameTime GameTime;
 
         private bool _initialized;
-		public DisplayOrientation CurrentOrientation { get; private set; }
+		public CCDisplayOrientation CurrentOrientation { get; private set; }
 
         public CCApplication(Game game, IGraphicsDeviceService service = null)
             : base(game)
@@ -69,7 +80,7 @@ namespace CocosSharp
 
         void OrientationChanged (object sender, EventArgs e)
         {
-			CurrentOrientation = Game.Window.CurrentOrientation;
+			CurrentOrientation = (CCDisplayOrientation)Game.Window.CurrentOrientation;
         }
 
         protected bool HandleMediaStateAutomatically { get; set; }
@@ -224,7 +235,7 @@ namespace CocosSharp
 			set { Game.Window.AllowUserResizing = value; }
 		}
 
-        public DisplayOrientation SupportedOrientations
+		public CCDisplayOrientation SupportedOrientations
         {
             get { return CCDrawManager.SupportedOrientations; }
             set 
