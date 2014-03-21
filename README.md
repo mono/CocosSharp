@@ -94,7 +94,8 @@ You can find those in the [tests directory](https://github.com/xamarin/CocosShar
 	CocosSharp.Tests.WindowsGL.sln	
 	CocosSharp.Tests.WindowsPhone.sln	
 	CocosSharp.Tests.WindowsPhone7.sln	
-	CocosSharp.Tests.iOS.sln	
+	CocosSharp.Tests.iOS.sln
+	CocosSharp.Tests.MacOS.sln	
 
 ### Samples
 
