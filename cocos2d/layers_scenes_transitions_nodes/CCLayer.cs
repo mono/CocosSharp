@@ -34,7 +34,6 @@ namespace CocosSharp
     public class CCLayer : CCNode
     {
         bool isAccelerometerEnabled;
-        bool isTouchEnabled;
         bool restoreScissor;
         bool noDrawChildren;
 

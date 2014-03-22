@@ -63,12 +63,6 @@ namespace CocosSharp
             Y = pt.Y;
         }
 
-        public CCPoint(Point pt)
-        {
-            X = pt.X;
-            Y = pt.Y;
-        }
-
         public CCPoint(CCVector2 v)
         {
             X = v.X;
