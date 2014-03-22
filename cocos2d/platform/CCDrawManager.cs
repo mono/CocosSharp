@@ -160,7 +160,7 @@ namespace CocosSharp
             }
         }
 
-        public static Matrix ViewMatrix
+		internal static Matrix ViewMatrix
         {
             get { return m_viewMatrix; }
             set
@@ -170,7 +170,7 @@ namespace CocosSharp
             }
         }
 
-        public static Matrix ProjectionMatrix
+		internal static Matrix ProjectionMatrix
         {
             get { return m_projectionMatrix; }
             set
@@ -180,7 +180,7 @@ namespace CocosSharp
             }
         }
 
-        public static Matrix WorldMatrix
+		internal static Matrix WorldMatrix
         {
             get { return m_Matrix; }
             set
@@ -1390,7 +1390,7 @@ namespace CocosSharp
             m_worldMatrixChanged = true;
         }
 
-        public static void MultMatrix(ref Matrix matrix)
+		internal static void MultMatrix(ref Matrix matrix)
         {
             Matrix.Multiply(ref matrix, ref m_Matrix, out m_Matrix);
             m_worldMatrixChanged = true;

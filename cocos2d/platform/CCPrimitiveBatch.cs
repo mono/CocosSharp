@@ -66,7 +66,7 @@ namespace CocosSharp
 
         #endregion
 
-        public void SetProjection(ref Matrix projection)
+		internal void SetProjection(ref Matrix projection)
         {
             _basicEffect.Projection = projection;
         }
