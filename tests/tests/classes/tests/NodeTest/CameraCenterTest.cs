@@ -147,7 +147,15 @@ namespace tests
 
 			CCAffineTransform ct = new CCAffineTransform (lookAt.M11, lookAt.M12, lookAt.M13, lookAt.M14, lookAt.Translation.X, lookAt.Translation.Y);
 			ct = CCAffineTransform.Identity;
-			ct.XnaMatrix = lookAt;
+
+			// Setup our CCAffineTransfrom 
+			ct.a = lookAt.M11;
+			ct.c = lookAt.M21;
+			ct.b = lookAt.M12;
+			ct.d = lookAt.M22;
+			ct.tx = lookAt.M41;
+			ct.ty = lookAt.M42;
+
 			sprite1.AdditionalTransform = ct;
 		}
 

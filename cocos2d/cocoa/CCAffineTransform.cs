@@ -100,7 +100,7 @@ namespace CocosSharp
         /// <summary>
         /// Get/set the XNA matrix of this transform. This matrix will assume z=0.
         /// </summary>
-        public Matrix XnaMatrix
+		internal Matrix XnaMatrix
         {
             get
             {
@@ -318,7 +318,7 @@ namespace CocosSharp
             yresult = b * x + d * y + ty;
         }
 
-        public CCPoint Transform(CCPoint point)
+		public CCPoint Transform(CCPoint point)
         {
             return new CCPoint(
                 a * point.X + c * point.Y + tx,
@@ -395,5 +395,120 @@ namespace CocosSharp
         {
             return a == t.a && b == t.b && c == t.c && d == t.d && tx == t.tx && ty == t.ty;
         }
+
+
+		public override bool Equals(object obj)
+		{
+			bool flag = false;
+			if (obj is CCAffineTransform)
+			{
+				flag = this.Equals((CCAffineTransform) obj);
+			}
+			return flag;
+		}
+
+
+		public override int GetHashCode()
+		{
+			return (((((this.a.GetHashCode () + this.b.GetHashCode ()) + this.c.GetHashCode ()) + this.d.GetHashCode ()) + this.tx.GetHashCode ()) + this.ty.GetHashCode ());
+
+		}
+
+		public static CCAffineTransform operator +(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
+		{
+			affineTransform1.a = affineTransform1.a + affineTransform2.a;
+			affineTransform1.b = affineTransform1.b + affineTransform2.b;
+			affineTransform1.c = affineTransform1.c + affineTransform2.c;
+			affineTransform1.d = affineTransform1.d + affineTransform2.d;
+			affineTransform1.tx = affineTransform1.tx + affineTransform2.tx;
+			affineTransform1.ty = affineTransform1.ty + affineTransform2.ty;
+			return affineTransform1;
+		}
+
+		public static CCAffineTransform operator /(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
+		{
+			affineTransform1.a = affineTransform1.a / affineTransform2.a;
+			affineTransform1.b = affineTransform1.b / affineTransform2.b;
+			affineTransform1.c = affineTransform1.c / affineTransform2.c;
+			affineTransform1.d = affineTransform1.d / affineTransform2.d;
+			affineTransform1.tx = affineTransform1.tx / affineTransform2.tx;
+			affineTransform1.ty = affineTransform1.ty / affineTransform2.ty;
+			return affineTransform1;
+		}
+
+		public static CCAffineTransform operator /(CCAffineTransform affineTransform, float divider)
+		{
+			float num = 1f / divider;
+			affineTransform.a = affineTransform.a * num;
+			affineTransform.b = affineTransform.b * num;
+			affineTransform.c = affineTransform.c * num;
+			affineTransform.d = affineTransform.d * num;
+			affineTransform.tx = affineTransform.tx * num;
+			affineTransform.tx = affineTransform.ty * num;
+			return affineTransform;
+		}
+
+		public static bool operator ==(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
+		{
+			return (affineTransform1.a == affineTransform2.a && 
+				affineTransform1.b == affineTransform2.b && 
+				affineTransform1.c == affineTransform2.c && 
+				affineTransform1.d == affineTransform2.d && 
+				affineTransform1.tx == affineTransform2.tx && 
+				affineTransform1.ty == affineTransform2.ty);
+		}
+
+		public static bool operator !=(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
+		{
+			return (affineTransform1.a != affineTransform2.a || 
+				affineTransform1.b != affineTransform2.b || 
+				affineTransform1.c != affineTransform2.c || 
+				affineTransform1.d != affineTransform2.d || 
+				affineTransform1.tx != affineTransform2.tx || 
+				affineTransform1.ty != affineTransform2.ty);
+		}
+
+		public static CCAffineTransform operator -(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
+		{
+			affineTransform1.a = affineTransform1.a - affineTransform2.a;
+			affineTransform1.b = affineTransform1.b - affineTransform2.b;
+			affineTransform1.c = affineTransform1.c - affineTransform2.c;
+			affineTransform1.d = affineTransform1.d - affineTransform2.d;
+			affineTransform1.tx = affineTransform1.tx - affineTransform2.tx;
+			affineTransform1.ty = affineTransform1.ty - affineTransform2.ty;
+			return affineTransform1;
+		}
+
+		public static CCAffineTransform operator *(CCAffineTransform affinematrix1, CCAffineTransform affinematrix2)
+		{
+
+			var a = (affinematrix1.a * affinematrix2.a) + (affinematrix1.b * affinematrix2.c);
+			var b = (affinematrix1.a * affinematrix2.b) + (affinematrix1.b * affinematrix2.d);
+			var c = (affinematrix1.c * affinematrix2.a) + (affinematrix1.d * affinematrix2.c);
+			var d = (affinematrix1.c * affinematrix2.b) + (affinematrix1.d * affinematrix2.d);
+			var tx = ((affinematrix1.tx * affinematrix2.a) + (affinematrix1.ty * affinematrix2.c)) + affinematrix2.tx;
+			var ty = ((affinematrix1.tx * affinematrix2.b) + (affinematrix1.ty * affinematrix2.d)) + affinematrix2.ty;
+			affinematrix1.a = a;
+			affinematrix1.b = b;
+			affinematrix1.c = c;
+			affinematrix1.d = d;
+			affinematrix1.tx = tx;
+			affinematrix1.ty = ty;
+		
+			return affinematrix1;
+
+		}
+
+		public static CCAffineTransform operator -(CCAffineTransform affineTransform1)
+		{
+			affineTransform1.a = -affineTransform1.a;
+			affineTransform1.b = -affineTransform1.b;
+			affineTransform1.c = -affineTransform1.c;
+			affineTransform1.d = -affineTransform1.d;
+			affineTransform1.tx = -affineTransform1.tx;
+			affineTransform1.ty = -affineTransform1.ty;
+			return affineTransform1;
+		}
+
     }
 }

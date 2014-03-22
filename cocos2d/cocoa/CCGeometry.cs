@@ -1404,47 +1404,30 @@ namespace CocosSharp
 			result.Y = value1.Y - value2.Y;
 		}
 
-		public static CCVector2 Transform(CCVector2 position, Matrix matrix)
+		public static CCVector2 Transform(CCVector2 position, CCAffineTransform matrix)
 		{
 			Transform(ref position, ref matrix, out position);
 			return position;
 		}
 
-		public static void Transform(ref CCVector2 position, ref Matrix matrix, out CCVector2 result)
+		public static void Transform(ref CCVector2 position, ref CCAffineTransform affineTransform, out CCVector2 result)
 		{
-			result = new CCVector2((position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41,
-				(position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42);
-		}
-
-		public static CCVector2 Transform(CCVector2 position, Quaternion quat)
-		{
-			Transform(ref position, ref quat, out position);
-			return position;
-		}
-
-		public static void Transform(ref CCVector2 position, ref Quaternion quat, out CCVector2 result)
-		{
-			Quaternion v = new Quaternion(position.X, position.Y, 0, 0), i, t;
-			Quaternion.Inverse(ref quat, out i);
-			Quaternion.Multiply(ref quat, ref v, out t);
-			Quaternion.Multiply(ref t, ref i, out v);
-
-			result = new CCVector2(v.X, v.Y);
+			result = new CCVector2((position.X * affineTransform.a) + (position.Y * affineTransform.c) + affineTransform.tx,
+				(position.X * affineTransform.b) + (position.Y * affineTransform.d) + affineTransform.ty);
 		}
 
 		public static void Transform (
 			CCVector2[] sourceArray,
-			ref Matrix matrix,
+			ref CCAffineTransform affineTransform,
 			CCVector2[] destinationArray)
 		{
-			Transform(sourceArray, 0, ref matrix, destinationArray, 0, sourceArray.Length);
+			Transform(sourceArray, 0, ref affineTransform, destinationArray, 0, sourceArray.Length);
 		}
-
 
 		public static void Transform (
 			CCVector2[] sourceArray,
 			int sourceIndex,
-			ref Matrix matrix,
+			ref CCAffineTransform matrix,
 			CCVector2[] destinationArray,
 			int destinationIndex,
 			int length)
@@ -1452,22 +1435,16 @@ namespace CocosSharp
 			for (int x = 0; x < length; x++) {
 				var position = sourceArray[sourceIndex + x];
 				var destination = destinationArray[destinationIndex + x];
-				destination.X = (position.X * matrix.M11) + (position.Y * matrix.M21) + matrix.M41;
-				destination.Y = (position.X * matrix.M12) + (position.Y * matrix.M22) + matrix.M42;
+				destination.X = (position.X * matrix.a) + (position.Y * matrix.c) + matrix.tx;
+				destination.Y = (position.X * matrix.b) + (position.Y * matrix.d) + matrix.ty;
 				destinationArray[destinationIndex + x] = destination;
 			}
 		}
 
-		public static CCVector2 TransformNormal(CCVector2 normal, Matrix matrix)
+		public static void TransformNormal(ref CCVector2 normal, ref CCAffineTransform affineTransform, out CCVector2 result)
 		{
-			CCVector2.TransformNormal(ref normal, ref matrix, out normal);
-			return normal;
-		}
-
-		public static void TransformNormal(ref CCVector2 normal, ref Matrix matrix, out CCVector2 result)
-		{
-			result = new CCVector2((normal.X * matrix.M11) + (normal.Y * matrix.M21),
-				(normal.X * matrix.M12) + (normal.Y * matrix.M22));
+			result = new CCVector2((normal.X * affineTransform.a) + (normal.Y * affineTransform.c),
+				(normal.X * affineTransform.b) + (normal.Y * affineTransform.d));
 		}
 
 		public override string ToString()

@@ -728,6 +728,11 @@ namespace FarseerPhysics.DebugViews
             _stringData.Add(new StringData(x, y, s, args, TextColor));
         }
 
+		private static CCAffineTransform MatrixToCCAffineTransform (Matrix matrix)
+		{
+			return new CCAffineTransform (matrix.M11, matrix.M12, matrix.M21, matrix.M22, matrix.M41, matrix.M42);
+		}
+
         public void DrawArrow(Vector2 start, Vector2 end, float length, float width, bool drawStartIndicator,
                               Color color)
         {
@@ -755,9 +760,11 @@ namespace FarseerPhysics.DebugViews
 			verts[2] = new CCVector2(halfWidth, -length);
 
             // Rotate end shape
-			CCVector2.Transform(verts, ref rotMatrix, verts);
+			var rotAffineTransform = MatrixToCCAffineTransform (rotMatrix);
+			CCVector2.Transform(verts, ref rotAffineTransform, verts);
             // Translate end shape
-			CCVector2.Transform(verts, ref endMatrix, verts);
+			var endAffineTransform = MatrixToCCAffineTransform (endMatrix);
+			CCVector2.Transform(verts, ref endAffineTransform, verts);
 
             // Draw arrow end shape
             DrawSolidPolygon(verts, 3, color, false);
@@ -774,9 +781,10 @@ namespace FarseerPhysics.DebugViews
 				baseVerts[3] = new CCVector2(-halfWidth, 0);
 
                 // Rotate start shape
-				CCVector2.Transform(baseVerts, ref rotMatrix, baseVerts);
+				CCVector2.Transform(baseVerts, ref rotAffineTransform, baseVerts);
                 // Translate start shape
-				CCVector2.Transform(baseVerts, ref startMatrix, baseVerts);
+				var startAffineTransform = MatrixToCCAffineTransform (startMatrix);
+				CCVector2.Transform(baseVerts, ref startAffineTransform, baseVerts);
                 // Draw start shape
                 DrawSolidPolygon(baseVerts, 4, color, false);
             }

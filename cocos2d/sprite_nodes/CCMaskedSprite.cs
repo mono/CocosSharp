@@ -55,8 +55,8 @@ namespace CocosSharp
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
             pt = CCPoint.Zero;
-            CCAffineTransform m1 = NodeToWorldTransform();
-            CCAffineTransform m2 = target.NodeToWorldTransform();
+            CCAffineTransform affine1 = NodeToWorldTransform();
+            CCAffineTransform affine2 = target.NodeToWorldTransform();
             CCRect myBBInWorld = WorldBoundingBox;
             CCRect targetBBInWorld = target.WorldBoundingBox;
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))
@@ -64,9 +64,8 @@ namespace CocosSharp
                 return (false);
             }
             // Based upon http://www.riemers.net/eng/Tutorials/XNA/Csharp/Series2D/Putting_CD_into_practice.php
-            Matrix mat1 = m1.XnaMatrix;
-            Matrix mat2 = m2.XnaMatrix;
-            Matrix mat1to2 = mat1 * Matrix.Invert(mat2);
+			var affine1to2 = affine1 * CCAffineTransform.Invert (affine2);
+
             int width2 = (int)target.ContentSize.Width;
             int height2 = (int)target.ContentSize.Height;
             int width1 = (int)ContentSize.Width;
@@ -81,8 +80,8 @@ namespace CocosSharp
             {
                 for (int y1 = 0; y1 < height1; y1++)
                 {
-                    CCVector2 pos1 = new CCVector2(x1, y1);
-                    CCVector2 pos2 = CCVector2.Transform(pos1, mat1to2);
+					var pos1 = new CCVector2(x1, y1);
+					var pos2 = CCVector2.Transform (pos1, affine1to2);
 
                     int x2 = (int)pos2.X;
                     int y2 = (int)pos2.Y;
@@ -103,7 +102,7 @@ namespace CocosSharp
                             {
                                 if (maskB[iB] > 0)
                                 {
-                                    CCVector2 screenPos = CCVector2.Transform(pos1, mat1);
+                                    CCVector2 screenPos = CCVector2.Transform(pos1, affine1);
                                     pt = new CCPoint(screenPos);
                                     return (true);
                                 }
