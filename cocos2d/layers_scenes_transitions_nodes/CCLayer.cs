@@ -38,7 +38,6 @@ namespace CocosSharp
         bool restoreScissor;
         bool noDrawChildren;
 
-        CCTouchMode touchMode;
         CCRenderTexture renderTexture;
         CCRect saveScissorRect;
         CCClipMode childClippingMode;
@@ -100,76 +99,6 @@ namespace CocosSharp
                 #else
                 isAccelerometerEnabled = false;
                 #endif
-            }
-        }
-
-        public CCTouchMode TouchMode
-        {
-            get { return touchMode; }
-            set
-            {
-                if (touchMode != value)
-                {
-                    touchMode = value;
-
-                    if (IsTouchEnabled)
-                    {
-                        IsTouchEnabled = false;
-                        IsTouchEnabled = true;
-                    }
-                }
-            }
-        }
-
-        public bool IsTouchEnabled
-        {
-            get { return isTouchEnabled; }
-
-            set 
-            {
-                if (value != isTouchEnabled) 
-                {
-
-                    isTouchEnabled = value;
-
-                    if (isTouchEnabled) 
-                    {
-                        if (TouchMode == CCTouchMode.AllAtOnce) 
-                        {
-                            // Register Touch Event
-                            var touchListener = new CCEventListenerTouchAllAtOnce();
-
-                            touchListener.OnTouchesBegan = TouchesBegan;
-                            touchListener.OnTouchesMoved = TouchesMoved;
-                            touchListener.OnTouchesEnded = TouchesEnded;
-                            touchListener.OnTouchesCancelled = TouchesCancelled;
-
-                            EventDispatcher.AddEventListener(touchListener, this);
-
-                            TouchListener = touchListener;
-                        } 
-                        else 
-                        {
-                            // Register Touch Event
-                            var touchListener = new CCEventListenerTouchOneByOne();
-                            touchListener.IsSwallowTouches = true;
-
-                            touchListener.OnTouchBegan = TouchBegan;
-                            touchListener.OnTouchMoved = TouchMoved;
-                            touchListener.OnTouchEnded = TouchEnded;
-                            touchListener.OnTouchCancelled = TouchCancelled;
-
-                            EventDispatcher.AddEventListener(touchListener, this);
-
-                            TouchListener = touchListener;
-                        }
-                    }
-                }
-                else
-                {
-                    EventDispatcher.RemoveEventListener(TouchListener);
-                    TouchListener = null;
-                }
             }
         }
 

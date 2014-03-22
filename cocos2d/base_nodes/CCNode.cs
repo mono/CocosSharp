@@ -123,16 +123,7 @@ namespace CocosSharp
         // input variables
 		private bool keypadEnabled;
         private bool m_bGamePadEnabled;
-		private bool m_bTouchEnabled;
-		private CCTouchMode touchMode = CCTouchMode.OneByOne;
-        private int m_nTouchPriority;
         private bool m_bGamePadDelegatesInited;
-
-        public enum CCTouchMode
-        {
-            AllAtOnce,
-            OneByOne
-        }
 
         public CCNode()
         {
@@ -1755,19 +1746,6 @@ namespace CocosSharp
         public virtual void KeyMenuClicked()
         {
         }
-
-		#region Keyboard Support
-
-		public virtual void KeyPressed (Keys key) 
-		{ }
-
-		public virtual void KeyReleased (Keys key)
-		{ }
-
-		public virtual void KeyboardCurrentState (KeyboardState currentState)
-		{ }
-
-		#endregion
 
         #region GamePad Support
         private CCGamePadButtonDelegate m_OnGamePadButtonUpdateDelegate;
