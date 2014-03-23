@@ -393,15 +393,6 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
-    <Compile Include="touch_dispatcher\CCStandardTouchHandler.cs" />
-    <Compile Include="touch_dispatcher\CCTargetedTouchHandler.cs" />
-    <Compile Include="touch_dispatcher\CCTouchDelegate.cs" />
-    <Compile Include="touch_dispatcher\CCTouchDispatcher.cs" />
-    <Compile Include="touch_dispatcher\CCTouchHandler.cs" />
-    <Compile Include="touch_dispatcher\ICCStandardTouchDelegate.cs" />
-    <Compile Include="touch_dispatcher\ICCTargetedTouchDelegate.cs" />
-    <Compile Include="touch_dispatcher\ICCTouchDelegate.cs" />
-    <Compile Include="touch_dispatcher\ICCEGLTouchDelegate.cs" />
     <Compile Include="support\Converters\CCPointConverter.cs" />
     <Compile Include="support\Converters\CCRectConverter.cs" />
     <Compile Include="support\Converters\CCSizeConverter.cs" />

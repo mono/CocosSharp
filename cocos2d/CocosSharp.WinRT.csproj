@@ -1115,33 +1115,6 @@
     <Compile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cs">
       <LogicalName>tileMap_parallax_nodes\CCTMXXMLParser</LogicalName>
     </Compile>
-    <Compile Include=".\touch_dispatcher\CCStandardTouchHandler.cs">
-      <LogicalName>touch_dispatcher\CCStandardTouchHandler</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\CCTargetedTouchHandler.cs">
-      <LogicalName>touch_dispatcher\CCTargetedTouchHandler</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\CCTouchDelegate.cs">
-      <LogicalName>touch_dispatcher\CCTouchDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\CCTouchDispatcher.cs">
-      <LogicalName>touch_dispatcher\CCTouchDispatcher</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\CCTouchHandler.cs">
-      <LogicalName>touch_dispatcher\CCTouchHandler</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\ICCStandardTouchDelegate.cs">
-      <LogicalName>touch_dispatcher\ICCStandardTouchDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\ICCTargetedTouchDelegate.cs">
-      <LogicalName>touch_dispatcher\ICCTargetedTouchDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\ICCTouchDelegate.cs">
-      <LogicalName>touch_dispatcher\ICCTouchDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\touch_dispatcher\ICCEGLTouchDelegate.cs">
-      <LogicalName>touch_dispatcher\IEGLTouchDelegate</LogicalName>
-    </Compile>
     <Compile Include=".\Win8IOExtensions.cs">
       <LogicalName>Win8IOExtensions</LogicalName>
     </Compile>
