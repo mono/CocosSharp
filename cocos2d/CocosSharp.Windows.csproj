@@ -191,11 +191,6 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="label_nodes\CCLabel-Gdi.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />

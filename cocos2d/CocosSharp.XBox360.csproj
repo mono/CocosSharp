@@ -175,11 +175,6 @@
     <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadButtonDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadConnectionDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadDPadDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadStickDelegate.cs" />
-    <Compile Include="gamepad_dispatcher\CCGamePadTriggerDelegate.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCFocusManager.cs" />
