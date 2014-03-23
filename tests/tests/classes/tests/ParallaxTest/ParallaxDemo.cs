@@ -16,17 +16,12 @@ namespace tests
         private const string s_pPathR1 = "Images/r1";
         private const string s_pPathR2 = "Images/r2";
 
-        private CCGamePadButtonDelegate _GamePadButtonDelegate;
-        private CCGamePadDPadDelegate _GamePadDPadDelegate;
-        private CCGamePadStickUpdateDelegate _GamePadStickDelegate;
-        private CCGamePadTriggerDelegate _GamePadTriggerDelegate;
-
         public ParallaxDemo()
         {
-            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
-            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
-            _GamePadTriggerDelegate = new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
+//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+//            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
+//            _GamePadTriggerDelegate = new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
         }
 
         #region GamePad Support

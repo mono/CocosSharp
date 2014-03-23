@@ -11,14 +11,14 @@ namespace tests
 
         public TestScene()
         {
-            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
         }
 
         public TestScene(bool bPortrait)
         {
-            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
         }
 
         public override void OnExit()
@@ -40,9 +40,6 @@ namespace tests
 			pMenu.Name = "MainMenu";
 			AddChild(pMenu, MENU_LEVEL);
         }
-
-        private CCGamePadButtonDelegate _GamePadButtonDelegate;
-        private CCGamePadDPadDelegate _GamePadDPadDelegate;
 
         private bool _bButtonWasPressed = false;
         private bool _aButtonWasPressed = false;

@@ -15,8 +15,6 @@ namespace tests
     {
         static int LINE_SPACE = 40;
         static CCPoint s_tCurPos = new CCPoint(0.0f, 0.0f);
-        private CCGamePadButtonDelegate _GamePadButtonDelegate;
-        private CCGamePadDPadDelegate _GamePadDPadDelegate;
         private List<CCMenuItem> _Items = new List<CCMenuItem>();
         private int _CurrentItemIndex = 0;
         private CCSprite _menuIndicator;

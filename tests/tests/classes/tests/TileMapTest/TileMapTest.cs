@@ -1374,10 +1374,10 @@ namespace tests
         private string s_pPathF2 = "Images/f2";
         private string s_pPathR1 = "Images/r1";
         private string s_pPathR2 = "Images/r2";
-        private CCGamePadButtonDelegate _GamePadButtonDelegate;
-        private CCGamePadDPadDelegate _GamePadDPadDelegate;
-        private CCGamePadStickUpdateDelegate _GamePadStickDelegate;
-        private CCGamePadTriggerDelegate _GamePadTriggerDelegate;
+//        private CCGamePadButtonDelegate _GamePadButtonDelegate;
+//        private CCGamePadDPadDelegate _GamePadDPadDelegate;
+//        private CCGamePadStickUpdateDelegate _GamePadStickDelegate;
+//        private CCGamePadTriggerDelegate _GamePadTriggerDelegate;
 
         public TileDemo()
         {
@@ -1389,10 +1389,10 @@ namespace tests
 
 
             CCSize s = CCDirector.SharedDirector.WinSize;
-            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
-            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
-            _GamePadTriggerDelegate =  new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
+//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
+//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
+//            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
+//            _GamePadTriggerDelegate =  new CCGamePadTriggerDelegate(MyGamePadTriggerUpdate);
 
             m_label = new CCLabelTtf("", "arial", 28);
             AddChild(m_label, 1);

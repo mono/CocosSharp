@@ -1717,36 +1717,5 @@ namespace CocosSharp
         {
         }
 
-        #region GamePad Support
-        private CCGamePadButtonDelegate m_OnGamePadButtonUpdateDelegate;
-        private CCGamePadConnectionDelegate m_OnGamePadConnectionUpdateDelegate;
-        private CCGamePadDPadDelegate m_OnGamePadDPadUpdateDelegate;
-        private CCGamePadStickUpdateDelegate m_OnGamePadStickUpdateDelegate;
-        private CCGamePadTriggerDelegate m_OnGamePadTriggerUpdateDelegate;
-
-        protected virtual void OnGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-        }
-
-        protected virtual void OnGamePadStickUpdate(CCGameStickStatus leftStick, CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-        }
-
-        protected virtual void OnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-            if (!HasFocus)
-            {
-                return;
-            }
-        }
-
-        protected virtual void OnGamePadConnectionUpdate(Microsoft.Xna.Framework.PlayerIndex player, bool IsConnected)
-        {
-        }
-
-        protected virtual void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-        }
-        #endregion
     }
 }

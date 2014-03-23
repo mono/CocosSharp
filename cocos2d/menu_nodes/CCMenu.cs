@@ -96,6 +96,7 @@ namespace CocosSharp
 			touchListener.OnTouchCancelled = TouchCancelled;
 
 			EventDispatcher.AddEventListener(touchListener, this);
+
         }
 
         #endregion Constructors
@@ -248,47 +249,6 @@ namespace CocosSharp
 		}
 
         #endregion Touch events
-
-
-        #region Gamepad
-
-        // Handles the button press event to track which focused menu item will get the activation
-        protected override void OnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, 
-            CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, 
-            CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, 
-            CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, 
-            CCGamePadButtonStatus rightShoulder, PlayerIndex xnaPlayer)
-        {
-            base.OnGamePadButtonUpdate(backButton, startButton, systemButton, aButton, bButton, xButton, yButton, leftShoulder, rightShoulder, xnaPlayer);
-
-            if (HasFocus) 
-            {
-                CCGamePadButtonStatus[] buttonStatusArray = { backButton, startButton, systemButton, aButton, 
-                    bButton, xButton, yButton, leftShoulder, rightShoulder };
-
-                bool buttonWasPressed = buttonStatusArray.Contains(CCGamePadButtonStatus.Pressed);
-                bool buttonWasReleased = buttonStatusArray.Contains(CCGamePadButtonStatus.Released);
-
-                if (buttonWasPressed)
-                {
-                    CCMenuItem item = FocusedItem;
-                    item.Selected = true;
-                    SelectedMenuItem = item;
-                    MenuState = CCMenuState.TrackingTouch;
-                } 
-                else if (buttonWasReleased && MenuState == CCMenuState.TrackingTouch 
-                    && FocusedItem != null && SelectedMenuItem == FocusedItem) 
-                {
-                    FocusedItem.Selected = false;
-                    FocusedItem.Activate();
-                    SelectedMenuItem = null;
-                    MenuState = CCMenuState.Waiting;
-                }
-            }
-        }
-
-        #endregion Gamepad
-
 
         #region Alignment
 
