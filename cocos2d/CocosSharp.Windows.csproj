@@ -183,6 +183,13 @@
     <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
     <Compile Include="events\CCEventMouse.cs" />
     <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\CCEventListenerGamePad.cs" />
+    <Compile Include="events\CCEventGamePadButton.cs" />
+    <Compile Include="events\CCEventGamePad.cs" />
+    <Compile Include="events\CCEventGamePadDPad.cs" />
+    <Compile Include="events\CCEventGamePadStick.cs" />
+    <Compile Include="events\CCEventGamePadTrigger.cs" />
+    <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />

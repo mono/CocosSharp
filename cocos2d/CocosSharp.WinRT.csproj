@@ -117,6 +117,13 @@
     <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
     <Compile Include="events\CCEventMouse.cs" />
     <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\CCEventListenerGamePad.cs" />
+    <Compile Include="events\CCEventGamePadButton.cs" />
+    <Compile Include="events\CCEventGamePad.cs" />
+    <Compile Include="events\CCEventGamePadDPad.cs" />
+    <Compile Include="events\CCEventGamePadStick.cs" />
+    <Compile Include="events\CCEventGamePadTrigger.cs" />
+    <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />

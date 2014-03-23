@@ -80,6 +80,7 @@
     <Reference Include="zlib.net">
       <HintPath>external lib\zlib.net.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" Condition="'$(windir)' != '' " />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -459,6 +460,13 @@
     <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
     <Compile Include="events\CCEventMouse.cs" />
     <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\CCEventListenerGamePad.cs" />
+    <Compile Include="events\CCEventGamePadButton.cs" />
+    <Compile Include="events\CCEventGamePad.cs" />
+    <Compile Include="events\CCEventGamePadDPad.cs" />
+    <Compile Include="events\CCEventGamePadStick.cs" />
+    <Compile Include="events\CCEventGamePadTrigger.cs" />
+    <Compile Include="events\CCEventGamePadConnection.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
