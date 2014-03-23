@@ -1201,26 +1201,6 @@ namespace CocosSharp
                 director.KeypadDispatcher.AddDelegate(this);
             }
 
-            if (GamePadEnabled && director.GamePadEnabled)
-            {
-                if (!m_bGamePadDelegatesInited)
-                {
-                    m_OnGamePadButtonUpdateDelegate = new CCGamePadButtonDelegate(OnGamePadButtonUpdate);
-                    m_OnGamePadConnectionUpdateDelegate = new CCGamePadConnectionDelegate(OnGamePadConnectionUpdate);
-                    m_OnGamePadDPadUpdateDelegate = new CCGamePadDPadDelegate(OnGamePadDPadUpdate);
-                    m_OnGamePadStickUpdateDelegate = new CCGamePadStickUpdateDelegate(OnGamePadStickUpdate);
-                    m_OnGamePadTriggerUpdateDelegate = new CCGamePadTriggerDelegate(OnGamePadTriggerUpdate);
-                    m_bGamePadDelegatesInited = true;
-                }
-
-                CCApplication application = CCApplication.SharedApplication;
-
-                application.GamePadButtonUpdate += m_OnGamePadButtonUpdateDelegate;
-                application.GamePadConnectionUpdate += m_OnGamePadConnectionUpdateDelegate;
-                application.GamePadDPadUpdate += m_OnGamePadDPadUpdateDelegate;
-                application.GamePadStickUpdate += m_OnGamePadStickUpdateDelegate;
-                application.GamePadTriggerUpdate += m_OnGamePadTriggerUpdateDelegate;
-            }
             /*
             if (m_nScriptHandler)
             {
@@ -1261,16 +1241,6 @@ namespace CocosSharp
             if (keypadEnabled)
             {
                 director.KeypadDispatcher.RemoveDelegate(this);
-            }
-
-            if (GamePadEnabled && director.GamePadEnabled)
-            {
-                CCApplication application = CCApplication.SharedApplication;
-                application.GamePadButtonUpdate -= m_OnGamePadButtonUpdateDelegate;
-                application.GamePadConnectionUpdate -= m_OnGamePadConnectionUpdateDelegate;
-                application.GamePadDPadUpdate -= m_OnGamePadDPadUpdateDelegate;
-                application.GamePadStickUpdate -= m_OnGamePadStickUpdateDelegate;
-                application.GamePadTriggerUpdate -= m_OnGamePadTriggerUpdateDelegate;
             }
 
             Pause();

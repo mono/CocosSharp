@@ -12,6 +12,7 @@ namespace CocosSharp
         KEYBOARD,
         ACCELERATION,
         MOUSE,
+		GAMEPAD,
         CUSTOM
     }
 

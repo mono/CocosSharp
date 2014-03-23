@@ -113,6 +113,9 @@ namespace CocosSharp
                 case CCEventType.MOUSE:
                     ret = CCEventListenerMouse.LISTENER_ID;
                     break;
+				case CCEventType.GAMEPAD:
+					ret = CCEventListenerGamePad.LISTENER_ID;
+					break;
                 case CCEventType.TOUCH:
                     // Touch listener is very special, it contains two kinds of listeners, EventListenerTouchOneByOne and EventListenerTouchAllAtOnce.
                     // return UNKNOWN instead.
@@ -290,6 +293,9 @@ namespace CocosSharp
 				break;
 			case CCEventListenerType.KEYBOARD:
 				RemoveEventListeners (CCEventListenerKeyboard.LISTENER_ID);
+				break;
+			case CCEventListenerType.GAMEPAD:
+				RemoveEventListeners (CCEventListenerGamePad.LISTENER_ID);
 				break;
 
 			default:

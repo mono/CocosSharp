@@ -150,11 +150,6 @@ namespace tests
         {
             base.OnEnter();
 
-            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
-            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadStickUpdate += _GamePadStickDelegate;
-            CCApplication.SharedApplication.GamePadTriggerUpdate += _GamePadTriggerDelegate;
-
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
@@ -178,10 +173,6 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
-            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadStickUpdate -= _GamePadStickDelegate;
-            CCApplication.SharedApplication.GamePadTriggerUpdate -= _GamePadTriggerDelegate;
         }
 
         public void restartCallback(object pSender)

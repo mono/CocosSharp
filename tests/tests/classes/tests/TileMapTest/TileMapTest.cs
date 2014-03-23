@@ -1513,21 +1513,12 @@ namespace tests
 
             m_label.Text = (title());
             m_subtitle.Text = (subtitle());
-            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
-            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadStickUpdate += _GamePadStickDelegate;
-            CCApplication.SharedApplication.GamePadTriggerUpdate += _GamePadTriggerDelegate;
         }
 
         public override void OnExit()
         {
             base.OnExit();
             CCDirector pDirector = CCDirector.SharedDirector;
-			//pDirector.TouchDispatcher.RemoveDelegate(this);
-            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
-            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadStickUpdate -= _GamePadStickDelegate;
-            CCApplication.SharedApplication.GamePadTriggerUpdate -= _GamePadTriggerDelegate;
         }
 
 

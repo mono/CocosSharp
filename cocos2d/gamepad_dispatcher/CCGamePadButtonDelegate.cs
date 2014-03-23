@@ -7,23 +7,23 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// How the button was engaged. You will get a Pressed notification unless the director
-    /// is configuerd to consume button presses and create the Tapped button status.
-    /// </summary>
-    public enum CCGamePadButtonStatus
-    {
-        Pressed,
-        Released,
-        /// <summary>
-        /// A pressed and released action was merged
-        /// </summary>
-        Tapped,
-        /// <summary>
-        /// Used when one of the buttons reported does not exist on the game pad
-        /// </summary>
-        NotApplicable
-    }
+//    /// <summary>
+//    /// How the button was engaged. You will get a Pressed notification unless the director
+//    /// is configuerd to consume button presses and create the Tapped button status.
+//    /// </summary>
+//    public enum CCGamePadButtonStatus
+//    {
+//        Pressed,
+//        Released,
+//        /// <summary>
+//        /// A pressed and released action was merged
+//        /// </summary>
+//        Tapped,
+//        /// <summary>
+//        /// Used when one of the buttons reported does not exist on the game pad
+//        /// </summary>
+//        NotApplicable
+//    }
 
     /// <summary>
     /// The event delegate to handle game pad button state changes. This delegate handles all discrete button

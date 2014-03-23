@@ -67,7 +67,7 @@ namespace CocosSharp
 			OnMouseScroll = mouse.OnMouseScroll;
 		}
 
-		public CCEventListener Copy()
+		public override CCEventListener Copy()
 		{
 			return new CCEventListenerMouse (this);
 		}

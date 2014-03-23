@@ -24,8 +24,6 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
         }
         public override void OnEnter()
         {
@@ -41,8 +39,6 @@ namespace tests
 			pMenuItem.Position = visiblePoint;
 			pMenu.Name = "MainMenu";
 			AddChild(pMenu, MENU_LEVEL);
-            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
         }
 
         private CCGamePadButtonDelegate _GamePadButtonDelegate;

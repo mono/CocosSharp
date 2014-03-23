@@ -28,10 +28,6 @@ namespace tests
             var pMenu = new CCMenu(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
 
-#if WINDOWS || WINDOWSGL || MACOS
-			GamePadEnabled = true;
-#endif
-
             pMenu.Position = CCPoint.Zero;
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
@@ -93,14 +89,14 @@ namespace tests
 			EventDispatcher.AddEventListener (mouseListener, this);
 
 #else
-			GamePadEnabled = true;
-			KeypadEnabled = true;
+			//KeypadEnabled = true;
+
 #endif
-
-            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
-
-            // set the first one to have the selection highlight
+			#if WINDOWS || WINDOWSGL || MACOS
+			EnableGamePad();
+			#endif
+			   
+			// set the first one to have the selection highlight
             _CurrentItemIndex = 0;
             SelectMenuItem();
 
@@ -147,67 +143,10 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
         }
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.GamePadDPadUpdate += _GamePadDPadDelegate;
-            CCApplication.SharedApplication.GamePadButtonUpdate += _GamePadButtonDelegate;
-        }
-
-        private bool _aButtonWasPressed = false;
-
-        private void MyOnGamePadButtonUpdate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-            if (aButton == CCGamePadButtonStatus.Pressed)
-            {
-                _aButtonWasPressed = true;
-            }
-            else if (aButton == CCGamePadButtonStatus.Released && _aButtonWasPressed)
-            {
-                // Select the menu
-                _Items[_CurrentItemIndex].Activate();
-                _Items[_CurrentItemIndex].Selected = false;
-            }
-        }
-
-        private long _FirstTicks;
-        private bool _bDownPress = false;
-        private bool _bUpPress = false;
-
-        private void MyOnGamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
-        {
-            // Down and Up only
-            if (downButton == CCGamePadButtonStatus.Pressed)
-            {
-                if (_FirstTicks == 0L)
-                {
-                    _FirstTicks = DateTime.Now.Ticks;
-                    _bDownPress = true;
-                }
-            }
-            else if (downButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bDownPress)
-            {
-                _FirstTicks = 0L;
-                NextMenuItem();
-                _bDownPress = false;
-            }
-            if (upButton == CCGamePadButtonStatus.Pressed)
-            {
-                if (_FirstTicks == 0L)
-                {
-                    _FirstTicks = DateTime.Now.Ticks;
-                    _bUpPress = true;
-                }
-            }
-            else if (upButton == CCGamePadButtonStatus.Released && _FirstTicks > 0L && _bUpPress)
-            {
-                _FirstTicks = 0L;
-                PreviousMenuItem();
-                _bUpPress = false;
-            }
         }
 
         ~TestController()
@@ -224,8 +163,6 @@ namespace tests
             TestScene pScene = CreateTestScene(nIdx);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.GamePadDPadUpdate -= _GamePadDPadDelegate;
-                CCApplication.SharedApplication.GamePadButtonUpdate -= _GamePadButtonDelegate;
                 pScene.runThisTest();
             }
         }
@@ -235,6 +172,78 @@ namespace tests
             CCDirector.SharedDirector.End();
             CCApplication.SharedApplication.Game.Exit();
         }
+
+		void EnableGamePad()
+		{
+
+			var AButtonWasPressed = false;
+
+			var gamePadListener = new CCEventListenerGamePad ();
+
+			gamePadListener.OnButtonStatus = (buttonStatus) => 
+			{
+				Console.WriteLine("gamepad button status");
+				if (buttonStatus.A == CCGamePadButtonStatus.Pressed)
+				{
+					AButtonWasPressed = true;
+				}
+				else if (buttonStatus.A == CCGamePadButtonStatus.Released && AButtonWasPressed)
+				{
+					// Select the menu
+					_Items[_CurrentItemIndex].Activate();
+					_Items[_CurrentItemIndex].Selected = false;
+				}
+			};
+
+			long firstTicks = 0;
+			bool isDownPressed = false;
+			bool isUpPressed = false;
+
+			gamePadListener.OnDPadStatus = (dpadStatus) => 
+			{
+				// Down and Up only
+				if (dpadStatus.Down == CCGamePadButtonStatus.Pressed) 
+				{
+					if (firstTicks == 0L) 
+					{
+						firstTicks = DateTime.Now.Ticks;
+						isDownPressed = true;
+					}
+				} 
+				else if (dpadStatus.Down == CCGamePadButtonStatus.Released && firstTicks > 0L && isDownPressed) 
+				{
+					firstTicks = 0L;
+					NextMenuItem ();
+					isDownPressed = false;
+				}
+				if (dpadStatus.Up == CCGamePadButtonStatus.Pressed) 
+				{
+					if (firstTicks == 0L) {
+						firstTicks = DateTime.Now.Ticks;
+						isUpPressed = true;
+					}
+				} 
+				else if (dpadStatus.Up == CCGamePadButtonStatus.Released && firstTicks > 0L && isUpPressed) 
+				{
+					firstTicks = 0L;
+					PreviousMenuItem ();
+					isUpPressed = false;
+				}
+
+
+			};
+
+			gamePadListener.OnConnectionStatus = (connectionStatus) => 
+			{
+				Console.WriteLine("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
+			};
+
+			EventDispatcher.AddEventListener (gamePadListener, this);
+
+			// We will enable the gamepad last so that we get connection events.
+			GamePadEnabled = true;
+
+		}
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {

@@ -89,7 +89,7 @@ namespace CocosSharp
         private void GameActivated(object sender, EventArgs e)
         {
             // Clear out the prior gamepad state because we don't want it anymore.
-            m_PriorGamePadState.Clear();
+            PriorGamePadState.Clear();
 #if !IOS
             if (HandleMediaStateAutomatically)
             {
@@ -309,157 +309,215 @@ namespace CocosSharp
         }
 
         #region GamePad Support
-        public event CCGamePadButtonDelegate GamePadButtonUpdate;
-        public event CCGamePadDPadDelegate GamePadDPadUpdate;
-        public event CCGamePadStickUpdateDelegate GamePadStickUpdate;
-        public event CCGamePadTriggerDelegate GamePadTriggerUpdate;
-        public event CCGamePadConnectionDelegate GamePadConnectionUpdate;
 
-        private Dictionary<PlayerIndex, GamePadState> m_PriorGamePadState = new Dictionary<PlayerIndex, GamePadState>();
+		private Dictionary<PlayerIndex, GamePadState> PriorGamePadState = new Dictionary<PlayerIndex, GamePadState>();
 
-        private void ProcessGamePad(GamePadState gps, PlayerIndex player)
-            {
-            GamePadState lastState = new GamePadState();
-            if (m_PriorGamePadState.ContainsKey(player))
-                {
-                lastState = m_PriorGamePadState[player];
-                // Notify listeners when the gamepad is connected.
-                if ((lastState.IsConnected != gps.IsConnected) && GamePadConnectionUpdate != null)
-                {
-                    GamePadConnectionUpdate(player, false);
-                }
-                // TODO: Check button pressed/released status for button tap events.
-            }
-            if (gps.IsConnected)
-            {
-                GamePadCapabilities caps = GamePad.GetCapabilities(player);
-                if (GamePadButtonUpdate != null)
-                {
-                    CCGamePadButtonStatus back = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus start = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus system = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus a = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus b = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus x = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus y = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus leftShoulder = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus rightShoulder = CCGamePadButtonStatus.NotApplicable;
-                    if (caps.HasBackButton)
-                    {
-                        back = (gps.Buttons.Back == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                }
-                    if (caps.HasStartButton)
-                    {
-                        start = (gps.Buttons.Start == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-            }
-                    if (caps.HasBigButton)
-            {
-                        system = (gps.Buttons.BigButton == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasAButton)
-                {
-                        a = (gps.Buttons.A == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                }
-                    if (caps.HasBButton)
-                    {
-                        b = (gps.Buttons.B == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-            }
-                    if (caps.HasXButton)
-            {
-                        x = (gps.Buttons.X == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasYButton)
-                {
-                        y = (gps.Buttons.Y == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasLeftShoulderButton)
-                    {
-                        leftShoulder = (gps.Buttons.LeftShoulder == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasRightShoulderButton)
-                    {
-                        rightShoulder = (gps.Buttons.RightShoulder == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    GamePadButtonUpdate(back, start, system, a, b, x, y, leftShoulder, rightShoulder, player);
-                }
-                // Process the game sticks
-                if (GamePadStickUpdate != null && (caps.HasLeftXThumbStick || caps.HasLeftYThumbStick || caps.HasRightXThumbStick || caps.HasRightYThumbStick ||  caps.HasLeftStickButton || caps.HasRightStickButton))
-                {
-                    CCPoint vecLeft;
-                    if (caps.HasLeftXThumbStick || caps.HasLeftYThumbStick)
-                    {
-                        vecLeft = new CCPoint(gps.ThumbSticks.Left);
-                        vecLeft.Normalize();
-                    }
-                    else
-                    {
-                        vecLeft = CCPoint.Zero;
-                    }
-                    CCPoint vecRight;
-                    if (caps.HasRightXThumbStick || caps.HasRightYThumbStick)
-                    {
-                        vecRight = new CCPoint(gps.ThumbSticks.Right);
-                        vecRight.Normalize();
-                    }
-                    else
-                    {
-                        vecRight = CCPoint.Zero;
-                    }
-                    CCGameStickStatus left = new CCGameStickStatus();
-                    left.Direction = vecLeft;
-                    left.Magnitude = ((caps.HasLeftXThumbStick || caps.HasLeftYThumbStick) ? gps.ThumbSticks.Left.Length() : 0f);
-                    left.IsDown = ((caps.HasLeftStickButton) ? gps.IsButtonDown(Buttons.LeftStick) : false);
-                    CCGameStickStatus right = new CCGameStickStatus();
-                    right.Direction = vecRight;
-                    right.Magnitude = ((caps.HasRightXThumbStick || caps.HasRightYThumbStick) ? gps.ThumbSticks.Right.Length() : 0f);
-                    right.IsDown = ((caps.HasLeftStickButton) ? gps.IsButtonDown(Buttons.RightStick) : false);
-                    GamePadStickUpdate(left, right, player);
-                }
-                // Process the game triggers
-                if (GamePadTriggerUpdate != null && (caps.HasLeftTrigger || caps.HasRightTrigger))
-                {
-                    GamePadTriggerUpdate(caps.HasLeftTrigger ? gps.Triggers.Left : 0f, caps.HasRightTrigger ? gps.Triggers.Right : 0f, player);
-                }
-                // Process the D-Pad
-                if (GamePadDPadUpdate != null)
-                {
-                    CCGamePadButtonStatus left = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus right = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus up = CCGamePadButtonStatus.NotApplicable;
-                    CCGamePadButtonStatus down = CCGamePadButtonStatus.NotApplicable;
-                    if (caps.HasDPadDownButton)
-                    {
-                        down = (gps.DPad.Down == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasDPadUpButton)
-                    {
-                        up = (gps.DPad.Up == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasDPadLeftButton)
-                    {
-                        left = (gps.DPad.Left == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    if (caps.HasDPadRightButton)
-                    {
-                        right = (gps.DPad.Right == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
-                    }
-                    GamePadDPadUpdate(left, up, right, down, player);
-                }
-            }
-            m_PriorGamePadState[player] = gps;
-        }
+		private CCEventGamePadConnection gamePadConnection = new CCEventGamePadConnection ();
+		private CCEventGamePadButton gamePadButton = new CCEventGamePadButton ();
+		private CCEventGamePadDPad gamePadDPad = new CCEventGamePadDPad ();
+		private CCEventGamePadStick gamePadStick = new CCEventGamePadStick();
+		private CCEventGamePadTrigger gamePadTrigger = new CCEventGamePadTrigger();
+
+		private void ProcessGamePad (GamePadState gps, PlayerIndex player)
+		{
+
+			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+
+			var lastState = new GamePadState ();
+
+			if (!PriorGamePadState.ContainsKey (player) && gps.IsConnected) 
+			{
+				gamePadConnection.IsConnected = true;
+				gamePadConnection.Player = (CCPlayerIndex)player;
+				dispatcher.DispatchEvent (gamePadConnection);
+
+			}
+
+			if (PriorGamePadState.ContainsKey (player)) 
+			{
+				lastState = PriorGamePadState [player];
+				// Notify listeners when the gamepad is connected/disconnected.
+				if ((lastState.IsConnected != gps.IsConnected)) 
+				{
+					gamePadConnection.IsConnected = false;
+					gamePadConnection.Player = (CCPlayerIndex)player;
+					dispatcher.DispatchEvent (gamePadConnection);
+
+				}
+				// TODO: Check button pressed/released status for button tap events.
+			}
+
+			if (gps.IsConnected) 
+			{
+				var caps = GamePad.GetCapabilities (player);
+
+				if (caps.HasBackButton || 
+					caps.HasStartButton ||
+					caps.HasBigButton ||
+					caps.HasAButton ||
+					caps.HasBButton ||
+					caps.HasXButton ||
+					caps.HasYButton ||
+					caps.HasLeftShoulderButton ||
+					caps.HasRightShoulderButton) 
+				{
+					var back = CCGamePadButtonStatus.NotApplicable;
+					var start = CCGamePadButtonStatus.NotApplicable;
+					var system = CCGamePadButtonStatus.NotApplicable;
+					var a = CCGamePadButtonStatus.NotApplicable;
+					var b = CCGamePadButtonStatus.NotApplicable;
+					var x = CCGamePadButtonStatus.NotApplicable;
+					var y = CCGamePadButtonStatus.NotApplicable;
+					var leftShoulder = CCGamePadButtonStatus.NotApplicable;
+					var rightShoulder = CCGamePadButtonStatus.NotApplicable;
+
+					if (caps.HasBackButton) {
+						back = (gps.Buttons.Back == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasStartButton) {
+						start = (gps.Buttons.Start == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasBigButton) {
+						system = (gps.Buttons.BigButton == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasAButton) {
+						a = (gps.Buttons.A == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasBButton) {
+						b = (gps.Buttons.B == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasXButton) {
+						x = (gps.Buttons.X == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasYButton) {
+						y = (gps.Buttons.Y == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasLeftShoulderButton) {
+						leftShoulder = (gps.Buttons.LeftShoulder == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasRightShoulderButton) {
+						rightShoulder = (gps.Buttons.RightShoulder == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+
+					gamePadButton.Back = back;
+					gamePadButton.Start = start;
+					gamePadButton.System = system;
+					gamePadButton.A = a;
+					gamePadButton.B = b;
+					gamePadButton.X = x;
+					gamePadButton.Y = y;
+					gamePadButton.LeftShoulder = leftShoulder;
+					gamePadButton.RightShoulder = rightShoulder;
+					gamePadButton.Player = (CCPlayerIndex)player;
+
+					dispatcher.DispatchEvent (gamePadButton);
+				}
+
+
+				// Process the game sticks
+				if ((caps.HasLeftXThumbStick || 
+						caps.HasLeftYThumbStick || 
+						caps.HasRightXThumbStick || 
+						caps.HasRightYThumbStick || 
+						caps.HasLeftStickButton || 
+						caps.HasRightStickButton)) 
+				{
+					CCPoint vecLeft;
+					if (caps.HasLeftXThumbStick || caps.HasLeftYThumbStick) {
+						vecLeft = new CCPoint (gps.ThumbSticks.Left);
+						vecLeft.Normalize ();
+					} else {
+						vecLeft = CCPoint.Zero;
+					}
+					CCPoint vecRight;
+					if (caps.HasRightXThumbStick || caps.HasRightYThumbStick) {
+						vecRight = new CCPoint (gps.ThumbSticks.Right);
+						vecRight.Normalize ();
+					} else {
+						vecRight = CCPoint.Zero;
+					}
+					var left = new CCGameStickStatus ();
+					left.Direction = vecLeft;
+					left.Magnitude = ((caps.HasLeftXThumbStick || caps.HasLeftYThumbStick) ? gps.ThumbSticks.Left.Length () : 0f);
+					left.IsDown = ((caps.HasLeftStickButton) ? gps.IsButtonDown (Buttons.LeftStick) : false);
+					var right = new CCGameStickStatus ();
+					right.Direction = vecRight;
+					right.Magnitude = ((caps.HasRightXThumbStick || caps.HasRightYThumbStick) ? gps.ThumbSticks.Right.Length () : 0f);
+					right.IsDown = ((caps.HasLeftStickButton) ? gps.IsButtonDown (Buttons.RightStick) : false);
+
+					gamePadStick.Left = left;
+					gamePadStick.Right = right;
+					gamePadStick.Player = (CCPlayerIndex)player;
+
+					dispatcher.DispatchEvent (gamePadStick);
+
+				}
+				// Process the game triggers
+				if (caps.HasLeftTrigger || caps.HasRightTrigger) 
+				{
+					//GamePadTriggerUpdate (caps.HasLeftTrigger ? gps.Triggers.Left : 0f, caps.HasRightTrigger ? gps.Triggers.Right : 0f, player);
+					gamePadTrigger.Left = caps.HasLeftTrigger ? gps.Triggers.Left : 0f;
+					gamePadTrigger.Right = caps.HasRightTrigger ? gps.Triggers.Right : 0f;
+					gamePadTrigger.Player = (CCPlayerIndex)player;
+
+					dispatcher.DispatchEvent (gamePadTrigger);
+				}
+
+				// Process the D-Pad
+				if (caps.HasDPadDownButton ||
+					caps.HasDPadUpButton ||
+					caps.HasDPadLeftButton ||
+					caps.HasDPadRightButton) 
+				{
+
+					var leftButton = CCGamePadButtonStatus.NotApplicable;
+					var rightButton = CCGamePadButtonStatus.NotApplicable;
+					var upButton = CCGamePadButtonStatus.NotApplicable;
+					var downButton = CCGamePadButtonStatus.NotApplicable;
+
+					if (caps.HasDPadDownButton) {
+						downButton = (gps.DPad.Down == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasDPadUpButton) {
+						upButton = (gps.DPad.Up == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasDPadLeftButton) {
+						leftButton = (gps.DPad.Left == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+					if (caps.HasDPadRightButton) {
+						rightButton = (gps.DPad.Right == ButtonState.Pressed ? CCGamePadButtonStatus.Pressed : CCGamePadButtonStatus.Released);
+					}
+
+					gamePadDPad.Down = downButton;
+					gamePadDPad.Up = upButton;
+					gamePadDPad.Left = leftButton;
+					gamePadDPad.Right = rightButton;
+
+					gamePadDPad.Player = (CCPlayerIndex)player;
+
+					dispatcher.DispatchEvent (gamePadDPad);
+				}
+			}
+			PriorGamePadState [player] = gps;
+		}
 
         private void ProcessGamePad()
         {
-            // On Android, the gamepad is always connected.
-            GamePadState gps1 = GamePad.GetState(PlayerIndex.One);
-            GamePadState gps2 = GamePad.GetState(PlayerIndex.Two);
-            GamePadState gps3 = GamePad.GetState(PlayerIndex.Three);
-            GamePadState gps4 = GamePad.GetState(PlayerIndex.Four);
-            ProcessGamePad(gps1, PlayerIndex.One);
-            ProcessGamePad(gps2, PlayerIndex.Two);
-            ProcessGamePad(gps3, PlayerIndex.Three);
-            ProcessGamePad(gps4, PlayerIndex.Four);
+
+			if (CCDirector.SharedDirector.GamePadEnabled &&
+				CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor (CCEventListenerGamePad.LISTENER_ID)) 
+			{
+
+				// On Android, the gamepad is always connected.
+				GamePadState gps1 = GamePad.GetState (PlayerIndex.One);
+				GamePadState gps2 = GamePad.GetState (PlayerIndex.Two);
+				GamePadState gps3 = GamePad.GetState (PlayerIndex.Three);
+				GamePadState gps4 = GamePad.GetState (PlayerIndex.Four);
+				ProcessGamePad (gps1, PlayerIndex.One);
+				ProcessGamePad (gps2, PlayerIndex.Two);
+				ProcessGamePad (gps3, PlayerIndex.Three);
+				ProcessGamePad (gps4, PlayerIndex.Four);
+			}
         }
         #endregion
 

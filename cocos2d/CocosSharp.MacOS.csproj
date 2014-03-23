@@ -317,7 +317,6 @@
     <Compile Include="Platform\CCSAXParser.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\CCInputState.cs" />
     <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -450,6 +449,14 @@
     <Compile Include="events\CCEventTouch.cs" />
     <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
     <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
+    <Compile Include="platform\CCInputState.cs" />
+    <Compile Include="events\CCEventListenerGamePad.cs" />
+    <Compile Include="events\CCEventGamePadButton.cs" />
+    <Compile Include="events\CCEventGamePad.cs" />
+    <Compile Include="events\CCEventGamePadDPad.cs" />
+    <Compile Include="events\CCEventGamePadStick.cs" />
+    <Compile Include="events\CCEventGamePadTrigger.cs" />
+    <Compile Include="events\CCEventGamePadConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
