@@ -95,7 +95,6 @@ namespace CocosSharp
 
 		// Dispatchers
 		public CCKeypadDispatcher KeypadDispatcher  { get; set; }
-		public CCTouchDispatcher TouchDispatcher { get; set; }
 
         /// <summary>
         /// returns a shared instance of the director
@@ -276,9 +275,6 @@ namespace CocosSharp
             
 			// EventDispatcher
 			EventDispatcher = new CCEventDispatcher ();
-
-            // touchDispatcher
-            TouchDispatcher = new CCTouchDispatcher();
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
@@ -633,8 +629,6 @@ namespace CocosSharp
 
             SetGlDefaultValues();
 
-            CCApplication.SharedApplication.TouchDelegate = TouchDispatcher;
-            TouchDispatcher.IsDispatchEvents = true;
         }
 
         public void PurgeCachedData()
@@ -691,10 +685,6 @@ namespace CocosSharp
         {
             // cleanup scheduler
             Scheduler.UnscheduleAll();
-
-            // don't release the event handlers
-            // They are needed in case the director is run again
-            TouchDispatcher.RemoveAllDelegates();
 
             if (RunningScene != null)
             {

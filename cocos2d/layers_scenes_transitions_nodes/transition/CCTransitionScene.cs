@@ -79,8 +79,6 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            // disable events while transitions
-            CCDirector.SharedDirector.TouchDispatcher.IsDispatchEvents = false;
     
             // outScene should not receive the onEnter callback
             // only the onExitTransitionDidStart
@@ -93,8 +91,6 @@ namespace CocosSharp
         {
             base.OnExit();
 
-            // enable events while transitions
-            CCDirector.SharedDirector.TouchDispatcher.IsDispatchEvents = true;
 
             m_pOutScene.OnExit();
 

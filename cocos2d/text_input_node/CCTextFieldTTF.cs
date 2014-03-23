@@ -6,7 +6,7 @@ namespace CocosSharp
 {
 	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 
-    public class CCTextFieldTTF : CCLabelTtf, ICCTargetedTouchDelegate
+    public class CCTextFieldTTF : CCLabelTtf
     {
         private IAsyncResult m_pGuideShowHandle;
         private string m_sEditTitle = "Input";
@@ -162,12 +162,12 @@ namespace CocosSharp
             {
                 if (!m_bTouchHandled && !m_bReadOnly && m_bAutoEdit)
                 {
-                    CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
+					//CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
                     m_bTouchHandled = true;
                 }
                 else if (m_bTouchHandled && (m_bReadOnly || !m_bAutoEdit))
                 {
-                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
                     m_bTouchHandled = true;
                 }
             }
@@ -175,7 +175,7 @@ namespace CocosSharp
             {
                 if (!Running && m_bTouchHandled)
                 {
-                    CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
                     m_bTouchHandled = false;
                 }
             }

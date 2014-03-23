@@ -34,7 +34,6 @@ namespace CocosSharp
         private MouseState _prevMouseState;
 #endif
         protected bool m_bCaptured;
-        protected ICCEGLTouchDelegate m_pDelegate;
 
         public GameTime GameTime;
 
@@ -123,11 +122,6 @@ namespace CocosSharp
         {
             get { return Game.TargetElapsedTime.Milliseconds / 10000000f; }
             set { Game.TargetElapsedTime = TimeSpan.FromTicks((int) (value * 10000000)); }
-        }
-
-        public ICCEGLTouchDelegate TouchDelegate
-        {
-            set { m_pDelegate = value; }
         }
 
         /// <summary>
