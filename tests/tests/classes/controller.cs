@@ -180,7 +180,6 @@ namespace tests
 
 			gamePadListener.OnButtonStatus = (buttonStatus) => 
 			{
-				Console.WriteLine("gamepad button status");
 				if (buttonStatus.A == CCGamePadButtonStatus.Pressed)
 				{
 					AButtonWasPressed = true;
