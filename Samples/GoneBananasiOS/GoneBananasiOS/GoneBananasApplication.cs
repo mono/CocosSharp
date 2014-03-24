@@ -10,7 +10,7 @@ namespace GoneBananas
 			: base (game, graphics)
         {
 			// Set our supported orientations for those that can use them
-			SupportedOrientations = DisplayOrientation.Portrait;
+			SupportedOrientations = CCDisplayOrientation.Portrait;
         }
 
         public override bool ApplicationDidFinishLaunching ()

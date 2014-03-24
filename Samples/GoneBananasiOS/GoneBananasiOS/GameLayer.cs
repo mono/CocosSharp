@@ -13,6 +13,16 @@ namespace GoneBananas
 		List<CCSprite> visibleBananas;
 		List<CCSprite> hitBananas;
 
+		// define our banana rotation action
+		CCRotateBy rotateBanana = new CCRotateBy (0.8f, 360);
+
+		// define our completion action to remove the banana once it hits the
+		// bottom of the screen
+		CCCallFuncN moveBananaComplete = new CCCallFuncN ((node) => {
+			node.RemoveFromParentAndCleanup (true);
+		});
+
+
 		public GameLayer ()
         {
             var touchListener = new CCEventListenerTouchAllAtOnce();
@@ -59,17 +69,9 @@ namespace GoneBananas
 
 			var moveBanana = new CCMoveTo (5.0f, new CCPoint (banana.Position.X, 0));
 
-			var moveBananaComplete = new CCCallFuncN ((node) => {
-				node.RemoveFromParentAndCleanup (true);
-			});
+			banana.RunActions (moveBanana, moveBananaComplete);
 
-			var moveBananaSequence = new CCSequence (moveBanana, moveBananaComplete);
-
-			banana.RunAction (moveBananaSequence);
-
-			var rotateBanana = new CCRotateBy (0.8f, 360);
-			var repeatRotateBanana = new CCRepeatForever (rotateBanana);
-			banana.RunAction (repeatRotateBanana);
+			banana.RepeatForever (rotateBanana);
 
 			return banana;
 		}
