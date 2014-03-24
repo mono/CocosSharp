@@ -33,7 +33,7 @@ namespace CocosSharp
     {
         public override CCActionInterval CreateAction(CCGridSize size)
         {
-            return new CCFadeOutBLTiles(m_fDuration, size);
+            return new CCFadeOutBLTiles(Duration, size);
         }
 
         #region Constructors

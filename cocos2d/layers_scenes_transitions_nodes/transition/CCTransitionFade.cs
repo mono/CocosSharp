@@ -64,16 +64,16 @@ namespace CocosSharp
             base.OnEnter();
 
             CCLayerColor l = new CCLayerColor(m_tColor);
-            m_pInScene.Visible = false;
+            InScene.Visible = false;
 
             AddChild(l, 2, kSceneFade);
             CCNode f = GetChildByTag(kSceneFade);
 
             var a = (CCActionInterval) new CCSequence
                                            (
-                                               new CCFadeIn (m_fDuration / 2),
+                                               new CCFadeIn (Duration / 2),
                                                new CCCallFunc((HideOutShowIn)),
-                                               new CCFadeOut  (m_fDuration / 2),
+                                               new CCFadeOut  (Duration / 2),
                                                new CCCallFunc((Finish))
                                            );
 

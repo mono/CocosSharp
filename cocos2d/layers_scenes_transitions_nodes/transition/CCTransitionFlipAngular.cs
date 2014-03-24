@@ -38,7 +38,7 @@ namespace CocosSharp
             base.OnEnter();
 
             CCActionInterval inA, outA;
-            m_pInScene.Visible = false;
+            InScene.Visible = false;
 
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
@@ -60,20 +60,20 @@ namespace CocosSharp
 
             inA = new CCSequence
                 (
-                    new CCDelayTime (m_fDuration / 2),
+                    new CCDelayTime (Duration / 2),
                     new CCShow(),
-                    new CCOrbitCamera(m_fDuration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
+                    new CCOrbitCamera(Duration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
                     new CCCallFunc(Finish)
                 );
             outA = new CCSequence
                 (
-                    new CCOrbitCamera(m_fDuration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
+                    new CCOrbitCamera(Duration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
                     new CCHide(),
-                    new CCDelayTime (m_fDuration / 2)
+                    new CCDelayTime (Duration / 2)
                 );
 
-            m_pInScene.RunAction(inA);
-            m_pOutScene.RunAction(outA);
+            InScene.RunAction(inA);
+            OutScene.RunAction(outA);
         }
 
     }

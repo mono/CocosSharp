@@ -61,7 +61,7 @@ namespace CocosSharp
 
             //  render inScene to its texturebuffer
             inTexture.Begin();
-            m_pInScene.Visit();
+            InScene.Visit();
             inTexture.End();
 
             // create the second render texture for outScene
@@ -72,7 +72,7 @@ namespace CocosSharp
 
             //  render outScene to its texturebuffer
             outTexture.Begin();
-            m_pOutScene.Visit();
+            OutScene.Visit();
             outTexture.End();
 
             // create blend functions
@@ -95,7 +95,7 @@ namespace CocosSharp
             // create the blend action
             CCAction layerAction = new CCSequence
                 (
-                    new CCFadeTo (m_fDuration, 0),
+                    new CCFadeTo (Duration, 0),
                     new CCCallFunc((HideOutShowIn)),
                     new CCCallFunc((Finish))
                 );

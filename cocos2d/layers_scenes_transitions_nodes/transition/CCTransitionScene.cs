@@ -5,11 +5,11 @@ namespace CocosSharp
 {
     public class CCTransitionScene : CCScene
     {
-        protected bool m_bIsInSceneOnTop;
-        protected bool m_bIsSendCleanupToScene;
-        protected float m_fDuration;
-        protected CCScene m_pInScene;
-        protected CCScene m_pOutScene;
+		protected bool IsInSceneOnTop { get; set; }
+		protected bool IsSendCleanupToScene { get; set; }
+		protected float Duration { get; set; }
+		protected CCScene InScene { get; set; }
+		protected CCScene OutScene { get; set; }
 
         public override bool IsTransition
         {
@@ -24,13 +24,6 @@ namespace CocosSharp
         // This can be taken out once all the transitions have been modified with constructors.
         protected CCTransitionScene() {}
 
-        /*
-        public CCTransitionScene(float t)
-        {
-            m_fDuration = t;
-        }
-        */
-
         public CCTransitionScene (float t, CCScene scene) : base()
         {
             InitCCTransitionScene(t, scene);
@@ -40,18 +33,18 @@ namespace CocosSharp
         {
             Debug.Assert(scene != null, "Argument scene must be non-nil");
 
-            m_fDuration = t;
+            Duration = t;
 
             // retain
-            m_pInScene = scene;
-            m_pOutScene = CCDirector.SharedDirector.RunningScene;
-            if (m_pOutScene == null)
+            InScene = scene;
+            OutScene = CCDirector.SharedDirector.RunningScene;
+            if (OutScene == null)
             {
                 // Creating an empty scene.
-                m_pOutScene = new CCScene();
+                OutScene = new CCScene();
             }
 
-            Debug.Assert(m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene");
+            Debug.Assert(InScene != OutScene, "Incoming scene must be different from the outgoing scene");
 
             SceneOrder();
         }
@@ -63,15 +56,15 @@ namespace CocosSharp
         {
             base.Draw();
 
-            if (m_bIsInSceneOnTop)
+            if (IsInSceneOnTop)
             {
-                m_pOutScene.Visit();
-                m_pInScene.Visit();
+                OutScene.Visit();
+                InScene.Visit();
             }
             else
             {
-                m_pInScene.Visit();
-                m_pOutScene.Visit();
+                InScene.Visit();
+                OutScene.Visit();
             }
         }
 
@@ -79,32 +72,36 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-    
+			// Disable events while transitioning
+			EventDispatcher.IsEnabled = false;
+
             // outScene should not receive the onEnter callback
             // only the onExitTransitionDidStart
-            m_pOutScene.OnExitTransitionDidStart();
+            OutScene.OnExitTransitionDidStart();
     
-            m_pInScene.OnEnter();
+            InScene.OnEnter();
         }
 
         public override void OnExit()
         {
             base.OnExit();
 
+			// Enable event after transitioning
+			EventDispatcher.IsEnabled = true;
 
-            m_pOutScene.OnExit();
+            OutScene.OnExit();
 
             // m_pInScene should not receive the onEnter callback
             // only the onEnterTransitionDidFinish
-            m_pInScene.OnEnterTransitionDidFinish();
+            InScene.OnEnterTransitionDidFinish();
         }
 
         public override void Cleanup()
         {
             base.Cleanup();
 
-            if (m_bIsSendCleanupToScene)
-                m_pOutScene.Cleanup();
+            if (IsSendCleanupToScene)
+                OutScene.Cleanup();
         }
 
         public virtual void Reset(float t, CCScene scene)
@@ -115,30 +112,30 @@ namespace CocosSharp
         public void Finish()
         {
             // clean up     
-            m_pInScene.Visible = true;
-            m_pInScene.Position = CCPoint.Zero;
-            m_pInScene.Scale = 1.0f;
-            m_pInScene.Rotation = 0.0f;
-            m_pInScene.Camera.Restore();
+            InScene.Visible = true;
+            InScene.Position = CCPoint.Zero;
+            InScene.Scale = 1.0f;
+            InScene.Rotation = 0.0f;
+            InScene.Camera.Restore();
 
-            m_pOutScene.Visible = false;
-            m_pOutScene.Position = CCPoint.Zero;
-            m_pOutScene.Scale = 1.0f;
-            m_pOutScene.Rotation = 0.0f;
-            m_pOutScene.Camera.Restore();
+            OutScene.Visible = false;
+            OutScene.Position = CCPoint.Zero;
+            OutScene.Scale = 1.0f;
+            OutScene.Rotation = 0.0f;
+            OutScene.Camera.Restore();
 
             Schedule(SetNewScene, 0);
         }
 
         public void HideOutShowIn()
         {
-            m_pInScene.Visible = true;
-            m_pOutScene.Visible = false;
+            InScene.Visible = true;
+            OutScene.Visible = false;
         }
 
         protected virtual void SceneOrder()
         {
-            m_bIsInSceneOnTop = true;
+            IsInSceneOnTop = true;
         }
 
         private void SetNewScene(float dt)
@@ -147,11 +144,11 @@ namespace CocosSharp
 
             // Before replacing, save the "send cleanup to scene"
             CCDirector director = CCDirector.SharedDirector;
-            m_bIsSendCleanupToScene = director.IsSendCleanupToScene;
-            director.ReplaceScene(m_pInScene);
+            IsSendCleanupToScene = director.IsSendCleanupToScene;
+            director.ReplaceScene(InScene);
 
             // issue #267
-            m_pOutScene.Visible = true;
+            OutScene.Visible = true;
         }
     }
 }

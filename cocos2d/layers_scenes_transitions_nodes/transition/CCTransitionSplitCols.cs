@@ -53,13 +53,13 @@ namespace CocosSharp
 
         public virtual CCActionInterval Action()
         {
-            return new CCSplitCols(m_fDuration / 2.0f, 3);
+            return new CCSplitCols(Duration / 2.0f, 3);
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            m_pInScene.Visible = false;
+            InScene.Visible = false;
 
             CCActionInterval split = Action();
             CCActionInterval seq = new CCSequence(

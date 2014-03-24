@@ -73,13 +73,13 @@ namespace CocosSharp
                 // Get hold of the PageTurn3DAction
                 return new CCReverseTime
                     (
-                        new CCPageTurn3D (m_fDuration, vector)
+                        new CCPageTurn3D (Duration, vector)
                     );
             }
             else
             {
                 // Get hold of the PageTurn3DAction
-                return new CCPageTurn3D (m_fDuration, vector);
+                return new CCPageTurn3D (Duration, vector);
             }
         }
 
@@ -104,7 +104,7 @@ namespace CocosSharp
 
             if (!m_bBack)
             {
-                m_pOutScene.RunAction(new CCSequence
+                OutScene.RunAction(new CCSequence
                                           (
                                               action,
                                               new CCCallFunc(Finish),
@@ -113,8 +113,8 @@ namespace CocosSharp
             else
             {
                 // to prevent initial flicker
-                m_pInScene.Visible = false;
-                m_pInScene.RunAction(new CCSequence
+                InScene.Visible = false;
+                InScene.RunAction(new CCSequence
                                          (
                                              new CCShow(),
                                              action,
@@ -125,7 +125,7 @@ namespace CocosSharp
 
         protected override void SceneOrder()
         {
-            m_bIsInSceneOnTop = m_bBack;
+            IsInSceneOnTop = m_bBack;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace CocosSharp
 
         public virtual CCActionInterval CreateAction(CCGridSize size)
         {
-            return new CCFadeOutTRTiles(m_fDuration, size);
+            return new CCFadeOutTRTiles(Duration, size);
         }
 
         public override void OnEnter()
@@ -56,7 +56,7 @@ namespace CocosSharp
 
             CCActionInterval action = CreateAction(new CCGridSize(x, y));
 
-            m_pOutScene.RunAction
+            OutScene.RunAction
                 (
                         new CCSequence
                         (
@@ -79,7 +79,7 @@ namespace CocosSharp
 
         protected override void SceneOrder()
         {
-            m_bIsInSceneOnTop = false;
+            IsInSceneOnTop = false;
         }
     }
 }

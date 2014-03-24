@@ -33,7 +33,7 @@ namespace CocosSharp
     {
         public override CCActionInterval Action()
         {
-            return new CCSplitRows(m_fDuration / 2.0f, 3);
+            return new CCSplitRows(Duration / 2.0f, 3);
         }
 
         #region Constructors

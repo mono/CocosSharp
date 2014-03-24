@@ -38,7 +38,7 @@ namespace CocosSharp
             texture.End();
 
             //    Since we've passed the outScene to the texture we don't need it.
-            if (m_pSceneToBeModified == m_pOutScene)
+            if (m_pSceneToBeModified == OutScene)
             {
                 HideOutShowIn();
             }
@@ -48,7 +48,7 @@ namespace CocosSharp
 
             // create the blend action
             CCSequence layerAction = new CCSequence(
-                new CCProgressFromTo(m_fDuration, m_fFrom, m_fTo),
+                new CCProgressFromTo(Duration, m_fFrom, m_fTo),
                 new CCCallFunc(Finish)
                 );
 
@@ -71,14 +71,14 @@ namespace CocosSharp
 
         protected virtual void SetupTransition()
         {
-            m_pSceneToBeModified = m_pOutScene;
+            m_pSceneToBeModified = OutScene;
             m_fFrom = 100;
             m_fTo = 0;
         }
 
         protected override void SceneOrder()
         {
-            m_bIsInSceneOnTop = false;
+            IsInSceneOnTop = false;
         }
     }
 
@@ -235,12 +235,12 @@ namespace CocosSharp
 
         protected override void SceneOrder()
         {
-            m_bIsInSceneOnTop = false;
+            IsInSceneOnTop = false;
         }
 
         protected override void SetupTransition()
         {
-            m_pSceneToBeModified = m_pInScene;
+            m_pSceneToBeModified = InScene;
             m_fFrom = 0;
             m_fTo = 100;
         }

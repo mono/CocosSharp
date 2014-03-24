@@ -12,22 +12,22 @@ namespace CocosSharp
             base.OnEnter();
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            m_pInScene.Scale = 0.5f;
-            m_pInScene.Position = new CCPoint(s.Width, 0);
-            m_pInScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_pOutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            InScene.Scale = 0.5f;
+            InScene.Position = new CCPoint(s.Width, 0);
+            InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval jump = new CCJumpBy (m_fDuration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
-            CCActionInterval scaleIn = new CCScaleTo(m_fDuration / 4, 1.0f);
-            CCActionInterval scaleOut = new CCScaleTo(m_fDuration / 4, 0.5f);
+            CCActionInterval jump = new CCJumpBy (Duration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
+            CCActionInterval scaleIn = new CCScaleTo(Duration / 4, 1.0f);
+            CCActionInterval scaleOut = new CCScaleTo(Duration / 4, 0.5f);
 
             CCSequence jumpZoomOut = (new CCSequence(scaleOut, jump));
             CCSequence jumpZoomIn = (new CCSequence(jump, scaleIn));
 
-            CCActionInterval delay = new CCDelayTime (m_fDuration / 2);
+            CCActionInterval delay = new CCDelayTime (Duration / 2);
 
-            m_pOutScene.RunAction(jumpZoomOut);
-            m_pInScene.RunAction
+            OutScene.RunAction(jumpZoomOut);
+            InScene.RunAction
                 (
                         new CCSequence
                         (

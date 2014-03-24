@@ -54,9 +54,9 @@ namespace CocosSharp
             var x = (int) (12 * aspect);
             int y = 12;
 
-            CCTurnOffTiles toff = new CCTurnOffTiles(m_fDuration, new CCGridSize(x, y));
+            CCTurnOffTiles toff = new CCTurnOffTiles(Duration, new CCGridSize(x, y));
             CCFiniteTimeAction action = EaseAction(toff);
-            m_pOutScene.RunAction
+            OutScene.RunAction
                 (
                         new CCSequence
                         (
@@ -69,7 +69,7 @@ namespace CocosSharp
 
         protected override void SceneOrder()
         {
-            m_bIsInSceneOnTop = false;
+            IsInSceneOnTop = false;
         }
     }
 }

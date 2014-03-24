@@ -35,7 +35,7 @@ namespace CocosSharp
         public override void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(s.Width, 0);
+            InScene.Position = new CCPoint(s.Width, 0);
         }
 
     }

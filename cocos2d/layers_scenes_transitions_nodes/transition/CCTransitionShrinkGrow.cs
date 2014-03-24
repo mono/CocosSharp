@@ -47,17 +47,17 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            m_pInScene.Scale = 0.001f;
-            m_pOutScene.Scale = (1.0f);
+            InScene.Scale = 0.001f;
+            OutScene.Scale = (1.0f);
 
-            m_pInScene.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
-            m_pOutScene.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
+            InScene.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
+            OutScene.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
 
-            CCActionInterval scaleOut = new CCScaleTo(m_fDuration, 0.01f);
-            CCActionInterval scaleIn = new CCScaleTo(m_fDuration, 1.0f);
+            CCActionInterval scaleOut = new CCScaleTo(Duration, 0.01f);
+            CCActionInterval scaleIn = new CCScaleTo(Duration, 1.0f);
 
-            m_pInScene.RunAction(EaseAction(scaleIn));
-            m_pOutScene.RunAction
+            InScene.RunAction(EaseAction(scaleIn));
+            OutScene.RunAction
                 (
                     new CCSequence
                         (

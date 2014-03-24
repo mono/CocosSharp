@@ -47,7 +47,7 @@ namespace CocosSharp
         public virtual void InitScenes()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            m_pInScene.Position = new CCPoint(-s.Width, 0);
+            InScene.Position = new CCPoint(-s.Width, 0);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace CocosSharp
         /// <returns></returns>
         public virtual CCActionInterval Action()
         {
-            return new CCMoveTo (m_fDuration, new CCPoint(0, 0));
+            return new CCMoveTo (Duration, new CCPoint(0, 0));
         }
 
         public override void OnEnter()
@@ -66,7 +66,7 @@ namespace CocosSharp
 
             CCActionInterval a = Action();
 
-            m_pInScene.RunAction
+            InScene.RunAction
                 (
                     new CCSequence
                         (
