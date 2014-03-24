@@ -58,8 +58,12 @@ namespace CocosSharp
 		/// <returns>The keys that are currently being pressed.</returns>
 		public CCKeys[] GetPressedKeys()
 		{
-			var pressedKeys = KeyboardState.GetPressedKeys ().ToList().ConvertAll(i => (CCKeys)i).ToArray();
-			return pressedKeys;
+			var pressedKeys = KeyboardState.GetPressedKeys ();
+            var pressed = new CCKeys[pressedKeys.Length];
+            for (int k = 0; k < pressedKeys.Length; k++)
+                pressed[k] = (CCKeys)pressedKeys[k];
+
+			return pressed;
 		}
 
 		/// <summary>

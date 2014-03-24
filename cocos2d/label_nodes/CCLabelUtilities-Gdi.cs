@@ -68,7 +68,7 @@ namespace CocosSharp
             _graphics.DrawString(text, font, _brush, new RectangleF(0, 0, dimensions.Width, dimensions.Height), stringFormat);
             _graphics.Flush();
 
-            var texture = new CCTexture2D(SaveToStream(), Microsoft.Xna.Framework.Graphics.SurfaceFormat.Bgra4444);
+            var texture = new CCTexture2D(SaveToStream(), CCSurfaceFormat.Bgra4444);
 
 			return texture;
 		}

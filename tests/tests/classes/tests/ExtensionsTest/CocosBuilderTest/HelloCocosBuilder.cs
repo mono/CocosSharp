@@ -47,7 +47,7 @@ namespace tests.Extensions
             scene.AddChild(node);
 
             /* Push the new scene with a fancy transition. */
-            CCColor3B transitionColor;
+            CCColor3B transitionColor = new CCColor3B();
             transitionColor.R = 0;
             transitionColor.G = 0;
             transitionColor.B = 0;
@@ -99,7 +99,7 @@ namespace tests.Extensions
             scene.AddChild(animationsTest);
 
             /* Push the new scene with a fancy transition. */
-            CCColor3B transitionColor;
+            CCColor3B transitionColor = new CCColor3B();
             transitionColor.R = 0;
             transitionColor.G = 0;
             transitionColor.B = 0;

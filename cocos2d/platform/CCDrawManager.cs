@@ -1246,7 +1246,7 @@ namespace CocosSharp
             bool onlyLandscape = (ll || lr) && !p;
             bool onlyPortrait = !(ll || lr) && p;
 #if WINDOWS || WINDOWSGL || WINDOWS_PHONE
-            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & supportedOrientations) == DisplayOrientation.Default);
+            bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & (DisplayOrientation)supportedOrientations) == DisplayOrientation.Default);
 #else
 			bool bSwapDims = bUpdateDimensions && ((m_GraphicsDeviceMgr.SupportedOrientations & (DisplayOrientation)supportedOrientations) == 0);
 #endif
