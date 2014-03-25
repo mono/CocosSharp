@@ -86,6 +86,7 @@
     <Folder Include="Content\" />
     <Folder Include="Content\fonts\" />
     <Folder Include="Content\Sounds\" />
+    <Folder Include="Content\hd\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -102,13 +103,13 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="Content\Banana.png" />
-    <BundleResource Include="Content\Banana-hd.png" />
-    <BundleResource Include="Content\Monkey-hd.png" />
     <BundleResource Include="Content\Monkey.png" />
     <BundleResource Include="Content\fonts\MarkerFelt-22.xnb" />
     <BundleResource Include="Content\Sounds\tap.mp3" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
+    <BundleResource Include="Content\hd\Banana.png" />
+    <BundleResource Include="Content\hd\Monkey.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\box2d\box2d.iOS.csproj">

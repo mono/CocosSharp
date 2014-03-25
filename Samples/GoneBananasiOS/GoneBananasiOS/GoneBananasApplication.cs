@@ -25,9 +25,10 @@ namespace GoneBananas
             director.AnimationInterval = 1.0 / 60;
 
 			// We will setup our Design Resolution here
-			//CCSize designSize = new CCSize(320, 480);
-			CCSize designSize = new CCSize(640, 960);
-			CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
+			if (CCDrawManager.FrameSize.Height > 480)
+			{
+				CCContentManager.SharedContentManager.SearchPaths.Add("hd");
+			}
 
             CCScene scene = GameStartLayer.Scene;
             director.RunWithScene (scene);
