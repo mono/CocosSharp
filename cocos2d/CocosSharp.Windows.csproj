@@ -190,6 +190,8 @@
     <Compile Include="events\CCEventGamePadStick.cs" />
     <Compile Include="events\CCEventGamePadTrigger.cs" />
     <Compile Include="events\CCEventGamePadConnection.cs" />
+    <Compile Include="events\CCEventCustom.cs" />
+    <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />

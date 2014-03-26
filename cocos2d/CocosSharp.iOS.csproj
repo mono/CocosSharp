@@ -467,6 +467,8 @@
     <Compile Include="events\CCEventGamePadStick.cs" />
     <Compile Include="events\CCEventGamePadTrigger.cs" />
     <Compile Include="events\CCEventGamePadConnection.cs" />
+    <Compile Include="events\CCEventCustom.cs" />
+    <Compile Include="events\CCEventListenerCustom.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

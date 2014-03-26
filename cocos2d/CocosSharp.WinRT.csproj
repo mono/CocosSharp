@@ -124,6 +124,8 @@
     <Compile Include="events\CCEventGamePadStick.cs" />
     <Compile Include="events\CCEventGamePadTrigger.cs" />
     <Compile Include="events\CCEventGamePadConnection.cs" />
+    <Compile Include="events\CCEventCustom.cs" />
+    <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />

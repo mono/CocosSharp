@@ -420,6 +420,8 @@
     <Compile Include="events\CCEventGamePadStick.cs" />
     <Compile Include="events\CCEventGamePadTrigger.cs" />
     <Compile Include="events\CCEventGamePadConnection.cs" />
+    <Compile Include="events\CCEventCustom.cs" />
+    <Compile Include="events\CCEventListenerCustom.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
