@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Diagnostics;
 using CocosSharp;
 using Microsoft.Xna.Framework;
+
 namespace tests
 {
 
@@ -17,6 +19,8 @@ namespace tests
 		TEST_ACCELEROMETER,
 		TEST_CUSTOM_EVENT,
 		TEST_REMOVE_RETAIN_NODE,
+		TEST_REMOVE_AFTER_ADDING,
+		TEST_DIRECTOR,
 		TEST_CASE_COUNT
 	};
 
@@ -53,6 +57,12 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_REMOVE_RETAIN_NODE:
 				testLayer = new RemoveAndRetainNodeTest();
+				break;
+			case (int) EventDispatchTests.TEST_REMOVE_AFTER_ADDING:
+				testLayer = new RemoveListenerAfterAddingTest();
+				break;
+			case (int) EventDispatchTests.TEST_DIRECTOR:
+				testLayer = new DirectorTest();
 				break;
 			default:
 				break;
@@ -771,6 +781,193 @@ namespace tests
 		public override string subtitle()
 		{
 			return "Sprite should be removed after 5s, add to scene again after 5s";
+		}
+
+	}
+
+	public class RemoveListenerAfterAddingTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+
+			base.OnEnter ();
+
+			var item1 = new  CCMenuItemFont("Click Me 1", (sender) =>
+				{
+					var listener = new CCEventListenerTouchOneByOne();
+					listener.OnTouchBegan = (touch, touchEvent) => 
+					{
+						Debug.Assert(false, "Should not come here!");
+						return true;
+					};
+
+					EventDispatcher.AddEventListener(listener, -1);
+					EventDispatcher.RemoveEventListener(listener);
+			});
+
+			item1.Position = CCVisibleRect.Center + new CCPoint(0, 80);
+
+			var addNextButton = new Action( () =>
+			{
+				var next = new CCMenuItemFont("Please Click Me To Reset!", (sender) => 
+				{
+						RestartCallback(null);
+				});
+				next.Position = CCVisibleRect.Center + new CCPoint(0, -40);
+
+				var menuNext = new CCMenu(next);
+				menuNext.Position = CCVisibleRect.LeftBottom;
+				menuNext.AnchorPoint = CCPoint.Zero;
+				AddChild(menuNext);
+				});
+
+			var item2 = new CCMenuItemFont ("Click Me 2", (sender) => 
+			{
+				var listener = new CCEventListenerTouchOneByOne ();
+				listener.OnTouchBegan = (touch, touchEvent) => {
+					Debug.Assert (false, "Should not come here!");
+					return true;
+				};
+
+				EventDispatcher.AddEventListener (listener, -1);
+				EventDispatcher.RemoveEventListeners (CCEventListenerType.TOUCH_ONE_BY_ONE);
+
+					addNextButton ();
+			});
+
+			item2.Position = CCVisibleRect.Center + new CCPoint(0, 40);
+
+			var item3 = new CCMenuItemFont("Click Me 3", (sender) => 
+				{
+					var listener = new CCEventListenerTouchOneByOne ();
+					listener.OnTouchBegan = (touch, touchEvent) => {
+						Debug.Assert (false, "Should not come here!");
+						return true;
+					};
+
+					EventDispatcher.AddEventListener (listener, -1);
+					EventDispatcher.RemoveEventListeners (CCEventListenerType.TOUCH_ONE_BY_ONE);
+
+					addNextButton ();
+			});
+
+			item3.Position = CCVisibleRect.Center;
+
+			var menu = new CCMenu(item1, item2, item3);
+			menu.Position = CCVisibleRect.LeftBottom;
+			menu.AnchorPoint = CCPoint.Zero;
+
+			AddChild(menu);
+
+		}
+
+		public override string title()
+		{
+			return "RemoveListenerAfterAddingTest";
+		}
+
+		public override string subtitle()
+		{
+			return "Should not crash!";
+		}
+
+	}
+
+	public class DirectorTest : EventDispatcherTest
+	{
+
+		int count1, count2, count3, count4;
+
+		CCLabelTtf label1, label2, label3, label4;
+		CCEventListenerCustom event1, event2, event3, event4;
+
+		public override void OnEnter ()
+		{
+
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var s = CCDirector.SharedDirector.VisibleSize;
+
+			label1 = new CCLabelTtf("Update: 0", "arial", 20);
+			label1.AnchorPoint = CCPoint.AnchorUpperLeft;
+			label1.Position = new CCPoint(30,s.Height/2 + 60);
+			AddChild(label1);
+
+			label2 = new CCLabelTtf("Visit: 0", "arial", 20);
+			label2.AnchorPoint = CCPoint.AnchorUpperLeft;
+			label2.Position = new CCPoint(30,s.Height/2 + 20);
+			AddChild(label2);
+
+			label3 = new CCLabelTtf("Draw: 0", "arial", 20);
+			label3.AnchorPoint = CCPoint.AnchorUpperLeft;
+			label3.Position = new CCPoint(30,s.Height/2 - 20);
+			AddChild(label3);
+
+			label4 = new CCLabelTtf("Projection: 0", "arial", 20);
+			label4.AnchorPoint = CCPoint.AnchorUpperLeft;
+			label4.Position = new CCPoint(30,s.Height/2 - 60);
+			AddChild(label4);
+
+			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+
+			event1 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_UPDATE, OnEvent1);
+			event2 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_VISIT, OnEvent2);
+			event3 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_DRAW, (customEvent) =>
+				{
+					label3.Text = string.Format("Draw: {0}", count3++);
+				});
+			event4 = dispatcher.AddCustomEventListener(CCDirector.EVENT_PROJECTION_CHANGED, (customEvent) =>
+				{
+					label4.Text = string.Format("Projection: {0}", count4++);
+				});
+
+			Schedule();
+
+		}
+
+		float time = 0;
+
+		public override void Update (float dt)
+		{
+			base.Update (dt);
+
+			time += dt;
+			if(time > 0.5) {
+				CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+				time = 0;
+			}
+
+		}
+
+		void OnEvent1(CCEventCustom customEvent)
+		{
+			label1.Text = string.Format("Update: {0}", count1++);
+		}
+
+		void OnEvent2(CCEventCustom customEvent)
+		{
+			label2.Text = string.Format("Visit: {0}", count2++);
+		}
+
+		public override void OnExit ()
+		{
+			EventDispatcher.RemoveEventListener (event1);
+			EventDispatcher.RemoveEventListener (event2);
+			EventDispatcher.RemoveEventListener (event3);
+			EventDispatcher.RemoveEventListener (event4);
+			base.OnExit ();
+		}
+
+		public override string title()
+		{
+			return "Testing Director Events";
+		}
+
+		public override string subtitle()
+		{
+			return "after visit, after draw, after update, projection changed";
 		}
 
 	}

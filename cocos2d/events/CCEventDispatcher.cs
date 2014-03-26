@@ -708,6 +708,21 @@ namespace CocosSharp
 			}
         }
 
+		/// <summary>
+		/// Adds a Custom event listener.
+		/// It will use a fixed priority of 1.
+		/// </summary>
+		/// <returns>The generated event. Needed in order to remove the event from the dispather.</returns>
+		/// <param name="eventName">Event name.</param>
+		/// <param name="callback">Callback.</param>
+		public CCEventListenerCustom AddCustomEventListener(string eventName, Action<CCEventCustom> callback)
+		{
+			var listener = new CCEventListenerCustom(eventName, callback);
+			AddEventListener(listener, 1);
+			return listener;
+		}
+
+
         /// <summary>
         /// Adds an event listener with item
         /// ** Note ** if it is dispatching event, the added operation will be delayed to the end of current dispatch

@@ -56,6 +56,12 @@ namespace CocosSharp
 
     public abstract class CCDirector
     {
+
+		public static string EVENT_PROJECTION_CHANGED = "director_projection_changed";
+		public static string EVENT_AFTER_UPDATE = "director_after_update";
+		public static string EVENT_AFTER_VISIT = "director_after_visit";
+		public static string EVENT_AFTER_DRAW = "director_after_draw";
+
 		static CCDirector sharedDirector;
 
 		readonly float defaultFPS = 60f;
@@ -74,6 +80,11 @@ namespace CocosSharp
 		const string sceneSaveFileName = "Scene{0}.dat";
 #endif
 		public CCEventDispatcher EventDispatcher { get; set; }
+		CCEventCustom eventAfterDraw;
+		CCEventCustom eventAfterVisit;
+		CCEventCustom eventAfterUpdate;
+		CCEventCustom eventProjectionChanged;
+
 		public CCActionManager ActionManager { get; set; }
 		public virtual double AnimationInterval { get; set; }
 		public float ContentScaleFactor { get; set; }
@@ -191,6 +202,8 @@ namespace CocosSharp
                 }
 
                 directorProjection = value;
+				if (EventDispatcher.IsEventListenersFor(EVENT_PROJECTION_CHANGED))
+					EventDispatcher.DispatchEvent(eventProjectionChanged);
             }
         }
 
@@ -275,6 +288,15 @@ namespace CocosSharp
             
 			// EventDispatcher
 			EventDispatcher = new CCEventDispatcher ();
+
+			eventAfterDraw = new CCEventCustom(EVENT_AFTER_DRAW);
+			eventAfterDraw.UserData = this;
+			eventAfterVisit = new CCEventCustom(EVENT_AFTER_VISIT);
+			eventAfterVisit.UserData = this;
+			eventAfterUpdate = new CCEventCustom(EVENT_AFTER_UPDATE);
+			eventAfterUpdate.UserData = this;
+			eventProjectionChanged = new CCEventCustom(EVENT_PROJECTION_CHANGED);
+			eventProjectionChanged.UserData = this;
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
@@ -569,6 +591,8 @@ namespace CocosSharp
 
                 // In Seconds
                 Scheduler.Update(deltaTime);
+				if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE));
+					EventDispatcher.DispatchEvent(eventAfterUpdate);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.
@@ -602,6 +626,8 @@ namespace CocosSharp
             if (RunningScene != null)
             {
                 RunningScene.Visit();
+				if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
+					EventDispatcher.DispatchEvent(eventAfterVisit);
             }
 
             // draw the notifications node
@@ -609,6 +635,9 @@ namespace CocosSharp
             {
                 NotificationNode.Visit();
             }
+
+			if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_DRAW))
+				EventDispatcher.DispatchEvent(eventAfterDraw);
 
             CCDrawManager.PopMatrix();
 

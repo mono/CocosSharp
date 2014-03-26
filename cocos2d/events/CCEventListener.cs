@@ -125,7 +125,7 @@ namespace CocosSharp
             if (disposing == true)
             {
                 //someone want the deterministic release of all resources
-                //Let us release all the managed resources
+				//Let us release all the managed resources
                 // Release our Managed Resources
             }
             else
@@ -149,7 +149,7 @@ namespace CocosSharp
             // the managed resources will anyways be released when GC 
             // runs the next time.
             Dispose(false);
-            CCLog.Log("In the finalizer of CCEventListener. {0}", this);
+			//CCLog.Log("In the finalizer of CCEventListener. {0}", this);
         }
 
     }
