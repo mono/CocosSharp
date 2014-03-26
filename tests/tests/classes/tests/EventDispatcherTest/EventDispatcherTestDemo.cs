@@ -593,6 +593,9 @@ namespace tests
 	public class CustomEventTest : EventDispatcherTest
 	{
 
+		CCEventListenerCustom listener;
+		CCEventListenerCustom listener2;
+
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
@@ -606,7 +609,7 @@ namespace tests
 			statusLabel.Position = origin + new CCPoint(size.Width/2, size.Height-90);
 			AddChild(statusLabel);
 
-			var listener = new CCEventListenerCustom("game_custom_event1", (customEvent) =>
+			listener = new CCEventListenerCustom("game_custom_event1", (customEvent) =>
 				{
 					var str = "Custom event 1 received, ";
 					var buf = customEvent.UserData;
@@ -632,7 +635,7 @@ namespace tests
 			statusLabel2.Position = origin + new CCPoint(size.Width/2, size.Height-120);
 			AddChild(statusLabel2);
 
-			var listener2 = new CCEventListenerCustom("game_custom_event2", (customEvent) =>
+			listener2 = new CCEventListenerCustom("game_custom_event2", (customEvent) =>
 				{
 					statusLabel2.Text = string.Format("Custom event 2 received, {0} times", customEvent.UserData);
 				});
@@ -655,6 +658,13 @@ namespace tests
 			AddChild(menu, -1);
 		}
 
+		public override void OnExit ()
+		{
+			// Don't forget to remove the fixed priority Event listeners yourself.
+			EventDispatcher.RemoveEventListener(listener);
+			EventDispatcher.RemoveEventListener(listener2);
+			base.OnExit ();
+		}
 		public override string title()
 		{
 			return "Send Custom Event";
