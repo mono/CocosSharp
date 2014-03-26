@@ -50,6 +50,7 @@
     <Reference Include="zlib.net">
       <HintPath>external lib\zlib.net.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="label_nodes\CCLabel-Android.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Actions\action\CCFiniteTimeAction.cs" />
     <Compile Include="Actions\action\CCFollow.cs" />
     <Compile Include="Actions\action\CCSpeed.cs" />
-	<Compile Include="Actions\action\CCAmplitudeAction.cs" />
+    <Compile Include="Actions\action\CCAmplitudeAction.cs" />
     <Compile Include="Actions\action_camera\CCActionCamera.cs" />
     <Compile Include="Actions\action_camera\CCOrbitCamera.cs" />
     <Compile Include="Actions\action_catmull_rom\CCCardinalSplineTo.cs" />
@@ -394,22 +395,29 @@
     <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTilesetInfo.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXXMLParser.cs" />
-    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
-    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-    <Compile Include="mouse_dispatcher\CCMouseDispatcher.cs" />
-    <Compile Include="mouse_dispatcher\ICCMouseDelegate.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
     <Compile Include="script_support\ICCScriptingEngine.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\box2d\box2d.Android.csproj">
-      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
-      <Name>box2d.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
+    <Compile Include="events\CCEvent.cs" />
+    <Compile Include="events\CCEventAccelerate.cs" />
+    <Compile Include="events\CCEventDispatcher.cs" />
+    <Compile Include="events\CCEventKeyboard.cs" />
+    <Compile Include="events\CCEventListener.cs" />
+    <Compile Include="events\CCEventListenerAccelerometer.cs" />
+    <Compile Include="events\CCEventListenerKeyboard.cs" />
+    <Compile Include="events\CCEventListenerMouse.cs" />
+    <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
+    <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
+    <Compile Include="events\CCEventMouse.cs" />
+    <Compile Include="events\CCEventTouch.cs" />
+    <Compile Include="events\CCEventListenerGamePad.cs" />
+    <Compile Include="events\CCEventGamePadButton.cs" />
+    <Compile Include="events\CCEventGamePad.cs" />
+    <Compile Include="events\CCEventGamePadDPad.cs" />
+    <Compile Include="events\CCEventGamePadStick.cs" />
+    <Compile Include="events\CCEventGamePadTrigger.cs" />
+    <Compile Include="events\CCEventGamePadConnection.cs" />
+    <Compile Include="events\CCEventCustom.cs" />
+    <Compile Include="events\CCEventListenerCustom.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -420,4 +428,18 @@
   </Target>
   -->
   <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
+      <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
+      <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\box2d\box2d.Android.csproj">
+      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
+      <Name>box2d.Android</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
