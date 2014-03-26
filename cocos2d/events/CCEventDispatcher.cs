@@ -389,10 +389,12 @@ namespace CocosSharp
             if (recursive)
             {
                 var children = target.Children;
-                foreach (var child in children)
-                {
-                    Pause(child, true);
-                }
+				if (children != null) 
+				{
+					foreach (var child in children) {
+						Pause (child, true);
+					}
+				}
             }
         }
 
@@ -417,10 +419,12 @@ namespace CocosSharp
             if (recursive)
             {
                 var children = target.Children;
-                foreach (var child in children)
-                {
-                    Resume(child, true);
-                }
+				if (children != null) 
+				{
+					foreach (var child in children) {
+						Resume (child, true);
+					}
+				}
             }
         }
 

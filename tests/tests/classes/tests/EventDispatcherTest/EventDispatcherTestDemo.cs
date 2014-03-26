@@ -21,6 +21,7 @@ namespace tests
 		TEST_REMOVE_RETAIN_NODE,
 		TEST_REMOVE_AFTER_ADDING,
 		TEST_DIRECTOR,
+		TEST_PAUSE_RESUME,
 		TEST_CASE_COUNT
 	};
 
@@ -63,6 +64,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_DIRECTOR:
 				testLayer = new DirectorTest();
+				break;
+			case (int) EventDispatchTests.TEST_PAUSE_RESUME:
+				testLayer = new PauseResumeTest();
 				break;
 			default:
 				break;
@@ -968,6 +972,83 @@ namespace tests
 		public override string subtitle()
 		{
 			return "after visit, after draw, after update, projection changed";
+		}
+
+	}
+
+	public class PauseResumeTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var sprite1 = new TouchableSprite ();
+			var texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+			sprite1.Texture = texture;
+			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+			AddChild(sprite1, -10);
+
+			var sprite2 = new TouchableSprite ();
+			texture = CCTextureCache.SharedTextureCache.AddImage("Images/MagentaSquare.png");
+			sprite2.Texture = texture;
+			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+			AddChild(sprite2, -20);
+
+			var sprite3 = new TouchableSprite ();
+			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
+			sprite3.Texture = texture;
+			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+			sprite3.Position = CCPoint.Zero;
+			sprite2.AddChild(sprite3, -1);
+
+			var popup = new CCMenuItemFont("Popup", "", 20, (sender) =>
+				{
+
+					EventDispatcher.Pause(this,true);
+
+					var colorLayer = new CCLayerColor(new CCColor4B(0, 0, 255, 100));
+					AddChild(colorLayer, 99999);
+
+					var closeItem = new CCMenuItemFont("close", "", 20, (closeSender) =>
+						{
+							colorLayer.RemoveFromParent();
+							EventDispatcher.Resume(this, true);
+				});
+
+					closeItem.Position = CCVisibleRect.Center;
+
+					var closeMenu = new CCMenu(closeItem);
+					closeMenu.AnchorPoint = CCPoint.AnchorLowerLeft;
+					closeMenu.Position = CCPoint.Zero;
+
+					colorLayer.AddChild(closeMenu);
+			});
+
+			popup.AnchorPoint = CCPoint.AnchorMiddleRight;
+			popup.Position = CCVisibleRect.Right;
+
+			var menu = new CCMenu(popup);
+			menu.AnchorPoint = CCPoint.AnchorLowerLeft;
+			menu.Position = CCPoint.Zero;
+
+			AddChild(menu);
+
+		}
+
+		public override string title()
+		{
+			return  "PauseResumeTargetTest";
+		}
+
+		public override string subtitle()
+		{
+			return string.Empty;
 		}
 
 	}
