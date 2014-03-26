@@ -16,6 +16,7 @@ namespace tests
 		TEST_LABEL_KEYBOARD,
 		TEST_ACCELEROMETER,
 		TEST_CUSTOM_EVENT,
+		TEST_REMOVE_RETAIN_NODE,
 		TEST_CASE_COUNT
 	};
 
@@ -49,6 +50,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_CUSTOM_EVENT:
 				testLayer = new CustomEventTest();
+				break;
+			case (int) EventDispatchTests.TEST_REMOVE_RETAIN_NODE:
+				testLayer = new RemoveAndRetainNodeTest();
 				break;
 			default:
 				break;
@@ -676,4 +680,99 @@ namespace tests
 		}
 
 	}
+
+	public class RemoveAndRetainNodeTest : EventDispatcherTest
+	{
+
+		bool spriteSaved = false;
+
+		public override void OnEnter ()
+		{
+
+			spriteSaved = false;
+
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			//MenuItemFont::setFontSize(20);
+
+			var sprite = new CCSprite("Images/CyanSquare.png");
+			sprite.Position = origin + size.Center;
+			AddChild(sprite, 10);
+
+			// Make sprite1 touchable
+			var listener1 = new CCEventListenerTouchOneByOne ();
+			listener1.IsSwallowTouches = true;
+
+			listener1.OnTouchBegan = (touch, touchEvent) => 
+			{
+				var target = (CCSprite) touchEvent.CurrentTarget;
+
+				var locationInNode = target.ConvertToNodeSpace(touch.Location);
+				var s = target.ContentSize;
+				var rect = new CCRect(0, 0, s.Width, s.Height);
+
+				if (rect.ContainsPoint(locationInNode))
+				{
+					CCLog.Log("sprite began... x = {0}, y = {1}", locationInNode.X, locationInNode.Y);
+					target.Opacity = 180;
+					return true;
+				}
+				return false;
+			};
+
+			listener1.OnTouchMoved = (touch, touchEvent) =>
+			{
+				var target = (CCSprite) touchEvent.CurrentTarget;
+				target.Position += touch.Delta;
+			};
+
+			listener1.OnTouchEnded = (touch, touchEvent) =>
+			{
+				var target = (CCSprite) touchEvent.CurrentTarget;
+				CCLog.Log("sprite onTouchesEnded.. ");
+				target.Opacity = 255;
+			};
+
+			EventDispatcher.AddEventListener(listener1, sprite);
+
+			RunActions(new CCDelayTime(5.0f),
+				new CCCallFunc(() => 
+				{
+					spriteSaved = true;
+					sprite.RemoveFromParent();
+				}),
+				new CCDelayTime(5.0f),
+				new CCCallFunc(() =>
+				{
+					spriteSaved = false;
+					AddChild(sprite);
+				})
+			);
+
+
+		}
+
+		public override void OnExit ()
+		{
+			// release it not needed.
+			//if (spriteSaved)
+				// do release
+			base.OnExit ();
+		}
+
+		public override string title()
+		{
+			return "RemoveAndRetainNodeTest";
+		}
+
+		public override string subtitle()
+		{
+			return "Sprite should be removed after 5s, add to scene again after 5s";
+		}
+
+	}
+
 }
