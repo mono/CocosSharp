@@ -15,6 +15,7 @@ namespace tests
 		EVENT_MOUSE,
 		TEST_LABEL_KEYBOARD,
 		TEST_ACCELEROMETER,
+		TEST_CUSTOM_EVENT,
 		TEST_CASE_COUNT
 	};
 
@@ -45,6 +46,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_ACCELEROMETER:
 				testLayer = new SpriteAccelerationEventTest();
+				break;
+			case (int) EventDispatchTests.TEST_CUSTOM_EVENT:
+				testLayer = new CustomEventTest();
 				break;
 			default:
 				break;
@@ -586,4 +590,80 @@ namespace tests
 		}
 	}
 
+	public class CustomEventTest : EventDispatcherTest
+	{
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			//MenuItemFont::setFontSize(20);
+
+			var statusLabel = new CCLabelTtf("No custom event 1 received!", "", 20);
+			statusLabel.Position = origin + new CCPoint(size.Width/2, size.Height-90);
+			AddChild(statusLabel);
+
+			var listener = new CCEventListenerCustom("game_custom_event1", (customEvent) =>
+				{
+					var str = "Custom event 1 received, ";
+					var buf = customEvent.UserData;
+					str += buf;
+					str += " times";
+					statusLabel.Text = str;
+			});
+
+			EventDispatcher.AddEventListener(listener, 1);
+			var count = 0;
+			var sendItem = new CCMenuItemFont("Send Custom Event 1", (sender) =>
+				{
+					++count;
+					var userData = string.Format("{0}", count);
+					var customEvent = new CCEventCustom("game_custom_event1");
+					customEvent.UserData = userData;
+					EventDispatcher.DispatchEvent(customEvent);
+			});
+
+			sendItem.Position = origin + size.Center;
+
+			var statusLabel2 = new CCLabelTtf("No custom event 2 received!", "", 20);
+			statusLabel2.Position = origin + new CCPoint(size.Width/2, size.Height-120);
+			AddChild(statusLabel2);
+
+			var listener2 = new CCEventListenerCustom("game_custom_event2", (customEvent) =>
+				{
+					statusLabel2.Text = string.Format("Custom event 2 received, {0} times", customEvent.UserData);
+				});
+
+			EventDispatcher.AddEventListener(listener2, 1);
+
+			var count2 = 0;
+			var sendItem2 = new CCMenuItemFont("Send Custom Event 2", (sender) =>
+				{
+					var customEvent = new CCEventCustom("game_custom_event2");
+					customEvent.UserData = ++count2;
+					EventDispatcher.DispatchEvent(customEvent);
+				});
+
+			sendItem2.Position = origin + new CCPoint(size.Width / 2, size.Height / 2 - 40);
+
+			var menu = new CCMenu(sendItem, sendItem2);
+			menu.Position = CCPoint.Zero;
+			menu.AnchorPoint = CCPoint.AnchorUpperLeft;
+			AddChild(menu, -1);
+		}
+
+		public override string title()
+		{
+			return "Send Custom Event";
+		}
+
+		public override string subtitle()
+		{
+			return string.Empty;
+		}
+
+	}
 }

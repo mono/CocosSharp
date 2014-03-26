@@ -101,12 +101,10 @@ namespace CocosSharp
                 case CCEventType.ACCELERATION:
                     ret = CCEventListenerAccelerometer.LISTENER_ID;
                     break;
-                //case CCEventType.CUSTOM:
-                //    {
-                //        auto customEvent = static_cast<EventCustom*>(event);
-                //        ret = customEvent->getEventName();
-                //    }
-                //    break;
+                case CCEventType.CUSTOM:
+					var customEvent = (CCEventCustom)(listenerEvent);
+					ret = customEvent.EventName;
+                    break;
                 case CCEventType.KEYBOARD:
                     ret = CCEventListenerKeyboard.LISTENER_ID;
                     break;
