@@ -424,26 +424,6 @@ namespace CocosSharp
     #region Quads
 
     /// <summary>
-    /// A 2D Quad. 4 * 2 floats
-    /// </summary>
-    public struct CCQuad2
-    {
-        public CCVertex2F TopLeft;
-        public CCVertex2F TopRight;
-        public CCVertex2F BottomLeft;
-        public CCVertex2F BottomRight;
-
-        public CCQuad2(CCVertex2F tL = new CCVertex2F(), CCVertex2F tR = new CCVertex2F(), 
-            CCVertex2F bL = new CCVertex2F(), CCVertex2F bR = new CCVertex2F()) : this()
-        {
-            TopLeft = tL;
-            TopRight = tR;
-            BottomLeft = bL;
-            BottomRight = bR;
-        }
-    }
-
-    /// <summary>
     /// A 3D Quad. 4 * 3 floats
     /// </summary>
     public struct CCQuad3
