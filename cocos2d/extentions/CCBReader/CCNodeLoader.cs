@@ -723,7 +723,7 @@ namespace CocosSharp
             int source = reader.ReadInt(false);
             int destination = reader.ReadInt(false);
 
-            CCBlendFunc blendFunc;
+            CCBlendFunc blendFunc = new CCBlendFunc();
             blendFunc.Source = source;
             blendFunc.Destination = destination;
 

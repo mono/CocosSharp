@@ -33,6 +33,25 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    #region Enums
+
+    public enum CCTextAlignment
+    {
+        Left,
+        Center,
+        Right,
+    }
+
+    public enum CCVerticalTextAlignment
+    {
+        Top,
+        Center,
+        Bottom
+    }
+
+    #endregion Enums
+
+
     #region Colors
 
     /// <summary>
@@ -321,6 +340,8 @@ namespace CocosSharp
     /// </summary>
     public struct CCVertex2F
     {
+        public static readonly CCVertex2F ZeroVector = new CCVertex2F(0.0f, 0.0f);
+
         public float X { get; set; }
         public float Y { get; set; }
 
@@ -400,42 +421,26 @@ namespace CocosSharp
     #endregion Tex coords
 
 
-
-
-    /// <summary>
-    /// Point Sprite component
-    /// </summary>
-    public class CCPointSprite
-    {
-        public CCPointSprite()
-        {
-            Position = new CCVertex2F();
-            Color = new CCColor4B();
-            Size = 0.0f;
-        }
-
-        public CCVertex2F Position;		// 8 bytes
-        public CCColor4B Color;		// 4 bytes
-        public float Size;		// 4 bytes
-    }
+    #region Quads
 
     /// <summary>
     /// A 2D Quad. 4 * 2 floats
     /// </summary>
-    public class CCQuad2
+    public struct CCQuad2
     {
-        public CCQuad2()
-        {
-            TopLeft = new CCVertex2F();
-            TopRight = new CCVertex2F();
-            BottomLeft = new CCVertex2F();
-            BottomRight = new CCVertex2F();
-        }
-
         public CCVertex2F TopLeft;
         public CCVertex2F TopRight;
         public CCVertex2F BottomLeft;
         public CCVertex2F BottomRight;
+
+        public CCQuad2(CCVertex2F tL = new CCVertex2F(), CCVertex2F tR = new CCVertex2F(), 
+            CCVertex2F bL = new CCVertex2F(), CCVertex2F bR = new CCVertex2F()) : this()
+        {
+            TopLeft = tL;
+            TopRight = tR;
+            BottomLeft = bL;
+            BottomRight = bR;
+        }
     }
 
     /// <summary>
@@ -443,37 +448,42 @@ namespace CocosSharp
     /// </summary>
     public struct CCQuad3
     {
-        /*
-        public ccQuad3()
-        {
-            tl = new ccVertex3F();
-            tr = new ccVertex3F();
-            bl = new ccVertex3F();
-            br = new ccVertex3F();
-        }
-        */
         public CCVertex3F BottomLeft;
         public CCVertex3F BottomRight;
         public CCVertex3F TopLeft;
         public CCVertex3F TopRight;
+
+        public CCQuad3(CCVertex3F tL = new CCVertex3F(), CCVertex3F tR = new CCVertex3F(), 
+            CCVertex3F bL = new CCVertex3F(), CCVertex3F bR = new CCVertex3F()) : this()
+        {
+            TopLeft = tL;
+            TopRight = tR;
+            BottomLeft = bL;
+            BottomRight = bR;
+        }
     }
 
+    #endregion Quads
+
+
+
+    #region Points
+
     /// <summary>
-    /// A 2D grid size
+    /// Point Sprite component
     /// </summary>
-    public struct CCGridSize
+    public class CCPointSprite
     {
-		public static readonly CCGridSize Zero = new CCGridSize(0,0);
-		public static readonly CCGridSize One = new CCGridSize(1,1);
+        public CCVertex2F Position { get; set; }
+        public CCColor4B Color { get; set; }
+        public float Size { get; set; }
 
-        public CCGridSize(int inx, int iny)
+        public CCPointSprite()
         {
-            X = inx;
-            Y = iny;
+            Position = new CCVertex2F();
+            Color = new CCColor4B();
+            Size = 0.0f;
         }
-
-        public int X;
-        public int Y;
     }
 
     public struct CCPointI
@@ -495,17 +505,36 @@ namespace CocosSharp
             return (int)Math.Sqrt(hside * hside + vside * vside);
         }
 
-        public bool Equals(ref CCPointI p)
-        {
-            return X == p.X && Y == p.Y;
-        }
-
         public static implicit operator CCPoint(CCPointI p)
         {
             return new CCPoint(p.X, p.Y);
         }
 
-        #region Operator Overloads
+
+        #region Equality and Operators
+
+        public bool Equals(ref CCPointI p)
+        {
+            return X == p.X && Y == p.Y;
+        }
+
+        public override bool Equals(object obj)        
+        {            
+            if (!(obj is CCPointI))                
+                return false;             
+
+            return Equals((CCPointI)obj);        
+        }         
+
+        public bool Equals(CCPointI other)        
+        {            
+            return this == other;       
+        }
+
+        public override int GetHashCode()
+        {
+            return (unchecked (X ^ Y));
+        }
 
         public static bool operator ==(CCPointI p1, CCPointI p2)
         {
@@ -549,15 +578,36 @@ namespace CocosSharp
             return pt;
         }
 
-        #endregion
+        #endregion Equality and Operators
+    }
+
+    #endregion Points
+
+
+    /// <summary>
+    /// A 2D grid size
+    /// </summary>
+    public struct CCGridSize
+    {
+        public static readonly CCGridSize Zero = new CCGridSize(0,0);
+        public static readonly CCGridSize One = new CCGridSize(1,1);
+
+        public int X;
+        public int Y;
+
+        public CCGridSize(int inx, int iny)
+        {
+            X = inx;
+            Y = iny;
+        }
     }
 
     public struct CCSizeI
     {
-        public int Width;
-        public int Height;
+        public int Width { get; set; }
+        public int Height { get; set; }
 
-        public CCSizeI(int width, int height)
+        public CCSizeI(int width, int height) : this()
         {
             Width = width;
             Height = height;
@@ -574,12 +624,20 @@ namespace CocosSharp
         public static readonly CCBoundingBoxI Zero = new CCBoundingBoxI(0, 0, 0, 0);
         public static readonly CCBoundingBoxI Null = new CCBoundingBoxI(int.MaxValue, int.MaxValue, int.MinValue, int.MinValue);
 
-        public int MinX;
-        public int MinY;
-        public int MaxX;
-        public int MaxY;
+        public int MinX { get; set; }
+        public int MinY { get; set; }
+        public int MaxX { get; set; }
+        public int MaxY { get; set; }
 
-        public CCBoundingBoxI(int minx, int miny, int maxx, int maxy)
+        public CCSizeI Size
+        {
+            get { return new CCSizeI(MaxX - MinX, MaxY - MinY); }
+        }
+
+
+        #region Constructors
+
+        public CCBoundingBoxI(int minx, int miny, int maxx, int maxy) : this()
         {
             MinX = minx;
             MinY = miny;
@@ -587,10 +645,8 @@ namespace CocosSharp
             MaxY = maxy;
         }
 
-        public CCSizeI Size
-        {
-            get { return new CCSizeI(MaxX - MinX, MaxY - MinY); }
-        }
+        #endregion Constructors
+
 
         public void ExpandToCircle(int x, int y, int radius)
         {
@@ -672,32 +728,23 @@ namespace CocosSharp
         }
     }
 
+    #region Drawing buffer structures
+
     /// <summary>
     /// a Point with a vertex point, a tex coord point and a color 4B
     /// </summary>
     public class CCV2F_C4B_T2F
     {
+        public CCVertex2F Vertices;
+        public CCColor4B Colors;
+        public CCTex2F TexCoords;
+
         public CCV2F_C4B_T2F()
         {
             Vertices = new CCVertex2F();
             Colors = new CCColor4B();
             TexCoords = new CCTex2F();
         }
-
-        /// <summary>
-        /// vertices (2F)
-        /// </summary>
-        public CCVertex2F Vertices;
-
-        /// <summary>
-        /// colors (4B)
-        /// </summary>
-        public CCColor4B Colors;
-
-        /// <summary>
-        /// tex coords (2F)
-        /// </summary>
-        public CCTex2F TexCoords;
     }
 
     /// <summary>
@@ -705,27 +752,16 @@ namespace CocosSharp
     /// </summary>
     public class CCV2F_C4F_T2F
     {
+        public CCVertex2F Vertices;
+        public CCColor4F Colors;
+        public CCTex2F TexCoords;
+
         public CCV2F_C4F_T2F()
         {
             Vertices = new CCVertex2F();
             Colors = new CCColor4F();
             TexCoords = new CCTex2F();
         }
-
-        /// <summary>
-        /// vertices (2F)
-        /// </summary>
-        public CCVertex2F Vertices;
-
-        /// <summary>
-        /// colors (4F)
-        /// </summary>
-        public CCColor4F Colors;
-
-        /// <summary>
-        /// tex coords (2F)
-        /// </summary>
-        public CCTex2F TexCoords;
     }
 
     /// <summary>
@@ -734,22 +770,16 @@ namespace CocosSharp
     //TODO: Use VertexPositionColorTexture
     public struct CCV3F_C4B_T2F : IVertexType
     {
-        /// <summary>
-        /// vertices (3F)
-        /// </summary>
-        public CCVertex3F Vertices;			// 12 bytes
-
-        /// <summary>
-        /// colors (4B)
-        /// </summary>
-        public CCColor4B Colors;				// 4 bytes
-
-        /// <summary>
-        /// tex coords (2F)
-        /// </summary>
-        public CCTex2F TexCoords;			// 8 byts
-
         public static readonly VertexDeclaration VertexDeclaration;
+
+        public CCVertex3F Vertices;
+        public CCColor4B Colors;
+        public CCTex2F TexCoords;
+
+        VertexDeclaration IVertexType.VertexDeclaration
+        {
+            get { return VertexDeclaration; }
+        }
 
         static CCV3F_C4B_T2F()
         {
@@ -761,11 +791,6 @@ namespace CocosSharp
                 };
             VertexDeclaration = new VertexDeclaration(elements);
         }
-
-        VertexDeclaration IVertexType.VertexDeclaration
-        {
-            get { return VertexDeclaration; }
-        }
     }
 
     /// <summary>
@@ -773,6 +798,11 @@ namespace CocosSharp
     /// </summary>
     public class CCV2F_C4B_T2F_Quad
     {
+        public CCV2F_C4B_T2F BottomLeft;
+        public CCV2F_C4B_T2F BottomRight;
+        public CCV2F_C4B_T2F TopLeft;
+        public CCV2F_C4B_T2F TopRight;
+
         public CCV2F_C4B_T2F_Quad()
         {
             BottomLeft = new CCV2F_C4B_T2F();
@@ -780,26 +810,6 @@ namespace CocosSharp
             TopLeft = new CCV2F_C4B_T2F();
             TopRight = new CCV2F_C4B_T2F();
         }
-
-        /// <summary>
-        /// bottom left
-        /// </summary>
-        public CCV2F_C4B_T2F BottomLeft;
-
-        /// <summary>
-        /// bottom right
-        /// </summary>
-        public CCV2F_C4B_T2F BottomRight;
-
-        /// <summary>
-        /// top left
-        /// </summary>
-        public CCV2F_C4B_T2F TopLeft;
-
-        /// <summary>
-        /// top right
-        /// </summary>
-        public CCV2F_C4B_T2F TopRight;
     }
 
     /// <summary>
@@ -807,27 +817,17 @@ namespace CocosSharp
     /// </summary>
     public struct CCV3F_C4B_T2F_Quad : IVertexType
     {
-        /// <summary>
-        /// top left
-        /// </summary>
+        public static readonly VertexDeclaration VertexDeclaration;
+
         public CCV3F_C4B_T2F TopLeft;
-
-        /// <summary>
-        /// bottom left
-        /// </summary>
         public CCV3F_C4B_T2F BottomLeft;
-
-        /// <summary>
-        /// top right
-        /// </summary>
         public CCV3F_C4B_T2F TopRight;
-
-        /// <summary>
-        /// bottom right
-        /// </summary>
         public CCV3F_C4B_T2F BottomRight;
 
-        public static readonly VertexDeclaration VertexDeclaration;
+        VertexDeclaration IVertexType.VertexDeclaration
+        {
+            get { return VertexDeclaration; }
+        }
 
         static CCV3F_C4B_T2F_Quad()
         {
@@ -839,11 +839,6 @@ namespace CocosSharp
                 };
             VertexDeclaration = new VertexDeclaration(elements);
         }
-
-        VertexDeclaration IVertexType.VertexDeclaration
-        {
-            get { return VertexDeclaration; }
-        }
     }
 
     /// <summary>
@@ -851,6 +846,12 @@ namespace CocosSharp
     /// </summary>
     public class CCV2F_C4F_T2F_Quad
     {
+        public CCV2F_C4F_T2F BottomLeft;
+        public CCV2F_C4F_T2F BottomRight;
+        public CCV2F_C4F_T2F TopLeft;
+        public CCV2F_C4F_T2F TopRight;
+
+
         public CCV2F_C4F_T2F_Quad()
         {
             TopLeft = new CCV2F_C4F_T2F();
@@ -858,27 +859,9 @@ namespace CocosSharp
             TopRight = new CCV2F_C4F_T2F();
             BottomRight = new CCV2F_C4F_T2F();
         }
-
-        /// <summary>
-        /// bottom left
-        /// </summary>
-        public CCV2F_C4F_T2F BottomLeft;
-
-        /// <summary>
-        /// bottom right
-        /// </summary>
-        public CCV2F_C4F_T2F BottomRight;
-
-        /// <summary>
-        /// top left
-        /// </summary>
-        public CCV2F_C4F_T2F TopLeft;
-
-        /// <summary>
-        /// top right
-        /// </summary>
-        public CCV2F_C4F_T2F TopRight;
     }
+
+    #endregion Drawing buffer structures
 
     /// <summary>
     /// Blend Function used for textures
@@ -890,21 +873,17 @@ namespace CocosSharp
         public static readonly CCBlendFunc NonPremultiplied = new CCBlendFunc(CCOGLES.GL_SRC_ALPHA, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
         public static readonly CCBlendFunc Opaque = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO);
 
-        public CCBlendFunc(int src, int dst)
+        public int Source { get; set; }
+        public int Destination { get; set; }
+
+
+        public CCBlendFunc(int src, int dst) : this()
         {
             this.Source = src;
             this.Destination = dst;
         }
 
-        /// <summary>
-        /// source blend function
-        /// </summary>
-        public int Source;
-
-        /// <summary>
-        /// destination blend function
-        /// </summary>
-        public int Destination;
+        #region Equality
 
         public static bool operator ==(CCBlendFunc b1, CCBlendFunc b2)
         {
@@ -916,33 +895,25 @@ namespace CocosSharp
             return b1.Source != b2.Source || b1.Destination != b2.Destination;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is CCBlendFunc)
-            {
-                return this == (CCBlendFunc) obj;
-            }
-            return false;
-        }
+        public override bool Equals(object obj)        
+        {            
+            if (!(obj is CCBlendFunc))                
+                return false;             
+
+            return Equals((CCBlendFunc)obj);        
+        }         
+
+        public bool Equals(CCBlendFunc other)        
+        {            
+            return this == other;       
+        } 
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return unchecked(Source ^ Destination);
         }
-    }
 
-    public enum CCTextAlignment
-    {
-        Left,
-        Center,
-        Right,
-    }
-
-    public enum CCVerticalTextAlignment
-    {
-        Top,
-        Center,
-        Bottom
+        #endregion Equality
     }
 }
 

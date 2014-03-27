@@ -73,12 +73,20 @@ namespace CocosSharp
                 for (j = 0; j < GridSize.Y; j++)
                 {
                     CCQuad3 coords = OriginalTile(i, j);
+                    CCVertex3F bl = coords.BottomLeft;
+                    CCVertex3F br = coords.BottomRight;
+                    CCVertex3F tl = coords.TopLeft;
+                    CCVertex3F tr = coords.TopRight;
 
-                    coords.BottomLeft.Z = ((float) Math.Sin(time * (float) Math.PI * Waves * 2 +
-                        (coords.BottomLeft.Y + coords.BottomLeft.X) * .01f) * Amplitude * AmplitudeRate);
-                    coords.BottomRight.Z = coords.BottomLeft.Z;
-                    coords.TopLeft.Z = coords.BottomLeft.Z;
-                    coords.TopRight.Z = coords.BottomLeft.Z;
+                    bl.Z = ((float) Math.Sin(time * (float) Math.PI * Waves * 2 + (bl.Y + bl.X) * .01f) * Amplitude * AmplitudeRate);
+                    br.Z = bl.Z;
+                    tl.Z = bl.Z;
+                    tr.Z = bl.Z;
+
+                    coords.BottomLeft = bl;
+                    coords.BottomRight = br;
+                    coords.TopLeft = tl;
+                    coords.TopRight = tr;
 
                     SetTile(i, j, ref coords);
                 }

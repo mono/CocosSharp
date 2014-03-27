@@ -391,7 +391,7 @@ namespace CocosSharp
             Angle = dictionary["angle"].AsFloat;
             AngleVar = dictionary["angleVariance"].AsFloat;
 
-            CCBlendFunc blendFunc;
+            CCBlendFunc blendFunc = new CCBlendFunc();
             blendFunc.Source = dictionary["blendFuncSource"].AsInt;
             blendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
             BlendFunc = blendFunc;
