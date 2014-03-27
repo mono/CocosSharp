@@ -95,7 +95,8 @@ namespace FarseerPhysics.TestBed.Tests
             Vertices tempshape = new Vertices(_clipCircle);
             tempshape.Translate(ref _mousePos);
             DebugView.BeginCustomDraw();
-			DebugView.DrawPolygon(tempshape.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _clipCircle.Count, color);
+            var ts = tempshape.ToList().Cast<CCVector2>();
+			DebugView.DrawPolygon(ts.ToArray(), _clipCircle.Count, color);
             DebugView.EndCustomDraw();
         }
 

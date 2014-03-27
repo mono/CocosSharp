@@ -82,7 +82,10 @@ namespace FarseerPhysics.TestBed.Tests
             {
                 if (_polygons[i] != null)
                 {
-					CCVector2[] array = _polygons[i].ToList().ConvertAll(ii=> (CCVector2)ii).ToArray();
+                    CCVector2[] array = new CCVector2[_polygons.Count];
+                    for (int p = 0; p < _polygons[i].Count; p++)
+                        array[p] = (CCVector2)_polygons[i][p];
+                            
                     Color col = Color.SteelBlue;
                     if (!_polygons[i].IsCounterClockWise())
                     {

@@ -23,7 +23,7 @@
 * 3. This notice may not be removed or altered from any source distribution. 
 */
 
-using System.Linq;
+using System.Collections.Generic;
 using CocosSharp;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
@@ -79,18 +79,19 @@ namespace FarseerPhysics.TestBed.Tests
             DebugView.BeginCustomDraw();
             {
                 Color color = new Color(0.9f, 0.9f, 0.9f);
-                Vector2[] v = new Vector2[Settings.MaxPolygonVertices];
+                CCVector2[] v = new CCVector2[Settings.MaxPolygonVertices];
                 for (int i = 0; i < _polygonA.Vertices.Count; ++i)
                 {
-                    v[i] = MathUtils.Multiply(ref _transformA, _polygonA.Vertices[i]);
+                    v[i] = (CCVector2)MathUtils.Multiply(ref _transformA, _polygonA.Vertices[i]);
                 }
-				DebugView.DrawPolygon(v.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _polygonA.Vertices.Count, color);
+
+				DebugView.DrawPolygon(v, _polygonA.Vertices.Count, color);
 
                 for (int i = 0; i < _polygonB.Vertices.Count; ++i)
                 {
-                    v[i] = MathUtils.Multiply(ref _transformB, _polygonB.Vertices[i]);
+                    v[i] = (CCVector2)MathUtils.Multiply(ref _transformB, _polygonB.Vertices[i]);
                 }
-				DebugView.DrawPolygon(v.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), _polygonB.Vertices.Count, color);
+				DebugView.DrawPolygon(v, _polygonB.Vertices.Count, color);
             }
 
             for (int i = 0; i < manifold.PointCount; ++i)

@@ -80,14 +80,14 @@ namespace FarseerPhysics.TestBed.Tests
                         PolygonShape poly = (PolygonShape)fixture.Shape;
                         int vertexCount = poly.Vertices.Count;
                         Debug.Assert(vertexCount <= Settings.MaxPolygonVertices);
-                        Vector2[] vertices = new Vector2[Settings.MaxPolygonVertices];
+                        CCVector2[] vertices = new CCVector2[Settings.MaxPolygonVertices];
 
                         for (int i = 0; i < vertexCount; ++i)
                         {
-                            vertices[i] = MathUtils.Multiply(ref xf, poly.Vertices[i]);
+                            vertices[i] = (CCVector2)MathUtils.Multiply(ref xf, poly.Vertices[i]);
                         }
 
-					DebugDraw.DrawSolidPolygon(vertices.ToList().ConvertAll(i=> (CCVector2)i).ToArray(), vertexCount, color);
+					DebugDraw.DrawSolidPolygon(vertices, vertexCount, color);
                     }
                     break;
             }
