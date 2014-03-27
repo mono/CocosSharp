@@ -977,13 +977,18 @@ namespace tests
     {
         private readonly string m_title;
 
+		private static Dictionary<string, CCParticleSystemConfig> particleConfigManager;
+
         public DemoParticleFromFile()
         {
+			if (particleConfigManager == null)
+				particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
         }
 
-        public DemoParticleFromFile(string file)
+		public DemoParticleFromFile(string file) : base()
         {
             m_title = file;
+
         }
 
         public override void OnEnter()
@@ -995,7 +1000,18 @@ namespace tests
             m_background = null;
 
             string filename = "Particles/" + m_title;
-            m_emitter = new CCParticleSystemQuad(filename);
+
+			CCParticleSystemConfig config;
+
+			if (particleConfigManager.ContainsKey (filename))
+				config = particleConfigManager [filename];
+			else
+			{
+				config = new CCParticleSystemConfig (filename);
+				particleConfigManager.Add (filename, config);
+			}
+
+			m_emitter = new CCParticleSystemQuad(config);
 
             AddChild(m_emitter, 10);
 

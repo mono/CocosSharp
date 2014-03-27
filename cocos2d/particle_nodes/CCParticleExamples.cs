@@ -79,63 +79,124 @@ namespace CocosSharp
     //
     public class CCParticleFire : CCParticleSystemQuad
     {
+
+		private static CCParticleSystemConfig config;
+
         public CCParticleFire() : base(250)
         {
             CCSize winSize = CCDirector.SharedDirector.WinSize;
 
-            Duration = ParticleDurationInfinity;
-            Life = 3;
-            LifeVar = 0.25f;
-            Position = new CCPoint(winSize.Width / 2, 60);
-            PositionVar = new CCPoint(40, 20);
-            Angle = 90;
-            AngleVar = 10;
-            StartSize = 54.0f;
-            StartSizeVar = 10.0f;
-            EndSize = ParticleStartSizeEqualToEndSize;
+			if (config == null) 
+			{
+				config = new CCParticleSystemConfig ();
+				config.ParticleSystemType = CCParticleSystemType.Internal;
 
-            EmitterMode = CCEmitterMode.Gravity;
+				config.Duration = ParticleDurationInfinity;
+				config.Life = 3;
+				config.LifeVar = 0.25f;
+				config.Position = new CCPoint(winSize.Width / 2, 60);
+				config.PositionVar = new CCPoint(40, 20);
+				config.Angle = 90;
+				config.AngleVar = 10;
+				config.StartSize = 54.0f;
+				config.StartSizeVar = 10.0f;
+				config.EndSize = ParticleStartSizeEqualToEndSize;
+
+				config.EmitterMode = CCEmitterMode.Gravity;
+
+				CCColor4F cstartColor = new CCColor4F();
+				cstartColor.R = 0.76f;
+				cstartColor.G = 0.25f;
+				cstartColor.B = 0.12f;
+				cstartColor.A = 1.0f;
+				config.StartColor = cstartColor;
+
+				CCColor4F cstartColorVar = new CCColor4F();
+				cstartColorVar.R = 0.0f;
+				cstartColorVar.G = 0.0f;
+				cstartColorVar.B = 0.0f;
+				cstartColorVar.A = 0.0f;
+				config.StartColorVar = cstartColorVar;
+
+				CCColor4F cendColor = new CCColor4F();
+				cendColor.R = 0.0f;
+				cendColor.G = 0.0f;
+				cendColor.B = 0.0f;
+				cendColor.A = 1.0f;
+				config.EndColor = cendColor;
+
+				CCColor4F cendColorVar = new CCColor4F();
+				cendColorVar.R = 0.0f;
+				cendColorVar.G = 0.0f;
+				cendColorVar.B = 0.0f;
+				cendColorVar.A = 0.0f;
+				config.EndColorVar = cendColorVar;
+
+				config.Gravity = new CCPoint(0, 0);
+				config.GravityRadialAccel = 0;
+				config.GravityRadialAccelVar = 0;
+				config.GravitySpeed = 60;
+				config.GravitySpeedVar = 20;
+				config.EmitterMode = CCEmitterMode.Gravity;
+
+				config.Texture = CCParticleExample.DefaultTexture;
+
+			}
+
+
+			Duration = config.Duration;
+			Life = config.Life;
+			LifeVar = config.LifeVar;
+			Position = config.Position;
+			PositionVar = config.PositionVar;
+			Angle = config.Angle;
+			AngleVar = config.AngleVar;
+			StartSize = config.StartSize;
+			StartSizeVar = config.StartSizeVar;
+			EndSize = config.EndSize;
+
+			EmitterMode = config.EmitterMode;
             EmissionRate = TotalParticles / Life;
 
             CCColor4F startColor = new CCColor4F();
-            startColor.R = 0.76f;
-            startColor.G = 0.25f;
-            startColor.B = 0.12f;
-            startColor.A = 1.0f;
+			startColor.R = config.StartColor.R;
+			startColor.G = config.StartColor.G;
+			startColor.B = config.StartColor.B;
+			startColor.A = config.StartColor.A;
             StartColor = startColor;
 
             CCColor4F startColorVar = new CCColor4F();
-            startColorVar.R = 0.0f;
-            startColorVar.G = 0.0f;
-            startColorVar.B = 0.0f;
-            startColorVar.A = 0.0f;
+			startColorVar.R = config.StartColorVar.R;
+			startColorVar.G = config.StartColorVar.G;
+			startColorVar.B = config.StartColorVar.B;
+			startColorVar.A = config.StartColorVar.A;
             StartColorVar = startColorVar;
 
             CCColor4F endColor = new CCColor4F();
-            endColor.R = 0.0f;
-            endColor.G = 0.0f;
-            endColor.B = 0.0f;
-            endColor.A = 1.0f;
+			endColor.R = config.EndColor.R;
+			endColor.G = config.EndColor.G;
+			endColor.B = config.EndColor.B;
+			endColor.A = config.EndColor.A;
             EndColor = endColor;
 
             CCColor4F endColorVar = new CCColor4F();
-            endColorVar.R = 0.0f;
-            endColorVar.G = 0.0f;
-            endColorVar.B = 0.0f;
-            endColorVar.A = 0.0f;
+			endColorVar.R = config.EndColorVar.R;
+			endColorVar.G = config.EndColorVar.G;
+			endColorVar.B = config.EndColorVar.B;
+			endColorVar.A = config.EndColorVar.A;
             EndColorVar = endColorVar;
 
             GravityMoveMode gravityMode = new GravityMoveMode();
-            gravityMode.Gravity = new CCPoint(0, 0);
-            gravityMode.RadialAccel = 0;
-            gravityMode.RadialAccelVar = 0;
-            gravityMode.Speed = 60;
-            gravityMode.SpeedVar = 20;
+			gravityMode.Gravity = new CCPoint(config.Gravity);
+			gravityMode.RadialAccel = config.GravityRadialAccel;
+			gravityMode.RadialAccelVar = config.GravityRadialAccelVar;
+			gravityMode.Speed = config.GravitySpeed;
+			gravityMode.SpeedVar = config.GravitySpeedVar;
             GravityMode = gravityMode;
 
-            BlendAdditive = true;
+			BlendAdditive = true;
 
-            Texture = CCParticleExample.DefaultTexture;
+			Texture = config.Texture;
         }
     }
 
@@ -144,6 +205,8 @@ namespace CocosSharp
     //
     public class CCParticleFireworks : CCParticleSystemQuad
     {
+		private static CCParticleSystemConfig config;
+
         public CCParticleFireworks() : base(1500)
         {
             CCSize winSize = CCDirector.SharedDirector.WinSize;

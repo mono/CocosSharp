@@ -158,6 +158,9 @@ namespace CocosSharp
 
         protected CCParticle[] Particles { get; set; }
 
+		public CCParticleSystemConfig ParticleSystemConfig { get; private set; }
+
+
         public bool IsFull
         {
             get { return (ParticleCount == totalParticles); }
@@ -361,10 +364,9 @@ namespace CocosSharp
         {  
         }
 
-        public CCParticleSystem(string plistFile) 
-            : this(CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile).Root.AsDictionary)
-        {
-        }
+		public CCParticleSystem(string plistFile, string directoryName = null) 
+			: this(new CCParticleSystemConfig(plistFile, directoryName))
+        {  }
 
         protected CCParticleSystem(int numberOfParticles)
         {
@@ -381,101 +383,103 @@ namespace CocosSharp
             Particles = new CCParticle[TotalParticles];
         }
 
-        CCParticleSystem(PlistDictionary dictionary) : this(dictionary["maxParticles"].AsInt)
+		public CCParticleSystem(CCParticleSystemConfig particleConfig) : this(particleConfig.MaxParticles)
         {
-            Duration = dictionary["duration"].AsFloat;
-            Life = dictionary["particleLifespan"].AsFloat;
-            LifeVar = dictionary["particleLifespanVariance"].AsFloat;
+
+			ParticleSystemConfig = particleConfig;
+
+			Duration = particleConfig.Duration;;
+			Life = particleConfig.Life;
+			LifeVar = particleConfig.LifeVar;
             EmissionRate = TotalParticles / Life;
 
-            Angle = dictionary["angle"].AsFloat;
-            AngleVar = dictionary["angleVariance"].AsFloat;
+			Angle = particleConfig.Angle;
+			AngleVar = particleConfig.AngleVar;
 
             CCBlendFunc blendFunc = new CCBlendFunc();
-            blendFunc.Source = dictionary["blendFuncSource"].AsInt;
-            blendFunc.Destination = dictionary["blendFuncDestination"].AsInt;
+			blendFunc.Source = particleConfig.BlendFunc.Source;
+			blendFunc.Destination = particleConfig.BlendFunc.Destination;
             BlendFunc = blendFunc;
 
             CCColor4F startColor = new CCColor4F();
-            startColor.R = dictionary["startColorRed"].AsFloat;
-            startColor.G = dictionary["startColorGreen"].AsFloat;
-            startColor.B = dictionary["startColorBlue"].AsFloat;
-            startColor.A = dictionary["startColorAlpha"].AsFloat;
+			startColor.R = particleConfig.StartColor.R;
+			startColor.G = particleConfig.StartColor.G;
+			startColor.B = particleConfig.StartColor.B;
+			startColor.A = particleConfig.StartColor.A;
             StartColor = startColor;
 
             CCColor4F startColorVar = new CCColor4F();
-            startColorVar.R = dictionary["startColorVarianceRed"].AsFloat;
-            startColorVar.G = dictionary["startColorVarianceGreen"].AsFloat;
-            startColorVar.B = dictionary["startColorVarianceBlue"].AsFloat;
-            startColorVar.A = dictionary["startColorVarianceAlpha"].AsFloat;
+			startColorVar.R = particleConfig.StartColorVar.R;
+			startColorVar.G = particleConfig.StartColorVar.G;
+			startColorVar.B = particleConfig.StartColorVar.B;
+			startColorVar.A = particleConfig.StartColorVar.A;
             StartColorVar = startColorVar;
 
             CCColor4F endColor = new CCColor4F();
-            endColor.R = dictionary["finishColorRed"].AsFloat;
-            endColor.G = dictionary["finishColorGreen"].AsFloat;
-            endColor.B = dictionary["finishColorBlue"].AsFloat;
-            endColor.A = dictionary["finishColorAlpha"].AsFloat;
+			endColor.R = particleConfig.EndColor.R;
+			endColor.G = particleConfig.EndColor.G;
+			endColor.B = particleConfig.EndColor.B;
+			endColor.A = particleConfig.EndColor.A;
             EndColor = endColor;
 
             CCColor4F endColorVar = new CCColor4F();
-            endColorVar.R = dictionary["finishColorVarianceRed"].AsFloat;
-            endColorVar.G = dictionary["finishColorVarianceGreen"].AsFloat;
-            endColorVar.B = dictionary["finishColorVarianceBlue"].AsFloat;
-            endColorVar.A = dictionary["finishColorVarianceAlpha"].AsFloat;
+			endColorVar.R = particleConfig.EndColorVar.R;
+			endColorVar.G = particleConfig.EndColorVar.G;
+			endColorVar.B = particleConfig.EndColorVar.B;
+			endColorVar.A = particleConfig.EndColorVar.A;
             EndColorVar = endColorVar;
 
-            StartSize = dictionary["startParticleSize"].AsFloat;
-            StartSizeVar = dictionary["startParticleSizeVariance"].AsFloat;
-            EndSize = dictionary["finishParticleSize"].AsFloat;
-            EndSizeVar = dictionary["finishParticleSizeVariance"].AsFloat;
+			StartSize = particleConfig.StartSize;
+			StartSizeVar = particleConfig.StartSizeVar;
+			EndSize = particleConfig.EndSize;
+			EndSizeVar = particleConfig.EndSizeVar;
 
             CCPoint position;
-            position.X = dictionary["sourcePositionx"].AsFloat;
-            position.Y = dictionary["sourcePositiony"].AsFloat;
+			position.X = particleConfig.Position.X;
+			position.Y = particleConfig.Position.Y;
             Position = position;
 
             CCPoint positionVar;
-            positionVar.X = dictionary["sourcePositionVariancex"].AsFloat;
-            positionVar.Y = dictionary["sourcePositionVariancey"].AsFloat;
+			positionVar.X = particleConfig.PositionVar.X;
+			positionVar.Y = particleConfig.PositionVar.X;
             PositionVar = positionVar;
 
-            StartSpin = dictionary["rotationStart"].AsFloat;
-            StartSpinVar = dictionary["rotationStartVariance"].AsFloat;
-            EndSpin = dictionary["rotationEnd"].AsFloat;
-            EndSpinVar = dictionary["rotationEndVariance"].AsFloat;
+			StartSpin = particleConfig.StartSpin;
+			StartSpinVar = particleConfig.StartSpinVar;
+			EndSpin = particleConfig.EndSpin;
+			EndSpinVar = particleConfig.EndSpinVar;
 
-            EmitterMode = (CCEmitterMode)dictionary["emitterType"].AsInt;
+			EmitterMode = particleConfig.EmitterMode;
 
             if (EmitterMode == CCEmitterMode.Gravity)
             {
                 GravityMoveMode newGravityMode = new GravityMoveMode();
 
                 CCPoint gravity;
-                gravity.X = dictionary["gravityx"].AsFloat;
-                gravity.Y = dictionary["gravityy"].AsFloat;
+				gravity.X = particleConfig.Gravity.X;
+				gravity.Y = particleConfig.Gravity.Y;
                 newGravityMode.Gravity = gravity;
 
-                newGravityMode.Speed = dictionary["speed"].AsFloat;
-                newGravityMode.SpeedVar = dictionary["speedVariance"].AsFloat;
-                newGravityMode.RadialAccel = dictionary["radialAcceleration"].AsFloat;
-                newGravityMode.RadialAccelVar = dictionary["radialAccelVariance"].AsFloat;
-                newGravityMode.TangentialAccel = dictionary["tangentialAcceleration"].AsFloat;
-                newGravityMode.TangentialAccelVar = dictionary["tangentialAccelVariance"].AsFloat;
-                newGravityMode.RotationIsDir = dictionary["rotationIsDir"].AsBool;
+				newGravityMode.Speed = particleConfig.GravitySpeed;
+				newGravityMode.SpeedVar = particleConfig.GravitySpeedVar;
+				newGravityMode.RadialAccel = particleConfig.GravityRadialAccel;
+				newGravityMode.RadialAccelVar = particleConfig.GravityRadialAccelVar;
+				newGravityMode.TangentialAccel = particleConfig.GravityTangentialAccel;
+				newGravityMode.TangentialAccelVar = particleConfig.GravityTangentialAccelVar;
+				newGravityMode.RotationIsDir = particleConfig.GravityRotationIsDir;
 
                 GravityMode = newGravityMode;
             }
-
             else if (EmitterMode == CCEmitterMode.Radius)
             {
                 RadialMoveMode newRadialMode = new RadialMoveMode();
 
-                newRadialMode.StartRadius = dictionary["maxRadius"].AsFloat;
-                newRadialMode.StartRadiusVar = dictionary["maxRadiusVariance"].AsFloat;
-                newRadialMode.EndRadius = dictionary["minRadius"].AsFloat;
-                newRadialMode.EndRadiusVar = 0.0f;
-                newRadialMode.RotatePerSecond = dictionary["rotatePerSecond"].AsFloat;
-                newRadialMode.RotatePerSecondVar = dictionary["rotatePerSecondVariance"].AsFloat;
+				newRadialMode.StartRadius = particleConfig.RadialStartRadius;
+				newRadialMode.StartRadiusVar = particleConfig.RadialStartRadiusVar;
+				newRadialMode.EndRadius = particleConfig.RadialEndRadius;
+				newRadialMode.EndRadiusVar = particleConfig.RadialEndRadiusVar;
+				newRadialMode.RotatePerSecond = particleConfig.RadialRotatePerSecond;
+				newRadialMode.RotatePerSecondVar = particleConfig.RadialRotatePerSecondVar;
 
                 RadialMode = newRadialMode;
             }
@@ -485,73 +489,9 @@ namespace CocosSharp
                 return;
             }
 
-            LoadParticleTexture(dictionary);
-        }
-
-        void LoadParticleTexture(PlistDictionary dictionary)
-        {
-            // Don't get the internal texture if a batchNode is used
-            if (BatchNode == null)
-            {
-                OpacityModifyRGB = false;
-
-                string textureName = dictionary["textureFileName"].AsString;
-
-                CCTexture2D tex = null;
-
-                if (!string.IsNullOrEmpty(textureName))
-                {
-                    bool bNotify = CCFileUtils.IsPopupNotify;
-                    CCFileUtils.IsPopupNotify = false;
-                    try
-                    {
-                        tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
-                    }
-                    catch (Exception)
-                    {
-                        tex = null;
-                    }
-
-                    CCFileUtils.IsPopupNotify = bNotify;
-                }
-
-                if (tex != null)
-                {
-                    Texture = tex;
-                }
-                else
-                {
-                    string textureData = dictionary["textureImageData"].AsString;
-                    Debug.Assert(!string.IsNullOrEmpty(textureData), 
-                        string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
-
-                    int dataLen = textureData.Length;
-                    if (dataLen != 0)
-                    {
-
-                        var dataBytes = Convert.FromBase64String(textureData);
-                        Debug.Assert(dataBytes != null, 
-                            string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
-
-                        var imageBytes = Inflate(dataBytes);
-                        Debug.Assert(imageBytes != null, 
-                            string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
-
-                        try
-                        {
-							Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
-                        }
-                        catch (Exception ex)
-                        {
-                            CCLog.Log(ex.ToString());
-                            Texture = CCParticleExample.DefaultTexture;
-                        }
-                    }
-                }
-
-                Debug.Assert(Texture != null, 
-                    string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
-            }
+			// Don't get the internal texture if a batchNode is used
+			if (BatchNode == null)
+				Texture = particleConfig.Texture;
         }
 
         #endregion Constructors
@@ -918,71 +858,5 @@ namespace CocosSharp
         }
 
         #endregion Updating system
-
-        /// <summary>
-        /// Decompresses the given data stream from its source ZIP or GZIP format.
-        /// </summary>
-        /// <param name="dataBytes"></param>
-        /// <returns></returns>
-        private static byte[] Inflate(byte[] dataBytes)
-        {
-
-            byte[] outputBytes = null;
-            var zipInputStream = new ZipInputStream(new MemoryStream(dataBytes));
-
-            if (zipInputStream.CanDecompressEntry) 
-            {
-                MemoryStream zipoutStream = new MemoryStream();
-#if XBOX
-                byte[] buf = new byte[4096];
-                int amt = -1;
-                while (true)
-                {
-                    amt = zipInputStream.Read(buf, 0, buf.Length);
-                    if (amt == -1)
-                    {
-                        break;
-                    }
-                    zipoutStream.Write(buf, 0, amt);
-                }
-#else
-                zipInputStream.CopyTo(zipoutStream);
-#endif
-                outputBytes = zipoutStream.ToArray();
-            }
-            else 
-            {
-                try 
-                {
-                    var gzipInputStream = new GZipInputStream(new MemoryStream(dataBytes));
-
-                    MemoryStream zipoutStream = new MemoryStream();
-
-#if XBOX
-                    byte[] buf = new byte[4096];
-                    int amt = -1;
-                    while (true)
-                    {
-                        amt = gzipInputStream.Read(buf, 0, buf.Length);
-                        if (amt == -1)
-                        {
-                            break;
-                        }
-                        zipoutStream.Write(buf, 0, amt);
-                    }
-#else
-                    gzipInputStream.CopyTo(zipoutStream);
-#endif
-                    outputBytes = zipoutStream.ToArray();
-                }
-                    
-                catch (Exception exc)
-                {
-                    CCLog.Log("Error decompressing image data: " + exc.Message);
-                }
-            }
-
-            return outputBytes;
-        }
     }
 }

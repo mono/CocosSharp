@@ -132,7 +132,10 @@ namespace CocosSharp
         {
         }
 
-        public CCParticleSystemQuad(string plistFile) : base(plistFile)
+		public CCParticleSystemQuad (CCParticleSystemConfig config) : base (config)
+		{}
+
+		public CCParticleSystemQuad(string plistFile, string directoryName = null) : base(plistFile, directoryName)
         {
             int totalPart = TotalParticles;
         }
