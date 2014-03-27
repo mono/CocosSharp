@@ -1340,7 +1340,10 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            CCParticleSystemQuad ignore = new CCParticleSystemQuad("Particles/SmallSun");
+            var psConfig = new CCParticleSystemConfig("Particles/SmallSun");
+
+            CCParticleSystemQuad ignore = new CCParticleSystemQuad(psConfig);
+
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = new CCParticleBatchNode(ignore.Texture);
@@ -1350,15 +1353,15 @@ namespace tests
             {
                 CCNode parent = (i == 0 ? parent1 : parent2);
 
-                CCParticleSystemQuad emitter1 = new CCParticleSystemQuad("Particles/SmallSun");
+                CCParticleSystemQuad emitter1 = new CCParticleSystemQuad(psConfig);
                 //emitter1.TotalParticles = 200;
                 emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
                 emitter1.BlendAdditive = (false);
-                CCParticleSystemQuad emitter2 = new CCParticleSystemQuad("Particles/SmallSun");
+                CCParticleSystemQuad emitter2 = new CCParticleSystemQuad(psConfig);
                 //emitter2.TotalParticles = 200;
                 emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
                 emitter2.BlendAdditive = (false);
-                CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/SmallSun");
+                CCParticleSystemQuad emitter3 = new CCParticleSystemQuad(psConfig);
                 //emitter3.TotalParticles = 200;
                 emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);

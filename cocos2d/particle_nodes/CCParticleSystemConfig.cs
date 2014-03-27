@@ -191,55 +191,110 @@ namespace CocosSharp
 
 			CCTexture2D tex = null;
 
-			if (!string.IsNullOrEmpty(textureName))
-			{
-				bool bNotify = CCFileUtils.IsPopupNotify;
-				CCFileUtils.IsPopupNotify = false;
-				try
-				{
-					tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
-				}
-				catch (Exception)
-				{
-					tex = null;
-				}
+            string textureData = dictionary["textureImageData"].AsString;
+            // We will try loading the textur data first if it exists.
+            if (!string.IsNullOrEmpty(textureData))
+            {
+                //Debug.Assert(!string.IsNullOrEmpty(textureData),
+                //    string.Format("CCParticleSystem: textureData does not exist : {0}", textureName));
 
-				CCFileUtils.IsPopupNotify = bNotify;
-			}
+                int dataLen = textureData.Length;
+                if (dataLen != 0)
+                {
 
-			if (tex != null)
-			{
-				Texture = tex;
-			}
-			else
-			{
-				string textureData = dictionary["textureImageData"].AsString;
-				Debug.Assert(!string.IsNullOrEmpty(textureData), 
-					string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
+                    var dataBytes = Convert.FromBase64String(textureData);
+                    Debug.Assert(dataBytes != null,
+                        string.Format("CCParticleSystem: error decoding textureImageData : {0}", textureName));
 
-				int dataLen = textureData.Length;
-				if (dataLen != 0)
-				{
+                    var imageBytes = Inflate(dataBytes);
+                    Debug.Assert(imageBytes != null,
+                        string.Format("CCParticleSystem: error init image with Data for texture : {0}", textureName));
 
-					var dataBytes = Convert.FromBase64String(textureData);
-					Debug.Assert(dataBytes != null, 
-						string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
+                    try
+                    {
+                        tex = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
+                    }
+                    catch (Exception ex)
+                    {
+                        CCLog.Log(ex.ToString());
+                        //Texture = CCParticleExample.DefaultTexture;
 
-					var imageBytes = Inflate(dataBytes);
-					Debug.Assert(imageBytes != null, 
-						string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
+                    }
 
-					try
-					{
-						Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
-					}
-					catch (Exception ex)
-					{
-						CCLog.Log(ex.ToString());
-						Texture = CCParticleExample.DefaultTexture;
-					}
-				}
-			}
+                    if (tex == null)
+                    {
+                        if (!string.IsNullOrEmpty(textureName))
+                        {
+                            bool bNotify = CCFileUtils.IsPopupNotify;
+                            CCFileUtils.IsPopupNotify = false;
+                            try
+                            {
+                                tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
+                            }
+                            catch (Exception)
+                            {
+                                tex = null;
+                                Texture = CCParticleExample.DefaultTexture;
+
+                            }
+
+                            CCFileUtils.IsPopupNotify = bNotify;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(textureName))
+                {
+                    bool bNotify = CCFileUtils.IsPopupNotify;
+                    CCFileUtils.IsPopupNotify = false;
+                    try
+                    {
+                        tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
+                    }
+                    catch (Exception)
+                    {
+                        tex = null;
+                    }
+
+                    CCFileUtils.IsPopupNotify = bNotify;
+                }
+            }
+            if (tex != null)
+            {
+                Texture = tex;
+            }
+            //else
+            //{
+            //    string textureData = dictionary["textureImageData"].AsString;
+            //    Debug.Assert(!string.IsNullOrEmpty(textureData), 
+            //        string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
+
+            //    int dataLen = textureData.Length;
+            //    if (dataLen != 0)
+            //    {
+
+            //        var dataBytes = Convert.FromBase64String(textureData);
+            //        Debug.Assert(dataBytes != null, 
+            //            string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
+
+            //        var imageBytes = Inflate(dataBytes);
+            //        Debug.Assert(imageBytes != null, 
+            //            string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
+
+            //        try
+            //        {
+            //            Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            CCLog.Log(ex.ToString());
+            //            Texture = CCParticleExample.DefaultTexture;
+            //        }
+            //    }
+			//}
 
 			Debug.Assert(Texture != null, 
 				string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
