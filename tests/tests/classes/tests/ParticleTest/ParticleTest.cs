@@ -987,6 +987,9 @@ namespace tests
 
 		public DemoParticleFromFile(string file) : base()
         {
+			if (particleConfigManager == null)
+				particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
+
             m_title = file;
 
         }
