@@ -88,7 +88,7 @@ namespace CocosSharp
 
             if (firstUsage)
             {
-                CCDrawManager.Clear(Color.Transparent);
+                CCDrawManager.Clear(CCColor4B.Transparent);
                 firstUsage = false;
             }
         }
@@ -96,19 +96,19 @@ namespace CocosSharp
         public void BeginWithClear(float r, float g, float b, float a)
         {
             Begin();
-            CCDrawManager.Clear(new Color(r, g, b, a));
+            CCDrawManager.Clear(new CCColor4B(r, g, b, a));
         }
 
         public void BeginWithClear(float r, float g, float b, float a, float depthValue)
         {
             Begin();
-            CCDrawManager.Clear(new Color(r, g, b, a), depthValue);
+            CCDrawManager.Clear(new CCColor4B(r, g, b, a), depthValue);
         }
 
         public void BeginWithClear(float r, float g, float b, float a, float depthValue, int stencilValue)
         {
             Begin();
-            CCDrawManager.Clear(new Color(r, g, b, a), depthValue, stencilValue);
+            CCDrawManager.Clear(new CCColor4B(r, g, b, a), depthValue, stencilValue);
         }
 
         public void ClearDepth(float depthValue)

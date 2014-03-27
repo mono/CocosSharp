@@ -669,7 +669,7 @@ namespace CocosSharp
                     );
 
                 CCDrawManager.SetRenderTarget(renderTarget);
-                CCDrawManager.Clear(Color.Transparent);
+                CCDrawManager.Clear(CCColor4B.Transparent);
 
                 SpriteBatch sb = CCDrawManager.spriteBatch;
                 sb.Begin();
@@ -975,7 +975,7 @@ namespace CocosSharp
 
             CCDrawManager.SetRenderTarget(result);
 
-            CCDrawManager.Clear(Color.Transparent);
+            CCDrawManager.Clear(CCColor4B.Transparent);
 
             var spriteBatch = CCDrawManager.spriteBatch;
 

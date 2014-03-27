@@ -16,7 +16,7 @@ namespace CocosSharp
         {
             m_pOldRenderTarget = CCDrawManager.GetRenderTarget();
             CCDrawManager.SetRenderTarget(pTexture);
-            CCDrawManager.Clear(Color.Transparent);
+            CCDrawManager.Clear(CCColor4B.Transparent);
         }
 
         public void AfterRender(CCTexture2D pTexture)

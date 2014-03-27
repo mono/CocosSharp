@@ -630,18 +630,18 @@ namespace CocosSharp
             {
                 try
                 {
-                    Clear(Color.Black, 0, 0);
+                    Clear(CCColor4B.Black, 0, 0);
                 }
                 catch (InvalidOperationException)
                 {
                     // no stencil buffer
                     m_bHasStencilBuffer = false;
-                    Clear(Color.Black);
+                    Clear(CCColor4B.Black);
                 }
             }
             else
             {
-                Clear(Color.Black);
+                Clear(CCColor4B.Black);
             }
             DrawCount = 0;
         }
@@ -1104,17 +1104,17 @@ namespace CocosSharp
             graphicsDevice.Clear(options, color, depth, stencil);
         }
 
-        public static void Clear(Color color, float depth, int stencil)
+        public static void Clear(CCColor4B color, float depth, int stencil)
         {
             graphicsDevice.Clear(ClearOptions.Target | ClearOptions.Stencil | ClearOptions.DepthBuffer, color, depth, stencil);
         }
 
-        public static void Clear(Color color, float depth)
+        public static void Clear(CCColor4B color, float depth)
         {
             graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, color, depth, 0);
         }
 
-        public static void Clear(Color color)
+        public static void Clear(CCColor4B color)
         {
             graphicsDevice.Clear(color);
         }

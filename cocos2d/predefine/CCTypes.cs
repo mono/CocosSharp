@@ -150,6 +150,7 @@ namespace CocosSharp
         public static readonly CCColor4B Gray = new CCColor4B(166, 166, 166, 255);
         public static readonly CCColor4B AliceBlue = new CCColor4B(240, 248, 255, 255);
         public static readonly CCColor4B Aquamarine = new CCColor4B (127, 255, 212, 255);
+        public static readonly CCColor4B Transparent = new CCColor4B(0, 0, 0, 0);
 
 
         public byte R { get; set; }
@@ -171,6 +172,14 @@ namespace CocosSharp
         public CCColor4B(byte inr, byte ing, byte inb) : this(inr, ing, inb, 255)
         {
         }
+
+        public CCColor4B(float fR, float fG, float fB, float fA) : this()
+        {
+            R = (byte)MathHelper.Clamp(fR * 255, Byte.MinValue, Byte.MaxValue);
+            G = (byte)MathHelper.Clamp(fG * 255, Byte.MinValue, Byte.MaxValue);
+            B = (byte)MathHelper.Clamp(fB * 255, Byte.MinValue, Byte.MaxValue);
+            A = (byte)MathHelper.Clamp(fA * 255, Byte.MinValue, Byte.MaxValue);
+        }   
 
         #endregion Constructors
 
@@ -226,6 +235,11 @@ namespace CocosSharp
         {            
             return this == other;       
         } 
+
+        public static implicit operator Color(CCColor4B point)
+        {
+            return new Color(point.R, point.G, point.B, point.A);
+        }
 
         #endregion Operators
 
