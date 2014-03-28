@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
 using System.IO;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
@@ -168,19 +167,19 @@ namespace CocosSharp
             }
         }
 
-        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
                                           bool premultiplied) where T : struct
         {
             return AddRawImage(data, width, height, assetName, format, premultiplied, false, new CCSize(width, height));
         }
 
-        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
                                           bool premultiplied, bool mipMap) where T : struct
         {
             return AddRawImage(data, width, height, assetName, format, premultiplied, mipMap, new CCSize(width, height));
         }
 
-         public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, SurfaceFormat format,
+		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
                                           bool premultiplied, bool mipMap, CCSize contentSize) where T : struct
         {
             CCTexture2D texture;
@@ -191,7 +190,7 @@ namespace CocosSharp
                 {
                     texture = new CCTexture2D();
                     
-					if (texture.InitWithRawData(data, (CCSurfaceFormat)format, width, height, premultiplied, mipMap, contentSize))
+					if (texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize))
                     {
                         m_pTextures.Add(assetName, texture);
                     }
