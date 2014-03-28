@@ -1046,15 +1046,12 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad(200);
+            m_emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
             // duration
             m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
-
-            // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.Radius;
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (0);
@@ -1127,15 +1124,12 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad(200);
+            m_emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/stars-grayscale");
 
             // duration
             m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
-
-            // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.Radius;
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (100);
@@ -1208,15 +1202,12 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            m_emitter = new CCParticleSystemQuad(100);
+            m_emitter = new CCParticleSystemQuad(100, CCEmitterMode.Radius);
             AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
-
-            // radius mode
-            m_emitter.EmitterMode = CCEmitterMode.Radius;
+            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity; 
 
             // radius mode: start and end radius in pixels
             m_emitter.StartRadius = (50);
@@ -1540,19 +1531,11 @@ namespace tests
 
         public RainbowEffect(int numOfParticles) : base(numOfParticles)
         {
-            InitRainbowEffects();
-        }
-
-        private void InitRainbowEffects()
-        {
             // additive
             BlendAdditive = (false);
 
             // duration
-            Duration = (ParticleDurationInfinity);
-
-            // Gravity Mode
-            EmitterMode = CCEmitterMode.Gravity;
+            Duration = (ParticleDurationInfinity);;
 
             // Gravity Mode: gravity
             Gravity = (new CCPoint(0, 0));
@@ -1801,14 +1784,11 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                var particleSystem = new CCParticleSystemQuad(200);
+                var particleSystem = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
                 particleSystem.Texture = (m_pBatchNode.Texture);
 
                 // duration
                 particleSystem.Duration = CCParticleSystem.ParticleDurationInfinity;
-
-                // radius mode
-                particleSystem.EmitterMode = CCEmitterMode.Radius;
 
                 // radius mode: 100 pixels from center
                 particleSystem.StartRadius = (100);

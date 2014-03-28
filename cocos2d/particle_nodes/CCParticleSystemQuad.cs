@@ -22,7 +22,30 @@ namespace CocosSharp
                 // than what is allocated, we need to allocate new arrays
                 if (value > AllocatedParticles)
                 {
-                    Particles = new CCParticle[value];
+                    if (EmitterMode == CCEmitterMode.Gravity) 
+                    {
+                        GravityParticles = new CCParticleGravity[value];
+
+                        if(BatchNode != null)
+                        {
+                            for (int i = 0; i < value; i++)
+                            {
+                                GravityParticles[i].AtlasIndex = i;
+                            }
+                        }
+                    } 
+                    else 
+                    {
+                        RadialParticles = new CCParticleRadial[value];
+
+                        if(BatchNode != null)
+                        {
+                            for (int i = 0; i < value; i++)
+                            {
+                                RadialParticles[i].AtlasIndex = i;
+                            }
+                        }
+                    }
 
                     if (Quads == null) 
                     {
@@ -35,14 +58,6 @@ namespace CocosSharp
 
                     AllocatedParticles = value;
                     base.TotalParticles = value;
-
-                    if(BatchNode != null)
-                    {
-                        for (int i = 0; i < value; i++)
-                        {
-                            Particles[i].AtlasIndex = i;
-                        }
-                    }
                 }
                 else
                 {
@@ -128,11 +143,12 @@ namespace CocosSharp
         {  
         }
 
-        public CCParticleSystemQuad(int numberOfParticles) : base(numberOfParticles)
+        public CCParticleSystemQuad(int numberOfParticles, CCEmitterMode emitterMode=CCEmitterMode.Gravity) 
+            : base(numberOfParticles, emitterMode)
         {
         }
 
-		public CCParticleSystemQuad (CCParticleSystemConfig config) : base (config)
+		public CCParticleSystemQuad(CCParticleSystemConfig config) : base(config)
 		{}
 
 		public CCParticleSystemQuad(string plistFile, string directoryName = null) : base(plistFile, directoryName)
@@ -217,7 +233,7 @@ namespace CocosSharp
             }
         }
 
-        void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticle particle)
+        void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, ref CCParticleBase particle)
         {
             CCPoint newPosition;
 
@@ -351,19 +367,50 @@ namespace CocosSharp
                 rawQuads = Quads.Elements;
             }
 
+            if (EmitterMode == CCEmitterMode.Gravity) 
+            {
+                UpdateGravityParticleQuads(rawQuads);
+            } 
+            else 
+            {
+                UpdateRadialParticleQuads(rawQuads);
+            }
+        }
+
+        void UpdateGravityParticleQuads(CCV3F_C4B_T2F_Quad[] rawQuads)
+        {
             var count = ParticleCount;
             if (BatchNode != null)
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref rawQuads[AtlasIndex + Particles[i].AtlasIndex], ref Particles[i]);
+                    UpdateQuad(ref rawQuads[AtlasIndex + GravityParticles[i].AtlasIndex], ref GravityParticles[i].ParticleBase);
                 }
             }
             else
             {
                 for (int i = 0; i < count; i++)
                 {
-                    UpdateQuad(ref rawQuads[i], ref Particles[i]);
+                    UpdateQuad(ref rawQuads[i], ref GravityParticles[i].ParticleBase);
+                }
+            }
+        }
+
+        void UpdateRadialParticleQuads(CCV3F_C4B_T2F_Quad[] rawQuads)
+        {
+            var count = ParticleCount;
+            if (BatchNode != null)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    UpdateQuad(ref rawQuads[AtlasIndex + RadialParticles[i].AtlasIndex], ref RadialParticles[i].ParticleBase);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    UpdateQuad(ref rawQuads[i], ref RadialParticles[i].ParticleBase);
                 }
             }
         }
@@ -373,7 +420,7 @@ namespace CocosSharp
 
         public CCParticleSystemQuad Clone()
         {
-            var p = new CCParticleSystemQuad(TotalParticles);
+            var p = new CCParticleSystemQuad(TotalParticles, EmitterMode);
 
             // angle
             p.Angle = Angle;
@@ -406,8 +453,6 @@ namespace CocosSharp
             p.StartSpinVar = StartSpinVar;
             p.EndSpin = EndSpin;
             p.EndSpinVar = EndSpinVar;
-
-            p.EmitterMode = EmitterMode;
 
             p.GravityMode = GravityMode;
             p.RadialMode = RadialMode;

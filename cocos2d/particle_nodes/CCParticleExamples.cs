@@ -137,12 +137,10 @@ namespace CocosSharp
 				config.GravityRadialAccelVar = 0;
 				config.GravitySpeed = 60;
 				config.GravitySpeedVar = 20;
-				config.EmitterMode = CCEmitterMode.Gravity;
 
 				config.Texture = CCParticleExample.DefaultTexture;
 
 			}
-
 
 			Duration = config.Duration;
 			Life = config.Life;
@@ -155,7 +153,6 @@ namespace CocosSharp
 			StartSizeVar = config.StartSizeVar;
 			EndSize = config.EndSize;
 
-			EmitterMode = config.EmitterMode;
             EmissionRate = TotalParticles / Life;
 
             CCColor4F startColor = new CCColor4F();
@@ -222,7 +219,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F (0.5f, 0.5f, 0.5f, 1.0f);
 
@@ -286,7 +282,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.76f, 0.25f, 0.12f, 1.0f);
             StartColorVar = new CCColor4F();
@@ -327,7 +322,6 @@ namespace CocosSharp
             StartSizeVar = 10.0f;
             EndSize = ParticleStartSizeEqualToEndSize;
 
-            EmitterMode = CCEmitterMode.Gravity;
             EmissionRate = TotalParticles / Life;
 
             StartColor = new CCColor4F(0.12f, 0.25f, 0.76f, 1.0f);
@@ -370,7 +364,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.5f);
@@ -411,7 +404,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.2f, 0.4f, 0.7f, 1.0f);
             StartColorVar = new CCColor4F(0.0f, 0.0f, 0.2f, 0.1f);
@@ -452,7 +444,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
             StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
@@ -493,7 +484,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Duration;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.7f, 0.1f, 0.2f, 1.0f);
             StartColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 0.0f);
@@ -534,7 +524,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = TotalParticles / Life;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(0.8f, 0.8f, 0.8f, 1.0f);
             StartColorVar = new CCColor4F(0.02f, 0.02f, 0.02f, 0.0f);
@@ -573,7 +562,6 @@ namespace CocosSharp
             EndSize = ParticleStartSizeEqualToEndSize;
 
             EmissionRate = 10;
-            EmitterMode = CCEmitterMode.Gravity;
 
             StartColor = new CCColor4F(1.0f, 1.0f, 1.0f, 1.0f);
             StartColorVar = new CCColor4F();
@@ -613,7 +601,6 @@ namespace CocosSharp
             StartSizeVar = 2.0f;
             EndSize = ParticleStartSizeEqualToEndSize;
 
-            EmitterMode = CCEmitterMode.Gravity;
             EmissionRate = 20;
 
             StartColor = new CCColor4F(0.7f, 0.8f, 1.0f, 1.0f);

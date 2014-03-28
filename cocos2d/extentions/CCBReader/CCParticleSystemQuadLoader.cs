@@ -35,7 +35,9 @@ namespace CocosSharp
         {
             if (propertyName == PROPERTY_EMITERMODE)
             {
-                ((CCParticleSystemQuad) node).EmitterMode = (CCEmitterMode) pIntegerLabeled;
+                // FIX ME: We want to set EmitterMode only during construction of particle System
+                // For now we will comment this out
+                // ((CCParticleSystemQuad) node).EmitterMode = (CCEmitterMode) pIntegerLabeled;
             }
             else
             {
