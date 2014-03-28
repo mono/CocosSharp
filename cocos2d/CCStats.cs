@@ -1,7 +1,9 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Diagnostics;
-
+#if IOS
+using MonoTouch.ObjCRuntime;
+#endif
 
 namespace CocosSharp
 {
@@ -49,6 +51,7 @@ namespace CocosSharp
         uint totalDrawCount;
         float totalUpdateTime;
         float startTime;
+        bool isCheckGC = true;
 
         Stopwatch stopwatch;
 
@@ -86,6 +89,15 @@ namespace CocosSharp
         public void Initialize ()
         {
             if (!isInitialized) {
+
+                // There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
+                // garbage collection themselves on the simulator.  This should not affect the devices though.
+                // So we check if we are running on a Device and only update the counters if we are.
+                #if IOS
+                if (Runtime.Arch != Arch.DEVICE)
+                    isCheckGC = false;
+                #endif
+
                 CCTexture2D texture;
                 CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
@@ -186,7 +198,7 @@ namespace CocosSharp
                 totalDrawCount++;
                 totalDrawTime += (float)stopwatch.Elapsed.TotalMilliseconds - startTime;
 
-                if (!gcWeakRef.IsAlive) {
+                if (isCheckGC && !gcWeakRef.IsAlive) {
                     gcCounter++;
                     gcWeakRef = new WeakReference (new object ());
                 }

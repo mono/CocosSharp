@@ -106,6 +106,12 @@ at how it deploys raw assets and utilizes box2d.
 
 Additional samples will be forthcoming as we find time to add more for you. 
 
+Statistics
+———
+
+There is a special case for Xamarin iOS MonoTouch running on the simulator where they aggresively call garbage collection themselves.  This should not affect the devices though.  On the Simulator the GC label will always be 0 (zero)
+
+
 History
 -------
 
