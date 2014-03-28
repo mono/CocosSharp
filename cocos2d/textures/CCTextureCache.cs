@@ -10,15 +10,25 @@ namespace CocosSharp
     {
         struct AsyncStruct
         {
-            public string  FileName;
-            public Action<CCTexture2D> Action;
+			public string  FileName { get; set; }
+			public Action<CCTexture2D> Action { get; set; }
         };
 
-        private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
-        private Action _processingAction;
-        private object _task;
+		struct DataAsyncStruct
+		{
+			public byte[] Data { get; set; }
+			public string AssetName { get; set; }
+			public CCSurfaceFormat Format { get; set; }
+			public Action<CCTexture2D> Action { get; set; }
+		};
 
-        private static CCTextureCache s_sharedTextureCache;
+		private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
+		private List<DataAsyncStruct> _dataAsyncLoadedImages = new List<DataAsyncStruct>();
+		private Action ProcessingAction { get; set; }
+		private Action ProcessingDataAction { get; set; }
+		private object Task { get; set; }
+
+		private static CCTextureCache sharedTextureCache;
 
         private readonly object m_pDictLock = new object();
         protected Dictionary<string, CCTexture2D> m_pTextures = new Dictionary<string, CCTexture2D>();
@@ -26,18 +36,19 @@ namespace CocosSharp
 
         private CCTextureCache()
         {
-            _processingAction = new Action(
+            ProcessingAction = new Action(
                 () =>
                 {
                     while (true)
                     {
+
                         AsyncStruct image;
 
                         lock (_asyncLoadedImages)
                         {
                             if (_asyncLoadedImages.Count == 0)
                             {
-                                _task = null;
+                                Task = null;
                                 return;
                             }
                             image = _asyncLoadedImages[0];
@@ -63,6 +74,44 @@ namespace CocosSharp
                     }
                 }
                 );
+			ProcessingDataAction = new Action(
+				() =>
+				{
+					while (true)
+					{
+
+						DataAsyncStruct imageData;
+
+						lock (_dataAsyncLoadedImages)
+						{
+							if (_dataAsyncLoadedImages.Count == 0)
+							{
+								Task = null;
+								return;
+							}
+							imageData = _dataAsyncLoadedImages[0];
+							_dataAsyncLoadedImages.RemoveAt(0);
+						}
+
+						try
+						{
+							var texture = AddImage(imageData.Data, imageData.AssetName, imageData.Format);
+							CCLog.Log("Loaded texture: {0}", imageData.AssetName);
+							if (imageData.Action != null)
+							{
+								CCDirector.SharedDirector.Scheduler.Schedule (
+									f => imageData.Action(texture), this, 0, 0, 0, false
+								);
+							}
+						}
+						catch (Exception ex)
+						{
+							CCLog.Log("Failed to load image {0}", imageData.AssetName);
+							CCLog.Log(ex.ToString());
+						}
+					}
+				}
+			);
         }
 
         public void Update(float dt)
@@ -73,20 +122,20 @@ namespace CocosSharp
         {
             get 
             {
-                if (s_sharedTextureCache == null)
+                if (sharedTextureCache == null)
                 {
-                    s_sharedTextureCache = new CCTextureCache();
+                    sharedTextureCache = new CCTextureCache();
                 }
-                return (s_sharedTextureCache);
+                return (sharedTextureCache);
             }
         }
 
         public static void PurgeSharedTextureCache()
         {
-            if (s_sharedTextureCache != null)
+            if (sharedTextureCache != null)
             {
-                s_sharedTextureCache.Dispose();
-                s_sharedTextureCache = null;
+                sharedTextureCache.Dispose();
+                sharedTextureCache = null;
             }
         }
 
@@ -100,20 +149,35 @@ namespace CocosSharp
             return m_pTextures.ContainsKey(assetFile);
         }
 
-        public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
+		public void AddImageAsync(byte[] data, string assetName, CCSurfaceFormat format, Action<CCTexture2D> action)
         {
-            Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
+			Debug.Assert(data != null && data.Length != 0, "TextureCache: data MUST not be NULL and MUST contain data");
 
-            lock (_asyncLoadedImages)
+			lock (_dataAsyncLoadedImages)
             {
-                _asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
+				_dataAsyncLoadedImages.Add(new DataAsyncStruct() { Data = data, AssetName = assetName, Format = format  , Action = action});
             }
 
-            if (_task == null)
+            if (Task == null)
             {
-                _task = CCTask.RunAsync(_processingAction);
+				Task = CCTask.RunAsync(ProcessingDataAction);
             }
         }
+
+		public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
+		{
+			Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
+
+			lock (_asyncLoadedImages)
+			{
+				_asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
+			}
+
+			if (Task == null)
+			{
+				Task = CCTask.RunAsync(ProcessingAction);
+			}
+		}
 
         public CCTexture2D AddImage(string fileimage)
 		{

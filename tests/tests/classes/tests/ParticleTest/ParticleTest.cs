@@ -1324,6 +1324,7 @@ namespace tests
 	public class ParticleReorder : ParticleDemo
     {
         private int m_nOrder;
+        CCLabelTtf label;
 
         public override void OnEnter()
         {
@@ -1334,49 +1335,71 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-            var psConfig = new CCParticleSystemConfig("Particles/SmallSun");
+			CCSize size = CCDirector.SharedDirector.WinSize;
 
-            CCParticleSystemQuad ignore = new CCParticleSystemQuad(psConfig);
+			label = new CCLabelTtf("Loading...", "Marker Felt", 32);
+			label.Position = size.Center;
+            label.Visible = false;
+			AddChild(label, 10);
 
-            //ignore.TotalParticles = 200;
-            CCNode parent1 = new CCNode ();
-            CCParticleBatchNode parent2 = new CCParticleBatchNode(ignore.Texture);
-            ignore.Unschedule ();
+			var scale = new CCScaleBy(0.3f, 2);
+            label.RunActions (new CCDelayTime (5.0f), new CCShow ());
+            label.RepeatForever (scale, scale.Reverse ());
 
-            for (int i = 0; i < 2; i++)
-            {
-                CCNode parent = (i == 0 ? parent1 : parent2);
+            ScheduleOnce(LoadParticleSystem, 10.0f);
 
-                CCParticleSystemQuad emitter1 = new CCParticleSystemQuad(psConfig);
-                //emitter1.TotalParticles = 200;
-                emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
-                emitter1.BlendAdditive = (false);
-                CCParticleSystemQuad emitter2 = new CCParticleSystemQuad(psConfig);
-                //emitter2.TotalParticles = 200;
-                emitter2.StartColor = (new CCColor4F(0, 1, 0, 1));
-                emitter2.BlendAdditive = (false);
-                CCParticleSystemQuad emitter3 = new CCParticleSystemQuad(psConfig);
-                //emitter3.TotalParticles = 200;
-                emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
-                emitter3.BlendAdditive = (false);
-
-                CCSize s = CCDirector.SharedDirector.WinSize;
-
-                int neg = (i == 0 ? 1 : -1);
-
-                emitter1.Position = (new CCPoint(s.Width / 2 - 30, s.Height / 2 + 60 * neg));
-                emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2 + 60 * neg));
-                emitter3.Position = (new CCPoint(s.Width / 2 + 30, s.Height / 2 + 60 * neg));
-
-                parent.AddChild(emitter1, 0, 1);
-                parent.AddChild(emitter2, 0, 2);
-                parent.AddChild(emitter3, 0, 3);
-
-                AddChild(parent, 10, 1000 + i);
-            }
-
-            Schedule(reorderParticles, 1.0f);
         }
+
+
+		private void LoadParticleSystem(float dt)
+		{
+			CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
+		}
+
+		private void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
+		{
+            label.RemoveFromParentAndCleanup (true);
+
+			CCParticleSystemQuad ignore = new CCParticleSystemQuad (psConfig);
+
+			//ignore.TotalParticles = 200;
+			CCNode parent1 = new CCNode ();
+			CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
+			ignore.Unschedule ();
+
+			for (int i = 0; i < 2; i++) {
+				CCNode parent = (i == 0 ? parent1 : parent2);
+
+				CCParticleSystemQuad emitter1 = new CCParticleSystemQuad (psConfig);
+				//emitter1.TotalParticles = 200;
+				emitter1.StartColor = (new CCColor4F (1, 0, 0, 1));
+				emitter1.BlendAdditive = (false);
+				CCParticleSystemQuad emitter2 = new CCParticleSystemQuad (psConfig);
+				//emitter2.TotalParticles = 200;
+				emitter2.StartColor = (new CCColor4F (0, 1, 0, 1));
+				emitter2.BlendAdditive = (false);
+				CCParticleSystemQuad emitter3 = new CCParticleSystemQuad (psConfig);
+				//emitter3.TotalParticles = 200;
+				emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
+				emitter3.BlendAdditive = (false);
+
+				CCSize s = CCDirector.SharedDirector.WinSize;
+
+				int neg = (i == 0 ? 1 : -1);
+
+				emitter1.Position = (new CCPoint (s.Width / 2 - 30, s.Height / 2 + 60 * neg));
+				emitter2.Position = (new CCPoint (s.Width / 2, s.Height / 2 + 60 * neg));
+				emitter3.Position = (new CCPoint (s.Width / 2 + 30, s.Height / 2 + 60 * neg));
+
+				parent.AddChild (emitter1, 0, 1);
+				parent.AddChild (emitter2, 0, 2);
+				parent.AddChild (emitter3, 0, 3);
+
+				AddChild (parent, 10, 1000 + i);
+			}
+
+			Schedule (reorderParticles, 1.0f);
+		}
 
         public override string title()
         {

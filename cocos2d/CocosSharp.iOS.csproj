@@ -470,6 +470,7 @@
     <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
+    <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -1447,10 +1447,8 @@ namespace tests
             label.Position = size.Center;
             AddChild(label, 10);
 
-            CCScaleBy scale = new CCScaleBy(0.3f, 2);
-            CCScaleBy scale_back = (CCScaleBy) scale.Reverse();
-            CCSequence seq = new CCSequence(scale, scale_back);
-            label.RunAction(new CCRepeatForever(seq));
+			var scale = new CCScaleBy(0.3f, 2);
+			label.RepeatForever(scale, scale.Reverse());
 
             ScheduleOnce(LoadImages, 1.0f);
         }

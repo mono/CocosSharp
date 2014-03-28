@@ -17,7 +17,7 @@ namespace CocosSharp
 	}
 
 
-	public class CCParticleSystemConfig
+	public class CCParticleSystemConfig : IDisposable
 	{
 
 		public CCParticleSystemType ParticleSystemType { get; internal set; }
@@ -68,20 +68,41 @@ namespace CocosSharp
 
 		public CCEmitterMode EmitterMode { get; set; }
 
-		public CCTexture2D Texture;
+		public string TextureData { get; set; }
+		public string TextureName { get; set; }
+		public CCTexture2D Texture { get; set; }
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CocosSharp.CCParticleSystemConfig"/> class.
+		/// </summary>
 		public CCParticleSystemConfig()
 		{ 
 			ParticleSystemType = CCParticleSystemType.Custom;
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CocosSharp.CCParticleSystemConfig"/> class.
+		/// </summary>
+		/// <param name="plistFile">Plist file.</param>
+		/// <param name="directoryName">Directory name.</param>
 		public CCParticleSystemConfig (string plistFile, string directoryName = null)
-			: this(CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile).Root.AsDictionary, directoryName)
+			: this(plistFile, directoryName, false)
+		{ }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="CocosSharp.CCParticleSystemConfig"/> class.
+		/// </summary>
+		/// <param name="plistFile">Plist file.</param>
+		/// <param name="directoryName">Directory name.</param>
+		/// <param name="loadingAsync">If set to <c>true</c> loading async.</param>
+		internal CCParticleSystemConfig (string plistFile, string directoryName = null, bool loadingAsync = false)
+			: this(CCContentManager.SharedContentManager.Load<PlistDocument>(plistFile).Root.AsDictionary, directoryName, loadingAsync)
 		{
 			Name = plistFile;
 		}
 
-		CCParticleSystemConfig(PlistDictionary dictionary, string directoryName) 
+
+		CCParticleSystemConfig(PlistDictionary dictionary, string directoryName, bool loadingAsync) 
 		{
 			ParticleSystemType = CCParticleSystemType.Cocos2D;
 
@@ -181,18 +202,24 @@ namespace CocosSharp
 				return;
 			}
 
-			LoadParticleTexture(dictionary);
+			TextureName = dictionary["textureFileName"].AsString;
+			TextureData = dictionary["textureImageData"].AsString;
+
+			if (!loadingAsync)
+				LoadParticleTexture();
+
 		}
 
-		void LoadParticleTexture(PlistDictionary dictionary)
+		internal void LoadParticleTexture()
 		{
 
-			string textureName = dictionary["textureFileName"].AsString;
+			string textureName = TextureName;
 
 			CCTexture2D tex = null;
 
-            string textureData = dictionary["textureImageData"].AsString;
-            // We will try loading the textur data first if it exists.
+			string textureData = TextureData;
+
+			// We will try loading the texture data first if it exists.
             if (!string.IsNullOrEmpty(textureData))
             {
                 //Debug.Assert(!string.IsNullOrEmpty(textureData),
@@ -212,7 +239,7 @@ namespace CocosSharp
 
                     try
                     {
-                        tex = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
+						tex = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
                     }
                     catch (Exception ex)
                     {
@@ -234,11 +261,13 @@ namespace CocosSharp
                             catch (Exception)
                             {
                                 tex = null;
-                                Texture = CCParticleExample.DefaultTexture;
+								Texture = CCParticleExample.DefaultTexture;
 
                             }
 
                             CCFileUtils.IsPopupNotify = bNotify;
+							if (tex == null)
+								Texture = CCParticleExample.DefaultTexture;
                         }
 
                     }
@@ -264,37 +293,8 @@ namespace CocosSharp
             }
             if (tex != null)
             {
-                Texture = tex;
+				Texture = tex;
             }
-            //else
-            //{
-            //    string textureData = dictionary["textureImageData"].AsString;
-            //    Debug.Assert(!string.IsNullOrEmpty(textureData), 
-            //        string.Format("CCParticleSystem: textureData does not exist : {0}",textureName));
-
-            //    int dataLen = textureData.Length;
-            //    if (dataLen != 0)
-            //    {
-
-            //        var dataBytes = Convert.FromBase64String(textureData);
-            //        Debug.Assert(dataBytes != null, 
-            //            string.Format("CCParticleSystem: error decoding textureImageData : {0}",textureName));
-
-            //        var imageBytes = Inflate(dataBytes);
-            //        Debug.Assert(imageBytes != null, 
-            //            string.Format("CCParticleSystem: error init image with Data for texture : {0}",textureName));
-
-            //        try
-            //        {
-            //            Texture = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            CCLog.Log(ex.ToString());
-            //            Texture = CCParticleExample.DefaultTexture;
-            //        }
-            //    }
-			//}
 
 			Debug.Assert(Texture != null, 
 				string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
@@ -305,7 +305,7 @@ namespace CocosSharp
 		/// </summary>
 		/// <param name="dataBytes"></param>
 		/// <returns></returns>
-		private static byte[] Inflate(byte[] dataBytes)
+		internal static byte[] Inflate(byte[] dataBytes)
 		{
 
 			byte[] outputBytes = null;
@@ -314,21 +314,7 @@ namespace CocosSharp
 			if (zipInputStream.CanDecompressEntry) 
 			{
 				MemoryStream zipoutStream = new MemoryStream();
-				#if XBOX
-				byte[] buf = new byte[4096];
-				int amt = -1;
-				while (true)
-				{
-				amt = zipInputStream.Read(buf, 0, buf.Length);
-				if (amt == -1)
-				{
-				break;
-				}
-				zipoutStream.Write(buf, 0, amt);
-				}
-				#else
 				zipInputStream.CopyTo(zipoutStream);
-				#endif
 				outputBytes = zipoutStream.ToArray();
 			}
 			else 
@@ -338,22 +324,7 @@ namespace CocosSharp
 					var gzipInputStream = new GZipInputStream(new MemoryStream(dataBytes));
 
 					MemoryStream zipoutStream = new MemoryStream();
-
-					#if XBOX
-					byte[] buf = new byte[4096];
-					int amt = -1;
-					while (true)
-					{
-					amt = gzipInputStream.Read(buf, 0, buf.Length);
-					if (amt == -1)
-					{
-					break;
-					}
-					zipoutStream.Write(buf, 0, amt);
-					}
-					#else
 					gzipInputStream.CopyTo(zipoutStream);
-					#endif
 					outputBytes = zipoutStream.ToArray();
 				}
 
@@ -366,6 +337,25 @@ namespace CocosSharp
 			return outputBytes;
 		}
 
+		#region Cleaning up
+
+		// No unmanaged resources, so no need for finalizer
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if (disposing)
+			{
+			}
+		}
+
+		#endregion Cleaning up
 	}
 }
 
