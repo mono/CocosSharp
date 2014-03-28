@@ -1343,10 +1343,10 @@ namespace tests
 			AddChild(label, 10);
 
 			var scale = new CCScaleBy(0.3f, 2);
-            label.RunActions (new CCDelayTime (5.0f), new CCShow ());
+            label.RunActions (new CCDelayTime (2.0f), new CCShow ());
             label.RepeatForever (scale, scale.Reverse ());
 
-            ScheduleOnce(LoadParticleSystem, 10.0f);
+            ScheduleOnce(LoadParticleSystem, 0.0f);
 
         }
 

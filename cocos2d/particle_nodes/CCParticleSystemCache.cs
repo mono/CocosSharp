@@ -133,7 +133,7 @@ namespace CocosSharp
 
 			string textureData = config.TextureData;
 
-			// We will try loading the textur data first if it exists.  Hopefully we get lucky
+			// We will try loading the texture data first if it exists.  Hopefully we get lucky
 			if (!string.IsNullOrEmpty(textureData))
 			{
 				//Debug.Assert(!string.IsNullOrEmpty(textureData),
@@ -172,7 +172,7 @@ namespace CocosSharp
                                         {
                                             CCTextureCache.SharedTextureCache.AddImageAsync(config.TextureName, (tex2) =>
                                                 {
-                                                    config.Texture = tex;
+                                                    config.Texture = tex2;
                                                     if (action != null)
                                                         action(config);
                                                 });

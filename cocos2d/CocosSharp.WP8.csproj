@@ -106,6 +106,7 @@
     <Compile Include="events\CCEventGamePadConnection.cs" />
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
+    <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="actions\action\CCAction.cs" />
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
