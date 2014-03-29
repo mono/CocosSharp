@@ -173,7 +173,11 @@ namespace CocosSharp
                                             CCTextureCache.SharedTextureCache.AddImageAsync(config.TextureName, (tex2) =>
                                                 {
                                                     config.Texture = tex2;
-                                                    if (action != null)
+
+													if (config.Texture == null)
+														config.Texture = CCParticleExample.DefaultTexture;
+                                                    
+													if (action != null)
                                                         action(config);
                                                 });
                                         }
