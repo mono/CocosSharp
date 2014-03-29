@@ -128,9 +128,6 @@ namespace CocosSharp
 				action (config);
 #else
 
-
-			CCTexture2D tex = null;
-
 			string textureData = config.TextureData;
 
 			// We will try loading the texture data first if it exists.  Hopefully we get lucky
@@ -183,7 +180,6 @@ namespace CocosSharp
                                         }
                                         catch (Exception)
                                         {
-                                            tex = null;
                                             config.Texture = CCParticleExample.DefaultTexture;
                                         }
 
