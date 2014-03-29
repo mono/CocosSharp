@@ -1779,7 +1779,7 @@ namespace CocosSharp
                 var resources = _createdResources.Elements;
                 for (int i = 0, count = _createdResources.Count; i < count; i++)
                 {
-                    if (resources[i].IsAlive)
+					if (resources[i] != null && resources[i].IsAlive)
                     {
                         ((CCGraphicsResource)resources[i].Target).Dispose();
                     }

@@ -810,6 +810,9 @@
     <Compile Include=".\particle_nodes\CCParticleSystemConfig.cs">
       <LogicalName>particle_nodes\CCParticleSystemConfig</LogicalName>
     </Compile>
+    <Compile Include=".\particle_nodes\CCParticleSystemCache.cs">
+      <LogicalName>particle_nodes\CCParticleSystemCache</LogicalName>
+    </Compile>
     <Compile Include=".\platform\CCAccelerometer.cs">
       <LogicalName>platform\CCAccelerometer</LogicalName>
     </Compile>

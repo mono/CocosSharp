@@ -290,6 +290,7 @@
     <Compile Include="particle_nodes\CCParticleSystem.cs" />
     <Compile Include="particle_nodes\CCParticleSystemQuad.cs" />
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
+    <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCAccelerometer.cs" />
     <Compile Include="Platform\CCAccelerometerDelegate.cs" />

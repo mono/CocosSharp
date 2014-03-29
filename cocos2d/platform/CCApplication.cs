@@ -294,6 +294,62 @@ namespace CocosSharp
 			}
 		}
 
+		public bool PreferMultiSampling 
+		{ 
+			get 
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null) 
+					return manager.PreferMultiSampling;
+
+				return false;
+			}
+			set
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+				{
+					manager.PreferMultiSampling = value;
+				}
+
+			}
+		}
+
+
+		public bool IsFullScreen 
+		{ 
+			get 
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+					return manager.IsFullScreen;
+
+				return false;
+			}
+			set
+			{
+				var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+				var manager = service as GraphicsDeviceManager;
+
+				Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+				if (manager != null)
+				{
+					manager.IsFullScreen = value;
+				}
+
+			}
+		}
+
+
         public GraphicsDeviceManager GraphicsDeviceManager
         {
             get 
