@@ -129,10 +129,10 @@ namespace CocosSharp
 
         public float ZoomScale
         {
-            get { return _container.Scale; }
+            get { return _container.ScaleX; }
             set
             {
-                if (_container.Scale != value)
+                if (_container.ScaleX != value)
                 {
                     CCPoint center;
 
@@ -386,9 +386,9 @@ namespace CocosSharp
         {
             if (dt > 0)
             {
-                if (_container.Scale != s)
+                if (_container.ScaleX != s)
                 {
-                    CCActionTween scaleAction = new CCActionTween (dt, "zoomScale", _container.Scale, s);
+                    CCActionTween scaleAction = new CCActionTween (dt, "zoomScale", _container.ScaleX, s);
                     RunAction(scaleAction);
                 }
             }

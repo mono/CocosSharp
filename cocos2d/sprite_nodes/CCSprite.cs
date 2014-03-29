@@ -212,7 +212,6 @@ namespace CocosSharp
 
         public override float Scale
         {
-            get { return base.Scale; }
             set
             {
                 base.Scale = value;

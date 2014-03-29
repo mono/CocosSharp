@@ -54,7 +54,7 @@ namespace tests
             CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
 
             //! move sprite half width and height, and draw only where not marked
-            sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.Scale, sprite.ContentSize.Height * sprite.Scale) * 0.5f;
+            sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.ScaleX, sprite.ContentSize.Height * sprite.ScaleY) * 0.5f;
 
             sprite.Visit();
 

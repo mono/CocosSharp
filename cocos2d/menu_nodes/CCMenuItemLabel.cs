@@ -4,11 +4,14 @@ namespace CocosSharp
 {
     public abstract class CCMenuItemLabelBase : CCMenuItem
     {
+        CCPoint originalScale;
+
+
         #region Properties
 
         public CCColor3B DisabledColor { get; set; }
         protected CCColor3B ColorBackup { get; set; }
-        protected float OriginalScale { get; set; }
+
 
         public override bool Selected
         {
@@ -18,12 +21,13 @@ namespace CocosSharp
                 {
                     base.Selected = value;
 
-                    float zoomScale = (Selected == true) ? OriginalScale * 1.2f : OriginalScale;
-                    CCAction zoomAction = new CCScaleTo(0.1f, zoomScale); 
+                    CCPoint zoomScale = (Selected == true) ? originalScale * 1.2f : originalScale;
+                    CCAction zoomAction = new CCScaleTo(0.1f, zoomScale.X, zoomScale.Y); 
 
                     if(Selected && (ZoomActionState == null || ZoomActionState.IsDone)) 
                     {
-                        OriginalScale = Scale;
+                        originalScale.X = ScaleX;
+                        originalScale.Y = ScaleY;
                     }
 
                     if(ZoomActionState !=null)
@@ -43,7 +47,7 @@ namespace CocosSharp
 
         protected CCMenuItemLabelBase(Action<object> target = null) : base(target)
         {
-            OriginalScale = 1.0f;
+            originalScale = new CCPoint(1.0f, 1.0f);
             ColorBackup = CCColor3B.White;
             DisabledColor = new CCColor3B(126, 126, 126);
             IsColorCascaded = true;
@@ -73,7 +77,8 @@ namespace CocosSharp
             if (Enabled)
             {
                 StopAllActions();
-                Scale = OriginalScale;
+                ScaleX = originalScale.X;
+                ScaleY = originalScale.Y;
                 base.Activate();
             }
         }

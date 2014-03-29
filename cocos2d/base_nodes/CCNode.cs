@@ -366,11 +366,6 @@ namespace CocosSharp
         /// </summary>
         public virtual float Scale
         {
-            get
-            {
-                Debug.Assert(m_fScaleX == m_fScaleY, "CCNode#scale. ScaleX != ScaleY. Don't know which one to return");
-                return m_fScaleX;
-            }
             set
             {
                 m_fScaleX = m_fScaleY = value;

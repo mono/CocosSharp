@@ -48,10 +48,9 @@ namespace CocosSharp
 
         public override float Scale
         {
-            get { return base.Scale; }
             set
             {
-				if (!value.Equals(base.Scale)) 
+                if (!value.Equals(base.ScaleX) || !value.Equals(base.ScaleY)) 
 				{
 					base.Scale = value;
 					IsDirty = true;

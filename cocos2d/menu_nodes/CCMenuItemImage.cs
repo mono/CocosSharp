@@ -10,10 +10,9 @@ namespace CocosSharp
         CCSprite normalImage = new CCSprite();
         CCSprite selectedImage = new CCSprite();
 
+        CCPoint originalScale;
 
         #region Properties
-
-        protected float OriginalScale { get; private set; }
 
         public CCSprite NormalImage
         {
@@ -124,13 +123,14 @@ namespace CocosSharp
 
                 if (Selected && (ZoomActionState == null || ZoomActionState.IsDone)) 
                 {
-                    OriginalScale = Scale;
+                    originalScale.X = ScaleX;
+                    originalScale.Y = ScaleY;
                 }
 
                 if (ZoomBehaviorOnTouch) 
                 {
-                    float zoomScale = (Selected) ? OriginalScale * 1.2f : OriginalScale;
-                    CCAction zoomAction = new CCScaleTo(0.1f, zoomScale); 
+                    CCPoint zoomScale = (Selected) ? originalScale * 1.2f : originalScale;
+                    CCAction zoomAction = new CCScaleTo(0.1f, zoomScale.X, zoomScale.Y); 
 
                     if(ZoomActionState !=null)
                     { 
@@ -161,7 +161,8 @@ namespace CocosSharp
             SelectedImage = selectedSprite;
             DisabledImage = disabledSprite;
 
-            OriginalScale = Scale;
+            originalScale.X = ScaleX;
+            originalScale.Y = ScaleY;
 
             ContentSize = NormalImage.ContentSize;
 
@@ -205,7 +206,8 @@ namespace CocosSharp
                 if (ZoomBehaviorOnTouch)
                 {
                     StopAllActions();
-                    Scale = OriginalScale;
+                    ScaleX = originalScale.X;
+                    ScaleY = originalScale.Y;
                 }
                 base.Activate();
             }

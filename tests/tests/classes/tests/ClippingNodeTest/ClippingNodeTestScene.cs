@@ -435,7 +435,7 @@ namespace tests.Clipping
 
             m_pOuterClipper = new CCClippingNode();
             CCAffineTransform tranform = CCAffineTransform.Identity;
-            tranform = CCAffineTransform.Scale(tranform, target.Scale, target.Scale);
+            tranform = CCAffineTransform.Scale(tranform, target.ScaleX, target.ScaleY);
 
             m_pOuterClipper.ContentSize = CCAffineTransform.Transform(target.ContentSize, tranform);
             m_pOuterClipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
