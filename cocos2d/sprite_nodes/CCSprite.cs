@@ -121,7 +121,6 @@ namespace CocosSharp
         /// </summary>
         public override float Rotation
         {
-            get { return base.Rotation; }
             set
             {
                 base.Rotation = value;

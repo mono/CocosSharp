@@ -1536,7 +1536,7 @@ namespace tests
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        private void backCallback(object pSender)
+        void backCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.backTileMapAction());
@@ -1551,12 +1551,16 @@ namespace tests
             CCPoint currentPos = node.Position;
             node.Position = currentPos + diff;
         }
-        private void MyGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, PlayerIndex player)
+
+        void MyGamePadTriggerUpdate(float leftTriggerStrength, float rightTriggerStrength, PlayerIndex player)
         {
             CCNode node = GetChildByTag(kTagTileMap);
-            node.Rotation += rightTriggerStrength * CCMacros.CCDegreesToRadians(15f) - leftTriggerStrength * CCMacros.CCDegreesToRadians(15f);
+            float incrementRotation = rightTriggerStrength * CCMacros.CCDegreesToRadians(15f) - leftTriggerStrength * CCMacros.CCDegreesToRadians(15f);
+            node.RotationX += incrementRotation;
+            node.RotationY += incrementRotation;
         }
-        private void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
+
+        void MyOnGameStickUpdate(CCGameStickStatus left, CCGameStickStatus right, PlayerIndex player)
         {
             CCNode node = GetChildByTag(kTagTileMap);
             if (left.Magnitude > 0f)

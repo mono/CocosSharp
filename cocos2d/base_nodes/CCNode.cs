@@ -329,11 +329,6 @@ namespace CocosSharp
         /// </summary>
         public virtual float Rotation
         {
-            get
-            {
-                Debug.Assert(m_fRotationX == m_fRotationY, "CCNode#rotation. RotationX != RotationY. Don't know which one to return");
-                return m_fRotationX;
-            }
             set
             {
                 m_fRotationX = m_fRotationY = value;

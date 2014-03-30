@@ -1008,7 +1008,8 @@ namespace CocosSharp
 
                 CCNode embeddedNode = ccbFileNode.FileNode;
                 embeddedNode.Position = ccbFileNode.Position;
-                embeddedNode.Rotation = ccbFileNode.Rotation;
+                embeddedNode.RotationX = ccbFileNode.RotationX;
+                embeddedNode.RotationY = ccbFileNode.RotationY;
                 embeddedNode.ScaleX = ccbFileNode.ScaleX;
                 embeddedNode.ScaleY = ccbFileNode.ScaleY;
                 embeddedNode.Tag = ccbFileNode.Tag;

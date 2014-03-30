@@ -946,21 +946,22 @@ namespace CocosSharp
 
 		private class CCBRotateToState : CCActionIntervalState
 		{
-			private float DstAngle { get; set; }
-			private float diffAngle;
-			private float startAngle;
+			float DstAngle { get; set; }
+            CCPoint diffAngle;
+            CCPoint startAngle;
 
 			public CCBRotateToState (CCBRotateTo action, CCNode target)
 				: base(action, target)
 			{	
 				DstAngle = action.DstAngle;
-				startAngle = Target.Rotation;
-				diffAngle = DstAngle - startAngle;
+                startAngle = new CCPoint(Target.RotationX, Target.RotationY);
+                diffAngle = new CCPoint(DstAngle - startAngle.X, DstAngle - startAngle.Y);
 			}
 
 			public override void Update(float time)
 			{
-				Target.Rotation = startAngle + (diffAngle * time);
+                Target.RotationX = startAngle.X + (diffAngle.X * time);
+                Target.RotationY = startAngle.Y + (diffAngle.Y * time);
 			}
 
 		}

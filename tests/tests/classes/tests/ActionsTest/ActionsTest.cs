@@ -2108,7 +2108,7 @@ namespace tests
 
         private void logSprRotation(CCNode sender)
         {
-            CCLog.Log("{0}", sender.Rotation);
+            CCLog.Log("{0},{1}", sender.RotationX, sender.RotationY);
         }
 
         public override string title()
