@@ -7,7 +7,6 @@ namespace CocosSharp
 {
     public class CCTileMapAtlas : CCAtlasNode
     {
-        //! numbers of tiles to render
         protected int m_nItemsToRender;
         protected Dictionary<CCGridSize, int> m_pPosToAtlasIndex;
         private CCImageTGA m_pTGAInfo;
@@ -22,21 +21,42 @@ namespace CocosSharp
         #region Constructors
 
         public CCTileMapAtlas(string tile, string mapFile, int tileWidth, int tileHeight)
+            : this(tile, mapFile, tileWidth, tileHeight, new CCImageTGA(CCFileUtils.FullPathFromRelativePath(mapFile)))
         {
-            InitWithTileFile(tile, mapFile, tileWidth, tileHeight);
         }
 
-        private void InitWithTileFile(string tile, string mapFile, int tileWidth, int tileHeight)
+        CCTileMapAtlas(string tile, string mapFile, int tileWidth, int tileHeight, CCImageTGA tgaInfo)
+            : this(tile, tileWidth, tileHeight, tgaInfo, CalculateItemsToRender(tgaInfo))
         {
-            LoadTgAfile(mapFile);
-            CalculateItemsToRender();
+        }
 
-            // We can't call base constructor because we need to determine num of items to render first
-            base.InitWithTileFile(tile, tileWidth, tileHeight, m_nItemsToRender);
+        CCTileMapAtlas(string tile, int tileWidth, int tileHeight, CCImageTGA tgaInfo, int numOfItemsToRender)
+            : base(tile, tileWidth, tileHeight, numOfItemsToRender)
+        {
+            TGAInfo = tgaInfo;
+            m_nItemsToRender = numOfItemsToRender;
 
             m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
             UpdateAtlasValues();
             ContentSize = new CCSize(m_pTGAInfo.width * ItemWidth, m_pTGAInfo.height * ItemHeight);
+        }
+
+        // Just used during construction
+        static int CalculateItemsToRender(CCImageTGA tgaInfo)
+        {
+            Debug.Assert(tgaInfo != null, "tgaInfo must be non-nil");
+
+            int itemsToRender = 0;
+            var data = tgaInfo.imageData;
+            for (int i = 0, count = tgaInfo.width * tgaInfo.height; i < count;  i++)
+            {
+                if (data[i].R != 0)
+                {
+                    ++itemsToRender;
+                }
+            }
+
+            return itemsToRender;
         }
 
         #endregion Constructors 
@@ -80,29 +100,7 @@ namespace CocosSharp
             m_pTGAInfo = null;
             m_pPosToAtlasIndex = null;
         }
-
-        private void LoadTgAfile(string file)
-        {
-            Debug.Assert(!string.IsNullOrEmpty(file), "file must be non-nil");
-
-            m_pTGAInfo = new CCImageTGA(CCFileUtils.FullPathFromRelativePath(file));
-        }
-
-        private void CalculateItemsToRender()
-        {
-            Debug.Assert(m_pTGAInfo != null, "tgaInfo must be non-nil");
-
-            m_nItemsToRender = 0;
-            var data = m_pTGAInfo.imageData;
-            for (int i = 0, count = m_pTGAInfo.width * m_pTGAInfo.height; i < count;  i++)
-            {
-                if (data[i].R != 0)
-                {
-                    ++m_nItemsToRender;
-                }
-            }
-        }
-
+            
         private void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
         {
             int x = pos.X;

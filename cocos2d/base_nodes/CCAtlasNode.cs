@@ -5,34 +5,31 @@ namespace CocosSharp
 {
     public class CCAtlasNode : CCNodeRGBA, ICCTexture
     {
-        protected bool IsOpacityModifyRGB;
+    
+        #region Properties
 
-        public CCTextureAtlas TextureAtlas;
-        public CCBlendFunc BlendFunc { get; set; }
-
-        protected CCColor3B ColorUnmodified;
-        protected int ItemHeight;
-        protected int ItemWidth;
-        protected int ItemsPerColumn;
-        protected int ItemsPerRow;
-
-        // color uniform
-        protected int UniformColor;
-
-        // quads to draw
-        public int QuadsToDraw;
+        protected bool IsOpacityModifyRGB { get; set; }
 
         // This varible is only used for CCLabelAtlas FPS display. So please don't modify its value.
-        public bool IgnoreContentScaleFactor;
+        protected internal bool IgnoreContentScaleFactor { get; set; }
 
+        protected int ItemHeight { get; set; }
+        protected int ItemWidth { get; set; }
+        protected int ItemsPerColumn { get; set; }
+        protected int ItemsPerRow { get; set; }
+
+        protected int UniformColor { get; set; }
+        protected int QuadsToDraw { get; set; }
+        public CCBlendFunc BlendFunc { get; set; }
+        protected CCColor3B ColorUnmodified { get; set; }
+         
+        public CCTextureAtlas TextureAtlas { get; set; }
 
 		public bool IsAntialiased
 		{
 			get { return Texture.IsAntialiased; }
 			set { Texture.IsAntialiased = value; }
 		}
-
-        #region ICCRGBAProtocol Members
 
         public override bool IsColorModifiedByOpacity
         {
@@ -90,15 +87,6 @@ namespace CocosSharp
             }
         }
 
-        private void UpdateOpacityModifyRgb()
-        {
-            IsOpacityModifyRGB = TextureAtlas.Texture.HasPremultipliedAlpha;
-        }
-
-        #endregion
-
-        #region ICCTextureProtocol Members
-
         public virtual CCTexture2D Texture
         {
             get { return TextureAtlas.Texture; }
@@ -110,45 +98,27 @@ namespace CocosSharp
             }
         }
 
-        private void UpdateBlendFunc()
-        {
-            if (!TextureAtlas.Texture.HasPremultipliedAlpha)
-            {
-                BlendFunc = CCBlendFunc.NonPremultiplied;
-            }
-        }
+        #endregion Properties
 
-        #endregion
+
+        #region Constructors
 
         internal CCAtlasNode()
         {
         }
 
-        public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender)
+        public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender) 
+            : this(CCTextureCache.SharedTextureCache.AddImage(tile), tileWidth, tileHeight, itemsToRender)
         {
-            InitWithTileFile(tile, tileWidth, tileHeight, itemsToRender);
         }
 
         public CCAtlasNode(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
-        {
-            InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
-        }
-
-        protected void InitWithTileFile(string tile, int tileWidth, int tileHeight, int itemsToRender)
-        {
-            Debug.Assert(tile != null, "title should not be null");
-            var texture = CCTextureCache.SharedTextureCache.AddImage(tile);
-            InitWithTexture(texture, tileWidth, tileHeight, itemsToRender);
-        }
-
-        private void InitWithTexture(CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender)
         {
             ItemWidth = tileWidth;
             ItemHeight = tileHeight;
 
             ColorUnmodified = CCColor3B.White;
             IsOpacityModifyRGB = true;
-
             BlendFunc = CCBlendFunc.AlphaBlend; 
 
             TextureAtlas = new CCTextureAtlas(texture, itemsToRender);
@@ -157,11 +127,20 @@ namespace CocosSharp
             UpdateOpacityModifyRgb();
 
             CalculateMaxItems();
-
             QuadsToDraw = itemsToRender;
         }
 
-        private void CalculateMaxItems()
+        #endregion Constructors
+
+
+        protected override void Draw()
+        {
+            CCDrawManager.BlendFunc(BlendFunc);
+
+            TextureAtlas.DrawNumberOfQuads(QuadsToDraw, 0);
+        }
+
+        void CalculateMaxItems()
         {
             CCSize s = TextureAtlas.Texture.ContentSize;
 
@@ -174,16 +153,28 @@ namespace CocosSharp
             ItemsPerRow = (int) (s.Width / ItemWidth);
         }
 
+
+        #region Updating atlas
+
         public virtual void UpdateAtlasValues()
         {
             Debug.Assert(false, "CCAtlasNode:Abstract updateAtlasValue not overridden");
         }
 
-        protected override void Draw()
+        void UpdateOpacityModifyRgb()
         {
-            CCDrawManager.BlendFunc(BlendFunc);
-
-            TextureAtlas.DrawNumberOfQuads(QuadsToDraw, 0);
+            IsOpacityModifyRGB = TextureAtlas.Texture.HasPremultipliedAlpha;
         }
+
+        void UpdateBlendFunc()
+        {
+            if (!TextureAtlas.Texture.HasPremultipliedAlpha)
+            {
+                BlendFunc = CCBlendFunc.NonPremultiplied;
+            }
+        }
+
+        #endregion Updating atlas
+
     }
 }
