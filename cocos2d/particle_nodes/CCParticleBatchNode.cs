@@ -400,9 +400,10 @@ namespace CocosSharp
             // particle could be reused for self rendering
             pChild.BatchNode = null;
 
-            UpdateAllAtlasIndexes();
-
+            // Need to remove child from list of children before we update atlas indices
             base.RemoveChild(pChild, cleanup);
+
+            UpdateAllAtlasIndexes();
         }
 
         public void RemoveChildAtIndex(int index, bool doCleanup)
