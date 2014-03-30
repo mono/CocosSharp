@@ -67,7 +67,7 @@ namespace tests
 
         public void menuCallback(object pSender)
         {
-            ((CCLayerMultiplex) m_pParent).SwitchTo(0);
+            ((CCLayerMultiplex) Parent).SwitchTo(0);
         }
 
         public void disableMenuCallback(object pSender)

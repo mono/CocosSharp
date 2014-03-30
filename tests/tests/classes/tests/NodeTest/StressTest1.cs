@@ -39,7 +39,7 @@ namespace tests
 
         private void removeMe(CCNode node)
         {
-            m_pParent.RemoveChild(node, true);
+            Parent.RemoveChild(node, true);
             nextCallback(this);
         }
 

@@ -267,7 +267,7 @@ namespace CocosSharp
                 if (m_bFlipX != value)
                 {
                     m_bFlipX = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, m_obContentSize);
+                    SetTextureRect(m_obRect, m_bRectRotated, contentSize);
                 }
             }
         }
@@ -280,7 +280,7 @@ namespace CocosSharp
                 if (m_bFlipY != value)
                 {
                     m_bFlipY = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, m_obContentSize);
+                    SetTextureRect(m_obRect, m_bRectRotated, contentSize);
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace CocosSharp
                     m_obRect.PointsToPixels(),
                     m_bRectRotated,
                     m_obUnflippedOffsetPositionFromCenter.PointsToPixels(),
-                    m_obContentSize.PointsToPixels()
+                    contentSize.PointsToPixels()
                     );
             }
             set
@@ -594,8 +594,8 @@ namespace CocosSharp
                 relativeOffset.Y = -relativeOffset.Y;
             }
 
-            m_obOffsetPosition.X = relativeOffset.X + (m_obContentSize.Width - m_obRect.Size.Width) / 2;
-            m_obOffsetPosition.Y = relativeOffset.Y + (m_obContentSize.Height - m_obRect.Size.Height) / 2;
+            m_obOffsetPosition.X = relativeOffset.X + (contentSize.Width - m_obRect.Size.Width) / 2;
+            m_obOffsetPosition.Y = relativeOffset.Y + (contentSize.Height - m_obRect.Size.Height) / 2;
 
             // rendering using batch node
             if (m_pobBatchNode != null)
@@ -720,7 +720,7 @@ namespace CocosSharp
             {
                 // If it is not visible, or one of its ancestors is not visible, then do nothing:
                 if (!Visible ||
-                    (m_pParent != null && m_pParent != m_pobBatchNode && ((CCSprite)m_pParent).m_bShouldBeHidden))
+                    (Parent != null && Parent != m_pobBatchNode && ((CCSprite)Parent).m_bShouldBeHidden))
                 {
                     m_sQuad.BottomRight.Vertices =
                         m_sQuad.TopLeft.Vertices = m_sQuad.TopRight.Vertices = m_sQuad.BottomLeft.Vertices = new CCVertex3F(0, 0, 0);
@@ -730,16 +730,16 @@ namespace CocosSharp
                 {
                     m_bShouldBeHidden = false;
 
-                    if (m_pParent == null || m_pParent == m_pobBatchNode)
+                    if (Parent == null || Parent == m_pobBatchNode)
                     {
                         m_transformToBatch = NodeToParentTransform();
                     }
                     else
                     {
-                        Debug.Assert((m_pParent as CCSprite) != null,
+                        Debug.Assert((Parent as CCSprite) != null,
                                      "Logic error in CCSprite. Parent must be a CCSprite");
                         m_transformToBatch = CCAffineTransform.Concat(NodeToParentTransform(),
-                                                                                       ((CCSprite)m_pParent).
+                                                                                       ((CCSprite)Parent).
                                                                                            m_transformToBatch);
                     }
 
@@ -773,10 +773,10 @@ namespace CocosSharp
                     float dx = x1 * cr - y2 * sr2 + x;
                     float dy = x1 * sr + y2 * cr2 + y;
 
-                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(ax, ay, m_fVertexZ);
-                    m_sQuad.BottomRight.Vertices = new CCVertex3F(bx, by, m_fVertexZ);
-                    m_sQuad.TopLeft.Vertices = new CCVertex3F(dx, dy, m_fVertexZ);
-                    m_sQuad.TopRight.Vertices = new CCVertex3F(cx, cy, m_fVertexZ);
+                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(ax, ay, VertexZ);
+                    m_sQuad.BottomRight.Vertices = new CCVertex3F(bx, by, VertexZ);
+                    m_sQuad.TopLeft.Vertices = new CCVertex3F(dx, dy, VertexZ);
+                    m_sQuad.TopRight.Vertices = new CCVertex3F(cx, cy, VertexZ);
                 }
 
                 m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
@@ -787,17 +787,17 @@ namespace CocosSharp
             // recursively iterate over children
             if (m_bHasChildren)
             {
-                CCNode[] elements = m_pChildren.Elements;
+                CCNode[] elements = Children.Elements;
                 if (m_pobBatchNode != null)
                 {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    for (int i = 0, count = Children.count; i < count; i++)
                     {
                         ((CCSprite)elements[i]).UpdateTransform();
                     }
                 }
                 else
                 {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    for (int i = 0, count = Children.count; i < count; i++)
                     {
                         var sprite = elements[i] as CCSprite;
                         if (sprite != null)
@@ -831,7 +831,7 @@ namespace CocosSharp
 
                 m_pobBatchNode.AppendChild(sprite);
 
-                if (!ReorderChildDirty)
+                if (!IsReorderChildDirty)
                 {
                     SetReorderChildDirtyRecursively();
                 }
@@ -844,14 +844,14 @@ namespace CocosSharp
         public override void ReorderChild(CCNode child, int zOrder)
         {
             Debug.Assert(child != null);
-            Debug.Assert(m_pChildren.Contains(child));
+            Debug.Assert(Children.Contains(child));
 
             if (zOrder == child.ZOrder)
             {
                 return;
             }
 
-            if (m_pobBatchNode != null && !ReorderChildDirty)
+            if (m_pobBatchNode != null && !IsReorderChildDirty)
             {
                 SetReorderChildDirtyRecursively();
                 m_pobBatchNode.ReorderBatch(true);
@@ -875,8 +875,8 @@ namespace CocosSharp
             if (m_pobBatchNode != null)
             {
                 CCSpriteBatchNode batch = m_pobBatchNode;
-                CCNode[] elements = m_pChildren.Elements;
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
                     batch.RemoveSpriteFromAtlas((CCSprite)elements[i]);
                 }
@@ -889,10 +889,10 @@ namespace CocosSharp
 
         public override void SortAllChildren()
         {
-            if (ReorderChildDirty)
+            if (IsReorderChildDirty)
             {
-                var elements = m_pChildren.Elements;
-                int count = m_pChildren.count;
+                var elements = Children.Elements;
+                int count = Children.count;
 
                 Array.Sort(elements, 0, count, this);
 
@@ -904,17 +904,17 @@ namespace CocosSharp
                     }
                 }
 
-                ReorderChildDirty = false;
+                IsReorderChildDirty = false;
             }
         }
 
         public virtual void SetReorderChildDirtyRecursively()
         {
             //only set parents flag the first time
-            if (!ReorderChildDirty)
+            if (!IsReorderChildDirty)
             {
-                ReorderChildDirty = true;
-                CCNode node = m_pParent;
+                IsReorderChildDirty = true;
+                CCNode node = Parent;
                 while (node != null && node != m_pobBatchNode)
                 {
                     ((CCSprite)node).SetReorderChildDirtyRecursively();
@@ -930,8 +930,8 @@ namespace CocosSharp
             // recursively set dirty
             if (m_bHasChildren)
             {
-                CCNode[] elements = m_pChildren.Elements;
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
                     var sprite = elements[i] as CCSprite;
                     if (sprite != null)

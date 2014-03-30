@@ -217,9 +217,9 @@ object->propertyNamed(name_of_the_property);
         /// </summary>
         public CCTMXLayer LayerNamed(string layerName)
         {
-            for (int i = 0; i < m_pChildren.count; i++)
+            for (int i = 0; i < Children.count; i++)
             {
-                var layer = m_pChildren.Elements[i] as CCTMXLayer;
+                var layer = Children.Elements[i] as CCTMXLayer;
                 if (layer != null && layer.LayerName == layerName)
                 {
                     return layer;

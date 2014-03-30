@@ -95,7 +95,7 @@ namespace CocosSharp
             int ix = Layers.Count;
             Layers[ix] = layer;
             layersInOrder.Add(ix);
-            if (layer.Tag != CCNode.kCCNodeTagInvalid)
+            if (layer.Tag != CCNode.TagInvalid)
             {
                 Layers[layer.Tag + TagOffsetForUniqueness] = layer;
             }

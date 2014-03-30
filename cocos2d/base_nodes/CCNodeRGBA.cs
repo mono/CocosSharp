@@ -70,7 +70,7 @@ namespace CocosSharp
                 if (IsOpacityCascaded)
                 {
                     byte parentOpacity = 255;
-                    var pParent = m_pParent as ICCColor;
+                    var pParent = Parent as ICCColor;
                     if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;

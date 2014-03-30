@@ -120,11 +120,11 @@ namespace CocosSharp
             {
                 _isOpacityModifyRGB = value;
                 
-                if (m_pChildren != null && m_pChildren.count > 0)
+						if (Children != null && Children.count > 0)
                 {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+							for (int i = 0, count = Children.count; i < count; i++)
                     {
-                        var item = m_pChildren.Elements[i] as ICCColor;
+								var item = Children.Elements[i] as ICCColor;
                         if (item != null)
                         {
                             item.IsColorModifiedByOpacity = value;

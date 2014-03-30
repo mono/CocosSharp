@@ -355,7 +355,7 @@ namespace CocosSharp
                 // We always clip to the bounding box
                 CCSize contentSize = ContentSize;
                 var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
-                var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform());
+                var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform);
 
                 var winSize = CCDirector.SharedDirector.WinSize;
 

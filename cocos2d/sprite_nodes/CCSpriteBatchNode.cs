@@ -39,7 +39,7 @@ namespace CocosSharp
                 UpdateBlendFunc();
                 if (value != null)
                 {
-                    m_obContentSize = value.ContentSize;
+                    contentSize = value.ContentSize;
             	}
         	}
         }
@@ -88,7 +88,7 @@ namespace CocosSharp
             UpdateBlendFunc();
 
             // no lazy alloc in this node
-            m_pChildren = new CCRawList<CCNode>(capacity);
+            Children = new CCRawList<CCNode>(capacity);
             m_pobDescendants = new CCRawList<CCSprite>(capacity);
         }
 
@@ -112,9 +112,9 @@ namespace CocosSharp
             //kmGLPushMatrix();
             CCDrawManager.PushMatrix();
 
-            if (m_pGrid != null && m_pGrid.Active)
+            if (Grid != null && Grid.Active)
             {
-                m_pGrid.BeforeDraw();
+                Grid.BeforeDraw();
                 TransformAncestors();
             }
 
@@ -123,9 +123,9 @@ namespace CocosSharp
 
             Draw();
 
-            if (m_pGrid != null && m_pGrid.Active)
+            if (Grid != null && Grid.Active)
             {
-                m_pGrid.AfterDraw(this);
+                Grid.AfterDraw(this);
             }
 
             //kmGLPopMatrix();
@@ -153,9 +153,9 @@ namespace CocosSharp
         public override void ReorderChild(CCNode child, int zOrder)
         {
             Debug.Assert(child != null, "the child should not be null");
-            Debug.Assert(m_pChildren.Contains(child), "Child doesn't belong to Sprite");
+            Debug.Assert(Children.Contains(child), "Child doesn't belong to Sprite");
 
-            if (zOrder == child.m_nZOrder)
+			if (zOrder == child.ZOrder)
             {
                 return;
             }
@@ -168,7 +168,7 @@ namespace CocosSharp
         {
             var pSprite = (CCSprite) child;
 
-            Debug.Assert(m_pChildren.Contains(pSprite), "sprite batch node should contain the child");
+            Debug.Assert(Children.Contains(pSprite), "sprite batch node should contain the child");
 
             // cleanup before removing
             RemoveSpriteFromAtlas(pSprite);
@@ -178,7 +178,7 @@ namespace CocosSharp
 
         public void RemoveChildAtIndex(int index, bool doCleanup)
         {
-            RemoveChild((m_pChildren[index]), doCleanup);
+            RemoveChild((Children[index]), doCleanup);
         }
 
         public override void RemoveAllChildrenWithCleanup(bool cleanup)
@@ -200,10 +200,10 @@ namespace CocosSharp
         //override sortAllChildren
         public override void SortAllChildren()
         {
-            if (ReorderChildDirty)
+            if (IsReorderChildDirty)
             {
-                int j = 0, count = m_pChildren.count;
-                CCNode[] elements = m_pChildren.Elements;
+                int j = 0, count = Children.count;
+                CCNode[] elements = Children.Elements;
 
                 Array.Sort(elements, 0, count, this);
 
@@ -226,7 +226,7 @@ namespace CocosSharp
                     }
                 }
 
-                ReorderChildDirty = false;
+                IsReorderChildDirty = false;
             }
         }
 
@@ -246,7 +246,7 @@ namespace CocosSharp
             {
                 oldIndex = sprite.AtlasIndex;
                 sprite.AtlasIndex = curIndex;
-                sprite.m_uOrderOfArrival = 0;
+                sprite.OrderOfArrival = 0;
                 if (oldIndex != curIndex)
                 {
                     Swap(oldIndex, curIndex);
@@ -257,12 +257,12 @@ namespace CocosSharp
             {
                 bool needNewIndex = true;
 
-                if (pArray.Elements[0].m_nZOrder >= 0)
+				if (pArray.Elements[0].ZOrder >= 0)
                 {
                     //all children are in front of the parent
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.m_uOrderOfArrival = 0;
+                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -275,11 +275,11 @@ namespace CocosSharp
                 for (int i = 0; i < count; i++)
                 {
                     var child = (CCSprite) pArray.Elements[i];
-                    if (needNewIndex && child.m_nZOrder >= 0)
+					if (needNewIndex && child.ZOrder >= 0)
                     {
                         oldIndex = sprite.AtlasIndex;
                         sprite.AtlasIndex = curIndex;
-                        sprite.m_uOrderOfArrival = 0;
+                        sprite.OrderOfArrival = 0;
                         if (oldIndex != curIndex)
                         {
                             Swap(oldIndex, curIndex);
@@ -296,7 +296,7 @@ namespace CocosSharp
                     //all children have a zOrder < 0)
                     oldIndex = sprite.AtlasIndex;
                     sprite.AtlasIndex = curIndex;
-                    sprite.m_uOrderOfArrival = 0;
+                    sprite.OrderOfArrival = 0;
                     if (oldIndex != curIndex)
                     {
                         Swap(oldIndex, curIndex);
@@ -327,7 +327,7 @@ namespace CocosSharp
 
         public void ReorderBatch(bool reorder)
         {
-            ReorderChildDirty = reorder;
+            IsReorderChildDirty = reorder;
         }
 
         protected override void Draw()
@@ -338,10 +338,10 @@ namespace CocosSharp
                 return;
             }
 
-            if (m_pChildren != null && m_pChildren.count > 0)
+            if (Children != null && Children.count > 0)
             {
-                CCNode[] elements = m_pChildren.Elements;
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
                     ((CCSprite) elements[i]).UpdateTransform();
                 }
@@ -535,7 +535,7 @@ namespace CocosSharp
         // addChild helper, faster than insertChild
         public void AppendChild(CCSprite sprite)
         {
-            ReorderChildDirty = true;
+            IsReorderChildDirty = true;
             sprite.BatchNode = this;
             sprite.Dirty = true;
 

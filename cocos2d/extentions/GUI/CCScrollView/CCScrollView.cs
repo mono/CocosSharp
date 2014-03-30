@@ -797,7 +797,7 @@ namespace CocosSharp
         private CCRect GetViewRect()
         {
             var rect = new CCRect(0, 0, _viewSize.Width, _viewSize.Height);
-            return CCAffineTransform.Transform(rect, NodeToWorldTransform());
+            return CCAffineTransform.Transform(rect, NodeToWorldTransform);
         }
 
         private static float ConvertDistanceFromPointToInch(float pointDis)

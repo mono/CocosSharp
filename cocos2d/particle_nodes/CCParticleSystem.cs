@@ -672,7 +672,7 @@ namespace CocosSharp
             }
             else if (PositionType == CCPositionType.Relative)
             {
-                particleBase.StartPosition = m_obPosition;
+                particleBase.StartPosition = position;
             }
         }
 

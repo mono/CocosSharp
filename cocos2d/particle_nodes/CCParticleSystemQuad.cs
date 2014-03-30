@@ -251,8 +251,8 @@ namespace CocosSharp
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
             if(BatchNode != null)
             {
-                newPosition.X += m_obPosition.X;
-                newPosition.Y += m_obPosition.Y;
+                newPosition.X += position.X;
+                newPosition.Y += position.Y;
             }
 
             CCColor4B color = new CCColor4B();

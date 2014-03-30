@@ -99,7 +99,7 @@ namespace tests
 
         public void backCallback(object pSender)
         {
-            ((CCLayerMultiplex)m_pParent).SwitchTo(0);
+            ((CCLayerMultiplex)Parent).SwitchTo(0);
         }
     }
 }

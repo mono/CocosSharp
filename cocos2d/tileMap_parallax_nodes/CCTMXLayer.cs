@@ -328,10 +328,10 @@ namespace CocosSharp
                     m_pobTextureAtlas.RemoveQuadAtIndex(atlasIndex);
 
                     // update possible children
-                    if (m_pChildren != null && m_pChildren.count > 0)
+                    if (Children != null && Children.count > 0)
                     {
-                        CCNode[] elements = m_pChildren.Elements;
-                        int count = m_pChildren.count;
+                        CCNode[] elements = Children.Elements;
+                        int count = Children.count;
 
                         for (int i = 0; i < count; i++)
                         {
@@ -449,7 +449,7 @@ namespace CocosSharp
                 return;
             }
 
-            Debug.Assert(m_pChildren.Contains(sprite), "Tile does not belong to TMXLayer");
+            Debug.Assert(Children.Contains(sprite), "Tile does not belong to TMXLayer");
 
             int atlasIndex = sprite.AtlasIndex;
             int zz = m_pAtlasIndexArray[atlasIndex];
@@ -557,10 +557,10 @@ namespace CocosSharp
             m_pAtlasIndexArray.Insert(indexForZ, z);
 
             // update possible children
-            if (m_pChildren != null && m_pChildren.count > 0)
+            if (Children != null && Children.count > 0)
             {
-                CCNode[] elements = m_pChildren.Elements;
-                int count = m_pChildren.count;
+                CCNode[] elements = Children.Elements;
+                int count = Children.count;
 
                 for (int i = 0; i < count; i++)
                 {

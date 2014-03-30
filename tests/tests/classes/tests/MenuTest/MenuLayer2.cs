@@ -115,7 +115,7 @@ namespace tests
         }
         public void menuCallback(object pSender)
         {
-            CCLayerMultiplex m = m_pParent as CCLayerMultiplex;
+            CCLayerMultiplex m = Parent as CCLayerMultiplex;
             m.SwitchTo(0);
         }
         public void menuCallbackOpacity(object pSender)

@@ -55,8 +55,8 @@ namespace CocosSharp
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
             pt = CCPoint.Zero;
-            CCAffineTransform affine1 = NodeToWorldTransform();
-            CCAffineTransform affine2 = target.NodeToWorldTransform();
+            CCAffineTransform affine1 = NodeToWorldTransform;
+            CCAffineTransform affine2 = target.NodeToWorldTransform;
             CCRect myBBInWorld = WorldBoundingBox;
             CCRect targetBBInWorld = target.WorldBoundingBox;
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))

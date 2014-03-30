@@ -171,7 +171,7 @@ namespace CocosSharp
 
             if (pos != 0)
             {
-                CCParticleSystem p = (CCParticleSystem) m_pChildren[pos - 1];
+                CCParticleSystem p = (CCParticleSystem) Children[pos - 1];
                 atlasIndex = p.AtlasIndex + p.TotalParticles;
             }
             else
@@ -223,7 +223,7 @@ namespace CocosSharp
             Debug.Assert(child != null, "Child must be non-null");
             Debug.Assert(child is CCParticleSystem,
                          "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-            Debug.Assert(m_pChildren.Contains(child), "Child doesn't belong to batch");
+            Debug.Assert(Children.Contains(child), "Child doesn't belong to batch");
 
             var pChild = (CCParticleSystem) (child);
 
@@ -387,7 +387,7 @@ namespace CocosSharp
 
             Debug.Assert(child is CCParticleSystem,
                          "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-            Debug.Assert(m_pChildren.Contains(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
+            Debug.Assert(Children.Contains(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
 
             CCParticleSystem pChild = (CCParticleSystem) child;
 

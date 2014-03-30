@@ -34,7 +34,7 @@ namespace tests
 
         public void removeThis()
         {
-            m_pParent.RemoveChild(this, true);
+            Parent.RemoveChild(this, true);
 
 			nextCallback(this);
         }

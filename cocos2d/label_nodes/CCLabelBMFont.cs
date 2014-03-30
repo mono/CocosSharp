@@ -38,7 +38,7 @@ namespace CocosSharp
             get { return base.AnchorPoint; }
             set
             {
-                if (!m_obAnchorPoint.Equals(value))
+				if (!AnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
                     IsDirty = true;
@@ -181,7 +181,7 @@ namespace CocosSharp
                 if (isColorCascaded)
                 {
                     var parentColor = CCColor3B.White;
-                    var parent = m_pParent as ICCColor;
+                    var parent = Parent as ICCColor;
                     if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
@@ -207,7 +207,7 @@ namespace CocosSharp
                 if (isOpacityCascaded)
                 {
                     byte parentOpacity = 255;
-                    var pParent = m_pParent as ICCColor;
+                    var pParent = Parent as ICCColor;
                     if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
@@ -228,11 +228,11 @@ namespace CocosSharp
             set
             {
                 isColorModifiedByOpacity = value;
-                if (m_pChildren != null && m_pChildren.count > 0)
+                if (Children != null && Children.count > 0)
                 {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    for (int i = 0, count = Children.count; i < count; i++)
                     {
-                        var item = m_pChildren.Elements[i] as ICCColor;
+                        var item = Children.Elements[i] as ICCColor;
                         if (item != null)
                         {
                             item.IsColorModifiedByOpacity = value;
@@ -382,7 +382,7 @@ namespace CocosSharp
             isOpacityCascaded = true;
             isColorCascaded = true;
 
-            m_obContentSize = CCSize.Zero;
+			contentSize = CCSize.Zero;
 
             isColorModifiedByOpacity = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -405,11 +405,11 @@ namespace CocosSharp
             displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
             displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
 
-            if (m_pChildren != null)
+            if (Children != null)
             {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedColor(displayedColor);
+                    ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
                 }
             }
         }
@@ -418,11 +418,11 @@ namespace CocosSharp
         {
             displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
 
-            if (m_pChildren != null)
+            if (Children != null)
             {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
-                    ((CCSprite) m_pChildren.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
+                    ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
                 }
             }
         }
@@ -623,10 +623,10 @@ namespace CocosSharp
 
         private void UpdateString(bool needUpdateLabel)
         {
-            if (m_pChildren != null && m_pChildren.count != 0)
+            if (Children != null && Children.count != 0)
             {
-                CCNode[] elements = m_pChildren.Elements;
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.count; i < count; i++)
                 {
                     elements[i].Visible = false;
                 }
@@ -662,7 +662,7 @@ namespace CocosSharp
                 float startOfLine = -1, startOfWord = -1;
                 int skip = 0;
 
-                CCRawList<CCNode> children = m_pChildren;
+				CCRawList<CCNode> children = Children;
                 for (int j = 0; j < children.count; j++)
                 {
                     CCSprite characterSprite;
@@ -932,12 +932,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-			return sp.Position.X * m_fScaleX - (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * scaleX - (sp.ContentSize.Width * scaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-			return sp.Position.X * m_fScaleX + (sp.ContentSize.Width * m_fScaleX * sp.AnchorPoint.X);
+			return sp.Position.X * scaleX + (sp.ContentSize.Width * scaleX * sp.AnchorPoint.X);
         }
 
 

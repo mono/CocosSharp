@@ -68,7 +68,7 @@ namespace CocosSharp
             get { return _capInsets; }
             set
             {
-                CCSize contentSize = m_obContentSize;
+				CCSize contentSize = ContentSize;
                 UpdateWithBatchNode(_scale9Image, _spriteRect, _spriteFrameRotated, value);
                 ContentSize = contentSize;
             }
@@ -580,7 +580,7 @@ namespace CocosSharp
                 return;
             }
             
-            CCSize size = m_obContentSize;
+			CCSize size = ContentSize;
 
             float sizableWidth = size.Width - _topLeft.ContentSize.Width - _topRight.ContentSize.Width;
             float sizableHeight = size.Height - _topLeft.ContentSize.Height - _bottomRight.ContentSize.Height;

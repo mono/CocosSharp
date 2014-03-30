@@ -127,7 +127,7 @@ namespace tests
 
         private void menuCallbackPriorityTest(object pSender)
         {
-            ((CCLayerMultiplex) m_pParent).SwitchTo(4);
+            ((CCLayerMultiplex) Parent).SwitchTo(4);
         }
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
@@ -156,12 +156,12 @@ namespace tests
 
         public void menuCallback(object pSender)
         {
-            ((CCLayerMultiplex) m_pParent).SwitchTo(1);
+            ((CCLayerMultiplex) Parent).SwitchTo(1);
         }
 
         public void menuCallbackConfig(object pSender)
         {
-            ((CCLayerMultiplex) m_pParent).SwitchTo(3);
+            ((CCLayerMultiplex) Parent).SwitchTo(3);
         }
 
         public void menuCallbackDisabled(object pSender)
@@ -179,7 +179,7 @@ namespace tests
 
         public void menuCallback2(object pSender)
         {
-            (m_pParent as CCLayerMultiplex).SwitchTo(2);
+            (Parent as CCLayerMultiplex).SwitchTo(2);
         }
 
         public void onQuit(object pSender)

@@ -237,9 +237,6 @@ namespace tests
 
 			EventDispatcher.AddEventListener (gamePadListener, this);
 
-			// We will enable the gamepad last so that we get connection events.
-			GamePadEnabled = true;
-
 		}
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)

@@ -332,15 +332,15 @@ namespace tests
             else
             {
                 int count = 0;
-                for (int i = 0; i < m_pChildren.Count; i++)
+				for (int i = 0; i < Children.Count; i++)
                 {
-                    if (m_pChildren[i] is CCParticleSystem)
+					if (Children[i] is CCParticleSystem)
                     {
-                        count += ((CCParticleSystem) m_pChildren[i]).ParticleCount;
+						count += ((CCParticleSystem) Children[i]).ParticleCount;
                     }
-                    else if (m_pChildren[i] is CCParticleBatchNode)
+					else if (Children[i] is CCParticleBatchNode)
                     {
-                        var bn = (CCParticleBatchNode) m_pChildren[i];
+						var bn = (CCParticleBatchNode) Children[i];
                         for (int j = 0; j < bn.ChildrenCount; j++)
                         {
                             if (bn.Children[j] is CCParticleSystem)

@@ -38,8 +38,8 @@ namespace tests
 
             if (IgnoreAnchorPointForPosition)
             {
-                x += m_obAnchorPointInPoints.X;
-                y += m_obAnchorPointInPoints.Y;
+				x += AnchorPointInPoints.X;
+				y += AnchorPointInPoints.Y;
             }
 
             // Make matrix
@@ -47,10 +47,10 @@ namespace tests
             var c = (float)Math.Cos(radians);
             var s = (float)Math.Sin(radians);
 
-            if (!m_obAnchorPointInPoints.Equals(CCPoint.Zero))
+			if (!AnchorPointInPoints.Equals(CCPoint.Zero))
             {
-                x += c * -m_obAnchorPointInPoints.X + -s * -m_obAnchorPointInPoints.Y;
-                y += s * -m_obAnchorPointInPoints.X + c * -m_obAnchorPointInPoints.Y;
+				x += c * -AnchorPointInPoints.X + -s * -AnchorPointInPoints.Y;
+				y += s * -AnchorPointInPoints.X + c * -AnchorPointInPoints.Y;
             }
 
             // Rot, Translate Matrix

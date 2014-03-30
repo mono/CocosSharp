@@ -680,10 +680,10 @@ namespace tests
                 var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint(x, y)), this.NodeToWorldTransform().Transform(new CCPoint((x + width), y)), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint((x + width), y)), this.NodeToWorldTransform().Transform(new CCPoint((x + width), (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint((x + width), (y + height))), this.NodeToWorldTransform().Transform(new CCPoint(x, (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform().Transform(new CCPoint(x, (y + height))), this.NodeToWorldTransform().Transform(new CCPoint(x, y)), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint(x, y)), this.NodeToWorldTransform.Transform(new CCPoint((x + width), y)), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint((x + width), y)), this.NodeToWorldTransform.Transform(new CCPoint((x + width), (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint((x + width), (y + height))), this.NodeToWorldTransform.Transform(new CCPoint(x, (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint(x, (y + height))), this.NodeToWorldTransform.Transform(new CCPoint(x, y)), color);
                 CCDrawingPrimitives.End();
 
                 //glLineWidth(1);
