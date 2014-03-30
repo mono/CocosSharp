@@ -73,16 +73,16 @@ namespace CocosSharp
         /// </summary>
         public const int TagInvalid = -1;
 
-        private static uint s_globalOrderOfArrival = 1;
+		private static uint globalOrderOfArrival = 1;
 		private bool ignoreAnchorPointForPosition;
 
         // transform
         public CCAffineTransform AffineTransform;
         protected bool InverseDirty;
         protected bool Running;
-        protected bool TransformDirty;
+		protected bool IsTransformDirty { get; set; }
         protected bool visible;
-		protected bool ReorderChildDirty { get; set; }
+		protected bool IsReorderChildDirty { get; set; }
         protected float rotationX;
         protected float rotationY;
         protected float scaleX;
@@ -180,8 +180,8 @@ namespace CocosSharp
             CCSerialization.SerializeData(ignoreAnchorPointForPosition, sw);
             CCSerialization.SerializeData(InverseDirty, sw);
             CCSerialization.SerializeData(Running, sw);
-            CCSerialization.SerializeData(TransformDirty, sw);
-            CCSerialization.SerializeData(ReorderChildDirty, sw);
+            CCSerialization.SerializeData(IsTransformDirty, sw);
+            CCSerialization.SerializeData(IsReorderChildDirty, sw);
             CCSerialization.SerializeData(OrderOfArrival, sw);
             CCSerialization.SerializeData(tag, sw);
             CCSerialization.SerializeData(zOrder, sw);
@@ -223,8 +223,8 @@ namespace CocosSharp
             ignoreAnchorPointForPosition = CCSerialization.DeSerializeBool(sr);
             InverseDirty = CCSerialization.DeSerializeBool(sr);
             Running = CCSerialization.DeSerializeBool(sr);
-            TransformDirty = CCSerialization.DeSerializeBool(sr);
-            ReorderChildDirty = CCSerialization.DeSerializeBool(sr);
+            IsTransformDirty = CCSerialization.DeSerializeBool(sr);
+            IsReorderChildDirty = CCSerialization.DeSerializeBool(sr);
             OrderOfArrival = (uint)CCSerialization.DeSerializeInt(sr);
             tag = CCSerialization.DeSerializeInt(sr);
             zOrder = CCSerialization.DeSerializeInt(sr);
@@ -565,7 +565,7 @@ namespace CocosSharp
         /// </summary>
         public virtual void ForceTransformRefresh()
         {
-            TransformDirty = true;
+            IsTransformDirty = true;
             isWorldTransformDirty = true;
             isAdditionalTransformDirty = true;
             InverseDirty = true;
@@ -577,7 +577,7 @@ namespace CocosSharp
             set
             {
                 additionalTransform = value;
-                TransformDirty = true;
+                IsTransformDirty = true;
                 isAdditionalTransformDirty = true;
             }
         }
@@ -760,7 +760,7 @@ namespace CocosSharp
 
             child.Parent = this;
             child.tag = tag;
-            child.OrderOfArrival = s_globalOrderOfArrival++;
+            child.OrderOfArrival = globalOrderOfArrival++;
             if (child.m_bCleaned)
             {
                 child.ResetCleanState();
@@ -774,7 +774,7 @@ namespace CocosSharp
         }
         private void InsertChild(CCNode child, int z, int tag)
         {
-            ReorderChildDirty = true;
+            IsReorderChildDirty = true;
             Children.Add(child);
 
             ChangedChildTag(child, TagInvalid, tag);
@@ -960,8 +960,8 @@ namespace CocosSharp
         {
             Debug.Assert(child != null, "Child must be non-null");
 
-            ReorderChildDirty = true;
-            child.OrderOfArrival = s_globalOrderOfArrival++;
+            IsReorderChildDirty = true;
+            child.OrderOfArrival = globalOrderOfArrival++;
             child.zOrder = zOrder;
 			child.LocalZOrder = zOrder;
         }
@@ -999,10 +999,10 @@ namespace CocosSharp
 		}
         public virtual void SortAllChildren()
         {
-            if (ReorderChildDirty)
+            if (IsReorderChildDirty)
             {
                 Array.Sort(Children.Elements, 0, Children.count, this);
-                ReorderChildDirty = false;
+                IsReorderChildDirty = false;
             }
         }
 
@@ -1392,7 +1392,7 @@ namespace CocosSharp
 
         public virtual CCAffineTransform NodeToParentTransform()
         {
-            if (TransformDirty)
+            if (IsTransformDirty)
             {
                 // Translate values
                 float x = position.X;
@@ -1463,7 +1463,7 @@ namespace CocosSharp
                     isAdditionalTransformDirty = false;
                 }
 
-                TransformDirty = false;
+                IsTransformDirty = false;
             }
 
             return AffineTransform;
@@ -1474,7 +1474,7 @@ namespace CocosSharp
         /// </summary>
         protected virtual void SetTransformIsDirty()
         {
-            TransformDirty = true;
+            IsTransformDirty = true;
             InverseDirty = true;
             // Me and all of my children have dirty world transforms now.
             SetWorldTransformIsDirty();
