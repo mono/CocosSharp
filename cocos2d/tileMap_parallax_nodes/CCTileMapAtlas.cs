@@ -151,7 +151,7 @@ namespace CocosSharp
             quad.TopRight.Vertices.Y = (y * ItemHeight + ItemHeight);
             quad.TopRight.Vertices.Z = 0.0f;
 
-            var color = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
+            var color = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
             quad.TopRight.Colors = color;
             quad.TopLeft.Colors = color;
             quad.BottomRight.Colors = color;

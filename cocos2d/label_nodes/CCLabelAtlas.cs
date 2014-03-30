@@ -135,7 +135,7 @@ namespace CocosSharp
 
 
                 quad.TopLeft.Colors = quad.TopRight.Colors = quad.BottomLeft.Colors = quad.BottomRight.Colors =
-                    new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
+                    new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
 
                 TextureAtlas.UpdateQuad(ref quad, i);
             }

@@ -118,7 +118,7 @@ namespace CocosSharp
 
         public override CCColor3B Color
         {
-            get { return _realColor; }
+            get { return RealColor; }
             set
             {
                 base.Color = value;
@@ -138,7 +138,7 @@ namespace CocosSharp
 
         public override byte Opacity
         {
-            get { return _realOpacity; }
+            get { return RealOpacity; }
             set
             {
                 base.Opacity = value;

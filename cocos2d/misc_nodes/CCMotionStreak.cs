@@ -331,7 +331,7 @@ namespace CocosSharp
 
                 // Color asignation
                 int offset = numOfPoints * 2;
-                vertices[offset].Colors = vertices[offset + 1].Colors = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, 255);
+                vertices[offset].Colors = vertices[offset + 1].Colors = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, 255);
 
                 // Generate polygon
                 if (numOfPoints > 0 && FastMode)

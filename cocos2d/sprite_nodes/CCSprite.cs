@@ -358,13 +358,11 @@ namespace CocosSharp
 
         private void UpdateColor()
         {
-            var color4 = new CCColor4B(_displayedColor.R, _displayedColor.G, _displayedColor.B, _displayedOpacity);
+            var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
 
             if (m_bOpacityModifyRGB)
             {
-                color4.R = (byte)(color4.R * _displayedOpacity / 255.0f);
-                color4.G = (byte)(color4.G * _displayedOpacity / 255.0f);
-                color4.B = (byte)(color4.B * _displayedOpacity / 255.0f);
+                color4 *= (DisplayedOpacity / 255.0f);
             }
 
             m_sQuad.BottomLeft.Colors = color4;

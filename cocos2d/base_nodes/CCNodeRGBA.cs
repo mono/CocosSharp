@@ -14,26 +14,42 @@ namespace CocosSharp
      Opacity/Color propagates into children that conform to the CCRGBAProtocol if cascadeOpacity/cascadeColor is enabled.
      @since v2.1
      */
+
     public class CCNodeRGBA : CCNode, ICCColor
     {
-        protected byte _displayedOpacity;
-        protected byte _realOpacity;
-        protected CCColor3B _displayedColor;
-        protected CCColor3B _realColor;
-        protected bool _cascadeColorEnabled;
-        protected bool _cascadeOpacityEnabled;
+        // ivars
+        byte displayedOpacity;
+        CCColor3B displayedColor;
+
+        #region Properties
+
+        public virtual bool IsColorCascaded { get; set; }
+        public virtual bool IsOpacityCascaded { get; set; }
+
+        protected CCColor3B RealColor { get; set; }
+        protected byte RealOpacity { get; set; }
+
+        public CCColor3B DisplayedColor 
+        { 
+            get { return displayedColor; } 
+        }
+
+        public byte DisplayedOpacity 
+        { 
+            get { return displayedOpacity; } 
+        }
 
         public virtual CCColor3B Color
         {
-            get { return _realColor; }
+            get { return RealColor; }
             set
             {
-                _displayedColor = _realColor = value;
+                displayedColor = RealColor = value;
 
-                if (_cascadeColorEnabled)
+                if (IsColorCascaded)
                 {
                     var parentColor = CCColor3B.White;
-                    var parent = m_pParent as ICCColor;
+                    var parent = Parent as ICCColor;
                     if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
@@ -44,19 +60,14 @@ namespace CocosSharp
             }
         }
 
-        public virtual CCColor3B DisplayedColor
-        {
-            get { return _displayedColor; }
-        }
-
         public virtual byte Opacity
         {
-            get { return _realOpacity; }
+            get { return RealOpacity; }
             set
             {
-                _displayedOpacity = _realOpacity = value;
+                displayedOpacity = RealOpacity = value;
 
-                if (_cascadeOpacityEnabled)
+                if (IsOpacityCascaded)
                 {
                     byte parentOpacity = 255;
                     var pParent = m_pParent as ICCColor;
@@ -69,55 +80,44 @@ namespace CocosSharp
             }
         }
 
-        public virtual byte DisplayedOpacity
-        {
-            get { return _displayedOpacity; }
-        }
-
         public virtual bool IsColorModifiedByOpacity
         {
             get { return false; }
             set { }
         }
 
-        public virtual bool IsColorCascaded
-        {
-            get { return _cascadeColorEnabled; }
-            set { _cascadeColorEnabled = value; }
-        }
+        #endregion Properties
 
-        public virtual bool IsOpacityCascaded
-        {
-            get { return _cascadeOpacityEnabled; }
-            set { _cascadeOpacityEnabled = value; }
-        }
+
+        #region Constructors
 
         public CCNodeRGBA()
         {
-            _displayedOpacity = 255;
-            _realOpacity = 255;
-            _displayedColor = CCColor3B.White;
-            _realColor = CCColor3B.White;
-            _cascadeColorEnabled = false;
-            _cascadeOpacityEnabled = false;
+            displayedOpacity = 255;
+            RealOpacity = 255;
+            displayedColor = CCColor3B.White;
+            RealColor = CCColor3B.White;
+            IsColorCascaded = false;
+            IsOpacityCascaded = false;
         }
+
+        #endregion Constructors
+
 
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
         {
-            _displayedColor.R = (byte) (_realColor.R * parentColor.R / 255.0f);
-            _displayedColor.G = (byte) (_realColor.G * parentColor.G / 255.0f);
-            _displayedColor.B = (byte) (_realColor.B * parentColor.B / 255.0f);
+            displayedColor = RealColor * (parentColor / 255.0f);
 
-            if (_cascadeColorEnabled)
+            if (IsColorCascaded)
             {
-                if (_cascadeOpacityEnabled && m_pChildren != null)
+                if (IsOpacityCascaded && Children != null)
                 {
-                    for (int i = 0, count = m_pChildren.count; i < count; i++)
+                    foreach(CCNode node in Children.Elements)
                     {
-                        var item = m_pChildren.Elements[i] as ICCColor;
+                        var item = node as ICCColor;
                         if (item != null)
                         {
-                            item.UpdateDisplayedColor(_displayedColor);
+                            item.UpdateDisplayedColor(DisplayedColor);
                         }
                     }
                 }
@@ -126,16 +126,16 @@ namespace CocosSharp
 
         public virtual void UpdateDisplayedOpacity(byte parentOpacity)
         {
-            _displayedOpacity = (byte) (_realOpacity * parentOpacity / 255.0f);
+            displayedOpacity = (byte) (RealOpacity * parentOpacity / 255.0f);
 
-            if (_cascadeOpacityEnabled && m_pChildren != null)
+            if (IsOpacityCascaded && Children != null)
             {
-                for (int i = 0, count = m_pChildren.count; i < count; i++)
+                foreach(CCNode node in Children.Elements)
                 {
-                    var item = m_pChildren.Elements[i] as ICCColor;
+                    var item = node as ICCColor;
                     if (item != null)
                     {
-                        item.UpdateDisplayedOpacity(_displayedOpacity);
+                        item.UpdateDisplayedOpacity(DisplayedOpacity);
                     }
                 }
             }

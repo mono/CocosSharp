@@ -78,9 +78,9 @@ namespace CocosSharp
 
                 if (IsOpacityModifyRGB)
                 {
-                    tmp.R = (byte) (value.R * _displayedOpacity / 255);
-                    tmp.G = (byte) (value.G * _displayedOpacity / 255);
-                    tmp.B = (byte) (value.B * _displayedOpacity / 255);
+                    tmp.R = (byte) (value.R * DisplayedOpacity / 255);
+                    tmp.G = (byte) (value.G * DisplayedOpacity / 255);
+                    tmp.B = (byte) (value.B * DisplayedOpacity / 255);
                 }
                 base.Color = tmp;
                 UpdateAtlasValues();
