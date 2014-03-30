@@ -121,6 +121,8 @@ namespace CocosSharp
 
 		public string Name { get; set; }
 
+		private bool isCleaned = false;
+
         // input variables
 		private bool keypadEnabled;
 
@@ -619,8 +621,6 @@ namespace CocosSharp
 
 		#region Cleaning up
 
-        private bool m_bCleaned = false;
-
         ~CCNode()
         {
             //unregisterScriptHandler();
@@ -648,14 +648,16 @@ namespace CocosSharp
             if (EventDispatcher != null)
     			EventDispatcher.RemoveEventListeners (this);
 
+			// Clean up the UserData and UserObject as these may hold references to other CCNodes.
+			UserData = null;
+			UserObject = null;
+
 			if (Children != null && Children.count > 0)
 			{
 				CCNode[] elements = Children.Elements;
 				for (int i = 0, count = Children.count; i < count; i++)
 				{
 					elements[i].OnExit();
-					//eventDispatcher.RemoveEventListeners (elements [i]);
-					elements [i].Dispose ();
 					elements [i].Parent = null;
 				}
 			}
@@ -665,7 +667,7 @@ namespace CocosSharp
 
         protected virtual void ResetCleanState()
         {
-            m_bCleaned = false;
+            isCleaned = false;
             if (Children != null && Children.count > 0)
             {
                 CCNode[] elements = Children.Elements;
@@ -678,7 +680,7 @@ namespace CocosSharp
 
         public virtual void Cleanup()
         {
-            if (m_bCleaned == true)
+            if (isCleaned == true)
             {
 				return;
             }
@@ -691,6 +693,9 @@ namespace CocosSharp
             // timers
             UnscheduleAll();
 
+			if (EventDispatcher != null)
+				EventDispatcher.RemoveEventListeners (this);
+
             if (Children != null && Children.count > 0)
             {
                 CCNode[] elements = Children.Elements;
@@ -699,7 +704,8 @@ namespace CocosSharp
                     elements[i].Cleanup();
                 }
             }
-            m_bCleaned = true;
+
+            isCleaned = true;
         }
 
 		#endregion Cleaning up
@@ -761,7 +767,7 @@ namespace CocosSharp
             child.Parent = this;
             child.tag = tag;
             child.OrderOfArrival = globalOrderOfArrival++;
-            if (child.m_bCleaned)
+            if (child.isCleaned)
             {
                 child.ResetCleanState();
             }

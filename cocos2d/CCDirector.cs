@@ -966,14 +966,6 @@ namespace CocosSharp
                 }
             }
 
-			// This is so that we get rid of the listeners in Cocos2d-x they use a release on the object
-			// so that event listeners are detached.  We do not control when an object is released so
-			// we call this directly.
-			if (RunningScene != null) 
-			{
-				RunningScene.Dispose ();
-			}
-
             RunningScene = nextScene;
             nextScene = null;
 
