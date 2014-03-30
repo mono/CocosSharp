@@ -7,15 +7,13 @@ namespace CocosSharp
 {
     public class CCTileMapAtlas : CCAtlasNode
     {
-        protected int m_nItemsToRender;
-        protected Dictionary<CCGridSize, int> m_pPosToAtlasIndex;
-        private CCImageTGA m_pTGAInfo;
+        #region Properties
 
-        public CCImageTGA TGAInfo
-        {
-            get { return m_pTGAInfo; }
-            set { m_pTGAInfo = value; }
-        }
+        protected int NumOfItemsToRender { get; private set; }
+        protected Dictionary<CCGridSize, int> PositionToAtlasIndex { get; private set; }
+        protected CCImageTGA TGAInfo { get; private set; }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -34,11 +32,11 @@ namespace CocosSharp
             : base(tile, tileWidth, tileHeight, numOfItemsToRender)
         {
             TGAInfo = tgaInfo;
-            m_nItemsToRender = numOfItemsToRender;
+            NumOfItemsToRender = numOfItemsToRender;
 
-            m_pPosToAtlasIndex = new Dictionary<CCGridSize, int>();
+            PositionToAtlasIndex = new Dictionary<CCGridSize, int>();
             UpdateAtlasValues();
-            ContentSize = new CCSize(m_pTGAInfo.width * ItemWidth, m_pTGAInfo.height * ItemHeight);
+            ContentSize = new CCSize(TGAInfo.width * ItemWidth, TGAInfo.height * ItemHeight);
         }
 
         // Just used during construction
@@ -62,46 +60,48 @@ namespace CocosSharp
         #endregion Constructors 
 
 
+        public void ReleaseMap()
+        {
+            TGAInfo = null;
+            PositionToAtlasIndex = null;
+        }
+
         public Color TileAt(CCGridSize position)
         {
-            Debug.Assert(m_pTGAInfo != null, "tgaInfo must not be nil");
-            Debug.Assert(position.X < m_pTGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.Y < m_pTGAInfo.height, "Invalid position.y");
+            Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
+            Debug.Assert(position.X < TGAInfo.width, "Invalid position.x");
+            Debug.Assert(position.Y < TGAInfo.height, "Invalid position.y");
 
-            return m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width];
+            return TGAInfo.imageData[position.X + position.Y * TGAInfo.width];
         }
 
         public void SetTile(Color tile, CCGridSize position)
         {
-            Debug.Assert(m_pTGAInfo != null, "tgaInfo must not be nil");
-            Debug.Assert(m_pPosToAtlasIndex != null, "posToAtlasIndex must not be nil");
-            Debug.Assert(position.X < m_pTGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.Y < m_pTGAInfo.height, "Invalid position.x");
+            Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
+            Debug.Assert(PositionToAtlasIndex != null, "posToAtlasIndex must not be nil");
+            Debug.Assert(position.X < TGAInfo.width, "Invalid position.x");
+            Debug.Assert(position.Y < TGAInfo.height, "Invalid position.x");
             Debug.Assert(tile.R != 0, "R component must be non 0");
 
-            Color value = m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width];
+            Color value = TGAInfo.imageData[position.X + position.Y * TGAInfo.width];
             if (value.R == 0)
             {
                 CCLog.Log("CocosSharp: Value.r must be non 0.");
             }
             else
             {
-                m_pTGAInfo.imageData[position.X + position.Y * m_pTGAInfo.width] = tile;
+                TGAInfo.imageData[position.X + position.Y * TGAInfo.width] = tile;
 
                 // XXX: this method consumes a lot of memory
                 // XXX: a tree of something like that shall be impolemented
-                int num = m_pPosToAtlasIndex[position];
+                int num = PositionToAtlasIndex[position];
                 UpdateAtlasValueAt(position, tile, num);
             }
         }
 
-        public void ReleaseMap()
-        {
-            m_pTGAInfo = null;
-            m_pPosToAtlasIndex = null;
-        }
-            
-        private void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
+        #region Updating atlas
+
+        void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
         {
             int x = pos.X;
             int y = pos.Y;
@@ -162,23 +162,23 @@ namespace CocosSharp
 
         public override void UpdateAtlasValues()
         {
-            Debug.Assert(m_pTGAInfo != null, "tgaInfo must be non-nil");
+            Debug.Assert(TGAInfo != null, "tgaInfo must be non-nil");
 
             int total = 0;
 
-            for (int x = 0; x < m_pTGAInfo.width; x++)
+            for (int x = 0; x < TGAInfo.width; x++)
             {
-                for (int y = 0; y < m_pTGAInfo.height; y++)
+                for (int y = 0; y < TGAInfo.height; y++)
                 {
-                    if (total < m_nItemsToRender)
+                    if (total < NumOfItemsToRender)
                     {
-                        Color value = m_pTGAInfo.imageData[x + y * m_pTGAInfo.width];
+                        Color value = TGAInfo.imageData[x + y * TGAInfo.width];
 
                         if (value.R != 0)
                         {
                             var pos = new CCGridSize(x, y);
                             UpdateAtlasValueAt(pos, value, total);
-                            m_pPosToAtlasIndex.Add(pos, total);
+                            PositionToAtlasIndex.Add(pos, total);
 
                             total++;
                         }
@@ -186,5 +186,7 @@ namespace CocosSharp
                 }
             }
         }
+
+        #endregion Updating atlas
     }
 }
