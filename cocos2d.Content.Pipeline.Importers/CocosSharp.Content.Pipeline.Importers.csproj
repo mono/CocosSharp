@@ -63,7 +63,7 @@
     <Compile Include="TMX\TMXProcessor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\cocos2d\CocosSharp.Windows.csproj">
+    <ProjectReference Include="..\src\CocosSharp.Windows.csproj">
       <Project>{a4c23f03-a3f7-4ac6-b3e9-ea240c7e2fca}</Project>
       <Name>CocosSharp.Windows</Name>
     </ProjectReference>
