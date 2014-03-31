@@ -25,6 +25,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>True</DebugSymbols>
@@ -47,7 +48,6 @@
     </MtouchI18n>
     <MtouchArch>ARMv7</MtouchArch>
     <MtouchExtraArgs>--linkskip=MonoGame.Framework</MtouchExtraArgs>
-    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -58,7 +58,6 @@
     <DefineConstants>IPHONE;GLES;OPENGL;IOS</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
-    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -80,7 +79,6 @@
     <CrashReportingApiKey>
     </CrashReportingApiKey>
     <MtouchLink>None</MtouchLink>
-    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -96,7 +94,6 @@
     </MtouchI18n>
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
-    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
