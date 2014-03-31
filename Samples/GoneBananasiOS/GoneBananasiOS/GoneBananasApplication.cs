@@ -1,6 +1,9 @@
-using Microsoft.Xna.Framework;
 using CocosDenshion;
 using CocosSharp;
+
+using Microsoft.Xna.Framework;
+
+using MonoTouch.UIKit;
 
 namespace GoneBananas
 {
@@ -25,7 +28,7 @@ namespace GoneBananas
             director.AnimationInterval = 1.0 / 60;
 
 			// We will setup our Design Resolution here
-			if (CCDrawManager.FrameSize.Height > 480)
+			if (UIScreen.MainScreen.Scale > 1.0)
 			{
 				CCContentManager.SharedContentManager.SearchPaths.Add("hd");
 			}
