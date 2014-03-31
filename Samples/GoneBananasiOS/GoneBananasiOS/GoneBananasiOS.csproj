@@ -116,7 +116,7 @@
       <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
       <Name>box2d.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d\CocosSharp.iOS.csproj">
+    <ProjectReference Include="..\..\..\src\CocosSharp.iOS.csproj">
       <Project>{511B1B80-F539-4CEC-AB62-3652A9275E7E}</Project>
       <Name>CocosSharp.iOS</Name>
     </ProjectReference>
