@@ -232,7 +232,7 @@ namespace tests
 
 			gamePadListener.OnConnectionStatus = (connectionStatus) => 
 			{
-				Console.WriteLine("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
+				CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
 			};
 
 			EventDispatcher.AddEventListener (gamePadListener, this);
