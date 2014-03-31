@@ -628,6 +628,11 @@ namespace CocosSharp
             return pt;
         }
 
+        public static CCPoint operator *(CCPoint p1, CCPoint p2)
+        {
+            return new CCPoint(p1.X * p2.X, p1.Y * p2.Y);
+        }
+
         public static CCPoint operator /(CCPoint p, float value)
         {
             CCPoint pt;
