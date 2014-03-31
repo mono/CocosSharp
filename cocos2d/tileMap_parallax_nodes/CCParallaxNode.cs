@@ -5,22 +5,63 @@ namespace CocosSharp
 {
     public class CCParallaxNode : CCNode
     {
-        protected List<CCPointObject> m_pParallaxArray;
-        protected CCPoint m_tLastPosition;
+        // ivars
+        CCPoint lastPosition;
+
+
+        #region Properties
+
+        List<CCPointObject> ParallaxArray { get; set; }
+
+        CCPoint AbsolutePosition
+        {
+            get 
+            {
+                CCPoint ret = position;
+                CCNode parent = this;
+                while ((parent = parent.Parent) != null) 
+                {
+                    ret.X += parent.Position.X;
+                    ret.Y += parent.Position.Y;
+                }
+                return ret;
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public CCParallaxNode()
         {
-            m_pParallaxArray = new List<CCPointObject>(5);
-            m_tLastPosition = new CCPoint(-100, -100);
+            ParallaxArray = new List<CCPointObject>(5);
+            lastPosition = new CCPoint(-100, -100);
         }
 
-        public List<CCPointObject> ParallaxArray
+        #endregion Constructors
+
+
+        public override void Visit()
         {
-            get { return m_pParallaxArray; }
-            set { m_pParallaxArray = value; }
-        }
+            CCPoint pos = AbsolutePosition;
 
-        // super methods
+            if (!pos.Equals(lastPosition))
+            {
+                foreach(CCPointObject point in ParallaxArray)
+                {
+                    point.Child.Position = -pos + (pos * point.Ratio) + point.Offset;
+                }
+
+                lastPosition = pos;
+            }
+
+            base.Visit();
+        }
+            
+
+        #region Child management
+
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
             Debug.Assert(false, "ParallaxNode: use addChild:z:parallaxRatio:positionOffset instead");
@@ -32,11 +73,10 @@ namespace CocosSharp
             CCPointObject obj = new CCPointObject(ratio, offset);
             obj.Child = child;
 
-            m_pParallaxArray.Add(obj);
+            ParallaxArray.Add(obj);
 
             CCPoint pos = position;
-            pos.X = pos.X * ratio.X + offset.X;
-            pos.Y = pos.Y * ratio.Y + offset.Y;
+            pos *= (ratio + offset); 
             child.Position = pos;
 
             base.AddChild(child, z, child.Tag);
@@ -44,53 +84,24 @@ namespace CocosSharp
 
         public override void RemoveChild(CCNode child, bool cleanup)
         {
-            for (int i = 0; i < m_pParallaxArray.Count; i++)
+            foreach(CCPointObject pointObj in ParallaxArray)
             {
-                if (m_pParallaxArray[i].Child == child)
+                if (pointObj.Child == child)
                 {
-                    m_pParallaxArray.RemoveAt(i);
+                    ParallaxArray.Remove(pointObj);
                     break;
                 }
             }
+
             base.RemoveChild(child, cleanup);
         }
 
         public override void RemoveAllChildrenWithCleanup(bool cleanup)
         {
-            m_pParallaxArray.Clear();
+            ParallaxArray.Clear();
             base.RemoveAllChildrenWithCleanup(cleanup);
         }
-
-        private CCPoint AbsolutePosition()
-        {
-            CCPoint ret = position;
-            CCNode cn = this;
-            while (cn.Parent != null)
-            {
-                cn = cn.Parent;
-                ret = new CCPoint(ret.X + cn.Position.X, ret.Y + cn.Position.Y);
-            }
-            return ret;
-        }
-
-        public override void Visit()
-        {
-            CCPoint pos = AbsolutePosition();
             
-            if (!pos.Equals(m_tLastPosition))
-            {
-                for (int i = 0; i < m_pParallaxArray.Count; i++)
-                {
-                    var point = m_pParallaxArray[i];
-                    float x = -pos.X + pos.X * point.Ratio.X + point.Offset.X;
-                    float y = -pos.Y + pos.Y * point.Ratio.Y + point.Offset.Y;
-                    point.Child.Position = new CCPoint(x, y);
-                }
-                
-                m_tLastPosition = pos;
-            }
-            
-            base.Visit();
-        }
+        #endregion Child management
     }
 }
