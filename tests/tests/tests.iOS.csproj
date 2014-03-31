@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
@@ -58,7 +58,7 @@
     <DefineConstants>IPHONE;GLES;OPENGL;IOS</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
-    <AssemblyName>cocos2dTests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -80,7 +80,7 @@
     <CrashReportingApiKey>
     </CrashReportingApiKey>
     <MtouchLink>None</MtouchLink>
-    <AssemblyName>cocos2dtests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -96,7 +96,7 @@
     </MtouchI18n>
     <MtouchArch>ARMv7, ARMv7s</MtouchArch>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
-    <AssemblyName>cocos2dtests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -1711,7 +1711,7 @@
       <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
       <Name>box2d.iOS</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\CocosSharp.iOS.csproj">
+    <ProjectReference Include="..\..\src\CocosSharp.iOS.csproj">
       <Project>{511B1B80-F539-4CEC-AB62-3652A9275E7E}</Project>
       <Name>CocosSharp.iOS</Name>
     </ProjectReference>

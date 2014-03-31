@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -1759,7 +1759,7 @@
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\CocosSharp.Ouya.csproj">
+    <ProjectReference Include="..\..\src\CocosSharp.Ouya.csproj">
       <Project>{4964b64b-b76a-4d9d-91cb-bfda0a1845ce}</Project>
       <Name>CocosSharp.Ouya</Name>
     </ProjectReference>

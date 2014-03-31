@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
@@ -640,7 +640,7 @@
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\CocosSharp.Windows.csproj">
+    <ProjectReference Include="..\..\src\CocosSharp.Windows.csproj">
       <Project>{0C0AFDFF-A4E4-49F4-B6DB-A761B0DB64A8}</Project>
       <Name>CocosSharp.Windows</Name>
     </ProjectReference>

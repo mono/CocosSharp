@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
@@ -1168,7 +1168,7 @@
       <Project>{8165599E-6F37-41B7-91CD-C7C66232B5F2}</Project>
       <Name>box2d.Phone</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\CocosSharp.Phone.csproj">
+    <ProjectReference Include="..\..\src\CocosSharp.Phone.csproj">
       <Project>{F2C5422D-4464-4494-9EB1-2C9EA9DC3C21}</Project>
       <Name>CocosSharp.Phone</Name>
     </ProjectReference>

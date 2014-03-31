@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWin8Phone", "..\TestWin8Phone\TestWin8Phone.csproj", "{1E99F198-A3F1-4189-AB6A-96FE91F433E7}"
@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.WindowsP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WP8", "..\box2d\box2d.WP8.csproj", "{B81B6701-7A78-4846-BF6F-04E0591F0F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.SharpZLib.WP8", "..\cocos2d\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj", "{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.SharpZLib.WP8", "..\src\external lib\ICSharpCodeSource\src\ICSharpCode.SharpZLib.WP8.csproj", "{0E7413FF-EB9E-4714-ACF2-BE3A6A7B2FFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WP8", "..\cocos2d\CocosSharp.WP8.csproj", "{69E49CEA-FD66-43DA-9F7B-53455767EF63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WP8", "..\src\CocosSharp.WP8.csproj", "{69E49CEA-FD66-43DA-9F7B-53455767EF63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

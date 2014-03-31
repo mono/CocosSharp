@@ -2180,7 +2180,7 @@
     <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos2d.PSM.csproj">
+    <ProjectReference Include="..\..\src\cocos2d.PSM.csproj">
       <Project>{30E7611D-6275-4948-BF43-DA477399100E}</Project>
       <Name>cocos2d.PSM</Name>
     </ProjectReference>
