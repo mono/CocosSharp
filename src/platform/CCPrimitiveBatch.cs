@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-	public class CCPrimitiveBatch : IDisposable
+	internal class CCPrimitiveBatch : IDisposable
     {
         private const int DefaultBufferSize = 500;
 
