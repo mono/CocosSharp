@@ -215,7 +215,7 @@ namespace CocosSharp
             {
                 _stringBuilder.Length = 0;
                 _stringBuilder.AppendFormat(_stringData[i].S, _stringData[i].Args);
-                _batch.DrawString(_spriteFont, _stringBuilder, new CCVector2(_stringData[i].X, _stringData[i].Y),
+                _batch.DrawString(_spriteFont, _stringBuilder, new Vector2(_stringData[i].X, _stringData[i].Y),
                     _stringData[i].Color);
             }
 

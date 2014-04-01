@@ -129,6 +129,17 @@ namespace CocosSharp
 			return new Microsoft.Xna.Framework.Vector3(point.X, point.Y, 0);
 		}
 
+		internal static Microsoft.Xna.Framework.Vector2 ToVector2 (this CCVector2 point)
+		{
+			return new Microsoft.Xna.Framework.Vector2(point.X, point.Y);
+		}
+
+		internal static CCVector2 ToCCVector2 (this Microsoft.Xna.Framework.Vector2 point)
+		{
+			return new CCVector2(point.X, point.Y);
+		}
+
+
 
         /*
          * Macros defined in ccConfig.h

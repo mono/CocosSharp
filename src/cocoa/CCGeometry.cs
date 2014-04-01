@@ -69,6 +69,12 @@ namespace CocosSharp
             Y = v.Y;
         }
 
+		internal CCPoint(Vector2 v)
+		{
+			X = v.X;
+			Y = v.Y;
+		}
+
         public static bool Equal(ref CCPoint point1, ref CCPoint point2)
         {
             return ((point1.X == point2.X) && (point1.Y == point2.Y));
@@ -1525,15 +1531,6 @@ namespace CocosSharp
 			return value1;
 		}
 
-		public static implicit operator CCVector2(Vector2 point)
-		{
-			return new CCVector2(point.X, point.Y);
-		}
-
-		public static implicit operator Vector2(CCVector2 point)
-		{
-			return new Vector2(point.X, point.Y);
-		}
 		#endregion Operators
 	}
 

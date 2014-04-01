@@ -139,7 +139,7 @@ namespace CocosSharp
                 {
                     FlushTriangles();
                 }
-                _triangleVertices[_triangleVertsCount].Position = new Vector3(vertex, -0.1f);
+				_triangleVertices[_triangleVertsCount].Position = new Vector3(vertex.ToVector2(), -0.1f);
 				_triangleVertices[_triangleVertsCount].Color = color.ToColor();
                 _triangleVertsCount++;
             }
@@ -150,7 +150,7 @@ namespace CocosSharp
                 {
                     FlushLines();
                 }
-                _lineVertices[_lineVertsCount].Position = new Vector3(vertex, 0f);
+				_lineVertices[_lineVertsCount].Position = new Vector3(vertex.ToVector2(), 0f);
 				_lineVertices[_lineVertsCount].Color = color.ToColor();
                 _lineVertsCount++;
             }

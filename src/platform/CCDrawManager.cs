@@ -1789,7 +1789,7 @@ namespace CocosSharp
     }
 
 
-    public class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
+	internal class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
     {
         protected VertexBuffer _vertexBuffer;
 		protected CCBufferUsage _usage;
@@ -1828,7 +1828,7 @@ namespace CocosSharp
             }
         }
 
-		public CCVertexBuffer(int vertexCount, CCBufferUsage usage)
+		internal CCVertexBuffer(int vertexCount, CCBufferUsage usage)
         {
             _data = new CCRawList<T>(vertexCount);
             _usage = usage;
@@ -1864,7 +1864,7 @@ namespace CocosSharp
 		WriteOnly
 	}
 
-    public class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
+	internal class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
     {
 		public CCQuadVertexBuffer(int vertexCount, CCBufferUsage usage)
             : base(vertexCount, usage)
