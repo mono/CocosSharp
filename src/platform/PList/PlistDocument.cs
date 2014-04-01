@@ -41,7 +41,7 @@ namespace CocosSharp
 #if IOS
     [MonoTouch.Foundation.Preserve (AllMembers = true)]
 #endif
-    public class PlistDocument : PlistObjectBase
+	public class PlistDocument : PlistObjectBase
     {
         private const string version = "1.0";
 
@@ -331,7 +331,7 @@ namespace CocosSharp
             }
         }
 
-        public enum ValueType : byte
+		private enum ValueType : byte
         {
             Array,
             Bool,
@@ -504,7 +504,7 @@ namespace CocosSharp
 			throw new Exception("This type is not supported");
 		}
 
-		public PlistDate parseBinaryDate(int headerPosition)
+		private PlistDate parseBinaryDate(int headerPosition)
 		{
 			byte[] buffer = objectTable.GetRange(headerPosition + 1, 8).ToArray();
 			Array.Reverse(buffer);
@@ -659,7 +659,7 @@ namespace CocosSharp
 #endregion Binary Plist Reader
 
 
-        public class PlistDocumentReader : ContentTypeReader<PlistDocument>
+		internal class PlistDocumentReader : ContentTypeReader<PlistDocument>
         {
             private string[] _stringPool;
 
