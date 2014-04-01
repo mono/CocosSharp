@@ -572,7 +572,7 @@ namespace CocosSharp
         {
         }
 
-        public void Update(GameTime gameTime)
+		public void Update(CCGameTime gameTime)
         {
             // Start stats measuring
             Stats.UpdateStart ();
@@ -610,7 +610,7 @@ namespace CocosSharp
         /// Draw the scene.
         /// This method is called every frame. Don't call it manually.
         /// </summary>
-        protected void DrawScene(GameTime gameTime)
+		protected void DrawScene(CCGameTime gameTime)
         {
             if (isNeedsInit)
             {
@@ -646,7 +646,7 @@ namespace CocosSharp
         }
 
 
-        public abstract void MainLoop(GameTime gameTime);
+		public abstract void MainLoop(CCGameTime gameTime);
 
         public void SetOpenGlView()
         {

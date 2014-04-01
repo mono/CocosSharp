@@ -21,6 +21,36 @@ namespace CocosSharp
 		Unknown = 16
 	}
 
+	public class CCGameTime
+	{
+		public TimeSpan TotalGameTime { get; set; }
+
+		public TimeSpan ElapsedGameTime { get; set; }
+
+		public bool IsRunningSlowly { get; set; }
+
+		public CCGameTime()
+		{
+			TotalGameTime = TimeSpan.Zero;
+			ElapsedGameTime = TimeSpan.Zero;
+			IsRunningSlowly = false;
+		}
+
+		public CCGameTime(TimeSpan totalGameTime, TimeSpan elapsedGameTime)
+		{
+			TotalGameTime = totalGameTime;
+			ElapsedGameTime = elapsedGameTime;
+			IsRunningSlowly = false;
+		}
+
+		public CCGameTime (TimeSpan totalRealTime, TimeSpan elapsedRealTime, bool isRunningSlowly)
+		{
+			TotalGameTime = totalRealTime;
+			ElapsedGameTime = elapsedRealTime;
+			IsRunningSlowly = isRunningSlowly;
+		}
+	}
+
     public abstract class CCApplication : DrawableGameComponent
     {
         private readonly List<CCTouch> endedTouches = new List<CCTouch>();
@@ -35,7 +65,9 @@ namespace CocosSharp
 #endif
         protected bool m_bCaptured;
 
-        public GameTime GameTime;
+		internal GameTime XNAGameTime;
+
+		public CCGameTime GameTime { get; set; }
 
         private bool _initialized;
 		public CCDisplayOrientation CurrentOrientation { get; private set; }
@@ -43,6 +75,8 @@ namespace CocosSharp
         public CCApplication(Game game, IGraphicsDeviceService service = null)
             : base(game)
         {
+
+			GameTime = new CCGameTime ();
 
 			SharedApplication = this;
  
@@ -176,7 +210,11 @@ namespace CocosSharp
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void Update(GameTime gameTime)
         {
-            GameTime = gameTime;
+            XNAGameTime = gameTime;
+
+			GameTime.ElapsedGameTime = gameTime.ElapsedGameTime;
+			GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
+			GameTime.TotalGameTime = gameTime.TotalGameTime;
 
 #if !PSM &&!NETFX_CORE
 			if (CCDirector.SharedDirector.Accelerometer != null 
@@ -200,18 +238,22 @@ namespace CocosSharp
 
 			ProcessMouse ();
 
-            CCDirector.SharedDirector.Update(gameTime);
+			CCDirector.SharedDirector.Update(GameTime);
 
             base.Update(gameTime);
         }
 
-        public override void Draw(GameTime gameTime)
+		public override void Draw(GameTime gameTime)
         {
-            GameTime = gameTime;
+            XNAGameTime = gameTime;
+
+			GameTime.ElapsedGameTime = gameTime.ElapsedGameTime;
+			GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
+			GameTime.TotalGameTime = gameTime.TotalGameTime;
 
             CCDrawManager.BeginDraw();
 
-            CCDirector.SharedDirector.MainLoop(gameTime);
+			CCDirector.SharedDirector.MainLoop(GameTime);
 
             base.Draw(gameTime);
 

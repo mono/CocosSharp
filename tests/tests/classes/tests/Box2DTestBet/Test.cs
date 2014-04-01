@@ -145,7 +145,7 @@ namespace FarseerPhysics.TestBed.Framework
             DebugView.DrawString(x, y, title);
         }
 
-        public virtual void Update(GameSettings settings, GameTime gameTime)
+		public virtual void Update(GameSettings settings, GameTime gameTime)
         {
             // added
             float timeStep = Math.Min((float)gameTime.ElapsedGameTime.TotalMilliseconds * 0.001f, (1f / 30f));

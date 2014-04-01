@@ -32,7 +32,7 @@ namespace CocosSharp
             CCApplication.SharedApplication.AnimationInterval = AnimationInterval;
         }
 
-        public override void MainLoop(GameTime gameTime)
+		public override void MainLoop(CCGameTime gameTime)
         {
             if (IsPurgeDirectorInNextLoop)
             {
