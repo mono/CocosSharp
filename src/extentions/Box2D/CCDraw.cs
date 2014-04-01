@@ -15,10 +15,15 @@ namespace CocosSharp
             return new CCVector2(vec.x, vec.y);
         }
 
-        public static Color ToColor(this b2Color color)
+		internal static Color ToColor(this b2Color color)
         {
             return new Color(color.r, color.g, color.b);
         }
+
+		internal static CCColor4B ToCCColor4B(this b2Color color)
+		{
+			return new CCColor4B (color.r, color.g, color.b, 255);
+		}
     }
 
     public class CCBox2dDraw : b2Draw
@@ -30,7 +35,7 @@ namespace CocosSharp
 #endif
 
         private CCPrimitiveBatch _primitiveBatch;
-        public Color TextColor = Color.White;
+		internal Color TextColor = Color.White;
         private SpriteFont _spriteFont;
         private List<StringData> _stringData;
         private StringBuilder _stringBuilder;
@@ -50,16 +55,14 @@ namespace CocosSharp
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
 
-            var col = color.ToColor();
-
             for (int i = 0; i < vertexCount - 1; i++)
             {
-                _primitiveBatch.AddVertex(vertices[i].ToCCVector2(), col, PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), col, PrimitiveType.LineList);
+				_primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+				_primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
             }
 
-            _primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), col, PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(vertices[0].ToCCVector2(), col, PrimitiveType.LineList);
+			_primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+			_primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -75,7 +78,7 @@ namespace CocosSharp
                 return;
             }
 
-            var colorFill = color.ToColor() * 0.5f;
+			var colorFill = color.ToCCColor4B() * 0.5f;
 
             for (int i = 1; i < vertexCount - 1; i++)
             {
@@ -96,7 +99,7 @@ namespace CocosSharp
             const double increment = Math.PI * 2.0 / CircleSegments;
             double theta = 0.0;
 
-            var col = color.ToColor();
+            var col = color.ToCCColor4B();
             CCVector2 centr = center.ToCCVector2();
 
             for (int i = 0, count = CircleSegments; i < count; i++)
@@ -122,7 +125,7 @@ namespace CocosSharp
             const double increment = Math.PI * 2.0 / CircleSegments;
             double theta = 0.0;
 
-            var colorFill = color.ToColor() * 0.5f;
+            var colorFill = color.ToCCColor4B() * 0.5f;
             var centr = center.ToCCVector2();
 
             CCVector2 v0 = center.ToCCVector2() + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
@@ -151,8 +154,8 @@ namespace CocosSharp
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
-            _primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToColor(), PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToColor(), PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawTransform(b2Transform xf)

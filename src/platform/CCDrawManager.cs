@@ -1099,24 +1099,24 @@ namespace CocosSharp
             DrawCount++;
         }
 
-        public static void Clear(ClearOptions options, Color color, float depth, int stencil)
+		internal static void Clear(ClearOptions options, Color color, float depth, int stencil)
         {
             graphicsDevice.Clear(options, color, depth, stencil);
         }
 
         public static void Clear(CCColor4B color, float depth, int stencil)
         {
-            graphicsDevice.Clear(ClearOptions.Target | ClearOptions.Stencil | ClearOptions.DepthBuffer, color, depth, stencil);
+			graphicsDevice.Clear(ClearOptions.Target | ClearOptions.Stencil | ClearOptions.DepthBuffer, color.ToColor(), depth, stencil);
         }
 
         public static void Clear(CCColor4B color, float depth)
         {
-            graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, color, depth, 0);
+			graphicsDevice.Clear(ClearOptions.Target | ClearOptions.DepthBuffer, color.ToColor(), depth, 0);
         }
 
         public static void Clear(CCColor4B color)
         {
-            graphicsDevice.Clear(color);
+			graphicsDevice.Clear(color.ToColor());
         }
 
         /// <summary>

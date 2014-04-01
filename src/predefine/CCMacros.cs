@@ -115,6 +115,14 @@ namespace CocosSharp
             return new CCPoint(p.X * cs, p.Y * cs);
         }
 
+		internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4B color)
+		{
+			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
+		}
+		internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4F color)
+		{
+			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
+		}
         /*
          * Macros defined in ccConfig.h
          */

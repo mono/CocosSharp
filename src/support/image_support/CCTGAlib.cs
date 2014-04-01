@@ -58,7 +58,7 @@ namespace CocosSharp
         public byte imagedescriptor;
     };
 
-    public class CCImageTGA
+	internal class CCImageTGA
     {
         //private TGAHeader header;
 
@@ -72,7 +72,7 @@ namespace CocosSharp
         /// <summary>
         /// raw data
         /// </summary>
-        public Color[] imageData;
+		public Color[] ImageData;
 
         public int flipped;
 
@@ -87,7 +87,7 @@ namespace CocosSharp
 			width = (short) tex.Width;
 			height = (short) tex.Height;
 
-			imageData = new Color[tex.Width * tex.Height];
+			var imageData = new Color[tex.Width * tex.Height];
 			tex.GetData(imageData);
 
 			var tmp = new Color[tex.Width];
@@ -215,16 +215,16 @@ namespace CocosSharp
                 int cx = 0;
                 for (int i = headerSkip; i < buffer.Length; i += mode)
                 {
-                    psInfo.imageData[cx].R = buffer[i + 2];
-                    psInfo.imageData[cx].G = buffer[i + 1];
-                    psInfo.imageData[cx].B = buffer[i];
+                    psInfo.ImageData[cx].R = buffer[i + 2];
+                    psInfo.ImageData[cx].G = buffer[i + 1];
+                    psInfo.ImageData[cx].B = buffer[i];
                     if (mode == 4)
                     {
-                        psInfo.imageData[cx].A = buffer[i + 3];
+                        psInfo.ImageData[cx].A = buffer[i + 3];
                     }
                     else
                     {
-                        psInfo.imageData[cx].A = 255;
+                        psInfo.ImageData[cx].A = 255;
                     }
                 }
             }

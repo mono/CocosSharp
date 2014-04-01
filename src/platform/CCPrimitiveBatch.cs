@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCPrimitiveBatch : IDisposable
+	public class CCPrimitiveBatch : IDisposable
     {
         private const int DefaultBufferSize = 500;
 
@@ -116,12 +116,12 @@ namespace CocosSharp
             return _hasBegun;
         }
 
-        public void AddVertex(CCVector2 vertex, Color color, PrimitiveType primitiveType)
+		public void AddVertex(CCVector2 vertex, CCColor4B color, PrimitiveType primitiveType)
         {
-            AddVertex(ref vertex, color, primitiveType);
+			AddVertex(ref vertex, color, primitiveType);
         }
 
-        public void AddVertex(ref CCVector2 vertex, Color color, PrimitiveType primitiveType)
+		public void AddVertex(ref CCVector2 vertex, CCColor4B color, PrimitiveType primitiveType)
         {
             if (!_hasBegun)
             {
@@ -140,7 +140,7 @@ namespace CocosSharp
                     FlushTriangles();
                 }
                 _triangleVertices[_triangleVertsCount].Position = new Vector3(vertex, -0.1f);
-                _triangleVertices[_triangleVertsCount].Color = color;
+				_triangleVertices[_triangleVertsCount].Color = color.ToColor();
                 _triangleVertsCount++;
             }
 
@@ -151,7 +151,7 @@ namespace CocosSharp
                     FlushLines();
                 }
                 _lineVertices[_lineVertsCount].Position = new Vector3(vertex, 0f);
-                _lineVertices[_lineVertsCount].Color = color;
+				_lineVertices[_lineVertsCount].Color = color.ToColor();
                 _lineVertsCount++;
             }
         }

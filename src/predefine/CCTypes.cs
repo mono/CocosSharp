@@ -169,6 +169,9 @@ namespace CocosSharp
             A = ina;
         }
 
+		internal CCColor4B(Color color) : this(color.R, color.G, color.B, color.A)
+		{ }
+
         public CCColor4B(byte inr, byte ing, byte inb) : this(inr, ing, inb, 255)
         {
         }
@@ -246,13 +249,14 @@ namespace CocosSharp
             return this == other;       
         } 
 
-        public static implicit operator Color(CCColor4B point)
-        {
-            return new Color(point.R, point.G, point.B, point.A);
-        }
+//        public static implicit operator Color(CCColor4B point)
+//        {
+//            return new Color(point.R, point.G, point.B, point.A);
+//        }
 
         #endregion Operators
 
+	
 
         public static CCColor4B Lerp(CCColor4B value1, CCColor4B value2, float amount)
         {
@@ -314,10 +318,10 @@ namespace CocosSharp
 
         #region Operators
 
-        public static implicit operator Color(CCColor4F point)
-        {
-            return new Color(point.R, point.G, point.B, point.A);
-        }
+//		public static implicit operator Color(CCColor4F point)
+//        {
+//            return new Color(point.R, point.G, point.B, point.A);
+//        }
 
         public static bool operator ==(CCColor4F a, CCColor4F b)
         {
