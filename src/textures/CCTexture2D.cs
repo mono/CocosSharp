@@ -183,19 +183,19 @@ namespace CocosSharp
         {
         }
 
-		public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
+		internal CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
             : this()
         {
             InitWithTexture(texture, format, premultipliedAlpha, managed);
         }
 
-		public CCTexture2D(Texture2D texture, CCSurfaceFormat format)
+		internal CCTexture2D(Texture2D texture, CCSurfaceFormat format)
             : this()
         {
             InitWithTexture(texture, format, true, false);
         }
 
-        public CCTexture2D(Texture2D texture) 
+		internal CCTexture2D(Texture2D texture) 
 			: this(texture, (CCSurfaceFormat)texture.Format, true, false)
         {
         }
@@ -256,7 +256,7 @@ namespace CocosSharp
         /// <summary>
         ///     texture name
         /// </summary>
-        public Texture2D Name
+		internal Texture2D Name
         {
             get { return XNATexture; }
         }
@@ -284,7 +284,7 @@ namespace CocosSharp
             set { m_bHasPremultipliedAlpha = value; }
         }
 
-        public SamplerState SamplerState
+		public SamplerState SamplerState
         {
             get { return m_samplerState; }
             set { m_samplerState = value; }
@@ -594,7 +594,7 @@ namespace CocosSharp
 
                 if (dimensions.Equals(CCSize.Zero))
                 {
-                    CCVector2 temp = font.MeasureString(text);
+					CCVector2 temp = font.MeasureString(text).ToCCVector2();
                     dimensions.Width = temp.X * scale;
                     dimensions.Height = temp.Y * scale;
                 }
@@ -701,7 +701,7 @@ namespace CocosSharp
                         position.X = (dimensions.Width - font.MeasureString(line).X * scale) / 2.0f;
                     }
 
-                    sb.DrawString(font, line, position, Color.White, 0f, CCVector2.Zero, scale, SpriteEffects.None, 0);
+					sb.DrawString(font, line, position.ToVector2(), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
 
                     nextY += font.LineSpacing * scale;
                 }
@@ -924,7 +924,7 @@ namespace CocosSharp
                 SpriteBatch sb = CCDrawManager.SpriteBatch;
 
                 sb.Begin();
-                sb.Draw(m_Texture2D, CCVector2.Zero, Color.White);
+                sb.Draw(m_Texture2D, Vector2.Zero, Color.White);
                 sb.End();
 
                 if (!m_bManaged)
@@ -954,7 +954,7 @@ namespace CocosSharp
 
             CCDrawManager.SetRenderTarget(renderTarget);
             CCDrawManager.SpriteBatch.Begin();
-            CCDrawManager.SpriteBatch.Draw(texture, new CCVector2(0, 0), Color.White);
+			CCDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
             CCDrawManager.SpriteBatch.End();
             CCDrawManager.SetRenderTarget((CCTexture2D)null);
 
