@@ -316,7 +316,6 @@
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
-    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />

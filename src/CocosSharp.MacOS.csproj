@@ -435,7 +435,6 @@
     <Compile Include="events\CCEventTouch.cs" />
     <Compile Include="events\CCEventListenerTouchAllAtOnce.cs" />
     <Compile Include="events\CCEventListenerTouchOneByOne.cs" />
-    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="events\CCEventListenerGamePad.cs" />
     <Compile Include="events\CCEventGamePadButton.cs" />
     <Compile Include="events\CCEventGamePad.cs" />
@@ -467,5 +466,6 @@
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
     <Folder Include="events\" />
+    <Folder Include="platform\" />
   </ItemGroup>
 </Project>

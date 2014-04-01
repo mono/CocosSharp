@@ -441,7 +441,6 @@
     <Compile Include="predefine\CCMacros.cs" />
     <Compile Include="Math\CCEaseMath.cs" />
     <Compile Include="Math\CCSplineMath.cs" />
-    <Compile Include="Platform\CCInputState.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
     <Compile Include="label_nodes\CCLabelUtilities-CoreGraphics.cs" />
     <Compile Include="label_nodes\CCLabelUtilities.cs" />

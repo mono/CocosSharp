@@ -209,7 +209,6 @@
     <Compile Include="platform\CCFocusManager.cs" />
     <Compile Include="platform\CCTask.cs" />
     <Compile Include="platform\ICCFocusable.cs" />
-    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCSpriteFontCache.cs" />
     <Compile Include="platform\CCDrawManager.cs" />
     <Compile Include="effects\CCGrid3D.cs" />

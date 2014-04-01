@@ -872,9 +872,6 @@
     <Compile Include=".\platform\ICCSAXDelegator.cs">
       <LogicalName>platform\ICCSAXDelegator</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCInputState.cs">
-      <LogicalName>platform\InputState</LogicalName>
-    </Compile>
     <Compile Include=".\platform\CCOGLES.cs">
       <LogicalName>platform\OGLES</LogicalName>
     </Compile>

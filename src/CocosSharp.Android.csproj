@@ -309,7 +309,6 @@
     <Compile Include="Platform\ContentReaders\CCSizeReader.cs" />
     <Compile Include="Platform\ContentReaders\KerningHashElementReader.cs" />
     <Compile Include="Platform\ICCSAXDelegator.cs" />
-    <Compile Include="Platform\CCInputState.cs" />
     <Compile Include="Platform\CCOGLES.cs">
       <SubType>Code</SubType>
     </Compile>

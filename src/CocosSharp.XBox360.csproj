@@ -310,7 +310,6 @@
     <Compile Include="platform\CCLog.cs" />
     <Compile Include="platform\CCSAXParser.cs" />
     <Compile Include="platform\ICCSAXDelegator.cs" />
-    <Compile Include="platform\CCInputState.cs" />
     <Compile Include="platform\CCOGLES.cs" />
     <Compile Include="platform\PList\PlistArray.cs" />
     <Compile Include="platform\PList\PlistBoolean.cs" />

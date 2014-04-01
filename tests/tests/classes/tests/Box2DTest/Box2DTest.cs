@@ -280,34 +280,36 @@ namespace tests
                 }
             }
 
-#if WINDOWS || WINDOWSGL || LINUX || MACOS
-            CCInputState.Instance.Update(dt);
-            PlayerIndex p;
-            if (CCInputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
-            {
-                _world.Dump();
-#if PROFILING
-                b2Profile profile = _world.Profile;
-                CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
-                CCLog.Log("Solve Time = {0:F4}", profile.solve);
-                CCLog.Log("# bodies = {0}", profile.bodyCount);
-                CCLog.Log("# contacts = {0}", profile.contactCount);
-                CCLog.Log("# joints = {0}", profile.jointCount);
-                CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
-                if (profile.step > 0f)
-                {
-                    CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
-                    CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
-                }
-
-                CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
-                CCLog.Log("Collision Time = {0:F4}", profile.collide);
-                CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
-                CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
-                CCLog.Log("Step Time = {0:F4}", profile.step);
-#endif
-            }
-#endif
+//#if WINDOWS || WINDOWSGL || LINUX || MACOS
+//
+			// This needs replacing with EventDispatcher
+//			CCInputState.Instance.Update(dt);
+//            PlayerIndex p;
+//            if (CCInputState.Instance.IsKeyPress(Microsoft.Xna.Framework.Input.Keys.D, PlayerIndex.One, out p))
+//            {
+//                _world.Dump();
+//#if PROFILING
+//                b2Profile profile = _world.Profile;
+//                CCLog.Log("]-----------[{0:F4}]-----------------------[", profile.step);
+//                CCLog.Log("Solve Time = {0:F4}", profile.solve);
+//                CCLog.Log("# bodies = {0}", profile.bodyCount);
+//                CCLog.Log("# contacts = {0}", profile.contactCount);
+//                CCLog.Log("# joints = {0}", profile.jointCount);
+//                CCLog.Log("# toi iters = {0}", profile.toiSolverIterations);
+//                if (profile.step > 0f)
+//                {
+//                    CCLog.Log("Solve TOI Time = {0:F4} {1:F2}%", profile.solveTOI, profile.solveTOI / profile.step * 100f);
+//                    CCLog.Log("Solve TOI Advance Time = {0:F4} {1:F2}%", profile.solveTOIAdvance, profile.solveTOIAdvance / profile.step * 100f);
+//                }
+//
+//                CCLog.Log("BroadPhase Time = {0:F4}", profile.broadphase);
+//                CCLog.Log("Collision Time = {0:F4}", profile.collide);
+//                CCLog.Log("Solve Velocity Time = {0:F4}", profile.solveVelocity);
+//                CCLog.Log("Solve Position Time = {0:F4}", profile.solvePosition);
+//                CCLog.Log("Step Time = {0:F4}", profile.step);
+//#endif
+//            }
+//#endif
         }
 
 		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
