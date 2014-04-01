@@ -207,7 +207,7 @@ namespace CocosSharp
         {
             _primitiveBatch.End();
 
-            var _batch = CCDrawManager.spriteBatch;
+            var _batch = CCDrawManager.SpriteBatch;
 
             _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 

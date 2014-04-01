@@ -36,7 +36,7 @@ namespace CocosSharp
     /// </summary>
     public class CCLayerColor : CCLayerRGBA, ICCBlendable
     {
-        protected VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
+		internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         #region Properties
 

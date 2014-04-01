@@ -671,7 +671,7 @@ namespace CocosSharp
                 CCDrawManager.SetRenderTarget(renderTarget);
                 CCDrawManager.Clear(CCColor4B.Transparent);
 
-                SpriteBatch sb = CCDrawManager.spriteBatch;
+                SpriteBatch sb = CCDrawManager.SpriteBatch;
                 sb.Begin();
 
                 float textHeight = textList.Count * font.LineSpacing * scale;
@@ -921,7 +921,7 @@ namespace CocosSharp
 
                 CCDrawManager.SetRenderTarget(target);
 
-                SpriteBatch sb = CCDrawManager.spriteBatch;
+                SpriteBatch sb = CCDrawManager.SpriteBatch;
 
                 sb.Begin();
                 sb.Draw(m_Texture2D, CCVector2.Zero, Color.White);
@@ -953,9 +953,9 @@ namespace CocosSharp
                 );
 
             CCDrawManager.SetRenderTarget(renderTarget);
-            CCDrawManager.spriteBatch.Begin();
-            CCDrawManager.spriteBatch.Draw(texture, new CCVector2(0, 0), Color.White);
-            CCDrawManager.spriteBatch.End();
+            CCDrawManager.SpriteBatch.Begin();
+            CCDrawManager.SpriteBatch.Draw(texture, new CCVector2(0, 0), Color.White);
+            CCDrawManager.SpriteBatch.End();
             CCDrawManager.SetRenderTarget((CCTexture2D)null);
 
             return renderTarget;
@@ -977,7 +977,7 @@ namespace CocosSharp
 
             CCDrawManager.Clear(CCColor4B.Transparent);
 
-            var spriteBatch = CCDrawManager.spriteBatch;
+            var spriteBatch = CCDrawManager.SpriteBatch;
 
             if (format != SurfaceFormat.Alpha8)
             {

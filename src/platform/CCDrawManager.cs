@@ -36,14 +36,14 @@ namespace CocosSharp
         private const int DefaultQuadBufferSize = 1024 * 4;
         public static string DefaultFont = "arial";
 
-        public static BasicEffect PrimitiveEffect;
-        public static AlphaTestEffect AlphaTestEffect;
+		internal static BasicEffect PrimitiveEffect;
+		internal static AlphaTestEffect AlphaTestEffect;
 
         private static BasicEffect m_defaultEffect;
         private static Effect m_currentEffect;
         private static readonly Stack<Effect> m_effectStack = new Stack<Effect>();
 
-        public static SpriteBatch spriteBatch;
+		internal static SpriteBatch SpriteBatch { get; set; }
         internal static GraphicsDevice graphicsDevice;
 
         internal static Matrix m_worldMatrix;
@@ -411,7 +411,7 @@ namespace CocosSharp
         {
             CCDrawManager.graphicsDevice = graphicsDevice;
 
-            spriteBatch = new SpriteBatch(graphicsDevice);
+            SpriteBatch = new SpriteBatch(graphicsDevice);
 
             m_defaultEffect = new BasicEffect(graphicsDevice);
 
@@ -503,7 +503,7 @@ namespace CocosSharp
             m_currentEffect = null;
             m_effectStack.Clear();
 
-            spriteBatch = null;
+            SpriteBatch = null;
 
             m_renderTarget = null;
 
@@ -660,9 +660,9 @@ namespace CocosSharp
             {
                 graphicsDevice.SetRenderTarget(null);
 
-                spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
-				spriteBatch.Draw(m_renderTarget, new Vector2(0, 0), Color.White);
-                spriteBatch.End();
+                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+				SpriteBatch.Draw(m_renderTarget, new Vector2(0, 0), Color.White);
+                SpriteBatch.End();
             }
 
             ResetDevice();
@@ -754,7 +754,7 @@ namespace CocosSharp
             m_viewMatrixChanged = false;
         }
 
-        public static void DrawPrimitives<T>(PrimitiveType type, T[] vertices, int offset, int count) where T : struct, IVertexType
+		internal static void DrawPrimitives<T>(PrimitiveType type, T[] vertices, int offset, int count) where T : struct, IVertexType
         {
             if (count <= 0)
             {
@@ -773,7 +773,7 @@ namespace CocosSharp
             DrawCount++;
         }
 
-        public static void DrawIndexedPrimitives<T>(PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, short[] indexData,
+		internal static void DrawIndexedPrimitives<T>(PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, short[] indexData,
                                                     int indexOffset, int primitiveCount) where T : struct, IVertexType
         {
             if (primitiveCount <= 0)
@@ -1050,7 +1050,7 @@ namespace CocosSharp
             DrawCount++;
         }
 
-        public static void DrawBuffer<T, T2>(CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer, int start, int count)
+		internal static void DrawBuffer<T, T2>(CCVertexBuffer<T> vertexBuffer, CCIndexBuffer<T2> indexBuffer, int start, int count)
             where T : struct, IVertexType
             where T2 : struct
         {
@@ -1072,7 +1072,7 @@ namespace CocosSharp
             DrawCount++;
         }
 
-        public static void DrawQuadsBuffer<T>(CCVertexBuffer<T> vertexBuffer, int start, int n) where T : struct, IVertexType
+		internal static void DrawQuadsBuffer<T>(CCVertexBuffer<T> vertexBuffer, int start, int n) where T : struct, IVertexType
         {
             if (n == 0)
             {
@@ -1933,7 +1933,7 @@ namespace CocosSharp
         }
     }
 
-    public class CCIndexBuffer<T> : CCGraphicsResource where T : struct
+	internal class CCIndexBuffer<T> : CCGraphicsResource where T : struct
     {
         private IndexBuffer _indexBuffer;
         private BufferUsage _usage;
