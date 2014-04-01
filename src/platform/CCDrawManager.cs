@@ -993,7 +993,7 @@ namespace CocosSharp
 
                 if (m_quadsBuffer == null)
                 {
-                    m_quadsBuffer = new CCQuadVertexBuffer(capacity, BufferUsage.WriteOnly);
+					m_quadsBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
                 }
                 else
                 {
@@ -1792,7 +1792,7 @@ namespace CocosSharp
     public class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
     {
         protected VertexBuffer _vertexBuffer;
-        protected BufferUsage _usage;
+		protected CCBufferUsage _usage;
         protected CCRawList<T> _data;
 
         internal VertexBuffer VertexBuffer
@@ -1828,7 +1828,7 @@ namespace CocosSharp
             }
         }
 
-        public CCVertexBuffer(int vertexCount, BufferUsage usage)
+		public CCVertexBuffer(int vertexCount, CCBufferUsage usage)
         {
             _data = new CCRawList<T>(vertexCount);
             _usage = usage;
@@ -1854,13 +1854,19 @@ namespace CocosSharp
             {
                 _vertexBuffer.Dispose();
             }
-            _vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Capacity, _usage);
+			_vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(T), _data.Capacity, (BufferUsage)_usage);
         }
     }
 
+	public enum CCBufferUsage
+	{
+		None,
+		WriteOnly
+	}
+
     public class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
     {
-        public CCQuadVertexBuffer(int vertexCount, BufferUsage usage)
+		public CCQuadVertexBuffer(int vertexCount, CCBufferUsage usage)
             : base(vertexCount, usage)
         {
         }
@@ -1915,7 +1921,7 @@ namespace CocosSharp
             {
                 _vertexBuffer.Dispose();
             }
-            _vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(CCV3F_C4B_T2F), _data.Capacity * 4, _usage);
+			_vertexBuffer = new VertexBuffer(CCDrawManager.GraphicsDevice, typeof(CCV3F_C4B_T2F), _data.Capacity * 4, (BufferUsage)_usage);
 
             UpdateBuffer();
         }

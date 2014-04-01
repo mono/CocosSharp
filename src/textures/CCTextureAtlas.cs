@@ -266,7 +266,7 @@ namespace CocosSharp
                 capacity = 4;
             }
 
-            m_pVertexBuffer = new CCQuadVertexBuffer(capacity, BufferUsage.WriteOnly);
+			m_pVertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
             m_pQuads = m_pVertexBuffer.Data;
 
             Dirty = true;

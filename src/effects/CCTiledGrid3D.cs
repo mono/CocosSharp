@@ -167,7 +167,7 @@ namespace CocosSharp
 
             int numQuads = m_sGridSize.X * m_sGridSize.Y;
 
-            m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, BufferUsage.WriteOnly);
+			m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
             m_pVertexBuffer.Count = numQuads * 4;
             m_pIndexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
             m_pIndexBuffer.Count = numQuads * 6;

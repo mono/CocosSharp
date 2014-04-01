@@ -135,7 +135,7 @@ namespace CocosSharp
 
             int numOfPoints = (m_sGridSize.X + 1) * (m_sGridSize.Y + 1);
 
-            m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, BufferUsage.WriteOnly);
+			m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
             m_pVertexBuffer.Count = numOfPoints;
             m_pIndexBuffer = new CCIndexBuffer<ushort>(m_sGridSize.X * m_sGridSize.Y * 6, BufferUsage.WriteOnly);
             m_pIndexBuffer.Count = m_sGridSize.X * m_sGridSize.Y * 6;
