@@ -39,7 +39,7 @@ namespace CocosSharp
         /*      GL_DST_ALPHA */
         /*      GL_ONE_MINUS_DST_ALPHA */
 
-        public static Blend GetXNABlend(int glBlend)
+		internal static Blend GetXNABlend(int glBlend)
         {
             switch (glBlend)
             {
