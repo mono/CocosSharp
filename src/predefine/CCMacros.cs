@@ -123,6 +123,13 @@ namespace CocosSharp
 		{
 			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
 		}
+
+		internal static Microsoft.Xna.Framework.Vector3 ToVector3 (this CCPoint point)
+		{
+			return new Microsoft.Xna.Framework.Vector3(point.X, point.Y, 0);
+		}
+
+
         /*
          * Macros defined in ccConfig.h
          */

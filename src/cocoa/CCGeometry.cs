@@ -657,10 +657,6 @@ namespace CocosSharp
             return new CCVector2(point.X, point.Y);
         }
 
-        public static implicit operator Vector3(CCPoint point)
-        {
-            return new Vector3(point.X, point.Y, 0);
-        }
     }
 
 #if !WINDOWS_PHONE && !XBOX && !NETFX_CORE

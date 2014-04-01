@@ -75,29 +75,29 @@ namespace CocosSharp
             var v6 = a - (nw - tw);
             var v7 = a + (nw + tw);
 
-            vertices.Add(new VertexPositionColor(v0, cl)); //__t(v2fneg(v2fadd(n, t)))
-            vertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
-            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))}
+			vertices.Add(new VertexPositionColor(v0.ToVector3(), cl)); //__t(v2fneg(v2fadd(n, t)))
+			vertices.Add(new VertexPositionColor(v1.ToVector3(), cl)); //__t(v2fsub(n, t))
+			vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))}
 
-            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v1, cl)); //__t(v2fsub(n, t))
-            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
+			vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v1.ToVector3(), cl)); //__t(v2fsub(n, t))
+			vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))
 
-            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v2, cl)); //__t(v2fneg(n))
+			vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
+			vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))
 
-            vertices.Add(new VertexPositionColor(v3, cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
+			vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
 
-            vertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
-            vertices.Add(new VertexPositionColor(v4, cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v6.ToVector3(), cl)); //__t(v2fsub(t, n))
+			vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
+			vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
 
-            vertices.Add(new VertexPositionColor(v6, cl)); //__t(v2fsub(t, n))
-            vertices.Add(new VertexPositionColor(v7, cl)); //__t(v2fadd(n, t))
-            vertices.Add(new VertexPositionColor(v5, cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v6.ToVector3(), cl)); //__t(v2fsub(t, n))
+			vertices.Add(new VertexPositionColor(v7.ToVector3(), cl)); //__t(v2fadd(n, t))
+			vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
 
             dirty = true;
         }
@@ -169,9 +169,9 @@ namespace CocosSharp
                 var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
                 var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
 
-				vertices.Add(new VertexPositionColor(v0, fillColor.ToColor())); //__t(v2fzero)
-				vertices.Add(new VertexPositionColor(v1, fillColor.ToColor())); //__t(v2fzero)
-				vertices.Add(new VertexPositionColor(v2, fillColor.ToColor())); //__t(v2fzero)
+				vertices.Add(new VertexPositionColor(v0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+				vertices.Add(new VertexPositionColor(v1.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+				vertices.Add(new VertexPositionColor(v2.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
             }
 
             for (int i = 0; i < count; i++)
@@ -192,13 +192,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * borderWidth));
                     var outer1 = (v1 + (offset1 * borderWidth));
 
-					vertices.Add(new VertexPositionColor(inner0, borderColor.ToColor())); //__t(v2fneg(n0))
-					vertices.Add(new VertexPositionColor(inner1, borderColor.ToColor())); //__t(v2fneg(n0))
-					vertices.Add(new VertexPositionColor(outer1, borderColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(inner0.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
+					vertices.Add(new VertexPositionColor(inner1.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
+					vertices.Add(new VertexPositionColor(outer1.ToVector3(), borderColor.ToColor())); //__t(n0)
 
-					vertices.Add(new VertexPositionColor(inner0, borderColor.ToColor())); //__t(v2fneg(n0))
-					vertices.Add(new VertexPositionColor(outer0, borderColor.ToColor())); //__t(n0)
-					vertices.Add(new VertexPositionColor(outer1, borderColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(inner0.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
+					vertices.Add(new VertexPositionColor(outer0.ToVector3(), borderColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(outer1.ToVector3(), borderColor.ToColor())); //__t(n0)
                 }
                 else
                 {
@@ -207,13 +207,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * 0.5f));
                     var outer1 = (v1 + (offset1 * 0.5f));
 
-					vertices.Add(new VertexPositionColor(inner0, fillColor.ToColor())); //__t(v2fzero)
-					vertices.Add(new VertexPositionColor(inner1, fillColor.ToColor())); //__t(v2fzero)
-					vertices.Add(new VertexPositionColor(outer1, fillColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(inner0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+					vertices.Add(new VertexPositionColor(inner1.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+					vertices.Add(new VertexPositionColor(outer1.ToVector3(), fillColor.ToColor())); //__t(n0)
 
-					vertices.Add(new VertexPositionColor(inner0, fillColor.ToColor())); //__t(v2fzero)
-					vertices.Add(new VertexPositionColor(outer0, fillColor.ToColor())); //__t(n0)
-					vertices.Add(new VertexPositionColor(outer1, fillColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(inner0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+					vertices.Add(new VertexPositionColor(outer0.ToVector3(), fillColor.ToColor())); //__t(n0)
+					vertices.Add(new VertexPositionColor(outer1.ToVector3(), fillColor.ToColor())); //__t(n0)
                 }
             }
 
