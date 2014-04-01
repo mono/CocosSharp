@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCContentManager : ContentManager
+	internal class CCContentManager : ContentManager
     {
         public static CCContentManager SharedContentManager;
 
@@ -440,11 +440,15 @@ namespace CocosSharp
         public List<string> SearchResolutionsOrder
         {
             get { return _searchResolutionsOrder; }
+
+			internal set { _searchResolutionsOrder = value; }
         }
 
         public List<string> SearchPaths
         {
             get { return _searchPaths; }
+
+			internal set { _searchPaths = value; }
         }
 
         private void CheckDefaultPath(List<string> paths)

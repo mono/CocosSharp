@@ -260,10 +260,46 @@ namespace CocosSharp
             CCDrawManager.EndDraw();
         }
 
-        protected virtual void HandleGesture(GestureSample gesture)
+		internal virtual void HandleGesture(GestureSample gesture)
         {
             //TODO: Create CCGesture and convert the coordinates into the local coordinates.
         }
+
+		public List<string> ContentSearchPaths
+		{
+			get
+			{
+				return CCContentManager.SharedContentManager.SearchPaths;
+			}
+
+			set 
+			{
+				CCContentManager.SharedContentManager.SearchPaths = value;
+			}
+		}
+
+		public List<string> ContentSearchResolutionOrder
+		{
+			get
+			{
+				return CCContentManager.SharedContentManager.SearchResolutionsOrder;
+			}
+
+			set 
+			{
+				CCContentManager.SharedContentManager.SearchResolutionsOrder = value;
+			}
+		}
+
+		public string ContentRootDirectory
+		{
+			get { return CCContentManager.SharedContentManager.RootDirectory; }
+
+			set 
+			{
+				CCContentManager.SharedContentManager.RootDirectory = value;
+			}
+		}
 
 		public bool AllowUserResizing
 		{

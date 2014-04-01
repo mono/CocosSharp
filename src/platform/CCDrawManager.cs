@@ -136,7 +136,7 @@ namespace CocosSharp
             }
         }
 
-        public static DepthStencilState DepthStencilState
+		public static DepthStencilState DepthStencilState
         {
             get { return graphicsDevice.DepthStencilState; }
             set { graphicsDevice.DepthStencilState = value; }
@@ -149,7 +149,7 @@ namespace CocosSharp
 			set { InitializeGraphicsDevice (value); }
         }
 
-        public static BlendState BlendState
+		public static BlendState BlendState
         {
             get { return graphicsDevice.BlendState; }
             set
@@ -334,7 +334,7 @@ namespace CocosSharp
             pp.RenderTargetUsage = RenderTargetUsage.PreserveContents; // PreserveContents or problems with backgrounds not showing up
         }
 
-		public static void InitializeDisplay(Game game, GraphicsDeviceManager graphics)
+		internal static void InitializeDisplay(Game game, GraphicsDeviceManager graphics)
         {
             m_GraphicsDeviceMgr = graphics;
             m_bHasStencilBuffer = (graphics.PreferredDepthStencilFormat == DepthFormat.Depth24Stencil8);
@@ -668,14 +668,14 @@ namespace CocosSharp
             ResetDevice();
         }
 
-        public static void PushEffect(Effect effect)
+		internal static void PushEffect(Effect effect)
         {
             m_effectStack.Push(m_currentEffect);
             m_currentEffect = effect;
             m_effectChanged = true;
         }
 
-        public static void PopEffect()
+		internal static void PopEffect()
         {
             m_currentEffect = m_effectStack.Pop();
             m_effectChanged = true;
@@ -868,7 +868,7 @@ namespace CocosSharp
             }
         }
 
-		public static void CreateRenderTarget(CCTexture2D pTexture, CCRenderTargetUsage usage)
+		internal static void CreateRenderTarget(CCTexture2D pTexture, CCRenderTargetUsage usage)
         {
             CCSize size = pTexture.ContentSizeInPixels;
             var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
@@ -876,17 +876,17 @@ namespace CocosSharp
             pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true, false);
         }
 
-		public static RenderTarget2D CreateRenderTarget(int width, int height, CCRenderTargetUsage usage)
+		internal static RenderTarget2D CreateRenderTarget(int width, int height, CCRenderTargetUsage usage)
         {
 			return CreateRenderTarget(width, height, CCTexture2D.DefaultAlphaPixelFormat, CCDepthFormat.None, usage);
         }
 
-		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCRenderTargetUsage usage)
+		internal static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCRenderTargetUsage usage)
         {
 			return CreateRenderTarget(width, height, colorFormat, CCDepthFormat.None, usage);
         }
 
-		public static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat,
+		internal static RenderTarget2D CreateRenderTarget(int width, int height, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat,
 			CCRenderTargetUsage usage)
         {
             if (!m_AllowNonPower2Textures)
@@ -897,7 +897,7 @@ namespace CocosSharp
 			return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, (DepthFormat)depthFormat, 0, (RenderTargetUsage)usage);
         }
 
-        public static Texture2D CreateTexture2D(int width, int height)
+		internal static Texture2D CreateTexture2D(int width, int height)
         {
             PresentationParameters pp = graphicsDevice.PresentationParameters;
             if (!m_AllowNonPower2Textures)
@@ -921,7 +921,7 @@ namespace CocosSharp
             }
         }
 
-        public static void SetRenderTarget(RenderTarget2D renderTarget)
+		internal static void SetRenderTarget(RenderTarget2D renderTarget)
         {
             if (graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
             {
@@ -939,7 +939,7 @@ namespace CocosSharp
             m_currRenderTarget = renderTarget;
         }
 
-        public static RenderTarget2D GetRenderTarget()
+		internal static RenderTarget2D GetRenderTarget()
         {
             return m_currRenderTarget;
         }

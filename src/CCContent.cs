@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CocosSharp
 {
-    public class CCContent
+	internal class CCContent
     {
         [ContentSerializer]
         public string Content { get; set; }
