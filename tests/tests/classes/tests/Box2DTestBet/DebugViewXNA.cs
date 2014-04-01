@@ -848,7 +848,7 @@ namespace FarseerPhysics.DebugViews
             _stringData.Clear();
         }
 
-        public void LoadContent(GraphicsDevice device, ContentManager content)
+		public void LoadContent(GraphicsDevice device, ContentManager content)
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _device = device;

@@ -6,7 +6,7 @@ using CocosSharp;
 using tests.Clipping;
 using tests.FontTest;
 using tests.Extensions;
-using tests.classes.tests.Box2DTestBet;
+//using tests.classes.tests.Box2DTestBet;
 using Box2D.TestBed;
 
 namespace tests
@@ -370,8 +370,8 @@ namespace tests
                     pScene = new TextureTestScene(); break;
                 case (int)TestCases.TEST_BOX2D:
                     pScene = new Box2DTestScene(); break;
-                case (int)TestCases.TEST_BOX2DBED:
-                         pScene = new tests.classes.tests.Box2DTestBet.Box2dTestBedScene(); break;
+//                case (int)TestCases.TEST_BOX2DBED:
+//                         pScene = new tests.classes.tests.Box2DTestBet.Box2dTestBedScene(); break;
                 case (int)TestCases.TEST_BOX2DBED2:
                     pScene = new Box2D.TestBed.Box2dTestBedScene(); break;
                 case (int)TestCases.TEST_EFFECT_ADVANCE:
