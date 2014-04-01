@@ -53,7 +53,7 @@ namespace CocosSharp
             return String.Format("{0}-{1}", fontName, fontSize);
         }
 
-        public SpriteFont GetFont(string fontName)
+		internal SpriteFont GetFont(string fontName)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace CocosSharp
             }
         }
 
-        public SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
+		internal SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
         {
             var key = FontKey(fontName, fontSize);
             
