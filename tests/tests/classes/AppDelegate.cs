@@ -20,7 +20,7 @@ namespace tests
 #endif
             AllowUserResizing = true;
 
-            GraphicsDeviceManager.PreferMultiSampling = false;
+            PreferMultiSampling = false;
 
 #if WINDOWS || WINDOWSGL || WINDOWSDX 
             PreferredBackBufferWidth = 1024;

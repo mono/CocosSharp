@@ -100,15 +100,22 @@ namespace CocosSharp
 
         private static bool m_bNeedReinitResources;
 
-		public static bool AllowUserResizing
-		{
+		public static bool IsFullScreen 
+		{ 
 			get 
 			{
-				return true;
+				return m_GraphicsDeviceMgr.IsFullScreen;
 			}
-
+			set
+			{
+				m_GraphicsDeviceMgr.IsFullScreen = value;
+			}
 		}
 
+		public static void ToggleFullScreen()
+		{
+			m_GraphicsDeviceMgr.ToggleFullScreen ();
+		}
 
         public static bool VertexColorEnabled
         {

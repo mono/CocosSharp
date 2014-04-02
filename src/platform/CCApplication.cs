@@ -427,8 +427,20 @@ namespace CocosSharp
 			}
 		}
 
+		public void ToggleFullScreen()
+		{
+			var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+			var manager = service as GraphicsDeviceManager;
 
-        public GraphicsDeviceManager GraphicsDeviceManager
+			Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+			if (manager != null)
+			{
+				manager.ToggleFullScreen ();
+			}
+		}
+
+
+		internal GraphicsDeviceManager GraphicsDeviceManager
         {
             get 
             {
