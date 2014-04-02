@@ -300,28 +300,28 @@ namespace CocosSharp
                 {
                     var tileset = new CCTMXTilesetInfo();
 
-                    tileset.m_sName = attributeDict["name"];
+                    tileset.Name = attributeDict["name"];
                     
                     if (m_uCurrentFirstGID == 0)
                     {
-                        tileset.m_uFirstGid = uint.Parse(attributeDict["firstgid"]);
+                        tileset.FirstGid = uint.Parse(attributeDict["firstgid"]);
                     }
                     else
                     {
-                        tileset.m_uFirstGid = m_uCurrentFirstGID;
+                        tileset.FirstGid = m_uCurrentFirstGID;
                         m_uCurrentFirstGID = 0;
                     }
 
                     if (attributeDict.Keys.Contains("spacing"))
-                        tileset.m_uSpacing = int.Parse(attributeDict["spacing"]);
+                        tileset.Spacing = int.Parse(attributeDict["spacing"]);
 
                     if (attributeDict.Keys.Contains("margin"))
-                        tileset.m_uMargin = int.Parse(attributeDict["margin"]);
+                        tileset.Margin = int.Parse(attributeDict["margin"]);
 
                     CCSize s;
                     s.Width = CCUtils.CCParseFloat(attributeDict["tilewidth"]);
                     s.Height = CCUtils.CCParseFloat(attributeDict["tileheight"]);
-                    tileset.m_tTileSize = s;
+                    tileset.TileSize = s;
 
                     pTMXMapInfo.Tilesets.Add(tileset);
                 }
@@ -330,7 +330,7 @@ namespace CocosSharp
             {
                 CCTMXTilesetInfo info = pTMXMapInfo.Tilesets.LastOrDefault();
                 var dict = new Dictionary<string, string>();
-                pTMXMapInfo.ParentGID = (info.m_uFirstGid + uint.Parse(attributeDict["id"]));
+                pTMXMapInfo.ParentGID = (info.FirstGid + uint.Parse(attributeDict["id"]));
                 pTMXMapInfo.TileProperties.Add(pTMXMapInfo.ParentGID, dict);
 
                 pTMXMapInfo.ParentElement = (int) CCTMXProperty.Tile;
@@ -399,7 +399,7 @@ namespace CocosSharp
 
                 // build full path
                 string imagename = attributeDict["source"];
-                tileset.m_sSourceImage = CCFileUtils.FullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
+                tileset.SourceImage = CCFileUtils.FullPathFromRelativeFile(imagename, pTMXMapInfo.TMXFileName);
             }
             else if (elementName == "data")
             {

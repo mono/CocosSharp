@@ -101,7 +101,7 @@ namespace CocosSharp
             CCTexture2D texture = null;
             if (tilesetInfo != null)
             {
-                texture = CCTextureCache.SharedTextureCache.AddImage(tilesetInfo.m_sSourceImage);
+                texture = CCTextureCache.SharedTextureCache.AddImage(tilesetInfo.SourceImage);
             }
 
             base.InitCCSpriteBatchNode(texture, (int)capacity);
@@ -253,7 +253,7 @@ namespace CocosSharp
         {
             Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
             Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
-            Debug.Assert(gid == 0 || gid >= m_pTileSet.m_uFirstGid, "TMXLayer: invalid gid");
+            Debug.Assert(gid == 0 || gid >= m_pTileSet.FirstGid, "TMXLayer: invalid gid");
 
             uint currentFlags;
             uint currentGID = TileGIDAt(pos, out currentFlags);
@@ -387,7 +387,7 @@ namespace CocosSharp
         public virtual void SetupTiles()
         {
             // Optimization: quick hack that sets the image size on the tileset
-            m_pTileSet.m_tImageSize = m_pobTextureAtlas.Texture.ContentSizeInPixels;
+			m_pTileSet.ImageSize = m_pobTextureAtlas.Texture.ContentSizeInPixels;
 
             // By default all the tiles are aliased
             // pros:
@@ -426,8 +426,8 @@ namespace CocosSharp
                 }
             }
 
-            Debug.Assert(m_uMaxGID >= m_pTileSet.m_uFirstGid &&
-                         m_uMinGID >= m_pTileSet.m_uFirstGid, "TMX: Only 1 tilset per layer is supported");
+            Debug.Assert(m_uMaxGID >= m_pTileSet.FirstGid &&
+                         m_uMinGID >= m_pTileSet.FirstGid, "TMX: Only 1 tilset per layer is supported");
         }
 
         /** CCTMXLayer doesn't support adding a CCSprite manually.
