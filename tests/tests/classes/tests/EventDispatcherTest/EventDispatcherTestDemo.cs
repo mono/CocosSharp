@@ -22,6 +22,8 @@ namespace tests
 		TEST_REMOVE_AFTER_ADDING,
 		TEST_DIRECTOR,
 		TEST_PAUSE_RESUME,
+		TEST_SMOOTH_FOLLOW,
+		TEST_STOP_PROPAGATION,
 		TEST_CASE_COUNT
 	};
 
@@ -67,6 +69,12 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_PAUSE_RESUME:
 				testLayer = new PauseResumeTest();
+				break;
+			case (int) EventDispatchTests.TEST_SMOOTH_FOLLOW:
+				testLayer = new SmoothFollowTest();
+				break;
+			case (int) EventDispatchTests.TEST_STOP_PROPAGATION:
+				testLayer = new StopPropagationTest();
 				break;
 			default:
 				break;
@@ -1049,6 +1057,247 @@ namespace tests
 		public override string subtitle()
 		{
 			return string.Empty;
+		}
+
+	}
+
+	public class SmoothFollowTest : EventDispatcherTest
+	{
+
+		CCTouch cyanTouch;
+		const int TAG_CYAN_SPRITE = 101;
+
+		public override void OnEnter ()
+		{
+			base.OnEnter ();
+
+			var origin = CCDirector.SharedDirector.VisibleOrigin;
+			var size = CCDirector.SharedDirector.VisibleSize;
+
+			var sprite1 = new CCSprite("Images/CyanSquare.png");
+			sprite1.Position = origin + size.Center;
+			sprite1.Scale = 0.5f;
+			sprite1.Name = "cyan";
+			sprite1.Tag = TAG_CYAN_SPRITE;
+			AddChild(sprite1, 10);
+
+			// Make sprite1 touchable
+			var listener1 = new CCEventListenerTouchAllAtOnce ();
+
+			listener1.OnTouchesBegan = (touches, touchEvent) => 
+			{
+				cyanTouch = touches[0];
+			};
+
+			EventDispatcher.AddEventListener(listener1, sprite1);
+
+			Schedule ();
+		}
+
+		public override void Update (float dt)
+		{
+			base.Update (dt);
+
+			if (cyanTouch != null) 
+			{
+				MoveSpriteTowardPoint (cyanTouch.Location, dt);
+			}
+
+		}
+
+		void MoveSpriteTowardPoint (CCPoint point, float dt)
+		{
+			var spriteSpeed = 130;
+			var cyan = GetChildByTag (TAG_CYAN_SPRITE);
+			var distanceLeft = Math.Sqrt(Math.Pow(cyan.Position.X - point.X, 2) +
+				Math.Pow(cyan.Position.Y - point.Y, 2));
+
+			if (distanceLeft > 4) {
+				var distanceToTravel = dt * spriteSpeed;
+				var angle = Math.Atan2 (point.Y - cyan.Position.Y,
+					            point.X - cyan.Position.X);
+				var yOffset = (float)(distanceToTravel * Math.Sin (angle));
+				var xOffset = (float)(distanceToTravel * Math.Cos (angle));
+				cyan.Position = new CCPoint (cyan.Position.X + xOffset,
+					cyan.Position.Y + yOffset);
+			} 
+			else 
+			{
+				cyanTouch = null;
+			}
+		}
+
+		public override void OnExit ()
+		{
+			base.OnExit ();
+
+		}
+		public override string title()
+		{
+			return "Smooth Follow Test";
+		}
+
+		public override string subtitle()
+		{
+			return "Please touch and drag on the screen";
+		}
+
+	}
+
+	public class StopPropagationTest : EventDispatcherTest
+	{
+
+		const int TAG_BLUE_SPRITE = 101;
+		const int TAG_BLUE_SPRITE2 = 102;
+
+		public StopPropagationTest() : base()
+		{
+			var touchOneByOneListener = new CCEventListenerTouchOneByOne();
+			touchOneByOneListener.IsSwallowTouches = true;
+
+			touchOneByOneListener.OnTouchBegan = (touch, touchEvent) =>
+			{
+				// Skip if don't touch top half screen.
+				if (!IsPointInTopHalfAreaOfScreen(touch.Location))
+					return false;
+
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				Debug.Assert (target.Tag == TAG_BLUE_SPRITE, "Yellow blocks shouldn't response event.");
+
+				if (IsPointInNode(touch.Location, target))
+				{
+					target.Opacity = 180;
+					return true;
+				}
+
+				// Stop propagation, so yellow blocks will not be able to receive event.
+				touchEvent.StopPropogation();
+				return false;
+			};
+
+			touchOneByOneListener.OnTouchEnded = (touch, touchEvent) => 
+			{
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				target.Opacity = 255;
+			};
+
+			var touchAllAtOnceListener = new CCEventListenerTouchAllAtOnce();
+			touchAllAtOnceListener.OnTouchesBegan = (touches, touchEvent) => 
+			{
+				// Skip if don't touch top half screen.
+				if (IsPointInTopHalfAreaOfScreen(touches[0].Location))
+					return;
+
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				Debug.Assert(target.Tag == TAG_BLUE_SPRITE2, "Yellow blocks shouldn't response event.");
+
+				if (IsPointInNode(touches[0].Location, target))
+				{
+					target.Opacity = 180;
+				}
+				// Stop propagation, so yellow blocks will not be able to receive event.
+				touchEvent.StopPropogation();
+			};
+
+			touchAllAtOnceListener.OnTouchesEnded = (touches, touchEvent) => 
+			{
+				// Skip if don't touch top half screen.
+				if (IsPointInTopHalfAreaOfScreen(touches[0].Location))
+					return;
+
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				Debug.Assert(target.Tag == TAG_BLUE_SPRITE2, "Yellow blocks shouldn't response event.");
+
+				if (IsPointInNode(touches[0].Location, target))
+				{
+					target.Opacity = 255;;
+				}
+				// Stop propagation, so yellow blocks will not be able to receive event.
+				touchEvent.StopPropogation();
+			};
+
+			var keyboardEventListener = new CCEventListenerKeyboard();
+
+			keyboardEventListener.OnKeyPressed = (keyboardEvent) => 
+			{
+				var target = (CCSprite)keyboardEvent.CurrentTarget;
+				Debug.Assert(target.Tag == TAG_BLUE_SPRITE || target.Tag == TAG_BLUE_SPRITE2, "Yellow blocks shouldn't response event.");
+				// Stop propagation, so yellow blocks will not be able to receive event.
+				keyboardEvent.StopPropogation();
+			};
+
+
+			const int SPRITE_COUNT = 8;
+
+			for (int i = 0; i < SPRITE_COUNT; i++)
+			{
+				CCSprite sprite;
+				CCSprite sprite2;
+
+				if(i==4)
+				{
+					sprite = new CCSprite("Images/CyanSquare.png");
+					sprite.Tag = TAG_BLUE_SPRITE;
+					AddChild(sprite, 100);
+
+					sprite2 = new CCSprite("Images/CyanSquare.png");
+					sprite2.Tag = TAG_BLUE_SPRITE2;
+					AddChild(sprite2, 100);
+				}
+				else
+				{
+					sprite = new CCSprite("Images/YellowSquare.png");
+					AddChild(sprite, 0);
+					sprite2 = new CCSprite("Images/YellowSquare.png");
+					AddChild(sprite2, 0);
+				}
+
+				EventDispatcher.AddEventListener(touchOneByOneListener.Copy(), sprite);
+				EventDispatcher.AddEventListener(keyboardEventListener.Copy(), sprite);
+
+				EventDispatcher.AddEventListener(touchAllAtOnceListener.Copy(), sprite2);
+				EventDispatcher.AddEventListener(keyboardEventListener.Copy(), sprite2);
+
+
+				var visibleSize = CCDirector.SharedDirector.VisibleSize;
+				sprite.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y + sprite2.ContentSize.Height/2 +10);
+				sprite2.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y - sprite2.ContentSize.Height/2-10);
+			}
+
+		}
+
+		bool IsPointInNode(CCPoint pt, CCNode node)
+		{
+			var locationInNode = node.ConvertToNodeSpace(pt);
+			var s = node.ContentSize;
+			var rect = new CCRect(0, 0, s.Width, s.Height);
+
+			if (rect.ContainsPoint(locationInNode))
+			{
+				return true;
+			}
+			return false;
+		}
+
+		bool IsPointInTopHalfAreaOfScreen(CCPoint pt)
+		{
+			var winSize = CCDirector.SharedDirector.WinSize;
+
+			if (pt.Y >= winSize.Height/2) {
+				return true;
+			}
+
+			return false;
+		}
+
+		public override string title()
+		{
+			return "Stop Propagation Test";
+		}
+
+		public override string subtitle()
+		{
+			return "Shouldn't crash and only blue block could be clicked";
 		}
 
 	}
