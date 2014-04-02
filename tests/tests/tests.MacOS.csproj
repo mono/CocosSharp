@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>False</Optimize>
     <OutputPath>bin\MacOSX\Debug</OutputPath>
-    <DefineConstants>DEBUG;MONOMAC;MACOS;OPENGL;MONOGAME</DefineConstants>
+    <DefineConstants>DEBUG;MACOS;OPENGL;MONOGAME</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
