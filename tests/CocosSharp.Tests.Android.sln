@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Android", "tests\tests.Android.csproj", "{4EF34363-1190-4444-9F4B-7A262B397EE8}"
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.Android", "..\box2d\box2d.Android.csproj", "{B81B6701-7A78-4846-BF6F-04E0591F0F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Android", "..\cocos2d\CocosSharp.Android.csproj", "{6E02AFD1-C476-4F9A-A9A8-CAAC4B03783A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Android", “..\src\CocosSharp.Android.csproj", "{6E02AFD1-C476-4F9A-A9A8-CAAC4B03783A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

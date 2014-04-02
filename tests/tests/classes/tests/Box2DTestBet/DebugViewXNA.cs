@@ -569,14 +569,17 @@ namespace FarseerPhysics.DebugViews
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
+
+			var col = new CCColor4B (color.R, color.G, color.B, color.A);
+
             for (int i = 0; i < count - 1; i++)
             {
-                _primitiveBatch.AddVertex(ref vertices[i], color, PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(ref vertices[i + 1], color, PrimitiveType.LineList);
+				_primitiveBatch.AddVertex(ref vertices[i], col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(ref vertices[i + 1], col, PrimitiveType.LineList);
             }
 
-            _primitiveBatch.AddVertex(ref vertices[count - 1], color, PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(ref vertices[0], color, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(ref vertices[count - 1], col, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(ref vertices[0], col, PrimitiveType.LineList);
         }
 
 		public override void DrawSolidPolygon(Vector2[] vertices, int count, float red, float green, float blue)
@@ -603,7 +606,8 @@ namespace FarseerPhysics.DebugViews
                 return;
             }
 
-            Color colorFill = color * (outline ? 0.5f : 1.0f);
+			var colorFill = new CCColor4B (color.R, color.G, color.B, color.A);
+			colorFill = colorFill * (outline ? 0.5f : 1.0f);
 
             for (int i = 1; i < count - 1; i++)
             {
@@ -632,6 +636,8 @@ namespace FarseerPhysics.DebugViews
             const double increment = Math.PI * 2.0 / CircleSegments;
             double theta = 0.0;
 
+			var col = new CCColor4B (color.R, color.G, color.B, color.A);
+
             for (int i = 0, count = CircleSegments; i < count; i++)
             {
 				CCVector2 v1 = center + radius * new CCVector2((float)Math.Cos(theta), (float)Math.Sin(theta));
@@ -639,8 +645,8 @@ namespace FarseerPhysics.DebugViews
                              radius *
 					new CCVector2((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment));
 
-                _primitiveBatch.AddVertex(ref v1, color, PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(ref v2, color, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
+                _primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
 
                 theta += increment;
             }
@@ -661,7 +667,8 @@ namespace FarseerPhysics.DebugViews
             const double increment = Math.PI * 2.0 / CircleSegments;
             double theta = 0.0;
 
-            Color colorFill = color * 0.5f;
+			var colorFill = new CCColor4B (color.R, color.G, color.B, color.A);
+			colorFill = colorFill * 0.5f;
 
 			CCVector2 v0 = center + radius * new CCVector2((float)Math.Cos(theta), (float)Math.Sin(theta));
             theta += increment;
@@ -695,8 +702,9 @@ namespace FarseerPhysics.DebugViews
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
-            _primitiveBatch.AddVertex(ref start, color, PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(ref end, color, PrimitiveType.LineList);
+			var col = new CCColor4B (color.R, color.G, color.B, color.A);
+            _primitiveBatch.AddVertex(ref start, col, PrimitiveType.LineList);
+            _primitiveBatch.AddVertex(ref end, col, PrimitiveType.LineList);
         }
 
         public override void DrawTransform(ref Transform transform)
@@ -840,7 +848,7 @@ namespace FarseerPhysics.DebugViews
             _stringData.Clear();
         }
 
-        public void LoadContent(GraphicsDevice device, ContentManager content)
+		public void LoadContent(GraphicsDevice device, ContentManager content)
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             _device = device;

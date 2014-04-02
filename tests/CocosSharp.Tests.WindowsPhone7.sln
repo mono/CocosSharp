@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.Phone", "tests\tests.Phone.csproj", "{4EF34363-1190-4444-9F4B-7A262B397EE8}"
@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsContent", "testsConten
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.Phone", "..\box2d\box2d.Phone.csproj", "{8165599E-6F37-41B7-91CD-C7C66232B5F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Phone", "..\cocos2d\CocosSharp.Phone.csproj", "{F2C5422D-4464-4494-9EB1-2C9EA9DC3C21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Phone", "..\src\CocosSharp.Phone.csproj", "{F2C5422D-4464-4494-9EB1-2C9EA9DC3C21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -50,7 +50,10 @@ namespace tests.classes.tests.Box2DTestBet
         public void tick(float dt)
         {
             m_test.TextLine = 30;
-            m_test.Update(settings, CCApplication.SharedApplication.GameTime);
+			var gt = new GameTime (CCApplication.SharedApplication.GameTime.TotalGameTime, 
+				CCApplication.SharedApplication.GameTime.ElapsedGameTime, 
+				CCApplication.SharedApplication.GameTime.IsRunningSlowly);
+			m_test.Update(settings, gt);
         }
 
         protected override void Draw()

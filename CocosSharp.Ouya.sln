@@ -1,7 +1,7 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Ouya", "cocos2d\CocosSharp.Ouya.csproj", "{58B144AA-9409-439B-AEB0-144A1EA483E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Ouya", "src\CocosSharp.Ouya.csproj", "{58B144AA-9409-439B-AEB0-144A1EA483E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Ouya", "MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj", "{8BEA875D-66D2-4A5F-B137-83D262A3851D}"
 EndProject

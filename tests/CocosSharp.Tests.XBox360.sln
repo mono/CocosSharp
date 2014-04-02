@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsContent", "tests\testsContent\testsContent.contentproj", "{2CE0B38F-5C9C-4088-8FEC-D3B58EE48E35}"
@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.XBox360", "..\box2d\b
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.Content.Pipeline.Importers", "..\cocos2d.Content.Pipeline.Importers\CocosSharp.Content.Pipeline.Importers.csproj", "{AD41B56E-E912-45AF-A98F-C8371406A547}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.XBox360", "..\cocos2d\CocosSharp.XBox360.csproj", "{21BAD5D2-E8FC-48CC-93C0-94D9B252C1E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.XBox360", "..\src\CocosSharp.XBox360.csproj", "{21BAD5D2-E8FC-48CC-93C0-94D9B252C1E8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
