@@ -4,99 +4,35 @@ namespace CocosSharp
 {
     public class CCTMXLayerInfo 
     {
-        public Dictionary<string, string> Properties = new Dictionary<string, string>();
-        private bool m_bOwnTiles = true;
-        private bool m_bVisible;
-        private byte m_cOpacity;
-        private uint[] m_pTiles;
-        private string m_sName = "";
-        private CCSize m_tLayerSize;
-        private CCPoint m_tOffset;
-        private uint m_uMaxGID;
-        private uint m_uMinGID = 100000;
+		#region Properties
 
-        public bool OwnTiles 
-        {
-            get { 
-                return m_bOwnTiles; 
-            }
-            set { 
-                m_bOwnTiles = value; 
-            }
-        }
+		public bool OwnTiles { get; set; }
+		public bool Visible { get; set; }
+		public byte Opacity { get; set; }
+		public string Name { get; set; }
 
-        public bool Visible
-        {
-            get { 
-                return m_bVisible; 
-            }
-            set { 
-                m_bVisible = value; 
-            }
-        }
+		public uint MaxGID { get; set; }
+		public uint MinGID { get; set; }
 
-        public byte Opacity
-        {
-            get { 
-                return m_cOpacity; 
-            }
-            set { 
-                m_cOpacity = value; 
-            }
-        }
+		public CCSize LayerSize { get; set; }
+		public CCPoint Offset { get; set; }
 
-        public uint[] Tiles {
-            get {
-                return m_pTiles;
-            }
-            set {
-                m_pTiles = value;
-            }
-        }
+		public uint[] Tiles { get; set; }
 
-        public string Name {
-            get {
-                return m_sName;
-            }
-            set {
-                m_sName = value;
-            }
-        }
+		public Dictionary<string, string> Properties { get; set; }
 
-        public CCSize LayerSize {
-            get {
-                return m_tLayerSize;
-            }
-            set {
-                m_tLayerSize = value;
-            }
-        }
+		#endregion Properties
 
-        public CCPoint Offset {
-            get {
-                return m_tOffset;
-            }
-            set {
-                m_tOffset = value;
-            }
-        }
 
-        public uint MaxGID {
-            get {
-                return m_uMaxGID;
-            }
-            set {
-                m_uMaxGID = value;
-            }
-        }
+		#region Constructors
 
-        public uint MinGID {
-            get {
-                return m_uMinGID;
-            }
-            set {
-                m_uMinGID = value;
-            }
-        }
+		public CCTMXLayerInfo()
+		{
+			Properties = new Dictionary<string, string>(); 
+			Name = "";
+			MinGID = 100000;
+		}
+
+		#endregion Constructors
     }
 }
