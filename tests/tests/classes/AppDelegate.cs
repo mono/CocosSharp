@@ -51,6 +51,9 @@ namespace tests
         public override bool ApplicationDidFinishLaunching()
         {
 
+			// Set our root content directory
+			ContentRootDirectory = "Content";
+
             CCSpriteFontCache.FontScale = 0.6f;
             CCSpriteFontCache.RegisterFont("arial", 12, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 38, 50, 64);
             CCSpriteFontCache.RegisterFont("MarkerFelt", 16, 18, 22, 32);

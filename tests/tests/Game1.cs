@@ -16,8 +16,6 @@ namespace tests
         public Game1()
         {
 
-            Content.RootDirectory = "Content";
-
             // Extend battery life under lock.
             //InactiveSleepTime = TimeSpan.FromSeconds(1);
 
