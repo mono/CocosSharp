@@ -59,167 +59,139 @@ object->propertyNamed(name_of_the_property);
 
     public class CCTMXTiledMap : CCNode
     {
-        #region properties
+		#region Properties
 
-        protected int m_nMapOrientation;
-        protected List<CCTMXObjectGroup> m_pObjectGroups;
-        protected Dictionary<string, string> m_pProperties;
-        protected CCSize m_tMapSize;
-        public CCTMXMapInfo MapInfo { get; set; }
+		public int MapOrientation { get; private set; }
+		public CCSize MapSize { get; private set; }         	// measured in tiles
+		public CCSize TileSize { get; private set; }	        // measured in pixels
+		CCTMXMapInfo MapInfo { get; set; }
 
-        protected CCSize m_tTileSize;
+		List<CCTMXObjectGroup> ObjectGroups { get; set; }
+		Dictionary<string, string> Properties { get; set; }
+		Dictionary<uint, Dictionary<string, string>> TileProperties { get; set; }
 
-        /// <summary>
-        /// the map's size property measured in tiles
-        /// </summary>
-        public CCSize MapSize
-        {
-            get { return m_tMapSize; }
-            set { m_tMapSize = value; }
-        }
+		#endregion Properties
 
-        /// <summary>
-        /// the tiles's size property measured in pixels
-        /// </summary>
-        public CCSize TileSize
-        {
-            get { return m_tTileSize; }
-            set { m_tTileSize = value; }
-        }
-
-        /// <summary>
-        /// map orientation
-        /// </summary>
-        public int MapOrientation
-        {
-            get { return m_nMapOrientation; }
-            set { m_nMapOrientation = value; }
-        }
-
-        /// <summary>
-        /// object groups
-        /// </summary>
-        public List<CCTMXObjectGroup> ObjectGroups
-        {
-            get { return m_pObjectGroups; }
-            set { m_pObjectGroups = value; }
-        }
-
-        /// <summary>
-        /// properties
-        /// </summary>
-        public Dictionary<string, string> Properties
-        {
-            get { return m_pProperties; }
-            set { m_pProperties = value; }
-        }
-
-        #endregion
-
-        #region public
 
 
         #region Constructors
 
-        /// <summary>
-        /// Construct the Tiled map from the given TMX file, which is assumed to be a content managed file.
-        /// </summary>
-        /// <param name="tmxFile"></param>
-        public CCTMXTiledMap(string tmxFile)
-        {
-            InitCCTMXTiledMap(tmxFile);
-        }
-
-        /// <summary>
-        /// Construct the Tiled map from the given stream containing the contents of the TMX file.
-        /// </summary>
-        /// <param name="tmxFile"></param>
-        public CCTMXTiledMap(StreamReader tmxFile)
-        {
-            CCTMXMapInfo mapInfo = new CCTMXMapInfo(tmxFile);
-            ContentSize = CCSize.Zero;
-            BuildWithMapInfo(mapInfo);
-        }
-
-        /// <summary>
-        /// Constructs the Tiled map from the map information that you provide.
-        /// </summary>
-        /// <param name="mapInfo"></param>
         public CCTMXTiledMap(CCTMXMapInfo mapInfo)
         {
             ContentSize = CCSize.Zero;
             BuildWithMapInfo(mapInfo);
         }
 
-        /// <summary>
-        /// initializes a TMX Tiled Map with a TMX file
-        /// </summary>
-        private void InitCCTMXTiledMap(string tmxFile)
-        {
-            Debug.Assert(!String.IsNullOrEmpty(tmxFile), "TMXTiledMap: tmx file should not be null");
+		public CCTMXTiledMap(StreamReader tmxFile) 
+			: this(new CCTMXMapInfo(tmxFile))
+		{
+		}
 
-            ContentSize = CCSize.Zero;
-
-            CCTMXMapInfo mapInfo = new CCTMXMapInfo(tmxFile);
-
-            if (mapInfo == null)
-            {
-                return;
-            }
-
-            Debug.Assert(mapInfo.Tilesets.Count != 0, "TMXTiledMap: Map not found. Please check the filename.");
-
-            BuildWithMapInfo(mapInfo);
+		// Construct the Tiled map from the given TMX file, which is assumed to be a content managed file.
+		public CCTMXTiledMap(string tmxFile) 
+			: this(new CCTMXMapInfo(tmxFile))
+		{
         }
+
+		// Methods solely used for construction
+
+		void BuildWithMapInfo(CCTMXMapInfo mapInfo)
+		{
+			MapInfo = mapInfo;
+			MapSize = mapInfo.MapSize;
+			TileSize = mapInfo.TileSize;
+			MapOrientation = mapInfo.Orientation;
+			ObjectGroups = mapInfo.ObjectGroups;
+			Properties = mapInfo.Properties;
+			TileProperties = mapInfo.TileProperties;
+
+			int idx = 0;
+
+			List<CCTMXLayerInfo> layers = mapInfo.Layers;
+			if (layers != null && layers.Count > 0)
+			{
+				foreach(CCTMXLayerInfo layerInfo in layers)
+				{
+					if (layerInfo.Visible)
+					{
+						CCTMXLayer child = ParseLayer(layerInfo, mapInfo);
+						AddChild(child, idx, idx);
+
+						// update content size with the max size
+						CCSize childSize = child.ContentSize;
+						CCSize currentSize = ContentSize;
+						currentSize.Width = Math.Max(currentSize.Width, childSize.Width);
+						currentSize.Height = Math.Max(currentSize.Height, childSize.Height);
+						ContentSize = currentSize;
+
+						idx++;
+					}
+				}
+			}
+		}
+
+		CCTMXLayer ParseLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+		{
+			CCTMXTilesetInfo tileset = TilesetForLayer(layerInfo, mapInfo);
+			CCTMXLayer layer = new CCTMXLayer(tileset, layerInfo, mapInfo);
+
+			// tell the layerinfo to release the ownership of the tiles map.
+			layerInfo.OwnTiles = false;
+			layer.SetupTiles();
+
+			return layer;
+		}
+
+		CCTMXTilesetInfo TilesetForLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+		{
+			CCSize size = layerInfo.LayerSize;
+			List<CCTMXTilesetInfo> tilesets = mapInfo.Tilesets;
+
+			if (tilesets != null && tilesets.Count > 0)
+			{
+				for (int i = tilesets.Count - 1; i >= 0; i--)
+				{
+					CCTMXTilesetInfo tileset = tilesets[i];
+					if (tileset != null)
+					{
+						for (int y = 0; y < size.Height; y++)
+						{
+							for (int x = 0; x < size.Width; x++)
+							{
+								var pos = (int) (x + size.Width * y);
+								uint gid = layerInfo.Tiles[pos];
+
+								// XXX: gid == 0 --> empty tile
+								if (gid != 0)
+								{
+									// Optimization: quick return
+									// if the layer is invalid (more than 1 tileset per layer) an CCAssert will be thrown later
+									if ((gid & CCTMXTileFlags.FlippedMask) >= tileset.m_uFirstGid)
+									{
+										return tileset;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			// If all the tiles are 0, return empty tileset
+			CCLog.Log("CocosSharp: Warning: TMX Layer '{0}' has no tiles", layerInfo.Name);
+			return null;
+		}
 
         #endregion Constructors
-
-
-        private void BuildWithMapInfo(CCTMXMapInfo mapInfo)
-        {
-            MapInfo = mapInfo;
-            m_tMapSize = mapInfo.MapSize;
-            m_tTileSize = mapInfo.TileSize;
-            m_nMapOrientation = mapInfo.Orientation;
-            ObjectGroups = mapInfo.ObjectGroups;
-            Properties = mapInfo.Properties;
-            m_pTileProperties = mapInfo.TileProperties;
-
-            int idx = 0;
-
-            //Layers
-            List<CCTMXLayerInfo> layers = mapInfo.Layers;
-            if (layers != null && layers.Count > 0)
-            {
-                for (int i = 0; i < layers.Count; i++)
-                {
-                    CCTMXLayerInfo layerInfo = layers[i];
-                    if (layerInfo != null && layerInfo.Visible)
-                    {
-                        CCTMXLayer child = ParseLayer(layerInfo, mapInfo);
-                        AddChild(child, idx, idx);
-
-                        // update content size with the max size
-                        CCSize childSize = child.ContentSize;
-                        CCSize currentSize = ContentSize;
-                        currentSize.Width = Math.Max(currentSize.Width, childSize.Width);
-                        currentSize.Height = Math.Max(currentSize.Height, childSize.Height);
-                        ContentSize = currentSize;
-
-                        idx++;
-                    }
-                }
-            }
-        }
 
         /// <summary>
         /// return the TMXLayer for the specific layer
         /// </summary>
         public CCTMXLayer LayerNamed(string layerName)
         {
-            for (int i = 0; i < Children.count; i++)
+			foreach(CCNode child in Children.Elements)
             {
-                var layer = Children.Elements[i] as CCTMXLayer;
+				var layer = child as CCTMXLayer;
                 if (layer != null && layer.LayerName == layerName)
                 {
                     return layer;
@@ -233,12 +205,11 @@ object->propertyNamed(name_of_the_property);
         /// </summary>
         public CCTMXObjectGroup ObjectGroupNamed(string groupName)
         {
-            if (m_pObjectGroups != null && m_pObjectGroups.Count > 0)
+            if (ObjectGroups != null && ObjectGroups.Count > 0)
             {
-                for (int i = 0; i < m_pObjectGroups.Count; i++)
+				foreach(CCTMXObjectGroup objectGroup in ObjectGroups)
                 {
-                    CCTMXObjectGroup objectGroup = m_pObjectGroups[i];
-                    if (objectGroup != null && objectGroup.GroupName == groupName)
+                    if (objectGroup.GroupName == groupName)
                     {
                         return objectGroup;
                     }
@@ -254,7 +225,7 @@ object->propertyNamed(name_of_the_property);
         /// </summary>
         public string PropertyNamed(string propertyName)
         {
-            return m_pProperties[propertyName];
+            return Properties[propertyName];
         }
 
         /// <summary>
@@ -262,78 +233,7 @@ object->propertyNamed(name_of_the_property);
         /// </summary>
         public Dictionary<string, string> PropertiesForGID(uint GID)
         {
-            return m_pTileProperties[GID];
+            return TileProperties[GID];
         }
-
-        #endregion
-
-        #region private
-
-        private CCTMXLayer ParseLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
-        {
-            CCTMXTilesetInfo tileset = tilesetForLayer(layerInfo, mapInfo);
-            CCTMXLayer layer = new CCTMXLayer(tileset, layerInfo, mapInfo);
-
-            // tell the layerinfo to release the ownership of the tiles map.
-            layerInfo.OwnTiles = false;
-            layer.SetupTiles();
-
-            return layer;
-        }
-
-        private CCTMXTilesetInfo tilesetForLayer(CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
-        {
-            CCSize size = layerInfo.LayerSize;
-            List<CCTMXTilesetInfo> tilesets = mapInfo.Tilesets;
-
-            if (tilesets != null && tilesets.Count > 0)
-            {
-                for (int i = tilesets.Count - 1; i >= 0; i--)
-                {
-                    CCTMXTilesetInfo tileset = tilesets[i];
-                    if (tileset != null)
-                    {
-                        for (int y = 0; y < size.Height; y++)
-                        {
-                            for (int x = 0; x < size.Width; x++)
-                            {
-                                var pos = (int) (x + size.Width * y);
-                                uint gid = layerInfo.Tiles[pos];
-
-                                // gid are stored in little endian.
-                                // if host is big endian, then swap
-                                //if( o == CFByteOrderBigEndian )
-                                //	gid = CFSwapInt32( gid );
-                                /* We support little endian.*/
-
-                                // XXX: gid == 0 --> empty tile
-                                if (gid != 0)
-                                {
-                                    // Optimization: quick return
-                                    // if the layer is invalid (more than 1 tileset per layer) an CCAssert will be thrown later
-                                    if ((gid & CCTMXTileFlags.FlippedMask) >= tileset.m_uFirstGid)
-                                    {
-                                        return tileset;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            // If all the tiles are 0, return empty tileset
-            CCLog.Log("CocosSharp: Warning: TMX Layer '{0}' has no tiles", layerInfo.Name);
-            return null;
-        }
-
-        #endregion
-
-        #region protected
-
-        //! tile properties
-        protected Dictionary<uint, Dictionary<string, string>> m_pTileProperties;
-
-        #endregion
     }
 }
