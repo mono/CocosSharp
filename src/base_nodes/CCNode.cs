@@ -662,7 +662,6 @@ namespace CocosSharp
 				}
 			}
 
-			EventDispatcher = null;
 		}
 
         protected virtual void ResetCleanState()
