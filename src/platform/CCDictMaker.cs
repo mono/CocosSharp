@@ -30,7 +30,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public enum CCSAXState
+	internal enum CCSAXState
     {
         None = 0,
         Key,
@@ -40,7 +40,8 @@ namespace CocosSharp
         String,
         Array
     };
-    public class CCDictMaker : ICCSAXDelegator
+
+	internal class CCDictMaker : ICCSAXDelegator
     {
         public Dictionary<string, Object> m_pRootDict;
         public Dictionary<string, Object> m_pCurDict;
