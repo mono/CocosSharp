@@ -37,7 +37,8 @@ namespace CocosSharp
     /// </summary>
     public class CCFileUtils
     {
-        protected static bool s_bPopupNotify = true;
+		private static bool PopupNotify = true;
+
         /// <summary>
         /// Set/Get whether pop-up a message box when the image load failed
         /// </summary>
@@ -45,11 +46,11 @@ namespace CocosSharp
         {
             get
             {
-                return s_bPopupNotify;
+                return PopupNotify;
             }
             set
             {
-                s_bPopupNotify = value;
+                PopupNotify = value;
             }
         }
 
