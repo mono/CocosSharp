@@ -303,7 +303,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="platform\CCAccelerometer.cs" />
-    <Compile Include="platform\CCAccelerometerDelegate.cs" />
     <Compile Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
     <Compile Include="platform\CCFileUtils.cs" />

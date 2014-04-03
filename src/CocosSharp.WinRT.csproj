@@ -821,9 +821,6 @@
     <Compile Include=".\platform\CCAccelerometer.cs">
       <LogicalName>platform\CCAccelerometer</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCAccelerometerDelegate.cs">
-      <LogicalName>platform\CCAccelerometerDelegate</LogicalName>
-    </Compile>
     <Compile Include=".\platform\CCApplication.cs">
       <LogicalName>platform\CCApplication</LogicalName>
     </Compile>

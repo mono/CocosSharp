@@ -320,7 +320,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCAccelerometer.cs" />
-    <Compile Include="Platform\CCAccelerometerDelegate.cs" />
     <Compile Include="Platform\CCApplication.cs" />
     <Compile Include="Platform\CCDevice.cs" />
     <Compile Include="Platform\CCDictMaker.cs" />

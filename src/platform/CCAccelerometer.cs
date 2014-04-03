@@ -6,6 +6,15 @@ using System.Reflection;
 
 namespace CocosSharp
 {
+
+	public class CCAcceleration
+	{
+		public double X;
+		public double Y;
+		public double Z;
+		public double TimeStamp;
+	}
+
     public class CCAccelerometer
     {
 #if !WINDOWS && !PSM && !XBOX && !OUYA && !XBOX360 &&!NETFX_CORE && !MACOS && !WINDOWSGL
@@ -14,7 +23,6 @@ namespace CocosSharp
 #endif
 
         private const float TG3_GRAVITY_EARTH = 9.80665f;
-		private ICCAccelerometerDelegate m_pAccelDelegate;
 		private readonly CCAcceleration accelerationValue = new CCAcceleration();
 
 		private CCEventAccelerate accelerateEvent = new CCEventAccelerate ();

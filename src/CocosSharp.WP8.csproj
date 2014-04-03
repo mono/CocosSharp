@@ -344,7 +344,6 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="platform\CCContentManager.cs" />
     <Compile Include="platform\CCAccelerometer.cs" />
-    <Compile Include="platform\CCAccelerometerDelegate.cs" />
     <Compile Include="platform\CCApplication.cs" />
     <Compile Include="platform\CCDevice.cs" />
     <Compile Include="platform\CCDictMaker.cs" />
