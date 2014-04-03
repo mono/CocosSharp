@@ -7,191 +7,269 @@ namespace CocosSharp
 {
     public class CCTMXLayer : CCSpriteBatchNode
     {
-        /** size of the layer in tiles */
+		// ivars
 
-        protected bool m_bUseAutomaticVertexZ;
-        protected byte m_cOpacity;
-        protected float m_fAlphaFuncValue;
-        protected float m_fContentScaleFactor;
-        protected int m_nVertexZvalue;
-        protected List<int> m_pAtlasIndexArray;
-        private Dictionary<string, string> m_pProperties;
-        protected CCSprite m_pReusedTile;
-        private CCTMXTilesetInfo m_pTileSet;
-        private uint[] m_pTiles;
-        protected string m_sLayerName;
-        private CCSize m_tLayerSize;
+		bool useAutomaticVertexZ;
+		int vertexZvalue;
 
-        /** size of the map's tile (could be differnt from the tile's size) */
+		uint maxGID;
+		uint minGID;
 
-        private CCSize m_tMapTileSize;
-        private CCTMXOrientation m_uLayerOrientation;
-        protected uint m_uMaxGID;
-        protected uint m_uMinGID;
+		byte opacity;
+		float contentScaleFactor;
 
-        public CCSize LayerSize
-        {
-            get { return m_tLayerSize; }
-            set { m_tLayerSize = value; }
-        }
+		List<int> atlasIndexArray;
+		CCSprite reusedTile;
 
-        public CCSize MapTileSize
-        {
-            get { return m_tMapTileSize; }
-            set { m_tMapTileSize = value; }
-        }
 
-        /** pointer to the map of tiles */
+		#region Properties
 
-        public uint[] Tiles
-        {
-            get { return m_pTiles; }
-            set { m_pTiles = value; }
-        }
+		public string LayerName { get; set; }
 
-        /** Tilset information for the layer */
+		public CCTMXOrientation LayerOrientation { get; set; } 		// Should be same as map orientation
+		public CCSize LayerSize { get; set; }
+		public CCSize MapTileSize { get; set; }  					// Size of the map's tile (could be differnt from the tile's size)
 
-        public CCTMXTilesetInfo TileSet
-        {
-            get { return m_pTileSet; }
-            set { m_pTileSet = value; }
-        }
+		public uint[] Tiles { get; set; }
+		public CCTMXTilesetInfo TileSet { get; set; }
 
-        /** Layer orientation, which is the same as the map orientation */
+		public Dictionary<string, string> Properties { get; set; } 	// Properties of the tmx layer
 
-        public CCTMXOrientation LayerOrientation
-        {
-            get { return m_uLayerOrientation; }
-            set { m_uLayerOrientation = value; }
-        }
-
-        /** properties from the layer. They can be added using Tiled */
-
-        public Dictionary<string, string> Properties
-        {
-            get { return m_pProperties; }
-            set { m_pProperties = value; }
-        }
-
-        public string LayerName
-        {
-            get { return m_sLayerName; }
-            set { m_sLayerName = value; }
-        }
+		#endregion Properties
 
 
         #region Constructors
 
-        /** creates a CCTMXLayer with an tileset info, a layer info and a map info */
+		public CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
+			: this(tileSetInfo, layerInfo, mapInfo, layerInfo.LayerSize)
+		{
+		}
 
-        public CCTMXLayer(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
-        {
-            InitWithTilesetInfo(tilesetInfo, layerInfo, mapInfo);
-        }
+		// Private constructor chaining
 
-        /** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
+		CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo, CCSize layerSize) 
+			: this(tileSetInfo, layerInfo, mapInfo, layerSize, (int)(layerSize.Width * layerSize.Height))
+		{
+		}
 
-        private void InitWithTilesetInfo(CCTMXTilesetInfo tilesetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo)
-        {
-            // XXX: is 35% a good estimate ?
-            CCSize size = layerInfo.LayerSize;
-            float totalNumberOfTiles = size.Width * size.Height;
-            float capacity = totalNumberOfTiles * 0.35f + 1; // 35 percent is occupied ?
+		CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo, CCSize layerSize, int totalNumberOfTiles) 
+			: this(tileSetInfo, layerInfo, mapInfo, layerSize, totalNumberOfTiles, (int)(totalNumberOfTiles * 0.35f + 1), 
+			CCTextureCache.SharedTextureCache.AddImage(tileSetInfo.SourceImage))
+		{
+		}
 
-            CCTexture2D texture = null;
-            if (tilesetInfo != null)
-            {
-                texture = CCTextureCache.SharedTextureCache.AddImage(tilesetInfo.SourceImage);
-            }
 
-            base.InitCCSpriteBatchNode(texture, (int)capacity);
-
+		CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo, CCSize layerSize, 
+			int totalNumberOfTiles, int tileCapacity, CCTexture2D texture)
+			: base(texture, tileCapacity)
+		{
             // layerInfo
-            m_sLayerName = layerInfo.Name;
-            m_tLayerSize = size;
-            m_pTiles = layerInfo.Tiles;
-            m_uMinGID = layerInfo.MinGID;
-            m_uMaxGID = layerInfo.MaxGID;
-            m_cOpacity = layerInfo.Opacity;
+            LayerName = layerInfo.Name;
+			LayerSize = layerSize;
+            Tiles = layerInfo.Tiles;
+            minGID = layerInfo.MinGID;
+            maxGID = layerInfo.MaxGID;
+            opacity = layerInfo.Opacity;
             Properties = new Dictionary<string, string>(layerInfo.Properties);
-            m_fContentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
+            contentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
 
-            // tilesetInfo
-            m_pTileSet = tilesetInfo;
+            // TileSetInfo
+			TileSet = tileSetInfo;
 
             // mapInfo
-            m_tMapTileSize = mapInfo.TileSize;
-            m_uLayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
+            MapTileSize = mapInfo.TileSize;
+            LayerOrientation = (CCTMXOrientation) mapInfo.Orientation;
 
             // offset (after layer orientation is set);
             CCPoint offset = ApplyLayerOffset(layerInfo.Offset);
             Position = offset.PixelsToPoints();
 
-            m_pAtlasIndexArray = new List<int>((int) totalNumberOfTiles);
+            atlasIndexArray = new List<int>((int) totalNumberOfTiles);
 
-            var contentSize = new CCSize(m_tLayerSize.Width * m_tMapTileSize.Width,
-                                  m_tLayerSize.Height * m_tMapTileSize.Height);
+            var contentSize = new CCSize(LayerSize.Width * MapTileSize.Width,
+                                  LayerSize.Height * MapTileSize.Height);
 
             ContentSize = contentSize.PixelsToPoints();
 
-            m_bUseAutomaticVertexZ = false;
-            m_nVertexZvalue = 0;
+            useAutomaticVertexZ = false;
+            vertexZvalue = 0;
         }
-
-        /** dealloc the map that contains the tile position from memory.
-        Unless you want to know at runtime the tiles positions, you can safely call this method.
-        If you are going to call layer.tileGIDAt() then, don't release the map
-        */
 
         #endregion Constructors
 
+		public virtual void ReleaseMap()
+		{
+			Tiles = null;
+			atlasIndexArray = null;
+		}
 
-        public virtual void ReleaseMap()
-        {
-            m_pTiles = null;
-            m_pAtlasIndexArray = null;
-        }
+		public virtual String PropertyNamed(string propertyName)
+		{
+			if (Properties.ContainsKey(propertyName))
+			{
+				return Properties[propertyName];
+			}
+			else
+			{
+				return String.Empty;
+			}
+		}
 
-        /** returns the tile (CCSprite) at a given a tile coordinate.
-        The returned CCSprite will be already added to the CCTMXLayer. Don't add it again.
-        The CCSprite can be treated like any other CCSprite: rotated, scaled, translated, opacity, color, etc.
-        You can remove either by calling:
-        - layer.removeChild(sprite, cleanup);
-        - or layer.removeTileAt(ccp(x,y));
-        */
+		void ParseInternalProperties()
+		{
+			string vertexz = PropertyNamed("cc_vertexz");
+			if (!String.IsNullOrEmpty(vertexz))
+			{
+				if (vertexz == "automatic")
+				{
+					useAutomaticVertexZ = true;
+				}
+				else
+				{
+					vertexZvalue = CCUtils.CCParseInt(vertexz);
+				}
+			}
+		}
+
+		int AtlasIndexForExistantZ(int z)
+		{
+			int index = atlasIndexArray.BinarySearch(z);
+
+			Debug.Assert(index != -1, "TMX atlas index not found. Shall not happen");
+
+			return index;
+		}
+
+		int AtlasIndexForNewZ(int z)
+		{
+			// XXX: This can be improved with a sort of binary search
+			int i, count;
+			for (i = 0, count = atlasIndexArray.Count; i < count; i++)
+			{
+				if (z < atlasIndexArray[i])
+				{
+					break;
+				}
+			}
+
+			return i;
+		}
+
+		protected override void Draw()
+		{
+			var alphaTest = CCDrawManager.AlphaTestEffect;
+
+			alphaTest.AlphaFunction = CompareFunction.Greater;
+			alphaTest.ReferenceAlpha = 0;
+
+			CCDrawManager.PushEffect(alphaTest);
+
+			base.Draw();
+
+			CCDrawManager.PopEffect();
+		}
+
+		#region Child managment
+
+		public override void AddChild(CCNode child, int zOrder, int tag)
+		{
+			Debug.Assert(false, "addChild: is not supported on CCTMXLayer. Instead use setTileGID:at:/tileAt:");
+		}
+
+		public override void RemoveChild(CCNode node, bool cleanup)
+		{
+			var sprite = (CCSprite) node;
+
+			if (sprite == null)
+			{
+				return;
+			}
+
+			Debug.Assert(Children.Contains(sprite), "Tile does not belong to TMXLayer");
+
+			int atlasIndex = sprite.AtlasIndex;
+			int zz = atlasIndexArray[atlasIndex];
+			Tiles[zz] = 0;
+			atlasIndexArray.RemoveAt(atlasIndex);
+			base.RemoveChild(sprite, cleanup);
+		}
+
+		#endregion Child management
+
+
+		#region Tile managment
+
+		internal virtual void SetupTiles()
+		{
+			// Optimization: quick hack that sets the image size on the TileSet
+			TileSet.ImageSize = TextureAtlas.Texture.ContentSizeInPixels;
+
+			// By default all the tiles are aliased
+			// pros:
+			//  - easier to render
+			// cons:
+			//  - difficult to scale / rotate / etc.
+			TextureAtlas.IsAntialiased = false;
+
+			// Parse cocos2d properties
+			ParseInternalProperties();
+
+			for (int y = 0; y < LayerSize.Height; y++)
+			{
+				for (int x = 0; x < LayerSize.Width; x++)
+				{
+					var pos = (int) (x + LayerSize.Width * y);
+					uint gid = Tiles[pos];
+
+					// gid are stored in little endian.
+					// if host is big endian, then swap
+					//if( o == CFByteOrderBigEndian )
+					//    gid = CFSwapInt32( gid );
+					/* We support little endian.*/
+
+					// XXX: gid == 0 -. empty tile
+					if (gid != 0)
+					{
+						AppendTileForGID(gid, new CCPoint(x, y));
+
+						// Optimization: update min and max GID rendered by the layer
+						minGID = Math.Min(gid, minGID);
+						maxGID = Math.Max(gid, maxGID);
+					}
+				}
+			}
+
+			Debug.Assert(maxGID >= TileSet.FirstGid &&
+				minGID >= TileSet.FirstGid, "TMX: Only 1 tilset per layer is supported");
+		}
+
+		// Returned CCSprite will be already added to the CCTMXLayer. Don't add it again.
 
         public virtual CCSprite TileAt(CCPoint pos)
         {
-            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
-            Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
+            Debug.Assert(pos.X < LayerSize.Width && pos.Y < LayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(Tiles != null && atlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
             CCSprite tile = null;
             uint gid = TileGIDAt(pos);
 
-            // if GID == 0, then no tile is present
+			// No tile is present
             if (gid != 0)
             {
-                var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+                var z = (int) (pos.X + pos.Y * LayerSize.Width);
                 tile = (CCSprite) GetChildByTag(z);
 
-                // tile not created yet. create it
                 if (tile == null)
                 {
-                    CCRect rect = m_pTileSet.RectForGID(gid);
+                    CCRect rect = TileSet.RectForGID(gid);
                     rect = rect.PixelsToPoints();
 
                     tile = new CCSprite(Texture, rect);
-                    //
-                    // do the init AFTER the batch node is set so that the tile is set to 
-                    // draw in batch mode instead of self draw mode.
-                    //
                     tile.BatchNode = this;
                     tile.Position = PositionAt(pos);
                     tile.VertexZ = VertexZForPos(pos);
                     tile.AnchorPoint = CCPoint.Zero;
-                    tile.Opacity = m_cOpacity;
-//                    tile.InitWithTexture(Texture, rect);
-//                    tile.BatchNode = this;
+                    tile.Opacity = opacity;
 
                     int indexForZ = AtlasIndexForExistantZ(z);
                     AddSpriteWithoutQuad(tile, indexForZ, z);
@@ -201,30 +279,20 @@ namespace CocosSharp
             return tile;
         }
 
-        /** returns the tile gid at a given tile coordinate.
-        if it returns 0, it means that the tile is empty.
-        This method requires the the tile map has not been previously released (eg. don't call layer.releaseMap())
-        */
-
         public virtual uint TileGIDAt(CCPoint pos)
         {
             uint tmp;
             return TileGIDAt(pos, out tmp);
         }
 
-
-        /** returns the tile gid at a given tile coordinate. It also returns the tile flags.
-         This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap])
-         */
-
         public virtual uint TileGIDAt(CCPoint pos, out uint flags)
         {
-            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
-            Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
+            Debug.Assert(pos.X < LayerSize.Width && pos.Y < LayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(Tiles != null && atlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
-            var idx = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+            var idx = (int) (pos.X + pos.Y * LayerSize.Width);
             // Bits on the far end of the 32-bit global tile ID are used for tile flags
-            uint tile = m_pTiles[idx];
+            uint tile = Tiles[idx];
 
             // issue1264, flipped tiles can be changed dynamically
             flags = (tile & CCTMXTileFlags.FlippedAll);
@@ -232,28 +300,18 @@ namespace CocosSharp
             return (tile & CCTMXTileFlags.FlippedMask);
         }
 
-        /** sets the tile gid (gid = tile global id) at a given tile coordinate.
-        The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor . Tileset Mgr +1.
-        If a tile is already placed at that position, then it will be removed.
-        */
 
+		// If a tile is already placed at that position, then it will be removed.
         public virtual void SetTileGID(uint gid, CCPoint pos)
         {
             SetTileGID(gid, pos, 0);
         }
 
-        /** sets the tile gid (gid = tile global id) at a given tile coordinate.
-         The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor . Tileset Mgr +1.
-         If a tile is already placed at that position, then it will be removed.
-     
-         Use withFlags if the tile flags need to be changed as well
-         */
-
         public virtual void SetTileGID(uint gid, CCPoint pos, uint flags)
         {
-            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
-            Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
-            Debug.Assert(gid == 0 || gid >= m_pTileSet.FirstGid, "TMXLayer: invalid gid");
+            Debug.Assert(pos.X < LayerSize.Width && pos.Y < LayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(Tiles != null && atlasIndexArray != null, "TMXLayer: the tiles map has been released");
+            Debug.Assert(gid == 0 || gid >= TileSet.FirstGid, "TMXLayer: invalid gid");
 
             uint currentFlags;
             uint currentGID = TileGIDAt(pos, out currentFlags);
@@ -275,11 +333,11 @@ namespace CocosSharp
                     // modifying an existing tile with a non-empty tile
                 else
                 {
-                    var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+                    var z = (int) (pos.X + pos.Y * LayerSize.Width);
                     var sprite = (CCSprite) GetChildByTag(z);
                     if (sprite != null)
                     {
-                        CCRect rect = m_pTileSet.RectForGID(gid);
+                        CCRect rect = TileSet.RectForGID(gid);
                         rect = rect.PixelsToPoints();
 
                         sprite.SetTextureRect(rect, false, rect.Size);
@@ -287,7 +345,7 @@ namespace CocosSharp
                         {
                             SetupTileSprite(sprite, sprite.Position, gidAndFlags);
                         }
-                        m_pTiles[z] = gidAndFlags;
+                        Tiles[z] = gidAndFlags;
                     }
                     else
                     {
@@ -297,25 +355,23 @@ namespace CocosSharp
             }
         }
 
-        /** removes a tile at given tile coordinate */
-
         public virtual void RemoveTileAt(CCPoint pos)
         {
-            Debug.Assert(pos.X < m_tLayerSize.Width && pos.Y < m_tLayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
-            Debug.Assert(m_pTiles != null && m_pAtlasIndexArray != null, "TMXLayer: the tiles map has been released");
+            Debug.Assert(pos.X < LayerSize.Width && pos.Y < LayerSize.Height && pos.X >= 0 && pos.Y >= 0, "TMXLayer: invalid position");
+            Debug.Assert(Tiles != null && atlasIndexArray != null, "TMXLayer: the tiles map has been released");
 
             uint gid = TileGIDAt(pos);
 
             if (gid != 0)
             {
-                var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+                var z = (int) (pos.X + pos.Y * LayerSize.Width);
                 int atlasIndex = AtlasIndexForExistantZ(z);
 
                 // remove tile from GID map
-                m_pTiles[z] = 0;
+                Tiles[z] = 0;
 
                 // remove tile from atlas position array
-                m_pAtlasIndexArray.RemoveAt(atlasIndex);
+                atlasIndexArray.RemoveAt(atlasIndex);
 
                 // remove it from sprites and/or texture atlas
                 var sprite = (CCSprite) GetChildByTag(z);
@@ -325,7 +381,7 @@ namespace CocosSharp
                 }
                 else
                 {
-                    m_pobTextureAtlas.RemoveQuadAtIndex(atlasIndex);
+                    TextureAtlas.RemoveQuadAtIndex(atlasIndex);
 
                     // update possible children
                     if (Children != null && Children.count > 0)
@@ -347,205 +403,106 @@ namespace CocosSharp
             }
         }
 
-        /** returns the position in points of a given tile coordinate */
-
-        public virtual CCPoint PositionAt(CCPoint pos)
+		public virtual CCPoint PositionAt(CCPoint tileCoord)
         {
             CCPoint ret = CCPoint.Zero;
-            switch (m_uLayerOrientation)
+            switch (LayerOrientation)
             {
                 case CCTMXOrientation.Ortho:
-                    ret = PositionForOrthoAt(pos);
+					ret = PositionForOrthoAt(tileCoord);
                     break;
                 case CCTMXOrientation.Iso:
-                    ret = PositionForIsoAt(pos);
+					ret = PositionForIsoAt(tileCoord);
                     break;
                 case CCTMXOrientation.Hex:
-                    ret = PositionForHexAt(pos);
+					ret = PositionForHexAt(tileCoord);
                     break;
             }
             ret = ret.PixelsToPoints();
             return ret;
         }
 
-        /** return the value for the specific property name */
+		CCPoint PositionForIsoAt(CCPoint tileCoord)
+		{
+			var xy = new CCPoint(MapTileSize.Width / 2 * (LayerSize.Width + tileCoord.X - tileCoord.Y - 1),
+				MapTileSize.Height / 2 * ((LayerSize.Height * 2 - tileCoord.X - tileCoord.Y) - 2));
+			return xy;
+		}
 
-        public virtual String PropertyNamed(string propertyName)
-        {
-            if (m_pProperties.ContainsKey(propertyName))
-            {
-                return m_pProperties[propertyName];
-            }
-            else
-            {
-                return String.Empty;
-            }
-        }
+		CCPoint PositionForOrthoAt(CCPoint tileCoord)
+		{
+			CCPoint xy = new CCPoint(tileCoord.X * MapTileSize.Width,
+				(LayerSize.Height - tileCoord.Y - 1) * MapTileSize.Height);
+			return xy;
+		}
 
-        /** Creates the tiles */
+		CCPoint PositionForHexAt(CCPoint tileCoord)
+		{
+			float diffY = 0;
+			if ((int) tileCoord.X % 2 == 1)
+			{
+				diffY = -MapTileSize.Height / 2;
+			}
 
-        public virtual void SetupTiles()
-        {
-            // Optimization: quick hack that sets the image size on the tileset
-			m_pTileSet.ImageSize = m_pobTextureAtlas.Texture.ContentSizeInPixels;
+			var xy = new CCPoint(tileCoord.X * MapTileSize.Width * 3 / 4,
+				(LayerSize.Height - tileCoord.Y - 1) * MapTileSize.Height + diffY);
+			return xy;
+		}
 
-            // By default all the tiles are aliased
-            // pros:
-            //  - easier to render
-            // cons:
-            //  - difficult to scale / rotate / etc.
-			m_pobTextureAtlas.IsAntialiased = false;
-
-            //CFByteOrder o = CFByteOrderGetCurrent();
-
-            // Parse cocos2d properties
-            ParseInternalProperties();
-
-            for (int y = 0; y < m_tLayerSize.Height; y++)
-            {
-                for (int x = 0; x < m_tLayerSize.Width; x++)
-                {
-                    var pos = (int) (x + m_tLayerSize.Width * y);
-                    uint gid = m_pTiles[pos];
-
-                    // gid are stored in little endian.
-                    // if host is big endian, then swap
-                    //if( o == CFByteOrderBigEndian )
-                    //    gid = CFSwapInt32( gid );
-                    /* We support little endian.*/
-
-                    // XXX: gid == 0 -. empty tile
-                    if (gid != 0)
-                    {
-                        AppendTileForGID(gid, new CCPoint(x, y));
-
-                        // Optimization: update min and max GID rendered by the layer
-                        m_uMinGID = Math.Min(gid, m_uMinGID);
-                        m_uMaxGID = Math.Max(gid, m_uMaxGID);
-                    }
-                }
-            }
-
-            Debug.Assert(m_uMaxGID >= m_pTileSet.FirstGid &&
-                         m_uMinGID >= m_pTileSet.FirstGid, "TMX: Only 1 tilset per layer is supported");
-        }
-
-        /** CCTMXLayer doesn't support adding a CCSprite manually.
-        @warning addchild(z, tag); is not supported on CCTMXLayer. Instead of setTileGID.
-        */
-
-        public override void AddChild(CCNode child, int zOrder, int tag)
-        {
-            Debug.Assert(false, "addChild: is not supported on CCTMXLayer. Instead use setTileGID:at:/tileAt:");
-        }
-
-        // super method
-        public override void RemoveChild(CCNode node, bool cleanup)
-        {
-            var sprite = (CCSprite) node;
-            // allows removing nil objects
-            if (sprite == null)
-            {
-                return;
-            }
-
-            Debug.Assert(Children.Contains(sprite), "Tile does not belong to TMXLayer");
-
-            int atlasIndex = sprite.AtlasIndex;
-            int zz = m_pAtlasIndexArray[atlasIndex];
-            m_pTiles[zz] = 0;
-            m_pAtlasIndexArray.RemoveAt(atlasIndex);
-            base.RemoveChild(sprite, cleanup);
-        }
-
-        private CCPoint PositionForIsoAt(CCPoint pos)
-        {
-            var xy = new CCPoint(m_tMapTileSize.Width / 2 * (m_tLayerSize.Width + pos.X - pos.Y - 1),
-                                 m_tMapTileSize.Height / 2 * ((m_tLayerSize.Height * 2 - pos.X - pos.Y) - 2));
-            return xy;
-        }
-
-        private CCPoint PositionForOrthoAt(CCPoint pos)
-        {
-            CCPoint xy = new CCPoint(pos.X * m_tMapTileSize.Width,
-                                 (m_tLayerSize.Height - pos.Y - 1) * m_tMapTileSize.Height);
-            return xy;
-        }
-
-        private CCPoint PositionForHexAt(CCPoint pos)
-        {
-            float diffY = 0;
-            if ((int) pos.X % 2 == 1)
-            {
-                diffY = -m_tMapTileSize.Height / 2;
-            }
-
-            var xy = new CCPoint(pos.X * m_tMapTileSize.Width * 3 / 4,
-                                 (m_tLayerSize.Height - pos.Y - 1) * m_tMapTileSize.Height + diffY);
-            return xy;
-        }
-
-        /// <summary>
-        /// Apply the tile offset to the given point. Returns the result of applying the offset to the given position.
-        /// </summary>
-        /// <param name="pos"></param>
-        /// <returns></returns>
-        private CCPoint ApplyLayerOffset(CCPoint pos)
+		CCPoint ApplyLayerOffset(CCPoint tileCoord)
         {
             CCPoint ret = CCPoint.Zero;
-            switch (m_uLayerOrientation)
+            switch (LayerOrientation)
             {
                 case CCTMXOrientation.Ortho:
-                    ret = new CCPoint(pos.X * m_tMapTileSize.Width, -pos.Y * m_tMapTileSize.Height);
+					ret = new CCPoint(tileCoord.X * MapTileSize.Width, -tileCoord.Y * MapTileSize.Height);
                     break;
                 case CCTMXOrientation.Iso:
-                    ret = new CCPoint((m_tMapTileSize.Width / 2) * (pos.X - pos.Y),
-                                      (m_tMapTileSize.Height / 2) * (-pos.X - pos.Y));
+					ret = new CCPoint((MapTileSize.Width / 2) * (tileCoord.X - tileCoord.Y),
+					(MapTileSize.Height / 2) * (-tileCoord.X - tileCoord.Y));
                     break;
                 case CCTMXOrientation.Hex:
-                    Debug.Assert(pos.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
+					Debug.Assert(tileCoord.Equals(CCPoint.Zero), "offset for hexagonal map not implemented yet");
                     break;
             }
             return ret;
         }
-
-        /* optimization methos */
-
-        private CCSprite AppendTileForGID(uint gid, CCPoint pos)
+			
+		CCSprite AppendTileForGID(uint gid, CCPoint tileCoord)
         {
-            CCRect rect = m_pTileSet.RectForGID(gid);
+            CCRect rect = TileSet.RectForGID(gid);
             rect = rect.PixelsToPoints();
 
-            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+			var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
-            SetupTileSprite(tile, pos, gid);
+			SetupTileSprite(tile, tileCoord, gid);
 
             // optimization:
             // The difference between appendTileForGID and insertTileforGID is that append is faster, since
             // it appends the tile at the end of the texture atlas
-            int indexForZ = m_pAtlasIndexArray.Count;
+            int indexForZ = atlasIndexArray.Count;
 
             // don't add it using the "standard" way.
             InsertQuadFromSprite(tile, indexForZ);
 
             // append should be after addQuadFromSprite since it modifies the quantity values
-            m_pAtlasIndexArray.Insert(indexForZ, z);
+            atlasIndexArray.Insert(indexForZ, z);
 
             return tile;
         }
 
-        private CCSprite InsertTileForGID(uint gid, CCPoint pos)
+		CCSprite InsertTileForGID(uint gid, CCPoint tileCoord)
         {
-            CCRect rect = m_pTileSet.RectForGID(gid);
+            CCRect rect = TileSet.RectForGID(gid);
             rect = rect.PixelsToPoints();
 
-            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+			var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
-            SetupTileSprite(tile, pos, gid);
+			SetupTileSprite(tile, tileCoord, gid);
 
             // get atlas index
             int indexForZ = AtlasIndexForNewZ(z);
@@ -554,7 +511,7 @@ namespace CocosSharp
             InsertQuadFromSprite(tile, indexForZ);
 
             // insert it into the local atlasindex array
-            m_pAtlasIndexArray.Insert(indexForZ, z);
+            atlasIndexArray.Insert(indexForZ, z);
 
             // update possible children
             if (Children != null && Children.count > 0)
@@ -572,74 +529,39 @@ namespace CocosSharp
                     }
                 }
             }
-            m_pTiles[z] = gid;
+            Tiles[z] = gid;
             return tile;
         }
 
-        private CCSprite UpdateTileForGID(uint gid, CCPoint pos)
+		CCSprite UpdateTileForGID(uint gid, CCPoint tileCoord)
         {
-            CCRect rect = m_pTileSet.RectForGID(gid);
-            rect = new CCRect(rect.Origin.X / m_fContentScaleFactor, rect.Origin.Y / m_fContentScaleFactor, rect.Size.Width / m_fContentScaleFactor,
-                              rect.Size.Height / m_fContentScaleFactor);
-            var z = (int) (pos.X + pos.Y * m_tLayerSize.Width);
+            CCRect rect = TileSet.RectForGID(gid);
+            rect = new CCRect(rect.Origin.X / contentScaleFactor, rect.Origin.Y / contentScaleFactor, rect.Size.Width / contentScaleFactor,
+                              rect.Size.Height / contentScaleFactor);
+			var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 
             CCSprite tile = ReusedTileWithRect(rect);
 
-            SetupTileSprite(tile, pos, gid);
+			SetupTileSprite(tile, tileCoord, gid);
 
             // get atlas index
             int indexForZ = AtlasIndexForExistantZ(z);
             tile.AtlasIndex = indexForZ;
             tile.Dirty = true;
             tile.UpdateTransform();
-            m_pTiles[z] = gid;
+            Tiles[z] = gid;
 
             return tile;
         }
 
-        /* The layer recognizes some special properties, like cc_vertez */
-
-        private void ParseInternalProperties()
+		void SetupTileSprite(CCSprite sprite, CCPoint tileCoord, uint gid)
         {
-            // if cc_vertex=automatic, then tiles will be rendered using vertexz
-
-            m_fAlphaFuncValue = 0;
-
-            string vertexz = PropertyNamed("cc_vertexz");
-            if (!String.IsNullOrEmpty(vertexz))
-            {
-                // If "automatic" is on, then parse the "cc_alpha_func" too
-                if (vertexz == "automatic")
-                {
-                    m_bUseAutomaticVertexZ = true;
-                    string alphaFuncVal = PropertyNamed("cc_alpha_func");
-                    //float alphaFuncValue = 0.0f;
-                    if (!String.IsNullOrEmpty(alphaFuncVal))
-                    {
-                        m_fAlphaFuncValue = CCUtils.CCParseFloat(alphaFuncVal);
-                    }
-                    //setShaderProgram(CCShaderCache::sharedShaderCache().programForKey(kCCShader_PositionTextureColorAlphaTest));
-
-                    //GLint alphaValueLocation = glGetUniformLocation(getShaderProgram().getProgram(), kCCUniformAlphaTestValue);
-
-                    // NOTE: alpha test shader is hard-coded to use the equivalent of a glAlphaFunc(GL_GREATER) comparison
-                    //getShaderProgram().setUniformLocationWith1f(alphaValueLocation, alphaFuncValue);
-                }
-                else
-                {
-                    m_nVertexZvalue = CCUtils.CCParseInt(vertexz);
-                }
-            }
-        }
-
-        private void SetupTileSprite(CCSprite sprite, CCPoint pos, uint gid)
-        {
-            sprite.Position = PositionAt(pos);
-            sprite.VertexZ = VertexZForPos(pos);
+			sprite.Position = PositionAt(tileCoord);
+			sprite.VertexZ = VertexZForPos(tileCoord);
             sprite.AnchorPoint = CCPoint.Zero;
-            sprite.Opacity = m_cOpacity;
+            sprite.Opacity = opacity;
 
-            //issue 1264, flip can be undone as well
+			// issue 1264, flip can be undone as well
             sprite.FlipX = false;
             sprite.FlipY = false;
             sprite.Rotation = 0.0f;
@@ -650,7 +572,7 @@ namespace CocosSharp
             {
                 // put the anchor in the middle for ease of rotation.
                 sprite.AnchorPoint = CCPoint.AnchorMiddle;
-                CCPoint pointAtPos = PositionAt(pos);
+				CCPoint pointAtPos = PositionAt(tileCoord);
                 sprite.Position = new CCPoint(pointAtPos.X + sprite.ContentSize.Height / 2,
                                               pointAtPos.Y + sprite.ContentSize.Width / 2);
 
@@ -690,43 +612,43 @@ namespace CocosSharp
             }
         }
 
-        private CCSprite ReusedTileWithRect(CCRect rect)
+        CCSprite ReusedTileWithRect(CCRect rect)
         {
-            if (m_pReusedTile == null)
+            if (reusedTile == null)
             {
-                m_pReusedTile = new CCSprite();
-                m_pReusedTile.InitWithTexture(m_pobTextureAtlas.Texture, rect, false);
-                m_pReusedTile.BatchNode = this;
+                reusedTile = new CCSprite();
+				reusedTile.InitWithTexture(TextureAtlas.Texture, rect, false);
+                reusedTile.BatchNode = this;
             }
             else
             {
                 // XXX HACK: Needed because if "batch node" is nil,
                 // then the Sprite'squad will be reset
-                m_pReusedTile.BatchNode = null;
+                reusedTile.BatchNode = null;
 
                 // Re-init the sprite
-                m_pReusedTile.SetTextureRect(rect, false, rect.Size);
+                reusedTile.SetTextureRect(rect, false, rect.Size);
 
                 // restore the batch node
-                m_pReusedTile.BatchNode = this;
+                reusedTile.BatchNode = this;
             }
 
-            return m_pReusedTile;
+            return reusedTile;
         }
 
-        private int VertexZForPos(CCPoint pos)
+        int VertexZForPos(CCPoint pos)
         {
             int ret = 0;
-            if (m_bUseAutomaticVertexZ)
+            if (useAutomaticVertexZ)
             {
-                switch (m_uLayerOrientation)
+                switch (LayerOrientation)
                 {
                     case CCTMXOrientation.Iso:
-                        var maxVal = (int) (m_tLayerSize.Width + m_tLayerSize.Height);
+                        var maxVal = (int) (LayerSize.Width + LayerSize.Height);
                         ret = (int) (-(maxVal - (pos.X + pos.Y)));
                         break;
                     case CCTMXOrientation.Ortho:
-                        ret = (int) (-(m_tLayerSize.Height - pos.Y));
+                        ret = (int) (-(LayerSize.Height - pos.Y));
                         break;
                     case CCTMXOrientation.Hex:
                         Debug.Assert(false, "TMX Hexa zOrder not supported");
@@ -738,49 +660,12 @@ namespace CocosSharp
             }
             else
             {
-                ret = m_nVertexZvalue;
+                ret = vertexZvalue;
             }
 
             return ret;
         }
 
-        // index
-        private int AtlasIndexForExistantZ(int z)
-        {
-            int index = m_pAtlasIndexArray.BinarySearch(z);
-
-            Debug.Assert(index != -1, "TMX atlas index not found. Shall not happen");
-
-            return index;
-        }
-
-        private int AtlasIndexForNewZ(int z)
-        {
-            // XXX: This can be improved with a sort of binary search
-            int i, count;
-            for (i = 0, count = m_pAtlasIndexArray.Count; i < count; i++)
-            {
-                if (z < m_pAtlasIndexArray[i])
-                {
-                    break;
-                }
-            }
-
-            return i;
-        }
-
-        protected override void Draw()
-        {
-            var alphaTest = CCDrawManager.AlphaTestEffect;
-            
-            alphaTest.AlphaFunction = CompareFunction.Greater;
-            alphaTest.ReferenceAlpha = 0;
-
-            CCDrawManager.PushEffect(alphaTest);
-
-            base.Draw();
-
-            CCDrawManager.PopEffect();
-        }
+		#endregion Tile management
     }
 }
