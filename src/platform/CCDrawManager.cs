@@ -1760,6 +1760,10 @@ namespace CocosSharp
                     }
                 }
             }
+
+			// Coming from tombstoning we need to recreate out stats
+			CCDirector.SharedDirector.ReInitStats ();
+
         }
 
         internal static void DisposeAllResources()

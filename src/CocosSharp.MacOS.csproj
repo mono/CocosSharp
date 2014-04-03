@@ -466,6 +466,5 @@
     <Folder Include="support\Serialization\" />
     <Folder Include="extentions\Box2D\" />
     <Folder Include="events\" />
-    <Folder Include="platform\" />
   </ItemGroup>
 </Project>

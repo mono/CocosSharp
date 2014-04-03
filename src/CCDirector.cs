@@ -750,6 +750,14 @@ namespace CocosSharp
             isNeedsInit = true;
         }
 
+		/// <summary>
+		/// Re Initializes the statistics.  This needs to be called for example by coming back from tombstombing.
+		/// </summary>
+		internal void ReInitStats()
+		{
+			Stats = new CCStats ();
+		}
+
         public void Pause()
         {
             if (IsPaused)
