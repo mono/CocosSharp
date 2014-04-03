@@ -14,23 +14,23 @@ namespace CocosSharp
             public float FontSize;
         }
 
-        private static ContentManager _contentManager;
+		private static ContentManager contentManager;
         public static string FontRoot = "fonts";
 
-        private static Dictionary<string, int[]> _registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
-        private static Dictionary<string, FontMapEntry> _loadedFontsMap = new Dictionary<string, FontMapEntry>();
-        private static float _fontScale = 1.0f;
+		private static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
+		private static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
+		private static float fontScale = 1.0f;
 
         public static void RegisterFont(string fontName, params int[] sizes)
         {
             Array.Sort(sizes);
-            _registeredFonts[fontName] = sizes;
+            registeredFonts[fontName] = sizes;
         }
 
         public static float FontScale
         {
-            get { return _fontScale; }
-            set { _fontScale = value; }
+            get { return fontScale; }
+            set { fontScale = value; }
         }
 
         private CCSpriteFontCache()
@@ -41,7 +41,7 @@ namespace CocosSharp
         static CCSpriteFontCache()
         {
             var cm = CCApplication.SharedApplication.Content;
-            _contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+            contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
         }
 
         private string FontKey(string fontName, float fontSize)
@@ -57,7 +57,7 @@ namespace CocosSharp
         {
             try
             {
-                return _contentManager.Load<SpriteFont>(fontName);
+                return contentManager.Load<SpriteFont>(fontName);
             }
             catch (Exception)
             {
@@ -70,12 +70,12 @@ namespace CocosSharp
         {
             var key = FontKey(fontName, fontSize);
             
-            if (_loadedFontsMap.ContainsKey(key))
+            if (loadedFontsMap.ContainsKey(key))
             {
                 //Already loaded
-                var entry = _loadedFontsMap[key];
+                var entry = loadedFontsMap[key];
                 loadedSize = entry.FontSize;
-                return _contentManager.Load<SpriteFont>(FontKey(entry.FontName, entry.FontSize));
+                return contentManager.Load<SpriteFont>(FontKey(entry.FontName, entry.FontSize));
             }
 
             SpriteFont result = null;
@@ -105,7 +105,7 @@ namespace CocosSharp
 
             if (result != null)
             {
-                _loadedFontsMap.Add(key, new FontMapEntry() {FontName = loadedName, FontSize = loadedSize});
+                loadedFontsMap.Add(key, new FontMapEntry() {FontName = loadedName, FontSize = loadedSize});
             }
 
             return result;
@@ -117,16 +117,16 @@ namespace CocosSharp
 
             try
             {
-                return _contentManager.Load<SpriteFont>(FontKey(fontName, fontSize));
+                return contentManager.Load<SpriteFont>(FontKey(fontName, fontSize));
             }
             catch (ContentLoadException)
             {
             }
 
             //Try nearest size
-            if (_registeredFonts.ContainsKey(fontName))
+            if (registeredFonts.ContainsKey(fontName))
             {
-                var sizes = _registeredFonts[fontName];
+                var sizes = registeredFonts[fontName];
 
                 loadedSize = sizes[sizes.Length - 1];
 
@@ -141,7 +141,7 @@ namespace CocosSharp
 
                 try
                 {
-                    return _contentManager.Load<SpriteFont>(FontKey(fontName, loadedSize));
+                    return contentManager.Load<SpriteFont>(FontKey(fontName, loadedSize));
                 }
                 catch (ContentLoadException)
                 {
@@ -149,13 +149,13 @@ namespace CocosSharp
             }
 
             loadedSize = 0;
-            return _contentManager.Load<SpriteFont>(fontName);
+            return contentManager.Load<SpriteFont>(fontName);
         }
 
         public void Clear()
         {
-            _contentManager.Unload();
-            _loadedFontsMap.Clear();
+            contentManager.Unload();
+            loadedFontsMap.Clear();
         }
 
         #region Singleton
@@ -164,10 +164,10 @@ namespace CocosSharp
         {
             get
             {
-                return (_Instance);
+                return (instance);
             }
         }
-        private static CCSpriteFontCache _Instance = new CCSpriteFontCache();
+		private static CCSpriteFontCache instance = new CCSpriteFontCache();
         
         #endregion
     }
