@@ -135,7 +135,7 @@ namespace CocosSharp
         //sets a 0'd quad into the quads array
         public void DisableParticle(int particleIndex)
         {
-            CCV3F_C4B_T2F_Quad[] quads = TextureAtlas.m_pQuads.Elements;
+            CCV3F_C4B_T2F_Quad[] quads = TextureAtlas.quads.Elements;
             TextureAtlas.Dirty = true;
 
             quads[particleIndex].BottomRight.Vertices = CCVertex3F.Zero;

@@ -54,14 +54,14 @@ namespace CocosSharp
     public abstract class CCApplication : DrawableGameComponent
     {
         private readonly List<CCTouch> endedTouches = new List<CCTouch>();
-        private readonly Dictionary<int, LinkedListNode<CCTouch>> m_pTouchMap = new Dictionary<int, LinkedListNode<CCTouch>>();
-        private readonly LinkedList<CCTouch> m_pTouches = new LinkedList<CCTouch>();
+		private readonly Dictionary<int, LinkedListNode<CCTouch>> touchMap = new Dictionary<int, LinkedListNode<CCTouch>>();
+		private readonly LinkedList<CCTouch> touches = new LinkedList<CCTouch>();
         private readonly List<CCTouch> movedTouches = new List<CCTouch>();
         private readonly List<CCTouch> newTouches = new List<CCTouch>();
 #if WINDOWS || WINDOWSGL || MACOS || WINDOWSGL
         private int _lastMouseId;
-        private MouseState _lastMouseState;
-        private MouseState _prevMouseState;
+        private MouseState lastMouseState;
+        private MouseState prevMouseState;
 #endif
         protected bool m_bCaptured;
 
@@ -165,8 +165,8 @@ namespace CocosSharp
 
         public void ClearTouches()
         {
-            m_pTouches.Clear();
-            m_pTouchMap.Clear();
+            touches.Clear();
+            touchMap.Clear();
         }
 
         /// <summary>
@@ -216,7 +216,7 @@ namespace CocosSharp
 			GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
 			GameTime.TotalGameTime = gameTime.TotalGameTime;
 
-#if !PSM &&!NETFX_CORE
+#if !NETFX_CORE
 			if (CCDirector.SharedDirector.Accelerometer != null 
 				&& CCDirector.SharedDirector.Accelerometer.IsEnabled
 				&& CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
@@ -862,48 +862,48 @@ namespace CocosSharp
                 // TODO: allow configuration to treat the game pad as a touch device.
 
 #if WINDOWS || WINDOWSGL || MACOS
-                _prevMouseState = _lastMouseState;
-                _lastMouseState = Mouse.GetState();
+				prevMouseState = lastMouseState;
+                lastMouseState = Mouse.GetState();
 
-                if (_prevMouseState.LeftButton == ButtonState.Released && _lastMouseState.LeftButton == ButtonState.Pressed)
+                if (prevMouseState.LeftButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed)
                 {
 #if NETFX_CORE
                     pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
                     pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
-                    pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
+                    pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
 #endif
                     _lastMouseId++;
-                    m_pTouches.AddLast(new CCTouch(_lastMouseId, pos.X, pos.Y));
-                    m_pTouchMap.Add(_lastMouseId, m_pTouches.Last);
-                    newTouches.Add(m_pTouches.Last.Value);
+                    touches.AddLast(new CCTouch(_lastMouseId, pos.X, pos.Y));
+                    touchMap.Add(_lastMouseId, touches.Last);
+                    newTouches.Add(touches.Last.Value);
 
                     m_bCaptured = true;
                 }
-                else if (_prevMouseState.LeftButton == ButtonState.Pressed && _lastMouseState.LeftButton == ButtonState.Pressed)
+                else if (prevMouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Pressed)
                 {
-                    if (m_pTouchMap.ContainsKey(_lastMouseId))
+                    if (touchMap.ContainsKey(_lastMouseId))
                     {
-                        if (_prevMouseState.X != _lastMouseState.X || _prevMouseState.Y != _lastMouseState.Y)
+                        if (prevMouseState.X != lastMouseState.X || prevMouseState.Y != lastMouseState.Y)
                         {
 #if NETFX_CORE
                             pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
                             pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
-                            pos = CCDrawManager.ScreenToWorld(_lastMouseState.X, _lastMouseState.Y);
+                            pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
 #endif
-                            movedTouches.Add(m_pTouchMap[_lastMouseId].Value);
-                            m_pTouchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.X, pos.Y);
+                            movedTouches.Add(touchMap[_lastMouseId].Value);
+                            touchMap[_lastMouseId].Value.SetTouchInfo(_lastMouseId, pos.X, pos.Y);
                         }
                     }
                 }
-                else if (_prevMouseState.LeftButton == ButtonState.Pressed && _lastMouseState.LeftButton == ButtonState.Released)
+                else if (prevMouseState.LeftButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released)
                 {
-                    if (m_pTouchMap.ContainsKey(_lastMouseId))
+                    if (touchMap.ContainsKey(_lastMouseId))
                     {
-                        endedTouches.Add(m_pTouchMap[_lastMouseId].Value);
-                        m_pTouches.Remove(m_pTouchMap[_lastMouseId]);
-                        m_pTouchMap.Remove(_lastMouseId);
+                        endedTouches.Add(touchMap[_lastMouseId].Value);
+                        touches.Remove(touchMap[_lastMouseId]);
+                        touchMap.Remove(_lastMouseId);
                     }
                 }
 #endif
@@ -915,7 +915,7 @@ namespace CocosSharp
                     switch (touch.State)
                     {
                         case TouchLocationState.Pressed:
-                            if (m_pTouchMap.ContainsKey(touch.Id))
+                            if (touchMap.ContainsKey(touch.Id))
                             {
                                 break;
                             }
@@ -924,15 +924,15 @@ namespace CocosSharp
                             {
                                 pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
 
-                                m_pTouches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
-                                m_pTouchMap.Add(touch.Id, m_pTouches.Last);
-                                newTouches.Add(m_pTouches.Last.Value);
+                                touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
+                                touchMap.Add(touch.Id, touches.Last);
+                                newTouches.Add(touches.Last.Value);
                             }
                             break;
 
                         case TouchLocationState.Moved:
                             LinkedListNode<CCTouch> existingTouch;
-                            if (m_pTouchMap.TryGetValue(touch.Id, out existingTouch))
+                            if (touchMap.TryGetValue(touch.Id, out existingTouch))
                             {
                                 pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
                                 var delta = existingTouch.Value.LocationInView - pos;
@@ -945,11 +945,11 @@ namespace CocosSharp
                             break;
 
                         case TouchLocationState.Released:
-                            if (m_pTouchMap.TryGetValue(touch.Id, out existingTouch))
+                            if (touchMap.TryGetValue(touch.Id, out existingTouch))
                             {
                                 endedTouches.Add(existingTouch.Value);
-                                m_pTouches.Remove(existingTouch);
-                                m_pTouchMap.Remove(touch.Id);
+                                touches.Remove(existingTouch);
+                                touchMap.Remove(touch.Id);
                             }
                             break;
 
@@ -987,9 +987,9 @@ namespace CocosSharp
 
         private CCTouch GetTouchBasedOnId(int nID)
         {
-            if (m_pTouchMap.ContainsKey(nID))
+            if (touchMap.ContainsKey(nID))
             {
-                LinkedListNode<CCTouch> curTouch = m_pTouchMap[nID];
+                LinkedListNode<CCTouch> curTouch = touchMap[nID];
                 //If ID's match...
                 if (curTouch.Value.Id == nID)
                 {

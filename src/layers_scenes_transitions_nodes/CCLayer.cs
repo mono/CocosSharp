@@ -76,15 +76,11 @@ namespace CocosSharp
         {
             get 
             { 
-                #if !PSM
                 return isAccelerometerEnabled; 
-                #else
-                return false;
-                #endif
             }
             set 
             {
-                #if !PSM &&!NETFX_CORE
+				#if !NETFX_CORE
                 if (value != isAccelerometerEnabled)
                 {
                     isAccelerometerEnabled = value;
@@ -154,7 +150,7 @@ namespace CocosSharp
 
             if (isAccelerometerEnabled)
             {
-                #if !PSM &&!NETFX_CORE
+                #if !NETFX_CORE
                 director.Accelerometer.IsEnabled = true;
                 #endif
             }

@@ -98,9 +98,7 @@ namespace CocosSharp
 			} else {
 				//allow DTD but not try to resolve it from web
 				var settings = new XmlReaderSettings () {
-#if !PSM
 					DtdProcessing = DtdProcessing.Ignore,
-#endif
 					//ProhibitDtd = false,
 #if !NETFX_CORE
 					XmlResolver = null,
@@ -116,9 +114,7 @@ namespace CocosSharp
             //allow DTD but not try to resolve it from web
             var settings = new XmlReaderSettings()
                 {
-#if !PSM
                     DtdProcessing = DtdProcessing.Ignore,
-#endif
 				//ProhibitDtd = false,
 #if !NETFX_CORE
                     XmlResolver = null,
@@ -134,9 +130,7 @@ namespace CocosSharp
             var settings = new XmlReaderSettings()
                 {
                     CloseInput = true,
-#if !PSM
                     DtdProcessing = DtdProcessing.Ignore,
-#endif
 				//ProhibitDtd = false,
 #if !NETFX_CORE
                     XmlResolver = null,

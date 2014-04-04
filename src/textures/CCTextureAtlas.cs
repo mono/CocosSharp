@@ -48,9 +48,9 @@ namespace CocosSharp
     {
         internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
 
-        private CCQuadVertexBuffer m_pVertexBuffer;
-        public CCRawList<CCV3F_C4B_T2F_Quad> m_pQuads;
-        protected CCTexture2D m_pTexture;
+		private CCQuadVertexBuffer vertexBuffer;
+        public CCRawList<CCV3F_C4B_T2F_Quad> quads;
+        protected CCTexture2D texture;
 
         #region properties
 
@@ -59,7 +59,7 @@ namespace CocosSharp
         /// </summary>
         public int TotalQuads
         {
-            get { return m_pQuads.count; }
+            get { return quads.count; }
         }
 
         /// <summary>
@@ -67,8 +67,8 @@ namespace CocosSharp
         /// </summary>
         public int Capacity
         {
-            get { return m_pQuads.Capacity; }
-            set { m_pQuads.Capacity = value; }
+            get { return quads.Capacity; }
+            set { quads.Capacity = value; }
         }
 
         /// <summary>
@@ -76,8 +76,8 @@ namespace CocosSharp
         /// </summary>
         public CCTexture2D Texture
         {
-            get { return m_pTexture; }
-            set { m_pTexture = value; }
+            get { return texture; }
+            set { texture = value; }
         }
 
 		public bool IsAntialiased
@@ -129,11 +129,11 @@ namespace CocosSharp
 
             if (Dirty)
             {
-                m_pVertexBuffer.UpdateBuffer();
+                vertexBuffer.UpdateBuffer();
                 Dirty = false;
             }
 
-            CCDrawManager.DrawQuadsBuffer(m_pVertexBuffer, start, n);
+            CCDrawManager.DrawQuadsBuffer(vertexBuffer, start, n);
         }
 
         /// <summary>
@@ -144,14 +144,14 @@ namespace CocosSharp
         /// </summary>
         public bool ResizeCapacity(int newCapacity)
         {
-            if (newCapacity <= m_pQuads.Capacity)
+            if (newCapacity <= quads.Capacity)
             {
                 return true;
             }
 
-            m_pVertexBuffer.Capacity = newCapacity;
+            vertexBuffer.Capacity = newCapacity;
 
-            m_pQuads = m_pVertexBuffer.Data;
+            quads = vertexBuffer.Data;
 
             Dirty = true;
 
@@ -160,13 +160,13 @@ namespace CocosSharp
 
         public void IncreaseTotalQuadsWith(int amount)
         {
-            m_pVertexBuffer.Count += amount;
+            vertexBuffer.Count += amount;
         }
 
         public void MoveQuadsFromIndex(int oldIndex, int amount, int newIndex)
         {
-            Debug.Assert(newIndex + amount <= m_pQuads.count, "insertQuadFromIndex:atIndex: Invalid index");
-            Debug.Assert(oldIndex < m_pQuads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(newIndex + amount <= quads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(oldIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
 
             if (oldIndex == newIndex)
             {
@@ -174,35 +174,35 @@ namespace CocosSharp
             }
 
             var tmp = new CCV3F_C4B_T2F_Quad[amount];
-            Array.Copy(m_pQuads.Elements, oldIndex, tmp, 0, amount);
+            Array.Copy(quads.Elements, oldIndex, tmp, 0, amount);
 
             if (newIndex < oldIndex)
             {
                 // move quads from newIndex to newIndex + amount to make room for buffer
-                Array.Copy(m_pQuads.Elements, newIndex + amount, m_pQuads.Elements, newIndex, oldIndex - newIndex);
+                Array.Copy(quads.Elements, newIndex + amount, quads.Elements, newIndex, oldIndex - newIndex);
             }
             else
             {
                 // move quads above back
-                Array.Copy(m_pQuads.Elements, oldIndex + amount, m_pQuads.Elements, oldIndex, newIndex - oldIndex);
+                Array.Copy(quads.Elements, oldIndex + amount, quads.Elements, oldIndex, newIndex - oldIndex);
             }
-            Array.Copy(tmp, 0, m_pQuads.Elements, newIndex, amount);
+            Array.Copy(tmp, 0, quads.Elements, newIndex, amount);
 
             Dirty = true;
         }
 
         public void MoveQuadsFromIndex(int index, int newIndex)
         {
-            Debug.Assert(newIndex + (m_pQuads.count - index) <= m_pQuads.Capacity, "moveQuadsFromIndex move is out of bounds");
+            Debug.Assert(newIndex + (quads.count - index) <= quads.Capacity, "moveQuadsFromIndex move is out of bounds");
 
-            Array.Copy(m_pQuads.Elements, index, m_pQuads.Elements, newIndex, m_pQuads.count - index);
+            Array.Copy(quads.Elements, index, quads.Elements, newIndex, quads.count - index);
             Dirty = true;
         }
 
         public void FillWithEmptyQuadsFromIndex(int index, int amount)
         {
             int to = index + amount;
-            CCV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
             var empty = new CCV3F_C4B_T2F_Quad();
 
             for (int i = index; i < to; i++)
@@ -256,18 +256,18 @@ namespace CocosSharp
             //Debug.Assert(texture != null);
 
             // retained in property
-            m_pTexture = texture;
+			this.texture = texture;
 
             // Re-initialization is not allowed
-            Debug.Assert(m_pQuads == null);
+            Debug.Assert(quads == null);
 
             if (capacity < 4)
             {
                 capacity = 4;
             }
 
-			m_pVertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
-            m_pQuads = m_pVertexBuffer.Data;
+			vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
+            quads = vertexBuffer.Data;
 
             Dirty = true;
         }
@@ -283,9 +283,9 @@ namespace CocosSharp
         /// </summary>
         public void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
-            Debug.Assert(index >= 0 && index < m_pQuads.Capacity, "updateQuadWithTexture: Invalid index");
-            m_pQuads.count = Math.Max(index + 1, m_pQuads.count);
-            m_pQuads.Elements[index] = quad;
+            Debug.Assert(index >= 0 && index < quads.Capacity, "updateQuadWithTexture: Invalid index");
+            quads.count = Math.Max(index + 1, quads.count);
+            quads.Elements[index] = quad;
             Dirty = true;
         }
 
@@ -296,8 +296,8 @@ namespace CocosSharp
         /// </summary>
         public void InsertQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
-            Debug.Assert(index < m_pQuads.Capacity, "insertQuadWithTexture: Invalid index");
-            m_pQuads.Insert(index, quad);
+            Debug.Assert(index < quads.Capacity, "insertQuadWithTexture: Invalid index");
+            quads.Insert(index, quad);
             Dirty = true;
         }
 
@@ -306,8 +306,8 @@ namespace CocosSharp
         /// @since v0.7.2
         public void InsertQuadFromIndex(int oldIndex, int newIndex)
         {
-            Debug.Assert(newIndex >= 0 && newIndex < m_pQuads.count, "insertQuadFromIndex:atIndex: Invalid index");
-            Debug.Assert(oldIndex >= 0 && oldIndex < m_pQuads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(newIndex >= 0 && newIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(oldIndex >= 0 && oldIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
 
             if (oldIndex == newIndex)
                 return;
@@ -323,7 +323,7 @@ namespace CocosSharp
                 src = newIndex;
             }
 
-            CCV3F_C4B_T2F_Quad[] elements = m_pQuads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
 
             CCV3F_C4B_T2F_Quad quadsBackup = elements[oldIndex];
             Array.Copy(elements, src, elements, dst, howMany);
@@ -339,21 +339,21 @@ namespace CocosSharp
         /// </summary>
         public void RemoveQuadAtIndex(int index)
         {
-            Debug.Assert(index < m_pQuads.count, "removeQuadAtIndex: Invalid index");
-            m_pQuads.RemoveAt(index);
+            Debug.Assert(index < quads.count, "removeQuadAtIndex: Invalid index");
+            quads.RemoveAt(index);
             Dirty = true;
         }
 
         public void RemoveQuadsAtIndex(int index, int amount)
         {
-            Debug.Assert(index + amount <= m_pQuads.count, "removeQuadAtIndex: Invalid index");
-            m_pQuads.RemoveAt(index, amount);
+            Debug.Assert(index + amount <= quads.count, "removeQuadAtIndex: Invalid index");
+            quads.RemoveAt(index, amount);
             Dirty = true;
         }
 
         public void RemoveAllQuads()
         {
-            m_pQuads.Clear();
+            quads.Clear();
             Dirty = true;
         }
 

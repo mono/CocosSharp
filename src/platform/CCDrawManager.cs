@@ -424,7 +424,7 @@ namespace CocosSharp
             {
                 DepthBufferEnable = false
             };
-#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE && !PSM
+#if !WINDOWS_PHONE && !XBOX && !WINDOWS &&!NETFX_CORE
             List<string> extensions = CCUtils.GetGLExtensions();
             foreach(string s in extensions) 
             {
@@ -1995,26 +1995,12 @@ namespace CocosSharp
         {
             UpdateBuffer(0, _data.Count);
         }
-#if PSM
-		private ushort[] _PSMTmpBuffer;
-#endif
 
         public void UpdateBuffer(int startIndex, int elementCount)
         {
             if (elementCount > 0)
             {
-#if PSM
-				// HACK! PSM vertexbuffer only allows for ushort so we have to convert to ushort here.
-				if(_PSMTmpBuffer == null || _PSMTmpBuffer.Length < elementCount) {
-					_PSMTmpBuffer = new ushort[elementCount];
-				}
-				for(int i=0; i < elementCount; i++) {
-					_PSMTmpBuffer[i] = (ushort)Convert.ChangeType(_data.Elements[startIndex+i], TypeCode.UInt16);
-				}
-                _indexBuffer.SetData(_PSMTmpBuffer, 0, elementCount);
-#else
                 _indexBuffer.SetData(_data.Elements, startIndex, elementCount);
-#endif
             }
         }
 

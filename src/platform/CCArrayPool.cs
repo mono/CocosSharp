@@ -10,7 +10,7 @@ namespace CocosSharp
     {
         private static readonly Dictionary<int, List<object>> _unused = new Dictionary<int, List<object>>();
 
-#if WINDOWS_PHONE || XBOX
+#if WINDOWS_PHONE
         public static T[] Create(int length)
         {
             return (Create(length, true));
@@ -45,7 +45,7 @@ namespace CocosSharp
             return new T[length];
         }
 
-#if WINDOWS_PHONE || XBOX
+#if WINDOWS_PHONE
         public static void Resize(ref T[] array, int length)
         {
             Resize(ref array, length, true);

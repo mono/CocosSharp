@@ -309,7 +309,7 @@ namespace CocosSharp
         private void Swap(int oldIndex, int newIndex)
         {
             CCSprite[] sprites = m_pobDescendants.Elements;
-            CCRawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.m_pQuads;
+            CCRawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.quads;
 
             m_pobTextureAtlas.Dirty = true;
 

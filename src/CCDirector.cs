@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-#if !PSM &&!NETFX_CORE
+#if !NETFX_CORE
 using System.IO.IsolatedStorage;
 #endif
 using Microsoft.Xna.Framework;
@@ -73,7 +73,7 @@ namespace CocosSharp
 		bool isNeedsInit = true;
 		CCScene nextScene;
 
-#if !PSM && !NETFX_CORE
+#if !NETFX_CORE
 		public CCAccelerometer Accelerometer { get; set; }
 		const string storageDirName = "CocosSharpDirector";
 		const string saveFileName = "SceneList.dat";
@@ -302,7 +302,7 @@ namespace CocosSharp
             KeypadDispatcher = new CCKeypadDispatcher();
 
             // Accelerometer
-            #if !PSM &&!NETFX_CORE
+            #if !NETFX_CORE
             Accelerometer = new CCAccelerometer();
             #endif
 
@@ -317,7 +317,7 @@ namespace CocosSharp
 
         #region State Management
 		
-#if !PSM &&!NETFX_CORE
+#if !NETFX_CORE
 
         /// <summary>
         /// Write out the current state of the director and all of its scenes.

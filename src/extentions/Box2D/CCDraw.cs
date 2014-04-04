@@ -28,7 +28,7 @@ namespace CocosSharp
 
     public class CCBox2dDraw : b2Draw
     {
-#if XBOX || WINDOWS_PHONE || OUYA
+#if WINDOWS_PHONE || OUYA
         public const int CircleSegments = 16;
 #else
         public const int CircleSegments = 32;

@@ -711,11 +711,7 @@ namespace CocosSharp
                         multiline_string.Append(last_word);
                         multiline_string.Append('\n');
 
-#if XBOX || XBOX360
-                        last_word.Length = 0;
-#else
                         last_word.Clear();
-#endif
 
                         start_word = false;
                         start_line = false;
@@ -746,11 +742,7 @@ namespace CocosSharp
                     {
                         last_word.Append(character);
                         multiline_string.Append(last_word);
-#if XBOX || XBOX360
-                        last_word.Length = 0;
-#else
                         last_word.Clear();
-#endif
                         start_word = false;
                         startOfWord = -1;
                         i++;
@@ -793,11 +785,7 @@ namespace CocosSharp
                             multiline_string.Append(last_word);
                             multiline_string.Append('\n');
 
-#if XBOX || XBOX360
-                            last_word.Length = 0;
-#else
                             last_word.Clear();
-#endif
 
                             start_word = false;
                             start_line = false;

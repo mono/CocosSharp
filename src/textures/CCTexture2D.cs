@@ -353,7 +353,7 @@ namespace CocosSharp
                 switch (m_ePixelFormat)
                 {
                     case SurfaceFormat.Dxt1:
-#if !WINDOWS && !WINDOWS_PHONE && !XBOX
+#if !WINDOWS && !WINDOWS_PHONE
                     case SurfaceFormat.Dxt1a:
                     case SurfaceFormat.RgbPvrtc2Bpp:
                     case SurfaceFormat.RgbaPvrtc2Bpp:
@@ -364,7 +364,7 @@ namespace CocosSharp
 
                     case SurfaceFormat.Dxt3:
                     case SurfaceFormat.Dxt5:
-#if !WINDOWS && !WINDOWS_PHONE && !XBOX
+#if !WINDOWS && !WINDOWS_PHONE
                     case SurfaceFormat.RgbPvrtc4Bpp:
                     case SurfaceFormat.RgbaPvrtc4Bpp:
 #endif
@@ -650,11 +650,8 @@ namespace CocosSharp
                     }
 
                     textList.Add(nextText.ToString());
-#if XBOX || XBOX360
-                    nextText.Length = 0;
-#else
-                    nextText.Clear();
-#endif
+
+					nextText.Clear();
                 }
 
                 if (dimensions.Height == 0)
