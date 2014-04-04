@@ -49,10 +49,10 @@ namespace CocosSharp
         public bool ParseContent(TextReader sr)
         {
             var setting = new XmlReaderSettings();
-#if !PSM
-            setting.DtdProcessing = DtdProcessing.Ignore;
-#endif
-            XmlReader xmlReader = XmlReader.Create(sr, setting);
+            
+			setting.DtdProcessing = DtdProcessing.Ignore;
+
+			XmlReader xmlReader = XmlReader.Create(sr, setting);
             int dataindex = 0;
 
             int Width = 0;
