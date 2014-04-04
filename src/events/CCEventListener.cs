@@ -58,10 +58,23 @@ namespace CocosSharp
         /// </summary>
 		internal Action<CCEvent> OnEvent { get; set; }
 
+
+		/// <summary>
+		/// Enables or disables the listener.
+		///  *Note* Only listeners with `enabled` state will be able to receive events.
+		///        When an listener was initialized, it's enabled by default.
+		///        For a `scene graph priority` listener, to receive an event, excepting it was `enabled`,
+		///        it also shouldn't be in `pause` state.
+		/// </summary>
+		/// <returns><c>true</c> if this instance is enabled the specified enabled; otherwise, <c>false</c>.</returns>
+		/// <param name="enabled">If set to <c>true</c> enabled.</param>
+		public virtual bool IsEnabled { get; set; }
+
         protected CCEventListener() 
         {
             IsRegistered = false;
             IsPaused = true;
+			IsEnabled = true;
         }
 
         protected CCEventListener(CCEventListenerType type, string listenerID)

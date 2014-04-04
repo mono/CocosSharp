@@ -1286,7 +1286,7 @@ namespace CocosSharp
 					for (; i < listeners.Gt0Index; ++i)
 					{
 						var l = fixedPriorityListeners[i];
-						if (!l.IsPaused && l.IsRegistered && onEvent(l))
+						if (l.IsEnabled && !l.IsPaused && l.IsRegistered && onEvent(l))
 						{
 							shouldStopPropagation = true;
 							break;
@@ -1302,7 +1302,7 @@ namespace CocosSharp
 					// priority == 0, scene graph priority
 					foreach (var l in sceneGraphPriorityListeners)
 					{
-						if (!l.IsPaused && l.IsRegistered && onEvent(l))
+						if (l.IsEnabled && !l.IsPaused && l.IsRegistered && onEvent(l))
 						{
 							shouldStopPropagation = true;
 							break;
@@ -1321,7 +1321,7 @@ namespace CocosSharp
 					{
 						var l = fixedPriorityListeners[i];
 
-						if (!l.IsPaused && l.IsRegistered && onEvent(l))
+						if (l.IsEnabled && !l.IsPaused && l.IsRegistered && onEvent(l))
 						{
 							shouldStopPropagation = true;
 							break;
