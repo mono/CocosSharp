@@ -178,10 +178,10 @@ namespace CocosSharp
 
         public CCColor4B(float fR, float fG, float fB, float fA) : this()
         {
-            R = (byte)MathHelper.Clamp(fR * 255, Byte.MinValue, Byte.MaxValue);
-            G = (byte)MathHelper.Clamp(fG * 255, Byte.MinValue, Byte.MaxValue);
-            B = (byte)MathHelper.Clamp(fB * 255, Byte.MinValue, Byte.MaxValue);
-            A = (byte)MathHelper.Clamp(fA * 255, Byte.MinValue, Byte.MaxValue);
+			R = (byte)CCMathHelper.Clamp(fR * 255, Byte.MinValue, Byte.MaxValue);
+			G = (byte)CCMathHelper.Clamp(fG * 255, Byte.MinValue, Byte.MaxValue);
+			B = (byte)CCMathHelper.Clamp(fB * 255, Byte.MinValue, Byte.MaxValue);
+			A = (byte)CCMathHelper.Clamp(fA * 255, Byte.MinValue, Byte.MaxValue);
         }   
 
         #endregion Constructors

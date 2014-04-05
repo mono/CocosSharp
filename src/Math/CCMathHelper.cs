@@ -50,5 +50,21 @@ namespace CocosSharp
         {
             return (int) (value1 + ((value2 - value1) * amount));
         }
+
+		public static float Clamp(float value, float min, float max)
+		{
+			value = (value > max) ? max : value;
+			value = (value < min) ? min : value;
+
+			return value;
+		}
+
+		public static int Clamp(int value, int min, int max)
+		{
+			value = (value > max) ? max : value;
+			value = (value < min) ? min : value;
+
+			return value;
+		}
     }
 }
