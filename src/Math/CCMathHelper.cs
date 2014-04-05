@@ -5,7 +5,10 @@ namespace CocosSharp
 {
     public static class CCMathHelper
     {
-        private static float _lastSinAngle = 0f;
+		public const float Pi = (float)Math.PI;
+		public const float TwoPi = (float)(Math.PI * 2.0);
+
+		private static float _lastSinAngle = 0f;
         private static float _lastSinValue = (float) Math.Sin(0);
         private static float _lastCosAngle = 0f;
         private static float _lastCosValue = (float) Math.Cos(0);

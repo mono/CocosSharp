@@ -1,5 +1,4 @@
 using System;
-using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -74,12 +73,12 @@ namespace CocosSharp
 
 		internal static float SineOut(float time)
         {
-            return (float) Math.Sin(time * MathHelper.TwoPi);
+			return (float) Math.Sin(time * CCMathHelper.TwoPi);
         }
 
 		internal static float SineIn(float time)
         {
-            return -1f * (float)Math.Cos(time * MathHelper.TwoPi) + 1f;
+			return -1f * (float)Math.Cos(time * CCMathHelper.TwoPi) + 1f;
         }
 
 		internal static float SineInOut(float time)
@@ -120,7 +119,7 @@ namespace CocosSharp
             {
                 float s = period / 4;
                 time = time - 1;
-                return -(float)(Math.Pow(2, 10 * time) * Math.Sin((time - s) * MathHelper.Pi * 2.0f / period));
+				return -(float)(Math.Pow(2, 10 * time) * Math.Sin((time - s) * CCMathHelper.Pi * 2.0f / period));
             }
         }
 
@@ -133,7 +132,7 @@ namespace CocosSharp
             else
             {
                 float s = period / 4;
-                return (float)(Math.Pow(2, -10 * time) * Math.Sin((time - s) * MathHelper.Pi * 2f / period) + 1);
+				return (float)(Math.Pow(2, -10 * time) * Math.Sin((time - s) * CCMathHelper.Pi * 2f / period) + 1);
             }
         }
 
@@ -156,11 +155,11 @@ namespace CocosSharp
                 time = time - 1;
                 if (time < 0)
                 {
-                    return (float)(-0.5f * Math.Pow(2, 10 * time) * Math.Sin((time - s) * MathHelper.TwoPi / period));
+					return (float)(-0.5f * Math.Pow(2, 10 * time) * Math.Sin((time - s) * CCMathHelper.TwoPi / period));
                 }
                 else
                 {
-                    return (float)(Math.Pow(2, -10 * time) * Math.Sin((time - s) * MathHelper.TwoPi / period) * 0.5f + 1);
+					return (float)(Math.Pow(2, -10 * time) * Math.Sin((time - s) * CCMathHelper.TwoPi / period) * 0.5f + 1);
                 }
             }
         }
