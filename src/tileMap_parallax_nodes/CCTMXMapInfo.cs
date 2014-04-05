@@ -23,219 +23,92 @@ namespace CocosSharp
     /// </summary>
     public class CCTMXMapInfo : ICCSAXDelegator
     {
-        #region properties
+		// ivars
+		uint currentFirstGID;
 
-        protected bool m_bStoringCharacters;
-        protected int m_nLayerAttribs;
-        protected int m_nOrientation;
-        protected int m_nParentElement;
-        protected List<CCTMXLayerInfo> m_pLayers;
-        protected List<CCTMXObjectGroup> m_pObjectGroups;
-        protected Dictionary<string, string> m_pProperties;
-        protected Dictionary<uint, Dictionary<string, string>> m_pTileProperties;
-        protected List<CCTMXTilesetInfo> m_pTilesets;
-        protected byte[] m_sCurrentString;
-        private string m_sResources;
-        protected string m_sTMXFileName;
 
-        protected CCSize m_tMapSize;
+		#region properties
 
-        protected CCSize m_tTileSize;
-        protected uint m_uParentGID;
-        protected uint m_uCurrentFirstGID;
+		public uint ParentGID { get; private set; }
+		public string TMXFileName { get; private set; }
 
-        /// <summary>
-        ///  map orientation
-        /// </summary>
-        public int Orientation
-        {
-            get { return m_nOrientation; }
-            set { m_nOrientation = value; }
-        }
+		public int Orientation { get; private set; }
+		public CCSize MapSize { get; private set; }
+		public CCSize TileSize { get; private set; }
 
-        /// <summary>
-        /// map width & height
-        /// </summary>
-        public CCSize MapSize
-        {
-            get { return m_tMapSize; }
-            set { m_tMapSize = value; }
-        }
+		public bool StoringCharacters { get; private set; }
+		internal int ParentElement { get; private set; }
+		protected int LayerAttribs { get; private set; }
+		internal virtual List<CCTMXLayerInfo> Layers { get; private set; }
+		internal virtual List<CCTMXTilesetInfo> Tilesets { get; private set; }
+		internal virtual List<CCTMXObjectGroup> ObjectGroups { get; private set; }
 
-        /// <summary>
-        /// tiles width & height
-        /// </summary>
-        public CCSize TileSize
-        {
-            get { return m_tTileSize; }
-            set { m_tTileSize = value; }
-        }
-
-        /// <summary>
-        /// Layers
-        /// </summary>
-        public virtual List<CCTMXLayerInfo> Layers
-        {
-            get { return m_pLayers; }
-            set { m_pLayers = value; }
-        }
-
-        /// <summary>
-        /// tilesets
-        /// </summary>
-        public virtual List<CCTMXTilesetInfo> Tilesets
-        {
-            get { return m_pTilesets; }
-            set { m_pTilesets = value; }
-        }
-
-        /// <summary>
-        /// ObjectGroups
-        /// </summary>
-        public virtual List<CCTMXObjectGroup> ObjectGroups
-        {
-            get { return m_pObjectGroups; }
-            set { m_pObjectGroups = value; }
-        }
-
-        /// <summary>
-        /// parent element
-        /// </summary>
-        public int ParentElement
-        {
-            get { return m_nParentElement; }
-            set { m_nParentElement = value; }
-        }
-
-        /// <summary>
-        /// parent GID
-        /// </summary>
-        public uint ParentGID
-        {
-            get { return m_uParentGID; }
-            set { m_uParentGID = value; }
-        }
-
-        /// <summary>
-        /// layer attribs
-        /// </summary>
-        public int LayerAttribs
-        {
-            get { return m_nLayerAttribs; }
-            set { m_nLayerAttribs = value; }
-        }
-
-        /// <summary>
-        /// is stroing characters?
-        /// </summary>
-        public bool StoringCharacters
-        {
-            get { return m_bStoringCharacters; }
-            set { m_bStoringCharacters = value; }
-        }
-
-        /// <summary>
-        /// properties
-        /// </summary>
-        public Dictionary<string, string> Properties
-        {
-            get { return m_pProperties; }
-            set { m_pProperties = value; }
-        }
-
-        /// <summary>
-        /// ! tmx filename
-        /// </summary>
-        public string TMXFileName
-        {
-            get { return m_sTMXFileName; }
-            set { m_sTMXFileName = value; }
-        }
-
-        /// <summary>
-        /// ! current string
-        /// </summary>
-        public byte[] CurrentString
-        {
-            get { return m_sCurrentString; }
-            set { m_sCurrentString = value; }
-        }
-
-        /// <summary>
-        /// ! tile properties
-        /// </summary>
-        public Dictionary<uint, Dictionary<string, string>> TileProperties
-        {
-            get { return m_pTileProperties; }
-            set { m_pTileProperties = value; }
-        }
+		internal Dictionary<string, string> Properties { get; private set; }
+		internal Dictionary<uint, Dictionary<string, string>> TileProperties { get; private set; }
+		internal byte[] CurrentString { get; private set; }
 
         #endregion
 
 
         #region Constructors
 
-        /// <summary>
-        /// creates a TMX Format with a tmx file
-        /// </summary>
-        public CCTMXMapInfo (string tmxFile)
+		public CCTMXMapInfo(string tmxFile) : this()
         {
-            InitWithTmxFile(tmxFile);
+			TMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFile);
+			ParseXmlFile(TMXFileName);
+		}
+
+		public CCTMXMapInfo(StreamReader stream) : this()
+        {
+			string data = stream.ReadToEnd();
+			ParseXmlString(data);
         }
 
-        public CCTMXMapInfo(StreamReader stream)
+		CCTMXMapInfo()
         {
-            string s = stream.ReadToEnd();
-            InitWithXml(s, null);
+            Tilesets = new List<CCTMXTilesetInfo>();
+            Layers = new List<CCTMXLayerInfo>();
+            ObjectGroups = new List<CCTMXObjectGroup>(4);
+            Properties = new Dictionary<string, string>();
+            TileProperties = new Dictionary<uint, Dictionary<string, string>>();
+            LayerAttribs = (int) CCTMXLayerAttrib.None;
+            ParentElement = (int) CCTMXProperty.None;
+			currentFirstGID = 0;
         }
 
-        private void InternalInit(string tmxFileName, string resourcePath)
-        {
-            m_pTilesets = new List<CCTMXTilesetInfo>();
-            m_pLayers = new List<CCTMXLayerInfo>();
+		bool ParseXmlString(string data)
+		{
+			var parser = new CCSAXParser();
 
-            if (tmxFileName != null)
-            {
-                m_sTMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFileName);
-            }
+			if (false == parser.Init("UTF-8"))
+			{
+				return false;
+			}
 
-            if (resourcePath != null)
-            {
-                m_sResources = resourcePath;
-            }
+			parser.SetDelegator(this);
 
-            m_pObjectGroups = new List<CCTMXObjectGroup>(4);
+			return parser.ParseContent(data);
+		}
 
-            m_pProperties = new Dictionary<string, string>();
-            m_pTileProperties = new Dictionary<uint, Dictionary<string, string>>();
+		// Initalises parsing of an XML file, either a tmx (Map) file or tsx (Tileset) file
+		bool ParseXmlFile(string xmlFilename)
+		{
+			var parser = new CCSAXParser();
 
-            // tmp vars
-            m_sCurrentString = null;
-            m_bStoringCharacters = false;
-            m_nLayerAttribs = (int) CCTMXLayerAttrib.None;
-            m_nParentElement = (int) CCTMXProperty.None;
-            m_uCurrentFirstGID = 0;
-        }
+			if (false == parser.Init("UTF-8"))
+			{
+				return false;
+			}
 
-        /// <summary>
-        /// initializes a TMX format witha  tmx file
-        /// </summary>
-        private void InitWithTmxFile(string tmxFile)
-        {
-            InternalInit(tmxFile, null);
-            ParseXmlFile(m_sTMXFileName);
-        }
+			parser.SetDelegator(this);
 
-        private void InitWithXml(string tmxString, string resourcePath)
-        {
-            InternalInit(null, resourcePath);
-            ParseXmlString(tmxString);
-        }
+			return parser.ParseContentFile(xmlFilename);
+		}
 
         #endregion Constructors
 
 
-        #region ICCSAXDelegator Members
+		#region ICCSAXDelegator methods
 
         public void StartElement(object ctx, string name, string[] atts)
         {
@@ -252,6 +125,7 @@ namespace CocosSharp
                     attributeDict.Add(key, value);
                 }
             }
+
             if (elementName == "map")
             {
                 string version = attributeDict["version"];
@@ -290,9 +164,10 @@ namespace CocosSharp
                 {
                     string externalTilesetFilename = attributeDict["source"];
 
-                    externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, pTMXMapInfo.TMXFileName);
+                    externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, 
+						pTMXMapInfo.TMXFileName);
 
-                    m_uCurrentFirstGID = uint.Parse(attributeDict["firstgid"]);
+                    currentFirstGID = uint.Parse(attributeDict["firstgid"]);
                     
                     pTMXMapInfo.ParseXmlFile(externalTilesetFilename);
                 }
@@ -302,14 +177,14 @@ namespace CocosSharp
 
                     tileset.Name = attributeDict["name"];
                     
-                    if (m_uCurrentFirstGID == 0)
+                    if (currentFirstGID == 0)
                     {
                         tileset.FirstGid = uint.Parse(attributeDict["firstgid"]);
                     }
                     else
                     {
-                        tileset.FirstGid = m_uCurrentFirstGID;
-                        m_uCurrentFirstGID = 0;
+                        tileset.FirstGid = currentFirstGID;
+                        currentFirstGID = 0;
                     }
 
                     if (attributeDict.Keys.Contains("spacing"))
@@ -517,7 +392,7 @@ namespace CocosSharp
             else if (elementName == "polygon")
             {
                 // find parent object's dict and add polygon-points to it
-                CCTMXObjectGroup objectGroup = m_pObjectGroups.LastOrDefault();
+                CCTMXObjectGroup objectGroup = ObjectGroups.LastOrDefault();
                 var dict = objectGroup.Objects.LastOrDefault();
 
                 // get points value string
@@ -543,7 +418,7 @@ namespace CocosSharp
             else if (elementName == "polyline")
             {
                 // find parent object's dict and add polyline-points to it
-                // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)m_pObjectGroups->lastObject();
+                // CCTMXObjectGroup* objectGroup = (CCTMXObjectGroup*)ObjectGroups->lastObject();
                 // CCDictionary* dict = (CCDictionary*)objectGroup->getObjects()->lastObject();
                 // TODO: dict->setObject:[attributeDict objectForKey:@"points"] forKey:@"polylinePoints"];
             }
@@ -646,7 +521,7 @@ namespace CocosSharp
             }
         }
 
-        public void TextHandler(object ctx, byte[] ch, int len)
+		public void TextHandler(object ctx, byte[] ch, int len)
         {
             CCTMXMapInfo pTMXMapInfo = this;
 
@@ -656,40 +531,6 @@ namespace CocosSharp
             }
         }
 
-        #endregion
-
-
-        public bool ParseXmlString(string data)
-        {
-            var parser = new CCSAXParser();
-
-            if (false == parser.Init("UTF-8"))
-            {
-                return false;
-            }
-
-            parser.SetDelegator(this);
-
-            return parser.ParseContent(data);
-        }
-
-        /// <summary>
-        /// initalises parsing of an XML file, either a tmx (Map) file or tsx (Tileset) file
-        /// </summary>
-        public bool ParseXmlFile(string xmlFilename)
-        {
-            var parser = new CCSAXParser();
-
-            if (false == parser.Init("UTF-8"))
-            {
-                return false;
-            }
-
-            parser.SetDelegator(this);
-
-            return parser.ParseContentFile(xmlFilename);
-        }
-
-        // the XML parser calls here with all the elements
+		#endregion ICCSAXDelegator methods
     }
 }
