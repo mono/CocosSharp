@@ -6,7 +6,7 @@ using TOutput = CocosSharp.CCContent;
 namespace CocosSharp.Content.Pipeline.Importers
 {
     [ContentProcessor(DisplayName = "TextProcessor")]
-    public class TextProcessor : ContentProcessor<TInput, TOutput>
+    internal sealed class TextProcessor : ContentProcessor<TInput, TOutput>
     {
         public override TOutput Process(TInput input, ContentProcessorContext context)
         {

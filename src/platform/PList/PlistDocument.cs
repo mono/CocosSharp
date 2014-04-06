@@ -325,7 +325,7 @@ namespace CocosSharp
             }
         }
 
-		private enum ValueType : byte
+		internal enum ValueType : byte
         {
             Array,
             Bool,

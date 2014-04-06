@@ -5,7 +5,7 @@ using TOutput = CocosSharp.CCContent;
 namespace CocosSharp.Content.Pipeline.Importers.TMX
 {
     [ContentProcessor(DisplayName = "TMX Processor")]
-    public class TMXProcessor : ContentProcessor<TInput, TOutput>
+    internal sealed class TMXProcessor : ContentProcessor<TInput, TOutput>
     {
         public override TOutput Process(TInput input, ContentProcessorContext context)
         {
