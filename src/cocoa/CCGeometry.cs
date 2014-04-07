@@ -31,9 +31,7 @@ using System.Globalization;
 
 namespace CocosSharp
 {
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCPointConverter))]
-#endif
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct CCPoint
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
@@ -651,11 +649,7 @@ namespace CocosSharp
 
         public static CCPoint Parse(string s)
         {
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-            return (CCPoint) TypeDescriptor.GetConverter(typeof (CCPoint)).ConvertFromString(s);
-#else
             return (CCPointConverter.CCPointFromString(s));
-#endif
         }
 
         public static implicit operator CCPoint(CCVector2 point)
@@ -670,9 +664,7 @@ namespace CocosSharp
 
     }
 
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCSizeConverter))]
-#endif
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
@@ -756,11 +748,7 @@ namespace CocosSharp
 
         public static CCSize Parse(string s)
         {
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-            return (CCSize) TypeDescriptor.GetConverter(typeof (CCSize)).ConvertFromString(s);
-#else
             return (CCSizeConverter.CCSizeFromString(s));
-#endif
         }
 
         /**
@@ -776,9 +764,7 @@ namespace CocosSharp
         }
     }
 
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-    [Serializable, StructLayout(LayoutKind.Sequential), TypeConverter(typeof (CCRectConverter))]
-#endif
+    [Serializable, StructLayout(LayoutKind.Sequential)]
     public struct CCRect
     {
         public static readonly CCRect Zero = new CCRect(0, 0, 0, 0);
@@ -1027,11 +1013,7 @@ namespace CocosSharp
 
         public static CCRect Parse(string s)
         {
-#if !WINDOWS_PHONE && !XBOX && !NETFX_CORE
-            return (CCRect) TypeDescriptor.GetConverter(typeof (CCRect)).ConvertFromString(s);
-#else
             return (CCRectConverter.CCRectFromString(s));
-#endif
         }
     }
 
