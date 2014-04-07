@@ -10,13 +10,17 @@ namespace CocosSharp
 
 
     /// <summary>
-    /// From http://stackoverflow.com/questions/10889743/cocos2d-2-0-3-numbers-on-the-bottom-left by Steffen Itterheim:
+    /// Modified from http://stackoverflow.com/questions/10889743/cocos2d-2-0-3-numbers-on-the-bottom-left
+    /// by Steffen Itterheim:
     /// 
-    /// 82    -- number of draw calls
-    /// 0.016 -- time it took to render the frame
-    /// 60.0  -- frames per second
+    /// 5623459 -- memory consumption in bytes
+    /// 3       -- garbage collection counter (always 0 when in iOS simulator, see below)
+    /// 082     -- number of draw calls
+    /// 0.023   -- time it took to update the frame
+    /// 0.016   -- time it took to draw the frame
+    /// 60.0    -- frames per second
     /// 
-    /// The first number (82) is the number of draw calls (which is fairly high). Typically each node that renders
+    /// The Draw Call number is the number of draw calls (which is fairly high). Typically each node that renders
     /// something on the screen (sprites, labels, particle fx, etc) increases that number by one. If you use
     /// a CCSpriteBatchNode and add 100 sprites to it, it will increase the draw call only by 1.
     /// 
@@ -27,7 +31,7 @@ namespace CocosSharp
     /// important to keep that number down.
     /// 
     /// The time it took to render a frame is in milliseconds. Since you need to draw a new frame every 0.016666666
-    /// seconds in order to achieve 60 frames per second (1/60 = 0,0166…) this number can tell you how close your game
+    /// seconds in order to achieve 60 frames per second (1/60 = 0,0166...) this number can tell you how close your game
     /// is to dropping below 60 fps. Yours is pretty close, you have practically no room left for additional game logic
     /// or visuals before the framerate will drop below 60 fps.
     /// 
@@ -37,6 +41,10 @@ namespace CocosSharp
     /// PS: one other thing to keep in mind is that the bottom two values become misleading can not be compared for
     /// framerates below 15 fps. For example cocos2d might show 0.0 for the time it took to render a frame at such
     /// a low framerate.
+    /// 
+    /// There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
+    /// garbage collection themselves on the simulator. This should not affect the devices though.
+    /// So we check if we are running on a Device and only update the counters if we are.
     /// </summary>
     public class CCStats
     {
@@ -91,7 +99,7 @@ namespace CocosSharp
             if (!isInitialized) {
 
                 // There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
-                // garbage collection themselves on the simulator.  This should not affect the devices though.
+                // garbage collection themselves on the simulator. This should not affect the devices though.
                 // So we check if we are running on a Device and only update the counters if we are.
                 #if IOS
                 if (Runtime.Arch != Arch.DEVICE)
@@ -150,7 +158,11 @@ namespace CocosSharp
                 }
             }
 
+#if MACOS
+            const float factor = 2.0f;
+#else
             const float factor = 1.0f;
+#endif
             var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             fpsLabel.Scale = factor;
