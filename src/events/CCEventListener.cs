@@ -28,7 +28,15 @@ namespace CocosSharp
 		internal virtual string ListenerID { get; set; }
 
         /// <summary>
-        /// Whether the listener is paused
+		/// Whether the listener is paused or not
+		/// 
+		/// The paused state is only used for scene graph priority listeners.
+		///  'CCEventDispatcher.ResumeAll(node)` will set the paused state to `false`,
+		///  while 'CCEventDispatcher.PauseAll(node)` will set it to `true`.
+		/// 
+		///  *Note* 1) Fixed priority listeners will never get paused. If a fixed priority doesn't want to receive events,
+		///           call `IsEnabled = false` instead.
+		///        2) In `CCNode`'s OnEnter and OnExit, listeners associated with that node will automatically update their `paused state`.
         /// </summary>
         internal virtual bool IsPaused { get; set; }
 
