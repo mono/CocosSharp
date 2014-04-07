@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public static class b2VecHelper
+	internal static class b2VecHelper
     {
         public static CCVector2 ToCCVector2(this b2Vec2 vec)
         {
@@ -26,7 +26,7 @@ namespace CocosSharp
 		}
     }
 
-    public class CCBox2dDraw : b2Draw
+	internal class CCBox2dDraw : b2Draw
     {
 #if WINDOWS_PHONE || OUYA
         public const int CircleSegments = 16;
