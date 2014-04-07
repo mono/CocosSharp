@@ -26,7 +26,7 @@ namespace CocosSharp
 		}
     }
 
-	internal class CCBox2dDraw : b2Draw
+	public class CCBox2dDraw : b2Draw
     {
 #if WINDOWS_PHONE || OUYA
         public const int CircleSegments = 16;
