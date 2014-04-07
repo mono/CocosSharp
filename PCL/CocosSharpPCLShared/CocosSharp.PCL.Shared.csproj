@@ -34,20 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\base_nodes\CCNode.cs" />
-    <Compile Include="src\support\CCUtils.cs" />
-    <Compile Include="src\predefine\CCTypes.cs" />
-    <Compile Include="..\..\src\Math\CCEaseMath.cs">
-      <Link>src\Math\CCEaseMath.cs</Link>
-    </Compile>
-    <Compile Include="..\..\src\Math\CCMathHelper.cs">
-      <Link>src\Math\CCMathHelper.cs</Link>
-    </Compile>
+    <Compile Include="api.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="src\" />
-    <Folder Include="src\predefine\" />
-    <Folder Include="src\Math\" />
-  </ItemGroup>
 </Project>
