@@ -461,13 +461,13 @@ namespace CocosSharp
         public CCVertex3F TopLeft;
         public CCVertex3F TopRight;
 
-        public CCQuad3(CCVertex3F tL = new CCVertex3F(), CCVertex3F tR = new CCVertex3F(), 
-            CCVertex3F bL = new CCVertex3F(), CCVertex3F bR = new CCVertex3F()) : this()
+		public CCQuad3(CCVertex3F? tL = null, CCVertex3F? tR = null, 
+			CCVertex3F? bL = null, CCVertex3F? bR = null) : this()
         {
-            TopLeft = tL;
-            TopRight = tR;
-            BottomLeft = bL;
-            BottomRight = bR;
+			TopLeft = tL ?? new CCVertex3F();
+			TopRight = tR ?? new CCVertex3F();
+			BottomLeft = bL ?? new CCVertex3F();
+			BottomRight = bR ?? new CCVertex3F();
         }
     }
 

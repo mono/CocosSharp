@@ -466,7 +466,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCSprite(CCTexture2D texture=null, CCRect rect=default(CCRect), bool rotated=false)
+		public CCSprite(CCTexture2D texture=null, CCRect? rect=null, bool rotated=false)
         {
             InitWithTexture(texture, rect);
         }
@@ -485,13 +485,13 @@ namespace CocosSharp
             InitWithSpriteFrame(spriteFrame);
         }
 
-        public CCSprite(string fileName, CCRect rect=default(CCRect))
+		public CCSprite(string fileName, CCRect? rect=null)
         {
             InitWithFile(fileName, rect);
         }
 
         // Used externally by non-subclasses
-        internal void InitWithTexture(CCTexture2D pTexture, CCRect rect=default(CCRect), bool rotated=false)
+		internal void InitWithTexture(CCTexture2D pTexture, CCRect? rect=null, bool rotated=false)
         {
             m_pobBatchNode = null;
 
@@ -527,12 +527,13 @@ namespace CocosSharp
             // update texture (calls updateBlendFunc)
             Texture = pTexture;
 
-            if (rect == default(CCRect) && Texture != null) 
+			var rect2 = rect ?? CCRect.Zero;
+			if (!rect.HasValue && Texture != null) 
             {
-                rect.Size = Texture.ContentSize;
+				rect2.Size = Texture.ContentSize;
             }
 
-            SetTextureRect(rect, rotated, rect.Size);
+			SetTextureRect(rect2, rotated, rect2.Size);
 
             // by default use "Self Render".
             // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
@@ -545,7 +546,7 @@ namespace CocosSharp
             DisplayFrame = spriteFrame;
         }
 
-        private void InitWithFile(string fileName, CCRect rect=default(CCRect))
+		private void InitWithFile(string fileName, CCRect? rect=null)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
