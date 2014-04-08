@@ -657,8 +657,12 @@ namespace CocosSharp
 				CCNode[] elements = Children.Elements;
 				for (int i = 0, count = Children.count; i < count; i++)
 				{
-					elements[i].OnExit();
-					elements [i].Parent = null;
+					if (elements [i] != null) 
+					{
+						if (!elements[i].isCleaned)
+							elements [i].OnExit ();
+						elements [i].Parent = null;
+					}
 				}
 			}
 
