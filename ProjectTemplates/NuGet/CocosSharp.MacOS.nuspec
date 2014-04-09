@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\net40" />
+    <file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10" />
   </files>
 
 </package>

@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\windows8" />
+    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\win8" />
   </files>
 
 </package>

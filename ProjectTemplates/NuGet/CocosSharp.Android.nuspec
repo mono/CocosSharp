@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\src\bin\Android\Release\*.dll" target="lib" />
+    <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoDroid10" />
   </files>
 
 </package>

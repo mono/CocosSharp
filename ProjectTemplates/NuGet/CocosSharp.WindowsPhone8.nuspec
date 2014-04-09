@@ -22,8 +22,8 @@
   </metadata>
 
   <files>
-    <file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="lib\WindowsPhone8\x86" />
-    <file src="..\..\src\bin\WindowsPhone\ARM\Release\*.dll" target="lib\WindowsPhone8\ARM" />
+    <file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="lib\wp8\x86" />
+    <file src="..\..\src\bin\WindowsPhone\ARM\Release\*.dll" target="lib\wp8\ARM" />
     <file src="tools\**" target="tools" />
   </files>
 
