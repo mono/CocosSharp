@@ -158,12 +158,8 @@ namespace CocosSharp
                 }
             }
 
-#if MACOS
-            const float factor = 2.0f;
-#else
-            const float factor = 1.0f;
-#endif
-            var pos = CCDirector.SharedDirector.VisibleOrigin;
+			var factor = CCDirector.SharedDirector.ContentScaleFactor;
+			var pos = CCDirector.SharedDirector.VisibleOrigin;
 
             fpsLabel.Scale = factor;
             updateTimeLabel.Scale = factor;
