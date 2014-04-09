@@ -704,7 +704,27 @@ namespace CocosSharp {
     public void SetLerp(CocosSharp.CCBoundingBoxI a, CocosSharp.CCBoundingBoxI b, float ratio) { }
     public CocosSharp.CCBoundingBoxI Transform(CocosSharp.CCAffineTransform matrix) { return default(CocosSharp.CCBoundingBoxI); }
   }
+  public partial class CCBox2dDraw : Box2D.Common.b2Draw
+  {
+      // Fields
+      public const int CircleSegments = 32;
 
+      // Constructors
+      public CCBox2dDraw(string spriteFontName) { }
+
+      // Methods
+      public void Begin() { }
+      public void DrawAABB(Box2D.Collision.b2AABB aabb, Box2D.Common.b2Color p1) { }
+      public override void DrawCircle(Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Color color) { }
+      public void DrawPoint(Box2D.Common.b2Vec2 p, float size, Box2D.Common.b2Color color) { }
+      public override void DrawPolygon(Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color) { }
+      public override void DrawSegment(Box2D.Common.b2Vec2 p1, Box2D.Common.b2Vec2 p2, Box2D.Common.b2Color color) { }
+      public override void DrawSolidCircle(Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Vec2 axis, Box2D.Common.b2Color color) { }
+      public override void DrawSolidPolygon(Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color) { }
+      public void DrawString(int x, int y, string format, params System.Object[] objects) { }
+      public override void DrawTransform(Box2D.Common.b2Transform xf) { }
+      public void End() { }
+  }
   public enum CCBPositionType {
     // Fields
     MultiplyResolution = 5,
