@@ -31,7 +31,9 @@ using System.Globalization;
 
 namespace CocosSharp
 {
+#if !WINDOWS_PHONE && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential)]
+#endif
     public struct CCPoint
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
@@ -664,7 +666,9 @@ namespace CocosSharp
 
     }
 
+#if !WINDOWS_PHONE && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential)]
+#endif
     public struct CCSize
     {
         public static readonly CCSize Zero = new CCSize(0, 0);
@@ -764,7 +768,9 @@ namespace CocosSharp
         }
     }
 
+#if !WINDOWS_PHONE && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential)]
+#endif
     public struct CCRect
     {
         public static readonly CCRect Zero = new CCRect(0, 0, 0, 0);
