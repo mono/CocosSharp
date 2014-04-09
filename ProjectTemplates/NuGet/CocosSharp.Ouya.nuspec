@@ -4,7 +4,7 @@
     <id>CocosSharp.Ouya</id>
     <version>1.2.0.0</version>
     <title>CocosSharp for OUYA</title>
-    <authors>CocosSharp, Xamarin, Inc./authors>
+    <authors>CocosSharp, Xamarin, Inc.</authors>
     <owners>Xamarin</owners>
     <licenseUrl>https://github.com/xamarin/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
     <projectUrl>http://github.com/mono/CocosSharp</projectUrl>
@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="..\..\src\bin\OUYA\Release\*.dll" target="lib" />
+    <file src="..\..\src\bin\OUYA\Release\*.dll" target="lib\MonoDroid10" />
   </files>
 
 </package>

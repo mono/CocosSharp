@@ -34,14 +34,14 @@
      <!--Xamarin.Android-->
     <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />
     
-     <!--Xamarin.Ouya-->
-    <file src="..\..\src\bin\Ouya\Release\*.dll" target="lib\Ouya\" />
+     <!--Xamarin.Ouya not supported right now -->
+    <!--file src="..\..\src\bin\Ouya\Release\*.dll" target="lib\Ouya\" /-->
 
      <!--Xamarin.iOS-->
     <file src="..\..\src\bin\iPhone\Release\*.dll" target="lib\MonoTouch10\" />
 
-     <!--Xamarin.Mac-->
-    <file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10\" />
+     <!--Xamarin.Mac this is not supported right now on windows build we need to find a way to reference this build -->
+    <!--file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10\" /-->
 
 
 	<!-- We need to make a decision on which one will be the default for net40 - XNA, DX, GL-->
