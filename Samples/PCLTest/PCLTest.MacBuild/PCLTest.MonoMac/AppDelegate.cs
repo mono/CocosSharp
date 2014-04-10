@@ -9,7 +9,7 @@ namespace PCLTest
 	{
 		public static string PlatformMessage()
 		{
-			return "From MonoMac - One PCL to rule them all."
+			return "From MonoMac - One PCL to rule them all.";
 		}
 
 		public AppDelegate(Game game, GraphicsDeviceManager graphics = null)

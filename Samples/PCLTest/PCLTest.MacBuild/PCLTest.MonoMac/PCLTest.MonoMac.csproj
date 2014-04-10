@@ -3,15 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C976AEE3-940E-4658-BCDD-80A581E4C696}</ProjectGuid>
     <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>PCLTest</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>PCLTest.MonoMac</AssemblyName>
-<TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <StartupObject>PCLTest.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -86,6 +87,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Content\" />
+    <Folder Include="Content\fonts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -100,14 +102,12 @@
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\..\..\tests\tests\Content\fonts\MarkerFelt-22.xnb">
-      <Link>Content\MarkerFelt-22.xnb</Link>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\PCLTest.Portable\PCLTest.Portable.csproj">
       <Project>{2DD4E22B-8A58-473E-8571-6736457D7B83}</Project>
       <Name>PCLTest.Portable</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\MarkerFelt-22.xnb" />
   </ItemGroup>
 </Project>
