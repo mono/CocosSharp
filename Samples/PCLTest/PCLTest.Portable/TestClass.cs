@@ -7,7 +7,10 @@ namespace PCLTest
 	{
 		public static CCLabelTtf PCLLabel(string message)
 		{
-			return new CCLabelTtf(message, "MarkerFelt", 22);
+
+			var label = new CCLabelTtf(message, "MarkerFelt", 22);
+			label.Position = CCDrawManager.VisibleSize.Center;
+			return label;
 		}
 	}
 }
