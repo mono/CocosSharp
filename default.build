@@ -25,6 +25,7 @@
 
   <target name="build" description="Build MonoGame Release" depends="monogame">
 
+    <call target="buildPCL"/>
     <call target="buildwindows"/>
     <call target="buildwindowsphone8"/>
     <call target="buildwindows8"/>
@@ -46,6 +47,16 @@
 
   </target>
 
+  <target name="buildPCL" description="Build CocosSharp Portable project" depends="clean">
+    <if test="${os == 'Win32NT'}">
+      <exec program="msbuild " commandline=".\PCL\CocosSharp.PCL.sln /t:Clean /p:Configuration=Release" />
+      <exec program="msbuild " commandline=".\PCL\CocosSharp.PCL.sln /t:Build /p:Configuration=Release" />
+    </if>
+    <if test="${os == 'Unix'}">
+      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release .\PCL\CocosSharp.PCL.sln" />
+      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release .\PCL\CocosSharp.PCL.sln" />
+    </if>
+  </target>
 
   <target name="buildwindows" description="Build Windows" depends="clean">
     <if test="${os == 'Win32NT'}">
@@ -148,6 +159,8 @@
                 <echo message="" />
 
       <mkdir dir="${packages.dir.path}" />
+
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.nuspec" -OutputDirectory "${packages.dir.path}"' />
 
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}"' />
