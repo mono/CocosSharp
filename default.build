@@ -174,7 +174,7 @@
     </if>
     <if test="${os == 'MacOS'}">
 
-     <property name="nuget.cmd.dir.path" value="mono ./tools/NuGet/NuGet.exe" overwrite="true" /> 	
+     <property name="nuget.cmd.dir.path" value="/usr/bin/mono " overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}/ProjectTemplates/NuGet/" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       
@@ -187,12 +187,12 @@
 
       <mkdir dir="${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline="./tools/NuGet/NuGet.exe pack ${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec OutputDirectory ${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
     </if>
   </target>
 

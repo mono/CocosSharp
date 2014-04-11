@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>CocosSharp.PCL.Shared</id>
+    <id>CocosSharp.PCL.Shared.MacOS</id>
     <version>1.0.0.0</version>
     <title>CocosSharp</title>
     <authors>CocosSharp, Xamarin Inc.</authors>
@@ -14,21 +14,24 @@
     <summary>CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs.</summary>
     <copyright>Copyright 2014 Xamarin, Inc.</copyright>
     <tags>cocos2d cocossharp xna 2D games visualization engine </tags>
+        <dependencies>
+		  <dependency id="CocosSharp.PCL.Shared.MacOS" version="1.2.0.0" />
+		</dependencies>
   </metadata>
 
   <files>
 
 <!--Core-->
-     <file src="..\..\PCL\CocosSharpPCLShared\bin\Release\CocosSharp.dll" target="lib\portable-net40+MonoAndroid10+MonoTouch10\CocosSharp.dll" />
+     <file src="../../PCL/CocosSharpPCLShared/bin/Release/CocosSharp.dll" target="lib\portable-net40+MonoAndroid10+MonoTouch10\CocosSharp.dll" />
 
      <!--Xamarin.Android-->
-    <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />
+    <file src="../../src/bin/Android/Release/*.dll" target="lib\MonoAndroid10\" />
     
      <!--Xamarin.iOS-->
-    <file src="..\..\src\bin\iPhone\Release\*.dll" target="lib\MonoTouch10\" />
+    <file src="../../src/bin/iPhone/Release/*.dll" target="lib\MonoTouch10\" />
 
      <!--Xamarin.Mac this is not supported right now on windows build we need to find a way to reference this build -->
-    <file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10\" />
+    <file src="../../src/bin/MacOS/Release\*.dll" target="lib\net40" />
 
   </files>
 
