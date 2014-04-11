@@ -47,10 +47,10 @@
 	<!-- We need to make a decision on which one will be the default for net40 - XNA, DX, GL-->
 
      <!--Windows normal XNA-->
-    <file src="..\..\src\bin\Windows\Release\*.dll" target="lib\net40" />
+    <!-- file src="..\..\src\bin\Windows\Release\*.dll" target="lib\net40" /-->
      
      <!--Windows DX-->
-    <!--file src="..\..\src\bin\WindowsDX\Release\*.dll" target="lib\net40" /-->
+    <file src="..\..\src\bin\WindowsDX\Release\*.dll" target="lib\net40" />
 
      <!--Windows GL-->
     <!--file src="..\..\src\bin\WindowsGL\Release\*.dll" target="lib\net40" /-->
