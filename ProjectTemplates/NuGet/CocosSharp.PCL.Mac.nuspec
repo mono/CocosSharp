@@ -15,7 +15,7 @@
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d cocossharp xna 2D games visualization engine </tags>
         <dependencies>
-		  <dependency id="CocosSharp.PCL.Shared.MacOS" version="1.2.0.0" />
+		  <dependency id="CocosSharp.PCL.Shared.MacOS" version=“1.0.0.0” />
 		</dependencies>
   </metadata>
 

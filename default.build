@@ -187,7 +187,7 @@
 
       <mkdir dir="${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline="./tools/NuGet/NuGet.exe pack ${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec OutputDirectory ${packages.dir.path}" />
+      <exec program="${nuget.cmd.dir.path} " commandline="./tools/NuGet/NuGet.exe pack ${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec -OutputDirectory ${packages.dir.path}" />
 
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
