@@ -868,7 +868,7 @@ namespace CocosSharp
                 if (prevMouseState.LeftButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed)
                 {
 #if NETFX_CORE
-                    pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
+                    pos = TransformPoint(lastMouseState.X, lastMouseState.Y);
                     pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
                     pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
@@ -887,7 +887,7 @@ namespace CocosSharp
                         if (prevMouseState.X != lastMouseState.X || prevMouseState.Y != lastMouseState.Y)
                         {
 #if NETFX_CORE
-                            pos = TransformPoint(_lastMouseState.X, _lastMouseState.Y);
+                            pos = TransformPoint(lastMouseState.X, lastMouseState.Y);
                             pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
 #else
                             pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
