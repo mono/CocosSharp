@@ -12,6 +12,7 @@
     <RootNamespace>CocosSharp</RootNamespace>
     <SynchReleaseVersion>False</SynchReleaseVersion>
     <MtouchSdkVersion>3.0</MtouchSdkVersion>
+    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>True</DebugSymbols>
@@ -30,7 +31,6 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -41,7 +41,6 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>True</DebugSymbols>
@@ -55,7 +54,6 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <MtouchDebug>True</MtouchDebug>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <AssemblyName>CocosSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -66,7 +64,6 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <DefineConstants>IPHONE;IOS;GLES;OPENGL;MONOGAME</DefineConstants>
     <MtouchUseArmv7>false</MtouchUseArmv7>
-    <AssemblyName>CocosSharp.iOS</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

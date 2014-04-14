@@ -52,9 +52,9 @@
       <exec program="msbuild " commandline=".\PCL\CocosSharp.PCL.sln /t:Clean /p:Configuration=Release" />
       <exec program="msbuild " commandline=".\PCL\CocosSharp.PCL.sln /t:Build /p:Configuration=Release" />
     </if>
-    <if test="${os == 'Unix'}">
-      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release .\PCL\CocosSharp.PCL.sln" />
-      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release .\PCL\CocosSharp.PCL.sln" />
+    <if test="${os == 'MacOS'}">
+      <exec program="xbuild" commandline="/t:Clean /p:Configuration=Release ./PCL/CocosSharp.PCL.sln" />
+      <exec program="xbuild" commandline="/t:Build /p:Configuration=Release ./PCL/CocosSharp.PCL.sln" />
     </if>
   </target>
 
@@ -101,10 +101,10 @@
       </if>
     </if>
     <if test="${os == 'MacOS'}">
-      <if test="${file::exists('/Developer/MonoTouch/MSBuild/Xamarin.ObjcBinding.CSharp.targets')}">
+      <!--if test="${file::exists('/Developer/MonoTouch/MSBuild/Xamarin.ObjcBinding.CSharp.targets')}"-->
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release|iPhone  CocosSharp.iOS.sln" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release|iPhone  CocosSharp.iOS.sln" />
-      </if>
+      <!--/if-->
     </if>
   </target>
 
@@ -145,9 +145,9 @@
     </if>
   </target>
 
-  <target name="buildnugets" description="Build NuGet Packages">
+  <target name="buildnugets" description="Build NuGet Packages" depends="checkos">
     <if test="${os == 'Win32NT'}">
-      <property name="nuget.cmd.dir.path" value="nuget" overwrite="true" /> 	
+      <property name="nuget.cmd.dir.path" value='./Tools/NuGet/NuGet.exe' overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}\ProjectTemplates\NuGet\" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       
@@ -171,6 +171,28 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.MGCB.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />
+    </if>
+    <if test="${os == 'MacOS'}">
+
+     <property name="nuget.cmd.dir.path" value="/usr/bin/mono " overwrite="true" /> 	
+      <property name="nuspec.file.dir.path" value="${project::get-base-directory()}/ProjectTemplates/NuGet/" overwrite="true" />
+      <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
+      
+                <echo message="" />
+                <echo message="" />
+                <echo message="NuGet Command directory: ${nuget.cmd.dir.path}" />
+                <echo message="Base directory: ${nuspec.file.dir.path}" />
+                <echo message="Output directory: ${packages.dir.path}" />
+                <echo message="" />
+
+      <mkdir dir="${packages.dir.path}" />
+
+      <exec program="${nuget.cmd.dir.path} " commandline="./tools/NuGet/NuGet.exe pack ${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec OutputDirectory ${packages.dir.path}" />
+
+      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
     </if>
   </target>
 
