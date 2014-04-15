@@ -1,6 +1,6 @@
 using System.Reflection;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 using CocosDenshion;
 
 namespace EmptyProject
@@ -12,26 +12,22 @@ namespace EmptyProject
 		private int preferredWidth;
 		private int preferredHeight;
 
-		public AppDelegate(Game game, GraphicsDeviceManager graphics)
+		public AppDelegate(Game game, GraphicsDeviceManager graphics = null)
 			: base(game, graphics)
 		{
-			s_pSharedApplication = this;
 
-			preferredWidth = 480;
-			preferredHeight = 320;
+			//preferredWidth = 480;
+			//preferredHeight = 320;
+            preferredWidth = 800;
+            preferredHeight = 480;
 
 			// TODO: Set your preferred window dimensions, this will set a resolution
 			// that fits the hardware. You do not have to set this, so remove these lines
 			// if you want default behavior.
-			graphics.PreferredBackBufferWidth = 800;
-			graphics.PreferredBackBufferHeight = 480;
+			PreferredBackBufferWidth = 800;
+			PreferredBackBufferHeight = 480;
 
-            CCDrawManager.InitializeDisplay(game, 
-			                              graphics, 
-			                              DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-			
-			
-			graphics.PreferMultiSampling = false;
+			PreferMultiSampling = false;
 			
 		}
 		
@@ -52,19 +48,16 @@ namespace EmptyProject
 		/// </returns>
 		public override bool ApplicationDidFinishLaunching()
 		{
-			//initialize director
-			CCDirector pDirector = CCDirector.SharedDirector;
-			pDirector.SetOpenGlView();
 
+            ContentRootDirectory = "Content";
+
+			//initialize director
+			var director = CCDirector.SharedDirector;
 
 			// 2D projection
-			pDirector.Projection = CCDirectorProjection.Projection2D;
+			director.Projection = CCDirectorProjection.Projection2D;
 
-#if WINDOWS || MACOS || LINUX || OUYA || XBOX
-			var resPolicy = CCResolutionPolicy.ExactFit; // This will stretch out your game
-#else
 			var resPolicy = CCResolutionPolicy.ShowAll; // This will letterbox your game
-#endif
 
 			CCDrawManager.SetDesignResolutionSize(preferredWidth, 
 			                                      preferredHeight, 
@@ -74,11 +67,11 @@ namespace EmptyProject
 			//pDirector.DisplayStats = true;
 
 			// set FPS. the default value is 1.0/60 if you don't call this
-			pDirector.AnimationInterval = 1.0 / 60;
+			director.AnimationInterval = 1.0 / 60;
 			
 			CCScene pScene = IntroLayer.Scene;
 
-			pDirector.RunWithScene(pScene);
+			director.RunWithScene(pScene);
 			return true;
 		}
 		

@@ -1,5 +1,5 @@
 using System;
-using Cocos2D;
+using CocosSharp;
 using Microsoft.Xna.Framework;
 
 namespace EmptyProject
@@ -10,7 +10,7 @@ namespace EmptyProject
 		{
 
 			// create and initialize a Label
-			var label = new CCLabelTTF("Hello Cocos2D-XNA", "MarkerFelt", 22);
+			var label = new CCLabelTtf("Hello CocosSharp", "MarkerFelt", 22);
 
 			// position the label on the center of the screen
 			label.Position = CCDirector.SharedDirector.WinSize.Center;
@@ -19,7 +19,7 @@ namespace EmptyProject
 			AddChild(label);
 
 			// setup our color for the background
-			Color = new CCColor3B (Microsoft.Xna.Framework.Color.Blue);
+			Color = new CCColor3B (CCColor4B.Blue);
 			Opacity = 255;
 
 		}
