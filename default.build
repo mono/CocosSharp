@@ -174,10 +174,11 @@
     </if>
     <if test="${os == 'MacOS'}">
 
-     <property name="nuget.cmd.dir.path" value="/usr/bin/mono " overwrite="true" /> 	
+     <property name="nuget.cmd.dir.path" value="./tools/NuGet/NuGet.exe" overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}/ProjectTemplates/NuGet/" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
-      
+      <property name="monodir" value="/usr/bin"/>
+
                 <echo message="" />
                 <echo message="" />
                 <echo message="NuGet Command directory: ${nuget.cmd.dir.path}" />
@@ -187,8 +188,9 @@
 
       <mkdir dir="${packages.dir.path}" />
 
-      <exec program="${nuget.cmd.dir.path} " commandline="./tools/NuGet/NuGet.exe pack ${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec -OutputDirectory ${packages.dir.path}" />
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
 
+      <!-- We need to have a mac .nuspec as well for mac build because it uses a different path seperator -->
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
