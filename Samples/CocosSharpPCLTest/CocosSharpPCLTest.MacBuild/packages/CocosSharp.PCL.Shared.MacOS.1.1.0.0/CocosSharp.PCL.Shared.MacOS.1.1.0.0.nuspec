@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CocosSharp.PCL.Shared.MacOS</id>
+    <version>1.1.0.0</version>
+    <title>CocosSharp</title>
+    <authors>Xamarin Inc</authors>
+    <owners>Xamarin Inc</owners>
+    <licenseUrl>http://github.com/xamarin/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
+    <projectUrl>https://github.com/xamarin/CocosSharp</projectUrl>
+    <iconUrl>http://CocosSharp.xamarin.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CocosSharp is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
+    <summary>CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs.</summary>
+    <copyright>Xamarin Inc</copyright>
+    <tags>cocos2d cocossharp xna 2D games visualization engine</tags>
+  </metadata>
+</package>

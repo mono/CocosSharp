@@ -2,10 +2,10 @@
 using MonoMac;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
-//using CocosSharp;
-//using Microsoft.Xna.Framework.Content;
+using CocosSharp;
+using Microsoft.Xna.Framework;
 
-namespace PCLTest
+namespace CocosSharpPCLTest
 {
 	class Program : NSApplicationDelegate 
 	{

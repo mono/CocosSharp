@@ -1,15 +1,19 @@
 ﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using System.Linq;
+using MonoTouch.Foundation;
+using MonoTouch.UIKit;
 using CocosSharp;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework;
 
-namespace PCLTest
+namespace CocosSharpPCLTest
 {
 	public class AppDelegate : CCApplication
 	{
 		public static string PlatformMessage()
 		{
-			return "From MonoMac - One PCL to rule them all.";
+			return "From Xamarin.iOS - One PCL to rule them all.";
 		}
 
 		public AppDelegate(Game game, GraphicsDeviceManager graphics = null)
@@ -35,11 +39,20 @@ namespace PCLTest
 
 			CCSize designSize = new CCSize (480, 320);
 
+			if (CCDrawManager.FrameSize.Height > 320)
+			{
+				CCSize resourceSize = new CCSize(960, 640);
+				ContentSearchPaths.Add("hd");
+				director.ContentScaleFactor = resourceSize.Height / designSize.Height;
+			}
+
 			CCDrawManager.SetDesignResolutionSize (designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
 
 			CCScene scene = new CCScene();
 
-			scene.AddChild(TestClass.PCLLabel(AppDelegate.PlatformMessage()));
+			var label = TestClass.PCLLabel(AppDelegate.PlatformMessage());
+
+			scene.AddChild(label);
 
 			director.RunWithScene(scene);
 

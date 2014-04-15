@@ -10,9 +10,9 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>PCLTest</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
-    <AssemblyName>PCLTest.MonoMac</AssemblyName>
+    <AssemblyName>CocosSharpPCLTest.MonoMac</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <StartupObject>PCLTest.Program</StartupObject>
+    <StartupObject>CocosSharpPCLTest.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +29,7 @@
     <CodeSigningKey>Mac Developer</CodeSigningKey>
     <EnableCodeSigning>false</EnableCodeSigning>
     <CreatePackage>false</CreatePackage>
+    <StartupObject>PCLTest.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -44,6 +45,7 @@
     <CodeSigningKey>Developer ID Application</CodeSigningKey>
     <EnableCodeSigning>true</EnableCodeSigning>
     <CreatePackage>true</CreatePackage>
+    <StartupObject>PCLTest.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -60,6 +62,7 @@
     <CodeSigningKey>3rd Party Mac Developer Application</CodeSigningKey>
     <EnableCodeSigning>true</EnableCodeSigning>
     <EnablePackageSigning>true</EnablePackageSigning>
+    <StartupObject>PCLTest.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -67,21 +70,27 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="MonoMac" />
-    <Reference Include="BitMiracle.LibTiff.NET">
-      <HintPath>..\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\net40\BitMiracle.LibTiff.NET.dll</HintPath>
-    </Reference>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
     <Reference Include="box2d">
-      <HintPath>..\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\net40\box2d.dll</HintPath>
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\box2d.dll</HintPath>
     </Reference>
     <Reference Include="CocosSharp">
-      <HintPath>..\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\net40\CocosSharp.dll</HintPath>
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\CocosSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network">
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="zlib.net">
-      <HintPath>..\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\net40\zlib.net.dll</HintPath>
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\zlib.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Tao.Sdl">
+      <HintPath>..\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\net40\Tao.Sdl.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -96,18 +105,18 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Program.cs" />
+    <Compile Include="AppDelegate.cs" />
     <Compile Include="..\..\common\Game1.cs">
       <Link>Game1.cs</Link>
     </Compile>
-    <Compile Include="AppDelegate.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\PCLTest.Portable\PCLTest.Portable.csproj">
-      <Project>{2DD4E22B-8A58-473E-8571-6736457D7B83}</Project>
-      <Name>PCLTest.Portable</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\MarkerFelt-22.xnb" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CocosSharpPCLTest.Portable\CocosSharpPCLTest.Portable.csproj">
+      <Project>{2DD4E22B-8A58-473E-8571-6736457D7B83}</Project>
+      <Name>CocosSharpPCLTest.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

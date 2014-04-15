@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>CocosSharp.PCL.Shared</id>
+    <id>CocosSharp.PCL.Shared.MacOS</id>
     <version>1.0.0.0</version>
     <title>CocosSharp</title>
     <authors>Xamarin Inc</authors>
@@ -14,13 +14,5 @@
     <summary>CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs.</summary>
     <copyright>Xamarin Inc</copyright>
     <tags>cocos2d cocossharp xna 2D games visualization engine</tags>
-    <references>
-      <group targetFramework="WindowsPhone8.0">
-        <reference file="box2d.dll" />
-        <reference file="CocosSharp.dll" />
-        <reference file="ICSharpCode.SharpZipLib.dll" />
-        <reference file="MonoGame.Framework.dll" />
-      </group>
-    </references>
   </metadata>
 </package>
