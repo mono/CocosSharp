@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>box2d.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>box2diOS</AssemblyName>
+    <AssemblyName>box2d</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
