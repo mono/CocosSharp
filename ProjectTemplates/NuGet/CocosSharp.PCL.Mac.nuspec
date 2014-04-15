@@ -20,24 +20,16 @@
 
 <!--Core-->
 
-     <file src="/PCL/CocosSharpPCLShared/bin/Release/CocosSharp.dll" target="lib/portable-net40+sl50+win8+wp8+MonoAndroid10+MonoTouch10/CocosSharp.dll" />
+     <file src="PCL/CocosSharpPCLShared/bin/Release/CocosSharp.dll" target="lib/portable-net40+sl50+win8+wp8+MonoAndroid10+MonoTouch10/CocosSharp.dll" />
 
      <!--Xamarin.Android-->
-    <file src="/src/bin/Android/Release/*.dll" target="lib/MonoAndroid10" />
+    <file src="src/bin/Android/Release/*.dll" target="lib/MonoAndroid10" />
     
      <!--Xamarin.iOS-->
-    <file src="/src/bin/iPhone/Release/*.dll" target="lib/MonoTouch10" />
+    <file src="src/bin/iPhone/Release/*.dll" target="lib/MonoTouch10" />
 
      <!--Xamarin.Mac -->
-    <!-- file src="/src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="/src/bin/MacOS/Release/MonoMac.dll" /-->
-    <file src="/src/bin/MacOS/Release/box2d.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/CocosSharp.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/MonoGame.Framework.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/Lidgren.Network.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/ICSharpCode.SharpZipLib.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/zlib.net.dll" target="lib/net40" />
-    <file src="/src/bin/MacOS/Release/Tao.Sdl.dll" target="lib/net40" />
-
+    <file src="src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="src/bin/MacOS/Release/MonoMac.dll" />
 
   </files>
 
