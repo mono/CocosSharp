@@ -189,12 +189,11 @@
       <mkdir dir="${packages.dir.path}" />
 
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.PCL.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
-
-      <!-- We need to have a mac .nuspec as well for mac build because it uses a different path seperator -->
-      <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.iOS.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Android.nuspec" -OutputDirectory "${packages.dir.path}"' />
-      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.MacOS.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.iOS.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Android.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Ouya.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
+ 
     </if>
   </target>
 
