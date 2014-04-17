@@ -26,6 +26,8 @@ namespace CocosSharpPCLTest
 		{
 			ContentRootDirectory = "Content";
 
+			Android.Util.Log.Info ("CocosSharp", "App finished launch");
+
 			CCSpriteFontCache.FontScale = 0.6f;
 			CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
 
@@ -34,6 +36,13 @@ namespace CocosSharpPCLTest
 			director.AnimationInterval = 1.0 / 60;
 
 			CCSize designSize = new CCSize (480, 320);
+
+			if (CCDrawManager.FrameSize.Height > 320)
+			{
+				CCSize resourceSize = new CCSize(960, 640);
+				ContentSearchPaths.Add("hd");
+				director.ContentScaleFactor = resourceSize.Height / designSize.Height;
+			}
 
 			CCDrawManager.SetDesignResolutionSize (designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
 

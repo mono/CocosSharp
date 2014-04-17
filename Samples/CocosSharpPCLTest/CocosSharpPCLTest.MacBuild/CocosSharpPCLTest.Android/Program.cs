@@ -29,6 +29,8 @@ namespace CocosSharpPCLTest
 		{
 			base.OnCreate(bundle);
 
+			Android.Util.Log.Info ("CocosSharp", "OnCreate");
+
 			Game1.Activity = this;
 			var game = new Game1();
 

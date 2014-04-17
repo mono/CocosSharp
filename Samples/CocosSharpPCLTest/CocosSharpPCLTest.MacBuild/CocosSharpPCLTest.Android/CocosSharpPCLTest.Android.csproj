@@ -92,4 +92,10 @@
       <Name>CocosSharpPCLTest.Portable</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Content\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Content\MarkerFelt-22.xnb" />
+  </ItemGroup>
 </Project>
