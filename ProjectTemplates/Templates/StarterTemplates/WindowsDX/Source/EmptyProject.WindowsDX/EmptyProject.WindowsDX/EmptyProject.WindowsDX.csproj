@@ -42,56 +42,65 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BitMiracle.LibTiff.NET">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\BitMiracle.LibTiff.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.Direct2D1.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D9">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.Direct3D9.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D11">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.Direct3D11.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.DXGI">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.DXGI.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.MediaFoundation">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.MediaFoundation.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.RawInput">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.RawInput.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XAudio2">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.XAudio2.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.XInput">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\SharpDX.XInput.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\BitMiracle.LibTiff.NET.dll</HintPath>
     </Reference>
     <Reference Include="box2d">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\box2d.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\box2d.dll</HintPath>
     </Reference>
     <Reference Include="CocosSharp">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\CocosSharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\CocosSharp.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\Lidgren.Network.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\MonoGame.Framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct2D1, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.Direct2D1.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D11, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.Direct3D11.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DXGI, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.DXGI.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.MediaFoundation, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.MediaFoundation.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.RawInput, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.RawInput.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XAudio2, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.XAudio2.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.XInput, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\SharpDX.XInput.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="zlib.net">
-      <HintPath>..\..\..\..\..\..\..\cocos2d\Bin\WindowsDX\Release\zlib.net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\src\bin\WindowsDX\Release\zlib.net.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

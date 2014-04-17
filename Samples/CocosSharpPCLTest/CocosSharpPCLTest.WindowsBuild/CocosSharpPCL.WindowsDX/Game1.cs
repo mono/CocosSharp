@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using CocosSharp;
 
-namespace EmptyProject.WindowsDX
+namespace CocosSharpPCLTest.WindowsDX
 {
     /// <summary>
     /// This is the main type for your game

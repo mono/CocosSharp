@@ -1,6 +1,6 @@
 using System.Reflection;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 using CocosDenshion;
 
 namespace EmptyProject.WindowsDX
@@ -11,22 +11,17 @@ namespace EmptyProject.WindowsDX
 		int preferredWidth;
 		int preferredHeight;
 
-		public AppDelegate(Game game, GraphicsDeviceManager graphics)
+		public AppDelegate(Game game, GraphicsDeviceManager graphics = null)
 			: base(game, graphics)
 		{
-			s_pSharedApplication = this;
 
             preferredWidth = 1024;
             preferredHeight = 768;
-			graphics.PreferredBackBufferWidth = preferredWidth;
-			graphics.PreferredBackBufferHeight = preferredHeight;
 
-            CCDrawManager.InitializeDisplay(game, 
-			                              graphics, 
-			                              DisplayOrientation.LandscapeRight | DisplayOrientation.LandscapeLeft);
-			
-			
-			graphics.PreferMultiSampling = false;
+            PreferredBackBufferWidth = preferredWidth;
+			PreferredBackBufferHeight = preferredHeight;
+
+			PreferMultiSampling = false;
 			
 		}
 		
@@ -47,9 +42,11 @@ namespace EmptyProject.WindowsDX
 		/// </returns>
 		public override bool ApplicationDidFinishLaunching()
 		{
-			//initialize director
+
+
+            ContentRootDirectory = "Content";
+
 			CCDirector pDirector = CCDirector.SharedDirector;
-			pDirector.SetOpenGlView();
 
 
 			// 2D projection

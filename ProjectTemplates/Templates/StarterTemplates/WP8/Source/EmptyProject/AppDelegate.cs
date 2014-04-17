@@ -34,10 +34,10 @@ namespace EmptyProject
 		/// <summary>
 		/// Implement for initialize OpenGL instance, set source path, etc...
 		/// </summary>
-		public override bool InitInstance()
-		{
-			return base.InitInstance();
-		}
+        //public override bool InitInstance()
+        //{
+        //    return base.InitInstance();
+        //}
 		
 		/// <summary>
 		///  Implement CCDirector and CCScene init code here.
