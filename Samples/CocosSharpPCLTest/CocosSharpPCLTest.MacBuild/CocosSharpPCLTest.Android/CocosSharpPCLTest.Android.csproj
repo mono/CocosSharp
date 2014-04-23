@@ -94,8 +94,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\Content\" />
+    <Folder Include="Assets\Content\fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Content\MarkerFelt-22.xnb" />
+    <AndroidAsset Include="Assets\Content\fonts\MarkerFelt-22.xnb" />
   </ItemGroup>
 </Project>

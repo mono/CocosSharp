@@ -26,10 +26,8 @@ namespace CocosSharpPCLTest
 		{
 			ContentRootDirectory = "Content";
 
-			Android.Util.Log.Info ("CocosSharp", "App finished launch");
-
 			CCSpriteFontCache.FontScale = 0.6f;
-			CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
+			CCSpriteFontCache.RegisterFont("Markerfelt", 22);
 
 			CCDirector director = CCDirector.SharedDirector;
 			director.DisplayStats = true;
