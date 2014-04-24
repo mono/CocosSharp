@@ -123,6 +123,9 @@
       <Link>Game1.cs</Link>
     </Compile>
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="..\..\common\AppDelegateCommon.cs">
+      <Link>AppDelegateCommon.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

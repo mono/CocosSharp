@@ -109,6 +109,9 @@
     <Compile Include="..\..\common\Game1.cs">
       <Link>Game1.cs</Link>
     </Compile>
+    <Compile Include="..\..\common\AppDelegateCommon.cs">
+      <Link>AppDelegateCommon.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\MarkerFelt-22.xnb" />

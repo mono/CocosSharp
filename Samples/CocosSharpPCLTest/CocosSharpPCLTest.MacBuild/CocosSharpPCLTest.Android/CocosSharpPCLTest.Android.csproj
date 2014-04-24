@@ -73,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="..\..\common\AppDelegateCommon.cs">
+      <Link>AppDelegateCommon.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
