@@ -868,7 +868,7 @@ namespace tests
             for (var i = 1; i < 15; i++)
             {
                 var szName = String.Format("Images/grossini_dance_{0:00}", i);
-                animation.AddSpriteFrameWithFileName(szName);
+				animation.AddSpriteFrame(szName);
             }
 
             // should last 2.8 seconds. And there are 14 frames.

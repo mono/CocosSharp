@@ -6,51 +6,27 @@ namespace CocosSharp
 {
     public class CCAnimation
     {
-        protected bool m_bRestoreOriginalFrame;
-        protected float m_fDelayPerUnit;
-        protected float m_fTotalDelayUnits;
-        protected List<CCAnimationFrame> m_pFrames;
-        protected uint m_uLoops;
+		#region Properties
 
+		public bool RestoreOriginalFrame { get; set; }
+		public float DelayPerUnit { get; set; }
+		public float TotalDelayUnits { get; private set; }
+		public List<CCAnimationFrame> Frames { get; private set; }
+		public uint Loops { get; set; }
 
         public float Duration
         {
-            get { return m_fTotalDelayUnits * m_fDelayPerUnit; }
+			get { return TotalDelayUnits * DelayPerUnit; }
         }
 
-        public float DelayPerUnit
-        {
-            get { return m_fDelayPerUnit; }
-            set { m_fDelayPerUnit = value; }
-        }
-
-        public List<CCAnimationFrame> Frames
-        {
-            get { return m_pFrames; }
-        }
-
-        public bool RestoreOriginalFrame
-        {
-            get { return m_bRestoreOriginalFrame; }
-            set { m_bRestoreOriginalFrame = value; }
-        }
-
-        public uint Loops
-        {
-            get { return m_uLoops; }
-            set { m_uLoops = value; }
-        }
-
-        public float TotalDelayUnits
-        {
-            get { return m_fTotalDelayUnits; }
-        }
+		#endregion Properties
 
 
         #region Constructors
 
-        public CCAnimation() : this (new List<CCSpriteFrame>(), 0)
-        { }
+        public CCAnimation() : this(new List<CCSpriteFrame>(), 0)
+        { 
+		}
 
         public CCAnimation(CCSpriteSheet cs, string[] frames, float delay)
         {
@@ -63,18 +39,18 @@ namespace CocosSharp
                     l.Add(cs[f]);
                 }
             }
+
             InitWithSpriteFrames(l, delay);
         }
 
-        public CCAnimation(CCSpriteSheet cs, float delay)
+		public CCAnimation(CCSpriteSheet cs, float delay) : this(cs.Frames, delay)
         {
-            InitWithSpriteFrames(cs.Frames, delay);
         }
 
         // Perform deep copy of CCAnimation
-        protected CCAnimation(CCAnimation animation) : this(animation.m_pFrames, animation.m_fDelayPerUnit, animation.m_uLoops)
+        protected CCAnimation(CCAnimation animation) : this(animation.Frames, animation.DelayPerUnit, animation.Loops)
         {
-            RestoreOriginalFrame = animation.m_bRestoreOriginalFrame;
+            RestoreOriginalFrame = animation.RestoreOriginalFrame;
         }
 
         public CCAnimation (List<CCSpriteFrame> frames, float delay)
@@ -84,48 +60,35 @@ namespace CocosSharp
 
         public CCAnimation (List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
         {
-            InitWithAnimationFrames(arrayOfAnimationFrameNames, delayPerUnit, loops);
+			DelayPerUnit = delayPerUnit;
+			Loops = loops;
+
+			Frames = new List<CCAnimationFrame>(arrayOfAnimationFrameNames);
+
+			TotalDelayUnits = Frames.Sum(animFrame => animFrame.DelayUnits);
         }
 
         private void InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
         {
-            if (pFrames != null)
-            {/*
-                foreach (object frame in pFrames)
-                {
-                    Debug.Assert(frame is CCSpriteFrame, "element type is wrong!");
-                }
-              */
-            }
-
-            m_uLoops = 1;
-            m_fDelayPerUnit = delay;
+            Loops = 1;
+            DelayPerUnit = delay;
 
             if (pFrames != null)
             {
-                m_pFrames = pFrames.Select(frame => new CCAnimationFrame(frame, 1, null)).ToList();
-                m_fTotalDelayUnits = m_pFrames.Count;
+                Frames = pFrames.Select(frame => new CCAnimationFrame(frame, 1, null)).ToList();
+                TotalDelayUnits = Frames.Count;
             }
         }
 
-        private void InitWithAnimationFrames(List<CCAnimationFrame> arrayOfAnimationFrames, float delayPerUnit, uint loops)
-        {
-            m_fDelayPerUnit = delayPerUnit;
-            m_uLoops = loops;
-
-            m_pFrames = new List<CCAnimationFrame>(arrayOfAnimationFrames);
-
-            m_fTotalDelayUnits = m_pFrames.Sum(animFrame => animFrame.DelayUnits);
-        }
+		public CCAnimation Copy()
+		{
+			return new CCAnimation(this);
+		}
 
         #endregion Constructors
 
-        public CCAnimation Copy()
-        {
-            return new CCAnimation(this);
-        }
 
-        public void AddSprite(CCSprite sprite)
+		public void AddSpriteFrame(CCSprite sprite)
         {
             CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
             AddSpriteFrame(f);
@@ -134,13 +97,13 @@ namespace CocosSharp
         public void AddSpriteFrame(CCSpriteFrame pFrame)
         {
             var animFrame = new CCAnimationFrame(pFrame, 1.0f, null);
-            m_pFrames.Add(animFrame);
+            Frames.Add(animFrame);
 
             // update duration
-            m_fTotalDelayUnits++;
+            TotalDelayUnits++;
         }
 
-        public void AddSpriteFrameWithFileName(string pszFileName)
+        public void AddSpriteFrame(string pszFileName)
         {
             CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(pszFileName);
             CCRect rect = CCRect.Zero;
@@ -149,7 +112,7 @@ namespace CocosSharp
             AddSpriteFrame(pFrame);
         }
 
-        public void AddSpriteFrameWithTexture(CCTexture2D pobTexture, CCRect rect)
+        public void AddSpriteFrame(CCTexture2D pobTexture, CCRect rect)
         {
             CCSpriteFrame pFrame = new CCSpriteFrame(pobTexture, rect);
             AddSpriteFrame(pFrame);
