@@ -31,63 +31,63 @@ namespace CocosSharp
     public class ICCScriptingEngine
     {
         // functions for excute touch event
-        public virtual bool ExecuteTouchEvent(string pszFuncName, CCTouch pTouch)
+        public virtual bool ExecuteTouchEvent(string funcName, CCTouch touch)
         {
             return false;
         }
 
-        public virtual bool ExecuteTouchesEvent(string pszFuncName, List<CCTouch> pTouches)
+        public virtual bool ExecuteTouchesEvent(string funcName, List<CCTouch> touches)
         {
             return false;
         }
 
         // functions for CCCallFuncX
-        public virtual bool ExecuteCallFunc(string pszFuncName)
+        public virtual bool ExecuteCallFunc(string funcName)
         {
             return false;
         }
 
-        public virtual bool ExecuteCallFuncN(string pszFuncName, CCNode node)
+        public virtual bool ExecuteCallFuncN(string funcName, CCNode node)
         {
             return false;
         }
 
-        public virtual bool ExecuteCallFuncNd(string pszFuncName, CCNode node, object pData)
+        public virtual bool ExecuteCallFuncNd(string funcName, CCNode node, object pData)
         {
             return false;
         }
 
-        public virtual bool ExecuteCallFunc0(string pszFuncName, object pObject)
+        public virtual bool ExecuteCallFunc0(string funcName, object pObject)
         {
             return false;
         }
 
         // excute a script function without params
-        public virtual int ExecuteFuction(string pszFuncName)
+        public virtual int ExecuteFuction(string funcName)
         {
             return 0;
         }
 
         // excute a script file
-        public virtual bool ExecuteScriptFile(string pszFileName)
+        public virtual bool ExecuteScriptFile(string filename)
         {
             return false;
         }
 
         // excute script from string
-        public virtual bool ExecuteString(string pszCodes)
+        public virtual bool ExecuteString(string codes)
         {
             return false;
         }
 
         // execute a schedule function
-        public virtual bool ExecuteSchedule(string pszFuncName, float t)
+        public virtual bool ExecuteSchedule(string funcName, float t)
         {
             return false;
         }
 
         // add a search path  
-        public virtual bool AddSearchPath(string pszPath)
+        public virtual bool AddSearchPath(string path)
         {
             return false;
         }

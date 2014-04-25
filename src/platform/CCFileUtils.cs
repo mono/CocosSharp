@@ -184,10 +184,10 @@ namespace CocosSharp
         /// <typeparam name="?"></typeparam>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static Dictionary<string, object> DictionaryWithContentsOfFile(string fileName)
+		public static Dictionary<string, object> DictionaryWithContentsOfFile(string filename)
         {
             CCDictMaker tMaker = new CCDictMaker();
-            return tMaker.DictionaryWithContentsOfFile(fileName);
+			return tMaker.DictionaryWithContentsOfFile(filename);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace CocosSharp
         /// @param pszZipFileName The relative path of the .zip file
         /// </summary>
         /// <param name="pszZipFileName"></param>
-        public static void SetResource(string zipFileName)
+		public static void SetResource(string zipFilename)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }

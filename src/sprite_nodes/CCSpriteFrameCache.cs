@@ -12,7 +12,11 @@ namespace CocosSharp
 		static CCSpriteFrameCache sharedSpriteFrameCache;
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
-		bool allowFrameOverwrite;
+
+		/// <summary>
+		/// When false, an exception is thrown if an animation frame is overwritten.
+		/// </summary>
+		public bool AllowFrameOverwrite { get; set; }
 
         public static CCSpriteFrameCache SharedSpriteFrameCache
         {
@@ -24,22 +28,6 @@ namespace CocosSharp
                 return sharedSpriteFrameCache;
             }
         }
-
-        /// <summary>
-        /// When false, an exception is thrown if an animation frame is overwritten.
-        /// </summary>
-        public bool AllowFrameOverrite
-        {
-            get
-            {
-                return (allowFrameOverwrite);
-            }
-            set
-            {
-                allowFrameOverwrite = value;
-            }
-        }
-
 
         #region Constructors
 
@@ -204,9 +192,9 @@ namespace CocosSharp
             }
         }
 
-        public void AddSpriteFramesWithFile(string pszPlist)
+        public void AddSpriteFramesWithFile(string plist)
         {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
 
             PlistDictionary dict = document.Root.AsDictionary;
             string texturePath = "";
@@ -224,12 +212,12 @@ namespace CocosSharp
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, pszPlist);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, plist);
             }
             else
             {
                 // build texture path by replacing file extension
-                texturePath = pszPlist;
+                texturePath = plist;
 
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
@@ -285,22 +273,22 @@ namespace CocosSharp
             AddSpriteFramesWithDictionary(dict, pobTexture);
         }
 
-        public void AddSpriteFramesWithFile(string pszPlist, CCTexture2D pobTexture)
+        public void AddSpriteFramesWithFile(string plist, CCTexture2D pobTexture)
         {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(pszPlist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
             AddSpriteFramesWithDictionary(dict, pobTexture);
         }
 
-        public void AddSpriteFrame(CCSpriteFrame pobFrame, string pszFrameName)
+        public void AddSpriteFrame(CCSpriteFrame frame, string frameName)
         {
-            if (!allowFrameOverwrite && spriteFrames.ContainsKey(pszFrameName))
+            if (!allowFrameOverwrite && spriteFrames.ContainsKey(frameName))
             {
-                throw (new ArgumentException("The frame named " + pszFrameName + " already exists."));
+                throw (new ArgumentException("The frame named " + frameName + " already exists."));
             }
-            spriteFrames[pszFrameName] = pobFrame;
+            spriteFrames[frameName] = frame;
         }
 
         public void RemoveSpriteFrames()
@@ -334,16 +322,16 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveSpriteFrameByName(string pszName)
+        public void RemoveSpriteFrameByName(string name)
         {
             // explicit nil handling
-            if (string.IsNullOrEmpty(pszName))
+            if (string.IsNullOrEmpty(name))
             {
                 return;
             }
 
             // Is this an alias ?
-            string key = spriteFramesAliases[pszName];
+            string key = spriteFramesAliases[name];
 
             if (!string.IsNullOrEmpty(key))
             {
@@ -352,7 +340,7 @@ namespace CocosSharp
             }
             else
             {
-                spriteFrames.Remove(pszName);
+                spriteFrames.Remove(name);
             }
         }
 
@@ -408,26 +396,26 @@ namespace CocosSharp
         /// </summary>
         /// <param name="pszName"></param>
         /// <returns></returns>
-        public CCSpriteFrame SpriteFrameByName(string pszName)
+        public CCSpriteFrame SpriteFrameByName(string name)
         {
             CCSpriteFrame frame;
 
-            if (!spriteFrames.TryGetValue(pszName, out frame))
+            if (!spriteFrames.TryGetValue(name, out frame))
             {
                 // try alias dictionary
                 string key;
-                if (spriteFramesAliases.TryGetValue(pszName, out key))
+                if (spriteFramesAliases.TryGetValue(name, out key))
                 {
                     if (!spriteFrames.TryGetValue(key, out frame))
                     {
-                        CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", pszName);
+                        CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", name);
                     }
                 }
             }
 
             if (frame != null)
             {
-                CCLog.Log("CocosSharp: {0} frame {1}", pszName, frame.Rect.ToString());
+                CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
             }
             return frame;
         }
