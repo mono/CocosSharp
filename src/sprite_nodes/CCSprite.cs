@@ -9,6 +9,11 @@ namespace CocosSharp
 		public bool IsTextureRectRotated { get; private set; }
 		public int AtlasIndex { get; set; } // Absolute (real) Index on the SpriteSheet
 
+		// Offset Position (used by Zwoptex)
+		public CCPoint OffsetPosition { get; private set; }
+
+		internal CCV3F_C4B_T2F_Quad Quad;
+
 		bool dirty; // Sprite needs to be updated
         bool flipX;
         bool flipY;
@@ -16,21 +21,14 @@ namespace CocosSharp
         bool opacityModifyRGB;
         bool recursiveDirty; // Subchildren needs to be updated
 		bool shouldBeHidden; // should not be drawn because one of the ancestors is not visible
-
-        // Offset Position (used by Zwoptex)
-		public CCPoint OffsetPosition { get; private set; }
-
         CCRect textureRect;
         CCPoint unflippedOffsetPositionFromCenter;
         CCSpriteBatchNode batchNode; // Used batch node (weak reference)
         CCTextureAtlas textureAtlas; // Sprite Sheet texture atlas (weak reference)
 		CCTexture2D texture;
         CCBlendFunc blendFunc; // Needed for the texture protocol
-
 		string textureFile;
-
-		internal CCV3F_C4B_T2F_Quad Quad;
-        protected CCAffineTransform transformToBatch; //
+        CCAffineTransform transformToBatch;
 
         public override void Serialize(System.IO.Stream stream)
         {
@@ -50,11 +48,8 @@ namespace CocosSharp
             StreamReader sr = new StreamReader(stream);
             textureFile = sr.ReadLine();
             if (textureFile == "null")
-            {
                 textureFile = null;
-            }
-            else
-            {
+			else {
                 CCLog.Log("CCSprite - deserialized with texture file " + textureFile);
                 InitWithFile(textureFile);
             }

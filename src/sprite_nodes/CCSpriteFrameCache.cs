@@ -9,21 +9,19 @@ namespace CocosSharp
 {
     public class CCSpriteFrameCache
     {
-        public static CCSpriteFrameCache pSharedSpriteFrameCache = null;
-        protected Dictionary<string, CCSpriteFrame> m_pSpriteFrames;
-        protected Dictionary<string, string> m_pSpriteFramesAliases;
-        private bool _AllowFrameOverwrite = false;
+		static CCSpriteFrameCache sharedSpriteFrameCache;
+        Dictionary<string, CCSpriteFrame> spriteFrames;
+        Dictionary<string, string> spriteFramesAliases;
+		bool allowFrameOverwrite;
 
         public static CCSpriteFrameCache SharedSpriteFrameCache
         {
             get
             {
-                if (pSharedSpriteFrameCache == null)
-                {
-                    pSharedSpriteFrameCache = new CCSpriteFrameCache();
-                }
+                if (sharedSpriteFrameCache == null)
+                    sharedSpriteFrameCache = new CCSpriteFrameCache();
 
-                return pSharedSpriteFrameCache;
+                return sharedSpriteFrameCache;
             }
         }
 
@@ -34,11 +32,11 @@ namespace CocosSharp
         {
             get
             {
-                return (_AllowFrameOverwrite);
+                return (allowFrameOverwrite);
             }
             set
             {
-                _AllowFrameOverwrite = value;
+                allowFrameOverwrite = value;
             }
         }
 
@@ -48,8 +46,8 @@ namespace CocosSharp
         // Singleton, so ensure users only call SharedSpriteFrameCache to get instance
         protected CCSpriteFrameCache()
         {
-            m_pSpriteFrames = new Dictionary<string, CCSpriteFrame>();
-            m_pSpriteFramesAliases = new Dictionary<string, string>();
+            spriteFrames = new Dictionary<string, CCSpriteFrame>();
+            spriteFramesAliases = new Dictionary<string, string>();
         }
 
         #endregion Constructors
@@ -172,16 +170,16 @@ namespace CocosSharp
                     foreach (PlistObjectBase item2 in aliases)
                     {
                         string oneAlias = item2.AsString;
-                        if (m_pSpriteFramesAliases.Keys.Contains(oneAlias))
+                        if (spriteFramesAliases.Keys.Contains(oneAlias))
                         {
-                            if (m_pSpriteFramesAliases[oneAlias] != null)
+                            if (spriteFramesAliases[oneAlias] != null)
                             {
                                 CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
                             }
                         }
-                        if (!m_pSpriteFramesAliases.Keys.Contains(oneAlias))
+                        if (!spriteFramesAliases.Keys.Contains(oneAlias))
                         {
-                            m_pSpriteFramesAliases.Add(oneAlias, frameKey);
+                            spriteFramesAliases.Add(oneAlias, frameKey);
                         }
                     }
 
@@ -195,13 +193,13 @@ namespace CocosSharp
 
                 // add sprite frame
                 string key = pair.Key;
-                if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(key))
+                if (!allowFrameOverwrite && spriteFrames.ContainsKey(key))
                 {
                     CCLog.Log("Frame named " + key + " already exists in the animation cache. Not overwriting existing record.");
                 }
-                else if (_AllowFrameOverwrite || !m_pSpriteFrames.ContainsKey(key))
+                else if (allowFrameOverwrite || !spriteFrames.ContainsKey(key))
                 {
-                    m_pSpriteFrames[key] = spriteFrame;
+                    spriteFrames[key] = spriteFrame;
                 }
             }
         }
@@ -298,31 +296,31 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSpriteFrame pobFrame, string pszFrameName)
         {
-            if (!_AllowFrameOverwrite && m_pSpriteFrames.ContainsKey(pszFrameName))
+            if (!allowFrameOverwrite && spriteFrames.ContainsKey(pszFrameName))
             {
                 throw (new ArgumentException("The frame named " + pszFrameName + " already exists."));
             }
-            m_pSpriteFrames[pszFrameName] = pobFrame;
+            spriteFrames[pszFrameName] = pobFrame;
         }
 
         public void RemoveSpriteFrames()
         {
-            m_pSpriteFrames.Clear();
-            m_pSpriteFramesAliases.Clear();
+            spriteFrames.Clear();
+            spriteFramesAliases.Clear();
         }
 
         public void RemoveUnusedSpriteFrames()
         {
-            if (m_pSpriteFrames.Count > 0)
+            if (spriteFrames.Count > 0)
             {
                 var tmp = new Dictionary<string, WeakReference>();
 
-                foreach (var pair in m_pSpriteFrames)
+                foreach (var pair in spriteFrames)
                 {
                     tmp.Add(pair.Key, new WeakReference(pair.Value));
                 }
 
-                m_pSpriteFrames.Clear();
+                spriteFrames.Clear();
 
                 GC.Collect();
 
@@ -330,7 +328,7 @@ namespace CocosSharp
                 {
                     if (pair.Value.IsAlive)
                     {
-                        m_pSpriteFrames.Add(pair.Key, (CCSpriteFrame) pair.Value.Target);
+                        spriteFrames.Add(pair.Key, (CCSpriteFrame) pair.Value.Target);
                     }
                 }
             }
@@ -345,16 +343,16 @@ namespace CocosSharp
             }
 
             // Is this an alias ?
-            string key = m_pSpriteFramesAliases[pszName];
+            string key = spriteFramesAliases[pszName];
 
             if (!string.IsNullOrEmpty(key))
             {
-                m_pSpriteFrames.Remove(key);
-                m_pSpriteFramesAliases.Remove(key);
+                spriteFrames.Remove(key);
+                spriteFramesAliases.Remove(key);
             }
             else
             {
-                m_pSpriteFrames.Remove(pszName);
+                spriteFrames.Remove(pszName);
             }
         }
 
@@ -374,7 +372,7 @@ namespace CocosSharp
 
             foreach (var pair in framesDict)
             {
-                if (m_pSpriteFrames.ContainsKey(pair.Key))
+                if (spriteFrames.ContainsKey(pair.Key))
                 {
                     keysToRemove.Remove(pair.Key);
                 }
@@ -382,7 +380,7 @@ namespace CocosSharp
 
             foreach (string key in keysToRemove)
             {
-                m_pSpriteFrames.Remove(key);
+                spriteFrames.Remove(key);
             }
         }
 
@@ -390,9 +388,9 @@ namespace CocosSharp
         {
             var keysToRemove = new List<string>();
 
-            foreach (string key in m_pSpriteFrames.Keys)
+            foreach (string key in spriteFrames.Keys)
             {
-                CCSpriteFrame frame = m_pSpriteFrames[key];
+                CCSpriteFrame frame = spriteFrames[key];
                 if (frame != null && (frame.Texture.Name == texture.Name))
                 {
                     keysToRemove.Add(key);
@@ -401,7 +399,7 @@ namespace CocosSharp
 
             foreach (string key in keysToRemove)
             {
-                m_pSpriteFrames.Remove(key);
+                spriteFrames.Remove(key);
             }
         }
 
@@ -414,13 +412,13 @@ namespace CocosSharp
         {
             CCSpriteFrame frame;
 
-            if (!m_pSpriteFrames.TryGetValue(pszName, out frame))
+            if (!spriteFrames.TryGetValue(pszName, out frame))
             {
                 // try alias dictionary
                 string key;
-                if (m_pSpriteFramesAliases.TryGetValue(pszName, out key))
+                if (spriteFramesAliases.TryGetValue(pszName, out key))
                 {
-                    if (!m_pSpriteFrames.TryGetValue(key, out frame))
+                    if (!spriteFrames.TryGetValue(key, out frame))
                     {
                         CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", pszName);
                     }
@@ -436,7 +434,7 @@ namespace CocosSharp
 
         public static void PurgeSharedSpriteFrameCache()
         {
-            pSharedSpriteFrameCache = null;
+            sharedSpriteFrameCache = null;
         }
     }
 }

@@ -9,19 +9,19 @@ namespace CocosSharp
 {
     public class CCSpriteSheet
     {
-        private readonly Dictionary<string, CCSpriteFrame> _spriteFrames = new Dictionary<string, CCSpriteFrame>();
-        private readonly Dictionary<string, string> _spriteFramesAliases = new Dictionary<string, string>();
+        readonly Dictionary<string, CCSpriteFrame> _spriteFrames = new Dictionary<string, CCSpriteFrame>();
+        readonly Dictionary<string, string> _spriteFramesAliases = new Dictionary<string, string>();
 
-		private PlistType plistType;
+		PlistType plistType;
 
 		// We need to read the sprite sheet textures relative to the plist file path.
 		// When we have the sprite sheet split between multiple image files 
 		// to be loaded this allows us to load those files relative to the plist.  Right now
 		// only used for PlistType SpriteKit right now but can be used for other types as well
 		// in the future
-		private string plistFilePath;
+		string plistFilePath;
 
-		private enum PlistType
+		enum PlistType
 		{
 			Cocos2D,
 			SpriteKit

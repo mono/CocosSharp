@@ -108,7 +108,7 @@ namespace CocosSharp
         /// <param name="filename"></param>
         /// <param name="pSize"></param>
         /// <returns></returns>
-        public static char[] GetFileDataFromZip(string pszZipFilePath, string filename, UInt64 pSize)
+        public static char[] GetFileDataFromZip(string zipFilePath, string filename, UInt64 pSize)
         {
             throw new NotImplementedException("Cannot load zip files for this method has not been realized !");
         }
@@ -135,10 +135,10 @@ namespace CocosSharp
         /// </summary>
         /// <param name="pszRelativePath"></param>
         /// <returns></returns>
-        public static string FullPathFromRelativePath(string pszRelativePath)
+        public static string FullPathFromRelativePath(string relativePath)
         {
             // todo: return self now
-            return pszRelativePath;
+            return relativePath;
             // throw new NotImplementedException("win32 only definition does not realize !");
         }
 
@@ -146,10 +146,10 @@ namespace CocosSharp
         /// extracts the directory from the pszRelativeFile and uses that directory path as the
         /// path for the pszFilename.
         /// </summary>
-        public static string FullPathFromRelativeFile(string pszFilename, string pszRelativeFile)
+        public static string FullPathFromRelativeFile(string filename, string relativeFile)
         {
-            string path = Path.GetDirectoryName(pszRelativeFile);
-            return Path.Combine(path, RemoveExtension(pszFilename));
+            string path = Path.GetDirectoryName(relativeFile);
+            return Path.Combine(path, RemoveExtension(filename));
         }
 
         public static string RemoveExtension(string fileName)
@@ -170,7 +170,7 @@ namespace CocosSharp
         /// absolute path.
         /// </summary>
         /// <param name="?"></param>
-        public static void SetResourcePath(string pszResourcePath)
+        public static void SetResourcePath(string resourcePath)
         {
             throw new NotSupportedException ("Not supported in XNA");
         }
@@ -184,10 +184,10 @@ namespace CocosSharp
         /// <typeparam name="?"></typeparam>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static Dictionary<string, object> DictionaryWithContentsOfFile(string pFileName)
+        public static Dictionary<string, object> DictionaryWithContentsOfFile(string fileName)
         {
             CCDictMaker tMaker = new CCDictMaker();
-            return tMaker.DictionaryWithContentsOfFile(pFileName);
+            return tMaker.DictionaryWithContentsOfFile(fileName);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace CocosSharp
         /// @param pszZipFileName The relative path of the .zip file
         /// </summary>
         /// <param name="pszZipFileName"></param>
-        public static void SetResource(string pszZipFileName)
+        public static void SetResource(string zipFileName)
         {
             throw new NotImplementedException("win32 only definition does not realize !");
         }
