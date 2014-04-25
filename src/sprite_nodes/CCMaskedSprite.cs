@@ -92,16 +92,9 @@ namespace CocosSharp
 							int iA = x1 + (height1-y1) * width1;
 							int iB = x2 + (height2-y2) * width2;
                             if (iA >= maskA.Length || iB >= maskB.Length)
-                            {
                                 continue;
-                            }
-                            byte ca = maskA[iA];
-                            byte cb = maskB[iB];
-
-                            if (maskA[iA] > 0)
-                            {
-                                if (maskB[iB] > 0)
-                                {
+							if (maskA[iA] > 0){
+								if (maskB[iB] > 0){
                                     CCVector2 screenPos = CCVector2.Transform(pos1, affine1);
                                     pt = new CCPoint(screenPos);
                                     return (true);
@@ -111,7 +104,7 @@ namespace CocosSharp
                     }
                 }
             }
-            return (false);
+            return false;
         }
 
         /// <summary>
@@ -121,12 +114,10 @@ namespace CocosSharp
 
         public virtual byte[] CollisionMask
         {
-            get
-            {
+			get { 
                 return (_MyMask);
             }
-            set
-            {
+            set {
                 _MyMask = value;
                 // Check the size?
             }

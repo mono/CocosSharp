@@ -12,6 +12,7 @@
     <RootNamespace>CocosSharp</RootNamespace>
     <SuppressXamMacUpsell>True</SuppressXamMacUpsell>
     <AssemblyName>CocosSharp</AssemblyName>
+    <SuppressXamMacMigration>True</SuppressXamMacMigration>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>

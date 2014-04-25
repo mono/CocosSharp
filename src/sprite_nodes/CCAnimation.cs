@@ -35,9 +35,7 @@ namespace CocosSharp
             {
                 CCSpriteFrame cf = cs[f];
                 if (cf != null)
-                {
                     l.Add(cs[f]);
-                }
             }
 
             InitWithSpriteFrames(l, delay);
@@ -68,16 +66,18 @@ namespace CocosSharp
 			TotalDelayUnits = Frames.Sum(animFrame => animFrame.DelayUnits);
         }
 
-        private void InitWithSpriteFrames(List<CCSpriteFrame> pFrames, float delay)
+		private void InitWithSpriteFrames(List<CCSpriteFrame> frames, float delay)
         {
             Loops = 1;
             DelayPerUnit = delay;
 
-            if (pFrames != null)
-            {
-                Frames = pFrames.Select(frame => new CCAnimationFrame(frame, 1, null)).ToList();
-                TotalDelayUnits = Frames.Count;
-            }
+			if (frames == null)
+				return;
+            
+			Frames = new List<CCAnimationFrame> (frames.Count);
+			foreach (var frame in frames)
+				Frames.Add (new CCAnimationFrame (frame, 1, null));
+            TotalDelayUnits = Frames.Count;
         }
 
 		public CCAnimation Copy()
@@ -94,28 +94,26 @@ namespace CocosSharp
             AddSpriteFrame(f);
         }
 
-        public void AddSpriteFrame(CCSpriteFrame pFrame)
+        public void AddSpriteFrame(CCSpriteFrame frame)
         {
-            var animFrame = new CCAnimationFrame(pFrame, 1.0f, null);
+            var animFrame = new CCAnimationFrame(frame, 1.0f, null);
             Frames.Add(animFrame);
 
             // update duration
             TotalDelayUnits++;
         }
 
-        public void AddSpriteFrame(string pszFileName)
+        public void AddSpriteFrame(string filename)
         {
-            CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(pszFileName);
+			var texture = CCTextureCache.SharedTextureCache.AddImage(filename);
             CCRect rect = CCRect.Zero;
-            rect.Size = pTexture.ContentSize;
-            CCSpriteFrame pFrame = new CCSpriteFrame(pTexture, rect);
-            AddSpriteFrame(pFrame);
+			rect.Size = texture.ContentSize;
+			AddSpriteFrame (new CCSpriteFrame (texture, rect));
         }
 
-        public void AddSpriteFrame(CCTexture2D pobTexture, CCRect rect)
+		public void AddSpriteFrame(CCTexture2D texture, CCRect rect)
         {
-            CCSpriteFrame pFrame = new CCSpriteFrame(pobTexture, rect);
-            AddSpriteFrame(pFrame);
+			AddSpriteFrame(new CCSpriteFrame(texture, rect));
         }
     }
 }
