@@ -403,7 +403,7 @@ namespace CocosSharp
         {
             CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
             CCDrawManager.BindTexture(Texture);
-            CCDrawManager.DrawQuad(ref m_sQuad);
+			CCDrawManager.DrawQuad(ref Quad);
         }
 
         public void NeedsLayout()

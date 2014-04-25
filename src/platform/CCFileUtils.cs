@@ -62,24 +62,24 @@ namespace CocosSharp
 
         /// <summary>
         /// @brief Get resource file data
-        /// @param[in]  pszFileName The resource file name which contain the path
+        /// @param[in]  filename The resource file name which contain the path
         /// @param[in]  pszMode The read mode of the file
         /// @param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
         /// @return if success,the pointer of data will be returned,or NULL is returned
         /// @warning If you get the file data succeed,you must delete it after used.
         /// </summary>
-        /// <param name="pszFileName"></param>
+        /// <param name="filename"></param>
         /// <returns></returns>
-        public static string GetFileData(string pszFileName)
+        public static string GetFileData(string filename)
         {
-            return CCContentManager.SharedContentManager.Load<string>(pszFileName);
+            return CCContentManager.SharedContentManager.Load<string>(filename);
         }
 
-        public static byte[] GetFileBytes(string pszFileName)
+        public static byte[] GetFileBytes(string filename)
         {
-            pszFileName = System.IO.Path.Combine(CCContentManager.SharedContentManager.RootDirectory, pszFileName);
+            filename = System.IO.Path.Combine(CCContentManager.SharedContentManager.RootDirectory, filename);
 
-            using (var stream = TitleContainer.OpenStream(pszFileName))
+            using (var stream = TitleContainer.OpenStream(filename))
             {
                 var buffer = new byte[1024];
                 var ms = new MemoryStream();
@@ -99,16 +99,16 @@ namespace CocosSharp
 
         /// <summary>
         /// @brief Get resource file data from zip file
-        /// @param[in]  pszFileName The resource file name which contain the relative path of zip file
+        /// @param[in]  filename The resource file name which contain the relative path of zip file
         /// @param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
         /// @return if success,the pointer of data will be returned,or NULL is returned
         /// @warning If you get the file data succeed,you must delete it after used.
         /// </summary>
         /// <param name="pszZipFilePath"></param>
-        /// <param name="pszFileName"></param>
+        /// <param name="filename"></param>
         /// <param name="pSize"></param>
         /// <returns></returns>
-        public static char[] GetFileDataFromZip(string pszZipFilePath, string pszFileName, UInt64 pSize)
+        public static char[] GetFileDataFromZip(string pszZipFilePath, string filename, UInt64 pSize)
         {
             throw new NotImplementedException("Cannot load zip files for this method has not been realized !");
         }

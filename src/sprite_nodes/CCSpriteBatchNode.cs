@@ -506,7 +506,7 @@ namespace CocosSharp
                 IncreaseAtlasCapacity();
             }
 
-            m_pobTextureAtlas.InsertQuad(ref pobSprite.m_sQuad, uIndex);
+            m_pobTextureAtlas.InsertQuad(ref pobSprite.Quad, uIndex);
 
             m_pobDescendants.Insert(uIndex, pobSprite);
 
@@ -550,7 +550,7 @@ namespace CocosSharp
 
             sprite.AtlasIndex = index;
 
-            m_pobTextureAtlas.InsertQuad(ref sprite.m_sQuad, index);
+            m_pobTextureAtlas.InsertQuad(ref sprite.Quad, index);
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;
@@ -626,7 +626,7 @@ namespace CocosSharp
             sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            m_pobTextureAtlas.InsertQuad(ref sprite.m_sQuad, index);
+            m_pobTextureAtlas.InsertQuad(ref sprite.Quad, index);
 
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad

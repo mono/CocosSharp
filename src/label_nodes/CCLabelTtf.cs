@@ -226,7 +226,7 @@ namespace CocosSharp
             Texture = tex;
 
             CCRect rect = CCRect.Zero;
-            rect.Size = m_pobTexture.ContentSize;
+			rect.Size = Texture.ContentSize;
             SetTextureRect(rect);
         }
     }

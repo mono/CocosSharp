@@ -63,7 +63,7 @@ namespace CocosSharp
         /// If pszFunctionName is NULL, then unregister it.
         /// </summary>
         /// <param name="pszFunctionName"></param>
-        public virtual void RegisterScriptHandler(string pszFunctionName)
+        public virtual void RegisterScriptHandler(string functionName)
         {
             throw new NotImplementedException("CCMenuItem.RegisterScriptHandler is not supported in this version of Cocos2d-XNA");
         }

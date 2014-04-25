@@ -6,30 +6,31 @@ namespace CocosSharp
 {
     public class CCSprite : CCNodeRGBA, ICCTexture
     {
-        protected bool m_bDirty; // Sprite needs to be updated
-        protected bool m_bFlipX;
-        protected bool m_bFlipY;
-        protected bool m_bHasChildren; // optimization to check if it contain children
-        protected bool m_bOpacityModifyRGB;
-        protected bool m_bRectRotated;
-        protected bool m_bRecursiveDirty; // Subchildren needs to be updated
-        protected bool m_bShouldBeHidden; // should not be drawn because one of the ancestors is not visible
+		public bool IsTextureRectRotated { get; private set; }
+		public int AtlasIndex { get; set; } // Absolute (real) Index on the SpriteSheet
+
+		bool dirty; // Sprite needs to be updated
+        bool flipX;
+        bool flipY;
+        bool hasChildren; // optimization to check if it contain children
+        bool opacityModifyRGB;
+        bool recursiveDirty; // Subchildren needs to be updated
+		bool shouldBeHidden; // should not be drawn because one of the ancestors is not visible
 
         // Offset Position (used by Zwoptex)
-        protected CCPoint m_obOffsetPosition;
+		public CCPoint OffsetPosition { get; private set; }
 
-        protected CCRect m_obRect;
-        protected CCPoint m_obUnflippedOffsetPositionFromCenter;
-        protected CCSpriteBatchNode m_pobBatchNode; // Used batch node (weak reference)
-        protected CCTexture2D m_pobTexture; // Texture used to render the sprite
-        protected CCTextureAtlas m_pobTextureAtlas; // Sprite Sheet texture atlas (weak reference)
-        protected CCBlendFunc m_sBlendFunc; // Needed for the texture protocol
+        CCRect textureRect;
+        CCPoint unflippedOffsetPositionFromCenter;
+        CCSpriteBatchNode batchNode; // Used batch node (weak reference)
+        CCTextureAtlas textureAtlas; // Sprite Sheet texture atlas (weak reference)
+		CCTexture2D texture;
+        CCBlendFunc blendFunc; // Needed for the texture protocol
 
-        private string m_TextureFile;
+		string textureFile;
 
-        internal CCV3F_C4B_T2F_Quad m_sQuad;
-        protected CCAffineTransform m_transformToBatch; //
-        protected int m_uAtlasIndex; // Absolute (real) Index on the SpriteSheet
+		internal CCV3F_C4B_T2F_Quad Quad;
+        protected CCAffineTransform transformToBatch; //
 
         public override void Serialize(System.IO.Stream stream)
         {
@@ -40,22 +41,22 @@ namespace CocosSharp
             CCSerialization.SerializeData(AtlasIndex, sw);
             CCSerialization.SerializeData(TextureRect, sw);
             CCSerialization.SerializeData(OffsetPosition, sw);
-            sw.WriteLine(m_TextureFile == null ? "null" : m_TextureFile);
+            sw.WriteLine(textureFile == null ? "null" : textureFile);
         }
 
         public override void Deserialize(System.IO.Stream stream)
         {
             base.Deserialize(stream);
             StreamReader sr = new StreamReader(stream);
-            m_TextureFile = sr.ReadLine();
-            if (m_TextureFile == "null")
+            textureFile = sr.ReadLine();
+            if (textureFile == "null")
             {
-                m_TextureFile = null;
+                textureFile = null;
             }
             else
             {
-                CCLog.Log("CCSprite - deserialized with texture file " + m_TextureFile);
-                InitWithFile(m_TextureFile);
+                CCLog.Log("CCSprite - deserialized with texture file " + textureFile);
+                InitWithFile(textureFile);
             }
             Dirty = CCSerialization.DeSerializeBool(sr);
             IsTextureRectRotated = CCSerialization.DeSerializeBool(sr);
@@ -66,44 +67,18 @@ namespace CocosSharp
 
         public virtual bool Dirty
         {
-            get { return m_bDirty; }
+			get { return dirty; }
             set
             {
-                m_bDirty = value;
+				dirty = value;
                 SetDirtyRecursively(value);
             }
         }
 
-        public CCV3F_C4B_T2F_Quad Quad
-        {
-            // read only
-            get { return m_sQuad; }
-        }
-
-
-        public bool IsTextureRectRotated
-        {
-            get { return m_bRectRotated; }
-            private set { m_bRectRotated = value; }
-        }
-
-        public int AtlasIndex
-        {
-            get { return m_uAtlasIndex; }
-            set { m_uAtlasIndex = value; }
-        }
-
         public CCRect TextureRect
         {
-            get { return m_obRect; }
+            get { return textureRect; }
             set { SetTextureRect(value, false, value.Size); }
-        }
-
-        public CCPoint OffsetPosition
-        {
-            // read only
-            get { return m_obOffsetPosition; }
-            private set { m_obOffsetPosition = value; }
         }
 
         public override CCPoint Position
@@ -112,7 +87,7 @@ namespace CocosSharp
             set
             {
                 base.Position = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -124,7 +99,7 @@ namespace CocosSharp
             set
             {
                 base.Rotation = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -137,7 +112,7 @@ namespace CocosSharp
             set
             {
                 base.RotationX = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -150,7 +125,7 @@ namespace CocosSharp
             set
             {
                 base.RotationY = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -161,7 +136,7 @@ namespace CocosSharp
             set
             {
                 base.SkewX = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -171,7 +146,7 @@ namespace CocosSharp
             set
             {
                 base.SkewY = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -186,7 +161,7 @@ namespace CocosSharp
             float sy = size.Height / content.Height;
             base.ScaleX = sx;
             base.ScaleY = sy;
-            SET_DIRTY_RECURSIVELY();
+            SetDirtyRecursively();
         }
 
         public override float ScaleX
@@ -195,7 +170,7 @@ namespace CocosSharp
             set
             {
                 base.ScaleX = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -205,7 +180,7 @@ namespace CocosSharp
             set
             {
                 base.ScaleY = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -214,7 +189,7 @@ namespace CocosSharp
             set
             {
                 base.Scale = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -224,7 +199,7 @@ namespace CocosSharp
             set
             {
                 base.VertexZ = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -234,7 +209,7 @@ namespace CocosSharp
             set
             {
                 base.AnchorPoint = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -243,9 +218,9 @@ namespace CocosSharp
             get { return base.IgnoreAnchorPointForPosition; }
             set
             {
-                Debug.Assert(m_pobBatchNode == null, "ignoreAnchorPointForPosition is invalid in CCSprite");
+                Debug.Assert(batchNode == null, "ignoreAnchorPointForPosition is invalid in CCSprite");
                 base.IgnoreAnchorPointForPosition = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
@@ -255,32 +230,32 @@ namespace CocosSharp
             set
             {
                 base.Visible = value;
-                SET_DIRTY_RECURSIVELY();
+                SetDirtyRecursively();
             }
         }
 
         public bool FlipX
         {
-            get { return m_bFlipX; }
+            get { return flipX; }
             set
             {
-                if (m_bFlipX != value)
+                if (flipX != value)
                 {
-                    m_bFlipX = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, contentSize);
+                    flipX = value;
+                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
                 }
             }
         }
 
         public bool FlipY
         {
-            get { return m_bFlipY; }
+            get { return flipY; }
             set
             {
-                if (m_bFlipY != value)
+                if (flipY != value)
                 {
-                    m_bFlipY = value;
-                    SetTextureRect(m_obRect, m_bRectRotated, contentSize);
+                    flipY = value;
+                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
                 }
             }
         }
@@ -290,59 +265,59 @@ namespace CocosSharp
             get
             {
                 return new CCSpriteFrame(
-                    m_pobTexture,
-                    m_obRect.PointsToPixels(),
-                    m_bRectRotated,
-                    m_obUnflippedOffsetPositionFromCenter.PointsToPixels(),
+                    texture,
+                    textureRect.PointsToPixels(),
+                    IsTextureRectRotated,
+                    unflippedOffsetPositionFromCenter.PointsToPixels(),
                     contentSize.PointsToPixels()
                     );
             }
             set
             {
-                m_obUnflippedOffsetPositionFromCenter = value.Offset;
+                unflippedOffsetPositionFromCenter = value.Offset;
 
                 CCTexture2D pNewTexture = value.Texture;
                 // update texture before updating texture rect
-                if (pNewTexture != m_pobTexture)
+                if (pNewTexture != texture)
                 {
                     Texture = pNewTexture;
                 }
 
                 // update rect
-                m_bRectRotated = value.IsRotated;
-                SetTextureRect(value.Rect, m_bRectRotated, value.OriginalSize);
+                IsTextureRectRotated = value.IsRotated;
+                SetTextureRect(value.Rect, IsTextureRectRotated, value.OriginalSize);
             }
         }
 
         public CCSpriteBatchNode BatchNode
         {
-            get { return m_pobBatchNode; }
+            get { return batchNode; }
             set
             {
-                m_pobBatchNode = value;
+                batchNode = value;
 
                 if (value == null)
                 {
-                    m_uAtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
-                    m_pobTextureAtlas = null;
-                    m_bRecursiveDirty = false;
+                    AtlasIndex = CCMacros.CCSpriteIndexNotInitialized;
+                    textureAtlas = null;
+                    recursiveDirty = false;
                     Dirty = false;
 
-                    float x1 = m_obOffsetPosition.X;
-                    float y1 = m_obOffsetPosition.Y;
-                    float x2 = x1 + m_obRect.Size.Width;
-                    float y2 = y1 + m_obRect.Size.Height;
+                    float x1 = OffsetPosition.X;
+                    float y1 = OffsetPosition.Y;
+                    float x2 = x1 + textureRect.Size.Width;
+                    float y2 = y1 + textureRect.Size.Height;
 
-                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
-                    m_sQuad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
-                    m_sQuad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
-                    m_sQuad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
+                    Quad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
+                    Quad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
+                    Quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
+                    Quad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
                 }
                 else
                 {
                     // using batch
-                    m_transformToBatch = CCAffineTransform.Identity;
-                    m_pobTextureAtlas = m_pobBatchNode.TextureAtlas; // weak ref
+                    transformToBatch = CCAffineTransform.Identity;
+                    textureAtlas = batchNode.TextureAtlas; // weak ref
                 }
             }
         }
@@ -360,28 +335,28 @@ namespace CocosSharp
         {
             var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
 
-            if (m_bOpacityModifyRGB)
+            if (opacityModifyRGB)
             {
                 color4 *= (DisplayedOpacity / 255.0f);
             }
 
-            m_sQuad.BottomLeft.Colors = color4;
-            m_sQuad.BottomRight.Colors = color4;
-            m_sQuad.TopLeft.Colors = color4;
-            m_sQuad.TopRight.Colors = color4;
+            Quad.BottomLeft.Colors = color4;
+            Quad.BottomRight.Colors = color4;
+            Quad.TopLeft.Colors = color4;
+            Quad.TopRight.Colors = color4;
 
             // renders using Sprite Manager
-            if (m_pobBatchNode != null)
+            if (batchNode != null)
             {
-                if (m_uAtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
+                if (AtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
                 {
-                    m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
+                    textureAtlas.UpdateQuad(ref Quad, AtlasIndex);
                 }
                 else
                 {
                     // no need to set it recursively
                     // update dirty_, don't update recursiveDirty_
-                    m_bDirty = true;
+					dirty = true;
                 }
             }
 
@@ -411,12 +386,12 @@ namespace CocosSharp
 
         public override bool IsColorModifiedByOpacity
         {
-            get { return m_bOpacityModifyRGB; }
+            get { return opacityModifyRGB; }
             set
             {
-                if (m_bOpacityModifyRGB != value)
+                if (opacityModifyRGB != value)
                 {
-                    m_bOpacityModifyRGB = value;
+                    opacityModifyRGB = value;
                     UpdateColor();
                 }
             }
@@ -440,22 +415,22 @@ namespace CocosSharp
 
         public CCBlendFunc BlendFunc
         {
-            get { return m_sBlendFunc; }
-            set { m_sBlendFunc = value; }
+            get { return blendFunc; }
+            set { blendFunc = value; }
         }
 
         public virtual CCTexture2D Texture
         {
-            get { return m_pobTexture; }
+            get { return texture; }
             set
             {
                 // If batchnode, then texture id should be the same
-                Debug.Assert(m_pobBatchNode == null || value.Name == m_pobBatchNode.Texture.Name,
+                Debug.Assert(batchNode == null || value.Name == batchNode.Texture.Name,
                              "CCSprite: Batched sprites should use the same texture as the batchnode");
 
-                if (m_pobBatchNode == null && m_pobTexture != value)
+                if (batchNode == null && texture != value)
                 {
-                    m_pobTexture = value;
+                    texture = value;
                     UpdateBlendFunc();
                 }
             }
@@ -493,36 +468,36 @@ namespace CocosSharp
         // Used externally by non-subclasses
 		internal void InitWithTexture(CCTexture2D pTexture, CCRect? rect=null, bool rotated=false)
         {
-            m_pobBatchNode = null;
+            batchNode = null;
 
             // shader program
             //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
 
-            m_bRecursiveDirty = false;
+            recursiveDirty = false;
             Dirty = false;
 
-            m_bOpacityModifyRGB = true;
-            m_sBlendFunc = CCBlendFunc.AlphaBlend;
+            opacityModifyRGB = true;
+            blendFunc = CCBlendFunc.AlphaBlend;
 
-            m_bFlipX = m_bFlipY = false;
+            flipX = flipY = false;
 
             // default transform anchor: center
             AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             // zwoptex default values
-            m_obOffsetPosition = CCPoint.Zero;
+            OffsetPosition = CCPoint.Zero;
 
-            m_bHasChildren = false;
+            hasChildren = false;
 
             // clean the Quad
-            m_sQuad = new CCV3F_C4B_T2F_Quad();
+            Quad = new CCV3F_C4B_T2F_Quad();
 
             // Atlas: Color
             var tmpColor = new CCColor4B(255, 255, 255, 255);
-            m_sQuad.BottomLeft.Colors = tmpColor;
-            m_sQuad.BottomRight.Colors = tmpColor;
-            m_sQuad.TopLeft.Colors = tmpColor;
-            m_sQuad.TopRight.Colors = tmpColor;
+            Quad.BottomLeft.Colors = tmpColor;
+            Quad.BottomRight.Colors = tmpColor;
+            Quad.TopLeft.Colors = tmpColor;
+            Quad.TopRight.Colors = tmpColor;
 
             // update texture (calls updateBlendFunc)
             Texture = pTexture;
@@ -550,7 +525,7 @@ namespace CocosSharp
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
-            m_TextureFile = fileName;
+            textureFile = fileName;
 
             // Try sprite frame cache first
             CCSpriteFrame pFrame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(fileName);
@@ -577,29 +552,30 @@ namespace CocosSharp
 
         public void SetTextureRect(CCRect value, bool rotated, CCSize untrimmedSize)
         {
-            m_bRectRotated = rotated;
+            IsTextureRectRotated = rotated;
 
             ContentSize = untrimmedSize;
             SetVertexRect(value);
             SetTextureCoords(value);
 
-            CCPoint relativeOffset = m_obUnflippedOffsetPositionFromCenter;
+            CCPoint relativeOffset = unflippedOffsetPositionFromCenter;
 
             // issue #732
-            if (m_bFlipX)
+            if (flipX)
             {
                 relativeOffset.X = -relativeOffset.X;
             }
-            if (m_bFlipY)
+            if (flipY)
             {
                 relativeOffset.Y = -relativeOffset.Y;
             }
 
-            m_obOffsetPosition.X = relativeOffset.X + (contentSize.Width - m_obRect.Size.Width) / 2;
-            m_obOffsetPosition.Y = relativeOffset.Y + (contentSize.Height - m_obRect.Size.Height) / 2;
+			OffsetPosition = new CCPoint (
+				relativeOffset.X + (contentSize.Width - textureRect.Size.Width) / 2,
+				relativeOffset.Y + (contentSize.Height - textureRect.Size.Height) / 2);
 
             // rendering using batch node
-            if (m_pobBatchNode != null)
+            if (batchNode != null)
             {
                 // update dirty_, don't update recursiveDirty_
                 Dirty = true;
@@ -609,30 +585,30 @@ namespace CocosSharp
                 // self rendering
 
                 // Atlas: Vertex
-                float x1 = 0 + m_obOffsetPosition.X;
-                float y1 = 0 + m_obOffsetPosition.Y;
-                float x2 = x1 + m_obRect.Size.Width;
-                float y2 = y1 + m_obRect.Size.Height;
+                float x1 = 0 + OffsetPosition.X;
+                float y1 = 0 + OffsetPosition.Y;
+                float x2 = x1 + textureRect.Size.Width;
+                float y2 = y1 + textureRect.Size.Height;
 
                 // Don't update Z.
-                m_sQuad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
-                m_sQuad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
-                m_sQuad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
-                m_sQuad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
+                Quad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
+                Quad.BottomRight.Vertices = new CCVertex3F(x2, y1, 0);
+                Quad.TopLeft.Vertices = new CCVertex3F(x1, y2, 0);
+                Quad.TopRight.Vertices = new CCVertex3F(x2, y2, 0);
             }
         }
 
         // override this method to generate "double scale" sprites
         protected virtual void SetVertexRect(CCRect rect)
         {
-            m_obRect = rect;
+            textureRect = rect;
         }
 
         private void SetTextureCoords(CCRect rect)
         {
             rect = rect.PointsToPixels();
 
-            CCTexture2D tex = m_pobBatchNode != null ? m_pobTextureAtlas.Texture : m_pobTexture;
+            CCTexture2D tex = batchNode != null ? textureAtlas.Texture : texture;
             if (tex == null)
             {
                 return;
@@ -643,7 +619,7 @@ namespace CocosSharp
 
             float left, right, top, bottom;
 
-            if (m_bRectRotated)
+            if (IsTextureRectRotated)
             {
 #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
                 left = (2 * rect.Origin.X + 1) / (2 * atlasWidth);
@@ -657,24 +633,24 @@ namespace CocosSharp
                 bottom = (rect.Origin.Y + rect.Size.Width) / atlasHeight;
 #endif
 
-                if (m_bFlipX)
+                if (flipX)
                 {
                     CCMacros.CCSwap(ref top, ref bottom);
                 }
 
-                if (m_bFlipY)
+                if (flipY)
                 {
                     CCMacros.CCSwap(ref left, ref right);
                 }
 
-                m_sQuad.BottomLeft.TexCoords.U = left;
-                m_sQuad.BottomLeft.TexCoords.V = top;
-                m_sQuad.BottomRight.TexCoords.U = left;
-                m_sQuad.BottomRight.TexCoords.V = bottom;
-                m_sQuad.TopLeft.TexCoords.U = right;
-                m_sQuad.TopLeft.TexCoords.V = top;
-                m_sQuad.TopRight.TexCoords.U = right;
-                m_sQuad.TopRight.TexCoords.V = bottom;
+                Quad.BottomLeft.TexCoords.U = left;
+                Quad.BottomLeft.TexCoords.V = top;
+                Quad.BottomRight.TexCoords.U = left;
+                Quad.BottomRight.TexCoords.V = bottom;
+                Quad.TopLeft.TexCoords.U = right;
+                Quad.TopLeft.TexCoords.V = top;
+                Quad.TopRight.TexCoords.U = right;
+                Quad.TopRight.TexCoords.V = bottom;
             }
             else
             {
@@ -690,30 +666,30 @@ namespace CocosSharp
                 bottom = (rect.Origin.Y + rect.Size.Height) / atlasHeight;
 #endif
 
-                if (m_bFlipX)
+                if (flipX)
                 {
                     CCMacros.CCSwap(ref left, ref right);
                 }
 
-                if (m_bFlipY)
+                if (flipY)
                 {
                     CCMacros.CCSwap(ref top, ref bottom);
                 }
 
-                m_sQuad.BottomLeft.TexCoords.U = left;
-                m_sQuad.BottomLeft.TexCoords.V = bottom;
-                m_sQuad.BottomRight.TexCoords.U = right;
-                m_sQuad.BottomRight.TexCoords.V = bottom;
-                m_sQuad.TopLeft.TexCoords.U = left;
-                m_sQuad.TopLeft.TexCoords.V = top;
-                m_sQuad.TopRight.TexCoords.U = right;
-                m_sQuad.TopRight.TexCoords.V = top;
+                Quad.BottomLeft.TexCoords.U = left;
+                Quad.BottomLeft.TexCoords.V = bottom;
+                Quad.BottomRight.TexCoords.U = right;
+                Quad.BottomRight.TexCoords.V = bottom;
+                Quad.TopLeft.TexCoords.U = left;
+                Quad.TopLeft.TexCoords.V = top;
+                Quad.TopRight.TexCoords.U = right;
+                Quad.TopRight.TexCoords.V = top;
             }
         }
 
         public override void UpdateTransform()
         {
-            Debug.Assert(m_pobBatchNode != null,
+            Debug.Assert(batchNode != null,
                          "updateTransform is only valid when CCSprite is being rendered using an CCSpriteBatchNode");
 
             // recaculate matrix only if it is dirty
@@ -721,47 +697,47 @@ namespace CocosSharp
             {
                 // If it is not visible, or one of its ancestors is not visible, then do nothing:
                 if (!Visible ||
-                    (Parent != null && Parent != m_pobBatchNode && ((CCSprite)Parent).m_bShouldBeHidden))
+                    (Parent != null && Parent != batchNode && ((CCSprite)Parent).shouldBeHidden))
                 {
-                    m_sQuad.BottomRight.Vertices =
-                        m_sQuad.TopLeft.Vertices = m_sQuad.TopRight.Vertices = m_sQuad.BottomLeft.Vertices = new CCVertex3F(0, 0, 0);
-                    m_bShouldBeHidden = true;
+                    Quad.BottomRight.Vertices =
+                        Quad.TopLeft.Vertices = Quad.TopRight.Vertices = Quad.BottomLeft.Vertices = new CCVertex3F(0, 0, 0);
+                    shouldBeHidden = true;
                 }
                 else
                 {
-                    m_bShouldBeHidden = false;
+                    shouldBeHidden = false;
 
-                    if (Parent == null || Parent == m_pobBatchNode)
+                    if (Parent == null || Parent == batchNode)
                     {
-                        m_transformToBatch = NodeToParentTransform();
+                        transformToBatch = NodeToParentTransform();
                     }
                     else
                     {
                         Debug.Assert((Parent as CCSprite) != null,
                                      "Logic error in CCSprite. Parent must be a CCSprite");
-                        m_transformToBatch = CCAffineTransform.Concat(NodeToParentTransform(),
+                        transformToBatch = CCAffineTransform.Concat(NodeToParentTransform(),
                                                                                        ((CCSprite)Parent).
-                                                                                           m_transformToBatch);
+                                                                                           transformToBatch);
                     }
 
                     //
                     // calculate the Quad based on the Affine Matrix
                     //
 
-                    CCSize size = m_obRect.Size;
+                    CCSize size = textureRect.Size;
 
-                    float x1 = m_obOffsetPosition.X;
-                    float y1 = m_obOffsetPosition.Y;
+                    float x1 = OffsetPosition.X;
+                    float y1 = OffsetPosition.Y;
 
                     float x2 = x1 + size.Width;
                     float y2 = y1 + size.Height;
-                    float x = m_transformToBatch.tx;
-                    float y = m_transformToBatch.ty;
+                    float x = transformToBatch.tx;
+                    float y = transformToBatch.ty;
 
-                    float cr = m_transformToBatch.a;
-                    float sr = m_transformToBatch.b;
-                    float cr2 = m_transformToBatch.d;
-                    float sr2 = -m_transformToBatch.c;
+                    float cr = transformToBatch.a;
+                    float sr = transformToBatch.b;
+                    float cr2 = transformToBatch.d;
+                    float sr2 = -transformToBatch.c;
                     float ax = x1 * cr - y1 * sr2 + x;
                     float ay = x1 * sr + y1 * cr2 + y;
 
@@ -774,22 +750,22 @@ namespace CocosSharp
                     float dx = x1 * cr - y2 * sr2 + x;
                     float dy = x1 * sr + y2 * cr2 + y;
 
-                    m_sQuad.BottomLeft.Vertices = new CCVertex3F(ax, ay, VertexZ);
-                    m_sQuad.BottomRight.Vertices = new CCVertex3F(bx, by, VertexZ);
-                    m_sQuad.TopLeft.Vertices = new CCVertex3F(dx, dy, VertexZ);
-                    m_sQuad.TopRight.Vertices = new CCVertex3F(cx, cy, VertexZ);
+                    Quad.BottomLeft.Vertices = new CCVertex3F(ax, ay, VertexZ);
+                    Quad.BottomRight.Vertices = new CCVertex3F(bx, by, VertexZ);
+                    Quad.TopLeft.Vertices = new CCVertex3F(dx, dy, VertexZ);
+                    Quad.TopRight.Vertices = new CCVertex3F(cx, cy, VertexZ);
                 }
 
-                m_pobTextureAtlas.UpdateQuad(ref m_sQuad, m_uAtlasIndex);
-                m_bRecursiveDirty = false;
-                m_bDirty = false;
+                textureAtlas.UpdateQuad(ref Quad, AtlasIndex);
+                recursiveDirty = false;
+				dirty = false;
             }
 
             // recursively iterate over children
-            if (m_bHasChildren)
+            if (hasChildren)
             {
                 CCNode[] elements = Children.Elements;
-                if (m_pobBatchNode != null)
+                if (batchNode != null)
                 {
                     for (int i = 0, count = Children.count; i < count; i++)
                     {
@@ -812,25 +788,25 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            Debug.Assert(m_pobBatchNode == null);
+            Debug.Assert(batchNode == null);
 
-            CCDrawManager.BlendFunc(m_sBlendFunc);
+            CCDrawManager.BlendFunc(blendFunc);
             CCDrawManager.BindTexture(Texture);
-            CCDrawManager.DrawQuad(ref m_sQuad);
+            CCDrawManager.DrawQuad(ref Quad);
         }
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
             Debug.Assert(child != null, "Argument must be non-NULL");
 
-            if (m_pobBatchNode != null)
+            if (batchNode != null)
             {
                 var sprite = child as CCSprite;
 
                 Debug.Assert(sprite != null, "CCSprite only supports CCSprites as children when using CCSpriteBatchNode");
-                Debug.Assert(sprite.Texture.Name == m_pobTextureAtlas.Texture.Name);
+                Debug.Assert(sprite.Texture.Name == textureAtlas.Texture.Name);
 
-                m_pobBatchNode.AppendChild(sprite);
+                batchNode.AppendChild(sprite);
 
                 if (!IsReorderChildDirty)
                 {
@@ -839,7 +815,7 @@ namespace CocosSharp
             }
 
             base.AddChild(child, zOrder, tag);
-            m_bHasChildren = true;
+            hasChildren = true;
         }
 
         public override void ReorderChild(CCNode child, int zOrder)
@@ -852,10 +828,10 @@ namespace CocosSharp
                 return;
             }
 
-            if (m_pobBatchNode != null && !IsReorderChildDirty)
+            if (batchNode != null && !IsReorderChildDirty)
             {
                 SetReorderChildDirtyRecursively();
-                m_pobBatchNode.ReorderBatch(true);
+                batchNode.ReorderBatch(true);
             }
 
             base.ReorderChild(child, zOrder);
@@ -863,9 +839,9 @@ namespace CocosSharp
 
         public override void RemoveChild(CCNode child, bool cleanup)
         {
-            if (m_pobBatchNode != null)
+            if (batchNode != null)
             {
-                m_pobBatchNode.RemoveSpriteFromAtlas((CCSprite)(child));
+                batchNode.RemoveSpriteFromAtlas((CCSprite)(child));
             }
 
             base.RemoveChild(child, cleanup);
@@ -873,9 +849,9 @@ namespace CocosSharp
 
         public override void RemoveAllChildrenWithCleanup(bool cleanup)
         {
-            if (m_pobBatchNode != null)
+            if (batchNode != null)
             {
-                CCSpriteBatchNode batch = m_pobBatchNode;
+                CCSpriteBatchNode batch = batchNode;
                 CCNode[] elements = Children.Elements;
                 for (int i = 0, count = Children.count; i < count; i++)
                 {
@@ -885,7 +861,7 @@ namespace CocosSharp
 
             base.RemoveAllChildrenWithCleanup(cleanup);
 
-            m_bHasChildren = false;
+            hasChildren = false;
         }
 
         public override void SortAllChildren()
@@ -897,7 +873,7 @@ namespace CocosSharp
 
                 Array.Sort(elements, 0, count, this);
 
-                if (m_pobBatchNode != null)
+                if (batchNode != null)
                 {
                     for (int i = 0; i < count; i++)
                     {
@@ -916,7 +892,7 @@ namespace CocosSharp
             {
                 IsReorderChildDirty = true;
                 CCNode node = Parent;
-                while (node != null && node != m_pobBatchNode)
+                while (node != null && node != batchNode)
                 {
                     ((CCSprite)node).SetReorderChildDirtyRecursively();
                     node = node.Parent;
@@ -926,10 +902,10 @@ namespace CocosSharp
 
         public virtual void SetDirtyRecursively(bool bValue)
         {
-            m_bDirty = m_bRecursiveDirty = bValue;
+			dirty = recursiveDirty = bValue;
 
             // recursively set dirty
-            if (m_bHasChildren)
+            if (hasChildren)
             {
                 CCNode[] elements = Children.Elements;
                 for (int i = 0, count = Children.count; i < count; i++)
@@ -943,12 +919,12 @@ namespace CocosSharp
             }
         }
 
-        private void SET_DIRTY_RECURSIVELY()
+        private void SetDirtyRecursively()
         {
-            if (m_pobBatchNode != null && !m_bRecursiveDirty)
+            if (batchNode != null && !recursiveDirty)
             {
-                m_bDirty = m_bRecursiveDirty = true;
-                if (m_bHasChildren)
+				dirty = recursiveDirty = true;
+                if (hasChildren)
                 {
                     SetDirtyRecursively(true);
                 }
@@ -976,26 +952,26 @@ namespace CocosSharp
             CCRect r = pFrame.Rect;
 
             return (
-                       CCRect.Equal(ref r, ref m_obRect) &&
-                       pFrame.Texture.Name == m_pobTexture.Name &&
-                       pFrame.Offset.Equals(m_obUnflippedOffsetPositionFromCenter)
+                       CCRect.Equal(ref r, ref textureRect) &&
+                       pFrame.Texture.Name == texture.Name &&
+                       pFrame.Offset.Equals(unflippedOffsetPositionFromCenter)
                    );
         }
 
         protected void UpdateBlendFunc()
         {
-            Debug.Assert(m_pobBatchNode == null,
+            Debug.Assert(batchNode == null,
                          "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
 
             // it's possible to have an untextured sprite
-            if (m_pobTexture == null || !m_pobTexture.HasPremultipliedAlpha)
+            if (texture == null || !texture.HasPremultipliedAlpha)
             {
-                m_sBlendFunc = CCBlendFunc.NonPremultiplied;
+                blendFunc = CCBlendFunc.NonPremultiplied;
                 IsColorModifiedByOpacity = false;
             }
             else
             {
-                m_sBlendFunc = CCBlendFunc.AlphaBlend;
+                blendFunc = CCBlendFunc.AlphaBlend;
                 IsColorModifiedByOpacity = true;
             }
         }
