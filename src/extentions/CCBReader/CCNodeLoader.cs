@@ -636,9 +636,9 @@ namespace CocosSharp
             if (!String.IsNullOrEmpty(animation))
             {
                 CCAnimationCache animationCache = CCAnimationCache.SharedAnimationCache;
-                animationCache.AddAnimationsWithFile(animationFile);
+                animationCache.AddAnimations(animationFile);
 
-                ccAnimation = animationCache.AnimationByName(animation);
+                ccAnimation = animationCache[animation];
             }
             return ccAnimation;
         }

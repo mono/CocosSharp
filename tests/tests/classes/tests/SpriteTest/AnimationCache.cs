@@ -69,11 +69,11 @@ namespace tests
 
             CCAnimationCache animCache = CCAnimationCache.SharedAnimationCache;
 
-            CCAnimation normal = animCache.AnimationByName("dance");
+            CCAnimation normal = animCache["dance"];
             normal.RestoreOriginalFrame = true;
-            CCAnimation dance_grey = animCache.AnimationByName("dance_gray");
+            CCAnimation dance_grey = animCache["dance_gray"];
             dance_grey.RestoreOriginalFrame = true;
-            CCAnimation dance_blue = animCache.AnimationByName("dance_blue");
+            CCAnimation dance_blue = animCache["dance_blue"];
             dance_blue.RestoreOriginalFrame = true;
 
             CCAnimate animN = new CCAnimate (normal);

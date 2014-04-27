@@ -5,19 +5,22 @@ namespace CocosSharp
 {
     public class CCAnimationCache 
     {
-        private static CCAnimationCache s_pSharedAnimationCache;
-        private Dictionary<string, CCAnimation> m_pAnimations;
+        static CCAnimationCache sharedAnimationCache;
+        Dictionary<string, CCAnimation> animations;
+
+
+        #region Properties
 
         public static CCAnimationCache SharedAnimationCache
         {
             get
             {
-                if (s_pSharedAnimationCache == null)
+                if (sharedAnimationCache == null)
                 {
-                    s_pSharedAnimationCache = new CCAnimationCache();
+                    sharedAnimationCache = new CCAnimationCache();
                 }
 
-                return s_pSharedAnimationCache;
+                return sharedAnimationCache;
             }
         }
 
@@ -25,18 +28,22 @@ namespace CocosSharp
         {
             get
             {
-                return (AnimationByName(index));
+                CCAnimation retValue;
+                animations.TryGetValue(index, out retValue);
+                return retValue;
             }
             set
             {
-                m_pAnimations[index] = value;
+                animations[index] = value;
             }
         }
 
         public static void PurgeSharedAnimationCache()
         {
-            s_pSharedAnimationCache = null;
+            sharedAnimationCache = null;
         }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -44,7 +51,7 @@ namespace CocosSharp
         // Singleton, so ensure users only call SharedAnimationCache to get instance
         protected CCAnimationCache()
         {
-            m_pAnimations = new Dictionary<string, CCAnimation>();
+            animations = new Dictionary<string, CCAnimation>();
         }
 
         #endregion Constructors
@@ -52,31 +59,25 @@ namespace CocosSharp
 
         public void AddAnimation(CCAnimation animation, string name)
         {
-            if (!m_pAnimations.ContainsKey(name))
+            if (!animations.ContainsKey(name))
             {
-                m_pAnimations.Add(name, animation);
+                animations.Add(name, animation);
             }
         }
 
-        public void RemoveAnimationByName(string name)
+        public void RemoveAnimation(string animationName)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(animationName))
             {
                 return;
             }
-            m_pAnimations.Remove(name);
+
+            animations.Remove(animationName);
         }
 
-        public CCAnimation AnimationByName(string name)
+        public void AddAnimations(PlistDictionary animationDict)
         {
-            CCAnimation retValue;
-            m_pAnimations.TryGetValue(name, out retValue);
-            return retValue;
-        }
-
-        public void AddAnimationsWithDictionary(PlistDictionary dictionary)
-        {
-            PlistDictionary animations = dictionary["animations"].AsDictionary;
+            PlistDictionary animations = animationDict["animations"].AsDictionary;
 
             if (animations == null)
             {
@@ -84,7 +85,7 @@ namespace CocosSharp
                 return;
             }
 
-            PlistDictionary properties = dictionary["properties"].AsDictionary;
+            PlistDictionary properties = animationDict["properties"].AsDictionary;
             if (properties != null)
             {
                 int version = properties["format"].AsInt;
@@ -113,20 +114,22 @@ namespace CocosSharp
             }
         }
 
-        public void AddAnimationsWithFile(string plist)
+        public void AddAnimations(string plistFilename)
         {
-            Debug.Assert(!string.IsNullOrEmpty(plist), "Invalid texture file name");
+            Debug.Assert(!string.IsNullOrEmpty(plistFilename), "Invalid texture file name");
 
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFilename);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
             Debug.Assert(dict != null, "CCAnimationCache: File could not be found");
 
-            AddAnimationsWithDictionary(dict);
+            this.AddAnimations(dict);
         }
 
-        private void ParseVersion1(PlistDictionary animations)
+        #region Parsing plist animation dict
+
+        void ParseVersion1(PlistDictionary animations)
         {
             CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
 
@@ -136,7 +139,6 @@ namespace CocosSharp
 
                 PlistArray frameNames = animationDict["frames"].AsArray;
                 float delay = animationDict["delay"].AsFloat;
-                //CCAnimation* animation = NULL;
 
                 if (frameNames == null)
                 {
@@ -185,7 +187,7 @@ namespace CocosSharp
             }
         }
 
-        private void ParseVersion2(PlistDictionary animations)
+        void ParseVersion2(PlistDictionary animations)
         {
             CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
 
@@ -242,5 +244,7 @@ namespace CocosSharp
                 SharedAnimationCache.AddAnimation(animation, name);
             }
         }
+
+        #endregion Parsing plist animation dict
     }
 }

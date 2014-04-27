@@ -931,7 +931,7 @@ namespace CocosSharp
             Debug.Assert(!String.IsNullOrEmpty(animationName),
                          "CCSprite#setDisplayFrameWithAnimationName. animationName must not be NULL");
 
-            CCAnimation a = CCAnimationCache.SharedAnimationCache.AnimationByName(animationName);
+            CCAnimation a = CCAnimationCache.SharedAnimationCache[animationName];
 
             Debug.Assert(a != null, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
 

@@ -883,8 +883,8 @@ namespace tests
             //
             // With 2 loops and reverse
             var cache = CCAnimationCache.SharedAnimationCache;
-            cache.AddAnimationsWithFile("animations/animations-2.plist");
-            var animation2 = cache.AnimationByName("dance_1");
+            cache.AddAnimations("animations/animations-2.plist");
+            var animation2 = cache["dance_1"];
 
             var action2 = new CCAnimate (animation2);
             m_tamara.RunAction(new CCSequence(action2, action2.Reverse()));
