@@ -181,11 +181,11 @@ namespace CocosSharp
 
                 // add sprite frame
                 string key = pair.Key;
-                if (!allowFrameOverwrite && spriteFrames.ContainsKey(key))
+                if (!AllowFrameOverwrite && spriteFrames.ContainsKey(key))
                 {
                     CCLog.Log("Frame named " + key + " already exists in the animation cache. Not overwriting existing record.");
                 }
-                else if (allowFrameOverwrite || !spriteFrames.ContainsKey(key))
+                else if (AllowFrameOverwrite || !spriteFrames.ContainsKey(key))
                 {
                     spriteFrames[key] = spriteFrame;
                 }
@@ -284,7 +284,7 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSpriteFrame frame, string frameName)
         {
-            if (!allowFrameOverwrite && spriteFrames.ContainsKey(frameName))
+            if (!AllowFrameOverwrite && spriteFrames.ContainsKey(frameName))
             {
                 throw (new ArgumentException("The frame named " + frameName + " already exists."));
             }
