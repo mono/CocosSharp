@@ -12,45 +12,51 @@ namespace CocosSharp
     /// </summary>
     public class CCMaskedSprite : CCSprite
     {
+
+        #region Properties
+
+        public virtual byte[] CollisionMask { get; private set; }
+
+        #endregion Properties
+
+
         #region Constructors
 
-        public CCMaskedSprite (CCTexture2D texture, byte[] mask) : base(texture)
-        {
-            _MyMask = mask;
-        }
-
-        public CCMaskedSprite(CCTexture2D texture, CCRect rect, byte[] mask)
+        // via texture
+        public CCMaskedSprite(CCTexture2D texture, CCRect? rect, byte[] mask)
             : base(texture, rect)
         {
-            _MyMask = mask;
+            CollisionMask = mask;
+        }
+
+        public CCMaskedSprite (CCTexture2D texture, byte[] mask) 
+            : this(texture, null, mask)
+        {
+        }
+
+        // via file
+        public CCMaskedSprite(string fileName, CCRect? rect, byte[] mask)
+            : base(fileName, rect)
+        {
+            CollisionMask = mask;
         }
 
         public CCMaskedSprite(string fileName, byte[] mask)
-            : base(fileName)
+            : this(fileName, null, mask)
         {
-            _MyMask = mask;
         }
 
-        public CCMaskedSprite(string fileName, CCRect rect, byte[] mask)
-            : base(fileName, rect)
-        {
-            _MyMask = mask;
-        }
-
+        // via sprite frame
         public CCMaskedSprite(CCSpriteFrame pSpriteFrame, byte[] mask)
             : base(pSpriteFrame)
         {
-            _MyMask = mask;
-        }
-
-        public CCMaskedSprite()
-        {
+            CollisionMask = mask;
         }
 
         #endregion Constructors
 
 
-        #region Sprite Collission
+        #region Sprite collision
 
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
@@ -104,24 +110,10 @@ namespace CocosSharp
                     }
                 }
             }
+
             return false;
         }
 
-        /// <summary>
-        /// This is the feature mask for the sprite.
-        /// </summary>
-        private byte[] _MyMask;
-
-        public virtual byte[] CollisionMask
-        {
-			get { 
-                return (_MyMask);
-            }
-            set {
-                _MyMask = value;
-                // Check the size?
-            }
-        }
-        #endregion
+        #endregion Sprite collision
     }
 }
