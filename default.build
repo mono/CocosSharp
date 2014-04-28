@@ -161,6 +161,9 @@
       <mkdir dir="${packages.dir.path}" />
 
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.DX.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.GL.nuspec" -OutputDirectory "${packages.dir.path}"' />
+      <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.PCL.XNA.nuspec" -OutputDirectory "${packages.dir.path}"' />
 
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsGL.nuspec" -OutputDirectory "${packages.dir.path}"' />
