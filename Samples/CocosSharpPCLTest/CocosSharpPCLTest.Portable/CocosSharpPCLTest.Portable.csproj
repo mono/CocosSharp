@@ -36,12 +36,4 @@
     <Compile Include="TestClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <ItemGroup>
-    <Reference Include="CocosSharp">
-      <HintPath>..\CocosSharpPCLTest.MacBuild\packages\CocosSharp.PCL.Shared.MacOS.1.0.0.0\lib\portable-net40+sl50+win8+wp8+MonoAndroid10+MonoTouch10\CocosSharp.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
 </Project>

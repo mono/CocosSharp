@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.MonoMac",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.Portable", "..\CocosSharpPCLTest.Portable\CocosSharpPCLTest.Portable.csproj", "{2DD4E22B-8A58-473E-8571-6736457D7B83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.iOS", "CocosSharpPCLTest.iOS\CocosSharpPCLTest.iOS.csproj", "{8FF8DF71-B228-4C62-A187-AB02F35027B1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.iOS", "..\CocosSharpPCLTest.iOS\CocosSharpPCLTest.iOS.csproj", "{8FF8DF71-B228-4C62-A187-AB02F35027B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.Android", "CocosSharpPCLTest.Android\CocosSharpPCLTest.Android.csproj", "{9A6E1475-23B6-48AD-BE5F-B5C2BC3A4B1F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharpPCLTest.Android", "..\CocosSharpPCLTest.Android\CocosSharpPCLTest.Android.csproj", "{9A6E1475-23B6-48AD-BE5F-B5C2BC3A4B1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
