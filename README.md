@@ -41,10 +41,8 @@ To make changes in a submodule
 
    cd <submodule>
 
-   # By default, submodules are detached because they point to a
-   # specific commit. Use git-checkout to put yourself back on a
-   # branch.
-   #
+   * By default, submodules are detached because they point to a specific commit. Use git-checkout to put yourself back on a branch.
+   
    git checkout <branch>
 
    work as normal, the submodule is a normal repo
