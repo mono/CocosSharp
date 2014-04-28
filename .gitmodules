@@ -1,7 +1,7 @@
 [submodule "MonoGame"]
 	path = MonoGame
-	url = git://github.com/Cocos2DXNA/MonoGame.git
-	branch = develop
+url=git://github.com/mono/MonoGame.git
+	branch = xamarin
 
 [submodule "tools/ouya"]
 
