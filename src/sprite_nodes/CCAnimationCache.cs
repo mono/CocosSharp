@@ -11,7 +11,7 @@ namespace CocosSharp
 
         #region Properties
 
-        public static CCAnimationCache SharedAnimationCache
+        public static CCAnimationCache Instance
         {
             get
             {
@@ -94,7 +94,7 @@ namespace CocosSharp
                 foreach (PlistObjectBase pObj in spritesheets)
                 {
                     string name = pObj.AsString;
-                    CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile(name);
+                    CCSpriteFrameCache.Instance.AddSpriteFramesWithFile(name);
                 }
 
                 switch (version)
@@ -131,7 +131,7 @@ namespace CocosSharp
 
         void ParseVersion1(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
+            CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
 
             foreach (var pElement in animations)
             {
@@ -183,13 +183,13 @@ namespace CocosSharp
 
                 CCAnimation animation = new CCAnimation(frames, delay, 1);
 
-                SharedAnimationCache.AddAnimation(animation, pElement.Key);
+                Instance.AddAnimation(animation, pElement.Key);
             }
         }
 
         void ParseVersion2(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
+            CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
 
             foreach (var pElement in animations)
             {
@@ -241,7 +241,7 @@ namespace CocosSharp
 
                 animation.RestoreOriginalFrame = restoreOriginalFrame;
 
-                SharedAnimationCache.AddAnimation(animation, name);
+                Instance.AddAnimation(animation, name);
             }
         }
 
