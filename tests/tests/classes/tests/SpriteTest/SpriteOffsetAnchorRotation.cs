@@ -11,9 +11,9 @@ namespace tests
         public SpriteOffsetAnchorRotation()
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.AddSpriteFramesWithFile("animations/grossini.plist");
-            cache.AddSpriteFramesWithFile("animations/grossini_gray.plist", "animations/grossini_gray");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.AddSpriteFrames("animations/grossini.plist");
+            cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 
             for (int i = 0; i < 3; i++)
             {
@@ -48,7 +48,7 @@ namespace tests
                 for (int j = 0; j < 14; j++)
                 {
                     str = string.Format("grossini_dance_{0:00}.png", j + 1);
-                    CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                    CCSpriteFrame frame = cache[str];
                     animFrames.Add(frame);
                 }
 
@@ -65,9 +65,9 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.RemoveSpriteFramesFromFile("animations/grossini.plist");
-            cache.RemoveSpriteFramesFromFile("animations/grossini_gray.plist");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.RemoveSpriteFrames("animations/grossini.plist");
+            cache.RemoveSpriteFrames("animations/grossini_gray.plist");
         }
 
         public override string title()

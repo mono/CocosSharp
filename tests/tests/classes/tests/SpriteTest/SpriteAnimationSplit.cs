@@ -52,7 +52,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.Instance.RemoveUnusedSpriteFrames();
         }
 
         public override string title()

@@ -882,7 +882,7 @@ namespace tests
             // File animation
             //
             // With 2 loops and reverse
-            var cache = CCAnimationCache.SharedAnimationCache;
+            var cache = CCAnimationCache.Instance;
             cache.AddAnimations("animations/animations-2.plist");
             var animation2 = cache["dance_1"];
 

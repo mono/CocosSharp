@@ -12,7 +12,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/ghosts.plist", "animations/ghosts");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
             CCNode aParent;
             CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
 

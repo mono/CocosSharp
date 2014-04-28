@@ -20,8 +20,8 @@ namespace tests
             // CCSpriteFrameCache is a cache of CCSpriteFrames
             // CCSpriteFrames each contain a texture id and a rect (frame).
 
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.AddSpriteFramesWithFile("animations/grossini-aliases.plist", "animations/grossini-aliases");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.AddSpriteFrames("animations/grossini-aliases.plist", "animations/grossini-aliases");
 
             //
             // Animation using Sprite batch
@@ -50,7 +50,7 @@ namespace tests
             {
                 // Obtain frames by alias name
                 str = string.Format("dance_{0:00}", i);
-                CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                CCSpriteFrame frame = cache[str];
                 animFrames.Add(frame);
             }
 

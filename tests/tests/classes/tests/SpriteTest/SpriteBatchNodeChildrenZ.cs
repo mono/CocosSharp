@@ -17,7 +17,7 @@ namespace tests
             CCSprite sprite1, sprite2, sprite3;
 
 
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini.plist");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini.plist");
 
             // test 1
             batch = new CCSpriteBatchNode("animations/grossini", 50);
@@ -91,7 +91,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.Instance.RemoveUnusedSpriteFrames();
         }
 
         public override string title()

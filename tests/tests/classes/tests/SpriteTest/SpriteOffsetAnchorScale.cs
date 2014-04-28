@@ -14,9 +14,9 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-                cache.AddSpriteFramesWithFile("animations/grossini.plist");
-                cache.AddSpriteFramesWithFile("animations/grossini_gray.plist", "animations/grossini_gray");
+                CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+                cache.AddSpriteFrames("animations/grossini.plist");
+                cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 
                 //
                 // Animation using Sprite BatchNode
@@ -58,7 +58,7 @@ namespace tests
                         temp = (j + 1).ToString();
                     }
                     str = string.Format("grossini_dance_{0}.png", temp);
-                    CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                    CCSpriteFrame frame = cache[str];
                     animFrames.Add(frame);
                 }
 
@@ -79,9 +79,9 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.RemoveSpriteFramesFromFile("animations/grossini.plist");
-            cache.RemoveSpriteFramesFromFile("animations/grossini_gray.plist");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.RemoveSpriteFrames("animations/grossini.plist");
+            cache.RemoveSpriteFrames("animations/grossini_gray.plist");
         }
 
         public override string title() 

@@ -14,9 +14,9 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-                cache.AddSpriteFramesWithFile("animations/grossini.plist");
-                cache.AddSpriteFramesWithFile("animations/grossini_gray.plist", "animations/grossini_gray");
+                CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+                cache.AddSpriteFrames("animations/grossini.plist");
+                cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 
                 //
                 // Animation using Sprite batch
@@ -49,7 +49,7 @@ namespace tests
                 for (int j = 0; j < 14; j++)
                 {
                     tmp = string.Format("grossini_dance_{0:00}.png", j + 1);
-                    CCSpriteFrame frame = cache.SpriteFrameByName(tmp);
+                    CCSpriteFrame frame = cache[tmp];
                     animFrames.Add(frame);
                 }
 

@@ -94,7 +94,7 @@ namespace CocosSharp
                 foreach (PlistObjectBase pObj in spritesheets)
                 {
                     string name = pObj.AsString;
-                    CCSpriteFrameCache.Instance.AddSpriteFramesWithFile(name);
+                    CCSpriteFrameCache.Instance.AddSpriteFrames(name);
                 }
 
                 switch (version)
@@ -153,7 +153,7 @@ namespace CocosSharp
                 foreach (PlistObjectBase pObj in frameNames)
                 {
                     string frameName = pObj.AsString;
-                    CCSpriteFrame spriteFrame = frameCache.SpriteFrameByName(frameName);
+                    CCSpriteFrame spriteFrame = frameCache[frameName];
 
                     if (spriteFrame == null)
                     {
@@ -217,7 +217,7 @@ namespace CocosSharp
                     PlistDictionary entry = pObj.AsDictionary;
 
                     string spriteFrameName = entry["spriteframe"].AsString;
-                    CCSpriteFrame spriteFrame = frameCache.SpriteFrameByName(spriteFrameName);
+                    CCSpriteFrame spriteFrame = frameCache[spriteFrameName];
 
                     if (spriteFrame == null)
                     {

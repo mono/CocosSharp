@@ -47,7 +47,7 @@ namespace CocosSharp
 			EventDispatcher.AddEventListener(touchListener, this);
 
             // Cache the sprites
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("extensions/CCControlColourPickerSpriteSheet.plist");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
 
             // Create the sprite batch node
             var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");

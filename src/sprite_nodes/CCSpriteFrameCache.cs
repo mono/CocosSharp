@@ -10,15 +10,17 @@ namespace CocosSharp
     public class CCSpriteFrameCache
     {
 		static CCSpriteFrameCache sharedSpriteFrameCache;
+
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
 
-		/// <summary>
-		/// When false, an exception is thrown if an animation frame is overwritten.
-		/// </summary>
+
+        #region Properties
+
+		// When false, an exception is thrown if an animation frame is overwritten.
 		public bool AllowFrameOverwrite { get; set; }
 
-        public static CCSpriteFrameCache SharedSpriteFrameCache
+        public static CCSpriteFrameCache Instance
         {
             get
             {
@@ -28,6 +30,37 @@ namespace CocosSharp
                 return sharedSpriteFrameCache;
             }
         }
+
+        // Get the sprite frame for the given frame name, or as an alias for the sprite frame name.
+        public CCSpriteFrame this[string name]
+        {
+            get
+            {
+                CCSpriteFrame frame;
+
+                if (!spriteFrames.TryGetValue(name, out frame))
+                {
+                    // try alias dictionary
+                    string key;
+                    if (spriteFramesAliases.TryGetValue(name, out key))
+                    {
+                        if (!spriteFrames.TryGetValue(key, out frame))
+                        {
+                            CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", name);
+                        }
+                    }
+                }
+
+                if (frame != null)
+                {
+                    CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
+                }
+                return frame;
+            }
+        }
+
+        #endregion Properties
+
 
         #region Constructors
 
@@ -41,7 +74,9 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public void AddSpriteFramesWithDictionary(PlistDictionary pobDictionary, CCTexture2D pobTexture)
+        #region Adding frames
+
+        public void AddSpriteFrames(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
             /*
             Supported Zwoptex Formats:
@@ -192,9 +227,9 @@ namespace CocosSharp
             }
         }
 
-        public void AddSpriteFramesWithFile(string plist)
+        public void AddSpriteFrames(string plistFileName)
         {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFileName);
 
             PlistDictionary dict = document.Root.AsDictionary;
             string texturePath = "";
@@ -212,12 +247,12 @@ namespace CocosSharp
             if (!string.IsNullOrEmpty(texturePath))
             {
                 // build texture path relative to plist file
-                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, plist);
+                texturePath = CCFileUtils.FullPathFromRelativeFile(texturePath, plistFileName);
             }
             else
             {
                 // build texture path by replacing file extension
-                texturePath = plist;
+                texturePath = plistFileName;
 
                 // remove .xxx
                 texturePath = CCFileUtils.RemoveExtension(texturePath);
@@ -232,7 +267,7 @@ namespace CocosSharp
 
             if (pTexture != null)
             {
-                AddSpriteFramesWithDictionary(dict, pTexture);
+                AddSpriteFrames(dict, pTexture);
             }
             else
             {
@@ -240,7 +275,7 @@ namespace CocosSharp
             }
         }
 
-        public void AddSpriteFramesWithFile(string plist, string textureFileName)
+        public void AddSpriteFrames(string plistFileName, string textureFileName)
         {
             Debug.Assert(textureFileName != null);
             
@@ -248,7 +283,7 @@ namespace CocosSharp
 
             if (texture != null)
             {
-                AddSpriteFramesWithFile(plist, texture);
+                AddSpriteFrames(plistFileName, texture);
             }
             else
             {
@@ -256,7 +291,7 @@ namespace CocosSharp
             }
         }
 
-        public void AddSpriteFramesWithFile(Stream plist, CCTexture2D pobTexture)
+        public void AddSpriteFrames(Stream plist, CCTexture2D pobTexture)
         {
             PlistDocument document = new PlistDocument();
             try
@@ -270,16 +305,16 @@ namespace CocosSharp
 
             PlistDictionary dict = document.Root.AsDictionary;
 
-            AddSpriteFramesWithDictionary(dict, pobTexture);
+            AddSpriteFrames(dict, pobTexture);
         }
 
-        public void AddSpriteFramesWithFile(string plist, CCTexture2D pobTexture)
+        public void AddSpriteFrames(string plistFileName, CCTexture2D pobTexture)
         {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFileName);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
-            AddSpriteFramesWithDictionary(dict, pobTexture);
+            AddSpriteFrames(dict, pobTexture);
         }
 
         public void AddSpriteFrame(CCSpriteFrame frame, string frameName)
@@ -288,8 +323,14 @@ namespace CocosSharp
             {
                 throw (new ArgumentException("The frame named " + frameName + " already exists."));
             }
+
             spriteFrames[frameName] = frame;
         }
+
+        #endregion Adding frames
+
+
+        #region Removing frames
 
         public void RemoveSpriteFrames()
         {
@@ -322,16 +363,16 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveSpriteFrameByName(string name)
+        public void RemoveSpriteFrame(string frameName)
         {
             // explicit nil handling
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(frameName))
             {
                 return;
             }
 
             // Is this an alias ?
-            string key = spriteFramesAliases[name];
+            string key = spriteFramesAliases[frameName];
 
             if (!string.IsNullOrEmpty(key))
             {
@@ -340,20 +381,20 @@ namespace CocosSharp
             }
             else
             {
-                spriteFrames.Remove(name);
+                spriteFrames.Remove(frameName);
             }
         }
 
-        public void RemoveSpriteFramesFromFile(string plist)
+        public void RemoveSpriteFrames(string plistFileName)
         {
-            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plist);
+            PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(plistFileName);
 
             PlistDictionary dict = document.Root.AsDictionary;
 
-            RemoveSpriteFramesFromDictionary(dict);
+            RemoveSpriteFrames(dict);
         }
 
-        public void RemoveSpriteFramesFromDictionary(PlistDictionary dictionary)
+        public void RemoveSpriteFrames(PlistDictionary dictionary)
         {
             PlistDictionary framesDict = dictionary["frames"].AsDictionary;
             var keysToRemove = new List<string>();
@@ -372,7 +413,7 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveSpriteFramesFromTexture(CCTexture2D texture)
+        public void RemoveSpriteFrames(CCTexture2D texture)
         {
             var keysToRemove = new List<string>();
 
@@ -391,38 +432,12 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// Get the sprite frame for the given frame name, or as an alias for the sprite frame name.
-        /// </summary>
-        /// <param name="pszName"></param>
-        /// <returns></returns>
-        public CCSpriteFrame SpriteFrameByName(string name)
-        {
-            CCSpriteFrame frame;
-
-            if (!spriteFrames.TryGetValue(name, out frame))
-            {
-                // try alias dictionary
-                string key;
-                if (spriteFramesAliases.TryGetValue(name, out key))
-                {
-                    if (!spriteFrames.TryGetValue(key, out frame))
-                    {
-                        CCLog.Log("CocosSharp: CCSpriteFrameCahce: Frame '{0}' not found", name);
-                    }
-                }
-            }
-
-            if (frame != null)
-            {
-                CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
-            }
-            return frame;
-        }
 
         public static void PurgeSharedSpriteFrameCache()
         {
             sharedSpriteFrameCache = null;
         }
+
+        #endregion Removing frames
     }
 }

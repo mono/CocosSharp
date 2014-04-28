@@ -596,17 +596,17 @@ namespace CocosSharp
                 }
                 else
                 {
-                    CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
+                    CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
                     spriteSheet = reader.CCBRootPath + spriteSheet;
 
                     // Load the sprite sheet only if it is not loaded
                     if (!reader.LoadedSpriteSheet.Contains(spriteSheet))
                     {
-                        frameCache.AddSpriteFramesWithFile(spriteSheet);
+                        frameCache.AddSpriteFrames(spriteSheet);
                         reader.LoadedSpriteSheet.Add(spriteSheet);
                     }
 
-                    spriteFrame = frameCache.SpriteFrameByName(spriteFile);
+                    spriteFrame = frameCache[spriteFile];
                 }
 
                 if (reader.AnimatedProperties.Contains(propertyName))
@@ -635,7 +635,7 @@ namespace CocosSharp
 
             if (!String.IsNullOrEmpty(animation))
             {
-                CCAnimationCache animationCache = CCAnimationCache.SharedAnimationCache;
+                CCAnimationCache animationCache = CCAnimationCache.Instance;
                 animationCache.AddAnimations(animationFile);
 
                 ccAnimation = animationCache[animation];

@@ -26,7 +26,7 @@ namespace tests
             // IMPORTANT:
             // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
             //     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames);
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini.plist");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini.plist");
 
 
             // create 250 sprites
@@ -45,7 +45,7 @@ namespace tests
                     temp = (spriteIdx+1).ToString();
                 }
                 str = string.Format("grossini_dance_{0}.png", temp);
-                CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache.SpriteFrameByName(str);
+                CCSpriteFrame frame = CCSpriteFrameCache.Instance[str];
                 CCSprite sprite = new CCSprite(frame);
                 parent1.AddChild(sprite, i, i);
 
@@ -117,7 +117,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveSpriteFramesFromFile("animations/grossini.plist");
+            CCSpriteFrameCache.Instance.RemoveSpriteFrames("animations/grossini.plist");
         }
     }
 }

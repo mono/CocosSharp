@@ -12,7 +12,7 @@ namespace tests
         {
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("animations/grossini_family.plist");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini_family.plist");
 
             CCNode aParent;
             CCSprite sprite1, sprite2;

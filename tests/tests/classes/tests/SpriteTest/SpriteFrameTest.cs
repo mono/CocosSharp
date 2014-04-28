@@ -15,10 +15,10 @@ namespace tests
             // IMPORTANT:
             // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
             //     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames);
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.AddSpriteFramesWithFile("animations/grossini.plist");
-            cache.AddSpriteFramesWithFile("animations/grossini_gray.plist", "animations/grossini_gray");
-            cache.AddSpriteFramesWithFile("animations/grossini_blue.plist", "animations/grossini_blue");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.AddSpriteFrames("animations/grossini.plist");
+            cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
+            cache.AddSpriteFrames("animations/grossini_blue.plist", "animations/grossini_blue");
 
             //
             // Animation using Sprite BatchNode
@@ -36,7 +36,7 @@ namespace tests
             for (int i = 1; i < 15; i++)
             {
                 str = string.Format("grossini_dance_{0:00}.png", i);
-                CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                CCSpriteFrame frame = cache[str];
                 animFrames.Add(frame);
             }
 
@@ -60,7 +60,7 @@ namespace tests
             {
                 string temp;
                 str = string.Format("grossini_dance_gray_{0:00}.png", i);
-                CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                CCSpriteFrame frame = cache[str];
                 moreFrames.Add(frame);
             }
 
@@ -68,7 +68,7 @@ namespace tests
             for (int i = 1; i < 5; i++)
             {
                 str = string.Format("grossini_blue_{0:00}.png", i);
-                CCSpriteFrame frame = cache.SpriteFrameByName(str);
+                CCSpriteFrame frame = cache[str];
                 moreFrames.Add(frame);
             }
 
@@ -92,10 +92,10 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
-            cache.RemoveSpriteFramesFromFile("animations/grossini.plist");
-            cache.RemoveSpriteFramesFromFile("animations/grossini_gray.plist");
-            cache.RemoveSpriteFramesFromFile("animations/grossini_blue.plist");
+            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            cache.RemoveSpriteFrames("animations/grossini.plist");
+            cache.RemoveSpriteFrames("animations/grossini_gray.plist");
+            cache.RemoveSpriteFrames("animations/grossini_blue.plist");
         }
 
         public override string title()

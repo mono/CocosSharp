@@ -45,7 +45,7 @@ namespace tests
             label2.VertexZ = 0;
             label3.VertexZ = -50;
 
-            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFramesWithFile("Images/bugs/circle.plist");
+            CCSpriteFrameCache.Instance.AddSpriteFrames("Images/bugs/circle.plist");
 
             mgr = new CCSpriteBatchNode("Images/bugs/circle", 9);
             AddChild(mgr);
