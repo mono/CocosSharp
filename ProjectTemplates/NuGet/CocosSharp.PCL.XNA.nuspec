@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CocosSharp.PCL.Shared.XNA</id>
+    <version>1.0.0.0</version>
+    <title>CocosSharp PCL - XNA</title>
+    <authors>Xamarin Inc</authors>
+    <owners>Xamarin Inc</owners>
+    <licenseUrl>http://github.com/xamarin/CocosSharp/blob/master/LicenseAndCredit.txt</licenseUrl>
+    <projectUrl>https://github.com/xamarin/CocosSharp</projectUrl>
+    <iconUrl>http://CocosSharp.xamarin.com</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>CocosSharp is a simple game engine typically used for 2D games, educational software and 2D visualizations.   This code allows games to be built with a write-once, run-anywhere approach.</description>
+    <summary>CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs.</summary>
+    <copyright>Xamarin Inc</copyright>
+    <tags>cocos2d cocossharp xna 2D games visualization engine </tags>
+  </metadata>
+
+  <files>
+
+<!--Core-->
+     <file src="..\..\PCL\CocosSharpPCLShared\bin\Release\CocosSharp.dll" target="lib\portable-net40+sl50+wp8+win8+MonoAndroid10+MonoTouch10+MonoMac10\CocosSharp.dll" />
+
+     <!--Xamarin.Android-->
+    <file src="..\..\src\bin\Android\Release\*.dll" target="lib\MonoAndroid10\" />
+    
+     <!--Xamarin.Ouya not supported right now -->
+    <!--file src="..\..\src\bin\Ouya\Release\*.dll" target="lib\Ouya\" /-->
+
+     <!--Xamarin.iOS-->
+    <file src="..\..\src\bin\iPhone\Release\*.dll" target="lib\MonoTouch10\" />
+
+     <!--Xamarin.Mac this is not supported right now on windows build we need to find a way to reference this build -->
+    <!--file src="..\..\src\bin\MacOS\Release\*.dll" target="lib\MonoMac10\" /-->
+
+
+	<!-- We need to make a decision on which one will be the default for net40 - XNA, DX, GL-->
+
+     <!--Windows normal XNA-->
+    <file src="..\..\src\bin\Windows\Release\*.dll" target="lib\net40" />
+     
+     <!--Windows DX-->
+    <!--file src="..\..\src\bin\WindowsDX\Release\*.dll" target="lib\net40" /-->
+
+     <!--Windows GL-->
+    <!--file src="..\..\src\bin\WindowsGL\Release\*.dll" target="lib\net40" /-->
+    <!--file src="..\..\MonoGame\ThirdParty\GamepadConfig\SDL.dll" target="content\" /-->
+
+
+     <!--Windows8-->
+    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
+    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\Release\*.*" target="lib\netcore"/>
+
+     <!--Windows Phone 8-->
+	<file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="..\..\src\bin\WindowsPhone\x86\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\x86\Release\Sharp*.*" />
+	<file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\x86\Release\*.*" target="build\wp8\x86" />
+	<file src="..\..\src\bin\WindowsPhone\ARM\Release\*.dll" target="build\wp8\ARM" exclude="..\..\src\bin\WindowsPhone\ARM\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\ARM\Release\Sharp*.*" />
+	<file src="..\..\MonoGame\MonoGame.Framework\bin\WindowsPhone\ARM\Release\*.*" target="build\wp8\ARM" />
+        <file src="build\wp8\CocosSharp.targets" target="build\wp8\CocosSharp.PCL.Shared.targets" />
+
+
+  </files>
+
+</package>
