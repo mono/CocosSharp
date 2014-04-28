@@ -51,7 +51,7 @@ To make changes in a submodule
 
    git commit/push new changes to the repo (submodule)
 
-   cd <top-level>; git add <submodule> # this will record the new commits to xamcore
+   cd <top-level>; git add <submodule> # this will record the new commits to CocosSharp MonoGame submodule
 
    git commit
 
@@ -61,9 +61,7 @@ To make changes in a submodule
 
    git submodule sync -- <path of the submodule> # updates .git/config
 
-   # I think this will checkout from the new location, internally. It
-   # may take a while for big repos.
-   #
+   * I think this will checkout from the new location, internally. It may take a while for big repos.
    git submodule update --recursive
 
    git checkout <desired new hash> # This changes the pointer of the submodule
