@@ -5,3 +5,7 @@
 
 	url = https://github.com/slygamer/ouya-csharp.git
 
+[submodule "MonoGame"]
+	path = MonoGame
+	url = git://github.com/mono/MonoGame.git
+	branch = xamarin
