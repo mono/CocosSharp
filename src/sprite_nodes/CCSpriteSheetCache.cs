@@ -8,35 +8,56 @@ namespace CocosSharp
 {
     public class CCSpriteSheetCache
     {
-        private static CCSpriteSheetCache _instance;
+        static CCSpriteSheetCache instance;
 
-        private Dictionary<string, CCSpriteSheet> _spriteSheets = new Dictionary<string, CCSpriteSheet>(); 
+        Dictionary<string, CCSpriteSheet> spriteSheets = new Dictionary<string, CCSpriteSheet>(); 
+
+
+        #region Properties
 
         public static CCSpriteSheetCache Instance
         {
             get
             {
-                if (_instance == null)
+                if (instance == null)
                 {
-                    _instance = new CCSpriteSheetCache();
+                    instance = new CCSpriteSheetCache();
                 }
-                return _instance;
+                return instance;
             }
         }
 
-        public static void DestroyInstance()
+        public CCSpriteSheet this[string name]
         {
-            _instance = null;
+            get
+            {
+                CCSpriteSheet result = null;
+                if (!spriteSheets.TryGetValue(name, out result))
+                {
+                    CCLog.Log("SpriteSheet of key {0} is not exist.", name);
+                }
+                return result;
+            }
         }
 
+        #endregion Properties
+
+
+        public static void DestroyInstance()
+        {
+            instance = null;
+        }
+
+
+        #region Adding sprite sheets
 
         public CCSpriteSheet AddSpriteSheet(string fileName)
         {
             CCSpriteSheet result;
-            if (!_spriteSheets.TryGetValue(fileName, out result))
+            if (!spriteSheets.TryGetValue(fileName, out result))
             {
                 result = new CCSpriteSheet(fileName);
-                _spriteSheets.Add(fileName, result);
+                spriteSheets.Add(fileName, result);
             }
             return result;
         }
@@ -44,10 +65,10 @@ namespace CocosSharp
         public CCSpriteSheet AddSpriteSheet(string fileName, string textureFileName)
         {
             CCSpriteSheet result;
-            if (!_spriteSheets.TryGetValue(fileName, out result))
+            if (!spriteSheets.TryGetValue(fileName, out result))
             {
                 result = new CCSpriteSheet(fileName, textureFileName);
-                _spriteSheets.Add(fileName, result);
+                spriteSheets.Add(fileName, result);
             }
             return result;
         }
@@ -55,63 +76,36 @@ namespace CocosSharp
         public CCSpriteSheet AddSpriteSheet(string fileName, CCTexture2D texture)
         {
             CCSpriteSheet result;
-            if (!_spriteSheets.TryGetValue(fileName, out result))
+            if (!spriteSheets.TryGetValue(fileName, out result))
             {
                 result = new CCSpriteSheet(fileName, texture);
-                _spriteSheets.Add(fileName, result);
+                spriteSheets.Add(fileName, result);
             }
             return result;
         }
 
-        public CCSpriteSheet AddSpriteSheet(Stream stream, CCTexture2D texture, string name)
-        {
-            CCSpriteSheet result;
-            if (!_spriteSheets.TryGetValue(name, out result))
-            {
-                result = new CCSpriteSheet(name, texture);
-                _spriteSheets.Add(name, result);
-            }
-            return result;
-        }
+        #endregion Adding sprite sheets
 
-        public CCSpriteSheet AddSpriteSheet(PlistDictionary dictionary, CCTexture2D texture, string name)
-        {
-            CCSpriteSheet result;
-            if (!_spriteSheets.TryGetValue(name, out result))
-            {
-                result = new CCSpriteSheet(name, texture);
-                _spriteSheets.Add(name, result);
-            }
-            return result;
-        }
 
-        public CCSpriteSheet SpriteSheetForKey(string name)
-        {
-            CCSpriteSheet result = null;
-            if (!_spriteSheets.TryGetValue(name, out result))
-            {
-                CCLog.Log("SpriteSheet of key {0} is not exist.", name);
-            }
-            return result;
-        }
+        #region Removing sprite sheets
 
         public void RemoveAll()
         {
-            _spriteSheets.Clear();
+            spriteSheets.Clear();
         }
 
         public void RemoveUnused()
         {
-            if (_spriteSheets.Count > 0)
+            if (spriteSheets.Count > 0)
             {
                 var tmp = new Dictionary<string, WeakReference>();
 
-                foreach (var pair in _spriteSheets)
+                foreach (var pair in spriteSheets)
                 {
                     tmp.Add(pair.Key, new WeakReference(pair.Value));
                 }
 
-                _spriteSheets.Clear();
+                spriteSheets.Clear();
 
                 GC.Collect();
 
@@ -119,7 +113,7 @@ namespace CocosSharp
                 {
                     if (pair.Value.IsAlive)
                     {
-                        _spriteSheets.Add(pair.Key, (CCSpriteSheet)pair.Value.Target);
+                        spriteSheets.Add(pair.Key, (CCSpriteSheet)pair.Value.Target);
                     }
                 }
             }
@@ -134,7 +128,7 @@ namespace CocosSharp
 
             string key = null;
 
-            foreach (var pair in _spriteSheets)
+            foreach (var pair in spriteSheets)
             {
                 if (pair.Value == spriteSheet)
                 {
@@ -145,7 +139,7 @@ namespace CocosSharp
 
             if (key != null)
             {
-                _spriteSheets.Remove(key);
+                spriteSheets.Remove(key);
             }
         }
 
@@ -155,8 +149,9 @@ namespace CocosSharp
             {
                 return;
             }
-            _spriteSheets.Remove(name);
+            spriteSheets.Remove(name);
         }
 
+        #endregion Removing sprite sheets
     }
 }
