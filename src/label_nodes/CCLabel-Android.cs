@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Microsoft.Xna.Framework;
 using Android.App;
 using Android.Graphics;
 using Android.Util;
@@ -9,7 +10,7 @@ namespace CocosSharp
     public partial class CCLabel
     {
         private static Paint _paint;
-		private static Bitmap _bitmap;
+        private static Bitmap _bitmap;
         private static Canvas _canvas;
         private static int[] _data;
         private static GCHandle _dataHandle;
@@ -20,8 +21,7 @@ namespace CocosSharp
         {
             if (_paint == null)
             {
-                var contex = (Activity)CCApplication.SharedApplication.Game.Window.Context;
-                var display = contex.WindowManager.DefaultDisplay;
+                var display = Game.Activity.WindowManager.DefaultDisplay;
                 var metrics = new DisplayMetrics();
                 display.GetMetrics(metrics);
 
@@ -30,7 +30,7 @@ namespace CocosSharp
                 _paint = new Paint(PaintFlags.AntiAlias);
                 _paint.Color = Android.Graphics.Color.White;
                 _paint.TextAlign = Paint.Align.Left;
-               // _paint.LinearText = true;
+                // _paint.LinearText = true;
             }
 
             _paint.TextSize = fontSize;
@@ -39,7 +39,7 @@ namespace CocosSharp
             if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
             {
                 var path = System.IO.Path.Combine(CCApplication.SharedApplication.Game.Content.RootDirectory, fontName);
-                var activity = (Activity) CCApplication.SharedApplication.Game.Window.Context;
+                var activity = Game.Activity;
 
                 try
                 {
@@ -63,9 +63,9 @@ namespace CocosSharp
         {
             //if (_bitmap == null || _bitmap.Width < width || _bitmap.Height < height)
             //{
-                _bitmap = Bitmap.CreateBitmap(width, height, Bitmap.Config.Argb8888);
-                _canvas = new Canvas(_bitmap);
-                _data = new int[width * height];
+            _bitmap = Bitmap.CreateBitmap(width, height, Bitmap.Config.Argb8888);
+            _canvas = new Canvas(_bitmap);
+            _data = new int[width * height];
             //}
         }
 
@@ -86,7 +86,7 @@ namespace CocosSharp
         {
             float[] widths = new float[1];
 
-            _paint.GetTextWidths(new char[] {ch}, 0, 1, widths);
+            _paint.GetTextWidths(new char[] { ch }, 0, 1, widths);
             //var bounds = new Rect();
             //var s = ch.ToString();
             //_paint.GetTextBounds(s, 0, 1, bounds);
@@ -108,7 +108,10 @@ namespace CocosSharp
 
             var size = GetMeasureString(text);
 
-            CreateBitmap((int)(Math.Ceiling(size.Width += 2)), (int)(Math.Ceiling(size.Height += 2)));
+            var w = (int)(Math.Ceiling(size.Width += 2));
+            var h = (int)(Math.Ceiling(size.Height += 2));
+
+            CreateBitmap(w, h);
 
             _canvas.DrawColor(Android.Graphics.Color.Black);
 
@@ -126,7 +129,7 @@ namespace CocosSharp
 
             _canvas.DrawText(text, textX, textY, _paint);
 
-            
+
             //float x = 0;
             //float y = GetFontHeight() - _fontMetrix.Bottom;
 
@@ -178,11 +181,11 @@ namespace CocosSharp
             */
 
             _bitmap.GetPixels(_data, 0, _bitmap.Width, 0, 0, _bitmap.Width, _bitmap.Height);
-            
+
             stride = _bitmap.Width * 4;
 
             _dataHandle = GCHandle.Alloc(_data, GCHandleType.Pinned);
-            return (byte*) _dataHandle.AddrOfPinnedObject().ToPointer();
+            return (byte*)_dataHandle.AddrOfPinnedObject().ToPointer();
         }
     }
 }
