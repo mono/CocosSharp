@@ -89,34 +89,10 @@
     <StartupObject>CocosSharpPCLTest.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="box2d, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\box2d.dll</HintPath>
-    </Reference>
-    <Reference Include="CocosSharp, Version=2.2.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\CocosSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\ICSharpCode.SharpZipLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Lidgren.Network, Version=2011.3.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\Lidgren.Network.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\MonoGame.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
-    <Reference Include="zlib.net, Version=1.0.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CocosSharpPCLTest.WindowsBuild\packages\CocosSharp.PCL.Shared.1.0.0.0\lib\MonoTouch10\zlib.net.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -124,7 +100,6 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
