@@ -9,23 +9,65 @@ namespace CocosSharp
 {
     public class CCSpriteSheet
     {
-        readonly Dictionary<string, CCSpriteFrame> _spriteFrames = new Dictionary<string, CCSpriteFrame>();
-        readonly Dictionary<string, string> _spriteFramesAliases = new Dictionary<string, string>();
+        enum PlistType
+        {
+            Cocos2D,
+            SpriteKit
+        }
+
+        // ivars
+        readonly Dictionary<string, CCSpriteFrame> spriteFrames = new Dictionary<string, CCSpriteFrame>();
+        readonly Dictionary<string, string> spriteFramesAliases = new Dictionary<string, string>();
 
 		PlistType plistType;
 
 		// We need to read the sprite sheet textures relative to the plist file path.
 		// When we have the sprite sheet split between multiple image files 
 		// to be loaded this allows us to load those files relative to the plist.  Right now
-		// only used for PlistType SpriteKit right now but can be used for other types as well
-		// in the future
+        // only used for PlistType SpriteKit but can be used for other types as well in the future
 		string plistFilePath;
 
-		enum PlistType
-		{
-			Cocos2D,
-			SpriteKit
-		}
+
+        #region Properties
+
+        public List<CCSpriteFrame> Frames 
+        {
+            get { return spriteFrames.Values.ToList(); }
+        }
+
+        public CCSpriteFrame this[string name]
+        {
+            get 
+            {
+                CCSpriteFrame frame;
+
+                if (!spriteFrames.TryGetValue(name, out frame))
+                {
+                    string key;
+
+                    if (spriteFramesAliases.TryGetValue(name, out key))
+                    {
+                        if (!spriteFrames.TryGetValue(key, out frame))
+                        {
+                            CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", key);
+                        }
+                    }
+                }
+
+                if (frame != null)
+                {
+                    CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
+                }
+                else
+                {
+                    CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", name);
+                }
+
+                return frame;
+            }
+        }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -34,14 +76,9 @@ namespace CocosSharp
         {
             if (frames != null)
             {
-                _spriteFrames = new Dictionary<string, CCSpriteFrame>(frames);
+                spriteFrames = new Dictionary<string, CCSpriteFrame>(frames);
                 AutoCreateAliasList();
             }
-        }
-
-        public CCSpriteSheet(string fileName)
-        {
-            InitWithFile(fileName);
         }
 
         public CCSpriteSheet(string fileName, string textureFileName) 
@@ -54,11 +91,6 @@ namespace CocosSharp
         {
         }
 
-        public CCSpriteSheet(Stream stream, CCTexture2D texture)
-        {
-            InitWithStream(stream, texture);
-        }
-
         public CCSpriteSheet(Stream stream, string textureFileName) 
             : this(stream, CCTextureCache.SharedTextureCache.AddImage(textureFileName))
         {
@@ -69,7 +101,25 @@ namespace CocosSharp
             InitWithDictionary(dictionary, texture);
         }
 
-        private void InitWithFile(string fileName)
+        public CCSpriteSheet(Stream stream, CCTexture2D texture)
+        {
+            var document = new PlistDocument();
+            try
+            {
+                document.LoadFromXmlFile(stream);
+            }
+            catch (Exception)
+            {
+                throw (new Microsoft.Xna.Framework.Content.ContentLoadException(
+                    "Failed to load the sprite sheet definition file from stream"));
+            }
+
+            PlistDictionary dict = document.Root.AsDictionary;
+
+            InitWithDictionary(dict, texture);
+        }
+
+        public CCSpriteSheet(string fileName)
         {
             PlistDocument document = CCContentManager.SharedContentManager.Load<PlistDocument>(fileName);
 
@@ -134,27 +184,10 @@ namespace CocosSharp
             }
         }
 
-        private void InitWithStream(Stream stream, CCTexture2D texture)
+        void InitWithDictionary(PlistDictionary dict, CCTexture2D texture)
         {
-            var document = new PlistDocument();
-            try
-            {
-                document.LoadFromXmlFile(stream);
-            }
-            catch (Exception)
-            {
-                throw (new Microsoft.Xna.Framework.Content.ContentLoadException("Failed to load the sprite sheet definition file from stream"));
-            }
-
-            PlistDictionary dict = document.Root.AsDictionary;
-
-            InitWithDictionary(dict, texture);
-        }
-
-        private void InitWithDictionary(PlistDictionary dict, CCTexture2D texture)
-        {
-            _spriteFrames.Clear();
-            _spriteFramesAliases.Clear();
+            spriteFrames.Clear();
+            spriteFramesAliases.Clear();
 
 			if (plistType == PlistType.SpriteKit)
 				LoadAppleDictionary (dict, texture);
@@ -165,21 +198,21 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        private void AutoCreateAliasList()
+        void AutoCreateAliasList()
         {
-            foreach (string key in _spriteFrames.Keys)
+            foreach (string key in spriteFrames.Keys)
             {
                 int idx = key.LastIndexOf('.');
                 if (idx > -1)
                 {
                     string alias = key.Substring(0, idx);
-                    _spriteFramesAliases[alias] = key;
+                    spriteFramesAliases[alias] = key;
                     CCLog.Log("Created alias for frame {0} as {1}", key, alias);
                 }
             }
         }
 
-        private PlistType GetPlistType(PlistDictionary dict)
+        PlistType GetPlistType(PlistDictionary dict)
         {
             var isSpriteKit = dict.ContainsKey ("format") ? dict ["format"].AsString == "APPL" : false;
 
@@ -189,7 +222,7 @@ namespace CocosSharp
 
         #region Loaders
 
-        private void LoadAppleDictionary(PlistDictionary dict, CCTexture2D texture)
+        void LoadAppleDictionary(PlistDictionary dict, CCTexture2D texture)
 		{
 
 			var version = dict.ContainsKey ("version") ? dict ["version"].AsInt : 0; 
@@ -263,13 +296,13 @@ namespace CocosSharp
 					);
 
                     spriteFrame.TextureFilename = name;
-					_spriteFrames [name] = spriteFrame;
+					spriteFrames [name] = spriteFrame;
 				}
 			}
             AutoCreateAliasList();
 		}
 
-		private void LoadCocos2DDictionary(PlistDictionary dict, CCTexture2D texture)
+        void LoadCocos2DDictionary(PlistDictionary dict, CCTexture2D texture)
 		{
 			
 			PlistDictionary metadataDict = null;
@@ -376,17 +409,17 @@ namespace CocosSharp
 					{
 						string oneAlias = aliases[i].AsString;
 
-						if (_spriteFramesAliases.ContainsKey(oneAlias))
+						if (spriteFramesAliases.ContainsKey(oneAlias))
 						{
-							if (_spriteFramesAliases[oneAlias] != null)
+							if (spriteFramesAliases[oneAlias] != null)
 							{
 								CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
 							}
 						}
 
-						if (!_spriteFramesAliases.ContainsKey(oneAlias))
+						if (!spriteFramesAliases.ContainsKey(oneAlias))
 						{
-							_spriteFramesAliases.Add(oneAlias, pair.Key);
+							spriteFramesAliases.Add(oneAlias, pair.Key);
 						}
 					}
 
@@ -401,62 +434,11 @@ namespace CocosSharp
 				}
 
                 spriteFrame.TextureFilename = pair.Key;
-				_spriteFrames[pair.Key] = spriteFrame;
+				spriteFrames[pair.Key] = spriteFrame;
 			}
             AutoCreateAliasList();
 		}
 
-        #endregion
-
-        #region Frame Access Methods
-
-        public List<CCSpriteFrame> Frames 
-		{
-			get 
-			{
-				return _spriteFrames.Values.ToList ();
-			}
-
-		}
-
-		public CCSpriteFrame this [string name]
-		{
-			get 
-			{
-				return SpriteFrameByName (name);
-			}
-		}
-
-
-        public CCSpriteFrame SpriteFrameByName(string name)
-        {
-            CCSpriteFrame frame;
-
-            if (!_spriteFrames.TryGetValue(name, out frame))
-            {
-                string key;
-                
-                if (_spriteFramesAliases.TryGetValue(name, out key))
-                {
-                    if (!_spriteFrames.TryGetValue(key, out frame))
-                    {
-                        CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", key);
-                    }
-                }
-            }
-
-            if (frame != null)
-            {
-                CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
-            }
-            else
-            {
-                CCLog.Log("CocosSharp: CCSpriteFrameCache: Frame '{0}' not found", name);
-            }
-            
-            return frame;
-        }
-
-        #endregion
+        #endregion Loaders
     }
 }
