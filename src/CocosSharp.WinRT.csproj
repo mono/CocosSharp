@@ -1164,12 +1164,10 @@
       <HintPath>external lib\XBox360\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>..\MonoGame\ThirdParty\Libs\SharpDX\Windows 8 Metro\SharpDX.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct2D1">
-      <HintPath>..\MonoGame\ThirdParty\Libs\SharpDX\Windows 8 Metro\SharpDX.Direct2D1.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\MonoGame\ThirdParty\Dependencies\SharpDX\Windows 8 Metro\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
