@@ -142,10 +142,10 @@ namespace CocosSharp
                     oh = Math.Abs(oh);
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                                new CCRect(x, y, w, h),
-                                                false,
-                                                new CCPoint(ox, oy),
-                                                new CCSize(ow, oh)
+                                            new CCRect(x, y, w, h),
+                                            new CCSize(ow, oh),
+                                            false,
+                                            new CCPoint(ox, oy)
                         );
                 }
                 else if (format == 1 || format == 2)
@@ -167,10 +167,11 @@ namespace CocosSharp
 
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                                frame,
-                                                rotated,
-                                                offset,
-                                                sourceSize
+                                                    frame,
+                                                    sourceSize,
+                                                    rotated,
+                                                    offset
+                                                
                         );
                 }
                 else if (format == 3)
@@ -208,10 +209,11 @@ namespace CocosSharp
 
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                                new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
-                                                textureRotated,
-                                                spriteOffset,
-                                                spriteSourceSize);
+                                                    new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
+                                                    spriteSourceSize,
+                                                    textureRotated,
+                                                    spriteOffset
+                                                    );
                 }
 
                 // add sprite frame

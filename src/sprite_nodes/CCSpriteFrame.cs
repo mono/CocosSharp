@@ -1,105 +1,67 @@
-// GEN OK
-
 using System;
 
 namespace CocosSharp
 {
-    public partial class CCSpriteFrame
+    public class CCSpriteFrame
     {
-        #region properties
+        // ivars
+        CCPoint offset;
+        CCPoint offsetInPixels;
+        CCRect rect;
+        CCRect rectInPixels;
 
-        protected bool m_bRotated;
-        protected CCPoint m_obOffset;
-        protected CCPoint m_obOffsetInPixels;
-        protected CCSize m_obOriginalSize;
-        protected CCSize m_obOriginalSizeInPixels;
-        protected CCRect m_obRect;
-        protected CCRect m_obRectInPixels;
-        protected CCTexture2D m_pobTexture;
-        protected string m_strTextureFilename;
 
-        /// <summary>
-        /// get or set rect of the frame
-        /// </summary>
+        #region Properties
+
+        public bool IsRotated { get; set; }
+
+        public CCSize OriginalSizeInPixels { get; private set; }
+        public CCSize OriginalSize { get; private set; }
+
+        public string TextureFilename { get; set; }
+        public CCTexture2D Texture { get; set; }
+
         public CCRect Rect
         {
-            get { return m_obRect; }
+            get { return rect; }
             set
             {
-                m_obRect = value;
-                m_obRectInPixels = m_obRect.PointsToPixels();
+                rect = value;
+                rectInPixels = rect.PointsToPixels();
             }
         }
 
         public CCRect RectInPixels
         {
-            get { return m_obRectInPixels; }
+            get { return rectInPixels; }
             set
             {
-                m_obRectInPixels = value;
-                m_obRect = m_obRectInPixels.PixelsToPoints();
+                rectInPixels = value;
+                rect = rectInPixels.PixelsToPoints();
             }
         }
 
         public CCPoint Offset
         {
-            get { return m_obOffset; }
+            get { return offset; }
             set
             {
-                m_obOffset = value;
-                m_obOffsetInPixels = m_obOffset.PointsToPixels();
+                offset = value;
+                offsetInPixels = offset.PointsToPixels();
             }
         }
 
         public CCPoint OffsetInPixels
         {
-            get { return m_obOffsetInPixels; }
+            get { return offsetInPixels; }
             set
             {
-                m_obOffsetInPixels = value;
-                m_obOffset = m_obOffsetInPixels.PixelsToPoints();
+                offsetInPixels = value;
+                offset = offsetInPixels.PixelsToPoints();
             }
         }
 
-        public bool IsRotated
-        {
-            get { return m_bRotated; }
-            set { m_bRotated = value; }
-        }
-
-
-        public CCSize OriginalSizeInPixels
-        {
-            get { return m_obOriginalSizeInPixels; }
-            set { m_obOriginalSizeInPixels = value; }
-        }
-
-        public CCSize OriginalSize
-        {
-            get { return m_obOriginalSize; }
-            set { m_obOriginalSize = value; }
-        }
-
-        /// <summary>
-        /// get or set texture of the frame
-        /// </summary>
-        public CCTexture2D Texture
-        {
-            get { return m_pobTexture; }
-            set { m_pobTexture = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the texture filename.
-        /// </summary>
-        /// <value>The texture filename.</value>
-        public string TextureFilename
-        {
-            get { return m_strTextureFilename; }
-            set { m_strTextureFilename = value; }
-        }
-
-        #endregion
+        #endregion Properties
 
 
         #region Constructors
@@ -109,44 +71,29 @@ namespace CocosSharp
         }
 
         protected CCSpriteFrame(CCSpriteFrame spriteFrame) 
-            : this(spriteFrame.m_pobTexture, spriteFrame.m_obRectInPixels, spriteFrame.m_bRotated, 
-            spriteFrame.m_obOffsetInPixels, spriteFrame.m_obOriginalSizeInPixels)
+            : this(spriteFrame.Texture, spriteFrame.rectInPixels, spriteFrame.OriginalSizeInPixels, 
+                spriteFrame.IsRotated, spriteFrame.offsetInPixels)
 		{
 		}
-
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize)
-        {
-            InitCCSpriteFrame(pobTexture, rect, originalSize);
-        }
 
         public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect) : this(pobTexture, rect.PointsToPixels(), rect.PointsToPixels().Size)
         {
         }
 
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, bool rotated, CCPoint offset, CCSize originalSize)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize, bool rotated=false, CCPoint offset=default(CCPoint))
         {
-            InitCCSpriteFrame(pobTexture, rect, originalSize, rotated, offset);
-        }
+            Texture = pobTexture;
 
-        private void InitCCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize, bool rotated=false, CCPoint offset=default(CCPoint))
-        {
-            m_pobTexture = pobTexture;
-
-            m_obRectInPixels = rect;
-            m_obRect = rect.PixelsToPoints();
-            m_obOffsetInPixels = offset;
-            m_obOffset = m_obOffsetInPixels.PixelsToPoints();
-            m_obOriginalSizeInPixels = originalSize;
-            m_obOriginalSize = m_obOriginalSizeInPixels.PixelsToPoints();
-            m_bRotated = rotated;
+            rectInPixels = rect;
+            rect = rect.PixelsToPoints();
+            offsetInPixels = offset;
+            offset = offsetInPixels.PixelsToPoints();
+            OriginalSizeInPixels = originalSize;
+            OriginalSize = OriginalSizeInPixels.PixelsToPoints();
+            IsRotated = rotated;
         }
 
         #endregion Constructors
 
-
-        public CCSpriteFrame Copy()
-        {
-            return new CCSpriteFrame(this);
-        }
     }
 }

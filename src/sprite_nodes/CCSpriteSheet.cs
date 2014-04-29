@@ -288,11 +288,11 @@ namespace CocosSharp
 
 					// create frame
 					spriteFrame = new CCSpriteFrame (
-						texture,
-						frameRect,
-						textureRotated,
-						spriteOffset,
-						spriteSourceSize
+                                texture,
+                                frameRect,
+                                spriteSourceSize,
+                                textureRotated,
+                                spriteOffset
 					);
 
                     spriteFrame.TextureFilename = name;
@@ -363,9 +363,9 @@ namespace CocosSharp
 					spriteFrame = new CCSpriteFrame(
 						texture,
 						new CCRect(x, y, w, h),
+                        new CCSize(ow, oh),
 						false,
-						new CCPoint(ox, oy),
-						new CCSize(ow, oh)
+						new CCPoint(ox, oy)
 						);
 				}
 				else if (format == 1 || format == 2)
@@ -386,7 +386,7 @@ namespace CocosSharp
 					var sourceSize = CCSize.Parse(frameDict["sourceSize"].AsString);
 
 					// create frame
-					spriteFrame = new CCSpriteFrame(texture, frame, rotated, offset, sourceSize);
+                    spriteFrame = new CCSpriteFrame(texture, frame, sourceSize, rotated, offset);
 				}
 				else if (format == 3)
 				{
@@ -427,9 +427,9 @@ namespace CocosSharp
 					spriteFrame = new CCSpriteFrame(
 						texture,
 						new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
+                        spriteSourceSize,
 						textureRotated,
-						spriteOffset,
-						spriteSourceSize
+						spriteOffset
 						);
 				}
 
