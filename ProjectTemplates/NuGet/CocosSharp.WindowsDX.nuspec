@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CocosSharp.WindowsDX</id>
-    <version>1.2.0.0</version>
+    <version>1.0.0.0</version>
     <title>CocosSharp for Windows using DirectX</title>
     <authors>Xamarin Inc</authors>
     <owners>Xamarin Inc</owners>
@@ -18,7 +18,10 @@
 
   <files>
    
-    <file src="..\..\src\bin\WindowsDX\Release\*.dll" target="lib\net40" />
+     <!--Windows DX-->
+    <file src="..\..\src\bin\WindowsDX\Release\*.*" target="lib\net40" exclude="..\..\src\bin\WindowsDX\Release\MonoGame*.*;..\..\src\bin\WindowsDX\Release\Sharp*.*;..\..\src\bin\WindowsDX\Release\Lidgren*.*"/>
+    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows\AnyCPU\Release\*.*" target="lib\net40"/>
+
 
   </files>
 

@@ -40,7 +40,9 @@
     <!-- file src="..\..\src\bin\Windows\Release\*.dll" target="lib\net40" /-->
      
      <!--Windows DX-->
-    <file src="..\..\src\bin\WindowsDX\Release\*.dll" target="lib\net40" />
+    <file src="..\..\src\bin\WindowsDX\Release\*.*" target="lib\net40" exclude="..\..\src\bin\WindowsDX\Release\MonoGame*.*;..\..\src\bin\WindowsDX\Release\Sharp*.*;..\..\src\bin\WindowsDX\Release\Lidgren*.*"/>
+    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows\AnyCPU\Release\*.*" target="lib\net40"/>
+
 
      <!--Windows GL-->
     <!--file src="..\..\src\bin\WindowsGL\Release\*.dll" target="lib\net40" /-->
