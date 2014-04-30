@@ -44,8 +44,8 @@ namespace CocosSharpPCLTest.Windows8
 		{
             ContentRootDirectory = "Content";
 
-            CCSpriteFontCache.FontScale = 0.6f;
-            CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
+            //CCSpriteFontCache.FontScale = 0.6f;
+            //CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
 
             CCDirector director = CCDirector.SharedDirector;
             director.DisplayStats = true;
