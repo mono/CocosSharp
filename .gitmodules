@@ -7,5 +7,5 @@
 
 [submodule "MonoGame"]
 	path = MonoGame
-	url = git://github.com/mono/MonoGame.git
+	url = https://github.com/mono/MonoGame.git
 	branch = xamarin
