@@ -49,8 +49,9 @@
 
 
      <!--Windows8-->
-    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\MonoGame*.*;..\..\src\bin\Windows8\Release\Sharp*.*"/>
+    <file src="..\..\src\bin\Windows8\Release\*.dll" target="lib\netcore" exclude="..\..\src\bin\Windows8\Release\Sharp*.*"/>
     <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\*.*" target="lib\netcore"/>
+    <file src="..\..\MonoGame\MonoGame.Framework\bin\Windows8\AnyCPU\Release\Themes\*.*" target="lib\netcore\MonoGame.Framework\Themes"/>
 
      <!--Windows Phone 8-->
 	<file src="..\..\src\bin\WindowsPhone\x86\Release\*.dll" target="build\wp8\x86" exclude="..\..\src\bin\WindowsPhone\x86\Release\MonoGame*.*;..\..\src\bin\WindowsPhone\x86\Release\Sharp*.*" />
