@@ -6,59 +6,32 @@ namespace CocosSharp
 {
     public class CCSprite : CCNodeRGBA, ICCTexture
     {
-		public bool IsTextureRectRotated { get; private set; }
-		public int AtlasIndex { get; set; } // Absolute (real) Index on the SpriteSheet
-
-		// Offset Position (used by Zwoptex)
-		public CCPoint OffsetPosition { get; private set; }
-
-		internal CCV3F_C4B_T2F_Quad Quad;
-
-		bool dirty; // Sprite needs to be updated
+        bool dirty;                     // Sprite needs to be updated
         bool flipX;
         bool flipY;
-        bool hasChildren; // optimization to check if it contain children
+        bool hasChildren;               // optimization to check if it contain children
         bool opacityModifyRGB;
-        bool recursiveDirty; // Subchildren needs to be updated
-		bool shouldBeHidden; // should not be drawn because one of the ancestors is not visible
+        bool recursiveDirty;            // Subchildren needs to be updated
+        bool shouldBeHidden;            // should not be drawn because one of the ancestors is not visible
+
         CCRect textureRect;
         CCPoint unflippedOffsetPositionFromCenter;
-        CCSpriteBatchNode batchNode; // Used batch node (weak reference)
-        CCTextureAtlas textureAtlas; // Sprite Sheet texture atlas (weak reference)
+        CCSpriteBatchNode batchNode;    // Used batch node (weak reference)
+        CCTextureAtlas textureAtlas;    // Sprite Sheet texture atlas (weak reference)
 		CCTexture2D texture;
-        CCBlendFunc blendFunc; // Needed for the texture protocol
 		string textureFile;
         CCAffineTransform transformToBatch;
 
-        public override void Serialize(System.IO.Stream stream)
-        {
-            base.Serialize(stream);
-            StreamWriter sw = new StreamWriter(stream);
-            CCSerialization.SerializeData(Dirty, sw);
-            CCSerialization.SerializeData(IsTextureRectRotated, sw);
-            CCSerialization.SerializeData(AtlasIndex, sw);
-            CCSerialization.SerializeData(TextureRect, sw);
-            CCSerialization.SerializeData(OffsetPosition, sw);
-            sw.WriteLine(textureFile == null ? "null" : textureFile);
-        }
+        internal CCV3F_C4B_T2F_Quad Quad;
 
-        public override void Deserialize(System.IO.Stream stream)
-        {
-            base.Deserialize(stream);
-            StreamReader sr = new StreamReader(stream);
-            textureFile = sr.ReadLine();
-            if (textureFile == "null")
-                textureFile = null;
-			else {
-                CCLog.Log("CCSprite - deserialized with texture file " + textureFile);
-                InitWithFile(textureFile);
-            }
-            Dirty = CCSerialization.DeSerializeBool(sr);
-            IsTextureRectRotated = CCSerialization.DeSerializeBool(sr);
-            AtlasIndex = CCSerialization.DeSerializeInt(sr);
-            TextureRect = CCSerialization.DeSerializeRect(sr);
-            OffsetPosition = CCSerialization.DeSerializePoint(sr);
-        }
+
+        #region Properties
+
+        public bool IsTextureRectRotated { get; private set; }
+        public int AtlasIndex { get; set; }                     // Absolute (real) Index on the SpriteSheet
+        public CCPoint OffsetPosition { get; private set; }     // Offset Position (used by Zwoptex)
+        public CCBlendFunc BlendFunc { get; set; }
+
 
         public virtual bool Dirty
         {
@@ -70,10 +43,79 @@ namespace CocosSharp
             }
         }
 
-        public CCRect TextureRect
+        public bool IsAntialiased
         {
-            get { return textureRect; }
-            set { SetTextureRect(value, false, value.Size); }
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
+
+        public override bool IsColorModifiedByOpacity
+        {
+            get { return opacityModifyRGB; }
+            set
+            {
+                if (opacityModifyRGB != value)
+                {
+                    opacityModifyRGB = value;
+                    UpdateColor();
+                }
+            }
+        }
+
+        public override bool Visible
+        {
+            get { return base.Visible; }
+            set
+            {
+                base.Visible = value;
+                SetDirtyRecursively();
+            }
+        }
+
+        public bool FlipX
+        {
+            get { return flipX; }
+            set
+            {
+                if (flipX != value)
+                {
+                    flipX = value;
+                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
+                }
+            }
+        }
+
+        public bool FlipY
+        {
+            get { return flipY; }
+            set
+            {
+                if (flipY != value)
+                {
+                    flipY = value;
+                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
+                }
+            }
+        }
+
+        public override byte Opacity
+        {
+            get { return base.Opacity; }
+            set
+            {
+                base.Opacity = value;
+                UpdateColor();
+            }
+        }
+
+        public override CCColor3B Color
+        {
+            get { return base.Color; }
+            set
+            {
+                base.Color = value;
+                UpdateColor();
+            }
         }
 
         public override CCPoint Position
@@ -86,9 +128,13 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// Rotation of the sprite, about the Z axis, in Degrees.
-        /// </summary>
+        public CCRect TextureRect
+        {
+            get { return textureRect; }
+            set { SetTextureRect(value, false, value.Size); }
+        }
+            
+        // Rotation of the sprite, about the Z axis, in Degrees.
         public override float Rotation
         {
             set
@@ -97,10 +143,8 @@ namespace CocosSharp
                 SetDirtyRecursively();
             }
         }
-
-        /// <summary>
-        /// Rotation of the sprite, about the X axis, in Degrees.
-        /// </summary>
+            
+        // Rotation of the sprite, about the X axis, in Degrees.
         public override float RotationX
         {
             get { return base.RotationX; }
@@ -111,9 +155,7 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// Rotation of the sprite, about the Y axis, in Degrees.
-        /// </summary>
+        // Rotation of the sprite, about the Y axis, in Degrees.
         public override float RotationY
         {
             get { return base.RotationY; }
@@ -123,7 +165,6 @@ namespace CocosSharp
                 SetDirtyRecursively();
             }
         }
-
 
         public override float SkewX
         {
@@ -145,10 +186,6 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// Scales the sprite to have the given size.
-        /// </summary>
-        /// <param name="size"></param>
         public virtual void ScaleTo(CCSize size)
         {
             CCSize content = ContentSize;
@@ -219,42 +256,6 @@ namespace CocosSharp
             }
         }
 
-        public override bool Visible
-        {
-            get { return base.Visible; }
-            set
-            {
-                base.Visible = value;
-                SetDirtyRecursively();
-            }
-        }
-
-        public bool FlipX
-        {
-            get { return flipX; }
-            set
-            {
-                if (flipX != value)
-                {
-                    flipX = value;
-                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
-                }
-            }
-        }
-
-        public bool FlipY
-        {
-            get { return flipY; }
-            set
-            {
-                if (flipY != value)
-                {
-                    flipY = value;
-                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
-                }
-            }
-        }
-
         public CCSpriteFrame DisplayFrame
         {
             get
@@ -317,103 +318,6 @@ namespace CocosSharp
             }
         }
 
-        public bool IsAntialiased
-        {
-            get { return Texture.IsAntialiased; }
-
-            set { Texture.IsAntialiased = value; }
-        }
-
-        #region RGBA protocol
-
-        private void UpdateColor()
-        {
-            var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
-
-            if (opacityModifyRGB)
-            {
-                color4 *= (DisplayedOpacity / 255.0f);
-            }
-
-            Quad.BottomLeft.Colors = color4;
-            Quad.BottomRight.Colors = color4;
-            Quad.TopLeft.Colors = color4;
-            Quad.TopRight.Colors = color4;
-
-            // renders using Sprite Manager
-            if (batchNode != null)
-            {
-                if (AtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
-                {
-                    textureAtlas.UpdateQuad(ref Quad, AtlasIndex);
-                }
-                else
-                {
-                    // no need to set it recursively
-                    // update dirty_, don't update recursiveDirty_
-					dirty = true;
-                }
-            }
-
-            // self render
-            // do nothing
-        }
-
-        public override byte Opacity
-        {
-            get { return base.Opacity; }
-            set
-            {
-                base.Opacity = value;
-                UpdateColor();
-            }
-        }
-
-        public override CCColor3B Color
-        {
-            get { return base.Color; }
-            set
-            {
-                base.Color = value;
-                UpdateColor();
-            }
-        }
-
-        public override bool IsColorModifiedByOpacity
-        {
-            get { return opacityModifyRGB; }
-            set
-            {
-                if (opacityModifyRGB != value)
-                {
-                    opacityModifyRGB = value;
-                    UpdateColor();
-                }
-            }
-        }
-
-        public override void UpdateDisplayedColor(CCColor3B parentColor)
-        {
-            base.UpdateDisplayedColor(parentColor);
-            UpdateColor();
-        }
-
-        public override void UpdateDisplayedOpacity(byte parentOpacity)
-        {
-            base.UpdateDisplayedOpacity(parentOpacity);
-            UpdateColor();
-        }
-
-        #endregion
-
-        #region ICCTextureProtocol Members
-
-        public CCBlendFunc BlendFunc
-        {
-            get { return blendFunc; }
-            set { blendFunc = value; }
-        }
-
         public virtual CCTexture2D Texture
         {
             get { return texture; }
@@ -421,7 +325,7 @@ namespace CocosSharp
             {
                 // If batchnode, then texture id should be the same
                 Debug.Assert(batchNode == null || value.Name == batchNode.Texture.Name,
-                             "CCSprite: Batched sprites should use the same texture as the batchnode");
+                    "CCSprite: Batched sprites should use the same texture as the batchnode");
 
                 if (batchNode == null && texture != value)
                 {
@@ -431,7 +335,7 @@ namespace CocosSharp
             }
         }
 
-        #endregion
+        #endregion Properties
 
 
         #region Constructors
@@ -463,38 +367,18 @@ namespace CocosSharp
         // Used externally by non-subclasses
 		internal void InitWithTexture(CCTexture2D pTexture, CCRect? rect=null, bool rotated=false)
         {
-            batchNode = null;
-
-            // shader program
-            //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
-
-            recursiveDirty = false;
-            Dirty = false;
-
             opacityModifyRGB = true;
-            blendFunc = CCBlendFunc.AlphaBlend;
+            BlendFunc = CCBlendFunc.AlphaBlend;
 
-            flipX = flipY = false;
-
-            // default transform anchor: center
             AnchorPoint = new CCPoint(0.5f, 0.5f);
-
-            // zwoptex default values
             OffsetPosition = CCPoint.Zero;
 
-            hasChildren = false;
-
-            // clean the Quad
             Quad = new CCV3F_C4B_T2F_Quad();
+            Quad.BottomLeft.Colors = CCColor4B.White;
+            Quad.BottomRight.Colors = CCColor4B.White;
+            Quad.TopLeft.Colors = CCColor4B.White;
+            Quad.TopRight.Colors = CCColor4B.White;
 
-            // Atlas: Color
-            var tmpColor = new CCColor4B(255, 255, 255, 255);
-            Quad.BottomLeft.Colors = tmpColor;
-            Quad.BottomRight.Colors = tmpColor;
-            Quad.TopLeft.Colors = tmpColor;
-            Quad.TopRight.Colors = tmpColor;
-
-            // update texture (calls updateBlendFunc)
             Texture = pTexture;
 
 			var rect2 = rect ?? CCRect.Zero;
@@ -504,19 +388,15 @@ namespace CocosSharp
             }
 
 			SetTextureRect(rect2, rotated, rect2.Size);
-
-            // by default use "Self Render".
-            // if the sprite is added to a batchnode, then it will automatically switch to "batchnode Render"
-            BatchNode = null;
         }
 
-        private void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
+        void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
             InitWithTexture(spriteFrame.Texture, spriteFrame.Rect, spriteFrame.IsRotated);
             DisplayFrame = spriteFrame;
         }
 
-		private void InitWithFile(string fileName, CCRect? rect=null)
+		void InitWithFile(string fileName, CCRect? rect=null)
         {
             Debug.Assert(!String.IsNullOrEmpty(fileName), "Invalid filename for sprite");
 
@@ -538,6 +418,145 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        protected override void Draw()
+        {
+            Debug.Assert(batchNode == null);
+
+            CCDrawManager.BlendFunc(BlendFunc);
+            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.DrawQuad(ref Quad);
+        }
+
+        public bool IsFrameDisplayed(CCSpriteFrame pFrame)
+        {
+            CCRect r = pFrame.Rect;
+
+            return (
+                CCRect.Equal(ref r, ref textureRect) &&
+                pFrame.Texture.Name == texture.Name &&
+                pFrame.Offset.Equals(unflippedOffsetPositionFromCenter)
+            );
+        }
+
+        public void SetDisplayFrameWithAnimationName(string animationName, int frameIndex)
+        {
+            Debug.Assert(!String.IsNullOrEmpty(animationName),
+                "CCSprite#setDisplayFrameWithAnimationName. animationName must not be NULL");
+
+            CCAnimation a = CCAnimationCache.Instance[animationName];
+
+            Debug.Assert(a != null, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
+
+            var frame = (CCAnimationFrame)a.Frames[frameIndex];
+
+            Debug.Assert(frame != null, "CCSprite#setDisplayFrame. Invalid frame");
+
+            DisplayFrame = frame.SpriteFrame;
+        }
+
+        #region Serialization
+
+        public override void Serialize(System.IO.Stream stream)
+        {
+            base.Serialize(stream);
+            StreamWriter sw = new StreamWriter(stream);
+            CCSerialization.SerializeData(Dirty, sw);
+            CCSerialization.SerializeData(IsTextureRectRotated, sw);
+            CCSerialization.SerializeData(AtlasIndex, sw);
+            CCSerialization.SerializeData(TextureRect, sw);
+            CCSerialization.SerializeData(OffsetPosition, sw);
+            sw.WriteLine(textureFile == null ? "null" : textureFile);
+        }
+
+        public override void Deserialize(System.IO.Stream stream)
+        {
+            base.Deserialize(stream);
+            StreamReader sr = new StreamReader(stream);
+            textureFile = sr.ReadLine();
+            if (textureFile == "null")
+                textureFile = null;
+            else {
+                CCLog.Log("CCSprite - deserialized with texture file " + textureFile);
+                InitWithFile(textureFile);
+            }
+            Dirty = CCSerialization.DeSerializeBool(sr);
+            IsTextureRectRotated = CCSerialization.DeSerializeBool(sr);
+            AtlasIndex = CCSerialization.DeSerializeInt(sr);
+            TextureRect = CCSerialization.DeSerializeRect(sr);
+            OffsetPosition = CCSerialization.DeSerializePoint(sr);
+        }
+
+        #endregion Serialization
+
+
+        #region Color managment
+
+        void UpdateColor()
+        {
+            var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
+
+            if (opacityModifyRGB)
+            {
+                color4 *= (DisplayedOpacity / 255.0f);
+            }
+
+            Quad.BottomLeft.Colors = color4;
+            Quad.BottomRight.Colors = color4;
+            Quad.TopLeft.Colors = color4;
+            Quad.TopRight.Colors = color4;
+
+            // renders using Sprite Manager
+            if (batchNode != null)
+            {
+                if (AtlasIndex != CCMacros.CCSpriteIndexNotInitialized)
+                {
+                    textureAtlas.UpdateQuad(ref Quad, AtlasIndex);
+                }
+                else
+                {
+                    // no need to set it recursively
+                    // update dirty_, don't update recursiveDirty_
+                    dirty = true;
+                }
+            }
+
+            // self render
+            // do nothing
+        }
+
+        public override void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            base.UpdateDisplayedColor(parentColor);
+            UpdateColor();
+        }
+
+        public override void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            base.UpdateDisplayedOpacity(parentOpacity);
+            UpdateColor();
+        }
+
+        protected void UpdateBlendFunc()
+        {
+            Debug.Assert(batchNode == null,
+                "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
+
+            // it's possible to have an untextured sprite
+            if (texture == null || !texture.HasPremultipliedAlpha)
+            {
+                BlendFunc = CCBlendFunc.NonPremultiplied;
+                IsColorModifiedByOpacity = false;
+            }
+            else
+            {
+                BlendFunc = CCBlendFunc.AlphaBlend;
+                IsColorModifiedByOpacity = true;
+            }
+        }
+
+        #endregion Color managment
 
 
         public void SetTextureRect(CCRect rect)
@@ -599,7 +618,7 @@ namespace CocosSharp
             textureRect = rect;
         }
 
-        private void SetTextureCoords(CCRect rect)
+        void SetTextureCoords(CCRect rect)
         {
             rect = rect.PointsToPixels();
 
@@ -781,14 +800,7 @@ namespace CocosSharp
             }
         }
 
-        protected override void Draw()
-        {
-            Debug.Assert(batchNode == null);
-
-            CCDrawManager.BlendFunc(blendFunc);
-            CCDrawManager.BindTexture(Texture);
-            CCDrawManager.DrawQuad(ref Quad);
-        }
+        #region Child management
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
@@ -897,7 +909,7 @@ namespace CocosSharp
 
         public virtual void SetDirtyRecursively(bool bValue)
         {
-			dirty = recursiveDirty = bValue;
+            dirty = recursiveDirty = bValue;
 
             // recursively set dirty
             if (hasChildren)
@@ -914,61 +926,18 @@ namespace CocosSharp
             }
         }
 
-        private void SetDirtyRecursively()
+        void SetDirtyRecursively()
         {
             if (batchNode != null && !recursiveDirty)
             {
-				dirty = recursiveDirty = true;
+                dirty = recursiveDirty = true;
                 if (hasChildren)
                 {
                     SetDirtyRecursively(true);
                 }
             }
-		}
-
-        public void SetDisplayFrameWithAnimationName(string animationName, int frameIndex)
-        {
-            Debug.Assert(!String.IsNullOrEmpty(animationName),
-                         "CCSprite#setDisplayFrameWithAnimationName. animationName must not be NULL");
-
-            CCAnimation a = CCAnimationCache.Instance[animationName];
-
-            Debug.Assert(a != null, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
-
-            var frame = (CCAnimationFrame)a.Frames[frameIndex];
-
-            Debug.Assert(frame != null, "CCSprite#setDisplayFrame. Invalid frame");
-
-            DisplayFrame = frame.SpriteFrame;
         }
 
-        public bool IsFrameDisplayed(CCSpriteFrame pFrame)
-        {
-            CCRect r = pFrame.Rect;
-
-            return (
-                       CCRect.Equal(ref r, ref textureRect) &&
-                       pFrame.Texture.Name == texture.Name &&
-                       pFrame.Offset.Equals(unflippedOffsetPositionFromCenter)
-                   );
-        }
-
-        protected void UpdateBlendFunc()
-        {
-            Debug.Assert(batchNode == null,
-                         "CCSprite: updateBlendFunc doesn't work when the sprite is rendered using a CCSpriteSheet");
-
-            // it's possible to have an untextured sprite
-            if (texture == null || !texture.HasPremultipliedAlpha)
-            {
-                blendFunc = CCBlendFunc.NonPremultiplied;
-                IsColorModifiedByOpacity = false;
-            }
-            else
-            {
-                blendFunc = CCBlendFunc.AlphaBlend;
-                IsColorModifiedByOpacity = true;
-            }
-        }
+        #endregion Child management
     }
 }
