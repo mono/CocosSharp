@@ -80,12 +80,12 @@ namespace CocosSharp
         {
         }
 
-        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect, CCSize originalSize, bool rotated=false, CCPoint offset=default(CCPoint))
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rectIn, CCSize originalSize, bool rotated=false, CCPoint offset=default(CCPoint))
         {
             Texture = pobTexture;
 
-            rectInPixels = rect;
-            rect = rect.PixelsToPoints();
+            rectInPixels = rectIn;
+            rect = rectIn.PixelsToPoints();
             offsetInPixels = offset;
             offset = offsetInPixels.PixelsToPoints();
             OriginalSizeInPixels = originalSize;
