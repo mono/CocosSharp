@@ -5,53 +5,36 @@ namespace CocosSharp
 {
     public class CCSpriteBatchNode : CCNode, ICCTexture
     {
-        private const int kDefaultSpriteBatchCapacity = 29;
+        const int defaultSpriteBatchCapacity = 29;
 
-        protected CCBlendFunc m_blendFunc;
-        protected CCRawList<CCSprite> m_pobDescendants;
-        protected CCTextureAtlas m_pobTextureAtlas;
 
-        public CCTextureAtlas TextureAtlas
-        {
-            get { return m_pobTextureAtlas; }
-            set { m_pobTextureAtlas = value; }
-        }
+        #region Properties
 
-        public CCRawList<CCSprite> Descendants
-        {
-            get { return m_pobDescendants; }
-        }
-
-        #region ICCTextureProtocol Members
-
-        public CCBlendFunc BlendFunc
-        {
-            get { return m_blendFunc; }
-            set { m_blendFunc = value; }
-        }
+        public CCTextureAtlas TextureAtlas { get ; private set; }
+        public CCRawList<CCSprite> Descendants { get; private set; }
+        public CCBlendFunc BlendFunc { get; set; }
 
         public virtual CCTexture2D Texture
         {
-            get { return m_pobTextureAtlas.Texture; }
+            get { return TextureAtlas.Texture; }
             set
             {
-                m_pobTextureAtlas.Texture = value;
+                TextureAtlas.Texture = value;
                 UpdateBlendFunc();
                 if (value != null)
                 {
                     contentSize = value.ContentSize;
-            	}
-        	}
+                }
+            }
         }
 
-		public bool IsAntialiased
-		{
-			get { return Texture.IsAntialiased; }
+        public bool IsAntialiased
+        {
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
 
-			set { Texture.IsAntialiased = value; }
-		}
-
-        #endregion
+        #endregion Properties
 
 
         #region Constructors
@@ -61,35 +44,35 @@ namespace CocosSharp
         {
         }
 
-        public CCSpriteBatchNode(CCTexture2D tex, int capacity=kDefaultSpriteBatchCapacity)
+        public CCSpriteBatchNode(CCTexture2D tex, int capacity=defaultSpriteBatchCapacity)
         {
             InitCCSpriteBatchNode(tex, capacity);
         }
 
-        public CCSpriteBatchNode(string fileImage, int capacity=kDefaultSpriteBatchCapacity) 
+        public CCSpriteBatchNode(string fileImage, int capacity=defaultSpriteBatchCapacity) 
             : this(CCTextureCache.SharedTextureCache.AddImage(fileImage), capacity)
         {
         }
 
-        protected void InitCCSpriteBatchNode(CCTexture2D tex, int capacity=kDefaultSpriteBatchCapacity)
+        protected void InitCCSpriteBatchNode(CCTexture2D tex, int capacity=defaultSpriteBatchCapacity)
         {
-            m_blendFunc = CCBlendFunc.AlphaBlend;
+            BlendFunc = CCBlendFunc.AlphaBlend;
 
-            m_pobTextureAtlas = new CCTextureAtlas();
+            TextureAtlas = new CCTextureAtlas();
 
             if (capacity == 0)
             {
-                capacity = kDefaultSpriteBatchCapacity;
+                capacity = defaultSpriteBatchCapacity;
             }
 
-            ContentSize= tex.ContentSize; // @@ TotallyEvil - contentSize should return the size of the sprite sheet
-            m_pobTextureAtlas.InitWithTexture(tex, capacity);
+            ContentSize= tex.ContentSize;
+            TextureAtlas.InitWithTexture(tex, capacity);
 
             UpdateBlendFunc();
 
             // no lazy alloc in this node
             Children = new CCRawList<CCNode>(capacity);
-            m_pobDescendants = new CCRawList<CCSprite>(capacity);
+            Descendants = new CCRawList<CCSprite>(capacity);
         }
 
         #endregion Constructors
@@ -128,11 +111,33 @@ namespace CocosSharp
                 Grid.AfterDraw(this);
             }
 
-            //kmGLPopMatrix();
             CCDrawManager.PopMatrix();
-
-            //m_uOrderOfArrival = 0;
         }
+
+        protected override void Draw()
+        {
+            // Optimization: Fast Dispatch  
+            if (TextureAtlas.TotalQuads == 0)
+            {
+                return;
+            }
+
+            if (Children != null && Children.count > 0)
+            {
+                CCNode[] elements = Children.Elements;
+                for (int i = 0, count = Children.count; i < count; i++)
+                {
+                    ((CCSprite) elements[i]).UpdateTransform();
+                }
+            }
+
+            CCDrawManager.BlendFunc(BlendFunc);
+
+            TextureAtlas.DrawQuads();
+        }
+
+
+        #region Child management
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
@@ -143,7 +148,7 @@ namespace CocosSharp
             var pSprite = (CCSprite) child;
 
             // check CCSprite is using the same texture id
-            Debug.Assert(pSprite.Texture.Name == m_pobTextureAtlas.Texture.Name, "CCSprite is not using the same texture id");
+            Debug.Assert(pSprite.Texture.Name == TextureAtlas.Texture.Name, "CCSprite is not using the same texture id");
 
             base.AddChild(child, zOrder, tag);
 
@@ -155,7 +160,7 @@ namespace CocosSharp
             Debug.Assert(child != null, "the child should not be null");
             Debug.Assert(Children.Contains(child), "Child doesn't belong to Sprite");
 
-			if (zOrder == child.ZOrder)
+            if (zOrder == child.ZOrder)
             {
                 return;
             }
@@ -185,24 +190,23 @@ namespace CocosSharp
         {
             // Invalidate atlas index. issue #569
             // useSelfRender should be performed on all descendants. issue #1216
-            CCSprite[] elements = m_pobDescendants.Elements;
-            for (int i = 0, count = m_pobDescendants.count; i < count; i++)
+            CCSprite[] elements = Descendants.Elements;
+            for (int i = 0, count = Descendants.count; i < count; i++)
             {
                 elements[i].BatchNode = null;
             }
 
             base.RemoveAllChildrenWithCleanup(cleanup);
 
-            m_pobDescendants.Clear();
-            m_pobTextureAtlas.RemoveAllQuads();
+            Descendants.Clear();
+            TextureAtlas.RemoveAllQuads();
         }
 
-        //override sortAllChildren
         public override void SortAllChildren()
         {
             if (IsReorderChildDirty)
             {
-                int j = 0, count = Children.count;
+                int count = Children.count;
                 CCNode[] elements = Children.Elements;
 
                 Array.Sort(elements, 0, count, this);
@@ -230,7 +234,80 @@ namespace CocosSharp
             }
         }
 
-        private void UpdateAtlasIndex(CCSprite sprite, ref int curIndex)
+        public void InsertChild(CCSprite pobSprite, int uIndex)
+        {
+            pobSprite.BatchNode = this;
+            pobSprite.AtlasIndex = uIndex;
+            pobSprite.Dirty = true;
+
+            if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
+            {
+                IncreaseAtlasCapacity();
+            }
+
+            TextureAtlas.InsertQuad(ref pobSprite.Quad, uIndex);
+
+            Descendants.Insert(uIndex, pobSprite);
+
+            // update indices
+            CCSprite[] delements = Descendants.Elements;
+            for (int i = uIndex + 1, count = Descendants.count; i < count; i++)
+            {
+                delements[i].AtlasIndex++;
+            }
+
+            // add children recursively
+            CCRawList<CCNode> pChildren = pobSprite.Children;
+
+            if (pChildren != null && pChildren.count > 0)
+            {
+                CCNode[] elements = pChildren.Elements;
+                for (int j = 0, count = pChildren.count; j < count; j++)
+                {
+                    var pChild = (CCSprite) elements[j];
+                    uIndex = AtlasIndexForChild(pChild, pChild.ZOrder);
+                    InsertChild(pChild, uIndex);
+                }
+            }
+        }
+
+        // addChild helper, faster than insertChild
+        public void AppendChild(CCSprite sprite)
+        {
+            IsReorderChildDirty = true;
+            sprite.BatchNode = this;
+            sprite.Dirty = true;
+
+            if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
+            {
+                IncreaseAtlasCapacity();
+            }
+
+            Descendants.Add(sprite);
+
+            int index = Descendants.Count - 1;
+
+            sprite.AtlasIndex = index;
+
+            TextureAtlas.InsertQuad(ref sprite.Quad, index);
+
+            // add children recursively
+            CCRawList<CCNode> children = sprite.Children;
+            if (children != null && children.count > 0)
+            {
+                CCNode[] elements = children.Elements;
+                int count = children.count;
+                for (int i = 0; i < count; i++)
+                {
+                    AppendChild((CCSprite) elements[i]);
+                }
+            }
+        }
+
+        #endregion Child management
+
+
+        void UpdateAtlasIndex(CCSprite sprite, ref int curIndex)
         {
             int count = 0;
             CCRawList<CCNode> pArray = sprite.Children;
@@ -257,7 +334,7 @@ namespace CocosSharp
             {
                 bool needNewIndex = true;
 
-				if (pArray.Elements[0].ZOrder >= 0)
+                if (pArray.Elements[0].ZOrder >= 0)
                 {
                     //all children are in front of the parent
                     oldIndex = sprite.AtlasIndex;
@@ -275,7 +352,7 @@ namespace CocosSharp
                 for (int i = 0; i < count; i++)
                 {
                     var child = (CCSprite) pArray.Elements[i];
-					if (needNewIndex && child.ZOrder >= 0)
+                    if (needNewIndex && child.ZOrder >= 0)
                     {
                         oldIndex = sprite.AtlasIndex;
                         sprite.AtlasIndex = curIndex;
@@ -306,12 +383,12 @@ namespace CocosSharp
             }
         }
 
-        private void Swap(int oldIndex, int newIndex)
+        void Swap(int oldIndex, int newIndex)
         {
-            CCSprite[] sprites = m_pobDescendants.Elements;
-            CCRawList<CCV3F_C4B_T2F_Quad> quads = m_pobTextureAtlas.quads;
+            CCSprite[] sprites = Descendants.Elements;
+            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.quads;
 
-            m_pobTextureAtlas.Dirty = true;
+            TextureAtlas.Dirty = true;
 
             CCSprite tempItem = sprites[oldIndex];
             CCV3F_C4B_T2F_Quad tempItemQuad = quads[oldIndex];
@@ -330,40 +407,18 @@ namespace CocosSharp
             IsReorderChildDirty = reorder;
         }
 
-        protected override void Draw()
-        {
-            // Optimization: Fast Dispatch	
-            if (m_pobTextureAtlas.TotalQuads == 0)
-            {
-                return;
-            }
-
-            if (Children != null && Children.count > 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
-                {
-                    ((CCSprite) elements[i]).UpdateTransform();
-                }
-            }
-
-            CCDrawManager.BlendFunc(m_blendFunc);
-
-            m_pobTextureAtlas.DrawQuads();
-        }
-
         public void IncreaseAtlasCapacity()
         {
             // if we're going beyond the current TextureAtlas's capacity,
             // all the previously initialized sprites will need to redo their texture coords
             // this is likely computationally expensive
-            int quantity = (m_pobTextureAtlas.Capacity + 1) * 4 / 3;
+            int quantity = (TextureAtlas.Capacity + 1) * 4 / 3;
 
             CCLog.Log(string.Format(
                 "CocosSharp: CCSpriteBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
-                m_pobTextureAtlas.Capacity, quantity));
+                TextureAtlas.Capacity, quantity));
 
-            if (!m_pobTextureAtlas.ResizeCapacity(quantity))
+            if (!TextureAtlas.ResizeCapacity(quantity))
             {
                 // serious problems
                 CCLog.Log("CocosSharp: WARNING: Not enough memory to resize the atlas");
@@ -495,93 +550,23 @@ namespace CocosSharp
             }
         }
 
-        public void InsertChild(CCSprite pobSprite, int uIndex)
-        {
-            pobSprite.BatchNode = this;
-            pobSprite.AtlasIndex = uIndex;
-            pobSprite.Dirty = true;
-
-            if (m_pobTextureAtlas.TotalQuads == m_pobTextureAtlas.Capacity)
-            {
-                IncreaseAtlasCapacity();
-            }
-
-            m_pobTextureAtlas.InsertQuad(ref pobSprite.Quad, uIndex);
-
-            m_pobDescendants.Insert(uIndex, pobSprite);
-
-            // update indices
-            CCSprite[] delements = m_pobDescendants.Elements;
-            for (int i = uIndex + 1, count = m_pobDescendants.count; i < count; i++)
-            {
-                delements[i].AtlasIndex++;
-            }
-
-            // add children recursively
-            CCRawList<CCNode> pChildren = pobSprite.Children;
-
-            if (pChildren != null && pChildren.count > 0)
-            {
-                CCNode[] elements = pChildren.Elements;
-                for (int j = 0, count = pChildren.count; j < count; j++)
-                {
-                    var pChild = (CCSprite) elements[j];
-                    uIndex = AtlasIndexForChild(pChild, pChild.ZOrder);
-                    InsertChild(pChild, uIndex);
-                }
-            }
-        }
-
-        // addChild helper, faster than insertChild
-        public void AppendChild(CCSprite sprite)
-        {
-            IsReorderChildDirty = true;
-            sprite.BatchNode = this;
-            sprite.Dirty = true;
-
-            if (m_pobTextureAtlas.TotalQuads == m_pobTextureAtlas.Capacity)
-            {
-                IncreaseAtlasCapacity();
-            }
-
-            m_pobDescendants.Add(sprite);
-
-            int index = m_pobDescendants.Count - 1;
-
-            sprite.AtlasIndex = index;
-
-            m_pobTextureAtlas.InsertQuad(ref sprite.Quad, index);
-
-            // add children recursively
-            CCRawList<CCNode> children = sprite.Children;
-            if (children != null && children.count > 0)
-            {
-                CCNode[] elements = children.Elements;
-                int count = children.count;
-                for (int i = 0; i < count; i++)
-                {
-                    AppendChild((CCSprite) elements[i]);
-                }
-            }
-        }
-
         public void RemoveSpriteFromAtlas(CCSprite pobSprite)
         {
             // remove from TextureAtlas
-            m_pobTextureAtlas.RemoveQuadAtIndex(pobSprite.AtlasIndex);
+            TextureAtlas.RemoveQuadAtIndex(pobSprite.AtlasIndex);
 
             // Cleanup sprite. It might be reused (issue #569)
             pobSprite.BatchNode = null;
 
-            int uIndex = m_pobDescendants.IndexOf(pobSprite);
+            int uIndex = Descendants.IndexOf(pobSprite);
 
             if (uIndex >= 0)
             {
-                m_pobDescendants.RemoveAt(uIndex);
+                Descendants.RemoveAt(uIndex);
 
                 // update all sprites beyond this one
-                int count = m_pobDescendants.count;
-                CCSprite[] elements = m_pobDescendants.Elements;
+                int count = Descendants.count;
+                CCSprite[] elements = Descendants.Elements;
 
                 for (; uIndex < count; ++uIndex)
                 {
@@ -602,11 +587,11 @@ namespace CocosSharp
             }
         }
 
-        private void UpdateBlendFunc()
+        void UpdateBlendFunc()
         {
-            if (!m_pobTextureAtlas.Texture.HasPremultipliedAlpha)
+            if (!TextureAtlas.Texture.HasPremultipliedAlpha)
             {
-                m_blendFunc = CCBlendFunc.NonPremultiplied;
+                BlendFunc = CCBlendFunc.NonPremultiplied;
             }
         }
 
@@ -616,7 +601,7 @@ namespace CocosSharp
         {
             Debug.Assert(sprite != null, "Argument must be non-NULL");
 
-            while (index >= m_pobTextureAtlas.Capacity || m_pobTextureAtlas.Capacity == m_pobTextureAtlas.TotalQuads)
+            while (index >= TextureAtlas.Capacity || TextureAtlas.Capacity == TextureAtlas.TotalQuads)
             {
                 IncreaseAtlasCapacity();
             }
@@ -626,7 +611,7 @@ namespace CocosSharp
             sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            m_pobTextureAtlas.InsertQuad(ref sprite.Quad, index);
+            TextureAtlas.InsertQuad(ref sprite.Quad, index);
 
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad
@@ -638,7 +623,7 @@ namespace CocosSharp
         {
             Debug.Assert(sprite != null, "Argument must be non-NULL");
 
-            while (index >= m_pobTextureAtlas.Capacity || m_pobTextureAtlas.Capacity == m_pobTextureAtlas.TotalQuads)
+            while (index >= TextureAtlas.Capacity || TextureAtlas.Capacity == TextureAtlas.TotalQuads)
             {
                 IncreaseAtlasCapacity();
             }
@@ -664,10 +649,10 @@ namespace CocosSharp
             // XXX: optimize with a binary search
             int i = 0;
 
-            if (m_pobDescendants.count > 0)
+            if (Descendants.count > 0)
             {
-                CCSprite[] elements = m_pobDescendants.Elements;
-                for (int j = 0, count = m_pobDescendants.count; j < count; j++)
+                CCSprite[] elements = Descendants.Elements;
+                for (int j = 0, count = Descendants.count; j < count; j++)
                 {
                     if (elements[i].AtlasIndex >= z)
                     {
@@ -676,10 +661,10 @@ namespace CocosSharp
                 }
             }
 
-            m_pobDescendants.Insert(i, child);
+            Descendants.Insert(i, child);
 
-            // I  MPORTANT: Call super, and not self. Avoid adding it to the texture atlas array
             base.AddChild(child, z, aTag);
+
             //#issue 1262 don't use lazy sorting, tiles are added as quads not as sprites, so sprites need to be added in order
             ReorderBatch(false);
 

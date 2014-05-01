@@ -384,13 +384,13 @@ namespace CocosSharp
 
 			contentSize = CCSize.Zero;
 
-            isColorModifiedByOpacity = m_pobTextureAtlas.Texture.HasPremultipliedAlpha;
+            isColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             ImageOffset = imageOffset;
 
             m_pReusedChar = new CCSprite();
-            m_pReusedChar.InitWithTexture(m_pobTextureAtlas.Texture, CCRect.Zero, false);
+            m_pReusedChar.InitWithTexture(TextureAtlas.Texture, CCRect.Zero, false);
             m_pReusedChar.BatchNode = this;
 
             SetString(theString, true);
@@ -545,7 +545,7 @@ namespace CocosSharp
                     //}
                     //else
                     {
-                        fontChar = new CCSprite(m_pobTextureAtlas.Texture, rect);
+                        fontChar = new CCSprite(TextureAtlas.Texture, rect);
                         AddChild(fontChar, i, i);
                     }
 
