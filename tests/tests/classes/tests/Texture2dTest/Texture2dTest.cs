@@ -184,7 +184,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
+            CCTextureCache.Instance.DumpCachedTextureInfo();
             CCSize s = CCDirector.SharedDirector.WinSize;
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1, (int) (enumTag.kTagLabel));
@@ -209,14 +209,14 @@ namespace tests
             item2.Position = new CCPoint(s.Width / 2, 30);
             item3.Position = new CCPoint(s.Width / 2 + 100, 30);
             AddChild(menu, 1);
-            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
+            CCTextureCache.Instance.DumpCachedTextureInfo();
         }
 
         ~TextureDemo()
         {
-            CCTextureCache.SharedTextureCache.RemoveUnusedTextures();
+            CCTextureCache.Instance.RemoveUnusedTextures();
 
-            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
+            CCTextureCache.Instance.DumpCachedTextureInfo();
         }
 
         public void restartCallback(object pSender)
@@ -1032,7 +1032,7 @@ namespace tests
 
             sprite2.RunAction(scaleforever);
 			sprite.RunAction(scaleforever);
-            CCTextureCache.SharedTextureCache.DumpCachedTextureInfo();
+            CCTextureCache.Instance.DumpCachedTextureInfo();
         }
 
         public override string title()
@@ -1392,7 +1392,7 @@ namespace tests
             sprite.Scale = 2;
             AddChild(sprite);
 
-            CCTextureCache.SharedTextureCache.RemoveTexture(sprite.Texture);
+            CCTextureCache.Instance.RemoveTexture(sprite.Texture);
 
             sprite = new CCSprite("Images/grossinis_sister1");
             sprite.Position = new CCPoint(s.Width / 5 * 2, s.Height / 2);
@@ -1408,7 +1408,7 @@ namespace tests
             sprite.Scale = 2;
             AddChild(sprite);
 
-            CCTextureCache.SharedTextureCache.RemoveTextureForKey("Images/grossinis_sister2");
+            CCTextureCache.Instance.RemoveTextureForKey("Images/grossinis_sister2");
 
             sprite = new CCSprite("Images/grossinis_sister2");
             sprite.Position = new CCPoint(s.Width / 5 * 4, s.Height / 2);
@@ -1456,7 +1456,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCTextureCache.SharedTextureCache.RemoveAllTextures();
+            CCTextureCache.Instance.RemoveAllTextures();
         }
 
         private void LoadImages(float dt)
@@ -1466,15 +1466,15 @@ namespace tests
                 for (int j = 0; j < 8; j++)
                 {
                     var szSpriteName = String.Format("Images/sprites_test/sprite-{0}-{1}.png", i, j);
-                    CCTextureCache.SharedTextureCache.AddImageAsync(szSpriteName, ImageLoaded);
+                    CCTextureCache.Instance.AddImageAsync(szSpriteName, ImageLoaded);
                 }
             }
 
-            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background1.jpg", ImageLoaded);
-            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background2.jpg", ImageLoaded);
-            CCTextureCache.SharedTextureCache.AddImageAsync("Images/background.png", ImageLoaded);
-            CCTextureCache.SharedTextureCache.AddImageAsync("Images/atlastest.png", ImageLoaded);
-            CCTextureCache.SharedTextureCache.AddImageAsync("Images/grossini_dance_atlas.png", ImageLoaded);
+            CCTextureCache.Instance.AddImageAsync("Images/background1.jpg", ImageLoaded);
+            CCTextureCache.Instance.AddImageAsync("Images/background2.jpg", ImageLoaded);
+            CCTextureCache.Instance.AddImageAsync("Images/background.png", ImageLoaded);
+            CCTextureCache.Instance.AddImageAsync("Images/atlastest.png", ImageLoaded);
+            CCTextureCache.Instance.AddImageAsync("Images/grossini_dance_atlas.png", ImageLoaded);
         }
 
         private void ImageLoaded(CCTexture2D tex)

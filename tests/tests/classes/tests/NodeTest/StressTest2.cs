@@ -22,7 +22,7 @@ namespace tests
             sublayer.AddChild(sp1, 1);
 
 			var fire = new CCParticleFire();
-            fire.Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/fire"));
+            fire.Texture = (CCTextureCache.Instance.AddImage("Images/fire"));
             fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 
 			fire.RepeatForever(seq3);

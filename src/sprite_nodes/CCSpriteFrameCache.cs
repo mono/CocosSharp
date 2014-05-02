@@ -265,7 +265,7 @@ namespace CocosSharp
                 CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
-            CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(texturePath);
+            CCTexture2D pTexture = CCTextureCache.Instance.AddImage(texturePath);
 
             if (pTexture != null)
             {
@@ -281,7 +281,7 @@ namespace CocosSharp
         {
             Debug.Assert(textureFileName != null);
             
-            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
+            CCTexture2D texture = CCTextureCache.Instance.AddImage(textureFileName);
 
             if (texture != null)
             {

@@ -25,7 +25,7 @@ namespace tests
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             m_texture1 = batch.Texture;
-            m_texture2 = CCTextureCache.SharedTextureCache.AddImage("Images/grossini_dance_atlas-mono");
+            m_texture2 = CCTextureCache.Instance.AddImage("Images/grossini_dance_atlas-mono");
 
             for (int i = 0; i < 30; i++)
                 addNewSprite();

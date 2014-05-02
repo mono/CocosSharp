@@ -590,7 +590,7 @@ namespace CocosSharp
                 if (spriteSheet.Length == 0)
                 {
                     spriteFile = reader.CCBRootPath + spriteFile;
-                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                    CCTexture2D texture = CCTextureCache.Instance.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
@@ -649,7 +649,7 @@ namespace CocosSharp
 
             if (!String.IsNullOrEmpty(spriteFile))
             {
-                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                return CCTextureCache.Instance.AddImage(CCFileUtils.RemoveExtension(spriteFile));
             }
             return null;
         }

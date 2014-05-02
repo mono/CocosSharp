@@ -12,7 +12,7 @@ namespace tests
         {
 			var s = CCDirector.SharedDirector.WinSize;
 
-			var texture = CCTextureCache.SharedTextureCache.AddImage("animations/dragon_animation");
+			var texture = CCTextureCache.Instance.AddImage("animations/dragon_animation");
 
             // manually add frames to the frame cache
 			var frame0 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 0, 132, 132));

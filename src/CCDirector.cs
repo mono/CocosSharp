@@ -663,7 +663,7 @@ namespace CocosSharp
         public void PurgeCachedData()
         {
             CCLabelBMFont.PurgeCachedData();
-            CCTextureCache.SharedTextureCache.RemoveAllTextures();
+            CCTextureCache.Instance.RemoveAllTextures();
             //CCFileUtils::sharedFileUtils()->purgeCachedEntries();
         }
 
@@ -737,7 +737,7 @@ namespace CocosSharp
             // purge all managed caches
             CCAnimationCache.PurgeSharedAnimationCache();
             CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
-            CCTextureCache.PurgeSharedTextureCache();
+            CCTextureCache.PurgeInstance();
             //CCFileUtils.purgeFileUtils();
             //CCConfiguration.purgeConfiguration();
 

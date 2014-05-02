@@ -54,7 +54,7 @@ namespace CocosSharp
 
 		CCTMXLayer(CCTMXTilesetInfo tileSetInfo, CCTMXLayerInfo layerInfo, CCTMXMapInfo mapInfo, CCSize layerSize, int totalNumberOfTiles) 
 			: this(tileSetInfo, layerInfo, mapInfo, layerSize, totalNumberOfTiles, (int)(totalNumberOfTiles * 0.35f + 1), 
-			CCTextureCache.SharedTextureCache.AddImage(tileSetInfo.SourceImage))
+			CCTextureCache.Instance.AddImage(tileSetInfo.SourceImage))
 		{
 		}
 

@@ -8,11 +8,13 @@ namespace CocosSharp
 {
     public class CCTextureCache : IDisposable, ICCUpdatable
     {
+        #region Structs
+
         struct AsyncStruct
         {
 			public string  FileName { get; set; }
 			public Action<CCTexture2D> Action { get; set; }
-        };
+        }
 
 		struct DataAsyncStruct
 		{
@@ -20,21 +22,67 @@ namespace CocosSharp
 			public string AssetName { get; set; }
 			public CCSurfaceFormat Format { get; set; }
 			public Action<CCTexture2D> Action { get; set; }
-		};
+		}
 
-		private List<AsyncStruct> _asyncLoadedImages = new List<AsyncStruct>();
-		private List<DataAsyncStruct> _dataAsyncLoadedImages = new List<DataAsyncStruct>();
-		private Action ProcessingAction { get; set; }
-		private Action ProcessingDataAction { get; set; }
-		private object Task { get; set; }
-
-		private static CCTextureCache sharedTextureCache;
-
-        private readonly object m_pDictLock = new object();
-        protected Dictionary<string, CCTexture2D> m_pTextures = new Dictionary<string, CCTexture2D>();
+        #endregion Structs
 
 
-        private CCTextureCache()
+        static CCTextureCache sharedTextureCache;
+
+		List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
+		List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
+
+        readonly object dictLock = new object();
+        protected Dictionary<string, CCTexture2D> textures = new Dictionary<string, CCTexture2D>();
+
+
+        #region Properties
+
+        public static CCTextureCache Instance
+        {
+            get 
+            {
+                if (sharedTextureCache == null)
+                {
+                    sharedTextureCache = new CCTextureCache();
+                }
+                return sharedTextureCache;
+            }
+        }
+
+        Action ProcessingAction { get; set; }
+        Action ProcessingDataAction { get; set; }
+        object Task { get; set; }
+
+        public CCTexture2D this[string key]
+        {
+            get 
+            {
+                CCTexture2D texture = null;
+                try
+                {
+                    if (Path.HasExtension(key))
+                    {
+                        key = CCFileUtils.RemoveExtension(key);
+                    }
+
+                    textures.TryGetValue(key, out texture);
+                }
+                catch (ArgumentNullException)
+                {
+                    CCLog.Log("Texture of key {0} is not exist.", key);
+                }
+
+                return texture;
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        CCTextureCache()
         {
             ProcessingAction = new Action(
                 () =>
@@ -44,15 +92,15 @@ namespace CocosSharp
 
                         AsyncStruct image;
 
-                        lock (_asyncLoadedImages)
+                        lock (asyncLoadedImages)
                         {
-                            if (_asyncLoadedImages.Count == 0)
+                            if (asyncLoadedImages.Count == 0)
                             {
                                 Task = null;
                                 return;
                             }
-                            image = _asyncLoadedImages[0];
-                            _asyncLoadedImages.RemoveAt(0);
+                            image = asyncLoadedImages[0];
+                            asyncLoadedImages.RemoveAt(0);
                         }
 
                         try
@@ -82,15 +130,15 @@ namespace CocosSharp
 
 						DataAsyncStruct imageData;
 
-						lock (_dataAsyncLoadedImages)
+						lock (dataAsyncLoadedImages)
 						{
-							if (_dataAsyncLoadedImages.Count == 0)
+							if (dataAsyncLoadedImages.Count == 0)
 							{
 								Task = null;
 								return;
 							}
-							imageData = _dataAsyncLoadedImages[0];
-							_dataAsyncLoadedImages.RemoveAt(0);
+							imageData = dataAsyncLoadedImages[0];
+							dataAsyncLoadedImages.RemoveAt(0);
 						}
 
 						try
@@ -114,48 +162,159 @@ namespace CocosSharp
 			);
         }
 
+        #endregion Constructors
+
         public void Update(float dt)
         {
         }
 
-        public static CCTextureCache SharedTextureCache
+        public bool Contains(string assetFile)
         {
-            get 
+            return textures.ContainsKey(assetFile);
+        }
+
+
+        #region Cleaning up
+
+        public static void PurgeInstance()
+        {
+            if (Instance != null)
             {
-                if (sharedTextureCache == null)
-                {
-                    sharedTextureCache = new CCTextureCache();
-                }
-                return (sharedTextureCache);
+                Instance.Dispose();
+                sharedTextureCache = null;
             }
         }
 
-        public static void PurgeSharedTextureCache()
+        // No unmanaged resources, so no need for finalizer
+        public void Dispose()
         {
-            if (sharedTextureCache != null)
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing && textures != null)
             {
-                sharedTextureCache.Dispose();
-                sharedTextureCache = null;
+                foreach (CCTexture2D t in textures.Values)
+                {
+                    t.Dispose();
+                }
+
+                textures = null;
             }
         }
 
         public void UnloadContent()
         {
-            m_pTextures.Clear();
+            textures.Clear();
         }
 
-        public bool Contains(string assetFile)
+        public void RemoveAllTextures()
         {
-            return m_pTextures.ContainsKey(assetFile);
+            textures.Clear();
         }
+
+        public void RemoveUnusedTextures()
+        {
+            if (textures.Count > 0)
+            {
+                var tmp = new Dictionary<string, WeakReference>();
+
+                foreach (var pair in textures)
+                {
+                    tmp.Add(pair.Key, new WeakReference(pair.Value));
+                }
+
+                textures.Clear();
+
+                GC.Collect();
+
+                foreach (var pair in tmp)
+                {
+                    if (pair.Value.IsAlive)
+                    {
+                        textures.Add(pair.Key, (CCTexture2D) pair.Value.Target);
+                    }
+                }
+            }
+        }
+
+        public void RemoveTexture(CCTexture2D texture)
+        {
+            if (texture == null)
+            {
+                return;
+            }
+
+            string key = null;
+
+            foreach (var pair in textures)
+            {
+                if (pair.Value == texture)
+                {
+                    key = pair.Key;
+                    break;
+                }
+            }
+
+            if (key != null)
+            {
+                textures.Remove(key);
+            }
+        }
+
+        public void RemoveTextureForKey(string textureKeyName)
+        {
+            if (String.IsNullOrEmpty(textureKeyName))
+            {
+                return;
+            }
+
+            if (Path.HasExtension(textureKeyName))
+            {
+                textureKeyName = CCFileUtils.RemoveExtension(textureKeyName);
+            }
+
+            textures.Remove(textureKeyName);
+        }
+
+        public void DumpCachedTextureInfo()
+        {
+            int count = 0;
+            int total = 0;
+
+            var copy = textures.ToList();
+
+            foreach (var pair in copy)
+            {
+                var texture = pair.Value.XNATexture;
+
+                if (texture != null)
+                {
+                    var bytes = texture.Width * texture.Height * 4;
+                    CCLog.Log("{0} {1} x {2} => {3} KB.", pair.Key, texture.Width, texture.Height, bytes / 1024);
+                    total += bytes;
+                }
+
+                count++;
+            }
+            CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
+        }
+
+        #endregion Cleaning up
+
+
+        #region Managing texture images
 
 		public void AddImageAsync(byte[] data, string assetName, CCSurfaceFormat format, Action<CCTexture2D> action)
         {
 			Debug.Assert(data != null && data.Length != 0, "TextureCache: data MUST not be NULL and MUST contain data");
 
-			lock (_dataAsyncLoadedImages)
+			lock (dataAsyncLoadedImages)
             {
-				_dataAsyncLoadedImages.Add(new DataAsyncStruct() { Data = data, AssetName = assetName, Format = format  , Action = action});
+				dataAsyncLoadedImages.Add(new DataAsyncStruct() { Data = data, AssetName = assetName, Format = format  , Action = action});
             }
 
             if (Task == null)
@@ -168,9 +327,9 @@ namespace CocosSharp
 		{
 			Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
 
-			lock (_asyncLoadedImages)
+			lock (asyncLoadedImages)
 			{
-				_asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
+				asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
 			}
 
 			if (Task == null)
@@ -190,15 +349,15 @@ namespace CocosSharp
 				assetName = CCFileUtils.RemoveExtension (assetName);
 			}
 
-			lock (m_pDictLock) {
-				m_pTextures.TryGetValue (assetName, out texture);
+			lock (dictLock) {
+				textures.TryGetValue (assetName, out texture);
 			}
 			if (texture == null) {
 				texture = new CCTexture2D ();
 
 				if (texture.InitWithFile (fileimage)) {
-					lock (m_pDictLock) {
-						m_pTextures[assetName] = texture;
+					lock (dictLock) {
+						textures[assetName] = texture;
 					}
 				} else {
 					return null;
@@ -210,17 +369,17 @@ namespace CocosSharp
 
 		public CCTexture2D AddImage(byte[] data, string assetName, CCSurfaceFormat format)
         {
-            lock (m_pDictLock)
+            lock (dictLock)
             {
                 CCTexture2D texture;
 
-                if (!m_pTextures.TryGetValue(assetName, out texture))
+                if (!textures.TryGetValue(assetName, out texture))
                 {
                     texture = new CCTexture2D();
                     
                     if (texture.InitWithData(data, format))
                     {
-                        m_pTextures.Add(assetName, texture);
+                        textures.Add(assetName, texture);
                     }
                     else
                     {
@@ -231,14 +390,8 @@ namespace CocosSharp
             }
         }
 
-		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
-                                          bool premultiplied) where T : struct
-        {
-            return AddRawImage(data, width, height, assetName, format, premultiplied, false, new CCSize(width, height));
-        }
-
-		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
-                                          bool premultiplied, bool mipMap) where T : struct
+        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format, 
+            bool premultiplied, bool mipMap=false) where T : struct
         {
             return AddRawImage(data, width, height, assetName, format, premultiplied, mipMap, new CCSize(width, height));
         }
@@ -248,15 +401,15 @@ namespace CocosSharp
         {
             CCTexture2D texture;
 
-            lock (m_pDictLock)
+            lock (dictLock)
             {
-                if (!m_pTextures.TryGetValue(assetName, out texture))
+                if (!textures.TryGetValue(assetName, out texture))
                 {
                     texture = new CCTexture2D();
                     
 					if (texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize))
                     {
-                        m_pTextures.Add(assetName, texture);
+                        textures.Add(assetName, texture);
                     }
                     else
                     {
@@ -267,150 +420,6 @@ namespace CocosSharp
             return texture;
         }
 
-		public CCTexture2D this[string key]
-		{
-			get 
-			{
-				return TextureForKey (key);
-			}
-		}
-
-        public CCTexture2D TextureForKey(string key)
-        {
-            CCTexture2D texture = null;
-            try
-            {
-                if (Path.HasExtension(key))
-                {
-                    key = CCFileUtils.RemoveExtension(key);
-                }
-
-                m_pTextures.TryGetValue(key, out texture);
-            }
-            catch (ArgumentNullException)
-            {
-                CCLog.Log("Texture of key {0} is not exist.", key);
-            }
-
-            return texture;
-        }
-
-        public void RemoveAllTextures()
-        {
-            m_pTextures.Clear();
-        }
-
-        public void RemoveUnusedTextures()
-        {
-            if (m_pTextures.Count > 0)
-            {
-                var tmp = new Dictionary<string, WeakReference>();
-
-                foreach (var pair in m_pTextures)
-                {
-                    tmp.Add(pair.Key, new WeakReference(pair.Value));
-                }
-
-                m_pTextures.Clear();
-
-                GC.Collect();
-
-                foreach (var pair in tmp)
-                {
-                    if (pair.Value.IsAlive)
-                    {
-                        m_pTextures.Add(pair.Key, (CCTexture2D) pair.Value.Target);
-                    }
-                }
-            }
-        }
-
-        public void RemoveTexture(CCTexture2D texture)
-        {
-            if (texture == null)
-            {
-                return;
-            }
-
-            string key = null;
-
-            foreach (var pair in m_pTextures)
-            {
-                if (pair.Value == texture)
-                {
-                    key = pair.Key;
-                    break;
-                }
-            }
-
-            if (key != null)
-            {
-                m_pTextures.Remove(key);
-            }
-        }
-
-        public void RemoveTextureForKey(string textureKeyName)
-        {
-            if (String.IsNullOrEmpty(textureKeyName))
-            {
-                return;
-            }
-
-            if (Path.HasExtension(textureKeyName))
-            {
-                textureKeyName = CCFileUtils.RemoveExtension(textureKeyName);
-            }
-
-            m_pTextures.Remove(textureKeyName);
-        }
-
-        public void DumpCachedTextureInfo()
-        {
-            int count = 0;
-            int total = 0;
-
-            var copy = m_pTextures.ToList();
-
-            foreach (var pair in copy)
-            {
-                var texture = pair.Value.XNATexture;
-
-                if (texture != null)
-                {
-                    var bytes = texture.Width * texture.Height * 4;
-                    CCLog.Log("{0} {1} x {2} => {3} KB.", pair.Key, texture.Width, texture.Height, bytes / 1024);
-                    total += bytes;
-                }
-
-                count++;
-            }
-            CCLog.Log("{0} textures, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
-        }
-
-		#region Cleaning up
-
-		// No unmanaged resources, so no need for finalizer
-
-        public void Dispose()
-        {
-			this.Dispose(true);
-
-			GC.SuppressFinalize(this);
-        }
-
-		protected virtual void Dispose(bool disposing)
-		{
-			if (disposing && m_pTextures != null)
-			{
-				foreach (CCTexture2D t in m_pTextures.Values)
-				{
-					t.Dispose();
-				}
-
-				m_pTextures = null;
-			}
-		}
-    	
-		#endregion Cleaning up
+        #endregion Managing texture images
 	}
 }

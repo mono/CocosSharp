@@ -410,7 +410,7 @@ namespace CocosSharp
             else 
             {
                 // If frame doesn't exist, try texture cache
-                CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(fileName);
+                CCTexture2D pTexture = CCTextureCache.Instance.AddImage(fileName);
                 if (pTexture != null) {
                     InitWithTexture (pTexture, rect);
                 }

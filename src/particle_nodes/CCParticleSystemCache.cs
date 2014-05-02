@@ -151,7 +151,7 @@ namespace CocosSharp
 					try
 					{
 
-                        CCTextureCache.SharedTextureCache.AddImageAsync(imageBytes, config.TextureName, CCSurfaceFormat.Color, (loadedTexture) =>
+                        CCTextureCache.Instance.AddImageAsync(imageBytes, config.TextureName, CCSurfaceFormat.Color, (loadedTexture) =>
 							{
                                 if (loadedTexture != null)
                                 {
@@ -167,7 +167,7 @@ namespace CocosSharp
                                         CCFileUtils.IsPopupNotify = false;
                                         try
                                         {
-                                            CCTextureCache.SharedTextureCache.AddImageAsync(config.TextureName, (tex2) =>
+                                            CCTextureCache.Instance.AddImageAsync(config.TextureName, (tex2) =>
                                                 {
                                                     config.Texture = tex2;
 

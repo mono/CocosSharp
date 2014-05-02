@@ -518,21 +518,21 @@ namespace tests
 			var size = CCDirector.SharedDirector.VisibleSize;
 
 			var sprite1 = new TouchableSprite (30);
-			var texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+			var texture = CCTextureCache.Instance.AddImage("Images/CyanSquare.png");
 			sprite1.Texture = texture;
 			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
 			AddChild(sprite1, 10);
 
 			var sprite2 = new TouchableSprite (20);
-			texture = CCTextureCache.SharedTextureCache.AddImage("Images/MagentaSquare.png");
+			texture = CCTextureCache.Instance.AddImage("Images/MagentaSquare.png");
 			sprite2.Texture = texture;
 			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
 			AddChild(sprite2, 20);
 
 			var sprite3 = new TouchableSprite (10);
-			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
+			texture = CCTextureCache.Instance.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
 			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite3.Position = CCPoint.Zero;
@@ -995,21 +995,21 @@ namespace tests
 			var size = CCDirector.SharedDirector.VisibleSize;
 
 			var sprite1 = new TouchableSprite ();
-			var texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
+			var texture = CCTextureCache.Instance.AddImage("Images/CyanSquare.png");
 			sprite1.Texture = texture;
 			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
 			AddChild(sprite1, -10);
 
 			var sprite2 = new TouchableSprite ();
-			texture = CCTextureCache.SharedTextureCache.AddImage("Images/MagentaSquare.png");
+			texture = CCTextureCache.Instance.AddImage("Images/MagentaSquare.png");
 			sprite2.Texture = texture;
 			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
 			AddChild(sprite2, -20);
 
 			var sprite3 = new TouchableSprite ();
-			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
+			texture = CCTextureCache.Instance.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
 			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
 			sprite3.Position = CCPoint.Zero;

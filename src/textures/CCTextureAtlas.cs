@@ -237,7 +237,7 @@ namespace CocosSharp
         private void InitWithFile(string file, int capacity)
         {
             // retained in property
-            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(file);
+            CCTexture2D texture = CCTextureCache.Instance.AddImage(file);
             if (texture != null)
             {
                 InitWithTexture(texture, capacity);
