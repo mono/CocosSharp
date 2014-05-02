@@ -108,7 +108,7 @@ namespace CocosSharp
 
                     else if (oldBatch == null)
                     {
-                        var batchQuads = BatchNode.TextureAtlas.quads.Elements;
+                        var batchQuads = BatchNode.TextureAtlas.Quads.Elements;
                         BatchNode.TextureAtlas.Dirty = true;
                         Array.Copy(quads.Elements, 0, batchQuads, AtlasIndex, TotalParticles);
                         Quads = null;
@@ -208,7 +208,7 @@ namespace CocosSharp
             int start, end;
             if (BatchNode != null)
             {
-                rawQuads = BatchNode.TextureAtlas.quads.Elements;
+                rawQuads = BatchNode.TextureAtlas.Quads.Elements;
                 BatchNode.TextureAtlas.Dirty = true;
                 start = AtlasIndex;
                 end = AtlasIndex + TotalParticles;
@@ -359,7 +359,7 @@ namespace CocosSharp
             CCV3F_C4B_T2F_Quad[] rawQuads;
             if (BatchNode != null)
             {
-                rawQuads = BatchNode.TextureAtlas.quads.Elements;
+                rawQuads = BatchNode.TextureAtlas.Quads.Elements;
                 BatchNode.TextureAtlas.Dirty = true;
             }
             else

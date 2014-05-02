@@ -46,78 +46,84 @@ namespace CocosSharp
     ///</remarks>
     public class CCTextureAtlas 
     {
-        internal bool Dirty = true; //indicates whether or not the array buffer of the VBO needs to be updated
+		CCQuadVertexBuffer vertexBuffer;
 
-		private CCQuadVertexBuffer vertexBuffer;
-        public CCRawList<CCV3F_C4B_T2F_Quad> quads;
-        protected CCTexture2D texture;
 
-        #region properties
+        #region Properties
 
-        /// <summary>
-        /// quantity of quads that are going to be drawn
-        /// </summary>
+        protected internal CCRawList<CCV3F_C4B_T2F_Quad> Quads { get; private set; }
+        protected internal CCTexture2D Texture { get; set; }
+
+        // Indicates whether or not the array buffer of the VBO needs to be updated
+        protected internal bool Dirty { get; set; }                                 
+
         public int TotalQuads
         {
-            get { return quads.count; }
+            get { return Quads.Count; }
         }
 
-        /// <summary>
-        /// quantity of quads that can be stored with the current texture atlas size
-        /// </summary>
         public int Capacity
         {
-            get { return quads.Capacity; }
-            set { quads.Capacity = value; }
-        }
-
-        /// <summary>
-        /// Texture of the texture atlas
-        /// </summary>
-        public CCTexture2D Texture
-        {
-            get { return texture; }
-            set { texture = value; }
+            get { return Quads.Capacity; }
+            set { Quads.Capacity = value; }
         }
 
 		public bool IsAntialiased
 		{
 			get { return Texture.IsAntialiased; }
-
 			set { Texture.IsAntialiased = value; }
 		}
 
-        #endregion
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTextureAtlas(string file, int capacity) : this(CCTextureCache.Instance.AddImage(file), capacity)
+        {
+        }
+
+        public CCTextureAtlas(CCTexture2D texture, int capacity)
+        {
+            Texture = texture;
+
+            // Re-initialization is not allowed
+            Debug.Assert(Quads == null);
+
+            if (capacity < 4)
+            {
+                capacity = 4;
+            }
+
+            vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
+            Quads = vertexBuffer.Data;
+
+            Dirty = true;
+        }
+
+        #endregion Constructors
+
 
         public override string ToString()
         {
             return string.Format("TotalQuads:{0}", TotalQuads);
         }
 
-        /// <summary>
-        /// draws all the Atlas's Quads
-        /// </summary>
+
+        #region Drawing
+
         public void DrawQuads()
         {
             DrawNumberOfQuads(TotalQuads, 0);
         }
 
-        /// <summary>
-        /// draws n quads
-        ///  can't be greater than the capacity of the Atlas
-        ///  n
-        /// </summary>
         public void DrawNumberOfQuads(int n)
         {
             DrawNumberOfQuads(n, 0);
         }
-
-
-        /// <summary>
-        /// draws n quads from an index (offset).
-        /// n + start can't be greater than the capacity of the atlas
-        /// @since v1.0
-        /// </summary>
+           
+        // draws n quads from an index (offset).
+        // n + start can't be greater than the capacity of the atlas
         public void DrawNumberOfQuads(int n, int start)
         {
             if (n == 0)
@@ -136,27 +142,25 @@ namespace CocosSharp
             CCDrawManager.DrawQuadsBuffer(vertexBuffer, start, n);
         }
 
-        /// <summary>
-        /// resize the capacity of the CCTextureAtlas.
-        /// The new capacity can be lower or higher than the current one
-        /// It returns YES if the resize was successful.
-        ///  If it fails to resize the capacity it will return NO with a new capacity of 0.
-        /// </summary>
-        public bool ResizeCapacity(int newCapacity)
+        #endregion Drawing
+
+
+        public void ResizeCapacity(int newCapacity)
         {
-            if (newCapacity <= quads.Capacity)
+            if (newCapacity <= Quads.Capacity)
             {
-                return true;
+                return;
             }
 
             vertexBuffer.Capacity = newCapacity;
 
-            quads = vertexBuffer.Data;
+            Quads = vertexBuffer.Data;
 
             Dirty = true;
-
-            return true;
         }
+
+
+        #region Managing Quads
 
         public void IncreaseTotalQuadsWith(int amount)
         {
@@ -165,8 +169,8 @@ namespace CocosSharp
 
         public void MoveQuadsFromIndex(int oldIndex, int amount, int newIndex)
         {
-            Debug.Assert(newIndex + amount <= quads.count, "insertQuadFromIndex:atIndex: Invalid index");
-            Debug.Assert(oldIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(newIndex + amount <= Quads.Count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(oldIndex < Quads.Count, "insertQuadFromIndex:atIndex: Invalid index");
 
             if (oldIndex == newIndex)
             {
@@ -174,35 +178,35 @@ namespace CocosSharp
             }
 
             var tmp = new CCV3F_C4B_T2F_Quad[amount];
-            Array.Copy(quads.Elements, oldIndex, tmp, 0, amount);
+            Array.Copy(Quads.Elements, oldIndex, tmp, 0, amount);
 
             if (newIndex < oldIndex)
             {
                 // move quads from newIndex to newIndex + amount to make room for buffer
-                Array.Copy(quads.Elements, newIndex + amount, quads.Elements, newIndex, oldIndex - newIndex);
+                Array.Copy(Quads.Elements, newIndex + amount, Quads.Elements, newIndex, oldIndex - newIndex);
             }
             else
             {
                 // move quads above back
-                Array.Copy(quads.Elements, oldIndex + amount, quads.Elements, oldIndex, newIndex - oldIndex);
+                Array.Copy(Quads.Elements, oldIndex + amount, Quads.Elements, oldIndex, newIndex - oldIndex);
             }
-            Array.Copy(tmp, 0, quads.Elements, newIndex, amount);
+            Array.Copy(tmp, 0, Quads.Elements, newIndex, amount);
 
             Dirty = true;
         }
 
         public void MoveQuadsFromIndex(int index, int newIndex)
         {
-            Debug.Assert(newIndex + (quads.count - index) <= quads.Capacity, "moveQuadsFromIndex move is out of bounds");
+            Debug.Assert(newIndex + (Quads.Count - index) <= Quads.Capacity, "moveQuadsFromIndex move is out of bounds");
 
-            Array.Copy(quads.Elements, index, quads.Elements, newIndex, quads.count - index);
+            Array.Copy(Quads.Elements, index, Quads.Elements, newIndex, Quads.Count - index);
             Dirty = true;
         }
 
         public void FillWithEmptyQuadsFromIndex(int index, int amount)
         {
             int to = index + amount;
-            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = Quads.Elements;
             var empty = new CCV3F_C4B_T2F_Quad();
 
             for (int i = index; i < to; i++)
@@ -213,108 +217,30 @@ namespace CocosSharp
             Dirty = true;
         }
 
-        #region create and init
-
-        public CCTextureAtlas()
-        {
-        }
-
-        public CCTextureAtlas(string file, int capacity) : this()
-        {
-            InitWithFile (file, capacity);
-        }
-
-        public CCTextureAtlas(CCTexture2D texture, int capacity) : this()
-        {
-            InitWithTexture (texture, capacity);
-        }
-
-        /// <summary>
-        /// initializes a TextureAtlas with a filename and with a certain capacity for Quads.
-        /// The TextureAtlas capacity can be increased in runtime.
-        /// WARNING: Do not reinitialize the TextureAtlas because it will leak memory (issue #706)
-        /// </summary>
-        private void InitWithFile(string file, int capacity)
-        {
-            // retained in property
-            CCTexture2D texture = CCTextureCache.Instance.AddImage(file);
-            if (texture != null)
-            {
-                InitWithTexture(texture, capacity);
-            }
-        }
-
-        /// <summary>
-        /// initializes a TextureAtlas with a previously initialized Texture2D object, and
-        /// with an initial capacity for Quads. 
-        /// The TextureAtlas capacity can be increased in runtime.
-        /// WARNING: Do not reinitialize the TextureAtlas because it will leak memory (issue #706)
-        /// </summary>
-        // Called by CCParticleBatchNode and CCSpriteBatchNode on an already instantiated texture atlas object 
-        internal void InitWithTexture(CCTexture2D texture, int capacity)
-        {
-            //Debug.Assert(texture != null);
-
-            // retained in property
-			this.texture = texture;
-
-            // Re-initialization is not allowed
-            Debug.Assert(quads == null);
-
-            if (capacity < 4)
-            {
-                capacity = 4;
-            }
-
-			vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
-            quads = vertexBuffer.Data;
-
-            Dirty = true;
-        }
-
-        #endregion
-
-        #region Quads
-
-        /// <summary>
-        /// updates a Quad (texture, vertex and color) at a certain index
-        /// index must be between 0 and the atlas capacity - 1
-        /// @since v0.8
-        /// </summary>
         public void UpdateQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
-            Debug.Assert(index >= 0 && index < quads.Capacity, "updateQuadWithTexture: Invalid index");
-            quads.count = Math.Max(index + 1, quads.count);
-            quads.Elements[index] = quad;
+            Debug.Assert(index >= 0 && index < Quads.Capacity, "updateQuadWithTexture: Invalid index");
+            Quads.Count = Math.Max(index + 1, Quads.Count);
+            Quads.Elements[index] = quad;
             Dirty = true;
         }
 
-        /// <summary>
-        /// Inserts a Quad (texture, vertex and color) at a certain index
-        /// index must be between 0 and the atlas capacity - 1
-        /// @since v0.8
-        /// </summary>
         public void InsertQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
-            Debug.Assert(index < quads.Capacity, "insertQuadWithTexture: Invalid index");
-            quads.Insert(index, quad);
+            Debug.Assert(index < Quads.Capacity, "insertQuadWithTexture: Invalid index");
+            Quads.Insert(index, quad);
             Dirty = true;
         }
 
-        /// Removes the quad that is located at a certain index and inserts it at a new index
-        /// This operation is faster than removing and inserting in a quad in 2 different steps
-        /// @since v0.7.2
         public void InsertQuadFromIndex(int oldIndex, int newIndex)
         {
-            Debug.Assert(newIndex >= 0 && newIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
-            Debug.Assert(oldIndex >= 0 && oldIndex < quads.count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(newIndex >= 0 && newIndex < Quads.Count, "insertQuadFromIndex:atIndex: Invalid index");
+            Debug.Assert(oldIndex >= 0 && oldIndex < Quads.Count, "insertQuadFromIndex:atIndex: Invalid index");
 
             if (oldIndex == newIndex)
                 return;
 
-            // because it is ambigious in iphone, so we implement abs ourself
-            // unsigned int howMany = abs( oldIndex - newIndex);
-            int howMany = (oldIndex - newIndex) > 0 ? (oldIndex - newIndex) : (newIndex - oldIndex);
+            int howMany = Math.Abs(oldIndex - newIndex);
             int dst = oldIndex;
             int src = oldIndex + 1;
             if (oldIndex > newIndex)
@@ -323,7 +249,7 @@ namespace CocosSharp
                 src = newIndex;
             }
 
-            CCV3F_C4B_T2F_Quad[] elements = quads.Elements;
+            CCV3F_C4B_T2F_Quad[] elements = Quads.Elements;
 
             CCV3F_C4B_T2F_Quad quadsBackup = elements[oldIndex];
             Array.Copy(elements, src, elements, dst, howMany);
@@ -332,31 +258,28 @@ namespace CocosSharp
             Dirty = true;
         }
 
-        /// <summary>
-        /// removes a quad at a given index number.
-        /// The capacity remains the same, but the total number of quads to be drawn is reduced in 1
-        /// @since v0.7.2
-        /// </summary>
+        // Removes a quad at a given index number.
+        // The capacity remains the same, but the total number of quads to be drawn is reduced in 1
         public void RemoveQuadAtIndex(int index)
         {
-            Debug.Assert(index < quads.count, "removeQuadAtIndex: Invalid index");
-            quads.RemoveAt(index);
+            Debug.Assert(index < Quads.Count, "removeQuadAtIndex: Invalid index");
+            Quads.RemoveAt(index);
             Dirty = true;
         }
 
         public void RemoveQuadsAtIndex(int index, int amount)
         {
-            Debug.Assert(index + amount <= quads.count, "removeQuadAtIndex: Invalid index");
-            quads.RemoveAt(index, amount);
+            Debug.Assert(index + amount <= Quads.Count, "removeQuadAtIndex: Invalid index");
+            Quads.RemoveAt(index, amount);
             Dirty = true;
         }
 
         public void RemoveAllQuads()
         {
-            quads.Clear();
+            Quads.Clear();
             Dirty = true;
         }
 
-        #endregion
+        #endregion Managing Quads
     }
 }
