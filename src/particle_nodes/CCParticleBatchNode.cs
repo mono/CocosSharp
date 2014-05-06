@@ -43,9 +43,7 @@ namespace CocosSharp
         public CCParticleBatchNode(CCTexture2D tex, int capacity = ParticleDefaultCapacity)
         {
             BlendFunc = CCBlendFunc.AlphaBlend;
-            TextureAtlas = new CCTextureAtlas();
-            TextureAtlas.InitWithTexture(tex, capacity);
-
+            TextureAtlas = new CCTextureAtlas(tex, capacity);
             Children = new CCRawList<CCNode>(capacity);
         }
 
@@ -124,18 +122,14 @@ namespace CocosSharp
                 TextureAtlas.Capacity,
                 quantity);
 
-            if (!TextureAtlas.ResizeCapacity(quantity))
-            {
-                // serious problems
-                CCLog.Log("CocosSharp: WARNING: Not enough memory to resize the atlas");
-                Debug.Assert(false, "XXX: CCParticleBatchNode #increaseAtlasCapacity SHALL handle this assert");
-            }
+            TextureAtlas.ResizeCapacity(quantity);
+
         }
 
         //sets a 0'd quad into the quads array
         public void DisableParticle(int particleIndex)
         {
-            CCV3F_C4B_T2F_Quad[] quads = TextureAtlas.quads.Elements;
+            CCV3F_C4B_T2F_Quad[] quads = TextureAtlas.Quads.Elements;
             TextureAtlas.Dirty = true;
 
             quads[particleIndex].BottomRight.Vertices = CCVertex3F.Zero;

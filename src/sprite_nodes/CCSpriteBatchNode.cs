@@ -58,15 +58,13 @@ namespace CocosSharp
         {
             BlendFunc = CCBlendFunc.AlphaBlend;
 
-            TextureAtlas = new CCTextureAtlas();
-
             if (capacity == 0)
             {
                 capacity = defaultSpriteBatchCapacity;
             }
 
             ContentSize= tex.ContentSize;
-            TextureAtlas.InitWithTexture(tex, capacity);
+            TextureAtlas = new CCTextureAtlas(tex, capacity);
 
             UpdateBlendFunc();
 
@@ -386,7 +384,7 @@ namespace CocosSharp
         void Swap(int oldIndex, int newIndex)
         {
             CCSprite[] sprites = Descendants.Elements;
-            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.quads;
+            CCRawList<CCV3F_C4B_T2F_Quad> quads = TextureAtlas.Quads;
 
             TextureAtlas.Dirty = true;
 
@@ -418,12 +416,7 @@ namespace CocosSharp
                 "CocosSharp: CCSpriteBatchNode: resizing TextureAtlas capacity from [{0}] to [{1}].",
                 TextureAtlas.Capacity, quantity));
 
-            if (!TextureAtlas.ResizeCapacity(quantity))
-            {
-                // serious problems
-                CCLog.Log("CocosSharp: WARNING: Not enough memory to resize the atlas");
-                Debug.Assert(false, "Not enough memory to resize the atla");
-            }
+            TextureAtlas.ResizeCapacity(quantity);
         }
 
         public int RebuildIndexInOrder(CCSprite pobParent, int uIndex)
