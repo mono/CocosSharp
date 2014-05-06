@@ -183,19 +183,19 @@ namespace CocosSharp
         {
         }
 
-		internal CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
+		public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managed)
             : this()
         {
             InitWithTexture(texture, format, premultipliedAlpha, managed);
         }
 
-		internal CCTexture2D(Texture2D texture, CCSurfaceFormat format)
+		public CCTexture2D(Texture2D texture, CCSurfaceFormat format)
             : this()
         {
             InitWithTexture(texture, format, true, false);
         }
 
-		internal CCTexture2D(Texture2D texture) 
+		public CCTexture2D(Texture2D texture) 
 			: this(texture, (CCSurfaceFormat)texture.Format, true, false)
         {
         }

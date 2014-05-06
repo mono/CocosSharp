@@ -161,7 +161,7 @@ namespace CocosSharp
         /// <summary>
         /// This returns the shared CCContentManager.
         /// </summary>
-		internal ContentManager Content { get { return(CCContentManager.SharedContentManager); } private set { } }
+		public ContentManager Content { get { return(CCContentManager.SharedContentManager); } private set { } }
 
         public void ClearTouches()
         {

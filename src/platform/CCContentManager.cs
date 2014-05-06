@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-	internal class CCContentManager : ContentManager
+	public class CCContentManager : ContentManager
     {
         public static CCContentManager SharedContentManager;
 
