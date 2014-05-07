@@ -858,12 +858,12 @@ namespace CocosSharp
             }
         }
 
-		internal static void CreateRenderTarget(CCTexture2D pTexture, CCRenderTargetUsage usage)
+		internal static void CreateRenderTarget(CCTexture2D texture, CCRenderTargetUsage usage)
         {
-            CCSize size = pTexture.ContentSizeInPixels;
-            var texture = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
+            CCSize size = texture.ContentSizeInPixels;
+			var rtarget = CreateRenderTarget((int)size.Width, (int)size.Height, CCTexture2D.DefaultAlphaPixelFormat,
 				m_PlatformDepthFormat, usage);
-            pTexture.InitWithTexture(texture, CCTexture2D.DefaultAlphaPixelFormat, true, false);
+			texture.InitWithTexture(rtarget, CCTexture2D.DefaultAlphaPixelFormat, true, false);
         }
 
 		internal static RenderTarget2D CreateRenderTarget(int width, int height, CCRenderTargetUsage usage)

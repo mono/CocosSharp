@@ -6,10 +6,14 @@ namespace CocosDenshion
 {
     public class CCSimpleAudioEngine
     {
-        /// <summary>
+		static Dictionary<int, CCEffectPlayer> list = new Dictionary<int,CCEffectPlayer>();
+		static CCMusicPlayer music = new CCMusicPlayer();
+		static CCSimpleAudioEngine instance = new CCSimpleAudioEngine();
+
+		/// <summary>
         /// The list of sounds that are configured for looping. These need to be stopped when the game pauses.
         /// </summary>
-        private Dictionary<int, int> _LoopedSounds = new Dictionary<int, int>();
+		Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
 
         /// <summary>
         /// The shared sound effect list. The key is the hashcode of the file path.
@@ -18,7 +22,7 @@ namespace CocosDenshion
         {
             get
             {
-                return (s_List);
+                return (list);
             }
         }
 
@@ -29,7 +33,7 @@ namespace CocosDenshion
         {
             get 
             { 
-                return(s_Music); 
+                return(music); 
             }
         }
 
@@ -38,7 +42,7 @@ namespace CocosDenshion
         /// </summary>
         public static CCSimpleAudioEngine SharedEngine
         {
-            get { return _Instance; }
+            get { return instance; }
         }
 
         public float BackgroundMusicVolume
@@ -57,10 +61,10 @@ namespace CocosDenshion
             set { CCEffectPlayer.Volume = value; }
         }
 
-        public static string FullPath(string szPath)
+        public static string FullPath(string path)
         {
             // todo: return self now
-            return szPath;
+            return path;
         }
 
         /**
@@ -104,7 +108,7 @@ namespace CocosDenshion
         @param pszZipFileName The relative path of the .zip file
         */
         [Obsolete("This is not used in this version of the library")]
-        public static void SetResource(string pszZipFileName)
+        public static void SetResource(string zipFilename)
         {
         }
 
@@ -113,9 +117,9 @@ namespace CocosDenshion
          @param pszFilePath The path of the background music file,or the FileName of T_SoundResInfo
          */
 
-        public void PreloadBackgroundMusic(string pszFilePath)
+        public void PreloadBackgroundMusic(string filename)
         {
-            SharedMusic.Open(FullPath(pszFilePath), pszFilePath.GetHashCode());
+            SharedMusic.Open(FullPath(filename), filename.GetHashCode());
         }
 
         /**
@@ -124,15 +128,15 @@ namespace CocosDenshion
         @param bLoop Whether the background music loop or not
         */
 
-        public void PlayBackgroundMusic(string pszFilePath, bool bLoop)
+        public void PlayBackgroundMusic(string filename, bool loop)
         {
-            if (null == pszFilePath)
+            if (null == filename)
             {
                 return;
             }
 
-            SharedMusic.Open(FullPath(pszFilePath), pszFilePath.GetHashCode());
-            SharedMusic.Play(bLoop);
+            SharedMusic.Open(FullPath(filename), filename.GetHashCode());
+            SharedMusic.Play(loop);
         }
 
         /**
@@ -140,9 +144,9 @@ namespace CocosDenshion
         @param pszFilePath The path of the background music file,or the FileName of T_SoundResInfo
         */
 
-        public void PlayBackgroundMusic(string pszFilePath)
+        public void PlayBackgroundMusic(string filename)
         {
-            PlayBackgroundMusic(pszFilePath, false);
+            PlayBackgroundMusic(filename, false);
         }
 
         /**
@@ -150,9 +154,9 @@ namespace CocosDenshion
         @param bReleaseData If release the background music data or not.As default value is false
         */
 
-        public void StopBackgroundMusic(bool bReleaseData)
+        public void StopBackgroundMusic(bool releaseData)
         {
-            if (bReleaseData)
+            if (releaseData)
             {
                 SharedMusic.Close();
             }
@@ -270,7 +274,7 @@ namespace CocosDenshion
                         SharedList[fxid].Play(bLoop);
                         if (bLoop)
                         {
-                            _LoopedSounds[fxid] = fxid;
+                            loopedSounds[fxid] = fxid;
                         }
                     }
                 }
@@ -290,11 +294,11 @@ namespace CocosDenshion
         /// <param name="pszFilePath">The path to the sound effect file.</param>
         /// <param name="bLoop">True if the sound effect will play continuously, and false if it will play then stop.</param>
         /// <returns></returns>
-        public int PlayEffect (string pszFilePath, bool bLoop)
+        public int PlayEffect (string filename, bool loop)
         {
-            int nId = pszFilePath.GetHashCode ();
+            int nId = filename.GetHashCode ();
 
-            PreloadEffect (pszFilePath);
+            PreloadEffect (filename);
 
             lock (SharedList)
             {
@@ -302,16 +306,16 @@ namespace CocosDenshion
                 {
                     if (SharedList.ContainsKey(nId))
                     {
-                        SharedList[nId].Play(bLoop);
-                        if (bLoop)
+                        SharedList[nId].Play(loop);
+                        if (loop)
                         {
-                            _LoopedSounds[nId] = nId;
+                            loopedSounds[nId] = nId;
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", pszFilePath);
+                    CCLog.Log("Unexpected exception while playing a SoundEffect: {0}", filename);
                     CCLog.Log(ex.ToString());
                 }
             }
@@ -324,29 +328,29 @@ namespace CocosDenshion
         /// </summary>
         /// <param name="pszFilePath">The path to the sound effect</param>
         /// <returns></returns>
-        public int PlayEffect(string pszFilePath)
+        public int PlayEffect(string filename)
         {
-            return PlayEffect(pszFilePath, false);
+            return PlayEffect(filename, false);
         }
 
         /// <summary>
         /// Stops the sound effect with the given id. 
         /// </summary>
         /// <param name="nSoundId"></param>
-        public void StopEffect(int nSoundId)
+        public void StopEffect(int soundId)
         {
             lock (SharedList)
             {
-                if (SharedList.ContainsKey(nSoundId))
+                if (SharedList.ContainsKey(soundId))
                 {
-                    SharedList[nSoundId].Stop();
+                    SharedList[soundId].Stop();
                 }
             }
-            lock (_LoopedSounds)
+            lock (loopedSounds)
             {
-                if (_LoopedSounds.ContainsKey(nSoundId))
+                if (loopedSounds.ContainsKey(soundId))
                 {
-                    _LoopedSounds.Remove(nSoundId);
+                    loopedSounds.Remove(soundId);
                 }
             }
         }
@@ -358,10 +362,10 @@ namespace CocosDenshion
         {
             lock (SharedList)
             {
-                if (_LoopedSounds.Count > 0)
+                if (loopedSounds.Count > 0)
                 {
-                    int[] a = new int[_LoopedSounds.Keys.Count];
-                    _LoopedSounds.Keys.CopyTo(a, 0);
+                    int[] a = new int[loopedSounds.Keys.Count];
+                    loopedSounds.Keys.CopyTo(a, 0);
                     foreach (int key in a)
                     {
                         StopEffect(key);
@@ -381,14 +385,14 @@ namespace CocosDenshion
         /// Load the sound effect found with the given path. The sound effect is only loaded one time and the
         /// effect is cached as an instance of EffectPlayer.
         /// </summary>
-        public void PreloadEffect(string pszFilePath)
+        public void PreloadEffect(string filename)
         {
-            if (string.IsNullOrEmpty(pszFilePath))
+            if (string.IsNullOrEmpty(filename))
             {
                 return;
             }
 
-            int nId = pszFilePath.GetHashCode();
+            int nId = filename.GetHashCode();
             lock (SharedList)
             {
                 if (SharedList.ContainsKey(nId))
@@ -397,7 +401,7 @@ namespace CocosDenshion
                 }
             }
             CCEffectPlayer eff = new CCEffectPlayer();
-            eff.Open(FullPath(pszFilePath), nId);
+            eff.Open(FullPath(filename), nId);
             SharedList[nId] = eff;
         }
 
@@ -406,26 +410,23 @@ namespace CocosDenshion
         @param[in]		pszFilePath		The path of the effect file,or the FileName of T_SoundResInfo
         */
 
-        public void UnloadEffect (string pszFilePath)
+        public void UnloadEffect (string filename)
         {
-            int nId = pszFilePath.GetHashCode ();
+            int nId = filename.GetHashCode ();
             lock (SharedList) {
                 if (SharedList.ContainsKey(nId))
                 {
                     SharedList.Remove(nId);
                 }
             }
-            lock (_LoopedSounds)
+            lock (loopedSounds)
             {
-                if (_LoopedSounds.ContainsKey(nId))
+                if (loopedSounds.ContainsKey(nId))
                 {
-                    _LoopedSounds.Remove(nId);
+                    loopedSounds.Remove(nId);
                 }
             }
         }
 
-        private static Dictionary<int, CCEffectPlayer> s_List = new Dictionary<int,CCEffectPlayer>();
-        private static CCMusicPlayer s_Music = new CCMusicPlayer();
-        private static CCSimpleAudioEngine _Instance = new CCSimpleAudioEngine();
     }
 }

@@ -39,10 +39,10 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a range, whether of not to shatter Z vertices, a grid size and duration
         /// </summary>
-		public CCShatteredTiles3D(float duration, CCGridSize gridSize, int nRange = 0, bool bShatterZ = true) : base(duration, gridSize)
+		public CCShatteredTiles3D(float duration, CCGridSize gridSize, int range = 0, bool shatterZ = true) : base(duration, gridSize)
         {
-            Range = nRange;
-            ShatterZ = bShatterZ;
+            Range = range;
+            ShatterZ = shatterZ;
         }
 
         #endregion Constructors

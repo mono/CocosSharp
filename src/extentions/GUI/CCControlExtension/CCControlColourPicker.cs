@@ -119,16 +119,16 @@ namespace CocosSharp
             UpdateHueAndControlPicker();
         }
 
-        public void SetEnabled(bool bEnabled)
+        public void SetEnabled(bool state)
         {
-            base.Enabled = bEnabled;
+            base.Enabled = state;
             if (_huePicker != null)
             {
-                _huePicker.Enabled = bEnabled;
+                _huePicker.Enabled = state;
             }
             if (_colourPicker != null)
             {
-                _colourPicker.Enabled = bEnabled;
+                _colourPicker.Enabled = state;
             }
         }
 

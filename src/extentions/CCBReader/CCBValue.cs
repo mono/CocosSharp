@@ -36,39 +36,39 @@ namespace CocosSharp
         private string _strValue;
         private object _arrValue;  
 
-        public CCBValue (int nValue)
+        public CCBValue (int value)
         {
-            intValue = nValue;
+            intValue = value;
             _type = CCBValueType.Int;
         }
 
-        public CCBValue(bool bValue)
+        public CCBValue(bool value)
         {
-            intValue = bValue ? 1 : 0;
+            intValue = value ? 1 : 0;
             _type = CCBValueType.Bool;
         }
 
-        public CCBValue(float fValue)
+        public CCBValue(float value)
         {
-            floatValue = fValue;
+            floatValue = value;
             _type = CCBValueType.Float;
         }
 
-        public CCBValue(byte bValue)
+        public CCBValue(byte value)
         {
-            intValue = bValue;
+            intValue = value;
             _type = CCBValueType.UnsignedChar;
         }
 
-        public CCBValue(string pStr)
+        public CCBValue(string value)
         {
-            _strValue = pStr;
+            _strValue = value;
             _type = CCBValueType.String;
         }
 
-        public CCBValue(object pArr)
+        public CCBValue(object value)
         {
-            _arrValue = pArr;
+            _arrValue = value;
             _type = CCBValueType.Array;
         }
 

@@ -234,9 +234,9 @@ namespace CocosSharp
             m_bDirty = true;
         }
 
-        public CCGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped)
         {
-            InitWithSize(gridSize, pTexture, bFlipped);
+            InitWithSize(gridSize, texture, flipped);
         }
 
         public CCGrid3D(CCGridSize gridSize)

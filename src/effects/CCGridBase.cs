@@ -79,7 +79,7 @@ namespace CocosSharp
             }
         }
 
-        protected virtual bool InitWithSize(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+        protected virtual bool InitWithSize(CCGridSize gridSize, CCTexture2D texture, bool flipped)
         {
             bool bRet = true;
 
@@ -87,9 +87,9 @@ namespace CocosSharp
             m_nReuseGrid = 0;
             m_sGridSize = gridSize;
 
-            m_pTexture = pTexture;
+            m_pTexture = texture;
 
-            m_bIsTextureFlipped = bFlipped;
+            m_bIsTextureFlipped = flipped;
 
             CCSize texSize = m_pTexture.ContentSize;
             m_obStep.X = texSize.Width / m_sGridSize.X;

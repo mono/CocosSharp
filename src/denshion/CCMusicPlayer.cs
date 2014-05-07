@@ -14,27 +14,24 @@ namespace CocosDenshion
     /// </summary>
 	public class CCMusicPlayer : IDisposable
     {
-        public static ulong s_mciError;
-
-        private bool m_IsRepeatingAfterClose;
-        private bool m_IsShuffleAfterClose;
-        private TimeSpan m_PlayPositionAfterClose = TimeSpan.Zero;
+		bool isRepeatingAfterClose;
+		bool isShuffleAfterClose;
         //private MediaQueue m_QueueAfterClose;
-        private Song m_SongToPlayAfterClose;
-        private float m_VolumeAfterClose = 1f;
+		Song songToPlayAfterClose;
+		float volumeAfterClose = 1f;
 
         /// <summary>
         /// Track if we did play our own game song, otherwise the media player is owned
         /// by the user of the device and that user is listening to background music.
         /// </summary>
-        private bool m_didPlayGameSong;
+		bool didPlayGameSong;
 
-        private Song m_music;
-        private int m_nSoundId;
+		Song music;
+		int nSoundId;
 
         public CCMusicPlayer()
         {
-            m_nSoundId = 0;
+            nSoundId = 0;
             if (MediaPlayer.State == MediaState.Playing)
             {
                 SaveMediaState();
@@ -58,7 +55,7 @@ namespace CocosDenshion
 
         public int SoundID
         {
-            get { return m_nSoundId; }
+            get { return nSoundId; }
         }
 
         public void SaveMediaState()
@@ -66,13 +63,10 @@ namespace CocosDenshion
             try
             {
                 // User is playing a song, so remember the song state.
-                m_SongToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
-                m_VolumeAfterClose = MediaPlayer.Volume;
-#if !NETFX_CORE
-                m_PlayPositionAfterClose = MediaPlayer.PlayPosition;
-#endif
-                m_IsRepeatingAfterClose = MediaPlayer.IsRepeating;
-                m_IsShuffleAfterClose = MediaPlayer.IsShuffled;
+                songToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
+                volumeAfterClose = MediaPlayer.Volume;
+                isRepeatingAfterClose = MediaPlayer.IsRepeating;
+                isShuffleAfterClose = MediaPlayer.IsShuffled;
             }
             catch (Exception ex)
             {
@@ -83,14 +77,14 @@ namespace CocosDenshion
 
         public void RestoreMediaState()
         {
-            if (m_SongToPlayAfterClose != null && m_didPlayGameSong)
+            if (songToPlayAfterClose != null && didPlayGameSong)
             {
                 try
                 {
-                MediaPlayer.IsShuffled = m_IsShuffleAfterClose;
-                MediaPlayer.IsRepeating = m_IsRepeatingAfterClose;
-                MediaPlayer.Volume = m_VolumeAfterClose;
-                MediaPlayer.Play(m_SongToPlayAfterClose);
+                MediaPlayer.IsShuffled = isShuffleAfterClose;
+                MediaPlayer.IsRepeating = isRepeatingAfterClose;
+                MediaPlayer.Volume = volumeAfterClose;
+                MediaPlayer.Play(songToPlayAfterClose);
             }
                 catch (Exception ex)
                 {
@@ -151,18 +145,18 @@ namespace CocosDenshion
 
             Close();
 
-            m_music = CCContentManager.SharedContentManager.Load<Song>(pFileName);
+            music = CCContentManager.SharedContentManager.Load<Song>(pFileName);
 
-            m_nSoundId = uId;
+            nSoundId = uId;
         }
 
         public void Play(bool bLoop)
         {
-            if (null != m_music)
+            if (null != music)
             {
                 MediaPlayer.IsRepeating = bLoop;
-                MediaPlayer.Play(m_music);
-                m_didPlayGameSong = true;
+                MediaPlayer.Play(music);
+                didPlayGameSong = true;
             }
         }
 
@@ -173,11 +167,11 @@ namespace CocosDenshion
 
         public void Close()
         {
-            if (IsPlaying() && m_didPlayGameSong)
+            if (IsPlaying() && didPlayGameSong)
             {
                 Stop();
             }
-            m_music = null;
+            music = null;
         }
 
         /// <summary>
@@ -213,9 +207,9 @@ namespace CocosDenshion
 
             Stop();
 
-            if (null != m_music)
+            if (null != music)
             {
-                MediaPlayer.Play(m_music);
+                MediaPlayer.Play(music);
             }
             else if (s != null)
             {
@@ -244,7 +238,7 @@ namespace CocosDenshion
         /// <returns></returns>
         public bool IsPlayingMySong()
         {
-            if (!m_didPlayGameSong)
+            if (!didPlayGameSong)
             {
                 return (false);
             }

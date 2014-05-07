@@ -23,12 +23,12 @@ namespace CocosSharp
             public float C;
         }
 
-        public static CCTexture2D m_pTexture;
-        protected static bool m_bTextureDirty = true;
+		private static CCTexture2D m_pTexture;
+        static bool m_bTextureDirty = true;
 
-        protected string m_FontName;
-        protected float m_FontSize;
-        protected bool m_bFontDirty;
+        string m_FontName;
+        float m_FontSize;
+        bool m_bFontDirty;
 
         public string FontName
         {
