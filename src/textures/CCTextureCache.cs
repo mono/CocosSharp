@@ -353,14 +353,11 @@ namespace CocosSharp
 				textures.TryGetValue (assetName, out texture);
 			}
 			if (texture == null) {
-				texture = new CCTexture2D ();
+				texture = new CCTexture2D(fileimage);
 
-				if (texture.InitWithFile (fileimage)) {
-					lock (dictLock) {
-						textures[assetName] = texture;
-					}
-				} else {
-					return null;
+				lock(dictLock) 
+				{
+					textures[assetName] = texture;
 				}
 			}
                 
@@ -375,16 +372,8 @@ namespace CocosSharp
 
                 if (!textures.TryGetValue(assetName, out texture))
                 {
-                    texture = new CCTexture2D();
-                    
-                    if (texture.InitWithData(data, format))
-                    {
-                        textures.Add(assetName, texture);
-                    }
-                    else
-                    {
-                        return null;
-                    }
+					texture = new CCTexture2D(data, format);
+					textures.Add(assetName, texture);
                 }
                 return texture;
             }
@@ -405,16 +394,9 @@ namespace CocosSharp
             {
                 if (!textures.TryGetValue(assetName, out texture))
                 {
-                    texture = new CCTexture2D();
-                    
-					if (texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize))
-                    {
-                        textures.Add(assetName, texture);
-                    }
-                    else
-                    {
-                        return null;
-                    }
+					texture = new CCTexture2D();
+					texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize);
+					textures.Add(assetName, texture);
                 }
             }
             return texture;
