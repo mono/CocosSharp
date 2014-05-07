@@ -8,27 +8,27 @@ namespace CocosSharp
     /// </summary>
     public abstract class CCGridBase 
     {
-        protected bool m_bActive;
-        protected bool m_bIsTextureFlipped;
-        protected CCDirectorProjection m_directorProjection;
+		bool active;
+		bool textureFlipped;
 
-        protected int m_nReuseGrid;
-        protected CCPoint m_obStep;
-        protected CCGrabber m_pGrabber;
-        protected CCTexture2D m_pTexture;
 
-        protected CCGridSize m_sGridSize;
+		#region Properties
 
-        /// <summary>
-        ///  wheter or not the grid is active
-        /// </summary>
+		public int ReuseGrid { get; set; }								// number of times that the grid will be reused 
+		public CCGridSize GridSize { get; private set; }
+		public CCPoint Step { get; private set; } 						// pixels between the grids 
+
+		protected CCDirectorProjection DirectorProjection { get; set; }
+		protected CCGrabber Grabber { get; set; }
+		protected CCTexture2D Texture { get; set; }
+
         public bool Active
         {
-            get { return m_bActive; }
+            get { return active; }
             set
             {
-                m_bActive = value;
-                if (!m_bActive)
+                active = value;
+                if (!active)
                 {
                     CCDirector director = CCDirector.SharedDirector;
                     director.Projection = director.Projection;
@@ -36,93 +36,86 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// number of times that the grid will be reused 
-        /// </summary>
-        public int ReuseGrid
-        {
-            get { return m_nReuseGrid; }
-            set { m_nReuseGrid = value; }
-        }
+		public bool TextureFlipped
+		{
+			get { return textureFlipped; }
+			set
+			{
+				if (textureFlipped != value)
+				{
+					textureFlipped = value;
+					CalculateVertexPoints();
+				}
+			}
+		}
 
-        /// <summary>
-        /// size of the grid 
-        /// </summary>
-        public CCGridSize GridSize
-        {
-            get { return m_sGridSize; }
-            set { m_sGridSize = value; }
-        }
+		#endregion Properties
 
-        /// <summary>
-        /// pixels between the grids 
-        /// </summary>
-        public CCPoint Step
-        {
-            get { return m_obStep; }
-            set { m_obStep = value; }
-        }
 
-        /// <summary>
-        /// is texture flipped 
-        /// </summary>
-        public bool TextureFlipped
+		#region Constructors
+
+		protected CCGridBase(CCGridSize gridSize, CCTexture2D textureIn, bool flipped=false)
         {
-            get { return m_bIsTextureFlipped; }
-            set
+            GridSize = gridSize;
+			Texture = textureIn;
+			textureFlipped = flipped;
+
+			CCSize texSize = Texture.ContentSize;
+			Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
+
+            Grabber = new CCGrabber();
+            if (Grabber != null)
             {
-                if (m_bIsTextureFlipped != value)
-                {
-                    m_bIsTextureFlipped = value;
-                    CalculateVertexPoints();
-                }
-            }
-        }
-
-        protected virtual bool InitWithSize(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
-        {
-            bool bRet = true;
-
-            m_bActive = false;
-            m_nReuseGrid = 0;
-            m_sGridSize = gridSize;
-
-            m_pTexture = pTexture;
-
-            m_bIsTextureFlipped = bFlipped;
-
-            CCSize texSize = m_pTexture.ContentSize;
-            m_obStep.X = texSize.Width / m_sGridSize.X;
-            m_obStep.Y = texSize.Height / m_sGridSize.Y;
-
-            m_pGrabber = new CCGrabber();
-            if (m_pGrabber != null)
-            {
-                m_pGrabber.Grab(m_pTexture);
-            }
-            else
-            {
-                bRet = false;
+                Grabber.Grab(Texture);
             }
 
-            //m_pShaderProgram = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTexture);
             CalculateVertexPoints();
-
-            return bRet;
         }
 
-        protected void InitWithSize(CCGridSize gridSize)
+		protected CCGridBase(CCGridSize gridSize, CCSize size) 
+			: this(gridSize, new CCTexture2D((int)size.Width, (int)size.Height, CCSurfaceFormat.Color, true, false))
+		{
+		}
+
+		protected CCGridBase(CCGridSize gridSize) 
+			: this(gridSize, CCDirector.SharedDirector.WinSizeInPixels)
         {
-            InitWithSize(gridSize, CCDirector.SharedDirector.WinSizeInPixels);
         }
 
-        protected void InitWithSize(CCGridSize gridSize, CCSize size)
-        {
-            // we only use rgba8888
-			var pTexture = new CCTexture2D((int)size.Width, (int)size.Height, CCSurfaceFormat.Color, true, false);
+		#endregion Constructors
 
-            InitWithSize(gridSize, pTexture, false);
-        }
+		public abstract void Blit();
+		public abstract void Reuse();
+		public abstract void CalculateVertexPoints();
+
+		public virtual void BeforeDraw()
+		{
+			DirectorProjection = CCDirector.SharedDirector.Projection;
+
+			Grabber.BeforeRender(Texture);
+
+			Set2DProjection();
+		}
+
+		public virtual void AfterDraw(CCNode target)
+		{
+			Grabber.AfterRender(Texture);
+
+			CCDirector.SharedDirector.Projection = DirectorProjection;
+
+			if (target.Camera.IsDirty)
+			{
+				CCPoint offset = target.AnchorPointInPoints;
+
+				CCDrawManager.Translate(offset.X, offset.Y, 0);
+				target.Camera.Locate();
+				CCDrawManager.Translate(-offset.X, -offset.Y, 0);
+			}
+
+			CCDrawManager.BindTexture(Texture);
+
+			//Blit();
+		}
 
         public ulong NextPOT(ulong x)
         {
@@ -135,48 +128,9 @@ namespace CocosSharp
             return x + 1;
         }
 
-        public virtual void BeforeDraw()
-        {
-            m_directorProjection = CCDirector.SharedDirector.Projection;
-
-            m_pGrabber.BeforeRender(m_pTexture);
-
-            Set2DProjection();
-        }
-
-        public virtual void AfterDraw(CCNode target)
-        {
-            m_pGrabber.AfterRender(m_pTexture);
-
-            CCDirector.SharedDirector.Projection = m_directorProjection;
-
-            if (target.Camera.IsDirty)
-            {
-                CCPoint offset = target.AnchorPointInPoints;
-
-                CCDrawManager.Translate(offset.X, offset.Y, 0);
-                target.Camera.Locate();
-                CCDrawManager.Translate(-offset.X, -offset.Y, 0);
-            }
-
-            CCDrawManager.BindTexture(m_pTexture);
-
-            //Blit();
-
-            // restore projection for default FBO .fixed bug #543 #544
-            //TODO:         CCDirector::sharedDirector()->setProjection(CCDirector::sharedDirector()->getProjection());
-            //TODO:         CCDirector::sharedDirector()->applyOrientation();
-        }
-
-        public abstract void Blit();
-
-        public abstract void Reuse();
-
-        public abstract void CalculateVertexPoints();
-
         public void Set2DProjection()
         {
-            CCSize size = m_pTexture.ContentSizeInPixels;
+            CCSize size = Texture.ContentSizeInPixels;
 
             CCDrawManager.SetViewPort(0, 0, (int)size.Width, (int)size.Height);
 

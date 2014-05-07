@@ -41,7 +41,7 @@ namespace CocosSharp
         /// </summary>
         public CCQuad3 Tile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
+            int idx = (GridSize.Y * pos.X + pos.Y) * 4;
 
             CCV3F_T2F[] vertArray = m_pVertices;
 
@@ -59,7 +59,7 @@ namespace CocosSharp
 		/// </summary>
 		public CCQuad3 Tile(int x, int y)
 		{
-			int idx = (m_sGridSize.Y * x + y) * 4;
+			int idx = (GridSize.Y * x + y) * 4;
 
 			CCV3F_T2F[] vertArray = m_pVertices;
 
@@ -77,7 +77,7 @@ namespace CocosSharp
         /// </summary>
         public CCQuad3 OriginalTile(CCGridSize pos)
         {
-            int idx = (m_sGridSize.Y * pos.X + pos.Y);
+            int idx = (GridSize.Y * pos.X + pos.Y);
             return m_pOriginalVertices[idx];
         }
 
@@ -86,7 +86,7 @@ namespace CocosSharp
 		/// </summary>
 		public CCQuad3 OriginalTile(int x, int y)
 		{
-			int idx = (m_sGridSize.Y * x + y);
+			int idx = (GridSize.Y * x + y);
 			return m_pOriginalVertices[idx];
 		}
 
@@ -95,7 +95,7 @@ namespace CocosSharp
         /// </summary>
         public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
-            int idx = (m_sGridSize.Y * pos.X + pos.Y) * 4;
+            int idx = (GridSize.Y * pos.X + pos.Y) * 4;
 
             CCV3F_T2F[] vertArray = m_pVertices;
 
@@ -112,7 +112,7 @@ namespace CocosSharp
 		/// </summary>
 		public void SetTile(int x, int y, ref CCQuad3 coords)
 		{
-			int idx = (m_sGridSize.Y * x + y) * 4;
+			int idx = (GridSize.Y * x + y) * 4;
 
 			CCV3F_T2F[] vertArray = m_pVertices;
 
@@ -139,9 +139,9 @@ namespace CocosSharp
 
         public override void Reuse()
         {
-            if (m_nReuseGrid > 0)
+            if (ReuseGrid > 0)
             {
-                int numQuads = m_sGridSize.X * m_sGridSize.Y;
+                int numQuads = GridSize.X * GridSize.Y;
 
                 CCQuad3[] orig = m_pOriginalVertices;
                 CCV3F_T2F[] verts = m_pVertices;
@@ -155,17 +155,17 @@ namespace CocosSharp
                     orig[i].TopRight = verts[i4 + 3].vertices;
                 }
 
-                --m_nReuseGrid;
+                --ReuseGrid;
             }
         }
 
         public override void CalculateVertexPoints()
         {
-            float width = m_pTexture.PixelsWide;
-            float height = m_pTexture.PixelsHigh;
-            float imageH = m_pTexture.ContentSizeInPixels.Height;
+            float width = Texture.PixelsWide;
+            float height = Texture.PixelsHigh;
+            float imageH = Texture.ContentSizeInPixels.Height;
 
-            int numQuads = m_sGridSize.X * m_sGridSize.Y;
+            int numQuads = GridSize.X * GridSize.Y;
 
 			m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
             m_pVertexBuffer.Count = numQuads * 4;
@@ -183,14 +183,14 @@ namespace CocosSharp
 
             int index = 0;
 
-            for (int x = 0; x < m_sGridSize.X; x++)
+            for (int x = 0; x < GridSize.X; x++)
             {
-                for (int y = 0; y < m_sGridSize.Y; y++)
+                for (int y = 0; y < GridSize.Y; y++)
                 {
-                    float x1 = x * m_obStep.X;
-                    float x2 = x1 + m_obStep.X;
-                    float y1 = y * m_obStep.Y;
-                    float y2 = y1 + m_obStep.Y;
+                    float x1 = x * Step.X;
+                    float x2 = x1 + Step.X;
+                    float y1 = y * Step.Y;
+                    float y2 = y1 + Step.Y;
 
                     vertArray[index + 0].vertices = new CCVertex3F(x1, y1, 0);
                     vertArray[index + 1].vertices = new CCVertex3F(x2, y1, 0);
@@ -200,7 +200,7 @@ namespace CocosSharp
                     float newY1 = y1;
                     float newY2 = y2;
 
-                    if (!m_bIsTextureFlipped)
+					if (!TextureFlipped)
                     {
                         newY1 = imageH - y1;
                         newY2 = imageH - y2;
@@ -240,14 +240,12 @@ namespace CocosSharp
             }
         }
 
-        public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped)
+		public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped) : base(gridSize, pTexture, bFlipped)
         {
-            InitWithSize(gridSize, pTexture, bFlipped);
         }
 
-        public CCTiledGrid3D(CCGridSize gridSize)
+		public CCTiledGrid3D(CCGridSize gridSize) : base(gridSize)
         {
-            InitWithSize(gridSize);
         }
     }
 }
