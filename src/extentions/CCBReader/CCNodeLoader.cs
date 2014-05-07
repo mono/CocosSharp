@@ -787,7 +787,7 @@ namespace CocosSharp
                          */
                         if (reader._hasScriptingOwner)
                         {
-                            var proxy = (ICCBScriptOwnerProtocol) reader.Owner;
+                            var proxy = (ICCBScriptOwner) reader.Owner;
                             if (proxy != null)
                             {
                                 target = proxy.CreateNew() as object;

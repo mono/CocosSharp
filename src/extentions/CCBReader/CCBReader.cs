@@ -142,7 +142,7 @@ namespace CocosSharp
 		Action<object, CCControlEvent> OnResolveCCBCCControlSelector(object target, string pSelectorName);
     }
 
-    public interface ICCBScriptOwnerProtocol
+    public interface ICCBScriptOwner
     {
         ICCBSelectorResolver CreateNew();
     }
