@@ -47,10 +47,10 @@ namespace CocosSharp
 
             return new CCQuad3
                 {
-                    BottomLeft = vertArray[idx + 0].vertices,
-                    BottomRight = vertArray[idx + 1].vertices,
-                    TopLeft = vertArray[idx + 2].vertices,
-                    TopRight = vertArray[idx + 3].vertices
+                    BottomLeft = vertArray[idx + 0].Vertices,
+                    BottomRight = vertArray[idx + 1].Vertices,
+                    TopLeft = vertArray[idx + 2].Vertices,
+                    TopRight = vertArray[idx + 3].Vertices
                 };
         }
 
@@ -65,10 +65,10 @@ namespace CocosSharp
 
 			return new CCQuad3
 			{
-				BottomLeft = vertArray[idx + 0].vertices,
-				BottomRight = vertArray[idx + 1].vertices,
-				TopLeft = vertArray[idx + 2].vertices,
-				TopRight = vertArray[idx + 3].vertices
+				BottomLeft = vertArray[idx + 0].Vertices,
+				BottomRight = vertArray[idx + 1].Vertices,
+				TopLeft = vertArray[idx + 2].Vertices,
+				TopRight = vertArray[idx + 3].Vertices
 			};
 		}
 
@@ -99,10 +99,10 @@ namespace CocosSharp
 
             CCV3F_T2F[] vertArray = m_pVertices;
 
-            vertArray[idx + 0].vertices = coords.BottomLeft;
-            vertArray[idx + 1].vertices = coords.BottomRight;
-            vertArray[idx + 2].vertices = coords.TopLeft;
-            vertArray[idx + 3].vertices = coords.TopRight;
+            vertArray[idx + 0].Vertices = coords.BottomLeft;
+            vertArray[idx + 1].Vertices = coords.BottomRight;
+            vertArray[idx + 2].Vertices = coords.TopLeft;
+            vertArray[idx + 3].Vertices = coords.TopRight;
 
             m_bDirty = true;
         }
@@ -116,10 +116,10 @@ namespace CocosSharp
 
 			CCV3F_T2F[] vertArray = m_pVertices;
 
-			vertArray[idx + 0].vertices = coords.BottomLeft;
-			vertArray[idx + 1].vertices = coords.BottomRight;
-			vertArray[idx + 2].vertices = coords.TopLeft;
-			vertArray[idx + 3].vertices = coords.TopRight;
+			vertArray[idx + 0].Vertices = coords.BottomLeft;
+			vertArray[idx + 1].Vertices = coords.BottomRight;
+			vertArray[idx + 2].Vertices = coords.TopLeft;
+			vertArray[idx + 3].Vertices = coords.TopRight;
 
 			m_bDirty = true;
 		}
@@ -149,10 +149,10 @@ namespace CocosSharp
                 for (int i = 0; i < numQuads; i++)
                 {
                     int i4 = i * 4;
-                    orig[i].BottomLeft = verts[i4 + 0].vertices;
-                    orig[i].BottomRight = verts[i4 + 1].vertices;
-                    orig[i].TopLeft = verts[i4 + 2].vertices;
-                    orig[i].TopRight = verts[i4 + 3].vertices;
+                    orig[i].BottomLeft = verts[i4 + 0].Vertices;
+                    orig[i].BottomRight = verts[i4 + 1].Vertices;
+                    orig[i].TopLeft = verts[i4 + 2].Vertices;
+                    orig[i].TopRight = verts[i4 + 3].Vertices;
                 }
 
                 --ReuseGrid;
@@ -192,10 +192,10 @@ namespace CocosSharp
                     float y1 = y * Step.Y;
                     float y2 = y1 + Step.Y;
 
-                    vertArray[index + 0].vertices = new CCVertex3F(x1, y1, 0);
-                    vertArray[index + 1].vertices = new CCVertex3F(x2, y1, 0);
-                    vertArray[index + 2].vertices = new CCVertex3F(x1, y2, 0);
-                    vertArray[index + 3].vertices = new CCVertex3F(x2, y2, 0);
+                    vertArray[index + 0].Vertices = new CCVertex3F(x1, y1, 0);
+                    vertArray[index + 1].Vertices = new CCVertex3F(x2, y1, 0);
+                    vertArray[index + 2].Vertices = new CCVertex3F(x1, y2, 0);
+                    vertArray[index + 3].Vertices = new CCVertex3F(x2, y2, 0);
 
                     float newY1 = y1;
                     float newY2 = y2;
@@ -206,10 +206,10 @@ namespace CocosSharp
                         newY2 = imageH - y2;
                     }
 
-                    vertArray[index + 0].texCoords = new CCTex2F(x1 / width, newY1 / height);
-                    vertArray[index + 1].texCoords = new CCTex2F(x2 / width, newY1 / height);
-                    vertArray[index + 2].texCoords = new CCTex2F(x1 / width, newY2 / height);
-                    vertArray[index + 3].texCoords = new CCTex2F(x2 / width, newY2 / height);
+                    vertArray[index + 0].TexCoords = new CCTex2F(x1 / width, newY1 / height);
+                    vertArray[index + 1].TexCoords = new CCTex2F(x2 / width, newY1 / height);
+                    vertArray[index + 2].TexCoords = new CCTex2F(x1 / width, newY2 / height);
+                    vertArray[index + 3].TexCoords = new CCTex2F(x2 / width, newY2 / height);
 
                     index += 4;
                 }
@@ -233,10 +233,10 @@ namespace CocosSharp
             for (int i = 0; i < numQuads; i++)
             {
                 int i4 = i * 4;
-                m_pOriginalVertices[i].BottomLeft = vertArray[i4 + 0].vertices;
-                m_pOriginalVertices[i].BottomRight = vertArray[i4 + 1].vertices;
-                m_pOriginalVertices[i].TopLeft = vertArray[i4 + 2].vertices;
-                m_pOriginalVertices[i].TopRight = vertArray[i4 + 3].vertices;
+                m_pOriginalVertices[i].BottomLeft = vertArray[i4 + 0].Vertices;
+                m_pOriginalVertices[i].BottomRight = vertArray[i4 + 1].Vertices;
+                m_pOriginalVertices[i].TopLeft = vertArray[i4 + 2].Vertices;
+                m_pOriginalVertices[i].TopRight = vertArray[i4 + 3].Vertices;
             }
         }
 

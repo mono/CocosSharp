@@ -2,12 +2,14 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    internal struct CCV3F_T2F : IVertexType
+	#region Structs
+
+	internal struct CCV3F_T2F : IVertexType
     {
         internal static readonly VertexDeclaration VertexDeclaration;
 
-        internal CCVertex3F vertices; // 12 bytes
-        internal CCTex2F texCoords; // 8 byts
+		internal CCVertex3F Vertices; // 12 bytes
+		internal CCTex2F TexCoords; // 8 byts
 
 		VertexDeclaration IVertexType.VertexDeclaration
 		{
@@ -25,18 +27,26 @@ namespace CocosSharp
         }
     }
 
+	#endregion Structs
+
 
     // CCGrid3D is a 3D grid implementation. Each vertex has 3 dimensions: x,y,z
     public class CCGrid3D : CCGridBase
     {
-        bool m_bDirty;
-        CCIndexBuffer<ushort> m_pIndexBuffer;
-        
-		protected ushort[] m_pIndices;
-        protected CCVertex3F[] m_pOriginalVertices;
-        private CCVertexBuffer<CCV3F_T2F> m_pVertexBuffer;
-        
-		internal CCV3F_T2F[] m_pVertices;
+		bool dirty;
+
+		CCIndexBuffer<ushort> indexBuffer;
+		CCVertexBuffer<CCV3F_T2F> vertexBuffer;
+
+
+		#region Properties
+
+		protected ushort[] Indices { get; private set; }
+		protected CCVertex3F[] OriginalVertices { get; private set; }
+		internal CCV3F_T2F[] Vertices { get; private set; }
+
+
+		#endregion Properties
 
 
 		#region Constructors
@@ -56,57 +66,54 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-        public CCVertex3F Vertex(CCGridSize pos)
-        {
-            return m_pVertices[pos.X * (GridSize.Y + 1) + pos.Y].vertices;
-        }
+		#region Vertex Indexers
 
-		public CCVertex3F Vertex(int x, int y)
+		public CCVertex3F this[CCGridSize pos]
 		{
-			return m_pVertices[x * (GridSize.Y + 1) + y].vertices;
+			get { return Vertices[pos.X * (GridSize.Y + 1) + pos.Y].Vertices; }
+			set 
+			{
+				Vertices[pos.X * (GridSize.Y + 1) + pos.Y].Vertices = value;
+				dirty = true;
+			}
 		}
-			
+
+		public CCVertex3F this[int x, int y]
+		{
+			get { return Vertices[x * (GridSize.Y + 1) + y].Vertices; }
+			set 
+			{
+				Vertices[x * (GridSize.Y + 1) + y].Vertices = value;
+				dirty = true;
+			}
+		}
+
         // returns the original (non-transformed) vertex at a given position
         public CCVertex3F OriginalVertex(CCGridSize pos)
         {
-            return m_pOriginalVertices[pos.X * (GridSize.Y + 1) + pos.Y];
+            return OriginalVertices[pos.X * (GridSize.Y + 1) + pos.Y];
         }
 			
 		// returns the original (non-transformed) vertex at a given position
 		public CCVertex3F OriginalVertex(int x, int y)
 		{
-			return m_pOriginalVertices[x * (GridSize.Y + 1) + y];
+			return OriginalVertices[x * (GridSize.Y + 1) + y];
 		}
 
-        /// <summary>
-        /// sets a new vertex at a given position
-        /// </summary>
-        public void SetVertex(CCGridSize pos, ref CCVertex3F vertex)
-        {
-            m_pVertices[pos.X * (GridSize.Y + 1) + pos.Y].vertices = vertex;
-            m_bDirty = true;
-        }
+		#endregion Vertex Indexers
 
-		/// <summary>
-		/// sets a new vertex at a given position
-		/// </summary>
-		public void SetVertex(int x, int y, ref CCVertex3F vertex)
-		{
-			m_pVertices[x * (GridSize.Y + 1) + y].vertices = vertex;
-			m_bDirty = true;
-		}
 
         public override void Blit()
         {
-            if (m_bDirty)
+            if (dirty)
             {
-                m_pVertexBuffer.UpdateBuffer();
+                vertexBuffer.UpdateBuffer();
             }
 
             bool save = CCDrawManager.VertexColorEnabled;
 
             CCDrawManager.VertexColorEnabled = false;
-            CCDrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
+            CCDrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
             CCDrawManager.VertexColorEnabled = save;
         }
 
@@ -116,7 +123,7 @@ namespace CocosSharp
             {
                 for (int i = 0, count = (GridSize.X + 1) * (GridSize.Y + 1); i < count; i++)
                 {
-                    m_pOriginalVertices[i] = m_pVertices[i].vertices;
+                    OriginalVertices[i] = Vertices[i].Vertices;
                 }
                 --ReuseGrid;
             }
@@ -130,18 +137,18 @@ namespace CocosSharp
 
             int numOfPoints = (GridSize.X + 1) * (GridSize.Y + 1);
 
-			m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
-            m_pVertexBuffer.Count = numOfPoints;
-            m_pIndexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly);
-            m_pIndexBuffer.Count = GridSize.X * GridSize.Y * 6;
+			vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
+            vertexBuffer.Count = numOfPoints;
+            indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly);
+            indexBuffer.Count = GridSize.X * GridSize.Y * 6;
 
-            m_pVertices = m_pVertexBuffer.Data.Elements;
-            m_pIndices = m_pIndexBuffer.Data.Elements;
+            Vertices = vertexBuffer.Data.Elements;
+            Indices = indexBuffer.Data.Elements;
 
-            m_pOriginalVertices = new CCVertex3F[numOfPoints];
+            OriginalVertices = new CCVertex3F[numOfPoints];
 
-            CCV3F_T2F[] vertArray = m_pVertices;
-            ushort[] idxArray = m_pIndices;
+            CCV3F_T2F[] vertArray = Vertices;
+            ushort[] idxArray = Indices;
 
             var l1 = new int[4];
             var l2 = new CCVertex3F[4];
@@ -202,17 +209,17 @@ namespace CocosSharp
 
                     for (int i = 0; i < 4; ++i)
                     {
-                        vertArray[l1[i]].vertices = l2[i];
+                        vertArray[l1[i]].Vertices = l2[i];
 
-                        vertArray[tex1[i]].texCoords.U = tex2[i].X / width;
+                        vertArray[tex1[i]].TexCoords.U = tex2[i].X / width;
 
 						if (TextureFlipped)
                         {
-                            vertArray[tex1[i]].texCoords.V = tex2[i].Y / height;
+                            vertArray[tex1[i]].TexCoords.V = tex2[i].Y / height;
                         }
                         else
                         {
-                            vertArray[tex1[i]].texCoords.V = (imageH - tex2[i].Y) / height;
+                            vertArray[tex1[i]].TexCoords.V = (imageH - tex2[i].Y) / height;
                         }
                     }
                 }
@@ -221,12 +228,12 @@ namespace CocosSharp
             int n = (GridSize.X + 1) * (GridSize.Y + 1);
             for (int i = 0; i < n; i++)
             {
-                m_pOriginalVertices[i] = m_pVertices[i].vertices;
+                OriginalVertices[i] = Vertices[i].Vertices;
             }
 
-            m_pIndexBuffer.UpdateBuffer();
+            indexBuffer.UpdateBuffer();
 
-            m_bDirty = true;
+            dirty = true;
         }
     }
 }

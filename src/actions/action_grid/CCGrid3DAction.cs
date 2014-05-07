@@ -71,7 +71,7 @@ namespace CocosSharp
         /// </summary>
         public CCVertex3F Vertex(CCGridSize pos)
         {
-            return grid3D.Vertex(pos);
+			return grid3D[pos];
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace CocosSharp
         /// </summary>
         public CCVertex3F Vertex(int x, int y)
         {
-            return grid3D.Vertex(x,y);
+			return grid3D[x,y];
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace CocosSharp
         /// </summary>
         public void SetVertex(CCGridSize pos, ref CCVertex3F vertex)
         {
-            grid3D.SetVertex(pos, ref vertex);
+			grid3D[pos] = vertex;
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace CocosSharp
         /// </summary>
         public void SetVertex(int x, int y, ref CCVertex3F vertex)
         {
-            grid3D.SetVertex(x,y, ref vertex);
+			grid3D[x,y] = vertex;
         }
 
         #endregion Grid Vertex manipulation
