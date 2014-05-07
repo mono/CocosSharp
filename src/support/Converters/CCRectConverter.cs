@@ -5,18 +5,18 @@ namespace CocosSharp
 {
     public class CCRectConverter
     {
-        public static CCRect CCRectFromString(string pszContent)
+        public static CCRect CCRectFromString(string rectSpec)
         {
             CCRect result = CCRect.Zero;
 
             do
             {
-                if (pszContent == null)
+                if (rectSpec == null)
                 {
                     break;
                 }
 
-                string content = pszContent;
+                string content = rectSpec;
 
                 // find the first '{' and the third '}'
                 int nPosLeft = content.IndexOf('{');

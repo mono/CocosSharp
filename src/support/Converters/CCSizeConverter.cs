@@ -5,14 +5,14 @@ namespace CocosSharp
 {
     public class CCSizeConverter
     {
-        public static CCSize CCSizeFromString(string pszContent)
+        public static CCSize CCSizeFromString(string content)
         {
             CCSize ret = new CCSize();
 
             do
             {
                 List<string> strs = new List<string>();
-                if (!CCUtils.SplitWithForm(pszContent, strs)) break;
+                if (!CCUtils.SplitWithForm(content, strs)) break;
 
                 float width = CCUtils.CCParseFloat(strs[0]);
                 float height = CCUtils.CCParseFloat(strs[1]);

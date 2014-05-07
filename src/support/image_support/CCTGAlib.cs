@@ -250,7 +250,7 @@ namespace CocosSharp
         /// </summary>
         /// <param name="?"></param>
         /// <returns></returns>
-        public static CCImageTGA Load(string pszFilename)
+        public static CCImageTGA Load(string filename)
         {
             //int mode, total;
             CCImageTGA info = null;
