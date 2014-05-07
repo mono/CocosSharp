@@ -51,7 +51,7 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped) : base(gridSize, pTexture, bFlipped)
+		public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
 		{
 		}
 
@@ -70,12 +70,8 @@ namespace CocosSharp
 
 		public CCVertex3F this[CCGridSize pos]
 		{
-			get { return Vertices[pos.X * (GridSize.Y + 1) + pos.Y].Vertices; }
-			set 
-			{
-				Vertices[pos.X * (GridSize.Y + 1) + pos.Y].Vertices = value;
-				dirty = true;
-			}
+			get { return this[pos.X, pos.Y]; }
+			set { this[pos.X, pos.Y] = value; }
 		}
 
 		public CCVertex3F this[int x, int y]

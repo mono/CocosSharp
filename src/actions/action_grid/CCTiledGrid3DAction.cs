@@ -61,7 +61,7 @@ namespace CocosSharp
         /// </summary>
         public CCQuad3 Tile(CCGridSize pos)
         {
-            return tiledGrid3D.Tile(pos);
+			return tiledGrid3D[pos];
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace CocosSharp
         /// </summary>
         public CCQuad3 Tile(int x, int y)
         {
-            return tiledGrid3D.Tile(x, y);
+			return tiledGrid3D[x, y];
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace CocosSharp
         /// </summary>
         public void SetTile(CCGridSize pos, ref CCQuad3 coords)
         {
-            tiledGrid3D.SetTile(pos, ref coords);
+			tiledGrid3D[pos] = coords;
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace CocosSharp
         /// </summary>
         public void SetTile(int x, int y, ref CCQuad3 coords)
         {
-            tiledGrid3D.SetTile(x, y, ref coords);
+			tiledGrid3D[x, y] = coords;
         }
 
         #endregion Grid Vertex manipulation

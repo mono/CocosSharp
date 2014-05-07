@@ -54,10 +54,10 @@ namespace CocosSharp
 
 		#region Constructors
 
-		protected CCGridBase(CCGridSize gridSize, CCTexture2D textureIn, bool flipped=false)
+		protected CCGridBase(CCGridSize gridSize, CCTexture2D texture, bool flipped=false)
         {
             GridSize = gridSize;
-			Texture = textureIn;
+			Texture = texture;
 			textureFlipped = flipped;
 
 			CCSize texSize = Texture.ContentSize;

@@ -29,111 +29,102 @@ namespace CocosSharp
 {
     public class CCTiledGrid3D : CCGridBase
     {
-        private bool m_bDirty;
-        private CCIndexBuffer<short> m_pIndexBuffer;
-        protected short[] m_pIndices;
-        protected CCQuad3[] m_pOriginalVertices;
-        private CCVertexBuffer<CCV3F_T2F> m_pVertexBuffer;
-        internal CCV3F_T2F[] m_pVertices;
+		bool dirty;
+        
+		CCIndexBuffer<short> indexBuffer;
+		CCVertexBuffer<CCV3F_T2F> vertexBuffer;
 
-        /// <summary>
-        ///  returns the tile at the given position
-        /// </summary>
-        public CCQuad3 Tile(CCGridSize pos)
-        {
-            int idx = (GridSize.Y * pos.X + pos.Y) * 4;
 
-            CCV3F_T2F[] vertArray = m_pVertices;
+		#region Properties
 
-            return new CCQuad3
-                {
-                    BottomLeft = vertArray[idx + 0].Vertices,
-                    BottomRight = vertArray[idx + 1].Vertices,
-                    TopLeft = vertArray[idx + 2].Vertices,
-                    TopRight = vertArray[idx + 3].Vertices
-                };
-        }
+		protected short[] Indices { get; private set; }
+		protected CCQuad3[] OriginalVertices { get; private set; }
+		internal CCV3F_T2F[] Vertices { get; private set; }
 
-		/// <summary>
-		///  returns the tile at the given position
-		/// </summary>
-		public CCQuad3 Tile(int x, int y)
+		#endregion Properties
+
+
+		#region Constructors
+
+		public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
 		{
-			int idx = (GridSize.Y * x + y) * 4;
-
-			CCV3F_T2F[] vertArray = m_pVertices;
-
-			return new CCQuad3
-			{
-				BottomLeft = vertArray[idx + 0].Vertices,
-				BottomRight = vertArray[idx + 1].Vertices,
-				TopLeft = vertArray[idx + 2].Vertices,
-				TopRight = vertArray[idx + 3].Vertices
-			};
 		}
 
-        /// <summary>
-        /// returns the original tile (untransformed) at the given position
-        /// </summary>
+		public CCTiledGrid3D(CCGridSize gridSize) : base(gridSize)
+		{
+		}
+
+		#endregion Constructors
+
+
+		#region Tile Indexers and accessors
+
+		public CCQuad3 this[CCGridSize pos]
+		{
+			get { return this[pos.X, pos.Y]; }
+			set {
+				this[pos.X, pos.Y] = value;
+			}
+		}
+
+		public CCQuad3 this[int x, int y]
+		{
+			get 
+			{ 
+				int idx = (GridSize.Y * x + y) * 4;
+
+				CCV3F_T2F[] vertArray = Vertices;
+
+				return new CCQuad3
+				{
+					BottomLeft = vertArray[idx + 0].Vertices,
+					BottomRight = vertArray[idx + 1].Vertices,
+					TopLeft = vertArray[idx + 2].Vertices,
+					TopRight = vertArray[idx + 3].Vertices
+				};
+			}
+			set 
+			{
+				int idx = (GridSize.Y * x + y) * 4;
+
+				CCV3F_T2F[] vertArray = Vertices;
+
+				vertArray[idx + 0].Vertices = value.BottomLeft;
+				vertArray[idx + 1].Vertices = value.BottomRight;
+				vertArray[idx + 2].Vertices = value.TopLeft;
+				vertArray[idx + 3].Vertices = value.TopRight;
+
+				dirty = true;
+			}
+		}
+
+
+        // returns the original tile (untransformed) at the given position
         public CCQuad3 OriginalTile(CCGridSize pos)
         {
-            int idx = (GridSize.Y * pos.X + pos.Y);
-            return m_pOriginalVertices[idx];
+			return OriginalTile(pos.X, pos.Y);
         }
-
-		/// <summary>
-		/// returns the original tile (untransformed) at the given position
-		/// </summary>
+			
+		// returns the original tile (untransformed) at the given position
 		public CCQuad3 OriginalTile(int x, int y)
 		{
 			int idx = (GridSize.Y * x + y);
-			return m_pOriginalVertices[idx];
+			return OriginalVertices[idx];
 		}
 
-        /// <summary>
-        /// sets a new tile
-        /// </summary>
-        public void SetTile(CCGridSize pos, ref CCQuad3 coords)
-        {
-            int idx = (GridSize.Y * pos.X + pos.Y) * 4;
+		#endregion Tile Indexers and accessors
 
-            CCV3F_T2F[] vertArray = m_pVertices;
-
-            vertArray[idx + 0].Vertices = coords.BottomLeft;
-            vertArray[idx + 1].Vertices = coords.BottomRight;
-            vertArray[idx + 2].Vertices = coords.TopLeft;
-            vertArray[idx + 3].Vertices = coords.TopRight;
-
-            m_bDirty = true;
-        }
-
-		/// <summary>
-		/// sets a new tile
-		/// </summary>
-		public void SetTile(int x, int y, ref CCQuad3 coords)
-		{
-			int idx = (GridSize.Y * x + y) * 4;
-
-			CCV3F_T2F[] vertArray = m_pVertices;
-
-			vertArray[idx + 0].Vertices = coords.BottomLeft;
-			vertArray[idx + 1].Vertices = coords.BottomRight;
-			vertArray[idx + 2].Vertices = coords.TopLeft;
-			vertArray[idx + 3].Vertices = coords.TopRight;
-
-			m_bDirty = true;
-		}
 
         public override void Blit()
         {
-            if (m_bDirty)
+            if (dirty)
             {
-                m_pVertexBuffer.UpdateBuffer();
+                vertexBuffer.UpdateBuffer();
             }
 
             bool save = CCDrawManager.VertexColorEnabled;
             CCDrawManager.VertexColorEnabled = false;
-            CCDrawManager.DrawBuffer(m_pVertexBuffer, m_pIndexBuffer, 0, m_pIndices.Length / 3);
+            CCDrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
             CCDrawManager.VertexColorEnabled = save;
         }
 
@@ -143,8 +134,8 @@ namespace CocosSharp
             {
                 int numQuads = GridSize.X * GridSize.Y;
 
-                CCQuad3[] orig = m_pOriginalVertices;
-                CCV3F_T2F[] verts = m_pVertices;
+                CCQuad3[] orig = OriginalVertices;
+                CCV3F_T2F[] verts = Vertices;
 
                 for (int i = 0; i < numQuads; i++)
                 {
@@ -167,18 +158,18 @@ namespace CocosSharp
 
             int numQuads = GridSize.X * GridSize.Y;
 
-			m_pVertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
-            m_pVertexBuffer.Count = numQuads * 4;
-            m_pIndexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
-            m_pIndexBuffer.Count = numQuads * 6;
+			vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
+            vertexBuffer.Count = numQuads * 4;
+            indexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
+            indexBuffer.Count = numQuads * 6;
 
-            m_pVertices = m_pVertexBuffer.Data.Elements;
-            m_pIndices = m_pIndexBuffer.Data.Elements;
+            Vertices = vertexBuffer.Data.Elements;
+            Indices = indexBuffer.Data.Elements;
 
-            m_pOriginalVertices = new CCQuad3[numQuads];
+            OriginalVertices = new CCQuad3[numQuads];
 
-            CCV3F_T2F[] vertArray = m_pVertices;
-            short[] idxArray = m_pIndices;
+            CCV3F_T2F[] vertArray = Vertices;
+            short[] idxArray = Indices;
 
 
             int index = 0;
@@ -228,24 +219,17 @@ namespace CocosSharp
                 idxArray[i6 + 5] = (short) (i4 + 3);
             }
 
-            m_pIndexBuffer.UpdateBuffer();
+            indexBuffer.UpdateBuffer();
 
             for (int i = 0; i < numQuads; i++)
             {
                 int i4 = i * 4;
-                m_pOriginalVertices[i].BottomLeft = vertArray[i4 + 0].Vertices;
-                m_pOriginalVertices[i].BottomRight = vertArray[i4 + 1].Vertices;
-                m_pOriginalVertices[i].TopLeft = vertArray[i4 + 2].Vertices;
-                m_pOriginalVertices[i].TopRight = vertArray[i4 + 3].Vertices;
+                OriginalVertices[i].BottomLeft = vertArray[i4 + 0].Vertices;
+                OriginalVertices[i].BottomRight = vertArray[i4 + 1].Vertices;
+                OriginalVertices[i].TopLeft = vertArray[i4 + 2].Vertices;
+                OriginalVertices[i].TopRight = vertArray[i4 + 3].Vertices;
             }
         }
 
-		public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped) : base(gridSize, pTexture, bFlipped)
-		{
-		}
-
-		public CCTiledGrid3D(CCGridSize gridSize) : base(gridSize)
-        {
-        }
     }
 }
