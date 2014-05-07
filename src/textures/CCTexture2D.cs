@@ -108,7 +108,6 @@ namespace CocosSharp
 		bool antialiased;
 
 		CCTextureCacheInfo cacheInfo;
-		CCSize contentSize;
 		Texture2D texture2D;
 
 
@@ -201,7 +200,7 @@ namespace CocosSharp
 
 		public CCSize ContentSize
 		{
-			get { return contentSize.PixelsToPoints(); }
+			get { return ContentSizeInPixels.PixelsToPoints(); }
 		}
 
 		internal Texture2D Name
@@ -289,12 +288,12 @@ namespace CocosSharp
 		}
 
 		internal void InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
-			bool premultipliedAlpha, bool mipMap, CCSize contentSizeIn) where T : struct
+			bool premultipliedAlpha, bool mipMap, CCSize ContentSizeInPixelsIn) where T : struct
 		{
 			var texture = LoadRawData(data, pixelsWide, pixelsHigh, (SurfaceFormat)pixelFormat, mipMap);
 			InitWithTexture(texture, pixelFormat, premultipliedAlpha, false);
 
-			contentSize = contentSizeIn;
+			ContentSizeInPixels = ContentSizeInPixelsIn;
 
 			cacheInfo.CacheType = CCTextureCacheType.RawData;
 			cacheInfo.Data = data;
@@ -609,15 +608,14 @@ namespace CocosSharp
 			PixelFormat = (CCSurfaceFormat)texture.Format;
             PixelsWide = texture.Width;
             PixelsHigh = texture.Height;
-            contentSize.Width = texture.Width;
-            contentSize.Height = texture.Height;
+			ContentSizeInPixels = new CCSize(texture.Width, texture.Height);
             hasMipmaps = texture.LevelCount > 1;
             HasPremultipliedAlpha = premultipliedAlpha;
         }
 
         public override void Reinit()
         {
-            CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, contentSize.Width, contentSize.Height);
+            CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
 
             Texture2D textureToDispose = null;
             if (texture2D != null && !texture2D.IsDisposed && !managed)
@@ -653,11 +651,11 @@ namespace CocosSharp
                         {
                             Convert.ChangeType(cacheInfo.Data, cacheInfo.Data.GetType(),System.Globalization.CultureInfo.InvariantCulture),
                             PixelFormat, PixelsWide, PixelsHigh, 
-                            HasPremultipliedAlpha, hasMipmaps, contentSize
+                            HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels
                         });
 
 //                    InitWithRawData((byte[])cacheInfo.Data, PixelFormat, PixelsWide, PixelsHigh,
-//                                    HasPremultipliedAlpha, hasMipmaps, contentSize);
+//                                    HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels);
                     break;
 
                 case CCTextureCacheType.String:
