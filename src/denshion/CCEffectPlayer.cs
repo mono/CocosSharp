@@ -6,14 +6,13 @@ namespace CocosDenshion
 {
 	public class CCEffectPlayer : IDisposable
     {
-        public static ulong s_mciError;
-        private SoundEffect m_effect;
-        private SoundEffectInstance _sfxInstance;
-        private int m_nSoundId;
+        SoundEffect m_effect;
+		SoundEffectInstance sfxInstance;
+		int soundId;
 
         public CCEffectPlayer()
         {
-            m_nSoundId = 0;
+            soundId = 0;
         }
 
         public static float Volume
@@ -41,18 +40,18 @@ namespace CocosDenshion
 
 		protected virtual void Dispose(bool disposing)
 		{
-			if (disposing && _sfxInstance != null) 
+			if (disposing && sfxInstance != null) 
 			{
-				_sfxInstance.Dispose();
+				sfxInstance.Dispose();
 			}
 		}
 
 		#endregion Cleaning up
 
 
-        public void Open(string pFileName, int uId)
+        public void Open(string filename, int uid)
         {
-            if (string.IsNullOrEmpty(pFileName))
+            if (string.IsNullOrEmpty(filename))
             {
                 return;
             }
@@ -61,11 +60,11 @@ namespace CocosDenshion
 
             try
             {
-                m_effect = CCContentManager.SharedContentManager.Load<SoundEffect>(pFileName);
+                m_effect = CCContentManager.SharedContentManager.Load<SoundEffect>(filename);
             }
             catch (Exception)
             {
-                string srcfile = pFileName;
+                string srcfile = filename;
                 if (srcfile.IndexOf('.') > -1)
                 {
                     srcfile = srcfile.Substring(0, srcfile.LastIndexOf('.'));
@@ -74,25 +73,25 @@ namespace CocosDenshion
             }
             // Do not get an instance here b/c it is very slow. 
             //_sfxInstance = m_effect.CreateInstance();
-            m_nSoundId = uId;
+            soundId = uid;
         }
 
-        public void Play(bool bLoop)
+        public void Play(bool loop)
         {
             if (null == m_effect)
             {
                 return;
             }
-            if (bLoop)
+            if (loop)
             {
                 // If looping, then get an instance of this sound effect so that it can be
                 // stopped.
-                _sfxInstance = m_effect.CreateInstance();
-                _sfxInstance.IsLooped = true;
+                sfxInstance = m_effect.CreateInstance();
+                sfxInstance.IsLooped = true;
             }
-            if (_sfxInstance != null)
+            if (sfxInstance != null)
             {
-                _sfxInstance.Play();
+                sfxInstance.Play();
             }
             else
             {
@@ -114,27 +113,27 @@ namespace CocosDenshion
 
         public void Pause()
         {
-            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Playing)
+            if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Playing)
             {
-                _sfxInstance.Pause();
+                sfxInstance.Pause();
             }
 //            CCLog.Log("Pause is invalid for sound effect");
         }
 
         public void Resume()
         {
-            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Paused)
+            if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Paused)
             {
-                _sfxInstance.Play();
+                sfxInstance.Play();
             }
 //            CCLog.Log("Resume is invalid for sound effect");
         }
 
         public void Stop()
         {
-            if (_sfxInstance != null && !_sfxInstance.IsDisposed && _sfxInstance.State == SoundState.Playing)
+            if (sfxInstance != null && !sfxInstance.IsDisposed && sfxInstance.State == SoundState.Playing)
             {
-                _sfxInstance.Stop();
+                sfxInstance.Stop();
             }
 //            CCLog.Log("Stop is invalid for sound effect");
         }
@@ -146,9 +145,9 @@ namespace CocosDenshion
 
         public bool IsPlaying()
         {
-            if (_sfxInstance != null)
+            if (sfxInstance != null)
             {
-                return (_sfxInstance.State == SoundState.Playing);
+                return (sfxInstance.State == SoundState.Playing);
             }
 //            CCLog.Log("IsPlaying is invalid for sound effect");
             return false;
@@ -156,7 +155,7 @@ namespace CocosDenshion
 
         public int SoundID
         {
-            get { return m_nSoundId; }
+            get { return soundId; }
         }
 
         // the volume is gloabal, it will affect other effects' volume

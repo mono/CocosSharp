@@ -228,6 +228,5 @@ namespace CocosSharp
 
             m_bDirty = true;
         }
-
     }
 }

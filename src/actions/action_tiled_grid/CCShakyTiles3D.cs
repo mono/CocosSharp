@@ -36,10 +36,10 @@ namespace CocosSharp
         /// <summary>
         /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
         /// </summary>
-		public CCShakyTiles3D(float duration, CCGridSize gridSize, int nRange = 0, bool bShakeZ = true) : base(duration, gridSize)
+		public CCShakyTiles3D(float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true) : base(duration, gridSize)
         {
-            Range = nRange;
-            ShakeZ = bShakeZ;
+            Range = range;
+            ShakeZ = shakeZ;
         }
 
         #endregion Constructors

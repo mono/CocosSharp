@@ -907,9 +907,9 @@ namespace CocosSharp
             }
         }
 
-        public virtual void SetDirtyRecursively(bool bValue)
+        public virtual void SetDirtyRecursively(bool value)
         {
-            dirty = recursiveDirty = bValue;
+            dirty = recursiveDirty = value;
 
             // recursively set dirty
             if (hasChildren)

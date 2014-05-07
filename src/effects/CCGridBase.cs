@@ -71,7 +71,7 @@ namespace CocosSharp
 
             CalculateVertexPoints();
         }
-
+			
 		protected CCGridBase(CCGridSize gridSize, CCSize size) 
 			: this(gridSize, new CCTexture2D((int)size.Width, (int)size.Height, CCSurfaceFormat.Color, true, false))
 		{
@@ -83,6 +83,7 @@ namespace CocosSharp
         }
 
 		#endregion Constructors
+
 
 		public abstract void Blit();
 		public abstract void Reuse();

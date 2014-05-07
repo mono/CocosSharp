@@ -241,8 +241,8 @@ namespace CocosSharp
         }
 
 		public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D pTexture, bool bFlipped) : base(gridSize, pTexture, bFlipped)
-        {
-        }
+		{
+		}
 
 		public CCTiledGrid3D(CCGridSize gridSize) : base(gridSize)
         {
