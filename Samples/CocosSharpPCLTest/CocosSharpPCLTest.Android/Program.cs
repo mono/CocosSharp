@@ -31,13 +31,8 @@ namespace CocosSharpPCLTest
 
 			Android.Util.Log.Info ("CocosSharp", "OnCreate");
 
-			Game1.Activity = this;
 			var game = new Game1();
-
-			var frameLayout = new FrameLayout(this);
-			frameLayout.AddView(game.Window);
-			this.SetContentView(frameLayout);
-
+			this.SetContentView((View)game.Services.GetService(typeof(View)));
 			game.Run(GameRunBehavior.Asynchronous);
 		}
 	}
