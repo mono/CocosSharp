@@ -42,7 +42,7 @@ namespace CocosSharp
 
     public class CCTransitionSceneOriented : CCTransitionScene
     {
-        protected CCTransitionOrientation m_eOrientation;
+        protected CCTransitionOrientation Orientation;
 
 
         #region Constructors
@@ -54,15 +54,7 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionSceneOriented (float t, CCScene scene, CCTransitionOrientation orientation) : base (t, scene)
         {
-            InitCCTransitionSceneOriented(orientation);
-        }
-
-        /// <summary>
-        /// initializes a transition with duration and incoming scene
-        /// </summary>
-        private void InitCCTransitionSceneOriented(CCTransitionOrientation orientation)
-        {
-            m_eOrientation = orientation;
+			Orientation = orientation;
         }
 
         #endregion Constructors

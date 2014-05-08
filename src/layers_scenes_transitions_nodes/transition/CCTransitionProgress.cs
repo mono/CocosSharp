@@ -2,10 +2,13 @@ namespace CocosSharp
 {
     public abstract class CCTransitionProgress : CCTransitionScene
     {
-        private const int kCCSceneRadial = 0xc001;
-        protected float m_fFrom;
-        protected float m_fTo;
-        protected CCScene m_pSceneToBeModified;
+        const int SceneRadial = 0xc001;
+        protected float From;
+        protected float To;
+        protected CCScene SceneToBeModified;
+
+
+		#region Constructors
 
         public CCTransitionProgress()
         {
@@ -14,6 +17,9 @@ namespace CocosSharp
         public CCTransitionProgress(float t, CCScene scene) : base(t, scene)
         {
         }
+
+		#endregion Constructors
+
 
         public override void OnEnter()
         {
@@ -34,11 +40,11 @@ namespace CocosSharp
             // render outScene to its texturebuffer
             texture.Clear(0, 0, 0, 1);
             texture.Begin();
-            m_pSceneToBeModified.Visit();
+            SceneToBeModified.Visit();
             texture.End();
 
             //    Since we've passed the outScene to the texture we don't need it.
-            if (m_pSceneToBeModified == OutScene)
+            if (SceneToBeModified == OutScene)
             {
                 HideOutShowIn();
             }
@@ -48,7 +54,7 @@ namespace CocosSharp
 
             // create the blend action
             CCSequence layerAction = new CCSequence(
-                new CCProgressFromTo(Duration, m_fFrom, m_fTo),
+                new CCProgressFromTo(Duration, From, To),
                 new CCCallFunc(Finish)
                 );
 
@@ -56,14 +62,14 @@ namespace CocosSharp
             node.RunAction(layerAction);
 
             // add the layer (which contains our two rendertextures) to the scene
-            AddChild(node, 2, kCCSceneRadial);
+            AddChild(node, 2, SceneRadial);
         }
 
         // clean up on exit
         public override void OnExit()
         {
             // remove our layer and release all containing objects
-            RemoveChildByTag(kCCSceneRadial, true);
+            RemoveChildByTag(SceneRadial, true);
             base.OnExit();
         }
 
@@ -71,9 +77,9 @@ namespace CocosSharp
 
         protected virtual void SetupTransition()
         {
-            m_pSceneToBeModified = OutScene;
-            m_fFrom = 100;
-            m_fTo = 0;
+            SceneToBeModified = OutScene;
+            From = 100;
+            To = 0;
         }
 
         protected override void SceneOrder()
@@ -92,9 +98,6 @@ namespace CocosSharp
         public CCTransitionProgressRadialCCW(float t, CCScene scene) : base(t, scene)
         {
         }
-
-        //OLD_TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
-        //TRANSITION_CREATE_FUNC(CCTransitionProgressRadialCCW)
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
@@ -240,9 +243,9 @@ namespace CocosSharp
 
         protected override void SetupTransition()
         {
-            m_pSceneToBeModified = InScene;
-            m_fFrom = 0;
-            m_fTo = 100;
+            SceneToBeModified = InScene;
+            From = 0;
+            To = 100;
         }
     }
 

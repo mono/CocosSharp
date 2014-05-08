@@ -26,10 +26,18 @@ namespace CocosSharp
 {
     public class CCTransitionZoomFlipAngular : CCTransitionSceneOriented
     {
-        public CCTransitionZoomFlipAngular() { }
+		#region Constructors
+
+		public CCTransitionZoomFlipAngular() 
+		{ 
+		}
 
         public CCTransitionZoomFlipAngular (float t, CCScene s, CCTransitionOrientation o) : base (t,s,o)
-        { }
+        { 
+		}
+
+		#endregion Constructors
+
 
         public override void OnEnter()
         {
@@ -41,7 +49,7 @@ namespace CocosSharp
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == CCTransitionOrientation.RightOver)
+            if (Orientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

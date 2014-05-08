@@ -35,7 +35,7 @@ namespace CocosSharp
     /// </summary>
     public class CCTransitionPageTurn : CCTransitionScene
     {
-        protected bool m_bBack;
+        protected bool Back;
 
 
         #region Contructors
@@ -49,18 +49,8 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionPageTurn (float t, CCScene scene, bool backwards) : base(t, scene)
         {
-            InitCCTransitionPageTurn(backwards);
-        }
-
-        /// <summary>
-        /// Creates a base transition with duration and incoming scene.
-        /// If back is true then the effect is reversed to appear as if the incoming 
-        /// scene is being turned from left over the outgoing scene.
-        /// </summary>
-        private void InitCCTransitionPageTurn(bool backwards)
-        {
-            m_bBack = backwards;
-            this.SceneOrder();
+			Back = backwards;
+			this.SceneOrder();
         }
 
         #endregion Constructors
@@ -68,7 +58,7 @@ namespace CocosSharp
 
         public CCActionInterval ActionWithSize(CCGridSize vector)
         {
-            if (m_bBack)
+            if (Back)
             {
                 // Get hold of the PageTurn3DAction
                 return new CCReverseTime
@@ -102,7 +92,7 @@ namespace CocosSharp
 
             CCActionInterval action = ActionWithSize(new CCGridSize(x, y));
 
-            if (!m_bBack)
+            if (!Back)
             {
                 OutScene.RunAction(new CCSequence
                                           (
@@ -125,7 +115,7 @@ namespace CocosSharp
 
         protected override void SceneOrder()
         {
-            IsInSceneOnTop = m_bBack;
+            IsInSceneOnTop = Back;
         }
     }
 }

@@ -28,11 +28,18 @@ namespace CocosSharp
 {
     public class CCTransitionFlipX : CCTransitionSceneOriented
     {
+		#region Constructors
 
-        public CCTransitionFlipX() { } 
+        public CCTransitionFlipX() 
+		{ 
+		} 
 
         public CCTransitionFlipX(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
-        { }
+        { 
+		}
+
+		#endregion Constructors
+
 
         public override void OnEnter()
         {
@@ -44,7 +51,7 @@ namespace CocosSharp
             float inDeltaZ, inAngleZ;
             float outDeltaZ, outAngleZ;
 
-            if (m_eOrientation == CCTransitionOrientation.RightOver)
+            if (Orientation == CCTransitionOrientation.RightOver)
             {
                 inDeltaZ = 90;
                 inAngleZ = 270;

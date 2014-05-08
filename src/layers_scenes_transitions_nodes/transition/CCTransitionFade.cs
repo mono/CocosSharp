@@ -29,8 +29,8 @@ namespace CocosSharp
 {
     public class CCTransitionFade : CCTransitionScene
     {
-        private const int kSceneFade = 2147483647;
-        protected CCColor4B m_tColor;
+        const int SceneFade = 2147483647;
+        protected CCColor4B Color;
 
 
         #region Constructors
@@ -41,19 +41,12 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionFade (float duration, CCScene scene, CCColor3B color) : base (duration, scene)
         {
-            InitCCTransitionFade(color);
+			Color = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
+
         }
 
         public CCTransitionFade (float t, CCScene scene) : this (t, scene, CCColor3B.Black)
         {
-        }
-
-        /// <summary>
-        /// initializes the transition with a duration and with an RGB color 
-        /// </summary>
-        private void InitCCTransitionFade(CCColor3B color)
-        {
-            m_tColor = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
         }
 
         #endregion Constructors
@@ -63,11 +56,11 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCLayerColor l = new CCLayerColor(m_tColor);
+            CCLayerColor l = new CCLayerColor(Color);
             InScene.Visible = false;
 
-            AddChild(l, 2, kSceneFade);
-            CCNode f = GetChildByTag(kSceneFade);
+            AddChild(l, 2, SceneFade);
+            CCNode f = GetChildByTag(SceneFade);
 
             var a = (CCActionInterval) new CCSequence
                                            (
@@ -83,7 +76,7 @@ namespace CocosSharp
         public override void OnExit()
         {
             base.OnExit();
-            RemoveChildByTag(kSceneFade, false);
+            RemoveChildByTag(SceneFade, false);
         }
     }
 }

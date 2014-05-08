@@ -27,10 +27,11 @@ namespace CocosSharp
 {
     public class CCTransitionCrossFade : CCTransitionScene
     {
-        private const int kSceneFade = int.MaxValue;
+        const int SceneFade = int.MaxValue;
 
         public CCTransitionCrossFade (float t, CCScene scene) : base (t, scene)
-        {  }
+        {
+		}
 
         protected override void Draw()
         {
@@ -105,13 +106,13 @@ namespace CocosSharp
             outTexture.Sprite.RunAction(layerAction);
 
             // add the layer (which contains our two rendertextures) to the scene
-            AddChild(layer, 2, kSceneFade);
+            AddChild(layer, 2, SceneFade);
         }
 
         public override void OnExit()
         {
             // remove our layer and release all containing objects 
-            RemoveChildByTag(kSceneFade, false);
+            RemoveChildByTag(SceneFade, false);
             base.OnExit();
         }
 
