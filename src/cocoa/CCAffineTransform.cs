@@ -30,343 +30,222 @@ namespace CocosSharp
     {
         public static readonly CCAffineTransform Identity = new CCAffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f);
 
-        public float a, b, c, d;
-        public float tx, ty;
+		public float A, B, C, D;
+		public float Tx, Ty;
 
-        public CCAffineTransform(float a, float b, float c, float d, float tx, float ty)
+
+		#region Properties
+
+		public float Scale
+		{
+			set { ScaleX = value; ScaleY = value; }
+		}
+
+		public float ScaleX
+		{
+			get 
+			{
+				float a2 = (float)Math.Pow (A, 2);
+				float b2 = (float)Math.Pow (B, 2);
+				return (float)Math.Sqrt (a2 + b2);
+			}
+
+			set 
+			{
+				float rotX = RotationY;
+				A = value * (float)Math.Cos(rotX);
+				B = value * (float)Math.Sin(rotX);
+			}
+		}
+
+		public float ScaleY
+		{
+			get 
+			{
+				float d2 = (float)Math.Pow(D, 2);
+				float c2 = (float)Math.Pow(C, 2);
+				return (float)Math.Sqrt(d2 + c2);
+			}
+
+			set 
+			{
+				double rotY = RotationY;
+
+				C = -value * (float)Math.Sin(rotY);
+				D = value * (float)Math.Cos(rotY);
+			}
+		}
+
+		public float Rotation
+		{
+			set 
+			{
+				float rotX = RotationX;
+				float rotY = RotationY;
+
+				float scaleX = ScaleX;
+				float scaleY = ScaleY;
+
+				A = scaleX * (float)Math.Cos(value);
+				B = scaleX * (float)Math.Sin(value);
+				C = -scaleY * (float)Math.Sin(rotY - rotX + value);
+				D = scaleY * (float)Math.Cos(rotY - rotX + value);
+			}
+		}
+
+		public float RotationX
+		{
+			get { return (float)Math.Atan2(B, A); }
+		}
+
+		public float RotationY
+		{
+			get { return (float)Math.Atan2(-C, D); }
+		}
+
+		// Set the scale and angle all in one go
+		// Simpler grouped operation than doing each individually
+		public float this[float scaleX, float scaleY, float angle]
+		{
+			set 
+			{
+				var cosa = (float)Math.Cos(angle);
+				var sina = (float)Math.Sin(angle);
+
+				A = scaleX * cosa;
+				C = scaleY * -sina;
+				B = scaleX * sina;
+				D = scaleY * cosa;
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		public CCAffineTransform(float a, float b, float c, float d, float tx, float ty) : this()
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
-            this.d = d;
-            this.tx = tx;
-            this.ty = ty;
+			this.A = a;
+			this.B = b;
+			this.C = c;
+			this.D = d;
+			this.Tx = tx;
+			this.Ty = ty;
         }
 
-        public static CCPoint Transform(CCPoint point, CCAffineTransform t)
-        {
-            return new CCPoint(
-                t.a * point.X + t.c * point.Y + t.tx,
-                t.b * point.X + t.d * point.Y + t.ty
-                );
-        }
+		#endregion Constructors
 
-        public static CCSize Transform(CCSize size, CCAffineTransform t)
-        {
-            var s = new CCSize();
-            s.Width = (float) ((double) t.a * size.Width + (double) t.c * size.Height);
-            s.Height = (float) ((double) t.b * size.Width + (double) t.d * size.Height);
-            return s;
-        }
 
-        public static CCAffineTransform Translate(CCAffineTransform t, float tx, float ty)
-        {
-            return new CCAffineTransform(t.a, t.b, t.c, t.d, t.tx + t.a * tx + t.c * ty, t.ty + t.b * tx + t.d * ty);
-        }
+		public void Lerp(CCAffineTransform m1, CCAffineTransform m2, float t)
+		{
+			A = MathHelper.Lerp(m1.A, m2.A, t);
+			B = MathHelper.Lerp(m1.B, m2.B, t);
+			C = MathHelper.Lerp(m1.C, m2.C, t);
+			D = MathHelper.Lerp(m1.D, m2.D, t);
+			Tx = MathHelper.Lerp(m1.Tx, m2.Tx, t);
+			Ty = MathHelper.Lerp(m1.Ty, m2.Ty, t);
+		}
 
-        public static CCAffineTransform Rotate(CCAffineTransform t, float anAngle)
-        {
-            var fSin = (float) Math.Sin(anAngle);
-            var fCos = (float) Math.Cos(anAngle);
+		public void Concat(CCAffineTransform m)
+		{
+			Concat(ref m);
+		}
 
-            return new CCAffineTransform(t.a * fCos + t.c * fSin,
-                                         t.b * fCos + t.d * fSin,
-                                         t.c * fCos - t.a * fSin,
-                                         t.d * fCos - t.b * fSin,
-                                         t.tx,
-                                         t.ty);
-        }
+		public void Concat(ref CCAffineTransform m)
+		{
+			float t_a = A;
+			float t_b = B;
+			float t_c = C;
+			float t_d = D;
+			float t_tx = Tx;
+			float t_ty = Ty;
 
-        public static CCAffineTransform Scale(CCAffineTransform t, float sx, float sy)
-        {
-            return new CCAffineTransform(t.a * sx, t.b * sx, t.c * sy, t.d * sy, t.tx, t.ty);
-        }
+			float m_a = m.A;
+			float m_b = m.B;
+			float m_c = m.C;
+			float m_d = m.D;
 
-        /// <summary>
-        /// Concatenate `t2' to `t1' and return the result:
-        /// t' = t1 * t2 */s
-        /// </summary>
-        /// <param name="t1"></param>
-        /// <param name="t2"></param>
-        /// <returns></returns>
-        public static CCAffineTransform Concat(CCAffineTransform t1, CCAffineTransform t2)
-        {
-            return new CCAffineTransform(t1.a * t2.a + t1.b * t2.c, t1.a * t2.b + t1.b * t2.d, //a,b
-                                         t1.c * t2.a + t1.d * t2.c, t1.c * t2.b + t1.d * t2.d, //c,d
-                                         t1.tx * t2.a + t1.ty * t2.c + t2.tx, //tx
-                                         t1.tx * t2.b + t1.ty * t2.d + t2.ty); //ty
-        }
+			A = m_a * t_a + m_c * t_b;
+			B = m_b * t_a + m_d * t_b;
+			C = m_a * t_c + m_c * t_d;
+			D = m_b * t_c + m_d * t_d;
 
-        public void Concat(CCAffineTransform m)
-        {
-            Concat(ref m);
-        }
+			Tx = m_a * t_tx + m_c * t_ty + m.Tx;
+			Ty = m_b * t_tx + m_d * t_ty + m.Ty;
+		}
 
-        public void Concat(ref CCAffineTransform m)
-        {
-            float t_a = a;
-            float t_b = b;
-            float t_c = c;
-            float t_d = d;
-            float t_tx = tx;
-            float t_ty = ty;
+		public void Transform(ref float x, ref float y)
+		{
+			var tmpX = A * x + C * y + Tx;
+			y = B * x + D * y + Ty;
+			x = tmpX;
+		}
 
-            float m_a = m.a;
-            float m_b = m.b;
-            float m_c = m.c;
-            float m_d = m.d;
+		public void Transform(ref int x, ref int y)
+		{
+			var tmpX = A * x + C * y + Tx;
+			y = (int)(B * x + D * y + Ty);
+			x = (int)tmpX;
+		}
 
-            a = m_a * t_a + m_c * t_b;
-            b = m_b * t_a + m_d * t_b;
-            c = m_a * t_c + m_c * t_d;
-            d = m_b * t_c + m_d * t_d;
+		public void Transform(float x, float y, out float xresult, out float yresult)
+		{
+			xresult = x;
+			yresult = y;
 
-            tx = m_a * t_tx + m_c * t_ty + m.tx;
-            ty = m_b * t_tx + m_d * t_ty + m.ty;
-        }
+			Transform(ref xresult, ref yresult);
+		}
 
-        /// <summary>
-        ///  Return true if `t1' and `t2' are equal, false otherwise. 
-        /// </summary>
-        public static bool Equal(CCAffineTransform t1, CCAffineTransform t2)
-        {
-            return (t1.a == t2.a && t1.b == t2.b && t1.c == t2.c && t1.d == t2.d && t1.tx == t2.tx && t1.ty == t2.ty);
-        }
-
-        public static CCAffineTransform Invert(CCAffineTransform t)
-        {
-            float determinant = 1 / (t.a * t.d - t.b * t.c);
-
-            return new CCAffineTransform(determinant * t.d, -determinant * t.b, -determinant * t.c, determinant * t.a,
-                                         determinant * (t.c * t.ty - t.d * t.tx), determinant * (t.b * t.tx - t.a * t.ty));
-        }
-
-        public float TranslationX
-        {
-            get { return tx; }
-            set { tx = value; }
-        }
-
-        public float TranslationY
-        {
-            get { return ty; }
-            set { ty = value; }
-        }
-
-        public void SetTranslation(float x, float y)
-        {
-            tx = x;
-            ty = y;
-        }
-
-        public void ConcatTranslation(float x, float y)
-        {
-            tx += x;
-            ty += y;
-        }
-
-        public void SetScale(float scaleX, float scaleY)
-        {
-            SetScaleRotation(scaleX, scaleY, GetRotation());
-        }
-
-        public float GetScaleX()
-        {
-            float a2 = (float)Math.Pow(a, 2);
-            float b2 = (float)Math.Pow(b, 2);
-            return (float)Math.Sqrt(a2 + b2);
-        }
-
-        public void SetScaleX(float scaleX)
-        {
-            float rotX = GetRotationX();
-            a = scaleX * (float)Math.Cos(rotX);
-            b = scaleX * (float)Math.Sin(rotX);
-        }
-
-        public float GetScaleY()
-        {
-            float d2 = (float)Math.Pow(d, 2);
-            float c2 = (float)Math.Pow(c, 2);
-            return (float)Math.Sqrt(d2 + c2);
-        }
-
-        public void SetScaleY(float scaleY)
-        {
-            double rotY = GetRotationY();
-
-            c = -scaleY * (float)Math.Sin(rotY);
-            d = scaleY * (float)Math.Cos(rotY);
-        }
-
-        public void ConcatScale(float xscale, float yscale)
-        {
-            a *= xscale;
-            c *= yscale;
-            b *= xscale;
-            d *= yscale;
-        }
-
-        public float GetRotation()
-        {
-            return GetRotationX();
-        }
-
-        public float GetRotationX()
-        {
-            return (float)Math.Atan2(b, a);
-        }
-
-        public float GetRotationY()
-        {
-            return (float)Math.Atan2(-c, d);
-        }
-
-        /// Set rotation in radians, scales component are unchanged.
-        public void SetRotation(float rotation)
-        {
-            float rotX = GetRotationX();
-            float rotY = GetRotationY();
-
-            float scaleX = GetScaleX();
-            float scaleY = GetScaleY();
-
-            a = scaleX * (float)Math.Cos(rotation);
-            b = scaleX * (float)Math.Sin(rotation);
-            c = -scaleY * (float)Math.Sin(rotY - rotX + rotation);
-            d = scaleY * (float)Math.Cos(rotY - rotX + rotation);
-        }
-
-        /// Set the scale & rotation part of the CCAffineTransform. angle in radians.
-        public void SetScaleRotation(float scaleX, float scaleY, float angle)
-        {
-            var cosa = (float)Math.Cos(angle);
-            var sina = (float)Math.Sin(angle);
-
-            a = scaleX * cosa;
-            c = scaleY * -sina;
-            b = scaleX * sina;
-            d = scaleY * cosa;
-        }
-
-        public void SetLerp(CCAffineTransform m1, CCAffineTransform m2, float t)
-        {
-            a = MathHelper.Lerp(m1.a, m2.a, t);
-            b = MathHelper.Lerp(m1.b, m2.b, t);
-            c = MathHelper.Lerp(m1.c, m2.c, t);
-            d = MathHelper.Lerp(m1.d, m2.d, t);
-            tx = MathHelper.Lerp(m1.tx, m2.tx, t);
-            ty = MathHelper.Lerp(m1.ty, m2.ty, t);
-        }
-
-        public static void Lerp(ref CCAffineTransform m1, ref CCAffineTransform m2, float t, out CCAffineTransform res)
-        {
-            res.a = MathHelper.Lerp(m1.a, m2.a, t);
-            res.b = MathHelper.Lerp(m1.b, m2.b, t);
-            res.c = MathHelper.Lerp(m1.c, m2.c, t);
-            res.d = MathHelper.Lerp(m1.d, m2.d, t);
-            res.tx = MathHelper.Lerp(m1.tx, m2.tx, t);
-            res.ty = MathHelper.Lerp(m1.ty, m2.ty, t);
-        }
-
-        public void Transform(ref float x, ref float y)
-        {
-            var tmpX = a * x + c * y + tx;
-            y = b * x + d * y + ty;
-            x = tmpX;
-        }
-
-        public void Transform(ref int x, ref int y)
-        {
-            var tmpX = a * x + c * y + tx;
-            y = (int)(b * x + d * y + ty);
-            x = (int)tmpX;
-        }
-
-        public void Transform(float x, float y, out float xresult, out float yresult)
-        {
-            xresult = a * x + c * y + tx;
-            yresult = b * x + d * y + ty;
-        }
 
 		public CCPoint Transform(CCPoint point)
-        {
-            return new CCPoint(
-                a * point.X + c * point.Y + tx,
-                b * point.X + d * point.Y + ty
-                );
-        }
+		{
+			Transform(ref point);
+			return point;
+		}
 
-        public void Transform(ref CCPoint point)
-        {
-            var tmpX = a * point.X + c * point.Y + tx;
-            point.Y = b * point.X + d * point.Y + ty;
-            point.X = tmpX;
-        }
+		public void Transform(ref CCPoint point)
+		{
+			Transform(ref point.X, ref point.Y);
+		}
 
-        public CCRect Transform(CCRect rect)
-        {
-            float top = rect.MinY;
-            float left = rect.MinX;
-            float right = rect.MaxX;
-            float bottom = rect.MaxY;
+		public CCRect Transform(CCRect rect)
+		{
+			Transform(ref rect);
 
-            CCPoint topLeft = new CCPoint(left, top);  
-            CCPoint topRight = new CCPoint(right, top);
-            CCPoint bottomLeft = new CCPoint(left, bottom);
-            CCPoint bottomRight = new CCPoint(right, bottom);
+			return rect;
+		}
 
-            Transform(ref topLeft);
-            Transform(ref topRight);
-            Transform(ref bottomLeft);
-            Transform(ref bottomRight);
+		public void Transform(ref CCRect rect)
+		{
+			float top = rect.MinY;
+			float left = rect.MinX;
+			float right = rect.MaxX;
+			float bottom = rect.MaxY;
 
-            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
-            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
-            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
-            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
+			CCPoint topLeft = new CCPoint(left, top);
+			CCPoint topRight = new CCPoint(right, top);
+			CCPoint bottomLeft = new CCPoint(left, bottom);
+			CCPoint bottomRight = new CCPoint(right, bottom);
 
-            return new CCRect(minX, minY, (maxX - minX), (maxY - minY));
-        }
+			Transform(ref topLeft);
+			Transform(ref topRight);
+			Transform(ref bottomLeft);
+			Transform(ref bottomRight);
 
-        public void Transform(ref CCRect rect)
-        {
-            float top = rect.MinY;
-            float left = rect.MinX;
-            float right = rect.MaxX;
-            float bottom = rect.MaxY;
+			float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
+			float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
+			float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
+			float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
 
-            CCPoint topLeft = new CCPoint(left, top);
-            CCPoint topRight = new CCPoint(right, top);
-            CCPoint bottomLeft = new CCPoint(left, bottom);
-            CCPoint bottomRight = new CCPoint(right, bottom);
+			rect.Origin.X = minX;
+			rect.Origin.Y = minY;
+			rect.Size.Width = maxX - minX;
+			rect.Size.Height = maxY - minY;
+		}
 
-            Transform(ref topLeft);
-            Transform(ref topRight);
-            Transform(ref bottomLeft);
-            Transform(ref bottomRight);
 
-            float minX = Math.Min(Math.Min(topLeft.X, topRight.X), Math.Min(bottomLeft.X, bottomRight.X));
-            float maxX = Math.Max(Math.Max(topLeft.X, topRight.X), Math.Max(bottomLeft.X, bottomRight.X));
-            float minY = Math.Min(Math.Min(topLeft.Y, topRight.Y), Math.Min(bottomLeft.Y, bottomRight.Y));
-            float maxY = Math.Max(Math.Max(topLeft.Y, topRight.Y), Math.Max(bottomLeft.Y, bottomRight.Y));
-
-            rect.Origin.X = minX;
-            rect.Origin.Y = minY;
-            rect.Size.Width = maxX - minX;
-            rect.Size.Height = maxY - minY;
-        }
-
-        public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
-        {
-            return anAffineTransform.Transform(rect);
-        }
-
-        public bool Equals(ref CCAffineTransform t)
-        {
-            return a == t.a && b == t.b && c == t.c && d == t.d && tx == t.tx && ty == t.ty;
-        }
-
+		#region Equality
 
 		public override bool Equals(object obj)
 		{
@@ -381,90 +260,187 @@ namespace CocosSharp
 
 		public override int GetHashCode()
 		{
-			return (((((this.a.GetHashCode () + this.b.GetHashCode ()) + this.c.GetHashCode ()) + this.d.GetHashCode ()) + this.tx.GetHashCode ()) + this.ty.GetHashCode ());
+			return (((((this.A.GetHashCode () + this.B.GetHashCode ()) + this.C.GetHashCode ()) + this.D.GetHashCode ()) + this.Tx.GetHashCode ()) + this.Ty.GetHashCode ());
 
 		}
 
+		#endregion Equality
+
+
+		#region Static methods
+
+        public static CCPoint Transform(CCPoint point, CCAffineTransform t)
+        {
+            return new CCPoint(
+				t.A * point.X + t.C * point.Y + t.Tx,
+				t.B * point.X + t.D * point.Y + t.Ty
+                );
+        }
+
+        public static CCSize Transform(CCSize size, CCAffineTransform t)
+        {
+            var s = new CCSize();
+			s.Width = (float) ((double) t.A * size.Width + (double) t.C * size.Height);
+			s.Height = (float) ((double) t.B * size.Width + (double) t.D * size.Height);
+            return s;
+        }
+
+        public static CCAffineTransform Translate(CCAffineTransform t, float tx, float ty)
+        {
+			return new CCAffineTransform(t.A, t.B, t.C, t.D, t.Tx + t.A * tx + t.C * ty, t.Ty + t.B * tx + t.D * ty);
+        }
+
+        public static CCAffineTransform Rotate(CCAffineTransform t, float anAngle)
+        {
+            var fSin = (float) Math.Sin(anAngle);
+            var fCos = (float) Math.Cos(anAngle);
+
+			return new CCAffineTransform(t.A * fCos + t.C * fSin,
+				t.B * fCos + t.D * fSin,
+				t.C * fCos - t.A * fSin,
+				t.D * fCos - t.B * fSin,
+				t.Tx,
+				t.Ty);
+        }
+
+		public static CCAffineTransform ScaleCopy(CCAffineTransform t, float sx, float sy)
+        {
+			return new CCAffineTransform(t.A * sx, t.B * sx, t.C * sy, t.D * sy, t.Tx, t.Ty);
+        }
+
+        /// <summary>
+        /// Concatenate `t2' to `t1' and return the result:
+        /// t' = t1 * t2 */s
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
+        public static CCAffineTransform Concat(CCAffineTransform t1, CCAffineTransform t2)
+        {
+			return new CCAffineTransform(t1.A * t2.A + t1.B * t2.C, t1.A * t2.B + t1.B * t2.D, //a,b
+				t1.C * t2.A + t1.D * t2.C, t1.C * t2.B + t1.D * t2.D, //c,d
+				t1.Tx * t2.A + t1.Ty * t2.C + t2.Tx, //tx
+				t1.Tx * t2.B + t1.Ty * t2.D + t2.Ty); //ty
+        }
+
+        public static bool Equal(CCAffineTransform t1, CCAffineTransform t2)
+        {
+			return (t1.A == t2.A && t1.B == t2.B && t1.C == t2.C && t1.D == t2.D && t1.Tx == t2.Tx && t1.Ty == t2.Ty);
+        }
+
+        public static CCAffineTransform Invert(CCAffineTransform t)
+        {
+			float determinant = 1 / (t.A * t.D - t.B * t.C);
+
+			return new CCAffineTransform(determinant * t.D, -determinant * t.B, -determinant * t.C, determinant * t.A,
+				determinant * (t.C * t.Ty - t.D * t.Tx), determinant * (t.B * t.Tx - t.A * t.Ty));
+        }
+
+		public static void LerpCopy(ref CCAffineTransform m1, ref CCAffineTransform m2, float t, out CCAffineTransform res)
+        {
+			res.A = MathHelper.Lerp(m1.A, m2.A, t);
+			res.B = MathHelper.Lerp(m1.B, m2.B, t);
+			res.C = MathHelper.Lerp(m1.C, m2.C, t);
+			res.D = MathHelper.Lerp(m1.D, m2.D, t);
+			res.Tx = MathHelper.Lerp(m1.Tx, m2.Tx, t);
+			res.Ty = MathHelper.Lerp(m1.Ty, m2.Ty, t);
+        }
+
+        public static CCRect Transform(CCRect rect, CCAffineTransform anAffineTransform)
+        {
+            return anAffineTransform.Transform(rect);
+        }
+
+        public bool Equals(ref CCAffineTransform t)
+        {
+			return A == t.A && B == t.B && C == t.C && D == t.D && Tx == t.Tx && Ty == t.Ty;
+        }
+
+		#endregion Static methods
+
+
+		#region Operators
+
 		public static CCAffineTransform operator +(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
 		{
-			affineTransform1.a = affineTransform1.a + affineTransform2.a;
-			affineTransform1.b = affineTransform1.b + affineTransform2.b;
-			affineTransform1.c = affineTransform1.c + affineTransform2.c;
-			affineTransform1.d = affineTransform1.d + affineTransform2.d;
-			affineTransform1.tx = affineTransform1.tx + affineTransform2.tx;
-			affineTransform1.ty = affineTransform1.ty + affineTransform2.ty;
+			affineTransform1.A = affineTransform1.A + affineTransform2.A;
+			affineTransform1.B = affineTransform1.B + affineTransform2.B;
+			affineTransform1.C = affineTransform1.C + affineTransform2.C;
+			affineTransform1.D = affineTransform1.D + affineTransform2.D;
+			affineTransform1.Tx = affineTransform1.Tx + affineTransform2.Tx;
+			affineTransform1.Ty = affineTransform1.Ty + affineTransform2.Ty;
 			return affineTransform1;
 		}
 
 		public static CCAffineTransform operator /(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
 		{
-			affineTransform1.a = affineTransform1.a / affineTransform2.a;
-			affineTransform1.b = affineTransform1.b / affineTransform2.b;
-			affineTransform1.c = affineTransform1.c / affineTransform2.c;
-			affineTransform1.d = affineTransform1.d / affineTransform2.d;
-			affineTransform1.tx = affineTransform1.tx / affineTransform2.tx;
-			affineTransform1.ty = affineTransform1.ty / affineTransform2.ty;
+			affineTransform1.A = affineTransform1.A / affineTransform2.A;
+			affineTransform1.B = affineTransform1.B / affineTransform2.B;
+			affineTransform1.C = affineTransform1.C / affineTransform2.C;
+			affineTransform1.D = affineTransform1.D / affineTransform2.D;
+			affineTransform1.Tx = affineTransform1.Tx / affineTransform2.Tx;
+			affineTransform1.Ty = affineTransform1.Ty / affineTransform2.Ty;
 			return affineTransform1;
 		}
 
 		public static CCAffineTransform operator /(CCAffineTransform affineTransform, float divider)
 		{
 			float num = 1f / divider;
-			affineTransform.a = affineTransform.a * num;
-			affineTransform.b = affineTransform.b * num;
-			affineTransform.c = affineTransform.c * num;
-			affineTransform.d = affineTransform.d * num;
-			affineTransform.tx = affineTransform.tx * num;
-			affineTransform.tx = affineTransform.ty * num;
+			affineTransform.A = affineTransform.A * num;
+			affineTransform.B = affineTransform.B * num;
+			affineTransform.C = affineTransform.C * num;
+			affineTransform.D = affineTransform.D * num;
+			affineTransform.Tx = affineTransform.Tx * num;
+			affineTransform.Tx = affineTransform.Ty * num;
 			return affineTransform;
 		}
 
 		public static bool operator ==(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
 		{
-			return (affineTransform1.a == affineTransform2.a && 
-				affineTransform1.b == affineTransform2.b && 
-				affineTransform1.c == affineTransform2.c && 
-				affineTransform1.d == affineTransform2.d && 
-				affineTransform1.tx == affineTransform2.tx && 
-				affineTransform1.ty == affineTransform2.ty);
+			return (affineTransform1.A == affineTransform2.A && 
+				affineTransform1.B == affineTransform2.B && 
+				affineTransform1.C == affineTransform2.C && 
+				affineTransform1.D == affineTransform2.D && 
+				affineTransform1.Tx == affineTransform2.Tx && 
+				affineTransform1.Ty == affineTransform2.Ty);
 		}
 
 		public static bool operator !=(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
 		{
-			return (affineTransform1.a != affineTransform2.a || 
-				affineTransform1.b != affineTransform2.b || 
-				affineTransform1.c != affineTransform2.c || 
-				affineTransform1.d != affineTransform2.d || 
-				affineTransform1.tx != affineTransform2.tx || 
-				affineTransform1.ty != affineTransform2.ty);
+			return (affineTransform1.A != affineTransform2.A || 
+				affineTransform1.B != affineTransform2.B || 
+				affineTransform1.C != affineTransform2.C || 
+				affineTransform1.D != affineTransform2.D || 
+				affineTransform1.Tx != affineTransform2.Tx || 
+				affineTransform1.Ty != affineTransform2.Ty);
 		}
 
 		public static CCAffineTransform operator -(CCAffineTransform affineTransform1, CCAffineTransform affineTransform2)
 		{
-			affineTransform1.a = affineTransform1.a - affineTransform2.a;
-			affineTransform1.b = affineTransform1.b - affineTransform2.b;
-			affineTransform1.c = affineTransform1.c - affineTransform2.c;
-			affineTransform1.d = affineTransform1.d - affineTransform2.d;
-			affineTransform1.tx = affineTransform1.tx - affineTransform2.tx;
-			affineTransform1.ty = affineTransform1.ty - affineTransform2.ty;
+			affineTransform1.A = affineTransform1.A - affineTransform2.A;
+			affineTransform1.B = affineTransform1.B - affineTransform2.B;
+			affineTransform1.C = affineTransform1.C - affineTransform2.C;
+			affineTransform1.D = affineTransform1.D - affineTransform2.D;
+			affineTransform1.Tx = affineTransform1.Tx - affineTransform2.Tx;
+			affineTransform1.Ty = affineTransform1.Ty - affineTransform2.Ty;
 			return affineTransform1;
 		}
 
 		public static CCAffineTransform operator *(CCAffineTransform affinematrix1, CCAffineTransform affinematrix2)
 		{
 
-			var a = (affinematrix1.a * affinematrix2.a) + (affinematrix1.b * affinematrix2.c);
-			var b = (affinematrix1.a * affinematrix2.b) + (affinematrix1.b * affinematrix2.d);
-			var c = (affinematrix1.c * affinematrix2.a) + (affinematrix1.d * affinematrix2.c);
-			var d = (affinematrix1.c * affinematrix2.b) + (affinematrix1.d * affinematrix2.d);
-			var tx = ((affinematrix1.tx * affinematrix2.a) + (affinematrix1.ty * affinematrix2.c)) + affinematrix2.tx;
-			var ty = ((affinematrix1.tx * affinematrix2.b) + (affinematrix1.ty * affinematrix2.d)) + affinematrix2.ty;
-			affinematrix1.a = a;
-			affinematrix1.b = b;
-			affinematrix1.c = c;
-			affinematrix1.d = d;
-			affinematrix1.tx = tx;
-			affinematrix1.ty = ty;
+			var a = (affinematrix1.A * affinematrix2.A) + (affinematrix1.B * affinematrix2.C);
+			var b = (affinematrix1.A * affinematrix2.B) + (affinematrix1.B * affinematrix2.D);
+			var c = (affinematrix1.C * affinematrix2.A) + (affinematrix1.D * affinematrix2.C);
+			var d = (affinematrix1.C * affinematrix2.B) + (affinematrix1.D * affinematrix2.D);
+			var tx = ((affinematrix1.Tx * affinematrix2.A) + (affinematrix1.Ty * affinematrix2.C)) + affinematrix2.Tx;
+			var ty = ((affinematrix1.Tx * affinematrix2.B) + (affinematrix1.Ty * affinematrix2.D)) + affinematrix2.Ty;
+			affinematrix1.A = a;
+			affinematrix1.B = b;
+			affinematrix1.C = c;
+			affinematrix1.D = d;
+			affinematrix1.Tx = tx;
+			affinematrix1.Ty = ty;
 		
 			return affinematrix1;
 
@@ -472,14 +448,16 @@ namespace CocosSharp
 
 		public static CCAffineTransform operator -(CCAffineTransform affineTransform1)
 		{
-			affineTransform1.a = -affineTransform1.a;
-			affineTransform1.b = -affineTransform1.b;
-			affineTransform1.c = -affineTransform1.c;
-			affineTransform1.d = -affineTransform1.d;
-			affineTransform1.tx = -affineTransform1.tx;
-			affineTransform1.ty = -affineTransform1.ty;
+			affineTransform1.A = -affineTransform1.A;
+			affineTransform1.B = -affineTransform1.B;
+			affineTransform1.C = -affineTransform1.C;
+			affineTransform1.D = -affineTransform1.D;
+			affineTransform1.Tx = -affineTransform1.Tx;
+			affineTransform1.Ty = -affineTransform1.Ty;
 			return affineTransform1;
 		}
+
+		#endregion Operators
 
     }
 }

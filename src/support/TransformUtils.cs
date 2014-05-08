@@ -31,14 +31,14 @@ namespace CocosSharp
 
             m[2] = m[3] = m[6] = m[7] = m[8] = m[9] = m[11] = m[14] = 0.0f;
             m[10] = m[15] = 1.0f;
-            m[0] = t.a; m[4] = t.c; m[12] = t.tx;
-            m[1] = t.b; m[5] = t.d; m[13] = t.ty;
+            m[0] = t.A; m[4] = t.C; m[12] = t.Tx;
+            m[1] = t.B; m[5] = t.D; m[13] = t.Ty;
         }
 
         internal static void GLToCGAffine(float[] m, CCAffineTransform t)
         {
-            t.a = m[0]; t.c = m[4]; t.tx = m[12];
-            t.b = m[1]; t.d = m[5]; t.ty = m[13];
+            t.A = m[0]; t.C = m[4]; t.Tx = m[12];
+            t.B = m[1]; t.D = m[5]; t.Ty = m[13];
         }
     }
 }

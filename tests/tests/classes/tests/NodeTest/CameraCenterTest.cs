@@ -149,12 +149,12 @@ namespace tests
 			ct = CCAffineTransform.Identity;
 
 			// Setup our CCAffineTransfrom 
-			ct.a = lookAt.M11;
-			ct.c = lookAt.M21;
-			ct.b = lookAt.M12;
-			ct.d = lookAt.M22;
-			ct.tx = lookAt.M41;
-			ct.ty = lookAt.M42;
+			ct.A = lookAt.M11;
+			ct.C = lookAt.M21;
+			ct.B = lookAt.M12;
+			ct.D = lookAt.M22;
+			ct.Tx = lookAt.M41;
+			ct.Ty = lookAt.M42;
 
 			sprite1.AdditionalTransform = ct;
 		}

@@ -1399,12 +1399,12 @@ namespace CocosSharp
 
         public static void MultMatrix(ref CCAffineTransform transform, float z)
         {
-            m_pTransform.M11 = transform.a;
-            m_pTransform.M21 = transform.c;
-            m_pTransform.M12 = transform.b;
-            m_pTransform.M22 = transform.d;
-            m_pTransform.M41 = transform.tx;
-            m_pTransform.M42 = transform.ty;
+			m_pTransform.M11 = transform.A;
+			m_pTransform.M21 = transform.C;
+			m_pTransform.M12 = transform.B;
+			m_pTransform.M22 = transform.D;
+			m_pTransform.M41 = transform.Tx;
+			m_pTransform.M42 = transform.Ty;
             m_pTransform.M43 = z;
 
             Matrix.Multiply(ref m_pTransform, ref m_Matrix, out m_Matrix);

@@ -745,13 +745,13 @@ namespace CocosSharp
 
                     float x2 = x1 + size.Width;
                     float y2 = y1 + size.Height;
-                    float x = transformToBatch.tx;
-                    float y = transformToBatch.ty;
+					float x = transformToBatch.Tx;
+					float y = transformToBatch.Ty;
 
-                    float cr = transformToBatch.a;
-                    float sr = transformToBatch.b;
-                    float cr2 = transformToBatch.d;
-                    float sr2 = -transformToBatch.c;
+					float cr = transformToBatch.A;
+					float sr = transformToBatch.B;
+					float cr2 = transformToBatch.D;
+					float sr2 = -transformToBatch.C;
                     float ax = x1 * cr - y1 * sr2 + x;
                     float ay = x1 * sr + y1 * cr2 + y;
 

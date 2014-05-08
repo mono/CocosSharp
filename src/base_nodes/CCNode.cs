@@ -1439,12 +1439,12 @@ namespace CocosSharp
 
                 // Build Transform Matrix
                 // Adjusted transform calculation for rotational skew
-                AffineTransform.a = cy * scaleX;
-                AffineTransform.b = sy * scaleX;
-                AffineTransform.c = -sx * scaleY;
-                AffineTransform.d = cx * scaleY;
-                AffineTransform.tx = x;
-                AffineTransform.ty = y;
+				AffineTransform.A = cy * scaleX;
+				AffineTransform.B = sy * scaleX;
+				AffineTransform.C = -sx * scaleY;
+				AffineTransform.D = cx * scaleY;
+				AffineTransform.Tx = x;
+				AffineTransform.Ty = y;
 
                 // XXX: Try to inline skew
                 // If skew is needed, apply skew and then anchor point

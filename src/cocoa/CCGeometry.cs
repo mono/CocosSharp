@@ -202,7 +202,7 @@ namespace CocosSharp
             @returns
               alpha == 0 ? a
               alpha == 1 ? b
-              otherwise a value between a..b
+              otherwise a value between a..B
             @since v0.99.1
        */
 
@@ -1401,8 +1401,8 @@ namespace CocosSharp
 
 		public static void Transform(ref CCVector2 position, ref CCAffineTransform affineTransform, out CCVector2 result)
 		{
-			result = new CCVector2((position.X * affineTransform.a) + (position.Y * affineTransform.c) + affineTransform.tx,
-				(position.X * affineTransform.b) + (position.Y * affineTransform.d) + affineTransform.ty);
+			result = new CCVector2((position.X * affineTransform.A) + (position.Y * affineTransform.C) + affineTransform.Tx,
+				(position.X * affineTransform.B) + (position.Y * affineTransform.D) + affineTransform.Ty);
 		}
 
 		public static void Transform (
@@ -1424,16 +1424,16 @@ namespace CocosSharp
 			for (int x = 0; x < length; x++) {
 				var position = sourceArray[sourceIndex + x];
 				var destination = destinationArray[destinationIndex + x];
-				destination.X = (position.X * matrix.a) + (position.Y * matrix.c) + matrix.tx;
-				destination.Y = (position.X * matrix.b) + (position.Y * matrix.d) + matrix.ty;
+				destination.X = (position.X * matrix.A) + (position.Y * matrix.C) + matrix.Tx;
+				destination.Y = (position.X * matrix.B) + (position.Y * matrix.D) + matrix.Ty;
 				destinationArray[destinationIndex + x] = destination;
 			}
 		}
 
 		public static void TransformNormal(ref CCVector2 normal, ref CCAffineTransform affineTransform, out CCVector2 result)
 		{
-			result = new CCVector2((normal.X * affineTransform.a) + (normal.Y * affineTransform.c),
-				(normal.X * affineTransform.b) + (normal.Y * affineTransform.d));
+			result = new CCVector2((normal.X * affineTransform.A) + (normal.Y * affineTransform.C),
+				(normal.X * affineTransform.B) + (normal.Y * affineTransform.D));
 		}
 
 		public override string ToString()
