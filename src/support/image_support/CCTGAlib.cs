@@ -87,15 +87,15 @@ namespace CocosSharp
 			width = (short) tex.Width;
 			height = (short) tex.Height;
 
-			var imageData = new Color[tex.Width * tex.Height];
-			tex.GetData(imageData);
+			ImageData = new Color[tex.Width * tex.Height];
+			tex.GetData(ImageData);
 
 			var tmp = new Color[tex.Width];
 			for (int i = 0; i < tex.Height / 2; i++)
 			{
-				Array.Copy(imageData, i * tex.Width, tmp, 0, tex.Width);
-				Array.Copy(imageData, (tex.Height - i - 1) * tex.Width, imageData, i * tex.Width, tex.Width);
-				Array.Copy(tmp, 0, imageData, (tex.Height - i - 1) * tex.Width, tex.Width);
+				Array.Copy(ImageData, i * tex.Width, tmp, 0, tex.Width);
+				Array.Copy(ImageData, (tex.Height - i - 1) * tex.Width, ImageData, i * tex.Width, tex.Width);
+				Array.Copy(tmp, 0, ImageData, (tex.Height - i - 1) * tex.Width, tex.Width);
 			}
 
 		}
