@@ -289,10 +289,10 @@ namespace CocosSharp
 
             // Update the label to match with the current state
 
-            _currentTitle = GetTitleForState(_state);
-            _currentTitleColor = GetTitleColorForState(_state);
+            _currentTitle = GetTitleForState(State);
+            _currentTitleColor = GetTitleColorForState(State);
 
-            TitleLabel = GetTitleLabelForState(_state);
+            TitleLabel = GetTitleLabelForState(State);
 
             var label = (ICCTextContainer) _titleLabel;
             if (label != null && !String.IsNullOrEmpty(_currentTitle))
@@ -311,7 +311,7 @@ namespace CocosSharp
             }
 
             // Update the background sprite
-            BackgroundSprite = GetBackgroundSpriteForState(_state);
+            BackgroundSprite = GetBackgroundSpriteForState(State);
             if (_backgroundSprite != null)
             {
                 _backgroundSprite.Position = new CCPoint(ContentSize.Width / 2, ContentSize.Height / 2);
@@ -416,7 +416,7 @@ namespace CocosSharp
                 return false;
             }
 
-            _state = CCControlState.Highlighted;
+            State = CCControlState.Highlighted;
             _isPushed = true;
             Highlighted = true;
             SendActionsForControlEvents(CCControlEvent.TouchDown);
@@ -435,9 +435,9 @@ namespace CocosSharp
             }
 
             bool isTouchMoveInside = IsTouchInside(pTouch);
-            if (isTouchMoveInside && !_highlighted)
+            if (isTouchMoveInside && !Highlighted)
             {
-                _state = CCControlState.Highlighted;
+                State = CCControlState.Highlighted;
                 Highlighted = true;
                 SendActionsForControlEvents(CCControlEvent.TouchDragEnter);
             }
@@ -447,7 +447,7 @@ namespace CocosSharp
             }
             else if (!isTouchMoveInside && Highlighted)
             {
-                _state = CCControlState.Normal;
+                State = CCControlState.Normal;
                 Highlighted = false;
 
                 SendActionsForControlEvents(CCControlEvent.TouchDragExit);
@@ -460,7 +460,7 @@ namespace CocosSharp
 
 		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
-            _state = CCControlState.Normal;
+            State = CCControlState.Normal;
             _isPushed = false;
             Highlighted = false;
 
@@ -481,7 +481,7 @@ namespace CocosSharp
 
 		void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
         {
-            _state = CCControlState.Normal;
+            State = CCControlState.Normal;
             _isPushed = false;
             Highlighted = false;
             SendActionsForControlEvents(CCControlEvent.TouchCancel);

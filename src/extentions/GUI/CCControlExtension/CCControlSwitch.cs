@@ -51,7 +51,7 @@ namespace CocosSharp
             get { return base.Enabled; }
             set
             {
-                _enabled = value;
+                base.Enabled = value;
                 if (_switchSprite != null)
                 {
                     _switchSprite.Opacity = (byte) (value ? 255 : 128);
