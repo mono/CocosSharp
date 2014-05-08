@@ -270,13 +270,13 @@ namespace CocosSharp
             InitWithFile(file);
         }
 
-		internal CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
+		public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
 			: this()
 		{
 			InitWithTexture(texture, format, premultipliedAlpha, managed);
 		}
 
-		internal CCTexture2D(Texture2D texture) 
+		public CCTexture2D(Texture2D texture) 
 			: this(texture, (CCSurfaceFormat)texture.Format)
 		{
 		}
