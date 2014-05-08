@@ -4,19 +4,22 @@ namespace CocosSharp
 {
     public class CCControlHuePicker : CCControl
     {
-        //maunally put in the setters
-        private CCSprite _background;
-        private float _hue;
-        private float _huePercentage;
-        private CCSprite _slider;
-        private CCPoint _startPos;
+        float hue;
+        float huePercentage;
+
+
+		#region Properties
+
+		public CCPoint StartPos { get; set; }
+		public CCSprite Background { get; set; }
+		public CCSprite Slider { get; set; }
 
         public float Hue
         {
-            get { return _hue; }
+            get { return hue; }
             set
             {
-                _hue = value;
+                hue = value;
 
                 float huePercentage = value / 360.0f;
                 HuePercentage = huePercentage;
@@ -25,50 +28,32 @@ namespace CocosSharp
 
         public float HuePercentage
         {
-            get { return _huePercentage; }
+            get { return huePercentage; }
             set
             {
-                _huePercentage = value;
+                huePercentage = value;
 
-                _hue = _huePercentage * 360.0f;
+                hue = huePercentage * 360.0f;
 
                 // Clamp the position of the icon within the circle
-                CCRect backgroundBox = _background.BoundingBox;
+                CCRect BackgroundBox = Background.BoundingBox;
 
-                // Get the center point of the background image
-                float centerX = _startPos.X + backgroundBox.Size.Width * 0.5f;
-                float centerY = _startPos.Y + backgroundBox.Size.Height * 0.5f;
+                // Get the center point of the Background image
+                float centerX = StartPos.X + BackgroundBox.Size.Width * 0.5f;
+                float centerY = StartPos.Y + BackgroundBox.Size.Height * 0.5f;
 
                 // Work out the limit to the distance of the picker when moving around the hue bar
-                float limit = backgroundBox.Size.Width * 0.5f - 15.0f;
+                float limit = BackgroundBox.Size.Width * 0.5f - 15.0f;
 
                 // Update angle
-                float angleDeg = _huePercentage * 360.0f - 180.0f;
+                float angleDeg = huePercentage * 360.0f - 180.0f;
                 float angle = CCMacros.CCDegreesToRadians(angleDeg);
 
-                // Set new position of the slider
+                // Set new position of the Slider
                 float x = centerX + limit * (float) Math.Cos(angle);
                 float y = centerY + limit * (float) Math.Sin(angle);
-                _slider.Position = new CCPoint(x, y);
+                Slider.Position = new CCPoint(x, y);
             }
-        }
-
-        public CCSprite Background
-        {
-            get { return _background; }
-            set { _background = value; }
-        }
-
-        public CCSprite Slider
-        {
-            get { return _slider; }
-            set { _slider = value; }
-        }
-
-        public CCPoint StartPos
-        {
-            get { return _startPos; }
-            set { _startPos = value; }
         }
 
         public override bool Enabled
@@ -80,62 +65,77 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                if (_slider != null)
+                if (Slider != null)
                 {
-                    _slider.Opacity = value ? (byte)255 : (byte)128;
+                    Slider.Opacity = value ? (byte)255 : (byte)128;
                 }
             }
         }
 
+		#endregion Properties
+
 
         #region Constructors
 
-        public CCControlHuePicker()
-        {
-        }
-
         public CCControlHuePicker(CCNode target, CCPoint pos)
-        {
-            InitCCControlHuePicker(target, pos);
-        }
-
-        private void InitCCControlHuePicker(CCNode target, CCPoint pos)
         {
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
 
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchBegan = OnTouchBegan;
+			touchListener.OnTouchMoved = OnTouchMoved;
 
 			EventDispatcher.AddEventListener(touchListener, this);
 
-            // Add background and slider sprites
-            Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target,
-                                                                          pos, CCPoint.Zero);
-            Slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos,
-                                                                      new CCPoint(0.5f, 0.5f));
+			Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target, pos, CCPoint.Zero);
+			Slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos, new CCPoint(0.5f, 0.5f));
 
-            _slider.Position = new CCPoint(pos.X, pos.Y + _background.BoundingBox.Size.Height * 0.5f);
-            _startPos = pos;
-
-            // Sets the default value
-            _hue = 0.0f;
-            _huePercentage = 0.0f;
+            Slider.Position = new CCPoint(pos.X, pos.Y + Background.BoundingBox.Size.Height * 0.5f);
+            StartPos = pos;
         }
 
         #endregion Constructors
 
 
+		#region Event handling
+
+		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+		{
+			if (!Enabled || !Visible)
+			{
+				return false;
+			}
+
+			// Get the touch location
+			CCPoint touchLocation = GetTouchLocation(touch);
+
+			// Check the touch position on the Slider
+			return CheckSliderPosition(touchLocation);
+		}
+
+		void OnTouchMoved(CCTouch pTouch, CCEvent touchEvent)
+		{
+			// Get the touch location
+			CCPoint touchLocation = GetTouchLocation(pTouch);
+
+			//small modification: this allows changing of the colour, even if the touch leaves the bounding area
+			//     UpdateSliderPosition(touchLocation);
+			//     sendActionsForControlEvents(ControlEventValueChanged);
+			// Check the touch position on the Slider
+			CheckSliderPosition(touchLocation);
+		}
+
+		#endregion Event handling
+
+
         protected void UpdateSliderPosition(CCPoint location)
         {
             // Clamp the position of the icon within the circle
-            CCRect backgroundBox = _background.BoundingBox;
+            CCRect BackgroundBox = Background.BoundingBox;
 
-            // Get the center point of the background image
-            float centerX = _startPos.X + backgroundBox.Size.Width * 0.5f;
-            float centerY = _startPos.Y + backgroundBox.Size.Height * 0.5f;
+            float centerX = StartPos.X + BackgroundBox.Size.Width * 0.5f;
+            float centerY = StartPos.Y + BackgroundBox.Size.Height * 0.5f;
 
-            // Work out the distance difference between the location and center
             float dx = location.X - centerX;
             float dy = location.Y - centerY;
 
@@ -143,16 +143,14 @@ namespace CocosSharp
             var angle = (float) Math.Atan2(dy, dx);
             float angleDeg = CCMacros.CCRadiansToDegrees(angle) + 180.0f;
 
-            // use the position / slider width to determin the percentage the dragger is at
+            // use the position / Slider width to determin the percentage the dragger is at
             Hue = angleDeg;
 
-            // send Control callback
             SendActionsForControlEvents(CCControlEvent.ValueChanged);
         }
 
         protected bool CheckSliderPosition(CCPoint location)
         {
-            // compute the distance between the current location and the center
             double distance = Math.Sqrt(Math.Pow(location.X + 10, 2) + Math.Pow(location.Y, 2));
 
             // check that the touch location is within the circle
@@ -162,32 +160,6 @@ namespace CocosSharp
                 return true;
             }
             return false;
-        }
-
-		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
-        {
-            if (!Enabled || !Visible)
-            {
-                return false;
-            }
-
-            // Get the touch location
-            CCPoint touchLocation = GetTouchLocation(touch);
-
-            // Check the touch position on the slider
-            return CheckSliderPosition(touchLocation);
-        }
-
-		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
-        {
-            // Get the touch location
-            CCPoint touchLocation = GetTouchLocation(pTouch);
-
-            //small modification: this allows changing of the colour, even if the touch leaves the bounding area
-            //     UpdateSliderPosition(touchLocation);
-            //     sendActionsForControlEvents(ControlEventValueChanged);
-            // Check the touch position on the slider
-            CheckSliderPosition(touchLocation);
         }
     }
 }
