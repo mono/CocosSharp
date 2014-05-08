@@ -33,41 +33,69 @@ namespace CocosSharp
 #else
         public const int CircleSegments = 32;
 #endif
-
-        private CCPrimitiveBatch _primitiveBatch;
 		internal Color TextColor = Color.White;
-        private SpriteFont _spriteFont;
-        private List<StringData> _stringData;
-        private StringBuilder _stringBuilder;
+
+        CCPrimitiveBatch primitiveBatch;
+        SpriteFont spriteFont;
+        List<StringData> stringData;
+        StringBuilder stringBuilder;
+
+
+		#region Structs
+
+		struct StringData
+		{
+			public object[] Args;
+			public Color Color;
+			public string S;
+			public int X, Y;
+
+			public StringData(int x, int y, string s, object[] args, Color color)
+			{
+				X = x;
+				Y = y;
+				S = s;
+				Args = args;
+				Color = color;
+			}
+		}
+
+		#endregion Structs
+
+
+		#region Constructors
 
         public CCBox2dDraw(string spriteFontName)
         {
-            _primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice, 5000);
-            _spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>(spriteFontName);
-            _stringData = new List<StringData>();
-            _stringBuilder = new StringBuilder();
+            primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice, 5000);
+            spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>(spriteFontName);
+            stringData = new List<StringData>();
+            stringBuilder = new StringBuilder();
         }
+
+		#endregion Constructors
+
 
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            if (!_primitiveBatch.IsReady())
+            if (!primitiveBatch.IsReady())
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
 
             for (int i = 0; i < vertexCount - 1; i++)
             {
-				_primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-				_primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+				primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+				primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
             }
 
-			_primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-			_primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+			primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+			primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
         {
-            if (!_primitiveBatch.IsReady())
+            if (!primitiveBatch.IsReady())
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
@@ -82,9 +110,9 @@ namespace CocosSharp
 
             for (int i = 1; i < vertexCount - 1; i++)
             {
-                _primitiveBatch.AddVertex(vertices[0].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(vertices[i].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[0].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[i].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), colorFill, PrimitiveType.TriangleList);
             }
 
             DrawPolygon(vertices, vertexCount, color);
@@ -92,7 +120,7 @@ namespace CocosSharp
 
         public override void DrawCircle(b2Vec2 center, float radius, b2Color color)
         {
-            if (!_primitiveBatch.IsReady())
+            if (!primitiveBatch.IsReady())
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
@@ -109,8 +137,8 @@ namespace CocosSharp
                              radius *
                              new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
-                _primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
-                _primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
+                primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
+                primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
 
                 theta += increment;
             }
@@ -118,7 +146,7 @@ namespace CocosSharp
 
         public override void DrawSolidCircle(b2Vec2 center, float radius, b2Vec2 axis, b2Color color)
         {
-            if (!_primitiveBatch.IsReady())
+            if (!primitiveBatch.IsReady())
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
@@ -137,9 +165,9 @@ namespace CocosSharp
                 var v2 = centr +
                          radius * new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
-                _primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
-                _primitiveBatch.AddVertex(ref v2, colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
+                primitiveBatch.AddVertex(ref v2, colorFill, PrimitiveType.TriangleList);
 
                 theta += increment;
             }
@@ -150,12 +178,12 @@ namespace CocosSharp
 
         public override void DrawSegment(b2Vec2 p1, b2Vec2 p2, b2Color color)
         {
-            if (!_primitiveBatch.IsReady())
+            if (!primitiveBatch.IsReady())
             {
                 throw new InvalidOperationException("BeginCustomDraw must be called before drawing anything.");
             }
-            _primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-            _primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(p1.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(p2.ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawTransform(b2Transform xf)
@@ -172,7 +200,7 @@ namespace CocosSharp
 
         public void DrawString(int x, int y, string format, params object[] objects)
         {
-            _stringData.Add(new StringData(x, y, format, objects, Color.White));
+            stringData.Add(new StringData(x, y, format, objects, Color.White));
         }
 
         public void DrawPoint(b2Vec2 p, float size, b2Color color)
@@ -200,45 +228,28 @@ namespace CocosSharp
 
         public void Begin()
         {
-            _primitiveBatch.Begin();
+            primitiveBatch.Begin();
         }
 
         public void End()
         {
-            _primitiveBatch.End();
+            primitiveBatch.End();
 
             var _batch = CCDrawManager.SpriteBatch;
 
             _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
-            for (int i = 0; i < _stringData.Count; i++)
+            for (int i = 0; i < stringData.Count; i++)
             {
-                _stringBuilder.Length = 0;
-                _stringBuilder.AppendFormat(_stringData[i].S, _stringData[i].Args);
-                _batch.DrawString(_spriteFont, _stringBuilder, new Vector2(_stringData[i].X, _stringData[i].Y),
-                    _stringData[i].Color);
+                stringBuilder.Length = 0;
+                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
+                _batch.DrawString(spriteFont, stringBuilder, new Vector2(stringData[i].X, stringData[i].Y),
+                    stringData[i].Color);
             }
 
             _batch.End();
 
-            _stringData.Clear();
-        }
-
-        private struct StringData
-        {
-            public object[] Args;
-            public Color Color;
-            public string S;
-            public int X, Y;
-
-            public StringData(int x, int y, string s, object[] args, Color color)
-            {
-                X = x;
-                Y = y;
-                S = s;
-                Args = args;
-                Color = color;
-            }
+            stringData.Clear();
         }
     }
 }
