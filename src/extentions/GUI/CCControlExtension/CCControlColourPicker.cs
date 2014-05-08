@@ -4,141 +4,112 @@ namespace CocosSharp
 {
     public class CCControlColourPicker : CCControl
     {
-        private CCSprite _background;
-        private CCControlSaturationBrightnessPicker _colourPicker;
-        protected HSV _hsv;
-        private CCControlHuePicker _huePicker;
+		protected HSV Hsv;
 
 
-        public CCControlSaturationBrightnessPicker ColourPicker
-        {
-            get { return _colourPicker; }
-            set { _colourPicker = value; }
-        }
+		#region Properties
 
-        public CCControlHuePicker HuePicker
-        {
-            get { return _huePicker; }
-            set { _huePicker = value; }
-        }
+		public CCControlSaturationBrightnessPicker ColourPicker { get; set; }
+		public CCControlHuePicker HuePicker { get; set; }
+		public CCSprite Background { get; set; }
 
-        public CCSprite Background
-        {
-            get { return _background; }
-            set { _background = value; }
-        }
+		public override CCColor3B Color
+		{
+			get { return base.Color; }
+			set
+			{
+				base.Color = value;
+
+				RGBA rgba;
+				rgba.r = value.R / 255.0f;
+				rgba.g = value.G / 255.0f;
+				rgba.b = value.B / 255.0f;
+				rgba.a = 1.0f;
+
+				Hsv = CCControlUtils.HSVfromRGB(rgba);
+				UpdateHueAndControlPicker();
+			}
+		}
+
+		public override bool Enabled
+		{
+			get { return base.Enabled; }
+			set 
+			{
+				base.Enabled = value;
+				if (HuePicker != null) {
+					HuePicker.Enabled = value;
+				}
+				if (ColourPicker != null) {
+					ColourPicker.Enabled = value;
+				}
+			}
+		}
+
+		#endregion Properties
 
 
         #region Constructors
 
         public CCControlColourPicker()
         {
-            InitCCControlColourPicker();
-        }
-
-        private void InitCCControlColourPicker()
-        {
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
-
-			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchBegan = OnTouchBegan;
 
 			EventDispatcher.AddEventListener(touchListener, this);
 
-            // Cache the sprites
             CCSpriteFrameCache.Instance.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
 
-            // Create the sprite batch node
             var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
             AddChild(spriteSheet);
 
-            // MIPMAP
-//        ccTexParams params  = {GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
-            /* Comment next line to avoid something like mosaic in 'ControlExtensionTest',
-	   especially the display of 'huePickerBackground.png' when in 800*480 window size with 480*320 design resolution and hd(960*640) resources.
-    */
-//        spriteSheet->getTexture()->setAliasTexParameters();
-//         spriteSheet->getTexture()->setTexParameters(&params);
-//         spriteSheet->getTexture()->generateMipmap();
-
-            // Init default color
-            _hsv.h = 0;
-            _hsv.s = 0;
-            _hsv.v = 0;
+            Hsv.h = 0;
+            Hsv.s = 0;
+            Hsv.v = 0;
 
             // Add image
-            _background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png",
-                                                                           spriteSheet, CCPoint.Zero,
-                                                                           new CCPoint(0.5f, 0.5f));
+			Background 
+				= CCControlUtils.AddSpriteToTargetWithPosAndAnchor("menuColourPanelBackground.png", spriteSheet, CCPoint.Zero, new CCPoint(0.5f, 0.5f));
 
-            CCPoint backgroundPointZero = _background.Position -
-                                          new CCPoint(_background.ContentSize.Width / 2,
-                                                      _background.ContentSize.Height / 2);
+			CCPoint backgroundPointZero 
+				= Background.Position - new CCPoint(Background.ContentSize.Width / 2, Background.ContentSize.Height / 2);
 
             // Setup panels
             float hueShift = 8;
             float colourShift = 28;
 
             CCPoint huePickerPos = new CCPoint(backgroundPointZero.X + hueShift, backgroundPointZero.Y + hueShift);
-            _huePicker = new CCControlHuePicker(spriteSheet, huePickerPos);
+            HuePicker = new CCControlHuePicker(spriteSheet, huePickerPos);
 
             CCPoint colourPickerPos = new CCPoint(backgroundPointZero.X + colourShift, backgroundPointZero.Y + colourShift);
-            _colourPicker = new CCControlSaturationBrightnessPicker(spriteSheet, colourPickerPos);
+            ColourPicker = new CCControlSaturationBrightnessPicker(spriteSheet, colourPickerPos);
 
             // Setup events
-            _huePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged,
-                                                           CCControlEvent.ValueChanged);
-            _colourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged,
-                                                              CCControlEvent.ValueChanged);
+			HuePicker.AddTargetWithActionForControlEvents(this, HueSliderValueChanged, CCControlEvent.ValueChanged);
+			ColourPicker.AddTargetWithActionForControlEvents(this, ColourSliderValueChanged, CCControlEvent.ValueChanged);
 
-            // Set defaults
             UpdateHueAndControlPicker();
-            AddChild(_huePicker);
-            AddChild(_colourPicker);
+            AddChild(HuePicker);
+            AddChild(ColourPicker);
 
-            // Set content size
-            ContentSize = _background.ContentSize;
+            ContentSize = Background.ContentSize;
         }
 
         #endregion Constructors
 
 
-        public void SetColor(CCColor3B colorValue)
-        {
-            // XXX fixed me if not correct
-            base.Color = colorValue;
+		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
+		{
+			return false;
+		}
 
-            RGBA rgba;
-            rgba.r = colorValue.R / 255.0f;
-            rgba.g = colorValue.G / 255.0f;
-            rgba.b = colorValue.B / 255.0f;
-            rgba.a = 1.0f;
-
-            _hsv = CCControlUtils.HSVfromRGB(rgba);
-            UpdateHueAndControlPicker();
-        }
-
-        public void SetEnabled(bool state)
-        {
-            base.Enabled = state;
-            if (_huePicker != null)
-            {
-                _huePicker.Enabled = state;
-            }
-            if (_colourPicker != null)
-            {
-                _colourPicker.Enabled = state;
-            }
-        }
-
-        //virtual ~ControlColourPicker();
         public void HueSliderValueChanged(Object sender, CCControlEvent controlEvent)
         {
-            _hsv.h = ((CCControlHuePicker) sender).Hue;
+            Hsv.h = ((CCControlHuePicker) sender).Hue;
 
-            // Update the value
-            RGBA rgb = CCControlUtils.RGBfromHSV(_hsv);
+            RGBA rgb = CCControlUtils.RGBfromHSV(Hsv);
             // XXX fixed me if not correct
             base.Color = new CCColor3B((byte) (rgb.r * 255.0f), (byte) (rgb.g * 255.0f), (byte) (rgb.b * 255.0f));
 
@@ -149,12 +120,10 @@ namespace CocosSharp
 
         public void ColourSliderValueChanged(Object sender, CCControlEvent controlEvent)
         {
-            _hsv.s = ((CCControlSaturationBrightnessPicker) sender).Saturation;
-            _hsv.v = ((CCControlSaturationBrightnessPicker) sender).Brightness;
+            Hsv.s = ((CCControlSaturationBrightnessPicker) sender).Saturation;
+            Hsv.v = ((CCControlSaturationBrightnessPicker) sender).Brightness;
 
-
-            // Update the value
-            RGBA rgb = CCControlUtils.RGBfromHSV(_hsv);
+            RGBA rgb = CCControlUtils.RGBfromHSV(Hsv);
             // XXX fixed me if not correct
             base.Color = new CCColor3B((byte) (rgb.r * 255.0f), (byte) (rgb.g * 255.0f), (byte) (rgb.b * 255.0f));
 
@@ -164,20 +133,15 @@ namespace CocosSharp
 
         protected void UpdateControlPicker()
         {
-            _huePicker.Hue = _hsv.h;
-            _colourPicker.UpdateWithHSV(_hsv);
+            HuePicker.Hue = Hsv.h;
+            ColourPicker.UpdateWithHSV(Hsv);
         }
 
         protected void UpdateHueAndControlPicker()
         {
-            _huePicker.Hue = _hsv.h;
-            _colourPicker.UpdateWithHSV(_hsv);
-            _colourPicker.UpdateDraggerWithHSV(_hsv);
-        }
-
-		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
-        {
-            return false;
+            HuePicker.Hue = Hsv.h;
+            ColourPicker.UpdateWithHSV(Hsv);
+            ColourPicker.UpdateDraggerWithHSV(Hsv);
         }
     }
 }
