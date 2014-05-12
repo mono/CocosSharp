@@ -36,15 +36,16 @@ namespace CocosSharp
 
     public class CCControlSwitch : CCControl
     {
-        /** Initializes a switch with a mask sprite, on/off sprites for on/off states and a thumb sprite. */
+        bool on;
+        float initialTouchXPosition;
+        CCControlSwitchSprite switchSprite;
 
-        protected bool _moved;
-        /** A Boolean value that determines the off/on state of the switch. */
-        protected bool _on;
-        protected float _initialTouchXPosition;
-        protected CCControlSwitchSprite _switchSprite;
+		public event CCSwitchValueChangedDelegate OnValueChanged;
 
-        public event CCSwitchValueChangedDelegate OnValueChanged;
+
+		#region Properties
+
+		public bool HasMoved { get; private set; }
 
         public override bool Enabled
         {
@@ -52,327 +53,226 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                if (_switchSprite != null)
+                if (switchSprite != null)
                 {
-                    _switchSprite.Opacity = (byte) (value ? 255 : 128);
+                    switchSprite.Opacity = (byte) (value ? 255 : 128);
                 }
             }
         }
 
+		public bool On
+		{
+			get { return on; }
+			set
+			{
+				bool notify = false;
+				if(on != value) 
+				{
+					on = value;
+					notify = true;
+				}
+
+				switchSprite.RunAction (
+					new CCActionTween (
+						0.2f,
+						"sliderXPosition",
+						switchSprite.SliderXPosition,
+						(on) ? switchSprite.OnPosition : switchSprite.OffPosition
+					)
+				);
+
+				if(notify) 
+				{
+					SendActionsForControlEvents(CCControlEvent.ValueChanged);
+					if (OnValueChanged != null) 
+					{
+						OnValueChanged(this, on);
+					}
+				}
+			}
+		}
+
+		#endregion Properties
+
 
         #region Constructors
 
-        /** Creates a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
+		public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
+			: this(maskSprite, onSprite, offSprite, thumbSprite, null, null)
+		{
+		}
 
         public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, CCLabelTtf onLabel,
             CCLabelTtf offLabel)
-        {
-            InitWithMaskSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
-        }
-
-        /** Creates a switch with a mask sprite, on/off sprites for on/off states and a thumb sprite. */
-
-        public CCControlSwitch(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite) 
-            : this(maskSprite, onSprite, offSprite, thumbSprite, null, null)
-        {
-        }
-
-        /** Initializes a switch with a mask sprite, on/off sprites for on/off states, a thumb sprite and an on/off labels. */
-
-        private void InitWithMaskSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTtf onLabel, CCLabelTtf offLabel)
         {
             Debug.Assert(maskSprite != null, "Mask must not be nil.");
             Debug.Assert(onSprite != null, "onSprite must not be nil.");
             Debug.Assert(offSprite != null, "offSprite must not be nil.");
             Debug.Assert(thumbSprite != null, "thumbSprite must not be nil.");
 
+            on = true;
+
+            switchSprite = new CCControlSwitchSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
+            switchSprite.Position = new CCPoint(switchSprite.ContentSize.Width / 2, switchSprite.ContentSize.Height / 2);
+            AddChild(switchSprite);
+
+            IgnoreAnchorPointForPosition = false;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            ContentSize = switchSprite.ContentSize;
+
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
 
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-			touchListener.OnTouchEnded = onTouchEnded;
-			touchListener.OnTouchCancelled = onTouchCancelled;
+			touchListener.OnTouchBegan = OnTouchBegan;
+			touchListener.OnTouchMoved = OnTouchMoved;
+			touchListener.OnTouchEnded = OnTouchEnded;
+			touchListener.OnTouchCancelled = OnTouchCancelled;
 
 			EventDispatcher.AddEventListener(touchListener, this);
-
-            _on = true;
-
-            _switchSprite = new CCControlSwitchSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
-            _switchSprite.Position = new CCPoint(_switchSprite.ContentSize.Width / 2, _switchSprite.ContentSize.Height / 2);
-            AddChild(_switchSprite);
-
-            IgnoreAnchorPointForPosition = false;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            ContentSize = _switchSprite.ContentSize;
         }
-
-        /**
-		 * Set the state of the switch to On or Off, optionally animating the transition.
-		 *
-		 * @param isOn YES if the switch should be turned to the On position; NO if it 
-		 * should be turned to the Off position. If the switch is already in the 
-		 * designated position, nothing happens.
-		 * @param animated YES to animate the "flipping" of the switch; otherwise NO.
-		 */
 
         #endregion Constructors
 
 
-        public void SetOn(bool isOn)
-        {
-            SetOn(isOn, false);
-        }
-
-        public void SetOn(bool isOn, bool animated)
-        {
-            bool bNotify = false;
-            if (_on != isOn)
-            {
-                _on = isOn;
-                bNotify = true;
-            }
-
-            if (animated)
-            {
-                _switchSprite.RunAction(
-                     new CCActionTween(
-                         0.2f,
-                     "sliderXPosition",
-                     _switchSprite.SliderXPosition,
-                     (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition
-                     )
-                 );
-            }
-            else
-            {
-                _switchSprite.SliderXPosition = (_on) ? _switchSprite.OnPosition : _switchSprite.OffPosition;
-            }
-
-            if (bNotify)
-            {
-                SendActionsForControlEvents(CCControlEvent.ValueChanged);
-                if (OnValueChanged != null)
-                {
-                    OnValueChanged(this, _on);
-                }
-            }
-        }
-
-        public bool IsOn()
-        {
-            return _on;
-        }
-
-        public bool HasMoved()
-        {
-            return _moved;
-        }
-
-
         public CCPoint LocationFromTouch(CCTouch touch)
         {
-            CCPoint touchLocation = touch.Location; // Get the touch position
-            touchLocation = ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
+            CCPoint touchLocation = touch.Location;
+			touchLocation = ConvertToNodeSpace(touchLocation);	
 
             return touchLocation;
         }
 
-        //events
-		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
+
+		#region Event handling
+
+		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
 			if (!IsTouchInside(touch) || !Enabled)
             {
                 return false;
             }
 
-            _moved = false;
+            HasMoved = false;
 
 			CCPoint location = LocationFromTouch(touch);
 
-            _initialTouchXPosition = location.X - _switchSprite.SliderXPosition;
+            initialTouchXPosition = location.X - switchSprite.SliderXPosition;
 
-            _switchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
-            _switchSprite.NeedsLayout();
+            switchSprite.ThumbSprite.Color = new CCColor3B(166, 166, 166);
+            switchSprite.NeedsLayout();
 
             return true;
         }
 
-		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
+		void OnTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
-            location = new CCPoint(location.X - _initialTouchXPosition, 0);
+            location = new CCPoint(location.X - initialTouchXPosition, 0);
 
-            _moved = true;
+            HasMoved = true;
 
-            _switchSprite.SliderXPosition = location.X;
+            switchSprite.SliderXPosition = location.X;
         }
 
-		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
+		void OnTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            _switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
+            switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
-            if (HasMoved())
+            if (HasMoved)
             {
-                SetOn(!(location.X < _switchSprite.ContentSize.Width / 2), true);
+				On = !(location.X < switchSprite.ContentSize.Width / 2);
             }
             else
             {
-                SetOn(!_on, true);
+				On = !on;
             }
         }
 
-		void onTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
+		void OnTouchCancelled(CCTouch pTouch, CCEvent touchEvent)
         {
             CCPoint location = LocationFromTouch(pTouch);
 
-            _switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
+            switchSprite.ThumbSprite.Color = new CCColor3B(255, 255, 255);
 
-            if (HasMoved())
+            if (HasMoved)
             {
-                SetOn(!(location.X < _switchSprite.ContentSize.Width / 2), true);
+				On = !(location.X < switchSprite.ContentSize.Width / 2);
             }
             else
             {
-                SetOn(!_on, true);
+				On = !on;
             }
         }
 
-        /** Sprite which represents the view. */
+		#endregion Event handling
     }
 
     public class CCControlSwitchSprite : CCSprite, ICCActionTweenDelegate
     {
-        private CCSprite _thumbSprite;
-        private float _offPosition;
-        private float _onPosition;
-        private float _sliderXPosition;
-        private CCSprite _maskSprite;
-        private CCLabelTtf _offLabel;
-        private CCSprite _offSprite;
-        private CCLabelTtf _onLabel;
-        private CCSprite _onSprite;
+        float sliderXPosition;
 
-        public CCControlSwitchSprite()
-        {
-            _sliderXPosition = 0.0f;
-            _onPosition = 0.0f;
-            _offPosition = 0.0f;
-            _onSprite = null;
-            _offSprite = null;
-            _thumbSprite = null;
-            _onLabel = null;
-            _offLabel = null;
-            _maskSprite = null;
-        }
 
-        public float OnPosition
-        {
-            get { return _onPosition; }
-            set { _onPosition = value; }
-        }
+		#region Properties
 
-        public float OffPosition
-        {
-            get { return _offPosition; }
-            set { _offPosition = value; }
-        }
+		public float OnPosition { get; set; }
+		public float OffPosition { get; set; }
 
-        public CCSprite MaskSprite
-        {
-            get { return _maskSprite; }
-            set { _maskSprite = value; }
-        }
-        
-        public CCSprite OnSprite
-        {
-            get { return _onSprite; }
-            set { _onSprite = value; }
-        }
+		public CCSprite MaskSprite { get; set; }        
+		public CCSprite OnSprite { get; set; }
+		public CCSprite OffSprite { get; set; }
+		public CCSprite ThumbSprite { get; set; }
 
-        public CCSprite OffSprite
-        {
-            get { return _offSprite; }
-            set { _offSprite = value; }
-        }
+		public CCLabelTtf OnLabel { get; set; }
+		public CCLabelTtf OffLabel { get; set; }
 
-        public CCSprite ThumbSprite
-        {
-            get { return _thumbSprite; }
-            set { _thumbSprite = value; }
-        }
 
-        public CCLabelTtf OnLabel
-        {
-            get { return _onLabel; }
-            set { _onLabel = value; }
-        }
+		public float OnSideWidth
+		{
+			get { return OnSprite.ContentSize.Width; }
+		}
 
-        public CCLabelTtf OffLabel
-        {
-            get { return _offLabel; }
-            set { _offLabel = value; }
-        }
+		public float OffSideWidth
+		{
+			get { return OffSprite.ContentSize.Height; }
+		}
 
         public float SliderXPosition
         {
-            get { return _sliderXPosition; }
+            get { return sliderXPosition; }
             set
             {
-                if (value <= _offPosition)
+                if (value <= OffPosition)
                 {
                     // Off
-                    value = _offPosition;
+                    value = OffPosition;
                 }
-                else if (value >= _onPosition)
+                else if (value >= OnPosition)
                 {
                     // On
-                    value = _onPosition;
+                    value = OnPosition;
                 }
 
-                _sliderXPosition = value;
+                sliderXPosition = value;
 
                 NeedsLayout();
             }
         }
 
-        public float OnSideWidth
-        {
-            get { return _onSprite.ContentSize.Width; }
-        }
-
-        public float OffSideWidth
-        {
-            get { return _offSprite.ContentSize.Height; }
-        }
+		#endregion Properties
 
 
         #region Constructors
 
-        public CCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTtf onLabel, CCLabelTtf offLabel)
+		public CCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
+			CCLabelTtf onLabel, CCLabelTtf offLabel) 
+			: base((CCTexture2D)null, new CCRect(0.0f, 0.0f, maskSprite.TextureRect.Size.Width, maskSprite.TextureRect.Size.Height))
         {
-            CCRect rect = maskSprite.TextureRect;
-            rect.Origin.X = rect.Origin.Y = 0;
-            rect.Size = maskSprite.TextureRect.Size;
-
-            // Can't call base(tex, rect) because we need to determine rect here
-            base.InitWithTexture(null, rect);
-
-            InitCCControlSwitchSprite(maskSprite, onSprite, offSprite, thumbSprite, onLabel, offLabel);
-        }
-
-        private void InitCCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
-            CCLabelTtf onLabel, CCLabelTtf offLabel)
-        {
-            // Sets the default values
-            _onPosition = 0;
-            _offPosition = -onSprite.ContentSize.Width + thumbSprite.ContentSize.Width / 2;
-            _sliderXPosition = _onPosition;
+            OnPosition = 0;
+            OffPosition = -onSprite.ContentSize.Width + thumbSprite.ContentSize.Width / 2;
+            sliderXPosition = OnPosition;
 
             OnSprite = onSprite;
             OffSprite = offSprite;
@@ -381,7 +281,7 @@ namespace CocosSharp
             OffLabel = offLabel;
             MaskSprite = maskSprite;
 
-            AddChild(_thumbSprite);
+            AddChild(ThumbSprite);
 
             NeedsLayout();
         }
@@ -389,15 +289,11 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region CCActionTweenDelegate Members
-
         public virtual void UpdateTweenAction(float value, string key)
         {
             //CCLog.Log("key = {0}, value = {1}", key, value);
             SliderXPosition = value;
         }
-
-        #endregion
 
         protected override void Draw()
         {
@@ -408,54 +304,49 @@ namespace CocosSharp
 
         public void NeedsLayout()
         {
-            _onSprite.Position = new CCPoint(_onSprite.ContentSize.Width / 2 + _sliderXPosition,
-                                               _onSprite.ContentSize.Height / 2);
-            _offSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _offSprite.ContentSize.Width / 2 + _sliderXPosition,
-                                                _offSprite.ContentSize.Height / 2);
-            _thumbSprite.Position = new CCPoint(_onSprite.ContentSize.Width + _sliderXPosition,
-                                                 _maskSprite.ContentSize.Height / 2);
+			OnSprite.Position = new CCPoint(OnSprite.ContentSize.Width / 2 + sliderXPosition, OnSprite.ContentSize.Height / 2);
+			OffSprite.Position = new CCPoint(OnSprite.ContentSize.Width + OffSprite.ContentSize.Width / 2 + sliderXPosition, OffSprite.ContentSize.Height / 2);
+			ThumbSprite.Position = new CCPoint(OnSprite.ContentSize.Width + sliderXPosition, MaskSprite.ContentSize.Height / 2);
 
-            if (_onLabel != null)
+            if (OnLabel != null)
             {
-                _onLabel.Position = new CCPoint(_onSprite.Position.X - _thumbSprite.ContentSize.Width / 6,
-                                                  _onSprite.ContentSize.Height / 2);
+				OnLabel.Position = new CCPoint(OnSprite.Position.X - ThumbSprite.ContentSize.Width / 6, OnSprite.ContentSize.Height / 2);
             }
-            if (_offLabel != null)
+            if (OffLabel != null)
             {
-                _offLabel.Position = new CCPoint(_offSprite.Position.X + _thumbSprite.ContentSize.Width / 6,
-                                                   _offSprite.ContentSize.Height / 2);
+				OffLabel.Position = new CCPoint(OffSprite.Position.X + ThumbSprite.ContentSize.Width / 6, OffSprite.ContentSize.Height / 2);
             }
 
             var rt = new CCRenderTexture(
-                (int) _maskSprite.ContentSizeInPixels.Width,
-                (int) _maskSprite.ContentSizeInPixels.Height,
+                (int) MaskSprite.ContentSizeInPixels.Width,
+                (int) MaskSprite.ContentSizeInPixels.Height,
 				CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents
                 );
 
             rt.BeginWithClear(0, 0, 0, 0);
 
-            _onSprite.Visit();
-            _offSprite.Visit();
+            OnSprite.Visit();
+            OffSprite.Visit();
 
-            if (_onLabel != null)
+            if (OnLabel != null)
             {
-                _onLabel.Visit();
+                OnLabel.Visit();
             }
-            if (_offLabel != null)
+            if (OffLabel != null)
             {
-                _offLabel.Visit();
+                OffLabel.Visit();
             }
 
-            _maskSprite.AnchorPoint = new CCPoint(0, 0);
-            _maskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
+            MaskSprite.AnchorPoint = new CCPoint(0, 0);
+            MaskSprite.BlendFunc = new CCBlendFunc(CCOGLES.GL_ZERO, CCOGLES.GL_SRC_ALPHA);
 
-            _maskSprite.Visit();
+            MaskSprite.Visit();
 
             rt.End();
 
             InitWithTexture(rt.Sprite.Texture);
             
-            ContentSize = _maskSprite.ContentSize;
+            ContentSize = MaskSprite.ContentSize;
         }
     }
 }

@@ -57,7 +57,7 @@ namespace tests.Extensions
         public void valueChanged(object sender, CCControlEvent controlEvent)
         {
             var pSwitch = (CCControlSwitch) sender;
-            if (pSwitch.IsOn())
+			if (pSwitch.On)
             {
                 m_pDisplayValueLabel.Text = ("On");
             }
