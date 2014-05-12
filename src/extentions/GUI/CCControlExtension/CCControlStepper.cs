@@ -11,110 +11,91 @@ namespace CocosSharp
 
     public class CCControlStepper : CCControl
     {
-        private const string ControlStepperLabelFont = "Arial";
-        private const float kAutorepeatDeltaTime = 0.15f;
-        private const int kAutorepeatIncreaseTimeIncrement = 12;
-        private static readonly CCColor3B ControlStepperLabelColorDisabled = new CCColor3B(147, 147, 147);
-        private static readonly CCColor3B ControlStepperLabelColorEnabled = new CCColor3B(55, 55, 55);
-        protected bool _autorepeat;
-        protected int _autorepeatCount;
-        protected bool _continuous;
-        protected float _maximumValue;
-        protected float _minimumValue;
-        protected CCLabelTtf _minusLabel;
-        protected CCSprite _minusSprite;
-        protected CCLabelTtf _plusLabel;
-        protected CCSprite _plusSprite;
-        protected float _stepValue;
-        protected bool _touchInsideFlag;
-        protected CCControlStepperPart _touchedPart;
-        protected float _value;
-        protected bool _wraps;
+        const string ControlStepperLabelFont = "Arial";
+        const float AutorepeatDeltaTime = 0.15f;
+        const int AutorepeatIncreaseTimeIncrement = 12;
 
+        static readonly CCColor3B ControlStepperLabelColorDisabled = new CCColor3B(147, 147, 147);
+        static readonly CCColor3B ControlStepperLabelColorEnabled = new CCColor3B(55, 55, 55);
 
-        public CCSprite MinusSprite
-        {
-            get { return _minusSprite; }
-            set { _minusSprite = value; }
-        }
+		bool wraps;
+        bool autorepeat;
+        int autorepeatCount;
 
-        public CCSprite PlusSprite
-        {
-            get { return _plusSprite; }
-            set { _plusSprite = value; }
-        }
+		float value;
+		float maximumValue;
+		float minimumValue;
+        float stepValue;
 
-        public CCLabelTtf MinusLabel
-        {
-            get { return _minusLabel; }
-            set { _minusLabel = value; }
-        }
+        bool touchInsideFlag;
+        CCControlStepperPart touchedPart;
 
-        public CCLabelTtf PlusLabel
-        {
-            get { return _plusLabel; }
-            set { _plusLabel = value; }
-        }
+  
+		#region Properties
+
+		public CCSprite MinusSprite { get; set; }
+		public CCSprite PlusSprite { get; set; }
+		public CCLabelTtf MinusLabel { get; set; }
+		public CCLabelTtf PlusLabel { get; set; }
+		public virtual bool IsContinuous { get; private set; }
 
 
         public virtual bool Wraps
         {
-            get { return _wraps; }
+            get { return wraps; }
             set
             {
-                _wraps = value;
+                wraps = value;
 
-                if (_wraps)
+                if (wraps)
                 {
-                    _minusLabel.Color = ControlStepperLabelColorEnabled;
-                    _plusLabel.Color = ControlStepperLabelColorEnabled;
+                    MinusLabel.Color = ControlStepperLabelColorEnabled;
+                    PlusLabel.Color = ControlStepperLabelColorEnabled;
                 }
 
-                Value = _value;
+                Value = this.value;
             }
         }
 
         public virtual float MinimumValue
         {
-            get { return _minimumValue; }
+            get { return minimumValue; }
             set
             {
-                if (value >= _maximumValue)
+                if (value >= maximumValue)
                 {
-                    Debug.Assert(value < _maximumValue, "Must be numerically less than maximumValue.");
+                    Debug.Assert(value < maximumValue, "Must be numerically less than maximumValue.");
                 }
 
-                _minimumValue = value;
-                Value = _value;
+                minimumValue = value;
+                Value = this.value;
             }
         }
 
         public virtual float MaximumValue
         {
-            get { return _maximumValue; }
+            get { return maximumValue; }
             set
             {
-                if (value <= _minimumValue)
+                if (value <= minimumValue)
                 {
-                    Debug.Assert(value > _minimumValue, "Must be numerically greater than minimumValue.");
+                    Debug.Assert(value > minimumValue, "Must be numerically greater than minimumValue.");
                 }
 
-                _maximumValue = value;
-                Value = _value;
+                maximumValue = value;
+                Value = this.value;
             }
         }
 
-        /** The numeric value of the stepper. */
-
         public virtual float Value
         {
-            get { return _value; }
+            get { return this.value; }
             set { SetValueWithSendingEvent(value, true); }
         }
 
         public virtual float StepValue
         {
-            get { return _stepValue; }
+            get { return stepValue; }
             set
             {
                 if (value <= 0)
@@ -122,80 +103,60 @@ namespace CocosSharp
                     Debug.Assert(value > 0, "Must be numerically greater than 0.");
                 }
 
-                _stepValue = value;
+                stepValue = value;
             }
         }
 
-        public virtual bool IsContinuous
-        {
-            get { return _continuous; }
-        }
+		#endregion Properties
 
 
         #region Constructors
 
-        public CCControlStepper()
-        {
-        }
-
         public CCControlStepper(CCSprite minusSprite, CCSprite plusSprite)
-        {
-            InitCCControlStepper(minusSprite, plusSprite);
-        }
-
-        private void InitCCControlStepper(CCSprite minusSprite, CCSprite plusSprite)
         {
             Debug.Assert(minusSprite != null, "Minus sprite must be not nil");
             Debug.Assert(plusSprite != null, "Plus sprite must be not nil");
+
+			IsContinuous = true;
+			IgnoreAnchorPointForPosition = false;
+            autorepeat = true;
+            minimumValue = 0;
+            maximumValue = 100;
+            value = 0;
+            stepValue = 1;
+            wraps = false;
+
+            MinusSprite = minusSprite;
+			MinusSprite.Position = new CCPoint(minusSprite.ContentSize.Width / 2, minusSprite.ContentSize.Height / 2);
+            AddChild(MinusSprite);
+
+            MinusLabel = new CCLabelTtf("-", ControlStepperLabelFont, 38);
+            MinusLabel.Color = ControlStepperLabelColorDisabled;
+			MinusLabel.Position = new CCPoint(MinusSprite.ContentSize.Width / 2, MinusSprite.ContentSize.Height / 2);
+            MinusSprite.AddChild(MinusLabel);
+
+            PlusSprite = plusSprite;
+			PlusSprite.Position = new CCPoint(minusSprite.ContentSize.Width + plusSprite.ContentSize.Width / 2, minusSprite.ContentSize.Height / 2);
+            AddChild(PlusSprite);
+
+            PlusLabel = new CCLabelTtf("+", ControlStepperLabelFont, 38);
+            PlusLabel.Color = ControlStepperLabelColorEnabled;
+            PlusLabel.Position = PlusSprite.ContentSize.Center;
+            PlusSprite.AddChild(PlusLabel);
+
+            // Defines the content size
+            CCRect maxRect = CCControlUtils.CCRectUnion(MinusSprite.BoundingBox, PlusSprite.BoundingBox);
+            ContentSize = new CCSize(MinusSprite.ContentSize.Width + PlusSprite.ContentSize.Height, maxRect.Size.Height);
 
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
 
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchBegan = OnTouchBegan;
+			touchListener.OnTouchMoved = OnTouchMoved;
+			touchListener.OnTouchEnded = OnTouchEnded;
 
 			EventDispatcher.AddEventListener(touchListener, this);
-
-
-            // Set the default values
-            _autorepeat = true;
-            _continuous = true;
-            _minimumValue = 0;
-            _maximumValue = 100;
-            _value = 0;
-            _stepValue = 1;
-            _wraps = false;
-            IgnoreAnchorPointForPosition = false;
-
-            // Add the minus components
-            MinusSprite = minusSprite;
-            _minusSprite.Position = new CCPoint(minusSprite.ContentSize.Width / 2,
-                                                minusSprite.ContentSize.Height / 2);
-            AddChild(_minusSprite);
-
-            MinusLabel = new CCLabelTtf("-", ControlStepperLabelFont, 38);
-            _minusLabel.Color = ControlStepperLabelColorDisabled;
-            _minusLabel.Position = new CCPoint(_minusSprite.ContentSize.Width / 2,
-                                               _minusSprite.ContentSize.Height / 2);
-            _minusSprite.AddChild(_minusLabel);
-
-            // Add the plus components 
-            PlusSprite = plusSprite;
-            _plusSprite.Position =
-                new CCPoint(minusSprite.ContentSize.Width + plusSprite.ContentSize.Width / 2,
-                            minusSprite.ContentSize.Height / 2);
-            AddChild(_plusSprite);
-
-            PlusLabel = new CCLabelTtf("+", ControlStepperLabelFont, 38);
-            _plusLabel.Color = ControlStepperLabelColorEnabled;
-            _plusLabel.Position = _plusSprite.ContentSize.Center;
-            _plusSprite.AddChild(_plusLabel);
-
-            // Defines the content size
-            CCRect maxRect = CCControlUtils.CCRectUnion(_minusSprite.BoundingBox, _plusSprite.BoundingBox);
-            ContentSize = new CCSize(_minusSprite.ContentSize.Width + _plusSprite.ContentSize.Height, maxRect.Size.Height);
         }
 
         #endregion Constructors
@@ -203,23 +164,23 @@ namespace CocosSharp
 
         public virtual void SetValueWithSendingEvent(float value, bool send)
         {
-            if (value < _minimumValue)
+            if (value < minimumValue)
             {
-                value = _wraps ? _maximumValue : _minimumValue;
+                value = wraps ? maximumValue : minimumValue;
             }
-            else if (value > _maximumValue)
+            else if (value > maximumValue)
             {
-                value = _wraps ? _minimumValue : _maximumValue;
+                value = wraps ? minimumValue : maximumValue;
             }
 
-            _value = value;
+            this.value = value;
 
-            if (!_wraps)
+            if (!wraps)
             {
-                _minusLabel.Color = (value == _minimumValue)
+                MinusLabel.Color = (value == minimumValue)
                                         ? ControlStepperLabelColorDisabled
                                         : ControlStepperLabelColorEnabled;
-                _plusLabel.Color = (value == _maximumValue)
+                PlusLabel.Color = (value == maximumValue)
                                        ? ControlStepperLabelColorDisabled
                                        : ControlStepperLabelColorEnabled;
             }
@@ -232,23 +193,66 @@ namespace CocosSharp
 
         public override void Update(float dt)
         {
-            _autorepeatCount++;
+            autorepeatCount++;
 
-            if ((_autorepeatCount < kAutorepeatIncreaseTimeIncrement) && (_autorepeatCount % 3) != 0)
+            if ((autorepeatCount < AutorepeatIncreaseTimeIncrement) && (autorepeatCount % 3) != 0)
                 return;
 
-            if (_touchedPart == CCControlStepperPart.PartMinus)
+            if (touchedPart == CCControlStepperPart.PartMinus)
             {
-                SetValueWithSendingEvent(_value - _stepValue, _continuous);
+                SetValueWithSendingEvent(this.value - stepValue, IsContinuous);
             }
-            else if (_touchedPart == CCControlStepperPart.PartPlus)
+            else if (touchedPart == CCControlStepperPart.PartPlus)
             {
-                SetValueWithSendingEvent(_value + _stepValue, _continuous);
+                SetValueWithSendingEvent(this.value + stepValue, IsContinuous);
             }
         }
 
-        //events
-		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
+		/** Update the layout of the stepper with the given touch location. */
+
+		protected void UpdateLayoutUsingTouchLocation(CCPoint location)
+		{
+			if (location.X < MinusSprite.ContentSize.Width
+				&& this.value > minimumValue)
+			{
+				touchedPart = CCControlStepperPart.PartMinus;
+
+				MinusSprite.Color = CCColor3B.Gray;
+				PlusSprite.Color = CCColor3B.White;
+			}
+			else if (location.X >= MinusSprite.ContentSize.Width
+				&& this.value < maximumValue)
+			{
+				touchedPart = CCControlStepperPart.PartPlus;
+
+				MinusSprite.Color = CCColor3B.White;
+				PlusSprite.Color = CCColor3B.Gray;
+			}
+			else
+			{
+				touchedPart = CCControlStepperPart.PartNone;
+
+				MinusSprite.Color = CCColor3B.White;
+				PlusSprite.Color = CCColor3B.White;
+			}
+		}
+
+		protected void StartAutorepeat()
+		{
+			autorepeatCount = -1;
+
+			Schedule(Update, AutorepeatDeltaTime, CCSchedulePriority.RepeatForever, AutorepeatDeltaTime * 3);
+		}
+
+		protected void StopAutorepeat()
+		{
+			Unschedule(Update);
+		}
+
+
+		#region Event handling
+
+		bool OnTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!IsTouchInside(pTouch) || !Enabled || !Visible)
             {
@@ -258,9 +262,9 @@ namespace CocosSharp
             CCPoint location = GetTouchLocation(pTouch);
             UpdateLayoutUsingTouchLocation(location);
 
-            _touchInsideFlag = true;
+            touchInsideFlag = true;
 
-            if (_autorepeat)
+            if (autorepeat)
             {
                 StartAutorepeat();
             }
@@ -268,18 +272,18 @@ namespace CocosSharp
             return true;
         }
 
-		void onTouchMoved(CCTouch pTouch, CCEvent touchEvent)
+		void OnTouchMoved(CCTouch pTouch, CCEvent touchEvent)
         {
             if (IsTouchInside(pTouch))
             {
                 CCPoint location = GetTouchLocation(pTouch);
                 UpdateLayoutUsingTouchLocation(location);
 
-                if (!_touchInsideFlag)
+                if (!touchInsideFlag)
                 {
-                    _touchInsideFlag = true;
+                    touchInsideFlag = true;
 
-                    if (_autorepeat)
+                    if (autorepeat)
                     {
                         StartAutorepeat();
                     }
@@ -287,26 +291,26 @@ namespace CocosSharp
             }
             else
             {
-                _touchInsideFlag = false;
+                touchInsideFlag = false;
 
-                _touchedPart = CCControlStepperPart.PartNone;
+                touchedPart = CCControlStepperPart.PartNone;
 
-                _minusSprite.Color = CCColor3B.White;
-                _plusSprite.Color = CCColor3B.White;
+                MinusSprite.Color = CCColor3B.White;
+                PlusSprite.Color = CCColor3B.White;
 
-                if (_autorepeat)
+                if (autorepeat)
                 {
                     StopAutorepeat();
                 }
             }
         }
 
-		void onTouchEnded(CCTouch pTouch, CCEvent touchEvent)
+		void OnTouchEnded(CCTouch pTouch, CCEvent touchEvent)
         {
-            _minusSprite.Color = CCColor3B.White;
-            _plusSprite.Color = CCColor3B.White;
+            MinusSprite.Color = CCColor3B.White;
+            PlusSprite.Color = CCColor3B.White;
 
-            if (_autorepeat)
+            if (autorepeat)
             {
                 StopAutorepeat();
             }
@@ -315,56 +319,11 @@ namespace CocosSharp
             {
                 CCPoint location = GetTouchLocation(pTouch);
 
-                Value = _value +
-                        ((location.X < _minusSprite.ContentSize.Width) ? (0.0f - _stepValue) : _stepValue);
+				Value = this.value + ((location.X < MinusSprite.ContentSize.Width) ? (0.0f - stepValue) : stepValue);
             }
         }
 
-        // Weak links to children
+		#endregion Event handling
 
-        /** Update the layout of the stepper with the given touch location. */
-
-        protected void UpdateLayoutUsingTouchLocation(CCPoint location)
-        {
-            if (location.X < _minusSprite.ContentSize.Width
-                && _value > _minimumValue)
-            {
-                _touchedPart = CCControlStepperPart.PartMinus;
-
-                _minusSprite.Color = CCColor3B.Gray;
-                _plusSprite.Color = CCColor3B.White;
-            }
-            else if (location.X >= _minusSprite.ContentSize.Width
-                     && _value < _maximumValue)
-            {
-                _touchedPart = CCControlStepperPart.PartPlus;
-
-                _minusSprite.Color = CCColor3B.White;
-                _plusSprite.Color = CCColor3B.Gray;
-            }
-            else
-            {
-                _touchedPart = CCControlStepperPart.PartNone;
-
-                _minusSprite.Color = CCColor3B.White;
-                _plusSprite.Color = CCColor3B.White;
-            }
-        }
-
-        /** Start the autorepeat increment/decrement. */
-
-        protected void StartAutorepeat()
-        {
-            _autorepeatCount = -1;
-
-            Schedule(Update, kAutorepeatDeltaTime, CCSchedulePriority.RepeatForever, kAutorepeatDeltaTime * 3);
-        }
-
-        /** Stop the autorepeat. */
-
-        protected void StopAutorepeat()
-        {
-            Unschedule(Update);
-        }
     }
 }
