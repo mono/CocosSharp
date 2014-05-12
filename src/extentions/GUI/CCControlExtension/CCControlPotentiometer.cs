@@ -6,13 +6,17 @@ namespace CocosSharp
 
     public class CCControlPotentiometer : CCControl
     {
-        protected float _maximumValue;
-        protected float _minimumValue;
-        private CCPoint _previousLocation;
+        float maximumValue;
+		float minimumValue;
+		float value;
+        CCPoint previousLocation;
 
-        private CCProgressTimer _progressTimer;
-        private CCSprite _thumbSprite;
-        protected float _value;
+
+		#region Properties
+
+		protected CCPoint PreviousLocation { get; set; }
+		protected CCSprite ThumbSprite { get; set; }
+		protected CCProgressTimer ProgressTimer { get; set; }
 
         public override bool Enabled
         {
@@ -20,50 +24,32 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                if (_thumbSprite != null)
+				if (ThumbSprite != null)
                 {
-                    _thumbSprite.Opacity = value ? (byte) 255 : (byte) 128;
+					ThumbSprite.Opacity = value ? (byte) 255 : (byte) 128;
                 }
             }
         }
 
-        protected CCSprite ThumbSprite
-        {
-            get { return _thumbSprite; }
-            set { _thumbSprite = value; }
-        }
-
-        protected CCProgressTimer ProgressTimer
-        {
-            get { return _progressTimer; }
-            set { _progressTimer = value; }
-        }
-
-        protected CCPoint PreviousLocation
-        {
-            get { return _previousLocation; }
-            set { _previousLocation = value; }
-        }
-
         public float Value
         {
-            get { return _value; }
+            get { return this.value; }
             set
             {
-                if (value < _minimumValue)
+                if (value < minimumValue)
                 {
-                    value = _minimumValue;
+                    value = minimumValue;
                 }
-                if (value > _maximumValue)
+                if (value > maximumValue)
                 {
-                    value = _maximumValue;
+                    value = maximumValue;
                 }
-                _value = value;
+                this.value = value;
 
                 // Update thumb and progress position for new value
-                float percent = (value - _minimumValue) / (_maximumValue - _minimumValue);
-                _progressTimer.Percentage = percent * 100.0f;
-                _thumbSprite.Rotation = percent * 360.0f;
+                float percent = (value - minimumValue) / (maximumValue - minimumValue);
+                ProgressTimer.Percentage = percent * 100.0f;
+                ThumbSprite.Rotation = percent * 360.0f;
 
                 SendActionsForControlEvents(CCControlEvent.ValueChanged);
             }
@@ -71,128 +57,108 @@ namespace CocosSharp
 
         public float MinimumValue
         {
-            get { return _minimumValue; }
+            get { return minimumValue; }
             set
             {
-                _minimumValue = value;
+                minimumValue = value;
 
-                if (_minimumValue >= _maximumValue)
+                if (minimumValue >= maximumValue)
                 {
-                    _maximumValue = _minimumValue + 1.0f;
+                    maximumValue = minimumValue + 1.0f;
                 }
 
-                Value = _maximumValue;
+                Value = maximumValue;
             }
         }
 
         public float MaximumValue
         {
-            get { return _maximumValue; }
+            get { return maximumValue; }
             set
             {
-                _maximumValue = value;
+                maximumValue = value;
 
-                if (_maximumValue <= _minimumValue)
+                if (maximumValue <= minimumValue)
                 {
-                    _minimumValue = _maximumValue - 1.0f;
+                    minimumValue = maximumValue - 1.0f;
                 }
 
-                Value = _minimumValue;
+                Value = minimumValue;
             }
         }
+
+		#endregion Properties
 
 
         #region Constructors
 
-        public CCControlPotentiometer()
-        {
-            _thumbSprite = null;
-            _progressTimer = null;
-            _value = 0.0f;
-            _minimumValue = 0.0f;
-            _maximumValue = 0.0f;
-        }
-
-        /*        * 
-         * Creates potentiometer with a track filename and a progress filename.
-         */
-
         public CCControlPotentiometer(string backgroundFile, string progressFile, string thumbFile)
         {
-            // Prepare track for potentiometer
-            var backgroundSprite = new CCSprite(backgroundFile);
-
-            // Prepare thumb for potentiometer
+			var trackSprite = new CCSprite(backgroundFile);
             var thumbSprite = new CCSprite(thumbFile);
-
-            // Prepare progress for potentiometer
             var progressTimer = new CCProgressTimer(new CCSprite(progressFile));
-            //progressTimer.type              = kProgressTimerTypeRadialCW;
-            InitCCControlPotentiometer(backgroundSprite, progressTimer, thumbSprite);
-        }
 
-        private void InitCCControlPotentiometer(CCSprite trackSprite, CCProgressTimer progressTimer, CCSprite thumbSprite)
-        {
+			minimumValue = 0.0f;
+			maximumValue = 1.0f;
+			value = minimumValue;
+
+			ProgressTimer = progressTimer;
+			ThumbSprite = thumbSprite;
+			thumbSprite.Position = progressTimer.Position;
+
+			AddChild(thumbSprite, 2);
+			AddChild(progressTimer, 1);
+			AddChild(trackSprite);
+
+			ContentSize = trackSprite.ContentSize;
+
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
 
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchBegan = OnTouchBegan;
+			touchListener.OnTouchMoved = OnTouchMoved;
+			touchListener.OnTouchEnded = OnTouchEnded;
 
 			EventDispatcher.AddEventListener(touchListener, this);
-
-            ProgressTimer = progressTimer;
-            ThumbSprite = thumbSprite;
-            thumbSprite.Position = progressTimer.Position;
-
-            AddChild(thumbSprite, 2);
-            AddChild(progressTimer, 1);
-            AddChild(trackSprite);
-
-            ContentSize = trackSprite.ContentSize;
-
-            // Init default values
-            _minimumValue = 0.0f;
-            _maximumValue = 1.0f;
-            Value = _minimumValue;
         }
 
         #endregion Constructors
 
 
+		#region Event handling
+
         public override bool IsTouchInside(CCTouch touch)
         {
             CCPoint touchLocation = GetTouchLocation(touch);
 
-            float distance = DistanceBetweenPointAndPoint(_progressTimer.Position, touchLocation);
+            float distance = DistanceBetweenPointAndPoint(ProgressTimer.Position, touchLocation);
 
             return distance < Math.Min(ContentSize.Width / 2, ContentSize.Height / 2);
         }
 
-		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
+		bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
             if (!IsTouchInside(touch) || !Enabled || !Visible)
             {
                 return false;
             }
 
-            _previousLocation = GetTouchLocation(touch);
+            previousLocation = GetTouchLocation(touch);
 
-            PotentiometerBegan(_previousLocation);
+            PotentiometerBegan(previousLocation);
 
             return true;
         }
 
-		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
+		void OnTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint location = GetTouchLocation(touch);
 
             PotentiometerMoved(location);
         }
 
-		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
+		void OnTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             PotentiometerEnded(CCPoint.Zero);
         }
@@ -200,16 +166,16 @@ namespace CocosSharp
         protected void PotentiometerBegan(CCPoint location)
         {
             Selected = true;
-            ThumbSprite.Color = new CCColor3B(128, 128, 128); //TODO: CCColor3B.GRAY
+			ThumbSprite.Color = CCColor3B.DarkGray;
         }
 
         protected void PotentiometerMoved(CCPoint location)
         {
             float angle = AngleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint(
-                _progressTimer.Position,
+                ProgressTimer.Position,
                 location,
-                _progressTimer.Position,
-                _previousLocation);
+                ProgressTimer.Position,
+                previousLocation);
 
             // fix value, if the 12 o'clock position is between location and previousLocation
             if (angle > 180)
@@ -221,16 +187,19 @@ namespace CocosSharp
                 angle += 360;
             }
 
-            Value = _value + angle / 360.0f * (_maximumValue - _minimumValue);
+            Value = this.value + angle / 360.0f * (maximumValue - minimumValue);
 
-            _previousLocation = location;
+            previousLocation = location;
         }
 
         protected void PotentiometerEnded(CCPoint location)
         {
-            ThumbSprite.Color = new CCColor3B(255, 255, 255); //TODO: CCColor3B.WHITE
+			ThumbSprite.Color = CCColor3B.White;
             Selected = false;
         }
+
+		#endregion Event handling
+
 
         protected float DistanceBetweenPointAndPoint(CCPoint point1, CCPoint point2)
         {
