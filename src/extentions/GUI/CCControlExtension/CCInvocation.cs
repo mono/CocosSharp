@@ -6,41 +6,33 @@ using System;
 
 namespace CocosSharp
 {
-
     public class CCInvocation 
     {
-        private readonly Action<object, CCControlEvent> _action;
-        private readonly CCControlEvent _controlEvent;
+		#region Properties
 
-        private readonly object _target;
+		public Action<object, CCControlEvent> Action { get; private set; }
+		public object Target { get; private set; }
+		public CCControlEvent ControlEvent { get; private set; }
+
+		#endregion Properties
+
+
+		#region Constructors
 
 		public CCInvocation(object target, Action<object, CCControlEvent> action, CCControlEvent controlEvent)
         {
-            _target = target;
-            _action = action;
-            _controlEvent = controlEvent;
+			Target = target;
+			Action = action;
+			ControlEvent = controlEvent;
         }
 
-		public Action<object, CCControlEvent> Action
-        {
-            get { return _action; }
-        }
-
-        public object Target
-        {
-            get { return _target; }
-        }
-
-        public CCControlEvent ControlEvent
-        {
-            get { return _controlEvent; }
-        }
+		#endregion Constructors
 
         public void Invoke(object sender)
         {
-            if (_target != null && _action != null)
+			if (Target != null && Action != null)
             {
-                Action(sender, _controlEvent);
+				Action(sender, ControlEvent);
             }
         }
     }
