@@ -69,6 +69,7 @@ namespace CocosSharp
         public static readonly CCColor3B Black = new CCColor3B(0, 0, 0);
         public static readonly CCColor3B Orange = new CCColor3B(255, 127, 0);
         public static readonly CCColor3B Gray = new CCColor3B(166, 166, 166);
+		public static readonly CCColor3B DarkGray = new CCColor3B(128, 128, 128);
 
         public byte R { get; set; }
         public byte G { get; set; }
