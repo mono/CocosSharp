@@ -68,18 +68,18 @@ namespace CocosSharp
         public virtual void UpdateWithHSV(HSV hsv)
         {
             HSV hsvTemp;
-            hsvTemp.s = 1;
-            hsvTemp.h = hsv.h;
-            hsvTemp.v = 1;
+			hsvTemp.S = 1;
+			hsvTemp.H = hsv.H;
+			hsvTemp.V = 1;
 
             RGBA rgb = CCControlUtils.RGBfromHSV(hsvTemp);
-			Background.Color = new CCColor3B((byte) (rgb.r * 255.0f), (byte) (rgb.g * 255.0f),  (byte) (rgb.b * 255.0f));
+			Background.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f),  (byte) (rgb.B * 255.0f));
         }
 
         public virtual void UpdateDraggerWithHSV(HSV hsv)
         {
             // Set the position of the slider to the correct saturation and brightness
-			var pos = new CCPoint(StartPos.X + boxPos + (boxSize * (1f - hsv.s)), StartPos.Y + boxPos + (boxSize * hsv.v));
+			var pos = new CCPoint(StartPos.X + boxPos + (boxSize * (1f - hsv.S)), StartPos.Y + boxPos + (boxSize * hsv.V));
 
             UpdateSliderPosition(pos);
         }

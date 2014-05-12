@@ -1,5 +1,5 @@
 /*
- * ColourUtils.h
+ * ColourUtils.H
  *
  * Copyright 2012 Stewart Hamilton-Arrandale.
  * http://creativewax.co.uk
@@ -35,17 +35,17 @@ namespace CocosSharp
 {
 	internal struct RGBA
 	{
-		public float r;       // percent
-		public float g;       // percent
-		public float b;       // percent
-		public float a;       // percent
+		public float R;       // percent
+		public float G;       // percent
+		public float B;       // percent
+		public float A;       // percent
 	}
 
 	public struct HSV
 	{
-		public float h;       // angle in degrees
-		public float s;       // percent
-		public float v;       // percent
+		public float H;       // angle in degrees
+		public float S;       // percent
+		public float V;       // percent
 	}
 
 	internal class CCControlUtils
@@ -70,39 +70,39 @@ namespace CocosSharp
 			HSV o;
 			float min, max, delta;
     
-			min = value.r < value.g ? value.r : value.g;
-			min = min  < value.b ? min  : value.b;
+			min = value.R < value.G ? value.R : value.G;
+			min = min  < value.B ? min  : value.B;
     
-			max = value.r > value.g ? value.r : value.g;
-			max = max  > value.b ? max  : value.b;
+			max = value.R > value.G ? value.R : value.G;
+			max = max  > value.B ? max  : value.B;
     
-			o.v = max;											// v
+			o.V = max;											// v
 			delta = max - min;
 			if( max > 0.0f )
 			{
-				o.s = (delta / max);							// s
+				o.S = (delta / max);							// s
 			} else
 			{
 				// r = g = b = 0								// s = 0, v is undefined
-				o.s = 0.0f;
-				o.h = -1;										// its now undefined (don't know if setting to NAN is a good idea)
+				o.S = 0.0f;
+				o.H = -1;										// its now undefined (don't know if setting to NAN is a good idea)
 				return o;
 			}
-			if( value.r >= max )								// > is bogus, just keeps compilor happy
+			if( value.R >= max )								// > is bogus, just keeps compilor happy
 			{
-				o.h = ( value.g - value.b ) / delta;			// between yellow & magenta
+				o.H = ( value.G - value.B ) / delta;			// between yellow & magenta
 			} else
 			{
-				if( value.g >= max )
-					o.h = 2.0f + ( value.b - value.r ) / delta;  // between cyan & yellow
+				if( value.G >= max )
+					o.H = 2.0f + ( value.B - value.R ) / delta;  // between cyan & yellow
 				else
-					o.h = 4.0f + ( value.r - value.g ) / delta;  // between magenta & cyan
+					o.H = 4.0f + ( value.R - value.G ) / delta;  // between magenta & cyan
 			}
     
-			o.h *= 60.0f;										// degrees
+			o.H *= 60.0f;										// degrees
     
-			if( o.h < 0.0f )
-				o.h += 360.0f;
+			if( o.H < 0.0f )
+				o.H += 360.0f;
     
 			return o;
 		}
@@ -112,67 +112,67 @@ namespace CocosSharp
 			float hh, p, q, t, ff;
 			long i;
 			RGBA o;
-			o.a = 1f;
+			o.A = 1f;
     
-			if (value.s <= 0.0f) // < is bogus, just shuts up warnings
+			if (value.S <= 0.0f) // < is bogus, just shuts up warnings
 			{       
-				if (double.IsNaN(value.h)) // value.h == NAN
+				if (double.IsNaN(value.H)) // value.H == NAN
 				{   
-					o.r = value.v;
-					o.g = value.v;
-					o.b = value.v;
+					o.R = value.V;
+					o.G = value.V;
+					o.B = value.V;
 					return o;
 				}
         
 				// error - should never happen
-				o.r = 0.0f;
-				o.g = 0.0f;
-				o.b = 0.0f;
+				o.R = 0.0f;
+				o.G = 0.0f;
+				o.B = 0.0f;
 				return o;
 			}
     
-			hh = value.h;
+			hh = value.H;
 			if(hh >= 360.0f) hh = 0.0f;
 			hh /= 60.0f;
 			i = (long)hh;
 			ff = hh - i;
-			p = value.v * (1.0f - value.s);
-			q = value.v * (1.0f - (value.s * ff));
-			t = value.v * (1.0f - (value.s * (1.0f - ff)));
+			p = value.V * (1.0f - value.S);
+			q = value.V * (1.0f - (value.S * ff));
+			t = value.V * (1.0f - (value.S * (1.0f - ff)));
     
 			switch(i)
 			{
 				case 0:
-					o.r = value.v;
-					o.g = t;
-					o.b = p;
+					o.R = value.V;
+					o.G = t;
+					o.B = p;
 					break;
 				case 1:
-					o.r = q;
-					o.g = value.v;
-					o.b = p;
+					o.R = q;
+					o.G = value.V;
+					o.B = p;
 					break;
 				case 2:
-					o.r = p;
-					o.g = value.v;
-					o.b = t;
+					o.R = p;
+					o.G = value.V;
+					o.B = t;
 					break;
             
 				case 3:
-					o.r = p;
-					o.g = q;
-					o.b = value.v;
+					o.R = p;
+					o.G = q;
+					o.B = value.V;
 					break;
 				case 4:
-					o.r = t;
-					o.g = p;
-					o.b = value.v;
+					o.R = t;
+					o.G = p;
+					o.B = value.V;
 					break;
 				case 5:
 				default:
-					o.r = value.v;
-					o.g = p;
-					o.b = q;
+					o.R = value.V;
+					o.G = p;
+					o.B = q;
 					break;
 			}
 			return o;     

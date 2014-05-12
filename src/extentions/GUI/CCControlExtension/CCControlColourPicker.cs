@@ -21,10 +21,10 @@ namespace CocosSharp
 				base.Color = value;
 
 				RGBA rgba;
-				rgba.r = value.R / 255.0f;
-				rgba.g = value.G / 255.0f;
-				rgba.b = value.B / 255.0f;
-				rgba.a = 1.0f;
+				rgba.R = value.R / 255.0f;
+				rgba.G = value.G / 255.0f;
+				rgba.B = value.B / 255.0f;
+				rgba.A = 1.0f;
 
 				Hsv = CCControlUtils.HSVfromRGB(rgba);
 				UpdateHueAndControlPicker();
@@ -65,9 +65,9 @@ namespace CocosSharp
             var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
             AddChild(spriteSheet);
 
-            Hsv.h = 0;
-            Hsv.s = 0;
-            Hsv.v = 0;
+            Hsv.H = 0;
+            Hsv.S = 0;
+            Hsv.V = 0;
 
             // Add image
 			Background 
@@ -107,11 +107,11 @@ namespace CocosSharp
 
         public void HueSliderValueChanged(Object sender, CCControlEvent controlEvent)
         {
-            Hsv.h = ((CCControlHuePicker) sender).Hue;
+            Hsv.H = ((CCControlHuePicker) sender).Hue;
 
             RGBA rgb = CCControlUtils.RGBfromHSV(Hsv);
             // XXX fixed me if not correct
-            base.Color = new CCColor3B((byte) (rgb.r * 255.0f), (byte) (rgb.g * 255.0f), (byte) (rgb.b * 255.0f));
+            base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
             SendActionsForControlEvents(CCControlEvent.ValueChanged);
@@ -120,12 +120,12 @@ namespace CocosSharp
 
         public void ColourSliderValueChanged(Object sender, CCControlEvent controlEvent)
         {
-            Hsv.s = ((CCControlSaturationBrightnessPicker) sender).Saturation;
-            Hsv.v = ((CCControlSaturationBrightnessPicker) sender).Brightness;
+            Hsv.S = ((CCControlSaturationBrightnessPicker) sender).Saturation;
+            Hsv.V = ((CCControlSaturationBrightnessPicker) sender).Brightness;
 
             RGBA rgb = CCControlUtils.RGBfromHSV(Hsv);
             // XXX fixed me if not correct
-            base.Color = new CCColor3B((byte) (rgb.r * 255.0f), (byte) (rgb.g * 255.0f), (byte) (rgb.b * 255.0f));
+            base.Color = new CCColor3B((byte) (rgb.R * 255.0f), (byte) (rgb.G * 255.0f), (byte) (rgb.B * 255.0f));
 
             // Send Control callback
             SendActionsForControlEvents(CCControlEvent.ValueChanged);
@@ -133,13 +133,13 @@ namespace CocosSharp
 
         protected void UpdateControlPicker()
         {
-            HuePicker.Hue = Hsv.h;
+            HuePicker.Hue = Hsv.H;
             ColourPicker.UpdateWithHSV(Hsv);
         }
 
         protected void UpdateHueAndControlPicker()
         {
-            HuePicker.Hue = Hsv.h;
+            HuePicker.Hue = Hsv.H;
             ColourPicker.UpdateWithHSV(Hsv);
             ColourPicker.UpdateDraggerWithHSV(Hsv);
         }
