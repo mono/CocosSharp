@@ -218,7 +218,7 @@ namespace CocosSharp
 
 #if !NETFX_CORE
 			if (CCDirector.SharedDirector.Accelerometer != null 
-				&& CCDirector.SharedDirector.Accelerometer.IsEnabled
+				&& CCDirector.SharedDirector.Accelerometer.Enabled
 				&& CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
             {
 				CCDirector.SharedDirector.Accelerometer.Update();

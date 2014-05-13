@@ -88,7 +88,7 @@ namespace CocosSharp
                     if (IsRunning)
                     {
                         CCDirector pDirector = CCDirector.SharedDirector;
-                        pDirector.Accelerometer.IsEnabled = value;
+						pDirector.Accelerometer.Enabled = value;
                     }
                 }
                 #else
@@ -151,7 +151,7 @@ namespace CocosSharp
             if (isAccelerometerEnabled)
             {
                 #if !NETFX_CORE
-                director.Accelerometer.IsEnabled = true;
+				director.Accelerometer.Enabled = true;
                 #endif
             }
         }
@@ -161,7 +161,7 @@ namespace CocosSharp
             if (isAccelerometerEnabled)
             {
                 #if !PSM &&!NETFX_CORE
-                CCDirector.SharedDirector.Accelerometer.IsEnabled = false;
+				CCDirector.SharedDirector.Accelerometer.Enabled = false;
                 #endif
             }
 

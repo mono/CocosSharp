@@ -19,17 +19,85 @@ namespace CocosSharp
     {
 #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
         // the accelerometer sensor on the device
-        private static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
+        static Microsoft.Devices.Sensors.Accelerometer accelerometer = null;
 #endif
 
-        private const float TG3_GRAVITY_EARTH = 9.80665f;
-		private readonly CCAcceleration accelerationValue = new CCAcceleration();
+        const float TG3_GRAVITY_EARTH = 9.80665f;
+		readonly CCAcceleration accelerationValue = new CCAcceleration();
 
-		private CCEventAccelerate accelerateEvent = new CCEventAccelerate ();
 
-		private bool IsActive { get; set; }
-		private bool IsEmulating { get; set; }
-		private bool isEnabled = false;
+		CCEventAccelerate accelerateEvent = new CCEventAccelerate();
+		bool enabled = false;
+
+
+		#region Properties
+
+		bool Active { get; set; }
+		bool Emulating { get; set; }
+		internal bool Enabled 
+		{
+			get { return enabled; }
+
+			set 
+			{
+				enabled = value;
+				if (enabled && !Active)
+				{
+					#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
+					try
+					{
+						if(Microsoft.Devices.Sensors.Accelerometer.IsSupported)
+						{
+						accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
+						accelerometer.Start();
+						Active = true;
+						}
+						else
+						{
+						Active = false;
+						}
+					}
+					catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
+					{
+						Active = false;
+					}
+					#endif
+					if(!Active)
+					{
+						Active = true;
+						Emulating = true;
+					}
+					else
+					{
+						Emulating = false;
+					}
+				}
+				else
+				{
+					if (Active && !Emulating)
+					{
+						#if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL
+						if (accelerometer != null)
+						{
+							accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
+							accelerometer.Stop();
+						}
+						#endif
+					}
+
+					ResetAccelerometer();
+
+					Active = false;
+					Emulating = false;
+				}
+
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
 
         static CCAccelerometer()
         {
@@ -44,71 +112,12 @@ namespace CocosSharp
                 CCLog.Log("No accelerometer on platform. CCAccelerometer will default to emulation code.");
             }
 #endif
-
         }
 
-		internal bool IsEnabled 
-		{
-			get { return isEnabled; }
-
-			set 
-			{
-				isEnabled = value;
-				if (isEnabled && !IsActive)
-				{
-#if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
-					try
-					{
-						if (Microsoft.Devices.Sensors.Accelerometer.IsSupported)
-						{
-							accelerometer.CurrentValueChanged += accelerometer_CurrentValueChanged;
-							accelerometer.Start();
-							IsActive = true;
-						}
-						else
-						{
-							IsActive = false;
-						}
-					}
-					catch (Microsoft.Devices.Sensors.AccelerometerFailedException)
-					{
-						IsActive = false;
-					}
-#endif
-					if (!IsActive)
-					{
-						IsActive = true;
-						IsEmulating = true;
-					}
-					else
-					{
-						IsEmulating = false;
-					}
-				}
-				else
-				{
-					if (IsActive && !IsEmulating)
-					{
-#if !WINDOWS && !OUYA &&!NETFX_CORE && !MACOS && !WINDOWSGL
-						if (accelerometer != null)
-						{
-						    accelerometer.CurrentValueChanged -= accelerometer_CurrentValueChanged;
-						    accelerometer.Stop();
-						}
-#endif
-					}
-
-					ResetAccelerometer();
-
-					IsActive = false;
-					IsEmulating = false;
-				}
-
-			}
-		}
+		#endregion Constructors
 
 
-        private void ResetAccelerometer()
+        void ResetAccelerometer()
         {
             accelerationValue.X = 0;
             accelerationValue.Y = 0;
@@ -116,7 +125,7 @@ namespace CocosSharp
         }
 
 #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
-        private void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
+        void accelerometer_CurrentValueChanged(object sender, Microsoft.Devices.Sensors.SensorReadingEventArgs<Microsoft.Devices.Sensors.AccelerometerReading> e)
         {
 
             // We have to use reflection to get the Vector3 value out of Acceleration
@@ -140,7 +149,7 @@ namespace CocosSharp
 			accelerationValue.TimeStamp = e.SensorReading.Timestamp.Ticks;
         }
 
-        private void UpdateAccelerationValue(string acceleration)
+        void UpdateAccelerationValue(string acceleration)
         {
             string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
 
@@ -166,9 +175,8 @@ namespace CocosSharp
 
         }
 
-        private static Vector3 ParseVector3(string acceleration)
+        static Vector3 ParseVector3(string acceleration)
         {
-
             string[] temp = acceleration.Substring(1, acceleration.Length - 2).Split(':');
             float x = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
             float y = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
@@ -185,7 +193,7 @@ namespace CocosSharp
 			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
 			if (dispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
 			{
-                if (IsEmulating)
+                if (Emulating)
                 {
                     // if we're in the emulator, we'll generate a fake acceleration value using the arrow keys
                     // press the pause/break key to toggle keyboard input for the emulator
