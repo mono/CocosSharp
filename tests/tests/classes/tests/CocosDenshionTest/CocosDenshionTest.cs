@@ -120,7 +120,7 @@ namespace tests
 		        break;
 	        // is background music playing
 	        case 5:
-		        if (CCSimpleAudioEngine.SharedEngine.IsBackgroundMusicPlaying())
+		        if (CCSimpleAudioEngine.SharedEngine.BackgroundMusicPlaying)
 		        {
 			        CCLog.Log("background music is playing");
 		        }
