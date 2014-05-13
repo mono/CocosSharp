@@ -13,25 +13,25 @@ namespace CocosSharp
 
     public static class CCDevice
     {
-        private static float _dpi;
-
-        public static float GetDPI()
+        public static float DPI
         {
-            if (_dpi == 0)
-            {
+			get 
+			{
+				float dpi;
 #if ANDROID
-                var display = Game.Activity.WindowManager.DefaultDisplay;
-                var metrics = new DisplayMetrics();
+				var display = Game.Activity.WindowManager.DefaultDisplay;
+				var metrics = new DisplayMetrics();
 
-                display.GetMetrics(metrics);
+				display.GetMetrics(metrics);
 
-                _dpi = metrics.Density * 160.0f;
+				dpi = metrics.Density * 160.0f;
 #else
-                //TODO: Implementing GetDPI for all platforms
-                _dpi = 96;
+				//TODO: Implementing GetDPI for all platforms
+				dpi = 96;
 #endif
-            }
-            return _dpi;
+
+				return dpi;
+			}
         }
     }
 }

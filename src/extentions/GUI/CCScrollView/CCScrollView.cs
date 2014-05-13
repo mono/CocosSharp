@@ -803,7 +803,7 @@ namespace CocosSharp
         private static float ConvertDistanceFromPointToInch(float pointDis)
         {
             float factor = (CCDrawManager.ScaleX + CCDrawManager.ScaleY) / 2;
-            return pointDis * factor / CCDevice.GetDPI();
+			return pointDis * factor / CCDevice.DPI;
         }
     }
 }
