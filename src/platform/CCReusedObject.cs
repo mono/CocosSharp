@@ -6,26 +6,32 @@ namespace CocosSharp
 {
     public abstract class CCReusedObject<T> where T : CCReusedObject<T>, new()
     {
-        private bool used;
-        private static readonly List<CCReusedObject<T>> _unused = new List<CCReusedObject<T>>();  
-        
+        static readonly List<CCReusedObject<T>> unused = new List<CCReusedObject<T>>();  
+		bool used;
+
+
+		#region Constructors
+
+		public static T Create()
+		{
+			var count = unused.Count;
+			if (count > 0)
+			{
+				var result = unused[count - 1];
+				result.used = true;
+				unused.RemoveAt(count - 1);
+				return (T)result;
+			}
+			return new T();
+		}
+
         protected CCReusedObject()
         {
             used = true;
         }
 
-        public static T Create()
-        {
-            var count = _unused.Count;
-            if (count > 0)
-            {
-                var result = _unused[count - 1];
-                result.used = true;
-                _unused.RemoveAt(count - 1);
-                return (T)result;
-            }
-            return new T();
-        }
+		#endregion Constructors
+
 
         protected abstract void PrepareForReuse();
 
@@ -37,7 +43,7 @@ namespace CocosSharp
             
             PrepareForReuse();
             
-            _unused.Add(this);
+			unused.Add(this);
         }
     }
 }
