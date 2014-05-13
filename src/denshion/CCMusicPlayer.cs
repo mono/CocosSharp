@@ -14,49 +14,84 @@ namespace CocosDenshion
     /// </summary>
 	public class CCMusicPlayer : IDisposable
     {
+		/// Track if we did play our own game song, otherwise the media player is owned
+		/// by the user of the device and that user is listening to background music.
+		bool didPlayGameSong;
 		bool isRepeatingAfterClose;
 		bool isShuffleAfterClose;
-        //private MediaQueue m_QueueAfterClose;
-		Song songToPlayAfterClose;
 		float volumeAfterClose = 1f;
-
-        /// <summary>
-        /// Track if we did play our own game song, otherwise the media player is owned
-        /// by the user of the device and that user is listening to background music.
-        /// </summary>
-		bool didPlayGameSong;
-
+		Song songToPlayAfterClose;
 		Song music;
-		int nSoundId;
+
+
+		#region Properties
+
+		public int SoundID { get; private set; }
+
+		public float Volume
+		{
+			get { 
+				return MediaPlayer.Volume; 
+			}
+
+			set
+			{
+				if (value >= 0.0f && value <= 1.0f)
+				{
+					MediaPlayer.Volume = value;
+				}
+			}
+		}
+
+
+		// Returns true if any song is playing in the media player, even if it is not one of the songs in the game.
+		public bool Playing
+		{
+			get 
+			{
+				if (MediaState.Playing == MediaPlayer.State) 
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
+		// Returns true if one of the game songs is playing.
+		public bool PlayingMySong
+		{
+			get 
+			{
+				if (!didPlayGameSong) 
+				{
+					return (false);
+				}
+				if (MediaState.Playing == MediaPlayer.State) 
+				{
+					return true;
+				}
+
+				return false;
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructor
 
         public CCMusicPlayer()
         {
-            nSoundId = 0;
+            SoundID = 0;
             if (MediaPlayer.State == MediaState.Playing)
             {
                 SaveMediaState();
             }
         }
 
-        public float Volume
-        {
-            get { 
-                return MediaPlayer.Volume; 
-            }
+		#endregion Constructor
 
-            set
-            {
-                if (value >= 0.0f && value <= 1.0f)
-                {
-                    MediaPlayer.Volume = value;
-                }
-            }
-        }
-
-        public int SoundID
-        {
-            get { return nSoundId; }
-        }
 
         public void SaveMediaState()
         {
@@ -91,8 +126,9 @@ namespace CocosDenshion
                     CCLog.Log("Failed to restore the media state of the game.");
                     CCLog.Log(ex.ToString());
                 }
+        	}
         }
-        }
+
 
 		#region Cleaning up
 
@@ -147,7 +183,7 @@ namespace CocosDenshion
 
             music = CCContentManager.SharedContentManager.Load<Song>(pFileName);
 
-            nSoundId = uId;
+            SoundID = uId;
         }
 
         public void Play(bool bLoop)
@@ -167,40 +203,28 @@ namespace CocosDenshion
 
         public void Close()
         {
-            if (IsPlaying() && didPlayGameSong)
+            if (Playing && didPlayGameSong)
             {
                 Stop();
             }
             music = null;
         }
 
-        /// <summary>
-        /// Pauses the current song being played. 
-        /// </summary>
         public void Pause()
         {
             MediaPlayer.Pause();
         }
 
-        /// <summary>
-        /// Resumes playback of the current song.
-        /// </summary>
         public void Resume()
         {
             MediaPlayer.Resume();
         }
 
-        /// <summary>
-        /// Stops playback of the current song and resets the playback position to zero.
-        /// </summary>
         public void Stop()
         {
             MediaPlayer.Stop();
         }
 
-        /// <summary>
-        /// resets the playback of the current song to its beginning.
-        /// </summary>
         public void Rewind()
         {
             Song s = MediaPlayer.Queue.ActiveSong;
@@ -215,39 +239,6 @@ namespace CocosDenshion
             {
                 MediaPlayer.Play(s);
             }
-        }
-
-        /// <summary>
-        /// Returns true if any song is playing in the media player, even if it is not one
-        /// of the songs in the game.
-        /// </summary>
-        /// <returns></returns>
-        public bool IsPlaying()
-        {
-            if (MediaState.Playing == MediaPlayer.State)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Returns true if one of the game songs is playing.
-        /// </summary>
-        /// <returns></returns>
-        public bool IsPlayingMySong()
-        {
-            if (!didPlayGameSong)
-            {
-                return (false);
-            }
-            if (MediaState.Playing == MediaPlayer.State)
-            {
-                return true;
-            }
-
-            return false;
         }
     }
 }
