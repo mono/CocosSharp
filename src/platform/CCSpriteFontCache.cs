@@ -8,62 +8,88 @@ namespace CocosSharp
 {
     public class CCSpriteFontCache
     {
-        private struct FontMapEntry
+		#region Structs
+
+		struct FontMapEntry
         {
             public string FontName;
             public float FontSize;
         }
 
-		private static ContentManager contentManager;
+		#endregion Structs
+
+
+		static CCSpriteFontCache instance = new CCSpriteFontCache();
+		static ContentManager contentManager;
         public static string FontRoot = "fonts";
 
-		private static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
-		private static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
-		private static float fontScale = 1.0f;
+		static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
+		static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
 
-        public static void RegisterFont(string fontName, params int[] sizes)
-        {
-            Array.Sort(sizes);
-            registeredFonts[fontName] = sizes;
-        }
+ 
+		#region Properties
 
-        public static float FontScale
-        {
-            get { return fontScale; }
-            set { fontScale = value; }
-        }
+		public static CCSpriteFontCache SharedInstance
+		{
+			get { return instance; }
+		}
 
-        private CCSpriteFontCache()
-        {
-            // You don't create this, we do.
-        }
+		public static float FontScale { get; set; }
+
+		internal SpriteFont this[string fontName]
+		{
+			get 
+			{
+				try 
+				{
+					return contentManager.Load<SpriteFont> (fontName);
+				} 
+				catch (Exception) 
+				{
+					CCLog.Log ("Can't find font known as {0}. Please check your file name.", fontName);
+					return null;
+				}
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
 
         static CCSpriteFontCache()
         {
             var cm = CCApplication.SharedApplication.Content;
             contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
+			FontScale = 1.0f;
         }
 
-        private string FontKey(string fontName, float fontSize)
+		CCSpriteFontCache()
+		{
+			// You don't create this, we do.
+		}
+
+		#endregion Constructors
+
+		public static void RegisterFont(string fontName, params int[] sizes)
+		{
+			Array.Sort(sizes);
+			registeredFonts[fontName] = sizes;
+		}
+
+		public void Clear()
+		{
+			contentManager.Unload();
+			loadedFontsMap.Clear();
+		}
+
+        string FontKey(string fontName, float fontSize)
         {
             if (fontSize == 0)
             {
                 return fontName;
             }
             return String.Format("{0}-{1}", fontName, fontSize);
-        }
-
-		internal SpriteFont GetFont(string fontName)
-        {
-            try
-            {
-                return contentManager.Load<SpriteFont>(fontName);
-            }
-            catch (Exception)
-            {
-                CCLog.Log("Can't find font known as {0}. Please check your file name.", fontName);
-                return null;
-            }
         }
 
 		internal SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
@@ -111,7 +137,7 @@ namespace CocosSharp
             return result;
         }
 
-        private SpriteFont InternalLoadFont(string fontName, float fontSize, out float loadedSize)
+        SpriteFont InternalLoadFont(string fontName, float fontSize, out float loadedSize)
         {
             loadedSize = fontSize;
 
@@ -151,24 +177,5 @@ namespace CocosSharp
             loadedSize = 0;
             return contentManager.Load<SpriteFont>(fontName);
         }
-
-        public void Clear()
-        {
-            contentManager.Unload();
-            loadedFontsMap.Clear();
-        }
-
-        #region Singleton
-        
-        public static CCSpriteFontCache SharedInstance
-        {
-            get
-            {
-                return (instance);
-            }
-        }
-		private static CCSpriteFontCache instance = new CCSpriteFontCache();
-        
-        #endregion
     }
 }
