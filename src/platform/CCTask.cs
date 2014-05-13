@@ -9,14 +9,14 @@ namespace CocosSharp
 {
     public static class CCTask
     {
-        private class TaskSelector : ICCUpdatable
+        class TaskSelector : ICCUpdatable
         {
             public void Update(float dt)
             {
             }
         }
 
-        private static ICCUpdatable _taskSelector = new TaskSelector();
+        static ICCUpdatable taskSelector = new TaskSelector();
 
         public static object RunAsync(Action action)
         {
@@ -40,7 +40,7 @@ namespace CocosSharp
                     (sender, args) =>
                     {
                         var scheduler = CCDirector.SharedDirector.Scheduler;
-                        scheduler.Schedule (f => taskCompleted(worker), _taskSelector, 0, 0, 0, false);
+                        scheduler.Schedule (f => taskCompleted(worker), taskSelector, 0, 0, 0, false);
                     };
             }
 
@@ -56,7 +56,7 @@ namespace CocosSharp
                     if (taskCompleted != null)
                     {
                         var scheduler = CCDirector.SharedDirector.Scheduler;
-                        scheduler.Schedule (f => taskCompleted(null), _taskSelector, 0, 0, 0, false);
+                        scheduler.Schedule (f => taskCompleted(null), taskSelector, 0, 0, 0, false);
                     }
                 }
                 );
