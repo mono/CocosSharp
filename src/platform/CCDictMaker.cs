@@ -30,6 +30,8 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
+	#region Enums
+
 	internal enum CCSAXState
     {
         None = 0,
@@ -41,24 +43,32 @@ namespace CocosSharp
         Array
     };
 
+	#endregion Enums
+
+
 	internal class CCDictMaker : ICCSAXDelegator
     {
-        public Dictionary<string, Object> m_pRootDict;
-        public Dictionary<string, Object> m_pCurDict;
-        public Stack<Dictionary<string, Object>> m_tDictStack=new Stack<Dictionary<string,object>>();
-        public string m_sCurKey;///< parsed key
-        public CCSAXState m_tState;
-        public List<Object> m_pArray;
+		string curKey;	//< parsed key
+		CCSAXState state;
+		List<Object> array;
+		Dictionary<string, Object> rootDict;
+		Dictionary<string, Object> curDict;
+		Stack<Dictionary<string, Object>> dictStack = new Stack<Dictionary<string,object>>();
+		Stack<List<Object>> arrayStack = new Stack<List<object>>();
+		Stack<CCSAXState> stateStack = new Stack<CCSAXState>();
 
-        Stack<List<Object>> m_tArrayStack = new Stack<List<object>>();
-        Stack<CCSAXState> m_tStateStack = new Stack<CCSAXState>();
+
+		#region Constructors
 
         public CCDictMaker()
         {
-            m_tState = CCSAXState.None;
+            state = CCSAXState.None;
         }
 
-        public Dictionary<string, Object> DictionaryWithContentsOfFile(string pFileName)
+		#endregion Constructors
+
+
+		public Dictionary<string, Object> DictionaryWithContentsOfFile(string filename)
         {
             CCSAXParser parser = new CCSAXParser();
 
@@ -68,11 +78,11 @@ namespace CocosSharp
             }
             parser.SetDelegator(this);
 
-            parser.ParseContentFile(pFileName);
-            return m_pRootDict;
+			parser.ParseContentFile(filename);
+            return rootDict;
         }
 
-        public List<Object> ArrayWithContentsOfFile(string pFileName)
+		public List<Object> ArrayWithContentsOfFile(string filename)
         {
             CCSAXParser parser = new CCSAXParser();
 
@@ -81,122 +91,118 @@ namespace CocosSharp
                 return null;
             }
             parser.SetDelegator(this);
-
-            //byte[] root;
 
             StartElement(parser, "dict", null);
             StartElement(parser, "key", null);
             TextHandler(parser, System.Text.UTF8Encoding.UTF8.GetBytes("root"), 4);
             EndElement(parser, "key");
             
-            parser.ParseContentFile(pFileName);
+			parser.ParseContentFile(filename);
 
             EndElement(parser, "dict");
 
-            return m_pRootDict["root"] as List<Object>;
+            return rootDict["root"] as List<Object>;
         }
 
         public void StartElement(object ctx, string name, string[] atts)
         {
-
             string sName = name;
             if (sName == "dict")
             {
-                m_pCurDict = new Dictionary<string, Object>();
-                if (m_pRootDict == null)
+                curDict = new Dictionary<string, Object>();
+                if (rootDict == null)
                 {
-                    m_pRootDict = m_pCurDict;
+                    rootDict = curDict;
                 }
-                m_tState = CCSAXState.Dict;
+                state = CCSAXState.Dict;
 
                 CCSAXState preState = CCSAXState.None;
-                if (m_tStateStack.Count != 0)
+                if (stateStack.Count != 0)
                 {
-                    preState = m_tStateStack.FirstOrDefault();
+                    preState = stateStack.FirstOrDefault();
                 }
 
                 if (CCSAXState.Array == preState)
                 {
                     // add the dictionary into the array
-                    m_pArray.Add(m_pCurDict);
+                    array.Add(curDict);
                 }
                 else if (CCSAXState.Dict == preState)
                 {
 
                     // add the dictionary into the pre dictionary
-                    Debug.Assert(m_tDictStack.Count > 0, "The state is wrong!");
-                    Dictionary<string, Object> pPreDict = m_tDictStack.FirstOrDefault();
-                    pPreDict.Add(m_sCurKey, m_pCurDict);
+                    Debug.Assert(dictStack.Count > 0, "The state is wrong!");
+                    Dictionary<string, Object> pPreDict = dictStack.FirstOrDefault();
+                    pPreDict.Add(curKey, curDict);
                 }
-                //m_pCurDict->autorelease();
 
                 // record the dict state
-                m_tStateStack.Push(m_tState);
-                m_tDictStack.Push(m_pCurDict);
+                stateStack.Push(state);
+                dictStack.Push(curDict);
             }
             else if (sName == "key")
             {
-                m_tState = CCSAXState.Key;
+                state = CCSAXState.Key;
             }
             else if (sName == "integer")
             {
-                m_tState = CCSAXState.Int;
+                state = CCSAXState.Int;
             }
             else if (sName == "real")
             {
-                m_tState = CCSAXState.Real;
+                state = CCSAXState.Real;
             }
             else if (sName == "string")
             {
-                m_tState = CCSAXState.String;
+                state = CCSAXState.String;
             }
             else if (sName == "array")
             {
-                m_tState = CCSAXState.Array;
-                m_pArray = new List<Object>();
+                state = CCSAXState.Array;
+                array = new List<Object>();
 
-                CCSAXState preState = m_tStateStack.Count == 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
+                CCSAXState preState = stateStack.Count == 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
                 if (preState == CCSAXState.Dict)
                 {
-                    m_pCurDict.Add(m_sCurKey, m_pArray);
+                    curDict.Add(curKey, array);
                 }
                 else if (preState == CCSAXState.Array)
                 {
-                    Debug.Assert(m_tArrayStack.Count > 0, "The state is worng!");
-                    List<Object> pPreArray = m_tArrayStack.FirstOrDefault();
-                    pPreArray.Add(m_pArray);
+                    Debug.Assert(arrayStack.Count > 0, "The state is worng!");
+                    List<Object> pPreArray = arrayStack.FirstOrDefault();
+                    pPreArray.Add(array);
                 }
-                //m_pArray->release();
+
                 // record the array state
-                m_tStateStack.Push(m_tState);
-                m_tArrayStack.Push(m_pArray);
+                stateStack.Push(state);
+                arrayStack.Push(array);
             }
             else
             {
-                m_tState = CCSAXState.None;
+                state = CCSAXState.None;
             }
         }
 
         public void EndElement(object ctx, string name)
         {
-            CCSAXState curState = m_tStateStack.Count > 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
+            CCSAXState curState = stateStack.Count > 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
             string sName = name;
             if (sName == "dict")
             {
-                m_tStateStack.Pop();
-                m_tDictStack.Pop();
-                if (m_tDictStack.Count > 0)
+                stateStack.Pop();
+                dictStack.Pop();
+                if (dictStack.Count > 0)
                 {
-                    m_pCurDict = m_tDictStack.FirstOrDefault();
+                    curDict = dictStack.FirstOrDefault();
                 }
             }
             else if (sName == "array")
             {
-                m_tStateStack.Pop();
-                m_tArrayStack.Pop();
-                if (m_tArrayStack.Count > 0)
+                stateStack.Pop();
+                arrayStack.Pop();
+                if (arrayStack.Count > 0)
                 {
-                    m_pArray = m_tArrayStack.FirstOrDefault();
+                    array = arrayStack.FirstOrDefault();
                 }
             }
             else if (sName == "true")
@@ -204,11 +210,11 @@ namespace CocosSharp
                 string str = "1";
                 if (CCSAXState.Array == curState)
                 {
-                    m_pArray.Add(str);
+                    array.Add(str);
                 }
                 else if (CCSAXState.Dict == curState)
                 {
-                    m_pCurDict.Add(m_sCurKey, str);
+                    curDict.Add(curKey, str);
                 }
                 //str->release();
             }
@@ -217,51 +223,50 @@ namespace CocosSharp
                 string str = "0";
                 if (CCSAXState.Array == curState)
                 {
-                    m_pArray.Add(str);
+                    array.Add(str);
                 }
                 else if (CCSAXState.Dict == curState)
                 {
-                    m_pCurDict.Add(m_sCurKey, str);
+                    curDict.Add(curKey, str);
                 }
                 //str->release();
             }
-            m_tState = CCSAXState.None;
+            state = CCSAXState.None;
         }
 
         public void TextHandler(object ctx, byte[] s, int len)
         {
-            if (m_tState == CCSAXState.None)
+            if (state == CCSAXState.None)
             {
                 return;
             }
 
-            CCSAXState curState = m_tStateStack.Count == 0 ? CCSAXState.Dict : m_tStateStack.FirstOrDefault();
+            CCSAXState curState = stateStack.Count == 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
             string m_sString = string.Empty;
             m_sString = System.Text.UTF8Encoding.UTF8.GetString(s, 0, len);
 
-            switch (m_tState)
+            switch (state)
             {
                 case CCSAXState.Key:
-                    m_sCurKey = m_sString;
+                    curKey = m_sString;
                     break;
                 case CCSAXState.Int:
                 case CCSAXState.Real:
                 case CCSAXState.String:
-                    Debug.Assert(m_sCurKey.Length > 0, "not found key : <integet/real>");
+                    Debug.Assert(curKey.Length > 0, "not found key : <integet/real>");
 
                     if (CCSAXState.Array == curState)
                     {
-                        m_pArray.Add(m_sString);
+                        array.Add(m_sString);
                     }
                     else if (CCSAXState.Dict == curState)
                     {
-                        m_pCurDict.Add(m_sCurKey, m_sString);
+                        curDict.Add(curKey, m_sString);
                     }
                     break;
                 default:
                     break;
             }
-            //pText->release();
         }
     }
 }
