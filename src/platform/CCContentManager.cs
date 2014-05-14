@@ -11,7 +11,92 @@ namespace CocosSharp
 {
 	public class CCContentManager : ContentManager
     {
-        public static CCContentManager SharedContentManager;
+		#region Asset entry private class
+
+		class AssetEntry
+		{
+			public readonly string AssetFileName;
+			public readonly bool WeakReference;
+			public readonly bool UseContentReader;
+			object asset;
+
+
+			#region Properties
+
+			public object Asset
+			{
+				get
+				{
+					if (WeakReference)
+					{
+						if (((WeakReference)asset).IsAlive)
+						{
+							return ((WeakReference)asset).Target;
+						}
+						return null;
+					}
+					else
+					{
+						return asset;
+					}
+				}
+
+				set
+				{
+					if (WeakReference)
+					{
+						asset = new WeakReference(value);
+					}
+					else
+					{
+						asset = value;
+					}
+				}
+			}
+
+			#endregion Properties
+
+
+			#region Constructors
+
+			public AssetEntry(object asset, string assetFileName, bool weakReference, bool useContentReader)
+			{
+				AssetFileName = assetFileName;
+				WeakReference = weakReference;
+				UseContentReader = useContentReader;
+				Asset = asset;
+			}
+
+			#endregion Constructors
+		}
+
+		#endregion Asset entry private class
+
+
+		public static CCContentManager SharedContentManager;
+
+		Dictionary<string, AssetEntry> loadedAssets;
+		Dictionary<string, string> assetLookupDict = new Dictionary<string, string>();
+		Dictionary<string, string> failedAssets = new Dictionary<string, string>();
+
+		List<string> searchPaths = new List<string>();
+		List<string> searchResolutionsOrder = new List<string>(); 
+
+
+		#region Constructors
+
+		public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
+		{
+			loadedAssets = new Dictionary<string, AssetEntry>();
+		}
+
+		public CCContentManager(IServiceProvider serviceProvider, string rootDirectory) : base(serviceProvider, rootDirectory)
+		{
+			loadedAssets = new Dictionary<string, AssetEntry>();
+		}
+
+		#endregion Constructors
+
 
         internal static void Initialize(IServiceProvider serviceProvider, string rootDirectory)
         {
@@ -22,9 +107,9 @@ namespace CocosSharp
         }
 
 #if IOS || WINDOWS_PHONE8
-        private static bool s_readersInited;
+        static bool readersInited;
 
-        private static void InitializeContentTypeReaders()
+        static void InitializeContentTypeReaders()
         {
             // Please read the following discussions for the reasons of this.
             // http://monogame.codeplex.com/discussions/393775
@@ -34,7 +119,7 @@ namespace CocosSharp
             //
             // Also search Google for -> ContentTypeReaderManager.AddTypeCreator
 
-            if (s_readersInited)
+            if (readersInited)
             {
                 return;
             }
@@ -80,82 +165,22 @@ namespace CocosSharp
 
                 );
 
-            s_readersInited = true;
+            readersInited = true;
         }
 #endif
 
-        private class AssetEntry
+		string GetRealName(string assetName)
+		{
+			if (assetLookupDict.ContainsKey(assetName))
+			{
+				return assetLookupDict[assetName];
+			}
+			return assetName;
+		}
+
+		public T TryLoad<T>(string assetName, bool weakReference=false)
         {
-            public readonly string AssetFileName;
-            public readonly bool WeakReference;
-            public readonly bool UseContentReader;
-            private object _asset;
-
-            public AssetEntry(object asset, string assetFileName, bool weakReference, bool useContentReader)
-            {
-                AssetFileName = assetFileName;
-                WeakReference = weakReference;
-                UseContentReader = useContentReader;
-                Asset = asset;
-            }
-
-            public object Asset
-            {
-                set
-                {
-                    if (WeakReference)
-                    {
-                        _asset = new WeakReference(value);
-                    }
-                    else
-                    {
-                        _asset = value;
-                    }
-                }
-                get
-                {
-                    if (WeakReference)
-                    {
-                        if (((WeakReference)_asset).IsAlive)
-                        {
-                            return ((WeakReference)_asset).Target;
-                        }
-                        return null;
-                    }
-                    else
-                    {
-                        return _asset;
-                    }
-                }
-            }
-        }
-
-        private Dictionary<string, AssetEntry> _loadedAssets;
-        
-        private Dictionary<string, string> _assetLookupDict = new Dictionary<string, string>();
-        private List<string> _searchPaths = new List<string>();
-        private List<string> _searchResolutionsOrder = new List<string>(); 
-
-        private Dictionary<string, string> _failedAssets = new Dictionary<string, string>();
-
-        public CCContentManager(IServiceProvider serviceProvider) : base(serviceProvider)
-        {
-            _loadedAssets = new Dictionary<string, AssetEntry>();
-        }
-
-        public CCContentManager(IServiceProvider serviceProvider, string rootDirectory) : base(serviceProvider, rootDirectory)
-        {
-            _loadedAssets = new Dictionary<string, AssetEntry>();
-        }
-
-        public T TryLoad<T>(string assetName)
-        {
-            return TryLoad<T>(assetName, false);
-        }
-
-        public T TryLoad<T>(string assetName, bool weakReference)
-        {
-            if (_failedAssets.ContainsKey(assetName))
+            if (failedAssets.ContainsKey(assetName))
             {
                 return default(T);
             }
@@ -166,7 +191,7 @@ namespace CocosSharp
             }
             catch (Exception)
             {
-                _failedAssets[assetName] = null;
+                failedAssets[assetName] = null;
                 
                 return default(T);
             }
@@ -174,7 +199,7 @@ namespace CocosSharp
 
         public override T Load<T>(string assetName)
         {
-            if (_failedAssets.ContainsKey(assetName))
+            if (failedAssets.ContainsKey(assetName))
             {
                 throw new ContentLoadException("Failed to load the asset file from " + assetName);
             }
@@ -185,7 +210,7 @@ namespace CocosSharp
             }
             catch (Exception)
             {
-                _failedAssets[assetName] = null;
+                failedAssets[assetName] = null;
 
                 throw;
             }
@@ -200,7 +225,7 @@ namespace CocosSharp
 
             // Check for a previously loaded asset first
             AssetEntry entry;
-            if (_loadedAssets.TryGetValue(assetName, out entry))
+            if (loadedAssets.TryGetValue(assetName, out entry))
             {
                 if (entry.Asset is T)
                 {
@@ -214,12 +239,12 @@ namespace CocosSharp
 
             var realName = GetRealName(assetName);
 
-            CheckDefaultPath(_searchPaths);
-            CheckDefaultPath(_searchResolutionsOrder);
+            CheckDefaultPath(searchPaths);
+            CheckDefaultPath(searchResolutionsOrder);
 
-            foreach (var searchPath in _searchPaths)
+            foreach (var searchPath in searchPaths)
             {
-                foreach (string resolutionOrder  in _searchResolutionsOrder)
+                foreach (string resolutionOrder in searchResolutionsOrder)
                 {
                     var path = Path.Combine(Path.Combine(searchPath, resolutionOrder), realName);
 
@@ -238,23 +263,14 @@ namespace CocosSharp
             throw new ContentLoadException("Failed to load the asset file from " + assetName);
         }
 
-        private string GetRealName(string assetName)
-        {
-            if (_assetLookupDict.ContainsKey(assetName))
-            {
-                return _assetLookupDict[assetName];
-            }
-            return assetName;
-        }
-
         public override void Unload()
         {
             base.Unload();
 
-            _loadedAssets.Clear();
+            loadedAssets.Clear();
         }
 
-        private T InternalLoad<T>(string assetName, string path, bool weakReference)
+        T InternalLoad<T>(string assetName, string path, bool weakReference)
         {
             T result = default(T);
 
@@ -339,7 +355,7 @@ namespace CocosSharp
 
             var assetEntry = new AssetEntry(result, path, weakReference, useContentReader);
 
-            _loadedAssets[assetName] = assetEntry;
+            loadedAssets[assetName] = assetEntry;
 
             if (result is GraphicsResource)
             {
@@ -349,13 +365,13 @@ namespace CocosSharp
             return result;
         }
 
-        private void AssetDisposing(object sender, EventArgs e)
+        void AssetDisposing(object sender, EventArgs e)
         {
-            foreach (var loadedAsset in _loadedAssets)
+            foreach (var loadedAsset in loadedAssets)
             {
                 if (loadedAsset.Value.Asset == sender)
                 {
-                    _loadedAssets.Remove(loadedAsset.Key);
+                    loadedAssets.Remove(loadedAsset.Key);
                     return;
                 }
             }
@@ -364,7 +380,7 @@ namespace CocosSharp
 #if MONOGAME
         protected override void ReloadGraphicsAssets()
         {
-            foreach (var pair in _loadedAssets)
+            foreach (var pair in loadedAssets)
             {
                 if (pair.Value.UseContentReader && pair.Value.Asset != null)
                 {
@@ -376,11 +392,11 @@ namespace CocosSharp
 
             foreach (var pair in LoadedAssets)
             {
-                foreach (var pair2 in _loadedAssets)
+                foreach (var pair2 in loadedAssets)
                 {
                     if (pair2.Value.AssetFileName == pair.Key)
                     {
-                        _loadedAssets[pair2.Key].Asset = pair.Value;
+                        loadedAssets[pair2.Key].Asset = pair.Value;
                     }
                 }
             }
@@ -390,7 +406,7 @@ namespace CocosSharp
 #else
         public void ReloadGraphicsAssets()
         {
-            foreach (var asset in _loadedAssets)
+            foreach (var asset in loadedAssets)
             {
                 asset.Value.Asset = null;
             }
@@ -401,12 +417,12 @@ namespace CocosSharp
         {
             var realName = GetRealName(assetName);
 
-            CheckDefaultPath(_searchPaths);
-            CheckDefaultPath(_searchResolutionsOrder);
+            CheckDefaultPath(searchPaths);
+            CheckDefaultPath(searchResolutionsOrder);
 
-            foreach (var searchPath in _searchPaths)
+            foreach (var searchPath in searchPaths)
             {
-                foreach (string resolutionOrder in _searchResolutionsOrder)
+                foreach (string resolutionOrder in searchResolutionsOrder)
                 {
                     var path = Path.Combine(Path.Combine(RootDirectory, Path.Combine(searchPath, resolutionOrder)), realName);
 
@@ -439,19 +455,19 @@ namespace CocosSharp
 
         public List<string> SearchResolutionsOrder
         {
-            get { return _searchResolutionsOrder; }
+            get { return searchResolutionsOrder; }
 
-			internal set { _searchResolutionsOrder = value; }
+			internal set { searchResolutionsOrder = value; }
         }
 
         public List<string> SearchPaths
         {
-            get { return _searchPaths; }
+            get { return searchPaths; }
 
-			internal set { _searchPaths = value; }
+			internal set { searchPaths = value; }
         }
 
-        private void CheckDefaultPath(List<string> paths)
+        void CheckDefaultPath(List<string> paths)
         {
             for (int i = paths.Count - 1; i >= 0; i--)
             {
