@@ -1805,7 +1805,7 @@ namespace CocosSharp
             set
             {
                 Debug.Assert(value <= _data.Capacity);
-                _data.count = value;
+                _data.Count = value;
             }
         }
 
@@ -1955,7 +1955,7 @@ namespace CocosSharp
             set
             {
                 Debug.Assert(value <= _data.Capacity);
-                _data.count = value;
+                _data.Count = value;
             }
         }
 

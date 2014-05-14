@@ -384,10 +384,10 @@ namespace CocosSharp
                     TextureAtlas.RemoveQuadAtIndex(atlasIndex);
 
                     // update possible children
-                    if (Children != null && Children.count > 0)
+                    if (Children != null && Children.Count > 0)
                     {
                         CCNode[] elements = Children.Elements;
-                        int count = Children.count;
+                        int count = Children.Count;
 
                         for (int i = 0; i < count; i++)
                         {
@@ -514,10 +514,10 @@ namespace CocosSharp
             atlasIndexArray.Insert(indexForZ, z);
 
             // update possible children
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                int count = Children.count;
+                int count = Children.Count;
 
                 for (int i = 0; i < count; i++)
                 {

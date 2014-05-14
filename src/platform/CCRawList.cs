@@ -5,35 +5,90 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    ///<summary>
-    /// No-frills list that wraps an accessible array.
-    ///</summary>
-    ///<typeparam name="T">Type of elements contained by the list.</typeparam>
+    // No-frills list that wraps an accessible array.
     public class CCRawList<T> : IList<T>
     {
-        ///<summary>
-        /// Direct access to the elements owned by the raw list.
-        /// Be careful about the operations performed on this list;
-        /// use the normal access methods if in doubt.
-        ///</summary>
-        public T[] Elements;
+        int count;
 
-        public int count;
 
-        public bool UseArrayPool;
+		#region Properties
 
-        ///<summary>
-        /// Constructs an empty list.
-        ///</summary>
-#if WINDOWS_PHONE
-        public CCRawList() : this(false)
-        {
-        }
-        public CCRawList(bool useArrayPool)
-#else
-        public CCRawList(bool useArrayPool = false)
-#endif
-    {
+		// Direct access to the elements owned by the raw list.
+		// Be careful about the operations performed on this list;
+		// use the normal access methods if in doubt.
+		public T[] Elements { get; private set; }
+
+		public bool UseArrayPool { get; set; }
+
+		bool ICollection<T>.IsReadOnly
+		{
+			get { return false; }
+		}
+
+		public int Count
+		{
+			get { return count; }
+			set
+			{
+				if (Elements.Length < value)
+				{
+					Capacity = value;
+				}
+				count = value;
+			}
+		}
+
+		public int Capacity
+		{
+			get { return Elements.Length; }
+			set
+			{
+				T[] newArray;
+
+				if (UseArrayPool)
+				{
+					var capacity = 4;
+					while (capacity < value)
+					{
+						capacity *= 2;
+					}
+					newArray = ArrayPool<T>.Create(capacity);
+				}
+				else
+				{
+					newArray = new T[value];
+				}
+
+				if (Elements != null && count > 0)
+				{
+					Array.Copy(Elements, newArray, count);
+				}
+
+				if (UseArrayPool && Elements != null)
+				{
+					ArrayPool<T>.Free(Elements);
+				}
+
+				Elements = newArray;
+
+				Debug.Assert(Elements != null);
+			}
+		}
+
+		// Gets or sets the element of the list at the given index.
+		public T this[int index]
+		{
+			get { return Elements[index]; }
+			set { Elements[index] = value; }
+		}
+
+		#endregion Properties
+
+
+		#region Consturctors
+
+        public CCRawList(bool useArrayPool=false)
+	    {
             UseArrayPool = useArrayPool;
             
             if (useArrayPool)
@@ -48,20 +103,7 @@ namespace CocosSharp
             Debug.Assert(Elements != null);
         }
 
-        ///<summary>
-        /// Constructs an empty list.
-        ///</summary>
-        ///<param name="initialCapacity">Initial capacity to allocate for the list.</param>
-        ///<exception cref="ArgumentException">Thrown when the initial capacity is zero or negative.</exception>
-#if WINDOWS_PHONE
-        public CCRawList(int initialCapacity)
-            : this(initialCapacity, false)
-        {
-        }
-        public CCRawList(int initialCapacity, bool useArrayPool)
-#else
-        public CCRawList(int initialCapacity, bool useArrayPool = false)
-#endif
+        public CCRawList(int initialCapacity, bool useArrayPool=false)
         {
             UseArrayPool = useArrayPool;
 
@@ -71,105 +113,257 @@ namespace CocosSharp
             Capacity = initialCapacity;
         }
 
-        ///<summary>
-        /// Constructs a raw list from another list.
-        ///</summary>
-        ///<param name="elements">List to copy.</param>
-#if WINDOWS_PHONE
-        public CCRawList(IList<T> elements) : this(elements, false)
-        {
-        }
-        public CCRawList(IList<T> elements, bool useArrayPool)
-#else
-        public CCRawList(IList<T> elements, bool useArrayPool = false)
-#endif
+		public CCRawList(IList<T> elements, bool useArrayPool=false)
             : this(Math.Max(elements.Count, 4), useArrayPool)
         {
             elements.CopyTo(Elements, 0);
             count = elements.Count;
         }
 
-        ///<summary>
-        /// Gets or sets the current size allocated for the list.
-        ///</summary>
-        public int Capacity
-        {
-            get { return Elements.Length; }
-            set
-            {
-                T[] newArray;
-                
-                if (UseArrayPool)
-                {
-                    var capacity = 4;
-                    while (capacity < value)
-                    {
-                        capacity *= 2;
-                    }
-                    newArray = ArrayPool<T>.Create(capacity);
-                }
-                else
-                {
-                    newArray = new T[value];
-                }
+		#endregion Constructors
 
-                if (Elements != null && count > 0)
-                {
-                    Array.Copy(Elements, newArray, count);
-                }
 
-                if (UseArrayPool && Elements != null)
-                {
-                    ArrayPool<T>.Free(Elements);
-                }
+		public void CopyTo(T[] array, int arrayIndex)
+		{
+			Array.Copy(Elements, 0, array, arrayIndex, count);
+		}
 
-                Elements = newArray;
+		IEnumerator<T> IEnumerable<T>.GetEnumerator()
+		{
+			return new Enumerator(this);
+		}
 
-                Debug.Assert(Elements != null);
-            }
-        }
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return new Enumerator(this);
+		}
 
-        #region IList<T> Members
+		public Enumerator GetEnumerator()
+		{
+			return new Enumerator(this);
+		}
 
-        /// <summary>
-        /// Gets the number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        /// <returns>
-        /// The number of elements contained in the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </returns>
-        public int Count
-        {
-            get { return count; }
-            set
-            {
-                if (Elements.Length < value)
-                {
-                    Capacity = value;
-                }
-                count = value;
-            }
-        }
+		public T[] ToArray()
+		{
+			var toReturn = new T[count];
+			Array.Copy(Elements, toReturn, count);
+			return toReturn;
+		}
 
-        /// <summary>
-        /// Removes an element from the list.
-        /// </summary>
-        /// <param name="index">Index of the element to remove.</param>
-        public void RemoveAt(int index)
-        {
-            if (index >= count)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-            count--;
-            if (index < count)
-            {
-                Array.Copy(Elements, index + 1, Elements, index, count - index);
-            }
+		public void Sort(IComparer<T> comparer)
+		{
+			Array.Sort(Elements, 0, count, comparer);
+		}
 
-            Elements[count] = default(T);
-        }
+		public void PackToCount()
+		{
+			if (Elements != null && count < Elements.Length)
+			{
+				var newArray = new T[count];
+				Array.Copy(Elements, newArray, count);
+				if (UseArrayPool)
+				{
+					ArrayPool<T>.Free(Elements);
+				}
+				Elements = newArray;
+			}
+		}
 
-        public void RemoveAt(int index, int amount)
+		public void IncreaseCount(int size)
+		{
+			var newCount = count + size;
+			if (Elements.Length < newCount)
+			{
+				Capacity = newCount;
+			}
+			count = newCount;
+		}
+
+
+		#region Fetching
+
+		public void Reverse()
+		{
+			Array.Reverse(Elements, 0, count);
+		}
+
+		public T First()
+		{
+			return Elements[0];
+		}
+
+		public T Last()
+		{
+			return Elements[count - 1];
+		}
+
+		public T Pop()
+		{
+			return Elements[--count];
+		}
+
+		public T Peek()
+		{
+			return Elements[count - 1];
+		}
+
+		public void Push(T item)
+		{
+			if (count == Elements.Length)
+			{
+				Capacity = Elements.Length * 2;
+			}
+			Elements[count++] = item;
+		}
+
+		// Determines the index of a specific item
+		public int IndexOf(T item)
+		{
+			return Array.IndexOf(Elements, item, 0, count);
+		}
+
+		public bool Contains(T item)
+		{
+			return IndexOf(item) != -1;
+		}
+
+		#endregion Fetching
+
+
+		#region Adding and inserting 
+
+		public void Add(T item)
+		{
+			Add(ref item);
+		}
+
+		public void Add(ref T item)
+		{
+			if (count == Elements.Length)
+			{
+				Capacity = Elements.Length * 2;
+			}
+			Elements[count++] = item;
+		}
+
+		public void Insert(int index, T item)
+		{
+			if (index < count)
+			{
+				if (count == Elements.Length)
+				{
+					Capacity = Elements.Length * 2;
+				}
+
+				Array.Copy(Elements, index, Elements, index + 1, count - index);
+				Elements[index] = item;
+				count++;
+			}
+			else
+				Add(item);
+		}
+
+		// Inserts the element at the specified index without maintaining list order.
+		public void FastInsert(int index, T item)
+		{
+			if (index < count)
+			{
+				if (count == Elements.Length)
+				{
+					Capacity = Elements.Length * 2;
+				}
+
+				//Array.Copy(Elements, index, Elements, index + 1, count - index);
+				Elements[count] = Elements[index];
+				Elements[index] = item;
+				count++;
+			}
+			else
+				Add(item);
+		}
+
+		// Adds a range of elements to the list from another list.
+		public void AddRange(CCRawList<T> items)
+		{
+			int neededLength = count + items.count;
+			if (neededLength > Elements.Length)
+			{
+				int newLength = Elements.Length * 2;
+				if (newLength < neededLength)
+					newLength = neededLength;
+				Capacity = newLength;
+			}
+			Array.Copy(items.Elements, 0, Elements, count, items.count);
+			count = neededLength;
+		}
+
+		public void AddRange(CCRawList<T> items, int offset, int c)
+		{
+			int neededLength = count + c;
+			if (neededLength > Elements.Length)
+			{
+				int newLength = Elements.Length * 2;
+				if (newLength < neededLength)
+					newLength = neededLength;
+				Capacity = newLength;
+			}
+			Array.Copy(items.Elements, offset, Elements, count, c);
+			count = neededLength;
+		}
+
+		public void AddRange(List<T> items)
+		{
+			int neededLength = count + items.Count;
+			if (neededLength > Elements.Length)
+			{
+				int newLength = Elements.Length * 2;
+				if (newLength < neededLength)
+					newLength = neededLength;
+				Capacity = newLength;
+			}
+			items.CopyTo(0, Elements, count, items.Count);
+			count = neededLength;
+		}
+
+		public void AddRange(IList<T> items)
+		{
+			int neededLength = count + items.Count;
+			if (neededLength > Elements.Length)
+			{
+				int newLength = Elements.Length * 2;
+				if (newLength < neededLength)
+					newLength = neededLength;
+				Capacity = newLength;
+			}
+			items.CopyTo(Elements, 0);
+			count = neededLength;
+		}
+
+		#endregion Adding and inserting
+
+
+		#region Removing
+
+		public void Clear()
+		{
+			count = 0;
+		}
+
+		public void Free()
+		{
+			if (Elements != null && UseArrayPool)
+			{
+				ArrayPool<T>.Free(Elements);
+				Elements = null;
+			}
+		}
+
+		public void RemoveAt(int index)
+		{
+			RemoveAt(index, 1);
+		}
+
+		public void RemoveAt(int index, int amount)
         {
             if (index + amount > count)
             {
@@ -189,353 +383,53 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        /// <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
-        public void Add(T item)
-        {
-            if (count == Elements.Length)
-            {
-                Capacity = Elements.Length * 2;
-            }
-            Elements[count++] = item;
-        }
+		// Removes the first occurrence of a specific object
+		public bool Remove(T item)
+		{
+			int index = IndexOf(item);
+			if (index == -1)
+				return false;
+			RemoveAt(index);
+			return true;
+		}
 
-        public void Add(ref T item)
-        {
-            if (count == Elements.Length)
-            {
-                Capacity = Elements.Length * 2;
-            }
-            Elements[count++] = item;
-        }
+		// Removes an element from the list without maintaining order.
+		public void FastRemove(int index)
+		{
+			if (index >= count)
+			{
+				throw new ArgumentOutOfRangeException("index");
+			}
+			count--;
+			if (index < count)
+			{
+				Elements[index] = Elements[count];
+			}
+			Elements[count] = default(T);
+		}
 
-        /// <summary>
-        /// Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        /// <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only. </exception>
-        public void Clear()
-        {
-            //Array.Clear(Elements, 0, count);
-            count = 0;
-        }
+		// Removes the first occurrence of a specific object from the collection without maintaining element order.
+		public bool FastRemove(T item)
+		{
+			int index = IndexOf(item);
+			if (index == -1) {
+				return false;
+			}
+			FastRemove(index);
+			return true;
+		}
 
-        public void Free()
-        {
-            if (Elements != null && UseArrayPool)
-            {
-                ArrayPool<T>.Free(Elements);
-                Elements = null;
-            }
-        }
+		#endregion Removing
 
-        /// <summary>
-        /// Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </summary>
-        /// <returns>
-        /// true if <paramref name="item"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </returns>
-        /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
-        public bool Remove(T item)
-        {
-            int index = IndexOf(item);
-            if (index == -1)
-                return false;
-            RemoveAt(index);
-            return true;
-        }
 
-        /// <summary>
-        /// Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1"/>.
-        /// </summary>
-        /// <returns>
-        /// The index of <paramref name="item"/> if found in the list; otherwise, -1.
-        /// </returns>
-        /// <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1"/>.</param>
-        public int IndexOf(T item)
-        {
-            return Array.IndexOf(Elements, item, 0, count);
-        }
 
-        /// <summary>
-        /// Inserts the element at the specified index.
-        /// </summary>
-        /// <param name="index">Index to insert the item.</param>
-        /// <param name="item">Element to insert.</param>
-        public void Insert(int index, T item)
-        {
-            if (index < count)
-            {
-                if (count == Elements.Length)
-                {
-                    Capacity = Elements.Length * 2;
-                }
+		#region Raw list enumerator
 
-                Array.Copy(Elements, index, Elements, index + 1, count - index);
-                Elements[index] = item;
-                count++;
-            }
-            else
-                Add(item);
-        }
-
-        /// <summary>
-        /// Gets or sets the element of the list at the given index.
-        /// </summary>
-        /// <param name="index">Index in the list.</param>
-        /// <returns>Element at the given index.</returns>
-        public T this[int index]
-        {
-            get
-            {
-                //if (index < count && index >= 0)
-                    return Elements[index];
-                //throw new IndexOutOfRangeException("Index is outside of the list's bounds.");
-            }
-            set
-            {
-                //if (index < count && index >= 0)
-                    Elements[index] = value;
-                //else
-                //    throw new IndexOutOfRangeException("Index is outside of the list's bounds.");
-            }
-        }
-
-        /// <summary>
-        /// Determines if an item is present in the list.
-        /// </summary>
-        /// <param name="item">Item to be tested.</param>
-        /// <returns>Whether or not the item was contained by the list.</returns>
-        public bool Contains(T item)
-        {
-            return IndexOf(item) != -1;
-        }
-
-        /// <summary>
-        /// Copies the list's contents to the array.
-        /// </summary>
-        /// <param name="array">Array to receive the list's contents.</param>
-        /// <param name="arrayIndex">Index in the array to start the dump.</param>
-        public void CopyTo(T[] array, int arrayIndex)
-        {
-            Array.Copy(Elements, 0, array, arrayIndex, count);
-        }
-
-        bool ICollection<T>.IsReadOnly
-        {
-            get { return false; }
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
-
-        #endregion
-
-        /// <summary>
-        /// Removes an element from the list without maintaining order.
-        /// </summary>
-        /// <param name="index">Index of the element to remove.</param>
-        public void FastRemoveAt(int index)
-        {
-            if (index >= count)
-            {
-                throw new ArgumentOutOfRangeException("index");
-            }
-            count--;
-            if (index < count)
-            {
-                Elements[index] = Elements[count];
-            }
-            Elements[count] = default(T);
-        }
-
-        ///<summary>
-        /// Adds a range of elements to the list from another list.
-        ///</summary>
-        ///<param name="items">Elements to add.</param>
-        public void AddRange(CCRawList<T> items)
-        {
-            int neededLength = count + items.count;
-            if (neededLength > Elements.Length)
-            {
-                int newLength = Elements.Length * 2;
-                if (newLength < neededLength)
-                    newLength = neededLength;
-                Capacity = newLength;
-            }
-            Array.Copy(items.Elements, 0, Elements, count, items.count);
-            count = neededLength;
-        }
-
-        public void AddRange(CCRawList<T> items, int offset, int c)
-        {
-            int neededLength = count + c;
-            if (neededLength > Elements.Length)
-            {
-                int newLength = Elements.Length * 2;
-                if (newLength < neededLength)
-                    newLength = neededLength;
-                Capacity = newLength;
-            }
-            Array.Copy(items.Elements, offset, Elements, count, c);
-            count = neededLength;
-        }
-
-        ///<summary>
-        /// Adds a range of elements to the list from another list.
-        ///</summary>
-        ///<param name="items">Elements to add.</param>
-        public void AddRange(List<T> items)
-        {
-            int neededLength = count + items.Count;
-            if (neededLength > Elements.Length)
-            {
-                int newLength = Elements.Length * 2;
-                if (newLength < neededLength)
-                    newLength = neededLength;
-                Capacity = newLength;
-            }
-            items.CopyTo(0, Elements, count, items.Count);
-            count = neededLength;
-        }
-
-        ///<summary>
-        /// Adds a range of elements to the list from another list.
-        ///</summary>
-        ///<param name="items">Elements to add.</param>
-        public void AddRange(IList<T> items)
-        {
-            int neededLength = count + items.Count;
-            if (neededLength > Elements.Length)
-            {
-                int newLength = Elements.Length * 2;
-                if (newLength < neededLength)
-                    newLength = neededLength;
-                Capacity = newLength;
-            }
-            items.CopyTo(Elements, 0);
-            count = neededLength;
-        }
-
-        /// <summary>
-        /// Removes the first occurrence of a specific object from the collection without maintaining element order.
-        /// </summary>
-        /// <returns>
-        /// true if <paramref name="item"/> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1"/>; otherwise, false. This method also returns false if <paramref name="item"/> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1"/>.
-        /// </returns>
-        /// <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1"/>.</param><exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.ICollection`1"/> is read-only.</exception>
-        public bool FastRemove(T item)
-        {
-            int index = IndexOf(item);
-            if (index == -1)
-                return false;
-            FastRemoveAt(index);
-            return true;
-        }
-
-        /// <summary>
-        /// Copies the elements from the list into an array.
-        /// </summary>
-        /// <returns>An array containing the elements in the list.</returns>
-        public T[] ToArray()
-        {
-            var toReturn = new T[count];
-            Array.Copy(Elements, toReturn, count);
-            return toReturn;
-        }
-
-        /// <summary>
-        /// Inserts the element at the specified index without maintaining list order.
-        /// </summary>
-        /// <param name="index">Index to insert the item.</param>
-        /// <param name="item">Element to insert.</param>
-        public void FastInsert(int index, T item)
-        {
-            if (index < count)
-            {
-                if (count == Elements.Length)
-                {
-                    Capacity = Elements.Length * 2;
-                }
-
-                //Array.Copy(Elements, index, Elements, index + 1, count - index);
-                Elements[count] = Elements[index];
-                Elements[index] = item;
-                count++;
-            }
-            else
-                Add(item);
-        }
-
-        ///<summary>
-        /// Gets an enumerator for the list.
-        ///</summary>
-        ///<returns>Enumerator for the list.</returns>
-        public Enumerator GetEnumerator()
-        {
-            return new Enumerator(this);
-        }
-
-        ///<summary>
-        /// Sorts the list.
-        ///</summary>
-        ///<param name="comparer">Comparer to use to sort the list.</param>
-        public void Sort(IComparer<T> comparer)
-        {
-            Array.Sort(Elements, 0, count, comparer);
-        }
-
-        public void Reverse()
-        {
-            Array.Reverse(Elements, 0, count);
-        }
-
-        public T First()
-        {
-            return Elements[0];
-        }
-
-        public T Last()
-        {
-            return Elements[count - 1];
-        }
-
-        public T Pop()
-        {
-            return Elements[--count];
-        }
-
-        public T Peek()
-        {
-            return Elements[count - 1];
-        }
-
-        public void Push(T item)
-        {
-            if (count == Elements.Length)
-            {
-                Capacity = Elements.Length * 2;
-            }
-            Elements[count++] = item;
-        }
-        
-        #region Nested type: Enumerator
-
-        ///<summary>
-        /// Enumerator for the RawList.
-        ///</summary>
+		// Enumerator for the RawList.
         public struct Enumerator : IEnumerator<T>
         {
-            private readonly CCRawList<T> _list;
-            private int _index;
+            readonly CCRawList<T> list;
+            int index;
 
             ///<summary>
             /// Constructs a new enumerator.
@@ -543,15 +437,15 @@ namespace CocosSharp
             ///<param name="list"></param>
             public Enumerator(CCRawList<T> list)
             {
-                _index = -1;
-                _list = list;
+				index = -1;
+				this.list = list;
             }
 
             #region IEnumerator<T> Members
 
             public T Current
             {
-                get { return _list.Elements[_index]; }
+				get { return list.Elements[index]; }
             }
 
             public void Dispose()
@@ -560,17 +454,17 @@ namespace CocosSharp
 
             object IEnumerator.Current
             {
-                get { return _list.Elements[_index]; }
+				get { return list.Elements[index]; }
             }
 
             public bool MoveNext()
             {
-                return ++_index < _list.count;
+				return ++index < list.count;
             }
 
             public void Reset()
             {
-                _index = -1;
+				index = -1;
             }
 
             #endregion
@@ -631,30 +525,6 @@ namespace CocosSharp
             }
         }
 
-        #endregion
-
-        public void PackToCount()
-        {
-            if (Elements != null && count < Elements.Length)
-            {
-                var newArray = new T[count];
-                Array.Copy(Elements, newArray, count);
-                if (UseArrayPool)
-                {
-                    ArrayPool<T>.Free(Elements);
-                }
-                Elements = newArray;
-            }
-        }
-
-        public void IncreaseCount(int size)
-        {
-            var newCount = count + size;
-            if (Elements.Length < newCount)
-            {
-                Capacity = newCount;
-            }
-            count = newCount;
-        }
+		#endregion Raw list enumerator
     }
 }

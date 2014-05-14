@@ -411,7 +411,7 @@ namespace CocosSharp
 
         public int ChildrenCount
         {
-            get { return Children == null ? 0 : Children.count; }
+			get { return Children == null ? 0 : Children.Count; }
         }
 
         public CCCamera Camera
@@ -652,10 +652,10 @@ namespace CocosSharp
 			UserData = null;
 			UserObject = null;
 
-			if (Children != null && Children.count > 0)
+			if (Children != null && Children.Count > 0)
 			{
 				CCNode[] elements = Children.Elements;
-				for (int i = 0, count = Children.count; i < count; i++)
+				for (int i = 0, count = Children.Count; i < count; i++)
 				{
 					if (elements [i] != null) 
 					{
@@ -671,10 +671,10 @@ namespace CocosSharp
         protected virtual void ResetCleanState()
         {
             isCleaned = false;
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].ResetCleanState();
                 }
@@ -699,10 +699,10 @@ namespace CocosSharp
 			if (EventDispatcher != null)
 				EventDispatcher.RemoveEventListeners (this);
 
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].Cleanup();
                 }
@@ -726,7 +726,7 @@ namespace CocosSharp
 
             if (childrenByTag != null && childrenByTag.Count > 0)
             {
-                Debug.Assert(Children != null && Children.count > 0);
+                Debug.Assert(Children != null && Children.Count > 0);
 
                 List<CCNode> list;
                 if (childrenByTag.TryGetValue(tag, out list))
@@ -885,7 +885,7 @@ namespace CocosSharp
                 }
                 
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     CCNode node = elements[i];
 
@@ -1010,7 +1010,7 @@ namespace CocosSharp
         {
             if (IsReorderChildDirty)
             {
-                Array.Sort(Children.Elements, 0, Children.count, this);
+                Array.Sort(Children.Elements, 0, Children.Count, this);
                 IsReorderChildDirty = false;
             }
         }
@@ -1051,12 +1051,12 @@ namespace CocosSharp
 
             int i = 0;
 
-            if ((Children != null) && (Children.count > 0))
+            if ((Children != null) && (Children.Count > 0))
             {
                 SortAllChildren();
 
                 CCNode[] elements = Children.Elements;
-                int count = Children.count;
+                int count = Children.Count;
 
                 // draw children zOrder < 0
                 for (; i < count; ++i)
@@ -1137,10 +1137,10 @@ namespace CocosSharp
         public virtual void OnEnter()
         {
 
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].OnEnter();
                 }
@@ -1168,10 +1168,10 @@ namespace CocosSharp
 
         public virtual void OnEnterTransitionDidFinish()
         {
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].OnEnterTransitionDidFinish();
                 }
@@ -1180,10 +1180,10 @@ namespace CocosSharp
 
         public virtual void OnExitTransitionDidStart()
         {
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].OnExitTransitionDidStart();
                 }
@@ -1211,10 +1211,10 @@ namespace CocosSharp
             }
             */
 
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].OnExit();
                 }
@@ -1492,10 +1492,10 @@ namespace CocosSharp
         protected virtual void SetWorldTransformIsDirty()
         {
             isWorldTransformDirty = true;
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].SetWorldTransformIsDirty();
                 }
@@ -1505,10 +1505,10 @@ namespace CocosSharp
         public virtual void UpdateTransform()
         {
             // Recursively iterate over children
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].UpdateTransform();
                 }

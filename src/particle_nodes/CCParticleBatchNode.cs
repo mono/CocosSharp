@@ -108,7 +108,7 @@ namespace CocosSharp
         {
             int index = 0;
 
-            for (int i = 0; i < Children.count; i++)
+            for (int i = 0; i < Children.Count; i++)
             {
                 var child = (CCParticleSystem) Children.Elements[i];
                 child.AtlasIndex = index;
@@ -247,7 +247,7 @@ namespace CocosSharp
 
                     // Find new AtlasIndex
                     int newAtlasIndex = 0;
-                    for (int i = 0; i < Children.count; i++)
+                    for (int i = 0; i < Children.Count; i++)
                     {
                         var node = (CCParticleSystem) Children.Elements[i];
                         if (node == pChild)
@@ -341,7 +341,7 @@ namespace CocosSharp
         /// <returns></returns>
         int SearchNewPositionInChildrenForZ(int z)
         {
-            int count = Children.count;
+            int count = Children.Count;
             if (count > BinarySearchTrigger)
             {
                 return (BinarySearchNewPositionInChildrenForZ(0, count, z));
@@ -359,7 +359,7 @@ namespace CocosSharp
         /// <returns>The index on [start,end)</returns>
         int SearchNewPositionInChildrenForZ(int start, int end, int z)
         {
-            int count = Children.count;
+            int count = Children.Count;
 
             for (int i = 0; i < count; i++)
             {
@@ -407,7 +407,7 @@ namespace CocosSharp
 
         public override void RemoveAllChildrenWithCleanup(bool doCleanup)
         {
-            for (int i = 0; i < Children.count; i++)
+            for (int i = 0; i < Children.Count; i++)
             {
                 ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }

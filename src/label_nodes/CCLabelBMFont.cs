@@ -228,9 +228,9 @@ namespace CocosSharp
             set
             {
                 isColorModifiedByOpacity = value;
-                if (Children != null && Children.count > 0)
+                if (Children != null && Children.Count > 0)
                 {
-                    for (int i = 0, count = Children.count; i < count; i++)
+                    for (int i = 0, count = Children.Count; i < count; i++)
                     {
                         var item = Children.Elements[i] as ICCColor;
                         if (item != null)
@@ -407,7 +407,7 @@ namespace CocosSharp
 
             if (Children != null)
             {
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
                 }
@@ -420,7 +420,7 @@ namespace CocosSharp
 
             if (Children != null)
             {
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
                 }
@@ -623,10 +623,10 @@ namespace CocosSharp
 
         private void UpdateString(bool needUpdateLabel)
         {
-            if (Children != null && Children.count != 0)
+            if (Children != null && Children.Count != 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     elements[i].Visible = false;
                 }
@@ -663,7 +663,7 @@ namespace CocosSharp
                 int skip = 0;
 
 				CCRawList<CCNode> children = Children;
-                for (int j = 0; j < children.count; j++)
+                for (int j = 0; j < children.Count; j++)
                 {
                     CCSprite characterSprite;
                     int justSkipped = 0;

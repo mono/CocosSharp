@@ -781,14 +781,14 @@ namespace CocosSharp
                 CCNode[] elements = Children.Elements;
                 if (batchNode != null)
                 {
-                    for (int i = 0, count = Children.count; i < count; i++)
+                    for (int i = 0, count = Children.Count; i < count; i++)
                     {
                         ((CCSprite)elements[i]).UpdateTransform();
                     }
                 }
                 else
                 {
-                    for (int i = 0, count = Children.count; i < count; i++)
+                    for (int i = 0, count = Children.Count; i < count; i++)
                     {
                         var sprite = elements[i] as CCSprite;
                         if (sprite != null)
@@ -860,7 +860,7 @@ namespace CocosSharp
             {
                 CCSpriteBatchNode batch = batchNode;
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     batch.RemoveSpriteFromAtlas((CCSprite)elements[i]);
                 }
@@ -876,7 +876,7 @@ namespace CocosSharp
             if (IsReorderChildDirty)
             {
                 var elements = Children.Elements;
-                int count = Children.count;
+                int count = Children.Count;
 
                 Array.Sort(elements, 0, count, this);
 
@@ -915,7 +915,7 @@ namespace CocosSharp
             if (hasChildren)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     var sprite = elements[i] as CCSprite;
                     if (sprite != null)

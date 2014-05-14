@@ -447,9 +447,9 @@ namespace CocosSharp
 
             var pChildren = _container.Children;
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
-                for (int i = 0; i < pChildren.count; i++)
+                for (int i = 0; i < pChildren.Count; i++)
                 {
                     pChildren.Elements[i].Pause();
                 }
@@ -464,9 +464,9 @@ namespace CocosSharp
         {
             var pChildren = _container.Children;
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
-                for (int i = 0; i < pChildren.count; i++)
+                for (int i = 0; i < pChildren.Count; i++)
                 {
                     pChildren.Elements[i].Resume();
                 }

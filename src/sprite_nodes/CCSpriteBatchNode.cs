@@ -120,10 +120,10 @@ namespace CocosSharp
                 return;
             }
 
-            if (Children != null && Children.count > 0)
+            if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.count; i < count; i++)
+                for (int i = 0, count = Children.Count; i < count; i++)
                 {
                     ((CCSprite) elements[i]).UpdateTransform();
                 }
@@ -189,7 +189,7 @@ namespace CocosSharp
             // Invalidate atlas index. issue #569
             // useSelfRender should be performed on all descendants. issue #1216
             CCSprite[] elements = Descendants.Elements;
-            for (int i = 0, count = Descendants.count; i < count; i++)
+            for (int i = 0, count = Descendants.Count; i < count; i++)
             {
                 elements[i].BatchNode = null;
             }
@@ -204,7 +204,7 @@ namespace CocosSharp
         {
             if (IsReorderChildDirty)
             {
-                int count = Children.count;
+                int count = Children.Count;
                 CCNode[] elements = Children.Elements;
 
                 Array.Sort(elements, 0, count, this);
@@ -249,7 +249,7 @@ namespace CocosSharp
 
             // update indices
             CCSprite[] delements = Descendants.Elements;
-            for (int i = uIndex + 1, count = Descendants.count; i < count; i++)
+            for (int i = uIndex + 1, count = Descendants.Count; i < count; i++)
             {
                 delements[i].AtlasIndex++;
             }
@@ -257,10 +257,10 @@ namespace CocosSharp
             // add children recursively
             CCRawList<CCNode> pChildren = pobSprite.Children;
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
                 CCNode[] elements = pChildren.Elements;
-                for (int j = 0, count = pChildren.count; j < count; j++)
+                for (int j = 0, count = pChildren.Count; j < count; j++)
                 {
                     var pChild = (CCSprite) elements[j];
                     uIndex = AtlasIndexForChild(pChild, pChild.ZOrder);
@@ -291,10 +291,10 @@ namespace CocosSharp
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;
-            if (children != null && children.count > 0)
+            if (children != null && children.Count > 0)
             {
                 CCNode[] elements = children.Elements;
-                int count = children.count;
+                int count = children.Count;
                 for (int i = 0; i < count; i++)
                 {
                     AppendChild((CCSprite) elements[i]);
@@ -423,10 +423,10 @@ namespace CocosSharp
         {
             CCRawList<CCNode> pChildren = pobParent.Children;
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
                 CCNode[] elements = pChildren.Elements;
-                for (int i = 0, count = pChildren.count; i < count; i++)
+                for (int i = 0, count = pChildren.Count; i < count; i++)
                 {
                     if (elements[i].ZOrder < 0)
                     {
@@ -442,10 +442,10 @@ namespace CocosSharp
                 uIndex++;
             }
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
                 CCNode[] elements = pChildren.Elements;
-                for (int i = 0, count = pChildren.count; i < count; i++)
+                for (int i = 0, count = pChildren.Count; i < count; i++)
                 {
                     if (elements[i].ZOrder >= 0)
                     {
@@ -461,13 +461,13 @@ namespace CocosSharp
         {
             CCRawList<CCNode> pChildren = pSprite.Children;
 
-            if (pChildren == null || pChildren.count == 0)
+            if (pChildren == null || pChildren.Count == 0)
             {
                 return pSprite.AtlasIndex;
             }
             else
             {
-                return HighestAtlasIndexInChild((CCSprite) pChildren.Elements[pChildren.count - 1]);
+                return HighestAtlasIndexInChild((CCSprite) pChildren.Elements[pChildren.Count - 1]);
             }
         }
 
@@ -475,7 +475,7 @@ namespace CocosSharp
         {
             CCRawList<CCNode> pChildren = pSprite.Children;
 
-            if (pChildren == null || pChildren.count == 0)
+            if (pChildren == null || pChildren.Count == 0)
             {
                 return pSprite.AtlasIndex;
             }
@@ -558,7 +558,7 @@ namespace CocosSharp
                 Descendants.RemoveAt(uIndex);
 
                 // update all sprites beyond this one
-                int count = Descendants.count;
+                int count = Descendants.Count;
                 CCSprite[] elements = Descendants.Elements;
 
                 for (; uIndex < count; ++uIndex)
@@ -570,10 +570,10 @@ namespace CocosSharp
             // remove children recursively
             CCRawList<CCNode> pChildren = pobSprite.Children;
 
-            if (pChildren != null && pChildren.count > 0)
+            if (pChildren != null && pChildren.Count > 0)
             {
                 CCNode[] elements = pChildren.Elements;
-                for (int i = 0, count = pChildren.count; i < count; i++)
+                for (int i = 0, count = pChildren.Count; i < count; i++)
                 {
                     RemoveSpriteFromAtlas((CCSprite) elements[i]);
                 }
@@ -642,10 +642,10 @@ namespace CocosSharp
             // XXX: optimize with a binary search
             int i = 0;
 
-            if (Descendants.count > 0)
+            if (Descendants.Count > 0)
             {
                 CCSprite[] elements = Descendants.Elements;
-                for (int j = 0, count = Descendants.count; j < count; j++)
+                for (int j = 0, count = Descendants.Count; j < count; j++)
                 {
                     if (elements[i].AtlasIndex >= z)
                     {
