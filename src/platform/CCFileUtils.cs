@@ -37,11 +37,11 @@ namespace CocosSharp
     /// </summary>
     public class CCFileUtils
     {
-		private static bool PopupNotify = true;
+		static bool PopupNotify = true;
 
-        /// <summary>
-        /// Set/Get whether pop-up a message box when the image load failed
-        /// </summary>
+		#region Properties
+
+        // Set/Get whether pop-up a message box when the image load failed
         public static bool IsPopupNotify
         {
             get
@@ -53,6 +53,9 @@ namespace CocosSharp
                 PopupNotify = value;
             }
         }
+
+		#endregion Properties
+
 
         public static Stream GetFileStream(string fileName)
         {
