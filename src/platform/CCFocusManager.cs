@@ -9,45 +9,72 @@ namespace CocosSharp
 
     public class CCFocusManager
     {
-        public event CCFocusChangeDelegate OnFocusChanged;
+		// Scrolling focus delay used to slow down automatic focus changes when the dpad is held.
+		public static float MenuScrollDelay = 50f;
 
-        /// <summary>
-        /// The list of nodes that can receive focus
-        /// </summary>
-        private LinkedList<ICCFocusable> _FocusList = new LinkedList<ICCFocusable>();
-        /// <summary>
-        /// The current node with focus
-        /// </summary>
-        private LinkedListNode<ICCFocusable> _Current = null;
+		static CCFocusManager instance = new CCFocusManager();
 
-        /// <summary>
-        /// Removes the given focusable node
-        /// </summary>
-        /// <param name="f"></param>
+		public event CCFocusChangeDelegate OnFocusChanged;
+
+		bool scrollingPrevious = false;
+		bool scrollingNext = false;
+		long timeOfLastFocus = 0L;
+
+		LinkedList<ICCFocusable> focusList = new LinkedList<ICCFocusable>();
+		LinkedListNode<ICCFocusable> current = null;
+
+
+		#region Properties
+
+		public static CCFocusManager Instance
+		{
+			get { return instance; }
+		}
+
+		// When false, the focus will not traverse on the keyboard or dpad events.
+		public bool Enabled { get; set; }
+
+		// Returns the item with the current focus. This test will create a copy 
+		// of the master item list.
+		public ICCFocusable ItemWithFocus
+		{
+			get { return (current != null ? current.Value : null); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		private CCFocusManager()
+		{
+		}
+
+		#endregion Constructors
+
+
+        // Removes the given focusable node
         public void Remove(params ICCFocusable[] focusItems)
         {
             foreach (ICCFocusable f in focusItems) 
             {
-                _FocusList.Remove(f);
+                focusList.Remove(f);
             }
         }
 
-        /// <summary>
-        /// Adds the given node to the list of focus nodes. If the node has the focus, then it is
-        /// given the current focused item status. If there is already a focused item and the
-        /// given node has focus, the focus is disabled.
-        /// </summary>
-        /// <param name="f"></param>
+        // Adds the given node to the list of focus nodes. If the node has the focus, then it is
+        // given the current focused item status. If there is already a focused item and the
+        // given node has focus, the focus is disabled.
         public void Add(params ICCFocusable[] focusItems)
         {
             foreach (ICCFocusable f in focusItems) 
             {
-                LinkedListNode<ICCFocusable> i = _FocusList.AddLast(f);
+                LinkedListNode<ICCFocusable> i = focusList.AddLast(f);
                 if (f.HasFocus) 
                 {
-                    if (_Current == null) 
+                    if (current == null) 
                     {
-                        _Current = i;
+                        current = i;
                     } 
                     else 
                     {
@@ -57,35 +84,24 @@ namespace CocosSharp
             }
         }
 
-        /// <summary>
-        /// When false, the focus will not traverse on the keyboard or dpad events.
-        /// </summary>
-        public bool Enabled
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Scroll to the next item in the focus list.
-        /// </summary>
+        // Scroll to the next item in the focus list.
         public void FocusNextItem()
         {
-            if (_Current == null && _FocusList.Count > 0)
+            if (current == null && focusList.Count > 0)
             {
-                _Current = _FocusList.First;
-                _Current.Value.HasFocus = true;
+                current = focusList.First;
+                current.Value.HasFocus = true;
                 if (OnFocusChanged != null)
                 {
-                    OnFocusChanged(null, _Current.Value);
+                    OnFocusChanged(null, current.Value);
                 }
             }
-            else if (_Current != null)
+            else if (current != null)
             {
-                ICCFocusable lostItem = _Current.Value;
+                ICCFocusable lostItem = current.Value;
                 // Search for the next node.
                 LinkedListNode<ICCFocusable> nextItem = null;
-                for (LinkedListNode<ICCFocusable> p = _Current.Next; p != null; p = p.Next)
+                for (LinkedListNode<ICCFocusable> p = current.Next; p != null; p = p.Next)
                 {
                     if (p.Value.CanReceiveFocus)
                     {
@@ -94,100 +110,71 @@ namespace CocosSharp
                 }
                 if (nextItem != null)
                 {
-                    _Current = nextItem;
+                    current = nextItem;
                 }
                 else
                 {
-                    _Current = _FocusList.First;
+                    current = focusList.First;
                 }
                 lostItem.HasFocus = false;
-                _Current.Value.HasFocus = true;
+                current.Value.HasFocus = true;
                 if (OnFocusChanged != null)
                 {
-                    OnFocusChanged(lostItem, _Current.Value);
+                    OnFocusChanged(lostItem, current.Value);
                 }
             }
             else
             {
-                _Current = null;
+                current = null;
             }
         }
-
-        /// <summary>
-        /// Scroll to the previous item in the focus list.
-        /// </summary>
+			
+        // Scroll to the previous item in the focus list.
         public void FocusPreviousItem()
         {
-            if (ItemWithFocus == null && _FocusList.Count > 0)
+            if (ItemWithFocus == null && focusList.Count > 0)
             {
-                _Current = _FocusList.Last;
-                _Current.Value.HasFocus = true;
+                current = focusList.Last;
+                current.Value.HasFocus = true;
                 if (OnFocusChanged != null)
                 {
-                    OnFocusChanged(null, _Current.Value);
+                    OnFocusChanged(null, current.Value);
                 }
             }
-            else if (_Current != null)
+            else if (current != null)
             {
-                ICCFocusable lostItem = _Current.Value;
+                ICCFocusable lostItem = current.Value;
                 LinkedListNode<ICCFocusable> nextItem = null;
-                for (LinkedListNode<ICCFocusable> p = _Current.Previous; p != null; p = p.Previous)
+                for (LinkedListNode<ICCFocusable> p = current.Previous; p != null; p = p.Previous)
                 {
                     if (p.Value.CanReceiveFocus)
                     {
                         nextItem = p;
                     }
                 }
-                if (_Current.Previous != null)
+                if (current.Previous != null)
                 {
-                    _Current = _Current.Previous;
+                    current = current.Previous;
                 }
                 else
                 {
-                    _Current = _FocusList.Last;
+                    current = focusList.Last;
                 }
                 lostItem.HasFocus = false;
-                _Current.Value.HasFocus = true;
+                current.Value.HasFocus = true;
                 if (OnFocusChanged != null)
                 {
-                    OnFocusChanged(lostItem, _Current.Value);
+                    OnFocusChanged(lostItem, current.Value);
                 }
             }
             else
             {
-                _Current = null;
+                current = null;
             }
         }
 
-        /// <summary>
-        /// Returns the item with the current focus. This test will create a copy 
-        /// of the master item list.
-        /// </summary>
-        public ICCFocusable ItemWithFocus
-        {
-            get
-            {
-                return (_Current != null ? _Current.Value : null);
-            }
-        }
-
-
-        private long m_lTimeOfLastFocus = 0L;
-        private bool m_bScrollingPrevious = false;
-        private bool m_bScrollingNext = false;
-        /// <summary>
-        /// Scrolling focus delay used to slow down automatic focus changes when the dpad is held.
-        /// </summary>
-        public static float MenuScrollDelay = 50f;
-
-        #region Singleton
-
-        private CCFocusManager()
-        {
-			//CCApplication.SharedApplication.GamePadDPadUpdate += new CCGamePadDPadDelegate(SharedApplication_GamePadDPadUpdate);
-        }
-
-        private void SharedApplication_GamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
+        void SharedApplication_GamePadDPadUpdate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, 
+			CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player)
         {
             if (!Enabled)
             {
@@ -195,15 +182,15 @@ namespace CocosSharp
             }
             if (leftButton == CCGamePadButtonStatus.Released || upButton == CCGamePadButtonStatus.Released || rightButton == CCGamePadButtonStatus.Released || downButton == CCGamePadButtonStatus.Released)
             {
-                m_bScrollingPrevious = false;
-                m_lTimeOfLastFocus = 0L;
+                scrollingPrevious = false;
+                timeOfLastFocus = 0L;
             }
             // Left and right d-pad shuffle through the menus
             else if (leftButton == CCGamePadButtonStatus.Pressed || upButton == CCGamePadButtonStatus.Pressed)
             {
-                if (m_bScrollingPrevious)
+                if (scrollingPrevious)
                 {
-                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - m_lTimeOfLastFocus);
+                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - timeOfLastFocus);
                     if (ts.TotalMilliseconds > MenuScrollDelay)
                     {
                         FocusPreviousItem();
@@ -211,15 +198,15 @@ namespace CocosSharp
                 }
                 else
                 {
-                    m_bScrollingPrevious = true;
-                    m_lTimeOfLastFocus = DateTime.Now.Ticks;
+                    scrollingPrevious = true;
+                    timeOfLastFocus = DateTime.Now.Ticks;
                 }
             }
             else if (rightButton == CCGamePadButtonStatus.Pressed || downButton == CCGamePadButtonStatus.Pressed)
             {
-                if (m_bScrollingNext)
+                if (scrollingNext)
                 {
-                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - m_lTimeOfLastFocus);
+                    TimeSpan ts = new TimeSpan(DateTime.Now.Ticks - timeOfLastFocus);
                     if (ts.TotalMilliseconds > MenuScrollDelay)
                     {
                         FocusNextItem();
@@ -227,21 +214,11 @@ namespace CocosSharp
                 }
                 else
                 {
-                    m_bScrollingNext = true;
-                    m_lTimeOfLastFocus = DateTime.Now.Ticks;
+                    scrollingNext = true;
+                    timeOfLastFocus = DateTime.Now.Ticks;
                 }
             }
         }
 
-        private static CCFocusManager _Instance = new CCFocusManager();
-
-        public static CCFocusManager Instance
-        {
-            get
-            {
-                return (_Instance);
-            }
-        }
-        #endregion
     }
 }
