@@ -7,21 +7,21 @@ namespace CocosSharp
 	 */
 	public class CCTableViewCell: CCNode, ICCSortableObject
 	{
-        int _idx;
+        int idx;
 
         /**
          * The index used internally by SWTableView and its subclasses
          */
-        public int Index 
+		public int Index
         {
-            get { return _idx; }
-            set { _idx = value; }
+			get { return idx; }
+			set { idx = value; }
         }
 
         public int ObjectID
         {
-            set { _idx = value; }
-            get { return _idx; }
+			set { idx = value; }
+			get { return idx; }
         }
 
 
@@ -37,7 +37,7 @@ namespace CocosSharp
 		 */
 		public void Reset()
 		{
-			_idx = CCArrayForObjectSorting.CC_INVALID_INDEX;
+			idx = CCArrayForObjectSorting.CC_INVALID_INDEX;
 		}
 	}
 }
