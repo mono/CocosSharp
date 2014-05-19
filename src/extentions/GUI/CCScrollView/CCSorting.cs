@@ -5,26 +5,16 @@ namespace CocosSharp
 {
     public interface ICCSortableObject
     {
-        int ObjectID { set; get; }
+		int ObjectID { get; set; }
     }
 
     internal class CCSortedObject : ICCSortableObject
     {
-        private int objectID;
+		public virtual int ObjectID { get; set; }
 
-        #region CCSortableObject Members
-
-        public virtual int ObjectID
-        {
-            set { objectID = value; }
-            get { return objectID; }
-        }
-
-        #endregion
 
         public CCSortedObject()
         {
-            objectID = 0;
         }
     };
 
@@ -104,7 +94,6 @@ namespace CocosSharp
             if (idx < Count && idx != CC_INVALID_INDEX)
             {
                 foundObj = (ICCSortableObject) (this[idx]);
-                var pObj = (object) foundObj;
 
                 if (foundObj.ObjectID == obj.ObjectID)
                 {
@@ -145,19 +134,6 @@ namespace CocosSharp
 
             return foundObj;
         }
-
-        /*!
-		 * Returns an object with given key and value.
-		 * 
-		 * Returns an object with given key and value. If no object is found,
-		 * it returns nil.
-		 *
-		 * @param value to locate object
-		 * @return object found or nil.
-		 */
-        //public CCSortableObject getObjectWithObjectID(int tag)
-        //{
-        //}
 
         /*!
 		 * Returns an index of the object with given key and value.
