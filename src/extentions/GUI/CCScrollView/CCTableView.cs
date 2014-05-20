@@ -345,19 +345,19 @@ namespace CocosSharp
                 switch (Direction)
                 {
                     case CCScrollViewDirection.Horizontal:
-                        size = new CCSize(maxPosition, _viewSize.Height);
+                        size = new CCSize(maxPosition, ViewSize.Height);
                         break;
                     default:
-                        size = new CCSize(_viewSize.Width, maxPosition);
+                        size = new CCSize(ViewSize.Width, maxPosition);
                         break;
                 }
             }
 
             ContentSize = size;
 
-            if (_oldDirection != _direction)
+            if (_oldDirection != Direction)
             {
-                if (_direction == CCScrollViewDirection.Horizontal)
+                if (Direction == CCScrollViewDirection.Horizontal)
                 {
                     SetContentOffset(CCPoint.Zero);
                 }
@@ -365,7 +365,7 @@ namespace CocosSharp
                 {
                     SetContentOffset(new CCPoint(0, MinContainerOffset.Y));
                 }
-                _oldDirection = _direction;
+                _oldDirection = Direction;
             }
         }
 
@@ -530,12 +530,12 @@ namespace CocosSharp
             }
 
             int startIdx = 0, endIdx = 0, idx = 0, maxIdx = 0;
-            CCPoint offset = GetContentOffset() * -1;
+            CCPoint offset = ContentOffset * -1;
             maxIdx = Math.Max(uCountOfItems - 1, 0);
 
             if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.Y = offset.Y + _viewSize.Height / Container.ScaleY;
+                offset.Y = offset.Y + ViewSize.Height / Container.ScaleY;
             }
             startIdx = _indexFromOffset(offset);
             if (startIdx == CCArrayForObjectSorting.CC_INVALID_INDEX)
@@ -545,13 +545,13 @@ namespace CocosSharp
 
             if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
-                offset.Y -= _viewSize.Height / Container.ScaleY;
+                offset.Y -= ViewSize.Height / Container.ScaleY;
             }
             else
             {
-                offset.Y += _viewSize.Height / Container.ScaleY;
+                offset.Y += ViewSize.Height / Container.ScaleY;
             }
-            offset.X += _viewSize.Width / Container.ScaleX;
+            offset.X += ViewSize.Width / Container.ScaleX;
 
             endIdx = _indexFromOffset(offset);
             if (endIdx == CCArrayForObjectSorting.CC_INVALID_INDEX)

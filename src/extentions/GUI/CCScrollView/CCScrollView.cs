@@ -3,13 +3,18 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public enum CCScrollViewDirection
+	#region Enums
+
+	public enum CCScrollViewDirection
     {
         None = -1,
         Horizontal = 0,
         Vertical,
         Both
     }
+
+	#endregion Enums
+
 
     public interface ICCScrollViewDelegate
     {
@@ -24,74 +29,55 @@ namespace CocosSharp
 
     public class CCScrollView : CCLayer
     {
-        private const float SCROLL_DEACCEL_RATE = 0.95f;
-        private const float SCROLL_DEACCEL_DIST = 1.0f;
-        private const float BOUNCE_DURATION = 0.15f;
-        private const float INSET_RATIO = 0.2f;
-        private const float MOVE_INCH = 7.0f / 160.0f;
+        const float SCROLL_DEACCEL_RATE = 0.95f;
+        const float SCROLL_DEACCEL_DIST = 1.0f;
+        const float BOUNCE_DURATION = 0.15f;
+        const float INSET_RATIO = 0.2f;
+        const float MOVE_INCH = 7.0f / 160.0f;
 
-        protected bool _bounceable;
+        bool clippingToBounds;
+		bool isTouchEnabled;
+		float touchLength;
 
-        protected bool _clippingToBounds;
-        protected bool _dragging;
-        protected bool _touchMoved;
-        protected CCScrollViewDirection _direction = CCScrollViewDirection.Both;
-        protected CCPoint _maxInset;
-        protected float _maxScale;
-        protected CCPoint _minInset;
-        protected float _minScale;
-        protected float _touchLength;
-        protected CCNode _container;
-        protected ICCScrollViewDelegate _delegate;
-        protected List<CCTouch> _touches;
-        protected CCPoint _contentOffset;
-        protected CCPoint _scrollDistance;
+		float minScale;
+        float maxScale;
+        CCPoint minInset;
+		CCPoint maxInset;
 
-        //Touch point
-        protected CCPoint _touchPoint;
-        protected CCSize _viewSize;
+		List<CCTouch> touches;
+		CCPoint scrollDistance;
 
-		private bool isTouchEnabled;
-		private CCEventListener TouchListener;
+		CCPoint touchPoint;
+		CCSize viewSize;
 
-        public float MinScale
-        {
-            get { return _minScale; }
-            set
-            {
-                _minScale = value;
-                ZoomScale = ZoomScale;
-            }
-        }
+		CCNode container;
 
-        public float MaxScale
-        {
-            get { return _maxScale; }
-            set
-            {
-                _maxScale = value;
-                ZoomScale = ZoomScale;
-            }
-        }
+		CCEventListener TouchListener;
 
-        public override CCSize ContentSize
-        {
-            get { return _container.ContentSize; }
-            set
-            {
-                if (Container != null)
-                {
-                    Container.ContentSize = value;
-                    UpdateInset();
-                }
-            }
-        }
 
-        public bool TouchEnabled
-        {
+		#region Properties
+
+		public bool Bounceable { get ; set; }
+		public bool Dragging { get; private set; }
+		public bool IsTouchMoved { get; private set; }
+		public CCScrollViewDirection Direction { get; set; }
+		public ICCScrollViewDelegate Delegate { get; set; }
+
+		public bool ClippingToBounds
+		{
+			get { return clippingToBounds; }
+			set 
+			{ 
+				clippingToBounds = value; 
+				ChildClippingMode = clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
+			}
+		}
+
+		public bool TouchEnabled
+		{
 			get { return isTouchEnabled; }
-            set
-            {
+			set
+			{
 
 				if (value != isTouchEnabled) 
 				{
@@ -118,73 +104,129 @@ namespace CocosSharp
 				}
 				else
 				{
-					_dragging = false;
-					_touchMoved = false;
-					_touches.Clear();
+					Dragging = false;
+					IsTouchMoved = false;
+					touches.Clear();
 					EventDispatcher.RemoveEventListener(TouchListener);
 					TouchListener = null;
 				}
+			}
+		}
+
+        public float MinScale
+        {
+            get { return minScale; }
+            set
+            {
+                minScale = value;
+                ZoomScale = ZoomScale;
             }
         }
 
-        public float ZoomScale
+        public float MaxScale
         {
-            get { return _container.ScaleX; }
+            get { return maxScale; }
             set
             {
-                if (_container.ScaleX != value)
+                maxScale = value;
+                ZoomScale = ZoomScale;
+            }
+        }
+
+		public float ZoomScale
+		{
+			get { return container.ScaleX; }
+			set
+			{
+				if (container.ScaleX != value)
+				{
+					CCPoint center;
+
+					if (touchLength == 0.0f)
+					{
+						center = new CCPoint(viewSize.Width * 0.5f, viewSize.Height * 0.5f);
+						center = ConvertToWorldSpace(center);
+					}
+					else
+					{
+						center = touchPoint;
+					}
+
+					CCPoint oldCenter = container.ConvertToNodeSpace(center);
+					container.Scale = Math.Max(minScale, Math.Min(maxScale, value));
+					CCPoint newCenter = container.ConvertToWorldSpace(oldCenter);
+
+					CCPoint offset = center - newCenter;
+					if (Delegate != null)
+					{
+						Delegate.ScrollViewDidZoom(this);
+					}
+					SetContentOffset(container.Position + offset, false);
+				}
+			}
+		}
+
+		public CCPoint ContentOffset
+		{
+			get { return container.Position; }
+			set { SetContentOffset(value); }
+		}
+
+		public CCPoint MinContainerOffset
+		{
+			get
+			{
+				return new CCPoint(viewSize.Width - container.ContentSize.Width * container.ScaleX, 
+					viewSize.Height - container.ContentSize.Height * container.ScaleY);
+			}
+		}
+
+		public CCPoint MaxContainerOffset
+		{
+			get { return CCPoint.Zero; }
+		}
+
+        public override CCSize ContentSize
+        {
+            get { return container.ContentSize; }
+            set
+            {
+                if (Container != null)
                 {
-                    CCPoint center;
-
-                    if (_touchLength == 0.0f)
-                    {
-                        center = new CCPoint(_viewSize.Width * 0.5f, _viewSize.Height * 0.5f);
-                        center = ConvertToWorldSpace(center);
-                    }
-                    else
-                    {
-                        center = _touchPoint;
-                    }
-
-                    CCPoint oldCenter = _container.ConvertToNodeSpace(center);
-                    _container.Scale = Math.Max(_minScale, Math.Min(_maxScale, value));
-                    CCPoint newCenter = _container.ConvertToWorldSpace(oldCenter);
-
-                    CCPoint offset = center - newCenter;
-                    if (_delegate != null)
-                    {
-                        _delegate.ScrollViewDidZoom(this);
-                    }
-                    SetContentOffset(_container.Position + offset, false);
+                    Container.ContentSize = value;
+                    UpdateInset();
                 }
             }
         }
 
-        public bool Bounceable
-        {
-            get { return _bounceable; }
-            set { _bounceable = value; }
-        }
-
-        /**
-     * size to clip. CCNode boundingBox uses contentSize directly.
-     * It's semantically different what it actually means to common scroll views.
-     * Hence, this scroll view will use a separate size property.
-     */
+		/**
+		* size to clip. CCNode boundingBox uses contentSize directly.
+		* It's semantically different what it actually means to common scroll views.
+		* Hence, this scroll view will use a separate size property.
+		*/
 
         public CCSize ViewSize
         {
-            get { return _viewSize; }
+            get { return viewSize; }
             set
             {
-                _viewSize = value;
+                viewSize = value;
                 base.ContentSize = value;
             }
         }
 
+		CCRect ViewRect
+		{
+			get 
+			{
+				var rect = new CCRect (0, 0, viewSize.Width, viewSize.Height);
+				return CCAffineTransform.Transform (rect, NodeToWorldTransform);
+			}
+		}
+
         public CCNode Container
         {
-            get { return _container; }
+            get { return container; }
             set
             {
                 if (value == null)
@@ -193,121 +235,98 @@ namespace CocosSharp
                 }
 
                 RemoveAllChildrenWithCleanup(true);
-                _container = value;
+                container = value;
 
-                _container.IgnoreAnchorPointForPosition = false;
-                _container.AnchorPoint = CCPoint.Zero;
+                container.IgnoreAnchorPointForPosition = false;
+                container.AnchorPoint = CCPoint.Zero;
 
-                AddChild(_container);
+                AddChild(container);
 
-                ViewSize = _viewSize;
+                ViewSize = viewSize;
             }
         }
 
-        /**
-     * direction allowed to scroll. CCScrollViewDirectionBoth by default.
-     */
-
-        public CCScrollViewDirection Direction
-        {
-            get { return _direction; }
-            set { _direction = value; }
-        }
-
-        public ICCScrollViewDelegate Delegate
-        {
-            get { return _delegate; }
-            set { _delegate = value; }
-        }
-
-        public bool ClippingToBounds
-        {
-            get { return _clippingToBounds; }
-            set 
-			{ 
-				_clippingToBounds = value; 
-				ChildClippingMode =_clippingToBounds ? CCClipMode.Bounds : CCClipMode.None;
-			}
-        }
+		#endregion Properties
 
 
         #region Constructors
 
         public CCScrollView() 
             : this (new CCSize(200, 200), null)
-        {  }
+        {
+		}
 
         public CCScrollView(CCSize size)
             : this(size, null)
-        {  }
+        {
+		}
 
-        /*        *
-        * Returns an autoreleased scroll view object.
-        *
-        * @param size view size
-        * @param container parent object
-        * @return autoreleased scroll view object
-        */
         public CCScrollView(CCSize size, CCNode container)
         {
-            InitCCScrollView(size, container);
-        }
-
-        /**
-     * Returns a scroll view object
-     *
-     * @param size view size
-     * @param container parent object
-     * @return scroll view object
-     */
-
-        private void InitCCScrollView(CCSize size, CCNode container)
-        {
-			_container = container;
-
-            if (_container == null)
+            if (container == null)
             {
-                _container = new CCLayer();
-                _container.IgnoreAnchorPointForPosition = false;
-                _container.AnchorPoint = CCPoint.Zero;
+                container = new CCLayer();
+                container.IgnoreAnchorPointForPosition = false;
+                container.AnchorPoint = CCPoint.Zero;
             }
+			container.Position = new CCPoint(0.0f, 0.0f);
+
+			this.container = container;
 
             ViewSize = size;
-
             TouchEnabled = true;
-            _touches = new List<CCTouch>();
-            _delegate = null;
-            _bounceable = true;
-            _clippingToBounds = true;
-            _direction = CCScrollViewDirection.Both;
-            _container.Position = new CCPoint(0.0f, 0.0f);
-            _touchLength = 0.0f;
+            Delegate = null;
+            Bounceable = true;
+			ClippingToBounds = true;
+			Direction = CCScrollViewDirection.Both;
+			MinScale = MaxScale = 1.0f;
+			touches = new List<CCTouch>();
+			touchLength = 0.0f;
 
-            AddChild(_container);
-            _minScale = _maxScale = 1.0f;
+			AddChild(container);
         }
+
 
         #endregion Constructors
 
 
-//        public override void RegisterWithTouchDispatcher()
-//        {
-//            CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, TouchPriority, false);
-//        }
+		static float ConvertDistanceFromPointToInch(float pointDis)
+		{
+			float factor = (CCDrawManager.ScaleX + CCDrawManager.ScaleY) / 2;
+			return pointDis * factor / CCDevice.DPI;
+		}
 
-        /**
-        * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
-        *
-        * @param offset new offset
-        * @param If YES, the view scrolls to the new offset
-        */
+		/**
+		* Determines if a given node's bounding box is in visible bounds
+		*
+		* @return YES if it is in visible bounds
+		*/
 
-        public void SetContentOffset(CCPoint offset)
-        {
-            SetContentOffset(offset, false);
-        }
+		public bool IsNodeVisible(CCNode node)
+		{
+			CCPoint offset = ContentOffset;
+			CCSize size = ViewSize;
+			float scale = ZoomScale;
 
-        public void SetContentOffset(CCPoint offset, bool animated)
+			var viewRect = new CCRect(-offset.X / scale, -offset.Y / scale, size.Width / scale, size.Height / scale);
+
+			return viewRect.IntersectsRect(node.BoundingBox);
+		}
+
+		public void UpdateInset()
+		{
+			if (Container != null)
+			{
+				maxInset = MaxContainerOffset;
+				maxInset = new CCPoint(maxInset.X + viewSize.Width * INSET_RATIO,
+					maxInset.Y + viewSize.Height * INSET_RATIO);
+				minInset = MinContainerOffset;
+				minInset = new CCPoint(minInset.X - viewSize.Width * INSET_RATIO,
+					minInset.Y - viewSize.Height * INSET_RATIO);
+			}
+		}
+
+		public void SetContentOffset(CCPoint offset, bool animated=false)
         {
             if (animated)
             {
@@ -317,7 +336,7 @@ namespace CocosSharp
             else
             {
                 //set the container position directly
-                if (!_bounceable)
+                if (!Bounceable)
                 {
                     CCPoint minOffset = MinContainerOffset;
                     CCPoint maxOffset = MaxContainerOffset;
@@ -326,44 +345,32 @@ namespace CocosSharp
                     offset.Y = Math.Max(minOffset.Y, Math.Min(maxOffset.Y, offset.Y));
                 }
 
-                _container.Position = offset;
+                container.Position = offset;
 
-                if (_delegate != null)
+                if (Delegate != null)
                 {
-                    _delegate.ScrollViewDidScroll(this);
+                    Delegate.ScrollViewDidScroll(this);
                 }
             }
         }
 
-        public CCPoint GetContentOffset()
-        {
-            return _container.Position;
-        }
-
-        /**
-     * Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
-     * You can override the animation duration with this method.
-     *
-     * @param offset new offset
-     * @param animation duration
-     */
+		/**
+		* Sets a new content offset. It ignores max/min offset. It just sets what's given. (just like UIKit's UIScrollView)
+		* You can override the animation duration with this method.
+		*
+		* @param offset new offset
+		* @param animation duration
+		*/
 
         public void SetContentOffsetInDuration(CCPoint offset, float dt)
         {
             CCMoveTo scroll = new CCMoveTo (dt, offset);
             CCCallFuncN expire = new CCCallFuncN(StoppedAnimatedScroll);
-            _container.RunAction(new CCSequence(scroll, expire));
+            container.RunAction(new CCSequence(scroll, expire));
             Schedule(PerformedAnimatedScroll);
         }
 
-        /**
-     * Sets a new scale and does that for a predefined duration.
-     *
-     * @param s a new scale vale
-     * @param animated if YES, scaling is animated
-     */
-
-        public void SetZoomScale(float value, bool animated)
+		public void SetZoomScale(float value, bool animated=false)
         {
             if (animated)
             {
@@ -375,20 +382,13 @@ namespace CocosSharp
             }
         }
 
-        /**
-     * Sets a new scale for container in a given duration.
-     *
-     * @param s a new scale value
-     * @param animation duration
-     */
-
         public void SetZoomScaleInDuration(float s, float dt)
         {
             if (dt > 0)
             {
-                if (_container.ScaleX != s)
+                if (container.ScaleX != s)
                 {
-                    CCActionTween scaleAction = new CCActionTween (dt, "zoomScale", _container.ScaleX, s);
+                    CCActionTween scaleAction = new CCActionTween (dt, "zoomScale", container.ScaleX, s);
                     RunAction(scaleAction);
                 }
             }
@@ -398,163 +398,112 @@ namespace CocosSharp
             }
         }
 
-        /**
-     * Returns the current container's minimum offset. You may want this while you animate scrolling by yourself
-     */
-
-        public CCPoint MinContainerOffset
-        {
-            get
-            {
-                return new CCPoint(_viewSize.Width - _container.ContentSize.Width * _container.ScaleX,
-                                   _viewSize.Height - _container.ContentSize.Height * _container.ScaleY);
-            }
-        }
-
-        /**
-     * Returns the current container's maximum offset. You may want this while you animate scrolling by yourself
-     */
-
-        public CCPoint MaxContainerOffset
-        {
-            get { return CCPoint.Zero; }
-        }
-
-        /**
-     * Determines if a given node's bounding box is in visible bounds
-     *
-     * @return YES if it is in visible bounds
-     */
-
-        public bool IsNodeVisible(CCNode node)
-        {
-            CCPoint offset = GetContentOffset();
-            CCSize size = ViewSize;
-            float scale = ZoomScale;
-
-            var viewRect = new CCRect(-offset.X / scale, -offset.Y / scale, size.Width / scale, size.Height / scale);
-
-            return viewRect.IntersectsRect(node.BoundingBox);
-        }
-
-        /**
-     * Provided to make scroll view compatible with SWLayer's pause method
-     */
+		/**
+		* Provided to make scroll view compatible with SWLayer's pause method
+		*/
 
         public void Pause(object sender)
         {
-            _container.Pause();
+            container.Pause();
 
-            var pChildren = _container.Children;
+			var children = container.Children;
 
-            if (pChildren != null && pChildren.Count > 0)
+			if (children != null)
             {
-                for (int i = 0; i < pChildren.Count; i++)
+				foreach(CCNode child in children)
                 {
-                    pChildren.Elements[i].Pause();
+					child.Pause();
                 }
             }
         }
 
-        /**
-     * Provided to make scroll view compatible with SWLayer's resume method
-     */
+		/**
+		* Provided to make scroll view compatible with SWLayer's resume method
+		*/
 
         public void Resume(object sender)
         {
-            var pChildren = _container.Children;
+			var children = container.Children;
 
-            if (pChildren != null && pChildren.Count > 0)
+			if (children != null)
             {
-                for (int i = 0; i < pChildren.Count; i++)
+				foreach(CCNode child in children)
                 {
-                    pChildren.Elements[i].Resume();
+					child.Resume();
                 }
             }
 
-            _container.Resume();
+            container.Resume();
         }
 
-
-        public bool IsDragging
-        {
-            get { return _dragging; }
-        }
-
-        public bool IsTouchMoved
-        {
-            get { return _touchMoved; }
-        }
+		#region Event handling
 
         /** override functions */
-        // optional
-		public virtual bool TouchBegan(CCTouch pTouch, CCEvent touchEvent)
+		public new virtual bool TouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!Visible)
             {
                 return false;
             }
 
-            var frame = GetViewRect();
+			var frame = ViewRect;
 
             //dispatcher does not know about clipping. reject touches outside visible bounds.
-            if (_touches.Count > 2 ||
-                _touchMoved ||
-                !frame.ContainsPoint(_container.ConvertToWorldSpace(_container.ConvertTouchToNodeSpace(pTouch))))
+            if (touches.Count > 2 ||
+                IsTouchMoved ||
+                !frame.ContainsPoint(container.ConvertToWorldSpace(container.ConvertTouchToNodeSpace(pTouch))))
             {
                 return false;
             }
 
-            if (!_touches.Contains(pTouch))
+            if (!touches.Contains(pTouch))
             {
-                _touches.Add(pTouch);
+                touches.Add(pTouch);
             }
 
-            if (_touches.Count == 1)
+            if (touches.Count == 1)
             {
                 // scrolling
-                _touchPoint = ConvertTouchToNodeSpace(pTouch);
-                _touchMoved = false;
-                _dragging = true; //dragging started
-                _scrollDistance = CCPoint.Zero;
-                _touchLength = 0.0f;
+                touchPoint = ConvertTouchToNodeSpace(pTouch);
+                IsTouchMoved = false;
+                Dragging = true; //Dragging started
+                scrollDistance = CCPoint.Zero;
+                touchLength = 0.0f;
             }
-            else if (_touches.Count == 2)
+            else if (touches.Count == 2)
             {
-                _touchPoint = CCPoint.Midpoint(ConvertTouchToNodeSpace(_touches[0]),
-                                                             ConvertTouchToNodeSpace(_touches[1]));
-                _touchLength = CCPoint.Distance(_container.ConvertTouchToNodeSpace(_touches[0]),
-                                                              _container.ConvertTouchToNodeSpace(_touches[1]));
-                _dragging = false;
+				touchPoint = CCPoint.Midpoint(ConvertTouchToNodeSpace(touches[0]), ConvertTouchToNodeSpace(touches[1]));
+				touchLength = CCPoint.Distance(container.ConvertTouchToNodeSpace(touches[0]), container.ConvertTouchToNodeSpace(touches[1]));
+                Dragging = false;
             }
             return true;
         }
 
-		public virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
+		public new virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
                 return;
             }
 
-            if (_touches.Contains(touch))
+            if (touches.Contains(touch))
             {
-                if (_touches.Count == 1 && _dragging)
+                if (touches.Count == 1 && Dragging)
                 {// scrolling
                     CCPoint moveDistance, newPoint; //, maxInset, minInset;
                     float newX, newY;
 
-                    var frame = GetViewRect();
+					var frame = ViewRect;
 
-                    newPoint = ConvertTouchToNodeSpace(_touches[0]);
-                    moveDistance = newPoint - _touchPoint;
+                    newPoint = ConvertTouchToNodeSpace(touches[0]);
+                    moveDistance = newPoint - touchPoint;
 
                     float dis = 0.0f;
-                    if (_direction == CCScrollViewDirection.Vertical)
+                    if (Direction == CCScrollViewDirection.Vertical)
                     {
                         dis = moveDistance.Y;
                     }
-                    else if (_direction == CCScrollViewDirection.Horizontal)
+                    else if (Direction == CCScrollViewDirection.Horizontal)
                     {
                         dis = moveDistance.X;
                     }
@@ -563,23 +512,23 @@ namespace CocosSharp
                         dis = (float)Math.Sqrt(moveDistance.X * moveDistance.X + moveDistance.Y * moveDistance.Y);
                     }
 
-                    if (!_touchMoved && Math.Abs(ConvertDistanceFromPointToInch(dis)) < MOVE_INCH)
+                    if (!IsTouchMoved && Math.Abs(ConvertDistanceFromPointToInch(dis)) < MOVE_INCH)
                     {
                         //CCLOG("Invalid movement, distance = [%f, %f], disInch = %f", moveDistance.x, moveDistance.y);
                         return;
                     }
 
-                    if (!_touchMoved)
+                    if (!IsTouchMoved)
                     {
                         moveDistance = CCPoint.Zero;
                     }
 
-                    _touchPoint = newPoint;
-                    _touchMoved = true;
+                    touchPoint = newPoint;
+                    IsTouchMoved = true;
 
                     if (frame.ContainsPoint(ConvertToWorldSpace(newPoint)))
                     {
-                        switch (_direction)
+                        switch (Direction)
                         {
                             case CCScrollViewDirection.Vertical:
                                 moveDistance = new CCPoint(0.0f, moveDistance.Y);
@@ -591,69 +540,69 @@ namespace CocosSharp
                                 break;
                         }
 
-                        //maxInset = m_fMaxInset;
-                        //minInset = m_fMinInset;
+                        newX = container.Position.X + moveDistance.X;
+                        newY = container.Position.Y + moveDistance.Y;
 
-                        newX = _container.Position.X + moveDistance.X;
-                        newY = _container.Position.Y + moveDistance.Y;
-
-                        _scrollDistance = moveDistance;
+                        scrollDistance = moveDistance;
                         SetContentOffset(new CCPoint(newX, newY));
                     }
                 }
-                else if (_touches.Count == 2 && !_dragging)
+                else if (touches.Count == 2 && !Dragging)
                 {
-                    float len = CCPoint.Distance(_container.ConvertTouchToNodeSpace(_touches[0]),
-                                                             _container.ConvertTouchToNodeSpace(_touches[1]));
-                    ZoomScale = ZoomScale * len / _touchLength;
+                    float len = CCPoint.Distance(container.ConvertTouchToNodeSpace(touches[0]),
+                                                             container.ConvertTouchToNodeSpace(touches[1]));
+                    ZoomScale = ZoomScale * len / touchLength;
                 }
             }
         }
 
-		public virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
+		public new virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
                 return;
             }
 
-            if (_touches.Contains(touch))
+            if (touches.Contains(touch))
             {
-                if (_touches.Count == 1 && _touchMoved)
+                if (touches.Count == 1 && IsTouchMoved)
                 {
                     Schedule(DeaccelerateScrolling);
                 }
-                _touches.Remove(touch);
+                touches.Remove(touch);
             }
 
-            if (_touches.Count == 0)
+            if (touches.Count == 0)
             {
-                _dragging = false;
-                _touchMoved = false;
+                Dragging = false;
+                IsTouchMoved = false;
             }
         }
 
-		public virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
+		public new virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
                 return;
             }
-            _touches.Remove(touch);
-            if (_touches.Count == 0)
+            touches.Remove(touch);
+            if (touches.Count == 0)
             {
-                _dragging = false;
-                _touchMoved = false;
+                Dragging = false;
+                IsTouchMoved = false;
             }
         }
+
+		#endregion Event handling
+
 
         public override void AddChild(CCNode child, int zOrder, int tag)
         {
             child.IgnoreAnchorPointForPosition = false;
             // child.AnchorPoint = CCPoint.Zero;
-            if (_container != child)
+            if (container != child)
             {
-                _container.AddChild(child, zOrder, tag);
+                container.AddChild(child, zOrder, tag);
             }
             else
             {
@@ -661,28 +610,28 @@ namespace CocosSharp
             }
         }
 
-        /**
-     * Relocates the container at the proper offset, in bounds of max/min offsets.
-     *
-     * @param animated If YES, relocation is animated
-     */
+		/**
+		* Relocates the container at the proper offset, in bounds of max/min offsets.
+		*
+		* @param animated If YES, relocation is animated
+		*/
 
-        private void RelocateContainer(bool animated)
+        void RelocateContainer(bool animated)
         {
             CCPoint min = MinContainerOffset;
             CCPoint max = MaxContainerOffset;
 
-            CCPoint oldPoint = _container.Position;
+            CCPoint oldPoint = container.Position;
 
             float newX = oldPoint.X;
             float newY = oldPoint.Y;
-            if (_direction == CCScrollViewDirection.Both || _direction == CCScrollViewDirection.Horizontal)
+            if (Direction == CCScrollViewDirection.Both || Direction == CCScrollViewDirection.Horizontal)
             {
                 newX = Math.Min(newX, max.X);
                 newX = Math.Max(newX, min.X);
             }
 
-            if (_direction == CCScrollViewDirection.Both || _direction == CCScrollViewDirection.Vertical)
+            if (Direction == CCScrollViewDirection.Both || Direction == CCScrollViewDirection.Vertical)
             {
                 newY = Math.Min(newY, max.Y);
                 newY = Math.Max(newY, min.Y);
@@ -694,16 +643,16 @@ namespace CocosSharp
             }
         }
 
-        /**
-     * implements auto-scrolling behavior. change SCROLL_DEACCEL_RATE as needed to choose
-     * deacceleration speed. it must be less than 1.0f.
-     *
-     * @param dt delta
-     */
+		/**
+		* implements auto-scrolling behavior. change SCROLL_DEACCEL_RATE as needed to choose
+		* deacceleration speed. it must be less than 1.0f.
+		*
+		* @param dt delta
+		*/
 
-        private void DeaccelerateScrolling(float dt)
+        void DeaccelerateScrolling(float dt)
         {
-            if (_dragging)
+            if (Dragging)
             {
                 Unschedule(DeaccelerateScrolling);
                 return;
@@ -711,12 +660,12 @@ namespace CocosSharp
 
             CCPoint maxInset, minInset;
 
-            _container.Position = _container.Position + _scrollDistance;
+            container.Position = container.Position + scrollDistance;
 
-            if (_bounceable)
+            if (Bounceable)
             {
-                maxInset = _maxInset;
-                minInset = _minInset;
+				maxInset = this.maxInset;
+				minInset = this.minInset;
             }
             else
             {
@@ -725,20 +674,17 @@ namespace CocosSharp
             }
 
             //check to see if offset lies within the inset bounds
-            float newX = Math.Min(_container.Position.X, maxInset.X);
+            float newX = Math.Min(container.Position.X, maxInset.X);
             newX = Math.Max(newX, minInset.X);
-            float newY = Math.Min(_container.Position.Y, maxInset.Y);
+            float newY = Math.Min(container.Position.Y, maxInset.Y);
             newY = Math.Max(newY, minInset.Y);
 
-            //newX = _container.Position.X;
-            //newY = _container.Position.Y;
-
-            _scrollDistance = _scrollDistance - new CCPoint(newX - _container.Position.X, newY - _container.Position.Y);
-            _scrollDistance = _scrollDistance * SCROLL_DEACCEL_RATE;
+            scrollDistance = scrollDistance - new CCPoint(newX - container.Position.X, newY - container.Position.Y);
+            scrollDistance = scrollDistance * SCROLL_DEACCEL_RATE;
             SetContentOffset(new CCPoint(newX, newY), false);
 
-            if ((Math.Abs(_scrollDistance.X) <= SCROLL_DEACCEL_DIST &&
-                 Math.Abs(_scrollDistance.Y) <= SCROLL_DEACCEL_DIST) ||
+            if ((Math.Abs(scrollDistance.X) <= SCROLL_DEACCEL_DIST &&
+                 Math.Abs(scrollDistance.Y) <= SCROLL_DEACCEL_DIST) ||
                 newY > maxInset.Y || newY < minInset.Y ||
                 newX > maxInset.X || newX < minInset.X ||
                 newX == maxInset.X || newX == minInset.X ||
@@ -749,61 +695,36 @@ namespace CocosSharp
             }
         }
 
-        /**
-     * This method makes sure auto scrolling causes delegate to invoke its method
-     */
+		/**
+		* This method makes sure auto scrolling causes delegate to invoke its method
+		*/
 
-        private void PerformedAnimatedScroll(float dt)
+        void PerformedAnimatedScroll(float dt)
         {
-            if (_dragging)
+            if (Dragging)
             {
                 Unschedule(PerformedAnimatedScroll);
                 return;
             }
 
-            if (_delegate != null)
+            if (Delegate != null)
             {
-                _delegate.ScrollViewDidScroll(this);
+                Delegate.ScrollViewDidScroll(this);
             }
         }
 
-        /**
-     * Expire animated scroll delegate calls
-     */
+		/**
+		* Expire animated scroll delegate calls
+		*/
 
-        private void StoppedAnimatedScroll(CCNode node)
+        void StoppedAnimatedScroll(CCNode node)
         {
             Unschedule(PerformedAnimatedScroll);
             // After the animation stopped, "scrollViewDidScroll" should be invoked, this could fix the bug of lack of tableview cells.
-            if (_delegate != null)
+            if (Delegate != null)
             {
-                _delegate.ScrollViewDidScroll(this);
+                Delegate.ScrollViewDidScroll(this);
             }
-        }
-
-        public void UpdateInset()
-        {
-            if (Container != null)
-            {
-                _maxInset = MaxContainerOffset;
-                _maxInset = new CCPoint(_maxInset.X + _viewSize.Width * INSET_RATIO,
-                                          _maxInset.Y + _viewSize.Height * INSET_RATIO);
-                _minInset = MinContainerOffset;
-                _minInset = new CCPoint(_minInset.X - _viewSize.Width * INSET_RATIO,
-                                          _minInset.Y - _viewSize.Height * INSET_RATIO);
-            }
-        }
-
-        private CCRect GetViewRect()
-        {
-            var rect = new CCRect(0, 0, _viewSize.Width, _viewSize.Height);
-            return CCAffineTransform.Transform(rect, NodeToWorldTransform);
-        }
-
-        private static float ConvertDistanceFromPointToInch(float pointDis)
-        {
-            float factor = (CCDrawManager.ScaleX + CCDrawManager.ScaleY) / 2;
-			return pointDis * factor / CCDevice.DPI;
         }
     }
 }
