@@ -8,10 +8,8 @@ namespace CocosSharp
         FillTopDown,
         FillBottomUp
     };
-
-    ///**
-    // * Sole purpose of this delegate is to single touch event in this version.
-    // */
+		
+    // Sole purpose of this delegate is to single touch event in this version.
     public interface ICCTableViewDelegate : ICCScrollViewDelegate
     {
         /**
@@ -48,8 +46,7 @@ namespace CocosSharp
          */
         void TableCellWillRecycle(CCTableView table, CCTableViewCell cell);
     }
-
-
+		
     /**
      * Data source that governs table backend data.
      */
@@ -87,46 +84,33 @@ namespace CocosSharp
      */
     public class CCTableView : CCScrollView, ICCScrollViewDelegate
     {
-        protected CCTableViewCell _touchedCell;
-        protected CCTableViewVerticalFillOrder _vordering;
-        protected List<int> _indices;
-        protected List<float> _cellsPositions;
-        protected CCArrayForObjectSorting _cellsUsed;
-        protected CCArrayForObjectSorting _cellsFreed;
-        protected ICCTableViewDataSource _dataSource;
-        protected ICCTableViewDelegate _tableViewDelegate;
-        protected CCScrollViewDirection _oldDirection;
+        CCTableViewCell touchedCell;
+		CCTableViewVerticalFillOrder vordering;
 
-        /**
-         * data source
-         */
-        public ICCTableViewDataSource DataSource
-        {
-            get { return _dataSource; }
-            set { _dataSource = value; }
-        }
+		CCArrayForObjectSorting cellsUsed;
+        CCArrayForObjectSorting cellsFreed;
+        
+		CCScrollViewDirection oldDirection;
 
-        /**
-         * delegate
-         */
-        public new ICCTableViewDelegate Delegate
-        {
-            get { return _tableViewDelegate; }
-            set { _tableViewDelegate = value; }
-        }
+		List<int> indices;
+		List<float> cellsPositions;
 
-        /**
-         * determines how cell is ordered and filled in the view.
-         */
+
+		#region Properties
+
+		public ICCTableViewDataSource DataSource { get; set; }
+		public new ICCTableViewDelegate Delegate { get; set; }
+
+		// Determines how cell is ordered and filled in the view.
         public CCTableViewVerticalFillOrder VerticalFillOrder
         {
-            get { return _vordering; }
+            get { return vordering; }
             set
             {
-                if (_vordering != value)
+                if (vordering != value)
                 {
-                    _vordering = value;
-                    if (_cellsUsed.Count > 0)
+                    vordering = value;
+                    if (cellsUsed.Count > 0)
                     {
                         ReloadData();
                     }
@@ -134,71 +118,53 @@ namespace CocosSharp
             }
         }
 
+		#endregion Properties
+
 
         #region Constructors
 
         public CCTableView()
         {
-            _oldDirection = CCScrollViewDirection.None;
+            oldDirection = CCScrollViewDirection.None;
         }
 
-        /**
-         * An intialized table view object
-         *
-         * @param dataSource data source
-         * @param size view size
-         * @return table view
-         */
         public CCTableView(ICCTableViewDataSource dataSource, CCSize size)
             : this(dataSource, size, null)
-        { }
+        {
+		}
 
-        /**
-         * An initialized table view object
-         *
-         * @param dataSource data source;
-         * @param size view size
-         * @param container parent object for cells
-         * @return table view
-         */
         public CCTableView(ICCTableViewDataSource dataSource, CCSize size, CCNode container) : base(size, container)
         {
-            InitCCTableView();
-            DataSource = dataSource;
-            _updateCellPositions();
-            _updateContentSize();
-        }
-
-        private void InitCCTableView()
-        {
-            _cellsPositions = new List<float>();
-            _cellsUsed = new CCArrayForObjectSorting();
-            _cellsFreed = new CCArrayForObjectSorting();
-            _indices = new List<int>();
-            _vordering = CCTableViewVerticalFillOrder.FillBottomUp;
+            cellsPositions = new List<float>();
+            cellsUsed = new CCArrayForObjectSorting();
+            cellsFreed = new CCArrayForObjectSorting();
+            indices = new List<int>();
+            vordering = CCTableViewVerticalFillOrder.FillBottomUp;
             Direction = CCScrollViewDirection.Vertical;
 
             base.Delegate = this;
+
+			DataSource = dataSource;
+			UpdateCellPositions();
+			UpdateContentSize();
         }
 
         #endregion Constructors
 
 
-        /**
-         * reloads data from data source.  the view will be refreshed.
-         */
+		// reloads data from data source.  the view will be refreshed.
         public void ReloadData()
         {
-            _oldDirection = CCScrollViewDirection.None;
+            oldDirection = CCScrollViewDirection.None;
 
-            foreach (CCTableViewCell cell in _cellsUsed)
+            foreach (CCTableViewCell cell in cellsUsed)
             {
-                if (_tableViewDelegate != null)
+                if (Delegate != null)
                 {
-                    _tableViewDelegate.TableCellWillRecycle(this, cell);
+                    Delegate.TableCellWillRecycle(this, cell);
                 }
 
-                _cellsFreed.Add(cell);
+                cellsFreed.Add(cell);
                 cell.Reset();
                 if (cell.Parent == Container)
                 {
@@ -206,16 +172,18 @@ namespace CocosSharp
                 }
             }
 
-            _indices.Clear();
-            _cellsUsed = new CCArrayForObjectSorting();
+            indices.Clear();
+            cellsUsed = new CCArrayForObjectSorting();
 
-            _updateCellPositions();
-            _updateContentSize();
-            if (_dataSource.NumberOfCellsInTableView(this) > 0)
+            UpdateCellPositions();
+            UpdateContentSize();
+            if (DataSource.NumberOfCellsInTableView(this) > 0)
             {
                 ScrollViewDidScroll(this);
             }
         }
+
+		#region Cell management
 
         /**
          * Returns an existing cell at a given index. Returns nil if a cell is nonexistent at the moment of query.
@@ -227,9 +195,9 @@ namespace CocosSharp
         {
             CCTableViewCell found = null;
 
-            if (_indices.Contains(idx))
+            if (indices.Contains(idx))
             {
-                found = (CCTableViewCell)_cellsUsed.ObjectWithObjectID(idx);
+                found = (CCTableViewCell)cellsUsed.ObjectWithObjectID(idx);
             }
 
             return found;
@@ -247,7 +215,7 @@ namespace CocosSharp
                 return;
             }
 
-            var uCountOfItems = _dataSource.NumberOfCellsInTableView(this);
+            var uCountOfItems = DataSource.NumberOfCellsInTableView(this);
             if (uCountOfItems == 0 || idx > uCountOfItems - 1)
             {
                 return;
@@ -256,11 +224,11 @@ namespace CocosSharp
             var cell = CellAtIndex(idx);
             if (cell != null)
             {
-                _moveCellOutOfSight(cell);
+                MoveCellOutOfSight(cell);
             }
-            cell = _dataSource.TableCellAtIndex(this, idx);
-            _setIndexForCell(idx, cell);
-            _addCellIfNecessary(cell);
+            cell = DataSource.TableCellAtIndex(this, idx);
+            SetIndexForCell(idx, cell);
+            AddCellIfNecessary(cell);
         }
 
         /**
@@ -275,7 +243,7 @@ namespace CocosSharp
                 return;
             }
 
-            var uCountOfItems = _dataSource.NumberOfCellsInTableView(this);
+            var uCountOfItems = DataSource.NumberOfCellsInTableView(this);
             if (uCountOfItems == 0 || idx > uCountOfItems - 1)
             {
                 return;
@@ -288,17 +256,17 @@ namespace CocosSharp
                 return;
             }
 
-            newIdx = _cellsUsed.IndexOfSortedObject(cell);
+            newIdx = cellsUsed.IndexOfSortedObject(cell);
 
             //remove first
-            _moveCellOutOfSight(cell);
+            MoveCellOutOfSight(cell);
 
-            _indices.Remove(idx);
-            //    [_indices shiftIndexesStartingAtIndex:idx+1 by:-1];
-            for (int i = _cellsUsed.Count - 1; i > newIdx; i--)
+            indices.Remove(idx);
+            //    [indices shiftIndexesStartingAtIndex:idx+1 by:-1];
+            for (int i = cellsUsed.Count - 1; i > newIdx; i--)
             {
-                cell = (CCTableViewCell)_cellsUsed[i];
-                _setIndexForCell(cell.Index - 1, cell);
+                cell = (CCTableViewCell)cellsUsed[i];
+                SetIndexForCell(cell.Index - 1, cell);
             }
         }
 
@@ -311,36 +279,90 @@ namespace CocosSharp
         {
             CCTableViewCell cell;
 
-            if (_cellsFreed.Count == 0)
+            if (cellsFreed.Count == 0)
             {
                 cell = null;
             }
             else
             {
-                cell = (CCTableViewCell)_cellsFreed[0];
-                _cellsFreed.RemoveAt(0);
+                cell = (CCTableViewCell)cellsFreed[0];
+                cellsFreed.RemoveAt(0);
             }
             return cell;
         }
 
-        protected void _addCellIfNecessary(CCTableViewCell cell)
+		void AddCellIfNecessary(CCTableViewCell cell)
         {
             if (cell.Parent != Container)
             {
                 Container.AddChild(cell);
             }
-            _cellsUsed.InsertSortedObject(cell);
-            _indices.Add(cell.Index);
+            cellsUsed.InsertSortedObject(cell);
+            indices.Add(cell.Index);
         }
 
-        protected void _updateContentSize()
+		void MoveCellOutOfSight(CCTableViewCell cell)
+		{
+			if (Delegate != null)
+			{
+				Delegate.TableCellWillRecycle(this, cell);
+			}
+
+			cellsFreed.Add(cell);
+			cellsUsed.RemoveSortedObject(cell);
+			indices.Remove(cell.Index);
+			cell.Reset();
+			if (cell.Parent == Container)
+			{
+				Container.RemoveChild(cell, true);
+			}
+		}
+
+		void SetIndexForCell(int index, CCTableViewCell cell)
+		{
+			cell.AnchorPoint = CCPoint.Zero;
+			cell.Position = OffsetFromIndex(index);
+			cell.Index = index;
+		}
+
+		void UpdateCellPositions() 
+		{
+			int cellsCount = DataSource.NumberOfCellsInTableView(this);
+			cellsPositions.Clear();
+
+			if (cellsCount > 0)
+			{
+				float currentPos = 0;
+				CCSize cellSize;
+				for (int i=0; i < cellsCount; i++)
+				{
+					cellsPositions.Add(currentPos);
+					cellSize = DataSource.TableCellSizeForIndex(this, i);
+					switch (Direction)
+					{
+					case CCScrollViewDirection.Horizontal:
+						currentPos += cellSize.Width;
+						break;
+					default:
+						currentPos += cellSize.Height;
+						break;
+					}
+				}
+				cellsPositions.Add(currentPos);//1 extra value allows us to get right/bottom of the last cell
+			}
+		}
+
+		#endregion Cell management
+
+
+		void UpdateContentSize()
         {
             CCSize size = CCSize.Zero;
-            int cellsCount = _dataSource.NumberOfCellsInTableView(this);
+            int cellsCount = DataSource.NumberOfCellsInTableView(this);
 
             if (cellsCount > 0)
             {
-                float maxPosition = _cellsPositions[cellsCount];
+                float maxPosition = cellsPositions[cellsCount];
 
                 switch (Direction)
                 {
@@ -355,7 +377,7 @@ namespace CocosSharp
 
             ContentSize = size;
 
-            if (_oldDirection != Direction)
+            if (oldDirection != Direction)
             {
                 if (Direction == CCScrollViewDirection.Horizontal)
                 {
@@ -365,49 +387,42 @@ namespace CocosSharp
                 {
                     SetContentOffset(new CCPoint(0, MinContainerOffset.Y));
                 }
-                _oldDirection = Direction;
+                oldDirection = Direction;
             }
         }
 
-        protected CCPoint _offsetFromIndex(int index)
+		CCPoint OffsetFromIndex(int index)
         {
-            CCPoint offset = __offsetFromIndex(index);
+			CCPoint offset;
 
-            CCSize cellSize = _dataSource.TableCellSizeForIndex(this, index);
-            if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
+			switch (Direction)
+			{
+			case CCScrollViewDirection.Horizontal:
+				offset = new CCPoint(cellsPositions[index], 0.0f);
+				break;
+			default:
+				offset = new CCPoint(0.0f, cellsPositions[index]);
+				break;
+			}
+
+            CCSize cellSize = DataSource.TableCellSizeForIndex(this, index);
+            if (vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
                 offset.Y = Container.ContentSize.Height - offset.Y - cellSize.Height;
             }
             return offset;
         }
 
-        protected CCPoint __offsetFromIndex(int index)
-        {
-            CCPoint offset;
-
-            switch (Direction)
-            {
-                case CCScrollViewDirection.Horizontal:
-                    offset = new CCPoint(_cellsPositions[index], 0.0f);
-                    break;
-                default:
-                    offset = new CCPoint(0.0f, _cellsPositions[index]);
-                    break;
-            }
-
-            return offset;
-        }
-
-        protected int _indexFromOffset(CCPoint offset)
+		int IndexFromOffset(CCPoint offset)
         {
             int index = 0;
-            int maxIdx = _dataSource.NumberOfCellsInTableView(this) - 1;
+            int maxIdx = DataSource.NumberOfCellsInTableView(this) - 1;
 
-            if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
+            if (vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
                 offset.Y = Container.ContentSize.Height - offset.Y;
             }
-            index = __indexFromOffset(offset);
+			index = PrimitiveIndexFromOffset(offset);
             if (index != -1)
             {
                 index = Math.Max(0, index);
@@ -419,10 +434,10 @@ namespace CocosSharp
             return index;
         }
 
-        protected int __indexFromOffset(CCPoint offset)
+		int PrimitiveIndexFromOffset(CCPoint offset)
         {
             int low = 0;
-            int high = _dataSource.NumberOfCellsInTableView(this) - 1;
+            int high = DataSource.NumberOfCellsInTableView(this) - 1;
             float search;
             switch (Direction)
             {
@@ -437,8 +452,8 @@ namespace CocosSharp
             while (high >= low)
             {
                 int index = low + (high - low) / 2;
-                float cellStart = _cellsPositions[index];
-                float cellEnd = _cellsPositions[index + 1];
+                float cellStart = cellsPositions[index];
+                float cellEnd = cellsPositions[index + 1];
 
                 if (search >= cellStart && search <= cellEnd)
                 {
@@ -462,88 +477,38 @@ namespace CocosSharp
             return -1;
         }
 
-        protected void _moveCellOutOfSight(CCTableViewCell cell)
-        {
-            if (_tableViewDelegate != null)
-            {
-                _tableViewDelegate.TableCellWillRecycle(this, cell);
-            }
-
-            _cellsFreed.Add(cell);
-            _cellsUsed.RemoveSortedObject(cell);
-            _indices.Remove(cell.Index);
-            cell.Reset();
-            if (cell.Parent == Container)
-            {
-                Container.RemoveChild(cell, true);
-            }
-        }
-
-        protected void _setIndexForCell(int index, CCTableViewCell cell)
-        {
-            cell.AnchorPoint = CCPoint.Zero;
-            cell.Position = _offsetFromIndex(index);
-            cell.Index = index;
-        }
-
-        protected void _updateCellPositions() 
-        {
-            int cellsCount = _dataSource.NumberOfCellsInTableView(this);
-            _cellsPositions.Clear();
-
-            if (cellsCount > 0)
-            {
-                float currentPos = 0;
-                CCSize cellSize;
-                for (int i=0; i < cellsCount; i++)
-                {
-                    _cellsPositions.Add(currentPos);
-                    cellSize = _dataSource.TableCellSizeForIndex(this, i);
-                    switch (Direction)
-                    {
-                        case CCScrollViewDirection.Horizontal:
-                            currentPos += cellSize.Width;
-                            break;
-                        default:
-                            currentPos += cellSize.Height;
-                            break;
-                    }
-                }
-                _cellsPositions.Add(currentPos);//1 extra value allows us to get right/bottom of the last cell
-            }
-        }
 
 
         #region CCScrollViewDelegate Members
 
         public virtual void ScrollViewDidScroll(CCScrollView view)
         {
-            var uCountOfItems = _dataSource.NumberOfCellsInTableView(this);
+            var uCountOfItems = DataSource.NumberOfCellsInTableView(this);
             if (uCountOfItems == 0)
             {
                 return;
             }
 
-            if (_tableViewDelegate != null)
+            if (Delegate != null)
             {
-                _tableViewDelegate.ScrollViewDidScroll(this);
+                Delegate.ScrollViewDidScroll(this);
             }
 
             int startIdx = 0, endIdx = 0, idx = 0, maxIdx = 0;
             CCPoint offset = ContentOffset * -1;
             maxIdx = Math.Max(uCountOfItems - 1, 0);
 
-            if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
+            if (vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
                 offset.Y = offset.Y + ViewSize.Height / Container.ScaleY;
             }
-            startIdx = _indexFromOffset(offset);
+            startIdx = IndexFromOffset(offset);
             if (startIdx == CCArrayForObjectSorting.CC_INVALID_INDEX)
             {
                 startIdx = uCountOfItems - 1;
             }
 
-            if (_vordering == CCTableViewVerticalFillOrder.FillTopDown)
+            if (vordering == CCTableViewVerticalFillOrder.FillTopDown)
             {
                 offset.Y -= ViewSize.Height / Container.ScaleY;
             }
@@ -553,7 +518,7 @@ namespace CocosSharp
             }
             offset.X += ViewSize.Width / Container.ScaleX;
 
-            endIdx = _indexFromOffset(offset);
+            endIdx = IndexFromOffset(offset);
             if (endIdx == CCArrayForObjectSorting.CC_INVALID_INDEX)
             {
                 endIdx = uCountOfItems - 1;
@@ -561,7 +526,7 @@ namespace CocosSharp
 
 #if DEBUG_ // For Testing.
 			int i = 0;
-			foreach (object pObj in _cellsUsed)
+			foreach (object pObj in cellsUsed)
 			{
 				var pCell = (CCTableViewCell)pObj;
 				CCLog.Log("cells Used index {0}, value = {1}", i, pCell.getIdx());
@@ -569,7 +534,7 @@ namespace CocosSharp
 			}
 			CCLog.Log("---------------------------------------");
 			i = 0;
-			foreach(object pObj in _cellsFreed)
+			foreach(object pObj in cellsFreed)
 			{
 				var pCell = (CCTableViewCell)pObj;
 				CCLog.Log("cells freed index {0}, value = {1}", i, pCell.getIdx());
@@ -578,17 +543,17 @@ namespace CocosSharp
 			CCLog.Log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 #endif
 
-            if (_cellsUsed.Count > 0)
+            if (cellsUsed.Count > 0)
             {
-                var cell = (CCTableViewCell) _cellsUsed[0];
+                var cell = (CCTableViewCell) cellsUsed[0];
 
                 idx = cell.Index;
                 while (idx < startIdx)
                 {
-                    _moveCellOutOfSight(cell);
-                    if (_cellsUsed.Count > 0)
+					MoveCellOutOfSight(cell);
+                    if (cellsUsed.Count > 0)
                     {
-                        cell = (CCTableViewCell) _cellsUsed[0];
+                        cell = (CCTableViewCell) cellsUsed[0];
                         idx = cell.Index;
                     }
                     else
@@ -597,17 +562,17 @@ namespace CocosSharp
                     }
                 }
             }
-            if (_cellsUsed.Count > 0)
+            if (cellsUsed.Count > 0)
             {
-                var cell = (CCTableViewCell) _cellsUsed[_cellsUsed.Count - 1];
+                var cell = (CCTableViewCell) cellsUsed[cellsUsed.Count - 1];
                 idx = cell.Index;
 
                 while (idx <= maxIdx && idx > endIdx)
                 {
-                    _moveCellOutOfSight(cell);
-                    if (_cellsUsed.Count > 0)
+                    MoveCellOutOfSight(cell);
+                    if (cellsUsed.Count > 0)
                     {
-                        cell = (CCTableViewCell) _cellsUsed[_cellsUsed.Count - 1];
+                        cell = (CCTableViewCell) cellsUsed[cellsUsed.Count - 1];
                         idx = cell.Index;
                     }
                     else
@@ -619,7 +584,7 @@ namespace CocosSharp
 
             for (int i = startIdx; i <= endIdx; i++)
             {
-                if (_indices.Contains(i))
+                if (indices.Contains(i))
                 {
                     continue;
                 }
@@ -634,6 +599,8 @@ namespace CocosSharp
         #endregion
 
 
+		#region Event handling
+
         public void TouchEnded(CCTouch pTouch)
         {
             if (!Visible)
@@ -641,18 +608,18 @@ namespace CocosSharp
                 return;
             }
 
-            if (_touchedCell != null)
+            if (touchedCell != null)
             {
                 CCRect bb = BoundingBox;
                 bb.Origin = Parent.ConvertToWorldSpace(bb.Origin);
 
-                if (bb.ContainsPoint(pTouch.Location) && _tableViewDelegate != null)
+                if (bb.ContainsPoint(pTouch.Location) && Delegate != null)
                 {
-                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
-                    _tableViewDelegate.TableCellTouched(this, _touchedCell);
+                    Delegate.TableCellUnhighlight(this, touchedCell);
+                    Delegate.TableCellTouched(this, touchedCell);
                 }
 
-                _touchedCell = null;
+                touchedCell = null;
             }
 
         }
@@ -669,29 +636,29 @@ namespace CocosSharp
 //            if (_touches.Count == 1)
 //            {
 //                var point = Container.ConvertTouchToNodeSpace(pTouch);
-//                var index = _indexFromOffset(point);
+//                var index = IndexFromOffset(point);
 //                if (index == CCArrayForObjectSorting.CC_INVALID_INDEX)
 //                {
-//                    _touchedCell = null;
+//                    touchedCell = null;
 //                }
 //                else
 //                {
-//                    _touchedCell = CellAtIndex(index); 
+//                    touchedCell = CellAtIndex(index); 
 //                }
 //
-//                if (_touchedCell != null && _tableViewDelegate != null)
+//                if (touchedCell != null && Delegate != null)
 //                {
-//                    _tableViewDelegate.TableCellHighlight(this, _touchedCell);
+//                    Delegate.TableCellHighlight(this, touchedCell);
 //                }
 //            }
-//            else if (_touchedCell != null)
+//            else if (touchedCell != null)
 //            {
-//                if (_tableViewDelegate != null)
+//                if (Delegate != null)
 //                {
-//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                    Delegate.TableCellUnhighlight(this, touchedCell);
 //                }
 //
-//                _touchedCell = null;
+//                touchedCell = null;
 //            }
 //
 //            return touchResult;
@@ -701,14 +668,14 @@ namespace CocosSharp
 //        {
 //            base.TouchMoved(touch);
 //
-//            if (_touchedCell != null && IsTouchMoved)
+//            if (touchedCell != null && IsTouchMoved)
 //            {
-//                if (_tableViewDelegate != null)
+//                if (Delegate != null)
 //                {
-//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                    Delegate.TableCellUnhighlight(this, touchedCell);
 //                }
 //
-//                _touchedCell = null;
+//                touchedCell = null;
 //            }
 //        }
 //
@@ -716,15 +683,17 @@ namespace CocosSharp
 //        {
 //            base.TouchCancelled(touch);
 //
-//            if (_touchedCell != null)
+//            if (touchedCell != null)
 //            {
-//                if (_tableViewDelegate != null)
+//                if (Delegate != null)
 //                {
-//                    _tableViewDelegate.TableCellUnhighlight(this, _touchedCell);
+//                    Delegate.TableCellUnhighlight(this, touchedCell);
 //                }
 //
-//                _touchedCell = null;
+//                touchedCell = null;
 //            }
 //        }
-    }
+    
+		#endregion Event handling
+	}
 }
