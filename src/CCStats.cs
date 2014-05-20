@@ -123,7 +123,8 @@ namespace CocosSharp
                     // MonoGame may not allow texture.fromstream,
                     // so catch this exception here and disable the stats
                     CCLog.Log ("CCStats: Failed to create stats texture:");
-                    CCLog.Log (ex.ToString ());
+					if(ex!=null)
+						CCLog.Log (ex.ToString ());
 
                     return;
                 }
@@ -152,7 +153,8 @@ namespace CocosSharp
                     gcLabel.Color = new CCColor3B (255, 196, 54);
                 } catch (Exception ex) {
                     CCLog.Log ("CCStats: Failed to create stats labels:");
-                    CCLog.Log (ex.ToString ());
+					if(ex !=null)
+						CCLog.Log (ex.ToString ());
 
                     return;
                 }
