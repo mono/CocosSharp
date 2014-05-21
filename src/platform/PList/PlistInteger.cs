@@ -30,53 +30,64 @@ namespace CocosSharp
 {
 	public class PlistInteger : PlistObject<int>
 	{
-		public PlistInteger (int value) : base(value)
+		#region Properties
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { return Value; }
+		}
+
+		public override float AsFloat
+		{
+			get { return Value; }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		public PlistInteger(int value) : base(value)
 		{
 		}
 
-		public override void Write (System.Xml.XmlWriter writer)
+		#endregion Constructors
+
+
+		public override void Write(System.Xml.XmlWriter writer)
 		{
 			writer.WriteElementString ("integer", Value.ToString ());
 		}
 
-	    public override byte[] AsBinary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override int AsInt
-	    {
-	        get { return Value; }
-	    }
-
-	    public override float AsFloat
-	    {
-	        get { return Value; }
-	    }
-
-	    public override string AsString
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override DateTime AsDate
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override bool AsBool
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistArray AsArray
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistDictionary AsDictionary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
 	}
 }

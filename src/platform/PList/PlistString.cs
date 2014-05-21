@@ -30,63 +30,73 @@ namespace CocosSharp
 {
 	public class PlistString : PlistObject<string>
 	{
+		#region Properties
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override byte[] AsBinary
+		{
+			get { return System.Text.Encoding.UTF8.GetBytes(Value); }
+		}
+
+		public override int AsInt
+		{
+			get
+			{
+				int result = 0;
+				int.TryParse(Value, out result);
+				return result;
+			}
+		}
+
+		public override float AsFloat
+		{
+			get
+			{
+				float result = 0;
+				float.TryParse(Value, out result);
+				return result;
+			}
+		}
+
+		public override string AsString
+		{
+			get { return Value; }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
 		public PlistString(string value) : base(value)
 		{
 		}
-		
-		public override void Write (System.Xml.XmlWriter writer)
+
+		#endregion Constructors
+
+
+		public override void Write(System.Xml.XmlWriter writer)
 		{
 			writer.WriteElementString ("string", Value);
 		}
-
-	    public override byte[] AsBinary
-	    {
-	        get { return System.Text.Encoding.UTF8.GetBytes(Value); }
-	    }
-
-	    public override int AsInt
-	    {
-	        get
-	        {
-                int result = 0;
-                int.TryParse(Value, out result);
-                return result;
-            }
-	    }
-
-	    public override float AsFloat
-	    {
-	        get
-	        {
-	            float result = 0;
-	            float.TryParse(Value, out result);
-	            return result;
-	        }
-	    }
-
-	    public override string AsString
-	    {
-	        get { return Value; }
-	    }
-
-	    public override DateTime AsDate
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override bool AsBool
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistArray AsArray
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistDictionary AsDictionary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
 	}
 }

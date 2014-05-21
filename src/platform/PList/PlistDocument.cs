@@ -43,9 +43,83 @@ namespace CocosSharp
 #endif
 	public class PlistDocument : PlistObjectBase
     {
-        private const string version = "1.0";
+		#region Enums
 
-        private PlistObjectBase root;
+		internal enum ValueType : byte
+		{
+			Array,
+			Bool,
+			Data,
+			Date,
+			Dictionary,
+			Integer,
+			Null,
+			Real,
+			String
+		}
+
+		#endregion Enums
+
+
+		const string version = "1.0";
+
+		// Taken from https://github.com/animetrics/PlistCS and modified to work for Cocos2D-XNA
+		static List<int> offsetTable = new List<int>();
+		static List<byte> objectTable = new List<byte>();
+		static int refCount;
+		static int objRefSize;
+		static int offsetByteSize;
+		static long offsetTableOffset;
+
+
+		#region Properties
+
+		public PlistObjectBase Root { get; set; }
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override float AsFloat
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
 
         public PlistDocument(string data)
         {
@@ -68,8 +142,11 @@ namespace CocosSharp
 
         public PlistDocument(PlistObjectBase root)
         {
-            this.root = root;
+			this.Root = root;
         }
+
+		#endregion Constructors
+
 
         public void LoadFromXmlFile(Stream data)
         {
@@ -92,7 +169,7 @@ namespace CocosSharp
 				using (BinaryReader reader = new BinaryReader(data))
 				{
 					byte[] plistData = reader.ReadBytes((int) reader.BaseStream.Length);
-					root = readBinary(plistData);
+					Root = ReadBinary(plistData);
 				}
 
 			} else {
@@ -147,10 +224,10 @@ namespace CocosSharp
             reader.ReadToDescendant("plist");
             while (reader.Read() && reader.NodeType != XmlNodeType.Element) ;
             if (!reader.EOF)
-                root = LoadFromNode(reader);
+				Root = LoadFromNode(reader);
         }
 
-        private PlistObjectBase LoadFromNode(XmlReader reader)
+        PlistObjectBase LoadFromNode(XmlReader reader)
         {
             Debug.Assert(reader.NodeType == XmlNodeType.Element);
             bool isEmpty = reader.IsEmptyElement;
@@ -225,7 +302,7 @@ namespace CocosSharp
             }
         }
 
-        private PlistDictionary LoadDictionaryContents(XmlReader reader, PlistDictionary dict)
+       	PlistDictionary LoadDictionaryContents(XmlReader reader, PlistDictionary dict)
         {
             Debug.Assert(reader.NodeType == XmlNodeType.Element && reader.LocalName == "key");
             while (!reader.EOF && reader.NodeType == XmlNodeType.Element)
@@ -248,60 +325,14 @@ namespace CocosSharp
             return dict;
         }
 
-        public PlistObjectBase Root
-        {
-            get { return root; }
-            set { root = value; }
-        }
-
         public override void Write(System.Xml.XmlWriter writer)
         {
             writer.WriteStartDocument();
             writer.WriteDocType("plist", "-//Apple Computer//DTD PLIST 1.0//EN", "http://www.apple.com/DTDs/PropertyList-1.0.dtd", null);
             writer.WriteStartElement("plist");
             writer.WriteAttributeString("version", version);
-            root.Write(writer);
+			Root.Write(writer);
             writer.WriteEndDocument();
-        }
-
-        public override byte[] AsBinary
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override int AsInt
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override float AsFloat
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override string AsString
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override DateTime AsDate
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool AsBool
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override PlistArray AsArray
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override PlistDictionary AsDictionary
-        {
-            get { throw new NotImplementedException(); }
         }
 
         public void WriteToFile(string filename)
@@ -325,30 +356,9 @@ namespace CocosSharp
             }
         }
 
-		internal enum ValueType : byte
-        {
-            Array,
-            Bool,
-            Data,
-            Date,
-            Dictionary,
-            Integer,
-            Null,
-            Real,
-            String
-        }
+		#region Binary Plist Reader
 
-#region Binary Plist Reader
-
-		// Taken from https://github.com/animetrics/PlistCS and modified to work for Cocos2D-XNA
-		private static List<int> offsetTable = new List<int>();
-		private static List<byte> objectTable = new List<byte>();
-		private static int refCount;
-		private static int objRefSize;
-		private static int offsetByteSize;
-		private static long offsetTableOffset;
-
-		private PlistObjectBase readBinary(byte[] data)
+		PlistObjectBase ReadBinary(byte[] data)
 		{
 			offsetTable.Clear();
 			List<byte> offsetTableBytes = new List<byte>();
@@ -362,23 +372,23 @@ namespace CocosSharp
 
 			List<byte> trailer = bList.GetRange(bList.Count - 32, 32);
 
-			parseTrailer(trailer);
+			ParseTrailer(trailer);
 
 			objectTable = bList.GetRange(0, (int)offsetTableOffset);
 
 			offsetTableBytes = bList.GetRange((int)offsetTableOffset, bList.Count - (int)offsetTableOffset - 32);
 
-			parseOffsetTable(offsetTableBytes);
+			ParseOffsetTable(offsetTableBytes);
 
-			return parseBinary(0);
+			return ParseBinary(0);
 		}
 
-		private byte[] RegulateNullBytes(byte[] value)
+		byte[] RegulateNullBytes(byte[] value)
 		{
 			return RegulateNullBytes(value, 1);
 		}
 
-		private byte[] RegulateNullBytes(byte[] value, int minBytes)
+		byte[] RegulateNullBytes(byte[] value, int minBytes)
 		{
 			Array.Reverse(value);
 			List<byte> bytes = new List<byte>(value);
@@ -405,7 +415,7 @@ namespace CocosSharp
 			return value;
 		}
 
-		private void parseTrailer(List<byte> trailer)
+		void ParseTrailer(List<byte> trailer)
 		{
 			offsetByteSize = BitConverter.ToInt32(RegulateNullBytes(trailer.GetRange(6, 1).ToArray(), 4), 0);
 			objRefSize = BitConverter.ToInt32(RegulateNullBytes(trailer.GetRange(7, 1).ToArray(), 4), 0);
@@ -417,7 +427,7 @@ namespace CocosSharp
 			offsetTableOffset = BitConverter.ToInt64(offsetTableOffsetBytes, 0);
 		}
 
-		private void parseOffsetTable(List<byte> offsetTableBytes)
+		void ParseOffsetTable(List<byte> offsetTableBytes)
 		{
 			for (int i = 0; i < offsetTableBytes.Count; i += offsetByteSize)
 			{
@@ -427,7 +437,7 @@ namespace CocosSharp
 			}
 		}
 
-		private int getCount(int bytePosition, out int newBytePosition)
+		int GetCount(int bytePosition, out int newBytePosition)
 		{
 			byte headerByte = objectTable[bytePosition];
 			byte headerByteTrail = Convert.ToByte(headerByte & 0xf);
@@ -438,11 +448,11 @@ namespace CocosSharp
 				newBytePosition = bytePosition + 1;
 			}
 			else
-				count = ((PlistInteger)parseBinaryInt(bytePosition + 1, out newBytePosition)).AsInt;
+				count = ((PlistInteger)ParseBinaryInt(bytePosition + 1, out newBytePosition)).AsInt;
 			return count;
 		}
 
-		private PlistObjectBase parseBinary(int objRef)
+		PlistObjectBase ParseBinary(int objRef)
 		{
 			byte header = objectTable[offsetTable[objRef]];
 			switch (header & 0xF0)
@@ -464,41 +474,41 @@ namespace CocosSharp
 			}
 				case 0x10:
 			{
-				return parseBinaryInt(offsetTable[objRef]);
+				return ParseBinaryInt(offsetTable[objRef]);
 			}
 				case 0x20:
 			{
-				return parseBinaryReal(offsetTable[objRef]);
+				return ParseBinaryReal(offsetTable[objRef]);
 			}
 				case 0x30:
 			{
-				return parseBinaryDate(offsetTable[objRef]);
+				return ParseBinaryDate(offsetTable[objRef]);
 			}
 				case 0x40:
 			{
-				return parseBinaryByteArray(offsetTable[objRef]);
+				return ParseBinaryByteArray(offsetTable[objRef]);
 			}
 				case 0x50://String ASCII
 			{
-				return parseBinaryAsciiString(offsetTable[objRef]);
+				return ParseBinaryAsciiString(offsetTable[objRef]);
 			}
 				case 0x60://String Unicode
 			{
-				return parseBinaryUnicodeString(offsetTable[objRef]);
+				return ParseBinaryUnicodeString(offsetTable[objRef]);
 			}
 				case 0xD0:
 			{
-				return parseBinaryDictionary(objRef);
+				return ParseBinaryDictionary(objRef);
 			}
 				case 0xA0:
 			{
-				return parseBinaryArray(objRef);
+				return ParseBinaryArray(objRef);
 			}
 			}
 			throw new Exception("This type is not supported");
 		}
 
-		private PlistDate parseBinaryDate(int headerPosition)
+		PlistDate ParseBinaryDate(int headerPosition)
 		{
 			byte[] buffer = objectTable.GetRange(headerPosition + 1, 8).ToArray();
 			Array.Reverse(buffer);
@@ -507,13 +517,13 @@ namespace CocosSharp
 			return new PlistDate(result);
 		}
 
-		private PlistInteger parseBinaryInt(int headerPosition)
+		PlistInteger ParseBinaryInt(int headerPosition)
 		{
 			int output;
-			return parseBinaryInt(headerPosition, out output);
+			return ParseBinaryInt(headerPosition, out output);
 		}
 
-		private PlistInteger parseBinaryInt(int headerPosition, out int newHeaderPosition)
+		PlistInteger ParseBinaryInt(int headerPosition, out int newHeaderPosition)
 		{
 			byte header = objectTable[headerPosition];
 			int byteCount = (int)Math.Pow(2, header & 0xf);
@@ -524,7 +534,7 @@ namespace CocosSharp
 			return new PlistInteger(BitConverter.ToInt32(RegulateNullBytes(buffer, 4), 0));
 		}
 
-		private PlistReal parseBinaryReal(int headerPosition)
+		PlistReal ParseBinaryReal(int headerPosition)
 		{
 			byte header = objectTable[headerPosition];
 			int byteCount = (int)Math.Pow(2, header & 0xf);
@@ -533,18 +543,20 @@ namespace CocosSharp
 
 			return new PlistReal(BitConverter.ToSingle(RegulateNullBytes(buffer, 8), 0));
 		}
-		private PlistString parseBinaryAsciiString(int headerPosition)
+
+		PlistString ParseBinaryAsciiString(int headerPosition)
 		{
 			int charStartPosition;
-			int charCount = getCount(headerPosition, out charStartPosition);
+			int charCount = GetCount(headerPosition, out charStartPosition);
 
 			var buffer = objectTable.GetRange(charStartPosition, charCount);
 			return buffer.Count > 0 ? new PlistString(Encoding.UTF8.GetString(buffer.ToArray(), 0, buffer.Count)) : new PlistString(string.Empty);
 		}
-		private PlistString parseBinaryUnicodeString(int headerPosition)
+
+		PlistString ParseBinaryUnicodeString(int headerPosition)
 		{
 			int charStartPosition;
-			int charCount = getCount(headerPosition, out charStartPosition);
+			int charCount = GetCount(headerPosition, out charStartPosition);
 			charCount = charCount * 2;
 
 			byte[] buffer = new byte[charCount];
@@ -569,14 +581,15 @@ namespace CocosSharp
 
 			return new PlistString(Encoding.Unicode.GetString(buffer, 0, charCount));
 		}
-        private PlistArray parseBinaryByteArray(int headerPosition)
+
+		PlistArray ParseBinaryByteArray(int headerPosition)
 		{
 			int byteStartPosition;
-			int byteCount = getCount(headerPosition, out byteStartPosition);
+			int byteCount = GetCount(headerPosition, out byteStartPosition);
 			return new PlistArray(objectTable.GetRange(byteStartPosition, byteCount).ToArray());
 		}
 
-		private PlistDictionary parseBinaryDictionary(int objRef)
+		PlistDictionary ParseBinaryDictionary(int objRef)
 		{
 			var buffer = new PlistDictionary(true);
 
@@ -586,8 +599,7 @@ namespace CocosSharp
 			byte dictByte = objectTable[offsetTable[objRef]];
 
 			int refStartPosition;
-			refCount = getCount(offsetTable[objRef], out refStartPosition);
-
+			refCount = GetCount(offsetTable[objRef], out refStartPosition);
 
 			if (refCount < 15)
 				refStartPosition = offsetTable[objRef] + 1;
@@ -603,15 +615,15 @@ namespace CocosSharp
 
 			for (int i = 0; i < refCount; i++)
 			{
-				var key = ((PlistString)parseBinary (refs [i])).AsString;
-				var val = parseBinary (refs [i + refCount]);
+				var key = ((PlistString)ParseBinary (refs [i])).AsString;
+				var val = ParseBinary (refs [i + refCount]);
 				buffer.Add(key, val);
 			}
 
 			return buffer;
 		}
 
-		private PlistArray parseBinaryArray(int objRef)
+		PlistArray ParseBinaryArray(int objRef)
 		{
 			var buffer = new PlistArray ();
 			List<int> refs = new List<int>();
@@ -620,7 +632,7 @@ namespace CocosSharp
 			byte arrayByte = objectTable[offsetTable[objRef]];
 
 			int refStartPosition;
-			refCount = getCount(offsetTable[objRef], out refStartPosition);
+			refCount = GetCount(offsetTable[objRef], out refStartPosition);
 
 
 			if (refCount < 15)
@@ -638,24 +650,24 @@ namespace CocosSharp
 
 			for (int i = 0; i < refCount; i++)
 			{
-				buffer.Add(parseBinary(refs[i]));
+				buffer.Add(ParseBinary(refs[i]));
 			}
 
 			return buffer;
 		}
 
-		private DateTime ConvertFromAppleTimeStamp(double timestamp)
+		DateTime ConvertFromAppleTimeStamp(double timestamp)
 		{
 			DateTime origin = new DateTime(2001, 1, 1, 0, 0, 0, 0);
 			return origin.AddSeconds(timestamp);
 		}
 
-#endregion Binary Plist Reader
+		#endregion Binary Plist Reader
 
 
 		internal class PlistDocumentReader : ContentTypeReader<PlistDocument>
         {
-            private string[] _stringPool;
+            string[] stringPool;
 
             protected override PlistDocument Read(ContentReader input, PlistDocument existingInstance)
             {
@@ -664,9 +676,9 @@ namespace CocosSharp
                     existingInstance = new PlistDocument();
                 }
 
-                _stringPool = input.ReadObject<string[]>();
+				stringPool = input.ReadObject<string[]>();
 
-                existingInstance.root = ReadValue(input);
+				existingInstance.Root = ReadValue(input);
                 
                 return existingInstance;
             }
@@ -701,7 +713,7 @@ namespace CocosSharp
                         var dict = new PlistDictionary();
                         for (int i = 0; i < count; i++)
                         {
-                            string key = _stringPool[input.ReadInt32()];
+                            string key = stringPool[input.ReadInt32()];
                             dict.Add(key, ReadValue(input));
                         }
                         return dict;
@@ -716,7 +728,7 @@ namespace CocosSharp
                         return new PlistReal(input.ReadSingle());
 
                     case ValueType.String:
-                        return new PlistString(_stringPool[input.ReadInt32()]);
+                        return new PlistString(stringPool[input.ReadInt32()]);
 
                     default:
                         throw new InvalidOperationException();

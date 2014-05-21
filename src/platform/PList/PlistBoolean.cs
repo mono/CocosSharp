@@ -30,55 +30,64 @@ namespace CocosSharp
 {
 	public class PlistBoolean : PlistObject<bool>
 	{
+		#region Properties
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override float AsFloat
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { return Value; }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { return null; }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { return null; }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
 		public PlistBoolean(bool value) : base(value)
 		{
 		}
-		
+
+		#endregion Constructors
+
+
 		public override void Write (System.Xml.XmlWriter writer)
 		{
 			writer.WriteStartElement (Value ? "true" : "false");
 			writer.WriteEndElement ();
 		}
-
-	    public override byte[] AsBinary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override int AsInt
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override float AsFloat
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override string AsString
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override DateTime AsDate
-        {
-            get { throw new NotImplementedException(); }
-        }
-
-        public override bool AsBool
-        {
-            get { return Value; }
-        }
-
-        public override PlistArray AsArray
-        {
-            get { return null; }
-        }
-
-        public override PlistDictionary AsDictionary
-        {
-            get { return null; }
-        }
-
 	}
 }

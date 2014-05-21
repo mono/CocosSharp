@@ -32,6 +32,64 @@ namespace CocosSharp
 {
 	public class PlistArray : PlistObject<List<PlistObjectBase>>, IEnumerable<PlistObjectBase>
 	{
+		#region Properties
+
+		public PlistObjectBase this[int index]
+		{
+			get { return Value[index]; }
+			set { Value[index] = value; }
+		}
+
+		public int Count 
+		{
+			get { return Value.Count; }
+		}
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override float AsFloat
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { return this; }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { return null; }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
 		public PlistArray () : base(new List<PlistObjectBase> ())
 		{
 		}
@@ -55,13 +113,10 @@ namespace CocosSharp
             }
         }
 
-	    public PlistObjectBase this[int index]
-	    {
-            get { return Value[index]; }
-            set { Value[index] = value; }
-	    }
+		#endregion Constructors
 
-	    public override void Write (System.Xml.XmlWriter writer)
+
+	    public override void Write(System.Xml.XmlWriter writer)
 		{
 			writer.WriteStartElement ("array");
 			foreach (PlistObjectBase o in this)
@@ -69,73 +124,29 @@ namespace CocosSharp
 			writer.WriteEndElement ();
 		}
 
-	    public override byte[] AsBinary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override int AsInt
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override float AsFloat
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override string AsString
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override DateTime AsDate
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override bool AsBool
-	    {
-            get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistArray AsArray
-	    {
-	        get { return this; }
-	    }
-
-	    public override PlistDictionary AsDictionary
-	    {
-	        get { return null; }
-	    }
-
-	    public void Clear ()
+	    public void Clear()
 		{
-			Value.Clear ();
+			Value.Clear();
 		}
 
-		public void Add (PlistObjectBase value)
+		public void Add(PlistObjectBase value)
 		{
 			Value.Add (value);
 		}
 
-		public void Add (IDictionary value)
+		public void Add(IDictionary value)
 		{
 			Value.Add (new PlistDictionary (value));
 		}
 
-		public bool Remove (PlistObjectBase value)
+		public bool Remove(PlistObjectBase value)
 		{
 			return Value.Remove (value);
 		}
 
-		public bool Contains (PlistObjectBase value)
+		public bool Contains(PlistObjectBase value)
 		{
 			return Value.Contains (value);
-		}
-
-		public int Count {
-			get { return Value.Count; }
 		}
 
 		public IEnumerator<PlistObjectBase> GetEnumerator ()
@@ -147,7 +158,5 @@ namespace CocosSharp
 		{
 			return Value.GetEnumerator ();
 		}
-
-
 	}
 }

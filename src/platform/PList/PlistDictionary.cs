@@ -32,43 +32,119 @@ namespace CocosSharp
 {
 	public class PlistDictionary : PlistObjectBase, IEnumerable<KeyValuePair<string, PlistObjectBase>>
 	{
-		private List<string> keys;
-		private Dictionary<string, PlistObjectBase> dict = new Dictionary<string, PlistObjectBase> ();
+		static PlistNull plistNull = new PlistNull();
 
-		public PlistDictionary () : this(false)
+		List<string> keys;
+		Dictionary<string, PlistObjectBase> dict = new Dictionary<string, PlistObjectBase> ();
+
+
+		#region Properties
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override float AsFloat
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { return null; }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { return this; }
+		}
+
+		public int Count 
+		{
+			get { return dict.Count; }
+		}
+
+		public PlistObjectBase this[string key] 
+		{
+			get
+			{
+				PlistObjectBase value;
+				if (dict.TryGetValue(key, out value))
+					return value;
+				return plistNull;
+			}
+			set {
+				if (keys != null) {
+					if (!dict.ContainsKey (key))
+						keys.Add (key);
+				}
+				dict[key] = value;
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		public PlistDictionary() : this(false)
 		{
 		}
 
-		public PlistDictionary (bool keepOrder)
+		public PlistDictionary(bool keepOrder)
 		{
 			if (keepOrder) {
 				keys = new List<string> ();
 			}
 		}
-
-		public PlistDictionary (Dictionary<string, PlistObjectBase> value) : this(value, false)
+			
+		public PlistDictionary(Dictionary<string, PlistObjectBase> value) : this(value, false)
 		{
 		}
 
-		public PlistDictionary (Dictionary<string, PlistObjectBase> value, bool keepOrder) : this(keepOrder)
+		public PlistDictionary(Dictionary<string, PlistObjectBase> value, bool keepOrder) : this(keepOrder)
 		{
 			foreach (KeyValuePair<string, PlistObjectBase> item in value) {
 				Add (item.Key, item.Value);
 			}
 		}
 
-		public PlistDictionary (IDictionary value) : this(value, false)
+		public PlistDictionary(IDictionary value) : this(value, false)
 		{
 		}
 
-		public PlistDictionary (IDictionary value, bool keepOrder) : this(keepOrder)
+		public PlistDictionary(IDictionary value, bool keepOrder) : this(keepOrder)
 		{
 			foreach (DictionaryEntry item in value) {
 				Add ((string)item.Key, ObjectToPlistObject (item.Value));
 			}
 		}
 
-		public override void Write (System.Xml.XmlWriter writer)
+		#endregion Constructors
+
+
+		public override void Write(System.Xml.XmlWriter writer)
 		{
 			writer.WriteStartElement ("dict");
 			foreach (KeyValuePair<string, PlistObjectBase> item in this) {
@@ -78,59 +154,20 @@ namespace CocosSharp
 			writer.WriteEndElement ();
 		}
 
-	    public override byte[] AsBinary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
 
-	    public override int AsInt
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override float AsFloat
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override string AsString
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override DateTime AsDate
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override bool AsBool
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistArray AsArray
-	    {
-	        get { return null; }
-	    }
-
-	    public override PlistDictionary AsDictionary
-	    {
-	        get { return this; }
-	    }
-
-	    public void Clear ()
+	    public void Clear()
 		{
 			if (keys != null) {
 				keys.Clear ();
 			}
 
-			dict.Clear ();
+			dict.Clear();
 		}
 
-		public void Add (string key, PlistObjectBase value)
+		public void Add(string key, PlistObjectBase value)
 		{
 			if (keys != null) {
-				keys.Add (key);
+				keys.Add(key);
 			}
 
 			if (dict.ContainsKey (key)) {
@@ -140,40 +177,21 @@ namespace CocosSharp
 			}
 		}
 
-		public bool Remove (string key)
+		public bool Remove(string key)
 		{
 			if (keys != null) {
 				keys.Remove (key);
 			}
 
-			return dict.Remove (key);
+			return dict.Remove(key);
 		}
 
-		public bool ContainsKey (string key)
+		public bool ContainsKey(string key)
 		{
 			return dict.ContainsKey (key);
 		}
 
-	    private static PlistNull _null = new PlistNull();
-
-		public PlistObjectBase this[string key] {
-			get
-			{
-                PlistObjectBase value;
-                if (dict.TryGetValue(key, out value))
-                    return value;
-                return _null;
-            }
-			set {
-				if (keys != null) {
-					if (!dict.ContainsKey (key))
-						keys.Add (key);
-				}
-				dict[key] = value;
-			}
-		}
-		
-		public PlistObjectBase TryGetValue (string key)
+		public PlistObjectBase TryGetValue(string key)
 		{
 			PlistObjectBase value;
 			if (dict.TryGetValue (key, out value))
@@ -181,11 +199,7 @@ namespace CocosSharp
 			return null;
 		}
 
-		public int Count {
-			get { return dict.Count; }
-		}
-
-		private IEnumerator<KeyValuePair<string, PlistObjectBase>> GetEnumeratorFromKeys ()
+		IEnumerator<KeyValuePair<string, PlistObjectBase>> GetEnumeratorFromKeys ()
 		{
 			foreach (string key in keys) {
 				yield return new KeyValuePair<string, PlistObjectBase> (key, dict[key]);

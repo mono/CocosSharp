@@ -30,55 +30,66 @@ namespace CocosSharp
 {
 	public class PlistDate : PlistObject<DateTime>
 	{
+		static readonly string plistDateFormat = "yyyy-mm-ddThh:mm:ssZ";
+
+
+		#region Properties
+
+		public override byte[] AsBinary
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override int AsInt
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override float AsFloat
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override string AsString
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override DateTime AsDate
+		{
+			get { return Value; }
+		}
+
+		public override bool AsBool
+		{
+			get { throw new NotImplementedException(); }
+		}
+
+		public override PlistArray AsArray
+		{
+			get { return null; }
+		}
+
+		public override PlistDictionary AsDictionary
+		{
+			get { return null; }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
 		public PlistDate (DateTime value) : base(value)
 		{
 		}
 
-		static readonly string plistDateFormat = "yyyy-mm-ddThh:mm:ssZ";
-		
-		public override void Write (System.Xml.XmlWriter writer)
+		#endregion Constructors
+
+
+		public override void Write(System.Xml.XmlWriter writer)
 		{
 			writer.WriteElementString ("date", Value.ToUniversalTime ().ToString (plistDateFormat));
 		}
-
-	    public override byte[] AsBinary
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override int AsInt
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override float AsFloat
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override string AsString
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override DateTime AsDate
-	    {
-	        get { return Value; }
-	    }
-
-	    public override bool AsBool
-	    {
-	        get { throw new NotImplementedException(); }
-	    }
-
-	    public override PlistArray AsArray
-	    {
-            get { return null; }
-        }
-
-	    public override PlistDictionary AsDictionary
-	    {
-            get { return null; }
-        }
 	}
 }

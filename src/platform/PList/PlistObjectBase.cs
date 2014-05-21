@@ -31,6 +31,15 @@ namespace CocosSharp
 {
 	public abstract class PlistObjectBase
 	{
+		public abstract byte[] AsBinary { get; }
+		public abstract int AsInt { get; }
+		public abstract float AsFloat { get; }
+		public abstract string AsString { get; }
+		public abstract DateTime AsDate { get; }
+		public abstract bool AsBool { get; }
+		public abstract PlistArray AsArray { get; }
+		public abstract PlistDictionary AsDictionary { get; }
+
 		public abstract void Write (System.Xml.XmlWriter writer);
 
 		protected static PlistObjectBase ObjectToPlistObject (object value)
@@ -88,13 +97,5 @@ namespace CocosSharp
 		}
         */
 
-        public abstract byte[] AsBinary { get; }
-	    public abstract int AsInt { get; }
-        public abstract float AsFloat { get; }
-        public abstract string AsString { get; }
-        public abstract DateTime AsDate { get; }
-        public abstract bool AsBool { get; }
-        public abstract PlistArray AsArray { get; }
-        public abstract PlistDictionary AsDictionary { get; }
 	}
 }
