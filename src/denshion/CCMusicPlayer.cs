@@ -1,5 +1,15 @@
 using System;
+using System.IO;
+#if MACOS
+using MonoMac.AVFoundation;
+using MonoMac.Foundation;
+#elif IOS
+using MonoTouch.AVFoundation;
+using MonoTouch.Foundation;
+#else
 using Microsoft.Xna.Framework.Media;
+#endif
+
 #if WINDOWS_PHONE8
 using Microsoft.Phone.Shell;
 #endif
@@ -14,14 +24,19 @@ namespace CocosDenshion
     /// </summary>
 	public class CCMusicPlayer : IDisposable
     {
-		/// Track if we did play our own game song, otherwise the media player is owned
-		/// by the user of the device and that user is listening to background music.
-		bool didPlayGameSong;
-		bool isRepeatingAfterClose;
-		bool isShuffleAfterClose;
-		float volumeAfterClose = 1f;
+		#if MACOS || IOS
+        static readonly string[] allowedTypes = { "m4a", "aac", "mp3" };
+		AVAudioPlayer music;
+		#else
+        /// Track if we did play our own game song, otherwise the media player is owned
+        /// by the user of the device and that user is listening to background music.
+        bool didPlayGameSong;
+        bool isRepeatingAfterClose;
+        bool isShuffleAfterClose;
+        float volumeAfterClose = 1f;
 		Song songToPlayAfterClose;
 		Song music;
+		#endif
 
 
 		#region Properties
@@ -30,31 +45,40 @@ namespace CocosDenshion
 
 		public float Volume
 		{
-			get { 
-				return MediaPlayer.Volume; 
+			get 
+			{ 
+				#if MACOS || IOS
+				return music != null ? music.Volume : 0.0f;
+				#else
+				return MediaPlayer.Volume;
+				#endif
 			}
 
 			set
 			{
-				if (value >= 0.0f && value <= 1.0f)
-				{
-					MediaPlayer.Volume = value;
-				}
+				value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
+
+				#if MACOS || IOS
+				if(music != null) music.Volume = value;
+				#else
+				MediaPlayer.Volume = value;
+				#endif
 			}
 		}
-
 
 		// Returns true if any song is playing in the media player, even if it is not one of the songs in the game.
 		public bool Playing
 		{
 			get 
 			{
-				if (MediaState.Playing == MediaPlayer.State) 
-				{
-					return true;
-				}
-
-				return false;
+				#if MACOS
+				// On Mac, AVAudioSession is not implemented. Moreover, on a desktop we're not worried if other audio is playing.
+				return PlayingMySong; 
+				#elif IOS
+                return PlayingMySong || AVAudioSession.SharedInstance().OtherAudioPlaying;
+				#else
+				return (MediaState.Playing == MediaPlayer.State)
+				#endif
 			}
 		}
 
@@ -63,9 +87,12 @@ namespace CocosDenshion
 		{
 			get 
 			{
+				#if MACOS || IOS
+				return music != null ? music.Playing : false;
+				#elif
 				if (!didPlayGameSong) 
 				{
-					return (false);
+					return false;
 				}
 				if (MediaState.Playing == MediaPlayer.State) 
 				{
@@ -73,6 +100,7 @@ namespace CocosDenshion
 				}
 
 				return false;
+				#endif
 			}
 		}
 
@@ -84,10 +112,12 @@ namespace CocosDenshion
         public CCMusicPlayer()
         {
             SoundID = 0;
-            if (MediaPlayer.State == MediaState.Playing)
-            {
-                SaveMediaState();
-            }
+
+			#if IOS
+			AVAudioSession.SharedInstance().Init();
+			#elif !MACOS
+			if(MediaPlayer.State == MediaState.Playing) SaveMediaState();
+			#endif
         }
 
 		#endregion Constructor
@@ -95,7 +125,8 @@ namespace CocosDenshion
 
         public void SaveMediaState()
         {
-            try
+			#if !(MACOS || IOS)
+			try
             {
                 // User is playing a song, so remember the song state.
                 songToPlayAfterClose = MediaPlayer.Queue.ActiveSong;
@@ -108,11 +139,13 @@ namespace CocosDenshion
                 CCLog.Log("Failed to save the media state of the game.");
                 CCLog.Log(ex.ToString());
             }
+			#endif
         }
 
         public void RestoreMediaState()
         {
-            if (songToPlayAfterClose != null && didPlayGameSong)
+			#if !(MACOS || IOS)
+			if (songToPlayAfterClose != null && didPlayGameSong)
             {
                 try
                 {
@@ -127,6 +160,7 @@ namespace CocosDenshion
                     CCLog.Log(ex.ToString());
                 }
         	}
+			#endif
         }
 
 
@@ -158,6 +192,7 @@ namespace CocosDenshion
 			*/
 			this.Close();
 
+			#if !(MACOS || IOS)
 			try
 			{
 				RestoreMediaState();
@@ -166,68 +201,98 @@ namespace CocosDenshion
 			{
 				// Ignore
 			}
-
+			#endif
 		}
 
 		#endregion Cleaning up
 
 
-        public void Open(string pFileName, int uId)
+		public void Open(string fileName, int uId)
         {
-            if (string.IsNullOrEmpty(pFileName))
+			if (string.IsNullOrEmpty(fileName))
             {
                 return;
             }
 
             Close();
 
-            music = CCContentManager.SharedContentManager.Load<Song>(pFileName);
+			SoundID = uId;
 
-            SoundID = uId;
+			#if MACOS || IOS
+			string relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
+			string absFilePath = null;
+			foreach(string formatType in allowedTypes)
+			{
+                absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
+				if(absFilePath !=null)
+					break;
+			}
+            music = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
+			#elif
+			music = CCContentManager.SharedContentManager.Load<Song>(fileName);
+			#endif
+
         }
 
-        public void Play(bool bLoop)
+		public void Play(bool loop=false)
         {
-            if (null != music)
+			if (music !=null)
             {
-                MediaPlayer.IsRepeating = bLoop;
+				#if MACOS || IOS
+				music.NumberOfLoops = loop ? -1 : 1;
+				music.Play();
+				#elif
+				MediaPlayer.IsRepeating = bLoop;
                 MediaPlayer.Play(music);
-                didPlayGameSong = true;
+				didPlayGameSong = true;
+				#endif
             }
-        }
-
-        public void Play()
-        {
-            Play(false);
         }
 
         public void Close()
         {
-            if (Playing && didPlayGameSong)
+			if (PlayingMySong)
             {
                 Stop();
             }
+
             music = null;
         }
 
         public void Pause()
         {
-            MediaPlayer.Pause();
+			#if MACOS || IOS
+			music.Pause();
+			#elif
+			MediaPlayer.Pause();
+			#endif
         }
 
         public void Resume()
         {
-            MediaPlayer.Resume();
+			#if MACOS || IOS
+			music.Play();
+			#elif
+			MediaPlayer.Resume();
+			#endif
         }
 
         public void Stop()
         {
-            MediaPlayer.Stop();
+			#if MACOS || IOS
+			music.Stop();
+			#elif
+			MediaPlayer.Stop();
+			#endif
         }
 
         public void Rewind()
         {
-            Song s = MediaPlayer.Queue.ActiveSong;
+			#if MACOS || IOS
+			music.Pause();
+			music.CurrentTime = 0.0f;
+			#elif
+			Song s = MediaPlayer.Queue.ActiveSong;
 
             Stop();
 
@@ -239,6 +304,7 @@ namespace CocosDenshion
             {
                 MediaPlayer.Play(s);
             }
+			#endif
         }
     }
 }
