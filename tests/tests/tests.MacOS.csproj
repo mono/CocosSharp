@@ -5,7 +5,7 @@
     <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <OutputType>Exe</OutputType>
     <RootNamespace>tests</RootNamespace>
@@ -2043,12 +2043,6 @@
     <Content Include="Assets\Content\extensions\yellow_edit.xnb">
       <Link>Content\extensions\yellow_edit.xnb</Link>
     </Content>
-    <Content Include="Assets\Content\Sounds\background.wma">
-      <Link>Content\Sounds\background.wma</Link>
-    </Content>
-    <Content Include="Assets\Content\Sounds\background.xnb">
-      <Link>Content\Sounds\background.xnb</Link>
-    </Content>
     <Content Include="Assets\Content\Sounds\effect1.xnb">
       <Link>Content\Sounds\effect1.xnb</Link>
     </Content>
@@ -2337,6 +2331,7 @@
     <Content Include="Assets\Content\hd\Images\YellowSquare.xnb">
       <Link>Content\hd\Images\YellowSquare.xnb</Link>
     </Content>
+    <Content Include="Content\Sounds\background.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
