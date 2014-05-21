@@ -168,7 +168,9 @@ namespace tests
         public void closeCallback(object pSender)
         {
             CCDirector.SharedDirector.End();
+            #if !IOS
             CCApplication.SharedApplication.Game.Exit();
+            #endif
         }
 
 		void EnableGamePad()
