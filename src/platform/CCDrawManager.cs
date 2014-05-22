@@ -36,7 +36,7 @@ namespace CocosSharp
         private const int DefaultQuadBufferSize = 1024 * 4;
         public static string DefaultFont = "arial";
 
-		internal static BasicEffect PrimitiveEffect;
+		public static BasicEffect PrimitiveEffect;
 		internal static AlphaTestEffect AlphaTestEffect;
 
         private static BasicEffect m_defaultEffect;
@@ -150,7 +150,7 @@ namespace CocosSharp
             }
         }
 
-		internal static Matrix ViewMatrix
+		public static Matrix ViewMatrix
         {
             get { return m_viewMatrix; }
             set
@@ -160,7 +160,7 @@ namespace CocosSharp
             }
         }
 
-		internal static Matrix ProjectionMatrix
+		public static Matrix ProjectionMatrix
         {
             get { return m_projectionMatrix; }
             set
@@ -170,7 +170,7 @@ namespace CocosSharp
             }
         }
 
-		internal static Matrix WorldMatrix
+		public static Matrix WorldMatrix
         {
             get { return m_Matrix; }
             set
