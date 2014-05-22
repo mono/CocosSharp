@@ -77,7 +77,7 @@ namespace CocosDenshion
 				#elif IOS
                 return PlayingMySong || AVAudioSession.SharedInstance().OtherAudioPlaying;
 				#else
-				return (MediaState.Playing == MediaPlayer.State)
+                return (MediaState.Playing == MediaPlayer.State);
 				#endif
 			}
 		}
@@ -89,8 +89,8 @@ namespace CocosDenshion
 			{
 				#if MACOS || IOS
 				return music != null ? music.Playing : false;
-				#elif
-				if (!didPlayGameSong) 
+				#else
+                if (!didPlayGameSong) 
 				{
 					return false;
 				}
@@ -228,7 +228,7 @@ namespace CocosDenshion
 					break;
 			}
             music = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
-			#elif
+			#else
 			music = CCContentManager.SharedContentManager.Load<Song>(fileName);
 			#endif
 
@@ -241,8 +241,8 @@ namespace CocosDenshion
 				#if MACOS || IOS
 				music.NumberOfLoops = loop ? -1 : 1;
 				music.Play();
-				#elif
-				MediaPlayer.IsRepeating = bLoop;
+				#else
+				MediaPlayer.IsRepeating = loop;
                 MediaPlayer.Play(music);
 				didPlayGameSong = true;
 				#endif
@@ -263,7 +263,7 @@ namespace CocosDenshion
         {
 			#if MACOS || IOS
 			music.Pause();
-			#elif
+			#else
 			MediaPlayer.Pause();
 			#endif
         }
@@ -272,7 +272,7 @@ namespace CocosDenshion
         {
 			#if MACOS || IOS
 			music.Play();
-			#elif
+			#else
 			MediaPlayer.Resume();
 			#endif
         }
@@ -281,7 +281,7 @@ namespace CocosDenshion
         {
 			#if MACOS || IOS
 			music.Stop();
-			#elif
+			#else
 			MediaPlayer.Stop();
 			#endif
         }
@@ -291,7 +291,7 @@ namespace CocosDenshion
 			#if MACOS || IOS
 			music.Pause();
 			music.CurrentTime = 0.0f;
-			#elif
+			#else
 			Song s = MediaPlayer.Queue.ActiveSong;
 
             Stop();
