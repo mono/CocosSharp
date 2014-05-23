@@ -25,10 +25,9 @@ namespace CocosDenshion {
 		public void Dispose() { }
 		protected virtual void Dispose(bool disposing) { }
 		~CCMusicPlayer() { }
-		public void Open(string pFileName, int uId) { }
+		public void Open(string fileName, int uId) { }
 		public void Pause() { }
-		public void Play() { }
-		public void Play(bool bLoop) { }
+		public void Play(bool loop=false) { }
 		public void RestoreMediaState() { }
 		public void Resume() { }
 		public void Rewind() { }
@@ -1358,6 +1357,7 @@ namespace CocosSharp {
 	public static partial class CCDrawManager {
 		public static string DefaultFont;
 		public static int DrawCount;
+		public static Microsoft.Xna.Framework.Graphics.BasicEffect PrimitiveEffect;
 		public static Microsoft.Xna.Framework.Graphics.BlendState BlendState { get { return default(Microsoft.Xna.Framework.Graphics.BlendState); } set { } }
 		public static Microsoft.Xna.Framework.Graphics.DepthStencilState DepthStencilState { get { return default(Microsoft.Xna.Framework.Graphics.DepthStencilState); } set { } }
 		public static bool DepthTest { get { return default(bool); } set { } }
@@ -1365,6 +1365,7 @@ namespace CocosSharp {
 		public static CocosSharp.CCSize FrameSize { get { return default(CocosSharp.CCSize); } set { } }
 		public static Microsoft.Xna.Framework.Graphics.GraphicsDevice GraphicsDevice { get { return default(Microsoft.Xna.Framework.Graphics.GraphicsDevice); } set { } }
 		public static Microsoft.Xna.Framework.Graphics.IGraphicsDeviceService GraphicsDeviceService { set { } }
+		public static Microsoft.Xna.Framework.Matrix ProjectionMatrix { get { return default(Microsoft.Xna.Framework.Matrix); } set { } }
 		public static CocosSharp.CCResolutionPolicy ResolutionPolicy { get { return default(CocosSharp.CCResolutionPolicy); } }
 		public static float ScaleX { get { return default(float); } }
 		public static float ScaleY { get { return default(float); } }
@@ -1373,9 +1374,11 @@ namespace CocosSharp {
 		public static CocosSharp.CCDisplayOrientation SupportedOrientations { get { return default(CocosSharp.CCDisplayOrientation); } set { } }
 		public static bool TextureEnabled { get { return default(bool); } set { } }
 		public static bool VertexColorEnabled { get { return default(bool); } set { } }
+		public static Microsoft.Xna.Framework.Matrix ViewMatrix { get { return default(Microsoft.Xna.Framework.Matrix); } set { } }
 		public static CocosSharp.CCRect ViewPortRect { get { return default(CocosSharp.CCRect); } }
 		public static CocosSharp.CCPoint VisibleOrigin { get { return default(CocosSharp.CCPoint); } }
 		public static CocosSharp.CCSize VisibleSize { get { return default(CocosSharp.CCSize); } }
+		public static Microsoft.Xna.Framework.Matrix WorldMatrix { get { return default(Microsoft.Xna.Framework.Matrix); } set { } }
 		public static void BeginDraw() { }
 		public static bool BeginDrawMask() { return default(bool); }
 		public static bool BeginDrawMask(bool inverted) { return default(bool); }
@@ -3886,34 +3889,18 @@ namespace CocosSharp {
 		public void RemoveScriptEngine() { }
 	}
 	public partial class CCScrollView : CocosSharp.CCLayer {
-		protected bool _bounceable;
-		protected bool _clippingToBounds;
-		protected CocosSharp.CCNode _container;
-		protected CocosSharp.CCPoint _contentOffset;
-		protected CocosSharp.ICCScrollViewDelegate _delegate;
-		protected CocosSharp.CCScrollViewDirection _direction;
-		protected bool _dragging;
-		protected CocosSharp.CCPoint _maxInset;
-		protected float _maxScale;
-		protected CocosSharp.CCPoint _minInset;
-		protected float _minScale;
-		protected CocosSharp.CCPoint _scrollDistance;
-		protected System.Collections.Generic.List<CocosSharp.CCTouch> _touches;
-		protected float _touchLength;
-		protected bool _touchMoved;
-		protected CocosSharp.CCPoint _touchPoint;
-		protected CocosSharp.CCSize _viewSize;
 		public CCScrollView() { }
 		public CCScrollView(CocosSharp.CCSize size) { }
 		public CCScrollView(CocosSharp.CCSize size, CocosSharp.CCNode container) { }
-		public bool Bounceable { get { return default(bool); } set { } }
+		public bool Bounceable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool ClippingToBounds { get { return default(bool); } set { } }
 		public CocosSharp.CCNode Container { get { return default(CocosSharp.CCNode); } set { } }
+		public CocosSharp.CCPoint ContentOffset { get { return default(CocosSharp.CCPoint); } set { } }
 		public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
-		public CocosSharp.ICCScrollViewDelegate Delegate { get { return default(CocosSharp.ICCScrollViewDelegate); } set { } }
-		public CocosSharp.CCScrollViewDirection Direction { get { return default(CocosSharp.CCScrollViewDirection); } set { } }
-		public bool IsDragging { get { return default(bool); } }
-		public bool IsTouchMoved { get { return default(bool); } }
+		public CocosSharp.ICCScrollViewDelegate Delegate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.ICCScrollViewDelegate); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public CocosSharp.CCScrollViewDirection Direction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCScrollViewDirection); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public bool Dragging { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public bool IsTouchMoved { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
 		public CocosSharp.CCPoint MaxContainerOffset { get { return default(CocosSharp.CCPoint); } }
 		public float MaxScale { get { return default(float); } set { } }
 		public CocosSharp.CCPoint MinContainerOffset { get { return default(CocosSharp.CCPoint); } }
@@ -3922,14 +3909,12 @@ namespace CocosSharp {
 		public CocosSharp.CCSize ViewSize { get { return default(CocosSharp.CCSize); } set { } }
 		public float ZoomScale { get { return default(float); } set { } }
 		public override void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
-		public CocosSharp.CCPoint GetContentOffset() { return default(CocosSharp.CCPoint); }
 		public bool IsNodeVisible(CocosSharp.CCNode node) { return default(bool); }
 		public void Pause(object sender) { }
 		public void Resume(object sender) { }
-		public void SetContentOffset(CocosSharp.CCPoint offset) { }
-		public void SetContentOffset(CocosSharp.CCPoint offset, bool animated) { }
+		public void SetContentOffset(CocosSharp.CCPoint offset, bool animated=false) { }
 		public void SetContentOffsetInDuration(CocosSharp.CCPoint offset, float dt) { }
-		public void SetZoomScale(float value, bool animated) { }
+		public void SetZoomScale(float value, bool animated=false) { }
 		public void SetZoomScaleInDuration(float s, float dt) { }
 		public virtual new bool TouchBegan(CocosSharp.CCTouch pTouch, CocosSharp.CCEvent touchEvent) { return default(bool); }
 		public virtual new void TouchCancelled(CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent) { }
@@ -4356,30 +4341,12 @@ namespace CocosSharp {
 	}
 	public delegate void CCSwitchValueChangedDelegate(object sender, bool bState);
 	public partial class CCTableView : CocosSharp.CCScrollView, CocosSharp.ICCScrollViewDelegate {
-		protected CocosSharp.CCArrayForObjectSorting _cellsFreed;
-		protected System.Collections.Generic.List<System.Single> _cellsPositions;
-		protected CocosSharp.CCArrayForObjectSorting _cellsUsed;
-		protected CocosSharp.ICCTableViewDataSource _dataSource;
-		protected System.Collections.Generic.List<System.Int32> _indices;
-		protected CocosSharp.CCScrollViewDirection _oldDirection;
-		protected CocosSharp.ICCTableViewDelegate _tableViewDelegate;
-		protected CocosSharp.CCTableViewCell _touchedCell;
-		protected CocosSharp.CCTableViewVerticalFillOrder _vordering;
 		public CCTableView() { }
 		public CCTableView(CocosSharp.ICCTableViewDataSource dataSource, CocosSharp.CCSize size) { }
 		public CCTableView(CocosSharp.ICCTableViewDataSource dataSource, CocosSharp.CCSize size, CocosSharp.CCNode container) { }
-		public CocosSharp.ICCTableViewDataSource DataSource { get { return default(CocosSharp.ICCTableViewDataSource); } set { } }
-		public new CocosSharp.ICCTableViewDelegate Delegate { get { return default(CocosSharp.ICCTableViewDelegate); } set { } }
+		public CocosSharp.ICCTableViewDataSource DataSource { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.ICCTableViewDataSource); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public new CocosSharp.ICCTableViewDelegate Delegate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.ICCTableViewDelegate); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public CocosSharp.CCTableViewVerticalFillOrder VerticalFillOrder { get { return default(CocosSharp.CCTableViewVerticalFillOrder); } set { } }
-		protected int __indexFromOffset(CocosSharp.CCPoint offset) { return default(int); }
-		protected CocosSharp.CCPoint __offsetFromIndex(int index) { return default(CocosSharp.CCPoint); }
-		protected void _addCellIfNecessary(CocosSharp.CCTableViewCell cell) { }
-		protected int _indexFromOffset(CocosSharp.CCPoint offset) { return default(int); }
-		protected void _moveCellOutOfSight(CocosSharp.CCTableViewCell cell) { }
-		protected CocosSharp.CCPoint _offsetFromIndex(int index) { return default(CocosSharp.CCPoint); }
-		protected void _setIndexForCell(int index, CocosSharp.CCTableViewCell cell) { }
-		protected void _updateCellPositions() { }
-		protected void _updateContentSize() { }
 		public CocosSharp.CCTableViewCell CellAtIndex(int idx) { return default(CocosSharp.CCTableViewCell); }
 		public CocosSharp.CCTableViewCell DequeueCell() { return default(CocosSharp.CCTableViewCell); }
 		public void ReloadData() { }
@@ -4472,10 +4439,12 @@ namespace CocosSharp {
 		public bool HasPremultipliedAlpha { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
 		public bool IsAntialiased { get { return default(bool); } set { } }
 		public bool IsTextureDefined { get { return default(bool); } }
+		public Microsoft.Xna.Framework.Graphics.Texture2D Name { get { return default(Microsoft.Xna.Framework.Graphics.Texture2D); } }
 		public CocosSharp.CCSurfaceFormat PixelFormat { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSurfaceFormat); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public int PixelsHigh { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
 		public int PixelsWide { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
 		public Microsoft.Xna.Framework.Graphics.SamplerState SamplerState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.SamplerState); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public Microsoft.Xna.Framework.Graphics.Texture2D XNATexture { get { return default(Microsoft.Xna.Framework.Graphics.Texture2D); } }
 		public static CocosSharp.CCImageFormat DetectImageFormat(System.IO.Stream stream) { return default(CocosSharp.CCImageFormat); }
 		protected override void Dispose(bool disposing) { }
 		public void GenerateMipmap() { }
@@ -5428,7 +5397,7 @@ namespace CocosSharp {
 		public override float AsFloat { get { return default(float); } }
 		public override int AsInt { get { return default(int); } }
 		public override string AsString { get { return default(string); } }
-		public CocosSharp.PlistObjectBase Root { get { return default(CocosSharp.PlistObjectBase); } set { } }
+		public CocosSharp.PlistObjectBase Root { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.PlistObjectBase); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public void LoadFromXml(string data) { }
 		public void LoadFromXml(System.Xml.XmlReader reader) { }
 		public void LoadFromXmlFile(System.IO.Stream data) { }
@@ -5462,7 +5431,7 @@ namespace CocosSharp {
 	}
 	public abstract partial class PlistObject<T> : CocosSharp.PlistObjectBase {
 		public PlistObject(T value) { }
-		public virtual T Value { get { return default(T); } set { } }
+		public virtual T Value { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(T); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 	}
 	public abstract partial class PlistObjectBase {
 		protected PlistObjectBase() { }
