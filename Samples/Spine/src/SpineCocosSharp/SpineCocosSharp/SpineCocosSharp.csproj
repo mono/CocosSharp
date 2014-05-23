@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{564A4075-6F99-421B-98BC-D915EA25644E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SpineCocosSharp</RootNamespace>
+    <AssemblyName>SpineCocosSharp</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="spine-cocossharp\CCMeshBatcher.cs" />
+    <Compile Include="spine-cocossharp\CCSkeleton.cs" />
+    <Compile Include="spine-cocossharp\CCSkeletonAnimation.cs" />
+    <Compile Include="spine-cocossharp\CocosSharpTextureLoader.cs" />
+    <Compile Include="spine-cocossharp\MonoTextureLoader.cs" />
+    <Compile Include="spine-csharp\src\Animation.cs" />
+    <Compile Include="spine-csharp\src\AnimationState.cs" />
+    <Compile Include="spine-csharp\src\AnimationStateData.cs" />
+    <Compile Include="spine-csharp\src\Atlas.cs" />
+    <Compile Include="spine-csharp\src\Attachments\AtlasAttachmentLoader.cs" />
+    <Compile Include="spine-csharp\src\Attachments\Attachment.cs" />
+    <Compile Include="spine-csharp\src\Attachments\AttachmentLoader.cs" />
+    <Compile Include="spine-csharp\src\Attachments\AttachmentType.cs" />
+    <Compile Include="spine-csharp\src\Attachments\BoundingBoxAttachment.cs" />
+    <Compile Include="spine-csharp\src\Attachments\MeshAttachment.cs" />
+    <Compile Include="spine-csharp\src\Attachments\RegionAttachment.cs" />
+    <Compile Include="spine-csharp\src\Attachments\SkinnedMeshAttachment.cs" />
+    <Compile Include="spine-csharp\src\Bone.cs" />
+    <Compile Include="spine-csharp\src\BoneData.cs" />
+    <Compile Include="spine-csharp\src\Event.cs" />
+    <Compile Include="spine-csharp\src\EventData.cs" />
+    <Compile Include="spine-csharp\src\Json.cs" />
+    <Compile Include="spine-csharp\src\Skeleton.cs" />
+    <Compile Include="spine-csharp\src\SkeletonBounds.cs" />
+    <Compile Include="spine-csharp\src\SkeletonData.cs" />
+    <Compile Include="spine-csharp\src\SkeletonJson.cs" />
+    <Compile Include="spine-csharp\src\Skin.cs" />
+    <Compile Include="spine-csharp\src\Slot.cs" />
+    <Compile Include="spine-csharp\src\SlotData.cs" />
+    <Compile Include="spine-xna\src\MeshBatcher.cs" />
+    <Compile Include="spine-xna\src\RegionBatcher.cs" />
+    <Compile Include="spine-xna\src\SkeletonMeshRenderer.cs" />
+    <Compile Include="spine-xna\src\SkeletonRegionRenderer.cs" />
+    <Compile Include="spine-xna\src\Util.cs" />
+    <Compile Include="spine-xna\src\XnaTextureLoader.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
