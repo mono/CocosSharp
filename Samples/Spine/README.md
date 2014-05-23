@@ -1,4 +1,4 @@
-# spine-cocos2dxna
+# spine-cocossharp
 
 The spine-cocos2dxna runtime provides functionality to load, manipulate and render [Spine](http://esotericsoftware.com) skeletal animation data using [cocos2d-x](http://www.cocos2d-x.org/). spine-cocos2dx is based on [spine-c](https://github.com/EsotericSoftware/spine-runtimes/tree/master/spine-c).
 
