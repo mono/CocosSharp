@@ -203,12 +203,12 @@ namespace CocosSharp
 			get { return ContentSizeInPixels.PixelsToPoints(); }
 		}
 
-		internal Texture2D Name
+		public Texture2D Name
 		{
 			get { return XNATexture; }
 		}
 
-		internal Texture2D XNATexture
+		public Texture2D XNATexture
 		{
 			get
 			{
