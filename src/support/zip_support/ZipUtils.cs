@@ -31,7 +31,6 @@ using System.IO;
 
 namespace CocosSharp
 {
-
     public enum CCZ_COMPRESSION
     {
         Zlib,				// zlib format.

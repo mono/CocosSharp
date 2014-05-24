@@ -8,82 +8,75 @@ namespace CocosSharp
 {
     public class CCArray
     {
-        public int num, max;
-        public int[] arr; //equals object** arr;
+		public int Num, Max;
+		public int[] Arr;
 
-        /// <summary>
-        /// Allocates and initializes a new C array with specified capacity
-        /// </summary>
-        public CCArray (int capacity)
+
+		#region Constructors
+
+        public CCArray(int capacity)
         {
             if (capacity == 0)
             {
                 capacity = 1;
             }
 
-            num = 0;
-            arr = new int[capacity];
-            max = capacity;
+			Num = 0;
+            Arr = new int[capacity];
+			Max = capacity;
         }
 
-        /// <summary>
-        /// Inserts a value at a certain position. The valid index is [0, num] 
-        /// </summary>
-        public static void InsertValueAtIndex(CCArray arr, int value, int index)
+		#endregion Constructors
+
+
+        public static void InsertValueAtIndex(CCArray Arr, int value, int index)
         {
-            Debug.Assert(index < arr.max, "ccCArrayInsertValueAtIndex: invalid index");
-            int remaining = arr.num - index;
+            Debug.Assert(index < Arr.Max, "ccCArrayInsertValueAtIndex: invalid index");
+            int remaining = Arr.Num - index;
 
             // make sure it has enough capacity
-            if (arr.num + 1 == arr.max)
+            if (Arr.Num + 1 == Arr.Max)
             {
-                DoubleCapacity(arr);
+                DoubleCapacity(Arr);
             }
 
-            //int[] temp = new int[arr.arr.Length];
+            //int[] temp = new int[Arr.Arr.Length];
             // last Value doesn't need to be moved
             if (remaining > 0)
             {
                 // tex coordinates
-                //Array.Copy(arr.arr, temp, arr.arr.Length);
-                //Array.Copy(arr.arr, index, temp, index + 1, remaining);
+                //Array.Copy(Arr.Arr, temp, Arr.Arr.Length);
+                //Array.Copy(Arr.Arr, index, temp, index + 1, remaining);
 
 
-                for (int i = arr.arr.Length - 1; i > index; i--)
+                for (int i = Arr.Arr.Length - 1; i > index; i--)
                 {
-                    arr.arr[i] = arr.arr[i - 1];
+                    Arr.Arr[i] = Arr.Arr[i - 1];
                 }
             }
 
-            arr.num++;
+            Arr.Num++;
             //temp[index] = value;
 
-            arr.arr[index] = value;// temp;
+            Arr.Arr[index] = value;// temp;
         }
 
-        /// <summary>
-        /// Doubles C array capacity
-        /// </summary>
-        public static void DoubleCapacity(CCArray arr)
+        public static void DoubleCapacity(CCArray Arr)
         {
-            arr.max *= 2;
-            int[] newArr = new int[arr.max];
-            Array.Copy(arr.arr, newArr, arr.arr.Length);
+            Arr.Max *= 2;
+            int[] newArr = new int[Arr.Max];
+            Array.Copy(Arr.Arr, newArr, Arr.Arr.Length);
 
             // will fail when there's not enough memory
             Debug.Assert(newArr != null, "ccArrayDoubleCapacity failed. Not enough memory");
-            arr.arr = newArr;
+            Arr.Arr = newArr;
         }
 
-        /// <summary>
-        /// Removes value at specified index and pushes back all subsequent values.
-        /// Behaviour undefined if index outside [0, num-1].
-        /// </summary>
-        public static void RemoveValueAtIndex(CCArray arr, int index)
+        public static void RemoveValueAtIndex(CCArray Arr, int index)
         {
-            for (int last = --arr.num; index < last; index++)
+            for (int last = --Arr.Num; index < last; index++)
             {
-                arr.arr[index] = arr.arr[index + 1];
+                Arr.Arr[index] = Arr.Arr[index + 1];
             }
         }
     }

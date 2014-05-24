@@ -30,6 +30,7 @@ namespace CocosSharp
 	public static class CCSerialization
 	{
 		#region Raw Serializers
+
 		internal static void SerializeData(CCPoint pt, StreamWriter sw)
 		{
 			sw.WriteLine("{0} {1}", pt.X, pt.Y);
@@ -118,6 +119,7 @@ namespace CocosSharp
 			pt.Y = CCUtils.CCParseFloat(s[1]);
 			return (pt);
 		}
+
 		#endregion	
 	}
 }

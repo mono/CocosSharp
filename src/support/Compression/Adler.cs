@@ -11,12 +11,18 @@ namespace WP7Contrib.Communications.Compression
 {
     internal sealed class Adler
     {
-        private static int BASE = 65521;
-        private static int NMAX = 5552;
+        static int BASE = 65521;
+        static int NMAX = 5552;
+
+
+		#region Constructors
 
         static Adler()
         {
         }
+
+		#endregion Constructors
+
 
         internal static long Adler32(long adler, byte[] buf, int index, int len)
         {

@@ -42,63 +42,35 @@ namespace CocosSharp
 {
     public class CCUserDefault 
     {
-
-    	private static CCUserDefault m_spUserDefault = null;
-    	private static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
-    	private static string XML_FILE_NAME = "UserDefault.xml";
+    	static CCUserDefault UserDefault = null;
+    	static string USERDEFAULT_ROOT_NAME = "userDefaultRoot";
+    	static string XML_FILE_NAME = "UserDefault.xml";
 
     #if !WINDOWS && !MACOS && !LINUX && !NETFX_CORE
-    	private IsolatedStorageFile myIsolatedStorage;
+    	IsolatedStorageFile myIsolatedStorage;
     #elif NETFX_CORE
-        private StorageContainer myIsolatedStorage;
-        private StorageDevice myDevice;
+        StorageContainer myIsolatedStorage;
+        StorageDevice myDevice;
     #endif
-        private Dictionary<string, string> values = new Dictionary<string, string>();
+        Dictionary<string, string> values = new Dictionary<string, string>();
 
-        private bool parseXMLFile(Stream xmlFile)
-    	{
-    		values.Clear();
 
-    		string key = "";
+		#region Properties
 
-    		// Create an XmlReader
-    		using (XmlReader reader = XmlReader.Create(xmlFile)) {
-    				// Parse the file and display each of the nodes.
-    				while (reader.Read()) {
-    					switch (reader.NodeType) {
-    						case XmlNodeType.Element:
-    							key = reader.Name;
-    							break;
-    						case XmlNodeType.Text:
-    							values.Add(key, reader.Value);
-    							break;
-    						case XmlNodeType.XmlDeclaration:
-    						case XmlNodeType.ProcessingInstruction:
-    							break;
-    						case XmlNodeType.Comment:
-    							break;
-    						case XmlNodeType.EndElement:
-    							break;
-    					}
-    				}
-    		}
-    		return true;
-    	}
+		public static CCUserDefault SharedUserDefault
+		{
+			get {
+				if (UserDefault == null)
+				{
+					UserDefault = new CCUserDefault();
+				}
 
-    	private string getValueForKey(string key)
-    	{
-    		string value = null;
-    		if (! values.TryGetValue(key, out value)) {
-    			value = null;
-    		}
+				return UserDefault;
+			}
+		}
+			
+		#endregion Properties
 
-    		return value;
-    	}
-
-    	private void setValueForKey(string key, string value)
-    	{
-    		values[key] = value;
-    	}
 
     #if NETFX_CORE
         private StorageDevice CheckStorageDevice() {
@@ -122,10 +94,9 @@ namespace CocosSharp
         }
     #endif
 
-    	/**
-    	 * implements of CCUserDefault
-    	 */
-    	private CCUserDefault()
+		#region Constructors
+
+    	CCUserDefault()
     	{
     #if NETFX_CORE
             if(myIsolatedStorage == null) {
@@ -134,22 +105,22 @@ namespace CocosSharp
             if(myIsolatedStorage != null) 
             {
                 // only create xml file once if it doesnt exist
-                if ((!isXMLFileExist()))
+                if ((!IsXMLFileExist()))
                 {
                     createXMLFile();
                 }
                 using (Stream s = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.OpenOrCreate))
                 {
-                    parseXMLFile(s);
+                    ParseXMLFile(s);
                 }
             }
     #elif WINDOWS || MACOS || LINUX
     		// only create xml file once if it doesnt exist
-    		if ((!isXMLFileExist())) {
-    			createXMLFile();
+    		if ((!IsXMLFileExist())) {
+				CreateXMLFile();
     		}
     		using (FileStream fileStream = new FileInfo(XML_FILE_NAME).OpenRead()){
-    			parseXMLFile(fileStream);
+				ParseXMLFile(fileStream);
     		}
 
     #else
@@ -157,29 +128,72 @@ namespace CocosSharp
             myIsolatedStorage = IsolatedStorageFile.GetUserStoreForApplication();
 
             // only create xml file once if it doesnt exist
-    		if ((!isXMLFileExist())) {
+    		if ((!IsXMLFileExist())) {
     			createXMLFile();
     		}
 
     		using (IsolatedStorageFileStream fileStream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Open, FileAccess.Read)) {
-    			parseXMLFile(fileStream);
+    			ParseXMLFile(fileStream);
     		}
     #endif
         }
 
+		#endregion Constructors
+
+
     	public void PurgeSharedUserDefault()
     	{
-    		m_spUserDefault = null;
+    		UserDefault = null;
     	}
 
-        public bool GetBoolForKey(string pKey)
-        {
-            return GetBoolForKey(pKey, false);
-        }
+		bool ParseXMLFile(Stream xmlFile)
+		{
+			values.Clear();
 
-    	public bool GetBoolForKey(string pKey, bool defaultValue)
+			string key = "";
+
+			// Create an XmlReader
+			using (XmlReader reader = XmlReader.Create(xmlFile)) {
+				// Parse the file and display each of the nodes.
+				while (reader.Read()) {
+					switch (reader.NodeType) {
+					case XmlNodeType.Element:
+						key = reader.Name;
+						break;
+					case XmlNodeType.Text:
+						values.Add(key, reader.Value);
+						break;
+					case XmlNodeType.XmlDeclaration:
+					case XmlNodeType.ProcessingInstruction:
+						break;
+					case XmlNodeType.Comment:
+						break;
+					case XmlNodeType.EndElement:
+						break;
+					}
+				}
+			}
+			return true;
+		}
+
+		string GetValueForKey(string key)
+		{
+			string value = null;
+			if (! values.TryGetValue(key, out value)) {
+				value = null;
+			}
+
+			return value;
+		}
+
+		void SetValueForKey(string key, string value)
+		{
+			values[key] = value;
+		}
+
+		public bool GetBoolForKey(string key, bool defaultValue=false)
     	{
-    		string value = getValueForKey(pKey);
+			string value = GetValueForKey(key);
     		bool ret = defaultValue;
 
     		if (value != null)
@@ -190,14 +204,9 @@ namespace CocosSharp
     		return ret;
     	}
 
-        public int GetIntegerForKey(string pKey)
-        {
-            return GetIntegerForKey(pKey, 0);
-        }
-
-    	public int GetIntegerForKey(string pKey, int defaultValue)
+		public int GetIntegerForKey(string key, int defaultValue=0)
     	{
-    		string value = getValueForKey(pKey);
+			string value = GetValueForKey(key);
     		int ret = defaultValue;
 
     		if (value != null)
@@ -208,16 +217,16 @@ namespace CocosSharp
     		return ret;
     	}
 
-    	public float GetFloatForKey(string pKey, float defaultValue)
+		public float GetFloatForKey(string key, float defaultValue)
     	{
-    		float ret = (float)GetDoubleForKey(pKey, (double)defaultValue);
+			float ret = (float)GetDoubleForKey(key, (double)defaultValue);
      
     		return ret;
     	}
 
-    	public double GetDoubleForKey(string pKey, double defaultValue)
+		public double GetDoubleForKey(string key, double defaultValue)
     	{
-    		string value = getValueForKey(pKey);
+			string value = GetValueForKey(key);
     		double ret = defaultValue;
 
     		if (value != null)
@@ -228,9 +237,9 @@ namespace CocosSharp
     		return ret;
     	}
 
-    	public string GetStringForKey(string pKey, string defaultValue)
+		public string GetStringForKey(string key, string defaultValue)
     	{
-    		string value = getValueForKey(pKey);
+			string value = GetValueForKey(key);
     		string ret = defaultValue;
 
     		if (value != null)
@@ -241,71 +250,59 @@ namespace CocosSharp
     		return ret;
     	}
 
-    	public void SetBoolForKey(string pKey, bool value)
+		public void SetBoolForKey(string key, bool value)
     	{
     		// check key
-    		if (pKey == null) {
+			if (key == null) {
     			return;
     		}
 
     		// save bool value as string
-    		SetStringForKey(pKey, value.ToString());
+			SetStringForKey(key, value.ToString());
     	}
 
-    	public void SetIntegerForKey(string pKey, int value)
+		public void SetIntegerForKey(string key, int value)
     	{
     		// check key
-    		if (pKey == null)
+			if (key == null)
     		{
     			return;
     		}
 
     		// convert to string
-    		setValueForKey(pKey, value.ToString());
+			SetValueForKey(key, value.ToString());
     	}
 
-    	public void SetFloatForKey(string pKey, float value)
+		public void SetFloatForKey(string key, float value)
     	{
-    		SetDoubleForKey(pKey, value);
+			SetDoubleForKey(key, value);
     	}
 
-    	public void SetDoubleForKey(string pKey, double value)
+		public void SetDoubleForKey(string key, double value)
     	{
     		// check key
-    		if (pKey == null)
+			if (key == null)
     		{
     			return;
     		}
 
     		// convert to string
-    		setValueForKey(pKey, value.ToString());
+			SetValueForKey(key, value.ToString());
     	}
 
-    	public void SetStringForKey(string pKey, string value)
+		public void SetStringForKey(string key, string value)
     	{
     		// check key
-    		if (pKey == null)
+			if (key == null)
     		{
     			return;
     		}
 
     		// convert to string
-    		setValueForKey(pKey, value.ToString());
+			SetValueForKey(key, value.ToString());
     	}
 
-    	public static CCUserDefault SharedUserDefault
-    	{
-            get {
-        		if (m_spUserDefault == null)
-        		{
-        			m_spUserDefault = new CCUserDefault();
-        		}
-
-        		return m_spUserDefault;
-            }
-    	}
-
-    	private bool isXMLFileExist()
+		bool IsXMLFileExist()
     	{
     		bool bRet = false;
     #if NETFX_CORE
@@ -328,8 +325,7 @@ namespace CocosSharp
     		return bRet;
     	}
 
-    	// create new xml file
-    	private bool createXMLFile()
+		bool CreateXMLFile()
     	{
     		bool bRet = false;
 

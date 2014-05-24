@@ -12,31 +12,39 @@ namespace WP7Contrib.Communications.Compression
     internal sealed class ZlibCodec
     {
         public int WindowBits = 15;
+		public int NextIn;
+		public int NextOut;
+		public int AvailableBytesIn;
+		public int AvailableBytesOut;
+
+		public long TotalBytesIn;
+		public long TotalBytesOut;
+
         public byte[] InputBuffer;
-        public int NextIn;
-        public int AvailableBytesIn;
-        public long TotalBytesIn;
         public byte[] OutputBuffer;
-        public int NextOut;
-        public int AvailableBytesOut;
-        public long TotalBytesOut;
+
         public string Message;
-        internal InflateManager istate;
-        internal long _Adler32;
+        
+		internal InflateManager Istate;
 
-        public long Adler32
-        {
-            get
-            {
-                return this._Adler32;
-            }
-        }
 
-        public ZlibCodec()
+		#region Properties
+
+		public long Adler32 { get; internal set; }
+
+		#endregion Properties
+
+
+		#region Constructors
+        
+		public ZlibCodec()
         {
             if (this.InitializeInflate() != 0)
                 throw new ZlibException("Cannot initialize for inflate.");
         }
+
+		#endregion Constructors
+
 
         public int InitializeInflate()
         {
@@ -57,39 +65,39 @@ namespace WP7Contrib.Communications.Compression
         public int InitializeInflate(int windowBits, bool expectRfc1950Header)
         {
             this.WindowBits = windowBits;
-            this.istate = new InflateManager(expectRfc1950Header);
-            return this.istate.Initialize(this, windowBits);
+            this.Istate = new InflateManager(expectRfc1950Header);
+            return this.Istate.Initialize(this, windowBits);
         }
 
         public int Inflate(FlushType flush)
         {
-            if (this.istate == null)
+            if (this.Istate == null)
                 throw new ZlibException("No Inflate State!");
             else
-                return this.istate.Inflate(flush);
+                return this.Istate.Inflate(flush);
         }
 
         public int EndInflate()
         {
-            if (this.istate == null)
+            if (this.Istate == null)
                 throw new ZlibException("No Inflate State!");
-            int num = this.istate.End();
-            this.istate = (InflateManager)null;
+            int num = this.Istate.End();
+            this.Istate = (InflateManager)null;
             return num;
         }
 
         public int SyncInflate()
         {
-            if (this.istate == null)
+            if (this.Istate == null)
                 throw new ZlibException("No Inflate State!");
             else
-                return this.istate.Sync();
+                return this.Istate.Sync();
         }
 
         public int SetDictionary(byte[] dictionary)
         {
-            if (this.istate != null)
-                return this.istate.SetDictionary(dictionary);
+            if (this.Istate != null)
+                return this.Istate.SetDictionary(dictionary);
             else
                 throw new ZlibException("No Inflate state!");
         }

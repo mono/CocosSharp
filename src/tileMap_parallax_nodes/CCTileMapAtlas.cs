@@ -36,7 +36,7 @@ namespace CocosSharp
 
             PositionToAtlasIndex = new Dictionary<CCGridSize, int>();
             UpdateAtlasValues();
-            ContentSize = new CCSize(TGAInfo.width * ItemWidth, TGAInfo.height * ItemHeight);
+			ContentSize = new CCSize(TGAInfo.Width * ItemWidth, TGAInfo.Height * ItemHeight);
         }
 
         // Just used during construction
@@ -46,7 +46,7 @@ namespace CocosSharp
 
             int itemsToRender = 0;
             var data = tgaInfo.ImageData;
-            for (int i = 0, count = tgaInfo.width * tgaInfo.height; i < count;  i++)
+			for (int i = 0, count = tgaInfo.Width * tgaInfo.Height; i < count;  i++)
             {
                 if (data[i].R != 0)
                 {
@@ -69,28 +69,28 @@ namespace CocosSharp
 		public CCColor4B TileAt(CCGridSize position)
         {
             Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
-            Debug.Assert(position.X < TGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.Y < TGAInfo.height, "Invalid position.y");
+			Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
+			Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.y");
 
-			return new CCColor4B(TGAInfo.ImageData[position.X + position.Y * TGAInfo.width]);
+			return new CCColor4B(TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width]);
         }
 
 		public void SetTile(CCColor4B tile, CCGridSize position)
         {
             Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
             Debug.Assert(PositionToAtlasIndex != null, "posToAtlasIndex must not be nil");
-            Debug.Assert(position.X < TGAInfo.width, "Invalid position.x");
-            Debug.Assert(position.Y < TGAInfo.height, "Invalid position.x");
+			Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
+			Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.x");
             Debug.Assert(tile.R != 0, "R component must be non 0");
 
-            Color value = TGAInfo.ImageData[position.X + position.Y * TGAInfo.width];
+			Color value = TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width];
             if (value.R == 0)
             {
                 CCLog.Log("CocosSharp: Value.r must be non 0.");
             }
             else
             {
-				TGAInfo.ImageData[position.X + position.Y * TGAInfo.width] = new Color(tile.R, tile.G, tile.B, tile.A);
+				TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width] = new Color(tile.R, tile.G, tile.B, tile.A);
 
                 // XXX: this method consumes a lot of memory
                 // XXX: a tree of something like that shall be impolemented
@@ -166,13 +166,13 @@ namespace CocosSharp
 
             int total = 0;
 
-            for (int x = 0; x < TGAInfo.width; x++)
+			for (int x = 0; x < TGAInfo.Width; x++)
             {
-                for (int y = 0; y < TGAInfo.height; y++)
+				for (int y = 0; y < TGAInfo.Height; y++)
                 {
                     if (total < NumOfItemsToRender)
                     {
-                        Color value = TGAInfo.ImageData[x + y * TGAInfo.width];
+						Color value = TGAInfo.ImageData[x + y * TGAInfo.Width];
 
                         if (value.R != 0)
                         {

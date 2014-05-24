@@ -15,27 +15,108 @@ namespace WP7Contrib.Communications.Compression
 
     internal class GZipStream : Stream
     {
-        internal static DateTime _unixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        internal static Encoding iso8859dash1 = Encoding.GetEncoding("iso-8859-1");
+		internal static DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+		internal static Encoding Iso8859dash1 = Encoding.GetEncoding("iso-8859-1");
+
         public DateTime? LastModified;
-        internal ZlibBaseStream _baseStream;
-        private bool _disposed;
-        private bool _firstReadDone;
-        private string _FileName;
-        private string _Comment;
-        private int _Crc32;
+		internal ZlibBaseStream BaseStream;
+
+        bool disposed;
+        bool firstReadDone;
+		string fileName;
+		string comment;
+
+
+		#region Properties
+
+		public int Crc32 { get; private set; }
+
+		public override bool CanSeek
+		{
+			get { return false; }
+		}
+
+		public override bool CanRead
+		{
+			get
+			{
+				if (this.disposed)
+					throw new ObjectDisposedException("GZipStream");
+				else
+					return this.BaseStream._stream.CanRead;
+			}
+		}
+
+		public override bool CanWrite
+		{
+			get
+			{
+				if (this.disposed)
+					throw new ObjectDisposedException("GZipStream");
+				else
+					return this.BaseStream._stream.CanWrite;
+			}
+		}
+
+		public int BufferSize
+		{
+			get
+			{
+				return this.BaseStream._bufferSize;
+			}
+			set
+			{
+				if (this.disposed)
+					throw new ObjectDisposedException("GZipStream");
+				if (this.BaseStream._workingBuffer != null)
+					throw new ZlibException("The working buffer is already set.");
+				if (value < 128)
+					throw new ZlibException(string.Format("Don't be silly. {0} bytes?? Use a bigger buffer.", (object)value));
+				this.BaseStream._bufferSize = value;
+			}
+		}
+
+		public virtual long TotalIn
+		{
+			get { return this.BaseStream._z.TotalBytesIn; }
+		}
+
+		public virtual long TotalOut
+		{
+			get { return this.BaseStream._z.TotalBytesOut; }
+		}
+
+		public override long Length
+		{
+			get { return this.BaseStream.Length; }
+		}
+
+		public override long Position
+		{
+			get
+			{
+				if (this.BaseStream._streamMode == ZlibBaseStream.StreamMode.Reader)
+					return this.BaseStream._z.TotalBytesIn + (long)this.BaseStream._gzipHeaderByteCount;
+				else
+					return 0L;
+			}
+			set
+			{
+				throw new NotImplementedException();
+			}
+		}
 
         public string Comment
         {
             get
             {
-                return this._Comment;
+                return this.comment;
             }
             set
             {
-                if (this._disposed)
+                if (this.disposed)
                     throw new ObjectDisposedException("GZipStream");
-                this._Comment = value;
+                this.comment = value;
             }
         }
 
@@ -43,30 +124,22 @@ namespace WP7Contrib.Communications.Compression
         {
             get
             {
-                return this._FileName;
+                return this.fileName;
             }
             set
             {
-                if (this._disposed)
+                if (this.disposed)
                     throw new ObjectDisposedException("GZipStream");
-                this._FileName = value;
-                if (this._FileName == null)
+                this.fileName = value;
+                if (this.fileName == null)
                     return;
-                if (this._FileName.IndexOf("/") != -1)
-                    this._FileName = this._FileName.Replace("/", "\\");
-                if (this._FileName.EndsWith("\\"))
+                if (this.fileName.IndexOf("/") != -1)
+                    this.fileName = this.fileName.Replace("/", "\\");
+                if (this.fileName.EndsWith("\\"))
                     throw new Exception("Illegal filename");
-                if (this._FileName.IndexOf("\\") == -1)
+                if (this.fileName.IndexOf("\\") == -1)
                     return;
-                this._FileName = Path.GetFileName(this._FileName);
-            }
-        }
-
-        public int Crc32
-        {
-            get
-            {
-                return this._Crc32;
+                this.fileName = Path.GetFileName(this.fileName);
             }
         }
 
@@ -74,102 +147,20 @@ namespace WP7Contrib.Communications.Compression
         {
             get
             {
-                return this._baseStream._flushMode;
+                return this.BaseStream._flushMode;
             }
             set
             {
-                if (this._disposed)
+                if (this.disposed)
                     throw new ObjectDisposedException("GZipStream");
-                this._baseStream._flushMode = value;
+                this.BaseStream._flushMode = value;
             }
         }
 
-        public int BufferSize
-        {
-            get
-            {
-                return this._baseStream._bufferSize;
-            }
-            set
-            {
-                if (this._disposed)
-                    throw new ObjectDisposedException("GZipStream");
-                if (this._baseStream._workingBuffer != null)
-                    throw new ZlibException("The working buffer is already set.");
-                if (value < 128)
-                    throw new ZlibException(string.Format("Don't be silly. {0} bytes?? Use a bigger buffer.", (object)value));
-                this._baseStream._bufferSize = value;
-            }
-        }
+		#endregion Properties
 
-        public virtual long TotalIn
-        {
-            get
-            {
-                return this._baseStream._z.TotalBytesIn;
-            }
-        }
 
-        public virtual long TotalOut
-        {
-            get
-            {
-                return this._baseStream._z.TotalBytesOut;
-            }
-        }
-
-        public override bool CanRead
-        {
-            get
-            {
-                if (this._disposed)
-                    throw new ObjectDisposedException("GZipStream");
-                else
-                    return this._baseStream._stream.CanRead;
-            }
-        }
-
-        public override bool CanSeek
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        public override bool CanWrite
-        {
-            get
-            {
-                if (this._disposed)
-                    throw new ObjectDisposedException("GZipStream");
-                else
-                    return this._baseStream._stream.CanWrite;
-            }
-        }
-
-        public override long Length
-        {
-            get
-            {
-                return this._baseStream.Length;
-            }
-        }
-
-        public override long Position
-        {
-            get
-            {
-                if (this._baseStream._streamMode == ZlibBaseStream.StreamMode.Reader)
-                    return this._baseStream._z.TotalBytesIn + (long)this._baseStream._gzipHeaderByteCount;
-                else
-                    return 0L;
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
+		#region Constructors
 
         static GZipStream()
         {
@@ -177,21 +168,26 @@ namespace WP7Contrib.Communications.Compression
 
         public GZipStream(Stream stream)
         {
-            this._baseStream = new ZlibBaseStream(stream, ZlibStreamFlavor.GZIP, false);
+            this.BaseStream = new ZlibBaseStream(stream, ZlibStreamFlavor.GZIP, false);
         }
+
+		#endregion Constructors
+
+
+		#region Cleaning up
 
         protected override void Dispose(bool disposing)
         {
             try
             {
-                if (this._disposed)
+                if (this.disposed)
                     return;
-                if (disposing && this._baseStream != null)
+                if (disposing && this.BaseStream != null)
                 {
-                    this._baseStream.Close();
-                    this._Crc32 = this._baseStream.Crc32;
+                    this.BaseStream.Close();
+                    this.Crc32 = this.BaseStream.Crc32;
                 }
-                this._disposed = true;
+                this.disposed = true;
             }
             finally
             {
@@ -199,23 +195,26 @@ namespace WP7Contrib.Communications.Compression
             }
         }
 
+		#endregion Cleaning up
+
+
         public override void Flush()
         {
-            if (this._disposed)
+            if (this.disposed)
                 throw new ObjectDisposedException("GZipStream");
-            this._baseStream.Flush();
+            this.BaseStream.Flush();
         }
 
         public override int Read(byte[] buffer, int offset, int count)
         {
-            if (this._disposed)
+            if (this.disposed)
                 throw new ObjectDisposedException("GZipStream");
-            int num = this._baseStream.Read(buffer, offset, count);
-            if (!this._firstReadDone)
+            int num = this.BaseStream.Read(buffer, offset, count);
+            if (!this.firstReadDone)
             {
-                this._firstReadDone = true;
-                this.FileName = this._baseStream._GzipFileName;
-                this.Comment = this._baseStream._GzipComment;
+                this.firstReadDone = true;
+                this.FileName = this.BaseStream._GzipFileName;
+                this.Comment = this.BaseStream._GzipComment;
             }
             return num;
         }
@@ -230,10 +229,10 @@ namespace WP7Contrib.Communications.Compression
             throw new NotImplementedException();
         }
 
-        private int EmitHeader()
+        int EmitHeader()
         {
-            byte[] numArray1 = this.Comment == null ? (byte[])null : GZipStream.iso8859dash1.GetBytes(this.Comment);
-            byte[] numArray2 = this.FileName == null ? (byte[])null : GZipStream.iso8859dash1.GetBytes(this.FileName);
+            byte[] numArray1 = this.Comment == null ? (byte[])null : GZipStream.Iso8859dash1.GetBytes(this.Comment);
+            byte[] numArray2 = this.FileName == null ? (byte[])null : GZipStream.Iso8859dash1.GetBytes(this.FileName);
             int num1 = this.Comment == null ? 0 : numArray1.Length + 1;
             int num2 = this.FileName == null ? 0 : numArray2.Length + 1;
             byte[] buffer = new byte[10 + num1 + num2];
@@ -269,7 +268,7 @@ namespace WP7Contrib.Communications.Compression
             numArray6[index4] = (byte)num15;
             if (!this.LastModified.HasValue)
                 this.LastModified = new DateTime?(DateTime.Now);
-            Array.Copy((Array)BitConverter.GetBytes((int)(this.LastModified.Value - GZipStream._unixEpoch).TotalSeconds), 0, (Array)buffer, destinationIndex1, 4);
+			Array.Copy((Array)BitConverter.GetBytes((int)(this.LastModified.Value - GZipStream.UnixEpoch).TotalSeconds), 0, (Array)buffer, destinationIndex1, 4);
             int num16 = destinationIndex1 + 4;
             byte[] numArray7 = buffer;
             int index5 = num16;
@@ -305,7 +304,7 @@ namespace WP7Contrib.Communications.Compression
                 int num25 = 0;
                 numArray9[index7] = (byte)num25;
             }
-            this._baseStream._stream.Write(buffer, 0, buffer.Length);
+            this.BaseStream._stream.Write(buffer, 0, buffer.Length);
             return buffer.Length;
         }
 

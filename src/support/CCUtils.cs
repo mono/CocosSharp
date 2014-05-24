@@ -49,15 +49,14 @@ namespace CocosSharp
 {
     public class CCUtils
     {
-
         #if !WINDOWS_PHONE
         #if OPENGL
-        private static List<string> _GLExtensions = null;
+        static List<string> GLExtensions = null;
         
         public static List<string> GetGLExtensions()
         {
             // Setup extensions.
-            if(_GLExtensions == null) {
+			if(GLExtensions == null) {
                 List<string> extensions = new List<string>();
                 #if GLES
                 var extstring = GL.GetString(RenderbufferStorage.Extensions);                       
@@ -82,9 +81,9 @@ namespace CocosSharp
                     foreach (string extension in extensions)
                         CCLog.Log(extension);
                 }
-                _GLExtensions = extensions;
+				GLExtensions = extensions;
             }
-            return _GLExtensions;
+			return GLExtensions;
         }
         #endif
         #endif
