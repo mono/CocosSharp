@@ -129,7 +129,7 @@ namespace CocosSharp
 
             // only create xml file once if it doesnt exist
     		if ((!IsXMLFileExist())) {
-    			createXMLFile();
+				CreateXMLFile();
     		}
 
     		using (IsolatedStorageFileStream fileStream = myIsolatedStorage.OpenFile(XML_FILE_NAME, FileMode.Open, FileAccess.Read)) {
