@@ -90,6 +90,9 @@
     <Compile Include="..\Common\src\GoblinLayer.cs">
       <Link>GoblinLayer.cs</Link>
     </Compile>
+    <Compile Include="..\Common\src\SpineBoyLayer.cs">
+      <Link>SpineBoyLayer.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\" />
