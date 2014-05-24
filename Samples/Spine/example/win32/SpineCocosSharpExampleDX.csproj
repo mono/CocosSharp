@@ -44,6 +44,9 @@
     <Compile Include="..\Common\src\GoblinLayer.cs">
       <Link>GoblinLayer.cs</Link>
     </Compile>
+    <Compile Include="..\Common\src\SpineBoyLayer.cs">
+      <Link>SpineBoyLayer.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

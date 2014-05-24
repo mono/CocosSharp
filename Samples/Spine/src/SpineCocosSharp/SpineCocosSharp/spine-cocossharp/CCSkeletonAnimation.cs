@@ -132,7 +132,7 @@ namespace CocosSharp.Spine
             return State.SetAnimation(trackIndex, animation, loop);
         }
 
-       public TrackEntry AddAnimation(int trackIndex, string name, bool loop, float delay)
+       public TrackEntry AddAnimation(int trackIndex, string name, bool loop, float delay = 0)
         {
             Animation animation = Skeleton.Data.FindAnimation(name);
             if (animation == null)

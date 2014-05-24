@@ -6,15 +6,12 @@ using Spine;
 
 namespace spine_cocossharp
 {
-    class GoblinLayer : CCNode
+    class SpineBoyLayer : CCNode
     {
 
         CCSkeletonAnimation skeletonNode;
-        CCActionState skeletonActionState;
-        CCSequence skeletonMoveAction;
-        bool isMoving;
 
-        public GoblinLayer()
+        public SpineBoyLayer()
         {
 
             CCSize windowSize = CCDirector.SharedDirector.WinSize;
@@ -29,53 +26,31 @@ namespace spine_cocossharp
             labelSlots.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelSlots);
 
-            var labelSkin = new CCLabelTtf("S = Toggle Skin", "arial", 12);
-            labelSkin.Position = new CCPoint(15, windowSize.Height - 40);
-            labelSkin.AnchorPoint = CCPoint.AnchorMiddleLeft;
-            AddChild(labelSkin);
-
             var labelTimeScale = new CCLabelTtf("Up/Down = TimeScale +/-", "arial", 12);
-            labelTimeScale.Position = new CCPoint(15, windowSize.Height - 70);
+            labelTimeScale.Position = new CCPoint(15, windowSize.Height - 40);
             labelTimeScale.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelTimeScale);
 
-            var labelAction = new CCLabelTtf("A = Toggle Move Action", "arial", 12);
-            labelAction.Position = new CCPoint(15, windowSize.Height - 55);
-            labelAction.AnchorPoint = CCPoint.AnchorMiddleLeft;
-            AddChild(labelAction);
-
-            var labelScene = new CCLabelTtf("P = SpineBoy", "arial", 12);
-            labelScene.Position = new CCPoint(15, windowSize.Height - 85);
+            var labelScene = new CCLabelTtf("G = Goblins", "arial", 12);
+            labelScene.Position = new CCPoint(15, windowSize.Height - 55);
             labelScene.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelScene);
 
-            String name = @"goblins-ffd";
-            //String name = @"goblins";
-            skeletonNode = new CCSkeletonAnimation(name + ".json", name + ".atlas", 0.5f);
-            skeletonNode.PremultipliedAlpha = true;
+            String name = @"spineboy";
+            skeletonNode = new CCSkeletonAnimation(name + ".json", name + ".atlas", 0.25f);
 
-            skeletonNode.SetSkin("goblin");
-
-            var wt = skeletonNode.NodeToWorldTransform;
-            skeletonNode.SetSlotsToSetupPose();
-            skeletonNode.UpdateWorldTransform();
-
-            skeletonNode.AddAnimation(0, "walk", true, 4);
+            skeletonNode.SetMix("walk", "jump", 0.2f);
+            skeletonNode.SetMix("jump", "run", 0.2f);
             skeletonNode.SetAnimation(0, "walk", true);
+            TrackEntry jumpEntry = skeletonNode.AddAnimation(0, "jump", false, 3);
+            skeletonNode.AddAnimation(0, "run", true);
 
             skeletonNode.Start += Start;
             skeletonNode.End += End;
             skeletonNode.Complete += Complete;
             skeletonNode.Event += Event;
 
-            //skeletonNode.RepeatForever(new CCFadeOut(1), new CCFadeIn(1));
-
-            skeletonMoveAction = new CCSequence(new CCMoveTo(5, new CCPoint(windowSize.Width, 10)), new CCMoveTo(5, new CCPoint(10, 10)));
-
-            skeletonActionState = skeletonNode.RepeatForever(skeletonMoveAction);
-            isMoving = true;
-
-            skeletonNode.Position = new CCPoint(windowSize.Center.X, skeletonNode.ContentSize.Height / 2);
+            skeletonNode.Position = new CCPoint(windowSize.Center.X, 10);
             AddChild(skeletonNode);
 
             var listener = new CCEventListenerTouchOneByOne();
@@ -104,33 +79,16 @@ namespace spine_cocossharp
                         case CCKeys.M:
                             skeletonNode.DebugSlots = !skeletonNode.DebugSlots;
                             break;
-                        case CCKeys.S:
-                            if (skeletonNode.Skeleton.Skin.Name == "goblin")
-                                skeletonNode.SetSkin("goblingirl");
-                            else
-                                skeletonNode.SetSkin("goblin");
-                            break;
                         case CCKeys.Up:
                             skeletonNode.TimeScale += 0.1f;
                             break;
                         case CCKeys.Down:
                             skeletonNode.TimeScale -= 0.1f;
                             break;
-                        case CCKeys.A:
-                            if (isMoving)
-                            {
-                                ActionManager.RemoveAction(skeletonActionState);
-                                isMoving = false;
-                            }
-                            else
-                            {
-                                skeletonActionState = skeletonNode.RepeatForever(skeletonMoveAction);
-                                isMoving = true;
-                            }
+                        case CCKeys.G:
+                            CCDirector.SharedDirector.ReplaceScene(GoblinLayer.Scene);
                             break;
-                        case CCKeys.P:
-                            CCDirector.SharedDirector.ReplaceScene(SpineBoyLayer.Scene);
-                            break;
+
                     }
 
                 };
@@ -139,7 +97,10 @@ namespace spine_cocossharp
 
         public void Start(AnimationState state, int trackIndex)
         {
-            CCLog.Log(trackIndex + " " + state.GetCurrent(trackIndex) + ": start");
+            var entry = state.GetCurrent(trackIndex);
+            var animationName = (entry != null && entry.Animation != null) ? entry.Animation.Name : string.Empty;
+
+            CCLog.Log(trackIndex + ":start " + animationName);
         }
 
         public void End(AnimationState state, int trackIndex)
@@ -165,7 +126,7 @@ namespace spine_cocossharp
                 var scene = new CCScene();
 
                 // 'layer' is an autorelease object.
-                var layer = new GoblinLayer();
+                var layer = new SpineBoyLayer();
 
                 // add layer as a child to scene
                 scene.AddChild(layer);
