@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-cocossharp-macosx", "macosx\spine-cocossharp-macosx.csproj", "{C976AEE3-940E-4658-BCDD-80A581E4C696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpineCocosSharpMac", "..\src\SpineCocosSharp\SpineCocosSharp\SpineCocosSharpMac.csproj", "{6620AF56-53ED-49BE-80BE-108E3BE2867B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+		AppStore|Any CPU = AppStore|Any CPU
+		Distribution|Any CPU = Distribution|Any CPU
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Distribution|Any CPU.ActiveCfg = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Distribution|Any CPU.Build.0 = Debug|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|iPhone.Build.0 = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6620AF56-53ED-49BE-80BE-108E3BE2867B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.AppStore|Any CPU.ActiveCfg = AppStore|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.AppStore|Any CPU.Build.0 = AppStore|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.AppStore|iPhone.ActiveCfg = AppStore|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.AppStore|iPhone.Build.0 = AppStore|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Distribution|Any CPU.ActiveCfg = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Distribution|Any CPU.Build.0 = Debug|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|iPhone.Build.0 = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C976AEE3-940E-4658-BCDD-80A581E4C696}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = macosx\spine-cocossharp-macosx.csproj
+	EndGlobalSection
+EndGlobal
