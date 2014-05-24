@@ -17,7 +17,7 @@
   </metadata>
 
   <files>
-    <file src="src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="src/bin/MacOS/Release/MonoMac.dll" />
+    <file src="src/bin/MacOS/Release/*.dll" target="lib/net40" exclude="src/bin/MacOS/Release/MonoMac.dll;src/bin/MacOS/Release/XamMac.dll" />
   </files>
 
 </package>
