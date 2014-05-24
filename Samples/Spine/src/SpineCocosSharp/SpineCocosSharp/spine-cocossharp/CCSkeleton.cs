@@ -58,7 +58,10 @@ namespace CocosSharp.Spine
         public CCMeshBatcher batcher;
 
         public bool DebugSlots { get; set; }
+        public CCColor4B DebugSlotColor { get; set; }
         public bool DebugBones { get; set; }
+        public CCColor4B DebugBoneColor { get; set; }
+        public CCColor4B DebugJointColor { get; set; }
         public bool PremultipliedAlpha { get; set; }
         public string ImagesDirectory { get; set; }
 
@@ -128,7 +131,9 @@ namespace CocosSharp.Spine
             DebugBones = false;
             PremultipliedAlpha = false;
             ImagesDirectory = string.Empty;
-
+            DebugSlotColor = CCColor4B.Magenta;
+            DebugBoneColor = CCColor4B.Blue;
+            DebugJointColor = CCColor4B.Red;
             batcher = new CCMeshBatcher(CCDrawManager.GraphicsDevice);
             OpacityModifyRGB = true;
 
@@ -335,29 +340,51 @@ namespace CocosSharp.Spine
                 if (DebugSlots)
                 {
 
-                    CCPoint[] points = new CCPoint[4];
-                    CCV3F_C4B_T2F_Quad quada = new CCV3F_C4B_T2F_Quad();
-
-                    for (int i = 0, n = Skeleton.Slots.Count; i < n; i++)
+                    for (int i = 0; i < Skeleton.Slots.Count; ++i)
                     {
 
-                        Slot slot = Skeleton.DrawOrder[i];
+                        var slot = Skeleton.Slots[i];
 
-                        //if (slot.Attachment == null || slot.Attachment.Name != "ATTACHMENT_REGION") continue;
-                        if (slot.Attachment == null || !(slot.Attachment is RegionAttachment)) continue;
+                        if (slot.Attachment == null) continue;
 
-                        RegionAttachment attachment = (RegionAttachment)slot.Attachment;
-                        UpdateRegionAttachmentQuad(attachment, slot, ref quada);
+                        var verticesCount = 0;
+                        var worldVertices = new float[1000]; // Max number of vertices per mesh.
+                        if (slot.Attachment is RegionAttachment)
+                        {
+                            var attachment = (RegionAttachment)slot.Attachment;
+                            attachment.ComputeWorldVertices(Skeleton.X, Skeleton.Y, slot.bone, worldVertices);
+                            verticesCount = 8;
+                        }
+                        else if (slot.Attachment is MeshAttachment)
+                        {
+                            var mesh = (MeshAttachment)slot.Attachment;
+                            mesh.ComputeWorldVertices(Skeleton.X, Skeleton.Y, slot, worldVertices);
+                            verticesCount = mesh.Vertices.Length;
+                        }
+                        else if (slot.Attachment is SkinnedMeshAttachment)
+                        {
+                            var mesh = (SkinnedMeshAttachment)slot.Attachment;
+                            mesh.ComputeWorldVertices(Skeleton.X, Skeleton.Y, slot, worldVertices);
+                            verticesCount = mesh.UVs.Length;
+                        }
+                        else
+                            continue;
 
-                        points[0] = new CCPoint(quada.BottomLeft.Vertices.X, quada.BottomLeft.Vertices.Y);
-                        points[1] = new CCPoint(quada.BottomRight.Vertices.X, quada.BottomRight.Vertices.Y);
-                        points[2] = new CCPoint(quada.TopRight.Vertices.X, quada.TopRight.Vertices.Y);
-                        points[3] = new CCPoint(quada.TopLeft.Vertices.X, quada.TopLeft.Vertices.Y);
+                        CCPoint[] slotVertices = new CCPoint[verticesCount/2];
+
+                        for (int ii = 0, si = 0; ii < verticesCount; ii += 2, si++)
+                        {
+                            slotVertices[si].X = worldVertices[ii] * ScaleX;
+                            slotVertices[si].Y = worldVertices[ii + 1] * ScaleY;
+                        }
 
                         CCDrawingPrimitives.Begin();
-                        CCDrawingPrimitives.DrawPoly(points, 4, true, new CCColor4B(0, 0, 255, 255));
+                        CCDrawingPrimitives.DrawPoly(slotVertices, verticesCount / 2, true, DebugSlotColor);
                         CCDrawingPrimitives.End();
+
                     }
+
+
                 }
 
                 if (DebugBones)
@@ -370,7 +397,7 @@ namespace CocosSharp.Spine
                         y = bone.Data.Length * bone.M10 + bone.WorldY;
 
                         CCDrawingPrimitives.Begin();
-                        CCDrawingPrimitives.DrawLine(new CCPoint(bone.WorldX, bone.WorldY), new CCPoint(x, y), new CCColor4B(255, 0, 0, 255));
+                        CCDrawingPrimitives.DrawLine(new CCPoint(bone.WorldX, bone.WorldY), new CCPoint(x, y), DebugJointColor);
                         CCDrawingPrimitives.End();
                     }
 
@@ -379,7 +406,7 @@ namespace CocosSharp.Spine
                     {
                         Bone bone = Skeleton.Bones[i];
                         CCDrawingPrimitives.Begin();
-                        CCDrawingPrimitives.DrawPoint(new CCPoint(bone.WorldX, bone.WorldY), 4, new CCColor4B(0, 0, 255, 255));
+                        CCDrawingPrimitives.DrawPoint(new CCPoint(bone.WorldX, bone.WorldY), 4, DebugBoneColor);
                         CCDrawingPrimitives.End();
 
                     }
