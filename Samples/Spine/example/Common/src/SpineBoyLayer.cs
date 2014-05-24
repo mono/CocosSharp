@@ -36,13 +36,18 @@ namespace spine_cocossharp
             labelScene.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelScene);
 
-            String name = @"spineboy";
+			var labelJump = new CCLabelTtf("J = Jump", "arial", 12);
+			labelJump.Position = new CCPoint(15, windowSize.Height - 70);
+			labelJump.AnchorPoint = CCPoint.AnchorMiddleLeft;
+			AddChild(labelJump);
+
+			String name = @"spineboy";
             skeletonNode = new CCSkeletonAnimation(name + ".json", name + ".atlas", 0.25f);
 
             skeletonNode.SetMix("walk", "jump", 0.2f);
             skeletonNode.SetMix("jump", "run", 0.2f);
             skeletonNode.SetAnimation(0, "walk", true);
-            TrackEntry jumpEntry = skeletonNode.AddAnimation(0, "jump", false, 3);
+			TrackEntry jumpEntry = skeletonNode.AddAnimation(0, "jump", false, 3);
             skeletonNode.AddAnimation(0, "run", true);
 
             skeletonNode.Start += Start;
@@ -62,8 +67,6 @@ namespace spine_cocossharp
                     }
                     else if (skeletonNode.TimeScale == 1)
                         skeletonNode.TimeScale = 0.3f;
-                    else if (skeletonNode.Skeleton.Skin.Name == "goblin")
-                        skeletonNode.SetSkin("goblingirl");
                     return true;
                 };
             EventDispatcher.AddEventListener(listener, this);
@@ -88,7 +91,11 @@ namespace spine_cocossharp
                         case CCKeys.G:
                             CCDirector.SharedDirector.ReplaceScene(GoblinLayer.Scene);
                             break;
-
+						case CCKeys.J:
+							// I truthfully do not know if this is how it is done or not
+							skeletonNode.SetAnimation(0, "jump", false);
+							skeletonNode.AddAnimation(0, "run", true);
+							break;
                     }
 
                 };
