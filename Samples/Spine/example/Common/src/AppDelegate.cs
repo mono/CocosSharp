@@ -45,8 +45,9 @@ namespace spine_cocossharp
 
             ContentRootDirectory = "Content";
 
-            //CCSpriteFontCache.FontScale = 0.6f;
+            //CCSpriteFontCache.FontScale = 0.5f;
             //CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
+            //CCSpriteFontCache.RegisterFont("arial", 12, 24);
 
             CCDirector director = CCDirector.SharedDirector;
             director.DisplayStats = true;
@@ -70,7 +71,7 @@ namespace spine_cocossharp
             // set FPS. the default value is 1.0/60 if you don't call this
             director.AnimationInterval = 1.0 / 60;
 
-            CCScene pScene = IntroLayer.Scene;
+            CCScene pScene = GoblinLayer.Scene;
 
             director.RunWithScene(pScene);
             return true;

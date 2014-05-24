@@ -41,8 +41,8 @@
     <Compile Include="..\Common\src\Game1.cs">
       <Link>Game1.cs</Link>
     </Compile>
-    <Compile Include="..\Common\src\IntroLayer.cs">
-      <Link>IntroLayer.cs</Link>
+    <Compile Include="..\Common\src\GoblinLayer.cs">
+      <Link>GoblinLayer.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,8 +67,12 @@
     <Content Include="Game.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Content\fonts\arial-16.xnb">
-      <Link>Content\fonts\arial-16.xnb</Link>
+    <None Include="..\Content\fonts\arial-12.xnb">
+      <Link>Content\fonts\arial-12.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\Content\fonts\arial-24.xnb">
+      <Link>Content\fonts\arial-24.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\Content\fonts\MarkerFelt-22.xnb">
