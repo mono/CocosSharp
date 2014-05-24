@@ -8,7 +8,7 @@
     <ProjectGuid>{C976AEE3-940E-4658-BCDD-80A581E4C696}</ProjectGuid>
     <ProjectTypeGuids>{948B3504-5B70-4649-8FE4-BDE1FB46EC69};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
-    <RootNamespace>PCLTest</RootNamespace>
+    <RootNamespace>spine_cocossharp</RootNamespace>
     <MonoMacResourcePrefix>Resources</MonoMacResourcePrefix>
     <AssemblyName>CocosSharpSpine</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -30,6 +30,9 @@
     <EnableCodeSigning>false</EnableCodeSigning>
     <CreatePackage>false</CreatePackage>
     <StartupObject>PCLTest.Program</StartupObject>
+    <PackageSigningKey>Developer ID Installer</PackageSigningKey>
+    <I18n>
+    </I18n>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -78,14 +81,14 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="Program.cs" />
-    <Compile Include="..\win32\IntroLayer.cs">
-      <Link>IntroLayer.cs</Link>
-    </Compile>
-    <Compile Include="..\win32\AppDelegate.cs">
+    <Compile Include="..\Common\src\AppDelegate.cs">
       <Link>AppDelegate.cs</Link>
     </Compile>
-    <Compile Include="..\win32\Game1.cs">
+    <Compile Include="..\Common\src\Game1.cs">
       <Link>Game1.cs</Link>
+    </Compile>
+    <Compile Include="..\Common\src\IntroLayer.cs">
+      <Link>IntroLayer.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
