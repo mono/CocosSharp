@@ -259,7 +259,7 @@ namespace WP7Contrib.Communications.Compression
                 if (flag)
                 {
                     byte[] bytes = list.ToArray();
-                    return GZipStream.iso8859dash1.GetString(bytes, 0, bytes.Length);
+					return GZipStream.Iso8859dash1.GetString(bytes, 0, bytes.Length);
                 }
             }
             throw new ZlibException("Unexpected EOF reading GZIP header.");
@@ -279,7 +279,7 @@ namespace WP7Contrib.Communications.Compression
                         throw new ZlibException("Bad GZIP header.");
 
                     int num3 = BitConverter.ToInt32(buffer1, 4);
-                    this._GzipMtime = GZipStream._unixEpoch.AddSeconds((double)num3);
+					this._GzipMtime = GZipStream.UnixEpoch.AddSeconds((double)num3);
                     int num4 = num1 + num2;
                     if (((int)buffer1[3] & 4) == 4)
                     {

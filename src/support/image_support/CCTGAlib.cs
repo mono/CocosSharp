@@ -32,7 +32,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    internal enum CCTGAEnum
+	#region Enums and structs
+
+	internal enum CCTGAEnum
     {
         TGA_OK,
         TGA_ERROR_FILE_OPEN,
@@ -44,37 +46,31 @@ namespace CocosSharp
 
     internal struct TGAHeader
     {
-        public byte idlength;
-        public byte colourmaptype;
-        public byte datatypecode;
-        public short colourmaporigin;
-        public short colourmaplength;
-        public byte colourmapdepth;
-        public short x_origin;
-        public short y_origin;
-        public short width;
-        public short height;
-        public byte bitsperpixel;
-        public byte imagedescriptor;
+		public byte Idlength;
+		public byte Colourmaptype;
+		public byte Datatypecode;
+		public short Colourmaporigin;
+		public short Colourmaplength;
+		public byte Colourmapdepth;
+		public short Xorigin;
+		public short Yorigin;
+		public short Width;
+		public short Height;
+		public byte Bitsperpixel;
+		public byte Imagedescriptor;
     };
+
+	#endregion Enums and structs
+
 
 	internal class CCImageTGA
     {
-        //private TGAHeader header;
-
-        public int status;
-        public byte type, pixelDepth;
-
-        public short width;
-
-        public short height;
-
-        /// <summary>
-        /// raw data
-        /// </summary>
+		public byte PixelDepth;
+		public short Width, Height;
 		public Color[] ImageData;
 
-        public int flipped;
+
+		#region Constructors
 
 		public CCImageTGA()
 		{
@@ -84,8 +80,8 @@ namespace CocosSharp
 		{
             var tex = CCContentManager.SharedContentManager.Load<Texture2D>(fileName);
 
-			width = (short) tex.Width;
-			height = (short) tex.Height;
+			Width = (short) tex.Width;
+			Height = (short) tex.Height;
 
 			ImageData = new Color[tex.Width * tex.Height];
 			tex.GetData(ImageData);
@@ -99,17 +95,19 @@ namespace CocosSharp
 			}
 
 		}
+
+		#endregion Constructors
     }
+
 
     internal class CCTGAlib
     {
-
-        private static byte ReadByte(byte[] buffer, int position)
+        static byte ReadByte(byte[] buffer, int position)
         {
             return buffer[position];
         }
 
-        private static short ReadShort(byte[] buffer, int position)
+        static short ReadShort(byte[] buffer, int position)
         {
             return (short)(buffer[position] | buffer[position + 1] << 8);
         }
@@ -124,29 +122,29 @@ namespace CocosSharp
             TGAHeader header;
             int pos = 0;
 
-            header.idlength = ReadByte(buffer, pos);
+			header.Idlength = ReadByte(buffer, pos);
             pos++;
-            header.colourmaptype = ReadByte(buffer, pos);
+			header.Colourmaptype = ReadByte(buffer, pos);
             pos++;
-            header.datatypecode = ReadByte(buffer, pos);
+			header.Datatypecode = ReadByte(buffer, pos);
             pos++;
-            header.colourmaporigin = ReadShort(buffer, pos);
+			header.Colourmaporigin = ReadShort(buffer, pos);
             pos += 2;
-            header.colourmaplength = ReadShort(buffer, pos);
+			header.Colourmaplength = ReadShort(buffer, pos);
             pos += 2;
-            header.colourmapdepth = ReadByte(buffer, pos);
+			header.Colourmapdepth = ReadByte(buffer, pos);
             pos++;
-            header.x_origin = ReadShort(buffer, pos);
+			header.Xorigin = ReadShort(buffer, pos);
             pos += 2;
-            header.y_origin = ReadShort(buffer, pos);
+			header.Yorigin = ReadShort(buffer, pos);
             pos += 2;
-            header.width = ReadShort(buffer, pos);
+			header.Width = ReadShort(buffer, pos);
             pos += 2;
-            header.height = ReadShort(buffer, pos);
+			header.Height = ReadShort(buffer, pos);
             pos += 2;
-            header.bitsperpixel = ReadByte(buffer, pos);
+			header.Bitsperpixel = ReadByte(buffer, pos);
             pos++;
-            header.imagedescriptor = ReadByte(buffer, pos);
+			header.Imagedescriptor = ReadByte(buffer, pos);
             pos++;
 
             /*
@@ -206,7 +204,7 @@ namespace CocosSharp
             int headerSkip = (1 + 2) * 6; // sizeof(char) + sizeof(short) = size of the header
 
             // mode equal the number of components for each pixel
-            mode = psInfo.pixelDepth / 8;
+			mode = psInfo.PixelDepth / 8;
 
             // mode=3 or 4 implies that the image is RGB(A). However TGA
             // stores it as BGR(A) so we'll have to swap R and B.

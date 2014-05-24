@@ -1785,42 +1785,44 @@ namespace WP7Contrib.Communications.Compression
                                                         13,
                                                         13
                                                     };
-        internal int[] hn = (int[])null;
-        internal int[] v = (int[])null;
-        internal int[] c = (int[])null;
-        internal int[] r = (int[])null;
-        internal int[] u = (int[])null;
-        internal int[] x = (int[])null;
-        private const int MANY = 1440;
-        private const int Z_OK = 0;
-        private const int Z_STREAM_END = 1;
-        private const int Z_NEED_DICT = 2;
-        private const int Z_ERRNO = -1;
-        private const int Z_STREAM_ERROR = -2;
-        private const int Z_DATA_ERROR = -3;
-        private const int Z_MEM_ERROR = -4;
-        private const int Z_BUF_ERROR = -5;
-        private const int Z_VERSION_ERROR = -6;
-        internal const int fixed_bl = 9;
-        internal const int fixed_bd = 5;
-        internal const int BMAX = 15;
+		const int MANY = 1440;
+		const int Z_OK = 0;
+		const int Z_STREAM_END = 1;
+		const int Z_NEED_DICT = 2;
+		const int Z_ERRNO = -1;
+		const int Z_STREAM_ERROR = -2;
+		const int Z_DATA_ERROR = -3;
+		const int Z_MEM_ERROR = -4;
+		const int Z_BUF_ERROR = -5;
+		const int Z_VERSION_ERROR = -6;
+		const int fixed_bl = 9;
+		const int fixed_bd = 5;
+		const int BMAX = 15;
+
+		internal int[] Hn = (int[])null;
+		internal int[] V = (int[])null;
+		internal int[] C = (int[])null;
+		internal int[] R = (int[])null;
+		internal int[] U = (int[])null;
+		internal int[] X = (int[])null;
+
 
         static InfTree()
         {
         }
 
-        private int huft_build(int[] b, int bindex, int n, int s, int[] d, int[] e, int[] t, int[] m, int[] hp, int[] hn, int[] v)
+		int Huft_build(int[] b, int bindex, int n, int s, int[] d, int[] e, int[] t, int[] m, int[] hp, int[] Hn, int[] V)
         {
             int num1 = 0;
             int num2 = n;
             do
             {
-                ++this.c[b[bindex + num1]];
+                ++this.C[b[bindex + num1]];
                 ++num1;
                 --num2;
             }
             while (num2 != 0);
-            if (this.c[0] == n)
+            if (this.C[0] == n)
             {
                 t[0] = -1;
                 m[0] = 0;
@@ -1830,13 +1832,13 @@ namespace WP7Contrib.Communications.Compression
             {
                 int num3 = m[0];
                 int index1 = 1;
-                while (index1 <= 15 && this.c[index1] == 0)
+                while (index1 <= 15 && this.C[index1] == 0)
                     ++index1;
                 int index2 = index1;
                 if (num3 < index1)
                     num3 = index1;
                 int index3 = 15;
-                while (index3 != 0 && this.c[index3] == 0)
+                while (index3 != 0 && this.C[index3] == 0)
                     --index3;
                 int index4 = index3;
                 if (num3 > index3)
@@ -1846,22 +1848,22 @@ namespace WP7Contrib.Communications.Compression
                 while (index1 < index3)
                 {
                     int num5;
-                    if ((num5 = num4 - this.c[index1]) < 0)
+                    if ((num5 = num4 - this.C[index1]) < 0)
                         return -3;
                     ++index1;
                     num4 = num5 << 1;
                 }
                 int num6;
-                if ((num6 = num4 - this.c[index3]) < 0)
+                if ((num6 = num4 - this.C[index3]) < 0)
                     return -3;
-                this.c[index3] += num6;
+                this.C[index3] += num6;
                 int num7;
-                this.x[1] = num7 = 0;
+                this.X[1] = num7 = 0;
                 int index5 = 1;
                 int index6 = 2;
                 while (--index3 != 0)
                 {
-                    this.x[index6] = (num7 += this.c[index5]);
+                    this.X[index6] = (num7 += this.C[index5]);
                     ++index6;
                     ++index5;
                 }
@@ -1871,22 +1873,22 @@ namespace WP7Contrib.Communications.Compression
                 {
                     int index7;
                     if ((index7 = b[bindex + num9]) != 0)
-                        v[this.x[index7]++] = num8;
+                        V[this.X[index7]++] = num8;
                     ++num9;
                 }
                 while (++num8 < n);
-                n = this.x[index4];
+                n = this.X[index4];
                 int number1;
-                this.x[0] = number1 = 0;
+                this.X[0] = number1 = 0;
                 int index8 = 0;
                 int index9 = -1;
                 int bits = -num3;
-                this.u[0] = 0;
+                this.U[0] = 0;
                 int num10 = 0;
                 int num11 = 0;
                 for (; index2 <= index4; ++index2)
                 {
-                    int num5 = this.c[index2];
+                    int num5 = this.C[index2];
                     while (num5-- != 0)
                     {
                         while (index2 > bits + num3)
@@ -1904,52 +1906,52 @@ namespace WP7Contrib.Communications.Compression
                                 if (num14 < num13)
                                 {
                                     int num17;
-                                    while (++num14 < num13 && (num17 = num16 << 1) > this.c[++index7])
-                                        num16 = num17 - this.c[index7];
+                                    while (++num14 < num13 && (num17 = num16 << 1) > this.C[++index7])
+                                        num16 = num17 - this.C[index7];
                                 }
                             }
                             num11 = 1 << num14;
-                            if (hn[0] + num11 > 1440)
+                            if (Hn[0] + num11 > 1440)
                                 return -3;
-                            this.u[index9] = num10 = hn[0];
-                            hn[0] += num11;
+                            this.U[index9] = num10 = Hn[0];
+                            Hn[0] += num11;
                             if (index9 != 0)
                             {
-                                this.x[index9] = number1;
-                                this.r[0] = (int)(sbyte)num14;
-                                this.r[1] = (int)(sbyte)num3;
+                                this.X[index9] = number1;
+                                this.R[0] = (int)(sbyte)num14;
+                                this.R[1] = (int)(sbyte)num3;
                                 int num16 = SharedUtils.URShift(number1, bits - num3);
-                                this.r[2] = num10 - this.u[index9 - 1] - num16;
-                                Array.Copy((Array)this.r, 0, (Array)hp, (this.u[index9 - 1] + num16) * 3, 3);
+                                this.R[2] = num10 - this.U[index9 - 1] - num16;
+                                Array.Copy((Array)this.R, 0, (Array)hp, (this.U[index9 - 1] + num16) * 3, 3);
                             }
                             else
                                 t[0] = num10;
                         }
-                        this.r[1] = (int)(sbyte)(index2 - bits);
+                        this.R[1] = (int)(sbyte)(index2 - bits);
                         if (index8 >= n)
-                            this.r[0] = 192;
-                        else if (v[index8] < s)
+                            this.R[0] = 192;
+                        else if (V[index8] < s)
                         {
-                            this.r[0] = v[index8] < 256 ? 0 : 96;
-                            this.r[2] = v[index8++];
+                            this.R[0] = V[index8] < 256 ? 0 : 96;
+                            this.R[2] = V[index8++];
                         }
                         else
                         {
-                            this.r[0] = (int)(sbyte)(e[v[index8] - s] + 16 + 64);
-                            this.r[2] = d[v[index8++] - s];
+                            this.R[0] = (int)(sbyte)(e[V[index8] - s] + 16 + 64);
+                            this.R[2] = d[V[index8++] - s];
                         }
                         int num18 = 1 << index2 - bits;
                         int num19 = SharedUtils.URShift(number1, bits);
                         while (num19 < num11)
                         {
-                            Array.Copy((Array)this.r, 0, (Array)hp, (num10 + num19) * 3, 3);
+                            Array.Copy((Array)this.R, 0, (Array)hp, (num10 + num19) * 3, 3);
                             num19 += num18;
                         }
                         int number2;
                         for (number2 = 1 << index2 - 1; (number1 & number2) != 0; number2 = SharedUtils.URShift(number2, 1))
                             number1 ^= number2;
                         number1 ^= number2;
-                        for (int index7 = (1 << bits) - 1; (number1 & index7) != this.x[index9]; index7 = (1 << bits) - 1)
+                        for (int index7 = (1 << bits) - 1; (number1 & index7) != this.X[index9]; index7 = (1 << bits) - 1)
                         {
                             --index9;
                             bits -= num3;
@@ -1960,11 +1962,11 @@ namespace WP7Contrib.Communications.Compression
             }
         }
 
-        internal int inflate_trees_bits(int[] c, int[] bb, int[] tb, int[] hp, ZlibCodec z)
+        internal int inflate_trees_bits(int[] C, int[] bb, int[] tb, int[] hp, ZlibCodec z)
         {
             this.initWorkArea(19);
-            this.hn[0] = 0;
-            int num1 = this.huft_build(c, 0, 19, 19, (int[])null, (int[])null, tb, bb, hp, this.hn, this.v);
+            this.Hn[0] = 0;
+            int num1 = this.Huft_build(C, 0, 19, 19, (int[])null, (int[])null, tb, bb, hp, this.Hn, this.V);
             int num2;
             switch (num1)
             {
@@ -1987,11 +1989,11 @@ namespace WP7Contrib.Communications.Compression
             return num1;
         }
 
-        internal int inflate_trees_dynamic(int nl, int nd, int[] c, int[] bl, int[] bd, int[] tl, int[] td, int[] hp, ZlibCodec z)
+        internal int inflate_trees_dynamic(int nl, int nd, int[] C, int[] bl, int[] bd, int[] tl, int[] td, int[] hp, ZlibCodec z)
         {
             this.initWorkArea(288);
-            this.hn[0] = 0;
-            int num1 = this.huft_build(c, 0, nl, 257, InfTree.cplens, InfTree.cplext, tl, bl, hp, this.hn, this.v);
+            this.Hn[0] = 0;
+            int num1 = this.Huft_build(C, 0, nl, 257, InfTree.cplens, InfTree.cplext, tl, bl, hp, this.Hn, this.V);
             if (num1 != 0 || bl[0] == 0)
             {
                 if (num1 == -3)
@@ -2006,7 +2008,7 @@ namespace WP7Contrib.Communications.Compression
             else
             {
                 this.initWorkArea(288);
-                int num2 = this.huft_build(c, nl, nd, 0, InfTree.cpdist, InfTree.cpdext, td, bd, hp, this.hn, this.v);
+                int num2 = this.Huft_build(C, nl, nd, 0, InfTree.cpdist, InfTree.cpdext, td, bd, hp, this.Hn, this.V);
                 if (num2 == 0 && (bd[0] != 0 || nl <= 257))
                     return 0;
                 if (num2 == -3)
@@ -2036,25 +2038,25 @@ namespace WP7Contrib.Communications.Compression
 
         private void initWorkArea(int vsize)
         {
-            if (this.hn == null)
+            if (this.Hn == null)
             {
-                this.hn = new int[1];
-                this.v = new int[vsize];
-                this.c = new int[16];
-                this.r = new int[3];
-                this.u = new int[15];
-                this.x = new int[16];
+                this.Hn = new int[1];
+                this.V = new int[vsize];
+                this.C = new int[16];
+                this.R = new int[3];
+                this.U = new int[15];
+                this.X = new int[16];
             }
-            if (this.v.Length < vsize)
-                this.v = new int[vsize];
+            if (this.V.Length < vsize)
+                this.V = new int[vsize];
             for (int index = 0; index < vsize; ++index)
-                this.v[index] = 0;
+                this.V[index] = 0;
             for (int index = 0; index < 16; ++index)
-                this.c[index] = 0;
+                this.C[index] = 0;
             for (int index = 0; index < 3; ++index)
-                this.r[index] = 0;
-            Array.Copy((Array)this.c, 0, (Array)this.u, 0, 15);
-            Array.Copy((Array)this.c, 0, (Array)this.x, 0, 16);
+                this.R[index] = 0;
+            Array.Copy((Array)this.C, 0, (Array)this.U, 0, 15);
+            Array.Copy((Array)this.C, 0, (Array)this.X, 0, 16);
         }
     }
 }

@@ -14,26 +14,27 @@ namespace WP7Contrib.Communications.Compression
 
     internal class Crc32
     {
-        private uint _RunningCrc32Result = uint.MaxValue;
-        private const int BUFFER_SIZE = 8192;
-        private long _TotalBytesRead;
-        private static uint[] crc32Table;
+		const int BUFFER_SIZE = 8192;
+		static uint[] crc32Table;
 
-        public long TotalBytesRead
-        {
-            get
-            {
-                return this._TotalBytesRead;
-            }
-        }
+		uint runningCrc32Result = uint.MaxValue;
+        
+		#region Properties
+
+		public long TotalBytesRead { get; private set; }
 
         public int Crc32Result
         {
             get
             {
-                return ~(int)this._RunningCrc32Result;
+                return ~(int)this.runningCrc32Result;
             }
         }
+
+		#endregion Properties
+
+
+		#region Constructors
 
         static Crc32()
         {
@@ -53,6 +54,9 @@ namespace WP7Contrib.Communications.Compression
             }
         }
 
+		#endregion Constructors
+
+
         public int GetCrc32(Stream input)
         {
             return this.GetCrc32AndCopy(input, (Stream)null);
@@ -64,28 +68,28 @@ namespace WP7Contrib.Communications.Compression
                 throw new ZlibException("The input stream must not be null.");
             byte[] numArray = new byte[8192];
             int count1 = 8192;
-            this._TotalBytesRead = 0L;
+            this.TotalBytesRead = 0L;
             int count2 = input.Read(numArray, 0, count1);
             if (output != null)
                 output.Write(numArray, 0, count2);
-            this._TotalBytesRead += (long)count2;
+            this.TotalBytesRead += (long)count2;
             while (count2 > 0)
             {
                 this.SlurpBlock(numArray, 0, count2);
                 count2 = input.Read(numArray, 0, count1);
                 if (output != null)
                     output.Write(numArray, 0, count2);
-                this._TotalBytesRead += (long)count2;
+                this.TotalBytesRead += (long)count2;
             }
-            return ~(int)this._RunningCrc32Result;
+            return ~(int)this.runningCrc32Result;
         }
 
         public int ComputeCrc32(int W, byte B)
         {
-            return this._InternalComputeCrc32((uint)W, B);
+            return this.InternalComputeCrc32((uint)W, B);
         }
 
-        internal int _InternalComputeCrc32(uint W, byte B)
+        internal int InternalComputeCrc32(uint W, byte B)
         {
             return (int)Crc32.crc32Table[((int)W ^ (int)B) & (int)byte.MaxValue] ^ (int)(W >> 8);
         }
@@ -97,9 +101,9 @@ namespace WP7Contrib.Communications.Compression
             for (int index1 = 0; index1 < count; ++index1)
             {
                 int index2 = offset + index1;
-                this._RunningCrc32Result = this._RunningCrc32Result >> 8 ^ Crc32.crc32Table[(int) ((uint)block[index2] ^ this._RunningCrc32Result & (uint)byte.MaxValue)];
+                this.runningCrc32Result = this.runningCrc32Result >> 8 ^ Crc32.crc32Table[(int) ((uint)block[index2] ^ this.runningCrc32Result & (uint)byte.MaxValue)];
             }
-            this._TotalBytesRead += (long)count;
+            this.TotalBytesRead += (long)count;
         }
     }
 }

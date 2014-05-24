@@ -11,86 +11,81 @@ namespace WP7Contrib.Communications.Compression
 {
     internal sealed class InflateManager
     {
-        private static byte[] mark = new byte[4]
-                                         {
-                                             (byte) 0,
-                                             (byte) 0,
-                                             byte.MaxValue,
-                                             byte.MaxValue
-                                         };
-        internal long[] was = new long[1];
-        private bool _handleRfc1950HeaderBytes = true;
-        private const int PRESET_DICT = 32;
-        private const int Z_DEFLATED = 8;
-        private const int METHOD = 0;
-        private const int FLAG = 1;
-        private const int DICT4 = 2;
-        private const int DICT3 = 3;
-        private const int DICT2 = 4;
-        private const int DICT1 = 5;
-        private const int DICT0 = 6;
-        private const int BLOCKS = 7;
-        private const int CHECK4 = 8;
-        private const int CHECK3 = 9;
-        private const int CHECK2 = 10;
-        private const int CHECK1 = 11;
-        private const int DONE = 12;
-        private const int BAD = 13;
-        internal int mode;
-        internal ZlibCodec _codec;
-        internal int method;
-        internal long need;
-        internal int marker;
-        internal int wbits;
-        internal InflateBlocks blocks;
+		static byte[] Mark = { (byte) 0, (byte) 0, byte.MaxValue, byte.MaxValue };
+		const int PRESET_DICT = 32;
+		const int Z_DEFLATED = 8;
+		const int METHOD = 0;
+		const int FLAG = 1;
+		const int DICT4 = 2;
+		const int DICT3 = 3;
+		const int DICT2 = 4;
+		const int DICT1 = 5;
+		const int DICT0 = 6;
+		const int BLOCKS = 7;
+		const int CHECK4 = 8;
+		const int CHECK3 = 9;
+		const int CHECK2 = 10;
+		const int CHECK1 = 11;
+		const int DONE = 12;
+		const int BAD = 13;
 
-        internal bool HandleRfc1950HeaderBytes
-        {
-            get
-            {
-                return this._handleRfc1950HeaderBytes;
-            }
-            set
-            {
-                this._handleRfc1950HeaderBytes = value;
-            }
-        }
+		internal int Mode;
+		internal int Method;
+		internal int Marker;
+		internal int Wbits;
+		internal ZlibCodec Codec;
+		internal InflateBlocks Blocks;
+		internal long Need;
+		internal long[] Was = new long[1];
+
+
+		#region Properties
+
+		internal bool HandleRfc1950HeaderBytes { get; set; }
+
+		#endregion Properties
+
+
+		#region Constructors
 
         static InflateManager()
         {
         }
 
-        public InflateManager()
+		public InflateManager() : this(true)
         {
         }
 
-        public InflateManager(bool expectRfc1950HeaderBytes)
+		public InflateManager(bool expectRfc1950HeaderBytes=true)
         {
-            this._handleRfc1950HeaderBytes = expectRfc1950HeaderBytes;
+			HandleRfc1950HeaderBytes = expectRfc1950HeaderBytes;
         }
+
+		#endregion Constructors
+
 
         internal int Reset()
         {
-            this._codec.TotalBytesIn = this._codec.TotalBytesOut = 0L;
-            this._codec.Message = (string)null;
-            this.mode = this.HandleRfc1950HeaderBytes ? 0 : 7;
-            this.blocks.Reset((long[])null);
+            this.Codec.TotalBytesIn = this.Codec.TotalBytesOut = 0L;
+            this.Codec.Message = (string)null;
+            this.Mode = this.HandleRfc1950HeaderBytes ? 0 : 7;
+            this.Blocks.Reset((long[])null);
             return 0;
         }
 
         internal int End()
         {
-            if (this.blocks != null)
-                this.blocks.Free();
-            this.blocks = (InflateBlocks)null;
+            if (this.Blocks != null)
+                this.Blocks.Free();
+            this.Blocks = (InflateBlocks)null;
             return 0;
         }
 
         internal int Initialize(ZlibCodec codec, int w)
         {
-            this._codec = codec;
-            this._codec.Message = (string)null;
-            this.blocks = (InflateBlocks)null;
+            this.Codec = codec;
+            this.Codec.Message = (string)null;
+            this.Blocks = (InflateBlocks)null;
             if (w < 8 || w > 15)
             {
                 this.End();
@@ -98,8 +93,8 @@ namespace WP7Contrib.Communications.Compression
             }
             else
             {
-                this.wbits = w;
-                this.blocks = new InflateBlocks(codec, this.HandleRfc1950HeaderBytes ? (object)this : (object)(InflateManager)null, 1 << w);
+                this.Wbits = w;
+                this.Blocks = new InflateBlocks(codec, this.HandleRfc1950HeaderBytes ? (object)this : (object)(InflateManager)null, 1 << w);
                 this.Reset();
                 return 0;
             }
@@ -108,65 +103,65 @@ namespace WP7Contrib.Communications.Compression
         internal int Inflate(FlushType flush)
         {
             int num1 = (int)flush;
-            if (this._codec.InputBuffer == null)
+            if (this.Codec.InputBuffer == null)
                 throw new ZlibException("InputBuffer is null. ");
             int num2 = num1 == 4 ? -5 : 0;
             int r = -5;
             while (true)
             {
-                switch (this.mode)
+                switch (this.Mode)
                 {
                     case 0:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
                             InflateManager inflateManager = this;
-                            byte[] numArray = this._codec.InputBuffer;
-                            int index = this._codec.NextIn++;
+                            byte[] numArray = this.Codec.InputBuffer;
+                            int index = this.Codec.NextIn++;
                             int num3;
                             int num4 = num3 = (int)numArray[index];
-                            inflateManager.method = num3;
+                            inflateManager.Method = num3;
                             if ((num4 & 15) != 8)
                             {
-                                this.mode = 13;
-                                this._codec.Message = string.Format("unknown compression method (0x{0:X2})", (object)this.method);
-                                this.marker = 5;
+                                this.Mode = 13;
+                                this.Codec.Message = string.Format("unknown compression Method (0x{0:X2})", (object)this.Method);
+                                this.Marker = 5;
                                 break;
                             }
-                            else if ((this.method >> 4) + 8 > this.wbits)
+                            else if ((this.Method >> 4) + 8 > this.Wbits)
                             {
-                                this.mode = 13;
-                                this._codec.Message = string.Format("invalid window size ({0})", (object)((this.method >> 4) + 8));
-                                this.marker = 5;
+                                this.Mode = 13;
+                                this.Codec.Message = string.Format("invalid window size ({0})", (object)((this.Method >> 4) + 8));
+                                this.Marker = 5;
                                 break;
                             }
                             else
                             {
-                                this.mode = 1;
+                                this.Mode = 1;
                                 goto case 1;
                             }
                         }
                         else
                             goto label_4;
                     case 1:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
-                            int num3 = (int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue;
-                            if (((this.method << 8) + num3) % 31 != 0)
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
+                            int num3 = (int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue;
+                            if (((this.Method << 8) + num3) % 31 != 0)
                             {
-                                this.mode = 13;
-                                this._codec.Message = "incorrect header check";
-                                this.marker = 5;
+                                this.Mode = 13;
+                                this.Codec.Message = "incorrect header check";
+                                this.Marker = 5;
                                 break;
                             }
                             else if ((num3 & 32) == 0)
                             {
-                                this.mode = 7;
+                                this.Mode = 7;
                                 break;
                             }
                             else
@@ -185,11 +180,11 @@ namespace WP7Contrib.Communications.Compression
                     case 6:
                         goto label_29;
                     case 7:
-                        r = this.blocks.Process(r);
+                        r = this.Blocks.Process(r);
                         if (r == -3)
                         {
-                            this.mode = 13;
-                            this.marker = 0;
+                            this.Mode = 13;
+                            this.Marker = 0;
                             break;
                         }
                         else
@@ -199,15 +194,15 @@ namespace WP7Contrib.Communications.Compression
                             if (r == 1)
                             {
                                 r = num2;
-                                this.blocks.Reset(this.was);
+                                this.Blocks.Reset(this.Was);
                                 if (!this.HandleRfc1950HeaderBytes)
                                 {
-                                    this.mode = 12;
+                                    this.Mode = 12;
                                     break;
                                 }
                                 else
                                 {
-                                    this.mode = 8;
+                                    this.Mode = 8;
                                     goto case 8;
                                 }
                             }
@@ -215,53 +210,53 @@ namespace WP7Contrib.Communications.Compression
                                 goto label_35;
                         }
                     case 8:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
-                            this.need = (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 24 & -16777216);
-                            this.mode = 9;
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
+                            this.Need = (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 24 & -16777216);
+                            this.Mode = 9;
                             goto case 9;
                         }
                         else
                             goto label_40;
                     case 9:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
-                            this.need += (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 16) & 16711680L;
-                            this.mode = 10;
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
+                            this.Need += (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 16) & 16711680L;
+                            this.Mode = 10;
                             goto case 10;
                         }
                         else
                             goto label_43;
                     case 10:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
-                            this.need += (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 8) & 65280L;
-                            this.mode = 11;
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
+                            this.Need += (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 8) & 65280L;
+                            this.Mode = 11;
                             goto case 11;
                         }
                         else
                             goto label_46;
                     case 11:
-                        if (this._codec.AvailableBytesIn != 0)
+                        if (this.Codec.AvailableBytesIn != 0)
                         {
                             r = num2;
-                            --this._codec.AvailableBytesIn;
-                            ++this._codec.TotalBytesIn;
-                            this.need += (long)this._codec.InputBuffer[this._codec.NextIn++] & (long)byte.MaxValue;
-                            if ((int)this.was[0] != (int)this.need)
+                            --this.Codec.AvailableBytesIn;
+                            ++this.Codec.TotalBytesIn;
+                            this.Need += (long)this.Codec.InputBuffer[this.Codec.NextIn++] & (long)byte.MaxValue;
+                            if ((int)this.Was[0] != (int)this.Need)
                             {
-                                this.mode = 13;
-                                this._codec.Message = "incorrect data check";
-                                this.marker = 5;
+                                this.Mode = 13;
+                                this.Codec.Message = "incorrect data check";
+                                this.Marker = 5;
                                 break;
                             }
                             else
@@ -282,44 +277,44 @@ namespace WP7Contrib.Communications.Compression
             label_11:
             return r;
             label_16:
-            this.mode = 2;
+            this.Mode = 2;
             label_17:
-            if (this._codec.AvailableBytesIn == 0)
+            if (this.Codec.AvailableBytesIn == 0)
                 return r;
             r = num2;
-            --this._codec.AvailableBytesIn;
-            ++this._codec.TotalBytesIn;
-            this.need = (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 24 & -16777216);
-            this.mode = 3;
+            --this.Codec.AvailableBytesIn;
+            ++this.Codec.TotalBytesIn;
+            this.Need = (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 24 & -16777216);
+            this.Mode = 3;
             label_20:
-            if (this._codec.AvailableBytesIn == 0)
+            if (this.Codec.AvailableBytesIn == 0)
                 return r;
             r = num2;
-            --this._codec.AvailableBytesIn;
-            ++this._codec.TotalBytesIn;
-            this.need += (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 16) & 16711680L;
-            this.mode = 4;
+            --this.Codec.AvailableBytesIn;
+            ++this.Codec.TotalBytesIn;
+            this.Need += (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 16) & 16711680L;
+            this.Mode = 4;
             label_23:
-            if (this._codec.AvailableBytesIn == 0)
+            if (this.Codec.AvailableBytesIn == 0)
                 return r;
             r = num2;
-            --this._codec.AvailableBytesIn;
-            ++this._codec.TotalBytesIn;
-            this.need += (long)(((int)this._codec.InputBuffer[this._codec.NextIn++] & (int)byte.MaxValue) << 8) & 65280L;
-            this.mode = 5;
+            --this.Codec.AvailableBytesIn;
+            ++this.Codec.TotalBytesIn;
+            this.Need += (long)(((int)this.Codec.InputBuffer[this.Codec.NextIn++] & (int)byte.MaxValue) << 8) & 65280L;
+            this.Mode = 5;
             label_26:
-            if (this._codec.AvailableBytesIn == 0)
+            if (this.Codec.AvailableBytesIn == 0)
                 return r;
-            --this._codec.AvailableBytesIn;
-            ++this._codec.TotalBytesIn;
-            this.need += (long)this._codec.InputBuffer[this._codec.NextIn++] & (long)byte.MaxValue;
-            this._codec._Adler32 = this.need;
-            this.mode = 6;
+            --this.Codec.AvailableBytesIn;
+            ++this.Codec.TotalBytesIn;
+            this.Need += (long)this.Codec.InputBuffer[this.Codec.NextIn++] & (long)byte.MaxValue;
+            this.Codec.Adler32 = this.Need;
+            this.Mode = 6;
             return 2;
             label_29:
-            this.mode = 13;
-            this._codec.Message = "need dictionary";
-            this.marker = 0;
+            this.Mode = 13;
+            this.Codec.Message = "Need dictionary";
+            this.Marker = 0;
             return -2;
             label_35:
             return r;
@@ -332,11 +327,11 @@ namespace WP7Contrib.Communications.Compression
             label_49:
             return r;
             label_52:
-            this.mode = 12;
+            this.Mode = 12;
             label_53:
             return 1;
             label_54:
-            throw new ZlibException(string.Format("Bad state ({0})", (object)this._codec.Message));
+            throw new ZlibException(string.Format("Bad state ({0})", (object)this.Codec.Message));
             label_55:
             throw new ZlibException("Stream error.");
         }
@@ -345,59 +340,59 @@ namespace WP7Contrib.Communications.Compression
         {
             int start = 0;
             int n = dictionary.Length;
-            if (this.mode != 6)
+            if (this.Mode != 6)
                 throw new ZlibException("Stream error.");
-            if (Adler.Adler32(1L, dictionary, 0, dictionary.Length) != this._codec._Adler32)
+            if (Adler.Adler32(1L, dictionary, 0, dictionary.Length) != this.Codec.Adler32)
                 return -3;
-            this._codec._Adler32 = Adler.Adler32(0L, (byte[])null, 0, 0);
-            if (n >= 1 << this.wbits)
+            this.Codec.Adler32 = Adler.Adler32(0L, (byte[])null, 0, 0);
+            if (n >= 1 << this.Wbits)
             {
-                n = (1 << this.wbits) - 1;
+                n = (1 << this.Wbits) - 1;
                 start = dictionary.Length - n;
             }
-            this.blocks.SetDictionary(dictionary, start, n);
-            this.mode = 7;
+            this.Blocks.SetDictionary(dictionary, start, n);
+            this.Mode = 7;
             return 0;
         }
 
         internal int Sync()
         {
-            if (this.mode != 13)
+            if (this.Mode != 13)
             {
-                this.mode = 13;
-                this.marker = 0;
+                this.Mode = 13;
+                this.Marker = 0;
             }
             int num1;
-            if ((num1 = this._codec.AvailableBytesIn) == 0)
+            if ((num1 = this.Codec.AvailableBytesIn) == 0)
                 return -5;
-            int index1 = this._codec.NextIn;
+            int index1 = this.Codec.NextIn;
             int index2;
-            for (index2 = this.marker; num1 != 0 && index2 < 4; --num1)
+            for (index2 = this.Marker; num1 != 0 && index2 < 4; --num1)
             {
-                if ((int)this._codec.InputBuffer[index1] == (int)InflateManager.mark[index2])
+                if ((int)this.Codec.InputBuffer[index1] == (int)InflateManager.Mark[index2])
                     ++index2;
                 else
-                    index2 = (int)this._codec.InputBuffer[index1] == 0 ? 4 - index2 : 0;
+                    index2 = (int)this.Codec.InputBuffer[index1] == 0 ? 4 - index2 : 0;
                 ++index1;
             }
-            this._codec.TotalBytesIn += (long)(index1 - this._codec.NextIn);
-            this._codec.NextIn = index1;
-            this._codec.AvailableBytesIn = num1;
-            this.marker = index2;
+            this.Codec.TotalBytesIn += (long)(index1 - this.Codec.NextIn);
+            this.Codec.NextIn = index1;
+            this.Codec.AvailableBytesIn = num1;
+            this.Marker = index2;
             if (index2 != 4)
                 return -3;
-            long num2 = this._codec.TotalBytesIn;
-            long num3 = this._codec.TotalBytesOut;
+            long num2 = this.Codec.TotalBytesIn;
+            long num3 = this.Codec.TotalBytesOut;
             this.Reset();
-            this._codec.TotalBytesIn = num2;
-            this._codec.TotalBytesOut = num3;
-            this.mode = 7;
+            this.Codec.TotalBytesIn = num2;
+            this.Codec.TotalBytesOut = num3;
+            this.Mode = 7;
             return 0;
         }
 
         internal int SyncPoint(ZlibCodec z)
         {
-            return this.blocks.SyncPoint();
+            return this.Blocks.SyncPoint();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace WP7Contrib.Communications.Compression
 
     internal sealed class InflateBlocks
     {
-        private static readonly int[] inflate_mask = new int[17]
+		static readonly int[] inflate_mask = new int[17]
                                                          {
                                                              0,
                                                              1,
@@ -55,83 +55,91 @@ namespace WP7Contrib.Communications.Compression
                                                         1,
                                                         15
                                                     };
-        internal int[] bb = new int[1];
-        internal int[] tb = new int[1];
-        internal InflateCodes codes = new InflateCodes();
-        internal InfTree inftree = new InfTree();
-        private const int MANY = 1440;
-        private const int TYPE = 0;
-        private const int LENS = 1;
-        private const int STORED = 2;
-        private const int TABLE = 3;
-        private const int BTREE = 4;
-        private const int DTREE = 5;
-        private const int CODES = 6;
-        private const int DRY = 7;
-        private const int DONE = 8;
-        private const int BAD = 9;
-        internal int mode;
-        internal int left;
-        internal int table;
-        internal int index;
-        internal int[] blens;
-        internal int last;
-        internal ZlibCodec _codec;
-        internal int bitk;
-        internal int bitb;
-        internal int[] hufts;
-        internal byte[] window;
-        internal int end;
-        internal int read;
-        internal int write;
-        internal object checkfn;
-        internal long check;
+
+        const int MANY = 1440;
+        const int TYPE = 0;
+        const int LENS = 1;
+        const int STORED = 2;
+        const int TABLE = 3;
+        const int BTREE = 4;
+        const int DTREE = 5;
+        const int CODES = 6;
+        const int DRY = 7;
+        const int DONE = 8;
+        const int BAD = 9;
+
+		internal int[] Bb = new int[1];
+		internal int[] Tb = new int[1];
+		internal InflateCodes Codes = new InflateCodes();
+		internal InfTree Inftree = new InfTree();
+		internal int Mode;
+		internal int Left;
+		internal int Table;
+		internal int Index;
+		internal int[] Blens;
+		internal int Last;
+		internal ZlibCodec Codec;
+		internal int Bitk;
+		internal int Bitb;
+		internal int[] Hufts;
+		internal byte[] Window;
+		internal int End;
+		internal int Read;
+		internal int Write;
+		internal object Checkfn;
+		internal long Check;
+
+
+		#region Constructors
 
         static InflateBlocks()
         {
         }
 
-        internal InflateBlocks(ZlibCodec codec, object checkfn, int w)
+        internal InflateBlocks(ZlibCodec codec, object Checkfn, int w)
         {
-            this._codec = codec;
-            this.hufts = new int[4320];
-            this.window = new byte[w];
-            this.end = w;
-            this.checkfn = checkfn;
-            this.mode = 0;
+            this.Codec = codec;
+            this.Hufts = new int[4320];
+			this.Window = new byte[w];
+            this.End = w;
+            this.Checkfn = Checkfn;
+            this.Mode = 0;
             this.Reset((long[])null);
         }
+
+		#endregion Constructors
+
 
         internal void Reset(long[] c)
         {
             if (c != null)
-                c[0] = this.check;
-            if (this.mode != 4 && this.mode != 5)
+                c[0] = this.Check;
+            if (this.Mode != 4 && this.Mode != 5)
             {}
-            if (this.mode != 6)
+            if (this.Mode != 6)
             {}
-            this.mode = 0;
-            this.bitk = 0;
-            this.bitb = 0;
-            this.read = this.write = 0;
-            if (this.checkfn == null)
+            this.Mode = 0;
+            this.Bitk = 0;
+            this.Bitb = 0;
+            this.Read = this.Write = 0;
+            if (this.Checkfn == null)
                 return;
-            this._codec._Adler32 = this.check = Adler.Adler32(0L, (byte[])null, 0, 0);
+            this.Codec.Adler32 = this.Check = Adler.Adler32(0L, (byte[])null, 0, 0);
         }
 
         internal int Process(int r)
         {
-            int sourceIndex = this._codec.NextIn;
-            int num1 = this._codec.AvailableBytesIn;
-            int number1 = this.bitb;
-            int num2 = this.bitk;
-            int destinationIndex = this.write;
-            int num3 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
+            int sourceIndex = this.Codec.NextIn;
+            int num1 = this.Codec.AvailableBytesIn;
+            int number1 = this.Bitb;
+            int num2 = this.Bitk;
+            int destinationIndex = this.Write;
+            int num3 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
             int num4;
             int num5;
             while (true)
             {
-                switch (this.mode)
+                switch (this.Mode)
                 {
                     case 0:
                         while (num2 < 3)
@@ -140,22 +148,22 @@ namespace WP7Contrib.Communications.Compression
                             {
                                 r = 0;
                                 --num1;
-                                number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                 num2 += 8;
                             }
                             else
                             {
-                                this.bitb = number1;
-                                this.bitk = num2;
-                                this._codec.AvailableBytesIn = num1;
-                                this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                this._codec.NextIn = sourceIndex;
-                                this.write = destinationIndex;
+                                this.Bitb = number1;
+                                this.Bitk = num2;
+                                this.Codec.AvailableBytesIn = num1;
+                                this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                this.Codec.NextIn = sourceIndex;
+                                this.Write = destinationIndex;
                                 return this.Flush(r);
                             }
                         }
                         int number2 = number1 & 7;
-                        this.last = number2 & 1;
+                        this.Last = number2 & 1;
                         switch (SharedUtils.URShift(number2, 1))
                         {
                             case 0:
@@ -164,23 +172,23 @@ namespace WP7Contrib.Communications.Compression
                                 int bits1 = num6 & 7;
                                 number1 = SharedUtils.URShift(number3, bits1);
                                 num2 = num6 - bits1;
-                                this.mode = 1;
+                                this.Mode = 1;
                                 break;
                             case 1:
                                 int[] bl1 = new int[1];
                                 int[] bd1 = new int[1];
                                 int[][] tl1 = new int[1][];
                                 int[][] td1 = new int[1][];
-                                InfTree.inflate_trees_fixed(bl1, bd1, tl1, td1, this._codec);
-                                this.codes.Init(bl1[0], bd1[0], tl1[0], 0, td1[0], 0);
+                                InfTree.inflate_trees_fixed(bl1, bd1, tl1, td1, this.Codec);
+                                this.Codes.Init(bl1[0], bd1[0], tl1[0], 0, td1[0], 0);
                                 number1 = SharedUtils.URShift(number1, 3);
                                 num2 -= 3;
-                                this.mode = 6;
+                                this.Mode = 6;
                                 break;
                             case 2:
                                 number1 = SharedUtils.URShift(number1, 3);
                                 num2 -= 3;
-                                this.mode = 3;
+                                this.Mode = 3;
                                 break;
                             case 3:
                                 goto label_9;
@@ -193,25 +201,25 @@ namespace WP7Contrib.Communications.Compression
                             {
                                 r = 0;
                                 --num1;
-                                number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                 num2 += 8;
                             }
                             else
                             {
-                                this.bitb = number1;
-                                this.bitk = num2;
-                                this._codec.AvailableBytesIn = num1;
-                                this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                this._codec.NextIn = sourceIndex;
-                                this.write = destinationIndex;
+                                this.Bitb = number1;
+                                this.Bitk = num2;
+                                this.Codec.AvailableBytesIn = num1;
+                                this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                this.Codec.NextIn = sourceIndex;
+                                this.Write = destinationIndex;
                                 return this.Flush(r);
                             }
                         }
                         if ((SharedUtils.URShift(~number1, 16) & (int)ushort.MaxValue) == (number1 & (int)ushort.MaxValue))
                         {
-                            this.left = number1 & (int)ushort.MaxValue;
+                            this.Left = number1 & (int)ushort.MaxValue;
                             number1 = num2 = 0;
-                            this.mode = this.left != 0 ? 2 : (this.last != 0 ? 7 : 0);
+                            this.Mode = this.Left != 0 ? 2 : (this.Last != 0 ? 7 : 0);
                             break;
                         }
                         else
@@ -221,40 +229,40 @@ namespace WP7Contrib.Communications.Compression
                         {
                             if (num3 == 0)
                             {
-                                if (destinationIndex == this.end && this.read != 0)
+                                if (destinationIndex == this.End && this.Read != 0)
                                 {
                                     destinationIndex = 0;
-                                    num3 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
+                                    num3 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
                                 }
                                 if (num3 == 0)
                                 {
-                                    this.write = destinationIndex;
+                                    this.Write = destinationIndex;
                                     r = this.Flush(r);
-                                    destinationIndex = this.write;
-                                    num3 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
-                                    if (destinationIndex == this.end && this.read != 0)
+                                    destinationIndex = this.Write;
+                                    num3 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
+                                    if (destinationIndex == this.End && this.Read != 0)
                                     {
                                         destinationIndex = 0;
-                                        num3 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
+                                        num3 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
                                     }
                                     if (num3 == 0)
                                         goto label_26;
                                 }
                             }
                             r = 0;
-                            int length = this.left;
+                            int length = this.Left;
                             if (length > num1)
                                 length = num1;
                             if (length > num3)
                                 length = num3;
-                            Array.Copy((Array)this._codec.InputBuffer, sourceIndex, (Array)this.window, destinationIndex, length);
+                            Array.Copy((Array)this.Codec.InputBuffer, sourceIndex, (Array)this.Window, destinationIndex, length);
                             sourceIndex += length;
                             num1 -= length;
                             destinationIndex += length;
                             num3 -= length;
-                            if ((this.left -= length) == 0)
+                            if ((this.Left -= length) == 0)
                             {
-                                this.mode = this.last != 0 ? 7 : 0;
+                                this.Mode = this.Last != 0 ? 7 : 0;
                                 break;
                             }
                             else
@@ -269,44 +277,44 @@ namespace WP7Contrib.Communications.Compression
                             {
                                 r = 0;
                                 --num1;
-                                number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                 num2 += 8;
                             }
                             else
                             {
-                                this.bitb = number1;
-                                this.bitk = num2;
-                                this._codec.AvailableBytesIn = num1;
-                                this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                this._codec.NextIn = sourceIndex;
-                                this.write = destinationIndex;
+                                this.Bitb = number1;
+                                this.Bitk = num2;
+                                this.Codec.AvailableBytesIn = num1;
+                                this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                this.Codec.NextIn = sourceIndex;
+                                this.Write = destinationIndex;
                                 return this.Flush(r);
                             }
                         }
                         int num7;
-                        this.table = num7 = number1 & 16383;
+                        this.Table = num7 = number1 & 16383;
                         if ((num7 & 31) <= 29 && (num7 >> 5 & 31) <= 29)
                         {
                             int length = 258 + (num7 & 31) + (num7 >> 5 & 31);
-                            if (this.blens == null || this.blens.Length < length)
+                            if (this.Blens == null || this.Blens.Length < length)
                             {
-                                this.blens = new int[length];
+                                this.Blens = new int[length];
                             }
                             else
                             {
-                                for (int index = 0; index < length; ++index)
-                                    this.blens[index] = 0;
+                                for (int Index = 0; Index < length; ++Index)
+                                    this.Blens[Index] = 0;
                             }
                             number1 = SharedUtils.URShift(number1, 14);
                             num2 -= 14;
-                            this.index = 0;
-                            this.mode = 4;
+                            this.Index = 0;
+                            this.Mode = 4;
                             goto case 4;
                         }
                         else
                             goto label_39;
                     case 4:
-                        while (this.index < 4 + SharedUtils.URShift(this.table, 10))
+                        while (this.Index < 4 + SharedUtils.URShift(this.Table, 10))
                         {
                             while (num2 < 3)
                             {
@@ -314,32 +322,32 @@ namespace WP7Contrib.Communications.Compression
                                 {
                                     r = 0;
                                     --num1;
-                                    number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                    number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                     num2 += 8;
                                 }
                                 else
                                 {
-                                    this.bitb = number1;
-                                    this.bitk = num2;
-                                    this._codec.AvailableBytesIn = num1;
-                                    this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                    this._codec.NextIn = sourceIndex;
-                                    this.write = destinationIndex;
+                                    this.Bitb = number1;
+                                    this.Bitk = num2;
+                                    this.Codec.AvailableBytesIn = num1;
+                                    this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                    this.Codec.NextIn = sourceIndex;
+                                    this.Write = destinationIndex;
                                     return this.Flush(r);
                                 }
                             }
-                            this.blens[InflateBlocks.border[this.index++]] = number1 & 7;
+                            this.Blens[InflateBlocks.border[this.Index++]] = number1 & 7;
                             number1 = SharedUtils.URShift(number1, 3);
                             num2 -= 3;
                         }
-                        while (this.index < 19)
-                            this.blens[InflateBlocks.border[this.index++]] = 0;
-                        this.bb[0] = 7;
-                        num4 = this.inftree.inflate_trees_bits(this.blens, this.bb, this.tb, this.hufts, this._codec);
+                        while (this.Index < 19)
+                            this.Blens[InflateBlocks.border[this.Index++]] = 0;
+                        this.Bb[0] = 7;
+                        num4 = this.Inftree.inflate_trees_bits(this.Blens, this.Bb, this.Tb, this.Hufts, this.Codec);
                         if (num4 == 0)
                         {
-                            this.index = 0;
-                            this.mode = 5;
+                            this.Index = 0;
+                            this.Mode = 5;
                             goto case 5;
                         }
                         else
@@ -347,39 +355,39 @@ namespace WP7Contrib.Communications.Compression
                     case 5:
                         while (true)
                         {
-                            int num8 = this.table;
-                            if (this.index < 258 + (num8 & 31) + (num8 >> 5 & 31))
+                            int num8 = this.Table;
+                            if (this.Index < 258 + (num8 & 31) + (num8 >> 5 & 31))
                             {
-                                int index = this.bb[0];
-                                while (num2 < index)
+                                int Index = this.Bb[0];
+                                while (num2 < Index)
                                 {
                                     if (num1 != 0)
                                     {
                                         r = 0;
                                         --num1;
-                                        number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                        number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                         num2 += 8;
                                     }
                                     else
                                     {
-                                        this.bitb = number1;
-                                        this.bitk = num2;
-                                        this._codec.AvailableBytesIn = num1;
-                                        this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                        this._codec.NextIn = sourceIndex;
-                                        this.write = destinationIndex;
+                                        this.Bitb = number1;
+                                        this.Bitk = num2;
+                                        this.Codec.AvailableBytesIn = num1;
+                                        this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                        this.Codec.NextIn = sourceIndex;
+                                        this.Write = destinationIndex;
                                         return this.Flush(r);
                                     }
                                 }
-                                if (this.tb[0] != -1)
+                                if (this.Tb[0] != -1)
                                 {}
-                                int bits2 = this.hufts[(this.tb[0] + (number1 & InflateBlocks.inflate_mask[index])) * 3 + 1];
-                                int num9 = this.hufts[(this.tb[0] + (number1 & InflateBlocks.inflate_mask[bits2])) * 3 + 2];
+                                int bits2 = this.Hufts[(this.Tb[0] + (number1 & InflateBlocks.inflate_mask[Index])) * 3 + 1];
+                                int num9 = this.Hufts[(this.Tb[0] + (number1 & InflateBlocks.inflate_mask[bits2])) * 3 + 2];
                                 if (num9 < 16)
                                 {
                                     number1 = SharedUtils.URShift(number1, bits2);
                                     num2 -= bits2;
-                                    this.blens[this.index++] = num9;
+                                    this.Blens[this.Index++] = num9;
                                 }
                                 else
                                 {
@@ -391,17 +399,17 @@ namespace WP7Contrib.Communications.Compression
                                         {
                                             r = 0;
                                             --num1;
-                                            number1 |= ((int)this._codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
+                                            number1 |= ((int)this.Codec.InputBuffer[sourceIndex++] & (int)byte.MaxValue) << num2;
                                             num2 += 8;
                                         }
                                         else
                                         {
-                                            this.bitb = number1;
-                                            this.bitk = num2;
-                                            this._codec.AvailableBytesIn = num1;
-                                            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                                            this._codec.NextIn = sourceIndex;
-                                            this.write = destinationIndex;
+                                            this.Bitb = number1;
+                                            this.Bitk = num2;
+                                            this.Codec.AvailableBytesIn = num1;
+                                            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                                            this.Codec.NextIn = sourceIndex;
+                                            this.Write = destinationIndex;
                                             return this.Flush(r);
                                         }
                                     }
@@ -410,17 +418,17 @@ namespace WP7Contrib.Communications.Compression
                                     int num12 = num10 + (number4 & InflateBlocks.inflate_mask[bits3]);
                                     number1 = SharedUtils.URShift(number4, bits3);
                                     num2 = num11 - bits3;
-                                    int num13 = this.index;
-                                    int num14 = this.table;
+                                    int num13 = this.Index;
+                                    int num14 = this.Table;
                                     if (num13 + num12 <= 258 + (num14 & 31) + (num14 >> 5 & 31) && (num9 != 16 || num13 >= 1))
                                     {
-                                        int num15 = num9 == 16 ? this.blens[num13 - 1] : 0;
+                                        int num15 = num9 == 16 ? this.Blens[num13 - 1] : 0;
                                         do
                                         {
-                                            this.blens[num13++] = num15;
+                                            this.Blens[num13++] = num15;
                                         }
                                         while (--num12 != 0);
-                                        this.index = num13;
+                                        this.Index = num13;
                                     }
                                     else
                                         goto label_73;
@@ -429,7 +437,7 @@ namespace WP7Contrib.Communications.Compression
                             else
                                 break;
                         }
-                        this.tb[0] = -1;
+                        this.Tb[0] = -1;
                         int[] bl2 = new int[1]
                                         {
                                             9
@@ -440,13 +448,13 @@ namespace WP7Contrib.Communications.Compression
                                         };
                         int[] tl2 = new int[1];
                         int[] td2 = new int[1];
-                        int num16 = this.table;
-                        num5 = this.inftree.inflate_trees_dynamic(257 + (num16 & 31), 1 + (num16 >> 5 & 31), this.blens, bl2, bd2, tl2, td2, this.hufts, this._codec);
+                        int num16 = this.Table;
+                        num5 = this.Inftree.inflate_trees_dynamic(257 + (num16 & 31), 1 + (num16 >> 5 & 31), this.Blens, bl2, bd2, tl2, td2, this.Hufts, this.Codec);
                         switch (num5)
                         {
                             case 0:
-                                this.codes.Init(bl2[0], bd2[0], this.hufts, tl2[0], this.hufts, td2[0]);
-                                this.mode = 6;
+                                this.Codes.Init(bl2[0], bd2[0], this.Hufts, tl2[0], this.Hufts, td2[0]);
+                                this.Mode = 6;
                                 goto label_83;
                             case -3:
                                 goto label_80;
@@ -455,24 +463,24 @@ namespace WP7Contrib.Communications.Compression
                         }
                     case 6:
                         label_83:
-                        this.bitb = number1;
-                        this.bitk = num2;
-                        this._codec.AvailableBytesIn = num1;
-                        this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                        this._codec.NextIn = sourceIndex;
-                        this.write = destinationIndex;
-                        if ((r = this.codes.Process(this, r)) == 1)
+                        this.Bitb = number1;
+                        this.Bitk = num2;
+                        this.Codec.AvailableBytesIn = num1;
+                        this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                        this.Codec.NextIn = sourceIndex;
+                        this.Write = destinationIndex;
+                        if ((r = this.Codes.Process(this, r)) == 1)
                         {
                             r = 0;
-                            sourceIndex = this._codec.NextIn;
-                            num1 = this._codec.AvailableBytesIn;
-                            number1 = this.bitb;
-                            num2 = this.bitk;
-                            destinationIndex = this.write;
-                            num3 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
-                            if (this.last == 0)
+                            sourceIndex = this.Codec.NextIn;
+                            num1 = this.Codec.AvailableBytesIn;
+                            number1 = this.Bitb;
+                            num2 = this.Bitk;
+                            destinationIndex = this.Write;
+                            num3 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
+                            if (this.Last == 0)
                             {
-                                this.mode = 0;
+                                this.Mode = 0;
                                 break;
                             }
                             else
@@ -493,196 +501,196 @@ namespace WP7Contrib.Communications.Compression
             label_9:
             int num17 = SharedUtils.URShift(number1, 3);
             int num18 = num2 - 3;
-            this.mode = 9;
-            this._codec.Message = "invalid block type";
+            this.Mode = 9;
+            this.Codec.Message = "invalid block type";
             r = -3;
-            this.bitb = num17;
-            this.bitk = num18;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = num17;
+            this.Bitk = num18;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_15:
-            this.mode = 9;
-            this._codec.Message = "invalid stored block lengths";
+            this.Mode = 9;
+            this.Codec.Message = "invalid stored block lengths";
             r = -3;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_18:
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_26:
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_39:
-            this.mode = 9;
-            this._codec.Message = "too many length or distance symbols";
+            this.Mode = 9;
+            this.Codec.Message = "too many length or distance symbols";
             r = -3;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_55:
             r = num4;
             if (r == -3)
             {
-                this.blens = (int[])null;
-                this.mode = 9;
+                this.Blens = (int[])null;
+                this.Mode = 9;
             }
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_73:
-            this.blens = (int[])null;
-            this.mode = 9;
-            this._codec.Message = "invalid bit length repeat";
+            this.Blens = (int[])null;
+            this.Mode = 9;
+            this.Codec.Message = "invalid bit length repeat";
             r = -3;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_80:
-            this.blens = (int[])null;
-            this.mode = 9;
+            this.Blens = (int[])null;
+            this.Mode = 9;
             label_81:
             r = num5;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_84:
             return this.Flush(r);
             label_87:
-            this.mode = 7;
+            this.Mode = 7;
             label_88:
-            this.write = destinationIndex;
+            this.Write = destinationIndex;
             r = this.Flush(r);
-            destinationIndex = this.write;
-            int num19 = destinationIndex < this.read ? this.read - destinationIndex - 1 : this.end - destinationIndex;
-            if (this.read != this.write)
+            destinationIndex = this.Write;
+            int num19 = destinationIndex < this.Read ? this.Read - destinationIndex - 1 : this.End - destinationIndex;
+            if (this.Read != this.Write)
             {
-                this.bitb = number1;
-                this.bitk = num2;
-                this._codec.AvailableBytesIn = num1;
-                this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-                this._codec.NextIn = sourceIndex;
-                this.write = destinationIndex;
+                this.Bitb = number1;
+                this.Bitk = num2;
+                this.Codec.AvailableBytesIn = num1;
+                this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+                this.Codec.NextIn = sourceIndex;
+                this.Write = destinationIndex;
                 return this.Flush(r);
             }
             else
-                this.mode = 8;
+                this.Mode = 8;
             label_91:
             r = 1;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_92:
             r = -3;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
             label_93:
             r = -2;
-            this.bitb = number1;
-            this.bitk = num2;
-            this._codec.AvailableBytesIn = num1;
-            this._codec.TotalBytesIn += (long)(sourceIndex - this._codec.NextIn);
-            this._codec.NextIn = sourceIndex;
-            this.write = destinationIndex;
+            this.Bitb = number1;
+            this.Bitk = num2;
+            this.Codec.AvailableBytesIn = num1;
+            this.Codec.TotalBytesIn += (long)(sourceIndex - this.Codec.NextIn);
+            this.Codec.NextIn = sourceIndex;
+            this.Write = destinationIndex;
             return this.Flush(r);
         }
 
         internal void Free()
         {
             this.Reset((long[])null);
-            this.window = (byte[])null;
-            this.hufts = (int[])null;
+            this.Window = (byte[])null;
+            this.Hufts = (int[])null;
         }
 
         internal void SetDictionary(byte[] d, int start, int n)
         {
-            Array.Copy((Array)d, start, (Array)this.window, 0, n);
-            this.read = this.write = n;
+            Array.Copy((Array)d, start, (Array)this.Window, 0, n);
+            this.Read = this.Write = n;
         }
 
         internal int SyncPoint()
         {
-            return this.mode == 1 ? 1 : 0;
+            return this.Mode == 1 ? 1 : 0;
         }
 
         internal int Flush(int r)
         {
-            int destinationIndex1 = this._codec.NextOut;
-            int num1 = this.read;
-            int num2 = (num1 <= this.write ? this.write : this.end) - num1;
-            if (num2 > this._codec.AvailableBytesOut)
-                num2 = this._codec.AvailableBytesOut;
+            int destinationIndex1 = this.Codec.NextOut;
+            int num1 = this.Read;
+            int num2 = (num1 <= this.Write ? this.Write : this.End) - num1;
+            if (num2 > this.Codec.AvailableBytesOut)
+                num2 = this.Codec.AvailableBytesOut;
             if (num2 != 0 && r == -5)
                 r = 0;
-            this._codec.AvailableBytesOut -= num2;
-            this._codec.TotalBytesOut += (long)num2;
-            if (this.checkfn != null)
-                this._codec._Adler32 = this.check = Adler.Adler32(this.check, this.window, num1, num2);
-            Array.Copy((Array)this.window, num1, (Array)this._codec.OutputBuffer, destinationIndex1, num2);
+            this.Codec.AvailableBytesOut -= num2;
+            this.Codec.TotalBytesOut += (long)num2;
+            if (this.Checkfn != null)
+                this.Codec.Adler32 = this.Check = Adler.Adler32(this.Check, this.Window, num1, num2);
+            Array.Copy((Array)this.Window, num1, (Array)this.Codec.OutputBuffer, destinationIndex1, num2);
             int destinationIndex2 = destinationIndex1 + num2;
             int num3 = num1 + num2;
-            if (num3 == this.end)
+            if (num3 == this.End)
             {
                 int num4 = 0;
-                if (this.write == this.end)
-                    this.write = 0;
-                int num5 = this.write - num4;
-                if (num5 > this._codec.AvailableBytesOut)
-                    num5 = this._codec.AvailableBytesOut;
+                if (this.Write == this.End)
+                    this.Write = 0;
+                int num5 = this.Write - num4;
+                if (num5 > this.Codec.AvailableBytesOut)
+                    num5 = this.Codec.AvailableBytesOut;
                 if (num5 != 0 && r == -5)
                     r = 0;
-                this._codec.AvailableBytesOut -= num5;
-                this._codec.TotalBytesOut += (long)num5;
-                if (this.checkfn != null)
-                    this._codec._Adler32 = this.check = Adler.Adler32(this.check, this.window, num4, num5);
-                Array.Copy((Array)this.window, num4, (Array)this._codec.OutputBuffer, destinationIndex2, num5);
+                this.Codec.AvailableBytesOut -= num5;
+                this.Codec.TotalBytesOut += (long)num5;
+                if (this.Checkfn != null)
+                    this.Codec.Adler32 = this.Check = Adler.Adler32(this.Check, this.Window, num4, num5);
+                Array.Copy((Array)this.Window, num4, (Array)this.Codec.OutputBuffer, destinationIndex2, num5);
                 destinationIndex2 += num5;
                 num3 = num4 + num5;
             }
-            this._codec.NextOut = destinationIndex2;
-            this.read = num3;
+            this.Codec.NextOut = destinationIndex2;
+            this.Read = num3;
             return r;
         }
     }
