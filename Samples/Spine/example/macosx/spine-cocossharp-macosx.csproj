@@ -87,8 +87,8 @@
     <Compile Include="..\Common\src\Game1.cs">
       <Link>Game1.cs</Link>
     </Compile>
-    <Compile Include="..\Common\src\IntroLayer.cs">
-      <Link>IntroLayer.cs</Link>
+    <Compile Include="..\Common\src\GoblinLayer.cs">
+      <Link>GoblinLayer.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +97,6 @@
   <ItemGroup>
     <Content Include="..\Content\fonts\MarkerFelt-22.xnb">
       <Link>Content\fonts\MarkerFelt-22.xnb</Link>
-    </Content>
-    <Content Include="..\Content\fonts\arial-16.xnb">
-      <Link>Content\fonts\arial-16.xnb</Link>
     </Content>
     <Content Include="..\Content\goblins-ffd.atlas">
       <Link>Content\goblins-ffd.atlas</Link>
@@ -130,6 +127,12 @@
     </Content>
     <Content Include="..\Content\spineboy.png">
       <Link>Content\spineboy.png</Link>
+    </Content>
+    <Content Include="..\Content\fonts\arial-12.xnb">
+      <Link>Content\fonts\arial-12.xnb</Link>
+    </Content>
+    <Content Include="..\Content\fonts\arial-24.xnb">
+      <Link>Content\fonts\arial-24.xnb</Link>
     </Content>
   </ItemGroup>
   <ItemGroup>
