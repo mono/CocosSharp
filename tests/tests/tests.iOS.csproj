@@ -1092,6 +1092,9 @@
     <Content Include="Content\hd\ccb\burst.xnb" />
     <Content Include="Content\hd\animations\dragon_animation.xnb" />
     <Content Include="Content\fonts\MarkerFelt-32.xnb" />
+    <Content Include="..\testsContent\Sounds\effect1.wav">
+      <Link>Content\Sounds\effect1.wav</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\animations\animations-2.plist.xnb" />
@@ -1442,7 +1445,6 @@
     <Content Include="Content\Particles\TestPremultipliedAlpha.xnb" />
     <Content Include="Content\Particles\Upsidedown.xnb" />
     <Content Include="Content\Sounds\background.mp3" />
-    <Content Include="Content\Sounds\effect1.xnb" />
     <Content Include="Content\TileMaps\arial16.xnb" />
     <Content Include="Content\TileMaps\fixed-ortho-test2.xnb" />
     <Content Include="Content\TileMaps\hexa-test1.xnb" />

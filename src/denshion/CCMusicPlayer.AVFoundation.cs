@@ -14,7 +14,7 @@ namespace CocosDenshion
 {
 	public partial class CCMusicPlayer
 	{
-		static readonly string[] allowedTypes = { "m4a", "aac", "mp3" };
+		static readonly string[] allowedTypes = { "m4a", "aac", "mp3", "wav" };
 		AVAudioPlayer music;
 
 

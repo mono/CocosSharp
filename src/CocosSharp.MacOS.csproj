@@ -447,6 +447,7 @@
     <Compile Include="particle_nodes\CCParticleSystemConfig.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
     <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
+    <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.MacOS.csproj">

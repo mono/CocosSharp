@@ -2043,9 +2043,6 @@
     <Content Include="Assets\Content\extensions\yellow_edit.xnb">
       <Link>Content\extensions\yellow_edit.xnb</Link>
     </Content>
-    <Content Include="Assets\Content\Sounds\effect1.xnb">
-      <Link>Content\Sounds\effect1.xnb</Link>
-    </Content>
     <Content Include="Assets\Content\TileMaps\arial16.xnb">
       <Link>Content\TileMaps\arial16.xnb</Link>
     </Content>
@@ -2332,6 +2329,9 @@
       <Link>Content\hd\Images\YellowSquare.xnb</Link>
     </Content>
     <Content Include="Content\Sounds\background.mp3" />
+    <Content Include="..\testsContent\Sounds\effect1.wav">
+      <Link>Content\Sounds\effect1.wav</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />

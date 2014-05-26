@@ -215,6 +215,7 @@
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
+	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
 	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />

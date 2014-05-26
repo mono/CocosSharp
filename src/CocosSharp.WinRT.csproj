@@ -488,6 +488,7 @@
     <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>
+	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include=".\denshion\CCMusicPlayer.cs">
       <LogicalName>denshion\MusicPlayer</LogicalName>
 	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />

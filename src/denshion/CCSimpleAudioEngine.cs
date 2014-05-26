@@ -13,6 +13,7 @@ namespace CocosDenshion
         // The list of sounds that are configured for looping. These need to be stopped when the game pauses.
 		Dictionary<int, int> loopedSounds = new Dictionary<int, int>();
 
+		float effectsVolume = 1.0f;
 
 		#region Properties
 
@@ -46,8 +47,16 @@ namespace CocosDenshion
 		// The volume of the effects max value is 1.0,the min value is 0.0
         public float EffectsVolume
         {
-            get { return CCEffectPlayer.Volume; }
-			set { CCEffectPlayer.Volume = CCMathHelper.Clamp(value, 0.0f, 1.0f); }
+			get { return effectsVolume; }
+			set 
+			{ 
+				effectsVolume = CCMathHelper.Clamp(value, 0.0f, 1.0f);
+
+				foreach (CCEffectPlayer soundEffect in list.Values) 
+				{
+					soundEffect.Volume = effectsVolume;
+				}
+			}
         }
 
 		#endregion Properties
@@ -289,6 +298,7 @@ namespace CocosDenshion
             }
             CCEffectPlayer eff = new CCEffectPlayer();
             eff.Open(FullPath(filename), nId);
+			eff.Volume = effectsVolume;
             SharedList[nId] = eff;
         }
 
