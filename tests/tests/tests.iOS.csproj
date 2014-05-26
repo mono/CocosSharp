@@ -8,8 +8,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>tests</RootNamespace>
     <MonoGamePlatform>iOS</MonoGamePlatform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
