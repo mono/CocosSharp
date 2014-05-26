@@ -91,21 +91,33 @@ namespace CocosDenshion
 
 		public override void Pause()
 		{
+			if (music == null)
+				return;
+
 			music.Pause();
 		}
 
 		public override void Resume()
 		{
+			if (music == null)
+				return;
+
 			music.Play();
 		}
 
 		public override void Stop()
 		{
+			if (music == null)
+				return;
+
 			music.Stop();
 		}
 
 		public override void Rewind()
 		{
+			if (music == null)
+				return;
+
 			music.Pause();
 			music.CurrentTime = 0.0f;
 		}
