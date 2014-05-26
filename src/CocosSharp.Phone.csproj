@@ -177,6 +177,7 @@
     <Compile Include="CCStats.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
+	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />

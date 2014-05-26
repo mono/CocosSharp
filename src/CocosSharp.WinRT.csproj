@@ -490,6 +490,7 @@
     </Compile>
     <Compile Include=".\denshion\CCMusicPlayer.cs">
       <LogicalName>denshion\MusicPlayer</LogicalName>
+	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     </Compile>
     <Compile Include=".\denshion\CCSimpleAudioEngine.cs">
       <LogicalName>denshion\SimpleAudioEngine</LogicalName>

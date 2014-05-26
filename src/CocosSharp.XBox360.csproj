@@ -166,6 +166,7 @@
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
+	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />

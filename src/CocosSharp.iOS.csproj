@@ -466,6 +466,7 @@
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="particle_nodes\CCParticleSystemCache.cs" />
+    <Compile Include="denshion\CCMusicPlayer.AVFoundation.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
