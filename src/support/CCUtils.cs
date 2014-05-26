@@ -23,6 +23,7 @@ THE SOFTWARE.
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using System.Globalization;
+using System;
 #if !WINDOWS_PHONE && !WINDOWS &&!NETFX_CORE
 #if MACOS
 using MonoMac.OpenGL;
@@ -60,7 +61,7 @@ namespace CocosSharp
                 List<string> extensions = new List<string>();
                 #if GLES
                 var extstring = GL.GetString(RenderbufferStorage.Extensions);                       
-				GraphicsExtensions.CheckGLError();
+				CheckGLError();
 				#elif MACOS
 
 				// for right now there are errors with GL before we even get here so the 
@@ -68,10 +69,10 @@ namespace CocosSharp
 				// correctly.  Placed this here for now so that we can continue the processing
 				// until we find the real error.
 				var extstring = GL.GetString(StringName.Extensions);
-
+                
 				#else
                 var extstring = GL.GetString(StringName.Extensions);
-				GraphicsExtensions.CheckGLError();
+				CheckGLError();
                 #endif
                 
                 if (!string.IsNullOrEmpty(extstring))
@@ -85,6 +86,21 @@ namespace CocosSharp
             }
 			return GLExtensions;
         }
+
+        public static void CheckGLError()
+        {
+        #if GLES && !ANGLE
+            All error = GL.GetError();
+            if (error != All.False)
+                throw new Exception("GL.GetError() returned " + error.ToString());
+        #elif OPENGL
+            ErrorCode error = GL.GetError();
+            if (error != ErrorCode.NoError)
+                throw new Exception("GL.GetError() returned " + error.ToString());
+        #endif
+
+        }
+
         #endif
         #endif
         
