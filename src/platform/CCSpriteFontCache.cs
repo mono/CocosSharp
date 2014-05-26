@@ -36,7 +36,7 @@ namespace CocosSharp
 
 		public static float FontScale { get; set; }
 
-		internal SpriteFont this[string fontName]
+		public SpriteFont this[string fontName]
 		{
 			get 
 			{

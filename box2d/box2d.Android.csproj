@@ -12,8 +12,6 @@
     <RootNamespace>Box2D</RootNamespace>
     <AssemblyName>box2d</AssemblyName>
     <TargetFrameworkVersion>v2.2</TargetFrameworkVersion>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

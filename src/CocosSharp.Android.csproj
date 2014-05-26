@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{64725C5B-A1BC-4974-8538-A1158BABF572}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -13,6 +11,7 @@
     <AssemblyName>CocosSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.0.3</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -172,9 +171,9 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
-	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
@@ -446,6 +445,10 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Android.csproj">
       <Project>{BA9476CF-99BA-4D03-92F2-73D2C5E58883}</Project>
       <Name>MonoGame.Framework.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Android.csproj">
+      <Project>{713EE5CA-C850-42AD-AC67-B6546AC8BFFB}</Project>
+      <Name>MonoGame.Framework.Net.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

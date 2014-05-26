@@ -43,7 +43,7 @@ namespace CocosSharp
         private static Effect m_currentEffect;
         private static readonly Stack<Effect> m_effectStack = new Stack<Effect>();
 
-		internal static SpriteBatch SpriteBatch { get; set; }
+		public static SpriteBatch SpriteBatch { get; set; }
         internal static GraphicsDevice graphicsDevice;
 
         internal static Matrix m_worldMatrix;

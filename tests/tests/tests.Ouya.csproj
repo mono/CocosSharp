@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -18,6 +16,9 @@
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
     <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <AndroidLinkSkip />
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,9 +28,6 @@
     <DefineConstants>TRACE;DEBUG;ANDROID;OUYA</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidLinkSkip />
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
@@ -41,8 +39,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidLinkSkip />
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
@@ -381,6 +377,60 @@
     <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteSceneManager.cs" />
     <Compile Include="classes\tests\ExtensionsTest\Scale9SpriteTest\Scale9SpriteTest.cs" />
     <Compile Include="classes\tests\ExtensionsTest\CocosBuilderTest\TimelineCallbackTestLayer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2DView.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Box2dTestBedScene.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\MenuLayer.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Test.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\TestEntries.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\AddPair.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ApplyForce.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\BodyTypes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Breakable.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Bridge.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\BulletTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Cantilever.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Car.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Chain.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CharacterCollision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionFiltering.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CollisionProcessing.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\CompoundShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Confined.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ContinuousTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DistanceTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Dominos.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DumpShell.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\DynamicTreeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\EdgeTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Gears.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\OneSidedPlatform.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pinball.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyCollision.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\PolyShapes.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Prismatic.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pulleys.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Pyramid.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\RayCast.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Revolute.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Rope.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\RopeJoint.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SensorTest.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\ShapeEditing.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SliderCrank.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\SphereStack.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\TheoJansen.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Tiles.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\TimeOfImpact.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Tumbler.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingFriction.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VaryingRestitution.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\VerticalStack.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Web.cs" />
+    <Compile Include="classes\tests\Box2DTestBet%28Box2D%29\Tests\Other\CircleBenchmarkTest.cs" />
+    <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -777,9 +827,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\Particles\LavaFlow.xnb">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </AndroidAsset>
-    <AndroidAsset Include="Assets\Content\Particles\particleTexture.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </AndroidAsset>
     <AndroidAsset Include="Assets\Content\Particles\Phoenix.xnb">
@@ -1570,6 +1617,7 @@
     </AndroidAsset>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml" />
@@ -1582,12 +1630,8 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\box2d\box2d.Android.csproj">
-      <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
+      <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\CocosSharp.Ouya.csproj">
-      <Project>{4964b64b-b76a-4d9d-91cb-bfda0a1845ce}</Project>
-      <Name>CocosSharp.Ouya</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
       <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
@@ -1595,7 +1639,15 @@
     </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Android.csproj">
       <Project>{565129E0-4EE5-4F6F-B403-C3484C9740BE}</Project>
-      <Name>Lidgren.Network.Ouya</Name>
+      <Name>Lidgren.Network.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\CocosSharp.Ouya.csproj">
+      <Project>{58B144AA-9409-439B-AEB0-144A1EA483E9}</Project>
+      <Name>CocosSharp.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\tools\ouya\Ouya.Console.Api\Ouya.Console.Api.csproj">
+      <Project>{493A4B6F-98CE-4000-8A0C-4A4726299061}</Project>
+      <Name>Ouya.Console.Api</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -1620,4 +1672,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Classes\tests\Box2DTestBet%28Box2D%29\" />
+    <Folder Include="Classes\tests\EventDispatcherTest\" />
+  </ItemGroup>
 </Project>

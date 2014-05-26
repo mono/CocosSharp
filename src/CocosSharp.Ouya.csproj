@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{58B144AA-9409-439B-AEB0-144A1EA483E9}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -176,9 +174,9 @@
     <Compile Include="cocoa\CCAffineTransform.cs" />
     <Compile Include="cocoa\CCGeometry.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
-	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
@@ -442,6 +440,14 @@
     <ProjectReference Include="..\box2d\box2d.Android.csproj">
       <Project>{B81B6701-7A78-4846-BF6F-04E0591F0F38}</Project>
       <Name>box2d.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Ouya.csproj">
+      <Project>{F200645B-20E1-4D6F-8C70-38656F633CFA}</Project>
+      <Name>MonoGame.Framework.Net.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tools\ouya\Ouya.Console.Api\Ouya.Console.Api.csproj">
+      <Project>{493A4B6F-98CE-4000-8A0C-4A4726299061}</Project>
+      <Name>Ouya.Console.Api</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
