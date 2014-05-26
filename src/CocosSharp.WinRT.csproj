@@ -488,11 +488,11 @@
     <Compile Include=".\denshion\CCEffectPlayer.cs">
       <LogicalName>denshion\EffectPlayer</LogicalName>
     </Compile>
-	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include=".\denshion\CCMusicPlayer.cs">
       <LogicalName>denshion\MusicPlayer</LogicalName>
-	</Compile>
-	  <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
+    </Compile>
+    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include=".\denshion\CCSimpleAudioEngine.cs">
       <LogicalName>denshion\SimpleAudioEngine</LogicalName>
     </Compile>
@@ -1153,6 +1153,10 @@
     <ProjectReference Include="..\box2d\box2d.Windows8.csproj">
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.Windows8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows8.csproj">
+      <Project>{a65b8326-1ddd-4e5d-8130-e74f70919e81}</Project>
+      <Name>MonoGame.Framework.Net.Windows8</Name>
     </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows8.csproj">
       <Project>{0518563c-acca-4a14-8c5d-ddbe93e2605f}</Project>

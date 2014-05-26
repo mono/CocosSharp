@@ -214,9 +214,9 @@
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
-	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="extentions\Box2D\CCDraw.cs" />
     <Compile Include="extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs" />
@@ -458,6 +458,10 @@
     <Compile Include="script_support\ICCScriptingEngine.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj">
+      <Project>{87a71215-7cac-4b80-9d43-1700decfb828}</Project>
+      <Name>MonoGame.Framework.Net.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows.csproj">
       <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
       <Name>MonoGame.Framework.Windows</Name>
