@@ -46,7 +46,7 @@ using System;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public sealed class zlibConst
+	internal sealed class zlibConst
     {
         private const String version_Renamed_Field = "1.0.2";
 

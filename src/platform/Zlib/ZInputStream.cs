@@ -46,7 +46,7 @@ using System.IO;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public class ZInputStream : BinaryReader
+	internal class ZInputStream : BinaryReader
     {
         protected byte[] buf, buf1 = new byte[1];
         protected int bufsize = 512;

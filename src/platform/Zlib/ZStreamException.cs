@@ -47,7 +47,7 @@ using System.IO;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public class ZStreamException : IOException
+	internal class ZStreamException : IOException
     {
         public ZStreamException()
         {

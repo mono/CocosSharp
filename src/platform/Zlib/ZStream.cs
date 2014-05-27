@@ -46,7 +46,7 @@ using System;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public sealed class ZStream
+	internal sealed class ZStream
     {
         private const int MAX_WBITS = 15; // 32K LZ77 window		
 

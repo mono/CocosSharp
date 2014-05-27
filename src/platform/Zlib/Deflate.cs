@@ -46,7 +46,7 @@ using System;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public sealed class Deflate
+	internal sealed class Deflate
     {
         private const int MAX_MEM_LEVEL = 9;
 

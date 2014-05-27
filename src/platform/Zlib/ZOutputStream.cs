@@ -48,7 +48,7 @@ using System.IO;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public class ZOutputStream : Stream
+	internal class ZOutputStream : Stream
     {
         protected internal byte[] buf, buf1 = new byte[1];
         protected internal int bufsize = 4096;

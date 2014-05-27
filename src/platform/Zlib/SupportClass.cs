@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CocosSharp.Compression.Zlib
 {
-    public class SupportClass
+	internal class SupportClass
     {
         /// <summary>
         /// This method returns the literal value received
