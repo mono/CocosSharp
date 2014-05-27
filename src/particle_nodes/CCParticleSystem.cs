@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace CocosSharp
 {

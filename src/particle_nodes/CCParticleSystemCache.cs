@@ -143,7 +143,7 @@ namespace CocosSharp
 					Debug.Assert(dataBytes != null,
 						string.Format("CCParticleSystem: error decoding textureImageData : {0}", config.TextureName));
 
-					var imageBytes = CCParticleSystemConfig.Inflate(dataBytes);
+                    var imageBytes = ZipUtils.Inflate(dataBytes);
 					Debug.Assert(imageBytes != null,
 						string.Format("CCParticleSystem: error init image with Data for texture : {0}", config.TextureName));
 

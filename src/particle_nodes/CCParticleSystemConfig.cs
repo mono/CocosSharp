@@ -3,8 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
-using ICSharpCode.SharpZipLib.Zip;
 
 namespace CocosSharp
 {
@@ -233,7 +231,7 @@ namespace CocosSharp
                     Debug.Assert(dataBytes != null,
                         string.Format("CCParticleSystem: error decoding textureImageData : {0}", textureName));
 
-                    var imageBytes = Inflate(dataBytes);
+					var imageBytes = ZipUtils.Inflate(dataBytes);
                     Debug.Assert(imageBytes != null,
                         string.Format("CCParticleSystem: error init image with Data for texture : {0}", textureName));
 
@@ -298,43 +296,6 @@ namespace CocosSharp
 
 			Debug.Assert(Texture != null, 
 				string.Format("CCParticleSystem: error loading the texture : {0}", textureName));
-		}
-
-		/// <summary>
-		/// Decompresses the given data stream from its source ZIP or GZIP format.
-		/// </summary>
-		/// <param name="dataBytes"></param>
-		/// <returns></returns>
-		internal static byte[] Inflate(byte[] dataBytes)
-		{
-
-			byte[] outputBytes = null;
-			var zipInputStream = new ZipInputStream(new MemoryStream(dataBytes));
-
-			if (zipInputStream.CanDecompressEntry) 
-			{
-				MemoryStream zipoutStream = new MemoryStream();
-				zipInputStream.CopyTo(zipoutStream);
-				outputBytes = zipoutStream.ToArray();
-			}
-			else 
-			{
-				try 
-				{
-					var gzipInputStream = new GZipInputStream(new MemoryStream(dataBytes));
-
-					MemoryStream zipoutStream = new MemoryStream();
-					gzipInputStream.CopyTo(zipoutStream);
-					outputBytes = zipoutStream.ToArray();
-				}
-
-				catch (Exception exc)
-				{
-					CCLog.Log("Error decompressing image data: " + exc.Message);
-				}
-			}
-
-			return outputBytes;
 		}
 
 		#region Cleaning up

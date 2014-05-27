@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using CocosSharp.Compression.Zlib;
-using WP7Contrib.Communications.Compression;
 
 namespace CocosSharp
 {
@@ -463,19 +461,7 @@ namespace CocosSharp
                     {
                         try
                         {
-                            GZipStream inGZipStream = new GZipStream(new MemoryStream(pTMXMapInfo.CurrentString));
-
-                            var outMemoryStream = new MemoryStream();
-
-                            var buffer = new byte[1024];
-                            while (true)
-                            {
-                                int bytesRead = inGZipStream.Read(buffer, 0, buffer.Length);
-                                if (bytesRead == 0)
-                                    break;
-                                outMemoryStream.Write(buffer, 0, bytesRead);
-                            }
-                            encoded = outMemoryStream.ToArray();
+							encoded = ZipUtils.Inflate(new MemoryStream(pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Gzip);
                         }
                         catch (Exception ex)
                         {
@@ -487,20 +473,7 @@ namespace CocosSharp
                     //zlib
                     if ((pTMXMapInfo.LayerAttribs & (int) CCTMXLayerAttrib.Zlib) != 0)
                     {
-                        var inZInputStream = new ZInputStream(new MemoryStream(pTMXMapInfo.CurrentString));
-
-                        var outMemoryStream = new MemoryStream();
-
-                        var buffer = new byte[1024];
-                        while (true)
-                        {
-                            int bytesRead = inZInputStream.Read(buffer, 0, buffer.Length);
-                            if (bytesRead == 0)
-                                break;
-                            outMemoryStream.Write(buffer, 0, bytesRead);
-                        }
-
-                        encoded = outMemoryStream.ToArray();
+						encoded = ZipUtils.Inflate (new MemoryStream (pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Zlib);
                     }
                 }
                 else

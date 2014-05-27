@@ -57,7 +57,7 @@ namespace CocosSharp.Compression.Zlib
         internal bool nomoreinput;
         protected ZStream z = new ZStream();
 
-        public ZInputStream(Stream in_Renamed) : base(in_Renamed)
+		public ZInputStream(Stream in_Renamed) : base(in_Renamed)
         {
             InitBlock();
             this.in_Renamed = in_Renamed;
@@ -68,7 +68,7 @@ namespace CocosSharp.Compression.Zlib
             z.avail_in = 0;
         }
 
-        public ZInputStream(Stream in_Renamed, int level) : base(in_Renamed)
+		public ZInputStream(Stream in_Renamed, int level) : base(in_Renamed)
         {
             InitBlock();
             this.in_Renamed = in_Renamed;
