@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 
 namespace CocosSharp
 {
     public static class ArrayPool<T>
     {
-        private static readonly Dictionary<int, List<object>> _unused = new Dictionary<int, List<object>>();
+        static readonly Dictionary<int, List<object>> _unused = new Dictionary<int, List<object>>();
 
 #if WINDOWS_PHONE
         public static T[] Create(int length)

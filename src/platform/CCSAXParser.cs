@@ -27,8 +27,6 @@ using System.Text;
 using System.Xml;
 using Microsoft.Xna.Framework.Content;
 
-//using System.Xml.Linq;
-
 namespace CocosSharp
 {
     public class CCSAXParser

@@ -24,8 +24,6 @@ THE SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 
 namespace CocosSharp
@@ -119,7 +117,7 @@ namespace CocosSharp
                 CCSAXState preState = CCSAXState.None;
                 if (stateStack.Count != 0)
                 {
-                    preState = stateStack.FirstOrDefault();
+					preState = stateStack.Count > 0 ? stateStack.Peek() : CCSAXState.None;
                 }
 
                 if (CCSAXState.Array == preState)
@@ -129,10 +127,9 @@ namespace CocosSharp
                 }
                 else if (CCSAXState.Dict == preState)
                 {
-
                     // add the dictionary into the pre dictionary
                     Debug.Assert(dictStack.Count > 0, "The state is wrong!");
-                    Dictionary<string, Object> pPreDict = dictStack.FirstOrDefault();
+					Dictionary<string, Object> pPreDict = dictStack.Count > 0 ? dictStack.Peek() : null;
                     pPreDict.Add(curKey, curDict);
                 }
 
@@ -161,7 +158,7 @@ namespace CocosSharp
                 state = CCSAXState.Array;
                 array = new List<Object>();
 
-                CCSAXState preState = stateStack.Count == 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
+				CCSAXState preState = stateStack.Count == 0 ? CCSAXState.Dict : CCSAXState.None;
                 if (preState == CCSAXState.Dict)
                 {
                     curDict.Add(curKey, array);
@@ -169,7 +166,7 @@ namespace CocosSharp
                 else if (preState == CCSAXState.Array)
                 {
                     Debug.Assert(arrayStack.Count > 0, "The state is worng!");
-                    List<Object> pPreArray = arrayStack.FirstOrDefault();
+					List<Object> pPreArray = arrayStack.Count > 0 ? arrayStack.Peek() : null;
                     pPreArray.Add(array);
                 }
 
@@ -185,7 +182,7 @@ namespace CocosSharp
 
         public void EndElement(object ctx, string name)
         {
-            CCSAXState curState = stateStack.Count > 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
+			CCSAXState curState = stateStack.Count > 0 ? CCSAXState.Dict : CCSAXState.None;
             string sName = name;
             if (sName == "dict")
             {
@@ -193,7 +190,7 @@ namespace CocosSharp
                 dictStack.Pop();
                 if (dictStack.Count > 0)
                 {
-                    curDict = dictStack.FirstOrDefault();
+					curDict = dictStack.Peek();
                 }
             }
             else if (sName == "array")
@@ -202,7 +199,7 @@ namespace CocosSharp
                 arrayStack.Pop();
                 if (arrayStack.Count > 0)
                 {
-                    array = arrayStack.FirstOrDefault();
+					array = arrayStack.Peek();
                 }
             }
             else if (sName == "true")
@@ -241,7 +238,7 @@ namespace CocosSharp
                 return;
             }
 
-            CCSAXState curState = stateStack.Count == 0 ? CCSAXState.Dict : stateStack.FirstOrDefault();
+			CCSAXState curState = stateStack.Count == 0 ? CCSAXState.Dict : stateStack.Peek();
             string m_sString = string.Empty;
             m_sString = System.Text.UTF8Encoding.UTF8.GetString(s, 0, len);
 
