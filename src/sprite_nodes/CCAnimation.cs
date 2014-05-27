@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace CocosSharp
 {
@@ -63,10 +62,13 @@ namespace CocosSharp
 
 			Frames = new List<CCAnimationFrame>(arrayOfAnimationFrameNames);
 
-			TotalDelayUnits = Frames.Sum(animFrame => animFrame.DelayUnits);
+			float totalDelatUnits = 0.0f;
+			foreach (CCAnimationFrame frame in Frames) { totalDelatUnits += frame.DelayUnits; }
+
+			TotalDelayUnits = totalDelatUnits;
         }
 
-		private void InitWithSpriteFrames(List<CCSpriteFrame> frames, float delay)
+		void InitWithSpriteFrames(List<CCSpriteFrame> frames, float delay)
         {
             Loops = 1;
             DelayPerUnit = delay;
