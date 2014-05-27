@@ -215,9 +215,9 @@
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="CCDrawingPrimitives.cs" />
     <Compile Include="denshion\CCEffectPlayer.cs" />
-	<Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCEffectPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCMusicPlayer.cs" />
-	<Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
+    <Compile Include="denshion\CCMusicPlayer.MonoGame.cs" />
     <Compile Include="denshion\CCSimpleAudioEngine.cs" />
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
@@ -430,7 +430,6 @@
     <Compile Include="support\image_support\CCTGALib.cs" />
     <Compile Include="support\Serialization\CCSerialization.cs" />
     <Compile Include="support\TransformUtils.cs" />
-    <Compile Include="support\zip_support\CCZHeader.cs" />
     <Compile Include="support\zip_support\ZipUtils.cs" />
     <Compile Include="textures\CCTextureAtlas.cs" />
     <Compile Include="textures\CCTextureCache.cs" />

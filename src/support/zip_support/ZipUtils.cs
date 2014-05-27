@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-#if MACOS || IOS || ANDROID
+#if !WINDOWS_PHONE
 using System.IO.Compression;
-using GZipInputStream=System.IO.Compression.GZipStream; // Found in Support/Compression/GZipStream
+using GZipInputStream=System.IO.Compression.GZipStream;
 #else
 using GZipInputStream=WP7Contrib.Communications.Compression.GZipStream; // Found in Support/Compression/GZipStream
 #endif
@@ -60,10 +60,10 @@ namespace CocosSharp
 				try 
 				{
 					dataStream.Seek(0, SeekOrigin.Begin);
-					#if MACOS || IOS || ANDROID
-					var gzipInputStream = new GZipInputStream(dataStream, CompressionMode.Decompress);
-					#else
-					var gzipInputStream = new GZipInputStream(dataStream);
+                    #if !WINDOWS_PHONE
+                    var gzipInputStream = new GZipInputStream(dataStream, CompressionMode.Decompress);
+                    #else
+                    var gzipInputStream = new GZipInputStream(dataStream);
 					#endif
 
 					MemoryStream zipoutStream = new MemoryStream();
@@ -131,11 +131,12 @@ namespace CocosSharp
 				break;
 			case CompressionFormat.Gzip:
 
-				try {
-					#if MACOS || IOS || ANDROID
-					var gzipInputStream = new GZipInputStream(dataStream, CompressionMode.Decompress);
-					#else
-					var gzipInputStream = new GZipInputStream(dataStream);
+				try
+                {
+                    #if !WINDOWS_PHONE
+                    var gzipInputStream = new GZipInputStream(dataStream, CompressionMode.Decompress);
+                    #else
+                    var gzipInputStream = new GZipInputStream(dataStream);
 					#endif
 
 					MemoryStream zipoutStream = new MemoryStream ();

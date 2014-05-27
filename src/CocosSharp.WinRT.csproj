@@ -1009,45 +1009,6 @@
     <Compile Include=".\support\CCUtils.cs">
       <LogicalName>support\CCUtils</LogicalName>
     </Compile>
-    <Compile Include=".\support\Compression\Adler.cs">
-      <LogicalName>support\Compression\Adler</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\Crc32.cs">
-      <LogicalName>support\Compression\Crc32</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\FlushType.cs">
-      <LogicalName>support\Compression\FlushType</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\GZipStream.cs">
-      <LogicalName>support\Compression\GZipStream</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\InflateBlocks.cs">
-      <LogicalName>support\Compression\InflateBlocks</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\InflateCodes.cs">
-      <LogicalName>support\Compression\InflateCodes</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\InflateManager.cs">
-      <LogicalName>support\Compression\InflateManager</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\InfTree.cs">
-      <LogicalName>support\Compression\InfTree</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\SharedUtils.cs">
-      <LogicalName>support\Compression\SharedUtils</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\ZlibBaseStream.cs">
-      <LogicalName>support\Compression\ZlibBaseStream</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\ZlibCodec.cs">
-      <LogicalName>support\Compression\ZlibCodec</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\ZlibException.cs">
-      <LogicalName>support\Compression\ZlibException</LogicalName>
-    </Compile>
-    <Compile Include=".\support\Compression\ZlibStreamFlavor.cs">
-      <LogicalName>support\Compression\ZlibStreamFlavor</LogicalName>
-    </Compile>
     <Compile Include=".\support\Converters\CCPointConverter.cs">
       <LogicalName>support\Converters\CCPointConverter</LogicalName>
     </Compile>
@@ -1065,9 +1026,6 @@
     </Compile>
     <Compile Include=".\support\TransformUtils.cs">
       <LogicalName>support\TransformUtils</LogicalName>
-    </Compile>
-    <Compile Include=".\support\zip_support\CCZHeader.cs">
-      <LogicalName>support\zip_support\CCZHeader</LogicalName>
     </Compile>
     <Compile Include=".\support\zip_support\ZipUtils.cs">
       <LogicalName>support\zip_support\ZipUtils</LogicalName>
