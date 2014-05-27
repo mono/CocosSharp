@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ComponentModel;
-using System.Linq;
 using System.IO;
 
 namespace CocosSharp
@@ -194,14 +193,14 @@ namespace CocosSharp
                     foreach (PlistObjectBase item2 in aliases)
                     {
                         string oneAlias = item2.AsString;
-                        if (spriteFramesAliases.Keys.Contains(oneAlias))
+						if (spriteFramesAliases.ContainsKey(oneAlias))
                         {
                             if (spriteFramesAliases[oneAlias] != null)
                             {
                                 CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
                             }
                         }
-                        if (!spriteFramesAliases.Keys.Contains(oneAlias))
+						if (!spriteFramesAliases.ContainsKey(oneAlias))
                         {
                             spriteFramesAliases.Add(oneAlias, frameKey);
                         }

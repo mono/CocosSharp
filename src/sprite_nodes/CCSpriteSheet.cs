@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-
 
 namespace CocosSharp
 {
@@ -30,9 +28,18 @@ namespace CocosSharp
 
         #region Properties
 
-        public List<CCSpriteFrame> Frames 
+		public List<CCSpriteFrame> Frames 
         {
-            get { return spriteFrames.Values.ToList(); }
+            get 
+			{ 
+				List<CCSpriteFrame> frames = new List<CCSpriteFrame>();
+				foreach(CCSpriteFrame frame in spriteFrames.Values) 
+				{
+					frames.Add(frame);
+				}
+
+				return frames;
+			}
         }
 
         public CCSpriteFrame this[string name]
