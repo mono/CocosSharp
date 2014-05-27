@@ -1199,14 +1199,22 @@ namespace CocosSharp
 
 			Debug.Assert (inDispatch == 1, "_inDispatch should be 1 here.");
 
+
+			List<string> lmKeysToRemove = new List<string>();
+
 			foreach(string lv in listenerMap.Keys)
 			{
 				if (listenerMap[lv].IsEmpty) 
 				{
 					priorityDirtyFlagMap.Remove(lv);
 					listenerMap[lv] = null;
-					listenerMap.Remove(lv);
+					lmKeysToRemove.Add(lv);
 				}
+			}
+
+			foreach(string key in lmKeysToRemove) 
+			{
+				listenerMap.Remove(key);
 			}
 
 			if (toBeAddedListeners.Count > 0)
