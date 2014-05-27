@@ -1,38 +1,66 @@
 namespace CocosDenshion {
-	public partial class CCEffectPlayer : System.IDisposable {
+	public partial class CCEffectPlayer : CocosDenshion.CCEffectPlayerCore, System.IDisposable {
 		public CCEffectPlayer() { }
-		public bool Playing { get { return default(bool); } }
-		public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-		public static float Volume { get { return default(float); } set { } }
-		public void Close() { }
+		public override bool Playing { get { return default(bool); } }
+		public override float Volume { get { return default(float); } set { } }
+		public override void Close() { }
 		public void Dispose() { }
 		protected virtual void Dispose(bool disposing) { }
-		public void Open(string filename, int uid) { }
-		public void Pause() { }
-		public void Play() { }
-		public void Play(bool loop) { }
-		public void Resume() { }
-		public void Rewind() { }
-		public void Stop() { }
+		protected override void DisposeManagedResources() { }
+		public override void Open(string filename, int uid) { }
+		public override void Pause() { }
+		public override void Play(bool loop=false) { }
+		public override void Resume() { }
+		public override void Rewind() { }
+		public override void Stop() { }
 	}
-	public partial class CCMusicPlayer : System.IDisposable {
-		public CCMusicPlayer() { }
-		public bool Playing { get { return default(bool); } }
-		public bool PlayingMySong { get { return default(bool); } }
+	public abstract partial class CCEffectPlayerCore {
+		protected CCEffectPlayerCore() { }
+		public abstract bool Playing { get; }
 		public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
-		public float Volume { get { return default(float); } set { } }
-		public void Close() { }
+		public abstract float Volume { get; set; }
+		public virtual void Close() { }
+		protected abstract void DisposeManagedResources();
+		public virtual void Open(string filename, int uid) { }
+		public abstract void Pause();
+		public abstract void Play(bool loop=false);
+		public abstract void Resume();
+		public abstract void Rewind();
+		public abstract void Stop();
+	}
+	public partial class CCMusicPlayer : CocosDenshion.CCMusicPlayerCore, System.IDisposable {
+		public CCMusicPlayer() { }
+		public override bool Playing { get { return default(bool); } }
+		public override bool PlayingMySong { get { return default(bool); } }
+		public override float Volume { get { return default(float); } set { } }
+		public override void Close() { }
 		public void Dispose() { }
 		protected virtual void Dispose(bool disposing) { }
+		protected override void DisposeManagedResources() { }
 		~CCMusicPlayer() { }
-		public void Open(string fileName, int uId) { }
-		public void Pause() { }
-		public void Play(bool loop=false) { }
-		public void RestoreMediaState() { }
-		public void Resume() { }
-		public void Rewind() { }
-		public void SaveMediaState() { }
-		public void Stop() { }
+		public override void Open(string fileName, int uId) { }
+		public override void Pause() { }
+		public override void Play(bool loop=false) { }
+		public override void Resume() { }
+		public override void Rewind() { }
+		public override void Stop() { }
+	}
+	public abstract partial class CCMusicPlayerCore {
+		protected CCMusicPlayerCore() { }
+		public abstract bool Playing { get; }
+		public abstract bool PlayingMySong { get; }
+		public int SoundID { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+		public abstract float Volume { get; set; }
+		public virtual void Close() { }
+		protected abstract void DisposeManagedResources();
+		public virtual void Open(string fileName, int uId) { }
+		public abstract void Pause();
+		public abstract void Play(bool loop=false);
+		public virtual void RestoreMediaState() { }
+		public abstract void Resume();
+		public abstract void Rewind();
+		public virtual void SaveMediaState() { }
+		public abstract void Stop();
 	}
 	public partial class CCSimpleAudioEngine {
 		public CCSimpleAudioEngine() { }
@@ -382,15 +410,6 @@ namespace CocosSharp {
 		protected override void LoadContent() { }
 		public void ToggleFullScreen() { }
 		public override void Update(Microsoft.Xna.Framework.GameTime gameTime) { }
-	}
-	public partial class CCArray {
-		public System.Int32[] arr;
-		public int max;
-		public int num;
-		public CCArray(int capacity) { }
-		public static void DoubleCapacity(CocosSharp.CCArray arr) { }
-		public static void InsertValueAtIndex(CocosSharp.CCArray arr, int value, int index) { }
-		public static void RemoveValueAtIndex(CocosSharp.CCArray arr, int index) { }
 	}
 	public partial class CCArrayForObjectSorting : System.Collections.Generic.List<System.Object> {
 		public const int CC_INVALID_INDEX = -1;
@@ -956,26 +975,17 @@ namespace CocosSharp {
 	}
 	public partial class CCConfiguration {
 		internal CCConfiguration() { }
-		protected bool m_bInited;
-		protected bool m_bSupportsBGRA8888;
-		protected bool m_bSupportsDiscardFramebuffer;
-		protected bool m_bSupportsNPOT;
-		protected bool m_bSupportsPVRTC;
-		protected int m_nMaxModelviewStackDepth;
-		protected int m_nMaxSamplesAllowed;
-		protected int m_nMaxTextureSize;
-		protected string m_pGlExtensions;
-		protected uint m_uOSVersion;
-		public bool IsSupportsBGRA8888 { get { return default(bool); } }
-		public bool IsSupportsDiscardFramebuffer { get { return default(bool); } }
-		public bool IsSupportsNPOT { get { return default(bool); } }
-		public bool IsSupportsPVRTC { get { return default(bool); } }
-		public int MaxModelviewStackDepth { get { return default(int); } }
-		public int MaxTextureSize { get { return default(int); } }
-		public uint OSVersion { get { return default(uint); } }
+		public CocosSharp.CCGlesVersion GlesVersion { get { return default(CocosSharp.CCGlesVersion); } }
+		protected bool Inited { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public bool IsSupportsBGRA8888 { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public bool IsSupportsDiscardFramebuffer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public bool IsSupportsNPOT { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public bool IsSupportsPVRTC { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
+		public int MaxModelviewStackDepth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+		public int MaxTextureSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
+		public uint OSVersion { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } }
 		public static CocosSharp.CCConfiguration SharedConfiguration { get { return default(CocosSharp.CCConfiguration); } }
 		public bool CheckForGLExtension(string searchName) { return default(bool); }
-		public CocosSharp.CCGlesVersion getGlesVersion() { return default(CocosSharp.CCGlesVersion); }
 	}
 	public partial class CCContentManager : Microsoft.Xna.Framework.Content.ContentManager {
 		public static CocosSharp.CCContentManager SharedContentManager;
@@ -1371,6 +1381,7 @@ namespace CocosSharp {
 		public static float ScaleY { get { return default(float); } }
 		public static CocosSharp.CCRect ScissorRect { get { return default(CocosSharp.CCRect); } }
 		public static bool ScissorRectEnabled { get { return default(bool); } set { } }
+		public static Microsoft.Xna.Framework.Graphics.SpriteBatch SpriteBatch { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(Microsoft.Xna.Framework.Graphics.SpriteBatch); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public static CocosSharp.CCDisplayOrientation SupportedOrientations { get { return default(CocosSharp.CCDisplayOrientation); } set { } }
 		public static bool TextureEnabled { get { return default(bool); } set { } }
 		public static bool VertexColorEnabled { get { return default(bool); } set { } }
@@ -2131,9 +2142,9 @@ namespace CocosSharp {
 		Webp = 3,
 	}
 	public partial class CCIMEKeyboardNotificationInfo {
-		public CocosSharp.CCRect begin;
-		public float duration;
-		public CocosSharp.CCRect end;
+		public CocosSharp.CCRect Begin;
+		public float Duration;
+		public CocosSharp.CCRect End;
 		public CCIMEKeyboardNotificationInfo() { }
 	}
 	public partial class CCInvocation {
@@ -4231,6 +4242,7 @@ namespace CocosSharp {
 		internal CCSpriteFontCache() { }
 		public static string FontRoot;
 		public static float FontScale { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public Microsoft.Xna.Framework.Graphics.SpriteFont this[string fontName] { get { return default(Microsoft.Xna.Framework.Graphics.SpriteFont); } }
 		public static CocosSharp.CCSpriteFontCache SharedInstance { get { return default(CocosSharp.CCSpriteFontCache); } }
 		public void Clear() { }
 		public static void RegisterFont(string fontName, params System.Int32[] sizes) { }
@@ -4962,19 +4974,17 @@ namespace CocosSharp {
 		internal CCUserDefault() { }
 		public static CocosSharp.CCUserDefault SharedUserDefault { get { return default(CocosSharp.CCUserDefault); } }
 		public void Flush() { }
-		public bool GetBoolForKey(string pKey) { return default(bool); }
-		public bool GetBoolForKey(string pKey, bool defaultValue) { return default(bool); }
-		public double GetDoubleForKey(string pKey, double defaultValue) { return default(double); }
-		public float GetFloatForKey(string pKey, float defaultValue) { return default(float); }
-		public int GetIntegerForKey(string pKey) { return default(int); }
-		public int GetIntegerForKey(string pKey, int defaultValue) { return default(int); }
-		public string GetStringForKey(string pKey, string defaultValue) { return default(string); }
+		public bool GetBoolForKey(string key, bool defaultValue=false) { return default(bool); }
+		public double GetDoubleForKey(string key, double defaultValue) { return default(double); }
+		public float GetFloatForKey(string key, float defaultValue) { return default(float); }
+		public int GetIntegerForKey(string key, int defaultValue=0) { return default(int); }
+		public string GetStringForKey(string key, string defaultValue) { return default(string); }
 		public void PurgeSharedUserDefault() { }
-		public void SetBoolForKey(string pKey, bool value) { }
-		public void SetDoubleForKey(string pKey, double value) { }
-		public void SetFloatForKey(string pKey, float value) { }
-		public void SetIntegerForKey(string pKey, int value) { }
-		public void SetStringForKey(string pKey, string value) { }
+		public void SetBoolForKey(string key, bool value) { }
+		public void SetDoubleForKey(string key, double value) { }
+		public void SetFloatForKey(string key, float value) { }
+		public void SetIntegerForKey(string key, int value) { }
+		public void SetStringForKey(string key, string value) { }
 	}
 	public partial class CCUtils {
 		public CCUtils() { }
@@ -4985,6 +4995,7 @@ namespace CocosSharp {
 		public static float CCParseFloat(string toParse, System.Globalization.NumberStyles ns) { return default(float); }
 		public static int CCParseInt(string toParse) { return default(int); }
 		public static int CCParseInt(string toParse, System.Globalization.NumberStyles ns) { return default(int); }
+		public static void CheckGLError() { }
 		public static System.Collections.Generic.List<System.String> GetGLExtensions() { return default(System.Collections.Generic.List<System.String>); }
 		public static void Split(string src, string token, System.Collections.Generic.List<System.String> vect) { }
 		public static bool SplitWithForm(string pStr, System.Collections.Generic.List<System.String> strs) { return default(bool); }
@@ -5159,20 +5170,6 @@ namespace CocosSharp {
 		public CCWavesTiles3DState(CocosSharp.CCWavesTiles3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public override void Update(float time) { }
-	}
-	public enum CCZ_COMPRESSION {
-		Bzip2 = 1,
-		Gzip = 2,
-		None = 3,
-		Zlib = 0,
-	}
-	public partial class CCZHeader {
-		public ushort compression_type;
-		public uint len;
-		public uint reserved;
-		public System.Byte[] sig;
-		public ushort version;
-		public CCZHeader() { }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
 	public partial struct HSV {
@@ -5474,12 +5471,5 @@ namespace CocosSharp {
 		public override int AsInt { get { return default(int); } }
 		public override string AsString { get { return default(string); } }
 		public override void Write(System.Xml.XmlWriter writer) { }
-	}
-	public partial class ZipUtils {
-		public ZipUtils() { }
-		public static int InflateCCZFile(string filename, System.Byte[] parameterout) { return default(int); }
-		public static int InflateGZipFile(char filename, System.Byte[] parameterout) { return default(int); }
-		public static int InflateMemory(System.Byte[] parameterin, uint inLength, System.Byte[] parameterout) { return default(int); }
-		public static int InflateMemoryWithHint(System.Byte[] parameterin, uint inLength, System.Byte[] parameterout, int outLenghtHint) { return default(int); }
 	}
 }
