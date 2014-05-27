@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace CocosSharp
 {
@@ -14,7 +12,11 @@ namespace CocosSharp
         public CCParallel(params CCFiniteTimeAction[] actions) : base()
         {
             // Can't call base(duration) because max action duration needs to be determined here
-            float maxDuration = actions.OrderByDescending (action => action.Duration).First().Duration;
+			float maxDuration = 0.0f;
+			foreach (CCFiniteTimeAction action in actions) 
+			{
+				if (action.Duration > maxDuration) { maxDuration = action.Duration; }
+			}
             Duration = maxDuration;
 
 			Actions = actions;

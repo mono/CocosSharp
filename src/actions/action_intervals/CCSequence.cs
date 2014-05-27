@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Linq;
 
 namespace CocosSharp
 {
@@ -23,7 +22,8 @@ namespace CocosSharp
 			var prev = actions[0];
 
 			// Can't call base(duration) because we need to calculate duration here
-			float combinedDuration = actions.Sum(action => action.Duration);
+			float combinedDuration = 0.0f;
+			foreach(CCFiniteTimeAction action in actions) { combinedDuration += action.Duration; }
 			Duration = combinedDuration;
 
 			if (actions.Length == 1)

@@ -22,7 +22,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-using System.Linq;
 
 namespace CocosSharp
 {
@@ -70,8 +69,10 @@ namespace CocosSharp
         {
             CCGridSize gridSize = action.GridSize;
             TilesCount = gridSize.X * gridSize.Y;
-            int[] shuffledTilesOrder = Enumerable.Range (0, TilesCount).ToArray();
+			int[] shuffledTilesOrder = new int[TilesCount];
             int i, j, f=0;
+
+			for (i = 0; i < TilesCount; i++) { shuffledTilesOrder[i] = i; }
 
             if (action.Seed != CCShuffleTiles.NoSeedSpecified)
             {
