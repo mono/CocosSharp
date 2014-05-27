@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCZHeader" FullName="Cocos2D.CCZHeader">
+<Type Name="CCZHeader" FullName="CocosSharp.CCZHeader">
   <TypeSignature Language="C#" Value="public class CCZHeader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCZHeader extends System.Object" />
   <AssemblyInfo>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSpawn" FullName="Cocos2D.CCSpawn">
-  <TypeSignature Language="C#" Value="public class CCSpawn : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpawn extends Cocos2D.CCActionInterval" />
+<Type Name="CCSpawn" FullName="CocosSharp.CCSpawn">
+  <TypeSignature Language="C#" Value="public class CCSpawn : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpawn extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpawn (Cocos2D.CCFiniteTimeAction[] actions);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpawn (CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="actions" Type="Cocos2D.CCFiniteTimeAction[]">
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -40,14 +40,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSpawn (Cocos2D.CCSpawn spawn);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSpawn spawn) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCSpawn (CocosSharp.CCSpawn spawn);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpawn spawn) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="spawn" Type="Cocos2D.CCSpawn" />
+        <Parameter Name="spawn" Type="CocosSharp.CCSpawn" />
       </Parameters>
       <Docs>
         <param name="spawn">To be added.</param>
@@ -56,15 +56,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSpawn (Cocos2D.CCFiniteTimeAction action1, Cocos2D.CCFiniteTimeAction action2);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCFiniteTimeAction action1, class Cocos2D.CCFiniteTimeAction action2) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCSpawn (CocosSharp.CCFiniteTimeAction action1, CocosSharp.CCFiniteTimeAction action2);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action1, class CocosSharp.CCFiniteTimeAction action2) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="action1" Type="Cocos2D.CCFiniteTimeAction" />
-        <Parameter Name="action2" Type="Cocos2D.CCFiniteTimeAction" />
+        <Parameter Name="action1" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="action2" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="action1">To be added.</param>
@@ -74,8 +74,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -84,7 +84,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -94,8 +94,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitOneTwo">
-      <MemberSignature Language="C#" Value="protected bool InitOneTwo (Cocos2D.CCFiniteTimeAction action1, Cocos2D.CCFiniteTimeAction action2);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitOneTwo(class Cocos2D.CCFiniteTimeAction action1, class Cocos2D.CCFiniteTimeAction action2) cil managed" />
+      <MemberSignature Language="C#" Value="protected bool InitOneTwo (CocosSharp.CCFiniteTimeAction action1, CocosSharp.CCFiniteTimeAction action2);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitOneTwo(class CocosSharp.CCFiniteTimeAction action1, class CocosSharp.CCFiniteTimeAction action2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -104,8 +104,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action1" Type="Cocos2D.CCFiniteTimeAction" />
-        <Parameter Name="action2" Type="Cocos2D.CCFiniteTimeAction" />
+        <Parameter Name="action1" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="action2" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="action1">To be added.</param>
@@ -116,14 +116,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOne">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCFiniteTimeAction m_pOne;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCFiniteTimeAction m_pOne" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeAction m_pOne;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCFiniteTimeAction m_pOne" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -131,14 +131,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTwo">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCFiniteTimeAction m_pTwo;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCFiniteTimeAction m_pTwo" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeAction m_pTwo;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCFiniteTimeAction m_pTwo" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -146,14 +146,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -163,8 +163,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -173,7 +173,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

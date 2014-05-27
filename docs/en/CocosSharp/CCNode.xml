@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCNode" FullName="Cocos2D.CCNode">
-  <TypeSignature Language="C#" Value="public class CCNode : Cocos2D.ICCFocusable, Cocos2D.ICCSelectorProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class Cocos2D.ICCFocusable, class Cocos2D.ICCSelectorProtocol" />
+<Type Name="CCNode" FullName="CocosSharp.CCNode">
+  <TypeSignature Language="C#" Value="public class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCSelectorProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class CocosSharp.ICCFocusable, class CocosSharp.ICCSelectorProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,10 +11,10 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCFocusable</InterfaceName>
+      <InterfaceName>CocosSharp.ICCFocusable</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Cocos2D.ICCSelectorProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCSelectorProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -22,16 +22,16 @@
       <para> is the main element. Anything that gets drawn or contains things that get drawn is a . The most popular Nodes are: , , , . </para>
     </summary>
     <remarks>
-      <para>The main features of a <see cref="T:Cocos2D.CCNode" /> are:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCNode" />
+      <para>The main features of a <see cref="T:CocosSharp.CCNode" /> are:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCNode" />
       <list type="bullet" />
-      <para>Some <see cref="T:Cocos2D.CCNode" /> nodes provide extra functionality for them or their children.</para>
-      <see cref="T:Cocos2D.CCNode" />
-      <para>Subclassing a <see cref="T:Cocos2D.CCNode" /> usually means (one/all) of:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCNode" />
+      <para>Some <see cref="T:CocosSharp.CCNode" /> nodes provide extra functionality for them or their children.</para>
+      <see cref="T:CocosSharp.CCNode" />
+      <para>Subclassing a <see cref="T:CocosSharp.CCNode" /> usually means (one/all) of:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCNode" />
       <list type="bullet" />
-      <para>Features of <see cref="T:Cocos2D.CCNode" />:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCNode" />
+      <para>Features of <see cref="T:CocosSharp.CCNode" />:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCNode" />
       <list type="bullet" />
       <para>Default values:<list type="bullet" /></para>
       <list type="bullet" />
@@ -42,8 +42,8 @@
       <para>Order in transformations with grid enabled<list type="number" /></para>
       <list type="number" />
       <para>
-        <see cref="T:Cocos2D.CCCamera" />:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCCamera" />
+        <see cref="T:CocosSharp.CCCamera" />:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCCamera" />
       <list type="bullet" />
       <item>
         <description>They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)</description>
@@ -194,14 +194,14 @@
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCActionManager ActionManager { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCActionManager ActionManager" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionManager ActionManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionManager ActionManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCActionManager</ReturnType>
+        <ReturnType>CocosSharp.CCActionManager</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the  object that is used by all actions. setActionManager(ActionManager*)A  object. </summary>
@@ -210,8 +210,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public void AddChild (Cocos2D.CCNode child);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class Cocos2D.CCNode child) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddChild (CocosSharp.CCNode child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class CocosSharp.CCNode child) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -220,7 +220,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="child">A child node </param>
@@ -233,8 +233,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public void AddChild (Cocos2D.CCNode child, int zOrder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddChild (CocosSharp.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddChild(class CocosSharp.CCNode child, int32 zOrder) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -243,7 +243,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -254,8 +254,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public virtual void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -264,7 +264,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
@@ -277,14 +277,14 @@
       </Docs>
     </Member>
     <Member MemberName="AdditionalTransform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform AdditionalTransform { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCAffineTransform AdditionalTransform" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform AdditionalTransform { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCAffineTransform AdditionalTransform" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Sets the additional transform.</summary>
@@ -798,14 +798,14 @@
       </Docs>
     </Member>
     <Member MemberName="AnchorPoint">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint AnchorPoint { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint AnchorPoint" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint AnchorPoint { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint AnchorPoint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the anchor point in percent.</summary>
@@ -827,14 +827,14 @@
       </Docs>
     </Member>
     <Member MemberName="AnchorPointInPoints">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint AnchorPointInPoints { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint AnchorPointInPoints" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint AnchorPointInPoints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint AnchorPointInPoints" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the anchorPoint in absolute pixels.</summary>
@@ -858,14 +858,14 @@
       </Docs>
     </Member>
     <Member MemberName="BoundingBox">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRect BoundingBox { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCRect BoundingBox" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect BoundingBox { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect BoundingBox" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns a "local" axis aligned bounding box of the node. The returned box is relative only to its parent.</summary>
@@ -884,14 +884,14 @@
       </Docs>
     </Member>
     <Member MemberName="BoundingBoxInPixels">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRect BoundingBoxInPixels { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCRect BoundingBoxInPixels" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect BoundingBoxInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect BoundingBoxInPixels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -900,14 +900,14 @@
       </Docs>
     </Member>
     <Member MemberName="Camera">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCCamera Camera { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCCamera Camera" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCCamera Camera { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCCamera Camera" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCCamera</ReturnType>
+        <ReturnType>CocosSharp.CCCamera</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns a camera object that lets you move the node using a gluLookAt</summary>
@@ -958,10 +958,10 @@
           <sp />
           <sp />
           <para>
-            <para>A <see cref="T:Cocos2D.CCCamera" /> object that lets you move the node using a gluLookAt </para>
+            <para>A <see cref="T:CocosSharp.CCCamera" /> object that lets you move the node using a gluLookAt </para>
           </para>
-          <para>A <see cref="T:Cocos2D.CCCamera" /> object that lets you move the node using a gluLookAt </para>
-          <see cref="T:Cocos2D.CCCamera" />
+          <para>A <see cref="T:CocosSharp.CCCamera" /> object that lets you move the node using a gluLookAt </para>
+          <see cref="T:CocosSharp.CCCamera" />
         </remarks>
       </Docs>
     </Member>
@@ -982,22 +982,22 @@
       </Docs>
     </Member>
     <Member MemberName="Children">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt; Children { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCRawList`1&lt;class Cocos2D.CCNode&gt; Children" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt; Children { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRawList`1&lt;class CocosSharp.CCNode&gt; Children" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Return an array of children</summary>
         <value>To be added.</value>
         <remarks>
           <para>Return an array of children</para>
-          <para>Composing a "tree" structure is a very important feature of <see cref="T:Cocos2D.CCNode" /> Here's a sample code of traversing children array: <programlisting><codeline><highlight class="normal"><ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member">Node</ref>*<sp />node<sp />=<sp />NULL;</highlight></codeline><codeline><highlight class="normal"><ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member">CCARRAY_FOREACH</ref>(parent-&gt;getChildren(),<sp />node)</highlight></codeline><codeline><highlight class="normal">{</highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp />node-&gt;setPosition(0,0);</highlight></codeline><codeline><highlight class="normal">}</highlight></codeline></programlisting> This sample code traverses all children nodes, and set theie position to (0,0)</para>
-          <see cref="T:Cocos2D.CCNode" />
+          <para>Composing a "tree" structure is a very important feature of <see cref="T:CocosSharp.CCNode" /> Here's a sample code of traversing children array: <programlisting><codeline><highlight class="normal"><ref refid="group__base__nodes_1ga2830ddc6af8b2ec5f958b677141c1a25" kindref="member">Node</ref>*<sp />node<sp />=<sp />NULL;</highlight></codeline><codeline><highlight class="normal"><ref refid="group__data__structures_1ga19748065059dd10de7bf990534c98a40" kindref="member">CCARRAY_FOREACH</ref>(parent-&gt;getChildren(),<sp />node)</highlight></codeline><codeline><highlight class="normal">{</highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp />node-&gt;setPosition(0,0);</highlight></codeline><codeline><highlight class="normal">}</highlight></codeline></programlisting> This sample code traverses all children nodes, and set theie position to (0,0)</para>
+          <see cref="T:CocosSharp.CCNode" />
           <programlisting>
             <codeline>
               <highlight class="normal">
@@ -1109,14 +1109,14 @@
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCSize ContentSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSize" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the untransformed size of the node.</summary>
@@ -1138,14 +1138,14 @@
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCSize ContentSizeInPixels { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSizeInPixels" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCSize ContentSizeInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSizeInPixels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1154,17 +1154,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertToNodeSpace">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToNodeSpace (Cocos2D.CCPoint worldPoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToNodeSpace(valuetype Cocos2D.CCPoint worldPoint) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToNodeSpace (CocosSharp.CCPoint worldPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToNodeSpace(valuetype CocosSharp.CCPoint worldPoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="worldPoint" Type="Cocos2D.CCPoint" />
+        <Parameter Name="worldPoint" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="worldPoint">To be added.</param>
@@ -1174,17 +1174,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertToNodeSpaceAr">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToNodeSpaceAr (Cocos2D.CCPoint worldPoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToNodeSpaceAr(valuetype Cocos2D.CCPoint worldPoint) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToNodeSpaceAr (CocosSharp.CCPoint worldPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToNodeSpaceAr(valuetype CocosSharp.CCPoint worldPoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="worldPoint" Type="Cocos2D.CCPoint" />
+        <Parameter Name="worldPoint" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="worldPoint">To be added.</param>
@@ -1194,17 +1194,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertTouchToNodeSpace">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertTouchToNodeSpace (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertTouchToNodeSpace(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertTouchToNodeSpace (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertTouchToNodeSpace(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -1214,17 +1214,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertTouchToNodeSpaceAr">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertTouchToNodeSpaceAr (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertTouchToNodeSpaceAr(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertTouchToNodeSpaceAr (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertTouchToNodeSpaceAr(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -1234,17 +1234,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertToWindowSpace">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWindowSpace (Cocos2D.CCPoint nodePoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWindowSpace(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToWindowSpace (CocosSharp.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToWindowSpace(valuetype CocosSharp.CCPoint nodePoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+        <Parameter Name="nodePoint" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
@@ -1256,17 +1256,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertToWorldSpace">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWorldSpace (Cocos2D.CCPoint nodePoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWorldSpace(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToWorldSpace (CocosSharp.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToWorldSpace(valuetype CocosSharp.CCPoint nodePoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+        <Parameter Name="nodePoint" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
@@ -1276,17 +1276,17 @@
       </Docs>
     </Member>
     <Member MemberName="ConvertToWorldSpaceAr">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ConvertToWorldSpaceAr (Cocos2D.CCPoint nodePoint);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint ConvertToWorldSpaceAr(valuetype Cocos2D.CCPoint nodePoint) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToWorldSpaceAr (CocosSharp.CCPoint nodePoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToWorldSpaceAr(valuetype CocosSharp.CCPoint nodePoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="nodePoint" Type="Cocos2D.CCPoint" />
+        <Parameter Name="nodePoint" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="nodePoint">To be added.</param>
@@ -1366,14 +1366,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetActionByTag">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction GetActionByTag (int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAction GetActionByTag(int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetActionByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetActionByTag(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
@@ -1398,14 +1398,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetChildByTag">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode GetChildByTag (int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode GetChildByTag(int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode GetChildByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode GetChildByTag(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
@@ -1417,10 +1417,10 @@
         <remarks>
           <para>Gets a child from the container with its tag</para>
           <para>
-            <para>a <see cref="T:Cocos2D.CCNode" /> object whose tag equals to the input parameter </para>
+            <para>a <see cref="T:CocosSharp.CCNode" /> object whose tag equals to the input parameter </para>
           </para>
-          <para>a <see cref="T:Cocos2D.CCNode" /> object whose tag equals to the input parameter </para>
-          <see cref="T:Cocos2D.CCNode" />
+          <para>a <see cref="T:CocosSharp.CCNode" /> object whose tag equals to the input parameter </para>
+          <see cref="T:CocosSharp.CCNode" />
         </remarks>
       </Docs>
     </Member>
@@ -1457,14 +1457,14 @@
       </Docs>
     </Member>
     <Member MemberName="Grid">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCGridBase Grid { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCGridBase Grid" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGridBase Grid { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGridBase Grid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGridBase</ReturnType>
+        <ReturnType>CocosSharp.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Changes a grid object that is used when applying effects</summary>
@@ -1506,11 +1506,11 @@
         <value>To be added.</value>
         <remarks>
           <para>Sets whether the anchor point will be (0,0) when you position this node.</para>
-          <para>This is an internal method, only used by <see cref="T:Cocos2D.CCLayer" /> and <see cref="T:Cocos2D.CCScene" />. Don't call it outside framework. The default value is false, while in <see cref="T:Cocos2D.CCLayer" /> and <see cref="T:Cocos2D.CCScene" /> are true</para>
-          <see cref="T:Cocos2D.CCLayer" />
-          <see cref="T:Cocos2D.CCScene" />
-          <see cref="T:Cocos2D.CCLayer" />
-          <see cref="T:Cocos2D.CCScene" />
+          <para>This is an internal method, only used by <see cref="T:CocosSharp.CCLayer" /> and <see cref="T:CocosSharp.CCScene" />. Don't call it outside framework. The default value is false, while in <see cref="T:CocosSharp.CCLayer" /> and <see cref="T:CocosSharp.CCScene" /> are true</para>
+          <see cref="T:CocosSharp.CCLayer" />
+          <see cref="T:CocosSharp.CCScene" />
+          <see cref="T:CocosSharp.CCLayer" />
+          <see cref="T:CocosSharp.CCScene" />
           <para />
         </remarks>
       </Docs>
@@ -1800,14 +1800,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obAnchorPoint">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obAnchorPoint;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obAnchorPoint" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obAnchorPoint;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obAnchorPoint" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1815,14 +1815,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obAnchorPointInPoints">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obAnchorPointInPoints;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obAnchorPointInPoints" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obAnchorPointInPoints;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obAnchorPointInPoints" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1830,14 +1830,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obContentSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_obContentSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_obContentSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize m_obContentSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize m_obContentSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1845,14 +1845,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obPosition" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obPosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1860,14 +1860,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pActionManager">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCActionManager m_pActionManager;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCActionManager m_pActionManager" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCActionManager m_pActionManager;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCActionManager m_pActionManager" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCActionManager</ReturnType>
+        <ReturnType>CocosSharp.CCActionManager</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1875,14 +1875,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pCamera">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCCamera m_pCamera;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCCamera m_pCamera" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCCamera m_pCamera;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCCamera m_pCamera" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCCamera</ReturnType>
+        <ReturnType>CocosSharp.CCCamera</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1890,14 +1890,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pChildren">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt; m_pChildren;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCRawList`1&lt;class Cocos2D.CCNode&gt; m_pChildren" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt; m_pChildren;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCRawList`1&lt;class CocosSharp.CCNode&gt; m_pChildren" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCNode&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1905,14 +1905,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pGrid">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCGridBase m_pGrid;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCGridBase m_pGrid" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCGridBase m_pGrid;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCGridBase m_pGrid" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGridBase</ReturnType>
+        <ReturnType>CocosSharp.CCGridBase</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1920,14 +1920,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pParent">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pParent;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pParent" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pParent;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pParent" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1935,14 +1935,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pScheduler">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCScheduler m_pScheduler;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScheduler m_pScheduler" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScheduler m_pScheduler;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScheduler m_pScheduler" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScheduler</ReturnType>
+        <ReturnType>CocosSharp.CCScheduler</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1965,14 +1965,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_sTransform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform m_sTransform;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCAffineTransform m_sTransform" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform m_sTransform;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCAffineTransform m_sTransform" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1995,14 +1995,14 @@
       </Docs>
     </Member>
     <Member MemberName="NodeToParentTransform">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCAffineTransform NodeToParentTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Cocos2D.CCAffineTransform NodeToParentTransform() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCAffineTransform NodeToParentTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCAffineTransform NodeToParentTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -2012,14 +2012,14 @@
       </Docs>
     </Member>
     <Member MemberName="NodeToWorldTransform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform NodeToWorldTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform NodeToWorldTransform() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform NodeToWorldTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCAffineTransform NodeToWorldTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -2044,8 +2044,8 @@
         <returns>To be added.</returns>
         <remarks>
           <para>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).</para>
-          <para>Composable actions are counted as 1 action. Example: If you are running 1 <see cref="T:Cocos2D.CCSequence" /> of 7 actions, it will return 1. If you are running 7 Sequences of 2 actions, it will return 7. </para>
-          <see cref="T:Cocos2D.CCSequence" />
+          <para>Composable actions are counted as 1 action. Example: If you are running 1 <see cref="T:CocosSharp.CCSequence" /> of 7 actions, it will return 1. If you are running 7 Sequences of 2 actions, it will return 7. </para>
+          <see cref="T:CocosSharp.CCSequence" />
           <para>
             <para>The number of actions that are running plus the ones that are schedule to run </para>
           </para>
@@ -2147,14 +2147,14 @@
       </Docs>
     </Member>
     <Member MemberName="Parent">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Parent { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Parent" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Parent { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Parent" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns a pointer to the parent node</summary>
@@ -2176,14 +2176,14 @@
       </Docs>
     </Member>
     <Member MemberName="ParentToNodeTransform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform ParentToNodeTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform ParentToNodeTransform() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform ParentToNodeTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCAffineTransform ParentToNodeTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -2209,14 +2209,14 @@
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCPoint Position { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Position" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint Position { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -2306,8 +2306,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public void RemoveChild (Cocos2D.CCNode child);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveChild(class Cocos2D.CCNode child) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveChild (CocosSharp.CCNode child);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveChild(class CocosSharp.CCNode child) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -2316,7 +2316,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="child">The child node which will be removed. </param>
@@ -2328,8 +2328,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public virtual void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void RemoveChild (CocosSharp.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -2338,7 +2338,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -2427,8 +2427,8 @@
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
-      <MemberSignature Language="C#" Value="public virtual void ReorderChild (Cocos2D.CCNode child, int zOrder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReorderChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void ReorderChild (CocosSharp.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReorderChild(class CocosSharp.CCNode child, int32 zOrder) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -2437,7 +2437,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -2554,17 +2554,17 @@
       </Docs>
     </Member>
     <Member MemberName="RunAction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction RunAction (Cocos2D.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAction RunAction(class Cocos2D.CCAction action) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction RunAction (CocosSharp.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction RunAction(class CocosSharp.CCAction action) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCAction" />
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
@@ -2572,10 +2572,10 @@
         <returns>To be added.</returns>
         <remarks>
           <para>Executes an action, and returns the action that is executed.</para>
-          <para>This node becomes the action's target. Refer to Action::getTarget() <para>Actions don't retain their target.</para><para>An <see cref="T:Cocos2D.CCAction" /> pointer </para></para>
+          <para>This node becomes the action's target. Refer to Action::getTarget() <para>Actions don't retain their target.</para><para>An <see cref="T:CocosSharp.CCAction" /> pointer </para></para>
           <para>Actions don't retain their target.</para>
-          <para>An <see cref="T:Cocos2D.CCAction" /> pointer </para>
-          <see cref="T:Cocos2D.CCAction" />
+          <para>An <see cref="T:CocosSharp.CCAction" /> pointer </para>
+          <see cref="T:CocosSharp.CCAction" />
         </remarks>
       </Docs>
     </Member>
@@ -2755,14 +2755,14 @@
       </Docs>
     </Member>
     <Member MemberName="Scheduler">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScheduler Scheduler { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCScheduler Scheduler" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScheduler Scheduler { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScheduler Scheduler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScheduler</ReturnType>
+        <ReturnType>CocosSharp.CCScheduler</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets a Sheduler object.</summary>
@@ -2773,14 +2773,14 @@
             <para>
               <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
             </para>
-            <para>A <see cref="T:Cocos2D.CCScheduler" /> object. </para>
+            <para>A <see cref="T:CocosSharp.CCScheduler" /> object. </para>
           </para>
           <para>
             <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
           </para>
           <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
-          <para>A <see cref="T:Cocos2D.CCScheduler" /> object. </para>
-          <see cref="T:Cocos2D.CCScheduler" />
+          <para>A <see cref="T:CocosSharp.CCScheduler" /> object. </para>
+          <see cref="T:CocosSharp.CCScheduler" />
         </remarks>
       </Docs>
     </Member>
@@ -3031,8 +3031,8 @@
       </Docs>
     </Member>
     <Member MemberName="StopAction">
-      <MemberSignature Language="C#" Value="public void StopAction (Cocos2D.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(class Cocos2D.CCAction action) cil managed" />
+      <MemberSignature Language="C#" Value="public void StopAction (CocosSharp.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(class CocosSharp.CCAction action) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -3041,7 +3041,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCAction" />
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
       </Parameters>
       <Docs>
         <param name="action">action object to be removed. </param>
@@ -3228,11 +3228,11 @@
         <remarks>
           <para>Calls children's <ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member">updateTransform()</ref> method recursively.</para>
           <ref refid="classcocos2d_1_1_node_1a36c8969b2ac4c489092729363ee496cd" kindref="member">updateTransform()</ref>
-          <para>This method is moved from <see cref="T:Cocos2D.CCSprite" />, so it's no longer specific to <see cref="T:Cocos2D.CCSprite" />. As the result, you apply <see cref="T:Cocos2D.CCSpriteBatchNode" />'s optimization on your customed <see cref="T:Cocos2D.CCNode" />. e.g., batchNode-&gt;addChild(myCustomNode), while you can only addChild(sprite) before. </para>
-          <see cref="T:Cocos2D.CCSprite" />
-          <see cref="T:Cocos2D.CCSprite" />
-          <see cref="T:Cocos2D.CCSpriteBatchNode" />
-          <see cref="T:Cocos2D.CCNode" />
+          <para>This method is moved from <see cref="T:CocosSharp.CCSprite" />, so it's no longer specific to <see cref="T:CocosSharp.CCSprite" />. As the result, you apply <see cref="T:CocosSharp.CCSpriteBatchNode" />'s optimization on your customed <see cref="T:CocosSharp.CCNode" />. e.g., batchNode-&gt;addChild(myCustomNode), while you can only addChild(sprite) before. </para>
+          <see cref="T:CocosSharp.CCSprite" />
+          <see cref="T:CocosSharp.CCSprite" />
+          <see cref="T:CocosSharp.CCSpriteBatchNode" />
+          <see cref="T:CocosSharp.CCNode" />
         </remarks>
       </Docs>
     </Member>
@@ -3271,8 +3271,8 @@
         <value>To be added.</value>
         <remarks>
           <para>Returns a user assigned Object</para>
-          <para>Similar to UserData, but instead of holding a void* it holds an object. The UserObject will be retained once in this method, and the previous UserObject (if existed) will be relese. The UserObject will be released in <see cref="T:Cocos2D.CCNode" />'s destructure.</para>
-          <see cref="T:Cocos2D.CCNode" />
+          <para>Similar to UserData, but instead of holding a void* it holds an object. The UserObject will be retained once in this method, and the previous UserObject (if existed) will be relese. The UserObject will be released in <see cref="T:CocosSharp.CCNode" />'s destructure.</para>
+          <see cref="T:CocosSharp.CCNode" />
           <para />
         </remarks>
       </Docs>
@@ -3343,14 +3343,14 @@
       </Docs>
     </Member>
     <Member MemberName="WorldToNodeTransform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAffineTransform WorldToNodeTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCAffineTransform WorldToNodeTransform() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform WorldToNodeTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCAffineTransform WorldToNodeTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

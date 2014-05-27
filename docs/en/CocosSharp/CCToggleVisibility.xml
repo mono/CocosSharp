@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCToggleVisibility" FullName="Cocos2D.CCToggleVisibility">
-  <TypeSignature Language="C#" Value="public class CCToggleVisibility : Cocos2D.CCActionInstant" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCToggleVisibility extends Cocos2D.CCActionInstant" />
+<Type Name="CCToggleVisibility" FullName="CocosSharp.CCToggleVisibility">
+  <TypeSignature Language="C#" Value="public class CCToggleVisibility : CocosSharp.CCActionInstant" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCToggleVisibility extends CocosSharp.CCActionInstant" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInstant</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInstant</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCToggleVisibility (Cocos2D.CCToggleVisibility toggleVisibility);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCToggleVisibility toggleVisibility) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCToggleVisibility (CocosSharp.CCToggleVisibility toggleVisibility);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCToggleVisibility toggleVisibility) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="toggleVisibility" Type="Cocos2D.CCToggleVisibility" />
+        <Parameter Name="toggleVisibility" Type="CocosSharp.CCToggleVisibility" />
       </Parameters>
       <Docs>
         <param name="toggleVisibility">To be added.</param>
@@ -47,8 +47,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -57,7 +57,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -67,8 +67,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -77,7 +77,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

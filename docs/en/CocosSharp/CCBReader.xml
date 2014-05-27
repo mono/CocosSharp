@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBReader" FullName="Cocos2D.CCBReader">
+<Type Name="CCBReader" FullName="CocosSharp.CCBReader">
   <TypeSignature Language="C#" Value="public class CCBReader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBReader extends System.Object" />
   <AssemblyInfo>
@@ -29,14 +29,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBReader (Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBReader (CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="reader">To be added.</param>
@@ -45,14 +45,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBReader (Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBReader (CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="nodeLoaderLibrary" Type="Cocos2D.CCNodeLoaderLibrary" />
+        <Parameter Name="nodeLoaderLibrary" Type="CocosSharp.CCNodeLoaderLibrary" />
       </Parameters>
       <Docs>
         <param name="nodeLoaderLibrary">To be added.</param>
@@ -61,15 +61,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBReader (Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, class Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBReader (CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, class CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="nodeLoaderLibrary" Type="Cocos2D.CCNodeLoaderLibrary" />
-        <Parameter Name="memberVariableAssigner" Type="Cocos2D.ICCBMemberVariableAssigner" />
+        <Parameter Name="nodeLoaderLibrary" Type="CocosSharp.CCNodeLoaderLibrary" />
+        <Parameter Name="memberVariableAssigner" Type="CocosSharp.ICCBMemberVariableAssigner" />
       </Parameters>
       <Docs>
         <param name="nodeLoaderLibrary">To be added.</param>
@@ -79,16 +79,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBReader (Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner, Cocos2D.ICCBSelectorResolver selectorResolver);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, class Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner, class Cocos2D.ICCBSelectorResolver selectorResolver) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBReader (CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner, CocosSharp.ICCBSelectorResolver selectorResolver);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, class CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner, class CocosSharp.ICCBSelectorResolver selectorResolver) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="nodeLoaderLibrary" Type="Cocos2D.CCNodeLoaderLibrary" />
-        <Parameter Name="memberVariableAssigner" Type="Cocos2D.ICCBMemberVariableAssigner" />
-        <Parameter Name="selectorResolver" Type="Cocos2D.ICCBSelectorResolver" />
+        <Parameter Name="nodeLoaderLibrary" Type="CocosSharp.CCNodeLoaderLibrary" />
+        <Parameter Name="memberVariableAssigner" Type="CocosSharp.ICCBMemberVariableAssigner" />
+        <Parameter Name="selectorResolver" Type="CocosSharp.ICCBSelectorResolver" />
       </Parameters>
       <Docs>
         <param name="nodeLoaderLibrary">To be added.</param>
@@ -99,17 +99,17 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBReader (Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner, Cocos2D.ICCBSelectorResolver selectorResolver, Cocos2D.ICCNodeLoaderListener nodeLoaderListener);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNodeLoaderLibrary nodeLoaderLibrary, class Cocos2D.ICCBMemberVariableAssigner memberVariableAssigner, class Cocos2D.ICCBSelectorResolver selectorResolver, class Cocos2D.ICCNodeLoaderListener nodeLoaderListener) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBReader (CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner, CocosSharp.ICCBSelectorResolver selectorResolver, CocosSharp.ICCNodeLoaderListener nodeLoaderListener);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNodeLoaderLibrary nodeLoaderLibrary, class CocosSharp.ICCBMemberVariableAssigner memberVariableAssigner, class CocosSharp.ICCBSelectorResolver selectorResolver, class CocosSharp.ICCNodeLoaderListener nodeLoaderListener) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="nodeLoaderLibrary" Type="Cocos2D.CCNodeLoaderLibrary" />
-        <Parameter Name="memberVariableAssigner" Type="Cocos2D.ICCBMemberVariableAssigner" />
-        <Parameter Name="selectorResolver" Type="Cocos2D.ICCBSelectorResolver" />
-        <Parameter Name="nodeLoaderListener" Type="Cocos2D.ICCNodeLoaderListener" />
+        <Parameter Name="nodeLoaderLibrary" Type="CocosSharp.CCNodeLoaderLibrary" />
+        <Parameter Name="memberVariableAssigner" Type="CocosSharp.ICCBMemberVariableAssigner" />
+        <Parameter Name="selectorResolver" Type="CocosSharp.ICCBSelectorResolver" />
+        <Parameter Name="nodeLoaderListener" Type="CocosSharp.ICCNodeLoaderListener" />
       </Parameters>
       <Docs>
         <param name="nodeLoaderLibrary">To be added.</param>
@@ -137,14 +137,14 @@
       </Docs>
     </Member>
     <Member MemberName="AnimationManager">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBAnimationManager AnimationManager { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCBAnimationManager AnimationManager" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBAnimationManager AnimationManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCBAnimationManager AnimationManager" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBAnimationManager</ReturnType>
+        <ReturnType>CocosSharp.CCBAnimationManager</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -175,14 +175,14 @@
       </Docs>
     </Member>
     <Member MemberName="CreateSceneWithNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScene CreateSceneWithNodeGraphFromFile (string fileName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCScene CreateSceneWithNodeGraphFromFile(string fileName) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScene CreateSceneWithNodeGraphFromFile (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCScene CreateSceneWithNodeGraphFromFile(string fileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
@@ -195,14 +195,14 @@
       </Docs>
     </Member>
     <Member MemberName="CreateSceneWithNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
@@ -217,19 +217,19 @@
       </Docs>
     </Member>
     <Member MemberName="CreateSceneWithNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner, Cocos2D.CCSize parentSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, valuetype Cocos2D.CCSize parentSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner, CocosSharp.CCSize parentSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, valuetype CocosSharp.CCSize parentSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
@@ -241,20 +241,20 @@
       </Docs>
     </Member>
     <Member MemberName="CreateSceneWithNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner, Cocos2D.CCSize parentSize, ref Cocos2D.CCBAnimationManager animationManager);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, valuetype Cocos2D.CCSize parentSize, class Cocos2D.CCBAnimationManager animationManager) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScene CreateSceneWithNodeGraphFromFile (string fileName, object owner, CocosSharp.CCSize parentSize, ref CocosSharp.CCBAnimationManager animationManager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, valuetype CocosSharp.CCSize parentSize, class CocosSharp.CCBAnimationManager animationManager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
-        <Parameter Name="animationManager" Type="Cocos2D.CCBAnimationManager&amp;" RefType="ref" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="animationManager" Type="CocosSharp.CCBAnimationManager&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
@@ -382,14 +382,14 @@
       </Docs>
     </Member>
     <Member MemberName="MemberVariableAssigner">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCBMemberVariableAssigner MemberVariableAssigner { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCBMemberVariableAssigner MemberVariableAssigner" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCBMemberVariableAssigner MemberVariableAssigner { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCBMemberVariableAssigner MemberVariableAssigner" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCBMemberVariableAssigner</ReturnType>
+        <ReturnType>CocosSharp.ICCBMemberVariableAssigner</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -465,14 +465,14 @@
       </Docs>
     </Member>
     <Member MemberName="ReadFileWithCleanUp">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadFileWithCleanUp (bool bCleanUp);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadFileWithCleanUp(bool bCleanUp) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadFileWithCleanUp (bool bCleanUp);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadFileWithCleanUp(bool bCleanUp) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="bCleanUp" Type="System.Boolean" />
@@ -522,19 +522,19 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromData">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromData (byte[] bytes, object owner, Cocos2D.CCSize parentSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromData(unsigned int8[] bytes, object owner, valuetype Cocos2D.CCSize parentSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromData (byte[] bytes, object owner, CocosSharp.CCSize parentSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromData(unsigned int8[] bytes, object owner, valuetype CocosSharp.CCSize parentSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="bytes" Type="System.Byte[]" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="bytes">To be added.</param>
@@ -546,20 +546,20 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromData">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromData (byte[] bytes, object owner, Cocos2D.CCSize parentSize, ref Cocos2D.CCBAnimationManager animationManager);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromData(unsigned int8[] bytes, object owner, valuetype Cocos2D.CCSize parentSize, class Cocos2D.CCBAnimationManager animationManager) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromData (byte[] bytes, object owner, CocosSharp.CCSize parentSize, ref CocosSharp.CCBAnimationManager animationManager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromData(unsigned int8[] bytes, object owner, valuetype CocosSharp.CCSize parentSize, class CocosSharp.CCBAnimationManager animationManager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="bytes" Type="System.Byte[]" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
-        <Parameter Name="animationManager" Type="Cocos2D.CCBAnimationManager&amp;" RefType="ref" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="animationManager" Type="CocosSharp.CCBAnimationManager&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="bytes">To be added.</param>
@@ -572,14 +572,14 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromFile (string fileName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromFile(string fileName) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromFile (string fileName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromFile(string fileName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
@@ -592,14 +592,14 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromFile (string fileName, object owner);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromFile(string fileName, object owner) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromFile (string fileName, object owner);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromFile(string fileName, object owner) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
@@ -614,19 +614,19 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromFile (string fileName, object owner, ref Cocos2D.CCBAnimationManager animationManager);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromFile(string fileName, object owner, class Cocos2D.CCBAnimationManager animationManager) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromFile (string fileName, object owner, ref CocosSharp.CCBAnimationManager animationManager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromFile(string fileName, object owner, class CocosSharp.CCBAnimationManager animationManager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="animationManager" Type="Cocos2D.CCBAnimationManager&amp;" RefType="ref" />
+        <Parameter Name="animationManager" Type="CocosSharp.CCBAnimationManager&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
@@ -638,19 +638,19 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromFile (string fileName, object owner, Cocos2D.CCSize parentSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromFile(string fileName, object owner, valuetype Cocos2D.CCSize parentSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromFile (string fileName, object owner, CocosSharp.CCSize parentSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromFile(string fileName, object owner, valuetype CocosSharp.CCSize parentSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
@@ -662,20 +662,20 @@
       </Docs>
     </Member>
     <Member MemberName="ReadNodeGraphFromFile">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ReadNodeGraphFromFile (string fileName, object owner, Cocos2D.CCSize parentSize, ref Cocos2D.CCBAnimationManager animationManager);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCNode ReadNodeGraphFromFile(string fileName, object owner, valuetype Cocos2D.CCSize parentSize, class Cocos2D.CCBAnimationManager animationManager) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ReadNodeGraphFromFile (string fileName, object owner, CocosSharp.CCSize parentSize, ref CocosSharp.CCBAnimationManager animationManager);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode ReadNodeGraphFromFile(string fileName, object owner, valuetype CocosSharp.CCSize parentSize, class CocosSharp.CCBAnimationManager animationManager) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="owner" Type="System.Object" />
-        <Parameter Name="parentSize" Type="Cocos2D.CCSize" />
-        <Parameter Name="animationManager" Type="Cocos2D.CCBAnimationManager&amp;" RefType="ref" />
+        <Parameter Name="parentSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="animationManager" Type="CocosSharp.CCBAnimationManager&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
@@ -704,14 +704,14 @@
       </Docs>
     </Member>
     <Member MemberName="SelectorResolver">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCBSelectorResolver SelectorResolver { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCBSelectorResolver SelectorResolver" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCBSelectorResolver SelectorResolver { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCBSelectorResolver SelectorResolver" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCBSelectorResolver</ReturnType>
+        <ReturnType>CocosSharp.ICCBSelectorResolver</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

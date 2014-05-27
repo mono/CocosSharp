@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCUtils" FullName="Cocos2D.CCUtils">
+<Type Name="CCUtils" FullName="CocosSharp.CCUtils">
   <TypeSignature Language="C#" Value="public class CCUtils" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUtils extends System.Object" />
   <AssemblyInfo>
@@ -29,20 +29,20 @@
       </Docs>
     </Member>
     <Member MemberName="CCCardinalSplineAt">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint CCCardinalSplineAt (Cocos2D.CCPoint p0, Cocos2D.CCPoint p1, Cocos2D.CCPoint p2, Cocos2D.CCPoint p3, float tension, float t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint CCCardinalSplineAt(valuetype Cocos2D.CCPoint p0, valuetype Cocos2D.CCPoint p1, valuetype Cocos2D.CCPoint p2, valuetype Cocos2D.CCPoint p3, float32 tension, float32 t) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint CCCardinalSplineAt (CocosSharp.CCPoint p0, CocosSharp.CCPoint p1, CocosSharp.CCPoint p2, CocosSharp.CCPoint p3, float tension, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint CCCardinalSplineAt(valuetype CocosSharp.CCPoint p0, valuetype CocosSharp.CCPoint p1, valuetype CocosSharp.CCPoint p2, valuetype CocosSharp.CCPoint p3, float32 tension, float32 t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p0" Type="Cocos2D.CCPoint" />
-        <Parameter Name="p1" Type="Cocos2D.CCPoint" />
-        <Parameter Name="p2" Type="Cocos2D.CCPoint" />
-        <Parameter Name="p3" Type="Cocos2D.CCPoint" />
+        <Parameter Name="p0" Type="CocosSharp.CCPoint" />
+        <Parameter Name="p1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="p2" Type="CocosSharp.CCPoint" />
+        <Parameter Name="p3" Type="CocosSharp.CCPoint" />
         <Parameter Name="tension" Type="System.Single" />
         <Parameter Name="t" Type="System.Single" />
       </Parameters>

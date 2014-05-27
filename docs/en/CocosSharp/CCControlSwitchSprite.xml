@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCControlSwitchSprite" FullName="Cocos2D.CCControlSwitchSprite">
-  <TypeSignature Language="C#" Value="public class CCControlSwitchSprite : Cocos2D.CCSprite, Cocos2D.ICCActionTweenDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitchSprite extends Cocos2D.CCSprite implements class Cocos2D.ICCActionTweenDelegate" />
+<Type Name="CCControlSwitchSprite" FullName="CocosSharp.CCControlSwitchSprite">
+  <TypeSignature Language="C#" Value="public class CCControlSwitchSprite : CocosSharp.CCSprite, CocosSharp.ICCActionTweenDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitchSprite extends CocosSharp.CCSprite implements class CocosSharp.ICCActionTweenDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCSprite</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCActionTweenDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCActionTweenDelegate</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithMaskSprite">
-      <MemberSignature Language="C#" Value="public bool InitWithMaskSprite (Cocos2D.CCSprite maskSprite, Cocos2D.CCSprite onSprite, Cocos2D.CCSprite offSprite, Cocos2D.CCSprite thumbSprite, Cocos2D.CCLabelTTF onLabel, Cocos2D.CCLabelTTF offLabel);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithMaskSprite(class Cocos2D.CCSprite maskSprite, class Cocos2D.CCSprite onSprite, class Cocos2D.CCSprite offSprite, class Cocos2D.CCSprite thumbSprite, class Cocos2D.CCLabelTTF onLabel, class Cocos2D.CCLabelTTF offLabel) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithMaskSprite (CocosSharp.CCSprite maskSprite, CocosSharp.CCSprite onSprite, CocosSharp.CCSprite offSprite, CocosSharp.CCSprite thumbSprite, CocosSharp.CCLabelTTF onLabel, CocosSharp.CCLabelTTF offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithMaskSprite(class CocosSharp.CCSprite maskSprite, class CocosSharp.CCSprite onSprite, class CocosSharp.CCSprite offSprite, class CocosSharp.CCSprite thumbSprite, class CocosSharp.CCLabelTTF onLabel, class CocosSharp.CCLabelTTF offLabel) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -59,12 +59,12 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="maskSprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="onSprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="offSprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="thumbSprite" Type="Cocos2D.CCSprite" />
-        <Parameter Name="onLabel" Type="Cocos2D.CCLabelTTF" />
-        <Parameter Name="offLabel" Type="Cocos2D.CCLabelTTF" />
+        <Parameter Name="maskSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="offSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="thumbSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onLabel" Type="CocosSharp.CCLabelTTF" />
+        <Parameter Name="offLabel" Type="CocosSharp.CCLabelTTF" />
       </Parameters>
       <Docs>
         <param name="maskSprite">To be added.</param>
@@ -95,14 +95,14 @@
       </Docs>
     </Member>
     <Member MemberName="MaskTexture">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D MaskTexture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D MaskTexture" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D MaskTexture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D MaskTexture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -127,14 +127,14 @@
       </Docs>
     </Member>
     <Member MemberName="OffLabel">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCLabelTTF OffLabel { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCLabelTTF OffLabel" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTTF OffLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTTF OffLabel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLabelTTF</ReturnType>
+        <ReturnType>CocosSharp.CCLabelTTF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -175,14 +175,14 @@
       </Docs>
     </Member>
     <Member MemberName="OffSprite">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSprite OffSprite { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCSprite OffSprite" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite OffSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite OffSprite" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSprite</ReturnType>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -191,14 +191,14 @@
       </Docs>
     </Member>
     <Member MemberName="OnLabel">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCLabelTTF OnLabel { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCLabelTTF OnLabel" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTTF OnLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTTF OnLabel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLabelTTF</ReturnType>
+        <ReturnType>CocosSharp.CCLabelTTF</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -239,14 +239,14 @@
       </Docs>
     </Member>
     <Member MemberName="OnSprite">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSprite OnSprite { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCSprite OnSprite" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite OnSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite OnSprite" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSprite</ReturnType>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -287,14 +287,14 @@
       </Docs>
     </Member>
     <Member MemberName="ThumbSprite">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSprite ThumbSprite { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCSprite ThumbSprite" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite ThumbSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite ThumbSprite" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSprite</ReturnType>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

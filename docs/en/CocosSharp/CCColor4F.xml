@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCColor4F" FullName="Cocos2D.CCColor4F">
+<Type Name="CCColor4F" FullName="CocosSharp.CCColor4F">
   <TypeSignature Language="C#" Value="public struct CCColor4F" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor4F extends System.ValueType" />
   <AssemblyInfo>
@@ -84,8 +84,8 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (Cocos2D.CCColor4F point);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype Cocos2D.CCColor4F point) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (CocosSharp.CCColor4F point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype CocosSharp.CCColor4F point) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -94,7 +94,7 @@ v3.0 </summary>
         <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCColor4F" />
+        <Parameter Name="point" Type="CocosSharp.CCColor4F" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>
@@ -104,14 +104,14 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="Parse">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCColor4F Parse (string s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCColor4F Parse(string s) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4F Parse (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCColor4F Parse(string s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.String" />

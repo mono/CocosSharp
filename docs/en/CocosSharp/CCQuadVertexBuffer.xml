@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCQuadVertexBuffer" FullName="Cocos2D.CCQuadVertexBuffer">
-  <TypeSignature Language="C#" Value="public class CCQuadVertexBuffer : Cocos2D.CCVertexBuffer&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCQuadVertexBuffer extends Cocos2D.CCVertexBuffer`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+<Type Name="CCQuadVertexBuffer" FullName="CocosSharp.CCQuadVertexBuffer">
+  <TypeSignature Language="C#" Value="public class CCQuadVertexBuffer : CocosSharp.CCVertexBuffer&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCQuadVertexBuffer extends CocosSharp.CCVertexBuffer`1&lt;valuetype CocosSharp.CCV3F_C4B_T2F_Quad&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCVertexBuffer&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCVertexBuffer&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="T">Cocos2D.CCV3F_C4B_T2F_Quad</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="T">CocosSharp.CCV3F_C4B_T2F_Quad</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -90,8 +90,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateBuffer">
-      <MemberSignature Language="C#" Value="public void UpdateBuffer (Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt; data, int startIndex, int elementCount);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateBuffer(class Cocos2D.CCRawList`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt; data, int32 startIndex, int32 elementCount) cil managed" />
+      <MemberSignature Language="C#" Value="public void UpdateBuffer (CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt; data, int startIndex, int elementCount);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateBuffer(class CocosSharp.CCRawList`1&lt;valuetype CocosSharp.CCV3F_C4B_T2F_Quad&gt; data, int32 startIndex, int32 elementCount) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -100,7 +100,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="data" Type="Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+        <Parameter Name="data" Type="CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt;" />
         <Parameter Name="startIndex" Type="System.Int32" />
         <Parameter Name="elementCount" Type="System.Int32" />
       </Parameters>

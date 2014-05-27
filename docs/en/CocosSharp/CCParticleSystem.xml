@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleSystem" FullName="Cocos2D.CCParticleSystem">
-  <TypeSignature Language="C#" Value="public class CCParticleSystem : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystem extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
+<Type Name="CCParticleSystem" FullName="CocosSharp.CCParticleSystem">
+  <TypeSignature Language="C#" Value="public class CCParticleSystem : CocosSharp.CCNode, CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystem extends CocosSharp.CCNode implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -266,14 +266,14 @@
       </Docs>
     </Member>
     <Member MemberName="BatchNode">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCParticleBatchNode BatchNode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCParticleBatchNode BatchNode" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCParticleBatchNode BatchNode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCParticleBatchNode BatchNode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleBatchNode</ReturnType>
+        <ReturnType>CocosSharp.CCParticleBatchNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setBatchNode </summary>
@@ -298,14 +298,14 @@
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setBlendFunc </summary>
@@ -346,14 +346,14 @@
       </Docs>
     </Member>
     <Member MemberName="EmitterMode">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCEmitterMode EmitterMode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCEmitterMode EmitterMode" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCEmitterMode EmitterMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCEmitterMode EmitterMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCEmitterMode</ReturnType>
+        <ReturnType>CocosSharp.CCEmitterMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setEmitterMode </summary>
@@ -362,14 +362,14 @@
       </Docs>
     </Member>
     <Member MemberName="EndColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F EndColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor4F EndColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F EndColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4F EndColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setEndColor </summary>
@@ -378,14 +378,14 @@
       </Docs>
     </Member>
     <Member MemberName="EndColorVar">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F EndColorVar { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor4F EndColorVar" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F EndColorVar { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4F EndColorVar" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setEndColorVar </summary>
@@ -490,14 +490,14 @@
       </Docs>
     </Member>
     <Member MemberName="Gravity">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Gravity { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Gravity" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Gravity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Gravity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -523,8 +523,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDictionary">
-      <MemberSignature Language="C#" Value="public bool InitWithDictionary (Cocos2D.PlistDictionary dictionary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDictionary(class Cocos2D.PlistDictionary dictionary) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithDictionary (CocosSharp.PlistDictionary dictionary);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDictionary(class CocosSharp.PlistDictionary dictionary) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -533,7 +533,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dictionary" Type="Cocos2D.PlistDictionary" />
+        <Parameter Name="dictionary" Type="CocosSharp.PlistDictionary" />
       </Parameters>
       <Docs>
         <param name="dictionary">To be added.</param>
@@ -805,14 +805,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_ePositionType">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPositionType m_ePositionType;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPositionType m_ePositionType" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPositionType m_ePositionType;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPositionType m_ePositionType" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1060,14 +1060,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_nEmitterMode">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCEmitterMode m_nEmitterMode;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCEmitterMode m_nEmitterMode" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCEmitterMode m_nEmitterMode;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCEmitterMode m_nEmitterMode" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCEmitterMode</ReturnType>
+        <ReturnType>CocosSharp.CCEmitterMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1075,14 +1075,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pBatchNode">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCParticleBatchNode m_pBatchNode;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCParticleBatchNode m_pBatchNode" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCParticleBatchNode m_pBatchNode;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCParticleBatchNode m_pBatchNode" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleBatchNode</ReturnType>
+        <ReturnType>CocosSharp.CCParticleBatchNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1090,14 +1090,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pParticles">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCParticleSystem.CCParticle[] m_pParticles;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCParticleSystem/CCParticle[] m_pParticles" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCParticleSystem.CCParticle[] m_pParticles;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCParticleSystem/CCParticle[] m_pParticles" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystem+CCParticle[]</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystem+CCParticle[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1105,14 +1105,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTexture">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTexture2D m_pTexture;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTexture2D m_pTexture" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTexture2D m_pTexture" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1135,14 +1135,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tBlendFunc">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCBlendFunc m_tBlendFunc;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCBlendFunc m_tBlendFunc" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCBlendFunc m_tBlendFunc;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCBlendFunc m_tBlendFunc" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1150,14 +1150,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tEndColor">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor4F m_tEndColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor4F m_tEndColor" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4F m_tEndColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4F m_tEndColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1165,14 +1165,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tEndColorVar">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor4F m_tEndColorVar;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor4F m_tEndColorVar" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4F m_tEndColorVar;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4F m_tEndColorVar" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1180,14 +1180,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tPosVar">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tPosVar;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tPosVar" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tPosVar;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tPosVar" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1195,14 +1195,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tSourcePosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tSourcePosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tSourcePosition" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tSourcePosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tSourcePosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1210,14 +1210,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tStartColor">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor4F m_tStartColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor4F m_tStartColor" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4F m_tStartColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4F m_tStartColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1225,14 +1225,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tStartColorVar">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor4F m_tStartColorVar;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor4F m_tStartColorVar" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4F m_tStartColorVar;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4F m_tStartColorVar" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1300,14 +1300,14 @@
       </Docs>
     </Member>
     <Member MemberName="modeA">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCParticleSystem.ModeA modeA;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCParticleSystem/ModeA modeA" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCParticleSystem.ModeA modeA;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCParticleSystem/ModeA modeA" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystem+ModeA</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystem+ModeA</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1315,14 +1315,14 @@
       </Docs>
     </Member>
     <Member MemberName="modeB">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCParticleSystem.ModeB modeB;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCParticleSystem/ModeB modeB" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCParticleSystem.ModeB modeB;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCParticleSystem/ModeB modeB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystem+ModeB</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystem+ModeB</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1394,14 +1394,14 @@
       </Docs>
     </Member>
     <Member MemberName="PositionType">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPositionType PositionType { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPositionType PositionType" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPositionType PositionType { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPositionType PositionType" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setPositionType </summary>
@@ -1428,14 +1428,14 @@
       </Docs>
     </Member>
     <Member MemberName="PosVar">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint PosVar { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint PosVar" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PosVar { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PosVar" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setPosVar </summary>
@@ -1622,14 +1622,14 @@
       </Docs>
     </Member>
     <Member MemberName="SourcePosition">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint SourcePosition { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint SourcePosition" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint SourcePosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint SourcePosition" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setSourcePosition </summary>
@@ -1670,14 +1670,14 @@
       </Docs>
     </Member>
     <Member MemberName="StartColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F StartColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor4F StartColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F StartColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4F StartColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setStartColor </summary>
@@ -1686,14 +1686,14 @@
       </Docs>
     </Member>
     <Member MemberName="StartColorVar">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F StartColorVar { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor4F StartColorVar" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F StartColorVar { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4F StartColorVar" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setStartColorVar </summary>
@@ -1848,14 +1848,14 @@
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTexture </summary>

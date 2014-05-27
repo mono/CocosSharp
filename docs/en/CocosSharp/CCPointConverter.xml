@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPointConverter" FullName="Cocos2D.CCPointConverter">
+<Type Name="CCPointConverter" FullName="CocosSharp.CCPointConverter">
   <TypeSignature Language="C#" Value="public class CCPointConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointConverter extends System.ComponentModel.TypeConverter" />
   <AssemblyInfo>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="CCPointFromString">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint CCPointFromString (string pszContent);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint CCPointFromString(string pszContent) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint CCPointFromString (string pszContent);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint CCPointFromString(string pszContent) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszContent" Type="System.String" />

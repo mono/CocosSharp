@@ -1,4 +1,4 @@
-<Type Name="ICCFocusable" FullName="Cocos2D.ICCFocusable">
+<Type Name="ICCFocusable" FullName="CocosSharp.ICCFocusable">
   <TypeSignature Language="C#" Value="public interface ICCFocusable" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCFocusable" />
   <AssemblyInfo>

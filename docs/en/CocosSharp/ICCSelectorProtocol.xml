@@ -1,4 +1,4 @@
-<Type Name="ICCSelectorProtocol" FullName="Cocos2D.ICCSelectorProtocol">
+<Type Name="ICCSelectorProtocol" FullName="CocosSharp.ICCSelectorProtocol">
   <TypeSignature Language="C#" Value="public interface ICCSelectorProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCSelectorProtocol" />
   <AssemblyInfo>

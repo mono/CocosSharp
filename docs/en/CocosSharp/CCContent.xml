@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCContent" FullName="Cocos2D.CCContent">
+<Type Name="CCContent" FullName="CocosSharp.CCContent">
   <TypeSignature Language="C#" Value="public class CCContent" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCContent extends System.Object" />
   <AssemblyInfo>

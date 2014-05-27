@@ -1,4 +1,4 @@
-<Type Name="CCBKeyframeEasing" FullName="Cocos2D.CCBKeyframeEasing">
+<Type Name="CCBKeyframeEasing" FullName="CocosSharp.CCBKeyframeEasing">
   <TypeSignature Language="C#" Value="public enum CCBKeyframeEasing" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBKeyframeEasing extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="BackIn">
       <MemberSignature Language="C#" Value="BackIn" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BackIn = int32(11)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BackIn = int32(11)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="BackInOut">
       <MemberSignature Language="C#" Value="BackInOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BackInOut = int32(13)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BackInOut = int32(13)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="BackOut">
       <MemberSignature Language="C#" Value="BackOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BackOut = int32(12)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BackOut = int32(12)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="BounceIn">
       <MemberSignature Language="C#" Value="BounceIn" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BounceIn = int32(8)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BounceIn = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="BounceInOut">
       <MemberSignature Language="C#" Value="BounceInOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BounceInOut = int32(10)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BounceInOut = int32(10)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="BounceOut">
       <MemberSignature Language="C#" Value="BounceOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing BounceOut = int32(9)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing BounceOut = int32(9)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,13 +99,13 @@
     </Member>
     <Member MemberName="CubicIn">
       <MemberSignature Language="C#" Value="CubicIn" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing CubicIn = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing CubicIn = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -113,13 +113,13 @@
     </Member>
     <Member MemberName="CubicInOut">
       <MemberSignature Language="C#" Value="CubicInOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing CubicInOut = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing CubicInOut = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -127,13 +127,13 @@
     </Member>
     <Member MemberName="CubicOut">
       <MemberSignature Language="C#" Value="CubicOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing CubicOut = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing CubicOut = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -141,13 +141,13 @@
     </Member>
     <Member MemberName="ElasticIn">
       <MemberSignature Language="C#" Value="ElasticIn" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing ElasticIn = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing ElasticIn = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -155,13 +155,13 @@
     </Member>
     <Member MemberName="ElasticInOut">
       <MemberSignature Language="C#" Value="ElasticInOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing ElasticInOut = int32(7)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing ElasticInOut = int32(7)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -169,13 +169,13 @@
     </Member>
     <Member MemberName="ElasticOut">
       <MemberSignature Language="C#" Value="ElasticOut" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing ElasticOut = int32(6)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing ElasticOut = int32(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -183,13 +183,13 @@
     </Member>
     <Member MemberName="Instant">
       <MemberSignature Language="C#" Value="Instant" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing Instant = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing Instant = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -197,13 +197,13 @@
     </Member>
     <Member MemberName="Linear">
       <MemberSignature Language="C#" Value="Linear" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBKeyframeEasing Linear = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBKeyframeEasing Linear = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

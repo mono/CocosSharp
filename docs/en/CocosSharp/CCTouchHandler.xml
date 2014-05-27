@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTouchHandler" FullName="Cocos2D.CCTouchHandler">
+<Type Name="CCTouchHandler" FullName="CocosSharp.CCTouchHandler">
   <TypeSignature Language="C#" Value="public class CCTouchHandler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchHandler extends System.Object" />
   <AssemblyInfo>
@@ -29,17 +29,17 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTouchHandler Create (Cocos2D.ICCTouchDelegate pDelegate, int nPriority);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTouchHandler Create(class Cocos2D.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTouchHandler Create (CocosSharp.ICCTouchDelegate pDelegate, int nPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTouchHandler Create(class CocosSharp.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTouchHandler</ReturnType>
+        <ReturnType>CocosSharp.CCTouchHandler</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCTouchDelegate Delegate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCTouchDelegate Delegate" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCTouchDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCTouchDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCTouchDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCTouchDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>delegate </summary>
@@ -83,8 +83,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (Cocos2D.ICCTouchDelegate pDelegate, int nPriority);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class Cocos2D.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (CocosSharp.ICCTouchDelegate pDelegate, int nPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class CocosSharp.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -93,7 +93,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -135,14 +135,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">
-      <MemberSignature Language="C#" Value="protected Cocos2D.ICCTouchDelegate m_pDelegate;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.ICCTouchDelegate m_pDelegate" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCTouchDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCTouchDelegate m_pDelegate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCTouchDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCTouchDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

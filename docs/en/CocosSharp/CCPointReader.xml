@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPointReader" FullName="Cocos2D.CCPointReader">
-  <TypeSignature Language="C#" Value="public class CCPointReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.CCPoint&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype Cocos2D.CCPoint&gt;" />
+<Type Name="CCPointReader" FullName="CocosSharp.CCPointReader">
+  <TypeSignature Language="C#" Value="public class CCPointReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCPoint&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype CocosSharp.CCPoint&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.CCPoint&gt;</BaseTypeName>
+    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCPoint&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Cocos2D.CCPoint</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">CocosSharp.CCPoint</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -32,18 +32,18 @@
       </Docs>
     </Member>
     <Member MemberName="Read">
-      <MemberSignature Language="C#" Value="protected override Cocos2D.CCPoint Read (Microsoft.Xna.Framework.Content.ContentReader input, Cocos2D.CCPoint existingInstance);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Cocos2D.CCPoint Read(class Microsoft.Xna.Framework.Content.ContentReader input, valuetype Cocos2D.CCPoint existingInstance) cil managed" />
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCPoint Read (Microsoft.Xna.Framework.Content.ContentReader input, CocosSharp.CCPoint existingInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype CocosSharp.CCPoint Read(class Microsoft.Xna.Framework.Content.ContentReader input, valuetype CocosSharp.CCPoint existingInstance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.Xna.Framework.Content.ContentReader" />
-        <Parameter Name="existingInstance" Type="Cocos2D.CCPoint" />
+        <Parameter Name="existingInstance" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

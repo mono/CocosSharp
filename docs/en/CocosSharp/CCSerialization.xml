@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSerialization" FullName="Cocos2D.CCSerialization">
+<Type Name="CCSerialization" FullName="CocosSharp.CCSerialization">
   <TypeSignature Language="C#" Value="public static class CCSerialization" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCSerialization extends System.Object" />
   <AssemblyInfo>

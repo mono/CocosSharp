@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCV2F_C4B_T2F" FullName="Cocos2D.CCV2F_C4B_T2F">
+<Type Name="CCV2F_C4B_T2F" FullName="CocosSharp.CCV2F_C4B_T2F">
   <TypeSignature Language="C#" Value="public class CCV2F_C4B_T2F" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCV2F_C4B_T2F extends System.Object" />
   <AssemblyInfo>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="Colors">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4B Colors;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCColor4B Colors" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4B Colors;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCColor4B Colors" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4B</ReturnType>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -46,14 +46,14 @@
       </Docs>
     </Member>
     <Member MemberName="TexCoords">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTex2F TexCoords;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCTex2F TexCoords" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTex2F TexCoords;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCTex2F TexCoords" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTex2F</ReturnType>
+        <ReturnType>CocosSharp.CCTex2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -61,14 +61,14 @@
       </Docs>
     </Member>
     <Member MemberName="Vertices">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCVertex2F Vertices;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCVertex2F Vertices" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex2F Vertices;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex2F Vertices" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex2F</ReturnType>
+        <ReturnType>CocosSharp.CCVertex2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

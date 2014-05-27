@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCScale9SpriteFrame" FullName="Cocos2D.CCScale9SpriteFrame">
-  <TypeSignature Language="C#" Value="public class CCScale9SpriteFrame : Cocos2D.CCScale9Sprite" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScale9SpriteFrame extends Cocos2D.CCScale9Sprite" />
+<Type Name="CCScale9SpriteFrame" FullName="CocosSharp.CCScale9SpriteFrame">
+  <TypeSignature Language="C#" Value="public class CCScale9SpriteFrame : CocosSharp.CCScale9Sprite" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScale9SpriteFrame extends CocosSharp.CCScale9Sprite" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCScale9Sprite</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCScale9Sprite</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (Cocos2D.CCSpriteFrame spriteFrame);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSpriteFrame spriteFrame) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (CocosSharp.CCSpriteFrame spriteFrame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
@@ -48,15 +48,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (Cocos2D.CCSpriteFrame spriteFrame, Cocos2D.CCRect capInsets);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSpriteFrame spriteFrame, valuetype Cocos2D.CCRect capInsets) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (CocosSharp.CCSpriteFrame spriteFrame, CocosSharp.CCRect capInsets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
-        <Parameter Name="capInsets" Type="Cocos2D.CCRect" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
+        <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
@@ -66,15 +66,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (string spriteFrameName, Cocos2D.CCRect capInsets);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string spriteFrameName, valuetype Cocos2D.CCRect capInsets) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScale9SpriteFrame (string spriteFrameName, CocosSharp.CCRect capInsets);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string spriteFrameName, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="spriteFrameName" Type="System.String" />
-        <Parameter Name="capInsets" Type="Cocos2D.CCRect" />
+        <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
         <param name="spriteFrameName">To be added.</param>

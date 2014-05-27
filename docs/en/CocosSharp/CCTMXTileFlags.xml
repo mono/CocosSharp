@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTMXTileFlags" FullName="Cocos2D.CCTMXTileFlags">
+<Type Name="CCTMXTileFlags" FullName="CocosSharp.CCTMXTileFlags">
   <TypeSignature Language="C#" Value="public class CCTMXTileFlags" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTileFlags extends System.Object" />
   <AssemblyInfo>

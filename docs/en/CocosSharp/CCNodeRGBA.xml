@@ -1,29 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCNodeRGBA" FullName="Cocos2D.CCNodeRGBA">
-  <TypeSignature Language="C#" Value="public class CCNodeRGBA : Cocos2D.CCNode, Cocos2D.ICCRGBAProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeRGBA extends Cocos2D.CCNode implements class Cocos2D.ICCRGBAProtocol" />
+<Type Name="CCNodeRGBA" FullName="CocosSharp.CCNodeRGBA">
+  <TypeSignature Language="C#" Value="public class CCNodeRGBA : CocosSharp.CCNode, CocosSharp.ICCRGBAProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeRGBA extends CocosSharp.CCNode implements class CocosSharp.ICCRGBAProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCRGBAProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCRGBAProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
     <summary> is a subclass of  that implements the RGBAProtocol protocol.</summary>
     <remarks>
       <para>
-        <see cref="T:Cocos2D.CCNodeRGBA" /> is a subclass of <see cref="T:Cocos2D.CCNode" /> that implements the <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref> protocol.</para>
-      <see cref="T:Cocos2D.CCNodeRGBA" />
-      <see cref="T:Cocos2D.CCNode" />
+        <see cref="T:CocosSharp.CCNodeRGBA" /> is a subclass of <see cref="T:CocosSharp.CCNode" /> that implements the <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref> protocol.</para>
+      <see cref="T:CocosSharp.CCNodeRGBA" />
+      <see cref="T:CocosSharp.CCNode" />
       <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref>
-      <para>All features from <see cref="T:Cocos2D.CCNode" /> are valid, plus the following new features:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCNode" />
+      <para>All features from <see cref="T:CocosSharp.CCNode" /> are valid, plus the following new features:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCNode" />
       <list type="bullet" />
       <para>Opacity/Color propagates into children that conform to the <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref> if cascadeOpacity/cascadeColor is enabled. <para>v2.1 </para></para>
       <ref refid="classcocos2d_1_1_r_g_b_a_protocol" kindref="compound">RGBAProtocol</ref>
@@ -83,14 +83,14 @@
       </Docs>
     </Member>
     <Member MemberName="_displayedColor">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B _displayedColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B _displayedColor" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B _displayedColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B _displayedColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -113,14 +113,14 @@
       </Docs>
     </Member>
     <Member MemberName="_realColor">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B _realColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B _realColor" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B _realColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B _realColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -175,14 +175,14 @@
       </Docs>
     </Member>
     <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCColor3B Color { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Changes the color with R,G,B bytes</summary>
@@ -194,14 +194,14 @@
       </Docs>
     </Member>
     <Member MemberName="DisplayedColor">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCColor3B DisplayedColor { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B DisplayedColor" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B DisplayedColor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the displayed color.</summary>
@@ -209,10 +209,10 @@
         <remarks>
           <para>Returns the displayed color.</para>
           <para>
-            <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
+            <para>The <see cref="T:CocosSharp.CCColor3B" /> contains R,G,B bytes. </para>
           </para>
-          <para>The <see cref="T:Cocos2D.CCColor3B" /> contains R,G,B bytes. </para>
-          <see cref="T:Cocos2D.CCColor3B" />
+          <para>The <see cref="T:CocosSharp.CCColor3B" /> contains R,G,B bytes. </para>
+          <see cref="T:CocosSharp.CCColor3B" />
         </remarks>
       </Docs>
     </Member>
@@ -297,8 +297,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">
-      <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedColor (Cocos2D.CCColor3B parentColor);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype Cocos2D.CCColor3B parentColor) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -307,7 +307,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="parentColor" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="parentColor" Type="CocosSharp.CCColor3B" />
       </Parameters>
       <Docs>
         <param name="parentColor">To be added.</param>

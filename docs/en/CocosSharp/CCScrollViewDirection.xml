@@ -1,4 +1,4 @@
-<Type Name="CCScrollViewDirection" FullName="Cocos2D.CCScrollViewDirection">
+<Type Name="CCScrollViewDirection" FullName="CocosSharp.CCScrollViewDirection">
   <TypeSignature Language="C#" Value="public enum CCScrollViewDirection" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCScrollViewDirection extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Both">
       <MemberSignature Language="C#" Value="Both" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCScrollViewDirection Both = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCScrollViewDirection Both = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Horizontal">
       <MemberSignature Language="C#" Value="Horizontal" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCScrollViewDirection Horizontal = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCScrollViewDirection Horizontal = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="None">
       <MemberSignature Language="C#" Value="None" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCScrollViewDirection None = int32(-1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCScrollViewDirection None = int32(-1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Vertical">
       <MemberSignature Language="C#" Value="Vertical" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCScrollViewDirection Vertical = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCScrollViewDirection Vertical = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

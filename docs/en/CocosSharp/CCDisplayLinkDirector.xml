@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCDisplayLinkDirector" FullName="Cocos2D.CCDisplayLinkDirector">
-  <TypeSignature Language="C#" Value="public class CCDisplayLinkDirector : Cocos2D.CCDirector" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDisplayLinkDirector extends Cocos2D.CCDirector" />
+<Type Name="CCDisplayLinkDirector" FullName="CocosSharp.CCDisplayLinkDirector">
+  <TypeSignature Language="C#" Value="public class CCDisplayLinkDirector : CocosSharp.CCDirector" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDisplayLinkDirector extends CocosSharp.CCDirector" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCDirector</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCDirector</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

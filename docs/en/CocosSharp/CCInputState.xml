@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCInputState" FullName="Cocos2D.CCInputState">
+<Type Name="CCInputState" FullName="CocosSharp.CCInputState">
   <TypeSignature Language="C#" Value="public class CCInputState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCInputState extends System.Object" />
   <AssemblyInfo>
@@ -91,14 +91,14 @@
       </Docs>
     </Member>
     <Member MemberName="Instance">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCInputState Instance;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly class Cocos2D.CCInputState Instance" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCInputState Instance;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly class CocosSharp.CCInputState Instance" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCInputState</ReturnType>
+        <ReturnType>CocosSharp.CCInputState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -222,8 +222,8 @@
       </Docs>
     </Member>
     <Member MemberName="IsMouseButtonDown">
-      <MemberSignature Language="C#" Value="public bool IsMouseButtonDown (Cocos2D.CCMouseButtons button);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonDown(valuetype Cocos2D.CCMouseButtons button) cil managed" />
+      <MemberSignature Language="C#" Value="public bool IsMouseButtonDown (CocosSharp.CCMouseButtons button);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonDown(valuetype CocosSharp.CCMouseButtons button) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -232,7 +232,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="button" Type="Cocos2D.CCMouseButtons" />
+        <Parameter Name="button" Type="CocosSharp.CCMouseButtons" />
       </Parameters>
       <Docs>
         <param name="button">To be added.</param>
@@ -242,8 +242,8 @@
       </Docs>
     </Member>
     <Member MemberName="IsMouseButtonPress">
-      <MemberSignature Language="C#" Value="public bool IsMouseButtonPress (Cocos2D.CCMouseButtons button);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonPress(valuetype Cocos2D.CCMouseButtons button) cil managed" />
+      <MemberSignature Language="C#" Value="public bool IsMouseButtonPress (CocosSharp.CCMouseButtons button);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonPress(valuetype CocosSharp.CCMouseButtons button) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -252,7 +252,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="button" Type="Cocos2D.CCMouseButtons" />
+        <Parameter Name="button" Type="CocosSharp.CCMouseButtons" />
       </Parameters>
       <Docs>
         <param name="button">To be added.</param>
@@ -262,8 +262,8 @@
       </Docs>
     </Member>
     <Member MemberName="IsMouseButtonRelease">
-      <MemberSignature Language="C#" Value="public bool IsMouseButtonRelease (Cocos2D.CCMouseButtons button);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonRelease(valuetype Cocos2D.CCMouseButtons button) cil managed" />
+      <MemberSignature Language="C#" Value="public bool IsMouseButtonRelease (CocosSharp.CCMouseButtons button);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonRelease(valuetype CocosSharp.CCMouseButtons button) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -272,7 +272,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="button" Type="Cocos2D.CCMouseButtons" />
+        <Parameter Name="button" Type="CocosSharp.CCMouseButtons" />
       </Parameters>
       <Docs>
         <param name="button">To be added.</param>
@@ -282,8 +282,8 @@
       </Docs>
     </Member>
     <Member MemberName="IsMouseButtonUp">
-      <MemberSignature Language="C#" Value="public bool IsMouseButtonUp (Cocos2D.CCMouseButtons button);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonUp(valuetype Cocos2D.CCMouseButtons button) cil managed" />
+      <MemberSignature Language="C#" Value="public bool IsMouseButtonUp (CocosSharp.CCMouseButtons button);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsMouseButtonUp(valuetype CocosSharp.CCMouseButtons button) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -292,7 +292,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="button" Type="Cocos2D.CCMouseButtons" />
+        <Parameter Name="button" Type="CocosSharp.CCMouseButtons" />
       </Parameters>
       <Docs>
         <param name="button">To be added.</param>

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="PlistArray" FullName="Cocos2D.PlistArray">
-  <TypeSignature Language="C#" Value="public class PlistArray : Cocos2D.PlistObject&lt;System.Collections.Generic.List&lt;Cocos2D.PlistObjectBase&gt;&gt;, System.Collections.Generic.IEnumerable&lt;Cocos2D.PlistObjectBase&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistArray extends Cocos2D.PlistObject`1&lt;class System.Collections.Generic.List`1&lt;class Cocos2D.PlistObjectBase&gt;&gt; implements class System.Collections.Generic.IEnumerable`1&lt;class Cocos2D.PlistObjectBase&gt;, class System.Collections.IEnumerable" />
+<Type Name="PlistArray" FullName="CocosSharp.PlistArray">
+  <TypeSignature Language="C#" Value="public class PlistArray : CocosSharp.PlistObject&lt;System.Collections.Generic.List&lt;CocosSharp.PlistObjectBase&gt;&gt;, System.Collections.Generic.IEnumerable&lt;CocosSharp.PlistObjectBase&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistArray extends CocosSharp.PlistObject`1&lt;class System.Collections.Generic.List`1&lt;class CocosSharp.PlistObjectBase&gt;&gt; implements class System.Collections.Generic.IEnumerable`1&lt;class CocosSharp.PlistObjectBase&gt;, class System.Collections.IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.PlistObject&lt;System.Collections.Generic.List&lt;Cocos2D.PlistObjectBase&gt;&gt;</BaseTypeName>
+    <BaseTypeName>CocosSharp.PlistObject&lt;System.Collections.Generic.List&lt;CocosSharp.PlistObjectBase&gt;&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="T">System.Collections.Generic.List&lt;Cocos2D.PlistObjectBase&gt;</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="T">System.Collections.Generic.List&lt;CocosSharp.PlistObjectBase&gt;</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>System.Collections.Generic.IEnumerable&lt;Cocos2D.PlistObjectBase&gt;</InterfaceName>
+      <InterfaceName>System.Collections.Generic.IEnumerable&lt;CocosSharp.PlistObjectBase&gt;</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -36,14 +36,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PlistArray (System.Collections.Generic.List&lt;Cocos2D.PlistObjectBase&gt; value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.List`1&lt;class Cocos2D.PlistObjectBase&gt; value) cil managed" />
+      <MemberSignature Language="C#" Value="public PlistArray (System.Collections.Generic.List&lt;CocosSharp.PlistObjectBase&gt; value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.List`1&lt;class CocosSharp.PlistObjectBase&gt; value) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="value" Type="System.Collections.Generic.List&lt;Cocos2D.PlistObjectBase&gt;" />
+        <Parameter Name="value" Type="System.Collections.Generic.List&lt;CocosSharp.PlistObjectBase&gt;" />
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
@@ -84,8 +84,8 @@
       </Docs>
     </Member>
     <Member MemberName="Add">
-      <MemberSignature Language="C#" Value="public void Add (Cocos2D.PlistObjectBase value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class Cocos2D.PlistObjectBase value) cil managed" />
+      <MemberSignature Language="C#" Value="public void Add (CocosSharp.PlistObjectBase value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class CocosSharp.PlistObjectBase value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -94,7 +94,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="value" Type="Cocos2D.PlistObjectBase" />
+        <Parameter Name="value" Type="CocosSharp.PlistObjectBase" />
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
@@ -122,14 +122,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsArray">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistArray AsArray { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistArray AsArray" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistArray AsArray { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistArray AsArray" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistArray</ReturnType>
+        <ReturnType>CocosSharp.PlistArray</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -186,14 +186,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsDictionary">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistDictionary AsDictionary { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistDictionary AsDictionary" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistDictionary AsDictionary { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary AsDictionary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDictionary</ReturnType>
+        <ReturnType>CocosSharp.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -266,8 +266,8 @@
       </Docs>
     </Member>
     <Member MemberName="Contains">
-      <MemberSignature Language="C#" Value="public bool Contains (Cocos2D.PlistObjectBase value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Contains(class Cocos2D.PlistObjectBase value) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Contains (CocosSharp.PlistObjectBase value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Contains(class CocosSharp.PlistObjectBase value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -276,7 +276,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="value" Type="Cocos2D.PlistObjectBase" />
+        <Parameter Name="value" Type="CocosSharp.PlistObjectBase" />
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>
@@ -302,14 +302,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetEnumerator">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;Cocos2D.PlistObjectBase&gt; GetEnumerator ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;class Cocos2D.PlistObjectBase&gt; GetEnumerator() cil managed" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.IEnumerator&lt;CocosSharp.PlistObjectBase&gt; GetEnumerator ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Collections.Generic.IEnumerator`1&lt;class CocosSharp.PlistObjectBase&gt; GetEnumerator() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.IEnumerator&lt;Cocos2D.PlistObjectBase&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.IEnumerator&lt;CocosSharp.PlistObjectBase&gt;</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -319,14 +319,14 @@
       </Docs>
     </Member>
     <Member MemberName="Item">
-      <MemberSignature Language="C#" Value="public Cocos2D.PlistObjectBase this[int index] { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistObjectBase Item(int32)" />
+      <MemberSignature Language="C#" Value="public CocosSharp.PlistObjectBase this[int index] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistObjectBase Item(int32)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistObjectBase</ReturnType>
+        <ReturnType>CocosSharp.PlistObjectBase</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="index" Type="System.Int32" />
@@ -339,8 +339,8 @@
       </Docs>
     </Member>
     <Member MemberName="Remove">
-      <MemberSignature Language="C#" Value="public bool Remove (Cocos2D.PlistObjectBase value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Remove(class Cocos2D.PlistObjectBase value) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Remove (CocosSharp.PlistObjectBase value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Remove(class CocosSharp.PlistObjectBase value) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -349,7 +349,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="value" Type="Cocos2D.PlistObjectBase" />
+        <Parameter Name="value" Type="CocosSharp.PlistObjectBase" />
       </Parameters>
       <Docs>
         <param name="value">To be added.</param>

@@ -1,4 +1,4 @@
-<Type Name="CCBPositionType" FullName="Cocos2D.CCBPositionType">
+<Type Name="CCBPositionType" FullName="CocosSharp.CCBPositionType">
   <TypeSignature Language="C#" Value="public enum CCBPositionType" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBPositionType extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="MultiplyResolution">
       <MemberSignature Language="C#" Value="MultiplyResolution" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType MultiplyResolution = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType MultiplyResolution = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Percent">
       <MemberSignature Language="C#" Value="Percent" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType Percent = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType Percent = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="RelativeBottomLeft">
       <MemberSignature Language="C#" Value="RelativeBottomLeft" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType RelativeBottomLeft = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType RelativeBottomLeft = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="RelativeBottomRight">
       <MemberSignature Language="C#" Value="RelativeBottomRight" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType RelativeBottomRight = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType RelativeBottomRight = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="RelativeTopLeft">
       <MemberSignature Language="C#" Value="RelativeTopLeft" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType RelativeTopLeft = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType RelativeTopLeft = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="RelativeTopRight">
       <MemberSignature Language="C#" Value="RelativeTopRight" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPositionType RelativeTopRight = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPositionType RelativeTopRight = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPositionType</ReturnType>
+        <ReturnType>CocosSharp.CCBPositionType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

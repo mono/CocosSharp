@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAnimationFrame" FullName="Cocos2D.CCAnimationFrame">
-  <TypeSignature Language="C#" Value="public class CCAnimationFrame : Cocos2D.ICCCopyable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationFrame extends System.Object implements class Cocos2D.ICCCopyable" />
+<Type Name="CCAnimationFrame" FullName="CocosSharp.CCAnimationFrame">
+  <TypeSignature Language="C#" Value="public class CCAnimationFrame : CocosSharp.ICCCopyable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationFrame extends System.Object implements class CocosSharp.ICCCopyable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,15 +11,15 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCCopyable</InterfaceName>
+      <InterfaceName>CocosSharp.ICCCopyable</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
     <summary> A frame of the animation. It contains information like:</summary>
     <remarks>
       <para>
-        <see cref="T:Cocos2D.CCAnimationFrame" /> A frame of the animation. It contains information like:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCAnimationFrame" />
+        <see cref="T:CocosSharp.CCAnimationFrame" /> A frame of the animation. It contains information like:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCAnimationFrame" />
       <list type="bullet" />
       <para>
         <para>v2.0 </para>
@@ -54,14 +54,14 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAnimationFrame Copy ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAnimationFrame Copy() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAnimationFrame Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAnimationFrame Copy() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimationFrame</ReturnType>
+        <ReturnType>CocosSharp.CCAnimationFrame</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -71,8 +71,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -81,7 +81,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -107,8 +107,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithSpriteFrame">
-      <MemberSignature Language="C#" Value="public bool InitWithSpriteFrame (Cocos2D.CCSpriteFrame spriteFrame, float delayUnits, Cocos2D.PlistDictionary userInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithSpriteFrame(class Cocos2D.CCSpriteFrame spriteFrame, float32 delayUnits, class Cocos2D.PlistDictionary userInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithSpriteFrame (CocosSharp.CCSpriteFrame spriteFrame, float delayUnits, CocosSharp.PlistDictionary userInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithSpriteFrame(class CocosSharp.CCSpriteFrame spriteFrame, float32 delayUnits, class CocosSharp.PlistDictionary userInfo) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -117,9 +117,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
         <Parameter Name="delayUnits" Type="System.Single" />
-        <Parameter Name="userInfo" Type="Cocos2D.PlistDictionary" />
+        <Parameter Name="userInfo" Type="CocosSharp.PlistDictionary" />
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
@@ -131,14 +131,14 @@
       </Docs>
     </Member>
     <Member MemberName="SpriteFrame">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSpriteFrame SpriteFrame { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCSpriteFrame SpriteFrame" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrame SpriteFrame { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteFrame SpriteFrame" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setSpriteFrame </summary>
@@ -147,14 +147,14 @@
       </Docs>
     </Member>
     <Member MemberName="UserInfo">
-      <MemberSignature Language="C#" Value="public Cocos2D.PlistDictionary UserInfo { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistDictionary UserInfo" />
+      <MemberSignature Language="C#" Value="public CocosSharp.PlistDictionary UserInfo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary UserInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDictionary</ReturnType>
+        <ReturnType>CocosSharp.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setUserInfo </summary>

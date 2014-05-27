@@ -1,4 +1,4 @@
-<Type Name="CCGestureDirection" FullName="Cocos2D.CCGestureDirection">
+<Type Name="CCGestureDirection" FullName="CocosSharp.CCGestureDirection">
   <TypeSignature Language="C#" Value="public enum CCGestureDirection" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGestureDirection extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Down">
       <MemberSignature Language="C#" Value="Down" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGestureDirection Down = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGestureDirection Down = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Left">
       <MemberSignature Language="C#" Value="Left" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGestureDirection Left = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGestureDirection Left = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="None">
       <MemberSignature Language="C#" Value="None" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGestureDirection None = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGestureDirection None = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Right">
       <MemberSignature Language="C#" Value="Right" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGestureDirection Right = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGestureDirection Right = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="Up">
       <MemberSignature Language="C#" Value="Up" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGestureDirection Up = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGestureDirection Up = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

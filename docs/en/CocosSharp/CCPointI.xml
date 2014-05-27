@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPointI" FullName="Cocos2D.CCPointI">
+<Type Name="CCPointI" FullName="CocosSharp.CCPointI">
   <TypeSignature Language="C#" Value="public struct CCPointI" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCPointI extends System.ValueType" />
   <AssemblyInfo>
@@ -34,8 +34,8 @@
       </Docs>
     </Member>
     <Member MemberName="Distance">
-      <MemberSignature Language="C#" Value="public int Distance (ref Cocos2D.CCPointI p);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Distance(valuetype Cocos2D.CCPointI p) cil managed" />
+      <MemberSignature Language="C#" Value="public int Distance (ref CocosSharp.CCPointI p);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Distance(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -44,7 +44,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCPointI&amp;" RefType="ref" />
+        <Parameter Name="p" Type="CocosSharp.CCPointI&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
@@ -54,8 +54,8 @@
       </Docs>
     </Member>
     <Member MemberName="Equals">
-      <MemberSignature Language="C#" Value="public bool Equals (ref Cocos2D.CCPointI p);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype Cocos2D.CCPointI p) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Equals (ref CocosSharp.CCPointI p);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -64,7 +64,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCPointI&amp;" RefType="ref" />
+        <Parameter Name="p" Type="CocosSharp.CCPointI&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
@@ -74,17 +74,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint op_Implicit (Cocos2D.CCPointI p);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCPoint op_Implicit(valuetype Cocos2D.CCPointI p) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Implicit (CocosSharp.CCPointI p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Implicit(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCPointI" />
+        <Parameter Name="p" Type="CocosSharp.CCPointI" />
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>

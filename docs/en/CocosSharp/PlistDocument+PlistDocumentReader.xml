@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="PlistDocument+PlistDocumentReader" FullName="Cocos2D.PlistDocument+PlistDocumentReader">
-  <TypeSignature Language="C#" Value="public class PlistDocument.PlistDocumentReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.PlistDocument&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit PlistDocument/PlistDocumentReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;class Cocos2D.PlistDocument&gt;" />
+<Type Name="PlistDocument+PlistDocumentReader" FullName="CocosSharp.PlistDocument+PlistDocumentReader">
+  <TypeSignature Language="C#" Value="public class PlistDocument.PlistDocumentReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.PlistDocument&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit PlistDocument/PlistDocumentReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;class CocosSharp.PlistDocument&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.PlistDocument&gt;</BaseTypeName>
+    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.PlistDocument&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Cocos2D.PlistDocument</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">CocosSharp.PlistDocument</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -32,18 +32,18 @@
       </Docs>
     </Member>
     <Member MemberName="Read">
-      <MemberSignature Language="C#" Value="protected override Cocos2D.PlistDocument Read (Microsoft.Xna.Framework.Content.ContentReader input, Cocos2D.PlistDocument existingInstance);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class Cocos2D.PlistDocument Read(class Microsoft.Xna.Framework.Content.ContentReader input, class Cocos2D.PlistDocument existingInstance) cil managed" />
+      <MemberSignature Language="C#" Value="protected override CocosSharp.PlistDocument Read (Microsoft.Xna.Framework.Content.ContentReader input, CocosSharp.PlistDocument existingInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class CocosSharp.PlistDocument Read(class Microsoft.Xna.Framework.Content.ContentReader input, class CocosSharp.PlistDocument existingInstance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.Xna.Framework.Content.ContentReader" />
-        <Parameter Name="existingInstance" Type="Cocos2D.PlistDocument" />
+        <Parameter Name="existingInstance" Type="CocosSharp.PlistDocument" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>
@@ -54,14 +54,14 @@
       </Docs>
     </Member>
     <Member MemberName="ReadValue">
-      <MemberSignature Language="C#" Value="protected Cocos2D.PlistObjectBase ReadValue (Microsoft.Xna.Framework.Content.ContentReader input);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Cocos2D.PlistObjectBase ReadValue(class Microsoft.Xna.Framework.Content.ContentReader input) cil managed" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.PlistObjectBase ReadValue (Microsoft.Xna.Framework.Content.ContentReader input);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class CocosSharp.PlistObjectBase ReadValue(class Microsoft.Xna.Framework.Content.ContentReader input) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistObjectBase</ReturnType>
+        <ReturnType>CocosSharp.PlistObjectBase</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.Xna.Framework.Content.ContentReader" />

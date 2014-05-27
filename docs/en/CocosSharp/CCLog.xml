@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLog" FullName="Cocos2D.CCLog">
+<Type Name="CCLog" FullName="CocosSharp.CCLog">
   <TypeSignature Language="C#" Value="public class CCLog" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLog extends System.Object" />
   <AssemblyInfo>

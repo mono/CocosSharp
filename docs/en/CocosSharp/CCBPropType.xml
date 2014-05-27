@@ -1,4 +1,4 @@
-<Type Name="CCBPropType" FullName="Cocos2D.CCBPropType">
+<Type Name="CCBPropType" FullName="CocosSharp.CCBPropType">
   <TypeSignature Language="C#" Value="public enum CCBPropType" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBPropType extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Animation">
       <MemberSignature Language="C#" Value="Animation" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Animation = int32(22)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Animation = int32(22)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Blendmode">
       <MemberSignature Language="C#" Value="Blendmode" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Blendmode = int32(16)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Blendmode = int32(16)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Block">
       <MemberSignature Language="C#" Value="Block" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Block = int32(21)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Block = int32(21)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="BlockCCControl">
       <MemberSignature Language="C#" Value="BlockCCControl" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType BlockCCControl = int32(25)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType BlockCCControl = int32(25)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="Byte">
       <MemberSignature Language="C#" Value="Byte" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Byte = int32(12)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Byte = int32(12)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="CCBFile">
       <MemberSignature Language="C#" Value="CCBFile" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType CCBFile = int32(23)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType CCBFile = int32(23)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,13 +99,13 @@
     </Member>
     <Member MemberName="Check">
       <MemberSignature Language="C#" Value="Check" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Check = int32(9)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Check = int32(9)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -113,13 +113,13 @@
     </Member>
     <Member MemberName="Color3">
       <MemberSignature Language="C#" Value="Color3" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Color3 = int32(13)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Color3 = int32(13)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -127,13 +127,13 @@
     </Member>
     <Member MemberName="Color4FVar">
       <MemberSignature Language="C#" Value="Color4FVar" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Color4FVar = int32(14)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Color4FVar = int32(14)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -141,13 +141,13 @@
     </Member>
     <Member MemberName="Degrees">
       <MemberSignature Language="C#" Value="Degrees" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Degrees = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Degrees = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -155,13 +155,13 @@
     </Member>
     <Member MemberName="Flip">
       <MemberSignature Language="C#" Value="Flip" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Flip = int32(15)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Flip = int32(15)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -169,13 +169,13 @@
     </Member>
     <Member MemberName="Float">
       <MemberSignature Language="C#" Value="Float" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Float = int32(7)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Float = int32(7)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -183,13 +183,13 @@
     </Member>
     <Member MemberName="FloatScale">
       <MemberSignature Language="C#" Value="FloatScale" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType FloatScale = int32(26)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType FloatScale = int32(26)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -197,13 +197,13 @@
     </Member>
     <Member MemberName="FloatVar">
       <MemberSignature Language="C#" Value="FloatVar" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType FloatVar = int32(8)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType FloatVar = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -211,13 +211,13 @@
     </Member>
     <Member MemberName="FntFile">
       <MemberSignature Language="C#" Value="FntFile" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType FntFile = int32(17)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType FntFile = int32(17)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -225,13 +225,13 @@
     </Member>
     <Member MemberName="FontTTF">
       <MemberSignature Language="C#" Value="FontTTF" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType FontTTF = int32(19)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType FontTTF = int32(19)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -239,13 +239,13 @@
     </Member>
     <Member MemberName="Integer">
       <MemberSignature Language="C#" Value="Integer" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Integer = int32(6)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Integer = int32(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -253,13 +253,13 @@
     </Member>
     <Member MemberName="IntegerLabeled">
       <MemberSignature Language="C#" Value="IntegerLabeled" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType IntegerLabeled = int32(20)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType IntegerLabeled = int32(20)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -267,13 +267,13 @@
     </Member>
     <Member MemberName="Point">
       <MemberSignature Language="C#" Value="Point" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Point = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Point = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -281,13 +281,13 @@
     </Member>
     <Member MemberName="PointLock">
       <MemberSignature Language="C#" Value="PointLock" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType PointLock = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType PointLock = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -295,13 +295,13 @@
     </Member>
     <Member MemberName="Position">
       <MemberSignature Language="C#" Value="Position" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Position = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Position = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -309,13 +309,13 @@
     </Member>
     <Member MemberName="ScaleLock">
       <MemberSignature Language="C#" Value="ScaleLock" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType ScaleLock = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType ScaleLock = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -323,13 +323,13 @@
     </Member>
     <Member MemberName="Size">
       <MemberSignature Language="C#" Value="Size" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Size = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Size = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -337,13 +337,13 @@
     </Member>
     <Member MemberName="SpriteFrame">
       <MemberSignature Language="C#" Value="SpriteFrame" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType SpriteFrame = int32(10)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType SpriteFrame = int32(10)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -351,13 +351,13 @@
     </Member>
     <Member MemberName="String">
       <MemberSignature Language="C#" Value="String" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType String = int32(24)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType String = int32(24)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -365,13 +365,13 @@
     </Member>
     <Member MemberName="Text">
       <MemberSignature Language="C#" Value="Text" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Text = int32(18)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Text = int32(18)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -379,13 +379,13 @@
     </Member>
     <Member MemberName="Texture">
       <MemberSignature Language="C#" Value="Texture" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCBPropType Texture = int32(11)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropType Texture = int32(11)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

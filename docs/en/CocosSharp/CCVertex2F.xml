@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCVertex2F" FullName="Cocos2D.CCVertex2F">
+<Type Name="CCVertex2F" FullName="CocosSharp.CCVertex2F">
   <TypeSignature Language="C#" Value="public struct CCVertex2F" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCVertex2F extends System.ValueType" />
   <AssemblyInfo>

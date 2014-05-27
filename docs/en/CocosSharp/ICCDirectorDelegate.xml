@@ -1,4 +1,4 @@
-<Type Name="ICCDirectorDelegate" FullName="Cocos2D.ICCDirectorDelegate">
+<Type Name="ICCDirectorDelegate" FullName="CocosSharp.ICCDirectorDelegate">
   <TypeSignature Language="C#" Value="public interface ICCDirectorDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCDirectorDelegate" />
   <AssemblyInfo>

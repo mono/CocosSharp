@@ -1,4 +1,4 @@
-<Type Name="CCVerticalTextAlignment" FullName="Cocos2D.CCVerticalTextAlignment">
+<Type Name="CCVerticalTextAlignment" FullName="CocosSharp.CCVerticalTextAlignment">
   <TypeSignature Language="C#" Value="public enum CCVerticalTextAlignment" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCVerticalTextAlignment extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Bottom">
       <MemberSignature Language="C#" Value="Bottom" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCVerticalTextAlignment Bottom = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Bottom = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVerticalTextAlignment</ReturnType>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Center">
       <MemberSignature Language="C#" Value="Center" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCVerticalTextAlignment Center = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Center = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVerticalTextAlignment</ReturnType>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Top">
       <MemberSignature Language="C#" Value="Top" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCVerticalTextAlignment Top = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Top = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVerticalTextAlignment</ReturnType>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

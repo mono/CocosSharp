@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCCallFuncN" FullName="Cocos2D.CCCallFuncN">
-  <TypeSignature Language="C#" Value="public class CCCallFuncN : Cocos2D.CCCallFunc" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncN extends Cocos2D.CCCallFunc" />
+<Type Name="CCCallFuncN" FullName="CocosSharp.CCCallFuncN">
+  <TypeSignature Language="C#" Value="public class CCCallFuncN : CocosSharp.CCCallFunc" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncN extends CocosSharp.CCCallFunc" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCCallFunc</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCCallFunc</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCallFuncN (Cocos2D.CCCallFuncN callFuncN);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCCallFuncN callFuncN) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCallFuncN (CocosSharp.CCCallFuncN callFuncN);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCallFuncN callFuncN) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="callFuncN" Type="Cocos2D.CCCallFuncN" />
+        <Parameter Name="callFuncN" Type="CocosSharp.CCCallFuncN" />
       </Parameters>
       <Docs>
         <param name="callFuncN">To be added.</param>
@@ -47,14 +47,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCallFuncN (Action&lt;Cocos2D.CCNode&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;class Cocos2D.CCNode&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCallFuncN (Action&lt;CocosSharp.CCNode&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;class CocosSharp.CCNode&gt; selector) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="selector" Type="System.Action&lt;Cocos2D.CCNode&gt;" />
+        <Parameter Name="selector" Type="System.Action&lt;CocosSharp.CCNode&gt;" />
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
@@ -63,8 +63,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -73,7 +73,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -99,8 +99,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
-      <MemberSignature Language="C#" Value="public bool InitWithTarget (Action&lt;Cocos2D.CCNode&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTarget(class System.Action`1&lt;class Cocos2D.CCNode&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithTarget (Action&lt;CocosSharp.CCNode&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTarget(class System.Action`1&lt;class CocosSharp.CCNode&gt; selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -109,7 +109,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="selector" Type="System.Action&lt;Cocos2D.CCNode&gt;" />
+        <Parameter Name="selector" Type="System.Action&lt;CocosSharp.CCNode&gt;" />
       </Parameters>
       <Docs>
         <param name="selector">To be added.</param>
@@ -123,9 +123,9 @@
           </para>
           <verbatim>initializes the action with the callback 
 </verbatim>
-          <para>typedef void (Object::<emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>);  </para>
-          <emphasis>SEL_CallFuncN)(<see cref="T:Cocos2D.CCNode" /></emphasis>
-          <see cref="T:Cocos2D.CCNode" />
+          <para>typedef void (Object::<emphasis>SEL_CallFuncN)(<see cref="T:CocosSharp.CCNode" /></emphasis>);  </para>
+          <emphasis>SEL_CallFuncN)(<see cref="T:CocosSharp.CCNode" /></emphasis>
+          <see cref="T:CocosSharp.CCNode" />
         </remarks>
       </Docs>
     </Member>

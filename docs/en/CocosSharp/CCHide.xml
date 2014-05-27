@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCHide" FullName="Cocos2D.CCHide">
-  <TypeSignature Language="C#" Value="public class CCHide : Cocos2D.CCActionInstant" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCHide extends Cocos2D.CCActionInstant" />
+<Type Name="CCHide" FullName="CocosSharp.CCHide">
+  <TypeSignature Language="C#" Value="public class CCHide : CocosSharp.CCActionInstant" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCHide extends CocosSharp.CCActionInstant" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInstant</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInstant</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCHide (Cocos2D.CCHide hide);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCHide hide) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCHide (CocosSharp.CCHide hide);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCHide hide) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="hide" Type="Cocos2D.CCHide" />
+        <Parameter Name="hide" Type="CocosSharp.CCHide" />
       </Parameters>
       <Docs>
         <param name="hide">To be added.</param>
@@ -47,8 +47,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -57,7 +57,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -67,14 +67,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -84,8 +84,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -94,7 +94,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

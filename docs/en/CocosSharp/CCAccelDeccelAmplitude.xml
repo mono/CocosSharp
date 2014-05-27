@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAccelDeccelAmplitude" FullName="Cocos2D.CCAccelDeccelAmplitude">
-  <TypeSignature Language="C#" Value="public class CCAccelDeccelAmplitude : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAccelDeccelAmplitude extends Cocos2D.CCActionInterval" />
+<Type Name="CCAccelDeccelAmplitude" FullName="CocosSharp.CCAccelDeccelAmplitude">
+  <TypeSignature Language="C#" Value="public class CCAccelDeccelAmplitude : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAccelDeccelAmplitude extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAccelDeccelAmplitude (Cocos2D.CCAction pAction, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAction pAction, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAccelDeccelAmplitude (CocosSharp.CCAction pAction, float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction pAction, float32 duration) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pAction" Type="Cocos2D.CCAction" />
+        <Parameter Name="pAction" Type="CocosSharp.CCAction" />
         <Parameter Name="duration" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -36,8 +36,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithAction">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithAction (Cocos2D.CCAction pAction, float duration);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithAction(class Cocos2D.CCAction pAction, float32 duration) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithAction (CocosSharp.CCAction pAction, float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithAction(class CocosSharp.CCAction pAction, float32 duration) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -46,7 +46,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pAction" Type="Cocos2D.CCAction" />
+        <Parameter Name="pAction" Type="CocosSharp.CCAction" />
         <Parameter Name="duration" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -73,14 +73,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOther">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCActionInterval m_pOther;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCActionInterval m_pOther" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCActionInterval m_pOther;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCActionInterval m_pOther" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -104,14 +104,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -121,8 +121,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -131,7 +131,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

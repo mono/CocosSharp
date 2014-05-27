@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPrimitiveBatch" FullName="Cocos2D.CCPrimitiveBatch">
+<Type Name="CCPrimitiveBatch" FullName="CocosSharp.CCPrimitiveBatch">
   <TypeSignature Language="C#" Value="public class CCPrimitiveBatch : IDisposable" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPrimitiveBatch extends System.Object implements class System.IDisposable" />
   <AssemblyInfo>

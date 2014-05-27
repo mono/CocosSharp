@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCProgressTo" FullName="Cocos2D.CCProgressTo">
-  <TypeSignature Language="C#" Value="public class CCProgressTo : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTo extends Cocos2D.CCActionInterval" />
+<Type Name="CCProgressTo" FullName="CocosSharp.CCProgressTo">
+  <TypeSignature Language="C#" Value="public class CCProgressTo : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTo extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -59,7 +59,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -121,8 +121,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -131,7 +131,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

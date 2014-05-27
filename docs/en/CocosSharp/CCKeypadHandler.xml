@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCKeypadHandler" FullName="Cocos2D.CCKeypadHandler">
+<Type Name="CCKeypadHandler" FullName="CocosSharp.CCKeypadHandler">
   <TypeSignature Language="C#" Value="public class CCKeypadHandler" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadHandler extends System.Object" />
   <AssemblyInfo>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCKeypadDelegate Delegate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCKeypadDelegate Delegate" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCKeypadDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCKeypadDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCKeypadDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCKeypadDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>delegate </summary>
@@ -47,17 +47,17 @@
       </Docs>
     </Member>
     <Member MemberName="HandlerWithDelegate">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCKeypadHandler HandlerWithDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCKeypadHandler HandlerWithDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCKeypadHandler HandlerWithDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCKeypadHandler HandlerWithDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCKeypadHandler</ReturnType>
+        <ReturnType>CocosSharp.CCKeypadHandler</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -67,8 +67,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -77,7 +77,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -87,14 +87,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">
-      <MemberSignature Language="C#" Value="protected Cocos2D.ICCKeypadDelegate m_pDelegate;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.ICCKeypadDelegate m_pDelegate" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCKeypadDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCKeypadDelegate m_pDelegate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCKeypadDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCKeypadDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

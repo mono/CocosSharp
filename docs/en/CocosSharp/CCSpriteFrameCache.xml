@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSpriteFrameCache" FullName="Cocos2D.CCSpriteFrameCache">
+<Type Name="CCSpriteFrameCache" FullName="CocosSharp.CCSpriteFrameCache">
   <TypeSignature Language="C#" Value="public class CCSpriteFrameCache" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteFrameCache extends System.Object" />
   <AssemblyInfo>
@@ -31,8 +31,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFrame">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrame (Cocos2D.CCSpriteFrame pobFrame, string pszFrameName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class Cocos2D.CCSpriteFrame pobFrame, string pszFrameName) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCSpriteFrame pobFrame, string pszFrameName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCSpriteFrame pobFrame, string pszFrameName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -41,7 +41,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="pobFrame" Type="CocosSharp.CCSpriteFrame" />
         <Parameter Name="pszFrameName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFramesWithDictionary">
-      <MemberSignature Language="C#" Value="public void AddSpriteFramesWithDictionary (Cocos2D.PlistDictionary pobDictionary, Cocos2D.CCTexture2D pobTexture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFramesWithDictionary(class Cocos2D.PlistDictionary pobDictionary, class Cocos2D.CCTexture2D pobTexture) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddSpriteFramesWithDictionary (CocosSharp.PlistDictionary pobDictionary, CocosSharp.CCTexture2D pobTexture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFramesWithDictionary(class CocosSharp.PlistDictionary pobDictionary, class CocosSharp.CCTexture2D pobTexture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,8 +62,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobDictionary" Type="Cocos2D.PlistDictionary" />
-        <Parameter Name="pobTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pobDictionary" Type="CocosSharp.PlistDictionary" />
+        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="pobDictionary">To be added.</param>
@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFramesWithDictionary">
-      <MemberSignature Language="C#" Value="public void AddSpriteFramesWithDictionary (Cocos2D.PlistDictionary pobDictionary, Cocos2D.CCTexture2D pobTexture, string framePrefix);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFramesWithDictionary(class Cocos2D.PlistDictionary pobDictionary, class Cocos2D.CCTexture2D pobTexture, string framePrefix) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddSpriteFramesWithDictionary (CocosSharp.PlistDictionary pobDictionary, CocosSharp.CCTexture2D pobTexture, string framePrefix);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFramesWithDictionary(class CocosSharp.PlistDictionary pobDictionary, class CocosSharp.CCTexture2D pobTexture, string framePrefix) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,8 +83,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobDictionary" Type="Cocos2D.PlistDictionary" />
-        <Parameter Name="pobTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pobDictionary" Type="CocosSharp.PlistDictionary" />
+        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="framePrefix" Type="System.String" />
       </Parameters>
       <Docs>
@@ -116,8 +116,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFramesWithFile">
-      <MemberSignature Language="C#" Value="public string AddSpriteFramesWithFile (string pszPlist, Cocos2D.CCTexture2D pobTexture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string AddSpriteFramesWithFile(string pszPlist, class Cocos2D.CCTexture2D pobTexture) cil managed" />
+      <MemberSignature Language="C#" Value="public string AddSpriteFramesWithFile (string pszPlist, CocosSharp.CCTexture2D pobTexture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string AddSpriteFramesWithFile(string pszPlist, class CocosSharp.CCTexture2D pobTexture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -127,7 +127,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszPlist" Type="System.String" />
-        <Parameter Name="pobTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="pszPlist">To be added.</param>
@@ -160,8 +160,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFramesWithFile">
-      <MemberSignature Language="C#" Value="public string AddSpriteFramesWithFile (string pszPlist, Cocos2D.CCTexture2D pobTexture, string framePrefix);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string AddSpriteFramesWithFile(string pszPlist, class Cocos2D.CCTexture2D pobTexture, string framePrefix) cil managed" />
+      <MemberSignature Language="C#" Value="public string AddSpriteFramesWithFile (string pszPlist, CocosSharp.CCTexture2D pobTexture, string framePrefix);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string AddSpriteFramesWithFile(string pszPlist, class CocosSharp.CCTexture2D pobTexture, string framePrefix) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -171,7 +171,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszPlist" Type="System.String" />
-        <Parameter Name="pobTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="framePrefix" Type="System.String" />
       </Parameters>
       <Docs>
@@ -241,14 +241,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pSpriteFrames">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,Cocos2D.CCSpriteFrame&gt; m_pSpriteFrames;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, class Cocos2D.CCSpriteFrame&gt; m_pSpriteFrames" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCSpriteFrame&gt; m_pSpriteFrames;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCSpriteFrame&gt; m_pSpriteFrames" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,Cocos2D.CCSpriteFrame&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCSpriteFrame&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -271,14 +271,14 @@
       </Docs>
     </Member>
     <Member MemberName="pSharedSpriteFrameCache">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSpriteFrameCache pSharedSpriteFrameCache;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class Cocos2D.CCSpriteFrameCache pSharedSpriteFrameCache" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFrameCache pSharedSpriteFrameCache;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class CocosSharp.CCSpriteFrameCache pSharedSpriteFrameCache" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrameCache</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrameCache</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -337,8 +337,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveSpriteFramesFromDictionary">
-      <MemberSignature Language="C#" Value="public void RemoveSpriteFramesFromDictionary (Cocos2D.PlistDictionary dictionary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFramesFromDictionary(class Cocos2D.PlistDictionary dictionary) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveSpriteFramesFromDictionary (CocosSharp.PlistDictionary dictionary);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFramesFromDictionary(class CocosSharp.PlistDictionary dictionary) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -347,7 +347,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dictionary" Type="Cocos2D.PlistDictionary" />
+        <Parameter Name="dictionary" Type="CocosSharp.PlistDictionary" />
       </Parameters>
       <Docs>
         <param name="dictionary">To be added.</param>
@@ -375,8 +375,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveSpriteFramesFromTexture">
-      <MemberSignature Language="C#" Value="public void RemoveSpriteFramesFromTexture (Cocos2D.CCTexture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFramesFromTexture(class Cocos2D.CCTexture2D texture) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveSpriteFramesFromTexture (CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFramesFromTexture(class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -385,7 +385,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
@@ -410,14 +410,14 @@
       </Docs>
     </Member>
     <Member MemberName="SharedSpriteFrameCache">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSpriteFrameCache SharedSpriteFrameCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCSpriteFrameCache SharedSpriteFrameCache" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFrameCache SharedSpriteFrameCache { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFrameCache SharedSpriteFrameCache" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrameCache</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrameCache</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -426,14 +426,14 @@
       </Docs>
     </Member>
     <Member MemberName="SpriteFrameByName">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSpriteFrame SpriteFrameByName (string pszName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCSpriteFrame SpriteFrameByName(string pszName) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrame SpriteFrameByName (string pszName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCSpriteFrame SpriteFrameByName(string pszName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszName" Type="System.String" />

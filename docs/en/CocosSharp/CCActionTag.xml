@@ -1,4 +1,4 @@
-<Type Name="CCActionTag" FullName="Cocos2D.CCActionTag">
+<Type Name="CCActionTag" FullName="CocosSharp.CCActionTag">
   <TypeSignature Language="C#" Value="public enum CCActionTag" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCActionTag extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Invalid">
       <MemberSignature Language="C#" Value="Invalid" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCActionTag Invalid = int32(-1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCActionTag Invalid = int32(-1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCActionTag</ReturnType>
+        <ReturnType>CocosSharp.CCActionTag</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

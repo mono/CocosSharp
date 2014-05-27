@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCEaseElasticInOut" FullName="Cocos2D.CCEaseElasticInOut">
-  <TypeSignature Language="C#" Value="public class CCEaseElasticInOut : Cocos2D.CCEaseElastic" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseElasticInOut extends Cocos2D.CCEaseElastic" />
+<Type Name="CCEaseElasticInOut" FullName="CocosSharp.CCEaseElasticInOut">
+  <TypeSignature Language="C#" Value="public class CCEaseElasticInOut : CocosSharp.CCEaseElastic" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseElasticInOut extends CocosSharp.CCEaseElastic" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCEaseElastic</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCEaseElastic</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseElasticInOut (Cocos2D.CCActionInterval pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCActionInterval pAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseElasticInOut (CocosSharp.CCActionInterval pAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pAction" Type="Cocos2D.CCActionInterval" />
+        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
       </Parameters>
       <Docs>
         <param name="pAction">To be added.</param>
@@ -34,14 +34,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCEaseElasticInOut (Cocos2D.CCEaseElasticInOut easeElasticInOut);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCEaseElasticInOut easeElasticInOut) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCEaseElasticInOut (CocosSharp.CCEaseElasticInOut easeElasticInOut);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCEaseElasticInOut easeElasticInOut) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="easeElasticInOut" Type="Cocos2D.CCEaseElasticInOut" />
+        <Parameter Name="easeElasticInOut" Type="CocosSharp.CCEaseElasticInOut" />
       </Parameters>
       <Docs>
         <param name="easeElasticInOut">To be added.</param>
@@ -50,14 +50,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseElasticInOut (Cocos2D.CCActionInterval pAction, float fPeriod);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCActionInterval pAction, float32 fPeriod) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseElasticInOut (CocosSharp.CCActionInterval pAction, float fPeriod);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction, float32 fPeriod) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pAction" Type="Cocos2D.CCActionInterval" />
+        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
         <Parameter Name="fPeriod" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -68,8 +68,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -78,7 +78,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -88,14 +88,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

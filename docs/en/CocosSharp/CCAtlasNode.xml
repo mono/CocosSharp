@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAtlasNode" FullName="Cocos2D.CCAtlasNode">
-  <TypeSignature Language="C#" Value="public class CCAtlasNode : Cocos2D.CCNodeRGBA, Cocos2D.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends Cocos2D.CCNodeRGBA implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
+<Type Name="CCAtlasNode" FullName="CocosSharp.CCAtlasNode">
+  <TypeSignature Language="C#" Value="public class CCAtlasNode : CocosSharp.CCNodeRGBA, CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -19,13 +19,13 @@
       <para> is a subclass of  that implements the RGBAProtocol and TextureProtocol protocol. </para>
     </summary>
     <remarks>
-      <para>It knows how to render a <see cref="T:Cocos2D.CCTextureAtlas" /> object. If you are going to render a <see cref="T:Cocos2D.CCTextureAtlas" /> consider subclassing <see cref="T:Cocos2D.CCAtlasNode" /> (or a subclass of <see cref="T:Cocos2D.CCAtlasNode" />)</para>
-      <see cref="T:Cocos2D.CCTextureAtlas" />
-      <see cref="T:Cocos2D.CCTextureAtlas" />
-      <see cref="T:Cocos2D.CCAtlasNode" />
-      <see cref="T:Cocos2D.CCAtlasNode" />
-      <para>All features from <see cref="T:Cocos2D.CCNode" /> are valid, plus the following features:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCNode" />
+      <para>It knows how to render a <see cref="T:CocosSharp.CCTextureAtlas" /> object. If you are going to render a <see cref="T:CocosSharp.CCTextureAtlas" /> consider subclassing <see cref="T:CocosSharp.CCAtlasNode" /> (or a subclass of <see cref="T:CocosSharp.CCAtlasNode" />)</para>
+      <see cref="T:CocosSharp.CCTextureAtlas" />
+      <see cref="T:CocosSharp.CCTextureAtlas" />
+      <see cref="T:CocosSharp.CCAtlasNode" />
+      <see cref="T:CocosSharp.CCAtlasNode" />
+      <para>All features from <see cref="T:CocosSharp.CCNode" /> are valid, plus the following features:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCNode" />
       <list type="bullet" />
       <item>
         <description>opacity and RGB colors </description>
@@ -35,14 +35,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAtlasNode (Cocos2D.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTexture2D texture, int32 tileWidth, int32 tileHeight, int32 itemsToRender) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAtlasNode (CocosSharp.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, int32 tileWidth, int32 tileHeight, int32 itemsToRender) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="tileWidth" Type="System.Int32" />
         <Parameter Name="tileHeight" Type="System.Int32" />
         <Parameter Name="itemsToRender" Type="System.Int32" />
@@ -79,14 +79,14 @@
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setBlendFunc </summary>
@@ -95,14 +95,14 @@
       </Docs>
     </Member>
     <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCColor3B Color { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Changes the color with R,G,B bytes</summary>
@@ -149,8 +149,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
-      <MemberSignature Language="C#" Value="public bool InitWithTexture (Cocos2D.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class Cocos2D.CCTexture2D texture, int32 tileWidth, int32 tileHeight, int32 itemsToRender) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithTexture (CocosSharp.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class CocosSharp.CCTexture2D texture, int32 tileWidth, int32 tileHeight, int32 itemsToRender) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -159,7 +159,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="tileWidth" Type="System.Int32" />
         <Parameter Name="tileHeight" Type="System.Int32" />
         <Parameter Name="itemsToRender" Type="System.Int32" />
@@ -253,14 +253,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTextureAtlas">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTextureAtlas m_pTextureAtlas;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTextureAtlas m_pTextureAtlas" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTextureAtlas m_pTextureAtlas;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTextureAtlas m_pTextureAtlas" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -268,14 +268,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tBlendFunc">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCBlendFunc m_tBlendFunc;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCBlendFunc m_tBlendFunc" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCBlendFunc m_tBlendFunc;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCBlendFunc m_tBlendFunc" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -283,14 +283,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tColorUnmodified">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tColorUnmodified;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tColorUnmodified" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_tColorUnmodified;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_tColorUnmodified" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -427,14 +427,14 @@
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>sets a new texture. it will be retained </summary>
@@ -443,14 +443,14 @@
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTextureAtlas TextureAtlas { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTextureAtlas TextureAtlas" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureAtlas TextureAtlas" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTextureAtlas </summary>

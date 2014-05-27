@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTMXLayerInfo" FullName="Cocos2D.CCTMXLayerInfo">
+<Type Name="CCTMXLayerInfo" FullName="CocosSharp.CCTMXLayerInfo">
   <TypeSignature Language="C#" Value="public class CCTMXLayerInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayerInfo extends System.Object" />
   <AssemblyInfo>
@@ -53,14 +53,14 @@
       </Docs>
     </Member>
     <Member MemberName="LayerSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize LayerSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize LayerSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize LayerSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize LayerSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -117,14 +117,14 @@
       </Docs>
     </Member>
     <Member MemberName="Offset">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Offset { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Offset" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Offset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Offset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

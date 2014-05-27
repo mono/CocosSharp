@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPlace" FullName="Cocos2D.CCPlace">
-  <TypeSignature Language="C#" Value="public class CCPlace : Cocos2D.CCActionInstant" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPlace extends Cocos2D.CCActionInstant" />
+<Type Name="CCPlace" FullName="CocosSharp.CCPlace">
+  <TypeSignature Language="C#" Value="public class CCPlace : CocosSharp.CCActionInstant" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPlace extends CocosSharp.CCActionInstant" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInstant</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInstant</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCPlace (Cocos2D.CCPlace place);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCPlace place) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCPlace (CocosSharp.CCPlace place);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCPlace place) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="place" Type="Cocos2D.CCPlace" />
+        <Parameter Name="place" Type="CocosSharp.CCPlace" />
       </Parameters>
       <Docs>
         <param name="place">To be added.</param>
@@ -47,14 +47,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCPlace (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public CCPlace (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -63,8 +63,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -73,7 +73,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -83,8 +83,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithPosition">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithPosition (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithPosition(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithPosition (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithPosition(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -93,7 +93,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -103,8 +103,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -113,7 +113,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

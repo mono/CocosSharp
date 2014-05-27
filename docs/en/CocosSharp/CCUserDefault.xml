@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCUserDefault" FullName="Cocos2D.CCUserDefault">
+<Type Name="CCUserDefault" FullName="CocosSharp.CCUserDefault">
   <TypeSignature Language="C#" Value="public class CCUserDefault" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
   <AssemblyInfo>
@@ -14,8 +14,8 @@
     <summary> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</summary>
     <remarks>
       <para>
-        <see cref="T:Cocos2D.CCUserDefault" /> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</para>
-      <see cref="T:Cocos2D.CCUserDefault" />
+        <see cref="T:CocosSharp.CCUserDefault" /> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</para>
+      <see cref="T:CocosSharp.CCUserDefault" />
       <para>It supports the following base types: bool, int, float, double, string </para>
     </remarks>
   </Docs>
@@ -330,14 +330,14 @@
       </Docs>
     </Member>
     <Member MemberName="SharedUserDefault">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCUserDefault SharedUserDefault { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCUserDefault SharedUserDefault" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCUserDefault SharedUserDefault { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCUserDefault SharedUserDefault" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCUserDefault</ReturnType>
+        <ReturnType>CocosSharp.CCUserDefault</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>deprecated. Use getInstace() instead </summary>

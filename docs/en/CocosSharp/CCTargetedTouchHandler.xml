@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTargetedTouchHandler" FullName="Cocos2D.CCTargetedTouchHandler">
-  <TypeSignature Language="C#" Value="public class CCTargetedTouchHandler : Cocos2D.CCTouchHandler" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedTouchHandler extends Cocos2D.CCTouchHandler" />
+<Type Name="CCTargetedTouchHandler" FullName="CocosSharp.CCTargetedTouchHandler">
+  <TypeSignature Language="C#" Value="public class CCTargetedTouchHandler : CocosSharp.CCTouchHandler" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedTouchHandler extends CocosSharp.CCTouchHandler" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTouchHandler</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTouchHandler</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -29,14 +29,14 @@
       </Docs>
     </Member>
     <Member MemberName="ClaimedTouches">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; ClaimedTouches { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; ClaimedTouches" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; ClaimedTouches { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; ClaimedTouches" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>MutableSet that contains the claimed touches </summary>
@@ -45,17 +45,17 @@
       </Docs>
     </Member>
     <Member MemberName="HandlerWithDelegate">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTargetedTouchHandler HandlerWithDelegate (Cocos2D.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallow);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTargetedTouchHandler HandlerWithDelegate(class Cocos2D.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallow) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTargetedTouchHandler HandlerWithDelegate (CocosSharp.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallow);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTargetedTouchHandler HandlerWithDelegate(class CocosSharp.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallow) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTargetedTouchHandler</ReturnType>
+        <ReturnType>CocosSharp.CCTargetedTouchHandler</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTargetedTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTargetedTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
         <Parameter Name="bSwallow" Type="System.Boolean" />
       </Parameters>
@@ -69,8 +69,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDelegate">
-      <MemberSignature Language="C#" Value="public bool InitWithDelegate (Cocos2D.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallow);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDelegate(class Cocos2D.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallow) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithDelegate (CocosSharp.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallow);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDelegate(class CocosSharp.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallow) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -79,7 +79,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTargetedTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTargetedTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
         <Parameter Name="bSwallow" Type="System.Boolean" />
       </Parameters>
@@ -124,14 +124,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pClaimedTouches">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; m_pClaimedTouches;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; m_pClaimedTouches" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; m_pClaimedTouches;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; m_pClaimedTouches" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

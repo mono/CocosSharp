@@ -1,4 +1,4 @@
-<Type Name="CCTMXProperty" FullName="Cocos2D.CCTMXProperty">
+<Type Name="CCTMXProperty" FullName="CocosSharp.CCTMXProperty">
   <TypeSignature Language="C#" Value="public enum CCTMXProperty" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTMXProperty extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Layer">
       <MemberSignature Language="C#" Value="Layer" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty Layer = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Layer = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Map">
       <MemberSignature Language="C#" Value="Map" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty Map = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Map = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="None">
       <MemberSignature Language="C#" Value="None" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty None = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty None = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Object">
       <MemberSignature Language="C#" Value="Object" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty Object = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Object = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="ObjectGroup">
       <MemberSignature Language="C#" Value="ObjectGroup" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty ObjectGroup = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty ObjectGroup = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="Tile">
       <MemberSignature Language="C#" Value="Tile" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTMXProperty Tile = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Tile = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXProperty</ReturnType>
+        <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

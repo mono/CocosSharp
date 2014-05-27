@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCGrid3D" FullName="Cocos2D.CCGrid3D">
-  <TypeSignature Language="C#" Value="public class CCGrid3D : Cocos2D.CCGridBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrid3D extends Cocos2D.CCGridBase" />
+<Type Name="CCGrid3D" FullName="CocosSharp.CCGrid3D">
+  <TypeSignature Language="C#" Value="public class CCGrid3D : CocosSharp.CCGridBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrid3D extends CocosSharp.CCGridBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCGridBase</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCGridBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
@@ -32,15 +32,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (Cocos2D.CCGridSize gridSize, Cocos2D.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCSize size) cil managed" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="size" Type="Cocos2D.CCSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
@@ -50,15 +50,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (Cocos2D.CCGridSize gridSize, Cocos2D.CCTexture2D pTexture, bool bFlipped);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCGridSize gridSize, class Cocos2D.CCTexture2D pTexture, bool bFlipped) cil managed" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D pTexture, bool bFlipped);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D pTexture, bool bFlipped) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="pTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="pTexture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="bFlipped" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -117,14 +117,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOriginalVertices">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCVertex3F[] m_pOriginalVertices;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCVertex3F[] m_pOriginalVertices" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCVertex3F[] m_pOriginalVertices;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCVertex3F[] m_pOriginalVertices" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex3F[]</ReturnType>
+        <ReturnType>CocosSharp.CCVertex3F[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -132,17 +132,17 @@
       </Docs>
     </Member>
     <Member MemberName="OriginalVertex">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCVertex3F OriginalVertex (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCVertex3F OriginalVertex(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F OriginalVertex (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F OriginalVertex(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex3F</ReturnType>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -168,8 +168,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetVertex">
-      <MemberSignature Language="C#" Value="public void SetVertex (Cocos2D.CCGridSize pos, ref Cocos2D.CCVertex3F vertex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetVertex(valuetype Cocos2D.CCGridSize pos, valuetype Cocos2D.CCVertex3F vertex) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetVertex (CocosSharp.CCGridSize pos, ref CocosSharp.CCVertex3F vertex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetVertex(valuetype CocosSharp.CCGridSize pos, valuetype CocosSharp.CCVertex3F vertex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -178,8 +178,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="vertex" Type="Cocos2D.CCVertex3F&amp;" RefType="ref" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="vertex" Type="CocosSharp.CCVertex3F&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -189,17 +189,17 @@
       </Docs>
     </Member>
     <Member MemberName="Vertex">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCVertex3F Vertex (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCVertex3F Vertex(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F Vertex (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F Vertex(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex3F</ReturnType>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>

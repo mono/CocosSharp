@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCMenuItemFont" FullName="Cocos2D.CCMenuItemFont">
-  <TypeSignature Language="C#" Value="public class CCMenuItemFont : Cocos2D.CCMenuItemLabel" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends Cocos2D.CCMenuItemLabel" />
+<Type Name="CCMenuItemFont" FullName="CocosSharp.CCMenuItemFont">
+  <TypeSignature Language="C#" Value="public class CCMenuItemFont : CocosSharp.CCMenuItemLabel" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends CocosSharp.CCMenuItemLabel" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCMenuItemLabel</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCMenuItemLabel</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

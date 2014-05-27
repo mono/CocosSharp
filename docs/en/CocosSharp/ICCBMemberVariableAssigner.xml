@@ -1,4 +1,4 @@
-<Type Name="ICCBMemberVariableAssigner" FullName="Cocos2D.ICCBMemberVariableAssigner">
+<Type Name="ICCBMemberVariableAssigner" FullName="CocosSharp.ICCBMemberVariableAssigner">
   <TypeSignature Language="C#" Value="public interface ICCBMemberVariableAssigner" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBMemberVariableAssigner" />
   <AssemblyInfo>
@@ -12,8 +12,8 @@
   </Docs>
   <Members>
     <Member MemberName="OnAssignCCBMemberVariable">
-      <MemberSignature Language="C#" Value="public bool OnAssignCCBMemberVariable (object target, string memberVariableName, Cocos2D.CCNode node);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBMemberVariable(object target, string memberVariableName, class Cocos2D.CCNode node) cil managed" />
+      <MemberSignature Language="C#" Value="public bool OnAssignCCBMemberVariable (object target, string memberVariableName, CocosSharp.CCNode node);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBMemberVariable(object target, string memberVariableName, class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -24,7 +24,7 @@
       <Parameters>
         <Parameter Name="target" Type="System.Object" />
         <Parameter Name="memberVariableName" Type="System.String" />
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

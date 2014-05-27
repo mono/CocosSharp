@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFocusManager" FullName="Cocos2D.CCFocusManager">
+<Type Name="CCFocusManager" FullName="CocosSharp.CCFocusManager">
   <TypeSignature Language="C#" Value="public class CCFocusManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFocusManager extends System.Object" />
   <AssemblyInfo>
@@ -16,8 +16,8 @@
   </Docs>
   <Members>
     <Member MemberName="Add">
-      <MemberSignature Language="C#" Value="public void Add (Cocos2D.ICCFocusable f);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class Cocos2D.ICCFocusable f) cil managed" />
+      <MemberSignature Language="C#" Value="public void Add (CocosSharp.ICCFocusable f);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Add(class CocosSharp.ICCFocusable f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -26,7 +26,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="f" Type="Cocos2D.ICCFocusable" />
+        <Parameter Name="f" Type="CocosSharp.ICCFocusable" />
       </Parameters>
       <Docs>
         <param name="f">To be added.</param>
@@ -83,14 +83,14 @@
       </Docs>
     </Member>
     <Member MemberName="Instance">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCFocusManager Instance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCFocusManager Instance" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCFocusManager Instance { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCFocusManager Instance" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFocusManager</ReturnType>
+        <ReturnType>CocosSharp.CCFocusManager</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,14 +99,14 @@
       </Docs>
     </Member>
     <Member MemberName="ItemWithFocus">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCFocusable ItemWithFocus { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCFocusable ItemWithFocus" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCFocusable ItemWithFocus { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCFocusable ItemWithFocus" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCFocusable</ReturnType>
+        <ReturnType>CocosSharp.ICCFocusable</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -130,14 +130,14 @@
       </Docs>
     </Member>
     <Member MemberName="OnFocusChanged">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCFocusChangeDelegate OnFocusChanged;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCFocusChangeDelegate OnFocusChanged" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCFocusChangeDelegate OnFocusChanged;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCFocusChangeDelegate OnFocusChanged" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFocusChangeDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCFocusChangeDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -145,8 +145,8 @@
       </Docs>
     </Member>
     <Member MemberName="Remove">
-      <MemberSignature Language="C#" Value="public void Remove (Cocos2D.ICCFocusable f);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Remove(class Cocos2D.ICCFocusable f) cil managed" />
+      <MemberSignature Language="C#" Value="public void Remove (CocosSharp.ICCFocusable f);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Remove(class CocosSharp.ICCFocusable f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -155,7 +155,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="f" Type="Cocos2D.ICCFocusable" />
+        <Parameter Name="f" Type="CocosSharp.ICCFocusable" />
       </Parameters>
       <Docs>
         <param name="f">To be added.</param>

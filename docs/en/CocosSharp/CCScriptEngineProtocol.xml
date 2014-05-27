@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCScriptEngineProtocol" FullName="Cocos2D.CCScriptEngineProtocol">
+<Type Name="CCScriptEngineProtocol" FullName="CocosSharp.CCScriptEngineProtocol">
   <TypeSignature Language="C#" Value="public class CCScriptEngineProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScriptEngineProtocol extends System.Object" />
   <AssemblyInfo>
@@ -91,8 +91,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExecuteCallFuncN">
-      <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncN (string pszFuncName, Cocos2D.CCNode node);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncN(string pszFuncName, class Cocos2D.CCNode node) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncN (string pszFuncName, CocosSharp.CCNode node);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncN(string pszFuncName, class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -102,7 +102,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszFuncName" Type="System.String" />
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="pszFuncName">To be added.</param>
@@ -113,8 +113,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExecuteCallFuncNd">
-      <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncNd (string pszFuncName, Cocos2D.CCNode node, object pData);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncNd(string pszFuncName, class Cocos2D.CCNode node, object pData) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncNd (string pszFuncName, CocosSharp.CCNode node, object pData);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncNd(string pszFuncName, class CocosSharp.CCNode node, object pData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -124,7 +124,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszFuncName" Type="System.String" />
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
         <Parameter Name="pData" Type="System.Object" />
       </Parameters>
       <Docs>
@@ -223,8 +223,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExecuteTouchesEvent">
-      <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchesEvent (string pszFuncName, System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchesEvent(string pszFuncName, class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchesEvent (string pszFuncName, System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchesEvent(string pszFuncName, class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -234,7 +234,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszFuncName" Type="System.String" />
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="pszFuncName">To be added.</param>
@@ -245,8 +245,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExecuteTouchEvent">
-      <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchEvent (string pszFuncName, Cocos2D.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchEvent(string pszFuncName, class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchEvent (string pszFuncName, CocosSharp.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchEvent(string pszFuncName, class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -256,7 +256,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszFuncName" Type="System.String" />
-        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="pszFuncName">To be added.</param>

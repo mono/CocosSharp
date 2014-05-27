@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCActionTween" FullName="Cocos2D.CCActionTween">
-  <TypeSignature Language="C#" Value="public class CCActionTween : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTween extends Cocos2D.CCActionInterval" />
+<Type Name="CCActionTween" FullName="CocosSharp.CCActionTween">
+  <TypeSignature Language="C#" Value="public class CCActionTween : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTween extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -21,15 +21,15 @@
       <verbatim>ActionTween
 </verbatim>
       <para>
-        <see cref="T:Cocos2D.CCActionTween" /> is an action that lets you update any property of an object. For example, if you want to modify the "width" property of a target from 200 to 300 in 2 seconds, then:</para>
-      <see cref="T:Cocos2D.CCActionTween" />
-      <para>id modifyWidth = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"width" from:200 to:300]; [target runAction:modifyWidth];</para>
-      <see cref="T:Cocos2D.CCActionTween" />
-      <para>Another example: <see cref="T:Cocos2D.CCScaleTo" /> action could be rewritten using PropertyAction:</para>
-      <see cref="T:Cocos2D.CCScaleTo" />
-      <para>scaleA and scaleB are equivalents id scaleA = [<see cref="T:Cocos2D.CCScaleTo" /> actionWithDuration:2 scale:3]; id scaleB = [<see cref="T:Cocos2D.CCActionTween" /> actionWithDuration:2 key:"scale" from:1 to:3];</para>
-      <see cref="T:Cocos2D.CCScaleTo" />
-      <see cref="T:Cocos2D.CCActionTween" />
+        <see cref="T:CocosSharp.CCActionTween" /> is an action that lets you update any property of an object. For example, if you want to modify the "width" property of a target from 200 to 300 in 2 seconds, then:</para>
+      <see cref="T:CocosSharp.CCActionTween" />
+      <para>id modifyWidth = [<see cref="T:CocosSharp.CCActionTween" /> actionWithDuration:2 key:"width" from:200 to:300]; [target runAction:modifyWidth];</para>
+      <see cref="T:CocosSharp.CCActionTween" />
+      <para>Another example: <see cref="T:CocosSharp.CCScaleTo" /> action could be rewritten using PropertyAction:</para>
+      <see cref="T:CocosSharp.CCScaleTo" />
+      <para>scaleA and scaleB are equivalents id scaleA = [<see cref="T:CocosSharp.CCScaleTo" /> actionWithDuration:2 scale:3]; id scaleB = [<see cref="T:CocosSharp.CCActionTween" /> actionWithDuration:2 key:"scale" from:1 to:3];</para>
+      <see cref="T:CocosSharp.CCScaleTo" />
+      <see cref="T:CocosSharp.CCActionTween" />
       <para>
         <para>v0.99.2 </para>
       </para>
@@ -146,14 +146,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -163,8 +163,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -173,7 +173,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

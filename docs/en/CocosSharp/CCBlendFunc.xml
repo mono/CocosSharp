@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBlendFunc" FullName="Cocos2D.CCBlendFunc">
+<Type Name="CCBlendFunc" FullName="CocosSharp.CCBlendFunc">
   <TypeSignature Language="C#" Value="public struct CCBlendFunc" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBlendFunc extends System.ValueType" />
   <AssemblyInfo>
@@ -36,14 +36,14 @@
       </Docs>
     </Member>
     <Member MemberName="Additive">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCBlendFunc Additive;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCBlendFunc Additive" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCBlendFunc Additive;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCBlendFunc Additive" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="AlphaBlend">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCBlendFunc AlphaBlend;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCBlendFunc AlphaBlend" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCBlendFunc AlphaBlend;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCBlendFunc AlphaBlend" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -118,14 +118,14 @@
       </Docs>
     </Member>
     <Member MemberName="NonPremultiplied">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCBlendFunc NonPremultiplied;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCBlendFunc NonPremultiplied" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCBlendFunc NonPremultiplied;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCBlendFunc NonPremultiplied" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -133,8 +133,8 @@
       </Docs>
     </Member>
     <Member MemberName="op_Equality">
-      <MemberSignature Language="C#" Value="public static bool op_Equality (Cocos2D.CCBlendFunc b1, Cocos2D.CCBlendFunc b2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype Cocos2D.CCBlendFunc b1, valuetype Cocos2D.CCBlendFunc b2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCBlendFunc b1, CocosSharp.CCBlendFunc b2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCBlendFunc b1, valuetype CocosSharp.CCBlendFunc b2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -143,8 +143,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="b1" Type="Cocos2D.CCBlendFunc" />
-        <Parameter Name="b2" Type="Cocos2D.CCBlendFunc" />
+        <Parameter Name="b1" Type="CocosSharp.CCBlendFunc" />
+        <Parameter Name="b2" Type="CocosSharp.CCBlendFunc" />
       </Parameters>
       <Docs>
         <param name="b1">To be added.</param>
@@ -155,8 +155,8 @@
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
-      <MemberSignature Language="C#" Value="public static bool op_Inequality (Cocos2D.CCBlendFunc b1, Cocos2D.CCBlendFunc b2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype Cocos2D.CCBlendFunc b1, valuetype Cocos2D.CCBlendFunc b2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCBlendFunc b1, CocosSharp.CCBlendFunc b2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCBlendFunc b1, valuetype CocosSharp.CCBlendFunc b2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -165,8 +165,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="b1" Type="Cocos2D.CCBlendFunc" />
-        <Parameter Name="b2" Type="Cocos2D.CCBlendFunc" />
+        <Parameter Name="b1" Type="CocosSharp.CCBlendFunc" />
+        <Parameter Name="b2" Type="CocosSharp.CCBlendFunc" />
       </Parameters>
       <Docs>
         <param name="b1">To be added.</param>
@@ -177,14 +177,14 @@
       </Docs>
     </Member>
     <Member MemberName="Opaque">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCBlendFunc Opaque;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCBlendFunc Opaque" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCBlendFunc Opaque;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCBlendFunc Opaque" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPointSprite" FullName="Cocos2D.CCPointSprite">
+<Type Name="CCPointSprite" FullName="CocosSharp.CCPointSprite">
   <TypeSignature Language="C#" Value="public class CCPointSprite" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointSprite extends System.Object" />
   <AssemblyInfo>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4B Color;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCColor4B Color" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4B Color;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCColor4B Color" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4B</ReturnType>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -46,14 +46,14 @@
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCVertex2F Position;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCVertex2F Position" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex2F Position;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex2F Position" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex2F</ReturnType>
+        <ReturnType>CocosSharp.CCVertex2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

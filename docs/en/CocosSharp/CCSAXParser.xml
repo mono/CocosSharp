@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSAXParser" FullName="Cocos2D.CCSAXParser">
+<Type Name="CCSAXParser" FullName="CocosSharp.CCSAXParser">
   <TypeSignature Language="C#" Value="public class CCSAXParser" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSAXParser extends System.Object" />
   <AssemblyInfo>
@@ -112,8 +112,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetDelegator">
-      <MemberSignature Language="C#" Value="public void SetDelegator (Cocos2D.ICCSAXDelegator pDelegator);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDelegator(class Cocos2D.ICCSAXDelegator pDelegator) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetDelegator (CocosSharp.ICCSAXDelegator pDelegator);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDelegator(class CocosSharp.ICCSAXDelegator pDelegator) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -122,7 +122,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegator" Type="Cocos2D.ICCSAXDelegator" />
+        <Parameter Name="pDelegator" Type="CocosSharp.ICCSAXDelegator" />
       </Parameters>
       <Docs>
         <param name="pDelegator">To be added.</param>

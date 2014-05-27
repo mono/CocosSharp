@@ -1,4 +1,4 @@
-<Type Name="CCPointExtension+ComputationOperationDelegate" FullName="Cocos2D.CCPointExtension+ComputationOperationDelegate">
+<Type Name="CCPointExtension+ComputationOperationDelegate" FullName="CocosSharp.CCPointExtension+ComputationOperationDelegate">
   <TypeSignature Language="C#" Value="public delegate float CCPointExtension.ComputationOperationDelegate(float a);" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed CCPointExtension/ComputationOperationDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>

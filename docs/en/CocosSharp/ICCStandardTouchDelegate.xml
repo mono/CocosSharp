@@ -1,13 +1,13 @@
-<Type Name="ICCStandardTouchDelegate" FullName="Cocos2D.ICCStandardTouchDelegate">
-  <TypeSignature Language="C#" Value="public interface ICCStandardTouchDelegate : Cocos2D.ICCTouchDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCStandardTouchDelegate implements class Cocos2D.ICCTouchDelegate" />
+<Type Name="ICCStandardTouchDelegate" FullName="CocosSharp.ICCStandardTouchDelegate">
+  <TypeSignature Language="C#" Value="public interface ICCStandardTouchDelegate : CocosSharp.ICCTouchDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCStandardTouchDelegate implements class CocosSharp.ICCTouchDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTouchDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTouchDelegate</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -16,8 +16,8 @@
   </Docs>
   <Members>
     <Member MemberName="TouchesBegan">
-      <MemberSignature Language="C#" Value="public void TouchesBegan (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchesBegan (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -26,7 +26,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="pTouches">To be added.</param>
@@ -35,8 +35,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesCancelled">
-      <MemberSignature Language="C#" Value="public void TouchesCancelled (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchesCancelled (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -45,7 +45,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="pTouches">To be added.</param>
@@ -54,8 +54,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesEnded">
-      <MemberSignature Language="C#" Value="public void TouchesEnded (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchesEnded (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -64,7 +64,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="pTouches">To be added.</param>
@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesMoved">
-      <MemberSignature Language="C#" Value="public void TouchesMoved (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchesMoved (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,7 +83,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="pTouches">To be added.</param>

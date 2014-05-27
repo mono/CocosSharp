@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTargetedAction" FullName="Cocos2D.CCTargetedAction">
-  <TypeSignature Language="C#" Value="public class CCTargetedAction : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedAction extends Cocos2D.CCActionInterval" />
+<Type Name="CCTargetedAction" FullName="CocosSharp.CCTargetedAction">
+  <TypeSignature Language="C#" Value="public class CCTargetedAction : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedAction extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTargetedAction (Cocos2D.CCTargetedAction targetedAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTargetedAction targetedAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTargetedAction (CocosSharp.CCTargetedAction targetedAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTargetedAction targetedAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="targetedAction" Type="Cocos2D.CCTargetedAction" />
+        <Parameter Name="targetedAction" Type="CocosSharp.CCTargetedAction" />
       </Parameters>
       <Docs>
         <param name="targetedAction">To be added.</param>
@@ -32,15 +32,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTargetedAction (Cocos2D.CCNode target, Cocos2D.CCFiniteTimeAction pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode target, class Cocos2D.CCFiniteTimeAction pAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTargetedAction (CocosSharp.CCNode target, CocosSharp.CCFiniteTimeAction pAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode target, class CocosSharp.CCFiniteTimeAction pAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
-        <Parameter Name="pAction" Type="Cocos2D.CCFiniteTimeAction" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="pAction" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -50,8 +50,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -60,7 +60,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -70,14 +70,14 @@
       </Docs>
     </Member>
     <Member MemberName="ForcedTarget">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode ForcedTarget { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode ForcedTarget" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode ForcedTarget { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode ForcedTarget" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setForcedTarget </summary>
@@ -86,8 +86,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithTarget">
-      <MemberSignature Language="C#" Value="protected bool InitWithTarget (Cocos2D.CCNode target, Cocos2D.CCFiniteTimeAction pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithTarget(class Cocos2D.CCNode target, class Cocos2D.CCFiniteTimeAction pAction) cil managed" />
+      <MemberSignature Language="C#" Value="protected bool InitWithTarget (CocosSharp.CCNode target, CocosSharp.CCFiniteTimeAction pAction);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithTarget(class CocosSharp.CCNode target, class CocosSharp.CCFiniteTimeAction pAction) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -96,8 +96,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
-        <Parameter Name="pAction" Type="Cocos2D.CCFiniteTimeAction" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="pAction" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -108,14 +108,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pAction">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCFiniteTimeAction m_pAction;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCFiniteTimeAction m_pAction" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeAction m_pAction;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCFiniteTimeAction m_pAction" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -123,14 +123,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pForcedTarget">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pForcedTarget;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pForcedTarget" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pForcedTarget;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pForcedTarget" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -138,14 +138,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -155,8 +155,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -165,7 +165,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

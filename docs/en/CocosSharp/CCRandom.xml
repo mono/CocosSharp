@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCRandom" FullName="Cocos2D.CCRandom">
+<Type Name="CCRandom" FullName="CocosSharp.CCRandom">
   <TypeSignature Language="C#" Value="public class CCRandom" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRandom extends System.Object" />
   <AssemblyInfo>

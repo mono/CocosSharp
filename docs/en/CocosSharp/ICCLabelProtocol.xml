@@ -1,4 +1,4 @@
-<Type Name="ICCLabelProtocol" FullName="Cocos2D.ICCLabelProtocol">
+<Type Name="ICCLabelProtocol" FullName="CocosSharp.ICCLabelProtocol">
   <TypeSignature Language="C#" Value="public interface ICCLabelProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCLabelProtocol" />
   <AssemblyInfo>

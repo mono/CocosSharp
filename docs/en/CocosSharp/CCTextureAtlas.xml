@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTextureAtlas" FullName="Cocos2D.CCTextureAtlas">
+<Type Name="CCTextureAtlas" FullName="CocosSharp.CCTextureAtlas">
   <TypeSignature Language="C#" Value="public class CCTextureAtlas" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextureAtlas extends System.Object" />
   <AssemblyInfo>
@@ -47,17 +47,17 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTextureAtlas Create (Cocos2D.CCTexture2D texture, int capacity);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTextureAtlas Create(class Cocos2D.CCTexture2D texture, int32 capacity) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureAtlas Create (CocosSharp.CCTexture2D texture, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTextureAtlas Create(class CocosSharp.CCTexture2D texture, int32 capacity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="capacity" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -69,14 +69,14 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTextureAtlas Create (string file, int capacity);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTextureAtlas Create(string file, int32 capacity) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureAtlas Create (string file, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTextureAtlas Create(string file, int32 capacity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="file" Type="System.String" />
@@ -217,17 +217,17 @@
         <summary>initializes a  with a filename and with a certain capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
         <remarks>
-          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a filename and with a certain capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
-          <see cref="T:Cocos2D.CCTextureAtlas" />
-          <see cref="T:Cocos2D.CCTextureAtlas" />
-          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
-          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>initializes a <see cref="T:CocosSharp.CCTextureAtlas" /> with a filename and with a certain capacity for Quads. The <see cref="T:CocosSharp.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:CocosSharp.CCTextureAtlas" />
+          <see cref="T:CocosSharp.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:CocosSharp.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:CocosSharp.CCTextureAtlas" />
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
-      <MemberSignature Language="C#" Value="public bool InitWithTexture (Cocos2D.CCTexture2D texture, int capacity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class Cocos2D.CCTexture2D texture, int32 capacity) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithTexture (CocosSharp.CCTexture2D texture, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTexture(class CocosSharp.CCTexture2D texture, int32 capacity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -236,7 +236,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="capacity" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -245,18 +245,18 @@
         <summary>initializes a  with a previously initialized  object, and with an initial capacity for Quads. The  capacity can be increased in runtime.</summary>
         <returns>To be added.</returns>
         <remarks>
-          <para>initializes a <see cref="T:Cocos2D.CCTextureAtlas" /> with a previously initialized <see cref="T:Cocos2D.CCTexture2D" /> object, and with an initial capacity for Quads. The <see cref="T:Cocos2D.CCTextureAtlas" /> capacity can be increased in runtime.</para>
-          <see cref="T:Cocos2D.CCTextureAtlas" />
-          <see cref="T:Cocos2D.CCTexture2D" />
-          <see cref="T:Cocos2D.CCTextureAtlas" />
-          <para>WARNING: Do not reinitialize the <see cref="T:Cocos2D.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
-          <see cref="T:Cocos2D.CCTextureAtlas" />
+          <para>initializes a <see cref="T:CocosSharp.CCTextureAtlas" /> with a previously initialized <see cref="T:CocosSharp.CCTexture2D" /> object, and with an initial capacity for Quads. The <see cref="T:CocosSharp.CCTextureAtlas" /> capacity can be increased in runtime.</para>
+          <see cref="T:CocosSharp.CCTextureAtlas" />
+          <see cref="T:CocosSharp.CCTexture2D" />
+          <see cref="T:CocosSharp.CCTextureAtlas" />
+          <para>WARNING: Do not reinitialize the <see cref="T:CocosSharp.CCTextureAtlas" /> because it will leak memory (issue #706) </para>
+          <see cref="T:CocosSharp.CCTextureAtlas" />
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="InsertQuad">
-      <MemberSignature Language="C#" Value="public void InsertQuad (ref Cocos2D.CCV3F_C4B_T2F_Quad quad, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertQuad(valuetype Cocos2D.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
+      <MemberSignature Language="C#" Value="public void InsertQuad (ref CocosSharp.CCV3F_C4B_T2F_Quad quad, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertQuad(valuetype CocosSharp.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -265,7 +265,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="quad" Type="Cocos2D.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
+        <Parameter Name="quad" Type="CocosSharp.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -299,14 +299,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pQuads">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt; m_pQuads;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCRawList`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt; m_pQuads" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt; m_pQuads;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCRawList`1&lt;valuetype CocosSharp.CCV3F_C4B_T2F_Quad&gt; m_pQuads" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -314,14 +314,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTexture">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTexture2D m_pTexture;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTexture2D m_pTexture" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTexture2D m_pTexture" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -451,14 +451,14 @@
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTexture </summary>
@@ -500,8 +500,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateQuad">
-      <MemberSignature Language="C#" Value="public void UpdateQuad (ref Cocos2D.CCV3F_C4B_T2F_Quad quad, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateQuad(valuetype Cocos2D.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
+      <MemberSignature Language="C#" Value="public void UpdateQuad (ref CocosSharp.CCV3F_C4B_T2F_Quad quad, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateQuad(valuetype CocosSharp.CCV3F_C4B_T2F_Quad quad, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -510,7 +510,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="quad" Type="Cocos2D.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
+        <Parameter Name="quad" Type="CocosSharp.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>

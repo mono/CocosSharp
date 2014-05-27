@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCColor3B" FullName="Cocos2D.CCColor3B">
+<Type Name="CCColor3B" FullName="CocosSharp.CCColor3B">
   <TypeSignature Language="C#" Value="public struct CCColor3B" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor3B extends System.ValueType" />
   <AssemblyInfo>
@@ -83,8 +83,8 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (Cocos2D.CCColor3B point);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype Cocos2D.CCColor3B point) cil managed" />
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (CocosSharp.CCColor3B point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype CocosSharp.CCColor3B point) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -93,7 +93,7 @@ v3.0 </summary>
         <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="point" Type="CocosSharp.CCColor3B" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>

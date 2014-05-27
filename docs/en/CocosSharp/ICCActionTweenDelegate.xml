@@ -1,4 +1,4 @@
-<Type Name="ICCActionTweenDelegate" FullName="Cocos2D.ICCActionTweenDelegate">
+<Type Name="ICCActionTweenDelegate" FullName="CocosSharp.ICCActionTweenDelegate">
   <TypeSignature Language="C#" Value="public interface ICCActionTweenDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCActionTweenDelegate" />
   <AssemblyInfo>

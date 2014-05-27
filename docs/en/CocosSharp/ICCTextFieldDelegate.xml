@@ -1,4 +1,4 @@
-<Type Name="ICCTextFieldDelegate" FullName="Cocos2D.ICCTextFieldDelegate">
+<Type Name="ICCTextFieldDelegate" FullName="CocosSharp.ICCTextFieldDelegate">
   <TypeSignature Language="C#" Value="public interface ICCTextFieldDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTextFieldDelegate" />
   <AssemblyInfo>
@@ -12,8 +12,8 @@
   </Docs>
   <Members>
     <Member MemberName="onDraw">
-      <MemberSignature Language="C#" Value="public bool onDraw (Cocos2D.CCTextFieldTTF sender);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onDraw(class Cocos2D.CCTextFieldTTF sender) cil managed" />
+      <MemberSignature Language="C#" Value="public bool onDraw (CocosSharp.CCTextFieldTTF sender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onDraw(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -22,7 +22,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="Cocos2D.CCTextFieldTTF" />
+        <Parameter Name="sender" Type="CocosSharp.CCTextFieldTTF" />
       </Parameters>
       <Docs>
         <param name="sender">To be added.</param>
@@ -32,8 +32,8 @@
       </Docs>
     </Member>
     <Member MemberName="onTextFieldAttachWithIME">
-      <MemberSignature Language="C#" Value="public bool onTextFieldAttachWithIME (Cocos2D.CCTextFieldTTF sender);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldAttachWithIME(class Cocos2D.CCTextFieldTTF sender) cil managed" />
+      <MemberSignature Language="C#" Value="public bool onTextFieldAttachWithIME (CocosSharp.CCTextFieldTTF sender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldAttachWithIME(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -42,7 +42,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="Cocos2D.CCTextFieldTTF" />
+        <Parameter Name="sender" Type="CocosSharp.CCTextFieldTTF" />
       </Parameters>
       <Docs>
         <param name="sender">To be added.</param>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="onTextFieldDeleteBackward">
-      <MemberSignature Language="C#" Value="public bool onTextFieldDeleteBackward (Cocos2D.CCTextFieldTTF sender, string delText, int nLen);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDeleteBackward(class Cocos2D.CCTextFieldTTF sender, string delText, int32 nLen) cil managed" />
+      <MemberSignature Language="C#" Value="public bool onTextFieldDeleteBackward (CocosSharp.CCTextFieldTTF sender, string delText, int nLen);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDeleteBackward(class CocosSharp.CCTextFieldTTF sender, string delText, int32 nLen) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,7 +62,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="Cocos2D.CCTextFieldTTF" />
+        <Parameter Name="sender" Type="CocosSharp.CCTextFieldTTF" />
         <Parameter Name="delText" Type="System.String" />
         <Parameter Name="nLen" Type="System.Int32" />
       </Parameters>
@@ -76,8 +76,8 @@
       </Docs>
     </Member>
     <Member MemberName="onTextFieldDetachWithIME">
-      <MemberSignature Language="C#" Value="public bool onTextFieldDetachWithIME (Cocos2D.CCTextFieldTTF sender);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDetachWithIME(class Cocos2D.CCTextFieldTTF sender) cil managed" />
+      <MemberSignature Language="C#" Value="public bool onTextFieldDetachWithIME (CocosSharp.CCTextFieldTTF sender);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDetachWithIME(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -86,7 +86,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="Cocos2D.CCTextFieldTTF" />
+        <Parameter Name="sender" Type="CocosSharp.CCTextFieldTTF" />
       </Parameters>
       <Docs>
         <param name="sender">To be added.</param>
@@ -96,8 +96,8 @@
       </Docs>
     </Member>
     <Member MemberName="onTextFieldInsertText">
-      <MemberSignature Language="C#" Value="public bool onTextFieldInsertText (Cocos2D.CCTextFieldTTF sender, string text, int nLen);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldInsertText(class Cocos2D.CCTextFieldTTF sender, string text, int32 nLen) cil managed" />
+      <MemberSignature Language="C#" Value="public bool onTextFieldInsertText (CocosSharp.CCTextFieldTTF sender, string text, int nLen);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldInsertText(class CocosSharp.CCTextFieldTTF sender, string text, int32 nLen) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -106,7 +106,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sender" Type="Cocos2D.CCTextFieldTTF" />
+        <Parameter Name="sender" Type="CocosSharp.CCTextFieldTTF" />
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="nLen" Type="System.Int32" />
       </Parameters>

@@ -1,4 +1,4 @@
-<Type Name="CCGamePadTriggerDelegate" FullName="Cocos2D.CCGamePadTriggerDelegate">
+<Type Name="CCGamePadTriggerDelegate" FullName="CocosSharp.CCGamePadTriggerDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCGamePadTriggerDelegate(float leftTriggerStrength, float rightTriggerStrength, PlayerIndex player);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadTriggerDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>

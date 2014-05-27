@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSizeConverter" FullName="Cocos2D.CCSizeConverter">
+<Type Name="CCSizeConverter" FullName="CocosSharp.CCSizeConverter">
   <TypeSignature Language="C#" Value="public class CCSizeConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSizeConverter extends System.ComponentModel.TypeConverter" />
   <AssemblyInfo>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="CCSizeFromString">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize CCSizeFromString (string pszContent);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCSize CCSizeFromString(string pszContent) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize CCSizeFromString (string pszContent);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize CCSizeFromString(string pszContent) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszContent" Type="System.String" />

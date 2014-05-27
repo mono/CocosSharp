@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleSystem+ModeA" FullName="Cocos2D.CCParticleSystem+ModeA">
+<Type Name="CCParticleSystem+ModeA" FullName="CocosSharp.CCParticleSystem+ModeA">
   <TypeSignature Language="C#" Value="protected struct CCParticleSystem.ModeA" />
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/ModeA extends System.ValueType" />
   <AssemblyInfo>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName="gravity">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint gravity;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint gravity" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint gravity;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint gravity" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

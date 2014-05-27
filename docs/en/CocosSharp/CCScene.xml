@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCScene" FullName="Cocos2D.CCScene">
-  <TypeSignature Language="C#" Value="public class CCScene : Cocos2D.CCNode" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScene extends Cocos2D.CCNode" />
+<Type Name="CCScene" FullName="CocosSharp.CCScene">
+  <TypeSignature Language="C#" Value="public class CCScene : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScene extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

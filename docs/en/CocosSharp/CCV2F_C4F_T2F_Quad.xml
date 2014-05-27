@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCV2F_C4F_T2F_Quad" FullName="Cocos2D.CCV2F_C4F_T2F_Quad">
+<Type Name="CCV2F_C4F_T2F_Quad" FullName="CocosSharp.CCV2F_C4F_T2F_Quad">
   <TypeSignature Language="C#" Value="public class CCV2F_C4F_T2F_Quad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCV2F_C4F_T2F_Quad extends System.Object" />
   <AssemblyInfo>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="BottomLeft">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCV2F_C4F_T2F BottomLeft;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCV2F_C4F_T2F BottomLeft" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCV2F_C4F_T2F BottomLeft;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCV2F_C4F_T2F BottomLeft" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCV2F_C4F_T2F</ReturnType>
+        <ReturnType>CocosSharp.CCV2F_C4F_T2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -46,14 +46,14 @@
       </Docs>
     </Member>
     <Member MemberName="BottomRight">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCV2F_C4F_T2F BottomRight;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCV2F_C4F_T2F BottomRight" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCV2F_C4F_T2F BottomRight;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCV2F_C4F_T2F BottomRight" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCV2F_C4F_T2F</ReturnType>
+        <ReturnType>CocosSharp.CCV2F_C4F_T2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -61,14 +61,14 @@
       </Docs>
     </Member>
     <Member MemberName="TopLeft">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCV2F_C4F_T2F TopLeft;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCV2F_C4F_T2F TopLeft" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCV2F_C4F_T2F TopLeft;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCV2F_C4F_T2F TopLeft" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCV2F_C4F_T2F</ReturnType>
+        <ReturnType>CocosSharp.CCV2F_C4F_T2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -76,14 +76,14 @@
       </Docs>
     </Member>
     <Member MemberName="TopRight">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCV2F_C4F_T2F TopRight;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCV2F_C4F_T2F TopRight" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCV2F_C4F_T2F TopRight;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCV2F_C4F_T2F TopRight" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCV2F_C4F_T2F</ReturnType>
+        <ReturnType>CocosSharp.CCV2F_C4F_T2F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBKeyframe" FullName="Cocos2D.CCBKeyframe">
+<Type Name="CCBKeyframe" FullName="CocosSharp.CCBKeyframe">
   <TypeSignature Language="C#" Value="public class CCBKeyframe" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBKeyframe extends System.Object" />
   <AssemblyInfo>
@@ -44,14 +44,14 @@
       </Docs>
     </Member>
     <Member MemberName="EasingType">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBKeyframeEasing EasingType;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCBKeyframeEasing EasingType" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBKeyframeEasing EasingType;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCBKeyframeEasing EasingType" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBKeyframeEasing</ReturnType>
+        <ReturnType>CocosSharp.CCBKeyframeEasing</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

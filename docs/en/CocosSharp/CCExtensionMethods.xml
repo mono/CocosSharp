@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCExtensionMethods" FullName="Cocos2D.CCExtensionMethods">
+<Type Name="CCExtensionMethods" FullName="CocosSharp.CCExtensionMethods">
   <TypeSignature Language="C#" Value="public static class CCExtensionMethods" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCExtensionMethods extends System.Object" />
   <AssemblyInfo>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName="GetDirection">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCGestureDirection GetDirection (this Microsoft.Xna.Framework.Input.Touch.GestureSample gesture);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCGestureDirection GetDirection(valuetype Microsoft.Xna.Framework.Input.Touch.GestureSample gesture) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCGestureDirection GetDirection (this Microsoft.Xna.Framework.Input.Touch.GestureSample gesture);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCGestureDirection GetDirection(valuetype Microsoft.Xna.Framework.Input.Touch.GestureSample gesture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGestureDirection</ReturnType>
+        <ReturnType>CocosSharp.CCGestureDirection</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="gesture" Type="Microsoft.Xna.Framework.Input.Touch.GestureSample" RefType="this" />

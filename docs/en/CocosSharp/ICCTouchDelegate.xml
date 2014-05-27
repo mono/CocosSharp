@@ -1,4 +1,4 @@
-<Type Name="ICCTouchDelegate" FullName="Cocos2D.ICCTouchDelegate">
+<Type Name="ICCTouchDelegate" FullName="CocosSharp.ICCTouchDelegate">
   <TypeSignature Language="C#" Value="public interface ICCTouchDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTouchDelegate" />
   <AssemblyInfo>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTMXLayer" FullName="Cocos2D.CCTMXLayer">
-  <TypeSignature Language="C#" Value="public class CCTMXLayer : Cocos2D.CCSpriteBatchNode" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayer extends Cocos2D.CCSpriteBatchNode" />
+<Type Name="CCTMXLayer" FullName="CocosSharp.CCTMXLayer">
+  <TypeSignature Language="C#" Value="public class CCTMXLayer : CocosSharp.CCSpriteBatchNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayer extends CocosSharp.CCSpriteBatchNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCSpriteBatchNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCSpriteBatchNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -15,12 +15,12 @@
       <para> represents the TMX layer. </para>
     </summary>
     <remarks>
-      <para>It is a subclass of <see cref="T:Cocos2D.CCSpriteBatchNode" />. By default the tiles are rendered using a <see cref="T:Cocos2D.CCTextureAtlas" />. If you modify a tile on runtime, then, that tile will become a <see cref="T:Cocos2D.CCSprite" />, otherwise no <see cref="T:Cocos2D.CCSprite" /> objects are created. The benefits of using <see cref="T:Cocos2D.CCSprite" /> objects as tiles are:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
-      <see cref="T:Cocos2D.CCTextureAtlas" />
-      <see cref="T:Cocos2D.CCSprite" />
-      <see cref="T:Cocos2D.CCSprite" />
-      <see cref="T:Cocos2D.CCSprite" />
+      <para>It is a subclass of <see cref="T:CocosSharp.CCSpriteBatchNode" />. By default the tiles are rendered using a <see cref="T:CocosSharp.CCTextureAtlas" />. If you modify a tile on runtime, then, that tile will become a <see cref="T:CocosSharp.CCSprite" />, otherwise no <see cref="T:CocosSharp.CCSprite" /> objects are created. The benefits of using <see cref="T:CocosSharp.CCSprite" /> objects as tiles are:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
+      <see cref="T:CocosSharp.CCTextureAtlas" />
+      <see cref="T:CocosSharp.CCSprite" />
+      <see cref="T:CocosSharp.CCSprite" />
+      <see cref="T:CocosSharp.CCSprite" />
       <list type="bullet" />
       <para>If the layer contains a property named "cc_vertexz" with an integer (in can be positive or negative), then all the tiles belonging to the layer will use that value as their OpenGL vertex Z for depth.</para>
       <para>On the other hand, if the "cc_vertexz" property has the "automatic" value, then the tiles will use an automatic vertex Z value. Also before drawing the tiles, GL_ALPHA_TEST will be enabled, and disabled after drawing them. The used alpha func will be:</para>
@@ -47,16 +47,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTMXLayer (Cocos2D.CCTMXTilesetInfo tilesetInfo, Cocos2D.CCTMXLayerInfo layerInfo, Cocos2D.CCTMXMapInfo mapInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTMXTilesetInfo tilesetInfo, class Cocos2D.CCTMXLayerInfo layerInfo, class Cocos2D.CCTMXMapInfo mapInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTMXLayer (CocosSharp.CCTMXTilesetInfo tilesetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTMXTilesetInfo tilesetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="tilesetInfo" Type="Cocos2D.CCTMXTilesetInfo" />
-        <Parameter Name="layerInfo" Type="Cocos2D.CCTMXLayerInfo" />
-        <Parameter Name="mapInfo" Type="Cocos2D.CCTMXMapInfo" />
+        <Parameter Name="tilesetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
+        <Parameter Name="layerInfo" Type="CocosSharp.CCTMXLayerInfo" />
+        <Parameter Name="mapInfo" Type="CocosSharp.CCTMXMapInfo" />
       </Parameters>
       <Docs>
         <param name="tilesetInfo">To be added.</param>
@@ -67,8 +67,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -77,7 +77,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
@@ -90,8 +90,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithTilesetInfo">
-      <MemberSignature Language="C#" Value="public bool InitWithTilesetInfo (Cocos2D.CCTMXTilesetInfo tilesetInfo, Cocos2D.CCTMXLayerInfo layerInfo, Cocos2D.CCTMXMapInfo mapInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTilesetInfo(class Cocos2D.CCTMXTilesetInfo tilesetInfo, class Cocos2D.CCTMXLayerInfo layerInfo, class Cocos2D.CCTMXMapInfo mapInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithTilesetInfo (CocosSharp.CCTMXTilesetInfo tilesetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTilesetInfo(class CocosSharp.CCTMXTilesetInfo tilesetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -100,9 +100,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="tilesetInfo" Type="Cocos2D.CCTMXTilesetInfo" />
-        <Parameter Name="layerInfo" Type="Cocos2D.CCTMXLayerInfo" />
-        <Parameter Name="mapInfo" Type="Cocos2D.CCTMXMapInfo" />
+        <Parameter Name="tilesetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
+        <Parameter Name="layerInfo" Type="CocosSharp.CCTMXLayerInfo" />
+        <Parameter Name="mapInfo" Type="CocosSharp.CCTMXMapInfo" />
       </Parameters>
       <Docs>
         <param name="tilesetInfo">To be added.</param>
@@ -130,14 +130,14 @@
       </Docs>
     </Member>
     <Member MemberName="LayerOrientation">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTMXOrientation LayerOrientation { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTMXOrientation LayerOrientation" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTMXOrientation LayerOrientation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTMXOrientation LayerOrientation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -146,14 +146,14 @@
       </Docs>
     </Member>
     <Member MemberName="LayerSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize LayerSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize LayerSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize LayerSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize LayerSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>set# LayerSize </summary>
@@ -252,14 +252,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pReusedTile">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSprite m_pReusedTile;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCSprite m_pReusedTile" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite m_pReusedTile;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite m_pReusedTile" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSprite</ReturnType>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -312,14 +312,14 @@
       </Docs>
     </Member>
     <Member MemberName="MapTileSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize MapTileSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize MapTileSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize MapTileSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize MapTileSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>set# MapTileSize </summary>
@@ -328,17 +328,17 @@
       </Docs>
     </Member>
     <Member MemberName="PositionAt">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint PositionAt (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint PositionAt(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PositionAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint PositionAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -401,8 +401,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public override void RemoveChild (Cocos2D.CCNode node, bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class Cocos2D.CCNode node, bool cleanup) cil managed" />
+      <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode node, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode node, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -411,7 +411,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -425,8 +425,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveTileAt">
-      <MemberSignature Language="C#" Value="public void RemoveTileAt (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTileAt(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveTileAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -435,7 +435,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -444,8 +444,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
-      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -455,7 +455,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="gid" Type="System.UInt32" />
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="gid">To be added.</param>
@@ -468,8 +468,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
-      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, Cocos2D.CCPoint pos, uint flags);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype Cocos2D.CCPoint pos, unsigned int32 flags) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, CocosSharp.CCPoint pos, uint flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -479,7 +479,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="gid" Type="System.UInt32" />
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
         <Parameter Name="flags" Type="System.UInt32" />
       </Parameters>
       <Docs>
@@ -507,17 +507,17 @@
       </Docs>
     </Member>
     <Member MemberName="TileAt">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSprite TileAt (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCSprite TileAt(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite TileAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCSprite TileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSprite</ReturnType>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -527,13 +527,13 @@
         <remarks>
           <para>
             <verbatim>returns the tile (Sprite) at a given a tile coordinate.
-</verbatim> The returned <see cref="T:Cocos2D.CCSprite" /> will be already added to the <see cref="T:Cocos2D.CCTMXLayer" />. Don't add it again. The <see cref="T:Cocos2D.CCSprite" /> can be treated like any other <see cref="T:Cocos2D.CCSprite" />: rotated, scaled, translated, opacity, color, etc. You can remove either by calling:<list type="bullet" /></para>
+</verbatim> The returned <see cref="T:CocosSharp.CCSprite" /> will be already added to the <see cref="T:CocosSharp.CCTMXLayer" />. Don't add it again. The <see cref="T:CocosSharp.CCSprite" /> can be treated like any other <see cref="T:CocosSharp.CCSprite" />: rotated, scaled, translated, opacity, color, etc. You can remove either by calling:<list type="bullet" /></para>
           <verbatim>returns the tile (Sprite) at a given a tile coordinate.
 </verbatim>
-          <see cref="T:Cocos2D.CCSprite" />
-          <see cref="T:Cocos2D.CCTMXLayer" />
-          <see cref="T:Cocos2D.CCSprite" />
-          <see cref="T:Cocos2D.CCSprite" />
+          <see cref="T:CocosSharp.CCSprite" />
+          <see cref="T:CocosSharp.CCTMXLayer" />
+          <see cref="T:CocosSharp.CCSprite" />
+          <see cref="T:CocosSharp.CCSprite" />
           <list type="bullet" />
           <item>
             <description>layer-&gt;removeChild(sprite, cleanup);</description>
@@ -547,8 +547,8 @@
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
-      <MemberSignature Language="C#" Value="public uint TileGIDAt (Cocos2D.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype Cocos2D.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public uint TileGIDAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -557,7 +557,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -567,8 +567,8 @@
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
-      <MemberSignature Language="C#" Value="public uint TileGIDAt (Cocos2D.CCPoint pos, out uint flags);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype Cocos2D.CCPoint pos, unsigned int32 flags) cil managed" />
+      <MemberSignature Language="C#" Value="public uint TileGIDAt (CocosSharp.CCPoint pos, out uint flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -577,7 +577,7 @@
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
         <Parameter Name="flags" Type="System.UInt32&amp;" RefType="out" />
       </Parameters>
       <Docs>
@@ -605,14 +605,14 @@
       </Docs>
     </Member>
     <Member MemberName="TileSet">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTMXTilesetInfo TileSet { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTMXTilesetInfo TileSet" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTMXTilesetInfo TileSet { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTMXTilesetInfo TileSet" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTMXTilesetInfo</ReturnType>
+        <ReturnType>CocosSharp.CCTMXTilesetInfo</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTileSet </summary>

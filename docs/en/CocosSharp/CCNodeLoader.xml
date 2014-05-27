@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCNodeLoader" FullName="Cocos2D.CCNodeLoader">
+<Type Name="CCNodeLoader" FullName="CocosSharp.CCNodeLoader">
   <TypeSignature Language="C#" Value="public class CCNodeLoader" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeLoader extends System.Object" />
   <AssemblyInfo>
@@ -29,14 +29,14 @@
       </Docs>
     </Member>
     <Member MemberName="CreateCCNode">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCNode CreateCCNode ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCNode CreateCCNode() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode CreateCCNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode CreateCCNode() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -46,18 +46,18 @@
       </Docs>
     </Member>
     <Member MemberName="LoadCCNode">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCNode LoadCCNode (Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCNode LoadCCNode(class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode LoadCCNode (CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode LoadCCNode(class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="parent">To be added.</param>
@@ -68,8 +68,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeAnimation">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeAnimation (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCAnimation animation, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeAnimation(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCAnimation animation, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeAnimation (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCAnimation animation, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeAnimation(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCAnimation animation, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -78,11 +78,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="animation" Type="Cocos2D.CCAnimation" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="animation" Type="CocosSharp.CCAnimation" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -95,8 +95,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeBlendFunc">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlendFunc (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCBlendFunc blendFunc, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlendFunc(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCBlendFunc blendFunc, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlendFunc (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCBlendFunc blendFunc, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlendFunc(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCBlendFunc blendFunc, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -105,11 +105,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="blendFunc" Type="Cocos2D.CCBlendFunc" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="blendFunc" Type="CocosSharp.CCBlendFunc" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -122,8 +122,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeBlock">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.BlockData pBlockData, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.BlockData pBlockData, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.BlockData pBlockData, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.BlockData pBlockData, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -132,11 +132,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="pBlockData" Type="Cocos2D.BlockData" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="pBlockData" Type="CocosSharp.BlockData" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -149,8 +149,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeBlockCcControl">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlockCcControl (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.BlockCCControlData blockControlData, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlockCcControl(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.BlockCCControlData blockControlData, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlockCcControl (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.BlockCCControlData blockControlData, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlockCcControl(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.BlockCCControlData blockControlData, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -159,11 +159,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="blockControlData" Type="Cocos2D.BlockCCControlData" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="blockControlData" Type="CocosSharp.BlockCCControlData" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -176,8 +176,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeByte">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeByte (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, byte pByte, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeByte(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, unsigned int8 pByte, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeByte (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, byte pByte, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeByte(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, unsigned int8 pByte, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -186,11 +186,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pByte" Type="System.Byte" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -203,8 +203,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeCCBFile">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCCBFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCNode fileNode, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCCBFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCNode fileNode, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCCBFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCNode fileNode, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCCBFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCNode fileNode, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -213,11 +213,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="fileNode" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="fileNode" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -230,8 +230,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeCheck">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCheck (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, bool pCheck, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCheck(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, bool pCheck, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCheck (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, bool pCheck, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCheck(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, bool pCheck, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -240,11 +240,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pCheck" Type="System.Boolean" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -257,8 +257,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeColor3">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor3 (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCColor3B color, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor3(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCColor3B color, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor3 (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCColor3B color, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor3(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCColor3B color, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -267,11 +267,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -284,8 +284,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeColor4FVar">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor4FVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCColor4F[] colorVar, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor4FVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCColor4F[] colorVar, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor4FVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCColor4F[] colorVar, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor4FVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCColor4F[] colorVar, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -294,11 +294,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="colorVar" Type="Cocos2D.CCColor4F[]" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="colorVar" Type="CocosSharp.CCColor4F[]" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -311,8 +311,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeDegrees">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeDegrees (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float pDegrees, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeDegrees(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 pDegrees, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeDegrees (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float pDegrees, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeDegrees(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 pDegrees, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -321,11 +321,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pDegrees" Type="System.Single" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -338,8 +338,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFlip">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFlip (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, bool[] pFlip, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFlip(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, bool[] pFlip, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFlip (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, bool[] pFlip, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFlip(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, bool[] pFlip, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -348,11 +348,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pFlip" Type="System.Boolean[]" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -365,8 +365,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFloat">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloat (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float pFloat, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloat(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 pFloat, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloat (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float pFloat, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloat(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 pFloat, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -375,11 +375,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pFloat" Type="System.Single" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -392,8 +392,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFloatScale">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatScale (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float floatScale, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatScale(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32 floatScale, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatScale (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float floatScale, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatScale(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 floatScale, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -402,11 +402,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="floatScale" Type="System.Single" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -419,8 +419,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFloatVar">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float[] pFoatVar, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32[] pFoatVar, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float[] pFoatVar, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32[] pFoatVar, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -429,11 +429,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pFoatVar" Type="System.Single[]" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -446,8 +446,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFntFile">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFntFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pFntFile, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFntFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pFntFile, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFntFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pFntFile, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFntFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pFntFile, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -456,11 +456,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pFntFile" Type="System.String" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -473,8 +473,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeFontTTF">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFontTTF (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string fontTTF, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFontTTF(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string fontTTF, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFontTTF (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string fontTTF, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFontTTF(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string fontTTF, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -483,11 +483,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="fontTTF" Type="System.String" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -500,8 +500,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeInteger">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeInteger (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, int pInteger, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeInteger(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, int32 pInteger, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeInteger (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, int pInteger, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeInteger(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, int32 pInteger, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -510,11 +510,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pInteger" Type="System.Int32" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -527,8 +527,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeIntegerLabeled">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeIntegerLabeled (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, int pIntegerLabeled, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeIntegerLabeled(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, int32 pIntegerLabeled, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeIntegerLabeled (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, int pIntegerLabeled, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeIntegerLabeled(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, int32 pIntegerLabeled, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -537,11 +537,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pIntegerLabeled" Type="System.Int32" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -554,8 +554,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypePoint">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePoint (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint point, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePoint(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint point, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePoint (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint point, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePoint(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint point, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -564,11 +564,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="point" Type="Cocos2D.CCPoint" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -581,8 +581,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypePointLock">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePointLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint pPointLock, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePointLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint pPointLock, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePointLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint pPointLock, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePointLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint pPointLock, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -591,11 +591,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="pPointLock" Type="Cocos2D.CCPoint" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="pPointLock" Type="CocosSharp.CCPoint" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -608,8 +608,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypePosition">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePosition (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCPoint pPosition, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePosition(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCPoint pPosition, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePosition (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint pPosition, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePosition(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint pPosition, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -618,11 +618,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="pPosition" Type="Cocos2D.CCPoint" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="pPosition" Type="CocosSharp.CCPoint" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -635,8 +635,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeScaleLock">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeScaleLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, float[] pScaleLock, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeScaleLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, float32[] pScaleLock, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeScaleLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float[] pScaleLock, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeScaleLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32[] pScaleLock, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -645,11 +645,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pScaleLock" Type="System.Single[]" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -662,8 +662,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeSize">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSize (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCSize pSize, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSize(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, valuetype Cocos2D.CCSize pSize, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSize (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCSize pSize, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSize(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCSize pSize, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -672,11 +672,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="pSize" Type="Cocos2D.CCSize" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="pSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -689,8 +689,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeSpriteFrame">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSpriteFrame (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCSpriteFrame spriteFrame, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSpriteFrame(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCSpriteFrame spriteFrame, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSpriteFrame (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCSpriteFrame spriteFrame, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSpriteFrame(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCSpriteFrame spriteFrame, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -699,11 +699,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -716,8 +716,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeString">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeString (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pString, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeString(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pString, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeString (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pString, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeString(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pString, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -726,11 +726,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pString" Type="System.String" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -743,8 +743,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeText">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeText (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, string pText, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeText(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, string pText, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeText (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pText, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeText(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pText, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -753,11 +753,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
         <Parameter Name="pText" Type="System.String" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -770,8 +770,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnHandlePropTypeTexture">
-      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeTexture (Cocos2D.CCNode node, Cocos2D.CCNode parent, string propertyName, Cocos2D.CCTexture2D texture, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeTexture(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, string propertyName, class Cocos2D.CCTexture2D texture, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeTexture (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCTexture2D texture, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeTexture(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCTexture2D texture, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -780,11 +780,11 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
         <Parameter Name="propertyName" Type="System.String" />
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -797,8 +797,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParseProperties">
-      <MemberSignature Language="C#" Value="public virtual void ParseProperties (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ParseProperties(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void ParseProperties (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ParseProperties(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -807,9 +807,9 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -820,19 +820,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeAnimation">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCAnimation ParsePropTypeAnimation (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCAnimation ParsePropTypeAnimation(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCAnimation ParsePropTypeAnimation (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCAnimation ParsePropTypeAnimation(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimation</ReturnType>
+        <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -844,19 +844,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeBlendFunc">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCBlendFunc ParsePropTypeBlendFunc (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCBlendFunc ParsePropTypeBlendFunc(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCBlendFunc ParsePropTypeBlendFunc (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCBlendFunc ParsePropTypeBlendFunc(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -868,19 +868,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeBlock">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.BlockData ParsePropTypeBlock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.BlockData ParsePropTypeBlock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.BlockData ParsePropTypeBlock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.BlockData ParsePropTypeBlock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.BlockData</ReturnType>
+        <ReturnType>CocosSharp.BlockData</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -892,19 +892,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeBlockCcControl">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.BlockCCControlData ParsePropTypeBlockCcControl (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.BlockCCControlData ParsePropTypeBlockCcControl(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.BlockCCControlData ParsePropTypeBlockCcControl (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.BlockCCControlData ParsePropTypeBlockCcControl(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.BlockCCControlData</ReturnType>
+        <ReturnType>CocosSharp.BlockCCControlData</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -916,8 +916,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeByte">
-      <MemberSignature Language="C#" Value="protected virtual byte ParsePropTypeByte (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance unsigned int8 ParsePropTypeByte(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual byte ParsePropTypeByte (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance unsigned int8 ParsePropTypeByte(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -926,9 +926,9 @@
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -942,19 +942,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeCcbFile">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCNode ParsePropTypeCcbFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCNode ParsePropTypeCcbFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCNode ParsePropTypeCcbFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCNode ParsePropTypeCcbFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -966,8 +966,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeCheck">
-      <MemberSignature Language="C#" Value="protected virtual bool ParsePropTypeCheck (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool ParsePropTypeCheck(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool ParsePropTypeCheck (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool ParsePropTypeCheck(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -976,9 +976,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -992,19 +992,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeColor3">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCColor3B ParsePropTypeColor3 (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCColor3B ParsePropTypeColor3(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCColor3B ParsePropTypeColor3 (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCColor3B ParsePropTypeColor3(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -1018,19 +1018,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeColor4FVar">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCColor4F[] ParsePropTypeColor4FVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCColor4F[] ParsePropTypeColor4FVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCColor4F[] ParsePropTypeColor4FVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCColor4F[] ParsePropTypeColor4FVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F[]</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1042,8 +1042,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeDegrees">
-      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeDegrees (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeDegrees(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeDegrees (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeDegrees(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1052,9 +1052,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -1068,8 +1068,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFlip">
-      <MemberSignature Language="C#" Value="protected virtual bool[] ParsePropTypeFlip (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool[] ParsePropTypeFlip(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool[] ParsePropTypeFlip (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool[] ParsePropTypeFlip(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1078,9 +1078,9 @@
         <ReturnType>System.Boolean[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1092,8 +1092,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFloat">
-      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloat (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloat(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloat (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloat(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1102,9 +1102,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1116,8 +1116,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFloatScale">
-      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloatScale (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloatScale(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloatScale (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloatScale(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1126,9 +1126,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1140,8 +1140,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFloatVar">
-      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeFloatVar (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeFloatVar(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeFloatVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeFloatVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1150,9 +1150,9 @@
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1164,8 +1164,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFntFile">
-      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFntFile (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFntFile(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFntFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFntFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1174,9 +1174,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1188,8 +1188,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeFontTTF">
-      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFontTTF (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFontTTF(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFontTTF (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFontTTF(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1198,9 +1198,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1212,8 +1212,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeInteger">
-      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeInteger (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeInteger(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeInteger (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeInteger(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1222,9 +1222,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1236,8 +1236,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeIntegerLabeled">
-      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeIntegerLabeled (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeIntegerLabeled(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeIntegerLabeled (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeIntegerLabeled(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1246,9 +1246,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1260,19 +1260,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypePoint">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePoint (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePoint(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePoint (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePoint(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1284,19 +1284,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypePointLock">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePointLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePointLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePointLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePointLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1308,19 +1308,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypePosition">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCPoint ParsePropTypePosition (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCPoint ParsePropTypePosition(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePosition (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePosition(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -1334,8 +1334,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeScaleLock">
-      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeScaleLock (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeScaleLock(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeScaleLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeScaleLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1344,9 +1344,9 @@
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -1360,19 +1360,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeSize">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCSize ParsePropTypeSize (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype Cocos2D.CCSize ParsePropTypeSize(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCSize ParsePropTypeSize (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCSize ParsePropTypeSize(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1384,19 +1384,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeSpriteFrame">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCSpriteFrame ParsePropTypeSpriteFrame (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader, string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCSpriteFrame ParsePropTypeSpriteFrame(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader, string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCSpriteFrame ParsePropTypeSpriteFrame (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCSpriteFrame ParsePropTypeSpriteFrame(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
         <Parameter Name="propertyName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -1410,8 +1410,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeString">
-      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeString (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeString(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeString (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeString(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1420,9 +1420,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1434,8 +1434,8 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeText">
-      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeText (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeText(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeText (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeText(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1444,9 +1444,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -1458,19 +1458,19 @@
       </Docs>
     </Member>
     <Member MemberName="ParsePropTypeTexture">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCTexture2D ParsePropTypeTexture (Cocos2D.CCNode node, Cocos2D.CCNode parent, Cocos2D.CCBReader reader);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCTexture2D ParsePropTypeTexture(class Cocos2D.CCNode node, class Cocos2D.CCNode parent, class Cocos2D.CCBReader reader) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCTexture2D ParsePropTypeTexture (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCTexture2D ParsePropTypeTexture(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="parent" Type="Cocos2D.CCNode" />
-        <Parameter Name="reader" Type="Cocos2D.CCBReader" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="parent" Type="CocosSharp.CCNode" />
+        <Parameter Name="reader" Type="CocosSharp.CCBReader" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>

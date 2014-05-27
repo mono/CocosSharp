@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCMathHelper" FullName="Cocos2D.CCMathHelper">
+<Type Name="CCMathHelper" FullName="CocosSharp.CCMathHelper">
   <TypeSignature Language="C#" Value="public static class CCMathHelper" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCMathHelper extends System.Object" />
   <AssemblyInfo>

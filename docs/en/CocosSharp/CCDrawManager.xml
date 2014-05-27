@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCDrawManager" FullName="Cocos2D.CCDrawManager">
+<Type Name="CCDrawManager" FullName="CocosSharp.CCDrawManager">
   <TypeSignature Language="C#" Value="public static class CCDrawManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCDrawManager extends System.Object" />
   <AssemblyInfo>
@@ -54,8 +54,8 @@
       </Docs>
     </Member>
     <Member MemberName="BindTexture">
-      <MemberSignature Language="C#" Value="public static void BindTexture (Cocos2D.CCTexture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BindTexture(class Cocos2D.CCTexture2D texture) cil managed" />
+      <MemberSignature Language="C#" Value="public static void BindTexture (CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BindTexture(class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -64,7 +64,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public static void BlendFunc (Cocos2D.CCBlendFunc blendFunc);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BlendFunc(valuetype Cocos2D.CCBlendFunc blendFunc) cil managed" />
+      <MemberSignature Language="C#" Value="public static void BlendFunc (CocosSharp.CCBlendFunc blendFunc);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void BlendFunc(valuetype CocosSharp.CCBlendFunc blendFunc) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,7 +83,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="blendFunc" Type="Cocos2D.CCBlendFunc" />
+        <Parameter Name="blendFunc" Type="CocosSharp.CCBlendFunc" />
       </Parameters>
       <Docs>
         <param name="blendFunc">To be added.</param>
@@ -196,8 +196,8 @@
       </Docs>
     </Member>
     <Member MemberName="CreateRenderTarget">
-      <MemberSignature Language="C#" Value="public static void CreateRenderTarget (Cocos2D.CCTexture2D pTexture, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CreateRenderTarget(class Cocos2D.CCTexture2D pTexture, valuetype Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage) cil managed" />
+      <MemberSignature Language="C#" Value="public static void CreateRenderTarget (CocosSharp.CCTexture2D pTexture, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CreateRenderTarget(class CocosSharp.CCTexture2D pTexture, valuetype Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -206,7 +206,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pTexture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="usage" Type="Microsoft.Xna.Framework.Graphics.RenderTargetUsage" />
       </Parameters>
       <Docs>
@@ -364,14 +364,14 @@
       </Docs>
     </Member>
     <Member MemberName="DesignResolutionSize">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize DesignResolutionSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCSize DesignResolutionSize" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize DesignResolutionSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCSize DesignResolutionSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -380,8 +380,8 @@
       </Docs>
     </Member>
     <Member MemberName="DrawBuffer&lt;T,T2&gt;">
-      <MemberSignature Language="C#" Value="public static void DrawBuffer&lt;T,T2&gt; (Cocos2D.CCVertexBuffer&lt;T&gt; vertexBuffer, Cocos2D.CCIndexBuffer&lt;T2&gt; indexBuffer, int start, int count) where T : struct where T2 : struct;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawBuffer&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T, struct .ctor (class System.ValueType) T2&gt;(class Cocos2D.CCVertexBuffer`1&lt;!!T&gt; vertexBuffer, class Cocos2D.CCIndexBuffer`1&lt;!!T2&gt; indexBuffer, int32 start, int32 count) cil managed" />
+      <MemberSignature Language="C#" Value="public static void DrawBuffer&lt;T,T2&gt; (CocosSharp.CCVertexBuffer&lt;T&gt; vertexBuffer, CocosSharp.CCIndexBuffer&lt;T2&gt; indexBuffer, int start, int count) where T : struct where T2 : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawBuffer&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T, struct .ctor (class System.ValueType) T2&gt;(class CocosSharp.CCVertexBuffer`1&lt;!!T&gt; vertexBuffer, class CocosSharp.CCIndexBuffer`1&lt;!!T2&gt; indexBuffer, int32 start, int32 count) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -407,8 +407,8 @@
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="vertexBuffer" Type="Cocos2D.CCVertexBuffer&lt;T&gt;" />
-        <Parameter Name="indexBuffer" Type="Cocos2D.CCIndexBuffer&lt;T2&gt;" />
+        <Parameter Name="vertexBuffer" Type="CocosSharp.CCVertexBuffer&lt;T&gt;" />
+        <Parameter Name="indexBuffer" Type="CocosSharp.CCIndexBuffer&lt;T2&gt;" />
         <Parameter Name="start" Type="System.Int32" />
         <Parameter Name="count" Type="System.Int32" />
       </Parameters>
@@ -517,8 +517,8 @@
       </Docs>
     </Member>
     <Member MemberName="DrawQuad">
-      <MemberSignature Language="C#" Value="public static void DrawQuad (ref Cocos2D.CCV3F_C4B_T2F_Quad quad);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuad(valuetype Cocos2D.CCV3F_C4B_T2F_Quad quad) cil managed" />
+      <MemberSignature Language="C#" Value="public static void DrawQuad (ref CocosSharp.CCV3F_C4B_T2F_Quad quad);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuad(valuetype CocosSharp.CCV3F_C4B_T2F_Quad quad) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -527,7 +527,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="quad" Type="Cocos2D.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
+        <Parameter Name="quad" Type="CocosSharp.CCV3F_C4B_T2F_Quad&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="quad">To be added.</param>
@@ -536,8 +536,8 @@
       </Docs>
     </Member>
     <Member MemberName="DrawQuads">
-      <MemberSignature Language="C#" Value="public static void DrawQuads (Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt; quads, int start, int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuads(class Cocos2D.CCRawList`1&lt;valuetype Cocos2D.CCV3F_C4B_T2F_Quad&gt; quads, int32 start, int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public static void DrawQuads (CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt; quads, int start, int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuads(class CocosSharp.CCRawList`1&lt;valuetype CocosSharp.CCV3F_C4B_T2F_Quad&gt; quads, int32 start, int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -546,7 +546,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="quads" Type="Cocos2D.CCRawList&lt;Cocos2D.CCV3F_C4B_T2F_Quad&gt;" />
+        <Parameter Name="quads" Type="CocosSharp.CCRawList&lt;CocosSharp.CCV3F_C4B_T2F_Quad&gt;" />
         <Parameter Name="start" Type="System.Int32" />
         <Parameter Name="n" Type="System.Int32" />
       </Parameters>
@@ -559,8 +559,8 @@
       </Docs>
     </Member>
     <Member MemberName="DrawQuadsBuffer&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public static void DrawQuadsBuffer&lt;T&gt; (Cocos2D.CCVertexBuffer&lt;T&gt; vertexBuffer, int start, int n) where T : struct;" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuadsBuffer&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt;(class Cocos2D.CCVertexBuffer`1&lt;!!T&gt; vertexBuffer, int32 start, int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public static void DrawQuadsBuffer&lt;T&gt; (CocosSharp.CCVertexBuffer&lt;T&gt; vertexBuffer, int start, int n) where T : struct;" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuadsBuffer&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt;(class CocosSharp.CCVertexBuffer`1&lt;!!T&gt; vertexBuffer, int32 start, int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -579,7 +579,7 @@
         </TypeParameter>
       </TypeParameters>
       <Parameters>
-        <Parameter Name="vertexBuffer" Type="Cocos2D.CCVertexBuffer&lt;T&gt;" />
+        <Parameter Name="vertexBuffer" Type="CocosSharp.CCVertexBuffer&lt;T&gt;" />
         <Parameter Name="start" Type="System.Int32" />
         <Parameter Name="n" Type="System.Int32" />
       </Parameters>
@@ -641,14 +641,14 @@
       </Docs>
     </Member>
     <Member MemberName="FrameSize">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize FrameSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCSize FrameSize" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize FrameSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCSize FrameSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -751,8 +751,8 @@
       </Docs>
     </Member>
     <Member MemberName="MultMatrix">
-      <MemberSignature Language="C#" Value="public static void MultMatrix (Cocos2D.CCAffineTransform transform, float z);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MultMatrix(valuetype Cocos2D.CCAffineTransform transform, float32 z) cil managed" />
+      <MemberSignature Language="C#" Value="public static void MultMatrix (CocosSharp.CCAffineTransform transform, float z);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MultMatrix(valuetype CocosSharp.CCAffineTransform transform, float32 z) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -761,7 +761,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="transform" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="transform" Type="CocosSharp.CCAffineTransform" />
         <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -772,8 +772,8 @@
       </Docs>
     </Member>
     <Member MemberName="MultMatrix">
-      <MemberSignature Language="C#" Value="public static void MultMatrix (ref Cocos2D.CCAffineTransform transform, float z);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MultMatrix(valuetype Cocos2D.CCAffineTransform transform, float32 z) cil managed" />
+      <MemberSignature Language="C#" Value="public static void MultMatrix (ref CocosSharp.CCAffineTransform transform, float z);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void MultMatrix(valuetype CocosSharp.CCAffineTransform transform, float32 z) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -782,7 +782,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="transform" Type="Cocos2D.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="transform" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
         <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -939,14 +939,14 @@
       </Docs>
     </Member>
     <Member MemberName="ScissorRect">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCRect ScissorRect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCRect ScissorRect" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect ScissorRect { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCRect ScissorRect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -971,14 +971,14 @@
       </Docs>
     </Member>
     <Member MemberName="ScreenToWorld">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint ScreenToWorld (float x, float y);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint ScreenToWorld(float32 x, float32 y) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint ScreenToWorld (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint ScreenToWorld(float32 x, float32 y) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="x" Type="System.Single" />
@@ -993,8 +993,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetDesignResolutionSize">
-      <MemberSignature Language="C#" Value="public static void SetDesignResolutionSize (float width, float height, Cocos2D.CCResolutionPolicy resolutionPolicy);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetDesignResolutionSize(float32 width, float32 height, valuetype Cocos2D.CCResolutionPolicy resolutionPolicy) cil managed" />
+      <MemberSignature Language="C#" Value="public static void SetDesignResolutionSize (float width, float height, CocosSharp.CCResolutionPolicy resolutionPolicy);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetDesignResolutionSize(float32 width, float32 height, valuetype CocosSharp.CCResolutionPolicy resolutionPolicy) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1005,7 +1005,7 @@
       <Parameters>
         <Parameter Name="width" Type="System.Single" />
         <Parameter Name="height" Type="System.Single" />
-        <Parameter Name="resolutionPolicy" Type="Cocos2D.CCResolutionPolicy" />
+        <Parameter Name="resolutionPolicy" Type="CocosSharp.CCResolutionPolicy" />
       </Parameters>
       <Docs>
         <param name="width">To be added.</param>
@@ -1070,8 +1070,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetRenderTarget">
-      <MemberSignature Language="C#" Value="public static void SetRenderTarget (Cocos2D.CCTexture2D pTexture);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRenderTarget(class Cocos2D.CCTexture2D pTexture) cil managed" />
+      <MemberSignature Language="C#" Value="public static void SetRenderTarget (CocosSharp.CCTexture2D pTexture);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRenderTarget(class CocosSharp.CCTexture2D pTexture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -1080,7 +1080,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="pTexture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="pTexture">To be added.</param>
@@ -1269,14 +1269,14 @@
       </Docs>
     </Member>
     <Member MemberName="ViewPortRect">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCRect ViewPortRect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCRect ViewPortRect" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect ViewPortRect { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCRect ViewPortRect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1285,14 +1285,14 @@
       </Docs>
     </Member>
     <Member MemberName="VisibleOrigin">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint VisibleOrigin { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCPoint VisibleOrigin" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint VisibleOrigin { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCPoint VisibleOrigin" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1301,14 +1301,14 @@
       </Docs>
     </Member>
     <Member MemberName="VisibleSize">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize VisibleSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype Cocos2D.CCSize VisibleSize" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize VisibleSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCSize VisibleSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

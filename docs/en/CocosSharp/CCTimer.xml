@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTimer" FullName="Cocos2D.CCTimer">
-  <TypeSignature Language="C#" Value="public class CCTimer : Cocos2D.ICCSelectorProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTimer extends System.Object implements class Cocos2D.ICCSelectorProtocol" />
+<Type Name="CCTimer" FullName="CocosSharp.CCTimer">
+  <TypeSignature Language="C#" Value="public class CCTimer : CocosSharp.ICCSelectorProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTimer extends System.Object implements class CocosSharp.ICCSelectorProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCSelectorProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCSelectorProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -35,15 +35,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTimer (Cocos2D.CCScheduler scheduler, Cocos2D.ICCSelectorProtocol target, Action&lt;float&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCScheduler scheduler, class Cocos2D.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTimer (CocosSharp.CCScheduler scheduler, CocosSharp.ICCSelectorProtocol target, Action&lt;float&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScheduler scheduler, class CocosSharp.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="scheduler" Type="Cocos2D.CCScheduler" />
-        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+        <Parameter Name="scheduler" Type="CocosSharp.CCScheduler" />
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
       </Parameters>
       <Docs>
@@ -55,15 +55,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTimer (Cocos2D.CCScheduler scheduler, Cocos2D.ICCSelectorProtocol target, Action&lt;float&gt; selector, float seconds);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCScheduler scheduler, class Cocos2D.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector, float32 seconds) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTimer (CocosSharp.CCScheduler scheduler, CocosSharp.ICCSelectorProtocol target, Action&lt;float&gt; selector, float seconds);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScheduler scheduler, class CocosSharp.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector, float32 seconds) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="scheduler" Type="Cocos2D.CCScheduler" />
-        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+        <Parameter Name="scheduler" Type="CocosSharp.CCScheduler" />
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
         <Parameter Name="seconds" Type="System.Single" />
       </Parameters>
@@ -77,15 +77,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTimer (Cocos2D.CCScheduler scheduler, Cocos2D.ICCSelectorProtocol target, Action&lt;float&gt; selector, float seconds, uint repeat, float delay);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCScheduler scheduler, class Cocos2D.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector, float32 seconds, unsigned int32 repeat, float32 delay) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTimer (CocosSharp.CCScheduler scheduler, CocosSharp.ICCSelectorProtocol target, Action&lt;float&gt; selector, float seconds, uint repeat, float delay);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScheduler scheduler, class CocosSharp.ICCSelectorProtocol target, class System.Action`1&lt;float32&gt; selector, float32 seconds, unsigned int32 repeat, float32 delay) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="scheduler" Type="Cocos2D.CCScheduler" />
-        <Parameter Name="target" Type="Cocos2D.ICCSelectorProtocol" />
+        <Parameter Name="scheduler" Type="CocosSharp.CCScheduler" />
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
         <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
         <Parameter Name="seconds" Type="System.Single" />
         <Parameter Name="repeat" Type="System.UInt32" />

@@ -1,4 +1,4 @@
-<Type Name="CCBAnimationManagerDelegate" FullName="Cocos2D.CCBAnimationManagerDelegate">
+<Type Name="CCBAnimationManagerDelegate" FullName="CocosSharp.CCBAnimationManagerDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCBAnimationManagerDelegate(string name);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBAnimationManagerDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBSequenceProperty" FullName="Cocos2D.CCBSequenceProperty">
+<Type Name="CCBSequenceProperty" FullName="CocosSharp.CCBSequenceProperty">
   <TypeSignature Language="C#" Value="public class CCBSequenceProperty" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBSequenceProperty extends System.Object" />
   <AssemblyInfo>
@@ -29,14 +29,14 @@
       </Docs>
     </Member>
     <Member MemberName="Keyframes">
-      <MemberSignature Language="C#" Value="public readonly System.Collections.Generic.List&lt;Cocos2D.CCBKeyframe&gt; Keyframes;" />
-      <MemberSignature Language="ILAsm" Value=".field public initonly class System.Collections.Generic.List`1&lt;class Cocos2D.CCBKeyframe&gt; Keyframes" />
+      <MemberSignature Language="C#" Value="public readonly System.Collections.Generic.List&lt;CocosSharp.CCBKeyframe&gt; Keyframes;" />
+      <MemberSignature Language="ILAsm" Value=".field public initonly class System.Collections.Generic.List`1&lt;class CocosSharp.CCBKeyframe&gt; Keyframes" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCBKeyframe&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCBKeyframe&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -59,14 +59,14 @@
       </Docs>
     </Member>
     <Member MemberName="Type">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBPropType Type { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBPropType Type" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBPropType Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBPropType Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

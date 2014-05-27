@@ -1,4 +1,4 @@
-<Type Name="CCGamePadDPadDelegate" FullName="Cocos2D.CCGamePadDPadDelegate">
+<Type Name="CCGamePadDPadDelegate" FullName="CocosSharp.CCGamePadDPadDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCGamePadDPadDelegate(CCGamePadButtonStatus leftButton, CCGamePadButtonStatus upButton, CCGamePadButtonStatus rightButton, CCGamePadButtonStatus downButton, PlayerIndex player);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadDPadDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>
@@ -9,10 +9,10 @@
     <BaseTypeName>System.Delegate</BaseTypeName>
   </Base>
   <Parameters>
-    <Parameter Name="leftButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="upButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="rightButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="downButton" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="leftButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="upButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="rightButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="downButton" Type="CocosSharp.CCGamePadButtonStatus" />
     <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
   </Parameters>
   <ReturnValue>

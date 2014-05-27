@@ -1,30 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSpriteBatchNode" FullName="Cocos2D.CCSpriteBatchNode">
-  <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : Cocos2D.CCNode, Cocos2D.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends Cocos2D.CCNode implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
+<Type Name="CCSpriteBatchNode" FullName="CocosSharp.CCSpriteBatchNode">
+  <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : CocosSharp.CCNode, CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
     <summary> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</summary>
     <remarks>
       <para>
-        <see cref="T:Cocos2D.CCSpriteBatchNode" /> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</para>
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
-      <para>A <see cref="T:Cocos2D.CCSpriteBatchNode" /> can reference one and only one texture (one image file, one texture atlas). Only the Sprites that are contained in that texture can be added to the <see cref="T:Cocos2D.CCSpriteBatchNode" />. All Sprites added to a <see cref="T:Cocos2D.CCSpriteBatchNode" /> are drawn in one OpenGL ES draw call. If the Sprites are not added to a <see cref="T:Cocos2D.CCSpriteBatchNode" /> then an OpenGL ES draw call will be needed for each one, which is less efficient.</para>
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
-      <see cref="T:Cocos2D.CCSpriteBatchNode" />
+        <see cref="T:CocosSharp.CCSpriteBatchNode" /> is like a batch node: if it contains children, it will draw them in 1 single OpenGL call (often known as "batch draw").</para>
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
+      <para>A <see cref="T:CocosSharp.CCSpriteBatchNode" /> can reference one and only one texture (one image file, one texture atlas). Only the Sprites that are contained in that texture can be added to the <see cref="T:CocosSharp.CCSpriteBatchNode" />. All Sprites added to a <see cref="T:CocosSharp.CCSpriteBatchNode" /> are drawn in one OpenGL ES draw call. If the Sprites are not added to a <see cref="T:CocosSharp.CCSpriteBatchNode" /> then an OpenGL ES draw call will be needed for each one, which is less efficient.</para>
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
+      <see cref="T:CocosSharp.CCSpriteBatchNode" />
       <para>Limitations:<list type="bullet" /></para>
       <list type="bullet" />
       <para>
@@ -57,14 +57,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (Cocos2D.CCTexture2D tex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTexture2D tex) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (CocosSharp.CCTexture2D tex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D tex) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="tex">To be added.</param>
@@ -89,14 +89,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (Cocos2D.CCTexture2D tex, int capacity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCTexture2D tex, int32 capacity) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (CocosSharp.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D tex, int32 capacity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="capacity" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -125,8 +125,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -135,7 +135,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
@@ -152,17 +152,17 @@
       </Docs>
     </Member>
     <Member MemberName="AddSpriteWithoutQuad">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSpriteBatchNode AddSpriteWithoutQuad (Cocos2D.CCSprite child, int z, int aTag);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class Cocos2D.CCSpriteBatchNode AddSpriteWithoutQuad(class Cocos2D.CCSprite child, int32 z, int32 aTag) cil managed" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSpriteBatchNode AddSpriteWithoutQuad (CocosSharp.CCSprite child, int z, int aTag);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class CocosSharp.CCSpriteBatchNode AddSpriteWithoutQuad(class CocosSharp.CCSprite child, int32 z, int32 aTag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteBatchNode</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteBatchNode</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCSprite" />
+        <Parameter Name="child" Type="CocosSharp.CCSprite" />
         <Parameter Name="z" Type="System.Int32" />
         <Parameter Name="aTag" Type="System.Int32" />
       </Parameters>
@@ -176,8 +176,8 @@
       </Docs>
     </Member>
     <Member MemberName="AppendChild">
-      <MemberSignature Language="C#" Value="public void AppendChild (Cocos2D.CCSprite sprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendChild(class Cocos2D.CCSprite sprite) cil managed" />
+      <MemberSignature Language="C#" Value="public void AppendChild (CocosSharp.CCSprite sprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AppendChild(class CocosSharp.CCSprite sprite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -186,7 +186,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="sprite" Type="CocosSharp.CCSprite" />
       </Parameters>
       <Docs>
         <param name="sprite">To be added.</param>
@@ -195,8 +195,8 @@
       </Docs>
     </Member>
     <Member MemberName="AtlasIndexForChild">
-      <MemberSignature Language="C#" Value="public int AtlasIndexForChild (Cocos2D.CCSprite pobSprite, int nZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 AtlasIndexForChild(class Cocos2D.CCSprite pobSprite, int32 nZ) cil managed" />
+      <MemberSignature Language="C#" Value="public int AtlasIndexForChild (CocosSharp.CCSprite pobSprite, int nZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 AtlasIndexForChild(class CocosSharp.CCSprite pobSprite, int32 nZ) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -205,7 +205,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pobSprite" Type="CocosSharp.CCSprite" />
         <Parameter Name="nZ" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -217,14 +217,14 @@
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the blending function that is currently being used.</summary>
@@ -232,22 +232,22 @@
         <remarks>
           <para>Returns the blending function that is currently being used.</para>
           <para>
-            <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+            <para>A <see cref="T:CocosSharp.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
           </para>
-          <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
-          <see cref="T:Cocos2D.CCBlendFunc" />
+          <para>A <see cref="T:CocosSharp.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          <see cref="T:CocosSharp.CCBlendFunc" />
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Descendants">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;Cocos2D.CCSprite&gt; Descendants { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCRawList`1&lt;class Cocos2D.CCSprite&gt; Descendants" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt; Descendants { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRawList`1&lt;class CocosSharp.CCSprite&gt; Descendants" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCSprite&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -291,8 +291,8 @@
       </Docs>
     </Member>
     <Member MemberName="HighestAtlasIndexInChild">
-      <MemberSignature Language="C#" Value="public int HighestAtlasIndexInChild (Cocos2D.CCSprite pSprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 HighestAtlasIndexInChild(class Cocos2D.CCSprite pSprite) cil managed" />
+      <MemberSignature Language="C#" Value="public int HighestAtlasIndexInChild (CocosSharp.CCSprite pSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 HighestAtlasIndexInChild(class CocosSharp.CCSprite pSprite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -301,7 +301,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pSprite" Type="CocosSharp.CCSprite" />
       </Parameters>
       <Docs>
         <param name="pSprite">To be added.</param>
@@ -367,8 +367,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithTexture (Cocos2D.CCTexture2D tex, int capacity);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithTexture(class Cocos2D.CCTexture2D tex, int32 capacity) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithTexture (CocosSharp.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithTexture(class CocosSharp.CCTexture2D tex, int32 capacity) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -377,7 +377,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="tex" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="capacity" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -390,8 +390,8 @@
       </Docs>
     </Member>
     <Member MemberName="InsertChild">
-      <MemberSignature Language="C#" Value="public void InsertChild (Cocos2D.CCSprite pobSprite, int uIndex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertChild(class Cocos2D.CCSprite pobSprite, int32 uIndex) cil managed" />
+      <MemberSignature Language="C#" Value="public void InsertChild (CocosSharp.CCSprite pobSprite, int uIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertChild(class CocosSharp.CCSprite pobSprite, int32 uIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -400,7 +400,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pobSprite" Type="CocosSharp.CCSprite" />
         <Parameter Name="uIndex" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -411,8 +411,8 @@
       </Docs>
     </Member>
     <Member MemberName="InsertQuadFromSprite">
-      <MemberSignature Language="C#" Value="protected void InsertQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InsertQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberSignature Language="C#" Value="protected void InsertQuadFromSprite (CocosSharp.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InsertQuadFromSprite(class CocosSharp.CCSprite sprite, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -421,7 +421,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="sprite" Type="CocosSharp.CCSprite" />
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -432,8 +432,8 @@
       </Docs>
     </Member>
     <Member MemberName="LowestAtlasIndexInChild">
-      <MemberSignature Language="C#" Value="public int LowestAtlasIndexInChild (Cocos2D.CCSprite pSprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 LowestAtlasIndexInChild(class Cocos2D.CCSprite pSprite) cil managed" />
+      <MemberSignature Language="C#" Value="public int LowestAtlasIndexInChild (CocosSharp.CCSprite pSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 LowestAtlasIndexInChild(class CocosSharp.CCSprite pSprite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -442,7 +442,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pSprite" Type="CocosSharp.CCSprite" />
       </Parameters>
       <Docs>
         <param name="pSprite">To be added.</param>
@@ -452,14 +452,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_blendFunc">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCBlendFunc m_blendFunc;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCBlendFunc m_blendFunc" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCBlendFunc m_blendFunc;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCBlendFunc m_blendFunc" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -467,14 +467,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pobDescendants">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCRawList&lt;Cocos2D.CCSprite&gt; m_pobDescendants;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCRawList`1&lt;class Cocos2D.CCSprite&gt; m_pobDescendants" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt; m_pobDescendants;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCRawList`1&lt;class CocosSharp.CCSprite&gt; m_pobDescendants" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;Cocos2D.CCSprite&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -482,14 +482,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pobTextureAtlas">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTextureAtlas m_pobTextureAtlas;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTextureAtlas m_pobTextureAtlas" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTextureAtlas m_pobTextureAtlas;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTextureAtlas m_pobTextureAtlas" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -497,8 +497,8 @@
       </Docs>
     </Member>
     <Member MemberName="RebuildIndexInOrder">
-      <MemberSignature Language="C#" Value="public int RebuildIndexInOrder (Cocos2D.CCSprite pobParent, int uIndex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 RebuildIndexInOrder(class Cocos2D.CCSprite pobParent, int32 uIndex) cil managed" />
+      <MemberSignature Language="C#" Value="public int RebuildIndexInOrder (CocosSharp.CCSprite pobParent, int uIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 RebuildIndexInOrder(class CocosSharp.CCSprite pobParent, int32 uIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -507,7 +507,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobParent" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pobParent" Type="CocosSharp.CCSprite" />
         <Parameter Name="uIndex" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -541,8 +541,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public override void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -551,7 +551,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -587,8 +587,8 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="RemoveSpriteFromAtlas">
-      <MemberSignature Language="C#" Value="public void RemoveSpriteFromAtlas (Cocos2D.CCSprite pobSprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFromAtlas(class Cocos2D.CCSprite pobSprite) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveSpriteFromAtlas (CocosSharp.CCSprite pobSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSpriteFromAtlas(class CocosSharp.CCSprite pobSprite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -597,7 +597,7 @@ Removing a child from a  is very slow </summary>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pobSprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="pobSprite" Type="CocosSharp.CCSprite" />
       </Parameters>
       <Docs>
         <param name="pobSprite">To be added.</param>
@@ -625,8 +625,8 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="ReorderChild">
-      <MemberSignature Language="C#" Value="public override void ReorderChild (Cocos2D.CCNode child, int zOrder);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ReorderChild(class Cocos2D.CCNode child, int32 zOrder) cil managed" />
+      <MemberSignature Language="C#" Value="public override void ReorderChild (CocosSharp.CCNode child, int zOrder);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ReorderChild(class CocosSharp.CCNode child, int32 zOrder) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -635,7 +635,7 @@ Removing a child from a  is very slow </summary>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -665,14 +665,14 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Sets a new texuture. It will be retained.</summary>
@@ -684,14 +684,14 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTextureAtlas TextureAtlas { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTextureAtlas TextureAtlas" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureAtlas TextureAtlas" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTextureAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -700,8 +700,8 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="UpdateQuadFromSprite">
-      <MemberSignature Language="C#" Value="protected void UpdateQuadFromSprite (Cocos2D.CCSprite sprite, int index);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateQuadFromSprite(class Cocos2D.CCSprite sprite, int32 index) cil managed" />
+      <MemberSignature Language="C#" Value="protected void UpdateQuadFromSprite (CocosSharp.CCSprite sprite, int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateQuadFromSprite(class CocosSharp.CCSprite sprite, int32 index) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -710,7 +710,7 @@ Removing a child from a  is very slow </summary>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="sprite" Type="Cocos2D.CCSprite" />
+        <Parameter Name="sprite" Type="CocosSharp.CCSprite" />
         <Parameter Name="index" Type="System.Int32" />
       </Parameters>
       <Docs>

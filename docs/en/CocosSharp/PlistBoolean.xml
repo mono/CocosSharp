@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="PlistBoolean" FullName="Cocos2D.PlistBoolean">
-  <TypeSignature Language="C#" Value="public class PlistBoolean : Cocos2D.PlistObject&lt;bool&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistBoolean extends Cocos2D.PlistObject`1&lt;bool&gt;" />
+<Type Name="PlistBoolean" FullName="CocosSharp.PlistBoolean">
+  <TypeSignature Language="C#" Value="public class PlistBoolean : CocosSharp.PlistObject&lt;bool&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistBoolean extends CocosSharp.PlistObject`1&lt;bool&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.PlistObject&lt;System.Boolean&gt;</BaseTypeName>
+    <BaseTypeName>CocosSharp.PlistObject&lt;System.Boolean&gt;</BaseTypeName>
     <BaseTypeArguments>
       <BaseTypeArgument TypeParamName="T">System.Boolean</BaseTypeArgument>
     </BaseTypeArguments>
@@ -35,14 +35,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsArray">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistArray AsArray { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistArray AsArray" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistArray AsArray { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistArray AsArray" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistArray</ReturnType>
+        <ReturnType>CocosSharp.PlistArray</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,14 +99,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsDictionary">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistDictionary AsDictionary { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistDictionary AsDictionary" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistDictionary AsDictionary { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary AsDictionary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDictionary</ReturnType>
+        <ReturnType>CocosSharp.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

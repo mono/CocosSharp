@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLayer" FullName="Cocos2D.CCLayer">
-  <TypeSignature Language="C#" Value="public class CCLayer : Cocos2D.CCNode, Cocos2D.ICCAccelerometerDelegate, Cocos2D.ICCKeypadDelegate, Cocos2D.ICCStandardTouchDelegate, Cocos2D.ICCTargetedTouchDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayer extends Cocos2D.CCNode implements class Cocos2D.ICCAccelerometerDelegate, class Cocos2D.ICCKeypadDelegate, class Cocos2D.ICCStandardTouchDelegate, class Cocos2D.ICCTargetedTouchDelegate, class Cocos2D.ICCTouchDelegate" />
+<Type Name="CCLayer" FullName="CocosSharp.CCLayer">
+  <TypeSignature Language="C#" Value="public class CCLayer : CocosSharp.CCNode, CocosSharp.ICCAccelerometerDelegate, CocosSharp.ICCKeypadDelegate, CocosSharp.ICCStandardTouchDelegate, CocosSharp.ICCTargetedTouchDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayer extends CocosSharp.CCNode implements class CocosSharp.ICCAccelerometerDelegate, class CocosSharp.ICCKeypadDelegate, class CocosSharp.ICCStandardTouchDelegate, class CocosSharp.ICCTargetedTouchDelegate, class CocosSharp.ICCTouchDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCAccelerometerDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCAccelerometerDelegate</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Cocos2D.ICCKeypadDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCKeypadDelegate</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Cocos2D.ICCStandardTouchDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCStandardTouchDelegate</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTargetedTouchDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTargetedTouchDelegate</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -42,14 +42,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayer (Cocos2D.CCClipMode clipMode);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCClipMode clipMode) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayer (CocosSharp.CCClipMode clipMode);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCClipMode clipMode) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="clipMode" Type="Cocos2D.CCClipMode" />
+        <Parameter Name="clipMode" Type="CocosSharp.CCClipMode" />
       </Parameters>
       <Docs>
         <param name="clipMode">To be added.</param>
@@ -74,14 +74,14 @@
       </Docs>
     </Member>
     <Member MemberName="ChildClippingMode">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCClipMode ChildClippingMode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCClipMode ChildClippingMode" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCClipMode ChildClippingMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCClipMode ChildClippingMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCClipMode</ReturnType>
+        <ReturnType>CocosSharp.CCClipMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -90,14 +90,14 @@
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCSize ContentSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSize" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -106,8 +106,8 @@
       </Docs>
     </Member>
     <Member MemberName="DidAccelerate">
-      <MemberSignature Language="C#" Value="public virtual void DidAccelerate (Cocos2D.CCAcceleration pAccelerationValue);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DidAccelerate(class Cocos2D.CCAcceleration pAccelerationValue) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void DidAccelerate (CocosSharp.CCAcceleration pAccelerationValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DidAccelerate(class CocosSharp.CCAcceleration pAccelerationValue) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -116,7 +116,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pAccelerationValue" Type="Cocos2D.CCAcceleration" />
+        <Parameter Name="pAccelerationValue" Type="CocosSharp.CCAcceleration" />
       </Parameters>
       <Docs>
         <param name="pAccelerationValue">To be added.</param>
@@ -206,14 +206,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_childClippingMode">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCClipMode m_childClippingMode;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCClipMode m_childClippingMode" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCClipMode m_childClippingMode;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCClipMode m_childClippingMode" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCClipMode</ReturnType>
+        <ReturnType>CocosSharp.CCClipMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -269,8 +269,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnGamePadButtonUpdate">
-      <MemberSignature Language="C#" Value="protected virtual void OnGamePadButtonUpdate (Cocos2D.CCGamePadButtonStatus backButton, Cocos2D.CCGamePadButtonStatus startButton, Cocos2D.CCGamePadButtonStatus systemButton, Cocos2D.CCGamePadButtonStatus aButton, Cocos2D.CCGamePadButtonStatus bButton, Cocos2D.CCGamePadButtonStatus xButton, Cocos2D.CCGamePadButtonStatus yButton, Cocos2D.CCGamePadButtonStatus leftShoulder, Cocos2D.CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadButtonUpdate(valuetype Cocos2D.CCGamePadButtonStatus backButton, valuetype Cocos2D.CCGamePadButtonStatus startButton, valuetype Cocos2D.CCGamePadButtonStatus systemButton, valuetype Cocos2D.CCGamePadButtonStatus aButton, valuetype Cocos2D.CCGamePadButtonStatus bButton, valuetype Cocos2D.CCGamePadButtonStatus xButton, valuetype Cocos2D.CCGamePadButtonStatus yButton, valuetype Cocos2D.CCGamePadButtonStatus leftShoulder, valuetype Cocos2D.CCGamePadButtonStatus rightShoulder, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnGamePadButtonUpdate (CocosSharp.CCGamePadButtonStatus backButton, CocosSharp.CCGamePadButtonStatus startButton, CocosSharp.CCGamePadButtonStatus systemButton, CocosSharp.CCGamePadButtonStatus aButton, CocosSharp.CCGamePadButtonStatus bButton, CocosSharp.CCGamePadButtonStatus xButton, CocosSharp.CCGamePadButtonStatus yButton, CocosSharp.CCGamePadButtonStatus leftShoulder, CocosSharp.CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadButtonUpdate(valuetype CocosSharp.CCGamePadButtonStatus backButton, valuetype CocosSharp.CCGamePadButtonStatus startButton, valuetype CocosSharp.CCGamePadButtonStatus systemButton, valuetype CocosSharp.CCGamePadButtonStatus aButton, valuetype CocosSharp.CCGamePadButtonStatus bButton, valuetype CocosSharp.CCGamePadButtonStatus xButton, valuetype CocosSharp.CCGamePadButtonStatus yButton, valuetype CocosSharp.CCGamePadButtonStatus leftShoulder, valuetype CocosSharp.CCGamePadButtonStatus rightShoulder, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -279,15 +279,15 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="backButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="startButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="systemButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="aButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="bButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="xButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="yButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="leftShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="rightShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="backButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="startButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="systemButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="aButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="bButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="xButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="yButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="leftShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="rightShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
         <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
       </Parameters>
       <Docs>
@@ -327,8 +327,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnGamePadDPadUpdate">
-      <MemberSignature Language="C#" Value="protected virtual void OnGamePadDPadUpdate (Cocos2D.CCGamePadButtonStatus leftButton, Cocos2D.CCGamePadButtonStatus upButton, Cocos2D.CCGamePadButtonStatus rightButton, Cocos2D.CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadDPadUpdate(valuetype Cocos2D.CCGamePadButtonStatus leftButton, valuetype Cocos2D.CCGamePadButtonStatus upButton, valuetype Cocos2D.CCGamePadButtonStatus rightButton, valuetype Cocos2D.CCGamePadButtonStatus downButton, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnGamePadDPadUpdate (CocosSharp.CCGamePadButtonStatus leftButton, CocosSharp.CCGamePadButtonStatus upButton, CocosSharp.CCGamePadButtonStatus rightButton, CocosSharp.CCGamePadButtonStatus downButton, Microsoft.Xna.Framework.PlayerIndex player);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadDPadUpdate(valuetype CocosSharp.CCGamePadButtonStatus leftButton, valuetype CocosSharp.CCGamePadButtonStatus upButton, valuetype CocosSharp.CCGamePadButtonStatus rightButton, valuetype CocosSharp.CCGamePadButtonStatus downButton, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -337,10 +337,10 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="leftButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="upButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="rightButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="downButton" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="leftButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="upButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="rightButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="downButton" Type="CocosSharp.CCGamePadButtonStatus" />
         <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
       </Parameters>
       <Docs>
@@ -354,8 +354,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnGamePadStickUpdate">
-      <MemberSignature Language="C#" Value="protected virtual void OnGamePadStickUpdate (Cocos2D.CCGameStickStatus leftStick, Cocos2D.CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadStickUpdate(valuetype Cocos2D.CCGameStickStatus leftStick, valuetype Cocos2D.CCGameStickStatus rightStick, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void OnGamePadStickUpdate (CocosSharp.CCGameStickStatus leftStick, CocosSharp.CCGameStickStatus rightStick, Microsoft.Xna.Framework.PlayerIndex player);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnGamePadStickUpdate(valuetype CocosSharp.CCGameStickStatus leftStick, valuetype CocosSharp.CCGameStickStatus rightStick, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -364,8 +364,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="leftStick" Type="Cocos2D.CCGameStickStatus" />
-        <Parameter Name="rightStick" Type="Cocos2D.CCGameStickStatus" />
+        <Parameter Name="leftStick" Type="CocosSharp.CCGameStickStatus" />
+        <Parameter Name="rightStick" Type="CocosSharp.CCGameStickStatus" />
         <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
       </Parameters>
       <Docs>
@@ -416,8 +416,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchBegan">
-      <MemberSignature Language="C#" Value="public virtual bool TouchBegan (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TouchBegan(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool TouchBegan (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TouchBegan(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -426,7 +426,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -436,8 +436,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchCancelled">
-      <MemberSignature Language="C#" Value="public virtual void TouchCancelled (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchCancelled(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchCancelled (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -446,7 +446,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -471,8 +471,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchEnded">
-      <MemberSignature Language="C#" Value="public virtual void TouchEnded (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchEnded(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchEnded (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchEnded(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -481,7 +481,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -490,8 +490,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesBegan">
-      <MemberSignature Language="C#" Value="public virtual void TouchesBegan (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesBegan (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -500,7 +500,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -509,8 +509,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesCancelled">
-      <MemberSignature Language="C#" Value="public virtual void TouchesCancelled (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesCancelled (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -519,7 +519,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -528,8 +528,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesEnded">
-      <MemberSignature Language="C#" Value="public virtual void TouchesEnded (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesEnded (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -538,7 +538,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -547,8 +547,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesMoved">
-      <MemberSignature Language="C#" Value="public virtual void TouchesMoved (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesMoved (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -557,7 +557,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -566,14 +566,14 @@
       </Docs>
     </Member>
     <Member MemberName="TouchMode">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTouchMode TouchMode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCTouchMode TouchMode" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTouchMode TouchMode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTouchMode TouchMode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTouchMode</ReturnType>
+        <ReturnType>CocosSharp.CCTouchMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -582,8 +582,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchMoved">
-      <MemberSignature Language="C#" Value="public virtual void TouchMoved (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchMoved(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchMoved (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -592,7 +592,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>

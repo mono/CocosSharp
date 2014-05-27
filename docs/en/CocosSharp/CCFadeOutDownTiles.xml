@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFadeOutDownTiles" FullName="Cocos2D.CCFadeOutDownTiles">
-  <TypeSignature Language="C#" Value="public class CCFadeOutDownTiles : Cocos2D.CCFadeOutUpTiles" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutDownTiles extends Cocos2D.CCFadeOutUpTiles" />
+<Type Name="CCFadeOutDownTiles" FullName="CocosSharp.CCFadeOutDownTiles">
+  <TypeSignature Language="C#" Value="public class CCFadeOutDownTiles : CocosSharp.CCFadeOutUpTiles" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutDownTiles extends CocosSharp.CCFadeOutUpTiles" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCFadeOutUpTiles</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFadeOutUpTiles</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,15 +31,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFadeOutDownTiles (float duration, Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFadeOutDownTiles (float duration, CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName="TestFunc">
-      <MemberSignature Language="C#" Value="public override float TestFunc (Cocos2D.CCGridSize pos, float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance float32 TestFunc(valuetype Cocos2D.CCGridSize pos, float32 time) cil managed" />
+      <MemberSignature Language="C#" Value="public override float TestFunc (CocosSharp.CCGridSize pos, float time);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance float32 TestFunc(valuetype CocosSharp.CCGridSize pos, float32 time) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -59,7 +59,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
         <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBHelper" FullName="Cocos2D.CCBHelper">
+<Type Name="CCBHelper" FullName="CocosSharp.CCBHelper">
   <TypeSignature Language="C#" Value="public static class CCBHelper" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCBHelper extends System.Object" />
   <AssemblyInfo>
@@ -16,19 +16,19 @@
   </Docs>
   <Members>
     <Member MemberName="GetAbsolutePosition">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint GetAbsolutePosition (Cocos2D.CCPoint pt, Cocos2D.CCBPositionType nType, Cocos2D.CCSize containerSize, string pPropName);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint GetAbsolutePosition(valuetype Cocos2D.CCPoint pt, valuetype Cocos2D.CCBPositionType nType, valuetype Cocos2D.CCSize containerSize, string pPropName) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint GetAbsolutePosition (CocosSharp.CCPoint pt, CocosSharp.CCBPositionType nType, CocosSharp.CCSize containerSize, string pPropName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint GetAbsolutePosition(valuetype CocosSharp.CCPoint pt, valuetype CocosSharp.CCBPositionType nType, valuetype CocosSharp.CCSize containerSize, string pPropName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pt" Type="Cocos2D.CCPoint" />
-        <Parameter Name="nType" Type="Cocos2D.CCBPositionType" />
-        <Parameter Name="containerSize" Type="Cocos2D.CCSize" />
+        <Parameter Name="pt" Type="CocosSharp.CCPoint" />
+        <Parameter Name="nType" Type="CocosSharp.CCBPositionType" />
+        <Parameter Name="containerSize" Type="CocosSharp.CCSize" />
         <Parameter Name="pPropName" Type="System.String" />
       </Parameters>
       <Docs>
@@ -42,8 +42,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetRelativeScale">
-      <MemberSignature Language="C#" Value="public static void SetRelativeScale (Cocos2D.CCNode node, float fScaleX, float fScaleY, Cocos2D.CCBScaleType nType, string pPropName);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRelativeScale(class Cocos2D.CCNode node, float32 fScaleX, float32 fScaleY, valuetype Cocos2D.CCBScaleType nType, string pPropName) cil managed" />
+      <MemberSignature Language="C#" Value="public static void SetRelativeScale (CocosSharp.CCNode node, float fScaleX, float fScaleY, CocosSharp.CCBScaleType nType, string pPropName);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRelativeScale(class CocosSharp.CCNode node, float32 fScaleX, float32 fScaleY, valuetype CocosSharp.CCBScaleType nType, string pPropName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -52,10 +52,10 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
         <Parameter Name="fScaleX" Type="System.Single" />
         <Parameter Name="fScaleY" Type="System.Single" />
-        <Parameter Name="nType" Type="Cocos2D.CCBScaleType" />
+        <Parameter Name="nType" Type="CocosSharp.CCBScaleType" />
         <Parameter Name="pPropName" Type="System.String" />
       </Parameters>
       <Docs>

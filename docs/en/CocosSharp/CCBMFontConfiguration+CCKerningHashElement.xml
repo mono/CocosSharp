@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBMFontConfiguration+CCKerningHashElement" FullName="Cocos2D.CCBMFontConfiguration+CCKerningHashElement">
+<Type Name="CCBMFontConfiguration+CCKerningHashElement" FullName="CocosSharp.CCBMFontConfiguration+CCKerningHashElement">
   <TypeSignature Language="C#" Value="public struct CCBMFontConfiguration.CCKerningHashElement" />
   <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit CCBMFontConfiguration/CCKerningHashElement extends System.ValueType" />
   <AssemblyInfo>

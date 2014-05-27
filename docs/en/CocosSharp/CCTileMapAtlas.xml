@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTileMapAtlas" FullName="Cocos2D.CCTileMapAtlas">
-  <TypeSignature Language="C#" Value="public class CCTileMapAtlas : Cocos2D.CCAtlasNode" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTileMapAtlas extends Cocos2D.CCAtlasNode" />
+<Type Name="CCTileMapAtlas" FullName="CocosSharp.CCTileMapAtlas">
+  <TypeSignature Language="C#" Value="public class CCTileMapAtlas : CocosSharp.CCAtlasNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTileMapAtlas extends CocosSharp.CCAtlasNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCAtlasNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCAtlasNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,11 +18,11 @@
       <para>It knows how to render a map based of tiles. The tiles must be in a .PNG format while the map must be a .TGA file.</para>
       <para>For more information regarding the format, please see this post: <ulink url="http://www.cocos2d-iphone.org/archives/27">http://www.cocos2d-iphone.org/archives/27</ulink></para>
       <ulink url="http://www.cocos2d-iphone.org/archives/27">http://www.cocos2d-iphone.org/archives/27</ulink>
-      <para>All features from <see cref="T:Cocos2D.CCAtlasNode" /> are valid in <see cref="T:Cocos2D.CCTileMapAtlas" /></para>
-      <see cref="T:Cocos2D.CCAtlasNode" />
-      <see cref="T:Cocos2D.CCTileMapAtlas" />
-      <para>IMPORTANT: This class is deprecated. It is maintained for compatibility reasons only. You SHOULD not use this class. Instead, use the newer TMX file format: <see cref="T:Cocos2D.CCTMXTiledMap" /></para>
-      <see cref="T:Cocos2D.CCTMXTiledMap" />
+      <para>All features from <see cref="T:CocosSharp.CCAtlasNode" /> are valid in <see cref="T:CocosSharp.CCTileMapAtlas" /></para>
+      <see cref="T:CocosSharp.CCAtlasNode" />
+      <see cref="T:CocosSharp.CCTileMapAtlas" />
+      <para>IMPORTANT: This class is deprecated. It is maintained for compatibility reasons only. You SHOULD not use this class. Instead, use the newer TMX file format: <see cref="T:CocosSharp.CCTMXTiledMap" /></para>
+      <see cref="T:CocosSharp.CCTMXTiledMap" />
     </remarks>
   </Docs>
   <Members>
@@ -41,14 +41,14 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTileMapAtlas Create (string tile, string mapFile, int tileWidth, int tileHeight);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCTileMapAtlas Create(string tile, string mapFile, int32 tileWidth, int32 tileHeight) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTileMapAtlas Create (string tile, string mapFile, int tileWidth, int tileHeight);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTileMapAtlas Create(string tile, string mapFile, int32 tileWidth, int32 tileHeight) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTileMapAtlas</ReturnType>
+        <ReturnType>CocosSharp.CCTileMapAtlas</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="tile" Type="System.String" />
@@ -109,14 +109,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pPosToAtlasIndex">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;Cocos2D.CCGridSize,int&gt; m_pPosToAtlasIndex;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype Cocos2D.CCGridSize, int32&gt; m_pPosToAtlasIndex" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCGridSize,int&gt; m_pPosToAtlasIndex;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCGridSize, int32&gt; m_pPosToAtlasIndex" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;Cocos2D.CCGridSize,System.Int32&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCGridSize,System.Int32&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -140,8 +140,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetTile">
-      <MemberSignature Language="C#" Value="public void SetTile (Microsoft.Xna.Framework.Color tile, Cocos2D.CCGridSize position);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTile(valuetype Microsoft.Xna.Framework.Color tile, valuetype Cocos2D.CCGridSize position) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetTile (Microsoft.Xna.Framework.Color tile, CocosSharp.CCGridSize position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTile(valuetype Microsoft.Xna.Framework.Color tile, valuetype CocosSharp.CCGridSize position) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -151,7 +151,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="tile" Type="Microsoft.Xna.Framework.Color" />
-        <Parameter Name="position" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="tile">To be added.</param>
@@ -162,14 +162,14 @@
       </Docs>
     </Member>
     <Member MemberName="TGAInfo">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCImageTGA TGAInfo { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCImageTGA TGAInfo" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCImageTGA TGAInfo { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCImageTGA TGAInfo" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCImageTGA</ReturnType>
+        <ReturnType>CocosSharp.CCImageTGA</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTGAInfo </summary>
@@ -178,8 +178,8 @@
       </Docs>
     </Member>
     <Member MemberName="TileAt">
-      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Color TileAt (Cocos2D.CCGridSize position);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Xna.Framework.Color TileAt(valuetype Cocos2D.CCGridSize position) cil managed" />
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Color TileAt (CocosSharp.CCGridSize position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Microsoft.Xna.Framework.Color TileAt(valuetype CocosSharp.CCGridSize position) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -188,7 +188,7 @@
         <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="position" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="position" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="position">To be added.</param>

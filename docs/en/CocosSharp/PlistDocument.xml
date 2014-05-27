@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="PlistDocument" FullName="Cocos2D.PlistDocument">
-  <TypeSignature Language="C#" Value="public class PlistDocument : Cocos2D.PlistObjectBase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistDocument extends Cocos2D.PlistObjectBase" />
+<Type Name="PlistDocument" FullName="CocosSharp.PlistDocument">
+  <TypeSignature Language="C#" Value="public class PlistDocument : CocosSharp.PlistObjectBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistDocument extends CocosSharp.PlistObjectBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.PlistObjectBase</BaseTypeName>
+    <BaseTypeName>CocosSharp.PlistObjectBase</BaseTypeName>
   </Base>
   <Interfaces />
   <Attributes>
@@ -34,14 +34,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public PlistDocument (Cocos2D.PlistObjectBase root);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.PlistObjectBase root) cil managed" />
+      <MemberSignature Language="C#" Value="public PlistDocument (CocosSharp.PlistObjectBase root);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.PlistObjectBase root) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="root" Type="Cocos2D.PlistObjectBase" />
+        <Parameter Name="root" Type="CocosSharp.PlistObjectBase" />
       </Parameters>
       <Docs>
         <param name="root">To be added.</param>
@@ -66,14 +66,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsArray">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistArray AsArray { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistArray AsArray" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistArray AsArray { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistArray AsArray" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistArray</ReturnType>
+        <ReturnType>CocosSharp.PlistArray</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -130,14 +130,14 @@
       </Docs>
     </Member>
     <Member MemberName="AsDictionary">
-      <MemberSignature Language="C#" Value="public override Cocos2D.PlistDictionary AsDictionary { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistDictionary AsDictionary" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.PlistDictionary AsDictionary { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary AsDictionary" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDictionary</ReturnType>
+        <ReturnType>CocosSharp.PlistDictionary</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -251,14 +251,14 @@
       </Docs>
     </Member>
     <Member MemberName="Root">
-      <MemberSignature Language="C#" Value="public Cocos2D.PlistObjectBase Root { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.PlistObjectBase Root" />
+      <MemberSignature Language="C#" Value="public CocosSharp.PlistObjectBase Root { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistObjectBase Root" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistObjectBase</ReturnType>
+        <ReturnType>CocosSharp.PlistObjectBase</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

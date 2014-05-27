@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTouchDelegate" FullName="Cocos2D.CCTouchDelegate">
-  <TypeSignature Language="C#" Value="public class CCTouchDelegate : Cocos2D.ICCTouchDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDelegate extends System.Object implements class Cocos2D.ICCTouchDelegate" />
+<Type Name="CCTouchDelegate" FullName="CocosSharp.CCTouchDelegate">
+  <TypeSignature Language="C#" Value="public class CCTouchDelegate : CocosSharp.ICCTouchDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDelegate extends System.Object implements class CocosSharp.ICCTouchDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTouchDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTouchDelegate</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExcuteScriptTouchesHandler">
-      <MemberSignature Language="C#" Value="public void ExcuteScriptTouchesHandler (int eventType, System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExcuteScriptTouchesHandler(int32 eventType, class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void ExcuteScriptTouchesHandler (int eventType, System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExcuteScriptTouchesHandler(int32 eventType, class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -60,7 +60,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="eventType" Type="System.Int32" />
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="eventType">To be added.</param>
@@ -70,8 +70,8 @@
       </Docs>
     </Member>
     <Member MemberName="ExcuteScriptTouchHandler">
-      <MemberSignature Language="C#" Value="public void ExcuteScriptTouchHandler (int eventType, Cocos2D.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExcuteScriptTouchHandler(int32 eventType, class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public void ExcuteScriptTouchHandler (int eventType, CocosSharp.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExcuteScriptTouchHandler(int32 eventType, class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -81,7 +81,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="eventType" Type="System.Int32" />
-        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="eventType">To be added.</param>

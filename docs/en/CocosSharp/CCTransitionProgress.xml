@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTransitionProgress" FullName="Cocos2D.CCTransitionProgress">
-  <TypeSignature Language="C#" Value="public abstract class CCTransitionProgress : Cocos2D.CCTransitionScene" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCTransitionProgress extends Cocos2D.CCTransitionScene" />
+<Type Name="CCTransitionProgress" FullName="CocosSharp.CCTransitionProgress">
+  <TypeSignature Language="C#" Value="public abstract class CCTransitionProgress : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCTransitionProgress extends CocosSharp.CCTransitionScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTransitionScene</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -29,15 +29,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionProgress (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionProgress (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -77,14 +77,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pSceneToBeModified">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCScene m_pSceneToBeModified;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScene m_pSceneToBeModified" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene m_pSceneToBeModified;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene m_pSceneToBeModified" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -124,17 +124,17 @@
       </Docs>
     </Member>
     <Member MemberName="ProgressTimerNodeWithRenderTexture">
-      <MemberSignature Language="C#" Value="protected abstract Cocos2D.CCProgressTimer ProgressTimerNodeWithRenderTexture (Cocos2D.CCRenderTexture texture);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCProgressTimer ProgressTimerNodeWithRenderTexture(class Cocos2D.CCRenderTexture texture) cil managed" />
+      <MemberSignature Language="C#" Value="protected abstract CocosSharp.CCProgressTimer ProgressTimerNodeWithRenderTexture (CocosSharp.CCRenderTexture texture);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCProgressTimer ProgressTimerNodeWithRenderTexture(class CocosSharp.CCRenderTexture texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCProgressTimer</ReturnType>
+        <ReturnType>CocosSharp.CCProgressTimer</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCRenderTexture" />
+        <Parameter Name="texture" Type="CocosSharp.CCRenderTexture" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>

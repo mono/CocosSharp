@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleSystem+CCParticle+ModeB" FullName="Cocos2D.CCParticleSystem+CCParticle+ModeB">
+<Type Name="CCParticleSystem+CCParticle+ModeB" FullName="CocosSharp.CCParticleSystem+CCParticle+ModeB">
   <TypeSignature Language="C#" Value="public struct CCParticleSystem.CCParticle.ModeB" />
   <TypeSignature Language="ILAsm" Value=".class nested public sequential ansi sealed beforefieldinit CCParticleSystem/CCParticle/ModeB extends System.ValueType" />
   <AssemblyInfo>

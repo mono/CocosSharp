@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCClippingNode" FullName="Cocos2D.CCClippingNode">
-  <TypeSignature Language="C#" Value="public class CCClippingNode : Cocos2D.CCNode" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCClippingNode extends Cocos2D.CCNode" />
+<Type Name="CCClippingNode" FullName="CocosSharp.CCClippingNode">
+  <TypeSignature Language="C#" Value="public class CCClippingNode : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCClippingNode extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -29,14 +29,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCClippingNode (Cocos2D.CCNode stencil);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode stencil) cil managed" />
+      <MemberSignature Language="C#" Value="public CCClippingNode (CocosSharp.CCNode stencil);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode stencil) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="stencil" Type="Cocos2D.CCNode" />
+        <Parameter Name="stencil" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="stencil">To be added.</param>
@@ -78,8 +78,8 @@
       </Docs>
     </Member>
     <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public bool Init (Cocos2D.CCNode stencil);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(class Cocos2D.CCNode stencil) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Init (CocosSharp.CCNode stencil);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init(class CocosSharp.CCNode stencil) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -88,7 +88,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="stencil" Type="Cocos2D.CCNode" />
+        <Parameter Name="stencil" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="stencil">To be added.</param>
@@ -144,14 +144,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pStencil">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pStencil;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pStencil" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pStencil;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pStencil" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -223,14 +223,14 @@
       </Docs>
     </Member>
     <Member MemberName="Stencil">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Stencil { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Stencil" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Stencil { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Stencil" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The  to use as a stencil to do the clipping. The stencil node will be retained. This default to nil. </summary>

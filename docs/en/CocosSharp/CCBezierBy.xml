@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBezierBy" FullName="Cocos2D.CCBezierBy">
-  <TypeSignature Language="C#" Value="public class CCBezierBy : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierBy extends Cocos2D.CCActionInterval" />
+<Type Name="CCBezierBy" FullName="CocosSharp.CCBezierBy">
+  <TypeSignature Language="C#" Value="public class CCBezierBy : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierBy extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCBezierBy (Cocos2D.CCBezierBy bezierBy);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCBezierBy bezierBy) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCBezierBy (CocosSharp.CCBezierBy bezierBy);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCBezierBy bezierBy) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="bezierBy" Type="Cocos2D.CCBezierBy" />
+        <Parameter Name="bezierBy" Type="CocosSharp.CCBezierBy" />
       </Parameters>
       <Docs>
         <param name="bezierBy">To be added.</param>
@@ -34,15 +34,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBezierBy (float t, Cocos2D.CCBezierConfig c);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, valuetype Cocos2D.CCBezierConfig c) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBezierBy (float t, CocosSharp.CCBezierConfig c);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, valuetype CocosSharp.CCBezierConfig c) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="c" Type="Cocos2D.CCBezierConfig" />
+        <Parameter Name="c" Type="CocosSharp.CCBezierConfig" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,7 +62,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -72,8 +72,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected bool InitWithDuration (float t, Cocos2D.CCBezierConfig c);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithDuration(float32 t, valuetype Cocos2D.CCBezierConfig c) cil managed" />
+      <MemberSignature Language="C#" Value="protected bool InitWithDuration (float t, CocosSharp.CCBezierConfig c);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithDuration(float32 t, valuetype CocosSharp.CCBezierConfig c) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,7 +83,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="c" Type="Cocos2D.CCBezierConfig" />
+        <Parameter Name="c" Type="CocosSharp.CCBezierConfig" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -94,14 +94,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_previousPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_previousPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_previousPosition" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_previousPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_previousPosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -109,14 +109,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_sConfig">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCBezierConfig m_sConfig;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCBezierConfig m_sConfig" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCBezierConfig m_sConfig;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCBezierConfig m_sConfig" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBezierConfig</ReturnType>
+        <ReturnType>CocosSharp.CCBezierConfig</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -124,14 +124,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_startPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_startPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_startPosition" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_startPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_startPosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -139,14 +139,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -156,8 +156,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -166,7 +166,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

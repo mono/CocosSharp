@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLabelAtlas" FullName="Cocos2D.CCLabelAtlas">
-  <TypeSignature Language="C#" Value="public class CCLabelAtlas : Cocos2D.CCAtlasNode, Cocos2D.ICCLabelProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelAtlas extends Cocos2D.CCAtlasNode implements class Cocos2D.ICCLabelProtocol" />
+<Type Name="CCLabelAtlas" FullName="CocosSharp.CCLabelAtlas">
+  <TypeSignature Language="C#" Value="public class CCLabelAtlas : CocosSharp.CCAtlasNode, CocosSharp.ICCLabelProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelAtlas extends CocosSharp.CCAtlasNode implements class CocosSharp.ICCLabelProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCAtlasNode</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCAtlasNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCLabelProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCLabelProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -21,11 +21,11 @@
     <remarks>
       <para>It can be as a replacement of Label since it is MUCH faster.</para>
       <para>
-        <see cref="T:Cocos2D.CCLabelAtlas" /> versus Label:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCLabelAtlas" />
+        <see cref="T:CocosSharp.CCLabelAtlas" /> versus Label:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCLabelAtlas" />
       <list type="bullet" />
-      <para>A more flexible class is <see cref="T:Cocos2D.CCLabelBMFont" />. It supports variable width characters and it also has a nice editor. </para>
-      <see cref="T:Cocos2D.CCLabelBMFont" />
+      <para>A more flexible class is <see cref="T:CocosSharp.CCLabelBMFont" />. It supports variable width characters and it also has a nice editor. </para>
+      <see cref="T:CocosSharp.CCLabelBMFont" />
       <item>
         <description>LabelAtlas is MUCH faster than Label</description>
       </item>
@@ -134,8 +134,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string label, Cocos2D.CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, class Cocos2D.CCTexture2D texture, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithString (string label, CocosSharp.CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, class CocosSharp.CCTexture2D texture, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -145,7 +145,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="label" Type="System.String" />
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="itemWidth" Type="System.Int32" />
         <Parameter Name="itemHeight" Type="System.Int32" />
         <Parameter Name="startCharMap" Type="System.Char" />

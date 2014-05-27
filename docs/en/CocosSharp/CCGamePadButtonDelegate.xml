@@ -1,4 +1,4 @@
-<Type Name="CCGamePadButtonDelegate" FullName="Cocos2D.CCGamePadButtonDelegate">
+<Type Name="CCGamePadButtonDelegate" FullName="CocosSharp.CCGamePadButtonDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCGamePadButtonDelegate(CCGamePadButtonStatus backButton, CCGamePadButtonStatus startButton, CCGamePadButtonStatus systemButton, CCGamePadButtonStatus aButton, CCGamePadButtonStatus bButton, CCGamePadButtonStatus xButton, CCGamePadButtonStatus yButton, CCGamePadButtonStatus leftShoulder, CCGamePadButtonStatus rightShoulder, PlayerIndex player);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadButtonDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>
@@ -9,15 +9,15 @@
     <BaseTypeName>System.Delegate</BaseTypeName>
   </Base>
   <Parameters>
-    <Parameter Name="backButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="startButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="systemButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="aButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="bButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="xButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="yButton" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="leftShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
-    <Parameter Name="rightShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
+    <Parameter Name="backButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="startButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="systemButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="aButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="bButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="xButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="yButton" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="leftShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
+    <Parameter Name="rightShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
     <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
   </Parameters>
   <ReturnValue>

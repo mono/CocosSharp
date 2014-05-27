@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTouch" FullName="Cocos2D.CCTouch">
+<Type Name="CCTouch" FullName="CocosSharp.CCTouch">
   <TypeSignature Language="C#" Value="public class CCTouch" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouch extends System.Object" />
   <AssemblyInfo>
@@ -49,14 +49,14 @@
       </Docs>
     </Member>
     <Member MemberName="Delta">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Delta { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Delta" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Delta { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Delta" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the delta of 2 current touches locations in screen coordinates </summary>
@@ -81,14 +81,14 @@
       </Docs>
     </Member>
     <Member MemberName="Location">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Location { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Location" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Location { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Location" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the current touch location in OpenGL coordinates </summary>
@@ -97,14 +97,14 @@
       </Docs>
     </Member>
     <Member MemberName="LocationInView">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint LocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint LocationInView" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint LocationInView { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint LocationInView" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the current touch location in screen coordinates </summary>
@@ -113,14 +113,14 @@
       </Docs>
     </Member>
     <Member MemberName="PreviousLocation">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint PreviousLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint PreviousLocation" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PreviousLocation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PreviousLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the previous touch location in OpenGL coordinates </summary>
@@ -129,14 +129,14 @@
       </Docs>
     </Member>
     <Member MemberName="PreviousLocationInView">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint PreviousLocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint PreviousLocationInView" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PreviousLocationInView { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PreviousLocationInView" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the previous touch location in screen coordinates </summary>
@@ -168,14 +168,14 @@
       </Docs>
     </Member>
     <Member MemberName="StartLocation">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint StartLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint StartLocation" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartLocation { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartLocation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the start touch location in OpenGL coordinates </summary>
@@ -184,14 +184,14 @@
       </Docs>
     </Member>
     <Member MemberName="StartLocationInView">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint StartLocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint StartLocationInView" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartLocationInView { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartLocationInView" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>returns the start touch location in screen coordinates </summary>

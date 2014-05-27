@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFollow" FullName="Cocos2D.CCFollow">
-  <TypeSignature Language="C#" Value="public class CCFollow : Cocos2D.CCAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFollow extends Cocos2D.CCAction" />
+<Type Name="CCFollow" FullName="CocosSharp.CCFollow">
+  <TypeSignature Language="C#" Value="public class CCFollow : CocosSharp.CCAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFollow extends CocosSharp.CCAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,21 +16,21 @@
     </summary>
     <remarks>
       <para>Eg: layer-&gt;runAction(Follow::actionWithTarget(hero));</para>
-      <para>Instead of using <see cref="T:Cocos2D.CCCamera" /> as a "follower", use this action instead. <para>v0.99.2 </para></para>
-      <see cref="T:Cocos2D.CCCamera" />
+      <para>Instead of using <see cref="T:CocosSharp.CCCamera" /> as a "follower", use this action instead. <para>v0.99.2 </para></para>
+      <see cref="T:CocosSharp.CCCamera" />
       <para>v0.99.2 </para>
     </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCFollow (Cocos2D.CCFollow follow);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCFollow follow) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCFollow (CocosSharp.CCFollow follow);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFollow follow) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="follow" Type="Cocos2D.CCFollow" />
+        <Parameter Name="follow" Type="CocosSharp.CCFollow" />
       </Parameters>
       <Docs>
         <param name="follow">is equal to Rect::ZERO. </param>
@@ -39,15 +39,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFollow (Cocos2D.CCNode followedNode, Cocos2D.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode followedNode, valuetype Cocos2D.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFollow (CocosSharp.CCNode followedNode, CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode followedNode, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="followedNode" Type="Cocos2D.CCNode" />
-        <Parameter Name="rect" Type="Cocos2D.CCRect" />
+        <Parameter Name="followedNode" Type="CocosSharp.CCNode" />
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
         <param name="followedNode">To be added.</param>
@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,7 +83,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -201,14 +201,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obFullScreenSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obFullScreenSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obFullScreenSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obFullScreenSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obFullScreenSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -216,14 +216,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obHalfScreenSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obHalfScreenSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obHalfScreenSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obHalfScreenSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obHalfScreenSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -231,14 +231,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pobFollowedNode">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pobFollowedNode;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pobFollowedNode" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pobFollowedNode;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pobFollowedNode" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

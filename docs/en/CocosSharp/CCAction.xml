@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAction" FullName="Cocos2D.CCAction">
-  <TypeSignature Language="C#" Value="public class CCAction : Cocos2D.ICCCopyable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object implements class Cocos2D.ICCCopyable" />
+<Type Name="CCAction" FullName="CocosSharp.CCAction">
+  <TypeSignature Language="C#" Value="public class CCAction : CocosSharp.ICCCopyable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object implements class CocosSharp.ICCCopyable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCCopyable</InterfaceName>
+      <InterfaceName>CocosSharp.ICCCopyable</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -35,14 +35,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCAction (Cocos2D.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAction action) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCAction (CocosSharp.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction action) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCAction" />
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCAction Copy ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCAction Copy() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCAction Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCAction Copy() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -68,8 +68,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public virtual object Copy (Cocos2D.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class Cocos2D.ICCCopyable zone) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual object Copy (CocosSharp.ICCCopyable zone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -78,7 +78,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="zone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="zone">To be added.</param>
@@ -121,14 +121,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOriginalTarget">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pOriginalTarget;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pOriginalTarget" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pOriginalTarget;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pOriginalTarget" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -136,14 +136,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTarget">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pTarget;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pTarget" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pTarget;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pTarget" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -151,14 +151,14 @@
       </Docs>
     </Member>
     <Member MemberName="OriginalTarget">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode OriginalTarget { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode OriginalTarget" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode OriginalTarget { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode OriginalTarget" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Set the original target, since target can be nil.
@@ -168,8 +168,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected virtual void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -178,7 +178,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -242,14 +242,14 @@
       </Docs>
     </Member>
     <Member MemberName="Target">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Target { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Target" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Target { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Target" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The action will modify the target properties. </summary>

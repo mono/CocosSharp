@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTransitionCrossFade" FullName="Cocos2D.CCTransitionCrossFade">
-  <TypeSignature Language="C#" Value="public class CCTransitionCrossFade : Cocos2D.CCTransitionScene" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionCrossFade extends Cocos2D.CCTransitionScene" />
+<Type Name="CCTransitionCrossFade" FullName="CocosSharp.CCTransitionCrossFade">
+  <TypeSignature Language="C#" Value="public class CCTransitionCrossFade : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionCrossFade extends CocosSharp.CCTransitionScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTransitionScene</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,15 +18,15 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionCrossFade (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionCrossFade (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>

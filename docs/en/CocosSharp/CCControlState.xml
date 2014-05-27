@@ -1,4 +1,4 @@
-<Type Name="CCControlState" FullName="Cocos2D.CCControlState">
+<Type Name="CCControlState" FullName="CocosSharp.CCControlState">
   <TypeSignature Language="C#" Value="public enum CCControlState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCControlState extends System.Enum" />
   <AssemblyInfo>
@@ -20,13 +20,13 @@
   <Members>
     <Member MemberName="Disabled">
       <MemberSignature Language="C#" Value="Disabled" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlState Disabled = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlState Disabled = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlState</ReturnType>
+        <ReturnType>CocosSharp.CCControlState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -34,13 +34,13 @@
     </Member>
     <Member MemberName="Highlighted">
       <MemberSignature Language="C#" Value="Highlighted" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlState Highlighted = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlState Highlighted = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlState</ReturnType>
+        <ReturnType>CocosSharp.CCControlState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -48,13 +48,13 @@
     </Member>
     <Member MemberName="Normal">
       <MemberSignature Language="C#" Value="Normal" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlState Normal = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlState Normal = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlState</ReturnType>
+        <ReturnType>CocosSharp.CCControlState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -62,13 +62,13 @@
     </Member>
     <Member MemberName="Selected">
       <MemberSignature Language="C#" Value="Selected" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlState Selected = int32(8)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlState Selected = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlState</ReturnType>
+        <ReturnType>CocosSharp.CCControlState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

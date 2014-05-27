@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCScrollView" FullName="Cocos2D.CCScrollView">
-  <TypeSignature Language="C#" Value="public class CCScrollView : Cocos2D.CCLayer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScrollView extends Cocos2D.CCLayer" />
+<Type Name="CCScrollView" FullName="CocosSharp.CCScrollView">
+  <TypeSignature Language="C#" Value="public class CCScrollView : CocosSharp.CCLayer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScrollView extends CocosSharp.CCLayer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLayer</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayer</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -29,15 +29,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScrollView (Cocos2D.CCSize size, Cocos2D.CCNode container);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCSize size, class Cocos2D.CCNode container) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScrollView (CocosSharp.CCSize size, CocosSharp.CCNode container);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize size, class CocosSharp.CCNode container) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="size" Type="Cocos2D.CCSize" />
-        <Parameter Name="container" Type="Cocos2D.CCNode" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="container" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="size">To be added.</param>
@@ -47,8 +47,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -57,7 +57,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
@@ -102,14 +102,14 @@
       </Docs>
     </Member>
     <Member MemberName="Container">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Container { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Container" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Container { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Container" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -118,14 +118,14 @@
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCSize ContentSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ContentSize" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -134,14 +134,14 @@
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCScrollViewDelegate Delegate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCScrollViewDelegate Delegate" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCScrollViewDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCScrollViewDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCScrollViewDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCScrollViewDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -150,14 +150,14 @@
       </Docs>
     </Member>
     <Member MemberName="Direction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCScrollViewDirection Direction { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCScrollViewDirection Direction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScrollViewDirection Direction { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCScrollViewDirection Direction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -166,14 +166,14 @@
       </Docs>
     </Member>
     <Member MemberName="GetContentOffset">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint GetContentOffset ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint GetContentOffset() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint GetContentOffset ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint GetContentOffset() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -200,8 +200,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithViewSize">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithViewSize (Cocos2D.CCSize size, Cocos2D.CCNode container);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithViewSize(valuetype Cocos2D.CCSize size, class Cocos2D.CCNode container) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithViewSize (CocosSharp.CCSize size, CocosSharp.CCNode container);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithViewSize(valuetype CocosSharp.CCSize size, class CocosSharp.CCNode container) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -210,8 +210,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="size" Type="Cocos2D.CCSize" />
-        <Parameter Name="container" Type="Cocos2D.CCNode" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="container" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="size">To be added.</param>
@@ -238,8 +238,8 @@
       </Docs>
     </Member>
     <Member MemberName="IsNodeVisible">
-      <MemberSignature Language="C#" Value="public bool IsNodeVisible (Cocos2D.CCNode node);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsNodeVisible(class Cocos2D.CCNode node) cil managed" />
+      <MemberSignature Language="C#" Value="public bool IsNodeVisible (CocosSharp.CCNode node);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsNodeVisible(class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -248,7 +248,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -334,14 +334,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_eDirection">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCScrollViewDirection m_eDirection;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCScrollViewDirection m_eDirection" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScrollViewDirection m_eDirection;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCScrollViewDirection m_eDirection" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScrollViewDirection</ReturnType>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -349,14 +349,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_fMaxInset">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_fMaxInset;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_fMaxInset" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_fMaxInset;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_fMaxInset" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -379,14 +379,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_fMinInset">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_fMinInset;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_fMinInset" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_fMinInset;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_fMinInset" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -424,14 +424,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pContainer">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pContainer;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pContainer" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pContainer;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pContainer" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -439,14 +439,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">
-      <MemberSignature Language="C#" Value="protected Cocos2D.ICCScrollViewDelegate m_pDelegate;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.ICCScrollViewDelegate m_pDelegate" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCScrollViewDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCScrollViewDelegate m_pDelegate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCScrollViewDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCScrollViewDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -454,14 +454,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTouches">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; m_pTouches;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; m_pTouches" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; m_pTouches;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; m_pTouches" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -469,14 +469,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tContentOffset">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tContentOffset;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tContentOffset" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tContentOffset;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tContentOffset" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -484,14 +484,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tScrollDistance">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tScrollDistance;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tScrollDistance" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tScrollDistance;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tScrollDistance" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -499,14 +499,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tTouchPoint">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_tTouchPoint;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_tTouchPoint" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tTouchPoint;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tTouchPoint" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -514,14 +514,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tViewSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tViewSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tViewSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize m_tViewSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize m_tViewSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -544,14 +544,14 @@
       </Docs>
     </Member>
     <Member MemberName="MaxContainerOffset">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint MaxContainerOffset { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint MaxContainerOffset" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint MaxContainerOffset { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint MaxContainerOffset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -560,14 +560,14 @@
       </Docs>
     </Member>
     <Member MemberName="MinContainerOffset">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint MinContainerOffset { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint MinContainerOffset" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint MinContainerOffset { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint MinContainerOffset" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -646,8 +646,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetContentOffset">
-      <MemberSignature Language="C#" Value="public void SetContentOffset (Cocos2D.CCPoint offset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffset(valuetype Cocos2D.CCPoint offset) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetContentOffset (CocosSharp.CCPoint offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffset(valuetype CocosSharp.CCPoint offset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -656,7 +656,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="offset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="offset">To be added.</param>
@@ -665,8 +665,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetContentOffset">
-      <MemberSignature Language="C#" Value="public void SetContentOffset (Cocos2D.CCPoint offset, bool animated);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffset(valuetype Cocos2D.CCPoint offset, bool animated) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetContentOffset (CocosSharp.CCPoint offset, bool animated);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffset(valuetype CocosSharp.CCPoint offset, bool animated) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -675,7 +675,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="offset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
         <Parameter Name="animated" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -686,8 +686,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetContentOffsetInDuration">
-      <MemberSignature Language="C#" Value="public void SetContentOffsetInDuration (Cocos2D.CCPoint offset, float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffsetInDuration(valuetype Cocos2D.CCPoint offset, float32 dt) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetContentOffsetInDuration (CocosSharp.CCPoint offset, float dt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffsetInDuration(valuetype CocosSharp.CCPoint offset, float32 dt) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -696,7 +696,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="offset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
         <Parameter Name="dt" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -749,8 +749,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchBegan">
-      <MemberSignature Language="C#" Value="public override bool TouchBegan (Cocos2D.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class Cocos2D.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (CocosSharp.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -759,7 +759,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="pTouch">To be added.</param>
@@ -769,8 +769,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchCancelled">
-      <MemberSignature Language="C#" Value="public override void TouchCancelled (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -779,7 +779,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -804,8 +804,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchEnded">
-      <MemberSignature Language="C#" Value="public override void TouchEnded (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchEnded (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -814,7 +814,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -823,8 +823,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchMoved">
-      <MemberSignature Language="C#" Value="public override void TouchMoved (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchMoved (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -833,7 +833,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -858,14 +858,14 @@
       </Docs>
     </Member>
     <Member MemberName="ViewSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize ViewSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize ViewSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize ViewSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ViewSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

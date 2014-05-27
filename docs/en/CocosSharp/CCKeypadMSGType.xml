@@ -1,4 +1,4 @@
-<Type Name="CCKeypadMSGType" FullName="Cocos2D.CCKeypadMSGType">
+<Type Name="CCKeypadMSGType" FullName="CocosSharp.CCKeypadMSGType">
   <TypeSignature Language="C#" Value="public enum CCKeypadMSGType" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCKeypadMSGType extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="BackClicked">
       <MemberSignature Language="C#" Value="BackClicked" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCKeypadMSGType BackClicked = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeypadMSGType BackClicked = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCKeypadMSGType</ReturnType>
+        <ReturnType>CocosSharp.CCKeypadMSGType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="MenuClicked">
       <MemberSignature Language="C#" Value="MenuClicked" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCKeypadMSGType MenuClicked = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeypadMSGType MenuClicked = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCKeypadMSGType</ReturnType>
+        <ReturnType>CocosSharp.CCKeypadMSGType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

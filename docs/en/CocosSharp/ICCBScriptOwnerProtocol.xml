@@ -1,4 +1,4 @@
-<Type Name="ICCBScriptOwnerProtocol" FullName="Cocos2D.ICCBScriptOwnerProtocol">
+<Type Name="ICCBScriptOwnerProtocol" FullName="CocosSharp.ICCBScriptOwnerProtocol">
   <TypeSignature Language="C#" Value="public interface ICCBScriptOwnerProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBScriptOwnerProtocol" />
   <AssemblyInfo>
@@ -12,14 +12,14 @@
   </Docs>
   <Members>
     <Member MemberName="CreateNew">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCBSelectorResolver CreateNew ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.ICCBSelectorResolver CreateNew() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCBSelectorResolver CreateNew ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.ICCBSelectorResolver CreateNew() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCBSelectorResolver</ReturnType>
+        <ReturnType>CocosSharp.ICCBSelectorResolver</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

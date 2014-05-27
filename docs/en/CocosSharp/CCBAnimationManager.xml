@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBAnimationManager" FullName="Cocos2D.CCBAnimationManager">
+<Type Name="CCBAnimationManager" FullName="CocosSharp.CCBAnimationManager">
   <TypeSignature Language="C#" Value="public class CCBAnimationManager" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBAnimationManager extends System.Object" />
   <AssemblyInfo>
@@ -29,8 +29,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddNode">
-      <MemberSignature Language="C#" Value="public void AddNode (Cocos2D.CCNode node, System.Collections.Generic.Dictionary&lt;int,System.Collections.Generic.Dictionary&lt;string,Cocos2D.CCBSequenceProperty&gt;&gt; pSeq);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddNode(class Cocos2D.CCNode node, class System.Collections.Generic.Dictionary`2&lt;int32, class System.Collections.Generic.Dictionary`2&lt;string, class Cocos2D.CCBSequenceProperty&gt;&gt; pSeq) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddNode (CocosSharp.CCNode node, System.Collections.Generic.Dictionary&lt;int,System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCBSequenceProperty&gt;&gt; pSeq);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddNode(class CocosSharp.CCNode node, class System.Collections.Generic.Dictionary`2&lt;int32, class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCBSequenceProperty&gt;&gt; pSeq) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -39,8 +39,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
-        <Parameter Name="pSeq" Type="System.Collections.Generic.Dictionary&lt;System.Int32,System.Collections.Generic.Dictionary&lt;System.String,Cocos2D.CCBSequenceProperty&gt;&gt;" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+        <Parameter Name="pSeq" Type="System.Collections.Generic.Dictionary&lt;System.Int32,System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCBSequenceProperty&gt;&gt;" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -66,14 +66,14 @@
       </Docs>
     </Member>
     <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBAnimationManagerDelegate Delegate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCBAnimationManagerDelegate Delegate" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBAnimationManagerDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCBAnimationManagerDelegate Delegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBAnimationManagerDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCBAnimationManagerDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -82,17 +82,17 @@
       </Docs>
     </Member>
     <Member MemberName="GetContainerSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize GetContainerSize (Cocos2D.CCNode node);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCSize GetContainerSize(class Cocos2D.CCNode node) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize GetContainerSize (CocosSharp.CCNode node);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCSize GetContainerSize(class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="node">To be added.</param>
@@ -119,14 +119,14 @@
       </Docs>
     </Member>
     <Member MemberName="RootContainerSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize RootContainerSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize RootContainerSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize RootContainerSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize RootContainerSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -135,14 +135,14 @@
       </Docs>
     </Member>
     <Member MemberName="RootNode">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode RootNode { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode RootNode" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode RootNode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode RootNode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -228,14 +228,14 @@
       </Docs>
     </Member>
     <Member MemberName="Sequences">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.CCBSequence&gt; Sequences { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCBSequence&gt; Sequences" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCBSequence&gt; Sequences { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCBSequence&gt; Sequences" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCBSequence&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCBSequence&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -244,8 +244,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetBaseValue">
-      <MemberSignature Language="C#" Value="public void SetBaseValue (object pValue, Cocos2D.CCNode node, string pPropName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBaseValue(object pValue, class Cocos2D.CCNode node, string pPropName) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetBaseValue (object pValue, CocosSharp.CCNode node, string pPropName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBaseValue(object pValue, class CocosSharp.CCNode node, string pPropName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -255,7 +255,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="pValue" Type="System.Object" />
-        <Parameter Name="node" Type="Cocos2D.CCNode" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
         <Parameter Name="pPropName" Type="System.String" />
       </Parameters>
       <Docs>

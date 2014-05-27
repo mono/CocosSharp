@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTMXTilesetInfo" FullName="Cocos2D.CCTMXTilesetInfo">
+<Type Name="CCTMXTilesetInfo" FullName="CocosSharp.CCTMXTilesetInfo">
   <TypeSignature Language="C#" Value="public class CCTMXTilesetInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXTilesetInfo extends System.Object" />
   <AssemblyInfo>
@@ -91,14 +91,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tImageSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize m_tImageSize;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCSize m_tImageSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize m_tImageSize;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCSize m_tImageSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -106,14 +106,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tTileSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize m_tTileSize;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCSize m_tTileSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize m_tTileSize;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCSize m_tTileSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -166,14 +166,14 @@
       </Docs>
     </Member>
     <Member MemberName="RectForGID">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRect RectForGID (uint gid);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCRect RectForGID(unsigned int32 gid) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect RectForGID (uint gid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect RectForGID(unsigned int32 gid) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="gid" Type="System.UInt32" />

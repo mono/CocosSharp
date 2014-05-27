@@ -1,4 +1,4 @@
-<Type Name="PlistDocument+ValueType" FullName="Cocos2D.PlistDocument+ValueType">
+<Type Name="PlistDocument+ValueType" FullName="CocosSharp.PlistDocument+ValueType">
   <TypeSignature Language="C#" Value="public enum PlistDocument.ValueType" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi sealed PlistDocument/ValueType extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Array">
       <MemberSignature Language="C#" Value="Array" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Array = unsigned int8(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Array = unsigned int8(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Bool">
       <MemberSignature Language="C#" Value="Bool" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Bool = unsigned int8(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Bool = unsigned int8(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Data">
       <MemberSignature Language="C#" Value="Data" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Data = unsigned int8(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Data = unsigned int8(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Date">
       <MemberSignature Language="C#" Value="Date" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Date = unsigned int8(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Date = unsigned int8(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="Dictionary">
       <MemberSignature Language="C#" Value="Dictionary" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Dictionary = unsigned int8(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Dictionary = unsigned int8(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="Integer">
       <MemberSignature Language="C#" Value="Integer" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Integer = unsigned int8(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Integer = unsigned int8(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,13 +99,13 @@
     </Member>
     <Member MemberName="Null">
       <MemberSignature Language="C#" Value="Null" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Null = unsigned int8(6)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Null = unsigned int8(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -113,13 +113,13 @@
     </Member>
     <Member MemberName="Real">
       <MemberSignature Language="C#" Value="Real" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType Real = unsigned int8(7)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType Real = unsigned int8(7)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -127,13 +127,13 @@
     </Member>
     <Member MemberName="String">
       <MemberSignature Language="C#" Value="String" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.PlistDocument/ValueType String = unsigned int8(8)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.PlistDocument/ValueType String = unsigned int8(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.PlistDocument+ValueType</ReturnType>
+        <ReturnType>CocosSharp.PlistDocument+ValueType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

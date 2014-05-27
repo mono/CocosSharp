@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAffineTransform" FullName="Cocos2D.CCAffineTransform">
+<Type Name="CCAffineTransform" FullName="CocosSharp.CCAffineTransform">
   <TypeSignature Language="C#" Value="public struct CCAffineTransform" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCAffineTransform extends System.ValueType" />
   <AssemblyInfo>
@@ -87,8 +87,8 @@
       </Docs>
     </Member>
     <Member MemberName="Concat">
-      <MemberSignature Language="C#" Value="public void Concat (Cocos2D.CCAffineTransform m);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype Cocos2D.CCAffineTransform m) cil managed" />
+      <MemberSignature Language="C#" Value="public void Concat (CocosSharp.CCAffineTransform m);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype CocosSharp.CCAffineTransform m) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -97,7 +97,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="m" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="m" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="m">To be added.</param>
@@ -106,8 +106,8 @@
       </Docs>
     </Member>
     <Member MemberName="Concat">
-      <MemberSignature Language="C#" Value="public void Concat (ref Cocos2D.CCAffineTransform m);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype Cocos2D.CCAffineTransform m) cil managed" />
+      <MemberSignature Language="C#" Value="public void Concat (ref CocosSharp.CCAffineTransform m);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype CocosSharp.CCAffineTransform m) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -116,7 +116,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="m" Type="Cocos2D.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="m" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="m">To be added.</param>
@@ -125,18 +125,18 @@
       </Docs>
     </Member>
     <Member MemberName="Concat">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAffineTransform Concat (Cocos2D.CCAffineTransform t1, Cocos2D.CCAffineTransform t2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCAffineTransform Concat(valuetype Cocos2D.CCAffineTransform t1, valuetype Cocos2D.CCAffineTransform t2) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Concat (CocosSharp.CCAffineTransform t1, CocosSharp.CCAffineTransform t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Concat(valuetype CocosSharp.CCAffineTransform t1, valuetype CocosSharp.CCAffineTransform t2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t1" Type="Cocos2D.CCAffineTransform" />
-        <Parameter Name="t2" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t2" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="t1">To be added.</param>
@@ -204,8 +204,8 @@
       </Docs>
     </Member>
     <Member MemberName="Equal">
-      <MemberSignature Language="C#" Value="public static bool Equal (Cocos2D.CCAffineTransform t1, Cocos2D.CCAffineTransform t2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype Cocos2D.CCAffineTransform t1, valuetype Cocos2D.CCAffineTransform t2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool Equal (CocosSharp.CCAffineTransform t1, CocosSharp.CCAffineTransform t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype CocosSharp.CCAffineTransform t1, valuetype CocosSharp.CCAffineTransform t2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -214,8 +214,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t1" Type="Cocos2D.CCAffineTransform" />
-        <Parameter Name="t2" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t2" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="t1">To be added.</param>
@@ -226,8 +226,8 @@
       </Docs>
     </Member>
     <Member MemberName="Equals">
-      <MemberSignature Language="C#" Value="public bool Equals (ref Cocos2D.CCAffineTransform t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype Cocos2D.CCAffineTransform t) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Equals (ref CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCAffineTransform t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -236,7 +236,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -331,14 +331,14 @@
       </Docs>
     </Member>
     <Member MemberName="Identity">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCAffineTransform Identity;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCAffineTransform Identity" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCAffineTransform Identity;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCAffineTransform Identity" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -346,17 +346,17 @@
       </Docs>
     </Member>
     <Member MemberName="Invert">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAffineTransform Invert (Cocos2D.CCAffineTransform t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCAffineTransform Invert(valuetype Cocos2D.CCAffineTransform t) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Invert (CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Invert(valuetype CocosSharp.CCAffineTransform t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -366,8 +366,8 @@
       </Docs>
     </Member>
     <Member MemberName="Lerp">
-      <MemberSignature Language="C#" Value="public static void Lerp (ref Cocos2D.CCAffineTransform m1, ref Cocos2D.CCAffineTransform m2, float t, out Cocos2D.CCAffineTransform res);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Lerp(valuetype Cocos2D.CCAffineTransform m1, valuetype Cocos2D.CCAffineTransform m2, float32 t, valuetype Cocos2D.CCAffineTransform res) cil managed" />
+      <MemberSignature Language="C#" Value="public static void Lerp (ref CocosSharp.CCAffineTransform m1, ref CocosSharp.CCAffineTransform m2, float t, out CocosSharp.CCAffineTransform res);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Lerp(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t, valuetype CocosSharp.CCAffineTransform res) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -376,10 +376,10 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="m1" Type="Cocos2D.CCAffineTransform&amp;" RefType="ref" />
-        <Parameter Name="m2" Type="Cocos2D.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="res" Type="Cocos2D.CCAffineTransform&amp;" RefType="out" />
+        <Parameter Name="res" Type="CocosSharp.CCAffineTransform&amp;" RefType="out" />
       </Parameters>
       <Docs>
         <param name="m1">To be added.</param>
@@ -391,17 +391,17 @@
       </Docs>
     </Member>
     <Member MemberName="Rotate">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAffineTransform Rotate (Cocos2D.CCAffineTransform t, float anAngle);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCAffineTransform Rotate(valuetype Cocos2D.CCAffineTransform t, float32 anAngle) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Rotate (CocosSharp.CCAffineTransform t, float anAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Rotate(valuetype CocosSharp.CCAffineTransform t, float32 anAngle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
         <Parameter Name="anAngle" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -413,17 +413,17 @@
       </Docs>
     </Member>
     <Member MemberName="Scale">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAffineTransform Scale (Cocos2D.CCAffineTransform t, float sx, float sy);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCAffineTransform Scale(valuetype Cocos2D.CCAffineTransform t, float32 sx, float32 sy) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Scale (CocosSharp.CCAffineTransform t, float sx, float sy);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Scale(valuetype CocosSharp.CCAffineTransform t, float32 sx, float32 sy) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
         <Parameter Name="sx" Type="System.Single" />
         <Parameter Name="sy" Type="System.Single" />
       </Parameters>
@@ -437,8 +437,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetLerp">
-      <MemberSignature Language="C#" Value="public void SetLerp (Cocos2D.CCAffineTransform m1, Cocos2D.CCAffineTransform m2, float t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLerp(valuetype Cocos2D.CCAffineTransform m1, valuetype Cocos2D.CCAffineTransform m2, float32 t) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetLerp (CocosSharp.CCAffineTransform m1, CocosSharp.CCAffineTransform m2, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLerp(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -447,8 +447,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="m1" Type="Cocos2D.CCAffineTransform" />
-        <Parameter Name="m2" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform" />
         <Parameter Name="t" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -582,17 +582,17 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Transform (Cocos2D.CCPoint point);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCPoint Transform(valuetype Cocos2D.CCPoint point) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Transform (CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint Transform(valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCPoint" />
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>
@@ -602,8 +602,8 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public void Transform (ref Cocos2D.CCPoint point);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype Cocos2D.CCPoint point) cil managed" />
+      <MemberSignature Language="C#" Value="public void Transform (ref CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -612,7 +612,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCPoint&amp;" RefType="ref" />
+        <Parameter Name="point" Type="CocosSharp.CCPoint&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>
@@ -621,17 +621,17 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRect Transform (Cocos2D.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype Cocos2D.CCRect Transform(valuetype Cocos2D.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect Transform (CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect Transform(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="rect" Type="Cocos2D.CCRect" />
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
@@ -641,8 +641,8 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public void Transform (ref Cocos2D.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype Cocos2D.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public void Transform (ref CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -651,7 +651,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="rect" Type="Cocos2D.CCRect&amp;" RefType="ref" />
+        <Parameter Name="rect" Type="CocosSharp.CCRect&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
@@ -660,18 +660,18 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCPoint Transform (Cocos2D.CCPoint point, Cocos2D.CCAffineTransform t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCPoint Transform(valuetype Cocos2D.CCPoint point, valuetype Cocos2D.CCAffineTransform t) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Transform (CocosSharp.CCPoint point, CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Transform(valuetype CocosSharp.CCPoint point, valuetype CocosSharp.CCAffineTransform t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCPoint" />
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>
@@ -682,18 +682,18 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCRect Transform (Cocos2D.CCRect rect, Cocos2D.CCAffineTransform anAffineTransform);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCRect Transform(valuetype Cocos2D.CCRect rect, valuetype Cocos2D.CCAffineTransform anAffineTransform) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect Transform (CocosSharp.CCRect rect, CocosSharp.CCAffineTransform anAffineTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect Transform(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCAffineTransform anAffineTransform) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="rect" Type="Cocos2D.CCRect" />
-        <Parameter Name="anAffineTransform" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="anAffineTransform" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
@@ -704,18 +704,18 @@
       </Docs>
     </Member>
     <Member MemberName="Transform">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize Transform (Cocos2D.CCSize size, Cocos2D.CCAffineTransform t);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCSize Transform(valuetype Cocos2D.CCSize size, valuetype Cocos2D.CCAffineTransform t) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize Transform (CocosSharp.CCSize size, CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize Transform(valuetype CocosSharp.CCSize size, valuetype CocosSharp.CCAffineTransform t) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="size" Type="Cocos2D.CCSize" />
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
       </Parameters>
       <Docs>
         <param name="size">To be added.</param>
@@ -793,17 +793,17 @@
       </Docs>
     </Member>
     <Member MemberName="Translate">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAffineTransform Translate (Cocos2D.CCAffineTransform t, float tx, float ty);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCAffineTransform Translate(valuetype Cocos2D.CCAffineTransform t, float32 tx, float32 ty) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Translate (CocosSharp.CCAffineTransform t, float tx, float ty);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Translate(valuetype CocosSharp.CCAffineTransform t, float32 tx, float32 ty) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAffineTransform</ReturnType>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="t" Type="Cocos2D.CCAffineTransform" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
         <Parameter Name="tx" Type="System.Single" />
         <Parameter Name="ty" Type="System.Single" />
       </Parameters>

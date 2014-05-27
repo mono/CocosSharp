@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSizeReader" FullName="Cocos2D.CCSizeReader">
-  <TypeSignature Language="C#" Value="public class CCSizeReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.CCSize&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSizeReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype Cocos2D.CCSize&gt;" />
+<Type Name="CCSizeReader" FullName="CocosSharp.CCSizeReader">
+  <TypeSignature Language="C#" Value="public class CCSizeReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCSize&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSizeReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype CocosSharp.CCSize&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;Cocos2D.CCSize&gt;</BaseTypeName>
+    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCSize&gt;</BaseTypeName>
     <BaseTypeArguments>
-      <BaseTypeArgument TypeParamName="!0">Cocos2D.CCSize</BaseTypeArgument>
+      <BaseTypeArgument TypeParamName="!0">CocosSharp.CCSize</BaseTypeArgument>
     </BaseTypeArguments>
   </Base>
   <Interfaces />
@@ -32,18 +32,18 @@
       </Docs>
     </Member>
     <Member MemberName="Read">
-      <MemberSignature Language="C#" Value="protected override Cocos2D.CCSize Read (Microsoft.Xna.Framework.Content.ContentReader input, Cocos2D.CCSize existingInstance);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype Cocos2D.CCSize Read(class Microsoft.Xna.Framework.Content.ContentReader input, valuetype Cocos2D.CCSize existingInstance) cil managed" />
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCSize Read (Microsoft.Xna.Framework.Content.ContentReader input, CocosSharp.CCSize existingInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype CocosSharp.CCSize Read(class Microsoft.Xna.Framework.Content.ContentReader input, valuetype CocosSharp.CCSize existingInstance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="input" Type="Microsoft.Xna.Framework.Content.ContentReader" />
-        <Parameter Name="existingInstance" Type="Cocos2D.CCSize" />
+        <Parameter Name="existingInstance" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="input">To be added.</param>

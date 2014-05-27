@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleExplosion" FullName="Cocos2D.CCParticleExplosion">
-  <TypeSignature Language="C#" Value="public class CCParticleExplosion : Cocos2D.CCParticleSystemQuad" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleExplosion extends Cocos2D.CCParticleSystemQuad" />
+<Type Name="CCParticleExplosion" FullName="CocosSharp.CCParticleExplosion">
+  <TypeSignature Language="C#" Value="public class CCParticleExplosion : CocosSharp.CCParticleSystemQuad" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleExplosion extends CocosSharp.CCParticleSystemQuad" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCParticleSystemQuad</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCParticleSystemQuad</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

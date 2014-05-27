@@ -1,4 +1,4 @@
-<Type Name="ICCRGBAProtocol" FullName="Cocos2D.ICCRGBAProtocol">
+<Type Name="ICCRGBAProtocol" FullName="CocosSharp.ICCRGBAProtocol">
   <TypeSignature Language="C#" Value="public interface ICCRGBAProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCRGBAProtocol" />
   <AssemblyInfo>
@@ -44,14 +44,14 @@
       </Docs>
     </Member>
     <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B Color { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B Color" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -60,14 +60,14 @@
       </Docs>
     </Member>
     <Member MemberName="DisplayedColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B DisplayedColor { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B DisplayedColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B DisplayedColor { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -124,8 +124,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateDisplayedColor">
-      <MemberSignature Language="C#" Value="public void UpdateDisplayedColor (Cocos2D.CCColor3B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype Cocos2D.CCColor3B color) cil managed" />
+      <MemberSignature Language="C#" Value="public void UpdateDisplayedColor (CocosSharp.CCColor3B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B color) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -134,7 +134,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
       </Parameters>
       <Docs>
         <param name="color">To be added.</param>

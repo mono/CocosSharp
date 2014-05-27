@@ -1,4 +1,4 @@
-<Type Name="ICCSortableObject" FullName="Cocos2D.ICCSortableObject">
+<Type Name="ICCSortableObject" FullName="CocosSharp.ICCSortableObject">
   <TypeSignature Language="C#" Value="public interface ICCSortableObject" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCSortableObject" />
   <AssemblyInfo>

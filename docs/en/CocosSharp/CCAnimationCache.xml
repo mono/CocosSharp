@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAnimationCache" FullName="Cocos2D.CCAnimationCache">
+<Type Name="CCAnimationCache" FullName="CocosSharp.CCAnimationCache">
   <TypeSignature Language="C#" Value="public class CCAnimationCache" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationCache extends System.Object" />
   <AssemblyInfo>
@@ -19,8 +19,8 @@
 </verbatim> It saves in a cache the animations. You should use this class if you want to save your animations in a cache.</para>
       <verbatim>Singleton that manages the Animations.
 </verbatim>
-      <para>Before v0.99.5, the recommend way was to save them on the <see cref="T:Cocos2D.CCSprite" />. Since v0.99.5, you should use this class instead.</para>
-      <see cref="T:Cocos2D.CCSprite" />
+      <para>Before v0.99.5, the recommend way was to save them on the <see cref="T:CocosSharp.CCSprite" />. Since v0.99.5, you should use this class instead.</para>
+      <see cref="T:CocosSharp.CCSprite" />
       <para>
         <para>v0.99.5 </para>
       </para>
@@ -42,8 +42,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddAnimation">
-      <MemberSignature Language="C#" Value="public void AddAnimation (Cocos2D.CCAnimation animation, string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimation(class Cocos2D.CCAnimation animation, string name) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddAnimation (CocosSharp.CCAnimation animation, string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimation(class CocosSharp.CCAnimation animation, string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -52,7 +52,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="animation" Type="Cocos2D.CCAnimation" />
+        <Parameter Name="animation" Type="CocosSharp.CCAnimation" />
         <Parameter Name="name" Type="System.String" />
       </Parameters>
       <Docs>
@@ -63,8 +63,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddAnimationsWithDictionary">
-      <MemberSignature Language="C#" Value="public void AddAnimationsWithDictionary (Cocos2D.PlistDictionary dictionary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimationsWithDictionary(class Cocos2D.PlistDictionary dictionary) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddAnimationsWithDictionary (CocosSharp.PlistDictionary dictionary);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimationsWithDictionary(class CocosSharp.PlistDictionary dictionary) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -73,7 +73,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="dictionary" Type="Cocos2D.PlistDictionary" />
+        <Parameter Name="dictionary" Type="CocosSharp.PlistDictionary" />
       </Parameters>
       <Docs>
         <param name="dictionary">To be added.</param>
@@ -101,14 +101,14 @@
       </Docs>
     </Member>
     <Member MemberName="AnimationByName">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAnimation AnimationByName (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAnimation AnimationByName(string name) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation AnimationByName (string name);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAnimation AnimationByName(string name) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimation</ReturnType>
+        <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="name" Type="System.String" />
@@ -139,14 +139,14 @@
       </Docs>
     </Member>
     <Member MemberName="Item">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAnimation this[string index] { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCAnimation Item(string)" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation this[string index] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAnimation Item(string)" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimation</ReturnType>
+        <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="index" Type="System.String" />
@@ -194,14 +194,14 @@
       </Docs>
     </Member>
     <Member MemberName="SharedAnimationCache">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCAnimationCache SharedAnimationCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCAnimationCache SharedAnimationCache" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAnimationCache SharedAnimationCache { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCAnimationCache SharedAnimationCache" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimationCache</ReturnType>
+        <ReturnType>CocosSharp.CCAnimationCache</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

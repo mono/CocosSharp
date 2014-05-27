@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCMotionStreak" FullName="Cocos2D.CCMotionStreak">
-  <TypeSignature Language="C#" Value="public class CCMotionStreak : Cocos2D.CCNodeRGBA, Cocos2D.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends Cocos2D.CCNodeRGBA implements class Cocos2D.ICCBlendProtocol, class Cocos2D.ICCTextureProtocol" />
+<Type Name="CCMotionStreak" FullName="CocosSharp.CCMotionStreak">
+  <TypeSignature Language="C#" Value="public class CCMotionStreak : CocosSharp.CCNodeRGBA, CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -33,14 +33,14 @@
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCBlendFunc BlendFunc { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCBlendFunc BlendFunc" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBlendFunc</ReturnType>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the blending function that is currently being used.</summary>
@@ -48,29 +48,29 @@
         <remarks>
           <para>Returns the blending function that is currently being used.</para>
           <para>
-            <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+            <para>A <see cref="T:CocosSharp.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
           </para>
-          <para>A <see cref="T:Cocos2D.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
-          <see cref="T:Cocos2D.CCBlendFunc" />
+          <para>A <see cref="T:CocosSharp.CCBlendFunc" /> structure with source and destination factor which specified pixel arithmetic. </para>
+          <see cref="T:CocosSharp.CCBlendFunc" />
         </remarks>
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCMotionStreak Create (float fade, float minSeg, float stroke, Cocos2D.CCColor3B color, Cocos2D.CCTexture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCMotionStreak Create(float32 fade, float32 minSeg, float32 stroke, valuetype Cocos2D.CCColor3B color, class Cocos2D.CCTexture2D texture) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCMotionStreak Create (float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCMotionStreak Create(float32 fade, float32 minSeg, float32 stroke, valuetype CocosSharp.CCColor3B color, class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMotionStreak</ReturnType>
+        <ReturnType>CocosSharp.CCMotionStreak</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fade" Type="System.Single" />
         <Parameter Name="minSeg" Type="System.Single" />
         <Parameter Name="stroke" Type="System.Single" />
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="fade">To be added.</param>
@@ -84,20 +84,20 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCMotionStreak Create (float fade, float minSeg, float stroke, Cocos2D.CCColor3B color, string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCMotionStreak Create(float32 fade, float32 minSeg, float32 stroke, valuetype Cocos2D.CCColor3B color, string path) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCMotionStreak Create (float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCMotionStreak Create(float32 fade, float32 minSeg, float32 stroke, valuetype CocosSharp.CCColor3B color, string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMotionStreak</ReturnType>
+        <ReturnType>CocosSharp.CCMotionStreak</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fade" Type="System.Single" />
         <Parameter Name="minSeg" Type="System.Single" />
         <Parameter Name="stroke" Type="System.Single" />
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
@@ -163,8 +163,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithFade">
-      <MemberSignature Language="C#" Value="public bool InitWithFade (float fade, float minSeg, float stroke, Cocos2D.CCColor3B color, Cocos2D.CCTexture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFade(float32 fade, float32 minSeg, float32 stroke, valuetype Cocos2D.CCColor3B color, class Cocos2D.CCTexture2D texture) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithFade (float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFade(float32 fade, float32 minSeg, float32 stroke, valuetype CocosSharp.CCColor3B color, class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -176,8 +176,8 @@
         <Parameter Name="fade" Type="System.Single" />
         <Parameter Name="minSeg" Type="System.Single" />
         <Parameter Name="stroke" Type="System.Single" />
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
       </Parameters>
       <Docs>
         <param name="fade">To be added.</param>
@@ -191,8 +191,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithFade">
-      <MemberSignature Language="C#" Value="public bool InitWithFade (float fade, float minSeg, float stroke, Cocos2D.CCColor3B color, string path);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFade(float32 fade, float32 minSeg, float32 stroke, valuetype Cocos2D.CCColor3B color, string path) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithFade (float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithFade(float32 fade, float32 minSeg, float32 stroke, valuetype CocosSharp.CCColor3B color, string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -204,7 +204,7 @@
         <Parameter Name="fade" Type="System.Single" />
         <Parameter Name="minSeg" Type="System.Single" />
         <Parameter Name="stroke" Type="System.Single" />
-        <Parameter Name="color" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
         <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
@@ -290,14 +290,14 @@
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCPoint Position { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Position" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCPoint Position { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Override super methods </summary>
@@ -322,14 +322,14 @@
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTexture2D Texture { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Sets a new texuture. It will be retained.</summary>
@@ -341,8 +341,8 @@
       </Docs>
     </Member>
     <Member MemberName="TintWithColor">
-      <MemberSignature Language="C#" Value="public void TintWithColor (Cocos2D.CCColor3B colors);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TintWithColor(valuetype Cocos2D.CCColor3B colors) cil managed" />
+      <MemberSignature Language="C#" Value="public void TintWithColor (CocosSharp.CCColor3B colors);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TintWithColor(valuetype CocosSharp.CCColor3B colors) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -351,7 +351,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="colors" Type="Cocos2D.CCColor3B" />
+        <Parameter Name="colors" Type="CocosSharp.CCColor3B" />
       </Parameters>
       <Docs>
         <param name="colors">To be added.</param>

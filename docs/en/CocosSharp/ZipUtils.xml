@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="ZipUtils" FullName="Cocos2D.ZipUtils">
+<Type Name="ZipUtils" FullName="CocosSharp.ZipUtils">
   <TypeSignature Language="C#" Value="public class ZipUtils" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ZipUtils extends System.Object" />
   <AssemblyInfo>

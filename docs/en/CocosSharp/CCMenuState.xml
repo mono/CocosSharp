@@ -1,4 +1,4 @@
-<Type Name="CCMenuState" FullName="Cocos2D.CCMenuState">
+<Type Name="CCMenuState" FullName="CocosSharp.CCMenuState">
   <TypeSignature Language="C#" Value="public enum CCMenuState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCMenuState extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Focused">
       <MemberSignature Language="C#" Value="Focused" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMenuState Focused = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMenuState Focused = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuState</ReturnType>
+        <ReturnType>CocosSharp.CCMenuState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="TrackingTouch">
       <MemberSignature Language="C#" Value="TrackingTouch" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMenuState TrackingTouch = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMenuState TrackingTouch = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuState</ReturnType>
+        <ReturnType>CocosSharp.CCMenuState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Waiting">
       <MemberSignature Language="C#" Value="Waiting" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMenuState Waiting = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMenuState Waiting = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuState</ReturnType>
+        <ReturnType>CocosSharp.CCMenuState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSpriteFontCache" FullName="Cocos2D.CCSpriteFontCache">
+<Type Name="CCSpriteFontCache" FullName="CocosSharp.CCSpriteFontCache">
   <TypeSignature Language="C#" Value="public class CCSpriteFontCache" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CCSpriteFontCache extends System.Object" />
   <AssemblyInfo>
@@ -89,14 +89,14 @@
       </Docs>
     </Member>
     <Member MemberName="SharedInstance">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSpriteFontCache SharedInstance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCSpriteFontCache SharedInstance" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFontCache SharedInstance { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFontCache SharedInstance" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFontCache</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFontCache</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

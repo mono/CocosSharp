@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTransitionScene" FullName="Cocos2D.CCTransitionScene">
-  <TypeSignature Language="C#" Value="public class CCTransitionScene : Cocos2D.CCScene" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionScene extends Cocos2D.CCScene" />
+<Type Name="CCTransitionScene" FullName="CocosSharp.CCTransitionScene">
+  <TypeSignature Language="C#" Value="public class CCTransitionScene : CocosSharp.CCScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionScene extends CocosSharp.CCScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCScene</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCScene</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,15 +31,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionScene (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionScene (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -132,8 +132,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -143,7 +143,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -215,14 +215,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pInScene">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCScene m_pInScene;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScene m_pInScene" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene m_pInScene;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene m_pInScene" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -230,14 +230,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOutScene">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCScene m_pOutScene;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCScene m_pOutScene" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene m_pOutScene;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene m_pOutScene" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -277,8 +277,8 @@
       </Docs>
     </Member>
     <Member MemberName="Reset">
-      <MemberSignature Language="C#" Value="public virtual void Reset (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Reset(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Reset (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Reset(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -288,7 +288,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>

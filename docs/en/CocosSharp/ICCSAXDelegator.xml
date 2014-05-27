@@ -1,4 +1,4 @@
-<Type Name="ICCSAXDelegator" FullName="Cocos2D.ICCSAXDelegator">
+<Type Name="ICCSAXDelegator" FullName="CocosSharp.ICCSAXDelegator">
   <TypeSignature Language="C#" Value="public interface ICCSAXDelegator" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCSAXDelegator" />
   <AssemblyInfo>

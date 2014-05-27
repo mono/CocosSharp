@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFPSImage" FullName="Cocos2D.CCFPSImage">
+<Type Name="CCFPSImage" FullName="CocosSharp.CCFPSImage">
   <TypeSignature Language="C#" Value="public class CCFPSImage" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFPSImage extends System.Object" />
   <AssemblyInfo>

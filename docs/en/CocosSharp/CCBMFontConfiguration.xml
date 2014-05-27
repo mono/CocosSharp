@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBMFontConfiguration" FullName="Cocos2D.CCBMFontConfiguration">
+<Type Name="CCBMFontConfiguration" FullName="CocosSharp.CCBMFontConfiguration">
   <TypeSignature Language="C#" Value="public class CCBMFontConfiguration" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBMFontConfiguration extends System.Object" />
   <AssemblyInfo>
@@ -86,14 +86,14 @@
       </Docs>
     </Member>
     <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCBMFontConfiguration Create (string fntFile);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class Cocos2D.CCBMFontConfiguration Create(string fntFile) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCBMFontConfiguration Create (string fntFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCBMFontConfiguration Create(string fntFile) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCBMFontConfiguration</ReturnType>
+        <ReturnType>CocosSharp.CCBMFontConfiguration</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="fntFile" Type="System.String" />

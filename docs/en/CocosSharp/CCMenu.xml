@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCMenu" FullName="Cocos2D.CCMenu">
-  <TypeSignature Language="C#" Value="public class CCMenu : Cocos2D.CCLayerRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenu extends Cocos2D.CCLayerRGBA" />
+<Type Name="CCMenu" FullName="CocosSharp.CCMenu">
+  <TypeSignature Language="C#" Value="public class CCMenu : CocosSharp.CCLayerRGBA" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenu extends CocosSharp.CCLayerRGBA" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLayerRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenu (Cocos2D.CCMenuItem[] items);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCMenuItem[] items) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMenu (CocosSharp.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCMenuItem[] items) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="items" Type="Cocos2D.CCMenuItem[]">
+        <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -38,8 +38,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddChild">
-      <MemberSignature Language="C#" Value="public override void AddChild (Cocos2D.CCNode child, int zOrder, int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class Cocos2D.CCNode child, int32 zOrder, int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -48,7 +48,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="zOrder" Type="System.Int32" />
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
@@ -197,14 +197,14 @@
       </Docs>
     </Member>
     <Member MemberName="FocusedItem">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCMenuItem FocusedItem { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCMenuItem FocusedItem" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCMenuItem FocusedItem { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCMenuItem FocusedItem" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+        <ReturnType>CocosSharp.CCMenuItem</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -246,8 +246,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithItems">
-      <MemberSignature Language="C#" Value="public bool InitWithItems (Cocos2D.CCMenuItem[] items);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithItems(class Cocos2D.CCMenuItem[] items) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithItems (CocosSharp.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithItems(class CocosSharp.CCMenuItem[] items) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -256,7 +256,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="items" Type="Cocos2D.CCMenuItem[]">
+        <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -272,17 +272,17 @@
       </Docs>
     </Member>
     <Member MemberName="ItemForTouch">
-      <MemberSignature Language="C#" Value="protected virtual Cocos2D.CCMenuItem ItemForTouch (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class Cocos2D.CCMenuItem ItemForTouch(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCMenuItem ItemForTouch (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCMenuItem ItemForTouch(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+        <ReturnType>CocosSharp.CCMenuItem</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -339,14 +339,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_eState">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCMenuState m_eState;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCMenuState m_eState" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCMenuState m_eState;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCMenuState m_eState" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuState</ReturnType>
+        <ReturnType>CocosSharp.CCMenuState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -354,14 +354,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pSelectedItem">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCMenuItem m_pSelectedItem;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCMenuItem m_pSelectedItem" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCMenuItem m_pSelectedItem;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCMenuItem m_pSelectedItem" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMenuItem</ReturnType>
+        <ReturnType>CocosSharp.CCMenuItem</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -401,8 +401,8 @@
       </Docs>
     </Member>
     <Member MemberName="OnGamePadButtonUpdate">
-      <MemberSignature Language="C#" Value="protected override void OnGamePadButtonUpdate (Cocos2D.CCGamePadButtonStatus backButton, Cocos2D.CCGamePadButtonStatus startButton, Cocos2D.CCGamePadButtonStatus systemButton, Cocos2D.CCGamePadButtonStatus aButton, Cocos2D.CCGamePadButtonStatus bButton, Cocos2D.CCGamePadButtonStatus xButton, Cocos2D.CCGamePadButtonStatus yButton, Cocos2D.CCGamePadButtonStatus leftShoulder, Cocos2D.CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnGamePadButtonUpdate(valuetype Cocos2D.CCGamePadButtonStatus backButton, valuetype Cocos2D.CCGamePadButtonStatus startButton, valuetype Cocos2D.CCGamePadButtonStatus systemButton, valuetype Cocos2D.CCGamePadButtonStatus aButton, valuetype Cocos2D.CCGamePadButtonStatus bButton, valuetype Cocos2D.CCGamePadButtonStatus xButton, valuetype Cocos2D.CCGamePadButtonStatus yButton, valuetype Cocos2D.CCGamePadButtonStatus leftShoulder, valuetype Cocos2D.CCGamePadButtonStatus rightShoulder, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void OnGamePadButtonUpdate (CocosSharp.CCGamePadButtonStatus backButton, CocosSharp.CCGamePadButtonStatus startButton, CocosSharp.CCGamePadButtonStatus systemButton, CocosSharp.CCGamePadButtonStatus aButton, CocosSharp.CCGamePadButtonStatus bButton, CocosSharp.CCGamePadButtonStatus xButton, CocosSharp.CCGamePadButtonStatus yButton, CocosSharp.CCGamePadButtonStatus leftShoulder, CocosSharp.CCGamePadButtonStatus rightShoulder, Microsoft.Xna.Framework.PlayerIndex player);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnGamePadButtonUpdate(valuetype CocosSharp.CCGamePadButtonStatus backButton, valuetype CocosSharp.CCGamePadButtonStatus startButton, valuetype CocosSharp.CCGamePadButtonStatus systemButton, valuetype CocosSharp.CCGamePadButtonStatus aButton, valuetype CocosSharp.CCGamePadButtonStatus bButton, valuetype CocosSharp.CCGamePadButtonStatus xButton, valuetype CocosSharp.CCGamePadButtonStatus yButton, valuetype CocosSharp.CCGamePadButtonStatus leftShoulder, valuetype CocosSharp.CCGamePadButtonStatus rightShoulder, valuetype Microsoft.Xna.Framework.PlayerIndex player) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -411,15 +411,15 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="backButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="startButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="systemButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="aButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="bButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="xButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="yButton" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="leftShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
-        <Parameter Name="rightShoulder" Type="Cocos2D.CCGamePadButtonStatus" />
+        <Parameter Name="backButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="startButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="systemButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="aButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="bButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="xButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="yButton" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="leftShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
+        <Parameter Name="rightShoulder" Type="CocosSharp.CCGamePadButtonStatus" />
         <Parameter Name="player" Type="Microsoft.Xna.Framework.PlayerIndex" />
       </Parameters>
       <Docs>
@@ -454,8 +454,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
-      <MemberSignature Language="C#" Value="public override void RemoveChild (Cocos2D.CCNode child, bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class Cocos2D.CCNode child, bool cleanup) cil managed" />
+      <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode child, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -464,7 +464,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="child" Type="Cocos2D.CCNode" />
+        <Parameter Name="child" Type="CocosSharp.CCNode" />
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -494,8 +494,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchBegan">
-      <MemberSignature Language="C#" Value="public override bool TouchBegan (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -504,7 +504,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -514,8 +514,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchCancelled">
-      <MemberSignature Language="C#" Value="public override void TouchCancelled (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -524,7 +524,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -533,8 +533,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchEnded">
-      <MemberSignature Language="C#" Value="public override void TouchEnded (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchEnded (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -543,7 +543,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
@@ -552,8 +552,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchMoved">
-      <MemberSignature Language="C#" Value="public override void TouchMoved (Cocos2D.CCTouch touch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class Cocos2D.CCTouch touch) cil managed" />
+      <MemberSignature Language="C#" Value="public override void TouchMoved (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -562,7 +562,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touch" Type="Cocos2D.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>

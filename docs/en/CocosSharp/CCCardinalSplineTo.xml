@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCCardinalSplineTo" FullName="Cocos2D.CCCardinalSplineTo">
-  <TypeSignature Language="C#" Value="public class CCCardinalSplineTo : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCardinalSplineTo extends Cocos2D.CCActionInterval" />
+<Type Name="CCCardinalSplineTo" FullName="CocosSharp.CCCardinalSplineTo">
+  <TypeSignature Language="C#" Value="public class CCCardinalSplineTo : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCardinalSplineTo extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCCardinalSplineTo (Cocos2D.CCCardinalSplineTo cardinalSplineTo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCCardinalSplineTo cardinalSplineTo) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCCardinalSplineTo (CocosSharp.CCCardinalSplineTo cardinalSplineTo);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCardinalSplineTo cardinalSplineTo) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="cardinalSplineTo" Type="Cocos2D.CCCardinalSplineTo" />
+        <Parameter Name="cardinalSplineTo" Type="CocosSharp.CCCardinalSplineTo" />
       </Parameters>
       <Docs>
         <param name="cardinalSplineTo">To be added.</param>
@@ -32,15 +32,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCardinalSplineTo (float duration, System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; points, float tension);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; points, float32 tension) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCardinalSplineTo (float duration, System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; points, float tension);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; points, float32 tension) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="points" Type="System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;" />
+        <Parameter Name="points" Type="System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;" />
         <Parameter Name="tension" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,7 +62,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -72,8 +72,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="public bool InitWithDuration (float duration, System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; points, float tension);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuration(float32 duration, class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; points, float32 tension) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithDuration (float duration, System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; points, float tension);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuration(float32 duration, class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; points, float32 tension) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -83,7 +83,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="points" Type="System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;" />
+        <Parameter Name="points" Type="System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;" />
         <Parameter Name="tension" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -96,14 +96,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_accumulatedDiff">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_accumulatedDiff;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_accumulatedDiff" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_accumulatedDiff;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_accumulatedDiff" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -141,14 +141,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pPoints">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; m_pPoints;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; m_pPoints" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; m_pPoints;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; m_pPoints" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -156,14 +156,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_previousPosition">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_previousPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_previousPosition" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_previousPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_previousPosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -171,14 +171,14 @@
       </Docs>
     </Member>
     <Member MemberName="Points">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; Points { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; Points" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; Points { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; Points" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -187,14 +187,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -204,8 +204,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -214,7 +214,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -260,8 +260,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdatePosition">
-      <MemberSignature Language="C#" Value="public virtual void UpdatePosition (Cocos2D.CCPoint newPos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdatePosition(valuetype Cocos2D.CCPoint newPos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void UpdatePosition (CocosSharp.CCPoint newPos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdatePosition(valuetype CocosSharp.CCPoint newPos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -270,7 +270,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="newPos" Type="Cocos2D.CCPoint" />
+        <Parameter Name="newPos" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="newPos">To be added.</param>

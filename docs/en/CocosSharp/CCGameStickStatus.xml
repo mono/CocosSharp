@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCGameStickStatus" FullName="Cocos2D.CCGameStickStatus">
+<Type Name="CCGameStickStatus" FullName="CocosSharp.CCGameStickStatus">
   <TypeSignature Language="C#" Value="public struct CCGameStickStatus" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCGameStickStatus extends System.ValueType" />
   <AssemblyInfo>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName="Direction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Direction;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint Direction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Direction;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint Direction" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

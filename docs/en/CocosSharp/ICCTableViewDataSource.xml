@@ -1,4 +1,4 @@
-<Type Name="ICCTableViewDataSource" FullName="Cocos2D.ICCTableViewDataSource">
+<Type Name="ICCTableViewDataSource" FullName="CocosSharp.ICCTableViewDataSource">
   <TypeSignature Language="C#" Value="public interface ICCTableViewDataSource" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTableViewDataSource" />
   <AssemblyInfo>
@@ -12,8 +12,8 @@
   </Docs>
   <Members>
     <Member MemberName="NumberOfCellsInTableView">
-      <MemberSignature Language="C#" Value="public int NumberOfCellsInTableView (Cocos2D.CCTableView table);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 NumberOfCellsInTableView(class Cocos2D.CCTableView table) cil managed" />
+      <MemberSignature Language="C#" Value="public int NumberOfCellsInTableView (CocosSharp.CCTableView table);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 NumberOfCellsInTableView(class CocosSharp.CCTableView table) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -22,7 +22,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="table" Type="Cocos2D.CCTableView" />
+        <Parameter Name="table" Type="CocosSharp.CCTableView" />
       </Parameters>
       <Docs>
         <param name="table">To be added.</param>
@@ -32,17 +32,17 @@
       </Docs>
     </Member>
     <Member MemberName="TableCellAtIndex">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTableViewCell TableCellAtIndex (Cocos2D.CCTableView table, int idx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCTableViewCell TableCellAtIndex(class Cocos2D.CCTableView table, int32 idx) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTableViewCell TableCellAtIndex (CocosSharp.CCTableView table, int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCTableViewCell TableCellAtIndex(class CocosSharp.CCTableView table, int32 idx) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTableViewCell</ReturnType>
+        <ReturnType>CocosSharp.CCTableViewCell</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="table" Type="Cocos2D.CCTableView" />
+        <Parameter Name="table" Type="CocosSharp.CCTableView" />
         <Parameter Name="idx" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -54,17 +54,17 @@
       </Docs>
     </Member>
     <Member MemberName="TableCellSizeForIndex">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize TableCellSizeForIndex (Cocos2D.CCTableView table, int idx);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype Cocos2D.CCSize TableCellSizeForIndex(class Cocos2D.CCTableView table, int32 idx) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize TableCellSizeForIndex (CocosSharp.CCTableView table, int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCSize TableCellSizeForIndex(class CocosSharp.CCTableView table, int32 idx) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="table" Type="Cocos2D.CCTableView" />
+        <Parameter Name="table" Type="CocosSharp.CCTableView" />
         <Parameter Name="idx" Type="System.Int32" />
       </Parameters>
       <Docs>

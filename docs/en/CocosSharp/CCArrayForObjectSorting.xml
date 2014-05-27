@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCArrayForObjectSorting" FullName="Cocos2D.CCArrayForObjectSorting">
+<Type Name="CCArrayForObjectSorting" FullName="CocosSharp.CCArrayForObjectSorting">
   <TypeSignature Language="C#" Value="public class CCArrayForObjectSorting : System.Collections.Generic.List&lt;object&gt;" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCArrayForObjectSorting extends System.Collections.Generic.List`1&lt;object&gt;" />
   <AssemblyInfo>
@@ -48,8 +48,8 @@
       </Docs>
     </Member>
     <Member MemberName="IndexOfSortedObject">
-      <MemberSignature Language="C#" Value="public int IndexOfSortedObject (Cocos2D.ICCSortableObject obj);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 IndexOfSortedObject(class Cocos2D.ICCSortableObject obj) cil managed" />
+      <MemberSignature Language="C#" Value="public int IndexOfSortedObject (CocosSharp.ICCSortableObject obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 IndexOfSortedObject(class CocosSharp.ICCSortableObject obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -58,7 +58,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="obj" Type="Cocos2D.ICCSortableObject" />
+        <Parameter Name="obj" Type="CocosSharp.ICCSortableObject" />
       </Parameters>
       <Docs>
         <param name="obj">To be added.</param>
@@ -68,8 +68,8 @@
       </Docs>
     </Member>
     <Member MemberName="InsertSortedObject">
-      <MemberSignature Language="C#" Value="public void InsertSortedObject (Cocos2D.ICCSortableObject obj);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertSortedObject(class Cocos2D.ICCSortableObject obj) cil managed" />
+      <MemberSignature Language="C#" Value="public void InsertSortedObject (CocosSharp.ICCSortableObject obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void InsertSortedObject(class CocosSharp.ICCSortableObject obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -78,7 +78,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="obj" Type="Cocos2D.ICCSortableObject" />
+        <Parameter Name="obj" Type="CocosSharp.ICCSortableObject" />
       </Parameters>
       <Docs>
         <param name="obj">To be added.</param>
@@ -87,14 +87,14 @@
       </Docs>
     </Member>
     <Member MemberName="ObjectWithObjectID">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCSortableObject ObjectWithObjectID (int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.ICCSortableObject ObjectWithObjectID(int32 tag) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCSortableObject ObjectWithObjectID (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.ICCSortableObject ObjectWithObjectID(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCSortableObject</ReturnType>
+        <ReturnType>CocosSharp.ICCSortableObject</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
@@ -107,8 +107,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveSortedObject">
-      <MemberSignature Language="C#" Value="public void RemoveSortedObject (Cocos2D.ICCSortableObject obj);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSortedObject(class Cocos2D.ICCSortableObject obj) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveSortedObject (CocosSharp.ICCSortableObject obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSortedObject(class CocosSharp.ICCSortableObject obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -117,7 +117,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="obj" Type="Cocos2D.ICCSortableObject" />
+        <Parameter Name="obj" Type="CocosSharp.ICCSortableObject" />
       </Parameters>
       <Docs>
         <param name="obj">To be added.</param>
@@ -126,8 +126,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetObjectID_ofSortedObject">
-      <MemberSignature Language="C#" Value="public void SetObjectID_ofSortedObject (int tag, Cocos2D.ICCSortableObject obj);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetObjectID_ofSortedObject(int32 tag, class Cocos2D.ICCSortableObject obj) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetObjectID_ofSortedObject (int tag, CocosSharp.ICCSortableObject obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetObjectID_ofSortedObject(int32 tag, class CocosSharp.ICCSortableObject obj) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -137,7 +137,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
-        <Parameter Name="obj" Type="Cocos2D.ICCSortableObject" />
+        <Parameter Name="obj" Type="CocosSharp.ICCSortableObject" />
       </Parameters>
       <Docs>
         <param name="tag">To be added.</param>

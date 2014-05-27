@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLabel" FullName="Cocos2D.CCLabel">
-  <TypeSignature Language="C#" Value="public class CCLabel : Cocos2D.CCLabelBMFont" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabel extends Cocos2D.CCLabelBMFont" />
+<Type Name="CCLabel" FullName="CocosSharp.CCLabel">
+  <TypeSignature Language="C#" Value="public class CCLabel : CocosSharp.CCLabelBMFont" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabel extends CocosSharp.CCLabelBMFont" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLabelBMFont</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLabelBMFont</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, Cocos2D.CCSize dimensions);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCSize dimensions) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -59,7 +59,7 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="Cocos2D.CCSize" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -71,8 +71,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, Cocos2D.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCTextAlignment hAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -81,7 +81,7 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -93,8 +93,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, Cocos2D.CCSize dimensions, Cocos2D.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCSize dimensions, valuetype Cocos2D.CCTextAlignment hAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -103,8 +103,8 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="Cocos2D.CCSize" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -117,8 +117,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, Cocos2D.CCTextAlignment hAlignment, Cocos2D.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCTextAlignment hAlignment, valuetype Cocos2D.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -127,8 +127,8 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
-        <Parameter Name="vAlignment" Type="Cocos2D.CCVerticalTextAlignment" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -141,8 +141,8 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, Cocos2D.CCSize dimensions, Cocos2D.CCTextAlignment hAlignment, Cocos2D.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCSize dimensions, valuetype Cocos2D.CCTextAlignment hAlignment, valuetype Cocos2D.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -151,9 +151,9 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="Cocos2D.CCSize" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
-        <Parameter Name="vAlignment" Type="Cocos2D.CCVerticalTextAlignment" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -167,14 +167,14 @@
       </Docs>
     </Member>
     <Member MemberName="AllocateRegion">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCLabel.ivec4 AllocateRegion (int width, int height);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCLabel/ivec4 AllocateRegion(int32 width, int32 height) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCLabel.ivec4 AllocateRegion (int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCLabel/ivec4 AllocateRegion(int32 width, int32 height) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLabel+ivec4</ReturnType>
+        <ReturnType>CocosSharp.CCLabel+ivec4</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="width" Type="System.Int32" />
@@ -282,8 +282,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, Cocos2D.CCSize dimensions, Cocos2D.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCSize dimensions, valuetype Cocos2D.CCTextAlignment hAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -295,8 +295,8 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="Cocos2D.CCSize" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -310,8 +310,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, Cocos2D.CCSize dimensions, Cocos2D.CCTextAlignment hAlignment, Cocos2D.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype Cocos2D.CCSize dimensions, valuetype Cocos2D.CCTextAlignment hAlignment, valuetype Cocos2D.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -323,9 +323,9 @@
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
         <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="Cocos2D.CCSize" />
-        <Parameter Name="hAlignment" Type="Cocos2D.CCTextAlignment" />
-        <Parameter Name="vAlignment" Type="Cocos2D.CCVerticalTextAlignment" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
       </Parameters>
       <Docs>
         <param name="text">To be added.</param>
@@ -400,14 +400,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTexture">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCTexture2D m_pTexture;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class Cocos2D.CCTexture2D m_pTexture" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field public static class CocosSharp.CCTexture2D m_pTexture" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -415,8 +415,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetRegionData">
-      <MemberSignature Language="C#" Value="public static void SetRegionData (Cocos2D.CCLabel.ivec4 region, int[] data, int stride);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRegionData(valuetype Cocos2D.CCLabel/ivec4 region, int32[] data, int32 stride) cil managed" />
+      <MemberSignature Language="C#" Value="public static void SetRegionData (CocosSharp.CCLabel.ivec4 region, int[] data, int stride);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRegionData(valuetype CocosSharp.CCLabel/ivec4 region, int32[] data, int32 stride) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -425,7 +425,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="region" Type="Cocos2D.CCLabel+ivec4" />
+        <Parameter Name="region" Type="CocosSharp.CCLabel+ivec4" />
         <Parameter Name="data" Type="System.Int32[]" />
         <Parameter Name="stride" Type="System.Int32" />
       </Parameters>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCActionManager" FullName="Cocos2D.CCActionManager">
-  <TypeSignature Language="C#" Value="public class CCActionManager : Cocos2D.ICCSelectorProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionManager extends System.Object implements class Cocos2D.ICCSelectorProtocol" />
+<Type Name="CCActionManager" FullName="CocosSharp.CCActionManager">
+  <TypeSignature Language="C#" Value="public class CCActionManager : CocosSharp.ICCSelectorProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionManager extends System.Object implements class CocosSharp.ICCSelectorProtocol" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCSelectorProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCSelectorProtocol</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="ActionAllocWithHashElement">
-      <MemberSignature Language="C#" Value="protected void ActionAllocWithHashElement (Cocos2D.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ActionAllocWithHashElement(class Cocos2D.CCActionManager/HashElement element) cil managed" />
+      <MemberSignature Language="C#" Value="protected void ActionAllocWithHashElement (CocosSharp.CCActionManager.HashElement element);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ActionAllocWithHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,7 +62,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="element" Type="Cocos2D.CCActionManager+HashElement" />
+        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
       </Parameters>
       <Docs>
         <param name="element">To be added.</param>
@@ -71,8 +71,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddAction">
-      <MemberSignature Language="C#" Value="public void AddAction (Cocos2D.CCAction action, Cocos2D.CCNode target, bool paused);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAction(class Cocos2D.CCAction action, class Cocos2D.CCNode target, bool paused) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddAction (CocosSharp.CCAction action, CocosSharp.CCNode target, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAction(class CocosSharp.CCAction action, class CocosSharp.CCNode target, bool paused) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -81,8 +81,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCAction" />
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
         <Parameter Name="paused" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -94,8 +94,8 @@
       </Docs>
     </Member>
     <Member MemberName="DeleteHashElement">
-      <MemberSignature Language="C#" Value="protected void DeleteHashElement (Cocos2D.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DeleteHashElement(class Cocos2D.CCActionManager/HashElement element) cil managed" />
+      <MemberSignature Language="C#" Value="protected void DeleteHashElement (CocosSharp.CCActionManager.HashElement element);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DeleteHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -104,7 +104,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="element" Type="Cocos2D.CCActionManager+HashElement" />
+        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
       </Parameters>
       <Docs>
         <param name="element">To be added.</param>
@@ -129,18 +129,18 @@
       </Docs>
     </Member>
     <Member MemberName="GetActionByTag">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction GetActionByTag (int tag, Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCAction GetActionByTag(int32 tag, class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetActionByTag (int tag, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="tag">To be added.</param>
@@ -151,8 +151,8 @@
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActionsInTarget">
-      <MemberSignature Language="C#" Value="public int NumberOfRunningActionsInTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActionsInTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public int NumberOfRunningActionsInTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActionsInTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -161,7 +161,7 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -218,8 +218,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveAction">
-      <MemberSignature Language="C#" Value="public void RemoveAction (Cocos2D.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class Cocos2D.CCAction action) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveAction (CocosSharp.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class CocosSharp.CCAction action) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -228,7 +228,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCAction" />
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
@@ -237,8 +237,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveActionAtIndex">
-      <MemberSignature Language="C#" Value="protected void RemoveActionAtIndex (int index, Cocos2D.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RemoveActionAtIndex(int32 index, class Cocos2D.CCActionManager/HashElement element) cil managed" />
+      <MemberSignature Language="C#" Value="protected void RemoveActionAtIndex (int index, CocosSharp.CCActionManager.HashElement element);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RemoveActionAtIndex(int32 index, class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -248,7 +248,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="index" Type="System.Int32" />
-        <Parameter Name="element" Type="Cocos2D.CCActionManager+HashElement" />
+        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
       </Parameters>
       <Docs>
         <param name="index">To be added.</param>
@@ -258,8 +258,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveActionByTag">
-      <MemberSignature Language="C#" Value="public void RemoveActionByTag (int tag, Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveActionByTag(int32 tag, class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveActionByTag (int tag, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -269,7 +269,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="tag" Type="System.Int32" />
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="tag">To be added.</param>
@@ -295,8 +295,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActionsFromTarget">
-      <MemberSignature Language="C#" Value="public void RemoveAllActionsFromTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllActionsFromTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveAllActionsFromTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllActionsFromTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -305,7 +305,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

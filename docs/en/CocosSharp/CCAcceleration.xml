@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAcceleration" FullName="Cocos2D.CCAcceleration">
+<Type Name="CCAcceleration" FullName="CocosSharp.CCAcceleration">
   <TypeSignature Language="C#" Value="public class CCAcceleration" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAcceleration extends System.Object" />
   <AssemblyInfo>

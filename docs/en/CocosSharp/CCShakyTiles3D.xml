@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCShakyTiles3D" FullName="Cocos2D.CCShakyTiles3D">
-  <TypeSignature Language="C#" Value="public class CCShakyTiles3D : Cocos2D.CCTiledGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCShakyTiles3D extends Cocos2D.CCTiledGrid3DAction" />
+<Type Name="CCShakyTiles3D" FullName="CocosSharp.CCShakyTiles3D">
+  <TypeSignature Language="C#" Value="public class CCShakyTiles3D : CocosSharp.CCTiledGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCShakyTiles3D extends CocosSharp.CCTiledGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTiledGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTiledGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,15 +31,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCShakyTiles3D (float duration, Cocos2D.CCGridSize gridSize, int nRange, bool bShakeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 nRange, bool bShakeZ) cil managed" />
+      <MemberSignature Language="C#" Value="public CCShakyTiles3D (float duration, CocosSharp.CCGridSize gridSize, int nRange, bool bShakeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 nRange, bool bShakeZ) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="nRange" Type="System.Int32" />
         <Parameter Name="bShakeZ" Type="System.Boolean" />
       </Parameters>
@@ -53,8 +53,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -63,7 +63,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize, int nRange, bool bShakeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 nRange, bool bShakeZ) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, CocosSharp.CCGridSize gridSize, int nRange, bool bShakeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 nRange, bool bShakeZ) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -84,7 +84,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="nRange" Type="System.Int32" />
         <Parameter Name="bShakeZ" Type="System.Boolean" />
       </Parameters>

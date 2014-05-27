@@ -1,4 +1,4 @@
-<Type Name="CCTransitionOrientation" FullName="Cocos2D.CCTransitionOrientation">
+<Type Name="CCTransitionOrientation" FullName="CocosSharp.CCTransitionOrientation">
   <TypeSignature Language="C#" Value="public enum CCTransitionOrientation" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTransitionOrientation extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="DownOver">
       <MemberSignature Language="C#" Value="DownOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTransitionOrientation DownOver = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation DownOver = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTransitionOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="LeftOver">
       <MemberSignature Language="C#" Value="LeftOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTransitionOrientation LeftOver = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation LeftOver = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTransitionOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="RightOver">
       <MemberSignature Language="C#" Value="RightOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTransitionOrientation RightOver = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation RightOver = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTransitionOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="UpOver">
       <MemberSignature Language="C#" Value="UpOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCTransitionOrientation UpOver = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation UpOver = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTransitionOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

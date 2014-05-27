@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCApplication" FullName="Cocos2D.CCApplication">
+<Type Name="CCApplication" FullName="CocosSharp.CCApplication">
   <TypeSignature Language="C#" Value="public abstract class CCApplication : Microsoft.Xna.Framework.DrawableGameComponent" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCApplication extends Microsoft.Xna.Framework.DrawableGameComponent" />
   <AssemblyInfo>
@@ -152,14 +152,14 @@
       </Docs>
     </Member>
     <Member MemberName="GamePadButtonUpdate">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCGamePadButtonDelegate GamePadButtonUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCGamePadButtonDelegate GamePadButtonUpdate" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCGamePadButtonDelegate GamePadButtonUpdate;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCGamePadButtonDelegate GamePadButtonUpdate" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadButtonDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadButtonDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -167,14 +167,14 @@
       </Docs>
     </Member>
     <Member MemberName="GamePadConnectionUpdate">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCGamePadConnectionDelegate GamePadConnectionUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCGamePadConnectionDelegate GamePadConnectionUpdate" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCGamePadConnectionDelegate GamePadConnectionUpdate;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCGamePadConnectionDelegate GamePadConnectionUpdate" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadConnectionDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadConnectionDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -182,14 +182,14 @@
       </Docs>
     </Member>
     <Member MemberName="GamePadDPadUpdate">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCGamePadDPadDelegate GamePadDPadUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCGamePadDPadDelegate GamePadDPadUpdate" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCGamePadDPadDelegate GamePadDPadUpdate;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCGamePadDPadDelegate GamePadDPadUpdate" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadDPadDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadDPadDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -197,14 +197,14 @@
       </Docs>
     </Member>
     <Member MemberName="GamePadStickUpdate">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCGamePadStickUpdateDelegate GamePadStickUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCGamePadStickUpdateDelegate GamePadStickUpdate" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCGamePadStickUpdateDelegate GamePadStickUpdate;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCGamePadStickUpdateDelegate GamePadStickUpdate" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadStickUpdateDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadStickUpdateDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -212,14 +212,14 @@
       </Docs>
     </Member>
     <Member MemberName="GamePadTriggerUpdate">
-      <MemberSignature Language="C#" Value="public event Cocos2D.CCGamePadTriggerDelegate GamePadTriggerUpdate;" />
-      <MemberSignature Language="ILAsm" Value=".event class Cocos2D.CCGamePadTriggerDelegate GamePadTriggerUpdate" />
+      <MemberSignature Language="C#" Value="public event CocosSharp.CCGamePadTriggerDelegate GamePadTriggerUpdate;" />
+      <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCGamePadTriggerDelegate GamePadTriggerUpdate" />
       <MemberType>Event</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadTriggerDelegate</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadTriggerDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -346,14 +346,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pDelegate">
-      <MemberSignature Language="C#" Value="protected Cocos2D.ICCEGLTouchDelegate m_pDelegate;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.ICCEGLTouchDelegate m_pDelegate" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCEGLTouchDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCEGLTouchDelegate m_pDelegate" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCEGLTouchDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCEGLTouchDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -361,14 +361,14 @@
       </Docs>
     </Member>
     <Member MemberName="s_pSharedApplication">
-      <MemberSignature Language="C#" Value="protected static Cocos2D.CCApplication s_pSharedApplication;" />
-      <MemberSignature Language="ILAsm" Value=".field family static class Cocos2D.CCApplication s_pSharedApplication" />
+      <MemberSignature Language="C#" Value="protected static CocosSharp.CCApplication s_pSharedApplication;" />
+      <MemberSignature Language="ILAsm" Value=".field family static class CocosSharp.CCApplication s_pSharedApplication" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCApplication</ReturnType>
+        <ReturnType>CocosSharp.CCApplication</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -397,14 +397,14 @@
       </Docs>
     </Member>
     <Member MemberName="SharedApplication">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCApplication SharedApplication { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class Cocos2D.CCApplication SharedApplication" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCApplication SharedApplication { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCApplication SharedApplication" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCApplication</ReturnType>
+        <ReturnType>CocosSharp.CCApplication</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -413,14 +413,14 @@
       </Docs>
     </Member>
     <Member MemberName="TouchDelegate">
-      <MemberSignature Language="C#" Value="public Cocos2D.ICCEGLTouchDelegate TouchDelegate { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.ICCEGLTouchDelegate TouchDelegate" />
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCEGLTouchDelegate TouchDelegate { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCEGLTouchDelegate TouchDelegate" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.ICCEGLTouchDelegate</ReturnType>
+        <ReturnType>CocosSharp.ICCEGLTouchDelegate</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

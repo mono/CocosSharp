@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCPointObject" FullName="Cocos2D.CCPointObject">
+<Type Name="CCPointObject" FullName="CocosSharp.CCPointObject">
   <TypeSignature Language="C#" Value="public class CCPointObject" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointObject extends System.Object" />
   <AssemblyInfo>
@@ -16,15 +16,15 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCPointObject (Cocos2D.CCPoint ratio, Cocos2D.CCPoint offset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCPoint ratio, valuetype Cocos2D.CCPoint offset) cil managed" />
+      <MemberSignature Language="C#" Value="public CCPointObject (CocosSharp.CCPoint ratio, CocosSharp.CCPoint offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint ratio, valuetype CocosSharp.CCPoint offset) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="ratio" Type="Cocos2D.CCPoint" />
-        <Parameter Name="offset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="ratio" Type="CocosSharp.CCPoint" />
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="ratio">To be added.</param>
@@ -34,14 +34,14 @@
       </Docs>
     </Member>
     <Member MemberName="Child">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Child;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCNode Child" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Child;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCNode Child" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -49,8 +49,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithCcPoint">
-      <MemberSignature Language="C#" Value="public bool InitWithCcPoint (Cocos2D.CCPoint ratio, Cocos2D.CCPoint offset);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithCcPoint(valuetype Cocos2D.CCPoint ratio, valuetype Cocos2D.CCPoint offset) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithCcPoint (CocosSharp.CCPoint ratio, CocosSharp.CCPoint offset);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithCcPoint(valuetype CocosSharp.CCPoint ratio, valuetype CocosSharp.CCPoint offset) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -59,8 +59,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="ratio" Type="Cocos2D.CCPoint" />
-        <Parameter Name="offset" Type="Cocos2D.CCPoint" />
+        <Parameter Name="ratio" Type="CocosSharp.CCPoint" />
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="ratio">To be added.</param>
@@ -71,14 +71,14 @@
       </Docs>
     </Member>
     <Member MemberName="Offset">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Offset;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint Offset" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Offset;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint Offset" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -86,14 +86,14 @@
       </Docs>
     </Member>
     <Member MemberName="Ratio">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Ratio;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint Ratio" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Ratio;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint Ratio" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,4 +1,4 @@
-<Type Name="CCEmitterMode" FullName="Cocos2D.CCEmitterMode">
+<Type Name="CCEmitterMode" FullName="CocosSharp.CCEmitterMode">
   <TypeSignature Language="C#" Value="public enum CCEmitterMode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCEmitterMode extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Gravity">
       <MemberSignature Language="C#" Value="Gravity" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCEmitterMode Gravity = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCEmitterMode Gravity = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCEmitterMode</ReturnType>
+        <ReturnType>CocosSharp.CCEmitterMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Radius">
       <MemberSignature Language="C#" Value="Radius" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCEmitterMode Radius = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCEmitterMode Radius = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCEmitterMode</ReturnType>
+        <ReturnType>CocosSharp.CCEmitterMode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTwirl" FullName="Cocos2D.CCTwirl">
-  <TypeSignature Language="C#" Value="public class CCTwirl : Cocos2D.CCGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTwirl extends Cocos2D.CCGrid3DAction" />
+<Type Name="CCTwirl" FullName="CocosSharp.CCTwirl">
+  <TypeSignature Language="C#" Value="public class CCTwirl : CocosSharp.CCGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTwirl extends CocosSharp.CCGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,16 +31,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTwirl (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, int twirls, float amplitude);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTwirl (float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, int twirls, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
         <Parameter Name="twirls" Type="System.Int32" />
         <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
@@ -87,8 +87,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -97,7 +97,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -107,8 +107,8 @@
       </Docs>
     </Member>
     <Member MemberName="initWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool initWithDuration (float duration, Cocos2D.CCGridSize gridSize, Cocos2D.CCPoint position, int twirls, float amplitude);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool initWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool initWithDuration (float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, int twirls, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool initWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -118,8 +118,8 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="position" Type="Cocos2D.CCPoint" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
         <Parameter Name="twirls" Type="System.Int32" />
         <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
@@ -180,14 +180,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_position">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_position;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_position" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_position;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_position" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -195,14 +195,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_positionInPixels">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_positionInPixels;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_positionInPixels" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_positionInPixels;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_positionInPixels" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -210,14 +210,14 @@
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Position { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Position" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Position { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>set twirl center </summary>

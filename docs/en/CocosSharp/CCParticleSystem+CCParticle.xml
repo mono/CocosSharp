@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleSystem+CCParticle" FullName="Cocos2D.CCParticleSystem+CCParticle">
+<Type Name="CCParticleSystem+CCParticle" FullName="CocosSharp.CCParticleSystem+CCParticle">
   <TypeSignature Language="C#" Value="protected struct CCParticleSystem.CCParticle" />
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/CCParticle extends System.ValueType" />
   <AssemblyInfo>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="color">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F color;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCColor4F color" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F color;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCColor4F color" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -46,14 +46,14 @@
       </Docs>
     </Member>
     <Member MemberName="deltaColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor4F deltaColor;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCColor4F deltaColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4F deltaColor;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCColor4F deltaColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor4F</ReturnType>
+        <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -91,14 +91,14 @@
       </Docs>
     </Member>
     <Member MemberName="modeA">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCParticleSystem.CCParticle.ModeA modeA;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCParticleSystem/CCParticle/ModeA modeA" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCParticleSystem.CCParticle.ModeA modeA;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCParticleSystem/CCParticle/ModeA modeA" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystem+CCParticle+ModeA</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystem+CCParticle+ModeA</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -106,14 +106,14 @@
       </Docs>
     </Member>
     <Member MemberName="modeB">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCParticleSystem.CCParticle.ModeB modeB;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCParticleSystem/CCParticle/ModeB modeB" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCParticleSystem.CCParticle.ModeB modeB;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCParticleSystem/CCParticle/ModeB modeB" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystem+CCParticle+ModeB</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystem+CCParticle+ModeB</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -121,14 +121,14 @@
       </Docs>
     </Member>
     <Member MemberName="pos">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint pos;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint pos" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint pos;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint pos" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -166,14 +166,14 @@
       </Docs>
     </Member>
     <Member MemberName="startPos">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint startPos;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint startPos" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint startPos;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint startPos" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

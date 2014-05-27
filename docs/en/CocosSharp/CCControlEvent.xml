@@ -1,4 +1,4 @@
-<Type Name="CCControlEvent" FullName="Cocos2D.CCControlEvent">
+<Type Name="CCControlEvent" FullName="CocosSharp.CCControlEvent">
   <TypeSignature Language="C#" Value="public enum CCControlEvent" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCControlEvent extends System.Enum" />
   <AssemblyInfo>
@@ -20,13 +20,13 @@
   <Members>
     <Member MemberName="TouchCancel">
       <MemberSignature Language="C#" Value="TouchCancel" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchCancel = int32(128)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchCancel = int32(128)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -34,13 +34,13 @@
     </Member>
     <Member MemberName="TouchDown">
       <MemberSignature Language="C#" Value="TouchDown" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchDown = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchDown = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -48,13 +48,13 @@
     </Member>
     <Member MemberName="TouchDragEnter">
       <MemberSignature Language="C#" Value="TouchDragEnter" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchDragEnter = int32(8)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchDragEnter = int32(8)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -62,13 +62,13 @@
     </Member>
     <Member MemberName="TouchDragExit">
       <MemberSignature Language="C#" Value="TouchDragExit" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchDragExit = int32(16)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchDragExit = int32(16)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -76,13 +76,13 @@
     </Member>
     <Member MemberName="TouchDragInside">
       <MemberSignature Language="C#" Value="TouchDragInside" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchDragInside = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchDragInside = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -90,13 +90,13 @@
     </Member>
     <Member MemberName="TouchDragOutside">
       <MemberSignature Language="C#" Value="TouchDragOutside" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchDragOutside = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchDragOutside = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -104,13 +104,13 @@
     </Member>
     <Member MemberName="TouchUpInside">
       <MemberSignature Language="C#" Value="TouchUpInside" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchUpInside = int32(32)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchUpInside = int32(32)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -118,13 +118,13 @@
     </Member>
     <Member MemberName="TouchUpOutside">
       <MemberSignature Language="C#" Value="TouchUpOutside" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent TouchUpOutside = int32(64)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent TouchUpOutside = int32(64)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -132,13 +132,13 @@
     </Member>
     <Member MemberName="ValueChanged">
       <MemberSignature Language="C#" Value="ValueChanged" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCControlEvent ValueChanged = int32(256)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlEvent ValueChanged = int32(256)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCControlEvent</ReturnType>
+        <ReturnType>CocosSharp.CCControlEvent</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

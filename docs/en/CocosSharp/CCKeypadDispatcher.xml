@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCKeypadDispatcher" FullName="Cocos2D.CCKeypadDispatcher">
+<Type Name="CCKeypadDispatcher" FullName="CocosSharp.CCKeypadDispatcher">
   <TypeSignature Language="C#" Value="public class CCKeypadDispatcher" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadDispatcher extends System.Object" />
   <AssemblyInfo>
@@ -31,8 +31,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddDelegate">
-      <MemberSignature Language="C#" Value="public void AddDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -41,7 +41,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -52,8 +52,8 @@
       </Docs>
     </Member>
     <Member MemberName="DispatchKeypadMsg">
-      <MemberSignature Language="C#" Value="public bool DispatchKeypadMsg (Cocos2D.CCKeypadMSGType nMsgType);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DispatchKeypadMsg(valuetype Cocos2D.CCKeypadMSGType nMsgType) cil managed" />
+      <MemberSignature Language="C#" Value="public bool DispatchKeypadMsg (CocosSharp.CCKeypadMSGType nMsgType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DispatchKeypadMsg(valuetype CocosSharp.CCKeypadMSGType nMsgType) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,7 +62,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="nMsgType" Type="Cocos2D.CCKeypadMSGType" />
+        <Parameter Name="nMsgType" Type="CocosSharp.CCKeypadMSGType" />
       </Parameters>
       <Docs>
         <param name="nMsgType">To be added.</param>
@@ -72,8 +72,8 @@
       </Docs>
     </Member>
     <Member MemberName="ForceAddDelegate">
-      <MemberSignature Language="C#" Value="public void ForceAddDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceAddDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void ForceAddDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceAddDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -82,7 +82,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -93,8 +93,8 @@
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveDelegate">
-      <MemberSignature Language="C#" Value="public void ForceRemoveDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceRemoveDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void ForceRemoveDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ForceRemoveDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -103,7 +103,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -159,14 +159,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pDelegates">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCKeypadHandler&gt; m_pDelegates;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCKeypadHandler&gt; m_pDelegates" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCKeypadHandler&gt; m_pDelegates;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCKeypadHandler&gt; m_pDelegates" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCKeypadHandler&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCKeypadHandler&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -174,14 +174,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pHandlersToAdd">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToAdd;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToAdd" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.ICCKeypadDelegate&gt; m_pHandlersToAdd;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.ICCKeypadDelegate&gt; m_pHandlersToAdd" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCKeypadDelegate&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -189,14 +189,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pHandlersToRemove">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToRemove;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.ICCKeypadDelegate&gt; m_pHandlersToRemove" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.ICCKeypadDelegate&gt; m_pHandlersToRemove;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.ICCKeypadDelegate&gt; m_pHandlersToRemove" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.ICCKeypadDelegate&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCKeypadDelegate&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -204,8 +204,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveDelegate">
-      <MemberSignature Language="C#" Value="public void RemoveDelegate (Cocos2D.ICCKeypadDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDelegate(class Cocos2D.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -214,7 +214,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCKeypadDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>

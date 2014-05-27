@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCVertex3F" FullName="Cocos2D.CCVertex3F">
+<Type Name="CCVertex3F" FullName="CocosSharp.CCVertex3F">
   <TypeSignature Language="C#" Value="public struct CCVertex3F" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCVertex3F extends System.ValueType" />
   <AssemblyInfo>
@@ -98,14 +98,14 @@
       </Docs>
     </Member>
     <Member MemberName="Zero">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCVertex3F Zero;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCVertex3F Zero" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCVertex3F Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCVertex3F Zero" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCVertex3F</ReturnType>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

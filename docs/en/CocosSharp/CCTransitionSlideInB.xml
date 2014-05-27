@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTransitionSlideInB" FullName="Cocos2D.CCTransitionSlideInB">
-  <TypeSignature Language="C#" Value="public class CCTransitionSlideInB : Cocos2D.CCTransitionSlideInL" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInB extends Cocos2D.CCTransitionSlideInL" />
+<Type Name="CCTransitionSlideInB" FullName="CocosSharp.CCTransitionSlideInB">
+  <TypeSignature Language="C#" Value="public class CCTransitionSlideInB : CocosSharp.CCTransitionSlideInL" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSlideInB extends CocosSharp.CCTransitionSlideInL" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTransitionSlideInL</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTransitionSlideInL</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,15 +31,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionSlideInB (float t, Cocos2D.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionSlideInB (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -49,14 +49,14 @@
       </Docs>
     </Member>
     <Member MemberName="Action">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCActionInterval Action ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCActionInterval Action() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCActionInterval Action ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCActionInterval Action() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

@@ -1,4 +1,4 @@
-<Type Name="CCFocusChangeDelegate" FullName="Cocos2D.CCFocusChangeDelegate">
+<Type Name="CCFocusChangeDelegate" FullName="CocosSharp.CCFocusChangeDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCFocusChangeDelegate(ICCFocusable prev, ICCFocusable current);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCFocusChangeDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>
@@ -9,8 +9,8 @@
     <BaseTypeName>System.Delegate</BaseTypeName>
   </Base>
   <Parameters>
-    <Parameter Name="prev" Type="Cocos2D.ICCFocusable" />
-    <Parameter Name="current" Type="Cocos2D.ICCFocusable" />
+    <Parameter Name="prev" Type="CocosSharp.ICCFocusable" />
+    <Parameter Name="current" Type="CocosSharp.ICCFocusable" />
   </Parameters>
   <ReturnValue>
     <ReturnType>System.Void</ReturnType>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTMXMapInfo" FullName="Cocos2D.CCTMXMapInfo">
-  <TypeSignature Language="C#" Value="public class CCTMXMapInfo : Cocos2D.ICCSAXDelegator" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXMapInfo extends System.Object implements class Cocos2D.ICCSAXDelegator" />
+<Type Name="CCTMXMapInfo" FullName="CocosSharp.CCTMXMapInfo">
+  <TypeSignature Language="C#" Value="public class CCTMXMapInfo : CocosSharp.ICCSAXDelegator" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXMapInfo extends System.Object implements class CocosSharp.ICCSAXDelegator" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCSAXDelegator</InterfaceName>
+      <InterfaceName>CocosSharp.ICCSAXDelegator</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -165,14 +165,14 @@
       </Docs>
     </Member>
     <Member MemberName="Layers">
-      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;Cocos2D.CCTMXLayerInfo&gt; Layers { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXLayerInfo&gt; Layers" />
+      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;CocosSharp.CCTMXLayerInfo&gt; Layers { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXLayerInfo&gt; Layers" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXLayerInfo&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXLayerInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setLayers </summary>
@@ -241,14 +241,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pLayers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTMXLayerInfo&gt; m_pLayers;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXLayerInfo&gt; m_pLayers" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTMXLayerInfo&gt; m_pLayers;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXLayerInfo&gt; m_pLayers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXLayerInfo&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXLayerInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -256,14 +256,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pObjectGroups">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt; m_pObjectGroups;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXObjectGroup&gt; m_pObjectGroups" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTMXObjectGroup&gt; m_pObjectGroups;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXObjectGroup&gt; m_pObjectGroups" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXObjectGroup&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -301,14 +301,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTilesets">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTMXTilesetInfo&gt; m_pTilesets;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXTilesetInfo&gt; m_pTilesets" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTMXTilesetInfo&gt; m_pTilesets;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXTilesetInfo&gt; m_pTilesets" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXTilesetInfo&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXTilesetInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -346,14 +346,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tMapSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tMapSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tMapSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize m_tMapSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize m_tMapSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -361,14 +361,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tTileSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSize m_tTileSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCSize m_tTileSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize m_tTileSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize m_tTileSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -406,14 +406,14 @@
       </Docs>
     </Member>
     <Member MemberName="MapSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize MapSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize MapSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize MapSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize MapSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>set# MapSize </summary>
@@ -422,14 +422,14 @@
       </Docs>
     </Member>
     <Member MemberName="ObjectGroups">
-      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt; ObjectGroups { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXObjectGroup&gt; ObjectGroups" />
+      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;CocosSharp.CCTMXObjectGroup&gt; ObjectGroups { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXObjectGroup&gt; ObjectGroups" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXObjectGroup&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXObjectGroup&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setObjectGroups </summary>
@@ -620,14 +620,14 @@
       </Docs>
     </Member>
     <Member MemberName="Tilesets">
-      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;Cocos2D.CCTMXTilesetInfo&gt; Tilesets { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class Cocos2D.CCTMXTilesetInfo&gt; Tilesets" />
+      <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.List&lt;CocosSharp.CCTMXTilesetInfo&gt; Tilesets { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCTMXTilesetInfo&gt; Tilesets" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTMXTilesetInfo&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTMXTilesetInfo&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTilesets </summary>
@@ -636,14 +636,14 @@
       </Docs>
     </Member>
     <Member MemberName="TileSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize TileSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize TileSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize TileSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize TileSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>set# TileSize </summary>

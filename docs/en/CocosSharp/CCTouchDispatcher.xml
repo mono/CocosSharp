@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTouchDispatcher" FullName="Cocos2D.CCTouchDispatcher">
-  <TypeSignature Language="C#" Value="public class CCTouchDispatcher : Cocos2D.ICCEGLTouchDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDispatcher extends System.Object implements class Cocos2D.ICCEGLTouchDelegate" />
+<Type Name="CCTouchDispatcher" FullName="CocosSharp.CCTouchDispatcher">
+  <TypeSignature Language="C#" Value="public class CCTouchDispatcher : CocosSharp.ICCEGLTouchDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchDispatcher extends System.Object implements class CocosSharp.ICCEGLTouchDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -11,7 +11,7 @@
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>Cocos2D.ICCEGLTouchDelegate</InterfaceName>
+      <InterfaceName>CocosSharp.ICCEGLTouchDelegate</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -54,8 +54,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddStandardDelegate">
-      <MemberSignature Language="C#" Value="public void AddStandardDelegate (Cocos2D.ICCStandardTouchDelegate pDelegate, int nPriority);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddStandardDelegate(class Cocos2D.ICCStandardTouchDelegate pDelegate, int32 nPriority) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddStandardDelegate (CocosSharp.ICCStandardTouchDelegate pDelegate, int nPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddStandardDelegate(class CocosSharp.ICCStandardTouchDelegate pDelegate, int32 nPriority) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -64,7 +64,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCStandardTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCStandardTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -75,8 +75,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddTargetedDelegate">
-      <MemberSignature Language="C#" Value="public void AddTargetedDelegate (Cocos2D.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallowsTouches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddTargetedDelegate(class Cocos2D.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallowsTouches) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddTargetedDelegate (CocosSharp.ICCTargetedTouchDelegate pDelegate, int nPriority, bool bSwallowsTouches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddTargetedDelegate(class CocosSharp.ICCTargetedTouchDelegate pDelegate, int32 nPriority, bool bSwallowsTouches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -85,7 +85,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTargetedTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTargetedTouchDelegate" />
         <Parameter Name="nPriority" Type="System.Int32" />
         <Parameter Name="bSwallowsTouches" Type="System.Boolean" />
       </Parameters>
@@ -98,17 +98,17 @@
       </Docs>
     </Member>
     <Member MemberName="FindHandler">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCTouchHandler FindHandler (Cocos2D.ICCTouchDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCTouchHandler FindHandler(class Cocos2D.ICCTouchDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTouchHandler FindHandler (CocosSharp.ICCTouchDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTouchHandler FindHandler(class CocosSharp.ICCTouchDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTouchHandler</ReturnType>
+        <ReturnType>CocosSharp.CCTouchHandler</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -118,8 +118,8 @@
       </Docs>
     </Member>
     <Member MemberName="ForceAddHandler">
-      <MemberSignature Language="C#" Value="protected void ForceAddHandler (Cocos2D.CCTouchHandler pHandler, System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt; pArray);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ForceAddHandler(class Cocos2D.CCTouchHandler pHandler, class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouchHandler&gt; pArray) cil managed" />
+      <MemberSignature Language="C#" Value="protected void ForceAddHandler (CocosSharp.CCTouchHandler pHandler, System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt; pArray);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ForceAddHandler(class CocosSharp.CCTouchHandler pHandler, class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouchHandler&gt; pArray) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -128,8 +128,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pHandler" Type="Cocos2D.CCTouchHandler" />
-        <Parameter Name="pArray" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt;" />
+        <Parameter Name="pHandler" Type="CocosSharp.CCTouchHandler" />
+        <Parameter Name="pArray" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt;" />
       </Parameters>
       <Docs>
         <param name="pHandler">To be added.</param>
@@ -155,8 +155,8 @@
       </Docs>
     </Member>
     <Member MemberName="ForceRemoveDelegate">
-      <MemberSignature Language="C#" Value="protected void ForceRemoveDelegate (Cocos2D.ICCTouchDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ForceRemoveDelegate(class Cocos2D.ICCTouchDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="protected void ForceRemoveDelegate (CocosSharp.ICCTouchDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ForceRemoveDelegate(class CocosSharp.ICCTouchDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -165,7 +165,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -207,14 +207,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pStandardHandlers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt; m_pStandardHandlers;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouchHandler&gt; m_pStandardHandlers" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt; m_pStandardHandlers;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouchHandler&gt; m_pStandardHandlers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -222,14 +222,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTargetedHandlers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt; m_pTargetedHandlers;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouchHandler&gt; m_pTargetedHandlers" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt; m_pTargetedHandlers;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouchHandler&gt; m_pTargetedHandlers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -237,8 +237,8 @@
       </Docs>
     </Member>
     <Member MemberName="RearrangeHandlers">
-      <MemberSignature Language="C#" Value="protected void RearrangeHandlers (System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt; pArray);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RearrangeHandlers(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouchHandler&gt; pArray) cil managed" />
+      <MemberSignature Language="C#" Value="protected void RearrangeHandlers (System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt; pArray);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RearrangeHandlers(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouchHandler&gt; pArray) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -247,7 +247,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pArray" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouchHandler&gt;" />
+        <Parameter Name="pArray" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouchHandler&gt;" />
       </Parameters>
       <Docs>
         <param name="pArray">To be added.</param>
@@ -272,8 +272,8 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveDelegate">
-      <MemberSignature Language="C#" Value="public void RemoveDelegate (Cocos2D.ICCTouchDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDelegate(class Cocos2D.ICCTouchDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void RemoveDelegate (CocosSharp.ICCTouchDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveDelegate(class CocosSharp.ICCTouchDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -282,7 +282,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
       </Parameters>
       <Docs>
         <param name="pDelegate">To be added.</param>
@@ -291,8 +291,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetPriority">
-      <MemberSignature Language="C#" Value="public void SetPriority (int nPriority, Cocos2D.ICCTouchDelegate pDelegate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPriority(int32 nPriority, class Cocos2D.ICCTouchDelegate pDelegate) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetPriority (int nPriority, CocosSharp.ICCTouchDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetPriority(int32 nPriority, class CocosSharp.ICCTouchDelegate pDelegate) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -302,7 +302,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="nPriority" Type="System.Int32" />
-        <Parameter Name="pDelegate" Type="Cocos2D.ICCTouchDelegate" />
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
       </Parameters>
       <Docs>
         <param name="nPriority">To be added.</param>
@@ -313,8 +313,8 @@
       </Docs>
     </Member>
     <Member MemberName="Touches">
-      <MemberSignature Language="C#" Value="public void Touches (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; pTouches, int uIndex);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Touches(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; pTouches, int32 uIndex) cil managed" />
+      <MemberSignature Language="C#" Value="public void Touches (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; pTouches, int uIndex);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Touches(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; pTouches, int32 uIndex) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -323,7 +323,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="pTouches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
         <Parameter Name="uIndex" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -334,8 +334,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesBegan">
-      <MemberSignature Language="C#" Value="public virtual void TouchesBegan (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesBegan (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -344,7 +344,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -353,8 +353,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesCancelled">
-      <MemberSignature Language="C#" Value="public virtual void TouchesCancelled (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesCancelled (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -363,7 +363,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -372,8 +372,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesEnded">
-      <MemberSignature Language="C#" Value="public virtual void TouchesEnded (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesEnded (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -382,7 +382,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
@@ -391,8 +391,8 @@
       </Docs>
     </Member>
     <Member MemberName="TouchesMoved">
-      <MemberSignature Language="C#" Value="public virtual void TouchesMoved (System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt; touches);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class Cocos2D.CCTouch&gt; touches) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TouchesMoved (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -401,7 +401,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;Cocos2D.CCTouch&gt;" />
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>

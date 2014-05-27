@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCEaseExponentialInOut" FullName="Cocos2D.CCEaseExponentialInOut">
-  <TypeSignature Language="C#" Value="public class CCEaseExponentialInOut : Cocos2D.CCActionEase" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseExponentialInOut extends Cocos2D.CCActionEase" />
+<Type Name="CCEaseExponentialInOut" FullName="CocosSharp.CCEaseExponentialInOut">
+  <TypeSignature Language="C#" Value="public class CCEaseExponentialInOut : CocosSharp.CCActionEase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEaseExponentialInOut extends CocosSharp.CCActionEase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionEase</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionEase</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseExponentialInOut (Cocos2D.CCActionInterval pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCActionInterval pAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseExponentialInOut (CocosSharp.CCActionInterval pAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pAction" Type="Cocos2D.CCActionInterval" />
+        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
       </Parameters>
       <Docs>
         <param name="pAction">To be added.</param>
@@ -34,14 +34,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseExponentialInOut (Cocos2D.CCEaseExponentialInOut easeExponentialInOut);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCEaseExponentialInOut easeExponentialInOut) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseExponentialInOut (CocosSharp.CCEaseExponentialInOut easeExponentialInOut);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCEaseExponentialInOut easeExponentialInOut) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="easeExponentialInOut" Type="Cocos2D.CCEaseExponentialInOut" />
+        <Parameter Name="easeExponentialInOut" Type="CocosSharp.CCEaseExponentialInOut" />
       </Parameters>
       <Docs>
         <param name="easeExponentialInOut">To be added.</param>
@@ -50,8 +50,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -60,7 +60,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -70,14 +70,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>

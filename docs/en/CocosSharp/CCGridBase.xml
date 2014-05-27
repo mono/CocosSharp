@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCGridBase" FullName="Cocos2D.CCGridBase">
+<Type Name="CCGridBase" FullName="CocosSharp.CCGridBase">
   <TypeSignature Language="C#" Value="public abstract class CCGridBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCGridBase extends System.Object" />
   <AssemblyInfo>
@@ -45,8 +45,8 @@
       </Docs>
     </Member>
     <Member MemberName="AfterDraw">
-      <MemberSignature Language="C#" Value="public virtual void AfterDraw (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AfterDraw(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void AfterDraw (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AfterDraw(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -55,7 +55,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -112,14 +112,14 @@
       </Docs>
     </Member>
     <Member MemberName="GridSize">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCGridSize GridSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCGridSize GridSize" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCGridSize GridSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCGridSize GridSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGridSize</ReturnType>
+        <ReturnType>CocosSharp.CCGridSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>size of the grid </summary>
@@ -128,8 +128,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithSize">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -138,7 +138,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
@@ -148,8 +148,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithSize">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (Cocos2D.CCGridSize gridSize, Cocos2D.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype Cocos2D.CCGridSize gridSize, valuetype Cocos2D.CCSize size) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -158,8 +158,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="size" Type="Cocos2D.CCSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
@@ -170,8 +170,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithSize">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (Cocos2D.CCGridSize gridSize, Cocos2D.CCTexture2D pTexture, bool bFlipped);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype Cocos2D.CCGridSize gridSize, class Cocos2D.CCTexture2D pTexture, bool bFlipped) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithSize (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D pTexture, bool bFlipped);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithSize(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D pTexture, bool bFlipped) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -180,8 +180,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
-        <Parameter Name="pTexture" Type="Cocos2D.CCTexture2D" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="pTexture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="bFlipped" Type="System.Boolean" />
       </Parameters>
       <Docs>
@@ -224,14 +224,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_directorProjection">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCDirectorProjection m_directorProjection;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCDirectorProjection m_directorProjection" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirectorProjection m_directorProjection;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCDirectorProjection m_directorProjection" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCDirectorProjection</ReturnType>
+        <ReturnType>CocosSharp.CCDirectorProjection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -254,14 +254,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_obStep">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCPoint m_obStep;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCPoint m_obStep" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obStep;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obStep" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -269,14 +269,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pGrabber">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCGrabber m_pGrabber;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCGrabber m_pGrabber" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCGrabber m_pGrabber;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCGrabber m_pGrabber" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGrabber</ReturnType>
+        <ReturnType>CocosSharp.CCGrabber</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -284,14 +284,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pTexture">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTexture2D m_pTexture;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCTexture2D m_pTexture" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTexture2D m_pTexture" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -299,14 +299,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_sGridSize">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCGridSize m_sGridSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCGridSize m_sGridSize" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCGridSize m_sGridSize;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCGridSize m_sGridSize" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGridSize</ReturnType>
+        <ReturnType>CocosSharp.CCGridSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -382,14 +382,14 @@
       </Docs>
     </Member>
     <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Step { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Step" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Step { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Step" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>pixels between the grids </summary>

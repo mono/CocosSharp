@@ -1,4 +1,4 @@
-<Type Name="ICCProjectionProtocol" FullName="Cocos2D.ICCProjectionProtocol">
+<Type Name="ICCProjectionProtocol" FullName="CocosSharp.ICCProjectionProtocol">
   <TypeSignature Language="C#" Value="public interface ICCProjectionProtocol" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCProjectionProtocol" />
   <AssemblyInfo>

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCRectConverter" FullName="Cocos2D.CCRectConverter">
+<Type Name="CCRectConverter" FullName="CocosSharp.CCRectConverter">
   <TypeSignature Language="C#" Value="public class CCRectConverter : System.ComponentModel.TypeConverter" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRectConverter extends System.ComponentModel.TypeConverter" />
   <AssemblyInfo>
@@ -51,14 +51,14 @@
       </Docs>
     </Member>
     <Member MemberName="CCRectFromString">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCRect CCRectFromString (string pszContent);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCRect CCRectFromString(string pszContent) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect CCRectFromString (string pszContent);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect CCRectFromString(string pszContent) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="pszContent" Type="System.String" />

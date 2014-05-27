@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTurnOffTiles" FullName="Cocos2D.CCTurnOffTiles">
-  <TypeSignature Language="C#" Value="public class CCTurnOffTiles : Cocos2D.CCTiledGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTurnOffTiles extends Cocos2D.CCTiledGrid3DAction" />
+<Type Name="CCTurnOffTiles" FullName="CocosSharp.CCTurnOffTiles">
+  <TypeSignature Language="C#" Value="public class CCTurnOffTiles : CocosSharp.CCTiledGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTurnOffTiles extends CocosSharp.CCTiledGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTiledGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTiledGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,15 +31,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTurnOffTiles (float duration, Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTurnOffTiles (float duration, CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
@@ -49,15 +49,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTurnOffTiles (float duration, Cocos2D.CCGridSize gridSize, int seed);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 seed) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTurnOffTiles (float duration, CocosSharp.CCGridSize gridSize, int seed);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 seed) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="seed" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -69,8 +69,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -79,7 +79,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -89,8 +89,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize, int seed);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 seed) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, CocosSharp.CCGridSize gridSize, int seed);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 seed) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -100,7 +100,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="seed" Type="System.Int32" />
       </Parameters>
       <Docs>
@@ -179,8 +179,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -189,7 +189,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
@@ -200,8 +200,8 @@
       </Docs>
     </Member>
     <Member MemberName="TurnOffTile">
-      <MemberSignature Language="C#" Value="public void TurnOffTile (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOffTile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void TurnOffTile (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOffTile(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -210,7 +210,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -219,8 +219,8 @@
       </Docs>
     </Member>
     <Member MemberName="TurnOnTile">
-      <MemberSignature Language="C#" Value="public void TurnOnTile (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOnTile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void TurnOnTile (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOnTile(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -229,7 +229,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>

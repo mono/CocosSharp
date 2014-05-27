@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCCamera" FullName="Cocos2D.CCCamera">
+<Type Name="CCCamera" FullName="CocosSharp.CCCamera">
   <TypeSignature Language="C#" Value="public class CCCamera" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCamera extends System.Object" />
   <AssemblyInfo>
@@ -13,9 +13,9 @@
   <Docs>
     <summary>A  is used in every . Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</summary>
     <remarks>
-      <para>A <see cref="T:Cocos2D.CCCamera" /> is used in every <see cref="T:Cocos2D.CCNode" />. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</para>
-      <see cref="T:Cocos2D.CCCamera" />
-      <see cref="T:Cocos2D.CCNode" />
+      <para>A <see cref="T:CocosSharp.CCCamera" /> is used in every <see cref="T:CocosSharp.CCNode" />. Useful to look at the object from different views. The OpenGL gluLookAt() function is used to locate the camera.</para>
+      <see cref="T:CocosSharp.CCCamera" />
+      <see cref="T:CocosSharp.CCNode" />
       <para>If the object is transformed by any of the scale, rotation or position attributes, then they will override the camera.</para>
       <para>IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both. World coordinates won't work if you use the camera.</para>
       <para>Limitations:<list type="bullet" /></para>

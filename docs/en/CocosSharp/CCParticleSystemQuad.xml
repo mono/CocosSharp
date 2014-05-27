@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCParticleSystemQuad" FullName="Cocos2D.CCParticleSystemQuad">
-  <TypeSignature Language="C#" Value="public class CCParticleSystemQuad : Cocos2D.CCParticleSystem" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystemQuad extends Cocos2D.CCParticleSystem" />
+<Type Name="CCParticleSystemQuad" FullName="CocosSharp.CCParticleSystemQuad">
+  <TypeSignature Language="C#" Value="public class CCParticleSystemQuad : CocosSharp.CCParticleSystem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystemQuad extends CocosSharp.CCParticleSystem" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCParticleSystem</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCParticleSystem</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -15,8 +15,8 @@
       <para> is a subclass of . </para>
     </summary>
     <remarks>
-      <para>It includes all the features of <see cref="T:Cocos2D.CCParticleSystem" />.</para>
-      <see cref="T:Cocos2D.CCParticleSystem" />
+      <para>It includes all the features of <see cref="T:CocosSharp.CCParticleSystem" />.</para>
+      <see cref="T:CocosSharp.CCParticleSystem" />
       <para>Special features and Limitations:<list type="bullet" /></para>
       <list type="bullet" />
       <item>
@@ -89,14 +89,14 @@
       </Docs>
     </Member>
     <Member MemberName="BatchNode">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCParticleBatchNode BatchNode { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCParticleBatchNode BatchNode" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCParticleBatchNode BatchNode { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCParticleBatchNode BatchNode" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleBatchNode</ReturnType>
+        <ReturnType>CocosSharp.CCParticleBatchNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setBatchNode </summary>
@@ -105,14 +105,14 @@
       </Docs>
     </Member>
     <Member MemberName="Clone">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCParticleSystemQuad Clone ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCParticleSystemQuad Clone() cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCParticleSystemQuad Clone ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCParticleSystemQuad Clone() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCParticleSystemQuad</ReturnType>
+        <ReturnType>CocosSharp.CCParticleSystemQuad</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -197,8 +197,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetDisplayFrame">
-      <MemberSignature Language="C#" Value="public void SetDisplayFrame (Cocos2D.CCSpriteFrame spriteFrame);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDisplayFrame(class Cocos2D.CCSpriteFrame spriteFrame) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetDisplayFrame (CocosSharp.CCSpriteFrame spriteFrame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDisplayFrame(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -207,7 +207,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="spriteFrame" Type="Cocos2D.CCSpriteFrame" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
@@ -217,8 +217,8 @@
       </Docs>
     </Member>
     <Member MemberName="SetTextureWithRect">
-      <MemberSignature Language="C#" Value="public void SetTextureWithRect (Cocos2D.CCTexture2D texture, Cocos2D.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTextureWithRect(class Cocos2D.CCTexture2D texture, valuetype Cocos2D.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetTextureWithRect (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTextureWithRect(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -227,8 +227,8 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="texture" Type="Cocos2D.CCTexture2D" />
-        <Parameter Name="rect" Type="Cocos2D.CCRect" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
@@ -239,14 +239,14 @@ v0.99.4 </summary>
       </Docs>
     </Member>
     <Member MemberName="Texture">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCTexture2D Texture { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCTexture2D Texture" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCTexture2D Texture { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTexture2D</ReturnType>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setTexture </summary>

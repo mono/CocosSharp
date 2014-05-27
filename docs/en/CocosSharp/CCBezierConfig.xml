@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBezierConfig" FullName="Cocos2D.CCBezierConfig">
+<Type Name="CCBezierConfig" FullName="CocosSharp.CCBezierConfig">
   <TypeSignature Language="C#" Value="public struct CCBezierConfig" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBezierConfig extends System.ValueType" />
   <AssemblyInfo>
@@ -16,14 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName="ControlPoint1">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ControlPoint1;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint ControlPoint1" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ControlPoint1;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint ControlPoint1" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName="ControlPoint2">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint ControlPoint2;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint ControlPoint2" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ControlPoint2;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint ControlPoint2" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -46,14 +46,14 @@
       </Docs>
     </Member>
     <Member MemberName="EndPosition">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint EndPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCPoint EndPosition" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint EndPosition;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint EndPosition" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

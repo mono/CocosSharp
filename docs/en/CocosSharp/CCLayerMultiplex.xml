@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLayerMultiplex" FullName="Cocos2D.CCLayerMultiplex">
-  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : Cocos2D.CCLayerRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends Cocos2D.CCLayerRGBA" />
+<Type Name="CCLayerMultiplex" FullName="CocosSharp.CCLayerMultiplex">
+  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : CocosSharp.CCLayerRGBA" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends CocosSharp.CCLayerRGBA" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLayerRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -44,14 +44,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (Cocos2D.CCLayer[] layer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCLayer[] layer) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCLayer[] layer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLayer[] layer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="layer" Type="Cocos2D.CCLayer[]">
+        <Parameter Name="layer" Type="CocosSharp.CCLayer[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -66,15 +66,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (Cocos2D.CCAction inAction, Cocos2D.CCAction outAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAction inAction, class Cocos2D.CCAction outAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCAction inAction, CocosSharp.CCAction outAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction inAction, class CocosSharp.CCAction outAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="inAction" Type="Cocos2D.CCAction" />
-        <Parameter Name="outAction" Type="Cocos2D.CCAction" />
+        <Parameter Name="inAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="outAction" Type="CocosSharp.CCAction" />
       </Parameters>
       <Docs>
         <param name="inAction">To be added.</param>
@@ -84,16 +84,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (Cocos2D.CCAction inAction, Cocos2D.CCAction outAction, Cocos2D.CCLayer layer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAction inAction, class Cocos2D.CCAction outAction, class Cocos2D.CCLayer layer) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCAction inAction, CocosSharp.CCAction outAction, CocosSharp.CCLayer layer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction inAction, class CocosSharp.CCAction outAction, class CocosSharp.CCLayer layer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="inAction" Type="Cocos2D.CCAction" />
-        <Parameter Name="outAction" Type="Cocos2D.CCAction" />
-        <Parameter Name="layer" Type="Cocos2D.CCLayer" />
+        <Parameter Name="inAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="outAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="layer" Type="CocosSharp.CCLayer" />
       </Parameters>
       <Docs>
         <param name="inAction">To be added.</param>
@@ -104,16 +104,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerMultiplex (Cocos2D.CCAction inAction, Cocos2D.CCAction outAction, Cocos2D.CCLayer[] layer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAction inAction, class Cocos2D.CCAction outAction, class Cocos2D.CCLayer[] layer) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerMultiplex (CocosSharp.CCAction inAction, CocosSharp.CCAction outAction, CocosSharp.CCLayer[] layer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction inAction, class CocosSharp.CCAction outAction, class CocosSharp.CCLayer[] layer) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="inAction" Type="Cocos2D.CCAction" />
-        <Parameter Name="outAction" Type="Cocos2D.CCAction" />
-        <Parameter Name="layer" Type="Cocos2D.CCLayer[]">
+        <Parameter Name="inAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="outAction" Type="CocosSharp.CCAction" />
+        <Parameter Name="layer" Type="CocosSharp.CCLayer[]">
           <Attributes>
             <Attribute>
               <AttributeName>System.ParamArray</AttributeName>
@@ -130,14 +130,14 @@
       </Docs>
     </Member>
     <Member MemberName="ActiveLayer">
-      <MemberSignature Language="C#" Value="public virtual Cocos2D.CCLayer ActiveLayer { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCLayer ActiveLayer" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCLayer ActiveLayer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer ActiveLayer" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLayer</ReturnType>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -146,8 +146,8 @@
       </Docs>
     </Member>
     <Member MemberName="AddLayer">
-      <MemberSignature Language="C#" Value="public void AddLayer (Cocos2D.CCLayer layer);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddLayer(class Cocos2D.CCLayer layer) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddLayer (CocosSharp.CCLayer layer);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddLayer(class CocosSharp.CCLayer layer) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -156,7 +156,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="layer" Type="Cocos2D.CCLayer" />
+        <Parameter Name="layer" Type="CocosSharp.CCLayer" />
       </Parameters>
       <Docs>
         <param name="layer">To be added.</param>
@@ -165,14 +165,14 @@
       </Docs>
     </Member>
     <Member MemberName="InAction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction InAction { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCAction InAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction InAction { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAction InAction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -196,14 +196,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pLayers">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;int,Cocos2D.CCLayer&gt; m_pLayers;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;int32, class Cocos2D.CCLayer&gt; m_pLayers" />
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;int,CocosSharp.CCLayer&gt; m_pLayers;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;int32, class CocosSharp.CCLayer&gt; m_pLayers" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,Cocos2D.CCLayer&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,CocosSharp.CCLayer&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -227,14 +227,14 @@
       </Docs>
     </Member>
     <Member MemberName="OutAction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction OutAction { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCAction OutAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction OutAction { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAction OutAction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -243,14 +243,14 @@
       </Docs>
     </Member>
     <Member MemberName="SwitchTo">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCLayer SwitchTo (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCLayer SwitchTo(int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer SwitchTo (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCLayer SwitchTo(int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLayer</ReturnType>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="n" Type="System.Int32" />
@@ -263,14 +263,14 @@
       </Docs>
     </Member>
     <Member MemberName="SwitchToAndReleaseMe">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCLayer SwitchToAndReleaseMe (int n);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class Cocos2D.CCLayer SwitchToAndReleaseMe(int32 n) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLayer SwitchToAndReleaseMe (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCLayer SwitchToAndReleaseMe(int32 n) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCLayer</ReturnType>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="n" Type="System.Int32" />

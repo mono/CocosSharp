@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSize" FullName="Cocos2D.CCSize">
+<Type Name="CCSize" FullName="CocosSharp.CCSize">
   <TypeSignature Language="C#" Value="public struct CCSize" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit CCSize extends System.ValueType" />
   <AssemblyInfo>
@@ -12,7 +12,7 @@
   <Interfaces />
   <Attributes>
     <Attribute>
-      <AttributeName>System.ComponentModel.TypeConverter(typeof(Cocos2D.CCSizeConverter))</AttributeName>
+      <AttributeName>System.ComponentModel.TypeConverter(typeof(CocosSharp.CCSizeConverter))</AttributeName>
     </Attribute>
   </Attributes>
   <Docs>
@@ -39,14 +39,14 @@
       </Docs>
     </Member>
     <Member MemberName="Center">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Center { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Center" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Center { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Center" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -55,8 +55,8 @@
       </Docs>
     </Member>
     <Member MemberName="Equal">
-      <MemberSignature Language="C#" Value="public static bool Equal (ref Cocos2D.CCSize size1, ref Cocos2D.CCSize size2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype Cocos2D.CCSize size1, valuetype Cocos2D.CCSize size2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool Equal (ref CocosSharp.CCSize size1, ref CocosSharp.CCSize size2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype CocosSharp.CCSize size1, valuetype CocosSharp.CCSize size2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -65,8 +65,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="size1" Type="Cocos2D.CCSize&amp;" RefType="ref" />
-        <Parameter Name="size2" Type="Cocos2D.CCSize&amp;" RefType="ref" />
+        <Parameter Name="size1" Type="CocosSharp.CCSize&amp;" RefType="ref" />
+        <Parameter Name="size2" Type="CocosSharp.CCSize&amp;" RefType="ref" />
       </Parameters>
       <Docs>
         <param name="size1">To be added.</param>
@@ -77,8 +77,8 @@
       </Docs>
     </Member>
     <Member MemberName="Equals">
-      <MemberSignature Language="C#" Value="public bool Equals (Cocos2D.CCSize s);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype Cocos2D.CCSize s) cil managed" />
+      <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCSize s);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCSize s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -87,7 +87,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="s" Type="Cocos2D.CCSize" />
+        <Parameter Name="s" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="s">To be added.</param>
@@ -149,14 +149,14 @@
       </Docs>
     </Member>
     <Member MemberName="Inverted">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCSize Inverted { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCSize Inverted" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize Inverted { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize Inverted" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -165,17 +165,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Addition">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize op_Addition (Cocos2D.CCSize p, float f);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCSize op_Addition(valuetype Cocos2D.CCSize p, float32 f) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Addition (CocosSharp.CCSize p, float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Addition(valuetype CocosSharp.CCSize p, float32 f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCSize" />
+        <Parameter Name="p" Type="CocosSharp.CCSize" />
         <Parameter Name="f" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -187,17 +187,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Division">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize op_Division (Cocos2D.CCSize p, float f);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCSize op_Division(valuetype Cocos2D.CCSize p, float32 f) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Division (CocosSharp.CCSize p, float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Division(valuetype CocosSharp.CCSize p, float32 f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCSize" />
+        <Parameter Name="p" Type="CocosSharp.CCSize" />
         <Parameter Name="f" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -209,8 +209,8 @@
       </Docs>
     </Member>
     <Member MemberName="op_Equality">
-      <MemberSignature Language="C#" Value="public static bool op_Equality (Cocos2D.CCSize p1, Cocos2D.CCSize p2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype Cocos2D.CCSize p1, valuetype Cocos2D.CCSize p2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCSize p1, CocosSharp.CCSize p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCSize p1, valuetype CocosSharp.CCSize p2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -219,8 +219,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p1" Type="Cocos2D.CCSize" />
-        <Parameter Name="p2" Type="Cocos2D.CCSize" />
+        <Parameter Name="p1" Type="CocosSharp.CCSize" />
+        <Parameter Name="p2" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="p1">To be added.</param>
@@ -231,17 +231,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Explicit">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize op_Explicit (Cocos2D.CCPoint point);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCSize op_Explicit(valuetype Cocos2D.CCPoint point) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Explicit (CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Explicit(valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="point" Type="Cocos2D.CCPoint" />
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="point">To be added.</param>
@@ -251,8 +251,8 @@
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
-      <MemberSignature Language="C#" Value="public static bool op_Inequality (Cocos2D.CCSize p1, Cocos2D.CCSize p2);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype Cocos2D.CCSize p1, valuetype Cocos2D.CCSize p2) cil managed" />
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCSize p1, CocosSharp.CCSize p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCSize p1, valuetype CocosSharp.CCSize p2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -261,8 +261,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p1" Type="Cocos2D.CCSize" />
-        <Parameter Name="p2" Type="Cocos2D.CCSize" />
+        <Parameter Name="p1" Type="CocosSharp.CCSize" />
+        <Parameter Name="p2" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="p1">To be added.</param>
@@ -273,17 +273,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Multiply">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize op_Multiply (Cocos2D.CCSize p, float f);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCSize op_Multiply(valuetype Cocos2D.CCSize p, float32 f) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Multiply (CocosSharp.CCSize p, float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Multiply(valuetype CocosSharp.CCSize p, float32 f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCSize" />
+        <Parameter Name="p" Type="CocosSharp.CCSize" />
         <Parameter Name="f" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -295,17 +295,17 @@
       </Docs>
     </Member>
     <Member MemberName="op_Subtraction">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize op_Subtraction (Cocos2D.CCSize p, float f);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Cocos2D.CCSize op_Subtraction(valuetype Cocos2D.CCSize p, float32 f) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize op_Subtraction (CocosSharp.CCSize p, float f);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCSize op_Subtraction(valuetype CocosSharp.CCSize p, float32 f) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="p" Type="Cocos2D.CCSize" />
+        <Parameter Name="p" Type="CocosSharp.CCSize" />
         <Parameter Name="f" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -317,14 +317,14 @@
       </Docs>
     </Member>
     <Member MemberName="Parse">
-      <MemberSignature Language="C#" Value="public static Cocos2D.CCSize Parse (string s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Cocos2D.CCSize Parse(string s) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize Parse (string s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize Parse(string s) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="System.String" />
@@ -369,14 +369,14 @@
       </Docs>
     </Member>
     <Member MemberName="Zero">
-      <MemberSignature Language="C#" Value="public static readonly Cocos2D.CCSize Zero;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype Cocos2D.CCSize Zero" />
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCSize Zero;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCSize Zero" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

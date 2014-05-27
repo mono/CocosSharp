@@ -1,4 +1,4 @@
-<Type Name="CCGamePadButtonStatus" FullName="Cocos2D.CCGamePadButtonStatus">
+<Type Name="CCGamePadButtonStatus" FullName="CocosSharp.CCGamePadButtonStatus">
   <TypeSignature Language="C#" Value="public enum CCGamePadButtonStatus" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadButtonStatus extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="NotApplicable">
       <MemberSignature Language="C#" Value="NotApplicable" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGamePadButtonStatus NotApplicable = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadButtonStatus NotApplicable = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadButtonStatus</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadButtonStatus</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Pressed">
       <MemberSignature Language="C#" Value="Pressed" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGamePadButtonStatus Pressed = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadButtonStatus Pressed = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadButtonStatus</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadButtonStatus</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Released">
       <MemberSignature Language="C#" Value="Released" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGamePadButtonStatus Released = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadButtonStatus Released = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadButtonStatus</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadButtonStatus</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Tapped">
       <MemberSignature Language="C#" Value="Tapped" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCGamePadButtonStatus Tapped = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadButtonStatus Tapped = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCGamePadButtonStatus</ReturnType>
+        <ReturnType>CocosSharp.CCGamePadButtonStatus</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

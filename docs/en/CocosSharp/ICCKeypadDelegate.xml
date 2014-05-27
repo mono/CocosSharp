@@ -1,4 +1,4 @@
-<Type Name="ICCKeypadDelegate" FullName="Cocos2D.ICCKeypadDelegate">
+<Type Name="ICCKeypadDelegate" FullName="CocosSharp.ICCKeypadDelegate">
   <TypeSignature Language="C#" Value="public interface ICCKeypadDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCKeypadDelegate" />
   <AssemblyInfo>

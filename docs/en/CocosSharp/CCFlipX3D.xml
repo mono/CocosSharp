@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFlipX3D" FullName="Cocos2D.CCFlipX3D">
-  <TypeSignature Language="C#" Value="public class CCFlipX3D : Cocos2D.CCGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFlipX3D extends Cocos2D.CCGrid3DAction" />
+<Type Name="CCFlipX3D" FullName="CocosSharp.CCFlipX3D">
+  <TypeSignature Language="C#" Value="public class CCFlipX3D : CocosSharp.CCGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFlipX3D extends CocosSharp.CCGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFlipX3D (Cocos2D.CCFlipX3D flipX3D);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCFlipX3D flipX3D) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFlipX3D (CocosSharp.CCFlipX3D flipX3D);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFlipX3D flipX3D) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="flipX3D" Type="Cocos2D.CCFlipX3D" />
+        <Parameter Name="flipX3D" Type="CocosSharp.CCFlipX3D" />
       </Parameters>
       <Docs>
         <param name="flipX3D">To be added.</param>
@@ -63,8 +63,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -73,7 +73,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -103,8 +103,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float duration, Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float duration, CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -114,7 +114,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>

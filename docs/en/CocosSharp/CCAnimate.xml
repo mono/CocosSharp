@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCAnimate" FullName="Cocos2D.CCAnimate">
-  <TypeSignature Language="C#" Value="public class CCAnimate : Cocos2D.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimate extends Cocos2D.CCActionInterval" />
+<Type Name="CCAnimate" FullName="CocosSharp.CCAnimate">
+  <TypeSignature Language="C#" Value="public class CCAnimate : CocosSharp.CCActionInterval" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimate extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCAnimate (Cocos2D.CCAnimate animate);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAnimate animate) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCAnimate (CocosSharp.CCAnimate animate);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimate animate) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="animate" Type="Cocos2D.CCAnimate" />
+        <Parameter Name="animate" Type="CocosSharp.CCAnimate" />
       </Parameters>
       <Docs>
         <param name="animate">To be added.</param>
@@ -34,14 +34,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAnimate (Cocos2D.CCAnimation pAnimation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCAnimation pAnimation) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAnimate (CocosSharp.CCAnimation pAnimation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimation pAnimation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="pAnimation" Type="Cocos2D.CCAnimation" />
+        <Parameter Name="pAnimation" Type="CocosSharp.CCAnimation" />
       </Parameters>
       <Docs>
         <param name="pAnimation">To be added.</param>
@@ -50,8 +50,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -60,7 +60,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -70,8 +70,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithAnimation">
-      <MemberSignature Language="C#" Value="protected bool InitWithAnimation (Cocos2D.CCAnimation pAnimation);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithAnimation(class Cocos2D.CCAnimation pAnimation) cil managed" />
+      <MemberSignature Language="C#" Value="protected bool InitWithAnimation (CocosSharp.CCAnimation pAnimation);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithAnimation(class CocosSharp.CCAnimation pAnimation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -80,7 +80,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pAnimation" Type="Cocos2D.CCAnimation" />
+        <Parameter Name="pAnimation" Type="CocosSharp.CCAnimation" />
       </Parameters>
       <Docs>
         <param name="pAnimation">To be added.</param>
@@ -105,14 +105,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pAnimation">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCAnimation m_pAnimation;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCAnimation m_pAnimation" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCAnimation m_pAnimation;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCAnimation m_pAnimation" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAnimation</ReturnType>
+        <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -120,14 +120,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pOrigFrame">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCSpriteFrame m_pOrigFrame;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCSpriteFrame m_pOrigFrame" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSpriteFrame m_pOrigFrame;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSpriteFrame m_pOrigFrame" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSpriteFrame</ReturnType>
+        <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -150,14 +150,14 @@
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -167,8 +167,8 @@
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -177,7 +177,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

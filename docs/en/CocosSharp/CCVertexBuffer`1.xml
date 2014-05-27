@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCVertexBuffer&lt;T&gt;" FullName="Cocos2D.CCVertexBuffer&lt;T&gt;">
-  <TypeSignature Language="C#" Value="public class CCVertexBuffer&lt;T&gt; : Cocos2D.CCGraphicsResource where T : struct" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCVertexBuffer`1&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt; extends Cocos2D.CCGraphicsResource" />
+<Type Name="CCVertexBuffer&lt;T&gt;" FullName="CocosSharp.CCVertexBuffer&lt;T&gt;">
+  <TypeSignature Language="C#" Value="public class CCVertexBuffer&lt;T&gt; : CocosSharp.CCGraphicsResource where T : struct" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCVertexBuffer`1&lt;struct .ctor (class System.ValueType, class Microsoft.Xna.Framework.Graphics.IVertexType) T&gt; extends CocosSharp.CCGraphicsResource" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -17,7 +17,7 @@
     </TypeParameter>
   </TypeParameters>
   <Base>
-    <BaseTypeName>Cocos2D.CCGraphicsResource</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCGraphicsResource</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -45,14 +45,14 @@
       </Docs>
     </Member>
     <Member MemberName="_data">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCRawList&lt;T&gt; _data;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCRawList`1&lt;!T&gt; _data" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRawList&lt;T&gt; _data;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCRawList`1&lt;!T&gt; _data" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;T&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -122,14 +122,14 @@
       </Docs>
     </Member>
     <Member MemberName="Data">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRawList&lt;T&gt; Data { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCRawList`1&lt;!T&gt; Data" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;T&gt; Data { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRawList`1&lt;!T&gt; Data" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRawList&lt;T&gt;</ReturnType>
+        <ReturnType>CocosSharp.CCRawList&lt;T&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

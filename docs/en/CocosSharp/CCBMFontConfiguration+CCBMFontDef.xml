@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCBMFontConfiguration+CCBMFontDef" FullName="Cocos2D.CCBMFontConfiguration+CCBMFontDef">
+<Type Name="CCBMFontConfiguration+CCBMFontDef" FullName="CocosSharp.CCBMFontConfiguration+CCBMFontDef">
   <TypeSignature Language="C#" Value="public class CCBMFontConfiguration.CCBMFontDef" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit CCBMFontConfiguration/CCBMFontDef extends System.Object" />
   <AssemblyInfo>
@@ -44,14 +44,14 @@
       </Docs>
     </Member>
     <Member MemberName="rect">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCRect rect;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype Cocos2D.CCRect rect" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect rect;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCRect rect" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCRect</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

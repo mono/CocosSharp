@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCTransitionSceneOriented" FullName="Cocos2D.CCTransitionSceneOriented">
-  <TypeSignature Language="C#" Value="public class CCTransitionSceneOriented : Cocos2D.CCTransitionScene" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSceneOriented extends Cocos2D.CCTransitionScene" />
+<Type Name="CCTransitionSceneOriented" FullName="CocosSharp.CCTransitionSceneOriented">
+  <TypeSignature Language="C#" Value="public class CCTransitionSceneOriented : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSceneOriented extends CocosSharp.CCTransitionScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTransitionScene</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,16 +31,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionSceneOriented (float t, Cocos2D.CCScene scene, Cocos2D.CCTransitionOrientation orientation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class Cocos2D.CCScene scene, valuetype Cocos2D.CCTransitionOrientation orientation) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionSceneOriented (float t, CocosSharp.CCScene scene, CocosSharp.CCTransitionOrientation orientation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene, valuetype CocosSharp.CCTransitionOrientation orientation) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
-        <Parameter Name="orientation" Type="Cocos2D.CCTransitionOrientation" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="orientation" Type="CocosSharp.CCTransitionOrientation" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -51,8 +51,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithDuration (float t, Cocos2D.CCScene scene, Cocos2D.CCTransitionOrientation orientation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDuration(float32 t, class Cocos2D.CCScene scene, valuetype Cocos2D.CCTransitionOrientation orientation) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDuration (float t, CocosSharp.CCScene scene, CocosSharp.CCTransitionOrientation orientation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDuration(float32 t, class CocosSharp.CCScene scene, valuetype CocosSharp.CCTransitionOrientation orientation) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -62,8 +62,8 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="Cocos2D.CCScene" />
-        <Parameter Name="orientation" Type="Cocos2D.CCTransitionOrientation" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="orientation" Type="CocosSharp.CCTransitionOrientation" />
       </Parameters>
       <Docs>
         <param name="t">To be added.</param>
@@ -75,14 +75,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_eOrientation">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCTransitionOrientation m_eOrientation;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCTransitionOrientation m_eOrientation" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTransitionOrientation m_eOrientation;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCTransitionOrientation m_eOrientation" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCTransitionOrientation</ReturnType>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

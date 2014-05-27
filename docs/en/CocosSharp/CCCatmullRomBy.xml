@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCCatmullRomBy" FullName="Cocos2D.CCCatmullRomBy">
-  <TypeSignature Language="C#" Value="public class CCCatmullRomBy : Cocos2D.CCCardinalSplineBy" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCatmullRomBy extends Cocos2D.CCCardinalSplineBy" />
+<Type Name="CCCatmullRomBy" FullName="CocosSharp.CCCatmullRomBy">
+  <TypeSignature Language="C#" Value="public class CCCatmullRomBy : CocosSharp.CCCardinalSplineBy" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCatmullRomBy extends CocosSharp.CCCardinalSplineBy" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCCardinalSplineBy</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCCardinalSplineBy</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,15 +16,15 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCatmullRomBy (float dt, System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; points);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 dt, class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; points) cil managed" />
+      <MemberSignature Language="C#" Value="public CCCatmullRomBy (float dt, System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; points);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 dt, class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; points) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="dt" Type="System.Single" />
-        <Parameter Name="points" Type="System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;" />
+        <Parameter Name="points" Type="System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;" />
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
@@ -34,8 +34,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="public bool InitWithDuration (float dt, System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt; points);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuration(float32 dt, class System.Collections.Generic.List`1&lt;valuetype Cocos2D.CCPoint&gt; points) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithDuration (float dt, System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; points);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuration(float32 dt, class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; points) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -45,7 +45,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="dt" Type="System.Single" />
-        <Parameter Name="points" Type="System.Collections.Generic.List&lt;Cocos2D.CCPoint&gt;" />
+        <Parameter Name="points" Type="System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt;" />
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>

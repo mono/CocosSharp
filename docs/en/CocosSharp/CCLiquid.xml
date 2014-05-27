@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLiquid" FullName="Cocos2D.CCLiquid">
-  <TypeSignature Language="C#" Value="public class CCLiquid : Cocos2D.CCGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLiquid extends Cocos2D.CCGrid3DAction" />
+<Type Name="CCLiquid" FullName="CocosSharp.CCLiquid">
+  <TypeSignature Language="C#" Value="public class CCLiquid : CocosSharp.CCGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLiquid extends CocosSharp.CCGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -31,14 +31,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLiquid (Cocos2D.CCLiquid liquid);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCLiquid liquid) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLiquid (CocosSharp.CCLiquid liquid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLiquid liquid) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="liquid" Type="Cocos2D.CCLiquid" />
+        <Parameter Name="liquid" Type="CocosSharp.CCLiquid" />
       </Parameters>
       <Docs>
         <param name="liquid">To be added.</param>
@@ -47,15 +47,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLiquid (float duration, Cocos2D.CCGridSize gridSize, int waves, float amplitude);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLiquid (float duration, CocosSharp.CCGridSize gridSize, int waves, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="waves" Type="System.Int32" />
         <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
@@ -101,8 +101,8 @@
       </Docs>
     </Member>
     <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (Cocos2D.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class Cocos2D.ICCCopyable pZone) cil managed" />
+      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -111,7 +111,7 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pZone" Type="Cocos2D.ICCCopyable" />
+        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
       </Parameters>
       <Docs>
         <param name="pZone">To be added.</param>
@@ -121,8 +121,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithDuratuon">
-      <MemberSignature Language="C#" Value="public bool InitWithDuratuon (float duration, Cocos2D.CCGridSize gridSize, int waves, float amplitude);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuratuon(float32 duration, valuetype Cocos2D.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
+      <MemberSignature Language="C#" Value="public bool InitWithDuratuon (float duration, CocosSharp.CCGridSize gridSize, int waves, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithDuratuon(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 waves, float32 amplitude) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -132,7 +132,7 @@
       </ReturnValue>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="waves" Type="System.Int32" />
         <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>

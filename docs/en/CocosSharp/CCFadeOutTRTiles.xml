@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCFadeOutTRTiles" FullName="Cocos2D.CCFadeOutTRTiles">
-  <TypeSignature Language="C#" Value="public class CCFadeOutTRTiles : Cocos2D.CCTiledGrid3DAction" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutTRTiles extends Cocos2D.CCTiledGrid3DAction" />
+<Type Name="CCFadeOutTRTiles" FullName="CocosSharp.CCFadeOutTRTiles">
+  <TypeSignature Language="C#" Value="public class CCFadeOutTRTiles : CocosSharp.CCTiledGrid3DAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutTRTiles extends CocosSharp.CCTiledGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCTiledGrid3DAction</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCTiledGrid3DAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -47,15 +47,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCFadeOutTRTiles (float duration, Cocos2D.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype Cocos2D.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCFadeOutTRTiles (float duration, CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
@@ -65,8 +65,8 @@
       </Docs>
     </Member>
     <Member MemberName="TestFunc">
-      <MemberSignature Language="C#" Value="public virtual float TestFunc (Cocos2D.CCGridSize pos, float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 TestFunc(valuetype Cocos2D.CCGridSize pos, float32 time) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual float TestFunc (CocosSharp.CCGridSize pos, float time);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 TestFunc(valuetype CocosSharp.CCGridSize pos, float32 time) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -75,7 +75,7 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
         <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -87,8 +87,8 @@
       </Docs>
     </Member>
     <Member MemberName="TransformTile">
-      <MemberSignature Language="C#" Value="public virtual void TransformTile (Cocos2D.CCGridSize pos, float distance);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TransformTile(valuetype Cocos2D.CCGridSize pos, float32 distance) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void TransformTile (CocosSharp.CCGridSize pos, float distance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TransformTile(valuetype CocosSharp.CCGridSize pos, float32 distance) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -97,7 +97,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
         <Parameter Name="distance" Type="System.Single" />
       </Parameters>
       <Docs>
@@ -108,8 +108,8 @@
       </Docs>
     </Member>
     <Member MemberName="TurnOffTile">
-      <MemberSignature Language="C#" Value="public void TurnOffTile (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOffTile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void TurnOffTile (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOffTile(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -118,7 +118,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>
@@ -127,8 +127,8 @@
       </Docs>
     </Member>
     <Member MemberName="TurnOnTile">
-      <MemberSignature Language="C#" Value="public void TurnOnTile (Cocos2D.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOnTile(valuetype Cocos2D.CCGridSize pos) cil managed" />
+      <MemberSignature Language="C#" Value="public void TurnOnTile (CocosSharp.CCGridSize pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TurnOnTile(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -137,7 +137,7 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="Cocos2D.CCGridSize" />
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
       </Parameters>
       <Docs>
         <param name="pos">To be added.</param>

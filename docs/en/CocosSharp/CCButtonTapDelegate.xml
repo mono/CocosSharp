@@ -1,4 +1,4 @@
-<Type Name="CCButtonTapDelegate" FullName="Cocos2D.CCButtonTapDelegate">
+<Type Name="CCButtonTapDelegate" FullName="CocosSharp.CCButtonTapDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCButtonTapDelegate(object sender);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCButtonTapDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>

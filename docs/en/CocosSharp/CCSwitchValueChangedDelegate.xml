@@ -1,4 +1,4 @@
-<Type Name="CCSwitchValueChangedDelegate" FullName="Cocos2D.CCSwitchValueChangedDelegate">
+<Type Name="CCSwitchValueChangedDelegate" FullName="CocosSharp.CCSwitchValueChangedDelegate">
   <TypeSignature Language="C#" Value="public delegate void CCSwitchValueChangedDelegate(object sender, bool bState);" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCSwitchValueChangedDelegate extends System.MulticastDelegate" />
   <AssemblyInfo>

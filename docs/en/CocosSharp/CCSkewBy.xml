@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCSkewBy" FullName="Cocos2D.CCSkewBy">
-  <TypeSignature Language="C#" Value="public class CCSkewBy : Cocos2D.CCSkewTo" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewBy extends Cocos2D.CCSkewTo" />
+<Type Name="CCSkewBy" FullName="CocosSharp.CCSkewBy">
+  <TypeSignature Language="C#" Value="public class CCSkewBy : CocosSharp.CCSkewTo" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewBy extends CocosSharp.CCSkewTo" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCSkewTo</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCSkewTo</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -17,14 +17,14 @@ v1.0 </summary>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSkewBy (Cocos2D.CCSkewBy skewBy);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCSkewBy skewBy) cil managed" />
+      <MemberSignature Language="C#" Value="protected CCSkewBy (CocosSharp.CCSkewBy skewBy);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSkewBy skewBy) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="skewBy" Type="Cocos2D.CCSkewBy" />
+        <Parameter Name="skewBy" Type="CocosSharp.CCSkewBy" />
       </Parameters>
       <Docs>
         <param name="skewBy">To be added.</param>
@@ -77,14 +77,14 @@ v1.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public override Cocos2D.CCFiniteTimeAction Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class Cocos2D.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
@@ -94,8 +94,8 @@ v1.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (Cocos2D.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class Cocos2D.CCNode target) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -104,7 +104,7 @@ v1.0 </summary>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="target" Type="Cocos2D.CCNode" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>

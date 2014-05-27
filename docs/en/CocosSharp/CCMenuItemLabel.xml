@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCMenuItemLabel" FullName="Cocos2D.CCMenuItemLabel">
-  <TypeSignature Language="C#" Value="public class CCMenuItemLabel : Cocos2D.CCMenuItem" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabel extends Cocos2D.CCMenuItem" />
+<Type Name="CCMenuItemLabel" FullName="CocosSharp.CCMenuItemLabel">
+  <TypeSignature Language="C#" Value="public class CCMenuItemLabel : CocosSharp.CCMenuItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabel extends CocosSharp.CCMenuItem" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCMenuItem</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCMenuItem</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -48,14 +48,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemLabel (Cocos2D.CCNode label);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode label) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMenuItemLabel (CocosSharp.CCNode label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode label) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="label" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
         <param name="label">To be added.</param>
@@ -64,14 +64,14 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemLabel (Cocos2D.CCNode label, Action&lt;object&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class Cocos2D.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMenuItemLabel (CocosSharp.CCNode label, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="label" Type="CocosSharp.CCNode" />
         <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
       <Docs>
@@ -98,14 +98,14 @@
       </Docs>
     </Member>
     <Member MemberName="DisabledColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B DisabledColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B DisabledColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B DisabledColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisabledColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setDisabledColor </summary>
@@ -130,8 +130,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithLabel">
-      <MemberSignature Language="C#" Value="protected bool InitWithLabel (Cocos2D.CCNode label, Action&lt;object&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithLabel(class Cocos2D.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="protected bool InitWithLabel (CocosSharp.CCNode label, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithLabel(class CocosSharp.CCNode label, class System.Action`1&lt;object&gt; selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -140,7 +140,7 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="label" Type="Cocos2D.CCNode" />
+        <Parameter Name="label" Type="CocosSharp.CCNode" />
         <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
       <Docs>
@@ -152,14 +152,14 @@
       </Docs>
     </Member>
     <Member MemberName="Label">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCNode Label { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Cocos2D.CCNode Label" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Label { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Label" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setLabel </summary>
@@ -183,14 +183,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_pLabel">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCNode m_pLabel;" />
-      <MemberSignature Language="ILAsm" Value=".field family class Cocos2D.CCNode m_pLabel" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pLabel;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pLabel" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCNode</ReturnType>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -198,14 +198,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tColorBackup">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tColorBackup;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tColorBackup" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_tColorBackup;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_tColorBackup" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -213,14 +213,14 @@
       </Docs>
     </Member>
     <Member MemberName="m_tDisabledColor">
-      <MemberSignature Language="C#" Value="protected Cocos2D.CCColor3B m_tDisabledColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Cocos2D.CCColor3B m_tDisabledColor" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_tDisabledColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_tDisabledColor" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,4 +1,4 @@
-<Type Name="ICCTransitionEaseScene" FullName="Cocos2D.ICCTransitionEaseScene">
+<Type Name="ICCTransitionEaseScene" FullName="CocosSharp.ICCTransitionEaseScene">
   <TypeSignature Language="C#" Value="public interface ICCTransitionEaseScene" />
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTransitionEaseScene" />
   <AssemblyInfo>
@@ -12,17 +12,17 @@
   </Docs>
   <Members>
     <Member MemberName="EaseAction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCFiniteTimeAction EaseAction (Cocos2D.CCActionInterval action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class Cocos2D.CCFiniteTimeAction EaseAction(class Cocos2D.CCActionInterval action) cil managed" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction EaseAction (CocosSharp.CCActionInterval action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCFiniteTimeAction EaseAction(class CocosSharp.CCActionInterval action) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCFiniteTimeAction</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="Cocos2D.CCActionInterval" />
+        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>

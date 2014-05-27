@@ -1,4 +1,4 @@
-<Type Name="CCSAXState" FullName="Cocos2D.CCSAXState">
+<Type Name="CCSAXState" FullName="CocosSharp.CCSAXState">
   <TypeSignature Language="C#" Value="public enum CCSAXState" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCSAXState extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="Array">
       <MemberSignature Language="C#" Value="Array" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState Array = int32(6)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState Array = int32(6)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="Dict">
       <MemberSignature Language="C#" Value="Dict" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState Dict = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState Dict = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="Int">
       <MemberSignature Language="C#" Value="Int" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState Int = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState Int = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="Key">
       <MemberSignature Language="C#" Value="Key" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState Key = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState Key = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="None">
       <MemberSignature Language="C#" Value="None" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState None = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState None = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -85,13 +85,13 @@
     </Member>
     <Member MemberName="Real">
       <MemberSignature Language="C#" Value="Real" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState Real = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState Real = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -99,13 +99,13 @@
     </Member>
     <Member MemberName="String">
       <MemberSignature Language="C#" Value="String" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCSAXState String = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSAXState String = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCSAXState</ReturnType>
+        <ReturnType>CocosSharp.CCSAXState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCLayerGradient" FullName="Cocos2D.CCLayerGradient">
-  <TypeSignature Language="C#" Value="public class CCLayerGradient : Cocos2D.CCLayerColor" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerGradient extends Cocos2D.CCLayerColor" />
+<Type Name="CCLayerGradient" FullName="CocosSharp.CCLayerGradient">
+  <TypeSignature Language="C#" Value="public class CCLayerGradient : CocosSharp.CCLayerColor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerGradient extends CocosSharp.CCLayerColor" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>Cocos2D.CCLayerColor</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayerColor</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -15,8 +15,8 @@
       <para> is a subclass of  that draws gradients across the background. </para>
     </summary>
     <remarks>
-      <para>All features from <see cref="T:Cocos2D.CCLayerColor" /> are valid, plus the following new features:<list type="bullet" /></para>
-      <see cref="T:Cocos2D.CCLayerColor" />
+      <para>All features from <see cref="T:CocosSharp.CCLayerColor" /> are valid, plus the following new features:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCLayerColor" />
       <list type="bullet" />
       <para>Color is interpolated between the startColor and endColor along the given vector (starting at the origin, ending at the terminus). If no vector is supplied, it defaults to (0, -1) <ndash /> a fade from top to bottom.</para>
       <ndash />
@@ -55,15 +55,15 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerGradient (Cocos2D.CCColor4B start, Cocos2D.CCColor4B end);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCColor4B start, valuetype Cocos2D.CCColor4B end) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerGradient (CocosSharp.CCColor4B start, CocosSharp.CCColor4B end);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B start, valuetype CocosSharp.CCColor4B end) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="start" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="end" Type="Cocos2D.CCColor4B" />
+        <Parameter Name="start" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="end" Type="CocosSharp.CCColor4B" />
       </Parameters>
       <Docs>
         <param name="start">To be added.</param>
@@ -91,16 +91,16 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerGradient (Cocos2D.CCColor4B start, Cocos2D.CCColor4B end, Cocos2D.CCPoint v);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Cocos2D.CCColor4B start, valuetype Cocos2D.CCColor4B end, valuetype Cocos2D.CCPoint v) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerGradient (CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B start, valuetype CocosSharp.CCColor4B end, valuetype CocosSharp.CCPoint v) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="start" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="end" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+        <Parameter Name="start" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="end" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="start">To be added.</param>
@@ -111,14 +111,14 @@
       </Docs>
     </Member>
     <Member MemberName="EndColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B EndColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B EndColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B EndColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B EndColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setEndColor </summary>
@@ -143,8 +143,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithColor (Cocos2D.CCColor4B start, Cocos2D.CCColor4B end);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithColor(valuetype Cocos2D.CCColor4B start, valuetype Cocos2D.CCColor4B end) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithColor (CocosSharp.CCColor4B start, CocosSharp.CCColor4B end);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithColor(valuetype CocosSharp.CCColor4B start, valuetype CocosSharp.CCColor4B end) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -153,8 +153,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="start" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="end" Type="Cocos2D.CCColor4B" />
+        <Parameter Name="start" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="end" Type="CocosSharp.CCColor4B" />
       </Parameters>
       <Docs>
         <param name="start">To be added.</param>
@@ -165,8 +165,8 @@
       </Docs>
     </Member>
     <Member MemberName="InitWithColor">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithColor (Cocos2D.CCColor4B start, Cocos2D.CCColor4B end, Cocos2D.CCPoint v);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithColor(valuetype Cocos2D.CCColor4B start, valuetype Cocos2D.CCColor4B end, valuetype Cocos2D.CCPoint v) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithColor (CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithColor(valuetype CocosSharp.CCColor4B start, valuetype CocosSharp.CCColor4B end, valuetype CocosSharp.CCPoint v) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
@@ -175,9 +175,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="start" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="end" Type="Cocos2D.CCColor4B" />
-        <Parameter Name="v" Type="Cocos2D.CCPoint" />
+        <Parameter Name="start" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="end" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="start">To be added.</param>
@@ -205,14 +205,14 @@
       </Docs>
     </Member>
     <Member MemberName="StartColor">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCColor3B StartColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCColor3B StartColor" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B StartColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B StartColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCColor3B</ReturnType>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setStartColor </summary>
@@ -253,14 +253,14 @@
       </Docs>
     </Member>
     <Member MemberName="Vector">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCPoint Vector { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype Cocos2D.CCPoint Vector" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Vector { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Vector" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCPoint</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setVector </summary>

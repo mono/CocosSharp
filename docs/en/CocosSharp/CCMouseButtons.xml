@@ -1,4 +1,4 @@
-<Type Name="CCMouseButtons" FullName="Cocos2D.CCMouseButtons">
+<Type Name="CCMouseButtons" FullName="CocosSharp.CCMouseButtons">
   <TypeSignature Language="C#" Value="public enum CCMouseButtons" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCMouseButtons extends System.Enum" />
   <AssemblyInfo>
@@ -15,13 +15,13 @@
   <Members>
     <Member MemberName="ExtraButton1">
       <MemberSignature Language="C#" Value="ExtraButton1" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMouseButtons ExtraButton1 = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseButtons ExtraButton1 = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMouseButtons</ReturnType>
+        <ReturnType>CocosSharp.CCMouseButtons</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -29,13 +29,13 @@
     </Member>
     <Member MemberName="ExtraButton2">
       <MemberSignature Language="C#" Value="ExtraButton2" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMouseButtons ExtraButton2 = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseButtons ExtraButton2 = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMouseButtons</ReturnType>
+        <ReturnType>CocosSharp.CCMouseButtons</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -43,13 +43,13 @@
     </Member>
     <Member MemberName="LeftButton">
       <MemberSignature Language="C#" Value="LeftButton" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMouseButtons LeftButton = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseButtons LeftButton = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMouseButtons</ReturnType>
+        <ReturnType>CocosSharp.CCMouseButtons</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -57,13 +57,13 @@
     </Member>
     <Member MemberName="MiddleButton">
       <MemberSignature Language="C#" Value="MiddleButton" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMouseButtons MiddleButton = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseButtons MiddleButton = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMouseButtons</ReturnType>
+        <ReturnType>CocosSharp.CCMouseButtons</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -71,13 +71,13 @@
     </Member>
     <Member MemberName="RightButton">
       <MemberSignature Language="C#" Value="RightButton" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype Cocos2D.CCMouseButtons RightButton = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseButtons RightButton = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCMouseButtons</ReturnType>
+        <ReturnType>CocosSharp.CCMouseButtons</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

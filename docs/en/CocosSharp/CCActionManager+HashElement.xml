@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Type Name="CCActionManager+HashElement" FullName="Cocos2D.CCActionManager+HashElement">
+<Type Name="CCActionManager+HashElement" FullName="CocosSharp.CCActionManager+HashElement">
   <TypeSignature Language="C#" Value="protected class CCActionManager.HashElement" />
   <TypeSignature Language="ILAsm" Value=".class nested protected auto ansi beforefieldinit CCActionManager/HashElement extends System.Object" />
   <AssemblyInfo>
@@ -44,14 +44,14 @@
       </Docs>
     </Member>
     <Member MemberName="Actions">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;Cocos2D.CCAction&gt; Actions;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class Cocos2D.CCAction&gt; Actions" />
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCAction&gt; Actions;" />
+      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class CocosSharp.CCAction&gt; Actions" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;Cocos2D.CCAction&gt;</ReturnType>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCAction&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -59,14 +59,14 @@
       </Docs>
     </Member>
     <Member MemberName="CurrentAction">
-      <MemberSignature Language="C#" Value="public Cocos2D.CCAction CurrentAction;" />
-      <MemberSignature Language="ILAsm" Value=".field public class Cocos2D.CCAction CurrentAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction CurrentAction;" />
+      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCAction CurrentAction" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>Cocos2D.CCAction</ReturnType>
+        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
