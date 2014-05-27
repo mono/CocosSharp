@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using Microsoft.Xna.Framework;
 
 namespace CocosSharp
@@ -37,7 +36,20 @@ namespace CocosSharp
         // Touch devices do not have a "focus" concept.
         public CCMenuItem FocusedItem
         {
-            get { return menuItems.FirstOrDefault(item => item.HasFocus); }
+            get 
+			{ 
+				CCMenuItem focusedItem = null;
+
+				foreach (CCMenuItem item in menuItems) 
+				{
+					if (item.HasFocus) 
+					{
+						focusedItem = item;
+						break;
+					}
+				}
+				return focusedItem; 
+			}
         }
             
         public override bool HasFocus

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace CocosSharp
 {
@@ -32,7 +31,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            List<CCPoint> pReverse = Points.ToList();
+			List<CCPoint> pReverse = new List<CCPoint>(Points);
             pReverse.Reverse();
 
             return new CCCardinalSplineTo(Duration, pReverse, Tension);
@@ -132,7 +131,7 @@ namespace CocosSharp
 
         public override CCFiniteTimeAction Reverse()
         {
-            List<CCPoint> copyConfig = Points.ToList();
+			List<CCPoint> copyConfig = new List<CCPoint>(Points);
 
             //
             // convert "absolutes" to "diffs"

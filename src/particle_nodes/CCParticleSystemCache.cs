@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Diagnostics;
 using System.IO;
 
@@ -342,9 +341,7 @@ namespace CocosSharp
 			int count = 0;
 			int total = 0;
 
-			var copy = psConfigs.ToList();
-
-			foreach (var pair in copy)
+			foreach (var pair in psConfigs)
 			{
 				var texture = pair.Value.Texture.XNATexture;
 
