@@ -1,0 +1,26 @@
+<Type Name="CCTextFieldTTFDelegate" FullName="CocosSharp.CCTextFieldTTFDelegate">
+  <TypeSignature Language="C#" Value="public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTextFieldTTFDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="sender" Type="System.Object" />
+    <Parameter Name="text" Type="System.String&amp;" RefType="ref" />
+    <Parameter Name="canceled" Type="System.Boolean&amp;" RefType="ref" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="sender">To be added.</param>
+    <param name="text">To be added.</param>
+    <param name="canceled">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

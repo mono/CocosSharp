@@ -1,0 +1,143 @@
+<Type Name="CCEventListenerTouchAllAtOnce" FullName="CocosSharp.CCEventListenerTouchAllAtOnce">
+  <TypeSignature Language="C#" Value="public class CCEventListenerTouchAllAtOnce : CocosSharp.CCEventListener" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventListenerTouchAllAtOnce extends CocosSharp.CCEventListener" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCEventListener</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCEventListenerTouchAllAtOnce ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Copy">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCEventListener Copy ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCEventListener Copy() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCEventListener</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsAvailable">
+      <MemberSignature Language="C#" Value="public override bool IsAvailable { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAvailable" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LISTENER_ID">
+      <MemberSignature Language="C#" Value="public static string LISTENER_ID;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string LISTENER_ID" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTouchesBegan">
+      <MemberSignature Language="C#" Value="public Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt; OnTouchesBegan { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt;, class CocosSharp.CCEvent&gt; OnTouchesBegan" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTouchesCancelled">
+      <MemberSignature Language="C#" Value="public Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt; OnTouchesCancelled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt;, class CocosSharp.CCEvent&gt; OnTouchesCancelled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTouchesEnded">
+      <MemberSignature Language="C#" Value="public Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt; OnTouchesEnded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt;, class CocosSharp.CCEvent&gt; OnTouchesEnded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnTouchesMoved">
+      <MemberSignature Language="C#" Value="public Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt; OnTouchesMoved { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt;, class CocosSharp.CCEvent&gt; OnTouchesMoved" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;,CocosSharp.CCEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

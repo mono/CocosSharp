@@ -1,0 +1,79 @@
+<Type Name="CCFadeOutUpTilesState" FullName="CocosSharp.CCFadeOutUpTilesState">
+  <TypeSignature Language="C#" Value="public class CCFadeOutUpTilesState : CocosSharp.CCFadeOutTRTilesState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFadeOutUpTilesState extends CocosSharp.CCFadeOutTRTilesState" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCFadeOutTRTilesState</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCFadeOutUpTilesState (CocosSharp.CCFadeOutUpTiles action, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFadeOutUpTiles action, class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="action" Type="CocosSharp.CCFadeOutUpTiles" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TestFunc">
+      <MemberSignature Language="C#" Value="public override float TestFunc (CocosSharp.CCGridSize pos, float time);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance float32 TestFunc(valuetype CocosSharp.CCGridSize pos, float32 time) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="time" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <param name="time">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TransformTile">
+      <MemberSignature Language="C#" Value="public override void TransformTile (CocosSharp.CCGridSize pos, float distance);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TransformTile(valuetype CocosSharp.CCGridSize pos, float32 distance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="distance" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <param name="distance">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

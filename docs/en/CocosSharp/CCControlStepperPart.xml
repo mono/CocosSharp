@@ -1,0 +1,59 @@
+<Type Name="CCControlStepperPart" FullName="CocosSharp.CCControlStepperPart">
+  <TypeSignature Language="C#" Value="public enum CCControlStepperPart" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCControlStepperPart extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="PartMinus">
+      <MemberSignature Language="C#" Value="PartMinus" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlStepperPart PartMinus = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCControlStepperPart</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PartNone">
+      <MemberSignature Language="C#" Value="PartNone" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlStepperPart PartNone = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCControlStepperPart</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="PartPlus">
+      <MemberSignature Language="C#" Value="PartPlus" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCControlStepperPart PartPlus = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCControlStepperPart</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>
