@@ -5,8 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Diagnostics;
 
 namespace CocosSharp
@@ -467,7 +465,7 @@ namespace CocosSharp
 			var mutableTouchesArray = new CCTouch[originalTouches.Count];
 			originalTouches.CopyTo (mutableTouchesArray);
 			var mutableTouchesIter = 0;
-			var mutableTouches = mutableTouchesArray.ToList ();
+			var mutableTouches = new List<CCTouch>(mutableTouchesArray);
 
 			//
 			// process the target handlers 1st
@@ -1201,14 +1199,13 @@ namespace CocosSharp
 
 			Debug.Assert (inDispatch == 1, "_inDispatch should be 1 here.");
 
-			for (int lm = 0; lm < listenerMap.Keys.Count; lm++)
+			foreach(string lv in listenerMap.Keys)
 			{
-				var lv = listenerMap.Keys.ElementAt(lm);
 				if (listenerMap[lv].IsEmpty) 
 				{
-					priorityDirtyFlagMap.Remove (lv);
-					listenerMap [lv] = null;
-					listenerMap.Remove (lv);
+					priorityDirtyFlagMap.Remove(lv);
+					listenerMap[lv] = null;
+					listenerMap.Remove(lv);
 				}
 			}
 
