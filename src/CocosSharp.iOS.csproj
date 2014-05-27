@@ -417,7 +417,6 @@
     <Compile Include="CCDrawingPrimitives-DrawEllipticleArc.cs" />
     <Compile Include="Platform\CCDrawManager.cs" />
     <Compile Include="tileMap_parallax_nodes\CCTMXTileFlags.cs" />
-    <Compile Include="support\data_support\CCArray.cs" />
     <Compile Include="Math\CCMathHelper.cs" />
     <Compile Include="Math\CCFastRandom.cs" />
     <Compile Include="Math\CCRandom.cs" />

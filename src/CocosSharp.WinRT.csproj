@@ -133,6 +133,7 @@
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
     <Compile Include="label_nodes\CCLabel.cs" />
+    <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include=".\actions\action\CCAction.cs">
       <LogicalName>actions\action\CCAction</LogicalName>
@@ -916,9 +917,6 @@
     <Compile Include=".\platform\CCRawList.cs">
       <LogicalName>platform\RawList</LogicalName>
     </Compile>
-    <Compile Include=".\platform\CCArrayPool.cs">
-      <LogicalName>platform\CCArrayPool</LogicalName>
-    </Compile>
     <Compile Include=".\platform\CCReusedObject.cs">
       <LogicalName>platform\ReusedObject</LogicalName>
     </Compile>
@@ -1058,9 +1056,6 @@
     </Compile>
     <Compile Include=".\support\Converters\CCSizeConverter.cs">
       <LogicalName>support\Converters\CCSizeConverter</LogicalName>
-    </Compile>
-    <Compile Include=".\support\data_support\CCArray.cs">
-      <LogicalName>support\data_support\ccCArray</LogicalName>
     </Compile>
     <Compile Include=".\support\image_support\CCTGALib.cs">
       <LogicalName>support\image_support\TGAlib</LogicalName>

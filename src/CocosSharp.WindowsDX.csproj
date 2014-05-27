@@ -103,6 +103,7 @@
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
+    <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="actions\action\CCAction.cs" />
     <Compile Include="actions\action\CCFiniteTimeAction.cs" />
@@ -378,7 +379,6 @@
     <Compile Include="platform\PList\PlistString.cs" />
     <Compile Include="platform\CCPrimitiveBatch.cs" />
     <Compile Include="platform\CCRawList.cs" />
-    <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="platform\CCReusedObject.cs" />
     <Compile Include="platform\Zlib\Adler32.cs" />
     <Compile Include="platform\Zlib\Deflate.cs" />
@@ -428,7 +428,6 @@
     <Compile Include="support\Compression\ZlibCodec.cs" />
     <Compile Include="support\Compression\ZlibException.cs" />
     <Compile Include="support\Compression\ZlibStreamFlavor.cs" />
-    <Compile Include="support\data_support\CCArray.cs" />
     <Compile Include="support\image_support\CCTGALib.cs" />
     <Compile Include="support\TransformUtils.cs" />
     <Compile Include="support\zip_support\CCZHeader.cs" />
