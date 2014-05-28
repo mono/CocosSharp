@@ -11,36 +11,33 @@ namespace CocosSharp
 	/// </summary>
 	internal class CCTimer : ICCUpdatable
     {
-		private CCScheduler Scheduler { get; set; }
-		private readonly ICCUpdatable target;
+		readonly bool runForever;
+		readonly uint repeat; //0 = once, 1 is 2 x executed
+		readonly float delay;
+		readonly ICCUpdatable target;
 
-		private readonly bool runForever;
-		private readonly float delay;
-		private readonly uint repeat; //0 = once, 1 is 2 x executed
-		private float elapsed;
-		private bool useDelay;
+		bool useDelay;
+		uint timesExecuted;
+		float elapsed;
 
-        //private int m_nScriptHandler;
-		private uint timesExecuted;
+
+		#region Properties
 
 		public float OriginalInterval { get; internal set; }
 		public float Interval { get; set; }
 		public Action<float> Selector { get; set; }
 
+		CCScheduler Scheduler { get; set; }
+
+		#endregion Properties
+
 
         #region Constructors
-
-        /** Initializes a timer with a target and a selector. 
-         */
 
         public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector)
             : this(scheduler, target, selector, 0, 0, 0)
         {
         }
-
-        /** Initializes a timer with a target, a selector and an interval in seconds. 
-         *  Target is not needed in c#, it is just for compatibility.
-         */
 
         public CCTimer(CCScheduler scheduler, ICCUpdatable target, Action<float> selector, float seconds)
             : this(scheduler, target, selector, seconds, 0, 0)
@@ -61,15 +58,6 @@ namespace CocosSharp
 			this.repeat = repeat;
 			this.runForever = repeat == uint.MaxValue;
         }
-
-        /*
-        public CCTimer(int scriptHandler, float seconds)
-        {
-            m_nScriptHandler = scriptHandler;
-            Elapsed = -1;
-            Interval = seconds;
-        }
-        */
 
         #endregion Constructors
 
@@ -96,13 +84,6 @@ namespace CocosSharp
                             Selector(elapsed);
                         }
 
-                        /*
-                        if (m_nScriptHandler != 0)
-                        {
-                            CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(this, m_fElapsed);
-                        }
-                        */
-						//Interval = OriginalInterval - (elapsed - Interval);
 						elapsed = 0;
                     }
                 }
@@ -120,13 +101,6 @@ namespace CocosSharp
                                 Selector(elapsed);
                             }
 
-                            /*
-                            if (m_nScriptHandler != 0)
-                            {
-                                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(this, m_fElapsed);
-                            }
-                            */
-
                             elapsed = elapsed - delay;
                             timesExecuted += 1;
                             useDelay = false;
@@ -140,13 +114,6 @@ namespace CocosSharp
                             {
                                 Selector(elapsed);
                             }
-
-                            /*
-                            if (m_nScriptHandler)
-                            {
-                                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nScriptHandler, m_fElapsed);
-                            }
-                            */
 
 							//Interval = OriginalInterval - (elapsed - Interval);
                             elapsed = 0;
@@ -169,10 +136,7 @@ namespace CocosSharp
 
 namespace CocosSharp
 {
-
-	/// <summary>
-	/// Defines the predefined Priority Types used by CCScheduler 
-	/// </summary>
+	// Defines the predefined Priority Types used by CCScheduler 
 	public static class CCSchedulePriority
 	{
 		// We will define this as a static class since we can not define and enum with the way uint.MaxValue is represented.
@@ -194,34 +158,61 @@ namespace CocosSharp
 	/// </summary>
     public class CCScheduler
     {
-		//public const uint CCSchedulePriority.RepeatForever = uint.MaxValue - 1;
-		//public const int CCSchedulePriority.System = int.MinValue;
-		//public const int CCSchedulePriority.NonSystemMin = CCSchedulePriority.System + 1;
+		static HashTimeEntry[] tmpHashSelectorArray = new HashTimeEntry[128];
+		static ICCUpdatable[] tmpSelectorArray = new ICCUpdatable[128];
 
-		private readonly Dictionary<ICCUpdatable, HashTimeEntry> hashForTimers =
-            new Dictionary<ICCUpdatable, HashTimeEntry>();
-
-		private readonly Dictionary<ICCUpdatable, HashUpdateEntry> hashForUpdates =
-            new Dictionary<ICCUpdatable, HashUpdateEntry>();
+		readonly Dictionary<ICCUpdatable, HashTimeEntry> hashForTimers = new Dictionary<ICCUpdatable, HashTimeEntry>();
+		readonly Dictionary<ICCUpdatable, HashUpdateEntry> hashForUpdates = new Dictionary<ICCUpdatable, HashUpdateEntry>();
 
         // hash used to fetch quickly the list entries for pause,delete,etc
-		private readonly LinkedList<ListEntry> updates0List = new LinkedList<ListEntry>(); // list priority == 0
-		private readonly LinkedList<ListEntry> updatesNegList = new LinkedList<ListEntry>(); // list of priority < 0
-		private readonly LinkedList<ListEntry> updatesPosList = new LinkedList<ListEntry>(); // list priority > 0
+		readonly LinkedList<ListEntry> updates0List = new LinkedList<ListEntry>(); 		// list priority == 0
+		readonly LinkedList<ListEntry> updatesNegList = new LinkedList<ListEntry>(); 	// list of priority < 0
+		readonly LinkedList<ListEntry> updatesPosList = new LinkedList<ListEntry>(); 	// list priority > 0
 
-		private HashTimeEntry currentTarget;
-		private bool isCurrentTargetSalvaged;
-		private bool isUpdateHashLocked;
+		HashTimeEntry currentTarget;
+		bool isCurrentTargetSalvaged;
+		bool isUpdateHashLocked;
+
+
+		#region Properties
 
 		public float TimeScale { get; set; }
 
-		private static HashTimeEntry[] tmpHashSelectorArray = new HashTimeEntry[128];
-		private static ICCUpdatable[] tmpSelectorArray = new ICCUpdatable[128];
+		// Gets a value indicating whether the ActionManager is active.
+		// The ActionManager can be stopped from processing actions by calling UnscheduleAll() method.
+		public bool IsActionManagerActive
+		{
+			get {
 
-		internal CCScheduler ()
+				var target = CCDirector.SharedDirector.ActionManager;
+
+				LinkedListNode<ListEntry> next;
+
+				for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
+				{
+					next = node.Next;
+					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
+					{
+						return true;
+					}
+				}
+
+				return false;
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
+		internal CCScheduler()
 		{
 			TimeScale = 1.0f;
 		}
+
+		#endregion Constructors
+
 
 		internal void Update (float dt)
         {
@@ -310,24 +301,6 @@ namespace CocosSharp
                         RemoveHashElement(currentTarget);
                     }
                 }
-                /*
-                // Iterate over all the script callbacks
-                if (m_pScriptHandlerEntries)
-                {
-                    for (int i = m_pScriptHandlerEntries->count() - 1; i >= 0; i--)
-                    {
-                        CCSchedulerScriptHandlerEntry* pEntry = static_cast<CCSchedulerScriptHandlerEntry*>(m_pScriptHandlerEntries->objectAtIndex(i));
-                        if (pEntry->isMarkedForDeletion())
-                        {
-                            m_pScriptHandlerEntries->removeObjectAtIndex(i);
-                        }
-                        else if (!pEntry->isPaused())
-                        {
-                            pEntry->getTimer()->update(dt);
-                        }
-                    }
-                }             
-                */
 
                 // delete all updates that are marked for deletion
                 // updates with priority < 0
@@ -565,33 +538,6 @@ namespace CocosSharp
             Unschedule(target);
         }
 
-        /*
-        unsigned int CCScheduler::scheduleScriptFunc(unsigned int nHandler, float fInterval, bool bPaused)
-        {
-            CCSchedulerScriptHandlerEntry* pEntry = CCSchedulerScriptHandlerEntry::create(nHandler, fInterval, bPaused);
-            if (!m_pScriptHandlerEntries)
-            {
-                m_pScriptHandlerEntries = CCArray::create(20);
-                m_pScriptHandlerEntries->retain();
-            }
-            m_pScriptHandlerEntries->addObject(pEntry);
-            return pEntry->getEntryId();
-        }
-
-        void CCScheduler::unscheduleScriptEntry(unsigned int uScheduleScriptEntryID)
-        {
-            for (int i = m_pScriptHandlerEntries->count() - 1; i >= 0; i--)
-            {
-                CCSchedulerScriptHandlerEntry* pEntry = static_cast<CCSchedulerScriptHandlerEntry*>(m_pScriptHandlerEntries->objectAtIndex(i));
-                if (pEntry->getEntryId() == uScheduleScriptEntryID)
-                {
-                    pEntry->markedForDeletion();
-                    break;
-                }
-            }
-        }
-        */
-
 		public void Unschedule (ICCUpdatable target)
         {
             if (target == null)
@@ -612,32 +558,6 @@ namespace CocosSharp
                 }
             }
         }
-
-		/// <summary>
-		/// Gets a value indicating whether the ActionManager is active.
-		/// The ActionManager can be stopped from processing actions by calling UnscheduleAll() method.
-		/// </summary>
-		/// <value><c>true</c> if the ActionManager active and ready to process Actions; otherwise, <c>false</c>.</value>
-		public bool IsActionManagerActive
-		{
-			get {
-
-				var target = CCDirector.SharedDirector.ActionManager;
-
-				LinkedListNode<ListEntry> next;
-
-				for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
-				{
-					next = node.Next;
-					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
-					{
-						return true;
-					}
-				}
-
-				return false;
-			}
-		}
 
 		/// <summary>
 		/// Starts the action manager.  		
@@ -830,7 +750,7 @@ namespace CocosSharp
             return false; // should never get here
         }
 
-        private void RemoveHashElement(HashTimeEntry element)
+        void RemoveHashElement(HashTimeEntry element)
         {
             hashForTimers.Remove(element.Target);
 
@@ -838,7 +758,7 @@ namespace CocosSharp
             element.Target = null;
         }
 
-        private void RemoveUpdateFromHash(ListEntry entry)
+        void RemoveUpdateFromHash(ListEntry entry)
         {
             HashUpdateEntry element;
             if (hashForUpdates.TryGetValue(entry.Target, out element))
@@ -854,7 +774,7 @@ namespace CocosSharp
             }
         }
 
-        private void PriorityIn(LinkedList<ListEntry> list, ICCUpdatable target, int priority, bool paused)
+        void PriorityIn(LinkedList<ListEntry> list, ICCUpdatable target, int priority, bool paused)
         {
             var listElement = new ListEntry
                 {
@@ -898,7 +818,7 @@ namespace CocosSharp
             hashForUpdates.Add(target, hashElement);
         }
 
-        private void AppendIn(LinkedList<ListEntry> list, ICCUpdatable target, bool paused)
+        void AppendIn(LinkedList<ListEntry> list, ICCUpdatable target, bool paused)
         {
             var listElement = new ListEntry
                 {
@@ -922,7 +842,7 @@ namespace CocosSharp
 
         #region Nested type: HashSelectorEntry
 
-        private class HashTimeEntry
+        class HashTimeEntry
         {
             public CCTimer CurrentTimer;
             public bool CurrentTimerSalvaged;
@@ -936,7 +856,7 @@ namespace CocosSharp
 
         #region Nested type: HashUpdateEntry
 
-        private class HashUpdateEntry
+        class HashUpdateEntry
         {
             public ListEntry Entry; // entry in the list
             public LinkedList<ListEntry> List; // Which list does it belong to ?
@@ -947,7 +867,7 @@ namespace CocosSharp
 
         #region Nested type: ListEntry
 
-        private class ListEntry
+        class ListEntry
         {
             public bool MarkedForDeletion;
             public bool Paused;
