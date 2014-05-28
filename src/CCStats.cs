@@ -7,8 +7,6 @@ using MonoTouch.ObjCRuntime;
 
 namespace CocosSharp
 {
-
-
     /// <summary>
     /// Modified from http://stackoverflow.com/questions/10889743/cocos2d-2-0-3-numbers-on-the-bottom-left
     /// by Steffen Itterheim:
@@ -48,18 +46,16 @@ namespace CocosSharp
     /// </summary>
     public class CCStats
     {
-
-
-        int gcCounter;
-        bool isInitialized, isEnabled;
-        uint totalFrames = 0;
+		bool isInitialized, isEnabled;
+		bool isCheckGC = true;
+		uint totalFrames = 0;
+		uint updateCount;
+		uint totalDrawCount;
+		int gcCounter;
         float deltaAll = 0.0f;
-        uint updateCount;
         float totalDrawTime;
-        uint totalDrawCount;
         float totalUpdateTime;
         float startTime;
-        bool isCheckGC = true;
 
         Stopwatch stopwatch;
 
@@ -73,31 +69,36 @@ namespace CocosSharp
         CCLabelAtlas gcLabel;
 
 
-        public bool IsInitialized {
+		#region Properties
+
+        public bool IsInitialized 
+		{
             get { return isInitialized; }
         }
-
-
-        public bool IsEnabled {
+			
+        public bool IsEnabled 
+		{
             get { return isEnabled; }
-            set {
+            set 
+			{
                 isEnabled = value;
 
-                if (value) {
-                    stopwatch.Reset ();
-                    stopwatch.Start ();
+                if (value) 
+				{
+                    stopwatch.Reset();
+                    stopwatch.Start();
                 }
             }
         }
 
+		#endregion Properties
 
-        /// <summary>
-        /// Initialize the stats display.
-        /// </summary>
-        public void Initialize ()
+
+        // Initialize the stats display.
+        public void Initialize()
         {
-            if (!isInitialized) {
-
+            if (!isInitialized) 
+			{
                 // There is a special case for Xamarin iOS monotouch on emulator where they aggresively call 
                 // garbage collection themselves on the simulator. This should not affect the devices though.
                 // So we check if we are running on a Device and only update the counters if we are.
@@ -180,13 +181,11 @@ namespace CocosSharp
             isInitialized = true;
         }
 
-
         public void UpdateStart ()
         {
             if (isEnabled)
                 startTime = (float)stopwatch.Elapsed.TotalMilliseconds;
         }
-
 
         public void UpdateEnd (float delta)
         {
@@ -199,7 +198,6 @@ namespace CocosSharp
                 }
             }
         }
-
 
         public void Draw ()
         {
@@ -240,11 +238,8 @@ namespace CocosSharp
 
     }
 
-
     public static class CCFPSImage
     {
-
-
         public static byte[] PngData = {
                 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, 0x00, 0x00, 0x00, 0x0D, 0x49, 0x48, 0x44, 0x52, 0x00, 0x00,
                 0x00, 0x40, 0x00, 0x00, 0x00, 0x08, 0x08, 0x04, 0x00, 0x00, 0x00, 0xE3, 0x6B, 0x31, 0x54, 0x00, 0x00, 0x00,
@@ -260,9 +255,5 @@ namespace CocosSharp
                 0x3F, 0xCC, 0x1F, 0xBE, 0x5D, 0x06, 0xEE, 0x39, 0x9F, 0xA8, 0xC7, 0x00, 0x00, 0x00, 0x00, 0x49, 0x45, 0x4E,
                 0x44, 0xAE, 0x42, 0x60, 0x82
             };
-
-
     }
-
-
 }
