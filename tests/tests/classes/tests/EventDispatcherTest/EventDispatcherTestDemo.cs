@@ -328,8 +328,6 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			AccelerometerEnabled = true;
-
 			var origin = CCDirector.SharedDirector.VisibleOrigin;
 			var size = CCDirector.SharedDirector.VisibleSize;
 
@@ -376,7 +374,6 @@ namespace tests
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			AccelerometerEnabled = false;
 
 		}
 		public override string title()

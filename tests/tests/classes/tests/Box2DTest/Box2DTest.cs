@@ -91,7 +91,6 @@ namespace tests
 
 			EventDispatcher.AddEventListener(listener, this);    
 
-            AccelerometerEnabled = true;
             CCSize s = CCDirector.SharedDirector.WinSize;
             // init physics
             initPhysics();
