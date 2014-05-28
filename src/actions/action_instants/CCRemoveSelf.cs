@@ -49,7 +49,7 @@ namespace CocosSharp
 
 		public override void Update(float time)
 		{
-			Target.RemoveFromParentAndCleanup(IsNeedCleanUp);
+			Target.RemoveFromParent(IsNeedCleanUp);
 		}
 
 	}

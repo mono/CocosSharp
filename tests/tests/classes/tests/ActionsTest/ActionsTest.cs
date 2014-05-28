@@ -587,9 +587,9 @@ namespace tests
         {
             base.OnEnter();
 
-            m_tamara.RemoveFromParentAndCleanup(true);
-            m_grossini.RemoveFromParentAndCleanup(true);
-            m_kathia.RemoveFromParentAndCleanup(true);
+            m_tamara.RemoveFromParent(true);
+			m_grossini.RemoveFromParent(true);
+			m_kathia.RemoveFromParent(true);
 
             var s = CCDirector.SharedDirector.WinSize;
 
@@ -638,9 +638,9 @@ namespace tests
 
             base.OnEnter();
 
-            m_tamara.RemoveFromParentAndCleanup(true);
-            m_grossini.RemoveFromParentAndCleanup(true);
-            m_kathia.RemoveFromParentAndCleanup(true);
+            m_tamara.RemoveFromParent(true);
+            m_grossini.RemoveFromParent(true);
+            m_kathia.RemoveFromParent(true);
 
 			// Get window size so that we can center the box layer
 			var winSize = CCDirector.SharedDirector.WinSize;
@@ -1084,7 +1084,7 @@ namespace tests
         private void removeFromParentAndCleanup(CCNode pSender, object data)
         {
             var bCleanUp = (bool) data;
-            m_grossini.RemoveFromParentAndCleanup(bCleanUp);
+            m_grossini.RemoveFromParent(bCleanUp);
         }
     }
 

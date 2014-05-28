@@ -60,7 +60,7 @@ namespace CocosSharp
             InScene.Visible = false;
 
             AddChild(l, 2, SceneFade);
-            CCNode f = GetChildByTag(SceneFade);
+			CCNode f = this[SceneFade];
 
             var a = (CCActionInterval) new CCSequence
                                            (

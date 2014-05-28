@@ -95,7 +95,7 @@ namespace tests
             }
 
             int i = 0;
-            p1.RemoveAllChildrenWithCleanup(false);
+            p1.RemoveAllChildren(false);
 
             foreach (var item in retArray)
             {

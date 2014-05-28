@@ -55,7 +55,7 @@ namespace tests
 
             if (m_plabel != null)
             {
-                m_plabel.RemoveFromParentAndCleanup(true);
+                m_plabel.RemoveFromParent(true);
             }
 
             m_plabel = new CCLabelTtf(getCurrentAlignment(), "MarkerFelt", 32,

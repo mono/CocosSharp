@@ -381,7 +381,7 @@ namespace CocosSharp
             isOpacityCascaded = true;
             isColorCascaded = true;
 
-			contentSize = CCSize.Zero;
+			ContentSize = CCSize.Zero;
 
             isColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -523,7 +523,7 @@ namespace CocosSharp
                 CCSprite fontChar;
 
                 //bool hasSprite = true;
-                fontChar = (CCSprite) (GetChildByTag(i));
+				fontChar = (CCSprite) (this[i]);
                 if (fontChar != null)
                 {
                     // Reusing previous Sprite
@@ -667,7 +667,7 @@ namespace CocosSharp
                     CCSprite characterSprite;
                     int justSkipped = 0;
 
-                    while ((characterSprite = (CCSprite) GetChildByTag(j + skip + justSkipped)) == null)
+					while ((characterSprite = (CCSprite) this[(j + skip + justSkipped)]) == null)
                     {
                         justSkipped++;
                     }
@@ -848,7 +848,7 @@ namespace CocosSharp
                         int index = i + line_length - 1 + lineNumber;
                         if (index < 0) continue;
 
-                        var lastChar = (CCSprite) GetChildByTag(index);
+						var lastChar = (CCSprite) this[index];
                         if (lastChar == null)
                             continue;
 
@@ -874,7 +874,7 @@ namespace CocosSharp
                                 index = i + j + lineNumber;
                                 if (index < 0) continue;
 
-                                var characterSprite = (CCSprite) GetChildByTag(index);
+							var characterSprite = (CCSprite) this[index];
                                 characterSprite.Position = characterSprite.Position + new CCPoint(shift, 0.0f);
                             }
                         }
@@ -911,7 +911,7 @@ namespace CocosSharp
 
                 for (int i = 0; i < str_len; i++)
                 {
-                    var characterSprite = GetChildByTag(i);
+					var characterSprite = this[i];
                     characterSprite.PositionY += yOffset;
                 }
             }
@@ -919,12 +919,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-			return sp.Position.X * scaleX - (sp.ContentSize.Width * scaleX * sp.AnchorPoint.X);
+			return sp.Position.X * ScaleX - (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-			return sp.Position.X * scaleX + (sp.ContentSize.Width * scaleX * sp.AnchorPoint.X);
+			return sp.Position.X * ScaleX + (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
         }
 
 

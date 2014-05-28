@@ -234,7 +234,7 @@ namespace CocosSharp
                     return;
                 }
 
-                RemoveAllChildrenWithCleanup(true);
+				RemoveAllChildren(true);
                 container = value;
 
                 container.IgnoreAnchorPointForPosition = false;

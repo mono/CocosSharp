@@ -155,7 +155,7 @@ namespace CocosSharp
 
         void CheckTouchState()
         {
-            if (Running)
+			if (IsRunning)
             {
                 if (!touchHandled && !readOnly && autoEdit)
                 {
@@ -170,7 +170,7 @@ namespace CocosSharp
             }
             else
             {
-                if (!Running && touchHandled)
+				if (!IsRunning && touchHandled)
                 {
 					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
                     touchHandled = false;

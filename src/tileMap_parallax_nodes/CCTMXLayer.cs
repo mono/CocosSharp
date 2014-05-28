@@ -257,7 +257,7 @@ namespace CocosSharp
             if (gid != 0)
             {
                 var z = (int) (pos.X + pos.Y * LayerSize.Width);
-                tile = (CCSprite) GetChildByTag(z);
+				tile = (CCSprite) this[z];
 
                 if (tile == null)
                 {
@@ -334,7 +334,7 @@ namespace CocosSharp
                 else
                 {
                     var z = (int) (pos.X + pos.Y * LayerSize.Width);
-                    var sprite = (CCSprite) GetChildByTag(z);
+					var sprite = (CCSprite) this[z];
                     if (sprite != null)
                     {
                         CCRect rect = TileSet.RectForGID(gid);
@@ -374,7 +374,7 @@ namespace CocosSharp
                 atlasIndexArray.RemoveAt(atlasIndex);
 
                 // remove it from sprites and/or texture atlas
-                var sprite = (CCSprite) GetChildByTag(z);
+				var sprite = (CCSprite) this[z];
                 if (sprite != null)
                 {
                     base.RemoveChild(sprite, true);
