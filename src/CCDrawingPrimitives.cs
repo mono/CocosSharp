@@ -9,15 +9,9 @@ namespace CocosSharp
     {
 		static CCPrimitiveBatch batch;
 		static float pointSize = 3f;
-		static CCColor4B color;
+		public static CCColor4B DefaultColor { get; set; }
 
-        public CCColor4B DefaultColor
-        {
-			get { return color; }
-			set { color = value; }
-        }
-
-        internal static void Init(GraphicsDevice graphics)
+        internal static void Initialize(GraphicsDevice graphics)
         {
             batch = new CCPrimitiveBatch(graphics);
         }
@@ -34,12 +28,12 @@ namespace CocosSharp
 
         public static void DrawPoint(CCPoint point)
         {
-            DrawPoint(point, pointSize, color);
+            DrawPoint(point, pointSize, DefaultColor);
         }
 
         public static void DrawPoint(CCPoint point, float size)
         {
-            DrawPoint(point, size, color);
+            DrawPoint(point, size, DefaultColor);
         }
 
         public static void DrawPoint(CCPoint p, float size, CCColor4B color)
