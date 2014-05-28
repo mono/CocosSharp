@@ -31,7 +31,7 @@ namespace CocosSharp
 {
     public class CCSAXParser
     {
-        private ICCSAXDelegator m_pDelegator;
+		ICCSAXDelegator delegator;
 
         public bool Init(string pszEncoding)
         {
@@ -44,6 +44,7 @@ namespace CocosSharp
             TextReader textReader = new StringReader(str);
             return (ParseContent(textReader));
         }
+
         public bool ParseContent(TextReader sr)
         {
             var setting = new XmlReaderSettings();
@@ -157,24 +158,24 @@ namespace CocosSharp
             return ParseContent(content);
         }
 
-        public void SetDelegator(ICCSAXDelegator pDelegator)
+		public void SetDelegator(ICCSAXDelegator delegator)
         {
-            m_pDelegator = pDelegator;
+			this.delegator = delegator;
         }
 
         public static void StartElement(object ctx, string name, string[] atts)
         {
-            ((CCSAXParser) (ctx)).m_pDelegator.StartElement(ctx, name, atts);
+            ((CCSAXParser) (ctx)).delegator.StartElement(ctx, name, atts);
         }
 
         public static void EndElement(object ctx, string name)
         {
-            ((CCSAXParser) (ctx)).m_pDelegator.EndElement(ctx, name);
+            ((CCSAXParser) (ctx)).delegator.EndElement(ctx, name);
         }
 
         public static void TextHandler(object ctx, byte[] ch, int len)
         {
-            ((CCSAXParser) (ctx)).m_pDelegator.TextHandler(ctx, ch, len);
+            ((CCSAXParser) (ctx)).delegator.TextHandler(ctx, ch, len);
         }
     }
 }
