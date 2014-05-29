@@ -17,7 +17,7 @@ namespace tests
 
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)
             {
-                CCMenuItemFont pItem = new CCMenuItemFont(BugsTestScene.testsName[i], "arial", 24, menuCallback);
+                CCMenuItemFont pItem = new CCMenuItemFont(BugsTestScene.testsName[i], menuCallback);
                 pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * BugsTestScene.LINE_SPACE);
                 m_pItmeMenu.AddChild(pItem, BugsTestScene.kItemTagBasic + i);
             }

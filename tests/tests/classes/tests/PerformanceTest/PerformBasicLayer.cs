@@ -21,7 +21,10 @@ namespace tests
 
             var s = CCDirector.SharedDirector.WinSize;
 
-            var pMainItem = new CCMenuItemFont("Back", "arial", 24, toMainLayer);
+			CCMenuItemFont.FontSize = 24;
+			CCMenuItemFont.FontName = "arial";
+
+            var pMainItem = new CCMenuItemFont("Back", toMainLayer);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
             var pMenu = new CCMenu(pMainItem);
             pMenu.Position = new CCPoint(0, 0);

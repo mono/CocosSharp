@@ -54,11 +54,11 @@ namespace tests
             arrowsBar = new CCSprite("Images/arrowsBar");
             arrows = new CCSprite("Images/arrows");
 
-            uint fontSize = 20;
-			string fontName = "arial";
-			var longSentences = new CCMenuItemFont("Long Flowing Sentences", fontName, fontSize, stringChanged);
-			var lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", fontName, fontSize, stringChanged);
-			var mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", fontName, fontSize, stringChanged);
+			CCMenuItemFont.FontSize = 20;
+			CCMenuItemFont.FontName = "arial";
+			var longSentences = new CCMenuItemFont("Long Flowing Sentences", stringChanged);
+			var lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", stringChanged);
+			var mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", stringChanged);
 			var stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
             stringMenu.AlignItemsVertically();
 
@@ -68,11 +68,11 @@ namespace tests
             lineBreaks.Tag = LineBreaks;
             mixed.Tag = Mixed;
 
-            fontSize = 30;
+			CCMenuItemFont.FontSize = 30;
 
-			var left = new CCMenuItemFont("Left", fontName, fontSize, alignmentChanged);
-			var center = new CCMenuItemFont("Center", fontName, fontSize, alignmentChanged);
-			var right = new CCMenuItemFont("Right", fontName, fontSize, alignmentChanged);
+			var left = new CCMenuItemFont("Left", alignmentChanged);
+			var center = new CCMenuItemFont("Center", alignmentChanged);
+			var right = new CCMenuItemFont("Right", alignmentChanged);
 
 			var alignmentMenu = new CCMenu(left, center, right);
             alignmentMenu.AlignItemsHorizontally(alignmentItemPadding);

@@ -20,22 +20,22 @@ namespace tests
 
             AddChild(colorLayer);
 
-			uint fontSize = 32;
-			string fontName = "MarkerFelt";
+			CCMenuItemFont.FontSize = 32;
+			CCMenuItemFont.FontName = "MarkerFelt";
 
 			var menu = new CCMenu(
-				new CCMenuItemFont("Left", fontName, fontSize, setAlignmentLeft),
-				new CCMenuItemFont("Center", fontName, fontSize, setAlignmentCenter),
-				new CCMenuItemFont("Right", fontName, fontSize, setAlignmentRight)
+				new CCMenuItemFont("Left", setAlignmentLeft),
+				new CCMenuItemFont("Center", setAlignmentCenter),
+				new CCMenuItemFont("Right", setAlignmentRight)
                 );
             menu.AlignItemsVertically(4);
             menu.Position = new CCPoint(50, s.Height / 2 - 20);
             AddChild(menu);
 
             menu = new CCMenu(
-				new CCMenuItemFont("Top", fontName, fontSize, setAlignmentTop),
-				new CCMenuItemFont("Middle", fontName, fontSize, setAlignmentMiddle),
-				new CCMenuItemFont("Bottom", fontName, fontSize, setAlignmentBottom)
+				new CCMenuItemFont("Top", setAlignmentTop),
+				new CCMenuItemFont("Middle", setAlignmentMiddle),
+				new CCMenuItemFont("Bottom", setAlignmentBottom)
                 );
             menu.AlignItemsVertically(4);
             menu.Position = new CCPoint(s.Width - 50, s.Height / 2 - 20);

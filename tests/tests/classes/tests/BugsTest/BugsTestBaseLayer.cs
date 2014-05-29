@@ -14,7 +14,7 @@ namespace tests
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
-            CCMenuItemFont pMainItem = new CCMenuItemFont("Back", "arial", 24, backCallback);
+            CCMenuItemFont pMainItem = new CCMenuItemFont("Back", backCallback);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
             CCMenu pMenu = new CCMenu(pMainItem, null);
             pMenu.Position = new CCPoint(0, 0);

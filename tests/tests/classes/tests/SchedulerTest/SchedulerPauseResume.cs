@@ -61,11 +61,11 @@ namespace tests
 			sprite.RepeatForever(rotateBy);
 
 			// Add a menu item to resume the Scheduled actions.
-			uint fontSize = 32;
-			string fontName = "MarkerFelt";
 
+			CCMenuItemFont.FontSize = 32;
+			CCMenuItemFont.FontName = "MarkerFelt";
 			var menu = new CCMenu(
-				new CCMenuItemFont("Resume", fontName, fontSize, resume)
+				new CCMenuItemFont("Resume", resume)
 			);
 
 			menu.AlignItemsVertically(4);
@@ -165,7 +165,7 @@ namespace tests
 			string fontName = "MarkerFelt";
 
 			var menu = new CCMenu(
-				new CCMenuItemFont("Resume", fontName, fontSize, resume)
+				new CCMenuItemFont("Resume", resume)
 			);
 
 			menu.AlignItemsVertically(4);
