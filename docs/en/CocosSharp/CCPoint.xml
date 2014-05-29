@@ -1,20 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPoint" FullName="CocosSharp.CCPoint">
   <TypeSignature Language="C#" Value="public struct CCPoint" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit CCPoint extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
   </Base>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>System.ComponentModel.TypeConverter(typeof(CocosSharp.CCPointConverter))</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -26,12 +21,29 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="pt" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
         <param name="pt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPoint (CocosSharp.CCVector2 v);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCVector2 v) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -74,6 +86,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="x" Type="System.Single" />
@@ -86,12 +99,148 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AnchorLowerLeft">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorLowerLeft;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorLowerLeft" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorLowerRight">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorLowerRight;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorLowerRight" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorMiddle">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorMiddle;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorMiddle" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorMiddleBottom">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorMiddleBottom;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorMiddleBottom" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorMiddleLeft">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorMiddleLeft;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorMiddleLeft" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorMiddleRight">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorMiddleRight;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorMiddleRight" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorMiddleTop">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorMiddleTop;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorMiddleTop" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorUpperLeft">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorUpperLeft;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorUpperLeft" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnchorUpperRight">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint AnchorUpperRight;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint AnchorUpperRight" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AngleSigned">
       <MemberSignature Language="C#" Value="public static float AngleSigned (CocosSharp.CCPoint a, CocosSharp.CCPoint b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 AngleSigned(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -114,6 +263,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -138,6 +288,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -162,6 +313,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -184,6 +336,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -206,6 +359,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -228,6 +382,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -248,6 +403,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -270,6 +426,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -292,6 +449,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -314,6 +472,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -334,6 +493,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -354,6 +514,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -374,6 +535,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Attributes>
         <Attribute>
@@ -399,6 +561,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -423,6 +586,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -440,6 +604,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -466,6 +631,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -482,6 +648,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -498,6 +665,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -514,6 +682,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -530,6 +699,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -554,6 +724,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -584,6 +755,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -606,6 +778,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -628,6 +801,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -645,6 +819,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -665,6 +840,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -687,6 +863,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -703,12 +880,35 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Division (CocosSharp.CCPoint p, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Division(valuetype CocosSharp.CCPoint p, float32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="op_Equality">
       <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCPoint p1, CocosSharp.CCPoint p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCPoint p1, valuetype CocosSharp.CCPoint p2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -731,6 +931,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -740,6 +941,26 @@
       </Parameters>
       <Docs>
         <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCVector2 op_Implicit (CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCVector2 op_Implicit(valuetype CocosSharp.CCPoint point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVector2</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -785,15 +1006,58 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Implicit (CocosSharp.CCVector2 point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Implicit(valuetype CocosSharp.CCVector2 point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCVector2" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="op_Inequality">
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCPoint p1, CocosSharp.CCPoint p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCPoint p1, valuetype CocosSharp.CCPoint p2) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="p2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Multiply (CocosSharp.CCPoint p1, CocosSharp.CCPoint p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Multiply(valuetype CocosSharp.CCPoint p1, valuetype CocosSharp.CCPoint p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="p1" Type="CocosSharp.CCPoint" />
@@ -813,6 +1077,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -835,6 +1100,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -857,6 +1123,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -877,6 +1144,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -897,6 +1165,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -917,6 +1186,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -937,6 +1207,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -957,6 +1228,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -977,6 +1249,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -999,6 +1272,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1015,6 +1289,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1037,6 +1312,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1061,6 +1337,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1087,6 +1364,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1107,6 +1385,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -1127,6 +1406,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -1144,6 +1424,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1166,6 +1447,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -1181,6 +1463,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -1196,6 +1479,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>

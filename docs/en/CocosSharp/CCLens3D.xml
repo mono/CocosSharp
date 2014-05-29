@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLens3D" FullName="CocosSharp.CCLens3D">
   <TypeSignature Language="C#" Value="public class CCLens3D : CocosSharp.CCGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLens3D extends CocosSharp.CCGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCGrid3DAction</BaseTypeName>
@@ -47,11 +47,30 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLens3D (float duration, CocosSharp.CCGridSize gridSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCLens3D (float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, float radius);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCPoint position, float32 radius) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
@@ -69,11 +88,12 @@
       </Docs>
     </Member>
     <Member MemberName="Concave">
-      <MemberSignature Language="C#" Value="public bool Concave { get; set; }" />
+      <MemberSignature Language="C#" Value="public bool Concave { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Concave" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -131,11 +151,12 @@
       </Docs>
     </Member>
     <Member MemberName="LensEffect">
-      <MemberSignature Language="C#" Value="public float LensEffect { get; set; }" />
+      <MemberSignature Language="C#" Value="public float LensEffect { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 LensEffect" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -237,11 +258,12 @@
       </Docs>
     </Member>
     <Member MemberName="Position">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Position { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Position { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -249,6 +271,42 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Radius">
+      <MemberSignature Language="C#" Value="public float Radius { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Radius" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartAction">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

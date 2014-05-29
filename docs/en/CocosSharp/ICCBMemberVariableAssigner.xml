@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -11,12 +12,37 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="OnAssignCCBCustomProperty">
+      <MemberSignature Language="C#" Value="public bool OnAssignCCBCustomProperty (object pTarget, string pMemberVariableName, CocosSharp.CCBValue pCCBValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBCustomProperty(object pTarget, string pMemberVariableName, class CocosSharp.CCBValue pCCBValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTarget" Type="System.Object" />
+        <Parameter Name="pMemberVariableName" Type="System.String" />
+        <Parameter Name="pCCBValue" Type="CocosSharp.CCBValue" />
+      </Parameters>
+      <Docs>
+        <param name="pTarget">To be added.</param>
+        <param name="pMemberVariableName">To be added.</param>
+        <param name="pCCBValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OnAssignCCBMemberVariable">
       <MemberSignature Language="C#" Value="public bool OnAssignCCBMemberVariable (object target, string memberVariableName, CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBMemberVariable(object target, string memberVariableName, class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

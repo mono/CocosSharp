@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCIMEKeyboardNotificationInfo" FullName="CocosSharp.CCIMEKeyboardNotificationInfo">
   <TypeSignature Language="C#" Value="public class CCIMEKeyboardNotificationInfo" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCIMEKeyboardNotificationInfo extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -34,6 +35,21 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Begin">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect Begin;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCRect Begin" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
@@ -58,12 +74,42 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Duration">
+      <MemberSignature Language="C#" Value="public float Duration;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 Duration" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="end">
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect end;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCRect end" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect End;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCRect End" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>

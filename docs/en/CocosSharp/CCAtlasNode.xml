@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAtlasNode" FullName="CocosSharp.CCAtlasNode">
-  <TypeSignature Language="C#" Value="public class CCAtlasNode : CocosSharp.CCNodeRGBA, CocosSharp.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="C#" Value="public class CCAtlasNode : CocosSharp.CCNodeRGBA, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTexture</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -40,6 +40,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
@@ -62,6 +63,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="tile" Type="System.String" />
@@ -84,6 +86,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
@@ -100,6 +103,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -113,12 +117,29 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="ColorUnmodified">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B ColorUnmodified { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B ColorUnmodified" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -146,6 +167,22 @@
           </item>
           <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IgnoreContentScaleFactor">
+      <MemberSignature Language="C#" Value="protected bool IgnoreContentScaleFactor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IgnoreContentScaleFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTexture">
@@ -200,12 +237,45 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="IsAntialiased">
+      <MemberSignature Language="C#" Value="public bool IsAntialiased { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAntialiased" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public override bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsOpacityModifyRGB">
-      <MemberSignature Language="C#" Value="public override bool IsOpacityModifyRGB { get; set; }" />
+      <MemberSignature Language="C#" Value="protected bool IsOpacityModifyRGB { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -220,6 +290,70 @@
           </para>
           <para>Returns opacity modify flag. </para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemHeight">
+      <MemberSignature Language="C#" Value="protected int ItemHeight { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ItemHeight" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemsPerColumn">
+      <MemberSignature Language="C#" Value="protected int ItemsPerColumn { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ItemsPerColumn" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemsPerRow">
+      <MemberSignature Language="C#" Value="protected int ItemsPerRow { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ItemsPerRow" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ItemWidth">
+      <MemberSignature Language="C#" Value="protected int ItemWidth { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 ItemWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="m_bIsOpacityModifyRGB">
@@ -378,6 +512,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -392,11 +527,12 @@
       </Docs>
     </Member>
     <Member MemberName="QuadsToDraw">
-      <MemberSignature Language="C#" Value="public int QuadsToDraw { get; set; }" />
+      <MemberSignature Language="C#" Value="protected int QuadsToDraw { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 QuadsToDraw" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -432,6 +568,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
@@ -448,6 +585,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
@@ -458,12 +596,29 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="UniformColor">
+      <MemberSignature Language="C#" Value="protected int UniformColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 UniformColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpdateAtlasValues">
       <MemberSignature Language="C#" Value="public virtual void UpdateAtlasValues ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateAtlasValues() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

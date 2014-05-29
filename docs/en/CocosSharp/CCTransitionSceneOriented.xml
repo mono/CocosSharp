@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTransitionSceneOriented" FullName="CocosSharp.CCTransitionSceneOriented">
   <TypeSignature Language="C#" Value="public class CCTransitionSceneOriented : CocosSharp.CCTransitionScene" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionSceneOriented extends CocosSharp.CCTransitionScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
@@ -23,6 +23,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -36,6 +37,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
@@ -80,6 +82,21 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Orientation">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTransitionOrientation Orientation;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCTransitionOrientation Orientation" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>

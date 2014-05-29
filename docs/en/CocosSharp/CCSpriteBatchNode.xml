@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteBatchNode" FullName="CocosSharp.CCSpriteBatchNode">
-  <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : CocosSharp.CCNode, CocosSharp.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="C#" Value="public class CCSpriteBatchNode : CocosSharp.CCNode, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteBatchNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTexture</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -48,6 +48,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -89,11 +90,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (CocosSharp.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (CocosSharp.CCTexture2D tex, int capacity = 29);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D tex, int32 capacity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
@@ -107,11 +109,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (string fileImage, int capacity);" />
+      <MemberSignature Language="C#" Value="public CCSpriteBatchNode (string fileImage, int capacity = 29);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileImage, int32 capacity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="fileImage" Type="System.String" />
@@ -130,6 +133,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -157,6 +161,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSpriteBatchNode</ReturnType>
@@ -181,6 +186,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -200,6 +206,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -222,6 +229,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
@@ -245,6 +253,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCSprite&gt;</ReturnType>
@@ -256,11 +265,12 @@
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -296,6 +306,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -316,6 +327,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -341,6 +353,27 @@
         <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitCCSpriteBatchNode">
+      <MemberSignature Language="C#" Value="protected void InitCCSpriteBatchNode (CocosSharp.CCTexture2D tex, int capacity = 29);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InitCCSpriteBatchNode(class CocosSharp.CCTexture2D tex, int32 capacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="capacity" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tex">To be added.</param>
+        <param name="capacity">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithFile">
@@ -395,6 +428,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -416,6 +450,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -431,12 +466,29 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="IsAntialiased">
+      <MemberSignature Language="C#" Value="public bool IsAntialiased { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsAntialiased" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LowestAtlasIndexInChild">
       <MemberSignature Language="C#" Value="public int LowestAtlasIndexInChild (CocosSharp.CCSprite pSprite);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 LowestAtlasIndexInChild(class CocosSharp.CCSprite pSprite) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -502,6 +554,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -524,6 +577,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -546,6 +600,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -570,6 +625,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -592,6 +648,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -611,6 +668,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -630,6 +688,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -654,6 +713,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -670,6 +730,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
@@ -684,11 +745,12 @@ Removing a child from a  is very slow </summary>
       </Docs>
     </Member>
     <Member MemberName="TextureAtlas">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureAtlas TextureAtlas" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
@@ -705,6 +767,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -726,6 +789,7 @@ Removing a child from a  is very slow </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

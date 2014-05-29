@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerColor" FullName="CocosSharp.CCLayerColor">
-  <TypeSignature Language="C#" Value="public class CCLayerColor : CocosSharp.CCLayerRGBA, CocosSharp.ICCBlendProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends CocosSharp.CCLayerRGBA implements class CocosSharp.ICCBlendProtocol" />
+  <TypeSignature Language="C#" Value="public class CCLayerColor : CocosSharp.CCLayerRGBA, CocosSharp.ICCBlendable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends CocosSharp.CCLayerRGBA implements class CocosSharp.ICCBlendable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCBlendProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCBlendable</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -39,6 +39,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -52,6 +53,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="color" Type="CocosSharp.CCColor4B" />
@@ -68,6 +70,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="color" Type="CocosSharp.CCColor4B" />
@@ -88,6 +91,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
@@ -104,6 +108,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -123,6 +128,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -142,6 +148,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -164,6 +171,7 @@ v0.8 </summary>
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -183,6 +191,7 @@ v0.8 </summary>
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -200,11 +209,12 @@ v0.8 </summary>
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -331,6 +341,7 @@ v0.8 </summary>
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -350,6 +361,7 @@ v0.8 </summary>
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

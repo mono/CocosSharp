@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMenuItemFont" FullName="CocosSharp.CCMenuItemFont">
-  <TypeSignature Language="C#" Value="public class CCMenuItemFont : CocosSharp.CCMenuItemLabel" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends CocosSharp.CCMenuItemLabel" />
+  <TypeSignature Language="C#" Value="public class CCMenuItemFont : CocosSharp.CCMenuItemLabelTTF" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends CocosSharp.CCMenuItemLabelTTF" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCMenuItemLabel</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCMenuItemLabelTTF</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,45 +18,90 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemFont (string value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="value" Type="System.String" />
+        <Parameter Name="labelString" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
+        <param name="labelString">To be added.</param>
         <summary>creates a menu item from a string with a target/selector </summary>
         <remarks />
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemFont (string value, Action&lt;object&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, Action&lt;object&gt; selector = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, class System.Action`1&lt;object&gt; selector) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="value" Type="System.String" />
+        <Parameter Name="labelString" Type="System.String" />
         <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
       <Docs>
-        <param name="value">To be added.</param>
+        <param name="labelString">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, uint fontSizeIn = 32, Action&lt;object&gt; selector = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, unsigned int32 fontSizeIn, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="labelString" Type="System.String" />
+        <Parameter Name="fontSizeIn" Type="System.UInt32" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="labelString">To be added.</param>
+        <param name="fontSizeIn">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, string fontNameIn = &quot;arial&quot;, uint fontSizeIn = 32, Action&lt;object&gt; selector = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, string fontNameIn, unsigned int32 fontSizeIn, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="labelString" Type="System.String" />
+        <Parameter Name="fontNameIn" Type="System.String" />
+        <Parameter Name="fontSizeIn" Type="System.UInt32" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="labelString">To be added.</param>
+        <param name="fontNameIn">To be added.</param>
+        <param name="fontSizeIn">To be added.</param>
         <param name="selector">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FontName">
-      <MemberSignature Language="C#" Value="public static string FontName { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property string FontName" />
+      <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -84,11 +129,12 @@
       </Docs>
     </Member>
     <Member MemberName="FontSize">
-      <MemberSignature Language="C#" Value="public static uint FontSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property unsigned int32 FontSize" />
+      <MemberSignature Language="C#" Value="public uint FontSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FontSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -173,6 +219,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

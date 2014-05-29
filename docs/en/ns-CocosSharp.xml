@@ -1,6 +1,16 @@
-<Namespace Name="Cocos2D">
+<Namespace Name="CocosSharp">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>2D Game and Visualization Engine.</summary>
+    <remarks>
+      <para>
+
+	CocosSharp is an engine that simplifies the development of 2D
+	games and 2D visualizations.  The engine works on a variety of
+	software platforms and is exposed as a portable class library
+	which allows developers to write code that runs on multiple
+	platforms at once.
+
+      </para>
+    </remarks>
   </Docs>
 </Namespace>

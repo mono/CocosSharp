@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCRepeat" FullName="CocosSharp.CCRepeat">
   <TypeSignature Language="C#" Value="public class CCRepeat : CocosSharp.CCActionInterval" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRepeat extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
@@ -39,6 +39,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
@@ -48,6 +49,22 @@
         <param name="action">To be added.</param>
         <param name="times">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActionInstant">
+      <MemberSignature Language="C#" Value="public bool ActionInstant { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ActionInstant" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -94,11 +111,12 @@
       </Docs>
     </Member>
     <Member MemberName="InnerAction">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction InnerAction { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction InnerAction { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction InnerAction" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
@@ -208,6 +226,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
@@ -217,6 +236,26 @@
         <summary>returns a new action that performs the exactly the reverse action </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StartAction">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -254,6 +293,38 @@
       <Docs>
         <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Times">
+      <MemberSignature Language="C#" Value="public uint Times { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Times" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Total">
+      <MemberSignature Language="C#" Value="public uint Total { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Total" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">

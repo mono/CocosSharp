@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCPointSprite" FullName="CocosSharp.CCPointSprite">
   <TypeSignature Language="C#" Value="public class CCPointSprite" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointSprite extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -23,6 +23,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -45,6 +46,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4B Color" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Position">
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex2F Position;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex2F Position" />
@@ -60,6 +77,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Position">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex2F Position { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVertex2F Position" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex2F</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Size">
       <MemberSignature Language="C#" Value="public float Size;" />
       <MemberSignature Language="ILAsm" Value=".field public float32 Size" />
@@ -72,6 +105,22 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Size">
+      <MemberSignature Language="C#" Value="public float Size { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Size" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

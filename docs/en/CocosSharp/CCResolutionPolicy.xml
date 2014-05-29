@@ -4,6 +4,7 @@
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -15,10 +16,11 @@
   <Members>
     <Member MemberName="ExactFit">
       <MemberSignature Language="C#" Value="ExactFit" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy ExactFit = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy ExactFit = int32(1)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>
@@ -29,10 +31,11 @@
     </Member>
     <Member MemberName="FixedHeight">
       <MemberSignature Language="C#" Value="FixedHeight" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy FixedHeight = int32(3)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy FixedHeight = int32(4)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>
@@ -43,10 +46,11 @@
     </Member>
     <Member MemberName="FixedWidth">
       <MemberSignature Language="C#" Value="FixedWidth" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy FixedWidth = int32(4)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy FixedWidth = int32(5)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>
@@ -57,10 +61,11 @@
     </Member>
     <Member MemberName="NoBorder">
       <MemberSignature Language="C#" Value="NoBorder" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy NoBorder = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy NoBorder = int32(2)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>
@@ -71,10 +76,11 @@
     </Member>
     <Member MemberName="ShowAll">
       <MemberSignature Language="C#" Value="ShowAll" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy ShowAll = int32(2)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy ShowAll = int32(3)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>
@@ -85,10 +91,11 @@
     </Member>
     <Member MemberName="UnKnown">
       <MemberSignature Language="C#" Value="UnKnown" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy UnKnown = int32(5)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCResolutionPolicy UnKnown = int32(0)" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCResolutionPolicy</ReturnType>

@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCDevice" FullName="CocosSharp.CCDevice">
   <TypeSignature Language="C#" Value="public static class CCDevice" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCDevice extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -15,6 +15,22 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName="DPI">
+      <MemberSignature Language="C#" Value="public static float DPI { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 DPI" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetDPI">
       <MemberSignature Language="C#" Value="public static float GetDPI ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetDPI() cil managed" />

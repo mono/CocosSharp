@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleSystem+ModeB" FullName="CocosSharp.CCParticleSystem+ModeB">
   <TypeSignature Language="C#" Value="protected struct CCParticleSystem.ModeB" />
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/ModeB extends System.ValueType" />

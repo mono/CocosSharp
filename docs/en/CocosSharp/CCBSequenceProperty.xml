@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCBSequenceProperty" FullName="CocosSharp.CCBSequenceProperty">
   <TypeSignature Language="C#" Value="public class CCBSequenceProperty" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBSequenceProperty extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -43,6 +44,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Keyframes">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCBKeyframe&gt; Keyframes { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCBKeyframe&gt; Keyframes" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCBKeyframe&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name;" />
       <MemberSignature Language="ILAsm" Value=".field public string Name" />
@@ -58,15 +75,32 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Type">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCBPropType Type { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBPropType Type" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBPropertyType Type { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBPropertyType Type" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCBPropType</ReturnType>
+        <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

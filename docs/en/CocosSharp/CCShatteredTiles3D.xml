@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCShatteredTiles3D" FullName="CocosSharp.CCShatteredTiles3D">
   <TypeSignature Language="C#" Value="public class CCShatteredTiles3D : CocosSharp.CCTiledGrid3DAction" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCShatteredTiles3D extends CocosSharp.CCTiledGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCTiledGrid3DAction</BaseTypeName>
@@ -31,23 +31,24 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCShatteredTiles3D (float duration, CocosSharp.CCGridSize gridSize, int nRange, bool bShatterZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 nRange, bool bShatterZ) cil managed" />
+      <MemberSignature Language="C#" Value="public CCShatteredTiles3D (float duration, CocosSharp.CCGridSize gridSize, int range = 0, bool shatterZ = true);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 range, bool shatterZ) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="nRange" Type="System.Int32" />
-        <Parameter Name="bShatterZ" Type="System.Boolean" />
+        <Parameter Name="range" Type="System.Int32" />
+        <Parameter Name="shatterZ" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
-        <param name="nRange">To be added.</param>
-        <param name="bShatterZ">To be added.</param>
+        <param name="range">To be added.</param>
+        <param name="shatterZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -140,6 +141,58 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Range">
+      <MemberSignature Language="C#" Value="protected int Range { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Range" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ShatterZ">
+      <MemberSignature Language="C#" Value="protected bool ShatterZ { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool ShatterZ" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartAction">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,4 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="PlistDocument+PlistDocumentReader" FullName="CocosSharp.PlistDocument+PlistDocumentReader">
   <TypeSignature Language="C#" Value="public class PlistDocument.PlistDocumentReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.PlistDocument&gt;" />
   <TypeSignature Language="ILAsm" Value=".class nested public auto ansi beforefieldinit PlistDocument/PlistDocumentReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;class CocosSharp.PlistDocument&gt;" />

@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleBatchNode" FullName="CocosSharp.CCParticleBatchNode">
-  <TypeSignature Language="C#" Value="public class CCParticleBatchNode : CocosSharp.CCNode, CocosSharp.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleBatchNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="C#" Value="public class CCParticleBatchNode : CocosSharp.CCNode, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleBatchNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTexture</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -65,11 +65,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleBatchNode (CocosSharp.CCTexture2D tex, int capacity);" />
+      <MemberSignature Language="C#" Value="public CCParticleBatchNode (CocosSharp.CCTexture2D tex, int capacity = 500);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D tex, int32 capacity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="tex" Type="CocosSharp.CCTexture2D" />
@@ -83,11 +84,12 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleBatchNode (string imageFile, int capacity);" />
+      <MemberSignature Language="C#" Value="public CCParticleBatchNode (string imageFile, int capacity = 500);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string imageFile, int32 capacity) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="imageFile" Type="System.String" />
@@ -106,6 +108,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -133,6 +136,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
@@ -156,6 +160,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -170,11 +175,12 @@
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -264,12 +270,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ParticleDefaultCapacity">
+      <MemberSignature Language="C#" Value="public const int ParticleDefaultCapacity = 500;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 ParticleDefaultCapacity = (500)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>500</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RemoveAllChildrenWithCleanup">
       <MemberSignature Language="C#" Value="public override void RemoveAllChildrenWithCleanup (bool doCleanup);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveAllChildrenWithCleanup(bool doCleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -292,6 +315,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -313,6 +337,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -334,6 +359,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -358,6 +384,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
@@ -386,12 +413,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TextureAtlas">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureAtlas TextureAtlas { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureAtlas TextureAtlas" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextureAtlas</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Visit">
       <MemberSignature Language="C#" Value="public override void Visit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

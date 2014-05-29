@@ -1,20 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLabelBMFont" FullName="CocosSharp.CCLabelBMFont">
-  <TypeSignature Language="C#" Value="public class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCLabelProtocol, CocosSharp.ICCRGBAProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends CocosSharp.CCSpriteBatchNode implements class CocosSharp.ICCLabelProtocol, class CocosSharp.ICCRGBAProtocol" />
+  <TypeSignature Language="C#" Value="public class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCColor, CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends CocosSharp.CCSpriteBatchNode implements class CocosSharp.ICCColor, class CocosSharp.ICCTextContainer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSpriteBatchNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCLabelProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCColor</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>CocosSharp.ICCRGBAProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTextContainer</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -94,6 +94,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -107,6 +108,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="str" Type="System.String" />
@@ -125,6 +127,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="str" Type="System.String" />
@@ -145,6 +148,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="str" Type="System.String" />
@@ -167,6 +171,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="str" Type="System.String" />
@@ -185,12 +190,95 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelBMFont (string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 width, valuetype CocosSharp.CCTextAlignment alignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="width" Type="System.Single" />
+        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="alignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelBMFont (string str, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelBMFont (string str, string fntFile, float width, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string str, string fntFile, float32 width, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="width" Type="System.Single" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="str">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AnchorPoint">
       <MemberSignature Language="C#" Value="public override CocosSharp.CCPoint AnchorPoint { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint AnchorPoint" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -203,6 +291,22 @@
           <para>anchorPoint is the point around which all transformations and positioning manipulations take place. It's like a pin in the node where it is "attached" to its parent. The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. But you can use values higher than (1,1) and lower than (0,0) too. The default anchorPoint is (0.5,0.5), so it starts in the center of the node.</para>
           <para />
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AutomaticWidth">
+      <MemberSignature Language="C#" Value="public const int AutomaticWidth = -1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 AutomaticWidth = (-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="CascadeColorEnabled">
@@ -243,6 +347,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -262,6 +367,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -278,6 +384,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -288,12 +395,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="displayedColor">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B displayedColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B displayedColor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DisplayedColor">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B DisplayedColor { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -311,12 +434,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="displayedOpacity">
+      <MemberSignature Language="C#" Value="protected byte displayedOpacity;" />
+      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 displayedOpacity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="DisplayedOpacity">
       <MemberSignature Language="C#" Value="public virtual byte DisplayedOpacity { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 DisplayedOpacity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -334,16 +473,32 @@
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="fntConfigFile">
+      <MemberSignature Language="C#" Value="protected string fntConfigFile;" />
+      <MemberSignature Language="ILAsm" Value=".field family string fntConfigFile" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -355,6 +510,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -371,6 +527,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -415,9 +572,41 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="horzAlignment">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTextAlignment horzAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCTextAlignment horzAlignment" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ImageOffset">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint ImageOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint ImageOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -440,6 +629,37 @@
         <summary>Initializes the instance of Whether the initialization was successful. </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitCCLabelBMFont">
+      <MemberSignature Language="C#" Value="protected void InitCCLabelBMFont (string theString, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void InitCCLabelBMFont(string theString, string fntFile, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment, valuetype CocosSharp.CCPoint imageOffset, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="theString" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+        <Parameter Name="imageOffset" Type="CocosSharp.CCPoint" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="theString">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <param name="imageOffset">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithString">
@@ -472,6 +692,115 @@
         <summary>init a bitmap font atlas with an initial string and the FNT file </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="isColorCascaded">
+      <MemberSignature Language="C#" Value="protected bool isColorCascaded;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool isColorCascaded" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorCascaded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="protected bool isColorModifiedByOpacity;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool isColorModifiedByOpacity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsDirty">
+      <MemberSignature Language="C#" Value="protected bool IsDirty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsDirty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="isOpacityCascaded">
+      <MemberSignature Language="C#" Value="protected bool isOpacityCascaded;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool isOpacityCascaded" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOpacityCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsOpacityCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityCascaded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsOpacityModifyRGB">
@@ -512,12 +841,58 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="labelDimensions">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize labelDimensions;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize labelDimensions" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="labelInitialText">
+      <MemberSignature Language="C#" Value="protected string labelInitialText;" />
+      <MemberSignature Language="ILAsm" Value=".field family string labelInitialText" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="labelText">
+      <MemberSignature Language="C#" Value="protected string labelText;" />
+      <MemberSignature Language="ILAsm" Value=".field family string labelText" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="LineBreakWithoutSpace">
       <MemberSignature Language="C#" Value="public bool LineBreakWithoutSpace { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool LineBreakWithoutSpace" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -525,6 +900,21 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="lineBreakWithoutSpaces">
+      <MemberSignature Language="C#" Value="protected bool lineBreakWithoutSpaces;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool lineBreakWithoutSpaces" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -669,6 +1059,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
@@ -804,6 +1195,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -823,6 +1215,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -832,6 +1225,36 @@
         <summary>Purges the cached data.
  Removes from memory the cached configurations and the atlas name dictionary. v0.99.3 </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="realColor">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B realColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B realColor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="realOpacity">
+      <MemberSignature Language="C#" Value="protected byte realOpacity;" />
+      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 realOpacity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="s_pConfigurations">
@@ -850,11 +1273,12 @@
       </Docs>
     </Member>
     <Member MemberName="Scale">
-      <MemberSignature Language="C#" Value="public override float Scale { get; set; }" />
+      <MemberSignature Language="C#" Value="public override float Scale { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -875,6 +1299,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -895,6 +1320,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -939,6 +1365,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -960,6 +1387,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -976,6 +1404,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -995,6 +1424,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1014,11 +1444,27 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="vertAlignment">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCVerticalTextAlignment vertAlignment;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCVerticalTextAlignment vertAlignment" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -1030,6 +1476,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>

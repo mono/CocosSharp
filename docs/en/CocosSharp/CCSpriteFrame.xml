@@ -1,18 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteFrame" FullName="CocosSharp.CCSpriteFrame">
-  <TypeSignature Language="C#" Value="public class CCSpriteFrame : CocosSharp.ICCCopyable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteFrame extends System.Object implements class CocosSharp.ICCCopyable" />
+  <TypeSignature Language="C#" Value="public class CCSpriteFrame" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpriteFrame extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCCopyable</InterfaceName>
-    </Interface>
   </Interfaces>
   <Docs>
     <summary>
@@ -45,6 +42,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -53,11 +51,28 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CCSpriteFrame (CocosSharp.CCSpriteFrame spriteFrame);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
+      </Parameters>
+      <Docs>
+        <param name="spriteFrame">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D pobTexture, CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D pobTexture, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
@@ -66,6 +81,30 @@
       <Docs>
         <param name="pobTexture">To be added.</param>
         <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D pobTexture, CocosSharp.CCRect rectIn, CocosSharp.CCSize originalSize, bool rotated = false, Nullable&lt;CocosSharp.CCPoint&gt; offsetIn = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D pobTexture, valuetype CocosSharp.CCRect rectIn, valuetype CocosSharp.CCSize originalSize, bool rotated, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCPoint&gt; offsetIn) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="rectIn" Type="CocosSharp.CCRect" />
+        <Parameter Name="originalSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="rotated" Type="System.Boolean" />
+        <Parameter Name="offsetIn" Type="System.Nullable&lt;CocosSharp.CCPoint&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="pobTexture">To be added.</param>
+        <param name="rectIn">To be added.</param>
+        <param name="originalSize">To be added.</param>
+        <param name="rotated">To be added.</param>
+        <param name="offsetIn">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -245,6 +284,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -396,6 +436,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -412,6 +453,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -423,11 +465,12 @@
       </Docs>
     </Member>
     <Member MemberName="OriginalSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSize { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSize { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize OriginalSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -439,11 +482,12 @@
       </Docs>
     </Member>
     <Member MemberName="OriginalSizeInPixels">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSizeInPixels { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSizeInPixels { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize OriginalSizeInPixels" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -460,6 +504,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
@@ -476,6 +521,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
@@ -492,6 +538,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
@@ -500,6 +547,22 @@
         <summary>set texture of the frame, the texture is retained </summary>
         <value>To be added.</value>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TextureFilename">
+      <MemberSignature Language="C#" Value="public string TextureFilename { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string TextureFilename" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,13 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGridAction" FullName="CocosSharp.CCGridAction">
-  <TypeSignature Language="C#" Value="public class CCGridAction : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGridAction extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCGridAction : CocosSharp.CCAmplitudeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGridAction extends CocosSharp.CCAmplitudeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCAmplitudeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -52,6 +52,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
@@ -68,6 +69,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
@@ -76,6 +78,26 @@
       <Docs>
         <param name="duration">To be added.</param>
         <param name="gridSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CCGridAction (float duration, CocosSharp.CCGridSize gridSize, float amplitude);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, float32 amplitude) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="amplitude" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="gridSize">To be added.</param>
+        <param name="amplitude">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -114,6 +136,22 @@
         <summary>returns the grid </summary>
         <value>To be added.</value>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="GridSize">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCGridSize GridSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCGridSize GridSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGridSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithDuration">
@@ -159,6 +197,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
@@ -168,6 +207,26 @@
         <summary>returns a new reversed action. The reversed action is created with the  action. </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StartAction">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">

@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXLayer" FullName="CocosSharp.CCTMXLayer">
   <TypeSignature Language="C#" Value="public class CCTMXLayer : CocosSharp.CCSpriteBatchNode" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayer extends CocosSharp.CCSpriteBatchNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSpriteBatchNode</BaseTypeName>
@@ -47,19 +47,20 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTMXLayer (CocosSharp.CCTMXTilesetInfo tilesetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTMXTilesetInfo tilesetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTMXLayer (CocosSharp.CCTMXTilesetInfo tileSetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTMXTilesetInfo tileSetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
-        <Parameter Name="tilesetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
+        <Parameter Name="tileSetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
         <Parameter Name="layerInfo" Type="CocosSharp.CCTMXLayerInfo" />
         <Parameter Name="mapInfo" Type="CocosSharp.CCTMXMapInfo" />
       </Parameters>
       <Docs>
-        <param name="tilesetInfo">To be added.</param>
+        <param name="tileSetInfo">To be added.</param>
         <param name="layerInfo">To be added.</param>
         <param name="mapInfo">To be added.</param>
         <summary>creates a  with an tileset info, a layer info and a map info </summary>
@@ -72,6 +73,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -87,6 +89,22 @@
         <param name="tag">To be added.</param>
         <summary> doesn't support adding a  manually. addchild(z, tag); is not supported on . Instead of setTileGID. </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="InitWithTilesetInfo">
@@ -119,6 +137,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -135,6 +154,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
@@ -151,6 +171,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -317,6 +338,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -328,20 +350,21 @@
       </Docs>
     </Member>
     <Member MemberName="PositionAt">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PositionAt (CocosSharp.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint PositionAt(valuetype CocosSharp.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint PositionAt (CocosSharp.CCPoint tileCoord);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCPoint PositionAt(valuetype CocosSharp.CCPoint tileCoord) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
+        <Parameter Name="tileCoord" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="pos">To be added.</param>
+        <param name="tileCoord">To be added.</param>
         <summary>returns the position in points of a given tile coordinate </summary>
         <returns>To be added.</returns>
         <remarks />
@@ -353,6 +376,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
@@ -364,11 +388,12 @@
       </Docs>
     </Member>
     <Member MemberName="PropertyNamed">
-      <MemberSignature Language="C#" Value="public string PropertyNamed (string propertyName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string PropertyNamed(string propertyName) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual string PropertyNamed (string propertyName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string PropertyNamed(string propertyName) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -384,11 +409,12 @@
       </Docs>
     </Member>
     <Member MemberName="ReleaseMap">
-      <MemberSignature Language="C#" Value="public void ReleaseMap ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReleaseMap() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void ReleaseMap ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReleaseMap() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -406,6 +432,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -425,11 +452,12 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveTileAt">
-      <MemberSignature Language="C#" Value="public void RemoveTileAt (CocosSharp.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void RemoveTileAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveTileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -444,11 +472,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
-      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, CocosSharp.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void SetTileGID (uint gid, CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -468,11 +497,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetTileGID">
-      <MemberSignature Language="C#" Value="public void SetTileGID (uint gid, CocosSharp.CCPoint pos, uint flags);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void SetTileGID (uint gid, CocosSharp.CCPoint pos, uint flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -507,11 +537,12 @@
       </Docs>
     </Member>
     <Member MemberName="TileAt">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite TileAt (CocosSharp.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCSprite TileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCSprite TileAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCSprite TileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
@@ -547,11 +578,12 @@
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
-      <MemberSignature Language="C#" Value="public uint TileGIDAt (CocosSharp.CCPoint pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual uint TileGIDAt (CocosSharp.CCPoint pos);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -567,11 +599,12 @@
       </Docs>
     </Member>
     <Member MemberName="TileGIDAt">
-      <MemberSignature Language="C#" Value="public uint TileGIDAt (CocosSharp.CCPoint pos, out uint flags);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual uint TileGIDAt (CocosSharp.CCPoint pos, out uint flags);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -594,6 +627,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32[]</ReturnType>
@@ -610,6 +644,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXTilesetInfo</ReturnType>

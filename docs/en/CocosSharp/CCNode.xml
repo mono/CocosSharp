@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCNode" FullName="CocosSharp.CCNode">
-  <TypeSignature Language="C#" Value="public class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCSelectorProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class CocosSharp.ICCFocusable, class CocosSharp.ICCSelectorProtocol" />
+  <TypeSignature Language="C#" Value="public class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCKeypadDelegate, CocosSharp.ICCUpdatable, IComparable&lt;CocosSharp.CCNode&gt;, System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class CocosSharp.ICCFocusable, class CocosSharp.ICCKeypadDelegate, class CocosSharp.ICCUpdatable, class System.Collections.Generic.IComparer`1&lt;class CocosSharp.CCNode&gt;, class System.IComparable`1&lt;class CocosSharp.CCNode&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -14,169 +14,50 @@
       <InterfaceName>CocosSharp.ICCFocusable</InterfaceName>
     </Interface>
     <Interface>
-      <InterfaceName>CocosSharp.ICCSelectorProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCKeypadDelegate</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCUpdatable</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IComparable&lt;CocosSharp.CCNode&gt;</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
     <summary>
-      <para> is the main element. Anything that gets drawn or contains things that get drawn is a . The most popular Nodes are: , , , . </para>
+      <para>
+	The base class for all elements displayed.   
+      </para>
     </summary>
     <remarks>
-      <para>The main features of a <see cref="T:CocosSharp.CCNode" /> are:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCNode" />
-      <list type="bullet" />
-      <para>Some <see cref="T:CocosSharp.CCNode" /> nodes provide extra functionality for them or their children.</para>
-      <see cref="T:CocosSharp.CCNode" />
-      <para>Subclassing a <see cref="T:CocosSharp.CCNode" /> usually means (one/all) of:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCNode" />
-      <list type="bullet" />
-      <para>Features of <see cref="T:CocosSharp.CCNode" />:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCNode" />
-      <list type="bullet" />
-      <para>Default values:<list type="bullet" /></para>
-      <list type="bullet" />
-      <para>Limitations:<list type="bullet" /></para>
-      <list type="bullet" />
-      <para>Order in transformations with grid disabled<list type="number" /></para>
-      <list type="number" />
-      <para>Order in transformations with grid enabled<list type="number" /></para>
-      <list type="number" />
       <para>
-        <see cref="T:CocosSharp.CCCamera" />:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCCamera" />
-      <list type="bullet" />
-      <item>
-        <description>They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)</description>
-      </item>
-      <description>They can contain other Node nodes (addChild, getChildByTag, removeChild, etc)</description>
-      <item>
-        <description>They can schedule periodic callback (schedule, unschedule, etc)</description>
-      </item>
-      <description>They can schedule periodic callback (schedule, unschedule, etc)</description>
-      <item>
-        <description>They can execute actions (runAction, stopAction, etc)</description>
-      </item>
-      <description>They can execute actions (runAction, stopAction, etc)</description>
-      <item>
-        <description>overriding init to initialize resources and schedule callbacks</description>
-      </item>
-      <description>overriding init to initialize resources and schedule callbacks</description>
-      <item>
-        <description>create callbacks to handle the advancement of time</description>
-      </item>
-      <description>create callbacks to handle the advancement of time</description>
-      <item>
-        <description>overriding draw to render the node</description>
-      </item>
-      <description>overriding draw to render the node</description>
-      <item>
-        <description>position</description>
-      </item>
-      <description>position</description>
-      <item>
-        <description>scale (x, y)</description>
-      </item>
-      <description>scale (x, y)</description>
-      <item>
-        <description>rotation (in degrees, clockwise)</description>
-      </item>
-      <description>rotation (in degrees, clockwise)</description>
-      <item>
-        <description>Camera (an interface to gluLookAt )</description>
-      </item>
-      <description>Camera (an interface to gluLookAt )</description>
-      <item>
-        <description>GridBase (to do mesh transformations)</description>
-      </item>
-      <description>GridBase (to do mesh transformations)</description>
-      <item>
-        <description>anchor point</description>
-      </item>
-      <description>anchor point</description>
-      <item>
-        <description>size</description>
-      </item>
-      <description>size</description>
-      <item>
-        <description>visible</description>
-      </item>
-      <description>visible</description>
-      <item>
-        <description>z-order</description>
-      </item>
-      <description>z-order</description>
-      <item>
-        <description>openGL z position</description>
-      </item>
-      <description>openGL z position</description>
-      <item>
-        <description>rotation: 0</description>
-      </item>
-      <description>rotation: 0</description>
-      <item>
-        <description>position: (x=0,y=0)</description>
-      </item>
-      <description>position: (x=0,y=0)</description>
-      <item>
-        <description>scale: (x=1,y=1)</description>
-      </item>
-      <description>scale: (x=1,y=1)</description>
-      <item>
-        <description>contentSize: (x=0,y=0)</description>
-      </item>
-      <description>contentSize: (x=0,y=0)</description>
-      <item>
-        <description>anchorPoint: (x=0,y=0)</description>
-      </item>
-      <description>anchorPoint: (x=0,y=0)</description>
-      <item>
-        <description>A Node is a "void" object. It doesn't have a texture</description>
-      </item>
-      <description>A Node is a "void" object. It doesn't have a texture</description>
-      <item>
-        <description>The node will be translated (position)</description>
-      </item>
-      <description>The node will be translated (position)</description>
-      <item>
-        <description>The node will be rotated (rotation)</description>
-      </item>
-      <description>The node will be rotated (rotation)</description>
-      <item>
-        <description>The node will be scaled (scale)</description>
-      </item>
-      <description>The node will be scaled (scale)</description>
-      <item>
-        <description>The node will be moved according to the camera values (camera)</description>
-      </item>
-      <description>The node will be moved according to the camera values (camera)</description>
-      <item>
-        <description>The node will be translated (position)</description>
-      </item>
-      <description>The node will be translated (position)</description>
-      <item>
-        <description>The node will be rotated (rotation)</description>
-      </item>
-      <description>The node will be rotated (rotation)</description>
-      <item>
-        <description>The node will be scaled (scale)</description>
-      </item>
-      <description>The node will be scaled (scale)</description>
-      <item>
-        <description>The grid will capture the screen</description>
-      </item>
-      <description>The grid will capture the screen</description>
-      <item>
-        <description>The node will be moved according to the camera values (camera)</description>
-      </item>
-      <description>The node will be moved according to the camera values (camera)</description>
-      <item>
-        <description>The grid will render the captured screen</description>
-      </item>
-      <description>The grid will render the captured screen</description>
-      <item>
-        <description>Each node has a camera. By default it points to the center of the Node. </description>
-      </item>
-      <description>Each node has a camera. By default it points to the center of the Node. </description>
+	Anything that gets drawn or contains things that get drawn is a CCNode. The most common CCNodes are: <see cref="T:CocosSharp.CCScene"/>, <see cref="T:CocosSharp.CCLayer"/>, <see cref="T:CocosSharp.CCSprite"/> and <see cref="T:CocosSharp.CCMenu"/>.
+      </para>
+      <para>The main features of a <see cref="T:CocosSharp.CCNode" /> are:
+      <list type="bullet">
+	<item>
+	  <para>They can contain other Node nodes (AddChild, GetChildByTag, RemoveChild)</para>
+	</item>
+	<item>
+	  <para>They can schedule periodic callbacks (Schedule, Unschedule, etc)</para>
+	</item>
+	<item>
+	  <para>They can execute actions (RunAction, StopAction)</para>
+	</item>
+      </list>
+      </para>
+
+      <para>
+	Subclassing a CCNode involves initializing resources and scheduling any desired callbacks as well as overriding the draw method to render the node.
+      </para>
+
+      <para>
+	
+      </para>
+
     </remarks>
   </Docs>
   <Members>
@@ -186,11 +67,27 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Allocates and initializes a node. A initialized node which is marked as "autorelease". </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="actionManager">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCActionManager actionManager;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCActionManager actionManager" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionManager</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
@@ -199,14 +96,63 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionManager</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Gets the  object that is used by all actions. setActionManager(ActionManager*)A  object. </summary>
-        <value>To be added.</value>
+        <summary>Gets the  object that is used by all actions.</summary>
+        <value></value>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AddAction">
+      <MemberSignature Language="C#" Value="public void AddAction (CocosSharp.CCAction action, bool paused = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAction(class CocosSharp.CCAction action, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddActions">
+      <MemberSignature Language="C#" Value="public void AddActions (bool paused, CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddActions(bool paused, class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="paused" Type="System.Boolean" />
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="paused">To be added.</param>
+        <param name="actions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddChild">
@@ -215,6 +161,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -238,6 +185,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -259,6 +207,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -282,6 +231,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
@@ -292,14 +242,15 @@
         <remarks>
           <para>Sets the additional transform.</para>
           <para>
-            <para>The additional transform will be concatenated at the end of nodeToParentTransform. It could be used to simulate <computeroutput>parent-child</computeroutput> relationship between two nodes (e.g. one is in BatchNode, another isn't). <programlisting><codeline><highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">SpriteBatchNode*<sp />batch=<sp /><ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member">SpriteBatchNode::create</ref>(</highlight><highlight class="stringliteral">"Icon-114.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(batch);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteA<sp />=<sp /><ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member">Sprite::createWithTexture</ref>(batch-&gt;getTexture());</highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteB<sp />=<sp /><ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member">Sprite::create</ref>(</highlight><highlight class="stringliteral">"Icon-72.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(spriteB);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//position</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">AffineTransform<sp />t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//scale</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setScale(2);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//rotation</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setRotation(20);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline></programlisting></para>
+            <para>The additional transform will be concatenated at the end of NodeToParentTransform. It could be used to simulate parent-child relationship between two nodes (e.g. one is in BatchNode, another isn't). <programlisting><codeline><highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">SpriteBatchNode*<sp />batch=<sp /><ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member">SpriteBatchNode::create</ref>(</highlight><highlight class="stringliteral">"Icon-114.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(batch);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteA<sp />=<sp /><ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member">Sprite::createWithTexture</ref>(batch-&gt;getTexture());</highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteB<sp />=<sp /><ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member">Sprite::create</ref>(</highlight><highlight class="stringliteral">"Icon-72.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(spriteB);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//position</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">AffineTransform<sp />t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//scale</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setScale(2);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//rotation</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setRotation(20);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline></programlisting></para>
           </para>
           <para>The additional transform will be concatenated at the end of nodeToParentTransform. It could be used to simulate <computeroutput>parent-child</computeroutput> relationship between two nodes (e.g. one is in BatchNode, another isn't). <programlisting><codeline><highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">SpriteBatchNode*<sp />batch=<sp /><ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member">SpriteBatchNode::create</ref>(</highlight><highlight class="stringliteral">"Icon-114.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(batch);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteA<sp />=<sp /><ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member">Sprite::createWithTexture</ref>(batch-&gt;getTexture());</highlight></codeline><codeline><highlight class="normal">Sprite*<sp />spriteB<sp />=<sp /><ref refid="group__sprite__nodes_1gac4d0417d451a44a07e5b41bb6c4b072c" kindref="member">Sprite::create</ref>(</highlight><highlight class="stringliteral">"Icon-72.png"</highlight><highlight class="normal">);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(spriteB);<sp /></highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//position</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">AffineTransform<sp />t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//scale</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setScale(2);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//rotation</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteA-&gt;setRotation(20);</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight></codeline><codeline><highlight class="normal"></highlight></codeline><codeline><highlight class="normal"></highlight><highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight><highlight class="normal"></highlight></codeline><codeline><highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight></codeline></programlisting></para>
           <computeroutput>parent-child</computeroutput>
           <programlisting>
             <codeline>
               <highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">SpriteBatchNode*<sp />batch=<sp /><ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member">SpriteBatchNode::create</ref>(</highlight>
@@ -310,12 +261,15 @@
               <highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(batch);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">Sprite*<sp />spriteA<sp />=<sp /><ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member">Sprite::createWithTexture</ref>(batch-&gt;getTexture());</highlight>
@@ -326,122 +280,155 @@
               <highlight class="normal">);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(spriteB);<sp /></highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//position</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">AffineTransform<sp />t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//scale</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteA-&gt;setScale(2);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//rotation</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteA-&gt;setRotation(20);</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
               <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
@@ -449,13 +436,15 @@
           </programlisting>
           <codeline>
             <highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
           <highlight class="comment">//<sp />create<sp />a<sp />batchNode</highlight>
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">SpriteBatchNode*<sp />batch=<sp /><ref refid="group__base__nodes_1ga8c460d1b39ff8e29519d233be0abe899" kindref="member">SpriteBatchNode::create</ref>(</highlight>
             <highlight class="stringliteral">"Icon-114.png"</highlight>
@@ -473,15 +462,20 @@
           <highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(batch);</highlight>
           <ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />create<sp />two<sp />sprites,<sp />spriteA<sp />will<sp />be<sp />added<sp />to<sp />batchNode,<sp />they<sp />are<sp />using<sp />different<sp />textures.</highlight>
           <sp />
           <sp />
@@ -497,7 +491,8 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">Sprite*<sp />spriteA<sp />=<sp /><ref refid="group__sprite__nodes_1gaab15aa8f36e11750ed3fea7f18bf04bc" kindref="member">Sprite::createWithTexture</ref>(batch-&gt;getTexture());</highlight>
           </codeline>
@@ -519,24 +514,31 @@
           <highlight class="stringliteral">"Icon-72.png"</highlight>
           <highlight class="normal">);</highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight>
           </codeline>
           <highlight class="normal">batch-&gt;addChild(spriteA);<sp /></highlight>
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />We<sp />can't<sp />make<sp />spriteB<sp />as<sp />spriteA's<sp />child<sp />since<sp />they<sp />use<sp />different<sp />textures.<sp />So<sp />just<sp />add<sp />it<sp />to<sp />layer.</highlight>
           <sp />
           <sp />
@@ -556,13 +558,17 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />But<sp />we<sp />want<sp />to<sp />simulate<sp />`parent-child`<sp />relationship<sp />for<sp />these<sp />two<sp />node.</highlight>
           <sp />
           <sp />
@@ -575,7 +581,8 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">this-&gt;<ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>(spriteB);<sp /></highlight>
           </codeline>
@@ -583,38 +590,50 @@
           <ref refid="group__base__nodes_1gab38da4a2b7f4c9d1c2ba3b0d0928447c" kindref="member">addChild</ref>
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//position</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//position</highlight>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight>
           </codeline>
           <highlight class="normal">spriteA-&gt;setPosition(Point(200,<sp />200));</highlight>
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
           <sp />
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">AffineTransform<sp />t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
           </codeline>
@@ -623,15 +642,20 @@
           <sp />
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />postion<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
           <sp />
           <sp />
@@ -649,43 +673,56 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
           </codeline>
           <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//scale</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//scale</highlight>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteA-&gt;setScale(2);</highlight>
           </codeline>
           <highlight class="normal">spriteA-&gt;setScale(2);</highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
           <sp />
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
           </codeline>
@@ -693,15 +730,20 @@
           <sp />
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />scale<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
           <sp />
           <sp />
@@ -719,43 +761,56 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
           </codeline>
           <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//rotation</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//rotation</highlight>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteA-&gt;setRotation(20);</highlight>
           </codeline>
           <highlight class="normal">spriteA-&gt;setRotation(20);</highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Gets<sp />the<sp />spriteA's<sp />transform.</highlight>
           <sp />
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">t<sp />=<sp />spriteA-&gt;nodeToParentTransform();</highlight>
           </codeline>
@@ -763,15 +818,20 @@
           <sp />
           <sp />
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
             <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <highlight class="comment">//<sp />Sets<sp />the<sp />additional<sp />transform<sp />to<sp />spriteB,<sp />spriteB's<sp />rotation<sp />will<sp />based<sp />on<sp />its<sp />pseudo<sp />parent<sp />i.e.<sp />spriteA.</highlight>
           <sp />
           <sp />
@@ -789,12 +849,28 @@
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
           </codeline>
           <highlight class="normal">spriteB-&gt;setAdditionalTransform(t);</highlight>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AffineTransform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform AffineTransform;" />
+      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCAffineTransform AffineTransform" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorPoint">
@@ -803,25 +879,15 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the anchor point in percent.</summary>
-        <value>To be added.</value>
+        <value>Defaults to (0,0).</value>
         <remarks>
-          <para>Returns the anchor point in percent.</para>
-          <para>
-            <para>
-              <ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member">setAnchorPoint(const Point&amp;)</ref>
-            </para>
-            <para>The anchor point of node. </para>
-          </para>
-          <para>
-            <ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member">setAnchorPoint(const Point&amp;)</ref>
-          </para>
-          <ref refid="group__base__nodes_1gad48a1317c06899426910afb04c3f6d50" kindref="member">setAnchorPoint(const Point&amp;)</ref>
           <para>The anchor point of node. </para>
         </remarks>
       </Docs>
@@ -832,6 +898,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -863,6 +930,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
@@ -889,6 +957,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
@@ -899,12 +968,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="camera">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCCamera camera;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCCamera camera" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCCamera</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Camera">
       <MemberSignature Language="C#" Value="public CocosSharp.CCCamera Camera { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCCamera Camera" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCCamera</ReturnType>
@@ -971,6 +1056,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -982,11 +1068,12 @@
       </Docs>
     </Member>
     <Member MemberName="Children">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt; Children { get; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt; Children { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCRawList`1&lt;class CocosSharp.CCNode&gt; Children" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCNode&gt;</ReturnType>
@@ -1070,12 +1157,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="childrenByTag">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;int,System.Collections.Generic.List&lt;CocosSharp.CCNode&gt;&gt; childrenByTag;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;int32, class System.Collections.Generic.List`1&lt;class CocosSharp.CCNode&gt;&gt; childrenByTag" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,System.Collections.Generic.List&lt;CocosSharp.CCNode&gt;&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ChildrenCount">
       <MemberSignature Language="C#" Value="public int ChildrenCount { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 ChildrenCount" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -1098,6 +1201,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1108,19 +1212,40 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="CompareTo">
+      <MemberSignature Language="C#" Value="public int CompareTo (CocosSharp.CCNode that);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CompareTo(class CocosSharp.CCNode that) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="that" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="that">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ContentSize">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCSize ContentSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the untransformed size of the node.</summary>
-        <value>To be added.</value>
+        <value>Default value is (0, 0).</value>
         <remarks>
           <para>Returns the untransformed size of the node.</para>
           <para>
@@ -1143,6 +1268,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -1153,12 +1279,35 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ConvertPointTo">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertPointTo (ref CocosSharp.CCPoint ptInNode, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertPointTo(valuetype CocosSharp.CCPoint ptInNode, class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="ptInNode" Type="CocosSharp.CCPoint&amp;" RefType="ref" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="ptInNode">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ConvertToNodeSpace">
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToNodeSpace (CocosSharp.CCPoint worldPoint);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToNodeSpace(valuetype CocosSharp.CCPoint worldPoint) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1179,6 +1328,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1199,6 +1349,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1219,6 +1370,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1239,6 +1391,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1261,6 +1414,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1281,6 +1435,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -1301,6 +1456,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1314,12 +1470,48 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public virtual void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1349,12 +1541,45 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="EventDispatcher">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCEventDispatcher EventDispatcher { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCEventDispatcher EventDispatcher" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCEventDispatcher</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~CCNode ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForceTransformRefresh">
+      <MemberSignature Language="C#" Value="public virtual void ForceTransformRefresh ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ForceTransformRefresh() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1371,6 +1596,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAction</ReturnType>
@@ -1397,12 +1623,33 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GetBoundingBox">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect GetBoundingBox (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect GetBoundingBox(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="GetChildByTag">
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode GetChildByTag (int tag);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNode GetChildByTag(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
@@ -1430,6 +1677,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -1456,12 +1704,29 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="GlobalZOrder">
+      <MemberSignature Language="C#" Value="public float GlobalZOrder { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 GlobalZOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Grid">
       <MemberSignature Language="C#" Value="public CocosSharp.CCGridBase Grid { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGridBase Grid" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGridBase</ReturnType>
@@ -1481,6 +1746,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1497,6 +1763,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1532,12 +1799,44 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="InverseDirty">
+      <MemberSignature Language="C#" Value="protected bool InverseDirty;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool InverseDirty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsReorderChildDirty">
+      <MemberSignature Language="C#" Value="protected bool IsReorderChildDirty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsReorderChildDirty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsRunning">
       <MemberSignature Language="C#" Value="public bool IsRunning { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsRunning" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -1563,11 +1862,48 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsTransformDirty">
+      <MemberSignature Language="C#" Value="protected bool IsTransformDirty { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsTransformDirty" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode this[int tag] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Item(int32)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
@@ -1586,6 +1922,70 @@
       <MemberValue>-1</MemberValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeyBackClicked">
+      <MemberSignature Language="C#" Value="public virtual void KeyBackClicked ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyBackClicked() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeyMenuClicked">
+      <MemberSignature Language="C#" Value="public virtual void KeyMenuClicked ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyMenuClicked() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeypadEnabled">
+      <MemberSignature Language="C#" Value="public virtual bool KeypadEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool KeypadEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LocalZOrder">
+      <MemberSignature Language="C#" Value="public int LocalZOrder { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 LocalZOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -1994,12 +2394,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Name" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="NodeToParentTransform">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCAffineTransform NodeToParentTransform ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCAffineTransform NodeToParentTransform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
@@ -2009,6 +2426,21 @@
         <summary>Returns the matrix that transform the node's (local) space coordinates into the parent's space coordinates. The matrix is in Pixels. </summary>
         <returns>To be added.</returns>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="nodeToWorldTransform">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCAffineTransform nodeToWorldTransform;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCAffineTransform nodeToWorldTransform" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NodeToWorldTransform">
@@ -2028,12 +2460,29 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="NodeToWorldTransform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform NodeToWorldTransform { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCAffineTransform NodeToWorldTransform" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="NumberOfRunningActions">
       <MemberSignature Language="C#" Value="public int NumberOfRunningActions ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActions() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -2059,6 +2508,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2075,6 +2525,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2091,6 +2542,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2107,6 +2559,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2118,11 +2571,12 @@
       </Docs>
     </Member>
     <Member MemberName="OrderOfArrival">
-      <MemberSignature Language="C#" Value="public uint OrderOfArrival { get; set; }" />
+      <MemberSignature Language="C#" Value="protected uint OrderOfArrival { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 OrderOfArrival" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -2152,6 +2606,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
@@ -2192,6 +2647,38 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="ParentToNodeTransform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform ParentToNodeTransform { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCAffineTransform ParentToNodeTransform" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pause">
+      <MemberSignature Language="C#" Value="public void Pause ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Pause() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="PauseSchedulerAndActions">
       <MemberSignature Language="C#" Value="public void PauseSchedulerAndActions ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseSchedulerAndActions() cil managed" />
@@ -2214,13 +2701,14 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
-        <value>To be added.</value>
+        <value>Defaults to (0, 0).</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2230,6 +2718,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2246,6 +2735,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2262,6 +2752,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2283,12 +2774,53 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="RemoveAllChildrenByTag">
+      <MemberSignature Language="C#" Value="public virtual void RemoveAllChildrenByTag (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllChildrenByTag(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAllChildrenByTag">
+      <MemberSignature Language="C#" Value="public virtual void RemoveAllChildrenByTag (int tag, bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllChildrenByTag(int32 tag, bool cleanup) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="cleanup" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RemoveAllChildrenWithCleanup">
       <MemberSignature Language="C#" Value="public virtual void RemoveAllChildrenWithCleanup (bool cleanup);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveAllChildrenWithCleanup(bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2311,6 +2843,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2333,6 +2866,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2354,6 +2888,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2376,6 +2911,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2397,6 +2933,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2413,6 +2950,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2432,6 +2970,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2448,6 +2987,134 @@
           <para>Reorders a child according to a new z value.</para>
           <para />
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Repeat">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState Repeat (uint times, CocosSharp.CCActionInterval action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState Repeat(unsigned int32 times, class CocosSharp.CCActionInterval action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="times" Type="System.UInt32" />
+        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
+      </Parameters>
+      <Docs>
+        <param name="times">To be added.</param>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Repeat">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState Repeat (uint times, CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState Repeat(unsigned int32 times, class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="times" Type="System.UInt32" />
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="times">To be added.</param>
+        <param name="actions">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RepeatForever">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState RepeatForever (CocosSharp.CCActionInterval action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState RepeatForever(class CocosSharp.CCActionInterval action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RepeatForever">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState RepeatForever (CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState RepeatForever(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="actions">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResetCleanState">
+      <MemberSignature Language="C#" Value="protected virtual void ResetCleanState ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void ResetCleanState() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resume">
+      <MemberSignature Language="C#" Value="public void Resume ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resume() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ResumeSchedulerAndActions">
@@ -2467,32 +3134,37 @@
       </Docs>
     </Member>
     <Member MemberName="Rotation">
-      <MemberSignature Language="C#" Value="public virtual float Rotation { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual float Rotation { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Rotation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Returns the rotation of the node in degrees.</summary>
-        <value>To be added.</value>
+        <value>Defaults to zero.</value>
         <remarks>
           <para>Returns the rotation of the node in degrees.</para>
-          <para>
-            <para>
-              <ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member">setRotation(float)</ref>
-            </para>
-            <para>The rotation of the node in degrees. </para>
-          </para>
-          <para>
-            <ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member">setRotation(float)</ref>
-          </para>
-          <ref refid="group__base__nodes_1ga75d7d9854be663bfcdad47dadf9f093b" kindref="member">setRotation(float)</ref>
-          <para>The rotation of the node in degrees. </para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="rotationX">
+      <MemberSignature Language="C#" Value="protected float rotationX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 rotationX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RotationX">
@@ -2501,6 +3173,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2524,12 +3197,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="rotationY">
+      <MemberSignature Language="C#" Value="protected float rotationY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 rotationY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RotationY">
       <MemberSignature Language="C#" Value="public virtual float RotationY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 RotationY" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2579,19 +3268,81 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="RunAction">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState RunAction (CocosSharp.CCAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState RunAction(class CocosSharp.CCAction action) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="action" Type="CocosSharp.CCAction" />
+      </Parameters>
+      <Docs>
+        <param name="action">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunActions">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState RunActions (CocosSharp.CCFiniteTimeAction[] actions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState RunActions(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="actions">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Running">
+      <MemberSignature Language="C#" Value="protected bool Running;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool Running" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Scale">
-      <MemberSignature Language="C#" Value="public virtual float Scale { get; set; }" />
+      <MemberSignature Language="C#" Value="public virtual float Scale { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>Gets the scale factor of the node, when X and Y have the same scale factor.</summary>
-        <value>To be added.</value>
+        <value>Defaults to (1, 1).</value>
         <remarks>
           <para>Gets the scale factor of the node, when X and Y have the same scale factor.</para>
           <para>
@@ -2610,12 +3361,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="scaleX">
+      <MemberSignature Language="C#" Value="protected float scaleX;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 scaleX" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ScaleX">
       <MemberSignature Language="C#" Value="public virtual float ScaleX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleX" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2639,12 +3406,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="scaleY">
+      <MemberSignature Language="C#" Value="protected float scaleY;" />
+      <MemberSignature Language="ILAsm" Value=".field family float32 scaleY" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ScaleY">
       <MemberSignature Language="C#" Value="public virtual float ScaleY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleY" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2669,11 +3452,28 @@
       </Docs>
     </Member>
     <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
       <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2688,11 +3488,31 @@
       </Docs>
     </Member>
     <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (int priority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(int32 priority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="priority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="priority">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
       <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector, float interval);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector, float32 interval) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2714,6 +3534,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2739,6 +3560,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2754,12 +3576,28 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="scheduler">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScheduler scheduler;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScheduler scheduler" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScheduler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Scheduler">
       <MemberSignature Language="C#" Value="public CocosSharp.CCScheduler Scheduler { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScheduler Scheduler" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScheduler</ReturnType>
@@ -2831,6 +3669,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2850,6 +3689,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2869,7 +3709,8 @@
             <programlisting>
               <codeline>
                 <highlight class="comment">//<sp />sample<sp />code<sp />in<sp />lua</highlight>
-                <highlight class="normal"></highlight>
+                <highlight class="normal">
+                </highlight>
               </codeline>
               <codeline>
                 <highlight class="normal">local<sp />pos<sp /><sp />=<sp />node::getPosition()<sp /><sp />--<sp />returns<sp />Point<sp /></highlight>
@@ -2885,7 +3726,8 @@
           <programlisting>
             <codeline>
               <highlight class="comment">//<sp />sample<sp />code<sp />in<sp />lua</highlight>
-              <highlight class="normal"></highlight>
+              <highlight class="normal">
+              </highlight>
             </codeline>
             <codeline>
               <highlight class="normal">local<sp />pos<sp /><sp />=<sp />node::getPosition()<sp /><sp />--<sp />returns<sp />Point<sp /></highlight>
@@ -2899,14 +3741,16 @@
           </programlisting>
           <codeline>
             <highlight class="comment">//<sp />sample<sp />code<sp />in<sp />lua</highlight>
-            <highlight class="normal"></highlight>
+            <highlight class="normal">
+            </highlight>
           </codeline>
           <highlight class="comment">//<sp />sample<sp />code<sp />in<sp />lua</highlight>
           <sp />
           <sp />
           <sp />
           <sp />
-          <highlight class="normal"></highlight>
+          <highlight class="normal">
+          </highlight>
           <codeline>
             <highlight class="normal">local<sp />pos<sp /><sp />=<sp />node::getPosition()<sp /><sp />--<sp />returns<sp />Point<sp /></highlight>
             <highlight class="keywordtype">object</highlight>
@@ -2956,12 +3800,45 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="SetTransformIsDirty">
+      <MemberSignature Language="C#" Value="protected virtual void SetTransformIsDirty ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetTransformIsDirty() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetWorldTransformIsDirty">
+      <MemberSignature Language="C#" Value="protected virtual void SetWorldTransformIsDirty ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetWorldTransformIsDirty() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SkewX">
       <MemberSignature Language="C#" Value="public virtual float SkewX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 SkewX" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -2991,6 +3868,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -3020,6 +3898,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3036,6 +3915,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3058,6 +3938,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3080,6 +3961,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3090,12 +3972,35 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;.Compare">
+      <MemberSignature Language="C#" Value="int IComparer&lt;CCNode&gt;.Compare (CocosSharp.CCNode n1, CocosSharp.CCNode n2);" />
+      <MemberSignature Language="ILAsm" Value=".method hidebysig newslot virtual instance int32 System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;.Compare(class CocosSharp.CCNode n1, class CocosSharp.CCNode n2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n1" Type="CocosSharp.CCNode" />
+        <Parameter Name="n2" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="n1">To be added.</param>
+        <param name="n2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Tag">
       <MemberSignature Language="C#" Value="public int Tag { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Tag" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -3110,12 +4015,29 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="TagInvalid">
+      <MemberSignature Language="C#" Value="public const int TagInvalid = -1;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 TagInvalid = (-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-1</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Transform">
       <MemberSignature Language="C#" Value="public void Transform ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3132,6 +4054,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3143,11 +4066,28 @@
       </Docs>
     </Member>
     <Member MemberName="Unschedule">
+      <MemberSignature Language="C#" Value="public void Unschedule ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unschedule() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unschedule">
       <MemberSignature Language="C#" Value="public void Unschedule (Action&lt;float&gt; selector);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unschedule(class System.Action`1&lt;float32&gt; selector) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3159,6 +4099,22 @@
         <param name="selector">A function wrapped as a selector </param>
         <summary>Unschedules a custom selector. schedule(SEL_SCHEDULE, float, unsigned int, float)</summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAll">
+      <MemberSignature Language="C#" Value="public void UnscheduleAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAll() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UnscheduleAllSelectors">
@@ -3199,6 +4155,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3218,6 +4175,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3242,6 +4200,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -3262,6 +4221,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
@@ -3283,6 +4243,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -3306,12 +4267,28 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="visible">
+      <MemberSignature Language="C#" Value="protected bool visible;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool visible" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Visible">
       <MemberSignature Language="C#" Value="public virtual bool Visible { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -3332,6 +4309,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -3340,6 +4318,22 @@
       <Docs>
         <summary>Visits this node's children and draw them recursively. </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="WorldBoundingBox">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect WorldBoundingBox { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect WorldBoundingBox" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="WorldToNodeTransform">
@@ -3359,12 +4353,29 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="WorldToNodeTransform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAffineTransform WorldToNodeTransform { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCAffineTransform WorldToNodeTransform" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ZOrder">
       <MemberSignature Language="C#" Value="public int ZOrder { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 ZOrder" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>

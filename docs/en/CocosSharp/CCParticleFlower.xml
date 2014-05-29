@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCParticleFlower" FullName="CocosSharp.CCParticleFlower">
   <TypeSignature Language="C#" Value="public class CCParticleFlower : CocosSharp.CCParticleSystemQuad" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleFlower extends CocosSharp.CCParticleSystemQuad" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCParticleSystemQuad</BaseTypeName>
@@ -23,6 +23,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>

@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayerRGBA" FullName="CocosSharp.CCLayerRGBA">
-  <TypeSignature Language="C#" Value="public class CCLayerRGBA : CocosSharp.CCLayer, CocosSharp.ICCRGBAProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerRGBA extends CocosSharp.CCLayer implements class CocosSharp.ICCRGBAProtocol" />
+  <TypeSignature Language="C#" Value="public class CCLayerRGBA : CocosSharp.CCLayer, CocosSharp.ICCColor" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerRGBA extends CocosSharp.CCLayer implements class CocosSharp.ICCColor" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLayer</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCRGBAProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCColor</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -43,6 +43,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -178,6 +179,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -192,11 +194,12 @@
       </Docs>
     </Member>
     <Member MemberName="DisplayedColor">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B DisplayedColor { get; }" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B DisplayedColor { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
@@ -215,11 +218,12 @@
       </Docs>
     </Member>
     <Member MemberName="DisplayedOpacity">
-      <MemberSignature Language="C#" Value="public virtual byte DisplayedOpacity { get; }" />
+      <MemberSignature Language="C#" Value="public virtual byte DisplayedOpacity { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 DisplayedOpacity" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -253,6 +257,54 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="IsColorCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorCascaded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOpacityCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsOpacityCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityCascaded" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsOpacityModifyRGB">
       <MemberSignature Language="C#" Value="public virtual bool IsOpacityModifyRGB { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
@@ -281,6 +333,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -294,12 +347,45 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="RealColor">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B RealColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B RealColor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RealOpacity">
+      <MemberSignature Language="C#" Value="protected byte RealOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 RealOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpdateDisplayedColor">
       <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -319,6 +405,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

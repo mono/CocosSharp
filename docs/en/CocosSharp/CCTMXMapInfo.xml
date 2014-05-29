@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCTMXMapInfo" FullName="CocosSharp.CCTMXMapInfo">
   <TypeSignature Language="C#" Value="public class CCTMXMapInfo : CocosSharp.ICCSAXDelegator" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXMapInfo extends System.Object implements class CocosSharp.ICCSAXDelegator" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -54,11 +54,28 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTMXMapInfo (System.IO.StreamReader stream);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.StreamReader stream) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.StreamReader" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCTMXMapInfo (string tmxFile);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string tmxFile) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="tmxFile" Type="System.String" />
@@ -91,6 +108,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -149,11 +167,12 @@
       </Docs>
     </Member>
     <Member MemberName="LayerAttribs">
-      <MemberSignature Language="C#" Value="public int LayerAttribs { get; set; }" />
+      <MemberSignature Language="C#" Value="protected int LayerAttribs { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 LayerAttribs" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -406,11 +425,12 @@
       </Docs>
     </Member>
     <Member MemberName="MapSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize MapSize { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize MapSize { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize MapSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -438,11 +458,12 @@
       </Docs>
     </Member>
     <Member MemberName="Orientation">
-      <MemberSignature Language="C#" Value="public int Orientation { get; set; }" />
+      <MemberSignature Language="C#" Value="public int Orientation { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Orientation" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -470,11 +491,12 @@
       </Docs>
     </Member>
     <Member MemberName="ParentGID">
-      <MemberSignature Language="C#" Value="public uint ParentGID { get; set; }" />
+      <MemberSignature Language="C#" Value="public uint ParentGID { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 ParentGID" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
@@ -547,6 +569,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -565,11 +588,12 @@
       </Docs>
     </Member>
     <Member MemberName="StoringCharacters">
-      <MemberSignature Language="C#" Value="public bool StoringCharacters { get; set; }" />
+      <MemberSignature Language="C#" Value="public bool StoringCharacters { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool StoringCharacters" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -586,6 +610,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -636,11 +661,12 @@
       </Docs>
     </Member>
     <Member MemberName="TileSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize TileSize { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize TileSize { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize TileSize" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -652,11 +678,12 @@
       </Docs>
     </Member>
     <Member MemberName="TMXFileName">
-      <MemberSignature Language="C#" Value="public string TMXFileName { get; set; }" />
+      <MemberSignature Language="C#" Value="public string TMXFileName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string TMXFileName" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>

@@ -1,24 +1,74 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCAction" FullName="CocosSharp.CCAction">
-  <TypeSignature Language="C#" Value="public class CCAction : CocosSharp.ICCCopyable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object implements class CocosSharp.ICCCopyable" />
+  <TypeSignature Language="C#" Value="public class CCAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCCopyable</InterfaceName>
-    </Interface>
   </Interfaces>
   <Docs>
-    <summary>
-      <para>Base class for  objects. </para>
-    </summary>
-    <remarks>To be added.</remarks>
+    <summary>Base class for Action objects.</summary>
+    <remarks>
+
+      <para>
+
+	Actions are orders that can be given to a <see
+	cref="T:CococSharp.CCNode"/> object.  Actions are designed to
+	alter attributes on a node (things like color, opacity,
+	position, rotation, scale and visibility).
+
+      </para>
+
+      <para>
+
+	Unlike other variants of the Cocos2D frameworks, on
+	CocosSharp, all CCAction objects are immutable.  They contain
+	a recipe that describes what needs to happen, but does not
+	actually hold the state.  Because of this, the same CCAction
+	can be reused with different node types.
+
+      </para>
+
+      <para>
+
+	To start an action, you invoke the <see
+	cref="M:CocosSharp.CCNode.RunAction"/> method on a node.  This
+	method will in turn call <see
+	cref="M:CocosSharp.CCAction.StartAction"/> hich the takes as a
+	parameter the target node to which the action will be applied,
+	and this method in turn returns the state associated with this
+	object (a subclass of <see
+	cref="T:CocosSharp.CCActionState"/>.
+
+      </para>
+
+      <para>
+
+	Actions that derive from <see
+	cref="T:CocosSharp.CCActionInterval"/> alter the properties of
+	a node over a period of time.  Actions that derive from <see
+	cref="T:CocosSharp.CCActionInstant"/> apply the changes
+	immediately.
+
+      </para>
+
+      <example>
+<code lang="c#">
+            var spr = new CCSprite("Images/grossini");
+            spr.Position = new CCPoint(100, 100);
+            AddChild(spr);
+
+            var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
+            spr.RunAction(new CCRepeat (act1, 1));
+</code>
+      </example>
+
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -27,6 +77,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -156,6 +207,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
@@ -165,6 +217,26 @@
  Is the target that were used to run the action. Unless you are doing something complex, like , you should NOT call this method. The target is 'assigned', it is not 'retained'. v0.8.2 </summary>
         <value>To be added.</value>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StartAction">
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StartWithTarget">
@@ -231,6 +303,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -242,11 +315,12 @@
       </Docs>
     </Member>
     <Member MemberName="Target">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Target { get; set; }" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode Target { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Target" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>

@@ -1,17 +1,17 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMotionStreak" FullName="CocosSharp.CCMotionStreak">
-  <TypeSignature Language="C#" Value="public class CCMotionStreak : CocosSharp.CCNodeRGBA, CocosSharp.ICCTextureProtocol" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendProtocol, class CocosSharp.ICCTextureProtocol" />
+  <TypeSignature Language="C#" Value="public class CCMotionStreak : CocosSharp.CCNodeRGBA, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
-      <InterfaceName>CocosSharp.ICCTextureProtocol</InterfaceName>
+      <InterfaceName>CocosSharp.ICCTexture</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -25,11 +25,60 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>creates and initializes a motion streak with fade in seconds, minimum segments, stroke's width, color, texture </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMotionStreak (float fade, float minSegIn, float strokeIn, CocosSharp.CCColor3B color, CocosSharp.CCTexture2D texture);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 fade, float32 minSegIn, float32 strokeIn, valuetype CocosSharp.CCColor3B color, class CocosSharp.CCTexture2D texture) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fade" Type="System.Single" />
+        <Parameter Name="minSegIn" Type="System.Single" />
+        <Parameter Name="strokeIn" Type="System.Single" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+      </Parameters>
+      <Docs>
+        <param name="fade">To be added.</param>
+        <param name="minSegIn">To be added.</param>
+        <param name="strokeIn">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="texture">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMotionStreak (float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 fade, float32 minSeg, float32 stroke, valuetype CocosSharp.CCColor3B color, string path) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fade" Type="System.Single" />
+        <Parameter Name="minSeg" Type="System.Single" />
+        <Parameter Name="stroke" Type="System.Single" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="path" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fade">To be added.</param>
+        <param name="minSeg">To be added.</param>
+        <param name="stroke">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="path">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="BlendFunc">
@@ -38,6 +87,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
@@ -112,11 +162,12 @@
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -152,6 +203,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -218,6 +270,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public override bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsOpacityModifyRGB">
       <MemberSignature Language="C#" Value="public override bool IsOpacityModifyRGB { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
@@ -276,6 +344,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
@@ -295,6 +364,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
@@ -306,11 +376,12 @@
       </Docs>
     </Member>
     <Member MemberName="StartingPositionInitialized">
-      <MemberSignature Language="C#" Value="public bool StartingPositionInitialized { get; set; }" />
+      <MemberSignature Language="C#" Value="public bool StartingPositionInitialized { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool StartingPositionInitialized" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -327,6 +398,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
@@ -346,6 +418,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -365,6 +438,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

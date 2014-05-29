@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCMacros" FullName="CocosSharp.CCMacros">
-  <TypeSignature Language="C#" Value="public class CCMacros" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMacros extends System.Object" />
+  <TypeSignature Language="C#" Value="public static class CCMacros" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCMacros extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -45,12 +45,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="CCContentScaleFactor">
+      <MemberSignature Language="C#" Value="public static float CCContentScaleFactor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCContentScaleFactor() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CCDegreesToRadians">
       <MemberSignature Language="C#" Value="public static float CCDegreesToRadians (float angle);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCDegreesToRadians(float32 angle) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -71,6 +89,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -86,6 +105,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
@@ -168,6 +188,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -188,6 +209,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -205,6 +227,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -360,6 +383,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
@@ -375,6 +399,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -411,6 +436,126 @@
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

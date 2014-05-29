@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSimpleAudioEngine" FullName="CocosDenshion.CCSimpleAudioEngine">
   <TypeSignature Language="C#" Value="public class CCSimpleAudioEngine" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSimpleAudioEngine extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,10 +21,27 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BackgroundMusicPlaying">
+      <MemberSignature Language="C#" Value="public bool BackgroundMusicPlaying { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool BackgroundMusicPlaying" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -34,6 +51,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -50,6 +68,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -66,6 +85,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -77,20 +97,21 @@
       </Docs>
     </Member>
     <Member MemberName="FullPath">
-      <MemberSignature Language="C#" Value="public static string FullPath (string szPath);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FullPath(string szPath) cil managed" />
+      <MemberSignature Language="C#" Value="public static string FullPath (string path);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig string FullPath(string path) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="szPath" Type="System.String" />
+        <Parameter Name="path" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="szPath">To be added.</param>
+        <param name="path">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -119,12 +140,32 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseEffect">
+      <MemberSignature Language="C#" Value="public void PauseEffect (int fxid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseEffect(int32 fxid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fxid" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="fxid">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -149,23 +190,44 @@
       </Docs>
     </Member>
     <Member MemberName="PlayBackgroundMusic">
-      <MemberSignature Language="C#" Value="public void PlayBackgroundMusic (string pszFilePath, bool bLoop);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PlayBackgroundMusic(string pszFilePath, bool bLoop) cil managed" />
+      <MemberSignature Language="C#" Value="public void PlayBackgroundMusic (string filename, bool loop = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PlayBackgroundMusic(string filename, bool loop) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pszFilePath" Type="System.String" />
-        <Parameter Name="bLoop" Type="System.Boolean" />
+        <Parameter Name="filename" Type="System.String" />
+        <Parameter Name="loop" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="pszFilePath">To be added.</param>
-        <param name="bLoop">To be added.</param>
+        <param name="filename">To be added.</param>
+        <param name="loop">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PlayEffect">
+      <MemberSignature Language="C#" Value="public int PlayEffect (int fxid);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(int32 fxid) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fxid" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="fxid">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -190,61 +252,86 @@
       </Docs>
     </Member>
     <Member MemberName="PlayEffect">
-      <MemberSignature Language="C#" Value="public int PlayEffect (string pszFilePath, bool bLoop);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(string pszFilePath, bool bLoop) cil managed" />
+      <MemberSignature Language="C#" Value="public int PlayEffect (int fxid, bool bLoop);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(int32 fxid, bool bLoop) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="fxid" Type="System.Int32" />
         <Parameter Name="bLoop" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="pszFilePath">To be added.</param>
+        <param name="fxid">To be added.</param>
         <param name="bLoop">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PreloadBackgroundMusic">
-      <MemberSignature Language="C#" Value="public void PreloadBackgroundMusic (string pszFilePath);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadBackgroundMusic(string pszFilePath) cil managed" />
+    <Member MemberName="PlayEffect">
+      <MemberSignature Language="C#" Value="public int PlayEffect (string filename, bool loop = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 PlayEffect(string filename, bool loop) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="filename" Type="System.String" />
+        <Parameter Name="loop" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="filename">To be added.</param>
+        <param name="loop">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreloadBackgroundMusic">
+      <MemberSignature Language="C#" Value="public void PreloadBackgroundMusic (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadBackgroundMusic(string filename) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="filename" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="pszFilePath">To be added.</param>
+        <param name="filename">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PreloadEffect">
-      <MemberSignature Language="C#" Value="public void PreloadEffect (string pszFilePath);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadEffect(string pszFilePath) cil managed" />
+      <MemberSignature Language="C#" Value="public void PreloadEffect (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PreloadEffect(string filename) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="filename" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="pszFilePath">To be added.</param>
+        <param name="filename">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -255,6 +342,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -271,6 +359,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -287,6 +376,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -303,6 +393,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -343,6 +434,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosDenshion.CCSimpleAudioEngine</ReturnType>
@@ -359,6 +451,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.Int32,CocosDenshion.CCEffectPlayer&gt;</ReturnType>
@@ -369,12 +462,29 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="StopAllEffects">
+      <MemberSignature Language="C#" Value="public void StopAllEffects ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAllEffects() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="StopAllLoopingEffects">
       <MemberSignature Language="C#" Value="public void StopAllLoopingEffects ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAllLoopingEffects() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -402,58 +512,61 @@
       </Docs>
     </Member>
     <Member MemberName="StopBackgroundMusic">
-      <MemberSignature Language="C#" Value="public void StopBackgroundMusic (bool bReleaseData);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopBackgroundMusic(bool bReleaseData) cil managed" />
+      <MemberSignature Language="C#" Value="public void StopBackgroundMusic (bool releaseData = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopBackgroundMusic(bool releaseData) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="bReleaseData" Type="System.Boolean" />
+        <Parameter Name="releaseData" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="bReleaseData">To be added.</param>
+        <param name="releaseData">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StopEffect">
-      <MemberSignature Language="C#" Value="public void StopEffect (int nSoundId);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopEffect(int32 nSoundId) cil managed" />
+      <MemberSignature Language="C#" Value="public void StopEffect (int soundId);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopEffect(int32 soundId) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="nSoundId" Type="System.Int32" />
+        <Parameter Name="soundId" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="nSoundId">To be added.</param>
+        <param name="soundId">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UnloadEffect">
-      <MemberSignature Language="C#" Value="public void UnloadEffect (string pszFilePath);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnloadEffect(string pszFilePath) cil managed" />
+      <MemberSignature Language="C#" Value="public void UnloadEffect (string filename);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnloadEffect(string filename) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pszFilePath" Type="System.String" />
+        <Parameter Name="filename" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="pszFilePath">To be added.</param>
+        <param name="filename">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -464,6 +577,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>

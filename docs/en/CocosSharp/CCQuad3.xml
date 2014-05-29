@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCQuad3" FullName="CocosSharp.CCQuad3">
   <TypeSignature Language="C#" Value="public struct CCQuad3" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCQuad3 extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -17,12 +17,35 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCQuad3 (Nullable&lt;CocosSharp.CCVertex3F&gt; tL = null, Nullable&lt;CocosSharp.CCVertex3F&gt; tR = null, Nullable&lt;CocosSharp.CCVertex3F&gt; bL = null, Nullable&lt;CocosSharp.CCVertex3F&gt; bR = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; tL, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; tR, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; bL, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; bR) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="tL" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
+        <Parameter Name="tR" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
+        <Parameter Name="bL" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
+        <Parameter Name="bR" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="tL">To be added.</param>
+        <param name="tR">To be added.</param>
+        <param name="bL">To be added.</param>
+        <param name="bR">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="BottomLeft">
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F BottomLeft;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F BottomLeft" />
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
@@ -38,6 +61,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
@@ -53,6 +77,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
@@ -68,6 +93,7 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>

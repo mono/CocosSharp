@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCScrollView" FullName="CocosSharp.CCScrollView">
   <TypeSignature Language="C#" Value="public class CCScrollView : CocosSharp.CCLayer" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScrollView extends CocosSharp.CCLayer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLayer</BaseTypeName>
@@ -21,9 +21,26 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScrollView (CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize size) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -34,6 +51,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="size" Type="CocosSharp.CCSize" />
@@ -52,6 +70,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -75,6 +94,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -91,6 +111,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -107,9 +128,26 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentOffset">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ContentOffset { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint ContentOffset" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -123,6 +161,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -139,6 +178,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.ICCScrollViewDelegate</ReturnType>
@@ -155,9 +195,26 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dragging">
+      <MemberSignature Language="C#" Value="public bool Dragging { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Dragging" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -243,6 +300,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -263,6 +321,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -549,9 +608,26 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaxScale">
+      <MemberSignature Language="C#" Value="public float MaxScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MaxScale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -565,9 +641,26 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MinScale">
+      <MemberSignature Language="C#" Value="public float MinScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 MinScale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -597,6 +690,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -632,6 +726,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -665,11 +760,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetContentOffset">
-      <MemberSignature Language="C#" Value="public void SetContentOffset (CocosSharp.CCPoint offset, bool animated);" />
+      <MemberSignature Language="C#" Value="public void SetContentOffset (CocosSharp.CCPoint offset, bool animated = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetContentOffset(valuetype CocosSharp.CCPoint offset, bool animated) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -691,6 +787,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -707,11 +804,12 @@
       </Docs>
     </Member>
     <Member MemberName="SetZoomScale">
-      <MemberSignature Language="C#" Value="public void SetZoomScale (float value, bool animated);" />
+      <MemberSignature Language="C#" Value="public void SetZoomScale (float value, bool animated = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetZoomScale(float32 value, bool animated) cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -733,6 +831,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -768,6 +867,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="public virtual bool TouchBegan (CocosSharp.CCTouch pTouch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool TouchBegan(class CocosSharp.CCTouch pTouch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchCancelled">
       <MemberSignature Language="C#" Value="public override void TouchCancelled (CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
@@ -787,12 +908,34 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="public virtual void TouchCancelled (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchCancelled(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchEnabled">
-      <MemberSignature Language="C#" Value="public override bool TouchEnabled { get; set; }" />
+      <MemberSignature Language="C#" Value="public bool TouchEnabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool TouchEnabled" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -822,6 +965,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="public virtual void TouchEnded (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchEnded(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchMoved">
       <MemberSignature Language="C#" Value="public override void TouchMoved (CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
@@ -841,12 +1005,34 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="public virtual void TouchMoved (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchMoved(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpdateInset">
       <MemberSignature Language="C#" Value="public void UpdateInset ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateInset() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -863,6 +1049,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -895,6 +1082,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>

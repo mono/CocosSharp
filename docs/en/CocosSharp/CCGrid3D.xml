@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCGrid3D" FullName="CocosSharp.CCGrid3D">
   <TypeSignature Language="C#" Value="public class CCGrid3D : CocosSharp.CCGridBase" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrid3D extends CocosSharp.CCGridBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCGridBase</BaseTypeName>
@@ -21,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
@@ -37,6 +38,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
@@ -50,21 +52,22 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D pTexture, bool bFlipped);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D pTexture, bool bFlipped) cil managed" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="pTexture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="bFlipped" Type="System.Boolean" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="flipped" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
-        <param name="pTexture">To be added.</param>
-        <param name="bFlipped">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="flipped">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -75,6 +78,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -91,6 +95,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -98,6 +103,64 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Indices">
+      <MemberSignature Language="C#" Value="protected ushort[] Indices { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int16[] Indices" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt16[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F this[CocosSharp.CCGridSize pos] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVertex3F Item(valuetype CocosSharp.CCGridSize)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F this[int x, int y] { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVertex3F Item(int32, int32)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -137,6 +200,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
@@ -151,12 +215,51 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="OriginalVertex">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F OriginalVertex (int x, int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F OriginalVertex(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex3F</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OriginalVertices">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCVertex3F[] OriginalVertices { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVertex3F[] OriginalVertices" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVertex3F[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Reuse">
       <MemberSignature Language="C#" Value="public override void Reuse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reuse() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

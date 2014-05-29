@@ -1,27 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCLayer" FullName="CocosSharp.CCLayer">
-  <TypeSignature Language="C#" Value="public class CCLayer : CocosSharp.CCNode, CocosSharp.ICCAccelerometerDelegate, CocosSharp.ICCKeypadDelegate, CocosSharp.ICCStandardTouchDelegate, CocosSharp.ICCTargetedTouchDelegate" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayer extends CocosSharp.CCNode implements class CocosSharp.ICCAccelerometerDelegate, class CocosSharp.ICCKeypadDelegate, class CocosSharp.ICCStandardTouchDelegate, class CocosSharp.ICCTargetedTouchDelegate, class CocosSharp.ICCTouchDelegate" />
+  <TypeSignature Language="C#" Value="public class CCLayer : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayer extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCAccelerometerDelegate</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCKeypadDelegate</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCStandardTouchDelegate</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCTargetedTouchDelegate</InterfaceName>
-    </Interface>
   </Interfaces>
   <Docs>
     <summary>To be added.</summary>
@@ -34,6 +22,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters />
       <Docs>
@@ -47,6 +36,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="clipMode" Type="CocosSharp.CCClipMode" />
@@ -63,6 +53,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -79,6 +70,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCClipMode</ReturnType>
@@ -95,6 +87,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
@@ -226,6 +219,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -258,6 +252,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -435,6 +430,28 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="protected virtual bool TouchBegan (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool TouchBegan(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchCancelled">
       <MemberSignature Language="C#" Value="public virtual void TouchCancelled (CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
@@ -450,6 +467,27 @@
       </Parameters>
       <Docs>
         <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="protected virtual void TouchCancelled (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchCancelled(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -489,6 +527,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="protected virtual void TouchEnded (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchEnded(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchesBegan">
       <MemberSignature Language="C#" Value="public virtual void TouchesBegan (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
@@ -504,6 +563,27 @@
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchesBegan">
+      <MemberSignature Language="C#" Value="protected virtual void TouchesBegan (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchesBegan(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touches">To be added.</param>
+        <param name="touchEvent">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -527,6 +607,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchesCancelled">
+      <MemberSignature Language="C#" Value="protected virtual void TouchesCancelled (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchesCancelled(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touches">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchesEnded">
       <MemberSignature Language="C#" Value="public virtual void TouchesEnded (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
@@ -546,6 +647,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchesEnded">
+      <MemberSignature Language="C#" Value="protected virtual void TouchesEnded (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchesEnded(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touches">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchesMoved">
       <MemberSignature Language="C#" Value="public virtual void TouchesMoved (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
@@ -561,6 +683,27 @@
       </Parameters>
       <Docs>
         <param name="touches">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchesMoved">
+      <MemberSignature Language="C#" Value="protected virtual void TouchesMoved (System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchesMoved(class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touches" Type="System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touches">To be added.</param>
+        <param name="touchEvent">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -600,6 +743,27 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="protected virtual void TouchMoved (CocosSharp.CCTouch touch, CocosSharp.CCEvent touchEvent);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void TouchMoved(class CocosSharp.CCTouch touch, class CocosSharp.CCEvent touchEvent) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touchEvent" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <param name="touchEvent">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="TouchPriority">
       <MemberSignature Language="C#" Value="public int TouchPriority { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 TouchPriority" />
@@ -622,6 +786,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

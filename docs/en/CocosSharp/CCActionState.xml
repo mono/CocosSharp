@@ -10,8 +10,38 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Encapsulates the state of an action that is currently executing.</summary>
+    <remarks>
+      <para>
+	The <see cref="T:CocosSharp.CCAction"/> objects are immutable in
+	CocosSharp.  When the method <see
+	cref="M:CocosSharp.CCAction.StartAction"/> is invoked, a new
+	state object is created to keep track of the state of the object
+	over time.
+      </para>
+
+      <para>
+
+	The CCActionState is initialized with both the immutable
+	action (which provides the parameters for what the state
+	should do) as well as the target node on which the state will
+	operate.
+
+      </para>
+
+      <para>
+	
+	If you are creating your own CCAction, you should also
+	implement your own CCActionState and override at the <see
+	cref="M:CocosSharp.CCActionState.Update"/> method.
+	Additionally, you can override also the <see
+	cref="M:CocosSharp.CCActionState.Stop"/>, <see
+	cref="M:CocosSharp.CCActionState.Step"/> methods and the 
+	<see cref="P:CocosSharp.CCActionState.IsDone"/> property.
+
+      </para>
+
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -26,10 +56,10 @@
         <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">Action that is creating this state object.</param>
+        <param name="target">The node to which the action will be applied..</param>
+        <summary>Constructs a new CCActionState with the given action as its recipe, and the target as the node to alter.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Action">
@@ -94,9 +124,9 @@
         <Parameter Name="dt" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="dt">Delta time since last invocation.</param>
+        <summary>Called every frame with it's delta time. </summary>
+        <remarks>In general, you do not need to override this method, you are better off just overriding Update..</remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -111,8 +141,10 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Called when the action has completed.</summary>
+        <remarks>
+	  It will set the 'target' to null.   Developers should not call "[action stop]" manually.  Instead, they should use <see cref="M:CocosSharp.CCNode.StopAction"/>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Target">
@@ -126,9 +158,9 @@
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The node on which this action is operating.</summary>
+        <value>This is set by the constructor.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -145,9 +177,9 @@
         <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="time">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="time">A value between 0 and 1 representing the state of the action (0 is the start, 0.5 is the middle, 1 is the end).</param>
+        <summary>This method is invoked once per frame.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCCatmullRomBy" FullName="CocosSharp.CCCatmullRomBy">
   <TypeSignature Language="C#" Value="public class CCCatmullRomBy : CocosSharp.CCCardinalSplineBy" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCatmullRomBy extends CocosSharp.CCCardinalSplineBy" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCCardinalSplineBy</BaseTypeName>
@@ -21,6 +21,7 @@
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="dt" Type="System.Single" />

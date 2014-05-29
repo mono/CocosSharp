@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCControlSwitchSprite" FullName="CocosSharp.CCControlSwitchSprite">
   <TypeSignature Language="C#" Value="public class CCControlSwitchSprite : CocosSharp.CCSprite, CocosSharp.ICCActionTweenDelegate" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitchSprite extends CocosSharp.CCSprite implements class CocosSharp.ICCActionTweenDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
@@ -32,12 +32,39 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlSwitchSprite (CocosSharp.CCSprite maskSprite, CocosSharp.CCSprite onSprite, CocosSharp.CCSprite offSprite, CocosSharp.CCSprite thumbSprite, CocosSharp.CCLabelTtf onLabel, CocosSharp.CCLabelTtf offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSprite maskSprite, class CocosSharp.CCSprite onSprite, class CocosSharp.CCSprite offSprite, class CocosSharp.CCSprite thumbSprite, class CocosSharp.CCLabelTtf onLabel, class CocosSharp.CCLabelTtf offLabel) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="offSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="thumbSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onLabel" Type="CocosSharp.CCLabelTtf" />
+        <Parameter Name="offLabel" Type="CocosSharp.CCLabelTtf" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <param name="onLabel">To be added.</param>
+        <param name="offLabel">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -94,6 +121,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="MaskSprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite MaskSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite MaskSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="MaskTexture">
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D MaskTexture { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D MaskTexture" />
@@ -116,6 +159,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -127,14 +171,15 @@
       </Docs>
     </Member>
     <Member MemberName="OffLabel">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTTF OffLabel { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTTF OffLabel" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf OffLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf OffLabel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCLabelTTF</ReturnType>
+        <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -148,6 +193,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -164,6 +210,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -180,6 +227,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
@@ -191,14 +239,15 @@
       </Docs>
     </Member>
     <Member MemberName="OnLabel">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTTF OnLabel { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTTF OnLabel" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf OnLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf OnLabel" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCLabelTTF</ReturnType>
+        <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -212,6 +261,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -228,6 +278,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -244,6 +295,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
@@ -260,6 +312,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -292,6 +345,7 @@
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
@@ -308,6 +362,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

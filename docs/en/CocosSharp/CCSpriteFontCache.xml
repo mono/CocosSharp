@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCSpriteFontCache" FullName="CocosSharp.CCSpriteFontCache">
   <TypeSignature Language="C#" Value="public class CCSpriteFontCache" />
   <TypeSignature Language="ILAsm" Value=".class public auto ansi CCSpriteFontCache extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,6 +21,7 @@
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -37,12 +38,29 @@
       <MemberType>Field</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontScale">
+      <MemberSignature Language="C#" Value="public static float FontScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 FontScale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -88,12 +106,60 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Graphics.SpriteFont this[string fontName] { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.SpriteFont Item(string)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.SpriteFont</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fontName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="fontName">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterFont">
+      <MemberSignature Language="C#" Value="public static void RegisterFont (string fontName, int[] sizes);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void RegisterFont(string fontName, int32[] sizes) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="sizes" Type="System.Int32[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="fontName">To be added.</param>
+        <param name="sizes">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SharedInstance">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFontCache SharedInstance { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFontCache SharedInstance" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSpriteFontCache</ReturnType>

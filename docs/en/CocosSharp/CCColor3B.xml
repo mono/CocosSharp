@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Type Name="CCColor3B" FullName="CocosSharp.CCColor3B">
   <TypeSignature Language="C#" Value="public struct CCColor3B" />
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor3B extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
     <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -16,6 +16,22 @@ v3.0 </summary>
     <remarks />
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCColor3B (CocosSharp.CCColor4B color4B);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color4B) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="color4B" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="color4B">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCColor3B (Microsoft.Xna.Framework.Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype Microsoft.Xna.Framework.Color color) cil managed" />
@@ -38,6 +54,7 @@ v3.0 </summary>
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
       </AssemblyInfo>
       <Parameters>
         <Parameter Name="inr" Type="System.Byte" />
@@ -67,6 +84,107 @@ v3.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="B">
+      <MemberSignature Language="C#" Value="public byte B { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 B" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Black">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Black;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Black" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Blue">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Blue;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Blue" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DarkGray">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B DarkGray;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B DarkGray" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCColor3B other);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCColor3B other) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="other" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="other">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="G">
       <MemberSignature Language="C#" Value="public byte G;" />
       <MemberSignature Language="ILAsm" Value=".field public unsigned int8 G" />
@@ -79,6 +197,128 @@ v3.0 </summary>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="G">
+      <MemberSignature Language="C#" Value="public byte G { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 G" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Gray">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Gray;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Gray" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Green">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Green;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Green" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Magenta">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Magenta;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Magenta" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor3B op_Division (CocosSharp.CCColor3B p1, float div);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCColor3B op_Division(valuetype CocosSharp.CCColor3B p1, float32 div) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="div" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="div">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCColor3B p1, CocosSharp.CCColor3B p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCColor3B p1, valuetype CocosSharp.CCColor3B p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="p2" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -102,6 +342,65 @@ v3.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCColor3B p1, CocosSharp.CCColor3B p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCColor3B p1, valuetype CocosSharp.CCColor3B p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="p2" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor3B op_Multiply (CocosSharp.CCColor3B p1, CocosSharp.CCColor3B p2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCColor3B op_Multiply(valuetype CocosSharp.CCColor3B p1, valuetype CocosSharp.CCColor3B p2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p1" Type="CocosSharp.CCColor3B" />
+        <Parameter Name="p2" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="p1">To be added.</param>
+        <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Orange">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Orange;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Orange" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="R">
       <MemberSignature Language="C#" Value="public byte R;" />
       <MemberSignature Language="ILAsm" Value=".field public unsigned int8 R" />
@@ -111,6 +410,67 @@ v3.0 </summary>
       </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="R">
+      <MemberSignature Language="C#" Value="public byte R { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 R" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Red">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Red;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Red" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="White">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B White;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B White" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Yellow">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCColor3B Yellow;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCColor3B Yellow" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
