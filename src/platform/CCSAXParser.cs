@@ -29,7 +29,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace CocosSharp
 {
-    public class CCSAXParser
+	internal class CCSAXParser
     {
 		ICCSAXDelegator delegator;
 
