@@ -1,0 +1,84 @@
+<Type Name="ICCBSelectorResolver" FullName="CocosSharp.ICCBSelectorResolver">
+  <TypeSignature Language="C#" Value="public interface ICCBSelectorResolver" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBSelectorResolver" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="OnResolveCCBCCCallFuncSelector">
+      <MemberSignature Language="C#" Value="public Action&lt;CocosSharp.CCNode&gt; OnResolveCCBCCCallFuncSelector (object pTarget, string pSelectorName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`1&lt;class CocosSharp.CCNode&gt; OnResolveCCBCCCallFuncSelector(object pTarget, string pSelectorName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;CocosSharp.CCNode&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTarget" Type="System.Object" />
+        <Parameter Name="pSelectorName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pTarget">To be added.</param>
+        <param name="pSelectorName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnResolveCCBCCControlSelector">
+      <MemberSignature Language="C#" Value="public Action&lt;object,CocosSharp.CCControlEvent&gt; OnResolveCCBCCControlSelector (object target, string pSelectorName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; OnResolveCCBCCControlSelector(object target, string pSelectorName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Object,CocosSharp.CCControlEvent&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="System.Object" />
+        <Parameter Name="pSelectorName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="pSelectorName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnResolveCCBCCMenuItemSelector">
+      <MemberSignature Language="C#" Value="public Action&lt;object&gt; OnResolveCCBCCMenuItemSelector (object target, string pSelectorName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`1&lt;object&gt; OnResolveCCBCCMenuItemSelector(object target, string pSelectorName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Action&lt;System.Object&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="System.Object" />
+        <Parameter Name="pSelectorName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="pSelectorName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

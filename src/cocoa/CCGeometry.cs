@@ -51,6 +51,48 @@ namespace CocosSharp
         public float X;
         public float Y;
 
+
+		#region Properties
+
+		public float LengthSQ
+		{
+			get { return X * X + Y * Y; }
+		}
+
+		public float LengthSquare
+		{
+			get { return LengthSQ; }
+		}
+
+		// Computes the length of this point as if it were a vector with XY components relative to the
+		// origin. This is computed each time this property is accessed, so cache the value that is
+		// returned.
+		public float Length
+		{
+			get { return (float) Math.Sqrt(X * X + Y * Y); }
+		}
+
+		public CCPoint Reverse
+		{
+			get { return new CCPoint(-X, -Y); }
+		}
+
+		public CCPoint InvertY
+		{
+			get
+			{
+				CCPoint pt;
+				pt.X = X;
+				pt.Y = -Y;
+				return pt;
+			}
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
         public CCPoint(float x, float y)
         {
             X = x;
@@ -75,27 +117,13 @@ namespace CocosSharp
 			Y = v.Y;
 		}
 
+		#endregion Constructors
+
+		#region Equality
+
         public static bool Equal(ref CCPoint point1, ref CCPoint point2)
         {
             return ((point1.X == point2.X) && (point1.Y == point2.Y));
-        }
-
-        public CCPoint Offset(float dx, float dy)
-        {
-            CCPoint pt;
-            pt.X = X + dx;
-            pt.Y = Y + dy;
-            return pt;
-        }
-
-        public CCPoint Reverse
-        {
-            get { return new CCPoint(-X, -Y); }
-        }
-
-        public override int GetHashCode()
-        {
-            return X.GetHashCode() + Y.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -108,6 +136,14 @@ namespace CocosSharp
             return X == p.X && Y == p.Y;
         }
 
+		public override int GetHashCode()
+		{
+			return X.GetHashCode() + Y.GetHashCode();
+		}
+
+		#endregion Equality
+
+
         public override string ToString()
         {
             return String.Format("CCPoint : (x={0}, y={1})", X, Y);
@@ -116,48 +152,6 @@ namespace CocosSharp
         public float DistanceSQ(ref CCPoint v2)
         {
             return Sub(ref v2).LengthSQ;
-        }
-
-        public CCPoint Sub(ref CCPoint v2)
-        {
-            CCPoint pt;
-            pt.X = X - v2.X;
-            pt.Y = Y - v2.Y;
-            return pt;
-        }
-
-        public float LengthSQ
-        {
-            get { return X * X + Y * Y; }
-        }
-
-        public float LengthSquare
-        {
-            get { return LengthSQ; }
-        }
-
-        /// <summary>
-        ///     Computes the length of this point as if it were a vector with XY components relative to the
-        ///     origin. This is computed each time this property is accessed, so cache the value that is
-        ///     returned.
-        /// </summary>
-        public float Length
-        {
-            get { return (float) Math.Sqrt(X * X + Y * Y); }
-        }
-
-        /// <summary>
-        ///     Inverts the direction or location of the Y component.
-        /// </summary>
-        public CCPoint InvertY
-        {
-            get
-            {
-                CCPoint pt;
-                pt.X = X;
-                pt.Y = -Y;
-                return pt;
-            }
         }
 
         /// <summary>
@@ -177,6 +171,22 @@ namespace CocosSharp
             Y *= l;
             return (mag);
         }
+
+		public CCPoint Sub(ref CCPoint v2)
+		{
+			CCPoint pt;
+			pt.X = X - v2.X;
+			pt.Y = Y - v2.Y;
+			return pt;
+		}
+
+		public CCPoint Offset(float dx, float dy)
+		{
+			CCPoint pt;
+			pt.X = X + dx;
+			pt.Y = Y + dy;
+			return pt;
+		}
 
         #region Static Methods
 
@@ -434,19 +444,6 @@ namespace CocosSharp
             //            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
         }
 
-        /** Quickly convert CCSize to a CCPoint
-            @since v0.99.1
-        */
-
-        [Obsolete("Use explicit cast (CCPoint)size.")]
-        public static CCPoint FromSize(CCSize s)
-        {
-            CCPoint pt;
-            pt.X = s.Width;
-            pt.Y = s.Height;
-            return pt;
-        }
-
         /**
          * Allow Cast CCSize to CCPoint
          */
@@ -649,6 +646,7 @@ namespace CocosSharp
 
         #endregion
 
+
         public static CCPoint Parse(string s)
         {
             return (CCPointConverter.CCPointFromString(s));
@@ -676,28 +674,38 @@ namespace CocosSharp
         public float Width;
         public float Height;
 
+
+		#region Properties
+
+		public CCPoint Center
+		{
+			get { return new CCPoint(Width / 2f, Height / 2f); }
+		}
+
+		public CCSize Inverted
+		{
+			get { return new CCSize(Height, Width); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
         public CCSize(float width, float height)
         {
             Width = width;
             Height = height;
         }
 
-        /// <summary>
-        ///     Returns the inversion of this size, which is the height and width swapped.
-        /// </summary>
-        public CCSize Inverted
-        {
-            get { return new CCSize(Height, Width); }
-        }
+		#endregion Constructors
+
+
+		#region Equality
 
         public static bool Equal(ref CCSize size1, ref CCSize size2)
         {
             return ((size1.Width == size2.Width) && (size1.Height == size2.Height));
-        }
-
-        public override int GetHashCode()
-        {
-            return (Width.GetHashCode() + Height.GetHashCode());
         }
 
         public bool Equals(CCSize s)
@@ -710,15 +718,35 @@ namespace CocosSharp
             return (Equals((CCSize) obj));
         }
 
-        public CCPoint Center
-        {
-            get { return new CCPoint(Width / 2f, Height / 2f); }
-        }
+		public override int GetHashCode()
+		{
+			return (Width.GetHashCode() + Height.GetHashCode());
+		}
+			
+		#endregion Equality
+
 
         public override string ToString()
         {
             return String.Format("{0} x {1}", Width, Height);
         }
+
+
+		public static CCSize Parse(string s)
+		{
+			return (CCSizeConverter.CCSizeFromString(s));
+		}
+
+		// Allow Cast CCPoint to CCSize
+		public static explicit operator CCSize(CCPoint point)
+		{
+			CCSize size;
+			size.Width = point.X;
+			size.Height = point.Y;
+			return size;
+		}
+
+		#region Operators
 
         public static bool operator ==(CCSize p1, CCSize p2)
         {
@@ -750,22 +778,7 @@ namespace CocosSharp
             return (new CCSize(p.Width - f, p.Height - f));
         }
 
-        public static CCSize Parse(string s)
-        {
-            return (CCSizeConverter.CCSizeFromString(s));
-        }
-
-        /**
-         * Allow Cast CCPoint to CCSize
-         */
-
-        public static explicit operator CCSize(CCPoint point)
-        {
-            CCSize size;
-            size.Width = point.X;
-            size.Height = point.Y;
-            return size;
-        }
+		#endregion Operators
     }
 
 #if !WINDOWS_PHONE && !NETFX_CORE
@@ -778,13 +791,60 @@ namespace CocosSharp
         public CCPoint Origin;
         public CCSize Size;
 
-        /// <summary>
-        ///     Creates the rectangle at (x,y) -> (width,height)
-        /// </summary>
-        /// <param name="x">Lower Left corner X</param>
-        /// <param name="y">Lower left corner Y</param>
-        /// <param name="width">width of the rectangle</param>
-        /// <param name="height">height of the rectangle</param>
+
+		#region Properties
+
+		public float MinX { get { return Origin.X; } }
+		public float MaxX { get { return Origin.X + Size.Width; } }
+		public float MidX { get { return Origin.X + Size.Width / 2.0f; } }
+
+		public float MinY { get { return Origin.Y; } }
+		public float MaxY { get { return Origin.Y + Size.Height; } }
+		public float MidY { get { return Origin.Y + Size.Height / 2.0f; } }
+
+		public CCPoint Center
+		{
+			get
+			{
+				CCPoint pt;
+				pt.X = MidX;
+				pt.Y = MidY;
+				return pt;
+			}
+		}
+
+		public CCPoint UpperRight
+		{
+			get
+			{
+				CCPoint pt;
+				pt.X = MaxX;
+				pt.Y = MaxY;
+				return (pt);
+			}
+		}
+
+		public CCPoint LowerLeft
+		{
+			get
+			{
+				CCPoint pt;
+				pt.X = MinX;
+				pt.Y = MinY;
+				return (pt);
+			}
+		}
+
+		public CCRect InvertedSize
+		{
+			get { return new CCRect(Origin.X, Origin.Y, Size.Height, Size.Width); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
+
         public CCRect(float x, float y, float width, float height)
         {
             // Only support that, the width and height > 0
@@ -795,84 +855,35 @@ namespace CocosSharp
 
             Size.Width = width;
             Size.Height = height;
-        }
+		}
 
-        /// <summary>
-        ///     Returns the inversion of this rect's size, which is the height and width swapped, while the origin stays unchanged.
-        /// </summary>
-        public CCRect InvertedSize
-        {
-            get { return new CCRect(Origin.X, Origin.Y, Size.Height, Size.Width); }
-        }
+		#endregion Constructors
 
-        // return the rightmost x-value of 'rect'
-        public float MaxX
-        {
-            get { return Origin.X + Size.Width; }
-        }
 
-        // return the midpoint x-value of 'rect'
-        public float MidX
-        {
-            get { return Origin.X + Size.Width / 2.0f; }
-        }
+		#region Equality
 
-        // return the leftmost x-value of 'rect'
-        public float MinX
-        {
-            get { return Origin.X; }
-        }
+		public static bool Equal(ref CCRect rect1, ref CCRect rect2)
+		{
+			return rect1.Origin.Equals(rect2.Origin) && rect1.Size.Equals(rect2.Size);
+		}
 
-        // Return the topmost y-value of 'rect'
-        public float MaxY
-        {
-            get { return Origin.Y + Size.Height; }
-        }
+		public override bool Equals(object obj)
+		{
+			return (Equals((CCRect) obj));
+		}
 
-        // Return the midpoint y-value of 'rect'
-        public float MidY
-        {
-            get { return Origin.Y + Size.Height / 2.0f; }
-        }
+		public bool Equals(CCRect rect)
+		{
+			return Origin.Equals(rect.Origin) && Size.Equals(rect.Size);
+		}
 
-        // Return the bottommost y-value of 'rect'
-        public float MinY
-        {
-            get { return Origin.Y; }
-        }
+		public override int GetHashCode()
+		{
+			return Origin.GetHashCode() + Size.GetHashCode();
+		}
 
-        public CCPoint Center
-        {
-            get
-            {
-                CCPoint pt;
-                pt.X = MidX;
-                pt.Y = MidY;
-                return pt;
-            }
-        }
+		#endregion Equality
 
-        public CCPoint UpperRight
-        {
-            get
-            {
-                CCPoint pt;
-                pt.X = MaxX;
-                pt.Y = MaxY;
-                return (pt);
-            }
-        }
-
-        public CCPoint LowerLeft
-        {
-            get
-            {
-                CCPoint pt;
-                pt.X = MinX;
-                pt.Y = MinY;
-                return (pt);
-            }
-        }
 
         public CCRect Intersection(CCRect rect)
         {
@@ -951,10 +962,6 @@ namespace CocosSharp
             return x >= MinX && x <= MaxX && y >= MinY && y <= MaxY;
         }
 
-        public static bool Equal(ref CCRect rect1, ref CCRect rect2)
-        {
-            return rect1.Origin.Equals(rect2.Origin) && rect1.Size.Equals(rect2.Size);
-        }
 
         public static bool ContainsPoint(ref CCRect rect, ref CCPoint point)
         {
@@ -996,20 +1003,6 @@ namespace CocosSharp
             return (!p1.Equals(p2));
         }
 
-        public override int GetHashCode()
-        {
-            return Origin.GetHashCode() + Size.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return (Equals((CCRect) obj));
-        }
-
-        public bool Equals(CCRect rect)
-        {
-            return Origin.Equals(rect.Origin) && Size.Equals(rect.Size);
-        }
 
         public override string ToString()
         {
@@ -1026,25 +1019,16 @@ namespace CocosSharp
 	[DataContract]
 	public struct CCVector2 : IEquatable<CCVector2>
 	{
-		#region Private Fields
-
-		private static CCVector2 zeroVector = new CCVector2(0f, 0f);
-		private static CCVector2 unitVector = new CCVector2(1f, 1f);
-		private static CCVector2 unitXVector = new CCVector2(1f, 0f);
-		private static CCVector2 unitYVector = new CCVector2(0f, 1f);
-
-		#endregion Private Fields
-
-
-		#region Public Fields
+		static CCVector2 zeroVector = new CCVector2(0f, 0f);
+		static CCVector2 unitVector = new CCVector2(1f, 1f);
+		static CCVector2 unitXVector = new CCVector2(1f, 0f);
+		static CCVector2 unitYVector = new CCVector2(0f, 1f);
 
 		[DataMember]
 		public float X;
 
 		[DataMember]
 		public float Y;
-
-		#endregion Public Fields
 
 
 		#region Properties

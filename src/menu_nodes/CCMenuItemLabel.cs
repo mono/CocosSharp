@@ -253,6 +253,11 @@ namespace CocosSharp
             LabelTTF = labelTTF;
         }
 
+		public CCMenuItemLabelTTF(Action<object> target = null) : base(target)
+		{
+
+		}
+
         #endregion Constructors
     }
 

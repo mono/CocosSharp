@@ -50,9 +50,10 @@ namespace tests
 			EventDispatcher.AddEventListener(touchListener, this);
 
             // Save Image menu
-            uint fontSize = 16;
-            CCMenuItem item1 = new CCMenuItemFont("Save Image", fontSize, saveImage);
-            CCMenuItem item2 = new CCMenuItemFont("Clear", fontSize, clearImage);
+			CCMenuItemFont.FontSize = 16;
+			CCMenuItemFont.FontName = "arial";
+            CCMenuItem item1 = new CCMenuItemFont("Save Image", saveImage);
+            CCMenuItem item2 = new CCMenuItemFont("Clear", clearImage);
             var menu = new CCMenu(item1, item2);
             AddChild(menu);
             menu.AlignItemsVertically();

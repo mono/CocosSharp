@@ -80,7 +80,7 @@ namespace CocosSharp
                 if (flipX != value)
                 {
                     flipX = value;
-                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
+					SetTextureRect(textureRect, IsTextureRectRotated, ContentSize);
                 }
             }
         }
@@ -93,7 +93,7 @@ namespace CocosSharp
                 if (flipY != value)
                 {
                     flipY = value;
-                    SetTextureRect(textureRect, IsTextureRectRotated, contentSize);
+					SetTextureRect(textureRect, IsTextureRectRotated, ContentSize);
                 }
             }
         }
@@ -263,7 +263,7 @@ namespace CocosSharp
                 return new CCSpriteFrame(
                     texture,
                     textureRect.PointsToPixels(),
-                    contentSize.PointsToPixels(),
+					ContentSize.PointsToPixels(),
                     IsTextureRectRotated,
                     unflippedOffsetPositionFromCenter.PointsToPixels()
                     );
@@ -585,8 +585,8 @@ namespace CocosSharp
             }
 
 			OffsetPosition = new CCPoint (
-				relativeOffset.X + (contentSize.Width - textureRect.Size.Width) / 2,
-				relativeOffset.Y + (contentSize.Height - textureRect.Size.Height) / 2);
+				relativeOffset.X + (ContentSize.Width - textureRect.Size.Width) / 2,
+				relativeOffset.Y + (ContentSize.Height - textureRect.Size.Height) / 2);
 
             // rendering using batch node
             if (batchNode != null)
@@ -854,7 +854,7 @@ namespace CocosSharp
             base.RemoveChild(child, cleanup);
         }
 
-        public override void RemoveAllChildrenWithCleanup(bool cleanup)
+        public override void RemoveAllChildren(bool cleanup)
         {
             if (batchNode != null)
             {
@@ -866,7 +866,7 @@ namespace CocosSharp
                 }
             }
 
-            base.RemoveAllChildrenWithCleanup(cleanup);
+			base.RemoveAllChildren(cleanup);
 
             hasChildren = false;
         }

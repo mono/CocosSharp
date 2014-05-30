@@ -20,7 +20,7 @@ namespace CocosSharp
             }
             else if (propertyName == PROPERTY_ACCELEROMETER_ENABLED)
             {
-                ((CCLayer) node).AccelerometerEnabled = pCheck;
+				//((CCLayer) node).AccelerometerEnabled = pCheck;
             }
             else if (propertyName == PROPERTY_MOUSE_ENABLED)
             {

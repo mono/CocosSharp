@@ -29,7 +29,7 @@ namespace CocosSharp
                     selectedIndex = value;
                     if (previouslySelectedItem != null)
                     {
-                        previouslySelectedItem.RemoveFromParentAndCleanup(false);
+                        previouslySelectedItem.RemoveFromParent(false);
                     }
 
                     CCMenuItem selectedItem = SubItems[selectedIndex];

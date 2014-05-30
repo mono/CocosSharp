@@ -68,63 +68,418 @@ namespace CocosSharp
 
 	public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
     {
-        /// <summary>
-        /// Use this to determine if a tag has been set on the node.
-        /// </summary>
-        public const int TagInvalid = -1;
+		public const int TagInvalid = -1;        					// Use this to determine if a tag has been set on the node.
+		static uint globalOrderOfArrival = 1;
 
-		private static uint globalOrderOfArrival = 1;
-		private bool ignoreAnchorPointForPosition;
+		public CCAffineTransform AffineTransform;
 
-        // transform
-        public CCAffineTransform AffineTransform;
-        protected bool InverseDirty;
-        protected bool Running;
-		protected bool IsTransformDirty { get; set; }
-        protected bool visible;
-		protected bool IsReorderChildDirty { get; set; }
-        protected float rotationX;
-        protected float rotationY;
-        protected float scaleX;
-        protected float scaleY;
-		private bool isWorldTransformDirty;
-		protected CCAffineTransform nodeToWorldTransform;
+		bool isWorldTransformDirty;
+		bool isAdditionalTransformDirty;
+		bool ignoreAnchorPointForPosition;
+		bool isCleaned = false;
+		bool keypadEnabled;         								// input variables
+		bool inverseDirty;
 
-        //protected int m_nScriptHandler;
+		int tag;
+		int zOrder;
 
-		private float skewX;
-		private float skewY;
+		float rotationX;
+		float rotationY;
+		float scaleX;
+		float scaleY;
+		float skewX;
+		float skewY;
+
+		CCPoint anchorPoint;
+		CCPoint anchorPointInPoints;
+		CCPoint position;
+
+		CCSize contentSize;
+
+		CCAffineTransform additionalTransform;
+		CCAffineTransform inverse;
+		CCAffineTransform nodeToWorldTransform;
+
+		CCCamera camera;
+		CCScheduler scheduler;
+		CCActionManager actionManager;
+
+		Dictionary<int, List<CCNode>> childrenByTag;
+
+
+		#region Properties
+
+		// Auto-implemented properties
+
+		public bool IsRunning { get; protected set; }
+		public virtual bool HasFocus { get; set; }
+		public virtual bool Visible { get; set; }
+		public virtual bool IsSerializable { get; protected set; } 		// If this is true, the screen will be recorded into the director's state
+		public int LocalZOrder { get; set; }
+		public float GlobalZOrder { get; set; }
 		public virtual float VertexZ { get; set; }
-		internal protected uint OrderOfArrival { get; internal set; }
-		private int tag;
-		private int zOrder;
-		public CCEventDispatcher EventDispatcher { get; set; }
-        protected CCActionManager actionManager;
-        protected CCCamera camera;
-		public CCRawList<CCNode> Children { get; protected set; }
-        protected Dictionary<int, List<CCNode>> childrenByTag;
-		public CCGridBase Grid { get; set; }
-		public CCNode Parent { get; set; }
-        protected CCScheduler scheduler;
-
 		public object UserData { get; set; }
 		public object UserObject { get; set; }
-
-		private CCPoint anchorPoint;
-		private CCPoint anchorPointInPoints;
-		internal CCSize contentSize;
-		private CCAffineTransform inverse;
-		internal CCPoint position;
-
-		private bool isAdditionalTransformDirty;
-		private CCAffineTransform additionalTransform;
-
 		public string Name { get; set; }
+		public CCEventDispatcher EventDispatcher { get; set; }
+		public CCRawList<CCNode> Children { get; protected set; }
+		public CCGridBase Grid { get; set; }
+		public CCNode Parent { get; set; }
 
-		private bool isCleaned = false;
+		internal protected uint OrderOfArrival { get; internal set; }
 
-        // input variables
-		private bool keypadEnabled;
+		protected bool IsTransformDirty { get; set; }
+		protected bool IsReorderChildDirty { get; set; }
+
+		// Not auto-implemented properties
+
+		public virtual bool CanReceiveFocus
+		{
+			get { return Visible; }
+		}
+
+		public virtual bool IgnoreAnchorPointForPosition
+		{
+			get { return ignoreAnchorPointForPosition; }
+			set
+			{
+				if (value != ignoreAnchorPointForPosition)
+				{
+					ignoreAnchorPointForPosition = value;
+					SetTransformIsDirty();
+				}
+			}
+		}
+
+		public virtual bool KeypadEnabled
+		{
+			get { return keypadEnabled; }
+			set
+			{
+				if (value != keypadEnabled)
+				{
+					keypadEnabled = value;
+
+					if (IsRunning)
+					{
+						if (value)
+						{
+							CCDirector.SharedDirector.KeypadDispatcher.AddDelegate(this);
+						}
+						else
+						{
+							CCDirector.SharedDirector.KeypadDispatcher.RemoveDelegate(this);
+						}
+					}
+				}
+			}
+		}
+
+		public int Tag
+		{
+			get { return tag; }
+			set
+			{
+				if (tag != value)
+				{
+					if (Parent != null)
+					{
+						Parent.ChangedChildTag(this, tag, value);
+					}
+					tag = value;
+				}
+			}
+		}
+
+		public int ChildrenCount
+		{
+			get { return Children == null ? 0 : Children.Count; }
+		}
+
+		public int ZOrder
+		{
+			get { return zOrder; }
+			set
+			{
+				zOrder = value;
+				if (Parent != null)
+				{
+					Parent.ReorderChild(this, value);
+				}
+			}
+		}
+
+		public virtual float SkewX
+		{
+			get { return skewX; }
+			set
+			{
+				skewX = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public virtual float SkewY
+		{
+			get { return skewY; }
+			set
+			{
+				skewY = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		// 2D rotation of the node relative to the 0,1 vector in a clock-wise orientation.
+		public virtual float Rotation
+		{
+			set
+			{
+				rotationX = rotationY = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public virtual float RotationX
+		{
+			get { return rotationX; }
+			set
+			{
+				rotationX = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public virtual float RotationY
+		{
+			get { return rotationY; }
+			set
+			{
+				rotationY = value;
+				SetTransformIsDirty();
+			}
+		}
+			
+		// The general scale that applies to both X and Y directions.
+		public virtual float Scale
+		{
+			set
+			{
+				scaleX = scaleY = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public virtual float ScaleX
+		{
+			get { return scaleX; }
+			set
+			{
+				scaleX = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public virtual float ScaleY
+		{
+			get { return scaleY; }
+			set
+			{
+				scaleY = value;
+				SetTransformIsDirty();
+			}
+		}
+
+		public float PositionX
+		{
+			get { return position.X; }
+			set { SetPosition(value, position.Y); }
+		}
+
+		public float PositionY
+		{
+			get { return position.Y; }
+			set { SetPosition(position.X, value); }
+		}
+
+		// Sets and gets the position of the node. For Menus, this is the center of the menu. For layers,
+		// this is the lower left corner of the layer.
+		public virtual CCPoint Position
+		{
+			get { return position; }
+			set
+			{
+				position = value;
+				SetTransformIsDirty();
+			}
+		}
+			
+		// Returns the anchor point in pixels, AnchorPoint * ContentSize. This does not use
+		// the scale factor of the node.
+		public virtual CCPoint AnchorPointInPoints
+		{
+			get { return anchorPointInPoints; }
+		}
+			
+		// Returns the Anchor Point of the node as a value [0,1], where 1 is 100% of the dimension and 0 is 0%.
+		public virtual CCPoint AnchorPoint
+		{
+			get { return anchorPoint; }
+			set
+			{
+				if (!value.Equals(anchorPoint))
+				{
+					anchorPoint = value;
+					anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X,
+						contentSize.Height * anchorPoint.Y);
+					SetTransformIsDirty();
+				}
+			}
+		}
+			
+		// Returns the content size with the scale applied.
+		public virtual CCSize ContentSizeInPixels
+		{
+			get { return new CCSize(ContentSize.Width * ScaleX, ContentSize.Height * ScaleY); }
+		}
+
+		public virtual CCSize ContentSize
+		{
+			get { return contentSize; }
+			set
+			{
+				if (!CCSize.Equal(ref value, ref contentSize))
+				{
+					contentSize = value;
+					anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X, contentSize.Height * anchorPoint.Y);
+					SetTransformIsDirty();
+				}
+			}
+		}
+
+		// Returns the bounding box of this node in world coordinates
+		public CCRect WorldBoundingBox
+		{
+			get
+			{
+				var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
+				return CCAffineTransform.Transform(rect, NodeToWorldTransform);
+			}
+		}
+
+		// Returns the bounding box of this node in the coordinate system of its parent.
+		public CCRect BoundingBox
+		{
+			get
+			{
+				var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
+				return CCAffineTransform.Transform(rect, NodeToParentTransform());
+			}
+		}
+			
+		// Returns the bounding box of this node, in the coordinate system of its parent,
+		// with the scale, content scale, and other display transforms applied to return
+		// the per-pixel bounding box.
+		public CCRect BoundingBoxInPixels
+		{
+			get
+			{
+				var rect = new CCRect(0, 0, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
+				return CCAffineTransform.Transform(rect, NodeToParentTransform());
+			}
+		}
+
+		public CCAffineTransform AdditionalTransform
+		{
+			get { return additionalTransform; }
+			set
+			{
+				additionalTransform = value;
+				IsTransformDirty = true;
+				isAdditionalTransformDirty = true;
+			}
+		}
+
+		public CCAffineTransform ParentToNodeTransform
+		{
+			get 
+			{
+				if (inverseDirty) {
+					inverse = CCAffineTransform.Invert (NodeToParentTransform ());
+					inverseDirty = false;
+				}
+				return inverse;
+			}
+		}
+
+		public CCAffineTransform NodeToWorldTransform
+		{
+			get 
+			{
+				CCAffineTransform t = NodeToParentTransform ();
+
+				// CCLog.Log("{0}.NodeToWorld: woldIsDirty={1}, transformIsDirty={2}", GetType().Name, m_bWorldTransformIsDirty, m_bTransformDirty);
+
+				if (!isWorldTransformDirty) {
+					return (nodeToWorldTransform);
+				}
+				if (Parent != null) {
+					CCAffineTransform n2p = Parent.NodeToWorldTransform;
+					t.Concat (ref n2p);
+				}
+				isWorldTransformDirty = false;
+				nodeToWorldTransform = t;
+				return t;
+			}
+		}
+
+		public CCAffineTransform WorldToNodeTransform
+		{
+			get 
+			{
+				return CCAffineTransform.Invert (NodeToWorldTransform);
+			}
+		}
+
+		public CCCamera Camera
+		{
+			get { return camera ?? (camera = new CCCamera()); }
+		}
+
+		public CCScheduler Scheduler
+		{
+			get { return scheduler; }
+			set
+			{
+				if (value != scheduler)
+				{
+					UnscheduleAll();
+					scheduler = value;
+				}
+			}
+		}
+
+		public CCActionManager ActionManager
+		{
+			get { return actionManager; }
+			set
+			{
+				if (value != actionManager)
+				{
+					StopAllActions();
+					actionManager = value;
+				}
+			}
+		}
+
+		public CCNode this[int tag]
+		{
+			get { return GetChildByTag(tag); }
+		}
+
+		#endregion Properties
+
+
+		#region Constructors
 
         public CCNode()
         {
@@ -135,11 +490,12 @@ namespace CocosSharp
 
 			nodeToWorldTransform = CCAffineTransform.Identity;
             AffineTransform = CCAffineTransform.Identity;
-            InverseDirty = true;
+            inverseDirty = true;
 			isWorldTransformDirty = true;
 
-
 			HasFocus = false;
+
+			IsSerializable = true;
 
             // set default scheduler and actionManager
             CCDirector director = CCDirector.SharedDirector;
@@ -149,25 +505,105 @@ namespace CocosSharp
 
         }
 
-        #region Game State Management
-        /// <summary>
-        /// Gets whether or not this scene is serializable. If this is true,
-        /// the screen will be recorded into the director's state and
-        /// its Serialize and Deserialize methods will be called as appropriate.
-        /// If this is false, the screen will be ignored during serialization.
-        /// By default, all screens are assumed to be serializable.
-        /// </summary>
-        public virtual bool IsSerializable
-        {
-            get { return m_isSerializable; }
-            protected set { m_isSerializable = value; }
-        }
+		#endregion Constructors
 
-        private bool m_isSerializable = true;
 
-        /// <summary>
-        /// Tells the screen to serialize its state into the given stream.
-        /// </summary>
+		#region Cleaning up
+
+		~CCNode()
+		{
+			this.Dispose(false);
+		}
+
+		public void Dispose()
+		{
+			this.Dispose(true);
+
+			GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool disposing)
+		{
+			if(disposing) 
+			{
+				// Dispose of managed resources
+			}
+
+			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
+			this.Cleanup();
+
+			if (EventDispatcher != null)
+				EventDispatcher.RemoveEventListeners (this);
+
+			// Clean up the UserData and UserObject as these may hold references to other CCNodes.
+			UserData = null;
+			UserObject = null;
+
+			if (Children != null && Children.Count > 0)
+			{
+				CCNode[] elements = Children.Elements;
+				foreach(CCNode child in Children.Elements)
+				{
+					if (child != null) 
+					{
+						if (!child.isCleaned) {
+							child.OnExit ();
+						}
+						child.Parent = null;
+					}
+				}
+			}
+
+		}
+
+		protected virtual void ResetCleanState()
+		{
+			isCleaned = false;
+			if (Children != null && Children.Count > 0)
+			{
+				CCNode[] elements = Children.Elements;
+				for (int i = 0, count = Children.Count; i < count; i++)
+				{
+					elements[i].ResetCleanState();
+				}
+			}
+		}
+
+		public virtual void Cleanup()
+		{
+			if (isCleaned == true)
+			{
+				return;
+			}
+
+			//eventDispatcher.RemoveEventListeners (this);
+
+			// actions
+			StopAllActions();
+
+			// timers
+			UnscheduleAll();
+
+			if (EventDispatcher != null)
+				EventDispatcher.RemoveEventListeners (this);
+
+			if (Children != null && Children.Count > 0)
+			{
+				CCNode[] elements = Children.Elements;
+				for (int i = 0, count = Children.Count; i < count; i++)
+				{
+					elements[i].Cleanup();
+				}
+			}
+
+			isCleaned = true;
+		}
+
+		#endregion Cleaning up
+
+
+		#region Serialization
+
         public virtual void Serialize(Stream stream) 
         {
             StreamWriter sw = new StreamWriter(stream);
@@ -180,8 +616,8 @@ namespace CocosSharp
             CCSerialization.SerializeData(skewY, sw);
             CCSerialization.SerializeData(VertexZ, sw);
             CCSerialization.SerializeData(ignoreAnchorPointForPosition, sw);
-            CCSerialization.SerializeData(InverseDirty, sw);
-            CCSerialization.SerializeData(Running, sw);
+            CCSerialization.SerializeData(inverseDirty, sw);
+            CCSerialization.SerializeData(IsRunning, sw);
             CCSerialization.SerializeData(IsTransformDirty, sw);
             CCSerialization.SerializeData(IsReorderChildDirty, sw);
             CCSerialization.SerializeData(OrderOfArrival, sw);
@@ -207,10 +643,7 @@ namespace CocosSharp
                 CCSerialization.SerializeData(0, sw); // No children
             }
         }
-
-        /// <summary>
-        /// Tells the screen to deserialize its state from the given stream.
-        /// </summary>
+			
         public virtual void Deserialize(Stream stream) 
         {
             StreamReader sr = new StreamReader(stream);
@@ -223,8 +656,8 @@ namespace CocosSharp
             skewY = CCSerialization.DeSerializeFloat(sr);
             VertexZ = CCSerialization.DeSerializeFloat(sr);
             ignoreAnchorPointForPosition = CCSerialization.DeSerializeBool(sr);
-            InverseDirty = CCSerialization.DeSerializeBool(sr);
-            Running = CCSerialization.DeSerializeBool(sr);
+            inverseDirty = CCSerialization.DeSerializeBool(sr);
+            IsRunning = CCSerialization.DeSerializeBool(sr);
             IsTransformDirty = CCSerialization.DeSerializeBool(sr);
             IsReorderChildDirty = CCSerialization.DeSerializeBool(sr);
             OrderOfArrival = (uint)CCSerialization.DeSerializeInt(sr);
@@ -246,264 +679,13 @@ namespace CocosSharp
                 CCNode scene = Activator.CreateInstance(screenType) as CCNode;
                 AddChild(scene);
                 scene.Deserialize(stream);
-        }
-        }
-
-
-        #endregion
-
-        #region CCIFocusable
-		public virtual bool HasFocus { get; set; }
-
-        public virtual bool CanReceiveFocus
-        {
-            get
-            {
-                return (Visible);
-            }
-        }
-        #endregion
-
-        public int Tag
-        {
-            get { return tag; }
-            set
-            {
-                if (tag != value)
-                {
-                    if (Parent != null)
-                    {
-                        Parent.ChangedChildTag(this, tag, value);
-                    }
-                    tag = value;
-                }
-            }
+        	}
         }
 
-        public virtual float SkewX
-        {
-            get { return skewX; }
-            set
-            {
-                skewX = value;
-                SetTransformIsDirty();
-            }
-        }
+		#endregion Serialization
 
-        public virtual float SkewY
-        {
-            get { return skewY; }
-            set
-            {
-                skewY = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        public int ZOrder
-        {
-            get { return zOrder; }
-            set
-            {
-                zOrder = value;
-                if (Parent != null)
-                {
-                    Parent.ReorderChild(this, value);
-                }
-            }
-        }
-
-        /// <summary>
-        /// 2D rotation of the node relative to the 0,1 vector in a clock-wise orientation.
-        /// </summary>
-        public virtual float Rotation
-        {
-            set
-            {
-                rotationX = rotationY = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        public virtual float RotationX
-        {
-            get { return rotationX; }
-            set
-            {
-                rotationX = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        public virtual float RotationY
-        {
-            get { return rotationY; }
-            set
-            {
-                rotationY = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        /// <summary>
-        /// The general scale that applies to both X and Y directions.
-        /// </summary>
-        public virtual float Scale
-        {
-            set
-            {
-                scaleX = scaleY = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        /// <summary>
-        /// Scale of the node in the X direction (left to right)
-        /// </summary>
-        public virtual float ScaleX
-        {
-            get { return scaleX; }
-            set
-            {
-                scaleX = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        /// <summary>
-        /// Scale of the node in the Y direction (top to bottom)
-        /// </summary>
-        public virtual float ScaleY
-        {
-            get { return scaleY; }
-            set
-            {
-                scaleY = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        /// <summary>
-        /// Sets and gets the position of the node. For Menus, this is the center of the menu. For layers,
-        /// this is the lower left corner of the layer.
-        /// </summary>
-        public virtual CCPoint Position
-        {
-            get { return position; }
-            set
-            {
-                position = value;
-                SetTransformIsDirty();
-            }
-        }
-
-        public float PositionX
-        {
-            get { return position.X; }
-            set { SetPosition(value, position.Y); }
-        }
-
-        public float PositionY
-        {
-            get { return position.Y; }
-            set { SetPosition(position.X, value); }
-        }
-
-        public int ChildrenCount
-        {
-			get { return Children == null ? 0 : Children.Count; }
-        }
-
-        public CCCamera Camera
-        {
-            get { return camera ?? (camera = new CCCamera()); }
-        }
-
-        public virtual bool Visible
-        {
-            get { return visible; }
-            set { visible = value; }
-        }
-
-        /// <summary>
-        /// Returns the anchor point in pixels, AnchorPoint * ContentSize. This does not use
-        /// the scale factor of the node.
-        /// </summary>
-        public virtual CCPoint AnchorPointInPoints
-        {
-            get { return anchorPointInPoints; }
-        }
-
-        /// <summary>
-        /// returns the Anchor Point of the node as a value [0,1], where 1 is 100% of the dimension and 0 is 0%.
-        /// </summary>
-        public virtual CCPoint AnchorPoint
-        {
-            get { return anchorPoint; }
-            set
-            {
-                if (!value.Equals(anchorPoint))
-                {
-                    anchorPoint = value;
-                    anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X,
-                                                                  contentSize.Height * anchorPoint.Y);
-                    SetTransformIsDirty();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns the content size with the scale applied.
-        /// </summary>
-        public virtual CCSize ContentSizeInPixels
-        {
-            get { 
-                CCSize size = new CCSize(ContentSize.Width * ScaleX, ContentSize.Height * ScaleY);
-                return (size);
-            }
-        }
-
-        public virtual CCSize ContentSize
-        {
-            get { return contentSize; }
-            set
-            {
-                if (!CCSize.Equal(ref value, ref contentSize))
-                {
-                    contentSize = value;
-                    anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X,
-                                                                  contentSize.Height * anchorPoint.Y);
-                    SetTransformIsDirty();
-                }
-            }
-        }
-
-        public bool IsRunning
-        {
-            // read only
-            get { return Running; }
-        }
-
-        public virtual bool IgnoreAnchorPointForPosition
-        {
-            get { return ignoreAnchorPointForPosition; }
-            set
-            {
-                if (value != ignoreAnchorPointForPosition)
-                {
-                    ignoreAnchorPointForPosition = value;
-                    SetTransformIsDirty();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns the given point, which is assumed to be in this node's coordinate
-        /// system, as a point in the given target's coordinate system.
-        /// </summary>
-        /// <param name="ptInNode"></param>
-        /// <param name="target"></param>
-        /// <returns></returns>
+        // Returns the given point, which is assumed to be in this node's coordinate
+        // system, as a point in the given target's coordinate system.
         public CCPoint ConvertPointTo(ref CCPoint ptInNode, CCNode target)
         {
             CCPoint pt = NodeToWorldTransform.Transform(ptInNode);
@@ -511,97 +693,23 @@ namespace CocosSharp
             return (pt);
         }
 
-        /// <summary>
-        /// Returns this node's bounding box in the coordinate system of the given target.
-        /// </summary>
-        /// <param name="target"></param>
-        /// <returns></returns>
+        // Returns this node's bounding box in the coordinate system of the given target.
         public CCRect GetBoundingBox(CCNode target)
         {
             CCRect rect = WorldBoundingBox;
             rect = target.WorldToNodeTransform.Transform(rect);
             return (rect);
         }
-
-        /// <summary>
-        /// Returns the bounding box of this node in world coordinates
-        /// </summary>
-        public CCRect WorldBoundingBox
-        {
-            get
-            {
-                var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
-                return CCAffineTransform.Transform(rect, NodeToWorldTransform);
-            }
-        }
-
-        /// <summary>
-        /// Returns the bounding box of this node in the coordinate system of its parent.
-        /// </summary>
-        public CCRect BoundingBox
-        {
-            get
-            {
-                var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
-                return CCAffineTransform.Transform(rect, NodeToParentTransform());
-            }
-        }
-
-        /// <summary>
-        /// Returns the bounding box of this node, in the coordinate system of its parent,
-        /// with the scale, content scale, and other display transforms applied to return
-        /// the per-pixel bounding box.
-        /// </summary>
-        public CCRect BoundingBoxInPixels
-        {
-            get
-            {
-                var rect = new CCRect(0, 0, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
-                return CCAffineTransform.Transform(rect, NodeToParentTransform());
-            }
-        }
-
-        /// <summary>
-        /// Sets all of the transform indictators to dirty so that the visual transforms
-        /// are recomputed.
-        /// </summary>
+			
+        // Sets all of the transform indictators to dirty so that the visual transforms
+        // are recomputed.
         public virtual void ForceTransformRefresh()
         {
             IsTransformDirty = true;
             isWorldTransformDirty = true;
             isAdditionalTransformDirty = true;
-            InverseDirty = true;
+            inverseDirty = true;
         }
-
-        public CCAffineTransform AdditionalTransform
-        {
-            get { return additionalTransform; }
-            set
-            {
-                additionalTransform = value;
-                IsTransformDirty = true;
-                isAdditionalTransformDirty = true;
-            }
-        }
-
-        #region SelectorProtocol Members
-
-        public virtual void Update(float dt)
-        {
-            /*
-            if (m_nUpdateScriptHandler)
-            {
-                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nUpdateScriptHandler, fDelta, this);
-            }
-    
-            if (m_pComponentContainer && !m_pComponentContainer->isEmpty())
-            {
-                m_pComponentContainer->visit(fDelta);
-            }
-            */
-        }
-
-        #endregion
 
 		public void GetPosition(out float x, out float y)
 		{
@@ -616,129 +724,25 @@ namespace CocosSharp
 			SetTransformIsDirty();
 		}
 
-		public int LocalZOrder { get; set; }
-		public float GlobalZOrder { get; set; }
-
-		#region Cleaning up
-
-        ~CCNode()
-        {
-            //unregisterScriptHandler();
-			this.Dispose(false);
-        }
-
-		public void Dispose()
+		public CCNode GetChildByTag(int tag)
 		{
-			this.Dispose(true);
+			Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
 
-			GC.SuppressFinalize(this);
-		}
-
-		protected virtual void Dispose(bool disposing)
-		{
-			if (disposing) 
+			if (childrenByTag != null && childrenByTag.Count > 0)
 			{
+				Debug.Assert(Children != null && Children.Count > 0);
 
-			}
-            // Dispose of managed resources
-
-			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
-			this.Cleanup();
-
-            if (EventDispatcher != null)
-    			EventDispatcher.RemoveEventListeners (this);
-
-			// Clean up the UserData and UserObject as these may hold references to other CCNodes.
-			UserData = null;
-			UserObject = null;
-
-			if (Children != null && Children.Count > 0)
-			{
-				CCNode[] elements = Children.Elements;
-				for (int i = 0, count = Children.Count; i < count; i++)
+				List<CCNode> list;
+				if (childrenByTag.TryGetValue(tag, out list))
 				{
-					if (elements [i] != null) 
+					if (list.Count > 0)
 					{
-						if (!elements[i].isCleaned)
-							elements [i].OnExit ();
-						elements [i].Parent = null;
+						return list[0];
 					}
 				}
 			}
-
+			return null;
 		}
-
-        protected virtual void ResetCleanState()
-        {
-            isCleaned = false;
-            if (Children != null && Children.Count > 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    elements[i].ResetCleanState();
-                }
-            }
-        }
-
-        public virtual void Cleanup()
-        {
-            if (isCleaned == true)
-            {
-				return;
-            }
-
-			//eventDispatcher.RemoveEventListeners (this);
-
-            // actions
-            StopAllActions();
-
-            // timers
-            UnscheduleAll();
-
-			if (EventDispatcher != null)
-				EventDispatcher.RemoveEventListeners (this);
-
-            if (Children != null && Children.Count > 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    elements[i].Cleanup();
-                }
-            }
-
-            isCleaned = true;
-        }
-
-		#endregion Cleaning up
-
-		public CCNode this [int tag]
-		{
-			get {
-				return GetChildByTag (tag);
-			}
-		}
-
-        public CCNode GetChildByTag(int tag)
-        {
-            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-
-            if (childrenByTag != null && childrenByTag.Count > 0)
-            {
-                Debug.Assert(Children != null && Children.Count > 0);
-
-                List<CCNode> list;
-                if (childrenByTag.TryGetValue(tag, out list))
-                {
-                    if (list.Count > 0)
-                    {
-                        return list[0];
-                    }
-                }
-            }
-            return null;
-        }
 
         #region AddChild
 
@@ -775,13 +779,14 @@ namespace CocosSharp
                 child.ResetCleanState();
             }
 
-            if (Running)
+            if (IsRunning)
             {
                 child.OnEnter();
                 child.OnEnterTransitionDidFinish();
             }
         }
-        private void InsertChild(CCNode child, int z, int tag)
+
+        void InsertChild(CCNode child, int z, int tag)
         {
             IsReorderChildDirty = true;
             Children.Add(child);
@@ -791,16 +796,13 @@ namespace CocosSharp
             child.zOrder = z;
 			child.LocalZOrder = z;
         }
-        #endregion
+
+		#endregion AddChild
+
 
         #region RemoveChild
 
-        public void RemoveFromParent()
-        {
-            RemoveFromParentAndCleanup(true);
-        }
-
-        public void RemoveFromParentAndCleanup(bool cleanup)
+		public void RemoveFromParent(bool cleanup=true)
         {
             if (Parent != null)
             {
@@ -808,12 +810,7 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveChild(CCNode child)
-        {
-            RemoveChild(child, true);
-        }
-
-        public virtual void RemoveChild(CCNode child, bool cleanup)
+		public virtual void RemoveChild(CCNode child, bool cleanup=true)
         {
             // explicit nil handling
             if (Children == null || child == null)
@@ -829,16 +826,11 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveChildByTag(int tag)
-        {
-            RemoveChildByTag(tag, true);
-        }
-
-        public void RemoveChildByTag(int tag, bool cleanup)
+		public void RemoveChildByTag(int tag, bool cleanup=true)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
 
-            CCNode child = GetChildByTag(tag);
+			CCNode child = this[tag];
 
             if (child == null)
             {
@@ -850,17 +842,12 @@ namespace CocosSharp
             }
         }
 
-        public virtual void RemoveAllChildrenByTag(int tag)
-        {
-            RemoveAllChildrenByTag(tag, true);
-        }
-
-        public virtual void RemoveAllChildrenByTag(int tag, bool cleanup)
+		public virtual void RemoveAllChildrenByTag(int tag, bool cleanup=true)
         {
             Debug.Assert(tag != (int)CCNodeTag.Invalid, "Invalid tag");
             while (true)
             {
-                CCNode child = GetChildByTag(tag);
+				CCNode child = this[tag];
                 if (child == null)
                 {
                     break;
@@ -869,12 +856,7 @@ namespace CocosSharp
             }
         }
 
-        public virtual void RemoveAllChildren()
-        {
-            RemoveAllChildrenWithCleanup(true);
-        }
-
-        public virtual void RemoveAllChildrenWithCleanup(bool cleanup)
+		public virtual void RemoveAllChildren(bool cleanup=true)
         {
             // not using detachChild improves speed here
             if (Children != null && Children.Count > 0)
@@ -892,7 +874,7 @@ namespace CocosSharp
                     // IMPORTANT:
                     //  -1st do onExit
                     //  -2nd cleanup
-                    if (Running)
+                    if (IsRunning)
                     {
                         node.OnExitTransitionDidStart();
                         node.OnExit();
@@ -911,12 +893,12 @@ namespace CocosSharp
             }
         }
 
-        private void DetachChild(CCNode child, bool doCleanup)
+        void DetachChild(CCNode child, bool doCleanup)
         {
             // IMPORTANT:
             //  -1st do onExit
             //  -2nd cleanup
-            if (Running)
+            if (IsRunning)
             {
                 child.OnExitTransitionDidStart();
                 child.OnExit();
@@ -934,46 +916,9 @@ namespace CocosSharp
 
             Children.Remove(child);
         }
-        #endregion
 
-        private void ChangedChildTag(CCNode child, int oldTag, int newTag)
-        {
-            List<CCNode> list;
+		#endregion RemoveChild
 
-            if (childrenByTag != null && oldTag != TagInvalid)
-            {
-                if (childrenByTag.TryGetValue(oldTag, out list))
-                {
-                    list.Remove(child);
-                }
-            }
-
-            if (newTag != TagInvalid)
-            {
-                if (childrenByTag == null)
-                {
-                    childrenByTag = new Dictionary<int, List<CCNode>>();
-                }
-
-                if (!childrenByTag.TryGetValue(newTag, out list))
-                {
-                    list = new List<CCNode>();
-                    childrenByTag.Add(newTag, list);
-                }
-
-                list.Add(child);
-            }
-        }
-
-        public virtual void ReorderChild(CCNode child, int zOrder)
-        {
-            Debug.Assert(child != null, "Child must be non-null");
-
-            IsReorderChildDirty = true;
-            child.OrderOfArrival = globalOrderOfArrival++;
-            child.zOrder = zOrder;
-			child.LocalZOrder = zOrder;
-        }
         
         #region Child Sorting
 
@@ -1006,6 +951,7 @@ namespace CocosSharp
 
 			return 1;
 		}
+
         public virtual void SortAllChildren()
         {
             if (IsReorderChildDirty)
@@ -1015,20 +961,58 @@ namespace CocosSharp
             }
         }
 
-        #endregion
+		void ChangedChildTag(CCNode child, int oldTag, int newTag)
+		{
+			List<CCNode> list;
 
-        /// <summary>
-        /// This is called from the Visit() method. This is where you DRAW your node. Only
-        /// draw stuff from this method call.
-        /// </summary>
+			if (childrenByTag != null && oldTag != TagInvalid)
+			{
+				if (childrenByTag.TryGetValue(oldTag, out list))
+				{
+					list.Remove(child);
+				}
+			}
+
+			if (newTag != TagInvalid)
+			{
+				if (childrenByTag == null)
+				{
+					childrenByTag = new Dictionary<int, List<CCNode>>();
+				}
+
+				if (!childrenByTag.TryGetValue(newTag, out list))
+				{
+					list = new List<CCNode>();
+					childrenByTag.Add(newTag, list);
+				}
+
+				list.Add(child);
+			}
+		}
+
+		public virtual void ReorderChild(CCNode child, int zOrder)
+		{
+			Debug.Assert(child != null, "Child must be non-null");
+
+			IsReorderChildDirty = true;
+			child.OrderOfArrival = globalOrderOfArrival++;
+			child.zOrder = zOrder;
+			child.LocalZOrder = zOrder;
+		}
+
+		#endregion Child Sorting
+
+
+		public virtual void Update(float dt)
+		{
+		}
+
         protected virtual void Draw()
         {
             // Does nothing in the root node class.
         }
-
-        /// <summary>
-        /// This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
-        /// </summary>
+			
+        // This is called with every call to the MainLoop on the CCDirector class. In XNA, this is the same as the Draw() call.
         public virtual void Visit()
         {
             // quick return if not visible. children won't be drawn.
@@ -1042,7 +1026,6 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 Grid.BeforeDraw();
-                //TransformAncestors();
             }
             else
             {
@@ -1089,8 +1072,6 @@ namespace CocosSharp
                 Draw();
             }
 
-            //m_uOrderOfArrival = 0;
-
             if (Grid != null && Grid.Active)
             {
                 Grid.AfterDraw(this);
@@ -1098,7 +1079,6 @@ namespace CocosSharp
                 Grid.Blit();
             }
 
-            //kmGLPopMatrix();
             CCDrawManager.PopMatrix();
         }
 
@@ -1134,6 +1114,9 @@ namespace CocosSharp
             }
         }
 
+
+		#region Entering and exiting
+
         public virtual void OnEnter()
         {
 
@@ -1148,7 +1131,7 @@ namespace CocosSharp
 
             Resume();
 
-            Running = true;
+            IsRunning = true;
 
             CCDirector director = CCDirector.SharedDirector;
 
@@ -1157,13 +1140,6 @@ namespace CocosSharp
             {
                 director.KeypadDispatcher.AddDelegate(this);
             }
-
-            /*
-            if (m_nScriptHandler)
-            {
-                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnEnter);
-            }
-            */
         }
 
         public virtual void OnEnterTransitionDidFinish()
@@ -1202,14 +1178,7 @@ namespace CocosSharp
 
             Pause();
 
-            Running = false;
-
-            /*
-            if (m_nScriptHandler)
-            {
-                CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
-            }
-            */
+            IsRunning = false;
 
             if (Children != null && Children.Count > 0)
             {
@@ -1221,30 +1190,20 @@ namespace CocosSharp
             }
         }
 
+		#endregion Entering and exiting
+
+
         #region Actions
 
 		public void AddAction (CCAction action, bool paused = false)
 		{
-			ActionManager.AddAction (action, this, paused);
+			ActionManager.AddAction(action, this, paused);
 		}
 
 		public void AddActions (bool paused, params CCFiniteTimeAction[] actions)
 		{
-			ActionManager.AddAction (new CCSequence(actions), this, paused);
+			ActionManager.AddAction(new CCSequence(actions), this, paused);
 		}
-
-        public CCActionManager ActionManager
-        {
-            get { return actionManager; }
-            set
-            {
-                if (value != actionManager)
-                {
-                    StopAllActions();
-                    actionManager = value;
-                }
-            }
-        }
 
         public CCActionState Repeat (uint times, params CCFiniteTimeAction[] actions)
 		{
@@ -1271,7 +1230,7 @@ namespace CocosSharp
         public CCActionState RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-            CCActionState actionState = actionManager.AddAction(action, this, !Running);
+            CCActionState actionState = actionManager.AddAction(action, this, !IsRunning);
             return actionState;
         }
 
@@ -1279,7 +1238,7 @@ namespace CocosSharp
 		{
 			Debug.Assert(actions != null, "Argument must be non-nil");
 			var action = new CCSequence(actions);
-            CCActionState actionState = actionManager.AddAction(action, this, !Running);
+            CCActionState actionState = actionManager.AddAction(action, this, !IsRunning);
             return actionState;
 		}
 
@@ -1310,22 +1269,10 @@ namespace CocosSharp
             return actionManager.NumberOfRunningActionsInTarget(this);
         }
 
-        #endregion
+		#endregion Actions
 
-        #region CCNode - Callbacks
 
-        public CCScheduler Scheduler
-        {
-            get { return scheduler; }
-            set
-            {
-                if (value != scheduler)
-                {
-                    UnscheduleAll();
-                    scheduler = value;
-                }
-            }
-        }
+		#region Scheduling
 
 		public void Schedule ()
 		{
@@ -1334,7 +1281,7 @@ namespace CocosSharp
 
 		public void Schedule (int priority)
 		{
-			scheduler.Schedule (this, priority, !Running);
+			scheduler.Schedule (this, priority, !IsRunning);
 		}
 
 		public void Unschedule ()
@@ -1357,7 +1304,7 @@ namespace CocosSharp
 			Debug.Assert (selector != null, "Argument must be non-nil");
 			Debug.Assert (interval >= 0, "Argument must be positive");
 
-			scheduler.Schedule (selector, this, interval, repeat, delay, !Running);
+			scheduler.Schedule (selector, this, interval, repeat, delay, !IsRunning);
 		}
 
 		public void ScheduleOnce (Action<float> selector, float delay)
@@ -1394,8 +1341,8 @@ namespace CocosSharp
 				EventDispatcher.Pause (this);
         }
 
+		#endregion Scheduling
 
-        #endregion
 
         #region Transformations
 
@@ -1477,14 +1424,12 @@ namespace CocosSharp
 
             return AffineTransform;
         }
-
-        /// <summary>
-        /// Set my transform to be dirty and recursively set my children's transform to be dirty.
-        /// </summary>
+			
+        // Set my transform to be dirty and recursively set my children's transform to be dirty.
         protected virtual void SetTransformIsDirty()
         {
             IsTransformDirty = true;
-            InverseDirty = true;
+            inverseDirty = true;
             // Me and all of my children have dirty world transforms now.
             SetWorldTransformIsDirty();
         }
@@ -1515,48 +1460,8 @@ namespace CocosSharp
             }
         }
 
-        public CCAffineTransform ParentToNodeTransform
-        {
-			get 
-			{
-				if (InverseDirty) {
-					inverse = CCAffineTransform.Invert (NodeToParentTransform ());
-					InverseDirty = false;
-				}
-				return inverse;
-			}
-        }
+		#endregion Transformations
 
-        public CCAffineTransform NodeToWorldTransform
-        {
-			get 
-			{
-				CCAffineTransform t = NodeToParentTransform ();
-
-				// CCLog.Log("{0}.NodeToWorld: woldIsDirty={1}, transformIsDirty={2}", GetType().Name, m_bWorldTransformIsDirty, m_bTransformDirty);
-
-				if (!isWorldTransformDirty) {
-					return (nodeToWorldTransform);
-				}
-				if (Parent != null) {
-					CCAffineTransform n2p = Parent.NodeToWorldTransform;
-					t.Concat (ref n2p);
-				}
-				isWorldTransformDirty = false;
-				nodeToWorldTransform = t;
-				return t;
-			}
-        }
-
-        public CCAffineTransform WorldToNodeTransform
-        {
-			get 
-			{
-				return CCAffineTransform.Invert (NodeToWorldTransform);
-			}
-        }
-
-        #endregion
 
         #region ConvertToSpace
 
@@ -1600,50 +1505,8 @@ namespace CocosSharp
             return ConvertToNodeSpaceAr(point);
         }
 
-        #endregion
+		#endregion ConvertToSpace
 
-        /*
-        void registerScriptHandler(int nHandler)
-        {
-            unregisterScriptHandler();
-            m_nScriptHandler = nHandler;
-            LUALOG("[LUA] Add CCNode event handler: %d", m_nScriptHandler);
-        }
-
-        void unregisterScriptHandler(void)
-        {
-            if (m_nScriptHandler)
-            {
-                CCScriptEngineManager::sharedManager().getScriptEngine().removeLuaHandler(m_nScriptHandler);
-                LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
-                m_nScriptHandler = 0;
-            }
-        }
-        */
-
-        public virtual bool KeypadEnabled
-        {
-            get { return keypadEnabled; }
-            set
-            {
-                if (value != keypadEnabled)
-                {
-                    keypadEnabled = value;
-
-                    if (Running)
-                    {
-                        if (value)
-                        {
-                            CCDirector.SharedDirector.KeypadDispatcher.AddDelegate(this);
-                        }
-                        else
-                        {
-                            CCDirector.SharedDirector.KeypadDispatcher.RemoveDelegate(this);
-                        }
-                    }
-                }
-            }
-        }
 
         public virtual void KeyBackClicked()
         {
@@ -1652,6 +1515,5 @@ namespace CocosSharp
         public virtual void KeyMenuClicked()
         {
         }
-
     }
 }

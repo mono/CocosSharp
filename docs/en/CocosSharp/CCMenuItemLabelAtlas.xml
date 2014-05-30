@@ -1,0 +1,136 @@
+<Type Name="CCMenuItemLabelAtlas" FullName="CocosSharp.CCMenuItemLabelAtlas">
+  <TypeSignature Language="C#" Value="public class CCMenuItemLabelAtlas : CocosSharp.CCMenuItemLabelBase" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabelAtlas extends CocosSharp.CCMenuItemLabelBase" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCMenuItemLabelBase</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (Action&lt;object&gt; target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;object&gt; target) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (CocosSharp.CCLabelAtlas labelAtlas, Action&lt;object&gt; target = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLabelAtlas labelAtlas, class System.Action`1&lt;object&gt; target) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="labelAtlas" Type="CocosSharp.CCLabelAtlas" />
+        <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="labelAtlas">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (string value, string charMapFile, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+        <Parameter Name="charMapFile" Type="System.String" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="charMapFile">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (string value, string charMapFile, int itemWidth, int itemHeight, char startCharMap, CocosSharp.ICCUpdatable updatable, Action&lt;object&gt; target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap, class CocosSharp.ICCUpdatable updatable, class System.Action`1&lt;object&gt; target) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="value" Type="System.String" />
+        <Parameter Name="charMapFile" Type="System.String" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+        <Parameter Name="updatable" Type="CocosSharp.ICCUpdatable" />
+        <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="charMapFile">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <param name="updatable">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LabelAtlas">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelAtlas LabelAtlas { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelAtlas LabelAtlas" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelAtlas</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

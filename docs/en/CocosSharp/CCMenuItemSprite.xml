@@ -1,0 +1,246 @@
+<Type Name="CCMenuItemSprite" FullName="CocosSharp.CCMenuItemSprite">
+  <TypeSignature Language="C#" Value="public class CCMenuItemSprite : CocosSharp.CCMenuItem" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemSprite extends CocosSharp.CCMenuItem" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCMenuItem</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para> accepts Node(RGBAProtocol) objects as items. The images has 3 different states: </para>
+    </summary>
+    <remarks>
+      <para>
+        <list type="bullet" />
+      </para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8.0 </para>
+      </para>
+      <para>v0.8.0 </para>
+      <item>
+        <description>unselected image</description>
+      </item>
+      <description>unselected image</description>
+      <item>
+        <description>selected image</description>
+      </item>
+      <description>selected image</description>
+      <item>
+        <description>disabled image</description>
+      </item>
+      <description>disabled image</description>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>creates a menu item with a normal,selected and disabled image with target/selector </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite (Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite (CocosSharp.CCNode normalSprite, CocosSharp.CCNode selectedSprite);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode normalSprite, class CocosSharp.CCNode selectedSprite) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="selectedSprite" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="normalSprite">To be added.</param>
+        <param name="selectedSprite">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite (CocosSharp.CCNode normalSprite, CocosSharp.CCNode selectedSprite, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode normalSprite, class CocosSharp.CCNode selectedSprite, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="selectedSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="normalSprite">To be added.</param>
+        <param name="selectedSprite">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite (string normalSprite, string selectedSprite, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string normalSprite, string selectedSprite, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalSprite" Type="System.String" />
+        <Parameter Name="selectedSprite" Type="System.String" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="normalSprite">To be added.</param>
+        <param name="selectedSprite">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMenuItemSprite (CocosSharp.CCNode normalSprite, CocosSharp.CCNode selectedSprite, CocosSharp.CCNode disabledSprite, Action&lt;object&gt; selector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode normalSprite, class CocosSharp.CCNode selectedSprite, class CocosSharp.CCNode disabledSprite, class System.Action`1&lt;object&gt; selector) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="normalSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="selectedSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="disabledSprite" Type="CocosSharp.CCNode" />
+        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="normalSprite">To be added.</param>
+        <param name="selectedSprite">To be added.</param>
+        <param name="disabledSprite">To be added.</param>
+        <param name="selector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisabledImage">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode DisabledImage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode DisabledImage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setDisabledImage </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NormalImage">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode NormalImage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode NormalImage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setNormalImage </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Selected">
+      <MemberSignature Language="C#" Value="public override void Selected ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Selected() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>v0.99.5 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SelectedImage">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode SelectedImage { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode SelectedImage" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setSelectedImage </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Unselected">
+      <MemberSignature Language="C#" Value="public override void Unselected ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Unselected() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The item was unselected </summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,110 @@
+<Type Name="CCKeypadHandler" FullName="CocosSharp.CCKeypadHandler">
+  <TypeSignature Language="C#" Value="public class CCKeypadHandler" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCKeypadHandler extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para> Object than contains the KeypadDelegate. </para>
+    </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCKeypadHandler ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Delegate">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCKeypadDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCKeypadDelegate Delegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCKeypadDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>delegate </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HandlerWithDelegate">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCKeypadHandler HandlerWithDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCKeypadHandler HandlerWithDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCKeypadHandler</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>allocates a  with a delegate </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithDelegate">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (CocosSharp.ICCKeypadDelegate pDelegate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class CocosSharp.ICCKeypadDelegate pDelegate) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCKeypadDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <summary>initializes a  with a delegate </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_pDelegate">
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCKeypadDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCKeypadDelegate m_pDelegate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCKeypadDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

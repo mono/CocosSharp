@@ -67,8 +67,11 @@ namespace tests
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
 
+			CCMenuItemFont.FontSize = 20;
+			CCMenuItemFont.FontName = "arial";
+
             // Font Item
-            CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", "arial", 20, this.menuCallbackEnable);
+			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", this.menuCallbackEnable);
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
@@ -78,8 +81,9 @@ namespace tests
             // Testing issue #500
             item5.Scale = 0.8f;
 
+			CCMenuItemFont.FontSize = 30;
             // Events
-            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", "arial", 30, menuCallbackPriorityTest);
+            CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
             CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);

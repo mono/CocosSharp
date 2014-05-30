@@ -65,8 +65,6 @@ namespace tests
         {
             base.OnEnter();
 
-            AccelerometerEnabled = true;
-
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "Arial", 32);

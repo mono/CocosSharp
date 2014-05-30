@@ -8,22 +8,24 @@ namespace CocosSharp
 
     public class CCTextFieldTTF : CCLabelTtf
     {
-        private IAsyncResult m_pGuideShowHandle;
-        private string m_sEditTitle = "Input";
-        private string m_sEditDescription = "Please provide input";
-        private bool m_bReadOnly = false;
-        private bool m_bAutoEdit;
-        private bool m_bTouchHandled;
+		bool readOnly = false;
+		bool autoEdit;
+		bool touchHandled;
+
+		IAsyncResult guideShowHandle;
 
         public event CCTextFieldTTFDelegate BeginEditing;
         public event CCTextFieldTTFDelegate EndEditing;
 
+
+		#region Properties
+
         public bool ReadOnly
         {
-            get { return m_bReadOnly; }
+            get { return readOnly; }
             set
             {
-                m_bReadOnly = value;
+                readOnly = value;
                 
                 if (!value)
                 {
@@ -34,27 +36,20 @@ namespace CocosSharp
             }
         }
 
-        public string EditTitle
-        {
-            get { return m_sEditTitle; }
-            set { m_sEditTitle = value; }
-        }
-
-        public string EditDescription
-        {
-            get { return m_sEditDescription; }
-            set { m_sEditDescription = value; }
-        }
+		public string EditTitle { get; set; }
+		public string EditDescription { get; set; }
 
         public bool AutoEdit
         {
-            get { return m_bAutoEdit; }
+            get { return autoEdit; }
             set
             {
-                m_bAutoEdit = value;
+                autoEdit = value;
                 CheckTouchState();
             }
         }
+
+		#endregion Properties
 
 
         #region Constructors
@@ -72,6 +67,8 @@ namespace CocosSharp
         public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
             : base (text, fontName, fontSize, dimensions, hAlignment, vAlignment)
         {
+			EditTitle = "Input";
+			EditDescription = "Please provide input";
         }
 
         #endregion Constructors
@@ -79,13 +76,13 @@ namespace CocosSharp
 
         public void Edit()
         {
-            Edit(m_sEditTitle, m_sEditDescription);
+			Edit(EditTitle, EditDescription);
         }
 
         public void Edit(string title, string defaultText)
         {
 #if !WINDOWS_PHONE
-            if (!m_bReadOnly && !Guide.IsVisible)
+            if (!readOnly && !Guide.IsVisible)
             {
                 var canceled = false;
                 var text = Text;
@@ -94,7 +91,7 @@ namespace CocosSharp
 
                 if (!canceled)
                 {
-                    m_pGuideShowHandle = Guide.BeginShowKeyboardInput(
+                    guideShowHandle = Guide.BeginShowKeyboardInput(
                         Microsoft.Xna.Framework.PlayerIndex.One, title, defaultText, Text, InputHandler, null
                         );
                 }
@@ -102,12 +99,12 @@ namespace CocosSharp
 #endif
         }
 
-        private void InputHandler(IAsyncResult result)
+        void InputHandler(IAsyncResult result)
         {
 #if !WINDOWS_PHONE
-            var newText = Guide.EndShowKeyboardInput(result);
+			var newText = Guide.EndShowKeyboardInput(result);
 
-            m_pGuideShowHandle = null;
+            guideShowHandle = null;
 
             if (newText != null && Text != newText)
             {
@@ -147,36 +144,36 @@ namespace CocosSharp
 
         public void EndEdit()
         {
-            if (m_pGuideShowHandle != null)
+            if (guideShowHandle != null)
 			{
 #if !WINDOWS_PHONE
-				Guide.EndShowKeyboardInput(m_pGuideShowHandle);
+				Guide.EndShowKeyboardInput(guideShowHandle);
 #endif
-                m_pGuideShowHandle = null;
+                guideShowHandle = null;
             }
         }
 
-        private void CheckTouchState()
+        void CheckTouchState()
         {
-            if (Running)
+			if (IsRunning)
             {
-                if (!m_bTouchHandled && !m_bReadOnly && m_bAutoEdit)
+                if (!touchHandled && !readOnly && autoEdit)
                 {
 					//CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
-                    m_bTouchHandled = true;
+                    touchHandled = true;
                 }
-                else if (m_bTouchHandled && (m_bReadOnly || !m_bAutoEdit))
+                else if (touchHandled && (readOnly || !autoEdit))
                 {
 					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
-                    m_bTouchHandled = true;
+                    touchHandled = true;
                 }
             }
             else
             {
-                if (!Running && m_bTouchHandled)
+				if (!IsRunning && touchHandled)
                 {
 					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
-                    m_bTouchHandled = false;
+                    touchHandled = false;
                 }
             }
         }

@@ -1,0 +1,171 @@
+<Type Name="CCTransitionFade" FullName="CocosSharp.CCTransitionFade">
+  <TypeSignature Language="C#" Value="public class CCTransitionFade : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionFade extends CocosSharp.CCTransitionScene" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>: Fade out the outgoing scene and then fade in the incoming scene.'''. </para>
+    </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionFade (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <summary>creates the transition with a duration and with an RGB color Example: FadeTransition::create(2, scene, Color3B(255,0,0); // red color </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionFade (float duration, CocosSharp.CCScene scene, CocosSharp.CCColor3B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class CocosSharp.CCScene scene, valuetype CocosSharp.CCColor3B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="scene">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4B Color;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4B Color" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float t, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 t, class CocosSharp.CCScene scene) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <summary>initializes a transition with duration and incoming scene </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, CocosSharp.CCScene scene, CocosSharp.CCColor3B color);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, class CocosSharp.CCScene scene, valuetype CocosSharp.CCColor3B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="color" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="duration">To be added.</param>
+        <param name="scene">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_tColor">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor4B m_tColor;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor4B m_tColor" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="OnExit">
+      <MemberSignature Language="C#" Value="public override void OnExit ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnExit() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Event callback that is invoked every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this event is called when the transition finishes. During onExit you can't access a sibling node. If you override onExit, you shall call its parent's one, e.g., Node::onExit(). </summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

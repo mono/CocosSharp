@@ -1,0 +1,1395 @@
+<Type Name="CCAffineTransform" FullName="CocosSharp.CCAffineTransform">
+  <TypeSignature Language="C#" Value="public struct CCAffineTransform" />
+  <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCAffineTransform extends System.ValueType" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.ValueType</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCAffineTransform (float a, float b, float c, float d, float tx, float ty);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 a, float32 b, float32 c, float32 d, float32 tx, float32 ty) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="a" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="c" Type="System.Single" />
+        <Parameter Name="d" Type="System.Single" />
+        <Parameter Name="tx" Type="System.Single" />
+        <Parameter Name="ty" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="c">To be added.</param>
+        <param name="d">To be added.</param>
+        <param name="tx">To be added.</param>
+        <param name="ty">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="a">
+      <MemberSignature Language="C#" Value="public float a;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 a" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="A">
+      <MemberSignature Language="C#" Value="public float A;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 A" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="b">
+      <MemberSignature Language="C#" Value="public float b;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 b" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="B">
+      <MemberSignature Language="C#" Value="public float B;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 B" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="c">
+      <MemberSignature Language="C#" Value="public float c;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 c" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="C">
+      <MemberSignature Language="C#" Value="public float C;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 C" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Concat">
+      <MemberSignature Language="C#" Value="public void Concat (CocosSharp.CCAffineTransform m);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype CocosSharp.CCAffineTransform m) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="m">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Concat">
+      <MemberSignature Language="C#" Value="public void Concat (ref CocosSharp.CCAffineTransform m);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Concat(valuetype CocosSharp.CCAffineTransform m) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="m">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Concat">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Concat (CocosSharp.CCAffineTransform t1, CocosSharp.CCAffineTransform t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Concat(valuetype CocosSharp.CCAffineTransform t1, valuetype CocosSharp.CCAffineTransform t2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="t1">To be added.</param>
+        <param name="t2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConcatScale">
+      <MemberSignature Language="C#" Value="public void ConcatScale (float xscale, float yscale);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ConcatScale(float32 xscale, float32 yscale) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="xscale" Type="System.Single" />
+        <Parameter Name="yscale" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="xscale">To be added.</param>
+        <param name="yscale">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConcatTranslation">
+      <MemberSignature Language="C#" Value="public void ConcatTranslation (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ConcatTranslation(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="d">
+      <MemberSignature Language="C#" Value="public float d;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 d" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="D">
+      <MemberSignature Language="C#" Value="public float D;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 D" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equal">
+      <MemberSignature Language="C#" Value="public static bool Equal (CocosSharp.CCAffineTransform t1, CocosSharp.CCAffineTransform t2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype CocosSharp.CCAffineTransform t1, valuetype CocosSharp.CCAffineTransform t2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="t1">To be added.</param>
+        <param name="t2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public bool Equals (ref CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCAffineTransform t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Equals">
+      <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="obj" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="obj">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetHashCode">
+      <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRotation">
+      <MemberSignature Language="C#" Value="public float GetRotation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetRotation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRotationX">
+      <MemberSignature Language="C#" Value="public float GetRotationX ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetRotationX() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetRotationY">
+      <MemberSignature Language="C#" Value="public float GetRotationY ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetRotationY() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScaleX">
+      <MemberSignature Language="C#" Value="public float GetScaleX ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetScaleX() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetScaleY">
+      <MemberSignature Language="C#" Value="public float GetScaleY ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetScaleY() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Identity">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCAffineTransform Identity;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCAffineTransform Identity" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Invert">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Invert (CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Invert(valuetype CocosSharp.CCAffineTransform t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public float this[float scaleX, float scaleY, float angle] { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Item(float32, float32, float32)" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <param name="angle">To be added.</param>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public void Lerp (CocosSharp.CCAffineTransform m1, CocosSharp.CCAffineTransform m2, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Lerp(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="m1">To be added.</param>
+        <param name="m2">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public static void Lerp (ref CocosSharp.CCAffineTransform m1, ref CocosSharp.CCAffineTransform m2, float t, out CocosSharp.CCAffineTransform res);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Lerp(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t, valuetype CocosSharp.CCAffineTransform res) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="res" Type="CocosSharp.CCAffineTransform&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="m1">To be added.</param>
+        <param name="m2">To be added.</param>
+        <param name="t">To be added.</param>
+        <param name="res">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LerpCopy">
+      <MemberSignature Language="C#" Value="public static void LerpCopy (ref CocosSharp.CCAffineTransform m1, ref CocosSharp.CCAffineTransform m2, float t, out CocosSharp.CCAffineTransform res);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void LerpCopy(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t, valuetype CocosSharp.CCAffineTransform res) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform&amp;" RefType="ref" />
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="res" Type="CocosSharp.CCAffineTransform&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="m1">To be added.</param>
+        <param name="m2">To be added.</param>
+        <param name="t">To be added.</param>
+        <param name="res">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Addition">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_Addition (CocosSharp.CCAffineTransform affineTransform1, CocosSharp.CCAffineTransform affineTransform2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_Addition(valuetype CocosSharp.CCAffineTransform affineTransform1, valuetype CocosSharp.CCAffineTransform affineTransform2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affineTransform2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <param name="affineTransform2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_Division (CocosSharp.CCAffineTransform affineTransform1, CocosSharp.CCAffineTransform affineTransform2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_Division(valuetype CocosSharp.CCAffineTransform affineTransform1, valuetype CocosSharp.CCAffineTransform affineTransform2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affineTransform2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <param name="affineTransform2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Division">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_Division (CocosSharp.CCAffineTransform affineTransform, float divider);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_Division(valuetype CocosSharp.CCAffineTransform affineTransform, float32 divider) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="divider" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform">To be added.</param>
+        <param name="divider">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Equality">
+      <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCAffineTransform affineTransform1, CocosSharp.CCAffineTransform affineTransform2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCAffineTransform affineTransform1, valuetype CocosSharp.CCAffineTransform affineTransform2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affineTransform2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <param name="affineTransform2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Inequality">
+      <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCAffineTransform affineTransform1, CocosSharp.CCAffineTransform affineTransform2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCAffineTransform affineTransform1, valuetype CocosSharp.CCAffineTransform affineTransform2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affineTransform2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <param name="affineTransform2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_Multiply (CocosSharp.CCAffineTransform affinematrix1, CocosSharp.CCAffineTransform affinematrix2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_Multiply(valuetype CocosSharp.CCAffineTransform affinematrix1, valuetype CocosSharp.CCAffineTransform affinematrix2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affinematrix1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affinematrix2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affinematrix1">To be added.</param>
+        <param name="affinematrix2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Subtraction">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_Subtraction (CocosSharp.CCAffineTransform affineTransform1, CocosSharp.CCAffineTransform affineTransform2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_Subtraction(valuetype CocosSharp.CCAffineTransform affineTransform1, valuetype CocosSharp.CCAffineTransform affineTransform2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="affineTransform2" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <param name="affineTransform2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_UnaryNegation">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform op_UnaryNegation (CocosSharp.CCAffineTransform affineTransform1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCAffineTransform op_UnaryNegation(valuetype CocosSharp.CCAffineTransform affineTransform1) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="affineTransform1" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="affineTransform1">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rotate">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Rotate (CocosSharp.CCAffineTransform t, float anAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Rotate(valuetype CocosSharp.CCAffineTransform t, float32 anAngle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="anAngle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="anAngle">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rotation">
+      <MemberSignature Language="C#" Value="public float Rotation { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Rotation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RotationX">
+      <MemberSignature Language="C#" Value="public float RotationX { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RotationY">
+      <MemberSignature Language="C#" Value="public float RotationY { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 RotationY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scale">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Scale (CocosSharp.CCAffineTransform t, float sx, float sy);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Scale(valuetype CocosSharp.CCAffineTransform t, float32 sx, float32 sy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="sx" Type="System.Single" />
+        <Parameter Name="sy" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="sx">To be added.</param>
+        <param name="sy">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scale">
+      <MemberSignature Language="C#" Value="public float Scale { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleCopy">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform ScaleCopy (CocosSharp.CCAffineTransform t, float sx, float sy);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform ScaleCopy(valuetype CocosSharp.CCAffineTransform t, float32 sx, float32 sy) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="sx" Type="System.Single" />
+        <Parameter Name="sy" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="sx">To be added.</param>
+        <param name="sy">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleX">
+      <MemberSignature Language="C#" Value="public float ScaleX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScaleY">
+      <MemberSignature Language="C#" Value="public float ScaleY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ScaleY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetLerp">
+      <MemberSignature Language="C#" Value="public void SetLerp (CocosSharp.CCAffineTransform m1, CocosSharp.CCAffineTransform m2, float t);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetLerp(valuetype CocosSharp.CCAffineTransform m1, valuetype CocosSharp.CCAffineTransform m2, float32 t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="m1" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="m2" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="t" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="m1">To be added.</param>
+        <param name="m2">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetRotation">
+      <MemberSignature Language="C#" Value="public void SetRotation (float rotation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetRotation(float32 rotation) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rotation" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="rotation">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetScale">
+      <MemberSignature Language="C#" Value="public void SetScale (float scaleX, float scaleY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetScale(float32 scaleX, float32 scaleY) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetScaleRotation">
+      <MemberSignature Language="C#" Value="public void SetScaleRotation (float scaleX, float scaleY, float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetScaleRotation(float32 scaleX, float32 scaleY, float32 angle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <param name="angle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetScaleX">
+      <MemberSignature Language="C#" Value="public void SetScaleX (float scaleX);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetScaleX(float32 scaleX) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scaleX" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="scaleX">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetScaleY">
+      <MemberSignature Language="C#" Value="public void SetScaleY (float scaleY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetScaleY(float32 scaleY) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scaleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetTranslation">
+      <MemberSignature Language="C#" Value="public void SetTranslation (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTranslation(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Transform (CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint Transform(valuetype CocosSharp.CCPoint point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform (ref CocosSharp.CCPoint point);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype CocosSharp.CCPoint point) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCPoint&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect Transform (CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect Transform(valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform (ref CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Transform (CocosSharp.CCPoint point, CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Transform(valuetype CocosSharp.CCPoint point, valuetype CocosSharp.CCAffineTransform t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCPoint" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect Transform (CocosSharp.CCRect rect, CocosSharp.CCAffineTransform anAffineTransform);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect Transform(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCAffineTransform anAffineTransform) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="anAffineTransform" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="anAffineTransform">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize Transform (CocosSharp.CCSize size, CocosSharp.CCAffineTransform t);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize Transform(valuetype CocosSharp.CCSize size, valuetype CocosSharp.CCAffineTransform t) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <param name="t">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform (ref int x, ref int y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(int32 x, int32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32&amp;" RefType="ref" />
+        <Parameter Name="y" Type="System.Int32&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform (ref float x, ref float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single&amp;" RefType="ref" />
+        <Parameter Name="y" Type="System.Single&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Transform">
+      <MemberSignature Language="C#" Value="public void Transform (float x, float y, out float xresult, out float yresult);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Transform(float32 x, float32 y, float32 xresult, float32 yresult) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+        <Parameter Name="xresult" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="yresult" Type="System.Single&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="xresult">To be added.</param>
+        <param name="yresult">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Translate">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAffineTransform Translate (CocosSharp.CCAffineTransform t, float tx, float ty);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCAffineTransform Translate(valuetype CocosSharp.CCAffineTransform t, float32 tx, float32 ty) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="CocosSharp.CCAffineTransform" />
+        <Parameter Name="tx" Type="System.Single" />
+        <Parameter Name="ty" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="tx">To be added.</param>
+        <param name="ty">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TranslationX">
+      <MemberSignature Language="C#" Value="public float TranslationX { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 TranslationX" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TranslationY">
+      <MemberSignature Language="C#" Value="public float TranslationY { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 TranslationY" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="tx">
+      <MemberSignature Language="C#" Value="public float tx;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 tx" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Tx">
+      <MemberSignature Language="C#" Value="public float Tx;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 Tx" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ty">
+      <MemberSignature Language="C#" Value="public float ty;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 ty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Ty">
+      <MemberSignature Language="C#" Value="public float Ty;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 Ty" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

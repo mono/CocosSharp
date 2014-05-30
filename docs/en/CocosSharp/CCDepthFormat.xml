@@ -1,0 +1,73 @@
+<Type Name="CCDepthFormat" FullName="CocosSharp.CCDepthFormat">
+  <TypeSignature Language="C#" Value="public enum CCDepthFormat" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCDepthFormat extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Depth16">
+      <MemberSignature Language="C#" Value="Depth16" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDepthFormat Depth16 = int32(54)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDepthFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Depth24">
+      <MemberSignature Language="C#" Value="Depth24" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDepthFormat Depth24 = int32(51)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDepthFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="Depth24Stencil8">
+      <MemberSignature Language="C#" Value="Depth24Stencil8" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDepthFormat Depth24Stencil8 = int32(48)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDepthFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="None">
+      <MemberSignature Language="C#" Value="None" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDepthFormat None = int32(-1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDepthFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

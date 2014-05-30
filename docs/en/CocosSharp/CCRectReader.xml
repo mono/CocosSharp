@@ -1,0 +1,56 @@
+<Type Name="CCRectReader" FullName="CocosSharp.CCRectReader">
+  <TypeSignature Language="C#" Value="public class CCRectReader : Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCRect&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRectReader extends Microsoft.Xna.Framework.Content.ContentTypeReader`1&lt;valuetype CocosSharp.CCRect&gt;" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.Xna.Framework.Content.ContentTypeReader&lt;CocosSharp.CCRect&gt;</BaseTypeName>
+    <BaseTypeArguments>
+      <BaseTypeArgument TypeParamName="!0">CocosSharp.CCRect</BaseTypeArgument>
+    </BaseTypeArguments>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRectReader ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Read">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCRect Read (Microsoft.Xna.Framework.Content.ContentReader input, CocosSharp.CCRect existingInstance);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance valuetype CocosSharp.CCRect Read(class Microsoft.Xna.Framework.Content.ContentReader input, valuetype CocosSharp.CCRect existingInstance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="input" Type="Microsoft.Xna.Framework.Content.ContentReader" />
+        <Parameter Name="existingInstance" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="input">To be added.</param>
+        <param name="existingInstance">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

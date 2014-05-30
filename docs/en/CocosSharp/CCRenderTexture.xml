@@ -1,0 +1,471 @@
+<Type Name="CCRenderTexture" FullName="CocosSharp.CCRenderTexture">
+  <TypeSignature Language="C#" Value="public class CCRenderTexture : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRenderTexture extends CocosSharp.CCNode" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para> is a generic rendering target. To render things into it, simply construct a render target, call begin on it, call visit on any cocos scenes or objects to render them, and call end. For convenience, render texture adds a sprite as it's display child with the results, so you can simply add the render texture to your scene and treat it like any other CocosNode. There are also functions for saving the render texture to disk in PNG or JPG format. </para>
+    </summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>creates a  object with width and height in Points, pixel format is RGBA8888 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, CocosSharp.CCSurfaceFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype CocosSharp.CCSurfaceFormat format) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="format" Type="CocosSharp.CCSurfaceFormat" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, Microsoft.Xna.Framework.Graphics.SurfaceFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, CocosSharp.CCSurfaceFormat colorFormat, CocosSharp.CCDepthFormat depthFormat, CocosSharp.CCRenderTargetUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype CocosSharp.CCSurfaceFormat colorFormat, valuetype CocosSharp.CCDepthFormat depthFormat, valuetype CocosSharp.CCRenderTargetUsage usage) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="colorFormat" Type="CocosSharp.CCSurfaceFormat" />
+        <Parameter Name="depthFormat" Type="CocosSharp.CCDepthFormat" />
+        <Parameter Name="usage" Type="CocosSharp.CCRenderTargetUsage" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <param name="colorFormat">To be added.</param>
+        <param name="depthFormat">To be added.</param>
+        <param name="usage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, Microsoft.Xna.Framework.Graphics.DepthFormat depthFormat, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format, valuetype Microsoft.Xna.Framework.Graphics.DepthFormat depthFormat, valuetype Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="depthFormat" Type="Microsoft.Xna.Framework.Graphics.DepthFormat" />
+        <Parameter Name="usage" Type="Microsoft.Xna.Framework.Graphics.RenderTargetUsage" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <param name="format">To be added.</param>
+        <param name="depthFormat">To be added.</param>
+        <param name="usage">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Begin">
+      <MemberSignature Language="C#" Value="public virtual void Begin ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Begin() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>starts grabbing </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="BeginWithClear">
+      <MemberSignature Language="C#" Value="public void BeginWithClear (float r, float g, float b, float a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginWithClear(float32 r, float32 g, float32 b, float32 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Single" />
+        <Parameter Name="g" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="a" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="a">To be added.</param>
+        <summary>starts rendering to the texture while clearing the texture first. This is more efficient then calling -clear first and then -begin </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginWithClear">
+      <MemberSignature Language="C#" Value="public void BeginWithClear (float r, float g, float b, float a, float depthValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginWithClear(float32 r, float32 g, float32 b, float32 a, float32 depthValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Single" />
+        <Parameter Name="g" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="a" Type="System.Single" />
+        <Parameter Name="depthValue" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="a">To be added.</param>
+        <param name="depthValue">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BeginWithClear">
+      <MemberSignature Language="C#" Value="public void BeginWithClear (float r, float g, float b, float a, float depthValue, int stencilValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void BeginWithClear(float32 r, float32 g, float32 b, float32 a, float32 depthValue, int32 stencilValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Single" />
+        <Parameter Name="g" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="a" Type="System.Single" />
+        <Parameter Name="depthValue" Type="System.Single" />
+        <Parameter Name="stencilValue" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="a">To be added.</param>
+        <param name="depthValue">To be added.</param>
+        <param name="stencilValue">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="public void Clear (float r, float g, float b, float a);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear(float32 r, float32 g, float32 b, float32 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="System.Single" />
+        <Parameter Name="g" Type="System.Single" />
+        <Parameter Name="b" Type="System.Single" />
+        <Parameter Name="a" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="g">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="a">To be added.</param>
+        <summary>clears the texture with a color </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ClearDepth">
+      <MemberSignature Language="C#" Value="public void ClearDepth (float depthValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearDepth(float32 depthValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="depthValue" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="depthValue">To be added.</param>
+        <summary>Value for clearDepth. Valid only when autoDraw is true. </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ClearStencil">
+      <MemberSignature Language="C#" Value="public void ClearStencil (int stencilValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ClearStencil(int32 stencilValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stencilValue" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="stencilValue">To be added.</param>
+        <summary>Value for clear Stencil. Valid only when autoDraw is true </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public virtual void End ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void End() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>ends grabbing </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithWidthAndHeight">
+      <MemberSignature Language="C#" Value="protected virtual bool InitWithWidthAndHeight (int w, int h, Microsoft.Xna.Framework.Graphics.SurfaceFormat colorFormat, Microsoft.Xna.Framework.Graphics.DepthFormat depthFormat, Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithWidthAndHeight(int32 w, int32 h, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat colorFormat, valuetype Microsoft.Xna.Framework.Graphics.DepthFormat depthFormat, valuetype Microsoft.Xna.Framework.Graphics.RenderTargetUsage usage) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="w" Type="System.Int32" />
+        <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="colorFormat" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
+        <Parameter Name="depthFormat" Type="Microsoft.Xna.Framework.Graphics.DepthFormat" />
+        <Parameter Name="usage" Type="Microsoft.Xna.Framework.Graphics.RenderTargetUsage" />
+      </Parameters>
+      <Docs>
+        <param name="w">To be added.</param>
+        <param name="h">To be added.</param>
+        <param name="colorFormat">To be added.</param>
+        <param name="depthFormat">To be added.</param>
+        <param name="usage">To be added.</param>
+        <summary>initializes a  object with width and height in Points and a pixel format( only RGB and RGBA formats are valid ) and depthStencil format </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_ePixelFormat">
+      <MemberSignature Language="C#" Value="protected Microsoft.Xna.Framework.Graphics.SurfaceFormat m_ePixelFormat;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat m_ePixelFormat" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Graphics.SurfaceFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pSprite">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite m_pSprite;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite m_pSprite" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pTexture">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D m_pTexture;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTexture2D m_pTexture" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelFormat">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSurfaceFormat PixelFormat { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSurfaceFormat PixelFormat" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SaveToStream">
+      <MemberSignature Language="C#" Value="public bool SaveToStream (System.IO.Stream stream, CocosSharp.CCImageFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool SaveToStream(class System.IO.Stream stream, valuetype CocosSharp.CCImageFormat format) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="stream" Type="System.IO.Stream" />
+        <Parameter Name="format" Type="CocosSharp.CCImageFormat" />
+      </Parameters>
+      <Docs>
+        <param name="stream">To be added.</param>
+        <param name="format">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Sprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite Sprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite Sprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setSprite </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTexture2D Texture { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

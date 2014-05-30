@@ -143,7 +143,7 @@ namespace CocosSharp
         /// <param name="w"></param>
         public void ChangeWidth(float w)
         {
-            ContentSize = new CCSize(w, contentSize.Height);
+			ContentSize = new CCSize(w, ContentSize.Height);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace CocosSharp
         /// <param name="h"></param>
         public void ChangeHeight(float h)
         {
-            ContentSize = new CCSize(contentSize.Width, h);
+			ContentSize = new CCSize(ContentSize.Width, h);
         }
 
         /// <summary>

@@ -338,10 +338,10 @@ namespace CocosSharp
 			var color = Color;
 
 			// Release old sprites
-			RemoveAllChildrenWithCleanup(true);
+			RemoveAllChildren(true);
 
 			scale9Image = batchnode;
-			scale9Image.RemoveAllChildrenWithCleanup(true);
+			scale9Image.RemoveAllChildren(true);
 
 			this.capInsets = capInsets;
 			spriteFrameRotated = rotated;

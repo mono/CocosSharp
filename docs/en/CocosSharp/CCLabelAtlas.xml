@@ -1,0 +1,312 @@
+<Type Name="CCLabelAtlas" FullName="CocosSharp.CCLabelAtlas">
+  <TypeSignature Language="C#" Value="public class CCLabelAtlas : CocosSharp.CCAtlasNode, CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelAtlas extends CocosSharp.CCAtlasNode implements class CocosSharp.ICCTextContainer" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCAtlasNode</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCTextContainer</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+      <para> is a subclass of . </para>
+    </summary>
+    <remarks>
+      <para>It can be as a replacement of Label since it is MUCH faster.</para>
+      <para>
+        <see cref="T:CocosSharp.CCLabelAtlas" /> versus Label:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCLabelAtlas" />
+      <list type="bullet" />
+      <para>A more flexible class is <see cref="T:CocosSharp.CCLabelBMFont" />. It supports variable width characters and it also has a nice editor. </para>
+      <see cref="T:CocosSharp.CCLabelBMFont" />
+      <item>
+        <description>LabelAtlas is MUCH faster than Label</description>
+      </item>
+      <description>LabelAtlas is MUCH faster than Label</description>
+      <item>
+        <description>LabelAtlas "characters" have a fixed height and width</description>
+      </item>
+      <description>LabelAtlas "characters" have a fixed height and width</description>
+      <item>
+        <description>LabelAtlas "characters" can be anything you want since they are taken from an image file</description>
+      </item>
+      <description>LabelAtlas "characters" can be anything you want since they are taken from an image file</description>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelAtlas (string label, string fntFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label, string fntFile) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <summary>creates the  with a string and a configuration file v2.0 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelAtlas (string label, CocosSharp.CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label, class CocosSharp.CCTexture2D texture, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelAtlas (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string label, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="charMapFile" Type="System.String" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="charMapFile">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetString">
+      <MemberSignature Language="C#" Value="public string GetString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Label Property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the string that is currently being used in this label</summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>Returns the string that is currently being used in this label</para>
+          <para>
+            <para>The string that is currently being used in this label </para>
+          </para>
+          <para>The string that is currently being used in this label </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string theString, string fntFile);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string theString, string fntFile) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="theString" Type="System.String" />
+        <Parameter Name="fntFile" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="theString">To be added.</param>
+        <param name="fntFile">To be added.</param>
+        <summary>initializes the  with a string, a texture, the width and height in points of each element and the starting char of the atlas </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string label, CocosSharp.CCTexture2D texture, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, class CocosSharp.CCTexture2D texture, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string label, string charMapFile, int itemWidth, int itemHeight, char startCharMap);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="charMapFile" Type="System.String" />
+        <Parameter Name="itemWidth" Type="System.Int32" />
+        <Parameter Name="itemHeight" Type="System.Int32" />
+        <Parameter Name="startCharMap" Type="System.Char" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="charMapFile">To be added.</param>
+        <param name="itemWidth">To be added.</param>
+        <param name="itemHeight">To be added.</param>
+        <param name="startCharMap">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_cMapStartChar">
+      <MemberSignature Language="C#" Value="protected char m_cMapStartChar;" />
+      <MemberSignature Language="ILAsm" Value=".field family char m_cMapStartChar" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Char</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_sString">
+      <MemberSignature Language="C#" Value="protected string m_sString;" />
+      <MemberSignature Language="ILAsm" Value=".field family string m_sString" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetString">
+      <MemberSignature Language="C#" Value="public void SetString (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetString(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Label Property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">null terminated string </param>
+        <summary>Sets a new label using an string</summary>
+        <remarks>
+          <para>Sets a new label using an string</para>
+          <para />
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Text">
+      <MemberSignature Language="C#" Value="public string Text { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Text" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateAtlasValues">
+      <MemberSignature Language="C#" Value="public override void UpdateAtlasValues ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateAtlasValues() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>updates the Atlas (indexed vertex array). Shall be overridden in subclasses </summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,670 @@
+<Type Name="CCTableView" FullName="CocosSharp.CCTableView">
+  <TypeSignature Language="C#" Value="public class CCTableView : CocosSharp.CCScrollView, CocosSharp.ICCScrollViewDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTableView extends CocosSharp.CCScrollView implements class CocosSharp.ICCScrollViewDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCScrollView</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCScrollViewDelegate</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTableView ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTableView (CocosSharp.ICCTableViewDataSource dataSource, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.ICCTableViewDataSource dataSource, valuetype CocosSharp.CCSize size) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="dataSource" Type="CocosSharp.ICCTableViewDataSource" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="dataSource">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTableView (CocosSharp.ICCTableViewDataSource dataSource, CocosSharp.CCSize size, CocosSharp.CCNode container);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.ICCTableViewDataSource dataSource, valuetype CocosSharp.CCSize size, class CocosSharp.CCNode container) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="dataSource" Type="CocosSharp.ICCTableViewDataSource" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="container" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="dataSource">To be added.</param>
+        <param name="size">To be added.</param>
+        <param name="container">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="__indexFromOffset">
+      <MemberSignature Language="C#" Value="protected int __indexFromOffset (CocosSharp.CCPoint offset);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance int32 __indexFromOffset(valuetype CocosSharp.CCPoint offset) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="offset">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="__offsetFromIndex">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint __offsetFromIndex (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype CocosSharp.CCPoint __offsetFromIndex(int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_addCellIfNecessary">
+      <MemberSignature Language="C#" Value="protected void _addCellIfNecessary (CocosSharp.CCTableViewCell cell);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void _addCellIfNecessary(class CocosSharp.CCTableViewCell cell) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cell" Type="CocosSharp.CCTableViewCell" />
+      </Parameters>
+      <Docs>
+        <param name="cell">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_indexFromOffset">
+      <MemberSignature Language="C#" Value="protected int _indexFromOffset (CocosSharp.CCPoint offset);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance int32 _indexFromOffset(valuetype CocosSharp.CCPoint offset) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="offset" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="offset">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_moveCellOutOfSight">
+      <MemberSignature Language="C#" Value="protected void _moveCellOutOfSight (CocosSharp.CCTableViewCell cell);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void _moveCellOutOfSight(class CocosSharp.CCTableViewCell cell) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="cell" Type="CocosSharp.CCTableViewCell" />
+      </Parameters>
+      <Docs>
+        <param name="cell">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_offsetFromIndex">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint _offsetFromIndex (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype CocosSharp.CCPoint _offsetFromIndex(int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_setIndexForCell">
+      <MemberSignature Language="C#" Value="protected void _setIndexForCell (int index, CocosSharp.CCTableViewCell cell);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void _setIndexForCell(int32 index, class CocosSharp.CCTableViewCell cell) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+        <Parameter Name="cell" Type="CocosSharp.CCTableViewCell" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <param name="cell">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_updateCellPositions">
+      <MemberSignature Language="C#" Value="protected void _updateCellPositions ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void _updateCellPositions() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="_updateContentSize">
+      <MemberSignature Language="C#" Value="protected void _updateContentSize ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void _updateContentSize() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CellAtIndex">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTableViewCell CellAtIndex (int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTableViewCell CellAtIndex(int32 idx) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTableViewCell</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DataSource">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCTableViewDataSource DataSource { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCTableViewDataSource DataSource" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTableViewDataSource</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Delegate">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCTableViewDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCTableViewDelegate Delegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTableViewDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DequeueCell">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTableViewCell DequeueCell ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTableViewCell DequeueCell() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTableViewCell</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithViewSize">
+      <MemberSignature Language="C#" Value="public bool InitWithViewSize (CocosSharp.CCSize size, CocosSharp.CCNode container);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithViewSize(valuetype CocosSharp.CCSize size, class CocosSharp.CCNode container) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
+        <Parameter Name="container" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="size">To be added.</param>
+        <param name="container">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_eOldDirection">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScrollViewDirection m_eOldDirection;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCScrollViewDirection m_eOldDirection" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScrollViewDirection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_eVordering">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTableViewVerticalFillOrder m_eVordering;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCTableViewVerticalFillOrder m_eVordering" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTableViewVerticalFillOrder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pCellsFreed">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCArrayForObjectSorting m_pCellsFreed;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCArrayForObjectSorting m_pCellsFreed" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCArrayForObjectSorting</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pCellsUsed">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCArrayForObjectSorting m_pCellsUsed;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCArrayForObjectSorting m_pCellsUsed" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCArrayForObjectSorting</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pDataSource">
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCTableViewDataSource m_pDataSource;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCTableViewDataSource m_pDataSource" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTableViewDataSource</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pIndices">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;int&gt; m_pIndices;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;int32&gt; m_pIndices" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;System.Int32&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pTableViewDelegate">
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCTableViewDelegate m_pTableViewDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCTableViewDelegate m_pTableViewDelegate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTableViewDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pTouchedCell">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCTableViewCell m_pTouchedCell;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCTableViewCell m_pTouchedCell" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTableViewCell</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_vCellsPositions">
+      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;float&gt; m_vCellsPositions;" />
+      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;float32&gt; m_vCellsPositions" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;System.Single&gt;</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ReloadData">
+      <MemberSignature Language="C#" Value="public void ReloadData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReloadData() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveCellAtIndex">
+      <MemberSignature Language="C#" Value="public void RemoveCellAtIndex (int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveCellAtIndex(int32 idx) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollViewDidScroll">
+      <MemberSignature Language="C#" Value="public virtual void ScrollViewDidScroll (CocosSharp.CCScrollView view);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScrollViewDidScroll(class CocosSharp.CCScrollView view) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="view" Type="CocosSharp.CCScrollView" />
+      </Parameters>
+      <Docs>
+        <param name="view">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScrollViewDidZoom">
+      <MemberSignature Language="C#" Value="public virtual void ScrollViewDidZoom (CocosSharp.CCScrollView view);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScrollViewDidZoom(class CocosSharp.CCScrollView view) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="view" Type="CocosSharp.CCScrollView" />
+      </Parameters>
+      <Docs>
+        <param name="view">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchBegan">
+      <MemberSignature Language="C#" Value="public override bool TouchBegan (CocosSharp.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class CocosSharp.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchCancelled">
+      <MemberSignature Language="C#" Value="public override void TouchCancelled (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class CocosSharp.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchEnded">
+      <MemberSignature Language="C#" Value="public void TouchEnded (CocosSharp.CCTouch pTouch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchEnded(class CocosSharp.CCTouch pTouch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="pTouch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TouchMoved">
+      <MemberSignature Language="C#" Value="public override void TouchMoved (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
+      </Parameters>
+      <Docs>
+        <param name="touch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateCellAtIndex">
+      <MemberSignature Language="C#" Value="public void UpdateCellAtIndex (int idx);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateCellAtIndex(int32 idx) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="idx" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="idx">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerticalFillOrder">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTableViewVerticalFillOrder VerticalFillOrder { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTableViewVerticalFillOrder VerticalFillOrder" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTableViewVerticalFillOrder</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

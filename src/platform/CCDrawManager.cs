@@ -472,7 +472,7 @@ namespace CocosSharp
 
             m_worldMatrixChanged = m_viewMatrixChanged = m_projectionMatrixChanged = true;
 
-            CCDrawingPrimitives.Init(graphicsDevice);
+            CCDrawingPrimitives.Initialize(graphicsDevice);
 
             graphicsDevice.Disposing += GraphicsDeviceDisposing;
             graphicsDevice.DeviceLost += GraphicsDeviceDeviceLost;

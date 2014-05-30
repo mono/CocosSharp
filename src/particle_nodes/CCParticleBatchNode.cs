@@ -405,14 +405,14 @@ namespace CocosSharp
             RemoveChild(Children[index], doCleanup);
         }
 
-        public override void RemoveAllChildrenWithCleanup(bool doCleanup)
+        public override void RemoveAllChildren(bool doCleanup)
         {
             for (int i = 0; i < Children.Count; i++)
             {
                 ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }
 
-            base.RemoveAllChildrenWithCleanup(doCleanup);
+			base.RemoveAllChildren(doCleanup);
 
             TextureAtlas.RemoveAllQuads();
         }

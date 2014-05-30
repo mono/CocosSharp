@@ -1,0 +1,101 @@
+<Type Name="CCGamePadEventType" FullName="CocosSharp.CCGamePadEventType">
+  <TypeSignature Language="C#" Value="public enum CCGamePadEventType" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGamePadEventType extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GAMEPAD_BUTTON">
+      <MemberSignature Language="C#" Value="GAMEPAD_BUTTON" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_BUTTON = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GAMEPAD_CONNECTION">
+      <MemberSignature Language="C#" Value="GAMEPAD_CONNECTION" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_CONNECTION = int32(5)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GAMEPAD_DPAD">
+      <MemberSignature Language="C#" Value="GAMEPAD_DPAD" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_DPAD = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GAMEPAD_NONE">
+      <MemberSignature Language="C#" Value="GAMEPAD_NONE" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_NONE = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GAMEPAD_STICK">
+      <MemberSignature Language="C#" Value="GAMEPAD_STICK" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_STICK = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GAMEPAD_TRIGGER">
+      <MemberSignature Language="C#" Value="GAMEPAD_TRIGGER" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGamePadEventType GAMEPAD_TRIGGER = int32(4)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGamePadEventType</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

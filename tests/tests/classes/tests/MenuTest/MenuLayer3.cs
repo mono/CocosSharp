@@ -39,7 +39,11 @@ namespace tests
         {
 			var label = new CCLabelBMFont("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");
             var item1 = new CCMenuItemLabelBMFont(label, this.menuCallback2);
-            var item2 = new CCMenuItemFont("--- Go Back ---", "arial", 28, this.menuCallback);
+
+			CCMenuItemFont.FontSize = 28;
+			CCMenuItemFont.FontName = "arial";
+
+            var item2 = new CCMenuItemFont("--- Go Back ---", this.menuCallback);
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 

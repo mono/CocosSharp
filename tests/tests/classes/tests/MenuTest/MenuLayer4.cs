@@ -34,45 +34,49 @@ namespace tests
     {
         public MenuLayer4()
         {
-            string fontName = "arial";
-            uint fontSize = 18;
+			CCMenuItemFont.FontSize = 18;
+			CCMenuItemFont.FontName = "arial";
 
-            CCMenuItemFont title1 = new CCMenuItemFont("Sound", fontName, fontSize);
+            CCMenuItemFont title1 = new CCMenuItemFont("Sound");
             title1.Enabled = false;
-            fontSize = 34;
-            CCMenuItemToggle item1 = new CCMenuItemToggle(this.menuCallback,
-                new CCMenuItemFont("On", fontSize),
-                new CCMenuItemFont("Off", fontSize));
 
-            fontSize = 18;
-            CCMenuItemFont title2 = new CCMenuItemFont("Music", fontSize);
+			CCMenuItemFont.FontSize = 34;
+            
+            CCMenuItemToggle item1 = new CCMenuItemToggle(this.menuCallback,
+                new CCMenuItemFont("On"),
+                new CCMenuItemFont("Off"));
+
+			CCMenuItemFont.FontSize = 18;
+
+			CCMenuItemFont title2 = new CCMenuItemFont("Music");
             title2.Enabled = false;
 
-            fontSize = 34;
+			CCMenuItemFont.FontSize = 34;
             CCMenuItemToggle item2 = new CCMenuItemToggle(this.menuCallback,
-                new CCMenuItemFont("On", fontSize),
-                new CCMenuItemFont("Off",fontSize));
+                new CCMenuItemFont("On"),
+				new CCMenuItemFont("Off"));
 
-            fontSize = 18;
-            CCMenuItemFont title3 = new CCMenuItemFont("Quality", fontSize);
+			CCMenuItemFont.FontSize = 18;
+            CCMenuItemFont title3 = new CCMenuItemFont("Quality");
             title3.Enabled = false;
 
-            fontSize = 34;
+			CCMenuItemFont.FontSize = 34;
             CCMenuItemToggle item3 = new CCMenuItemToggle(this.menuCallback,
-                new CCMenuItemFont("High", fontSize),
-                new CCMenuItemFont("Low", fontSize));
+                new CCMenuItemFont("High"),
+                new CCMenuItemFont("Low"));
                 
-            fontSize = 18;
-            CCMenuItemFont title4 = new CCMenuItemFont("Orientation", fontSize);
+				CCMenuItemFont.FontSize = 18;
+            CCMenuItemFont title4 = new CCMenuItemFont("Orientation");
             title4.Enabled = false;
 
-            fontSize = 34;
-            CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
-                new CCMenuItemFont("Off", fontSize));
+				CCMenuItemFont.FontSize = 34;
 
-            item4.SubItems.Add(new CCMenuItemFont("33%", fontSize));
-            item4.SubItems.Add(new CCMenuItemFont("66%", fontSize));
-            item4.SubItems.Add(new CCMenuItemFont("100%", fontSize));
+            CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
+                new CCMenuItemFont("Off"));
+
+            item4.SubItems.Add(new CCMenuItemFont("33%"));
+            item4.SubItems.Add(new CCMenuItemFont("66%"));
+				item4.SubItems.Add(new CCMenuItemFont("100%"));
 
             // you can change the one of the items by doing this
             item4.SelectedIndex = 2;

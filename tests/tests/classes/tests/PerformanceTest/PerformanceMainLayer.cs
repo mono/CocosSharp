@@ -17,9 +17,12 @@ namespace tests
             CCMenu pMenu = new CCMenu(null);
             pMenu.Position = new CCPoint(0, 0);
 
+			CCMenuItemFont.FontSize = 18;
+			CCMenuItemFont.FontName = "arial";
+
             for (int i = 0; i < PerformanceTestScene.MAX_COUNT; ++i)
             {
-                CCMenuItemFont pItem = new CCMenuItemFont(PerformanceTestScene.testsName[i], "arial", 24, menuCallback);
+                CCMenuItemFont pItem = new CCMenuItemFont(PerformanceTestScene.testsName[i], menuCallback);
                 pItem.Position = new CCPoint(s.Width / 2, s.Height - (i + 1) * PerformanceTestScene.LINE_SPACE);
                 pMenu.AddChild(pItem, PerformanceTestScene.kItemTagBasic + i);
             }

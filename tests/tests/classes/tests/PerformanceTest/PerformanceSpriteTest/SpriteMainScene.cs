@@ -27,10 +27,11 @@ namespace tests
             lastRenderedCount = 0;
             quantityNodes = 0;
 
-            uint fontSize = 64;
-            CCMenuItemFont decrease = new CCMenuItemFont(" - ", fontSize, onDecrease);
+			CCMenuItemFont.FontSize = 64;
+			CCMenuItemFont.FontName = "arial";
+            CCMenuItemFont decrease = new CCMenuItemFont(" - ", onDecrease);
             decrease.Color = new CCColor3B(0, 200, 20);
-            CCMenuItemFont increase = new CCMenuItemFont(" + ", fontSize, onIncrease);
+            CCMenuItemFont increase = new CCMenuItemFont(" + ", onIncrease);
             increase.Color = new CCColor3B(0, 200, 20);
 
             CCMenu menu = new CCMenu(decrease, increase);
@@ -48,13 +49,14 @@ namespace tests
             AddChild(pMenu, 1, PerformanceSpriteTest.kTagMenuLayer);
 
             // Sub Tests
-            fontSize = 32;
+			CCMenuItemFont.FontSize = 32;
+			CCMenuItemFont.FontName = "arial";
             CCMenu pSubMenu = new CCMenu(null);
             for (int i = 1; i <= 9; ++i)
             {
                 //char str[10] = {0};
                 var str = string.Format("{0}", i);
-                CCMenuItemFont itemFont = new CCMenuItemFont(str, fontSize, testNCallback);
+                CCMenuItemFont itemFont = new CCMenuItemFont(str, testNCallback);
                 itemFont.Tag = i;
                 pSubMenu.AddChild(itemFont, 10);
 

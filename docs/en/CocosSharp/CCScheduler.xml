@@ -1,0 +1,670 @@
+<Type Name="CCScheduler" FullName="CocosSharp.CCScheduler">
+  <TypeSignature Language="C#" Value="public class CCScheduler" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScheduler extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para> is responsible for triggering the scheduled callbacks. You should not use NSTimer. Instead use this class. </para>
+    </summary>
+    <remarks>
+      <para>There are 2 different types of callbacks (selectors):<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>The 'custom selectors' should be avoided when possible. It is faster, and consumes less memory to use the 'update selector'. </para>
+      <item>
+        <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
+      </item>
+      <description>update selector: the 'update' selector will be called every frame. You can customize the priority.</description>
+      <item>
+        <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
+      </item>
+      <description>custom selector: A custom selector will be called every frame, or with a custom interval of time</description>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScheduler ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsActionManagerActive">
+      <MemberSignature Language="C#" Value="public bool IsActionManagerActive { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsActionManagerActive" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsTargetPaused">
+      <MemberSignature Language="C#" Value="public bool IsTargetPaused (CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsTargetPaused(class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>Returns whether or not the target is paused
+v1.0.0 </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IsTargetPaused">
+      <MemberSignature Language="C#" Value="public bool IsTargetPaused (CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsTargetPaused(class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCPriorityNonSystemMin">
+      <MemberSignature Language="C#" Value="public const int kCCPriorityNonSystemMin = -2147483647;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCPriorityNonSystemMin = (-2147483647)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-2147483647</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCPrioritySystem">
+      <MemberSignature Language="C#" Value="public const int kCCPrioritySystem = -2147483648;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal int32 kCCPrioritySystem = (-2147483648)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <MemberValue>-2147483648</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="kCCRepeatForever">
+      <MemberSignature Language="C#" Value="public const uint kCCRepeatForever = 4294967294;" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal unsigned int32 kCCRepeatForever = (4294967294)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <MemberValue>4294967294</MemberValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargets">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt; PauseAllTargets ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.ICCSelectorProtocol&gt; PauseAllTargets() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Pause all selectors from all targets. You should NEVER call this method, unless you know what you are doing. v2.0.0 </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargets">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt; PauseAllTargets ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.ICCUpdatable&gt; PauseAllTargets() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargets">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt; PauseAllTargets (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.ICCUpdatable&gt; PauseAllTargets(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseAllTargetsWithMinPriority">
+      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt; PauseAllTargetsWithMinPriority (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.ICCSelectorProtocol&gt; PauseAllTargetsWithMinPriority(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt;</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>Pause all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. v2.0.0 </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PauseTarget">
+      <MemberSignature Language="C#" Value="public void PauseTarget (CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseTarget(class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>Pauses the target. All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed. If the target is not present, nothing happens. v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PauseTarget">
+      <MemberSignature Language="C#" Value="public void PauseTarget (CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseTarget(class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resume">
+      <MemberSignature Language="C#" Value="public void Resume (CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resume(class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resume">
+      <MemberSignature Language="C#" Value="public void Resume (System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt; targetsToResume);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resume(class System.Collections.Generic.List`1&lt;class CocosSharp.ICCUpdatable&gt; targetsToResume) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targetsToResume" Type="System.Collections.Generic.List&lt;CocosSharp.ICCUpdatable&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="targetsToResume">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeTarget">
+      <MemberSignature Language="C#" Value="public void ResumeTarget (CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTarget(class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>Resumes the target. The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again. If the target is not present, nothing happens. v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeTargets">
+      <MemberSignature Language="C#" Value="public void ResumeTargets (System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt; targetsToResume);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTargets(class System.Collections.Generic.List`1&lt;class CocosSharp.ICCSelectorProtocol&gt; targetsToResume) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targetsToResume" Type="System.Collections.Generic.List&lt;CocosSharp.ICCSelectorProtocol&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="targetsToResume">To be added.</param>
+        <summary>Resume selectors on a set of targets. This can be useful for undoing a call to pauseAllSelectors. v2.0.0 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (CocosSharp.ICCUpdatable targt, int priority, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class CocosSharp.ICCUpdatable targt, int32 priority, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targt" Type="CocosSharp.ICCUpdatable" />
+        <Parameter Name="priority" Type="System.Int32" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="targt">To be added.</param>
+        <param name="priority">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Schedule">
+      <MemberSignature Language="C#" Value="public void Schedule (Action&lt;float&gt; selector, CocosSharp.ICCUpdatable target, float interval, uint repeat, float delay, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Schedule(class System.Action`1&lt;float32&gt; selector, class CocosSharp.ICCUpdatable target, float32 interval, unsigned int32 repeat, float32 delay, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+        <Parameter Name="interval" Type="System.Single" />
+        <Parameter Name="repeat" Type="System.UInt32" />
+        <Parameter Name="delay" Type="System.Single" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <param name="interval">To be added.</param>
+        <param name="repeat">To be added.</param>
+        <param name="delay">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleSelector">
+      <MemberSignature Language="C#" Value="public void ScheduleSelector (Action&lt;float&gt; selector, CocosSharp.ICCSelectorProtocol target, float interval, uint repeat, float delay, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleSelector(class System.Action`1&lt;float32&gt; selector, class CocosSharp.ICCSelectorProtocol target, float32 interval, unsigned int32 repeat, float32 delay, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+        <Parameter Name="interval" Type="System.Single" />
+        <Parameter Name="repeat" Type="System.UInt32" />
+        <Parameter Name="delay" Type="System.Single" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <param name="interval">To be added.</param>
+        <param name="repeat">To be added.</param>
+        <param name="delay">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>calls scheduleSelector with kRepeatForever and a 0 delay </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ScheduleUpdateForTarget">
+      <MemberSignature Language="C#" Value="public void ScheduleUpdateForTarget (CocosSharp.ICCSelectorProtocol targt, int priority, bool paused);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ScheduleUpdateForTarget(class CocosSharp.ICCSelectorProtocol targt, int32 priority, bool paused) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="targt" Type="CocosSharp.ICCSelectorProtocol" />
+        <Parameter Name="priority" Type="System.Int32" />
+        <Parameter Name="paused" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="targt">To be added.</param>
+        <param name="priority">To be added.</param>
+        <param name="paused">To be added.</param>
+        <summary>Schedules the 'update' selector for a given target with a given priority. The 'update' selector will be called every frame. The lower the priority, the earlier it is called. v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StartActionManager">
+      <MemberSignature Language="C#" Value="public void StartActionManager ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StartActionManager() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TimeScale">
+      <MemberSignature Language="C#" Value="public float TimeScale;" />
+      <MemberSignature Language="ILAsm" Value=".field public float32 TimeScale" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Modifies the time of all scheduled callbacks.
+ You can use this property to create a 'slow motion' or 'fast forward' effect. Default is 1.0. To create a 'slow motion' effect, use values below 1.0. To create a 'fast forward' effect, use values higher than 1.0. v0.8 It will affect EVERY scheduled selector / action. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TimeScale">
+      <MemberSignature Language="C#" Value="public float TimeScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 TimeScale" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unschedule">
+      <MemberSignature Language="C#" Value="public void Unschedule (CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unschedule(class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unschedule">
+      <MemberSignature Language="C#" Value="public void Unschedule (Action&lt;float&gt; selector, CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Unschedule(class System.Action`1&lt;float32&gt; selector, class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAll">
+      <MemberSignature Language="C#" Value="public void UnscheduleAll ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAll() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Unschedules all selectors from all targets. You should NEVER call this method, unless you know what you are doing.</summary>
+        <remarks>
+          <para>Unschedules all selectors from all targets. You should NEVER call this method, unless you know what you are doing.</para>
+          <para>
+            <para>v0.99.3 </para>
+          </para>
+          <para>v0.99.3 </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAll">
+      <MemberSignature Language="C#" Value="public void UnscheduleAll (CocosSharp.ICCUpdatable target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAll(class CocosSharp.ICCUpdatable target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCUpdatable" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAll">
+      <MemberSignature Language="C#" Value="public void UnscheduleAll (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAll(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllForTarget">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllForTarget (CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllForTarget(class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>Unschedules all selectors for a given target. This also includes the "update" selector. v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleAllWithMinPriority">
+      <MemberSignature Language="C#" Value="public void UnscheduleAllWithMinPriority (int minPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleAllWithMinPriority(int32 minPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="minPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="minPriority">To be added.</param>
+        <summary>Unschedules all selectors from all targets with a minimum priority. You should only call this with kPriorityNonSystemMin or higher. v2.0.0 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleSelector">
+      <MemberSignature Language="C#" Value="public void UnscheduleSelector (Action&lt;float&gt; selector, CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleSelector(class System.Action`1&lt;float32&gt; selector, class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="selector" Type="System.Action&lt;System.Single&gt;" />
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="selector">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>Unschedule a selector for a given target. If you want to unschedule the "update", use unscheudleUpdateForTarget. v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="UnscheduleUpdateForTarget">
+      <MemberSignature Language="C#" Value="public void UnscheduleUpdateForTarget (CocosSharp.ICCSelectorProtocol target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnscheduleUpdateForTarget(class CocosSharp.ICCSelectorProtocol target) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.ICCSelectorProtocol" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <summary>Unschedules the update selector for a given target v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

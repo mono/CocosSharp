@@ -1,0 +1,279 @@
+<Type Name="CCDrawNode" FullName="CocosSharp.CCDrawNode">
+  <TypeSignature Language="C#" Value="public class CCDrawNode : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDrawNode extends CocosSharp.CCNode" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary> that draws dots, segments and polygons. Faster than the "drawing primitives" since they it draws everything in one single batch.</summary>
+    <remarks>
+      <para>
+        <see cref="T:CocosSharp.CCDrawNode" />
+        <see cref="T:CocosSharp.CCNode" /> that draws dots, segments and polygons. Faster than the "drawing primitives" since they it draws everything in one single batch.</para>
+      <see cref="T:CocosSharp.CCDrawNode" />
+      <see cref="T:CocosSharp.CCNode" />
+      <para>
+        <para>v2.1 </para>
+      </para>
+      <para>v2.1 </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCDrawNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="BlendFunc">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clear">
+      <MemberSignature Language="C#" Value="public void Clear ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Clear the geometry in the node's buffer. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
+        <remarks>
+          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
+          <list type="bullet" />
+          <item>
+            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
+          <item>
+            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          </item>
+          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
+          <item>
+            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+          </item>
+          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawCircle">
+      <MemberSignature Language="C#" Value="public void DrawCircle (CocosSharp.CCPoint center, float radius, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawCircle">
+      <MemberSignature Language="C#" Value="public void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+        <Parameter Name="segments" Type="System.Int32" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="angle">To be added.</param>
+        <param name="segments">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawDot">
+      <MemberSignature Language="C#" Value="public void DrawDot (CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4F color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawDot(valuetype CocosSharp.CCPoint pos, float32 radius, valuetype CocosSharp.CCColor4F color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pos" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="pos">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>draw a dot at a position, with a given radius and color </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPolygon">
+      <MemberSignature Language="C#" Value="public void DrawPolygon (CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4F fillColor, float borderWidth, CocosSharp.CCColor4F borderColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawPolygon(valuetype CocosSharp.CCPoint[] verts, int32 count, valuetype CocosSharp.CCColor4F fillColor, float32 borderWidth, valuetype CocosSharp.CCColor4F borderColor) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="verts" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="count" Type="System.Int32" />
+        <Parameter Name="fillColor" Type="CocosSharp.CCColor4F" />
+        <Parameter Name="borderWidth" Type="System.Single" />
+        <Parameter Name="borderColor" Type="CocosSharp.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="verts">To be added.</param>
+        <param name="count">To be added.</param>
+        <param name="fillColor">To be added.</param>
+        <param name="borderWidth">To be added.</param>
+        <param name="borderColor">To be added.</param>
+        <summary>draw a polygon with a fill color and line color </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DrawRect">
+      <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSegment">
+      <MemberSignature Language="C#" Value="public void DrawSegment (CocosSharp.CCPoint from, CocosSharp.CCPoint to, float radius, CocosSharp.CCColor4F color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawSegment(valuetype CocosSharp.CCPoint from, valuetype CocosSharp.CCPoint to, float32 radius, valuetype CocosSharp.CCColor4F color) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="from" Type="CocosSharp.CCPoint" />
+        <Parameter Name="to" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="from">To be added.</param>
+        <param name="to">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>draw a segment with a radius and color </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public override bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Initializes the instance of Whether the initialization was successful. </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

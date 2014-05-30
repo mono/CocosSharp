@@ -1,0 +1,175 @@
+<Type Name="CCTransitionPageTurn" FullName="CocosSharp.CCTransitionPageTurn">
+  <TypeSignature Language="C#" Value="public class CCTransitionPageTurn : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionPageTurn extends CocosSharp.CCTransitionScene" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>A transition which peels back the bottom right hand corner of a scene to transition to the scene beneath it simulating a page turn. </para>
+    </summary>
+    <remarks>
+      <para>This uses a 3DAction so it's strongly recommended that depth buffering is turned on in <see cref="T:CocosSharp.CCDirector" /> using:</para>
+      <see cref="T:CocosSharp.CCDirector" />
+      <para>
+        <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;setDepthBufferFormat(kDepthBuffer16);</para>
+      <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionPageTurn ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Creates a base transition with duration and incoming scene. If back is true then the effect is reversed to appear as if the incoming scene is being turned from left over the outgoing scene. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTransitionPageTurn (float t, CocosSharp.CCScene scene, bool backwards);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene, bool backwards) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="backwards" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <param name="backwards">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ActionWithSize">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionInterval ActionWithSize (CocosSharp.CCGridSize vector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionInterval ActionWithSize(valuetype CocosSharp.CCGridSize vector) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vector" Type="CocosSharp.CCGridSize" />
+      </Parameters>
+      <Docs>
+        <param name="vector">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Back">
+      <MemberSignature Language="C#" Value="protected bool Back;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool Back" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithDuration">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDuration (float t, CocosSharp.CCScene scene, bool backwards);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDuration(float32 t, class CocosSharp.CCScene scene, bool backwards) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+        <Parameter Name="backwards" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="scene">To be added.</param>
+        <param name="backwards">To be added.</param>
+        <summary>Creates a base transition with duration and incoming scene. If back is true then the effect is reversed to appear as if the incoming scene is being turned from left over the outgoing scene. </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_bBack">
+      <MemberSignature Language="C#" Value="protected bool m_bBack;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bBack" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnEnter">
+      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SceneOrder">
+      <MemberSignature Language="C#" Value="protected override void SceneOrder ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void SceneOrder() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

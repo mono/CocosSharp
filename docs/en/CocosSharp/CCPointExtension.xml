@@ -1,0 +1,908 @@
+<Type Name="CCPointExtension" FullName="CocosSharp.CCPointExtension">
+  <TypeSignature Language="C#" Value="public class CCPointExtension" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPointExtension extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Obsolete("use CCPoint and CCPoint operator overloads - Will be deleted Aug 1, 2013")</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPointExtension ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Add">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Add (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Add(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint.Add() or the plus operator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Angle">
+      <MemberSignature Language="C#" Value="public static float Angle (CocosSharp.CCPoint a, CocosSharp.CCPoint b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Angle(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.Angle")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CocosSharp.CCPoint" />
+        <Parameter Name="b" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AngleSigned">
+      <MemberSignature Language="C#" Value="public static float AngleSigned (CocosSharp.CCPoint a, CocosSharp.CCPoint b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 AngleSigned(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.AngleSigned")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CocosSharp.CCPoint" />
+        <Parameter Name="b" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clamp">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Clamp (CocosSharp.CCPoint p, CocosSharp.CCPoint from, CocosSharp.CCPoint to);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Clamp(valuetype CocosSharp.CCPoint p, valuetype CocosSharp.CCPoint from, valuetype CocosSharp.CCPoint to) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" />
+        <Parameter Name="from" Type="CocosSharp.CCPoint" />
+        <Parameter Name="to" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="from">To be added.</param>
+        <param name="to">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Clamp">
+      <MemberSignature Language="C#" Value="public static float Clamp (float value, float min_inclusive, float max_inclusive);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Clamp(float32 value, float32 min_inclusive, float32 max_inclusive) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Single" />
+        <Parameter Name="min_inclusive" Type="System.Single" />
+        <Parameter Name="max_inclusive" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="min_inclusive">To be added.</param>
+        <param name="max_inclusive">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ComputationOperation">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint ComputationOperation (CocosSharp.CCPoint p, CocosSharp.CCPointExtension.ComputationOperationDelegate del);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint ComputationOperation(valuetype CocosSharp.CCPoint p, class CocosSharp.CCPointExtension/ComputationOperationDelegate del) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" />
+        <Parameter Name="del" Type="CocosSharp.CCPointExtension+ComputationOperationDelegate" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="del">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreatePoint">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint CreatePoint (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint CreatePoint(float32 x, float32 y) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint()")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CrossProduct">
+      <MemberSignature Language="C#" Value="public static float CrossProduct (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CrossProduct(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.CrossProduct")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Distance">
+      <MemberSignature Language="C#" Value="public static float Distance (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Distance(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DotProduct">
+      <MemberSignature Language="C#" Value="public static float DotProduct (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 DotProduct(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint.DotProduct")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ForAngle">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint ForAngle (float a);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint ForAngle(float32 a) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FromSize">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint FromSize (CocosSharp.CCSize s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint FromSize(valuetype CocosSharp.CCSize s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FuzzyEqual">
+      <MemberSignature Language="C#" Value="public static bool FuzzyEqual (CocosSharp.CCPoint a, CocosSharp.CCPoint b, float variance);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool FuzzyEqual(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b, float32 variance) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.FuzzyEqual")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CocosSharp.CCPoint" />
+        <Parameter Name="b" Type="CocosSharp.CCPoint" />
+        <Parameter Name="variance" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="variance">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IntersectPoint">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint IntersectPoint (CocosSharp.CCPoint A, CocosSharp.CCPoint B, CocosSharp.CCPoint C, CocosSharp.CCPoint D);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint IntersectPoint(valuetype CocosSharp.CCPoint A, valuetype CocosSharp.CCPoint B, valuetype CocosSharp.CCPoint C, valuetype CocosSharp.CCPoint D) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.IntersectPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="CocosSharp.CCPoint" />
+        <Parameter Name="B" Type="CocosSharp.CCPoint" />
+        <Parameter Name="C" Type="CocosSharp.CCPoint" />
+        <Parameter Name="D" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Length">
+      <MemberSignature Language="C#" Value="public static float Length (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Length(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LengthSquare">
+      <MemberSignature Language="C#" Value="public static float LengthSquare (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 LengthSquare(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Lerp">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Lerp (CocosSharp.CCPoint a, CocosSharp.CCPoint b, float alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Lerp(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b, float32 alpha) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.Lerp")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CocosSharp.CCPoint" />
+        <Parameter Name="b" Type="CocosSharp.CCPoint" />
+        <Parameter Name="alpha" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <param name="alpha">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineIntersect">
+      <MemberSignature Language="C#" Value="public static bool LineIntersect (CocosSharp.CCPoint A, CocosSharp.CCPoint B, CocosSharp.CCPoint C, CocosSharp.CCPoint D, ref float S, ref float T);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool LineIntersect(valuetype CocosSharp.CCPoint A, valuetype CocosSharp.CCPoint B, valuetype CocosSharp.CCPoint C, valuetype CocosSharp.CCPoint D, float32 S, float32 T) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.LineIntersect")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="CocosSharp.CCPoint" />
+        <Parameter Name="B" Type="CocosSharp.CCPoint" />
+        <Parameter Name="C" Type="CocosSharp.CCPoint" />
+        <Parameter Name="D" Type="CocosSharp.CCPoint" />
+        <Parameter Name="S" Type="System.Single&amp;" RefType="ref" />
+        <Parameter Name="T" Type="System.Single&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <param name="S">To be added.</param>
+        <param name="T">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Midpoint">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Midpoint (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Midpoint(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint.Midpoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Multiply">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Multiply (CocosSharp.CCPoint v, float s);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Multiply(valuetype CocosSharp.CCPoint v, float32 s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint() and the multiply operator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+        <Parameter Name="s" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MultiplyComponents">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint MultiplyComponents (CocosSharp.CCPoint a, CocosSharp.CCPoint b);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint MultiplyComponents(valuetype CocosSharp.CCPoint a, valuetype CocosSharp.CCPoint b) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.MultiplyComponents")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="a" Type="CocosSharp.CCPoint" />
+        <Parameter Name="b" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="a">To be added.</param>
+        <param name="b">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Negative">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Negative (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Negative(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint.Negative() or the unary operator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Normalize">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Normalize (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Normalize(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerpendicularClockwise">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PerpendicularClockwise (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PerpendicularClockwise(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.PerpendicularClockwise")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PerpendicularCounterClockwise">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PerpendicularCounterClockwise (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PerpendicularCounterClockwise(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.PerpendicularCounterClockwise")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Project">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Project (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Project(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.Project")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Rotate">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Rotate (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Rotate(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.Rotate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RotateByAngle">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint RotateByAngle (CocosSharp.CCPoint v, CocosSharp.CCPoint pivot, float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint RotateByAngle(valuetype CocosSharp.CCPoint v, valuetype CocosSharp.CCPoint pivot, float32 angle) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.RotateByAngle")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+        <Parameter Name="pivot" Type="CocosSharp.CCPoint" />
+        <Parameter Name="angle" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <param name="pivot">To be added.</param>
+        <param name="angle">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SegmentIntersect">
+      <MemberSignature Language="C#" Value="public static bool SegmentIntersect (CocosSharp.CCPoint A, CocosSharp.CCPoint B, CocosSharp.CCPoint C, CocosSharp.CCPoint D);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool SegmentIntersect(valuetype CocosSharp.CCPoint A, valuetype CocosSharp.CCPoint B, valuetype CocosSharp.CCPoint C, valuetype CocosSharp.CCPoint D) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.SegmentIntersect")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="A" Type="CocosSharp.CCPoint" />
+        <Parameter Name="B" Type="CocosSharp.CCPoint" />
+        <Parameter Name="C" Type="CocosSharp.CCPoint" />
+        <Parameter Name="D" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="A">To be added.</param>
+        <param name="B">To be added.</param>
+        <param name="C">To be added.</param>
+        <param name="D">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Subtract">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Subtract (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Subtract(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("use CCPoint() and the minus operator")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToAngle">
+      <MemberSignature Language="C#" Value="public static float ToAngle (CocosSharp.CCPoint v);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 ToAngle(valuetype CocosSharp.CCPoint v) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unrotate">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint Unrotate (CocosSharp.CCPoint v1, CocosSharp.CCPoint v2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint Unrotate(valuetype CocosSharp.CCPoint v1, valuetype CocosSharp.CCPoint v2) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use CCPoint.Unrotate")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="v1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="v2" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="v1">To be added.</param>
+        <param name="v2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

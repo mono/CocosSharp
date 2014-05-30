@@ -1,0 +1,168 @@
+<Type Name="CCTouchHandler" FullName="CocosSharp.CCTouchHandler">
+  <TypeSignature Language="C#" Value="public class CCTouchHandler" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTouchHandler extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary> Object than contains the delegate and priority of the event handler. </summary>
+    <remarks />
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTouchHandler ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Create">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTouchHandler Create (CocosSharp.ICCTouchDelegate pDelegate, int nPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTouchHandler Create(class CocosSharp.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTouchHandler</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
+        <Parameter Name="nPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <param name="nPriority">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Delegate">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCTouchDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCTouchDelegate Delegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTouchDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>delegate </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EnabledSelectors">
+      <MemberSignature Language="C#" Value="public int EnabledSelectors { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 EnabledSelectors" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>enabled selectors </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithDelegate">
+      <MemberSignature Language="C#" Value="public virtual bool InitWithDelegate (CocosSharp.ICCTouchDelegate pDelegate, int nPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithDelegate(class CocosSharp.ICCTouchDelegate pDelegate, int32 nPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelegate" Type="CocosSharp.ICCTouchDelegate" />
+        <Parameter Name="nPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="pDelegate">To be added.</param>
+        <param name="nPriority">To be added.</param>
+        <summary>initializes a  with a delegate and a priority </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_nEnabledSelectors">
+      <MemberSignature Language="C#" Value="protected int m_nEnabledSelectors;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nEnabledSelectors" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_nPriority">
+      <MemberSignature Language="C#" Value="protected int m_nPriority;" />
+      <MemberSignature Language="ILAsm" Value=".field family int32 m_nPriority" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pDelegate">
+      <MemberSignature Language="C#" Value="protected CocosSharp.ICCTouchDelegate m_pDelegate;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.ICCTouchDelegate m_pDelegate" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCTouchDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Priority">
+      <MemberSignature Language="C#" Value="public int Priority { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 Priority" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>priority </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,199 @@
+<Type Name="CCNodeLoaderLibrary" FullName="CocosSharp.CCNodeLoaderLibrary">
+  <TypeSignature Language="C#" Value="public class CCNodeLoaderLibrary" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeLoaderLibrary extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCNodeLoaderLibrary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetCCNodeLoader">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNodeLoader GetCCNodeLoader (string pClassName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCNodeLoader GetCCNodeLoader(string pClassName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNodeLoader</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pClassName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pClassName">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NewDefaultCCNodeLoaderLibrary">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCNodeLoaderLibrary NewDefaultCCNodeLoaderLibrary() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNodeLoaderLibrary</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Purge">
+      <MemberSignature Language="C#" Value="public void Purge (bool pDelete);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Purge(bool pDelete) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pDelete" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="pDelete">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeSharedCCNodeLoaderLibrary">
+      <MemberSignature Language="C#" Value="public static void PurgeSharedCCNodeLoaderLibrary ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedCCNodeLoaderLibrary() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterCCNodeLoader">
+      <MemberSignature Language="C#" Value="public void RegisterCCNodeLoader (string pClassName, CocosSharp.CCNodeLoader pCCNodeLoader);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RegisterCCNodeLoader(string pClassName, class CocosSharp.CCNodeLoader pCCNodeLoader) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pClassName" Type="System.String" />
+        <Parameter Name="pCCNodeLoader" Type="CocosSharp.CCNodeLoader" />
+      </Parameters>
+      <Docs>
+        <param name="pClassName">To be added.</param>
+        <param name="pCCNodeLoader">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RegisterDefaultCCNodeLoaders">
+      <MemberSignature Language="C#" Value="public void RegisterDefaultCCNodeLoaders ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RegisterDefaultCCNodeLoaders() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedCCNodeLoaderLibrary">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCNodeLoaderLibrary SharedCCNodeLoaderLibrary { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCNodeLoaderLibrary SharedCCNodeLoaderLibrary" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNodeLoaderLibrary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedInstance">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCNodeLoaderLibrary SharedInstance { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCNodeLoaderLibrary SharedInstance" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNodeLoaderLibrary</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UnregisterCCNodeLoader">
+      <MemberSignature Language="C#" Value="public void UnregisterCCNodeLoader (string pClassName);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnregisterCCNodeLoader(string pClassName) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pClassName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pClassName">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,0 +1,78 @@
+<Type Name="CCGlesVersion" FullName="CocosSharp.CCGlesVersion">
+  <TypeSignature Language="C#" Value="public enum CCGlesVersion" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCGlesVersion extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="GLES_VER_1_0">
+      <MemberSignature Language="C#" Value="GLES_VER_1_0" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGlesVersion GLES_VER_1_0 = int32(1)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GLES_VER_1_1">
+      <MemberSignature Language="C#" Value="GLES_VER_1_1" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGlesVersion GLES_VER_1_1 = int32(2)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GLES_VER_2_0">
+      <MemberSignature Language="C#" Value="GLES_VER_2_0" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGlesVersion GLES_VER_2_0 = int32(3)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="GLES_VER_INVALID">
+      <MemberSignature Language="C#" Value="GLES_VER_INVALID" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCGlesVersion GLES_VER_INVALID = int32(0)" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

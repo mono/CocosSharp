@@ -1,0 +1,139 @@
+<Type Name="CCDisplayLinkDirector" FullName="CocosSharp.CCDisplayLinkDirector">
+  <TypeSignature Language="C#" Value="public class CCDisplayLinkDirector : CocosSharp.CCDirector" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDisplayLinkDirector extends CocosSharp.CCDirector" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCDirector</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para> is a  that synchronizes timers with the refresh rate of the display. </para>
+    </summary>
+    <remarks>
+      <para>Features and Limitations:<list type="bullet" /></para>
+      <list type="bullet" />
+      <para>
+        <para>v0.8.2 </para>
+      </para>
+      <para>v0.8.2 </para>
+      <item>
+        <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      </item>
+      <description>Scheduled timers &amp; drawing are synchronizes with the refresh rate of the display</description>
+      <item>
+        <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
+      </item>
+      <description>Only supports animation intervals of 1/60 1/30 &amp; 1/15</description>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCDisplayLinkDirector ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnimationInterval">
+      <MemberSignature Language="C#" Value="public override double AnimationInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 AnimationInterval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Set the FPS value. </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="MainLoop">
+      <MemberSignature Language="C#" Value="public override void MainLoop (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void MainLoop(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MainLoop">
+      <MemberSignature Language="C#" Value="public override void MainLoop (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void MainLoop(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartAnimation">
+      <MemberSignature Language="C#" Value="public override void StartAnimation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartAnimation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The main loop is triggered again. Call this function only if [stopAnimation] was called earlier Don't call this function to start the main loop. To run the main loop call runWithScene </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="StopAnimation">
+      <MemberSignature Language="C#" Value="public override void StopAnimation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StopAnimation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

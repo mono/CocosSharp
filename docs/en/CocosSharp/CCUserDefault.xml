@@ -1,0 +1,362 @@
+<Type Name="CCUserDefault" FullName="CocosSharp.CCUserDefault">
+  <TypeSignature Language="C#" Value="public class CCUserDefault" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</summary>
+    <remarks>
+      <para>
+        <see cref="T:CocosSharp.CCUserDefault" /> acts as a tiny database. You can save and get base type values by it. For example, setBoolForKey("played", true) will add a bool value true into the database. Its key is "played". You can get the value of the key by getBoolForKey("played").</para>
+      <see cref="T:CocosSharp.CCUserDefault" />
+      <para>It supports the following base types: bool, int, float, double, string </para>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Flush">
+      <MemberSignature Language="C#" Value="public void Flush ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Flush() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>
+          <para>Save content to xml file. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBoolForKey">
+      <MemberSignature Language="C#" Value="public bool GetBoolForKey (string pKey);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string pKey) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <summary>
+          <para>Get bool value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is false. </para>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetBoolForKey">
+      <MemberSignature Language="C#" Value="public bool GetBoolForKey (string key, bool defaultValue = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string key, bool defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetDoubleForKey">
+      <MemberSignature Language="C#" Value="public double GetDoubleForKey (string key, double defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetDoubleForKey(string key, float64 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>
+          <para>Get double value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0. </para>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetFloatForKey">
+      <MemberSignature Language="C#" Value="public float GetFloatForKey (string key, float defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetFloatForKey(string key, float32 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>
+          <para>Get float value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0.0f. </para>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIntegerForKey">
+      <MemberSignature Language="C#" Value="public int GetIntegerForKey (string pKey);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string pKey) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pKey" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="pKey">To be added.</param>
+        <summary>
+          <para>Get integer value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0. </para>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetIntegerForKey">
+      <MemberSignature Language="C#" Value="public int GetIntegerForKey (string key, int defaultValue = 0);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string key, int32 defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetStringForKey">
+      <MemberSignature Language="C#" Value="public string GetStringForKey (string key, string defaultValue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetStringForKey(string key, string defaultValue) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="defaultValue" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="defaultValue">To be added.</param>
+        <summary>
+          <para>Get string value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is "". </para>
+        </summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeSharedUserDefault">
+      <MemberSignature Language="C#" Value="public void PurgeSharedUserDefault ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeSharedUserDefault() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetBoolForKey">
+      <MemberSignature Language="C#" Value="public void SetBoolForKey (string key, bool value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBoolForKey(string key, bool value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+          <para>Set bool value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDoubleForKey">
+      <MemberSignature Language="C#" Value="public void SetDoubleForKey (string key, double value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDoubleForKey(string key, float64 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+          <para>Set double value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetFloatForKey">
+      <MemberSignature Language="C#" Value="public void SetFloatForKey (string key, float value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFloatForKey(string key, float32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+          <para>Set float value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetIntegerForKey">
+      <MemberSignature Language="C#" Value="public void SetIntegerForKey (string key, int value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetIntegerForKey(string key, int32 value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+          <para>Set integer value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetStringForKey">
+      <MemberSignature Language="C#" Value="public void SetStringForKey (string key, string value);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetStringForKey(string key, string value) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="key" Type="System.String" />
+        <Parameter Name="value" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="key">To be added.</param>
+        <param name="value">To be added.</param>
+        <summary>
+          <para>Set string value by key. </para>
+        </summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedUserDefault">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCUserDefault SharedUserDefault { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCUserDefault SharedUserDefault" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCUserDefault</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>deprecated. Use getInstace() instead </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+  </Members>
+</Type>

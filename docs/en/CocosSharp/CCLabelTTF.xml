@@ -1,0 +1,812 @@
+<Type Name="CCLabelTtf" FullName="CocosSharp.CCLabelTtf">
+  <TypeSignature Language="C#" Value="public class CCLabelTtf : CocosSharp.CCSprite, CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelTtf extends CocosSharp.CCSprite implements class CocosSharp.ICCTextContainer" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCTextContainer</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>
+      <para> is a subclass of TextureNode that knows how to render text labels. </para>
+    </summary>
+    <remarks>
+      <para>All features from TextureNode are valid in <see cref="T:CocosSharp.CCLabelTTF" /></para>
+      <see cref="T:CocosSharp.CCLabelTTF" />
+      <para>
+        <see cref="T:CocosSharp.CCLabelTTF" /> objects are slow. Consider using <see cref="T:CocosSharp.CCLabelAtlas" /> or <see cref="T:CocosSharp.CCLabelBMFont" /> instead.</para>
+      <see cref="T:CocosSharp.CCLabelTTF" />
+      <see cref="T:CocosSharp.CCLabelAtlas" />
+      <see cref="T:CocosSharp.CCLabelBMFont" />
+      <para>Custom ttf file can be put in assets/ or external storage that the Application can access. <programlisting><codeline><highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight><highlight class="stringliteral">"alignment<sp />left"</highlight><highlight class="normal">,<sp /></highlight><highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight><highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight></codeline><codeline><highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight><highlight class="stringliteral">"alignment<sp />right"</highlight><highlight class="normal">,<sp /></highlight><highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight><highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight></codeline><codeline><highlight class="normal"><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp /><sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight></codeline></programlisting></para>
+      <programlisting>
+        <codeline>
+          <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+          <highlight class="stringliteral">"alignment<sp />left"</highlight>
+          <highlight class="normal">,<sp /></highlight>
+          <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+          <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+          <highlight class="stringliteral">"alignment<sp />right"</highlight>
+          <highlight class="normal">,<sp /></highlight>
+          <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+          <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+        </codeline>
+        <codeline>
+          <highlight class="normal">
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />
+            <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+        </codeline>
+      </programlisting>
+      <codeline>
+        <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+        <highlight class="stringliteral">"alignment<sp />left"</highlight>
+        <highlight class="normal">,<sp /></highlight>
+        <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+        <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+      </codeline>
+      <highlight class="normal">LabelTTF<sp />*label1<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>
+      <highlight class="stringliteral">"alignment<sp />left"</highlight>
+      <sp />
+      <highlight class="normal">,<sp /></highlight>
+      <sp />
+      <highlight class="stringliteral">"A<sp />Damn<sp />Mess"</highlight>
+      <sp />
+      <sp />
+      <highlight class="normal">,<sp />fontSize,<sp />blockSize,<sp /></highlight>
+      <sp />
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      </codeline>
+      <highlight class="normal">
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+        <highlight class="stringliteral">"alignment<sp />right"</highlight>
+        <highlight class="normal">,<sp /></highlight>
+        <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+        <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+      </codeline>
+      <highlight class="normal">LabelTTF<sp />*label2<sp />=<sp /><ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>(</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <ref refid="classcocos2d_1_1_label_t_t_f_1aedbc1a667672b7aa408c184d643897a6" kindref="member">LabelTTF::create</ref>
+      <highlight class="stringliteral">"alignment<sp />right"</highlight>
+      <sp />
+      <highlight class="normal">,<sp /></highlight>
+      <sp />
+      <highlight class="stringliteral">"/mnt/sdcard/Scissor<sp />Cuts.ttf"</highlight>
+      <sp />
+      <highlight class="normal">,<sp />fontSize,<sp />blockSize,</highlight>
+      <sp />
+      <sp />
+      <codeline>
+        <highlight class="normal">
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />
+          <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      </codeline>
+      <highlight class="normal">
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />
+        <sp />kTextAlignmentLeft,<sp />kVerticalTextAlignmentCenter);</highlight>
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+      <sp />
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelTtf ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>Creates an label. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelTtf (string text, string fontName, float fontSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelTtf (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLabelTtf (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dimensions">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize Dimensions { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize Dimensions" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontName">
+      <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FontSize">
+      <MemberSignature Language="C#" Value="public float FontSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 FontSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetString">
+      <MemberSignature Language="C#" Value="public string GetString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Label Property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Returns the string that is currently being used in this label</summary>
+        <returns>To be added.</returns>
+        <remarks>
+          <para>Returns the string that is currently being used in this label</para>
+          <para>
+            <para>The string that is currently being used in this label </para>
+          </para>
+          <para>The string that is currently being used in this label </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="HorizontalAlignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTextAlignment HorizontalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTextAlignment HorizontalAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public override bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>initializes the </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string label, string fontName, float fontSize);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, string fontName, float32 fontSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <summary>initializes the  with a font name, alignment, dimension and font size </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string label, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment alignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string label, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment alignment) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="alignment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithString">
+      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="text" Type="System.String" />
+        <Parameter Name="fontName" Type="System.String" />
+        <Parameter Name="fontSize" Type="System.Single" />
+        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
+        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
+      </Parameters>
+      <Docs>
+        <param name="text">To be added.</param>
+        <param name="fontName">To be added.</param>
+        <param name="fontSize">To be added.</param>
+        <param name="dimensions">To be added.</param>
+        <param name="hAlignment">To be added.</param>
+        <param name="vAlignment">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_pString">
+      <MemberSignature Language="C#" Value="protected string m_pString;" />
+      <MemberSignature Language="ILAsm" Value=".field family string m_pString" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetString">
+      <MemberSignature Language="C#" Value="public void SetString (string label);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetString(string label) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Attributes>
+        <Attribute>
+          <AttributeName>System.Obsolete("Use Label Property")</AttributeName>
+        </Attribute>
+      </Attributes>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="label" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="label">To be added.</param>
+        <summary>changes the string to render Changing the string is as expensive as creating a new . To obtain better performance use </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Text">
+      <MemberSignature Language="C#" Value="public string Text { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance string Text" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ToString">
+      <MemberSignature Language="C#" Value="public override string ToString ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VerticalAlignment">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCVerticalTextAlignment VerticalAlignment { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCVerticalTextAlignment VerticalAlignment" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

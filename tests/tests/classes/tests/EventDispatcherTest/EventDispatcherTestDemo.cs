@@ -328,8 +328,6 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			AccelerometerEnabled = true;
-
 			var origin = CCDirector.SharedDirector.VisibleOrigin;
 			var size = CCDirector.SharedDirector.VisibleSize;
 
@@ -376,7 +374,6 @@ namespace tests
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			AccelerometerEnabled = false;
 
 		}
 		public override string title()
@@ -470,7 +467,7 @@ namespace tests
 				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
 			
 
-				nextItem.FontSize = 16;
+				CCMenuItemFont.FontSize = 16;
 				nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
 
 				var menu2 = new CCMenu(nextItem);
@@ -479,7 +476,7 @@ namespace tests
 				this.AddChild(menu2);
 			});
 
-			removeAllTouchItem.FontSize = 16;
+			CCMenuItemFont.FontSize = 16;
 			removeAllTouchItem.Position = CCVisibleRect.Right + new CCPoint(-100, 0);
 
 			var menu = new CCMenu(removeAllTouchItem);
@@ -1015,7 +1012,10 @@ namespace tests
 			sprite3.Position = CCPoint.Zero;
 			sprite2.AddChild(sprite3, -1);
 
-			var popup = new CCMenuItemFont("Popup", "", 20, (sender) =>
+			CCMenuItemFont.FontSize = 20;
+			CCMenuItemFont.FontName = "arial";
+
+			var popup = new CCMenuItemFont("Popup", (sender) =>
 				{
 
 					EventDispatcher.Pause(this,true);
@@ -1023,7 +1023,7 @@ namespace tests
 					var colorLayer = new CCLayerColor(new CCColor4B(0, 0, 255, 100));
 					AddChild(colorLayer, 99999);
 
-					var closeItem = new CCMenuItemFont("close", "", 20, (closeSender) =>
+					var closeItem = new CCMenuItemFont("close", (closeSender) =>
 						{
 							colorLayer.RemoveFromParent();
 							EventDispatcher.Resume(this, true);

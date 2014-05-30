@@ -1,0 +1,35 @@
+<Type Name="ICCTextureProtocol" FullName="CocosSharp.ICCTextureProtocol">
+  <TypeSignature Language="C#" Value="public interface ICCTextureProtocol : CocosSharp.ICCBlendProtocol" />
+  <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTextureProtocol implements class CocosSharp.ICCBlendProtocol" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCBlendProtocol</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Texture">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D Texture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

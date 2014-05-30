@@ -1,0 +1,150 @@
+<Type Name="CCMaskedSprite" FullName="CocosSharp.CCMaskedSprite">
+  <TypeSignature Language="C#" Value="public class CCMaskedSprite : CocosSharp.CCSprite" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMaskedSprite extends CocosSharp.CCSprite" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCSpriteFrame pSpriteFrame, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame pSpriteFrame, unsigned int8[] mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="pSpriteFrame" Type="CocosSharp.CCSpriteFrame" />
+        <Parameter Name="mask" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="pSpriteFrame">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, unsigned int8[] mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="mask" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="texture">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, unsigned int8[] mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="mask" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="mask" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="texture">To be added.</param>
+        <param name="rect">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="mask" Type="System.Byte[]" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <param name="rect">To be added.</param>
+        <param name="mask">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CollidesWith">
+      <MemberSignature Language="C#" Value="public virtual bool CollidesWith (CocosSharp.CCMaskedSprite target, out CocosSharp.CCPoint pt);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CollidesWith(class CocosSharp.CCMaskedSprite target, valuetype CocosSharp.CCPoint pt) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCMaskedSprite" />
+        <Parameter Name="pt" Type="CocosSharp.CCPoint&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="pt">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CollisionMask">
+      <MemberSignature Language="C#" Value="public virtual byte[] CollisionMask { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] CollisionMask" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Byte[]</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

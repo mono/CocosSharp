@@ -33,7 +33,6 @@ namespace CocosSharp
 {
     public class CCLayer : CCNode
     {
-        bool isAccelerometerEnabled;
         bool restoreScissor;
         bool noDrawChildren;
 
@@ -43,8 +42,6 @@ namespace CocosSharp
 
 
         #region Properties
-
-        CCEventListener TouchListener { get; set; }
 
         /// <summary>
         /// Set to true if the child drawing should be isolated in their own render target
@@ -69,31 +66,6 @@ namespace CocosSharp
             {
                 base.ContentSize = value;
                 InitClipping();
-            }
-        }
-
-        public bool AccelerometerEnabled
-        {
-            get 
-            { 
-                return isAccelerometerEnabled; 
-            }
-            set 
-            {
-				#if !NETFX_CORE
-                if (value != isAccelerometerEnabled)
-                {
-                    isAccelerometerEnabled = value;
-
-                    if (IsRunning)
-                    {
-                        CCDirector pDirector = CCDirector.SharedDirector;
-						pDirector.Accelerometer.Enabled = value;
-                    }
-                }
-                #else
-                isAccelerometerEnabled = false;
-                #endif
             }
         }
 
@@ -148,127 +120,13 @@ namespace CocosSharp
             CCDirector director = CCDirector.SharedDirector;
             CCApplication application = CCApplication.SharedApplication;
 
-            if (isAccelerometerEnabled)
-            {
-                #if !NETFX_CORE
-				director.Accelerometer.Enabled = true;
-                #endif
-            }
         }
 
         public override void OnExit()
         {
-            if (isAccelerometerEnabled)
-            {
-                #if !PSM &&!NETFX_CORE
-				CCDirector.SharedDirector.Accelerometer.Enabled = false;
-                #endif
-            }
 
             base.OnExit();
         }
-
-
-        #region Event handling
-
-        protected virtual void TouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchesHandler(EventTouch::EventCode::BEGAN, touches, event);
-//          return;
-//          }
-            #endif
-        }
-
-        protected virtual void TouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchesHandler(EventTouch::EventCode::MOVED, touches, event);
-//          return;
-//          }
-            #endif
-
-        }
-
-        protected virtual void TouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchesHandler(EventTouch::EventCode::ENDED, touches, event);
-//          return;
-//          }
-            #endif
-        }
-
-        protected virtual void TouchesCancelled(List<CCTouch> touches, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchesHandler(EventTouch::EventCode::CANCELLED, touches, event);
-//          return;
-//          }
-            #endif
-        }
-
-        // Layer touch callbacks
-
-        protected virtual bool TouchBegan(CCTouch touch, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          return executeScriptTouchHandler(EventTouch::EventCode::BEGAN, touch, event) == 0 ? false : true;
-//          }
-            #endif
-            Debug.Assert(false, "Layer#TouchBegan override me");
-            return true;
-
-        }
-
-        protected virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchHandler(EventTouch::EventCode::MOVED, touch, event);
-//          return;
-//          }
-            #endif
-
-        }
-
-        protected virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchHandler(EventTouch::EventCode::ENDED, touch, event);
-//          return;
-//          }
-            #endif
-
-        }
-
-        protected virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
-        {
-            #if CC_ENABLE_SCRIPT_BINDING
-//          if (kScriptTypeLua == _scriptType)
-//          {
-//          executeScriptTouchHandler(EventTouch::EventCode::CANCELLED, touch, event);
-//          return;
-//          }
-            #endif
-
-        }
-
-        #endregion Event handling
-
 
         #region Visiting and drawing
 

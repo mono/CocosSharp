@@ -1,0 +1,1396 @@
+<Type Name="CCDirector" FullName="CocosSharp.CCDirector">
+  <TypeSignature Language="C#" Value="public abstract class CCDirector" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCDirector extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+      <para>Class that creates and handle the main Window and manages how and when to execute the Scenes. </para>
+    </summary>
+    <remarks>
+      <para>The <see cref="T:CocosSharp.CCDirector" /> is also responsible for:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCDirector" />
+      <list type="bullet" />
+      <para>Since the <see cref="T:CocosSharp.CCDirector" /> is a singleton, the standard way to use it is by calling: _ <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;methodName();</para>
+      <see cref="T:CocosSharp.CCDirector" />
+      <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
+      <para>The <see cref="T:CocosSharp.CCDirector" /> also sets the default OpenGL context:<list type="bullet" /></para>
+      <see cref="T:CocosSharp.CCDirector" />
+      <list type="bullet" />
+      <item>
+        <description>initializing the OpenGL context</description>
+      </item>
+      <description>initializing the OpenGL context</description>
+      <item>
+        <description>setting the OpenGL pixel format (default on is RGB565)</description>
+      </item>
+      <description>setting the OpenGL pixel format (default on is RGB565)</description>
+      <item>
+        <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
+      </item>
+      <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
+      <item>
+        <description>setting the projection (default one is 3D)</description>
+      </item>
+      <description>setting the projection (default one is 3D)</description>
+      <item>
+        <description>setting the orientation (default one is Portrait)</description>
+      </item>
+      <description>setting the orientation (default one is Portrait)</description>
+      <item>
+        <description>GL_TEXTURE_2D is enabled</description>
+      </item>
+      <description>GL_TEXTURE_2D is enabled</description>
+      <item>
+        <description>GL_VERTEX_ARRAY is enabled</description>
+      </item>
+      <description>GL_VERTEX_ARRAY is enabled</description>
+      <item>
+        <description>GL_COLOR_ARRAY is enabled</description>
+      </item>
+      <description>GL_COLOR_ARRAY is enabled</description>
+      <item>
+        <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
+      </item>
+      <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
+    </remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="protected CCDirector ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Accelerometer">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAccelerometer Accelerometer { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAccelerometer Accelerometer" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAccelerometer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setAccelerometer </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ActionManager">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionManager ActionManager { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionManager ActionManager" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionManager</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setActionManager </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="AnimationInterval">
+      <MemberSignature Language="C#" Value="public virtual double AnimationInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 AnimationInterval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Set the FPS value. </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="CanPopScene">
+      <MemberSignature Language="C#" Value="public bool CanPopScene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool CanPopScene" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentScaleFactor">
+      <MemberSignature Language="C#" Value="public float ContentScaleFactor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ContentScaleFactor" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>The size in pixels of the surface. It could be different than the screen size.
+ High-res devices might have a higher surface size than the screen size. Only available when compiled using SDK &gt;= 4.0. v0.99.4 </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToGl">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToGl (CocosSharp.CCPoint uiPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToGl(valuetype CocosSharp.CCPoint uiPoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="uiPoint" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="uiPoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ConvertToUi">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ConvertToUi (CocosSharp.CCPoint glPoint);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCPoint ConvertToUi(valuetype CocosSharp.CCPoint glPoint) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="glPoint" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="glPoint">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CreateStatsLabel">
+      <MemberSignature Language="C#" Value="public void CreateStatsLabel ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CreateStatsLabel() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Delegate">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCDirectorDelegate Delegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCDirectorDelegate Delegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCDirectorDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary> delegate. It shall implemente the DirectorDelegate protocol v0.99.5 </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DeserializeState">
+      <MemberSignature Language="C#" Value="public bool DeserializeState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DeserializeState() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayStats">
+      <MemberSignature Language="C#" Value="public bool DisplayStats { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DisplayStats" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Display the FPS on the bottom-left corner </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="DrawScene">
+      <MemberSignature Language="C#" Value="protected void DrawScene (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DrawScene(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawScene">
+      <MemberSignature Language="C#" Value="protected void DrawScene (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DrawScene(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>Draw the scene.
+ This method is called every frame. Don't call it manually. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public void End ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Ends the execution, releases the running scene. It doesn't remove the OpenGL view from its parent. You have to do it manually. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_DRAW">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_DRAW;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_DRAW" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_UPDATE">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_UPDATE;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_UPDATE" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_VISIT">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_VISIT;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_VISIT" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_PROJECTION_CHANGED">
+      <MemberSignature Language="C#" Value="public static string EVENT_PROJECTION_CHANGED;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_PROJECTION_CHANGED" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EventDispatcher">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCEventDispatcher EventDispatcher { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCEventDispatcher EventDispatcher" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCEventDispatcher</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GamePadEnabled">
+      <MemberSignature Language="C#" Value="public bool GamePadEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool GamePadEnabled" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Init">
+      <MemberSignature Language="C#" Value="public virtual bool Init ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Init() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsCanPopScene">
+      <MemberSignature Language="C#" Value="public bool IsCanPopScene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsCanPopScene" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsNextDeltaTimeZero">
+      <MemberSignature Language="C#" Value="public bool IsNextDeltaTimeZero { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsNextDeltaTimeZero" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsPaused">
+      <MemberSignature Language="C#" Value="public bool IsPaused { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsPaused" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Whether or not the  is paused </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IsPurgeDirectorInNextLoop">
+      <MemberSignature Language="C#" Value="protected bool IsPurgeDirectorInNextLoop { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsPurgeDirectorInNextLoop" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsSendCleanupToScene">
+      <MemberSignature Language="C#" Value="public bool IsSendCleanupToScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsSendCleanupToScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>How many frames were called since the director started Whether or not the replaced scene will receive the cleanup message. If the new scene is pushed, then the old scene won't receive the "cleanup" message. If the new scene replaces the old one, the it will receive the "cleanup" message. v0.99.0 </summary>
+        <returns>To be added.</returns>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="IsSendCleanupToScene">
+      <MemberSignature Language="C#" Value="public bool IsSendCleanupToScene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsSendCleanupToScene" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsUseAlphaBlending">
+      <MemberSignature Language="C#" Value="public bool IsUseAlphaBlending { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUseAlphaBlending" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsUseDepthTesting">
+      <MemberSignature Language="C#" Value="public bool IsUseDepthTesting { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUseDepthTesting" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="KeypadDispatcher">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCKeypadDispatcher KeypadDispatcher { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCKeypadDispatcher KeypadDispatcher" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCKeypadDispatcher</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setKeypadDispatcher </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="m_bPurgeDirecotorInNextLoop">
+      <MemberSignature Language="C#" Value="protected bool m_bPurgeDirecotorInNextLoop;" />
+      <MemberSignature Language="ILAsm" Value=".field family bool m_bPurgeDirecotorInNextLoop" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_dAnimationInterval">
+      <MemberSignature Language="C#" Value="protected double m_dAnimationInterval;" />
+      <MemberSignature Language="ILAsm" Value=".field family float64 m_dAnimationInterval" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="m_dOldAnimationInterval">
+      <MemberSignature Language="C#" Value="protected double m_dOldAnimationInterval;" />
+      <MemberSignature Language="ILAsm" Value=".field family float64 m_dOldAnimationInterval" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MainLoop">
+      <MemberSignature Language="C#" Value="public abstract void MainLoop (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void MainLoop(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MainLoop">
+      <MemberSignature Language="C#" Value="public abstract void MainLoop (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void MainLoop(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedsInit">
+      <MemberSignature Language="C#" Value="public virtual bool NeedsInit { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool NeedsInit" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NotificationNode">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode NotificationNode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode NotificationNode" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>This object will be visited after the main scene is visited. This object MUST implement the "visit" selector. Useful to hook a notification object, like Notifications (http://github.com/manucorporat/CCNotifications) v0.99.5 </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OldAnimationInterval">
+      <MemberSignature Language="C#" Value="protected double OldAnimationInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 OldAnimationInterval" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Pause">
+      <MemberSignature Language="C#" Value="public void Pause ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Pause() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Pauses the running scene. The running scene will be drawed but all scheduled timers will be paused While paused, the draw rate will be 4 FPS to reduce CPU consumption </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PopScene">
+      <MemberSignature Language="C#" Value="public void PopScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PopScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Pops out a scene from the queue. This scene will replace the running one. The running scene will be deleted. If there are no more scenes in the stack the execution is terminated. ONLY call it if there is a running scene. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PopScene">
+      <MemberSignature Language="C#" Value="public void PopScene (float t, CocosSharp.CCTransitionScene s);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PopScene(float32 t, class CocosSharp.CCTransitionScene s) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="s" Type="CocosSharp.CCTransitionScene" />
+      </Parameters>
+      <Docs>
+        <param name="t">To be added.</param>
+        <param name="s">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PopToRootScene">
+      <MemberSignature Language="C#" Value="public void PopToRootScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PopToRootScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Pops out all scenes from the queue until the root scene in the queue. This scene will replace the running one. Internally it will call popToSceneStackLevel(1)</summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PopToSceneStackLevel">
+      <MemberSignature Language="C#" Value="public void PopToSceneStackLevel (int level);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PopToSceneStackLevel(int32 level) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="level" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="level">To be added.</param>
+        <summary>Pops out all scenes from the queue until it reaches level. If level is 0, it will end the director. If level is 1, it will pop all scenes until it reaches to root scene. If level is &lt;= than the current stack level, it won't do anything. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Projection">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCDirectorProjection Projection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCDirectorProjection Projection" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirectorProjection</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Sets an OpenGL projection v0.8.2 </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProjectionDelegate">
+      <MemberSignature Language="C#" Value="public CocosSharp.ICCDirectorDelegate ProjectionDelegate { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCDirectorDelegate ProjectionDelegate" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.ICCDirectorDelegate</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeCachedData">
+      <MemberSignature Language="C#" Value="public void PurgeCachedData ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeCachedData() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Removes cached all cocos2d cached data. It will purge the , ,  cache v0.99.3 </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="PurgeDirector">
+      <MemberSignature Language="C#" Value="protected void PurgeDirector ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void PurgeDirector() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PushScene">
+      <MemberSignature Language="C#" Value="public void PushScene (CocosSharp.CCScene pScene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushScene(class CocosSharp.CCScene pScene) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pScene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="pScene">To be added.</param>
+        <summary>Suspends the execution of the running scene, pushing it on the stack of suspended scenes. The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. ONLY call it if there is a running scene. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ReplaceScene">
+      <MemberSignature Language="C#" Value="public void ReplaceScene (CocosSharp.CCScene pScene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ReplaceScene(class CocosSharp.CCScene pScene) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pScene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="pScene">To be added.</param>
+        <summary>Replaces the running scene with a new one. The running scene is terminated. ONLY call it if there is a running scene. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ResetSceneStack">
+      <MemberSignature Language="C#" Value="public void ResetSceneStack ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResetSceneStack() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Resume">
+      <MemberSignature Language="C#" Value="public void Resume ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Resume() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Resumes the paused scene The scheduled timers will be activated again. The "delta time" will be 0 (as if the game wasn't paused) </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeFromBackground">
+      <MemberSignature Language="C#" Value="public void ResumeFromBackground ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeFromBackground() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunningScene">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScene RunningScene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene RunningScene" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Get current running .  can only run one  at the time </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="RunWithScene">
+      <MemberSignature Language="C#" Value="public void RunWithScene (CocosSharp.CCScene pScene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunWithScene(class CocosSharp.CCScene pScene) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="pScene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="pScene">To be added.</param>
+        <summary>Enters the 's main loop with the given . Call it to run only your FIRST scene. Don't call it if there is already a running scene.</summary>
+        <remarks>
+          <para>Enters the <see cref="T:CocosSharp.CCDirector" />'s main loop with the given <see cref="T:CocosSharp.CCScene" />. Call it to run only your FIRST scene. Don't call it if there is already a running scene.</para>
+          <see cref="T:CocosSharp.CCDirector" />
+          <see cref="T:CocosSharp.CCScene" />
+          <para>It will call pushScene: and then it will call startAnimation </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SceneCount">
+      <MemberSignature Language="C#" Value="public int SceneCount { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 SceneCount" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Int32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scheduler">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCScheduler Scheduler { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScheduler Scheduler" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScheduler</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setScheduler </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SerializeState">
+      <MemberSignature Language="C#" Value="public void SerializeState ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SerializeState() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetAlphaBlending">
+      <MemberSignature Language="C#" Value="public void SetAlphaBlending (bool bOn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAlphaBlending(bool bOn) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bOn" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bOn">To be added.</param>
+        <summary>enables/disables OpenGL alpha blending </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetDefaultValues">
+      <MemberSignature Language="C#" Value="protected void SetDefaultValues ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void SetDefaultValues() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>sets the default values based on the  info </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetDepthTest">
+      <MemberSignature Language="C#" Value="public void SetDepthTest (bool bOn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDepthTest(bool bOn) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bOn" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bOn">To be added.</param>
+        <summary>enables/disables OpenGL depth test </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SetNextDeltaTimeZero">
+      <MemberSignature Language="C#" Value="public void SetNextDeltaTimeZero (bool bNextDeltaTimeZero);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetNextDeltaTimeZero(bool bNextDeltaTimeZero) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="bNextDeltaTimeZero" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="bNextDeltaTimeZero">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetNextScene">
+      <MemberSignature Language="C#" Value="protected void SetNextScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void SetNextScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetOpenGlView">
+      <MemberSignature Language="C#" Value="public void SetOpenGlView ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetOpenGlView() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetViewport">
+      <MemberSignature Language="C#" Value="public void SetViewport ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetViewport() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Sets the glViewport </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SharedDirector">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCDirector SharedDirector { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCDirector SharedDirector" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StartAnimation">
+      <MemberSignature Language="C#" Value="public abstract void StartAnimation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StartAnimation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>The main loop is triggered again. Call this function only if [stopAnimation] was called earlier Don't call this function to start the main loop. To run the main loop call runWithScene </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Stats">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCStats Stats;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCStats Stats" />
+      <MemberType>Field</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCStats</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="StopAnimation">
+      <MemberSignature Language="C#" Value="public abstract void StopAnimation ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void StopAnimation() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>Stops the animation. Nothing will be drawn. The main loop won't be triggered anymore. If you don't want to pause your animation call [pause] instead. </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="TouchDispatcher">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTouchDispatcher TouchDispatcher { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTouchDispatcher TouchDispatcher" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTouchDispatcher</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>setTouchDispatcher </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="public void Update (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Update(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="public void Update (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Update(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleOrigin">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint VisibleOrigin { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint VisibleOrigin" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>returns visible origin of the OpenGL view in points. </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleSize">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize VisibleSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize VisibleSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>returns visible size of the OpenGL view in points. the value is equal to getWinSize if don't invoke EGLView::setDesignResolutionSize() </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="WinSize">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize WinSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WinSize" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>returns the size of the OpenGL view in points. </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="WinSizeInPixels">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize WinSizeInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WinSizeInPixels" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>returns the size of the OpenGL view in pixels. </summary>
+        <value>To be added.</value>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="ZEye">
+      <MemberSignature Language="C#" Value="public float ZEye { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 ZEye" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>
+          <para>XXX: missing description. </para>
+        </summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -21,7 +21,6 @@ namespace tests
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(label);
-            AccelerometerEnabled = true;
             Schedule(switchLayer, 5.0f);
 
         }
@@ -53,7 +52,6 @@ namespace tests
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(label);
-            AccelerometerEnabled = true;
             Schedule(switchLayer, 5.0f);
 
         }

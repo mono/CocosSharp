@@ -1,0 +1,382 @@
+<Type Name="CCControlSwitchSprite" FullName="CocosSharp.CCControlSwitchSprite">
+  <TypeSignature Language="C#" Value="public class CCControlSwitchSprite : CocosSharp.CCSprite, CocosSharp.ICCActionTweenDelegate" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSwitchSprite extends CocosSharp.CCSprite implements class CocosSharp.ICCActionTweenDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>CocosSharp.ICCActionTweenDelegate</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlSwitchSprite ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCControlSwitchSprite (CocosSharp.CCSprite maskSprite, CocosSharp.CCSprite onSprite, CocosSharp.CCSprite offSprite, CocosSharp.CCSprite thumbSprite, CocosSharp.CCLabelTtf onLabel, CocosSharp.CCLabelTtf offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSprite maskSprite, class CocosSharp.CCSprite onSprite, class CocosSharp.CCSprite offSprite, class CocosSharp.CCSprite thumbSprite, class CocosSharp.CCLabelTtf onLabel, class CocosSharp.CCLabelTtf offLabel) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="offSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="thumbSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onLabel" Type="CocosSharp.CCLabelTtf" />
+        <Parameter Name="offLabel" Type="CocosSharp.CCLabelTtf" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <param name="onLabel">To be added.</param>
+        <param name="offLabel">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InitWithMaskSprite">
+      <MemberSignature Language="C#" Value="public bool InitWithMaskSprite (CocosSharp.CCSprite maskSprite, CocosSharp.CCSprite onSprite, CocosSharp.CCSprite offSprite, CocosSharp.CCSprite thumbSprite, CocosSharp.CCLabelTTF onLabel, CocosSharp.CCLabelTTF offLabel);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithMaskSprite(class CocosSharp.CCSprite maskSprite, class CocosSharp.CCSprite onSprite, class CocosSharp.CCSprite offSprite, class CocosSharp.CCSprite thumbSprite, class CocosSharp.CCLabelTTF onLabel, class CocosSharp.CCLabelTTF offLabel) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="maskSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="offSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="thumbSprite" Type="CocosSharp.CCSprite" />
+        <Parameter Name="onLabel" Type="CocosSharp.CCLabelTTF" />
+        <Parameter Name="offLabel" Type="CocosSharp.CCLabelTTF" />
+      </Parameters>
+      <Docs>
+        <param name="maskSprite">To be added.</param>
+        <param name="onSprite">To be added.</param>
+        <param name="offSprite">To be added.</param>
+        <param name="thumbSprite">To be added.</param>
+        <param name="onLabel">To be added.</param>
+        <param name="offLabel">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaskLocation">
+      <MemberSignature Language="C#" Value="public uint MaskLocation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 MaskLocation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaskSprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite MaskSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite MaskSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MaskTexture">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D MaskTexture { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D MaskTexture" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NeedsLayout">
+      <MemberSignature Language="C#" Value="public void NeedsLayout ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void NeedsLayout() cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OffLabel">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf OffLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf OffLabel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OffPosition">
+      <MemberSignature Language="C#" Value="public float OffPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 OffPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OffSideWidth">
+      <MemberSignature Language="C#" Value="public float OffSideWidth { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 OffSideWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OffSprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite OffSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite OffSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnLabel">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf OnLabel { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf OnLabel" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnPosition">
+      <MemberSignature Language="C#" Value="public float OnPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 OnPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnSideWidth">
+      <MemberSignature Language="C#" Value="public float OnSideWidth { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 OnSideWidth" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OnSprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite OnSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite OnSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SliderXPosition">
+      <MemberSignature Language="C#" Value="public float SliderXPosition { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 SliderXPosition" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TextureLocation">
+      <MemberSignature Language="C#" Value="public uint TextureLocation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 TextureLocation" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.UInt32</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ThumbSprite">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSprite ThumbSprite { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite ThumbSprite" />
+      <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSprite</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateTweenAction">
+      <MemberSignature Language="C#" Value="public virtual void UpdateTweenAction (float value, string key);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateTweenAction(float32 value, string key) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.0.3.0</AssemblyVersion>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value" Type="System.Single" />
+        <Parameter Name="key" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="value">To be added.</param>
+        <param name="key">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

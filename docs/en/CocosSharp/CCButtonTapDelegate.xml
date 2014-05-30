@@ -1,0 +1,23 @@
+<Type Name="CCButtonTapDelegate" FullName="CocosSharp.CCButtonTapDelegate">
+  <TypeSignature Language="C#" Value="public delegate void CCButtonTapDelegate(object sender);" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCButtonTapDelegate extends System.MulticastDelegate" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.0.3.0</AssemblyVersion>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="sender" Type="System.Object" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="sender">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

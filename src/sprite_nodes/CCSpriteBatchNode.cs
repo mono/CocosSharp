@@ -23,7 +23,7 @@ namespace CocosSharp
                 UpdateBlendFunc();
                 if (value != null)
                 {
-                    contentSize = value.ContentSize;
+					ContentSize = value.ContentSize;
                 }
             }
         }
@@ -184,7 +184,7 @@ namespace CocosSharp
             RemoveChild((Children[index]), doCleanup);
         }
 
-        public override void RemoveAllChildrenWithCleanup(bool cleanup)
+        public override void RemoveAllChildren(bool cleanup)
         {
             // Invalidate atlas index. issue #569
             // useSelfRender should be performed on all descendants. issue #1216
@@ -194,7 +194,7 @@ namespace CocosSharp
                 elements[i].BatchNode = null;
             }
 
-            base.RemoveAllChildrenWithCleanup(cleanup);
+			base.RemoveAllChildren(cleanup);
 
             Descendants.Clear();
             TextureAtlas.RemoveAllQuads();
