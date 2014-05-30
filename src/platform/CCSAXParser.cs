@@ -32,12 +32,18 @@ namespace CocosSharp
 	internal class CCSAXParser
     {
 		ICCSAXDelegator delegator;
+		string ParseEncoding { get; set; }
 
-        public bool Init(string pszEncoding)
-        {
-            // nothing to do
-            return true;
-        }
+		public CCSAXParser() 
+			: this("UTF-8")
+		{
+
+		}
+
+		public CCSAXParser(string encoding)
+		{
+			ParseEncoding = encoding;
+		}
 
         public bool ParseContent(string str)
         {

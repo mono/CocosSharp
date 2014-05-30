@@ -77,11 +77,6 @@ namespace CocosSharp
 		{
 			var parser = new CCSAXParser();
 
-			if (false == parser.Init("UTF-8"))
-			{
-				return false;
-			}
-
 			parser.SetDelegator(this);
 
 			return parser.ParseContent(data);
@@ -91,11 +86,6 @@ namespace CocosSharp
 		bool ParseXmlFile(string xmlFilename)
 		{
 			var parser = new CCSAXParser();
-
-			if (false == parser.Init("UTF-8"))
-			{
-				return false;
-			}
 
 			parser.SetDelegator(this);
 

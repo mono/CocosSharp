@@ -70,10 +70,6 @@ namespace CocosSharp
         {
             CCSAXParser parser = new CCSAXParser();
 
-            if (false == parser.Init("UTF-8"))
-            {
-                return null;
-            }
             parser.SetDelegator(this);
 
 			parser.ParseContentFile(filename);
@@ -84,10 +80,6 @@ namespace CocosSharp
         {
             CCSAXParser parser = new CCSAXParser();
 
-            if (false == parser.Init("UTF-8"))
-            {
-                return null;
-            }
             parser.SetDelegator(this);
 
             StartElement(parser, "dict", null);
