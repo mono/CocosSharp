@@ -130,35 +130,35 @@ namespace CocosSharp
 			string textureData = config.TextureData;
 
 			// We will try loading the texture data first if it exists.  Hopefully we get lucky
-			if (!string.IsNullOrEmpty(textureData))
-			{
-				//Debug.Assert(!string.IsNullOrEmpty(textureData),
-				//    string.Format("CCParticleSystem: textureData does not exist : {0}", textureName));
+            if (!string.IsNullOrEmpty(textureData))
+            {
+                //Debug.Assert(!string.IsNullOrEmpty(textureData),
+                //    string.Format("CCParticleSystem: textureData does not exist : {0}", textureName));
 
-				int dataLen = textureData.Length;
-				if (dataLen != 0)
-				{
+                int dataLen = textureData.Length;
+                if (dataLen != 0)
+                {
 
-					var dataBytes = Convert.FromBase64String(textureData);
-					Debug.Assert(dataBytes != null,
-						string.Format("CCParticleSystem: error decoding textureImageData : {0}", config.TextureName));
+                    var dataBytes = Convert.FromBase64String(textureData);
+                    Debug.Assert(dataBytes != null,
+                        string.Format("CCParticleSystem: error decoding textureImageData : {0}", config.TextureName));
 
                     var imageBytes = ZipUtils.Inflate(dataBytes);
-					Debug.Assert(imageBytes != null,
-						string.Format("CCParticleSystem: error init image with Data for texture : {0}", config.TextureName));
+                    Debug.Assert(imageBytes != null,
+                        string.Format("CCParticleSystem: error init image with Data for texture : {0}", config.TextureName));
 
-					try
-					{
+                    try
+                    {
 
                         CCTextureCache.Instance.AddImageAsync(imageBytes, config.TextureName, CCSurfaceFormat.Color, (loadedTexture) =>
-							{
+                            {
                                 if (loadedTexture != null)
                                 {
                                     config.Texture = loadedTexture;
                                     if (action != null)
                                         action(config);
                                 }
-                                else 
+                                else
                                 {
                                     if (!string.IsNullOrEmpty(config.TextureName))
                                     {
@@ -170,10 +170,10 @@ namespace CocosSharp
                                                 {
                                                     config.Texture = tex2;
 
-													if (config.Texture == null)
-														config.Texture = CCParticleExample.DefaultTexture;
-                                                    
-													if (action != null)
+                                                    if (config.Texture == null)
+                                                        config.Texture = CCParticleExample.DefaultTexture;
+
+                                                    if (action != null)
                                                         action(config);
                                                 });
                                         }
@@ -189,18 +189,46 @@ namespace CocosSharp
 
                                 }
 
-							}
-						);
-					}
-					catch (Exception ex)
-					{
-						CCLog.Log(ex.ToString());
+                            }
+                        );
+                    }
+                    catch (Exception ex)
+                    {
+                        CCLog.Log(ex.ToString());
                         config.Texture = CCParticleExample.DefaultTexture;
 
-					}
+                    }
 
-				}
-			}
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(config.TextureName))
+                {
+                    bool bNotify = CCFileUtils.IsPopupNotify;
+                    CCFileUtils.IsPopupNotify = false;
+                    try
+                    {
+                        CCTextureCache.Instance.AddImageAsync(config.TextureName, (tex2) =>
+                        {
+                            config.Texture = tex2;
+
+                            if (config.Texture == null)
+                                config.Texture = CCParticleExample.DefaultTexture;
+
+                            if (action != null)
+                                action(config);
+                        });
+                    }
+                    catch (Exception)
+                    {
+                        config.Texture = CCParticleExample.DefaultTexture;
+                    }
+
+                    CCFileUtils.IsPopupNotify = bNotify;
+ 
+                }
+            }
 #endif
 		}
 
