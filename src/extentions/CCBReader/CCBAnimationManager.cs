@@ -35,19 +35,12 @@ namespace CocosSharp
     
         private Action _animationCompleteCallbackFunc;
 
-        public bool _jsControlled;
+		public bool JSControlled { get; set; }
 
-        public Object _owner;
+		public Object Owner { get; set; }
 
         public CCBAnimationManager()
-        {
-            Init();
-        }
-
-        public virtual bool Init()
-        {
-            return true;
-        }
+		{ }
 
         public List<CCBSequence> Sequences
         {
@@ -512,7 +505,7 @@ namespace CocosSharp
                 CCBTargetType selectorTarget =
                     (CCBTargetType) int.Parse(keyVal[1].GetStringValue());
 
-                if (_jsControlled)
+                if (JSControlled)
                 {
                     string callbackName = string.Format("{0}:{1}", selectorTarget, selectorName);
                     CCCallFunc callback = (CCCallFunc) _keyframeCallFuncs[callbackName];
@@ -529,7 +522,7 @@ namespace CocosSharp
                     if (selectorTarget == CCBTargetType.DocumentRoot)
                         target = _rootNode;
                     else if (selectorTarget == CCBTargetType.Owner)
-                        target = _owner;
+                        target = Owner;
 
                     if (target != null)
                     {
@@ -921,9 +914,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCBRotateTo(float fDuration, float fAngle) : base(fDuration)
+		public CCBRotateTo(float duration, float angle) : base(duration)
         {
-            DstAngle = fAngle;
+			DstAngle = angle;
         }
 
         #endregion Constructors
@@ -977,9 +970,9 @@ namespace CocosSharp
         #region Constructors
 
 
-        public CCBRotateXTo(float fDuration, float fAngle) : base(fDuration)
+        public CCBRotateXTo(float duration, float angle) : base(duration)
         {
-			DstAngle = fAngle;
+			DstAngle = angle;
         }
 
         #endregion Constructors
@@ -1029,9 +1022,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCBRotateYTo(float fDuration, float fAngle) : base(fDuration)
+        public CCBRotateYTo(float duration, float angle) : base(duration)
         {
-			DstAngle = fAngle;
+			DstAngle = angle;
         }
 
         #endregion Constructors
@@ -1079,7 +1072,7 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCBEaseInstant(CCActionInterval pAction) : base(pAction)
+        public CCBEaseInstant(CCActionInterval action) : base(action)
         {
         }
 

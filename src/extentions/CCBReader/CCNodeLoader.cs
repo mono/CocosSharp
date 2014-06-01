@@ -785,7 +785,7 @@ namespace CocosSharp
                          * So if we had 1 target and 1 selector function, the context (callback function name)
                          * would get lost. Hence the need for a new target for each callback.
                          */
-                        if (reader._hasScriptingOwner)
+                        if (reader.HasScriptingOwner)
                         {
                             var proxy = (ICCBScriptOwner) reader.Owner;
                             if (proxy != null)
@@ -970,7 +970,7 @@ namespace CocosSharp
             reader._currentBit = 0;
             reader._owner = pCCBReader._owner;
 
-            reader.AnimationManager._owner = reader._owner;
+            reader.AnimationManager.Owner = reader._owner;
 
             CCNode ccbFileNode = reader.ReadFileWithCleanUp(false, pCCBReader.AnimationManagers);
 

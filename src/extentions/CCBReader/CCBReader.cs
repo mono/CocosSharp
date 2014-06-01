@@ -166,7 +166,7 @@ namespace CocosSharp
         private readonly List<string> _loadedSpriteSheets;
         private readonly List<string> _stringCache = new List<string>();
 
-        public bool _hasScriptingOwner = false;
+		internal bool HasScriptingOwner { get; set; }
         private CCBAnimationManager _actionManager;
         internal byte[] _bytes;
         internal int _currentBit;
@@ -305,6 +305,8 @@ namespace CocosSharp
             // Setup resolution scale and container size
             _actionManager.RootContainerSize = CCDirector.SharedDirector.WinSize;
 
+			HasScriptingOwner = false;
+
             return true;
         }
 
@@ -351,7 +353,7 @@ namespace CocosSharp
             _owner = owner;
 
             _actionManager.RootContainerSize = parentSize;
-            _actionManager._owner = _owner;
+            _actionManager.Owner = _owner;
             _ownerOutletNodes = new List<CCNode>();
             _ownerCallbackNodes = new List<CCNode>();
 
@@ -876,7 +878,7 @@ namespace CocosSharp
 
             // Read JS check
             _jsControlled = ReadBool();
-            _actionManager._jsControlled = _jsControlled;
+            _actionManager.JSControlled = _jsControlled;
 
 
             return true;
