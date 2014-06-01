@@ -120,11 +120,11 @@ namespace CocosSharp
         /// <param name="fEyeX"></param>
         /// <param name="fEyeY"></param>
         /// <param name="fEyeZ"></param>
-        public void SetEyeXyz(float fEyeX, float fEyeY, float fEyeZ)
+        public void SetEyeXyz(float eyeX, float eyeY, float eyeZ)
         {
-            EyeX = fEyeX;
-            EyeY = fEyeY;
-            EyeZ = fEyeZ;
+            EyeX = eyeX;
+            EyeY = eyeY;
+            EyeZ = eyeZ;
 
             IsDirty = true;
         }
@@ -135,11 +135,11 @@ namespace CocosSharp
         /// <param name="fCenterX"></param>
         /// <param name="fCenterY"></param>
         /// <param name="fCenterZ"></param>
-        public void SetCenterXyz(float fCenterX, float fCenterY, float fCenterZ)
+        public void SetCenterXyz(float centerX, float centerY, float centerZ)
         {
-            CenterX = fCenterX;
-            CenterY = fCenterY;
-            CenterZ = fCenterZ;
+            CenterX = centerX;
+            CenterY = centerY;
+            CenterZ = centerZ;
 
             IsDirty = true;
         }
@@ -150,11 +150,11 @@ namespace CocosSharp
         /// <param name="fUpX"></param>
         /// <param name="fUpY"></param>
         /// <param name="fUpZ"></param>
-        public void SetUpXyz(float fUpX, float fUpY, float fUpZ)
+        public void SetUpXyz(float upX, float upY, float upZ)
         {
-            UpX = fUpX;
-            UpY = fUpY;
-            UpZ = fUpZ;
+            UpX = upX;
+            UpY = upY;
+            UpZ = upZ;
 
             IsDirty = true;
         }
@@ -165,11 +165,11 @@ namespace CocosSharp
         /// <param name="pEyeX"></param>
         /// <param name="pEyeY"></param>
         /// <param name="pEyeZ"></param>
-        public void GetEyeXyz(out float pEyeX, out float pEyeY, out float pEyeZ)
+        public void GetEyeXyz(out float eyeX, out float eyeY, out float eyeZ)
         {
-            pEyeX = EyeX;
-            pEyeY = EyeY;
-            pEyeZ = EyeZ;
+            eyeX = EyeX;
+            eyeY = EyeY;
+            eyeZ = EyeZ;
         }
 
         /// <summary>
@@ -178,11 +178,11 @@ namespace CocosSharp
         /// <param name="pCenterX"></param>
         /// <param name="pCenterY"></param>
         /// <param name="pCenterZ"></param>
-        public void GetCenterXyz(out float pCenterX, out float pCenterY, out float pCenterZ)
+        public void GetCenterXyz(out float centerX, out float centerY, out float centerZ)
         {
-            pCenterX = CenterX;
-            pCenterY = CenterY;
-            pCenterZ = CenterZ;
+            centerX = CenterX;
+            centerY = CenterY;
+            centerZ = CenterZ;
         }
 
         /// <summary>
@@ -191,11 +191,11 @@ namespace CocosSharp
         /// <param name="pUpX"></param>
         /// <param name="pUpY"></param>
         /// <param name="pUpZ"></param>
-        public void GetUpXyz(out float pUpX, out float pUpY, out float pUpZ)
+        public void GetUpXyz(out float upX, out float upY, out float upZ)
         {
-            pUpX = UpX;
-            pUpY = UpY;
-            pUpZ = UpZ;
+            upX = UpX;
+            upY = UpY;
+            upZ = UpZ;
         }
 
         /// <summary>
