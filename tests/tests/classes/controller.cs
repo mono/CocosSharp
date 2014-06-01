@@ -26,6 +26,10 @@ namespace tests
             var pMenu = new CCMenu(pCloseItem);
             var s = CCDirector.SharedDirector.WinSize;
 
+
+			CCMenuItemFont.FontName = "MarkerFelt";
+			CCMenuItemFont.FontSize = 22;
+
             pMenu.Position = CCPoint.Zero;
             pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
 #if !PSM && !WINDOWS_PHONE
