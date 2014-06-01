@@ -60,9 +60,14 @@
         <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Reference to the action that created this ActionState.</summary>
+        <value></value>
+        <remarks>
+	  The action referenced contains the configuration parameters
+	  for this particular ActionState.  You can cast the resulting
+	  Action to the type that would create it to get the
+	  associated information.
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsDone">
@@ -86,9 +91,13 @@
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The target that was sent when this Action's State was originally created.</summary>
+        <value></value>
+        <remarks>
+	  <para>
+	    Unlike the Target property, the value of this property will not be reset when the action stops executing.
+	  </para>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -132,6 +141,12 @@
         <summary>The node on which this action is operating.</summary>
         <value>This is set by the constructor.</value>
         <remarks>
+	  <para>
+	    The value of this property will become null when the action has completed its execution.   
+	  </para>
+	  <para>
+	    If you want to get a CCNode that was used when this action was originally created, use the OriginalTarget property.
+	  </para>
         </remarks>
       </Docs>
     </Member>
