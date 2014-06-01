@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public static class ArrayPool<T>
+	internal static class ArrayPool<T>
     {
         static readonly Dictionary<int, List<object>> _unused = new Dictionary<int, List<object>>();
 
