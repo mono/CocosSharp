@@ -120,18 +120,18 @@ namespace CocosSharp
 			}
 		}
 
-		public override void Update(float t)
+		public override void Update(float time)
 		{
 			bool bRestart = false;
 			int found;
 			float new_t;
 
-			if (t < split)
+			if (time < split)
 			{
 				// action[0]
 				found = 0;
 				if (split != 0)
-					new_t = t / split;
+					new_t = time / split;
 				else
 					new_t = 1;
 			}
@@ -142,7 +142,7 @@ namespace CocosSharp
 				if (split == 1)
 					new_t = 1;
 				else
-					new_t = (t - split) / (1 - split);
+					new_t = (time - split) / (1 - split);
 			}
 
 			if (found == 1)

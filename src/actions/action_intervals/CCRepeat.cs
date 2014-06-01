@@ -70,11 +70,11 @@ namespace CocosSharp
 
 		// issue #80. Instead of hooking step:, hook update: since it can be called by any 
 		// container action like Repeat, Sequence, AccelDeccel, etc..
-		public override void Update(float dt)
+		public override void Update(float time)
 		{
-			if (dt >= NextDt)
+			if (time >= NextDt)
 			{
-				while (dt > NextDt && Total < Times)
+				while (time > NextDt && Total < Times)
 				{
 					InnerActionState.Update(1.0f);
 					Total++;
@@ -85,7 +85,7 @@ namespace CocosSharp
 				}
 
 				// fix for issue #1288, incorrect end value of repeat
-				if (dt >= 1.0f && Total < Times)
+				if (time >= 1.0f && Total < Times)
 				{
 					Total++;
 				}
@@ -101,14 +101,14 @@ namespace CocosSharp
 					else
 					{
 						// issue #390 prevent jerk, use right update
-						InnerActionState.Update(dt - (NextDt - InnerAction.Duration / Duration));
+						InnerActionState.Update(time - (NextDt - InnerAction.Duration / Duration));
 					}
 
 				}
 			}
 			else
 			{
-				InnerActionState.Update((dt * Times) % 1.0f);
+				InnerActionState.Update((time * Times) % 1.0f);
 			}
 		}
 

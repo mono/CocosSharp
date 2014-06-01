@@ -116,15 +116,15 @@ namespace CocosSharp
 			base.Stop();
 		}
 
-		public override void Update(float t)
+		public override void Update(float time)
 		{
 			// if t==1, ignore. Animation should finish with t==1
-			if (t < 1.0f)
+			if (time < 1.0f)
 			{
-				t *= Animation.Loops;
+				time *= Animation.Loops;
 
 				// new loop?  If so, reset frame counter
-				var loopNumber = (uint) t;
+				var loopNumber = (uint) time;
                 if (loopNumber > ExecutedLoops)
 				{
                     NextFrame = 0;
@@ -132,7 +132,7 @@ namespace CocosSharp
 				}
 
 				// new t for animations
-				t = t % 1.0f;
+				time = time % 1.0f;
 			}
 
 			var frames = Animation.Frames;
@@ -142,7 +142,7 @@ namespace CocosSharp
 			{
 				float splitTime = SplitTimes[i];
 
-				if (splitTime <= t)
+				if (splitTime <= time)
 				{
 					var frame = (CCAnimationFrame) frames[i];
 					var frameToDisplay = frame.SpriteFrame;
