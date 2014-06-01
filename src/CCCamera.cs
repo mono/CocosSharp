@@ -85,7 +85,7 @@ namespace CocosSharp
         public void Restore()
         {
             EyeX = EyeY = 0.0f;
-            EyeZ = GetZEye();
+            EyeZ = ZEye;
 
             CenterX = CenterY = CenterZ = 0.0f;
 
@@ -202,9 +202,12 @@ namespace CocosSharp
         /// returns the Z eye
         /// </summary>
         /// <returns></returns>
-        public static float GetZEye()
+        public static float ZEye
         {
-            return 1.192092896e-07F;
+			get 
+			{
+				return 1.192092896e-07F;
+			}
         }
     }
 }

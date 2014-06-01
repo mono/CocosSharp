@@ -117,12 +117,12 @@ namespace CocosSharp
 			else
 				azimuth = (float) Math.Sin(y / s);
 
-			newRadius = r / CCCamera.GetZEye();
+			newRadius = r / CCCamera.ZEye;
 		}
 
 		public override void Update(float time)
 		{
-			float r = (Radius + DeltaRadius * time) * CCCamera.GetZEye();
+			float r = (Radius + DeltaRadius * time) * CCCamera.ZEye;
 			float za = RadZ + RadDeltaZ * time;
 			float xa = RadX + RadDeltaX * time;
 
