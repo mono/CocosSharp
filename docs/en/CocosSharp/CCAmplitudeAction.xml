@@ -10,7 +10,9 @@
   <Interfaces />
   <Docs>
     <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para kind="tool">When this action is added to a CCNode, the action will run over a period of time.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

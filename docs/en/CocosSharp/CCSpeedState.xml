@@ -49,9 +49,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary><para kind="tool">Determines if this action has run to completion</para></summary>
+        <value></value>
+        <remarks><para kind="tool">True if this particular action has completed execution.</para></remarks>
       </Docs>
     </Member>
     <Member MemberName="Speed">
@@ -78,9 +78,9 @@
         <Parameter Name="dt" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="dt"><para kind="tool">Delta time since the last invocation</para></param>
+        <summary><para kind="tool">Called every frame with it's delta time.</para></summary>
+        <remarks><para kind="tool">In general, you do not need to override this method, you are better off just overriding Update.</para></remarks>
       </Docs>
     </Member>
     <Member MemberName="Stop">
@@ -92,8 +92,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary><para kind="tool">Called when the action has completed.</para></summary>
+        <remarks><para kind="tool">This will set the <see cref="P:CocosSharp.ActionState.Target" /> to null</para><para kind="tool">Developers do not need to call this method directly, they should instead call <see cref="M:CocosSharp.CCNode.StopAction" /> instead</para></remarks>
       </Docs>
     </Member>
   </Members>

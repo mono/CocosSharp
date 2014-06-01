@@ -10,7 +10,9 @@
   <Interfaces />
   <Docs>
     <summary>An action that moves the target with a CatmullRom curve by a certain distance. A Catmull Rom is a Cardinal Spline with a tension of 0.5. http://en.wikipedia.org/wiki/Cubic_Hermite_spline#Catmull.E2.80.93Rom_spline</summary>
-    <remarks />
+    <remarks>
+      <para kind="tool">When this action is added to a CCNode, the action will run over a period of time.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">

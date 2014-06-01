@@ -12,7 +12,9 @@
     <summary>
       <para>Fades Out an object that implements the RGBAProtocol protocol. It modifies the opacity from 255 to 0. The "reverse" of this action is . </para>
     </summary>
-    <remarks>To be added.</remarks>
+    <remarks>
+      <para kind="tool">When this action is added to a CCNode, the action will run over a period of time.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -53,10 +55,16 @@
         <Parameter Name="target" Type="CocosSharp.CCNode" />
       </Parameters>
       <Docs>
-        <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="target">Target object on which the action will be performed.</param>
+        <summary>
+          <para kind="tool">Starts the action on the specified target</para>
+        </summary>
+        <returns>
+        </returns>
+        <remarks>
+          <para kind="tool">This creates a new state object of type <see cref="T:CocosSharp.CCActionState" /> that will track the state of the action.</para>
+          <para kind="tool">This method is typically invoked by implementations of CCActions or by the CocosSharp runtime, when you invoke the <see cref="M:CocosSharp.CCNode.AddAction" /> method.</para>
+        </remarks>
       </Docs>
     </Member>
   </Members>
