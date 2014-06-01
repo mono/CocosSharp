@@ -96,9 +96,9 @@ namespace CocosDenshion
 		#endregion Effect controls
 
 
-		public override void Open(string filename, int uid)
+		public override void Open(string filename, int soundId)
 		{
-			base.Open(filename, uid);
+			base.Open(filename, soundId);
 
 			string relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, filename);
 			string absFilePath = null;

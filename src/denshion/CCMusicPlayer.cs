@@ -22,7 +22,7 @@ namespace CocosDenshion
 
 		protected abstract void DisposeManagedResources();
 
-		public virtual void Open(string fileName, int uId)
+		public virtual void Open(string fileName, int soundId)
 		{
 			if (string.IsNullOrEmpty(fileName))
 			{
@@ -31,7 +31,7 @@ namespace CocosDenshion
 
 			Close();
 
-			SoundID = uId;
+			SoundID = soundId;
 		}
 
 		public virtual void Close()
