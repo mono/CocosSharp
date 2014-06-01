@@ -439,7 +439,7 @@ namespace CocosSharp
 		#region Event handling
 
         /** override functions */
-		public bool TouchBegan(CCTouch pTouch, CCEvent touchEvent)
+		public virtual bool TouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -479,7 +479,7 @@ namespace CocosSharp
             return true;
         }
 
-		public void TouchMoved(CCTouch touch, CCEvent touchEvent)
+		public virtual void TouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -556,7 +556,7 @@ namespace CocosSharp
             }
         }
 
-		public void TouchEnded(CCTouch touch, CCEvent touchEvent)
+		public virtual void TouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
@@ -579,7 +579,7 @@ namespace CocosSharp
             }
         }
 
-		public void TouchCancelled(CCTouch touch, CCEvent touchEvent)
+		public virtual void TouchCancelled(CCTouch touch, CCEvent touchEvent)
         {
             if (!Visible)
             {
