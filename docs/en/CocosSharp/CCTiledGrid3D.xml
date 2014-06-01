@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTiledGrid3D extends CocosSharp.CCGridBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCGridBase</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCTiledGrid3D (CocosSharp.CCGridSize gridSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
       </Parameters>
@@ -36,10 +30,6 @@
       <MemberSignature Language="C#" Value="public CCTiledGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
@@ -57,10 +47,6 @@
       <MemberSignature Language="C#" Value="public override void Blit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Blit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -74,10 +60,6 @@
       <MemberSignature Language="C#" Value="public override void CalculateVertexPoints ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void CalculateVertexPoints() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -91,9 +73,6 @@
       <MemberSignature Language="C#" Value="protected short[] Indices { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int16[] Indices" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int16[]</ReturnType>
       </ReturnValue>
@@ -107,9 +86,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCQuad3 this[CocosSharp.CCGridSize pos] { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCQuad3 Item(valuetype CocosSharp.CCGridSize)" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCQuad3</ReturnType>
       </ReturnValue>
@@ -127,9 +103,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCQuad3 this[int x, int y] { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCQuad3 Item(int32, int32)" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCQuad3</ReturnType>
       </ReturnValue>
@@ -145,44 +118,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_pIndices">
-      <MemberSignature Language="C#" Value="protected short[] m_pIndices;" />
-      <MemberSignature Language="ILAsm" Value=".field family int16[] m_pIndices" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int16[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pOriginalVertices">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCQuad3[] m_pOriginalVertices;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCQuad3[] m_pOriginalVertices" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCQuad3[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OriginalTile">
       <MemberSignature Language="C#" Value="public CocosSharp.CCQuad3 OriginalTile (CocosSharp.CCGridSize pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCQuad3 OriginalTile(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCQuad3</ReturnType>
       </ReturnValue>
@@ -200,9 +139,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCQuad3 OriginalTile (int x, int y);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCQuad3 OriginalTile(int32 x, int32 y) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCQuad3</ReturnType>
       </ReturnValue>
@@ -222,9 +158,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCQuad3[] OriginalVertices { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCQuad3[] OriginalVertices" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCQuad3[]</ReturnType>
       </ReturnValue>
@@ -238,10 +171,6 @@
       <MemberSignature Language="C#" Value="public override void Reuse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reuse() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -249,47 +178,6 @@
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetTile">
-      <MemberSignature Language="C#" Value="public void SetTile (CocosSharp.CCGridSize pos, ref CocosSharp.CCQuad3 coords);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTile(valuetype CocosSharp.CCGridSize pos, valuetype CocosSharp.CCQuad3 coords) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="coords" Type="CocosSharp.CCQuad3&amp;" RefType="ref" />
-      </Parameters>
-      <Docs>
-        <param name="pos">To be added.</param>
-        <param name="coords">To be added.</param>
-        <summary>sets a new tile </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Tile">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCQuad3 Tile (CocosSharp.CCGridSize pos);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCQuad3 Tile(valuetype CocosSharp.CCGridSize pos) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCQuad3</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pos" Type="CocosSharp.CCGridSize" />
-      </Parameters>
-      <Docs>
-        <param name="pos">To be added.</param>
-        <summary>returns the tile at the given position </summary>
-        <returns>To be added.</returns>
-        <remarks />
       </Docs>
     </Member>
   </Members>

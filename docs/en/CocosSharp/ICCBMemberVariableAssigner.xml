@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBMemberVariableAssigner" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,9 +14,6 @@
       <MemberSignature Language="C#" Value="public bool OnAssignCCBCustomProperty (object pTarget, string pMemberVariableName, CocosSharp.CCBValue pCCBValue);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBCustomProperty(object pTarget, string pMemberVariableName, class CocosSharp.CCBValue pCCBValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -40,10 +35,6 @@
       <MemberSignature Language="C#" Value="public bool OnAssignCCBMemberVariable (object target, string memberVariableName, CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool OnAssignCCBMemberVariable(object target, string memberVariableName, class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

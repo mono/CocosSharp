@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFiniteTimeAction extends CocosSharp.CCAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCAction</BaseTypeName>
@@ -35,28 +33,8 @@
       <MemberSignature Language="C#" Value="protected CCFiniteTimeAction ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCFiniteTimeAction (CocosSharp.CCFiniteTimeAction finiteTimeAction);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction finiteTimeAction) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="finiteTimeAction" Type="CocosSharp.CCFiniteTimeAction" />
-      </Parameters>
-      <Docs>
-        <param name="finiteTimeAction">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -65,9 +43,6 @@
       <MemberSignature Language="C#" Value="protected CCFiniteTimeAction (float d);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(float32 d) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="d" Type="System.Single" />
       </Parameters>
@@ -81,10 +56,6 @@
       <MemberSignature Language="C#" Value="public virtual float Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Duration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -96,29 +67,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_fDuration">
-      <MemberSignature Language="C#" Value="protected float m_fDuration;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDuration" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Reverse">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCFiniteTimeAction Reverse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
@@ -133,9 +85,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>

@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventListener extends System.Object implements class System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -22,9 +21,6 @@
       <MemberSignature Language="C#" Value="protected CCEventListener ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -35,9 +31,6 @@
       <MemberSignature Language="C#" Value="protected CCEventListener (CocosSharp.CCEventListener eventListener);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCEventListener eventListener) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="eventListener" Type="CocosSharp.CCEventListener" />
       </Parameters>
@@ -51,9 +44,6 @@
       <MemberSignature Language="C#" Value="protected CCEventListener (CocosSharp.CCEventListenerType type, string listenerID);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCEventListenerType type, string listenerID) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="type" Type="CocosSharp.CCEventListenerType" />
         <Parameter Name="listenerID" Type="System.String" />
@@ -69,9 +59,6 @@
       <MemberSignature Language="C#" Value="protected CCEventListener (CocosSharp.CCEventListenerType type, string listenerID, Action&lt;CocosSharp.CCEvent&gt; callback);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCEventListenerType type, string listenerID, class System.Action`1&lt;class CocosSharp.CCEvent&gt; callback) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="type" Type="CocosSharp.CCEventListenerType" />
         <Parameter Name="listenerID" Type="System.String" />
@@ -89,9 +76,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCEventListener Copy ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCEventListener Copy() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCEventListener</ReturnType>
       </ReturnValue>
@@ -106,9 +90,6 @@
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -122,9 +103,6 @@
       <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -141,9 +119,6 @@
       <MemberSignature Language="C#" Value="~CCEventListener ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -157,9 +132,6 @@
       <MemberSignature Language="C#" Value="public virtual bool IsAvailable { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsAvailable" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -173,9 +145,6 @@
       <MemberSignature Language="C#" Value="public virtual bool IsEnabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsEnabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

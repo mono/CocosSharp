@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCVerticalTextAlignment extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -18,10 +16,6 @@
       <MemberSignature Language="C#" Value="Bottom" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Bottom = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="Center" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Center = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>
@@ -48,10 +38,6 @@
       <MemberSignature Language="C#" Value="Top" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCVerticalTextAlignment Top = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVerticalTextAlignment</ReturnType>
       </ReturnValue>

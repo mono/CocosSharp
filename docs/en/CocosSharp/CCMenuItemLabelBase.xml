@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCMenuItemLabelBase extends CocosSharp.CCMenuItem" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCMenuItem</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="protected CCMenuItemLabelBase (Action&lt;object&gt; target = null);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;object&gt; target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public override void Activate ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Activate() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B ColorBackup { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B ColorBackup" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -66,9 +56,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B DisabledColor { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisabledColor" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -82,9 +69,6 @@
       <MemberSignature Language="C#" Value="protected void LabelWillChange (CocosSharp.CCNode oldValue, CocosSharp.CCNode newValue);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void LabelWillChange(class CocosSharp.CCNode oldValue, class CocosSharp.CCNode newValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -103,9 +87,6 @@
       <MemberSignature Language="C#" Value="public override bool Selected { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Selected" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

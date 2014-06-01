@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed CCV3F_C4B_T2F_Quad extends System.ValueType implements class Microsoft.Xna.Framework.Graphics.IVertexType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -25,10 +23,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F BottomLeft;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F BottomLeft" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCV3F_C4B_T2F</ReturnType>
       </ReturnValue>
@@ -41,10 +35,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F BottomRight;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F BottomRight" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCV3F_C4B_T2F</ReturnType>
       </ReturnValue>
@@ -57,10 +47,6 @@
       <MemberSignature Language="C#" Value="Microsoft.Xna.Framework.Graphics.VertexDeclaration Microsoft.Xna.Framework.Graphics.IVertexType.VertexDeclaration { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Graphics.VertexDeclaration Microsoft.Xna.Framework.Graphics.IVertexType.VertexDeclaration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Xna.Framework.Graphics.VertexDeclaration</ReturnType>
       </ReturnValue>
@@ -74,10 +60,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F TopLeft;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F TopLeft" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCV3F_C4B_T2F</ReturnType>
       </ReturnValue>
@@ -90,10 +72,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F TopRight;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F TopRight" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCV3F_C4B_T2F</ReturnType>
       </ReturnValue>
@@ -106,10 +84,6 @@
       <MemberSignature Language="C#" Value="public static readonly Microsoft.Xna.Framework.Graphics.VertexDeclaration VertexDeclaration;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly class Microsoft.Xna.Framework.Graphics.VertexDeclaration VertexDeclaration" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>Microsoft.Xna.Framework.Graphics.VertexDeclaration</ReturnType>
       </ReturnValue>

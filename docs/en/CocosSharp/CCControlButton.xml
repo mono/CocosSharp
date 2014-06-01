@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlButton extends CocosSharp.CCControl" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCControl</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCControlButton ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,27 +27,8 @@
       <MemberSignature Language="C#" Value="public CCControlButton (CocosSharp.CCNode sprite);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode sprite) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="sprite" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCControlButton (CocosSharp.CCScale9Sprite sprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScale9Sprite sprite) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="sprite" Type="CocosSharp.CCScale9Sprite" />
       </Parameters>
       <Docs>
         <param name="sprite">To be added.</param>
@@ -65,9 +40,6 @@
       <MemberSignature Language="C#" Value="public CCControlButton (CocosSharp.CCNode label, CocosSharp.CCNode backgroundSprite);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode label, class CocosSharp.CCNode backgroundSprite) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="label" Type="CocosSharp.CCNode" />
         <Parameter Name="backgroundSprite" Type="CocosSharp.CCNode" />
@@ -80,31 +52,9 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCControlButton (CocosSharp.CCNode label, CocosSharp.CCScale9Sprite backgroundSprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode label, class CocosSharp.CCScale9Sprite backgroundSprite) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="label" Type="CocosSharp.CCNode" />
-        <Parameter Name="backgroundSprite" Type="CocosSharp.CCScale9Sprite" />
-      </Parameters>
-      <Docs>
-        <param name="label">To be added.</param>
-        <param name="backgroundSprite">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCControlButton (string title, string fontName, float fontSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string title, string fontName, float32 fontSize) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="title" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -122,9 +72,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCNode _backgroundSprite;" />
       <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode _backgroundSprite" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -137,9 +84,6 @@
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt; _backgroundSpriteDispatchTable;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, class CocosSharp.CCNode&gt; _backgroundSpriteDispatchTable" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
@@ -152,9 +96,6 @@
       <MemberSignature Language="C#" Value="protected string _currentTitle;" />
       <MemberSignature Language="ILAsm" Value=".field family string _currentTitle" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -167,9 +108,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B _currentTitleColor;" />
       <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B _currentTitleColor" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -182,9 +120,6 @@
       <MemberSignature Language="C#" Value="protected bool _doesAdjustBackgroundImage;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _doesAdjustBackgroundImage" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -197,9 +132,6 @@
       <MemberSignature Language="C#" Value="protected bool _isPushed;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _isPushed" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -212,9 +144,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint _labelAnchorPoint;" />
       <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint _labelAnchorPoint" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -227,9 +156,6 @@
       <MemberSignature Language="C#" Value="protected int _marginH;" />
       <MemberSignature Language="ILAsm" Value=".field family int32 _marginH" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -242,9 +168,6 @@
       <MemberSignature Language="C#" Value="protected int _marginV;" />
       <MemberSignature Language="ILAsm" Value=".field family int32 _marginV" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -257,9 +180,6 @@
       <MemberSignature Language="C#" Value="protected bool _parentInited;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _parentInited" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -272,9 +192,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCSize _preferredSize;" />
       <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize _preferredSize" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -287,9 +204,6 @@
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCColor3B&gt; _titleColorDispatchTable;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, valuetype CocosSharp.CCColor3B&gt; _titleColorDispatchTable" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCColor3B&gt;</ReturnType>
       </ReturnValue>
@@ -302,9 +216,6 @@
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,string&gt; _titleDispatchTable;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, string&gt; _titleDispatchTable" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,System.String&gt;</ReturnType>
       </ReturnValue>
@@ -317,9 +228,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCNode _titleLabel;" />
       <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode _titleLabel" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -332,9 +240,6 @@
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt; _titleLabelDispatchTable;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, class CocosSharp.CCNode&gt; _titleLabelDispatchTable" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
@@ -347,9 +252,6 @@
       <MemberSignature Language="C#" Value="protected bool _zoomOnTouchDown;" />
       <MemberSignature Language="ILAsm" Value=".field family bool _zoomOnTouchDown" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -362,10 +264,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode BackgroundSprite { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode BackgroundSprite" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -379,10 +277,6 @@
       <MemberSignature Language="C#" Value="public const int CCControlButtonMarginLR = 8;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 CCControlButtonMarginLR = (8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -396,10 +290,6 @@
       <MemberSignature Language="C#" Value="public const int CCControlButtonMarginTB = 2;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 CCControlButtonMarginTB = (2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -413,10 +303,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCColor3B Color { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -430,10 +316,6 @@
       <MemberSignature Language="C#" Value="public bool DoesAdjustBackgroundImage ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool DoesAdjustBackgroundImage() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -448,10 +330,6 @@
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -465,31 +343,8 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode GetBackgroundSpriteForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode GetBackgroundSpriteForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="state" Type="CocosSharp.CCControlState" />
-      </Parameters>
-      <Docs>
-        <param name="state">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetBackgroundSpriteForState">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCScale9Sprite GetBackgroundSpriteForState (CocosSharp.CCControlState state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCScale9Sprite GetBackgroundSpriteForState(valuetype CocosSharp.CCControlState state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScale9Sprite</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="state" Type="CocosSharp.CCControlState" />
@@ -505,10 +360,6 @@
       <MemberSignature Language="C#" Value="public virtual string GetTitleBmFontForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleBmFontForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -526,10 +377,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B GetTitleColorForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCColor3B GetTitleColorForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -547,10 +394,6 @@
       <MemberSignature Language="C#" Value="public virtual string GetTitleForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -568,10 +411,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode GetTitleLabelForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode GetTitleLabelForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -589,10 +428,6 @@
       <MemberSignature Language="C#" Value="public virtual string GetTitleTtfForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetTitleTtfForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -610,10 +445,6 @@
       <MemberSignature Language="C#" Value="public virtual float GetTitleTtfSizeForState (CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance float32 GetTitleTtfSizeForState(valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -631,10 +462,6 @@
       <MemberSignature Language="C#" Value="public override bool Highlighted { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Highlighted" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -644,97 +471,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public override bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithBackgroundSprite">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithBackgroundSprite (CocosSharp.CCScale9Sprite sprite);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithBackgroundSprite(class CocosSharp.CCScale9Sprite sprite) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sprite" Type="CocosSharp.CCScale9Sprite" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithLabelAndBackgroundSprite">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithLabelAndBackgroundSprite (CocosSharp.CCNode node, CocosSharp.CCScale9Sprite backgroundSprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithLabelAndBackgroundSprite(class CocosSharp.CCNode node, class CocosSharp.CCScale9Sprite backgroundSprite) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="node" Type="CocosSharp.CCNode" />
-        <Parameter Name="backgroundSprite" Type="CocosSharp.CCScale9Sprite" />
-      </Parameters>
-      <Docs>
-        <param name="node">To be added.</param>
-        <param name="backgroundSprite">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithTitleAndFontNameAndFontSize">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithTitleAndFontNameAndFontSize (string title, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithTitleAndFontNameAndFontSize(string title, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="title" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="title">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsPushed">
       <MemberSignature Language="C#" Value="public bool IsPushed { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsPushed" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -748,10 +488,6 @@
       <MemberSignature Language="C#" Value="public const int kZoomActionTag = 2093678593;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 kZoomActionTag = (2093678593)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -765,10 +501,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint LabelAnchorPoint { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint LabelAnchorPoint" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -778,254 +510,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_backgroundSprite">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScale9Sprite m_backgroundSprite;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScale9Sprite m_backgroundSprite" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScale9Sprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_backgroundSpriteDispatchTable">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCScale9Sprite&gt; m_backgroundSpriteDispatchTable;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, class CocosSharp.CCScale9Sprite&gt; m_backgroundSpriteDispatchTable" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCScale9Sprite&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bParentInited">
-      <MemberSignature Language="C#" Value="protected bool m_bParentInited;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bParentInited" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_currentTitle">
-      <MemberSignature Language="C#" Value="protected string m_currentTitle;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_currentTitle" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_currentTitleColor">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_currentTitleColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_currentTitleColor" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_doesAdjustBackgroundImage">
-      <MemberSignature Language="C#" Value="protected bool m_doesAdjustBackgroundImage;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_doesAdjustBackgroundImage" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_isPushed">
-      <MemberSignature Language="C#" Value="protected bool m_isPushed;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_isPushed" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_labelAnchorPoint">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_labelAnchorPoint;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_labelAnchorPoint" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_marginH">
-      <MemberSignature Language="C#" Value="protected int m_marginH;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_marginH" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_marginV">
-      <MemberSignature Language="C#" Value="protected int m_marginV;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_marginV" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_preferredSize">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize m_preferredSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCSize m_preferredSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_titleColorDispatchTable">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCColor3B&gt; m_titleColorDispatchTable;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, valuetype CocosSharp.CCColor3B&gt; m_titleColorDispatchTable" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCColor3B&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_titleDispatchTable">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,string&gt; m_titleDispatchTable;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, string&gt; m_titleDispatchTable" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,System.String&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_titleLabel">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_titleLabel;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_titleLabel" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_titleLabelDispatchTable">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt; m_titleLabelDispatchTable;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlState, class CocosSharp.CCNode&gt; m_titleLabelDispatchTable" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlState,CocosSharp.CCNode&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_zoomOnTouchDown">
-      <MemberSignature Language="C#" Value="protected bool m_zoomOnTouchDown;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_zoomOnTouchDown" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="NeedsLayout">
       <MemberSignature Language="C#" Value="public override void NeedsLayout ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void NeedsLayout() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1039,10 +527,6 @@
       <MemberSignature Language="C#" Value="public event CocosSharp.CCButtonTapDelegate OnButtonTap;" />
       <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCButtonTapDelegate OnButtonTap" />
       <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCButtonTapDelegate</ReturnType>
       </ReturnValue>
@@ -1055,10 +539,6 @@
       <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
@@ -1072,10 +552,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize PreferredSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize PreferredSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -1089,10 +565,6 @@
       <MemberSignature Language="C#" Value="public override bool Selected { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Selected" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1106,10 +578,6 @@
       <MemberSignature Language="C#" Value="public void SetAdjustBackgroundImage (bool adjustBackgroundImage);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAdjustBackgroundImage(bool adjustBackgroundImage) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1126,9 +594,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetBackgroundSpriteForState (CocosSharp.CCNode sprite, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetBackgroundSpriteForState(class CocosSharp.CCNode sprite, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1143,35 +608,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetBackgroundSpriteForState">
-      <MemberSignature Language="C#" Value="public virtual void SetBackgroundSpriteForState (CocosSharp.CCScale9Sprite sprite, CocosSharp.CCControlState state);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetBackgroundSpriteForState(class CocosSharp.CCScale9Sprite sprite, valuetype CocosSharp.CCControlState state) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sprite" Type="CocosSharp.CCScale9Sprite" />
-        <Parameter Name="state" Type="CocosSharp.CCControlState" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <param name="state">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetBackgroundSpriteFrameForState">
       <MemberSignature Language="C#" Value="public virtual void SetBackgroundSpriteFrameForState (CocosSharp.CCSpriteFrame spriteFrame, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetBackgroundSpriteFrameForState(class CocosSharp.CCSpriteFrame spriteFrame, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1190,10 +630,6 @@
       <MemberSignature Language="C#" Value="protected virtual void SetMargins (int marginH, int marginV);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetMargins(int32 marginH, int32 marginV) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1212,10 +648,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleBmFontForState (string fntFile, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleBmFontForState(string fntFile, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1234,10 +666,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleColorForState (CocosSharp.CCColor3B color, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleColorForState(valuetype CocosSharp.CCColor3B color, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1256,10 +684,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleForState (string title, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleForState(string title, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1278,10 +702,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleLabelForState (CocosSharp.CCNode titleLabel, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleLabelForState(class CocosSharp.CCNode titleLabel, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1300,10 +720,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleTtfForState (string fntFile, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleTtfForState(string fntFile, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1322,10 +738,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTitleTtfSizeForState (float size, CocosSharp.CCControlState state);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTitleTtfSizeForState(float32 size, valuetype CocosSharp.CCControlState state) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -1344,10 +756,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode TitleLabel { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode TitleLabel" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -1357,91 +765,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TouchBegan">
-      <MemberSignature Language="C#" Value="public override bool TouchBegan (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool TouchBegan(class CocosSharp.CCTouch pTouch) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
-      </Parameters>
-      <Docs>
-        <param name="pTouch">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TouchCancelled">
-      <MemberSignature Language="C#" Value="public override void TouchCancelled (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchCancelled(class CocosSharp.CCTouch pTouch) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
-      </Parameters>
-      <Docs>
-        <param name="pTouch">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TouchEnded">
-      <MemberSignature Language="C#" Value="public override void TouchEnded (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchEnded(class CocosSharp.CCTouch pTouch) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
-      </Parameters>
-      <Docs>
-        <param name="pTouch">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TouchMoved">
-      <MemberSignature Language="C#" Value="public override void TouchMoved (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void TouchMoved(class CocosSharp.CCTouch pTouch) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
-      </Parameters>
-      <Docs>
-        <param name="pTouch">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ZoomOnTouchDown">
       <MemberSignature Language="C#" Value="public bool ZoomOnTouchDown { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ZoomOnTouchDown" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

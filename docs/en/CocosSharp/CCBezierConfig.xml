@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCBezierConfig extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ControlPoint1;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint ControlPoint1" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -35,10 +29,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint ControlPoint2;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint ControlPoint2" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -51,10 +41,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint EndPosition;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint EndPosition" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>

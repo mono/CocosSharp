@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMaskedSprite extends CocosSharp.CCSprite" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSprite</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCSpriteFrame pSpriteFrame, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame pSpriteFrame, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="pSpriteFrame" Type="CocosSharp.CCSpriteFrame" />
         <Parameter Name="mask" Type="System.Byte[]" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="mask" Type="System.Byte[]" />
@@ -54,9 +47,6 @@
       <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="mask" Type="System.Byte[]" />
@@ -72,9 +62,6 @@
       <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
         <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
@@ -92,9 +79,6 @@
       <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
         <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
@@ -112,9 +96,6 @@
       <MemberSignature Language="C#" Value="public virtual bool CollidesWith (CocosSharp.CCMaskedSprite target, out CocosSharp.CCPoint pt);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CollidesWith(class CocosSharp.CCMaskedSprite target, valuetype CocosSharp.CCPoint pt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -134,9 +115,6 @@
       <MemberSignature Language="C#" Value="public virtual byte[] CollisionMask { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] CollisionMask" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>

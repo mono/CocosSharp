@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScale9Sprite extends CocosSharp.CCNodeRGBA" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
       </Parameters>
@@ -50,9 +40,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (CocosSharp.CCSpriteFrame spriteFrame);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
       </Parameters>
@@ -66,9 +53,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (string file);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string file) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="file" Type="System.String" />
       </Parameters>
@@ -82,9 +66,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (CocosSharp.CCSpriteFrame spriteFrame, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
         <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
@@ -100,9 +81,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (string file, CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string file, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="file" Type="System.String" />
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
@@ -118,9 +96,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (CocosSharp.CCSpriteBatchNode batchnode, CocosSharp.CCRect rect, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteBatchNode batchnode, valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="batchnode" Type="CocosSharp.CCSpriteBatchNode" />
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
@@ -138,9 +113,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (string file, CocosSharp.CCRect rect, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string file, valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="file" Type="System.String" />
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
@@ -158,9 +130,6 @@
       <MemberSignature Language="C#" Value="public CCScale9Sprite (CocosSharp.CCSpriteBatchNode batchnode, CocosSharp.CCRect rect, bool rotated, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteBatchNode batchnode, valuetype CocosSharp.CCRect rect, bool rotated, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="batchnode" Type="CocosSharp.CCSpriteBatchNode" />
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
@@ -176,194 +145,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="_bottom">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _bottom;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _bottom" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_bottomLeft">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _bottomLeft;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _bottomLeft" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_bottomRight">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _bottomRight;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _bottomRight" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_centre">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _centre;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _centre" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_left">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _left;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _left" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_opacity">
-      <MemberSignature Language="C#" Value="protected byte _opacity;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 _opacity" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_opacityModifyRGB">
-      <MemberSignature Language="C#" Value="protected bool _opacityModifyRGB;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool _opacityModifyRGB" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_right">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _right;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _right" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_scale9Image">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSpriteBatchNode _scale9Image;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSpriteBatchNode _scale9Image" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSpriteBatchNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_top">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _top;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _top" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_topLeft">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _topLeft;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _topLeft" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_topRight">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite _topRight;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite _topRight" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CapInsets">
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect CapInsets { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect CapInsets" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
@@ -377,10 +162,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCColor3B Color { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -394,10 +175,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -407,81 +184,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public override bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithBatchNode">
-      <MemberSignature Language="C#" Value="public bool InitWithBatchNode (CocosSharp.CCSpriteBatchNode batchnode, CocosSharp.CCRect rect, CocosSharp.CCRect capInsets);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithBatchNode(class CocosSharp.CCSpriteBatchNode batchnode, valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCRect capInsets) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="batchnode" Type="CocosSharp.CCSpriteBatchNode" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
-        <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="batchnode">To be added.</param>
-        <param name="rect">To be added.</param>
-        <param name="capInsets">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithBatchNode">
-      <MemberSignature Language="C#" Value="public bool InitWithBatchNode (CocosSharp.CCSpriteBatchNode batchnode, CocosSharp.CCRect rect, bool rotated, CocosSharp.CCRect capInsets);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithBatchNode(class CocosSharp.CCSpriteBatchNode batchnode, valuetype CocosSharp.CCRect rect, bool rotated, valuetype CocosSharp.CCRect capInsets) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="batchnode" Type="CocosSharp.CCSpriteBatchNode" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
-        <Parameter Name="rotated" Type="System.Boolean" />
-        <Parameter Name="capInsets" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="batchnode">To be added.</param>
-        <param name="rect">To be added.</param>
-        <param name="rotated">To be added.</param>
-        <param name="capInsets">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="InsetBottom">
       <MemberSignature Language="C#" Value="public float InsetBottom { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 InsetBottom" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -495,10 +201,6 @@
       <MemberSignature Language="C#" Value="public float InsetLeft { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 InsetLeft" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -512,10 +214,6 @@
       <MemberSignature Language="C#" Value="public float InsetRight { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 InsetRight" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -529,10 +227,6 @@
       <MemberSignature Language="C#" Value="public float InsetTop { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 InsetTop" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -546,136 +240,12 @@
       <MemberSignature Language="C#" Value="public override bool IsColorModifiedByOpacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsOpacityModifyRGB">
-      <MemberSignature Language="C#" Value="public override bool IsOpacityModifyRGB { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSpriteFrameRotated">
-      <MemberSignature Language="C#" Value="protected bool m_bSpriteFrameRotated;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSpriteFrameRotated" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSpritesGenerated">
-      <MemberSignature Language="C#" Value="protected bool m_bSpritesGenerated;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSpritesGenerated" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_capInsetsInternal">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCRect m_capInsetsInternal;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCRect m_capInsetsInternal" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCRect</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_positionsAreDirty">
-      <MemberSignature Language="C#" Value="protected bool m_positionsAreDirty;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_positionsAreDirty" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_sColorUnmodified">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_sColorUnmodified;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_sColorUnmodified" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_spriteRect">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCRect m_spriteRect;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCRect m_spriteRect" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCRect</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_tColor">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B m_tColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B m_tColor" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -683,10 +253,6 @@
       <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
@@ -700,10 +266,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize PreferredSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize PreferredSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -713,32 +275,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetSpriteFrame">
-      <MemberSignature Language="C#" Value="public void SetSpriteFrame (CocosSharp.CCSpriteFrame spriteFrame);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetSpriteFrame(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
-      </Parameters>
-      <Docs>
-        <param name="spriteFrame">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SpriteFrame">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrame SpriteFrame { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteFrame SpriteFrame" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
@@ -752,9 +292,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCScale9Sprite SpriteWithFrameName (string spriteFrameName);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCScale9Sprite SpriteWithFrameName(string spriteFrameName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScale9Sprite</ReturnType>
       </ReturnValue>
@@ -772,9 +309,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCScale9Sprite SpriteWithFrameName (string spriteFrameName, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCScale9Sprite SpriteWithFrameName(string spriteFrameName, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScale9Sprite</ReturnType>
       </ReturnValue>
@@ -794,10 +328,6 @@
       <MemberSignature Language="C#" Value="protected void UpdateCapInset ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateCapInset() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -811,9 +341,6 @@
       <MemberSignature Language="C#" Value="public override void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -830,10 +357,6 @@
       <MemberSignature Language="C#" Value="protected void UpdatePositions ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdatePositions() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -847,10 +370,6 @@
       <MemberSignature Language="C#" Value="public bool UpdateWithBatchNode (CocosSharp.CCSpriteBatchNode batchnode, CocosSharp.CCRect rect, bool rotated, CocosSharp.CCRect capInsets);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool UpdateWithBatchNode(class CocosSharp.CCSpriteBatchNode batchnode, valuetype CocosSharp.CCRect rect, bool rotated, valuetype CocosSharp.CCRect capInsets) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -874,10 +393,6 @@
       <MemberSignature Language="C#" Value="public override void Visit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

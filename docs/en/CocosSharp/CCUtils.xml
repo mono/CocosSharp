@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUtils extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCUtils ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint CCCardinalSplineAt (CocosSharp.CCPoint p0, CocosSharp.CCPoint p1, CocosSharp.CCPoint p2, CocosSharp.CCPoint p3, float tension, float t);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint CCCardinalSplineAt(valuetype CocosSharp.CCPoint p0, valuetype CocosSharp.CCPoint p1, valuetype CocosSharp.CCPoint p2, valuetype CocosSharp.CCPoint p3, float32 tension, float32 t) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -64,10 +54,6 @@
       <MemberSignature Language="C#" Value="public static int CCNextPOT (int x);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 CCNextPOT(int32 x) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -85,10 +71,6 @@
       <MemberSignature Language="C#" Value="public static long CCNextPOT (long x);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int64 CCNextPOT(int64 x) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int64</ReturnType>
       </ReturnValue>
@@ -106,10 +88,6 @@
       <MemberSignature Language="C#" Value="public static float CCParseFloat (string toParse);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCParseFloat(string toParse) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -127,10 +105,6 @@
       <MemberSignature Language="C#" Value="public static float CCParseFloat (string toParse, System.Globalization.NumberStyles ns);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCParseFloat(string toParse, valuetype System.Globalization.NumberStyles ns) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -150,10 +124,6 @@
       <MemberSignature Language="C#" Value="public static int CCParseInt (string toParse);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 CCParseInt(string toParse) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -171,10 +141,6 @@
       <MemberSignature Language="C#" Value="public static int CCParseInt (string toParse, System.Globalization.NumberStyles ns);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 CCParseInt(string toParse, valuetype System.Globalization.NumberStyles ns) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -194,9 +160,6 @@
       <MemberSignature Language="C#" Value="public static void CheckGLError ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CheckGLError() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -210,10 +173,6 @@
       <MemberSignature Language="C#" Value="public static System.Collections.Generic.List&lt;string&gt; GetGLExtensions ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig class System.Collections.Generic.List`1&lt;string&gt; GetGLExtensions() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -228,10 +187,6 @@
       <MemberSignature Language="C#" Value="public static void Split (string src, string token, System.Collections.Generic.List&lt;string&gt; vect);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Split(string src, string token, class System.Collections.Generic.List`1&lt;string&gt; vect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -252,10 +207,6 @@
       <MemberSignature Language="C#" Value="public static bool SplitWithForm (string pStr, System.Collections.Generic.List&lt;string&gt; strs);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool SplitWithForm(string pStr, class System.Collections.Generic.List`1&lt;string&gt; strs) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

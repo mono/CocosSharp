@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCFocusable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,10 +14,6 @@
       <MemberSignature Language="C#" Value="public bool CanReceiveFocus { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool CanReceiveFocus" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public bool HasFocus { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool HasFocus" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

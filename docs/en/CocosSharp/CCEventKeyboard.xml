@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventKeyboard extends CocosSharp.CCEvent" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEvent</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCKeyboardEventType KeyboardEventType { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCKeyboardEventType KeyboardEventType" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardEventType</ReturnType>
       </ReturnValue>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCKeyboardState KeyboardState { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCKeyboardState KeyboardState" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardState</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCKeys Keys { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCKeys Keys" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>

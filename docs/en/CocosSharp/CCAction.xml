@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAction extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -14,16 +12,13 @@
   <Docs>
     <summary>Base class for Action objects.</summary>
     <remarks>
-
       <para>
 
-	Actions are orders that can be given to a <see
-	cref="T:CococSharp.CCNode"/> object.  Actions are designed to
+	Actions are orders that can be given to a <see cref="T:CococSharp.CCNode" /> object.  Actions are designed to
 	alter attributes on a node (things like color, opacity,
 	position, rotation, scale and visibility).
 
       </para>
-
       <para>
 
 	Unlike other variants of the Cocos2D frameworks, on
@@ -33,32 +28,24 @@
 	can be reused with different node types.
 
       </para>
-
       <para>
 
-	To start an action, you invoke the <see
-	cref="M:CocosSharp.CCNode.RunAction"/> method on a node.  This
-	method will in turn call <see
-	cref="M:CocosSharp.CCAction.StartAction"/> hich the takes as a
+	To start an action, you invoke the <see cref="M:CocosSharp.CCNode.RunAction" /> method on a node.  This
+	method will in turn call <see cref="M:CocosSharp.CCAction.StartAction" /> hich the takes as a
 	parameter the target node to which the action will be applied,
 	and this method in turn returns the state associated with this
-	object (a subclass of <see
-	cref="T:CocosSharp.CCActionState"/>.
+	object (a subclass of <see cref="T:CocosSharp.CCActionState" />.
 
       </para>
-
       <para>
 
-	Actions that derive from <see
-	cref="T:CocosSharp.CCActionInterval"/> alter the properties of
-	a node over a period of time.  Actions that derive from <see
-	cref="T:CocosSharp.CCActionInstant"/> apply the changes
+	Actions that derive from <see cref="T:CocosSharp.CCActionInterval" /> alter the properties of
+	a node over a period of time.  Actions that derive from <see cref="T:CocosSharp.CCActionInstant" /> apply the changes
 	immediately.
 
       </para>
-
       <example>
-<code lang="c#">
+        <code lang="c#">
             var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
@@ -67,7 +54,6 @@
             spr.RunAction(new CCRepeat (act1, 1));
 </code>
       </example>
-
     </remarks>
   </Docs>
   <Members>
@@ -75,127 +61,7 @@
       <MemberSignature Language="C#" Value="public CCAction ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCAction (CocosSharp.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction action) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCAction" />
-      </Parameters>
-      <Docs>
-        <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCAction Copy ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCAction Copy() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAction</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>returns a clone of action </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public virtual object Copy (CocosSharp.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="zone">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsDone">
-      <MemberSignature Language="C#" Value="public virtual bool IsDone { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-          <para>return true if the action has finished </para>
-        </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nTag">
-      <MemberSignature Language="C#" Value="protected int m_nTag;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nTag" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pOriginalTarget">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pOriginalTarget;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pOriginalTarget" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pTarget">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pTarget;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pTarget" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCNode</ReturnType>
-      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -205,10 +71,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode OriginalTarget { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode OriginalTarget" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -223,9 +85,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -239,72 +98,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected virtual void StartWithTarget (CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="target">To be added.</param>
-        <summary>
-          <para>called before the action start. It will also set the target. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public virtual void Step (float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Step(float32 dt) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dt" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="dt">To be added.</param>
-        <summary>
-          <para>called every frame with it's delta time. DON'T override unless you know what you are doing. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Stop">
-      <MemberSignature Language="C#" Value="public virtual void Stop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Stop() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Tag">
       <MemberSignature Language="C#" Value="public int Tag { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Tag" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -318,10 +115,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode Target { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Target" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -329,41 +122,6 @@
         <summary>The action will modify the target properties. </summary>
         <value>To be added.</value>
         <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Update">
-      <MemberSignature Language="C#" Value="public virtual void Update (float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update(float32 time) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="time" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="time">To be added.</param>
-        <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>
-          <para>called once per frame. time a value between 0 and 1</para>
-          <para>For example:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>0 means that the action just started</description>
-          </item>
-          <description>0 means that the action just started</description>
-          <item>
-            <description>0.5 means that the action is in the middle</description>
-          </item>
-          <description>0.5 means that the action is in the middle</description>
-          <item>
-            <description>1 means that the action is over </description>
-          </item>
-          <description>1 means that the action is over </description>
-        </remarks>
       </Docs>
     </Member>
   </Members>

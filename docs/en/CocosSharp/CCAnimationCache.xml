@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimationCache extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -32,10 +30,6 @@
       <MemberSignature Language="C#" Value="protected CCAnimationCache ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -46,10 +40,6 @@
       <MemberSignature Language="C#" Value="public void AddAnimation (CocosSharp.CCAnimation animation, string name);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimation(class CocosSharp.CCAnimation animation, string name) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -68,9 +58,6 @@
       <MemberSignature Language="C#" Value="public void AddAnimations (CocosSharp.PlistDictionary animationDict);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimations(class CocosSharp.PlistDictionary animationDict) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -87,9 +74,6 @@
       <MemberSignature Language="C#" Value="public void AddAnimations (string plistFilename);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimations(string plistFilename) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -102,89 +86,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddAnimationsWithDictionary">
-      <MemberSignature Language="C#" Value="public void AddAnimationsWithDictionary (CocosSharp.PlistDictionary dictionary);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimationsWithDictionary(class CocosSharp.PlistDictionary dictionary) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dictionary" Type="CocosSharp.PlistDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="dictionary">To be added.</param>
-        <summary>Adds an animation from an NSDictionary Make sure that the frames were previously loaded in the . v1.1 </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="AddAnimationsWithFile">
-      <MemberSignature Language="C#" Value="public void AddAnimationsWithFile (string plist);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAnimationsWithFile(string plist) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="plist" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="plist">To be added.</param>
-        <summary>Adds an animation from a plist file. Make sure that the frames were previously loaded in the . v1.1 </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="AnimationByName">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation AnimationByName (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAnimation AnimationByName(string name) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAnimation</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="name">To be added.</param>
-        <summary>Returns a Animation that was previously added.
- If the name is not found it will return nil. You should retain the returned copy if you are going to use it. </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Instance">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCAnimationCache Instance { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCAnimationCache Instance" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAnimationCache</ReturnType>
       </ReturnValue>
@@ -198,10 +103,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation this[string index] { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAnimation Item(string)" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
@@ -219,10 +120,6 @@
       <MemberSignature Language="C#" Value="public static void PurgeSharedAnimationCache ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedAnimationCache() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -236,9 +133,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAnimation (string animationName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAnimation(string animationName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -248,41 +142,6 @@
       <Docs>
         <param name="animationName">To be added.</param>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveAnimationByName">
-      <MemberSignature Language="C#" Value="public void RemoveAnimationByName (string name);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAnimationByName(string name) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="name" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="name">To be added.</param>
-        <summary>Deletes a  from the cache. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SharedAnimationCache">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCAnimationCache SharedAnimationCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCAnimationCache SharedAnimationCache" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAnimationCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

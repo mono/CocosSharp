@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCamera extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -39,10 +37,6 @@
       <MemberSignature Language="C#" Value="public CCCamera ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -53,9 +47,6 @@
       <MemberSignature Language="C#" Value="protected float CenterX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CenterX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -69,9 +60,6 @@
       <MemberSignature Language="C#" Value="protected float CenterY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CenterY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -85,9 +73,6 @@
       <MemberSignature Language="C#" Value="protected float CenterZ { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CenterZ" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -97,29 +82,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Dirty">
-      <MemberSignature Language="C#" Value="public bool Dirty { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Dirty" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>sets the dirty value </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="EyeX">
       <MemberSignature Language="C#" Value="protected float EyeX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 EyeX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -133,9 +99,6 @@
       <MemberSignature Language="C#" Value="protected float EyeY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 EyeY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -149,9 +112,6 @@
       <MemberSignature Language="C#" Value="protected float EyeZ { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 EyeZ" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -165,10 +125,6 @@
       <MemberSignature Language="C#" Value="public void GetCenterXyz (out float pCenterX, out float pCenterY, out float pCenterZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCenterXyz(float32 pCenterX, float32 pCenterY, float32 pCenterZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -189,10 +145,6 @@
       <MemberSignature Language="C#" Value="public void GetEyeXyz (out float pEyeX, out float pEyeY, out float pEyeZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEyeXyz(float32 pEyeX, float32 pEyeY, float32 pEyeZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -213,10 +165,6 @@
       <MemberSignature Language="C#" Value="public void GetUpXyz (out float pUpX, out float pUpY, out float pUpZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetUpXyz(float32 pUpX, float32 pUpY, float32 pUpZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -237,10 +185,6 @@
       <MemberSignature Language="C#" Value="public static float GetZEye ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetZEye() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -251,29 +195,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public void Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsDirty">
       <MemberSignature Language="C#" Value="public bool IsDirty { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDirty" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -287,10 +212,6 @@
       <MemberSignature Language="C#" Value="public void Locate ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Locate() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -300,164 +221,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="m_bDirty">
-      <MemberSignature Language="C#" Value="protected bool m_bDirty;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bDirty" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fCenterX">
-      <MemberSignature Language="C#" Value="protected float m_fCenterX;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterX" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fCenterY">
-      <MemberSignature Language="C#" Value="protected float m_fCenterY;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterY" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fCenterZ">
-      <MemberSignature Language="C#" Value="protected float m_fCenterZ;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fCenterZ" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fEyeX">
-      <MemberSignature Language="C#" Value="protected float m_fEyeX;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeX" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fEyeY">
-      <MemberSignature Language="C#" Value="protected float m_fEyeY;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeY" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fEyeZ">
-      <MemberSignature Language="C#" Value="protected float m_fEyeZ;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fEyeZ" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fUpX">
-      <MemberSignature Language="C#" Value="protected float m_fUpX;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpX" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fUpY">
-      <MemberSignature Language="C#" Value="protected float m_fUpY;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpY" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fUpZ">
-      <MemberSignature Language="C#" Value="protected float m_fUpZ;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fUpZ" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Restore">
       <MemberSignature Language="C#" Value="public void Restore ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Restore() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -471,10 +238,6 @@
       <MemberSignature Language="C#" Value="public void SetCenterXyz (float fCenterX, float fCenterY, float fCenterZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCenterXyz(float32 fCenterX, float32 fCenterY, float32 fCenterZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -495,10 +258,6 @@
       <MemberSignature Language="C#" Value="public void SetEyeXyz (float fEyeX, float fEyeY, float fEyeZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEyeXyz(float32 fEyeX, float32 fEyeY, float32 fEyeZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -519,10 +278,6 @@
       <MemberSignature Language="C#" Value="public void SetUpXyz (float fUpX, float fUpY, float fUpZ);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUpXyz(float32 fUpX, float32 fUpY, float32 fUpZ) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -543,10 +298,6 @@
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -561,9 +312,6 @@
       <MemberSignature Language="C#" Value="protected float UpX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 UpX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -577,9 +325,6 @@
       <MemberSignature Language="C#" Value="protected float UpY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 UpY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -593,9 +338,6 @@
       <MemberSignature Language="C#" Value="protected float UpZ { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 UpZ" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRotateToState extends CocosSharp.CCActionIntervalState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCRotateToState (CocosSharp.CCRotateTo action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCRotateTo action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCRotateTo" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="protected float DiffAngleX;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 DiffAngleX" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -51,9 +44,6 @@
       <MemberSignature Language="C#" Value="protected float DiffAngleY;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 DiffAngleY" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -66,9 +56,6 @@
       <MemberSignature Language="C#" Value="protected float DistanceAngleX { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 DistanceAngleX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -82,9 +69,6 @@
       <MemberSignature Language="C#" Value="protected float DistanceAngleY { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 DistanceAngleY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -98,9 +82,6 @@
       <MemberSignature Language="C#" Value="protected float StartAngleX;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 StartAngleX" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -113,9 +94,6 @@
       <MemberSignature Language="C#" Value="protected float StartAngleY;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 StartAngleY" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -128,9 +106,6 @@
       <MemberSignature Language="C#" Value="public override void Update (float time);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

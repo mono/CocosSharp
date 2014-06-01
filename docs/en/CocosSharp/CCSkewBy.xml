@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewBy extends CocosSharp.CCSkewTo" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSkewTo</BaseTypeName>
@@ -17,28 +15,9 @@ v1.0 </summary>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSkewBy (CocosSharp.CCSkewBy skewBy);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSkewBy skewBy) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="skewBy" Type="CocosSharp.CCSkewBy" />
-      </Parameters>
-      <Docs>
-        <param name="skewBy">To be added.</param>
-        <summary>creates the action </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCSkewBy (float t, float deltaSkewXY);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 deltaSkewXY) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
         <Parameter Name="deltaSkewXY" Type="System.Single" />
@@ -54,10 +33,6 @@ v1.0 </summary>
       <MemberSignature Language="C#" Value="public CCSkewBy (float t, float deltaSkewX, float deltaSkewY);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 deltaSkewX, float32 deltaSkewY) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
         <Parameter Name="deltaSkewX" Type="System.Single" />
@@ -71,38 +46,10 @@ v1.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected override bool InitWithDuration (float t, float sx, float sy);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance bool InitWithDuration(float32 t, float32 sx, float32 sy) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="sx" Type="System.Single" />
-        <Parameter Name="sy" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <param name="sx">To be added.</param>
-        <param name="sy">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Reverse">
       <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
@@ -117,9 +64,6 @@ v1.0 </summary>
       <MemberSignature Language="C#" Value="public float SkewByX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 SkewByX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -133,9 +77,6 @@ v1.0 </summary>
       <MemberSignature Language="C#" Value="public float SkewByY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 SkewByY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -149,9 +90,6 @@ v1.0 </summary>
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -162,27 +100,6 @@ v1.0 </summary>
         <param name="target">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="target">To be added.</param>
-        <summary>
-          <para>called before the action start. It will also set the target. </para>
-        </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

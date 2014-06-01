@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventAccelerate extends CocosSharp.CCEvent" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEvent</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCAcceleration Acceleration { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAcceleration Acceleration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAcceleration</ReturnType>
       </ReturnValue>

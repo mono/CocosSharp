@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCShuffleTilesState extends CocosSharp.CCTiledGrid3DActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCTiledGrid3DActionState</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCShuffleTilesState (CocosSharp.CCShuffleTiles action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCShuffleTiles action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCShuffleTiles" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCGridSize GetDelta (CocosSharp.CCGridSize pos);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype CocosSharp.CCGridSize GetDelta(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGridSize</ReturnType>
       </ReturnValue>
@@ -56,9 +49,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCGridSize GetDelta (int x, int y);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance valuetype CocosSharp.CCGridSize GetDelta(int32 x, int32 y) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGridSize</ReturnType>
       </ReturnValue>
@@ -78,9 +68,6 @@
       <MemberSignature Language="C#" Value="protected void PlaceTile (CocosSharp.CCGridSize pos, CocosSharp.CCTile tile);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void PlaceTile(valuetype CocosSharp.CCGridSize pos, class CocosSharp.CCTile tile) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -99,9 +86,6 @@
       <MemberSignature Language="C#" Value="protected void PlaceTile (int x, int y, CocosSharp.CCTile tile);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void PlaceTile(int32 x, int32 y, class CocosSharp.CCTile tile) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -122,9 +106,6 @@
       <MemberSignature Language="C#" Value="public void Shuffle (ref int[] pArray, int nLen);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Shuffle(int32[] pArray, int32 nLen) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -143,9 +124,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCTile[] Tiles { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTile[] Tiles" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTile[]</ReturnType>
       </ReturnValue>
@@ -159,9 +137,6 @@
       <MemberSignature Language="C#" Value="protected int TilesCount { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 TilesCount" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -175,9 +150,6 @@
       <MemberSignature Language="C#" Value="protected int[] TilesOrder { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32[] TilesOrder" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32[]</ReturnType>
       </ReturnValue>
@@ -191,9 +163,6 @@
       <MemberSignature Language="C#" Value="public override void Update (float time);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

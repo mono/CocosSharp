@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCKeyboardState extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -38,9 +34,6 @@
       <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -55,9 +48,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCKeys[] GetPressedKeys ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCKeys[] GetPressedKeys() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys[]</ReturnType>
       </ReturnValue>
@@ -72,9 +62,6 @@
       <MemberSignature Language="C#" Value="public bool IsKeyDown (CocosSharp.CCKeys key);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsKeyDown(valuetype CocosSharp.CCKeys key) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -92,9 +79,6 @@
       <MemberSignature Language="C#" Value="public bool IsKeyUp (CocosSharp.CCKeys key);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsKeyUp(valuetype CocosSharp.CCKeys key) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -112,9 +96,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCKeyState this[CocosSharp.CCKeys key] { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCKeyState Item(valuetype CocosSharp.CCKeys)" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyState</ReturnType>
       </ReturnValue>
@@ -132,9 +113,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCKeyboardState a, CocosSharp.CCKeyboardState b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCKeyboardState a, valuetype CocosSharp.CCKeyboardState b) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -154,9 +132,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCKeyboardState a, CocosSharp.CCKeyboardState b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCKeyboardState a, valuetype CocosSharp.CCKeyboardState b) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

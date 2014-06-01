@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemToggle extends CocosSharp.CCMenuItem" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCMenuItem</BaseTypeName>
@@ -18,25 +16,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemToggle ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>creates a menu item with a item </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCMenuItemToggle (CocosSharp.CCMenuItem[] items);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCMenuItem[] items) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
           <Attributes>
@@ -56,10 +38,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemToggle (Action&lt;object&gt; target, CocosSharp.CCMenuItem[] items);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;object&gt; target, class CocosSharp.CCMenuItem[] items) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
         <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
@@ -81,10 +59,6 @@
       <MemberSignature Language="C#" Value="public override void Activate ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Activate() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -94,53 +68,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="AddSubItem">
-      <MemberSignature Language="C#" Value="public void AddSubItem (CocosSharp.CCMenuItem item);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSubItem(class CocosSharp.CCMenuItem item) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="item" Type="CocosSharp.CCMenuItem" />
-      </Parameters>
-      <Docs>
-        <param name="item">To be added.</param>
-        <summary>add more menu item </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Create">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCMenuItemToggle Create (CocosSharp.CCMenuItem item);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCMenuItemToggle Create(class CocosSharp.CCMenuItem item) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCMenuItemToggle</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="item" Type="CocosSharp.CCMenuItem" />
-      </Parameters>
-      <Docs>
-        <param name="item">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Enabled">
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -150,86 +81,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithItem">
-      <MemberSignature Language="C#" Value="public bool InitWithItem (CocosSharp.CCMenuItem item);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithItem(class CocosSharp.CCMenuItem item) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="item" Type="CocosSharp.CCMenuItem" />
-      </Parameters>
-      <Docs>
-        <param name="item">To be added.</param>
-        <summary>initializes a menu item with a item </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithTarget">
-      <MemberSignature Language="C#" Value="public bool InitWithTarget (Action&lt;object&gt; selector, CocosSharp.CCMenuItem[] items);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTarget(class System.Action`1&lt;object&gt; selector, class CocosSharp.CCMenuItem[] items) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
-        <Parameter Name="items" Type="CocosSharp.CCMenuItem[]" />
-      </Parameters>
-      <Docs>
-        <param name="selector">To be added.</param>
-        <param name="items">To be added.</param>
-        <summary>initializes a menu item from a list of items with a target selector </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="m_pSubItems">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt; m_pSubItems;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class CocosSharp.CCMenuItem&gt; m_pSubItems" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Selected">
-      <MemberSignature Language="C#" Value="public override void Selected ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Selected() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>The item was selected (not activated), similar to "mouse-over" </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Selected">
       <MemberSignature Language="C#" Value="public override bool Selected { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Selected" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -243,10 +98,6 @@
       <MemberSignature Language="C#" Value="public int SelectedIndex { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 SelectedIndex" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -260,10 +111,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCMenuItem SelectedItem { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCMenuItem SelectedItem" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMenuItem</ReturnType>
       </ReturnValue>
@@ -277,32 +124,12 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt; SubItems { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCMenuItem&gt; SubItems" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt;</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setSubItems </summary>
         <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Unselected">
-      <MemberSignature Language="C#" Value="public override void Unselected ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Unselected() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>The item was unselected </summary>
         <remarks />
       </Docs>
     </Member>

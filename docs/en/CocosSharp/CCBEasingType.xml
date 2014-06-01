@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBEasingType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="BackIn" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BackIn = int32(11)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="BackInOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BackInOut = int32(13)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="BackOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BackOut = int32(12)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="BounceIn" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BounceIn = int32(8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -73,9 +60,6 @@
       <MemberSignature Language="C#" Value="BounceInOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BounceInOut = int32(10)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -87,9 +71,6 @@
       <MemberSignature Language="C#" Value="BounceOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType BounceOut = int32(9)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -101,9 +82,6 @@
       <MemberSignature Language="C#" Value="CubicIn" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType CubicIn = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -115,9 +93,6 @@
       <MemberSignature Language="C#" Value="CubicInOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType CubicInOut = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -129,9 +104,6 @@
       <MemberSignature Language="C#" Value="CubicOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType CubicOut = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -143,9 +115,6 @@
       <MemberSignature Language="C#" Value="ElasticIn" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType ElasticIn = int32(5)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -157,9 +126,6 @@
       <MemberSignature Language="C#" Value="ElasticInOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType ElasticInOut = int32(7)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -171,9 +137,6 @@
       <MemberSignature Language="C#" Value="ElasticOut" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType ElasticOut = int32(6)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -185,9 +148,6 @@
       <MemberSignature Language="C#" Value="Instant" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType Instant = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>
@@ -199,9 +159,6 @@
       <MemberSignature Language="C#" Value="Linear" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBEasingType Linear = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBEasingType</ReturnType>
       </ReturnValue>

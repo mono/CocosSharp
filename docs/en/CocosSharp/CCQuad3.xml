@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCQuad3 extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -21,9 +19,6 @@
       <MemberSignature Language="C#" Value="public CCQuad3 (Nullable&lt;CocosSharp.CCVertex3F&gt; tL = null, Nullable&lt;CocosSharp.CCVertex3F&gt; tR = null, Nullable&lt;CocosSharp.CCVertex3F&gt; bL = null, Nullable&lt;CocosSharp.CCVertex3F&gt; bR = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; tL, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; tR, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; bL, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCVertex3F&gt; bR) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="tL" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
         <Parameter Name="tR" Type="System.Nullable&lt;CocosSharp.CCVertex3F&gt;" />
@@ -43,10 +38,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F BottomLeft;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F BottomLeft" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -59,10 +50,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F BottomRight;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F BottomRight" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -75,10 +62,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F TopLeft;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F TopLeft" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -91,10 +74,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F TopRight;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCVertex3F TopRight" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>

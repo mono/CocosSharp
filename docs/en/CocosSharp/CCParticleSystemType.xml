@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCParticleSystemType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="Cocos2D" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCParticleSystemType Cocos2D = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCParticleSystemType</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="Custom" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCParticleSystemType Custom = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCParticleSystemType</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="Internal" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCParticleSystemType Internal = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCParticleSystemType</ReturnType>
       </ReturnValue>

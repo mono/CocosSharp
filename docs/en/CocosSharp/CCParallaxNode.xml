@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParallaxNode extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
@@ -21,10 +19,6 @@
       <MemberSignature Language="C#" Value="public CCParallaxNode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -35,10 +29,6 @@
       <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -63,10 +53,6 @@
       <MemberSignature Language="C#" Value="public virtual void AddChild (CocosSharp.CCNode child, int z, CocosSharp.CCPoint ratio, CocosSharp.CCPoint offset);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddChild(class CocosSharp.CCNode child, int32 z, valuetype CocosSharp.CCPoint ratio, valuetype CocosSharp.CCPoint offset) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -85,60 +71,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_pParallaxArray">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCPointObject&gt; m_pParallaxArray;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCPointObject&gt; m_pParallaxArray" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCPointObject&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_tLastPosition">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_tLastPosition;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_tLastPosition" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ParallaxArray">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCPointObject&gt; ParallaxArray { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCPointObject&gt; ParallaxArray" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCPointObject&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveAllChildrenWithCleanup">
-      <MemberSignature Language="C#" Value="public override void RemoveAllChildrenWithCleanup (bool cleanup);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveAllChildrenWithCleanup(bool cleanup) cil managed" />
+    <Member MemberName="RemoveAllChildren">
+      <MemberSignature Language="C#" Value="public override void RemoveAllChildren (bool cleanup);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveAllChildren(bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -146,22 +82,15 @@
         <Parameter Name="cleanup" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="cleanup">true if all running actions on all children nodes should be cleanup, false oterwise. </param>
-        <summary>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</summary>
-        <remarks>
-          <para>Removes all children from the container, and do a cleanup to all running actions depending on the cleanup parameter.</para>
-          <para />
-        </remarks>
+        <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="RemoveChild">
       <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode child, bool cleanup);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -183,10 +112,6 @@
       <MemberSignature Language="C#" Value="public override void Visit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Visit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

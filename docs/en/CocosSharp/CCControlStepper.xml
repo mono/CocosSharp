@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlStepper extends CocosSharp.CCControl" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCControl</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCControlStepper (CocosSharp.CCSprite minusSprite, CocosSharp.CCSprite plusSprite);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSprite minusSprite, class CocosSharp.CCSprite plusSprite) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="minusSprite" Type="CocosSharp.CCSprite" />
         <Parameter Name="plusSprite" Type="CocosSharp.CCSprite" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="public virtual bool IsContinuous { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsContinuous" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="public virtual float MaximumValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MaximumValue" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -68,9 +58,6 @@
       <MemberSignature Language="C#" Value="public virtual float MinimumValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MinimumValue" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -84,9 +71,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf MinusLabel { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf MinusLabel" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
       </ReturnValue>
@@ -100,9 +84,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite MinusSprite { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite MinusSprite" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -116,9 +97,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCLabelTtf PlusLabel { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelTtf PlusLabel" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLabelTtf</ReturnType>
       </ReturnValue>
@@ -132,9 +110,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite PlusSprite { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite PlusSprite" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -148,9 +123,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetValueWithSendingEvent (float value, bool send);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetValueWithSendingEvent(float32 value, bool send) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -169,9 +141,6 @@
       <MemberSignature Language="C#" Value="protected void StartAutorepeat ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void StartAutorepeat() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -185,9 +154,6 @@
       <MemberSignature Language="C#" Value="public virtual float StepValue { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 StepValue" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -201,9 +167,6 @@
       <MemberSignature Language="C#" Value="protected void StopAutorepeat ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void StopAutorepeat() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -217,9 +180,6 @@
       <MemberSignature Language="C#" Value="public override void Update (float dt);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -236,9 +196,6 @@
       <MemberSignature Language="C#" Value="protected void UpdateLayoutUsingTouchLocation (CocosSharp.CCPoint location);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateLayoutUsingTouchLocation(valuetype CocosSharp.CCPoint location) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -255,9 +212,6 @@
       <MemberSignature Language="C#" Value="public virtual float Value { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Value" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -271,9 +225,6 @@
       <MemberSignature Language="C#" Value="public virtual bool Wraps { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Wraps" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

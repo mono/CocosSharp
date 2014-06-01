@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends CocosSharp.CCLayerRGBA implements class CocosSharp.ICCBlendable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
@@ -37,10 +35,6 @@
       <MemberSignature Language="C#" Value="public CCLayerColor ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>creates a  with color. Width and height are the window size. </summary>
@@ -51,10 +45,6 @@
       <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="color" Type="CocosSharp.CCColor4B" />
       </Parameters>
@@ -68,10 +58,6 @@
       <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCColor4B color, float width, float height);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color, float32 width, float32 height) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="color" Type="CocosSharp.CCColor4B" />
         <Parameter Name="width" Type="System.Single" />
@@ -89,10 +75,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
@@ -106,10 +88,6 @@
       <MemberSignature Language="C#" Value="public void ChangeHeight (float h);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeHeight(float32 h) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -126,10 +104,6 @@
       <MemberSignature Language="C#" Value="public void ChangeWidth (float w);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidth(float32 w) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -146,10 +120,6 @@
       <MemberSignature Language="C#" Value="public void ChangeWidthAndHeight (float w, float h);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidthAndHeight(float32 w, float32 h) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -169,10 +139,6 @@ v0.8 </summary>
       <MemberSignature Language="C#" Value="public override CocosSharp.CCColor3B Color { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -189,10 +155,6 @@ v0.8 </summary>
       <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -212,10 +174,6 @@ v0.8 </summary>
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -244,105 +202,10 @@ v0.8 </summary>
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public override bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Initializes the instance of Whether the initialization was successful. </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithColor">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithColor (CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithColor(valuetype CocosSharp.CCColor4B color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-      </Parameters>
-      <Docs>
-        <param name="color">To be added.</param>
-        <summary>initializes a  with color. Width and height are the window size. </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithColor">
-      <MemberSignature Language="C#" Value="public virtual bool InitWithColor (CocosSharp.CCColor4B color, float width, float height);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool InitWithColor(valuetype CocosSharp.CCColor4B color, float32 width, float32 height) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-        <Parameter Name="width" Type="System.Single" />
-        <Parameter Name="height" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="color">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pSquareVertices">
-      <MemberSignature Language="C#" Value="protected Microsoft.Xna.Framework.Graphics.VertexPositionColor[] m_pSquareVertices;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype Microsoft.Xna.Framework.Graphics.VertexPositionColor[] m_pSquareVertices" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Graphics.VertexPositionColor[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_tBlendFunc">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCBlendFunc m_tBlendFunc;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCBlendFunc m_tBlendFunc" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Opacity">
       <MemberSignature Language="C#" Value="public override byte Opacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
@@ -359,10 +222,6 @@ v0.8 </summary>
       <MemberSignature Language="C#" Value="protected virtual void UpdateColor ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void UpdateColor() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

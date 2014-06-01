@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCMusicPlayerCore extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="protected CCMusicPlayerCore ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="public virtual void Close ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Close() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -47,9 +40,6 @@
       <MemberSignature Language="C#" Value="protected abstract void DisposeManagedResources ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void DisposeManagedResources() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -63,9 +53,6 @@
       <MemberSignature Language="C#" Value="public virtual void Open (string fileName, int uId);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Open(string fileName, int32 uId) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -84,9 +71,6 @@
       <MemberSignature Language="C#" Value="public abstract void Pause ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Pause() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -100,9 +84,6 @@
       <MemberSignature Language="C#" Value="public abstract void Play (bool loop = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Play(bool loop) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -119,9 +100,6 @@
       <MemberSignature Language="C#" Value="public abstract bool Playing { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Playing" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -135,9 +113,6 @@
       <MemberSignature Language="C#" Value="public abstract bool PlayingMySong { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool PlayingMySong" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -151,9 +126,6 @@
       <MemberSignature Language="C#" Value="public virtual void RestoreMediaState ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RestoreMediaState() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -167,9 +139,6 @@
       <MemberSignature Language="C#" Value="public abstract void Resume ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Resume() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -183,9 +152,6 @@
       <MemberSignature Language="C#" Value="public abstract void Rewind ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Rewind() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -199,9 +165,6 @@
       <MemberSignature Language="C#" Value="public virtual void SaveMediaState ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SaveMediaState() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -215,9 +178,6 @@
       <MemberSignature Language="C#" Value="public int SoundID { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 SoundID" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -231,9 +191,6 @@
       <MemberSignature Language="C#" Value="public abstract void Stop ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Stop() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -247,9 +204,6 @@
       <MemberSignature Language="C#" Value="public abstract float Volume { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Volume" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

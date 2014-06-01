@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionManager extends System.Object implements class CocosSharp.ICCUpdatable, class System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -45,10 +43,6 @@
       <MemberSignature Language="C#" Value="public CCActionManager ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -59,10 +53,6 @@
       <MemberSignature Language="C#" Value="protected void ActionAllocWithHashElement (CocosSharp.CCActionManager.HashElement element);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ActionAllocWithHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -79,9 +69,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCActionState AddAction (CocosSharp.CCAction action, CocosSharp.CCNode target, bool paused = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState AddAction(class CocosSharp.CCAction action, class CocosSharp.CCNode target, bool paused) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -99,37 +86,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddAction">
-      <MemberSignature Language="C#" Value="public void AddAction (CocosSharp.CCAction action, CocosSharp.CCNode target, bool paused);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddAction(class CocosSharp.CCAction action, class CocosSharp.CCNode target, bool paused) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCAction" />
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-        <Parameter Name="paused" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="action">To be added.</param>
-        <param name="target">To be added.</param>
-        <param name="paused">To be added.</param>
-        <summary>Adds an action with a target. If the target is already present, then the action will be added to the existing target. If the target is not present, a new instance of this target will be created either paused or not, and the action will be added to the newly created target. When the target is paused, the queued actions won't be 'ticked'. </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="DeleteHashElement">
       <MemberSignature Language="C#" Value="protected void DeleteHashElement (CocosSharp.CCActionManager.HashElement element);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DeleteHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -146,9 +106,6 @@
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -162,9 +119,6 @@
       <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -181,10 +135,6 @@
       <MemberSignature Language="C#" Value="~CCActionManager ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -198,10 +148,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetActionByTag (int tag, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
@@ -221,10 +167,6 @@
       <MemberSignature Language="C#" Value="public int NumberOfRunningActionsInTarget (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActionsInTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -253,10 +195,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;object&gt; PauseAllRunningActions ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;object&gt; PauseAllRunningActions() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.Object&gt;</ReturnType>
       </ReturnValue>
@@ -271,10 +209,6 @@
       <MemberSignature Language="C#" Value="public void PauseTarget (object target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseTarget(object target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -291,10 +225,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAction (CocosSharp.CCAction action);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class CocosSharp.CCAction action) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -311,9 +241,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAction (CocosSharp.CCActionState actionState);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class CocosSharp.CCActionState actionState) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -330,10 +257,6 @@
       <MemberSignature Language="C#" Value="protected void RemoveActionAtIndex (int index, CocosSharp.CCActionManager.HashElement element);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RemoveActionAtIndex(int32 index, class CocosSharp.CCActionManager/HashElement element) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -352,10 +275,6 @@
       <MemberSignature Language="C#" Value="public void RemoveActionByTag (int tag, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -374,10 +293,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAllActions ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllActions() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -391,10 +306,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAllActionsFromTarget (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllActionsFromTarget(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -411,10 +322,6 @@
       <MemberSignature Language="C#" Value="public void ResumeTarget (object target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTarget(object target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -431,10 +338,6 @@
       <MemberSignature Language="C#" Value="public void ResumeTargets (System.Collections.Generic.List&lt;object&gt; targetsToResume);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeTargets(class System.Collections.Generic.List`1&lt;object&gt; targetsToResume) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -451,10 +354,6 @@
       <MemberSignature Language="C#" Value="public void Update (float dt);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

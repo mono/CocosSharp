@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCSurfaceFormat extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="Alpha8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Alpha8 = int32(12)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="Bgr32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Bgr32 = int32(20)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="Bgr565" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Bgr565 = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="Bgra32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Bgra32 = int32(21)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -73,9 +60,6 @@
       <MemberSignature Language="C#" Value="Bgra4444" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Bgra4444 = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -87,9 +71,6 @@
       <MemberSignature Language="C#" Value="Bgra5551" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Bgra5551 = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -101,9 +82,6 @@
       <MemberSignature Language="C#" Value="CCVector2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat CCVector2 = int32(14)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -115,9 +93,6 @@
       <MemberSignature Language="C#" Value="Color" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Color = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -129,9 +104,6 @@
       <MemberSignature Language="C#" Value="Dxt1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Dxt1 = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -143,9 +115,6 @@
       <MemberSignature Language="C#" Value="Dxt1a" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Dxt1a = int32(70)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -157,9 +126,6 @@
       <MemberSignature Language="C#" Value="Dxt3" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Dxt3 = int32(5)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -171,9 +137,6 @@
       <MemberSignature Language="C#" Value="Dxt5" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Dxt5 = int32(6)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -185,9 +148,6 @@
       <MemberSignature Language="C#" Value="HalfCCVector2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat HalfCCVector2 = int32(17)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -199,9 +159,6 @@
       <MemberSignature Language="C#" Value="HalfSingle" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat HalfSingle = int32(16)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -213,9 +170,6 @@
       <MemberSignature Language="C#" Value="HalfVector4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat HalfVector4 = int32(18)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -227,9 +181,6 @@
       <MemberSignature Language="C#" Value="HdrBlendable" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat HdrBlendable = int32(19)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -241,9 +192,6 @@
       <MemberSignature Language="C#" Value="NormalizedByte2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat NormalizedByte2 = int32(7)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -255,9 +203,6 @@
       <MemberSignature Language="C#" Value="NormalizedByte4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat NormalizedByte4 = int32(8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -269,9 +214,6 @@
       <MemberSignature Language="C#" Value="Rg32" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Rg32 = int32(10)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -283,9 +225,6 @@
       <MemberSignature Language="C#" Value="Rgba1010102" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Rgba1010102 = int32(9)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -297,9 +236,6 @@
       <MemberSignature Language="C#" Value="Rgba64" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Rgba64 = int32(11)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -311,9 +247,6 @@
       <MemberSignature Language="C#" Value="RgbaPvrtc2Bpp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat RgbaPvrtc2Bpp = int32(52)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -325,9 +258,6 @@
       <MemberSignature Language="C#" Value="RgbaPvrtc4Bpp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat RgbaPvrtc4Bpp = int32(53)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -339,9 +269,6 @@
       <MemberSignature Language="C#" Value="RgbEtc1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat RgbEtc1 = int32(60)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -353,9 +280,6 @@
       <MemberSignature Language="C#" Value="RgbPvrtc2Bpp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat RgbPvrtc2Bpp = int32(50)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -367,9 +291,6 @@
       <MemberSignature Language="C#" Value="RgbPvrtc4Bpp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat RgbPvrtc4Bpp = int32(51)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -381,9 +302,6 @@
       <MemberSignature Language="C#" Value="Single" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Single = int32(13)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>
@@ -395,9 +313,6 @@
       <MemberSignature Language="C#" Value="Vector4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSurfaceFormat Vector4 = int32(15)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSurfaceFormat</ReturnType>
       </ReturnValue>

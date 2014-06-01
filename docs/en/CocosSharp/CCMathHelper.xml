@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract sealed beforefieldinit CCMathHelper extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,9 +17,6 @@
       <MemberSignature Language="C#" Value="public static int Clamp (int value, int min, int max);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Clamp(int32 value, int32 min, int32 max) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -43,9 +38,6 @@
       <MemberSignature Language="C#" Value="public static float Clamp (float value, float min, float max);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Clamp(float32 value, float32 min, float32 max) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -67,10 +59,6 @@
       <MemberSignature Language="C#" Value="public static float Cos (float radian);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Cos(float32 radian) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -88,10 +76,6 @@
       <MemberSignature Language="C#" Value="public static int Lerp (int value1, int value2, float amount);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 Lerp(int32 value1, int32 value2, float32 amount) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -113,9 +97,6 @@
       <MemberSignature Language="C#" Value="public const float Pi = 3.141593;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal float32 Pi = (3.141593)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -129,10 +110,6 @@
       <MemberSignature Language="C#" Value="public static float Sin (float radian);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 Sin(float32 radian) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -150,10 +127,6 @@
       <MemberSignature Language="C#" Value="public static float ToDegrees (float radians);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 ToDegrees(float32 radians) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -171,10 +144,6 @@
       <MemberSignature Language="C#" Value="public static float ToRadians (float degrees);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 ToRadians(float32 degrees) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -192,9 +161,6 @@
       <MemberSignature Language="C#" Value="public const float TwoPi = 6.283185;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal float32 TwoPi = (6.283185)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

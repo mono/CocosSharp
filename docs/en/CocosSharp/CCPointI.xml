@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCPointI extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCPointI (int x, int y);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 x, int32 y) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="x" Type="System.Int32" />
         <Parameter Name="y" Type="System.Int32" />
@@ -38,10 +32,6 @@
       <MemberSignature Language="C#" Value="public int Distance (ref CocosSharp.CCPointI p);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 Distance(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCPointI other);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCPointI other) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -79,10 +66,6 @@
       <MemberSignature Language="C#" Value="public bool Equals (ref CocosSharp.CCPointI p);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -100,9 +83,6 @@
       <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -120,9 +100,6 @@
       <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -137,9 +114,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPointI op_Addition (CocosSharp.CCPointI p1, CocosSharp.CCPointI p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPointI op_Addition(valuetype CocosSharp.CCPointI p1, valuetype CocosSharp.CCPointI p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPointI</ReturnType>
       </ReturnValue>
@@ -159,9 +133,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCPointI p1, CocosSharp.CCPointI p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCPointI p1, valuetype CocosSharp.CCPointI p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -181,10 +152,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint op_Implicit (CocosSharp.CCPointI p);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPoint op_Implicit(valuetype CocosSharp.CCPointI p) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -202,9 +169,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCPointI p1, CocosSharp.CCPointI p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCPointI p1, valuetype CocosSharp.CCPointI p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -224,9 +188,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPointI op_Subtraction (CocosSharp.CCPointI p1, CocosSharp.CCPointI p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPointI op_Subtraction(valuetype CocosSharp.CCPointI p1, valuetype CocosSharp.CCPointI p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPointI</ReturnType>
       </ReturnValue>
@@ -246,9 +207,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPointI op_UnaryNegation (CocosSharp.CCPointI p1);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPointI op_UnaryNegation(valuetype CocosSharp.CCPointI p1) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPointI</ReturnType>
       </ReturnValue>
@@ -266,9 +224,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCPointI op_UnaryPlus (CocosSharp.CCPointI p1);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCPointI op_UnaryPlus(valuetype CocosSharp.CCPointI p1) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPointI</ReturnType>
       </ReturnValue>
@@ -286,10 +241,6 @@
       <MemberSignature Language="C#" Value="public int X;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 X" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -302,10 +253,6 @@
       <MemberSignature Language="C#" Value="public int Y;" />
       <MemberSignature Language="ILAsm" Value=".field public int32 Y" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>

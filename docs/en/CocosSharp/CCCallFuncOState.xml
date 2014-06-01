@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCCallFuncOState extends CocosSharp.CCCallFuncState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCCallFuncState</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCCallFuncOState (CocosSharp.CCCallFuncO action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCallFuncO action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCCallFuncO" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="protected Action&lt;object&gt; CallFunctionO { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`1&lt;object&gt; CallFunctionO" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Object&gt;</ReturnType>
       </ReturnValue>
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="public override void Execute ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Execute() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -68,9 +58,6 @@
       <MemberSignature Language="C#" Value="protected object Object { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance object Object" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>

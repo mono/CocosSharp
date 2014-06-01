@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCOGLES extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,33 +17,9 @@
       <MemberSignature Language="C#" Value="public CCOGLES ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetXNABlend">
-      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Graphics.Blend GetXNABlend (int glBlend);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype Microsoft.Xna.Framework.Graphics.Blend GetXNABlend(int32 glBlend) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Graphics.Blend</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="glBlend" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="glBlend">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -53,10 +27,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_ALWAYS;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_ALWAYS" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -69,10 +39,6 @@
       <MemberSignature Language="C#" Value="public const int GL_DST_ALPHA = 772;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_DST_ALPHA = (772)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -86,10 +52,6 @@
       <MemberSignature Language="C#" Value="public const int GL_DST_COLOR = 774;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_DST_COLOR = (774)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -103,10 +65,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_EQUAL;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_EQUAL" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -119,10 +77,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_GEQUAL;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_GEQUAL" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -135,10 +89,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_GREATER;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_GREATER" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -151,10 +101,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_LEQUAL;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_LEQUAL" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -167,10 +113,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_LESS;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_LESS" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -183,10 +125,6 @@
       <MemberSignature Language="C#" Value="public const int GL_NEVER = 512;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_NEVER = (512)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -200,10 +138,6 @@
       <MemberSignature Language="C#" Value="public static readonly int GL_NOTEQUAL;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly int32 GL_NOTEQUAL" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -216,10 +150,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ONE = 1;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ONE = (1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -233,10 +163,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ONE_MINUS_DST_ALPHA = 773;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ONE_MINUS_DST_ALPHA = (773)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -250,10 +176,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ONE_MINUS_DST_COLOR = 775;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ONE_MINUS_DST_COLOR = (775)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -267,10 +189,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ONE_MINUS_SRC_ALPHA = 771;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ONE_MINUS_SRC_ALPHA = (771)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -284,10 +202,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ONE_MINUS_SRC_COLOR = 769;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ONE_MINUS_SRC_COLOR = (769)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -301,10 +215,6 @@
       <MemberSignature Language="C#" Value="public const int GL_SRC_ALPHA = 770;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_SRC_ALPHA = (770)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -318,10 +228,6 @@
       <MemberSignature Language="C#" Value="public const int GL_SRC_ALPHA_SATURATE = 776;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_SRC_ALPHA_SATURATE = (776)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -335,10 +241,6 @@
       <MemberSignature Language="C#" Value="public const int GL_SRC_COLOR = 768;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_SRC_COLOR = (768)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -352,10 +254,6 @@
       <MemberSignature Language="C#" Value="public const int GL_ZERO = 0;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 GL_ZERO = (0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>

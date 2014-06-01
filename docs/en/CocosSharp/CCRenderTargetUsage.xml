@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCRenderTargetUsage extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="DiscardContents" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCRenderTargetUsage DiscardContents = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRenderTargetUsage</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="PlatformContents" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCRenderTargetUsage PlatformContents = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRenderTargetUsage</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="PreserveContents" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCRenderTargetUsage PreserveContents = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRenderTargetUsage</ReturnType>
       </ReturnValue>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabel extends CocosSharp.CCLabelBMFont" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLabelBMFont</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCLabel ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -54,10 +44,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -77,10 +63,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -100,10 +82,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -125,10 +103,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -150,10 +124,6 @@
       <MemberSignature Language="C#" Value="public CCLabel (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -177,10 +147,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCLabel.ivec4 AllocateRegion (int width, int height);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCLabel/ivec4 AllocateRegion(int32 width, int32 height) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLabel+ivec4</ReturnType>
       </ReturnValue>
@@ -200,10 +166,6 @@
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -217,10 +179,6 @@
       <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -234,10 +192,6 @@
       <MemberSignature Language="C#" Value="public float FontSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 FontSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -251,10 +205,6 @@
       <MemberSignature Language="C#" Value="public static void InitializeTTFAtlas (int width, int height);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void InitializeTTFAtlas(int32 width, int32 height) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -269,171 +219,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
-      </Parameters>
-      <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <param name="dimensions">To be added.</param>
-        <param name="hAlignment">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="hAlignment" Type="CocosSharp.CCTextAlignment" />
-        <Parameter Name="vAlignment" Type="CocosSharp.CCVerticalTextAlignment" />
-      </Parameters>
-      <Docs>
-        <param name="text">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <param name="dimensions">To be added.</param>
-        <param name="hAlignment">To be added.</param>
-        <param name="vAlignment">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bFontDirty">
-      <MemberSignature Language="C#" Value="protected bool m_bFontDirty;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bFontDirty" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bTextureDirty">
-      <MemberSignature Language="C#" Value="protected static bool m_bTextureDirty;" />
-      <MemberSignature Language="ILAsm" Value=".field family static bool m_bTextureDirty" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_FontName">
-      <MemberSignature Language="C#" Value="protected string m_FontName;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_FontName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_FontSize">
-      <MemberSignature Language="C#" Value="protected float m_FontSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_FontSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pTexture">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCTexture2D m_pTexture;" />
-      <MemberSignature Language="ILAsm" Value=".field public static class CocosSharp.CCTexture2D m_pTexture" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetRegionData">
       <MemberSignature Language="C#" Value="public static void SetRegionData (CocosSharp.CCLabel.ivec4 region, int[] data, int stride);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRegionData(valuetype CocosSharp.CCLabel/ivec4 region, int32[] data, int32 stride) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -454,9 +243,6 @@
       <MemberSignature Language="C#" Value="public override string Text { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string Text" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

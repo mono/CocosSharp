@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBox2dDraw extends Box2D.Common.b2Draw" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>Box2D.Common.b2Draw</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCBox2dDraw (string spriteFontName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string spriteFontName) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="spriteFontName" Type="System.String" />
       </Parameters>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public void Begin ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Begin() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="public const int CircleSegments = 32;" />
       <MemberSignature Language="ILAsm" Value=".field public static literal int32 CircleSegments = (32)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -66,9 +56,6 @@
       <MemberSignature Language="C#" Value="public void DrawAABB (Box2D.Collision.b2AABB aabb, Box2D.Common.b2Color p1);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawAABB(valuetype Box2D.Collision.b2AABB aabb, valuetype Box2D.Common.b2Color p1) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -87,9 +74,6 @@
       <MemberSignature Language="C#" Value="public override void DrawCircle (Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -110,9 +94,6 @@
       <MemberSignature Language="C#" Value="public void DrawPoint (Box2D.Common.b2Vec2 p, float size, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawPoint(valuetype Box2D.Common.b2Vec2 p, float32 size, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -133,9 +114,6 @@
       <MemberSignature Language="C#" Value="public override void DrawPolygon (Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawPolygon(valuetype Box2D.Common.b2Vec2[] vertices, int32 vertexCount, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -156,9 +134,6 @@
       <MemberSignature Language="C#" Value="public override void DrawSegment (Box2D.Common.b2Vec2 p1, Box2D.Common.b2Vec2 p2, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSegment(valuetype Box2D.Common.b2Vec2 p1, valuetype Box2D.Common.b2Vec2 p2, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -179,9 +154,6 @@
       <MemberSignature Language="C#" Value="public override void DrawSolidCircle (Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Vec2 axis, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSolidCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, valuetype Box2D.Common.b2Vec2 axis, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -204,9 +176,6 @@
       <MemberSignature Language="C#" Value="public override void DrawSolidPolygon (Box2D.Common.b2Vec2[] vertices, int vertexCount, Box2D.Common.b2Color color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawSolidPolygon(valuetype Box2D.Common.b2Vec2[] vertices, int32 vertexCount, valuetype Box2D.Common.b2Color color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -227,9 +196,6 @@
       <MemberSignature Language="C#" Value="public void DrawString (int x, int y, string format, object[] objects);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawString(int32 x, int32 y, string format, object[] objects) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -258,9 +224,6 @@
       <MemberSignature Language="C#" Value="public override void DrawTransform (Box2D.Common.b2Transform xf);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void DrawTransform(valuetype Box2D.Common.b2Transform xf) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -277,9 +240,6 @@
       <MemberSignature Language="C#" Value="public void End ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

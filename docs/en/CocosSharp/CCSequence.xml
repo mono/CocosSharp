@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSequence extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
@@ -21,10 +19,6 @@
       <MemberSignature Language="C#" Value="public CCSequence (CocosSharp.CCFiniteTimeAction[] actions);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction[] actions) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="actions" Type="CocosSharp.CCFiniteTimeAction[]">
           <Attributes>
@@ -41,29 +35,9 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSequence (CocosSharp.CCSequence sequence);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSequence sequence) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="sequence" Type="CocosSharp.CCSequence" />
-      </Parameters>
-      <Docs>
-        <param name="sequence">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCSequence (CocosSharp.CCFiniteTimeAction action1, CocosSharp.CCFiniteTimeAction action2);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action1, class CocosSharp.CCFiniteTimeAction action2) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action1" Type="CocosSharp.CCFiniteTimeAction" />
         <Parameter Name="action2" Type="CocosSharp.CCFiniteTimeAction" />
@@ -79,118 +53,12 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction[] Actions { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction[] Actions" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction[]</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="zone">To be added.</param>
-        <summary>returns a clone of action </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitOneTwo">
-      <MemberSignature Language="C#" Value="protected bool InitOneTwo (CocosSharp.CCFiniteTimeAction actionOne, CocosSharp.CCFiniteTimeAction actionTwo);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitOneTwo(class CocosSharp.CCFiniteTimeAction actionOne, class CocosSharp.CCFiniteTimeAction actionTwo) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="actionOne" Type="CocosSharp.CCFiniteTimeAction" />
-        <Parameter Name="actionTwo" Type="CocosSharp.CCFiniteTimeAction" />
-      </Parameters>
-      <Docs>
-        <param name="actionOne">To be added.</param>
-        <param name="actionTwo">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsDone">
-      <MemberSignature Language="C#" Value="public override bool IsDone { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_last">
-      <MemberSignature Language="C#" Value="protected int m_last;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_last" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pActions">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeAction[] m_pActions;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCFiniteTimeAction[] m_pActions" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCFiniteTimeAction[]</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_split">
-      <MemberSignature Language="C#" Value="protected float m_split;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_split" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -198,10 +66,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
@@ -216,9 +80,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -230,97 +91,6 @@
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="target">To be added.</param>
-        <summary>
-          <para>called before the action start. It will also set the target. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public override void Step (float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Step(float32 dt) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dt" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="dt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Stop">
-      <MemberSignature Language="C#" Value="public override void Stop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Stop() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Update">
-      <MemberSignature Language="C#" Value="public override void Update (float t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 t) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>
-          <para>called once per frame. time a value between 0 and 1</para>
-          <para>For example:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>0 means that the action just started</description>
-          </item>
-          <description>0 means that the action just started</description>
-          <item>
-            <description>0.5 means that the action is in the middle</description>
-          </item>
-          <description>0.5 means that the action is in the middle</description>
-          <item>
-            <description>1 means that the action is over </description>
-          </item>
-          <description>1 means that the action is over </description>
-        </remarks>
       </Docs>
     </Member>
   </Members>

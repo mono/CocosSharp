@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTMXProperty extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -18,10 +16,6 @@
       <MemberSignature Language="C#" Value="Layer" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Layer = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="Map" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Map = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
@@ -48,10 +38,6 @@
       <MemberSignature Language="C#" Value="None" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty None = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
@@ -63,10 +49,6 @@
       <MemberSignature Language="C#" Value="Object" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Object = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
@@ -78,10 +60,6 @@
       <MemberSignature Language="C#" Value="ObjectGroup" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty ObjectGroup = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>
@@ -93,10 +71,6 @@
       <MemberSignature Language="C#" Value="Tile" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXProperty Tile = int32(5)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXProperty</ReturnType>
       </ReturnValue>

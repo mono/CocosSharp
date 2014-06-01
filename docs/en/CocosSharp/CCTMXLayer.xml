@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTMXLayer extends CocosSharp.CCSpriteBatchNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCSpriteBatchNode</BaseTypeName>
@@ -50,10 +48,6 @@
       <MemberSignature Language="C#" Value="public CCTMXLayer (CocosSharp.CCTMXTilesetInfo tileSetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTMXTilesetInfo tileSetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="tileSetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
         <Parameter Name="layerInfo" Type="CocosSharp.CCTMXLayerInfo" />
@@ -71,10 +65,6 @@
       <MemberSignature Language="C#" Value="public override void AddChild (CocosSharp.CCNode child, int zOrder, int tag);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void AddChild(class CocosSharp.CCNode child, int32 zOrder, int32 tag) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -95,9 +85,6 @@
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -107,38 +94,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithTilesetInfo">
-      <MemberSignature Language="C#" Value="public bool InitWithTilesetInfo (CocosSharp.CCTMXTilesetInfo tilesetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithTilesetInfo(class CocosSharp.CCTMXTilesetInfo tilesetInfo, class CocosSharp.CCTMXLayerInfo layerInfo, class CocosSharp.CCTMXMapInfo mapInfo) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tilesetInfo" Type="CocosSharp.CCTMXTilesetInfo" />
-        <Parameter Name="layerInfo" Type="CocosSharp.CCTMXLayerInfo" />
-        <Parameter Name="mapInfo" Type="CocosSharp.CCTMXMapInfo" />
-      </Parameters>
-      <Docs>
-        <param name="tilesetInfo">To be added.</param>
-        <param name="layerInfo">To be added.</param>
-        <param name="mapInfo">To be added.</param>
-        <summary>initializes a  with a tileset info, a layer info and a map info </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="LayerName">
       <MemberSignature Language="C#" Value="public string LayerName { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string LayerName" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -152,10 +111,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTMXOrientation LayerOrientation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCTMXOrientation LayerOrientation" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
       </ReturnValue>
@@ -169,10 +124,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize LayerSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize LayerSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -182,164 +133,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="m_bUseAutomaticVertexZ">
-      <MemberSignature Language="C#" Value="protected bool m_bUseAutomaticVertexZ;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bUseAutomaticVertexZ" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_cOpacity">
-      <MemberSignature Language="C#" Value="protected byte m_cOpacity;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 m_cOpacity" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fAlphaFuncValue">
-      <MemberSignature Language="C#" Value="protected float m_fAlphaFuncValue;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAlphaFuncValue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fContentScaleFactor">
-      <MemberSignature Language="C#" Value="protected float m_fContentScaleFactor;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fContentScaleFactor" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nVertexZvalue">
-      <MemberSignature Language="C#" Value="protected int m_nVertexZvalue;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nVertexZvalue" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pAtlasIndexArray">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;int&gt; m_pAtlasIndexArray;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;int32&gt; m_pAtlasIndexArray" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;System.Int32&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pReusedTile">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSprite m_pReusedTile;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSprite m_pReusedTile" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSprite</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_sLayerName">
-      <MemberSignature Language="C#" Value="protected string m_sLayerName;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_sLayerName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_uMaxGID">
-      <MemberSignature Language="C#" Value="protected uint m_uMaxGID;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uMaxGID" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_uMinGID">
-      <MemberSignature Language="C#" Value="protected uint m_uMinGID;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uMinGID" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="MapTileSize">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize MapTileSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize MapTileSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -353,10 +150,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint PositionAt (CocosSharp.CCPoint tileCoord);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCPoint PositionAt(valuetype CocosSharp.CCPoint tileCoord) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -374,10 +167,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.Dictionary&lt;string,string&gt; Properties { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.Dictionary`2&lt;string, string&gt; Properties" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,System.String&gt;</ReturnType>
       </ReturnValue>
@@ -391,10 +180,6 @@
       <MemberSignature Language="C#" Value="public virtual string PropertyNamed (string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string PropertyNamed(string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -412,10 +197,6 @@
       <MemberSignature Language="C#" Value="public virtual void ReleaseMap ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReleaseMap() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -430,10 +211,6 @@
       <MemberSignature Language="C#" Value="public override void RemoveChild (CocosSharp.CCNode node, bool cleanup);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RemoveChild(class CocosSharp.CCNode node, bool cleanup) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -455,10 +232,6 @@
       <MemberSignature Language="C#" Value="public virtual void RemoveTileAt (CocosSharp.CCPoint pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveTileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -475,10 +248,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTileGID (uint gid, CocosSharp.CCPoint pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -500,10 +269,6 @@
       <MemberSignature Language="C#" Value="public virtual void SetTileGID (uint gid, CocosSharp.CCPoint pos, uint flags);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetTileGID(unsigned int32 gid, valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -520,30 +285,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetupTiles">
-      <MemberSignature Language="C#" Value="public void SetupTiles ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetupTiles() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Creates the tiles </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="TileAt">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCSprite TileAt (CocosSharp.CCPoint pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCSprite TileAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -581,10 +326,6 @@
       <MemberSignature Language="C#" Value="public virtual uint TileGIDAt (CocosSharp.CCPoint pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -602,10 +343,6 @@
       <MemberSignature Language="C#" Value="public virtual uint TileGIDAt (CocosSharp.CCPoint pos, out uint flags);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance unsigned int32 TileGIDAt(valuetype CocosSharp.CCPoint pos, unsigned int32 flags) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -625,10 +362,6 @@
       <MemberSignature Language="C#" Value="public uint[] Tiles { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32[] Tiles" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32[]</ReturnType>
       </ReturnValue>
@@ -642,10 +375,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTMXTilesetInfo TileSet { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTMXTilesetInfo TileSet" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXTilesetInfo</ReturnType>
       </ReturnValue>

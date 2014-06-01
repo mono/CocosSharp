@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCKeypadMSGType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -18,10 +16,6 @@
       <MemberSignature Language="C#" Value="BackClicked" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeypadMSGType BackClicked = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeypadMSGType</ReturnType>
       </ReturnValue>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="MenuClicked" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeypadMSGType MenuClicked = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeypadMSGType</ReturnType>
       </ReturnValue>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTableViewDataSource" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,10 +14,6 @@
       <MemberSignature Language="C#" Value="public int NumberOfCellsInTableView (CocosSharp.CCTableView table);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 NumberOfCellsInTableView(class CocosSharp.CCTableView table) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -37,10 +31,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTableViewCell TableCellAtIndex (CocosSharp.CCTableView table, int idx);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCTableViewCell TableCellAtIndex(class CocosSharp.CCTableView table, int32 idx) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTableViewCell</ReturnType>
       </ReturnValue>
@@ -60,10 +50,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize TableCellSizeForIndex (CocosSharp.CCTableView table, int idx);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCSize TableCellSizeForIndex(class CocosSharp.CCTableView table, int32 idx) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>

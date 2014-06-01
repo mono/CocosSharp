@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCSortableObject" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,10 +14,6 @@
       <MemberSignature Language="C#" Value="public int ObjectID { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 ObjectID" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>

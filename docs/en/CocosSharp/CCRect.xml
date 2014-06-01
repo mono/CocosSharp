@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi serializable sealed beforefieldinit CCRect extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCRect (float x, float y, float width, float height);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 x, float32 y, float32 width, float32 height) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="x" Type="System.Single" />
         <Parameter Name="y" Type="System.Single" />
@@ -42,10 +36,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Center { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Center" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -59,10 +49,6 @@
       <MemberSignature Language="C#" Value="public bool ContainsPoint (CocosSharp.CCPoint point);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ContainsPoint(valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -80,10 +66,6 @@
       <MemberSignature Language="C#" Value="public static bool ContainsPoint (ref CocosSharp.CCRect rect, ref CocosSharp.CCPoint point);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool ContainsPoint(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -103,10 +85,6 @@
       <MemberSignature Language="C#" Value="public bool ContainsPoint (float x, float y);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool ContainsPoint(float32 x, float32 y) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -126,10 +104,6 @@
       <MemberSignature Language="C#" Value="public static bool Equal (ref CocosSharp.CCRect rect1, ref CocosSharp.CCRect rect2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool Equal(valuetype CocosSharp.CCRect rect1, valuetype CocosSharp.CCRect rect2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -149,10 +123,6 @@
       <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -172,10 +142,6 @@
       <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -193,10 +159,6 @@
       <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -211,10 +173,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect Intersection (CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCRect Intersection(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
@@ -232,10 +190,6 @@
       <MemberSignature Language="C#" Value="public bool IntersectsRect (CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IntersectsRect(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -253,10 +207,6 @@
       <MemberSignature Language="C#" Value="public bool IntersectsRect (ref CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IntersectsRect(valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -274,10 +224,6 @@
       <MemberSignature Language="C#" Value="public static bool IntersetsRect (ref CocosSharp.CCRect rectA, ref CocosSharp.CCRect rectB);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig bool IntersetsRect(valuetype CocosSharp.CCRect rectA, valuetype CocosSharp.CCRect rectB) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -297,10 +243,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect InvertedSize { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect InvertedSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
@@ -314,9 +256,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint LowerLeft { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint LowerLeft" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -330,10 +269,6 @@
       <MemberSignature Language="C#" Value="public float MaxX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MaxX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -349,10 +284,6 @@
       <MemberSignature Language="C#" Value="public float MaxY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MaxY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -368,10 +299,6 @@
       <MemberSignature Language="C#" Value="public float MidX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MidX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -387,10 +314,6 @@
       <MemberSignature Language="C#" Value="public float MidY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MidY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -406,10 +329,6 @@
       <MemberSignature Language="C#" Value="public float MinX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MinX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -423,10 +342,6 @@
       <MemberSignature Language="C#" Value="public float MinY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 MinY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -442,10 +357,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCRect p1, CocosSharp.CCRect p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCRect p1, valuetype CocosSharp.CCRect p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -465,10 +376,6 @@
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCRect p1, CocosSharp.CCRect p2);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCRect p1, valuetype CocosSharp.CCRect p2) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -488,10 +395,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Origin;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCPoint Origin" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -504,10 +407,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCRect Parse (string s);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect Parse(string s) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
@@ -525,10 +424,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize Size;" />
       <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCSize Size" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -541,10 +436,6 @@
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -559,9 +450,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint UpperRight { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint UpperRight" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -575,10 +463,6 @@
       <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCRect Zero;" />
       <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCRect Zero" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>

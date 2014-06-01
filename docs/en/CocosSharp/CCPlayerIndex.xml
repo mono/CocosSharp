@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCPlayerIndex extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="Four" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCPlayerIndex Four = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPlayerIndex</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="One" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCPlayerIndex One = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPlayerIndex</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="Three" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCPlayerIndex Three = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPlayerIndex</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="Two" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCPlayerIndex Two = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPlayerIndex</ReturnType>
       </ReturnValue>

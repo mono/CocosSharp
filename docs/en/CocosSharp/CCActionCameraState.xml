@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCameraState extends CocosSharp.CCActionIntervalState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCActionCameraState (CocosSharp.CCActionCamera action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionCamera action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCActionCamera" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="protected float CenterXOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 CenterXOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -51,9 +44,6 @@
       <MemberSignature Language="C#" Value="protected float CenterYOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 CenterYOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -66,9 +56,6 @@
       <MemberSignature Language="C#" Value="protected float CenterZOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 CenterZOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -81,9 +68,6 @@
       <MemberSignature Language="C#" Value="protected float EyeXOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 EyeXOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -96,9 +80,6 @@
       <MemberSignature Language="C#" Value="protected float EyeYOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 EyeYOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -111,9 +92,6 @@
       <MemberSignature Language="C#" Value="protected float EyeZOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 EyeZOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -126,9 +104,6 @@
       <MemberSignature Language="C#" Value="protected float UpXOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 UpXOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -141,9 +116,6 @@
       <MemberSignature Language="C#" Value="protected float UpYOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 UpYOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -156,9 +128,6 @@
       <MemberSignature Language="C#" Value="protected float UpZOrig;" />
       <MemberSignature Language="ILAsm" Value=".field family float32 UpZOrig" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

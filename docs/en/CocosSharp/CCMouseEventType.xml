@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCMouseEventType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="MOUSE_DOWN" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseEventType MOUSE_DOWN = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="MOUSE_MOVE" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseEventType MOUSE_MOVE = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="MOUSE_NONE" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseEventType MOUSE_NONE = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="MOUSE_SCROLL" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseEventType MOUSE_SCROLL = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>
@@ -73,9 +60,6 @@
       <MemberSignature Language="C#" Value="MOUSE_UP" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCMouseEventType MOUSE_UP = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>

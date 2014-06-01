@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTwirl extends CocosSharp.CCGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCGrid3DAction</BaseTypeName>
@@ -18,25 +16,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCTwirl ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>creates the action with center position, number of twirls, amplitude, a grid size and duration </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCTwirl (float duration, CocosSharp.CCGridSize gridSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
@@ -52,10 +34,6 @@
       <MemberSignature Language="C#" Value="public CCTwirl (float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, int twirls = 0, float amplitude = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
@@ -69,161 +47,6 @@
         <param name="position">To be added.</param>
         <param name="twirls">To be added.</param>
         <param name="amplitude">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Amplitude">
-      <MemberSignature Language="C#" Value="public float Amplitude { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 Amplitude" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AmplitudeRate">
-      <MemberSignature Language="C#" Value="public override float AmplitudeRate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 AmplitudeRate" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="pZone">To be added.</param>
-        <summary>returns a new clone of the action </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="initWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool initWithDuration (float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, int twirls, float amplitude);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool initWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCPoint position, int32 twirls, float32 amplitude) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="position" Type="CocosSharp.CCPoint" />
-        <Parameter Name="twirls" Type="System.Int32" />
-        <Parameter Name="amplitude" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="duration">To be added.</param>
-        <param name="gridSize">To be added.</param>
-        <param name="position">To be added.</param>
-        <param name="twirls">To be added.</param>
-        <param name="amplitude">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fAmplitude">
-      <MemberSignature Language="C#" Value="protected float m_fAmplitude;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAmplitude" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fAmplitudeRate">
-      <MemberSignature Language="C#" Value="protected float m_fAmplitudeRate;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fAmplitudeRate" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nTwirls">
-      <MemberSignature Language="C#" Value="protected int m_nTwirls;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nTwirls" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_position">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_position;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_position" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_positionInPixels">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_positionInPixels;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_positionInPixels" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -232,10 +55,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Position { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -249,9 +68,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PositionInPixels { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PositionInPixels" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -265,9 +81,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -285,9 +98,6 @@
       <MemberSignature Language="C#" Value="public int Twirls { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Twirls" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -295,41 +105,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Update">
-      <MemberSignature Language="C#" Value="public override void Update (float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="time" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="time">To be added.</param>
-        <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>
-          <para>called once per frame. time a value between 0 and 1</para>
-          <para>For example:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>0 means that the action just started</description>
-          </item>
-          <description>0 means that the action just started</description>
-          <item>
-            <description>0.5 means that the action is in the middle</description>
-          </item>
-          <description>0.5 means that the action is in the middle</description>
-          <item>
-            <description>1 means that the action is over </description>
-          </item>
-          <description>1 means that the action is over </description>
-        </remarks>
       </Docs>
     </Member>
   </Members>

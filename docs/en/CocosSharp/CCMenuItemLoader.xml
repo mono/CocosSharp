@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLoader extends CocosSharp.CCNodeLoader" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNodeLoader</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLoader ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCNode CreateCCNode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCNode CreateCCNode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -51,10 +41,6 @@
       <MemberSignature Language="C#" Value="protected override void OnHandlePropTypeBlock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.BlockData pBlockData, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnHandlePropTypeBlock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.BlockData pBlockData, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -79,10 +65,6 @@
       <MemberSignature Language="C#" Value="protected override void OnHandlePropTypeCheck (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, bool pCheck, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void OnHandlePropTypeCheck(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, bool pCheck, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

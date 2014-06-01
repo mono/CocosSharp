@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControl extends CocosSharp.CCLayerRGBA" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCControl ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public void AddTargetWithActionForControlEvent (object target, Action&lt;object,CocosSharp.CCControlEvent&gt; action, CocosSharp.CCControlEvent controlEvent);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddTargetWithActionForControlEvent(object target, class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; action, valuetype CocosSharp.CCControlEvent controlEvent) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -57,10 +47,6 @@
       <MemberSignature Language="C#" Value="public virtual void AddTargetWithActionForControlEvents (object target, Action&lt;object,CocosSharp.CCControlEvent&gt; action, CocosSharp.CCControlEvent controlEvents);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void AddTargetWithActionForControlEvents(object target, class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; action, valuetype CocosSharp.CCControlEvent controlEvents) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -81,10 +67,6 @@
       <MemberSignature Language="C#" Value="public int DefaultTouchPriority { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 DefaultTouchPriority" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -98,10 +80,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCRawList&lt;CocosSharp.CCInvocation&gt; DispatchListforControlEvent (CocosSharp.CCControlEvent controlEvent);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance class CocosSharp.CCRawList`1&lt;class CocosSharp.CCInvocation&gt; DispatchListforControlEvent(valuetype CocosSharp.CCControlEvent controlEvent) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRawList&lt;CocosSharp.CCInvocation&gt;</ReturnType>
       </ReturnValue>
@@ -119,10 +97,6 @@
       <MemberSignature Language="C#" Value="public virtual bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -136,10 +110,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint GetTouchLocation (CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance valuetype CocosSharp.CCPoint GetTouchLocation(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -154,29 +124,9 @@
       </Docs>
     </Member>
     <Member MemberName="HasVisibleParents">
-      <MemberSignature Language="C#" Value="public bool HasVisibleParents ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool HasVisibleParents() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="HasVisibleParents">
       <MemberSignature Language="C#" Value="public bool HasVisibleParents { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool HasVisibleParents" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -190,33 +140,12 @@
       <MemberSignature Language="C#" Value="public virtual bool Highlighted { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Highlighted" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public override bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -224,25 +153,6 @@
       <MemberSignature Language="C#" Value="public override bool IsColorModifiedByOpacity { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsOpacityModifyRGB">
-      <MemberSignature Language="C#" Value="public override bool IsOpacityModifyRGB { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityModifyRGB" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -256,10 +166,6 @@
       <MemberSignature Language="C#" Value="public virtual bool IsTouchInside (CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool IsTouchInside(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -273,120 +179,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_bEnabled">
-      <MemberSignature Language="C#" Value="protected bool m_bEnabled;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bEnabled" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bHighlighted">
-      <MemberSignature Language="C#" Value="protected bool m_bHighlighted;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bHighlighted" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSelected">
-      <MemberSignature Language="C#" Value="protected bool m_bSelected;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSelected" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_eState">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCControlState m_eState;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCControlState m_eState" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCControlState</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_hasVisibleParents">
-      <MemberSignature Language="C#" Value="protected bool m_hasVisibleParents;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_hasVisibleParents" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pDispatchTable">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlEvent,CocosSharp.CCRawList&lt;CocosSharp.CCInvocation&gt;&gt; m_pDispatchTable;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;valuetype CocosSharp.CCControlEvent, class CocosSharp.CCRawList`1&lt;class CocosSharp.CCInvocation&gt;&gt; m_pDispatchTable" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;CocosSharp.CCControlEvent,CocosSharp.CCRawList&lt;CocosSharp.CCInvocation&gt;&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="NeedsLayout">
       <MemberSignature Language="C#" Value="public virtual void NeedsLayout ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void NeedsLayout() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RegisterWithTouchDispatcher">
-      <MemberSignature Language="C#" Value="public override void RegisterWithTouchDispatcher ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void RegisterWithTouchDispatcher() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -400,10 +196,6 @@
       <MemberSignature Language="C#" Value="public void RemoveTargetWithActionForControlEvent (object target, Action&lt;object,CocosSharp.CCControlEvent&gt; action, CocosSharp.CCControlEvent controlEvent);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTargetWithActionForControlEvent(object target, class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; action, valuetype CocosSharp.CCControlEvent controlEvent) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -424,10 +216,6 @@
       <MemberSignature Language="C#" Value="public virtual void RemoveTargetWithActionForControlEvents (object target, Action&lt;object,CocosSharp.CCControlEvent&gt; action, CocosSharp.CCControlEvent controlEvents);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveTargetWithActionForControlEvents(object target, class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; action, valuetype CocosSharp.CCControlEvent controlEvents) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -448,10 +236,6 @@
       <MemberSignature Language="C#" Value="public virtual bool Selected { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Selected" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -465,10 +249,6 @@
       <MemberSignature Language="C#" Value="public virtual void SendActionsForControlEvents (CocosSharp.CCControlEvent controlEvents);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SendActionsForControlEvents(valuetype CocosSharp.CCControlEvent controlEvents) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -485,10 +265,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCControlState State { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCControlState State" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCControlState</ReturnType>
       </ReturnValue>

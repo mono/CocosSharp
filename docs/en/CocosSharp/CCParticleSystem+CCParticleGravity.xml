@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class nested protected sequential ansi sealed beforefieldinit CCParticleSystem/CCParticleGravity extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>

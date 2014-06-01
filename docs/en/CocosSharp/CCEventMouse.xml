@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventMouse extends CocosSharp.CCEvent" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEvent</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public float CursorX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CursorX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public float CursorY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 CursorY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCMouseButton MouseButton { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCMouseButton MouseButton" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseButton</ReturnType>
       </ReturnValue>
@@ -66,9 +56,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCMouseEventType MouseEventType { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCMouseEventType MouseEventType" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCMouseEventType</ReturnType>
       </ReturnValue>
@@ -82,9 +69,6 @@
       <MemberSignature Language="C#" Value="public float ScrollX { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ScrollX" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -98,9 +82,6 @@
       <MemberSignature Language="C#" Value="public float ScrollY { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 ScrollY" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

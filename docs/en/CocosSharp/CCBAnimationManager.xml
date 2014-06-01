@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBAnimationManager extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCBAnimationManager ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,9 +27,6 @@
       <MemberSignature Language="C#" Value="public bool _jsControlled;" />
       <MemberSignature Language="ILAsm" Value=".field public bool _jsControlled" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -48,9 +39,6 @@
       <MemberSignature Language="C#" Value="public object _owner;" />
       <MemberSignature Language="ILAsm" Value=".field public object _owner" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -63,9 +51,6 @@
       <MemberSignature Language="C#" Value="public object ActionForCallbackChannel (CocosSharp.CCBSequenceProperty channel);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object ActionForCallbackChannel(class CocosSharp.CCBSequenceProperty channel) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -83,9 +68,6 @@
       <MemberSignature Language="C#" Value="public object ActionForSoundChannel (CocosSharp.CCBSequenceProperty channel);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object ActionForSoundChannel(class CocosSharp.CCBSequenceProperty channel) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
@@ -103,9 +85,6 @@
       <MemberSignature Language="C#" Value="public void AddDocumentCallbackName (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDocumentCallbackName(string name) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -122,9 +101,6 @@
       <MemberSignature Language="C#" Value="public void AddDocumentCallbackNode (CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDocumentCallbackNode(class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -141,9 +117,6 @@
       <MemberSignature Language="C#" Value="public void AddDocumentOutletName (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDocumentOutletName(string name) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -160,9 +133,6 @@
       <MemberSignature Language="C#" Value="public void AddDocumentOutletNode (CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDocumentOutletNode(class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -179,10 +149,6 @@
       <MemberSignature Language="C#" Value="public void AddNode (CocosSharp.CCNode node, System.Collections.Generic.Dictionary&lt;int,System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCBSequenceProperty&gt;&gt; pSeq);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddNode(class CocosSharp.CCNode node, class System.Collections.Generic.Dictionary`2&lt;int32, class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCBSequenceProperty&gt;&gt; pSeq) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -201,10 +167,6 @@
       <MemberSignature Language="C#" Value="public int AutoPlaySequenceId { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 AutoPlaySequenceId" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -218,10 +180,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCBAnimationManagerDelegate Delegate { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCBAnimationManagerDelegate Delegate" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBAnimationManagerDelegate</ReturnType>
       </ReturnValue>
@@ -235,9 +193,6 @@
       <MemberSignature Language="C#" Value="public string DocumentControllerName { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string DocumentControllerName" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -251,10 +206,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize GetContainerSize (CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCSize GetContainerSize(class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -272,9 +223,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; GetDocumentCallbackNames ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;string&gt; GetDocumentCallbackNames() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -289,9 +237,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCNode&gt; GetDocumentCallbackNodes ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCNode&gt; GetDocumentCallbackNodes() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
@@ -306,9 +251,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; GetDocumentOutletNames ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;string&gt; GetDocumentOutletNames() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -323,9 +265,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCNode&gt; GetDocumentOutletNodes ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCNode&gt; GetDocumentOutletNodes() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
@@ -340,9 +279,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;string&gt; GetKeyframeCallbacks ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class System.Collections.Generic.List`1&lt;string&gt; GetKeyframeCallbacks() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.String&gt;</ReturnType>
       </ReturnValue>
@@ -357,9 +293,6 @@
       <MemberSignature Language="C#" Value="public string GetLastCompletedSequenceName ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetLastCompletedSequenceName() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -374,10 +307,6 @@
       <MemberSignature Language="C#" Value="public virtual bool Init ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Init() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -392,9 +321,6 @@
       <MemberSignature Language="C#" Value="public void MoveAnimationsFromNode (CocosSharp.CCNode fromNode, CocosSharp.CCNode toNode);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void MoveAnimationsFromNode(class CocosSharp.CCNode fromNode, class CocosSharp.CCNode toNode) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -413,10 +339,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize RootContainerSize { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize RootContainerSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -430,10 +352,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode RootNode { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode RootNode" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -447,10 +365,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimations (string pName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimations(string pName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -467,10 +381,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimations (int nSeqId, float fTweenDuraiton);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimations(int32 nSeqId, float32 fTweenDuraiton) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -489,10 +399,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimations (string pName, float fTweenDuration);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimations(string pName, float32 fTweenDuration) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -511,9 +417,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimationsForSequenceIdTweenDuration (int nSeqId, float fTweenDuration);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimationsForSequenceIdTweenDuration(int32 nSeqId, float32 fTweenDuration) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -532,9 +435,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimationsForSequenceNamed (string pName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimationsForSequenceNamed(string pName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -551,9 +451,6 @@
       <MemberSignature Language="C#" Value="public void RunAnimationsForSequenceNamedTweenDuration (string pName, float fTweenDuration);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunAnimationsForSequenceNamedTweenDuration(string pName, float32 fTweenDuration) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -572,10 +469,6 @@
       <MemberSignature Language="C#" Value="public string RunningSequenceName { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string RunningSequenceName" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -589,10 +482,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCBSequence&gt; Sequences { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCBSequence&gt; Sequences" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCBSequence&gt;</ReturnType>
       </ReturnValue>
@@ -606,9 +495,6 @@
       <MemberSignature Language="C#" Value="public void SetAnimationCompletedCallback (Action callbackFunc);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetAnimationCompletedCallback(class System.Action callbackFunc) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -625,10 +511,6 @@
       <MemberSignature Language="C#" Value="public void SetBaseValue (object pValue, CocosSharp.CCNode node, string pPropName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBaseValue(object pValue, class CocosSharp.CCNode node, string pPropName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -649,9 +531,6 @@
       <MemberSignature Language="C#" Value="public void SetCallFunc (CocosSharp.CCAction callFunc, string callbackNamed);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCallFunc(class CocosSharp.CCAction callFunc, string callbackNamed) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDrawNode extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
@@ -29,10 +27,6 @@
       <MemberSignature Language="C#" Value="public CCDrawNode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -43,10 +37,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCBlendFunc BlendFunc { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCBlendFunc BlendFunc" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
@@ -60,10 +50,6 @@
       <MemberSignature Language="C#" Value="public void Clear ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Clear() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -77,10 +63,6 @@
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -113,9 +95,6 @@
       <MemberSignature Language="C#" Value="public void DrawCircle (CocosSharp.CCPoint center, float radius, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -136,9 +115,6 @@
       <MemberSignature Language="C#" Value="public void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -163,10 +139,6 @@
       <MemberSignature Language="C#" Value="public void DrawDot (CocosSharp.CCPoint pos, float radius, CocosSharp.CCColor4F color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawDot(valuetype CocosSharp.CCPoint pos, float32 radius, valuetype CocosSharp.CCColor4F color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -187,10 +159,6 @@
       <MemberSignature Language="C#" Value="public void DrawPolygon (CocosSharp.CCPoint[] verts, int count, CocosSharp.CCColor4F fillColor, float borderWidth, CocosSharp.CCColor4F borderColor);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawPolygon(valuetype CocosSharp.CCPoint[] verts, int32 count, valuetype CocosSharp.CCColor4F fillColor, float32 borderWidth, valuetype CocosSharp.CCColor4F borderColor) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -215,9 +183,6 @@
       <MemberSignature Language="C#" Value="public void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -236,10 +201,6 @@
       <MemberSignature Language="C#" Value="public void DrawSegment (CocosSharp.CCPoint from, CocosSharp.CCPoint to, float radius, CocosSharp.CCColor4F color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DrawSegment(valuetype CocosSharp.CCPoint from, valuetype CocosSharp.CCPoint to, float32 radius, valuetype CocosSharp.CCColor4F color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -255,23 +216,6 @@
         <param name="radius">To be added.</param>
         <param name="color">To be added.</param>
         <summary>draw a segment with a radius and color </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public override bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Initializes the instance of Whether the initialization was successful. </summary>
-        <returns>To be added.</returns>
         <remarks />
       </Docs>
     </Member>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCFollow extends CocosSharp.CCAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCAction</BaseTypeName>
@@ -23,29 +21,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCFollow (CocosSharp.CCFollow follow);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFollow follow) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="follow" Type="CocosSharp.CCFollow" />
-      </Parameters>
-      <Docs>
-        <param name="follow">is equal to Rect::ZERO. </param>
-        <summary>creates the action with a set boundary, It will work with no boundary if</summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCFollow (CocosSharp.CCNode followedNode, CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode followedNode, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="followedNode" Type="CocosSharp.CCNode" />
         <Parameter Name="rect" Type="CocosSharp.CCRect" />
@@ -61,9 +39,6 @@
       <MemberSignature Language="C#" Value="public bool BoundaryFullyCovered { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool BoundaryFullyCovered" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -77,10 +52,6 @@
       <MemberSignature Language="C#" Value="public bool BoundarySet { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool BoundarySet" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -88,194 +59,18 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable zone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable zone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="zone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="zone">To be added.</param>
-        <summary>returns a clone of action </summary>
-        <returns>To be added.</returns>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="FollowedNode">
       <MemberSignature Language="C#" Value="protected CocosSharp.CCNode FollowedNode { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode FollowedNode" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsDone">
-      <MemberSignature Language="C#" Value="public override bool IsDone { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>
-          <para>return true if the action has finished </para>
-        </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bBoundaryFullyCovered">
-      <MemberSignature Language="C#" Value="protected bool m_bBoundaryFullyCovered;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bBoundaryFullyCovered" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bBoundarySet">
-      <MemberSignature Language="C#" Value="protected bool m_bBoundarySet;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bBoundarySet" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fBottomBoundary">
-      <MemberSignature Language="C#" Value="protected float m_fBottomBoundary;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fBottomBoundary" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fLeftBoundary">
-      <MemberSignature Language="C#" Value="protected float m_fLeftBoundary;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fLeftBoundary" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fRightBoundary">
-      <MemberSignature Language="C#" Value="protected float m_fRightBoundary;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fRightBoundary" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fTopBoundary">
-      <MemberSignature Language="C#" Value="protected float m_fTopBoundary;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fTopBoundary" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_obFullScreenSize">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obFullScreenSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obFullScreenSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_obHalfScreenSize">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint m_obHalfScreenSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint m_obHalfScreenSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pobFollowedNode">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode m_pobFollowedNode;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode m_pobFollowedNode" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCNode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -283,9 +78,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -297,43 +89,6 @@
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public override void Step (float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Step(float32 dt) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="dt" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="dt">To be added.</param>
-        <summary>
-          <para>called every frame with it's delta time. DON'T override unless you know what you are doing. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Stop">
-      <MemberSignature Language="C#" Value="public override void Stop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Stop() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks />
       </Docs>
     </Member>
   </Members>

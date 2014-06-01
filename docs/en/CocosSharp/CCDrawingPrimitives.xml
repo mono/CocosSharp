@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDrawingPrimitives extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCDrawingPrimitives ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="public static void Begin ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Begin() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -47,13 +37,9 @@
       </Docs>
     </Member>
     <Member MemberName="DefaultColor">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCColor4B DefaultColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor4B DefaultColor" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4B DefaultColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCColor4B DefaultColor" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor4B</ReturnType>
       </ReturnValue>
@@ -67,10 +53,6 @@
       <MemberSignature Language="C#" Value="public static void DrawArc (CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawArc(valuetype CocosSharp.CCRect rect, int32 startAngle, int32 sweepAngle, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -93,10 +75,6 @@
       <MemberSignature Language="C#" Value="public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawArc(int32 x, int32 y, int32 width, int32 height, int32 startAngle, int32 sweepAngle, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -125,10 +103,6 @@
       <MemberSignature Language="C#" Value="public static void DrawCardinalSpline (System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; config, float tension, int segments);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCardinalSpline(class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; config, float32 tension, int32 segments) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -149,10 +123,6 @@
       <MemberSignature Language="C#" Value="public static void DrawCatmullRom (System.Collections.Generic.List&lt;CocosSharp.CCPoint&gt; points, int segments);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCatmullRom(class System.Collections.Generic.List`1&lt;valuetype CocosSharp.CCPoint&gt; points, int32 segments) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -168,65 +138,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawCircle">
-      <MemberSignature Language="C#" Value="public static void DrawCircle (Box2D.Common.b2Vec2 center, float radius, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="center" Type="Box2D.Common.b2Vec2" />
-        <Parameter Name="radius" Type="System.Single" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="center">To be added.</param>
-        <param name="radius">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawCircle">
-      <MemberSignature Language="C#" Value="public static void DrawCircle (Box2D.Common.b2Vec2 center, float radius, float angle, int segments, bool drawLineToCenter, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype Box2D.Common.b2Vec2 center, float32 radius, float32 angle, int32 segments, bool drawLineToCenter, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="center" Type="Box2D.Common.b2Vec2" />
-        <Parameter Name="radius" Type="System.Single" />
-        <Parameter Name="angle" Type="System.Single" />
-        <Parameter Name="segments" Type="System.Int32" />
-        <Parameter Name="drawLineToCenter" Type="System.Boolean" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="center">To be added.</param>
-        <param name="radius">To be added.</param>
-        <param name="angle">To be added.</param>
-        <param name="segments">To be added.</param>
-        <param name="drawLineToCenter">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawCircle">
       <MemberSignature Language="C#" Value="public static void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, bool drawLineToCenter, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -253,10 +167,6 @@
       <MemberSignature Language="C#" Value="public static void DrawCubicBezier (CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCubicBezier(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint control1, valuetype CocosSharp.CCPoint control2, valuetype CocosSharp.CCPoint destination, int32 segments, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -283,10 +193,6 @@
       <MemberSignature Language="C#" Value="public static void DrawEllips (int x, int y, int width, int height, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllips(int32 x, int32 y, int32 width, int32 height, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -311,10 +217,6 @@
       <MemberSignature Language="C#" Value="public static void DrawEllipse (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllipse(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -329,60 +231,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="drawEllipticalArcToContext">
-      <MemberSignature Language="C#" Value="public static void drawEllipticalArcToContext (int degree, double threshold, CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void drawEllipticalArcToContext(int32 degree, float64 threshold, valuetype CocosSharp.CCColor4B color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="degree" Type="System.Int32" />
-        <Parameter Name="threshold" Type="System.Double" />
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-      </Parameters>
-      <Docs>
-        <param name="degree">To be added.</param>
-        <param name="threshold">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawLine">
-      <MemberSignature Language="C#" Value="public static void DrawLine (Box2D.Common.b2Vec2 origin, Box2D.Common.b2Vec2 destination, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawLine(valuetype Box2D.Common.b2Vec2 origin, valuetype Box2D.Common.b2Vec2 destination, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="origin" Type="Box2D.Common.b2Vec2" />
-        <Parameter Name="destination" Type="Box2D.Common.b2Vec2" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="origin">To be added.</param>
-        <param name="destination">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="DrawLine">
       <MemberSignature Language="C#" Value="public static void DrawLine (CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawLine(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint destination, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -403,10 +255,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPie (CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPie(valuetype CocosSharp.CCRect rect, int32 startAngle, int32 sweepAngle, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -429,10 +277,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPie(int32 x, int32 y, int32 width, int32 height, int32 startAngle, int32 sweepAngle, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -461,10 +305,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPoint (CocosSharp.CCPoint point);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoint(valuetype CocosSharp.CCPoint point) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -481,10 +321,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPoint (CocosSharp.CCPoint point, float size);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoint(valuetype CocosSharp.CCPoint point, float32 size) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -503,10 +339,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPoint (CocosSharp.CCPoint p, float size, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoint(valuetype CocosSharp.CCPoint p, float32 size, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -524,36 +356,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawPoints">
-      <MemberSignature Language="C#" Value="public static void DrawPoints (Box2D.Common.b2Vec2[] points, float size, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype Box2D.Common.b2Vec2[] points, float32 size, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="points" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="size" Type="System.Single" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="points">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawPoints">
       <MemberSignature Language="C#" Value="public static void DrawPoints (CocosSharp.CCPoint[] points, float size, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype CocosSharp.CCPoint[] points, float32 size, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -564,31 +369,6 @@
       </Parameters>
       <Docs>
         <param name="points">To be added.</param>
-        <param name="size">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawPoints">
-      <MemberSignature Language="C#" Value="public static void DrawPoints (Box2D.Common.b2Vec2[] points, int numberOfPoints, float size, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype Box2D.Common.b2Vec2[] points, int32 numberOfPoints, float32 size, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="points" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="numberOfPoints" Type="System.Int32" />
-        <Parameter Name="size" Type="System.Single" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="points">To be added.</param>
-        <param name="numberOfPoints">To be added.</param>
         <param name="size">To be added.</param>
         <param name="color">To be added.</param>
         <summary>To be added.</summary>
@@ -599,10 +379,6 @@
       <MemberSignature Language="C#" Value="public static void DrawPoints (CocosSharp.CCPoint[] points, int numberOfPoints, float size, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype CocosSharp.CCPoint[] points, int32 numberOfPoints, float32 size, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -622,38 +398,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawPoly">
-      <MemberSignature Language="C#" Value="public static void DrawPoly (Box2D.Common.b2Vec2[] vertices, int numOfVertices, bool closePolygon, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype Box2D.Common.b2Vec2[] vertices, int32 numOfVertices, bool closePolygon, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="numOfVertices" Type="System.Int32" />
-        <Parameter Name="closePolygon" Type="System.Boolean" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="vertices">To be added.</param>
-        <param name="numOfVertices">To be added.</param>
-        <param name="closePolygon">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawPoly">
       <MemberSignature Language="C#" Value="public static void DrawPoly (CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype CocosSharp.CCPoint[] vertices, int32 numOfVertices, bool closePolygon, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -673,40 +420,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawPoly">
-      <MemberSignature Language="C#" Value="public static void DrawPoly (Box2D.Common.b2Vec2[] vertices, int numOfVertices, bool closePolygon, bool fill, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype Box2D.Common.b2Vec2[] vertices, int32 numOfVertices, bool closePolygon, bool fill, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="numOfVertices" Type="System.Int32" />
-        <Parameter Name="closePolygon" Type="System.Boolean" />
-        <Parameter Name="fill" Type="System.Boolean" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="vertices">To be added.</param>
-        <param name="numOfVertices">To be added.</param>
-        <param name="closePolygon">To be added.</param>
-        <param name="fill">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawPoly">
       <MemberSignature Language="C#" Value="public static void DrawPoly (CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype CocosSharp.CCPoint[] vertices, int32 numOfVertices, bool closePolygon, bool fill, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -731,10 +447,6 @@
       <MemberSignature Language="C#" Value="public static void DrawQuadBezier (CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuadBezier(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint control, valuetype CocosSharp.CCPoint destination, int32 segments, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -759,10 +471,6 @@
       <MemberSignature Language="C#" Value="public static void DrawRect (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawRect(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -778,36 +486,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawSolidPoly">
-      <MemberSignature Language="C#" Value="public static void DrawSolidPoly (Box2D.Common.b2Vec2[] vertices, int count, Box2D.Common.b2Color color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype Box2D.Common.b2Vec2[] vertices, int32 count, valuetype Box2D.Common.b2Color color) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="count" Type="System.Int32" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-      </Parameters>
-      <Docs>
-        <param name="vertices">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="color">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawSolidPoly">
       <MemberSignature Language="C#" Value="public static void DrawSolidPoly (CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype CocosSharp.CCPoint[] vertices, int32 count, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -825,38 +506,9 @@
       </Docs>
     </Member>
     <Member MemberName="DrawSolidPoly">
-      <MemberSignature Language="C#" Value="public static void DrawSolidPoly (Box2D.Common.b2Vec2[] vertices, int count, Box2D.Common.b2Color color, bool outline);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype Box2D.Common.b2Vec2[] vertices, int32 count, valuetype Box2D.Common.b2Color color, bool outline) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="vertices" Type="Box2D.Common.b2Vec2[]" />
-        <Parameter Name="count" Type="System.Int32" />
-        <Parameter Name="color" Type="Box2D.Common.b2Color" />
-        <Parameter Name="outline" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="vertices">To be added.</param>
-        <param name="count">To be added.</param>
-        <param name="color">To be added.</param>
-        <param name="outline">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DrawSolidPoly">
       <MemberSignature Language="C#" Value="public static void DrawSolidPoly (CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color, bool outline);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype CocosSharp.CCPoint[] vertices, int32 count, valuetype CocosSharp.CCColor4B color, bool outline) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -879,10 +531,6 @@
       <MemberSignature Language="C#" Value="public static void DrawSolidRect (CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidRect(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint destination, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -903,138 +551,10 @@
       <MemberSignature Language="C#" Value="public static void End ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void End() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="eta1">
-      <MemberSignature Language="C#" Value="protected static double eta1;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 eta1" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="eta2">
-      <MemberSignature Language="C#" Value="protected static double eta2;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 eta2" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public static void Init (Microsoft.Xna.Framework.Graphics.GraphicsDevice graphics);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Init(class Microsoft.Xna.Framework.Graphics.GraphicsDevice graphics) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="graphics" Type="Microsoft.Xna.Framework.Graphics.GraphicsDevice" />
-      </Parameters>
-      <Docs>
-        <param name="graphics">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isPieSlice">
-      <MemberSignature Language="C#" Value="protected static bool isPieSlice;" />
-      <MemberSignature Language="ILAsm" Value=".field family static bool isPieSlice" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="xF1">
-      <MemberSignature Language="C#" Value="protected static double xF1;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 xF1" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="xF2">
-      <MemberSignature Language="C#" Value="protected static double xF2;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 xF2" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="yF1">
-      <MemberSignature Language="C#" Value="protected static double yF1;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 yF1" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="yF2">
-      <MemberSignature Language="C#" Value="protected static double yF2;" />
-      <MemberSignature Language="ILAsm" Value=".field family static float64 yF2" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Double</ReturnType>
-      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

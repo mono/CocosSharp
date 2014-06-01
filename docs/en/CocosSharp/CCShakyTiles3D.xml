@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCShakyTiles3D extends CocosSharp.CCTiledGrid3DAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCTiledGrid3DAction</BaseTypeName>
@@ -18,26 +16,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCShakyTiles3D ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>creates the action with a range, whether or not to shake Z vertices, a grid size, and duration </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCShakyTiles3D (float duration, CocosSharp.CCGridSize gridSize, int range = 0, bool shakeZ = true);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 range, bool shakeZ) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
@@ -53,89 +34,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="pZone">To be added.</param>
-        <summary>returns a new clone of the action </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float duration, CocosSharp.CCGridSize gridSize, int nRange, bool bShakeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 duration, valuetype CocosSharp.CCGridSize gridSize, int32 nRange, bool bShakeZ) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="nRange" Type="System.Int32" />
-        <Parameter Name="bShakeZ" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="duration">To be added.</param>
-        <param name="gridSize">To be added.</param>
-        <param name="nRange">To be added.</param>
-        <param name="bShakeZ">To be added.</param>
-        <summary>initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="m_bShakeZ">
-      <MemberSignature Language="C#" Value="protected bool m_bShakeZ;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bShakeZ" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nRandrange">
-      <MemberSignature Language="C#" Value="protected int m_nRandrange;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nRandrange" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Range">
       <MemberSignature Language="C#" Value="protected int Range { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 Range" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -149,9 +51,6 @@
       <MemberSignature Language="C#" Value="protected bool ShakeZ { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ShakeZ" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -165,9 +64,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -179,41 +75,6 @@
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Update">
-      <MemberSignature Language="C#" Value="public override void Update (float time);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 time) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="time" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="time">To be added.</param>
-        <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>
-          <para>called once per frame. time a value between 0 and 1</para>
-          <para>For example:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>0 means that the action just started</description>
-          </item>
-          <description>0 means that the action just started</description>
-          <item>
-            <description>0.5 means that the action is in the middle</description>
-          </item>
-          <description>0.5 means that the action is in the middle</description>
-          <item>
-            <description>1 means that the action is over </description>
-          </item>
-          <description>1 means that the action is over </description>
-        </remarks>
       </Docs>
     </Member>
   </Members>

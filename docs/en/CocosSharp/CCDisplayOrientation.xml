@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCDisplayOrientation extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -22,9 +21,6 @@
       <MemberSignature Language="C#" Value="Default" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation Default = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="LandscapeLeft" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation LandscapeLeft = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="LandscapeRight" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation LandscapeRight = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
@@ -64,9 +54,6 @@
       <MemberSignature Language="C#" Value="Portrait" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation Portrait = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
@@ -78,9 +65,6 @@
       <MemberSignature Language="C#" Value="PortraitDown" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation PortraitDown = int32(8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>
@@ -92,9 +76,6 @@
       <MemberSignature Language="C#" Value="Unknown" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCDisplayOrientation Unknown = int32(16)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
       </ReturnValue>

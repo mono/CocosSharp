@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionScene extends CocosSharp.CCScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCScene</BaseTypeName>
@@ -21,10 +19,6 @@
       <MemberSignature Language="C#" Value="protected CCTransitionScene ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>creates a base transition with duration and incoming scene </summary>
@@ -35,10 +29,6 @@
       <MemberSignature Language="C#" Value="public CCTransitionScene (float t, CocosSharp.CCScene scene);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="t" Type="System.Single" />
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
@@ -54,10 +44,6 @@
       <MemberSignature Language="C#" Value="public override void Cleanup ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Cleanup() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -71,10 +57,6 @@
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -107,9 +89,6 @@
       <MemberSignature Language="C#" Value="protected float Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Duration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -123,10 +102,6 @@
       <MemberSignature Language="C#" Value="public void Finish ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Finish() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -140,10 +115,6 @@
       <MemberSignature Language="C#" Value="public void HideOutShowIn ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void HideOutShowIn() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -153,35 +124,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InitWithDuration">
-      <MemberSignature Language="C#" Value="protected virtual bool InitWithDuration (float t, CocosSharp.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool InitWithDuration(float32 t, class CocosSharp.CCScene scene) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="scene" Type="CocosSharp.CCScene" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <param name="scene">To be added.</param>
-        <summary>initializes a transition with duration and incoming scene </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="InScene">
       <MemberSignature Language="C#" Value="protected CocosSharp.CCScene InScene { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene InScene" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
@@ -195,9 +141,6 @@
       <MemberSignature Language="C#" Value="protected bool IsInSceneOnTop { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsInSceneOnTop" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -211,9 +154,6 @@
       <MemberSignature Language="C#" Value="protected bool IsSendCleanupToScene { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSendCleanupToScene" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -227,10 +167,6 @@
       <MemberSignature Language="C#" Value="public override bool IsTransition { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsTransition" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -240,89 +176,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_bIsInSceneOnTop">
-      <MemberSignature Language="C#" Value="protected bool m_bIsInSceneOnTop;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bIsInSceneOnTop" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bIsSendCleanupToScene">
-      <MemberSignature Language="C#" Value="protected bool m_bIsSendCleanupToScene;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bIsSendCleanupToScene" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fDuration">
-      <MemberSignature Language="C#" Value="protected float m_fDuration;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDuration" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pInScene">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene m_pInScene;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene m_pInScene" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pOutScene">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene m_pOutScene;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene m_pOutScene" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="OnEnter">
       <MemberSignature Language="C#" Value="public override void OnEnter ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -336,10 +193,6 @@
       <MemberSignature Language="C#" Value="public override void OnExit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnExit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -353,9 +206,6 @@
       <MemberSignature Language="C#" Value="protected CocosSharp.CCScene OutScene { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene OutScene" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
@@ -369,10 +219,6 @@
       <MemberSignature Language="C#" Value="public virtual void Reset (float t, CocosSharp.CCScene scene);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Reset(float32 t, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -391,10 +237,6 @@
       <MemberSignature Language="C#" Value="protected virtual void SceneOrder ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SceneOrder() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

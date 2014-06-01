@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabelAtlas extends CocosSharp.CCMenuItemLabelBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCMenuItemLabelBase</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (Action&lt;object&gt; target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Action`1&lt;object&gt; target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (CocosSharp.CCLabelAtlas labelAtlas, Action&lt;object&gt; target = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLabelAtlas labelAtlas, class System.Action`1&lt;object&gt; target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="labelAtlas" Type="CocosSharp.CCLabelAtlas" />
         <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (string value, string charMapFile, int itemWidth, int itemHeight, char startCharMap);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
         <Parameter Name="charMapFile" Type="System.String" />
@@ -76,9 +66,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLabelAtlas (string value, string charMapFile, int itemWidth, int itemHeight, char startCharMap, CocosSharp.ICCUpdatable updatable, Action&lt;object&gt; target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string value, string charMapFile, int32 itemWidth, int32 itemHeight, char startCharMap, class CocosSharp.ICCUpdatable updatable, class System.Action`1&lt;object&gt; target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="value" Type="System.String" />
         <Parameter Name="charMapFile" Type="System.String" />
@@ -104,9 +91,6 @@
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -120,9 +104,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCLabelAtlas LabelAtlas { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelAtlas LabelAtlas" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLabelAtlas</ReturnType>
       </ReturnValue>

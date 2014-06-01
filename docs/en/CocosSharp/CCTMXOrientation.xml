@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCTMXOrientation extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -18,10 +16,6 @@
       <MemberSignature Language="C#" Value="Hex" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXOrientation Hex = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
       </ReturnValue>
@@ -33,10 +27,6 @@
       <MemberSignature Language="C#" Value="Iso" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXOrientation Iso = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
       </ReturnValue>
@@ -48,10 +38,6 @@
       <MemberSignature Language="C#" Value="Ortho" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTMXOrientation Ortho = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTMXOrientation</ReturnType>
       </ReturnValue>

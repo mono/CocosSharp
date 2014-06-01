@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit ICCScriptingEngine extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public ICCScriptingEngine ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="public virtual bool AddSearchPath (string path);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool AddSearchPath(string path) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -51,9 +44,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFunc (string funcName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFunc(string funcName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -71,9 +61,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFunc0 (string funcName, object pObject);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFunc0(string funcName, object pObject) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -93,9 +80,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncN (string funcName, CocosSharp.CCNode node);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncN(string funcName, class CocosSharp.CCNode node) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -115,9 +99,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteCallFuncNd (string funcName, CocosSharp.CCNode node, object pData);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteCallFuncNd(string funcName, class CocosSharp.CCNode node, object pData) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -139,9 +120,6 @@
       <MemberSignature Language="C#" Value="public virtual int ExecuteFuction (string funcName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 ExecuteFuction(string funcName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -159,9 +137,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteSchedule (string funcName, float t);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteSchedule(string funcName, float32 t) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -181,9 +156,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteScriptFile (string filename);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteScriptFile(string filename) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -201,9 +173,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteString (string codes);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteString(string codes) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -221,9 +190,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchesEvent (string funcName, System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; touches);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchesEvent(string funcName, class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; touches) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -243,9 +209,6 @@
       <MemberSignature Language="C#" Value="public virtual bool ExecuteTouchEvent (string funcName, CocosSharp.CCTouch touch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool ExecuteTouchEvent(string funcName, class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

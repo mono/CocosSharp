@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventGamePadStick extends CocosSharp.CCEventGamePad" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEventGamePad</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCGameStickStatus Left { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCGameStickStatus Left" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGameStickStatus</ReturnType>
       </ReturnValue>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPlayerIndex Player { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPlayerIndex Player" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPlayerIndex</ReturnType>
       </ReturnValue>
@@ -50,9 +43,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCGameStickStatus Right { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCGameStickStatus Right" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGameStickStatus</ReturnType>
       </ReturnValue>

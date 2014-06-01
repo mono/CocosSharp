@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventTouch extends CocosSharp.CCEvent" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEvent</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCEventCode EventCode { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCEventCode EventCode" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCEventCode</ReturnType>
       </ReturnValue>
@@ -34,9 +30,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt; Touches { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCTouch&gt; Touches" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCTouch&gt;</ReturnType>
       </ReturnValue>

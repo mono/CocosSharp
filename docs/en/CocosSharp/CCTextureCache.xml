@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextureCache extends System.Object implements class CocosSharp.ICCUpdatable, class System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,27 +22,10 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTextureCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddImage">
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddImage (string fileimage);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddImage(string fileimage) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -62,9 +43,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddImage (byte[] data, string assetName, CocosSharp.CCSurfaceFormat format);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddImage(unsigned int8[] data, string assetName, valuetype CocosSharp.CCSurfaceFormat format) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -82,37 +60,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddImage">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddImage (byte[] data, string assetName, Microsoft.Xna.Framework.Graphics.SurfaceFormat format);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddImage(unsigned int8[] data, string assetName, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="data" Type="System.Byte[]" />
-        <Parameter Name="assetName" Type="System.String" />
-        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
-      </Parameters>
-      <Docs>
-        <param name="data">To be added.</param>
-        <param name="assetName">To be added.</param>
-        <param name="format">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddImageAsync">
       <MemberSignature Language="C#" Value="public void AddImageAsync (string fileimage, Action&lt;CocosSharp.CCTexture2D&gt; action);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddImageAsync(string fileimage, class System.Action`1&lt;class CocosSharp.CCTexture2D&gt; action) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -131,9 +82,6 @@
       <MemberSignature Language="C#" Value="public void AddImageAsync (byte[] data, string assetName, CocosSharp.CCSurfaceFormat format, Action&lt;CocosSharp.CCTexture2D&gt; action);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddImageAsync(unsigned int8[] data, string assetName, valuetype CocosSharp.CCSurfaceFormat format, class System.Action`1&lt;class CocosSharp.CCTexture2D&gt; action) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -153,52 +101,9 @@
       </Docs>
     </Member>
     <Member MemberName="AddRawImage&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddRawImage&lt;T&gt; (T[] data, int width, int height, string assetName, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied) where T : struct;" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddRawImage&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, int32 width, int32 height, string assetName, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="T">
-          <Constraints>
-            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
-            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
-            <BaseTypeName>System.ValueType</BaseTypeName>
-          </Constraints>
-        </TypeParameter>
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="data" Type="T[]" />
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-        <Parameter Name="assetName" Type="System.String" />
-        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
-        <Parameter Name="premultiplied" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="data">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="assetName">To be added.</param>
-        <param name="format">To be added.</param>
-        <param name="premultiplied">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddRawImage&lt;T&gt;">
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddRawImage&lt;T&gt; (T[] data, int width, int height, string assetName, CocosSharp.CCSurfaceFormat format, bool premultiplied, bool mipMap = false) where T : struct;" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddRawImage&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, int32 width, int32 height, string assetName, valuetype CocosSharp.CCSurfaceFormat format, bool premultiplied, bool mipMap) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -217,48 +122,6 @@
         <Parameter Name="height" Type="System.Int32" />
         <Parameter Name="assetName" Type="System.String" />
         <Parameter Name="format" Type="CocosSharp.CCSurfaceFormat" />
-        <Parameter Name="premultiplied" Type="System.Boolean" />
-        <Parameter Name="mipMap" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="data">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="assetName">To be added.</param>
-        <param name="format">To be added.</param>
-        <param name="premultiplied">To be added.</param>
-        <param name="mipMap">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddRawImage&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddRawImage&lt;T&gt; (T[] data, int width, int height, string assetName, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied, bool mipMap) where T : struct;" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddRawImage&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, int32 width, int32 height, string assetName, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied, bool mipMap) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="T">
-          <Constraints>
-            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
-            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
-            <BaseTypeName>System.ValueType</BaseTypeName>
-          </Constraints>
-        </TypeParameter>
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="data" Type="T[]" />
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-        <Parameter Name="assetName" Type="System.String" />
-        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
         <Parameter Name="premultiplied" Type="System.Boolean" />
         <Parameter Name="mipMap" Type="System.Boolean" />
       </Parameters>
@@ -280,9 +143,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddRawImage&lt;T&gt; (T[] data, int width, int height, string assetName, CocosSharp.CCSurfaceFormat format, bool premultiplied, bool mipMap, CocosSharp.CCSize contentSize) where T : struct;" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddRawImage&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, int32 width, int32 height, string assetName, valuetype CocosSharp.CCSurfaceFormat format, bool premultiplied, bool mipMap, valuetype CocosSharp.CCSize contentSize) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -301,50 +161,6 @@
         <Parameter Name="height" Type="System.Int32" />
         <Parameter Name="assetName" Type="System.String" />
         <Parameter Name="format" Type="CocosSharp.CCSurfaceFormat" />
-        <Parameter Name="premultiplied" Type="System.Boolean" />
-        <Parameter Name="mipMap" Type="System.Boolean" />
-        <Parameter Name="contentSize" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <typeparam name="T">To be added.</typeparam>
-        <param name="data">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
-        <param name="assetName">To be added.</param>
-        <param name="format">To be added.</param>
-        <param name="premultiplied">To be added.</param>
-        <param name="mipMap">To be added.</param>
-        <param name="contentSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddRawImage&lt;T&gt;">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddRawImage&lt;T&gt; (T[] data, int width, int height, string assetName, Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied, bool mipMap, CocosSharp.CCSize contentSize) where T : struct;" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddRawImage&lt;struct .ctor (class System.ValueType) T&gt;(!!T[] data, int32 width, int32 height, string assetName, valuetype Microsoft.Xna.Framework.Graphics.SurfaceFormat format, bool premultiplied, bool mipMap, valuetype CocosSharp.CCSize contentSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <TypeParameters>
-        <TypeParameter Name="T">
-          <Constraints>
-            <ParameterAttribute>DefaultConstructorConstraint</ParameterAttribute>
-            <ParameterAttribute>NotNullableValueTypeConstraint</ParameterAttribute>
-            <BaseTypeName>System.ValueType</BaseTypeName>
-          </Constraints>
-        </TypeParameter>
-      </TypeParameters>
-      <Parameters>
-        <Parameter Name="data" Type="T[]" />
-        <Parameter Name="width" Type="System.Int32" />
-        <Parameter Name="height" Type="System.Int32" />
-        <Parameter Name="assetName" Type="System.String" />
-        <Parameter Name="format" Type="Microsoft.Xna.Framework.Graphics.SurfaceFormat" />
         <Parameter Name="premultiplied" Type="System.Boolean" />
         <Parameter Name="mipMap" Type="System.Boolean" />
         <Parameter Name="contentSize" Type="CocosSharp.CCSize" />
@@ -368,10 +184,6 @@
       <MemberSignature Language="C#" Value="public bool Contains (string assetFile);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Contains(string assetFile) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -389,10 +201,6 @@
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -406,9 +214,6 @@
       <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -425,10 +230,6 @@
       <MemberSignature Language="C#" Value="public void DumpCachedTextureInfo ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DumpCachedTextureInfo() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -445,29 +246,10 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Finalize">
-      <MemberSignature Language="C#" Value="~CCTextureCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Instance">
       <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureCache Instance { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCTextureCache Instance" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextureCache</ReturnType>
       </ReturnValue>
@@ -481,9 +263,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D this[string key] { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Item(string)" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -497,44 +276,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_pTextures">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCTexture2D&gt; m_pTextures;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCTexture2D&gt; m_pTextures" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCTexture2D&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="PurgeInstance">
       <MemberSignature Language="C#" Value="public static void PurgeInstance ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeInstance() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeSharedTextureCache">
-      <MemberSignature Language="C#" Value="public static void PurgeSharedTextureCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedTextureCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -548,10 +293,6 @@
       <MemberSignature Language="C#" Value="public void RemoveAllTextures ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllTextures() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -565,10 +306,6 @@
       <MemberSignature Language="C#" Value="public void RemoveTexture (CocosSharp.CCTexture2D texture);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTexture(class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -585,10 +322,6 @@
       <MemberSignature Language="C#" Value="public void RemoveTextureForKey (string textureKeyName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveTextureForKey(string textureKeyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -606,10 +339,6 @@ v0.99.4 </summary>
       <MemberSignature Language="C#" Value="public void RemoveUnusedTextures ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveUnusedTextures() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -619,50 +348,10 @@ v0.99.4 </summary>
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="SharedTextureCache">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureCache SharedTextureCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCTextureCache SharedTextureCache" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTextureCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TextureForKey">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D TextureForKey (string key);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D TextureForKey(string key) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTexture2D</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="key" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="key">To be added.</param>
-        <summary>Returns an already created texture. Returns nil if the texture doesn't exist.
-v0.99.5 </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="textures">
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCTexture2D&gt; textures;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCTexture2D&gt; textures" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCTexture2D&gt;</ReturnType>
       </ReturnValue>
@@ -675,10 +364,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public void UnloadContent ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UnloadContent() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -692,9 +377,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public void Update (float dt);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

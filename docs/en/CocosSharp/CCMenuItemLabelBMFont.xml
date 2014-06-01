@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemLabelBMFont extends CocosSharp.CCMenuItemLabelBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCMenuItemLabelBase</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCMenuItemLabelBMFont (CocosSharp.CCLabelBMFont labelBMFont, Action&lt;object&gt; target = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCLabelBMFont labelBMFont, class System.Action`1&lt;object&gt; target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="labelBMFont" Type="CocosSharp.CCLabelBMFont" />
         <Parameter Name="target" Type="System.Action&lt;System.Object&gt;" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCLabelBMFont LabelBMFont { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLabelBMFont LabelBMFont" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCLabelBMFont</ReturnType>
       </ReturnValue>

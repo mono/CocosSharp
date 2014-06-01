@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimate extends CocosSharp.CCActionInterval" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
@@ -18,29 +16,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCAnimate (CocosSharp.CCAnimate animate);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimate animate) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="animate" Type="CocosSharp.CCAnimate" />
-      </Parameters>
-      <Docs>
-        <param name="animate">To be added.</param>
-        <summary>creates the action with an  and will restore the original frame when the animation is over </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCAnimate (CocosSharp.CCAnimation pAnimation);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimation pAnimation) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="pAnimation" Type="CocosSharp.CCAnimation" />
       </Parameters>
@@ -54,9 +32,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation Animation { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAnimation Animation" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
@@ -66,114 +41,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public override object Copy (CocosSharp.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="pZone">To be added.</param>
-        <summary>returns a clone of action </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithAnimation">
-      <MemberSignature Language="C#" Value="protected bool InitWithAnimation (CocosSharp.CCAnimation pAnimation);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool InitWithAnimation(class CocosSharp.CCAnimation pAnimation) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pAnimation" Type="CocosSharp.CCAnimation" />
-      </Parameters>
-      <Docs>
-        <param name="pAnimation">To be added.</param>
-        <summary>initializes the action with an  and will restore the original frame when the animation is over </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="m_nNextFrame">
-      <MemberSignature Language="C#" Value="protected int m_nNextFrame;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nNextFrame" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pAnimation">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCAnimation m_pAnimation;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCAnimation m_pAnimation" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAnimation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pOrigFrame">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSpriteFrame m_pOrigFrame;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCSpriteFrame m_pOrigFrame" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pSplitTimes">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;float&gt; m_pSplitTimes;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;float32&gt; m_pSplitTimes" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;System.Single&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Reverse">
       <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
@@ -188,9 +59,6 @@
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;float&gt; SplitTimes { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;float32&gt; SplitTimes" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;System.Single&gt;</ReturnType>
       </ReturnValue>
@@ -204,9 +72,6 @@
       <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionState</ReturnType>
       </ReturnValue>
@@ -218,78 +83,6 @@
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="StartWithTarget">
-      <MemberSignature Language="C#" Value="protected override void StartWithTarget (CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void StartWithTarget(class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="target">To be added.</param>
-        <summary>
-          <para>called before the action start. It will also set the target. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Stop">
-      <MemberSignature Language="C#" Value="public override void Stop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Stop() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>called after the action has finished. It will set the 'target' to nil. IMPORTANT: You should never call "[action stop]" manually. Instead, use: "target-&gt;stopAction(action);" </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Update">
-      <MemberSignature Language="C#" Value="public override void Update (float t);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Update(float32 t) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="t" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="t">To be added.</param>
-        <summary>called once per frame. time a value between 0 and 1</summary>
-        <remarks>
-          <para>called once per frame. time a value between 0 and 1</para>
-          <para>For example:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>0 means that the action just started</description>
-          </item>
-          <description>0 means that the action just started</description>
-          <item>
-            <description>0.5 means that the action is in the middle</description>
-          </item>
-          <description>0.5 means that the action is in the middle</description>
-          <item>
-            <description>1 means that the action is over </description>
-          </item>
-          <description>1 means that the action is over </description>
-        </remarks>
       </Docs>
     </Member>
   </Members>

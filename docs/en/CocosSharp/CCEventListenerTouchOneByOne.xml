@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCEventListenerTouchOneByOne extends CocosSharp.CCEventListener" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCEventListener</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCEventListenerTouchOneByOne ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCEventListener Copy ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCEventListener Copy() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCEventListener</ReturnType>
       </ReturnValue>
@@ -48,9 +41,6 @@
       <MemberSignature Language="C#" Value="public override bool IsAvailable { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsAvailable" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -64,9 +54,6 @@
       <MemberSignature Language="C#" Value="public bool IsSwallowTouches { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSwallowTouches" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -80,9 +67,6 @@
       <MemberSignature Language="C#" Value="public static string LISTENER_ID;" />
       <MemberSignature Language="ILAsm" Value=".field public static string LISTENER_ID" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -95,9 +79,6 @@
       <MemberSignature Language="C#" Value="public Func&lt;CocosSharp.CCTouch,CocosSharp.CCEvent,bool&gt; OnTouchBegan { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Func`3&lt;class CocosSharp.CCTouch, class CocosSharp.CCEvent, bool&gt; OnTouchBegan" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Func&lt;CocosSharp.CCTouch,CocosSharp.CCEvent,System.Boolean&gt;</ReturnType>
       </ReturnValue>
@@ -111,9 +92,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt; OnTouchCancelled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class CocosSharp.CCTouch, class CocosSharp.CCEvent&gt; OnTouchCancelled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt;</ReturnType>
       </ReturnValue>
@@ -127,9 +105,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt; OnTouchEnded { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class CocosSharp.CCTouch, class CocosSharp.CCEvent&gt; OnTouchEnded" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt;</ReturnType>
       </ReturnValue>
@@ -143,9 +118,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt; OnTouchMoved { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Action`2&lt;class CocosSharp.CCTouch, class CocosSharp.CCEvent&gt; OnTouchMoved" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;CocosSharp.CCTouch,CocosSharp.CCEvent&gt;</ReturnType>
       </ReturnValue>

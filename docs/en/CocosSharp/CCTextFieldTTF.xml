@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTextFieldTTF extends CocosSharp.CCLabelTtf" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCLabelTtf</BaseTypeName>
@@ -19,25 +17,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTextFieldTTF ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCTextFieldTTF (string text, string fontName, float fontSize);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -55,9 +37,6 @@
       <MemberSignature Language="C#" Value="public CCTextFieldTTF (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -79,9 +58,6 @@
       <MemberSignature Language="C#" Value="public CCTextFieldTTF (string text, string fontName, float fontSize, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string text, string fontName, float32 fontSize, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment hAlignment, valuetype CocosSharp.CCVerticalTextAlignment vAlignment) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="text" Type="System.String" />
         <Parameter Name="fontName" Type="System.String" />
@@ -101,32 +77,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AttachWithIME">
-      <MemberSignature Language="C#" Value="public bool AttachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool AttachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>Open keyboard and receive input text. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AutoEdit">
       <MemberSignature Language="C#" Value="public bool AutoEdit { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AutoEdit" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -140,9 +94,6 @@
       <MemberSignature Language="C#" Value="public event CocosSharp.CCTextFieldTTFDelegate BeginEditing;" />
       <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCTextFieldTTFDelegate BeginEditing" />
       <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextFieldTTFDelegate</ReturnType>
       </ReturnValue>
@@ -151,190 +102,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CalcCharCount">
-      <MemberSignature Language="C#" Value="public static int CalcCharCount (string pszText);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig int32 CalcCharCount(string pszText) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pszText" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="pszText">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CanAttachWithIME">
-      <MemberSignature Language="C#" Value="public bool CanAttachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanAttachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>Decide if the delegate instance is ready to receive an IME message. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="CanDetachWithIME">
-      <MemberSignature Language="C#" Value="public bool CanDetachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool CanDetachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>Decide if the delegate instance can stop receiving IME messages. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CharCount">
-      <MemberSignature Language="C#" Value="public int CharCount { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 CharCount" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>getCharCount </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="ColorSpaceHolder">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B ColorSpaceHolder { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B ColorSpaceHolder" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Delegate">
-      <MemberSignature Language="C#" Value="public CocosSharp.ICCTextFieldDelegate Delegate { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.ICCTextFieldDelegate Delegate" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.ICCTextFieldDelegate</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DeleteBackward">
-      <MemberSignature Language="C#" Value="public void DeleteBackward ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void DeleteBackward() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>Called by IMEDispatcher after the user clicks the backward key. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DetachWithIME">
-      <MemberSignature Language="C#" Value="public bool DetachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool DetachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>End text input and close keyboard. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DidAttachWithIME">
-      <MemberSignature Language="C#" Value="public bool DidAttachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool DidAttachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DidDetachWithIME">
-      <MemberSignature Language="C#" Value="public bool DidDetachWithIME ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool DidDetachWithIME() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="DoBeginEditing">
       <MemberSignature Language="C#" Value="protected virtual void DoBeginEditing (ref string newText, ref bool canceled);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void DoBeginEditing(string newText, bool canceled) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -353,9 +124,6 @@
       <MemberSignature Language="C#" Value="protected virtual void DoEndEditing (ref string newText, ref bool canceled);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void DoEndEditing(string newText, bool canceled) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -370,48 +138,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Edit">
       <MemberSignature Language="C#" Value="public void Edit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Edit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -425,9 +155,6 @@
       <MemberSignature Language="C#" Value="public void Edit (string title, string defaultText);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Edit(string title, string defaultText) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -446,9 +173,6 @@
       <MemberSignature Language="C#" Value="public string EditDescription { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string EditDescription" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -462,9 +186,6 @@
       <MemberSignature Language="C#" Value="public string EditTitle { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string EditTitle" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -478,9 +199,6 @@
       <MemberSignature Language="C#" Value="public void EndEdit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndEdit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -494,227 +212,8 @@
       <MemberSignature Language="C#" Value="public event CocosSharp.CCTextFieldTTFDelegate EndEditing;" />
       <MemberSignature Language="ILAsm" Value=".event class CocosSharp.CCTextFieldTTFDelegate EndEditing" />
       <MemberType>Event</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTextFieldTTFDelegate</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetContentText">
-      <MemberSignature Language="C#" Value="public string GetContentText ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance string GetContentText() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>Called by IMEDispatcher for text stored in delegate. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithPlaceHolder">
-      <MemberSignature Language="C#" Value="public bool InitWithPlaceHolder (string placeholder, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithPlaceHolder(string placeholder, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="placeholder" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="placeholder">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>initializes the  with a font name and font size </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithPlaceHolder">
-      <MemberSignature Language="C#" Value="public bool InitWithPlaceHolder (string placeholder, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment alignment, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithPlaceHolder(string placeholder, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment alignment, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="placeholder" Type="System.String" />
-        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="placeholder">To be added.</param>
-        <param name="dimensions">To be added.</param>
-        <param name="alignment">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InputTextString">
-      <MemberSignature Language="C#" Value="public string InputTextString { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string InputTextString" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="InsertText">
-      <MemberSignature Language="C#" Value="public void InsertText (string text, int len);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void InsertText(string text, int32 len) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="text" Type="System.String" />
-        <Parameter Name="len" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="text">To be added.</param>
-        <param name="len">To be added.</param>
-        <summary>
-          <para>Called by IMEDispatcher when text input received from the IME. </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeyboardDidHide">
-      <MemberSignature Language="C#" Value="public void KeyboardDidHide (CocosSharp.CCIMEKeyboardNotificationInfo info);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyboardDidHide(class CocosSharp.CCIMEKeyboardNotificationInfo info) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="info" Type="CocosSharp.CCIMEKeyboardNotificationInfo" />
-      </Parameters>
-      <Docs>
-        <param name="info">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeyboardDidShow">
-      <MemberSignature Language="C#" Value="public void KeyboardDidShow (CocosSharp.CCIMEKeyboardNotificationInfo info);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyboardDidShow(class CocosSharp.CCIMEKeyboardNotificationInfo info) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="info" Type="CocosSharp.CCIMEKeyboardNotificationInfo" />
-      </Parameters>
-      <Docs>
-        <param name="info">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeyboardWillHide">
-      <MemberSignature Language="C#" Value="public void KeyboardWillHide (CocosSharp.CCIMEKeyboardNotificationInfo info);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyboardWillHide(class CocosSharp.CCIMEKeyboardNotificationInfo info) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="info" Type="CocosSharp.CCIMEKeyboardNotificationInfo" />
-      </Parameters>
-      <Docs>
-        <param name="info">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeyboardWillShow">
-      <MemberSignature Language="C#" Value="public void KeyboardWillShow (CocosSharp.CCIMEKeyboardNotificationInfo info);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyboardWillShow(class CocosSharp.CCIMEKeyboardNotificationInfo info) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="info" Type="CocosSharp.CCIMEKeyboardNotificationInfo" />
-      </Parameters>
-      <Docs>
-        <param name="info">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pInputText">
-      <MemberSignature Language="C#" Value="protected string m_pInputText;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_pInputText" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pPlaceHolder">
-      <MemberSignature Language="C#" Value="protected string m_pPlaceHolder;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_pPlaceHolder" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -725,9 +224,6 @@
       <MemberSignature Language="C#" Value="public override void OnEnter ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -741,9 +237,6 @@
       <MemberSignature Language="C#" Value="public override void OnExit ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnExit() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -753,29 +246,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PlaceHolder">
-      <MemberSignature Language="C#" Value="public string PlaceHolder { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string PlaceHolder" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ReadOnly">
       <MemberSignature Language="C#" Value="public bool ReadOnly { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ReadOnly" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -785,65 +259,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="TextFieldWithPlaceHolder">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextFieldTTF TextFieldWithPlaceHolder (string placeholder, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTextFieldTTF</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="placeholder" Type="System.String" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="placeholder">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>creates a  from a fontname and font size </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="TextFieldWithPlaceHolder">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextFieldTTF TextFieldWithPlaceHolder (string placeholder, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment alignment, string fontName, float fontSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig class CocosSharp.CCTextFieldTTF TextFieldWithPlaceHolder(string placeholder, valuetype CocosSharp.CCSize dimensions, valuetype CocosSharp.CCTextAlignment alignment, string fontName, float32 fontSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTextFieldTTF</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="placeholder" Type="System.String" />
-        <Parameter Name="dimensions" Type="CocosSharp.CCSize" />
-        <Parameter Name="alignment" Type="CocosSharp.CCTextAlignment" />
-        <Parameter Name="fontName" Type="System.String" />
-        <Parameter Name="fontSize" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="placeholder">To be added.</param>
-        <param name="dimensions">To be added.</param>
-        <param name="alignment">To be added.</param>
-        <param name="fontName">To be added.</param>
-        <param name="fontSize">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="TouchBegan">
       <MemberSignature Language="C#" Value="public bool TouchBegan (CocosSharp.CCTouch pTouch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TouchBegan(class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -861,9 +280,6 @@
       <MemberSignature Language="C#" Value="public void TouchCancelled (CocosSharp.CCTouch pTouch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchCancelled(class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -880,9 +296,6 @@
       <MemberSignature Language="C#" Value="public void TouchEnded (CocosSharp.CCTouch pTouch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchEnded(class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -899,9 +312,6 @@
       <MemberSignature Language="C#" Value="public void TouchMoved (CocosSharp.CCTouch pTouch);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchMoved(class CocosSharp.CCTouch pTouch) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

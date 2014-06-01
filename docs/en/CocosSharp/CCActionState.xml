@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionState extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -13,13 +12,11 @@
     <summary>Encapsulates the state of an action that is currently executing.</summary>
     <remarks>
       <para>
-	The <see cref="T:CocosSharp.CCAction"/> objects are immutable in
-	CocosSharp.  When the method <see
-	cref="M:CocosSharp.CCAction.StartAction"/> is invoked, a new
+	The <see cref="T:CocosSharp.CCAction" /> objects are immutable in
+	CocosSharp.  When the method <see cref="M:CocosSharp.CCAction.StartAction" /> is invoked, a new
 	state object is created to keep track of the state of the object
 	over time.
       </para>
-
       <para>
 
 	The CCActionState is initialized with both the immutable
@@ -28,19 +25,14 @@
 	operate.
 
       </para>
-
       <para>
 	
 	If you are creating your own CCAction, you should also
-	implement your own CCActionState and override at the <see
-	cref="M:CocosSharp.CCActionState.Update"/> method.
-	Additionally, you can override also the <see
-	cref="M:CocosSharp.CCActionState.Stop"/>, <see
-	cref="M:CocosSharp.CCActionState.Step"/> methods and the 
-	<see cref="P:CocosSharp.CCActionState.IsDone"/> property.
+	implement your own CCActionState and override at the <see cref="M:CocosSharp.CCActionState.Update" /> method.
+	Additionally, you can override also the <see cref="M:CocosSharp.CCActionState.Stop" />, <see cref="M:CocosSharp.CCActionState.Step" /> methods and the 
+	<see cref="P:CocosSharp.CCActionState.IsDone" /> property.
 
       </para>
-
     </remarks>
   </Docs>
   <Members>
@@ -48,9 +40,6 @@
       <MemberSignature Language="C#" Value="public CCActionState (CocosSharp.CCAction action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAction action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCAction" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -59,16 +48,14 @@
         <param name="action">Action that is creating this state object.</param>
         <param name="target">The node to which the action will be applied..</param>
         <summary>Constructs a new CCActionState with the given action as its recipe, and the target as the node to alter.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Action">
       <MemberSignature Language="C#" Value="public CocosSharp.CCAction Action { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAction Action" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
@@ -82,9 +69,6 @@
       <MemberSignature Language="C#" Value="public virtual bool IsDone { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -98,9 +82,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode OriginalTarget { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode OriginalTarget" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -114,9 +95,6 @@
       <MemberSignature Language="C#" Value="public virtual void Step (float dt);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Step(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -133,9 +111,6 @@
       <MemberSignature Language="C#" Value="public virtual void Stop ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Stop() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -143,33 +118,27 @@
       <Docs>
         <summary>Called when the action has completed.</summary>
         <remarks>
-	  It will set the 'target' to null.   Developers should not call "[action stop]" manually.  Instead, they should use <see cref="M:CocosSharp.CCNode.StopAction"/>
-	</remarks>
+	  It will set the 'target' to null.   Developers should not call "[action stop]" manually.  Instead, they should use <see cref="M:CocosSharp.CCNode.StopAction" /></remarks>
       </Docs>
     </Member>
     <Member MemberName="Target">
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode Target { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode Target" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>The node on which this action is operating.</summary>
         <value>This is set by the constructor.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
       <MemberSignature Language="C#" Value="public virtual void Update (float time);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Update(float32 time) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -179,7 +148,8 @@
       <Docs>
         <param name="time">A value between 0 and 1 representing the state of the action (0 is the start, 0.5 is the middle, 1 is the end).</param>
         <summary>This method is invoked once per frame.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGrid3DActionState extends CocosSharp.CCGridActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCGridActionState</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCGrid3DActionState (CocosSharp.CCGrid3DAction action, CocosSharp.CCNode target);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCGrid3DAction action, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="action" Type="CocosSharp.CCGrid3DAction" />
         <Parameter Name="target" Type="CocosSharp.CCNode" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCGridBase Grid { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGridBase Grid" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGridBase</ReturnType>
       </ReturnValue>
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F OriginalVertex (CocosSharp.CCGridSize pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F OriginalVertex(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -72,9 +62,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F OriginalVertex (int x, int y);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F OriginalVertex(int32 x, int32 y) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -94,9 +81,6 @@
       <MemberSignature Language="C#" Value="public void SetVertex (CocosSharp.CCGridSize pos, ref CocosSharp.CCVertex3F vertex);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetVertex(valuetype CocosSharp.CCGridSize pos, valuetype CocosSharp.CCVertex3F vertex) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -115,9 +99,6 @@
       <MemberSignature Language="C#" Value="public void SetVertex (int x, int y, ref CocosSharp.CCVertex3F vertex);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetVertex(int32 x, int32 y, valuetype CocosSharp.CCVertex3F vertex) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -138,9 +119,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F Vertex (CocosSharp.CCGridSize pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F Vertex(valuetype CocosSharp.CCGridSize pos) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>
@@ -158,9 +136,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCVertex3F Vertex (int x, int y);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCVertex3F Vertex(int32 x, int32 y) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCVertex3F</ReturnType>
       </ReturnValue>

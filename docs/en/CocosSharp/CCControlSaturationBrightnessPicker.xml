@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCControlSaturationBrightnessPicker extends CocosSharp.CCControl" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCControl</BaseTypeName>
@@ -18,9 +17,6 @@
       <MemberSignature Language="C#" Value="public CCControlSaturationBrightnessPicker (CocosSharp.CCNode target, CocosSharp.CCPoint pos);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode target, valuetype CocosSharp.CCPoint pos) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="target" Type="CocosSharp.CCNode" />
         <Parameter Name="pos" Type="CocosSharp.CCPoint" />
@@ -36,9 +32,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite Background { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite Background" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -52,9 +45,6 @@
       <MemberSignature Language="C#" Value="protected int boxPos;" />
       <MemberSignature Language="ILAsm" Value=".field family int32 boxPos" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -67,9 +57,6 @@
       <MemberSignature Language="C#" Value="protected int boxSize;" />
       <MemberSignature Language="ILAsm" Value=".field family int32 boxSize" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -82,9 +69,6 @@
       <MemberSignature Language="C#" Value="public float Brightness { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Brightness" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -98,9 +82,6 @@
       <MemberSignature Language="C#" Value="protected bool CheckSliderPosition (CocosSharp.CCPoint location);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance bool CheckSliderPosition(valuetype CocosSharp.CCPoint location) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -118,9 +99,6 @@
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -134,9 +112,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite Overlay { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite Overlay" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -150,9 +125,6 @@
       <MemberSignature Language="C#" Value="public float Saturation { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Saturation" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -166,9 +138,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite Shadow { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite Shadow" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -182,9 +151,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCSprite Slider { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSprite Slider" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSprite</ReturnType>
       </ReturnValue>
@@ -198,9 +164,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartPos { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartPos" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -214,9 +177,6 @@
       <MemberSignature Language="C#" Value="public virtual void UpdateDraggerWithHSV (CocosSharp.HSV hsv);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDraggerWithHSV(valuetype CocosSharp.HSV hsv) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -233,9 +193,6 @@
       <MemberSignature Language="C#" Value="protected void UpdateSliderPosition (CocosSharp.CCPoint sliderPosition);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void UpdateSliderPosition(valuetype CocosSharp.CCPoint sliderPosition) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -252,9 +209,6 @@
       <MemberSignature Language="C#" Value="public virtual void UpdateWithHSV (CocosSharp.HSV hsv);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateWithHSV(valuetype CocosSharp.HSV hsv) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

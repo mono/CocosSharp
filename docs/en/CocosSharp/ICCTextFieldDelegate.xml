@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCTextFieldDelegate" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,10 +14,6 @@
       <MemberSignature Language="C#" Value="public bool onDraw (CocosSharp.CCTextFieldTTF sender);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onDraw(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -37,10 +31,6 @@
       <MemberSignature Language="C#" Value="public bool onTextFieldAttachWithIME (CocosSharp.CCTextFieldTTF sender);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldAttachWithIME(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -58,10 +48,6 @@
       <MemberSignature Language="C#" Value="public bool onTextFieldDeleteBackward (CocosSharp.CCTextFieldTTF sender, string delText, int nLen);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDeleteBackward(class CocosSharp.CCTextFieldTTF sender, string delText, int32 nLen) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -83,10 +69,6 @@
       <MemberSignature Language="C#" Value="public bool onTextFieldDetachWithIME (CocosSharp.CCTextFieldTTF sender);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldDetachWithIME(class CocosSharp.CCTextFieldTTF sender) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -104,10 +86,6 @@
       <MemberSignature Language="C#" Value="public bool onTextFieldInsertText (CocosSharp.CCTextFieldTTF sender, string text, int nLen);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool onTextFieldInsertText(class CocosSharp.CCTextFieldTTF sender, string text, int32 nLen) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>

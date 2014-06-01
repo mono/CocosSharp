@@ -3,18 +3,11 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PlistDocument extends CocosSharp.PlistObjectBase" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.PlistObjectBase</BaseTypeName>
   </Base>
   <Interfaces />
-  <Attributes>
-    <Attribute>
-      <AttributeName>MonoTouch.Foundation.Preserve(AllMembers=true)</AttributeName>
-    </Attribute>
-  </Attributes>
   <Docs>
     <summary>To be added.</summary>
     <remarks>To be added.</remarks>
@@ -24,10 +17,6 @@
       <MemberSignature Language="C#" Value="public PlistDocument ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -38,10 +27,6 @@
       <MemberSignature Language="C#" Value="public PlistDocument (CocosSharp.PlistObjectBase root);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.PlistObjectBase root) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="root" Type="CocosSharp.PlistObjectBase" />
       </Parameters>
@@ -55,9 +40,6 @@
       <MemberSignature Language="C#" Value="public PlistDocument (System.IO.Stream data);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.Stream data) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="data" Type="System.IO.Stream" />
       </Parameters>
@@ -71,10 +53,6 @@
       <MemberSignature Language="C#" Value="public PlistDocument (string data);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string data) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="data" Type="System.String" />
       </Parameters>
@@ -88,10 +66,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.PlistArray AsArray { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistArray AsArray" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.PlistArray</ReturnType>
       </ReturnValue>
@@ -105,10 +79,6 @@
       <MemberSignature Language="C#" Value="public override byte[] AsBinary { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int8[] AsBinary" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte[]</ReturnType>
       </ReturnValue>
@@ -122,10 +92,6 @@
       <MemberSignature Language="C#" Value="public override bool AsBool { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool AsBool" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -139,10 +105,6 @@
       <MemberSignature Language="C#" Value="public override DateTime AsDate { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype System.DateTime AsDate" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.DateTime</ReturnType>
       </ReturnValue>
@@ -156,10 +118,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.PlistDictionary AsDictionary { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary AsDictionary" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.PlistDictionary</ReturnType>
       </ReturnValue>
@@ -173,10 +131,6 @@
       <MemberSignature Language="C#" Value="public override float AsFloat { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 AsFloat" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -190,10 +144,6 @@
       <MemberSignature Language="C#" Value="public override int AsInt { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 AsInt" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -207,10 +157,6 @@
       <MemberSignature Language="C#" Value="public override string AsString { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance string AsString" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -224,10 +170,6 @@
       <MemberSignature Language="C#" Value="public void LoadFromXml (string data);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromXml(string data) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -244,10 +186,6 @@
       <MemberSignature Language="C#" Value="public void LoadFromXml (System.Xml.XmlReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromXml(class System.Xml.XmlReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -264,9 +202,6 @@
       <MemberSignature Language="C#" Value="public void LoadFromXmlFile (System.IO.Stream data);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromXmlFile(class System.IO.Stream data) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -283,10 +218,6 @@
       <MemberSignature Language="C#" Value="public void LoadFromXmlFile (string path);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void LoadFromXmlFile(string path) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -303,10 +234,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.PlistObjectBase Root { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistObjectBase Root" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.PlistObjectBase</ReturnType>
       </ReturnValue>
@@ -320,10 +247,6 @@
       <MemberSignature Language="C#" Value="public override void Write (System.Xml.XmlWriter writer);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Write(class System.Xml.XmlWriter writer) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -340,10 +263,6 @@
       <MemberSignature Language="C#" Value="public void WriteToFile (string filename);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void WriteToFile(string filename) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public sequential ansi sealed beforefieldinit CCColor4F extends System.ValueType" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.ValueType</BaseTypeName>
@@ -20,9 +18,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public CCColor4F (CocosSharp.CCColor3B c);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor3B c) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="c" Type="CocosSharp.CCColor3B" />
       </Parameters>
@@ -36,9 +31,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public CCColor4F (CocosSharp.CCColor4B c);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B c) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="c" Type="CocosSharp.CCColor4B" />
       </Parameters>
@@ -52,10 +44,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public CCColor4F (float inr, float ing, float inb, float ina);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 inr, float32 ing, float32 inb, float32 ina) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="inr" Type="System.Single" />
         <Parameter Name="ing" Type="System.Single" />
@@ -72,27 +60,9 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="A">
-      <MemberSignature Language="C#" Value="public float A;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 A" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="A">
       <MemberSignature Language="C#" Value="public float A { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 A" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -103,27 +73,9 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="B">
-      <MemberSignature Language="C#" Value="public float B;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 B" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="B">
       <MemberSignature Language="C#" Value="public float B { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 B" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -137,9 +89,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public bool Equals (CocosSharp.CCColor4F other);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Equals(valuetype CocosSharp.CCColor4F other) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -157,9 +106,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public override bool Equals (object obj);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool Equals(object obj) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -174,27 +120,9 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="G">
-      <MemberSignature Language="C#" Value="public float G;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 G" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="G">
       <MemberSignature Language="C#" Value="public float G { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 G" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -208,9 +136,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public override int GetHashCode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance int32 GetHashCode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -225,9 +150,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public static bool op_Equality (CocosSharp.CCColor4F a, CocosSharp.CCColor4F b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Equality(valuetype CocosSharp.CCColor4F a, valuetype CocosSharp.CCColor4F b) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -243,33 +165,10 @@ v3.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="op_Implicit">
-      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (CocosSharp.CCColor4F point);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype CocosSharp.CCColor4F point) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="point" Type="CocosSharp.CCColor4F" />
-      </Parameters>
-      <Docs>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="op_Inequality">
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCColor4F a, CocosSharp.CCColor4F b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCColor4F a, valuetype CocosSharp.CCColor4F b) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -289,10 +188,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4F Parse (string s);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCColor4F Parse(string s) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor4F</ReturnType>
       </ReturnValue>
@@ -307,27 +202,9 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName="R">
-      <MemberSignature Language="C#" Value="public float R;" />
-      <MemberSignature Language="ILAsm" Value=".field public float32 R" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="R">
       <MemberSignature Language="C#" Value="public float R { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 R" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -341,10 +218,6 @@ v3.0 </summary>
       <MemberSignature Language="C#" Value="public override string ToString ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

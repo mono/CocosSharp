@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCConfiguration extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -21,10 +19,6 @@
       <MemberSignature Language="C#" Value="public bool CheckForGLExtension (string searchName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool CheckForGLExtension(string searchName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -38,30 +32,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="getGlesVersion">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCGlesVersion getGlesVersion ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCGlesVersion getGlesVersion() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="GlesVersion">
       <MemberSignature Language="C#" Value="public CocosSharp.CCGlesVersion GlesVersion { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCGlesVersion GlesVersion" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCGlesVersion</ReturnType>
       </ReturnValue>
@@ -71,30 +45,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Inited">
       <MemberSignature Language="C#" Value="protected bool Inited { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Inited" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -108,10 +62,6 @@
       <MemberSignature Language="C#" Value="public bool IsSupportsBGRA8888 { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSupportsBGRA8888" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -125,10 +75,6 @@
       <MemberSignature Language="C#" Value="public bool IsSupportsDiscardFramebuffer { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSupportsDiscardFramebuffer" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -142,10 +88,6 @@
       <MemberSignature Language="C#" Value="public bool IsSupportsNPOT { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSupportsNPOT" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -159,10 +101,6 @@
       <MemberSignature Language="C#" Value="public bool IsSupportsPVRTC { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsSupportsPVRTC" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -172,164 +110,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_bInited">
-      <MemberSignature Language="C#" Value="protected bool m_bInited;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bInited" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSupportsBGRA8888">
-      <MemberSignature Language="C#" Value="protected bool m_bSupportsBGRA8888;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSupportsBGRA8888" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSupportsDiscardFramebuffer">
-      <MemberSignature Language="C#" Value="protected bool m_bSupportsDiscardFramebuffer;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSupportsDiscardFramebuffer" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSupportsNPOT">
-      <MemberSignature Language="C#" Value="protected bool m_bSupportsNPOT;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSupportsNPOT" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_bSupportsPVRTC">
-      <MemberSignature Language="C#" Value="protected bool m_bSupportsPVRTC;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bSupportsPVRTC" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nMaxModelviewStackDepth">
-      <MemberSignature Language="C#" Value="protected int m_nMaxModelviewStackDepth;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nMaxModelviewStackDepth" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nMaxSamplesAllowed">
-      <MemberSignature Language="C#" Value="protected int m_nMaxSamplesAllowed;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nMaxSamplesAllowed" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_nMaxTextureSize">
-      <MemberSignature Language="C#" Value="protected int m_nMaxTextureSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family int32 m_nMaxTextureSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pGlExtensions">
-      <MemberSignature Language="C#" Value="protected string m_pGlExtensions;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_pGlExtensions" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_uOSVersion">
-      <MemberSignature Language="C#" Value="protected uint m_uOSVersion;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uOSVersion" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="MaxModelviewStackDepth">
       <MemberSignature Language="C#" Value="public int MaxModelviewStackDepth { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 MaxModelviewStackDepth" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -343,10 +127,6 @@
       <MemberSignature Language="C#" Value="public int MaxTextureSize { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 MaxTextureSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -360,10 +140,6 @@
       <MemberSignature Language="C#" Value="public uint OSVersion { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 OSVersion" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -377,10 +153,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCConfiguration SharedConfiguration { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCConfiguration SharedConfiguration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCConfiguration</ReturnType>
       </ReturnValue>

@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCKeys extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="A" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys A = int32(65)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="Add" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Add = int32(107)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="Apps" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Apps = int32(93)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="Attn" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Attn = int32(246)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -73,9 +60,6 @@
       <MemberSignature Language="C#" Value="B" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys B = int32(66)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -87,9 +71,6 @@
       <MemberSignature Language="C#" Value="Back" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Back = int32(8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -101,9 +82,6 @@
       <MemberSignature Language="C#" Value="BrowserBack" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserBack = int32(166)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -115,9 +93,6 @@
       <MemberSignature Language="C#" Value="BrowserFavorites" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserFavorites = int32(171)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -129,9 +104,6 @@
       <MemberSignature Language="C#" Value="BrowserForward" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserForward = int32(167)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -143,9 +115,6 @@
       <MemberSignature Language="C#" Value="BrowserHome" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserHome = int32(172)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -157,9 +126,6 @@
       <MemberSignature Language="C#" Value="BrowserRefresh" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserRefresh = int32(168)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -171,9 +137,6 @@
       <MemberSignature Language="C#" Value="BrowserSearch" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserSearch = int32(170)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -185,9 +148,6 @@
       <MemberSignature Language="C#" Value="BrowserStop" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys BrowserStop = int32(169)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -199,9 +159,6 @@
       <MemberSignature Language="C#" Value="C" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys C = int32(67)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -213,9 +170,6 @@
       <MemberSignature Language="C#" Value="CapsLock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys CapsLock = int32(20)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -227,9 +181,6 @@
       <MemberSignature Language="C#" Value="ChatPadGreen" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys ChatPadGreen = int32(202)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -241,9 +192,6 @@
       <MemberSignature Language="C#" Value="ChatPadOrange" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys ChatPadOrange = int32(203)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -255,9 +203,6 @@
       <MemberSignature Language="C#" Value="Crsel" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Crsel = int32(247)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -269,9 +214,6 @@
       <MemberSignature Language="C#" Value="D" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D = int32(68)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -283,9 +225,6 @@
       <MemberSignature Language="C#" Value="D0" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D0 = int32(48)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -297,9 +236,6 @@
       <MemberSignature Language="C#" Value="D1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D1 = int32(49)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -311,9 +247,6 @@
       <MemberSignature Language="C#" Value="D2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D2 = int32(50)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -325,9 +258,6 @@
       <MemberSignature Language="C#" Value="D3" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D3 = int32(51)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -339,9 +269,6 @@
       <MemberSignature Language="C#" Value="D4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D4 = int32(52)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -353,9 +280,6 @@
       <MemberSignature Language="C#" Value="D5" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D5 = int32(53)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -367,9 +291,6 @@
       <MemberSignature Language="C#" Value="D6" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D6 = int32(54)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -381,9 +302,6 @@
       <MemberSignature Language="C#" Value="D7" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D7 = int32(55)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -395,9 +313,6 @@
       <MemberSignature Language="C#" Value="D8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D8 = int32(56)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -409,9 +324,6 @@
       <MemberSignature Language="C#" Value="D9" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys D9 = int32(57)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -423,9 +335,6 @@
       <MemberSignature Language="C#" Value="Decimal" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Decimal = int32(110)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -437,9 +346,6 @@
       <MemberSignature Language="C#" Value="Delete" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Delete = int32(46)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -451,9 +357,6 @@
       <MemberSignature Language="C#" Value="Divide" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Divide = int32(111)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -465,9 +368,6 @@
       <MemberSignature Language="C#" Value="Down" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Down = int32(40)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -479,9 +379,6 @@
       <MemberSignature Language="C#" Value="E" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys E = int32(69)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -493,9 +390,6 @@
       <MemberSignature Language="C#" Value="End" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys End = int32(35)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -507,9 +401,6 @@
       <MemberSignature Language="C#" Value="Enter" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Enter = int32(13)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -521,9 +412,6 @@
       <MemberSignature Language="C#" Value="EraseEof" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys EraseEof = int32(249)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -535,9 +423,6 @@
       <MemberSignature Language="C#" Value="Escape" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Escape = int32(27)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -549,9 +434,6 @@
       <MemberSignature Language="C#" Value="Execute" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Execute = int32(43)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -563,9 +445,6 @@
       <MemberSignature Language="C#" Value="Exsel" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Exsel = int32(248)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -577,9 +456,6 @@
       <MemberSignature Language="C#" Value="F" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F = int32(70)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -591,9 +467,6 @@
       <MemberSignature Language="C#" Value="F1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F1 = int32(112)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -605,9 +478,6 @@
       <MemberSignature Language="C#" Value="F10" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F10 = int32(121)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -619,9 +489,6 @@
       <MemberSignature Language="C#" Value="F11" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F11 = int32(122)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -633,9 +500,6 @@
       <MemberSignature Language="C#" Value="F12" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F12 = int32(123)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -647,9 +511,6 @@
       <MemberSignature Language="C#" Value="F13" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F13 = int32(124)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -661,9 +522,6 @@
       <MemberSignature Language="C#" Value="F14" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F14 = int32(125)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -675,9 +533,6 @@
       <MemberSignature Language="C#" Value="F15" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F15 = int32(126)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -689,9 +544,6 @@
       <MemberSignature Language="C#" Value="F16" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F16 = int32(127)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -703,9 +555,6 @@
       <MemberSignature Language="C#" Value="F17" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F17 = int32(128)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -717,9 +566,6 @@
       <MemberSignature Language="C#" Value="F18" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F18 = int32(129)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -731,9 +577,6 @@
       <MemberSignature Language="C#" Value="F19" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F19 = int32(130)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -745,9 +588,6 @@
       <MemberSignature Language="C#" Value="F2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F2 = int32(113)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -759,9 +599,6 @@
       <MemberSignature Language="C#" Value="F20" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F20 = int32(131)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -773,9 +610,6 @@
       <MemberSignature Language="C#" Value="F21" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F21 = int32(132)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -787,9 +621,6 @@
       <MemberSignature Language="C#" Value="F22" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F22 = int32(133)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -801,9 +632,6 @@
       <MemberSignature Language="C#" Value="F23" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F23 = int32(134)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -815,9 +643,6 @@
       <MemberSignature Language="C#" Value="F24" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F24 = int32(135)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -829,9 +654,6 @@
       <MemberSignature Language="C#" Value="F3" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F3 = int32(114)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -843,9 +665,6 @@
       <MemberSignature Language="C#" Value="F4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F4 = int32(115)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -857,9 +676,6 @@
       <MemberSignature Language="C#" Value="F5" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F5 = int32(116)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -871,9 +687,6 @@
       <MemberSignature Language="C#" Value="F6" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F6 = int32(117)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -885,9 +698,6 @@
       <MemberSignature Language="C#" Value="F7" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F7 = int32(118)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -899,9 +709,6 @@
       <MemberSignature Language="C#" Value="F8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F8 = int32(119)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -913,9 +720,6 @@
       <MemberSignature Language="C#" Value="F9" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys F9 = int32(120)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -927,9 +731,6 @@
       <MemberSignature Language="C#" Value="G" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys G = int32(71)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -941,9 +742,6 @@
       <MemberSignature Language="C#" Value="H" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys H = int32(72)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -955,9 +753,6 @@
       <MemberSignature Language="C#" Value="Help" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Help = int32(47)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -969,9 +764,6 @@
       <MemberSignature Language="C#" Value="Home" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Home = int32(36)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -983,9 +775,6 @@
       <MemberSignature Language="C#" Value="I" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys I = int32(73)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -997,9 +786,6 @@
       <MemberSignature Language="C#" Value="ImeConvert" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys ImeConvert = int32(28)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1011,9 +797,6 @@
       <MemberSignature Language="C#" Value="ImeNoConvert" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys ImeNoConvert = int32(29)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1025,9 +808,6 @@
       <MemberSignature Language="C#" Value="Insert" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Insert = int32(45)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1039,9 +819,6 @@
       <MemberSignature Language="C#" Value="J" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys J = int32(74)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1053,9 +830,6 @@
       <MemberSignature Language="C#" Value="K" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys K = int32(75)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1067,9 +841,6 @@
       <MemberSignature Language="C#" Value="Kana" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Kana = int32(21)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1081,9 +852,6 @@
       <MemberSignature Language="C#" Value="Kanji" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Kanji = int32(25)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1095,9 +863,6 @@
       <MemberSignature Language="C#" Value="L" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys L = int32(76)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1109,9 +874,6 @@
       <MemberSignature Language="C#" Value="LaunchApplication1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LaunchApplication1 = int32(182)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1123,9 +885,6 @@
       <MemberSignature Language="C#" Value="LaunchApplication2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LaunchApplication2 = int32(183)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1137,9 +896,6 @@
       <MemberSignature Language="C#" Value="LaunchMail" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LaunchMail = int32(180)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1151,9 +907,6 @@
       <MemberSignature Language="C#" Value="Left" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Left = int32(37)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1165,9 +918,6 @@
       <MemberSignature Language="C#" Value="LeftAlt" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LeftAlt = int32(164)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1179,9 +929,6 @@
       <MemberSignature Language="C#" Value="LeftControl" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LeftControl = int32(162)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1193,9 +940,6 @@
       <MemberSignature Language="C#" Value="LeftShift" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LeftShift = int32(160)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1207,9 +951,6 @@
       <MemberSignature Language="C#" Value="LeftWindows" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys LeftWindows = int32(91)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1221,9 +962,6 @@
       <MemberSignature Language="C#" Value="M" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys M = int32(77)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1235,9 +973,6 @@
       <MemberSignature Language="C#" Value="MediaNextTrack" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys MediaNextTrack = int32(176)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1249,9 +984,6 @@
       <MemberSignature Language="C#" Value="MediaPlayPause" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys MediaPlayPause = int32(179)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1263,9 +995,6 @@
       <MemberSignature Language="C#" Value="MediaPreviousTrack" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys MediaPreviousTrack = int32(177)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1277,9 +1006,6 @@
       <MemberSignature Language="C#" Value="MediaStop" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys MediaStop = int32(178)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1291,9 +1017,6 @@
       <MemberSignature Language="C#" Value="Multiply" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Multiply = int32(106)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1305,9 +1028,6 @@
       <MemberSignature Language="C#" Value="N" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys N = int32(78)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1319,9 +1039,6 @@
       <MemberSignature Language="C#" Value="None" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys None = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1333,9 +1050,6 @@
       <MemberSignature Language="C#" Value="NumLock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumLock = int32(144)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1347,9 +1061,6 @@
       <MemberSignature Language="C#" Value="NumPad0" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad0 = int32(96)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1361,9 +1072,6 @@
       <MemberSignature Language="C#" Value="NumPad1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad1 = int32(97)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1375,9 +1083,6 @@
       <MemberSignature Language="C#" Value="NumPad2" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad2 = int32(98)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1389,9 +1094,6 @@
       <MemberSignature Language="C#" Value="NumPad3" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad3 = int32(99)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1403,9 +1105,6 @@
       <MemberSignature Language="C#" Value="NumPad4" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad4 = int32(100)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1417,9 +1116,6 @@
       <MemberSignature Language="C#" Value="NumPad5" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad5 = int32(101)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1431,9 +1127,6 @@
       <MemberSignature Language="C#" Value="NumPad6" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad6 = int32(102)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1445,9 +1138,6 @@
       <MemberSignature Language="C#" Value="NumPad7" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad7 = int32(103)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1459,9 +1149,6 @@
       <MemberSignature Language="C#" Value="NumPad8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad8 = int32(104)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1473,9 +1160,6 @@
       <MemberSignature Language="C#" Value="NumPad9" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys NumPad9 = int32(105)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1487,9 +1171,6 @@
       <MemberSignature Language="C#" Value="O" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys O = int32(79)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1501,9 +1182,6 @@
       <MemberSignature Language="C#" Value="Oem8" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Oem8 = int32(223)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1515,9 +1193,6 @@
       <MemberSignature Language="C#" Value="OemAuto" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemAuto = int32(243)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1529,9 +1204,6 @@
       <MemberSignature Language="C#" Value="OemBackslash" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemBackslash = int32(226)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1543,9 +1215,6 @@
       <MemberSignature Language="C#" Value="OemClear" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemClear = int32(254)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1557,9 +1226,6 @@
       <MemberSignature Language="C#" Value="OemCloseBrackets" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemCloseBrackets = int32(221)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1571,9 +1237,6 @@
       <MemberSignature Language="C#" Value="OemComma" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemComma = int32(188)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1585,9 +1248,6 @@
       <MemberSignature Language="C#" Value="OemCopy" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemCopy = int32(242)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1599,9 +1259,6 @@
       <MemberSignature Language="C#" Value="OemEnlW" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemEnlW = int32(244)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1613,9 +1270,6 @@
       <MemberSignature Language="C#" Value="OemMinus" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemMinus = int32(189)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1627,9 +1281,6 @@
       <MemberSignature Language="C#" Value="OemOpenBrackets" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemOpenBrackets = int32(219)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1641,9 +1292,6 @@
       <MemberSignature Language="C#" Value="OemPeriod" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemPeriod = int32(190)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1655,9 +1303,6 @@
       <MemberSignature Language="C#" Value="OemPipe" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemPipe = int32(220)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1669,9 +1314,6 @@
       <MemberSignature Language="C#" Value="OemPlus" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemPlus = int32(187)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1683,9 +1325,6 @@
       <MemberSignature Language="C#" Value="OemQuestion" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemQuestion = int32(191)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1697,9 +1336,6 @@
       <MemberSignature Language="C#" Value="OemQuotes" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemQuotes = int32(222)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1711,9 +1347,6 @@
       <MemberSignature Language="C#" Value="OemSemicolon" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemSemicolon = int32(186)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1725,9 +1358,6 @@
       <MemberSignature Language="C#" Value="OemTilde" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys OemTilde = int32(192)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1739,9 +1369,6 @@
       <MemberSignature Language="C#" Value="P" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys P = int32(80)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1753,9 +1380,6 @@
       <MemberSignature Language="C#" Value="Pa1" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Pa1 = int32(253)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1767,9 +1391,6 @@
       <MemberSignature Language="C#" Value="PageDown" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys PageDown = int32(34)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1781,9 +1402,6 @@
       <MemberSignature Language="C#" Value="PageUp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys PageUp = int32(33)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1795,9 +1413,6 @@
       <MemberSignature Language="C#" Value="Pause" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Pause = int32(19)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1809,9 +1424,6 @@
       <MemberSignature Language="C#" Value="Play" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Play = int32(250)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1823,9 +1435,6 @@
       <MemberSignature Language="C#" Value="Print" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Print = int32(42)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1837,9 +1446,6 @@
       <MemberSignature Language="C#" Value="PrintScreen" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys PrintScreen = int32(44)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1851,9 +1457,6 @@
       <MemberSignature Language="C#" Value="ProcessKey" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys ProcessKey = int32(229)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1865,9 +1468,6 @@
       <MemberSignature Language="C#" Value="Q" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Q = int32(81)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1879,9 +1479,6 @@
       <MemberSignature Language="C#" Value="R" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys R = int32(82)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1893,9 +1490,6 @@
       <MemberSignature Language="C#" Value="Right" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Right = int32(39)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1907,9 +1501,6 @@
       <MemberSignature Language="C#" Value="RightAlt" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys RightAlt = int32(165)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1921,9 +1512,6 @@
       <MemberSignature Language="C#" Value="RightControl" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys RightControl = int32(163)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1935,9 +1523,6 @@
       <MemberSignature Language="C#" Value="RightShift" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys RightShift = int32(161)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1949,9 +1534,6 @@
       <MemberSignature Language="C#" Value="RightWindows" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys RightWindows = int32(92)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1963,9 +1545,6 @@
       <MemberSignature Language="C#" Value="S" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys S = int32(83)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1977,9 +1556,6 @@
       <MemberSignature Language="C#" Value="Scroll" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Scroll = int32(145)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -1991,9 +1567,6 @@
       <MemberSignature Language="C#" Value="Select" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Select = int32(41)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2005,9 +1578,6 @@
       <MemberSignature Language="C#" Value="SelectMedia" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys SelectMedia = int32(181)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2019,9 +1589,6 @@
       <MemberSignature Language="C#" Value="Separator" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Separator = int32(108)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2033,9 +1600,6 @@
       <MemberSignature Language="C#" Value="Sleep" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Sleep = int32(95)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2047,9 +1611,6 @@
       <MemberSignature Language="C#" Value="Space" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Space = int32(32)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2061,9 +1622,6 @@
       <MemberSignature Language="C#" Value="Subtract" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Subtract = int32(109)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2075,9 +1633,6 @@
       <MemberSignature Language="C#" Value="T" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys T = int32(84)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2089,9 +1644,6 @@
       <MemberSignature Language="C#" Value="Tab" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Tab = int32(9)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2103,9 +1655,6 @@
       <MemberSignature Language="C#" Value="U" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys U = int32(85)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2117,9 +1666,6 @@
       <MemberSignature Language="C#" Value="Up" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Up = int32(38)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2131,9 +1677,6 @@
       <MemberSignature Language="C#" Value="V" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys V = int32(86)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2145,9 +1688,6 @@
       <MemberSignature Language="C#" Value="VolumeDown" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys VolumeDown = int32(174)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2159,9 +1699,6 @@
       <MemberSignature Language="C#" Value="VolumeMute" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys VolumeMute = int32(173)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2173,9 +1710,6 @@
       <MemberSignature Language="C#" Value="VolumeUp" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys VolumeUp = int32(175)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2187,9 +1721,6 @@
       <MemberSignature Language="C#" Value="W" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys W = int32(87)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2201,9 +1732,6 @@
       <MemberSignature Language="C#" Value="X" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys X = int32(88)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2215,9 +1743,6 @@
       <MemberSignature Language="C#" Value="Y" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Y = int32(89)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2229,9 +1754,6 @@
       <MemberSignature Language="C#" Value="Z" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Z = int32(90)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>
@@ -2243,9 +1765,6 @@
       <MemberSignature Language="C#" Value="Zoom" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeys Zoom = int32(251)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeys</ReturnType>
       </ReturnValue>

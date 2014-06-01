@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNodeLoader extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -19,10 +17,6 @@
       <MemberSignature Language="C#" Value="public CCNodeLoader ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -33,9 +27,6 @@
       <MemberSignature Language="C#" Value="protected System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCBValue&gt; _customProperties;" />
       <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCBValue&gt; _customProperties" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCBValue&gt;</ReturnType>
       </ReturnValue>
@@ -48,10 +39,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode CreateCCNode ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode CreateCCNode() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -66,9 +53,6 @@
       <MemberSignature Language="C#" Value="public virtual System.Collections.Generic.Dictionary&lt;string,CocosSharp.CCBValue&gt; CustomProperties { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.Dictionary`2&lt;string, class CocosSharp.CCBValue&gt; CustomProperties" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.Dictionary&lt;System.String,CocosSharp.CCBValue&gt;</ReturnType>
       </ReturnValue>
@@ -82,10 +66,6 @@
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCNode LoadCCNode (CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCNode LoadCCNode(class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -105,10 +85,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeAnimation (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCAnimation animation, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeAnimation(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCAnimation animation, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -133,10 +109,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlendFunc (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCBlendFunc blendFunc, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlendFunc(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCBlendFunc blendFunc, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -161,10 +133,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.BlockData pBlockData, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.BlockData pBlockData, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -189,10 +157,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeBlockCcControl (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.BlockCCControlData blockControlData, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeBlockCcControl(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.BlockCCControlData blockControlData, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -217,10 +181,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeByte (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, byte pByte, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeByte(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, unsigned int8 pByte, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -245,10 +205,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCCBFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCNode fileNode, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCCBFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCNode fileNode, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -273,10 +229,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeCheck (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, bool pCheck, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeCheck(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, bool pCheck, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -301,10 +253,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor3 (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCColor3B color, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor3(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCColor3B color, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -329,10 +277,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeColor4FVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCColor4F[] colorVar, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeColor4FVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCColor4F[] colorVar, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -357,10 +301,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeDegrees (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float pDegrees, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeDegrees(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 pDegrees, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -385,10 +325,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFlip (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, bool[] pFlip, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFlip(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, bool[] pFlip, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -413,10 +349,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloat (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float pFloat, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloat(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 pFloat, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -441,10 +373,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatScale (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float floatScale, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatScale(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32 floatScale, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -469,10 +397,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float[] pFoatVar, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32[] pFoatVar, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -497,9 +421,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFloatXY (CocosSharp.CCNode pNode, CocosSharp.CCNode pParent, string pPropertyName, float[] pFoatVar, CocosSharp.CCBReader ccbReader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFloatXY(class CocosSharp.CCNode pNode, class CocosSharp.CCNode pParent, string pPropertyName, float32[] pFoatVar, class CocosSharp.CCBReader ccbReader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -524,10 +445,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFntFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pFntFile, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFntFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pFntFile, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -552,10 +469,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeFontTTF (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string fontTTF, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeFontTTF(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string fontTTF, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -580,10 +493,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeInteger (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, int pInteger, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeInteger(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, int32 pInteger, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -608,10 +517,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeIntegerLabeled (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, int pIntegerLabeled, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeIntegerLabeled(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, int32 pIntegerLabeled, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -636,10 +541,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePoint (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint point, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePoint(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint point, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -664,10 +565,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePointLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint pPointLock, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePointLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint pPointLock, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -692,10 +589,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypePosition (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCPoint pPosition, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypePosition(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCPoint pPosition, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -720,10 +613,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeScaleLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, float[] pScaleLock, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeScaleLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, float32[] pScaleLock, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -748,10 +637,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSize (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCSize pSize, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSize(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, valuetype CocosSharp.CCSize pSize, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -776,10 +661,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeSpriteFrame (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCSpriteFrame spriteFrame, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeSpriteFrame(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCSpriteFrame spriteFrame, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -804,10 +685,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeString (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pString, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeString(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pString, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -832,10 +709,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeText (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, string pText, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeText(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, string pText, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -860,10 +733,6 @@
       <MemberSignature Language="C#" Value="protected virtual void OnHandlePropTypeTexture (CocosSharp.CCNode node, CocosSharp.CCNode parent, string propertyName, CocosSharp.CCTexture2D texture, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void OnHandlePropTypeTexture(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, string propertyName, class CocosSharp.CCTexture2D texture, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -888,10 +757,6 @@
       <MemberSignature Language="C#" Value="public virtual void ParseProperties (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ParseProperties(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -912,10 +777,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCAnimation ParsePropTypeAnimation (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCAnimation ParsePropTypeAnimation(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
@@ -937,10 +798,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCBlendFunc ParsePropTypeBlendFunc (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCBlendFunc ParsePropTypeBlendFunc(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBlendFunc</ReturnType>
       </ReturnValue>
@@ -962,10 +819,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.BlockData ParsePropTypeBlock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.BlockData ParsePropTypeBlock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.BlockData</ReturnType>
       </ReturnValue>
@@ -987,10 +840,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.BlockCCControlData ParsePropTypeBlockCcControl (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.BlockCCControlData ParsePropTypeBlockCcControl(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.BlockCCControlData</ReturnType>
       </ReturnValue>
@@ -1012,10 +861,6 @@
       <MemberSignature Language="C#" Value="protected virtual byte ParsePropTypeByte (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance unsigned int8 ParsePropTypeByte(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
@@ -1039,10 +884,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCNode ParsePropTypeCcbFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader pCCBReader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCNode ParsePropTypeCcbFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader pCCBReader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
@@ -1064,10 +905,6 @@
       <MemberSignature Language="C#" Value="protected virtual bool ParsePropTypeCheck (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool ParsePropTypeCheck(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -1091,10 +928,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCColor3B ParsePropTypeColor3 (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCColor3B ParsePropTypeColor3(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor3B</ReturnType>
       </ReturnValue>
@@ -1118,10 +951,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCColor4F[] ParsePropTypeColor4FVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCColor4F[] ParsePropTypeColor4FVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCColor4F[]</ReturnType>
       </ReturnValue>
@@ -1143,10 +972,6 @@
       <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeDegrees (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeDegrees(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -1170,10 +995,6 @@
       <MemberSignature Language="C#" Value="protected virtual bool[] ParsePropTypeFlip (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance bool[] ParsePropTypeFlip(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean[]</ReturnType>
       </ReturnValue>
@@ -1195,10 +1016,6 @@
       <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloat (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloat(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -1220,10 +1037,6 @@
       <MemberSignature Language="C#" Value="protected virtual float ParsePropTypeFloatScale (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32 ParsePropTypeFloatScale(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -1245,10 +1058,6 @@
       <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeFloatVar (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeFloatVar(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
@@ -1270,9 +1079,6 @@
       <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeFloatXY (CocosSharp.CCNode pNode, CocosSharp.CCNode pParent, CocosSharp.CCBReader ccbReader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeFloatXY(class CocosSharp.CCNode pNode, class CocosSharp.CCNode pParent, class CocosSharp.CCBReader ccbReader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
@@ -1294,10 +1100,6 @@
       <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFntFile (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFntFile(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1319,10 +1121,6 @@
       <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeFontTTF (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeFontTTF(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1344,10 +1142,6 @@
       <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeInteger (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeInteger(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1369,10 +1163,6 @@
       <MemberSignature Language="C#" Value="protected virtual int ParsePropTypeIntegerLabeled (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance int32 ParsePropTypeIntegerLabeled(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -1394,10 +1184,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePoint (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePoint(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -1419,10 +1205,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePointLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePointLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -1444,10 +1226,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCPoint ParsePropTypePosition (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCPoint ParsePropTypePosition(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
@@ -1471,10 +1249,6 @@
       <MemberSignature Language="C#" Value="protected virtual float[] ParsePropTypeScaleLock (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance float32[] ParsePropTypeScaleLock(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single[]</ReturnType>
       </ReturnValue>
@@ -1498,10 +1272,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCSize ParsePropTypeSize (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance valuetype CocosSharp.CCSize ParsePropTypeSize(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
@@ -1523,10 +1293,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCSpriteFrame ParsePropTypeSpriteFrame (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader, string propertyName);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCSpriteFrame ParsePropTypeSpriteFrame(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader, string propertyName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSpriteFrame</ReturnType>
       </ReturnValue>
@@ -1550,10 +1316,6 @@
       <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeString (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeString(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1575,10 +1337,6 @@
       <MemberSignature Language="C#" Value="protected virtual string ParsePropTypeText (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance string ParsePropTypeText(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1600,10 +1358,6 @@
       <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCTexture2D ParsePropTypeTexture (CocosSharp.CCNode node, CocosSharp.CCNode parent, CocosSharp.CCBReader reader);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance class CocosSharp.CCTexture2D ParsePropTypeTexture(class CocosSharp.CCNode node, class CocosSharp.CCNode parent, class CocosSharp.CCBReader reader) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -1625,10 +1379,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_ANCHORPOINT;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ANCHORPOINT" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1641,10 +1391,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_CONTENTSIZE;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_CONTENTSIZE" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1657,10 +1403,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_IGNOREANCHORPOINTFORPOSITION;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_IGNOREANCHORPOINTFORPOSITION" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1673,10 +1415,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_POSITION;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_POSITION" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1689,10 +1427,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_ROTATION;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ROTATION" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1705,9 +1439,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_ROTATIONX;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ROTATIONX" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1720,9 +1451,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_ROTATIONY;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_ROTATIONY" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1735,10 +1463,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_SCALE;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_SCALE" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1751,9 +1475,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_SKEW;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_SKEW" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1766,10 +1487,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_TAG;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_TAG" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -1782,10 +1499,6 @@
       <MemberSignature Language="C#" Value="protected const string PROPERTY_VISIBLE;" />
       <MemberSignature Language="ILAsm" Value=".field family static literal string PROPERTY_VISIBLE" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>

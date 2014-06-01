@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCParticleSystemQuad extends CocosSharp.CCParticleSystem" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCParticleSystem</BaseTypeName>
@@ -43,26 +41,9 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSystemQuad ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters />
-      <Docs>
-        <summary>creates an initializes a ParticleSystemQuad from a plist file.
- This plist files can be created manually or with Particle Designer: </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCParticleSystemQuad (CocosSharp.CCParticleSystemConfig config);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCParticleSystemConfig config) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="config" Type="CocosSharp.CCParticleSystemConfig" />
       </Parameters>
@@ -73,44 +54,9 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSystemQuad (int numberOfParticles);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 numberOfParticles) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="numberOfParticles" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="numberOfParticles">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSystemQuad (string plistFile);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string plistFile) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="plistFile" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="plistFile">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCParticleSystemQuad (int numberOfParticles, CocosSharp.CCEmitterMode emitterMode = CocosSharp.CCEmitterMode.Gravity);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 numberOfParticles, valuetype CocosSharp.CCEmitterMode emitterMode) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="numberOfParticles" Type="System.Int32" />
         <Parameter Name="emitterMode" Type="CocosSharp.CCEmitterMode" />
@@ -126,9 +72,6 @@
       <MemberSignature Language="C#" Value="public CCParticleSystemQuad (string plistFile, string directoryName = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string plistFile, string directoryName) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="plistFile" Type="System.String" />
         <Parameter Name="directoryName" Type="System.String" />
@@ -144,10 +87,6 @@
       <MemberSignature Language="C#" Value="public override CocosSharp.CCParticleBatchNode BatchNode { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCParticleBatchNode BatchNode" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCParticleBatchNode</ReturnType>
       </ReturnValue>
@@ -161,10 +100,6 @@
       <MemberSignature Language="C#" Value="public CocosSharp.CCParticleSystemQuad Clone ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCParticleSystemQuad Clone() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCParticleSystemQuad</ReturnType>
       </ReturnValue>
@@ -179,10 +114,6 @@
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -211,96 +142,10 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitWithTotalParticles">
-      <MemberSignature Language="C#" Value="public override bool InitWithTotalParticles (int numberOfParticles);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance bool InitWithTotalParticles(int32 numberOfParticles) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="numberOfParticles" Type="System.Int32" />
-      </Parameters>
-      <Docs>
-        <param name="numberOfParticles">To be added.</param>
-        <summary>
-          <para>Initializes a system with a fixed number of particles. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PostStep">
-      <MemberSignature Language="C#" Value="protected override void PostStep ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void PostStep() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>
-          <para>should be overridden by subclasses </para>
-        </summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetDisplayFrame">
-      <MemberSignature Language="C#" Value="public void SetDisplayFrame (CocosSharp.CCSpriteFrame spriteFrame);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDisplayFrame(class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
-      </Parameters>
-      <Docs>
-        <param name="spriteFrame">To be added.</param>
-        <summary>Sets a new SpriteFrame as particle.
- WARNING: this method is experimental. Use setTexture:withRect instead. v0.99.4 </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SetTextureWithRect">
-      <MemberSignature Language="C#" Value="public void SetTextureWithRect (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTextureWithRect(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rect) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="texture">To be added.</param>
-        <param name="rect">To be added.</param>
-        <summary>Sets a new texture with a rect. The rect is in Points.
-v0.99.4 </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Texture">
       <MemberSignature Language="C#" Value="public override CocosSharp.CCTexture2D Texture { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Texture" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTexture2D</ReturnType>
       </ReturnValue>
@@ -314,9 +159,6 @@ v0.99.4 </summary>
       <MemberSignature Language="C#" Value="public CocosSharp.CCRect TextureRect { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect TextureRect" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
@@ -330,10 +172,6 @@ v0.99.4 </summary>
       <MemberSignature Language="C#" Value="public override int TotalParticles { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 TotalParticles" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -347,25 +185,6 @@ v0.99.4 </summary>
       <MemberSignature Language="C#" Value="public override void UpdateQuads ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateQuads() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateQuadsWithParticles">
-      <MemberSignature Language="C#" Value="public override void UpdateQuadsWithParticles ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateQuadsWithParticles() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>

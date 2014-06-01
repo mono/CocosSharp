@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public interface auto ansi abstract ICCBSelectorResolver" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>
@@ -16,9 +14,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;CocosSharp.CCNode&gt; OnResolveCCBCCCallFuncSelector (object pTarget, string pSelectorName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`1&lt;class CocosSharp.CCNode&gt; OnResolveCCBCCCallFuncSelector(object pTarget, string pSelectorName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;CocosSharp.CCNode&gt;</ReturnType>
       </ReturnValue>
@@ -38,10 +33,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;object,CocosSharp.CCControlEvent&gt; OnResolveCCBCCControlSelector (object target, string pSelectorName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`2&lt;object, valuetype CocosSharp.CCControlEvent&gt; OnResolveCCBCCControlSelector(object target, string pSelectorName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Object,CocosSharp.CCControlEvent&gt;</ReturnType>
       </ReturnValue>
@@ -61,10 +52,6 @@
       <MemberSignature Language="C#" Value="public Action&lt;object&gt; OnResolveCCBCCMenuItemSelector (object target, string pSelectorName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class System.Action`1&lt;object&gt; OnResolveCCBCCMenuItemSelector(object target, string pSelectorName) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Action&lt;System.Object&gt;</ReturnType>
       </ReturnValue>

@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCKeyboardEventType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="KEYBOARD_NONE" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeyboardEventType KEYBOARD_NONE = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardEventType</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="KEYBOARD_PRESS" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeyboardEventType KEYBOARD_PRESS = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardEventType</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="KEYBOARD_RELEASE" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeyboardEventType KEYBOARD_RELEASE = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardEventType</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="KEYBOARD_STATE" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCKeyboardEventType KEYBOARD_STATE = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCKeyboardEventType</ReturnType>
       </ReturnValue>

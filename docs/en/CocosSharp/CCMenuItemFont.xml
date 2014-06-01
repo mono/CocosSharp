@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItemFont extends CocosSharp.CCMenuItemLabelTTF" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCMenuItemLabelTTF</BaseTypeName>
@@ -18,91 +16,24 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="labelString" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="labelString">To be added.</param>
-        <summary>creates a menu item from a string with a target/selector </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, Action&lt;object&gt; selector = null);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, class System.Action`1&lt;object&gt; selector) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="labelString" Type="System.String" />
         <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
       <Docs>
         <param name="labelString">To be added.</param>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, uint fontSizeIn = 32, Action&lt;object&gt; selector = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, unsigned int32 fontSizeIn, class System.Action`1&lt;object&gt; selector) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="labelString" Type="System.String" />
-        <Parameter Name="fontSizeIn" Type="System.UInt32" />
-        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="labelString">To be added.</param>
-        <param name="fontSizeIn">To be added.</param>
-        <param name="selector">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMenuItemFont (string labelString, string fontNameIn = &quot;arial&quot;, uint fontSizeIn = 32, Action&lt;object&gt; selector = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string labelString, string fontNameIn, unsigned int32 fontSizeIn, class System.Action`1&lt;object&gt; selector) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <Parameters>
-        <Parameter Name="labelString" Type="System.String" />
-        <Parameter Name="fontNameIn" Type="System.String" />
-        <Parameter Name="fontSizeIn" Type="System.UInt32" />
-        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="labelString">To be added.</param>
-        <param name="fontNameIn">To be added.</param>
-        <param name="fontSizeIn">To be added.</param>
         <param name="selector">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="FontName">
-      <MemberSignature Language="C#" Value="public string FontName { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FontName" />
+      <MemberSignature Language="C#" Value="public static string FontName { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property string FontName" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -112,30 +43,10 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="FontNameObj">
-      <MemberSignature Language="C#" Value="public string FontNameObj { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance string FontNameObj" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>set the font name c++ can not overload static and non-static member functions with the same parameter types so change the name to setFontNameObj </summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="FontSize">
-      <MemberSignature Language="C#" Value="public uint FontSize { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FontSize" />
+      <MemberSignature Language="C#" Value="public static uint FontSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property unsigned int32 FontSize" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -143,91 +54,6 @@
         <summary>get default font size </summary>
         <value>To be added.</value>
         <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="FontSizeObj">
-      <MemberSignature Language="C#" Value="public uint FontSizeObj { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 FontSizeObj" />
-      <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>get font size </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithString">
-      <MemberSignature Language="C#" Value="public bool InitWithString (string value, Action&lt;object&gt; selector);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithString(string value, class System.Action`1&lt;object&gt; selector) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="value" Type="System.String" />
-        <Parameter Name="selector" Type="System.Action&lt;System.Object&gt;" />
-      </Parameters>
-      <Docs>
-        <param name="value">To be added.</param>
-        <param name="selector">To be added.</param>
-        <summary>initializes a menu item from a string with a target/selector </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="m_strFontName">
-      <MemberSignature Language="C#" Value="protected string m_strFontName;" />
-      <MemberSignature Language="ILAsm" Value=".field family string m_strFontName" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_uFontSize">
-      <MemberSignature Language="C#" Value="protected uint m_uFontSize;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uFontSize" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RecreateLabel">
-      <MemberSignature Language="C#" Value="protected void RecreateLabel ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RecreateLabel() cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

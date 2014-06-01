@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimation extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -35,10 +33,6 @@
       <MemberSignature Language="C#" Value="public CCAnimation ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>Creates an animation
@@ -50,9 +44,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="protected CCAnimation (CocosSharp.CCAnimation animation);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimation animation) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="animation" Type="CocosSharp.CCAnimation" />
       </Parameters>
@@ -66,9 +57,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public CCAnimation (CocosSharp.CCSpriteSheet cs, float delay);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteSheet cs, float32 delay) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="cs" Type="CocosSharp.CCSpriteSheet" />
         <Parameter Name="delay" Type="System.Single" />
@@ -84,10 +72,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public CCAnimation (System.Collections.Generic.List&lt;CocosSharp.CCSpriteFrame&gt; frames, float delay);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.List`1&lt;class CocosSharp.CCSpriteFrame&gt; frames, float32 delay) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="frames" Type="System.Collections.Generic.List&lt;CocosSharp.CCSpriteFrame&gt;" />
         <Parameter Name="delay" Type="System.Single" />
@@ -103,9 +87,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public CCAnimation (CocosSharp.CCSpriteSheet cs, string[] frames, float delay);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteSheet cs, string[] frames, float32 delay) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="cs" Type="CocosSharp.CCSpriteSheet" />
         <Parameter Name="frames" Type="System.String[]" />
@@ -123,10 +104,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public CCAnimation (System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt; arrayOfAnimationFrameNames, float delayPerUnit, uint loops);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.Collections.Generic.List`1&lt;class CocosSharp.CCAnimationFrame&gt; arrayOfAnimationFrameNames, float32 delayPerUnit, unsigned int32 loops) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="arrayOfAnimationFrameNames" Type="System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt;" />
         <Parameter Name="delayPerUnit" Type="System.Single" />
@@ -140,32 +117,10 @@ v0.99.5 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddSprite">
-      <MemberSignature Language="C#" Value="public void AddSprite (CocosSharp.CCSprite sprite);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSprite(class CocosSharp.CCSprite sprite) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="sprite" Type="CocosSharp.CCSprite" />
-      </Parameters>
-      <Docs>
-        <param name="sprite">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddSpriteFrame">
       <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCSprite sprite);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCSprite sprite) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -182,10 +137,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCSpriteFrame frame);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCSpriteFrame frame) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -202,9 +153,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public void AddSpriteFrame (string filename);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(string filename) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -221,9 +169,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rect);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rect) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -238,54 +183,10 @@ v0.99.5 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="AddSpriteFrameWithFileName">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrameWithFileName (string pszFileName);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrameWithFileName(string pszFileName) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pszFileName" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="pszFileName">To be added.</param>
-        <summary>Adds a frame with an image filename. Internally it will create a  and it will add it. The frame will be added with one "delay unit". Added to facilitate the migration from v0.8 to v0.9. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="AddSpriteFrameWithTexture">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrameWithTexture (CocosSharp.CCTexture2D pobTexture, CocosSharp.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrameWithTexture(class CocosSharp.CCTexture2D pobTexture, valuetype CocosSharp.CCRect rect) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="pobTexture">To be added.</param>
-        <param name="rect">To be added.</param>
-        <summary>Adds a frame with a texture and a rect. Internally it will create a  and it will add it. The frame will be added with one "delay unit". Added to facilitate the migration from v0.8 to v0.9. </summary>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Copy">
       <MemberSignature Language="C#" Value="public CocosSharp.CCAnimation Copy ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAnimation Copy() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAnimation</ReturnType>
       </ReturnValue>
@@ -296,34 +197,10 @@ v0.99.5 </summary>
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Copy">
-      <MemberSignature Language="C#" Value="public object Copy (CocosSharp.ICCCopyable pZone);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance object Copy(class CocosSharp.ICCCopyable pZone) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pZone" Type="CocosSharp.ICCCopyable" />
-      </Parameters>
-      <Docs>
-        <param name="pZone">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="DelayPerUnit">
       <MemberSignature Language="C#" Value="public float DelayPerUnit { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 DelayPerUnit" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -337,10 +214,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public float Duration { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Duration" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -354,10 +227,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt; Frames { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCAnimationFrame&gt; Frames" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt;</ReturnType>
       </ReturnValue>
@@ -367,62 +236,10 @@ v0.99.5 </summary>
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InitWithAnimationFrames">
-      <MemberSignature Language="C#" Value="public bool InitWithAnimationFrames (System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt; arrayOfAnimationFrames, float delayPerUnit, uint loops);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithAnimationFrames(class System.Collections.Generic.List`1&lt;class CocosSharp.CCAnimationFrame&gt; arrayOfAnimationFrames, float32 delayPerUnit, unsigned int32 loops) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="arrayOfAnimationFrames" Type="System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt;" />
-        <Parameter Name="delayPerUnit" Type="System.Single" />
-        <Parameter Name="loops" Type="System.UInt32" />
-      </Parameters>
-      <Docs>
-        <param name="arrayOfAnimationFrames">To be added.</param>
-        <param name="delayPerUnit">To be added.</param>
-        <param name="loops">To be added.</param>
-        <summary>Initializes a Animation with AnimationFrame
-v2.0 </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="InitWithSpriteFrames">
-      <MemberSignature Language="C#" Value="public bool InitWithSpriteFrames (System.Collections.Generic.List&lt;CocosSharp.CCSpriteFrame&gt; pFrames, float delay);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool InitWithSpriteFrames(class System.Collections.Generic.List`1&lt;class CocosSharp.CCSpriteFrame&gt; pFrames, float32 delay) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pFrames" Type="System.Collections.Generic.List&lt;CocosSharp.CCSpriteFrame&gt;" />
-        <Parameter Name="delay" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="pFrames">To be added.</param>
-        <param name="delay">To be added.</param>
-        <summary>Initializes a Animation with frames and a delay between frames
-v0.99.5 </summary>
-        <returns>To be added.</returns>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="Loops">
       <MemberSignature Language="C#" Value="public uint Loops { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance unsigned int32 Loops" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.UInt32</ReturnType>
       </ReturnValue>
@@ -432,89 +249,10 @@ v0.99.5 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="m_bRestoreOriginalFrame">
-      <MemberSignature Language="C#" Value="protected bool m_bRestoreOriginalFrame;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool m_bRestoreOriginalFrame" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fDelayPerUnit">
-      <MemberSignature Language="C#" Value="protected float m_fDelayPerUnit;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fDelayPerUnit" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_fTotalDelayUnits">
-      <MemberSignature Language="C#" Value="protected float m_fTotalDelayUnits;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 m_fTotalDelayUnits" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_pFrames">
-      <MemberSignature Language="C#" Value="protected System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt; m_pFrames;" />
-      <MemberSignature Language="ILAsm" Value=".field family class System.Collections.Generic.List`1&lt;class CocosSharp.CCAnimationFrame&gt; m_pFrames" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCAnimationFrame&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="m_uLoops">
-      <MemberSignature Language="C#" Value="protected uint m_uLoops;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int32 m_uLoops" />
-      <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.UInt32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="RestoreOriginalFrame">
       <MemberSignature Language="C#" Value="public bool RestoreOriginalFrame { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool RestoreOriginalFrame" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -528,10 +266,6 @@ v0.99.5 </summary>
       <MemberSignature Language="C#" Value="public float TotalDelayUnits { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 TotalDelayUnits" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

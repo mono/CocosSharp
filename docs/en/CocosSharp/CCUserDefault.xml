@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCUserDefault extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -24,10 +22,6 @@
       <MemberSignature Language="C#" Value="public void Flush ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Flush() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -40,35 +34,9 @@
       </Docs>
     </Member>
     <Member MemberName="GetBoolForKey">
-      <MemberSignature Language="C#" Value="public bool GetBoolForKey (string pKey);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string pKey) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pKey" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="pKey">To be added.</param>
-        <summary>
-          <para>Get bool value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is false. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetBoolForKey">
       <MemberSignature Language="C#" Value="public bool GetBoolForKey (string key, bool defaultValue = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool GetBoolForKey(string key, bool defaultValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
@@ -88,10 +56,6 @@
       <MemberSignature Language="C#" Value="public double GetDoubleForKey (string key, double defaultValue);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float64 GetDoubleForKey(string key, float64 defaultValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -113,10 +77,6 @@
       <MemberSignature Language="C#" Value="public float GetFloatForKey (string key, float defaultValue);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 GetFloatForKey(string key, float32 defaultValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
@@ -135,35 +95,9 @@
       </Docs>
     </Member>
     <Member MemberName="GetIntegerForKey">
-      <MemberSignature Language="C#" Value="public int GetIntegerForKey (string pKey);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string pKey) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pKey" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="pKey">To be added.</param>
-        <summary>
-          <para>Get integer value by key, if the key doesn't exist, a default value will return. You can set the default value, or it is 0. </para>
-        </summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetIntegerForKey">
       <MemberSignature Language="C#" Value="public int GetIntegerForKey (string key, int defaultValue = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 GetIntegerForKey(string key, int32 defaultValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
@@ -183,10 +117,6 @@
       <MemberSignature Language="C#" Value="public string GetStringForKey (string key, string defaultValue);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance string GetStringForKey(string key, string defaultValue) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
@@ -208,10 +138,6 @@
       <MemberSignature Language="C#" Value="public void PurgeSharedUserDefault ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeSharedUserDefault() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -225,10 +151,6 @@
       <MemberSignature Language="C#" Value="public void SetBoolForKey (string key, bool value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetBoolForKey(string key, bool value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -249,10 +171,6 @@
       <MemberSignature Language="C#" Value="public void SetDoubleForKey (string key, double value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDoubleForKey(string key, float64 value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -273,10 +191,6 @@
       <MemberSignature Language="C#" Value="public void SetFloatForKey (string key, float value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetFloatForKey(string key, float32 value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -297,10 +211,6 @@
       <MemberSignature Language="C#" Value="public void SetIntegerForKey (string key, int value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetIntegerForKey(string key, int32 value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -321,10 +231,6 @@
       <MemberSignature Language="C#" Value="public void SetStringForKey (string key, string value);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetStringForKey(string key, string value) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -345,10 +251,6 @@
       <MemberSignature Language="C#" Value="public static CocosSharp.CCUserDefault SharedUserDefault { get; }" />
       <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCUserDefault SharedUserDefault" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCUserDefault</ReturnType>
       </ReturnValue>

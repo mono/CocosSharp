@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCBPropertyType extends System.Enum" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -17,9 +16,6 @@
       <MemberSignature Language="C#" Value="Animation" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Animation = int32(22)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -31,9 +27,6 @@
       <MemberSignature Language="C#" Value="Blendmode" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Blendmode = int32(16)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -45,9 +38,6 @@
       <MemberSignature Language="C#" Value="Block" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Block = int32(21)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -59,9 +49,6 @@
       <MemberSignature Language="C#" Value="BlockCCControl" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType BlockCCControl = int32(25)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -73,9 +60,6 @@
       <MemberSignature Language="C#" Value="Byte" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Byte = int32(12)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -87,9 +71,6 @@
       <MemberSignature Language="C#" Value="CCBFile" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType CCBFile = int32(23)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -101,9 +82,6 @@
       <MemberSignature Language="C#" Value="Check" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Check = int32(9)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -115,9 +93,6 @@
       <MemberSignature Language="C#" Value="Color3" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Color3 = int32(13)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -129,9 +104,6 @@
       <MemberSignature Language="C#" Value="Color4FVar" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Color4FVar = int32(14)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -143,9 +115,6 @@
       <MemberSignature Language="C#" Value="Degrees" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Degrees = int32(5)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -157,9 +126,6 @@
       <MemberSignature Language="C#" Value="Flip" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Flip = int32(15)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -171,9 +137,6 @@
       <MemberSignature Language="C#" Value="Float" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Float = int32(7)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -185,9 +148,6 @@
       <MemberSignature Language="C#" Value="FloatScale" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType FloatScale = int32(26)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -199,9 +159,6 @@
       <MemberSignature Language="C#" Value="FloatVar" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType FloatVar = int32(8)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -213,9 +170,6 @@
       <MemberSignature Language="C#" Value="FloatXY" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType FloatXY = int32(27)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -227,9 +181,6 @@
       <MemberSignature Language="C#" Value="FntFile" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType FntFile = int32(17)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -241,9 +192,6 @@
       <MemberSignature Language="C#" Value="FontTTF" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType FontTTF = int32(19)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -255,9 +203,6 @@
       <MemberSignature Language="C#" Value="Integer" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Integer = int32(6)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -269,9 +214,6 @@
       <MemberSignature Language="C#" Value="IntegerLabeled" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType IntegerLabeled = int32(20)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -283,9 +225,6 @@
       <MemberSignature Language="C#" Value="Point" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Point = int32(2)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -297,9 +236,6 @@
       <MemberSignature Language="C#" Value="PointLock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType PointLock = int32(3)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -311,9 +247,6 @@
       <MemberSignature Language="C#" Value="Position" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Position = int32(0)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -325,9 +258,6 @@
       <MemberSignature Language="C#" Value="ScaleLock" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType ScaleLock = int32(4)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -339,9 +269,6 @@
       <MemberSignature Language="C#" Value="Size" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Size = int32(1)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -353,9 +280,6 @@
       <MemberSignature Language="C#" Value="SpriteFrame" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType SpriteFrame = int32(10)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -367,9 +291,6 @@
       <MemberSignature Language="C#" Value="String" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType String = int32(24)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -381,9 +302,6 @@
       <MemberSignature Language="C#" Value="Text" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Text = int32(18)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>
@@ -395,9 +313,6 @@
       <MemberSignature Language="C#" Value="Texture" />
       <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCBPropertyType Texture = int32(11)" />
       <MemberType>Field</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>CocosSharp.CCBPropertyType</ReturnType>
       </ReturnValue>

@@ -3,8 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDisplayLinkDirector extends CocosSharp.CCDirector" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.0.3.0</AssemblyVersion>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCDirector</BaseTypeName>
@@ -36,10 +34,6 @@
       <MemberSignature Language="C#" Value="public CCDisplayLinkDirector ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -50,10 +44,6 @@
       <MemberSignature Language="C#" Value="public override double AnimationInterval { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float64 AnimationInterval" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Double</ReturnType>
       </ReturnValue>
@@ -67,9 +57,6 @@
       <MemberSignature Language="C#" Value="public override void MainLoop (CocosSharp.CCGameTime gameTime);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void MainLoop(class CocosSharp.CCGameTime gameTime) cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -82,33 +69,10 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MainLoop">
-      <MemberSignature Language="C#" Value="public override void MainLoop (Microsoft.Xna.Framework.GameTime gameTime);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void MainLoop(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
-      <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-      </AssemblyInfo>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
-      </Parameters>
-      <Docs>
-        <param name="gameTime">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="StartAnimation">
       <MemberSignature Language="C#" Value="public override void StartAnimation ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StartAnimation() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
@@ -122,10 +86,6 @@
       <MemberSignature Language="C#" Value="public override void StopAnimation ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void StopAnimation() cil managed" />
       <MemberType>Method</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.0.3.0</AssemblyVersion>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
