@@ -75,11 +75,11 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCColor3B(byte inr, byte ing, byte inb) : this()
+        public CCColor3B(byte red, byte green, byte blue) : this()
         {
-            R = inr;
-            G = ing;
-            B = inb;
+            R = red;
+            G = green;
+            B = blue;
         }
 
         public CCColor3B(CCColor4B color4B): this(color4B.R, color4B.G, color4B.B)
@@ -160,27 +160,27 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCColor4B(byte inr, byte ing, byte inb, byte ina) : this()
+        public CCColor4B(byte red, byte green, byte blue, byte alpha) : this()
         {
-            R = inr;
-            G = ing;
-            B = inb;
-            A = ina;
+            R = red;
+            G = green;
+            B = blue;
+            A = alpha;
         }
 
 		internal CCColor4B(Color color) : this(color.R, color.G, color.B, color.A)
 		{ }
 
-        public CCColor4B(byte inr, byte ing, byte inb) : this(inr, ing, inb, 255)
+        public CCColor4B(byte red, byte green, byte blue) : this(red, green, blue, 255)
         {
         }
 
-        public CCColor4B(float fR, float fG, float fB, float fA) : this()
+        public CCColor4B(float red, float green, float blue, float alpha) : this()
         {
-			R = (byte)CCMathHelper.Clamp(fR * 255, Byte.MinValue, Byte.MaxValue);
-			G = (byte)CCMathHelper.Clamp(fG * 255, Byte.MinValue, Byte.MaxValue);
-			B = (byte)CCMathHelper.Clamp(fB * 255, Byte.MinValue, Byte.MaxValue);
-			A = (byte)CCMathHelper.Clamp(fA * 255, Byte.MinValue, Byte.MaxValue);
+			R = (byte)CCMathHelper.Clamp(red * 255, Byte.MinValue, Byte.MaxValue);
+			G = (byte)CCMathHelper.Clamp(green * 255, Byte.MinValue, Byte.MaxValue);
+			B = (byte)CCMathHelper.Clamp(blue * 255, Byte.MinValue, Byte.MaxValue);
+			A = (byte)CCMathHelper.Clamp(alpha * 255, Byte.MinValue, Byte.MaxValue);
         }   
 
         #endregion Constructors
@@ -248,10 +248,10 @@ namespace CocosSharp
             return this == other;       
         } 
 
-//        public static implicit operator Color(CCColor4B point)
-//        {
-//            return new Color(point.R, point.G, point.B, point.A);
-//        }
+        public static implicit operator Color(CCColor4B point)
+        {
+            return new Color(point.R, point.G, point.B, point.A);
+        }
 
         #endregion Operators
 
@@ -284,19 +284,19 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCColor4F(float inr, float ing, float inb, float ina) : this()
+        public CCColor4F(float red, float green, float blue, float alpha) : this()
         {
-            R = inr;
-            G = ing;
-            B = inb;
-            A = ina;
+            R = red;
+            G = green;
+            B = blue;
+            A = alpha;
         }
 
-        public CCColor4F(CCColor3B c) : this(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, 1.0f)
+        public CCColor4F(CCColor3B color3B) : this(color3B.R / 255.0f, color3B.G / 255.0f, color3B.B / 255.0f, 1.0f)
         {
         }
 
-        public CCColor4F(CCColor4B c) : this(c.R / 255.0f, c.G / 255.0f, c.B / 255.0f, c.A / 255.0f)
+        public CCColor4F(CCColor4B color4B) : this(color4B.R / 255.0f, color4B.G / 255.0f, color4B.B / 255.0f, color4B.A / 255.0f)
         {
         }
 
@@ -375,13 +375,13 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCVertex2F(float inx, float iny) : this()
+        public CCVertex2F(float x, float y) : this()
         {
-            X = inx;
-            Y = iny;
+            X = x;
+            Y = y;
         }
 
-        public CCVertex2F(CCVertex3F ver3) : this(ver3.X, ver3.Y)
+        public CCVertex2F(CCVertex3F vertex3F) : this(vertex3F.X, vertex3F.Y)
         {
         }
 
@@ -403,11 +403,11 @@ namespace CocosSharp
 
         #region Constructors
         
-        public CCVertex3F(float inx, float iny, float inz) : this()
+        public CCVertex3F(float x, float y, float z) : this()
         {
-            X = inx;
-            Y = iny;
-            Z = inz;
+            X = x;
+            Y = y;
+            Z = z;
         }
 
         #endregion Constructors
@@ -433,10 +433,10 @@ namespace CocosSharp
         public float U { get; set; }
         public float V { get; set; }
 
-        public CCTex2F(float inu, float inv) : this()
+        public CCTex2F(float u, float v) : this()
         {
-            U = inu;
-            V = inv;
+            U = u;
+            V = v;
         }
 
         public override string ToString()
@@ -602,10 +602,10 @@ namespace CocosSharp
         public int X;
         public int Y;
 
-        public CCGridSize(int inx, int iny)
+        public CCGridSize(int x, int y)
         {
-            X = inx;
-            Y = iny;
+            X = x;
+            Y = y;
         }
     }
 
@@ -644,12 +644,12 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCBoundingBoxI(int minx, int miny, int maxx, int maxy) : this()
+        public CCBoundingBoxI(int minX, int minY, int maxX, int maxY) : this()
         {
-            MinX = minx;
-            MinY = miny;
-            MaxX = maxx;
-            MaxY = maxy;
+            MinX = minX;
+            MinY = minY;
+            MaxX = maxX;
+            MaxY = maxY;
         }
 
         #endregion Constructors
@@ -683,12 +683,12 @@ namespace CocosSharp
             ExpandToPoint(point.X, point.Y);
         }
 
-        public void ExpandToRect(ref CCBoundingBoxI r)
+        public void ExpandToRect(ref CCBoundingBoxI rect)
         {
-            MinX = Math.Min(MinX, r.MinX);
-            MinY = Math.Min(MinY, r.MinY);
-            MaxX = Math.Max(MaxX, r.MaxX);
-            MaxY = Math.Max(MaxY, r.MaxY);
+            MinX = Math.Min(MinX, rect.MinX);
+            MinY = Math.Min(MinY, rect.MinY);
+            MaxX = Math.Max(MaxX, rect.MaxX);
+            MaxY = Math.Max(MaxY, rect.MaxY);
         }
 
         public bool Intersects(ref CCBoundingBoxI rect)
