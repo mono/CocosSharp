@@ -29,9 +29,15 @@ namespace CocosSharp
     {
         const int SceneFade = int.MaxValue;
 
+
+		#region Constructors
+
         public CCTransitionCrossFade (float t, CCScene scene) : base (t, scene)
         {
 		}
+
+		#endregion Constructors
+
 
         protected override void Draw()
         {
@@ -45,7 +51,7 @@ namespace CocosSharp
             // create a transparent color layer
             // in which we are going to add our rendertextures
             var color = new CCColor4B(0, 0, 0, 0);
-            CCSize size = CCDirector.SharedDirector.WinSize;
+			CCSize size = Director.WinSize;
             CCLayerColor layer = new CCLayerColor(color);
 
             // create the first render texture for inScene

@@ -27,23 +27,16 @@ namespace CocosSharp
 {
     public enum CCTransitionOrientation
     {
-        /// An horizontal orientation where the Left is nearer
-        LeftOver = 0,
+		LeftOver = 0,         		// An horizontal orientation where the Left is nearer
+		RightOver = 1,        		// An horizontal orientation where the Right is nearer
+		UpOver = 0,        			// A vertical orientation where the Up is nearer
+		DownOver = 1,        		// A vertical orientation where the Bottom is nearer
 
-        /// An horizontal orientation where the Right is nearer
-        RightOver = 1,
-
-        /// A vertical orientation where the Up is nearer
-        UpOver = 0,
-
-        /// A vertical orientation where the Bottom is nearer
-        DownOver = 1,
     }
 
     public class CCTransitionSceneOriented : CCTransitionScene
     {
         protected CCTransitionOrientation Orientation;
-
 
         #region Constructors
 

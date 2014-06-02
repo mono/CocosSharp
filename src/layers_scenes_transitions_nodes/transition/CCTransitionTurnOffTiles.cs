@@ -47,7 +47,7 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			CCSize s = Director.WinSize;
             float aspect = s.Width / s.Height;
             var x = (int) (12 * aspect);
             int y = 12;

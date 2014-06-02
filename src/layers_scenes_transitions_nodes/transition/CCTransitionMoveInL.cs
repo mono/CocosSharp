@@ -43,7 +43,7 @@ namespace CocosSharp
         /// </summary>
         public virtual void InitScenes()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			CCSize s = Director.WinSize;
             InScene.Position = new CCPoint(-s.Width, 0);
         }
 

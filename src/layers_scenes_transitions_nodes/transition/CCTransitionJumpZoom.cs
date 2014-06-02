@@ -9,7 +9,7 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			CCSize s = Director.WinSize;
 
             InScene.Scale = 0.5f;
             InScene.Position = new CCPoint(s.Width, 0);
