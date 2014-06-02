@@ -21,7 +21,8 @@ namespace tests
 
             sublayer.AddChild(sp1, 1);
 
-			var fire = new CCParticleFire();
+			CCSize winSize = this.Director.WinSize;
+			var fire = new CCParticleFire(new CCPoint(winSize.Width / 2, 60));
             fire.Texture = (CCTextureCache.Instance.AddImage("Images/fire"));
             fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 
