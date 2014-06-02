@@ -26,9 +26,6 @@ namespace CocosSharp
 {
     public class CCTransitionMoveInR : CCTransitionMoveInL
     {
-
-        public CCTransitionMoveInR() { }
-
         public CCTransitionMoveInR (float t, CCScene scene) : base (t, scene)
         { }
 

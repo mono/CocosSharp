@@ -29,10 +29,6 @@ namespace CocosSharp
     {
 		#region Constructors
 
-		public CCTransitionFlipY() 
-		{ 
-		}
-
         public CCTransitionFlipY(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
         {
 		}

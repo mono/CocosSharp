@@ -38,8 +38,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTransitionSplitRows() { }
-
         public CCTransitionSplitRows(float t, CCScene scene) : base(t, scene)
         {
         }

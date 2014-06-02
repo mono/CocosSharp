@@ -33,8 +33,6 @@ namespace CocosSharp
     {
         #region Constructors
 
-        public CCTransitionSplitCols() { }
-
         public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
         {
         }

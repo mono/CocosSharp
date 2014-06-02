@@ -47,8 +47,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTransitionSceneOriented() { }
-
         /// <summary>
         /// creates a base transition with duration and incoming scene
         /// </summary>

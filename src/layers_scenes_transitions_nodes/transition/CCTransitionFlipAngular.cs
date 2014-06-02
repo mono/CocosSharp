@@ -28,10 +28,6 @@ namespace CocosSharp
     {
 		#region Constructors
 
-        public CCTransitionFlipAngular() 
-		{ 
-		}
-
         public CCTransitionFlipAngular(float t, CCScene s, CCTransitionOrientation o) : base(t, s, o)
         { 
 		}

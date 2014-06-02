@@ -26,9 +26,6 @@ namespace CocosSharp
 {
     public class CCTransitionSlideInL : CCTransitionScene, ICCTransitionEaseScene
     {
-
-        public CCTransitionSlideInL() { }
-
         public CCTransitionSlideInL (float t, CCScene scene) : base (t, scene)
         { }
         

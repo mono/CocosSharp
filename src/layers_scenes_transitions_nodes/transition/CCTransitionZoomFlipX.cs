@@ -28,10 +28,6 @@ namespace CocosSharp
     {
 		#region Constructors
 
-		public CCTransitionZoomFlipX() 
-		{ 
-		}
-
         public CCTransitionZoomFlipX (float t, CCScene s, CCTransitionOrientation o) : base(t, s, o)
         {
 		}

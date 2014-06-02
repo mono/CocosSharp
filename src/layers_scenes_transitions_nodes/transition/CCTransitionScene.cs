@@ -22,7 +22,7 @@ namespace CocosSharp
         #region Constructors
 
         // This can be taken out once all the transitions have been modified with constructors.
-        protected CCTransitionScene() {}
+//        protected CCTransitionScene() {}
 
         public CCTransitionScene (float t, CCScene scene) : base()
         {

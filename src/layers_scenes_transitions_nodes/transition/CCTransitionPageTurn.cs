@@ -39,9 +39,7 @@ namespace CocosSharp
 
 
         #region Contructors
-
-        public CCTransitionPageTurn() { }
-        
+		        
         /// <summary>
         /// Creates a base transition with duration and incoming scene.
         /// If back is true then the effect is reversed to appear as if the incoming 

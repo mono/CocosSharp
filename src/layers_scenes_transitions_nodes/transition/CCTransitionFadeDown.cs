@@ -35,8 +35,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTransitionFadeDown() { }
-
         public CCTransitionFadeDown(float t, CCScene scene) : base(t, scene)
         {
         }

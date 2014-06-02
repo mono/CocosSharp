@@ -30,10 +30,6 @@ namespace CocosSharp
     {
 		#region Constructors
 
-        public CCTransitionFlipX() 
-		{ 
-		} 
-
         public CCTransitionFlipX(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
         { 
 		}

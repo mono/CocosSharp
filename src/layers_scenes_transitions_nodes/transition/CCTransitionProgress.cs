@@ -10,10 +10,6 @@ namespace CocosSharp
 
 		#region Constructors
 
-        public CCTransitionProgress()
-        {
-        }
-
         public CCTransitionProgress(float t, CCScene scene) : base(t, scene)
         {
         }
