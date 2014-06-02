@@ -1490,7 +1490,7 @@ namespace CocosSharp
         public CCPoint ConvertToWindowSpace(CCPoint nodePoint)
         {
             CCPoint worldPoint = ConvertToWorldSpace(nodePoint);
-            return CCDirector.SharedDirector.ConvertToUi(worldPoint);
+			return Director.ConvertToUi(worldPoint);
         }
 
         public CCPoint ConvertTouchToNodeSpace(CCTouch touch)

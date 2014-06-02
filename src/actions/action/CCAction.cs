@@ -36,11 +36,14 @@ namespace CocosSharp
 		public CCNode OriginalTarget { get; protected set; }
 		public CCAction Action { get; protected set;}
 
+		protected CCDirector Director { get; private set; }
+
 		public CCActionState (CCAction action, CCNode target)
 		{
 			this.Action = action;
 			this.Target = target;
 			this.OriginalTarget = target;
+			this.Director = target.Director;
 		}
 
 		public virtual bool IsDone
