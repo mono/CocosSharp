@@ -177,17 +177,22 @@ namespace tests
         public CCSprite m_background;
         public CCParticleSystem m_emitter;
 
+		protected CCSize WinSize;
+		protected CCPoint MidWindowPoint;
+
         public ParticleDemo() : base(new CCColor4B(127, 127, 127, 255))
         {
             m_emitter = null;
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+			WinSize = Director.WinSize;
+			MidWindowPoint = new CCPoint(WinSize.Width / 2.0f, WinSize.Height / 2.0f);
+
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 100, kLabelTag);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
+			label.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 50);
 
             CCLabelTtf tapScreen = new CCLabelTtf(subtitle(), "arial", 20);
-            tapScreen.Position = new CCPoint(s.Width / 2, s.Height - 80);
+			tapScreen.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 80);
             AddChild(tapScreen, 100);
 
             CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
@@ -202,9 +207,9 @@ namespace tests
             CCMenu menu = new CCMenu(item1, item2, item3, item4);
 
             menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
+			item1.Position = new CCPoint(WinSize.Width / 2 - 100, 30);
+			item2.Position = new CCPoint(WinSize.Width / 2, 30);
+			item3.Position = new CCPoint(WinSize.Width / 2 + 100, 30);
             item4.Position = new CCPoint(0, 100);
             item4.AnchorPoint = new CCPoint(0, 0);
 
@@ -212,12 +217,12 @@ namespace tests
 
             CCLabelAtlas labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
             AddChild(labelAtlas, 100, ParticleTestScene.kTagLabelAtlas);
-            labelAtlas.Position = new CCPoint(s.Width - 66, 50);
+			labelAtlas.Position = new CCPoint(WinSize.Width - 66, 50);
 
             // moving background
             m_background = new CCSprite(TestResource.s_back3);
             AddChild(m_background, 5);
-            m_background.Position = new CCPoint(s.Width / 2, s.Height - 180);
+			m_background.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 180);
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
@@ -377,7 +382,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleFireworks();
+			m_emitter = new CCParticleFireworks(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
@@ -402,12 +407,11 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleFire();
+			CCPoint emitterPos = new CCPoint(WinSize.Width / 2, 100);
+			m_emitter = new CCParticleFire(emitterPos);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire); //.pvr"];
-            CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.X, 100);
 
             setEmitterPosition();
         }
@@ -429,7 +433,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSun();
+			m_emitter = new CCParticleSun(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -454,7 +458,9 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleGalaxy();
+			CCSize winSize = Director.WinSize;
+			CCPoint position = new CCPoint(winSize.Width / 2.0f, winSize.Height / 2.0f);
+			m_emitter = new CCParticleGalaxy(position);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -479,7 +485,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleFlower();
+			m_emitter = new CCParticleFlower(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
 
@@ -671,7 +677,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleMeteor();
+			m_emitter = new CCParticleMeteor(MidWindowPoint);
 
             m_background.AddChild(m_emitter, 10);
 
@@ -692,7 +698,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSpiral();
+			m_emitter = new CCParticleSpiral(MidWindowPoint);
 
             m_background.AddChild(m_emitter, 10);
 
@@ -713,7 +719,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleExplosion();
+			m_emitter = new CCParticleExplosion(MidWindowPoint);
 
             m_background.AddChild(m_emitter, 10);
 
@@ -736,7 +742,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSmoke();
+			m_emitter = new CCParticleSmoke(new CCPoint(WinSize.Width / 2.0f, 0));
 
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -759,7 +765,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleSnow();
+			m_emitter = new CCParticleSnow(new CCPoint(WinSize.Width / 2, WinSize.Height + 10));
 
             m_background.AddChild(m_emitter, 10);
 
@@ -804,8 +810,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleRain();
-
+			m_emitter = new CCParticleRain(new CCPoint (WinSize.Width / 2.0f, WinSize.Height));
             m_background.AddChild(m_emitter, 10);
 
             CCPoint p = m_emitter.Position;
@@ -911,7 +916,7 @@ namespace tests
         {
             base.OnEnter();
 
-            m_emitter = new CCParticleFlower();
+			m_emitter = new CCParticleFlower(MidWindowPoint);
 
 
             m_background.AddChild(m_emitter, 10);
@@ -950,14 +955,14 @@ namespace tests
             p.AddChild(p1, 1, new CCPoint(0.5f, 1), new CCPoint(0, 250));
             p.AddChild(p2, 2, new CCPoint(1.5f, 1), new CCPoint(0, 50));
 
-            m_emitter = new CCParticleFlower();
+			m_emitter = new CCParticleFlower(MidWindowPoint);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
             p1.AddChild(m_emitter, 10);
             m_emitter.Position = new CCPoint(250, 200);
 
-            CCParticleSun par = new CCParticleSun();
+			CCParticleSun par = new CCParticleSun(MidWindowPoint);
             p2.AddChild(par, 10);
             par.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 

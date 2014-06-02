@@ -79,13 +79,10 @@ namespace CocosSharp
     //
     public class CCParticleFire : CCParticleSystemQuad
     {
+		static CCParticleSystemConfig config;
 
-		private static CCParticleSystemConfig config;
-
-        public CCParticleFire() : base(250)
+		public CCParticleFire(CCPoint position) : base(250)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
 			if (config == null) 
 			{
 				config = new CCParticleSystemConfig ();
@@ -94,7 +91,7 @@ namespace CocosSharp
 				config.Duration = ParticleDurationInfinity;
 				config.Life = 3;
 				config.LifeVar = 0.25f;
-				config.Position = new CCPoint(winSize.Width / 2, 60);
+				config.Position = position;
 				config.PositionVar = new CCPoint(40, 20);
 				config.Angle = 90;
 				config.AngleVar = 10;
@@ -202,16 +199,12 @@ namespace CocosSharp
     //
     public class CCParticleFireworks : CCParticleSystemQuad
     {
-		private static CCParticleSystemConfig config;
-
-        public CCParticleFireworks() : base(1500)
+		public CCParticleFireworks(CCPoint position) : base(1500)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 3.5f;
             LifeVar = 1;
-            Position = new CCPoint (winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             Angle = 90;
             AngleVar = 20;
             StartSize = 8.0f;
@@ -262,18 +255,16 @@ namespace CocosSharp
     //
     public class CCParticleSun : CCParticleSystemQuad
     {
-        public CCParticleSun() : this(350)
+		public CCParticleSun(CCPoint position) : this(position, 350)
         { 
         }
         
-        public CCParticleSun (int num) : base(num)
+		public CCParticleSun (CCPoint position, int num) : base(num)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 1;
             LifeVar = 0.5f;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -307,14 +298,12 @@ namespace CocosSharp
     //
     public class CCParticleGalaxy : CCParticleSystemQuad
     {
-        public CCParticleGalaxy() : base(200)
+		public CCParticleGalaxy(CCPoint position) : base(200)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -348,14 +337,12 @@ namespace CocosSharp
 
     public class CCParticleFlower : CCParticleSystemQuad
     {
-        public CCParticleFlower() : base(250)
+		public CCParticleFlower(CCPoint position) : base(250)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -388,14 +375,12 @@ namespace CocosSharp
 
     public class CCParticleMeteor : CCParticleSystemQuad
     {
-        public CCParticleMeteor() : base(150)
+		public CCParticleMeteor(CCPoint position) : base(150)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 2;
             LifeVar = 1;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -428,12 +413,10 @@ namespace CocosSharp
 
     public class CCParticleSpiral : CCParticleSystemQuad
     {
-        public CCParticleSpiral() : base(500)
+		public CCParticleSpiral(CCPoint position) : base(500)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = position;
             PositionVar = CCPoint.Zero;
             Life = 12;
             LifeVar = 0;
@@ -468,14 +451,12 @@ namespace CocosSharp
 
     public class CCParticleExplosion : CCParticleSystemQuad
     {
-        public CCParticleExplosion() : base(700)
+		public CCParticleExplosion(CCPoint position) : base(700)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = 0.1f;
             Life = 5.0f;
             LifeVar = 2;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height / 2);
+			Position = new CCPoint(position);
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -508,14 +489,12 @@ namespace CocosSharp
 
     public class CCParticleSmoke : CCParticleSystemQuad
     {
-        public CCParticleSmoke() : base(200)
+		public CCParticleSmoke(CCPoint position) : base(200)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-            Position = new CCPoint(winSize.Width / 2, 0);
+			Position = position;
             PositionVar = new CCPoint(20, 0);
             Angle = 90;
             AngleVar = 5;
@@ -546,15 +525,13 @@ namespace CocosSharp
 
     public class CCParticleSnow : CCParticleSystemQuad
     {
-        public CCParticleSnow() : base(700)
+		public CCParticleSnow(CCPoint position) : base(700)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
             Life = 45;
             LifeVar = 15;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height + 10);
-            PositionVar = new CCPoint(winSize.Width / 2, 0);
+			Position = position;
+			PositionVar = new CCPoint(position.X, 0);
             Angle = -90;
             AngleVar = 5;
             StartSize = 10.0f;
@@ -586,13 +563,11 @@ namespace CocosSharp
 
     public class CCParticleRain : CCParticleSystemQuad
     {
-        public CCParticleRain() : base(1000)
+		public CCParticleRain(CCPoint position) : base(1000)
         {
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-
             Duration = ParticleDurationInfinity;
-            Position = new CCPoint(winSize.Width / 2, winSize.Height);
-            PositionVar = new CCPoint(winSize.Width / 2, 0);
+			Position = position;
+			PositionVar = new CCPoint(position.X, 0);
             Life = 4.5f;
             LifeVar = 0;
             Angle = -90;
