@@ -24,7 +24,7 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public interface ICCSAXDelegator
+	internal interface ICCSAXDelegator
     {
         void StartElement(object ctx, string name, string[] atts);
         void EndElement(object ctx, string name);
