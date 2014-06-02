@@ -127,6 +127,7 @@ namespace CocosSharp
 		public CCNode Parent { get; set; }
 
 		internal protected uint OrderOfArrival { get; internal set; }
+		internal protected CCDirector Director { get; private set; }
 
 		protected bool IsTransformDirty { get; set; }
 		protected bool IsReorderChildDirty { get; set; }
@@ -481,9 +482,14 @@ namespace CocosSharp
 
 		#region Constructors
 
-        public CCNode()
+		// Eventually remove optional argument, director cannot be null
+		public CCNode(CCDirector director=null)
         {
-            scaleX = 1.0f;
+			if (director == null) {
+				director = CCDirector.SharedDirector;
+			}
+
+			scaleX = 1.0f;
             scaleY = 1.0f;
             Visible = true;
             tag = TagInvalid;
@@ -498,11 +504,10 @@ namespace CocosSharp
 			IsSerializable = true;
 
             // set default scheduler and actionManager
-            CCDirector director = CCDirector.SharedDirector;
+			Director = director;
             actionManager = director.ActionManager;
             scheduler = director.Scheduler;
 			EventDispatcher = director.EventDispatcher;
-
         }
 
 		#endregion Constructors
@@ -1133,12 +1138,10 @@ namespace CocosSharp
 
             IsRunning = true;
 
-            CCDirector director = CCDirector.SharedDirector;
-
             // add this node to concern the kaypad msg
             if (keypadEnabled)
             {
-                director.KeypadDispatcher.AddDelegate(this);
+				Director.KeypadDispatcher.AddDelegate(this);
             }
         }
 
@@ -1168,12 +1171,9 @@ namespace CocosSharp
 
         public virtual void OnExit()
         {
-
-            CCDirector director = CCDirector.SharedDirector;
-
             if (keypadEnabled)
             {
-                director.KeypadDispatcher.RemoveDelegate(this);
+				Director.KeypadDispatcher.RemoveDelegate(this);
             }
 
             Pause();

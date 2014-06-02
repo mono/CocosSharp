@@ -5,6 +5,8 @@ namespace CocosSharp
 {
     public class CCTransitionScene : CCScene
     {
+		#region Properties
+
 		protected bool IsInSceneOnTop { get; set; }
 		protected bool IsSendCleanupToScene { get; set; }
 		protected float Duration { get; set; }
@@ -13,23 +15,24 @@ namespace CocosSharp
 
         public override bool IsTransition
         {
-            get
-            {
-                return (true);
-            }
+			get { return true; }
         }
+
+		#endregion Properties
+
 
         #region Constructors
 
-        // This can be taken out once all the transitions have been modified with constructors.
-//        protected CCTransitionScene() {}
-
-        public CCTransitionScene (float t, CCScene scene) : base()
+		public CCTransitionScene (float t, CCScene scene) : this(t, scene, scene.Director)
         {
-            InitCCTransitionScene(t, scene);
         }
 
-        private void InitCCTransitionScene(float t, CCScene scene)
+		CCTransitionScene (float t, CCScene scene, CCDirector director) : base(director)
+		{
+			InitCCTransitionScene(t, scene);
+		}
+
+        void InitCCTransitionScene(float t, CCScene scene)
         {
             Debug.Assert(scene != null, "Argument scene must be non-nil");
 
@@ -37,7 +40,7 @@ namespace CocosSharp
 
             // retain
             InScene = scene;
-            OutScene = CCDirector.SharedDirector.RunningScene;
+			OutScene = Director.RunningScene;
             if (OutScene == null)
             {
                 // Creating an empty scene.
@@ -143,9 +146,8 @@ namespace CocosSharp
             Unschedule(SetNewScene);
 
             // Before replacing, save the "send cleanup to scene"
-            CCDirector director = CCDirector.SharedDirector;
-            IsSendCleanupToScene = director.IsSendCleanupToScene;
-            director.ReplaceScene(InScene);
+			IsSendCleanupToScene = Director.IsSendCleanupToScene;
+			Director.ReplaceScene(InScene);
 
             // issue #267
             OutScene.Visible = true;

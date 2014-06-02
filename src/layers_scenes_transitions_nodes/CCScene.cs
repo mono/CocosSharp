@@ -26,11 +26,11 @@ namespace CocosSharp
         /// <summary>
         /// Sets the anchor point to the middle of the scene but ignores the anchor for positioning.
         /// </summary>
-        public CCScene() : base()
+		public CCScene(CCDirector director=null) : base(director)
         {
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
-            ContentSize = CCDirector.SharedDirector.WinSize;
+			ContentSize = Director.WinSize;
         }
     }
 }
