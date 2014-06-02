@@ -82,21 +82,21 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
+		public CCLayerColor(CCDirector director=null) : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f, director)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
+		public CCLayerColor (CCColor4B color, CCDirector director=null) : this(color, 0.0f, 0.0f, director)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public CCLayerColor (CCColor4B color, float width, float height) : base()
+		public CCLayerColor (CCColor4B color, float width, float height, CCDirector director=null) : base(director)
         {
             DisplayedColor = new CCColor3B(color.R, color.G, color.B);
             RealColor = DisplayedColor;
@@ -105,7 +105,7 @@ namespace CocosSharp
 
             if (width == 0.0f || height == 0.0f) 
             {
-                CCSize s = CCDirector.SharedDirector.WinSize;
+				CCSize s = Director.WinSize;
                 width = s.Width;
                 height = s.Height;
             }

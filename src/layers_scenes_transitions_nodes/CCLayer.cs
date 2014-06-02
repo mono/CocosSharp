@@ -74,21 +74,20 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayer(CCClipMode clipMode)
+		public CCLayer(CCClipMode clipMode, CCDirector director=null) : base(director)
         {
             ChildClippingMode = clipMode;
 
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             IgnoreAnchorPointForPosition = true;
 
-            CCDirector director = CCDirector.SharedDirector;
-            if (director != null)
+			if (Director != null)
             {
-                ContentSize = director.WinSize;
+				ContentSize = Director.WinSize;
             }
         }
 
-        public CCLayer() : this(CCClipMode.None)
+		public CCLayer(CCDirector director=null) : this(CCClipMode.None, director)
         {
         }
 
@@ -116,10 +115,6 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-
-            CCDirector director = CCDirector.SharedDirector;
-            CCApplication application = CCApplication.SharedApplication;
-
         }
 
         public override void OnExit()
@@ -211,7 +206,7 @@ namespace CocosSharp
                 var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
                 var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform);
 
-                var winSize = CCDirector.SharedDirector.WinSize;
+				var winSize = Director.WinSize;
 
                 CCRect prevScissorRect;
                 if (CCDrawManager.ScissorRectEnabled)
