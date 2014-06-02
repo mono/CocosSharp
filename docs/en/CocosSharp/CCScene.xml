@@ -14,11 +14,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCDirector director = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
       <Docs>
+        <param name="director">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

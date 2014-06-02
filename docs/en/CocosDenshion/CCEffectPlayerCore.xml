@@ -50,19 +50,19 @@
       </Docs>
     </Member>
     <Member MemberName="Open">
-      <MemberSignature Language="C#" Value="public virtual void Open (string filename, int uid);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Open(string filename, int32 uid) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual void Open (string filename, int soundId);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Open(string filename, int32 soundId) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="filename" Type="System.String" />
-        <Parameter Name="uid" Type="System.Int32" />
+        <Parameter Name="soundId" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="filename">To be added.</param>
-        <param name="uid">To be added.</param>
+        <param name="soundId">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

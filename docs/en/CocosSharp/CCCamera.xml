@@ -122,77 +122,63 @@
       </Docs>
     </Member>
     <Member MemberName="GetCenterXyz">
-      <MemberSignature Language="C#" Value="public void GetCenterXyz (out float pCenterX, out float pCenterY, out float pCenterZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCenterXyz(float32 pCenterX, float32 pCenterY, float32 pCenterZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void GetCenterXyz (out float centerX, out float centerY, out float centerZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCenterXyz(float32 centerX, float32 centerY, float32 centerZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pCenterX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pCenterY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pCenterZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="centerX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="centerY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="centerZ" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="pCenterX">To be added.</param>
-        <param name="pCenterY">To be added.</param>
-        <param name="pCenterZ">To be added.</param>
+        <param name="centerX">To be added.</param>
+        <param name="centerY">To be added.</param>
+        <param name="centerZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetEyeXyz">
-      <MemberSignature Language="C#" Value="public void GetEyeXyz (out float pEyeX, out float pEyeY, out float pEyeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEyeXyz(float32 pEyeX, float32 pEyeY, float32 pEyeZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void GetEyeXyz (out float eyeX, out float eyeY, out float eyeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEyeXyz(float32 eyeX, float32 eyeY, float32 eyeZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pEyeX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pEyeY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pEyeZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="eyeX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="eyeY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="eyeZ" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="pEyeX">To be added.</param>
-        <param name="pEyeY">To be added.</param>
-        <param name="pEyeZ">To be added.</param>
+        <param name="eyeX">To be added.</param>
+        <param name="eyeY">To be added.</param>
+        <param name="eyeZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetUpXyz">
-      <MemberSignature Language="C#" Value="public void GetUpXyz (out float pUpX, out float pUpY, out float pUpZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetUpXyz(float32 pUpX, float32 pUpY, float32 pUpZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void GetUpXyz (out float upX, out float upY, out float upZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetUpXyz(float32 upX, float32 upY, float32 upZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pUpX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pUpY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="pUpZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="upX" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="upY" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="upZ" Type="System.Single&amp;" RefType="out" />
       </Parameters>
       <Docs>
-        <param name="pUpX">To be added.</param>
-        <param name="pUpY">To be added.</param>
-        <param name="pUpZ">To be added.</param>
+        <param name="upX">To be added.</param>
+        <param name="upY">To be added.</param>
+        <param name="upZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetZEye">
-      <MemberSignature Language="C#" Value="public static float GetZEye ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 GetZEye() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>returns the Z eye </summary>
-        <returns>To be added.</returns>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="IsDirty">
@@ -235,61 +221,61 @@
       </Docs>
     </Member>
     <Member MemberName="SetCenterXyz">
-      <MemberSignature Language="C#" Value="public void SetCenterXyz (float fCenterX, float fCenterY, float fCenterZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCenterXyz(float32 fCenterX, float32 fCenterY, float32 fCenterZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetCenterXyz (float centerX, float centerY, float centerZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCenterXyz(float32 centerX, float32 centerY, float32 centerZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="fCenterX" Type="System.Single" />
-        <Parameter Name="fCenterY" Type="System.Single" />
-        <Parameter Name="fCenterZ" Type="System.Single" />
+        <Parameter Name="centerX" Type="System.Single" />
+        <Parameter Name="centerY" Type="System.Single" />
+        <Parameter Name="centerZ" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fCenterX">To be added.</param>
-        <param name="fCenterY">To be added.</param>
-        <param name="fCenterZ">To be added.</param>
+        <param name="centerX">To be added.</param>
+        <param name="centerY">To be added.</param>
+        <param name="centerZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetEyeXyz">
-      <MemberSignature Language="C#" Value="public void SetEyeXyz (float fEyeX, float fEyeY, float fEyeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEyeXyz(float32 fEyeX, float32 fEyeY, float32 fEyeZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetEyeXyz (float eyeX, float eyeY, float eyeZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEyeXyz(float32 eyeX, float32 eyeY, float32 eyeZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="fEyeX" Type="System.Single" />
-        <Parameter Name="fEyeY" Type="System.Single" />
-        <Parameter Name="fEyeZ" Type="System.Single" />
+        <Parameter Name="eyeX" Type="System.Single" />
+        <Parameter Name="eyeY" Type="System.Single" />
+        <Parameter Name="eyeZ" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fEyeX">To be added.</param>
-        <param name="fEyeY">To be added.</param>
-        <param name="fEyeZ">To be added.</param>
+        <param name="eyeX">To be added.</param>
+        <param name="eyeY">To be added.</param>
+        <param name="eyeZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetUpXyz">
-      <MemberSignature Language="C#" Value="public void SetUpXyz (float fUpX, float fUpY, float fUpZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUpXyz(float32 fUpX, float32 fUpY, float32 fUpZ) cil managed" />
+      <MemberSignature Language="C#" Value="public void SetUpXyz (float upX, float upY, float upZ);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUpXyz(float32 upX, float32 upY, float32 upZ) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="fUpX" Type="System.Single" />
-        <Parameter Name="fUpY" Type="System.Single" />
-        <Parameter Name="fUpZ" Type="System.Single" />
+        <Parameter Name="upX" Type="System.Single" />
+        <Parameter Name="upY" Type="System.Single" />
+        <Parameter Name="upZ" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fUpX">To be added.</param>
-        <param name="fUpY">To be added.</param>
-        <param name="fUpZ">To be added.</param>
+        <param name="upX">To be added.</param>
+        <param name="upY">To be added.</param>
+        <param name="upZ">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -337,6 +323,19 @@
     <Member MemberName="UpZ">
       <MemberSignature Language="C#" Value="protected float UpZ { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 UpZ" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ZEye">
+      <MemberSignature Language="C#" Value="public static float ZEye { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 ZEye" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>

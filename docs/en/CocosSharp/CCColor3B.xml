@@ -28,18 +28,18 @@ v3.0 </summary>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCColor3B (byte inr, byte ing, byte inb);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 inr, unsigned int8 ing, unsigned int8 inb) cil managed" />
+      <MemberSignature Language="C#" Value="public CCColor3B (byte red, byte green, byte blue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 red, unsigned int8 green, unsigned int8 blue) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inr" Type="System.Byte" />
-        <Parameter Name="ing" Type="System.Byte" />
-        <Parameter Name="inb" Type="System.Byte" />
+        <Parameter Name="red" Type="System.Byte" />
+        <Parameter Name="green" Type="System.Byte" />
+        <Parameter Name="blue" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="inr">To be added.</param>
-        <param name="ing">To be added.</param>
-        <param name="inb">To be added.</param>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

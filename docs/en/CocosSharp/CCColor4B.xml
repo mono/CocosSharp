@@ -15,56 +15,56 @@ v3.0 </summary>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCColor4B (byte inr, byte ing, byte inb);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 inr, unsigned int8 ing, unsigned int8 inb) cil managed" />
+      <MemberSignature Language="C#" Value="public CCColor4B (byte red, byte green, byte blue);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 red, unsigned int8 green, unsigned int8 blue) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inr" Type="System.Byte" />
-        <Parameter Name="ing" Type="System.Byte" />
-        <Parameter Name="inb" Type="System.Byte" />
+        <Parameter Name="red" Type="System.Byte" />
+        <Parameter Name="green" Type="System.Byte" />
+        <Parameter Name="blue" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="inr">To be added.</param>
-        <param name="ing">To be added.</param>
-        <param name="inb">To be added.</param>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCColor4B (byte inr, byte ing, byte inb, byte ina);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 inr, unsigned int8 ing, unsigned int8 inb, unsigned int8 ina) cil managed" />
+      <MemberSignature Language="C#" Value="public CCColor4B (byte red, byte green, byte blue, byte alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(unsigned int8 red, unsigned int8 green, unsigned int8 blue, unsigned int8 alpha) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inr" Type="System.Byte" />
-        <Parameter Name="ing" Type="System.Byte" />
-        <Parameter Name="inb" Type="System.Byte" />
-        <Parameter Name="ina" Type="System.Byte" />
+        <Parameter Name="red" Type="System.Byte" />
+        <Parameter Name="green" Type="System.Byte" />
+        <Parameter Name="blue" Type="System.Byte" />
+        <Parameter Name="alpha" Type="System.Byte" />
       </Parameters>
       <Docs>
-        <param name="inr">To be added.</param>
-        <param name="ing">To be added.</param>
-        <param name="inb">To be added.</param>
-        <param name="ina">To be added.</param>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
+        <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCColor4B (float fR, float fG, float fB, float fA);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 fR, float32 fG, float32 fB, float32 fA) cil managed" />
+      <MemberSignature Language="C#" Value="public CCColor4B (float red, float green, float blue, float alpha);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 red, float32 green, float32 blue, float32 alpha) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="fR" Type="System.Single" />
-        <Parameter Name="fG" Type="System.Single" />
-        <Parameter Name="fB" Type="System.Single" />
-        <Parameter Name="fA" Type="System.Single" />
+        <Parameter Name="red" Type="System.Single" />
+        <Parameter Name="green" Type="System.Single" />
+        <Parameter Name="blue" Type="System.Single" />
+        <Parameter Name="alpha" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fR">To be added.</param>
-        <param name="fG">To be added.</param>
-        <param name="fB">To be added.</param>
-        <param name="fA">To be added.</param>
+        <param name="red">To be added.</param>
+        <param name="green">To be added.</param>
+        <param name="blue">To be added.</param>
+        <param name="alpha">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -294,6 +294,23 @@ v3.0 </summary>
       <Docs>
         <param name="p1">To be added.</param>
         <param name="p2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (CocosSharp.CCColor4B point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype CocosSharp.CCColor4B point) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

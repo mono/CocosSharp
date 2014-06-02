@@ -14,29 +14,29 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCVertex2F (CocosSharp.CCVertex3F ver3);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCVertex3F ver3) cil managed" />
+      <MemberSignature Language="C#" Value="public CCVertex2F (CocosSharp.CCVertex3F vertex3F);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCVertex3F vertex3F) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="ver3" Type="CocosSharp.CCVertex3F" />
+        <Parameter Name="vertex3F" Type="CocosSharp.CCVertex3F" />
       </Parameters>
       <Docs>
-        <param name="ver3">To be added.</param>
+        <param name="vertex3F">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCVertex2F (float inx, float iny);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 inx, float32 iny) cil managed" />
+      <MemberSignature Language="C#" Value="public CCVertex2F (float x, float y);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 x, float32 y) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inx" Type="System.Single" />
-        <Parameter Name="iny" Type="System.Single" />
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="inx">To be added.</param>
-        <param name="iny">To be added.</param>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

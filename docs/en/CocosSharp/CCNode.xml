@@ -45,13 +45,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCNode ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCNode (CocosSharp.CCDirector director = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
       <Docs>
-        <summary>Allocates and initializes a node. A initialized node which is marked as "autorelease". </summary>
-        <remarks />
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
@@ -1291,6 +1294,19 @@
       <Docs>
         <param name="stream">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirector Director { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

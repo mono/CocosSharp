@@ -36,9 +36,14 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary><para kind="tool">Determines if this action has run to completion</para></summary>
-        <value></value>
-        <remarks><para kind="tool">True if this particular action has completed execution.</para></remarks>
+        <summary>
+          <para kind="tool">Determines if this action has run to completion</para>
+        </summary>
+        <value>
+        </value>
+        <remarks>
+          <para kind="tool">True if this particular action has completed execution.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">
@@ -52,9 +57,15 @@
         <Parameter Name="dt" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="dt"><para kind="tool">Delta time since the last invocation</para></param>
-        <summary><para kind="tool">Called every frame with it's delta time.</para></summary>
-        <remarks><para kind="tool">In general, you do not need to override this method, you are better off just overriding Update.</para></remarks>
+        <param name="dt">
+          <para kind="tool">Delta time since the last invocation</para>
+        </param>
+        <summary>
+          <para kind="tool">Called every frame with it's delta time.</para>
+        </summary>
+        <remarks>
+          <para kind="tool">In general, you do not need to override this method, you are better off just overriding Update.</para>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -68,9 +79,14 @@
         <Parameter Name="time" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="time"><para kind="tool">A value between 0 and 1 representing the state of the action (0 is the start, 0.5 is the middle, 1 is the end).</para></param>
-        <summary><para kind="tool">This method is invoked once per frame</para></summary>
-        <remarks></remarks>
+        <param name="time">
+          <para kind="tool">A value between 0 and 1 representing the state of the action (0 is the start, 0.5 is the middle, 1 is the end).</para>
+        </param>
+        <summary>
+          <para kind="tool">This method is invoked once per frame</para>
+        </summary>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

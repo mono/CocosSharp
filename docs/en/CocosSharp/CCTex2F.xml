@@ -14,16 +14,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTex2F (float inu, float inv);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 inu, float32 inv) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTex2F (float u, float v);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 u, float32 v) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inu" Type="System.Single" />
-        <Parameter Name="inv" Type="System.Single" />
+        <Parameter Name="u" Type="System.Single" />
+        <Parameter Name="v" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="inu">To be added.</param>
-        <param name="inv">To be added.</param>
+        <param name="u">To be added.</param>
+        <param name="v">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

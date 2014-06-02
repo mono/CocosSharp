@@ -23,30 +23,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="_jsControlled">
-      <MemberSignature Language="C#" Value="public bool _jsControlled;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool _jsControlled" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="_owner">
-      <MemberSignature Language="C#" Value="public object _owner;" />
-      <MemberSignature Language="ILAsm" Value=".field public object _owner" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ActionForCallbackChannel">
       <MemberSignature Language="C#" Value="public object ActionForCallbackChannel (CocosSharp.CCBSequenceProperty channel);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance object ActionForCallbackChannel(class CocosSharp.CCBSequenceProperty channel) cil managed" />
@@ -303,17 +279,16 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Init">
-      <MemberSignature Language="C#" Value="public virtual bool Init ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance bool Init() cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="JSControlled">
+      <MemberSignature Language="C#" Value="public bool JSControlled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool JSControlled" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <returns>To be added.</returns>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -332,6 +307,19 @@
         <param name="fromNode">To be added.</param>
         <param name="toNode">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Owner">
+      <MemberSignature Language="C#" Value="public object Owner { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object Owner" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Object</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -14,18 +14,18 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCVertex3F (float inx, float iny, float inz);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 inx, float32 iny, float32 inz) cil managed" />
+      <MemberSignature Language="C#" Value="public CCVertex3F (float x, float y, float z);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 x, float32 y, float32 z) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="inx" Type="System.Single" />
-        <Parameter Name="iny" Type="System.Single" />
-        <Parameter Name="inz" Type="System.Single" />
+        <Parameter Name="x" Type="System.Single" />
+        <Parameter Name="y" Type="System.Single" />
+        <Parameter Name="z" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="inx">To be added.</param>
-        <param name="iny">To be added.</param>
-        <param name="inz">To be added.</param>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="z">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -26,16 +26,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionPageTurn ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>Creates a base transition with duration and incoming scene. If back is true then the effect is reversed to appear as if the incoming scene is being turned from left over the outgoing scene. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCTransitionPageTurn (float t, CocosSharp.CCScene scene, bool backwards);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene, bool backwards) cil managed" />
       <MemberType>Constructor</MemberType>

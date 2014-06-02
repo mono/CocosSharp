@@ -100,18 +100,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="_hasScriptingOwner">
-      <MemberSignature Language="C#" Value="public bool _hasScriptingOwner;" />
-      <MemberSignature Language="ILAsm" Value=".field public bool _hasScriptingOwner" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddDocumentCallbackName">
       <MemberSignature Language="C#" Value="public void AddDocumentCallbackName (string name);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddDocumentCallbackName(string name) cil managed" />

@@ -16,16 +16,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBRotateYTo (float fDuration, float fAngle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 fDuration, float32 fAngle) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBRotateYTo (float duration, float angle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 angle) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="fDuration" Type="System.Single" />
-        <Parameter Name="fAngle" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="fDuration">To be added.</param>
-        <param name="fAngle">To be added.</param>
+        <param name="duration">To be added.</param>
+        <param name="angle">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

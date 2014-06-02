@@ -63,7 +63,6 @@
       <Type Name="CCSimpleAudioEngine" Kind="Class" />
     </Namespace>
     <Namespace Name="CocosSharp">
-      <Type Name="ArrayPool`1" DisplayName="ArrayPool&lt;T&gt;" Kind="Class" />
       <Type Name="BlockCCControlData" Kind="Class" />
       <Type Name="BlockData" Kind="Class" />
       <Type Name="CCAccelAmplitude" Kind="Class" />
@@ -425,7 +424,6 @@
       <Type Name="CCRotateByState" Kind="Class" />
       <Type Name="CCRotateTo" Kind="Class" />
       <Type Name="CCRotateToState" Kind="Class" />
-      <Type Name="CCSAXParser" Kind="Class" />
       <Type Name="CCScale9Sprite" Kind="Class" />
       <Type Name="CCScale9SpriteFile" Kind="Class" />
       <Type Name="CCScale9SpriteFrame" Kind="Class" />
@@ -612,7 +610,6 @@
       <Type Name="PlistString" Kind="Class" />
     </Namespace>
     <Namespace Name="CocosSharp">
-      <Type Name="ArrayPool`1" DisplayName="ArrayPool&lt;T&gt;" Kind="Class" />
       <Type Name="BlockCCControlData" Kind="Class" />
       <Type Name="BlockData" Kind="Class" />
       <Type Name="CCAccelAmplitude" Kind="Class" />
@@ -974,7 +971,6 @@
       <Type Name="CCRotateByState" Kind="Class" />
       <Type Name="CCRotateTo" Kind="Class" />
       <Type Name="CCRotateToState" Kind="Class" />
-      <Type Name="CCSAXParser" Kind="Class" />
       <Type Name="CCScale9Sprite" Kind="Class" />
       <Type Name="CCScale9SpriteFile" Kind="Class" />
       <Type Name="CCScale9SpriteFrame" Kind="Class" />

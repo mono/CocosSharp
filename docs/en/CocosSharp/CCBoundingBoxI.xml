@@ -14,20 +14,20 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCBoundingBoxI (int minx, int miny, int maxx, int maxy);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 minx, int32 miny, int32 maxx, int32 maxy) cil managed" />
+      <MemberSignature Language="C#" Value="public CCBoundingBoxI (int minX, int minY, int maxX, int maxY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 minX, int32 minY, int32 maxX, int32 maxY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="minx" Type="System.Int32" />
-        <Parameter Name="miny" Type="System.Int32" />
-        <Parameter Name="maxx" Type="System.Int32" />
-        <Parameter Name="maxy" Type="System.Int32" />
+        <Parameter Name="minX" Type="System.Int32" />
+        <Parameter Name="minY" Type="System.Int32" />
+        <Parameter Name="maxX" Type="System.Int32" />
+        <Parameter Name="maxY" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="minx">To be added.</param>
-        <param name="miny">To be added.</param>
-        <param name="maxx">To be added.</param>
-        <param name="maxy">To be added.</param>
+        <param name="minX">To be added.</param>
+        <param name="minY">To be added.</param>
+        <param name="maxX">To be added.</param>
+        <param name="maxY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -105,17 +105,17 @@
       </Docs>
     </Member>
     <Member MemberName="ExpandToRect">
-      <MemberSignature Language="C#" Value="public void ExpandToRect (ref CocosSharp.CCBoundingBoxI r);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExpandToRect(valuetype CocosSharp.CCBoundingBoxI r) cil managed" />
+      <MemberSignature Language="C#" Value="public void ExpandToRect (ref CocosSharp.CCBoundingBoxI rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ExpandToRect(valuetype CocosSharp.CCBoundingBoxI rect) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="r" Type="CocosSharp.CCBoundingBoxI&amp;" RefType="ref" />
+        <Parameter Name="rect" Type="CocosSharp.CCBoundingBoxI&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="r">To be added.</param>
+        <param name="rect">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

@@ -16,16 +16,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionFlipY ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCTransitionFlipY (float t, CocosSharp.CCScene s, CocosSharp.CCTransitionOrientation o);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene s, valuetype CocosSharp.CCTransitionOrientation o) cil managed" />
       <MemberType>Constructor</MemberType>
