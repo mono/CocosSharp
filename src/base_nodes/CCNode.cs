@@ -165,11 +165,11 @@ namespace CocosSharp
 					{
 						if (value)
 						{
-							CCDirector.SharedDirector.KeypadDispatcher.AddDelegate(this);
+							Director.KeypadDispatcher.AddDelegate(this);
 						}
 						else
 						{
-							CCDirector.SharedDirector.KeypadDispatcher.RemoveDelegate(this);
+							Director.KeypadDispatcher.RemoveDelegate(this);
 						}
 					}
 				}
