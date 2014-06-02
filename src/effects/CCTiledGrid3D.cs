@@ -50,7 +50,7 @@ namespace CocosSharp
 		{
 		}
 
-		public CCTiledGrid3D(CCGridSize gridSize) : base(gridSize)
+		public CCTiledGrid3D(CCGridSize gridSize, CCDirector director) : base(gridSize, director)
 		{
 		}
 

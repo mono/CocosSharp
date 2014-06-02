@@ -18,6 +18,7 @@ namespace CocosSharp
 		public CCGridSize GridSize { get; private set; }
 		public CCPoint Step { get; private set; } 						// pixels between the grids 
 
+		protected CCDirector Director { get; private set; }
 		protected CCDirectorProjection DirectorProjection { get; set; }
 		protected CCGrabber Grabber { get; set; }
 		protected CCTexture2D Texture { get; set; }
@@ -28,10 +29,9 @@ namespace CocosSharp
             set
             {
                 active = value;
-                if (!active)
+				if (!active && Director != null)
                 {
-                    CCDirector director = CCDirector.SharedDirector;
-                    director.Projection = director.Projection;
+					Director.Projection = Director.Projection;
                 }
             }
         }
@@ -54,11 +54,14 @@ namespace CocosSharp
 
 		#region Constructors
 
-		protected CCGridBase(CCGridSize gridSize, CCTexture2D texture, bool flipped=false)
+		protected CCGridBase(CCGridSize gridSize, CCTexture2D texture, bool flipped=false, CCDirector director=null)
         {
             GridSize = gridSize;
 			Texture = texture;
 			textureFlipped = flipped;
+
+			director = director == null ? CCDirector.SharedDirector : director;
+			Director = director;
 
 			CCSize texSize = Texture.ContentSize;
 			Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
@@ -72,13 +75,13 @@ namespace CocosSharp
             CalculateVertexPoints();
         }
 			
-		protected CCGridBase(CCGridSize gridSize, CCSize size) 
+		protected CCGridBase(CCGridSize gridSize, CCSize size, CCDirector director=null) 
 			: this(gridSize, new CCTexture2D((int)size.Width, (int)size.Height, CCSurfaceFormat.Color, true, false))
 		{
 		}
 
-		protected CCGridBase(CCGridSize gridSize) 
-			: this(gridSize, CCDirector.SharedDirector.WinSizeInPixels)
+		protected CCGridBase(CCGridSize gridSize, CCDirector director) 
+			: this(gridSize, director.WinSizeInPixels, director)
         {
         }
 
@@ -91,7 +94,7 @@ namespace CocosSharp
 
 		public virtual void BeforeDraw()
 		{
-			DirectorProjection = CCDirector.SharedDirector.Projection;
+			DirectorProjection = Director.Projection;
 
 			Grabber.BeforeRender(Texture);
 
@@ -102,7 +105,7 @@ namespace CocosSharp
 		{
 			Grabber.AfterRender(Texture);
 
-			CCDirector.SharedDirector.Projection = DirectorProjection;
+			Director.Projection = DirectorProjection;
 
 			if (target.Camera.IsDirty)
 			{

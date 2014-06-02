@@ -59,7 +59,7 @@ namespace CocosSharp
 
         public CCSplitColsState(CCSplitCols action, CCNode target) : base(action, target)
         {
-            WinSize = CCDirector.SharedDirector.WinSizeInPixels;
+			WinSize = Director.WinSizeInPixels;
         }
 
         public override void Update(float time)

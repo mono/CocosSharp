@@ -4,19 +4,8 @@ namespace CocosSharp
 {
     public class CCTwirl : CCGrid3DAction
     {
-        CCPoint position;
-
         public int Twirls { get; private set; }
-        public CCPoint PositionInPixels { get; private set; }
-        public CCPoint Position
-        {
-            get { return position; }
-            private set
-            {
-                position = value;
-                PositionInPixels = value * CCDirector.SharedDirector.ContentScaleFactor;
-            }
-        }
+		public CCPoint Position { get; private set; }
 
 
         #region Constructors
@@ -52,7 +41,7 @@ namespace CocosSharp
         public CCTwirlState(CCTwirl action, CCNode target) : base(action, target)
         {
             Twirls = action.Twirls;
-            PositionInPixels = action.PositionInPixels;
+			PositionInPixels = action.Position * Director.ContentScaleFactor;
         }
 
         public override void Update(float time)

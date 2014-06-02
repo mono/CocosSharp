@@ -47,7 +47,7 @@ namespace CocosSharp
                 }
                 else
                 {
-                    grid3D = new CCGrid3D(GridSize);
+					grid3D = new CCGrid3D(GridSize, Director);
                 }
 
                 return grid3D;

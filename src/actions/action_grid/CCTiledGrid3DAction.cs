@@ -39,7 +39,7 @@ namespace CocosSharp
         {
             get
             {
-                tiledGrid3D = new CCTiledGrid3D(GridSize);
+				tiledGrid3D = new CCTiledGrid3D(GridSize, Director);
                 return tiledGrid3D;
             }
             protected set
