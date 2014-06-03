@@ -131,7 +131,7 @@ namespace CocosSharp
         {
             foreach(CCMenuItem item in items) 
             {
-                subItems.Remove();
+                subItems.Remove(item);
             }
         }
 
