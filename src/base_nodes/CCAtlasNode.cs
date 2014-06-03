@@ -25,11 +25,11 @@ namespace CocosSharp
          
         public CCTextureAtlas TextureAtlas { get; set; }
 
-		public bool IsAntialiased
-		{
-			get { return Texture.IsAntialiased; }
-			set { Texture.IsAntialiased = value; }
-		}
+        public bool IsAntialiased
+        {
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
 
         public override bool IsColorModifiedByOpacity
         {
