@@ -74,9 +74,7 @@ namespace tests
             CCMenuItemToggle item4 = new CCMenuItemToggle(this.menuCallback,
                 new CCMenuItemFont("Off"));
 
-            item4.SubItems.Add(new CCMenuItemFont("33%"));
-            item4.SubItems.Add(new CCMenuItemFont("66%"));
-				item4.SubItems.Add(new CCMenuItemFont("100%"));
+            item4.AddToggleMenuItems(new CCMenuItemFont ("33%"), new CCMenuItemFont ("66%"), new CCMenuItemFont ("100%"));
 
             // you can change the one of the items by doing this
             item4.SelectedIndex = 2;

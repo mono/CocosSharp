@@ -127,6 +127,14 @@ namespace CocosSharp
             }
         }
 
+        public void RemoveToggleMenuItems(params CCMenuItem[] items)
+        {
+            foreach(CCMenuItem item in items) 
+            {
+                subItems.Remove();
+            }
+        }
+
         #endregion Adding/removing
 
                     
