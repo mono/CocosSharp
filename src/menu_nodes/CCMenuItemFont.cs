@@ -8,7 +8,6 @@ namespace CocosSharp
         #region Properties
 
         public static uint FontSize { get; set; }
-
         public static string FontName { get; set; }
 
         #endregion Properties
@@ -18,8 +17,7 @@ namespace CocosSharp
 
         public CCMenuItemFont (string labelString, Action<object> selector = null) 
             : base(new CCLabelTtf(labelString, FontName, FontSize), selector)
-        { 
-
+        {
         }
 
         #endregion Constructors

@@ -12,7 +12,6 @@ namespace CocosSharp
         public CCColor3B DisabledColor { get; set; }
         protected CCColor3B ColorBackup { get; set; }
 
-
         public override bool Selected
         {
             set 
@@ -100,6 +99,9 @@ namespace CocosSharp
             {
                 LabelWillChange(label, value);
                 label = value;
+
+                if(label !=null && Director != null)
+                    label.Director = Director;
             }
         }
 
@@ -121,6 +123,20 @@ namespace CocosSharp
                     }
                 }
                 base.Enabled = value;
+            }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null && Label != null)
+                {
+                    label.Director = value;
+                }
             }
         }
 
@@ -152,6 +168,9 @@ namespace CocosSharp
             {
                 LabelWillChange(labelAtlas, value);
                 labelAtlas = value;
+
+                if(labelAtlas != null && Director != null)
+                    labelAtlas.Director = Director;
             }
         }
 
@@ -173,6 +192,20 @@ namespace CocosSharp
                     }
                 }
                 base.Enabled = value;
+            }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null && LabelAtlas != null)
+                {
+                    LabelAtlas.Director = value;
+                }
             }
         }
 
@@ -219,6 +252,9 @@ namespace CocosSharp
             {
                 LabelWillChange(labelTTF, value);
                 labelTTF = value;
+
+                if(labelTTF != null && Director != null)
+                    labelTTF.Director = Director;
             }
         }
 
@@ -240,6 +276,20 @@ namespace CocosSharp
                     }
                 }
                 base.Enabled = value;
+            }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null && LabelTTF != null)
+                {
+                    LabelTTF.Director = value;
+                }
             }
         }
 
@@ -276,6 +326,9 @@ namespace CocosSharp
             {
                 LabelWillChange(labelBMFont, value);
                 labelBMFont = value;
+
+                if(labelBMFont != null && Director != null)
+                    labelBMFont.Director = Director;
             }
         }
 
@@ -297,6 +350,20 @@ namespace CocosSharp
                     }
                 }
                 base.Enabled = value;
+            }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null && LabelBMFont != null)
+                {
+                    LabelBMFont.Director = value;
+                }
             }
         }
 

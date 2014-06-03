@@ -32,6 +32,20 @@ namespace CocosSharp
 
         protected CCActionState ZoomActionState { get; set; }
 
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null)
+                {
+                    AnchorPoint = new CCPoint(0.5f, 0.5f);
+                }
+            }
+        }
+
         #endregion Properties
 
 
@@ -43,7 +57,6 @@ namespace CocosSharp
             
         public CCMenuItem(Action<object> target)
         {
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
             Target = target;
             Enabled = true;
         }

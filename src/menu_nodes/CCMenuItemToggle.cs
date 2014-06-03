@@ -8,15 +8,13 @@ namespace CocosSharp
     {
         CCMenuItem previouslySelectedItem;
         int selectedIndex;
-
+        List<CCMenuItem> subItems;
 
         #region Properties
 
-        public List<CCMenuItem> SubItems { get; set; }
-
         public CCMenuItem SelectedItem 
         {
-            get { return SubItems[SelectedIndex]; }
+            get { return subItems[SelectedIndex]; }
         }
 
         public int SelectedIndex
@@ -24,7 +22,7 @@ namespace CocosSharp
             get { return selectedIndex; }
             set
             {
-                if (value != selectedIndex && SubItems.Count > 0)
+                if (value != selectedIndex && subItems.Count > 0)
                 {
                     selectedIndex = value;
                     if (previouslySelectedItem != null)
@@ -32,7 +30,7 @@ namespace CocosSharp
                         previouslySelectedItem.RemoveFromParent(false);
                     }
 
-                    CCMenuItem selectedItem = SubItems[selectedIndex];
+                    CCMenuItem selectedItem = subItems[selectedIndex];
                     AddChild(selectedItem, 0);
 
                     CCSize itemContentSize = selectedItem.ContentSize;
@@ -50,9 +48,9 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                if (SubItems != null) 
+                if (subItems != null) 
                 {
-                    foreach (CCMenuItem item in SubItems) {
+                    foreach (CCMenuItem item in subItems) {
                         item.Enabled = value;
                     }
                 }
@@ -64,7 +62,24 @@ namespace CocosSharp
             set
             {
                 base.Selected = value;
-                SubItems[selectedIndex].Selected = value;
+                subItems[selectedIndex].Selected = value;
+            }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if(value != null && subItems !=null)
+                {
+                    foreach(CCMenuItem item in subItems) 
+                    {
+                        item.Director = value;
+                    }
+                }
             }
         }
 
@@ -78,7 +93,7 @@ namespace CocosSharp
         {
             Debug.Assert(items != null && items.Length > 0, "List of toggle items must be non-empty");
 
-            SubItems = new List<CCMenuItem>(items);
+            AddToggleMenuItems(items);
 
             selectedIndex = int.MaxValue;
 
@@ -96,13 +111,31 @@ namespace CocosSharp
 
         #endregion Constructors
 
+
+        #region Adding/removing subitems
+
+        public void AddToggleMenuItems(params CCMenuItem[] items)
+        {
+            if (subItems == null)
+                subItems = new List<CCMenuItem> ();
+
+            foreach(CCMenuItem item in items) 
+            {
+                subItems.Add(item);
+                if (Director != null)
+                    item.Director = Director;
+            }
+        }
+
+        #endregion Adding/removing
+
                     
         public override void Activate()
         {
             // update index
             if (Enabled)
             {
-                int newIndex = (SelectedIndex + 1) % SubItems.Count;
+                int newIndex = (SelectedIndex + 1) % subItems.Count;
                 SelectedIndex = newIndex;
             }
             base.Activate();

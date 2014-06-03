@@ -12,6 +12,7 @@ namespace CocosSharp
 
         CCPoint originalScale;
 
+
         #region Properties
 
         public CCSprite NormalImage
