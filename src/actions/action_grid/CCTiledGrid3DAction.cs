@@ -39,7 +39,8 @@ namespace CocosSharp
         {
             get
             {
-				tiledGrid3D = new CCTiledGrid3D(GridSize, Director);
+                tiledGrid3D = new CCTiledGrid3D(GridSize, Director.WinSizeInPixels);
+                tiledGrid3D.Director = Director;
                 return tiledGrid3D;
             }
             protected set

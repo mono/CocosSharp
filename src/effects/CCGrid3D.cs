@@ -2,101 +2,97 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-	#region Structs
+    #region Structs
 
-	internal struct CCV3F_T2F : IVertexType
+    internal struct CCV3F_T2F : IVertexType
     {
         internal static readonly VertexDeclaration VertexDeclaration;
 
-		internal CCVertex3F Vertices; // 12 bytes
-		internal CCTex2F TexCoords; // 8 byts
+        internal CCVertex3F Vertices; // 12 bytes
+        internal CCTex2F TexCoords; // 8 byts
 
-		VertexDeclaration IVertexType.VertexDeclaration
-		{
-			get { return VertexDeclaration; }
-		}
+        VertexDeclaration IVertexType.VertexDeclaration
+        {
+            get { return VertexDeclaration; }
+        }
 
         static CCV3F_T2F()
         {
             var elements = new[]
-                {
-                    new VertexElement(0, VertexElementFormat.Vector3, VertexElementUsage.Position, 0),
-                    new VertexElement(12, VertexElementFormat.Vector2, VertexElementUsage.TextureCoordinate, 0)
-                };
+            {
+                new VertexElement(0, VertexElementFormat.Vector3, VertexElementUsage.Position, 0),
+                new VertexElement(12, VertexElementFormat.Vector2, VertexElementUsage.TextureCoordinate, 0)
+            };
             VertexDeclaration = new VertexDeclaration(elements);
         }
     }
 
-	#endregion Structs
+    #endregion Structs
 
 
     // CCGrid3D is a 3D grid implementation. Each vertex has 3 dimensions: x,y,z
     public class CCGrid3D : CCGridBase
     {
-		bool dirty;
+        bool dirty;
 
-		CCIndexBuffer<ushort> indexBuffer;
-		CCVertexBuffer<CCV3F_T2F> vertexBuffer;
-
-
-		#region Properties
-
-		protected ushort[] Indices { get; private set; }
-		protected CCVertex3F[] OriginalVertices { get; private set; }
-		internal CCV3F_T2F[] Vertices { get; private set; }
+        CCIndexBuffer<ushort> indexBuffer;
+        CCVertexBuffer<CCV3F_T2F> vertexBuffer;
 
 
-		#endregion Properties
+        #region Properties
+
+        protected ushort[] Indices { get; private set; }
+        protected CCVertex3F[] OriginalVertices { get; private set; }
+        internal CCV3F_T2F[] Vertices { get; private set; }
 
 
-		#region Constructors
-
-		public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
-		{
-		}
-
-		public CCGrid3D(CCGridSize gridSize, CCDirector director) : base(gridSize, director)
-		{
-		}
-
-		public CCGrid3D(CCGridSize gridSize, CCSize size) : base(gridSize, size)
-		{
-		}
-
-		#endregion Constructors
+        #endregion Properties
 
 
-		#region Vertex Indexers
+        #region Constructors
 
-		public CCVertex3F this[CCGridSize pos]
-		{
-			get { return this[pos.X, pos.Y]; }
-			set { this[pos.X, pos.Y] = value; }
-		}
+        public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
+        {
+        }
 
-		public CCVertex3F this[int x, int y]
-		{
-			get { return Vertices[x * (GridSize.Y + 1) + y].Vertices; }
-			set 
-			{
-				Vertices[x * (GridSize.Y + 1) + y].Vertices = value;
-				dirty = true;
-			}
-		}
+        public CCGrid3D(CCGridSize gridSize, CCSize size) : base(gridSize, size)
+        {
+        }
+
+        #endregion Constructors
+
+
+        #region Vertex Indexers
+
+        public CCVertex3F this[CCGridSize pos]
+        {
+            get { return this[pos.X, pos.Y]; }
+            set { this[pos.X, pos.Y] = value; }
+        }
+
+        public CCVertex3F this[int x, int y]
+        {
+            get { return Vertices[x * (GridSize.Y + 1) + y].Vertices; }
+            set 
+            {
+                Vertices[x * (GridSize.Y + 1) + y].Vertices = value;
+                dirty = true;
+            }
+        }
 
         // returns the original (non-transformed) vertex at a given position
         public CCVertex3F OriginalVertex(CCGridSize pos)
         {
             return OriginalVertices[pos.X * (GridSize.Y + 1) + pos.Y];
         }
-			
-		// returns the original (non-transformed) vertex at a given position
-		public CCVertex3F OriginalVertex(int x, int y)
-		{
-			return OriginalVertices[x * (GridSize.Y + 1) + y];
-		}
 
-		#endregion Vertex Indexers
+        // returns the original (non-transformed) vertex at a given position
+        public CCVertex3F OriginalVertex(int x, int y)
+        {
+            return OriginalVertices[x * (GridSize.Y + 1) + y];
+        }
+
+        #endregion Vertex Indexers
 
 
         public override void Blit()
@@ -133,7 +129,7 @@ namespace CocosSharp
 
             int numOfPoints = (GridSize.X + 1) * (GridSize.Y + 1);
 
-			vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
+            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
             vertexBuffer.Count = numOfPoints;
             indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly);
             indexBuffer.Count = GridSize.X * GridSize.Y * 6;
@@ -209,7 +205,7 @@ namespace CocosSharp
 
                         vertArray[tex1[i]].TexCoords.U = tex2[i].X / width;
 
-						if (TextureFlipped)
+                        if (TextureFlipped)
                         {
                             vertArray[tex1[i]].TexCoords.V = tex2[i].Y / height;
                         }
