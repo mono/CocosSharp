@@ -456,8 +456,6 @@ namespace CocosSharp
                 {
                     director = value;
 
-                    RunningOnNewWindow(value.WinSize);
-
                     // All the children should belong to same director
                     if (Children != null) 
                     {
@@ -466,6 +464,8 @@ namespace CocosSharp
                             child.Director = director;
                         }
                     }
+
+                    RunningOnNewWindow(value.WinSize);
                 }
             }
         }
