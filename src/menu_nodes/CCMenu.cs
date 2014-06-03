@@ -37,21 +37,21 @@ namespace CocosSharp
         public CCMenuItem FocusedItem
         {
             get 
-			{ 
-				CCMenuItem focusedItem = null;
+            { 
+                CCMenuItem focusedItem = null;
 
-				foreach (CCMenuItem item in menuItems) 
-				{
-					if (item.HasFocus) 
-					{
-						focusedItem = item;
-						break;
-					}
-				}
-				return focusedItem; 
-			}
+                foreach (CCMenuItem item in menuItems) 
+                {
+                    if (item.HasFocus) 
+                    {
+                        focusedItem = item;
+                        break;
+                    }
+                }
+                return focusedItem; 
+            }
         }
-            
+
         public override bool HasFocus
         {
             set
@@ -66,41 +66,41 @@ namespace CocosSharp
             }
         }
 
-		internal override CCDirector Director 
-		{ 
-			get { return base.Director; }
-			set 
-			{
-				base.Director = value;
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
 
-				if (value != null)
-				{
-					CCSize contentSize = value.WinSize;
-					Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
+                if (value != null)
+                {
+                    CCSize contentSize = value.WinSize;
+                    Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
                     ContentSize = contentSize;
 
-					var touchListener = new CCEventListenerTouchOneByOne();
-					touchListener.IsSwallowTouches = true;
+                    var touchListener = new CCEventListenerTouchOneByOne();
+                    touchListener.IsSwallowTouches = true;
 
-					touchListener.OnTouchBegan = TouchBegan;
-					touchListener.OnTouchMoved = TouchMoved;
-					touchListener.OnTouchEnded = TouchEnded;
-					touchListener.OnTouchCancelled = TouchCancelled;
+                    touchListener.OnTouchBegan = TouchBegan;
+                    touchListener.OnTouchMoved = TouchMoved;
+                    touchListener.OnTouchEnded = TouchEnded;
+                    touchListener.OnTouchCancelled = TouchCancelled;
 
-					AddEventListener(touchListener);
+                    AddEventListener(touchListener);
 
                     AnchorPoint = new CCPoint(0.5f, 0.5f);
                     IgnoreAnchorPointForPosition = true;
-				}
-			}
-		}
+                }
+            }
+        }
 
         #endregion Properties
 
 
         #region Constructors
 
-		public CCMenu(params CCMenuItem[] items) : base()
+        public CCMenu(params CCMenuItem[] items) : base()
         {
             Enabled = true;
 
@@ -130,14 +130,14 @@ namespace CocosSharp
         {
             this.AddChild(menuItem, menuItem.ZOrder);
         }
-        
+
         public void AddChild(CCMenuItem menuItem, int zOrder, int tag=0)
         {
             base.AddChild(menuItem, zOrder);
 
             menuItems.Add(menuItem);
         }
-        
+
         public void RemoveChild(CCMenuItem menuItem, bool cleanup)
         {
             if (SelectedMenuItem == menuItem)
@@ -205,73 +205,73 @@ namespace CocosSharp
         }
 
 
-		bool TouchBegan(CCTouch touch, CCEvent touchEvent)
-		{
-			if (MenuState != CCMenuState.Waiting || !Visible || !Enabled)
-			{
-				return false;
-			}
+        bool TouchBegan(CCTouch touch, CCEvent touchEvent)
+        {
+            if (MenuState != CCMenuState.Waiting || !Visible || !Enabled)
+            {
+                return false;
+            }
 
-			for (CCNode c = Parent; c != null; c = c.Parent)
-			{
-				if (c.Visible == false)
-				{
-					return false;
-				}
-			}
+            for (CCNode c = Parent; c != null; c = c.Parent)
+            {
+                if (c.Visible == false)
+                {
+                    return false;
+                }
+            }
 
-			SelectedMenuItem = ItemForTouch(touch);
-			if (SelectedMenuItem != null)
-			{
-				MenuState = CCMenuState.TrackingTouch;
-				SelectedMenuItem.Selected = true;
-				return true;
-			}
-			return false;
-		}
+            SelectedMenuItem = ItemForTouch(touch);
+            if (SelectedMenuItem != null)
+            {
+                MenuState = CCMenuState.TrackingTouch;
+                SelectedMenuItem.Selected = true;
+                return true;
+            }
+            return false;
+        }
 
-		void TouchEnded(CCTouch touch, CCEvent touchEvent)
-		{
-			Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu TouchEnded] -- invalid state");
-			if (SelectedMenuItem != null)
-			{
-				SelectedMenuItem.Selected = false;
-				SelectedMenuItem.Activate();
-			}
-			MenuState = CCMenuState.Waiting;
-		}
+        void TouchEnded(CCTouch touch, CCEvent touchEvent)
+        {
+            Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu TouchEnded] -- invalid state");
+            if (SelectedMenuItem != null)
+            {
+                SelectedMenuItem.Selected = false;
+                SelectedMenuItem.Activate();
+            }
+            MenuState = CCMenuState.Waiting;
+        }
 
-		void TouchCancelled(CCTouch touch, CCEvent touchEvent)
-		{
-			Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu ccTouchCancelled] -- invalid state");
-			if (SelectedMenuItem != null)
-			{
-				SelectedMenuItem.Selected = false;
-			}
-			MenuState = CCMenuState.Waiting;
-		}
+        void TouchCancelled(CCTouch touch, CCEvent touchEvent)
+        {
+            Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu ccTouchCancelled] -- invalid state");
+            if (SelectedMenuItem != null)
+            {
+                SelectedMenuItem.Selected = false;
+            }
+            MenuState = CCMenuState.Waiting;
+        }
 
-		void TouchMoved(CCTouch touch, CCEvent touchEvent)
-		{
-			Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu TouchMoved] -- invalid state");
-			CCMenuItem currentItem = ItemForTouch(touch);
+        void TouchMoved(CCTouch touch, CCEvent touchEvent)
+        {
+            Debug.Assert(MenuState == CCMenuState.TrackingTouch, "[Menu TouchMoved] -- invalid state");
+            CCMenuItem currentItem = ItemForTouch(touch);
 
-			if (currentItem != SelectedMenuItem)
-			{
-				if(SelectedMenuItem != null)
-				{
-					SelectedMenuItem.Selected = false;
-				}
+            if (currentItem != SelectedMenuItem)
+            {
+                if(SelectedMenuItem != null)
+                {
+                    SelectedMenuItem.Selected = false;
+                }
 
-				if(currentItem != null)
-				{
-					currentItem.Selected = true;
-				}
+                if(currentItem != null)
+                {
+                    currentItem.Selected = true;
+                }
 
-				SelectedMenuItem = currentItem;
-			}
+                SelectedMenuItem = currentItem;
+            }
 
-		}
+        }
 
         #endregion Touch events
 
@@ -293,7 +293,7 @@ namespace CocosSharp
                         width = Math.Max(width, menuItem.ContentSize.Width);
                     }
                 }
-            
+
                 float y = height / 2.0f;
 
                 foreach (CCMenuItem menuItem in menuItems)

@@ -71,7 +71,7 @@ namespace CocosSharp
                 RemoveChild(oldValue, true);
             }
         }
-            
+
         public override void Activate()
         {
             if (Enabled)
@@ -85,7 +85,7 @@ namespace CocosSharp
     }
 
 
-#if !WINDOWS_PHONE
+    #if !WINDOWS_PHONE
     public class CCMenuItemLabel : CCMenuItemLabelBase
     {
         CCLabel label;
@@ -123,7 +123,7 @@ namespace CocosSharp
                 base.Enabled = value;
             }
         }
-            
+
         #endregion Properties
 
 
@@ -136,7 +136,7 @@ namespace CocosSharp
 
         #endregion Constructors
     }
-#endif
+    #endif
 
     public class CCMenuItemLabelAtlas : CCMenuItemLabelBase
     {
@@ -189,7 +189,7 @@ namespace CocosSharp
         public CCMenuItemLabelAtlas(Action<object> target) : this(null, target)
         {
         }
-                        
+
         public CCMenuItemLabelAtlas(string value, string charMapFile, int itemWidth, int itemHeight, char startCharMap, 
             ICCUpdatable updatable, Action<object> target) 
             : this(new CCLabelAtlas(value, charMapFile, itemWidth, itemHeight, startCharMap), target)
@@ -253,10 +253,10 @@ namespace CocosSharp
             LabelTTF = labelTTF;
         }
 
-		public CCMenuItemLabelTTF(Action<object> target = null) : base(target)
-		{
+        public CCMenuItemLabelTTF(Action<object> target = null) : base(target)
+        {
 
-		}
+        }
 
         #endregion Constructors
     }
