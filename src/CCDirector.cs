@@ -57,55 +57,55 @@ namespace CocosSharp
     public abstract class CCDirector
     {
 
-		public static string EVENT_PROJECTION_CHANGED = "director_projection_changed";
-		public static string EVENT_AFTER_UPDATE = "director_after_update";
-		public static string EVENT_AFTER_VISIT = "director_after_visit";
-		public static string EVENT_AFTER_DRAW = "director_after_draw";
+        public static string EVENT_PROJECTION_CHANGED = "director_projection_changed";
+        public static string EVENT_AFTER_UPDATE = "director_after_update";
+        public static string EVENT_AFTER_VISIT = "director_after_visit";
+        public static string EVENT_AFTER_DRAW = "director_after_draw";
 
-		static CCDirector sharedDirector;
+        static CCDirector sharedDirector;
 
-		readonly float defaultFPS = 60f;
-		readonly List<CCScene> scenesStack = new List<CCScene>();
-		
-		CCDirectorProjection directorProjection;
+        readonly float defaultFPS = 60f;
+        readonly List<CCScene> scenesStack = new List<CCScene>();
 
-		float deltaTime;
-		bool isNeedsInit = true;
-		CCScene nextScene;
+        CCDirectorProjection directorProjection;
+
+        float deltaTime;
+        bool isNeedsInit = true;
+        CCScene nextScene;
 
 #if !NETFX_CORE
-		public CCAccelerometer Accelerometer { get; set; }
-		const string storageDirName = "CocosSharpDirector";
-		const string saveFileName = "SceneList.dat";
-		const string sceneSaveFileName = "Scene{0}.dat";
+        public CCAccelerometer Accelerometer { get; set; }
+        const string storageDirName = "CocosSharpDirector";
+        const string saveFileName = "SceneList.dat";
+        const string sceneSaveFileName = "Scene{0}.dat";
 #endif
-		public CCEventDispatcher EventDispatcher { get; set; }
-		CCEventCustom eventAfterDraw;
-		CCEventCustom eventAfterVisit;
-		CCEventCustom eventAfterUpdate;
-		CCEventCustom eventProjectionChanged;
+        public CCEventDispatcher EventDispatcher { get; private set; }
+        CCEventCustom eventAfterDraw;
+        CCEventCustom eventAfterVisit;
+        CCEventCustom eventAfterUpdate;
+        CCEventCustom eventProjectionChanged;
 
-		public CCActionManager ActionManager { get; set; }
-		public virtual double AnimationInterval { get; set; }
-		public float ContentScaleFactor { get; set; }
-		/// <summary>
-		/// Set to true if this platform has a game pad connected.
-		/// </summary>
-		public bool GamePadEnabled { get; set; }
-		public bool IsNextDeltaTimeZero { get; set; }
-		public bool IsPaused { get; private set; }
-		protected bool IsPurgeDirectorInNextLoop { get; set; } // this flag will be set to true in end()
-		public bool IsSendCleanupToScene { get; private set; }
-		public CCNode NotificationNode { get; set; }
-		protected double OldAnimationInterval { get; set; }
-		public ICCDirectorDelegate ProjectionDelegate { get; set; }
-		public CCScene RunningScene { get; private set; }
-		public CCScheduler Scheduler { get; set; }
-		internal CCSize WinSizeInPoints { get; set; }
-		protected CCStats Stats;
+        public CCActionManager ActionManager { get; set; }
+        public virtual double AnimationInterval { get; set; }
+        public float ContentScaleFactor { get; set; }
+        /// <summary>
+        /// Set to true if this platform has a game pad connected.
+        /// </summary>
+        public bool GamePadEnabled { get; set; }
+        public bool IsNextDeltaTimeZero { get; set; }
+        public bool IsPaused { get; private set; }
+        protected bool IsPurgeDirectorInNextLoop { get; set; } // this flag will be set to true in end()
+        public bool IsSendCleanupToScene { get; private set; }
+        public CCNode NotificationNode { get; set; }
+        protected double OldAnimationInterval { get; set; }
+        public ICCDirectorDelegate ProjectionDelegate { get; set; }
+        public CCScene RunningScene { get; private set; }
+        public CCScheduler Scheduler { get; set; }
+        internal CCSize WinSizeInPoints { get; set; }
+        protected CCStats Stats;
 
-		// Dispatchers
-		public CCKeypadDispatcher KeypadDispatcher  { get; set; }
+        // Dispatchers
+        public CCKeypadDispatcher KeypadDispatcher  { get; set; }
 
         /// <summary>
         /// returns a shared instance of the director
@@ -202,8 +202,8 @@ namespace CocosSharp
                 }
 
                 directorProjection = value;
-				if (EventDispatcher.IsEventListenersFor(EVENT_PROJECTION_CHANGED))
-					EventDispatcher.DispatchEvent(eventProjectionChanged);
+                if (EventDispatcher.IsEventListenersFor(EVENT_PROJECTION_CHANGED))
+                    EventDispatcher.DispatchEvent(eventProjectionChanged);
             }
         }
 
@@ -286,17 +286,17 @@ namespace CocosSharp
             ActionManager = new CCActionManager();
             Scheduler.Schedule (ActionManager, CCSchedulePriority.System, false);
             
-			// EventDispatcher
-			EventDispatcher = new CCEventDispatcher ();
+            // EventDispatcher
+            EventDispatcher = new CCEventDispatcher ();
 
-			eventAfterDraw = new CCEventCustom(EVENT_AFTER_DRAW);
-			eventAfterDraw.UserData = this;
-			eventAfterVisit = new CCEventCustom(EVENT_AFTER_VISIT);
-			eventAfterVisit.UserData = this;
-			eventAfterUpdate = new CCEventCustom(EVENT_AFTER_UPDATE);
-			eventAfterUpdate.UserData = this;
-			eventProjectionChanged = new CCEventCustom(EVENT_PROJECTION_CHANGED);
-			eventProjectionChanged.UserData = this;
+            eventAfterDraw = new CCEventCustom(EVENT_AFTER_DRAW);
+            eventAfterDraw.UserData = this;
+            eventAfterVisit = new CCEventCustom(EVENT_AFTER_VISIT);
+            eventAfterVisit.UserData = this;
+            eventAfterUpdate = new CCEventCustom(EVENT_AFTER_UPDATE);
+            eventAfterUpdate.UserData = this;
+            eventProjectionChanged = new CCEventCustom(EVENT_PROJECTION_CHANGED);
+            eventProjectionChanged.UserData = this;
 
             // KeypadDispatcher
             KeypadDispatcher = new CCKeypadDispatcher();
@@ -559,8 +559,8 @@ namespace CocosSharp
 
         internal void SetGlDefaultValues()
         {
-			IsUseAlphaBlending = true;
-			IsUseDepthTesting = false;
+            IsUseAlphaBlending = true;
+            IsUseDepthTesting = false;
 
             Projection = directorProjection;
 
@@ -572,7 +572,7 @@ namespace CocosSharp
         {
         }
 
-		public void Update(CCGameTime gameTime)
+        public void Update(CCGameTime gameTime)
         {
             // Start stats measuring
             Stats.UpdateStart ();
@@ -591,8 +591,8 @@ namespace CocosSharp
 
                 // In Seconds
                 Scheduler.Update(deltaTime);
-				if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE));
-					EventDispatcher.DispatchEvent(eventAfterUpdate);
+                if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE));
+                    EventDispatcher.DispatchEvent(eventAfterUpdate);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.
@@ -610,7 +610,7 @@ namespace CocosSharp
         /// Draw the scene.
         /// This method is called every frame. Don't call it manually.
         /// </summary>
-		protected void DrawScene(CCGameTime gameTime)
+        protected void DrawScene(CCGameTime gameTime)
         {
             if (isNeedsInit)
             {
@@ -618,7 +618,7 @@ namespace CocosSharp
             }
 
             // Start stats measuring
-            Stats.UpdateStart ();
+            Stats.UpdateStart();
 
             CCDrawManager.PushMatrix();
 
@@ -626,8 +626,8 @@ namespace CocosSharp
             if (RunningScene != null)
             {
                 RunningScene.Visit();
-				if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
-					EventDispatcher.DispatchEvent(eventAfterVisit);
+                if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
+                    EventDispatcher.DispatchEvent(eventAfterVisit);
             }
 
             // draw the notifications node
@@ -636,8 +636,8 @@ namespace CocosSharp
                 NotificationNode.Visit();
             }
 
-			if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_DRAW))
-				EventDispatcher.DispatchEvent(eventAfterDraw);
+            if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_DRAW))
+                EventDispatcher.DispatchEvent(eventAfterDraw);
 
             CCDrawManager.PopMatrix();
 
@@ -646,7 +646,7 @@ namespace CocosSharp
         }
 
 
-		public abstract void MainLoop(CCGameTime gameTime);
+        public abstract void MainLoop(CCGameTime gameTime);
 
         public void SetOpenGlView()
         {
@@ -671,28 +671,29 @@ namespace CocosSharp
         /// enables/disables OpenGL alpha blending 
         /// </summary>
         /// <param name="bOn"></param>
-		public bool IsUseAlphaBlending
+        public bool IsUseAlphaBlending
         {
-			set {
-				if (value)
+            set 
             {
-                CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
+                if (value)
+                {
+                    CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
+                }
+                else
+                {
+                    CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO));
+                }
             }
-            else
-            {
-                CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO));
-            }
-        }
         }
 
         /// <summary>
         /// enables/disables OpenGL depth test
         /// </summary>
         /// <param name="bOn"></param>
-		public bool IsUseDepthTesting
+        public bool IsUseDepthTesting
         {
-			get { return CCDrawManager.DepthTest; }
-			set { CCDrawManager.DepthTest = value; }
+            get { return CCDrawManager.DepthTest; }
+            set { CCDrawManager.DepthTest = value; }
         }
 
         public CCPoint ConvertToGl(CCPoint uiPoint)
@@ -731,6 +732,9 @@ namespace CocosSharp
 
             StopAnimation();
 
+            if(EventDispatcher != null)
+                EventDispatcher.RemoveAll();
+
             // purge bitmap cache
             CCLabelBMFont.PurgeCachedData();
 
@@ -738,25 +742,18 @@ namespace CocosSharp
             CCAnimationCache.PurgeSharedAnimationCache();
             CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
             CCTextureCache.PurgeInstance();
-            //CCFileUtils.purgeFileUtils();
-            //CCConfiguration.purgeConfiguration();
-
-            // cocos2d-x specific data structures
-            //CCUserDefault.purgeSharedUserDefault();
-            //CCNotificationCenter.purgeNotificationCenter();
-
             CCDrawManager.PurgeDrawManager();
 
             isNeedsInit = true;
         }
 
-		/// <summary>
-		/// Re Initializes the statistics.  This needs to be called for example by coming back from tombstombing.
-		/// </summary>
-		internal void ReInitStats()
-		{
-			Stats = new CCStats ();
-		}
+        /// <summary>
+        /// Re Initializes the statistics.  This needs to be called for example by coming back from tombstombing.
+        /// </summary>
+        internal void ReInitStats()
+        {
+            Stats = new CCStats();
+        }
 
         public void Pause()
         {
@@ -823,12 +820,18 @@ namespace CocosSharp
             nextScene = null;
         }
 
-        public void RunWithScene(CCScene pScene)
+        public void RunWithScene(CCScene scene)
         {
-            Debug.Assert(pScene != null, "the scene should not be null");
+            Debug.Assert(scene != null, "the scene should not be null");
             Debug.Assert(RunningScene == null, "Use runWithScene: instead to start the director");
 
-            PushScene(pScene);
+            CCDirector prevDirector = scene.Director;
+            if(prevDirector != null) 
+            {
+                prevDirector.End();
+            }
+
+            PushScene(scene);
             StartAnimation();
         }
 
@@ -836,23 +839,23 @@ namespace CocosSharp
         /// Replaces the current scene at the top of the stack with the given scene.
         /// </summary>
         /// <param name="pScene"></param>
-        public void ReplaceScene(CCScene pScene)
+        public void ReplaceScene(CCScene scene)
         {
             Debug.Assert(RunningScene != null, "Use runWithScene: instead to start the director");
-            Debug.Assert(pScene != null, "the scene should not be null");
+            Debug.Assert(scene != null, "the scene should not be null");
 
             int index = scenesStack.Count;
 
             IsSendCleanupToScene = true;
             if (index == 0)
             {
-                scenesStack.Add(pScene);
+                scenesStack.Add(scene);
             }
             else
             {
-            scenesStack[index - 1] = pScene;
+                scenesStack[index - 1] = scene;
             }
-            nextScene = pScene;
+            nextScene = scene;
         }
 
         /// <summary>
@@ -979,12 +982,17 @@ namespace CocosSharp
 
             if (!runningIsTransition && RunningScene != null)
             {
+                if(RunningScene.Director != this) 
+                {
+                    RunningScene.Director = this;
+                }
+
                 RunningScene.OnEnter();
                 RunningScene.OnEnterTransitionDidFinish();
             }
         }
 
-		#endregion
+        #endregion
 
     }
 }

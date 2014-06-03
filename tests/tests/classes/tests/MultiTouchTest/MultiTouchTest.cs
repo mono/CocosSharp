@@ -15,7 +15,7 @@ namespace tests
 			listener.OnTouchesMoved = onTouchesMoved;
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(listener, this);   
+			AddEventListener(listener);   
 
 			var title = new CCLabelTtf("Please touch the screen!", "", 24);
 			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);

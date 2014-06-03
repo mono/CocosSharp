@@ -465,7 +465,7 @@ namespace tests.Clipping
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesBegan = onTouchesBegan;
 
-			EventDispatcher.AddEventListener(listener, this);    
+			AddEventListener(listener);    
         }
 
         public override string title()
@@ -567,7 +567,7 @@ namespace tests.Clipping
 			touchListener.OnTouchesMoved = onTouchesMoved;
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(touchListener, this);        
+			AddEventListener(touchListener);        
 		}
 
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)

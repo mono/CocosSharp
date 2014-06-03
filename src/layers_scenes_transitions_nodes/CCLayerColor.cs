@@ -77,38 +77,45 @@ namespace CocosSharp
             }
         }
 
+		internal override CCDirector Director 
+		{ 
+			get { return base.Director; }
+			set 
+			{
+				base.Director = value;
+
+				if (value != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
+				{
+					ContentSize = value.WinSize;
+				}
+			}
+		}
+
         #endregion Properties
 
 
         #region Constructors
 
-		public CCLayerColor(CCDirector director=null) : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f, director)
+		public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-		public CCLayerColor (CCColor4B color, CCDirector director=null) : this(color, 0.0f, 0.0f, director)
+		public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-		public CCLayerColor (CCColor4B color, float width, float height, CCDirector director=null) : base(director)
+		public CCLayerColor (CCColor4B color, float width, float height) : base()
         {
             DisplayedColor = new CCColor3B(color.R, color.G, color.B);
             RealColor = DisplayedColor;
             DisplayedOpacity = RealOpacity = color.A;
             BlendFunc = CCBlendFunc.NonPremultiplied;
-
-            if (width == 0.0f || height == 0.0f) 
-            {
-				CCSize s = Director.WinSize;
-                width = s.Width;
-                height = s.Height;
-            }
 
             ContentSize = new CCSize(width, height);
             UpdateColor();

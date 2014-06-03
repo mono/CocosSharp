@@ -66,18 +66,43 @@ namespace CocosSharp
             }
         }
 
+		internal override CCDirector Director 
+		{ 
+			get { return base.Director; }
+			set 
+			{
+				base.Director = value;
+
+				if (value != null)
+				{
+					CCSize contentSize = value.WinSize;
+					Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
+                    ContentSize = contentSize;
+
+					var touchListener = new CCEventListenerTouchOneByOne();
+					touchListener.IsSwallowTouches = true;
+
+					touchListener.OnTouchBegan = TouchBegan;
+					touchListener.OnTouchMoved = TouchMoved;
+					touchListener.OnTouchEnded = TouchEnded;
+					touchListener.OnTouchCancelled = TouchCancelled;
+
+					AddEventListener(touchListener);
+
+                    AnchorPoint = new CCPoint(0.5f, 0.5f);
+                    IgnoreAnchorPointForPosition = true;
+				}
+			}
+		}
+
         #endregion Properties
 
 
         #region Constructors
 
-        public CCMenu(params CCMenuItem[] items)
+		public CCMenu(params CCMenuItem[] items) : base()
         {
-
             Enabled = true;
-
-            IgnoreAnchorPointForPosition = true;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             SelectedMenuItem = null;
             MenuState = CCMenuState.Waiting;
@@ -85,9 +110,6 @@ namespace CocosSharp
             IsColorCascaded = true;
             IsOpacityCascaded = true;
 
-            CCSize contentSize = CCDirector.SharedDirector.WinSize;
-            ContentSize = contentSize;
-            Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
 
             if (items != null)
             {
@@ -99,19 +121,10 @@ namespace CocosSharp
                 }
             }
 
-			var touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
-
-			touchListener.OnTouchBegan = TouchBegan;
-			touchListener.OnTouchMoved = TouchMoved;
-			touchListener.OnTouchEnded = TouchEnded;
-			touchListener.OnTouchCancelled = TouchCancelled;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
         }
 
         #endregion Constructors
+
 
         public void AddChild(CCMenuItem menuItem)
         {

@@ -245,7 +245,7 @@ namespace tests
 			mouseListener.OnMouseDown = OnMouseDown;
 			mouseListener.OnMouseUp = OnMouseUp;
 			mouseListener.OnMouseMove = OnMouseMove;
-			EventDispatcher.AddEventListener (mouseListener, this);
+			AddEventListener(mouseListener);
 		}
 
 
@@ -453,16 +453,18 @@ namespace tests
 			};
 
 
+            sprite1.AddEventListener(listener1);
+            sprite2.AddEventListener(listener1.Copy());
+            sprite3.AddEventListener(listener1.Copy());
 
-			EventDispatcher.AddEventListener(listener1, sprite1);
-			EventDispatcher.AddEventListener (listener1.Copy(), sprite2);
-			EventDispatcher.AddEventListener (listener1.Copy(), sprite3);
 
 			var removeAllTouchItem = new CCMenuItemFont("Remove All Touch Listeners", (sender) => {
 				var senderItem = (CCMenuItemFont)sender;
 				senderItem.LabelTTF.Text = "Only Next item could be clicked";
 
-				EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
+                sprite1.RemoveAllEventListeners();
+                sprite2.RemoveAllEventListeners();
+                sprite3.RemoveAllEventListeners();
 
 				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
 			
@@ -589,27 +591,18 @@ namespace tests
 
 				if (IsRemoveListenerOnTouchEnded)
 				{
-					EventDispatcher.RemoveEventListener(Listener);
+                    this.RemoveEventListener(Listener);
 				}
 			};
 
-			if (FixedPriority != 0)
-			{
-				EventDispatcher.AddEventListener(listener, FixedPriority);
-			}
-			else
-			{
-				EventDispatcher.AddEventListener(listener, this);
-			}
-
 			Listener = listener;
-
+            this.AddEventListener(Listener);
 		}
 
 		public override void OnExit ()
 		{
-			EventDispatcher.RemoveEventListener(Listener);
-			base.OnExit ();
+            this.RemoveEventListener(Listener);
+			base.OnExit();
 		}
 	}
 
@@ -641,7 +634,7 @@ namespace tests
 					statusLabel.Text = str;
 			});
 
-			EventDispatcher.AddEventListener(listener, 1);
+            this.AddEventListener(listener);
 			var count = 0;
 			var sendItem = new CCMenuItemFont("Send Custom Event 1", (sender) =>
 				{
@@ -649,7 +642,7 @@ namespace tests
 					var userData = string.Format("{0}", count);
 					var customEvent = new CCEventCustom("game_custom_event1");
 					customEvent.UserData = userData;
-					EventDispatcher.DispatchEvent(customEvent);
+                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(customEvent);
 			});
 
 			sendItem.Position = origin + size.Center;
@@ -663,14 +656,14 @@ namespace tests
 					statusLabel2.Text = string.Format("Custom event 2 received, {0} times", customEvent.UserData);
 				});
 
-			EventDispatcher.AddEventListener(listener2, 1);
+            this.AddEventListener(listener2);
 
 			var count2 = 0;
 			var sendItem2 = new CCMenuItemFont("Send Custom Event 2", (sender) =>
 				{
 					var customEvent = new CCEventCustom("game_custom_event2");
 					customEvent.UserData = ++count2;
-					EventDispatcher.DispatchEvent(customEvent);
+                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(customEvent);
 				});
 
 			sendItem2.Position = origin + new CCPoint(size.Width / 2, size.Height / 2 - 40);
@@ -684,8 +677,8 @@ namespace tests
 		public override void OnExit ()
 		{
 			// Don't forget to remove the fixed priority Event listeners yourself.
-			EventDispatcher.RemoveEventListener(listener);
-			EventDispatcher.RemoveEventListener(listener2);
+            this.RemoveEventListener(listener);
+            this.RemoveEventListener(listener2);
 			base.OnExit ();
 		}
 		public override string title()
@@ -755,7 +748,7 @@ namespace tests
 				target.Opacity = 255;
 			};
 
-			EventDispatcher.AddEventListener(listener1, sprite);
+            sprite.AddEventListener(listener1);
 
 			RunActions(new CCDelayTime(5.0f),
 				new CCCallFunc(() => 
@@ -811,8 +804,8 @@ namespace tests
 						return true;
 					};
 
-					EventDispatcher.AddEventListener(listener, -1);
-					EventDispatcher.RemoveEventListener(listener);
+                    this.AddEventListener(listener);
+                    this.RemoveEventListener(listener);
 			});
 
 			item1.Position = CCVisibleRect.Center + new CCPoint(0, 80);
@@ -839,8 +832,8 @@ namespace tests
 					return true;
 				};
 
-				EventDispatcher.AddEventListener (listener, -1);
-				EventDispatcher.RemoveEventListeners (CCEventListenerType.TOUCH_ONE_BY_ONE);
+                    this.AddEventListener (listener);
+                    this.RemoveAllEventListeners();
 
 					addNextButton ();
 			});
@@ -855,8 +848,8 @@ namespace tests
 						return true;
 					};
 
-					EventDispatcher.AddEventListener (listener, -1);
-					EventDispatcher.RemoveEventListeners (CCEventListenerType.TOUCH_ONE_BY_ONE);
+                    this.AddEventListener (listener);
+                    this.RemoveAllEventListeners();
 
 					addNextButton ();
 			});
@@ -962,10 +955,10 @@ namespace tests
 
 		public override void OnExit ()
 		{
-			EventDispatcher.RemoveEventListener (event1);
-			EventDispatcher.RemoveEventListener (event2);
-			EventDispatcher.RemoveEventListener (event3);
-			EventDispatcher.RemoveEventListener (event4);
+            this.RemoveEventListener (event1);
+            this.RemoveEventListener (event2);
+            this.RemoveEventListener (event3);
+            this.RemoveEventListener (event4);
 			base.OnExit ();
 		}
 
@@ -1018,7 +1011,7 @@ namespace tests
 			var popup = new CCMenuItemFont("Popup", (sender) =>
 				{
 
-					EventDispatcher.Pause(this,true);
+                    CCDirector.SharedDirector.EventDispatcher.Pause(this,true);
 
 					var colorLayer = new CCLayerColor(new CCColor4B(0, 0, 255, 100));
 					AddChild(colorLayer, 99999);
@@ -1026,7 +1019,7 @@ namespace tests
 					var closeItem = new CCMenuItemFont("close", (closeSender) =>
 						{
 							colorLayer.RemoveFromParent();
-							EventDispatcher.Resume(this, true);
+                            CCDirector.SharedDirector.EventDispatcher.Resume(this, true);
 				});
 
 					closeItem.Position = CCVisibleRect.Center;
@@ -1089,7 +1082,7 @@ namespace tests
 				cyanTouch = touches[0];
 			};
 
-			EventDispatcher.AddEventListener(listener1, sprite1);
+            sprite1.AddEventListener(listener1);
 
 			Schedule ();
 		}
@@ -1252,11 +1245,11 @@ namespace tests
 					AddChild(sprite2, 0);
 				}
 
-				EventDispatcher.AddEventListener(touchOneByOneListener.Copy(), sprite);
-				EventDispatcher.AddEventListener(keyboardEventListener.Copy(), sprite);
+                sprite.AddEventListener(touchOneByOneListener.Copy());
+                sprite.AddEventListener(keyboardEventListener.Copy());
 
-				EventDispatcher.AddEventListener(touchAllAtOnceListener.Copy(), sprite2);
-				EventDispatcher.AddEventListener(keyboardEventListener.Copy(), sprite2);
+                sprite2.AddEventListener(touchAllAtOnceListener.Copy());
+                sprite2.AddEventListener(keyboardEventListener.Copy());
 
 
 				var visibleSize = CCDirector.SharedDirector.VisibleSize;

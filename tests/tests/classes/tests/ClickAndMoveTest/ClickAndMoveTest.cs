@@ -37,7 +37,7 @@ namespace tests
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(listener, this);    
+			AddEventListener(listener);    
 
             CCSprite sprite = new CCSprite(ClickAndMoveTest.s_pPathGrossini);
 

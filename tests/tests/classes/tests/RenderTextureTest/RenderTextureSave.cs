@@ -47,7 +47,7 @@ namespace tests
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
-			EventDispatcher.AddEventListener(touchListener, this);
+			AddEventListener(touchListener);
 
             // Save Image menu
 			CCMenuItemFont.FontSize = 16;

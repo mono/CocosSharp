@@ -177,15 +177,15 @@ namespace tests
         public CCSprite m_background;
         public CCParticleSystem m_emitter;
 
-		protected CCSize WinSize;
-		protected CCPoint MidWindowPoint;
+        protected CCSize WinSize;
+        protected CCPoint MidWindowPoint;
 
         public ParticleDemo() : base(new CCColor4B(127, 127, 127, 255))
         {
             m_emitter = null;
 
-			WinSize = Director.WinSize;
-			MidWindowPoint = new CCPoint(WinSize.Width / 2.0f, WinSize.Height / 2.0f);
+            WinSize = CCDirector.SharedDirector.WinSize;
+            MidWindowPoint = new CCPoint(WinSize.Width / 2.0f, WinSize.Height / 2.0f);
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 100, kLabelTag);
@@ -207,9 +207,9 @@ namespace tests
             CCMenu menu = new CCMenu(item1, item2, item3, item4);
 
             menu.Position = new CCPoint(0, 0);
-			item1.Position = new CCPoint(WinSize.Width / 2 - 100, 30);
-			item2.Position = new CCPoint(WinSize.Width / 2, 30);
-			item3.Position = new CCPoint(WinSize.Width / 2 + 100, 30);
+            item1.Position = new CCPoint(WinSize.Width / 2 - 100, 30);
+            item2.Position = new CCPoint(WinSize.Width / 2, 30);
+            item3.Position = new CCPoint(WinSize.Width / 2 + 100, 30);
             item4.Position = new CCPoint(0, 100);
             item4.AnchorPoint = new CCPoint(0, 0);
 
@@ -217,12 +217,12 @@ namespace tests
 
             CCLabelAtlas labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
             AddChild(labelAtlas, 100, ParticleTestScene.kTagLabelAtlas);
-			labelAtlas.Position = new CCPoint(WinSize.Width - 66, 50);
+            labelAtlas.Position = new CCPoint(WinSize.Width - 66, 50);
 
             // moving background
             m_background = new CCSprite(TestResource.s_back3);
             AddChild(m_background, 5);
-			m_background.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 180);
+            m_background.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 180);
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
@@ -250,12 +250,12 @@ namespace tests
             var pLabel = (CCLabelTtf) (GetChildByTag(kLabelTag));
             pLabel.Text = (title());
 
-			var listener = new CCEventListenerTouchAllAtOnce();
-			listener.OnTouchesBegan = onTouchesBegan;
-			listener.OnTouchesMoved = onTouchesMoved;
-			listener.OnTouchesEnded = onTouchesEnded;
+            var listener = new CCEventListenerTouchAllAtOnce();
+            listener.OnTouchesBegan = onTouchesBegan;
+            listener.OnTouchesMoved = onTouchesMoved;
+            listener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(listener, this);
+            AddEventListener(listener);
         }
 
         public virtual string title()
@@ -298,20 +298,20 @@ namespace tests
             }
         }
 
-		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-			onTouchesEnded (touches, touchEvent);
+            onTouchesEnded (touches, touchEvent);
         }
 
-		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-			onTouchesEnded (touches, touchEvent);
+            onTouchesEnded (touches, touchEvent);
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
-			var touch = touches [0];
-			var convertedLocation = touch.Location;
+            var touch = touches [0];
+            var convertedLocation = touch.Location;
 
             var pos = new CCPoint(0, 0);
             if (m_background != null)
@@ -339,13 +339,13 @@ namespace tests
                 int count = 0;
 				for (int i = 0; i < Children.Count; i++)
                 {
-					if (Children[i] is CCParticleSystem)
+                    if (Children[i] is CCParticleSystem)
                     {
-						count += ((CCParticleSystem) Children[i]).ParticleCount;
+                    	count += ((CCParticleSystem) Children[i]).ParticleCount;
                     }
-					else if (Children[i] is CCParticleBatchNode)
+                    else if (Children[i] is CCParticleBatchNode)
                     {
-						var bn = (CCParticleBatchNode) Children[i];
+                        var bn = (CCParticleBatchNode) Children[i];
                         for (int j = 0; j < bn.ChildrenCount; j++)
                         {
                             if (bn.Children[j] is CCParticleSystem)
@@ -382,7 +382,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleFireworks(MidWindowPoint);
+            m_emitter = new CCParticleFireworks(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
@@ -407,8 +407,8 @@ namespace tests
         {
             base.OnEnter();
 
-			CCPoint emitterPos = new CCPoint(WinSize.Width / 2, 100);
-			m_emitter = new CCParticleFire(emitterPos);
+            CCPoint emitterPos = new CCPoint(WinSize.Width / 2, 100);
+            m_emitter = new CCParticleFire(emitterPos);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire); //.pvr"];
@@ -433,7 +433,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleSun(MidWindowPoint);
+            m_emitter = new CCParticleSun(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -458,9 +458,9 @@ namespace tests
         {
             base.OnEnter();
 
-			CCSize winSize = Director.WinSize;
-			CCPoint position = new CCPoint(winSize.Width / 2.0f, winSize.Height / 2.0f);
-			m_emitter = new CCParticleGalaxy(position);
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCPoint position = new CCPoint(winSize.Width / 2.0f, winSize.Height / 2.0f);
+            m_emitter = new CCParticleGalaxy(position);
             m_background.AddChild(m_emitter, 10);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -485,7 +485,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleFlower(MidWindowPoint);
+            m_emitter = new CCParticleFlower(MidWindowPoint);
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
 
@@ -698,7 +698,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleSpiral(MidWindowPoint);
+            m_emitter = new CCParticleSpiral(MidWindowPoint);
 
             m_background.AddChild(m_emitter, 10);
 
@@ -719,7 +719,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleExplosion(MidWindowPoint);
+            m_emitter = new CCParticleExplosion(MidWindowPoint);
 
             m_background.AddChild(m_emitter, 10);
 
@@ -742,7 +742,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleSmoke(new CCPoint(WinSize.Width / 2.0f, 0));
+            m_emitter = new CCParticleSmoke(new CCPoint(WinSize.Width / 2.0f, 0));
 
             m_background.AddChild(m_emitter, 10);
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
@@ -765,7 +765,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleSnow(new CCPoint(WinSize.Width / 2, WinSize.Height + 10));
+            m_emitter = new CCParticleSnow(new CCPoint(WinSize.Width / 2, WinSize.Height + 10));
 
             m_background.AddChild(m_emitter, 10);
 
@@ -810,7 +810,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleRain(new CCPoint (WinSize.Width / 2.0f, WinSize.Height));
+            m_emitter = new CCParticleRain(new CCPoint (WinSize.Width / 2.0f, WinSize.Height));
             m_background.AddChild(m_emitter, 10);
 
             CCPoint p = m_emitter.Position;
@@ -916,7 +916,7 @@ namespace tests
         {
             base.OnEnter();
 
-			m_emitter = new CCParticleFlower(MidWindowPoint);
+            m_emitter = new CCParticleFlower(MidWindowPoint);
 
 
             m_background.AddChild(m_emitter, 10);
@@ -955,14 +955,14 @@ namespace tests
             p.AddChild(p1, 1, new CCPoint(0.5f, 1), new CCPoint(0, 250));
             p.AddChild(p2, 2, new CCPoint(1.5f, 1), new CCPoint(0, 50));
 
-			m_emitter = new CCParticleFlower(MidWindowPoint);
+            m_emitter = new CCParticleFlower(MidWindowPoint);
 
             m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
             p1.AddChild(m_emitter, 10);
             m_emitter.Position = new CCPoint(250, 200);
 
-			CCParticleSun par = new CCParticleSun(MidWindowPoint);
+            CCParticleSun par = new CCParticleSun(MidWindowPoint);
             p2.AddChild(par, 10);
             par.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
@@ -982,18 +982,18 @@ namespace tests
     {
         private readonly string m_title;
 
-		private static Dictionary<string, CCParticleSystemConfig> particleConfigManager;
+        private static Dictionary<string, CCParticleSystemConfig> particleConfigManager;
 
         public DemoParticleFromFile()
         {
-			if (particleConfigManager == null)
-				particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
+            if (particleConfigManager == null)
+                particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
         }
 
-		public DemoParticleFromFile(string file) : base()
+        public DemoParticleFromFile(string file) : base()
         {
-			if (particleConfigManager == null)
-				particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
+            if (particleConfigManager == null)
+                particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
 
             m_title = file;
 
@@ -1009,17 +1009,17 @@ namespace tests
 
             string filename = "Particles/" + m_title;
 
-			CCParticleSystemConfig config;
+            CCParticleSystemConfig config;
 
-			if (particleConfigManager.ContainsKey (filename))
-				config = particleConfigManager [filename];
-			else
-			{
-				config = new CCParticleSystemConfig (filename);
-				particleConfigManager.Add (filename, config);
-			}
+            if (particleConfigManager.ContainsKey (filename))
+                config = particleConfigManager [filename];
+            else
+            {
+                config = new CCParticleSystemConfig (filename);
+                particleConfigManager.Add (filename, config);
+            }
 
-			m_emitter = new CCParticleSystemQuad(config);
+            m_emitter = new CCParticleSystemQuad(config);
 
             AddChild(m_emitter, 10);
 
@@ -1326,7 +1326,7 @@ namespace tests
         }
     }
 
-	public class ParticleReorder : ParticleDemo
+    public class ParticleReorder : ParticleDemo
     {
         private int m_nOrder;
         CCLabelTtf label;
@@ -1340,14 +1340,14 @@ namespace tests
             RemoveChild(m_background, true);
             m_background = null;
 
-			CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCDirector.SharedDirector.WinSize;
 
-			label = new CCLabelTtf("Loading...", "Marker Felt", 32);
-			label.Position = size.Center;
+            label = new CCLabelTtf("Loading...", "Marker Felt", 32);
+            label.Position = size.Center;
             label.Visible = false;
-			AddChild(label, 10);
+            AddChild(label, 10);
 
-			var scale = new CCScaleBy(0.3f, 2);
+            var scale = new CCScaleBy(0.3f, 2);
             label.RunActions (new CCDelayTime (2.0f), new CCShow ());
             label.RepeatForever (scale, scale.Reverse ());
 
@@ -1356,55 +1356,55 @@ namespace tests
         }
 
 
-		private void LoadParticleSystem(float dt)
-		{
-			CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
-		}
+        private void LoadParticleSystem(float dt)
+        {
+            CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
+        }
 
-		private void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
-		{
+        private void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
+        {
             label.RemoveFromParent(true);
 
-			CCParticleSystemQuad ignore = new CCParticleSystemQuad (psConfig);
+            CCParticleSystemQuad ignore = new CCParticleSystemQuad (psConfig);
 
-			//ignore.TotalParticles = 200;
-			CCNode parent1 = new CCNode ();
-			CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
-			ignore.Unschedule ();
+            //ignore.TotalParticles = 200;
+            CCNode parent1 = new CCNode ();
+            CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
+            ignore.Unschedule ();
 
-			for (int i = 0; i < 2; i++) {
-				CCNode parent = (i == 0 ? parent1 : parent2);
+            for (int i = 0; i < 2; i++) {
+                CCNode parent = (i == 0 ? parent1 : parent2);
 
-				CCParticleSystemQuad emitter1 = new CCParticleSystemQuad (psConfig);
-				//emitter1.TotalParticles = 200;
-				emitter1.StartColor = (new CCColor4F (1, 0, 0, 1));
-				emitter1.BlendAdditive = (false);
-				CCParticleSystemQuad emitter2 = new CCParticleSystemQuad (psConfig);
-				//emitter2.TotalParticles = 200;
-				emitter2.StartColor = (new CCColor4F (0, 1, 0, 1));
-				emitter2.BlendAdditive = (false);
-				CCParticleSystemQuad emitter3 = new CCParticleSystemQuad (psConfig);
-				//emitter3.TotalParticles = 200;
-				emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
-				emitter3.BlendAdditive = (false);
+                CCParticleSystemQuad emitter1 = new CCParticleSystemQuad (psConfig);
+                //emitter1.TotalParticles = 200;
+                emitter1.StartColor = (new CCColor4F (1, 0, 0, 1));
+                emitter1.BlendAdditive = (false);
+                CCParticleSystemQuad emitter2 = new CCParticleSystemQuad (psConfig);
+                //emitter2.TotalParticles = 200;
+                emitter2.StartColor = (new CCColor4F (0, 1, 0, 1));
+                emitter2.BlendAdditive = (false);
+                CCParticleSystemQuad emitter3 = new CCParticleSystemQuad (psConfig);
+                //emitter3.TotalParticles = 200;
+                emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
+                emitter3.BlendAdditive = (false);
 
-				CCSize s = CCDirector.SharedDirector.WinSize;
+                CCSize s = CCDirector.SharedDirector.WinSize;
 
-				int neg = (i == 0 ? 1 : -1);
+                int neg = (i == 0 ? 1 : -1);
 
-				emitter1.Position = (new CCPoint (s.Width / 2 - 30, s.Height / 2 + 60 * neg));
-				emitter2.Position = (new CCPoint (s.Width / 2, s.Height / 2 + 60 * neg));
-				emitter3.Position = (new CCPoint (s.Width / 2 + 30, s.Height / 2 + 60 * neg));
+                emitter1.Position = (new CCPoint (s.Width / 2 - 30, s.Height / 2 + 60 * neg));
+                emitter2.Position = (new CCPoint (s.Width / 2, s.Height / 2 + 60 * neg));
+                emitter3.Position = (new CCPoint (s.Width / 2 + 30, s.Height / 2 + 60 * neg));
 
-				parent.AddChild (emitter1, 0, 1);
-				parent.AddChild (emitter2, 0, 2);
-				parent.AddChild (emitter3, 0, 3);
+                parent.AddChild (emitter1, 0, 1);
+                parent.AddChild (emitter2, 0, 2);
+                parent.AddChild (emitter3, 0, 3);
 
-				AddChild (parent, 10, 1000 + i);
-			}
+                AddChild (parent, 10, 1000 + i);
+            }
 
-			Schedule (reorderParticles, 1.0f);
-		}
+            Schedule (reorderParticles, 1.0f);
+        }
 
         public override string title()
         {

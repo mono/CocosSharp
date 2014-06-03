@@ -19,6 +19,35 @@ namespace tests
         private int _CurrentItemIndex = 0;
         private CCSprite _menuIndicator;
 
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            // add listeners
+            #if !XBOX && !OUYA
+            var touchListener = new CCEventListenerTouchOneByOne ();
+            touchListener.IsSwallowTouches = true;
+            touchListener.OnTouchBegan = onTouchBegan;
+            touchListener.OnTouchMoved = onTouchMoved;
+
+            AddEventListener(touchListener);
+
+            var mouseListener = new CCEventListenerMouse ();
+            mouseListener.OnMouseScroll = onMouseScroll;
+            AddEventListener(mouseListener);
+
+            #else
+            //KeypadEnabled = true;
+            #endif
+
+
+            #if WINDOWS || WINDOWSGL || MACOS
+            EnableGamePad();
+            #endif
+
+            // set the first one to have the selection highlight
+            _CurrentItemIndex = 0;
+            SelectMenuItem();
+        }
+
         public TestController()
         {
             // add close menu
@@ -77,32 +106,6 @@ namespace tests
 
             AddChild(pMenu, 1);
 
-			// add listeners
-#if !XBOX && !OUYA
-			var touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
-			var mouseListener = new CCEventListenerMouse();
-			mouseListener.OnMouseScroll = onMouseScroll;
-			EventDispatcher.AddEventListener (mouseListener, this);
-
-#else
-			//KeypadEnabled = true;
-
-#endif
-			#if WINDOWS || WINDOWSGL || MACOS
-			EnableGamePad();
-			#endif
-			   
-			// set the first one to have the selection highlight
-            _CurrentItemIndex = 0;
-            SelectMenuItem();
-
-
         }
 
 
@@ -111,13 +114,15 @@ namespace tests
 
         private void SelectMenuItem()
         {
-            _Items[_CurrentItemIndex].Selected = true;
-            if (_menuIndicator != null)
+            if (_CurrentItemIndex < _Items.Count) 
             {
-                _menuIndicator.Position = new CCPoint(
-                    m_pItemMenu.Position.X + _Items[_CurrentItemIndex].Position.X - _Items[_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
-                    m_pItemMenu.Position.Y + _Items[_CurrentItemIndex].Position.Y
+                _Items [_CurrentItemIndex].Selected = true;
+                if (_menuIndicator != null) {
+                    _menuIndicator.Position = new CCPoint (
+                        m_pItemMenu.Position.X + _Items [_CurrentItemIndex].Position.X - _Items [_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
+                        m_pItemMenu.Position.Y + _Items [_CurrentItemIndex].Position.Y
                     );
+                }
             }
         }
 
@@ -177,73 +182,72 @@ namespace tests
             #endif
         }
 
-		void EnableGamePad()
-		{
+        void EnableGamePad()
+        {
 
-			var AButtonWasPressed = false;
+            var AButtonWasPressed = false;
 
-			var gamePadListener = new CCEventListenerGamePad ();
+            var gamePadListener = new CCEventListenerGamePad ();
 
-			gamePadListener.OnButtonStatus = (buttonStatus) => 
-			{
-				if (buttonStatus.A == CCGamePadButtonStatus.Pressed)
-				{
-					AButtonWasPressed = true;
-				}
-				else if (buttonStatus.A == CCGamePadButtonStatus.Released && AButtonWasPressed)
-				{
-					// Select the menu
-					_Items[_CurrentItemIndex].Activate();
-					_Items[_CurrentItemIndex].Selected = false;
-				}
-			};
+            gamePadListener.OnButtonStatus = (buttonStatus) => 
+            {
+                if (buttonStatus.A == CCGamePadButtonStatus.Pressed)
+                {
+                    AButtonWasPressed = true;
+                }
+                else if (buttonStatus.A == CCGamePadButtonStatus.Released && AButtonWasPressed)
+                {
+                    // Select the menu
+                    _Items[_CurrentItemIndex].Activate();
+                    _Items[_CurrentItemIndex].Selected = false;
+                }
+            };
 
-			long firstTicks = 0;
-			bool isDownPressed = false;
-			bool isUpPressed = false;
+            long firstTicks = 0;
+            bool isDownPressed = false;
+            bool isUpPressed = false;
 
-			gamePadListener.OnDPadStatus = (dpadStatus) => 
-			{
-				// Down and Up only
-				if (dpadStatus.Down == CCGamePadButtonStatus.Pressed) 
-				{
-					if (firstTicks == 0L) 
-					{
-						firstTicks = DateTime.Now.Ticks;
-						isDownPressed = true;
-					}
-				} 
-				else if (dpadStatus.Down == CCGamePadButtonStatus.Released && firstTicks > 0L && isDownPressed) 
-				{
-					firstTicks = 0L;
-					NextMenuItem ();
-					isDownPressed = false;
-				}
-				if (dpadStatus.Up == CCGamePadButtonStatus.Pressed) 
-				{
-					if (firstTicks == 0L) {
-						firstTicks = DateTime.Now.Ticks;
-						isUpPressed = true;
-					}
-				} 
-				else if (dpadStatus.Up == CCGamePadButtonStatus.Released && firstTicks > 0L && isUpPressed) 
-				{
-					firstTicks = 0L;
-					PreviousMenuItem ();
-					isUpPressed = false;
-				}
+            gamePadListener.OnDPadStatus = (dpadStatus) => 
+            {
+                // Down and Up only
+                if (dpadStatus.Down == CCGamePadButtonStatus.Pressed) 
+                {
+                	if (firstTicks == 0L) 
+                	{
+                		firstTicks = DateTime.Now.Ticks;
+                		isDownPressed = true;
+                	}
+                } 
+            	else if (dpadStatus.Down == CCGamePadButtonStatus.Released && firstTicks > 0L && isDownPressed) 
+            	{
+            		firstTicks = 0L;
+            		NextMenuItem ();
+            		isDownPressed = false;
+            	}
+            	if (dpadStatus.Up == CCGamePadButtonStatus.Pressed) 
+            	{
+            		if (firstTicks == 0L) {
+            			firstTicks = DateTime.Now.Ticks;
+            			isUpPressed = true;
+            		}
+            	} 
+            	else if (dpadStatus.Up == CCGamePadButtonStatus.Released && firstTicks > 0L && isUpPressed) 
+            	{
+            		firstTicks = 0L;
+            		PreviousMenuItem ();
+            		isUpPressed = false;
+            	}
 
 
-			};
+        	};
 
-			gamePadListener.OnConnectionStatus = (connectionStatus) => 
-			{
-				CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
-			};
+        	gamePadListener.OnConnectionStatus = (connectionStatus) => 
+        	{
+        		CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
+        	};
 
-			EventDispatcher.AddEventListener (gamePadListener, this);
-
-		}
+            AddEventListener(gamePadListener);
+        }
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
         {

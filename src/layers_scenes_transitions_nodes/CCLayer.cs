@@ -69,31 +69,39 @@ namespace CocosSharp
             }
         }
 
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null)
+                {
+                    ContentSize = value.WinSize;
+                    AnchorPoint = new CCPoint(0.5f, 0.5f);
+                    IgnoreAnchorPointForPosition = true;
+                }
+            }
+        }
+
         #endregion Properties
 
 
         #region Constructors
 
-		public CCLayer(CCClipMode clipMode, CCDirector director=null) : base(director)
+        public CCLayer(CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
-
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
-            IgnoreAnchorPointForPosition = true;
-
-			if (Director != null)
-            {
-				ContentSize = Director.WinSize;
-            }
         }
 
-		public CCLayer(CCDirector director=null) : this(CCClipMode.None, director)
+        public CCLayer() : this(CCClipMode.None)
         {
         }
 
         void InitClipping()
         {
-            if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
+            if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget && Director !=null)
             {
                 if (renderTexture == null || renderTexture.ContentSize.Width < ContentSize.Width 
                     || renderTexture.ContentSize.Height < ContentSize.Height)
@@ -127,8 +135,7 @@ namespace CocosSharp
 
         public override void Visit()
         {
-            // quick return if not visible
-            if (!Visible)
+			if (!Visible || Director == null)
             {
                 return;
             }
@@ -199,7 +206,7 @@ namespace CocosSharp
         {
             noDrawChildren = false;
 
-            if (ChildClippingMode == CCClipMode.Bounds)
+			if (ChildClippingMode == CCClipMode.Bounds && Director != null)
             {
                 // We always clip to the bounding box
                 CCSize contentSize = ContentSize;

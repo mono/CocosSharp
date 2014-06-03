@@ -1385,7 +1385,7 @@ namespace tests
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
-			EventDispatcher.AddEventListener(touchListener, this);
+			AddEventListener(touchListener);
 
 
             CCSize s = CCDirector.SharedDirector.WinSize;

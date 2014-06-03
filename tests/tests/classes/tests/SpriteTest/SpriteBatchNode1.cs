@@ -15,7 +15,7 @@ namespace tests
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(touchListener, this);
+			AddEventListener(touchListener);
 
             CCSpriteBatchNode BatchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(BatchNode, 0, (int)kTags.kTagSpriteBatchNode);

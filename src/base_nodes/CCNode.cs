@@ -66,169 +66,166 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-	public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
+    public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
     {
-		public const int TagInvalid = -1;        					// Use this to determine if a tag has been set on the node.
-		static uint globalOrderOfArrival = 1;
+        public const int TagInvalid = -1;                           // Use this to determine if a tag has been set on the node.
+        static uint globalOrderOfArrival = 1;
 
-		public CCAffineTransform AffineTransform;
+        public CCAffineTransform AffineTransform;
 
-		bool isWorldTransformDirty;
-		bool isAdditionalTransformDirty;
-		bool ignoreAnchorPointForPosition;
-		bool isCleaned = false;
-		bool keypadEnabled;         								// input variables
-		bool inverseDirty;
+        bool isWorldTransformDirty;
+        bool isAdditionalTransformDirty;
+        bool ignoreAnchorPointForPosition;
+        bool isCleaned = false;
+        bool keypadEnabled;                                         // input variables
+        bool inverseDirty;
 
-		int tag;
-		int zOrder;
+        int tag;
+        int zOrder;
 
-		float rotationX;
-		float rotationY;
-		float scaleX;
-		float scaleY;
-		float skewX;
-		float skewY;
+        float rotationX;
+        float rotationY;
+        float scaleX;
+        float scaleY;
+        float skewX;
+        float skewY;
 
-		CCPoint anchorPoint;
-		CCPoint anchorPointInPoints;
-		CCPoint position;
+        CCPoint anchorPoint;
+        CCPoint anchorPointInPoints;
+        CCPoint position;
 
-		CCSize contentSize;
+        CCSize contentSize;
 
-		CCAffineTransform additionalTransform;
-		CCAffineTransform inverse;
-		CCAffineTransform nodeToWorldTransform;
+        CCAffineTransform additionalTransform;
+        CCAffineTransform inverse;
+        CCAffineTransform nodeToWorldTransform;
 
-		CCCamera camera;
-		CCScheduler scheduler;
-		CCActionManager actionManager;
+        CCCamera camera;
+        CCDirector director;
 
-		Dictionary<int, List<CCNode>> childrenByTag;
+        Dictionary<int, List<CCNode>> childrenByTag;
 
 
-		#region Properties
+        #region Properties
 
-		// Auto-implemented properties
+        // Auto-implemented properties
 
-		public bool IsRunning { get; protected set; }
-		public virtual bool HasFocus { get; set; }
-		public virtual bool Visible { get; set; }
-		public virtual bool IsSerializable { get; protected set; } 		// If this is true, the screen will be recorded into the director's state
-		public int LocalZOrder { get; set; }
-		public float GlobalZOrder { get; set; }
-		public virtual float VertexZ { get; set; }
-		public object UserData { get; set; }
-		public object UserObject { get; set; }
-		public string Name { get; set; }
-		public CCEventDispatcher EventDispatcher { get; set; }
-		public CCRawList<CCNode> Children { get; protected set; }
-		public CCGridBase Grid { get; set; }
-		public CCNode Parent { get; set; }
+        public bool IsRunning { get; protected set; }
+        public virtual bool HasFocus { get; set; }
+        public virtual bool Visible { get; set; }
+        public virtual bool IsSerializable { get; protected set; } 	            // If this is true, the screen will be recorded into the director's state
+        public int LocalZOrder { get; set; }
+        public float GlobalZOrder { get; set; }
+        public virtual float VertexZ { get; set; }
+        public object UserData { get; set; }
+        public object UserObject { get; set; }
+        public string Name { get; set; }
+        public CCRawList<CCNode> Children { get; protected set; }
+        public CCGridBase Grid { get; set; }
+        public CCNode Parent { get; set; }
 
-		internal protected uint OrderOfArrival { get; internal set; }
-		internal protected CCDirector Director { get; private set; }
+        internal protected uint OrderOfArrival { get; internal set; }
 
-		protected bool IsTransformDirty { get; set; }
-		protected bool IsReorderChildDirty { get; set; }
+        protected bool IsTransformDirty { get; set; }
+        protected bool IsReorderChildDirty { get; set; }
 
-		// Not auto-implemented properties
+        // Not auto-implemented properties
 
-		public virtual bool CanReceiveFocus
-		{
-			get { return Visible; }
-		}
+        public virtual bool CanReceiveFocus
+        {
+            get { return Visible; }
+        }
 
-		public virtual bool IgnoreAnchorPointForPosition
-		{
-			get { return ignoreAnchorPointForPosition; }
-			set
-			{
-				if (value != ignoreAnchorPointForPosition)
-				{
-					ignoreAnchorPointForPosition = value;
-					SetTransformIsDirty();
-				}
-			}
-		}
+        public virtual bool IgnoreAnchorPointForPosition
+        {
+            get { return ignoreAnchorPointForPosition; }
+            set
+            {
+                if (value != ignoreAnchorPointForPosition)
+                {
+                    ignoreAnchorPointForPosition = value;
+                    SetTransformIsDirty();
+                }
+            }
+        }
 
-		public virtual bool KeypadEnabled
-		{
-			get { return keypadEnabled; }
-			set
-			{
-				if (value != keypadEnabled)
-				{
-					keypadEnabled = value;
+        public virtual bool KeypadEnabled
+        {
+            get { return keypadEnabled; }
+            set
+            {
+                if (value != keypadEnabled)
+                {
+                    keypadEnabled = value;
 
-					if (IsRunning)
-					{
-						if (value)
-						{
-							Director.KeypadDispatcher.AddDelegate(this);
-						}
-						else
-						{
-							Director.KeypadDispatcher.RemoveDelegate(this);
-						}
-					}
-				}
-			}
-		}
+                    if (IsRunning)
+                    {
+                        if (value)
+                        {
+                            Director.KeypadDispatcher.AddDelegate(this);
+                        }
+                        else
+                        {
+                            Director.KeypadDispatcher.RemoveDelegate(this);
+                        }
+                    }
+                }
+            }
+        }
 
-		public int Tag
-		{
-			get { return tag; }
-			set
-			{
-				if (tag != value)
-				{
-					if (Parent != null)
-					{
-						Parent.ChangedChildTag(this, tag, value);
-					}
-					tag = value;
-				}
-			}
-		}
+        public int Tag
+        {
+            get { return tag; }
+            set
+            {
+                if (tag != value)
+                {
+                    if (Parent != null)
+                    {
+                        Parent.ChangedChildTag(this, tag, value);
+                    }
+                    tag = value;
+                }
+            }
+        }
 
-		public int ChildrenCount
-		{
-			get { return Children == null ? 0 : Children.Count; }
-		}
+        public int ChildrenCount
+        {
+            get { return Children == null ? 0 : Children.Count; }
+        }
 
-		public int ZOrder
-		{
-			get { return zOrder; }
-			set
-			{
-				zOrder = value;
-				if (Parent != null)
-				{
-					Parent.ReorderChild(this, value);
-				}
-			}
-		}
+        public int ZOrder
+        {
+            get { return zOrder; }
+            set
+            {
+                zOrder = value;
+                if (Parent != null)
+                {
+                    Parent.ReorderChild(this, value);
+                }
+            }
+        }
 
-		public virtual float SkewX
-		{
-			get { return skewX; }
-			set
-			{
-				skewX = value;
-				SetTransformIsDirty();
-			}
-		}
+        public virtual float SkewX
+        {
+            get { return skewX; }
+            set
+            {
+                skewX = value;
+                SetTransformIsDirty();
+            }
+        }
 
-		public virtual float SkewY
-		{
-			get { return skewY; }
-			set
-			{
-				skewY = value;
-				SetTransformIsDirty();
-			}
-		}
+        public virtual float SkewY
+        {
+            get { return skewY; }
+            set
+            {
+                skewY = value;
+                SetTransformIsDirty();
+            }
+        }
 
 		// 2D rotation of the node relative to the 0,1 vector in a clock-wise orientation.
 		public virtual float Rotation
@@ -433,133 +430,157 @@ namespace CocosSharp
 			}
 		}
 
-		public CCAffineTransform WorldToNodeTransform
-		{
-			get 
-			{
-				return CCAffineTransform.Invert (NodeToWorldTransform);
-			}
-		}
-
-		public CCCamera Camera
-		{
-			get { return camera ?? (camera = new CCCamera()); }
-		}
-
-		public CCScheduler Scheduler
-		{
-			get { return scheduler; }
-			set
-			{
-				if (value != scheduler)
-				{
-					UnscheduleAll();
-					scheduler = value;
-				}
-			}
-		}
-
-		public CCActionManager ActionManager
-		{
-			get { return actionManager; }
-			set
-			{
-				if (value != actionManager)
-				{
-					StopAllActions();
-					actionManager = value;
-				}
-			}
-		}
-
-		public CCNode this[int tag]
-		{
-			get { return GetChildByTag(tag); }
-		}
-
-		#endregion Properties
-
-
-		#region Constructors
-
-		// Eventually remove optional argument, director cannot be null
-		public CCNode(CCDirector director=null)
+        public CCAffineTransform WorldToNodeTransform
         {
-			if (director == null) {
-				director = CCDirector.SharedDirector;
-			}
+            get 
+            {
+                return CCAffineTransform.Invert (NodeToWorldTransform);
+            }
+        }
 
-			scaleX = 1.0f;
+        public CCCamera Camera
+        {
+            get { return camera ?? (camera = new CCCamera()); }
+        }
+
+        public CCNode this[int tag]
+        {
+            get { return GetChildByTag(tag); }
+        }
+
+        internal virtual CCDirector Director 
+        { 
+            get { return director; }
+            set 
+            {
+                if (director != value && value != null) 
+                {
+                    director = value;
+
+                    RunningOnNewWindow(value.WinSize);
+
+                    // All the children should belong to same director
+                    if (Children != null) 
+                    {
+                        foreach (CCNode child in Children) 
+                        {
+                            child.Director = director;
+                        }
+                    }
+                }
+            }
+        }
+
+        internal bool EventDispatcherIsEnabled
+        {
+            get { return EventDispatcher != null ? EventDispatcher.IsEnabled : false; }
+            set
+            {
+                if (EventDispatcher != null)
+                    EventDispatcher.IsEnabled = value;
+            }
+        }
+
+        CCScheduler Scheduler
+        {
+            get { return Director != null ? Director.Scheduler : null; }
+        }
+
+        CCActionManager ActionManager
+        {
+            get { return Director != null ? Director.ActionManager : null; }
+        }
+
+        CCEventDispatcher EventDispatcher 
+        { 
+            get { return Director != null ? Director.EventDispatcher : null; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCNode()
+        {
+            scaleX = 1.0f;
             scaleY = 1.0f;
             Visible = true;
             tag = TagInvalid;
 
-			nodeToWorldTransform = CCAffineTransform.Identity;
+            nodeToWorldTransform = CCAffineTransform.Identity;
             AffineTransform = CCAffineTransform.Identity;
             inverseDirty = true;
-			isWorldTransformDirty = true;
+            isWorldTransformDirty = true;
 
-			HasFocus = false;
+            HasFocus = false;
 
-			IsSerializable = true;
-
-            // set default scheduler and actionManager
-			Director = director;
-            actionManager = director.ActionManager;
-            scheduler = director.Scheduler;
-			EventDispatcher = director.EventDispatcher;
+            IsSerializable = true;
         }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		#region Cleaning up
+        #region Setup content
 
-		~CCNode()
-		{
-			this.Dispose(false);
-		}
+        protected virtual void RunningOnNewWindow(CCSize windowSize)
+        {
+            // Setup your content here
+            // Laying out children
+            // Adding listeners
+            // Running initial actions
+        }
 
-		public void Dispose()
-		{
-			this.Dispose(true);
+        #endregion Setup content
 
-			GC.SuppressFinalize(this);
-		}
 
-		protected virtual void Dispose(bool disposing)
-		{
-			if(disposing) 
-			{
-				// Dispose of managed resources
-			}
+        #region Cleaning up
 
-			// Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
-			this.Cleanup();
+        ~CCNode()
+        {
+            this.Dispose(false);
+        }
 
-			if (EventDispatcher != null)
-				EventDispatcher.RemoveEventListeners (this);
+        public void Dispose()
+        {
+            this.Dispose(true);
 
-			// Clean up the UserData and UserObject as these may hold references to other CCNodes.
-			UserData = null;
-			UserObject = null;
+            GC.SuppressFinalize(this);
+        }
 
-			if (Children != null && Children.Count > 0)
-			{
-				CCNode[] elements = Children.Elements;
-				foreach(CCNode child in Children.Elements)
-				{
-					if (child != null) 
-					{
-						if (!child.isCleaned) {
-							child.OnExit ();
-						}
-						child.Parent = null;
-					}
-				}
-			}
+        protected virtual void Dispose(bool disposing)
+        {
+            if(disposing) 
+            {
+                // Dispose of managed resources
+            }
 
-		}
+            // Want to stop all actions and timers regardless of whether or not this object was explicitly disposed
+            this.Cleanup();
+
+            if (EventDispatcher != null)
+                EventDispatcher.RemoveEventListeners (this);
+
+            // Clean up the UserData and UserObject as these may hold references to other CCNodes.
+            UserData = null;
+            UserObject = null;
+
+            if (Children != null && Children.Count > 0)
+            {
+                CCNode[] elements = Children.Elements;
+                foreach(CCNode child in Children.Elements)
+                {
+                    if (child != null) 
+                    {
+                        if (!child.isCleaned) {
+                            child.OnExit ();
+                        }
+                        child.Parent = null;
+                    }
+                }
+            }
+
+        }
 
 		protected virtual void ResetCleanState()
 		{
@@ -589,8 +610,7 @@ namespace CocosSharp
 			// timers
 			UnscheduleAll();
 
-			if (EventDispatcher != null)
-				EventDispatcher.RemoveEventListeners (this);
+            RemoveAllEventListeners();
 
 			if (Children != null && Children.Count > 0)
 			{
@@ -783,6 +803,10 @@ namespace CocosSharp
             {
                 child.ResetCleanState();
             }
+
+            // We want all our children to have the same director as us
+            // Set this before we call child.OnEnter
+            child.Director = this.Director;
 
             if (IsRunning)
             {
@@ -1139,7 +1163,7 @@ namespace CocosSharp
             IsRunning = true;
 
             // add this node to concern the kaypad msg
-            if (keypadEnabled)
+			if (keypadEnabled && Director != null)
             {
 				Director.KeypadDispatcher.AddDelegate(this);
             }
@@ -1171,7 +1195,7 @@ namespace CocosSharp
 
         public virtual void OnExit()
         {
-            if (keypadEnabled)
+			if (keypadEnabled && Director != null)
             {
 				Director.KeypadDispatcher.RemoveDelegate(this);
             }
@@ -1193,152 +1217,176 @@ namespace CocosSharp
 		#endregion Entering and exiting
 
 
+        #region Event listener
+
+        public void AddEventListener(CCEventListener listener)
+        {
+            if(EventDispatcher != null)
+                EventDispatcher.AddEventListener(listener, this);
+        }
+
+        public void RemoveEventListener(CCEventListener listener)
+        {
+            if(EventDispatcher != null)
+                EventDispatcher.RemoveEventListener(listener);
+        }
+
+        public void RemoveAllEventListeners(bool recursive = false)
+        {
+            if(EventDispatcher != null)
+                EventDispatcher.RemoveEventListeners(this, recursive);
+        }
+
+        #endregion Event listener
+
+
         #region Actions
 
-		public void AddAction (CCAction action, bool paused = false)
-		{
-			ActionManager.AddAction(action, this, paused);
-		}
+        public void AddAction(CCAction action, bool paused = false)
+        {
+            if(ActionManager != null)
+                ActionManager.AddAction(action, this, paused);
+        }
 
-		public void AddActions (bool paused, params CCFiniteTimeAction[] actions)
-		{
-			ActionManager.AddAction(new CCSequence(actions), this, paused);
-		}
+        public void AddActions(bool paused, params CCFiniteTimeAction[] actions)
+        {
+        	if(ActionManager != null) 
+                ActionManager.AddAction(new CCSequence(actions), this, paused);
+        }
 
-        public CCActionState Repeat (uint times, params CCFiniteTimeAction[] actions)
-		{
-			return RunAction (new CCRepeat (new CCSequence(actions), times));
-
-		}
+        public CCActionState Repeat(uint times, params CCFiniteTimeAction[] actions)
+        {
+            return RunAction (new CCRepeat (new CCSequence(actions), times));
+        }
 
         public CCActionState Repeat (uint times, CCActionInterval action)
-		{
-			return RunAction (new CCRepeat (action, times));
-		}
+        {
+            return RunAction (new CCRepeat (action, times));
+        }
 
         public CCActionState RepeatForever (params CCFiniteTimeAction[] actions)
-		{
-			return RunAction (new CCRepeatForever (actions));
-
-		}
+        {
+            return RunAction (new CCRepeatForever (actions));
+        }
 
         public CCActionState RepeatForever(CCActionInterval action)
-		{
-			return RunAction (new CCRepeatForever (action));
-		}
+        {
+            return RunAction (new CCRepeatForever (action));
+        }
 
         public CCActionState RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-            CCActionState actionState = actionManager.AddAction(action, this, !IsRunning);
-            return actionState;
+            return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : null;
         }
 
         public CCActionState RunActions(params CCFiniteTimeAction[] actions)
-		{
-			Debug.Assert(actions != null, "Argument must be non-nil");
-			var action = new CCSequence(actions);
-            CCActionState actionState = actionManager.AddAction(action, this, !IsRunning);
-            return actionState;
-		}
+        {
+            Debug.Assert(actions != null, "Argument must be non-nil");
+            var action = new CCSequence(actions);
+            return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : null;
+        }
 
         public void StopAllActions()
         {
-            actionManager.RemoveAllActionsFromTarget(this);
+            if(ActionManager != null)
+                ActionManager.RemoveAllActionsFromTarget(this);
         }
 
         public void StopAction(CCAction action)
         {
-            actionManager.RemoveAction(action);
+            if(ActionManager != null)
+                ActionManager.RemoveAction(action);
         }
 
         public void StopActionByTag(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-            actionManager.RemoveActionByTag(tag, this);
+            ActionManager.RemoveActionByTag(tag, this);
         }
 
         public CCAction GetActionByTag(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-            return actionManager.GetActionByTag(tag, this);
+            return ActionManager.GetActionByTag(tag, this);
         }
 
         public int NumberOfRunningActions()
         {
-            return actionManager.NumberOfRunningActionsInTarget(this);
+            return ActionManager.NumberOfRunningActionsInTarget(this);
         }
 
-		#endregion Actions
+        #endregion Actions
 
 
-		#region Scheduling
+        #region Scheduling
 
-		public void Schedule ()
-		{
-			Schedule (0);
-		}
+        public void Schedule()
+        {
+        	Schedule(0);
+        }
 
-		public void Schedule (int priority)
-		{
-			scheduler.Schedule (this, priority, !IsRunning);
-		}
+        public void Schedule(int priority)
+        {
+            Scheduler.Schedule(this, priority, !IsRunning);
+        }
 
-		public void Unschedule ()
-		{
-			scheduler.Unschedule (this);
-		}
+        public void Unschedule ()
+        {
+            Scheduler.Unschedule (this);
+        }
 
-		public void Schedule (Action<float> selector)
-		{
-			Schedule (selector, 0.0f, CCSchedulePriority.RepeatForever, 0.0f);
-		}
+        public void Schedule (Action<float> selector)
+        {
+        	Schedule (selector, 0.0f, CCSchedulePriority.RepeatForever, 0.0f);
+        }
 
 		public void Schedule (Action<float> selector, float interval)
 		{
 			Schedule (selector, interval, CCSchedulePriority.RepeatForever, 0.0f);
 		}
 
-		public void Schedule (Action<float> selector, float interval, uint repeat, float delay)
-		{
-			Debug.Assert (selector != null, "Argument must be non-nil");
-			Debug.Assert (interval >= 0, "Argument must be positive");
+        public void Schedule (Action<float> selector, float interval, uint repeat, float delay)
+        {
+            Debug.Assert (selector != null, "Argument must be non-nil");
+            Debug.Assert (interval >= 0, "Argument must be positive");
 
-			scheduler.Schedule (selector, this, interval, repeat, delay, !IsRunning);
-		}
+            Scheduler.Schedule (selector, this, interval, repeat, delay, !IsRunning);
+        }
 
-		public void ScheduleOnce (Action<float> selector, float delay)
-		{
-			Schedule (selector, 0.0f, 0, delay);
-		}
+        public void ScheduleOnce (Action<float> selector, float delay)
+        {
+            Schedule (selector, 0.0f, 0, delay);
+        }
 
-		public void Unschedule (Action<float> selector)
-		{
-			// explicit nil handling
-			if (selector == null)
-				return;
+        public void Unschedule (Action<float> selector)
+        {
+            // explicit nil handling
+            if (selector == null)
+                return;
 
-			scheduler.Unschedule (selector, this);
-		}
+            Scheduler.Unschedule (selector, this);
+        }
 
-		public void UnscheduleAll ()
-		{
-			scheduler.UnscheduleAll (this);
-		}
+        public void UnscheduleAll ()
+        {
+            if(Scheduler != null)
+                Scheduler.UnscheduleAll(this);
+        }
 
         public void Resume()
         {
-            scheduler.Resume(this);
-            actionManager.ResumeTarget(this);
-			EventDispatcher.Resume (this);
+            Scheduler.Resume(this);
+            ActionManager.ResumeTarget(this);
+            EventDispatcher.Resume(this);
         }
 
         public void Pause()
         {
-            scheduler.PauseTarget(this);
-            actionManager.PauseTarget(this);
-			if (EventDispatcher != null)
-				EventDispatcher.Pause (this);
+            Scheduler.PauseTarget(this);
+            ActionManager.PauseTarget(this);
+            if (EventDispatcher != null)
+                EventDispatcher.Pause (this);
         }
 
 		#endregion Scheduling

@@ -80,15 +80,14 @@ namespace CocosSharp
     {
         public KeyboardNotificationLayer()
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchOneByOne();
+            touchListener.IsSwallowTouches = true;
 
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchEnded = onTouchEnded;
+            touchListener.OnTouchBegan = onTouchBegan;
+            touchListener.OnTouchEnded = onTouchEnded;
 
-			EventDispatcher.AddEventListener(touchListener, this);
-
+            AddEventListener(touchListener);
         }
 
         public virtual string subtitle()

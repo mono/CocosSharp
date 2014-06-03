@@ -4,11 +4,36 @@ namespace CocosSharp
 {
     public class CCClippingNode : CCNode
     {
+        CCNode stencil;
+
         public bool Inverted { get; set; }
-        public CCNode Stencil { get; set; }
         public float AlphaThreshold { get; set; }
+        public CCNode Stencil 
+        { 
+            get { return stencil; }
+            set 
+            {
+                stencil = value;
+                if (stencil != null) 
+                {
+                    stencil.Director = Director;
+                }
+            }
+        }
 
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
 
+                if (stencil != null)
+                {
+                    stencil.Director = value;
+                }
+            }
+        }
 
         #region Constructors
 

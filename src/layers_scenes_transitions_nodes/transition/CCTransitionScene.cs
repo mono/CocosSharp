@@ -10,25 +10,30 @@ namespace CocosSharp
 		protected bool IsInSceneOnTop { get; set; }
 		protected bool IsSendCleanupToScene { get; set; }
 		protected float Duration { get; set; }
-		protected CCScene InScene { get; set; }
-		protected CCScene OutScene { get; set; }
+		protected CCScene InScene { get; private set; }
+		protected CCScene OutScene { get; private set; }
 
         public override bool IsTransition
         {
 			get { return true; }
         }
 
+		internal override CCDirector Director 
+		{ 
+			get { return InScene != null ? InScene.Director : null; }
+			set 
+			{
+				// Director is dependent on InScene
+			}
+		}
+
 		#endregion Properties
 
 
         #region Constructors
 
-		public CCTransitionScene (float t, CCScene scene) : this(t, scene, scene.Director)
+		public CCTransitionScene (float t, CCScene scene) : base()
         {
-        }
-
-		CCTransitionScene (float t, CCScene scene, CCDirector director) : base(director)
-		{
 			InitCCTransitionScene(t, scene);
 		}
 
@@ -76,7 +81,7 @@ namespace CocosSharp
             base.OnEnter();
 
 			// Disable events while transitioning
-			EventDispatcher.IsEnabled = false;
+            EventDispatcherIsEnabled = false;
 
             // outScene should not receive the onEnter callback
             // only the onExitTransitionDidStart
@@ -90,7 +95,7 @@ namespace CocosSharp
             base.OnExit();
 
 			// Enable event after transitioning
-			EventDispatcher.IsEnabled = true;
+            EventDispatcherIsEnabled = true;
 
             OutScene.OnExit();
 
