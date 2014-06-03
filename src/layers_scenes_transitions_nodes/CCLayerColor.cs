@@ -36,7 +36,7 @@ namespace CocosSharp
     /// </summary>
     public class CCLayerColor : CCLayerRGBA, ICCBlendable
     {
-		internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
+        internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         #region Properties
 
@@ -77,40 +77,40 @@ namespace CocosSharp
             }
         }
 
-		internal override CCDirector Director 
-		{ 
-			get { return base.Director; }
-			set 
-			{
-				base.Director = value;
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
 
-				if (value != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
-				{
-					ContentSize = value.WinSize;
-				}
-			}
-		}
+                if (value != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
+                {
+                    ContentSize = value.WinSize;
+                }
+            }
+        }
 
         #endregion Properties
 
 
         #region Constructors
 
-		public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
+        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color. Width and height are the window size. 
         /// </summary>
-		public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
+        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-		public CCLayerColor (CCColor4B color, float width, float height) : base()
+        public CCLayerColor (CCColor4B color, float width, float height) : base()
         {
             DisplayedColor = new CCColor3B(color.R, color.G, color.B);
             RealColor = DisplayedColor;
@@ -150,7 +150,7 @@ namespace CocosSharp
         /// <param name="w"></param>
         public void ChangeWidth(float w)
         {
-			ContentSize = new CCSize(w, ContentSize.Height);
+            ContentSize = new CCSize(w, ContentSize.Height);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace CocosSharp
         /// <param name="h"></param>
         public void ChangeHeight(float h)
         {
-			ContentSize = new CCSize(ContentSize.Width, h);
+            ContentSize = new CCSize(ContentSize.Width, h);
         }
 
         /// <summary>

@@ -12,37 +12,34 @@ namespace CocosSharp
     /// </summary>
     public class CCScene : CCNode
     {
-		#region Properties
+        #region Properties
 
         public virtual bool IsTransition
         {
-            get
-            {
-                return false;
-            }
+            get { return false; }
         }
 
         internal override CCDirector Director 
-		{ 
-			get { return base.Director; }
-			set 
-			{
-				base.Director = value;
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
 
-				if (value != null) 
-				{
-					ContentSize = value.WinSize;
-				}
-			}
-		}
+                if (value != null) 
+                {
+                    ContentSize = value.WinSize;
+                }
+            }
+        }
 
-		#endregion Properties
+        #endregion Properties
 
 
         /// <summary>
         /// Sets the anchor point to the middle of the scene but ignores the anchor for positioning.
         /// </summary>
-		public CCScene() : base()
+        public CCScene() : base()
         {
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);

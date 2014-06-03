@@ -68,7 +68,7 @@ namespace CocosSharp
 
         #region Constructors
 
-		public CCLayerRGBA() : base()
+        public CCLayerRGBA() : base()
         {
             DisplayedOpacity = 255;
             RealOpacity = 255;
@@ -115,7 +115,7 @@ namespace CocosSharp
                 }
             }
         }
-    
+
     }
 }
 

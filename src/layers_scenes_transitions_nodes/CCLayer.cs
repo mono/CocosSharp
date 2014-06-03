@@ -135,7 +135,7 @@ namespace CocosSharp
 
         public override void Visit()
         {
-			if (!Visible || Director == null)
+            if (!Visible || Director == null)
             {
                 return;
             }
@@ -206,14 +206,14 @@ namespace CocosSharp
         {
             noDrawChildren = false;
 
-			if (ChildClippingMode == CCClipMode.Bounds && Director != null)
+            if (ChildClippingMode == CCClipMode.Bounds && Director != null)
             {
                 // We always clip to the bounding box
                 CCSize contentSize = ContentSize;
                 var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
                 var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform);
 
-				var winSize = Director.WinSize;
+                var winSize = Director.WinSize;
 
                 CCRect prevScissorRect;
                 if (CCDrawManager.ScissorRectEnabled)
