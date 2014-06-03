@@ -42,6 +42,23 @@ namespace CocosSharp
             }
         }
 
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                base.Director = value;
+
+                if (value != null && Layers != null)
+                {
+                    foreach (CCLayer layer in Layers.Values) 
+                    {
+                        layer.Director = value;
+                    }
+                }
+            }
+        }
+
         #endregion Properties
 
 
@@ -98,6 +115,9 @@ namespace CocosSharp
             if (layer.Tag != CCNode.TagInvalid)
             {
                 Layers[layer.Tag + TagOffsetForUniqueness] = layer;
+
+                if(Director != null)
+                    layer.Director = Director;
             }
         }
 

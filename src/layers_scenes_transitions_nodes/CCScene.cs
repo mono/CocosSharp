@@ -29,6 +29,8 @@ namespace CocosSharp
                 if (value != null) 
                 {
                     ContentSize = value.WinSize;
+                    IgnoreAnchorPointForPosition = true;
+                    AnchorPoint = new CCPoint(0.5f, 0.5f);
                 }
             }
         }
@@ -36,13 +38,8 @@ namespace CocosSharp
         #endregion Properties
 
 
-        /// <summary>
-        /// Sets the anchor point to the middle of the scene but ignores the anchor for positioning.
-        /// </summary>
         public CCScene() : base()
         {
-            IgnoreAnchorPointForPosition = true;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
     }
 }
