@@ -41,7 +41,7 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionFade (float duration, CCScene scene, CCColor3B color) : base (duration, scene)
         {
-			Color = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
+            Color = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
 
         }
 
@@ -60,7 +60,7 @@ namespace CocosSharp
             InScene.Visible = false;
 
             AddChild(l, 2, SceneFade);
-			CCNode f = this[SceneFade];
+            CCNode f = this[SceneFade];
 
             var a = (CCActionInterval) new CCSequence
                                            (

@@ -5,37 +5,37 @@ namespace CocosSharp
 {
     public class CCTransitionScene : CCScene
     {
-		#region Properties
+        #region Properties
 
-		protected bool IsInSceneOnTop { get; set; }
-		protected bool IsSendCleanupToScene { get; set; }
-		protected float Duration { get; set; }
-		protected CCScene InScene { get; private set; }
-		protected CCScene OutScene { get; private set; }
+        protected bool IsInSceneOnTop { get; set; }
+        protected bool IsSendCleanupToScene { get; set; }
+        protected float Duration { get; set; }
+        protected CCScene InScene { get; private set; }
+        protected CCScene OutScene { get; private set; }
 
         public override bool IsTransition
         {
-			get { return true; }
+            get { return true; }
         }
 
-		internal override CCDirector Director 
-		{ 
-			get { return InScene != null ? InScene.Director : null; }
-			set 
-			{
-				// Director is dependent on InScene
-			}
-		}
+        internal override CCDirector Director 
+        { 
+            get { return InScene != null ? InScene.Director : null; }
+            set 
+            {
+                // Director is dependent on InScene
+            }
+        }
 
-		#endregion Properties
+        #endregion Properties
 
 
         #region Constructors
 
-		public CCTransitionScene (float t, CCScene scene) : base()
+        public CCTransitionScene (float t, CCScene scene) : base()
         {
-			InitCCTransitionScene(t, scene);
-		}
+            InitCCTransitionScene(t, scene);
+        }
 
         void InitCCTransitionScene(float t, CCScene scene)
         {
@@ -45,7 +45,7 @@ namespace CocosSharp
 
             // retain
             InScene = scene;
-			OutScene = Director.RunningScene;
+            OutScene = Director.RunningScene;
             if (OutScene == null)
             {
                 // Creating an empty scene.
@@ -80,13 +80,13 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-			// Disable events while transitioning
+            // Disable events while transitioning
             EventDispatcherIsEnabled = false;
 
             // outScene should not receive the onEnter callback
             // only the onExitTransitionDidStart
             OutScene.OnExitTransitionDidStart();
-    
+
             InScene.OnEnter();
         }
 
@@ -94,7 +94,7 @@ namespace CocosSharp
         {
             base.OnExit();
 
-			// Enable event after transitioning
+            // Enable event after transitioning
             EventDispatcherIsEnabled = true;
 
             OutScene.OnExit();
@@ -151,8 +151,8 @@ namespace CocosSharp
             Unschedule(SetNewScene);
 
             // Before replacing, save the "send cleanup to scene"
-			IsSendCleanupToScene = Director.IsSendCleanupToScene;
-			Director.ReplaceScene(InScene);
+            IsSendCleanupToScene = Director.IsSendCleanupToScene;
+            Director.ReplaceScene(InScene);
 
             // issue #267
             OutScene.Visible = true;

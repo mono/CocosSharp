@@ -39,7 +39,7 @@ namespace CocosSharp
 
 
         #region Contructors
-		        
+                
         /// <summary>
         /// Creates a base transition with duration and incoming scene.
         /// If back is true then the effect is reversed to appear as if the incoming 
@@ -47,8 +47,8 @@ namespace CocosSharp
         /// </summary>
         public CCTransitionPageTurn (float t, CCScene scene, bool backwards) : base(t, scene)
         {
-			Back = backwards;
-			this.SceneOrder();
+            Back = backwards;
+            this.SceneOrder();
         }
 
         #endregion Constructors
@@ -75,7 +75,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-			CCSize s = Director.WinSize;
+            CCSize s = Director.WinSize;
             int x, y;
             if (s.Width > s.Height)
             {

@@ -34,7 +34,7 @@ namespace CocosSharp
         /// </summary>
         protected override void InitScenes()
         {
-			CCSize s = Director.WinSize;
+            CCSize s = Director.WinSize;
             InScene.Position = new CCPoint(0, -(s.Height - 0.5f));
         }
 
@@ -44,7 +44,7 @@ namespace CocosSharp
         /// <returns></returns>
         public override CCActionInterval Action()
         {
-			CCSize s = Director.WinSize;
+            CCSize s = Director.WinSize;
             return new CCMoveBy (Duration, new CCPoint(0, s.Height - 0.5f));
         }
 

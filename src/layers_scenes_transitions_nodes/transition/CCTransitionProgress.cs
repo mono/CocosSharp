@@ -8,13 +8,13 @@ namespace CocosSharp
         protected CCScene SceneToBeModified;
 
 
-		#region Constructors
+        #region Constructors
 
         public CCTransitionProgress(float t, CCScene scene) : base(t, scene)
         {
         }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
         public override void OnEnter()
@@ -25,7 +25,7 @@ namespace CocosSharp
 
             // create a transparent color layer
             // in which we are going to add our rendertextures
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height);
@@ -97,7 +97,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -128,7 +128,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -158,7 +158,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -187,7 +187,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -214,7 +214,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -253,7 +253,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-			CCSize size = Director.WinSize;
+            CCSize size = Director.WinSize;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 

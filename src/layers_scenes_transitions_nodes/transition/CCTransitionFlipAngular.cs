@@ -26,13 +26,13 @@ namespace CocosSharp
 {
     public class CCTransitionFlipAngular : CCTransitionSceneOriented
     {
-		#region Constructors
+        #region Constructors
 
         public CCTransitionFlipAngular(float t, CCScene s, CCTransitionOrientation o) : base(t, s, o)
         { 
-		}
+        }
         
-		#endregion Constructors
+        #endregion Constructors
 
 
         public override void OnEnter()

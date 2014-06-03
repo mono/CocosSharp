@@ -27,13 +27,13 @@ namespace CocosSharp
 {
     public class CCTransitionFlipY : CCTransitionSceneOriented
     {
-		#region Constructors
+        #region Constructors
 
         public CCTransitionFlipY(float t, CCScene s, CCTransitionOrientation o) : base (t, s, o)
         {
-		}
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
         public override void OnEnter()
