@@ -6,7 +6,6 @@ using CocosSharp;
 using tests.Clipping;
 using tests.FontTest;
 using tests.Extensions;
-//using tests.classes.tests.Box2DTestBet;
 using Box2D.TestBed;
 
 namespace tests
@@ -14,167 +13,193 @@ namespace tests
     public class TestController : CCLayer
     {
         static int LINE_SPACE = 40;
-        static CCPoint s_tCurPos = new CCPoint(0.0f, 0.0f);
-        private List<CCMenuItem> _Items = new List<CCMenuItem>();
-        private int _CurrentItemIndex = 0;
-        private CCSprite _menuIndicator;
+        static CCPoint curPos = new CCPoint(0.0f, 0.0f);
+
+        int currentItemIndex = 0;
+        CCPoint homePosition;
+        CCPoint lastPosition;
+
+        CCPoint beginTouchPos;
+
+        CCSprite menuIndicator;
+        CCLabelTtf versionLabel;
+
+        CCMenu testListMenu;
+        List<CCMenuItem> testListMenuItems = new List<CCMenuItem>();
+
+        CCMenu closeMenu;
+        CCMenuItem closeMenuItem;
+
+
+        #region Constructors
+
+        public TestController()
+        {
+            // Add close menu
+            closeMenuItem = new CCMenuItemImage(TestResource.s_pPathClose, TestResource.s_pPathClose, CloseCallback);
+            closeMenu = new CCMenu(closeMenuItem);
+
+            CCMenuItemFont.FontName = "MarkerFelt";
+            CCMenuItemFont.FontSize = 22;
+
+
+            #if !PSM && !WINDOWS_PHONE
+            #if NETFX_CORE
+            versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
+            #else
+            versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
+            #endif
+            AddChild(versionLabel, 20000);
+            #endif
+
+            // Add test list menu
+            testListMenu = new CCMenu();
+            for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
+            {
+                CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 24);
+                CCMenuItem menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
+
+                menuItem.UserData = i;
+                testListMenu.AddChild(menuItem, i + 10000);
+                testListMenuItems.Add(menuItem);
+            }
+
+            #if XBOX || OUYA
+            CCSprite sprite = new CCSprite("Images/aButton");
+            AddChild(sprite, 10001);
+            menuIndicator = sprite;
+            #endif
+
+            AddChild(testListMenu);
+            AddChild(closeMenu, 1);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            // add listeners
+            // Laying out content based on window size
+            closeMenu.Position = CCPoint.Zero;
+            closeMenuItem.Position = new CCPoint(windowSize.Width - 30, windowSize.Height - 30);
+
+            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, windowSize.Height - 18f);
+            versionLabel.HorizontalAlignment = CCTextAlignment.Left;
+
+            testListMenu.ContentSize = new CCSize(windowSize.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
+
+            int i = 0;
+            foreach (CCMenuItem testItem in testListMenuItems) 
+            {
+                #if XBOX || OUYA
+                testItem.Position = new CCPoint(windowSize.Width / 2, -(i + 1) * LINE_SPACE);
+                #else
+                testItem.Position = new CCPoint(windowSize.Width / 2, (windowSize.Height - (i + 1) * LINE_SPACE));
+                #endif
+
+                i++;
+            }
+                
+            #if XBOX || OUYA
+            // Center the menu on the first item so that it is 
+            // in the center of the screen
+            homePosition = new CCPoint(0f, windowSize.Height / 2f + LINE_SPACE / 2f);
+            lastPosition = new CCPoint(0f, homePosition.Y - (testListMenuItems.Count - 1) * LINE_SPACE);
+            #else
+            homePosition = curPos;
+            #endif
+
+            testListMenu.Position = homePosition;
+
+            // Add listeners
             #if !XBOX && !OUYA
             var touchListener = new CCEventListenerTouchOneByOne ();
             touchListener.IsSwallowTouches = true;
-            touchListener.OnTouchBegan = onTouchBegan;
-            touchListener.OnTouchMoved = onTouchMoved;
+            touchListener.OnTouchBegan = OnTouchBegan;
+            touchListener.OnTouchMoved = OnTouchMoved;
 
             AddEventListener(touchListener);
 
             var mouseListener = new CCEventListenerMouse ();
-            mouseListener.OnMouseScroll = onMouseScroll;
+            mouseListener.OnMouseScroll = OnMouseScroll;
             AddEventListener(mouseListener);
 
             #else
             //KeypadEnabled = true;
             #endif
 
-
             #if WINDOWS || WINDOWSGL || MACOS
             EnableGamePad();
             #endif
 
             // set the first one to have the selection highlight
-            _CurrentItemIndex = 0;
+            currentItemIndex = 0;
             SelectMenuItem();
         }
 
-        public TestController()
+        #endregion Setup content
+
+
+        #region Menu item handling
+
+        void SelectMenuItem()
         {
-            // add close menu
-            var pCloseItem = new CCMenuItemImage(TestResource.s_pPathClose, TestResource.s_pPathClose, closeCallback);
-            var pMenu = new CCMenu(pCloseItem);
-            var s = CCDirector.SharedDirector.WinSize;
-
-
-			CCMenuItemFont.FontName = "MarkerFelt";
-			CCMenuItemFont.FontSize = 22;
-
-            pMenu.Position = CCPoint.Zero;
-            pCloseItem.Position = new CCPoint(s.Width - 30, s.Height - 30);
-#if !PSM && !WINDOWS_PHONE
-#if NETFX_CORE
-            CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
-#else
-            CCLabelTtf versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
-#endif
-            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, s.Height - 18f);
-            versionLabel.HorizontalAlignment = CCTextAlignment.Left;
-            AddChild(versionLabel, 20000);
-#endif
-            // add menu items for tests
-            m_pItemMenu = new CCMenu();
-            for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
+            if (currentItemIndex < testListMenuItems.Count) 
             {
-                var label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 24);
-                var pMenuItem = new CCMenuItemLabelTTF(label, menuCallback);
-
-                pMenuItem.UserData = i;
-				m_pItemMenu.AddChild(pMenuItem, i + 10000);
-#if XBOX || OUYA
-                pMenuItem.Position = new CCPoint(s.Width / 2, -(i + 1) * LINE_SPACE);
-#else
-                pMenuItem.Position = new CCPoint(s.Width / 2, (s.Height - (i + 1) * LINE_SPACE));
-#endif
-                _Items.Add(pMenuItem);
-            }
-
-            m_pItemMenu.ContentSize = new CCSize(s.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
-#if XBOX || OUYA
-            CCSprite sprite = new CCSprite("Images/aButton");
-            AddChild(sprite, 10001);
-            _menuIndicator = sprite;
-            // Center the menu on the first item so that it is 
-            // in the center of the screen
-            _HomePosition = new CCPoint(0f, s.Height / 2f + LINE_SPACE / 2f);
-            _LastPosition = new CCPoint(0f, _HomePosition.Y - (_Items.Count - 1) * LINE_SPACE);
-
-#else
-            _HomePosition = s_tCurPos;
-#endif
-            m_pItemMenu.Position = _HomePosition;
-            AddChild(m_pItemMenu);
-
-            AddChild(pMenu, 1);
-
-        }
-
-
-        private CCPoint _HomePosition;
-        private CCPoint _LastPosition;
-
-        private void SelectMenuItem()
-        {
-            if (_CurrentItemIndex < _Items.Count) 
-            {
-                _Items [_CurrentItemIndex].Selected = true;
-                if (_menuIndicator != null) {
-                    _menuIndicator.Position = new CCPoint (
-                        m_pItemMenu.Position.X + _Items [_CurrentItemIndex].Position.X - _Items [_CurrentItemIndex].ContentSizeInPixels.Width / 2f - _menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
-                        m_pItemMenu.Position.Y + _Items [_CurrentItemIndex].Position.Y
+                testListMenuItems [currentItemIndex].Selected = true;
+                if (menuIndicator != null) {
+                    menuIndicator.Position = new CCPoint (
+                        testListMenu.Position.X + testListMenuItems [currentItemIndex].Position.X 
+                        - testListMenuItems[currentItemIndex].ContentSizeInPixels.Width / 2f - menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
+                        testListMenu.Position.Y + testListMenuItems [currentItemIndex].Position.Y
                     );
                 }
             }
         }
 
-        private void NextMenuItem() 
+        void NextMenuItem() 
         {
-            _Items[_CurrentItemIndex].Selected = false;
-            _CurrentItemIndex = (_CurrentItemIndex + 1) % _Items.Count;
+            testListMenuItems[currentItemIndex].Selected = false;
+            currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.Y + _CurrentItemIndex * LINE_SPACE));
-            s_tCurPos = m_pItemMenu.Position;
+            testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
+            curPos = testListMenu.Position;
             SelectMenuItem();
         }
-        private void PreviousMenuItem() 
+
+        void PreviousMenuItem() 
         {
-            _Items[_CurrentItemIndex].Selected = false;
-            _CurrentItemIndex--;
-            if(_CurrentItemIndex < 0) {
-                _CurrentItemIndex = _Items.Count - 1;
+            testListMenuItems[currentItemIndex].Selected = false;
+            currentItemIndex--;
+            if(currentItemIndex < 0) {
+                currentItemIndex = testListMenuItems.Count - 1;
             }
             CCSize winSize = CCDirector.SharedDirector.WinSize;
-            m_pItemMenu.Position = (new CCPoint(0, _HomePosition.Y + _CurrentItemIndex * LINE_SPACE));
-            s_tCurPos = m_pItemMenu.Position;
+            testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
+            curPos = testListMenu.Position;
             SelectMenuItem();
         }
-        public override void OnExit()
-        {
-            base.OnExit();
-        }
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
 
-        ~TestController()
-        {
-        }
+        #endregion Menu item handling
 
-        public void menuCallback(object pSender)
+
+        void MenuCallback(object sender)
         {
             // get the userdata, it's the index of the menu item clicked
-            CCMenuItem pMenuItem = (CCMenuItem)(pSender);
-            int nIdx = (int)pMenuItem.UserData;
+            CCMenuItem menuItem = (CCMenuItem)(sender);
+            int nIdx = (int)menuItem.UserData;
 
             // create the test scene and run it
-            TestScene pScene = CreateTestScene(nIdx);
-            if (pScene != null)
+            TestScene scene = CreateTestScene(nIdx);
+            if (scene != null)
             {
-                pScene.runThisTest();
+                scene.runThisTest();
             }
         }
 
-        public void closeCallback(object pSender)
+        void CloseCallback(object sender)
         {
             CCDirector.SharedDirector.End();
             #if !IOS
@@ -184,7 +209,6 @@ namespace tests
 
         void EnableGamePad()
         {
-
             var AButtonWasPressed = false;
 
             var gamePadListener = new CCEventListenerGamePad ();
@@ -198,8 +222,8 @@ namespace tests
                 else if (buttonStatus.A == CCGamePadButtonStatus.Released && AButtonWasPressed)
                 {
                     // Select the menu
-                    _Items[_CurrentItemIndex].Activate();
-                    _Items[_CurrentItemIndex].Selected = false;
+                    testListMenuItems[currentItemIndex].Activate();
+                    testListMenuItems[currentItemIndex].Selected = false;
                 }
             };
 
@@ -212,234 +236,208 @@ namespace tests
                 // Down and Up only
                 if (dpadStatus.Down == CCGamePadButtonStatus.Pressed) 
                 {
-                	if (firstTicks == 0L) 
-                	{
-                		firstTicks = DateTime.Now.Ticks;
-                		isDownPressed = true;
-                	}
+                    if (firstTicks == 0L) 
+                    {
+                        firstTicks = DateTime.Now.Ticks;
+                        isDownPressed = true;
+                    }
                 } 
-            	else if (dpadStatus.Down == CCGamePadButtonStatus.Released && firstTicks > 0L && isDownPressed) 
-            	{
-            		firstTicks = 0L;
-            		NextMenuItem ();
-            		isDownPressed = false;
-            	}
-            	if (dpadStatus.Up == CCGamePadButtonStatus.Pressed) 
-            	{
-            		if (firstTicks == 0L) {
-            			firstTicks = DateTime.Now.Ticks;
-            			isUpPressed = true;
-            		}
-            	} 
-            	else if (dpadStatus.Up == CCGamePadButtonStatus.Released && firstTicks > 0L && isUpPressed) 
-            	{
-            		firstTicks = 0L;
-            		PreviousMenuItem ();
-            		isUpPressed = false;
-            	}
+                else if (dpadStatus.Down == CCGamePadButtonStatus.Released && firstTicks > 0L && isDownPressed) 
+                {
+                    firstTicks = 0L;
+                    NextMenuItem ();
+                    isDownPressed = false;
+                }
+                if (dpadStatus.Up == CCGamePadButtonStatus.Pressed) 
+                {
+                    if (firstTicks == 0L) {
+                        firstTicks = DateTime.Now.Ticks;
+                        isUpPressed = true;
+                    }
+                } 
+                else if (dpadStatus.Up == CCGamePadButtonStatus.Released && firstTicks > 0L && isUpPressed) 
+                {
+                    firstTicks = 0L;
+                    PreviousMenuItem ();
+                    isUpPressed = false;
+                }
 
 
-        	};
+            };
 
-        	gamePadListener.OnConnectionStatus = (connectionStatus) => 
-        	{
-        		CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
-        	};
+            gamePadListener.OnConnectionStatus = (connectionStatus) => 
+            {
+                CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
+            };
 
             AddEventListener(gamePadListener);
         }
 
-		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
+
+        #region Event handling
+
+        bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
-            m_tBeginPos = touch.Location;
-			return true;
+            beginTouchPos = touch.Location;
+            return true;
         }
 
-		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
+        void OnTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
 
             var touchLocation = touch.Location;
-            float nMoveY = touchLocation.Y - m_tBeginPos.Y;
+            float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
-            CCPoint curPos = m_pItemMenu.Position;
+            CCPoint curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
             CCSize winSize = CCDirector.SharedDirector.WinSize;
             if (nextPos.Y < 0.0f)
             {
-                m_pItemMenu.Position = new CCPoint(0, 0);
+                testListMenu.Position = new CCPoint(0, 0);
                 return;
             }
 
-			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
             {
-				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
                 return;
             }
 
-            m_pItemMenu.Position = nextPos;
-            m_tBeginPos = touchLocation;
-            s_tCurPos = nextPos;
+            testListMenu.Position = nextPos;
+            beginTouchPos = touchLocation;
+            curPos = nextPos;
         }
 
-		void onMouseScroll(CCEventMouse mouseEvent)
-		{
+        void OnMouseScroll(CCEventMouse mouseEvent)
+        {
 
-			// Due to a bug in MonoGame the menu will jump around on Mac when hitting the top element
-			// https://github.com/mono/MonoGame/issues/2276
-			var delta = mouseEvent.ScrollY;
+            // Due to a bug in MonoGame the menu will jump around on Mac when hitting the top element
+            // https://github.com/mono/MonoGame/issues/2276
+            var delta = mouseEvent.ScrollY;
 
-			CCSize winSize = CCDirector.SharedDirector.WinSize;
-			var curPos = m_pItemMenu.Position;
-			var nextPos = curPos;
-			nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / LINE_SPACE;
+            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            var curPos = testListMenu.Position;
+            var nextPos = curPos;
+            nextPos.Y += (delta / CCDirector.SharedDirector.ContentScaleFactor) / LINE_SPACE;
 
-			if (nextPos.Y < 0) 
-			{
-				m_pItemMenu.Position = CCPoint.Zero;
-				return;
-			}
+            if (nextPos.Y < 0) 
+            {
+                testListMenu.Position = CCPoint.Zero;
+                return;
+            }
 
-			if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
-			{
-				m_pItemMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
-				return;
-			}
+            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+            {
+                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+                return;
+            }
 
-			m_pItemMenu.Position = nextPos;
-			s_tCurPos   = nextPos;
-		}
+            testListMenu.Position = nextPos;
+            curPos   = nextPos;
+        }
+
+        #endregion Event handling
 
 
-        public static TestScene CreateTestScene(int nIdx)
+        public static TestScene CreateTestScene(int index)
         {
             CCDirector.SharedDirector.PurgeCachedData();
 
-            TestScene pScene = null;
+            TestScene scene = null;
 
-            switch (nIdx)
+            switch(index)
             {
                 case (int)TestCases.TEST_ACTIONS:
-                    pScene = new ActionsTestScene(); break;
+                    scene = new ActionsTestScene(); break;
                 case (int)TestCases.TEST_TRANSITIONS:
-                    pScene = new TransitionsTestScene(); break;
+                    scene = new TransitionsTestScene(); break;
                 case (int)TestCases.TEST_PROGRESS_ACTIONS:
-                    pScene = new ProgressActionsTestScene(); break;
+                    scene = new ProgressActionsTestScene(); break;
                 case (int)TestCases.TEST_EFFECTS:
-                    pScene = new EffectTestScene(); break;
+                    scene = new EffectTestScene(); break;
                 case (int)TestCases.TEST_CLICK_AND_MOVE:
-                    pScene = new ClickAndMoveTest(); break;
+                    scene = new ClickAndMoveTest(); break;
                 case (int)TestCases.TEST_ROTATE_WORLD:
-                    pScene = new RotateWorldTestScene(); break;
+                    scene = new RotateWorldTestScene(); break;
                 case (int)TestCases.TEST_PARTICLE:
-                    pScene = new ParticleTestScene(); break;
+                    scene = new ParticleTestScene(); break;
                 case (int)TestCases.TEST_EASE_ACTIONS:
-                    pScene = new EaseActionsTestScene(); break;
+                    scene = new EaseActionsTestScene(); break;
                 case (int)TestCases.TEST_MOTION_STREAK:
-                    pScene = new MotionStreakTestScene(); break;
+                    scene = new MotionStreakTestScene(); break;
                 case (int)TestCases.TEST_DRAW_PRIMITIVES:
-                    pScene = new DrawPrimitivesTestScene(); break;
+                    scene = new DrawPrimitivesTestScene(); break;
                 case (int)TestCases.TEST_COCOSNODE:
-                    pScene = new CocosNodeTestScene(); break;
+                    scene = new CocosNodeTestScene(); break;
                 case (int)TestCases.TEST_TOUCHES:
-                    pScene = new PongScene(); break;
+                    scene = new PongScene(); break;
                 case (int)TestCases.TEST_MENU:
-                    pScene = new MenuTestScene(); break;
+                    scene = new MenuTestScene(); break;
                 case (int)TestCases.TEST_ACTION_MANAGER:
-                    pScene = new ActionManagerTestScene(); break;
+                    scene = new ActionManagerTestScene(); break;
                 case (int)TestCases.TEST_LAYER:
-                    pScene = new LayerTestScene(); break;
+                    scene = new LayerTestScene(); break;
                 case (int)TestCases.TEST_SCENE:
-                    pScene = new SceneTestScene(); break;
+                    scene = new SceneTestScene(); break;
                 case (int)TestCases.TEST_PARALLAX:
-                    pScene = new ParallaxTestScene(); break;
+                    scene = new ParallaxTestScene(); break;
                 case (int)TestCases.TEST_TILE_MAP:
-                    pScene = new TileMapTestScene(); break;
+                    scene = new TileMapTestScene(); break;
                 case (int)TestCases.TEST_INTERVAL:
-                    pScene = new IntervalTestScene(); break;
-                //    case TEST_CHIPMUNK:
-                //#if (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
-                //        pScene = new ChipmunkTestScene(); break;
-                //#else
-                //#ifdef AIRPLAYUSECHIPMUNK
-                //#if	(AIRPLAYUSECHIPMUNK == 1)
-                //        pScene = new ChipmunkTestScene(); break;
-                //#endif
-                //#endif
-                //#endif
+                    scene = new IntervalTestScene(); break;
                 case (int)TestCases.TEST_LABEL:
-                    pScene = new AtlasTestScene(); break;
-                    case (int)TestCases.TEST_TEXT_INPUT:
-                        pScene = new TextInputTestScene(); break;
+                    scene = new AtlasTestScene(); break;
+                case (int)TestCases.TEST_TEXT_INPUT:
+                    scene = new TextInputTestScene(); break;
                 case (int)TestCases.TEST_SPRITE:
-                    pScene = new SpriteTestScene(); break;
+                    scene = new SpriteTestScene(); break;
                 case (int)TestCases.TEST_SCHEDULER:
-                    pScene = new SchedulerTestScene(); break;
+                    scene = new SchedulerTestScene(); break;
                 case (int)TestCases.TEST_RENDERTEXTURE:
-                    pScene = new RenderTextureScene(); break;
+                    scene = new RenderTextureScene(); break;
                 case (int)TestCases.TEST_TEXTURE2D:
-                    pScene = new TextureTestScene(); break;
+                    scene = new TextureTestScene(); break;
                 case (int)TestCases.TEST_BOX2D:
-                    pScene = new Box2DTestScene(); break;
-//                case (int)TestCases.TEST_BOX2DBED:
-//                         pScene = new tests.classes.tests.Box2DTestBet.Box2dTestBedScene(); break;
+                    scene = new Box2DTestScene(); break;
                 case (int)TestCases.TEST_BOX2DBED2:
-                    pScene = new Box2D.TestBed.Box2dTestBedScene(); break;
+                    scene = new Box2D.TestBed.Box2dTestBedScene(); break;
                 case (int)TestCases.TEST_EFFECT_ADVANCE:
-                    pScene = new EffectAdvanceScene(); break;
+                    scene = new EffectAdvanceScene(); break;
                 case (int)TestCases.TEST_ACCELEROMRTER:
-                    pScene = new AccelerometerTestScene(); break;
-                //    case TEST_KEYPAD:
-                //        pScene = new KeypadTestScene(); break;
+                    scene = new AccelerometerTestScene(); break;
                 case (int)TestCases.TEST_COCOSDENSHION:
-                    pScene = new CocosDenshionTestScene(); break;
+                    scene = new CocosDenshionTestScene(); break;
                 case (int)TestCases.TEST_PERFORMANCE:
-                    pScene = new PerformanceTestScene(); break;
+                    scene = new PerformanceTestScene(); break;
                 case (int)TestCases.TEST_ZWOPTEX:
-                    pScene = new ZwoptexTestScene(); break;
-                //#if (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
-                //    case TEST_CURL:
-                //        pScene = new CurlTestScene(); break;
-                //case (int)TestCases.TEST_USERDEFAULT:
-                //    pScene = new UserDefaultTestScene(); break;
-                //#endif
-                //    case TEST_BUGS:
-                //        pScene = new BugsTestScene(); break;
-                //#if (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
-                
+                    scene = new ZwoptexTestScene(); break;
                 case (int)TestCases.TEST_FONTS:
-                        pScene = new FontTestScene(); break;
-#if IPHONE || IOS || MACOS || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
+                    scene = new FontTestScene(); break;
+                    #if IPHONE || IOS || MACOS || WINDOWSGL || WINDOWS || (ANDROID && !OUYA) || NETFX_CORE
                 case (int)TestCases.TEST_SYSTEM_FONTS:
-                    pScene = new SystemFontTestScene(); break;
-#endif
-                //    case TEST_CURRENT_LANGUAGE:
-                //        pScene = new CurrentLanguageTestScene(); break;
-                //        break;
-                //#endif
+                    scene = new SystemFontTestScene(); break;
+                    #endif
                 case (int)TestCases.TEST_CLIPPINGNODE:
-                        pScene = new ClippingNodeTestScene();
-                        break;
+                    scene = new ClippingNodeTestScene();
+                    break;
 
                 case (int)TestCases.TEST_EXTENSIONS:
-                        pScene = new ExtensionsTestScene();
-                        break;
-                case (int)TestCases.TEST_ORIENTATION:
-                        pScene = new OrientationTestScene();
-                        break;
-                case(int)TestCases.TEST_MULTITOUCH:
-                    pScene = new MultiTouchTestScene();
+                    scene = new ExtensionsTestScene();
                     break;
-				case(int)TestCases.TEST_EVENTDISPATCHER:
-					pScene = new EventDispatcherTestScene();
-					break;
+                case (int)TestCases.TEST_ORIENTATION:
+                    scene = new OrientationTestScene();
+                    break;
+                case(int)TestCases.TEST_MULTITOUCH:
+                    scene = new MultiTouchTestScene();
+                    break;
+                case(int)TestCases.TEST_EVENTDISPATCHER:
+                    scene = new EventDispatcherTestScene();
+                    break;
                 default:
                     break;
             }
 
-            return pScene;
+            return scene;
         }
-
-        private CCPoint m_tBeginPos;
-        private CCMenu m_pItemMenu;
     }
 }
