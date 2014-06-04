@@ -6,39 +6,30 @@ namespace tests
     public abstract class TestScene : CCScene
     {
 
-		public static int MENU_LEVEL = 99999;
-		public static int TITLE_LEVEL = 99999;
+        public static int MENU_LEVEL = 99999;
+        public static int TITLE_LEVEL = 99999;
 
         public TestScene()
         {
-//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
         }
 
-        public TestScene(bool bPortrait)
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-//            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
-//            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-        }
-        public override void OnEnter()
-        {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             //add the menu item for back to main menu
-			var label = new CCLabelTtf("MainMenu", "arial", 20);
-			var pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
+            var label = new CCLabelTtf("MainMenu", "arial", 20);
+            var pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
 
-			var pMenu = new CCMenu(pMenuItem);
-			var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 50, CCVisibleRect.Bottom.Y + 25);
+            var pMenu = new CCMenu(pMenuItem);
+
+            pMenu.Name = "MainMenu";
+            AddChild(pMenu, MENU_LEVEL);
+
+            var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 50, CCVisibleRect.Bottom.Y + 25);
+
             pMenu.Position = CCPoint.Zero;
-			pMenuItem.Position = visiblePoint;
-			pMenu.Name = "MainMenu";
-			AddChild(pMenu, MENU_LEVEL);
+            pMenuItem.Position = visiblePoint;
         }
 
         private bool _bButtonWasPressed = false;
@@ -124,7 +115,7 @@ namespace tests
 
     public class CCVisibleRect
     {
-		private static CCRect visibleRect = CCRect.Zero;
+        private static CCRect visibleRect = CCRect.Zero;
 
         private static void LazyInit()
         {
@@ -141,7 +132,7 @@ namespace tests
             {
                 LazyInit();
                 return new CCRect(visibleRect.Origin.X, visibleRect.Origin.Y, visibleRect.Size.Width,
-                                  visibleRect.Size.Height);
+                    visibleRect.Size.Height);
             }
         }
 
@@ -160,7 +151,7 @@ namespace tests
             {
                 LazyInit();
                 return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width,
-                                   visibleRect.Origin.Y + visibleRect.Size.Height / 2);
+                    visibleRect.Origin.Y + visibleRect.Size.Height / 2);
             }
         }
 
@@ -170,7 +161,7 @@ namespace tests
             {
                 LazyInit();
                 return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / 2,
-                                   visibleRect.Origin.Y + visibleRect.Size.Height);
+                    visibleRect.Origin.Y + visibleRect.Size.Height);
             }
         }
 
@@ -189,7 +180,7 @@ namespace tests
             {
                 LazyInit();
                 return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / 2,
-                                   visibleRect.Origin.Y + visibleRect.Size.Height / 2);
+                    visibleRect.Origin.Y + visibleRect.Size.Height / 2);
             }
         }
 
@@ -208,7 +199,7 @@ namespace tests
             {
                 LazyInit();
                 return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width,
-                                   visibleRect.Origin.Y + visibleRect.Size.Height);
+                    visibleRect.Origin.Y + visibleRect.Size.Height);
             }
         }
 

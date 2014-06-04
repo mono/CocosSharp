@@ -81,6 +81,8 @@ namespace tests
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
+            base.RunningOnNewWindow(windowSize);
+
             // Laying out content based on window size
             closeMenu.Position = CCPoint.Zero;
             closeMenuItem.Position = new CCPoint(windowSize.Width - 30, windowSize.Height - 30);
