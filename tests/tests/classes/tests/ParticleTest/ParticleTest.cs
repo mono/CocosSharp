@@ -19,154 +19,151 @@ namespace tests
 
         #endregion
 
-        public static int kTagLabelAtlas = 1;
+        internal static int TagLabelAtlas = 1;
+        internal static int SceneIdx = -1;
+        internal static int MAX_LAYER = 43;
 
-        public static int sceneIdx = -1;
-
-        public static int MAX_LAYER = 43;
-
-        public static CCLayer createParticleLayer(int nIndex)
+        public static CCLayer CreateParticleLayer(int nIndex)
         {
             switch (nIndex)
             {
-                case 0:
-                    return new ParticleReorder();
-                case 1:
-                    return new ParticleBatchHybrid();
-                case 2:
-                    return new ParticleBatchMultipleEmitters();
-                case 3:
-                    return new DemoFlower();
-                case 4:
-                    return new DemoGalaxy();
-                case 5:
-                    return new DemoFirework();
-                case 6:
-                    return new DemoSpiral();
-                case 7:
-                    return new DemoSun();
-                case 8:
-                    return new DemoMeteor();
-                case 9:
-                    return new DemoFire();
-                case 10:
-                    return new DemoSmoke();
-                case 11:
-                    return new DemoExplosion();
-                case 12:
-                    return new DemoSnow();
-                case 13:
-                    return new DemoRain();
-                case 14:
-                    return new DemoBigFlower();
-                case 15:
-                    return new DemoRotFlower();
-                case 16:
-                    return new DemoModernArt();
-                case 17:
-                    return new DemoRing();
-                case 18:
-                    return new ParallaxParticle();
-                case 19:
-                    return new DemoParticleFromFile("BoilingFoam");
-                case 20:
-                    return new DemoParticleFromFile("BurstPipe");
-                case 21:
-                    return new DemoParticleFromFile("Comet");
-                case 22:
-                    return new DemoParticleFromFile("debian");
-                case 23:
-                    return new DemoParticleFromFile("ExplodingRing");
-                case 24:
-                    return new DemoParticleFromFile("LavaFlow");
-                case 25:
-                    return new DemoParticleFromFile("SpinningPeas");
-                case 26:
-                    return new DemoParticleFromFile("SpookyPeas");
-                case 27:
-                    return new DemoParticleFromFile("Upsidedown");
-                case 28:
-                    return new DemoParticleFromFile("Flower");
-                case 29:
-                    return new DemoParticleFromFile("Spiral");
-                case 30:
-                    return new DemoParticleFromFile("Galaxy");
-                case 31:
-                    return new DemoParticleFromFile("Phoenix");
-                case 32:
-                    return new RadiusMode1();
-                case 33:
-                    return new RadiusMode2();
-                case 34:
-                    return new Issue704();
-                case 35:
-                    return new Issue870();
-                case 36:
-                    return new Issue1201();
-                    // v1.1 tests
-                case 37:
-                    return new MultipleParticleSystems();
-                case 38:
-                    return new MultipleParticleSystemsBatched();
-                case 39:
-                    return new AddAndDeleteParticleSystems();
-                case 40:
-                    return new ReorderParticleSystems();
-                case 41:
-                    return new PremultipliedAlphaTest();
-                case 42:
-                    return new PremultipliedAlphaTest2();
+            case 0:
+                return new ParticleReorder();
+            case 1:
+                return new ParticleBatchHybrid();
+            case 2:
+                return new ParticleBatchMultipleEmitters();
+            case 3:
+                return new DemoFlower();
+            case 4:
+                return new DemoGalaxy();
+            case 5:
+                return new DemoFirework();
+            case 6:
+                return new DemoSpiral();
+            case 7:
+                return new DemoSun();
+            case 8:
+                return new DemoMeteor();
+            case 9:
+                return new DemoFire();
+            case 10:
+                return new DemoSmoke();
+            case 11:
+                return new DemoExplosion();
+            case 12:
+                return new DemoSnow();
+            case 13:
+                return new DemoRain();
+            case 14:
+                return new DemoBigFlower();
+            case 15:
+                return new DemoRotFlower();
+            case 16:
+                return new DemoModernArt();
+            case 17:
+                return new DemoRing();
+            case 18:
+                return new ParallaxParticle();
+            case 19:
+                return new DemoParticleFromFile("BoilingFoam");
+            case 20:
+                return new DemoParticleFromFile("BurstPipe");
+            case 21:
+                return new DemoParticleFromFile("Comet");
+            case 22:
+                return new DemoParticleFromFile("debian");
+            case 23:
+                return new DemoParticleFromFile("ExplodingRing");
+            case 24:
+                return new DemoParticleFromFile("LavaFlow");
+            case 25:
+                return new DemoParticleFromFile("SpinningPeas");
+            case 26:
+                return new DemoParticleFromFile("SpookyPeas");
+            case 27:
+                return new DemoParticleFromFile("Upsidedown");
+            case 28:
+                return new DemoParticleFromFile("Flower");
+            case 29:
+                return new DemoParticleFromFile("Spiral");
+            case 30:
+                return new DemoParticleFromFile("Galaxy");
+            case 31:
+                return new DemoParticleFromFile("Phoenix");
+            case 32:
+                return new RadiusMode1();
+            case 33:
+                return new RadiusMode2();
+            case 34:
+                return new Issue704();
+            case 35:
+                return new Issue870();
+            case 36:
+                return new Issue1201();
+                // v1.1 tests
+            case 37:
+                return new MultipleParticleSystems();
+            case 38:
+                return new MultipleParticleSystemsBatched();
+            case 39:
+                return new AddAndDeleteParticleSystems();
+            case 40:
+                return new ReorderParticleSystems();
+            case 41:
+                return new PremultipliedAlphaTest();
+            case 42:
+                return new PremultipliedAlphaTest2();
             }
 
             return null;
         }
 
+        public static CCLayer NextParticleAction()
+        {
+            SceneIdx++;
+            SceneIdx = SceneIdx % MAX_LAYER;
+
+            CCLayer layer = CreateParticleLayer(SceneIdx);
+
+            return layer;
+        }
+
+        public static CCLayer BackParticleAction()
+        {
+            SceneIdx--;
+            int total = MAX_LAYER;
+            if (SceneIdx < 0)
+                SceneIdx += total;
+
+            CCLayer layer = CreateParticleLayer(SceneIdx);
+
+            return layer;
+        }
+
+        public static CCLayer RestartParticleAction()
+        {
+            CCLayer layer = CreateParticleLayer(SceneIdx);
+
+            return layer;
+        }
+
         protected override void NextTestCase()
         {
-            nextParticleAction();
+            NextParticleAction();
         }
         protected override void PreviousTestCase()
         {
-            backParticleAction();
+            BackParticleAction();
         }
         protected override void RestTestCase()
         {
-            restartParticleAction();
+            RestartParticleAction();
         }
-
-        public static CCLayer nextParticleAction()
-        {
-            sceneIdx++;
-            sceneIdx = sceneIdx % MAX_LAYER;
-
-            CCLayer pLayer = createParticleLayer(sceneIdx);
-
-            return pLayer;
-        }
-
-        public static CCLayer backParticleAction()
-        {
-            sceneIdx--;
-            int total = MAX_LAYER;
-            if (sceneIdx < 0)
-                sceneIdx += total;
-
-            CCLayer pLayer = createParticleLayer(sceneIdx);
-
-            return pLayer;
-        }
-
-        public static CCLayer restartParticleAction()
-        {
-            CCLayer pLayer = createParticleLayer(sceneIdx);
-
-            return pLayer;
-        }
-
 
         public override void runThisTest()
         {
-            AddChild(nextParticleAction());
+            AddChild(NextParticleAction());
 
             CCDirector.SharedDirector.ReplaceScene(this);
         }
@@ -174,174 +171,212 @@ namespace tests
 
     public class ParticleDemo : CCLayerColor
     {
-        public CCSprite m_background;
-        public CCParticleSystem m_emitter;
+        const int labelTag = 9000;
 
-        protected CCSize WinSize;
         protected CCPoint MidWindowPoint;
+        protected CCSize WindowSize;
+        protected CCParticleSystem Emitter;
+        protected CCSprite Background;
+
+        CCLabelTtf titleLabel;
+        CCLabelTtf subtitleLabel;
+        CCLabelAtlas particleCounter;
+
+        CCMenu particleMenu;
+        CCMenuItem backMenuItem;
+        CCMenuItem restartMenuItem;
+        CCMenuItem nextMenuItem;
+        CCMenuItemToggle toggleParticleMovMenuItem;
+
+
+        #region Constructors
 
         public ParticleDemo() : base(new CCColor4B(127, 127, 127, 255))
         {
-            m_emitter = null;
+            titleLabel = new CCLabelTtf(Title(), "arial", 28);
+            AddChild(titleLabel, 100, labelTag);
 
-            WinSize = CCDirector.SharedDirector.WinSize;
-            MidWindowPoint = new CCPoint(WinSize.Width / 2.0f, WinSize.Height / 2.0f);
+            subtitleLabel = new CCLabelTtf(Subtitle(), "arial", 20);
+            AddChild(subtitleLabel, 100);
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
-            AddChild(label, 100, kLabelTag);
-			label.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 50);
+            backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, BackCallback);
+            restartMenuItem = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, RestartCallback);
+            nextMenuItem = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, NextCallback);
 
-            CCLabelTtf tapScreen = new CCLabelTtf(subtitle(), "arial", 20);
-			tapScreen.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 80);
-            AddChild(tapScreen, 100);
+            toggleParticleMovMenuItem = new CCMenuItemToggle(ToggleCallback,
+                new CCMenuItemFont("Free Movement"),
+                new CCMenuItemFont("Relative Movement"),
+                new CCMenuItemFont("Grouped Movement"));
 
-            CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+            particleMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem, toggleParticleMovMenuItem);
+            AddChild(particleMenu, 100);
 
-            CCMenuItemToggle item4 = new CCMenuItemToggle(toggleCallback,
-                                                                     new CCMenuItemFont("Free Movement"),
-                                                                     new CCMenuItemFont("Relative Movement"),
-                                                                     new CCMenuItemFont("Grouped Movement"));
+            particleCounter = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
+            AddChild(particleCounter, 100, ParticleTestScene.TagLabelAtlas);
 
-            CCMenu menu = new CCMenu(item1, item2, item3, item4);
+            Background = new CCSprite(TestResource.s_back3);
+            AddChild(Background, 5);
+        }
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(WinSize.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(WinSize.Width / 2, 30);
-            item3.Position = new CCPoint(WinSize.Width / 2 + 100, 30);
-            item4.Position = new CCPoint(0, 100);
-            item4.AnchorPoint = new CCPoint(0, 0);
+        #endregion Constructors
 
-            AddChild(menu, 100);
 
-            CCLabelAtlas labelAtlas = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
-            AddChild(labelAtlas, 100, ParticleTestScene.kTagLabelAtlas);
-            labelAtlas.Position = new CCPoint(WinSize.Width - 66, 50);
+        #region Setup content
 
-            // moving background
-            m_background = new CCSprite(TestResource.s_back3);
-            AddChild(m_background, 5);
-            m_background.Position = new CCPoint(WinSize.Width / 2, WinSize.Height - 180);
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            WindowSize = windowSize;
+            MidWindowPoint = new CCPoint(windowSize.Width / 2.0f, windowSize.Height / 2.0f);
+
+            // Laying out content based on window size
+
+            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 50);
+            subtitleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 80);
+
+            particleMenu.Position = new CCPoint(0, 0);
+            backMenuItem.Position = new CCPoint(windowSize.Width / 2 - 100, 30);
+            restartMenuItem.Position = new CCPoint(windowSize.Width / 2, 30);
+            nextMenuItem.Position = new CCPoint(windowSize.Width / 2 + 100, 30);
+            toggleParticleMovMenuItem.Position = new CCPoint(0, 100);
+            toggleParticleMovMenuItem.AnchorPoint = new CCPoint(0, 0);
+
+            particleCounter.Position = new CCPoint(windowSize.Width - 66, 50);
+
+            Background.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 180);
+
+            // Set title label
+
+            var label = (CCLabelTtf) (GetChildByTag(labelTag));
+            label.Text = Title();
+
+            // Run background animation
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
             CCFiniteTimeAction seq = new CCSequence(move, move_back);
-            m_background.RunAction(new CCRepeatForever ((CCActionInterval) seq));
+            Background.RunAction(new CCRepeatForever ((CCActionInterval) seq));
 
-            Schedule(step);
-        }
+            Schedule(Step);
 
-        public virtual string subtitle()
-        {
-            return String.Empty;
-        }
-
-        ~ParticleDemo()
-        {
-        }
-
-        private const int kLabelTag = 9000;
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            var pLabel = (CCLabelTtf) (GetChildByTag(kLabelTag));
-            pLabel.Text = (title());
+            // Add event listeners
 
             var listener = new CCEventListenerTouchAllAtOnce();
-            listener.OnTouchesBegan = onTouchesBegan;
-            listener.OnTouchesMoved = onTouchesMoved;
-            listener.OnTouchesEnded = onTouchesEnded;
+            listener.OnTouchesBegan = OnTouchesBegan;
+            listener.OnTouchesMoved = OnTouchesMoved;
+            listener.OnTouchesEnded = OnTouchesEnded;
 
             AddEventListener(listener);
         }
 
-        public virtual string title()
+        #endregion Setup content
+
+
+        #region Titles
+
+        protected virtual string Title()
         {
             return "No title";
         }
 
-        public void restartCallback(object pSender)
+        protected virtual string Subtitle()
         {
-            if (m_emitter != null)
+            return String.Empty;
+        }
+
+        #endregion Titles
+
+
+        #region Callbacks
+
+        void RestartCallback(object sender)
+        {
+            if (Emitter != null)
             {
-                m_emitter.ResetSystem();
+                Emitter.ResetSystem();
             }
         }
 
-        public void nextCallback(object pSender)
+        void NextCallback(object sender)
         {
             var s = new ParticleTestScene();
-            s.AddChild(ParticleTestScene.nextParticleAction());
+            s.AddChild(ParticleTestScene.NextParticleAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        void BackCallback(object sender)
         {
             var s = new ParticleTestScene();
-            s.AddChild(ParticleTestScene.backParticleAction());
+            s.AddChild(ParticleTestScene.BackParticleAction());
             CCDirector.SharedDirector.ReplaceScene(s);
         }
 
-        public void toggleCallback(object pSender)
+        void ToggleCallback(object sender)
         {
-            if (m_emitter != null)
+            if (Emitter != null)
             {
-                if (m_emitter.PositionType == CCPositionType.Grouped)
-                    m_emitter.PositionType = CCPositionType.Free;
-                else if (m_emitter.PositionType == CCPositionType.Free)
-                    m_emitter.PositionType = CCPositionType.Relative;
-                else if (m_emitter.PositionType == CCPositionType.Relative)
-                    m_emitter.PositionType = CCPositionType.Grouped;
+                if (Emitter.PositionType == CCPositionType.Grouped)
+                    Emitter.PositionType = CCPositionType.Free;
+                else if (Emitter.PositionType == CCPositionType.Free)
+                    Emitter.PositionType = CCPositionType.Relative;
+                else if (Emitter.PositionType == CCPositionType.Relative)
+                    Emitter.PositionType = CCPositionType.Grouped;
             }
         }
 
-        void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+        #endregion Callbacks
+
+
+        #region Event handling
+
+        void OnTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
-            onTouchesEnded (touches, touchEvent);
+            OnTouchesEnded(touches, touchEvent);
         }
 
-        void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            onTouchesEnded (touches, touchEvent);
+            OnTouchesEnded(touches, touchEvent);
         }
 
-        void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             var touch = touches [0];
             var convertedLocation = touch.Location;
 
             var pos = new CCPoint(0, 0);
-            if (m_background != null)
+            if (Background != null)
             {
-                pos = m_background.ConvertToWorldSpace(CCPoint.Zero);
+                pos = Background.ConvertToWorldSpace(CCPoint.Zero);
             }
 
-            if (m_emitter != null)
+            if (Emitter != null)
             {
-                m_emitter.Position = convertedLocation - pos;
+                Emitter.Position = convertedLocation - pos;
             }
         }
 
-        public void step(float dt)
-        {
-            var atlas = (CCLabelAtlas) GetChildByTag(ParticleTestScene.kTagLabelAtlas);
+        #endregion Event handling
 
-            if (m_emitter != null)
+
+        void Step(float dt)
+        {
+            var atlas = (CCLabelAtlas) GetChildByTag(ParticleTestScene.TagLabelAtlas);
+
+            if (Emitter != null)
             {
-                string str = string.Format("{0:0000}", m_emitter.ParticleCount);
+                string str = string.Format("{0:0000}", Emitter.ParticleCount);
                 atlas.Text = (str);
             }
             else
             {
                 int count = 0;
-				for (int i = 0; i < Children.Count; i++)
+                for (int i = 0; i < Children.Count; i++)
                 {
                     if (Children[i] is CCParticleSystem)
                     {
-                    	count += ((CCParticleSystem) Children[i]).ParticleCount;
+                        count += ((CCParticleSystem) Children[i]).ParticleCount;
                     }
                     else if (Children[i] is CCParticleBatchNode)
                     {
@@ -360,16 +395,14 @@ namespace tests
             }
         }
 
-        public void setEmitterPosition()
+        protected void SetEmitterPosition()
         {
-            if (m_emitter != null)
+            if (Emitter != null)
             {
-                CCSize s = CCDirector.SharedDirector.WinSize;
-
-                m_emitter.Position = new CCPoint(s.Width / 2, s.Height / 2 - 30);
+                Emitter.Position = new CCPoint(WindowSize.Width / 2, WindowSize.Height / 2 - 30);
             }
         }
-    };
+    }
 
     //------------------------------------------------------------------
     //
@@ -378,23 +411,21 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFirework : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleFireworks(MidWindowPoint);
-            m_background.AddChild(m_emitter, 10);
+            Emitter = new CCParticleFireworks(MidWindowPoint);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleFireworks";
         }
-    };
+    }
 
     //------------------------------------------------------------------
     //
@@ -403,20 +434,18 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFire : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            CCPoint emitterPos = new CCPoint(WinSize.Width / 2, 100);
-            m_emitter = new CCParticleFire(emitterPos);
-            m_background.AddChild(m_emitter, 10);
+            CCPoint emitterPos = new CCPoint(windowSize.Width / 2, 100);
+            Emitter = new CCParticleFire(emitterPos);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire); //.pvr"];
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire); //.pvr"];
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleFire";
         }
@@ -429,23 +458,21 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoSun : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSun(MidWindowPoint);
-            m_background.AddChild(m_emitter, 10);
+            Emitter = new CCParticleSun(MidWindowPoint);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleSun";
         }
-    };
+    }
 
     //------------------------------------------------------------------
     //
@@ -454,21 +481,18 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoGalaxy : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-            CCPoint position = new CCPoint(winSize.Width / 2.0f, winSize.Height / 2.0f);
-            m_emitter = new CCParticleGalaxy(position);
-            m_background.AddChild(m_emitter, 10);
+            CCPoint position = new CCPoint(MidWindowPoint);
+            Emitter = new CCParticleGalaxy(position);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleGalaxy";
         }
@@ -481,18 +505,16 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFlower : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleFlower(MidWindowPoint);
-            m_background.AddChild(m_emitter, 10);
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
-
-            setEmitterPosition();
+            Emitter = new CCParticleFlower(MidWindowPoint);
+            Background.AddChild(Emitter, 10);
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleFlower";
         }
@@ -505,80 +527,78 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoBigFlower : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSystemQuad(50);
-            //m_emitter.autorelease();
+            Emitter = new CCParticleSystemQuad(50);
+            //Emitter.autorelease();
 
-            m_background.AddChild(m_emitter, 10);
-            ////m_emitter.release();	// win32 :  use this line or remove this line and use autorelease()
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Background.AddChild(Emitter, 10);
+            ////Emitter.release();    // win32 :  use this line or remove this line and use autorelease()
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
 
-            m_emitter.Duration = -1;
+            Emitter.Duration = -1;
 
             // gravity
-            m_emitter.Gravity = (new CCPoint(0, 0));
+            Emitter.Gravity = (new CCPoint(0, 0));
 
             // angle
-            m_emitter.Angle = 90;
-            m_emitter.AngleVar = 360;
+            Emitter.Angle = 90;
+            Emitter.AngleVar = 360;
 
             // speed of particles
-            m_emitter.Speed = (160);
-            m_emitter.SpeedVar = (20);
+            Emitter.Speed = (160);
+            Emitter.SpeedVar = (20);
 
             // radial
-            m_emitter.RadialAccel = (-120);
-            m_emitter.RadialAccelVar = (0);
+            Emitter.RadialAccel = (-120);
+            Emitter.RadialAccelVar = (0);
 
             // tagential
-            m_emitter.TangentialAccel = (30);
-            m_emitter.TangentialAccelVar = (0);
+            Emitter.TangentialAccel = (30);
+            Emitter.TangentialAccelVar = (0);
 
             // emitter position
-            m_emitter.Position = new CCPoint(160, 240);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(160, 240);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 4;
-            m_emitter.LifeVar = 1;
+            Emitter.Life = 4;
+            Emitter.LifeVar = 1;
 
             // spin of particles
-            m_emitter.StartSpin = 0;
-            m_emitter.StartSizeVar = 0;
-            m_emitter.EndSpin = 0;
-            m_emitter.EndSpinVar = 0;
+            Emitter.StartSpin = 0;
+            Emitter.StartSizeVar = 0;
+            Emitter.EndSpin = 0;
+            Emitter.EndSpinVar = 0;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 80.0f;
-            m_emitter.StartSizeVar = 40.0f;
-            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
+            Emitter.StartSize = 80.0f;
+            Emitter.StartSizeVar = 40.0f;
+            Emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // additive
-            m_emitter.BlendAdditive = true;
-
-            setEmitterPosition();
+            Emitter.BlendAdditive = true;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleBigFlower";
         }
@@ -591,81 +611,79 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoRotFlower : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSystemQuad(300);
-            //m_emitter.autorelease();
+            Emitter = new CCParticleSystemQuad(300);
+            //Emitter.autorelease();
 
-            m_background.AddChild(m_emitter, 10);
-            ////m_emitter.release();	// win32 : Remove this line
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars2);
+            Background.AddChild(Emitter, 10);
+            ////Emitter.release();    // win32 : Remove this line
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars2);
 
             // duration
-            m_emitter.Duration = -1;
+            Emitter.Duration = -1;
 
             // gravity
-            m_emitter.Gravity = (new CCPoint(0, 0));
+            Emitter.Gravity = (new CCPoint(0, 0));
 
             // angle
-            m_emitter.Angle = 90;
-            m_emitter.AngleVar = 360;
+            Emitter.Angle = 90;
+            Emitter.AngleVar = 360;
 
             // speed of particles
-            m_emitter.Speed = (160);
-            m_emitter.SpeedVar = (20);
+            Emitter.Speed = (160);
+            Emitter.SpeedVar = (20);
 
             // radial
-            m_emitter.RadialAccel = (-120);
-            m_emitter.RadialAccelVar = (0);
+            Emitter.RadialAccel = (-120);
+            Emitter.RadialAccelVar = (0);
 
             // tagential
-            m_emitter.TangentialAccel = (30);
-            m_emitter.TangentialAccelVar = (0);
+            Emitter.TangentialAccel = (30);
+            Emitter.TangentialAccelVar = (0);
 
             // emitter position
-            m_emitter.Position = new CCPoint(160, 240);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(160, 240);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 3;
-            m_emitter.LifeVar = 1;
+            Emitter.Life = 3;
+            Emitter.LifeVar = 1;
 
             // spin of particles
-            m_emitter.StartSpin = 0;
-            m_emitter.StartSpinVar = 0;
-            m_emitter.EndSpin = 0;
-            m_emitter.EndSpinVar = 2000;
+            Emitter.StartSpin = 0;
+            Emitter.StartSpinVar = 0;
+            Emitter.EndSpin = 0;
+            Emitter.EndSpinVar = 2000;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 30.0f;
-            m_emitter.StartSizeVar = 00.0f;
-            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
+            Emitter.StartSize = 30.0f;
+            Emitter.StartSizeVar = 00.0f;
+            Emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // additive
-            m_emitter.BlendAdditive = false;
-
-            setEmitterPosition();
+            Emitter.BlendAdditive = false;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleRotFlower";
         }
@@ -673,20 +691,18 @@ namespace tests
 
     public class DemoMeteor : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-			m_emitter = new CCParticleMeteor(MidWindowPoint);
+            Emitter = new CCParticleMeteor(MidWindowPoint);
 
-            m_background.AddChild(m_emitter, 10);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleMeteor";
         }
@@ -694,20 +710,18 @@ namespace tests
 
     public class DemoSpiral : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSpiral(MidWindowPoint);
+            Emitter = new CCParticleSpiral(MidWindowPoint);
 
-            m_background.AddChild(m_emitter, 10);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleSpiral";
         }
@@ -715,22 +729,20 @@ namespace tests
 
     public class DemoExplosion : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleExplosion(MidWindowPoint);
+            Emitter = new CCParticleExplosion(MidWindowPoint);
 
-            m_background.AddChild(m_emitter, 10);
+            Background.AddChild(Emitter, 10);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
 
-            m_emitter.AutoRemoveOnFinish = true;
-
-            setEmitterPosition();
+            Emitter.AutoRemoveOnFinish = true;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleExplosion";
         }
@@ -738,22 +750,20 @@ namespace tests
 
     public class DemoSmoke : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSmoke(new CCPoint(WinSize.Width / 2.0f, 0));
+            Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
-            m_background.AddChild(m_emitter, 10);
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Background.AddChild(Emitter, 10);
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
-            CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.X, 100);
-
-            setEmitterPosition();
+            CCPoint p = Emitter.Position;
+            Emitter.Position = new CCPoint(p.X, 100);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleSmoke";
         }
@@ -761,44 +771,42 @@ namespace tests
 
     public class DemoSnow : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSnow(new CCPoint(WinSize.Width / 2, WinSize.Height + 10));
+            Emitter = new CCParticleSnow(new CCPoint(windowSize.Width / 2, windowSize.Height + 10));
 
-            m_background.AddChild(m_emitter, 10);
+            Background.AddChild(Emitter, 10);
 
-            CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.X, p.Y - 110);
-            m_emitter.Life = 3;
-            m_emitter.LifeVar = 1;
+            CCPoint p = Emitter.Position;
+            Emitter.Position = new CCPoint(p.X, p.Y - 110);
+            Emitter.Life = 3;
+            Emitter.LifeVar = 1;
 
             // gravity
-            m_emitter.Gravity = (new CCPoint(0, -10));
+            Emitter.Gravity = (new CCPoint(0, -10));
 
             // speed of particles
-            m_emitter.Speed = (130);
-            m_emitter.SpeedVar = (30);
+            Emitter.Speed = (130);
+            Emitter.SpeedVar = (30);
 
-            var startColor = m_emitter.StartColor;
+            var startColor = Emitter.StartColor;
             startColor.R = 0.9f;
             startColor.G = 0.9f;
             startColor.B = 0.9f;
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
-            var startColorVar = m_emitter.StartColorVar;
+            var startColorVar = Emitter.StartColorVar;
             startColorVar.B = 0.1f;
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_snow);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_snow);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleSnow";
         }
@@ -806,23 +814,21 @@ namespace tests
 
     public class DemoRain : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleRain(new CCPoint (WinSize.Width / 2.0f, WinSize.Height));
-            m_background.AddChild(m_emitter, 10);
+            Emitter = new CCParticleRain(new CCPoint (windowSize.Width / 2.0f, windowSize.Height));
+            Background.AddChild(Emitter, 10);
 
-            CCPoint p = m_emitter.Position;
-            m_emitter.Position = new CCPoint(p.X, p.Y - 100);
-            m_emitter.Life = 4;
+            CCPoint p = Emitter.Position;
+            Emitter.Position = new CCPoint(p.X, p.Y - 100);
+            Emitter.Life = 4;
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "ParticleRain";
         }
@@ -831,80 +837,78 @@ namespace tests
     // todo: CCParticleSystemPoint::draw() hasn't been implemented.
     public class DemoModernArt : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleSystemQuad(1000);
-            //m_emitter.autorelease();
+            Emitter = new CCParticleSystemQuad(1000);
+            //Emitter.autorelease();
 
-            m_background.AddChild(m_emitter, 10);
-            ////m_emitter.release();
+            Background.AddChild(Emitter, 10);
+            ////Emitter.release();
 
             CCSize s = CCDirector.SharedDirector.WinSize;
 
             // duration
-            m_emitter.Duration = -1;
+            Emitter.Duration = -1;
 
             // gravity
-            m_emitter.Gravity = (new CCPoint(0, 0));
+            Emitter.Gravity = (new CCPoint(0, 0));
 
             // angle
-            m_emitter.Angle = 0;
-            m_emitter.AngleVar = 360;
+            Emitter.Angle = 0;
+            Emitter.AngleVar = 360;
 
             // radial
-            m_emitter.RadialAccel = (70);
-            m_emitter.RadialAccelVar = (10);
+            Emitter.RadialAccel = (70);
+            Emitter.RadialAccelVar = (10);
 
             // tagential
-            m_emitter.TangentialAccel = (80);
-            m_emitter.TangentialAccelVar = (0);
+            Emitter.TangentialAccel = (80);
+            Emitter.TangentialAccelVar = (0);
 
             // speed of particles
-            m_emitter.Speed = (50);
-            m_emitter.SpeedVar = (10);
+            Emitter.Speed = (50);
+            Emitter.SpeedVar = (10);
 
             // emitter position
-            m_emitter.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 2.0f;
-            m_emitter.LifeVar = 0.3f;
+            Emitter.Life = 2.0f;
+            Emitter.LifeVar = 0.3f;
 
             // emits per frame
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 1.0f;
-            m_emitter.StartSizeVar = 1.0f;
-            m_emitter.EndSize = 32.0f;
-            m_emitter.EndSizeVar = 8.0f;
+            Emitter.StartSize = 1.0f;
+            Emitter.StartSizeVar = 1.0f;
+            Emitter.EndSize = 32.0f;
+            Emitter.EndSizeVar = 8.0f;
 
             // texture
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
             // additive
-            m_emitter.BlendAdditive = false;
-
-            setEmitterPosition();
+            Emitter.BlendAdditive = false;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Varying size";
         }
@@ -912,26 +916,23 @@ namespace tests
 
     public class DemoRing : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_emitter = new CCParticleFlower(MidWindowPoint);
+            Emitter = new CCParticleFlower(MidWindowPoint);
 
+            Background.AddChild(Emitter, 10);
 
-            m_background.AddChild(m_emitter, 10);
-
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
-            m_emitter.LifeVar = 0;
-            m_emitter.Life = 10;
-            m_emitter.Speed = (100);
-            m_emitter.SpeedVar = (0);
-            m_emitter.EmissionRate = 10000;
-
-            setEmitterPosition();
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.LifeVar = 0;
+            Emitter.Life = 10;
+            Emitter.Speed = (100);
+            Emitter.SpeedVar = (0);
+            Emitter.EmissionRate = 10000;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Ring Demo";
         }
@@ -939,12 +940,12 @@ namespace tests
 
     public class ParallaxParticle : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_background.Parent.RemoveChild(m_background, true);
-            m_background = null;
+            Background.Parent.RemoveChild(Background, true);
+            Background = null;
 
             CCParallaxNode p = new CCParallaxNode();
             AddChild(p, 5);
@@ -955,12 +956,12 @@ namespace tests
             p.AddChild(p1, 1, new CCPoint(0.5f, 1), new CCPoint(0, 250));
             p.AddChild(p2, 2, new CCPoint(1.5f, 1), new CCPoint(0, 50));
 
-            m_emitter = new CCParticleFlower(MidWindowPoint);
+            Emitter = new CCParticleFlower(MidWindowPoint);
 
-            m_emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
 
-            p1.AddChild(m_emitter, 10);
-            m_emitter.Position = new CCPoint(250, 200);
+            p1.AddChild(Emitter, 10);
+            Emitter.Position = new CCPoint(250, 200);
 
             CCParticleSun par = new CCParticleSun(MidWindowPoint);
             p2.AddChild(par, 10);
@@ -972,7 +973,7 @@ namespace tests
             p.RunAction(new CCRepeatForever ((CCActionInterval) seq));
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Parallax + Particles";
         }
@@ -980,9 +981,9 @@ namespace tests
 
     public class DemoParticleFromFile : ParticleDemo
     {
-        private readonly string m_title;
+        readonly string title;
 
-        private static Dictionary<string, CCParticleSystemConfig> particleConfigManager;
+        static Dictionary<string, CCParticleSystemConfig> particleConfigManager;
 
         public DemoParticleFromFile()
         {
@@ -995,19 +996,19 @@ namespace tests
             if (particleConfigManager == null)
                 particleConfigManager = new Dictionary<string, CCParticleSystemConfig> ();
 
-            m_title = file;
+            title = file;
 
         }
 
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = new CCColor3B(0, 0, 0);
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            string filename = "Particles/" + m_title;
+            string filename = "Particles/" + title;
 
             CCParticleSystemConfig config;
 
@@ -1019,20 +1020,18 @@ namespace tests
                 particleConfigManager.Add (filename, config);
             }
 
-            m_emitter = new CCParticleSystemQuad(config);
+            Emitter = new CCParticleSystemQuad(config);
 
-            AddChild(m_emitter, 10);
+            AddChild(Emitter, 10);
 
-            m_emitter.BlendAdditive = true;
-
-            setEmitterPosition();
+            Emitter.BlendAdditive = true;
         }
 
-        public override string title()
+        protected override string Title()
         {
-            if (null != m_title)
+            if (null != title)
             {
-                return m_title;
+                return title;
             }
             else
             {
@@ -1043,77 +1042,76 @@ namespace tests
 
     public class RadiusMode1 : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = new CCColor3B(0, 0, 0);
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
-            AddChild(m_emitter, 10);
-            m_emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
+            Emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
+            AddChild(Emitter, 10);
+            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
+            Emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
 
             // radius mode: start and end radius in pixels
-            m_emitter.StartRadius = (0);
-            m_emitter.StartRadiusVar = (0);
-            m_emitter.EndRadius = (160);
-            m_emitter.EndRadiusVar = (0);
+            Emitter.StartRadius = (0);
+            Emitter.StartRadiusVar = (0);
+            Emitter.EndRadius = (160);
+            Emitter.EndRadiusVar = (0);
 
             // radius mode: degrees per second
-            m_emitter.RotatePerSecond = (180);
-            m_emitter.RotatePerSecondVar = (0);
-
+            Emitter.RotatePerSecond = (180);
+            Emitter.RotatePerSecondVar = (0);
 
             // angle
-            m_emitter.Angle = 90;
-            m_emitter.AngleVar = 0;
+            Emitter.Angle = 90;
+            Emitter.AngleVar = 0;
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 5;
-            m_emitter.LifeVar = 0;
+            Emitter.Life = 5;
+            Emitter.LifeVar = 0;
 
             // spin of particles
-            m_emitter.StartSpin = 0;
-            m_emitter.StartSpinVar = 0;
-            m_emitter.EndSpin = 0;
-            m_emitter.EndSpinVar = 0;
+            Emitter.StartSpin = 0;
+            Emitter.StartSpinVar = 0;
+            Emitter.EndSpin = 0;
+            Emitter.EndSpinVar = 0;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 32;
-            m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
+            Emitter.StartSize = 32;
+            Emitter.StartSizeVar = 0;
+            Emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // additive
-            m_emitter.BlendAdditive = false;
+            Emitter.BlendAdditive = false;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Radius Mode: Spiral";
         }
@@ -1121,206 +1119,206 @@ namespace tests
 
     public class RadiusMode2 : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = new CCColor3B(0, 0, 0);
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
-            AddChild(m_emitter, 10);
-            m_emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
+            Emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
+            AddChild(Emitter, 10);
+            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
+            Emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
 
             // radius mode: start and end radius in pixels
-            m_emitter.StartRadius = (100);
-            m_emitter.StartRadiusVar = (0);
-            m_emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
-            m_emitter.EndRadiusVar = (0);
+            Emitter.StartRadius = (100);
+            Emitter.StartRadiusVar = (0);
+            Emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
+            Emitter.EndRadiusVar = (0);
 
             // radius mode: degrees per second
-            m_emitter.RotatePerSecond = (45);
-            m_emitter.RotatePerSecondVar = (0);
+            Emitter.RotatePerSecond = (45);
+            Emitter.RotatePerSecondVar = (0);
 
 
             // angle
-            m_emitter.Angle = 90;
-            m_emitter.AngleVar = 0;
+            Emitter.Angle = 90;
+            Emitter.AngleVar = 0;
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 4;
-            m_emitter.LifeVar = 0;
+            Emitter.Life = 4;
+            Emitter.LifeVar = 0;
 
             // spin of particles
-            m_emitter.StartSpin = 0;
-            m_emitter.StartSpinVar = 0;
-            m_emitter.EndSpin = 0;
-            m_emitter.EndSpinVar = 0;
+            Emitter.StartSpin = 0;
+            Emitter.StartSpinVar = 0;
+            Emitter.EndSpin = 0;
+            Emitter.EndSpinVar = 0;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 32;
-            m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
+            Emitter.StartSize = 32;
+            Emitter.StartSizeVar = 0;
+            Emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // additive
-            m_emitter.BlendAdditive = false;
+            Emitter.BlendAdditive = false;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Radius Mode: Semi Circle";
         }
-    };
+    }
 
     public class Issue704 : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = new CCColor3B(0, 0, 0);
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad(100, CCEmitterMode.Radius);
-            AddChild(m_emitter, 10);
-            m_emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            Emitter = new CCParticleSystemQuad(100, CCEmitterMode.Radius);
+            AddChild(Emitter, 10);
+            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
 
             // duration
-            m_emitter.Duration = CCParticleSystem.ParticleDurationInfinity; 
+            Emitter.Duration = CCParticleSystem.ParticleDurationInfinity; 
 
             // radius mode: start and end radius in pixels
-            m_emitter.StartRadius = (50);
-            m_emitter.StartRadiusVar = (0);
-            m_emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
-            m_emitter.EndRadiusVar = (0);
+            Emitter.StartRadius = (50);
+            Emitter.StartRadiusVar = (0);
+            Emitter.EndRadius = (CCParticleSystem.ParticleStartRadiusEqualToEndRadius);
+            Emitter.EndRadiusVar = (0);
 
             // radius mode: degrees per second
-            m_emitter.RotatePerSecond = (0);
-            m_emitter.RotatePerSecondVar = (0);
+            Emitter.RotatePerSecond = (0);
+            Emitter.RotatePerSecondVar = (0);
 
 
             // angle
-            m_emitter.Angle = 90;
-            m_emitter.AngleVar = 0;
+            Emitter.Angle = 90;
+            Emitter.AngleVar = 0;
 
             // emitter position
             CCSize size = CCDirector.SharedDirector.WinSize;
-            m_emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            m_emitter.PositionVar = new CCPoint(0, 0);
+            Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
-            m_emitter.Life = 5;
-            m_emitter.LifeVar = 0;
+            Emitter.Life = 5;
+            Emitter.LifeVar = 0;
 
             // spin of particles
-            m_emitter.StartSpin = 0;
-            m_emitter.StartSpinVar = 0;
-            m_emitter.EndSpin = 0;
-            m_emitter.EndSpinVar = 0;
+            Emitter.StartSpin = 0;
+            Emitter.StartSpinVar = 0;
+            Emitter.EndSpin = 0;
+            Emitter.EndSpinVar = 0;
 
             // color of particles
             var startColor = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColor = startColor;
+            Emitter.StartColor = startColor;
 
             var startColorVar = new CCColor4F(0.5f, 0.5f, 0.5f, 1.0f);
-            m_emitter.StartColorVar = startColorVar;
+            Emitter.StartColorVar = startColorVar;
 
             var endColor = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColor = endColor;
+            Emitter.EndColor = endColor;
 
             var endColorVar = new CCColor4F(0.1f, 0.1f, 0.1f, 0.2f);
-            m_emitter.EndColorVar = endColorVar;
+            Emitter.EndColorVar = endColorVar;
 
             // size, in pixels
-            m_emitter.StartSize = 16;
-            m_emitter.StartSizeVar = 0;
-            m_emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
+            Emitter.StartSize = 16;
+            Emitter.StartSizeVar = 0;
+            Emitter.EndSize = CCParticleSystem.ParticleStartSizeEqualToEndSize;
 
             // emits per second
-            m_emitter.EmissionRate = m_emitter.TotalParticles / m_emitter.Life;
+            Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             // additive
-            m_emitter.BlendAdditive = false;
+            Emitter.BlendAdditive = false;
 
             CCRotateBy rot = new CCRotateBy (16, 360);
-            m_emitter.RunAction(new CCRepeatForever (rot));
+            Emitter.RunAction(new CCRepeatForever (rot));
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Issue 704. Free + Rot";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Emitted particles should not rotate";
         }
-    };
+    }
 
     public class Issue870 : ParticleDemo
     {
-        private int m_nIndex;
+        int index;
 
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = new CCColor3B(0, 0, 0);
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             var system = new CCParticleSystemQuad("Particles/SpinningPeas");
             system.Texture = (CCTextureCache.Instance.AddImage ("Images/particles"));
             system.TextureRect = new CCRect(0, 0, 32, 32);
 
             AddChild(system, 10);
-            m_emitter = system;
+            Emitter = system;
 
-            m_nIndex = 0;
-            Schedule(updateQuads, 2.0f);
+            index = 0;
+            Schedule(UpdateQuads, 2.0f);
         }
 
-        public void updateQuads(float dt)
+        void UpdateQuads(float dt)
         {
-            m_nIndex = (m_nIndex + 1) % 4;
-            var rect = new CCRect(m_nIndex * 32, 0, 32, 32);
-            var system = (CCParticleSystemQuad) m_emitter;
-            system.Texture = m_emitter.Texture;
+            index = (index + 1) % 4;
+            var rect = new CCRect(index * 32, 0, 32, 32);
+            var system = (CCParticleSystemQuad) Emitter;
+            system.Texture = Emitter.Texture;
             system.TextureRect = rect;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Issue 870. SubRect";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Every 2 seconds the particle should change";
         }
@@ -1328,22 +1326,21 @@ namespace tests
 
     public class ParticleReorder : ParticleDemo
     {
-        private int m_nOrder;
+        int order;
         CCLabelTtf label;
+        CCParticleSystemCache particleSystemCache;
 
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            m_nOrder = 0;
+            order = 0;
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
-
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            RemoveChild(Background, true);
+            Background = null;
 
             label = new CCLabelTtf("Loading...", "Marker Felt", 32);
-            label.Position = size.Center;
+            label.Position = windowSize.Center;
             label.Visible = false;
             AddChild(label, 10);
 
@@ -1351,17 +1348,17 @@ namespace tests
             label.RunActions (new CCDelayTime (2.0f), new CCShow ());
             label.RepeatForever (scale, scale.Reverse ());
 
+            particleSystemCache = new CCParticleSystemCache(this);
+
             ScheduleOnce(LoadParticleSystem, 0.0f);
-
         }
 
-
-        private void LoadParticleSystem(float dt)
+        void LoadParticleSystem(float dt)
         {
-            CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
+            particleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
         }
 
-        private void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
+        void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
         {
             label.RemoveFromParent(true);
 
@@ -1370,7 +1367,6 @@ namespace tests
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
-            ignore.Unschedule ();
 
             for (int i = 0; i < 2; i++) {
                 CCNode parent = (i == 0 ? parent1 : parent2);
@@ -1403,20 +1399,20 @@ namespace tests
                 AddChild (parent, 10, 1000 + i);
             }
 
-            Schedule (reorderParticles, 1.0f);
+            Schedule(ReorderParticles, 1.0f);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Reordering particles";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Reordering particles with and without batches batches";
         }
 
-        private void reorderParticles(float dt)
+        void ReorderParticles(float dt)
         {
             for (int i = 0; i < 2; i++)
             {
@@ -1426,19 +1422,19 @@ namespace tests
                 CCNode child2 = parent.GetChildByTag(2);
                 CCNode child3 = parent.GetChildByTag(3);
 
-                if (m_nOrder % 3 == 0)
+                if (order % 3 == 0)
                 {
                     parent.ReorderChild(child1, 1);
                     parent.ReorderChild(child2, 2);
                     parent.ReorderChild(child3, 3);
                 }
-                else if (m_nOrder % 3 == 1)
+                else if (order % 3 == 1)
                 {
                     parent.ReorderChild(child1, 3);
                     parent.ReorderChild(child2, 1);
                     parent.ReorderChild(child3, 2);
                 }
-                else if (m_nOrder % 3 == 2)
+                else if (order % 3 == 2)
                 {
                     parent.ReorderChild(child1, 2);
                     parent.ReorderChild(child2, 3);
@@ -1446,58 +1442,59 @@ namespace tests
                 }
             }
 
-            m_nOrder++;
+            order++;
         }
     }
 
 
     public class ParticleBatchHybrid : ParticleDemo
     {
-        private CCNode m_pParent1;
-        private CCNode m_pParent2;
+        CCNode parent1;
+        CCNode parent2;
 
-        public override void OnEnter()
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad("Particles/LavaFlow");
-            m_emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
-            CCParticleBatchNode batch = new CCParticleBatchNode(m_emitter.Texture);
+            Emitter = new CCParticleSystemQuad("Particles/LavaFlow");
+            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            CCParticleBatchNode batch = new CCParticleBatchNode(Emitter.Texture);
 
-            batch.AddChild(m_emitter);
+            batch.AddChild(Emitter);
 
             AddChild(batch, 10);
 
-            Schedule(switchRender, 2.0f);
+            Schedule(SwitchRender, 2.0f);
 
             CCLayer node = new CCLayer();
             AddChild(node);
 
-            m_pParent1 = batch;
-            m_pParent2 = node;
+            parent1 = batch;
+            parent2 = node;
         }
 
-        private void switchRender(float dt)
+        void SwitchRender(float dt)
         {
-            bool usingBatch = (m_emitter.BatchNode != null);
-            m_emitter.RemoveFromParent(false);
+            bool usingBatch = (Emitter.BatchNode != null);
+            Emitter.RemoveFromParent(false);
 
-            CCNode newParent = (usingBatch ? m_pParent2 : m_pParent1);
-            newParent.AddChild(m_emitter);
+            CCNode newParent = (usingBatch ? parent2 : parent1);
+            newParent.AddChild(Emitter);
 
             CCLog.Log("Particle: Using new parent: {0}", usingBatch ? "CCNode" : "CCParticleBatchNode");
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Paticle Batch";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Hybrid: batched and non batched every 2 seconds";
         }
@@ -1505,13 +1502,13 @@ namespace tests
 
     public class ParticleBatchMultipleEmitters : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             CCParticleSystemQuad emitter1 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter1.StartColor = (new CCColor4F(1, 0, 0, 1));
@@ -1539,12 +1536,12 @@ namespace tests
             AddChild(batch, 10);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Paticle Batch";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Multiple emitters. One Batch";
         }
@@ -1581,10 +1578,7 @@ namespace tests
             Angle = (180);
             AngleVar = (0);
 
-            // emitter position
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
-            Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
-            PositionVar = (CCPoint.Zero);
+
 
             // life of particles
             Life = (0.5f);
@@ -1607,6 +1601,15 @@ namespace tests
             Texture = (CCTextureCache.Instance.AddImage("Images/particles"));
         }
 
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            // emitter position
+            Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+            PositionVar = (CCPoint.Zero);
+        }
+
         public override void Update(float dt)
         {
             EmitCounter = 0;
@@ -1616,31 +1619,29 @@ namespace tests
 
     public class Issue1201 : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             var particle = new RainbowEffect(50);
 
             AddChild(particle);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            particle.Position = (MidWindowPoint);
 
-            particle.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-
-            m_emitter = particle;
+            Emitter = particle;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Issue 1201. Unfinished";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Unfinished test. Ignore it";
         }
@@ -1648,13 +1649,13 @@ namespace tests
 
     public class MultipleParticleSystems : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             CCTextureCache.Instance.AddImage("Images/particles");
 
@@ -1668,15 +1669,15 @@ namespace tests
                 AddChild(particleSystem);
             }
 
-            m_emitter = null;
+            Emitter = null;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Multiple particle systems";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "v1.1 test: FPS should be lower than next test";
         }
@@ -1684,13 +1685,13 @@ namespace tests
 
     public class MultipleParticleSystemsBatched : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             CCParticleBatchNode batchNode = new CCParticleBatchNode("Images/fire", 3000);
 
@@ -1708,15 +1709,15 @@ namespace tests
             }
 
 
-            m_emitter = null;
+            Emitter = null;
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Multiple particle systems";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "v1.1 test: FPS should be lower than next test";
         }
@@ -1725,25 +1726,25 @@ namespace tests
 
     public class AddAndDeleteParticleSystems : ParticleDemo
     {
-        private CCParticleBatchNode m_pBatchNode;
+        CCParticleBatchNode batchNode;
 
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
             //adds the texture inside the plist to the texture cache
-            m_pBatchNode = new CCParticleBatchNode("Images/fire", 16000);
+            batchNode = new CCParticleBatchNode("Images/fire", 16000);
 
-            AddChild(m_pBatchNode, 1, 2);
+            AddChild(batchNode, 1, 2);
 
             for (int i = 0; i < 6; i++)
             {
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
-                particleSystem.Texture = m_pBatchNode.Texture;
+                particleSystem.Texture = batchNode.Texture;
 
                 particleSystem.PositionType = CCPositionType.Grouped;
                 particleSystem.TotalParticles = (200);
@@ -1751,21 +1752,21 @@ namespace tests
                 particleSystem.Position = (new CCPoint(i * 15 + 100, i * 15 + 100));
 
                 int randZ = CCRandom.Next(100);
-                m_pBatchNode.AddChild(particleSystem, randZ, -1);
+                batchNode.AddChild(particleSystem, randZ, -1);
             }
 
-            Schedule(removeSystem, 0.5f);
-            m_emitter = null;
+            Schedule(RemoveSystem, 0.5f);
+            Emitter = null;
         }
 
-        private void removeSystem(float dt)
+        void RemoveSystem(float dt)
         {
-            int nChildrenCount = m_pBatchNode.ChildrenCount;
+            int nChildrenCount = batchNode.ChildrenCount;
             if (nChildrenCount > 0)
             {
                 CCLog.Log("remove random system");
                 int uRand = CCRandom.Next(nChildrenCount - 1);
-                m_pBatchNode.RemoveChild(m_pBatchNode.Children[uRand], true);
+                batchNode.RemoveChild(batchNode.Children[uRand], true);
 
                 CCParticleSystemQuad particleSystem = new CCParticleSystemQuad("Particles/Spiral");
                 //add new
@@ -1777,17 +1778,17 @@ namespace tests
 
                 CCLog.Log("add a new system");
                 int randZ = CCRandom.Next(100);
-                particleSystem.Texture = m_pBatchNode.Texture;
-                m_pBatchNode.AddChild(particleSystem, randZ, -1);
+                particleSystem.Texture = batchNode.Texture;
+                batchNode.AddChild(particleSystem, randZ, -1);
             }
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "Add and remove Particle System";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "v1.1 test: every 2 sec 1 system disappear, 1 appears";
         }
@@ -1795,25 +1796,25 @@ namespace tests
 
     public class ReorderParticleSystems : ParticleDemo
     {
-        private CCParticleBatchNode m_pBatchNode;
+        CCParticleBatchNode batchNode;
 
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_pBatchNode = new CCParticleBatchNode("Images/stars-grayscale", 3000);
+            batchNode = new CCParticleBatchNode("Images/stars-grayscale", 3000);
 
-            AddChild(m_pBatchNode, 1, 2);
+            AddChild(batchNode, 1, 2);
 
 
             for (int i = 0; i < 3; i++)
             {
                 var particleSystem = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
-                particleSystem.Texture = (m_pBatchNode.Texture);
+                particleSystem.Texture = (batchNode.Texture);
 
                 // duration
                 particleSystem.Duration = CCParticleSystem.ParticleDurationInfinity;
@@ -1875,28 +1876,26 @@ namespace tests
                 particleSystem.Position = (new CCPoint(i * 10 + 120, 200));
 
 
-                m_pBatchNode.AddChild(particleSystem);
+                batchNode.AddChild(particleSystem);
                 particleSystem.PositionType = CCPositionType.Free;
-
-                //[pBNode addChild:particleSystem z:10 tag:0);
             }
 
-            Schedule(reorderSystem, 2.0f);
-            m_emitter = null;
+            Schedule(ReorderSystem, 2.0f);
+            Emitter = null;
         }
 
-        private void reorderSystem(float dt)
+        void ReorderSystem(float dt)
         {
-            var system = (CCParticleSystem) m_pBatchNode.Children[1];
-            m_pBatchNode.ReorderChild(system, system.ZOrder - 1);
+            var system = (CCParticleSystem) batchNode.Children[1];
+            batchNode.ReorderChild(system, system.ZOrder - 1);
         }
 
-        public override string title()
+        protected override string Title()
         {
             return "reorder systems";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "changes every 2 seconds";
         }
@@ -1909,38 +1908,38 @@ namespace tests
             base.OnEnter();
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad("Particles/BoilingFoam");
+            Emitter = new CCParticleSystemQuad("Particles/BoilingFoam");
 
             // Particle Designer "normal" blend func causes black halo on premul textures (ignores multiplication)
             //this->emitter.blendFunc = (ccBlendFunc){ GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA };
 
             // Cocos2d "normal" blend func for premul causes alpha to be ignored (oversaturates colors)
             var tBlendFunc = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA);
-            m_emitter.BlendFunc = tBlendFunc;
+            Emitter.BlendFunc = tBlendFunc;
 
-            //Debug.Assert(m_emitter.OpacityModifyRGB, "Particle texture does not have premultiplied alpha, test is useless");
+            //Debug.Assert(Emitter.OpacityModifyRGB, "Particle texture does not have premultiplied alpha, test is useless");
 
             // Toggle next line to see old behavior
-            //	this->emitter.opacityModifyRGB = NO;
+            //  this->emitter.opacityModifyRGB = NO;
 
-            m_emitter.StartColor = new CCColor4F(1, 1, 1, 1);
-            m_emitter.EndColor = new CCColor4F(1, 1, 1, 0);
-            m_emitter.StartColorVar = new CCColor4F(0, 0, 0, 0);
-            m_emitter.EndColorVar = new CCColor4F(0, 0, 0, 0);
+            Emitter.StartColor = new CCColor4F(1, 1, 1, 1);
+            Emitter.EndColor = new CCColor4F(1, 1, 1, 0);
+            Emitter.StartColorVar = new CCColor4F(0, 0, 0, 0);
+            Emitter.EndColorVar = new CCColor4F(0, 0, 0, 0);
 
-            AddChild(m_emitter, 10);
+            AddChild(Emitter, 10);
         }
 
 
-        public override string title()
+        protected override string Title()
         {
             return "premultiplied alpha";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "no black halo, particles should fade out";
         }
@@ -1948,25 +1947,25 @@ namespace tests
 
     public class PremultipliedAlphaTest2 : ParticleDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             Color = CCColor3B.Black;
-            RemoveChild(m_background, true);
-            m_background = null;
+            RemoveChild(Background, true);
+            Background = null;
 
-            m_emitter = new CCParticleSystemQuad("Particles/TestPremultipliedAlpha");
-            AddChild(m_emitter, 10);
+            Emitter = new CCParticleSystemQuad("Particles/TestPremultipliedAlpha");
+            AddChild(Emitter, 10);
         }
 
 
-        public override string title()
+        protected override string Title()
         {
             return "premultiplied alpha 2";
         }
 
-        public override string subtitle()
+        protected override string Subtitle()
         {
             return "Arrows should be faded";
         }
