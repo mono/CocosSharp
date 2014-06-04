@@ -59,7 +59,7 @@ namespace CocosSharp
             // The alternative is to have a void CCSprite#visit, but
             // although this is less mantainable, is faster
             //
-            if (!Visible)
+            if (!Visible || Director == null)
             {
                 return;
             }
@@ -176,6 +176,9 @@ namespace CocosSharp
             InsertChild(pChild, atlasIndex, tag);
 
             pChild.BatchNode = this;
+
+            if(Director != null)
+                pChild.Director = Director;
         }
 
         // don't use lazy sorting, reordering the particle systems quads afterwards would be too complex

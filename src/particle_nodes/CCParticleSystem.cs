@@ -240,6 +240,9 @@ namespace CocosSharp
                                 RadialParticles[i].AtlasIndex = i;
                             }
                         }
+
+                        if(Director != null)
+                            BatchNode.Director = Director;
                     }
                 }
             }
@@ -365,6 +368,20 @@ namespace CocosSharp
         {
             get { return RadialMode.RotatePerSecondVar; }
             set { radialMode.RotatePerSecondVar = value; }
+        }
+
+        internal override CCDirector Director 
+        { 
+            get { return base.Director; }
+            set 
+            {
+                if(Director != null && BatchNode != null) 
+                {
+                    BatchNode.Director = Director;
+                }
+
+                base.Director = value;
+            }
         }
 
         #endregion Properties
