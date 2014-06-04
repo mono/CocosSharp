@@ -19,13 +19,11 @@ namespace CocosSharp
         private Action ProcessingAction { get; set; }
         private object Task { get; set; }
 
-        private static CCParticleSystemCache sharedParticleSystemCache;
-
         private readonly object dictLock = new object();
         protected Dictionary<string, CCParticleSystemConfig> psConfigs = new Dictionary<string, CCParticleSystemConfig>();
 
 
-        private CCParticleSystemCache()
+        public CCParticleSystemCache(CCNode targetNode)
         {
             ProcessingAction = new Action(
                 () =>
@@ -51,7 +49,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded particle system: {0}", psConfig.FileName);
                             if (psConfig.OnLoad != null)
                             {
-                                CCDirector.SharedDirector.Scheduler.Schedule (
+                                targetNode.Director.Scheduler.Schedule (
                                     f => psConfig.OnLoad(config, psConfig.Action), this, 0, 0, 0, false
                                 );
                             }
@@ -68,27 +66,6 @@ namespace CocosSharp
 
         public void Update(float dt)
         {
-        }
-
-        public static CCParticleSystemCache SharedParticleSystemCache
-        {
-            get 
-            {
-                if (sharedParticleSystemCache == null)
-                {
-                    sharedParticleSystemCache = new CCParticleSystemCache();
-                }
-                return (sharedParticleSystemCache);
-            }
-        }
-
-        public static void PurgeSharedConfigCache()
-        {
-            if (sharedParticleSystemCache != null)
-            {
-                sharedParticleSystemCache.Dispose();
-                sharedParticleSystemCache = null;
-            }
         }
 
         public void UnloadContent()

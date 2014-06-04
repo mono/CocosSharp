@@ -158,6 +158,10 @@ namespace CocosSharp
             Debug.Assert(BlendFunc.Source == pChild.BlendFunc.Source && BlendFunc.Destination == pChild.BlendFunc.Destination, 
                 "Can't add a ParticleSystem that uses a differnt blending function");
 
+            // Set director before we call AddChildHelper
+            if(Director != null)
+                pChild.Director = Director;
+
             // No lazy sorting, so don't call base AddChild, call helper instead
             int pos = AddChildHelper(pChild, zOrder, tag);
 
@@ -176,9 +180,6 @@ namespace CocosSharp
             InsertChild(pChild, atlasIndex, tag);
 
             pChild.BatchNode = this;
-
-            if(Director != null)
-                pChild.Director = Director;
         }
 
         // don't use lazy sorting, reordering the particle systems quads afterwards would be too complex
