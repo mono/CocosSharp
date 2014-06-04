@@ -66,7 +66,7 @@ namespace CocosSharp
             {
                 if (defaultTexture == null)
                 {
-					defaultTexture = CCTextureCache.Instance.AddImage(firePngData, "__firePngData", CCSurfaceFormat.Color);
+                    defaultTexture = CCTextureCache.Instance.AddImage(firePngData, "__firePngData", CCSurfaceFormat.Color);
                 }
 
                 return defaultTexture;
@@ -79,118 +79,118 @@ namespace CocosSharp
     //
     public class CCParticleFire : CCParticleSystemQuad
     {
-		static CCParticleSystemConfig config;
+        static CCParticleSystemConfig config;
 
-		public CCParticleFire(CCPoint position) : base(250)
+        public CCParticleFire(CCPoint position) : base(250)
         {
-			if (config == null) 
-			{
-				config = new CCParticleSystemConfig ();
-				config.ParticleSystemType = CCParticleSystemType.Internal;
+            if (config == null) 
+            {
+                config = new CCParticleSystemConfig ();
+                config.ParticleSystemType = CCParticleSystemType.Internal;
 
-				config.Duration = ParticleDurationInfinity;
-				config.Life = 3;
-				config.LifeVar = 0.25f;
-				config.Position = position;
-				config.PositionVar = new CCPoint(40, 20);
-				config.Angle = 90;
-				config.AngleVar = 10;
-				config.StartSize = 54.0f;
-				config.StartSizeVar = 10.0f;
-				config.EndSize = ParticleStartSizeEqualToEndSize;
+                config.Duration = ParticleDurationInfinity;
+                config.Life = 3;
+                config.LifeVar = 0.25f;
+                config.Position = position;
+                config.PositionVar = new CCPoint(40, 20);
+                config.Angle = 90;
+                config.AngleVar = 10;
+                config.StartSize = 54.0f;
+                config.StartSizeVar = 10.0f;
+                config.EndSize = ParticleStartSizeEqualToEndSize;
 
-				config.EmitterMode = CCEmitterMode.Gravity;
+                config.EmitterMode = CCEmitterMode.Gravity;
 
-				CCColor4F cstartColor = new CCColor4F();
-				cstartColor.R = 0.76f;
-				cstartColor.G = 0.25f;
-				cstartColor.B = 0.12f;
-				cstartColor.A = 1.0f;
-				config.StartColor = cstartColor;
+                CCColor4F cstartColor = new CCColor4F();
+                cstartColor.R = 0.76f;
+                cstartColor.G = 0.25f;
+                cstartColor.B = 0.12f;
+                cstartColor.A = 1.0f;
+                config.StartColor = cstartColor;
 
-				CCColor4F cstartColorVar = new CCColor4F();
-				cstartColorVar.R = 0.0f;
-				cstartColorVar.G = 0.0f;
-				cstartColorVar.B = 0.0f;
-				cstartColorVar.A = 0.0f;
-				config.StartColorVar = cstartColorVar;
+                CCColor4F cstartColorVar = new CCColor4F();
+                cstartColorVar.R = 0.0f;
+                cstartColorVar.G = 0.0f;
+                cstartColorVar.B = 0.0f;
+                cstartColorVar.A = 0.0f;
+                config.StartColorVar = cstartColorVar;
 
-				CCColor4F cendColor = new CCColor4F();
-				cendColor.R = 0.0f;
-				cendColor.G = 0.0f;
-				cendColor.B = 0.0f;
-				cendColor.A = 1.0f;
-				config.EndColor = cendColor;
+                CCColor4F cendColor = new CCColor4F();
+                cendColor.R = 0.0f;
+                cendColor.G = 0.0f;
+                cendColor.B = 0.0f;
+                cendColor.A = 1.0f;
+                config.EndColor = cendColor;
 
-				CCColor4F cendColorVar = new CCColor4F();
-				cendColorVar.R = 0.0f;
-				cendColorVar.G = 0.0f;
-				cendColorVar.B = 0.0f;
-				cendColorVar.A = 0.0f;
-				config.EndColorVar = cendColorVar;
+                CCColor4F cendColorVar = new CCColor4F();
+                cendColorVar.R = 0.0f;
+                cendColorVar.G = 0.0f;
+                cendColorVar.B = 0.0f;
+                cendColorVar.A = 0.0f;
+                config.EndColorVar = cendColorVar;
 
-				config.Gravity = new CCPoint(0, 0);
-				config.GravityRadialAccel = 0;
-				config.GravityRadialAccelVar = 0;
-				config.GravitySpeed = 60;
-				config.GravitySpeedVar = 20;
+                config.Gravity = new CCPoint(0, 0);
+                config.GravityRadialAccel = 0;
+                config.GravityRadialAccelVar = 0;
+                config.GravitySpeed = 60;
+                config.GravitySpeedVar = 20;
 
-				config.Texture = CCParticleExample.DefaultTexture;
+                config.Texture = CCParticleExample.DefaultTexture;
 
-			}
+            }
 
-			Duration = config.Duration;
-			Life = config.Life;
-			LifeVar = config.LifeVar;
-			Position = config.Position;
-			PositionVar = config.PositionVar;
-			Angle = config.Angle;
-			AngleVar = config.AngleVar;
-			StartSize = config.StartSize;
-			StartSizeVar = config.StartSizeVar;
-			EndSize = config.EndSize;
+            Duration = config.Duration;
+            Life = config.Life;
+            LifeVar = config.LifeVar;
+            Position = config.Position;
+            PositionVar = config.PositionVar;
+            Angle = config.Angle;
+            AngleVar = config.AngleVar;
+            StartSize = config.StartSize;
+            StartSizeVar = config.StartSizeVar;
+            EndSize = config.EndSize;
 
             EmissionRate = TotalParticles / Life;
 
             CCColor4F startColor = new CCColor4F();
-			startColor.R = config.StartColor.R;
-			startColor.G = config.StartColor.G;
-			startColor.B = config.StartColor.B;
-			startColor.A = config.StartColor.A;
+            startColor.R = config.StartColor.R;
+            startColor.G = config.StartColor.G;
+            startColor.B = config.StartColor.B;
+            startColor.A = config.StartColor.A;
             StartColor = startColor;
 
             CCColor4F startColorVar = new CCColor4F();
-			startColorVar.R = config.StartColorVar.R;
-			startColorVar.G = config.StartColorVar.G;
-			startColorVar.B = config.StartColorVar.B;
-			startColorVar.A = config.StartColorVar.A;
+            startColorVar.R = config.StartColorVar.R;
+            startColorVar.G = config.StartColorVar.G;
+            startColorVar.B = config.StartColorVar.B;
+            startColorVar.A = config.StartColorVar.A;
             StartColorVar = startColorVar;
 
             CCColor4F endColor = new CCColor4F();
-			endColor.R = config.EndColor.R;
-			endColor.G = config.EndColor.G;
-			endColor.B = config.EndColor.B;
-			endColor.A = config.EndColor.A;
+            endColor.R = config.EndColor.R;
+            endColor.G = config.EndColor.G;
+            endColor.B = config.EndColor.B;
+            endColor.A = config.EndColor.A;
             EndColor = endColor;
 
             CCColor4F endColorVar = new CCColor4F();
-			endColorVar.R = config.EndColorVar.R;
-			endColorVar.G = config.EndColorVar.G;
-			endColorVar.B = config.EndColorVar.B;
-			endColorVar.A = config.EndColorVar.A;
+            endColorVar.R = config.EndColorVar.R;
+            endColorVar.G = config.EndColorVar.G;
+            endColorVar.B = config.EndColorVar.B;
+            endColorVar.A = config.EndColorVar.A;
             EndColorVar = endColorVar;
 
             GravityMoveMode gravityMode = new GravityMoveMode();
-			gravityMode.Gravity = new CCPoint(config.Gravity);
-			gravityMode.RadialAccel = config.GravityRadialAccel;
-			gravityMode.RadialAccelVar = config.GravityRadialAccelVar;
-			gravityMode.Speed = config.GravitySpeed;
-			gravityMode.SpeedVar = config.GravitySpeedVar;
+            gravityMode.Gravity = new CCPoint(config.Gravity);
+            gravityMode.RadialAccel = config.GravityRadialAccel;
+            gravityMode.RadialAccelVar = config.GravityRadialAccelVar;
+            gravityMode.Speed = config.GravitySpeed;
+            gravityMode.SpeedVar = config.GravitySpeedVar;
             GravityMode = gravityMode;
 
-			BlendAdditive = true;
+            BlendAdditive = true;
 
-			Texture = config.Texture;
+            Texture = config.Texture;
         }
     }
 
@@ -199,12 +199,12 @@ namespace CocosSharp
     //
     public class CCParticleFireworks : CCParticleSystemQuad
     {
-		public CCParticleFireworks(CCPoint position) : base(1500)
+        public CCParticleFireworks(CCPoint position) : base(1500)
         {
             Duration = ParticleDurationInfinity;
             Life = 3.5f;
             LifeVar = 1;
-			Position = position;
+            Position = position;
             Angle = 90;
             AngleVar = 20;
             StartSize = 8.0f;
@@ -255,16 +255,16 @@ namespace CocosSharp
     //
     public class CCParticleSun : CCParticleSystemQuad
     {
-		public CCParticleSun(CCPoint position) : this(position, 350)
+        public CCParticleSun(CCPoint position) : this(position, 350)
         { 
         }
-        
-		public CCParticleSun (CCPoint position, int num) : base(num)
+
+        public CCParticleSun (CCPoint position, int num) : base(num)
         {
             Duration = ParticleDurationInfinity;
             Life = 1;
             LifeVar = 0.5f;
-			Position = position;
+            Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -298,12 +298,12 @@ namespace CocosSharp
     //
     public class CCParticleGalaxy : CCParticleSystemQuad
     {
-		public CCParticleGalaxy(CCPoint position) : base(200)
+        public CCParticleGalaxy(CCPoint position) : base(200)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-			Position = position;
+            Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -337,12 +337,12 @@ namespace CocosSharp
 
     public class CCParticleFlower : CCParticleSystemQuad
     {
-		public CCParticleFlower(CCPoint position) : base(250)
+        public CCParticleFlower(CCPoint position) : base(250)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-			Position = position;
+            Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -375,12 +375,12 @@ namespace CocosSharp
 
     public class CCParticleMeteor : CCParticleSystemQuad
     {
-		public CCParticleMeteor(CCPoint position) : base(150)
+        public CCParticleMeteor(CCPoint position) : base(150)
         {
             Duration = ParticleDurationInfinity;
             Life = 2;
             LifeVar = 1;
-			Position = position;
+            Position = position;
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -413,10 +413,10 @@ namespace CocosSharp
 
     public class CCParticleSpiral : CCParticleSystemQuad
     {
-		public CCParticleSpiral(CCPoint position) : base(500)
+        public CCParticleSpiral(CCPoint position) : base(500)
         {
             Duration = ParticleDurationInfinity;
-			Position = position;
+            Position = position;
             PositionVar = CCPoint.Zero;
             Life = 12;
             LifeVar = 0;
@@ -451,12 +451,12 @@ namespace CocosSharp
 
     public class CCParticleExplosion : CCParticleSystemQuad
     {
-		public CCParticleExplosion(CCPoint position) : base(700)
+        public CCParticleExplosion(CCPoint position) : base(700)
         {
             Duration = 0.1f;
             Life = 5.0f;
             LifeVar = 2;
-			Position = new CCPoint(position);
+            Position = new CCPoint(position);
             PositionVar = CCPoint.Zero;
             Angle = 90;
             AngleVar = 360;
@@ -489,12 +489,12 @@ namespace CocosSharp
 
     public class CCParticleSmoke : CCParticleSystemQuad
     {
-		public CCParticleSmoke(CCPoint position) : base(200)
+        public CCParticleSmoke(CCPoint position) : base(200)
         {
             Duration = ParticleDurationInfinity;
             Life = 4;
             LifeVar = 1;
-			Position = position;
+            Position = position;
             PositionVar = new CCPoint(20, 0);
             Angle = 90;
             AngleVar = 5;
@@ -525,13 +525,13 @@ namespace CocosSharp
 
     public class CCParticleSnow : CCParticleSystemQuad
     {
-		public CCParticleSnow(CCPoint position) : base(700)
+        public CCParticleSnow(CCPoint position) : base(700)
         {
             Duration = ParticleDurationInfinity;
             Life = 45;
             LifeVar = 15;
-			Position = position;
-			PositionVar = new CCPoint(position.X, 0);
+            Position = position;
+            PositionVar = new CCPoint(position.X, 0);
             Angle = -90;
             AngleVar = 5;
             StartSize = 10.0f;
@@ -563,11 +563,11 @@ namespace CocosSharp
 
     public class CCParticleRain : CCParticleSystemQuad
     {
-		public CCParticleRain(CCPoint position) : base(1000)
+        public CCParticleRain(CCPoint position) : base(1000)
         {
             Duration = ParticleDurationInfinity;
-			Position = position;
-			PositionVar = new CCPoint(position.X, 0);
+            Position = position;
+            PositionVar = new CCPoint(position.X, 0);
             Life = 4.5f;
             LifeVar = 0;
             Angle = -90;

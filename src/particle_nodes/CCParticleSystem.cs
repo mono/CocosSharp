@@ -34,7 +34,7 @@ namespace CocosSharp
 
         Free,       // Living particles are attached to the world and are unaffected by emitter repositioning.
         Relative,   // Living particles are attached to the world but will follow the emitter repositioning.
-                    // Use case: Attach an emitter to an sprite, and you want that the emitter follows the sprite.
+        // Use case: Attach an emitter to an sprite, and you want that the emitter follows the sprite.
         Grouped,    // Living particles are attached to the emitter and are translated along with it.
     }
 
@@ -376,8 +376,8 @@ namespace CocosSharp
         {  
         }
 
-		public CCParticleSystem(string plistFile, string directoryName = null) 
-			: this(new CCParticleSystemConfig(plistFile, directoryName))
+        public CCParticleSystem(string plistFile, string directoryName = null) 
+            : this(new CCParticleSystemConfig(plistFile, directoryName))
         {  }
 
         protected CCParticleSystem(int numberOfParticles, CCEmitterMode emitterMode = CCEmitterMode.Gravity) 
@@ -412,68 +412,68 @@ namespace CocosSharp
 
         public CCParticleSystem(CCParticleSystemConfig particleConfig) : this(particleConfig.MaxParticles, false)
         {
-			Duration = particleConfig.Duration;;
-			Life = particleConfig.Life;
-			LifeVar = particleConfig.LifeVar;
+            Duration = particleConfig.Duration;;
+            Life = particleConfig.Life;
+            LifeVar = particleConfig.LifeVar;
             EmissionRate = TotalParticles / Life;
 
-			Angle = particleConfig.Angle;
-			AngleVar = particleConfig.AngleVar;
+            Angle = particleConfig.Angle;
+            AngleVar = particleConfig.AngleVar;
 
             CCBlendFunc blendFunc = new CCBlendFunc();
-			blendFunc.Source = particleConfig.BlendFunc.Source;
-			blendFunc.Destination = particleConfig.BlendFunc.Destination;
+            blendFunc.Source = particleConfig.BlendFunc.Source;
+            blendFunc.Destination = particleConfig.BlendFunc.Destination;
             BlendFunc = blendFunc;
 
             CCColor4F startColor = new CCColor4F();
-			startColor.R = particleConfig.StartColor.R;
-			startColor.G = particleConfig.StartColor.G;
-			startColor.B = particleConfig.StartColor.B;
-			startColor.A = particleConfig.StartColor.A;
+            startColor.R = particleConfig.StartColor.R;
+            startColor.G = particleConfig.StartColor.G;
+            startColor.B = particleConfig.StartColor.B;
+            startColor.A = particleConfig.StartColor.A;
             StartColor = startColor;
 
             CCColor4F startColorVar = new CCColor4F();
-			startColorVar.R = particleConfig.StartColorVar.R;
-			startColorVar.G = particleConfig.StartColorVar.G;
-			startColorVar.B = particleConfig.StartColorVar.B;
-			startColorVar.A = particleConfig.StartColorVar.A;
+            startColorVar.R = particleConfig.StartColorVar.R;
+            startColorVar.G = particleConfig.StartColorVar.G;
+            startColorVar.B = particleConfig.StartColorVar.B;
+            startColorVar.A = particleConfig.StartColorVar.A;
             StartColorVar = startColorVar;
 
             CCColor4F endColor = new CCColor4F();
-			endColor.R = particleConfig.EndColor.R;
-			endColor.G = particleConfig.EndColor.G;
-			endColor.B = particleConfig.EndColor.B;
-			endColor.A = particleConfig.EndColor.A;
+            endColor.R = particleConfig.EndColor.R;
+            endColor.G = particleConfig.EndColor.G;
+            endColor.B = particleConfig.EndColor.B;
+            endColor.A = particleConfig.EndColor.A;
             EndColor = endColor;
 
             CCColor4F endColorVar = new CCColor4F();
-			endColorVar.R = particleConfig.EndColorVar.R;
-			endColorVar.G = particleConfig.EndColorVar.G;
-			endColorVar.B = particleConfig.EndColorVar.B;
-			endColorVar.A = particleConfig.EndColorVar.A;
+            endColorVar.R = particleConfig.EndColorVar.R;
+            endColorVar.G = particleConfig.EndColorVar.G;
+            endColorVar.B = particleConfig.EndColorVar.B;
+            endColorVar.A = particleConfig.EndColorVar.A;
             EndColorVar = endColorVar;
 
-			StartSize = particleConfig.StartSize;
-			StartSizeVar = particleConfig.StartSizeVar;
-			EndSize = particleConfig.EndSize;
-			EndSizeVar = particleConfig.EndSizeVar;
+            StartSize = particleConfig.StartSize;
+            StartSizeVar = particleConfig.StartSizeVar;
+            EndSize = particleConfig.EndSize;
+            EndSizeVar = particleConfig.EndSizeVar;
 
             CCPoint position;
-			position.X = particleConfig.Position.X;
-			position.Y = particleConfig.Position.Y;
+            position.X = particleConfig.Position.X;
+            position.Y = particleConfig.Position.Y;
             Position = position;
 
             CCPoint positionVar;
-			positionVar.X = particleConfig.PositionVar.X;
-			positionVar.Y = particleConfig.PositionVar.X;
+            positionVar.X = particleConfig.PositionVar.X;
+            positionVar.Y = particleConfig.PositionVar.X;
             PositionVar = positionVar;
 
-			StartSpin = particleConfig.StartSpin;
-			StartSpinVar = particleConfig.StartSpinVar;
-			EndSpin = particleConfig.EndSpin;
-			EndSpinVar = particleConfig.EndSpinVar;
+            StartSpin = particleConfig.StartSpin;
+            StartSpinVar = particleConfig.StartSpinVar;
+            EndSpin = particleConfig.EndSpin;
+            EndSpinVar = particleConfig.EndSpinVar;
 
-			EmitterMode = particleConfig.EmitterMode;
+            EmitterMode = particleConfig.EmitterMode;
 
             if (EmitterMode == CCEmitterMode.Gravity)
             {
@@ -482,17 +482,17 @@ namespace CocosSharp
                 GravityMoveMode newGravityMode = new GravityMoveMode();
 
                 CCPoint gravity;
-				gravity.X = particleConfig.Gravity.X;
-				gravity.Y = particleConfig.Gravity.Y;
+                gravity.X = particleConfig.Gravity.X;
+                gravity.Y = particleConfig.Gravity.Y;
                 newGravityMode.Gravity = gravity;
 
-				newGravityMode.Speed = particleConfig.GravitySpeed;
-				newGravityMode.SpeedVar = particleConfig.GravitySpeedVar;
-				newGravityMode.RadialAccel = particleConfig.GravityRadialAccel;
-				newGravityMode.RadialAccelVar = particleConfig.GravityRadialAccelVar;
-				newGravityMode.TangentialAccel = particleConfig.GravityTangentialAccel;
-				newGravityMode.TangentialAccelVar = particleConfig.GravityTangentialAccelVar;
-				newGravityMode.RotationIsDir = particleConfig.GravityRotationIsDir;
+                newGravityMode.Speed = particleConfig.GravitySpeed;
+                newGravityMode.SpeedVar = particleConfig.GravitySpeedVar;
+                newGravityMode.RadialAccel = particleConfig.GravityRadialAccel;
+                newGravityMode.RadialAccelVar = particleConfig.GravityRadialAccelVar;
+                newGravityMode.TangentialAccel = particleConfig.GravityTangentialAccel;
+                newGravityMode.TangentialAccelVar = particleConfig.GravityTangentialAccelVar;
+                newGravityMode.RotationIsDir = particleConfig.GravityRotationIsDir;
 
                 GravityMode = newGravityMode;
             }
@@ -502,12 +502,12 @@ namespace CocosSharp
 
                 RadialMoveMode newRadialMode = new RadialMoveMode();
 
-				newRadialMode.StartRadius = particleConfig.RadialStartRadius;
-				newRadialMode.StartRadiusVar = particleConfig.RadialStartRadiusVar;
-				newRadialMode.EndRadius = particleConfig.RadialEndRadius;
-				newRadialMode.EndRadiusVar = particleConfig.RadialEndRadiusVar;
-				newRadialMode.RotatePerSecond = particleConfig.RadialRotatePerSecond;
-				newRadialMode.RotatePerSecondVar = particleConfig.RadialRotatePerSecondVar;
+                newRadialMode.StartRadius = particleConfig.RadialStartRadius;
+                newRadialMode.StartRadiusVar = particleConfig.RadialStartRadiusVar;
+                newRadialMode.EndRadius = particleConfig.RadialEndRadius;
+                newRadialMode.EndRadiusVar = particleConfig.RadialEndRadiusVar;
+                newRadialMode.RotatePerSecond = particleConfig.RadialRotatePerSecond;
+                newRadialMode.RotatePerSecondVar = particleConfig.RadialRotatePerSecondVar;
 
                 RadialMode = newRadialMode;
             }
@@ -517,9 +517,9 @@ namespace CocosSharp
                 return;
             }
 
-			// Don't get the internal texture if a batchNode is used
-			if (BatchNode == null)
-				Texture = particleConfig.Texture;
+            // Don't get the internal texture if a batchNode is used
+            if (BatchNode == null)
+                Texture = particleConfig.Texture;
         }
 
         #endregion Constructors

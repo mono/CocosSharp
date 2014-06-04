@@ -148,10 +148,10 @@ namespace CocosSharp
         {
         }
 
-		public CCParticleSystemQuad(CCParticleSystemConfig config) : base(config)
-		{}
+        public CCParticleSystemQuad(CCParticleSystemConfig config) : base(config)
+        {}
 
-		public CCParticleSystemQuad(string plistFile, string directoryName = null) : base(plistFile, directoryName)
+        public CCParticleSystemQuad(string plistFile, string directoryName = null) : base(plistFile, directoryName)
         {
             int totalPart = TotalParticles;
         }
@@ -186,17 +186,17 @@ namespace CocosSharp
                 high = Texture.PixelsHigh;
             }
 
-#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+            #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
             float left = (rect.Origin.X * 2 + 1) / (wide * 2);
             float bottom = (rect.Origin.Y * 2 + 1) / (high * 2);
             float right = left + (rect.Size.Width * 2 - 2) / (wide * 2);
             float top = bottom + (rect.Size.Height * 2 - 2) / (high * 2);
-#else
+            #else
             float left = rect.Origin.X / wide;
             float bottom = rect.Origin.Y / high;
             float right = left + rect.Size.Width / wide;
             float top = bottom + rect.Size.Height / high;
-#endif
+            #endif
             // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
             // Important. Textures in CocosSharp are inverted, so the Y component should be inverted
@@ -251,12 +251,12 @@ namespace CocosSharp
             // don't update the particle with the new position information, it will interfere with the radius and tangential calculations
             if(BatchNode != null)
             {
-				newPosition.X += Position.X;
-				newPosition.Y += Position.Y;
+                newPosition.X += Position.X;
+                newPosition.Y += Position.Y;
             }
 
             CCColor4B color = new CCColor4B();
-            
+
             if(OpacityModifyRGB)
             {
                 color.R = (byte) (particle.Color.R * particle.Color.A * 255);
@@ -346,7 +346,7 @@ namespace CocosSharp
             }
 
             currentPosition = CCPoint.Zero;
-            
+
             if (PositionType == CCPositionType.Free)
             {
                 currentPosition = ConvertToWorldSpace(CCPoint.Zero);

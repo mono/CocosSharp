@@ -216,7 +216,7 @@ namespace CocosSharp
         {
             Debug.Assert(child != null, "Child must be non-null");
             Debug.Assert(child is CCParticleSystem,
-                         "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+                "CCParticleBatchNode only supports CCQuadParticleSystems as children");
             Debug.Assert(Children.Contains(child), "Child doesn't belong to batch");
 
             var pChild = (CCParticleSystem) (child);
@@ -380,7 +380,7 @@ namespace CocosSharp
             }
 
             Debug.Assert(child is CCParticleSystem,
-                         "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+                "CCParticleBatchNode only supports CCQuadParticleSystems as children");
             Debug.Assert(Children.Contains(child), "CCParticleBatchNode doesn't contain the sprite. Can't remove it");
 
             CCParticleSystem pChild = (CCParticleSystem) child;
@@ -412,7 +412,7 @@ namespace CocosSharp
                 ((CCParticleSystem) Children.Elements[i]).BatchNode = null;
             }
 
-			base.RemoveAllChildren(doCleanup);
+            base.RemoveAllChildren(doCleanup);
 
             TextureAtlas.RemoveAllQuads();
         }
