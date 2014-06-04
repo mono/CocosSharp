@@ -637,10 +637,10 @@ namespace CocosSharp
             float timeToLive = Math.Max(0, Life + LifeVar * CCRandom.Float_Minus1_1());
             particleBase.TimeToLive = timeToLive;
 
-            CCPoint position;
-            position.X = SourcePosition.X + PositionVar.X * CCRandom.Float_Minus1_1();
-            position.Y = SourcePosition.Y + PositionVar.Y * CCRandom.Float_Minus1_1();
-            particleBase.Position = position;
+            CCPoint particlePos;
+            particlePos.X = SourcePosition.X + PositionVar.X * CCRandom.Float_Minus1_1();
+            particlePos.Y = SourcePosition.Y + PositionVar.Y * CCRandom.Float_Minus1_1();
+            particleBase.Position = particlePos;
 
             CCColor4F start = new CCColor4F();
             start.R = MathHelper.Clamp(StartColor.R + StartColorVar.R * CCRandom.Float_Minus1_1(), 0, 1);
@@ -687,7 +687,7 @@ namespace CocosSharp
             }
             else if (PositionType == CCPositionType.Relative)
             {
-                particleBase.StartPosition = position;
+                particleBase.StartPosition = Position;
             }
         }
 
