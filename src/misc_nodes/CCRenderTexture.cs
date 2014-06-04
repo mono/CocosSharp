@@ -6,42 +6,45 @@ using Microsoft.Xna.Framework.Graphics;
 namespace CocosSharp
 {
 
-	public enum CCRenderTargetUsage
-	{
-		DiscardContents,
-		PreserveContents,
-		PlatformContents
-	}
+    public enum CCRenderTargetUsage
+    {
+        DiscardContents,
+        PreserveContents,
+        PlatformContents
+    }
 
     public partial class CCRenderTexture : CCNode
     {
         bool firstUsage = true;
         RenderTarget2D renderTarget2D;
 
+        #region Properties
 
         public CCSprite Sprite { get; set; }
         protected CCTexture2D Texture { get; private set; }
-		protected CCSurfaceFormat PixelFormat { get; private set; }
+        protected CCSurfaceFormat PixelFormat { get; private set; }
+
+        #endregion Properties
 
 
         #region Constructors
 
         public CCRenderTexture()
         {
-			PixelFormat = CCSurfaceFormat.Color;
+            PixelFormat = CCSurfaceFormat.Color;
         }
 
         public CCRenderTexture(int w, int h) 
-			: this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
+            : this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
-		public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
-			: this(w, h, format, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
+        public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
+            : this(w, h, format, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
-		public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, CCRenderTargetUsage usage)
+        public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, CCRenderTargetUsage usage)
         {
             w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
             h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
