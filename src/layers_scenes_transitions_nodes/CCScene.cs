@@ -19,27 +19,32 @@ namespace CocosSharp
             get { return false; }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null) 
-                {
-                    ContentSize = value.WinSize;
-                    IgnoreAnchorPointForPosition = true;
-                    AnchorPoint = new CCPoint(0.5f, 0.5f);
-                }
-            }
-        }
-
         #endregion Properties
 
+
+        #region Constructors
 
         public CCScene() : base()
         {
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null) 
+            {
+                ContentSize = Director.WinSize;
+                IgnoreAnchorPointForPosition = true;
+                AnchorPoint = new CCPoint(0.5f, 0.5f);
+            }
+        }
+
+        #endregion Setup content
     }
 }

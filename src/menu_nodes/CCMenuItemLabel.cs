@@ -126,20 +126,6 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null && Label != null)
-                {
-                    label.Director = value;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -151,6 +137,21 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && Label != null)
+            {
+                Label.Director = Director;
+            }
+        }
+
+        #endregion Setup content
     }
     #endif
 
@@ -195,20 +196,6 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null && LabelAtlas != null)
-                {
-                    LabelAtlas.Director = value;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -235,6 +222,21 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && LabelAtlas != null)
+            {
+                LabelAtlas.Director = Director;
+            }
+        }
+
+        #endregion Setup content
     }
 
 
@@ -279,20 +281,6 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null && LabelTTF != null)
-                {
-                    LabelTTF.Director = value;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -309,6 +297,21 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && LabelTTF != null)
+            {
+                LabelTTF.Director = Director;
+            }
+        }
+
+        #endregion Setup content
     }
 
 
@@ -353,20 +356,6 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null && LabelBMFont != null)
-                {
-                    LabelBMFont.Director = value;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -378,5 +367,20 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && LabelBMFont != null)
+            {
+                LabelBMFont.Director = Director;
+            }
+        }
+
+        #endregion Setup content
     }
 }

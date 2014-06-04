@@ -77,20 +77,6 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
-        { 
-            get { return base.Director; }
-            set 
-            {
-                base.Director = value;
-
-                if (value != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
-                {
-                    ContentSize = value.WinSize;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -122,6 +108,21 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if(Director != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
+            {
+                ContentSize = Director.WinSize;
+            }
+        }
+
+        #endregion Setup content
 
 
         protected override void Draw()
