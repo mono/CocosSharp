@@ -225,22 +225,22 @@ namespace CocosSharp
         // CCTextFieldDelegate
         public virtual bool onTextFieldAttachWithIME(CCTextFieldTTF pSender)
         {
-            if (m_bAction != null)
-            {
-                m_pTextField.RunAction(m_pTextFieldAction);
-                m_bAction = true;
-            }
+//            if (m_bAction != null)
+//            {
+//                m_pTextField.RunAction(m_pTextFieldAction);
+//                m_bAction = true;
+//            }
             return false;
         }
 
         public virtual bool onTextFieldDetachWithIME(CCTextFieldTTF pSender)
         {
-            if (m_bAction != null)
-            {
-                m_pTextField.StopAction(m_pTextFieldAction);
-                m_pTextField.Opacity = 255;
-                m_bAction = false;
-            }
+//            if (m_bAction != null)
+//            {
+//                m_pTextField.StopAction(m_pTextFieldAction);
+//                m_pTextField.Opacity = 255;
+//                m_bAction = false;
+//            }
             return false;
         }
 

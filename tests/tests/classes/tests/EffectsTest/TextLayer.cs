@@ -135,7 +135,7 @@ namespace tests
         public void checkAnim(float dt)
         {
             var s2 = this[EffectTestScene.kTagBackground];
-            if (s2.NumberOfRunningActions() == 0 && s2.Grid != null)
+            if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
                 s2.Grid = null;
             ;
         }
