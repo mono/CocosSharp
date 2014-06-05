@@ -103,7 +103,7 @@ namespace CocosSharp
         {
         }
 
-        public CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
+		internal CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
         {
             InitWithDictionary(dictionary, texture);
         }
