@@ -75,7 +75,7 @@ namespace CocosSharp
 
         #region Adding frames
 
-        public void AddSpriteFrames(PlistDictionary pobDictionary, CCTexture2D pobTexture)
+		internal void AddSpriteFrames(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
             /*
             Supported Zwoptex Formats:
