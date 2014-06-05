@@ -75,7 +75,7 @@ namespace CocosSharp
             animations.Remove(animationName);
         }
 
-        public void AddAnimations(PlistDictionary animationDict)
+		internal void AddAnimations(PlistDictionary animationDict)
         {
             PlistDictionary animations = animationDict["animations"].AsDictionary;
 
