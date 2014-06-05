@@ -6,11 +6,11 @@ namespace CocosSharp
     {
 		public CCSpriteFrame SpriteFrame { get; private set; }
 		public float DelayUnits { get; private set; }
-		public PlistDictionary UserInfo { get; private set; }
+		public object UserInfo { get; private set; }
 
         #region Constructors
 
-        public CCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, PlistDictionary userInfo)
+		public CCAnimationFrame(CCSpriteFrame spriteFrame, float delayUnits, object userInfo)
         {
 			SpriteFrame = spriteFrame;
 			DelayUnits = delayUnits;
