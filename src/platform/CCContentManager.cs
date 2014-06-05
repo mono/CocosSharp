@@ -441,18 +441,6 @@ namespace CocosSharp
             throw new ContentLoadException("Failed to load the asset stream from " + assetName);
         }
 
-        public virtual void LoadFilenameLookupDictionaryFromFile(string filename)
-        {
-            var document = Load<PlistDocument>(filename, true);
-            
-            SetFilenameLookupDictionary(document.Root as PlistDictionary);
-        }
-
-        public virtual void SetFilenameLookupDictionary(PlistDictionary filenameLookupDict)
-        {
-            //TODO: Load lookup names from PlistDictionary
-        }
-
         public List<string> SearchResolutionsOrder
         {
             get { return searchResolutionsOrder; }
