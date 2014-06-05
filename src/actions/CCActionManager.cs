@@ -302,18 +302,18 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveAction(CCAction action)
+		public void RemoveAction(CCActionState actionState)
         {
-            if (action == null || action.OriginalTarget == null)
+            if (actionState == null || actionState.OriginalTarget == null)
             {
                 return;
             }
 
-            object target = action.OriginalTarget;
+            object target = actionState.OriginalTarget;
             HashElement element;
             if (targets.TryGetValue(target, out element))
             {
-                int i = element.Actions.IndexOf(action);
+                int i = element.ActionStates.IndexOf(actionState);
 
                 if (i != -1)
                 {
@@ -329,34 +329,6 @@ namespace CocosSharp
                 CCLog.Log("CocosSharp: removeAction: Target not found");
             }
         }
-
-		public void RemoveAction(CCActionState actionState)
-		{
-			if (actionState == null || actionState.OriginalTarget == null)
-			{
-				return;
-			}
-
-			object target = actionState.OriginalTarget;
-			HashElement element;
-			if (targets.TryGetValue(target, out element))
-			{
-				int i = element.ActionStates.IndexOf(actionState);
-
-				if (i != -1)
-				{
-					RemoveActionAtIndex(i, element);
-				}
-				else
-				{
-					CCLog.Log("CocosSharp: removeAction: Action not found");
-				}
-			}
-			else
-			{
-				CCLog.Log("CocosSharp: removeAction: Target not found");
-			}
-		}
 
 		protected void RemoveActionAtIndex(int index, HashElement element)
 		{

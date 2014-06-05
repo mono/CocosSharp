@@ -1292,13 +1292,13 @@ namespace CocosSharp
                 ActionManager.RemoveAllActionsFromTarget(this);
         }
 
-        public void StopAction(CCAction action)
-        {
-            if(ActionManager != null)
-                ActionManager.RemoveAction(action);
-        }
+		public void StopAction(CCActionState actionState)
+		{
+			if(ActionManager != null)
+				ActionManager.RemoveAction(actionState);
+		}
 
-        public void StopActionByTag(int tag)
+		public void StopActionByTag(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
             ActionManager.RemoveActionByTag(tag, this);
@@ -1310,9 +1310,12 @@ namespace CocosSharp
             return ActionManager.GetActionByTag(tag, this);
         }
 
-        public int NumberOfRunningActions()
+        public int NumberOfRunningActions
         {
-            return ActionManager.NumberOfRunningActionsInTarget(this);
+			get 
+			{
+				return ActionManager.NumberOfRunningActionsInTarget (this);
+			}
         }
 
         #endregion Actions

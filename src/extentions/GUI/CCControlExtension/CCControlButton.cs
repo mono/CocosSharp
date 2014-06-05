@@ -109,7 +109,7 @@ namespace CocosSharp
                 CCAction action = GetActionByTag(kZoomActionTag);
                 if (action != null)
                 {
-                    StopAction(action);
+					//StopAction(action);
                 }
 
                 NeedsLayout();
