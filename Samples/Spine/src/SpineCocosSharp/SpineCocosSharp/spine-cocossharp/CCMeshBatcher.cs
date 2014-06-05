@@ -250,8 +250,6 @@ namespace CocosSharp.Spine
                 item.texture = null;
                 freeItems.Enqueue(item);
 
-                // update our drawing count
-                CCDrawManager.DrawCount++;
             }
             FlushVertexArray(device, vertexCount, triangleCount);
             items.Clear();
@@ -260,6 +258,9 @@ namespace CocosSharp.Spine
         private void FlushVertexArray(GraphicsDevice device, int vertexCount, int triangleCount)
         {
             if (vertexCount == 0) return;
+
+			// update our drawing count
+			CCDrawManager.DrawCount++;
 
             basicEffect.Projection = CCDrawManager.ProjectionMatrix;
             basicEffect.View = CCDrawManager.ViewMatrix;
