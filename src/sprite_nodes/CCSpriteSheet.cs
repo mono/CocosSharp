@@ -17,29 +17,29 @@ namespace CocosSharp
         readonly Dictionary<string, CCSpriteFrame> spriteFrames = new Dictionary<string, CCSpriteFrame>();
         readonly Dictionary<string, string> spriteFramesAliases = new Dictionary<string, string>();
 
-		PlistType plistType;
+        PlistType plistType;
 
-		// We need to read the sprite sheet textures relative to the plist file path.
-		// When we have the sprite sheet split between multiple image files 
-		// to be loaded this allows us to load those files relative to the plist.  Right now
+        // We need to read the sprite sheet textures relative to the plist file path.
+        // When we have the sprite sheet split between multiple image files 
+        // to be loaded this allows us to load those files relative to the plist.  Right now
         // only used for PlistType SpriteKit but can be used for other types as well in the future
-		string plistFilePath;
+        string plistFilePath;
 
 
         #region Properties
 
-		public List<CCSpriteFrame> Frames 
+        public List<CCSpriteFrame> Frames 
         {
             get 
-			{ 
-				List<CCSpriteFrame> frames = new List<CCSpriteFrame>();
-				foreach(CCSpriteFrame frame in spriteFrames.Values) 
-				{
-					frames.Add(frame);
-				}
+            { 
+                List<CCSpriteFrame> frames = new List<CCSpriteFrame>();
+                foreach(CCSpriteFrame frame in spriteFrames.Values) 
+                {
+                    frames.Add(frame);
+                }
 
-				return frames;
-			}
+                return frames;
+            }
         }
 
         public CCSpriteFrame this[string name]
@@ -103,7 +103,7 @@ namespace CocosSharp
         {
         }
 
-		internal CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
+        internal CCSpriteSheet(PlistDictionary dictionary, CCTexture2D texture)
         {
             InitWithDictionary(dictionary, texture);
         }
@@ -132,34 +132,34 @@ namespace CocosSharp
 
             var dict = document.Root.AsDictionary;
             var texturePath = string.Empty;
-			plistFilePath = string.Empty;
+            plistFilePath = string.Empty;
 
-			plistType = GetPlistType (dict);
+            plistType = GetPlistType (dict);
 
-			if (plistType == PlistType.SpriteKit) 
-			{
-				var images = dict.ContainsKey ("images") ? dict ["images"].AsArray : null;
+            if (plistType == PlistType.SpriteKit) 
+            {
+                var images = dict.ContainsKey ("images") ? dict ["images"].AsArray : null;
 
-				var imageDict = images [0].AsDictionary;
+                var imageDict = images [0].AsDictionary;
 
-				if (imageDict != null) {
-					// try to read  texture file name from meta data
-					if (imageDict.ContainsKey ("path")) {
-						texturePath = imageDict ["path"].AsString;
-					}
-				}
-			} 
-			else 
-			{
-				var metadataDict = dict.ContainsKey ("metadata") ? dict ["metadata"].AsDictionary : null;
+                if (imageDict != null) {
+                    // try to read  texture file name from meta data
+                    if (imageDict.ContainsKey ("path")) {
+                        texturePath = imageDict ["path"].AsString;
+                    }
+                }
+            } 
+            else 
+            {
+                var metadataDict = dict.ContainsKey ("metadata") ? dict ["metadata"].AsDictionary : null;
 
-				if (metadataDict != null) {
-					// try to read  texture file name from meta data
-					if (metadataDict.ContainsKey ("textureFileName")) {
-						texturePath = metadataDict ["textureFileName"].AsString;
-					}
-				}
-			}
+                if (metadataDict != null) {
+                    // try to read  texture file name from meta data
+                    if (metadataDict.ContainsKey ("textureFileName")) {
+                        texturePath = metadataDict ["textureFileName"].AsString;
+                    }
+                }
+            }
 
             if (!string.IsNullOrEmpty(texturePath))
             {
@@ -177,7 +177,7 @@ namespace CocosSharp
                 CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
-			plistFilePath = Path.GetDirectoryName (texturePath);
+            plistFilePath = Path.GetDirectoryName (texturePath);
 
             CCTexture2D pTexture = CCTextureCache.Instance.AddImage(texturePath);
 
@@ -196,10 +196,10 @@ namespace CocosSharp
             spriteFrames.Clear();
             spriteFramesAliases.Clear();
 
-			if (plistType == PlistType.SpriteKit)
-				LoadAppleDictionary (dict, texture);
-			else
-				LoadCocos2DDictionary(dict, texture);
+            if (plistType == PlistType.SpriteKit)
+                LoadAppleDictionary (dict, texture);
+            else
+                LoadCocos2DDictionary(dict, texture);
         }
 
         #endregion Constructors
@@ -230,221 +230,221 @@ namespace CocosSharp
         #region Loaders
 
         void LoadAppleDictionary(PlistDictionary dict, CCTexture2D texture)
-		{
+        {
 
-			var version = dict.ContainsKey ("version") ? dict ["version"].AsInt : 0; 
+            var version = dict.ContainsKey ("version") ? dict ["version"].AsInt : 0; 
 
-			if (version != 1)
-				throw (new NotSupportedException("Binary PList version " + version + " is not supported."));
-
-
-			var images = dict.ContainsKey ("images") ? dict ["images"].AsArray : null;
-
-			foreach (var imageEntry in images) 
-			{
-				// we only support one image for now
-				var imageDict = imageEntry.AsDictionary;
-
-				var path = imageDict ["path"].AsString;
-
-				path = Path.Combine(plistFilePath, CCFileUtils.RemoveExtension(path));
-
-				if (!CCTextureCache.Instance.Contains (path))
-					texture = CCTextureCache.Instance.AddImage (path);
-				else
-					texture = CCTextureCache.Instance[path];
+            if (version != 1)
+                throw (new NotSupportedException("Binary PList version " + version + " is not supported."));
 
 
+            var images = dict.ContainsKey ("images") ? dict ["images"].AsArray : null;
 
-				// size not used right now
-				//var size = CCSize.Parse(imageDict ["size"].AsString);
+            foreach (var imageEntry in images) 
+            {
+                // we only support one image for now
+                var imageDict = imageEntry.AsDictionary;
 
-				var subImages = imageDict ["subimages"].AsArray;
+                var path = imageDict ["path"].AsString;
 
-				foreach (var subImage in subImages) {
-					CCSpriteFrame spriteFrame = null;
+                path = Path.Combine(plistFilePath, CCFileUtils.RemoveExtension(path));
 
-					var subImageDict = subImage.AsDictionary;
-					var name = subImageDict ["name"].AsString;
-					var alias = subImageDict ["alias"].AsString;
-					var isFullyOpaque = true;
+                if (!CCTextureCache.Instance.Contains (path))
+                    texture = CCTextureCache.Instance.AddImage (path);
+                else
+                    texture = CCTextureCache.Instance[path];
 
-					if (subImageDict.ContainsKey ("isFullyOpaque"))
-						isFullyOpaque = subImageDict ["isFullyOpaque"].AsBool;
 
-					var textureRect = CCRect.Parse (subImageDict ["textureRect"].AsString);
-					var spriteOffset = CCPoint.Parse (subImageDict ["spriteOffset"].AsString);
 
-					// We are going to override the sprite offset for now to be 0,0
-					// It seems the offset is calculated off of the original size but if 
-					// we pass this offset it throws our center position calculations off.
-					spriteOffset = CCPoint.Zero;
+                // size not used right now
+                //var size = CCSize.Parse(imageDict ["size"].AsString);
 
-					var textureRotated = false;
-					if (subImageDict.ContainsKey ("textureRotated")) {
-						textureRotated = subImageDict ["textureRotated"].AsBool;
-					}
-					var spriteSourceSize = CCSize.Parse (subImageDict ["spriteSourceSize"].AsString);
-					var frameRect = textureRect;
-					if (textureRotated)
-						frameRect = new CCRect (textureRect.Origin.X, textureRect.Origin.Y, textureRect.Size.Height, textureRect.Size.Width);
+                var subImages = imageDict ["subimages"].AsArray;
 
-#if DEBUG
-					CCLog.Log ("texture {0} rect {1} rotated {2} offset {3}, sourcesize {4}", name, textureRect, textureRotated, spriteOffset, spriteSourceSize);
-#endif
+                foreach (var subImage in subImages) {
+                    CCSpriteFrame spriteFrame = null;
 
-					// create frame
-					spriteFrame = new CCSpriteFrame (
-                                texture,
-                                frameRect,
-                                spriteSourceSize,
-                                textureRotated,
-                                spriteOffset
-					);
+                    var subImageDict = subImage.AsDictionary;
+                    var name = subImageDict ["name"].AsString;
+                    var alias = subImageDict ["alias"].AsString;
+                    var isFullyOpaque = true;
+
+                    if (subImageDict.ContainsKey ("isFullyOpaque"))
+                        isFullyOpaque = subImageDict ["isFullyOpaque"].AsBool;
+
+                    var textureRect = CCRect.Parse (subImageDict ["textureRect"].AsString);
+                    var spriteOffset = CCPoint.Parse (subImageDict ["spriteOffset"].AsString);
+
+                    // We are going to override the sprite offset for now to be 0,0
+                    // It seems the offset is calculated off of the original size but if 
+                    // we pass this offset it throws our center position calculations off.
+                    spriteOffset = CCPoint.Zero;
+
+                    var textureRotated = false;
+                    if (subImageDict.ContainsKey ("textureRotated")) {
+                        textureRotated = subImageDict ["textureRotated"].AsBool;
+                    }
+                    var spriteSourceSize = CCSize.Parse (subImageDict ["spriteSourceSize"].AsString);
+                    var frameRect = textureRect;
+                    if (textureRotated)
+                        frameRect = new CCRect (textureRect.Origin.X, textureRect.Origin.Y, textureRect.Size.Height, textureRect.Size.Width);
+
+                    #if DEBUG
+                    CCLog.Log ("texture {0} rect {1} rotated {2} offset {3}, sourcesize {4}", name, textureRect, textureRotated, spriteOffset, spriteSourceSize);
+                    #endif
+
+                    // create frame
+                    spriteFrame = new CCSpriteFrame (
+                        texture,
+                        frameRect,
+                        spriteSourceSize,
+                        textureRotated,
+                        spriteOffset
+                    );
 
                     spriteFrame.TextureFilename = name;
-					spriteFrames [name] = spriteFrame;
-				}
-			}
+                    spriteFrames [name] = spriteFrame;
+                }
+            }
             AutoCreateAliasList();
-		}
+        }
 
         void LoadCocos2DDictionary(PlistDictionary dict, CCTexture2D texture)
-		{
-			
-			PlistDictionary metadataDict = null;
+        {
 
-			if (dict.ContainsKey("metadata"))
-			{
-				metadataDict = dict["metadata"].AsDictionary;
-			}
+            PlistDictionary metadataDict = null;
 
-			PlistDictionary framesDict = null;
-			if (dict.ContainsKey("frames"))
-			{
-				framesDict = dict["frames"].AsDictionary;
-			}
+            if (dict.ContainsKey("metadata"))
+            {
+                metadataDict = dict["metadata"].AsDictionary;
+            }
 
-			// get the format
-			int format = 0;
-			if (metadataDict != null)
-			{
-				format = metadataDict["format"].AsInt;
-			}
+            PlistDictionary framesDict = null;
+            if (dict.ContainsKey("frames"))
+            {
+                framesDict = dict["frames"].AsDictionary;
+            }
 
-			// check the format
-			if (format < 0 || format > 3)
-			{
-				throw (new NotSupportedException("PList format " + format + " is not supported."));
-			}
+            // get the format
+            int format = 0;
+            if (metadataDict != null)
+            {
+                format = metadataDict["format"].AsInt;
+            }
 
-			foreach (var pair in framesDict)
-			{
-				PlistDictionary frameDict = pair.Value.AsDictionary;
-				CCSpriteFrame spriteFrame = null;
+            // check the format
+            if (format < 0 || format > 3)
+            {
+                throw (new NotSupportedException("PList format " + format + " is not supported."));
+            }
 
-				if (format == 0)
-				{
-					float x = 0f, y = 0f, w = 0f, h = 0f;
-					x = frameDict["x"].AsFloat;
-					y = frameDict["y"].AsFloat;
-					w = frameDict["width"].AsFloat;
-					h = frameDict["height"].AsFloat;
-					float ox = 0f, oy = 0f;
-					ox = frameDict["offsetX"].AsFloat;
-					oy = frameDict["offsetY"].AsFloat;
-					int ow = 0, oh = 0;
-					ow = frameDict["originalWidth"].AsInt;
-					oh = frameDict["originalHeight"].AsInt;
-					// check ow/oh
-					if (ow == 0 || oh == 0)
-					{
-						CCLog.Log(
-							"cocos2d: WARNING: originalWidth/Height not found on the CCSpriteFrame. AnchorPoint won't work as expected. Regenerate the .plist or check the 'format' metatag");
-					}
-					// abs ow/oh
-					ow = Math.Abs(ow);
-					oh = Math.Abs(oh);
+            foreach (var pair in framesDict)
+            {
+                PlistDictionary frameDict = pair.Value.AsDictionary;
+                CCSpriteFrame spriteFrame = null;
 
-					// create frame
-					spriteFrame = new CCSpriteFrame(
-						texture,
-						new CCRect(x, y, w, h),
+                if (format == 0)
+                {
+                    float x = 0f, y = 0f, w = 0f, h = 0f;
+                    x = frameDict["x"].AsFloat;
+                    y = frameDict["y"].AsFloat;
+                    w = frameDict["width"].AsFloat;
+                    h = frameDict["height"].AsFloat;
+                    float ox = 0f, oy = 0f;
+                    ox = frameDict["offsetX"].AsFloat;
+                    oy = frameDict["offsetY"].AsFloat;
+                    int ow = 0, oh = 0;
+                    ow = frameDict["originalWidth"].AsInt;
+                    oh = frameDict["originalHeight"].AsInt;
+                    // check ow/oh
+                    if (ow == 0 || oh == 0)
+                    {
+                        CCLog.Log(
+                            "cocos2d: WARNING: originalWidth/Height not found on the CCSpriteFrame. AnchorPoint won't work as expected. Regenerate the .plist or check the 'format' metatag");
+                    }
+                    // abs ow/oh
+                    ow = Math.Abs(ow);
+                    oh = Math.Abs(oh);
+
+                    // create frame
+                    spriteFrame = new CCSpriteFrame(
+                        texture,
+                        new CCRect(x, y, w, h),
                         new CCSize(ow, oh),
-						false,
-						new CCPoint(ox, oy)
-						);
-				}
-				else if (format == 1 || format == 2)
-				{
-					var frame = CCRect.Parse(frameDict["frame"].AsString);
-					bool rotated = false;
+                        false,
+                        new CCPoint(ox, oy)
+                    );
+                }
+                else if (format == 1 || format == 2)
+                {
+                    var frame = CCRect.Parse(frameDict["frame"].AsString);
+                    bool rotated = false;
 
-					// rotation
-					if (format == 2)
-					{
-						if (frameDict.ContainsKey("rotated"))
-						{
-							rotated = frameDict["rotated"].AsBool;
-						}
-					}
+                    // rotation
+                    if (format == 2)
+                    {
+                        if (frameDict.ContainsKey("rotated"))
+                        {
+                            rotated = frameDict["rotated"].AsBool;
+                        }
+                    }
 
-					var offset = CCPoint.Parse(frameDict["offset"].AsString);
-					var sourceSize = CCSize.Parse(frameDict["sourceSize"].AsString);
+                    var offset = CCPoint.Parse(frameDict["offset"].AsString);
+                    var sourceSize = CCSize.Parse(frameDict["sourceSize"].AsString);
 
-					// create frame
+                    // create frame
                     spriteFrame = new CCSpriteFrame(texture, frame, sourceSize, rotated, offset);
-				}
-				else if (format == 3)
-				{
-					var spriteSize = CCSize.Parse(frameDict["spriteSize"].AsString);
-					var spriteOffset = CCPoint.Parse(frameDict["spriteOffset"].AsString);
-					var spriteSourceSize = CCSize.Parse(frameDict["spriteSourceSize"].AsString);
-					var textureRect = CCRect.Parse(frameDict["textureRect"].AsString);
+                }
+                else if (format == 3)
+                {
+                    var spriteSize = CCSize.Parse(frameDict["spriteSize"].AsString);
+                    var spriteOffset = CCPoint.Parse(frameDict["spriteOffset"].AsString);
+                    var spriteSourceSize = CCSize.Parse(frameDict["spriteSourceSize"].AsString);
+                    var textureRect = CCRect.Parse(frameDict["textureRect"].AsString);
 
-					bool textureRotated = false;
+                    bool textureRotated = false;
 
-					if (frameDict.ContainsKey("textureRotated"))
-					{
-						textureRotated = frameDict["textureRotated"].AsBool;
-					}
+                    if (frameDict.ContainsKey("textureRotated"))
+                    {
+                        textureRotated = frameDict["textureRotated"].AsBool;
+                    }
 
-					// get aliases
-					var aliases = frameDict["aliases"].AsArray;
+                    // get aliases
+                    var aliases = frameDict["aliases"].AsArray;
 
-					for (int i = 0; i < aliases.Count; i++ )
-					{
-						string oneAlias = aliases[i].AsString;
+                    for (int i = 0; i < aliases.Count; i++ )
+                    {
+                        string oneAlias = aliases[i].AsString;
 
-						if (spriteFramesAliases.ContainsKey(oneAlias))
-						{
-							if (spriteFramesAliases[oneAlias] != null)
-							{
-								CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
-							}
-						}
+                        if (spriteFramesAliases.ContainsKey(oneAlias))
+                        {
+                            if (spriteFramesAliases[oneAlias] != null)
+                            {
+                                CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
+                            }
+                        }
 
-						if (!spriteFramesAliases.ContainsKey(oneAlias))
-						{
-							spriteFramesAliases.Add(oneAlias, pair.Key);
-						}
-					}
+                        if (!spriteFramesAliases.ContainsKey(oneAlias))
+                        {
+                            spriteFramesAliases.Add(oneAlias, pair.Key);
+                        }
+                    }
 
-					// create frame
-					spriteFrame = new CCSpriteFrame(
-						texture,
-						new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
+                    // create frame
+                    spriteFrame = new CCSpriteFrame(
+                        texture,
+                        new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
                         spriteSourceSize,
-						textureRotated,
-						spriteOffset
-						);
-				}
+                        textureRotated,
+                        spriteOffset
+                    );
+                }
 
                 spriteFrame.TextureFilename = pair.Key;
-				spriteFrames[pair.Key] = spriteFrame;
-			}
+                spriteFrames[pair.Key] = spriteFrame;
+            }
             AutoCreateAliasList();
-		}
+        }
 
         #endregion Loaders
     }

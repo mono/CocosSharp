@@ -5,27 +5,27 @@ namespace CocosSharp
 {
     public class CCAnimation
     {
-		#region Properties
+        #region Properties
 
-		public bool RestoreOriginalFrame { get; set; }
-		public float DelayPerUnit { get; set; }
-		public float TotalDelayUnits { get; private set; }
-		public List<CCAnimationFrame> Frames { get; private set; }
-		public uint Loops { get; set; }
+        public bool RestoreOriginalFrame { get; set; }
+        public float DelayPerUnit { get; set; }
+        public float TotalDelayUnits { get; private set; }
+        public List<CCAnimationFrame> Frames { get; private set; }
+        public uint Loops { get; set; }
 
         public float Duration
         {
-			get { return TotalDelayUnits * DelayPerUnit; }
+            get { return TotalDelayUnits * DelayPerUnit; }
         }
 
-		#endregion Properties
+        #endregion Properties
 
 
         #region Constructors
 
         public CCAnimation() : this(new List<CCSpriteFrame>(), 0)
         { 
-		}
+        }
 
         public CCAnimation(CCSpriteSheet cs, string[] frames, float delay)
         {
@@ -40,7 +40,7 @@ namespace CocosSharp
             InitWithSpriteFrames(l, delay);
         }
 
-		public CCAnimation(CCSpriteSheet cs, float delay) : this(cs.Frames, delay)
+        public CCAnimation(CCSpriteSheet cs, float delay) : this(cs.Frames, delay)
         {
         }
 
@@ -57,40 +57,40 @@ namespace CocosSharp
 
         public CCAnimation (List<CCAnimationFrame> arrayOfAnimationFrameNames, float delayPerUnit, uint loops)
         {
-			DelayPerUnit = delayPerUnit;
-			Loops = loops;
+            DelayPerUnit = delayPerUnit;
+            Loops = loops;
 
-			Frames = new List<CCAnimationFrame>(arrayOfAnimationFrameNames);
+            Frames = new List<CCAnimationFrame>(arrayOfAnimationFrameNames);
 
-			float totalDelatUnits = 0.0f;
-			foreach (CCAnimationFrame frame in Frames) { totalDelatUnits += frame.DelayUnits; }
+            float totalDelatUnits = 0.0f;
+            foreach (CCAnimationFrame frame in Frames) { totalDelatUnits += frame.DelayUnits; }
 
-			TotalDelayUnits = totalDelatUnits;
+            TotalDelayUnits = totalDelatUnits;
         }
 
-		void InitWithSpriteFrames(List<CCSpriteFrame> frames, float delay)
+        void InitWithSpriteFrames(List<CCSpriteFrame> frames, float delay)
         {
             Loops = 1;
             DelayPerUnit = delay;
 
-			if (frames == null)
-				return;
-            
-			Frames = new List<CCAnimationFrame> (frames.Count);
-			foreach (var frame in frames)
-				Frames.Add (new CCAnimationFrame (frame, 1, null));
+            if (frames == null)
+                return;
+
+            Frames = new List<CCAnimationFrame> (frames.Count);
+            foreach (var frame in frames)
+                Frames.Add (new CCAnimationFrame (frame, 1, null));
             TotalDelayUnits = Frames.Count;
         }
 
-		public CCAnimation Copy()
-		{
-			return new CCAnimation(this);
-		}
+        public CCAnimation Copy()
+        {
+            return new CCAnimation(this);
+        }
 
         #endregion Constructors
 
 
-		public void AddSpriteFrame(CCSprite sprite)
+        public void AddSpriteFrame(CCSprite sprite)
         {
             CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
             AddSpriteFrame(f);
@@ -107,15 +107,15 @@ namespace CocosSharp
 
         public void AddSpriteFrame(string filename)
         {
-			var texture = CCTextureCache.Instance.AddImage(filename);
+            var texture = CCTextureCache.Instance.AddImage(filename);
             CCRect rect = CCRect.Zero;
-			rect.Size = texture.ContentSize;
-			AddSpriteFrame (new CCSpriteFrame (texture, rect));
+            rect.Size = texture.ContentSize;
+            AddSpriteFrame (new CCSpriteFrame (texture, rect));
         }
 
-		public void AddSpriteFrame(CCTexture2D texture, CCRect rect)
+        public void AddSpriteFrame(CCTexture2D texture, CCRect rect)
         {
-			AddSpriteFrame(new CCSpriteFrame(texture, rect));
+            AddSpriteFrame(new CCSpriteFrame(texture, rect));
         }
     }
 }

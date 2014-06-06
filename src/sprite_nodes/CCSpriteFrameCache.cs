@@ -8,7 +8,7 @@ namespace CocosSharp
 {
     public class CCSpriteFrameCache
     {
-		static CCSpriteFrameCache sharedSpriteFrameCache;
+        static CCSpriteFrameCache sharedSpriteFrameCache;
 
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
@@ -16,8 +16,8 @@ namespace CocosSharp
 
         #region Properties
 
-		// When false, an exception is thrown if an animation frame is overwritten.
-		public bool AllowFrameOverwrite { get; set; }
+        // When false, an exception is thrown if an animation frame is overwritten.
+        public bool AllowFrameOverwrite { get; set; }
 
         public static CCSpriteFrameCache Instance
         {
@@ -75,7 +75,7 @@ namespace CocosSharp
 
         #region Adding frames
 
-		internal void AddSpriteFrames(PlistDictionary pobDictionary, CCTexture2D pobTexture)
+        internal void AddSpriteFrames(PlistDictionary pobDictionary, CCTexture2D pobTexture)
         {
             /*
             Supported Zwoptex Formats:
@@ -141,15 +141,15 @@ namespace CocosSharp
                     oh = Math.Abs(oh);
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                            new CCRect(x, y, w, h),
-                                            new CCSize(ow, oh),
-                                            false,
-                                            new CCPoint(ox, oy)
-                        );
+                        new CCRect(x, y, w, h),
+                        new CCSize(ow, oh),
+                        false,
+                        new CCPoint(ox, oy)
+                    );
                 }
                 else if (format == 1 || format == 2)
                 {
-					CCRect frame = CCRect.Parse(frameDict["frame"].AsString);
+                    CCRect frame = CCRect.Parse(frameDict["frame"].AsString);
                     bool rotated = false;
 
                     // rotation
@@ -162,23 +162,23 @@ namespace CocosSharp
                     }
 
                     CCPoint offset = CCPoint.Parse(frameDict["offset"].AsString);
-					CCSize sourceSize = CCSize.Parse (frameDict["sourceSize"].AsString);
+                    CCSize sourceSize = CCSize.Parse (frameDict["sourceSize"].AsString);
 
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                                    frame,
-                                                    sourceSize,
-                                                    rotated,
-                                                    offset
-                                                
-                        );
+                        frame,
+                        sourceSize,
+                        rotated,
+                        offset
+
+                    );
                 }
                 else if (format == 3)
                 {
                     // get values
                     CCSize spriteSize = CCSize.Parse (frameDict["spriteSize"].AsString);
                     CCPoint spriteOffset = CCPoint.Parse(frameDict["spriteOffset"].AsString);
-					CCSize spriteSourceSize = CCSize.Parse (frameDict["spriteSourceSize"].AsString);
+                    CCSize spriteSourceSize = CCSize.Parse (frameDict["spriteSourceSize"].AsString);
                     CCRect textureRect = CCRect.Parse(frameDict["textureRect"].AsString);
                     bool textureRotated = false;
                     if (frameDict.ContainsKey("textureRotated"))
@@ -193,14 +193,14 @@ namespace CocosSharp
                     foreach (PlistObjectBase item2 in aliases)
                     {
                         string oneAlias = item2.AsString;
-						if (spriteFramesAliases.ContainsKey(oneAlias))
+                        if (spriteFramesAliases.ContainsKey(oneAlias))
                         {
                             if (spriteFramesAliases[oneAlias] != null)
                             {
                                 CCLog.Log("CocosSharp: WARNING: an alias with name {0} already exists", oneAlias);
                             }
                         }
-						if (!spriteFramesAliases.ContainsKey(oneAlias))
+                        if (!spriteFramesAliases.ContainsKey(oneAlias))
                         {
                             spriteFramesAliases.Add(oneAlias, frameKey);
                         }
@@ -208,11 +208,11 @@ namespace CocosSharp
 
                     // create frame
                     spriteFrame = new CCSpriteFrame(pobTexture,
-                                                    new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
-                                                    spriteSourceSize,
-                                                    textureRotated,
-                                                    spriteOffset
-                                                    );
+                        new CCRect(textureRect.Origin.X, textureRect.Origin.Y, spriteSize.Width, spriteSize.Height),
+                        spriteSourceSize,
+                        textureRotated,
+                        spriteOffset
+                    );
                 }
 
                 // add sprite frame
@@ -279,7 +279,7 @@ namespace CocosSharp
         public void AddSpriteFrames(string plistFileName, string textureFileName)
         {
             Debug.Assert(textureFileName != null);
-            
+
             CCTexture2D texture = CCTextureCache.Instance.AddImage(textureFileName);
 
             if (texture != null)

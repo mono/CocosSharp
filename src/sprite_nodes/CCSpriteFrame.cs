@@ -73,23 +73,23 @@ namespace CocosSharp
         protected CCSpriteFrame(CCSpriteFrame spriteFrame) 
             : this(spriteFrame.Texture, spriteFrame.rectInPixels, spriteFrame.OriginalSizeInPixels, 
                 spriteFrame.IsRotated, spriteFrame.offsetInPixels)
-		{
-		}
+        {
+        }
 
         public CCSpriteFrame(CCTexture2D pobTexture, CCRect rect) : this(pobTexture, rect.PointsToPixels(), rect.PointsToPixels().Size)
         {
         }
 
-		public CCSpriteFrame(CCTexture2D pobTexture, CCRect rectIn, CCSize originalSize, bool rotated=false, CCPoint? offsetIn=null)
+        public CCSpriteFrame(CCTexture2D pobTexture, CCRect rectIn, CCSize originalSize, bool rotated=false, CCPoint? offsetIn=null)
         {
             Texture = pobTexture;
 
             rectInPixels = rectIn;
             rect = rectIn.PixelsToPoints();
 
-			offsetInPixels = offsetIn ?? CCPoint.Zero;
-            
-			offset = offsetInPixels.PixelsToPoints();
+            offsetInPixels = offsetIn ?? CCPoint.Zero;
+
+            offset = offsetInPixels.PixelsToPoints();
             OriginalSizeInPixels = originalSize;
             OriginalSize = OriginalSizeInPixels.PixelsToPoints();
             IsRotated = rotated;

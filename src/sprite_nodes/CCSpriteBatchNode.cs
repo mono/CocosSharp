@@ -23,7 +23,7 @@ namespace CocosSharp
                 UpdateBlendFunc();
                 if (value != null)
                 {
-					ContentSize = value.ContentSize;
+                    ContentSize = value.ContentSize;
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace CocosSharp
                 elements[i].BatchNode = null;
             }
 
-			base.RemoveAllChildren(cleanup);
+            base.RemoveAllChildren(cleanup);
 
             Descendants.Clear();
             TextureAtlas.RemoveAllQuads();
