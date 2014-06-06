@@ -447,10 +447,10 @@ namespace CocosSharp
             get { return GetChildByTag(tag); }
         }
 
-        internal virtual CCDirector Director 
+        public virtual CCDirector Director 
         { 
             get { return director; }
-            set 
+            internal set 
             {
                 if (director != value && value != null) 
                 {

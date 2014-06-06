@@ -21,10 +21,10 @@ namespace CocosSharp
             }
         }
 
-        internal override CCDirector Director 
+        public override CCDirector Director 
         { 
             get { return base.Director; }
-            set 
+            internal set 
             {
                 base.Director = value;
 

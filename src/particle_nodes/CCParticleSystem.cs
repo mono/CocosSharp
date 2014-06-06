@@ -370,10 +370,10 @@ namespace CocosSharp
             set { radialMode.RotatePerSecondVar = value; }
         }
 
-        internal override CCDirector Director 
+        public override CCDirector Director 
         { 
             get { return base.Director; }
-            set 
+            internal set 
             {
                 if(Director != null && BatchNode != null) 
                 {

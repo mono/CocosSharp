@@ -18,10 +18,10 @@ namespace CocosSharp
             get { return true; }
         }
 
-        internal override CCDirector Director 
+        public override CCDirector Director 
         { 
             get { return InScene != null ? InScene.Director : null; }
-            set 
+            internal set 
             {
                 // Director is dependent on InScene
             }
