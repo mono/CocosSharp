@@ -452,21 +452,22 @@ namespace CocosSharp
             get { return director; }
             internal set 
             {
-                if (director != value && value != null) 
+                CCDirector prevDirector = director;
+
+                director = value;
+
+                // All the children should belong to same director
+                if (Children != null) 
                 {
-                    director = value;
-
-                    // All the children should belong to same director
-                    if (Children != null) 
+                    foreach (CCNode child in Children) 
                     {
-                        foreach (CCNode child in Children) 
-                        {
-                            child.Director = director;
-                        }
+                        child.Director = director;
                     }
-
-                    RunningOnNewWindow(value.WinSize);
                 }
+
+                // Only call if the director changed
+                if(prevDirector != director && director != null)
+                    RunningOnNewWindow(value.WinSize);
             }
         }
 
