@@ -11,7 +11,7 @@ namespace CocosSharp
 
         protected int NumOfItemsToRender { get; private set; }
         protected Dictionary<CCGridSize, int> PositionToAtlasIndex { get; private set; }
-		internal CCImageTGA TGAInfo { get; private set; }
+        internal CCImageTGA TGAInfo { get; private set; }
 
         #endregion Properties
 
@@ -36,7 +36,7 @@ namespace CocosSharp
 
             PositionToAtlasIndex = new Dictionary<CCGridSize, int>();
             UpdateAtlasValues();
-			ContentSize = new CCSize(TGAInfo.Width * ItemWidth, TGAInfo.Height * ItemHeight);
+            ContentSize = new CCSize(TGAInfo.Width * ItemWidth, TGAInfo.Height * ItemHeight);
         }
 
         // Just used during construction
@@ -46,7 +46,7 @@ namespace CocosSharp
 
             int itemsToRender = 0;
             var data = tgaInfo.ImageData;
-			for (int i = 0, count = tgaInfo.Width * tgaInfo.Height; i < count;  i++)
+            for (int i = 0, count = tgaInfo.Width * tgaInfo.Height; i < count;  i++)
             {
                 if (data[i].R != 0)
                 {
@@ -66,36 +66,36 @@ namespace CocosSharp
             PositionToAtlasIndex = null;
         }
 
-		public CCColor4B TileAt(CCGridSize position)
+        public CCColor4B TileAt(CCGridSize position)
         {
             Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
-			Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
-			Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.y");
+            Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
+            Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.y");
 
-			return new CCColor4B(TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width]);
+            return new CCColor4B(TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width]);
         }
 
-		public void SetTile(CCColor4B tile, CCGridSize position)
+        public void SetTile(CCColor4B tile, CCGridSize position)
         {
             Debug.Assert(TGAInfo != null, "tgaInfo must not be nil");
             Debug.Assert(PositionToAtlasIndex != null, "posToAtlasIndex must not be nil");
-			Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
-			Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.x");
+            Debug.Assert(position.X < TGAInfo.Width, "Invalid position.x");
+            Debug.Assert(position.Y < TGAInfo.Height, "Invalid position.x");
             Debug.Assert(tile.R != 0, "R component must be non 0");
 
-			Color value = TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width];
+            Color value = TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width];
             if (value.R == 0)
             {
                 CCLog.Log("CocosSharp: Value.r must be non 0.");
             }
             else
             {
-				TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width] = new Color(tile.R, tile.G, tile.B, tile.A);
+                TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width] = new Color(tile.R, tile.G, tile.B, tile.A);
 
                 // XXX: this method consumes a lot of memory
                 // XXX: a tree of something like that shall be impolemented
                 int num = PositionToAtlasIndex[position];
-				UpdateAtlasValueAt(position, tile.ToColor(), num);
+                UpdateAtlasValueAt(position, tile.ToColor(), num);
             }
         }
 
@@ -115,17 +115,17 @@ namespace CocosSharp
             float itemWidthInPixels = ItemWidth * CCMacros.CCContentScaleFactor();
             float itemHeightInPixels = ItemHeight * CCMacros.CCContentScaleFactor();
 
-#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+            #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
             float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
             float right       = left + (itemWidthInPixels * 2 - 2) / (2 * textureWide);
             float top         = (2 * col * itemHeightInPixels + 1) / (2 * textureHigh);
             float bottom      = top + (itemHeightInPixels * 2 - 2) / (2 * textureHigh);
-#else
+            #else
             float left = (row * itemWidthInPixels) / textureWide;
             float right = left + itemWidthInPixels / textureWide;
             float top = (col * itemHeightInPixels) / textureHigh;
             float bottom = top + itemHeightInPixels / textureHigh;
-#endif
+            #endif
 
             CCV3F_C4B_T2F_Quad quad = new CCV3F_C4B_T2F_Quad();
 
@@ -166,13 +166,13 @@ namespace CocosSharp
 
             int total = 0;
 
-			for (int x = 0; x < TGAInfo.Width; x++)
+            for (int x = 0; x < TGAInfo.Width; x++)
             {
-				for (int y = 0; y < TGAInfo.Height; y++)
+                for (int y = 0; y < TGAInfo.Height; y++)
                 {
                     if (total < NumOfItemsToRender)
                     {
-						Color value = TGAInfo.ImageData[x + y * TGAInfo.Width];
+                        Color value = TGAInfo.ImageData[x + y * TGAInfo.Width];
 
                         if (value.R != 0)
                         {

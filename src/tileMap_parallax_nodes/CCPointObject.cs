@@ -4,9 +4,9 @@ namespace CocosSharp
 {
     public class CCPointObject
     {
-		public CCNode Child { get; set; }
-		public CCPoint Offset { get; set; }
-		public CCPoint Ratio { get; set; }
+        public CCNode Child { get; set; }
+        public CCPoint Offset { get; set; }
+        public CCPoint Ratio { get; set; }
 
 
         #region Constructors

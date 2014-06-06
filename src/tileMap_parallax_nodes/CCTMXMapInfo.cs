@@ -11,7 +11,7 @@ namespace CocosSharp
     ///- Tile size
     ///- Map size
     ///
-    ///	And it also contains:
+    /// And it also contains:
     ///- Layers (an array of TMXLayerInfo objects)
     ///- Tilesets (an array of TMXTilesetInfo objects)
     ///- ObjectGroups (an array of TMXObjectGroupInfo objects)
@@ -20,48 +20,48 @@ namespace CocosSharp
     /// </summary>
     public class CCTMXMapInfo : ICCSAXDelegator
     {
-		// ivars
-		uint currentFirstGID;
+        // ivars
+        uint currentFirstGID;
 
 
-		#region properties
+        #region properties
 
-		public uint ParentGID { get; private set; }
-		public string TMXFileName { get; private set; }
+        public uint ParentGID { get; private set; }
+        public string TMXFileName { get; private set; }
 
-		public int Orientation { get; private set; }
-		public CCSize MapSize { get; private set; }
-		public CCSize TileSize { get; private set; }
+        public int Orientation { get; private set; }
+        public CCSize MapSize { get; private set; }
+        public CCSize TileSize { get; private set; }
 
-		public bool StoringCharacters { get; private set; }
-		internal int ParentElement { get; private set; }
-		protected int LayerAttribs { get; private set; }
-		internal virtual List<CCTMXLayerInfo> Layers { get; private set; }
-		internal virtual List<CCTMXTilesetInfo> Tilesets { get; private set; }
-		internal virtual List<CCTMXObjectGroup> ObjectGroups { get; private set; }
+        public bool StoringCharacters { get; private set; }
+        internal int ParentElement { get; private set; }
+        protected int LayerAttribs { get; private set; }
+        internal virtual List<CCTMXLayerInfo> Layers { get; private set; }
+        internal virtual List<CCTMXTilesetInfo> Tilesets { get; private set; }
+        internal virtual List<CCTMXObjectGroup> ObjectGroups { get; private set; }
 
-		internal Dictionary<string, string> Properties { get; private set; }
-		internal Dictionary<uint, Dictionary<string, string>> TileProperties { get; private set; }
-		internal byte[] CurrentString { get; private set; }
+        internal Dictionary<string, string> Properties { get; private set; }
+        internal Dictionary<uint, Dictionary<string, string>> TileProperties { get; private set; }
+        internal byte[] CurrentString { get; private set; }
 
         #endregion
 
 
         #region Constructors
 
-		public CCTMXMapInfo(string tmxFile) : this()
+        public CCTMXMapInfo(string tmxFile) : this()
         {
-			TMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFile);
-			ParseXmlFile(TMXFileName);
-		}
-
-		public CCTMXMapInfo(StreamReader stream) : this()
-        {
-			string data = stream.ReadToEnd();
-			ParseXmlString(data);
+            TMXFileName = CCFileUtils.FullPathFromRelativePath(tmxFile);
+            ParseXmlFile(TMXFileName);
         }
 
-		CCTMXMapInfo()
+        public CCTMXMapInfo(StreamReader stream) : this()
+        {
+            string data = stream.ReadToEnd();
+            ParseXmlString(data);
+        }
+
+        CCTMXMapInfo()
         {
             Tilesets = new List<CCTMXTilesetInfo>();
             Layers = new List<CCTMXLayerInfo>();
@@ -70,32 +70,32 @@ namespace CocosSharp
             TileProperties = new Dictionary<uint, Dictionary<string, string>>();
             LayerAttribs = (int) CCTMXLayerAttrib.None;
             ParentElement = (int) CCTMXProperty.None;
-			currentFirstGID = 0;
+            currentFirstGID = 0;
         }
 
-		bool ParseXmlString(string data)
-		{
-			var parser = new CCSAXParser();
+        bool ParseXmlString(string data)
+        {
+            var parser = new CCSAXParser();
 
-			parser.SetDelegator(this);
+            parser.SetDelegator(this);
 
-			return parser.ParseContent(data);
-		}
+            return parser.ParseContent(data);
+        }
 
-		// Initalises parsing of an XML file, either a tmx (Map) file or tsx (Tileset) file
-		bool ParseXmlFile(string xmlFilename)
-		{
-			var parser = new CCSAXParser();
+        // Initalises parsing of an XML file, either a tmx (Map) file or tsx (Tileset) file
+        bool ParseXmlFile(string xmlFilename)
+        {
+            var parser = new CCSAXParser();
 
-			parser.SetDelegator(this);
+            parser.SetDelegator(this);
 
-			return parser.ParseContentFile(xmlFilename);
-		}
+            return parser.ParseContentFile(xmlFilename);
+        }
 
         #endregion Constructors
 
 
-		#region ICCSAXDelegator methods
+        #region ICCSAXDelegator methods
 
         public void StartElement(object ctx, string name, string[] atts)
         {
@@ -147,15 +147,15 @@ namespace CocosSharp
             {
                 // If this is an external tileset then start parsing that
 
-				if (attributeDict.ContainsKey("source"))
+                if (attributeDict.ContainsKey("source"))
                 {
                     string externalTilesetFilename = attributeDict["source"];
 
                     externalTilesetFilename = CCFileUtils.FullPathFromRelativeFile(externalTilesetFilename, 
-						pTMXMapInfo.TMXFileName);
+                        pTMXMapInfo.TMXFileName);
 
                     currentFirstGID = uint.Parse(attributeDict["firstgid"]);
-                    
+
                     pTMXMapInfo.ParseXmlFile(externalTilesetFilename);
                 }
                 else
@@ -163,7 +163,7 @@ namespace CocosSharp
                     var tileset = new CCTMXTilesetInfo();
 
                     tileset.Name = attributeDict["name"];
-                    
+
                     if (currentFirstGID == 0)
                     {
                         tileset.FirstGid = uint.Parse(attributeDict["firstgid"]);
@@ -174,10 +174,10 @@ namespace CocosSharp
                         currentFirstGID = 0;
                     }
 
-					if (attributeDict.ContainsKey("spacing"))
+                    if (attributeDict.ContainsKey("spacing"))
                         tileset.Spacing = int.Parse(attributeDict["spacing"]);
 
-					if (attributeDict.ContainsKey("margin"))
+                    if (attributeDict.ContainsKey("margin"))
                         tileset.Margin = int.Parse(attributeDict["margin"]);
 
                     CCSize s;
@@ -190,9 +190,9 @@ namespace CocosSharp
             }
             else if (elementName == "tile")
             {
-				List<CCTMXTilesetInfo> tilesets = pTMXMapInfo.Tilesets;
-				int tilesetCount = tilesets != null ? tilesets.Count : 0;
-				CCTMXTilesetInfo info = tilesetCount > 0 ? tilesets[tilesetCount - 1] : null;
+                List<CCTMXTilesetInfo> tilesets = pTMXMapInfo.Tilesets;
+                int tilesetCount = tilesets != null ? tilesets.Count : 0;
+                CCTMXTilesetInfo info = tilesetCount > 0 ? tilesets[tilesetCount - 1] : null;
                 var dict = new Dictionary<string, string>();
                 pTMXMapInfo.ParentGID = (info.FirstGid + uint.Parse(attributeDict["id"]));
                 pTMXMapInfo.TileProperties.Add(pTMXMapInfo.ParentGID, dict);
@@ -211,7 +211,7 @@ namespace CocosSharp
 
                 layer.Tiles = new uint[(int) s.Width * (int) s.Height];
 
-				if (attributeDict.ContainsKey("visible"))
+                if (attributeDict.ContainsKey("visible"))
                 {
                     string visible = attributeDict["visible"];
                     layer.Visible = !(visible == "0");
@@ -221,7 +221,7 @@ namespace CocosSharp
                     layer.Visible = true;
                 }
 
-				if (attributeDict.ContainsKey("opacity"))
+                if (attributeDict.ContainsKey("opacity"))
                 {
                     string opacity = attributeDict["opacity"];
                     layer.Opacity = (byte) (255 * CCUtils.CCParseFloat(opacity));
@@ -231,8 +231,8 @@ namespace CocosSharp
                     layer.Opacity = 255;
                 }
 
-				float x = attributeDict.ContainsKey("x") ? CCUtils.CCParseFloat(attributeDict["x"]) : 0;
-				float y = attributeDict.ContainsKey("y") ? CCUtils.CCParseFloat(attributeDict["y"]) : 0;
+                float x = attributeDict.ContainsKey("x") ? CCUtils.CCParseFloat(attributeDict["x"]) : 0;
+                float y = attributeDict.ContainsKey("y") ? CCUtils.CCParseFloat(attributeDict["y"]) : 0;
                 layer.Offset = new CCPoint(x, y);
 
                 pTMXMapInfo.Layers.Add(layer);
@@ -259,9 +259,9 @@ namespace CocosSharp
             }
             else if (elementName == "image")
             {
-				List<CCTMXTilesetInfo> tilesets = pTMXMapInfo.Tilesets;
-				int tilesetCount = tilesets != null ? tilesets.Count : 0;
-				CCTMXTilesetInfo tileset = tilesetCount > 0 ? tilesets[tilesetCount - 1] : null;
+                List<CCTMXTilesetInfo> tilesets = pTMXMapInfo.Tilesets;
+                int tilesetCount = tilesets != null ? tilesets.Count : 0;
+                CCTMXTilesetInfo tileset = tilesetCount > 0 ? tilesets[tilesetCount - 1] : null;
 
                 // build full path
                 string imagename = attributeDict["source"];
@@ -291,13 +291,13 @@ namespace CocosSharp
                     Debug.Assert(compression == "" || compression == "gzip" || compression == "zlib", "TMX: unsupported compression method");
                 }
                 Debug.Assert(pTMXMapInfo.LayerAttribs != (int) CCTMXLayerAttrib.None,
-                             "TMX tile map: Only base64 and/or gzip/zlib maps are supported");
+                    "TMX tile map: Only base64 and/or gzip/zlib maps are supported");
             }
             else if (elementName == "object")
             {
-				List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
-				int objectGroupCount = objectGroups != null ? objectGroups.Count : 0;
-				CCTMXObjectGroup objectGroup = objectGroupCount > 0 ? objectGroups[objectGroupCount - 1] : null;
+                List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
+                int objectGroupCount = objectGroups != null ? objectGroups.Count : 0;
+                CCTMXObjectGroup objectGroup = objectGroupCount > 0 ? objectGroups[objectGroupCount - 1] : null;
 
                 // The value for "type" was blank or not a valid class name
                 // Create an instance of TMXObjectInfo to store the object and its properties
@@ -337,7 +337,7 @@ namespace CocosSharp
                 if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.None)
                 {
                     CCLog.Log("TMX tile map: Parent element is unsupported. Cannot add property named '{0}' with value '{1}'",
-                              attributeDict["name"], attributeDict["value"]);
+                        attributeDict["name"], attributeDict["value"]);
                 }
                 else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Map)
                 {
@@ -349,9 +349,9 @@ namespace CocosSharp
                 else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Layer)
                 {
                     // The parent element is the last layer
-					List<CCTMXLayerInfo> layers = pTMXMapInfo.Layers;
-					int layersCount = layers != null ? layers.Count : 0;
-					CCTMXLayerInfo layer = layersCount > 0 ? layers[layersCount - 1] : null;
+                    List<CCTMXLayerInfo> layers = pTMXMapInfo.Layers;
+                    int layersCount = layers != null ? layers.Count : 0;
+                    CCTMXLayerInfo layer = layersCount > 0 ? layers[layersCount - 1] : null;
 
                     string value = attributeDict["value"];
                     string key = attributeDict["name"];
@@ -361,9 +361,9 @@ namespace CocosSharp
                 else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.ObjectGroup)
                 {
                     // The parent element is the last object group
-					List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
-					int objGroupsCount = objectGroups != null ? objectGroups.Count : 0;
-					CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? objectGroups[objGroupsCount - 1] : null;
+                    List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
+                    int objGroupsCount = objectGroups != null ? objectGroups.Count : 0;
+                    CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? objectGroups[objGroupsCount - 1] : null;
                     string value = attributeDict["value"];
                     string key = attributeDict["name"];
                     objectGroup.Properties.Add(key, value);
@@ -371,13 +371,13 @@ namespace CocosSharp
                 else if (pTMXMapInfo.ParentElement == (int) CCTMXProperty.Object)
                 {
                     // The parent element is the last object
-					List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
-					int objGroupsCount = objectGroups != null ? objectGroups.Count : 0;
-					CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? objectGroups[objGroupsCount - 1] : null;
-                    
-					List<Dictionary<string, string>> objects = objectGroup.Objects;
-					int objCount = objects != null ? objects.Count : 0;
-					Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
+                    List<CCTMXObjectGroup> objectGroups = pTMXMapInfo.ObjectGroups;
+                    int objGroupsCount = objectGroups != null ? objectGroups.Count : 0;
+                    CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? objectGroups[objGroupsCount - 1] : null;
+
+                    List<Dictionary<string, string>> objects = objectGroup.Objects;
+                    int objCount = objects != null ? objects.Count : 0;
+                    Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
 
                     string propertyName = attributeDict["name"];
                     string propertyValue = attributeDict["value"];
@@ -395,12 +395,12 @@ namespace CocosSharp
             else if (elementName == "polygon")
             {
                 // find parent object's dict and add polygon-points to it
-				int objGroupsCount = ObjectGroups != null ? ObjectGroups.Count : 0;
-				CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? ObjectGroups[objGroupsCount - 1] : null;
+                int objGroupsCount = ObjectGroups != null ? ObjectGroups.Count : 0;
+                CCTMXObjectGroup objectGroup = objGroupsCount > 0 ? ObjectGroups[objGroupsCount - 1] : null;
 
-				List<Dictionary<string, string>> objects = objectGroup.Objects;
-				int objCount = objects != null ? objects.Count : 0;
-				Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
+                List<Dictionary<string, string>> objects = objectGroup.Objects;
+                int objCount = objects != null ? objects.Count : 0;
+                Dictionary<string, string> dict = objCount > 0 ? objects[objCount -1] : null;
 
                 // get points value string
                 var value = attributeDict["points"];
@@ -440,9 +440,9 @@ namespace CocosSharp
             {
                 pTMXMapInfo.StoringCharacters = false;
 
-				List<CCTMXLayerInfo> layers = pTMXMapInfo.Layers;
-				int layersCount = layers != null ? layers.Count : 0;
-				CCTMXLayerInfo layer = layersCount > 0 ? layers[layersCount - 1] : null;
+                List<CCTMXLayerInfo> layers = pTMXMapInfo.Layers;
+                int layersCount = layers != null ? layers.Count : 0;
+                CCTMXLayerInfo layer = layersCount > 0 ? layers[layersCount - 1] : null;
 
                 if ((pTMXMapInfo.LayerAttribs & ((int) (CCTMXLayerAttrib.Gzip) | (int) CCTMXLayerAttrib.Zlib)) != 0)
                 {
@@ -451,7 +451,7 @@ namespace CocosSharp
                     {
                         try
                         {
-							encoded = ZipUtils.Inflate(new MemoryStream(pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Gzip);
+                            encoded = ZipUtils.Inflate(new MemoryStream(pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Gzip);
                         }
                         catch (Exception ex)
                         {
@@ -463,7 +463,7 @@ namespace CocosSharp
                     //zlib
                     if ((pTMXMapInfo.LayerAttribs & (int) CCTMXLayerAttrib.Zlib) != 0)
                     {
-						encoded = ZipUtils.Inflate (new MemoryStream (pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Zlib);
+                        encoded = ZipUtils.Inflate (new MemoryStream (pTMXMapInfo.CurrentString), ZipUtils.CompressionFormat.Zlib);
                     }
                 }
                 else
@@ -475,10 +475,10 @@ namespace CocosSharp
                 {
                     int i4 = i * 4;
                     var gid = (uint) (
-                                         encoded[i4] |
-                                         encoded[i4 + 1] << 8 |
-                                         encoded[i4 + 2] << 16 |
-                                         encoded[i4 + 3] << 24);
+                        encoded[i4] |
+                        encoded[i4 + 1] << 8 |
+                        encoded[i4 + 2] << 16 |
+                        encoded[i4 + 3] << 24);
 
                     layer.Tiles[i] = gid;
                 }
@@ -507,7 +507,7 @@ namespace CocosSharp
             }
         }
 
-		public void TextHandler(object ctx, byte[] ch, int len)
+        public void TextHandler(object ctx, byte[] ch, int len)
         {
             CCTMXMapInfo pTMXMapInfo = this;
 
@@ -517,6 +517,6 @@ namespace CocosSharp
             }
         }
 
-		#endregion ICCSAXDelegator methods
+        #endregion ICCSAXDelegator methods
     }
 }

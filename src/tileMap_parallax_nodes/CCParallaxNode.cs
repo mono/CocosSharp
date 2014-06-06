@@ -17,7 +17,7 @@ namespace CocosSharp
         {
             get 
             {
-				CCPoint ret = Position;
+                CCPoint ret = Position;
                 CCNode parent = this;
                 while ((parent = parent.Parent) != null) 
                 {
@@ -58,7 +58,7 @@ namespace CocosSharp
 
             base.Visit();
         }
-            
+
 
         #region Child management
 
@@ -75,7 +75,7 @@ namespace CocosSharp
 
             ParallaxArray.Add(obj);
 
-			CCPoint pos = Position;
+            CCPoint pos = Position;
             pos *= (ratio + offset); 
             child.Position = pos;
 
@@ -99,9 +99,9 @@ namespace CocosSharp
         public override void RemoveAllChildren(bool cleanup)
         {
             ParallaxArray.Clear();
-			base.RemoveAllChildren(cleanup);
+            base.RemoveAllChildren(cleanup);
         }
-            
+
         #endregion Child management
     }
 }
