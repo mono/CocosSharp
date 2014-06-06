@@ -73,12 +73,12 @@ namespace CocosSharp
         bool isNeedsInit = true;
         CCScene nextScene;
 
-#if !NETFX_CORE
+        #if !NETFX_CORE
         public CCAccelerometer Accelerometer { get; set; }
         const string storageDirName = "CocosSharpDirector";
         const string saveFileName = "SceneList.dat";
         const string sceneSaveFileName = "Scene{0}.dat";
-#endif
+        #endif
         public CCEventDispatcher EventDispatcher { get; private set; }
         CCEventCustom eventAfterDraw;
         CCEventCustom eventAfterVisit;
@@ -266,7 +266,7 @@ namespace CocosSharp
 
             // stats
             Stats = new CCStats ();
-            
+
             // paused ?
             IsPaused = false;
 
@@ -281,11 +281,11 @@ namespace CocosSharp
 
             // scheduler
             Scheduler = new CCScheduler();
-            
+
             // action manager
             ActionManager = new CCActionManager();
             Scheduler.Schedule (ActionManager, CCSchedulePriority.System, false);
-            
+
             // EventDispatcher
             EventDispatcher = new CCEventDispatcher ();
 
@@ -316,8 +316,8 @@ namespace CocosSharp
 
 
         #region State Management
-		
-#if !NETFX_CORE
+
+        #if !NETFX_CORE
 
         /// <summary>
         /// Write out the current state of the director and all of its scenes.
@@ -348,71 +348,71 @@ namespace CocosSharp
                     using (IsolatedStorageFileStream stream = storage.OpenFile(Path.Combine(storageDirName, saveFileName), FileMode.OpenOrCreate))
                     {
                         using (StreamWriter writer = new StreamWriter(stream))
-                    {
-                        // write out the full name of all the types in our stack so we can
-                        // recreate them if needed.
-                        foreach (CCScene scene in scenesStack)
                         {
-                            if (scene.IsSerializable)
+                            // write out the full name of all the types in our stack so we can
+                            // recreate them if needed.
+                            foreach (CCScene scene in scenesStack)
                             {
+                                if (scene.IsSerializable)
+                                {
                                     writer.WriteLine(scene.GetType().AssemblyQualifiedName);
                                 }
                                 else
                                 {
                                     CCLog.Log("Scene is not serializable: " + scene.GetType().FullName);
+                                }
                             }
-                        }
-                        // Write out our local state
-                        if (RunningScene != null && RunningScene.IsSerializable)
-                        {
+                            // Write out our local state
+                            if (RunningScene != null && RunningScene.IsSerializable)
+                            {
                                 writer.WriteLine("m_pRunningScene");
                                 writer.WriteLine(RunningScene.GetType().AssemblyQualifiedName);
+                            }
+                            // Add my own state 
+                            // [*]name=value
+                            //
+
                         }
-                        // Add my own state 
-                        // [*]name=value
-                        //
-
                     }
-                }
 
-                // now we create a new file stream for each screen so it can save its state
-                // if it needs to. we name each file "ScreenX.dat" where X is the index of
-                // the screen in the stack, to ensure the files are uniquely named
-                int screenIndex = 0;
-                string fileName = null;
-                foreach (CCScene scene in scenesStack)
-                {
-                    if (scene.IsSerializable)
+                    // now we create a new file stream for each screen so it can save its state
+                    // if it needs to. we name each file "ScreenX.dat" where X is the index of
+                    // the screen in the stack, to ensure the files are uniquely named
+                    int screenIndex = 0;
+                    string fileName = null;
+                    foreach (CCScene scene in scenesStack)
                     {
-                        fileName = string.Format(Path.Combine(storageDirName, sceneSaveFileName), screenIndex);
+                        if (scene.IsSerializable)
+                        {
+                            fileName = string.Format(Path.Combine(storageDirName, sceneSaveFileName), screenIndex);
 
+                            // open up the stream and let the screen serialize whatever state it wants
+                            using (IsolatedStorageFileStream stream = storage.CreateFile(fileName))
+                            {
+                                scene.Serialize(stream);
+                            }
+
+                            screenIndex++;
+                        }
+                    }
+                    // Write the current running scene
+                    if (RunningScene != null && RunningScene.IsSerializable)
+                    {
+                        fileName = string.Format(Path.Combine(storageDirName, sceneSaveFileName), "XX");
                         // open up the stream and let the screen serialize whatever state it wants
                         using (IsolatedStorageFileStream stream = storage.CreateFile(fileName))
                         {
-                            scene.Serialize(stream);
+                            RunningScene.Serialize(stream);
                         }
-
-                        screenIndex++;
                     }
                 }
-                // Write the current running scene
-                if (RunningScene != null && RunningScene.IsSerializable)
-                {
-                    fileName = string.Format(Path.Combine(storageDirName, sceneSaveFileName), "XX");
-                    // open up the stream and let the screen serialize whatever state it wants
-                    using (IsolatedStorageFileStream stream = storage.CreateFile(fileName))
-                    {
-                        RunningScene.Serialize(stream);
-                    }
-                }
-            }
                 catch (Exception ex)
                 {
                     CCLog.Log("Failed to serialize the CCDirector state. Erasing the save files.");
                     CCLog.Log(ex.ToString());
                     DeleteState(storage);
                 }
-        }
+            }
         }
 
         private void DeserializeMyState(string name, string v)
@@ -424,30 +424,30 @@ namespace CocosSharp
         {
             try
             {
-            // open up isolated storage
-            using (IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication())
-            {
-                // see if our saved state directory exists
-                if (storage.DirectoryExists(storageDirName))
+                // open up isolated storage
+                using (IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication())
                 {
-                    string saveFile = System.IO.Path.Combine(storageDirName, saveFileName);
-                    try
+                    // see if our saved state directory exists
+                    if (storage.DirectoryExists(storageDirName))
                     {
-                            CCLog.Log("Loading director data file: {0}", saveFile);
-                        // see if we have a screen list
-                        if (storage.FileExists(saveFile))
+                        string saveFile = System.IO.Path.Combine(storageDirName, saveFileName);
+                        try
                         {
-                            // load the list of screen types
-                            using (IsolatedStorageFileStream stream = storage.OpenFile(saveFile, FileMode.Open, FileAccess.Read))
+                            CCLog.Log("Loading director data file: {0}", saveFile);
+                            // see if we have a screen list
+                            if (storage.FileExists(saveFile))
                             {
-                                    using (StreamReader reader = new StreamReader(stream))
+                                // load the list of screen types
+                                using (IsolatedStorageFileStream stream = storage.OpenFile(saveFile, FileMode.Open, FileAccess.Read))
                                 {
+                                    using (StreamReader reader = new StreamReader(stream))
+                                    {
                                         CCLog.Log("Director save file contains {0} bytes.", reader.BaseStream.Length);
                                         try
                                         {
                                             while (true)
-                                    {
-                                        // read a line from our file
+                                            {
+                                                // read a line from our file
                                                 string line = reader.ReadLine();
                                                 if (line == null)
                                                 {
@@ -455,26 +455,26 @@ namespace CocosSharp
                                                 }
                                                 CCLog.Log("Restoring: {0}", line);
 
-                                        // if it isn't blank, we can create a screen from it
-                                        if (!string.IsNullOrEmpty(line))
-                                        {
-                                            if (line.StartsWith("[*]"))
-                                            {
-                                                // Reading my state
-                                                string s = line.Substring(3);
-                                                int idx = s.IndexOf('=');
-                                                if (idx > -1)
+                                                // if it isn't blank, we can create a screen from it
+                                                if (!string.IsNullOrEmpty(line))
                                                 {
-                                                    string name = s.Substring(0, idx);
-                                                    string v = s.Substring(idx + 1);
+                                                    if (line.StartsWith("[*]"))
+                                                    {
+                                                        // Reading my state
+                                                        string s = line.Substring(3);
+                                                        int idx = s.IndexOf('=');
+                                                        if (idx > -1)
+                                                        {
+                                                            string name = s.Substring(0, idx);
+                                                            string v = s.Substring(idx + 1);
                                                             CCLog.Log("Restoring: {0} = {1}", name, v);
-                                                    DeserializeMyState(name, v);
-                                                }
-                                            }
-                                            else
-                                            {
-                                                Type screenType = Type.GetType(line);
-                                                CCScene scene = Activator.CreateInstance(screenType) as CCScene;
+                                                            DeserializeMyState(name, v);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        Type screenType = Type.GetType(line);
+                                                        CCScene scene = Activator.CreateInstance(screenType) as CCScene;
                                                         PushScene(scene);
                                                         //                                                    m_pobScenesStack.Add(scene);
                                                     }
@@ -485,48 +485,48 @@ namespace CocosSharp
                                         {
                                             // EndOfStreamException
                                             // this is OK here.
+                                        }
                                     }
                                 }
+                                // Now we deserialize our own state.
                             }
-                            // Now we deserialize our own state.
-                        }
                             else
                             {
                                 CCLog.Log("save file does not exist.");
                             }
 
-                        // next we give each screen a chance to deserialize from the disk
-                        for (int i = 0; i < scenesStack.Count; i++)
-                        {
+                            // next we give each screen a chance to deserialize from the disk
+                            for (int i = 0; i < scenesStack.Count; i++)
+                            {
                                 string filename = System.IO.Path.Combine(storageDirName, string.Format(sceneSaveFileName, i));
                                 if (storage.FileExists(filename))
                                 {
-                            using (IsolatedStorageFileStream stream = storage.OpenFile(filename, FileMode.Open, FileAccess.Read))
-                            {
+                                    using (IsolatedStorageFileStream stream = storage.OpenFile(filename, FileMode.Open, FileAccess.Read))
+                                    {
                                         CCLog.Log("Restoring state for scene {0}", filename);
-                                scenesStack[i].Deserialize(stream);
+                                        scenesStack[i].Deserialize(stream);
+                                    }
+                                }
                             }
-                        }
-                            }
-                        if (scenesStack.Count > 0)
-                        {
+                            if (scenesStack.Count > 0)
+                            {
                                 CCLog.Log("Director is running with scene..");
 
-                            RunWithScene(scenesStack[scenesStack.Count - 1]); // always at the top of the stack
+                                RunWithScene(scenesStack[scenesStack.Count - 1]); // always at the top of the stack
+                            }
+                            return (scenesStack.Count > 0 && RunningScene != null);
                         }
-                        return (scenesStack.Count > 0 && RunningScene != null);
-                    }
                         catch (Exception ex)
-                    {
-                        // if an exception was thrown while reading, odds are we cannot recover
-                        // from the saved state, so we will delete it so the game can correctly
-                        // launch.
-                        DeleteState(storage);
+                        {
+                            // if an exception was thrown while reading, odds are we cannot recover
+                            // from the saved state, so we will delete it so the game can correctly
+                            // launch.
+                            DeleteState(storage);
                             CCLog.Log("Failed to deserialize the director state, removing old storage file.");
                             CCLog.Log(ex.ToString());
+                        }
                     }
                 }
-            }
             }
             catch (Exception ex)
             {
@@ -549,7 +549,7 @@ namespace CocosSharp
                 storage.DeleteFile(Path.Combine(storageDirName, file));
             }
         }
-#endif
+        #endif
         #endregion
 
         public void SetViewport()
@@ -576,7 +576,7 @@ namespace CocosSharp
         {
             // Start stats measuring
             Stats.UpdateStart ();
-            
+
             if (!IsPaused)
             {
                 if (IsNextDeltaTimeZero)
@@ -592,7 +592,7 @@ namespace CocosSharp
                 // In Seconds
                 Scheduler.Update(deltaTime);
                 if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE));
-                    EventDispatcher.DispatchEvent(eventAfterUpdate);
+                EventDispatcher.DispatchEvent(eventAfterUpdate);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.
@@ -772,7 +772,7 @@ namespace CocosSharp
         public void ResumeFromBackground()
         {
             Resume();
-            
+
             if (RunningScene != null)
             {
                 bool runningIsTransition = RunningScene is CCTransitionScene;
@@ -931,27 +931,27 @@ namespace CocosSharp
                 End();
                 return;
             }
-            
+
             // current level or lower -> nothing
             if (level >= c)
                 return;
-            
+
             // pop stack until reaching desired level
             while (c > level)
             {
                 var current = scenesStack[scenesStack.Count - 1];
-                
+
                 if (current.IsRunning)
                 {
                     current.OnExitTransitionDidStart();
                     current.OnExit();
                 }
-                
+
                 current.Cleanup();
                 scenesStack.RemoveAt(scenesStack.Count - 1);
                 c--;
             }
-            
+
             nextScene = scenesStack[scenesStack.Count - 1];
             IsSendCleanupToScene = false;
         }
@@ -982,11 +982,7 @@ namespace CocosSharp
 
             if (!runningIsTransition && RunningScene != null)
             {
-                if(RunningScene.Director != this) 
-                {
-                    RunningScene.Director = this;
-                }
-
+                RunningScene.Director = this;
                 RunningScene.OnEnter();
                 RunningScene.OnEnterTransitionDidFinish();
             }
