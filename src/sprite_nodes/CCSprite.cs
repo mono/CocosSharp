@@ -340,6 +340,20 @@ namespace CocosSharp
             }
         }
 
+        public override CCDirector Director 
+        { 
+            get { return base.Director; }
+            internal set 
+            {
+                base.Director = value;
+
+                if (value != null && BatchNode != null)
+                {
+                    BatchNode.Director = value;
+                }
+            }
+        }
+
         #endregion Properties
 
 
