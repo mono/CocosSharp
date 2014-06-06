@@ -24,7 +24,7 @@ namespace CocosSharp
         uint currentFirstGID;
 
 
-        #region properties
+        #region Properties
 
         public uint ParentGID { get; private set; }
         public string TMXFileName { get; private set; }

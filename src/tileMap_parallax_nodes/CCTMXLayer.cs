@@ -16,7 +16,6 @@ namespace CocosSharp
         uint minGID;
 
         byte opacity;
-        float contentScaleFactor;
 
         List<int> atlasIndexArray;
         CCSprite reusedTile;
@@ -28,12 +27,26 @@ namespace CocosSharp
 
         public CCTMXOrientation LayerOrientation { get; set; }          // Should be same as map orientation
         public CCSize LayerSize { get; set; }
-        public CCSize MapTileSize { get; set; }                                         // Size of the map's tile (could be differnt from the tile's size)
+        public CCSize MapTileSize { get; set; }                         // Size of the map's tile (could be differnt from the tile's size)
 
         public uint[] Tiles { get; set; }
         public CCTMXTilesetInfo TileSet { get; set; }
 
         public Dictionary<string, string> Properties { get; set; }      // Properties of the tmx layer
+
+        public virtual CCDirector Director 
+        { 
+            get { return base.Director; }
+            internal set 
+            {
+                base.Director = value;
+
+                if(value != null && reusedTile != null)
+                {
+                    reusedTile.Director = value;
+                }
+            }
+        }
 
         #endregion Properties
 
@@ -71,7 +84,6 @@ namespace CocosSharp
             maxGID = layerInfo.MaxGID;
             opacity = layerInfo.Opacity;
             Properties = new Dictionary<string, string>(layerInfo.Properties);
-            contentScaleFactor = CCDirector.SharedDirector.ContentScaleFactor;
 
             // TileSetInfo
             TileSet = tileSetInfo;
@@ -96,6 +108,7 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
 
         public virtual void ReleaseMap()
         {
@@ -168,6 +181,7 @@ namespace CocosSharp
 
             CCDrawManager.PopEffect();
         }
+
 
         #region Child managment
 
@@ -266,6 +280,7 @@ namespace CocosSharp
 
                     tile = new CCSprite(Texture, rect);
                     tile.BatchNode = this;
+                    tile.Director = Director;
                     tile.Position = PositionAt(pos);
                     tile.VertexZ = VertexZForPos(pos);
                     tile.AnchorPoint = CCPoint.Zero;
@@ -535,6 +550,7 @@ namespace CocosSharp
 
         CCSprite UpdateTileForGID(uint gid, CCPoint tileCoord)
         {
+            float contentScaleFactor = Director.ContentScaleFactor;
             CCRect rect = TileSet.RectForGID(gid);
             rect = new CCRect(rect.Origin.X / contentScaleFactor, rect.Origin.Y / contentScaleFactor, rect.Size.Width / contentScaleFactor,
                 rect.Size.Height / contentScaleFactor);
@@ -619,6 +635,7 @@ namespace CocosSharp
                 reusedTile = new CCSprite();
                 reusedTile.InitWithTexture(TextureAtlas.Texture, rect, false);
                 reusedTile.BatchNode = this;
+                reusedTile.Director = Director;
             }
             else
             {
