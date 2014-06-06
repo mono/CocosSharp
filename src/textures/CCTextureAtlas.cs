@@ -46,7 +46,7 @@ namespace CocosSharp
     ///</remarks>
     public class CCTextureAtlas 
     {
-		CCQuadVertexBuffer vertexBuffer;
+        CCQuadVertexBuffer vertexBuffer;
 
 
         #region Properties
@@ -68,11 +68,11 @@ namespace CocosSharp
             set { Quads.Capacity = value; }
         }
 
-		public bool IsAntialiased
-		{
-			get { return Texture.IsAntialiased; }
-			set { Texture.IsAntialiased = value; }
-		}
+        public bool IsAntialiased
+        {
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
 
         #endregion Properties
 
@@ -121,7 +121,7 @@ namespace CocosSharp
         {
             DrawNumberOfQuads(n, 0);
         }
-           
+
         // draws n quads from an index (offset).
         // n + start can't be greater than the capacity of the atlas
         public void DrawNumberOfQuads(int n, int start)

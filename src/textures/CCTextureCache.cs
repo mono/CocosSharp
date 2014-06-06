@@ -11,25 +11,25 @@ namespace CocosSharp
 
         struct AsyncStruct
         {
-			public string  FileName { get; set; }
-			public Action<CCTexture2D> Action { get; set; }
+            public string  FileName { get; set; }
+            public Action<CCTexture2D> Action { get; set; }
         }
 
-		struct DataAsyncStruct
-		{
-			public byte[] Data { get; set; }
-			public string AssetName { get; set; }
-			public CCSurfaceFormat Format { get; set; }
-			public Action<CCTexture2D> Action { get; set; }
-		}
+        struct DataAsyncStruct
+        {
+            public byte[] Data { get; set; }
+            public string AssetName { get; set; }
+            public CCSurfaceFormat Format { get; set; }
+            public Action<CCTexture2D> Action { get; set; }
+        }
 
         #endregion Structs
 
 
         static CCTextureCache sharedTextureCache;
 
-		List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
-		List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
+        List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
+        List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
 
         readonly object dictLock = new object();
         protected Dictionary<string, CCTexture2D> textures = new Dictionary<string, CCTexture2D>();
@@ -105,60 +105,60 @@ namespace CocosSharp
                         try
                         {
                             var texture = AddImage(image.FileName);
-						CCLog.Log("Loaded texture: {0}", image.FileName);
+                            CCLog.Log("Loaded texture: {0}", image.FileName);
                             if (image.Action != null)
                             {
                                 CCDirector.SharedDirector.Scheduler.Schedule (
                                     f => image.Action(texture), this, 0, 0, 0, false
-                                    );
+                                );
                             }
                         }
                         catch (Exception ex)
                         {
-						    CCLog.Log("Failed to load image {0}", image.FileName);
+                            CCLog.Log("Failed to load image {0}", image.FileName);
                             CCLog.Log(ex.ToString());
                         }
                     }
                 }
-                );
-			ProcessingDataAction = new Action(
-				() =>
-				{
-					while (true)
-					{
+            );
+            ProcessingDataAction = new Action(
+                () =>
+                {
+                    while (true)
+                    {
 
-						DataAsyncStruct imageData;
+                        DataAsyncStruct imageData;
 
-						lock (dataAsyncLoadedImages)
-						{
-							if (dataAsyncLoadedImages.Count == 0)
-							{
-								Task = null;
-								return;
-							}
-							imageData = dataAsyncLoadedImages[0];
-							dataAsyncLoadedImages.RemoveAt(0);
-						}
+                        lock (dataAsyncLoadedImages)
+                        {
+                            if (dataAsyncLoadedImages.Count == 0)
+                            {
+                                Task = null;
+                                return;
+                            }
+                            imageData = dataAsyncLoadedImages[0];
+                            dataAsyncLoadedImages.RemoveAt(0);
+                        }
 
-						try
-						{
-							var texture = AddImage(imageData.Data, imageData.AssetName, imageData.Format);
-							CCLog.Log("Loaded texture: {0}", imageData.AssetName);
-							if (imageData.Action != null)
-							{
-								CCDirector.SharedDirector.Scheduler.Schedule (
-									f => imageData.Action(texture), this, 0, 0, 0, false
-								);
-							}
-						}
-						catch (Exception ex)
-						{
-							CCLog.Log("Failed to load image {0}", imageData.AssetName);
-							CCLog.Log(ex.ToString());
-						}
-					}
-				}
-			);
+                        try
+                        {
+                            var texture = AddImage(imageData.Data, imageData.AssetName, imageData.Format);
+                            CCLog.Log("Loaded texture: {0}", imageData.AssetName);
+                            if (imageData.Action != null)
+                            {
+                                CCDirector.SharedDirector.Scheduler.Schedule (
+                                    f => imageData.Action(texture), this, 0, 0, 0, false
+                                );
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            CCLog.Log("Failed to load image {0}", imageData.AssetName);
+                            CCLog.Log(ex.ToString());
+                        }
+                    }
+                }
+            );
         }
 
         #endregion Constructors
@@ -284,7 +284,7 @@ namespace CocosSharp
             int count = 0;
             int total = 0;
 
-			foreach (var pair in textures)
+            foreach (var pair in textures)
             {
                 var texture = pair.Value.XNATexture;
 
@@ -305,63 +305,63 @@ namespace CocosSharp
 
         #region Managing texture images
 
-		public void AddImageAsync(byte[] data, string assetName, CCSurfaceFormat format, Action<CCTexture2D> action)
+        public void AddImageAsync(byte[] data, string assetName, CCSurfaceFormat format, Action<CCTexture2D> action)
         {
-			Debug.Assert(data != null && data.Length != 0, "TextureCache: data MUST not be NULL and MUST contain data");
+            Debug.Assert(data != null && data.Length != 0, "TextureCache: data MUST not be NULL and MUST contain data");
 
-			lock (dataAsyncLoadedImages)
+            lock (dataAsyncLoadedImages)
             {
-				dataAsyncLoadedImages.Add(new DataAsyncStruct() { Data = data, AssetName = assetName, Format = format  , Action = action});
+                dataAsyncLoadedImages.Add(new DataAsyncStruct() { Data = data, AssetName = assetName, Format = format  , Action = action});
             }
 
             if (Task == null)
             {
-				Task = CCTask.RunAsync(ProcessingDataAction);
+                Task = CCTask.RunAsync(ProcessingDataAction);
             }
         }
 
-		public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
-		{
-			Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
+        public void AddImageAsync(string fileimage, Action<CCTexture2D> action)
+        {
+            Debug.Assert(!String.IsNullOrEmpty(fileimage), "TextureCache: fileimage MUST not be NULL");
 
-			lock (asyncLoadedImages)
-			{
-				asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
-			}
+            lock (asyncLoadedImages)
+            {
+                asyncLoadedImages.Add(new AsyncStruct() {FileName = fileimage, Action = action});
+            }
 
-			if (Task == null)
-			{
-				Task = CCTask.RunAsync(ProcessingAction);
-			}
-		}
+            if (Task == null)
+            {
+                Task = CCTask.RunAsync(ProcessingAction);
+            }
+        }
 
         public CCTexture2D AddImage(string fileimage)
-		{
-			Debug.Assert (!String.IsNullOrEmpty (fileimage), "TextureCache: fileimage MUST not be NULL");
+        {
+            Debug.Assert (!String.IsNullOrEmpty (fileimage), "TextureCache: fileimage MUST not be NULL");
 
-			CCTexture2D texture = null;
+            CCTexture2D texture = null;
 
-			var assetName = fileimage;
-			if (Path.HasExtension (assetName)) {
-				assetName = CCFileUtils.RemoveExtension (assetName);
-			}
+            var assetName = fileimage;
+            if (Path.HasExtension (assetName)) {
+                assetName = CCFileUtils.RemoveExtension (assetName);
+            }
 
-			lock (dictLock) {
-				textures.TryGetValue (assetName, out texture);
-			}
-			if (texture == null) {
-				texture = new CCTexture2D(fileimage);
+            lock (dictLock) {
+                textures.TryGetValue (assetName, out texture);
+            }
+            if (texture == null) {
+                texture = new CCTexture2D(fileimage);
 
-				lock(dictLock) 
-				{
-					textures[assetName] = texture;
-				}
-			}
-                
-			return texture;
-		}
+                lock(dictLock) 
+                {
+                    textures[assetName] = texture;
+                }
+            }
 
-		public CCTexture2D AddImage(byte[] data, string assetName, CCSurfaceFormat format)
+            return texture;
+        }
+
+        public CCTexture2D AddImage(byte[] data, string assetName, CCSurfaceFormat format)
         {
             lock (dictLock)
             {
@@ -369,8 +369,8 @@ namespace CocosSharp
 
                 if (!textures.TryGetValue(assetName, out texture))
                 {
-					texture = new CCTexture2D(data, format);
-					textures.Add(assetName, texture);
+                    texture = new CCTexture2D(data, format);
+                    textures.Add(assetName, texture);
                 }
                 return texture;
             }
@@ -382,8 +382,8 @@ namespace CocosSharp
             return AddRawImage(data, width, height, assetName, format, premultiplied, mipMap, new CCSize(width, height));
         }
 
-		public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
-                                          bool premultiplied, bool mipMap, CCSize contentSize) where T : struct
+        public CCTexture2D AddRawImage<T>(T[] data, int width, int height, string assetName, CCSurfaceFormat format,
+            bool premultiplied, bool mipMap, CCSize contentSize) where T : struct
         {
             CCTexture2D texture;
 
@@ -391,14 +391,14 @@ namespace CocosSharp
             {
                 if (!textures.TryGetValue(assetName, out texture))
                 {
-					texture = new CCTexture2D();
-					texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize);
-					textures.Add(assetName, texture);
+                    texture = new CCTexture2D();
+                    texture.InitWithRawData(data, format, width, height, premultiplied, mipMap, contentSize);
+                    textures.Add(assetName, texture);
                 }
             }
             return texture;
         }
 
         #endregion Managing texture images
-	}
+    }
 }

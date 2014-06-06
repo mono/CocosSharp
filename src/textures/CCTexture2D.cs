@@ -13,9 +13,9 @@ using BitMiracle.LibTiff.Classic;
 
 namespace CocosSharp
 {
-	#region Enums and structs
+    #region Enums and structs
 
-	public enum CCImageFormat
+    public enum CCImageFormat
     {
         Jpg = 0,
         Png,
@@ -26,57 +26,57 @@ namespace CocosSharp
         UnKnown
     }
 
-	public enum CCSurfaceFormat
-	{
-		Color = 0,
-		Bgr565 = 1,
-		Bgra5551 = 2,
-		Bgra4444 = 3,
-		Dxt1 = 4,
-		Dxt3 = 5,
-		Dxt5 = 6,
-		NormalizedByte2 = 7,
-		NormalizedByte4 = 8,
-		Rgba1010102 = 9,
-		Rg32 = 10,
-		Rgba64 = 11,
-		Alpha8 = 12,
-		Single = 13,
-		CCVector2 = 14,
-		Vector4 = 15,
-		HalfSingle = 16,
-		HalfCCVector2 = 17,
-		HalfVector4 = 18,
-		HdrBlendable = 19,
+    public enum CCSurfaceFormat
+    {
+        Color = 0,
+        Bgr565 = 1,
+        Bgra5551 = 2,
+        Bgra4444 = 3,
+        Dxt1 = 4,
+        Dxt3 = 5,
+        Dxt5 = 6,
+        NormalizedByte2 = 7,
+        NormalizedByte4 = 8,
+        Rgba1010102 = 9,
+        Rg32 = 10,
+        Rgba64 = 11,
+        Alpha8 = 12,
+        Single = 13,
+        CCVector2 = 14,
+        Vector4 = 15,
+        HalfSingle = 16,
+        HalfCCVector2 = 17,
+        HalfVector4 = 18,
+        HdrBlendable = 19,
 
-		// BGRA formats are required for compatibility with WPF D3DImage.
-		Bgr32 = 20,     // B8G8R8X8
-		Bgra32 = 21,    // B8G8R8A8
+        // BGRA formats are required for compatibility with WPF D3DImage.
+        Bgr32 = 20,     // B8G8R8X8
+        Bgra32 = 21,    // B8G8R8A8
 
-		// Good explanation of compressed formats for mobile devices (aimed at Android, but describes PVRTC)
-		// http://developer.motorola.com/docstools/library/understanding-texture-compression/
+        // Good explanation of compressed formats for mobile devices (aimed at Android, but describes PVRTC)
+        // http://developer.motorola.com/docstools/library/understanding-texture-compression/
 
-		// PowerVR texture compression (iOS and Android)
-		RgbPvrtc2Bpp = 50,
-		RgbPvrtc4Bpp = 51,
-		RgbaPvrtc2Bpp = 52,
-		RgbaPvrtc4Bpp = 53,
+        // PowerVR texture compression (iOS and Android)
+        RgbPvrtc2Bpp = 50,
+        RgbPvrtc4Bpp = 51,
+        RgbaPvrtc2Bpp = 52,
+        RgbaPvrtc4Bpp = 53,
 
-		// Ericcson Texture Compression (Android)
-		RgbEtc1 = 60,
+        // Ericcson Texture Compression (Android)
+        RgbEtc1 = 60,
 
-		// DXT1 also has a 1-bit alpha form
-		Dxt1a = 70,
-	}
+        // DXT1 also has a 1-bit alpha form
+        Dxt1a = 70,
+    }
 
-	internal enum CCTextureCacheType
-	{
-		None,
-		AssetFile,
-		Data,
-		RawData,
-		String
-	}
+    internal enum CCTextureCacheType
+    {
+        None,
+        AssetFile,
+        Data,
+        RawData,
+        String
+    }
 
     internal struct CCStringCache
     {
@@ -94,136 +94,136 @@ namespace CocosSharp
         public Object Data;
     }
 
-	#endregion Enums and structs
+    #endregion Enums and structs
 
 
     public class CCTexture2D : CCGraphicsResource
     {
-		public static CCSurfaceFormat DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
+        public static CCSurfaceFormat DefaultAlphaPixelFormat = CCSurfaceFormat.Color;
         public static bool OptimizeForPremultipliedAlpha = true;
         public static bool DefaultIsAntialiased = true;
 
-		bool hasMipmaps;
-		bool managed;
-		bool antialiased;
+        bool hasMipmaps;
+        bool managed;
+        bool antialiased;
 
-		CCTextureCacheInfo cacheInfo;
-		Texture2D texture2D;
-
-
-		#region Properties
-
-		public bool HasPremultipliedAlpha { get; private set; }
-		public int PixelsWide { get; private set; }
-		public int PixelsHigh { get; private set; }
-		public CCSize ContentSizeInPixels { get; private set; }
-		public CCSurfaceFormat PixelFormat { get; set; }
-		public SamplerState SamplerState { get; set; }
-
-		public bool IsTextureDefined
-		{
-			get { return (texture2D != null && !texture2D.IsDisposed); }
-		}
-
-		public bool IsAntialiased
-		{
-			get { return antialiased; }
-
-			set
-			{
-				if (antialiased != value)
-				{
-					antialiased = value;
-
-					RefreshAntialiasSetting();
-				}
-			}
-		}
-
-		public uint BitsPerPixelForFormat
-		{
-			//from MG: Microsoft.Xna.Framework.Graphics.GraphicsExtensions
-			get
-			{
-				switch (PixelFormat)
-				{
-				case CCSurfaceFormat.Dxt1:
-					#if !WINDOWS && !WINDOWS_PHONE
-				case CCSurfaceFormat.Dxt1a:
-				case CCSurfaceFormat.RgbPvrtc2Bpp:
-				case CCSurfaceFormat.RgbaPvrtc2Bpp:
-				case CCSurfaceFormat.RgbEtc1:
-					#endif
-					// One texel in DXT1, PVRTC 2bpp and ETC1 is a minimum 4x4 block, which is 8 bytes
-					return 8;
-
-				case CCSurfaceFormat.Dxt3:
-				case CCSurfaceFormat.Dxt5:
-					#if !WINDOWS && !WINDOWS_PHONE
-				case CCSurfaceFormat.RgbPvrtc4Bpp:
-				case CCSurfaceFormat.RgbaPvrtc4Bpp:
-					#endif
-					// One texel in DXT3, DXT5 and PVRTC 4bpp is a minimum 4x4 block, which is 16 bytes
-					return 16;
-
-				case CCSurfaceFormat.Alpha8:
-					return 1;
-
-				case CCSurfaceFormat.Bgr565:
-				case CCSurfaceFormat.Bgra4444:
-				case CCSurfaceFormat.Bgra5551:
-				case CCSurfaceFormat.HalfSingle:
-				case CCSurfaceFormat.NormalizedByte2:
-					return 2;
-
-				case CCSurfaceFormat.Color:
-				case CCSurfaceFormat.Single:
-				case CCSurfaceFormat.Rg32:
-				case CCSurfaceFormat.HalfCCVector2:
-				case CCSurfaceFormat.NormalizedByte4:
-				case CCSurfaceFormat.Rgba1010102:
-					return 4;
-
-				case CCSurfaceFormat.HalfVector4:
-				case CCSurfaceFormat.Rgba64:
-				case CCSurfaceFormat.CCVector2:
-					return 8;
-
-				case CCSurfaceFormat.Vector4:
-					return 16;
-
-				default:
-					throw new NotImplementedException();
-				}
-			}
-		}
-
-		public CCSize ContentSize
-		{
-			get { return ContentSizeInPixels.PixelsToPoints(); }
-		}
-
-		public Texture2D Name
-		{
-			get { return XNATexture; }
-		}
-
-		public Texture2D XNATexture
-		{
-			get
-			{
-				if (texture2D != null && texture2D.IsDisposed)
-				{
-					Reinit();
-				}
-				return texture2D;
-			}
-		}
-
-		#endregion Properties
+        CCTextureCacheInfo cacheInfo;
+        Texture2D texture2D;
 
 
-		#region Constructors and initialization
+        #region Properties
+
+        public bool HasPremultipliedAlpha { get; private set; }
+        public int PixelsWide { get; private set; }
+        public int PixelsHigh { get; private set; }
+        public CCSize ContentSizeInPixels { get; private set; }
+        public CCSurfaceFormat PixelFormat { get; set; }
+        public SamplerState SamplerState { get; set; }
+
+        public bool IsTextureDefined
+        {
+            get { return (texture2D != null && !texture2D.IsDisposed); }
+        }
+
+        public bool IsAntialiased
+        {
+            get { return antialiased; }
+
+            set
+            {
+                if (antialiased != value)
+                {
+                    antialiased = value;
+
+                    RefreshAntialiasSetting();
+                }
+            }
+        }
+
+        public uint BitsPerPixelForFormat
+        {
+            //from MG: Microsoft.Xna.Framework.Graphics.GraphicsExtensions
+            get
+            {
+                switch (PixelFormat)
+                {
+                case CCSurfaceFormat.Dxt1:
+                    #if !WINDOWS && !WINDOWS_PHONE
+                case CCSurfaceFormat.Dxt1a:
+                case CCSurfaceFormat.RgbPvrtc2Bpp:
+                case CCSurfaceFormat.RgbaPvrtc2Bpp:
+                case CCSurfaceFormat.RgbEtc1:
+                    #endif
+                    // One texel in DXT1, PVRTC 2bpp and ETC1 is a minimum 4x4 block, which is 8 bytes
+                    return 8;
+
+                case CCSurfaceFormat.Dxt3:
+                case CCSurfaceFormat.Dxt5:
+                    #if !WINDOWS && !WINDOWS_PHONE
+                case CCSurfaceFormat.RgbPvrtc4Bpp:
+                case CCSurfaceFormat.RgbaPvrtc4Bpp:
+                    #endif
+                    // One texel in DXT3, DXT5 and PVRTC 4bpp is a minimum 4x4 block, which is 16 bytes
+                    return 16;
+
+                case CCSurfaceFormat.Alpha8:
+                    return 1;
+
+                case CCSurfaceFormat.Bgr565:
+                case CCSurfaceFormat.Bgra4444:
+                case CCSurfaceFormat.Bgra5551:
+                case CCSurfaceFormat.HalfSingle:
+                case CCSurfaceFormat.NormalizedByte2:
+                    return 2;
+
+                case CCSurfaceFormat.Color:
+                case CCSurfaceFormat.Single:
+                case CCSurfaceFormat.Rg32:
+                case CCSurfaceFormat.HalfCCVector2:
+                case CCSurfaceFormat.NormalizedByte4:
+                case CCSurfaceFormat.Rgba1010102:
+                    return 4;
+
+                case CCSurfaceFormat.HalfVector4:
+                case CCSurfaceFormat.Rgba64:
+                case CCSurfaceFormat.CCVector2:
+                    return 8;
+
+                case CCSurfaceFormat.Vector4:
+                    return 16;
+
+                default:
+                    throw new NotImplementedException();
+                }
+            }
+        }
+
+        public CCSize ContentSize
+        {
+            get { return ContentSizeInPixels.PixelsToPoints(); }
+        }
+
+        public Texture2D Name
+        {
+            get { return XNATexture; }
+        }
+
+        public Texture2D XNATexture
+        {
+            get
+            {
+                if (texture2D != null && texture2D.IsDisposed)
+                {
+                    Reinit();
+                }
+                return texture2D;
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors and initialization
 
         public CCTexture2D()
         {
@@ -233,27 +233,27 @@ namespace CocosSharp
             RefreshAntialiasSetting();
         }
 
-		public CCTexture2D (int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color, bool premultipliedAlpha=true, bool mipMap=false) 
-			: this(new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, (SurfaceFormat)pixelFormat), pixelFormat, premultipliedAlpha)
+        public CCTexture2D (int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color, bool premultipliedAlpha=true, bool mipMap=false) 
+            : this(new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, (SurfaceFormat)pixelFormat), pixelFormat, premultipliedAlpha)
         {
-			cacheInfo.CacheType = CCTextureCacheType.None;
-			cacheInfo.Data = null;
+            cacheInfo.CacheType = CCTextureCacheType.None;
+            cacheInfo.Data = null;
         }
 
-		public CCTexture2D(byte[] data, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color, bool mipMap=false)
+        public CCTexture2D(byte[] data, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color, bool mipMap=false)
             : this()
         {
-			InitWithData(data, pixelFormat, mipMap);
+            InitWithData(data, pixelFormat, mipMap);
         }
 
-		public CCTexture2D(Stream stream, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color) 
+        public CCTexture2D(Stream stream, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color) 
             : this()
         {
             InitWithStream(stream, pixelFormat);
         }
-        
+
         public CCTexture2D(string text, CCSize dimensions, CCTextAlignment hAlignment, 
-                            CCVerticalTextAlignment vAlignment, string fontName, float fontSize) 
+            CCVerticalTextAlignment vAlignment, string fontName, float fontSize) 
             : this()
         {
             InitWithString(text, dimensions, hAlignment, vAlignment, fontName, fontSize);
@@ -270,140 +270,140 @@ namespace CocosSharp
             InitWithFile(file);
         }
 
-		public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
-			: this()
-		{
-			InitWithTexture(texture, format, premultipliedAlpha, managed);
-		}
+        public CCTexture2D(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha=true, bool managed=false)
+            : this()
+        {
+            InitWithTexture(texture, format, premultipliedAlpha, managed);
+        }
 
-		public CCTexture2D(Texture2D texture) 
-			: this(texture, (CCSurfaceFormat)texture.Format)
-		{
-		}
+        public CCTexture2D(Texture2D texture) 
+            : this(texture, (CCSurfaceFormat)texture.Format)
+        {
+        }
 
-		internal void InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap)
-			where T : struct
-		{
-			InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh, premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
-		}
+        internal void InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh, bool premultipliedAlpha, bool mipMap)
+            where T : struct
+        {
+            InitWithRawData(data, pixelFormat, pixelsWide, pixelsHigh, premultipliedAlpha, mipMap, new CCSize(pixelsWide, pixelsHigh));
+        }
 
-		internal void InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
-			bool premultipliedAlpha, bool mipMap, CCSize ContentSizeInPixelsIn) where T : struct
-		{
-			var texture = LoadRawData(data, pixelsWide, pixelsHigh, (SurfaceFormat)pixelFormat, mipMap);
-			InitWithTexture(texture, pixelFormat, premultipliedAlpha, false);
+        internal void InitWithRawData<T>(T[] data, CCSurfaceFormat pixelFormat, int pixelsWide, int pixelsHigh,
+            bool premultipliedAlpha, bool mipMap, CCSize ContentSizeInPixelsIn) where T : struct
+        {
+            var texture = LoadRawData(data, pixelsWide, pixelsHigh, (SurfaceFormat)pixelFormat, mipMap);
+            InitWithTexture(texture, pixelFormat, premultipliedAlpha, false);
 
-			ContentSizeInPixels = ContentSizeInPixelsIn;
+            ContentSizeInPixels = ContentSizeInPixelsIn;
 
-			cacheInfo.CacheType = CCTextureCacheType.RawData;
-			cacheInfo.Data = data;
-		}
+            cacheInfo.CacheType = CCTextureCacheType.RawData;
+            cacheInfo.Data = data;
+        }
 
-		void InitWithData(byte[] data, CCSurfaceFormat pixelFormat, bool mipMap)
-		{
-			if (data == null)
-			{
-				return;
-			}
+        void InitWithData(byte[] data, CCSurfaceFormat pixelFormat, bool mipMap)
+        {
+            if (data == null)
+            {
+                return;
+            }
 
-			#if WINDOWS_PHONE8
-			/*
-			byte[] cloneOfData = new byte[data.Length];
-			data.CopyTo(cloneOfData, 0);
-			data = cloneOfData;
-			*/
-			#endif
+            #if WINDOWS_PHONE8
+            /*
+            byte[] cloneOfData = new byte[data.Length];
+            data.CopyTo(cloneOfData, 0);
+            data = cloneOfData;
+            */
+            #endif
 
-			var texture = LoadTexture(new MemoryStream(data, false));
+            var texture = LoadTexture(new MemoryStream(data, false));
 
-			if (texture != null)
-			{
-				InitWithTexture(texture, pixelFormat, true, false);
-				cacheInfo.CacheType = CCTextureCacheType.Data;
-				cacheInfo.Data = data;
+            if (texture != null)
+            {
+                InitWithTexture(texture, pixelFormat, true, false);
+                cacheInfo.CacheType = CCTextureCacheType.Data;
+                cacheInfo.Data = data;
 
-				if (mipMap)
-				{
-					GenerateMipmap();
-				}
-			}
-		}
+                if (mipMap)
+                {
+                    GenerateMipmap();
+                }
+            }
+        }
 
-		void InitWithStream(Stream stream, CCSurfaceFormat pixelFormat)
-		{
-			Texture2D texture;
-			try
-			{
-				texture = LoadTexture(stream);
+        void InitWithStream(Stream stream, CCSurfaceFormat pixelFormat)
+        {
+            Texture2D texture;
+            try
+            {
+                texture = LoadTexture(stream);
 
-				InitWithTexture(texture, pixelFormat, false, false);
+                InitWithTexture(texture, pixelFormat, false, false);
 
-				return;
-			}
-			catch (Exception)
-			{
+                return;
+            }
+            catch (Exception)
+            {
 
-			}
-		}
+            }
+        }
 
-		void InitWithFile(string file)
-		{
-			managed = false;
+        void InitWithFile(string file)
+        {
+            managed = false;
 
-			Texture2D texture = null;
+            Texture2D texture = null;
 
-			cacheInfo.CacheType = CCTextureCacheType.AssetFile;
-			cacheInfo.Data = file;
+            cacheInfo.CacheType = CCTextureCacheType.AssetFile;
+            cacheInfo.Data = file;
 
-			//TODO: may be move this functional to CCContentManager?
+            //TODO: may be move this functional to CCContentManager?
 
-			var contentManager = CCContentManager.SharedContentManager;
+            var contentManager = CCContentManager.SharedContentManager;
 
-			var loadedFile = file;
+            var loadedFile = file;
 
-			// first try to download xnb
-			if (Path.HasExtension(loadedFile))
-			{
-				loadedFile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file));
-			}
+            // first try to download xnb
+            if (Path.HasExtension(loadedFile))
+            {
+                loadedFile = Path.Combine(Path.GetDirectoryName(file), Path.GetFileNameWithoutExtension(file));
+            }
 
-			// use WeakReference. Link for regular textures are stored in CCTextureCache
-			texture = contentManager.TryLoad<Texture2D>(loadedFile, true);
+            // use WeakReference. Link for regular textures are stored in CCTextureCache
+            texture = contentManager.TryLoad<Texture2D>(loadedFile, true);
 
-			if (texture != null)
-			{
-				// usually xnb texture prepared as PremultipliedAlpha
-				InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
-			}
+            if (texture != null)
+            {
+                // usually xnb texture prepared as PremultipliedAlpha
+                InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
+            }
 
-			// try load raw image
-			if (loadedFile != file)
-			{
-				texture = contentManager.TryLoad<Texture2D>(file, true);
+            // try load raw image
+            if (loadedFile != file)
+            {
+                texture = contentManager.TryLoad<Texture2D>(file, true);
 
-				if (texture != null)
-				{
-					// not premultiplied alpha
-					InitWithTexture(texture, DefaultAlphaPixelFormat, false, true);
-				}
-			}
+                if (texture != null)
+                {
+                    // not premultiplied alpha
+                    InitWithTexture(texture, DefaultAlphaPixelFormat, false, true);
+                }
+            }
 
-			// try load not supported format (for example tga)
-			try
-			{
-				using (var stream = contentManager.GetAssetStream(file))
-				{
-					InitWithStream(stream, DefaultAlphaPixelFormat);
-				}
-			}
-			catch (Exception)
-			{
-			}
+            // try load not supported format (for example tga)
+            try
+            {
+                using (var stream = contentManager.GetAssetStream(file))
+                {
+                    InitWithStream(stream, DefaultAlphaPixelFormat);
+                }
+            }
+            catch (Exception)
+            {
+            }
 
-			CCLog.Log("Texture {0} was not found.", file);
-		}
+            CCLog.Log("Texture {0} was not found.", file);
+        }
 
-		void InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, string fontName, float fontSize)
+        void InitWithString(string text, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment, string fontName, float fontSize)
         {
             try
             {
@@ -425,7 +425,7 @@ namespace CocosSharp
                 }
 
                 float scale = 1f;
-                
+
                 if (loadedSize != 0)
                 {
                     scale = fontSize / loadedSize * CCSpriteFontCache.FontScale;
@@ -433,7 +433,7 @@ namespace CocosSharp
 
                 if (dimensions.Equals(CCSize.Zero))
                 {
-					CCVector2 temp = font.MeasureString(text).ToCCVector2();
+                    CCVector2 temp = font.MeasureString(text).ToCCVector2();
                     dimensions.Width = temp.X * scale;
                     dimensions.Height = temp.Y * scale;
                 }
@@ -490,7 +490,7 @@ namespace CocosSharp
 
                     textList.Add(nextText.ToString());
 
-					nextText.Clear();
+                    nextText.Clear();
                 }
 
                 if (dimensions.Height == 0)
@@ -501,8 +501,8 @@ namespace CocosSharp
                 //*  for render to texture
                 RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget(
                     (int)dimensions.Width, (int)dimensions.Height,
-					DefaultAlphaPixelFormat, CCRenderTargetUsage.DiscardContents
-                    );
+                    DefaultAlphaPixelFormat, CCRenderTargetUsage.DiscardContents
+                );
 
                 CCDrawManager.SetRenderTarget(renderTarget);
                 CCDrawManager.Clear(CCColor4B.Transparent);
@@ -537,7 +537,7 @@ namespace CocosSharp
                         position.X = (dimensions.Width - font.MeasureString(line).X * scale) / 2.0f;
                     }
 
-					sb.DrawString(font, line, position.ToVector2(), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
+                    sb.DrawString(font, line, position.ToVector2(), Color.White, 0f, Vector2.Zero, scale, SpriteEffects.None, 0);
 
                     nextY += font.LineSpacing * scale;
                 }
@@ -549,7 +549,7 @@ namespace CocosSharp
 
                 CCDrawManager.SetRenderTarget((RenderTarget2D)null);
 
-				InitWithTexture(renderTarget, (CCSurfaceFormat)renderTarget.Format, true, false);
+                InitWithTexture(renderTarget, (CCSurfaceFormat)renderTarget.Format, true, false);
                 cacheInfo.CacheType = CCTextureCacheType.String;
                 cacheInfo.Data = new CCStringCache()
                 {
@@ -568,9 +568,9 @@ namespace CocosSharp
         }
 
         // Method called externally by CCDrawManager
-		internal void InitWithTexture(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managedIn)
+        internal void InitWithTexture(Texture2D texture, CCSurfaceFormat format, bool premultipliedAlpha, bool managedIn)
         {
-			managed = managedIn;
+            managed = managedIn;
 
             if (null == texture)
             {
@@ -579,7 +579,7 @@ namespace CocosSharp
 
             if (OptimizeForPremultipliedAlpha && !premultipliedAlpha)
             {
-				texture2D = ConvertToPremultiplied(texture, (SurfaceFormat)format);
+                texture2D = ConvertToPremultiplied(texture, (SurfaceFormat)format);
 
                 if (!managed)
                 {
@@ -589,9 +589,9 @@ namespace CocosSharp
             }
             else
             {
-				if (texture.Format != (SurfaceFormat)format)
+                if (texture.Format != (SurfaceFormat)format)
                 {
-					texture2D = ConvertSurfaceFormat(texture, (SurfaceFormat)format);
+                    texture2D = ConvertSurfaceFormat(texture, (SurfaceFormat)format);
 
                     if (!managed)
                     {
@@ -605,10 +605,10 @@ namespace CocosSharp
                 }
             }
 
-			PixelFormat = (CCSurfaceFormat)texture.Format;
+            PixelFormat = (CCSurfaceFormat)texture.Format;
             PixelsWide = texture.Width;
             PixelsHigh = texture.Height;
-			ContentSizeInPixels = new CCSize(texture.Width, texture.Height);
+            ContentSizeInPixels = new CCSize(texture.Width, texture.Height);
             hasMipmaps = texture.LevelCount > 1;
             HasPremultipliedAlpha = premultipliedAlpha;
         }
@@ -629,47 +629,47 @@ namespace CocosSharp
 
             switch (cacheInfo.CacheType)
             {
-                case CCTextureCacheType.None:
-                    return;
+            case CCTextureCacheType.None:
+                return;
 
-                case CCTextureCacheType.AssetFile:
-                    InitWithFile((string)cacheInfo.Data);
-                    break;
+            case CCTextureCacheType.AssetFile:
+                InitWithFile((string)cacheInfo.Data);
+                break;
 
-                case CCTextureCacheType.Data:
-					InitWithData((byte[])cacheInfo.Data, (CCSurfaceFormat)PixelFormat, hasMipmaps);
-                    break;
+            case CCTextureCacheType.Data:
+                InitWithData((byte[])cacheInfo.Data, (CCSurfaceFormat)PixelFormat, hasMipmaps);
+                break;
 
-                case CCTextureCacheType.RawData:
-#if NETFX_CORE
-                    var methodInfo = typeof(CCTexture2D).GetType().GetTypeInfo().GetDeclaredMethod("InitWithRawData");
-#else
-                    var methodInfo = typeof(CCTexture2D).GetMethod("InitWithRawData", BindingFlags.Public | BindingFlags.Instance);
-#endif
-                    var genericMethod = methodInfo.MakeGenericMethod(cacheInfo.Data.GetType());
-                    genericMethod.Invoke(this, new object[]
-                        {
-                            Convert.ChangeType(cacheInfo.Data, cacheInfo.Data.GetType(),System.Globalization.CultureInfo.InvariantCulture),
-                            PixelFormat, PixelsWide, PixelsHigh, 
-                            HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels
-                        });
-
-//                    InitWithRawData((byte[])cacheInfo.Data, PixelFormat, PixelsWide, PixelsHigh,
-//                                    HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels);
-                    break;
-
-                case CCTextureCacheType.String:
-                    var si = (CCStringCache)cacheInfo.Data;
-                    InitWithString(si.Text, si.Dimensions, si.HAlignment, si.VAlignment, si.FontName, si.FontSize);
-                    if (hasMipmaps)
+            case CCTextureCacheType.RawData:
+                #if NETFX_CORE
+                var methodInfo = typeof(CCTexture2D).GetType().GetTypeInfo().GetDeclaredMethod("InitWithRawData");
+                #else
+                var methodInfo = typeof(CCTexture2D).GetMethod("InitWithRawData", BindingFlags.Public | BindingFlags.Instance);
+                #endif
+                var genericMethod = methodInfo.MakeGenericMethod(cacheInfo.Data.GetType());
+                genericMethod.Invoke(this, new object[]
                     {
-                        hasMipmaps = false;
-                        GenerateMipmap();
-                    }
-                    break;
+                        Convert.ChangeType(cacheInfo.Data, cacheInfo.Data.GetType(),System.Globalization.CultureInfo.InvariantCulture),
+                        PixelFormat, PixelsWide, PixelsHigh, 
+                        HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels
+                    });
 
-                default:
-                    throw new ArgumentOutOfRangeException();
+                //                    InitWithRawData((byte[])cacheInfo.Data, PixelFormat, PixelsWide, PixelsHigh,
+                //                                    HasPremultipliedAlpha, hasMipmaps, ContentSizeInPixels);
+                break;
+
+            case CCTextureCacheType.String:
+                var si = (CCStringCache)cacheInfo.Data;
+                InitWithString(si.Text, si.Dimensions, si.HAlignment, si.VAlignment, si.FontName, si.FontSize);
+                if (hasMipmaps)
+                {
+                    hasMipmaps = false;
+                    GenerateMipmap();
+                }
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException();
             }
             if (textureToDispose != null && !textureToDispose.IsDisposed)
             {
@@ -677,91 +677,91 @@ namespace CocosSharp
             }
         }
 
-		#endregion Constructors and initialization
+        #endregion Constructors and initialization
 
 
-		public override string ToString()
-		{
-			return String.Format("<CCTexture2D | Dimensions = {0} x {1})>", PixelsWide, PixelsHigh);
-		}
+        public override string ToString()
+        {
+            return String.Format("<CCTexture2D | Dimensions = {0} x {1})>", PixelsWide, PixelsHigh);
+        }
 
 
-		#region Cleanup
+        #region Cleanup
 
-		void RefreshAntialiasSetting()
-		{
-			var saveState = SamplerState;
+        void RefreshAntialiasSetting()
+        {
+            var saveState = SamplerState;
 
-			if (antialiased && SamplerState.Filter != TextureFilter.Linear)
-			{
-				if (SamplerState == SamplerState.PointClamp)
-				{
-					SamplerState = SamplerState.LinearClamp;
-					return;
-				}
+            if (antialiased && SamplerState.Filter != TextureFilter.Linear)
+            {
+                if (SamplerState == SamplerState.PointClamp)
+                {
+                    SamplerState = SamplerState.LinearClamp;
+                    return;
+                }
 
-				SamplerState = new SamplerState
-				{
-					Filter = TextureFilter.Linear
-				};
-			}
-			else if (!antialiased && SamplerState.Filter != TextureFilter.Point)
-			{
-				if (SamplerState == SamplerState.LinearClamp)
-				{
-					SamplerState = SamplerState.PointClamp;
-					return;
-				}
+                SamplerState = new SamplerState
+                {
+                    Filter = TextureFilter.Linear
+                };
+            }
+            else if (!antialiased && SamplerState.Filter != TextureFilter.Point)
+            {
+                if (SamplerState == SamplerState.LinearClamp)
+                {
+                    SamplerState = SamplerState.PointClamp;
+                    return;
+                }
 
-				SamplerState = new SamplerState
-				{
-					Filter = TextureFilter.Point
-				};
-			}
-			else
-			{
-				return;
-			}
+                SamplerState = new SamplerState
+                {
+                    Filter = TextureFilter.Point
+                };
+            }
+            else
+            {
+                return;
+            }
 
-			SamplerState.AddressU = saveState.AddressU;
-			SamplerState.AddressV = saveState.AddressV;
-			SamplerState.AddressW = saveState.AddressW;
-		}
+            SamplerState.AddressU = saveState.AddressU;
+            SamplerState.AddressV = saveState.AddressV;
+            SamplerState.AddressW = saveState.AddressW;
+        }
 
-		protected override void Dispose(bool disposing)
-		{
-			base.Dispose(disposing);
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
 
-			if (disposing && texture2D != null && !texture2D.IsDisposed && !managed) 
-			{
-				texture2D.Dispose();
-			}
+            if (disposing && texture2D != null && !texture2D.IsDisposed && !managed) 
+            {
+                texture2D.Dispose();
+            }
 
-			texture2D = null;
-		}
+            texture2D = null;
+        }
 
-		#endregion Cleanup
+        #endregion Cleanup
 
 
-		#region Saving texture
+        #region Saving texture
 
-		public void SaveAsJpeg(Stream stream, int width, int height)
-		{
-			if (texture2D != null)
-			{
-				texture2D.SaveAsJpeg(stream, width, height);
-			}
-		}
+        public void SaveAsJpeg(Stream stream, int width, int height)
+        {
+            if (texture2D != null)
+            {
+                texture2D.SaveAsJpeg(stream, width, height);
+            }
+        }
 
-		public void SaveAsPng(Stream stream, int width, int height)
-		{
-			if (texture2D != null)
-			{
-				texture2D.SaveAsPng(stream, width, height);
-			}
-		}
+        public void SaveAsPng(Stream stream, int width, int height)
+        {
+            if (texture2D != null)
+            {
+                texture2D.SaveAsPng(stream, width, height);
+            }
+        }
 
-		#endregion Saving texture
+        #endregion Saving texture
 
 
         #region Conversion
@@ -770,8 +770,8 @@ namespace CocosSharp
         {
             if (!hasMipmaps)
             {
-				var target = new RenderTarget2D(CCDrawManager.GraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
-                                                DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
+                var target = new RenderTarget2D(CCDrawManager.GraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
+                    DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
                 CCDrawManager.SetRenderTarget(target);
 
@@ -804,11 +804,11 @@ namespace CocosSharp
                 CCDrawManager.GraphicsDevice,
                 texture.Width, texture.Height, hasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
-                );
+            );
 
             CCDrawManager.SetRenderTarget(renderTarget);
             CCDrawManager.SpriteBatch.Begin();
-			CCDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
+            CCDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
             CCDrawManager.SpriteBatch.End();
             CCDrawManager.SetRenderTarget((CCTexture2D)null);
 
@@ -825,7 +825,7 @@ namespace CocosSharp
                 CCDrawManager.graphicsDevice,
                 texture.Width, texture.Height, hasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
-                );
+            );
 
             CCDrawManager.SetRenderTarget(result);
 
@@ -838,7 +838,7 @@ namespace CocosSharp
                 //Multiply each color by the source alpha, and write in just the color values into the final texture
                 var blendColor = new BlendState();
                 blendColor.ColorWriteChannels = ColorWriteChannels.Red | ColorWriteChannels.Green |
-                                                ColorWriteChannels.Blue;
+                    ColorWriteChannels.Blue;
 
                 blendColor.AlphaDestinationBlend = Blend.Zero;
                 blendColor.ColorDestinationBlend = Blend.Zero;
@@ -872,54 +872,54 @@ namespace CocosSharp
             return result;
         }
 
-		#endregion Conversion
+        #endregion Conversion
 
 
         #region Loading Texture
 
-		public static CCImageFormat DetectImageFormat(Stream stream)
-		{
-			var data = new byte[8];
+        public static CCImageFormat DetectImageFormat(Stream stream)
+        {
+            var data = new byte[8];
 
-			var pos = stream.Position;
-			var dataLen = stream.Read(data, 0, 8);
-			stream.Position = pos;
+            var pos = stream.Position;
+            var dataLen = stream.Read(data, 0, 8);
+            stream.Position = pos;
 
-			if (dataLen >= 8)
-			{
-				if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47
-					&& data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A)
-				{
-					return CCImageFormat.Png;
-				}
-			}
+            if (dataLen >= 8)
+            {
+                if (data[0] == 0x89 && data[1] == 0x50 && data[2] == 0x4E && data[3] == 0x47
+                    && data[4] == 0x0D && data[5] == 0x0A && data[6] == 0x1A && data[7] == 0x0A)
+                {
+                    return CCImageFormat.Png;
+                }
+            }
 
-			if (dataLen >= 3)
-			{
-				if (data[0] == 0x47 && data[1] == 0x49 && data[1] == 0x46)
-				{
-					return CCImageFormat.Gif;
-				}
-			}
+            if (dataLen >= 3)
+            {
+                if (data[0] == 0x47 && data[1] == 0x49 && data[1] == 0x46)
+                {
+                    return CCImageFormat.Gif;
+                }
+            }
 
-			if (dataLen >= 2)
-			{
-				if ((data[0] == 0x49 && data[1] == 0x49) || (data[0] == 0x4d && data[1] == 0x4d))
-				{
-					return CCImageFormat.Tiff;
-				}
-			}
+            if (dataLen >= 2)
+            {
+                if ((data[0] == 0x49 && data[1] == 0x49) || (data[0] == 0x4d && data[1] == 0x4d))
+                {
+                    return CCImageFormat.Tiff;
+                }
+            }
 
-			if (dataLen >= 2)
-			{
-				if (data[0] == 0xff && data[1] == 0xd8)
-				{
-					return CCImageFormat.Jpg;
-				}
-			}
+            if (dataLen >= 2)
+            {
+                if (data[0] == 0xff && data[1] == 0xd8)
+                {
+                    return CCImageFormat.Jpg;
+                }
+            }
 
-			return CCImageFormat.UnKnown;
-		}
+            return CCImageFormat.UnKnown;
+        }
 
         Texture2D LoadTexture(Stream stream)
         {
@@ -957,7 +957,7 @@ namespace CocosSharp
 
         Texture2D LoadTextureFromTiff(Stream stream)
         {
-#if (WINDOWS && !WINRT)
+            #if (WINDOWS && !WINRT)
             var tiff = Tiff.ClientOpen("file.tif", "r", stream, new TiffStream());
 
             var w = tiff.GetField(TiffTag.IMAGEWIDTH)[0].ToInt();
@@ -967,23 +967,23 @@ namespace CocosSharp
 
             if (tiff.ReadRGBAImageOriented(w, h, raster, Orientation.LEFTTOP))
             {
-                var result = new Texture2D(CCDrawManager.GraphicsDevice, w, h, false, SurfaceFormat.Color);
-                result.SetData(raster);
-                return result;
+            var result = new Texture2D(CCDrawManager.GraphicsDevice, w, h, false, SurfaceFormat.Color);
+            result.SetData(raster);
+            return result;
             }
-			else 
-			{
-				return null;
-			}
-#elif MACOS || IOS
+            else 
+            {
+            return null;
+            }
+            #elif MACOS || IOS
 
-			return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
-#else
-			return null;
-#endif
+            return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+            #else
+            return null;
+            #endif
         }
 
-		#endregion Loading Texture
+        #endregion Loading Texture
     }
 }
 
