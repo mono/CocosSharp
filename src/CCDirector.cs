@@ -15,23 +15,15 @@ namespace CocosSharp
     {
         void UpdateProjection();
     }
-
-    /// <summary>
-    ///  Possible OpenGL projections used by director
-    /// </summary>
+		
     public enum CCDirectorProjection
     {
-        /// sets a 2D projection (orthogonal projection)
-        Projection2D,
 
-        /// sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-        Projection3D,
+		Projection2D,        	/// Sets a 2D projection (orthogonal projection)
+		Projection3D,        	/// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
+		Custom,        			/// Calls "updateProjection" on the projection delegate.
+		Default = Projection3D	/// Default projection is 3D projection
 
-        /// it calls "updateProjection" on the projection delegate.
-        Custom,
-
-        /// Default projection is 3D projection
-        Default = Projection3D
     }
 
     /// <summary>
@@ -56,45 +48,53 @@ namespace CocosSharp
 
     public abstract class CCDirector
     {
-
         public static string EVENT_PROJECTION_CHANGED = "director_projection_changed";
         public static string EVENT_AFTER_UPDATE = "director_after_update";
         public static string EVENT_AFTER_VISIT = "director_after_visit";
         public static string EVENT_AFTER_DRAW = "director_after_draw";
+
+		#if !NETFX_CORE
+		const string storageDirName = "CocosSharpDirector";
+		const string saveFileName = "SceneList.dat";
+		const string sceneSaveFileName = "Scene{0}.dat";
+		#endif
 
         static CCDirector sharedDirector;
 
         readonly float defaultFPS = 60f;
         readonly List<CCScene> scenesStack = new List<CCScene>();
 
-        CCDirectorProjection directorProjection;
-
+		bool isNeedsInit = true;
         float deltaTime;
-        bool isNeedsInit = true;
+		CCDirectorProjection directorProjection;
+
         CCScene nextScene;
+
+		CCEventCustom eventAfterDraw;
+		CCEventCustom eventAfterVisit;
+		CCEventCustom eventAfterUpdate;
+		CCEventCustom eventProjectionChanged;
+
+
+		#region Properties
 
         #if !NETFX_CORE
         public CCAccelerometer Accelerometer { get; set; }
-        const string storageDirName = "CocosSharpDirector";
-        const string saveFileName = "SceneList.dat";
-        const string sceneSaveFileName = "Scene{0}.dat";
         #endif
-        public CCEventDispatcher EventDispatcher { get; private set; }
-        CCEventCustom eventAfterDraw;
-        CCEventCustom eventAfterVisit;
-        CCEventCustom eventAfterUpdate;
-        CCEventCustom eventProjectionChanged;
+
+		public bool GamePadEnabled { get; set; }        				// Set to true if this platform has a game pad connected.
+		public bool IsNextDeltaTimeZero { get; set; }
+		public bool IsPaused { get; private set; }
+
+		public float ContentScaleFactor { get; set; }
 
         public CCActionManager ActionManager { get; set; }
+		public CCEventDispatcher EventDispatcher { get; private set; }
+
         public virtual double AnimationInterval { get; set; }
-        public float ContentScaleFactor { get; set; }
-        /// <summary>
-        /// Set to true if this platform has a game pad connected.
-        /// </summary>
-        public bool GamePadEnabled { get; set; }
-        public bool IsNextDeltaTimeZero { get; set; }
-        public bool IsPaused { get; private set; }
-        protected bool IsPurgeDirectorInNextLoop { get; set; } // this flag will be set to true in end()
+
+
+		protected bool IsPurgeDirectorInNextLoop { get; set; } 			// This flag will be set to true in end()
         public bool IsSendCleanupToScene { get; private set; }
         public CCNode NotificationNode { get; set; }
         protected double OldAnimationInterval { get; set; }
@@ -224,11 +224,8 @@ namespace CocosSharp
         {
             get { return scenesStack.Count; }
         }
-
-        /// <summary>
-        /// Returns true if there is more than 1 scene on the stack.
-        /// </summary>
-        /// <returns></returns>
+			
+        // Returns true if there is more than 1 scene on the stack.
         public bool IsCanPopScene
         {
             get
@@ -238,6 +235,9 @@ namespace CocosSharp
             }
         }
 
+		#endregion Properties
+
+
         #region Constructors
 
         protected CCDirector()
@@ -245,8 +245,8 @@ namespace CocosSharp
             InitCCDirector();
         }
 
-        // Purging the director requires we re-initialize
-        private void InitCCDirector()
+		// Also called after purging the director
+		void InitCCDirector()
         {
             SetDefaultValues();
 
