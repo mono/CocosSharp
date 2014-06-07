@@ -8,7 +8,7 @@ namespace tests.Extensions
         public CCControlScene()
 		{  
 			// Get the sceensize
-			CCSize screensize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			CCSize screensize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var pBackItem = new CCMenuItemFont("Back", toExtensionsMainLayer);
 			pBackItem.Position = new CCPoint(screensize.Width - 50, 25);

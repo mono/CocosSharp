@@ -9,7 +9,7 @@ namespace tests
     {
         public Atlas6()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelBMFont label = null;
             label = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");

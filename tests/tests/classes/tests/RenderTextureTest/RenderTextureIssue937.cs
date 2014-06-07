@@ -42,7 +42,7 @@ namespace tests
             spr_nonpremulti.Visit();
             rend.End();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             /* A1: setup */
             spr_premulti.Position = new CCPoint(s.Width / 2 - 16, s.Height / 2 + 16);

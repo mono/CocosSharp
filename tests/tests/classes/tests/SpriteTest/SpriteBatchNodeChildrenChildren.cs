@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeChildrenChildren()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist");
 

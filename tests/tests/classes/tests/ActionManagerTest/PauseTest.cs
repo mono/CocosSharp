@@ -24,7 +24,7 @@ namespace tests
             //
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelTtf l = new CCLabelTtf("After 5 seconds grossini should move", "arial", 16);
             AddChild(l);
@@ -40,7 +40,7 @@ namespace tests
 
             CCAction action = new CCMoveBy (1, new CCPoint(150, 0));
 
-            CCApplication.SharedApplication.MainWindowDirector.ActionManager.AddAction(action, grossini, true);
+            grossini.AddAction(action, true);
 
             Schedule(unpause, 3);
         }
@@ -49,7 +49,7 @@ namespace tests
         {
             Unschedule(unpause);
             CCNode node = GetChildByTag(kTagGrossini);
-            CCApplication.SharedApplication.MainWindowDirector.ActionManager.ResumeTarget(node);
+            CCApplication.SharedApplication.ActionManager.ResumeTarget(node);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Box2D.TestBed
 
         public bool initWithEntryID(int entryId)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_entryID = entryId;
 

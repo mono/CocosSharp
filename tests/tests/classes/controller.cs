@@ -165,7 +165,7 @@ namespace tests
         {
             testListMenuItems[currentItemIndex].Selected = false;
             currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -178,7 +178,7 @@ namespace tests
             if(currentItemIndex < 0) {
                 currentItemIndex = testListMenuItems.Count - 1;
             }
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -203,10 +203,7 @@ namespace tests
 
         void CloseCallback(object sender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.End();
-            #if !IOS
-            CCApplication.SharedApplication.Game.Exit();
-            #endif
+            CCApplication.SharedApplication.ExitGame();
         }
 
         void EnableGamePad()
@@ -292,7 +289,7 @@ namespace tests
 
             CCPoint curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             if (nextPos.Y < 0.0f)
             {
                 testListMenu.Position = new CCPoint(0, 0);
@@ -317,7 +314,7 @@ namespace tests
             // https://github.com/mono/MonoGame/issues/2276
             var delta = mouseEvent.ScrollY;
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var curPos = testListMenu.Position;
             var nextPos = curPos;
             nextPos.Y += (delta / CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor) / LINE_SPACE;
@@ -343,7 +340,7 @@ namespace tests
 
         public static TestScene CreateTestScene(int index)
         {
-            CCApplication.SharedApplication.MainWindowDirector.PurgeCachedData();
+            CCApplication.SharedApplication.PurgeCachedData();
 
             TestScene scene = null;
 

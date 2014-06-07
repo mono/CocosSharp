@@ -8,7 +8,7 @@ namespace tests
 
         public CameraZoomTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSprite sprite;
             CCCamera cam;

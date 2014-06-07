@@ -14,7 +14,7 @@ namespace tests
         {
             m_dir = 1;
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             float step = s.Width / 11;
             for (int i = 0; i < 5; i++)

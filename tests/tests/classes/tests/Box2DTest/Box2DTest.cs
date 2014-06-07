@@ -91,7 +91,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             // init physics
             initPhysics();
             // create reset button
@@ -116,7 +116,7 @@ namespace tests
 
         private void initPhysics()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             _world = new b2World(gravity);
@@ -188,7 +188,7 @@ namespace tests
 
             CCMenu menu = new CCMenu(res);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             menu.Position = new CCPoint(s.Width / 2, 30);
             AddChild(menu, -1);

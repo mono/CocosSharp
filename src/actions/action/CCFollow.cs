@@ -54,7 +54,7 @@ namespace CocosSharp
 
 			BoundaryFullyCovered = false;
 
-			CCSize winSize = followedNode.Director.WinSize;
+			CCSize winSize = followedNode.Director.WindowSizeInPoints;
 			FullScreenSize = (CCPoint)winSize;
 			HalfScreenSize = FullScreenSize * 0.5f;
 

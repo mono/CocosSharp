@@ -20,7 +20,7 @@ namespace tests
 				var label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
                 AddChild(label);
 
-				var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+				var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 				var p = new CCPoint(CCMacros.CCRandomBetween0And1() * s.Width, CCMacros.CCRandomBetween0And1() * s.Height);
                 label.Position = p;

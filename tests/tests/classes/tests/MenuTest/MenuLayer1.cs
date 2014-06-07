@@ -97,7 +97,7 @@ namespace tests
             menu.AlignItemsVertically();
 
             // elastic effect
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             int i = 0;
             CCNode child;
             var pArray = menu.Children;

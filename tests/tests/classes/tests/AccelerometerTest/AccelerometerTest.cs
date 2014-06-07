@@ -16,7 +16,7 @@ namespace tests
 		public void DidAccelerate(CCAcceleration accelerationValue)
         {
             CCDirector pDir = CCApplication.SharedApplication.MainWindowDirector;
-            CCSize winSize = pDir.WinSize;
+            CCSize winSize = pDir.WindowSizeInPoints;
 
             /*FIXME: Testing on the Nexus S sometimes m_pBall is NULL */
             if (m_pBall == null)
@@ -65,7 +65,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelTtf label = new CCLabelTtf(title(), "Arial", 32);
             AddChild(label, 1);

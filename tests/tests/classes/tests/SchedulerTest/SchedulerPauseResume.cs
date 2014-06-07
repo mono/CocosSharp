@@ -40,7 +40,7 @@ namespace tests
 
         public void pause(float dt)
         {
-            CCApplication.SharedApplication.MainWindowDirector.Scheduler.PauseTarget(this);
+            CCApplication.SharedApplication.Scheduler.PauseTarget(this);
         }
     }
 
@@ -53,7 +53,7 @@ namespace tests
 		{
 			base.OnEnter();
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = CCVisibleRect.Center;
@@ -94,7 +94,7 @@ namespace tests
 		{
 			if (pausedTargets != null && pausedTargets.Count > 0)
 			{
-				CCApplication.SharedApplication.MainWindowDirector.Scheduler.Resume (pausedTargets);
+				CCApplication.SharedApplication.Scheduler.Resume (pausedTargets);
 				pausedTargets.Clear ();
 			}
 			base.OnExit();
@@ -126,7 +126,7 @@ namespace tests
 		public void pause(float dt)
 		{
 			CCLog.Log ("Pausing");
-			pausedTargets = CCApplication.SharedApplication.MainWindowDirector.Scheduler.PauseAllTargets();
+			pausedTargets = CCApplication.SharedApplication.Scheduler.PauseAllTargets();
 
 			// should have only 2 items: ActionManager, self
 			Debug.Assert(pausedTargets.Count == 2, "Error: pausedTargets should have only 2 items");
@@ -138,7 +138,7 @@ namespace tests
 		{
 			times = 0;
 			CCLog.Log("Resuming");
-			CCApplication.SharedApplication.MainWindowDirector.Scheduler.Resume (pausedTargets);
+			CCApplication.SharedApplication.Scheduler.Resume (pausedTargets);
 			pausedTargets.Clear ();
 			
 		}
@@ -153,7 +153,7 @@ namespace tests
 		{
 			base.OnEnter();
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = CCVisibleRect.Center;
@@ -194,7 +194,7 @@ namespace tests
 		{
 			if (pausedTargets != null && pausedTargets.Count > 0)
 			{
-				CCApplication.SharedApplication.MainWindowDirector.Scheduler.Resume (pausedTargets);
+				CCApplication.SharedApplication.Scheduler.Resume (pausedTargets);
 				pausedTargets.Clear ();
 			}
 			base.OnExit();
@@ -226,7 +226,7 @@ namespace tests
 		public void pause(float dt)
 		{
 			CCLog.Log ("Pausing");
-			pausedTargets = CCApplication.SharedApplication.MainWindowDirector.Scheduler.PauseAllTargets(CCSchedulePriority.User);
+			pausedTargets = CCApplication.SharedApplication.Scheduler.PauseAllTargets(CCSchedulePriority.User);
 
 		}
 
@@ -235,7 +235,7 @@ namespace tests
 		{
 			times = 0;
 			CCLog.Log("Resuming");
-			CCApplication.SharedApplication.MainWindowDirector.Scheduler.Resume (pausedTargets);
+			CCApplication.SharedApplication.Scheduler.Resume (pausedTargets);
 			pausedTargets.Clear ();
 
 		}

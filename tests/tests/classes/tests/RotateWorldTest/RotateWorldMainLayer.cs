@@ -14,7 +14,7 @@ namespace tests
 
             float x, y;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             x = size.Width;
             y = size.Height;
 

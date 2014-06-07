@@ -6,7 +6,7 @@ namespace tests
     {
         public BMFontInit()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var bmFont = new CCLabelBMFont();
             //CCLabelBMFont* bmFont = [CCLabelBMFont create:@"Foo" fntFile:@"arial-unicode-26"];

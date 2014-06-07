@@ -10,7 +10,7 @@ namespace tests
     {
         public LabelAtlasHD()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // CCLabelBMFont
 			var label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');

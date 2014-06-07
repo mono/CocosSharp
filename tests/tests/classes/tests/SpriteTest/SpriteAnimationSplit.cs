@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteAnimationSplit()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var texture = CCTextureCache.Instance.AddImage("animations/dragon_animation");
 

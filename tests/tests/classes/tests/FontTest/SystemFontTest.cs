@@ -150,7 +150,7 @@ namespace tests.FontTest
 
 		public SystemFontTest()
 		{
-			size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
 			CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);

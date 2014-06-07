@@ -465,7 +465,7 @@ namespace CocosSharp
 
                     // Only call if the director changed
                     if (director != null)
-                        RunningOnNewWindow (value.WinSize);
+                        RunningOnNewWindow (value.WindowSizeInPoints);
                 }
             }
         }
@@ -482,12 +482,12 @@ namespace CocosSharp
 
         CCScheduler Scheduler
         {
-            get { return Director != null ? Director.Scheduler : null; }
+            get { return CCApplication.SharedApplication.Scheduler; }
         }
 
         CCActionManager ActionManager
         {
-            get { return Director != null ? Director.ActionManager : null; }
+            get { return CCApplication.SharedApplication.ActionManager; }
         }
 
         CCEventDispatcher EventDispatcher 
@@ -526,8 +526,7 @@ namespace CocosSharp
         {
             // Setup your content here
             // Laying out position/content size
-            // Adding listeners
-            // Running initial actions
+            // Adding event listeners
         }
 
         #endregion Setup content

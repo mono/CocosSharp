@@ -1274,7 +1274,7 @@ namespace tests
 
 		bool IsPointInTopHalfAreaOfScreen(CCPoint pt)
 		{
-			var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			if (pt.Y >= winSize.Height/2) {
 				return true;

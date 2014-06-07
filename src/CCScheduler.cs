@@ -184,7 +184,7 @@ namespace CocosSharp
 		{
 			get {
 
-				var target = CCApplication.SharedApplication.MainWindowDirector.ActionManager;
+				var target = CCApplication.SharedApplication.ActionManager;
 
 				LinkedListNode<ListEntry> next;
 
@@ -566,7 +566,7 @@ namespace CocosSharp
 		public void StartActionManager()
 		{
 			if (!IsActionManagerActive)
-				Schedule  (CCApplication.SharedApplication.MainWindowDirector.ActionManager, CCSchedulePriority.System, false);
+				Schedule  (CCApplication.SharedApplication.ActionManager, CCSchedulePriority.System, false);
 		}
 
 		public void UnscheduleAll ()

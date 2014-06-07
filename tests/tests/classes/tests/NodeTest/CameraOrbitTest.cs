@@ -6,7 +6,7 @@ namespace tests
     {
         public CameraOrbitTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSprite p = new CCSprite(TestResource.s_back3);
             AddChild(p, 0);

@@ -16,7 +16,7 @@ namespace tests
             label.Tag = 100;
 
             //Add the background
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCSprite corner = new CCSprite("Images/bugs/corner");
 
             int width = (int)(size.Width * 0.9f - (corner.ContentSize.Width * 2));

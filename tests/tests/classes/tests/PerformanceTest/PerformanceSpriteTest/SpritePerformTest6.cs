@@ -16,7 +16,7 @@ namespace tests
 
         private void performanceActions(CCSprite pSprite)
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             pSprite.Position = new CCPoint((CCRandom.Next() % (int) size.Width), (CCRandom.Next() % (int) size.Height));
 
             float period = 0.5f + (CCRandom.Next() % 1000) / 500.0f;

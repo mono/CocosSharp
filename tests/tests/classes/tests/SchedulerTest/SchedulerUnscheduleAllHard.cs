@@ -16,7 +16,7 @@ namespace tests
         {
             base.OnEnter();
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = s.Center;
@@ -33,12 +33,11 @@ namespace tests
 		public override void OnExit ()
 		{
 
-			var actionManagerActive = CCApplication.SharedApplication.MainWindowDirector.Scheduler.IsActionManagerActive;
+			var actionManagerActive = CCApplication.SharedApplication.Scheduler.IsActionManagerActive;
 
 			if(!actionManagerActive) {
 				// Restore the director's action manager.
-				var director = CCApplication.SharedApplication.MainWindowDirector;
-				director.Scheduler.StartActionManager ();
+                CCApplication.SharedApplication.Scheduler.StartActionManager ();
 			}
 
 			base.OnExit ();
@@ -76,7 +75,7 @@ namespace tests
 
         public void unscheduleAll(float dt)
         {
-             CCApplication.SharedApplication.MainWindowDirector.Scheduler.UnscheduleAll();
+             CCApplication.SharedApplication.Scheduler.UnscheduleAll();
         }
     }
 }

@@ -49,7 +49,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded particle system: {0}", psConfig.FileName);
                             if (psConfig.OnLoad != null)
                             {
-                                targetNode.Director.Scheduler.Schedule (
+                                CCApplication.SharedApplication.Scheduler.Schedule (
                                     f => psConfig.OnLoad(config, psConfig.Action), this, 0, 0, 0, false
                                 );
                             }

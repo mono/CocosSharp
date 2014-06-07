@@ -39,7 +39,7 @@ namespace CocosSharp
 
             if (Director != null) 
             {
-                ContentSize = Director.WinSize;
+                ContentSize = Director.WindowSizeInPoints;
                 IgnoreAnchorPointForPosition = true;
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
             }

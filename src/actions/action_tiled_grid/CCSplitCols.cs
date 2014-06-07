@@ -54,12 +54,12 @@ namespace CocosSharp
 
 	public class CCSplitColsState : CCTiledGrid3DActionState
 	{
-		protected CCSize WinSize { get; private set; }
+		protected CCSize WindowSizeInPoints { get; private set; }
 
 
 		public CCSplitColsState (CCSplitCols action, CCNode target) : base (action, target)
 		{
-			WinSize = Director.WinSizeInPixels;
+			WindowSizeInPoints = Director.WindowSizeInPixels;
 		}
 
 		public override void Update (float time)
@@ -74,10 +74,10 @@ namespace CocosSharp
 					direction = -1;
 				}
 
-				coords.BottomLeft.Y += direction * WinSize.Height * time;
-				coords.BottomRight.Y += direction * WinSize.Height * time;
-				coords.TopLeft.Y += direction * WinSize.Height * time;
-				coords.TopRight.Y += direction * WinSize.Height * time;
+				coords.BottomLeft.Y += direction * WindowSizeInPoints.Height * time;
+				coords.BottomRight.Y += direction * WindowSizeInPoints.Height * time;
+				coords.TopLeft.Y += direction * WindowSizeInPoints.Height * time;
+				coords.TopRight.Y += direction * WindowSizeInPoints.Height * time;
 
 				SetTile (i, 0, ref coords);
 			}

@@ -31,7 +31,7 @@ namespace tests
         private void InitBaseDrawNodeTest ()
         {
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
@@ -86,7 +86,7 @@ namespace tests
     {
         public DrawPrimitivesWithRenderTextureTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCRenderTexture text = new CCRenderTexture((int)s.Width, (int)s.Height);
 
             CCDrawNode draw = new CCDrawNode();
@@ -112,7 +112,7 @@ namespace tests
             base.Draw();
 
             CCApplication app = CCApplication.SharedApplication;
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCDrawingPrimitives.Begin();
 
@@ -209,7 +209,7 @@ namespace tests
         private bool InitDrawNodeTest ()
         {
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCDrawNode draw = new CCDrawNode();
             AddChild(draw, 10);

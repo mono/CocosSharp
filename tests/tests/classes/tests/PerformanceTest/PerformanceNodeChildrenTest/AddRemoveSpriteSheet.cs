@@ -12,7 +12,7 @@ namespace tests
 
         public override void updateQuantityOfNodes()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // increase nodes
             if (currentQuantityOfNodes < quantityOfNodes)

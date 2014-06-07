@@ -20,7 +20,7 @@ namespace tests
             CCSprite sprite7 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 2, 121 * 1, 85, 121));
             CCSprite sprite8 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 1, 85, 121));
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             sprite1.Position = new CCPoint((s.Width / 5) * 1, (s.Height / 3) * 1);
             sprite2.Position = new CCPoint((s.Width / 5) * 2, (s.Height / 3) * 1);
             sprite3.Position = new CCPoint((s.Width / 5) * 3, (s.Height / 3) * 1);

@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeReorderIssue744()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // Testing issue #744
             // http://code.google.com/p/cocos2d-iphone/issues/detail?id=744

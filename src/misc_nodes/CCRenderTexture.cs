@@ -73,7 +73,7 @@ namespace CocosSharp
 
             // Calculate the adjustment ratios based on the old and new projections
             CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
-            CCSize size = director.WinSizeInPixels;
+            CCSize size = director.WindowSizeInPixels;
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 

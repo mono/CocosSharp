@@ -40,7 +40,7 @@ namespace tests
             //
 
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             float step = s.Width / 12;
 
             // small capacity. Testing resizing.

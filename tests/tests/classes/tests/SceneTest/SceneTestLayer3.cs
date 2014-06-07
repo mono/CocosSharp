@@ -22,7 +22,7 @@ namespace tests
 
             AddChild(menu);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
             AddChild(sprite);
             

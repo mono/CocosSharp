@@ -19,7 +19,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			CCMenuItemFont.FontSize = 24;
 			CCMenuItemFont.FontName = "arial";

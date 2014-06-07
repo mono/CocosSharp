@@ -28,7 +28,7 @@ namespace tests
             AddChild(m_kathia, 2);
             AddChild(m_tamara, 1);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_grossini.Position = new CCPoint(60, 50);
             m_kathia.Position = new CCPoint(60, 150);
@@ -87,7 +87,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy(3, new CCPoint(size.Width - 130, 0));
             var move_back = (CCActionInterval) move.Reverse();
@@ -137,7 +137,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
 
@@ -175,7 +175,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -211,7 +211,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -242,7 +242,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -277,7 +277,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -308,7 +308,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -343,7 +343,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
 
@@ -381,7 +381,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -416,7 +416,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -447,7 +447,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -482,7 +482,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -515,7 +515,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // rotate and jump
             var jump1 = new CCJumpBy (4, new CCPoint(-s.Width + 80, 0), 100, 4);

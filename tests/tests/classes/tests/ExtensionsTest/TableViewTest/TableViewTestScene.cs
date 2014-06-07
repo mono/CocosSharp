@@ -23,7 +23,7 @@ namespace tests.Extensions
         private bool InitTableViewTestLayer()
         {
 
-            var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var tableView = new CCTableView(this, new CCSize(250, 60));
             tableView.Direction = CCScrollViewDirection.Horizontal;

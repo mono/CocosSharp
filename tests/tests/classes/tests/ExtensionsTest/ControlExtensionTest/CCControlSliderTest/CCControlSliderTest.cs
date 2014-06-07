@@ -10,7 +10,7 @@ namespace tests.Extensions
 
         public CCControlSliderTest()
         {
-            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // Add a label in which the slider value will be displayed
             m_pDisplayValueLabel = new CCLabelTtf("Move the slider thumb!\nThe lower slider is restricted.", "Arial", 32);

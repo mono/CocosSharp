@@ -51,7 +51,7 @@ namespace CocosSharp
             // create a transparent color layer
             // in which we are going to add our rendertextures
             var color = new CCColor4B(0, 0, 0, 0);
-            CCSize size = Director.WinSize;
+            CCSize size = Director.WindowSizeInPoints;
             CCLayerColor layer = new CCLayerColor(color);
 
             // create the first render texture for inScene

@@ -132,7 +132,10 @@ namespace CocosSharp
 
         internal GameTime XnaGameTime;
 
+        bool paused;
         bool initialized;
+        bool isNextDeltaTimeZero;
+        float deltaTime;
 
         #if WINDOWS || WINDOWSGL || MACOS || WINDOWSGL
         int lastMouseId;
@@ -151,6 +154,7 @@ namespace CocosSharp
         CCEventGamePadTrigger gamePadTrigger;
 
         CCGame xnaGame;
+        CCGameTime GameTime;
         CCWindow mainWindow;
 
 
@@ -172,11 +176,17 @@ namespace CocosSharp
         }
 
         // Instance properties
-
-        public CCGameTime GameTime { get; set; }
+        public bool HandleMediaStateAutomatically { get; set; }
         public CCDisplayOrientation CurrentOrientation { get; private set; }
         public CCApplicationDelegate ApplicationDelegate { get; set; }
-        public bool HandleMediaStateAutomatically { get; set; }
+
+        public CCActionManager ActionManager { get; private set; }
+        public CCScheduler Scheduler { get; private set; }
+
+        public bool Paused
+        {
+            get { return paused; }
+        }
 
         public bool AllowUserResizing
         {
@@ -288,7 +298,6 @@ namespace CocosSharp
                     manager.PreferredBackBufferHeight = value;
                     CCDrawManager.UpdatePresentationParameters();
                 }
-
             }
         }
 
@@ -346,6 +355,10 @@ namespace CocosSharp
             GameTime = new CCGameTime();
             xnaGame = game;
 
+            Scheduler = new CCScheduler();
+            ActionManager = new CCActionManager();
+            Scheduler.Schedule(ActionManager, CCSchedulePriority.System, false);
+
             priorGamePadState = new Dictionary<PlayerIndex, GamePadState>();
             gamePadConnection = new CCEventGamePadConnection ();
             gamePadButton = new CCEventGamePadButton ();
@@ -388,11 +401,50 @@ namespace CocosSharp
 
         #endregion Constructors
 
+
+        #region Cleaning up
+
+        public void PurgeCachedData()
+        {
+            // Add caches etc
+        }
+
+        #endregion Cleaning up
+
+
+        #region Game state
+
         public void StartGame()
         {
             if (xnaGame != null)
                 xnaGame.Run();
         }
+
+        public void ExitGame()
+        {
+            MainWindowDirector.End();
+            xnaGame.Exit();
+        }
+
+        public void PauseGame()
+        {
+            paused = true;
+        }
+
+        public void ResumeGame()
+        {
+            if (!paused)
+            {
+                return;
+            }
+
+            paused = false;
+            deltaTime = 0;
+        }
+
+        #endregion Game state
+
+
 
         // Implement for initialize OpenGL instance, set source path, etc...
         public virtual bool InitInstance()
@@ -502,7 +554,22 @@ namespace CocosSharp
 
             ProcessMouse();
 
-            MainWindowDirector.Update(GameTime);
+            if (!paused)
+            {
+                if (isNextDeltaTimeZero)
+                {
+                    deltaTime = 0;
+                    isNextDeltaTimeZero = false;
+                }
+                else
+                {
+                    deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                }
+
+                Scheduler.Update(deltaTime);
+
+                MainWindowDirector.Update(deltaTime);
+            }
 
             base.Update(gameTime);
         }

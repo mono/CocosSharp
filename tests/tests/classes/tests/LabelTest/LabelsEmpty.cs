@@ -10,7 +10,7 @@ namespace tests
     {
         public LabelsEmpty()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // CCLabelBMFont
 			var label1 = new CCLabelBMFont("", "fonts/bitmapFontTest3.fnt");

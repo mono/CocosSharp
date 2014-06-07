@@ -62,14 +62,12 @@ namespace tests
 
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
-            if(application.MainWindowDirector != null)
-                application.MainWindowDirector.Pause();
+            application.PauseGame();
         }
 
         public override void ApplicationWillEnterForeground(CCApplication application)
         {
-            if(application.MainWindowDirector != null)
-                application.MainWindowDirector.Resume();
+            application.ResumeGame();
         }
     }
 }

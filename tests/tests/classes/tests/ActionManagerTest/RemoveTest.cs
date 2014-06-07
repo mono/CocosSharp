@@ -26,7 +26,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelTtf l = new CCLabelTtf("Should not crash", "arial", 16);
             AddChild(l);

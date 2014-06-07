@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             m_pItmeMenu = new CCMenu(null);
 
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)
@@ -98,7 +98,7 @@ namespace tests
 
                 CCPoint curPos = m_pItmeMenu.Position;
                 CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-                CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+                CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
                 if (nextPos.Y < 0.0f)
                 {
                     m_pItmeMenu.Position = new CCPoint(0, 0);

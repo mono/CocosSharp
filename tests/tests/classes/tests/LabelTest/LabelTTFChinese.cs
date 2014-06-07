@@ -10,7 +10,7 @@ namespace tests
     {
         public LabelTTFChinese()
         {
-			var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 			var pLable = new CCLabelTtf("中国", "Marker Felt", 30);
 			pLable.Position = size.Center;
             AddChild(pLable);
@@ -31,7 +31,7 @@ namespace tests
     {
         public LabelBMFontChinese()
         {
-			var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var pLable = new CCLabelBMFont("中国", "fonts/bitmapFontChinese.fnt");
 			pLable.Position = size.Center;
             AddChild(pLable);

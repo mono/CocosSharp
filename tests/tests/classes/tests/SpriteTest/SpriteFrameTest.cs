@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteFrameTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // IMPORTANT:
             // The sprite frames will be cached AND RETAINED, and they won't be released unless you call

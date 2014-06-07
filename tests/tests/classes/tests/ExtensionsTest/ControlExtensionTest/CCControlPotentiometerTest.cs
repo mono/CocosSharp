@@ -15,7 +15,7 @@ namespace tests.Extensions
 
         public CCControlPotentiometerTest()
         {
-            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var layer = new CCNode();
             layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);

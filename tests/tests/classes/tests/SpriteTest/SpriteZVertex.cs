@@ -39,7 +39,7 @@ namespace tests
             m_dir = 1;
             m_time = 0;
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             float step = s.Width / 12;
 
             CCNode node = new CCNode ();

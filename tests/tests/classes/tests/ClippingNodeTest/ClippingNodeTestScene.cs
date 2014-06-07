@@ -103,7 +103,7 @@ namespace tests.Clipping
 
         public BaseClippingNodeTest() : base()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSprite background = new CCSprite(TestResource.s_back3);
             background.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -234,7 +234,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCNode stencil = Stencil();
             stencil.Tag = kTagStencilNode;
@@ -529,7 +529,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCClippingNode clipper = new CCClippingNode();
             clipper.Tag = kTagClipperNode;

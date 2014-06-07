@@ -45,7 +45,7 @@ namespace tests
 			AddEventListener(touchListener);
 
             // ask director the the window size
-			var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // create and initialize a Label
 			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
@@ -186,7 +186,7 @@ namespace tests
             CCTouch touch = pTouches[0];
             CCPoint location = touch.LocationInView;
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             arrows.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          arrows.Position.Y);

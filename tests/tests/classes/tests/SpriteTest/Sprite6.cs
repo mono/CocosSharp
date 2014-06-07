@@ -17,7 +17,7 @@ namespace tests
             AddChild(batch, 0, kTagSpriteBatchNode);
             batch.IgnoreAnchorPointForPosition = true;
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             batch.AnchorPoint = new CCPoint(0.5f, 0.5f);
             batch.ContentSize = (new CCSize(s.Width, s.Height));

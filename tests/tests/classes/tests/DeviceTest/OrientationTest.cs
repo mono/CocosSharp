@@ -61,7 +61,7 @@ namespace tests
             do
             {
 
-                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
                 CCLabelTtf label = new CCLabelTtf(title(), "Arial", 26);
                 AddChild(label, 1);
@@ -143,7 +143,7 @@ namespace tests
 
 				AddEventListener(touchListener);
 
-                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
                 CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);

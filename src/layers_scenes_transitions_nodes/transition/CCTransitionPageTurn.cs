@@ -75,7 +75,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = Director.WinSize;
+            CCSize s = Director.WindowSizeInPoints;
             int x, y;
             if (s.Width > s.Height)
             {

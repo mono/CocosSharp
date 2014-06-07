@@ -8,7 +8,7 @@ namespace tests.Extensions
 		{
 			base.OnEnter();
 
-			var	s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var	s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var pMenu = new CCMenu();
 			pMenu.Position = CCPoint.Zero;

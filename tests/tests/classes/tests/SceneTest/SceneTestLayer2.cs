@@ -27,7 +27,7 @@ namespace tests
 
             AddChild(_TheMenu);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
             AddChild(sprite);
             sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
@@ -54,7 +54,7 @@ namespace tests
         {
             CCLog.Log("SceneTestLayer2#onEnter");
             base.OnEnter();
-            _PopMenuItem.Visible = CCApplication.SharedApplication.MainWindowDirector.IsCanPopScene;
+            _PopMenuItem.Visible = CCApplication.SharedApplication.MainWindowDirector.CanPopScene;
             _TheMenu.AlignItemsVertically(12f);
         }
 

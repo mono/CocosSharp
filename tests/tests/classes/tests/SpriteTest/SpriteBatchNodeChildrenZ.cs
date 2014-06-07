@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeChildrenZ()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // parents
             CCSpriteBatchNode batch;

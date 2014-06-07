@@ -16,7 +16,7 @@ namespace tests
 
         private void InitBug1159Layer()
         {
-                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
                 CCLayerColor background = new CCLayerColor(new CCColor4B(255, 0, 255, 255));
                 AddChild(background);

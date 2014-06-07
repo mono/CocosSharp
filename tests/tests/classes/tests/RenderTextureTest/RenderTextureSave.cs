@@ -14,7 +14,7 @@ namespace tests
 
         public RenderTextureSave()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // create a render texture, this is what we are going to draw into
 			m_pTarget = new CCRenderTexture((int) s.Width, (int) s.Height, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);

@@ -7,7 +7,7 @@ namespace tests
     {
         public CameraCenterTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSprite sprite;
             CCOrbitCamera orbit;
@@ -75,7 +75,7 @@ namespace tests
 	{
 		public CameraTest1()
 		{
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);
@@ -125,7 +125,7 @@ namespace tests
 	{
 		public CameraTest2()
 		{
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);

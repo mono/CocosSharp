@@ -112,7 +112,7 @@ namespace CocosSharp
 
             if (Director != null)
             {
-                ContentSize = Director.WinSize;
+                ContentSize = Director.WindowSizeInPoints;
                 AnchorPoint = new CCPoint(0.5f, 0.5f);
                 IgnoreAnchorPointForPosition = true;
             }
@@ -214,7 +214,7 @@ namespace CocosSharp
                 var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
                 var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform);
 
-                var winSize = Director.WinSize;
+                var winSize = Director.WindowSizeInPoints;
 
                 CCRect prevScissorRect;
                 if (CCDrawManager.ScissorRectEnabled)

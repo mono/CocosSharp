@@ -118,7 +118,7 @@ namespace CocosSharp
 
             if(Director != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
             {
-                ContentSize = Director.WinSize;
+                ContentSize = Director.WindowSizeInPoints;
             }
         }
 

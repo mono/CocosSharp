@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var layer1 = new CCLayerColor(new CCColor4B(255, 255, 0, 80), 100, s.Height - 50);
             layer1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             layer1.IgnoreAnchorPointForPosition = false;

@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeReorderIssue767()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
             CCNode aParent;

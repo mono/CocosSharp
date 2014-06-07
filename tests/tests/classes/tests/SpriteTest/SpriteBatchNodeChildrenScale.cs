@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeChildrenScale()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini_family.plist");
 

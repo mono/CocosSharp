@@ -1135,7 +1135,7 @@ namespace CocosSharp
 
         public static void SetScissorInPoints(float x, float y, float w, float h)
         {
-            y = CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - y - h;
+            y = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Height - y - h;
 
             graphicsDevice.ScissorRectangle = new Rectangle(
                 (int)(x * m_fScaleX + m_obViewPortRect.Origin.X),
@@ -1156,7 +1156,7 @@ namespace CocosSharp
                 float w = sr.Width / m_fScaleX;
                 float h = sr.Height / m_fScaleY;
 
-                y = CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - y - h;
+                y = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Height - y - h;
 
                 return new CCRect(x, y, w, h);
             }
@@ -1209,7 +1209,7 @@ namespace CocosSharp
             m_eResolutionPolicy = resolutionPolicy;
 
             // reset director's member variables to fit visible rect
-            CCApplication.SharedApplication.MainWindowDirector.WinSizeInPoints = DesignResolutionSize;
+            CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints = DesignResolutionSize;
             CCApplication.SharedApplication.MainWindowDirector.SetGlDefaultValues();
         }
 
@@ -1610,7 +1610,7 @@ namespace CocosSharp
             SetClearMaskState(_maskLayer, maskState.Inverted);
 
             // draw a fullscreen solid rectangle to clear the stencil buffer
-            var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             PushMatrix();
             SetIdentityMatrix();

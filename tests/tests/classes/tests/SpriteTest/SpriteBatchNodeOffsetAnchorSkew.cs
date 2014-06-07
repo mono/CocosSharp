@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeOffsetAnchorSkew()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             for (int i = 0; i < 3; i++)
             {

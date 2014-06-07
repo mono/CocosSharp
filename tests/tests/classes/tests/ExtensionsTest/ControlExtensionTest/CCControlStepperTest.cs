@@ -15,7 +15,7 @@ namespace tests.Extensions
 
         public CCControlStepperTest()
         {
-            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var layer = new CCNode();
             layer.Position = screenSize.Center;

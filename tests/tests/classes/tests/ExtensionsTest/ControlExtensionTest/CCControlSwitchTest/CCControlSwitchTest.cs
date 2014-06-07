@@ -8,7 +8,7 @@ namespace tests.Extensions
 
         public CCControlSwitchTest()
         {
-            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCNode layer = new CCNode ();
             layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);

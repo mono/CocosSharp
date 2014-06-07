@@ -60,7 +60,7 @@ namespace tests
 			var menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);

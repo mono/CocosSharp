@@ -43,7 +43,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 24);
             AddChild(label);
@@ -143,13 +143,13 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var pTextField = new CCTextFieldTTF(
                 "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
                 );
 
-            pTextField.Position = CCApplication.SharedApplication.MainWindowDirector.WinSize.Center;
+            pTextField.Position = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Center;
 
             pTextField.AutoEdit = true;
 
@@ -213,7 +213,7 @@ namespace CocosSharp
             m_bAction = false;
 
             // add CCTextFieldTTF
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_pTextField = new CCTextFieldTTF("<click here for input>",
                                               TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
@@ -271,7 +271,7 @@ namespace CocosSharp
                 endPos.X += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.X, CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - inputTextSize.Height * 2);
+            CCPoint beginPos = new CCPoint(endPos.X, CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -302,7 +302,7 @@ namespace CocosSharp
             int RAND_MAX = 32767;
             CCRandom rand = new CCRandom();
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;

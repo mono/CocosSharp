@@ -37,7 +37,7 @@ namespace CocosSharp
 
 		public override CCGridBase Grid {
 			get {
-				tiledGrid3D = new CCTiledGrid3D (GridSize, Director.WinSizeInPixels);
+				tiledGrid3D = new CCTiledGrid3D (GridSize, Director.WindowSizeInPixels);
 				tiledGrid3D.Director = Director;
 				return tiledGrid3D;
 			}

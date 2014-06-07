@@ -36,7 +36,7 @@ namespace tests
 			AddEventListener(touchListener);
 
             // ask director the the window size
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLayerColor layer;
             for (int i = 0; i < 5; i++)
             {

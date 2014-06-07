@@ -28,13 +28,13 @@ namespace tests
 
             CCMenu menu = new CCMenu(item);
             AddChild(menu);
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             menu.Position = (new CCPoint(s.Width / 2, 100));
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var it = touches.FirstOrDefault();
             CCTouch touch = (CCTouch)(it);

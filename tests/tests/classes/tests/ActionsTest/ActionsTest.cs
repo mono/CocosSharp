@@ -295,7 +295,7 @@ namespace tests
             AddChild(m_tamara, 2);
             AddChild(m_kathia, 3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 3);
             m_tamara.Position = new CCPoint(s.Width / 2, 2 * s.Height / 3);
@@ -359,7 +359,7 @@ namespace tests
 
         public void centerSprites(uint numberOfSprites)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             if (numberOfSprites == 0)
             {
@@ -389,7 +389,7 @@ namespace tests
 
         public void alignSpritesLeft(uint numberOfSprites)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             if (numberOfSprites == 1)
             {
@@ -428,7 +428,7 @@ namespace tests
 
             centerSprites(3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var actionTo = new CCMoveTo(2, new CCPoint(s.Width - 40, s.Height - 40));
             var actionBy = new CCMoveBy(2, new CCPoint(80, 80));
@@ -446,7 +446,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_tamara.ScaleX = 2.5f;
             m_tamara.ScaleY = -1.0f;
@@ -475,7 +475,7 @@ namespace tests
 
             centerSprites(3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             var actionTo = new CCMoveTo (2, new CCPoint(s.Width - 40, s.Height - 40));
             var actionBy = new CCMoveBy (2, new CCPoint(80, 80));
@@ -591,7 +591,7 @@ namespace tests
 			m_grossini.RemoveFromParent(true);
 			m_kathia.RemoveFromParent(true);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSize boxSize = new CCSize(100.0f, 100.0f);
 
@@ -643,7 +643,7 @@ namespace tests
             m_kathia.RemoveFromParent(true);
 
 			// Get window size so that we can center the box layer
-			var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+			var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
 			var boxSize = new CCSize(100.0f, 100.0f);
 
@@ -741,7 +741,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             //
             // startPosition can be any coordinate, but since the movement
@@ -964,7 +964,7 @@ namespace tests
 
         public void callback1()
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -973,7 +973,7 @@ namespace tests
 
         public void callback2(CCNode sender)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -982,7 +982,7 @@ namespace tests
 
         public void callback3(CCNode sender, object data)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
@@ -1025,7 +1025,7 @@ namespace tests
 
         public void callback1()
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -1034,7 +1034,7 @@ namespace tests
 
         public void callback2(CCNode pSender)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -1043,7 +1043,7 @@ namespace tests
 
         public void callback3(CCNode target, object data)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
@@ -1352,7 +1352,7 @@ namespace tests
             base.OnEnter();
 
             centerSprites(1);
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_grossini.Position = new CCPoint(-200, s.Height / 2);
             var move = new CCMoveBy (2, new CCPoint(s.Width * 3, 0));
@@ -1382,7 +1382,7 @@ namespace tests
 
             centerSprites(2);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_pArray.Add(new CCPoint(0, 0));
             m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
@@ -1429,7 +1429,7 @@ namespace tests
             CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
             CCDrawManager.PopMatrix();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
@@ -1459,7 +1459,7 @@ namespace tests
 
             centerSprites(2);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             //
             // sprite 1 (By)
@@ -1581,7 +1581,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             AddNewSpriteWithCoords(new CCPoint(s.Width/2, s.Height/2));
         }
 
@@ -1685,7 +1685,7 @@ namespace tests
     {
         public override void RunActionsInSprite(CCSprite sprite)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // sprite 1
 			CCBezierConfig bezier;
@@ -1726,7 +1726,7 @@ namespace tests
 
             centerSprites(2);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             //
             // sprite 1 (By)
@@ -1833,7 +1833,7 @@ namespace tests
 
             centerSprites(2);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             m_pArray.Add(new CCPoint(0, 0));
             m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
@@ -1898,7 +1898,7 @@ namespace tests
             CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
             CCDrawManager.PopMatrix();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
@@ -1987,7 +1987,7 @@ namespace tests
 
             var actF = new CCSequence(act1, act2, act3, act4, act5, act6, act7, act8);
 
-            CCApplication.SharedApplication.MainWindowDirector.ActionManager.AddAction(actF, spr, false);
+            CCApplication.SharedApplication.ActionManager.AddAction(actF, spr, false);
         }
 
         private void log4()
@@ -2198,16 +2198,15 @@ namespace tests
         private void pause(float dt)
         {
             CCLog.Log("Pausing");
-            var director = CCApplication.SharedApplication.MainWindowDirector;
 
-            m_pPausedTargets = director.ActionManager.PauseAllRunningActions();
+            m_pPausedTargets = CCApplication.SharedApplication.ActionManager.PauseAllRunningActions();
         }
 
         private void resume(float dt)
         {
             CCLog.Log("Resuming");
             var director = CCApplication.SharedApplication.MainWindowDirector;
-            director.ActionManager.ResumeTargets(m_pPausedTargets);
+            CCApplication.SharedApplication.ActionManager.ResumeTargets(m_pPausedTargets);
         }
     }
 

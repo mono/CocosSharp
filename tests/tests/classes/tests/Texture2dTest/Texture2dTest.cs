@@ -185,7 +185,7 @@ namespace tests
             base.OnEnter();
 
             CCTextureCache.Instance.DumpCachedTextureInfo();
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1, (int) (enumTag.kTagLabel));
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
@@ -264,7 +264,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLog.Log("Loading 512x512 image...");
             CCSprite sprite1 = new CCSprite("Images/texture512x512");
@@ -1000,7 +1000,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             //
             // Sprite 1: GL_LINEAR
@@ -1238,7 +1238,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1284,7 +1284,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1334,7 +1334,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1382,7 +1382,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCSprite sprite;
 
@@ -1441,7 +1441,7 @@ namespace tests
 
             m_nImageOffset = 0;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             CCLabelTtf label = new CCLabelTtf("Loading...", "Marker Felt", 32);
             label.Position = size.Center;
@@ -1491,7 +1491,7 @@ namespace tests
             sprite.AnchorPoint = CCPoint.Zero;
             AddChild(sprite, -1);
 
-            CCSize size = director.WinSize;
+            CCSize size = director.WindowSizeInPoints;
             int i = m_nImageOffset * 32;
             sprite.Position = new CCPoint(i % (int) size.Width, (i / (int) size.Width) * 32);
 

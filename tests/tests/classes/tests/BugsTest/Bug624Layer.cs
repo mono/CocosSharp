@@ -16,7 +16,7 @@ namespace tests
 
         private void InitBug624Layer()
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLabelTtf label = new CCLabelTtf("Layer1", "MarkerFelt", 22);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
@@ -47,7 +47,7 @@ namespace tests
 
         public Bug624Layer2()
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLabelTtf label = new CCLabelTtf("Layer2", "MarkerFelt", 36);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);

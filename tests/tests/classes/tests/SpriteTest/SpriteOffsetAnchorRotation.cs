@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteOffsetAnchorRotation()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
             cache.AddSpriteFrames("animations/grossini.plist");
             cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");

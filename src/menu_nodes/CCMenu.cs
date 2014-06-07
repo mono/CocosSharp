@@ -105,7 +105,7 @@ namespace CocosSharp
 
             if (Director != null)
             {
-                CCSize contentSize = Director.WinSize;
+                CCSize contentSize = Director.WindowSizeInPoints;
                 Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
                 ContentSize = contentSize;
 
