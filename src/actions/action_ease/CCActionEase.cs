@@ -1,58 +1,58 @@
 namespace CocosSharp
 {
-    public class CCActionEase : CCActionInterval
-    {
-        protected internal CCActionInterval InnerAction { get; private set; }
+	public class CCActionEase : CCActionInterval
+	{
+		protected internal CCActionInterval InnerAction { get; private set; }
 
-        #region Constructors
+		#region Constructors
 
-        // This can be taken out once all the classes that extend it have had their constructors created.
-        protected CCActionEase()
-        {
-        }
+		// This can be taken out once all the classes that extend it have had their constructors created.
+		protected CCActionEase ()
+		{
+		}
 
-        public CCActionEase(CCActionInterval pAction) : base(pAction.Duration)
-        {
-            InnerAction = pAction;
-        }
+		public CCActionEase (CCActionInterval pAction) : base (pAction.Duration)
+		{
+			InnerAction = pAction;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCActionEaseState(this, target);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCActionEase((CCActionInterval)InnerAction.Reverse());
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCActionEaseState (this, target);
+		}
 
-    public class CCActionEaseState : CCActionIntervalState
-    {
-        protected CCActionIntervalState InnerActionState { get; private set; }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCActionEase ((CCActionInterval)InnerAction.Reverse ());
+		}
+	}
 
-        public CCActionEaseState(CCActionEase action, CCNode target) : base(action, target)
-        {
-            InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction(target);
-        }
 
-        public override void Stop()
-        {
-            InnerActionState.Stop();
-            base.Stop();
-        }
+	#region Action state
 
-        public override void Update(float time)
-        {
-            InnerActionState.Update(time);
-        }
-    }
+	public class CCActionEaseState : CCActionIntervalState
+	{
+		protected CCActionIntervalState InnerActionState { get; private set; }
 
-    #endregion Action state
+		public CCActionEaseState (CCActionEase action, CCNode target) : base (action, target)
+		{
+			InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction (target);
+		}
+
+		public override void Stop ()
+		{
+			InnerActionState.Stop ();
+			base.Stop ();
+		}
+
+		public override void Update (float time)
+		{
+			InnerActionState.Update (time);
+		}
+	}
+
+	#endregion Action state
 }

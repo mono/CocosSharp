@@ -1,48 +1,48 @@
 namespace CocosSharp
 {
-    public class CCEaseRateAction : CCActionEase
-    {
-        public float Rate { get; private set; }
+	public class CCEaseRateAction : CCActionEase
+	{
+		public float Rate { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCEaseRateAction(CCActionInterval pAction, float fRate) : base(pAction)
-        {
-            Rate = fRate;
-        }
+		public CCEaseRateAction (CCActionInterval pAction, float fRate) : base (pAction)
+		{
+			Rate = fRate;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCEaseRateActionState(this, target);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCEaseRateAction((CCActionInterval)InnerAction.Reverse(), 1 / Rate);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCEaseRateActionState (this, target);
+		}
 
-    public class CCEaseRateActionState : CCActionEaseState
-    {
-        protected float Rate { get; private set; }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCEaseRateAction ((CCActionInterval)InnerAction.Reverse (), 1 / Rate);
+		}
+	}
 
-        public CCEaseRateActionState(CCEaseRateAction action, CCNode target) : base(action, target)
-        {
-            Rate = action.Rate;
-        }
 
-        public override void Update(float time)
-        {
-            InnerActionState.Update(CCEaseMath.ExponentialOut(time));
-        }
-    }
+	#region Action state
 
-    #endregion Action state
+	public class CCEaseRateActionState : CCActionEaseState
+	{
+		protected float Rate { get; private set; }
+
+		public CCEaseRateActionState (CCEaseRateAction action, CCNode target) : base (action, target)
+		{
+			Rate = action.Rate;
+		}
+
+		public override void Update (float time)
+		{
+			InnerActionState.Update (CCEaseMath.ExponentialOut (time));
+		}
+	}
+
+	#endregion Action state
 }

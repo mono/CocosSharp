@@ -1,41 +1,41 @@
 namespace CocosSharp
 {
-    public class CCEaseBounceInOut : CCActionEase
-    {
-        #region Constructors
+	public class CCEaseBounceInOut : CCActionEase
+	{
+		#region Constructors
 
-        public CCEaseBounceInOut(CCActionInterval pAction) : base(pAction)
-        {
-        }
+		public CCEaseBounceInOut (CCActionInterval pAction) : base (pAction)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCEaseBounceInOutState(this, target);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCEaseBounceInOut((CCActionInterval)InnerAction.Reverse());
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCEaseBounceInOutState (this, target);
+		}
 
-    public class CCEaseBounceInOutState : CCActionEaseState
-    {
-        public CCEaseBounceInOutState(CCEaseBounceInOut action, CCNode target) : base(action, target)
-        {
-        }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCEaseBounceInOut ((CCActionInterval)InnerAction.Reverse ());
+		}
+	}
 
-        public override void Update(float time)
-        {
-            InnerActionState.Update(CCEaseMath.BounceInOut(time));
-        }
-    }
 
-    #endregion Action state
+	#region Action state
+
+	public class CCEaseBounceInOutState : CCActionEaseState
+	{
+		public CCEaseBounceInOutState (CCEaseBounceInOut action, CCNode target) : base (action, target)
+		{
+		}
+
+		public override void Update (float time)
+		{
+			InnerActionState.Update (CCEaseMath.BounceInOut (time));
+		}
+	}
+
+	#endregion Action state
 }
