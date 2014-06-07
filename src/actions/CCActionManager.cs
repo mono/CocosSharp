@@ -42,7 +42,8 @@ namespace CocosSharp
 
 		protected virtual void Dispose (bool disposing)
 		{
-			if (disposing) {
+			if (disposing)
+			{
 				// Dispose of managed resources
 			}
 
@@ -61,19 +62,25 @@ namespace CocosSharp
 				return null;
 
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
-				if (element.Actions != null) {
+			if (targets.TryGetValue (target, out element))
+			{
+				if (element.Actions != null)
+				{
 					int limit = element.Actions.Count;
-					for (int i = 0; i < limit; i++) {
+					for (int i = 0; i < limit; i++)
+					{
 						CCAction action = element.Actions [i];
 
-						if (action.Tag == tag) {
+						if (action.Tag == tag)
+						{
 							return action;
 						}
 					}
 					CCLog.Log ("cocos2d : getActionByTag: Tag " + tag + " not found");
 				}
-			} else {
+			}
+			else
+			{
 				CCLog.Log ("cocos2d : getActionByTag: Target not found");
 			}
 			return null;
@@ -82,7 +89,8 @@ namespace CocosSharp
 		public int NumberOfRunningActionsInTarget (CCNode target)
 		{
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
+			if (targets.TryGetValue (target, out element))
+			{
 				return (element.Actions != null) ? element.Actions.Count : 0;
 			}
 			return 0;
@@ -91,29 +99,35 @@ namespace CocosSharp
 		public void Update (float dt)
 		{
 			int count = targets.Keys.Count;
-			while (tmpKeysArray.Length < count) {
+			while (tmpKeysArray.Length < count)
+			{
 				tmpKeysArray = new CCNode[tmpKeysArray.Length * 2];
 			}
 
 			targets.Keys.CopyTo (tmpKeysArray, 0);
 
-			for (int i = 0; i < count; i++) {
+			for (int i = 0; i < count; i++)
+			{
 				HashElement elt;
-				if (!targets.TryGetValue (tmpKeysArray [i], out elt)) {
+				if (!targets.TryGetValue (tmpKeysArray [i], out elt))
+				{
 					continue;
 				}
 
 				currentTarget = elt;
 				currentTargetSalvaged = false;
 
-				if (!currentTarget.Paused) {
+				if (!currentTarget.Paused)
+				{
 					// The 'actions' may change while inside this loop.
 					for (currentTarget.ActionIndex = 0;
                          currentTarget.ActionIndex < currentTarget.Actions.Count;
-                         currentTarget.ActionIndex++) {
+                         currentTarget.ActionIndex++)
+					{
 						currentTarget.CurrentAction = currentTarget.Actions [currentTarget.ActionIndex];
 						currentTarget.CurrentActionState = currentTarget.ActionStates [currentTarget.ActionIndex];
-						if (currentTarget.CurrentAction == null) {
+						if (currentTarget.CurrentAction == null)
+						{
 							continue;
 						}
 
@@ -121,26 +135,30 @@ namespace CocosSharp
 
 						currentTarget.CurrentActionState.Step (dt);
 
-						if (currentTarget.CurrentActionSalvaged) {
+						if (currentTarget.CurrentActionSalvaged)
+						{
 							// The currentAction told the node to remove it. To prevent the action from
 							// accidentally deallocating itself before finishing its step, we retained
 							// it. Now that step is done, it's safe to release it.
 
 							//currentTarget->currentAction->release();
-						} else if (currentTarget.CurrentActionState.IsDone) {
-							currentTarget.CurrentActionState.Stop ();
-
-							CCActionState actionState = currentTarget.CurrentActionState;
-							// Make currentAction nil to prevent removeAction from salvaging it.
-							currentTarget.CurrentAction = null;
-							RemoveAction (actionState);
 						}
+						else if (currentTarget.CurrentActionState.IsDone)
+							{
+								currentTarget.CurrentActionState.Stop ();
+
+								CCActionState actionState = currentTarget.CurrentActionState;
+								// Make currentAction nil to prevent removeAction from salvaging it.
+								currentTarget.CurrentAction = null;
+								RemoveAction (actionState);
+							}
 						currentTarget.CurrentAction = null;
 					}
 				}
 
 				// only delete currentTarget if no actions were scheduled during the cycle (issue #481)
-				if (currentTargetSalvaged && currentTarget.Actions.Count == 0) {
+				if (currentTargetSalvaged && currentTarget.Actions.Count == 0)
+				{
 					DeleteHashElement (currentTarget);
 				}
 			}
@@ -159,7 +177,8 @@ namespace CocosSharp
 
 		protected void ActionAllocWithHashElement (HashElement element)
 		{
-			if (element.Actions == null) {
+			if (element.Actions == null)
+			{
 				element.Actions = new List<CCAction> ();
 				element.ActionStates = new List<CCActionState> ();
 			}
@@ -171,7 +190,8 @@ namespace CocosSharp
 		public void PauseTarget (object target)
 		{
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
+			if (targets.TryGetValue (target, out element))
+			{
 				element.Paused = true;
 			}
 		}
@@ -179,7 +199,8 @@ namespace CocosSharp
 		public void ResumeTarget (object target)
 		{
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
+			if (targets.TryGetValue (target, out element))
+			{
 				element.Paused = false;
 			}
 		}
@@ -188,8 +209,10 @@ namespace CocosSharp
 		{
 			var idsWithActions = new List<object> ();
 
-			foreach (var element in targets.Values) {
-				if (!element.Paused) {
+			foreach (var element in targets.Values)
+			{
+				if (!element.Paused)
+				{
 					element.Paused = true;
 					idsWithActions.Add (element.Target);
 				}
@@ -200,7 +223,8 @@ namespace CocosSharp
 
 		public void ResumeTargets (List<object> targetsToResume)
 		{
-			for (int i = 0; i < targetsToResume.Count; i++) {
+			for (int i = 0; i < targetsToResume.Count; i++)
+			{
 				ResumeTarget (targetsToResume [i]);
 			}
 		}
@@ -216,7 +240,8 @@ namespace CocosSharp
 			Debug.Assert (target != null);
 
 			HashElement element;
-			if (!targets.TryGetValue (target, out element)) {
+			if (!targets.TryGetValue (target, out element))
+			{
 				element = new HashElement ();
 				element.Paused = paused;
 				element.Target = target;
@@ -239,34 +264,42 @@ namespace CocosSharp
 		public void RemoveAllActions ()
 		{
 			int count = targets.Keys.Count;
-			if (tmpKeysArray.Length < count) {
+			if (tmpKeysArray.Length < count)
+			{
 				tmpKeysArray = new CCNode[tmpKeysArray.Length * 2];
 			}
 
 			targets.Keys.CopyTo (tmpKeysArray, 0);
 
-			for (int i = 0; i < count; i++) {
+			for (int i = 0; i < count; i++)
+			{
 				RemoveAllActionsFromTarget (tmpKeysArray [i]);
 			}
 		}
 
 		public void RemoveAllActionsFromTarget (CCNode target)
 		{
-			if (target == null) {
+			if (target == null)
+			{
 				return;
 			}
 
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
-				if (element.Actions.Contains (element.CurrentAction) && (!element.CurrentActionSalvaged)) {
+			if (targets.TryGetValue (target, out element))
+			{
+				if (element.Actions.Contains (element.CurrentAction) && (!element.CurrentActionSalvaged))
+				{
 					element.CurrentActionSalvaged = true;
 				}
 
 				element.Actions.Clear ();
 
-				if (currentTarget == element) {
+				if (currentTarget == element)
+				{
 					currentTargetSalvaged = true;
-				} else {
+				}
+				else
+				{
 					DeleteHashElement (element);
 				}
 			}
@@ -274,21 +307,28 @@ namespace CocosSharp
 
 		public void RemoveAction (CCActionState actionState)
 		{
-			if (actionState == null || actionState.OriginalTarget == null) {
+			if (actionState == null || actionState.OriginalTarget == null)
+			{
 				return;
 			}
 
 			object target = actionState.OriginalTarget;
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
+			if (targets.TryGetValue (target, out element))
+			{
 				int i = element.ActionStates.IndexOf (actionState);
 
-				if (i != -1) {
+				if (i != -1)
+				{
 					RemoveActionAtIndex (i, element);
-				} else {
+				}
+				else
+				{
 					CCLog.Log ("CocosSharp: removeAction: Action not found");
 				}
-			} else {
+			}
+			else
+			{
 				CCLog.Log ("CocosSharp: removeAction: Target not found");
 			}
 		}
@@ -297,7 +337,8 @@ namespace CocosSharp
 		{
 			CCAction action = element.Actions [index];
 
-			if (action == element.CurrentAction && (!element.CurrentActionSalvaged)) {
+			if (action == element.CurrentAction && (!element.CurrentActionSalvaged))
+			{
 				element.CurrentActionSalvaged = true;
 			}
 
@@ -305,14 +346,19 @@ namespace CocosSharp
 			element.ActionStates.RemoveAt (index);
 
 			// update actionIndex in case we are in tick. looping over the actions
-			if (element.ActionIndex >= index) {
+			if (element.ActionIndex >= index)
+			{
 				element.ActionIndex--;
 			}
 
-			if (element.Actions.Count == 0) {
-				if (currentTarget == element) {
+			if (element.Actions.Count == 0)
+			{
+				if (currentTarget == element)
+				{
 					currentTargetSalvaged = true;
-				} else {
+				}
+				else
+				{
 					DeleteHashElement (element);
 				}
 			}
@@ -328,14 +374,17 @@ namespace CocosSharp
 				return;
 
 			HashElement element;
-			if (targets.TryGetValue (target, out element)) {
+			if (targets.TryGetValue (target, out element))
+			{
 				int limit = element.Actions.Count;
 				bool tagFound = false;
 
-				for (int i = 0; i < limit; i++) {
+				for (int i = 0; i < limit; i++)
+				{
 					CCAction action = element.Actions [i];
 
-					if (action.Tag == tag && element.ActionStates [i].OriginalTarget == target) {
+					if (action.Tag == tag && element.ActionStates [i].OriginalTarget == target)
+					{
 						RemoveActionAtIndex (i, element);
 						tagFound = true;
 						break;
@@ -344,7 +393,9 @@ namespace CocosSharp
 
 				if (!tagFound)
 					CCLog.Log ("cocos2d : removeActionByTag: Tag " + tag + " not found");
-			} else {
+			}
+			else
+			{
 				CCLog.Log ("cocos2d : removeActionByTag: Target not found");
 			}
 		}
