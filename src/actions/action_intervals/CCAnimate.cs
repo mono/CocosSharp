@@ -3,45 +3,45 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCAnimate : CCActionInterval
-    {
+	public class CCAnimate : CCActionInterval
+	{
 		public CCAnimation Animation { get; private set; }
+
 		public List<float> SplitTimes { get; private set; }
 
-        #region Constructors
+		#region Constructors
 
-        public CCAnimate(CCAnimation pAnimation) : this(pAnimation, pAnimation.Duration * pAnimation.Loops)
-        {
-        }
+		public CCAnimate (CCAnimation pAnimation) : this (pAnimation, pAnimation.Duration * pAnimation.Loops)
+		{
+		}
 
-        private CCAnimate(CCAnimation pAnimation, float totalDuration) : base(totalDuration)
-        {
-            Debug.Assert(totalDuration == pAnimation.Duration * pAnimation.Loops);
-            Debug.Assert(pAnimation != null);
+		private CCAnimate (CCAnimation pAnimation, float totalDuration) : base (totalDuration)
+		{
+			Debug.Assert (totalDuration == pAnimation.Duration * pAnimation.Loops);
+			Debug.Assert (pAnimation != null);
 
-            Animation = pAnimation;
-			SplitTimes = new List<float>();
+			Animation = pAnimation;
+			SplitTimes = new List<float> ();
 
-            SplitTimes.Capacity = pAnimation.Frames.Count;
+			SplitTimes.Capacity = pAnimation.Frames.Count;
 
-            float singleDuration = Animation.Duration;
-            float accumUnitsOfTime = 0;
-            float newUnitOfTimeValue = singleDuration / Animation.TotalDelayUnits;
+			float singleDuration = Animation.Duration;
+			float accumUnitsOfTime = 0;
+			float newUnitOfTimeValue = singleDuration / Animation.TotalDelayUnits;
 
-            var pFrames = Animation.Frames;
+			var pFrames = Animation.Frames;
 
-            //TODO: CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame *);
+			//TODO: CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame *);
 
-            foreach (var pObj in pFrames)
-            {
-                var frame = (CCAnimationFrame) pObj;
-                float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
-                accumUnitsOfTime += frame.DelayUnits;
-                SplitTimes.Add(value);
-            }
-        }
+			foreach (var pObj in pFrames) {
+				var frame = (CCAnimationFrame)pObj;
+				float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
+				accumUnitsOfTime += frame.DelayUnits;
+				SplitTimes.Add (value);
+			}
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 
 		protected internal override CCActionState StartAction (CCNode target)
@@ -50,85 +50,80 @@ namespace CocosSharp
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            var pOldArray = Animation.Frames;
-            var pNewArray = new List<CCAnimationFrame>(pOldArray.Count);
+		public override CCFiniteTimeAction Reverse ()
+		{
+			var pOldArray = Animation.Frames;
+			var pNewArray = new List<CCAnimationFrame> (pOldArray.Count);
 
-            //TODO: CCARRAY_VERIFY_TYPE(pOldArray, CCAnimationFrame*);
+			//TODO: CCARRAY_VERIFY_TYPE(pOldArray, CCAnimationFrame*);
 
-            if (pOldArray.Count > 0)
-            {
-                for (int i = pOldArray.Count - 1; i >= 0; i--)
-                {
-                    var pElement = (CCAnimationFrame) pOldArray[i];
-                    if (pElement == null)
-                    {
-                        break;
-                    }
+			if (pOldArray.Count > 0) {
+				for (int i = pOldArray.Count - 1; i >= 0; i--) {
+					var pElement = (CCAnimationFrame)pOldArray [i];
+					if (pElement == null) {
+						break;
+					}
 
-                    pNewArray.Add(pElement.Copy());
-                }
-            }
+					pNewArray.Add (pElement.Copy ());
+				}
+			}
 
-            var newAnim = new CCAnimation(pNewArray, Animation.DelayPerUnit, Animation.Loops);
-            newAnim.RestoreOriginalFrame = Animation.RestoreOriginalFrame;
-            return new CCAnimate(newAnim);
-        }
-    }
+			var newAnim = new CCAnimation (pNewArray, Animation.DelayPerUnit, Animation.Loops);
+			newAnim.RestoreOriginalFrame = Animation.RestoreOriginalFrame;
+			return new CCAnimate (newAnim);
+		}
+	}
 
 	public class CCAnimateState : CCActionIntervalState
 	{
 
 		protected CCAnimation Animation { get; private set; }
+
 		protected List<float> SplitTimes { get; private set; }
-        protected int NextFrame;
-        protected CCSpriteFrame OriginalFrame;
-        private uint ExecutedLoops;
+
+		protected int NextFrame;
+		protected CCSpriteFrame OriginalFrame;
+		private uint ExecutedLoops;
 
 
 		public CCAnimateState (CCAnimate action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 			Animation = action.Animation;
 			SplitTimes = action.SplitTimes;
 
-			var pSprite = (CCSprite) (target);
+			var pSprite = (CCSprite)(target);
 
-            OriginalFrame = null;
+			OriginalFrame = null;
 
-			if (Animation.RestoreOriginalFrame)
-			{
-                OriginalFrame = pSprite.DisplayFrame;
+			if (Animation.RestoreOriginalFrame) {
+				OriginalFrame = pSprite.DisplayFrame;
 			}
 
-            NextFrame = 0;
-            ExecutedLoops = 0;
+			NextFrame = 0;
+			ExecutedLoops = 0;
 		}
 
-		public override void Stop()
+		public override void Stop ()
 		{
-			if (Animation.RestoreOriginalFrame && Target != null)
-			{
-                ((CCSprite) (Target)).DisplayFrame = OriginalFrame;
+			if (Animation.RestoreOriginalFrame && Target != null) {
+				((CCSprite)(Target)).DisplayFrame = OriginalFrame;
 			}
 
-			base.Stop();
+			base.Stop ();
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
 			// if t==1, ignore. Animation should finish with t==1
-			if (time < 1.0f)
-			{
+			if (time < 1.0f) {
 				time *= Animation.Loops;
 
 				// new loop?  If so, reset frame counter
-				var loopNumber = (uint) time;
-                if (loopNumber > ExecutedLoops)
-				{
-                    NextFrame = 0;
-                    ExecutedLoops++;
+				var loopNumber = (uint)time;
+				if (loopNumber > ExecutedLoops) {
+					NextFrame = 0;
+					ExecutedLoops++;
 				}
 
 				// new t for animations
@@ -138,29 +133,24 @@ namespace CocosSharp
 			var frames = Animation.Frames;
 			int numberOfFrames = frames.Count;
 
-            for (int i = NextFrame; i < numberOfFrames; i++)
-			{
-				float splitTime = SplitTimes[i];
+			for (int i = NextFrame; i < numberOfFrames; i++) {
+				float splitTime = SplitTimes [i];
 
-				if (splitTime <= time)
-				{
-					var frame = (CCAnimationFrame) frames[i];
+				if (splitTime <= time) {
+					var frame = (CCAnimationFrame)frames [i];
 					var frameToDisplay = frame.SpriteFrame;
-					if (frameToDisplay != null)
-					{
-						((CCSprite) Target).DisplayFrame = frameToDisplay;
+					if (frameToDisplay != null) {
+						((CCSprite)Target).DisplayFrame = frameToDisplay;
 					}
 
 					var dict = frame.UserInfo;
-					if (dict != null)
-					{
+					if (dict != null) {
 						//TODO: [[NSNotificationCenter defaultCenter] postNotificationName:CCAnimationFrameDisplayedNotification object:target_ userInfo:dict];
 					}
-                    NextFrame = i + 1;
+					NextFrame = i + 1;
 				}
 				// Issue 1438. Could be more than one frame per tick, due to low frame rate or frame delta < 1/FPS
-				else
-				{
+				else {
 					break;
 				}
 			}

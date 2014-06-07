@@ -2,111 +2,108 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCTiledGrid3DAction : CCGridAction
-    {
-        #region Constructors
+	public class CCTiledGrid3DAction : CCGridAction
+	{
+		#region Constructors
 
-        public CCTiledGrid3DAction(float duration) : base(duration)
-        {
-        }
+		public CCTiledGrid3DAction (float duration) : base (duration)
+		{
+		}
 
-        public CCTiledGrid3DAction(float duration, CCGridSize gridSize) : this(duration, gridSize, 0)
-        {
-        }
+		public CCTiledGrid3DAction (float duration, CCGridSize gridSize) : this (duration, gridSize, 0)
+		{
+		}
 
-        protected CCTiledGrid3DAction(float duration, CCGridSize gridSize, float amplitude) 
-            : base(duration, gridSize, amplitude)
-        {
-        }
+		protected CCTiledGrid3DAction (float duration, CCGridSize gridSize, float amplitude)
+			: base (duration, gridSize, amplitude)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCTiledGrid3DActionState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
-
-    public class CCTiledGrid3DActionState : CCGridActionState
-    {
-        private CCTiledGrid3D tiledGrid3D;
-
-        public override CCGridBase Grid
-        {
-            get
-            {
-                tiledGrid3D = new CCTiledGrid3D(GridSize, Director.WinSizeInPixels);
-                tiledGrid3D.Director = Director;
-                return tiledGrid3D;
-            }
-            protected set
-            {
-                Debug.Assert(value is CCTiledGrid3D);
-                tiledGrid3D = (CCTiledGrid3D)value;
-            }
-        }
-
-        public CCTiledGrid3DActionState(CCTiledGrid3DAction action, CCNode target) : base(action, target)
-        {
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCTiledGrid3DActionState (this, target);
+		}
+	}
 
 
-        #region Grid Vertex manipulation
+	#region Action state
 
-        /// <summary>
-        /// returns the tile quad at a given position
-        /// </summary>
-        public CCQuad3 Tile(CCGridSize pos)
-        {
-			return tiledGrid3D[pos];
-        }
+	public class CCTiledGrid3DActionState : CCGridActionState
+	{
+		private CCTiledGrid3D tiledGrid3D;
 
-        /// <summary>
-        /// returns the tile quad at a given position
-        /// </summary>
-        public CCQuad3 Tile(int x, int y)
-        {
-			return tiledGrid3D[x, y];
-        }
+		public override CCGridBase Grid {
+			get {
+				tiledGrid3D = new CCTiledGrid3D (GridSize, Director.WinSizeInPixels);
+				tiledGrid3D.Director = Director;
+				return tiledGrid3D;
+			}
+			protected set {
+				Debug.Assert (value is CCTiledGrid3D);
+				tiledGrid3D = (CCTiledGrid3D)value;
+			}
+		}
 
-        /// <summary>
-        /// returns the original (non-transformed) tile quad at a given position
-        /// </summary>
-        public CCQuad3 OriginalTile(CCGridSize pos)
-        {
-            return tiledGrid3D.OriginalTile(pos);
-        }
+		public CCTiledGrid3DActionState (CCTiledGrid3DAction action, CCNode target) : base (action, target)
+		{
+		}
 
-        /// <summary>
-        /// returns the original (non-transformed) tile quad at a given position
-        /// </summary>
-        public CCQuad3 OriginalTile(int x, int y)
-        {
-            return tiledGrid3D.OriginalTile(x, y);
-        }
 
-        /// <summary>
-        /// sets a new tile quad at a given position
-        /// </summary>
-        public void SetTile(CCGridSize pos, ref CCQuad3 coords)
-        {
-			tiledGrid3D[pos] = coords;
-        }
+		#region Grid Vertex manipulation
 
-        /// <summary>
-        /// sets a new tile quad at a given position
-        /// </summary>
-        public void SetTile(int x, int y, ref CCQuad3 coords)
-        {
-			tiledGrid3D[x, y] = coords;
-        }
+		/// <summary>
+		/// returns the tile quad at a given position
+		/// </summary>
+		public CCQuad3 Tile (CCGridSize pos)
+		{
+			return tiledGrid3D [pos];
+		}
 
-        #endregion Grid Vertex manipulation
-    }
+		/// <summary>
+		/// returns the tile quad at a given position
+		/// </summary>
+		public CCQuad3 Tile (int x, int y)
+		{
+			return tiledGrid3D [x, y];
+		}
 
-    #endregion Action state
+		/// <summary>
+		/// returns the original (non-transformed) tile quad at a given position
+		/// </summary>
+		public CCQuad3 OriginalTile (CCGridSize pos)
+		{
+			return tiledGrid3D.OriginalTile (pos);
+		}
+
+		/// <summary>
+		/// returns the original (non-transformed) tile quad at a given position
+		/// </summary>
+		public CCQuad3 OriginalTile (int x, int y)
+		{
+			return tiledGrid3D.OriginalTile (x, y);
+		}
+
+		/// <summary>
+		/// sets a new tile quad at a given position
+		/// </summary>
+		public void SetTile (CCGridSize pos, ref CCQuad3 coords)
+		{
+			tiledGrid3D [pos] = coords;
+		}
+
+		/// <summary>
+		/// sets a new tile quad at a given position
+		/// </summary>
+		public void SetTile (int x, int y, ref CCQuad3 coords)
+		{
+			tiledGrid3D [x, y] = coords;
+		}
+
+		#endregion Grid Vertex manipulation
+	}
+
+	#endregion Action state
 }

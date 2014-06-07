@@ -27,72 +27,70 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCWavesTiles3D : CCTiledGrid3DAction
-    {
-        protected internal int Waves { get; private set; }
+	public class CCWavesTiles3D : CCTiledGrid3DAction
+	{
+		protected internal int Waves { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        /// <summary>
-        /// creates the action with a number of waves, the waves amplitude, the grid size and the duration
-        /// </summary>
-		public CCWavesTiles3D(float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0) 
-            : base(duration, gridSize, amplitude)
-        {
-            Waves = waves;
-        }
+		/// <summary>
+		/// creates the action with a number of waves, the waves amplitude, the grid size and the duration
+		/// </summary>
+		public CCWavesTiles3D (float duration, CCGridSize gridSize, int waves = 0, float amplitude = 0)
+			: base (duration, gridSize, amplitude)
+		{
+			Waves = waves;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCWavesTiles3DState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCWavesTiles3DState (this, target);
+		}
+	}
 
-    public class CCWavesTiles3DState : CCTiledGrid3DActionState
-    {
-        public int Waves { get; set; }
 
-        public CCWavesTiles3DState(CCWavesTiles3D action, CCNode target) : base(action, target)
-        {
-            Waves = action.Waves;
-        }
+	#region Action state
 
-        public override void Update(float time)
-        {
-            int i, j;
+	public class CCWavesTiles3DState : CCTiledGrid3DActionState
+	{
+		public int Waves { get; set; }
 
-            for (i = 0; i < GridSize.X; i++)
-            {
-                for (j = 0; j < GridSize.Y; j++)
-                {
-                    CCQuad3 coords = OriginalTile(i, j);
-                    CCVertex3F bl = coords.BottomLeft;
-                    CCVertex3F br = coords.BottomRight;
-                    CCVertex3F tl = coords.TopLeft;
-                    CCVertex3F tr = coords.TopRight;
+		public CCWavesTiles3DState (CCWavesTiles3D action, CCNode target) : base (action, target)
+		{
+			Waves = action.Waves;
+		}
 
-                    bl.Z = ((float) Math.Sin(time * (float) Math.PI * Waves * 2 + (bl.Y + bl.X) * .01f) * Amplitude * AmplitudeRate);
-                    br.Z = bl.Z;
-                    tl.Z = bl.Z;
-                    tr.Z = bl.Z;
+		public override void Update (float time)
+		{
+			int i, j;
 
-                    coords.BottomLeft = bl;
-                    coords.BottomRight = br;
-                    coords.TopLeft = tl;
-                    coords.TopRight = tr;
+			for (i = 0; i < GridSize.X; i++) {
+				for (j = 0; j < GridSize.Y; j++) {
+					CCQuad3 coords = OriginalTile (i, j);
+					CCVertex3F bl = coords.BottomLeft;
+					CCVertex3F br = coords.BottomRight;
+					CCVertex3F tl = coords.TopLeft;
+					CCVertex3F tr = coords.TopRight;
 
-                    SetTile(i, j, ref coords);
-                }
-            }
-        }
-    }
+					bl.Z = ((float)Math.Sin (time * (float)Math.PI * Waves * 2 + (bl.Y + bl.X) * .01f) * Amplitude * AmplitudeRate);
+					br.Z = bl.Z;
+					tl.Z = bl.Z;
+					tr.Z = bl.Z;
 
-    #endregion Action state
+					coords.BottomLeft = bl;
+					coords.BottomRight = br;
+					coords.TopLeft = tl;
+					coords.TopRight = tr;
+
+					SetTile (i, j, ref coords);
+				}
+			}
+		}
+	}
+
+	#endregion Action state
 }

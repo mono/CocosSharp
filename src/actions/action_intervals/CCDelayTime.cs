@@ -1,14 +1,14 @@
 ﻿namespace CocosSharp
 {
-    public class CCDelayTime : CCActionInterval
-    {
-        #region Constructors
+	public class CCDelayTime : CCActionInterval
+	{
+		#region Constructors
 
-        public CCDelayTime(float d) : base(d)
-        {
-        }
+		public CCDelayTime (float d) : base (d)
+		{
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
@@ -16,20 +16,21 @@
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCDelayTime(Duration);
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCDelayTime (Duration);
+		}
+	}
 
 	public class CCDelayTimeState : CCActionIntervalState
 	{
 
 		public CCDelayTimeState (CCDelayTime action, CCNode target)
-			: base(action, target)
-		{ }
+			: base (action, target)
+		{
+		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
 		}
 

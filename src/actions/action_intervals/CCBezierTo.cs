@@ -1,14 +1,15 @@
 namespace CocosSharp
 {
-    public class CCBezierTo : CCBezierBy
-    {
-        #region Constructors
+	public class CCBezierTo : CCBezierBy
+	{
+		#region Constructors
 
-        public CCBezierTo(float t, CCBezierConfig c) 
-			: base(t, c)
-        { }
+		public CCBezierTo (float t, CCBezierConfig c)
+			: base (t, c)
+		{
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 
 		protected internal override CCActionState StartAction (CCNode target)
@@ -17,13 +18,13 @@ namespace CocosSharp
 
 		}
 
-    }
+	}
 
 	public class CCBezierToState : CCBezierByState
 	{
 
 		public CCBezierToState (CCBezierBy action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 			var config = BezierConfig;
 

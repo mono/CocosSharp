@@ -2,85 +2,77 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCGridAction : CCAmplitudeAction
-    {
-        protected internal CCGridSize GridSize { get; private set; }
+	public class CCGridAction : CCAmplitudeAction
+	{
+		protected internal CCGridSize GridSize { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCGridAction(float duration) : base(duration)
-        {
-        }
+		public CCGridAction (float duration) : base (duration)
+		{
+		}
 
-        public CCGridAction(float duration, CCGridSize gridSize) : this(duration, gridSize, 0)
-        {
-        }
+		public CCGridAction (float duration, CCGridSize gridSize) : this (duration, gridSize, 0)
+		{
+		}
 
-        protected CCGridAction(float duration, CCGridSize gridSize, float amplitude) : base(duration, amplitude)
-        {
-            GridSize = gridSize;
-        }
+		protected CCGridAction (float duration, CCGridSize gridSize, float amplitude) : base (duration, amplitude)
+		{
+			GridSize = gridSize;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCGridActionState(this, target);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCReverseTime(this);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCGridActionState (this, target);
+		}
 
-    public class CCGridActionState : CCAmplitudeActionState
-    {
-        protected CCGridSize GridSize { get; private set; }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCReverseTime (this);
+		}
+	}
 
-        public virtual CCGridBase Grid 
-        { 
-            get { return null; } 
-            protected set { } 
-        }
 
-        public CCGridActionState(CCGridAction action, CCNode target) : base(action, target)
-        {
-            GridSize = action.GridSize;
-            CCGridBase targetGrid = Target.Grid;
+	#region Action state
 
-            if (targetGrid != null && targetGrid.ReuseGrid > 0)
-            {
-                Grid = targetGrid;
+	public class CCGridActionState : CCAmplitudeActionState
+	{
+		protected CCGridSize GridSize { get; private set; }
 
-                if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y)
-                {
-                    targetGrid.Reuse();
-                }
-                else
-                {
-                    Debug.Assert(false);
-                }
-            }
-            else
-            {
-                if (targetGrid != null && targetGrid.Active)
-                {
-                    targetGrid.Active = false;
-                }
+		public virtual CCGridBase Grid { 
+			get { return null; } 
+			protected set { } 
+		}
 
-                CCGridBase newgrid = Grid;
+		public CCGridActionState (CCGridAction action, CCNode target) : base (action, target)
+		{
+			GridSize = action.GridSize;
+			CCGridBase targetGrid = Target.Grid;
 
-                Target.Grid = newgrid;
-                Target.Grid.Active = true;
-            }
-        }
-    }
+			if (targetGrid != null && targetGrid.ReuseGrid > 0) {
+				Grid = targetGrid;
 
-    #endregion Action state
+				if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y) {
+					targetGrid.Reuse ();
+				} else {
+					Debug.Assert (false);
+				}
+			} else {
+				if (targetGrid != null && targetGrid.Active) {
+					targetGrid.Active = false;
+				}
+
+				CCGridBase newgrid = Grid;
+
+				Target.Grid = newgrid;
+				Target.Grid.Active = true;
+			}
+		}
+	}
+
+	#endregion Action state
 }

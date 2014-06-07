@@ -1,30 +1,32 @@
 namespace CocosSharp
 {
-    public class CCRepeat : CCActionInterval
-    {
+	public class CCRepeat : CCActionInterval
+	{
 		public bool ActionInstant { get; private set; }
+
 		public CCFiniteTimeAction InnerAction { get; private set; }
+
 		public uint Times { get; private set; }
+
 		public uint Total { get; private set; }
 
-        #region Constructors
+		#region Constructors
 
-        public CCRepeat(CCFiniteTimeAction action, uint times) : base(action.Duration * times)
-        {
+		public CCRepeat (CCFiniteTimeAction action, uint times) : base (action.Duration * times)
+		{
 
-            Times = times;
-            InnerAction = action;
+			Times = times;
+			InnerAction = action;
 
-            ActionInstant = action is CCActionInstant;
-            //an instant action needs to be executed one time less in the update method since it uses startWithTarget to execute the action
-            if (ActionInstant)
-            {
-                Times -= 1;
-            }
-            Total = 0;
-        }
+			ActionInstant = action is CCActionInstant;
+			//an instant action needs to be executed one time less in the update method since it uses startWithTarget to execute the action
+			if (ActionInstant) {
+				Times -= 1;
+			}
+			Total = 0;
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
@@ -32,24 +34,29 @@ namespace CocosSharp
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCRepeat(InnerAction.Reverse(), Times);
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCRepeat (InnerAction.Reverse (), Times);
+		}
+	}
 
 	public class CCRepeatState : CCActionIntervalState
 	{
 
 		protected bool ActionInstant { get; set; }
+
 		protected float NextDt { get; set; }
+
 		protected CCFiniteTimeAction InnerAction { get; set; }
+
 		protected CCFiniteTimeActionState InnerActionState { get; set; }
+
 		protected uint Times { get; set; }
+
 		protected uint Total { get; set; }
 
 		public CCRepeatState (CCRepeat action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 
 			InnerAction = action.InnerAction;
@@ -59,61 +66,51 @@ namespace CocosSharp
 
 			NextDt = InnerAction.Duration / Duration;
 
-			InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction (target);
+			InnerActionState = (CCFiniteTimeActionState)InnerAction.StartAction (target);
 		}
 
-		public override void Stop()
+		public override void Stop ()
 		{
-			InnerActionState.Stop();
-			base.Stop();
+			InnerActionState.Stop ();
+			base.Stop ();
 		}
 
-		// issue #80. Instead of hooking step:, hook update: since it can be called by any 
+		// issue #80. Instead of hooking step:, hook update: since it can be called by any
 		// container action like Repeat, Sequence, AccelDeccel, etc..
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-			if (time >= NextDt)
-			{
-				while (time > NextDt && Total < Times)
-				{
-					InnerActionState.Update(1.0f);
+			if (time >= NextDt) {
+				while (time > NextDt && Total < Times) {
+					InnerActionState.Update (1.0f);
 					Total++;
 
-					InnerActionState.Stop();
-					InnerActionState = (CCFiniteTimeActionState) InnerAction.StartAction(Target);
+					InnerActionState.Stop ();
+					InnerActionState = (CCFiniteTimeActionState)InnerAction.StartAction (Target);
 					NextDt += InnerAction.Duration / Duration;
 				}
 
 				// fix for issue #1288, incorrect end value of repeat
-				if (time >= 1.0f && Total < Times)
-				{
+				if (time >= 1.0f && Total < Times) {
 					Total++;
 				}
 
 				// don't set an instant action back or update it, it has no use because it has no duration
-				if (!ActionInstant)
-				{
-					if (Total == Times)
-					{
-						InnerActionState.Update(1f);
-						InnerActionState.Stop();
-					}
-					else
-					{
+				if (!ActionInstant) {
+					if (Total == Times) {
+						InnerActionState.Update (1f);
+						InnerActionState.Stop ();
+					} else {
 						// issue #390 prevent jerk, use right update
-						InnerActionState.Update(time - (NextDt - InnerAction.Duration / Duration));
+						InnerActionState.Update (time - (NextDt - InnerAction.Duration / Duration));
 					}
 
 				}
-			}
-			else
-			{
-				InnerActionState.Update((time * Times) % 1.0f);
+			} else {
+				InnerActionState.Update ((time * Times) % 1.0f);
 			}
 		}
 
-		public override bool IsDone
-		{
+		public override bool IsDone {
 			get { return Total == Times; }
 		}
 

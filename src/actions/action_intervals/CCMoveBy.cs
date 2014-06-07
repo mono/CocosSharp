@@ -1,28 +1,28 @@
 namespace CocosSharp
 {
-    public class CCMoveBy : CCActionInterval
-    {
-        #region Constructors
+	public class CCMoveBy : CCActionInterval
+	{
+		#region Constructors
 
-        public CCMoveBy(float duration, CCPoint position) : base(duration)
-        {
-            PositionDelta = position;
-        }
+		public CCMoveBy (float duration, CCPoint position) : base (duration)
+		{
+			PositionDelta = position;
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
-        public CCPoint PositionDelta { get; private set; }
+		public CCPoint PositionDelta { get; private set; }
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCMoveByState (this, target);
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCMoveBy(Duration, new CCPoint(-PositionDelta.X, -PositionDelta.Y));
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCMoveBy (Duration, new CCPoint (-PositionDelta.X, -PositionDelta.Y));
+		}
+	}
 
 	public class CCMoveByState : CCActionIntervalState
 	{
@@ -32,19 +32,19 @@ namespace CocosSharp
 		protected CCPoint PreviousPosition;
 
 		public CCMoveByState (CCMoveBy action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 			PositionDelta = action.PositionDelta;
 			PreviousPosition = StartPosition = target.Position;
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-            if (Target == null)
-                return;
+			if (Target == null)
+				return;
 			
-            var currentPos = Target.Position;
-            var diff = currentPos - PreviousPosition;
+			var currentPos = Target.Position;
+			var diff = currentPos - PreviousPosition;
 			StartPosition = StartPosition + diff;
 			CCPoint newPos = StartPosition + PositionDelta * time;
 			Target.Position = newPos;

@@ -3,22 +3,23 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCRemoveSelf : CCActionInstant
-    {
+	public class CCRemoveSelf : CCActionInstant
+	{
 		public bool IsNeedCleanUp { get; private set; }
 
-        #region Constructors
+		#region Constructors
 
-        public CCRemoveSelf()
+		public CCRemoveSelf ()
 			: this (true)
-        {    }
+		{
+		}
 
-        public CCRemoveSelf(bool isNeedCleanUp)
-        {
-            IsNeedCleanUp = isNeedCleanUp;
-        }
+		public CCRemoveSelf (bool isNeedCleanUp)
+		{
+			IsNeedCleanUp = isNeedCleanUp;
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		/// <summary>
 		/// Start the hide operation on the given target.
@@ -31,25 +32,25 @@ namespace CocosSharp
 		}
 
 
-        public override CCFiniteTimeAction Reverse()
-        {
-			return new CCRemoveSelf(IsNeedCleanUp);
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCRemoveSelf (IsNeedCleanUp);
+		}
+	}
 
 	public class CCRemoveSelfState : CCActionInstantState
 	{
 		protected bool IsNeedCleanUp { get; set; }
 
 		public CCRemoveSelfState (CCRemoveSelf action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{	
 			IsNeedCleanUp = action.IsNeedCleanUp;
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-			Target.RemoveFromParent(IsNeedCleanUp);
+			Target.RemoveFromParent (IsNeedCleanUp);
 		}
 
 	}

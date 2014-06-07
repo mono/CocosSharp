@@ -2,44 +2,44 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCDeccelAmplitude : CCAccelAmplitude
-    {
-        #region Constructors
+	public class CCDeccelAmplitude : CCAccelAmplitude
+	{
+		#region Constructors
 
-        public CCDeccelAmplitude(CCAmplitudeAction pAction, float duration, float deccRate = 1.0f) 
-            : base(pAction, duration, deccRate)
-        {
-        }
+		public CCDeccelAmplitude (CCAmplitudeAction pAction, float duration, float deccRate = 1.0f)
+			: base (pAction, duration, deccRate)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCDeccelAmplitudeState(this, target);
-        }
-
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCDeccelAmplitude((CCAmplitudeAction)OtherAction.Reverse(), Duration, Rate);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCDeccelAmplitudeState (this, target);
+		}
 
-    public class CCDeccelAmplitudeState : CCAccelAmplitudeState
-    {
-        public CCDeccelAmplitudeState(CCDeccelAmplitude action, CCNode target) : base(action, target)
-        {
-        }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCDeccelAmplitude ((CCAmplitudeAction)OtherAction.Reverse (), Duration, Rate);
+		}
+	}
 
-        public override void Update(float time)
-        {
-            OtherActionState.AmplitudeRate = (float)Math.Pow((1 - time), Rate);
-            OtherActionState.Update(time);
-        }
-    }
 
-    #endregion Action state
+	#region Action state
+
+	public class CCDeccelAmplitudeState : CCAccelAmplitudeState
+	{
+		public CCDeccelAmplitudeState (CCDeccelAmplitude action, CCNode target) : base (action, target)
+		{
+		}
+
+		public override void Update (float time)
+		{
+			OtherActionState.AmplitudeRate = (float)Math.Pow ((1 - time), Rate);
+			OtherActionState.Update (time);
+		}
+	}
+
+	#endregion Action state
 }

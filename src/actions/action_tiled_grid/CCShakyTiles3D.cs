@@ -25,82 +25,81 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public class CCShakyTiles3D : CCTiledGrid3DAction
-    {
-        protected internal bool ShakeZ { get; private set; }
-        protected internal int Range { get; private set; }
+	public class CCShakyTiles3D : CCTiledGrid3DAction
+	{
+		protected internal bool ShakeZ { get; private set; }
+
+		protected internal int Range { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        /// <summary>
-        /// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
-        /// </summary>
-		public CCShakyTiles3D(float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true) : base(duration, gridSize)
-        {
-            Range = range;
-            ShakeZ = shakeZ;
-        }
+		/// <summary>
+		/// creates the action with a range, whether or not to shake Z vertices, a grid size, and duration
+		/// </summary>
+		public CCShakyTiles3D (float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true) : base (duration, gridSize)
+		{
+			Range = range;
+			ShakeZ = shakeZ;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCShakyTiles3DState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCShakyTiles3DState (this, target);
+		}
+	}
 
-    public class CCShakyTiles3DState : CCTiledGrid3DActionState
-    {
-        public bool ShakeZ { get; set; }
-        public int Range { get; set; }
 
-        public CCShakyTiles3DState(CCShakyTiles3D action, CCNode target) : base(action, target)
-        {
-            ShakeZ = action.ShakeZ;
-            Range = action.Range;
-        }
+	#region Action state
 
-        public override void Update(float time)
-        {
-            int i, j;
+	public class CCShakyTiles3DState : CCTiledGrid3DActionState
+	{
+		public bool ShakeZ { get; set; }
 
-            var doubleRange = Range * 2;
+		public int Range { get; set; }
 
-            for (i = 0; i < GridSize.X; ++i)
-            {
-                for (j = 0; j < GridSize.Y; ++j)
-                {
-                    CCQuad3 coords = OriginalTile(i, j);
-                    // X
-                    coords.BottomLeft.X += (CCRandom.Next() % doubleRange) - Range;
-                    coords.BottomRight.X += (CCRandom.Next() % doubleRange) - Range;
-                    coords.TopLeft.X += (CCRandom.Next() % doubleRange) - Range;
-                    coords.TopRight.X += (CCRandom.Next() % doubleRange) - Range;
+		public CCShakyTiles3DState (CCShakyTiles3D action, CCNode target) : base (action, target)
+		{
+			ShakeZ = action.ShakeZ;
+			Range = action.Range;
+		}
 
-                    // Y
-                    coords.BottomLeft.Y += (CCRandom.Next() % doubleRange) - Range;
-                    coords.BottomRight.Y += (CCRandom.Next() % doubleRange) - Range;
-                    coords.TopLeft.Y += (CCRandom.Next() % doubleRange) - Range;
-                    coords.TopRight.Y += (CCRandom.Next() % doubleRange) - Range;
+		public override void Update (float time)
+		{
+			int i, j;
 
-                    if (ShakeZ)
-                    {
-                        coords.BottomLeft.Z += (CCRandom.Next() % doubleRange) - Range;
-                        coords.BottomRight.Z += (CCRandom.Next() % doubleRange) - Range;
-                        coords.TopLeft.Z += (CCRandom.Next() % doubleRange) - Range;
-                        coords.TopRight.Z += (CCRandom.Next() % doubleRange) - Range;
-                    }
+			var doubleRange = Range * 2;
 
-                    SetTile(i, j, ref coords);
-                }
-            }
-        }
-    }
+			for (i = 0; i < GridSize.X; ++i) {
+				for (j = 0; j < GridSize.Y; ++j) {
+					CCQuad3 coords = OriginalTile (i, j);
+					// X
+					coords.BottomLeft.X += (CCRandom.Next () % doubleRange) - Range;
+					coords.BottomRight.X += (CCRandom.Next () % doubleRange) - Range;
+					coords.TopLeft.X += (CCRandom.Next () % doubleRange) - Range;
+					coords.TopRight.X += (CCRandom.Next () % doubleRange) - Range;
 
-    #endregion Action state
+					// Y
+					coords.BottomLeft.Y += (CCRandom.Next () % doubleRange) - Range;
+					coords.BottomRight.Y += (CCRandom.Next () % doubleRange) - Range;
+					coords.TopLeft.Y += (CCRandom.Next () % doubleRange) - Range;
+					coords.TopRight.Y += (CCRandom.Next () % doubleRange) - Range;
+
+					if (ShakeZ) {
+						coords.BottomLeft.Z += (CCRandom.Next () % doubleRange) - Range;
+						coords.BottomRight.Z += (CCRandom.Next () % doubleRange) - Range;
+						coords.TopLeft.Z += (CCRandom.Next () % doubleRange) - Range;
+						coords.TopRight.Z += (CCRandom.Next () % doubleRange) - Range;
+					}
+
+					SetTile (i, j, ref coords);
+				}
+			}
+		}
+	}
+
+	#endregion Action state
 }

@@ -1,27 +1,30 @@
 namespace CocosSharp
 {
-    public class CCScaleTo : CCActionInterval
-    {
-        public float EndScaleX { get; private set; }
-        public float EndScaleY { get; private set; }
+	public class CCScaleTo : CCActionInterval
+	{
+		public float EndScaleX { get; private set; }
 
-        #region Constructors
+		public float EndScaleY { get; private set; }
 
-        public CCScaleTo(float duration, float s) : this (duration, s, s) { }
+		#region Constructors
 
-        public CCScaleTo(float duration, float sx, float sy) : base(duration)
-        {
-            EndScaleX = sx;
-            EndScaleY = sy;
-        }
+		public CCScaleTo (float duration, float s) : this (duration, s, s)
+		{
+		}
 
-        #endregion Constructors
+		public CCScaleTo (float duration, float sx, float sy) : base (duration)
+		{
+			EndScaleX = sx;
+			EndScaleY = sy;
+		}
+
+		#endregion Constructors
 
 		protected internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCScaleToState (this, target);
 		}
-    }
+	}
 
 	public class CCScaleToState : CCActionIntervalState
 	{
@@ -33,20 +36,19 @@ namespace CocosSharp
 		protected float StartScaleY;
 
 		public CCScaleToState (CCScaleTo action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 			StartScaleX = target.ScaleX;
 			StartScaleY = target.ScaleY;
-            EndScaleX = action.EndScaleX;
-            EndScaleY = action.EndScaleY;
+			EndScaleX = action.EndScaleX;
+			EndScaleY = action.EndScaleY;
 			DeltaX = EndScaleX - StartScaleX;
 			DeltaY = EndScaleY - StartScaleY;
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-			if (Target != null)
-			{
+			if (Target != null) {
 				Target.ScaleX = StartScaleX + DeltaX * time;
 				Target.ScaleY = StartScaleY + DeltaY * time;
 			}

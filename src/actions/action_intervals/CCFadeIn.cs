@@ -1,14 +1,14 @@
 ﻿namespace CocosSharp
 {
-    public class CCFadeIn : CCActionInterval
-    {
-        #region Constructors
+	public class CCFadeIn : CCActionInterval
+	{
+		#region Constructors
 
-        public CCFadeIn(float d) : base(d)
-        {
-        }
+		public CCFadeIn (float d) : base (d)
+		{
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 
 		protected internal override CCActionState StartAction (CCNode target)
@@ -17,28 +17,29 @@
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCFadeOut(Duration);
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCFadeOut (Duration);
+		}
+	}
 
 	public class CCFadeInState : CCActionIntervalState
 	{
 
 		protected uint Times { get; set; }
+
 		protected bool OriginalState { get; set; }
 
 		public CCFadeInState (CCFadeIn action, CCNode target)
-			: base(action, target)
-		{	}
+			: base (action, target)
+		{
+		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
 			var pRGBAProtocol = Target as ICCColor;
-			if (pRGBAProtocol != null)
-			{
-				pRGBAProtocol.Opacity = (byte) (255 * time);
+			if (pRGBAProtocol != null) {
+				pRGBAProtocol.Opacity = (byte)(255 * time);
 			}
 		}
 	}

@@ -27,51 +27,50 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCFadeOutBLTiles : CCFadeOutTRTiles
-    {
-        #region Constructors
+	public class CCFadeOutBLTiles : CCFadeOutTRTiles
+	{
+		#region Constructors
 
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCFadeOutBLTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
-        {
-        }
+		/// <summary>
+		/// creates the action with the grid size and the duration
+		/// </summary>
+		public CCFadeOutBLTiles (float duration, CCGridSize gridSize) : base (duration, gridSize)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCFadeOutBLTilesState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
-
-    public class CCFadeOutBLTilesState : CCFadeOutTRTilesState
-    {
-        public CCFadeOutBLTilesState(CCFadeOutBLTiles action, CCNode target) : base(action, target)
-        {
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFadeOutBLTilesState (this, target);
+		}
+	}
 
 
-        #region Tile transform
+	#region Action state
 
-        public override float TestFunc(CCGridSize pos, float time)
-        {
-            var n = new CCPoint((GridSize.X * (1.0f - time)), (GridSize.Y * (1.0f - time)));
-            if ((pos.X + pos.Y) == 0)
-            {
-                return 1.0f;
-            }
+	public class CCFadeOutBLTilesState : CCFadeOutTRTilesState
+	{
+		public CCFadeOutBLTilesState (CCFadeOutBLTiles action, CCNode target) : base (action, target)
+		{
+		}
 
-            return (float) Math.Pow((n.X + n.Y) / (pos.X + pos.Y), 6);
-        }
 
-        #endregion Tile transform
-    }
+		#region Tile transform
 
-    #endregion Action state
+		public override float TestFunc (CCGridSize pos, float time)
+		{
+			var n = new CCPoint ((GridSize.X * (1.0f - time)), (GridSize.Y * (1.0f - time)));
+			if ((pos.X + pos.Y) == 0) {
+				return 1.0f;
+			}
+
+			return (float)Math.Pow ((n.X + n.Y) / (pos.X + pos.Y), 6);
+		}
+
+		#endregion Tile transform
+	}
+
+	#endregion Action state
 }

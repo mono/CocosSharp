@@ -27,77 +27,72 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCJumpTiles3D : CCTiledGrid3DAction
-    {
-        /// <summary>
-        /// amplitude of the sin
-        /// </summary>
-        protected internal int NumberOfJumps { get; private set; }
+	public class CCJumpTiles3D : CCTiledGrid3DAction
+	{
+		/// <summary>
+		/// amplitude of the sin
+		/// </summary>
+		protected internal int NumberOfJumps { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCJumpTiles3D(float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0) 
-            : base(duration, gridSize, amplitude)
-        {
-            NumberOfJumps = numberOfJumps;
-        }
+		public CCJumpTiles3D (float duration, CCGridSize gridSize, int numberOfJumps = 0, float amplitude = 0)
+			: base (duration, gridSize, amplitude)
+		{
+			NumberOfJumps = numberOfJumps;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCJumpTiles3DState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCJumpTiles3DState (this, target);
+		}
+	}
 
-    public class CCJumpTiles3DState : CCTiledGrid3DActionState
-    {
-        protected int NumberOfJumps { get; set; }
+
+	#region Action state
+
+	public class CCJumpTiles3DState : CCTiledGrid3DActionState
+	{
+		protected int NumberOfJumps { get; set; }
 
 
-        public CCJumpTiles3DState(CCJumpTiles3D action, CCNode target) : base(action, target)
-        {
-            NumberOfJumps = action.NumberOfJumps;
-        }
+		public CCJumpTiles3DState (CCJumpTiles3D action, CCNode target) : base (action, target)
+		{
+			NumberOfJumps = action.NumberOfJumps;
+		}
 
-        public override void Update(float time)
-        {
-            int i, j;
+		public override void Update (float time)
+		{
+			int i, j;
 
-            float sinz = ((float) Math.Sin((float) Math.PI * time * NumberOfJumps * 2) * Amplitude * AmplitudeRate);
-            float sinz2 = (float) (Math.Sin((float) Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * AmplitudeRate);
+			float sinz = ((float)Math.Sin ((float)Math.PI * time * NumberOfJumps * 2) * Amplitude * AmplitudeRate);
+			float sinz2 = (float)(Math.Sin ((float)Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * AmplitudeRate);
 
-            for (i = 0; i < GridSize.X; i++)
-            {
-                for (j = 0; j < GridSize.Y; j++)
-                {
-                    CCQuad3 coords = OriginalTile(i, j);
+			for (i = 0; i < GridSize.X; i++) {
+				for (j = 0; j < GridSize.Y; j++) {
+					CCQuad3 coords = OriginalTile (i, j);
 
-                    if (((i + j) % 2) == 0)
-                    {
-                        coords.BottomLeft.Z += sinz;
-                        coords.BottomRight.Z += sinz;
-                        coords.TopLeft.Z += sinz;
-                        coords.TopRight.Z += sinz;
-                    }
-                    else
-                    {
-                        coords.BottomLeft.Z += sinz2;
-                        coords.BottomRight.Z += sinz2;
-                        coords.TopLeft.Z += sinz2;
-                        coords.TopRight.Z += sinz2;
-                    }
+					if (((i + j) % 2) == 0) {
+						coords.BottomLeft.Z += sinz;
+						coords.BottomRight.Z += sinz;
+						coords.TopLeft.Z += sinz;
+						coords.TopRight.Z += sinz;
+					} else {
+						coords.BottomLeft.Z += sinz2;
+						coords.BottomRight.Z += sinz2;
+						coords.TopLeft.Z += sinz2;
+						coords.TopRight.Z += sinz2;
+					}
 
-                    SetTile(i, j, ref coords);
-                }
-            }
-        }
-    }
+					SetTile (i, j, ref coords);
+				}
+			}
+		}
+	}
 
-    #endregion Action state
+	#endregion Action state
 }

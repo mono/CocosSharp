@@ -27,124 +27,116 @@ using System;
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// @brief CCFadeOutTRTiles action
-    /// Fades out the tiles in a Top-Right direction
-    /// </summary>
-    public class CCFadeOutTRTiles : CCTiledGrid3DAction
-    {
-        #region Constructors
+	/// <summary>
+	/// @brief CCFadeOutTRTiles action
+	/// Fades out the tiles in a Top-Right direction
+	/// </summary>
+	public class CCFadeOutTRTiles : CCTiledGrid3DAction
+	{
+		#region Constructors
 
-        public CCFadeOutTRTiles(float duration) : base(duration)
-        {
-        }
+		public CCFadeOutTRTiles (float duration) : base (duration)
+		{
+		}
 
-        /// <summary>
-        /// creates the action with the grid size and the duration
-        /// </summary>
-        public CCFadeOutTRTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
-        {
-        }
+		/// <summary>
+		/// creates the action with the grid size and the duration
+		/// </summary>
+		public CCFadeOutTRTiles (float duration, CCGridSize gridSize) : base (duration, gridSize)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCFadeOutTRTilesState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
-
-    public class CCFadeOutTRTilesState : CCTiledGrid3DActionState
-    {
-        public CCFadeOutTRTilesState(CCFadeOutTRTiles action, CCNode target) : base(action, target)
-        {
-        }
-
-        public override void Update(float time)
-        {
-            int i, j;
-            CCGridSize newGrid;
-
-            for (i = 0; i < GridSize.X; ++i)
-            {
-                newGrid.X = i;
-                for (j = 0; j < GridSize.Y; ++j)
-                {
-                    newGrid.Y = j;
-                    float distance = TestFunc(newGrid, time);
-                    if (distance == 0)
-                    {
-                        TurnOffTile(newGrid);
-                    }
-                    else if (distance < 1)
-                    {
-                        TransformTile(newGrid, distance);
-                    }
-                    else
-                    {
-                        TurnOnTile(newGrid);
-                    }
-                }
-            }
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFadeOutTRTilesState (this, target);
+		}
+	}
 
 
-        #region Tile transform
+	#region Action state
 
-        public virtual float TestFunc(CCGridSize pos, float time)
-        {
-            float px = GridSize.X * time;
-            float py = GridSize.Y * time;
-            if ((px + py) == 0.0f)
-            {
-                return 1.0f;
-            }
+	public class CCFadeOutTRTilesState : CCTiledGrid3DActionState
+	{
+		public CCFadeOutTRTilesState (CCFadeOutTRTiles action, CCNode target) : base (action, target)
+		{
+		}
 
-            return (float) Math.Pow((pos.X + pos.Y) / (px + py), 6);
-        }
+		public override void Update (float time)
+		{
+			int i, j;
+			CCGridSize newGrid;
 
-        public void TurnOnTile(CCGridSize pos)
-        {
-            CCQuad3 orig = OriginalTile(pos);
-            SetTile(pos, ref orig);
-        }
+			for (i = 0; i < GridSize.X; ++i) {
+				newGrid.X = i;
+				for (j = 0; j < GridSize.Y; ++j) {
+					newGrid.Y = j;
+					float distance = TestFunc (newGrid, time);
+					if (distance == 0) {
+						TurnOffTile (newGrid);
+					} else if (distance < 1) {
+						TransformTile (newGrid, distance);
+					} else {
+						TurnOnTile (newGrid);
+					}
+				}
+			}
+		}
 
-        public void TurnOffTile(CCGridSize pos)
-        {
-            var coords = new CCQuad3();
-            //memset(&coords, 0, sizeof(ccQuad3));
-            SetTile(pos, ref coords);
-        }
 
-        public virtual void TransformTile(CCGridSize pos, float distance)
-        {
-            CCQuad3 coords = OriginalTile(pos);
-            CCPoint step = Target.Grid.Step;
+		#region Tile transform
 
-            float dx = (step.X / 2) * (1.0f - distance);
-            float dy = (step.Y / 2) * (1.0f - distance);
+		public virtual float TestFunc (CCGridSize pos, float time)
+		{
+			float px = GridSize.X * time;
+			float py = GridSize.Y * time;
+			if ((px + py) == 0.0f) {
+				return 1.0f;
+			}
 
-            coords.BottomLeft.X += dx;
-            coords.BottomLeft.Y += dy;
+			return (float)Math.Pow ((pos.X + pos.Y) / (px + py), 6);
+		}
 
-            coords.BottomRight.X -= dx;
-            coords.BottomRight.Y += dy;
+		public void TurnOnTile (CCGridSize pos)
+		{
+			CCQuad3 orig = OriginalTile (pos);
+			SetTile (pos, ref orig);
+		}
 
-            coords.TopLeft.X += dx;
-            coords.TopLeft.Y -= dy;
+		public void TurnOffTile (CCGridSize pos)
+		{
+			var coords = new CCQuad3 ();
+			//memset(&coords, 0, sizeof(ccQuad3));
+			SetTile (pos, ref coords);
+		}
 
-            coords.TopRight.X -= dx;
-            coords.TopRight.Y -= dy;
+		public virtual void TransformTile (CCGridSize pos, float distance)
+		{
+			CCQuad3 coords = OriginalTile (pos);
+			CCPoint step = Target.Grid.Step;
 
-            SetTile(pos, ref coords);
-        }
+			float dx = (step.X / 2) * (1.0f - distance);
+			float dy = (step.Y / 2) * (1.0f - distance);
 
-        #endregion Tile transform
-    }
+			coords.BottomLeft.X += dx;
+			coords.BottomLeft.Y += dy;
 
-    #endregion Action state
+			coords.BottomRight.X -= dx;
+			coords.BottomRight.Y += dy;
+
+			coords.TopLeft.X += dx;
+			coords.TopLeft.Y -= dy;
+
+			coords.TopRight.X -= dx;
+			coords.TopRight.Y -= dy;
+
+			SetTile (pos, ref coords);
+		}
+
+		#endregion Tile transform
+	}
+
+	#endregion Action state
 }

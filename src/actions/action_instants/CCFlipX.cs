@@ -1,18 +1,18 @@
 ﻿namespace CocosSharp
 {
-    public class CCFlipX : CCActionInstant
-    {
+	public class CCFlipX : CCActionInstant
+	{
 		public bool FlipX { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCFlipX(bool x)
-        {
+		public CCFlipX (bool x)
+		{
 			FlipX = x;
-        }
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		/// <summary>
 		/// Start the flip operation on the given target which must be a CCSprite.
@@ -24,25 +24,24 @@
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-			return new CCFlipX(!FlipX);
-        }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCFlipX (!FlipX);
+		}
 
-    }
+	}
 
 	public class CCFlipXState : CCActionInstantState
 	{
 
 		public CCFlipXState (CCFlipX action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{	
 
-			if (!(target is CCSprite))
-			{
-				throw (new System.NotSupportedException("FlipX and FlipY actions only work on CCSprite instances."));
+			if (!(target is CCSprite)) {
+				throw (new System.NotSupportedException ("FlipX and FlipY actions only work on CCSprite instances."));
 			}
-			((CCSprite) (target)).FlipX = action.FlipX;		
+			((CCSprite)(target)).FlipX = action.FlipX;		
 		}
 
 	}

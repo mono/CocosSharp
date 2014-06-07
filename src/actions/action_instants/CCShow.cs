@@ -1,14 +1,14 @@
 ﻿namespace CocosSharp
 {
-    public class CCShow : CCActionInstant
-    {
-        #region Constructors
+	public class CCShow : CCActionInstant
+	{
+		#region Constructors
 
-        public CCShow()
-        {
-        }
+		public CCShow ()
+		{
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 		/// <summary>
 		/// Start the show operation on the given target.
@@ -20,18 +20,18 @@
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return (new CCHide());
-        }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return (new CCHide ());
+		}
 
-    }
+	}
 
 	public class CCShowState : CCActionInstantState
 	{
 
 		public CCShowState (CCShow action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{	
 			target.Visible = true;
 		}

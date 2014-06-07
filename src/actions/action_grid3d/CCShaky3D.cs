@@ -1,66 +1,65 @@
 namespace CocosSharp
 {
-    public class CCShaky3D : CCGrid3DAction
-    {
-        protected internal bool Shake { get; private set; }
-        protected internal int Range { get; private set; }
+	public class CCShaky3D : CCGrid3DAction
+	{
+		protected internal bool Shake { get; private set; }
+
+		protected internal int Range { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-		public CCShaky3D(float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true) 
-            : base(duration, gridSize)
-        {
-            Range = range;
-            Shake = shakeZ;
-        }
+		public CCShaky3D (float duration, CCGridSize gridSize, int range = 0, bool shakeZ = true)
+			: base (duration, gridSize)
+		{
+			Range = range;
+			Shake = shakeZ;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCShaky3DState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCShaky3DState (this, target);
+		}
+	}
 
-    public class CCShaky3DState : CCGrid3DActionState
-    {
-        public bool Shake { get; set; }
-        public int Range { get; set; }
 
-        public CCShaky3DState(CCShaky3D action, CCNode target) : base(action, target)
-        {
-            Shake = action.Shake;
-            Range = action.Range;
-        }
+	#region Action state
 
-        public override void Update(float time)
-        {
-            int i, j;
+	public class CCShaky3DState : CCGrid3DActionState
+	{
+		public bool Shake { get; set; }
 
-            for (i = 0; i < (GridSize.X + 1); ++i)
-            {
-                for (j = 0; j < (GridSize.Y + 1); ++j)
-                {
-                    CCVertex3F v = OriginalVertex(i, j);
-                    v.X += (CCRandom.Next() % (Range * 2)) - Range;
-                    v.Y += (CCRandom.Next() % (Range * 2)) - Range;
+		public int Range { get; set; }
 
-                    if (Shake)
-                    {
-                        v.Z += (CCRandom.Next() % (Range * 2)) - Range;
-                    }
+		public CCShaky3DState (CCShaky3D action, CCNode target) : base (action, target)
+		{
+			Shake = action.Shake;
+			Range = action.Range;
+		}
 
-                    SetVertex(i, j, ref v);
-                }
-            }
-        }
+		public override void Update (float time)
+		{
+			int i, j;
 
-    }
+			for (i = 0; i < (GridSize.X + 1); ++i) {
+				for (j = 0; j < (GridSize.Y + 1); ++j) {
+					CCVertex3F v = OriginalVertex (i, j);
+					v.X += (CCRandom.Next () % (Range * 2)) - Range;
+					v.Y += (CCRandom.Next () % (Range * 2)) - Range;
 
-    #endregion Action state
+					if (Shake) {
+						v.Z += (CCRandom.Next () % (Range * 2)) - Range;
+					}
+
+					SetVertex (i, j, ref v);
+				}
+			}
+		}
+
+	}
+
+	#endregion Action state
 }

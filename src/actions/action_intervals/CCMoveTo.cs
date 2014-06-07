@@ -1,20 +1,19 @@
 namespace CocosSharp
 {
-    public class CCMoveTo : CCMoveBy
-    {
-        protected CCPoint EndPosition;
+	public class CCMoveTo : CCMoveBy
+	{
+		protected CCPoint EndPosition;
 
-        #region Constructors
+		#region Constructors
 
-        public CCMoveTo(float duration, CCPoint position): base(duration, position)
-        {
-			EndPosition = position;
-        }
-
-        #endregion Constructors
-
-		public CCPoint PositionEnd
+		public CCMoveTo (float duration, CCPoint position) : base (duration, position)
 		{
+			EndPosition = position;
+		}
+
+		#endregion Constructors
+
+		public CCPoint PositionEnd {
 			get { return EndPosition; }
 		}
 
@@ -23,22 +22,21 @@ namespace CocosSharp
 			return new CCMoveToState (this, target);
 
 		}
-    }
+	}
 
 	public class CCMoveToState : CCMoveByState
 	{
 
 		public CCMoveToState (CCMoveTo action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 			StartPosition = target.Position;
 			PositionDelta = action.PositionEnd - target.Position;
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-			if (Target != null)
-			{
+			if (Target != null) {
 				CCPoint currentPos = Target.Position;
 
 				CCPoint newPos = StartPosition + PositionDelta * time;

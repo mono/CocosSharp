@@ -2,19 +2,19 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCReverseTime : CCActionInterval
-    {
+	public class CCReverseTime : CCActionInterval
+	{
 		public CCFiniteTimeAction Other { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCReverseTime(CCFiniteTimeAction action) : base(action.Duration)
-        {
-            Other = action;
-        }
+		public CCReverseTime (CCFiniteTimeAction action) : base (action.Duration)
+		{
+			Other = action;
+		}
 
-        #endregion Constructors
+		#endregion Constructors
 
 
 		protected internal override CCActionState StartAction (CCNode target)
@@ -23,34 +23,34 @@ namespace CocosSharp
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return Other;
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return Other;
+		}
+	}
 
 	public class CCReverseTimeState : CCActionIntervalState
 	{
 
 		protected CCFiniteTimeAction Other { get; set; }
+
 		protected CCFiniteTimeActionState OtherState { get; set; }
 
 		public CCReverseTimeState (CCReverseTime action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{	
 			Other = action.Other;
-			OtherState = (CCFiniteTimeActionState) Other.StartAction (target);
+			OtherState = (CCFiniteTimeActionState)Other.StartAction (target);
 		}
 
-		public override void Stop()
+		public override void Stop ()
 		{
 			OtherState.Stop ();
 		}
 
-		public override void Update(float time)
+		public override void Update (float time)
 		{
-			if (Other != null)
-			{
+			if (Other != null) {
 				OtherState.Update (1 - time);
 			}
 		}

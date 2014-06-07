@@ -27,69 +27,68 @@ using System;
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// @brief CCFadeOutUpTiles action.
-    /// Fades out the tiles in upwards direction
-    /// </summary>
-    public class CCFadeOutUpTiles : CCFadeOutTRTiles
-    {
-        #region Constructors
+	/// <summary>
+	/// @brief CCFadeOutUpTiles action.
+	/// Fades out the tiles in upwards direction
+	/// </summary>
+	public class CCFadeOutUpTiles : CCFadeOutTRTiles
+	{
+		#region Constructors
 
-        /// <summary>
-        /// creates the action with the grid size and the duration 
-        /// </summary>
-        public CCFadeOutUpTiles(float duration, CCGridSize gridSize) : base(duration, gridSize)
-        {
-        }
+		/// <summary>
+		/// creates the action with the grid size and the duration 
+		/// </summary>
+		public CCFadeOutUpTiles (float duration, CCGridSize gridSize) : base (duration, gridSize)
+		{
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCFadeOutUpTilesState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
-
-    public class CCFadeOutUpTilesState : CCFadeOutTRTilesState
-    {
-        public CCFadeOutUpTilesState(CCFadeOutUpTiles action, CCNode target) : base(action, target)
-        {
-        }
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCFadeOutUpTilesState (this, target);
+		}
+	}
 
 
-        #region Tile transform
+	#region Action state
 
-        public override float TestFunc(CCGridSize pos, float time)
-        {
-            float fy = GridSize.Y * time;
-            if (fy == 0f)
-            {
-                return (1f);
-            }
-            return (float) Math.Pow(pos.Y / fy, 6);
-        }
+	public class CCFadeOutUpTilesState : CCFadeOutTRTilesState
+	{
+		public CCFadeOutUpTilesState (CCFadeOutUpTiles action, CCNode target) : base (action, target)
+		{
+		}
 
-        public override void TransformTile(CCGridSize pos, float distance)
-        {
-            CCQuad3 coords = OriginalTile(pos);
-            CCPoint step = Target.Grid.Step;
 
-            float dy = (step.Y / 2) * (1.0f - distance);
+		#region Tile transform
 
-            coords.BottomLeft.Y += dy; // (step.Y / 2) * (1.0f - distance);
-            coords.BottomRight.Y += dy; //  (step.Y / 2) * (1.0f - distance);
-            coords.TopLeft.Y -= dy; //  (step.Y / 2) * (1.0f - distance);
-            coords.TopRight.Y -= dy; // (step.Y / 2) * (1.0f - distance);
+		public override float TestFunc (CCGridSize pos, float time)
+		{
+			float fy = GridSize.Y * time;
+			if (fy == 0f) {
+				return (1f);
+			}
+			return (float)Math.Pow (pos.Y / fy, 6);
+		}
 
-            SetTile(pos, ref coords);
-        }
+		public override void TransformTile (CCGridSize pos, float distance)
+		{
+			CCQuad3 coords = OriginalTile (pos);
+			CCPoint step = Target.Grid.Step;
 
-        #endregion Tile transform
-    }
+			float dy = (step.Y / 2) * (1.0f - distance);
 
-    #endregion Action state
+			coords.BottomLeft.Y += dy; // (step.Y / 2) * (1.0f - distance);
+			coords.BottomRight.Y += dy; //  (step.Y / 2) * (1.0f - distance);
+			coords.TopLeft.Y -= dy; //  (step.Y / 2) * (1.0f - distance);
+			coords.TopRight.Y -= dy; // (step.Y / 2) * (1.0f - distance);
+
+			SetTile (pos, ref coords);
+		}
+
+		#endregion Tile transform
+	}
+
+	#endregion Action state
 }

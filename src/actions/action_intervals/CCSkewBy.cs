@@ -1,27 +1,26 @@
 namespace CocosSharp
 {
-    public class CCSkewBy : CCSkewTo
-    {
-        #region Constructors
+	public class CCSkewBy : CCSkewTo
+	{
+		#region Constructors
 
-        public CCSkewBy(float t, float deltaSkewX, float deltaSkewY) : base(t, deltaSkewX, deltaSkewY)
-        {
+		public CCSkewBy (float t, float deltaSkewX, float deltaSkewY) : base (t, deltaSkewX, deltaSkewY)
+		{
 			SkewX = deltaSkewX;
 			SkewY = deltaSkewY;
-        }
+		}
 
-		public CCSkewBy(float t, float deltaSkewXY) : this(t, deltaSkewXY, deltaSkewXY)
-		{ }
-
-        #endregion Constructors
-
-		public float SkewByX
+		public CCSkewBy (float t, float deltaSkewXY) : this (t, deltaSkewXY, deltaSkewXY)
 		{
+		}
+
+		#endregion Constructors
+
+		public float SkewByX {
 			get { return SkewX; }
 		}
 
-		public float SkewByY
-		{
+		public float SkewByY {
 			get { return SkewY; }
 		}
 
@@ -31,23 +30,23 @@ namespace CocosSharp
 
 		}
 
-        public override CCFiniteTimeAction Reverse()
-        {
-            return new CCSkewBy(Duration, -SkewX, -SkewY);
-        }
-    }
+		public override CCFiniteTimeAction Reverse ()
+		{
+			return new CCSkewBy (Duration, -SkewX, -SkewY);
+		}
+	}
 
 	public class CCSkewByState : CCSkewToState
 	{
 
 		public CCSkewByState (CCSkewBy action, CCNode target)
-			: base(action, target)
+			: base (action, target)
 		{ 
 
 			DeltaX = SkewX = action.SkewByX;
 			DeltaY = SkewY = action.SkewByY;
-            EndSkewX = StartSkewX + DeltaX;
-            EndSkewY = StartSkewY + DeltaY;
+			EndSkewX = StartSkewX + DeltaX;
+			EndSkewY = StartSkewY + DeltaY;
 		}
 	}
 }

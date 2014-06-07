@@ -25,66 +25,64 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public class CCSplitRows : CCTiledGrid3DAction
-    {
-        protected internal int Rows { get; private set; }
+	public class CCSplitRows : CCTiledGrid3DAction
+	{
+		protected internal int Rows { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        /// <summary>
-        ///  creates the action with the number of rows to split and the duration 
-        /// </summary>
-        public CCSplitRows(float duration, int nRows) : base(duration, new CCGridSize(1, nRows))
-        {
-            Rows = nRows;
-        }
+		/// <summary>
+		///  creates the action with the number of rows to split and the duration 
+		/// </summary>
+		public CCSplitRows (float duration, int nRows) : base (duration, new CCGridSize (1, nRows))
+		{
+			Rows = nRows;
+		}
 
-        #endregion Constructors
-
-
-        protected internal override CCActionState StartAction(CCNode target)
-        {
-            return new CCSplitRowsState(this, target);
-        }
-    }
+		#endregion Constructors
 
 
-    #region Action state
+		protected internal override CCActionState StartAction (CCNode target)
+		{
+			return new CCSplitRowsState (this, target);
+		}
+	}
 
-    public class CCSplitRowsState : CCTiledGrid3DActionState
-    {
-        protected CCSize WinSize { get; private set; }
 
-        public CCSplitRowsState(CCSplitRows action, CCNode target) : base(action, target)
-        {
+	#region Action state
+
+	public class CCSplitRowsState : CCTiledGrid3DActionState
+	{
+		protected CCSize WinSize { get; private set; }
+
+		public CCSplitRowsState (CCSplitRows action, CCNode target) : base (action, target)
+		{
 			WinSize = Director.WinSizeInPixels;
-        }
+		}
 
-        public override void Update(float time)
-        {
-            int j;
+		public override void Update (float time)
+		{
+			int j;
 
-            for (j = 0; j < GridSize.Y; ++j)
-            {
-                CCQuad3 coords = OriginalTile(0, j);
-                float direction = 1;
+			for (j = 0; j < GridSize.Y; ++j) {
+				CCQuad3 coords = OriginalTile (0, j);
+				float direction = 1;
 
-                if ((j % 2) == 0)
-                {
-                    direction = -1;
-                }
+				if ((j % 2) == 0) {
+					direction = -1;
+				}
 
-                coords.BottomLeft.X += direction * WinSize.Width * time;
-                coords.BottomRight.X += direction * WinSize.Width * time;
-                coords.TopLeft.X += direction * WinSize.Width * time;
-                coords.TopRight.X += direction * WinSize.Width * time;
+				coords.BottomLeft.X += direction * WinSize.Width * time;
+				coords.BottomRight.X += direction * WinSize.Width * time;
+				coords.TopLeft.X += direction * WinSize.Width * time;
+				coords.TopRight.X += direction * WinSize.Width * time;
 
-                SetTile(0, j, ref coords);
-            }
-        }
+				SetTile (0, j, ref coords);
+			}
+		}
 
-    }
+	}
 
-    #endregion Action state
+	#endregion Action state
 }
