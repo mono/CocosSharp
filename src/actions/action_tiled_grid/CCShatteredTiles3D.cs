@@ -77,9 +77,12 @@ namespace CocosSharp
 			int i, j;
 			var doubleRange = Range * 2;
 
-			if (ShatterOnce == false) {
-				for (i = 0; i < GridSize.X; ++i) {
-					for (j = 0; j < GridSize.Y; ++j) {
+			if (ShatterOnce == false)
+			{
+				for (i = 0; i < GridSize.X; ++i)
+				{
+					for (j = 0; j < GridSize.Y; ++j)
+					{
 						CCQuad3 coords = OriginalTile (i, j);
 
 						// X
@@ -94,7 +97,8 @@ namespace CocosSharp
 						coords.TopLeft.Y += (CCRandom.Next () % doubleRange) - Range;
 						coords.TopRight.Y += (CCRandom.Next () % doubleRange) - Range;
 
-						if (ShatterZ) {
+						if (ShatterZ)
+						{
 							coords.BottomLeft.Z += (CCRandom.Next () % doubleRange) - Range;
 							coords.BottomRight.Z += (CCRandom.Next () % doubleRange) - Range;
 							coords.TopLeft.Z += (CCRandom.Next () % doubleRange) - Range;

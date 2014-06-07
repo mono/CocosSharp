@@ -57,7 +57,8 @@ namespace CocosSharp
 				// prevent division by 0
 				// This comparison could be in step:, but it might decrease the performance
 				// by 3% in heavy based action games.
-				if (newDuration == 0) {
+				if (newDuration == 0)
+				{
 					newDuration = float.Epsilon;
 				}
 
@@ -113,18 +114,21 @@ namespace CocosSharp
 
 		public override void Step (float dt)
 		{
-			if (FirstTick) {
+			if (FirstTick)
+			{
 				FirstTick = false;
 				Elapsed = 0f;
-			} else {
+			}
+			else
+			{
 				Elapsed += dt;
 			}
 
 			Update (Math.Max (0f,
-				Math.Min (1, Elapsed /
-				Math.Max (Duration, float.Epsilon)
+				                 Math.Min (1, Elapsed /
+					                 Math.Max (Duration, float.Epsilon)
+				                 )
 				)
-			)
 			);
 		}
 	}

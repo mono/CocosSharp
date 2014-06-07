@@ -66,7 +66,8 @@ namespace CocosSharp
 		{
 			int i;
 
-			if (action.Seed != CCShuffleTiles.NoSeedSpecified) {
+			if (action.Seed != CCShuffleTiles.NoSeedSpecified)
+			{
 				CCRandom.Next (action.Seed);
 			}
 
@@ -74,7 +75,8 @@ namespace CocosSharp
 			TilesCount = gridSize.X * gridSize.Y;
 			TilesOrder = new int[TilesCount];
 
-			for (i = 0; i < TilesCount; ++i) {
+			for (i = 0; i < TilesCount; ++i)
+			{
 				TilesOrder [i] = i;
 			}
 
@@ -87,13 +89,17 @@ namespace CocosSharp
 
 			l = (int)(time * TilesCount);
 
-			for (i = 0; i < TilesCount; i++) {
+			for (i = 0; i < TilesCount; i++)
+			{
 				t = TilesOrder [i];
 				var tilePos = new CCGridSize (t / GridSize.Y, t % GridSize.Y);
 
-				if (i < l) {
+				if (i < l)
+				{
 					TurnOffTile (tilePos);
-				} else {
+				}
+				else
+				{
 					TurnOnTile (tilePos);
 				}
 			}
@@ -104,7 +110,8 @@ namespace CocosSharp
 		public void Shuffle (int[] pArray, int nLen)
 		{
 			int i;
-			for (i = nLen - 1; i >= 0; i--) {
+			for (i = nLen - 1; i >= 0; i--)
+			{
 				int j = CCRandom.Next () % (i + 1);
 				int v = pArray [i];
 				pArray [i] = pArray [j];

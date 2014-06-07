@@ -12,7 +12,8 @@ namespace CocosSharp
 
 		#region Constructors
 
-		protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base (Math.Max (action1.Duration, action2.Duration))
+		protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+			: base (Math.Max (action1.Duration, action2.Duration))
 		{
 			InitCCSpawn (action1, action2);
 		}
@@ -22,11 +23,15 @@ namespace CocosSharp
 			CCFiniteTimeAction prev = actions [0];
 			CCFiniteTimeAction next = null;
 
-			if (actions.Length == 1) {
+			if (actions.Length == 1)
+			{
 				next = new CCExtraAction ();
-			} else {
+			}
+			else
+			{
 				// We create a nested set of CCSpawnActions out of all of the actions
-				for (int i = 1; i < actions.Length - 1; i++) {
+				for (int i = 1; i < actions.Length - 1; i++)
+				{
 					prev = new CCSpawn (prev, actions [i]);
 				}
 
@@ -35,7 +40,8 @@ namespace CocosSharp
 
 			// Can't call base(duration) because we need to determine max duration
 			// Instead call base's init method here
-			if (prev != null && next != null) {
+			if (prev != null && next != null)
+			{
 				Duration = Math.Max (prev.Duration, next.Duration);
 				InitCCSpawn (prev, next);
 			}
@@ -52,11 +58,14 @@ namespace CocosSharp
 			ActionOne = action1;
 			ActionTwo = action2;
 
-			if (d1 > d2) {
+			if (d1 > d2)
+			{
 				ActionTwo = new CCSequence (action2, new CCDelayTime (d1 - d2));
-			} else if (d1 < d2) {
-				ActionOne = new CCSequence (action1, new CCDelayTime (d2 - d1));
 			}
+			else if (d1 < d2)
+				{
+					ActionOne = new CCSequence (action1, new CCDelayTime (d2 - d1));
+				}
 		}
 
 		#endregion Constructors
@@ -105,11 +114,13 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (ActionOne != null) {
+			if (ActionOne != null)
+			{
 				ActionStateOne.Update (time);
 			}
 
-			if (ActionTwo != null) {
+			if (ActionTwo != null)
+			{
 				ActionStateTwo.Update (time);
 			}
 		}

@@ -65,18 +65,22 @@ namespace CocosSharp
 
 			CCPoint vect = CCPoint.Zero;
 
-			for (i = 0; i < GridSize.X + 1; ++i) {
-				for (j = 0; j < GridSize.Y + 1; ++j) {
+			for (i = 0; i < GridSize.X + 1; ++i)
+			{
+				for (j = 0; j < GridSize.Y + 1; ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 					vect = Position - new CCPoint (v.X, v.Y);
 
 					float r = vect.Length;
 					float radius = Radius;
 
-					if (r < radius) {
+					if (r < radius)
+					{
 						r = radius - r;
 						float pre_log = r / radius;
-						if (pre_log == 0) {
+						if (pre_log == 0)
+						{
 							pre_log = 0.001f;
 						}
 
@@ -84,7 +88,8 @@ namespace CocosSharp
 						float l = (float)Math.Log (pre_log) * lensEffect;
 						float new_r = (float)Math.Exp (l) * radius;
 
-						if (Math.Sqrt ((vect.X * vect.X + vect.Y * vect.Y)) > 0) {
+						if (Math.Sqrt ((vect.X * vect.X + vect.Y * vect.Y)) > 0)
+						{
 							vect = CCPoint.Normalize (vect);
 
 							CCPoint new_vect = vect * new_r;

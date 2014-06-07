@@ -48,7 +48,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (Target != null) {
+			if (Target != null)
+			{
 				Target.ScaleX = StartScaleX + DeltaX * time;
 				Target.ScaleY = StartScaleY + DeltaY * time;
 			}

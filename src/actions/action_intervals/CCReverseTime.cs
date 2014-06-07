@@ -50,7 +50,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (Other != null) {
+			if (Other != null)
+			{
 				OtherState.Update (1 - time);
 			}
 		}

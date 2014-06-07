@@ -74,11 +74,14 @@ namespace CocosSharp
 		public override void Update (float time)
 		{
 			float amt = To - Delta * (1 - time);
-			if (TweenAction != null) {
+			if (TweenAction != null)
+			{
 				TweenAction (amt, Key);
-			} else if (Target is ICCActionTweenDelegate) {
-				((ICCActionTweenDelegate)Target).UpdateTweenAction (amt, Key);
 			}
+			else if (Target is ICCActionTweenDelegate)
+				{
+					((ICCActionTweenDelegate)Target).UpdateTweenAction (amt, Key);
+				}
 		}
 
 	}

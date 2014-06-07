@@ -56,7 +56,8 @@ namespace CocosSharp
 			DeltaR = action.DeltaR;
 
 			var protocol = target as ICCColor;
-			if (protocol != null) {
+			if (protocol != null)
+			{
 				var color = protocol.Color;
 				FromR = color.R;
 				FromG = color.G;
@@ -67,10 +68,11 @@ namespace CocosSharp
 		public override void Update (float time)
 		{
 			var protocol = Target as ICCColor;
-			if (protocol != null) {
+			if (protocol != null)
+			{
 				protocol.Color = new CCColor3B ((byte)(FromR + DeltaR * time),
-					(byte)(FromG + DeltaG * time),
-					(byte)(FromB + DeltaB * time));
+				                                (byte)(FromG + DeltaG * time),
+				                                (byte)(FromB + DeltaB * time));
 			}
 		}
 

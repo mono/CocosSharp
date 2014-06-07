@@ -56,7 +56,8 @@ namespace CocosSharp
 		public override void Update (float time)
 		{
 			// XXX: shall I add % 360
-			if (Target != null) {
+			if (Target != null)
+			{
 				Target.RotationX = StartAngleX + AngleX * time;
 				Target.RotationY = StartAngleY + AngleY * time;
 			}

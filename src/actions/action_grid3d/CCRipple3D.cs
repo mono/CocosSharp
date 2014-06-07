@@ -59,14 +59,17 @@ namespace CocosSharp
 		{
 			int i, j;
 
-			for (i = 0; i < (GridSize.X + 1); ++i) {
-				for (j = 0; j < (GridSize.Y + 1); ++j) {
+			for (i = 0; i < (GridSize.X + 1); ++i)
+			{
+				for (j = 0; j < (GridSize.Y + 1); ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 
 					CCPoint diff = Position - new CCPoint (v.X, v.Y);
 					float r = diff.Length;
 
-					if (r < Radius) {
+					if (r < Radius)
+					{
 						r = Radius - r;
 						float r1 = r / Radius;
 						float rate = r1 * r1;

@@ -66,7 +66,8 @@ namespace CocosSharp
 		public override float TestFunc (CCGridSize pos, float time)
 		{
 			float fy = GridSize.Y * time;
-			if (fy == 0f) {
+			if (fy == 0f)
+			{
 				return (1f);
 			}
 			return (float)Math.Pow (pos.Y / fy, 6);

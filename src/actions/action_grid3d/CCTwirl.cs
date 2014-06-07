@@ -54,8 +54,10 @@ namespace CocosSharp
 			CCPoint c = PositionInPixels;
 			int twirls = Twirls;
 
-			for (i = 0; i < (GridSize.X + 1); ++i) {
-				for (j = 0; j < (GridSize.Y + 1); ++j) {
+			for (i = 0; i < (GridSize.X + 1); ++i)
+			{
+				for (j = 0; j < (GridSize.Y + 1); ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 
 					avg.X = i - (GridSize.X / 2.0f);

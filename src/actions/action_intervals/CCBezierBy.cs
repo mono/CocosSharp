@@ -54,7 +54,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (Target != null) {
+			if (Target != null)
+			{
 				float xa = 0;
 				float xb = BezierConfig.ControlPoint1.X;
 				float xc = BezierConfig.ControlPoint2.X;

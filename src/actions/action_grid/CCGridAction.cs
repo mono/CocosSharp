@@ -53,16 +53,23 @@ namespace CocosSharp
 			GridSize = action.GridSize;
 			CCGridBase targetGrid = Target.Grid;
 
-			if (targetGrid != null && targetGrid.ReuseGrid > 0) {
+			if (targetGrid != null && targetGrid.ReuseGrid > 0)
+			{
 				Grid = targetGrid;
 
-				if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y) {
+				if (targetGrid.Active && targetGrid.GridSize.X == GridSize.X && targetGrid.GridSize.Y == GridSize.Y)
+				{
 					targetGrid.Reuse ();
-				} else {
+				}
+				else
+				{
 					Debug.Assert (false);
 				}
-			} else {
-				if (targetGrid != null && targetGrid.Active) {
+			}
+			else
+			{
+				if (targetGrid != null && targetGrid.Active)
+				{
 					targetGrid.Active = false;
 				}
 

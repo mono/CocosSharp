@@ -44,13 +44,16 @@ namespace CocosSharp
 		{
 			int i, j;
 
-			for (i = 0; i < (GridSize.X + 1); ++i) {
-				for (j = 0; j < (GridSize.Y + 1); ++j) {
+			for (i = 0; i < (GridSize.X + 1); ++i)
+			{
+				for (j = 0; j < (GridSize.Y + 1); ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 					v.X += (CCRandom.Next () % (Range * 2)) - Range;
 					v.Y += (CCRandom.Next () % (Range * 2)) - Range;
 
-					if (Shake) {
+					if (Shake)
+					{
 						v.Z += (CCRandom.Next () % (Range * 2)) - Range;
 					}
 

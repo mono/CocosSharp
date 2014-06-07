@@ -46,14 +46,17 @@ namespace CocosSharp
 			float y;
 			CCGridSize a, b, c, d;
 
-			if (y0 > y1) {
+			if (y0 > y1)
+			{
 				// Normal Grid
 				a = new CCGridSize (0, 0);
 				b = new CCGridSize (0, 1);
 				c = new CCGridSize (1, 0);
 				d = new CCGridSize (1, 1);
 				y = y0;
-			} else {
+			}
+			else
+			{
 				// Reversed Grid
 				b = new CCGridSize (0, 0);
 				a = new CCGridSize (0, 1);

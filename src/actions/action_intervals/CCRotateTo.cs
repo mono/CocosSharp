@@ -48,42 +48,53 @@ namespace CocosSharp
 
 			// Calculate X
 			StartAngleX = Target.RotationX;
-			if (StartAngleX > 0) {
+			if (StartAngleX > 0)
+			{
 				StartAngleX = StartAngleX % 360.0f;
-			} else {
+			}
+			else
+			{
 				StartAngleX = StartAngleX % -360.0f;
 			}
 
 			DiffAngleX = DistanceAngleX - StartAngleX;
-			if (DiffAngleX > 180) {
+			if (DiffAngleX > 180)
+			{
 				DiffAngleX -= 360;
 			}
-			if (DiffAngleX < -180) {
+			if (DiffAngleX < -180)
+			{
 				DiffAngleX += 360;
 			}
 
 			//Calculate Y: It's duplicated from calculating X since the rotation wrap should be the same
 			StartAngleY = Target.RotationY;
 
-			if (StartAngleY > 0) {
+			if (StartAngleY > 0)
+			{
 				StartAngleY = StartAngleY % 360.0f;
-			} else {
+			}
+			else
+			{
 				StartAngleY = StartAngleY % -360.0f;
 			}
 
 			DiffAngleY = DistanceAngleY - StartAngleY;
-			if (DiffAngleY > 180) {
+			if (DiffAngleY > 180)
+			{
 				DiffAngleY -= 360;
 			}
 
-			if (DiffAngleY < -180) {
+			if (DiffAngleY < -180)
+			{
 				DiffAngleY += 360;
 			}
 		}
 
 		public override void Update (float time)
 		{
-			if (Target != null) {
+			if (Target != null)
+			{
 				Target.RotationX = StartAngleX + DiffAngleX * time;
 				Target.RotationY = StartAngleY + DiffAngleY * time;
 			}

@@ -13,8 +13,10 @@ namespace CocosSharp
 		{
 			// Can't call base(duration) because max action duration needs to be determined here
 			float maxDuration = 0.0f;
-			foreach (CCFiniteTimeAction action in actions) {
-				if (action.Duration > maxDuration) {
+			foreach (CCFiniteTimeAction action in actions)
+			{
+				if (action.Duration > maxDuration)
+				{
 					maxDuration = action.Duration;
 				}
 			}
@@ -22,9 +24,11 @@ namespace CocosSharp
 
 			Actions = actions;
 
-			for (int i = 0; i < Actions.Length; i++) {
+			for (int i = 0; i < Actions.Length; i++)
+			{
 				var actionDuration = Actions [i].Duration;
-				if (actionDuration < Duration) {
+				if (actionDuration < Duration)
+				{
 					Actions [i] = new CCSequence (Actions [i], new CCDelayTime (Duration - actionDuration));
 				}
 			}
@@ -46,7 +50,8 @@ namespace CocosSharp
 		public override CCFiniteTimeAction Reverse ()
 		{
 			CCFiniteTimeAction[] rev = new CCFiniteTimeAction[Actions.Length];
-			for (int i = 0; i < Actions.Length; i++) {
+			for (int i = 0; i < Actions.Length; i++)
+			{
 				rev [i] = Actions [i].Reverse ();
 			}
 
@@ -68,14 +73,16 @@ namespace CocosSharp
 			Actions = action.Actions;
 			ActionStates = new CCFiniteTimeActionState[Actions.Length];
 
-			for (int i = 0; i < Actions.Length; i++) {
+			for (int i = 0; i < Actions.Length; i++)
+			{
 				ActionStates [i] = (CCFiniteTimeActionState)Actions [i].StartAction (target);
 			}
 		}
 
 		public override void Stop ()
 		{
-			for (int i = 0; i < Actions.Length; i++) {
+			for (int i = 0; i < Actions.Length; i++)
+			{
 				ActionStates [i].Stop ();
 			}
 			base.Stop ();
@@ -83,7 +90,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			for (int i = 0; i < Actions.Length; i++) {
+			for (int i = 0; i < Actions.Length; i++)
+			{
 				ActionStates [i].Update (time);
 			}
 		}

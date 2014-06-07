@@ -75,10 +75,13 @@ namespace CocosSharp
 			// p..p..p..p..p..p..p
 			// 1..2..3..4..5..6..7
 			// want p to be 1, 2, 3, 4, 5, 6
-			if (time == 1) {
+			if (time == 1)
+			{
 				p = Points.Count - 1;
 				lt = 1;
-			} else {
+			}
+			else
+			{
 				p = (int)(time / DeltaT);
 				lt = (time - DeltaT * p) / DeltaT;
 			}
@@ -95,7 +98,8 @@ namespace CocosSharp
 			// Support for stacked actions
 			CCNode node = Target;
 			CCPoint diff = node.Position - PreviousPosition;
-			if (diff.X != 0 || diff.Y != 0) {
+			if (diff.X != 0 || diff.Y != 0)
+			{
 				AccumulatedDiff = AccumulatedDiff + diff;
 				newPos = newPos + AccumulatedDiff;
 			}
@@ -139,7 +143,8 @@ namespace CocosSharp
 			//
 			CCPoint p = copyConfig [0];
 
-			for (int i = 1; i < copyConfig.Count; ++i) {
+			for (int i = 1; i < copyConfig.Count; ++i)
+			{
 				CCPoint current = copyConfig [i];
 				CCPoint diff = (current - p);
 				copyConfig [i] = diff;
@@ -158,7 +163,8 @@ namespace CocosSharp
 			p = -p;
 			copyConfig.Insert (0, p);
 
-			for (int i = 1; i < copyConfig.Count; ++i) {
+			for (int i = 1; i < copyConfig.Count; ++i)
+			{
 				CCPoint current = copyConfig [i];
 				current = -current;
 				CCPoint abs = current + p;

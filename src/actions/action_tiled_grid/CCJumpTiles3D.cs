@@ -72,16 +72,21 @@ namespace CocosSharp
 			float sinz = ((float)Math.Sin ((float)Math.PI * time * NumberOfJumps * 2) * Amplitude * AmplitudeRate);
 			float sinz2 = (float)(Math.Sin ((float)Math.PI * (time * NumberOfJumps * 2 + 1)) * Amplitude * AmplitudeRate);
 
-			for (i = 0; i < GridSize.X; i++) {
-				for (j = 0; j < GridSize.Y; j++) {
+			for (i = 0; i < GridSize.X; i++)
+			{
+				for (j = 0; j < GridSize.Y; j++)
+				{
 					CCQuad3 coords = OriginalTile (i, j);
 
-					if (((i + j) % 2) == 0) {
+					if (((i + j) % 2) == 0)
+					{
 						coords.BottomLeft.Z += sinz;
 						coords.BottomRight.Z += sinz;
 						coords.TopLeft.Z += sinz;
 						coords.TopRight.Z += sinz;
-					} else {
+					}
+					else
+					{
 						coords.BottomLeft.Z += sinz2;
 						coords.BottomRight.Z += sinz2;
 						coords.TopLeft.Z += sinz2;
