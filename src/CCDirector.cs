@@ -15,14 +15,14 @@ namespace CocosSharp
     {
         void UpdateProjection();
     }
-		
+
     public enum CCDirectorProjection
     {
 
-		Projection2D,        	/// Sets a 2D projection (orthogonal projection)
-		Projection3D,        	/// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-		Custom,        			/// Calls "updateProjection" on the projection delegate.
-		Default = Projection3D	/// Default projection is 3D projection
+        Projection2D,           /// Sets a 2D projection (orthogonal projection)
+        Projection3D,           /// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
+        Custom,                         /// Calls "updateProjection" on the projection delegate.
+        Default = Projection3D  /// Default projection is 3D projection
 
     }
 
@@ -53,46 +53,46 @@ namespace CocosSharp
         public static string EVENT_AFTER_VISIT = "director_after_visit";
         public static string EVENT_AFTER_DRAW = "director_after_draw";
 
-		#if !NETFX_CORE
-		const string storageDirName = "CocosSharpDirector";
-		const string saveFileName = "SceneList.dat";
-		const string sceneSaveFileName = "Scene{0}.dat";
-		#endif
+        #if !NETFX_CORE
+        const string storageDirName = "CocosSharpDirector";
+        const string saveFileName = "SceneList.dat";
+        const string sceneSaveFileName = "Scene{0}.dat";
+        #endif
 
         readonly float defaultFPS = 60f;
         readonly List<CCScene> scenesStack = new List<CCScene>();
 
-		bool isNeedsInit = true;
+        bool isNeedsInit = true;
         float deltaTime;
-		CCDirectorProjection directorProjection;
+        CCDirectorProjection directorProjection;
 
         CCScene nextScene;
 
-		CCEventCustom eventAfterDraw;
-		CCEventCustom eventAfterVisit;
-		CCEventCustom eventAfterUpdate;
-		CCEventCustom eventProjectionChanged;
+        CCEventCustom eventAfterDraw;
+        CCEventCustom eventAfterVisit;
+        CCEventCustom eventAfterUpdate;
+        CCEventCustom eventProjectionChanged;
 
 
-		#region Properties
+        #region Properties
 
         #if !NETFX_CORE
         public CCAccelerometer Accelerometer { get; set; }
         #endif
 
-		public bool GamePadEnabled { get; set; }        				// Set to true if this platform has a game pad connected.
-		public bool IsNextDeltaTimeZero { get; set; }
-		public bool IsPaused { get; private set; }
+        public bool GamePadEnabled { get; set; }                                        // Set to true if this platform has a game pad connected.
+        public bool IsNextDeltaTimeZero { get; set; }
+        public bool IsPaused { get; private set; }
 
-		public float ContentScaleFactor { get; set; }
+        public float ContentScaleFactor { get; set; }
 
         public CCActionManager ActionManager { get; set; }
-		public CCEventDispatcher EventDispatcher { get; private set; }
+        public CCEventDispatcher EventDispatcher { get; private set; }
 
         public virtual double AnimationInterval { get; set; }
 
 
-		protected bool IsPurgeDirectorInNextLoop { get; set; } 			// This flag will be set to true in end()
+        protected bool IsPurgeDirectorInNextLoop { get; set; }                  // This flag will be set to true in end()
         public bool IsSendCleanupToScene { get; private set; }
         public CCNode NotificationNode { get; set; }
         protected double OldAnimationInterval { get; set; }
@@ -206,7 +206,7 @@ namespace CocosSharp
         {
             get { return scenesStack.Count; }
         }
-			
+
         // Returns true if there is more than 1 scene on the stack.
         public bool IsCanPopScene
         {
@@ -217,7 +217,7 @@ namespace CocosSharp
             }
         }
 
-		#endregion Properties
+        #endregion Properties
 
 
         #region Constructors
@@ -227,8 +227,8 @@ namespace CocosSharp
             InitCCDirector();
         }
 
-		// Also called after purging the director
-		void InitCCDirector()
+        // Also called after purging the director
+        void InitCCDirector()
         {
             SetDefaultValues();
 

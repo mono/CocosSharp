@@ -4,14 +4,14 @@ namespace CocosSharp
 {
     public class CCDisplayLinkDirector : CCDirector
     {
-		private bool isInvalid;
+        private bool isInvalid;
 
         public override double AnimationInterval
         {
             get { return base.AnimationInterval; }
             set
             {
-				base.AnimationInterval = value;
+                base.AnimationInterval = value;
 
                 if (!isInvalid)
                 {
@@ -32,7 +32,7 @@ namespace CocosSharp
             CCApplication.SharedApplication.AnimationInterval = AnimationInterval;
         }
 
-		public override void MainLoop(CCGameTime gameTime)
+        public override void MainLoop(CCGameTime gameTime)
         {
             if (IsPurgeDirectorInNextLoop)
             {
