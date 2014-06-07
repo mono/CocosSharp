@@ -2,36 +2,37 @@
 
 namespace CocosSharp
 {
-    public abstract class CCAmplitudeAction : CCActionInterval
-    {
-        public float Amplitude { get; private set; }
+	public abstract class CCAmplitudeAction : CCActionInterval
+	{
+		public float Amplitude { get; private set; }
 
 
-        #region Constructors
+		#region Constructors
 
-        public CCAmplitudeAction(float duration, float amplitude = 0) : base(duration)
-        {
-            Amplitude = amplitude;
-        }
+		public CCAmplitudeAction (float duration, float amplitude = 0) : base (duration)
+		{
+			Amplitude = amplitude;
+		}
 
-        #endregion Constructors
-    }
+		#endregion Constructors
+	}
 
 
-    #region Action state
+	#region Action state
 
-    public abstract class CCAmplitudeActionState : CCActionIntervalState
-    {
-        protected float Amplitude { get; private set; }
-        protected internal float AmplitudeRate { get; set; }
+	public abstract class CCAmplitudeActionState : CCActionIntervalState
+	{
+		protected float Amplitude { get; private set; }
 
-        public CCAmplitudeActionState(CCAmplitudeAction action, CCNode target) : base(action, target)
-        {
-            Amplitude = action.Amplitude;
-            AmplitudeRate = 1.0f;
-        }
-    }
+		protected internal float AmplitudeRate { get; set; }
 
-    #endregion Action state
+		public CCAmplitudeActionState (CCAmplitudeAction action, CCNode target) : base (action, target)
+		{
+			Amplitude = action.Amplitude;
+			AmplitudeRate = 1.0f;
+		}
+	}
+
+	#endregion Action state
 }
 
