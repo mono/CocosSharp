@@ -61,7 +61,7 @@ namespace tests
             do
             {
 
-                CCSize s = CCDirector.SharedDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
                 CCLabelTtf label = new CCLabelTtf(title(), "Arial", 26);
                 AddChild(label, 1);
@@ -95,21 +95,21 @@ namespace tests
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(RestartOrientationTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void NextCallback(object pSender)
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(NextOrientationTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void BackCallback(object pSender)
         {
             CCScene s = new OrientationTestScene();
             s.AddChild(BackOrientationTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public virtual string title()
@@ -143,7 +143,7 @@ namespace tests
 
 				AddEventListener(touchListener);
 
-                CCSize s = CCDirector.SharedDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
                 CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);
@@ -189,7 +189,7 @@ namespace tests
                     break;
                 CCPoint a = touch.LocationInView;
 
-                CCDirector director = CCDirector.SharedDirector;
+                CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
                 CCPoint b = director.ConvertToUi(director.ConvertToGl(a));
                 //CCLog("(%d,%d) == (%d,%d)", (int) a.x, (int)a.y, (int)b.x, (int)b.y );
                 CCLog.Log("({0},{1}) == ({2},{3})", (int)a.X, (int)a.Y, (int)b.X, (int)b.Y);
@@ -225,7 +225,7 @@ namespace tests
             CCLayer pLayer = OrientationTest.NextOrientationTestCase();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         public override void MainMenuCallback(object pSender)

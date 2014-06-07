@@ -130,7 +130,7 @@ namespace tests
 			sceneIndex = -1;
 			AddChild(NextAction());
 
-			CCDirector.SharedDirector.ReplaceScene(this);
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
 		}
 	}
 
@@ -173,7 +173,7 @@ namespace tests
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.RestartAction ());
 
-			CCDirector.SharedDirector.ReplaceScene(s);
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
 		}
 
 		public void NextCallback(object pSender)
@@ -182,7 +182,7 @@ namespace tests
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.NextAction ());
 
-			CCDirector.SharedDirector.ReplaceScene(s);
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
 		}
 
 		public void BackCallback(object pSender)
@@ -191,7 +191,7 @@ namespace tests
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.BackAction ());
 
-			CCDirector.SharedDirector.ReplaceScene(s);
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
 		}
 
 		public virtual string title()
@@ -285,8 +285,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var statusLabel = new CCLabelTtf("No keyboard event received!", "arial", 20);
 			statusLabel.Position = origin + size.Center;
@@ -306,7 +306,7 @@ namespace tests
 			};
 
 			// Now we tell the event dispatcher that the status label is interested in keyboard events
-			CCDirector.SharedDirector.EventDispatcher.AddEventListener(listener, statusLabel);		
+			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.AddEventListener(listener, statusLabel);		
 		}
 
 		public override string title()
@@ -328,8 +328,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var sprite = new CCSprite(TestResource.s_Ball);
 			sprite.Position = origin + size.Center;
@@ -368,7 +368,7 @@ namespace tests
 			};
 
 			// Now we tell the event dispatcher that the sprite is interested in Accelerometer events
-			CCDirector.SharedDirector.EventDispatcher.AddEventListener(listener, sprite);		
+			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.AddEventListener(listener, sprite);		
 		}
 
 		public override void OnExit ()
@@ -395,8 +395,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
@@ -513,8 +513,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var sprite1 = new TouchableSprite (30);
 			var texture = CCTextureCache.Instance.AddImage("Images/CyanSquare.png");
@@ -616,8 +616,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -642,7 +642,7 @@ namespace tests
 					var userData = string.Format("{0}", count);
 					var customEvent = new CCEventCustom("game_custom_event1");
 					customEvent.UserData = userData;
-                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(customEvent);
+                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.DispatchEvent(customEvent);
 			});
 
 			sendItem.Position = origin + size.Center;
@@ -663,7 +663,7 @@ namespace tests
 				{
 					var customEvent = new CCEventCustom("game_custom_event2");
 					customEvent.UserData = ++count2;
-                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(customEvent);
+                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.DispatchEvent(customEvent);
 				});
 
 			sendItem2.Position = origin + new CCPoint(size.Width / 2, size.Height / 2 - 40);
@@ -705,8 +705,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -889,8 +889,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var s = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var s = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			label1 = new CCLabelTtf("Update: 0", "arial", 20);
 			label1.AnchorPoint = CCPoint.AnchorUpperLeft;
@@ -912,7 +912,7 @@ namespace tests
 			label4.Position = new CCPoint(30,s.Height/2 - 60);
 			AddChild(label4);
 
-			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+			var dispatcher = CCApplication.SharedApplication.MainWindowDirector.EventDispatcher;
 
 			event1 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_UPDATE, OnEvent1);
 			event2 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_VISIT, OnEvent2);
@@ -937,7 +937,7 @@ namespace tests
 
 			time += dt;
 			if(time > 0.5) {
-				CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+				CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
 				time = 0;
 			}
 
@@ -981,8 +981,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var sprite1 = new TouchableSprite ();
 			var texture = CCTextureCache.Instance.AddImage("Images/CyanSquare.png");
@@ -1011,7 +1011,7 @@ namespace tests
 			var popup = new CCMenuItemFont("Popup", (sender) =>
 				{
 
-                    CCDirector.SharedDirector.EventDispatcher.Pause(this,true);
+                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.Pause(this,true);
 
 					var colorLayer = new CCLayerColor(new CCColor4B(0, 0, 255, 100));
 					AddChild(colorLayer, 99999);
@@ -1019,7 +1019,7 @@ namespace tests
 					var closeItem = new CCMenuItemFont("close", (closeSender) =>
 						{
 							colorLayer.RemoveFromParent();
-                            CCDirector.SharedDirector.EventDispatcher.Resume(this, true);
+                            CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.Resume(this, true);
 				});
 
 					closeItem.Position = CCVisibleRect.Center;
@@ -1064,8 +1064,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCDirector.SharedDirector.VisibleOrigin;
-			var size = CCDirector.SharedDirector.VisibleSize;
+			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + size.Center;
@@ -1252,7 +1252,7 @@ namespace tests
                 sprite2.AddEventListener(keyboardEventListener.Copy());
 
 
-				var visibleSize = CCDirector.SharedDirector.VisibleSize;
+				var visibleSize = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
 				sprite.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y + sprite2.ContentSize.Height/2 +10);
 				sprite2.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y - sprite2.ContentSize.Height/2-10);
 			}
@@ -1274,7 +1274,7 @@ namespace tests
 
 		bool IsPointInTopHalfAreaOfScreen(CCPoint pt)
 		{
-			var winSize = CCDirector.SharedDirector.WinSize;
+			var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			if (pt.Y >= winSize.Height/2) {
 				return true;

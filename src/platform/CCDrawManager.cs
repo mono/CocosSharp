@@ -590,7 +590,7 @@ namespace CocosSharp
                 }
                 else
                 {
-                    CCDirector director = CCDirector.SharedDirector;
+                    CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
                     director.Projection = director.Projection;
                 }
 
@@ -1135,7 +1135,7 @@ namespace CocosSharp
 
         public static void SetScissorInPoints(float x, float y, float w, float h)
         {
-            y = CCDirector.SharedDirector.WinSize.Height - y - h;
+            y = CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - y - h;
 
             graphicsDevice.ScissorRectangle = new Rectangle(
                 (int)(x * m_fScaleX + m_obViewPortRect.Origin.X),
@@ -1156,7 +1156,7 @@ namespace CocosSharp
                 float w = sr.Width / m_fScaleX;
                 float h = sr.Height / m_fScaleY;
 
-                y = CCDirector.SharedDirector.WinSize.Height - y - h;
+                y = CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - y - h;
 
                 return new CCRect(x, y, w, h);
             }
@@ -1209,8 +1209,8 @@ namespace CocosSharp
             m_eResolutionPolicy = resolutionPolicy;
 
             // reset director's member variables to fit visible rect
-            CCDirector.SharedDirector.WinSizeInPoints = DesignResolutionSize;
-            CCDirector.SharedDirector.SetGlDefaultValues();
+            CCApplication.SharedApplication.MainWindowDirector.WinSizeInPoints = DesignResolutionSize;
+            CCApplication.SharedApplication.MainWindowDirector.SetGlDefaultValues();
         }
 
 		public static CCDisplayOrientation SupportedOrientations
@@ -1263,8 +1263,8 @@ namespace CocosSharp
                 /*
                 m_obViewPortRect = m_obViewPortRect.InvertedSize;
                 m_obDesignResolutionSize = m_obDesignResolutionSize.Inverted;
-                CCDirector.SharedDirector.m_obWinSizeInPoints = CCDirector.SharedDirector.m_obWinSizeInPoints.Inverted;
-                CCDirector.SharedDirector.m_obWinSizeInPixels = CCDirector.SharedDirector.m_obWinSizeInPixels.Inverted;
+                CCApplication.SharedApplication.MainWindowDirector.m_obWinSizeInPoints = CCApplication.SharedApplication.MainWindowDirector.m_obWinSizeInPoints.Inverted;
+                CCApplication.SharedApplication.MainWindowDirector.m_obWinSizeInPixels = CCApplication.SharedApplication.MainWindowDirector.m_obWinSizeInPixels.Inverted;
                 m_obScreenSize = m_obScreenSize.Inverted;
                 float f = m_fScaleX;
                 m_fScaleX = m_fScaleY;
@@ -1610,7 +1610,7 @@ namespace CocosSharp
             SetClearMaskState(_maskLayer, maskState.Inverted);
 
             // draw a fullscreen solid rectangle to clear the stencil buffer
-            var size = CCDirector.SharedDirector.WinSize;
+            var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             PushMatrix();
             SetIdentityMatrix();
@@ -1762,7 +1762,7 @@ namespace CocosSharp
             }
 
 			// Coming from tombstoning we need to recreate out stats
-			CCDirector.SharedDirector.ReInitStats ();
+			CCApplication.SharedApplication.MainWindowDirector.ReInitStats ();
 
         }
 

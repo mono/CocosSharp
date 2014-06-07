@@ -11,7 +11,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // IMPORTANT:
             // The sprite frames will be cached AND RETAINED, and they won't be released unless you call

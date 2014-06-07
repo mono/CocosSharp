@@ -110,6 +110,18 @@ namespace CocosSharp
 
     public class CCApplication : DrawableGameComponent
     {
+        struct CCWindow
+        {
+            internal CCDirector Director { get; private set; }
+            internal GameWindow XnaWindow { get; private set; }
+
+            public CCWindow(CCDirector director, GameWindow xnaWindow) : this()
+            {
+                Director = director;
+                XnaWindow = xnaWindow;
+            }
+        }
+
         static CCApplication instance;
 
         readonly List<CCTouch> endedTouches = new List<CCTouch>();
@@ -131,14 +143,15 @@ namespace CocosSharp
         MouseState priorMouseState;
         KeyboardState priorKeyboardState;
 
-        Dictionary<PlayerIndex, GamePadState> priorGamePadState = new Dictionary<PlayerIndex, GamePadState>();
-        CCEventGamePadConnection gamePadConnection = new CCEventGamePadConnection ();
-        CCEventGamePadButton gamePadButton = new CCEventGamePadButton ();
-        CCEventGamePadDPad gamePadDPad = new CCEventGamePadDPad ();
-        CCEventGamePadStick gamePadStick = new CCEventGamePadStick();
-        CCEventGamePadTrigger gamePadTrigger = new CCEventGamePadTrigger();
+        Dictionary<PlayerIndex, GamePadState> priorGamePadState;
+        CCEventGamePadConnection gamePadConnection;
+        CCEventGamePadButton gamePadButton;
+        CCEventGamePadDPad gamePadDPad;
+        CCEventGamePadStick gamePadStick;
+        CCEventGamePadTrigger gamePadTrigger;
 
         CCGame xnaGame;
+        CCWindow mainWindow;
 
 
         #region Properties
@@ -310,6 +323,8 @@ namespace CocosSharp
             set { CCContentManager.SharedContentManager.SearchResolutionsOrder = value; }
         }
 
+        public CCDirector MainWindowDirector { get { return mainWindow.Director; } }
+        
         internal ContentManager Content 
         {   get { return(CCContentManager.SharedContentManager); } 
             private set { } 
@@ -328,8 +343,15 @@ namespace CocosSharp
         internal CCApplication(CCGame game)
             : base(game)
         {
-            xnaGame = game;
             GameTime = new CCGameTime();
+            xnaGame = game;
+
+            priorGamePadState = new Dictionary<PlayerIndex, GamePadState>();
+            gamePadConnection = new CCEventGamePadConnection ();
+            gamePadButton = new CCEventGamePadButton ();
+            gamePadDPad = new CCEventGamePadDPad ();
+            gamePadStick = new CCEventGamePadStick();
+            gamePadTrigger = new CCEventGamePadTrigger();
 
             IGraphicsDeviceService service = (IGraphicsDeviceService)Game.Services.GetService(typeof(IGraphicsDeviceService));
 
@@ -413,7 +435,7 @@ namespace CocosSharp
 
         void GameExiting(object sender, EventArgs e)
         {
-            CCDirector.SharedDirector.End();
+            MainWindowDirector.End();
         }
 
         public void ClearTouches()
@@ -445,10 +467,9 @@ namespace CocosSharp
         {
             InitInstance();
 
-            // Initialize our Director
-            // We are moving the initialization from the overriding class to here so the 
-            // user does not have to deal with doing this themselves and cluttering up their codebase.
-            CCDirector.SharedDirector.SetOpenGlView();
+            CCDirector mainWindowDirector = new CCDisplayLinkDirector();
+            mainWindowDirector.SetOpenGlView();
+            mainWindow = new CCWindow(mainWindowDirector, xnaGame.Window);
 
             base.Initialize();
         }
@@ -462,20 +483,18 @@ namespace CocosSharp
             GameTime.TotalGameTime = gameTime.TotalGameTime;
 
             #if !NETFX_CORE
-            if (CCDirector.SharedDirector.Accelerometer != null 
-                && CCDirector.SharedDirector.Accelerometer.Enabled
-                && CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
+            if (MainWindowDirector.Accelerometer != null 
+                && MainWindowDirector.Accelerometer.Enabled
+                && MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
             {
-                CCDirector.SharedDirector.Accelerometer.Update();
+                MainWindowDirector.Accelerometer.Update();
             }
             #endif
-            // Process touch events 
+
             ProcessTouch();
 
-            if (CCDirector.SharedDirector.GamePadEnabled)
+            if (MainWindowDirector.GamePadEnabled)
             {
-                // Process the game pad
-                // This consumes game pad state.
                 ProcessGamePad();
             }
 
@@ -483,7 +502,7 @@ namespace CocosSharp
 
             ProcessMouse();
 
-            CCDirector.SharedDirector.Update(GameTime);
+            MainWindowDirector.Update(GameTime);
 
             base.Update(gameTime);
         }
@@ -498,7 +517,7 @@ namespace CocosSharp
 
             CCDrawManager.BeginDraw();
 
-            CCDirector.SharedDirector.MainLoop(GameTime);
+            MainWindowDirector.MainLoop(GameTime);
 
             base.Draw(gameTime);
 
@@ -527,7 +546,7 @@ namespace CocosSharp
 
         void ProcessGamePad (GamePadState gps, PlayerIndex player)
         {
-            var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+            var dispatcher = MainWindowDirector.EventDispatcher;
 
             var lastState = new GamePadState ();
 
@@ -710,8 +729,8 @@ namespace CocosSharp
         void ProcessGamePad()
         {
 
-            if (CCDirector.SharedDirector.GamePadEnabled &&
-                CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor (CCEventListenerGamePad.LISTENER_ID)) 
+            if (MainWindowDirector.GamePadEnabled &&
+                MainWindowDirector.EventDispatcher.IsEventListenersFor (CCEventListenerGamePad.LISTENER_ID)) 
             {
 
                 // On Android, the gamepad is always connected.
@@ -736,7 +755,7 @@ namespace CocosSharp
             // Read the current keyboard state
             KeyboardState currentKeyboardState = Keyboard.GetState();
 
-            var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+            var dispatcher = MainWindowDirector.EventDispatcher;
 
             if (currentKeyboardState == priorKeyboardState || !dispatcher.IsEventListenersFor(CCEventListenerKeyboard.LISTENER_ID) )
             {
@@ -748,11 +767,11 @@ namespace CocosSharp
             // Check for Keypad interaction
             if(currentKeyboardState.IsKeyUp(Keys.Back) && priorKeyboardState.IsKeyDown(Keys.Back)) 
             {
-                CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
+                MainWindowDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
             }
             else if(currentKeyboardState.IsKeyUp(Keys.Home) && priorKeyboardState.IsKeyDown(Keys.Home)) 
             {
-                CCDirector.SharedDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
+                MainWindowDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
             }
 
             var keyboardEvent = new CCEventKeyboard (CCKeyboardEventType.KEYBOARD_PRESS);
@@ -804,7 +823,7 @@ namespace CocosSharp
             // Read the current Mouse state
             MouseState currentMouseState = Mouse.GetState();
 
-            var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+            var dispatcher = MainWindowDirector.EventDispatcher;
 
             if (currentMouseState == priorMouseState || !dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
             {
@@ -919,8 +938,8 @@ namespace CocosSharp
 
         void ProcessTouch()
         {
-            if (CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
-                || CCDirector.SharedDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
+            if (MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
+                || MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
             {
                 newTouches.Clear();
                 movedTouches.Clear();
@@ -1031,21 +1050,21 @@ namespace CocosSharp
                 {
                     touchEvent.Touches = newTouches;
                     //m_pDelegate.TouchesBegan(newTouches);
-                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
                 }
 
                 if (movedTouches.Count > 0)
                 {
                     touchEvent.EventCode = CCEventCode.MOVED;
                     touchEvent.Touches = movedTouches;
-                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
                 }
 
                 if (endedTouches.Count > 0)
                 {
                     touchEvent.EventCode = CCEventCode.ENDED;
                     touchEvent.Touches = endedTouches;
-                    CCDirector.SharedDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
                 }
             }
         }

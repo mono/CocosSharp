@@ -36,7 +36,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
@@ -68,21 +68,21 @@ namespace tests
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.restartTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.nextTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.backTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)

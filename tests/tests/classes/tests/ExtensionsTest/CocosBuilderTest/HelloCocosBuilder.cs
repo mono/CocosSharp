@@ -52,7 +52,7 @@ namespace tests.Extensions
             transitionColor.G = 0;
             transitionColor.B = 0;
 
-            CCDirector.SharedDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
+            CCApplication.SharedApplication.MainWindowDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
         }
 
         public void onMenuTestClicked(object pSender, CCControlEvent pCCControlEvent)
@@ -104,7 +104,7 @@ namespace tests.Extensions
             transitionColor.G = 0;
             transitionColor.B = 0;
 
-            CCDirector.SharedDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
+            CCApplication.SharedApplication.MainWindowDirector.PushScene(new CCTransitionFade(0.5f, scene, transitionColor));
         }
 
         public void onParticleSystemTestClicked(object pSender, CCControlEvent pCCControlEvent)

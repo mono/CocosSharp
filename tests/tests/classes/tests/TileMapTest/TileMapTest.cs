@@ -154,12 +154,12 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
+            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
         }
 
         public override void OnExit()
         {
-            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }
 
@@ -984,7 +984,7 @@ namespace tests
             base.OnEnter();
 
             // TIP: 2d projection should be used
-            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()
@@ -1049,7 +1049,7 @@ namespace tests
             base.OnEnter();
 
             // TIP: 2d projection should be used
-            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
+            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()
@@ -1388,7 +1388,7 @@ namespace tests
 			AddEventListener(touchListener);
 
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 //            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
 //            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
 //            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
@@ -1518,7 +1518,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCDirector pDirector = CCDirector.SharedDirector;
+            CCDirector pDirector = CCApplication.SharedApplication.MainWindowDirector;
         }
 
 
@@ -1526,21 +1526,21 @@ namespace tests
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.restartTileMapAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         private void nextCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.nextTileMapAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         void backCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.backTileMapAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
@@ -1776,9 +1776,9 @@ namespace tests
             // fix bug #486, #419. 
             // "test" is not the default value in CCDirector.setGLDefaultValues()
             // but TransitionTest may setDepthTest(false), we should revert it here
-            CCDirector.SharedDirector.IsUseDepthTesting = true;
+            CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting = true;
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         #region Nested type: Action

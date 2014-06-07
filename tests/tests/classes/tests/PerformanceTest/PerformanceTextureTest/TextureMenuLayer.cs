@@ -24,7 +24,7 @@ namespace tests
 
             if (pScene != null)
             {
-                CCDirector.SharedDirector.ReplaceScene(pScene);
+                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
             }
         }
 
@@ -32,7 +32,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // Title
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 38);

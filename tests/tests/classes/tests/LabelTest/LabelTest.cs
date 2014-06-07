@@ -89,7 +89,7 @@ namespace CocosSharp
             CCScene s = new AtlasTestScene();
             s.AddChild(AtlasTestScene.restartAtlasAction());
 
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
@@ -99,7 +99,7 @@ namespace CocosSharp
 
             s.AddChild(AtlasTestScene.nextAtlasAction());
 
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
 
         }
 
@@ -110,7 +110,7 @@ namespace CocosSharp
 
             s.AddChild(AtlasTestScene.backAtlasAction());
 
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
 
         }
 

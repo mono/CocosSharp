@@ -165,7 +165,7 @@ namespace tests
         {
             AddChild(NextParticleAction());
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     };
 
@@ -302,14 +302,14 @@ namespace tests
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.NextParticleAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         void BackCallback(object sender)
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.BackParticleAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         void ToggleCallback(object sender)
@@ -847,7 +847,7 @@ namespace tests
             Background.AddChild(Emitter, 10);
             ////Emitter.release();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // duration
             Emitter.Duration = -1;
@@ -1072,7 +1072,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1150,7 +1150,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1228,7 +1228,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1384,7 +1384,7 @@ namespace tests
                 emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
 
-                CCSize s = CCDirector.SharedDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
                 int neg = (i == 0 ? 1 : -1);
 
@@ -1517,7 +1517,7 @@ namespace tests
             CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             emitter1.Position = (new CCPoint(s.Width / 1.25f, s.Height / 1.25f));
             emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2));

@@ -16,7 +16,7 @@ namespace tests
             //pLayer->autorelease();
 
             AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

@@ -44,7 +44,7 @@ namespace tests
             CCLayerMultiplex layer = new CCLayerMultiplex(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
             AddChild(layer, 0);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
         protected override void NextTestCase()
         {

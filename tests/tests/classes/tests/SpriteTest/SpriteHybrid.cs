@@ -13,7 +13,7 @@ namespace tests
 
         public SpriteHybrid()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // parents
             CCNode parent1 = new CCNode ();

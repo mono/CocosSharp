@@ -31,7 +31,7 @@ namespace tests
         private void InitBaseDrawNodeTest ()
         {
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 1);
@@ -64,21 +64,21 @@ namespace tests
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.restartTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.nextTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.backTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
     }
 
@@ -86,7 +86,7 @@ namespace tests
     {
         public DrawPrimitivesWithRenderTextureTest()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCRenderTexture text = new CCRenderTexture((int)s.Width, (int)s.Height);
 
             CCDrawNode draw = new CCDrawNode();
@@ -112,7 +112,7 @@ namespace tests
             base.Draw();
 
             CCApplication app = CCApplication.SharedApplication;
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCDrawingPrimitives.Begin();
 
@@ -209,7 +209,7 @@ namespace tests
         private bool InitDrawNodeTest ()
         {
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCDrawNode draw = new CCDrawNode();
             AddChild(draw, 10);

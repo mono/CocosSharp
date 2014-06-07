@@ -14,7 +14,7 @@ namespace tests.Clipping
         {
             CCLayer pLayer = nextTestAction();
             AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         public static CCLayer createTestLayer(int nIndex)
@@ -103,7 +103,7 @@ namespace tests.Clipping
 
         public BaseClippingNodeTest() : base()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite background = new CCSprite(TestResource.s_back3);
             background.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -142,21 +142,21 @@ namespace tests.Clipping
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.restartTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.nextTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.backTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
@@ -234,7 +234,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCNode stencil = Stencil();
             stencil.Tag = kTagStencilNode;
@@ -529,7 +529,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            var s = CCDirector.SharedDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCClippingNode clipper = new CCClippingNode();
             clipper.Tag = kTagClipperNode;

@@ -76,42 +76,42 @@ namespace CocosSharp
 
         public static float CCContentScaleFactor()
         {
-            return CCDirector.SharedDirector.ContentScaleFactor;
+            return CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
         }
 
         public static CCRect PixelsToPoints(this CCRect r)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCRect(r.Origin.X / cs, r.Origin.Y / cs, r.Size.Width / cs, r.Size.Height / cs);
         }
 
         public static CCRect PointsToPixels(this CCRect r)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCRect(r.Origin.X * cs, r.Origin.Y * cs, r.Size.Width * cs, r.Size.Height * cs);
         }
 
         public static CCSize PixelsToPoints(this CCSize s)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCSize(s.Width / cs, s.Height / cs);
         }
 
         public static CCSize PointsToPixels(this CCSize s)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCSize(s.Width * cs, s.Height * cs);
         }
 
         public static CCPoint PixelsToPoints(this CCPoint p)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCPoint(p.X / cs, p.Y / cs);
         }
 
         public static CCPoint PointsToPixels(this CCPoint p)
         {
-            var cs = CCDirector.SharedDirector.ContentScaleFactor;
+            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
             return new CCPoint(p.X * cs, p.Y * cs);
         }
 

@@ -15,7 +15,7 @@ namespace tests
 			var batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 
 			var rotate = new CCRotateBy (10, 360);

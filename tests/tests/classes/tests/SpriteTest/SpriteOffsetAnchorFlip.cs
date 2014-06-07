@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteOffsetAnchorFlip()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			// we only need to define the actions once
 			var flip = new CCFlipY(true);

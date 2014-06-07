@@ -8,7 +8,7 @@ namespace tests
 
         public CameraZoomTest()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite sprite;
             CCCamera cam;
@@ -55,12 +55,12 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection3D);
+            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection3D);
         }
 
         public override void OnExit()
         {
-            CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection2D);
+            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

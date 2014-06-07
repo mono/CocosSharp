@@ -22,7 +22,7 @@ namespace tests
             CCLayer pLayer = ActionManagerTest.nextActionManagerAction();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

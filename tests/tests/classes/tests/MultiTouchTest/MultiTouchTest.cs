@@ -86,7 +86,7 @@ namespace tests
 
             AddChild(layer, 0);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

@@ -49,21 +49,21 @@ namespace tests
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.restartCocosNodeAction());
 
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.nextCocosNodeAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new CocosNodeTestScene(); //CCScene.node();
             s.AddChild(CocosNodeTestScene.backCocosNodeAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace tests
 
             pScene.AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(pScene);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
         }
     }
 }

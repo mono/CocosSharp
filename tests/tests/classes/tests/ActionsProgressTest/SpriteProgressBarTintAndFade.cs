@@ -11,7 +11,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var progressTo = new CCProgressTo(6, 100);
 			var tint = new CCSequence(new CCTintTo (1, 255, 0, 0),

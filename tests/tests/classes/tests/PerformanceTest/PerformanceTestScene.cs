@@ -22,7 +22,7 @@ namespace tests
             CCLayer pLayer = new PerformanceMainLayer();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         public static int MAX_COUNT = 5;

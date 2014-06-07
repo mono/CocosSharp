@@ -45,7 +45,7 @@ namespace tests
 
 	        // add menu items for tests
 	        m_pItmeMenu = new CCMenu(null);
-	        CCSize s = CCDirector.SharedDirector.WinSize;
+	        CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 	        m_nTestCount = testItems.Count<string>();
 
 	        for (int i = 0; i < m_nTestCount; ++i)
@@ -177,12 +177,12 @@ namespace tests
 			CCTouch touch = touches.FirstOrDefault();
 
 	        CCPoint touchLocation = touch.LocationInView;	
-	        touchLocation = CCDirector.SharedDirector.ConvertToGl( touchLocation );
+	        touchLocation = CCApplication.SharedApplication.MainWindowDirector.ConvertToGl( touchLocation );
 	        float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
 	        CCPoint curPos  = m_pItmeMenu.Position;
 	        CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-	        CCSize winSize = CCDirector.SharedDirector.WinSize;
+	        CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 	        if (nextPos.Y < 0.0f)
 	        {
 		        m_pItmeMenu.Position = new CCPoint(0,0);
@@ -219,7 +219,7 @@ namespace tests
 	        CCLayer pLayer = new CocosDenshionTest();
 	        AddChild(pLayer);
 
-	        CCDirector.SharedDirector.ReplaceScene(this);
+	        CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

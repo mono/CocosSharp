@@ -22,7 +22,7 @@ namespace tests
 
             AddChild(menu);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
             AddChild(sprite);
             
@@ -43,22 +43,22 @@ namespace tests
         {
             var newScene = new CCScene();
             newScene.AddChild(new SceneTestLayer3());
-            CCDirector.SharedDirector.PushScene(new CCTransitionFade(0.5f, newScene, new CCColor3B(0, 255, 255)));
+            CCApplication.SharedApplication.MainWindowDirector.PushScene(new CCTransitionFade(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }
 
         public void item1Clicked(object pSender)
         {
-            CCDirector.SharedDirector.PopScene();
+            CCApplication.SharedApplication.MainWindowDirector.PopScene();
         }
 
         public void item2Clicked(object pSender)
         {
-            CCDirector.SharedDirector.PopToRootScene();
+            CCApplication.SharedApplication.MainWindowDirector.PopToRootScene();
         }
 
         public void item3Clicked(object pSender)
         {
-            CCDirector.SharedDirector.PopToSceneStackLevel(2);
+            CCApplication.SharedApplication.MainWindowDirector.PopToSceneStackLevel(2);
         }
     }
 }

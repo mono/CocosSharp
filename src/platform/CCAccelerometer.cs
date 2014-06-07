@@ -190,7 +190,7 @@ namespace CocosSharp
 		public void Update()
         {
 			
-			var dispatcher = CCDirector.SharedDirector.EventDispatcher;
+			var dispatcher = CCApplication.SharedApplication.MainWindowDirector.EventDispatcher;
 			if (dispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
 			{
                 if (Emulating)

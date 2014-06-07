@@ -35,7 +35,7 @@ namespace tests.FontTest
             CCLayer pLayer = new FontTest();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         protected override void NextTestCase()
@@ -94,7 +94,7 @@ namespace tests.FontTest
 
         public FontTest()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
             CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
             CCMenuItemImage item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
@@ -136,7 +136,7 @@ namespace tests.FontTest
 
         public void showFont(string pFont)
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var blockSize = new CCSize(s.Width / 3, 200);
             float fontSize = 26;

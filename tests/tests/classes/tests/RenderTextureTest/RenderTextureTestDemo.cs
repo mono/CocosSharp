@@ -7,7 +7,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 1);
@@ -49,21 +49,21 @@ namespace tests
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.restartTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.nextTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new RenderTextureScene();
             s.AddChild(RenderTextureScene.backTestCase());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
     }
 }

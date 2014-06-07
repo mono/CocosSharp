@@ -28,7 +28,7 @@ namespace tests
 
 			AddEventListener(touchListener);        
 
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCLabelTtf label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);
             label.Position = new CCPoint(size.Width / 2, size.Height * 0.25f);
             AddChild(label);
@@ -137,7 +137,7 @@ namespace tests
 
         public void renderScreenShot()
         {
-            var size = CCDirector.SharedDirector.WinSize;
+            var size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             var texture = new CCRenderTexture((int)size.Width, (int)size.Height);
             //var texture = new CCRenderTexture(512, 512);
 

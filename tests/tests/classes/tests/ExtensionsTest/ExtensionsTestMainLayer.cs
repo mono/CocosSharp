@@ -8,7 +8,7 @@ namespace tests.Extensions
 		{
 			base.OnEnter();
 
-			var	s = CCDirector.SharedDirector.WinSize;
+			var	s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var pMenu = new CCMenu();
 			pMenu.Position = CCPoint.Zero;
@@ -37,7 +37,7 @@ namespace tests.Extensions
 				//    break;
 				case ExtensionsTestScene.TEST_CCCONTROLBUTTON:
 				    var pManager = CCControlSceneManager.sharedControlSceneManager();
-				    CCDirector.SharedDirector.ReplaceScene(pManager.currentControlScene());
+				    CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pManager.currentControlScene());
 				    break;
 				case ExtensionsTestScene.TEST_COCOSBUILDER:
 					var pScene = new CocosBuilderTest();
@@ -57,7 +57,7 @@ namespace tests.Extensions
 					break;
                 case ExtensionsTestScene.TEST_Scale9Sprite:
                     var Manager = Scale9SpriteSceneManager.sharedSprite9SceneManager();
-				    CCDirector.SharedDirector.ReplaceScene(Manager.currentControlScene());
+				    CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(Manager.currentControlScene());
 			        break;
 				default:
 					break;

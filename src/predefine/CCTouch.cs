@@ -38,7 +38,7 @@ namespace CocosSharp
         /** returns the start touch location in OpenGL coordinates */
         public CCPoint StartLocation
         {
-            get { return CCDirector.SharedDirector.ConvertToGl(m_startPoint); }
+            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_startPoint); }
         }
 
         public CCPoint LocationInView
@@ -59,12 +59,12 @@ namespace CocosSharp
 
         public CCPoint Location
         {
-            get { return CCDirector.SharedDirector.ConvertToGl(m_point); }
+            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_point); }
         }
 
         public CCPoint PreviousLocation
         {
-            get { return CCDirector.SharedDirector.ConvertToGl(m_prevPoint); }
+            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_prevPoint); }
         }
 
 

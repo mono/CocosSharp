@@ -6,7 +6,7 @@ namespace tests.Extensions
     {
         public void onBackClicked(object pSender)
         {
-            CCDirector.SharedDirector.PopScene();
+            CCApplication.SharedApplication.MainWindowDirector.PopScene();
         }
     }
 }

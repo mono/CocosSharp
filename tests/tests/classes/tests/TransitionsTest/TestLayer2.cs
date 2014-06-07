@@ -12,7 +12,7 @@ namespace tests
         {
             float x, y;
 
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             x = size.Width;
             y = size.Height;
 
@@ -59,7 +59,7 @@ namespace tests
 
             if (pScene != null)
             {
-                CCDirector.SharedDirector.ReplaceScene(pScene);
+                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
             }
         }
 
@@ -76,7 +76,7 @@ namespace tests
 
             if (pScene != null)
             {
-                CCDirector.SharedDirector.ReplaceScene(pScene);
+                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
             }
         }
 
@@ -96,7 +96,7 @@ namespace tests
             
             if (pScene != null)
             {
-                CCDirector.SharedDirector.ReplaceScene(pScene);
+                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
             }
         }
 

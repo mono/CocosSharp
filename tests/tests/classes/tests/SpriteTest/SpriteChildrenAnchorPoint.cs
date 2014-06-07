@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteChildrenAnchorPoint()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini.plist");
 

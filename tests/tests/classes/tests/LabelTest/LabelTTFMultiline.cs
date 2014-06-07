@@ -10,7 +10,7 @@ namespace tests
     {
         public LabelTTFMultiline()
         {
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // CCLabelBMFont
 			var center = new CCLabelTtf("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",

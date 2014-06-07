@@ -18,13 +18,13 @@ namespace tests
             //glEnable(GL_ALPHA_TEST);
             //glAlphaFunc(GL_GREATER, 0.0f);
 
-            CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
+            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
         }
 
         public override void OnExit()
         {
             //glDisable(GL_ALPHA_TEST);
-            CCDirector.SharedDirector.Projection = (CCDirectorProjection.Projection2D);
+            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 
@@ -40,7 +40,7 @@ namespace tests
             //
 
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float step = s.Width / 12;
 
             // small capacity. Testing resizing.

@@ -63,7 +63,7 @@ namespace tests
 		{
 			base.OnEnter();
 
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = CCVisibleRect.Center;
@@ -109,7 +109,7 @@ namespace tests
 
 		public void unscheduleAll(float dt)
 		{
-			CCDirector.SharedDirector.Scheduler.UnscheduleAll (CCSchedulePriority.User);
+			CCApplication.SharedApplication.MainWindowDirector.Scheduler.UnscheduleAll (CCSchedulePriority.User);
 		}
 	}
 

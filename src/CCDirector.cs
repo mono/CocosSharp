@@ -59,8 +59,6 @@ namespace CocosSharp
 		const string sceneSaveFileName = "Scene{0}.dat";
 		#endif
 
-        static CCDirector sharedDirector;
-
         readonly float defaultFPS = 60f;
         readonly List<CCScene> scenesStack = new List<CCScene>();
 
@@ -106,22 +104,6 @@ namespace CocosSharp
 
         // Dispatchers
         public CCKeypadDispatcher KeypadDispatcher  { get; set; }
-
-        /// <summary>
-        /// returns a shared instance of the director
-        /// </summary>
-        /// <value> </value>
-        public static CCDirector SharedDirector
-        {
-            get
-            {
-                if (sharedDirector == null)
-                {
-                    sharedDirector = new CCDisplayLinkDirector();
-                }
-                return sharedDirector;
-            }
-        }
 
         public float ZEye
         {

@@ -20,7 +20,7 @@ namespace tests
 			listener.OnTouchesMoved = onTouchesMoved;
 			AddEventListener(listener); 
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // create the streak object and add it to the scene
             streak = new CCMotionStreak(3, 3, 64, CCColor3B.White, s_streak);

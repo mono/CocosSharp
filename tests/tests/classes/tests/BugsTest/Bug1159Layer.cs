@@ -16,7 +16,7 @@ namespace tests
 
         private void InitBug1159Layer()
         {
-                CCSize s = CCDirector.SharedDirector.WinSize;
+                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
                 CCLayerColor background = new CCLayerColor(new CCColor4B(255, 0, 255, 255));
                 AddChild(background);
@@ -55,7 +55,7 @@ namespace tests
 
         public void callBack(object pSender)
         {
-            CCDirector.SharedDirector.ReplaceScene(new CCTransitionPageTurn(1.0f, Bug1159Layer.scene(), false));
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(new CCTransitionPageTurn(1.0f, Bug1159Layer.scene(), false));
         }
 
         //LAYER_NODE_FUNC(Bug1159Layer);

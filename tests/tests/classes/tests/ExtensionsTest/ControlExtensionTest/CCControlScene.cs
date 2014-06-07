@@ -8,7 +8,7 @@ namespace tests.Extensions
         public CCControlScene()
 		{  
 			// Get the sceensize
-			CCSize screensize = CCDirector.SharedDirector.WinSize;
+			CCSize screensize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var pBackItem = new CCMenuItemFont("Back", toExtensionsMainLayer);
 			pBackItem.Position = new CCPoint(screensize.Width - 50, 25);
@@ -62,17 +62,17 @@ namespace tests.Extensions
 
 		public virtual void previousCallback(object sender)
 		{
-			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
 		}
 
 		public virtual void restartCallback(object sender)
 		{
-			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
 		}
 		
 		public virtual void nextCallback(object sender)
 		{
-			CCDirector.SharedDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
 		}
 
 		private CCLabelTtf m_pSceneTitleLabel; 

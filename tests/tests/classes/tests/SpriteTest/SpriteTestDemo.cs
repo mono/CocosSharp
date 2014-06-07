@@ -27,7 +27,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 1);
@@ -62,7 +62,7 @@ namespace tests
 
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.restartSpriteTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
@@ -71,7 +71,7 @@ namespace tests
 
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.nextSpriteTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
@@ -80,7 +80,7 @@ namespace tests
             
             CCScene s = new SpriteTestScene();
             s.AddChild(SpriteTestScene.backSpriteTestAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         private void ClearCaches()

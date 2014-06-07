@@ -13,7 +13,7 @@ namespace tests
 			var label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
 
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			label.Position = s.Center;
 			label.AnchorPoint = CCPoint.AnchorMiddle;

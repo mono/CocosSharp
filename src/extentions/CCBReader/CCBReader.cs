@@ -303,7 +303,7 @@ namespace CocosSharp
             AnimationManager = pActionManager;
             
             // Setup resolution scale and container size
-            _actionManager.RootContainerSize = CCDirector.SharedDirector.WinSize;
+            _actionManager.RootContainerSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			HasScriptingOwner = false;
 
@@ -317,7 +317,7 @@ namespace CocosSharp
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner)
         {
-            return ReadNodeGraphFromFile(fileName, owner, CCDirector.SharedDirector.WinSize);
+            return ReadNodeGraphFromFile(fileName, owner, CCApplication.SharedApplication.MainWindowDirector.WinSize);
         }
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
@@ -395,7 +395,7 @@ namespace CocosSharp
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner)
         {
-            return CreateSceneWithNodeGraphFromFile(fileName, owner, CCDirector.SharedDirector.WinSize);
+            return CreateSceneWithNodeGraphFromFile(fileName, owner, CCApplication.SharedApplication.MainWindowDirector.WinSize);
         }
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, CCSize parentSize)

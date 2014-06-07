@@ -19,7 +19,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf l = new CCLabelTtf("Grossini only rotate/scale in 3 seconds", "arial", 16);
             AddChild(l);
@@ -31,7 +31,7 @@ namespace tests
 
             pGrossini.RunAction(new CCScaleBy(2, 2));
 
-            CCDirector.SharedDirector.ActionManager.PauseTarget(pGrossini);
+            CCApplication.SharedApplication.MainWindowDirector.ActionManager.PauseTarget(pGrossini);
             pGrossini.RunAction(new CCRotateBy (2, 360));
 
             this.Schedule(resumeGrossini, 3.0f);
@@ -42,7 +42,7 @@ namespace tests
             this.Unschedule(resumeGrossini);
 
             CCNode pGrossini = GetChildByTag((int)KTag.kTagGrossini);
-            CCDirector.SharedDirector.ActionManager.ResumeTarget(pGrossini);
+            CCApplication.SharedApplication.MainWindowDirector.ActionManager.ResumeTarget(pGrossini);
         }
     }
 }

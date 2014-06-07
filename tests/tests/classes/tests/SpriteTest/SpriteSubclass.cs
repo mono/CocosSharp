@@ -54,7 +54,7 @@ namespace tests
     {
         public SpriteSubclass()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist");
             CCSpriteBatchNode aParent = new CCSpriteBatchNode("animations/ghosts");

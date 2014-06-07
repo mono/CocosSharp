@@ -19,7 +19,7 @@ namespace tests
         }
         public override void doTest()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCParticleSystem particleSystem = (CCParticleSystem)GetChildByTag(PerformanceParticleTest.kTagParticleSystem);
 
             // duration

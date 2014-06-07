@@ -6,7 +6,7 @@ namespace tests
     {
         public Issue1343()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var bmFont = new CCLabelBMFont();
             bmFont.FntFile = "fonts/font-issue1343.fnt";

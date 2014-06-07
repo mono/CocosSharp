@@ -6,7 +6,7 @@ namespace tests
     {
         public StressTest1()
         {
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var sp1 = new CCSprite(TestResource.s_pPathSister1);
             AddChild(sp1, 0, CocosNodeTestStaticLibrary.kTagSprite1);
@@ -20,7 +20,7 @@ namespace tests
         {
             Unschedule(shouldNotCrash);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // if the node has timers, it crashes
 			CCParticleSun explosion = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));

@@ -167,7 +167,7 @@ namespace tests
         {
             CCLayer pLayer = nextTextureTest();
             AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
     }
@@ -185,7 +185,7 @@ namespace tests
             base.OnEnter();
 
             CCTextureCache.Instance.DumpCachedTextureInfo();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1, (int) (enumTag.kTagLabel));
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
@@ -223,21 +223,21 @@ namespace tests
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.restartTextureTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.nextTextureTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.backTextureTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public virtual string title()
@@ -264,7 +264,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLog.Log("Loading 512x512 image...");
             CCSprite sprite1 = new CCSprite("Images/texture512x512");
@@ -1000,7 +1000,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             //
             // Sprite 1: GL_LINEAR
@@ -1238,7 +1238,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1284,7 +1284,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1334,7 +1334,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1382,7 +1382,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite sprite;
 
@@ -1441,7 +1441,7 @@ namespace tests
 
             m_nImageOffset = 0;
 
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf("Loading...", "Marker Felt", 32);
             label.Position = size.Center;
@@ -1479,7 +1479,7 @@ namespace tests
 
         private void ImageLoaded(CCTexture2D tex)
         {
-            CCDirector director = CCDirector.SharedDirector;
+            CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
 
             //CCAssert( [NSThread currentThread] == [director runningThread], @"FAIL. Callback should be on cocos2d thread");
 

@@ -15,7 +15,7 @@ namespace tests
 			m_textureAtlas = new CCTextureAtlas (TestResource.s_AtlasTest, 3);
             //m_textureAtlas.retain();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             //
             // Notice: u,v tex coordinates are inverted

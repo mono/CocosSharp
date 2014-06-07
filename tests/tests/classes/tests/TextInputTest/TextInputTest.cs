@@ -11,21 +11,21 @@ namespace CocosSharp
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.restartTextInputTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.nextTextInputTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.backTextInputTest());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public virtual string title()
@@ -43,7 +43,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 24);
             AddChild(label);
@@ -143,13 +143,13 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            var s = CCDirector.SharedDirector.WinSize;
+            var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var pTextField = new CCTextFieldTTF(
                 "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
                 );
 
-            pTextField.Position = CCDirector.SharedDirector.WinSize.Center;
+            pTextField.Position = CCApplication.SharedApplication.MainWindowDirector.WinSize.Center;
 
             pTextField.AutoEdit = true;
 
@@ -213,7 +213,7 @@ namespace CocosSharp
             m_bAction = false;
 
             // add CCTextFieldTTF
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             m_pTextField = new CCTextFieldTTF("<click here for input>",
                                               TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
@@ -271,7 +271,7 @@ namespace CocosSharp
                 endPos.X += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.X, CCDirector.SharedDirector.WinSize.Height - inputTextSize.Height * 2);
+            CCPoint beginPos = new CCPoint(endPos.X, CCApplication.SharedApplication.MainWindowDirector.WinSize.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -302,7 +302,7 @@ namespace CocosSharp
             int RAND_MAX = 32767;
             CCRandom rand = new CCRandom();
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;

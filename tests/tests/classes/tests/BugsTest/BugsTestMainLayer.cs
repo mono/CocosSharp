@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             m_pItmeMenu = new CCMenu(null);
 
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)
@@ -74,7 +74,7 @@ namespace tests
                     break;
             }
             pScene.AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(pScene);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
         }
 
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
@@ -98,7 +98,7 @@ namespace tests
 
                 CCPoint curPos = m_pItmeMenu.Position;
                 CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-                CCSize winSize = CCDirector.SharedDirector.WinSize;
+                CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
                 if (nextPos.Y < 0.0f)
                 {
                     m_pItmeMenu.Position = new CCPoint(0, 0);

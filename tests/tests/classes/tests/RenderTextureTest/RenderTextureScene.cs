@@ -74,7 +74,7 @@ namespace tests
             CCLayer pLayer = nextTestCase();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

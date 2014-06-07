@@ -27,7 +27,7 @@ namespace tests
 
         public RenderTextureCompositeTest()
         {
-            var winSize = CCDirector.SharedDirector.WinSize;
+            var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             var characterSpriteFactory = new CharacterSpriteFactory();
 
             _testSprite = new CCSprite(@"Images\grossini_dance_01");

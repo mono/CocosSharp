@@ -11,7 +11,7 @@ namespace tests
     {
         public SpriteNilTexture()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite sprite = null;
 

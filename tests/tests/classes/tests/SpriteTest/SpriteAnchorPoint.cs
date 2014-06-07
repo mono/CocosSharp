@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteAnchorPoint()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 
             CCRotateBy rotate = new CCRotateBy(10, 360);

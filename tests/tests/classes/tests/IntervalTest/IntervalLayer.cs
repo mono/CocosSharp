@@ -18,7 +18,7 @@ namespace tests
         {
             m_time0 = m_time1 = m_time2 = m_time3 = m_time4 = 0.0f;
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // sun
 			CCParticleSystem sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));
@@ -76,10 +76,10 @@ namespace tests
 
         public void onPause(object pSender)
         {
-            if (CCDirector.SharedDirector.IsPaused)
-                CCDirector.SharedDirector.Resume();
+            if (CCApplication.SharedApplication.MainWindowDirector.IsPaused)
+                CCApplication.SharedApplication.MainWindowDirector.Resume();
             else
-                CCDirector.SharedDirector.Pause();
+                CCApplication.SharedApplication.MainWindowDirector.Pause();
         }
 
         public void step1(float dt)

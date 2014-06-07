@@ -25,7 +25,7 @@ namespace tests
         public virtual void initWithQuantityOfNodes(int nNodes)
         {
             //srand(time());
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // Title
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);

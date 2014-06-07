@@ -73,7 +73,7 @@ namespace tests
         public override void runThisTest()
         {
             AddChild(nextAction());
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

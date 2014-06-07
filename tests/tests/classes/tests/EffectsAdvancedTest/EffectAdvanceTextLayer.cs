@@ -112,21 +112,21 @@ namespace tests
 			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
 
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
 			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
 			var s = new EffectAdvanceScene();
             s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
     }
 }

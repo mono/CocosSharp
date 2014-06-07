@@ -13,7 +13,7 @@ namespace tests
             CCLayer pLayer = new BugsTestMainLayer();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

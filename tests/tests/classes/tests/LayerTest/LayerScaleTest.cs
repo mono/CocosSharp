@@ -15,7 +15,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
 
             layer.IgnoreAnchorPointForPosition = false;
@@ -66,7 +66,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLayerColor layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
             layer1.IgnoreAnchorPointForPosition = false;
@@ -105,7 +105,7 @@ namespace tests
 
             m_pInnerLayer.RunAction(seq);
 
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var move1 = new CCMoveTo(2, new CCPoint(size.Width / 2, size.Height));
             var move2 = new CCMoveTo(2, new CCPoint(size.Width, size.Height / 2));

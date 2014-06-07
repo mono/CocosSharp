@@ -13,7 +13,7 @@ namespace tests
             CCLayer pLayer = nextSchedulerTest();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
 		static int MAX_TESTS = 13;

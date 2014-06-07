@@ -10,7 +10,7 @@ namespace tests
     {
         public LabelBMFontHD()
         {
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // CCLabelBMFont
 			var label1 = new CCLabelBMFont("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");

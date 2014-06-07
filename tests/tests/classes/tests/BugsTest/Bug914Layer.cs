@@ -36,7 +36,7 @@ namespace tests
 			AddEventListener(touchListener);
 
             // ask director the the window size
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCLayerColor layer;
             for (int i = 0; i < 5; i++)
             {
@@ -77,7 +77,7 @@ namespace tests
 
         public void restart(object sender)
         {
-            CCDirector.SharedDirector.ReplaceScene(Bug914Layer.scene());
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(Bug914Layer.scene());
         }
 
         //LAYER_NODE_FUNC(Bug914Layer);

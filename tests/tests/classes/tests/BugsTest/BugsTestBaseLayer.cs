@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCMenuItemFont pMainItem = new CCMenuItemFont("Back", backCallback);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);
@@ -23,7 +23,7 @@ namespace tests
 
         public void backCallback(object pSender)
         {
-            //CCDirector.SharedDirector.EnableRetinaDisplay(false);
+            //CCApplication.SharedApplication.MainWindowDirector.EnableRetinaDisplay(false);
             BugsTestScene pScene = new BugsTestScene();
             pScene.runThisTest();
         }

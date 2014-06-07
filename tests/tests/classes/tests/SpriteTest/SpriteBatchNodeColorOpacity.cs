@@ -26,7 +26,7 @@ namespace tests
             CCSprite sprite8 = new CCSprite(batch.Texture, new CCRect(85 * 3, 121 * 1, 85, 121));
 
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             sprite1.Position = new CCPoint((s.Width / 5) * 1, (s.Height / 3) * 1);
             sprite2.Position = new CCPoint((s.Width / 5) * 2, (s.Height / 3) * 1);
             sprite3.Position = new CCPoint((s.Width / 5) * 3, (s.Height / 3) * 1);

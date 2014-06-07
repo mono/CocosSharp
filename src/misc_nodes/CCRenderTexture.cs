@@ -72,7 +72,7 @@ namespace CocosSharp
             CCSize texSize = Texture.ContentSizeInPixels;
 
             // Calculate the adjustment ratios based on the old and new projections
-            CCDirector director = CCDirector.SharedDirector;
+            CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
             CCSize size = director.WinSizeInPixels;
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
@@ -132,7 +132,7 @@ namespace CocosSharp
         {
             CCDrawManager.PopMatrix();
 
-            CCDirector director = CCDirector.SharedDirector;
+            CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
 
             CCDrawManager.SetRenderTarget((CCTexture2D) null);
 

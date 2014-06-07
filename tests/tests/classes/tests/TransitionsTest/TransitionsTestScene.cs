@@ -107,13 +107,13 @@ namespace tests
             CCLayer pLayer = new TestLayer1();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         public static CCTransitionScene createTransition(int nIndex, float t, CCScene s)
         {
             // fix bug #486, without setDepthTest(false), FlipX,Y will flickers
-            CCDirector.SharedDirector.IsUseDepthTesting = false;
+            CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting = false;
 
             switch (nIndex)
             {

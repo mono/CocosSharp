@@ -86,7 +86,7 @@ namespace tests
             CCSprite grossini = new CCSprite();
             grossini.DisplayFrame = frameCache["grossini_dance_01.png"];
 
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             grossini.Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
             AddChild(grossini);
 

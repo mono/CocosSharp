@@ -13,7 +13,7 @@ namespace tests
             CCLayer pLayer = nextParallaxAction();
 
             AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         static int sceneIdx = -1;

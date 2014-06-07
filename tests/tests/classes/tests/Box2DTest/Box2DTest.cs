@@ -91,7 +91,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             // init physics
             initPhysics();
             // create reset button
@@ -116,7 +116,7 @@ namespace tests
 
         private void initPhysics()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             _world = new b2World(gravity);
@@ -188,7 +188,7 @@ namespace tests
 
             CCMenu menu = new CCMenu(res);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             menu.Position = new CCPoint(s.Width / 2, 30);
             AddChild(menu, -1);
@@ -199,7 +199,7 @@ namespace tests
             CCScene s = new Box2DTestScene();
             var child = new Box2DTestLayer();
             s.AddChild(child);
-            CCDirector.SharedDirector.ReplaceScene(s);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
         /*
@@ -338,7 +338,7 @@ namespace tests
             CCLayer pLayer = new Box2DTestLayer();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

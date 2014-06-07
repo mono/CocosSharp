@@ -7,7 +7,7 @@ namespace tests
     {
         public CameraCenterTest()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite sprite;
             CCOrbitCamera orbit;
@@ -75,7 +75,7 @@ namespace tests
 	{
 		public CameraTest1()
 		{
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);
@@ -98,15 +98,15 @@ namespace tests
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
-			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
-			CCDirector.SharedDirector.IsUseDepthTesting =  (true);
+			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
+			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
-			CCDirector.SharedDirector.IsUseDepthTesting =  (false);
+			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()
@@ -125,7 +125,7 @@ namespace tests
 	{
 		public CameraTest2()
 		{
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);
@@ -163,15 +163,15 @@ namespace tests
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
-			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection3D;
-			CCDirector.SharedDirector.IsUseDepthTesting =  (true);
+			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
+			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			CCDirector.SharedDirector.Projection = CCDirectorProjection.Projection2D;
-			CCDirector.SharedDirector.IsUseDepthTesting =  (false);
+			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()

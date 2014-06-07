@@ -25,7 +25,7 @@ namespace tests
 
             AddChild(_TheMenu);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCSprite sprite = new CCSprite(s_pPathGrossini);
             AddChild(sprite);
             sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
@@ -38,7 +38,7 @@ namespace tests
         {
             CCLog.Log("SceneTestLayer1#onEnter");
             base.OnEnter();
-            _PopMenuItem.Visible = CCDirector.SharedDirector.IsCanPopScene;
+            _PopMenuItem.Visible = CCApplication.SharedApplication.MainWindowDirector.IsCanPopScene;
             _TheMenu.AlignItemsVertically(12f);
         }
 
@@ -53,7 +53,7 @@ namespace tests
             CCScene scene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer2();
             scene.AddChild(pLayer, 0);
-            CCDirector.SharedDirector.PushScene(scene);
+            CCApplication.SharedApplication.MainWindowDirector.PushScene(scene);
         }
 
         public void onPushSceneTran(object pSender)
@@ -62,7 +62,7 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer2();
             scene.AddChild(pLayer, 0);
 
-            CCDirector.SharedDirector.PushScene(new CCTransitionSlideInT(1f, scene));
+            CCApplication.SharedApplication.MainWindowDirector.PushScene(new CCTransitionSlideInT(1f, scene));
         }
 
         public void onPopSceneTran(object pSender)
@@ -71,12 +71,12 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer2();
             scene.AddChild(pLayer, 0);
 
-            CCDirector.SharedDirector.PopScene(1f, new CCTransitionSlideInB(1f, scene));
+            CCApplication.SharedApplication.MainWindowDirector.PopScene(1f, new CCTransitionSlideInB(1f, scene));
         }
 
         public void onQuit(object pSender) 
         {
-            CCDirector.SharedDirector.PopToRootScene();
+            CCApplication.SharedApplication.MainWindowDirector.PopToRootScene();
         }
     }
 }

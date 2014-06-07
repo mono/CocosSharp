@@ -8,7 +8,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_HelloVariableSize()
 		{
-			CCSize screenSize = CCDirector.SharedDirector.WinSize;
+			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
     
 			// Defines an array of title to create buttons dynamically
 			var stringArray = new[] {
@@ -100,7 +100,7 @@ namespace tests.Extensions
     {
         public CCControlButtonTest_Inset()
         {
-            CCSize screenSize = CCDirector.SharedDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             // Defines an array of title to create buttons dynamically
             var stringArray = new[] {
@@ -191,7 +191,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_Event()
 		{
-			CCSize screenSize = CCDirector.SharedDirector.WinSize;
+			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			// Add a label in which the button events will be displayed
 			setDisplayValueLabel(new CCLabelTtf("No Event", "Arial", 32));
@@ -299,7 +299,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_Styling()
 		{
-			CCSize screenSize = CCDirector.SharedDirector.WinSize;
+			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var layer = new CCNode ();
 			AddChild(layer, 1);

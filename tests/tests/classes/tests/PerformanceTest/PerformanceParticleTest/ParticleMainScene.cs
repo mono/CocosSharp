@@ -15,7 +15,7 @@ namespace tests
             //srandom(0);
 
             subtestNumber = asubtest;
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             lastRenderedCount = 0;
             quantityParticles = particles;

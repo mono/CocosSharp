@@ -19,7 +19,7 @@ namespace tests
 			var label = new CCLabelBMFont("Bitmap Font Atlas", "fonts/bitmapFontTest.fnt");
             AddChild(label);
 
-			var s = CCDirector.SharedDirector.WinSize;
+			var s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			label.Position = s.Center;
 			label.AnchorPoint = CCPoint.AnchorMiddle;
@@ -76,7 +76,7 @@ namespace tests
 
         protected override void Draw()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2), new CCColor4B(255, 0, 0, 255));

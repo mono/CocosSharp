@@ -17,7 +17,7 @@ namespace tests
             base.OnEnter();
 
             // ask director the the window size
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             streak = new CCMotionStreak(2.0f, 1.0f, 50.0f, new CCColor3B(255, 255, 0), "Images/Icon");
             AddChild(streak);

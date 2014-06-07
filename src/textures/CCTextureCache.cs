@@ -108,7 +108,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", image.FileName);
                             if (image.Action != null)
                             {
-                                CCDirector.SharedDirector.Scheduler.Schedule (
+                                CCApplication.SharedApplication.MainWindowDirector.Scheduler.Schedule (
                                     f => image.Action(texture), this, 0, 0, 0, false
                                 );
                             }
@@ -146,7 +146,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", imageData.AssetName);
                             if (imageData.Action != null)
                             {
-                                CCDirector.SharedDirector.Scheduler.Schedule (
+                                CCApplication.SharedApplication.MainWindowDirector.Scheduler.Schedule (
                                     f => imageData.Action(texture), this, 0, 0, 0, false
                                 );
                             }

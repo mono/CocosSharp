@@ -13,7 +13,7 @@ namespace tests
     {
         public RenderTextureTestDepthStencil()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCSprite sprite = new CCSprite("Images/fire");
             sprite.Position = new CCPoint(s.Width * 0.25f, 0);

@@ -24,19 +24,19 @@ namespace tests.Extensions
 
         public override void previousCallback(object sender)
         {
-            CCDirector.SharedDirector.ReplaceScene(
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(
                 Scale9SpriteSceneManager.sharedSprite9SceneManager().previousControlScene());
         }
 
         public override void restartCallback(object sender)
         {
-            CCDirector.SharedDirector.ReplaceScene(
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(
                 Scale9SpriteSceneManager.sharedSprite9SceneManager().currentControlScene());
         }
 
         public override void nextCallback(object sender)
         {
-            CCDirector.SharedDirector.ReplaceScene(
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(
                 Scale9SpriteSceneManager.sharedSprite9SceneManager().nextControlScene());
         }
     }
@@ -47,7 +47,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -89,7 +89,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -124,7 +124,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -160,7 +160,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -205,7 +205,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -244,7 +244,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -282,7 +282,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -327,7 +327,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -362,7 +362,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -400,7 +400,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -435,7 +435,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCSpriteFrameCache.Instance.AddSpriteFrames("Images/ui.plist");
 
             float x = winSize.Width / 4;
@@ -489,7 +489,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -527,7 +527,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
 
@@ -566,7 +566,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize winSize = CCDirector.SharedDirector.WinSize;
+            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
             var rgba = new CCLayerRGBA();

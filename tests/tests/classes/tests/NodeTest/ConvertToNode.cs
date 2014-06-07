@@ -12,7 +12,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			var rotate = new CCRotateBy (10, 360);
 

@@ -11,7 +11,7 @@ namespace tests.Extensions
 			CCLayer pLayer = new ExtensionsMainLayer();
 			AddChild(pLayer);
 
-			CCDirector.SharedDirector.ReplaceScene(this);
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
 		}
 
         protected override void NextTestCase()

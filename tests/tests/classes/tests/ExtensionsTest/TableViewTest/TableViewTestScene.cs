@@ -17,13 +17,13 @@ namespace tests.Extensions
             var pScene = new CCScene();
             var pLayer = new TableViewTestLayer();
             pScene.AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(pScene);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
         }
 
         private bool InitTableViewTestLayer()
         {
 
-            var winSize = CCDirector.SharedDirector.WinSize;
+            var winSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             var tableView = new CCTableView(this, new CCSize(250, 60));
             tableView.Direction = CCScrollViewDirection.Horizontal;

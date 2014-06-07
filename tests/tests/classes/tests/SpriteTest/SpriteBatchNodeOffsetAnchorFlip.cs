@@ -10,7 +10,7 @@ namespace tests
     {
         public SpriteBatchNodeOffsetAnchorFlip()
         {
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
 			// We only need to define these once
 			CCFlipY flip = new CCFlipY(true);

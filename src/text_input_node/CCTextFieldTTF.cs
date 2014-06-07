@@ -159,12 +159,12 @@ namespace CocosSharp
             {
                 if (!touchHandled && !readOnly && autoEdit)
                 {
-					//CCDirector.SharedDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
+					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
                     touchHandled = true;
                 }
                 else if (touchHandled && (readOnly || !autoEdit))
                 {
-					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.RemoveDelegate(this);
                     touchHandled = true;
                 }
             }
@@ -172,7 +172,7 @@ namespace CocosSharp
             {
 				if (!IsRunning && touchHandled)
                 {
-					//CCDirector.SharedDirector.TouchDispatcher.RemoveDelegate(this);
+					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.RemoveDelegate(this);
                     touchHandled = false;
                 }
             }

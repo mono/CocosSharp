@@ -38,7 +38,7 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abberancy", 26);
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
-			CCDirector director = CCDirector.SharedDirector;
+            CCDirector director = application.MainWindowDirector;
             director.DisplayStats = true;
             director.AnimationInterval = 1.0 / 60;
 
@@ -62,12 +62,14 @@ namespace tests
 
         public override void ApplicationDidEnterBackground(CCApplication application)
         {
-            CCDirector.SharedDirector.Pause();
+            if(application.MainWindowDirector != null)
+                application.MainWindowDirector.Pause();
         }
 
         public override void ApplicationWillEnterForeground(CCApplication application)
         {
-            CCDirector.SharedDirector.Resume();
+            if(application.MainWindowDirector != null)
+                application.MainWindowDirector.Resume();
         }
     }
 }

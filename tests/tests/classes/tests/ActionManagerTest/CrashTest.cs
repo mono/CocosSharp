@@ -21,7 +21,7 @@ namespace tests
             base.OnEnter();
 
             CCSprite child = new CCSprite(s_pPathGrossini);
-			child.Position = CCDirector.SharedDirector.WinSize.Center;
+			child.Position = CCApplication.SharedApplication.MainWindowDirector.WinSize.Center;
             AddChild(child, 1);
 
             //Sum of all action's duration is 1.5 second.

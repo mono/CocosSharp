@@ -21,7 +21,7 @@ namespace tests
         {
             CCLayer pLayer = new UserDefaultTest();
             AddChild(pLayer);
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

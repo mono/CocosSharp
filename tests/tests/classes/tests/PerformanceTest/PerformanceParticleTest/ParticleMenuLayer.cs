@@ -42,7 +42,7 @@ namespace tests
             {
                 pNewScene.initWithSubTest(subTest, parNum);
 
-                CCDirector.SharedDirector.ReplaceScene(pNewScene);
+                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pNewScene);
             }
         }
     }

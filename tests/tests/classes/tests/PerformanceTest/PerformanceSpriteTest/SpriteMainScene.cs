@@ -22,7 +22,7 @@ namespace tests
             m_pSubTest = new SubTest();
             m_pSubTest.initWithSubTest(asubtest, this);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             lastRenderedCount = 0;
             quantityNodes = 0;

@@ -11,7 +11,7 @@ namespace tests
 
         public Bug350Layer()
         {
-            CCSize size = CCDirector.SharedDirector.WinSize;
+            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             CCSprite background = new CCSprite("Hello");
             background.Position = new CCPoint(size.Width / 2, size.Height / 2);
             AddChild(background);

@@ -15,7 +15,7 @@ namespace tests
 
 		public void DidAccelerate(CCAcceleration accelerationValue)
         {
-            CCDirector pDir = CCDirector.SharedDirector;
+            CCDirector pDir = CCApplication.SharedApplication.MainWindowDirector;
             CCSize winSize = pDir.WinSize;
 
             /*FIXME: Testing on the Nexus S sometimes m_pBall is NULL */
@@ -65,7 +65,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCLabelTtf label = new CCLabelTtf(title(), "Arial", 32);
             AddChild(label, 1);
@@ -93,7 +93,7 @@ namespace tests
             CCLayer pLayer = new AccelerometerTest();
             AddChild(pLayer);
 
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace tests.Extensions
 
         public CCControlColourPickerTest()
         {
-            CCSize screenSize = CCDirector.SharedDirector.WinSize;
+            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCNode layer = new CCNode();
             layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);

@@ -952,7 +952,7 @@ namespace CocosSharp
 			if (sceneGraphListeners == null)
 				return;
 
-			var rootNode = (CCNode)CCDirector.SharedDirector.RunningScene;
+			var rootNode = (CCNode)CCApplication.SharedApplication.MainWindowDirector.RunningScene;
 			// Reset priority index
 			nodePriorityIndex = 0;
 			nodePriorityMap.Clear();

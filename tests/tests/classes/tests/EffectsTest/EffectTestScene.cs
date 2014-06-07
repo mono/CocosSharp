@@ -11,7 +11,7 @@ namespace tests
         public override void runThisTest()
         {
 			AddChild(new TextLayer());
-            CCDirector.SharedDirector.ReplaceScene(this);
+            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

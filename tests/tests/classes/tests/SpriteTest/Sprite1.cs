@@ -18,7 +18,7 @@ namespace tests
             ball = new CCMaskedSprite("Images/ball-hd", GetCollisionMask("ball-hd"));
             hit = new CCSprite("Images/Icon");
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             grossini.Position = new CCPoint(s.Width / 3f, s.Height / 2f);
             ball.Position = new CCPoint(s.Width * 2f / 3f, s.Height / 2f);
             AddChild(grossini, 1);
@@ -139,7 +139,7 @@ namespace tests
 
 			AddEventListener(touchListener);
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
             addNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
         }
 

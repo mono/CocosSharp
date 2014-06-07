@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCDirector.SharedDirector.WinSize;
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WinSize;
 
             CCMenu pMenu = new CCMenu(null);
             pMenu.Position = new CCPoint(0, 0);

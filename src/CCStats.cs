@@ -161,8 +161,8 @@ namespace CocosSharp
                 }
             }
 
-			var factor = CCDirector.SharedDirector.ContentScaleFactor;
-			var pos = CCDirector.SharedDirector.VisibleOrigin;
+			var factor = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
+			var pos = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
 
             fpsLabel.Scale = factor;
             updateTimeLabel.Scale = factor;
