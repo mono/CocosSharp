@@ -25,132 +25,126 @@ using Microsoft.Xna.Framework.Content;
 
 namespace tests
 {
-#if IPHONE || IOS
-	[Register ("AppDelegate")]
-	class Program : UIApplicationDelegate 
-	{
-		private Game1 game;
+    #if IPHONE || IOS
+    [Register ("AppDelegate")]
+    class Program : UIApplicationDelegate 
+    {
+        public override void FinishedLaunching(UIApplication app)
+        {
+            CCApplication sharedApp = CCApplication.SharedApplication;
+            sharedApp.ApplicationDelegate = new AppDelegate();
 
-		public override void FinishedLaunching (UIApplication app)
-		{
-            // More shameless hacking to bypass AOT
-            //var hHack = new ReflectiveReader<CCBMFontConfiguration>();
-            //var hFoo = new PlistDocument.PlistDocumentReader ();
+            CCApplication.SharedApplication.StartGame();
+        }
 
-            // Fun begins..
+        // This is the main entry point of the application.
+        static void Main(string[] args)
+        {
 
-			game = new Game1();
-			game.Run();
-		}
-		
-		// This is the main entry point of the application.
-		static void Main (string[] args)
-		{
+            // if you want to use a different Application Delegate class from "AppDelegate"
+            // you can specify it here.
+            UIApplication.Main (args, null, "AppDelegate");
+        }
+    }
+    #endif
 
-			// if you want to use a different Application Delegate class from "AppDelegate"
-			// you can specify it here.
-			UIApplication.Main (args, null, "AppDelegate");
-		}
-	}
-#endif
-	#if MACOS
-	class Program : NSApplicationDelegate 
-	{
-		private Game1 game;
+    #if MACOS
+    class Program : NSApplicationDelegate 
+    {
+        public override void FinishedLaunching(MonoMac.Foundation.NSObject notification)
+        {
+            CCApplication sharedApp = CCApplication.SharedApplication;
+            sharedApp.ApplicationDelegate = new AppDelegate();
 
-		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
-		{
-			// Fun begins..
-			game = new Game1();
-			game.Run();
-		}
+            CCApplication.SharedApplication.StartGame();
+        }
 
-		public override bool ApplicationShouldTerminateAfterLastWindowClosed (NSApplication sender)
-		{
-			return true;
-		}
+        public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)
+        {
+            return true;
+        }
 
-		// This is the main entry point of the application.
-		static void Main (string[] args)
-		{
-			NSApplication.Init ();
-			
-			using (var p = new MonoMac.Foundation.NSAutoreleasePool ()) {
-				NSApplication.SharedApplication.Delegate = new Program();
-				NSApplication.Main(args);
-			}
-			
-		}
-	}
-	#endif
-	#if WINDOWS || WINDOWSGL || XBOX || PSM
+        // This is the main entry point of the application.
+        static void Main (string[] args)
+        {
+            NSApplication.Init ();
 
-#if !NETFX_CORE
+            using (var p = new MonoMac.Foundation.NSAutoreleasePool ()) 
+            {
+                NSApplication.SharedApplication.Delegate = new Program();
+                NSApplication.Main(args);
+            }
+        }
+    }
+    #endif
+    #if WINDOWS || WINDOWSGL || XBOX || PSM
+
+    #if !NETFX_CORE
     static class Program
     {
-#if WINDOWS || WINDOWSGL
-        private static Game1 game;
-#endif
+    #if WINDOWS || WINDOWSGL
+    private static Game1 game;
+    #endif
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-#if WINDOWS || WINDOWSGL
-        [STAThread]
-#endif
+    #if WINDOWS || WINDOWSGL
+    [STAThread]
+    #endif
         static void Main(string[] args)
         {
-#if WINDOWS || WINDOWSGL
-            game = new Game1();
-            game.Run();
-#else
+    #if WINDOWS || WINDOWSGL
+    game = new Game1();
+    game.Run();
+    #else
             using (Game1 game = new Game1())
             {
                 game.Run();
             }
-#endif
+    #endif
         }
     }
-#endif
-#endif
+    #endif
+    #endif
 
-#if ANDROID
+    #if ANDROID
     [Activity(
-        Label = "Tests",
-        AlwaysRetainTaskState = true,
-        Icon = "@drawable/Icon",
-        Theme = "@style/Theme.NoTitleBar",
-        ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
-        LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
-        MainLauncher = true,
-        ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
+    Label = "Tests",
+    AlwaysRetainTaskState = true,
+    Icon = "@drawable/Icon",
+    Theme = "@style/Theme.NoTitleBar",
+    ScreenOrientation = Android.Content.PM.ScreenOrientation.Landscape,
+    LaunchMode = Android.Content.PM.LaunchMode.SingleInstance,
+    MainLauncher = true,
+    ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
     ]
-#if OUYA
+    #if OUYA
     [IntentFilter(new[] { Intent.ActionMain }, Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
-#endif
+    #endif
     public class Activity1 : AndroidGameActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-#if OUYA
-            Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
-#endif
+    #if OUYA
+    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
+    #endif
             var game = new Game1();
-			this.SetContentView((View)game.Services.GetService(typeof(View)));
+            this.SetContentView((View)game.Services.GetService(typeof(View)));
             game.Run(GameRunBehavior.Asynchronous);
         }
     }
-#endif
-#if NETFX_CORE 
+    #endif
+    #if NETFX_CORE 
     public static class Program {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        static void Main() {
-            var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
-            Windows.ApplicationModel.Core.CoreApplication.Run(factory);
-        }
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    static void Main() {
+    var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
+    Windows.ApplicationModel.Core.CoreApplication.Run(factory);
     }
-#endif
+    }
+    #endif
 }
 
