@@ -77,6 +77,8 @@ namespace CocosSharp
         public CCLayer(CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            IgnoreAnchorPointForPosition = true;
         }
 
         public CCLayer() : this(CCClipMode.None)
@@ -113,8 +115,6 @@ namespace CocosSharp
             if (Director != null)
             {
                 ContentSize = Director.WindowSizeInPoints;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-                IgnoreAnchorPointForPosition = true;
             }
         }
 

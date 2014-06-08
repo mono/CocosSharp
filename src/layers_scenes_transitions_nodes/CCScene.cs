@@ -26,6 +26,8 @@ namespace CocosSharp
 
         public CCScene() : base()
         {
+            IgnoreAnchorPointForPosition = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
         #endregion Constructors
@@ -40,8 +42,6 @@ namespace CocosSharp
             if (Director != null) 
             {
                 ContentSize = Director.WindowSizeInPoints;
-                IgnoreAnchorPointForPosition = true;
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
             }
         }
 

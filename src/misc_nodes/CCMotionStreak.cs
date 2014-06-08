@@ -86,24 +86,11 @@ namespace CocosSharp
             pointState = new float[maxPoints];
             pointVertexes = new CCPoint[maxPoints];
             vertices = new CCV3F_C4B_T2F[(maxPoints + 1) * 2];
+
+            Schedule();
         }
 
         #endregion Constructors
-
-
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if(Director != null)
-            {
-                Schedule();
-            }
-        }
-
-        #endregion Setup content
 
 
         #region Drawing

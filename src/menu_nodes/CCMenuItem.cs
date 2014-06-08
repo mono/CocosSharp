@@ -45,24 +45,10 @@ namespace CocosSharp
         {
             Target = target;
             Enabled = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
         #endregion Constructors
-
-
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if(Director != null)
-            {
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-            }
-        }
-
-        #endregion Setup content
 
 
         public virtual void Activate()

@@ -79,6 +79,7 @@ namespace CocosSharp
         bool isCleaned = false;
         bool keypadEnabled;                                         // input variables
         bool inverseDirty;
+        bool forceDirectorSet;
 
         int tag;
         int zOrder;
@@ -105,6 +106,8 @@ namespace CocosSharp
 
         Dictionary<int, List<CCNode>> childrenByTag;
 
+        CCGridBase grid;
+
 
         #region Properties
 
@@ -121,7 +124,6 @@ namespace CocosSharp
         public object UserObject { get; set; }
         public string Name { get; set; }
         public CCRawList<CCNode> Children { get; protected set; }
-        public CCGridBase Grid { get; set; }
         public CCNode Parent { get; set; }
 
         internal protected uint OrderOfArrival { get; internal set; }
@@ -447,12 +449,25 @@ namespace CocosSharp
             get { return GetChildByTag(tag); }
         }
 
+        public CCGridBase Grid 
+        { 
+            get { return grid; }
+            set 
+            {
+                grid = value;
+                if(value != null && Director != null) 
+                {
+                    grid.Director = Director;
+                }
+            }
+        }
+
         public virtual CCDirector Director 
         { 
             get { return director; }
             internal set 
             {
-                if (director != value) 
+                if (director != value || forceDirectorSet == true) 
                 {
                     director = value;
 
@@ -463,9 +478,14 @@ namespace CocosSharp
                         }
                     }
 
+                    if (grid != null)
+                        grid.Director = director;
+
                     // Only call if the director changed
                     if (director != null)
-                        RunningOnNewWindow (value.WindowSizeInPoints);
+                        RunningOnNewWindow(value.WindowSizeInPoints);
+
+                    forceDirectorSet = false;
                 }
             }
         }
@@ -515,6 +535,9 @@ namespace CocosSharp
             HasFocus = false;
 
             IsSerializable = true;
+
+            director = CCApplication.SharedApplication.MainWindowDirector;
+            forceDirectorSet = true;
         }
 
         #endregion Constructors

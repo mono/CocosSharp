@@ -81,6 +81,8 @@ namespace CocosSharp
             IsColorCascaded = true;
             IsOpacityCascaded = true;
 
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            IgnoreAnchorPointForPosition = true;
 
             if (items != null)
             {
@@ -105,9 +107,12 @@ namespace CocosSharp
 
             if (Director != null)
             {
-                CCSize contentSize = Director.WindowSizeInPoints;
-                Position = (new CCPoint(contentSize.Width / 2, contentSize.Height / 2));
-                ContentSize = contentSize;
+                if (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f) 
+                {
+                    CCSize contentSize = windowSize;
+                    Position = (new CCPoint (contentSize.Width / 2, contentSize.Height / 2));
+                    ContentSize = contentSize;
+                }
 
                 var touchListener = new CCEventListenerTouchOneByOne();
                 touchListener.IsSwallowTouches = true;
@@ -118,9 +123,6 @@ namespace CocosSharp
                 touchListener.OnTouchCancelled = TouchCancelled;
 
                 AddEventListener(touchListener);
-
-                AnchorPoint = new CCPoint(0.5f, 0.5f);
-                IgnoreAnchorPointForPosition = true;
             }
         }
 

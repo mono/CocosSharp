@@ -147,25 +147,10 @@ namespace CocosSharp
             Midpoint = new CCPoint(0.5f, 0.5f);
             BarChangeRate = new CCPoint(1, 1);
             Sprite = sp;
-
+            UpdateProgress();
         }
 
         #endregion Constructors
-
-
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if(Director != null)
-            {
-                UpdateProgress();
-            }
-        }
-
-        #endregion Setup content
 
 
         #region Drawing
