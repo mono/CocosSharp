@@ -825,14 +825,14 @@ namespace CocosSharp
                 {
                     spriteFile = _CCBRootPath + spriteFile;
 
-                    CCTexture2D texture = CCTextureCache.Instance.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                    CCTexture2D texture = CCApplication.SharedApplication.TextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else
                 {
                     spriteSheet = _CCBRootPath + spriteSheet;
-                    CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
+                    CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
 
                     // Load the sprite sheet only if it is not loaded            
                     if (!_loadedSpriteSheets.Contains(spriteSheet))

@@ -50,7 +50,7 @@ namespace CocosSharp
         }
 
         public CCSpriteBatchNode(string fileImage, int capacity=defaultSpriteBatchCapacity) 
-            : this(CCTextureCache.Instance.AddImage(fileImage), capacity)
+            : this(CCApplication.SharedApplication.TextureCache.AddImage(fileImage), capacity)
         {
         }
 

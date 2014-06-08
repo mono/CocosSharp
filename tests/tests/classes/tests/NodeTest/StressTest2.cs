@@ -23,7 +23,7 @@ namespace tests
 
             CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 			var fire = new CCParticleFire(new CCPoint(winSize.Width / 2, 60));
-            fire.Texture = (CCTextureCache.Instance.AddImage("Images/fire"));
+            fire.Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/fire"));
             fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 
 			fire.RepeatForever(seq3);

@@ -89,7 +89,7 @@ namespace CocosSharp
         }
 
         public CCSpriteSheet(string fileName, string textureFileName) 
-            : this(fileName, CCTextureCache.Instance.AddImage(textureFileName))
+            : this(fileName, CCApplication.SharedApplication.TextureCache.AddImage(textureFileName))
         {
         }
 
@@ -99,7 +99,7 @@ namespace CocosSharp
         }
 
         public CCSpriteSheet(Stream stream, string textureFileName) 
-            : this(stream, CCTextureCache.Instance.AddImage(textureFileName))
+            : this(stream, CCApplication.SharedApplication.TextureCache.AddImage(textureFileName))
         {
         }
 
@@ -179,7 +179,7 @@ namespace CocosSharp
 
             plistFilePath = Path.GetDirectoryName (texturePath);
 
-            CCTexture2D pTexture = CCTextureCache.Instance.AddImage(texturePath);
+            CCTexture2D pTexture = CCApplication.SharedApplication.TextureCache.AddImage(texturePath);
 
             if (pTexture != null)
             {
@@ -249,10 +249,10 @@ namespace CocosSharp
 
                 path = Path.Combine(plistFilePath, CCFileUtils.RemoveExtension(path));
 
-                if (!CCTextureCache.Instance.Contains (path))
-                    texture = CCTextureCache.Instance.AddImage (path);
+                if (!CCApplication.SharedApplication.TextureCache.Contains (path))
+                    texture = CCApplication.SharedApplication.TextureCache.AddImage (path);
                 else
-                    texture = CCTextureCache.Instance[path];
+                    texture = CCApplication.SharedApplication.TextureCache[path];
 
 
 

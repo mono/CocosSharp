@@ -25,9 +25,6 @@ namespace CocosSharp
 
         #endregion Structs
 
-
-        static CCTextureCache sharedTextureCache;
-
         List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
         List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
 
@@ -36,18 +33,6 @@ namespace CocosSharp
 
 
         #region Properties
-
-        public static CCTextureCache Instance
-        {
-            get 
-            {
-                if (sharedTextureCache == null)
-                {
-                    sharedTextureCache = new CCTextureCache();
-                }
-                return sharedTextureCache;
-            }
-        }
 
         Action ProcessingAction { get; set; }
         Action ProcessingDataAction { get; set; }
@@ -81,7 +66,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        CCTextureCache()
+        public CCTextureCache()
         {
             ProcessingAction = new Action(
                 () =>
@@ -174,15 +159,6 @@ namespace CocosSharp
 
 
         #region Cleaning up
-
-        public static void PurgeInstance()
-        {
-            if (Instance != null)
-            {
-                Instance.Dispose();
-                sharedTextureCache = null;
-            }
-        }
 
         // No unmanaged resources, so no need for finalizer
         public void Dispose()

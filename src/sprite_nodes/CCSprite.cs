@@ -422,14 +422,14 @@ namespace CocosSharp
             textureFile = fileName;
 
             // Try sprite frame cache first
-            CCSpriteFrame pFrame = CCSpriteFrameCache.Instance[fileName];
+            CCSpriteFrame pFrame = CCApplication.SharedApplication.SpriteFrameCache[fileName];
             if (pFrame != null) {
                 InitWithSpriteFrame (pFrame);
             } 
             else 
             {
                 // If frame doesn't exist, try texture cache
-                CCTexture2D pTexture = CCTextureCache.Instance.AddImage(fileName);
+                CCTexture2D pTexture = CCApplication.SharedApplication.TextureCache.AddImage(fileName);
                 if (pTexture != null) {
                     InitWithTexture (pTexture, rect);
                 }
@@ -464,7 +464,7 @@ namespace CocosSharp
             Debug.Assert(!String.IsNullOrEmpty(animationName),
                 "CCSprite#setDisplayFrameWithAnimationName. animationName must not be NULL");
 
-            CCAnimation a = CCAnimationCache.Instance[animationName];
+            CCAnimation a = CCApplication.SharedApplication.AnimationCache[animationName];
 
             Debug.Assert(a != null, "CCSprite#setDisplayFrameWithAnimationName: Frame not found");
 

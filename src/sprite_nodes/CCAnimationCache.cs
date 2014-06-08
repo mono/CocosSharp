@@ -5,24 +5,10 @@ namespace CocosSharp
 {
     public class CCAnimationCache 
     {
-        static CCAnimationCache sharedAnimationCache;
         Dictionary<string, CCAnimation> animations;
 
 
         #region Properties
-
-        public static CCAnimationCache Instance
-        {
-            get
-            {
-                if (sharedAnimationCache == null)
-                {
-                    sharedAnimationCache = new CCAnimationCache();
-                }
-
-                return sharedAnimationCache;
-            }
-        }
 
         public CCAnimation this[string index]
         {
@@ -38,18 +24,12 @@ namespace CocosSharp
             }
         }
 
-        public static void PurgeSharedAnimationCache()
-        {
-            sharedAnimationCache = null;
-        }
-
         #endregion Properties
 
 
         #region Constructors
 
-        // Singleton, so ensure users only call SharedAnimationCache to get instance
-        protected CCAnimationCache()
+        public CCAnimationCache()
         {
             animations = new Dictionary<string, CCAnimation>();
         }
@@ -94,7 +74,7 @@ namespace CocosSharp
                 foreach (PlistObjectBase pObj in spritesheets)
                 {
                     string name = pObj.AsString;
-                    CCSpriteFrameCache.Instance.AddSpriteFrames(name);
+                    CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames(name);
                 }
 
                 switch (version)
@@ -131,7 +111,7 @@ namespace CocosSharp
 
         void ParseVersion1(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
 
             foreach (var pElement in animations)
             {
@@ -183,13 +163,13 @@ namespace CocosSharp
 
                 CCAnimation animation = new CCAnimation(frames, delay, 1);
 
-                Instance.AddAnimation(animation, pElement.Key);
+                this.AddAnimation(animation, pElement.Key);
             }
         }
 
         void ParseVersion2(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
 
             foreach (var pElement in animations)
             {
@@ -241,7 +221,7 @@ namespace CocosSharp
 
                 animation.RestoreOriginalFrame = restoreOriginalFrame;
 
-                Instance.AddAnimation(animation, name);
+                this.AddAnimation(animation, name);
             }
         }
 

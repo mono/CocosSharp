@@ -20,7 +20,7 @@ namespace tests
             // CCSpriteFrameCache is a cache of CCSpriteFrames
             // CCSpriteFrames each contain a texture id and a rect (frame).
 
-            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini-aliases.plist", "animations/grossini-aliases");
 
             //

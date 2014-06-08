@@ -418,7 +418,7 @@ namespace tests
             Emitter = new CCParticleFireworks(MidWindowPoint);
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
         }
 
         protected override string Title()
@@ -442,7 +442,7 @@ namespace tests
             Emitter = new CCParticleFire(emitterPos);
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire); //.pvr"];
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire); //.pvr"];
         }
 
         protected override string Title()
@@ -465,7 +465,7 @@ namespace tests
             Emitter = new CCParticleSun(MidWindowPoint);
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
         }
 
         protected override string Title()
@@ -489,7 +489,7 @@ namespace tests
             Emitter = new CCParticleGalaxy(position);
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
         }
 
         protected override string Title()
@@ -511,7 +511,7 @@ namespace tests
 
             Emitter = new CCParticleFlower(MidWindowPoint);
             Background.AddChild(Emitter, 10);
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
         }
 
         protected override string Title()
@@ -536,7 +536,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
             ////Emitter.release();    // win32 :  use this line or remove this line and use autorelease()
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
 
             Emitter.Duration = -1;
 
@@ -620,7 +620,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
             ////Emitter.release();    // win32 : Remove this line
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars2);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars2);
 
             // duration
             Emitter.Duration = -1;
@@ -699,7 +699,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
         }
 
         protected override string Title()
@@ -718,7 +718,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
         }
 
         protected override string Title()
@@ -737,7 +737,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
 
             Emitter.AutoRemoveOnFinish = true;
         }
@@ -757,7 +757,7 @@ namespace tests
             Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
             Background.AddChild(Emitter, 10);
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
 
             CCPoint p = Emitter.Position;
             Emitter.Position = new CCPoint(p.X, 100);
@@ -803,7 +803,7 @@ namespace tests
 
             Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_snow);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_snow);
         }
 
         protected override string Title()
@@ -825,7 +825,7 @@ namespace tests
             Emitter.Position = new CCPoint(p.X, p.Y - 100);
             Emitter.Life = 4;
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
         }
 
         protected override string Title()
@@ -902,7 +902,7 @@ namespace tests
             Emitter.EndSizeVar = 8.0f;
 
             // texture
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
 
             // additive
             Emitter.BlendAdditive = false;
@@ -924,7 +924,7 @@ namespace tests
 
             Background.AddChild(Emitter, 10);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_stars1);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
             Emitter.LifeVar = 0;
             Emitter.Life = 10;
             Emitter.Speed = (100);
@@ -958,14 +958,14 @@ namespace tests
 
             Emitter = new CCParticleFlower(MidWindowPoint);
 
-            Emitter.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
 
             p1.AddChild(Emitter, 10);
             Emitter.Position = new CCPoint(250, 200);
 
             CCParticleSun par = new CCParticleSun(MidWindowPoint);
             p2.AddChild(par, 10);
-            par.Texture = CCTextureCache.Instance.AddImage(TestResource.s_fire);
+            par.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
 
             CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
@@ -1052,7 +1052,7 @@ namespace tests
 
             Emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
             AddChild(Emitter, 10);
-            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/stars-grayscale");
 
             // duration
             Emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
@@ -1129,7 +1129,7 @@ namespace tests
 
             Emitter = new CCParticleSystemQuad(200, CCEmitterMode.Radius);
             AddChild(Emitter, 10);
-            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/stars-grayscale");
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/stars-grayscale");
 
             // duration
             Emitter.Duration = CCParticleSystem.ParticleDurationInfinity;
@@ -1207,7 +1207,7 @@ namespace tests
 
             Emitter = new CCParticleSystemQuad(100, CCEmitterMode.Radius);
             AddChild(Emitter, 10);
-            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
 
             // duration
             Emitter.Duration = CCParticleSystem.ParticleDurationInfinity; 
@@ -1294,7 +1294,7 @@ namespace tests
             Background = null;
 
             var system = new CCParticleSystemQuad("Particles/SpinningPeas");
-            system.Texture = (CCTextureCache.Instance.AddImage ("Images/particles"));
+            system.Texture = (CCApplication.SharedApplication.TextureCache.AddImage ("Images/particles"));
             system.TextureRect = new CCRect(0, 0, 32, 32);
 
             AddChild(system, 10);
@@ -1328,7 +1328,6 @@ namespace tests
     {
         int order;
         CCLabelTtf label;
-        CCParticleSystemCache particleSystemCache;
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
@@ -1348,14 +1347,12 @@ namespace tests
             label.RunActions (new CCDelayTime (2.0f), new CCShow ());
             label.RepeatForever (scale, scale.Reverse ());
 
-            particleSystemCache = new CCParticleSystemCache(this);
-
             ScheduleOnce(LoadParticleSystem, 0.0f);
         }
 
         void LoadParticleSystem(float dt)
         {
-            particleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
+            CCApplication.SharedApplication.ParticleSystemCache.AddParticleSystemAsync("Particles/SmallSun", ParticleSystemLoaded);
         }
 
         void ParticleSystemLoaded(CCParticleSystemConfig psConfig)
@@ -1462,7 +1459,7 @@ namespace tests
             Background = null;
 
             Emitter = new CCParticleSystemQuad("Particles/LavaFlow");
-            Emitter.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
             CCParticleBatchNode batch = new CCParticleBatchNode(Emitter.Texture);
 
             batch.AddChild(Emitter);
@@ -1523,7 +1520,7 @@ namespace tests
             emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             emitter3.Position = (new CCPoint(s.Width / 4, s.Height / 4));
 
-            emitter1.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            emitter1.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
             emitter2.Texture = emitter1.Texture;
             emitter3.Texture = emitter1.Texture;
 
@@ -1598,7 +1595,7 @@ namespace tests
             StartColorVar = new CCColor4F();
             EndColorVar = new CCColor4F();
 
-            Texture = (CCTextureCache.Instance.AddImage("Images/particles"));
+            Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/particles"));
         }
 
         protected override void RunningOnNewWindow(CCSize windowSize)
@@ -1657,7 +1654,7 @@ namespace tests
             RemoveChild(Background, true);
             Background = null;
 
-            CCTextureCache.Instance.AddImage("Images/particles");
+            CCApplication.SharedApplication.TextureCache.AddImage("Images/particles");
 
             for (int i = 0; i < 5; i++)
             {

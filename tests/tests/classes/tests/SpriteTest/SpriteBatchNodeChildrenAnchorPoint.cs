@@ -12,7 +12,7 @@ namespace tests
         {
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/grossini.plist");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             CCNode aParent;
             CCSprite sprite1, sprite2, sprite3, sprite4, point;
@@ -105,7 +105,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache.Instance.RemoveUnusedSpriteFrames();
+            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
         public override string title()

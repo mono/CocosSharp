@@ -10,7 +10,7 @@ namespace tests
     {
         public AnimationCache()
         {
-            var frameCache = CCSpriteFrameCache.Instance;
+            var frameCache = CCApplication.SharedApplication.SpriteFrameCache;
             frameCache.AddSpriteFrames("animations/grossini.plist");
             frameCache.AddSpriteFrames("animations/grossini_gray.plist");
             frameCache.AddSpriteFrames("animations/grossini_blue.plist");
@@ -23,14 +23,14 @@ namespace tests
             for (int i = 1; i < 15; i++)
             {
                 str = string.Format("grossini_dance_{0:00}.png", i);
-                CCSpriteFrame frame = CCSpriteFrameCache.Instance[str];
+                CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
                 animFrames.Add(frame);
             }
 
             CCAnimation animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
-            CCAnimationCache.Instance.AddAnimation(animation, "dance");
+            CCApplication.SharedApplication.AnimationCache.AddAnimation(animation, "dance");
 
             //
             // create animation "dance gray"
@@ -40,14 +40,14 @@ namespace tests
             for (int i = 1; i < 15; i++)
             {
                 str = String.Format("grossini_dance_gray_{0:00}.png", i);
-                CCSpriteFrame frame = CCSpriteFrameCache.Instance[str];
+                CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
                 animFrames.Add(frame);
             }
 
             animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
-            CCAnimationCache.Instance.AddAnimation(animation, "dance_gray");
+            CCApplication.SharedApplication.AnimationCache.AddAnimation(animation, "dance_gray");
 
             //
             // create animation "dance blue"
@@ -57,17 +57,17 @@ namespace tests
             for (int i = 1; i < 4; i++)
             {
                 str = String.Format("grossini_blue_{0:00}.png", i);
-                CCSpriteFrame frame = CCSpriteFrameCache.Instance[str];
+                CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
                 animFrames.Add(frame);
             }
 
             animation = new CCAnimation(animFrames, 0.2f);
 
             // Add an animation to the Cache
-            CCAnimationCache.Instance.AddAnimation(animation, "dance_blue");
+            CCApplication.SharedApplication.AnimationCache.AddAnimation(animation, "dance_blue");
 
 
-            CCAnimationCache animCache = CCAnimationCache.Instance;
+            CCAnimationCache animCache = CCApplication.SharedApplication.AnimationCache;
 
             CCAnimation normal = animCache["dance"];
             normal.RestoreOriginalFrame = true;

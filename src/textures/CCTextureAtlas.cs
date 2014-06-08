@@ -79,7 +79,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTextureAtlas(string file, int capacity) : this(CCTextureCache.Instance.AddImage(file), capacity)
+        public CCTextureAtlas(string file, int capacity) : this(CCApplication.SharedApplication.TextureCache.AddImage(file), capacity)
         {
         }
 

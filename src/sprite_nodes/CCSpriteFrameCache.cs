@@ -8,8 +8,6 @@ namespace CocosSharp
 {
     public class CCSpriteFrameCache
     {
-        static CCSpriteFrameCache sharedSpriteFrameCache;
-
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
 
@@ -18,17 +16,6 @@ namespace CocosSharp
 
         // When false, an exception is thrown if an animation frame is overwritten.
         public bool AllowFrameOverwrite { get; set; }
-
-        public static CCSpriteFrameCache Instance
-        {
-            get
-            {
-                if (sharedSpriteFrameCache == null)
-                    sharedSpriteFrameCache = new CCSpriteFrameCache();
-
-                return sharedSpriteFrameCache;
-            }
-        }
 
         // Get the sprite frame for the given frame name, or as an alias for the sprite frame name.
         public CCSpriteFrame this[string name]
@@ -63,8 +50,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        // Singleton, so ensure users only call SharedSpriteFrameCache to get instance
-        protected CCSpriteFrameCache()
+        public CCSpriteFrameCache()
         {
             spriteFrames = new Dictionary<string, CCSpriteFrame>();
             spriteFramesAliases = new Dictionary<string, string>();
@@ -264,7 +250,7 @@ namespace CocosSharp
                 CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
-            CCTexture2D pTexture = CCTextureCache.Instance.AddImage(texturePath);
+            CCTexture2D pTexture = CCApplication.SharedApplication.TextureCache.AddImage(texturePath);
 
             if (pTexture != null)
             {
@@ -280,7 +266,7 @@ namespace CocosSharp
         {
             Debug.Assert(textureFileName != null);
 
-            CCTexture2D texture = CCTextureCache.Instance.AddImage(textureFileName);
+            CCTexture2D texture = CCApplication.SharedApplication.TextureCache.AddImage(textureFileName);
 
             if (texture != null)
             {
@@ -431,12 +417,6 @@ namespace CocosSharp
             {
                 spriteFrames.Remove(key);
             }
-        }
-
-
-        public static void PurgeSharedSpriteFrameCache()
-        {
-            sharedSpriteFrameCache = null;
         }
 
         #endregion Removing frames

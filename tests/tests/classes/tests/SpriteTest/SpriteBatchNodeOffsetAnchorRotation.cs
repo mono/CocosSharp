@@ -14,7 +14,7 @@ namespace tests
 
             for (int i = 0; i < 3; i++)
             {
-                CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+                CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
                 cache.AddSpriteFrames("animations/grossini.plist");
                 cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 
@@ -78,7 +78,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.RemoveSpriteFrames("animations/grossini.plist");
             cache.RemoveSpriteFrames("animations/grossini_gray.plist");
         }

@@ -22,7 +22,7 @@ namespace tests
 
             // sun
 			CCParticleSystem sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));
-            sun.Texture = CCTextureCache.Instance.AddImage("Images/fire");
+            sun.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
             sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
             sun.TotalParticles = 130;

@@ -12,7 +12,7 @@ namespace tests
         {
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
             CCNode aParent;
             CCSprite l1, l2a, l2b, l3a1, l3a2, l3b1, l3b2;
 

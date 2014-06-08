@@ -340,7 +340,7 @@ namespace tests
 
         public static TestScene CreateTestScene(int index)
         {
-            CCApplication.SharedApplication.PurgeCachedData();
+            CCApplication.SharedApplication.PurgeAllCachedData();
 
             TestScene scene = null;
 

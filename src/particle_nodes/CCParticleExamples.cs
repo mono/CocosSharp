@@ -66,7 +66,7 @@ namespace CocosSharp
             {
                 if (defaultTexture == null)
                 {
-                    defaultTexture = CCTextureCache.Instance.AddImage(firePngData, "__firePngData", CCSurfaceFormat.Color);
+                    defaultTexture = CCApplication.SharedApplication.TextureCache.AddImage(firePngData, "__firePngData", CCSurfaceFormat.Color);
                 }
 
                 return defaultTexture;

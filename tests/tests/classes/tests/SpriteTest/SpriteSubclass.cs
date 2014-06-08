@@ -20,7 +20,7 @@ namespace tests
 
         public static MySprite1 Create(string pszSpriteFrameName)
         {
-            CCSpriteFrame pFrame = CCSpriteFrameCache.Instance[pszSpriteFrameName];
+            CCSpriteFrame pFrame = CCApplication.SharedApplication.SpriteFrameCache[pszSpriteFrameName];
             MySprite1 pobSprite = new MySprite1(pFrame);
 
             return pobSprite;
@@ -56,7 +56,7 @@ namespace tests
         {
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            CCSpriteFrameCache.Instance.AddSpriteFrames("animations/ghosts.plist");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
             CCSpriteBatchNode aParent = new CCSpriteBatchNode("animations/ghosts");
 
             // MySprite1

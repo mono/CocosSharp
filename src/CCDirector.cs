@@ -314,15 +314,6 @@ namespace CocosSharp
             if(EventDispatcher != null)
                 EventDispatcher.RemoveAll();
 
-            // purge bitmap cache
-            CCLabelBMFont.PurgeCachedData();
-
-            // purge all managed caches
-            CCAnimationCache.PurgeSharedAnimationCache();
-            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
-            CCTextureCache.PurgeInstance();
-            CCDrawManager.PurgeDrawManager();
-
             isNeedsInit = true;
         }
 

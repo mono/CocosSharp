@@ -60,7 +60,7 @@ namespace CocosSharp
 
 			AddEventListener(touchListener);
 
-            CCSpriteFrameCache.Instance.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
 
             var spriteSheet = new CCSpriteBatchNode("extensions/CCControlColourPickerSpriteSheet.png");
             AddChild(spriteSheet);

@@ -15,14 +15,14 @@ namespace tests
 
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            CCSpriteFrameCache.Instance.AddSpriteFrames("zwoptex/grossini.plist");
-            CCSpriteFrameCache.Instance.AddSpriteFrames("zwoptex/grossini-generic.plist");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
+            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini-generic.plist");
 
             CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 85, 121);
             layer1.Position = new CCPoint(s.Width / 2 - 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer1);
 
-            sprite1 = new CCSprite(CCSpriteFrameCache.Instance["grossini_dance_01.png"]);
+            sprite1 = new CCSprite(CCApplication.SharedApplication.SpriteFrameCache["grossini_dance_01.png"]);
             sprite1.Position = (new CCPoint(s.Width / 2 - 80, s.Height / 2));
             AddChild(sprite1);
 
@@ -33,7 +33,7 @@ namespace tests
             layer2.Position = new CCPoint(s.Width / 2 + 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer2);
 
-            sprite2 = new CCSprite(CCSpriteFrameCache.Instance["grossini_dance_generic_01.png"]);
+            sprite2 = new CCSprite(CCApplication.SharedApplication.SpriteFrameCache["grossini_dance_generic_01.png"]);
             sprite2.Position = (new CCPoint(s.Width / 2 + 80, s.Height / 2));
             AddChild(sprite2);
 
@@ -92,8 +92,8 @@ namespace tests
             string str1 = string.Format("grossini_dance_{0:00}.png", spriteFrameIndex);
             string str2 = string.Format("grossini_dance_generic_{0:00}.png", spriteFrameIndex);
 
-            sprite1.DisplayFrame = CCSpriteFrameCache.Instance[str1];
-            sprite2.DisplayFrame = CCSpriteFrameCache.Instance[str2];
+            sprite1.DisplayFrame = CCApplication.SharedApplication.SpriteFrameCache[str1];
+            sprite2.DisplayFrame = CCApplication.SharedApplication.SpriteFrameCache[str2];
         }
 
         public override string title()

@@ -15,7 +15,7 @@ namespace tests
             // IMPORTANT:
             // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
             //     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames);
-            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini.plist");
             cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
             cache.AddSpriteFrames("animations/grossini_blue.plist", "animations/grossini_blue");
@@ -92,7 +92,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCSpriteFrameCache.Instance;
+            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.RemoveSpriteFrames("animations/grossini.plist");
             cache.RemoveSpriteFrames("animations/grossini_gray.plist");
             cache.RemoveSpriteFrames("animations/grossini_blue.plist");

@@ -15,16 +15,62 @@ namespace CocosSharp
             public Action<CCParticleSystemConfig> Action { get; set; }
         };
 
-        private List<AsyncStruct> asyncLoadedConfigs = new List<AsyncStruct>();
-        private Action ProcessingAction { get; set; }
-        private object Task { get; set; }
+        readonly object dictLock = new object();
 
-        private readonly object dictLock = new object();
-        protected Dictionary<string, CCParticleSystemConfig> psConfigs = new Dictionary<string, CCParticleSystemConfig>();
+        List<AsyncStruct> asyncLoadedConfigs = new List<AsyncStruct>();
+        Dictionary<string, CCParticleSystemConfig> configs;
+        Action ProcessingAction { get; set; }
 
 
-        public CCParticleSystemCache(CCNode targetNode)
+        #region Properties
+
+        object Task { get; set; }
+
+        public CCParticleSystemConfig this[string key]
         {
+            get 
+            {
+                return ParticleSystemForKey (key);
+            }
+        }
+
+        #endregion Properties
+
+
+
+        #region Cleaning up
+
+        // No unmanaged resources, so no need for finalizer
+
+        public void Dispose()
+        {
+            this.Dispose(true);
+
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing && configs != null)
+            {
+                foreach (var t in configs.Values)
+                {
+                    t.Dispose();
+                }
+
+                configs = null;
+            }
+        }
+
+        #endregion Cleaning up
+
+
+        #region Constructors
+
+        public CCParticleSystemCache()
+        {
+            configs = new Dictionary<string, CCParticleSystemConfig>();
+
             ProcessingAction = new Action(
                 () =>
                 {
@@ -64,18 +110,21 @@ namespace CocosSharp
             );
         }
 
+        #endregion Constructors
+
+
         public void Update(float dt)
         {
         }
 
         public void UnloadContent()
         {
-            psConfigs.Clear();
+            configs.Clear();
         }
 
         public bool Contains(string assetFile)
         {
-            return psConfigs.ContainsKey(assetFile);
+            return configs.ContainsKey(assetFile);
         }
 
         public void AddParticleSystemAsync(string fileConfig, Action<CCParticleSystemConfig> action, string directoryName = null)
@@ -127,7 +176,7 @@ namespace CocosSharp
             try
             {
 
-            CCTextureCache.Instance.AddImageAsync(imageBytes, config.TextureName, CCSurfaceFormat.Color, (loadedTexture) =>
+            CCApplication.SharedApplication.TextureCache.AddImageAsync(imageBytes, config.TextureName, CCSurfaceFormat.Color, (loadedTexture) =>
             {
             if (loadedTexture != null)
             {
@@ -143,7 +192,7 @@ namespace CocosSharp
             CCFileUtils.IsPopupNotify = false;
             try
             {
-            CCTextureCache.Instance.AddImageAsync(config.TextureName, (tex2) =>
+            CCApplication.SharedApplication.TextureCache.AddImageAsync(config.TextureName, (tex2) =>
             {
             config.Texture = tex2;
 
@@ -186,7 +235,7 @@ namespace CocosSharp
             CCFileUtils.IsPopupNotify = false;
             try
             {
-            CCTextureCache.Instance.AddImageAsync(config.TextureName, (tex2) =>
+            CCApplication.SharedApplication.TextureCache.AddImageAsync(config.TextureName, (tex2) =>
             {
             config.Texture = tex2;
 
@@ -226,14 +275,14 @@ namespace CocosSharp
             }
 
             lock (dictLock) {
-                psConfigs.TryGetValue (assetName, out psConfig);
+                configs.TryGetValue (assetName, out psConfig);
             }
             if (psConfig == null) {
                 psConfig = new CCParticleSystemConfig (fileConfig, directoryName, loadAsync);
 
                 if (psConfig != null) {
                     lock (dictLock) {
-                        psConfigs[assetName] = psConfig;
+                        configs[assetName] = psConfig;
                     }
                 } else {
                     return null;
@@ -241,15 +290,6 @@ namespace CocosSharp
             }
 
             return psConfig;
-        }
-
-
-        public CCParticleSystemConfig this[string key]
-        {
-            get 
-            {
-                return ParticleSystemForKey (key);
-            }
         }
 
         public CCParticleSystemConfig ParticleSystemForKey(string key)
@@ -262,7 +302,7 @@ namespace CocosSharp
                     key = CCFileUtils.RemoveExtension(key);
                 }
 
-                psConfigs.TryGetValue(key, out config);
+                configs.TryGetValue(key, out config);
             }
             catch (ArgumentNullException)
             {
@@ -274,21 +314,21 @@ namespace CocosSharp
 
         public void RemoveAll()
         {
-            psConfigs.Clear();
+            configs.Clear();
         }
 
         public void RemoveUnused()
         {
-            if (psConfigs.Count > 0)
+            if (configs.Count > 0)
             {
                 var tmp = new Dictionary<string, WeakReference>();
 
-                foreach (var pair in psConfigs)
+                foreach (var pair in configs)
                 {
                     tmp.Add(pair.Key, new WeakReference(pair.Value));
                 }
 
-                psConfigs.Clear();
+                configs.Clear();
 
                 GC.Collect();
 
@@ -296,7 +336,7 @@ namespace CocosSharp
                 {
                     if (pair.Value.IsAlive)
                     {
-                        psConfigs.Add(pair.Key, (CCParticleSystemConfig) pair.Value.Target);
+                        configs.Add(pair.Key, (CCParticleSystemConfig) pair.Value.Target);
                     }
                 }
             }
@@ -311,7 +351,7 @@ namespace CocosSharp
 
             string key = null;
 
-            foreach (var pair in psConfigs)
+            foreach (var pair in configs)
             {
                 if (pair.Value == particleSystem)
                 {
@@ -322,7 +362,7 @@ namespace CocosSharp
 
             if (key != null)
             {
-                psConfigs.Remove(key);
+                configs.Remove(key);
             }
         }
 
@@ -338,7 +378,7 @@ namespace CocosSharp
                 particleSystemKeyName = CCFileUtils.RemoveExtension(particleSystemKeyName);
             }
 
-            psConfigs.Remove(particleSystemKeyName);
+            configs.Remove(particleSystemKeyName);
         }
 
         public void DumpCachedInfo()
@@ -346,7 +386,7 @@ namespace CocosSharp
             int count = 0;
             int total = 0;
 
-            foreach (var pair in psConfigs)
+            foreach (var pair in configs)
             {
                 var texture = pair.Value.Texture.XNATexture;
 
@@ -361,31 +401,5 @@ namespace CocosSharp
             }
             CCLog.Log("{0} particle systems, for {1} KB ({2:00.00} MB)", count, total / 1024, total / (1024f * 1024f));
         }
-
-        #region Cleaning up
-
-        // No unmanaged resources, so no need for finalizer
-
-        public void Dispose()
-        {
-            this.Dispose(true);
-
-            GC.SuppressFinalize(this);
-        }
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing && psConfigs != null)
-            {
-                foreach (var t in psConfigs.Values)
-                {
-                    t.Dispose();
-                }
-
-                psConfigs = null;
-            }
-        }
-
-        #endregion Cleaning up
     }
 }

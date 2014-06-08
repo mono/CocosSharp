@@ -12,7 +12,7 @@ namespace tests
         {
 			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-			var texture = CCTextureCache.Instance.AddImage("animations/dragon_animation");
+			var texture = CCApplication.SharedApplication.TextureCache.AddImage("animations/dragon_animation");
 
             // manually add frames to the frame cache
 			var frame0 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 0, 132, 132));
@@ -52,7 +52,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache.Instance.RemoveUnusedSpriteFrames();
+            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
         public override string title()

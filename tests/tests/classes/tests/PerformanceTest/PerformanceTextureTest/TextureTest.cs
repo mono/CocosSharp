@@ -235,7 +235,7 @@ namespace tests
             //struct timeval now;
             DateTime now;
             CCTexture2D texture;
-            CCTextureCache cache = CCTextureCache.Instance;
+            CCTextureCache cache = CCApplication.SharedApplication.TextureCache;
 
             CCLog.Log("RGBA 8888");
 			CCTexture2D.DefaultAlphaPixelFormat = CCSurfaceFormat.Color;

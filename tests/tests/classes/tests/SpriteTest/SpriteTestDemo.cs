@@ -83,10 +83,12 @@ namespace tests
             CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
         }
 
-        private void ClearCaches()
+        void ClearCaches()
         {
-            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
-            CCTextureCache.PurgeInstance();
+            CCApplication sharedApp = CCApplication.SharedApplication;
+
+            sharedApp.PurgeSpriteFrameCache();
+            sharedApp.PurgeTextureCache();
         }
     }
 }

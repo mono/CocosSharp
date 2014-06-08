@@ -14,14 +14,14 @@ namespace CocosSharp
         protected bool lineBreakWithoutSpaces;
         protected CCTextAlignment horzAlignment = CCTextAlignment.Center;
         protected CCVerticalTextAlignment vertAlignment = CCVerticalTextAlignment.Top;
-		internal CCBMFontConfiguration FontConfiguration { get; set; }
+        internal CCBMFontConfiguration FontConfiguration { get; set; }
         protected string fntConfigFile;
         protected string labelInitialText;
-		protected string labelText = string.Empty;
-		protected CCPoint ImageOffset { get; set; }
+        protected string labelText = string.Empty;
+        protected CCPoint ImageOffset { get; set; }
         protected CCSize labelDimensions;
         protected CCSprite m_pReusedChar;
-		protected bool IsDirty { get; set; }
+        protected bool IsDirty { get; set; }
 
         protected byte displayedOpacity = 255;
         protected byte realOpacity = 255;
@@ -37,7 +37,7 @@ namespace CocosSharp
             get { return base.AnchorPoint; }
             set
             {
-				if (!AnchorPoint.Equals(value))
+                if (!AnchorPoint.Equals(value))
                 {
                     base.AnchorPoint = value;
                     IsDirty = true;
@@ -50,10 +50,10 @@ namespace CocosSharp
             set
             {
                 if (!value.Equals(base.ScaleX) || !value.Equals(base.ScaleY)) 
-				{
-					base.Scale = value;
-					IsDirty = true;
-				}
+                {
+                    base.Scale = value;
+                    IsDirty = true;
+                }
             }
         }
 
@@ -62,11 +62,11 @@ namespace CocosSharp
             get { return base.ScaleX; }
             set
             {
-				if (!value.Equals(base.ScaleX)) 
-				{
-					base.ScaleX = value;
-					IsDirty = true;
-				}
+                if (!value.Equals(base.ScaleX)) 
+                {
+                    base.ScaleX = value;
+                    IsDirty = true;
+                }
             }
         }
 
@@ -75,11 +75,11 @@ namespace CocosSharp
             get { return base.ScaleY; }
             set
             {
-				if (!value.Equals(base.ScaleY)) 
-				{
-					base.ScaleY = value;
-					IsDirty = true;
-				}
+                if (!value.Equals(base.ScaleY)) 
+                {
+                    base.ScaleY = value;
+                    IsDirty = true;
+                }
             }
         }
 
@@ -147,7 +147,7 @@ namespace CocosSharp
 
                     FontConfiguration = newConf;
 
-                    Texture = CCTextureCache.Instance.AddImage(FontConfiguration.AtlasName);
+                    Texture = CCApplication.SharedApplication.TextureCache.AddImage(FontConfiguration.AtlasName);
 
                     IsDirty = true;
                 }
@@ -255,17 +255,13 @@ namespace CocosSharp
 
         #endregion
 
-        public static void FNTConfigRemoveCache()
-		{
+
+        public static void PurgeCachedData()
+        {
             if (fontConfigurations != null)
             {
                 fontConfigurations.Clear();
             }
-        }
-
-        public static void PurgeCachedData()
-        {
-            FNTConfigRemoveCache();
         }
 
 
@@ -317,7 +313,7 @@ namespace CocosSharp
         {
             Debug.Assert(FontConfiguration == null, "re-init is no longer supported");
             Debug.Assert((theString == null && fntFile == null) || (theString != null && fntFile != null),
-                         "Invalid params for CCLabelBMFont");
+                "Invalid params for CCLabelBMFont");
 
             if (!String.IsNullOrEmpty(fntFile))
             {
@@ -336,7 +332,7 @@ namespace CocosSharp
                 {
                     try
                     {
-                        texture = CCTextureCache.Instance.AddImage(FontConfiguration.AtlasName);
+                        texture = CCApplication.SharedApplication.TextureCache.AddImage(FontConfiguration.AtlasName);
                     }
                     catch (Exception)
                     {
@@ -344,9 +340,9 @@ namespace CocosSharp
                         try
                         {
                             texture =
-                                CCTextureCache.Instance.AddImage(System.IO.Path.Combine("images",
-                                                                                                  FontConfiguration
-                                                                                                      .AtlasName));
+                                CCApplication.SharedApplication.TextureCache.AddImage(System.IO.Path.Combine("images",
+                                    FontConfiguration
+                                    .AtlasName));
                         }
                         catch (Exception)
                         {
@@ -354,7 +350,7 @@ namespace CocosSharp
                             string dir = System.IO.Path.GetDirectoryName(FontConfiguration.AtlasName);
                             string fname = System.IO.Path.GetFileName(FontConfiguration.AtlasName);
                             string newName = System.IO.Path.Combine(System.IO.Path.Combine(dir, "images"), fname);
-                            texture = CCTextureCache.Instance.AddImage(newName);
+                            texture = CCApplication.SharedApplication.TextureCache.AddImage(newName);
                         }
                     }
                 }
@@ -371,7 +367,7 @@ namespace CocosSharp
 
             base.InitCCSpriteBatchNode(texture, theString.Length);
 
-			this.labelDimensions = dimensions;
+            this.labelDimensions = dimensions;
 
             horzAlignment = hAlignment;
             vertAlignment = vAlignment;
@@ -381,7 +377,7 @@ namespace CocosSharp
             isOpacityCascaded = true;
             isColorCascaded = true;
 
-			ContentSize = CCSize.Zero;
+            ContentSize = CCSize.Zero;
 
             isColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -478,11 +474,11 @@ namespace CocosSharp
                 }
             }
 
-			var commonHeight = FontConfiguration.CommonHeight;
+            var commonHeight = FontConfiguration.CommonHeight;
 
-			totalHeight = commonHeight * quantityOfLines;
+            totalHeight = commonHeight * quantityOfLines;
             nextFontPositionY = 0 -
-				(commonHeight - commonHeight * quantityOfLines);
+                (commonHeight - commonHeight * quantityOfLines);
 
             CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
             CCRect rect;
@@ -494,14 +490,14 @@ namespace CocosSharp
                 if (c == '\n')
                 {
                     nextFontPositionX = 0;
-					nextFontPositionY -= commonHeight;
+                    nextFontPositionY -= commonHeight;
                     continue;
                 }
 
                 if (charSet.IndexOf(c) == -1)
                 {
-					CCLog.Log("CocosSharp: CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
-                              (int) c);
+                    CCLog.Log("CocosSharp: CCLabelBMFont: Attempted to use character not defined in this bitmap: {0}",
+                        (int) c);
                     continue;
                 }
 
@@ -510,12 +506,12 @@ namespace CocosSharp
                 // unichar is a short, and an int is needed on HASH_FIND_INT
                 if (!FontConfiguration.Glyphs.TryGetValue(c, out fontDef))
                 {
-					CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int) c);
+                    CCLog.Log("CocosSharp: CCLabelBMFont: characer not found {0}", (int) c);
                     continue;
                 }
 
                 rect = fontDef.Subrect;
-				rect = rect.PixelsToPoints();
+                rect = rect.PixelsToPoints();
 
                 rect.Origin.X += ImageOffset.X;
                 rect.Origin.Y += ImageOffset.Y;
@@ -523,7 +519,7 @@ namespace CocosSharp
                 CCSprite fontChar;
 
                 //bool hasSprite = true;
-				fontChar = (CCSprite) (this[i]);
+                fontChar = (CCSprite) (this[i]);
                 if (fontChar != null)
                 {
                     // Reusing previous Sprite
@@ -565,9 +561,9 @@ namespace CocosSharp
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
-						(float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
 
-				fontChar.Position = fontPos.PixelsToPoints();
+                fontChar.Position = fontPos.PixelsToPoints();
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -595,15 +591,15 @@ namespace CocosSharp
             {
                 tmpSize.Width = longestLine;
             }
-			tmpSize.Height = totalHeight;
-			var tmpDimensions = labelDimensions;
+            tmpSize.Height = totalHeight;
+            var tmpDimensions = labelDimensions;
 
             tmpSize = new CCSize(
-				tmpDimensions.Width > 0 ? tmpDimensions.Width : tmpSize.Width,
-				tmpDimensions.Height > 0 ? tmpDimensions.Height : tmpSize.Height
-                );
+                tmpDimensions.Width > 0 ? tmpDimensions.Width : tmpSize.Width,
+                tmpDimensions.Height > 0 ? tmpDimensions.Height : tmpSize.Height
+            );
 
-			ContentSize = tmpSize.PixelsToPoints();
+            ContentSize = tmpSize.PixelsToPoints();
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
@@ -661,13 +657,13 @@ namespace CocosSharp
                 float startOfLine = -1, startOfWord = -1;
                 int skip = 0;
 
-				CCRawList<CCNode> children = Children;
+                CCRawList<CCNode> children = Children;
                 for (int j = 0; j < children.Count; j++)
                 {
                     CCSprite characterSprite;
                     int justSkipped = 0;
 
-					while ((characterSprite = (CCSprite) this[(j + skip + justSkipped)]) == null)
+                    while ((characterSprite = (CCSprite) this[(j + skip + justSkipped)]) == null)
                     {
                         justSkipped++;
                     }
@@ -749,7 +745,7 @@ namespace CocosSharp
                     }
 
                     // Out of bounds.
-					if (GetLetterPosXRight(characterSprite) - startOfLine > labelDimensions.Width)
+                    if (GetLetterPosXRight(characterSprite) - startOfLine > labelDimensions.Width)
                     {
                         if (!lineBreakWithoutSpaces)
                         {
@@ -848,23 +844,23 @@ namespace CocosSharp
                         int index = i + line_length - 1 + lineNumber;
                         if (index < 0) continue;
 
-						var lastChar = (CCSprite) this[index];
+                        var lastChar = (CCSprite) this[index];
                         if (lastChar == null)
                             continue;
 
-						lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
+                        lineWidth = lastChar.Position.X + lastChar.ContentSize.Width / 2.0f;
 
                         float shift = 0;
                         switch (horzAlignment)
                         {
-                            case CCTextAlignment.Center:
-								shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
-                                break;
-                            case CCTextAlignment.Right:
-								shift = ContentSize.Width - lineWidth;
-                                break;
-                            default:
-                                break;
+                        case CCTextAlignment.Center:
+                            shift = ContentSize.Width / 2.0f - lineWidth / 2.0f;
+                            break;
+                        case CCTextAlignment.Right:
+                            shift = ContentSize.Width - lineWidth;
+                            break;
+                        default:
+                            break;
                         }
 
                         if (shift != 0)
@@ -874,7 +870,7 @@ namespace CocosSharp
                                 index = i + j + lineNumber;
                                 if (index < 0) continue;
 
-							var characterSprite = (CCSprite) this[index];
+                                var characterSprite = (CCSprite) this[index];
                                 characterSprite.Position = characterSprite.Position + new CCPoint(shift, 0.0f);
                             }
                         }
@@ -902,16 +898,16 @@ namespace CocosSharp
                     }
                 }
 
-				float yOffset = labelDimensions.Height - FontConfiguration.CommonHeight * lineNumber;
+                float yOffset = labelDimensions.Height - FontConfiguration.CommonHeight * lineNumber;
 
                 if (vertAlignment == CCVerticalTextAlignment.Center)
                 {
-					yOffset /= 2f;
+                    yOffset /= 2f;
                 }
 
                 for (int i = 0; i < str_len; i++)
                 {
-					var characterSprite = this[i];
+                    var characterSprite = this[i];
                     characterSprite.PositionY += yOffset;
                 }
             }
@@ -919,12 +915,12 @@ namespace CocosSharp
 
         private float GetLetterPosXLeft(CCSprite sp)
         {
-			return sp.Position.X * ScaleX - (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
+            return sp.Position.X * ScaleX - (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
         }
 
         private float GetLetterPosXRight(CCSprite sp)
         {
-			return sp.Position.X * ScaleX + (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
+            return sp.Position.X * ScaleX + (sp.ContentSize.Width * ScaleX * sp.AnchorPoint.X);
         }
 
 

@@ -153,6 +153,11 @@ namespace CocosSharp
         CCEventGamePadStick gamePadStick;
         CCEventGamePadTrigger gamePadTrigger;
 
+        CCParticleSystemCache particleSystemCache;
+        CCAnimationCache animationCache;
+        CCSpriteFrameCache spriteFrameCache;
+        CCTextureCache textureCache;
+
         CCGame xnaGame;
         CCGameTime GameTime;
         CCWindow mainWindow;
@@ -333,7 +338,54 @@ namespace CocosSharp
         }
 
         public CCDirector MainWindowDirector { get { return mainWindow.Director; } }
-        
+
+        public CCParticleSystemCache ParticleSystemCache 
+        { 
+            get 
+            { 
+                if(particleSystemCache == null) 
+                    particleSystemCache = new CCParticleSystemCache();
+
+                return particleSystemCache; 
+            } 
+        }
+
+        public CCAnimationCache AnimationCache
+        {
+            get
+            {
+                if (animationCache == null)
+                {
+                    animationCache = new CCAnimationCache();
+                }
+
+                return animationCache;
+            }
+        }
+
+        public CCSpriteFrameCache SpriteFrameCache
+        {
+            get
+            {
+                if (spriteFrameCache == null)
+                    spriteFrameCache = new CCSpriteFrameCache();
+
+                return spriteFrameCache;
+            }
+        }
+
+        public CCTextureCache TextureCache
+        {
+            get 
+            {
+                if (textureCache == null)
+                {
+                    textureCache = new CCTextureCache();
+                }
+                return textureCache;
+            }
+        }
+
         internal ContentManager Content 
         {   get { return(CCContentManager.SharedContentManager); } 
             private set { } 
@@ -404,9 +456,43 @@ namespace CocosSharp
 
         #region Cleaning up
 
-        public void PurgeCachedData()
+        public void PurgeParticleSystemCache()
         {
-            // Add caches etc
+            if(particleSystemCache != null) 
+            {
+                particleSystemCache.Dispose();
+                particleSystemCache = null;
+            }
+        }
+
+        public void PurgeAnimationCached()
+        {
+            animationCache = null;
+        }
+
+        public void PurgeSpriteFrameCache()
+        {
+            spriteFrameCache = null;
+        }
+
+        public void PurgeTextureCache()
+        {
+            if(textureCache != null) 
+            {
+                textureCache.Dispose();
+                textureCache = null;
+            }
+        }
+
+        public void PurgeAllCachedData()
+        {
+            PurgeParticleSystemCache();
+            PurgeAnimationCached();
+            PurgeSpriteFrameCache();
+            PurgeTextureCache();
+
+            CCLabelBMFont.PurgeCachedData();
+            CCDrawManager.PurgeDrawManager();
         }
 
         #endregion Cleaning up
