@@ -7,6 +7,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
+#if ANDROID
+using Android.Views;
+#endif
+
 namespace CocosSharp
 {
     [Flags]
@@ -386,6 +390,20 @@ namespace CocosSharp
             }
         }
 
+		#if ANDROID
+		public View AndroidContentView
+		{
+			get 
+			{ 
+				View androidView = null;
+
+				if (xnaGame != null)
+					androidView = (View)xnaGame.Services.GetService(typeof(View));
+				return androidView; 
+			}
+		}
+		#endif
+
         internal ContentManager Content 
         {   get { return(CCContentManager.SharedContentManager); } 
             private set { } 
@@ -501,8 +519,10 @@ namespace CocosSharp
 
         public void StartGame()
         {
-            if (xnaGame != null)
-                xnaGame.Run();
+
+			if (xnaGame != null)
+				xnaGame.Run();
+
         }
 
         public void ExitGame()

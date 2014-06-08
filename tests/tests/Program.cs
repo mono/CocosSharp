@@ -126,12 +126,16 @@ namespace tests
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-    #if OUYA
-    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
-    #endif
-            var game = new Game1();
-            this.SetContentView((View)game.Services.GetService(typeof(View)));
-            game.Run(GameRunBehavior.Asynchronous);
+		    #if OUYA
+		    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
+		    #endif
+
+			CCApplication sharedApp = CCApplication.SharedApplication;
+			sharedApp.ApplicationDelegate = new AppDelegate();
+
+			this.SetContentView(sharedApp.AndroidContentView);
+
+			CCApplication.SharedApplication.StartGame();
         }
     }
     #endif
