@@ -103,7 +103,7 @@ namespace CocosSharp
 						
 						if (actionState.Action.Tag == tag)
 						{
-							return element.ActionStates[i];
+							return actionState;
 						}
 					}
 					CCLog.Log("CocosSharp : GetActionStateByTag: Tag " + tag + " not found");
