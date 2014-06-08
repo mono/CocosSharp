@@ -591,8 +591,8 @@ namespace CocosSharp
 
                 // In Seconds
                 Scheduler.Update(deltaTime);
-                if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE));
-                EventDispatcher.DispatchEvent(eventAfterUpdate);
+                if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE))
+                	EventDispatcher.DispatchEvent(eventAfterUpdate);
             }
 
             /* to avoid flickr, nextScene MUST be here: after tick and before draw.
