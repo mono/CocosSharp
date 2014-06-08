@@ -34,7 +34,7 @@ namespace CocosSharp
 
         public Dictionary<string, string> Properties { get; set; }      // Properties of the tmx layer
 
-        public virtual CCDirector Director 
+		public override virtual CCDirector Director 
         { 
             get { return base.Director; }
             internal set 
