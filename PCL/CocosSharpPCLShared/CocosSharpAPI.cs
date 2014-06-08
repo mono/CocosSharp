@@ -207,14 +207,14 @@ namespace CocosSharp {
 		public void Dispose() { }
 		protected virtual void Dispose(bool disposing) { }
 		~CCActionManager() { }
-		public CocosSharp.CCAction GetActionByTag(int tag, CocosSharp.CCNode target) { return default(CocosSharp.CCAction); }
-		public CocosSharp.CCActionState GetActionStateByTag(int tag, CocosSharp.CCNode target) { return default(CocosSharp.CCActionState); }
+		public CocosSharp.CCAction GetAction(int tag, CocosSharp.CCNode target) { return default(CocosSharp.CCAction); }
+		public CocosSharp.CCActionState GetActionState(int tag, CocosSharp.CCNode target) { return default(CocosSharp.CCActionState); }
 		public int NumberOfRunningActionsInTarget(CocosSharp.CCNode target) { return default(int); }
 		public System.Collections.Generic.List<System.Object> PauseAllRunningActions() { return default(System.Collections.Generic.List<System.Object>); }
 		public void PauseTarget(object target) { }
 		public void RemoveAction(CocosSharp.CCActionState actionState) { }
+		public void RemoveAction(int tag, CocosSharp.CCNode target) { }
 		protected void RemoveActionAtIndex(int index, CocosSharp.CCActionManager.HashElement element) { }
-		public void RemoveActionByTag(int tag, CocosSharp.CCNode target) { }
 		public void RemoveAllActions() { }
 		public void RemoveAllActionsFromTarget(CocosSharp.CCNode target) { }
 		public void ResumeTarget(object target) { }
@@ -2884,8 +2884,8 @@ namespace CocosSharp {
 		protected virtual void Draw() { }
 		~CCNode() { }
 		public virtual void ForceTransformRefresh() { }
-		public CocosSharp.CCAction GetActionByTag(int tag) { return default(CocosSharp.CCAction); }
-		public CocosSharp.CCActionState GetActionStateByTag(int tag) { return default(CocosSharp.CCActionState); }
+		public CocosSharp.CCAction GetAction(int tag) { return default(CocosSharp.CCAction); }
+		public CocosSharp.CCActionState GetActionState(int tag) { return default(CocosSharp.CCActionState); }
 		public CocosSharp.CCRect GetBoundingBox(CocosSharp.CCNode target) { return default(CocosSharp.CCRect); }
 		public CocosSharp.CCNode GetChildByTag(int tag) { return default(CocosSharp.CCNode); }
 		public void GetPosition(out float x, out float y) { x = default(float); y = default(float); }
@@ -2924,7 +2924,7 @@ namespace CocosSharp {
 		protected virtual void SetWorldTransformIsDirty() { }
 		public virtual void SortAllChildren() { }
 		public void StopAction(CocosSharp.CCActionState actionState) { }
-		public void StopActionByTag(int tag) { }
+		public void StopAction(int tag) { }
 		public void StopAllActions() { }
 		int System.Collections.Generic.IComparer<CocosSharp.CCNode>.Compare(CocosSharp.CCNode n1, CocosSharp.CCNode n2) { return default(int); }
 		public void Transform() { }
