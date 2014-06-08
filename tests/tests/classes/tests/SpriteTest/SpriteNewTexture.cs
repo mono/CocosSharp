@@ -19,7 +19,7 @@ namespace tests
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-			AddEventListener(touchListener);
+			EventDispatcher.AddEventListener(touchListener, this);
 
 
             CCNode node = new CCNode ();

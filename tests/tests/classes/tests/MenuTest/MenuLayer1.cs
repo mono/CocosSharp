@@ -46,7 +46,7 @@ namespace tests
 			touchListener.OnTouchEnded = onTouchEnded;
 			touchListener.OnTouchCancelled = onTouchCancelled;
 
-            AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
             // Font Item
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our

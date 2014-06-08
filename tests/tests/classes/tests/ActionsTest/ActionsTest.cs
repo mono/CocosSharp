@@ -1579,7 +1579,7 @@ namespace tests
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			AddEventListener(listener);    
+            EventDispatcher.AddEventListener(listener, this);    
 
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             AddNewSpriteWithCoords(new CCPoint(s.Width/2, s.Height/2));

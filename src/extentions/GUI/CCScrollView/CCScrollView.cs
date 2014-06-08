@@ -96,7 +96,7 @@ namespace CocosSharp
 						touchListener.OnTouchEnded = TouchEnded;
 						touchListener.OnTouchCancelled = TouchCancelled;
 
-						AddEventListener(touchListener);
+                        EventDispatcher.AddEventListener(touchListener, this);
 
 						TouchListener = touchListener;
 
@@ -107,7 +107,7 @@ namespace CocosSharp
 					Dragging = false;
 					IsTouchMoved = false;
 					touches.Clear();
-					RemoveEventListener(TouchListener);
+                    EventDispatcher.RemoveEventListener(TouchListener);
 					TouchListener = null;
 				}
 			}

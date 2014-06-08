@@ -122,11 +122,11 @@ namespace tests
             touchListener.OnTouchBegan = OnTouchBegan;
             touchListener.OnTouchMoved = OnTouchMoved;
 
-            AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
 
             var mouseListener = new CCEventListenerMouse ();
             mouseListener.OnMouseScroll = OnMouseScroll;
-            AddEventListener(mouseListener);
+            EventDispatcher.AddEventListener(mouseListener, this);
 
             #else
             //KeypadEnabled = true;
@@ -269,7 +269,7 @@ namespace tests
                 CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
             };
 
-            AddEventListener(gamePadListener);
+            EventDispatcher.AddEventListener(gamePadListener, this);
         }
 
 

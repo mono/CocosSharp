@@ -732,7 +732,7 @@ namespace CocosSharp
         /// </summary>
         /// 
         /// <param name="listener"></param>
-        internal void AddEventListener(CCEventListener listener)
+        void AddEventListener(CCEventListener listener)
         {
             if (inDispatch == 0)
             {

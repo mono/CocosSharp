@@ -26,7 +26,7 @@ namespace tests
 			touchListener.OnTouchesMoved = onTouchesMoved;
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-			AddEventListener(touchListener);        
+			EventDispatcher.AddEventListener(touchListener, this);        
 
             CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLabelTtf label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);

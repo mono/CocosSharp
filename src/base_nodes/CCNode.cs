@@ -490,6 +490,11 @@ namespace CocosSharp
             }
         }
 
+        public CCEventDispatcher EventDispatcher 
+        { 
+            get { return Director != null ? Director.EventDispatcher : null; }
+        }
+
         internal bool EventDispatcherIsEnabled
         {
             get { return EventDispatcher != null ? EventDispatcher.IsEnabled : false; }
@@ -508,11 +513,6 @@ namespace CocosSharp
         CCActionManager ActionManager
         {
             get { return CCApplication.SharedApplication.ActionManager; }
-        }
-
-        CCEventDispatcher EventDispatcher 
-        { 
-            get { return Director != null ? Director.EventDispatcher : null; }
         }
 
         #endregion Properties
@@ -631,7 +631,7 @@ namespace CocosSharp
             // timers
             UnscheduleAll();
 
-            RemoveAllEventListeners();
+            EventDispatcher.RemoveAll();
 
             if (Children != null && Children.Count > 0)
             {
@@ -1236,29 +1236,6 @@ namespace CocosSharp
         }
 
         #endregion Entering and exiting
-
-
-        #region Event listener
-
-        public void AddEventListener(CCEventListener listener)
-        {
-            if(EventDispatcher != null)
-                EventDispatcher.AddEventListener(listener, this);
-        }
-
-        public void RemoveEventListener(CCEventListener listener)
-        {
-            if(EventDispatcher != null)
-                EventDispatcher.RemoveEventListener(listener);
-        }
-
-        public void RemoveAllEventListeners(bool recursive = false)
-        {
-            if(EventDispatcher != null)
-                EventDispatcher.RemoveEventListeners(this, recursive);
-        }
-
-        #endregion Event listener
 
 
         #region Actions

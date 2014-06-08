@@ -18,7 +18,7 @@ namespace tests
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesMoved = onTouchesMoved;
-			AddEventListener(touchListener);
+			EventDispatcher.AddEventListener(touchListener, this);
 
             CCLabelTtf label1 = new CCLabelTtf("Compressed Interpolation: Enabled", "arial", 26);
             CCLabelTtf label2 = new CCLabelTtf("Compressed Interpolation: Disabled", "arial", 26);

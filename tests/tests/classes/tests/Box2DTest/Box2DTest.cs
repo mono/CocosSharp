@@ -89,7 +89,7 @@ namespace tests
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			AddEventListener(listener);    
+            EventDispatcher.AddEventListener(listener, this);    
 
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             // init physics

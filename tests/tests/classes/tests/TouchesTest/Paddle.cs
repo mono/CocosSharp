@@ -65,7 +65,7 @@ namespace tests
 			listener.OnTouchMoved = onTouchMoved;
 			listener.OnTouchEnded = onTouchEnded;
 
-			AddEventListener(listener);
+			EventDispatcher.AddEventListener(listener, this);
         }
 
         public override void OnExit()

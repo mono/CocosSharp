@@ -23,7 +23,7 @@ namespace Box2D.TestBed
 			touchListener.OnTouchBegan = onTouchBegan;
 			touchListener.OnTouchMoved = onTouchMoved;
 
-			AddEventListener(touchListener);
+			EventDispatcher.AddEventListener(touchListener, this);
 
             Box2DView view = Box2DView.viewWithEntryID(entryId);
             AddChild(view, 0, kTagBox2DNode);

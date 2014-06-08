@@ -122,7 +122,7 @@ namespace CocosSharp
                 touchListener.OnTouchEnded = TouchEnded;
                 touchListener.OnTouchCancelled = TouchCancelled;
 
-                AddEventListener(touchListener);
+                EventDispatcher.AddEventListener(touchListener, this);
             }
         }
 

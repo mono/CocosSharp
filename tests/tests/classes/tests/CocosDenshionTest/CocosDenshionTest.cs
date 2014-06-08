@@ -67,7 +67,7 @@ namespace tests
 			touchListener.OnTouchesBegan = onTouchesBegan;
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
-			AddEventListener(touchListener);   
+			EventDispatcher.AddEventListener(touchListener, this);   
 
 	        // preload background music and effect
 	        CCSimpleAudioEngine.SharedEngine.PreloadBackgroundMusic(CCFileUtils.FullPathFromRelativePath(MUSIC_FILE));

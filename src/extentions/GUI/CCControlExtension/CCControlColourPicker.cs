@@ -58,7 +58,7 @@ namespace CocosSharp
 			touchListener.IsSwallowTouches = true;
 			touchListener.OnTouchBegan = OnTouchBegan;
 
-			AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
 
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("extensions/CCControlColourPickerSpriteSheet.plist");
 

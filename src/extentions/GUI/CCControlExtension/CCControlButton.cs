@@ -226,7 +226,7 @@ namespace CocosSharp
 			touchListener.OnTouchEnded = onTouchEnded;
 			touchListener.OnTouchCancelled = onTouchCancelled;
 
-			AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
 
             _isPushed = false;
             _zoomOnTouchDown = true;

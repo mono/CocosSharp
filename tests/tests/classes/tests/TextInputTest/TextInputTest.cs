@@ -87,7 +87,7 @@ namespace CocosSharp
             touchListener.OnTouchBegan = onTouchBegan;
             touchListener.OnTouchEnded = onTouchEnded;
 
-            AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
         }
 
         public virtual string subtitle()

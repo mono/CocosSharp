@@ -85,7 +85,7 @@ namespace CocosSharp
 			touchListener.OnTouchBegan = OnTouchBegan;
 			touchListener.OnTouchMoved = OnTouchMoved;
 
-			AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
 
 			Background = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("huePickerBackground.png", target, pos, CCPoint.Zero);
 			Slider = CCControlUtils.AddSpriteToTargetWithPosAndAnchor("colourPicker.png", target, pos, new CCPoint(0.5f, 0.5f));

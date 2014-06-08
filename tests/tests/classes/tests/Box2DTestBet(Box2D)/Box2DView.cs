@@ -23,13 +23,13 @@ namespace Box2D.TestBed
 			touchListener.OnTouchMoved = onTouchMoved;
 			touchListener.OnTouchEnded = onTouchEnded;
 
-			AddEventListener(touchListener);
+			EventDispatcher.AddEventListener(touchListener, this);
 
 			var keyboardListener = new CCEventListenerKeyboard ();
 			keyboardListener.OnKeyPressed = onKeyPressed;
 			keyboardListener.OnKeyReleased = onKeyReleased;
 
-			AddEventListener(keyboardListener);
+            EventDispatcher.AddEventListener(keyboardListener, this);
 
             Schedule ();
 
@@ -61,7 +61,7 @@ namespace Box2D.TestBed
 		public override void OnExit ()
 		{
 			if (touchListener != null)
-				RemoveEventListener(touchListener);
+				EventDispatcher.RemoveEventListener(touchListener);
 			base.OnExit ();
 		}
 

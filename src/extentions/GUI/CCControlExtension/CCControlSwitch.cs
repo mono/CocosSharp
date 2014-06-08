@@ -129,7 +129,7 @@ namespace CocosSharp
 			touchListener.OnTouchEnded = OnTouchEnded;
 			touchListener.OnTouchCancelled = OnTouchCancelled;
 
-			AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
         }
 
         #endregion Constructors

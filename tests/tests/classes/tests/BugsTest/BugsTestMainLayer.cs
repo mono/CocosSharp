@@ -30,7 +30,7 @@ namespace tests
 			touchListener.OnTouchesBegan = onTouchesBegan;
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
-			AddEventListener(touchListener);
+            EventDispatcher.AddEventListener(touchListener, this);
         }
 
         public void menuCallback(object pSender)

@@ -13,7 +13,7 @@ namespace tests
         {
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesMoved = onTouchesMoved;
-			AddEventListener(listener);  
+			EventDispatcher.AddEventListener(listener, this);  
 
             // Top Layer, a simple image
             CCSprite cocosImage = new CCSprite(s_Power);

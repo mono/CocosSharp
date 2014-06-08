@@ -20,7 +20,7 @@ namespace tests
 			listener.OnTouchesMoved = onTouchesMoved;
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			AddEventListener(listener);
+			EventDispatcher.AddEventListener(listener, this);
 
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
