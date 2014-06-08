@@ -450,6 +450,10 @@
     <Compile Include="denshion\CCEffectPlayer.AVFoundation.cs" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="events\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\box2d\box2d.iOS.csproj">
       <Project>{7877D4F9-F781-465A-9C1F-D113F246A994}</Project>
@@ -469,7 +473,4 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="events\" />
-  </ItemGroup>
 </Project>

@@ -528,7 +528,9 @@ namespace CocosSharp
         public void ExitGame()
         {
             MainWindowDirector.End();
+            #if !IOS
             xnaGame.Exit();
+            #endif
         }
 
         public void PauseGame()
