@@ -9,9 +9,7 @@ namespace CocosSharp
 		protected class HashElement
 		{
 			public int ActionIndex;
-			public List<CCAction> Actions;
 			public List<CCActionState> ActionStates;
-			public CCAction CurrentAction;
 			public CCActionState CurrentActionState;
 			public bool CurrentActionSalvaged;
 			public bool Paused;
@@ -153,12 +151,12 @@ namespace CocosSharp
 				{
 					// The 'actions' may change while inside this loop.
 					for (currentTarget.ActionIndex = 0;
-                         currentTarget.ActionIndex < currentTarget.Actions.Count;
-                         currentTarget.ActionIndex++)
+								currentTarget.ActionIndex < currentTarget.ActionStates.Count;
+                         		currentTarget.ActionIndex++)
 					{
-						currentTarget.CurrentAction = currentTarget.Actions[currentTarget.ActionIndex];
+						
 						currentTarget.CurrentActionState = currentTarget.ActionStates[currentTarget.ActionIndex];
-						if (currentTarget.CurrentAction == null)
+						if (currentTarget.CurrentActionState == null)
 						{
 							continue;
 						}
@@ -179,17 +177,17 @@ namespace CocosSharp
 						{
 							currentTarget.CurrentActionState.Stop();
 
-							CCActionState actionState = currentTarget.CurrentActionState;
+							var actionState = currentTarget.CurrentActionState;
 							// Make currentAction nil to prevent removeAction from salvaging it.
-							currentTarget.CurrentAction = null;
+							currentTarget.CurrentActionState = null;
 							RemoveAction(actionState);
 						}
-						currentTarget.CurrentAction = null;
+						currentTarget.CurrentActionState = null;
 					}
 				}
 
 				// only delete currentTarget if no actions were scheduled during the cycle (issue #481)
-				if (currentTargetSalvaged && currentTarget.Actions.Count == 0)
+				if (currentTargetSalvaged && currentTarget.ActionStates.Count == 0)
 				{
 					DeleteHashElement(currentTarget);
 				}
@@ -201,7 +199,6 @@ namespace CocosSharp
 
 		protected void DeleteHashElement(HashElement element)
 		{
-			element.Actions.Clear();
 			element.ActionStates.Clear();
 			targets.Remove(element.Target);
 			element.Target = null;
@@ -209,9 +206,8 @@ namespace CocosSharp
 
 		protected void ActionAllocWithHashElement(HashElement element)
 		{
-			if (element.Actions == null)
+			if (element.ActionStates == null)
 			{
-				element.Actions = new List<CCAction>();
 				element.ActionStates = new List<CCActionState>();
 			}
 		}
@@ -281,13 +277,17 @@ namespace CocosSharp
 			}
 
 			ActionAllocWithHashElement(element);
-
-			Debug.Assert(!element.Actions.Contains(action));
-			element.Actions.Add(action);
-
-			CCActionState state = null;
-
-			state = action.StartAction(target);
+			var isActionRunning = false;
+			foreach (var existingState in element.ActionStates)
+			{
+				if (existingState.Action == action)
+				{
+					isActionRunning = true;
+					break;
+				}
+			}
+			Debug.Assert(!isActionRunning, "CocosSharp : Action is already running for this target.");
+			var state = action.StartAction(target);
 			element.ActionStates.Add(state);
 
 			return state;
@@ -319,12 +319,12 @@ namespace CocosSharp
 			HashElement element;
 			if (targets.TryGetValue(target, out element))
 			{
-				if (element.Actions.Contains(element.CurrentAction) && (!element.CurrentActionSalvaged))
+				if (element.ActionStates.Contains(element.CurrentActionState) && (!element.CurrentActionSalvaged))
 				{
 					element.CurrentActionSalvaged = true;
 				}
 
-				element.Actions.Clear();
+				element.ActionStates.Clear();
 
 				if (currentTarget == element)
 				{
@@ -367,14 +367,13 @@ namespace CocosSharp
 
 		protected void RemoveActionAtIndex(int index, HashElement element)
 		{
-			CCAction action = element.Actions[index];
+			var action = element.ActionStates[index];
 
-			if (action == element.CurrentAction && (!element.CurrentActionSalvaged))
+			if (action == element.CurrentActionState && (!element.CurrentActionSalvaged))
 			{
 				element.CurrentActionSalvaged = true;
 			}
 
-			element.Actions.RemoveAt(index);
 			element.ActionStates.RemoveAt(index);
 
 			// update actionIndex in case we are in tick. looping over the actions
@@ -383,7 +382,7 @@ namespace CocosSharp
 				element.ActionIndex--;
 			}
 
-			if (element.Actions.Count == 0)
+			if (element.ActionStates.Count == 0)
 			{
 				if (currentTarget == element)
 				{
