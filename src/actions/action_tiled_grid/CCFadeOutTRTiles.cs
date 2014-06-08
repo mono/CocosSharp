@@ -69,18 +69,25 @@ namespace CocosSharp
 			int i, j;
 			CCGridSize newGrid;
 
-			for (i = 0; i < GridSize.X; ++i) {
+			for (i = 0; i < GridSize.X; ++i)
+			{
 				newGrid.X = i;
-				for (j = 0; j < GridSize.Y; ++j) {
+				for (j = 0; j < GridSize.Y; ++j)
+				{
 					newGrid.Y = j;
 					float distance = TestFunc (newGrid, time);
-					if (distance == 0) {
+					if (distance == 0)
+					{
 						TurnOffTile (newGrid);
-					} else if (distance < 1) {
-						TransformTile (newGrid, distance);
-					} else {
-						TurnOnTile (newGrid);
 					}
+					else if (distance < 1)
+						{
+							TransformTile (newGrid, distance);
+						}
+						else
+						{
+							TurnOnTile (newGrid);
+						}
 				}
 			}
 		}
@@ -92,7 +99,8 @@ namespace CocosSharp
 		{
 			float px = GridSize.X * time;
 			float py = GridSize.Y * time;
-			if ((px + py) == 0.0f) {
+			if ((px + py) == 0.0f)
+			{
 				return 1.0f;
 			}
 

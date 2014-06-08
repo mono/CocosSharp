@@ -46,9 +46,12 @@ namespace CocosSharp
 			Debug.Assert (followedNode != null);
 
 			FollowedNode = followedNode;
-			if (rect.Equals (CCRect.Zero)) {
+			if (rect.Equals (CCRect.Zero))
+			{
 				BoundarySet = false;
-			} else {
+			}
+			else
+			{
 				BoundarySet = true;
 			}
 
@@ -58,24 +61,28 @@ namespace CocosSharp
 			FullScreenSize = (CCPoint)winSize;
 			HalfScreenSize = FullScreenSize * 0.5f;
 
-			if (BoundarySet) {
+			if (BoundarySet)
+			{
 				float leftBoundary = -((rect.Origin.X + rect.Size.Width) - FullScreenSize.X);
 				float rightBoundary = -rect.Origin.X;
 				float topBoundary = -rect.Origin.Y;
 				float bottomBoundary = -((rect.Origin.Y + rect.Size.Height) - FullScreenSize.Y);
 
-				if (rightBoundary < leftBoundary) {
+				if (rightBoundary < leftBoundary)
+				{
 					// screen width is larger than world's boundary width
 					//set both in the middle of the world
 					rightBoundary = leftBoundary = (leftBoundary + rightBoundary) / 2;
 				}
-				if (topBoundary < bottomBoundary) {
+				if (topBoundary < bottomBoundary)
+				{
 					// screen width is larger than world's boundary width
 					//set both in the middle of the world
 					topBoundary = bottomBoundary = (topBoundary + bottomBoundary) / 2;
 				}
 
-				if ((topBoundary == bottomBoundary) && (leftBoundary == rightBoundary)) {
+				if ((topBoundary == bottomBoundary) && (leftBoundary == rightBoundary))
+				{
 					BoundaryFullyCovered = true;
 				}
 
@@ -127,9 +134,11 @@ namespace CocosSharp
 			CCFollow followAction = FollowAction;
 			CCPoint followedNodePos = followAction.FollowedNode.Position;
 
-			if (followAction.BoundarySet) {
+			if (followAction.BoundarySet)
+			{
 				// whole map fits inside a single screen, no need to modify the position - unless map boundaries are increased
-				if (followAction.BoundaryFullyCovered) {
+				if (followAction.BoundaryFullyCovered)
+				{
 					return;
 				}
 
@@ -139,7 +148,9 @@ namespace CocosSharp
 					MathHelper.Clamp (tempPos.X, cachedBoundary.LeftBoundary, cachedBoundary.RightBoundary),
 					MathHelper.Clamp (tempPos.Y, cachedBoundary.BottomBoundary, cachedBoundary.TopBoundary)
 				);
-			} else {
+			}
+			else
+			{
 				Target.Position = cachedHalfScreenSize - followedNodePos;
 			}
 		}

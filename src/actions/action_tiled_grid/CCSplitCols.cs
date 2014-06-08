@@ -66,11 +66,13 @@ namespace CocosSharp
 		{
 			int i;
 
-			for (i = 0; i < GridSize.X; ++i) {
+			for (i = 0; i < GridSize.X; ++i)
+			{
 				CCQuad3 coords = OriginalTile (i, 0);
 				float direction = 1;
 
-				if ((i % 2) == 0) {
+				if ((i % 2) == 0)
+				{
 					direction = -1;
 				}
 

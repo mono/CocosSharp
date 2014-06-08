@@ -54,7 +54,8 @@ namespace CocosSharp
 		{
 			InnerActionState.Step (dt);
 
-			if (InnerActionState.IsDone) {
+			if (InnerActionState.IsDone)
+			{
 				float diff = InnerActionState.Elapsed - InnerActionState.Duration;
 				InnerActionState = (CCActionIntervalState)InnerAction.StartAction (Target);
 				InnerActionState.Step (0f);

@@ -24,7 +24,8 @@
 			: base (action, target)
 		{	
 			CCGridBase pGrid = Target.Grid;
-			if (pGrid != null && pGrid.Active) {
+			if (pGrid != null && pGrid.Active)
+			{
 				pGrid.Active = false;
 			}
 		}

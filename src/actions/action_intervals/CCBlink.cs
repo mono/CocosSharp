@@ -43,7 +43,8 @@
 
 		public override void Update (float time)
 		{
-			if (Target != null && !IsDone) {
+			if (Target != null && !IsDone)
+			{
 				float slice = 1.0f / Times;
 				// float m = fmodf(time, slice);
 				float m = time % slice;

@@ -41,8 +41,10 @@ namespace CocosSharp
 			var sinTheta = (float)Math.Sin (theta);
 			var cosTheta = (float)Math.Cos (theta);
 
-			for (int i = 0; i <= GridSize.X; ++i) {
-				for (int j = 0; j <= GridSize.Y; ++j) {
+			for (int i = 0; i <= GridSize.X; ++i)
+			{
+				for (int j = 0; j <= GridSize.Y; ++j)
+				{
 					// Get original vertex
 					CCVertex3F p = OriginalVertex (i, j);
 
@@ -54,9 +56,12 @@ namespace CocosSharp
 
 					// If beta > PI then we've wrapped around the cone
 					// Reduce the radius to stop these points interfering with others
-					if (beta <= MathHelper.Pi) {
+					if (beta <= MathHelper.Pi)
+					{
 						p.X = (r * (float)Math.Sin (beta));
-					} else {
+					}
+					else
+					{
 						// Force X = 0 to stop wrapped
 						// points
 						p.X = 0;
@@ -70,7 +75,8 @@ namespace CocosSharp
 
 					//    Stop z coord from dropping beneath underlying page in a transition
 					// issue #751
-					if (p.Z < 0.5f) {
+					if (p.Z < 0.5f)
+					{
 						p.Z = 0.5f;
 					}
 

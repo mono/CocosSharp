@@ -38,7 +38,8 @@ namespace CocosSharp
 		{
 			float f = time * 2;
 
-			if (f > 1) {
+			if (f > 1)
+			{
 				f -= 1;
 				f = 1 - f;
 			}

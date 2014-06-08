@@ -32,7 +32,8 @@ namespace CocosSharp
 			PercentFrom = ((CCProgressTimer)(target)).Percentage;
 			// XXX: Is this correct ?
 			// Adding it to support CCRepeat
-			if (PercentFrom == 100) {
+			if (PercentFrom == 100)
+			{
 				PercentFrom = 0;
 			}
 		}

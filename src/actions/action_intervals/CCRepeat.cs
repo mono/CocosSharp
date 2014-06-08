@@ -20,7 +20,8 @@ namespace CocosSharp
 
 			ActionInstant = action is CCActionInstant;
 			//an instant action needs to be executed one time less in the update method since it uses startWithTarget to execute the action
-			if (ActionInstant) {
+			if (ActionInstant)
+			{
 				Times -= 1;
 			}
 			Total = 0;
@@ -79,8 +80,10 @@ namespace CocosSharp
 		// container action like Repeat, Sequence, AccelDeccel, etc..
 		public override void Update (float time)
 		{
-			if (time >= NextDt) {
-				while (time > NextDt && Total < Times) {
+			if (time >= NextDt)
+			{
+				while (time > NextDt && Total < Times)
+				{
 					InnerActionState.Update (1.0f);
 					Total++;
 
@@ -90,22 +93,29 @@ namespace CocosSharp
 				}
 
 				// fix for issue #1288, incorrect end value of repeat
-				if (time >= 1.0f && Total < Times) {
+				if (time >= 1.0f && Total < Times)
+				{
 					Total++;
 				}
 
 				// don't set an instant action back or update it, it has no use because it has no duration
-				if (!ActionInstant) {
-					if (Total == Times) {
+				if (!ActionInstant)
+				{
+					if (Total == Times)
+					{
 						InnerActionState.Update (1f);
 						InnerActionState.Stop ();
-					} else {
+					}
+					else
+					{
 						// issue #390 prevent jerk, use right update
 						InnerActionState.Update (time - (NextDt - InnerAction.Duration / Duration));
 					}
 
 				}
-			} else {
+			}
+			else
+			{
 				InnerActionState.Update ((time * Times) % 1.0f);
 			}
 		}

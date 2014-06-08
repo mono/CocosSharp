@@ -39,7 +39,8 @@
 			: base (action, target)
 		{	
 
-			if (!(target is CCSprite)) {
+			if (!(target is CCSprite))
+			{
 				throw (new System.NotSupportedException ("FlipX and FlipY actions only work on CCSprite instances."));
 			}
 			((CCSprite)(target)).FlipY = action.FlipY;		

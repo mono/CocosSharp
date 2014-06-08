@@ -37,11 +37,15 @@ namespace CocosSharp
 	{
 		CCGrid3D grid3D;
 
-		public override CCGridBase Grid {
+		public override CCGridBase Grid 
+        {
 			get {
-				if (Target != null && !Target.ContentSize.Equals (CCSize.Zero)) {
+				if (Target != null && !Target.ContentSize.Equals (CCSize.Zero))
+				{
 					grid3D = new CCGrid3D (GridSize, Target.ContentSize.PointsToPixels ());
-				} else {
+				} 
+                else 
+                {
 					grid3D = new CCGrid3D (GridSize, Director.WindowSizeInPixels);
 					grid3D.Director = Director;
 				}

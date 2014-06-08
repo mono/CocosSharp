@@ -49,7 +49,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (Target != null) {
+			if (Target != null)
+			{
 				// Is % equal to fmodf()???
 				float frac = (time * Jumps) % 1f;
 				float y = Height * 4f * frac * (1f - frac);

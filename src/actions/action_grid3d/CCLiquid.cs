@@ -40,8 +40,10 @@ namespace CocosSharp
 		{
 			int i, j;
 
-			for (i = 1; i < GridSize.X; ++i) {
-				for (j = 1; j < GridSize.Y; ++j) {
+			for (i = 1; i < GridSize.X; ++i)
+			{
+				for (j = 1; j < GridSize.Y; ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 					v.X = (v.X +
 					((float)Math.Sin (time * (float)Math.PI * Waves * 2 + v.X * .01f) * Amplitude *

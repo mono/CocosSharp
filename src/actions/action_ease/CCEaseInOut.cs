@@ -38,9 +38,12 @@ namespace CocosSharp
 			float actionRate = Rate;
 			time *= 2;
 
-			if (time < 1) {
+			if (time < 1)
+			{
 				InnerActionState.Update (0.5f * (float)Math.Pow (time, actionRate));
-			} else {
+			}
+			else
+			{
 				InnerActionState.Update (1.0f - 0.5f * (float)Math.Pow (2 - time, actionRate));
 			}        
 		}

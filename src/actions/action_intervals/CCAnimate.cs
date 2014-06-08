@@ -33,7 +33,8 @@ namespace CocosSharp
 
 			//TODO: CCARRAY_VERIFY_TYPE(pFrames, CCAnimationFrame *);
 
-			foreach (var pObj in pFrames) {
+			foreach (var pObj in pFrames)
+			{
 				var frame = (CCAnimationFrame)pObj;
 				float value = (accumUnitsOfTime * newUnitOfTimeValue) / singleDuration;
 				accumUnitsOfTime += frame.DelayUnits;
@@ -57,10 +58,13 @@ namespace CocosSharp
 
 			//TODO: CCARRAY_VERIFY_TYPE(pOldArray, CCAnimationFrame*);
 
-			if (pOldArray.Count > 0) {
-				for (int i = pOldArray.Count - 1; i >= 0; i--) {
+			if (pOldArray.Count > 0)
+			{
+				for (int i = pOldArray.Count - 1; i >= 0; i--)
+				{
 					var pElement = (CCAnimationFrame)pOldArray [i];
-					if (pElement == null) {
+					if (pElement == null)
+					{
 						break;
 					}
 
@@ -96,7 +100,8 @@ namespace CocosSharp
 
 			OriginalFrame = null;
 
-			if (Animation.RestoreOriginalFrame) {
+			if (Animation.RestoreOriginalFrame)
+			{
 				OriginalFrame = pSprite.DisplayFrame;
 			}
 
@@ -106,7 +111,8 @@ namespace CocosSharp
 
 		public override void Stop ()
 		{
-			if (Animation.RestoreOriginalFrame && Target != null) {
+			if (Animation.RestoreOriginalFrame && Target != null)
+			{
 				((CCSprite)(Target)).DisplayFrame = OriginalFrame;
 			}
 
@@ -116,12 +122,14 @@ namespace CocosSharp
 		public override void Update (float time)
 		{
 			// if t==1, ignore. Animation should finish with t==1
-			if (time < 1.0f) {
+			if (time < 1.0f)
+			{
 				time *= Animation.Loops;
 
 				// new loop?  If so, reset frame counter
 				var loopNumber = (uint)time;
-				if (loopNumber > ExecutedLoops) {
+				if (loopNumber > ExecutedLoops)
+				{
 					NextFrame = 0;
 					ExecutedLoops++;
 				}
@@ -133,24 +141,29 @@ namespace CocosSharp
 			var frames = Animation.Frames;
 			int numberOfFrames = frames.Count;
 
-			for (int i = NextFrame; i < numberOfFrames; i++) {
+			for (int i = NextFrame; i < numberOfFrames; i++)
+			{
 				float splitTime = SplitTimes [i];
 
-				if (splitTime <= time) {
+				if (splitTime <= time)
+				{
 					var frame = (CCAnimationFrame)frames [i];
 					var frameToDisplay = frame.SpriteFrame;
-					if (frameToDisplay != null) {
+					if (frameToDisplay != null)
+					{
 						((CCSprite)Target).DisplayFrame = frameToDisplay;
 					}
 
 					var dict = frame.UserInfo;
-					if (dict != null) {
+					if (dict != null)
+					{
 						//TODO: [[NSNotificationCenter defaultCenter] postNotificationName:CCAnimationFrameDisplayedNotification object:target_ userInfo:dict];
 					}
 					NextFrame = i + 1;
 				}
 				// Issue 1438. Could be more than one frame per tick, due to low frame rate or frame delta < 1/FPS
-				else {
+				else
+				{
 					break;
 				}
 			}

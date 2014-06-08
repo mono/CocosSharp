@@ -35,7 +35,8 @@
 			: base (action, target)
 		{	
 			CCGridBase grid = Target.Grid;
-			if (grid != null && grid.Active) {
+			if (grid != null && grid.Active)
+			{
 				grid.ReuseGrid += action.Times;
 			}
 		}

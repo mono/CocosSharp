@@ -24,7 +24,7 @@ namespace CocosSharp
 		#region Constructors
 
 		public CCOrbitCamera (float t, float radius, float deltaRadius, float angleZ, float deltaAngleZ, float angleX,
-		                           float deltaAngleX) : base (t)
+		                      float deltaAngleX) : base (t)
 		{
 			Radius = radius;
 			DeltaRadius = deltaRadius;
@@ -85,7 +85,8 @@ namespace CocosSharp
 			RadDeltaX = CCMacros.CCDegreesToRadians (DeltaAngleX);
 
 			// Only calculate the SpericalRadius when needed.
-			if (float.IsNaN (Radius) || float.IsNaN (AngleZ) || float.IsNaN (AngleX)) {
+			if (float.IsNaN (Radius) || float.IsNaN (AngleZ) || float.IsNaN (AngleX))
+			{
 				float r, zenith, azimuth;
 				SphericalRadius (out r, out zenith, out azimuth);
 

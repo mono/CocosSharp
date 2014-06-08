@@ -68,8 +68,10 @@ namespace CocosSharp
 		{
 			int i, j;
 
-			for (i = 0; i < GridSize.X; i++) {
-				for (j = 0; j < GridSize.Y; j++) {
+			for (i = 0; i < GridSize.X; i++)
+			{
+				for (j = 0; j < GridSize.Y; j++)
+				{
 					CCQuad3 coords = OriginalTile (i, j);
 					CCVertex3F bl = coords.BottomLeft;
 					CCVertex3F br = coords.BottomRight;

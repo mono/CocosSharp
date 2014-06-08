@@ -9,7 +9,8 @@ namespace CocosSharp
 
 		public CCFlipX3D (float duration, CCGridSize gridSize) : base (duration, gridSize)
 		{
-			if (gridSize.X != 1 || gridSize.Y != 1) {
+			if (gridSize.X != 1 || gridSize.Y != 1)
+			{
 				// Grid size must be (1,1)
 				Debug.Assert (false);
 			}
@@ -55,14 +56,17 @@ namespace CocosSharp
 			float x;
 			CCGridSize a, b, c, d;
 
-			if (x0 > x1) {
+			if (x0 > x1)
+			{
 				// Normal Grid
 				a = new CCGridSize (0, 0);
 				b = new CCGridSize (0, 1);
 				c = new CCGridSize (1, 0);
 				d = new CCGridSize (1, 1);
 				x = x0;
-			} else {
+			}
+			else
+			{
 				// Reversed Grid
 				c = new CCGridSize (0, 0);
 				d = new CCGridSize (0, 1);

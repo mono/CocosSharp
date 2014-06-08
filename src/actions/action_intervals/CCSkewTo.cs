@@ -55,35 +55,45 @@ namespace CocosSharp
 
 			StartSkewX = target.SkewX;
 
-			if (StartSkewX > 0) {
+			if (StartSkewX > 0)
+			{
 				StartSkewX = StartSkewX % 180f;
-			} else {
+			}
+			else
+			{
 				StartSkewX = StartSkewX % -180f;
 			}
 
 			DeltaX = EndSkewX - StartSkewX;
 
-			if (DeltaX > 180) {
+			if (DeltaX > 180)
+			{
 				DeltaX -= 360;
 			}
-			if (DeltaX < -180) {
+			if (DeltaX < -180)
+			{
 				DeltaX += 360;
 			}
 
 			StartSkewY = target.SkewY;
 
-			if (StartSkewY > 0) {
+			if (StartSkewY > 0)
+			{
 				StartSkewY = StartSkewY % 360f;
-			} else {
+			}
+			else
+			{
 				StartSkewY = StartSkewY % -360f;
 			}
 
 			DeltaY = EndSkewY - StartSkewY;
 
-			if (DeltaY > 180) {
+			if (DeltaY > 180)
+			{
 				DeltaY -= 360;
 			}
-			if (DeltaY < -180) {
+			if (DeltaY < -180)
+			{
 				DeltaY += 360;
 			}
 		}

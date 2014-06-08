@@ -47,16 +47,20 @@ namespace CocosSharp
 			int i, j;
 			float ampRate = AmplitudeRate;
 
-			for (i = 0; i < GridSize.X + 1; ++i) {
-				for (j = 0; j < GridSize.Y + 1; ++j) {
+			for (i = 0; i < GridSize.X + 1; ++i)
+			{
+				for (j = 0; j < GridSize.Y + 1; ++j)
+				{
 					CCVertex3F v = OriginalVertex (i, j);
 
-					if (Vertical) {
+					if (Vertical)
+					{
 						v.X = (v.X +
 						((float)Math.Sin (time * (float)Math.PI * Waves * 2 + v.Y * .01f) * Amplitude * ampRate));
 					}
 
-					if (Horizontal) {
+					if (Horizontal)
+					{
 						v.Y = (v.Y +
 						((float)Math.Sin (time * (float)Math.PI * Waves * 2 + v.X * .01f) * Amplitude * ampRate));
 					}

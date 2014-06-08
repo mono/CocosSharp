@@ -36,7 +36,8 @@ namespace CocosSharp
 
 		public override void Update (float time)
 		{
-			if (Target != null) {
+			if (Target != null)
+			{
 				CCPoint currentPos = Target.Position;
 
 				CCPoint newPos = StartPosition + PositionDelta * time;
