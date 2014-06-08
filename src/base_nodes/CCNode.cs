@@ -1297,22 +1297,22 @@ namespace CocosSharp
 				ActionManager.RemoveAction(actionState);
 		}
 
-		public void StopActionByTag(int tag)
+		public void StopAction(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-            ActionManager.RemoveActionByTag(tag, this);
+            ActionManager.RemoveAction(tag, this);
         }
 
-        public CCAction GetActionByTag(int tag)
+        public CCAction GetAction(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-            return ActionManager.GetActionByTag(tag, this);
+            return ActionManager.GetAction(tag, this);
         }
 
-        public CCActionState GetActionStateByTag(int tag)
+        public CCActionState GetActionState(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
-            return ActionManager.GetActionStateByTag(tag, this);
+            return ActionManager.GetActionState(tag, this);
         }
 
         public int NumberOfRunningActions

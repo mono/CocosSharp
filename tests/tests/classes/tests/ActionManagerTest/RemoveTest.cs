@@ -47,7 +47,7 @@ namespace tests
         public void stopAction()
         {
             CCNode pSprite = GetChildByTag(kTagGrossini);
-            pSprite.StopActionByTag((int)KTag.kTagSequence);
+            pSprite.StopAction((int)KTag.kTagSequence);
         }
     }
 }

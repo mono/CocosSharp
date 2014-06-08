@@ -50,7 +50,7 @@ namespace CocosSharp
 
 		#endregion Cleaning up
 
-		public CCAction GetActionByTag(int tag, CCNode target)
+		public CCAction GetAction(int tag, CCNode target)
 		{
 			Debug.Assert(tag != (int)CCActionTag.Invalid);
 
@@ -83,7 +83,7 @@ namespace CocosSharp
 			return null;
 		}
 
-		public CCActionState GetActionStateByTag(int tag, CCNode target)
+		public CCActionState GetActionState(int tag, CCNode target)
 		{
 			Debug.Assert(tag != (int)CCActionTag.Invalid);
 
@@ -395,7 +395,7 @@ namespace CocosSharp
 			}
 		}
 
-		public void RemoveActionByTag(int tag, CCNode target)
+		public void RemoveAction(int tag, CCNode target)
 		{
 			Debug.Assert((tag != (int)CCActionTag.Invalid));
 			Debug.Assert(target != null);

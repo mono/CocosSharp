@@ -125,9 +125,9 @@ namespace tests
         public void testStopAction(float dt)
         {
             Unschedule(testStopAction);
-            m_kathia.StopActionByTag(1);
-            m_tamara.StopActionByTag(1);
-            m_grossini.StopActionByTag(1);
+            m_kathia.StopAction(1);
+            m_tamara.StopAction(1);
+            m_grossini.StopAction(1);
         }
     }
 
