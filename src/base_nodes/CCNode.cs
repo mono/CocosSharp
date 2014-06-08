@@ -1332,6 +1332,12 @@ namespace CocosSharp
             return ActionManager.GetActionByTag(tag, this);
         }
 
+        public CCActionState GetActionStateByTag(int tag)
+        {
+            Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
+            return ActionManager.GetActionStateByTag(tag, this);
+        }
+
         public int NumberOfRunningActions
         {
 			get 
