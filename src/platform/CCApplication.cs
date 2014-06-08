@@ -492,7 +492,6 @@ namespace CocosSharp
             PurgeTextureCache();
 
             CCLabelBMFont.PurgeCachedData();
-            CCDrawManager.PurgeDrawManager();
         }
 
         #endregion Cleaning up
