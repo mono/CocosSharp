@@ -9,7 +9,7 @@ namespace spine_cocossharp
 {
 	class Program : NSApplicationDelegate 
 	{
-		Game1 game;
+		//Game1 game;
 
 		static void Main (string[] args)
 		{
@@ -25,8 +25,10 @@ namespace spine_cocossharp
 
 		public override void FinishedLaunching (NSObject notification)
 		{
-			game = new Game1();
-			game.Run();
+			CCApplication sharedApp = CCApplication.SharedApplication;
+			sharedApp.ApplicationDelegate = new AppDelegate();
+
+			CCApplication.SharedApplication.StartGame();
 		}
 
 		public override bool ApplicationShouldTerminateAfterLastWindowClosed (NSApplication sender)

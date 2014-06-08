@@ -17,7 +17,7 @@ namespace spine_cocossharp
         public GoblinLayer()
         {
 
-            CCSize windowSize = CCDirector.SharedDirector.WinSize;
+			CCSize windowSize = Director.WindowSizeInPoints;
 
             var labelBones = new CCLabelTtf("B = Toggle Debug Bones", "arial", 12);
             labelBones.Position = new CCPoint(15, windowSize.Height - 10);
@@ -91,7 +91,8 @@ namespace spine_cocossharp
                         skeletonNode.SetSkin("goblingirl");
                     return true;
                 };
-            EventDispatcher.AddEventListener(listener, this);
+
+			Director.EventDispatcher.AddEventListener(listener, this);
 
             var keyListener = new CCEventListenerKeyboard();
             keyListener.OnKeyPressed = (keyEvent) =>
@@ -119,7 +120,7 @@ namespace spine_cocossharp
                         case CCKeys.A:
                             if (isMoving)
                             {
-                                ActionManager.RemoveAction(skeletonActionState);
+								StopAction(skeletonActionState);
                                 isMoving = false;
                             }
                             else
@@ -129,12 +130,12 @@ namespace spine_cocossharp
                             }
                             break;
                         case CCKeys.P:
-                            CCDirector.SharedDirector.ReplaceScene(SpineBoyLayer.Scene);
+							Director.ReplaceScene(SpineBoyLayer.Scene);
                             break;
                     }
 
                 };
-            EventDispatcher.AddEventListener(keyListener, this);
+			Director.EventDispatcher.AddEventListener(keyListener, this);
         }
 
         public void Start(AnimationState state, int trackIndex)

@@ -5,100 +5,84 @@ using CocosDenshion;
 
 namespace spine_cocossharp
 {
-    public class AppDelegate : CCApplication
-    {
+	public class AppDelegate : CCApplicationDelegate
+	{
 
-        int preferredWidth;
-        int preferredHeight;
+		int preferredWidth;
+		int preferredHeight;
 
-        public AppDelegate(Game game, GraphicsDeviceManager graphics = null)
-            : base(game, graphics)
-        {
+		/// <summary>
+		///  Implement CCDirector and CCScene init code here.
+		/// </summary>
+		/// <returns>
+		///  true  Initialize success, app continue.
+		///  false Initialize failed, app terminate.
+		/// </returns>
+		public override void ApplicationDidFinishLaunching(CCApplication application)
+		{
+			preferredWidth = 1024;
+			preferredHeight = 768;
 
-            preferredWidth = 1024;
-            preferredHeight = 768;
-            PreferredBackBufferWidth = preferredWidth;
-            PreferredBackBufferHeight = preferredHeight;
+			application.PreferredBackBufferWidth = preferredWidth;
+			application.PreferredBackBufferHeight = preferredHeight;
 
 
-            PreferMultiSampling = true;
+			application.PreferMultiSampling = true;
+			application.ContentRootDirectory = "Content";
 
-        }
+			//CCSpriteFontCache.FontScale = 0.5f;
+			//CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
+			//CCSpriteFontCache.RegisterFont("arial", 12, 24);
 
-        /// <summary>
-        /// Implement for initialize OpenGL instance, set source path, etc...
-        /// </summary>
-        public override bool InitInstance()
-        {
-            return base.InitInstance();
-        }
+			CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
+			director.DisplayStats = true;
+			director.AnimationInterval = 1.0 / 60;
 
-        /// <summary>
-        ///  Implement CCDirector and CCScene init code here.
-        /// </summary>
-        /// <returns>
-        ///  true  Initialize success, app continue.
-        ///  false Initialize failed, app terminate.
-        /// </returns>
-        public override bool ApplicationDidFinishLaunching()
-        {
+			CCSize designSize = new CCSize(480, 320);
 
-            ContentRootDirectory = "Content";
+			if (CCDrawManager.FrameSize.Height > 320)
+			{
+				//CCSize resourceSize = new CCSize(960, 640);
+				CCSize resourceSize = new CCSize(480, 320);
+				application.ContentSearchPaths.Add("hd");
+				director.ContentScaleFactor = resourceSize.Height / designSize.Height;
+			}
 
-            //CCSpriteFontCache.FontScale = 0.5f;
-            //CCSpriteFontCache.RegisterFont("MarkerFelt", 22);
-            //CCSpriteFontCache.RegisterFont("arial", 12, 24);
+			CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
 
-            CCDirector director = CCDirector.SharedDirector;
-            director.DisplayStats = true;
-            director.AnimationInterval = 1.0 / 60;
+			// turn on display FPS
+			director.DisplayStats = true;
 
-            CCSize designSize = new CCSize(480, 320);
+			// set FPS. the default value is 1.0/60 if you don't call this
+			director.AnimationInterval = 1.0 / 60;
 
-            if (CCDrawManager.FrameSize.Height > 320)
-            {
-                //CCSize resourceSize = new CCSize(960, 640);
-                CCSize resourceSize = new CCSize(480, 320);
-                ContentSearchPaths.Add("hd");
-                director.ContentScaleFactor = resourceSize.Height / designSize.Height;
-            }
+			CCScene pScene = GoblinLayer.Scene;
 
-            CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
+			director.RunWithScene(pScene);
+		}
 
-            // turn on display FPS
-            director.DisplayStats = true;
+		/// <summary>
+		/// The function be called when the application enters the background
+		/// </summary>
+//		public override void ApplicationDidEnterBackground()
+//		{
+//			// stop all of the animation actions that are running.
+//			CCDirector.SharedDirector.Pause();
+//
+//			// if you use SimpleAudioEngine, your music must be paused
+//			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = true;
+//		}
 
-            // set FPS. the default value is 1.0/60 if you don't call this
-            director.AnimationInterval = 1.0 / 60;
-
-            CCScene pScene = GoblinLayer.Scene;
-
-            director.RunWithScene(pScene);
-            return true;
-        }
-
-        /// <summary>
-        /// The function be called when the application enters the background
-        /// </summary>
-        public override void ApplicationDidEnterBackground()
-        {
-            // stop all of the animation actions that are running.
-            CCDirector.SharedDirector.Pause();
-
-            // if you use SimpleAudioEngine, your music must be paused
-            //CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = true;
-        }
-
-        /// <summary>
-        /// The function be called when the application enter foreground  
-        /// </summary>
-        public override void ApplicationWillEnterForeground()
-        {
-            CCDirector.SharedDirector.Resume();
-
-            // if you use SimpleAudioEngine, your background music track must resume here. 
-            //CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = false;
-
-        }
-    }
+		/// <summary>
+		/// The function be called when the application enter foreground  
+		/// </summary>
+//		public override void ApplicationWillEnterForeground()
+//		{
+//			CCDirector.SharedDirector.Resume();
+//
+//			// if you use SimpleAudioEngine, your background music track must resume here. 
+//			//CCSimpleAudioEngine.SharedEngine.PauseBackgroundMusic = false;
+//
+//		}
+	}
 }

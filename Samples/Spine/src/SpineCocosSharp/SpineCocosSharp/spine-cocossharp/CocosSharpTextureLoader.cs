@@ -16,7 +16,7 @@ namespace CocosSharp.Spine
 
 		public void Load (AtlasPage page, String path) 
 		{
-            var ccTexture = CCTextureCache.Instance.AddImage(path);
+			var ccTexture = CCApplication.SharedApplication.TextureCache.AddImage(path);
 
             if (texture == null)
                 using (Stream stream = CCFileUtils.GetFileStream(path))

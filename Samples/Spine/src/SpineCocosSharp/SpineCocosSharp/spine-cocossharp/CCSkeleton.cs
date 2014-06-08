@@ -97,7 +97,7 @@ namespace CocosSharp.Spine
         public CCSkeleton(string skeletonDataFile, Atlas atlas, float scale = 0)
         {
             var json = new SkeletonJson(atlas);
-            json.Scale = scale == 0 ? (1 / CCDirector.SharedDirector.ContentScaleFactor) : scale;
+			json.Scale = scale == 0 ? (1 / Director.ContentScaleFactor) : scale;
             SkeletonData skeletonData = json.ReadSkeletonData(skeletonDataFile);
             SetSkeletonData(skeletonData, true);
         }
@@ -114,7 +114,7 @@ namespace CocosSharp.Spine
 
             SkeletonJson json = new SkeletonJson(atlas);
 
-            json.Scale = scale == 0 ? (1 / CCDirector.SharedDirector.ContentScaleFactor) : scale;
+            json.Scale = scale == 0 ? (1 / Director.ContentScaleFactor) : scale;
 
             using (StreamReader skeletonDataStream = new StreamReader(CCFileUtils.GetFileStream(skeletonDataFile)))
             {
