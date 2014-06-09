@@ -48,7 +48,7 @@ namespace CocosSharp
 			IsNeedCleanUp = action.IsNeedCleanUp;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			Target.RemoveFromParent (IsNeedCleanUp);
 		}

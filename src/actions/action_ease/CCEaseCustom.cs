@@ -39,7 +39,7 @@ namespace CocosSharp
 			EaseFunc = action.EaseFunc;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			InnerActionState.Update (EaseFunc (time));
 		}

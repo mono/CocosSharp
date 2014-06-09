@@ -49,7 +49,7 @@ namespace CocosSharp
 			ActionState.Stop ();
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			ActionState.Update (time);
 		}

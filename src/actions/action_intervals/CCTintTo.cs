@@ -39,7 +39,7 @@ namespace CocosSharp
 			}
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			var protocol = Target as ICCColor;
 			if (protocol != null)

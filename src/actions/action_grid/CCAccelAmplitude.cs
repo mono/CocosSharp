@@ -48,7 +48,7 @@ namespace CocosSharp
 			OtherActionState = (CCAmplitudeActionState)action.OtherAction.StartAction (target);
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			OtherActionState.AmplitudeRate = (float)Math.Pow (time, Rate);
 			OtherActionState.Update (time);

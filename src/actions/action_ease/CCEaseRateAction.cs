@@ -38,7 +38,7 @@ namespace CocosSharp
 			Rate = action.Rate;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			InnerActionState.Update (CCEaseMath.ExponentialOut (time));
 		}

@@ -845,7 +845,7 @@ namespace CocosSharp
 			SpriteFrame = action.SpriteFrame;
 		}
 
-		public override void Update(float time)
+		protected internal override void Update(float time)
 		{
 			((CCSprite) Target).DisplayFrame = SpriteFrame;
 		}
@@ -898,7 +898,7 @@ namespace CocosSharp
 				Gain = action.Gain;
 			}
 
-			public override void Update(float time)
+			protected internal override void Update(float time)
 			{
 				CCSimpleAudioEngine.SharedEngine.PlayEffect(SoundFile);
 			}
@@ -951,7 +951,7 @@ namespace CocosSharp
                 diffAngle = new CCPoint(DstAngle - startAngle.X, DstAngle - startAngle.Y);
 			}
 
-			public override void Update(float time)
+			protected internal override void Update(float time)
 			{
                 Target.RotationX = startAngle.X + (diffAngle.X * time);
                 Target.RotationY = startAngle.Y + (diffAngle.Y * time);
@@ -1007,7 +1007,7 @@ namespace CocosSharp
 				diffAngle = DstAngle - startAngle;
 			}
 
-			public override void Update(float time)
+			protected internal override void Update(float time)
 			{
 				Target.RotationX = startAngle + (diffAngle * time);
 			}
@@ -1060,7 +1060,7 @@ namespace CocosSharp
 				diffAngle = DstAngle - startAngle;
 			}
 
-			public override void Update(float time)
+			protected internal override void Update(float time)
 			{
 				Target.RotationY = startAngle + (diffAngle * time);
 			}
@@ -1100,7 +1100,7 @@ namespace CocosSharp
 				: base(action, target)
 			{	}
 
-			public override void Update(float time)
+			protected internal override void Update(float time)
 			{
 				if (time < 0)
 				{

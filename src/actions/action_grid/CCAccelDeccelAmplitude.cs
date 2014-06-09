@@ -34,7 +34,7 @@ namespace CocosSharp
 		{
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			float f = time * 2;
 

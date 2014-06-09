@@ -61,7 +61,7 @@ namespace CocosSharp
 			WindowSizeInPoints = Director.WindowSizeInPixels;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			int j;
 

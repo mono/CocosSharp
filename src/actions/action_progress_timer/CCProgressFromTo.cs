@@ -41,7 +41,7 @@ namespace CocosSharp
 			((CCProgressTimer)(Target)).Percentage = PercentFrom;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			((CCProgressTimer)(Target)).Percentage = PercentFrom + (PercentTo - PercentFrom) * time;
 		}

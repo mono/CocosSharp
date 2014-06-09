@@ -35,7 +35,7 @@
 		{
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			var pRGBAProtocol = Target as ICCColor;
 			if (pRGBAProtocol != null)

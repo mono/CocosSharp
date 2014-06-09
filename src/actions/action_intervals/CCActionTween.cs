@@ -71,7 +71,7 @@ namespace CocosSharp
 			Delta = To - From;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			float amt = To - Delta * (1 - time);
 			if (TweenAction != null)

@@ -98,7 +98,7 @@ namespace CocosSharp
 			}
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			Target.SkewX = StartSkewX + DeltaX * time;
 			Target.SkewY = StartSkewY + DeltaY * time;

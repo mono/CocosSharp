@@ -78,7 +78,7 @@ namespace CocosSharp
 
 		// issue #80. Instead of hooking step:, hook update: since it can be called by any
 		// container action like Repeat, Sequence, AccelDeccel, etc..
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			if (time >= NextDt)
 			{

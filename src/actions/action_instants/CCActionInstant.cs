@@ -45,7 +45,7 @@ namespace CocosSharp
 			Update (1);
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			// ignore
 		}

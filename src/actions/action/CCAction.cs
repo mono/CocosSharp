@@ -98,7 +98,7 @@ namespace CocosSharp
 		/// 0 means that the action just started
 		/// 0.5 means that the action is in the middle
 		/// 1 means that the action is over</param>
-		public virtual void Update (float time)
+		protected internal virtual void Update (float time)
 		{
 #if DEBUG
 			CCLog.Log ("[Action State update]. override me");

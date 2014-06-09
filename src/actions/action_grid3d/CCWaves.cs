@@ -42,7 +42,7 @@ namespace CocosSharp
 			Horizontal = action.Horizontal;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			int i, j;
 			float ampRate = AmplitudeRate;

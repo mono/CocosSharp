@@ -47,7 +47,7 @@ namespace CocosSharp
 			PositionInPixels = action.Position * Director.ContentScaleFactor;
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			int i, j;
 			CCPoint avg = CCPoint.Zero;

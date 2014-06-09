@@ -48,7 +48,7 @@ namespace CocosSharp
 			base.Stop ();
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			InnerActionState.Update (time);
 		}

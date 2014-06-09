@@ -38,7 +38,7 @@ namespace CocosSharp
 		{
 		}
 
-		public override void Update (float time)
+		protected internal override void Update (float time)
 		{
 			float angle = (float)Math.PI * time; // 180 degrees
 			var mz = (float)Math.Sin (angle);
