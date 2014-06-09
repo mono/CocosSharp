@@ -79,6 +79,42 @@ namespace CocosSharp
             return CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
         }
 
+		#region conversions with passed scale factor
+
+		public static CCRect PixelsToPoints(this CCRect r, float scaleFactor)
+		{
+			return new CCRect(r.Origin.X / scaleFactor, r.Origin.Y / scaleFactor, r.Size.Width / scaleFactor, r.Size.Height / scaleFactor);
+		}
+
+		public static CCRect PointsToPixels(this CCRect r, float scaleFactor)
+		{
+			return new CCRect(r.Origin.X * scaleFactor, r.Origin.Y * scaleFactor, r.Size.Width * scaleFactor, r.Size.Height * scaleFactor);
+		}
+
+		public static CCSize PixelsToPoints(this CCSize s, float scaleFactor)
+		{
+			return new CCSize(s.Width / scaleFactor, s.Height / scaleFactor);
+		}
+
+		public static CCSize PointsToPixels(this CCSize s, float scaleFactor)
+		{
+			return new CCSize(s.Width * scaleFactor, s.Height * scaleFactor);
+		}
+
+		public static CCPoint PixelsToPoints(this CCPoint p, float scaleFactor)
+		{
+			return new CCPoint(p.X / scaleFactor, p.Y / scaleFactor);
+		}
+
+		public static CCPoint PointsToPixels(this CCPoint p, float scaleFactor)
+		{
+			return new CCPoint(p.X * scaleFactor, p.Y * scaleFactor);
+		}
+
+		#endregion
+
+		#region scale factor from Director
+
         public static CCRect PixelsToPoints(this CCRect r)
         {
             var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
@@ -115,6 +151,7 @@ namespace CocosSharp
             return new CCPoint(p.X * cs, p.Y * cs);
         }
 
+		#endregion
 		internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4B color)
 		{
 			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
