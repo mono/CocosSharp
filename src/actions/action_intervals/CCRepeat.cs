@@ -70,7 +70,7 @@ namespace CocosSharp
 			InnerActionState = (CCFiniteTimeActionState)InnerAction.StartAction (target);
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			InnerActionState.Stop ();
 			base.Stop ();

@@ -69,7 +69,7 @@ namespace CocosSharp
 		/// It will set the 'Target' to null. 
 		/// IMPORTANT: You should never call this method manually. Instead, use: "target.StopAction(actionState);"
 		/// </summary>
-		public virtual void Stop ()
+		protected internal virtual void Stop ()
 		{
 			Target = null;
 		}

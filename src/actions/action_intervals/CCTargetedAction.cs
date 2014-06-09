@@ -44,7 +44,7 @@ namespace CocosSharp
 			ActionState = (CCFiniteTimeActionState)TargetedAction.StartAction (ForcedTarget);
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			ActionState.Stop ();
 		}

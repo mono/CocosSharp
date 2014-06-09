@@ -79,7 +79,7 @@ namespace CocosSharp
 			}
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			for (int i = 0; i < Actions.Length; i++)
 			{

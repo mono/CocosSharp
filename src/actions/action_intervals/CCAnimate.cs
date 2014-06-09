@@ -109,7 +109,7 @@ namespace CocosSharp
 			ExecutedLoops = 0;
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			if (Animation.RestoreOriginalFrame && Target != null)
 			{

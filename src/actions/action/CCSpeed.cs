@@ -50,7 +50,7 @@ namespace CocosSharp
 			Speed = action.Speed;
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			InnerActionState.Stop ();
 			base.Stop ();

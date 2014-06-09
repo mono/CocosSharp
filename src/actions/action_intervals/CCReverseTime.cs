@@ -43,7 +43,7 @@ namespace CocosSharp
 			OtherState = (CCFiniteTimeActionState)Other.StartAction (target);
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			OtherState.Stop ();
 		}

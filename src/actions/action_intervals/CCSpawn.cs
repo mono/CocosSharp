@@ -104,7 +104,7 @@ namespace CocosSharp
 			ActionStateTwo = (CCFiniteTimeActionState)ActionTwo.StartAction (target);
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			ActionStateOne.Stop ();
 			ActionStateTwo.Stop ();

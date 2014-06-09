@@ -52,7 +52,7 @@
 			}
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			Target.Visible = OriginalState;
 			base.Stop ();

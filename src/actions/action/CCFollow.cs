@@ -123,7 +123,7 @@ namespace CocosSharp
 			cachedHalfScreenSize = followAction.HalfScreenSize;
 		}
 
-		public override void Stop ()
+		protected internal override void Stop ()
 		{
 			Target = null;
 			base.Stop ();
