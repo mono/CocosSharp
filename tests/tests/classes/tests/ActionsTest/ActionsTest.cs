@@ -21,7 +21,7 @@ namespace tests
         ACTION_BLINK_LAYER,
         ACTION_FADE_LAYER,
         ACTION_TINT_LAYER,
-		ACTION_ANIMATE_LAYER,
+        ACTION_ANIMATE_LAYER,
         ACTION_SEQUENCE_LAYER,
         ACTION_SEQUENCE2_LAYER,
         ACTION_SPAWN_LAYER,
@@ -69,146 +69,146 @@ namespace tests
 
             switch (nIndex)
             {
-                case (int) ActionTest.ACTION_MANUAL_LAYER:
-                    pLayer = new ActionManual();
-                    break;
-                case (int) ActionTest.ACTION_MOVE_LAYER:
-                    pLayer = new ActionMove();
-                    break;
-                case (int) ActionTest.ACTION_SCALE_LAYER:
-                    pLayer = new ActionScale();
-                    break;
-                case (int) ActionTest.ACTION_ROTATE_LAYER:
-                    pLayer = new ActionRotate();
-                    break;
-                case (int) ActionTest.ACTION_SKEW_LAYER:
-                    pLayer = new ActionSkew();
-                    break;
-                case (int) ActionTest.ACTION_ROTATIONAL_SKEW_LAYER:
-                    pLayer = new ActionRotationalSkew();
-                    break;
-                case (int) ActionTest.ACTION_COMPARISON_SKEW_LAYER:
-                    pLayer = new ActionRotationalSkewVSStandardSkew();
-                    break;
-                case (int) ActionTest.ACTION_SKEWROTATE_LAYER:
-                    pLayer = new ActionSkewRotateScale();
-                    break;
-                case (int) ActionTest.ACTION_JUMP_LAYER:
-                    pLayer = new ActionJump();
-                    break;
-                case (int) ActionTest.ACTION_BEZIER_LAYER:
-                    pLayer = new ActionBezier();
-                    break;
-                case (int) ActionTest.ACTION_BLINK_LAYER:
-                    pLayer = new ActionBlink();
-                    break;
-                case (int) ActionTest.ACTION_FADE_LAYER:
-                    pLayer = new ActionFade();
-                    break;
-                case (int) ActionTest.ACTION_TINT_LAYER:
-                    pLayer = new ActionTint();
-                    break;
-                case (int) ActionTest.ACTION_ANIMATE_LAYER:
-                    pLayer = new ActionAnimate();
-                    break;
-                case (int) ActionTest.ACTION_SEQUENCE_LAYER:
-                    pLayer = new ActionSequence();
-                    break;
-                case (int) ActionTest.ACTION_SEQUENCE2_LAYER:
-                    pLayer = new ActionSequence2();
-                    break;
-                case (int) ActionTest.ACTION_SPAWN_LAYER:
-                    pLayer = new ActionSpawn();
-                    break;
-                case (int) ActionTest.ACTION_REVERSE:
-                    pLayer = new ActionReverse();
-                    break;
-                case (int) ActionTest.ACTION_DELAYTIME_LAYER:
-                    pLayer = new ActionDelayTime();
-                    break;
-                case (int) ActionTest.ACTION_REPEAT_LAYER:
-                    pLayer = new ActionRepeat();
-                    break;
-                case (int) ActionTest.ACTION_REPEATEFOREVER_LAYER:
-                    pLayer = new ActionRepeatForever();
-                    break;
-                case (int) ActionTest.ACTION_ROTATETOREPEATE_LAYER:
-                    pLayer = new ActionRotateToRepeat();
-                    break;
-                case (int) ActionTest.ACTION_ROTATEJERK_LAYER:
-                    pLayer = new ActionRotateJerk();
-                    break;
-                case (int) ActionTest.ACTION_CALLFUNC_LAYER:
-                    pLayer = new ActionCallFunc();
-                    break;
-                case (int) ActionTest.ACTION_CALLFUNCND_LAYER:
-                    pLayer = new ActionCallFuncND();
-                    break;
-                case (int) ActionTest.ACTION_REVERSESEQUENCE_LAYER:
-                    pLayer = new ActionReverseSequence();
-                    break;
-                case (int) ActionTest.ACTION_REVERSESEQUENCE2_LAYER:
-                    pLayer = new ActionReverseSequence2();
-                    break;
-                case (int)ActionTest.ACTION_RemoveSelfActions:
-                    pLayer = new RemoveSelfActions();
-                    break;
-                case (int) ActionTest.ACTION_ORBIT_LAYER:
-                    pLayer = new ActionOrbit();
-                    break;
-                case (int) ActionTest.ACTION_FLLOW_LAYER:
-                    pLayer = new ActionFollow();
-                    break;
-                case (int) ActionTest.ACTION_TARGETED_LAYER:
-                    pLayer = new ActionTargeted();
-                    break;
-                case (int) ActionTest.ACTION_ISSUE1305_LAYER:
-                    pLayer = new Issue1305();
-                    break;
-                case (int) ActionTest.ACTION_ISSUE1305_2_LAYER:
-                    pLayer = new Issue1305_2();
-                    break;
-                case (int) ActionTest.ACTION_ISSUE1288_LAYER:
-                    pLayer = new Issue1288();
-                    break;
-                case (int) ActionTest.ACTION_ISSUE1288_2_LAYER:
-                    pLayer = new Issue1288_2();
-                    break;
-                case (int) ActionTest.ACTION_ISSUE1327_LAYER:
-                    pLayer = new Issue1327();
-                    break;
-                case (int)ActionTest.ACTION_ISSUE1389_LAYER:
-                    pLayer = new Issue1389();
-                    break;
-                case (int) ActionTest.ACTION_CARDINALSPLINE_LAYER:
-                    pLayer = new ActionCardinalSpline();
-                    break;
-                case (int) ActionTest.ACTION_CATMULLROM_LAYER:
-                    pLayer = new ActionCatmullRom();
-                    break;
-                case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
-                    pLayer = new PauseResumeActions();
-                    break;
-                case (int)ActionTest.ACTION_ActionMoveStacked:
-                    pLayer = new ActionMoveStacked();
-                    break;
-                case (int)ActionTest.ACTION_ActionMoveJumpStacked:
-                    pLayer = new ActionMoveJumpStacked();
-                    break;
-                case (int)ActionTest.ACTION_ActionMoveBezierStacked:
-                    pLayer = new ActionMoveBezierStacked();
-                    break;
-                case (int)ActionTest.ACTION_ActionCatmullRomStacked:
-                    pLayer = new ActionCatmullRomStacked();
-                    break;
-                case (int)ActionTest.ACTION_ActionCardinalSplineStacked:
-                    pLayer = new ActionCardinalSplineStacked();
-                    break;
-                case (int)ActionTest.ACTION_PARALLEL:
-                    pLayer = new ActionParallel();
-                    break;
-                default:
-                    break;
+            case (int) ActionTest.ACTION_MANUAL_LAYER:
+                pLayer = new ActionManual();
+                break;
+            case (int) ActionTest.ACTION_MOVE_LAYER:
+                pLayer = new ActionMove();
+                break;
+            case (int) ActionTest.ACTION_SCALE_LAYER:
+                pLayer = new ActionScale();
+                break;
+            case (int) ActionTest.ACTION_ROTATE_LAYER:
+                pLayer = new ActionRotate();
+                break;
+            case (int) ActionTest.ACTION_SKEW_LAYER:
+                pLayer = new ActionSkew();
+                break;
+            case (int) ActionTest.ACTION_ROTATIONAL_SKEW_LAYER:
+                pLayer = new ActionRotationalSkew();
+                break;
+            case (int) ActionTest.ACTION_COMPARISON_SKEW_LAYER:
+                pLayer = new ActionRotationalSkewVSStandardSkew();
+                break;
+            case (int) ActionTest.ACTION_SKEWROTATE_LAYER:
+                pLayer = new ActionSkewRotateScale();
+                break;
+            case (int) ActionTest.ACTION_JUMP_LAYER:
+                pLayer = new ActionJump();
+                break;
+            case (int) ActionTest.ACTION_BEZIER_LAYER:
+                pLayer = new ActionBezier();
+                break;
+            case (int) ActionTest.ACTION_BLINK_LAYER:
+                pLayer = new ActionBlink();
+                break;
+            case (int) ActionTest.ACTION_FADE_LAYER:
+                pLayer = new ActionFade();
+                break;
+            case (int) ActionTest.ACTION_TINT_LAYER:
+                pLayer = new ActionTint();
+                break;
+            case (int) ActionTest.ACTION_ANIMATE_LAYER:
+                pLayer = new ActionAnimate();
+                break;
+            case (int) ActionTest.ACTION_SEQUENCE_LAYER:
+                pLayer = new ActionSequence();
+                break;
+            case (int) ActionTest.ACTION_SEQUENCE2_LAYER:
+                pLayer = new ActionSequence2();
+                break;
+            case (int) ActionTest.ACTION_SPAWN_LAYER:
+                pLayer = new ActionSpawn();
+                break;
+            case (int) ActionTest.ACTION_REVERSE:
+                pLayer = new ActionReverse();
+                break;
+            case (int) ActionTest.ACTION_DELAYTIME_LAYER:
+                pLayer = new ActionDelayTime();
+                break;
+            case (int) ActionTest.ACTION_REPEAT_LAYER:
+                pLayer = new ActionRepeat();
+                break;
+            case (int) ActionTest.ACTION_REPEATEFOREVER_LAYER:
+                pLayer = new ActionRepeatForever();
+                break;
+            case (int) ActionTest.ACTION_ROTATETOREPEATE_LAYER:
+                pLayer = new ActionRotateToRepeat();
+                break;
+            case (int) ActionTest.ACTION_ROTATEJERK_LAYER:
+                pLayer = new ActionRotateJerk();
+                break;
+            case (int) ActionTest.ACTION_CALLFUNC_LAYER:
+                pLayer = new ActionCallFunc();
+                break;
+            case (int) ActionTest.ACTION_CALLFUNCND_LAYER:
+                pLayer = new ActionCallFuncND();
+                break;
+            case (int) ActionTest.ACTION_REVERSESEQUENCE_LAYER:
+                pLayer = new ActionReverseSequence();
+                break;
+            case (int) ActionTest.ACTION_REVERSESEQUENCE2_LAYER:
+                pLayer = new ActionReverseSequence2();
+                break;
+            case (int)ActionTest.ACTION_RemoveSelfActions:
+                pLayer = new RemoveSelfActions();
+                break;
+            case (int) ActionTest.ACTION_ORBIT_LAYER:
+                pLayer = new ActionOrbit();
+                break;
+            case (int) ActionTest.ACTION_FLLOW_LAYER:
+                pLayer = new ActionFollow();
+                break;
+            case (int) ActionTest.ACTION_TARGETED_LAYER:
+                pLayer = new ActionTargeted();
+                break;
+            case (int) ActionTest.ACTION_ISSUE1305_LAYER:
+                pLayer = new Issue1305();
+                break;
+            case (int) ActionTest.ACTION_ISSUE1305_2_LAYER:
+                pLayer = new Issue1305_2();
+                break;
+            case (int) ActionTest.ACTION_ISSUE1288_LAYER:
+                pLayer = new Issue1288();
+                break;
+            case (int) ActionTest.ACTION_ISSUE1288_2_LAYER:
+                pLayer = new Issue1288_2();
+                break;
+            case (int) ActionTest.ACTION_ISSUE1327_LAYER:
+                pLayer = new Issue1327();
+                break;
+            case (int)ActionTest.ACTION_ISSUE1389_LAYER:
+                pLayer = new Issue1389();
+                break;
+            case (int) ActionTest.ACTION_CARDINALSPLINE_LAYER:
+                pLayer = new ActionCardinalSpline();
+                break;
+            case (int) ActionTest.ACTION_CATMULLROM_LAYER:
+                pLayer = new ActionCatmullRom();
+                break;
+            case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
+                pLayer = new PauseResumeActions();
+                break;
+            case (int)ActionTest.ACTION_ActionMoveStacked:
+                pLayer = new ActionMoveStacked();
+                break;
+            case (int)ActionTest.ACTION_ActionMoveJumpStacked:
+                pLayer = new ActionMoveJumpStacked();
+                break;
+            case (int)ActionTest.ACTION_ActionMoveBezierStacked:
+                pLayer = new ActionMoveBezierStacked();
+                break;
+            case (int)ActionTest.ACTION_ActionCatmullRomStacked:
+                pLayer = new ActionCatmullRomStacked();
+                break;
+            case (int)ActionTest.ACTION_ActionCardinalSplineStacked:
+                pLayer = new ActionCardinalSplineStacked();
+                break;
+            case (int)ActionTest.ACTION_PARALLEL:
+                pLayer = new ActionParallel();
+                break;
+            default:
+                break;
             }
 
             return pLayer;
@@ -260,7 +260,7 @@ namespace tests
             s_nActionIdx = -1;
             AddChild(NextAction());
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 
@@ -269,6 +269,14 @@ namespace tests
         protected CCSprite m_grossini;
         protected CCSprite m_kathia;
         protected CCSprite m_tamara;
+
+        CCLabelTtf titleLabel;
+        CCLabelTtf subtitleLabel;
+
+        CCMenu selectTestCaseMenu;
+        CCMenuItemImage backMenuItem;
+        CCMenuItemImage restartMenuItem;
+        CCMenuItemImage nextMenuItem;
 
         public virtual string title()
         {
@@ -280,86 +288,79 @@ namespace tests
             return "";
         }
 
-        public override void OnEnter()
+        public ActionsDemo()
         {
-            base.OnEnter();
-
-            // Or you can create an sprite using a filename. only PNG is supported now. Probably TIFF too
             m_grossini = new CCSprite(TestResource.s_pPathGrossini);
-
             m_tamara = new CCSprite(TestResource.s_pPathSister1);
-
             m_kathia = new CCSprite(TestResource.s_pPathSister2);
 
             AddChild(m_grossini, 1);
             AddChild(m_tamara, 2);
             AddChild(m_kathia, 3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 3);
-            m_tamara.Position = new CCPoint(s.Width / 2, 2 * s.Height / 3);
-            m_kathia.Position = new CCPoint(s.Width / 2, s.Height / 2);
-
-            // add title and subtitle
-            var str = title();
-            var pTitle = str;
-            var label = new CCLabelTtf(pTitle, "arial", 32);
-            AddChild(label, 1);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 30);
+            titleLabel = new CCLabelTtf(title(), "arial", 32);
+            AddChild(titleLabel, 1);
 
             var strSubtitle = subtitle();
-            if (! strSubtitle.Equals(""))
+            if (!strSubtitle.Equals(""))
             {
-                var l = new CCLabelTtf(strSubtitle, "arial", 16);
-                AddChild(l, 1);
-                l.Position = new CCPoint(s.Width / 2, s.Height - 60);
+                subtitleLabel = new CCLabelTtf(strSubtitle, "arial", 16);
+                AddChild(subtitleLabel, 1);   
             }
 
-            // add menu
-            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+            backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
+            restartMenuItem = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
+            nextMenuItem = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
 
-            var menu = new CCMenu(item1, item2, item3);
+            selectTestCaseMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem);
+            selectTestCaseMenu.Name = title();
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-			menu.Name = title ();
-			AddChild(menu, TestScene.MENU_LEVEL);
+            AddChild(selectTestCaseMenu, TestScene.MENU_LEVEL);
         }
 
-        public override void OnExit()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnExit();
+            base.RunningOnNewWindow(windowSize);
+
+            m_grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
+            m_tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
+            m_kathia.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 30);
+
+            if(subtitleLabel != null)
+                subtitleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 60);
+
+            selectTestCaseMenu.Position = new CCPoint(0, 0);
+            backMenuItem.Position = new CCPoint(windowSize.Width / 2 - 100, 30);
+            restartMenuItem.Position = new CCPoint(windowSize.Width / 2, 30);
+            nextMenuItem.Position = new CCPoint(windowSize.Width / 2 + 100, 30);
         }
 
         public void restartCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.RestartAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.NextAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.BackAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         public void centerSprites(uint numberOfSprites)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
             if (numberOfSprites == 0)
             {
@@ -422,15 +423,14 @@ namespace tests
         {
             return ("Tamara - parallel move to and fade in.");
         }
-        public override void OnEnter()
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             centerSprites(3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            var actionTo = new CCMoveTo(2, new CCPoint(s.Width - 40, s.Height - 40));
+            var actionTo = new CCMoveTo(2, new CCPoint(windowSize.Width - 40, windowSize.Height - 40));
             var actionBy = new CCMoveBy(2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
@@ -442,11 +442,9 @@ namespace tests
 
     public class ActionManual : ActionsDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
-
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            base.RunningOnNewWindow(windowSize);
 
             m_tamara.ScaleX = 2.5f;
             m_tamara.ScaleY = -1.0f;
@@ -454,10 +452,10 @@ namespace tests
             m_tamara.Opacity = 128;
 
             m_grossini.Rotation = 120;
-            m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            m_grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
             m_grossini.Color = new CCColor3B(255, 0, 0);
 
-            m_kathia.Position = new CCPoint(s.Width - 100, s.Height / 2);
+            m_kathia.Position = new CCPoint(windowSize.Width - 100, windowSize.Height / 2);
             m_kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
         }
 
@@ -469,33 +467,31 @@ namespace tests
 
     public class ActionMove : ActionsDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             centerSprites(3);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            var actionTo = new CCMoveTo (2, new CCPoint(s.Width - 40, s.Height - 40));
+            var actionTo = new CCMoveTo (2, new CCPoint(windowSize.Width - 40, windowSize.Height - 40));
             var actionBy = new CCMoveBy (2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
             m_tamara.RunAction(new CCSequence(actionTo, new CCCallFunc(new Action(() =>
-            {
-                if ((m_tamara.Position.X != s.Width - 40) || (m_tamara.Position.Y != s.Height - 40))
                 {
-                    CCLog.Log("ERROR: MoveTo on tamara has failed. Position of tamara = {0}, expected = {1},{2}", m_tamara.Position, s.Width - 40, s.Height - 40);
-                }
-            }))));
+                    if ((m_tamara.Position.X != windowSize.Width - 40) || (m_tamara.Position.Y != windowSize.Height - 40))
+                    {
+                        CCLog.Log("ERROR: MoveTo on tamara has failed. Position of tamara = {0}, expected = {1},{2}", m_tamara.Position, windowSize.Width - 40, windowSize.Height - 40);
+                    }
+                }))));
             m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
             m_kathia.RunAction(new CCSequence(new CCMoveTo(1, new CCPoint(40, 40)), new CCCallFunc(new Action(() =>
-            {
-                if (m_kathia.Position.X != 40 || m_kathia.Position.Y != 40)
                 {
-                    CCLog.Log("ERROR: MoveTo on kathia failed. Expected 40,40 but ended at {0}", m_kathia.Position);
-                }
-            }))));
+                    if (m_kathia.Position.X != 40 || m_kathia.Position.Y != 40)
+                    {
+                        CCLog.Log("ERROR: MoveTo on kathia failed. Expected 40,40 but ended at {0}", m_kathia.Position);
+                    }
+                }))));
         }
 
         public override string subtitle()
@@ -506,16 +502,15 @@ namespace tests
 
     public class ActionScale : ActionsDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             centerSprites(3);
 
             var actionTo = new CCScaleTo(2, 0.5f);
             var actionBy = new CCScaleBy(2, 1, 10);
             var actionBy2 = new CCScaleBy(2, 5f, 1.0f);
-            var actionByBack = actionBy.Reverse();
 
             m_grossini.RunAction(actionTo);
             m_tamara.RunAction(new CCSequence(actionBy, actionBy.Reverse()));
@@ -530,9 +525,9 @@ namespace tests
 
     public class ActionSkew : ActionsDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             centerSprites(3);
 
@@ -542,10 +537,10 @@ namespace tests
             var actionBy2 = new CCSkewBy (2, 45.0f, 45.0f);
             var actionByBack = actionBy.Reverse();
 
-			m_tamara.RunActions(actionTo, actionToBack);
-			m_grossini.RunActions(actionBy, actionByBack);
+            m_tamara.RunActions(actionTo, actionToBack);
+            m_grossini.RunActions(actionBy, actionByBack);
 
-			m_kathia.RunActions(actionBy2, actionBy2.Reverse());
+            m_kathia.RunActions(actionBy2, actionBy2.Reverse());
         }
 
         public override string subtitle()
@@ -556,23 +551,23 @@ namespace tests
 
     public class ActionRotationalSkew : ActionsDemo
     {
-        public override void OnEnter()
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
             centerSprites(3);
 
-			var actionTo = new CCRotateTo(2, 180, 180);
+            var actionTo = new CCRotateTo(2, 180, 180);
             var actionToBack = new CCRotateTo(2, 0, 0);
-			var actionBy = new CCRotateBy(2, 0.0f, 360);
-			var actionByBack = actionBy.Reverse();
+            var actionBy = new CCRotateBy(2, 0.0f, 360);
+            var actionByBack = actionBy.Reverse();
 
-			var actionBy2 = new CCRotateBy(2, 360, 0.0f);
-			var actionBy2Back = actionBy2.Reverse ();
+            var actionBy2 = new CCRotateBy(2, 360, 0.0f);
+            var actionBy2Back = actionBy2.Reverse ();
 
-			m_tamara.RunActions(actionBy, actionByBack);
-			m_grossini.RunActions(actionTo, actionToBack);
-			m_kathia.RunActions(actionBy2, actionBy2Back);
+            m_tamara.RunActions(actionBy, actionByBack);
+            m_grossini.RunActions(actionTo, actionToBack);
+            m_kathia.RunActions(actionBy2, actionBy2Back);
         }
 
         public override string subtitle()
@@ -583,44 +578,63 @@ namespace tests
 
     public class ActionRotationalSkewVSStandardSkew : ActionsDemo
     {
-        public override void OnEnter()
+        CCLayerColor box1;
+        CCLayerColor box2;
+
+        CCLabelTtf boxLabel1;
+        CCLabelTtf boxLabel2;
+
+        public ActionRotationalSkewVSStandardSkew()
         {
-            base.OnEnter();
+            box1 = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            this.AddChild(box1);
+
+            box1.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            box1.IgnoreAnchorPointForPosition = false;
+
+            box2 = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            this.AddChild(box2);
+
+            box2.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            box2.IgnoreAnchorPointForPosition = false;
+
+            boxLabel1 = new CCLabelTtf("Standard cocos2d Skew", "Marker Felt", 16);
+            this.AddChild(boxLabel1);
+
+            boxLabel2 = new CCLabelTtf("Rotational Skew", "Marker Felt", 16);
+            this.AddChild(boxLabel2);
+        }
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
 
             m_tamara.RemoveFromParent(true);
-			m_grossini.RemoveFromParent(true);
-			m_kathia.RemoveFromParent(true);
+            m_grossini.RemoveFromParent(true);
+            m_kathia.RemoveFromParent(true);
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            CCSize boxSize = new CCSize(100.0f, 100.0f);
-
-            CCLayerColor box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
-            box.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            box.ContentSize = boxSize;
-            box.IgnoreAnchorPointForPosition = false;
-            box.Position = new CCPoint(s.Width / 2, s.Height - 100 - box.ContentSize.Height / 2);
-            this.AddChild(box);
-            CCLabelTtf label = new CCLabelTtf("Standard cocos2d Skew", "Marker Felt", 16);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 100 + label.ContentSize.Height);
-            this.AddChild(label);
             CCSkewBy actionTo = new CCSkewBy(2, 360, 0);
             CCSkewBy actionToBack = new CCSkewBy(2, -360, 0);
 
-            box.RunAction(new CCSequence(actionTo, actionToBack));
-
-            box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
-            box.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            box.ContentSize = boxSize;
-            box.IgnoreAnchorPointForPosition = false;
-            box.Position = new CCPoint(s.Width / 2, s.Height - 250 - box.ContentSize.Height / 2);
-            this.AddChild(box);
-            label = new CCLabelTtf("Rotational Skew", "Marker Felt", 16);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 250 + label.ContentSize.Height / 2);
-            this.AddChild(label);
             CCRotateBy actionTo2 = new CCRotateBy(2, 360, 0);
             CCRotateBy actionToBack2 = new CCRotateBy(2, -360, 0);
-            box.RunAction(new CCSequence(actionTo2, actionToBack2));
+
+            var actionBy2 = new CCRotateBy(2, 360, 0.0f);
+            var actionBy2Back = actionBy2.Reverse ();
+
+            CCSize boxSize = new CCSize(100.0f, 100.0f);
+
+            box1.ContentSize = boxSize;
+            box1.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 100 - box1.ContentSize.Height / 2);
+            box1.RunAction(new CCSequence(actionTo, actionToBack));
+
+            box2.ContentSize = boxSize;
+            box2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 250 - box2.ContentSize.Height / 2);
+            box2.RunAction(new CCSequence(actionTo2, actionToBack2));
+
+            boxLabel1.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 100 + boxLabel1.ContentSize.Height);
+            boxLabel2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 250 + boxLabel2.ContentSize.Height / 2);
+
         }
 
         public override string subtitle()
@@ -633,37 +647,45 @@ namespace tests
     {
         private const float markrside = 10.0f;
 
-        public override void OnEnter()
-        {
+        CCLayerColor box;
+        CCLayerColor uL;
+        CCLayerColor uR;
 
-            base.OnEnter();
+        public ActionSkewRotateScale()
+        {
+            box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box.AnchorPoint = new CCPoint(0, 0);
+
+            uL = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
+            uL.AnchorPoint = new CCPoint(0, 0);
+            box.AddChild(uL);
+
+            uR = new CCLayerColor(new CCColor4B(0, 0, 255, 255));
+            uR.AnchorPoint = new CCPoint(0, 0);
+            box.AddChild(uR);
+
+            AddChild(box);
+        }
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
 
             m_tamara.RemoveFromParent(true);
             m_grossini.RemoveFromParent(true);
             m_kathia.RemoveFromParent(true);
 
-			// Get window size so that we can center the box layer
-			var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var boxSize = new CCSize(100.0f, 100.0f);
 
-			var boxSize = new CCSize(100.0f, 100.0f);
-
-            var box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
-            box.AnchorPoint = new CCPoint(0, 0);
-			box.Position = new CCPoint(winSize.Center.X - (boxSize.Width / 2), winSize.Center.Y - (boxSize.Height / 2));
+            box.Position = new CCPoint(windowSize.Center.X - (boxSize.Width / 2), windowSize.Center.Y - (boxSize.Height / 2));
             box.ContentSize = boxSize;
 
-            var uL = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
-            box.AddChild(uL);
             uL.ContentSize = new CCSize(markrside, markrside);
             uL.Position = new CCPoint(0.0f, boxSize.Height - markrside);
-            uL.AnchorPoint = new CCPoint(0, 0);
 
-            var uR = new CCLayerColor(new CCColor4B(0, 0, 255, 255));
-            box.AddChild(uR);
             uR.ContentSize = new CCSize(markrside, markrside);
             uR.Position = new CCPoint(boxSize.Width - markrside, boxSize.Height - markrside);
-            uR.AnchorPoint = new CCPoint(0, 0);
-            AddChild(box);
+
 
             var actionTo = new CCSkewTo (2, 0.0f, 2.0f);
             var rotateTo = new CCRotateTo (2, 61.0f);
@@ -673,9 +695,9 @@ namespace tests
             var rotateToBack = new CCRotateTo (2, 0);
             var actionToBack = new CCSkewTo (2, 0, 0);
 
-			box.RunActions(actionTo, actionToBack);
-			box.RunActions(rotateTo, rotateToBack);
-			box.RunActions(actionScaleTo, actionScaleToBack);
+            box.RunActions(actionTo, actionToBack);
+            box.RunActions(rotateTo, rotateToBack);
+            box.RunActions(actionScaleTo, actionScaleToBack);
         }
 
         public override string subtitle()
@@ -692,17 +714,17 @@ namespace tests
 
             centerSprites(3);
 
-			var actionTo = new CCRotateTo (2, 45);
-			var actionTo2 = new CCRotateTo (2, -45);
-			var actionTo0 = new CCRotateTo (2, 0);
-			m_tamara.RunActions(actionTo, actionTo0);
+            var actionTo = new CCRotateTo (2, 45);
+            var actionTo2 = new CCRotateTo (2, -45);
+            var actionTo0 = new CCRotateTo (2, 0);
+            m_tamara.RunActions(actionTo, actionTo0);
 
-			var actionBy = new CCRotateBy (2, 360);
+            var actionBy = new CCRotateBy (2, 360);
             var actionByBack = actionBy.Reverse();
-			m_grossini.RunActions(actionBy, actionByBack);
+            m_grossini.RunActions(actionBy, actionByBack);
 
             // m_kathia->runAction( CCSequence::actions(actionTo2, actionTo0->copy()->autorelease(), NULL));
-			m_kathia.RunActions(actionTo2, actionTo0);
+            m_kathia.RunActions(actionTo2, actionTo0);
         }
 
         public override string subtitle()
@@ -724,9 +746,9 @@ namespace tests
             var actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
             var actionByBack = actionBy.Reverse();
 
-			m_tamara.RunAction (actionTo);
-			m_grossini.RunActions (actionBy, actionByBack);
-			m_kathia.RepeatForever (actionUp);
+            m_tamara.RunAction (actionTo);
+            m_grossini.RunActions (actionBy, actionByBack);
+            m_kathia.RepeatForever (actionUp);
         }
 
         public override string subtitle()
@@ -751,7 +773,7 @@ namespace tests
             centerSprites(3);
 
             // sprite 1
-			CCBezierConfig bezier;
+            CCBezierConfig bezier;
             bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
@@ -763,7 +785,7 @@ namespace tests
 
             // sprite 2
             m_tamara.Position = new CCPoint(80, 160);
-			CCBezierConfig bezier2;
+            CCBezierConfig bezier2;
             bezier2.ControlPoint1 = new CCPoint(100, s.Height / 2);
             bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);
@@ -821,8 +843,8 @@ namespace tests
             var action2 = new CCFadeOut  (1.0f);
             var action2Back = action2.Reverse();
 
-			m_tamara.RunActions(action1, action1Back);
-			m_kathia.RunActions(action2, action2Back);
+            m_tamara.RunActions(action1, action1Back);
+            m_kathia.RunActions(action2, action2Back);
         }
 
         public override string subtitle()
@@ -843,8 +865,8 @@ namespace tests
             var action2 = new CCTintBy (2, -127, -255, -127);
             var action2Back = action2.Reverse();
 
-			m_tamara.RunAction(action1);
-			m_kathia.RunActions (action2, action2Back);
+            m_tamara.RunAction(action1);
+            m_kathia.RunActions (action2, action2Back);
         }
 
         public override string subtitle()
@@ -868,7 +890,7 @@ namespace tests
             for (var i = 1; i < 15; i++)
             {
                 var szName = String.Format("Images/grossini_dance_{0:00}", i);
-				animation.AddSpriteFrame(szName);
+                animation.AddSpriteFrame(szName);
             }
 
             // should last 2.8 seconds. And there are 14 frames.
@@ -1066,7 +1088,7 @@ namespace tests
             var action = new CCSequence(
                 new CCMoveBy (2.0f, new CCPoint(200, 0)),
                 new CCCallFuncND(removeFromParentAndCleanup, true)
-                );
+            );
 
             m_grossini.RunAction(action);
         }
@@ -1260,9 +1282,9 @@ namespace tests
             //   Sequence should work both with IntervalAction and InstantActions
             var move1 = new CCMoveBy (1, new CCPoint(250, 0));
             var move2 = new CCMoveBy (1, new CCPoint(0, 50));
-			var toggle = new CCToggleVisibility();
+            var toggle = new CCToggleVisibility();
 
-			var seq = new CCSequence(move1, toggle, move2, toggle, move1.Reverse());
+            var seq = new CCSequence(move1, toggle, move2, toggle, move1.Reverse());
 
             var action = new CCRepeat ((new CCSequence(seq, seq.Reverse())), 3);
 
@@ -1294,11 +1316,11 @@ namespace tests
 
             var a1 = new CCMoveBy (1, new CCPoint(150, 0));
 
-			// Repeat 3 times the Move to position (CCPlace) and then the MoveBy
-			m_kathia.Repeat(3, new CCPlace(new CCPoint(60, 60)), a1);
+            // Repeat 3 times the Move to position (CCPlace) and then the MoveBy
+            m_kathia.Repeat(3, new CCPlace(new CCPoint(60, 60)), a1);
 
-			// Repeat forever the MoveBy
-			m_tamara.RepeatForever(a1, a1.Reverse());
+            // Repeat forever the MoveBy
+            m_tamara.RepeatForever(a1, a1.Reverse());
         }
 
         public override string subtitle()
@@ -1334,7 +1356,7 @@ namespace tests
             var move_back = move.Reverse();
             var seq = new CCSequence(move, move_back);
             var rfe = new CCRepeatForever (seq);
-			m_kathia.RunAction(rfe);
+            m_kathia.RunAction(rfe);
             m_tamara.RunAction(rfe);
             m_grossini.RunAction(rfe);
         }
@@ -1545,8 +1567,8 @@ namespace tests
             var jump1 = new CCJumpBy (2, CCPoint.Zero, 100, 3);
             var rot1 = new CCRotateBy (1, 360);
 
-			var t1 = new CCTargetedAction (m_kathia, jump1);
-			var t2 = new CCTargetedAction (m_kathia, rot1);
+            var t1 = new CCTargetedAction (m_kathia, jump1);
+            var t2 = new CCTargetedAction (m_kathia, rot1);
 
 
             var seq = new CCSequence(jump1, t1, rot1, t2);
@@ -1575,9 +1597,9 @@ namespace tests
             base.OnEnter();
 
             centerSprites(0);
-    
-			var listener = new CCEventListenerTouchAllAtOnce();
-			listener.OnTouchesEnded = onTouchesEnded;
+
+            var listener = new CCEventListenerTouchAllAtOnce();
+            listener.OnTouchesEnded = onTouchesEnded;
 
             EventDispatcher.AddEventListener(listener, this);    
 
@@ -1605,7 +1627,7 @@ namespace tests
             // override me
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var touch in touches)
             {
@@ -1638,8 +1660,8 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 10)),
                         new CCMoveBy(0.05f, new CCPoint(-10, -10)))
-                    )
-                );
+                )
+            );
 
             CCMoveBy action = new CCMoveBy(2.0f, new CCPoint(400, 0));
             CCMoveBy action_back = (CCMoveBy) action.Reverse();
@@ -1647,7 +1669,7 @@ namespace tests
             sprite.RunAction(
                 new CCRepeatForever(
                     new CCSequence(action, action_back)
-                    ));
+                ));
         }
 
         public override string title()
@@ -1672,12 +1694,12 @@ namespace tests
             sprite.RunAction(
                 new CCRepeatForever(
                     new CCSequence(jump, jump_back)
-                    ));
+                ));
         }
 
         public override string title()
         {
-			return "Stacked Move + Jump actions";
+            return "Stacked Move + Jump actions";
         }
     }
 
@@ -1688,7 +1710,7 @@ namespace tests
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // sprite 1
-			CCBezierConfig bezier;
+            CCBezierConfig bezier;
             bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
             bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
@@ -1704,9 +1726,9 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                        )
                     )
-                );
+                )
+            );
         }
 
         public override string title()
@@ -1759,9 +1781,9 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                        )
                     )
-                );
+                )
+            );
 
 
             //
@@ -1792,9 +1814,9 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                        )
                     )
-                );
+                )
+            );
 
         }
 
@@ -1810,7 +1832,7 @@ namespace tests
 
             CCDrawingPrimitives.DrawCatmullRom(_array2, 50);
         }
-        
+
         public override string title()
         {
             return "Stacked MoveBy + CatmullRom actions";
@@ -1860,9 +1882,9 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                        )
                     )
-                );
+                )
+            );
             //
             // sprite 2 (By)
             //
@@ -1882,9 +1904,9 @@ namespace tests
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
                         new CCMoveBy(0.05f, new CCPoint(-10, 0))
-                        )
                     )
-                );
+                )
+            );
 
         }
 
@@ -2150,8 +2172,8 @@ namespace tests
                     new CCCallFuncND(incrementIntegerCallback, "6"),
                     new CCCallFuncND(incrementIntegerCallback, "7"),
                     new CCCallFuncND(incrementIntegerCallback, "8")
-                    )
-                );
+                )
+            );
         }
 
         private void incrementIntegerCallback(CCNode pSender, object data)
@@ -2223,7 +2245,7 @@ namespace tests
                 new CCRotateBy(2, 540),
                 new CCScaleTo(1, 0.1f),
                 new CCRemoveSelf()
-                );
+            );
 
             m_grossini.RunAction(action);
         }
