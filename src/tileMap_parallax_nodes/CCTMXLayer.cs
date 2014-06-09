@@ -276,7 +276,7 @@ namespace CocosSharp
                 if (tile == null)
                 {
                     CCRect rect = TileSet.RectForGID(gid);
-                    rect = rect.PixelsToPoints();
+					rect = rect.PixelsToPoints(Director.ContentScaleFactor);
 
                     tile = new CCSprite(Texture, rect);
                     tile.BatchNode = this;
@@ -353,7 +353,7 @@ namespace CocosSharp
                     if (sprite != null)
                     {
                         CCRect rect = TileSet.RectForGID(gid);
-                        rect = rect.PixelsToPoints();
+						rect = rect.PixelsToPoints(Director.ContentScaleFactor);
 
                         sprite.SetTextureRect(rect, false, rect.Size);
                         if (flags != 0)
@@ -486,7 +486,7 @@ namespace CocosSharp
         CCSprite AppendTileForGID(uint gid, CCPoint tileCoord)
         {
             CCRect rect = TileSet.RectForGID(gid);
-            rect = rect.PixelsToPoints();
+			rect = rect.PixelsToPoints(Director.ContentScaleFactor);
 
             var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 
@@ -511,7 +511,7 @@ namespace CocosSharp
         CCSprite InsertTileForGID(uint gid, CCPoint tileCoord)
         {
             CCRect rect = TileSet.RectForGID(gid);
-            rect = rect.PixelsToPoints();
+			rect = rect.PixelsToPoints(Director.ContentScaleFactor);
 
             var z = (int) (tileCoord.X + tileCoord.Y * LayerSize.Width);
 

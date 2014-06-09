@@ -37,7 +37,7 @@ namespace CocosSharp
             set
             {
                 rectInPixels = value;
-                rect = rectInPixels.PixelsToPoints();
+				rect = rectInPixels.PixelsToPoints();
             }
         }
 

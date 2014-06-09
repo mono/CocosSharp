@@ -175,7 +175,7 @@ namespace CocosSharp
         void ResetTexCoords(CCRect pointRect)
         {
             // convert to Tex coords
-            CCRect rect = pointRect.PointsToPixels();
+			CCRect rect = pointRect.PointsToPixels(Director.ContentScaleFactor);
 
             float wide = pointRect.Size.Width;
             float high = pointRect.Size.Height;

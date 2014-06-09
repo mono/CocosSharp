@@ -262,7 +262,7 @@ namespace CocosSharp
             {
                 return new CCSpriteFrame(
                     texture,
-                    textureRect.PointsToPixels(),
+					textureRect.PointsToPixels(Director.ContentScaleFactor),
                     ContentSize.PointsToPixels(),
                     IsTextureRectRotated,
                     unflippedOffsetPositionFromCenter.PointsToPixels()
@@ -639,7 +639,7 @@ namespace CocosSharp
 
         void SetTextureCoords(CCRect rect)
         {
-            rect = rect.PointsToPixels();
+			rect = rect.PointsToPixels(Director.ContentScaleFactor);
 
             CCTexture2D tex = batchNode != null ? textureAtlas.Texture : texture;
             if (tex == null)

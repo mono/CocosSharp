@@ -511,7 +511,7 @@ namespace CocosSharp
                 }
 
                 rect = fontDef.Subrect;
-                rect = rect.PixelsToPoints();
+				rect = rect.PixelsToPoints(Director.ContentScaleFactor);
 
                 rect.Origin.X += ImageOffset.X;
                 rect.Origin.Y += ImageOffset.Y;

@@ -200,7 +200,7 @@ namespace CocosSharp
 
         public CCSize ContentSize
         {
-            get { return ContentSizeInPixels.PixelsToPoints(); }
+			get { return ContentSizeInPixels.PixelsToPoints(); }
         }
 
         public Texture2D Name
