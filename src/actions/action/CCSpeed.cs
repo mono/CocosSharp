@@ -56,7 +56,7 @@ namespace CocosSharp
 			base.Stop ();
 		}
 
-		public override void Step (float dt)
+		protected internal override void Step (float dt)
 		{
 			InnerActionState.Step (dt * Speed);
 		}

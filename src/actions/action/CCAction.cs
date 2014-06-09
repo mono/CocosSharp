@@ -81,7 +81,7 @@ namespace CocosSharp
 		/// 
 		/// </summary>
 		/// <param name="dt">Delta Time</param>
-		public virtual void Step (float dt)
+		protected internal virtual void Step (float dt)
 		{
 #if DEBUG
 			CCLog.Log ("[Action State step]. override me");

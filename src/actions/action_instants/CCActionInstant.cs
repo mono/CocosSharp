@@ -40,7 +40,7 @@ namespace CocosSharp
 			get { return true; }
 		}
 
-		public override void Step (float dt)
+		protected internal override void Step (float dt)
 		{
 			Update (1);
 		}

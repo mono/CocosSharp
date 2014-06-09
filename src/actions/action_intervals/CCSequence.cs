@@ -109,7 +109,7 @@ namespace CocosSharp
 			}
 		}
 
-		public override void Step (float dt)
+		protected internal override void Step (float dt)
 		{
 			if (last > -1 && (actionSequences [last] is CCRepeat || actionSequences [last] is CCRepeatForever))
 			{

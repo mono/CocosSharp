@@ -27,7 +27,7 @@ namespace CocosSharp
 			{
 			}
 
-			public override void Step (float dt)
+			protected internal override void Step (float dt)
 			{
 			}
 
@@ -112,7 +112,7 @@ namespace CocosSharp
 			FirstTick = true;
 		}
 
-		public override void Step (float dt)
+		protected internal override void Step (float dt)
 		{
 			if (FirstTick)
 			{

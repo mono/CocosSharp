@@ -50,7 +50,7 @@ namespace CocosSharp
 			InnerActionState = (CCActionIntervalState)InnerAction.StartAction (target);
 		}
 
-		public override void Step (float dt)
+		protected internal override void Step (float dt)
 		{
 			InnerActionState.Step (dt);
 
