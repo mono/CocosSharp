@@ -627,8 +627,10 @@ namespace CocosSharp
             InitInstance();
 
             CCDirector mainWindowDirector = new CCDisplayLinkDirector();
-            mainWindowDirector.SetOpenGlView();
             mainWindow = new CCWindow(mainWindowDirector, xnaGame.Window);
+
+			// Statistics is initialized in here and needs access to the director.
+			mainWindowDirector.SetOpenGlView();
 
             base.Initialize();
         }
