@@ -89,7 +89,7 @@ namespace CocosSharp
 
 		}
 
-		public override bool IsDone {
+		protected internal override bool IsDone {
 			get {
 				if (hasInfiniteAction && actionSequences [last] is CCRepeatForever)
 				{

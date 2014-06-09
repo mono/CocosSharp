@@ -101,7 +101,7 @@ namespace CocosSharp
 		public float Elapsed { get; private set; }
 
 
-		public override bool IsDone {
+		protected internal override bool IsDone {
 			get { return Elapsed >= Duration; }
 		}
 

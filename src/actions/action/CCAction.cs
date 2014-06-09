@@ -60,7 +60,7 @@ namespace CocosSharp
 		/// Gets a value indicating whether this instance is done.
 		/// </summary>
 		/// <value><c>true</c> if this instance is done; otherwise, <c>false</c>.</value>
-		public virtual bool IsDone {
+		protected internal virtual bool IsDone {
 			get { return true; }
 		}
 

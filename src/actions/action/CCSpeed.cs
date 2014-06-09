@@ -40,7 +40,7 @@ namespace CocosSharp
 
 		protected CCActionIntervalState InnerActionState { get; private set; }
 
-		public override bool IsDone {
+		protected internal override bool IsDone {
 			get { return InnerActionState.IsDone; }
 		}
 
