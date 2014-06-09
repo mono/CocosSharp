@@ -306,7 +306,7 @@ namespace tests
 			};
 
 			// Now we tell the event dispatcher that the status label is interested in keyboard events
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.AddEventListener(listener, statusLabel);		
+			EventDispatcher.AddEventListener(listener, statusLabel);		
 		}
 
 		public override string title()
@@ -368,7 +368,7 @@ namespace tests
 			};
 
 			// Now we tell the event dispatcher that the sprite is interested in Accelerometer events
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.AddEventListener(listener, sprite);		
+			EventDispatcher.AddEventListener(listener, sprite);		
 		}
 
 		public override void OnExit ()
@@ -453,16 +453,16 @@ namespace tests
 			};
 
 
-            sprite1.EventDispatcher.AddEventListener(listener1, this);
-            sprite2.EventDispatcher.AddEventListener(listener1.Copy(), this);
-            sprite3.EventDispatcher.AddEventListener(listener1.Copy(), this);
+            EventDispatcher.AddEventListener(listener1, sprite1);
+            EventDispatcher.AddEventListener(listener1.Copy(), sprite2);
+            EventDispatcher.AddEventListener(listener1.Copy(), sprite3);
 
 
 			var removeAllTouchItem = new CCMenuItemFont("Remove All Touch Listeners", (sender) => {
 				var senderItem = (CCMenuItemFont)sender;
 				senderItem.LabelTTF.Text = "Only Next item could be clicked";
 
-                CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.RemoveAll();
+                CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
 				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
 			
@@ -593,8 +593,16 @@ namespace tests
 				}
 			};
 
+            if (FixedPriority != 0)
+            {
+                EventDispatcher.AddEventListener(listener, FixedPriority);
+            }
+            else
+            {
+                EventDispatcher.AddEventListener(listener, this);
+            }
+
 			Listener = listener;
-            this.EventDispatcher.AddEventListener(Listener, this);
 		}
 
 		public override void OnExit ()
@@ -632,7 +640,7 @@ namespace tests
 					statusLabel.Text = str;
 			});
 
-            this.EventDispatcher.AddEventListener(listener, this);
+            EventDispatcher.AddEventListener(listener, 1);
 			var count = 0;
 			var sendItem = new CCMenuItemFont("Send Custom Event 1", (sender) =>
 				{
@@ -640,7 +648,7 @@ namespace tests
 					var userData = string.Format("{0}", count);
 					var customEvent = new CCEventCustom("game_custom_event1");
 					customEvent.UserData = userData;
-                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.DispatchEvent(customEvent);
+                    EventDispatcher.DispatchEvent(customEvent);
 			});
 
 			sendItem.Position = origin + size.Center;
@@ -654,14 +662,14 @@ namespace tests
 					statusLabel2.Text = string.Format("Custom event 2 received, {0} times", customEvent.UserData);
 				});
 
-            this.EventDispatcher.AddEventListener(listener2, this);
+            this.EventDispatcher.AddEventListener(listener2, 1);
 
 			var count2 = 0;
 			var sendItem2 = new CCMenuItemFont("Send Custom Event 2", (sender) =>
 				{
 					var customEvent = new CCEventCustom("game_custom_event2");
 					customEvent.UserData = ++count2;
-                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.DispatchEvent(customEvent);
+                    EventDispatcher.DispatchEvent(customEvent);
 				});
 
 			sendItem2.Position = origin + new CCPoint(size.Width / 2, size.Height / 2 - 40);
@@ -802,8 +810,8 @@ namespace tests
 						return true;
 					};
 
-                    this.EventDispatcher.AddEventListener(listener, this);
-                    this.EventDispatcher.RemoveEventListener(listener);
+                    this.EventDispatcher.AddEventListener(listener, -1);
+                    this.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 			});
 
 			item1.Position = CCVisibleRect.Center + new CCPoint(0, 80);
@@ -830,8 +838,8 @@ namespace tests
 					return true;
 				};
 
-                    this.EventDispatcher.AddEventListener(listener, this);
-                    this.EventDispatcher.RemoveAll();
+                    this.EventDispatcher.AddEventListener(listener, -1);
+                    this.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
 					addNextButton ();
 			});
@@ -846,10 +854,10 @@ namespace tests
 						return true;
 					};
 
-                    this.EventDispatcher.AddEventListener(listener, this);
-                    this.EventDispatcher.RemoveAll();
+                    EventDispatcher.AddEventListener(listener, -1);
+                    EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
-					addNextButton ();
+					addNextButton();
 			});
 
 			item3.Position = CCVisibleRect.Center;
@@ -1009,7 +1017,7 @@ namespace tests
 			var popup = new CCMenuItemFont("Popup", (sender) =>
 				{
 
-                    CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.Pause(this,true);
+                    EventDispatcher.Pause(this,true);
 
 					var colorLayer = new CCLayerColor(new CCColor4B(0, 0, 255, 100));
 					AddChild(colorLayer, 99999);
@@ -1017,7 +1025,7 @@ namespace tests
 					var closeItem = new CCMenuItemFont("close", (closeSender) =>
 						{
 							colorLayer.RemoveFromParent();
-                            CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.Resume(this, true);
+                            EventDispatcher.Resume(this, true);
 				});
 
 					closeItem.Position = CCVisibleRect.Center;

@@ -23,7 +23,7 @@ namespace Box2D.TestBed
 			touchListener.OnTouchMoved = onTouchMoved;
 			touchListener.OnTouchEnded = onTouchEnded;
 
-			EventDispatcher.AddEventListener(touchListener, this);
+            EventDispatcher.AddEventListener(touchListener, -10);
 
 			var keyboardListener = new CCEventListenerKeyboard ();
 			keyboardListener.OnKeyPressed = onKeyPressed;

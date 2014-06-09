@@ -46,8 +46,7 @@ namespace tests
 			touchListener.OnTouchEnded = onTouchEnded;
 			touchListener.OnTouchCancelled = onTouchCancelled;
 
-            EventDispatcher.AddEventListener(touchListener, this);
-            // Font Item
+            EventDispatcher.AddEventListener(touchListener, 1);
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
