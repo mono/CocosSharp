@@ -94,14 +94,14 @@ namespace CocosSharp
 
             // offset (after layer orientation is set);
             CCPoint offset = ApplyLayerOffset(layerInfo.Offset);
-            Position = offset.PixelsToPoints();
+			Position = offset.PixelsToPoints(Director.ContentScaleFactor);
 
             atlasIndexArray = new List<int>((int) totalNumberOfTiles);
 
             var contentSize = new CCSize(LayerSize.Width * MapTileSize.Width,
                 LayerSize.Height * MapTileSize.Height);
 
-            ContentSize = contentSize.PixelsToPoints();
+			ContentSize = contentSize.PixelsToPoints(Director.ContentScaleFactor);
 
             useAutomaticVertexZ = false;
             vertexZvalue = 0;
@@ -433,7 +433,7 @@ namespace CocosSharp
                 ret = PositionForHexAt(tileCoord);
                 break;
             }
-            ret = ret.PixelsToPoints();
+			ret = ret.PixelsToPoints(Director.ContentScaleFactor);
             return ret;
         }
 

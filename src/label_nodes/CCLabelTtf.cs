@@ -204,7 +204,7 @@ namespace CocosSharp
             // refer to cocos2d-x issue #1430
             tex = new CCTexture2D(
                 m_pString,
-                m_tDimensions.PointsToPixels(),
+				m_tDimensions.PointsToPixels(Director.ContentScaleFactor),
                 m_hAlignment,
                 m_vAlignment,
                 m_pFontName,

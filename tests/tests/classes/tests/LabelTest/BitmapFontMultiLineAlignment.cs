@@ -199,7 +199,7 @@ namespace tests
         private void snapArrowsToEdge()
         {
             arrows.Position =
-				new CCPoint(label.Position.X + label.ContentSize.PointsToPixels().Width / 2,
+				new CCPoint(label.Position.X + label.ContentSize.PointsToPixels(Director.ContentScaleFactor).Width / 2,
                             label.Position.Y);
         }
 

@@ -42,7 +42,7 @@ namespace CocosSharp
 			get {
 				if (Target != null && !Target.ContentSize.Equals (CCSize.Zero))
 				{
-					grid3D = new CCGrid3D (GridSize, Target.ContentSize.PointsToPixels ());
+						grid3D = new CCGrid3D (GridSize, Target.ContentSize.PointsToPixels (Director.ContentScaleFactor));
 				} 
                 else 
                 {
