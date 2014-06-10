@@ -263,9 +263,9 @@ namespace CocosSharp
                 return new CCSpriteFrame(
                     texture,
 					textureRect.PointsToPixels(Director.ContentScaleFactor),
-                    ContentSize.PointsToPixels(),
+					ContentSize.PointsToPixels(Director.ContentScaleFactor),
                     IsTextureRectRotated,
-                    unflippedOffsetPositionFromCenter.PointsToPixels()
+					unflippedOffsetPositionFromCenter.PointsToPixels(Director.ContentScaleFactor)
                 );
             }
             set

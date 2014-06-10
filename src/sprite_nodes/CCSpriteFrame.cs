@@ -47,7 +47,7 @@ namespace CocosSharp
             set
             {
                 offset = value;
-                offsetInPixels = offset.PointsToPixels();
+				offsetInPixels = offset.PointsToPixels();
             }
         }
 
@@ -57,7 +57,7 @@ namespace CocosSharp
             set
             {
                 offsetInPixels = value;
-                offset = offsetInPixels.PixelsToPoints();
+				offset = offsetInPixels.PixelsToPoints();
             }
         }
 
@@ -89,7 +89,7 @@ namespace CocosSharp
 
             offsetInPixels = offsetIn ?? CCPoint.Zero;
 
-            offset = offsetInPixels.PixelsToPoints();
+			offset = offsetInPixels.PixelsToPoints();
             OriginalSizeInPixels = originalSize;
             OriginalSize = OriginalSizeInPixels.PixelsToPoints();
             IsRotated = rotated;

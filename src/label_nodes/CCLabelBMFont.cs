@@ -563,7 +563,7 @@ namespace CocosSharp
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
 
-                fontChar.Position = fontPos.PixelsToPoints();
+				fontChar.Position = fontPos.PixelsToPoints(Director.ContentScaleFactor);
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -599,7 +599,7 @@ namespace CocosSharp
                 tmpDimensions.Height > 0 ? tmpDimensions.Height : tmpSize.Height
             );
 
-            ContentSize = tmpSize.PixelsToPoints();
+			ContentSize = tmpSize.PixelsToPoints(Director.ContentScaleFactor);
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)
