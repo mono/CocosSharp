@@ -39,7 +39,7 @@ namespace CocosSharp
                 worker.RunWorkerCompleted +=
                     (sender, args) =>
                     {
-                        var scheduler = CCApplication.SharedApplication.MainWindowDirector.Scheduler;
+                        var scheduler = CCApplication.SharedApplication.Scheduler;
                         scheduler.Schedule (f => taskCompleted(worker), taskSelector, 0, 0, 0, false);
                     };
             }
