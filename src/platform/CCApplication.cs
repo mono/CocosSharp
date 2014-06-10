@@ -91,10 +91,10 @@ namespace CocosSharp
             base.Update(gameTime);
 
             // Allows the game to exit
-            #if !IOS
+#if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
-            #endif
+#endif
         }
     }
 
@@ -528,9 +528,9 @@ namespace CocosSharp
         public void ExitGame()
         {
             MainWindowDirector.End();
-            #if !IOS
+#if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
             xnaGame.Exit();
-            #endif
+#endif
         }
 
         public void PauseGame()
