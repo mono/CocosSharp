@@ -61,214 +61,217 @@ namespace tests
     // make sure the test have the menu item for back to main menu
     public class ActionsTestScene : TestScene
     {
-        public static int s_nActionIdx = -1;
+        static int actionIdx = -1;
 
-        public static CCLayer CreateLayer(int nIndex)
+        public static CCLayer CreateLayer(int index)
         {
-            CCLayer pLayer = null;
+            CCLayer layer = null;
 
-            switch (nIndex)
+            switch (index)
             {
-            case (int) ActionTest.ACTION_MANUAL_LAYER:
-                pLayer = new ActionManual();
-                break;
-            case (int) ActionTest.ACTION_MOVE_LAYER:
-                pLayer = new ActionMove();
-                break;
-            case (int) ActionTest.ACTION_SCALE_LAYER:
-                pLayer = new ActionScale();
-                break;
-            case (int) ActionTest.ACTION_ROTATE_LAYER:
-                pLayer = new ActionRotate();
-                break;
-            case (int) ActionTest.ACTION_SKEW_LAYER:
-                pLayer = new ActionSkew();
-                break;
-            case (int) ActionTest.ACTION_ROTATIONAL_SKEW_LAYER:
-                pLayer = new ActionRotationalSkew();
-                break;
-            case (int) ActionTest.ACTION_COMPARISON_SKEW_LAYER:
-                pLayer = new ActionRotationalSkewVSStandardSkew();
-                break;
-            case (int) ActionTest.ACTION_SKEWROTATE_LAYER:
-                pLayer = new ActionSkewRotateScale();
-                break;
-            case (int) ActionTest.ACTION_JUMP_LAYER:
-                pLayer = new ActionJump();
-                break;
-            case (int) ActionTest.ACTION_BEZIER_LAYER:
-                pLayer = new ActionBezier();
-                break;
-            case (int) ActionTest.ACTION_BLINK_LAYER:
-                pLayer = new ActionBlink();
-                break;
-            case (int) ActionTest.ACTION_FADE_LAYER:
-                pLayer = new ActionFade();
-                break;
-            case (int) ActionTest.ACTION_TINT_LAYER:
-                pLayer = new ActionTint();
-                break;
-            case (int) ActionTest.ACTION_ANIMATE_LAYER:
-                pLayer = new ActionAnimate();
-                break;
-            case (int) ActionTest.ACTION_SEQUENCE_LAYER:
-                pLayer = new ActionSequence();
-                break;
-            case (int) ActionTest.ACTION_SEQUENCE2_LAYER:
-                pLayer = new ActionSequence2();
-                break;
-            case (int) ActionTest.ACTION_SPAWN_LAYER:
-                pLayer = new ActionSpawn();
-                break;
-            case (int) ActionTest.ACTION_REVERSE:
-                pLayer = new ActionReverse();
-                break;
-            case (int) ActionTest.ACTION_DELAYTIME_LAYER:
-                pLayer = new ActionDelayTime();
-                break;
-            case (int) ActionTest.ACTION_REPEAT_LAYER:
-                pLayer = new ActionRepeat();
-                break;
-            case (int) ActionTest.ACTION_REPEATEFOREVER_LAYER:
-                pLayer = new ActionRepeatForever();
-                break;
-            case (int) ActionTest.ACTION_ROTATETOREPEATE_LAYER:
-                pLayer = new ActionRotateToRepeat();
-                break;
-            case (int) ActionTest.ACTION_ROTATEJERK_LAYER:
-                pLayer = new ActionRotateJerk();
-                break;
-            case (int) ActionTest.ACTION_CALLFUNC_LAYER:
-                pLayer = new ActionCallFunc();
-                break;
-            case (int) ActionTest.ACTION_CALLFUNCND_LAYER:
-                pLayer = new ActionCallFuncND();
-                break;
-            case (int) ActionTest.ACTION_REVERSESEQUENCE_LAYER:
-                pLayer = new ActionReverseSequence();
-                break;
-            case (int) ActionTest.ACTION_REVERSESEQUENCE2_LAYER:
-                pLayer = new ActionReverseSequence2();
-                break;
-            case (int)ActionTest.ACTION_RemoveSelfActions:
-                pLayer = new RemoveSelfActions();
-                break;
-            case (int) ActionTest.ACTION_ORBIT_LAYER:
-                pLayer = new ActionOrbit();
-                break;
-            case (int) ActionTest.ACTION_FLLOW_LAYER:
-                pLayer = new ActionFollow();
-                break;
-            case (int) ActionTest.ACTION_TARGETED_LAYER:
-                pLayer = new ActionTargeted();
-                break;
-            case (int) ActionTest.ACTION_ISSUE1305_LAYER:
-                pLayer = new Issue1305();
-                break;
-            case (int) ActionTest.ACTION_ISSUE1305_2_LAYER:
-                pLayer = new Issue1305_2();
-                break;
-            case (int) ActionTest.ACTION_ISSUE1288_LAYER:
-                pLayer = new Issue1288();
-                break;
-            case (int) ActionTest.ACTION_ISSUE1288_2_LAYER:
-                pLayer = new Issue1288_2();
-                break;
-            case (int) ActionTest.ACTION_ISSUE1327_LAYER:
-                pLayer = new Issue1327();
-                break;
-            case (int)ActionTest.ACTION_ISSUE1389_LAYER:
-                pLayer = new Issue1389();
-                break;
-            case (int) ActionTest.ACTION_CARDINALSPLINE_LAYER:
-                pLayer = new ActionCardinalSpline();
-                break;
-            case (int) ActionTest.ACTION_CATMULLROM_LAYER:
-                pLayer = new ActionCatmullRom();
-                break;
-            case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
-                pLayer = new PauseResumeActions();
-                break;
-            case (int)ActionTest.ACTION_ActionMoveStacked:
-                pLayer = new ActionMoveStacked();
-                break;
-            case (int)ActionTest.ACTION_ActionMoveJumpStacked:
-                pLayer = new ActionMoveJumpStacked();
-                break;
-            case (int)ActionTest.ACTION_ActionMoveBezierStacked:
-                pLayer = new ActionMoveBezierStacked();
-                break;
-            case (int)ActionTest.ACTION_ActionCatmullRomStacked:
-                pLayer = new ActionCatmullRomStacked();
-                break;
-            case (int)ActionTest.ACTION_ActionCardinalSplineStacked:
-                pLayer = new ActionCardinalSplineStacked();
-                break;
-            case (int)ActionTest.ACTION_PARALLEL:
-                pLayer = new ActionParallel();
-                break;
-            default:
-                break;
+                case (int) ActionTest.ACTION_MANUAL_LAYER:
+                    layer = new ActionManual();
+                    break;
+                case (int) ActionTest.ACTION_MOVE_LAYER:
+                    layer = new ActionMove();
+                    break;
+                case (int) ActionTest.ACTION_SCALE_LAYER:
+                    layer = new ActionScale();
+                    break;
+                case (int) ActionTest.ACTION_ROTATE_LAYER:
+                    layer = new ActionRotate();
+                    break;
+                case (int) ActionTest.ACTION_SKEW_LAYER:
+                    layer = new ActionSkew();
+                    break;
+                case (int) ActionTest.ACTION_ROTATIONAL_SKEW_LAYER:
+                    layer = new ActionRotationalSkew();
+                    break;
+                case (int) ActionTest.ACTION_COMPARISON_SKEW_LAYER:
+                    layer = new ActionRotationalSkewVSStandardSkew();
+                    break;
+                case (int) ActionTest.ACTION_SKEWROTATE_LAYER:
+                    layer = new ActionSkewRotateScale();
+                    break;
+                case (int) ActionTest.ACTION_JUMP_LAYER:
+                    layer = new ActionJump();
+                    break;
+                case (int) ActionTest.ACTION_BEZIER_LAYER:
+                    layer = new ActionBezier();
+                    break;
+                case (int) ActionTest.ACTION_BLINK_LAYER:
+                    layer = new ActionBlink();
+                    break;
+                case (int) ActionTest.ACTION_FADE_LAYER:
+                    layer = new ActionFade();
+                    break;
+                case (int) ActionTest.ACTION_TINT_LAYER:
+                    layer = new ActionTint();
+                    break;
+                case (int) ActionTest.ACTION_ANIMATE_LAYER:
+                    layer = new ActionAnimate();
+                    break;
+                case (int) ActionTest.ACTION_SEQUENCE_LAYER:
+                    layer = new ActionSequence();
+                    break;
+                case (int) ActionTest.ACTION_SEQUENCE2_LAYER:
+                    layer = new ActionSequence2();
+                    break;
+                case (int) ActionTest.ACTION_SPAWN_LAYER:
+                    layer = new ActionSpawn();
+                    break;
+                case (int) ActionTest.ACTION_REVERSE:
+                    layer = new ActionReverse();
+                    break;
+                case (int) ActionTest.ACTION_DELAYTIME_LAYER:
+                    layer = new ActionDelayTime();
+                    break;
+                case (int) ActionTest.ACTION_REPEAT_LAYER:
+                    layer = new ActionRepeat();
+                    break;
+                case (int) ActionTest.ACTION_REPEATEFOREVER_LAYER:
+                    layer = new ActionRepeatForever();
+                    break;
+                case (int) ActionTest.ACTION_ROTATETOREPEATE_LAYER:
+                    layer = new ActionRotateToRepeat();
+                    break;
+                case (int) ActionTest.ACTION_ROTATEJERK_LAYER:
+                    layer = new ActionRotateJerk();
+                    break;
+                case (int) ActionTest.ACTION_CALLFUNC_LAYER:
+                    layer = new ActionCallFunc();
+                    break;
+                case (int) ActionTest.ACTION_CALLFUNCND_LAYER:
+                    layer = new ActionCallFuncND();
+                    break;
+                case (int) ActionTest.ACTION_REVERSESEQUENCE_LAYER:
+                    layer = new ActionReverseSequence();
+                    break;
+                case (int) ActionTest.ACTION_REVERSESEQUENCE2_LAYER:
+                    layer = new ActionReverseSequence2();
+                    break;
+                case (int)ActionTest.ACTION_RemoveSelfActions:
+                    layer = new RemoveSelfActions();
+                    break;
+                case (int) ActionTest.ACTION_ORBIT_LAYER:
+                    layer = new ActionOrbit();
+                    break;
+                case (int) ActionTest.ACTION_FLLOW_LAYER:
+                    layer = new ActionFollow();
+                    break;
+                case (int) ActionTest.ACTION_TARGETED_LAYER:
+                    layer = new ActionTargeted();
+                    break;
+                case (int) ActionTest.ACTION_ISSUE1305_LAYER:
+                    layer = new Issue1305();
+                    break;
+                case (int) ActionTest.ACTION_ISSUE1305_2_LAYER:
+                    layer = new Issue1305_2();
+                    break;
+                case (int) ActionTest.ACTION_ISSUE1288_LAYER:
+                    layer = new Issue1288();
+                    break;
+                case (int) ActionTest.ACTION_ISSUE1288_2_LAYER:
+                    layer = new Issue1288_2();
+                    break;
+                case (int) ActionTest.ACTION_ISSUE1327_LAYER:
+                    layer = new Issue1327();
+                    break;
+                case (int)ActionTest.ACTION_ISSUE1389_LAYER:
+                    layer = new Issue1389();
+                    break;
+                case (int) ActionTest.ACTION_CARDINALSPLINE_LAYER:
+                    layer = new ActionCardinalSpline();
+                    break;
+                case (int) ActionTest.ACTION_CATMULLROM_LAYER:
+                    layer = new ActionCatmullRom();
+                    break;
+                case (int) ActionTest.PAUSERESUMEACTIONS_LAYER:
+                    layer = new PauseResumeActions();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveStacked:
+                    layer = new ActionMoveStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveJumpStacked:
+                    layer = new ActionMoveJumpStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionMoveBezierStacked:
+                    layer = new ActionMoveBezierStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionCatmullRomStacked:
+                    layer = new ActionCatmullRomStacked();
+                    break;
+                case (int)ActionTest.ACTION_ActionCardinalSplineStacked:
+                    layer = new ActionCardinalSplineStacked();
+                    break;
+                case (int)ActionTest.ACTION_PARALLEL:
+                    layer = new ActionParallel();
+                    break;
+                default:
+                    break;
             }
 
-            return pLayer;
+            return layer;
         }
+
+        public static CCLayer NextAction()
+        {
+            ++actionIdx;
+            actionIdx = actionIdx % (int) ActionTest.ACTION_LAYER_COUNT;
+
+            var layer = CreateLayer(actionIdx);
+
+            return layer;
+        }
+
+        public static CCLayer BackAction()
+        {
+            --actionIdx;
+            if (actionIdx < 0)
+                actionIdx += (int) ActionTest.ACTION_LAYER_COUNT;
+
+            var layer = CreateLayer(actionIdx);
+
+            return layer;
+        }
+
+        public static CCLayer RestartAction()
+        {
+            var layer = CreateLayer(actionIdx);
+
+            return layer;
+        }
+
         protected override void NextTestCase()
         {
             NextAction();
         }
+
         protected override void PreviousTestCase()
         {
             BackAction();
         }
+
         protected override void RestTestCase()
         {
             RestartAction();
         }
 
-        public static CCLayer NextAction()
-        {
-            ++s_nActionIdx;
-            s_nActionIdx = s_nActionIdx % (int) ActionTest.ACTION_LAYER_COUNT;
-
-            var pLayer = CreateLayer(s_nActionIdx);
-
-            return pLayer;
-        }
-
-        public static CCLayer BackAction()
-        {
-            --s_nActionIdx;
-            if (s_nActionIdx < 0)
-                s_nActionIdx += (int) ActionTest.ACTION_LAYER_COUNT;
-
-            var pLayer = CreateLayer(s_nActionIdx);
-
-            return pLayer;
-        }
-
-        public static CCLayer RestartAction()
-        {
-            var pLayer = CreateLayer(s_nActionIdx);
-
-            return pLayer;
-        }
-
-
         public override void runThisTest()
         {
-            s_nActionIdx = -1;
+            actionIdx = -1;
             AddChild(NextAction());
 
             Director.ReplaceScene(this);
         }
     }
 
+
     public class ActionsDemo : CCLayer
     {
-        protected CCSprite m_grossini;
-        protected CCSprite m_kathia;
-        protected CCSprite m_tamara;
+        protected CCSprite Grossini;
+        protected CCSprite Kathia;
+        protected CCSprite Tamara;
 
         CCLabelTtf titleLabel;
         CCLabelTtf subtitleLabel;
@@ -278,54 +281,66 @@ namespace tests
         CCMenuItemImage restartMenuItem;
         CCMenuItemImage nextMenuItem;
 
-        public virtual string title()
+
+        #region Properties
+
+        public virtual string Title
         {
-            return "ActionsTest";
+            get { return "ActionsTest"; }
         }
 
-        public virtual string subtitle()
+        public virtual string Subtitle
         {
-            return "";
+            get { return ""; }
         }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public ActionsDemo()
         {
-            m_grossini = new CCSprite(TestResource.s_pPathGrossini);
-            m_tamara = new CCSprite(TestResource.s_pPathSister1);
-            m_kathia = new CCSprite(TestResource.s_pPathSister2);
+            Grossini = new CCSprite(TestResource.s_pPathGrossini);
+            Tamara = new CCSprite(TestResource.s_pPathSister1);
+            Kathia = new CCSprite(TestResource.s_pPathSister2);
 
-            AddChild(m_grossini, 1);
-            AddChild(m_tamara, 2);
-            AddChild(m_kathia, 3);
+            AddChild(Grossini, 1);
+            AddChild(Tamara, 2);
+            AddChild(Kathia, 3);
 
-
-            titleLabel = new CCLabelTtf(title(), "arial", 32);
+            titleLabel = new CCLabelTtf(Title, "arial", 32);
             AddChild(titleLabel, 1);
 
-            var strSubtitle = subtitle();
+            var strSubtitle = Subtitle;
             if (!strSubtitle.Equals(""))
             {
                 subtitleLabel = new CCLabelTtf(strSubtitle, "arial", 16);
                 AddChild(subtitleLabel, 1);   
             }
 
-            backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            restartMenuItem = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            nextMenuItem = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+            backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, BackCallback);
+            restartMenuItem = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, RestartCallback);
+            nextMenuItem = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, NextCallback);
 
             selectTestCaseMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem);
-            selectTestCaseMenu.Name = title();
+            selectTestCaseMenu.Name = Title;
 
             AddChild(selectTestCaseMenu, TestScene.MENU_LEVEL);
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            m_grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
-            m_tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
-            m_kathia.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            Grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
+            Tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
+            Kathia.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
             titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 30);
 
             if(subtitleLabel != null)
@@ -336,200 +351,261 @@ namespace tests
             restartMenuItem.Position = new CCPoint(windowSize.Width / 2, 30);
             nextMenuItem.Position = new CCPoint(windowSize.Width / 2 + 100, 30);
         }
+            
+        #endregion Setup content
 
-        public void restartCallback(object pSender)
+
+        #region Callbacks
+
+        public void RestartCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.RestartAction());
             Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public void NextCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.NextAction());
             Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public void BackCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.BackAction());
             Director.ReplaceScene(s);
         }
 
-        public void centerSprites(uint numberOfSprites)
+        #endregion Callbacks
+
+
+        protected void CenterSprites(uint numberOfSprites)
         {
             var s = Director.WindowSizeInPoints;
 
             if (numberOfSprites == 0)
             {
-                m_tamara.Visible = false;
-                m_kathia.Visible = false;
-                m_grossini.Visible = false;
+                Tamara.Visible = false;
+                Kathia.Visible = false;
+                Grossini.Visible = false;
             }
             else if (numberOfSprites == 1)
             {
-                m_tamara.Visible = false;
-                m_kathia.Visible = false;
-                m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                Tamara.Visible = false;
+                Kathia.Visible = false;
+                Grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
             }
             else if (numberOfSprites == 2)
             {
-                m_kathia.Position = new CCPoint(s.Width / 3, s.Height / 2);
-                m_tamara.Position = new CCPoint(2 * s.Width / 3, s.Height / 2);
-                m_grossini.Visible = false;
+                Kathia.Position = new CCPoint(s.Width / 3, s.Height / 2);
+                Tamara.Position = new CCPoint(2 * s.Width / 3, s.Height / 2);
+                Grossini.Visible = false;
             }
             else if (numberOfSprites == 3)
             {
-                m_grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
-                m_tamara.Position = new CCPoint(s.Width / 4, s.Height / 2);
-                m_kathia.Position = new CCPoint(3 * s.Width / 4, s.Height / 2);
+                Grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                Tamara.Position = new CCPoint(s.Width / 4, s.Height / 2);
+                Kathia.Position = new CCPoint(3 * s.Width / 4, s.Height / 2);
             }
         }
 
-        public void alignSpritesLeft(uint numberOfSprites)
+        protected void AlignSpritesLeft(uint numberOfSprites)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
             if (numberOfSprites == 1)
             {
-                m_tamara.Visible = false;
-                m_kathia.Visible = false;
-                m_grossini.Position = new CCPoint(60, s.Height / 2);
+                Tamara.Visible = false;
+                Kathia.Visible = false;
+                Grossini.Position = new CCPoint(60, s.Height / 2);
             }
             else if (numberOfSprites == 2)
             {
-                m_kathia.Position = new CCPoint(60, s.Height / 3);
-                m_tamara.Position = new CCPoint(60, 2 * s.Height / 3);
-                m_grossini.Visible = false;
+                Kathia.Position = new CCPoint(60, s.Height / 3);
+                Tamara.Position = new CCPoint(60, 2 * s.Height / 3);
+                Grossini.Visible = false;
             }
             else if (numberOfSprites == 3)
             {
-                m_grossini.Position = new CCPoint(60, s.Height / 2);
-                m_tamara.Position = new CCPoint(60, 2 * s.Height / 3);
-                m_kathia.Position = new CCPoint(60, s.Height / 3);
+                Grossini.Position = new CCPoint(60, s.Height / 2);
+                Tamara.Position = new CCPoint(60, 2 * s.Height / 3);
+                Kathia.Position = new CCPoint(60, s.Height / 3);
             }
         }
-    };
+    }
+
 
     public class ActionParallel : ActionsDemo
     {
-        public override string title()
+        #region Properties
+
+        public override string Title
         {
-            return ("CCParallel Test");
+            get { return ("CCParallel Test"); }
         }
-        public override string subtitle()
+        public override string Subtitle
         {
-            return ("Tamara - parallel move to and fade in.");
+            get { return ("Tamara - parallel move to and fade in."); }
         }
+
+        #endregion Properties
+
+
+        #region Setup content
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            centerSprites(3);
+            CenterSprites(3);
 
             var actionTo = new CCMoveTo(2, new CCPoint(windowSize.Width - 40, windowSize.Height - 40));
             var actionBy = new CCMoveBy(2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(new CCSequence(new CCParallel(actionTo, new CCFadeIn(2)), actionBy, actionByBack));
-            m_grossini.RunAction(new CCSequence(actionBy, new CCParallel(actionByBack, new CCScaleTo(2, 0.25f))));
-            m_kathia.RunAction(new CCMoveTo(1, new CCPoint(40, 40)));
+            Tamara.RunAction(new CCSequence(new CCParallel(actionTo, new CCFadeIn(2)), actionBy, actionByBack));
+            Grossini.RunAction(new CCSequence(actionBy, new CCParallel(actionByBack, new CCScaleTo(2, 0.25f))));
+            Kathia.RunAction(new CCMoveTo(1, new CCPoint(40, 40)));
         }
+
+        #endregion Setup content
     }
+
 
     public class ActionManual : ActionsDemo
     {
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Manual Transformation"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            m_tamara.ScaleX = 2.5f;
-            m_tamara.ScaleY = -1.0f;
-            m_tamara.Position = new CCPoint(100, 70);
-            m_tamara.Opacity = 128;
+            Tamara.ScaleX = 2.5f;
+            Tamara.ScaleY = -1.0f;
+            Tamara.Position = new CCPoint(100, 70);
+            Tamara.Opacity = 128;
 
-            m_grossini.Rotation = 120;
-            m_grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
-            m_grossini.Color = new CCColor3B(255, 0, 0);
+            Grossini.Rotation = 120;
+            Grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            Grossini.Color = new CCColor3B(255, 0, 0);
 
-            m_kathia.Position = new CCPoint(windowSize.Width - 100, windowSize.Height / 2);
-            m_kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
+            Kathia.Position = new CCPoint(windowSize.Width - 100, windowSize.Height / 2);
+            Kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
         }
 
-        public override string subtitle()
-        {
-            return "Manual Transformation";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionMove : ActionsDemo
     {
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "MoveTo / MoveBy"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            centerSprites(3);
+            CenterSprites(3);
 
             var actionTo = new CCMoveTo (2, new CCPoint(windowSize.Width - 40, windowSize.Height - 40));
             var actionBy = new CCMoveBy (2, new CCPoint(80, 80));
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunAction(new CCSequence(actionTo, new CCCallFunc(new Action(() =>
+            Tamara.RunAction(new CCSequence(actionTo, new CCCallFunc(new Action(() =>
                 {
-                    if ((m_tamara.Position.X != windowSize.Width - 40) || (m_tamara.Position.Y != windowSize.Height - 40))
+                    if ((Tamara.Position.X != windowSize.Width - 40) || (Tamara.Position.Y != windowSize.Height - 40))
                     {
-                        CCLog.Log("ERROR: MoveTo on tamara has failed. Position of tamara = {0}, expected = {1},{2}", m_tamara.Position, windowSize.Width - 40, windowSize.Height - 40);
+                        CCLog.Log("ERROR: MoveTo on tamara has failed. Position of tamara = {0}, expected = {1},{2}", Tamara.Position, windowSize.Width - 40, windowSize.Height - 40);
                     }
                 }))));
-            m_grossini.RunAction(new CCSequence(actionBy, actionByBack));
-            m_kathia.RunAction(new CCSequence(new CCMoveTo(1, new CCPoint(40, 40)), new CCCallFunc(new Action(() =>
+            Grossini.RunAction(new CCSequence(actionBy, actionByBack));
+            Kathia.RunAction(new CCSequence(new CCMoveTo(1, new CCPoint(40, 40)), new CCCallFunc(new Action(() =>
                 {
-                    if (m_kathia.Position.X != 40 || m_kathia.Position.Y != 40)
+                    if (Kathia.Position.X != 40 || Kathia.Position.Y != 40)
                     {
-                        CCLog.Log("ERROR: MoveTo on kathia failed. Expected 40,40 but ended at {0}", m_kathia.Position);
+                        CCLog.Log("ERROR: MoveTo on kathia failed. Expected 40,40 but ended at {0}", Kathia.Position);
                     }
                 }))));
         }
 
-        public override string subtitle()
-        {
-            return "MoveTo / MoveBy";
-        }
+        #endregion Setup content
     }
+
 
     public class ActionScale : ActionsDemo
     {
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "ScaleTo / ScaleBy"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            centerSprites(3);
+            CenterSprites(3);
 
             var actionTo = new CCScaleTo(2, 0.5f);
             var actionBy = new CCScaleBy(2, 1, 10);
             var actionBy2 = new CCScaleBy(2, 5f, 1.0f);
 
-            m_grossini.RunAction(actionTo);
-            m_tamara.RunAction(new CCSequence(actionBy, actionBy.Reverse()));
-            m_kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
+            Grossini.RunAction(actionTo);
+            Tamara.RunAction(new CCSequence(actionBy, actionBy.Reverse()));
+            Kathia.RunAction(new CCSequence(actionBy2, actionBy2.Reverse()));
         }
 
-        public override string subtitle()
-        {
-            return "ScaleTo / ScaleBy";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionSkew : ActionsDemo
     {
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "SkewTo / SkewBy"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            centerSprites(3);
+            CenterSprites(3);
 
             var actionTo = new CCSkewTo (2, 37.2f, -37.2f);
             var actionToBack = new CCSkewTo (2, 0, 0);
@@ -537,25 +613,35 @@ namespace tests
             var actionBy2 = new CCSkewBy (2, 45.0f, 45.0f);
             var actionByBack = actionBy.Reverse();
 
-            m_tamara.RunActions(actionTo, actionToBack);
-            m_grossini.RunActions(actionBy, actionByBack);
+            Tamara.RunActions(actionTo, actionToBack);
+            Grossini.RunActions(actionBy, actionByBack);
 
-            m_kathia.RunActions(actionBy2, actionBy2.Reverse());
+            Kathia.RunActions(actionBy2, actionBy2.Reverse());
         }
 
-        public override string subtitle()
-        {
-            return "SkewTo / SkewBy";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionRotationalSkew : ActionsDemo
     {
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "RotationalSkewTo / RotationalSkewBy"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            centerSprites(3);
+            CenterSprites(3);
 
             var actionTo = new CCRotateTo(2, 180, 180);
             var actionToBack = new CCRotateTo(2, 0, 0);
@@ -565,16 +651,14 @@ namespace tests
             var actionBy2 = new CCRotateBy(2, 360, 0.0f);
             var actionBy2Back = actionBy2.Reverse ();
 
-            m_tamara.RunActions(actionBy, actionByBack);
-            m_grossini.RunActions(actionTo, actionToBack);
-            m_kathia.RunActions(actionBy2, actionBy2Back);
+            Tamara.RunActions(actionBy, actionByBack);
+            Grossini.RunActions(actionTo, actionToBack);
+            Kathia.RunActions(actionBy2, actionBy2Back);
         }
 
-        public override string subtitle()
-        {
-            return "RotationalSkewTo / RotationalSkewBy";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionRotationalSkewVSStandardSkew : ActionsDemo
     {
@@ -583,6 +667,25 @@ namespace tests
 
         CCLabelTtf boxLabel1;
         CCLabelTtf boxLabel2;
+
+        CCSkewBy actionTo;
+        CCSkewBy actionToBack;
+
+        CCRotateBy actionTo2;
+        CCRotateBy actionToBack2;
+
+
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Skew Comparison"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public ActionRotationalSkewVSStandardSkew()
         {
@@ -603,24 +706,26 @@ namespace tests
 
             boxLabel2 = new CCLabelTtf("Rotational Skew", "Marker Felt", 16);
             this.AddChild(boxLabel2);
+
+            actionTo = new CCSkewBy(2, 360, 0);
+            actionToBack = new CCSkewBy(2, -360, 0);
+
+            actionTo2 = new CCRotateBy(2, 360, 0);
+            actionToBack2 = new CCRotateBy(2, -360, 0);
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            m_tamara.RemoveFromParent(true);
-            m_grossini.RemoveFromParent(true);
-            m_kathia.RemoveFromParent(true);
-
-            CCSkewBy actionTo = new CCSkewBy(2, 360, 0);
-            CCSkewBy actionToBack = new CCSkewBy(2, -360, 0);
-
-            CCRotateBy actionTo2 = new CCRotateBy(2, 360, 0);
-            CCRotateBy actionToBack2 = new CCRotateBy(2, -360, 0);
-
-            var actionBy2 = new CCRotateBy(2, 360, 0.0f);
-            var actionBy2Back = actionBy2.Reverse ();
+            Tamara.RemoveFromParent(true);
+            Grossini.RemoveFromParent(true);
+            Kathia.RemoveFromParent(true);
 
             CCSize boxSize = new CCSize(100.0f, 100.0f);
 
@@ -634,22 +739,39 @@ namespace tests
 
             boxLabel1.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 100 + boxLabel1.ContentSize.Height);
             boxLabel2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 250 + boxLabel2.ContentSize.Height / 2);
-
         }
 
-        public override string subtitle()
-        {
-            return "Skew Comparison";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionSkewRotateScale : ActionsDemo
     {
-        private const float markrside = 10.0f;
+        const float markrside = 10.0f;
 
         CCLayerColor box;
         CCLayerColor uL;
         CCLayerColor uR;
+
+        CCSkewTo actionTo;
+        CCRotateTo rotateTo;
+        CCScaleTo actionScaleTo;
+
+        CCScaleTo actionScaleToBack;
+        CCRotateTo rotateToBack;
+        CCSkewTo actionToBack;
+
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Skew + Rotate + Scale"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public ActionSkewRotateScale()
         {
@@ -665,15 +787,28 @@ namespace tests
             box.AddChild(uR);
 
             AddChild(box);
+
+            actionTo = new CCSkewTo (2, 0.0f, 2.0f);
+            rotateTo = new CCRotateTo (2, 61.0f);
+            actionScaleTo = new CCScaleTo(2, -0.44f, 0.47f);
+
+            actionScaleToBack = new CCScaleTo(2, 1.0f, 1.0f);
+            rotateToBack = new CCRotateTo (2, 0);
+            actionToBack = new CCSkewTo (2, 0, 0);
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
 
-            m_tamara.RemoveFromParent(true);
-            m_grossini.RemoveFromParent(true);
-            m_kathia.RemoveFromParent(true);
+            Tamara.RemoveFromParent(true);
+            Grossini.RemoveFromParent(true);
+            Kathia.RemoveFromParent(true);
 
             var boxSize = new CCSize(100.0f, 100.0f);
 
@@ -686,206 +821,327 @@ namespace tests
             uR.ContentSize = new CCSize(markrside, markrside);
             uR.Position = new CCPoint(boxSize.Width - markrside, boxSize.Height - markrside);
 
-
-            var actionTo = new CCSkewTo (2, 0.0f, 2.0f);
-            var rotateTo = new CCRotateTo (2, 61.0f);
-            var actionScaleTo = new CCScaleTo(2, -0.44f, 0.47f);
-
-            var actionScaleToBack = new CCScaleTo(2, 1.0f, 1.0f);
-            var rotateToBack = new CCRotateTo (2, 0);
-            var actionToBack = new CCSkewTo (2, 0, 0);
-
             box.RunActions(actionTo, actionToBack);
             box.RunActions(rotateTo, rotateToBack);
             box.RunActions(actionScaleTo, actionScaleToBack);
         }
 
-        public override string subtitle()
-        {
-            return "Skew + Rotate + Scale";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionRotate : ActionsDemo
     {
-        public override void OnEnter()
+        CCRotateTo actionTo;
+        CCRotateTo actionTo2;
+        CCRotateTo actionTo0;
+        CCRotateBy actionBy;
+        CCRotateBy actionByBack;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(3);
-
-            var actionTo = new CCRotateTo (2, 45);
-            var actionTo2 = new CCRotateTo (2, -45);
-            var actionTo0 = new CCRotateTo (2, 0);
-            m_tamara.RunActions(actionTo, actionTo0);
-
-            var actionBy = new CCRotateBy (2, 360);
-            var actionByBack = actionBy.Reverse();
-            m_grossini.RunActions(actionBy, actionByBack);
-
-            // m_kathia->runAction( CCSequence::actions(actionTo2, actionTo0->copy()->autorelease(), NULL));
-            m_kathia.RunActions(actionTo2, actionTo0);
+            get { return "RotateTo / RotateBy"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionRotate()
         {
-            return "RotateTo / RotateBy";
+            actionTo = new CCRotateTo (2, 45);
+            actionTo2 = new CCRotateTo (2, -45);
+            actionTo0 = new CCRotateTo (2, 0);
+            actionBy = new CCRotateBy (2, 360);
+            actionByBack = (CCRotateBy)actionBy.Reverse();
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
+
+            Tamara.RunActions(actionTo, actionTo0);
+            Grossini.RunActions(actionBy, actionByBack);
+            Kathia.RunActions(actionTo2, actionTo0);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionJump : ActionsDemo
     {
-        public override void OnEnter()
+        CCJumpTo actionTo;
+        CCJumpBy actionBy;
+        CCJumpBy actionUp;
+        CCJumpBy actionByBack;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(3);
-
-            var actionTo = new CCJumpTo (2, new CCPoint(300, 300), 50, 4);
-            var actionBy = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
-            var actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
-            var actionByBack = actionBy.Reverse();
-
-            m_tamara.RunAction (actionTo);
-            m_grossini.RunActions (actionBy, actionByBack);
-            m_kathia.RepeatForever (actionUp);
+            get { return "JumpTo / JumpBy"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionJump()
         {
-            return "JumpTo / JumpBy";
+            actionTo = new CCJumpTo (2, new CCPoint(300, 300), 50, 4);
+            actionBy = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
+            actionUp = new CCJumpBy (2, new CCPoint(0, 0), 80, 4);
+            actionByBack = (CCJumpBy)actionBy.Reverse();
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
+
+            Tamara.RunAction (actionTo);
+            Grossini.RunActions (actionBy, actionByBack);
+            Kathia.RepeatForever (actionUp);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionBezier : ActionsDemo
     {
-        public override void OnEnter()
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "BezierBy / BezierTo"; }
+        }
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
 
-            //
-            // startPosition can be any coordinate, but since the movement
-            // is relative to the Bezier curve, make it (0,0)
-            //
 
-            centerSprites(3);
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
 
             // sprite 1
             CCBezierConfig bezier;
-            bezier.ControlPoint1 = new CCPoint(0, s.Height / 2);
-            bezier.ControlPoint2 = new CCPoint(300, -s.Height / 2);
+            bezier.ControlPoint1 = new CCPoint(0, windowSize.Height / 2);
+            bezier.ControlPoint2 = new CCPoint(300, -windowSize.Height / 2);
             bezier.EndPosition = new CCPoint(300, 100);
 
-            var bezierForward = new CCBezierBy (3, bezier);
+            var bezierForward = new CCBezierBy(3, bezier);
             var bezierBack = bezierForward.Reverse();
             var rep = new CCRepeatForever (bezierForward, bezierBack);
 
 
             // sprite 2
-            m_tamara.Position = new CCPoint(80, 160);
+            Tamara.Position = new CCPoint(80, 160);
             CCBezierConfig bezier2;
-            bezier2.ControlPoint1 = new CCPoint(100, s.Height / 2);
-            bezier2.ControlPoint2 = new CCPoint(200, -s.Height / 2);
+            bezier2.ControlPoint1 = new CCPoint(100, windowSize.Height / 2);
+            bezier2.ControlPoint2 = new CCPoint(200, -windowSize.Height / 2);
             bezier2.EndPosition = new CCPoint(240, 160);
 
             var bezierTo1 = new CCBezierTo (2, bezier2);
 
             // sprite 3
-            m_kathia.Position = new CCPoint(400, 160);
+            Kathia.Position = new CCPoint(400, 160);
             var bezierTo2 = new CCBezierTo (2, bezier2);
 
-            m_grossini.RunAction(rep);
-            m_tamara.RunAction(bezierTo1);
-            m_kathia.RunAction(bezierTo2);
+            Grossini.RunAction(rep);
+            Tamara.RunAction(bezierTo1);
+            Kathia.RunAction(bezierTo2);
         }
 
-        public override string subtitle()
-        {
-            return "BezierBy / BezierTo";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionBlink : ActionsDemo
     {
-        public override void OnEnter()
+        CCBlink action1;
+        CCBlink action2;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(2);
-
-            var action1 = new CCBlink (2, 10);
-            var action2 = new CCBlink (2, 5);
-
-            m_tamara.RunAction(action1);
-            m_kathia.RunAction(action2);
+            get { return "Blink"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionBlink()
         {
-            return "Blink";
+            action1 = new CCBlink(2, 10);
+            action2 = new CCBlink(2, 5);
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(action1);
+            Kathia.RunAction(action2);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionFade : ActionsDemo
     {
-        public override void OnEnter()
+        CCFadeIn action1;
+        CCFiniteTimeAction action1Back;
+
+        CCFadeOut action2;
+        CCFiniteTimeAction action2Back;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(2);
-
-            m_tamara.Opacity = 0;
-            var action1 = new CCFadeIn  (1.0f);
-            var action1Back = action1.Reverse();
-
-            var action2 = new CCFadeOut  (1.0f);
-            var action2Back = action2.Reverse();
-
-            m_tamara.RunActions(action1, action1Back);
-            m_kathia.RunActions(action2, action2Back);
+            get { return "FadeIn / FadeOut"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionFade()
         {
-            return "FadeIn / FadeOut";
+            action1 = new CCFadeIn(1.0f);
+            action1Back = action1.Reverse();
+
+            action2 = new CCFadeOut(1.0f);
+            action2Back = action2.Reverse();
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.Opacity = 0;
+            Tamara.RunActions(action1, action1Back);
+            Kathia.RunActions(action2, action2Back);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionTint : ActionsDemo
     {
-        public override void OnEnter()
+        CCTintTo action1;
+        CCTintBy action2;
+        CCFiniteTimeAction action2Back;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(2);
-
-            var action1 = new CCTintTo (2, 255, 0, 255);
-            var action2 = new CCTintBy (2, -127, -255, -127);
-            var action2Back = action2.Reverse();
-
-            m_tamara.RunAction(action1);
-            m_kathia.RunActions (action2, action2Back);
+            get { return "TintTo / TintBy"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionTint()
         {
-            return "TintTo / TintBy";
+            action1 = new CCTintTo (2, 255, 0, 255);
+            action2 = new CCTintBy (2, -127, -255, -127);
+            action2Back = action2.Reverse();
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(action1);
+            Kathia.RunActions(action2, action2Back);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionAnimate : ActionsDemo
     {
-        public override void OnEnter()
+        CCAnimate action;
+        CCAnimate action2;
+        CCAnimate action3;
+
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "Animation"; }
+        }
 
-            centerSprites(3);
+        public override string Subtitle
+        {
+            get { return "Center: Manual animation. Border: using file format animation"; }
+        }
 
-            //
-            // Manual animation
-            //
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionAnimate()
+        {
             var animation = new CCAnimation();
             for (var i = 1; i < 15; i++)
             {
@@ -893,553 +1149,828 @@ namespace tests
                 animation.AddSpriteFrame(szName);
             }
 
-            // should last 2.8 seconds. And there are 14 frames.
+            // Should last 2.8 seconds. And there are 14 frames.
             animation.DelayPerUnit = 2.8f / 14.0f;
             animation.RestoreOriginalFrame = true;
 
-            var action = new CCAnimate (animation);
-            m_grossini.RunAction(new CCSequence(action, action.Reverse()));
+            action = new CCAnimate(animation);
 
-            //
-            // File animation
-            //
-            // With 2 loops and reverse
             var cache = CCApplication.SharedApplication.AnimationCache;
             cache.AddAnimations("animations/animations-2.plist");
             var animation2 = cache["dance_1"];
 
-            var action2 = new CCAnimate (animation2);
-            m_tamara.RunAction(new CCSequence(action2, action2.Reverse()));
+            action2 = new CCAnimate (animation2);
 
-            // TODO:
-            //     observer_ = [[NSNotificationCenter defaultCenter] addObserverForName:CCAnimationFrameDisplayedNotification object:nil queue:nil usingBlock:^(NSNotification* notification) {
-            // 
-            //         NSDictionary *userInfo = [notification userInfo];
-            //         NSLog(@"object %@ with data %@", [notification object], userInfo );
-            //     }];
-
-
-            //
-            // File animation
-            //
-            // with 4 loops
             var animation3 = animation2.Copy();
             animation3.Loops = 4;
 
-
-            var action3 = new CCAnimate (animation3);
-            m_kathia.RunAction(action3);
+            action3 = new CCAnimate (animation3);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Animation";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
+
+            Grossini.RunAction(new CCSequence(action, action.Reverse()));
+            Tamara.RunAction(new CCSequence(action2, action2.Reverse()));
+            Kathia.RunAction(action3);
         }
 
-        public override string subtitle()
-        {
-            return "Center: Manual animation. Border: using file format animation";
-        }
+        #endregion Setup content
     }
+
 
     public class ActionSequence : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            alignSpritesLeft(1);
-
-            var action = new CCSequence(
-                new CCMoveBy (2, new CCPoint(240, 0)),
-                new CCRotateBy (2, 540));
-
-            m_grossini.RunAction(action);
+            get { return "Sequence: Move + Rotate"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionSequence()
         {
-            return "Sequence: Move + Rotate";
+            action = new CCSequence(new CCMoveBy (2, new CCPoint(240, 0)), new CCRotateBy (2, 540));
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+
+            Grossini.RunAction(action);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionSequence2 : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Sequence of InstantActions"; }
+        }
 
-            alignSpritesLeft(1);
+        #endregion Properties
 
-            m_grossini.Visible = false;
 
-            var action = new CCSequence(
+        #region Constructors
+
+        public ActionSequence2()
+        {
+            action = new CCSequence(
                 new CCPlace(new CCPoint(200, 200)),
                 new CCShow(),
                 new CCMoveBy (1, new CCPoint(100, 0)),
-                new CCCallFunc(callback1),
-                new CCCallFuncN(callback2),
-                new CCCallFuncND(callback3, 0xbebabeba));
-
-            m_grossini.RunAction(action);
+                new CCCallFunc(Callback1),
+                new CCCallFuncN(Callback2),
+                new CCCallFuncND(Callback3, 0xbebabeba));
         }
 
-        public void callback1()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+
+            Grossini.Visible = false;
+            Grossini.RunAction(action);
+        }
+
+        #endregion Setup content
+
+
+        #region Callbacks
+
+        void Callback1()
+        {
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
         }
 
-        public void callback2(CCNode sender)
+        void Callback2(CCNode sender)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
         }
 
-        public void callback3(CCNode sender, object data)
+        void Callback3(CCNode sender, object data)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
             AddChild(label);
         }
 
-        public override string subtitle()
-        {
-            return "Sequence of InstantActions";
-        }
-    };
+        #endregion Callbacks
+    }
+
 
     public class ActionCallFunc : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        #region Properties
 
-            centerSprites(3);
+        public override string Subtitle
+        {
+            get { return "Callbacks: CallFunc and friends"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
 
             var action = new CCSequence(
                 new CCMoveBy (2, new CCPoint(200, 0)),
-                new CCCallFunc(callback1));
+                new CCCallFunc(Callback1));
 
             var action2 = new CCSequence(
                 new CCScaleBy(2, 2),
                 new CCFadeOut  (2),
-                new CCCallFuncN(callback2));
+                new CCCallFuncN(Callback2));
 
             var action3 = new CCSequence(
                 new CCRotateBy (3, 360),
                 new CCFadeOut  (2),
-                new CCCallFuncND(callback3, 0xbebabeba));
+                new CCCallFuncND(Callback3, 0xbebabeba));
 
-            m_grossini.RunAction(action);
-            m_tamara.RunAction(action2);
-            m_kathia.RunAction(action3);
+            Grossini.RunAction(action);
+            Tamara.RunAction(action2);
+            Kathia.RunAction(action3);
         }
 
+        #endregion Setup content
 
-        public void callback1()
+
+        #region Callbacks
+
+        void Callback1()
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
             AddChild(label);
         }
 
-        public void callback2(CCNode pSender)
+        void Callback2(CCNode sender)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
             AddChild(label);
         }
 
-        public void callback3(CCNode target, object data)
+        void Callback3(CCNode target, object data)
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
         }
 
-        public override string subtitle()
-        {
-            return "Callbacks: CallFunc and friends";
-        }
-    };
+        #endregion Callbacks
+    }
+
 
     public class ActionCallFuncND : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "CallFuncND + auto remove"; }
+        }
 
-            centerSprites(1);
+        public override string Subtitle
+        {
+            get { return "CallFuncND + removeFromParentAndCleanup. Grossini dissapears in 2s"; }
+        }
 
-            var action = new CCSequence(
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionCallFuncND()
+        {
+            action = new CCSequence(
                 new CCMoveBy (2.0f, new CCPoint(200, 0)),
-                new CCCallFuncND(removeFromParentAndCleanup, true)
+                new CCCallFuncND(RemoveFromParentAndCleanup, true)
             );
-
-            m_grossini.RunAction(action);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "CallFuncND + auto remove";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(1);
+
+            Grossini.RunAction(action);
         }
 
-        public override string subtitle()
-        {
-            return "CallFuncND + removeFromParentAndCleanup. Grossini dissapears in 2s";
-        }
+        #endregion Setup content
 
-        private void removeFromParentAndCleanup(CCNode pSender, object data)
+
+        void RemoveFromParentAndCleanup(CCNode sender, object data)
         {
-            var bCleanUp = (bool) data;
-            m_grossini.RemoveFromParent(bCleanUp);
+            var cleanUp = (bool) data;
+            Grossini.RemoveFromParent(cleanUp);
         }
     }
 
+
     public class ActionSpawn : ActionsDemo
     {
-        public override void OnEnter()
+        CCSpawn action;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            alignSpritesLeft(1);
-
-            var action = new CCSpawn(
-                new CCJumpBy (2, new CCPoint(300, 0), 50, 4),
-                new CCRotateBy (2, 720));
-
-            m_grossini.RunAction(action);
+            get { return "Spawn: Jump + Rotate"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionSpawn()
         {
-            return "Spawn: Jump + Rotate";
+            action = new CCSpawn(new CCJumpBy (2, new CCPoint(300, 0), 50, 4), new CCRotateBy (2, 720));
         }
-    };
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+            Grossini.RunAction(action);
+        }
+
+        #endregion Setup content
+    }
+
 
     public class ActionRepeatForever : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+        CCRepeatForever repeat;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
-
-            centerSprites(1);
-
-            var action = new CCSequence(
-                new CCDelayTime (1),
-                new CCCallFuncN(repeatForever));
-
-            m_grossini.RunAction(action);
+            get { return "CallFuncN + RepeatForever"; }
         }
 
-        public void repeatForever(CCNode pSender)
-        {
-            var repeat = new CCRepeatForever (new CCRotateBy (1.0f, 360));
+        #endregion Properties
 
-            pSender.RunAction(repeat);
+
+        #region Constructors
+
+        public ActionRepeatForever()
+        {
+            action = new CCSequence(new CCDelayTime (1), new CCCallFuncN(RepeatForever));
+            repeat = new CCRepeatForever(new CCRotateBy(1.0f, 360));
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "CallFuncN + RepeatForever";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(1);
+            Grossini.RunAction(action);
         }
-    };
+
+        #endregion Setup content
+
+
+        public void RepeatForever(CCNode sender)
+        {
+            sender.RunAction(repeat);
+        }
+    }
+
 
     public class ActionRotateToRepeat : ActionsDemo
     {
-        public override void OnEnter()
+        CCRepeatForever rep1;
+        CCRepeat rep2;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Repeat/RepeatForever + RotateTo"; }
+        }
 
-            centerSprites(2);
+        #endregion Properties
 
-            var act1 = new CCRotateTo (1, 90);
-            var act2 = new CCRotateTo (1, 0);
+
+        #region Constructors
+
+        public ActionRotateToRepeat()
+        {
+            var act1 = new CCRotateTo(1, 90);
+            var act2 = new CCRotateTo(1, 0);
             var seq = new CCSequence(act1, act2);
-            var rep1 = new CCRepeatForever (seq);
-            var rep2 = new CCRepeat (seq, 10);
 
-            m_tamara.RunAction(rep1);
-            m_kathia.RunAction(rep2);
+            rep1 = new CCRepeatForever(seq);
+            rep2 = new CCRepeat(seq, 10);
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Repeat/RepeatForever + RotateTo";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(rep1);
+            Kathia.RunAction(rep2);
         }
-    };
+
+        #endregion Setup content
+    }
+
 
     public class ActionRotateJerk : ActionsDemo
     {
-        public override void OnEnter()
+        CCRepeat rep1;
+        CCRepeatForever rep2;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "RepeatForever / Repeat + Rotate"; }
+        }
 
-            centerSprites(2);
+        #endregion Properties
 
+
+        #region Constructors
+
+        public ActionRotateJerk()
+        {
             var seq = new CCSequence(
                 new CCRotateTo (0.5f, -20),
                 new CCRotateTo (0.5f, 20));
 
-            var rep1 = new CCRepeat (seq, 10);
-            var rep2 = new CCRepeatForever (seq);
-
-            m_tamara.RunAction(rep1);
-            m_kathia.RunAction(rep2);
+            rep1 = new CCRepeat (seq, 10);
+            rep2 = new CCRepeatForever (seq);
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "RepeatForever / Repeat + Rotate";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(rep1);
+            Kathia.RunAction(rep2);
         }
-    };
+
+        #endregion Setup content
+    }
+
 
     public class ActionReverse : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        #region Properties
 
-            alignSpritesLeft(1);
+        public override string Subtitle
+        {
+            get { return "Reverse an action"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
 
             var jump = new CCJumpBy (2, new CCPoint(300, 0), 50, 4);
             var action = new CCSequence(jump, jump.Reverse());
 
-            m_grossini.RunAction(action);
+            Grossini.RunAction(action);
         }
 
-        public override string subtitle()
-        {
-            return "Reverse an action";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionDelayTime : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "DelayTime: m + delay + m"; }
+        }
 
-            alignSpritesLeft(1);
+        #endregion Properties
 
+
+        #region Constructors
+
+        public ActionDelayTime()
+        {
             var move = new CCMoveBy (1, new CCPoint(150, 0));
-            var action = new CCSequence(move, new CCDelayTime (2), move);
-
-            m_grossini.RunAction(action);
+            action = new CCSequence(move, new CCDelayTime (2), move);
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "DelayTime: m + delay + m";
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+            Grossini.RunAction(action);
         }
-    };
+
+        #endregion Setup content
+    }
+
 
     public class ActionReverseSequence : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        CCSequence action;
 
-            alignSpritesLeft(1);
+        #region Properties
+
+        public override string Subtitle
+        {
+            get { return "Reverse a sequence"; } 
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public ActionReverseSequence()
+        {
 
             var move1 = new CCMoveBy (1, new CCPoint(250, 0));
             var move2 = new CCMoveBy (1, new CCPoint(0, 50));
             var seq = new CCSequence(move1, move2, move1.Reverse());
-            var action = new CCSequence(seq, seq.Reverse());
-
-            m_grossini.RunAction(action);
+            action = new CCSequence(seq, seq.Reverse());
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Reverse a sequence";
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+            Grossini.RunAction(action);
         }
-    };
+
+        #endregion Setup content
+    }
+
 
     public class ActionReverseSequence2 : ActionsDemo
     {
-        public override void OnEnter()
+        CCRepeat action;
+        CCSequence seq_tamara;
+        CCFiniteTimeAction seq_back;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Reverse sequence 2"; } 
+        }
 
-            alignSpritesLeft(2);
+        #endregion Properties
 
-            // Test:
-            //   Sequence should work both with IntervalAction and InstantActions
+
+        #region Constructors
+
+        public ActionReverseSequence2()
+        {
             var move1 = new CCMoveBy (1, new CCPoint(250, 0));
             var move2 = new CCMoveBy (1, new CCPoint(0, 50));
             var toggle = new CCToggleVisibility();
-
             var seq = new CCSequence(move1, toggle, move2, toggle, move1.Reverse());
-
-            var action = new CCRepeat ((new CCSequence(seq, seq.Reverse())), 3);
-
-            // Test:
-            //   Also test that the reverse of Hide is Show, and vice-versa
-            m_kathia.RunAction(action);
+            action = new CCRepeat ((new CCSequence(seq, seq.Reverse())), 3);
 
             var move_tamara = new CCMoveBy (1, new CCPoint(100, 0));
             var move_tamara2 = new CCMoveBy (1, new CCPoint(50, 0));
             var hide = new CCHide();
-            var seq_tamara = new CCSequence(move_tamara, hide, move_tamara2);
-            var seq_back = seq_tamara.Reverse();
-            m_tamara.RunAction(new CCSequence(seq_tamara, seq_back));
+
+            seq_tamara = new CCSequence(move_tamara, hide, move_tamara2);
+            seq_back = seq_tamara.Reverse();
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Reverse sequence 2";
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(2);
+            Kathia.RunAction(action);
+            Tamara.RunAction(new CCSequence(seq_tamara, seq_back));
         }
+
+        #endregion Setup content
     }
+
 
     public class ActionRepeat : ActionsDemo
     {
-        public override void OnEnter()
+        CCMoveBy a1;
+        CCFiniteTimeAction a1Reverse;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Repeat / RepeatForever actions"; }
+        }
 
-            alignSpritesLeft(2);
+        #endregion Properties
 
-            var a1 = new CCMoveBy (1, new CCPoint(150, 0));
+
+        #region Constructors
+
+        public ActionRepeat()
+        {
+            a1 = new CCMoveBy (1, new CCPoint(150, 0));
+            a1Reverse = a1.Reverse();
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(2);
 
             // Repeat 3 times the Move to position (CCPlace) and then the MoveBy
-            m_kathia.Repeat(3, new CCPlace(new CCPoint(60, 60)), a1);
+            Kathia.Repeat(3, new CCPlace(new CCPoint(60, 60)), a1);
 
             // Repeat forever the MoveBy
-            m_tamara.RepeatForever(a1, a1.Reverse());
+            Tamara.RepeatForever(a1, a1Reverse);
         }
 
-        public override string subtitle()
-        {
-            return "Repeat / RepeatForever actions";
-        }
-    };
+        #endregion Setup content
+    }
+
 
     public class ActionOrbit : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action1;
+        CCSequence action2;
+        CCSequence action3;
+        CCRepeatForever rfe;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            // todo : CCOrbitCamera hasn't been implement
+            get { return "OrbitCamera action"; }
+        }
 
-            base.OnEnter();
+        #endregion Properties
 
-            centerSprites(3);
 
+        #region Constructors
+
+        public ActionOrbit()
+        {
             var orbit1 = new CCOrbitCamera(2, 1, 0, 0, 180, 0, 0);
-            var action1 = new CCSequence(orbit1,orbit1.Reverse());
+            action1 = new CCSequence(orbit1,orbit1.Reverse());
 
             var orbit2 = new CCOrbitCamera(2, 1, 0, 0, 180, -45, 0);
-            var action2 = new CCSequence(orbit2, orbit2.Reverse());
+            action2 = new CCSequence(orbit2, orbit2.Reverse());
 
             var orbit3 = new CCOrbitCamera(2, 1, 0, 0, 180, 90, 0);
-            var action3 = new CCSequence(orbit3, orbit3.Reverse());
-
-            m_kathia.RunAction(new CCRepeatForever (action1));
-            m_tamara.RunAction(new CCRepeatForever (action2));
-            m_grossini.RunAction(new CCRepeatForever (action3));
+            action3 = new CCSequence(orbit3, orbit3.Reverse());
 
             var move = new CCMoveBy (3, new CCPoint(100, -100));
             var move_back = move.Reverse();
             var seq = new CCSequence(move, move_back);
-            var rfe = new CCRepeatForever (seq);
-            m_kathia.RunAction(rfe);
-            m_tamara.RunAction(rfe);
-            m_grossini.RunAction(rfe);
+            rfe = new CCRepeatForever (seq);
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "OrbitCamera action";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(3);
+
+            Kathia.RunAction(new CCRepeatForever (action1));
+            Tamara.RunAction(new CCRepeatForever (action2));
+            Grossini.RunAction(new CCRepeatForever (action3));
+
+            Kathia.RunAction(rfe);
+            Tamara.RunAction(rfe);
+            Grossini.RunAction(rfe);
         }
-    };
+
+        #endregion Setup content
+    }
+
 
     public class ActionFollow : ActionsDemo
     {
-        public override void OnEnter()
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Follow action"; } 
+        }
 
-            centerSprites(1);
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
 
-            m_grossini.Position = new CCPoint(-200, s.Height / 2);
-            var move = new CCMoveBy (2, new CCPoint(s.Width * 3, 0));
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(1);
+
+            Grossini.Position = new CCPoint(-200, windowSize.Height / 2);
+            var move = new CCMoveBy (2, new CCPoint(windowSize.Width * 3, 0));
             var move_back = move.Reverse();
             var seq = new CCSequence(move, move_back);
-            var rep = new CCRepeatForever (seq);
+            var rep = new CCRepeatForever(seq);
 
-            m_grossini.RunAction(rep);
+            Grossini.RunAction(rep);
 
-            RunAction(new CCFollow (m_grossini, new CCRect(0, 0, s.Width * 2 - 100, s.Height)));
+            RunAction(new CCFollow (Grossini, new CCRect(0, 0, windowSize.Width * 2 - 100, windowSize.Height)));
         }
 
-        public override string subtitle()
-        {
-            return "Follow action";
-        }
+        #endregion Setup content
     }
 
 
     public class ActionCardinalSpline : ActionsDemo
     {
-        private readonly List<CCPoint> m_pArray = new List<CCPoint>();
+        readonly List<CCPoint> pointList = new List<CCPoint>();
 
-        public override void OnEnter()
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "CardinalSplineBy / CardinalSplineAt"; }
+        }
 
-            centerSprites(2);
+        public override string Subtitle
+        {
+            get { return "Cardinal Spline paths. Testing different tensions for one array"; }
+        }
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
 
-            m_pArray.Add(new CCPoint(0, 0));
-            m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
-            m_pArray.Add(new CCPoint(s.Width / 2 - 30, s.Height - 80));
-            m_pArray.Add(new CCPoint(0, s.Height - 80));
-            m_pArray.Add(new CCPoint(0, 0));
 
-            //
-            // sprite 1 (By)
-            //
-            // Spline with no tension (tension==0)
-            //
+        #region Setup content
 
-            var action = new CCCardinalSplineBy (3, m_pArray, 0);
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            pointList.Clear();
+
+            pointList.Add(new CCPoint(0, 0));
+            pointList.Add(new CCPoint(windowSize.Width / 2 - 30, 0));
+            pointList.Add(new CCPoint(windowSize.Width / 2 - 30, windowSize.Height - 80));
+            pointList.Add(new CCPoint(0, windowSize.Height - 80));
+            pointList.Add(new CCPoint(0, 0));
+
+            var action = new CCCardinalSplineBy (3, pointList, 0);
             var reverse = action.Reverse();
 
             var seq = new CCSequence(action, reverse);
 
-            m_tamara.Position = new CCPoint(50, 50);
-            m_tamara.RunAction(seq);
-
-            //
-            // sprite 2 (By)
-            //
-            // Spline with high tension (tension==1)
-            //
-
-            var action2 = new CCCardinalSplineBy (3, m_pArray, 1);
+            var action2 = new CCCardinalSplineBy (3, pointList, 1);
             var reverse2 = action2.Reverse();
 
             var seq2 = new CCSequence(action2, reverse2);
 
-            m_kathia.SetPosition(s.Width / 2, 50);
-            m_kathia.RunAction(seq2);
+            Tamara.Position = new CCPoint(50, 50);
+            Tamara.RunAction(seq);
+
+            Kathia.SetPosition(windowSize.Width / 2, 50);
+            Kathia.RunAction(seq2);
         }
+
+        #endregion Setup content
+
 
         protected override void Draw()
         {
@@ -1448,89 +1979,83 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
-            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
+            CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
             CCDrawManager.PopMatrix();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
-            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 1, 100);
+            CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
             CCDrawManager.PopMatrix();
-        }
-
-        public override string title()
-        {
-            return "CardinalSplineBy / CardinalSplineAt";
-        }
-
-        public override string subtitle()
-        {
-            return "Cardinal Spline paths. Testing different tensions for one array";
         }
     }
 
+
     public class ActionCatmullRom : ActionsDemo
     {
-        private readonly List<CCPoint> m_pArray = new List<CCPoint>();
-        private readonly List<CCPoint> m_pArray2 = new List<CCPoint>();
+        readonly List<CCPoint> pointList = new List<CCPoint>();
+        readonly List<CCPoint> pointList2 = new List<CCPoint>();
 
-        public override void OnEnter()
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "CatmullRomBy / CatmullRomTo"; }
+        }
 
-            centerSprites(2);
+        public override string Subtitle
+        {
+            get { return "Catmull Rom spline paths. Testing reverse too"; }
+        }
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
 
-            //
-            // sprite 1 (By)
-            //
-            // startPosition can be any coordinate, but since the movement
-            // is relative to the Catmull Rom curve, it is better to start with (0,0).
-            //
 
-            m_tamara.Position = new CCPoint(50, 50);
+        #region Setup content
 
-            m_pArray.Clear();
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
 
-            m_pArray.Add(new CCPoint(0, 0));
-            m_pArray.Add(new CCPoint(80, 80));
-            m_pArray.Add(new CCPoint(s.Width - 80, 80));
-            m_pArray.Add(new CCPoint(s.Width - 80, s.Height - 80));
-            m_pArray.Add(new CCPoint(80, s.Height - 80));
-            m_pArray.Add(new CCPoint(80, 80));
-            m_pArray.Add(new CCPoint(s.Width / 2, s.Height / 2));
+            CenterSprites(2);
 
-            var action = new CCCatmullRomBy (3, m_pArray);
+            Tamara.Position = new CCPoint(50, 50);
+
+            pointList.Clear();
+
+            pointList.Add(new CCPoint(0, 0));
+            pointList.Add(new CCPoint(80, 80));
+            pointList.Add(new CCPoint(windowSize.Width - 80, 80));
+            pointList.Add(new CCPoint(windowSize.Width - 80, windowSize.Height - 80));
+            pointList.Add(new CCPoint(80, windowSize.Height - 80));
+            pointList.Add(new CCPoint(80, 80));
+            pointList.Add(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+
+            var action = new CCCatmullRomBy (3, pointList);
             var reverse = action.Reverse();
-
             CCFiniteTimeAction seq = new CCSequence(action, reverse);
 
-            m_tamara.RunAction(seq);
+            pointList2.Clear();
 
-            //
-            // sprite 2 (To)
-            //
-            // The startPosition is not important here, because it uses a "To" action.
-            // The initial position will be the 1st point of the Catmull Rom path
-            //    
+            pointList2.Add(new CCPoint(windowSize.Width / 2, 30));
+            pointList2.Add(new CCPoint(windowSize.Width - 80, 30));
+            pointList2.Add(new CCPoint(windowSize.Width - 80, windowSize.Height - 80));
+            pointList2.Add(new CCPoint(windowSize.Width / 2, windowSize.Height - 80));
+            pointList2.Add(new CCPoint(windowSize.Width / 2, 30));
 
-            m_pArray2.Clear();
-
-            m_pArray2.Add(new CCPoint(s.Width / 2, 30));
-            m_pArray2.Add(new CCPoint(s.Width - 80, 30));
-            m_pArray2.Add(new CCPoint(s.Width - 80, s.Height - 80));
-            m_pArray2.Add(new CCPoint(s.Width / 2, s.Height - 80));
-            m_pArray2.Add(new CCPoint(s.Width / 2, 30));
-
-            var action2 = new CCCatmullRomTo (3, m_pArray2);
+            var action2 = new CCCatmullRomTo (3, pointList2);
             var reverse2 = action2.Reverse();
 
             CCFiniteTimeAction seq2 = new CCSequence(action2, reverse2);
 
-            m_kathia.RunAction(seq2);
+            Tamara.RunAction(seq);
+            Kathia.RunAction(seq2);
         }
+
+        #endregion Setup content
+
 
         protected override void Draw()
         {
@@ -1539,75 +2064,105 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
-            CCDrawingPrimitives.DrawCatmullRom(m_pArray, 50);
+            CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
             CCDrawManager.PopMatrix();
 
-            CCDrawingPrimitives.DrawCatmullRom(m_pArray2, 50);
-        }
-
-        public override string title()
-        {
-            return "CatmullRomBy / CatmullRomTo";
-        }
-
-        public override string subtitle()
-        {
-            return "Catmull Rom spline paths. Testing reverse too";
+            CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
         }
     }
+
 
     public class ActionTargeted : ActionsDemo
     {
-        public override void OnEnter()
+        CCRepeatForever always;
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "ActionTargeted"; }
+        }
 
-            centerSprites(2);
+        public override string Subtitle
+        {
+            get { return "Action that runs on another target. Useful for sequences"; }
+        }
 
-            var jump1 = new CCJumpBy (2, CCPoint.Zero, 100, 3);
-            var rot1 = new CCRotateBy (1, 360);
+        #endregion Properties
 
-            var t1 = new CCTargetedAction (m_kathia, jump1);
-            var t2 = new CCTargetedAction (m_kathia, rot1);
+
+        #region Constructors
+
+        public ActionTargeted()
+        {
+            var jump1 = new CCJumpBy(2, CCPoint.Zero, 100, 3);
+            var rot1 = new CCRotateBy(1, 360);
+
+            var t1 = new CCTargetedAction (Kathia, jump1);
+            var t2 = new CCTargetedAction (Kathia, rot1);
 
 
             var seq = new CCSequence(jump1, t1, rot1, t2);
-            var always = new CCRepeatForever (seq);
-
-            m_tamara.RunAction(always);
+            always = new CCRepeatForever (seq);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "ActionTargeted";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(always);
         }
 
-        public override string subtitle()
-        {
-            return "Action that runs on another target. Useful for sequences";
-        }
+        #endregion Setup content
     }
+
 
     #region ActionStacked
 
     public class ActionStacked : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        #region Properties
 
-            centerSprites(0);
+        public override string Title
+        {
+            get { return "Override me"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Tap screen"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
 
             var listener = new CCEventListenerTouchAllAtOnce();
-            listener.OnTouchesEnded = onTouchesEnded;
+            listener.OnTouchesEnded = OnTouchesEnded;
 
             EventDispatcher.AddEventListener(listener, this);    
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            AddNewSpriteWithCoords(new CCPoint(s.Width/2, s.Height/2));
+            AddNewSpriteWithCoords(new CCPoint(windowSize.Width/2, windowSize.Height/2));
         }
 
-        private void AddNewSpriteWithCoords(CCPoint p)
+        #endregion Setup content
+
+
+        void AddNewSpriteWithCoords(CCPoint p)
         {
             int idx = (int) (CCRandom.Float_0_1() * 1400 / 100);
             int x = (idx % 5) * 85;
@@ -1627,7 +2182,7 @@ namespace tests
             // override me
         }
 
-        void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (var touch in touches)
             {
@@ -1639,20 +2194,21 @@ namespace tests
                 AddNewSpriteWithCoords(location);
             }
         }
-
-        public override string title()
-        {
-            return "Override me";
-        }
-
-        public override string subtitle()
-        {
-            return "Tap screen";
-        }
     }
+
 
     public class ActionMoveStacked : ActionStacked
     {
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Stacked CCMoveBy/To actions"; }
+        }
+
+        #endregion Properties
+
+
         public override void RunActionsInSprite(CCSprite sprite)
         {
             sprite.RunAction(
@@ -1671,15 +2227,21 @@ namespace tests
                     new CCSequence(action, action_back)
                 ));
         }
-
-        public override string title()
-        {
-            return "Stacked CCMoveBy/To actions";
-        }
     }
+
 
     public class ActionMoveJumpStacked : ActionStacked
     {
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Stacked Move + Jump actions"; }
+        }
+
+        #endregion Properties
+
+
         public override void RunActionsInSprite(CCSprite sprite)
         {
             sprite.RunAction(
@@ -1696,18 +2258,23 @@ namespace tests
                     new CCSequence(jump, jump_back)
                 ));
         }
-
-        public override string title()
-        {
-            return "Stacked Move + Jump actions";
-        }
     }
 
     public class ActionMoveBezierStacked : ActionStacked
     {
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Stacked Move + Bezier actions"; }
+        }
+
+        #endregion Properties
+
+
         public override void RunActionsInSprite(CCSprite sprite)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             // sprite 1
             CCBezierConfig bezier;
@@ -1730,25 +2297,36 @@ namespace tests
                 )
             );
         }
-
-        public override string title()
-        {
-            return "Stacked Move + Bezier actions";
-        }
     }
 
     public class ActionCatmullRomStacked : ActionsDemo
     {
-        private List<CCPoint> _array;
-        private List<CCPoint> _array2;
+        List<CCPoint> pointArray;
+        List<CCPoint> pointArray2;
 
-        public override void OnEnter()
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "Stacked MoveBy + CatmullRom actions"; }
+        }
 
-            centerSprites(2);
+        public override string Subtitle
+        {
+            get { return "MoveBy + CatmullRom at the same time in the same sprite"; }
+        }
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
 
             //
             // sprite 1 (By)
@@ -1757,26 +2335,26 @@ namespace tests
             // is relative to the Catmull Rom curve, it is better to start with (0,0).
             //
 
-            m_tamara.Position = new CCPoint(50, 50);
+            Tamara.Position = new CCPoint(50, 50);
 
-            _array = new List<CCPoint>();
+            pointArray = new List<CCPoint>();
 
-            _array.Add(new CCPoint(0, 0));
-            _array.Add(new CCPoint(80, 80));
-            _array.Add(new CCPoint(s.Width - 80, 80));
-            _array.Add(new CCPoint(s.Width - 80, s.Height - 80));
-            _array.Add(new CCPoint(80, s.Height - 80));
-            _array.Add(new CCPoint(80, 80));
-            _array.Add(new CCPoint(s.Width / 2, s.Height / 2));
+            pointArray.Add(new CCPoint(0, 0));
+            pointArray.Add(new CCPoint(80, 80));
+            pointArray.Add(new CCPoint(windowSize.Width - 80, 80));
+            pointArray.Add(new CCPoint(windowSize.Width - 80, windowSize.Height - 80));
+            pointArray.Add(new CCPoint(80, windowSize.Height - 80));
+            pointArray.Add(new CCPoint(80, 80));
+            pointArray.Add(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
-            var action = new CCCatmullRomBy(3, _array);
+            var action = new CCCatmullRomBy(3, pointArray);
             var reverse = action.Reverse();
 
             var seq = new CCSequence(action, reverse);
 
-            m_tamara.RunAction(seq);
+            Tamara.RunAction(seq);
 
-            m_tamara.RunAction(
+            Tamara.RunAction(
                 new CCRepeatForever(
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
@@ -1784,7 +2362,6 @@ namespace tests
                     )
                 )
             );
-
 
             //
             // sprite 2 (To)
@@ -1793,23 +2370,23 @@ namespace tests
             // The initial position will be the 1st point of the Catmull Rom path
             //
 
-            _array2 = new List<CCPoint>();
+            pointArray2 = new List<CCPoint>();
 
-            _array2.Add(new CCPoint(s.Width / 2, 30));
-            _array2.Add(new CCPoint(s.Width - 80, 30));
-            _array2.Add(new CCPoint(s.Width - 80, s.Height - 80));
-            _array2.Add(new CCPoint(s.Width / 2, s.Height - 80));
-            _array2.Add(new CCPoint(s.Width / 2, 30));
+            pointArray2.Add(new CCPoint(windowSize.Width / 2, 30));
+            pointArray2.Add(new CCPoint(windowSize.Width - 80, 30));
+            pointArray2.Add(new CCPoint(windowSize.Width - 80, windowSize.Height - 80));
+            pointArray2.Add(new CCPoint(windowSize.Width / 2, windowSize.Height - 80));
+            pointArray2.Add(new CCPoint(windowSize.Width / 2, 30));
 
 
-            var action2 = new CCCatmullRomTo(3, _array2);
+            var action2 = new CCCatmullRomTo(3, pointArray2);
             var reverse2 = action2.Reverse();
 
             var seq2 = new CCSequence(action2, reverse2);
 
-            m_kathia.RunAction(seq2);
+            Kathia.RunAction(seq2);
 
-            m_kathia.RunAction(
+            Kathia.RunAction(
                 new CCRepeatForever(
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
@@ -1820,6 +2397,9 @@ namespace tests
 
         }
 
+        #endregion Setup content
+
+
         protected override void Draw()
         {
             base.Draw();
@@ -1827,41 +2407,47 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
-            CCDrawingPrimitives.DrawCatmullRom(_array, 50);
+            CCDrawingPrimitives.DrawCatmullRom(pointArray, 50);
             CCDrawManager.PopMatrix();
 
-            CCDrawingPrimitives.DrawCatmullRom(_array2, 50);
-        }
-
-        public override string title()
-        {
-            return "Stacked MoveBy + CatmullRom actions";
-        }
-
-        public override string subtitle()
-        {
-            return "MoveBy + CatmullRom at the same time in the same sprite";
+            CCDrawingPrimitives.DrawCatmullRom(pointArray2, 50);
         }
     }
 
 
     public class ActionCardinalSplineStacked : ActionsDemo
     {
-        private List<CCPoint> m_pArray = new List<CCPoint>();
+        List<CCPoint> pointArray = new List<CCPoint>();
 
-        public override void OnEnter()
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "Stacked MoveBy + CardinalSpline actions"; }
+        }
 
-            centerSprites(2);
+        public override string Subtitle
+        {
+            get { return "CCMoveBy + CCCardinalSplineBy/To at the same time"; }
+        }
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #endregion Properties
 
-            m_pArray.Add(new CCPoint(0, 0));
-            m_pArray.Add(new CCPoint(s.Width / 2 - 30, 0));
-            m_pArray.Add(new CCPoint(s.Width / 2 - 30, s.Height - 80));
-            m_pArray.Add(new CCPoint(0, s.Height - 80));
-            m_pArray.Add(new CCPoint(0, 0));
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            pointArray.Add(new CCPoint(0, 0));
+            pointArray.Add(new CCPoint(windowSize.Width / 2 - 30, 0));
+            pointArray.Add(new CCPoint(windowSize.Width / 2 - 30, windowSize.Height - 80));
+            pointArray.Add(new CCPoint(0, windowSize.Height - 80));
+            pointArray.Add(new CCPoint(0, 0));
 
             //
             // sprite 1 (By)
@@ -1869,15 +2455,15 @@ namespace tests
             // Spline with no tension (tension==0)
             //
 
-            var action = new CCCardinalSplineBy(3, m_pArray, 0);
+            var action = new CCCardinalSplineBy(3, pointArray, 0);
             var reverse = action.Reverse();
 
             var seq = new CCSequence(action, reverse);
 
-            m_tamara.Position = new CCPoint(50, 50);
-            m_tamara.RunAction(seq);
+            Tamara.Position = new CCPoint(50, 50);
+            Tamara.RunAction(seq);
 
-            m_tamara.RunAction(
+            Tamara.RunAction(
                 new CCRepeatForever(
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
@@ -1891,15 +2477,15 @@ namespace tests
             // Spline with high tension (tension==1)
             //
 
-            var action2 = new CCCardinalSplineBy(3, m_pArray, 1);
+            var action2 = new CCCardinalSplineBy(3, pointArray, 1);
             var reverse2 = action2.Reverse();
 
             var seq2 = new CCSequence(action2, reverse2);
 
-            m_kathia.SetPosition(s.Width / 2, 50);
-            m_kathia.RunAction(seq2);
+            Kathia.SetPosition(windowSize.Width / 2, 50);
+            Kathia.RunAction(seq2);
 
-            m_kathia.RunAction(
+            Kathia.RunAction(
                 new CCRepeatForever(
                     new CCSequence(
                         new CCMoveBy(0.05f, new CCPoint(10, 0)),
@@ -1910,6 +2496,9 @@ namespace tests
 
         }
 
+        #endregion Setup content
+
+
         protected override void Draw()
         {
             base.Draw();
@@ -1917,81 +2506,103 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
-            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 0, 100);
+            CCDrawingPrimitives.DrawCardinalSpline(pointArray, 0, 100);
             CCDrawManager.PopMatrix();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
-            CCDrawingPrimitives.DrawCardinalSpline(m_pArray, 1, 100);
+            CCDrawingPrimitives.DrawCardinalSpline(pointArray, 1, 100);
             CCDrawManager.PopMatrix();
-        }
-
-        public override string title()
-        {
-            return "Stacked MoveBy + CardinalSpline actions";
-        }
-
-        public override string subtitle()
-        {
-            return "CCMoveBy + CCCardinalSplineBy/To at the same time";
         }
     }
 
     #endregion
 
+
     public class Issue1305 : ActionsDemo
     {
-        private CCSprite m_pSpriteTmp;
+        CCSprite spriteTmp;
 
-        public override void OnEnter()
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
-
-            centerSprites(0);
-
-            m_pSpriteTmp = new CCSprite("Images/grossini");
-            /* c++ can't support block, so we use CCCallFuncN instead.
-            [spriteTmp_ runAction:[CCCallBlockN actionWithBlock:^(CCNode* node) {
-                NSLog(@"This message SHALL ONLY appear when the sprite is added to the scene, NOT BEFORE");
-            }] ];
-            */
-
-            m_pSpriteTmp.RunAction(new CCCallFuncN(log));
-
-            ScheduleOnce(addSprite, 2);
+            get { return "Issue 1305"; }
         }
 
-        private void log(CCNode pSender)
+        public override string Subtitle
+        {
+            get { return "In two seconds you should see a message on the console. NOT BEFORE."; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public Issue1305()
+        {
+            spriteTmp = new CCSprite("Images/grossini");
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
+
+            spriteTmp.RunAction(new CCCallFuncN(Log));
+
+            ScheduleOnce(AddSprite, 2);
+        }
+
+        #endregion Setup content
+
+
+        void Log(CCNode sender)
         {
             CCLog.Log("This message SHALL ONLY appear when the sprite is added to the scene, NOT BEFORE");
         }
 
-        private void addSprite(float dt)
+        void AddSprite(float dt)
         {
-            m_pSpriteTmp.Position = new CCPoint(250, 250);
-            AddChild(m_pSpriteTmp);
-        }
-
-        public override string title()
-        {
-            return "Issue 1305";
-        }
-
-        public override string subtitle()
-        {
-            return "In two seconds you should see a message on the console. NOT BEFORE.";
+            spriteTmp.Position = new CCPoint(250, 250);
+            AddChild(spriteTmp);
         }
     }
 
+
     public class Issue1305_2 : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        #region Properties
 
-            centerSprites(0);
+        public override string Title
+        {
+            get { return "Issue 1305 #2"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "See console. You should only see one message for each block"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
 
             var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(200, 200);
@@ -1999,261 +2610,360 @@ namespace tests
 
             var act1 = new CCMoveBy (2, new CCPoint(0, 100));
 
-            var act2 = new CCCallFunc(log1);
+            var act2 = new CCCallFunc(Log1);
             var act3 = new CCMoveBy (2, new CCPoint(0, -100));
-            var act4 = new CCCallFunc(log2);
+            var act4 = new CCCallFunc(Log2);
             var act5 = new CCMoveBy (2, new CCPoint(100, -100));
-            var act6 = new CCCallFunc(log3);
+            var act6 = new CCCallFunc(Log3);
             var act7 = new CCMoveBy (2, new CCPoint(-100, 0));
-            var act8 = new CCCallFunc(log4);
+            var act8 = new CCCallFunc(Log4);
 
             var actF = new CCSequence(act1, act2, act3, act4, act5, act6, act7, act8);
 
-            CCApplication.SharedApplication.ActionManager.AddAction(actF, spr, false);
+            spr.RunAction(actF);
         }
 
-        private void log4()
+        #endregion Setup content
+
+
+        void Log4()
         {
             CCLog.Log("4st block");
         }
 
-        private void log3()
+        void Log3()
         {
             CCLog.Log("3st block");
         }
 
-        private void log2()
+        void Log2()
         {
             CCLog.Log("2st block");
         }
 
-        private void log1()
+        void Log1()
         {
             CCLog.Log("1st block");
         }
-
-
-        public override string title()
-        {
-            return "Issue 1305 #2";
-        }
-
-        public override string subtitle()
-        {
-            return "See console. You should only see one message for each block";
-        }
     }
+
 
     public class Issue1288 : ActionsDemo
     {
-        public override void OnEnter()
+        CCSprite spr;
+        CCRepeat act4;
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "Issue 1288"; }
+        }
 
-            centerSprites(0);
+        public override string Subtitle
+        {
+            get { return "Sprite should end at the position where it started."; }
+        }
 
-            var spr = new CCSprite("Images/grossini");
-            spr.Position = new CCPoint(100, 100);
+        #endregion Properties
+
+
+        #region Constructors
+
+        public Issue1288()
+        {
+            spr = new CCSprite("Images/grossini");
             AddChild(spr);
 
             var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
             var act2 = (CCMoveBy) act1.Reverse();
             var act3 = new CCSequence(act1, act2);
-            var act4 = new CCRepeat (act3, 2);
+            act4 = new CCRepeat (act3, 2);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
+
+            spr.Position = new CCPoint(100, 100);
 
             spr.RunAction(act4);
         }
 
-        public override string title()
-        {
-            return "Issue 1288";
-        }
-
-        public override string subtitle()
-        {
-            return "Sprite should end at the position where it started.";
-        }
+        #endregion Setup content
     }
+
 
     public class Issue1288_2 : ActionsDemo
     {
-        public override void OnEnter()
+        CCSprite spr;
+        CCMoveBy act1;
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
+            get { return "Issue 1288 #2"; }
+        }
 
-            centerSprites(0);
+        public override string Subtitle
+        {
+            get { return "Sprite should move 100 pixels, and stay there"; }
+        }
 
-            var spr = new CCSprite("Images/grossini");
-            spr.Position = new CCPoint(100, 100);
+        #endregion Properties
+
+
+        #region Constructors
+
+        public Issue1288_2()
+        {
+            spr = new CCSprite("Images/grossini");
             AddChild(spr);
 
-            var act1 = new CCMoveBy (0.5f, new CCPoint(100, 0));
+            act1 = new CCMoveBy(0.5f, new CCPoint(100, 0));
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
+
+            spr.Position = new CCPoint(100, 100);
+
             spr.RunAction(new CCRepeat (act1, 1));
         }
 
-        public override string title()
-        {
-            return "Issue 1288 #2";
-        }
-
-        public override string subtitle()
-        {
-            return "Sprite should move 100 pixels, and stay there";
-        }
+        #endregion Setup content
     }
 
     public class Issue1327 : ActionsDemo
     {
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        CCSequence actF;
 
-            centerSprites(0);
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Issue 1327"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "See console: You should see: 0, 45, 90, 135, 180"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public Issue1327()
+        {
+            var act1 = new CCCallFuncN(LogSprRotation);
+            var act2 = new CCRotateBy (0.25f, 45);
+            var act3 = new CCCallFuncN(LogSprRotation);
+            var act4 = new CCRotateBy (0.25f, 45);
+            var act5 = new CCCallFuncN(LogSprRotation);
+            var act6 = new CCRotateBy (0.25f, 45);
+            var act7 = new CCCallFuncN(LogSprRotation);
+            var act8 = new CCRotateBy (0.25f, 45);
+            var act9 = new CCCallFuncN(LogSprRotation);
+
+            actF = new CCSequence(act1, act2, act3, act4, act5, act6, act7, act8, act9);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(0);
 
             var spr = new CCSprite("Images/grossini");
             spr.Position = new CCPoint(100, 100);
             AddChild(spr);
 
-            var act1 = new CCCallFuncN(logSprRotation);
-            var act2 = new CCRotateBy (0.25f, 45);
-            var act3 = new CCCallFuncN(logSprRotation);
-            var act4 = new CCRotateBy (0.25f, 45);
-            var act5 = new CCCallFuncN(logSprRotation);
-            var act6 = new CCRotateBy (0.25f, 45);
-            var act7 = new CCCallFuncN(logSprRotation);
-            var act8 = new CCRotateBy (0.25f, 45);
-            var act9 = new CCCallFuncN(logSprRotation);
-
-            var actF = new CCSequence(act1, act2, act3, act4, act5, act6, act7, act8, act9);
             spr.RunAction(actF);
         }
 
-        private void logSprRotation(CCNode sender)
+        #endregion Setup content
+
+
+        void LogSprRotation(CCNode sender)
         {
             CCLog.Log("{0},{1}", sender.RotationX, sender.RotationY);
-        }
-
-        public override string title()
-        {
-            return "Issue 1327";
-        }
-
-        public override string subtitle()
-        {
-            return "See console: You should see: 0, 45, 90, 135, 180";
         }
     }
 
     public class Issue1389 : ActionsDemo
     {
-        private int m_nTestInteger;
+        int testInteger;
 
-        private void incrementInteger()
+
+        #region Properties
+
+        public override string Subtitle
         {
-            m_nTestInteger++;
+            get { return "See console: You should see an 8"; }
         }
 
-        public override void OnEnter()
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            base.OnEnter();
+            base.RunningOnNewWindow(windowSize);
 
-            centerSprites(0);
+            CenterSprites(0);
 
-            m_nTestInteger = 0;
-            CCLog.Log("testInt = {0}", m_nTestInteger);
+            testInteger = 0;
+            CCLog.Log("testInt = {0}", testInteger);
 
             this.RunAction(
                 new CCSequence(
-                    new CCCallFuncND(incrementIntegerCallback, "1"),
-                    new CCCallFuncND(incrementIntegerCallback, "2"),
-                    new CCCallFuncND(incrementIntegerCallback, "3"),
-                    new CCCallFuncND(incrementIntegerCallback, "4"),
-                    new CCCallFuncND(incrementIntegerCallback, "5"),
-                    new CCCallFuncND(incrementIntegerCallback, "6"),
-                    new CCCallFuncND(incrementIntegerCallback, "7"),
-                    new CCCallFuncND(incrementIntegerCallback, "8")
+                    new CCCallFuncND(IncrementIntegerCallback, "1"),
+                    new CCCallFuncND(IncrementIntegerCallback, "2"),
+                    new CCCallFuncND(IncrementIntegerCallback, "3"),
+                    new CCCallFuncND(IncrementIntegerCallback, "4"),
+                    new CCCallFuncND(IncrementIntegerCallback, "5"),
+                    new CCCallFuncND(IncrementIntegerCallback, "6"),
+                    new CCCallFuncND(IncrementIntegerCallback, "7"),
+                    new CCCallFuncND(IncrementIntegerCallback, "8")
                 )
             );
         }
 
-        private void incrementIntegerCallback(CCNode pSender, object data)
+        #endregion Setup content
+
+
+        void IncrementInteger()
         {
-            incrementInteger();
-            CCLog.Log("{0}", data);
+            testInteger++;
         }
 
-        public override string subtitle()
+        void IncrementIntegerCallback(CCNode sender, object data)
         {
-            return "See console: You should see an 8";
+            IncrementInteger();
+            CCLog.Log("{0}", data);
         }
     }
 
 
     public class PauseResumeActions : ActionsDemo
     {
-        private List<object> m_pPausedTargets;
+        List<object> pausedTargets;
 
-        public override void OnEnter()
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
-
-            centerSprites(2);
-
-            m_tamara.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
-            m_grossini.RunAction(new CCRepeatForever (new CCRotateBy (3, -360)));
-            m_kathia.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
-
-            ScheduleOnce(pause, 3);
-            ScheduleOnce(resume, 5);
+            get { return "PauseResumeActions"; }
         }
 
-        public override string title()
+        public override string Subtitle
         {
-            return "PauseResumeActions";
+            get { return "All actions pause at 3s and resume at 5s"; }
         }
 
-        public override string subtitle()
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "All actions pause at 3s and resume at 5s";
+            base.RunningOnNewWindow(windowSize);
+
+            CenterSprites(2);
+
+            Tamara.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
+            Grossini.RunAction(new CCRepeatForever (new CCRotateBy (3, -360)));
+            Kathia.RunAction(new CCRepeatForever (new CCRotateBy (3, 360)));
+
+            ScheduleOnce(Pause, 3);
+            ScheduleOnce(Resume, 5);
         }
 
-        private void pause(float dt)
+        #endregion Setup content
+
+
+        void Pause(float dt)
         {
             CCLog.Log("Pausing");
 
-            m_pPausedTargets = CCApplication.SharedApplication.ActionManager.PauseAllRunningActions();
+            pausedTargets = CCApplication.SharedApplication.ActionManager.PauseAllRunningActions();
         }
 
-        private void resume(float dt)
+        void Resume(float dt)
         {
             CCLog.Log("Resuming");
-            var director = CCApplication.SharedApplication.MainWindowDirector;
-            CCApplication.SharedApplication.ActionManager.ResumeTargets(m_pPausedTargets);
+            CCApplication.SharedApplication.ActionManager.ResumeTargets(pausedTargets);
         }
     }
 
     public class RemoveSelfActions : ActionsDemo
     {
-        public override void OnEnter()
+        CCSequence action;
+
+        #region Properties
+
+        public override string Subtitle
         {
-            base.OnEnter();
+            get { return "Sequence: Move + Rotate + Scale + RemoveSelf"; }
+        }
 
-            alignSpritesLeft(1);
+        #endregion Properties
 
-            CCFiniteTimeAction action = new CCSequence(
+
+        #region Constructors
+
+        public RemoveSelfActions()
+        {
+            action = new CCSequence(
                 new CCMoveBy(2, new CCPoint(240, 0)),
                 new CCRotateBy(2, 540),
                 new CCScaleTo(1, 0.1f),
                 new CCRemoveSelf()
             );
-
-            m_grossini.RunAction(action);
         }
 
-        public override string subtitle()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Sequence: Move + Rotate + Scale + RemoveSelf";
+            base.RunningOnNewWindow(windowSize);
+
+            AlignSpritesLeft(1);
+
+            Grossini.RunAction(action);
         }
+
+        #endregion Setup content
     }
 
 }
