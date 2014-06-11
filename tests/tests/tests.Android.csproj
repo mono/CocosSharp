@@ -1966,4 +1966,10 @@
   <ItemGroup>
     <Folder Include="Classes\tests\EventDispatcherTest\" />
   </ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\..\Extensions\**\*.*">
+			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>
+
 </Project>
