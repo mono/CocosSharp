@@ -77,31 +77,19 @@ namespace tests
         }
     }
     #endif
-    #if WINDOWS || WINDOWSGL || XBOX || PSM
+
+    #if WINDOWS || WINDOWSGL
 
     #if !NETFX_CORE
     static class Program
     {
-    #if WINDOWS || WINDOWSGL
-    private static Game1 game;
-    #endif
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-    #if WINDOWS || WINDOWSGL
-    [STAThread]
-    #endif
+        [STAThread]
         static void Main(string[] args)
         {
-    #if WINDOWS || WINDOWSGL
-    game = new Game1();
-    game.Run();
-    #else
-            using (Game1 game = new Game1())
-            {
-                game.Run();
-            }
-    #endif
+            CCApplication sharedApp = CCApplication.SharedApplication;
+            sharedApp.ApplicationDelegate = new AppDelegate();
+
+            CCApplication.SharedApplication.StartGame();
         }
     }
     #endif
@@ -139,15 +127,17 @@ namespace tests
         }
     }
     #endif
+
     #if NETFX_CORE 
-    public static class Program {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
-    static void Main() {
-    var factory = new MonoGame.Framework.GameFrameworkViewSource<Game1>();
-    Windows.ApplicationModel.Core.CoreApplication.Run(factory);
-    }
+    public static class Program 
+    {
+        static void Main() 
+        {
+            CCApplication sharedApp = CCApplication.SharedApplication;
+            sharedApp.ApplicationDelegate = new AppDelegate();
+
+            CCApplication.SharedApplication.StartGame();
+        }
     }
     #endif
 }

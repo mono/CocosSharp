@@ -404,7 +404,7 @@ namespace CocosSharp
 		}
 		#endif
 
-        internal ContentManager Content 
+        public ContentManager Content 
         {   get { return(CCContentManager.SharedContentManager); } 
             private set { } 
         }
@@ -519,9 +519,15 @@ namespace CocosSharp
 
         public void StartGame()
         {
-
-			if (xnaGame != null)
-				xnaGame.Run();
+            if (xnaGame != null) 
+            {
+                #if NETFX_CORE
+                var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>();
+                Windows.ApplicationModel.Core.CoreApplication.Run(factory);
+                #else
+                xnaGame.Run();
+                #endif
+            }
 
         }
 
