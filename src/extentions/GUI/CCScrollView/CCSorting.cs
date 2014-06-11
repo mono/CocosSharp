@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public interface ICCSortableObject
+	internal interface ICCSortableObject
     {
 		int ObjectID { get; set; }
     }
@@ -18,7 +18,7 @@ namespace CocosSharp
         }
     };
 
-    public class CCArrayForObjectSorting : List<object>
+	internal class CCArrayForObjectSorting : List<object>
     {
         public const int CC_INVALID_INDEX = -1;
 
