@@ -344,7 +344,7 @@ namespace CocosSharp
 
             rt.End();
 
-            InitWithTexture(rt.Sprite.Texture);
+			Texture = rt.Sprite.Texture;
             
             ContentSize = MaskSprite.ContentSize;
         }
