@@ -55,10 +55,10 @@ namespace tests
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            #if !IOS
+#if !IOS && !NETFX_CORE
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
-            #endif
+#endif
 
             // TODO: Add your update logic here
 

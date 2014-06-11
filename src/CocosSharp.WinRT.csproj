@@ -509,123 +509,6 @@
     <Compile Include=".\effects\CCTiledGrid3D.cs">
       <LogicalName>effects\CCTiledGrid3D</LogicalName>
     </Compile>
-    <Compile Include=".\extentions\Box2D\CCDraw.cs">
-      <LogicalName>extentions\Box2D\CCDraw</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBAnimationManager.cs">
-      <LogicalName>extentions\CCBReader\CCBAnimationManager</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBFileLoader.cs">
-      <LogicalName>extentions\CCBReader\CCBFileLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBKeyframe.cs">
-      <LogicalName>extentions\CCBReader\CCBKeyframe</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBPosition.cs">
-      <LogicalName>extentions\CCBReader\CCBPosition</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBReader.cs">
-      <LogicalName>extentions\CCBReader\CCBReader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBSequence.cs">
-      <LogicalName>extentions\CCBReader\CCBSequence</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBSequenceProperty.cs">
-      <LogicalName>extentions\CCBReader\CCBSequenceProperty</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCBValue.cs">
-      <LogicalName>extentions\CCBReader\CCBValue</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCControlButtonLoader.cs">
-      <LogicalName>extentions\CCBReader\CCControlButtonLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCControlLoader.cs">
-      <LogicalName>extentions\CCBReader\CCControlLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCLabelBMFontLoader.cs">
-      <LogicalName>extentions\CCBReader\CCLabelBMFontLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCLabelTTFLoader.cs">
-      <LogicalName>extentions\CCBReader\CCLabelTTFLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCLayerColorLoader.cs">
-      <LogicalName>extentions\CCBReader\CCLayerColorLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCLayerGradientLoader.cs">
-      <LogicalName>extentions\CCBReader\CCLayerGradientLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCLayerLoader.cs">
-      <LogicalName>extentions\CCBReader\CCLayerLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCMenuItemImageLoader.cs">
-      <LogicalName>extentions\CCBReader\CCMenuItemImageLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCMenuItemLoader.cs">
-      <LogicalName>extentions\CCBReader\CCMenuItemLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCMenuLoader.cs">
-      <LogicalName>extentions\CCBReader\CCMenuLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCNodeLoader.cs">
-      <LogicalName>extentions\CCBReader\CCNodeLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCNodeLoaderLibrary.cs">
-      <LogicalName>extentions\CCBReader\CCNodeLoaderLibrary</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCParticleSystemQuadLoader.cs">
-      <LogicalName>extentions\CCBReader\CCParticleSystemQuadLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCScale9SpriteLoader.cs">
-      <LogicalName>extentions\CCBReader\CCScale9SpriteLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCScrollViewLoader.cs">
-      <LogicalName>extentions\CCBReader\CCScrollViewLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\CCSpriteLoader.cs">
-      <LogicalName>extentions\CCBReader\CCSpriteLoader</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\CCBReader\ICCBMemberVariableAssigner.cs">
-      <LogicalName>extentions\CCBReader\ICCBMemberVariableAssigner</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCControl.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCControl</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCControlButton.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCControlButton</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCControlSlider.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCControlSlider</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCControlSwitch.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCControlSwitch</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCControlUtils.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCControlUtils</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCInvocation.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCInvocation</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCScale9Sprite.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCScale9Sprite</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCScale9SpriteFile.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCScale9SpriteFile</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCControlExtension\CCScale9SpriteFrame.cs">
-      <LogicalName>extentions\GUI\CCControlExtension\CCScale9SpriteFrame</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCScrollView\CCScrollView.cs">
-      <LogicalName>extentions\GUI\CCScrollView\CCScrollView</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCScrollView\CCSorting.cs">
-      <LogicalName>extentions\GUI\CCScrollView\CCSorting</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCScrollView\CCTableView.cs">
-      <LogicalName>extentions\GUI\CCScrollView\CCTableView</LogicalName>
-    </Compile>
-    <Compile Include=".\extentions\GUI\CCScrollView\CCTableViewCell.cs">
-      <LogicalName>extentions\GUI\CCScrollView\CCTableViewCell</LogicalName>
-    </Compile>
     <Compile Include=".\keypad_dispatcher\ICCKeypadDelegate.cs">
       <LogicalName>keypad_dispatcher\CCKeypadDelegate</LogicalName>
     </Compile>
@@ -1092,11 +975,6 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="actions\action_instants\CCRemoveSelf.cs" />
-    <Compile Include="extentions\GUI\CCControlExtension\CCControlColourPicker.cs" />
-    <Compile Include="extentions\GUI\CCControlExtension\CCControlHuePicker.cs" />
-    <Compile Include="extentions\GUI\CCControlExtension\CCControlPotentiometer.cs" />
-    <Compile Include="extentions\GUI\CCControlExtension\CCControlSaturationPicker.cs" />
-    <Compile Include="extentions\GUI\CCControlExtension\CCControlStepper.cs" />
     <Compile Include="Platform\CCContentManager.cs" />
     <Compile Include="Platform\CCTask.cs" />
     <Compile Include="predefine\ICCUpdatable.cs" />
