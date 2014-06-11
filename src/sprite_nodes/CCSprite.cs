@@ -22,7 +22,7 @@ namespace CocosSharp
         string textureFile;
         CCAffineTransform transformToBatch;
 
-        internal CCV3F_C4B_T2F_Quad Quad;
+		public CCV3F_C4B_T2F_Quad Quad;
 
 
         #region Properties

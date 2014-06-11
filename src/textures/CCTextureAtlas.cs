@@ -52,7 +52,7 @@ namespace CocosSharp
         #region Properties
 
         protected internal CCRawList<CCV3F_C4B_T2F_Quad> Quads { get; private set; }
-        protected internal CCTexture2D Texture { get; set; }
+		public CCTexture2D Texture { get; set; }
 
         // Indicates whether or not the array buffer of the VBO needs to be updated
         protected internal bool Dirty { get; set; }                                 

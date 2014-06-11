@@ -1,10 +1,11 @@
 using System;
+using System.Runtime.CompilerServices;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-	internal class CCPrimitiveBatch : IDisposable
+	public class CCPrimitiveBatch : IDisposable
     {
 		const int DefaultBufferSize = 500;
 

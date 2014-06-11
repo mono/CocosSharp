@@ -27,7 +27,7 @@ namespace CocosSharp
 
         public override CCNode CreateCCNode()
         {
-            return new CCParticleSystemQuad();
+			return new CCParticleSystemQuad(new CCParticleSystemConfig());
         }
 
         protected override void OnHandlePropTypeIntegerLabeled(CCNode node, CCNode parent, string propertyName, int pIntegerLabeled,
