@@ -404,7 +404,7 @@ namespace CocosSharp
 		}
 		#endif
 
-        internal ContentManager Content 
+		public ContentManager Content 
         {   get { return(CCContentManager.SharedContentManager); } 
             private set { } 
         }
