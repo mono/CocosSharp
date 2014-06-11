@@ -70,7 +70,10 @@ namespace CocosSharp
         {
             set
             {
-                CCSize s = value.ContentSize;
+				if (value == null)
+					return;
+
+				CCSize s = value.ContentSize;
 
                 // Only update the texture if is different from the current one
                 if (Texture == null || value.Name != Texture.Name)
