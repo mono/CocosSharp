@@ -1232,7 +1232,13 @@
     <Content Include="Icon.png" />
     <Content Include="powered.png" />
   </ItemGroup>
-  <ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\Extensions\**\*.*">
+			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

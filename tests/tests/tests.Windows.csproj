@@ -449,7 +449,12 @@
     <Compile Include="Game1.cs" />
 	<Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
-  <ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\..\Extensions\**\*.*">
+			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>	
+	<ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestMainLayer.cs" />
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs" />

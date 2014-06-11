@@ -415,7 +415,8 @@
     <Compile Include="Game1.cs" />
     <Compile Include="Program.cs" />
   </ItemGroup>
-  <ItemGroup>
+
+	<ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
