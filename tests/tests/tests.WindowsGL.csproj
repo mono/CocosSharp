@@ -427,7 +427,13 @@
     </Content>
     <Content Include="Game.ico" />
   </ItemGroup>
-  <ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\..\Extensions\**\*.*">
+			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
     <ProjectReference Include="..\..\box2d\box2d.WindowsGL.csproj">
       <Project>{b81b6701-7a78-4846-bf6f-04e0591f0f38}</Project>
       <Name>box2d.WindowsGL</Name>
