@@ -1676,4 +1676,9 @@
     <Folder Include="Classes\tests\Box2DTestBet%28Box2D%29\" />
     <Folder Include="Classes\tests\EventDispatcherTest\" />
   </ItemGroup>
+	<ItemGroup>
+		<Compile Include="..\..\Extensions\**\*.*">
+			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+		</Compile>
+	</ItemGroup>
 </Project>
