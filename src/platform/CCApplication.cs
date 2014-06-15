@@ -172,8 +172,6 @@ namespace CocosSharp
         CCGameTime GameTime;
         CCWindow mainWindow;
 
-        internal static MonoGame.Framework.GameFrameworkViewSource<CCGame> Factory { get; private set; }
-
         #region Properties
 
         // Static properties
@@ -207,8 +205,8 @@ namespace CocosSharp
                        instance = new CCApplication(game);
                        instance.ApplicationDelegate = appDelegate;
                    };
-                Factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
-                Windows.ApplicationModel.Core.CoreApplication.Run(Factory);
+                var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
+                Windows.ApplicationModel.Core.CoreApplication.Run(factory);
             }
 
         }
