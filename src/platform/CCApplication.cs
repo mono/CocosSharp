@@ -11,6 +11,11 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Android.Views;
 #endif
 
+#if WINDOWS_PHONE
+using MonoGame.Framework.WindowsPhone;
+using Microsoft.Phone.Controls;
+#endif
+
 namespace CocosSharp
 {
     [Flags]
@@ -63,6 +68,7 @@ namespace CocosSharp
 
     internal class CCGame : Game
     {
+ 
         #if OUYA
         protected override void Draw(GameTime gameTime)
         {
@@ -166,24 +172,64 @@ namespace CocosSharp
         CCGameTime GameTime;
         CCWindow mainWindow;
 
+        internal static MonoGame.Framework.GameFrameworkViewSource<CCGame> Factory { get; private set; }
 
         #region Properties
 
         // Static properties
-
         public static CCApplication SharedApplication 
         { 
             get 
             { 
                 if (instance == null) 
                 {
+#if WINDOWS_PHONE || NETFX_CORE
+                    Debug.Assert(instance != null,"Use Create to instantiate a class of CCApplication first.");
+#else
                     instance = new CCApplication (new CCGame());
+#endif
                 }
 
                 return instance;
             }
         }
 
+#if NETFX_CORE
+
+        public static void Create(CCApplicationDelegate appDelegate)
+        {
+            if (instance == null)
+            {
+                Action<CCGame, Windows.ApplicationModel.Activation.IActivatedEventArgs> initAction =
+                   delegate(CCGame game, Windows.ApplicationModel.Activation.IActivatedEventArgs args)
+                   {
+
+                       instance = new CCApplication(game);
+                       instance.ApplicationDelegate = appDelegate;
+                   };
+                Factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>(initAction);
+                Windows.ApplicationModel.Core.CoreApplication.Run(Factory);
+            }
+
+        }
+
+#endif
+
+#if WINDOWS_PHONE
+
+        public static CCApplication Create(string launchParameters, PhoneApplicationPage page)
+        {
+            if (instance == null)
+            {
+                var game = XamlGame<CCGame>.Create(launchParameters, page);
+                instance = new CCApplication(game);
+            }
+
+            return instance;
+
+        }
+
+#endif
         // Instance properties
         public bool HandleMediaStateAutomatically { get; set; }
         public CCDisplayOrientation CurrentOrientation { get; private set; }
@@ -522,10 +568,7 @@ namespace CocosSharp
         {
             if (xnaGame != null) 
             {
-                #if NETFX_CORE
-                var factory = new MonoGame.Framework.GameFrameworkViewSource<CCGame>();
-                Windows.ApplicationModel.Core.CoreApplication.Run(factory);
-                #else
+                #if !NETFX_CORE
                 xnaGame.Run();
                 #endif
             }

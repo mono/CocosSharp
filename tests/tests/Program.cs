@@ -133,10 +133,7 @@ namespace tests
     {
         static void Main() 
         {
-            CCApplication sharedApp = CCApplication.SharedApplication;
-            sharedApp.ApplicationDelegate = new AppDelegate();
-
-            CCApplication.SharedApplication.StartGame();
+            CCApplication.Create(new AppDelegate());
         }
     }
     #endif
