@@ -18,13 +18,13 @@ Git
 
 When you first check out, run
 
-   > git clone --recursive git@github.com:xamarin/CocosSharp
+`git clone --recursive git@github.com:xamarin/CocosSharp`
 
 so you will have all the submodules checked out for you.
 
 With existing checkouts, run
 
-   > git submodule update --init --recursive
+`git submodule update --init --recursive`
 
 to make sure you get the latest changes in the submodules. Repos that
 were checked out recursively will do this automatically, but it
@@ -32,46 +32,45 @@ doesn't hurt to run this manually.
 
 To pull external changes into a submodule
 
-   > cd &lt;submodule&gt;
-   
-   > git pull origin &lt;branch&gt;
-   
-   > cd &lt;top-level&gt;; git add &lt;submodule&gt;
-   
-   > git commit
+```
+cd <submodule>   
+git pull origin <branch>   
+cd <top-level>; git add <submodule>   
+git commit
+```
 
 To make changes in a submodule
 
-   > cd &lt;submodule&gt;
+`cd <submodule>`
 
    * By default, submodules are detached because they point to a specific commit. Use git-checkout to put yourself back on a branch.
    
-   > git checkout &lt;branch&gt;
+`git checkout <branch>`
 
    work as normal, the submodule is a normal repo
 
-   > git commit/push new changes to the repo (submodule)
-
-   > cd &lt;top-level&gt;; git add &lt;submodule&gt; # this will record the new commits to CocosSharp MonoGame submodule
-
-   > git commit
+```
+git commit/push new changes to the repo (submodule)
+cd <top-level>; git add <submodule> # this will record the new commits to CocosSharp MonoGame submodule
+git commit
+```
 
 * To switch the repo of a submodule
 
    edit '.gitmodules' to point to the new location
 
-   > git submodule sync -- &lt;path of the submodule&gt; # updates .git/config
+`git submodule sync -- <path of the submodule> # updates .git/config`
 
    * I think this will checkout from the new location, internally. It may take a while for big repos.
    
-   > git submodule update --recursive
-
-   > git checkout <desired new hash> # This changes the pointer of the submodule
+```
+git submodule update --recursive
+git checkout <desired new hash> # This changes the pointer of the submodule
+```
 
 The desired output diff is a change in .gitmodule to reflect the
 change in the remote URL, and a change in /<submodule> where you see
 the desired change in the commit hash
-
 
 You now have everything you need to start start developing with
 CocosSharp
