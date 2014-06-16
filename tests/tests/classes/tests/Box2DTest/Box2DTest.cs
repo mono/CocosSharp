@@ -84,39 +84,42 @@ namespace tests
         private CCSpriteBatchNode _batch;
 
         public Box2DTestLayer()
-        {
+        { 
+			//Set up sprite
+			// Use batch node. Faster
+			_batch = new CCSpriteBatchNode("Images/blocks", 100);
+			m_pSpriteTexture = _batch.Texture;
+			AddChild(_batch, 0, kTagParentNode);
+		}
+
+		public override void OnEnter()
+		{
+			base.OnEnter();
 
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesEnded = onTouchesEnded;
 
-            EventDispatcher.AddEventListener(listener, this);    
+			EventDispatcher.AddEventListener(listener, this);    
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            // init physics
-            initPhysics();
-            // create reset button
-            createResetButton();
+			CCSize s = Director.WindowSizeInPoints;
+			// init physics
+			initPhysics();
+			// create reset button
+			createResetButton();
 
-            //Set up sprite
-            // Use batch node. Faster
-            _batch = new CCSpriteBatchNode("Images/blocks", 100);
-            m_pSpriteTexture = _batch.Texture;
-            AddChild(_batch, 0, kTagParentNode);
+			addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
 
-            addNewSpriteAtPosition(new CCPoint(s.Width / 2, s.Height / 2));
+			CCLabelTtf label = new CCLabelTtf("Tap screen", "MarkerFelt", 32);
+			AddChild(label, 0);
+			label.Color = new CCColor3B(0, 0, 255);
+			label.Position = new CCPoint(s.Width / 2, s.Height - 50);
 
-            CCLabelTtf label = new CCLabelTtf("Tap screen", "MarkerFelt", 32);
-            AddChild(label, 0);
-            label.Color = new CCColor3B(0, 0, 255);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
-
-            Schedule ();
-        }
-
+			Schedule ();
+		}
 
         private void initPhysics()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             _world = new b2World(gravity);
@@ -188,7 +191,7 @@ namespace tests
 
             CCMenu menu = new CCMenu(res);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             menu.Position = new CCPoint(s.Width / 2, 30);
             AddChild(menu, -1);
@@ -199,7 +202,7 @@ namespace tests
             CCScene s = new Box2DTestScene();
             var child = new Box2DTestLayer();
             s.AddChild(child);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         /*
