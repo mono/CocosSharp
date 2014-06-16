@@ -4,82 +4,75 @@ using Random = CocosSharp.CCRandom;
 
 namespace tests
 {
-    public class EaseSpriteDemo : CCLayer
-    {
-        protected CCSprite m_grossini;
-        protected CCSprite m_kathia;
+	public class EaseSpriteDemo : TestNavigationLayer
+	{
+		protected CCSprite m_grossini;
+		protected CCSprite m_kathia;
 
-        protected String m_strTitle;
-        protected CCSprite m_tamara;
+		protected String m_strTitle;
+		protected CCSprite m_tamara;
 
-        public virtual String title()
-        {
-            return "No title";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "No title";
+			}
+		}
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            m_grossini = new CCSprite(TestResource.s_pPathGrossini);
-            m_tamara = new CCSprite(TestResource.s_pPathSister1);
-            m_kathia = new CCSprite(TestResource.s_pPathSister2);
+		public EaseSpriteDemo () : base ()
+		{
+			m_grossini = new CCSprite(TestResource.s_pPathGrossini);
+			m_tamara = new CCSprite(TestResource.s_pPathSister1);
+			m_kathia = new CCSprite(TestResource.s_pPathSister2);
 
-            AddChild(m_grossini, 3);
-            AddChild(m_kathia, 2);
-            AddChild(m_tamara, 1);
+			AddChild(m_grossini, 3);
+			AddChild(m_kathia, 2);
+			AddChild(m_tamara, 1);
 
-            var s = Director.WindowSizeInPoints;
+		}
 
-            m_grossini.Position = new CCPoint(60, 50);
-            m_kathia.Position = new CCPoint(60, 150);
-            m_tamara.Position = new CCPoint(60, 250);
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
 
-            var label = new CCLabelTtf(title(), "arial", 32);
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
+			m_grossini.Position = new CCPoint(60, 50);
+			m_kathia.Position = new CCPoint(60, 150);
+			m_tamara.Position = new CCPoint(60, 250);
 
-            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+		}
 
-            var menu = new CCMenu(item1, item2, item3);
-            menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
+		public override void RestartCallback(object sender)
+		{
+			CCScene s = new EaseActionsTestScene();
+			s.AddChild(EaseTest.restartEaseAction());
+			Director.ReplaceScene(s);
+		}
 
-            AddChild(menu, 1);
-        }
+		public override void NextCallback(object sender)
+		{
+			CCScene s = new EaseActionsTestScene();
+			s.AddChild(EaseTest.nextEaseAction());
+			Director.ReplaceScene(s);
 
-        public void restartCallback(object pSender)
-        {
-            CCScene s = new EaseActionsTestScene();
-            s.AddChild(EaseTest.restartEaseAction());
-            Director.ReplaceScene(s);
-        }
+		}
 
-        public void nextCallback(object pSender)
-        {
-            CCScene s = new EaseActionsTestScene();
-            s.AddChild(EaseTest.nextEaseAction());
-            Director.ReplaceScene(s);
-            
-        }
+		public override void BackCallback(object sender)
+		{
+			CCScene s = new EaseActionsTestScene();
+			s.AddChild(EaseTest.backEaseAction());
+			Director.ReplaceScene(s);
+		}
 
-        public void backCallback(object pSender)
-        {
-            CCScene s = new EaseActionsTestScene();
-            s.AddChild(EaseTest.backEaseAction());
-            Director.ReplaceScene(s);
-        }
+		public void PositionForTwo()
+		{
+			m_grossini.Position = new CCPoint(60, 120);
+			m_tamara.Position = new CCPoint(60, 220);
+			m_kathia.Visible = false;
+		}
+	}
 
-        public void positionForTwo()
-        {
-            m_grossini.Position = new CCPoint(60, 120);
-            m_tamara.Position = new CCPoint(60, 220);
-            m_kathia.Visible = false;
-        }
-    }
+
 
     public class SpriteEase : EaseSpriteDemo
     {
@@ -100,27 +93,26 @@ namespace tests
 
 			var delay = new CCDelayTime(0.25f);
 
-            var seq1 = new CCSequence(move, delay, move_back, delay);
-            var seq2 = new CCSequence(move_ease_in, delay, move_ease_in_back, delay);
-            var seq3 = new CCSequence(move_ease_out, delay, move_ease_out_back,
-                                                delay);
+			var seq1 = new CCSequence(move, delay, move_back, delay) { Tag = 1 };
+			var seq2 = new CCSequence(move_ease_in, delay, move_ease_in_back, delay) { Tag = 1 };
+            var seq3 = new CCSequence(move_ease_out, delay, move_ease_out_back, delay) { Tag = 1 };
 
-            var a2 = m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
-            //a2.Tag = 1;
+            m_grossini.RepeatForever (seq1);
 
-            var a1 = m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq2));
-            //a1.Tag = 1;
+            m_tamara.RepeatForever (seq2);
 
-            var a = m_kathia.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
-            //a.Tag = 1;
+            m_kathia.RepeatForever (seq3);
 
             Schedule(testStopAction, 6.25f);
         }
 
-        public override String title()
-        {
-            return "EaseIn - EaseOut - Stop";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseIn - EaseOut - Stop";
+			}
+		}
 
         public void testStopAction(float dt)
         {
@@ -163,10 +155,13 @@ namespace tests
             m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
         }
 
-        public override String title()
-        {
-            return "EaseInOut and rates";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseInOut and rates";
+			}
+		}
     }
 
     public class SpriteEaseExponential : EaseSpriteDemo
@@ -199,10 +194,13 @@ namespace tests
             m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "ExpIn - ExpOut actions";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "ExpIn - ExpOut actions";
+			}
+		}
     }
 
     public class SpriteEaseExponentialInOut : EaseSpriteDemo
@@ -224,16 +222,19 @@ namespace tests
             var seq1 = new CCSequence(move, delay, move_back, delay);
             var seq2 = new CCSequence(move_ease, delay, move_ease_back, delay);
 
-            positionForTwo();
+            PositionForTwo();
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
             m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
-        public override String title()
-        {
-            return "EaseExponentialInOut action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseExponentialInOut action";
+			}
+		}
     }
 
     public class SpriteEaseSine : EaseSpriteDemo
@@ -265,10 +266,13 @@ namespace tests
             m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "EaseSineIn - EaseSineOut";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseSineIn - EaseSineOut";
+			}
+		}
     }
 
     public class SpriteEaseSineInOut : EaseSpriteDemo
@@ -290,16 +294,19 @@ namespace tests
             var seq1 = new CCSequence(move, delay, move_back, delay);
             var seq2 = new CCSequence(move_ease, delay, move_ease_back, delay);
 
-            positionForTwo();
+            PositionForTwo();
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
             m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
-        public override String title()
-        {
-            return "EaseSineInOut action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseSineInOut action";
+			}
+		}
     }
 
     public class SpriteEaseElastic : EaseSpriteDemo
@@ -331,10 +338,13 @@ namespace tests
             m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "Elastic In - Out actions";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Elastic In - Out actions";
+			}
+		}
     }
 
     public class SpriteEaseElasticInOut : EaseSpriteDemo
@@ -369,10 +379,13 @@ namespace tests
             m_grossini.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "EaseElasticInOut action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseElasticInOut action";
+			}
+		}
     }
 
     public class SpriteEaseBounce : EaseSpriteDemo
@@ -404,10 +417,13 @@ namespace tests
             m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "Bounce In - Out actions";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Bounce In - Out actions";
+			}
+		}
     }
 
     public class SpriteEaseBounceInOut : EaseSpriteDemo
@@ -429,16 +445,19 @@ namespace tests
             var seq1 = new CCSequence(move, delay, move_back, delay);
             var seq2 = new CCSequence(move_ease, delay, move_ease_back, delay);
 
-            positionForTwo();
+            PositionForTwo();
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
             m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
-        public override String title()
-        {
-            return "EaseBounceInOut action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseBounceInOut action";
+			}
+		}
     }
 
     public class SpriteEaseBack : EaseSpriteDemo
@@ -470,10 +489,13 @@ namespace tests
             m_kathia.RunAction(new CCRepeatForever (seq3));
         }
 
-        public override String title()
-        {
-            return "Back In - Out actions";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Back In - Out actions";
+			}
+		}
     }
 
     public class SpriteEaseBackInOut : EaseSpriteDemo
@@ -495,16 +517,19 @@ namespace tests
             var seq1 = new CCSequence(move, delay, move_back, delay);
             var seq2 = new CCSequence(move_ease, delay, move_ease_back, delay);
 
-            positionForTwo();
+            PositionForTwo();
 
             m_grossini.RunAction(new CCRepeatForever (seq1));
             m_tamara.RunAction(new CCRepeatForever (seq2));
         }
 
-        public override String title()
-        {
-            return "EaseBackInOut action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "EaseBackInOut action";
+			}
+		}
     }
 
     public class SpeedTest : EaseSpriteDemo
@@ -536,10 +561,13 @@ namespace tests
 			m_kathia.RunAction(speedAction3);
         }
 
-        public override String title()
-        {
-            return "Speed action";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Speed action";
+			}
+		}
     }
 
     public class EaseActionsTestScene : TestScene
