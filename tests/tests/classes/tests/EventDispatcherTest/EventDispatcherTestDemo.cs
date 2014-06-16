@@ -130,78 +130,55 @@ namespace tests
 			sceneIndex = -1;
 			AddChild(NextAction());
 
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+			Director.ReplaceScene(this);
 		}
 	}
 
 
-	public class EventDispatcherTest : CCLayer
+	public class EventDispatcherTest : TestNavigationLayer
 	{
-		public override void OnEnter ()
-		{
-			base.OnEnter ();
 
-			var label = new CCLabelTtf(title(), "arial", 32);
-			AddChild(label, TestScene.TITLE_LEVEL);
-			label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 30);
-
-			var strSubtitle = subtitle();
-			if (!string.IsNullOrEmpty(strSubtitle))
-			{
-				var l = new CCLabelTtf(strSubtitle, "Thonburi", 16);
-				AddChild(l, TestScene.TITLE_LEVEL);
-				l.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 60);
-			}
-
-			var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, BackCallback);
-			var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, RestartCallback);
-			var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, NextCallback);
-
-			var menu = new CCMenu(item1, item2, item3);
-
-			menu.Position = CCPoint.Zero;
-			item1.Position = new CCPoint (CCVisibleRect.Center.X - item2.ContentSize.Width * 2, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-			item2.Position = new CCPoint (CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-			item3.Position = new CCPoint (CCVisibleRect.Center.X + item2.ContentSize.Width * 2, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-
-			AddChild (menu, TestScene.MENU_LEVEL);
-		}
-
-
-		public void RestartCallback(object pSender)
+		public override void RestartCallback(object sender)
 		{
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.RestartAction ());
 
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 
-		public void NextCallback(object pSender)
+
+		public override void NextCallback(object sender)
 		{
 
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.NextAction ());
 
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 
-		public void BackCallback(object pSender)
+		public override void BackCallback(object sender)
 		{
 
 			CCScene s = new EventDispatcherTestScene();
 			s.AddChild(EventDispatcherTestScene.BackAction ());
 
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 
-		public virtual string title()
+		public override string Title
 		{
-			return "No title";
+			get
+			{
+				return "No title";
+			}
 		}
 
-		public virtual string subtitle()
+		public override string Subtitle
 		{
-			return "";
+			get
+			{
+				return string.Empty;
+			}
 		}
 	}
 
@@ -265,15 +242,20 @@ namespace tests
 		{
 			mousePosition.Text = "Mouse Position: X: " + mouseEvent.CursorX + " Y: " + mouseEvent.CursorY;
 		}
-
-		public override string title()
+		public override string Title
 		{
-			return "Testing Mouse EventsDispatcher";
+			get
+			{
+				return "Testing Mouse EventsDispatcher";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Mouse Move, Buttons and Scroll";
+			get
+			{
+				return "Mouse Move, Buttons and Scroll";
+			}
 		}
 
 	}
@@ -285,8 +267,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var statusLabel = new CCLabelTtf("No keyboard event received!", "arial", 20);
 			statusLabel.Position = origin + size.Center;
@@ -309,14 +291,19 @@ namespace tests
 			EventDispatcher.AddEventListener(listener, statusLabel);		
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "Label Receives Keyboard Event";;
+			get
+			{
+				return "Label Receives Keyboard Event";
+			}
 		}
-
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Please click keyboard\n(Only available on Desktop and Android)";
+			get
+			{
+				return "Please click keyboard\n(Only available on Desktop and Android)";
+			}
 		}
 
 	}
@@ -328,8 +315,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var sprite = new CCSprite(TestResource.s_Ball);
 			sprite.Position = origin + size.Center;
@@ -376,14 +363,20 @@ namespace tests
 			base.OnExit ();
 
 		}
-		public override string title()
-		{
-			return "Sprite Receives Acceleration Event";
-		}
 
-		public override string subtitle()
+		public override string Title
 		{
-			return "Please move your device\n(Only available on mobile and emulated on Desktop)";
+			get
+			{
+				return "Sprite Receives Acceleration Event";
+			}
+		}
+		public override string Subtitle
+		{
+			get
+			{
+				return "Please move your device\n(Only available on mobile and emulated on Desktop)";
+			}
 		}
 
 	}
@@ -395,8 +388,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
@@ -462,7 +455,7 @@ namespace tests
 				var senderItem = (CCMenuItemFont)sender;
 				senderItem.LabelTTF.Text = "Only Next item could be clicked";
 
-                CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
+                Director.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
 				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
 			
@@ -492,14 +485,21 @@ namespace tests
 			base.OnExit ();
 
 		}
-		public override string title()
+
+		public override string Title
 		{
-			return "Touchable Sprite Test";
+			get
+			{
+				return "Touchable Sprite Test";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Please drag the blocks";
+			get
+			{
+				return "Please drag the blocks";
+			}
 		}
 
 	}
@@ -511,8 +511,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var sprite1 = new TouchableSprite (30);
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
@@ -537,14 +537,20 @@ namespace tests
 
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "Fixed priority test";
+			get
+			{
+				return "Fixed priority test";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Fixed Priority, Blue: 30, Red: 20, Yellow: 10\n The lower value the higher priority will be.";
+			get
+			{
+				return "Fixed Priority, Blue: 30, Red: 20, Yellow: 10\n The lower value the higher priority will be.";
+			}
 		}
 
 	}
@@ -622,8 +628,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -687,14 +693,12 @@ namespace tests
             this.EventDispatcher.RemoveEventListener(listener2);
 			base.OnExit ();
 		}
-		public override string title()
+		public override string Title
 		{
-			return "Send Custom Event";
-		}
-
-		public override string subtitle()
-		{
-			return string.Empty;
+			get
+			{
+				return "Send Custom Event";
+			}
 		}
 
 	}
@@ -711,8 +715,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -781,14 +785,20 @@ namespace tests
 			base.OnExit ();
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "RemoveAndRetainNodeTest";
+			get
+			{
+				return "RemoveAndRetainNodeTest";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Sprite should be removed after 5s, add to scene again after 5s";
+			get
+			{
+				return "Sprite should be removed after 5s, add to scene again after 5s";
+			}
 		}
 
 	}
@@ -870,16 +880,21 @@ namespace tests
 
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "RemoveListenerAfterAddingTest";
+			get
+			{
+				return "RemoveListenerAfterAddingTest";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Should not crash!";
+			get
+			{
+				return "Should not crash!";
+			}
 		}
-
 	}
 
 	public class DirectorTest : EventDispatcherTest
@@ -895,8 +910,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var s = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var s = Director.VisibleSize;
 
 			label1 = new CCLabelTtf("Update: 0", "arial", 20);
 			label1.AnchorPoint = CCPoint.AnchorUpperLeft;
@@ -918,7 +933,7 @@ namespace tests
 			label4.Position = new CCPoint(30,s.Height/2 - 60);
 			AddChild(label4);
 
-			var dispatcher = CCApplication.SharedApplication.MainWindowDirector.EventDispatcher;
+			var dispatcher = Director.EventDispatcher;
 
 			event1 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_UPDATE, OnEvent1);
 			event2 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_VISIT, OnEvent2);
@@ -943,7 +958,7 @@ namespace tests
 
 			time += dt;
 			if(time > 0.5) {
-				CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+				Director.Projection = CCDirectorProjection.Projection2D;
 				time = 0;
 			}
 
@@ -968,14 +983,20 @@ namespace tests
 			base.OnExit ();
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "Testing Director Events";
+			get
+			{
+				return "Testing Director Events";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "after visit, after draw, after update, projection changed";
+			get
+			{
+				return "after visit, after draw, after update, projection changed";
+			}
 		}
 
 	}
@@ -987,8 +1008,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var sprite1 = new TouchableSprite ();
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
@@ -1048,14 +1069,12 @@ namespace tests
 
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return  "PauseResumeTargetTest";
-		}
-
-		public override string subtitle()
-		{
-			return string.Empty;
+			get
+			{
+				return  "PauseResumeTargetTest";
+			}
 		}
 
 	}
@@ -1070,8 +1089,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
-			var size = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+			var origin = Director.VisibleOrigin;
+			var size = Director.VisibleSize;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + size.Center;
@@ -1131,14 +1150,21 @@ namespace tests
 			base.OnExit ();
 
 		}
-		public override string title()
+
+		public override string Title
 		{
-			return "Smooth Follow Test";
+			get
+			{
+				return "Smooth Follow Test";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Please touch and drag on the screen";
+			get
+			{
+				return "Please touch and drag on the screen";
+			}
 		}
 
 	}
@@ -1258,7 +1284,7 @@ namespace tests
                 sprite2.EventDispatcher.AddEventListener(keyboardEventListener.Copy(), this);
 
 
-				var visibleSize = CCApplication.SharedApplication.MainWindowDirector.VisibleSize;
+				var visibleSize = Director.VisibleSize;
 				sprite.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y + sprite2.ContentSize.Height/2 +10);
 				sprite2.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y - sprite2.ContentSize.Height/2-10);
 			}
@@ -1280,7 +1306,7 @@ namespace tests
 
 		bool IsPointInTopHalfAreaOfScreen(CCPoint pt)
 		{
-			var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var winSize = Director.WindowSizeInPoints;
 
 			if (pt.Y >= winSize.Height/2) {
 				return true;
@@ -1289,14 +1315,20 @@ namespace tests
 			return false;
 		}
 
-		public override string title()
+		public override string Title
 		{
-			return "Stop Propagation Test";
+			get
+			{
+				return "Stop Propagation Test";
+			}
 		}
 
-		public override string subtitle()
+		public override string Subtitle
 		{
-			return "Shouldn't crash and only blue block could be clicked";
+			get
+			{
+				return "Shouldn't crash and only blue block could be clicked";
+			}
 		}
 
 	}
