@@ -62,9 +62,12 @@ namespace tests
             right.AddChild(new CCLabelTtf("Tint and Fade", "arial", 20.0f));
         }
 
-        public override string subtitle()
-        {
-            return "ProgressTo Tint And Fade";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "ProgressTo Tint And Fade";
+			}
+		}
     }
 }

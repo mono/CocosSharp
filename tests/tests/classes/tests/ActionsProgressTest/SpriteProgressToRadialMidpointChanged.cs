@@ -40,9 +40,12 @@ namespace tests
 			right.RepeatForever(progressTo);
         }
 
-        public override string subtitle()
-        {
-            return "Radial w/ Different Midpoints";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Radial w/ Different Midpoints";
+			}
+		}
     }
 }

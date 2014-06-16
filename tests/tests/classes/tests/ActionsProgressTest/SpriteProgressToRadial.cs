@@ -29,9 +29,12 @@ namespace tests
 			right.RepeatForever(progressTo);
         }
 
-        public override string subtitle()
-        {
-            return "ProgressTo Radial";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "ProgressTo Radial";
+			}
+		}
     }
 }

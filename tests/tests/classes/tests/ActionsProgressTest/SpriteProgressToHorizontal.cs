@@ -36,9 +36,12 @@ namespace tests
 			right.RepeatForever(progressTo);
         }
 
-        public override string subtitle()
-        {
-            return "ProgressTo Horizontal";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "ProgressTo Horizontal";
+			}
+		}
     }
 }

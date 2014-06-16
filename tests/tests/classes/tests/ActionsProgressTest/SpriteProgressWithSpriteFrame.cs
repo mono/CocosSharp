@@ -45,9 +45,12 @@ namespace tests
 			right.RepeatForever(progressTo);
         }
 
-        public override string subtitle()
-        {
-            return "Progress With Sprite Frame";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Progress With Sprite Frame";
+			}
+		}
     }
 }
