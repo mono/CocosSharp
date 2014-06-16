@@ -9,71 +9,85 @@ namespace tests
 {
     public class AccelerometerTest : CCLayer
     {
+        CCLabelTtf titleLabel;
+        CCSprite ball;
+        double lastTime;
 
-        protected CCSprite m_pBall;
-        protected double m_fLastTime;
 
-		public void DidAccelerate(CCAcceleration accelerationValue)
+        #region Properties
+
+        public virtual string Title
         {
-            CCDirector pDir = CCApplication.SharedApplication.MainWindowDirector;
-            CCSize winSize = pDir.WindowSizeInPoints;
+            get { return "AccelerometerTest"; }
+        }
 
-            /*FIXME: Testing on the Nexus S sometimes m_pBall is NULL */
-            if (m_pBall == null)
+        #endregion Properties
+
+
+        #region Constructors
+
+        public AccelerometerTest()
+        {
+            titleLabel = new CCLabelTtf(Title, "Arial", 32);
+            AddChild(titleLabel, 1);
+
+            ball = new CCSprite("Images/ball");
+            AddChild(ball);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 50);
+            ball.Position = windowSize.Center;
+        }
+
+        #endregion Setup content
+
+
+        public void DidAccelerate(CCAcceleration accelerationValue)
+        {
+            CCSize winSize = Director.WindowSizeInPoints;
+
+            /*FIXME: Testing on the Nexus S sometimes ball is NULL */
+            if (ball == null)
             {
                 return;
             }
 
-            CCSize ballSize = m_pBall.ContentSize;
+            CCSize ballSize = ball.ContentSize;
 
-            CCPoint ptNow = m_pBall.Position;
-            CCPoint ptTemp = pDir.ConvertToUi(ptNow);
+            CCPoint ptNow = ball.Position;
+            CCPoint ptTemp = Director.ConvertToUi(ptNow);
 
-			var orientation = CCApplication.SharedApplication.CurrentOrientation;
+            var orientation = CCApplication.SharedApplication.CurrentOrientation;
 
-			//CCLog.Log("Accelerate : X: {0} Y: {1} Z: {2} orientation: {3}", accelerationValue.X, accelerationValue.Y, accelerationValue.Z, orientation );
-#if ANDROID || WINDOWS_PHONE8
-			if (orientation == CCDisplayOrientation.LandscapeRight)
-			{
-				ptTemp.X -= (float) accelerationValue.X * 9.81f;
-				ptTemp.Y -= (float) accelerationValue.Y * 9.81f;
-			}
-			else
-			{
-				ptTemp.X += (float) accelerationValue.X * 9.81f;
-				ptTemp.Y += (float) accelerationValue.Y * 9.81f;
-			}
-#else
-            //ptTemp.X -= (float) pAccelerationValue.Y * 9.81f;
-            //ptTemp.Y -= (float) pAccelerationValue.X * 9.81f;
+            #if ANDROID || WINDOWS_PHONE8
+            if (orientation == CCDisplayOrientation.LandscapeRight)
+            {
+                ptTemp.X -= (float) accelerationValue.X * 9.81f;
+                ptTemp.Y -= (float) accelerationValue.Y * 9.81f;
+            }
+            else
+            {
+                ptTemp.X += (float) accelerationValue.X * 9.81f;
+                ptTemp.Y += (float) accelerationValue.Y * 9.81f;
+            }
+            #else
             ptTemp.X += (float)accelerationValue.X * 9.81f;
             ptTemp.Y += (float)accelerationValue.Y * 9.81f;
-#endif
+            #endif
 
-            CCPoint ptNext = pDir.ConvertToGl(ptTemp);
+            CCPoint ptNext = Director.ConvertToGl(ptTemp);
             ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
             ptNext.Y = MathHelper.Clamp(ptNext.Y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
-            m_pBall.Position = ptNext;
-        }
-
-        public virtual string title()
-        {
-            return "AccelerometerTest";
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            CCLabelTtf label = new CCLabelTtf(title(), "Arial", 32);
-            AddChild(label, 1);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
-
-            m_pBall = new CCSprite("Images/ball");
-            m_pBall.Position = s.Center;
-            AddChild(m_pBall);
+            ball.Position = ptNext;
         }
     }
 
@@ -82,18 +96,21 @@ namespace tests
         protected override void NextTestCase()
         {
         }
+
         protected override void PreviousTestCase()
         {
         }
+
         protected override void RestTestCase()
         {
         }
+
         public override void runThisTest()
         {
-            CCLayer pLayer = new AccelerometerTest();
-            AddChild(pLayer);
+            CCLayer layer = new AccelerometerTest();
+            AddChild(layer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }
