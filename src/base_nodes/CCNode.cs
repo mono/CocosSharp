@@ -1269,7 +1269,7 @@ namespace CocosSharp
 
         public CCActionState RepeatForever(CCActionInterval action)
         {
-            return RunAction (new CCRepeatForever (action));
+			return RunAction (new CCRepeatForever (action) { Tag = action.Tag });
         }
 
         public CCActionState RunAction(CCAction action)
