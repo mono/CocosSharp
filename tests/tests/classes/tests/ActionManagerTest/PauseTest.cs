@@ -24,7 +24,7 @@ namespace tests
             //
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             CCLabelTtf l = new CCLabelTtf("After 5 seconds grossini should move", "arial", 16);
             AddChild(l);
