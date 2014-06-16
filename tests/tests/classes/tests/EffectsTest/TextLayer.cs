@@ -2,185 +2,175 @@ using CocosSharp;
 
 namespace tests
 {
-    public class TextLayer : CCLayerColor
-    {
-        //UxString	m_strTitle;
-        private static int MAX_LAYER = 22;
+
+	public class TextLayer : TestNavigationLayer
+	{
+		private static int MAX_LAYER = 22;
 		public static CCNode BaseNode;
 
-        public TextLayer() : base(new CCColor4B(32, 128, 32, 255))
-        {
-            //BaseNode = new CCNode();
-			//BaseNode.ContentSize = CCVisibleRect.VisibleRect.Size;
+		public TextLayer() : base()
+		{
 
-			//AddChild(BaseNode, 0, EffectTestScene.kTagBackground);
-
-            var bg = new CCSprite(TestResource.s_back3);
-            BaseNode = bg;
+			var bg = new CCSprite(TestResource.s_back3);
+			BaseNode = bg;
 			AddChild(bg, 0, EffectTestScene.kTagBackground);
-            bg.Position = CCVisibleRect.Center;
 
 			BaseNode.RunAction(CurrentAction);
 
 			var Kathia = new CCSprite(TestResource.s_pPathSister2);
-            BaseNode.AddChild(Kathia, 1);
+			BaseNode.AddChild(Kathia, 1, EffectTestScene.kTagKathia);
 
-            Kathia.Position = new CCPoint(bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
-
-            var sc = new CCScaleBy(2, 5);
-            var sc_back = sc.Reverse();
-            Kathia.RunAction(new CCRepeatForever(sc, sc_back));
+			var sc = new CCScaleBy(2, 5);
+			var sc_back = sc.Reverse();
+			Kathia.RunAction(new CCRepeatForever(sc, sc_back));
 
 			var Tamara = new CCSprite(TestResource.s_pPathSister1);
-			BaseNode.AddChild(Tamara, 1);
-			Tamara.Position = new CCPoint(CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3,
-                                          CCVisibleRect.Center.Y);
-            Tamara.Position = new CCPoint(2 * bg.ContentSize.Width / 3, bg.ContentSize.Center.Y);
+			BaseNode.AddChild(Tamara, 1, EffectTestScene.kTagTamara);
 
-            var sc2 = new CCScaleBy(2, 5);
-            var sc2_back = sc2.Reverse();
+
+			var sc2 = new CCScaleBy(2, 5);
+			var sc2_back = sc2.Reverse();
 			Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
 
-            var label = new CCLabelTtf(EffectTestScene.effectsList[EffectTestScene.actionIdx], "arial", 32);
+			var colorBackground = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
+			AddChild(colorBackground, -1);
 
-            label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
-            AddChild(label);
-            label.Tag = EffectTestScene.kTagLabel;
+			Schedule(checkAnim);
+		}
 
-            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
 
-            var menu = new CCMenu(item1, item2, item3);
+			BaseNode.Position = CCVisibleRect.Center;
+			var size = BaseNode.ContentSize;
+			BaseNode[EffectTestScene.kTagKathia].Position = new CCPoint(size.Width / 3, size.Center.Y);
+			BaseNode[EffectTestScene.kTagTamara].Position = new CCPoint(2 * size.Width / 3,size.Center.Y);
+		}
 
-            menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(CCVisibleRect.Center.X - item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item2.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item3.Position = new CCPoint(CCVisibleRect.Center.X + item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
+		public override string Title
+		{
+			get
+			{
+				return EffectTestScene.effectsList[EffectTestScene.actionIdx];
+			}
+		}
 
-            AddChild(menu, 1);
+		public CCActionInterval createEffect(int nIndex, float t)
+		{
+			// This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
+			// TransitionTests and TileTests may have set the DepthTest to true so we need
+			// to make sure we reset it.
+			Director.IsUseDepthTesting = false;
 
-            Schedule(checkAnim);
-        }
-
-        public CCActionInterval createEffect(int nIndex, float t)
-        {
-            // This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
-            // TransitionTests and TileTests may have set the DepthTest to true so we need
-            // to make sure we reset it.
-            CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting = false;
-
-            switch (nIndex)
-            {
-                case 0:
+			switch (nIndex)
+			{
+				case 0:
 					return new Shaky3DDemo(t);
-                case 1:
+				case 1:
 					return new Waves3DDemo(t);
-                case 2:
+				case 2:
 					return FlipX3DDemo.ActionWithDuration(t);
 				case 3:
 					return FlipY3DDemo.ActionWithDuration(t);
-                case 4:
-                    return new Lens3DDemo(t);
-                case 5:
+				case 4:
+					return new Lens3DDemo(t);
+				case 5:
 					return new Ripple3DDemo(t);
-                case 6:
+				case 6:
 					return new LiquidDemo(t);
-                case 7:
+				case 7:
 					return new WavesDemo(t);
-                case 8:
-					return new TwirlDemo(t);
-                case 9:
+				case 8:
+					return new TwirlDemo(t, Director.WindowSizeInPoints.Center);
+				case 9:
 					return new ShakyTiles3DDemo(t);
-                case 10:
+				case 10:
 					return new ShatteredTiles3DDemo(t);
-                case 11:
-                    return ShuffleTilesDemo.ActionWithDuration(t);
-                case 12:
-                    return FadeOutTRTilesDemo.ActionWithDuration(t);
-                case 13:
-                    return FadeOutBLTilesDemo.ActionWithDuration(t);
-                case 14:
-                    return FadeOutUpTilesDemo.ActionWithDuration(t);
-                case 15:
-                    return FadeOutDownTilesDemo.ActionWithDuration(t);
-                case 16:
-                    return TurnOffTilesDemo.ActionWithDuration(t);
-                case 17:
+				case 11:
+					return ShuffleTilesDemo.ActionWithDuration(t);
+				case 12:
+					return FadeOutTRTilesDemo.ActionWithDuration(t);
+				case 13:
+					return FadeOutBLTilesDemo.ActionWithDuration(t);
+				case 14:
+					return FadeOutUpTilesDemo.ActionWithDuration(t);
+				case 15:
+					return FadeOutDownTilesDemo.ActionWithDuration(t);
+				case 16:
+					return TurnOffTilesDemo.ActionWithDuration(t);
+				case 17:
 					return new WavesTiles3DDemo(t);
-                case 18:
+				case 18:
 					return new JumpTiles3DDemo(t);
-                case 19:
+				case 19:
 					return new SplitRowsDemo(t);
-			case 20:                             
+				case 20:                             
 					return new SplitColsDemo(t);
-                case 21:
+				case 21:
+					Director.IsUseDepthTesting = true;
 					return new PageTurn3DDemo(t);
-            }
+			}
 
-            return null;
-        }
+			return null;
+		}
 
-        public CCActionInterval CurrentAction
-        {
-            get
-            {
-                var pEffect = createEffect(EffectTestScene.actionIdx, 3);
-                return pEffect;
-            }
-        }
+		public CCActionInterval CurrentAction
+		{
+			get
+			{
+				var pEffect = createEffect(EffectTestScene.actionIdx, 3);
+				return pEffect;
+			}
+		}
 
-        public void checkAnim(float dt)
-        {
-            var s2 = this[EffectTestScene.kTagBackground];
-            if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
-                s2.Grid = null;
-            ;
-        }
+		public void checkAnim(float dt)
+		{
+			var s2 = this[EffectTestScene.kTagBackground];
+			if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
+				s2.Grid = null;
+			;
+		}
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
+		public override void OnEnter()
+		{
+			base.OnEnter();
+		}
 
-        public void restartCallback(object pSender)
-        {
-            /*newOrientation();*/
-            newScene();
-        }
+		public override void RestartCallback(object sender)
+		{
+			NewScene();
+		}
 
-        public void nextCallback(object pSender)
-        {
-            // update the action index
-            EffectTestScene.actionIdx++;
-            EffectTestScene.actionIdx = EffectTestScene.actionIdx % MAX_LAYER;
+		public override void NextCallback(object sender)
+		{
+			// update the action index
+			EffectTestScene.actionIdx++;
+			EffectTestScene.actionIdx = EffectTestScene.actionIdx % MAX_LAYER;
 
-            /*newOrientation();*/
-            newScene();
-        }
+			NewScene();
+		}
 
-        public void backCallback(object pSender)
-        {
-            // update the action index
-            EffectTestScene.actionIdx--;
-            int total = MAX_LAYER;
-            if (EffectTestScene.actionIdx < 0)
-                EffectTestScene.actionIdx += total;
+		public override void BackCallback(object sender)
+		{
+			// update the action index
+			EffectTestScene.actionIdx--;
+			int total = MAX_LAYER;
+			if (EffectTestScene.actionIdx < 0)
+				EffectTestScene.actionIdx += total;
 
-            /*newOrientation();*/
-            newScene();
-        }
+			NewScene();
+		}
 
-        public void newScene()
-        {
-            CCScene s = new EffectTestScene();
+		public void NewScene()
+		{
+			CCScene s = new EffectTestScene();
 			CCNode child = new TextLayer();
-            s.AddChild(child);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
-        }
+			s.AddChild(child);
+			Director.ReplaceScene(s);
+		}
 
 
-    }
+	}
+
 }

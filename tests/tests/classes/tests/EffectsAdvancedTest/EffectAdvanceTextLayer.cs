@@ -31,11 +31,9 @@ namespace tests
 			bgNode.AnchorPoint = CCPoint.AnchorMiddle;
 			AddChild (bgNode);
 
-			//_bgNode.Position = CCVisibleRect.Center;
-
 			var bg = new CCSprite("Images/background3");
 			bg.Position = CCVisibleRect.Center;
-			//AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
+
 			bgNode.AddChild (bg, 0, EffectAdvanceScene.kTagBackground);
 
 			target1 = new CCNode ();
@@ -87,21 +85,21 @@ namespace tests
 			var s = new EffectAdvanceScene();
 			s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
 
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 
 		public override void NextCallback(object sender)
 		{
 			var s = new EffectAdvanceScene();
 			s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 
 		public override void BackCallback(object sender)
 		{
 			var s = new EffectAdvanceScene();
 			s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+			Director.ReplaceScene(s);
 		}
 	}
 

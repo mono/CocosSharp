@@ -83,7 +83,7 @@ namespace tests
 			var pLayer = nextEffectAdvanceAction();
 
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }

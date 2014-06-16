@@ -24,7 +24,7 @@ namespace tests
         {
             base.OnExit();
 
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
+            Director.Projection = CCDirectorProjection.Projection3D;
         }
 
 		public override string Title

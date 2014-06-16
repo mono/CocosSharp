@@ -11,7 +11,7 @@ namespace tests
         public override void runThisTest()
         {
 			AddChild(new TextLayer());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         protected override void NextTestCase()
@@ -26,6 +26,8 @@ namespace tests
 
         public static int kTagTextLayer = 1;
         public static int kTagBackground = 1;
+		public static int kTagKathia = 3;
+		public static int kTagTamara = 4;
         public static int kTagLabel = 2;
         public static int actionIdx = 0;
 

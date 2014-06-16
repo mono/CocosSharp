@@ -8,10 +8,10 @@ namespace tests
 {
     public class TwirlDemo : CCTwirl
     {
-        static readonly CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-        public TwirlDemo (float t) : base (t, new CCGridSize(12, 8), winSize.Center, 1, 2.5f)  
+		public TwirlDemo (float t, CCPoint position) : base (t, new CCGridSize(12, 8), position, 1, 2.5f)  
         {
+			
         }
     }
 }
