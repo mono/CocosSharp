@@ -988,16 +988,6 @@ namespace CocosSharp
             }
 
 
-            // Check for Keypad interaction
-            if(currentKeyboardState.IsKeyUp(Keys.Back) && priorKeyboardState.IsKeyDown(Keys.Back)) 
-            {
-                MainWindowDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.BackClicked);
-            }
-            else if(currentKeyboardState.IsKeyUp(Keys.Home) && priorKeyboardState.IsKeyDown(Keys.Home)) 
-            {
-                MainWindowDirector.KeypadDispatcher.DispatchKeypadMsg(CCKeypadMSGType.MenuClicked);
-            }
-
             var keyboardEvent = new CCEventKeyboard (CCKeyboardEventType.KEYBOARD_PRESS);
             var keyboardState = new CCKeyboardState () { KeyboardState = currentKeyboardState };
 

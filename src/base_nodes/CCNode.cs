@@ -77,7 +77,6 @@ namespace CocosSharp
         bool isAdditionalTransformDirty;
         bool ignoreAnchorPointForPosition;
         bool isCleaned = false;
-        bool keypadEnabled;                                         // input variables
         bool inverseDirty;
         bool forceDirectorSet;
 
@@ -147,30 +146,6 @@ namespace CocosSharp
                 {
                     ignoreAnchorPointForPosition = value;
                     SetTransformIsDirty();
-                }
-            }
-        }
-
-        public virtual bool KeypadEnabled
-        {
-            get { return keypadEnabled; }
-            set
-            {
-                if (value != keypadEnabled)
-                {
-                    keypadEnabled = value;
-
-                    if (IsRunning)
-                    {
-                        if (value)
-                        {
-                            Director.KeypadDispatcher.AddDelegate(this);
-                        }
-                        else
-                        {
-                            Director.KeypadDispatcher.RemoveDelegate(this);
-                        }
-                    }
                 }
             }
         }
@@ -1183,11 +1158,6 @@ namespace CocosSharp
 
             IsRunning = true;
 
-            // add this node to concern the kaypad msg
-            if (keypadEnabled && Director != null)
-            {
-                Director.KeypadDispatcher.AddDelegate(this);
-            }
         }
 
         public virtual void OnEnterTransitionDidFinish()
@@ -1216,10 +1186,6 @@ namespace CocosSharp
 
         public virtual void OnExit()
         {
-            if (keypadEnabled && Director != null)
-            {
-                Director.KeypadDispatcher.RemoveDelegate(this);
-            }
 
             Pause();
 

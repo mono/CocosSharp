@@ -88,7 +88,6 @@ namespace CocosSharp
         public CCScene RunningScene { get; private set; }
         public CCNode NotificationNode { get; set; }
         public CCEventDispatcher EventDispatcher { get; private set; }
-        public CCKeypadDispatcher KeypadDispatcher  { get; private set; }
 
         protected bool IsPurgeDirectorInNextLoop { get; set; }
         protected CCStats Stats { get; private set; }
@@ -240,7 +239,6 @@ namespace CocosSharp
             Stats = new CCStats();
 
             EventDispatcher = new CCEventDispatcher(this);
-            KeypadDispatcher = new CCKeypadDispatcher();
 
             #if !NETFX_CORE
             Accelerometer = new CCAccelerometer(this);
