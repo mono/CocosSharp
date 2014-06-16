@@ -267,31 +267,18 @@ namespace tests
     }
 
 
-    public class ActionsDemo : CCLayer
+    public class ActionsDemo : TestNavigationLayer
     {
         protected CCSprite Grossini;
         protected CCSprite Kathia;
         protected CCSprite Tamara;
 
-        CCLabelTtf titleLabel;
-        CCLabelTtf subtitleLabel;
-
-        CCMenu selectTestCaseMenu;
-        CCMenuItemImage backMenuItem;
-        CCMenuItemImage restartMenuItem;
-        CCMenuItemImage nextMenuItem;
-
 
         #region Properties
 
-        public virtual string Title
+        public override string Title
         {
             get { return "ActionsTest"; }
-        }
-
-        public virtual string Subtitle
-        {
-            get { return ""; }
         }
 
         #endregion Properties
@@ -308,25 +295,6 @@ namespace tests
             AddChild(Grossini, 1);
             AddChild(Tamara, 2);
             AddChild(Kathia, 3);
-
-            titleLabel = new CCLabelTtf(Title, "arial", 32);
-            AddChild(titleLabel, 1);
-
-            var strSubtitle = Subtitle;
-            if (!strSubtitle.Equals(""))
-            {
-                subtitleLabel = new CCLabelTtf(strSubtitle, "arial", 16);
-                AddChild(subtitleLabel, 1);   
-            }
-
-            backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, BackCallback);
-            restartMenuItem = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, RestartCallback);
-            nextMenuItem = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, NextCallback);
-
-            selectTestCaseMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem);
-            selectTestCaseMenu.Name = Title;
-
-            AddChild(selectTestCaseMenu, TestScene.MENU_LEVEL);
         }
 
         #endregion Constructors
@@ -341,15 +309,6 @@ namespace tests
             Grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
             Tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
             Kathia.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
-            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 30);
-
-            if(subtitleLabel != null)
-                subtitleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 60);
-
-            selectTestCaseMenu.Position = new CCPoint(0, 0);
-            backMenuItem.Position = new CCPoint(windowSize.Width / 2 - 100, 30);
-            restartMenuItem.Position = new CCPoint(windowSize.Width / 2, 30);
-            nextMenuItem.Position = new CCPoint(windowSize.Width / 2 + 100, 30);
         }
             
         #endregion Setup content
@@ -357,21 +316,21 @@ namespace tests
 
         #region Callbacks
 
-        public void RestartCallback(object sender)
+        public override void RestartCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.RestartAction());
             Director.ReplaceScene(s);
         }
 
-        public void NextCallback(object sender)
+        public override void NextCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.NextAction());
             Director.ReplaceScene(s);
         }
 
-        public void BackCallback(object sender)
+        public override void BackCallback(object sender)
         {
             var s = new ActionsTestScene();
             s.AddChild(ActionsTestScene.BackAction());
@@ -502,7 +461,7 @@ namespace tests
             Grossini.Color = new CCColor3B(255, 0, 0);
 
             Kathia.Position = new CCPoint(windowSize.Width - 100, windowSize.Height / 2);
-            Kathia.Color = new CCColor3B(0, 0, 255); // ccTypes.ccBLUE
+            Kathia.Color = new CCColor3B(0, 0, 255);
         }
 
         #endregion Setup content

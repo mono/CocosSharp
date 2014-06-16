@@ -50,7 +50,7 @@ namespace tests
 
             navigationMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem);
 
-            AddChild(navigationMenu, 1);
+            AddChild(navigationMenu, TestScene.MENU_LEVEL);
         }
 
         #endregion Constructors
