@@ -341,7 +341,7 @@ namespace tests
             CCLayer pLayer = new Box2DTestLayer();
             AddChild(pLayer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }
