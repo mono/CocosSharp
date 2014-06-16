@@ -14,7 +14,7 @@ namespace tests.Clipping
         {
             CCLayer pLayer = nextTestAction();
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         public static CCLayer createTestLayer(int nIndex)
@@ -87,6 +87,10 @@ namespace tests.Clipping
         protected const int kTagClipperNode = 2;
         protected const int kTagContentNode = 3;
 
+		CCSprite background;
+		CCLabelTtf label;
+		CCLabelTtf subtitleLabel;
+
         public virtual void Setup()
         {
         }
@@ -103,60 +107,73 @@ namespace tests.Clipping
 
         public BaseClippingNodeTest() : base()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			CCSize s = Director.WindowSizeInPoints;
 
-            CCSprite background = new CCSprite(TestResource.s_back3);
-            background.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            background.Position = s.Center;
-            AddChild(background, -1);
+			background = new CCSprite(TestResource.s_back3);
+			background.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			AddChild(background, -1);
 
-            var label = new CCLabelTtf(title(), "arial", 32);
-            AddChild(label, 1);
-            label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
+			label = new CCLabelTtf(title(), "arial", 32);
+			AddChild(label, 1);
 
-            string subtitle_ = subtitle();
-            if (subtitle_.Length > 0)
-            {
-                var l = new CCLabelTtf(subtitle_, "arial", 16);
-                AddChild(l, 1);
-                l.Position = (new CCPoint(s.Width / 2, s.Height - 80));
-            }
 
-            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
+			string subtitle_ = subtitle();
+			if (subtitle_.Length > 0)
+			{
+				subtitleLabel = new CCLabelTtf(subtitle_, "arial", 16);
+				AddChild(subtitleLabel, 1);
 
-            var menu = new CCMenu(item1, item2, item3);
+			}
 
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
+			var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback) { Tag = 51 };
+			var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback) { Tag = 52 };
+			var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback) { Tag = 53 };
 
-            AddChild(menu, 1);
+			var menu = new CCMenu(item1, item2, item3) { Tag = 50};
 
-            Setup();
+			menu.Position = new CCPoint(0, 0);
+
+			AddChild(menu, 1);
+
+			Setup();
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+			var s = windowSize;
+
+			background.Position = s.Center;
+			label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
+			subtitleLabel.Position = (new CCPoint(s.Width / 2, s.Height - 80));
+
+			var menu = this[50];
+
+			menu[51].Position = new CCPoint(s.Width / 2 - 100, 30);
+			menu[52].Position = new CCPoint(s.Width / 2, 30);
+			menu[53].Position = new CCPoint(s.Width / 2 + 100, 30);
+		
+		}
 
         public void restartCallback(object pSender)
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.restartTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.nextTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.backTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
@@ -181,6 +198,7 @@ namespace tests.Clipping
 
     public class BasicTest : BaseClippingNodeTest
     {
+
         protected virtual CCAction ActionRotate()
         {
             return new CCRepeatForever(new CCRotateBy(1.0f, 90.0f));
@@ -219,7 +237,7 @@ namespace tests.Clipping
 
         protected virtual CCClippingNode Clipper()
         {
-            return new CCClippingNode();
+			return new CCClippingNode() { Tag = kTagClipperNode };
         }
 
         protected virtual CCNode Content()
@@ -234,23 +252,32 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             CCNode stencil = Stencil();
             stencil.Tag = kTagStencilNode;
             stencil.Position = new CCPoint(50, 50);
 
             CCClippingNode clipper = Clipper();
-            clipper.Tag = kTagClipperNode;
             clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            clipper.Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
             clipper.Stencil = stencil;
             AddChild(clipper);
 
-            CCNode content = Content();
+			CCNode content = Content();
+			content.Tag = kTagContentNode;
             content.Position = new CCPoint(50, 50);
             clipper.AddChild(content);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var s = windowSize;
+			this[kTagClipperNode].Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
+
+
+		}
     }
 
     internal class ShapeTest : BasicTest
@@ -401,7 +428,7 @@ namespace tests.Clipping
                 CCClippingNode clipper = new CCClippingNode();
                 clipper.ContentSize = new CCSize(size, size);
                 clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                clipper.Position = new CCPoint(parent.ContentSize.Width / 2, parent.ContentSize.Height / 2);
+				clipper.Position = parent.ContentSize.Center;
                 clipper.AlphaThreshold = 0.05f;
                 clipper.RunAction(new CCRepeatForever(new CCRotateBy(i % 3 != 0 ? 1.33f : 1.66f, i % 2 != 0 ? 90 : -90)));
                 parent.AddChild(clipper);
@@ -409,7 +436,7 @@ namespace tests.Clipping
                 CCNode stencil = new CCSprite(TestResource.s_pPathGrossini);
                 stencil.Scale = 2.5f - (i * (2.5f / depth));
                 stencil.AnchorPoint = new CCPoint(0.5f, 0.5f);
-                stencil.Position = new CCPoint(clipper.ContentSize.Width / 2, clipper.ContentSize.Height / 2);
+				stencil.Position = clipper.ContentSize.Center;
                 stencil.Visible = false;
                 stencil.RunAction(new CCSequence(new CCDelayTime(i), new CCShow()));
                 clipper.Stencil = stencil;
@@ -419,6 +446,38 @@ namespace tests.Clipping
                 parent = clipper;
             }
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			foreach (var clipper in Children)
+			{
+				if (clipper is CCClippingNode)
+				{
+					PositionInWindow((CCClippingNode)clipper);
+				}
+
+			}
+		}
+
+		void PositionInWindow (CCClippingNode clipper)
+		{
+			clipper.Position = clipper.Parent.ContentSize.Center;
+
+			foreach (var child in clipper.Children)
+			{
+				if (child is CCClippingNode)
+				{
+					var clipr = (CCClippingNode)child;
+					clipr.Stencil.Position = clipr.ContentSize.Center;
+
+					PositionInWindow(clipr);
+
+				}
+
+			}
+		}
     }
 
     internal class HoleDemo : BaseClippingNodeTest
@@ -433,13 +492,13 @@ namespace tests.Clipping
             target.AnchorPoint = CCPoint.Zero;
             target.Scale = 3;
 
-            m_pOuterClipper = new CCClippingNode();
+			m_pOuterClipper = new CCClippingNode();
+
             CCAffineTransform tranform = CCAffineTransform.Identity;
 			tranform = CCAffineTransform.ScaleCopy(tranform, target.ScaleX, target.ScaleY);
 
             m_pOuterClipper.ContentSize = CCAffineTransform.Transform(target.ContentSize, tranform);
             m_pOuterClipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            m_pOuterClipper.Position = ContentSize.Center;
             m_pOuterClipper.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
 
             m_pOuterClipper.Stencil = target;
@@ -468,6 +527,14 @@ namespace tests.Clipping
             EventDispatcher.AddEventListener(listener, this);    
         }
 
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+
+			m_pOuterClipper.Position = ContentSize.Center;
+
+		}
         public override string title()
         {
             return "Hole Demo";
@@ -529,13 +596,11 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
-            CCClippingNode clipper = new CCClippingNode();
-            clipper.Tag = kTagClipperNode;
+			CCClippingNode clipper = new CCClippingNode() { Tag = kTagClipperNode };
             clipper.ContentSize = new CCSize(200, 200);
             clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            clipper.Position = ContentSize.Center;
             clipper.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
             AddChild(clipper);
 
@@ -555,7 +620,6 @@ namespace tests.Clipping
             CCSprite content = new CCSprite(TestResource.s_back2);
             content.Tag = kTagContentNode;
             content.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            content.Position = clipper.ContentSize.Center;
             clipper.AddChild(content);
 
             m_bScrolling = false;
@@ -568,6 +632,15 @@ namespace tests.Clipping
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
             EventDispatcher.AddEventListener(touchListener, this);        
+		}
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var clipper = this[kTagClipperNode];
+			clipper.Position = ContentSize.Center;
+			clipper[kTagContentNode].Position = clipper.ContentSize.Center;
 		}
 
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
