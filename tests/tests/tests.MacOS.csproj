@@ -1110,6 +1110,7 @@
     <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableViewCell.cs">
       <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
     </Compile>
+    <Compile Include="classes\TestNavigationLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhoneGameThumb_iPad.png" />

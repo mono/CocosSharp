@@ -46,6 +46,7 @@
     <Compile Include="classes\test.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
+	<Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
