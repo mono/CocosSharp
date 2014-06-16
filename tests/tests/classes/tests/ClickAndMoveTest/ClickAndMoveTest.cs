@@ -10,13 +10,14 @@ namespace tests
     {
         public static int kTagSprite = 1;
         public static string s_pPathGrossini = "Images/grossini";
+
         public override void runThisTest()
         {
             CCLayer pLayer = new MainLayer();
             //pLayer->autorelease();
 
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

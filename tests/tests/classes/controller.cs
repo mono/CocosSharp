@@ -165,7 +165,7 @@ namespace tests
         {
             testListMenuItems[currentItemIndex].Selected = false;
             currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Director.WindowSizeInPoints;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -178,7 +178,7 @@ namespace tests
             if(currentItemIndex < 0) {
                 currentItemIndex = testListMenuItems.Count - 1;
             }
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Director.WindowSizeInPoints;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -289,7 +289,7 @@ namespace tests
 
             CCPoint curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Director.WindowSizeInPoints;
             if (nextPos.Y < 0.0f)
             {
                 testListMenu.Position = new CCPoint(0, 0);
@@ -314,10 +314,10 @@ namespace tests
             // https://github.com/mono/MonoGame/issues/2276
             var delta = mouseEvent.ScrollY;
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Director.WindowSizeInPoints;
             var curPos = testListMenu.Position;
             var nextPos = curPos;
-            nextPos.Y += (delta / CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor) / LINE_SPACE;
+            nextPos.Y += (delta / Director.ContentScaleFactor) / LINE_SPACE;
 
             if (nextPos.Y < 0) 
             {

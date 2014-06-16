@@ -106,7 +106,7 @@ namespace tests
             CCLayer pLayer = new TestController();
 
             pScene.AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            Director.ReplaceScene(pScene);
         }
 
         public abstract void runThisTest();
