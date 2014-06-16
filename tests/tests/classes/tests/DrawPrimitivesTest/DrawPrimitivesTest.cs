@@ -6,103 +6,88 @@ using CocosSharp;
 
 namespace tests
 {
-    public class BaseDrawNodeTest : CCLayer
+    public class BaseDrawNodeTest : TestNavigationLayer
     {
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Draw Demo"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public BaseDrawNodeTest()
         {
-            InitBaseDrawNodeTest();
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
 
         public virtual void Setup()
         {
         }
 
-        public virtual string title()
-        {
-            return "Draw Demo";
-        }
+        #endregion Setup content
 
-        public virtual string subtitle()
-        {
-            return "";
-        }
 
-        private void InitBaseDrawNodeTest ()
-        {
+        #region Callbacks
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            var label = new CCLabelTtf(title(), "arial", 32);
-            AddChild(label, 1);
-            label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
-
-            string subtitle_ = subtitle();
-            if (subtitle_.Length > 0)
-            {
-                var l = new CCLabelTtf(subtitle_, "arial", 16);
-                AddChild(l, 1);
-                l.Position = (new CCPoint(s.Width / 2, s.Height - 80));
-            }
-
-            var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
-            var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
-            var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback);
-
-            var menu = new CCMenu(item1, item2, item3);
-
-            menu.Position = new CCPoint(0, 0);
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-
-            AddChild(menu, 1);
-
-        }
-
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.restartTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.nextTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
             CCScene s = new DrawPrimitivesTestScene();
             s.AddChild(DrawPrimitivesTestScene.backTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
+
+        #endregion Callbacks
     }
 
     public class DrawPrimitivesWithRenderTextureTest : BaseDrawNodeTest
     {
-        public DrawPrimitivesWithRenderTextureTest()
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            CCRenderTexture text = new CCRenderTexture((int)s.Width, (int)s.Height);
+            base.RunningOnNewWindow(windowSize);
+
+            CCRenderTexture text = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height);
 
             CCDrawNode draw = new CCDrawNode();
             text.AddChild(draw, 10);
             text.Begin();
             // Draw polygons
             CCPoint[] points = new CCPoint[]
-                {
-                    new CCPoint(s.Height / 4, 0),
-                    new CCPoint(s.Width, s.Height / 5),
-                    new CCPoint(s.Width / 3 * 2, s.Height)
-                };
+            {
+                new CCPoint(windowSize.Height / 4, 0),
+                new CCPoint(windowSize.Width, windowSize.Height / 5),
+                new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
+            };
             draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
             text.End();
             AddChild(text, 24);
         }
+
+        #endregion Setup content
     }
 
     public class DrawPrimitivesTest : BaseDrawNodeTest
@@ -111,18 +96,17 @@ namespace tests
         {
             base.Draw();
 
-            CCApplication app = CCApplication.SharedApplication;
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             CCDrawingPrimitives.Begin();
 
             // draw a simple line
             CCDrawingPrimitives.DrawLine(new CCPoint(0, 0), new CCPoint(s.Width, s.Height),
-                                         new CCColor4B(255, 255, 255, 255));
+                new CCColor4B(255, 255, 255, 255));
 
             // line: color, width, aliased
             CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height), new CCPoint(s.Width, 0),
-                                         new CCColor4B(255, 0, 0, 255));
+                new CCColor4B(255, 0, 0, 255));
 
             // draw big point in the center
             CCDrawingPrimitives.DrawPoint(new CCPoint(s.Width / 2, s.Height / 2), 64, new CCColor4B(0, 0, 255, 128));
@@ -133,11 +117,11 @@ namespace tests
 
             // draw a green circle with 10 segments
             CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 100, 0, 10, false,
-                                           new CCColor4B(0, 255, 0, 255));
+                new CCColor4B(0, 255, 0, 255));
 
             // draw a green circle with 50 segments with line to center
             CCDrawingPrimitives.DrawCircle(new CCPoint(s.Width / 2, s.Height / 2), 50, CCMacros.CCDegreesToRadians(90),
-                                           50, true, new CCColor4B(0, 255, 255, 255));
+                50, true, new CCColor4B(0, 255, 255, 255));
 
 
             // draw an arc within rectangular region
@@ -154,18 +138,18 @@ namespace tests
 
             // open yellow poly
             CCPoint[] vertices =
-                {
-                    new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100),
-                    new CCPoint(50, 100)
-                };
+            {
+                new CCPoint(0, 0), new CCPoint(50, 50), new CCPoint(100, 50), new CCPoint(100, 100),
+                new CCPoint(50, 100)
+            };
             CCDrawingPrimitives.DrawPoly(vertices, 5, false, new CCColor4B(255, 255, 0, 255));
 
             // filled poly
             CCPoint[] filledVertices =
-                {
-                    new CCPoint(0, 120), new CCPoint(50, 120), new CCPoint(50, 170),
-                    new CCPoint(25, 200), new CCPoint(0, 170)
-                };
+            {
+                new CCPoint(0, 120), new CCPoint(50, 120), new CCPoint(50, 170),
+                new CCPoint(25, 200), new CCPoint(0, 170)
+            };
             CCDrawingPrimitives.DrawSolidPoly(filledVertices, 5, new CCColor4B(128, 128, 255, 255));
 
             // closed purble poly
@@ -174,60 +158,54 @@ namespace tests
 
             // draw quad bezier path
             CCDrawingPrimitives.DrawQuadBezier(new CCPoint(0, s.Height),
-                                               new CCPoint(s.Width / 2, s.Height / 2),
-                                               new CCPoint(s.Width, s.Height),
-                                               50,
-                                               new CCColor4B(255, 0, 255, 255));
+                new CCPoint(s.Width / 2, s.Height / 2),
+                new CCPoint(s.Width, s.Height),
+                50,
+                new CCColor4B(255, 0, 255, 255));
 
             // draw cubic bezier path
             CCDrawingPrimitives.DrawCubicBezier(new CCPoint(s.Width / 2, s.Height / 2),
-                                                new CCPoint(s.Width / 2 + 30, s.Height / 2 + 50),
-                                                new CCPoint(s.Width / 2 + 60, s.Height / 2 - 50),
-                                                new CCPoint(s.Width, s.Height / 2), 100,
-                                                new CCColor4B(255, 0, 255, 255));
+                new CCPoint(s.Width / 2 + 30, s.Height / 2 + 50),
+                new CCPoint(s.Width / 2 + 60, s.Height / 2 - 50),
+                new CCPoint(s.Width, s.Height / 2), 100,
+                new CCColor4B(255, 0, 255, 255));
 
             //draw a solid polygon
             CCPoint[] vertices3 =
-                {
-                    new CCPoint(60, 160), new CCPoint(70, 190), new CCPoint(100, 190),
-                    new CCPoint(90, 160)
-                };
+            {
+                new CCPoint(60, 160), new CCPoint(70, 190), new CCPoint(100, 190),
+                new CCPoint(90, 160)
+            };
             CCDrawingPrimitives.DrawSolidPoly(vertices3, 4, new CCColor4B(255, 255, 0, 255));
 
             CCDrawingPrimitives.End();
-
         }
     }
 
     public class DrawNodeTest : BaseDrawNodeTest
     {
-        public DrawNodeTest()
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            InitDrawNodeTest();
-        }
-
-        private bool InitDrawNodeTest ()
-        {
-
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
+            base.RunningOnNewWindow(windowSize);
             CCDrawNode draw = new CCDrawNode();
             AddChild(draw, 10);
 
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-                draw.DrawDot(new CCPoint(s.Width / 2, s.Height / 2), 10 * (10 - i),
-                             new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
+                draw.DrawDot(new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 10 * (10 - i),
+                    new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 
             // Draw polygons
             CCPoint[] points = new CCPoint[]
-                {
-                    new CCPoint(s.Height / 4, 0),
-                    new CCPoint(s.Width, s.Height / 5),
-                    new CCPoint(s.Width / 3 * 2, s.Height)
-                };
+            {
+                new CCPoint(windowSize.Height / 4, 0),
+                new CCPoint(windowSize.Width, windowSize.Height / 5),
+                new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
+            };
             draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
 
             // star poly (triggers buggs)
@@ -236,12 +214,10 @@ namespace tests
                 const float w = 20;
                 const float h = 50;
                 CCPoint[] star = new CCPoint[]
-                    {
-                        new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o), // lower spike
-                        new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2), // right spike
-                        //				{o +w, o+w*2+h}, {o,o+w*2},					// top spike
-                        //				{o -h, o+w}, {o,o},							// left spike
-                    };
+                {
+                    new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),                           // lower spike
+                    new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
+                };
 
                 draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
             }
@@ -252,24 +228,24 @@ namespace tests
                 const float w = 20;
                 const float h = 50;
                 var star = new CCPoint[]
-                    {
-                        new CCPoint(o, o), new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o), // lower spike
-                        new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2), // right spike
-                        new CCPoint(o + w, o + w * 2 + h), new CCPoint(o, o + w * 2), // top spike
-                        new CCPoint(o - h, o + w), // left spike
-                    };
+                {
+                    new CCPoint(o, o), new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),        // lower spike
+                    new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
+                    new CCPoint(o + w, o + w * 2 + h), new CCPoint(o, o + w * 2),                   // top spike
+                    new CCPoint(o - h, o + w), // left spike
+                };
 
                 draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
             }
 
 
             // Draw segment
-            draw.DrawSegment(new CCPoint(20, s.Height), new CCPoint(20, s.Height / 2), 10, new CCColor4F(0, 1, 0, 1));
+            draw.DrawSegment(new CCPoint(20, windowSize.Height), new CCPoint(20, windowSize.Height / 2), 10, new CCColor4F(0, 1, 0, 1));
 
-            draw.DrawSegment(new CCPoint(10, s.Height / 2), new CCPoint(s.Width / 2, s.Height / 2), 40,
-                             new CCColor4F(1, 0, 1, 0.5f));
-
-            return true;
+            draw.DrawSegment(new CCPoint(10, windowSize.Height / 2), new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 40,
+                new CCColor4F(1, 0, 1, 0.5f));
         }
+
+        #endregion Setup content
     }
 }
