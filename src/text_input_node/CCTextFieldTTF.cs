@@ -4,21 +4,21 @@ using Microsoft.Xna.Framework.GamerServices;
 #endif
 namespace CocosSharp
 {
-	public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
+    public delegate void CCTextFieldTTFDelegate(object sender, ref string text, ref bool canceled);
 
     public class CCTextFieldTTF : CCLabelTtf
     {
-		bool readOnly = false;
-		bool autoEdit;
-		bool touchHandled;
+        bool readOnly = false;
+        bool autoEdit;
+        bool touchHandled;
 
-		IAsyncResult guideShowHandle;
+        IAsyncResult guideShowHandle;
 
         public event CCTextFieldTTFDelegate BeginEditing;
         public event CCTextFieldTTFDelegate EndEditing;
 
 
-		#region Properties
+        #region Properties
 
         public bool ReadOnly
         {
@@ -26,18 +26,18 @@ namespace CocosSharp
             set
             {
                 readOnly = value;
-                
+
                 if (!value)
                 {
                     EndEdit();
                 }
-                
+
                 CheckTouchState();
             }
         }
 
-		public string EditTitle { get; set; }
-		public string EditDescription { get; set; }
+        public string EditTitle { get; set; }
+        public string EditDescription { get; set; }
 
         public bool AutoEdit
         {
@@ -49,7 +49,7 @@ namespace CocosSharp
             }
         }
 
-		#endregion Properties
+        #endregion Properties
 
 
         #region Constructors
@@ -67,8 +67,8 @@ namespace CocosSharp
         public CCTextFieldTTF(string text, string fontName, float fontSize, CCSize dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
             : base (text, fontName, fontSize, dimensions, hAlignment, vAlignment)
         {
-			EditTitle = "Input";
-			EditDescription = "Please provide input";
+            EditTitle = "Input";
+            EditDescription = "Please provide input";
         }
 
         #endregion Constructors
@@ -76,12 +76,12 @@ namespace CocosSharp
 
         public void Edit()
         {
-			Edit(EditTitle, EditDescription);
+            Edit(EditTitle, EditDescription);
         }
 
         public void Edit(string title, string defaultText)
         {
-#if !WINDOWS_PHONE
+            #if !WINDOWS_PHONE
             if (!readOnly && !Guide.IsVisible)
             {
                 var canceled = false;
@@ -93,16 +93,16 @@ namespace CocosSharp
                 {
                     guideShowHandle = Guide.BeginShowKeyboardInput(
                         Microsoft.Xna.Framework.PlayerIndex.One, title, defaultText, Text, InputHandler, null
-                        );
+                    );
                 }
             }
-#endif
+            #endif
         }
 
         void InputHandler(IAsyncResult result)
         {
-#if !WINDOWS_PHONE
-			var newText = Guide.EndShowKeyboardInput(result);
+            #if !WINDOWS_PHONE
+            var newText = Guide.EndShowKeyboardInput(result);
 
             guideShowHandle = null;
 
@@ -121,9 +121,9 @@ namespace CocosSharp
                         }
                     },
                     0
-                    );
+                );
             }
-#endif
+            #endif
         }
 
         protected virtual void DoBeginEditing(ref string newText, ref bool canceled)
@@ -145,34 +145,31 @@ namespace CocosSharp
         public void EndEdit()
         {
             if (guideShowHandle != null)
-			{
-#if !WINDOWS_PHONE
-				Guide.EndShowKeyboardInput(guideShowHandle);
-#endif
+            {
+                #if !WINDOWS_PHONE
+                Guide.EndShowKeyboardInput(guideShowHandle);
+                #endif
                 guideShowHandle = null;
             }
         }
 
         void CheckTouchState()
         {
-			if (IsRunning)
+            if (IsRunning)
             {
                 if (!touchHandled && !readOnly && autoEdit)
                 {
-					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.AddTargetedDelegate(this, 0, true);
                     touchHandled = true;
                 }
                 else if (touchHandled && (readOnly || !autoEdit))
                 {
-					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.RemoveDelegate(this);
                     touchHandled = true;
                 }
             }
             else
             {
-				if (!IsRunning && touchHandled)
+                if (!IsRunning && touchHandled)
                 {
-					//CCApplication.SharedApplication.MainWindowDirector.TouchDispatcher.RemoveDelegate(this);
                     touchHandled = false;
                 }
             }
