@@ -10,6 +10,8 @@ namespace tests
     public class AccelerometerTest : CCLayer
     {
         CCLabelTtf titleLabel;
+        CCLabelTtf subtitleLabel;
+
         CCSprite ball;
         double lastTime;
 
@@ -21,6 +23,11 @@ namespace tests
             get { return "AccelerometerTest"; }
         }
 
+        public virtual string Subtitle
+        {
+            get { return "Use arrow keys to simulate"; }
+        }
+
         #endregion Properties
 
 
@@ -30,6 +37,13 @@ namespace tests
         {
             titleLabel = new CCLabelTtf(Title, "Arial", 32);
             AddChild(titleLabel, 1);
+
+            string subtitleStr = Subtitle;
+            if (subtitleStr.Length > 0)
+            {
+                subtitleLabel = new CCLabelTtf(subtitleStr, "arial", 16);
+                AddChild(subtitleLabel, 1);
+            }
 
             ball = new CCSprite("Images/ball");
             AddChild(ball);
@@ -45,13 +59,27 @@ namespace tests
             base.RunningOnNewWindow(windowSize);
 
             titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 50);
+
+            if(subtitleLabel != null)
+                subtitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 80));
+
             ball.Position = windowSize.Center;
+
+
+            Director.Accelerometer.Enabled = true;
+
+            // Register Touch Event
+            var accelListener = new CCEventListenerAccelerometer();
+
+            accelListener.OnAccelerate = DidAccelerate;
+
+            EventDispatcher.AddEventListener(accelListener, this); 
         }
 
         #endregion Setup content
 
 
-        public void DidAccelerate(CCAcceleration accelerationValue)
+        public void DidAccelerate(CCEventAccelerate accelEvent)
         {
             CCSize winSize = Director.WindowSizeInPoints;
 
@@ -80,8 +108,8 @@ namespace tests
                 ptTemp.Y += (float) accelerationValue.Y * 9.81f;
             }
             #else
-            ptTemp.X += (float)accelerationValue.X * 9.81f;
-            ptTemp.Y += (float)accelerationValue.Y * 9.81f;
+            ptTemp.X += (float)accelEvent.Acceleration.X * 9.81f;
+            ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
             #endif
 
             CCPoint ptNext = Director.ConvertToGl(ptTemp);

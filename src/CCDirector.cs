@@ -243,7 +243,7 @@ namespace CocosSharp
             KeypadDispatcher = new CCKeypadDispatcher();
 
             #if !NETFX_CORE
-            Accelerometer = new CCAccelerometer();
+            Accelerometer = new CCAccelerometer(this);
             #endif
 
             isNeedsInit = false;
