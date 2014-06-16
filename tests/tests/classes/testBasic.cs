@@ -96,9 +96,9 @@ namespace tests
             }
         }
 
-        protected abstract void NextTestCase();
-        protected abstract void PreviousTestCase();
-        protected abstract void RestTestCase();
+        protected virtual void NextTestCase() {}
+        protected virtual void PreviousTestCase() {}
+        protected virtual void RestTestCase() {}
 
         public virtual void MainMenuCallback(object pSender)
         {
