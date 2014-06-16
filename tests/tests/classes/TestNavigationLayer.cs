@@ -35,13 +35,13 @@ namespace tests
         public TestNavigationLayer()
         {
             TitleLabel = new CCLabelTtf(Title, "arial", 32);
-            AddChild(TitleLabel, 1);
+            AddChild(TitleLabel, TestScene.TITLE_LEVEL);
 
             string subtitleStr = Subtitle;
-            if (subtitleStr.Length > 0)
+			if (!string.IsNullOrEmpty(subtitleStr))
             {
                 SubtitleLabel = new CCLabelTtf(subtitleStr, "arial", 16);
-                AddChild(SubtitleLabel, 1);
+                AddChild(SubtitleLabel, TestScene.TITLE_LEVEL);
             }
 
             backMenuItem = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, BackCallback);
