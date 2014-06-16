@@ -10,9 +10,7 @@ using System.Diagnostics;
 namespace CocosSharp
 {
 
-    /// <summary>
-    /// Priority dirty flag
-    /// </summary>
+    // Priority dirty flag
     [Flags]
     enum DirtyFlag
     {
@@ -24,56 +22,48 @@ namespace CocosSharp
 
     public class CCEventDispatcher
     {
-
-        /// <summary>
-        /// The listeners to be added after dispatching event
-        /// </summary>
-        List<CCEventListener> toBeAddedListeners;
-
-        /// <summary>
-        /// Listeners map
-        /// </summary>
-        Dictionary<string, CCEventListenerVector> listenerMap;
-
-        /// <summary>
-        /// The map of dirty flag
-        /// </summary>
-        Dictionary<string, DirtyFlag> priorityDirtyFlagMap;
-
-        /// <summary>
-        /// The map of node and event listeners
-        /// </summary>
-        Dictionary<CCNode, List<CCEventListener>> nodeListenersMap;
-
-        /// <summary>
-        /// The map of node and its event priority
-        /// </summary>
-        Dictionary<CCNode, int> nodePriorityMap;
-
-        /// <summary>
-        /// key: Global Z Order, value: Sorted Nodes
-        /// </summary>
-        Dictionary<float, List<CCNode>> globalZOrderNodeMap;
-
-        /// <summary>
-        /// The nodes were associated with scene graph based priority listeners
-        /// </summary>
-        SortedSet<CCNode> dirtyNodes;
-
-        SortedSet<string> internalCustomListenerIDs;
-
-        /// <summary>
-        /// Whether the dispatcher is dispatching event
-        /// </summary>
-        int inDispatch;
-
+        int inDispatch;                                             // Whether the dispatcher is dispatching event
         int nodePriorityIndex;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public CCEventDispatcher()
+        List<CCEventListener> toBeAddedListeners;                   // The listeners to be added after dispatching event
+
+        SortedSet<CCNode> dirtyNodes;                               // The nodes were associated with scene graph based priority listeners
+        SortedSet<string> internalCustomListenerIDs;
+
+        Dictionary<string, CCEventListenerVector> listenerMap;
+        Dictionary<string, DirtyFlag> priorityDirtyFlagMap;         // The map of dirty flag
+        Dictionary<CCNode, List<CCEventListener>> nodeListenersMap; // The map of node and event listeners
+        Dictionary<CCNode, int> nodePriorityMap;                    // The map of node and its event priority
+        Dictionary<float, List<CCNode>> globalZOrderNodeMap;        // key: Global Z Order, value: Sorted Nodes
+
+
+        #region Properties
+
+        public bool IsEnabled { get; set; }
+        public CCDirector Director { get; set; }
+
+        // Sets the dirty flag for a node.
+        protected CCNode MarkDirty
         {
+            set 
+            { 
+                // Mark the node dirty only when there is an eventlistener associated with it. 
+                if (nodeListenersMap.ContainsKey(value))
+                {
+                    dirtyNodes.Add(value);
+                }
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCEventDispatcher(CCDirector director)
+        {
+            Director = director;
+
             toBeAddedListeners = new List<CCEventListener>(50);
 
             listenerMap = new Dictionary<string, CCEventListenerVector>();
@@ -86,12 +76,12 @@ namespace CocosSharp
             IsEnabled = true;
             inDispatch = 0;
             nodePriorityIndex = 0;
-
-            //internalCustomListenerIDs.Add(EVENT_COME_TO_FOREGROUND);
-            //internalCustomListenerIDs.Add(EVENT_COME_TO_BACKGROUND);
         }
 
-        static string GetListenerID (CCEvent listenerEvent)
+        #endregion Constructors
+
+
+        static string GetListenerID(CCEvent listenerEvent)
         {
             string ret = string.Empty;
             switch (listenerEvent.Type)
@@ -145,7 +135,6 @@ namespace CocosSharp
             listener.IsRegistered = true;
 
             AddEventListener(listener);
-
         }
 
         /// <summary>
@@ -340,31 +329,6 @@ namespace CocosSharp
         public void RemoveAll()
         {
             bool cleanMap = true;
-
-            //                      std::vector<EventListener::ListenerID> types(_listenerMap.size());
-            //
-            //                      for (const auto& e : _listenerMap)
-            //                      {
-            //                              if (_internalCustomListenerIDs.find(e.first) != _internalCustomListenerIDs.end())
-            //                              {
-            //                                      cleanMap = false;
-            //                              }
-            //                              else
-            //                              {
-            //                                      types.push_back(e.first);
-            //                              }
-            //                      }
-            //
-            //                      for (const auto& type : types)
-            //                      {
-            //                              removeEventListenersForListenerID(type);
-            //                      }
-            //
-            //                      if (!_inDispatch && cleanMap)
-            //                      {
-            //                              _listenerMap.clear();
-            //                      }
-
         }
 
         /// <summary>
@@ -437,11 +401,6 @@ namespace CocosSharp
                 return;
 
         }
-
-        /// <summary>
-        /// Checks or sets whether dispatching events is enabled
-        /// </summary>
-        public bool IsEnabled { get; set; }
 
         /// <summary>
         /// Touch event needs to be processed different with other events since it needs support ALL_AT_ONCE and ONE_BY_NONE mode.
@@ -578,9 +537,7 @@ namespace CocosSharp
                 }
             }
 
-            //
             // process standard handlers 2nd
-            //
             if (allAtOnceListeners != null && mutableTouches.Count > 0)
             {
 
@@ -692,22 +649,6 @@ namespace CocosSharp
             UpdateListeners(eventToDispatch);
             inDispatch--;
 
-        }
-
-        /// <summary>
-        /// Sets the dirty flag for a node.
-        /// </summary>
-        /// <param name="node"></param>
-        protected CCNode MarkDirty
-        {
-            set 
-            { 
-                // Mark the node dirty only when there is an eventlistener associated with it. 
-                if (nodeListenersMap.ContainsKey(value))
-                {
-                    dirtyNodes.Add(value);
-                }
-            }
         }
 
         /// <summary>
@@ -952,7 +893,7 @@ namespace CocosSharp
             if (sceneGraphListeners == null)
                 return;
 
-            var rootNode = (CCNode)CCApplication.SharedApplication.MainWindowDirector.RunningScene;
+            var rootNode = (CCNode)Director.RunningScene;
             // Reset priority index
             nodePriorityIndex = 0;
             nodePriorityMap.Clear();
@@ -1125,14 +1066,11 @@ namespace CocosSharp
 
                 globalZOrderNodeMap.Clear();
             }
-
-
         }
 
 
         void UpdateListeners (string listenerID)
         {
-
             if (!listenerMap.ContainsKey(listenerID))
                 return;
 
@@ -1342,13 +1280,27 @@ namespace CocosSharp
             return listenerMap.ContainsKey (listenerId);
         }
 
+
         #region CCEventListenerVector class definition
+
         class CCEventListenerVector
         {
-
             List<CCEventListener> sceneGraphListeners;
             List<CCEventListener> fixedListeners;
+
+
+            #region Properties
+
             public int Gt0Index { get; set; }
+
+            public bool IsEmpty
+            {
+                get
+                {
+                    return (sceneGraphListeners == null || sceneGraphListeners.Count == 0) 
+                        && (fixedListeners == null || fixedListeners.Count == 0);
+                }
+            }
 
             public int Size
             {
@@ -1364,19 +1316,28 @@ namespace CocosSharp
                 }
             }
 
-            public bool IsEmpty
+            public List<CCEventListener> FixedPriorityListeners
             {
-                get
-                {
-                    return (sceneGraphListeners == null || sceneGraphListeners.Count == 0) 
-                        && (fixedListeners == null || fixedListeners.Count == 0);
-                }
+                get { return fixedListeners; }
             }
+
+            public List<CCEventListener> SceneGraphPriorityListeners
+            {
+                get { return sceneGraphListeners; }
+            }
+
+            #endregion Properties
+
+
+            #region Constructors
 
             public CCEventListenerVector()
             {
                 Gt0Index = 0;
             }
+
+            #endregion Constructors
+
 
             public void PushBack(CCEventListener listener)
             {
@@ -1424,19 +1385,9 @@ namespace CocosSharp
                 ClearSceneGraphListeners();
                 ClearFixedListeners();
             }
-
-            public List<CCEventListener> FixedPriorityListeners
-            {
-                get { return fixedListeners; }
-            }
-
-            public List<CCEventListener> SceneGraphPriorityListeners
-            {
-                get { return sceneGraphListeners; }
-            }
-
         }
-        #endregion
+
+        #endregion CCEventListenerVector class definition
     }
 
 }

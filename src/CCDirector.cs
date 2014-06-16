@@ -239,7 +239,7 @@ namespace CocosSharp
 
             Stats = new CCStats();
 
-            EventDispatcher = new CCEventDispatcher();
+            EventDispatcher = new CCEventDispatcher(this);
             KeypadDispatcher = new CCKeypadDispatcher();
 
             #if !NETFX_CORE
