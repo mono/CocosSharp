@@ -5,45 +5,50 @@ namespace tests
 {
     public class RenderTextureZbuffer : RenderTextureTestDemo
     {
-        private readonly CCSpriteBatchNode mgr;
+        readonly CCSpriteBatchNode mgr;
 
-        private readonly CCSprite sp1;
-        private readonly CCSprite sp2;
-        private readonly CCSprite sp3;
-        private readonly CCSprite sp4;
-        private readonly CCSprite sp5;
-        private readonly CCSprite sp6;
-        private readonly CCSprite sp7;
-        private readonly CCSprite sp8;
-        private readonly CCSprite sp9;
+        readonly CCSprite sp1;
+        readonly CCSprite sp2;
+        readonly CCSprite sp3;
+        readonly CCSprite sp4;
+        readonly CCSprite sp5;
+        readonly CCSprite sp6;
+        readonly CCSprite sp7;
+        readonly CCSprite sp8;
+        readonly CCSprite sp9;
+
+        CCLabelTtf label;
+        CCLabelTtf label2;
+        CCLabelTtf label3;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Testing Z Buffer in Render Texture"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Touch screen. It should be green"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public RenderTextureZbuffer()
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-
-			touchListener.OnTouchesBegan = onTouchesBegan;
-			touchListener.OnTouchesMoved = onTouchesMoved;
-			touchListener.OnTouchesEnded = onTouchesEnded;
-
-			EventDispatcher.AddEventListener(touchListener, this);        
-
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            CCLabelTtf label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);
-            label.Position = new CCPoint(size.Width / 2, size.Height * 0.25f);
+            label = new CCLabelTtf("vertexZ = 50", "Marker Felt", 32);
             AddChild(label);
 
-            CCLabelTtf label2 = new CCLabelTtf("vertexZ = 0", "Marker Felt", 32);
-            label2.Position = new CCPoint(size.Width / 2, size.Height * 0.5f);
+            label2 = new CCLabelTtf("vertexZ = 0", "Marker Felt", 32);
             AddChild(label2);
 
-            CCLabelTtf label3 = new CCLabelTtf("vertexZ = -50", "Marker Felt", 32);
-            label3.Position = new CCPoint(size.Width / 2, size.Height * 0.75f);
+            label3 = new CCLabelTtf("vertexZ = -50", "Marker Felt", 32);
             AddChild(label3);
-
-            label.VertexZ = 50;
-            label2.VertexZ = 0;
-            label3.VertexZ = -50;
 
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("Images/bugs/circle.plist");
 
@@ -70,6 +75,26 @@ namespace tests
             mgr.AddChild(sp8, 2);
             mgr.AddChild(sp9, 1);
 
+            sp9.Color = CCColor3B.Yellow;
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            label.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.25f);
+            label2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.5f);
+            label3.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.75f);
+
+            label.VertexZ = 50;
+            label2.VertexZ = 0;
+            label3.VertexZ = -50;
+
             sp1.VertexZ = 400;
             sp2.VertexZ = 300;
             sp3.VertexZ = 200;
@@ -81,10 +106,23 @@ namespace tests
             sp9.VertexZ = -400;
 
             sp9.Scale = 2;
-            sp9.Color = CCColor3B.Yellow;
+
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+
+            touchListener.OnTouchesBegan = onTouchesBegan;
+            touchListener.OnTouchesMoved = onTouchesMoved;
+            touchListener.OnTouchesEnded = onTouchesEnded;
+
+            EventDispatcher.AddEventListener(touchListener, this); 
         }
 
-		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
+        #endregion Setup content
+
+
+        #region Event handling
+
+        void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {
@@ -102,7 +140,7 @@ namespace tests
             }
         }
 
-		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {
@@ -120,20 +158,16 @@ namespace tests
             }
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             renderScreenShot();
         }
 
-        public override string title()
-        {
-            return "Testing Z Buffer in Render Texture";
-        }
+        #endregion Event handling
 
-        public override string subtitle()
-        {
-            return "Touch screen. It should be green";
-        }
+
+
+
 
         public void renderScreenShot()
         {
@@ -161,8 +195,8 @@ namespace tests
                 new CCSequence(
                     new CCFadeTo (2, 0),
                     new CCHide()
-                    )
-                );
+                )
+            );
         }
     }
 }

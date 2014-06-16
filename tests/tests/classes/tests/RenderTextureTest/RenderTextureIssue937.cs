@@ -4,6 +4,26 @@ namespace tests
 {
     public class RenderTextureIssue937 : RenderTextureTestDemo
     {
+        CCSprite spritePremulti;
+        CCSprite spriteNonpremulti;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Testing issue #937"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "All images should be equal..."; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public RenderTextureIssue937()
         {
             /*
@@ -21,49 +41,48 @@ namespace tests
             CCLayerColor background = new CCLayerColor(new CCColor4B(200, 200, 200, 255));
             AddChild(background);
 
-            CCSprite spr_premulti = new CCSprite("Images/fire");
-            spr_premulti.Position = new CCPoint(16, 48);
+            spritePremulti = new CCSprite("Images/fire");
+            spriteNonpremulti = new CCSprite("Images/fire");
+        }
 
-            CCSprite spr_nonpremulti = new CCSprite("Images/fire");
-            spr_nonpremulti.Position = new CCPoint(16, 16);
+        #endregion Constructors
 
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            spritePremulti.Position = new CCPoint(16, 48);
+            spriteNonpremulti.Position = new CCPoint(16, 16);
 
             /* A2 & B2 setup */
             CCRenderTexture rend = new CCRenderTexture(32, 64);
 
-            // It's possible to modify the RenderTexture blending function by
-            //CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
-            //rend.Sprite.BlendFunc = bf;
+            //  It's possible to modify the RenderTexture blending function by
+            //  CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);
+            //  rend.Sprite.BlendFunc = bf;
 
             rend.Begin();
             // A2
-            spr_premulti.Visit();
+            spritePremulti.Visit();
             // B2
-            spr_nonpremulti.Visit();
+            spriteNonpremulti.Visit();
             rend.End();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
             /* A1: setup */
-            spr_premulti.Position = new CCPoint(s.Width / 2 - 16, s.Height / 2 + 16);
+            spritePremulti.Position = new CCPoint(windowSize.Width / 2 - 16, windowSize.Height / 2 + 16);
             /* B1: setup */
-            spr_nonpremulti.Position = new CCPoint(s.Width / 2 - 16, s.Height / 2 - 16);
+            spriteNonpremulti.Position = new CCPoint(windowSize.Width / 2 - 16, windowSize.Height / 2 - 16);
 
-            rend.Position = new CCPoint(s.Width / 2 + 16, s.Height / 2);
+            rend.Position = new CCPoint(windowSize.Width / 2 + 16, windowSize.Height / 2);
 
-            AddChild(spr_nonpremulti);
-            AddChild(spr_premulti);
+            AddChild(spriteNonpremulti);
+            AddChild(spritePremulti);
             AddChild(rend);
         }
 
-        public override string title()
-        {
-            return "Testing issue #937";
-        }
-
-        public override string subtitle()
-        {
-            return "All images should be equal...";
-        }
+        #endregion Setup content
     }
 }

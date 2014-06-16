@@ -12,74 +12,95 @@ namespace tests
     /// </summary>
     public class RenderTextureCompositeTest : RenderTextureTestDemo
     {
-        private CCAnimate _swingAnimate;
-        private CCAnimate _thrustAnimate;
-        private CCAnimate _dodgeAnimate;
-        private CCAnimate _collapseAnimate;
+        CCAnimate swingAnimate;
+        CCAnimate thrustAnimate;
+        CCAnimate dodgeAnimate;
+        CCAnimate collapseAnimate;
 
-        private CCAnimate _swingAnimate2;
-        private CCAnimate _thrustAnimate2;
-        private CCAnimate _dodgeAnimate2;
-        private CCAnimate _collapseAnimate2;
+        CCAnimate swingAnimate2;
+        CCAnimate thrustAnimate2;
+        CCAnimate dodgeAnimate2;
+        CCAnimate collapseAnimate2;
 
-        private CCSprite _testSprite;
-        private CCSprite _testSprite2;
+        CCSprite testSprite;
+        CCSprite testSprite2;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Compositing Test From CodePlex"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Should Not Crash"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public RenderTextureCompositeTest()
         {
-            var winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             var characterSpriteFactory = new CharacterSpriteFactory();
 
-            _testSprite = new CCSprite(@"Images\grossini_dance_01");
-            _testSprite2 = new CCSprite(@"Images\grossini_dance_02");
+            testSprite = new CCSprite(@"Images\grossini_dance_01");
+            testSprite2 = new CCSprite(@"Images\grossini_dance_02");
 
-            _swingAnimate = characterSpriteFactory.CreateAnimateAction();
-            _thrustAnimate = characterSpriteFactory.CreateAnimateAction();
-            _dodgeAnimate = characterSpriteFactory.CreateAnimateAction();
-            _collapseAnimate = characterSpriteFactory.CreateAnimateAction();
+            swingAnimate = characterSpriteFactory.CreateAnimateAction();
+            thrustAnimate = characterSpriteFactory.CreateAnimateAction();
+            dodgeAnimate = characterSpriteFactory.CreateAnimateAction();
+            collapseAnimate = characterSpriteFactory.CreateAnimateAction();
 
-            _swingAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            _thrustAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            _dodgeAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            _collapseAnimate2 = characterSpriteFactory.CreateAnimateAction();
+            swingAnimate2 = characterSpriteFactory.CreateAnimateAction();
+            thrustAnimate2 = characterSpriteFactory.CreateAnimateAction();
+            dodgeAnimate2 = characterSpriteFactory.CreateAnimateAction();
+            collapseAnimate2 = characterSpriteFactory.CreateAnimateAction();
 
-            _testSprite.Position = new CCPoint(winSize.Width / 2 -200, winSize.Height / 2 + 100);
-            AddChild(_testSprite);
+            AddChild(testSprite);
+            AddChild(testSprite2);
+        }
 
-            _testSprite2.Position = new CCPoint(winSize.Width / 2 + 200, winSize.Height / 2 + 100);
-            _testSprite2.FlipX = true;
-            AddChild(_testSprite2);
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            testSprite.Position = new CCPoint(windowSize.Width / 2 -200, windowSize.Height / 2 + 100);
+            testSprite2.Position = new CCPoint(windowSize.Width / 2 + 200, windowSize.Height / 2 + 100);
+            testSprite2.FlipX = true;
 
             AnimationLoop();
             AnimationLoop2();
         }
 
-        private void AnimationLoop()
+        #endregion Setup content
+
+
+        void AnimationLoop()
         {
-            var seq = new CCSequence(_swingAnimate, _thrustAnimate, _dodgeAnimate, _collapseAnimate, new CCCallFunc(AnimationLoop));
-            _testSprite.RunAction(seq);
+            var seq = new CCSequence(swingAnimate, thrustAnimate, dodgeAnimate, collapseAnimate, new CCCallFunc(AnimationLoop));
+            testSprite.RunAction(seq);
         }
 
-        private void AnimationLoop2()
+        void AnimationLoop2()
         {
-            var seq = new CCSequence(_swingAnimate2, _thrustAnimate2, _dodgeAnimate2, _collapseAnimate2, new CCCallFunc(AnimationLoop2));
-            _testSprite2.RunAction(seq);
-        }
-
-        public override string title()
-        {
-            return "Compositing Test From CodePlex";
-        }
-
-        public override string subtitle()
-        {
-            return "Should Not Crash";
+            var seq = new CCSequence(swingAnimate2, thrustAnimate2, dodgeAnimate2, collapseAnimate2, new CCCallFunc(AnimationLoop2));
+            testSprite2.RunAction(seq);
         }
     }
 
+
     public class CharacterSpriteFactory
     {
-        private CCSprite CreateCustomisationSprite()
+        CCSprite CreateCustomisationSprite()
         {
             var sprite = new CCSprite(@"Images\grossini_dance_01");
             sprite.Color = new CCColor3B

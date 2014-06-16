@@ -11,7 +11,7 @@ namespace tests
         public static int sceneIdx = -1;
         public static int MAX_LAYER = 5;
 
-        public static CCLayer createTestCase(int nIndex)
+        public static CCLayer CreateTestCase(int nIndex)
         {
             switch (nIndex)
             {
@@ -29,21 +29,23 @@ namespace tests
         {
             nextTestCase();
         }
+
         protected override void PreviousTestCase()
         {
             backTestCase();
         }
+
         protected override void RestTestCase()
         {
             restartTestCase();
         }
+
         public static CCLayer nextTestCase()
         {
             sceneIdx++;
             sceneIdx = sceneIdx % MAX_LAYER;
 
-            CCLayer pLayer = createTestCase(sceneIdx);
-            //pLayer->autorelease();
+            CCLayer pLayer = CreateTestCase(sceneIdx);
 
             return pLayer;
         }
@@ -55,26 +57,24 @@ namespace tests
             if (sceneIdx < 0)
                 sceneIdx += total;
 
-            CCLayer pLayer = createTestCase(sceneIdx);
-            //pLayer->autorelease();
+            CCLayer pLayer = CreateTestCase(sceneIdx);
 
             return pLayer;
         }
 
         public static CCLayer restartTestCase()
         {
-            CCLayer pLayer = createTestCase(sceneIdx);
-            //pLayer->autorelease();
+            CCLayer pLayer = CreateTestCase(sceneIdx);
 
             return pLayer;
         }
 
         public override void runThisTest()
         {
-            CCLayer pLayer = nextTestCase();
-            AddChild(pLayer);
+            CCLayer layer = nextTestCase();
+            AddChild(layer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }

@@ -11,15 +11,33 @@ namespace tests
 {
     public class RenderTextureTestDepthStencil : RenderTextureTestDemo
     {
-        public RenderTextureTestDepthStencil()
+        #region Properties
+
+        public override string Title
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            get { return "Testing depthStencil attachment"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Circle should be missing 1/4 of its region"; }
+        }
+
+        #endregion Properties
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
 
             CCSprite sprite = new CCSprite("Images/fire");
-            sprite.Position = new CCPoint(s.Width * 0.25f, 0);
+            sprite.Position = new CCPoint(windowSize.Width * 0.25f, 0);
             sprite.Scale = 10;
 
-			CCRenderTexture rend = new CCRenderTexture((int)s.Width, (int)s.Height, CCSurfaceFormat.Color, CCDepthFormat.Depth24Stencil8, CCRenderTargetUsage.DiscardContents);
+            CCRenderTexture rend = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, CCSurfaceFormat.Color, 
+                CCDepthFormat.Depth24Stencil8, CCRenderTargetUsage.DiscardContents);
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
 
@@ -49,12 +67,11 @@ namespace tests
                 StencilPass = StencilOperation.Keep,
                 ReferenceStencil = 1
             };
-            // GL_SRC_ALPHA
 
             CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
 
-            //! move sprite half width and height, and draw only where not marked
-            sprite.Position = sprite.Position + new CCPoint(sprite.ContentSize.Width * sprite.ScaleX, sprite.ContentSize.Height * sprite.ScaleY) * 0.5f;
+            sprite.Position = sprite.Position 
+                + new CCPoint(sprite.ContentSize.Width * sprite.ScaleX, sprite.ContentSize.Height * sprite.ScaleY) * 0.5f;
 
             sprite.Visit();
 
@@ -62,20 +79,11 @@ namespace tests
 
             rend.End();
 
-
-            rend.Position = new CCPoint(s.Width * 0.5f, s.Height * 0.5f);
+            rend.Position = new CCPoint(windowSize.Width * 0.5f, windowSize.Height * 0.5f);
 
             AddChild(rend);
         }
 
-        public override string title()
-        {
-            return "Testing depthStencil attachment";
-        }
-
-        public override string subtitle()
-        {
-            return "Circle should be missing 1/4 of its region";
-        }
+        #endregion Setup content
     }
 }
