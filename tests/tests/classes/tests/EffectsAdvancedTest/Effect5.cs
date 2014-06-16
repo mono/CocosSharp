@@ -16,7 +16,7 @@ namespace tests
 
 			var effect = new CCLiquid (2, new CCGridSize(32, 24), 1, 20);
 
-			var bg = _bgNode;
+			var bg = bgNode;
 			bg.RunActions(effect, new CCDelayTime (2), new CCStopGrid());
         }
 
@@ -27,9 +27,12 @@ namespace tests
             CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
         }
 
-        public override string title()
-        {
-			return "Test Stop-Copy-Restart";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Test Stop-Copy-Restart";
+			}
+		}
     }
 }

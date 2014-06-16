@@ -11,7 +11,7 @@ namespace tests
 			var effect = new CCSequence(new CCDelayTime (2.0f), new CCShaky3D(5.0f, new CCGridSize(5, 5), 16, false));
 
             // cleanup
-			RemoveChild(_bgNode, true);
+			RemoveChild(bgNode, true);
 
             // background
 			var layer = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
@@ -34,14 +34,20 @@ namespace tests
 			layer2Node.RepeatForever(effect);
         }
 
-        public override string title()
-        {
-            return "Testing Opacity";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Testing Opacity";
+			}
+		}
 
-        public override string subtitle()
-        {
-            return "Effect image should be 100% opaque. Testing issue #631";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Effect image should be 100% opaque. Testing issue #631";
+			}
+		}
     }
 }

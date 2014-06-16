@@ -6,127 +6,103 @@ using CocosSharp;
 
 namespace tests
 {
-    public class EffectAdvanceTextLayer : CCLayer
-    {
-        protected CCTextureAtlas m_atlas;
-        protected string m_strTitle;
-		protected CCNode _bgNode;
-		protected CCNode _target1;
-		protected CCNode _target2;
 
-        public EffectAdvanceTextLayer()
-        {
+	public class EffectAdvanceTextLayer : TestNavigationLayer
+	{
+		protected CCTextureAtlas m_atlas;
+		protected string m_strTitle;
+		protected CCNode bgNode;
+		protected CCNode target1;
+		protected CCNode target2;
 
-        }
+		public EffectAdvanceTextLayer()
+		{
 
-        protected CCSprite grossini;
-        protected CCSprite tamara;
-        public override void OnEnter()
-        {
-            base.OnEnter();
+		}
 
-			_bgNode = new CCNode ();
-			_bgNode.AnchorPoint = CCPoint.AnchorMiddle;
-			AddChild (_bgNode);
+		protected CCSprite grossini;
+		protected CCSprite tamara;
+
+		public override void OnEnter()
+		{
+			base.OnEnter();
+
+			bgNode = new CCNode ();
+			bgNode.AnchorPoint = CCPoint.AnchorMiddle;
+			AddChild (bgNode);
 
 			//_bgNode.Position = CCVisibleRect.Center;
 
 			var bg = new CCSprite("Images/background3");
-            bg.Position = CCVisibleRect.Center;
+			bg.Position = CCVisibleRect.Center;
 			//AddChild(bg, 0, EffectAdvanceScene.kTagBackground);
-			_bgNode.AddChild (bg);
+			bgNode.AddChild (bg, 0, EffectAdvanceScene.kTagBackground);
 
-			_target1 = new CCNode ();
-			_target1.AnchorPoint = CCPoint.AnchorMiddle;
-            grossini = new CCSprite("Images/grossinis_sister2");
-			//bg.AddChild(grossini, 1, EffectAdvanceScene.kTagSprite1);
-			_target1.AddChild (grossini);
-			_bgNode.AddChild (_target1);
+			target1 = new CCNode ();
+			target1.AnchorPoint = CCPoint.AnchorMiddle;
+			grossini = new CCSprite("Images/grossinis_sister2");
 
-			//_target1.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+			target1.AddChild (grossini);
+			bgNode.AddChild (target1);
+
 			grossini.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
 
 			var sc = new CCScaleBy(2, 5);
 			var sc_back = sc.Reverse();
 			grossini.RepeatForever (sc, sc_back);
 
-			_target2 = new CCNode ();
-			_target2.AnchorPoint = CCPoint.AnchorMiddle;
+			target2 = new CCNode ();
+			target2.AnchorPoint = CCPoint.AnchorMiddle;
 
-            tamara = new CCSprite("Images/grossinis_sister1");
-			//bg.AddChild(tamara, 1, EffectAdvanceScene.kTagSprite2);
+			tamara = new CCSprite("Images/grossinis_sister1");
 
-			_target2.AddChild (tamara);
-			_bgNode.AddChild (_target2);
-			//_target2.Position = new CCPoint (CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+			target2.AddChild (tamara);
+			bgNode.AddChild (target2);
 			tamara.Position = new CCPoint (CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
-
-
 
 			var sc2 = new CCScaleBy(2, 5);
 			var sc2_back = sc2.Reverse();
 			tamara.RepeatForever(sc2, sc2_back);
 
-			var label = new CCLabelTtf(title(), "arial", 28);
+		}
 
-            label.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 80);
-			AddChild(label,TestScene.TITLE_LEVEL);
-            label.Tag = EffectAdvanceScene.kTagLabel;
-
-			if (!string.IsNullOrEmpty(subtitle())) 
+		public override string Title
+		{
+			get
 			{
-				var subLabel = new CCLabelTtf(subtitle(), "arial", 20);
-				subLabel.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - 100);
-				AddChild(subLabel,TestScene.TITLE_LEVEL);
-				//label.Tag = EffectAdvanceScene.kTagLabel;
+				return "No title";
 			}
+		}
 
-			var item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
-			var item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
-			var item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
+		public override string Subtitle
+		{
+			get
+			{
+				return string.Empty;
+			}
+		}
 
-			var menu = new CCMenu(item1, item2, item3);
-
-            menu.Position = CCPoint.Zero;
-            item1.Position = new CCPoint(CCVisibleRect.Center.X - item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item2.Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-            item3.Position = new CCPoint(CCVisibleRect.Center.X + item2.ContentSize.Width * 2,
-                                         CCVisibleRect.Bottom.Y + item2.ContentSize.Height / 2);
-
-			AddChild(menu, TestScene.MENU_LEVEL);
-        }
-
-        public virtual string title()
-        {
-            return "No title";
-        }
-
-        public virtual string subtitle()
-        {
-            return "";
-        }
-
-        public void restartCallback(object pSender)
-        {
+		public override void RestartCallback(object sender)
+		{
 			var s = new EffectAdvanceScene();
-            s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
+			s.AddChild(EffectAdvanceScene.restartEffectAdvanceAction());
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
-        }
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+		}
 
-        public void nextCallback(object pSender)
-        {
+		public override void NextCallback(object sender)
+		{
 			var s = new EffectAdvanceScene();
-            s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
-        }
+			s.AddChild(EffectAdvanceScene.nextEffectAdvanceAction());
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+		}
 
-        public void backCallback(object pSender)
-        {
+		public override void BackCallback(object sender)
+		{
 			var s = new EffectAdvanceScene();
-            s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
-        }
-    }
+			s.AddChild(EffectAdvanceScene.backEffectAdvanceAction());
+			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+		}
+	}
+
 }

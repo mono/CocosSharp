@@ -25,12 +25,15 @@ namespace tests
             // moving background. Testing issue #244
 			var move = new CCMoveBy (3, new CCPoint(200, 0));
 
-			_bgNode.RepeatForever(move, move.Reverse());
+			bgNode.RepeatForever(move, move.Reverse());
         }
 
-        public override string title()
-        {
-            return "Effects on 2 sprites";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Effects on 2 sprites";
+			}
+		}
     }
 }

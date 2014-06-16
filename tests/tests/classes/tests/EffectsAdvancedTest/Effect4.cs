@@ -12,7 +12,7 @@ namespace tests
 			var move = new CCJumpBy (5, new CCPoint(380, 0), 100, 4);
             var move_back = move.Reverse();
 
-            CCLens3DState lensState = _bgNode.RunAction(lens) as CCLens3DState;
+            CCLens3DState lensState = bgNode.RunAction(lens) as CCLens3DState;
 
             var target = new Lens3DTarget(lensState);
 
@@ -22,10 +22,13 @@ namespace tests
             target.AddActions(false, move, move_back);
         }
 
-        public override string title()
-        {
-            return "Jumpy Lens3D";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Jumpy Lens3D";
+			}
+		}
 
         #region Nested type: Lens3DTarget
 

@@ -23,13 +23,16 @@ namespace tests
 			var orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
-			_bgNode.RepeatForever(orbit, orbit_back);
-			_bgNode.RunActions(lens, delay, reuse, waves);
+			bgNode.RepeatForever(orbit, orbit_back);
+			bgNode.RunActions(lens, delay, reuse, waves);
         }
 
-        public override string title()
-        {
-            return "Lens + Waves3d and OrbitCamera";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Lens + Waves3d and OrbitCamera";
+			}
+		}
     }
 }
