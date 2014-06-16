@@ -25,7 +25,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 18);
             AddChild(label, 1);
@@ -61,7 +61,7 @@ namespace tests
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.restartAction());
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
             //s->release();
         }
 
@@ -69,7 +69,7 @@ namespace tests
         {
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.nextAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
             //s->release();
         }
 
@@ -77,7 +77,7 @@ namespace tests
         {
             CCScene s = new ProgressActionsTestScene();
             s.AddChild(ProgressActionsTestScene.backAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Director.ReplaceScene(s);
             //s->release();
         }
     }

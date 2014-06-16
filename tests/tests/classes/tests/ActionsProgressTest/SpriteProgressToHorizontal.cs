@@ -11,7 +11,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
 			var progressTo = new CCProgressTo(2, 100);
 
