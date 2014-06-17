@@ -1144,14 +1144,14 @@ namespace CocosSharp
             {
                 if (listenerMap[lv].IsEmpty) 
                 {
-                    priorityDirtyFlagMap.Remove(lv);
-                    listenerMap[lv] = null;
                     lmKeysToRemove.Add(lv);
                 }
             }
 
             foreach(string key in lmKeysToRemove) 
             {
+				priorityDirtyFlagMap.Remove(key);
+				listenerMap[key] = null;
                 listenerMap.Remove(key);
             }
 
