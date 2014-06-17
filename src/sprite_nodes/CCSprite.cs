@@ -405,7 +405,13 @@ namespace CocosSharp
 
         void InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect? rectInPoints=null)
         {
-            InitWithTexture(spriteFrame.Texture, rectInPoints, spriteFrame.IsRotated);
+			var rectInPts = CCRect.Zero;
+			if (rectInPoints.HasValue)
+				rectInPts = rectInPoints.Value;
+			else
+				rectInPts = spriteFrame.RectInPixels.PixelsToPoints(Director.ContentScaleFactor);
+
+            InitWithTexture(spriteFrame.Texture, rectInPts, spriteFrame.IsRotated);
         }
 
         void InitWithFile(string fileName, CCRect? rectInPoints=null)
