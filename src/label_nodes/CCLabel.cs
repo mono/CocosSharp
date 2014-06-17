@@ -127,8 +127,26 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null)
+            {
+                m_bFontDirty = true;
+            }
+        }
+
+        #endregion Setup content
+
+
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
         {
+            if (Director == null)
+                return null;
+
             if (m_pData == null)
             {
                 InitializeTTFAtlas(1024, 1024);
@@ -165,7 +183,7 @@ namespace CocosSharp
                 return fontConfig;
             }
 
-            CreateFont(fontName, fontSize * CCMacros.CCContentScaleFactor(), chars);
+            CreateFont(fontName, fontSize * Director.ContentScaleFactor, chars);
 
             fontConfig.CommonHeight = (int)Math.Ceiling(GetFontHeight());
 

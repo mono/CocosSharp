@@ -31,7 +31,6 @@ namespace CocosSharp
         protected bool isOpacityCascaded = true;
         protected bool isColorModifiedByOpacity = false;
 
-
         public override CCPoint AnchorPoint
         {
             get { return base.AnchorPoint; }
@@ -394,6 +393,21 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null)
+            {
+                CreateFontChars();
+            }
+        }
+
+        #endregion Setup content
+
+
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
         {
             displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
@@ -440,6 +454,9 @@ namespace CocosSharp
 
         public void CreateFontChars()
         {
+            if(Director == null)
+                return;
+
             int nextFontPositionX = 0;
             int nextFontPositionY = 0;
             char prev = (char) 255;
@@ -561,7 +578,7 @@ namespace CocosSharp
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
-                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * CCMacros.CCContentScaleFactor());
+                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * Director.ContentScaleFactor);
 
 				fontChar.Position = fontPos.PixelsToPoints(Director.ContentScaleFactor);
 

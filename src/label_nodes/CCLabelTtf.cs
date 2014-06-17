@@ -136,6 +136,21 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null)
+            {
+                updateTexture();
+            }
+        }
+
+        #endregion Setup content
+
+
         internal void Refresh()
         {
             //
@@ -192,6 +207,9 @@ namespace CocosSharp
 
         private void updateTexture()
         {
+            if(Director == null)
+                return;
+
             CCTexture2D tex;
 
             // Dump the old one
@@ -208,7 +226,7 @@ namespace CocosSharp
                 m_hAlignment,
                 m_vAlignment,
                 m_pFontName,
-                m_fFontSize * CCMacros.CCContentScaleFactor());
+                m_fFontSize * Director.ContentScaleFactor);
 
 //#if MACOS || IPHONE || IOS
 //			// There was a problem loading the text for some reason or another if result is not true
@@ -228,7 +246,7 @@ namespace CocosSharp
             Texture = tex;
 
             CCRect rect = CCRect.Zero;
-			rect.Size = Texture.ContentSize;
+            rect.Size = Texture.ContentSize(Director.ContentScaleFactor);
             SetTextureRect(rect);
         }
     }

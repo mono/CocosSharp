@@ -8,6 +8,9 @@ namespace CocosSharp
         protected char m_cMapStartChar;
         protected string m_sString = "";
 
+        #region Properties
+
+
         public string Text
         {
             get { return m_sString; }
@@ -19,24 +22,26 @@ namespace CocosSharp
                 {
                     TextureAtlas.ResizeCapacity(len);
                 }
-                
+
                 m_sString = value;
-                
+
                 UpdateAtlasValues();
-                
+
                 ContentSize = new CCSize(len * ItemWidth, ItemHeight);
-                
+
                 QuadsToDraw = len;
 
             }
         }
+
+        #endregion Properties
 
 
         #region Constructors
 
         internal CCLabelAtlas()
         {
-			IgnoreContentScaleFactor = true;
+            IgnoreContentScaleFactor = true;
         }
 
         public CCLabelAtlas(string label, string fntFile) : this(label, new PlistDocument(CCFileUtils.GetFileData(fntFile)).Root as PlistDictionary)
@@ -45,8 +50,8 @@ namespace CocosSharp
 
         private CCLabelAtlas(string label, PlistDictionary fontPlistDict) 
             : this(label, fontPlistDict["textureFilename"].AsString, 
-                (int)Math.Ceiling(fontPlistDict["itemWidth"].AsInt / CCMacros.CCContentScaleFactor()), 
-                (int)Math.Ceiling(fontPlistDict["itemHeight"].AsInt / CCMacros.CCContentScaleFactor()),
+                (int)Math.Ceiling((double)fontPlistDict["itemWidth"].AsInt), 
+                (int)Math.Ceiling((double)fontPlistDict["itemHeight"].AsInt),
                 (char)fontPlistDict["firstChar"].AsInt)
         {
             Debug.Assert(fontPlistDict["version"].AsInt == 1, "Unsupported version. Upgrade cocos2d version");
@@ -72,22 +77,45 @@ namespace CocosSharp
         #endregion Constructors
 
 
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null)
+            {
+                UpdateAtlasValues();
+            }
+        }
+
+        #endregion Setup content
+
+
+
         public override void UpdateAtlasValues()
         {
+            if(Director == null)
+                return;
+
             int n = m_sString.Length;
 
             CCTexture2D texture = TextureAtlas.Texture;
 
             float textureWide = texture.PixelsWide;
             float textureHigh = texture.PixelsHigh;
+            float scaleFactor = 1.0f;
 
-            float itemWidthInPixels = ItemWidth * CCMacros.CCContentScaleFactor();
-            float itemHeightInPixels = ItemHeight * CCMacros.CCContentScaleFactor();
-            if (IgnoreContentScaleFactor)
+            if(!IgnoreContentScaleFactor)
             {
-                itemWidthInPixels = ItemWidth;
-                itemHeightInPixels = ItemHeight;
+                scaleFactor = Director.ContentScaleFactor;
             }
+
+            float itemWidthInPixels = ItemWidth * scaleFactor;
+            float itemHeightInPixels = ItemHeight * scaleFactor;
+
+
 
             for (int i = 0; i < n; i++)
             {
@@ -95,22 +123,22 @@ namespace CocosSharp
                 float row = (a % ItemsPerRow);
                 float col = (a / ItemsPerRow);
 
-#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-    // Issue #938. Don't use texStepX & texStepY
-            float left		= (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
-            float right		= left + (itemWidthInPixels * 2 - 2) / (2 * textureWide);
-            float top		= (2 * col * itemHeightInPixels + 1) / (2 * textureHigh);
-            float bottom	= top + (itemHeightInPixels * 2 - 2) / (2 * textureHigh);
-#else
+                #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+                // Issue #938. Don't use texStepX & texStepY
+                float left          = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
+                float right         = left + (itemWidthInPixels * 2 - 2) / (2 * textureWide);
+                float top           = (2 * col * itemHeightInPixels + 1) / (2 * textureHigh);
+                float bottom        = top + (itemHeightInPixels * 2 - 2) / (2 * textureHigh);
+                #else
                 float left = row * itemWidthInPixels / textureWide;
                 float right = left + itemWidthInPixels / textureWide;
                 float top = col * itemHeightInPixels / textureHigh;
                 float bottom = top + itemHeightInPixels / textureHigh;
-#endif
+                #endif
                 // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
                 CCV3F_C4B_T2F_Quad quad = new CCV3F_C4B_T2F_Quad();
-              
+
                 quad.TopLeft.TexCoords.U = left;
                 quad.TopLeft.TexCoords.V = top;
                 quad.TopRight.TexCoords.U = right;
