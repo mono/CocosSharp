@@ -20,7 +20,7 @@ namespace CocosSharp
             {
                 if (spriteFrame != null)
                 {
-                    ((CCSprite) node).DisplayFrame = spriteFrame;
+                    ((CCSprite) node).SpriteFrame = spriteFrame;
                 }
                 else
                 {

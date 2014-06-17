@@ -92,7 +92,8 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSprite sprite)
         {
-            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSizeInPixels.Width, sprite.ContentSizeInPixels.Height));
+            CCRect textureRect = sprite.TextureRect;
+            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, textureRect.Size.Width, sprite.ContentSizeInPixels.Height));
             AddSpriteFrame(f);
         }
 

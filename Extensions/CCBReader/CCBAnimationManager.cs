@@ -399,7 +399,7 @@ namespace CocosSharp
 					}
 					else if (pPropName == "displayFrame")
 					{
-						((CCSprite)node).DisplayFrame = (CCSpriteFrame)pValue;
+                        ((CCSprite)node).SpriteFrame = (CCSpriteFrame)pValue;
 					}
 					else if (pPropName == "color")
 					{
@@ -850,7 +850,7 @@ namespace CocosSharp
 
 		protected override void Update(float time)
 		{
-			((CCSprite)Target).DisplayFrame = SpriteFrame;
+            ((CCSprite)Target).SpriteFrame = SpriteFrame;
 		}
 	}
 

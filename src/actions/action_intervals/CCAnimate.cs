@@ -96,27 +96,27 @@ namespace CocosSharp
 			Animation = action.Animation;
 			SplitTimes = action.SplitTimes;
 
-			var pSprite = (CCSprite)(target);
+            var sprite = (CCSprite)(target);
 
 			OriginalFrame = null;
 
 			if (Animation.RestoreOriginalFrame)
 			{
-				OriginalFrame = pSprite.DisplayFrame;
+                OriginalFrame = sprite.SpriteFrame;
 			}
 
 			NextFrame = 0;
 			ExecutedLoops = 0;
 		}
 
-		protected internal override void Stop ()
+		protected internal override void Stop()
 		{
 			if (Animation.RestoreOriginalFrame && Target != null)
 			{
-				((CCSprite)(Target)).DisplayFrame = OriginalFrame;
+                ((CCSprite)(Target)).SpriteFrame = OriginalFrame;
 			}
 
-			base.Stop ();
+			base.Stop();
 		}
 
 		protected internal override void Update (float time)
@@ -151,7 +151,7 @@ namespace CocosSharp
 					var frameToDisplay = frame.SpriteFrame;
 					if (frameToDisplay != null)
 					{
-						((CCSprite)Target).DisplayFrame = frameToDisplay;
+                        ((CCSprite)Target).SpriteFrame = frameToDisplay;
 					}
 
 					var dict = frame.UserInfo;

@@ -44,12 +44,12 @@ namespace CocosSharp
         {
         }
 
-        // via sprite frame
-        public CCMaskedSprite(CCSpriteFrame pSpriteFrame, byte[] mask)
-            : base(pSpriteFrame)
-        {
-            CollisionMask = mask;
-        }
+//        // via sprite frame
+//        public CCMaskedSprite(CCSpriteFrame pSpriteFrame, byte[] mask)
+//            : base(pSpriteFrame)
+//        {
+//            CollisionMask = mask;
+//        }
 
         #endregion Constructors
 

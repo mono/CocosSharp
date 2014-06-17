@@ -320,6 +320,7 @@ namespace CocosSharp
             var rt = new CCRenderTexture(
                 (int) MaskSprite.ContentSizeInPixels.Width,
                 (int) MaskSprite.ContentSizeInPixels.Height,
+                Director.ContentScaleFactor,
 				CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents
                 );
 

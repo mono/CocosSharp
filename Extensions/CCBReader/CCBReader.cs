@@ -826,7 +826,7 @@ namespace CocosSharp
                     spriteFile = _CCBRootPath + spriteFile;
 
                     CCTexture2D texture = CCApplication.SharedApplication.TextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
-                    var bounds = new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+                    var bounds = new CCRect(0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else

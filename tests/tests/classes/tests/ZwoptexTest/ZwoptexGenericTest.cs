@@ -92,8 +92,8 @@ namespace tests
             string str1 = string.Format("grossini_dance_{0:00}.png", spriteFrameIndex);
             string str2 = string.Format("grossini_dance_generic_{0:00}.png", spriteFrameIndex);
 
-            sprite1.DisplayFrame = CCApplication.SharedApplication.SpriteFrameCache[str1];
-            sprite2.DisplayFrame = CCApplication.SharedApplication.SpriteFrameCache[str2];
+            sprite1.SpriteFrame = CCApplication.SharedApplication.SpriteFrameCache[str1];
+            sprite2.SpriteFrame = CCApplication.SharedApplication.SpriteFrameCache[str2];
         }
 
         public override string title()
