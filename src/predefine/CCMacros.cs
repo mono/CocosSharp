@@ -74,107 +74,97 @@ namespace CocosSharp
             return angle * 57.29577951f; // PI * 180
         }
 
-        public static float CCContentScaleFactor()
+        #region conversions with passed scale factor
+
+        public static CCRect PixelsToPoints(this CCRect r, float scaleFactor)
         {
-            return CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
+            return new CCRect(r.Origin.X / scaleFactor, r.Origin.Y / scaleFactor, r.Size.Width / scaleFactor, r.Size.Height / scaleFactor);
         }
 
-		#region conversions with passed scale factor
-
-		public static CCRect PixelsToPoints(this CCRect r, float scaleFactor)
-		{
-			return new CCRect(r.Origin.X / scaleFactor, r.Origin.Y / scaleFactor, r.Size.Width / scaleFactor, r.Size.Height / scaleFactor);
-		}
-
-		public static CCRect PointsToPixels(this CCRect r, float scaleFactor)
-		{
-			return new CCRect(r.Origin.X * scaleFactor, r.Origin.Y * scaleFactor, r.Size.Width * scaleFactor, r.Size.Height * scaleFactor);
-		}
-
-		public static CCSize PixelsToPoints(this CCSize s, float scaleFactor)
-		{
-			return new CCSize(s.Width / scaleFactor, s.Height / scaleFactor);
-		}
-
-		public static CCSize PointsToPixels(this CCSize s, float scaleFactor)
-		{
-			return new CCSize(s.Width * scaleFactor, s.Height * scaleFactor);
-		}
-
-		public static CCPoint PixelsToPoints(this CCPoint p, float scaleFactor)
-		{
-			return new CCPoint(p.X / scaleFactor, p.Y / scaleFactor);
-		}
-
-		public static CCPoint PointsToPixels(this CCPoint p, float scaleFactor)
-		{
-			return new CCPoint(p.X * scaleFactor, p.Y * scaleFactor);
-		}
-
-		#endregion
-
-		#region scale factor from Director
-
-        public static CCRect PixelsToPoints(this CCRect r)
+        public static CCRect PointsToPixels(this CCRect r, float scaleFactor)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCRect(r.Origin.X / cs, r.Origin.Y / cs, r.Size.Width / cs, r.Size.Height / cs);
+            return new CCRect(r.Origin.X * scaleFactor, r.Origin.Y * scaleFactor, r.Size.Width * scaleFactor, r.Size.Height * scaleFactor);
         }
 
-        public static CCRect PointsToPixels(this CCRect r)
+        public static CCSize PixelsToPoints(this CCSize s, float scaleFactor)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCRect(r.Origin.X * cs, r.Origin.Y * cs, r.Size.Width * cs, r.Size.Height * cs);
+            return new CCSize(s.Width / scaleFactor, s.Height / scaleFactor);
         }
 
-        public static CCSize PixelsToPoints(this CCSize s)
+        public static CCSize PointsToPixels(this CCSize s, float scaleFactor)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCSize(s.Width / cs, s.Height / cs);
+            return new CCSize(s.Width * scaleFactor, s.Height * scaleFactor);
         }
 
-        public static CCSize PointsToPixels(this CCSize s)
+        public static CCPoint PixelsToPoints(this CCPoint p, float scaleFactor)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCSize(s.Width * cs, s.Height * cs);
+            return new CCPoint(p.X / scaleFactor, p.Y / scaleFactor);
         }
 
-        public static CCPoint PixelsToPoints(this CCPoint p)
+        public static CCPoint PointsToPixels(this CCPoint p, float scaleFactor)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCPoint(p.X / cs, p.Y / cs);
+            return new CCPoint(p.X * scaleFactor, p.Y * scaleFactor);
         }
 
-        public static CCPoint PointsToPixels(this CCPoint p)
+        #endregion
+
+        #region scale factor from Director
+
+        public static CCRect PixelsToPoints(this CCRect r, CCDirector director)
         {
-            var cs = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-            return new CCPoint(p.X * cs, p.Y * cs);
+            return PixelsToPoints(r, director.ContentScaleFactor);
         }
 
-		#endregion
-		internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4B color)
-		{
-			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
-		}
-		internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4F color)
-		{
-			return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
-		}
+        public static CCRect PointsToPixels(this CCRect r, CCDirector director)
+        {
+            return PointsToPixels(r, director.ContentScaleFactor);
+        }
 
-		internal static Microsoft.Xna.Framework.Vector3 ToVector3 (this CCPoint point)
-		{
-			return new Microsoft.Xna.Framework.Vector3(point.X, point.Y, 0);
-		}
+        public static CCSize PixelsToPoints(this CCSize s, CCDirector director)
+        {
+            return PixelsToPoints(s, director.ContentScaleFactor);
+        }
 
-		internal static Microsoft.Xna.Framework.Vector2 ToVector2 (this CCVector2 point)
-		{
-			return new Microsoft.Xna.Framework.Vector2(point.X, point.Y);
-		}
+        public static CCSize PointsToPixels(this CCSize s, CCDirector director)
+        {
+            return PointsToPixels(s, director.ContentScaleFactor);
+        }
 
-		internal static CCVector2 ToCCVector2 (this Microsoft.Xna.Framework.Vector2 point)
-		{
-			return new CCVector2(point.X, point.Y);
-		}
+        public static CCPoint PixelsToPoints(this CCPoint p, CCDirector director)
+        {
+            return PixelsToPoints(p, director.ContentScaleFactor);
+        }
+
+        public static CCPoint PointsToPixels(this CCPoint p, CCDirector director)
+        {
+            return PointsToPixels(p, director.ContentScaleFactor);
+        }
+
+        #endregion
+
+        internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4B color)
+        {
+            return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
+        }
+        internal static Microsoft.Xna.Framework.Color ToColor (this CCColor4F color)
+        {
+            return new Microsoft.Xna.Framework.Color (color.R, color.G, color.B, color.A);
+        }
+
+        internal static Microsoft.Xna.Framework.Vector3 ToVector3 (this CCPoint point)
+        {
+            return new Microsoft.Xna.Framework.Vector3(point.X, point.Y, 0);
+        }
+
+        internal static Microsoft.Xna.Framework.Vector2 ToVector2 (this CCVector2 point)
+        {
+            return new Microsoft.Xna.Framework.Vector2(point.X, point.Y);
+        }
+
+        internal static CCVector2 ToCCVector2 (this Microsoft.Xna.Framework.Vector2 point)
+        {
+            return new CCVector2(point.X, point.Y);
+        }
 
 
 
