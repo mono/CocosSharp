@@ -92,7 +92,7 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSprite sprite)
         {
-            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSize.Width, sprite.ContentSize.Height));
+            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, sprite.ContentSizeInPixels.Width, sprite.ContentSizeInPixels.Height));
             AddSpriteFrame(f);
         }
 
@@ -109,7 +109,7 @@ namespace CocosSharp
         {
             var texture = CCApplication.SharedApplication.TextureCache.AddImage(filename);
             CCRect rect = CCRect.Zero;
-            rect.Size = texture.ContentSize;
+            rect.Size = texture.ContentSizeInPixels;
             AddSpriteFrame (new CCSpriteFrame (texture, rect));
         }
 

@@ -63,7 +63,7 @@ namespace CocosSharp
 
                 if (frame != null)
                 {
-                    CCLog.Log("CocosSharp: {0} frame {1}", name, frame.Rect.ToString());
+                    CCLog.Log("CocosSharp: {0} frame {1}", name, frame.RectInPixels.ToString());
                 }
                 else
                 {

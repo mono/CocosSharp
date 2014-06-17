@@ -15,6 +15,7 @@ namespace CocosSharp
         bool shouldBeHidden;            // should not be drawn because one of the ancestors is not visible
 
         CCRect textureRect;
+
         CCPoint unflippedOffsetPositionFromCenter;
         CCSpriteBatchNode batchNode;    // Used batch node (weak reference)
         CCTextureAtlas textureAtlas;    // Sprite Sheet texture atlas (weak reference)
@@ -270,18 +271,18 @@ namespace CocosSharp
             }
             set
             {
-                unflippedOffsetPositionFromCenter = value.Offset;
+                unflippedOffsetPositionFromCenter = value.OffsetInPixels;
 
-                CCTexture2D pNewTexture = value.Texture;
+                CCTexture2D newTexture = value.Texture;
                 // update texture before updating texture rect
-                if (pNewTexture != texture)
+                if (newTexture != texture)
                 {
-                    Texture = pNewTexture;
+                    Texture = newTexture;
                 }
 
                 // update rect
                 IsTextureRectRotated = value.IsRotated;
-                SetTextureRect(value.Rect, IsTextureRectRotated, value.OriginalSize);
+                SetTextureRect(value.RectInPixels, IsTextureRectRotated, value.OriginalSizeInPixels);
             }
         }
 
@@ -368,11 +369,6 @@ namespace CocosSharp
         {
         }
 
-        public CCSprite(CCTexture2D texture) 
-            : this(texture, new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height))
-        {
-        }
-
         public CCSprite(CCSpriteFrame spriteFrame)
         {
             InitWithSpriteFrame(spriteFrame);
@@ -384,8 +380,11 @@ namespace CocosSharp
         }
 
         // Used externally by non-subclasses
-        internal void InitWithTexture(CCTexture2D pTexture, CCRect? rect=null, bool rotated=false)
+        internal void InitWithTexture(CCTexture2D texture, CCRect? rect=null, bool rotated=false)
         {
+            IsTextureRectRotated = rotated;
+            textureRect = rect ?? CCRect.Zero;
+
             opacityModifyRGB = true;
             BlendFunc = CCBlendFunc.AlphaBlend;
 
@@ -398,20 +397,12 @@ namespace CocosSharp
             Quad.TopLeft.Colors = CCColor4B.White;
             Quad.TopRight.Colors = CCColor4B.White;
 
-            Texture = pTexture;
-
-            var rect2 = rect ?? CCRect.Zero;
-            if (!rect.HasValue && Texture != null) 
-            {
-                rect2.Size = Texture.ContentSize;
-            }
-
-            SetTextureRect(rect2, rotated, rect2.Size);
+            Texture = texture;
         }
 
         void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
-            InitWithTexture(spriteFrame.Texture, spriteFrame.Rect, spriteFrame.IsRotated);
+            InitWithTexture(spriteFrame.Texture, spriteFrame.RectInPixels, spriteFrame.IsRotated);
             DisplayFrame = spriteFrame;
         }
 
@@ -439,6 +430,26 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && Texture != null) 
+            {
+                if(textureRect == CCRect.Zero) 
+                {
+                    textureRect.Size = Texture.ContentSize(Director.ContentScaleFactor);
+                }
+
+                SetTextureRect(textureRect, IsTextureRectRotated, textureRect.Size);
+            }
+        }
+
+        #endregion Setup content
+
+
         protected override void Draw()
         {
             Debug.Assert(batchNode == null);
@@ -450,12 +461,12 @@ namespace CocosSharp
 
         public bool IsFrameDisplayed(CCSpriteFrame pFrame)
         {
-            CCRect r = pFrame.Rect;
+            CCRect r = pFrame.RectInPixels;
 
             return (
                 CCRect.Equal(ref r, ref textureRect) &&
                 pFrame.Texture.Name == texture.Name &&
-                pFrame.Offset.Equals(unflippedOffsetPositionFromCenter)
+                pFrame.OffsetInPixels.Equals(unflippedOffsetPositionFromCenter)
             );
         }
 

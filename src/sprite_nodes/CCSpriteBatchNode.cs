@@ -21,9 +21,9 @@ namespace CocosSharp
             {
                 TextureAtlas.Texture = value;
                 UpdateBlendFunc();
-                if (value != null)
+                if (value != null && Director != null)
                 {
-                    ContentSize = value.ContentSize;
+                    ContentSize = value.ContentSize(Director.ContentScaleFactor);
                 }
             }
         }
@@ -63,7 +63,6 @@ namespace CocosSharp
                 capacity = defaultSpriteBatchCapacity;
             }
 
-            ContentSize= tex.ContentSize;
             TextureAtlas = new CCTextureAtlas(tex, capacity);
 
             UpdateBlendFunc();
@@ -74,6 +73,21 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if (Director != null && TextureAtlas != null)
+            {
+                ContentSize = TextureAtlas.Texture.ContentSize(Director.ContentScaleFactor);
+            }
+        }
+
+        #endregion Setup content
 
 
         public override void Visit()
