@@ -41,11 +41,6 @@ namespace tests
             InitSprite();
         }
 
-        public new static MySprite2 Create(string pszName)
-        {
-            MySprite2 pobSprite = new MySprite2(pszName);
-            return pobSprite;
-        }
 
         private int ivar;
     }
@@ -66,7 +61,7 @@ namespace tests
             AddChild(aParent);
 
             // MySprite2
-            MySprite2 sprite2 = MySprite2.Create("Images/grossini");
+            MySprite2 sprite2 = new MySprite2("Images/grossini");
             AddChild(sprite2);
             sprite2.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
         }
