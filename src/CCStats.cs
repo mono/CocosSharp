@@ -115,7 +115,7 @@ namespace CocosSharp
                 try {
                     texture = !textureCache.Contains ("cc_fps_images") ? textureCache.AddImage (CCFPSImage.PngData, "cc_fps_images", CCSurfaceFormat.Bgra4444) : textureCache["cc_fps_images"];
 
-                    if (texture == null || (texture.ContentSize.Width == 0 && texture.ContentSize.Height == 0)) {
+                    if (texture == null || (texture.ContentSizeInPixels.Width == 0 && texture.ContentSizeInPixels.Height == 0)) {
                         CCLog.Log ("CCStats: Failed to create stats texture");
 
                         return;

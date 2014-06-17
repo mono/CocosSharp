@@ -28,7 +28,7 @@ namespace CocosSharp
             CCSize size = Director.WindowSizeInPoints;
 
             // create the second render texture for outScene
-            CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height);
+            CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height, Director.ContentScaleFactor);
             texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             texture.Position = new CCPoint(size.Width / 2, size.Height / 2);
             texture.AnchorPoint = new CCPoint(0.5f, 0.5f);

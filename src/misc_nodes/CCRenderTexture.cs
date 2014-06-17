@@ -34,20 +34,20 @@ namespace CocosSharp
             PixelFormat = CCSurfaceFormat.Color;
         }
 
-        public CCRenderTexture(int w, int h) 
-            : this(w, h, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
+        public CCRenderTexture(int w, int h, float contentScaleFactor) 
+            : this(w, h, contentScaleFactor, CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, CCSurfaceFormat format) 
-            : this(w, h, format, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
+        public CCRenderTexture(int w, int h, float contentScaleFactor, CCSurfaceFormat format) 
+            : this(w, h, contentScaleFactor, format, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents)
         {
         }
 
-        public CCRenderTexture(int w, int h, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, CCRenderTargetUsage usage)
+        public CCRenderTexture(int w, int h, float contentScaleFactor, CCSurfaceFormat colorFormat, CCDepthFormat depthFormat, CCRenderTargetUsage usage)
         {
-            w = (int)Math.Ceiling(w * CCMacros.CCContentScaleFactor());
-            h = (int)Math.Ceiling(h * CCMacros.CCContentScaleFactor());
+            w = (int)Math.Ceiling(w * contentScaleFactor);
+            h = (int)Math.Ceiling(h * contentScaleFactor);
 
             firstUsage = true;
             renderTarget2D = CCDrawManager.CreateRenderTarget(w, h, colorFormat, depthFormat, usage);

@@ -198,11 +198,6 @@ namespace CocosSharp
             }
         }
 
-        public CCSize ContentSize
-        {
-			get { return ContentSizeInPixels.PixelsToPoints(); }
-        }
-
         public Texture2D Name
         {
             get { return XNATexture; }
@@ -685,6 +680,10 @@ namespace CocosSharp
             return String.Format("<CCTexture2D | Dimensions = {0} x {1})>", PixelsWide, PixelsHigh);
         }
 
+        public CCSize ContentSize(float contentScaleFactor)
+        {
+            return ContentSizeInPixels.PixelsToPoints(contentScaleFactor);
+        }
 
         #region Cleanup
 

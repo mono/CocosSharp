@@ -11,6 +11,8 @@ namespace CocosSharp
         bool active;
         bool textureFlipped;
 
+        CCDirector director;
+
 
         #region Properties
 
@@ -22,7 +24,22 @@ namespace CocosSharp
         protected CCGrabber Grabber { get; set; }
         protected CCTexture2D Texture { get; set; }
 
-        internal CCDirector Director { get; set; }
+        internal CCDirector Director 
+        { 
+            get { return director; }
+            set 
+            {
+                director = value;
+
+                if(director != null && Texture != null) 
+                {
+                    CCSize texSize = Texture.ContentSize(director.ContentScaleFactor);
+                    Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
+
+                    CalculateVertexPoints();
+                }
+            }
+        }
 
 
         public bool Active
@@ -62,16 +79,11 @@ namespace CocosSharp
             Texture = texture;
             textureFlipped = flipped;
 
-            CCSize texSize = Texture.ContentSize;
-            Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
-
             Grabber = new CCGrabber();
             if (Grabber != null)
             {
                 Grabber.Grab(Texture);
             }
-
-            CalculateVertexPoints();
         }
 
         protected CCGridBase(CCGridSize gridSize, CCSize size) 

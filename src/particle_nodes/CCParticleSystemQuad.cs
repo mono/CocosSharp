@@ -70,17 +70,19 @@ namespace CocosSharp
         {
             set
             {
-				if (value == null)
-					return;
-
-				CCSize s = value.ContentSize;
+                if (value == null)
+                    return;
 
                 // Only update the texture if is different from the current one
                 if (Texture == null || value.Name != Texture.Name)
                 {
                     base.Texture = value;
 
-                    TextureRect = new CCRect(0, 0, s.Width, s.Height);
+                    if(Director != null) 
+                    {
+                        CCSize s = value.ContentSize(Director.ContentScaleFactor);
+                        TextureRect = new CCRect (0, 0, s.Width, s.Height);
+                    }
                 }
             }
         }
@@ -128,9 +130,9 @@ namespace CocosSharp
                 CCRawList<CCV3F_C4B_T2F_Quad> oldQuads = quads;
                 quads = value;
 
-                if (Texture!= null && quads != null && quads != oldQuads) 
+                if (Texture!= null && quads != null && quads != oldQuads && Director != null) 
                 {
-                    CCSize texSize = Texture.ContentSize;
+                    CCSize texSize = Texture.ContentSize(Director.ContentScaleFactor);
                     // Load the quads with tex coords
                     ResetTexCoords(new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height));
                 }
@@ -162,6 +164,22 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            if(Director != null && Texture != null) 
+            {
+                CCSize s = Texture.ContentSize(Director.ContentScaleFactor);
+                TextureRect = new CCRect (0, 0, s.Width, s.Height);
+            }
+        }
+
+        #endregion Setup content
+
+
         protected override void Draw()
         {
             Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
@@ -178,7 +196,7 @@ namespace CocosSharp
         void ResetTexCoords(CCRect pointRect)
         {
             // convert to Tex coords
-			CCRect rect = pointRect.PointsToPixels(Director.ContentScaleFactor);
+            CCRect rect = pointRect.PointsToPixels(Director.ContentScaleFactor);
 
             float wide = pointRect.Size.Width;
             float high = pointRect.Size.Height;

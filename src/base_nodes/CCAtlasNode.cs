@@ -142,7 +142,7 @@ namespace CocosSharp
 
         void CalculateMaxItems()
         {
-            CCSize s = TextureAtlas.Texture.ContentSize;
+            CCSize s = TextureAtlas.Texture.ContentSize(Director.ContentScaleFactor);
 
             if (IgnoreContentScaleFactor)
             {

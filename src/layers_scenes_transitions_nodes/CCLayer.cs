@@ -92,7 +92,7 @@ namespace CocosSharp
                 if (renderTexture == null || renderTexture.ContentSize.Width < ContentSize.Width 
                     || renderTexture.ContentSize.Height < ContentSize.Height)
                 {
-                    renderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height);
+                    renderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height, Director.ContentScaleFactor);
                     renderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
                 }
                 renderTexture.Sprite.TextureRect = new CCRect(0, 0, ContentSize.Width, ContentSize.Height);
