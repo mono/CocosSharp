@@ -38,7 +38,7 @@ namespace tests
 
         public float radius()
         {
-            return Texture.ContentSize.Width / 2;
+            return Texture.ContentSizeInPixels.Width / 2;
         }
 
         //BOOL initWithTexture(CCTexture2D* aTexture);

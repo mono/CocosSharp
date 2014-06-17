@@ -507,7 +507,7 @@ namespace tests
 	public class FixedPriorityTest : EventDispatcherTest
 	{
 
-		public override void OnEnter ()
+		public override void OnEnter()
 		{
 			base.OnEnter ();
 
@@ -517,21 +517,21 @@ namespace tests
 			var sprite1 = new TouchableSprite (30);
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
 			sprite1.Texture = texture;
-			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite1.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
 			AddChild(sprite1, 10);
 
 			var sprite2 = new TouchableSprite (20);
 			texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/MagentaSquare.png");
 			sprite2.Texture = texture;
-			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite2.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
 			AddChild(sprite2, 20);
 
 			var sprite3 = new TouchableSprite (10);
 			texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
-			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite3.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite3.Position = CCPoint.Zero;
 			sprite2.AddChild(sprite3, 1);
 
@@ -1014,21 +1014,21 @@ namespace tests
 			var sprite1 = new TouchableSprite ();
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
 			sprite1.Texture = texture;
-			sprite1.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite1.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
 			AddChild(sprite1, -10);
 
 			var sprite2 = new TouchableSprite ();
 			texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/MagentaSquare.png");
 			sprite2.Texture = texture;
-			sprite2.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite2.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
 			AddChild(sprite2, -20);
 
 			var sprite3 = new TouchableSprite ();
 			texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
-			sprite3.TextureRect = new CCRect (0, 0, texture.ContentSize.Width, texture.ContentSize.Height);
+            sprite3.TextureRect = new CCRect (0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
 			sprite3.Position = CCPoint.Zero;
 			sprite2.AddChild(sprite3, -1);
 

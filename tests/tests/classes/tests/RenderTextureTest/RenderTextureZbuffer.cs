@@ -166,13 +166,10 @@ namespace tests
         #endregion Event handling
 
 
-
-
-
         public void renderScreenShot()
         {
-            var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            var texture = new CCRenderTexture((int)size.Width, (int)size.Height);
+            var size = Director.WindowSizeInPoints;
+            var texture = new CCRenderTexture((int)size.Width, (int)size.Height, Director.ContentScaleFactor);
             //var texture = new CCRenderTexture(512, 512);
 
             texture.AnchorPoint = new CCPoint(0, 0);

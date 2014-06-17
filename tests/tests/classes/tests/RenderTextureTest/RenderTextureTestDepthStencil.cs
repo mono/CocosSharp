@@ -36,7 +36,8 @@ namespace tests
             sprite.Position = new CCPoint(windowSize.Width * 0.25f, 0);
             sprite.Scale = 10;
 
-            CCRenderTexture rend = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, CCSurfaceFormat.Color, 
+            CCRenderTexture rend = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, Director.ContentScaleFactor,
+                CCSurfaceFormat.Color, 
                 CCDepthFormat.Depth24Stencil8, CCRenderTargetUsage.DiscardContents);
 
             rend.BeginWithClear(0, 0, 0, 0, 0);

@@ -947,28 +947,39 @@ namespace tests
 //------------------------------------------------------------------
     public class TMXIsoVertexZ : TileDemo
     {
-        private readonly CCSprite m_tamara;
+        readonly CCSprite m_tamara;
+        CCTMXTiledMap map;
+
 
         public TMXIsoVertexZ()
         {
-            CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/iso-test-vertexz");
+            map = new CCTMXTiledMap("TileMaps/iso-test-vertexz");
             AddChild(map, 0, kTagTileMap);
-
-            CCSize s = map.ContentSize;
-            map.Position = new CCPoint(-s.Width / 2, 0);
 
             // because I'm lazy, I'm reusing a tile as an sprite, but since this method uses vertexZ, you
             // can use any CCSprite and it will work OK.
             CCTMXLayer layer = map.LayerNamed("Trees");
             m_tamara = layer.TileAt(new CCPoint(29, 29));
+        }
 
-            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / CCMacros.CCContentScaleFactor()));
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CCSize s = map.ContentSize;
+            map.Position = new CCPoint(-s.Width / 2, 0);
+
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / Director.ContentScaleFactor));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
         }
+
+        #endregion Setup content
 
         private void repositionSprite(float dt)
         {
@@ -1013,28 +1024,35 @@ namespace tests
 //------------------------------------------------------------------
     public class TMXOrthoVertexZ : TileDemo
     {
-        private readonly CCSprite m_tamara;
+        readonly CCSprite m_tamara;
 
         public TMXOrthoVertexZ()
         {
             CCTMXTiledMap map = new CCTMXTiledMap("TileMaps/orthogonal-test-vertexz");
             AddChild(map, 0, kTagTileMap);
 
-            CCSize s = map.ContentSize;
-
             // because I'm lazy, I'm reusing a tile as an sprite, but since this method uses vertexZ, you
             // can use any CCSprite and it will work OK.
             CCTMXLayer layer = map.LayerNamed("trees");
             m_tamara = layer.TileAt(new CCPoint(0, 11));
             CCLog.Log("tamara vertexZ: {0}", m_tamara.VertexZ);
+        }
 
-            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / CCMacros.CCContentScaleFactor()));
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / Director.ContentScaleFactor));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
 
             Schedule(repositionSprite);
         }
+
+        #endregion Setup content
 
         private void repositionSprite(float dt)
         {
@@ -1049,7 +1067,7 @@ namespace tests
             base.OnEnter();
 
             // TIP: 2d projection should be used
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+            Director.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()

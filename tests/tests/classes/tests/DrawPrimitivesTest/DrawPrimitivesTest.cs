@@ -70,7 +70,7 @@ namespace tests
         {
             base.RunningOnNewWindow(windowSize);
 
-            CCRenderTexture text = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height);
+            CCRenderTexture text = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, Director.ContentScaleFactor);
 
             CCDrawNode draw = new CCDrawNode();
             text.AddChild(draw, 10);

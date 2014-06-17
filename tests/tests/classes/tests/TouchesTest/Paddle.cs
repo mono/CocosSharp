@@ -49,7 +49,7 @@ namespace tests
 
         public CCRect rect()
         {
-            CCSize s = Texture.ContentSize;
+            CCSize s = Texture.ContentSizeInPixels;
             return new CCRect(-s.Width / 2, -s.Height / 2, s.Width, s.Height);
         }
 

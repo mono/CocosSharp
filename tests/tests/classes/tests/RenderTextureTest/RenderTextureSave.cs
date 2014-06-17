@@ -65,7 +65,8 @@ namespace tests
             base.RunningOnNewWindow(windowSize);
 
             // create a render texture, this is what we are going to draw into
-            target = new CCRenderTexture((int) windowSize.Width, (int) windowSize.Height, CCSurfaceFormat.Color, 
+            target = new CCRenderTexture((int) windowSize.Width, (int) windowSize.Height, Director.ContentScaleFactor,
+                CCSurfaceFormat.Color, 
                 CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
 
             // Let's clear the rendertarget here so that we start off fresh.

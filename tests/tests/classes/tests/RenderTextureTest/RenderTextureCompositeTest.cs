@@ -45,20 +45,8 @@ namespace tests
 
         public RenderTextureCompositeTest()
         {
-            var characterSpriteFactory = new CharacterSpriteFactory();
-
             testSprite = new CCSprite(@"Images\grossini_dance_01");
             testSprite2 = new CCSprite(@"Images\grossini_dance_02");
-
-            swingAnimate = characterSpriteFactory.CreateAnimateAction();
-            thrustAnimate = characterSpriteFactory.CreateAnimateAction();
-            dodgeAnimate = characterSpriteFactory.CreateAnimateAction();
-            collapseAnimate = characterSpriteFactory.CreateAnimateAction();
-
-            swingAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            thrustAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            dodgeAnimate2 = characterSpriteFactory.CreateAnimateAction();
-            collapseAnimate2 = characterSpriteFactory.CreateAnimateAction();
 
             AddChild(testSprite);
             AddChild(testSprite2);
@@ -72,6 +60,18 @@ namespace tests
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
+
+            var characterSpriteFactory = new CharacterSpriteFactory();
+
+            swingAnimate = characterSpriteFactory.CreateAnimateAction(Director);
+            thrustAnimate = characterSpriteFactory.CreateAnimateAction(Director);
+            dodgeAnimate = characterSpriteFactory.CreateAnimateAction(Director);
+            collapseAnimate = characterSpriteFactory.CreateAnimateAction(Director);
+
+            swingAnimate2 = characterSpriteFactory.CreateAnimateAction(Director);
+            thrustAnimate2 = characterSpriteFactory.CreateAnimateAction(Director);
+            dodgeAnimate2 = characterSpriteFactory.CreateAnimateAction(Director);
+            collapseAnimate2 = characterSpriteFactory.CreateAnimateAction(Director);
 
             testSprite.Position = new CCPoint(windowSize.Width / 2 -200, windowSize.Height / 2 + 100);
             testSprite2.Position = new CCPoint(windowSize.Width / 2 + 200, windowSize.Height / 2 + 100);
@@ -112,13 +112,13 @@ namespace tests
             return sprite;
         }
 
-        public CCTexture2D CreateCharacterTexture()
+        public CCTexture2D CreateCharacterTexture(CCDirector director)
         {
             const int width = 490;
             const int height = 278;
 
             var centerPoint = new CCPoint(width / 2, height / 2);
-            var characterTexture = new CCRenderTexture(width, height);
+            var characterTexture = new CCRenderTexture(width, height, director.ContentScaleFactor);
 
             characterTexture.BeginWithClear(100, 0, 0, 0);
 
@@ -164,15 +164,15 @@ namespace tests
         }
 
 
-        public CCAnimate CreateAnimateAction()
+        public CCAnimate CreateAnimateAction(CCDirector director)
         {
             var frameList = new List<CCSpriteFrame>();
 
             for (var i = 0; i < 7; i++)
             {
-                var texture = CreateCharacterTexture();
+                var texture = CreateCharacterTexture(director);
 
-                var sprite = new CCSpriteFrame(texture, new CCRect(0, 0, texture.ContentSize.Width, texture.ContentSize.Height));
+                var sprite = new CCSpriteFrame(texture, new CCRect(0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height));
                 frameList.Add(sprite);
             }
             var animation = new CCAnimation(frameList, 0.1f);
