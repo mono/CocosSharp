@@ -758,7 +758,7 @@ namespace tests
 				target.Opacity = 255;
 			};
 
-            sprite.EventDispatcher.AddEventListener(listener1, this);
+            EventDispatcher.AddEventListener(listener1, sprite);
 
 			RunActions(new CCDelayTime(5.0f),
 				new CCCallFunc(() => 
