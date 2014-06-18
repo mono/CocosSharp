@@ -408,6 +408,18 @@ namespace CocosSharp
         {
             initialSpriteFrame = spriteFrame;
 
+            opacityModifyRGB = true;
+            BlendFunc = CCBlendFunc.AlphaBlend;
+
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
+            OffsetPosition = CCPoint.Zero;
+
+            Quad = new CCV3F_C4B_T2F_Quad();
+            Quad.BottomLeft.Colors = CCColor4B.White;
+            Quad.BottomRight.Colors = CCColor4B.White;
+            Quad.TopLeft.Colors = CCColor4B.White;
+            Quad.TopRight.Colors = CCColor4B.White;
+
             if(Director != null) 
             {
                 SpriteFrame = initialSpriteFrame;
