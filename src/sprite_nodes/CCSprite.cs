@@ -17,13 +17,14 @@ namespace CocosSharp
         CCRect textureRectInPoints;
 
         CCPoint unflippedOffsetPositionFromCenter;
+        CCSpriteFrame initialSpriteFrame;
         CCSpriteBatchNode batchNode;    // Used batch node (weak reference)
         CCTextureAtlas textureAtlas;    // Sprite Sheet texture atlas (weak reference)
         CCTexture2D texture;
         string textureFile;
         CCAffineTransform transformToBatch;
 
-		public CCV3F_C4B_T2F_Quad Quad;
+        public CCV3F_C4B_T2F_Quad Quad;
 
 
         #region Properties
@@ -263,10 +264,10 @@ namespace CocosSharp
             {
                 return new CCSpriteFrame(
                     texture,
-					textureRectInPoints.PointsToPixels(Director.ContentScaleFactor),
-					ContentSize.PointsToPixels(Director.ContentScaleFactor),
+                    textureRectInPoints.PointsToPixels(Director.ContentScaleFactor),
+                    ContentSize.PointsToPixels(Director.ContentScaleFactor),
                     IsTextureRectRotated,
-					unflippedOffsetPositionFromCenter.PointsToPixels(Director.ContentScaleFactor)
+                    unflippedOffsetPositionFromCenter.PointsToPixels(Director.ContentScaleFactor)
                 );
             }
             set
@@ -403,9 +404,14 @@ namespace CocosSharp
             Texture = texture;
         }
 
-        void InitWithSpriteFrame(CCSpriteFrame spriteFrame, CCRect? rectInPoints=null)
+        void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
         {
-            InitWithTexture(spriteFrame.Texture, rectInPoints, spriteFrame.IsRotated);
+            initialSpriteFrame = spriteFrame;
+
+            if(Director != null) 
+            {
+                SpriteFrame = initialSpriteFrame;
+            }
         }
 
         void InitWithFile(string fileName, CCRect? rectInPoints=null)
@@ -440,14 +446,18 @@ namespace CocosSharp
         {
             base.RunningOnNewWindow(windowSize);
 
-            if (Director != null && Texture != null) 
+            if (initialSpriteFrame != null) 
+            {
+                SpriteFrame = initialSpriteFrame;
+            } 
+            else if (Texture != null) 
             {
                 if(textureRectInPoints == CCRect.Zero) 
                 {
-                    textureRectInPoints.Size = Texture.ContentSize(Director.ContentScaleFactor);
+                    textureRectInPoints.Size = Texture.ContentSize (Director.ContentScaleFactor);
                 }
 
-                SetTextureRect(textureRectInPoints, IsTextureRectRotated, textureRectInPoints.Size);
+                SetTextureRect (textureRectInPoints, IsTextureRectRotated, textureRectInPoints.Size);
             }
         }
 
