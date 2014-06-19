@@ -36,6 +36,8 @@ namespace tests
 		{
 			base.RunningOnNewWindow(windowSize);
 
+			CCLog.Log("SceneTestLayer2#RunningOnNewWindow - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+
 			var sprite = this[SceneTestScene.GROSSINI_TAG];
 			var s = windowSize;
 			sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
@@ -59,11 +61,18 @@ namespace tests
 
         public override void OnEnter()
         {
-            CCLog.Log("SceneTestLayer2#onEnter");
             base.OnEnter();
+			CCLog.Log("SceneTestLayer2#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
             popMenuItem.Visible = Director.CanPopScene;
             theMenu.AlignItemsVertically(12f);
         }
+
+		public override void OnExit()
+		{
+			base.OnExit();
+			CCLog.Log("SceneTestLayer2#OnExit - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+		}
+
 
         public void onReplaceScene(object pSender)
         {
@@ -89,7 +98,5 @@ namespace tests
 
             Director.PopScene(1f, new CCTransitionSlideInB(1f, scene));
         }
-
-        //CREATE_NODE(SceneTestLayer2);
     }
 }

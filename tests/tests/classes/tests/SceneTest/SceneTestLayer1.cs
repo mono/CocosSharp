@@ -15,10 +15,10 @@ namespace tests
 
         public SceneTestLayer1()
         {
-            CCMenuItemFont item1 = new CCMenuItemFont("(1) Test pushScene", onPushScene);
-            CCMenuItemFont item2 = new CCMenuItemFont("(1) Test pushScene w/transition", onPushSceneTran);
+            CCMenuItemFont item1 = new CCMenuItemFont("(1) Test PushScene", onPushScene);
+            CCMenuItemFont item2 = new CCMenuItemFont("(1) Test PushScene w/Transition", onPushSceneTran);
             CCMenuItemFont item3 = new CCMenuItemFont("(1) Quit", onQuit);
-            popMenuItem = new CCMenuItemFont("(1) Test popScene w/transition", onPopSceneTran);
+            popMenuItem = new CCMenuItemFont("(1) Test PopScene w/Transition", onPopSceneTran);
 
             theMenu = new CCMenu(item1, item2, item3, popMenuItem);
             theMenu.AlignItemsVertically();
@@ -34,6 +34,8 @@ namespace tests
 		{
 			base.RunningOnNewWindow(windowSize);
 
+			CCLog.Log("SceneTestLayer1#RunningOnNewWindow - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+
 			var sprite = this[SceneTestScene.GROSSINI_TAG];
 			var s = windowSize;
 			sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
@@ -44,14 +46,21 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-			CCLog.Log("SceneTestLayer1#onEnter - Can pop Scene = {0}", Director.CanPopScene);
+			CCLog.Log("SceneTestLayer1#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
             popMenuItem.Visible = Director.CanPopScene;
             theMenu.AlignItemsVertically(12f);
         }
 
+		public override void OnExit()
+		{
+			base.OnExit();
+			CCLog.Log("SceneTestLayer1#OnExit - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+		}
+
+
         public override void OnEnterTransitionDidFinish()
         {
-            CCLog.Log("SceneTestLayer1#onEnterTransitionDidFinish");
+            CCLog.Log("SceneTestLayer1#OnEnterTransitionDidFinish");
             base.OnEnterTransitionDidFinish();
         }
 

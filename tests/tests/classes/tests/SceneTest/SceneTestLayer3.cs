@@ -30,6 +30,8 @@ namespace tests
 		{
 			base.RunningOnNewWindow(windowSize);
 
+			CCLog.Log("SceneTestLayer3#RunningOnNewWindow - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+
 			var sprite = this[SceneTestScene.GROSSINI_TAG];
 			var s = windowSize;
 			sprite.Position = new CCPoint(s.Width /2, 40);
@@ -38,6 +40,17 @@ namespace tests
 			Schedule(testDealloc);
 		}
 
+		public override void OnEnter()
+		{
+			base.OnEnter();
+			CCLog.Log("SceneTestLayer3#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+		}
+
+		public override void OnExit()
+		{
+			base.OnExit();
+			CCLog.Log("SceneTestLayer3#OnExit - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+		}
 
         public virtual void testDealloc(float dt)
         {
