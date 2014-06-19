@@ -8,10 +8,9 @@ namespace tests
 {
     public class SceneTestLayer2 : CCLayer
     {
-        string s_pPathGrossini = "Images/grossini";
         float m_timeCounter;
-        private CCMenuItemFont _PopMenuItem;
-        private CCMenu _TheMenu;
+		private CCMenuItemFont popMenuItem;
+		private CCMenu theMenu;
 
         public SceneTestLayer2()
         {
@@ -20,23 +19,31 @@ namespace tests
             CCMenuItemFont item1 = new CCMenuItemFont("(2) replaceScene", onReplaceScene);
             CCMenuItemFont item2 = new CCMenuItemFont("(2) replaceScene w/transition", onReplaceSceneTran);
             CCMenuItemFont item3 = new CCMenuItemFont("(2) Go Back", onGoBack);
-            _PopMenuItem = new CCMenuItemFont("(2) Test popScene w/transition", onPopSceneTran);
+            popMenuItem = new CCMenuItemFont("(2) Test popScene w/transition", onPopSceneTran);
 
-            _TheMenu = new CCMenu(item1, item2, item3, _PopMenuItem);
-            _TheMenu.AlignItemsVertically();
+			theMenu = new CCMenu(item1, item2, item3, popMenuItem);
+            theMenu.AlignItemsVertically();
 
-            AddChild(_TheMenu);
+            AddChild(theMenu);
 
             CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            CCSprite sprite = new CCSprite(s_pPathGrossini);
+			CCSprite sprite = new CCSprite(SceneTestScene.grossini) { Tag = SceneTestScene.GROSSINI_TAG };
             AddChild(sprite);
-            sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
-            CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction repeat = new CCRepeatForever (rotate);
-            sprite.RunAction(repeat);
-
-            Schedule(testDealloc);
         }
+
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var sprite = this[SceneTestScene.GROSSINI_TAG];
+			var s = windowSize;
+			sprite.Position = new CCPoint(s.Width - 40, s.Height / 2);
+			sprite.RepeatForever(SceneTestScene.rotate);
+
+			Schedule(testDealloc);
+
+		}
 
         public void testDealloc(float dt)
         {
@@ -47,15 +54,15 @@ namespace tests
 
         public void onGoBack(object pSender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.PopScene();
+            Director.PopScene();
         }
 
         public override void OnEnter()
         {
             CCLog.Log("SceneTestLayer2#onEnter");
             base.OnEnter();
-            _PopMenuItem.Visible = CCApplication.SharedApplication.MainWindowDirector.CanPopScene;
-            _TheMenu.AlignItemsVertically(12f);
+            popMenuItem.Visible = Director.CanPopScene;
+            theMenu.AlignItemsVertically(12f);
         }
 
         public void onReplaceScene(object pSender)
@@ -63,7 +70,7 @@ namespace tests
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();
             pScene.AddChild(pLayer, 0);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+           	Director.ReplaceScene(pScene);
         }
 
         public void onReplaceSceneTran(object pSender)
@@ -71,7 +78,7 @@ namespace tests
             CCScene pScene = new SceneTestScene();
             CCLayer pLayer = new SceneTestLayer3();
             pScene.AddChild(pLayer, 0);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(new CCTransitionFlipX(2, pScene, CCTransitionOrientation.UpOver));
+            Director.ReplaceScene(new CCTransitionFlipX(2, pScene, CCTransitionOrientation.UpOver));
         }
 
         public void onPopSceneTran(object pSender)
@@ -80,7 +87,7 @@ namespace tests
             CCLayer pLayer = new SceneTestLayer1();
             scene.AddChild(pLayer, 0);
 
-            CCApplication.SharedApplication.MainWindowDirector.PopScene(1f, new CCTransitionSlideInB(1f, scene));
+            Director.PopScene(1f, new CCTransitionSlideInB(1f, scene));
         }
 
         //CREATE_NODE(SceneTestLayer2);

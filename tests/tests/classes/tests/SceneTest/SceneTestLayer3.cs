@@ -8,7 +8,6 @@ namespace tests
 {
     public class SceneTestLayer3 : CCLayerColor
     {
-        string s_pPathGrossini = "Images/grossini";
 
         public SceneTestLayer3() : base(new CCColor4B(0, 0, 255, 255))
         {
@@ -22,17 +21,23 @@ namespace tests
 
             AddChild(menu);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            CCSprite sprite = new CCSprite(s_pPathGrossini);
+			CCSprite sprite = new CCSprite(SceneTestScene.grossini) { Tag = SceneTestScene.GROSSINI_TAG};
             AddChild(sprite);
             
-            sprite.Position = new CCPoint(s.Width /2, 40);
-            CCActionInterval rotate = new CCRotateBy (2, 360);
-            CCAction repeat = new CCRepeatForever (rotate);
-            sprite.RunAction(repeat);
-
-            Schedule(testDealloc);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var sprite = this[SceneTestScene.GROSSINI_TAG];
+			var s = windowSize;
+			sprite.Position = new CCPoint(s.Width /2, 40);
+			sprite.RepeatForever(SceneTestScene.rotate);
+
+			Schedule(testDealloc);
+		}
+
 
         public virtual void testDealloc(float dt)
         {
@@ -43,22 +48,22 @@ namespace tests
         {
             var newScene = new CCScene();
             newScene.AddChild(new SceneTestLayer3());
-            CCApplication.SharedApplication.MainWindowDirector.PushScene(new CCTransitionFade(0.5f, newScene, new CCColor3B(0, 255, 255)));
+            Director.PushScene(new CCTransitionFade(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }
 
         public void item1Clicked(object pSender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.PopScene();
+            Director.PopScene();
         }
 
         public void item2Clicked(object pSender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.PopToRootScene();
+            Director.PopToRootScene();
         }
 
         public void item3Clicked(object pSender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.PopToSceneStackLevel(2);
+            Director.PopToSceneStackLevel(2);
         }
     }
 }
