@@ -107,12 +107,9 @@ namespace CocosSharp
 
             if (Director != null)
             {
-                if (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f) 
-                {
-                    CCSize contentSize = windowSize;
-                    Position = (new CCPoint (contentSize.Width / 2, contentSize.Height / 2));
-                    ContentSize = contentSize;
-                }
+                CCSize contentSize = windowSize;
+				Position = contentSize.Center;
+                ContentSize = contentSize;
 
                 var touchListener = new CCEventListenerTouchOneByOne();
                 touchListener.IsSwallowTouches = true;
