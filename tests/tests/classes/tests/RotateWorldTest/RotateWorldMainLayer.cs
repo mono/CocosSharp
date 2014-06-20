@@ -8,13 +8,19 @@ namespace tests
 {
     public class RotateWorldMainLayer : CCLayer
     {
+
+		CCAction rot = new CCRotateBy (8, 720);
+
+		public RotateWorldMainLayer()
+		{}
+
         public override void OnEnter()
         {
             base.OnEnter();
 
             float x, y;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Director.WindowSizeInPoints;
             x = size.Width;
             y = size.Height;
 
@@ -25,14 +31,14 @@ namespace tests
 
             blue.Scale = (0.5f);
             blue.Position = (new CCPoint(-x / 4, -y / 4));
-            blue.AddChild(SpriteLayer.node());
+            blue.AddChild(new SpriteLayer());
 
             red.Scale = (0.5f);
             red.Position = (new CCPoint(x / 4, -y / 4));
 
             green.Scale = (0.5f);
             green.Position = (new CCPoint(-x / 4, y / 4));
-            green.AddChild(TestLayer.node());
+            green.AddChild(new TestLayer());
 
             white.Scale = (0.5f);
             white.Position = (new CCPoint(x / 4, y / 4));
@@ -42,18 +48,11 @@ namespace tests
             AddChild(green);
             AddChild(red);
 
-            CCAction rot = new CCRotateBy (8, 720);
-
             blue.RunAction(rot);
             red.RunAction(rot);
             green.RunAction(rot);
             white.RunAction(rot);
         }
 
-        public static new RotateWorldMainLayer node()
-        {
-            RotateWorldMainLayer node = new RotateWorldMainLayer();
-            return node;
-        }
     }
 }

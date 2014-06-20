@@ -8,11 +8,14 @@ namespace tests
 {
     public class TestLayer : CCLayer
     {
+		public TestLayer()
+		{}
+
         public override void OnEnter()
         {
             base.OnEnter();
             float x, y;
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Director.WindowSizeInPoints;
             x = size.Width;
             y = size.Height;
             //CCMutableArray *array = [UIFont familyNames];
@@ -23,10 +26,6 @@ namespace tests
             AddChild(label);
         }
 
-        public static new TestLayer node()
-        {
-            TestLayer node = new TestLayer();
-            return node;
-        }
+
     }
 }
