@@ -21,6 +21,7 @@ namespace tests
 		TEST_REMOVE_RETAIN_NODE,
 		TEST_REMOVE_AFTER_ADDING,
 		TEST_DIRECTOR,
+		TEST_GLOBAL_Z_TOUCH,
 		TEST_PAUSE_RESUME,
 		TEST_SMOOTH_FOLLOW,
 		TEST_STOP_PROPAGATION,
@@ -66,6 +67,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_DIRECTOR:
 				testLayer = new DirectorTest();
+				break;
+			case (int) EventDispatchTests.TEST_GLOBAL_Z_TOUCH:
+				testLayer = new GlobalZTouchTest();
 				break;
 			case (int) EventDispatchTests.TEST_PAUSE_RESUME:
 				testLayer = new PauseResumeTest();
@@ -993,6 +997,127 @@ namespace tests
 			get
 			{
 				return "after visit, after draw, after update, projection changed";
+			}
+		}
+
+	}
+
+	public class GlobalZTouchTest : EventDispatcherTest
+	{
+
+		const int TAG_SPRITE = 100;
+		const int SPRITE_COUNT = 8;
+		const int TAG_SPRITE_END = TAG_SPRITE + SPRITE_COUNT;
+
+		float updateAccumulator = 0;
+		CCSprite blueSprite;
+
+		public GlobalZTouchTest() : base()
+		{
+
+			for (int i = 0; i < SPRITE_COUNT; i++)
+			{
+				CCSprite sprite;
+
+				if(i==4)
+				{
+					sprite = new CCSprite("Images/CyanSquare.png") { Tag = TAG_SPRITE + i};
+					blueSprite = sprite;
+					blueSprite.GlobalZOrder = -1;
+
+				}
+				else
+				{
+					sprite = new CCSprite("Images/YellowSquare.png") { Tag = TAG_SPRITE + i};
+				}
+
+				AddChild(sprite);
+
+			}
+
+		}
+
+		protected override void RunningOnNewWindow (CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var listener = new CCEventListenerTouchOneByOne();
+			listener.IsSwallowTouches = true;
+
+			listener.OnTouchBegan = (touch, touchEvent) =>
+				{
+					var target = (CCSprite)touchEvent.CurrentTarget;
+
+					var locationInNode = target.ConvertToNodeSpace(touch.Location);
+					var s = target.ContentSize;
+					var rect = new CCRect(0, 0, s.Width, s.Height);
+		
+					if (rect.ContainsPoint(locationInNode))
+					{
+						CCLog.Log("sprite began... x = {0}, y = {1}", locationInNode.X, locationInNode.Y);
+						target.Opacity = 180;
+						return true;
+					}
+					return false;
+
+				};
+
+			listener.OnTouchMoved = (touch, touchEvent) =>
+			{
+				var target = (CCSprite)touchEvent.CurrentTarget;
+				target.Position = target.Position + touch.Delta;
+			};
+
+			listener.OnTouchEnded = (touch, touchEvent) => 
+				{
+					var target = (CCSprite)touchEvent.CurrentTarget;
+					CCLog.Log ("sprite OnTouchEnded...");
+					target.Opacity = 255;
+				};
+
+			var visibleSize = Director.VisibleSize;
+			var i = 0;
+			foreach (var child in Children)
+			{
+				if (child.Tag >= TAG_SPRITE && child.Tag <= TAG_SPRITE_END)
+				{
+					child.Position = new CCPoint(CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y);
+					i++;
+					EventDispatcher.AddEventListener(listener.Copy(), child);
+				}
+			}
+
+			Schedule();
+
+		}
+
+		public override void Update(float dt)
+		{
+			base.Update(dt);
+			updateAccumulator += dt;
+			if ( updateAccumulator > 2.0f)
+			{
+				var z = blueSprite.GlobalZOrder;
+				CCLog.Log("GlobalZOrder {0} - New GlobalZOrder {1}.", z, -z);
+				blueSprite.GlobalZOrder = -z;
+				updateAccumulator = 0;
+			}
+
+		}
+
+		public override string Title
+		{
+			get
+			{
+				return "Global Z Value, Try touch blue sprite";
+			}
+		}
+
+		public override string Subtitle
+		{
+			get
+			{
+				return "Blue Sprite should change go from foreground to background";
 			}
 		}
 
