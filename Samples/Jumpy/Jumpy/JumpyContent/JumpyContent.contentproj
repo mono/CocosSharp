@@ -76,9 +76,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\cocos2d.Content.Pipeline.Importers\cocos2d.Content.Pipeline.Importers.csproj">
-      <Project>{FBE4633D-00D1-4391-8184-63B91DA28D4B}</Project>
-      <Name>cocos2d.Content.Pipeline.Importers</Name>
+    <ProjectReference Include="..\..\..\..\cocos2d.Content.Pipeline.Importers\CocosSharp.Content.Pipeline.Importers.csproj">
+      <Project>{ad41b56e-e912-45af-a98f-c8371406a547}</Project>
+      <Name>CocosSharp.Content.Pipeline.Importers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

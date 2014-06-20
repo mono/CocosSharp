@@ -1,3 +1,4 @@
+using CocosSharp;
 using System;
 using System.Diagnostics;
 
@@ -45,20 +46,20 @@ namespace GameStarterKit
 		}
 	}
 #endif
-	#if MACOS
+#if MACOS
 	class Program : NSApplicationDelegate 
 	{
 		private Game1 game;
 		
 		public override void FinishedLaunching (MonoMac.Foundation.NSObject notification)
 		{
-			#if DEBUG
+#if DEBUG
 			/* Create a listener that outputs to the console screen, and 
   			* add it to the debug listeners. */
 			TextWriterTraceListener debugConsoleWriter = new 
 				TextWriterTraceListener(System.Console.Out);
 			Debug.Listeners.Add(debugConsoleWriter);
-			#endif
+#endif
 			// Fun begins..
 			game = new Game1();
 			game.Run();
@@ -81,7 +82,7 @@ namespace GameStarterKit
 			
 		}
 	}
-	#endif
+#endif
 #if WINDOWS || XBOX || PSM
     static class Program
     {
@@ -90,10 +91,9 @@ namespace GameStarterKit
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
-            {
-                game.Run();
-            }
+            CCApplication sharedApp = CCApplication.SharedApplication;
+            sharedApp.ApplicationDelegate = new AppDelegate();
+            CCApplication.SharedApplication.StartGame();
         }
     }
 #endif

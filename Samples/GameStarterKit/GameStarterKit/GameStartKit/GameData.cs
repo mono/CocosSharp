@@ -1,6 +1,6 @@
+using CocosSharp;
 using System;
 
-using Cocos2D;
 
 /*
  
@@ -11,116 +11,119 @@ using Cocos2D;
 
 namespace GameStarterKit
 {
-	public class GameData
-	{
+    public class GameData
+    {
 
-		static GameData sharedData;
+        static GameData sharedData;
 
-		bool soundFXMuted;
-		bool voiceFXMuted;
-		bool ambientFXMuted;
-		bool firstRunEver;
-		
-		CCUserDefault defaults;
-		
-		private GameData ()
-		{
-			defaults = CCUserDefault.SharedUserDefault;
+        bool soundFXMuted;
+        bool voiceFXMuted;
+        bool ambientFXMuted;
+        bool firstRunEver;
 
-			firstRunEver = defaults.GetBoolForKey("firstRunEverKey", true);
+        CCUserDefault defaults;
 
-			soundFXMuted = defaults.GetBoolForKey("soundFXMutedKey");   //will default to NO if there's no previous default value
-			voiceFXMuted = defaults.GetBoolForKey("voiceFXMutedKey");   //will default to NO if there's no previous default value
-			ambientFXMuted = defaults.GetBoolForKey("ambientFXMutedKey");   //will default to NO if there's no previous default value
+        private GameData()
+        {
+            defaults = CCUserDefault.SharedUserDefault;
 
+            firstRunEver = defaults.GetBoolForKey("firstRunEverKey", true);
 
-		}
-
-		/// <summary>
-		/// returns a shared instance of the GameData
-		/// </summary>
-		/// <value> </value>
-		public static GameData SharedData
-		{
-			get
-			{
-				if (sharedData == null)
-				{
-					sharedData = new GameData();
-				}
-				return sharedData;
-			}
-		}
-
-		public bool FirstRunEver
-		{
-			get { return firstRunEver; }
-			set 
-			{ 
-				firstRunEver = value; 
-				defaults.SetBoolForKey("firstRunEverKey", firstRunEver );
-				defaults.Flush();
-			}
-		}
+            soundFXMuted = defaults.GetBoolForKey("soundFXMutedKey");   //will default to NO if there's no previous default value
+            voiceFXMuted = defaults.GetBoolForKey("voiceFXMutedKey");   //will default to NO if there's no previous default value
+            ambientFXMuted = defaults.GetBoolForKey("ambientFXMutedKey");   //will default to NO if there's no previous default value
 
 
-#region sounds
-		
-		public bool AreSoundFXMuted
-		{
-			
-			get {
-				return soundFXMuted;
-			}
+        }
 
-			set 
-			{
-				soundFXMuted = value;
-				defaults.SetBoolForKey("soundFXMutedKey", soundFXMuted );
-				defaults.Flush();
-			}
+        /// <summary>
+        /// returns a shared instance of the GameData
+        /// </summary>
+        /// <value> </value>
+        public static GameData SharedData
+        {
+            get
+            {
+                if (sharedData == null)
+                {
+                    sharedData = new GameData();
+                }
+                return sharedData;
+            }
+        }
 
-		}
+        public bool FirstRunEver
+        {
+            get { return firstRunEver; }
+            set
+            {
+                firstRunEver = value;
+                defaults.SetBoolForKey("firstRunEverKey", firstRunEver);
+                defaults.Flush();
+            }
+        }
 
-		/////////////////////////
-		
-		public bool AreVoiceFXMuted 
-		{
 
-			get {	
-				return voiceFXMuted;
-			}
+        #region sounds
 
-			set 
-			{
-				voiceFXMuted = value;
-				defaults.SetBoolForKey("voiceFXMutedKey",voiceFXMuted );
-				defaults.Flush();
-			}
-			
-			
-			
-		}
+        public bool AreSoundFXMuted
+        {
 
-		/////////////////////////
-		
-		public bool AreAmbientFXMuted
-		{
+            get
+            {
+                return soundFXMuted;
+            }
 
-			get {	
-				return ambientFXMuted;
-			}
+            set
+            {
+                soundFXMuted = value;
+                defaults.SetBoolForKey("soundFXMutedKey", soundFXMuted);
+                defaults.Flush();
+            }
 
-			set 
-			{
-				ambientFXMuted = value;
-				defaults.SetBoolForKey("ambientFXMutedKey",ambientFXMuted );
-				defaults.Flush();
-			}
-		}
+        }
 
-#endregion
+        /////////////////////////
 
-	}
+        public bool AreVoiceFXMuted
+        {
+
+            get
+            {
+                return voiceFXMuted;
+            }
+
+            set
+            {
+                voiceFXMuted = value;
+                defaults.SetBoolForKey("voiceFXMutedKey", voiceFXMuted);
+                defaults.Flush();
+            }
+
+
+
+        }
+
+        /////////////////////////
+
+        public bool AreAmbientFXMuted
+        {
+
+            get
+            {
+                return ambientFXMuted;
+            }
+
+            set
+            {
+                ambientFXMuted = value;
+                defaults.SetBoolForKey("ambientFXMutedKey", ambientFXMuted);
+                defaults.Flush();
+            }
+        }
+
+        #endregion
+
+    }
 }
 

@@ -1,269 +1,272 @@
 using System;
 
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace GameStarterKit
 {
-	public class GameMenu : CCLayer
-	{
-		CCMenu VoiceFXMenu;
-		CCMenu SoundFXMenu;
-		CCMenu AmbientFXMenu;
-		
-		CCPoint VoiceFXMenuLocation;
-		CCPoint SoundFXMenuLocation;
-		CCPoint AmbientFXMenuLocation;
-		
-		string voiceButtonName;
-		string voiceButtonNameDim;
-		
-		string soundButtonName;
-		string soundButtonNameDim;
-		
-		string ambientButtonName;
-		string ambientButtonNameDim;
+    public class GameMenu : CCLayer
+    {
+        CCMenu VoiceFXMenu;
+        CCMenu SoundFXMenu;
+        CCMenu AmbientFXMenu;
 
-		public GameMenu ()
-		{
-			var screenSize = CCDirector.SharedDirector.WinSize;
-			
-			voiceButtonName = "VoiceFX";
-			voiceButtonNameDim = "VoiceFX";
-			
-			soundButtonName = "SoundFX";
-			soundButtonNameDim = "SoundFX";
-			
-			ambientButtonName = "AmbientFX";
-			ambientButtonNameDim = "AmbientFX";
-			
+        CCPoint VoiceFXMenuLocation;
+        CCPoint SoundFXMenuLocation;
+        CCPoint AmbientFXMenuLocation;
 
-			SoundFXMenuLocation = new CCPoint( 110, 55 );
-			VoiceFXMenuLocation = new CCPoint( 230, 55 );
-			AmbientFXMenuLocation = new CCPoint(355, 55 );
-			
+        string voiceButtonName;
+        string voiceButtonNameDim;
 
-			TouchEnabled = true;
-			
+        string soundButtonName;
+        string soundButtonNameDim;
 
-			IsSoundFXMenuItemActive = !GameData.SharedData.AreSoundFXMuted;
+        string ambientButtonName;
+        string ambientButtonNameDim;
 
-			IsVoiceFXMenuActive = !GameData.SharedData.AreVoiceFXMuted;
+        public GameMenu()
+        {
+            var screenSize = Director.WindowSizeInPixels;
 
-			IsAmbientFXMenuActive = !GameData.SharedData.AreAmbientFXMuted;
+            voiceButtonName = "VoiceFX";
+            voiceButtonNameDim = "VoiceFX";
 
-		}			
+            soundButtonName = "SoundFX";
+            soundButtonNameDim = "SoundFX";
 
-		void PlayNegativeSound (object sender)
-		 {
-			
-			//play a sound indicating this level isn't available
-
-		 }
-									 
-		public static CCScene Scene
-		{
-			get {
-				// 'scene' is an autorelease object.
-				CCScene scene = new CCScene();
-				
-				// 'layer' is an autorelease object.
-				GameMenu layer = new GameMenu();
-				
-				// add layer as a child to scene
-				scene.AddChild(layer);
-				
-				// return the scene
-				return scene;
-			}
-		}
+            ambientButtonName = "AmbientFX";
+            ambientButtonNameDim = "AmbientFX";
 
 
-		#region SECTION BUTTONS
-		
-
-		#region POP (remove) SCENE and Transition to new level
-
-		
-		void PopAndTransition()
-		{
-			
-			CCDirector.SharedDirector.PopScene();
-			
-			//when TheLevel scene reloads it will start with a new level
-			GameLevel.SharedLevel.TransitionAfterMenuPop();
-			
-
-		}
-		
-		#endregion
-
-		#region  POP (remove) SCENE and continue playing current level
-		public override void TouchesBegan (System.Collections.Generic.List<CCTouch> touches, CCEvent event_)
-		{
-			CCDirector.SharedDirector.PopScene();
-		}
-
-		#endregion
-
-		#region VOICE FX
-
-		bool IsVoiceFXMenuActive
-		{
-			set
-			{
-				RemoveChild(VoiceFXMenu, true);
-				CCMenuItem button1;
-				CCLabelTTF label;
-
-				if (!value)
-				{
-					label = new CCLabelTTF(voiceButtonNameDim, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Gray);
-					button1 = new CCMenuItemLabel(label, TurnVoiceFXOn);
-				}
-				else
-				{
-					label = new CCLabelTTF(voiceButtonName, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Yellow);
-					button1 = new CCMenuItemLabel(label, TurnVoiceFXOff);
-				}
-
-				VoiceFXMenu = new CCMenu(button1);
-				VoiceFXMenu.Position= VoiceFXMenuLocation;
-				
-				AddChild(VoiceFXMenu, 10);
-				
-			}
-
-		}
+            SoundFXMenuLocation = new CCPoint(110, 55);
+            VoiceFXMenuLocation = new CCPoint(230, 55);
+            AmbientFXMenuLocation = new CCPoint(355, 55);
 
 
-		void TurnVoiceFXOn(object sender)
-		{
-			
-			GameData.SharedData.AreVoiceFXMuted = false;
+            // TouchEnabled = true;
 
-			IsVoiceFXMenuActive = true;
 
-		}
+            IsSoundFXMenuItemActive = !GameData.SharedData.AreSoundFXMuted;
 
-		void TurnVoiceFXOff(object sender)
-		{
-			
-			GameData.SharedData.AreVoiceFXMuted = true;
+            IsVoiceFXMenuActive = !GameData.SharedData.AreVoiceFXMuted;
 
-			IsVoiceFXMenuActive = false;
+            IsAmbientFXMenuActive = !GameData.SharedData.AreAmbientFXMuted;
 
-		}
+        }
 
-		#endregion
+        void PlayNegativeSound(object sender)
+        {
 
-		#region Sound FX
+            //play a sound indicating this level isn't available
 
-		bool IsSoundFXMenuItemActive
-		{
-			set 
-			{
-				RemoveChild(SoundFXMenu, true);
+        }
 
-				CCMenuItemLabel button1;
+        public static CCScene Scene
+        {
+            get
+            {
+                // 'scene' is an autorelease object.
+                CCScene scene = new CCScene();
 
-				CCLabelTTF label;
+                // 'layer' is an autorelease object.
+                GameMenu layer = new GameMenu();
 
-				if (!value)
-				{
-					label = new CCLabelTTF(soundButtonNameDim, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Gray);
-					button1 = new CCMenuItemLabel(label, TurnSoundFXOn);
-				}
-				else
-				{
-					label = new CCLabelTTF(soundButtonName, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Yellow);
-					button1 = new CCMenuItemLabel(label, TurnSoundFXOff);
-				}
+                // add layer as a child to scene
+                scene.AddChild(layer);
 
-				SoundFXMenu = new CCMenu(button1);
-				SoundFXMenu.Position= SoundFXMenuLocation;
-				
-				AddChild(SoundFXMenu, 10);
+                // return the scene
+                return scene;
+            }
+        }
 
-			}
-		}
 
-		void TurnSoundFXOn(object sender)
-		{
-			
-			GameData.SharedData.AreSoundFXMuted = false;
+        #region SECTION BUTTONS
 
-			IsSoundFXMenuItemActive = true;
 
-		}
+        #region POP (remove) SCENE and Transition to new level
 
-		void TurnSoundFXOff (object sender)
-		{
-			
-			GameData.SharedData.AreSoundFXMuted = true;
 
-			IsSoundFXMenuItemActive = false;
-		}
+        void PopAndTransition()
+        {
 
-		#endregion
+            Director.PopScene();
 
-		#region Ambient FX
+            //when TheLevel scene reloads it will start with a new level
+            GameLevel.SharedLevel.TransitionAfterMenuPop();
 
-		bool IsAmbientFXMenuActive
-		{
-			set
-			{
-				RemoveChild(AmbientFXMenu, true);
 
-				CCMenuItemLabel button1;
+        }
 
-				CCLabelTTF label;
+        #endregion
 
-				if (!value)
-				{
-					label = new CCLabelTTF(ambientButtonName, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Gray);
-					button1 = new CCMenuItemLabel(label, TurnAmbientFXOn);
-				}
-				else
-				{
-					label = new CCLabelTTF(ambientButtonNameDim, "MarkerFelt", 18);
-					label.Color = new CCColor3B (Color.Yellow);
-					button1 = new CCMenuItemLabel(label, TurnAmbientFXOff);
-				}
+        #region  POP (remove) SCENE and continue playing current level
+        //public override void TouchesBegan(System.Collections.Generic.List<CCTouch> touches, CCEvent event_)
+        //{
+        //    CCDirector.SharedDirector.PopScene();
+        //}
 
-				AmbientFXMenu = new CCMenu(button1);
-				AmbientFXMenu.Position= AmbientFXMenuLocation;
+        #endregion
 
-				AddChild(AmbientFXMenu, 10  );
+        #region VOICE FX
 
-			}
+        bool IsVoiceFXMenuActive
+        {
+            set
+            {
+                RemoveChild(VoiceFXMenu, true);
+                CCMenuItem button1;
+                CCLabel label;
 
-		}
+                if (!value)
+                {
+                    label = new CCLabel(voiceButtonNameDim, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Gray;
+                    button1 = new CCMenuItemLabel(label, TurnVoiceFXOn);
+                }
+                else
+                {
+                    label = new CCLabel(voiceButtonName, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Yellow;
+                    button1 = new CCMenuItemLabel(label, TurnVoiceFXOff);
+                }
 
-		void TurnAmbientFXOn (object sender) {
-			
-			GameData.SharedData.AreAmbientFXMuted = true;
+                VoiceFXMenu = new CCMenu(button1);
+                VoiceFXMenu.Position = VoiceFXMenuLocation;
 
-			IsAmbientFXMenuActive = true;
-			
-			
-		}
-		void TurnAmbientFXOff (object sender) {
-			
-			GameData.SharedData.AreAmbientFXMuted = false;
+                AddChild(VoiceFXMenu, 10);
 
-			IsAmbientFXMenuActive = false;
-		}
+            }
 
-		#endregion
+        }
 
-		#endregion
 
-	}
+        void TurnVoiceFXOn(object sender)
+        {
+
+            GameData.SharedData.AreVoiceFXMuted = false;
+
+            IsVoiceFXMenuActive = true;
+
+        }
+
+        void TurnVoiceFXOff(object sender)
+        {
+
+            GameData.SharedData.AreVoiceFXMuted = true;
+
+            IsVoiceFXMenuActive = false;
+
+        }
+
+        #endregion
+
+        #region Sound FX
+
+        bool IsSoundFXMenuItemActive
+        {
+            set
+            {
+                RemoveChild(SoundFXMenu, true);
+
+                CCMenuItemLabel button1;
+
+                CCLabel label;
+
+                if (!value)
+                {
+                    label = new CCLabel(soundButtonNameDim, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Gray;
+                    button1 = new CCMenuItemLabel(label, TurnSoundFXOn);
+                }
+                else
+                {
+                    label = new CCLabel(soundButtonName, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Yellow;
+                    button1 = new CCMenuItemLabel(label, TurnSoundFXOff);
+                }
+
+                SoundFXMenu = new CCMenu(button1);
+                SoundFXMenu.Position = SoundFXMenuLocation;
+
+                AddChild(SoundFXMenu, 10);
+
+            }
+        }
+
+        void TurnSoundFXOn(object sender)
+        {
+
+            GameData.SharedData.AreSoundFXMuted = false;
+
+            IsSoundFXMenuItemActive = true;
+
+        }
+
+        void TurnSoundFXOff(object sender)
+        {
+
+            GameData.SharedData.AreSoundFXMuted = true;
+
+            IsSoundFXMenuItemActive = false;
+        }
+
+        #endregion
+
+        #region Ambient FX
+
+        bool IsAmbientFXMenuActive
+        {
+            set
+            {
+                RemoveChild(AmbientFXMenu, true);
+
+                CCMenuItemLabel button1;
+
+                CCLabel label;
+
+                if (!value)
+                {
+                    label = new CCLabel(ambientButtonName, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Gray;
+                    button1 = new CCMenuItemLabel(label, TurnAmbientFXOn);
+                }
+                else
+                {
+                    label = new CCLabel(ambientButtonNameDim, "MarkerFelt", 18);
+                    label.Color = CCColor3B.Yellow;
+                    button1 = new CCMenuItemLabel(label, TurnAmbientFXOff);
+                }
+
+                AmbientFXMenu = new CCMenu(button1);
+                AmbientFXMenu.Position = AmbientFXMenuLocation;
+
+                AddChild(AmbientFXMenu, 10);
+
+            }
+
+        }
+
+        void TurnAmbientFXOn(object sender)
+        {
+
+            GameData.SharedData.AreAmbientFXMuted = true;
+
+            IsAmbientFXMenuActive = true;
+
+
+        }
+        void TurnAmbientFXOff(object sender)
+        {
+
+            GameData.SharedData.AreAmbientFXMuted = false;
+
+            IsAmbientFXMenuActive = false;
+        }
+
+        #endregion
+
+        #endregion
+
+    }
 }
 

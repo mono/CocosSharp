@@ -22,132 +22,142 @@
 
 using System;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace Jumpy
 {
-	public class MainLayer : CCLayer
-	{
-		protected int currentCloudTag;
-		protected int numClouds = 12;
+    public class MainLayer : CCLayer
+    {
+        protected int currentCloudTag;
+        protected int numClouds = 12;
 
-		protected enum Tags : int {
-			SpriteManager = 0,
-			Bird,
-			ScoreLabel,
-			Particles,
-			CloudsStart = 100,
-			PlatformsStart = 200,
-			BomusStart = 300,
-		}
+        protected enum Tags : int
+        {
+            SpriteManager = 0,
+            Bird,
+            ScoreLabel,
+            Particles,
+            CloudsStart = 100,
+            PlatformsStart = 200,
+            BomusStart = 300,
+        }
 
-		public MainLayer ()
-		{
-			var batchnode = new CCSpriteBatchNode("Images/sprites",10);
-			AddChild (batchnode, -1, (int)Tags.SpriteManager);
+        public MainLayer()
+        {
+            var batchnode = new CCSpriteBatchNode("Images/sprites", 10);
+            AddChild(batchnode, -1, (int)Tags.SpriteManager);
 
-			var background = new CCSprite(batchnode.Texture, new CCRect(0,0,320,480));
-            background.Position = new CCPoint (160,240);
-			batchnode.AddChild (background);
-		}
+            var background = new CCSprite(batchnode.Texture, new CCRect(0, 0, 320, 480));
+            background.Position = new CCPoint(160, 240);
+            batchnode.AddChild(background);
+        }
 
-		public override void OnEnter ()
-		{
-			base.OnEnter ();
-		
-			InitClouds ();
+        public override void OnEnter()
+        {
+            base.OnEnter();
+
+            InitClouds();
 
 
-		}
+        }
 
-		void InitClouds () {
+        void InitClouds()
+        {
 
-			currentCloudTag = (int)Tags.CloudsStart;
-			while (currentCloudTag < (int)Tags.CloudsStart + numClouds)
-			{
-				InitCloud ();
-				currentCloudTag++;
-			}
+            currentCloudTag = (int)Tags.CloudsStart;
+            while (currentCloudTag < (int)Tags.CloudsStart + numClouds)
+            {
+                InitCloud();
+                currentCloudTag++;
+            }
 
-			ResetClouds ();
-		}
+            ResetClouds();
+        }
 
         private Random ran = new Random();
 
-		 void InitCloud () {
-			
-			CCRect rect;
-			switch(ran.Next()%3) {
-			case 0:
-                    rect = new CCRect(336, 16, 256, 108); 
-				break;
-			case 1:
-                rect = new CCRect(336, 128, 257, 110); 
-				break;
-			default:
-                rect = new CCRect(336, 240, 252, 119); 
-				break;
-			}	
+        void InitCloud()
+        {
 
-			var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-			var cloud = new CCSprite(batchNode.Texture, rect);
-			batchNode.AddChild(cloud,3,currentCloudTag);
+            CCRect rect;
+            switch (ran.Next() % 3)
+            {
+                case 0:
+                    rect = new CCRect(336, 16, 256, 108);
+                    break;
+                case 1:
+                    rect = new CCRect(336, 128, 257, 110);
+                    break;
+                default:
+                    rect = new CCRect(336, 240, 252, 119);
+                    break;
+            }
 
-			cloud.Opacity = 128;
-		}
+            var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
+            var cloud = new CCSprite(batchNode.Texture, rect);
+            batchNode.AddChild(cloud, 3, currentCloudTag);
 
-		protected void ResetClouds () {
-			//	NSLog(@"resetClouds");
-			
-			currentCloudTag = (int)Tags.CloudsStart;
-			
-			while(currentCloudTag < (int)Tags.CloudsStart + numClouds) {
-				ResetCloud ();
-				
-				var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-				var cloud = batchNode.GetChildByTag(currentCloudTag) as CCSprite;
-				cloud.Position = new CCPoint(cloud.Position.X, cloud.Position.Y-480);
+            cloud.Opacity = 128;
+        }
 
-				currentCloudTag++;
-			}
-		}
-		
-		protected void ResetCloud () {
-			
-			var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-			var cloud = batchNode.GetChildByTag(currentCloudTag) as CCSprite;
+        protected void ResetClouds()
+        {
+            //	NSLog(@"resetClouds");
 
-			float distance = ran.Next()%20 + 5;
-			
-			float scale = 5.0f / distance;
-			cloud.Scale = scale;
-            if (ran.Next() % 2 == 1) 
+            currentCloudTag = (int)Tags.CloudsStart;
+
+            while (currentCloudTag < (int)Tags.CloudsStart + numClouds)
+            {
+                ResetCloud();
+
+                var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
+                var cloud = batchNode.GetChildByTag(currentCloudTag) as CCSprite;
+                cloud.Position = new CCPoint(cloud.Position.X, cloud.Position.Y - 480);
+
+                currentCloudTag++;
+            }
+        }
+
+        protected void ResetCloud()
+        {
+
+            var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
+            var cloud = batchNode.GetChildByTag(currentCloudTag) as CCSprite;
+
+            float distance = ran.Next() % 20 + 5;
+
+            float scale = 5.0f / distance;
+            cloud.Scale = scale;
+            if (ran.Next() % 2 == 1)
                 cloud.ScaleX = -cloud.ScaleX;
-			
-			var size = cloud.ContentSize;
-			float scaled_width = size.Width * scale;
+
+            var size = cloud.ContentSize;
+            float scaled_width = size.Width * scale;
             float x = ran.Next() % (320 + (int)scaled_width) - scaled_width / 2;
             float y = ran.Next() % (480 - (int)scaled_width) + scaled_width / 2 + 480;
-			
-			cloud.Position = new CCPoint(x,y);
-		}
 
-		protected virtual void Step(float dt) {
-			//	NSLog(@"Main::step");
+            cloud.Position = new CCPoint(x, y);
+        }
 
-			for(var t = (int)Tags.CloudsStart; t < (int)Tags.CloudsStart + numClouds; t++) {
-				var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
-				var cloud = batchNode.GetChildByTag(t) as CCSprite;
-				
-				var pos = cloud.Position;
-				var size = cloud.ContentSize;
-				pos.X += 0.1f * cloud.ScaleY;
-				if(pos.X > 320 + size.Width/2) {
-					pos.X = -size.Width/2;
-				}
-				cloud.Position = pos;
-			}
-		}
-	}
+        protected virtual void Step(float dt)
+        {
+            //	NSLog(@"Main::step");
+
+            for (var t = (int)Tags.CloudsStart; t < (int)Tags.CloudsStart + numClouds; t++)
+            {
+                var batchNode = GetChildByTag((int)Tags.SpriteManager) as CCSpriteBatchNode;
+                var cloud = batchNode.GetChildByTag(t) as CCSprite;
+
+                var pos = cloud.Position;
+                var size = cloud.ContentSize;
+                pos.X += 0.1f * cloud.ScaleY;
+                if (pos.X > 320 + size.Width / 2)
+                {
+                    pos.X = -size.Width / 2;
+                }
+                cloud.Position = pos;
+            }
+        }
+    }
 }
 

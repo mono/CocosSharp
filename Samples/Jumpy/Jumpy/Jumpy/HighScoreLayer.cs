@@ -22,7 +22,7 @@
 
 using System;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace Jumpy
 {
@@ -58,14 +58,14 @@ namespace Jumpy
 
 			var button1 = new CCMenuItemImage("Images/playAgainButton", "Images/playAgainButton",
                 new Action<object>(delegate(object o) {
-				CCDirector.SharedDirector.ReplaceScene(new CCTransitionFade(.5f, GameLayer.Scene, new CCColor3B(255,255,255)));
+			 	 Director.ReplaceScene(new CCTransitionFade(.5f, GameLayer.Scene, new CCColor3B(255,255,255)));
                 }));
 			var button2 = new CCMenuItemImage("Images/changePlayerButton", "Images/changePlayerButton", new Action<object>(delegate (object sender) {
                 // do nothing
 			}));
 			var menu = new CCMenu(button1,button2);
             menu.Position=new CCPoint(160,58);
-			menu.AlignItemsVerticallyWithPadding(9);
+			menu.AlignItemsVertically(9);
 
 			AddChild (menu);
 			

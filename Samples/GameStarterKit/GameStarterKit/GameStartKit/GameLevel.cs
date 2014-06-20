@@ -1,59 +1,52 @@
 using System;
 using Microsoft.Xna.Framework;
-using Cocos2D;
+using CocosSharp;
 
 namespace GameStarterKit
 {
-	public class GameLevel : CCLayer
-	{
+    public class GameLevel : CCLayer
+    {
 
-		static GameLevel layerInstance;
+        static GameLevel layerInstance;
 
-		bool openWithMenuInsteadOfGame;
+        bool openWithMenuInsteadOfGame;
 
-		// Menu
-		CCPoint menuStartPosition;
-		//menu button
-		CCMenu MenuButton;
+        // Menu
+        CCPoint menuStartPosition;
+        //menu button
+        CCMenu MenuButton;
 
-		public GameLevel ()
-		{
+        public GameLevel()
+        {
             layerInstance = this;
 
-			// enable touches
+            // enable touches
 #if XBOX || OUYA
             TouchEnabled = false;
             GamePadEnabled = true;
 #else
-			TouchEnabled = true;
+            //TouchEnabled = true;
 #endif
 
-			// enable accelerometer
-			AccelerometerEnabled = false;
+            // enable accelerometer
+            //AccelerometerEnabled = false;
 
-			// ask director for the window size
-			var screenSize = CCDirector.SharedDirector.WinSize;
+            // ask director for the window size
+            var screenSize = Director.WindowSizeInPixels;
 
-			// create and initialize a Label
-			var label = new CCLabelTTF("Game Layer", "MarkerFelt", 22);
+          
 
-			// position the label on the center of the screen
-			label.Position = CCDirector.SharedDirector.WinSize.Center;
+            menuStartPosition = new CCPoint(70, screenSize.Height - 24);
 
-			// add the label as a child to this Layer
-			AddChild(label);
+            var gameMenuLabel = new CCLabel("Game Menu", "MarkerFelt", 18);
+            var button1 = new CCMenuItemLabel(gameMenuLabel, ShowMenu);
 
-			menuStartPosition = new CCPoint( 70 , screenSize.Height-24);
+            MenuButton = new CCMenu(button1);
+            MenuButton.Position = menuStartPosition;
 
-			var gameMenuLabel = new CCLabelTTF("Game Menu", "MarkerFelt", 18);
-			var button1 = new CCMenuItemLabel (gameMenuLabel, ShowMenu);
+            AddChild(MenuButton, 10);
 
-			MenuButton = new CCMenu (button1);
-			MenuButton.Position = menuStartPosition;
-
-			AddChild (MenuButton, 10);
-
-			openWithMenuInsteadOfGame = false;
+            openWithMenuInsteadOfGame = false;
 
             if (GameData.SharedData.FirstRunEver && openWithMenuInsteadOfGame)
             {
@@ -65,113 +58,117 @@ namespace GameStarterKit
         }
 
         public static GameLevel SharedLevel
-		{
-			get {
-				return layerInstance;
-			}
-		}
+        {
+            get
+            {
+                return layerInstance;
+            }
+        }
 
         void ShowMenuFromSelector(float dt)
         {
             ShowMenu(null);
         }
 
-		void ShowMenu (object sender)
-		{
-			CCLog.Log ("Show Menu");
-			CCDirector.SharedDirector.PushScene(GameMenu.Scene);
-		}
+        void ShowMenu(object sender)
+        {
+            CCLog.Log("Show Menu");
+
+            Director.PushScene(GameMenu.Scene);
+        }
 
 
-		public static CCScene Scene
-		{
+        public static CCScene Scene
+        {
 
-			get {
-				var scene = new CCScene ();
-				
-				var layer = new GameLevel ();
-				
-				// add layer as a child to scene
-				scene.AddChild (layer);
-				
-				// return the scene
-				return scene;			
-			}
-		}
+            get
+            {
+                var scene = new CCScene();
+
+                var layer = new GameLevel();
+
+                // add layer as a child to scene
+                scene.AddChild(layer);
+
+                // return the scene
+                return scene;
+            }
+        }
 
 
-		public void TransitionAfterMenuPop() {
-			
-			//transition upon coming back from the menu
-			UnscheduleAllSelectors();
-			
-			ScheduleOnce(TransitionOut, 0.1f); 
-			
-		}
+        public void TransitionAfterMenuPop()
+        {
 
-		void TransitionOut(float delta)
-		{
-			
-			// Too select a random transition comment the two lines below and uncomment the section below.
-			var transition = Transition2;
-			CCDirector.SharedDirector.ReplaceScene(transition);
+            //transition upon coming back from the menu
+            //UnscheduleAllSelectors();
+            UnscheduleAll();
+            ScheduleOnce(TransitionOut, 0.1f);
 
-			  
-		    // other transition options...
-		    
-//		    int diceRoll = Cocos2D.Random.Next(0,4); //0 to 4
-//			CCTransitionScene transition;
-//
-//		    switch (diceRoll) {
-//		        case 0:
-//					transition = Transition0;
-//		            break;
-//		        case 1:
-//					transition = Transition1;
-//		            break;
-//		        case 2:
-//					transition = Transition2;
-//		            break;
-//		        case 3:
-//					transition = Transition3;
-//		            break;
-//		        case 4:
-//					transition = Transition4;
-//		            break;
-//		            
-//		        default:
-//					transition = Transition0;
-//		            break;
-//		    }
-//     
-//			CCDirector.SharedDirector.ReplaceScene(transition);
-		}
+        }
 
-		CCTransitionScene Transition0
-		{
-			get { return new CCTransitionFadeDown(1, GameLevel.Scene); }
-		}
+        void TransitionOut(float delta)
+        {
 
-		CCTransitionScene Transition1
-		{
-			get { return new CCTransitionFlipX(1, GameLevel.Scene, CCTransitionOrientation.RightOver); }
-		}
+            // Too select a random transition comment the two lines below and uncomment the section below.
+            var transition = Transition2;
+            Director.ReplaceScene(transition);
 
-		CCTransitionScene Transition2 
-		{
-			get	{ return new CCTransitionFade (1 , GameLevel.Scene); }
-		}
 
-		CCTransitionScene Transition3 
-		{
-			get	{ return new CCTransitionFlipAngular (1 , GameLevel.Scene, CCTransitionOrientation.DownOver); }
-		}
+            // other transition options...
 
-		CCTransitionScene Transition4 
-		{
-			get { return new CCTransitionFadeTR (1 , GameLevel.Scene); }
-		}
+            //		    int diceRoll = Cocos2D.Random.Next(0,4); //0 to 4
+            //			CCTransitionScene transition;
+            //
+            //		    switch (diceRoll) {
+            //		        case 0:
+            //					transition = Transition0;
+            //		            break;
+            //		        case 1:
+            //					transition = Transition1;
+            //		            break;
+            //		        case 2:
+            //					transition = Transition2;
+            //		            break;
+            //		        case 3:
+            //					transition = Transition3;
+            //		            break;
+            //		        case 4:
+            //					transition = Transition4;
+            //		            break;
+            //		            
+            //		        default:
+            //					transition = Transition0;
+            //		            break;
+            //		    }
+            //     
+            //			CCDirector.SharedDirector.ReplaceScene(transition);
+        }
 
-	}
+        CCTransitionScene Transition0
+        {
+            get { return new CCTransitionFadeDown(1, GameLevel.Scene); }
+        }
+
+        CCTransitionScene Transition1
+        {
+            get { return new CCTransitionFlipX(1, GameLevel.Scene, CCTransitionOrientation.RightOver); }
+        }
+
+        CCTransitionScene Transition2
+        {
+            get { return new CCTransitionFade(1, GameLevel.Scene); }
+        }
+
+        CCTransitionScene Transition3
+        {
+            get { return new CCTransitionFlipAngular(1, GameLevel.Scene, CCTransitionOrientation.DownOver); }
+        }
+
+        CCTransitionScene Transition4
+        {
+            get { return new CCTransitionFadeTR(1, GameLevel.Scene); }
+        }
+
+    }
 }
 

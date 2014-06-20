@@ -38,9 +38,6 @@
     <Compile Include="..\Common\src\AppDelegate.cs">
       <Link>AppDelegate.cs</Link>
     </Compile>
-    <Compile Include="..\Common\src\Game1.cs">
-      <Link>Game1.cs</Link>
-    </Compile>
     <Compile Include="..\Common\src\GoblinLayer.cs">
       <Link>GoblinLayer.cs</Link>
     </Compile>
