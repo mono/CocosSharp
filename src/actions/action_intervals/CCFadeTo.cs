@@ -33,7 +33,7 @@
 		{	           
 			ToOpacity = action.ToOpacity;
 
-			var pRGBAProtocol = target as ICCColor;
+			var pRGBAProtocol = target as ICCColorable;
 			if (pRGBAProtocol != null)
 			{
 				FromOpacity = pRGBAProtocol.Opacity;
@@ -42,7 +42,7 @@
 
 		protected internal override void Update (float time)
 		{
-			var pRGBAProtocol = Target as ICCColor;
+			var pRGBAProtocol = Target as ICCColorable;
 			if (pRGBAProtocol != null)
 			{
 				pRGBAProtocol.Opacity = (byte)(FromOpacity + (ToOpacity - FromOpacity) * time);

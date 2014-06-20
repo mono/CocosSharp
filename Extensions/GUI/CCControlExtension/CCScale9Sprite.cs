@@ -143,7 +143,7 @@ namespace CocosSharp
 				{
 					foreach(CCNode child in Children)
 					{
-						var node = child as ICCColor;
+						var node = child as ICCColorable;
 						if (node != null)
 						{
 							node.Color = value;
@@ -163,7 +163,7 @@ namespace CocosSharp
 				{
 					foreach(CCNode child in Children)
 					{
-						var node = child as ICCColor;
+						var node = child as ICCColorable;
 						if (node != null)
 						{
 							node.Opacity = value;
@@ -183,7 +183,7 @@ namespace CocosSharp
 				{
 					foreach(CCNode child in Children)
 					{
-						var node = child as ICCColor;
+						var node = child as ICCColorable;
 						if (node != null)
 						{
 							node.IsColorModifiedByOpacity = value;
@@ -322,7 +322,7 @@ namespace CocosSharp
 			{
 				foreach(CCNode child in Children)
 				{
-					var node = child as ICCColor;
+					var node = child as ICCColorable;
 					if (node != null)
 					{
 						node.UpdateDisplayedColor(parentColor);

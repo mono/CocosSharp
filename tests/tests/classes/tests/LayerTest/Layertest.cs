@@ -87,7 +87,7 @@ namespace tests
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
         {
-            var rgba = node as ICCColor;
+            var rgba = node as ICCColorable;
             
             if (rgba != null)
             {

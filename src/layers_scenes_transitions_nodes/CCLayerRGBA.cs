@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCLayerRGBA : CCLayer, ICCColor
+    public class CCLayerRGBA : CCLayer, ICCColorable
     {
         #region Properties
 
@@ -32,7 +32,7 @@ namespace CocosSharp
                 if (IsColorCascaded)
                 {
                     var parentColor = CCColor3B.White;
-                    var parent = Parent as ICCColor;
+                    var parent = Parent as ICCColorable;
                     if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
@@ -53,7 +53,7 @@ namespace CocosSharp
                 if (IsOpacityCascaded)
                 {
                     byte parentOpacity = 255;
-                    var pParent = Parent as ICCColor;
+                    var pParent = Parent as ICCColorable;
                     if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
@@ -89,7 +89,7 @@ namespace CocosSharp
                 {
                     foreach(CCNode child in Children.Elements)
                     {
-                        ICCColor colorChild = child as ICCColor;
+                        ICCColorable colorChild = child as ICCColorable;
                         if (colorChild != null)
                         {
                             colorChild.UpdateDisplayedColor(DisplayedColor);
@@ -107,7 +107,7 @@ namespace CocosSharp
             {
                 foreach(CCNode child in Children.Elements)
                 {
-                    ICCColor colorChild = child as ICCColor;
+                    ICCColorable colorChild = child as ICCColorable;
                     if (colorChild != null)
                     {
                         colorChild.UpdateDisplayedOpacity(DisplayedOpacity);

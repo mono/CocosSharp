@@ -13,7 +13,7 @@ namespace CocosSharp
      @since v2.1
      */
 
-    public class CCNodeRGBA : CCNode, ICCColor
+    public class CCNodeRGBA : CCNode, ICCColorable
     {
         // ivars
         byte displayedOpacity;
@@ -47,7 +47,7 @@ namespace CocosSharp
                 if (IsColorCascaded)
                 {
                     var parentColor = CCColor3B.White;
-                    var parent = Parent as ICCColor;
+                    var parent = Parent as ICCColorable;
                     if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
@@ -68,7 +68,7 @@ namespace CocosSharp
                 if (IsOpacityCascaded)
                 {
                     byte parentOpacity = 255;
-                    var pParent = Parent as ICCColor;
+                    var pParent = Parent as ICCColorable;
                     if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
@@ -112,7 +112,7 @@ namespace CocosSharp
                 {
                     foreach(CCNode node in Children.Elements)
                     {
-                        var item = node as ICCColor;
+                        var item = node as ICCColorable;
                         if (item != null)
                         {
                             item.UpdateDisplayedColor(DisplayedColor);
@@ -130,7 +130,7 @@ namespace CocosSharp
             {
                 foreach(CCNode node in Children.Elements)
                 {
-                    var item = node as ICCColor;
+                    var item = node as ICCColorable;
                     if (item != null)
                     {
                         item.UpdateDisplayedOpacity(DisplayedOpacity);

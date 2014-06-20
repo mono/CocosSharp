@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-    public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer, ICCColor
+    public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer, ICCColorable
     {
         public const int AutomaticWidth = -1;
 
@@ -179,7 +179,7 @@ namespace CocosSharp
                 if (isColorCascaded)
                 {
                     var parentColor = CCColor3B.White;
-                    var parent = Parent as ICCColor;
+                    var parent = Parent as ICCColorable;
                     if (parent != null && parent.IsColorCascaded)
                     {
                         parentColor = parent.DisplayedColor;
@@ -205,7 +205,7 @@ namespace CocosSharp
                 if (isOpacityCascaded)
                 {
                     byte parentOpacity = 255;
-                    var pParent = Parent as ICCColor;
+                    var pParent = Parent as ICCColorable;
                     if (pParent != null && pParent.IsOpacityCascaded)
                     {
                         parentOpacity = pParent.DisplayedOpacity;
@@ -230,7 +230,7 @@ namespace CocosSharp
                 {
                     for (int i = 0, count = Children.Count; i < count; i++)
                     {
-                        var item = Children.Elements[i] as ICCColor;
+                        var item = Children.Elements[i] as ICCColorable;
                         if (item != null)
                         {
                             item.IsColorModifiedByOpacity = value;

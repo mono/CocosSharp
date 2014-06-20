@@ -99,7 +99,7 @@ namespace CocosSharp
                 {
                     foreach (CCNode child in Children.Elements) 
                     {
-                        var item = child as ICCColor;
+                        var item = child as ICCColorable;
                         if (item != null) {
                             item.IsColorModifiedByOpacity = value;
                         }

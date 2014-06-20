@@ -26,7 +26,7 @@ using System;
 
 namespace CocosSharp
 {
-    public interface ICCColor
+    public interface ICCColorable
     {
         /// <summary>
         /// Gets or sets the color
