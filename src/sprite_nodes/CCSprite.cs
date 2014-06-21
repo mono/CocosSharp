@@ -320,7 +320,7 @@ namespace CocosSharp
                     transformToBatch = CCAffineTransform.Identity;
                     textureAtlas = batchNode.TextureAtlas; // weak ref
 
-                    if(Director != null) 
+                    if(Director != null && batchNode.Director != Director) 
                     {
                         batchNode.Director = Director;
                     }
@@ -352,7 +352,7 @@ namespace CocosSharp
             {
                 base.Director = value;
 
-                if (value != null && BatchNode != null)
+                if (value != null && BatchNode != null && BatchNode.Director != value)
                 {
                     BatchNode.Director = value;
                 }
