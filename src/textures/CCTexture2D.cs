@@ -369,6 +369,7 @@ namespace CocosSharp
             {
                 // usually xnb texture prepared as PremultipliedAlpha
                 InitWithTexture(texture, DefaultAlphaPixelFormat, true, true);
+				return;
             }
 
             // try load raw image
@@ -380,6 +381,7 @@ namespace CocosSharp
                 {
                     // not premultiplied alpha
                     InitWithTexture(texture, DefaultAlphaPixelFormat, false, true);
+					return;
                 }
             }
 
