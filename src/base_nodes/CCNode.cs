@@ -641,8 +641,6 @@ namespace CocosSharp
             // timers
             UnscheduleAll();
 
-            EventDispatcher.RemoveAll();
-
             if (Children != null && Children.Count > 0)
             {
                 CCNode[] elements = Children.Elements;

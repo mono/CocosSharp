@@ -309,9 +309,6 @@ namespace CocosSharp
 
             StopAnimation();
 
-            if(EventDispatcher != null)
-                EventDispatcher.RemoveAll();
-
             isNeedsInit = true;
         }
 

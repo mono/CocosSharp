@@ -76,6 +76,9 @@ namespace CocosSharp
             IsEnabled = true;
             inDispatch = 0;
             nodePriorityIndex = 0;
+
+			internalCustomListenerIDs.Add(CCEvent.EVENT_COME_TO_FOREGROUND);
+			internalCustomListenerIDs.Add(CCEvent.EVENT_COME_TO_BACKGROUND);
         }
 
         #endregion Constructors
@@ -329,6 +332,25 @@ namespace CocosSharp
         public void RemoveAll()
         {
             bool cleanMap = true;
+			var types = new string[listenerMap.Count];
+			var typeIndex = 0;
+
+			foreach (var element in listenerMap)
+			{
+				if (internalCustomListenerIDs.Contains(element.Key))
+					cleanMap = false;
+				else
+					types[typeIndex++] = element.Key;
+			}
+
+			foreach(var type in types)
+			{
+				if (type != null)
+					RemoveEventListeners(type);
+			}
+
+			if (inDispatch == 0 && cleanMap)
+				listenerMap.Clear();
         }
 
         /// <summary>
@@ -605,6 +627,16 @@ namespace CocosSharp
 
         }
 
+		/// <summary>
+		/// Convenience method to dispatch a custom event
+		/// </summary>
+		/// <param name="eventToDispatch"></param>
+		public void DispatchEvent(string customEvent, object userData = null)
+		{
+			var custom = new CCEventCustom(customEvent, userData);
+			DispatchEvent(custom);
+
+		}
 
         /// <summary>
         /// Dispatches the event

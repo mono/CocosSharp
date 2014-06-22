@@ -23,6 +23,7 @@ namespace tests
 		TEST_DIRECTOR,
 		TEST_GLOBAL_Z_TOUCH,
 		TEST_PAUSE_RESUME,
+		TEST_REMOVE_ALL,
 		TEST_SMOOTH_FOLLOW,
 		TEST_STOP_PROPAGATION,
 		TEST_CASE_COUNT
@@ -73,6 +74,9 @@ namespace tests
 				break;
 			case (int) EventDispatchTests.TEST_PAUSE_RESUME:
 				testLayer = new PauseResumeTest();
+				break;
+			case (int) EventDispatchTests.TEST_REMOVE_ALL:
+				testLayer = new RemoveAllTest();
 				break;
 			case (int) EventDispatchTests.TEST_SMOOTH_FOLLOW:
 				testLayer = new SmoothFollowTest();
@@ -1204,6 +1208,102 @@ namespace tests
 
 	}
 
+	public class RemoveAllTest : EventDispatcherTest
+	{
+
+		bool bugFixed;
+
+		CCEventListenerCustom customlistener;
+
+		CCMenuItemFont removeAllTouchItem;
+		CCMenu menu;
+
+		public RemoveAllTest ()
+		{
+
+			CCMenuItemFont.FontSize = 16;
+
+			removeAllTouchItem = new CCMenuItemFont("Remove all listeners", (sender) =>
+				{
+					var senderItem = (CCMenuItemFont) sender;
+
+					senderItem.LabelTTF.Text = "Only 'Reset' item could be clicked";
+
+					EventDispatcher.RemoveAll();
+
+					var nextItem = new CCMenuItemFont("Reset", (resetSender) => 
+						{
+							Debug.Assert(bugFixed, "This issue was not fixed");
+							RestartCallback(null);
+						}
+					);
+
+					CCMenuItemFont.FontSize = 16;
+					nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
+					var menu2 = new CCMenu(nextItem);
+					menu2.AnchorPoint = CCPoint.AnchorLowerLeft;
+					AddChild(menu2);
+					menu2.Position = CCPoint.Zero;
+
+					EventDispatcher.DispatchEvent(CCEvent.EVENT_COME_TO_BACKGROUND);
+				});
+
+			menu = new CCMenu(removeAllTouchItem);
+			menu.AnchorPoint = CCPoint.AnchorLowerLeft;
+			AddChild(menu);
+
+		}
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			customlistener = EventDispatcher.AddCustomEventListener(CCEvent.EVENT_COME_TO_BACKGROUND, (customEvent) => 
+				{
+
+					var label = new CCLabelTtf("Yeah, this issue was fixed.", "", 20);
+					label.AnchorPoint = CCPoint.AnchorMiddleLeft;
+					label.Position = CCVisibleRect.Left;
+
+					AddChild(label);
+
+					// After test, remove it.
+					EventDispatcher.RemoveEventListener(customlistener);
+					customlistener = null;
+
+					bugFixed = true;
+				});
+
+			removeAllTouchItem.Position = new CCPoint(CCVisibleRect.Right + new CCPoint(-100, 0));
+			menu.Position = CCPoint.Zero;
+
+		}
+
+		public override void OnExit()
+		{
+			if (customlistener != null)
+				EventDispatcher.RemoveEventListener(customlistener);
+
+			base.OnExit();
+		}
+		public override string Title
+		{
+			get
+			{
+				return  "Remove All Listeners";
+			}
+		}
+
+		public override string Subtitle
+		{
+			get
+			{
+				return "Should see 'Yeah, this issue was fixed.'";
+			}
+		}
+
+	}
+
 	public class SmoothFollowTest : EventDispatcherTest
 	{
 
@@ -1293,6 +1393,7 @@ namespace tests
 		}
 
 	}
+
 
 	public class StopPropagationTest : EventDispatcherTest
 	{
