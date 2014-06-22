@@ -107,8 +107,14 @@ namespace CocosSharp
 
             if (Director != null)
             {
+
                 CCSize contentSize = windowSize;
-				Position = contentSize.Center;
+
+				// If the position has already been set then we need to respect 
+				// that position
+				if (!IsTransformDirty)
+					Position = contentSize.Center;
+
                 ContentSize = contentSize;
 
                 var touchListener = new CCEventListenerTouchOneByOne();

@@ -1242,8 +1242,9 @@ namespace tests
 					nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
 					var menu2 = new CCMenu(nextItem);
 					menu2.AnchorPoint = CCPoint.AnchorLowerLeft;
-					AddChild(menu2);
 					menu2.Position = CCPoint.Zero;
+					AddChild(menu2);
+
 
 					EventDispatcher.DispatchEvent(CCEvent.EVENT_COME_TO_BACKGROUND);
 				});
