@@ -657,9 +657,7 @@ namespace tests
 				{
 					++count;
 					var userData = string.Format("{0}", count);
-					var customEvent = new CCEventCustom("game_custom_event1");
-					customEvent.UserData = userData;
-                    EventDispatcher.DispatchEvent(customEvent);
+					EventDispatcher.DispatchEvent("game_custom_event1",userData);
 			});
 
 			sendItem.Position = origin + size.Center;
@@ -826,7 +824,7 @@ namespace tests
 					};
 
                     this.EventDispatcher.AddEventListener(listener, -1);
-                    this.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
+                    this.EventDispatcher.RemoveEventListener(listener);
 			});
 
 			item1.Position = CCVisibleRect.Center + new CCPoint(0, 80);
