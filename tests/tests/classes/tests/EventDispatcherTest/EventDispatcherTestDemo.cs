@@ -1034,8 +1034,7 @@ namespace tests
 				// For right now since we do not draw by GlobalZOrder we will move a value to the
 				// Local z-order so we can fake this.  It is a Hack for now for the foreground
 				// to background movement.
-				sprite.LocalZOrder = 2;
-				AddChild(sprite);
+				AddChild(sprite, 2);
 
 			}
 
