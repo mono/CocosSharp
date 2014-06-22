@@ -1031,6 +1031,10 @@ namespace tests
 					sprite = new CCSprite("Images/YellowSquare.png") { Tag = TAG_SPRITE + i};
 				}
 
+				// For right now since we do not draw by GlobalZOrder we will move a value to the
+				// Local z-order so we can fake this.  It is a Hack for now for the foreground
+				// to background movement.
+				sprite.LocalZOrder = 2;
 				AddChild(sprite);
 
 			}
@@ -1098,8 +1102,11 @@ namespace tests
 			if ( updateAccumulator > 2.0f)
 			{
 				var z = blueSprite.GlobalZOrder;
-				CCLog.Log("GlobalZOrder {0} - New GlobalZOrder {1}.", z, -z);
+				var lz = blueSprite.LocalZOrder;  // Hack to get around no drawing by GlobalZOrder to move drawing in foreground and background
+				CCLog.Log("GlobalZOrder {0} - New GlobalZOrder {1}.  LocalZOrder {2} - New LocalZOrder {3}.  ", z, -z, lz, -lz);
 				blueSprite.GlobalZOrder = -z;
+				blueSprite.LocalZOrder = -lz;  // Hack to get around no drawing by GlobalZOrder to move drawing in foreground and background
+
 				updateAccumulator = 0;
 			}
 

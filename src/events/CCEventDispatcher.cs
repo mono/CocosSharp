@@ -43,7 +43,7 @@ namespace CocosSharp
         public CCDirector Director { get; set; }
 
         // Sets the dirty flag for a node.
-        protected CCNode MarkDirty
+        protected internal CCNode MarkDirty
         {
             set 
             { 
@@ -1047,10 +1047,7 @@ namespace CocosSharp
                     globalZOrders.Add(e);
                 }
 
-                globalZOrders.Sort ();
-                //                              std::sort(globalZOrders.begin(), globalZOrders.end(), [](const float a, const float b){
-                //                                      return a < b;
-                //                              });
+				globalZOrders.Sort((a,b) => -a.CompareTo(b));
 
                 foreach (var globalZ in globalZOrders)
                 {

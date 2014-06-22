@@ -116,8 +116,7 @@ namespace CocosSharp
         public virtual bool HasFocus { get; set; }
         public virtual bool Visible { get; set; }
         public virtual bool IsSerializable { get; protected set; } 	            // If this is true, the screen will be recorded into the director's state
-        public int LocalZOrder { get; set; }
-        public float GlobalZOrder { get; set; }
+
         public virtual float VertexZ { get; set; }
         public object UserData { get; set; }
         public object UserObject { get; set; }
@@ -183,6 +182,42 @@ namespace CocosSharp
                 }
             }
         }
+
+		int localZOrder;
+		public int LocalZOrder 
+		{ 
+			get { return localZOrder; }
+
+			set 
+			{
+				if (localZOrder != value)
+				{
+					localZOrder = value;
+					if (Parent != null)
+					{
+						Parent.ReorderChild(this, localZOrder);
+					}
+
+					EventDispatcher.MarkDirty = this;
+				}
+			}
+		}
+
+		float globalZOrder;
+		public float GlobalZOrder 
+		{ 
+			get { return globalZOrder; }
+			set
+			{
+				if (globalZOrder != value)
+				{
+					globalZOrder = value;
+					EventDispatcher.MarkDirty = this;
+				}
+
+			}
+		}
+
 
         public virtual float SkewX
         {
