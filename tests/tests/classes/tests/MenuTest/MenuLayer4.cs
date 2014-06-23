@@ -94,15 +94,6 @@ namespace tests
             AddChild(menu);
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
-		{
-			base.RunningOnNewWindow(windowSize);
-
-			var menu = (CCMenu)this[36];
-			menu.AlignItemsInColumns(2, 2, 2, 2, 1);
-		}
-
-
         public void menuCallback(object pSender)
         {
             //UXLOG("selected item: %x index:%d", dynamic_cast<CCMenuItemToggle*>(sender)->selectedItem(), dynamic_cast<CCMenuItemToggle*>(sender)->selectedIndex() ); 

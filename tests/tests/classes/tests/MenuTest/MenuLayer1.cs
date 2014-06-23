@@ -32,8 +32,10 @@ namespace tests
         private string s_SendScore = "Images/SendScoreButton";
         private string s_MenuItem = "Images/menuitemsprite";
         private string s_PressSendScore = "Images/SendScoreButtonPressed";
+		private CCTintBy color_action = new CCTintBy(0.5f, 0, -255, -255); 
 
 		CCEventListenerTouchOneByOne touchListener;
+		CCMenu menu;
 
         public MenuLayer1()
         {
@@ -85,48 +87,52 @@ namespace tests
             CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
-            CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+			CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+			item7.RepeatForever(color_action, color_action.Reverse());
 
-            CCActionInterval color_action = new CCTintBy(0.5f, 0, -255, -255);
-            CCActionInterval color_back = (CCActionInterval) color_action.Reverse();
-            CCFiniteTimeAction seq = new CCSequence(color_action, color_back);
-            item7.RunAction(new CCRepeatForever((CCActionInterval) seq));
+			menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
+			menu.AlignItemsVertically();
 
-            CCMenu menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
-            menu.AlignItemsVertically();
-
-            // elastic effect
-            CCSize s = Director.WindowSizeInPoints;
-            int i = 0;
-            CCNode child;
-            var pArray = menu.Children;
-            object pObject = null;
-            if (pArray.Count > 0)
-            {
-                for (int j = 0; j < pArray.Count; j++)
-                {
-                    pObject = pArray[j];
-                    if (pObject == null)
-                        break;
-
-                    child = (CCNode) pObject;
-                    CCPoint dstPoint = child.Position;
-                    int offset = (int) (s.Width / 2 + 50);
-                    if (i % 2 == 0)
-                        offset = -offset;
-
-                    child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
-                    child.RunAction(new CCEaseElasticOut(new CCMoveBy(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
-                    i++;
-
-                }
-            }
             m_disabledItem = item3;
             m_disabledItem.Enabled = false;
 
             AddChild(menu);
+			menu.Scale = 0;
+			menu.RunAction(new CCScaleTo(1, 1));
         }
 
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			// elastic effect
+			CCSize s = windowSize;
+
+			int i = 0;
+			CCNode child;
+			var pArray = menu.Children;
+			object pObject = null;
+			if (pArray.Count > 0)
+			{
+				for (int j = 0; j < pArray.Count; j++)
+				{
+					pObject = pArray[j];
+					if (pObject == null)
+						break;
+
+					child = (CCNode) pObject;
+					CCPoint dstPoint = child.Position;
+					int offset = (int) (s.Width / 2 + 50);
+					if (i % 2 == 0)
+						offset = -offset;
+
+					child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
+					child.RunAction(new CCEaseElasticOut(new CCMoveBy(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
+					i++;
+
+				}
+			}
+		}
 
         private void menuCallbackPriorityTest(object pSender)
         {
