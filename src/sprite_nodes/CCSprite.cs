@@ -272,8 +272,6 @@ namespace CocosSharp
             }
             set
             {
-                unflippedOffsetPositionFromCenter = value.OffsetInPixels;
-
                 CCTexture2D newTexture = value.Texture;
                 // update texture before updating texture rect
                 if (newTexture != texture)
@@ -283,6 +281,7 @@ namespace CocosSharp
 
                 // update rect
                 float contentScaleFactor = Director.ContentScaleFactor;
+                unflippedOffsetPositionFromCenter = value.OffsetInPixels.PixelsToPoints(contentScaleFactor);
                 IsTextureRectRotated = value.IsRotated;
                 SetTextureRect(value.RectInPixels.PixelsToPoints(contentScaleFactor), 
                     IsTextureRectRotated, 
