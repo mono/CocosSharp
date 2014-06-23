@@ -422,6 +422,26 @@ namespace CocosSharp
             if (listener == null)
                 return;
 
+			foreach (var l in listenerMap)
+			{
+				var fixedPriorityListeners = l.Value.FixedPriorityListeners;
+
+				if (fixedPriorityListeners != null && fixedPriorityListeners.Count > 0)
+				{
+					var found = fixedPriorityListeners.IndexOf(listener);
+
+					if (found >= 0)
+					{
+						//Debug.Assert(listener.)
+						if (listener.FixedPriority != fixedPriority)
+						{
+							listener.FixedPriority = fixedPriority;
+							SetDirty(listener.ListenerID, DirtyFlag.FIXED_PRIORITY);
+						}
+						return;
+					}
+				}
+			}
         }
 
         /// <summary>

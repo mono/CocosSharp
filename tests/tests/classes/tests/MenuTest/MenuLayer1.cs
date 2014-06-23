@@ -28,7 +28,7 @@ namespace tests
 {
     public class MenuLayer1 : CCLayer
     {
-        protected CCMenuItemLabelAtlas m_disabledItem;
+        protected CCMenuItemLabelAtlas disabledItem;
         private string s_SendScore = "Images/SendScoreButton";
         private string s_MenuItem = "Images/menuitemsprite";
         private string s_PressSendScore = "Images/SendScoreButtonPressed";
@@ -39,40 +39,31 @@ namespace tests
 
         public MenuLayer1()
         {
-			// Register Touch Event
-			touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
-
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-			touchListener.OnTouchEnded = onTouchEnded;
-			touchListener.OnTouchCancelled = onTouchCancelled;
-
-            EventDispatcher.AddEventListener(touchListener, 1);
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
 			// modify this here to make sure we have the correct sizes when they are passed.
-			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
+			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
+			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
+			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
 
-            CCMenuItemImage item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
+            var item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
             // Image Item
-            CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
+            var item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
 
             // Label Item (LabelAtlas)
-            CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
-            CCMenuItemLabelAtlas item3 = new CCMenuItemLabelAtlas(labelAtlas, this.menuCallbackDisabled);
+            var labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
+            var item3 = new CCMenuItemLabelAtlas(labelAtlas, this.menuCallbackDisabled);
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
 
-			CCMenuItemFont.FontSize = 20;
-			CCMenuItemFont.FontName = "arial";
-
             // Font Item
-			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", this.menuCallbackEnable);
+			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
+				{
+					disabledItem.Enabled = !disabledItem.Enabled;
+
+				});
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
@@ -93,8 +84,8 @@ namespace tests
 			menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
 			menu.AlignItemsVertically();
 
-            m_disabledItem = item3;
-            m_disabledItem.Enabled = false;
+            disabledItem = item3;
+            disabledItem.Enabled = false;
 
             AddChild(menu);
 			menu.Scale = 0;
@@ -104,6 +95,17 @@ namespace tests
 		protected override void RunningOnNewWindow(CCSize windowSize)
 		{
 			base.RunningOnNewWindow(windowSize);
+
+			// Register Touch Event
+			touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			EventDispatcher.AddEventListener(touchListener, 1);
 
 			// elastic effect
 			CCSize s = windowSize;
@@ -158,7 +160,7 @@ namespace tests
 
         public void allowTouches(float dt)
         {
-			Director.EventDispatcher.SetPriority(touchListener,1);
+			EventDispatcher.SetPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -179,11 +181,6 @@ namespace tests
 			EventDispatcher.SetPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
-        }
-
-        public void menuCallbackEnable(object pSender)
-        {
-            m_disabledItem.Enabled = !m_disabledItem.Enabled;
         }
 
         public void menuCallback2(object pSender)

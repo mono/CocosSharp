@@ -23,11 +23,13 @@ namespace CocosSharp
 
 	struct AlignmentState 
 	{
-		public Alignment Alignment;
-		public float Padding;
-		public uint[] NumberOfItemsPer;
+
+		public Alignment Alignment { get; set; }
+		public float Padding { get; set; }
+		public uint[] NumberOfItemsPer { get; set; }
 
 		public AlignmentState (Alignment alignment, float padding, uint[] numberOfItems)
+			: this()
 		{
 			Alignment = alignment;
 			Padding = padding;
@@ -43,6 +45,7 @@ namespace CocosSharp
 		{	}
 
 	}
+
 
 
     /// <summary>
