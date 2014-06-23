@@ -9,34 +9,60 @@ namespace tests
 {
     public class SpriteNewTexture : SpriteTestDemo
     {
-        bool m_usingTexture1;
-        CCTexture2D m_texture1;
-        CCTexture2D m_texture2;
+        bool usingTexture1;
+        CCTexture2D texture1;
+        CCTexture2D texture2;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite New texture (tap)"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public SpriteNewTexture()
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-			touchListener.OnTouchesEnded = onTouchesEnded;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
-
-            CCNode node = new CCNode ();
+            CCNode node = new CCNode();
             AddChild(node, 0, (int)kTags.kTagSpriteBatchNode);
 
-            m_texture1 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas");
-            m_texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
+            texture1 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas");
+            texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
 
-            m_usingTexture1 = true;
-
-            for (int i = 0; i < 30; i++)
-                addNewSprite();
+            usingTexture1 = true;
         }
 
-        public void addNewSprite()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            base.RunningOnNewWindow(windowSize);
+
+            for (int i = 0; i < 30; i++)
+                AddNewSprite();
+
+
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesEnded = OnTouchesEnded;
+
+            EventDispatcher.AddEventListener(touchListener, this);
+        }
+
+        #endregion Setup content
+
+
+        void AddNewSprite()
+        {
+            CCSize s = Director.WindowSizeInPoints;
 
             CCPoint p = new CCPoint((float)(CCRandom.NextDouble() * s.Width), (float)(CCRandom.NextDouble() * s.Height));
 
@@ -46,7 +72,7 @@ namespace tests
 
 
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);
-            CCSprite sprite = new CCSprite(m_texture1, new CCRect(x, y, 85, 121));
+            CCSprite sprite = new CCSprite(texture1, new CCRect(x, y, 85, 121));
             node.AddChild(sprite);
 
             sprite.Position = (new CCPoint(p.X, p.Y));
@@ -71,13 +97,13 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCNode node = GetChildByTag((int)kTags.kTagSpriteBatchNode);
 
             var children = node.Children;
             CCSprite sprite;
-            if (m_usingTexture1)                          //--> win32 : Let's it make just simple sentence
+            if (usingTexture1)
             {
                 foreach (var item in children)
                 {
@@ -85,10 +111,10 @@ namespace tests
                     if (sprite == null)
                         break;
 
-                    sprite.Texture = m_texture2;
+                    sprite.Texture = texture2;
                 }
 
-                m_usingTexture1 = false;
+                usingTexture1 = false;
             }
             else
             {
@@ -98,16 +124,11 @@ namespace tests
                     if (sprite == null)
                         break;
 
-                    sprite.Texture = m_texture1;
+                    sprite.Texture = texture1;
                 }
 
-                m_usingTexture1 = true;
+                usingTexture1 = true;
             }
-        }
-
-        public override string title()
-        {
-            return "Sprite New texture (tap)";
         }
     }
 }

@@ -9,22 +9,46 @@ namespace tests
 {
     public class SpriteBatchNode1 : SpriteTestDemo
     {
-        public SpriteBatchNode1()
+        #region Properties
+
+        public override string Title
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-			touchListener.OnTouchesEnded = onTouchesEnded;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
-            CCSpriteBatchNode BatchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
-            AddChild(BatchNode, 0, (int)kTags.kTagSpriteBatchNode);
-
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            addNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
+            get { return "SpriteBatchNode (tap screen)"; }
         }
 
-        public void addNewSpriteWithCoords(CCPoint p)
+        #endregion Properties
+
+
+        #region Constructors
+
+        public SpriteBatchNode1()
+        {
+            CCSpriteBatchNode BatchNode = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
+            AddChild(BatchNode, 0, (int)kTags.kTagSpriteBatchNode);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesEnded = OnTouchesEnded;
+
+            EventDispatcher.AddEventListener(touchListener, this);
+        }
+
+        #endregion Setup content
+
+
+        void AddNewSpriteWithCoords(CCPoint p)
         {
             CCSpriteBatchNode BatchNode = (CCSpriteBatchNode)GetChildByTag((int)kTags.kTagSpriteBatchNode);
 
@@ -58,7 +82,7 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch item in touches)
             {
@@ -69,13 +93,8 @@ namespace tests
 
                 var location = item.Location;
 
-                addNewSpriteWithCoords(location);
+                AddNewSpriteWithCoords(location);
             }
-        }
-
-        public override string title()
-        {
-            return "SpriteBatchNode (tap screen)";
         }
     }
 }

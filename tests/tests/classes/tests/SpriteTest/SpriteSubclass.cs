@@ -8,72 +8,82 @@ namespace tests
 {
     internal class MySprite1 : CCSprite
     {
-        private void InitSprite()
+        int ivar;
+
+        public MySprite1(CCSpriteFrame frame): base(frame)
         {
             ivar = 10;
         }
 
-        public MySprite1(CCSpriteFrame frame): base(frame)
+        public static MySprite1 Create(string spriteFrameName)
         {
-            InitSprite();
+            CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[spriteFrameName];
+            MySprite1 sprite = new MySprite1(frame);
+
+            return sprite;
         }
 
-        public static MySprite1 Create(string pszSpriteFrameName)
-        {
-            CCSpriteFrame pFrame = CCApplication.SharedApplication.SpriteFrameCache[pszSpriteFrameName];
-            MySprite1 pobSprite = new MySprite1(pFrame);
-
-            return pobSprite;
-        }
-
-        private int ivar;
     }
 
     internal class MySprite2 : CCSprite
     {
-        private void InitSprite()
-        {
-            ivar = 10;
-        }
+        int ivar;
 
         public MySprite2(string fileName): base(fileName)
         {
-            InitSprite();
+            ivar = 10;
         }
-
-
-        private int ivar;
     }
 
     public class SpriteSubclass : SpriteTestDemo
     {
+        MySprite1 sprite;
+        MySprite2 sprite2;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite subclass"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Testing initWithTexture:rect method"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteSubclass()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
             CCSpriteBatchNode aParent = new CCSpriteBatchNode("animations/ghosts");
 
             // MySprite1
-            MySprite1 sprite = MySprite1.Create("father.gif");
-            sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
+            sprite = MySprite1.Create("father.gif");
             aParent.AddChild(sprite);
             AddChild(aParent);
 
             // MySprite2
-            MySprite2 sprite2 = new MySprite2("Images/grossini");
+            sprite2 = new MySprite2("Images/grossini");
             AddChild(sprite2);
-            sprite2.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Sprite subclass";
+            base.RunningOnNewWindow (windowSize);
+            sprite.Position = (new CCPoint(windowSize.Width / 4 * 1, windowSize.Height / 2));
+            sprite2.Position = (new CCPoint(windowSize.Width / 4 * 3, windowSize.Height / 2));
         }
 
-        public override string subtitle()
-        {
-            return "Testing initWithTexture:rect method";
-        }
+        #endregion Setup content
     }
 }

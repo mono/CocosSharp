@@ -9,22 +9,48 @@ namespace tests
 {
     public class SpriteFlip : SpriteTestDemo
     {
-        public SpriteFlip()
+        CCSprite sprite1;
+        CCSprite sprite2;
+
+        #region Properties
+
+        public override string Title
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            CCSprite sprite1 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
-            sprite1.Position = (new CCPoint(s.Width / 2 - 100, s.Height / 2));
-            AddChild(sprite1, 0, (int)kTagSprite.kTagSprite1);
-
-            CCSprite sprite2 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
-            sprite2.Position = (new CCPoint(s.Width / 2 + 100, s.Height / 2));
-            AddChild(sprite2, 0, (int)kTagSprite.kTagSprite2);
-
-            Schedule(flipSprites, 1);
+            get { return "Sprite Flip X & Y"; }
         }
 
-        public void flipSprites(float dt)
+        #endregion Properties
+
+
+        #region Constructors
+
+        public SpriteFlip()
+        {
+            sprite1 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
+            AddChild(sprite1, 0, (int)kTagSprite.kTagSprite1);
+
+            sprite2 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 1, 85, 121));
+            AddChild(sprite2, 0, (int)kTagSprite.kTagSprite2);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            sprite1.Position = (new CCPoint(windowSize.Width / 2 - 100, windowSize.Height / 2));
+            sprite2.Position = (new CCPoint(windowSize.Width / 2 + 100, windowSize.Height / 2));
+
+            Schedule(FlipSprites, 1);
+        }
+
+        #endregion Setup content
+
+        void FlipSprites(float dt)
         {
             CCSprite sprite1 = (CCSprite)(GetChildByTag((int)kTagSprite.kTagSprite1));
             CCSprite sprite2 = (CCSprite)(GetChildByTag((int)kTagSprite.kTagSprite2));
@@ -35,11 +61,6 @@ namespace tests
             sprite1.FlipX = (!x);
             sprite2.FlipY = (!y);
             CCLog.Log("Post: {0}", sprite1.ContentSize.Height);
-        }
-
-        public override string title()
-        {
-            return "Sprite Flip X & Y";
         }
     }
 }

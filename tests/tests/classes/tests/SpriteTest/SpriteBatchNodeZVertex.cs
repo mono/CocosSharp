@@ -8,25 +8,23 @@ namespace tests
 {
     public class SpriteBatchNodeZVertex : SpriteTestDemo
     {
-        int m_dir;
-        float m_time;
-        public override void OnEnter()
+        const int numOfSprites = 11;
+
+        CCSpriteBatchNode batch;
+        CCSprite[] sprites;
+
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
-
-            // TIP: don't forget to enable Alpha test
-            //glEnable(GL_ALPHA_TEST);
-            //glAlphaFunc(GL_GREATER, 0.0f);
-
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
+            get { return "SpriteBatchNode: openGL Z vertex"; }
         }
 
-        public override void OnExit()
-        {
-            //glDisable(GL_ALPHA_TEST);
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
-            base.OnExit();
-        }
+        #endregion Properties
+
+
+        #region Constructors
 
         public SpriteBatchNodeZVertex()
         {
@@ -39,44 +37,68 @@ namespace tests
             // transparent parts.
             //
 
-
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            float step = s.Width / 12;
-
             // small capacity. Testing resizing.
             // Don't use capacity=1 in your real game. It is expensive to resize the capacity
-            CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
-            // camera uses the center of the image as the pivoting point
-            batch.ContentSize = new CCSize(s.Width, s.Height);
-            batch.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-            batch.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-
-
+            batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 1);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
+
+            sprites = new CCSprite[numOfSprites];
 
             for (int i = 0; i < 5; i++)
             {
-                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
-                sprite.VertexZ = (10 + i * 40);
-                batch.AddChild(sprite, 0);
-
+                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 0, 121 * 1, 85, 121));
+                sprites[i].VertexZ = (10 + i * 40);
+                batch.AddChild(sprites[i], 0);
             }
 
             for (int i = 5; i < 11; i++)
             {
-                CCSprite sprite = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
-                sprite.VertexZ = 10 + (10 - i) * 40;
-                batch.AddChild(sprite, 0);
+                sprites[i] = new CCSprite(batch.Texture, new CCRect(85 * 1, 121 * 0, 85, 121));
+                sprites[i].VertexZ = 10 + (10 - i) * 40;
+                batch.AddChild(sprites[i], 0);
+            }
+
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            float step = windowSize.Width / 12;
+
+            // camera uses the center of the image as the pivoting point
+            batch.ContentSize = windowSize;
+            batch.AnchorPoint = (new CCPoint(0.5f, 0.5f));
+            batch.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+
+            for (int i = 0; i < numOfSprites; i++)
+            {
+                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
             }
 
             batch.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
-        public override string title()
+        #endregion Setup contetn
+
+
+        public override void OnEnter()
         {
-            return "SpriteBatchNode: openGL Z vertex";
+            base.OnEnter();
+
+            Director.Projection = CCDirectorProjection.Projection3D;
         }
+
+        public override void OnExit()
+        {
+            Director.Projection = (CCDirectorProjection.Projection2D);
+            base.OnExit();
+        }
+
     }
 }

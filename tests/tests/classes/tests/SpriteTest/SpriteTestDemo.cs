@@ -6,82 +6,60 @@ using CocosSharp;
 
 namespace tests
 {
-    public class SpriteTestDemo : CCLayer
+    public class SpriteTestDemo : TestNavigationLayer
     {
         protected string m_strTitle;
 
+        #region Properties
+
+        public override string Title
+        {
+            get { return "No title"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteTestDemo()
-        { }
-
-        public virtual string title()
-        {
-            return "No title";
+        { 
         }
 
-        public virtual string subtitle()
-        {
-            return "";
-        }
+        #endregion Constructors
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+        #region Callbacks
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
-            AddChild(label, 1);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 50);
-
-            string strSubtitle = subtitle();
-            if (!string.IsNullOrEmpty(strSubtitle))
-            {
-                CCLabelTtf l = new CCLabelTtf(strSubtitle, "arial", 16);
-                //CCLabelTTF l = CCLabelTTF.labelWithString(strSubtitle, "Thonburi", 16);
-                AddChild(l, 1);
-                l.Position = new CCPoint(s.Width / 2, s.Height - 80);
-            }
-
-            CCMenuItemImage item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
-            CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
-            CCMenuItemImage item3 = new CCMenuItemImage("Images/f1", "Images/f2", nextCallback);
-
-            CCMenu menu = new CCMenu(item1, item2, item3);
-
-            menu.Position = new CCPoint();
-            item1.Position = new CCPoint(s.Width / 2 - 100, 30);
-            item2.Position = new CCPoint(s.Width / 2, 30);
-            item3.Position = new CCPoint(s.Width / 2 + 100, 30);
-
-            AddChild(menu, 1); 
-        }
-
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
             ClearCaches();
 
             CCScene s = new SpriteTestScene();
-            s.AddChild(SpriteTestScene.restartSpriteTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            s.AddChild(SpriteTestScene.RestartSpriteTestAction());
+            Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
             ClearCaches();
 
             CCScene s = new SpriteTestScene();
-            s.AddChild(SpriteTestScene.nextSpriteTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            s.AddChild(SpriteTestScene.NextSpriteTestAction());
+            Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
             ClearCaches();
             
             CCScene s = new SpriteTestScene();
-            s.AddChild(SpriteTestScene.backSpriteTestAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            s.AddChild(SpriteTestScene.BackSpriteTestAction());
+            Director.ReplaceScene(s);
         }
+
+        #endregion Callbacks
+
 
         void ClearCaches()
         {

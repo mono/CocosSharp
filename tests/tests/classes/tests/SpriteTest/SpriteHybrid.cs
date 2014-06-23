@@ -9,29 +9,39 @@ namespace tests
 {
     public class SpriteHybrid : SpriteTestDemo
     {
-        bool m_usingSpriteBatchNode;
+        const int numOfSprites = 250;
+
+        bool usingSpriteBatchNode;
+        CCSprite[] sprites;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "HybrCCSprite* sprite Test"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public SpriteHybrid()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
             // parents
-            CCNode parent1 = new CCNode ();
+            CCNode parent1 = new CCNode();
             CCSpriteBatchNode parent2 = new CCSpriteBatchNode("animations/grossini", 50);
 
             AddChild(parent1, 0, (int)kTags.kTagNode);
             AddChild(parent2, 0, (int)kTags.kTagSpriteBatchNode);
 
+            sprites = new CCSprite[numOfSprites];
 
-            // IMPORTANT:
-            // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
-            //     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames);
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
-
 
             // create 250 sprites
             // only show 80% of them
-            for (int i = 0; i < 250; i++)
+            for (int i = 0; i < numOfSprites; i++)
             {
                 int spriteIdx = (int)(CCRandom.NextDouble() * 14);
                 string str = "";
@@ -46,35 +56,53 @@ namespace tests
                 }
                 str = string.Format("grossini_dance_{0}.png", temp);
                 CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
-                CCSprite sprite = new CCSprite(frame);
-                parent1.AddChild(sprite, i, i);
-
-                float x = -1000;
-                float y = -1000;
-                if (CCRandom.NextDouble() < 0.2f)
-                {
-                    x = (float)(CCRandom.NextDouble() * s.Width);
-                    y = (float)(CCRandom.NextDouble() * s.Height);
-                }
-                sprite.Position = (new CCPoint(x, y));
-
-                CCActionInterval action = new CCRotateBy (4, 360);
-                sprite.RunAction(new CCRepeatForever (action));
+                sprites[i] = new CCSprite(frame);
+                parent1.AddChild(sprites[i], i, i);
             }
 
-            m_usingSpriteBatchNode = false;
-
-            Schedule(reparentSprite, 2);
+            usingSpriteBatchNode = false;
         }
 
-        public void reparentSprite(float dt)
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            CCActionInterval action = new CCRotateBy(4, 360);
+
+            for(int i = 0; i < numOfSprites; i++) 
+            {
+                float x = -1000;
+                float y = -1000;
+
+                if(CCRandom.NextDouble() < 0.2f)
+                {
+                    x = (float)(CCRandom.NextDouble() * windowSize.Width);
+                    y = (float)(CCRandom.NextDouble() * windowSize.Height);
+                }
+                sprites[i].Position = (new CCPoint(x, y));
+
+                sprites[i].RunAction(new CCRepeatForever(action));
+            }
+
+            Schedule(ReparentSprite, 2);
+        }
+
+        #endregion Setup content
+
+
+        void ReparentSprite(float dt)
         {
             CCNode p1 = GetChildByTag((int)kTags.kTagNode);
             CCNode p2 = GetChildByTag((int)kTags.kTagSpriteBatchNode);
 
             List<CCNode> retArray = new List<CCNode>(250);
 
-            if (m_usingSpriteBatchNode)
+            if (usingSpriteBatchNode)
             {
                 CCNode tmp = p1;
                 p1 = p2;
@@ -106,12 +134,8 @@ namespace tests
                 p2.AddChild(item, i, i);
                 i++;
             }
-            m_usingSpriteBatchNode = !m_usingSpriteBatchNode;
-        }
 
-        public override string title()
-        {
-            return "HybrCCSprite* sprite Test";
+            usingSpriteBatchNode = !usingSpriteBatchNode;
         }
 
         public override void OnExit()

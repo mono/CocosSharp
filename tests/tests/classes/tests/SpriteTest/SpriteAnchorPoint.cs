@@ -8,22 +8,41 @@ namespace tests
 {
     public class SpriteAnchorPoint : SpriteTestDemo
     {
+        const int numOfSprites = 3;
+
+        CCSprite[] pointSprites;
+        CCSprite[] sprites;
+
+        CCRepeatForever action;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite: anchor point"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteAnchorPoint()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
+            sprites = new CCSprite[numOfSprites];
+            pointSprites = new CCSprite[numOfSprites];
 
             CCRotateBy rotate = new CCRotateBy(10, 360);
-            CCRepeatForever action = new CCRepeatForever(rotate);
+            action = new CCRepeatForever(rotate);
 
-            for (int i = 0; i < 3; i++)
+
+            for (int i = 0; i < numOfSprites; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
+                AddChild(sprite, i);
 
                 CCSprite point = new CCSprite("Images/r1");
-                point.Scale = 0.25f;
-                point.Position = (sprite.Position);
                 AddChild(point, 10);
 
                 switch (i)
@@ -41,16 +60,30 @@ namespace tests
 
                 point.Position = sprite.Position;
 
-                CCRepeatForever copy = new CCRepeatForever(action);
-                sprite.RunAction(copy);
-                AddChild(sprite, i);
+                sprites[i] = sprite;
+                pointSprites[i] = point;
             }
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Sprite: anchor point";
+            base.RunningOnNewWindow (windowSize);
+
+            for (int i = 0; i < numOfSprites; i++) 
+            {
+                sprites[i].Position = (new CCPoint(windowSize.Width / 4 * (i + 1), windowSize.Height / 2));
+                pointSprites[i].Scale = 0.25f;
+                pointSprites[i].Position = (sprites[i].Position);
+
+                sprites[i].RunAction(action);
+            }
         }
 
+        #endregion Setup content
     }
 }

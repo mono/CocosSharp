@@ -9,31 +9,56 @@ namespace tests
 {
     public class SpriteBatchNodeNewTexture : SpriteTestDemo
     {
-        CCTexture2D m_texture1;
-        CCTexture2D m_texture2;
+        CCTexture2D texture1;
+        CCTexture2D texture2;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "SpriteBatchNode new texture (tap)"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public SpriteBatchNodeNewTexture()
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-			touchListener.OnTouchesEnded = onTouchesEnded;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
-
             CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            m_texture1 = batch.Texture;
-            m_texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
-
-            for (int i = 0; i < 30; i++)
-                addNewSprite();
+            texture1 = batch.Texture;
+            texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
         }
 
-        public void addNewSprite()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            base.RunningOnNewWindow(windowSize);
+
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesEnded = OnTouchesEnded;
+
+            EventDispatcher.AddEventListener(touchListener, this);
+
+            for (int i = 0; i < 30; i++)
+                AddNewSprite();
+        }
+
+        #endregion Setup content
+
+
+        void AddNewSprite()
+        {
+            CCSize s = Director.WindowSizeInPoints;
 
             CCPoint p = new CCPoint((float)(CCRandom.NextDouble() * s.Width), (float)(CCRandom.NextDouble() * s.Height));
 
@@ -68,20 +93,15 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCSpriteBatchNode batch = (CCSpriteBatchNode)GetChildByTag((int)kTags. kTagSpriteBatchNode);
 
-            if (batch.Texture== m_texture1)
-                batch.Texture=m_texture2;
+            if (batch.Texture == texture1)
+                batch.Texture = texture2;
             else
-                batch.Texture=m_texture1;   
+                batch.Texture = texture1;   
 
-        }
-
-        public override string title()
-        {
-            return "SpriteBatchNode new texture (tap)";
         }
     }
 }

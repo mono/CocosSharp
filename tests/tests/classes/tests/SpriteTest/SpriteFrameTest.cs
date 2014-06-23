@@ -8,27 +8,36 @@ namespace tests
 {
     public class SpriteFrameTest : SpriteTestDemo
     {
+        CCSprite sprite1;
+        CCSprite sprite2;
+        int counter;
+
+        CCAnimation animation;
+        CCAnimation animMixed;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite vs. SpriteBatchNode animation"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Testing issue #792"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteFrameTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            // IMPORTANT:
-            // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
-            //     CCSpriteFrameCache::sharedSpriteFrameCache()->removeUnusedSpriteFrames);
             CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini.plist");
             cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
             cache.AddSpriteFrames("animations/grossini_blue.plist", "animations/grossini_blue");
-
-            //
-            // Animation using Sprite BatchNode
-            //
-            m_pSprite1 = new CCSprite("grossini_dance_01.png");
-            m_pSprite1.Position = (new CCPoint(s.Width / 2 -80, s.Height / 2));
-
-            CCSpriteBatchNode spritebatch = new CCSpriteBatchNode("animations/grossini");
-            spritebatch.AddChild(m_pSprite1);
-            AddChild(spritebatch);
 
             var animFrames = new List<CCSpriteFrame>(15);
 
@@ -40,20 +49,7 @@ namespace tests
                 animFrames.Add(frame);
             }
 
-            CCAnimation animation = new CCAnimation(animFrames, 0.3f);
-            m_pSprite1.RunAction(new CCRepeatForever (new CCAnimate (animation)));
-
-            // to test issue #732, uncomment the following line
-            m_pSprite1.FlipX = false;
-            m_pSprite1.FlipY = false;
-
-            //
-            // Animation using standard Sprite
-            //
-            m_pSprite2 = new CCSprite("grossini_dance_01.png");
-            m_pSprite2.Position = (new CCPoint(s.Width / 2 + 80, s.Height / 2));
-            AddChild(m_pSprite2);
-
+            animation = new CCAnimation(animFrames, 0.3f);
 
             var moreFrames = new List<CCSpriteFrame>(20);
             for (int i = 1; i < 15; i++)
@@ -74,20 +70,50 @@ namespace tests
 
             // append frames from another batch
             moreFrames.AddRange(animFrames);
-            CCAnimation animMixed = new CCAnimation(moreFrames, 0.3f);
+
+            animMixed = new CCAnimation(moreFrames, 0.3f);
 
 
-            m_pSprite2.RunAction(new CCRepeatForever (new CCAnimate (animMixed)));
+            CCSpriteBatchNode spritebatch = new CCSpriteBatchNode("animations/grossini");
+            AddChild(spritebatch);
 
-
+            sprite1 = new CCSprite("grossini_dance_01.png");
+            spritebatch.AddChild(sprite1);
 
             // to test issue #732, uncomment the following line
-            m_pSprite2.FlipX = false;
-            m_pSprite2.FlipY = false;
+            sprite1.FlipX = false;
+            sprite1.FlipY = false;
 
-            Schedule(startIn05Secs, 0.5f);
-            m_nCounter = 0;
+            // Animation using standard Sprite
+            sprite2 = new CCSprite("grossini_dance_01.png");
+            AddChild(sprite2);
+
+            // to test issue #732, uncomment the following line
+            sprite2.FlipX = false;
+            sprite2.FlipY = false;
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            sprite1.Position = (new CCPoint(windowSize.Width / 2 -80, windowSize.Height / 2));
+            sprite2.Position = (new CCPoint(windowSize.Width / 2 + 80, windowSize.Height / 2));
+
+            sprite1.RunAction(new CCRepeatForever (new CCAnimate (animation)));
+            sprite2.RunAction(new CCRepeatForever (new CCAnimate (animMixed)));
+
+            Schedule(StartIn05Secs, 0.5f);
+            counter = 0;
+        }
+
+        #endregion Setup content
+
 
         public override void OnExit()
         {
@@ -98,29 +124,19 @@ namespace tests
             cache.RemoveSpriteFrames("animations/grossini_blue.plist");
         }
 
-        public override string title()
+        void StartIn05Secs(float dt)
         {
-            return "Sprite vs. SpriteBatchNode animation";
+            Unschedule(StartIn05Secs);
+            Schedule(FlipSprites, 1.0f);
         }
 
-        public override string subtitle()
+        void FlipSprites(float dt)
         {
-            return "Testing issue #792";
-        }
-
-        public void startIn05Secs(float dt)
-        {
-            Unschedule(startIn05Secs);
-            Schedule(flipSprites, 1.0f);
-        }
-
-        public void flipSprites(float dt)
-        {
-            m_nCounter++;
+            counter++;
 
             bool fx = false;
             bool fy = false;
-            int i = m_nCounter % 4;
+            int i = counter % 4;
 
             switch (i)
             {
@@ -142,15 +158,10 @@ namespace tests
                     break;
             }
 
-            m_pSprite1.FlipX = (fx);
-            m_pSprite1.FlipY = (fy);
-            m_pSprite2.FlipX = (fx);
-            m_pSprite2.FlipY = (fy);
-            //NSLog(@"flipX:%d, flipY:%d", fx, fy);
+            sprite1.FlipX = (fx);
+            sprite1.FlipY = (fy);
+            sprite2.FlipX = (fx);
+            sprite2.FlipY = (fy);
         }
-
-        private CCSprite m_pSprite1;
-        private CCSprite m_pSprite2;
-        private int m_nCounter;
     }
 }

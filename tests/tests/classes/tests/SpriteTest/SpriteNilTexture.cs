@@ -9,37 +9,54 @@ namespace tests
 {
     public class SpriteNilTexture : SpriteTestDemo
     {
+        CCSprite sprite1;
+        CCSprite sprite2;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite without texture"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "opacity and color should work"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteNilTexture()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            sprite1 = new CCSprite();
+            sprite1.TextureRect = new CCRect(0, 0, 300, 300);
+            sprite1.Color = CCColor3B.Red;
+            sprite1.Opacity = 128;
+            AddChild(sprite1, 100);
 
-            CCSprite sprite = null;
-
-            // TEST: If no texture is given, then Opacity + Color should work.
-
-            sprite = new CCSprite();
-            sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = CCColor3B.Red;
-            sprite.Opacity = 128;
-            sprite.Position = (new CCPoint(3 * s.Width / 4, s.Height / 2));
-            AddChild(sprite, 100);
-
-            sprite = new CCSprite();
-            sprite.TextureRect = new CCRect(0, 0, 300, 300);
-            sprite.Color = CCColor3B.Blue;
-            sprite.Opacity = 128;
-            sprite.Position = (new CCPoint(1 * s.Width / 4, s.Height / 2));
-            AddChild(sprite, 100);
+            sprite2 = new CCSprite();
+            sprite2.TextureRect = new CCRect(0, 0, 300, 300);
+            sprite2.Color = CCColor3B.Blue;
+            sprite2.Opacity = 128;
+            AddChild(sprite2, 100);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Sprite without texture";
+            base.RunningOnNewWindow (windowSize);
+
+            sprite1.Position = (new CCPoint(3 * windowSize.Width / 4, windowSize.Height / 2));
+            sprite2.Position = (new CCPoint(1 * windowSize.Width / 4, windowSize.Height / 2));
         }
 
-        public override string subtitle()
-        {
-            return "opacity and color should work";
-        }
+        #endregion Setup content
     }
 }

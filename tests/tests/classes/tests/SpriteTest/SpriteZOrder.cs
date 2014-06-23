@@ -9,56 +9,87 @@ namespace tests
 {
     public class SpriteZOrder : SpriteTestDemo
     {
-        int m_dir;
+        const int numOfSprites = 10;
+
+        int dir;
+        CCSprite[] sprites;
+        CCSprite sprite1;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite: Z order"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteZOrder()
         {
-            m_dir = 1;
+            dir = 1;
+            sprites = new CCSprite[numOfSprites];
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-            float step = s.Width / 11;
             for (int i = 0; i < 5; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
                 AddChild(sprite, i);
+                sprites[i] = sprite;
             }
 
             for (int i = 5; i < 10; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprite.Position = new CCPoint((i + 1) * step, s.Height / 2);
                 AddChild(sprite, 14 - i);
+                sprites[i] = sprite;
             }
 
-            CCSprite sprite1 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 0, 85, 121));
+            sprite1 = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 3, 121 * 0, 85, 121));
             AddChild(sprite1, -1, (int)kTagSprite.kTagSprite1);
-            sprite1.Position = (new CCPoint(s.Width / 2, s.Height / 2 - 20));
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            float step = windowSize.Width / 11;
+
+            for(int i = 0; i < numOfSprites; i++)
+            {
+                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
+            }
+
+            sprite1.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2 - 20));
             sprite1.Scale = 6;
             sprite1.Color = CCColor3B.Red;
 
-            Schedule(reorderSprite, 1);
+            Schedule(ReorderSprite, 1);
         }
 
-        public void reorderSprite(float dt)
+        #endregion Setup content
+
+
+        void ReorderSprite(float dt)
         {
             CCSprite sprite = (CCSprite)(GetChildByTag((int)kTagSprite.kTagSprite1));
 
             int z = sprite.ZOrder;
 
             if (z < -1)
-                m_dir = 1;
-            if (z > 10)
-                m_dir = -1;
+                dir = 1;
+            else if(z > 10)
+                dir = -1;
 
-            z += m_dir * 3;
+            z += dir * 3;
 
             ReorderChild(sprite, z);
-        }
-
-        public override string title()
-        {
-            return "Sprite: Z order";
         }
     }
 }

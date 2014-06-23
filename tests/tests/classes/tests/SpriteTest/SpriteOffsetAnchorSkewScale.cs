@@ -8,78 +8,108 @@ namespace tests
 {
     public class SpriteOffsetAnchorSkewScale : SpriteTestDemo
     {
+        const int numOfSprites = 3;
+
+        CCSprite[] sprites;
+        CCSprite[] pointSprites;
+
+        CCAnimation animation;
+        CCFiniteTimeAction seq_skew;
+        CCFiniteTimeAction seq_scale;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite anchor + skew + scale"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteOffsetAnchorSkewScale()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            sprites = new CCSprite[numOfSprites];
+            pointSprites = new CCSprite[numOfSprites];
 
-            for (int i = 0; i < 3; i++)
+            // Create actions
+
+            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
+            cache.AddSpriteFrames("animations/grossini.plist");
+            cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
+            var animFrames = new List<CCSpriteFrame>();
+            string tmp = "";
+            for (int j = 0; j < 14; j++)
             {
-                CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
-                cache.AddSpriteFrames("animations/grossini.plist");
-                cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
+                tmp = string.Format("grossini_dance_{0:00}.png", j + 1);
+                CCSpriteFrame frame = cache[tmp];
+                animFrames.Add(frame);
+            }
 
-                //
+            animation = new CCAnimation(animFrames, 0.3f);
+
+            // Skew
+            CCSkewBy skewX = new CCSkewBy (2, 45, 0);
+            CCActionInterval skewX_back = (CCActionInterval)skewX.Reverse();
+            CCSkewBy skewY = new CCSkewBy (2, 0, 45);
+            CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
+
+            seq_skew = new CCSequence(skewX, skewX_back, skewY, skewY_back);
+
+            // Scale
+            CCScaleBy scale = new CCScaleBy(2, 2);
+            CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
+
+            seq_scale = new CCSequence(scale, scale_back);
+
+
+            for (int i = 0; i < numOfSprites; i++)
+            {
                 // Animation using Sprite batch
-                //
-                CCSprite sprite = new CCSprite("grossini_dance_01.png");
-                sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
+                sprites[i] = new CCSprite("grossini_dance_01.png");
+                AddChild(sprites[i], 0);
 
-                CCSprite point = new CCSprite("Images/r1");
-                point.Scale = 0.25f;
-                point.Position = sprite.Position;
-                AddChild(point, 1);
-
-                switch (i)
-                {
-                    case 0:
-                        sprite.AnchorPoint = new CCPoint(0, 0);
-                        break;
-                    case 1:
-                        sprite.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-                        break;
-                    case 2:
-                        sprite.AnchorPoint = (new CCPoint(1, 1));
-                        break;
-                }
-
-                point.Position = sprite.Position;
-
-                var animFrames = new List<CCSpriteFrame>();
-                string tmp = "";
-                for (int j = 0; j < 14; j++)
-                {
-                    tmp = string.Format("grossini_dance_{0:00}.png", j + 1);
-                    CCSpriteFrame frame = cache[tmp];
-                    animFrames.Add(frame);
-                }
-
-                CCAnimation animation = new CCAnimation(animFrames, 0.3f);
-                sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
-
-                animFrames = null;
-
-                // Skew
-                CCSkewBy skewX = new CCSkewBy (2, 45, 0);
-                CCActionInterval skewX_back = (CCActionInterval)skewX.Reverse();
-                CCSkewBy skewY = new CCSkewBy (2, 0, 45);
-                CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
-
-                CCFiniteTimeAction seq_skew = new CCSequence(skewX, skewX_back, skewY, skewY_back);
-                sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq_skew));
-
-                // Scale
-                CCScaleBy scale = new CCScaleBy(2, 2);
-                CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-                CCFiniteTimeAction seq_scale = new CCSequence(scale, scale_back);
-                sprite.RunAction(new CCRepeatForever ((CCActionInterval)seq_scale));
-
-                AddChild(sprite, 0);
+                pointSprites[i] = new CCSprite("Images/r1");
+                AddChild(pointSprites[i], 1);
             }
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "Sprite anchor + skew + scale";
+            base.RunningOnNewWindow (windowSize);
+
+            for(int i = 0; i < numOfSprites; i++) 
+            {
+                sprites[i].Position = (new CCPoint(windowSize.Width / 4 * (i + 1), windowSize.Height / 2));
+                pointSprites[i].Scale = 0.25f;
+                pointSprites[i].Position = sprites[i].Position;
+
+                switch(i)
+                {
+                    case 0:
+                        sprites[i].AnchorPoint = new CCPoint(0, 0);
+                        break;
+                    case 1:
+                        sprites[i].AnchorPoint = (new CCPoint(0.5f, 0.5f));
+                        break;
+                    case 2:
+                        sprites[i].AnchorPoint = (new CCPoint(1, 1));
+                        break;
+                }
+
+                sprites[i].RunAction(new CCRepeatForever(new CCAnimate(animation)));
+                sprites[i].RunAction(new CCRepeatForever ((CCActionInterval)seq_skew));
+                sprites[i].RunAction(new CCRepeatForever ((CCActionInterval)seq_scale));
+            }
         }
+
+        #endregion Setup content
     }
 }

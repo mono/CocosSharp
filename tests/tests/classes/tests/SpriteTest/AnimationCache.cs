@@ -8,6 +8,26 @@ namespace tests
 {
     public class AnimationCache : SpriteTestDemo
     {
+        CCSprite grossini;
+        CCFiniteTimeAction seqAnimation;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "AnimationCache"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Sprite should be animated"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public AnimationCache()
         {
             var frameCache = CCApplication.SharedApplication.SpriteFrameCache;
@@ -80,28 +100,30 @@ namespace tests
             CCAnimate animG = new CCAnimate (dance_grey);
             CCAnimate animB = new CCAnimate (dance_blue);
 
-            CCFiniteTimeAction seq = new CCSequence(animN, animG, animB);
+            seqAnimation = new CCSequence(animN, animG, animB);
 
-            // create an sprite without texture
-            CCSprite grossini = new CCSprite();
-            grossini.SpriteFrame = frameCache["grossini_dance_01.png"];
-
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            grossini.Position = (new CCPoint(winSize.Width / 2, winSize.Height / 2));
+            grossini = new CCSprite();
             AddChild(grossini);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            var frameCache = CCApplication.SharedApplication.SpriteFrameCache;
+
+            grossini.SpriteFrame = frameCache["grossini_dance_01.png"];
+            grossini.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
             // run the animation
-            grossini.RunAction(seq);
+            grossini.RunAction(seqAnimation);
         }
 
-        public override string title()
-        {
-            return "AnimationCache";
-        }
-
-        public override string subtitle()
-        {
-            return "Sprite should be animated";
-        }
+        #endregion Setup content
     }
 }

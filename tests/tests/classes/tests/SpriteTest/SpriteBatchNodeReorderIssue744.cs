@@ -8,29 +8,50 @@ namespace tests
 {
     public class SpriteBatchNodeReorderIssue744 : SpriteTestDemo
     {
+        CCSprite sprite;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "SpriteBatchNode: reorder issue #744"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Should not crash"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteBatchNodeReorderIssue744()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
             // Testing issue #744
             // http://code.google.com/p/cocos2d-iphone/issues/detail?id=744
             CCSpriteBatchNode batch = new CCSpriteBatchNode("Images/grossini_dance_atlas", 15);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            CCSprite sprite = new CCSprite(batch.Texture, new CCRect(0, 0, 85, 121));
-            sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
+            sprite = new CCSprite(batch.Texture, new CCRect(0, 0, 85, 121));
             batch.AddChild(sprite, 3);
             batch.ReorderChild(sprite, 1);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "SpriteBatchNode: reorder issue #744";
+            base.RunningOnNewWindow(windowSize);
+
+            sprite.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+
         }
 
-        public override string subtitle()
-        {
-            return "Should not crash";
-        }
+        #endregion Setup content
     }
 }

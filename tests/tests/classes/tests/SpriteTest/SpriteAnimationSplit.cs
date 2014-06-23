@@ -8,25 +8,45 @@ namespace tests
 {
     public class SpriteAnimationSplit : SpriteTestDemo
     {
+        CCSprite sprite;
+
+        CCActionInterval seq;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite: Animation + flip"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteAnimationSplit()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var texture = CCApplication.SharedApplication.TextureCache.AddImage("animations/dragon_animation");
+            CCSize contentSizeInPixels = texture.ContentSizeInPixels;
+            float height = contentSizeInPixels.Height / 4.0f;
+            float heightOffset = height / 2.0f;
+            float width = contentSizeInPixels.Width / 5.0f;
 
-			var texture = CCApplication.SharedApplication.TextureCache.AddImage("animations/dragon_animation");
+            // Manually add frames to the frame cache
+            // The rects in pixels of each frame are determined from the textureatlas 
+            var frame0 = new CCSpriteFrame(texture, new CCRect(width * 0, heightOffset + height * 0, width, height));
+            var frame1 = new CCSpriteFrame(texture, new CCRect(width * 1, heightOffset + height * 0, width, height));
+            var frame2 = new CCSpriteFrame(texture, new CCRect(width * 2, heightOffset + height * 0, width, height));
+            var frame3 = new CCSpriteFrame(texture, new CCRect(width * 3, heightOffset + height * 0, width, height));
 
-            // manually add frames to the frame cache
-			var frame0 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 0, 132, 132));
-			var frame1 = new CCSpriteFrame(texture, new CCRect(132 * 1, 132 * 0, 132, 132));
-			var frame2 = new CCSpriteFrame(texture, new CCRect(132 * 2, 132 * 0, 132, 132));
-			var frame3 = new CCSpriteFrame(texture, new CCRect(132 * 3, 132 * 0, 132, 132));
-			var frame4 = new CCSpriteFrame(texture, new CCRect(132 * 0, 132 * 1, 132, 132));
-			var frame5 = new CCSpriteFrame(texture, new CCRect(132 * 1, 132 * 1, 132, 132));
+            // Note: The height positioning below is a bit of voodoo because the sprite atlas isn't currently packed tightly
+            // See the dragon_animation.png file
+            var frame4 = new CCSpriteFrame(texture, new CCRect(width * 0, heightOffset * 1.6f + height * 1, width, height));
+            var frame5 = new CCSpriteFrame(texture, new CCRect(width * 1, heightOffset * 1.6f + height * 1, width, height));
 
-            //
             // Animation using Sprite BatchNode
-            //
-			var sprite = new CCSprite(frame0);
-            sprite.Position = new CCPoint(s.Width / 2 - 80, s.Height / 2);
+            sprite = new CCSprite(frame0);
             AddChild(sprite);
 
             var animFrames = new List<CCSpriteFrame>(6);
@@ -39,15 +59,24 @@ namespace tests
 
             CCAnimation animation = new CCAnimation(animFrames, 0.2f);
             CCAnimate animate = new CCAnimate (animation);
-            CCActionInterval seq = new CCSequence(animate,
-                               new CCFlipX(true),
-                              animate,
-                               new CCFlipX(false)
-                               );
-
-			sprite.RepeatForever(seq);
-            //animFrames->release();    // win32 : memory leak    2010-0415
+            seq = new CCSequence(animate, new CCFlipX(true), animate, new CCFlipX(false));
         }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            sprite.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
+            sprite.RepeatForever(seq);
+        }
+
+        #endregion Setup content
+
 
         public override void OnExit()
         {
@@ -55,9 +84,5 @@ namespace tests
             CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
-        public override string title()
-        {
-            return "Sprite: Animation + flip";
-        }
     }
 }

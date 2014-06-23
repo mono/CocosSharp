@@ -8,23 +8,26 @@ namespace tests
 {
     public class SpriteZVertex : SpriteTestDemo
     {
-        int m_dir;
-        float m_time;
-        public override void OnEnter()
-        {
-            base.OnEnter();
+        const int numOfSprites = 16;
 
-            // TIP: don't forget to enable Alpha test
-            //glEnable(GL_ALPHA_TEST);
-            //glAlphaFunc(GL_GREATER, 0.0f);
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection3D);
-        }
-        public override void OnExit()
+        int dir;
+        float time;
+
+        CCNode node;
+        CCSprite[] sprites;
+
+        #region Properties
+
+        public override string Title
         {
-            //glDisable(GL_ALPHA_TEST);
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
-            base.OnExit();
+            get { return "Sprite: openGL Z vertex"; }
         }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteZVertex()
         {
             //
@@ -36,42 +39,75 @@ namespace tests
             // transparent parts.
             //
 
-            m_dir = 1;
-            m_time = 0;
+            dir = 1;
+            time = 0;
+            sprites = new CCSprite[numOfSprites];
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            float step = s.Width / 12;
-
-            CCNode node = new CCNode ();
-            // camera uses the center of the image as the pivoting point
-            node.ContentSize = (new CCSize(s.Width, s.Height));
-            node.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-            node.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-
+            node = new CCNode();
             AddChild(node, 0);
 
             for (int i = 0; i < 5; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 0, 121 * 1, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
-                sprite.VertexZ = (10 + i * 40);
                 node.AddChild(sprite, 0);
+                sprites[i] = sprite;
             }
 
             for (int i = 5; i < 11; i++)
             {
                 CCSprite sprite = new CCSprite("Images/grossini_dance_atlas", new CCRect(85 * 1, 121 * 0, 85, 121));
-                sprite.Position = (new CCPoint((i + 1) * step, s.Height / 2));
-                sprite.VertexZ = 10 + (10 - i) * 40;
                 node.AddChild(sprite, 0);
+                sprites[i] = sprite;
+            }
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
+            // camera uses the center of the image as the pivoting point
+            node.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
+            node.AnchorPoint = (new CCPoint(0.5f, 0.5f));
+            node.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+
+            float step = windowSize.Width / 12;
+
+            for (int i = 0; i < 5; i++)
+            {
+                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
+                sprites[i].VertexZ = (10 + i * 40);
+            }
+
+            for (int i = 5; i < 11; i++)
+            {
+                sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
+                sprites[i].VertexZ = 10 + (10 - i) * 40;
             }
 
             node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
-        public override string title()
+        #endregion Setup content
+
+        public override void OnEnter()
         {
-            return "Sprite: openGL Z vertex";
+            base.OnEnter();
+
+            // TIP: don't forget to enable Alpha test
+            //glEnable(GL_ALPHA_TEST);
+            //glAlphaFunc(GL_GREATER, 0.0f);
+            Director.Projection = (CCDirectorProjection.Projection3D);
         }
+        public override void OnExit()
+        {
+            Director.Projection = (CCDirectorProjection.Projection2D);
+            base.OnExit();
+        }
+
     }
 }

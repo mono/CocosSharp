@@ -8,39 +8,65 @@ namespace tests
 {
     public class SpriteBatchNodeReorderIssue766 : SpriteTestDemo
     {
+        CCSpriteBatchNode batchNode;
+        CCSprite sprite1;
+        CCSprite sprite2;
+        CCSprite sprite3;
+
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "SpriteBatchNode: reorder issue #766"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "In 2 seconds 1 sprite will be reordered"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteBatchNodeReorderIssue766()
         {
             batchNode = new CCSpriteBatchNode("Images/piece", 15);
             AddChild(batchNode, 1, 0);
 
-            sprite1 = makeSpriteZ(2);
+            sprite1 = MakeSpriteZ(2);
+            sprite2 = MakeSpriteZ(3);
+            sprite3 = MakeSpriteZ(4);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow (windowSize);
+
             sprite1.Position = (new CCPoint(200, 160));
-
-            sprite2 = makeSpriteZ(3);
             sprite2.Position = (new CCPoint(264, 160));
-
-            sprite3 = makeSpriteZ(4);
             sprite3.Position = (new CCPoint(328, 160));
 
-            Schedule(reorderSprite, 2);
+            Schedule(ReorderSprite, 2);
         }
 
-        public override string title()
-        {
-            return "SpriteBatchNode: reorder issue #766";
-        }
+        #endregion Setup content
 
-        public override string subtitle()
+
+        void ReorderSprite(float dt)
         {
-            return "In 2 seconds 1 sprite will be reordered";
-        }
-        public void reorderSprite(float dt)
-        {
-            Unschedule(reorderSprite);
+            Unschedule(ReorderSprite);
             batchNode.ReorderChild(sprite1, 4);
         }
 
-        public CCSprite makeSpriteZ(int aZ)
+        CCSprite MakeSpriteZ(int aZ)
         {
             CCSprite sprite = new CCSprite(batchNode.Texture, new CCRect(128, 0, 64, 64));
             batchNode.AddChild(sprite, aZ + 1, 0);
@@ -55,10 +81,5 @@ namespace tests
 
             return sprite;
         }
-
-        private CCSpriteBatchNode batchNode;
-        private CCSprite sprite1;
-        private CCSprite sprite2;
-        private CCSprite sprite3;
     }
 }

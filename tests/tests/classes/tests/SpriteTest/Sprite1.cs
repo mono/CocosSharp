@@ -9,8 +9,20 @@ namespace tests
 {
     public class SpriteMaskTest : SpriteTestDemo
     {
-        private CCMaskedSprite grossini, ball;
-        private CCSprite hit;
+        CCMaskedSprite grossini, ball;
+        CCSprite hit;
+
+        #region Properties
+
+        public override string Title
+        {
+            get { return "Sprite Collision Test"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public SpriteMaskTest()
         {
@@ -18,22 +30,36 @@ namespace tests
             ball = new CCMaskedSprite("Images/ball-hd", GetCollisionMask("ball-hd"));
             hit = new CCSprite("Images/Icon");
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            grossini.Position = new CCPoint(s.Width / 3f, s.Height / 2f);
-            ball.Position = new CCPoint(s.Width * 2f / 3f, s.Height / 2f);
             AddChild(grossini, 1);
             AddChild(ball, 1);
             AddChild(hit, 5);
+        }
+
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
+        {
+            base.RunningOnNewWindow(windowSize);
+
+            grossini.Position = new CCPoint(windowSize.Width / 3f, windowSize.Height / 2f);
+            ball.Position = new CCPoint(windowSize.Width * 2f / 3f, windowSize.Height / 2f);
             hit.Visible = false;
+
             grossini.RunAction(new CCRepeatForever(new CCParallel(
                 new CCRotateBy(9f, 360f), 
                 new CCSequence(new CCMoveBy(3f, new CCPoint(-100f, 0)), new CCMoveBy(3f, new CCPoint(500f, 0f)), new CCMoveBy(3f, new CCPoint(-400f, 0)))
-                )));
+            )));
             ball.RunAction(new CCRepeatForever(new CCSequence(new CCMoveBy(1.5f, new CCPoint(-400f, 0)), new CCMoveBy(2f, new CCPoint(600f, 0f)), new CCMoveBy(1f, new CCPoint(-200f, 0)))));
             Schedule(new Action<float>(UpdateTest), .25f);
         }
 
-        private void UpdateTest(float dt)
+        #endregion Setup content
+
+
+        void UpdateTest(float dt)
         {
             CCPoint where;
             if (grossini.CollidesWith(ball, out where))
@@ -47,16 +73,12 @@ namespace tests
             }
         }
 
-        public override string title()
-        {
-            return "Sprite Collision Test";
-        }
 
         #region Collision Mask Support Code
 
-        private Stream GetEmbeddedResource(string name)
+        Stream GetEmbeddedResource(string name)
         {
-#if !WINRT && !NETFX_CORE
+            #if !WINRT && !NETFX_CORE
             System.Reflection.Assembly assem = System.Reflection.Assembly.GetExecutingAssembly();
             Stream stream = assem.GetManifestResourceStream(name);
             if (stream == null)
@@ -64,12 +86,12 @@ namespace tests
                 stream = assem.GetManifestResourceStream("tests." + name);
             }
             return (stream);
-#else
+            #else
             return null;
-#endif
+            #endif
         }
 
-        private byte[] ReadCollisionMask(Stream stream)
+        byte[] ReadCollisionMask(Stream stream)
         {
             MemoryStream ms = new MemoryStream();
             using (stream)
@@ -103,7 +125,7 @@ namespace tests
             return (ms.ToArray());
         }
 
-        private byte[] GetCollisionMask(string refName)
+        byte[] GetCollisionMask(string refName)
         {
             byte[] mask = null;
             try
@@ -125,25 +147,40 @@ namespace tests
             return (mask);
         }
 
-        #endregion
+        #endregion Collision Mask Support Code
 
     }
 
     public class Sprite1 : SpriteTestDemo
     {
-        public Sprite1()
+        #region Properties
+
+        public override string Title
         {
-			// Register Touch Event
-			var touchListener = new CCEventListenerTouchAllAtOnce();
-			touchListener.OnTouchesEnded = onTouchesEnded;
-
-			EventDispatcher.AddEventListener(touchListener, this);
-
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            addNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
+            get { return "Sprite (tap screen)"; }
         }
 
-        public void addNewSpriteWithCoords(CCPoint p)
+        #endregion Properties
+
+
+        #region Constructors
+
+        public Sprite1()
+        {
+            // Register Touch Event
+            var touchListener = new CCEventListenerTouchAllAtOnce();
+            touchListener.OnTouchesEnded = OnTouchesEnded;
+
+            EventDispatcher.AddEventListener(touchListener, this);
+
+            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            AddNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
+        }
+
+        #endregion Constructors
+
+
+        void AddNewSpriteWithCoords(CCPoint p)
         {
             int idx = (int)(CCMacros.CCRandomBetween0And1() * 1400.0f / 100.0f);
             int x = (idx % 5) * 85;
@@ -174,18 +211,12 @@ namespace tests
             sprite.RunAction(new CCRepeatForever (seq));
         }
 
-        public override string title()
-        {
-            return "Sprite (tap screen)";
-        }
-
-
-		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
+        void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             foreach (CCTouch touch in touches)
             {
                 var location = touch.Location;
-                addNewSpriteWithCoords(location);
+                AddNewSpriteWithCoords(location);
             }
         }
     }

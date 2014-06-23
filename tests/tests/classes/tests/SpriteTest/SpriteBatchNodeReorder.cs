@@ -9,6 +9,23 @@ namespace tests
 {
     public class SpriteBatchNodeReorder : SpriteTestDemo
     {
+        #region Properties
+
+        public override string Title
+        {
+            get { return "SpriteBatchNode: reorder #1"; }
+        }
+
+        public override string Subtitle
+        {
+            get { return "Should not crash"; }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public SpriteBatchNodeReorder()
         {
             List<Object> a = new List<Object>(10);
@@ -59,14 +76,6 @@ namespace tests
             }
         }
 
-        public override string title()
-        {
-            return "SpriteBatchNode: reorder #1";
-        }
-
-        public override string subtitle()
-        {
-            return "Should not crash";
-        }
+        #endregion Constructors
     }
 }

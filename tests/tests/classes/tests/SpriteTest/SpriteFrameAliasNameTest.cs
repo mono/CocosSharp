@@ -8,41 +8,30 @@ namespace tests
 {
     public class SpriteFrameAliasNameTest : SpriteTestDemo
     {
-        public override void OnEnter()
+        CCSprite sprite;
+        CCAnimation animation;
+
+        #region Properties
+
+        public override string Title
         {
-            base.OnEnter();
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            get { return "SpriteFrame Alias Name"; }
+        }
 
-            // IMPORTANT:
-            // The sprite frames will be cached AND RETAINED, and they won't be released unless you call
-            //     [[CCSpriteFrameCache sharedSpriteFrameCache] removeUnusedSpriteFrames];
-            //
-            // CCSpriteFrameCache is a cache of CCSpriteFrames
-            // CCSpriteFrames each contain a texture id and a rect (frame).
+        public override string Subtitle
+        {
+            get { return "SpriteFrames are obtained using the alias name"; }
+        }
 
+        #endregion Properties
+
+
+        #region Constructors
+
+        public SpriteFrameAliasNameTest()
+        {
             CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini-aliases.plist", "animations/grossini-aliases");
-
-            //
-            // Animation using Sprite batch
-            //
-            // A CCSpriteBatchNode can reference one and only one texture (one .png file)
-            // Sprites that are contained in that texture can be instantiatied as CCSprites and then added to the CCSpriteBatchNode
-            // All CCSprites added to a CCSpriteBatchNode are drawn in one OpenGL ES draw call
-            // If the CCSprites are not added to a CCSpriteBatchNode then an OpenGL ES draw call will be needed for each one, which is less efficient
-            //
-            // When you animate a sprite, CCAnimation changes the frame of the sprite using setDisplayFrame: (this is why the animation must be in the same texture)
-            // When setDisplayFrame: is used in the CCAnimation it changes the frame to one specified by the CCSpriteFrames that were added to the animation,
-            // but texture id is still the same and so the sprite is still a child of the CCSpriteBatchNode, 
-            // and therefore all the animation sprites are also drawn as part of the CCSpriteBatchNode
-            //
-
-            CCSprite sprite = new CCSprite("grossini_dance_01.png");
-            sprite.Position = (new CCPoint(s.Width * 0.5f, s.Height * 0.5f));
-
-            CCSpriteBatchNode spriteBatch = new CCSpriteBatchNode("animations/grossini-aliases");
-            spriteBatch.AddChild(sprite);
-            AddChild(spriteBatch);
 
             var animFrames = new List<CCSpriteFrame>(15);
             string str = "";
@@ -54,19 +43,28 @@ namespace tests
                 animFrames.Add(frame);
             }
 
-            CCAnimation animation = new CCAnimation(animFrames, 0.3f);
-            // 14 frames * 1sec = 14 seconds
-            sprite.RunAction(new CCRepeatForever (new CCAnimate (animation)));
+            animation = new CCAnimation(animFrames, 0.3f);
+
+            sprite = new CCSprite("grossini_dance_01.png");
+
+            CCSpriteBatchNode spriteBatch = new CCSpriteBatchNode("animations/grossini-aliases");
+            spriteBatch.AddChild(sprite);
+            AddChild(spriteBatch);
         }
 
-        public override string title()
+        #endregion Constructors
+
+
+        #region Setup content
+
+        protected override void RunningOnNewWindow(CCSize windowSize)
         {
-            return "SpriteFrame Alias Name";
+            base.RunningOnNewWindow (windowSize);
+
+            sprite.Position = (new CCPoint(windowSize.Width * 0.5f, windowSize.Height * 0.5f));
+            sprite.RunAction(new CCRepeatForever (new CCAnimate(animation)));
         }
 
-        public override string subtitle()
-        {
-            return "SpriteFrames are obtained using the alias name";
-        }
+        #endregion Setup content
     }
 }
