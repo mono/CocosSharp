@@ -73,6 +73,7 @@ namespace CocosSharp
 
         public CCMenu(params CCMenuItem[] items) : base()
         {
+
             Enabled = true;
 
             SelectedMenuItem = null;
@@ -94,6 +95,8 @@ namespace CocosSharp
                 }
             }
 
+			// We will set the position as being not set
+			Position = new CCPoint(float.NegativeInfinity, float.NegativeInfinity);
         }
 
         #endregion Constructors
@@ -112,7 +115,7 @@ namespace CocosSharp
 
 				// If the position has already been set then we need to respect 
 				// that position
-				if (!IsTransformDirty)
+				if (!IsTransformDirty || Position == CCPoint.NegativeInfinity)
 					Position = contentSize.Center;
 
                 ContentSize = contentSize;

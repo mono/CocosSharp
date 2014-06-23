@@ -37,6 +37,7 @@ namespace CocosSharp
     public struct CCPoint
     {
         public static readonly CCPoint Zero = new CCPoint(0, 0);
+		public static readonly CCPoint NegativeInfinity = new CCPoint(float.NegativeInfinity, float.NegativeInfinity);
 
         public static readonly CCPoint AnchorMiddle = new CCPoint(0.5f, 0.5f);
         public static readonly CCPoint AnchorLowerLeft = new CCPoint(0f, 0f);

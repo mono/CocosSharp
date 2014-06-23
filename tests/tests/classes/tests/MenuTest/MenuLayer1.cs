@@ -96,7 +96,7 @@ namespace tests
             menu.AlignItemsVertically();
 
             // elastic effect
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
             int i = 0;
             CCNode child;
             var pArray = menu.Children;
@@ -107,8 +107,8 @@ namespace tests
                 {
                     pObject = pArray[j];
                     if (pObject == null)
-
                         break;
+
                     child = (CCNode) pObject;
                     CCPoint dstPoint = child.Position;
                     int offset = (int) (s.Width / 2 + 50);
@@ -152,7 +152,7 @@ namespace tests
 
         public void allowTouches(float dt)
         {
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.SetPriority(touchListener,1);
+			Director.EventDispatcher.SetPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -170,7 +170,7 @@ namespace tests
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.SetPriority(touchListener,-1);
+			EventDispatcher.SetPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }
