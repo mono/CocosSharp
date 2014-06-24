@@ -25,7 +25,7 @@ namespace CocosSharp
         int inDispatch;                                             // Whether the dispatcher is dispatching event
         int nodePriorityIndex;
 
-        List<CCEventListener> toBeAddedListeners;                   // The listeners to be added after dispatching event
+        internal List<CCEventListener> toBeAddedListeners;          // The listeners to be added after dispatching event
 
         SortedSet<CCNode> dirtyNodes;                               // The nodes were associated with scene graph based priority listeners
         SortedSet<string> internalCustomListenerIDs;

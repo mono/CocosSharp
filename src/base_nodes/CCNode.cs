@@ -129,6 +129,9 @@ namespace CocosSharp
         protected bool IsTransformDirty { get; set; }
         protected bool IsReorderChildDirty { get; set; }
 
+		List<CCEventListener> toBeAddedListeners;          // The listeners to be added lazily when a EventDispatcher is not yet available
+
+
         // Not auto-implemented properties
 
         public virtual bool CanReceiveFocus
@@ -495,10 +498,31 @@ namespace CocosSharp
                     if (director != null)
                         RunningOnNewWindow(value.WindowSizeInPoints);
 
+					AttachEvents();
+
                     forceDirectorSet = false;
                 }
             }
         }
+
+		void AttachEvents()
+		{
+			if (toBeAddedListeners != null && toBeAddedListeners.Count > 0)
+			{
+				var eventDispatcher = director.EventDispatcher;
+				foreach (var listener in toBeAddedListeners)
+				{
+					if (listener.SceneGraphPriority != null)
+						eventDispatcher.AddEventListener(listener, listener.SceneGraphPriority);
+					else
+						eventDispatcher.AddEventListener(listener, listener.FixedPriority);
+				}
+
+				toBeAddedListeners.Clear();
+				toBeAddedListeners = null;
+			}
+
+		}
 
         public CCEventDispatcher EventDispatcher 
         { 
@@ -1060,6 +1084,249 @@ namespace CocosSharp
 
         #endregion Child Sorting
 
+
+		#region Events and Listeners
+
+		/// <summary>
+		/// Adds a event listener for a specified event with the priority of scene graph.
+		/// The priority of scene graph will be fixed value 0. So the order of listener item
+		/// in the vector will be ' <0, scene graph (0 priority), >0'.
+		/// </summary>
+		/// <param name="listener">The listener of a specified event.</param>
+		/// <param name="node">The priority of the listener is based on the draw order of this node.</param>
+		public void AddEventListener(CCEventListener listener, CCNode node = null)
+		{
+
+			if (node == null)
+				node = this;
+
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			{
+				EventDispatcher.AddEventListener(listener, node);
+			}
+			else
+			{
+				if (toBeAddedListeners == null)
+					toBeAddedListeners = new List<CCEventListener>();
+
+				listener.SceneGraphPriority = node;
+				toBeAddedListeners.Add(listener);
+			}
+		}
+
+		/// <summary>
+		/// Adds a event listener for a specified event with the fixed priority.
+		/// A lower priority will be called before the ones that have a higher value.
+		/// 0 priority is not allowed for fixed priority since it's used for scene graph based priority.
+		/// </summary>
+		/// <param name="listener">The listener of a specified event.</param>
+		/// <param name="fixedPriority">The fixed priority of the listener.</param>
+		public void AddEventListener(CCEventListener listener, int fixedPriority)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			{
+				EventDispatcher.AddEventListener(listener, fixedPriority);
+			}
+			else
+			{
+				if (toBeAddedListeners == null)
+					toBeAddedListeners = new List<CCEventListener>();
+
+				listener.FixedPriority = fixedPriority;
+				toBeAddedListeners.Add(listener);
+			}
+		}
+
+		/// <summary>
+		/// Adds a Custom event listener.
+		/// It will use a fixed priority of 1.
+		/// </summary>
+		/// <returns>The generated event. Needed in order to remove the event from the dispather.</returns>
+		/// <param name="eventName">Event name.</param>
+		/// <param name="callback">Callback.</param>
+		public CCEventListenerCustom AddCustomEventListener(string eventName, Action<CCEventCustom> callback)
+		{
+			var listener = new CCEventListenerCustom(eventName, callback);
+			AddEventListener(listener, 1);
+			return listener;
+		}
+
+		/// <summary>
+		/// Remove a listener
+		/// </summary>
+		/// <param name="listener">The specified event listener which needs to be removed.</param>
+		public void RemoveEventListener(CCEventListener listener)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.RemoveEventListener(listener);
+
+			if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
+				toBeAddedListeners.Remove(listener);
+		}
+
+		/// <summary>
+		/// Removes all listeners with the same event listener type
+		/// </summary>
+		/// <param name="listenerType"></param>
+		public void RemoveEventListeners(CCEventListenerType listenerType)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.RemoveEventListeners(listenerType);
+
+			if (toBeAddedListeners != null)
+			{
+
+				var listenerID = string.Empty;
+				switch (listenerType) 
+				{
+					case CCEventListenerType.TOUCH_ONE_BY_ONE:
+						listenerID = CCEventListenerTouchOneByOne.LISTENER_ID;
+						break;
+					case CCEventListenerType.TOUCH_ALL_AT_ONCE:
+						listenerID = CCEventListenerTouchAllAtOnce.LISTENER_ID;
+						break;
+					case CCEventListenerType.MOUSE:
+						listenerID = CCEventListenerMouse.LISTENER_ID;
+						break;
+					case CCEventListenerType.ACCELEROMETER:
+						listenerID = CCEventListenerAccelerometer.LISTENER_ID;
+						break;
+					case CCEventListenerType.KEYBOARD:
+						listenerID = CCEventListenerKeyboard.LISTENER_ID;
+						break;
+					case CCEventListenerType.GAMEPAD:
+						listenerID = CCEventListenerGamePad.LISTENER_ID;
+						break;
+
+					default:
+						Debug.Assert (false, "Invalid listener type!");
+						break;
+				}
+
+				for (int i = 0; i < toBeAddedListeners.Count; i++)
+				{
+					if (toBeAddedListeners[i].ListenerID == listenerID)
+					{
+						toBeAddedListeners.RemoveAt(i);
+					}
+				}
+
+				if (toBeAddedListeners.Count == 0)
+					toBeAddedListeners = null;
+
+			}
+		}
+
+		/// <summary>
+		/// Removes all listeners which are associated with the specified target.
+		/// </summary>
+		/// <param name="target"></param>
+		/// <param name="recursive"></param>
+		public void RemoveEventListeners(CCNode target, bool recursive = false)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.RemoveEventListeners(target, recursive);
+
+			if (toBeAddedListeners != null)
+			{
+				for (int i = 0; i < toBeAddedListeners.Count; i++)
+				{
+					if (toBeAddedListeners[i].SceneGraphPriority == target)
+					{
+						toBeAddedListeners.RemoveAt(i);
+					}
+				}
+
+				if (toBeAddedListeners.Count == 0)
+					toBeAddedListeners = null;
+
+			}
+		}
+
+		/// <summary>
+		/// Removes all listeners which are associated with this node.
+		/// </summary>
+		/// <param name="recursive"></param>
+		public void RemoveEventListeners(bool recursive = false)
+		{
+			RemoveEventListeners(this, recursive);
+		}
+
+		/// <summary>
+		/// Removes all listeners
+		/// </summary>
+		public void RemoveAllListeners()
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.RemoveAll();
+
+			if (toBeAddedListeners != null)
+			{
+				toBeAddedListeners.Clear();
+				toBeAddedListeners = null;
+			}
+		}
+
+		/// <summary>
+		/// Pauses all listeners which are associated the specified target.
+		/// </summary>
+		/// <param name="target"></param>
+		/// <param name="recursive"></param>
+		public void PauseListeners(CCNode target, bool recursive = false)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.Pause(target, recursive);
+		}
+
+		/// <summary>
+		/// Pauses all listeners which are associated the specified this node.
+		/// </summary>
+		/// <param name="recursive"></param>
+		public void PauseListeners(bool recursive = false)
+		{
+			PauseListeners(this, recursive);
+		}
+
+		/// <summary>
+		/// Resumes all listeners which are associated the specified target.
+		/// </summary>
+		/// <param name="target"></param>
+		/// <param name="recursive"></param>
+		public void ResumeListeners(CCNode target, bool recursive = false)
+		{
+			if (EventDispatcher != null)
+				EventDispatcher.Resume(target, recursive);
+
+		}
+
+		/// <summary>
+		/// Resumes all listeners which are associated the this node.
+		/// </summary>
+		/// <param name="recursive"></param>
+		public void ResumeListeners(bool recursive = false)
+		{
+			ResumeListeners(this, recursive);
+		}
+
+		/// <summary>
+		/// Sets listener's priority with fixed value.
+		/// </summary>
+		/// <param name="listener"></param>
+		/// <param name="fixedPriority"></param>
+		public void SetListenerPriority(CCEventListener listener, int fixedPriority)
+		{
+			if (EventDispatcher != null && EventDispatcherIsEnabled)
+				EventDispatcher.SetPriority(listener, fixedPriority);
+
+			if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
+			{
+				var found = toBeAddedListeners.IndexOf(listener);
+				toBeAddedListeners[found].FixedPriority = fixedPriority;
+			}
+		}
+
+
+		#endregion Events and Listeners
 
         public virtual void Update(float dt)
         {
