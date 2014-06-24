@@ -40,6 +40,17 @@ namespace tests
         public MenuLayer1()
         {
 
+			// Register Touch Event
+			touchListener = new CCEventListenerTouchOneByOne();
+			touchListener.IsSwallowTouches = true;
+
+			touchListener.OnTouchBegan = onTouchBegan;
+			touchListener.OnTouchMoved = onTouchMoved;
+			touchListener.OnTouchEnded = onTouchEnded;
+			touchListener.OnTouchCancelled = onTouchCancelled;
+
+			AddEventListener(touchListener, 1);
+
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
 			// modify this here to make sure we have the correct sizes when they are passed.
@@ -96,17 +107,6 @@ namespace tests
 		{
 			base.RunningOnNewWindow(windowSize);
 
-			// Register Touch Event
-			touchListener = new CCEventListenerTouchOneByOne();
-			touchListener.IsSwallowTouches = true;
-
-			touchListener.OnTouchBegan = onTouchBegan;
-			touchListener.OnTouchMoved = onTouchMoved;
-			touchListener.OnTouchEnded = onTouchEnded;
-			touchListener.OnTouchCancelled = onTouchCancelled;
-
-			EventDispatcher.AddEventListener(touchListener, 1);
-
 			// elastic effect
 			CCSize s = windowSize;
 
@@ -160,7 +160,7 @@ namespace tests
 
         public void allowTouches(float dt)
         {
-			EventDispatcher.SetPriority(touchListener,1);
+			SetListenerPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -178,7 +178,7 @@ namespace tests
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
-			EventDispatcher.SetPriority(touchListener,-1);
+			SetListenerPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }

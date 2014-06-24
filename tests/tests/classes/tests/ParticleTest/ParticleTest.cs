@@ -267,7 +267,7 @@ namespace tests
             listener.OnTouchesMoved = OnTouchesMoved;
             listener.OnTouchesEnded = OnTouchesEnded;
 
-            EventDispatcher.AddEventListener(listener, this);
+            AddEventListener(listener);
         }
 
         #endregion Setup content

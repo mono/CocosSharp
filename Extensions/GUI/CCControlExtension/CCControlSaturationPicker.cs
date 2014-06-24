@@ -59,7 +59,7 @@ namespace CocosSharp
 			touchListener.OnTouchBegan = OnTouchBegan;
 			touchListener.OnTouchMoved = OnTouchMoved;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
         }
 
         #endregion Constructors

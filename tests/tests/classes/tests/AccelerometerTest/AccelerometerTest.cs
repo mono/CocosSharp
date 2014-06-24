@@ -73,7 +73,7 @@ namespace tests
 
             accelListener.OnAccelerate = DidAccelerate;
 
-            EventDispatcher.AddEventListener(accelListener, this); 
+            AddEventListener(accelListener); 
         }
 
         #endregion Setup content

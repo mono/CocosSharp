@@ -47,7 +47,7 @@ namespace tests
             var touchListener = new CCEventListenerTouchAllAtOnce();
             touchListener.OnTouchesEnded = OnTouchesEnded;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
 
             for (int i = 0; i < 30; i++)
                 AddNewSprite();

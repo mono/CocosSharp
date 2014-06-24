@@ -166,7 +166,7 @@ namespace CocosSharp
                 touchListener.OnTouchEnded = TouchEnded;
                 touchListener.OnTouchCancelled = TouchCancelled;
 
-                EventDispatcher.AddEventListener(touchListener, this);
+                AddEventListener(touchListener);
 
 				switch(alignmentState.Alignment)
 				{

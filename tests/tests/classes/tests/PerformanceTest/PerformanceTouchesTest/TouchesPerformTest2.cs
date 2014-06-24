@@ -24,7 +24,7 @@ namespace tests
 			touchListener.OnTouchesEnded = onTouchesEnded;
 			touchListener.OnTouchesCancelled = onTouchesCancelled;
 
-			EventDispatcher.AddEventListener(touchListener, this);
+			AddEventListener(touchListener);
         }
 
         public override string title()

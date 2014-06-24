@@ -524,7 +524,7 @@ namespace tests.Clipping
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesBegan = onTouchesBegan;
 
-            EventDispatcher.AddEventListener(listener, this);    
+            AddEventListener(listener);    
         }
 
 		protected override void RunningOnNewWindow(CCSize windowSize)
@@ -631,7 +631,7 @@ namespace tests.Clipping
 			touchListener.OnTouchesMoved = onTouchesMoved;
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-            EventDispatcher.AddEventListener(touchListener, this);        
+            AddEventListener(touchListener);        
 		}
 
 		protected override void RunningOnNewWindow(CCSize windowSize)

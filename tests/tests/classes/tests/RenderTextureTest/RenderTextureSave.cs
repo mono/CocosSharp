@@ -91,7 +91,7 @@ namespace tests
             var touchListener = new CCEventListenerTouchAllAtOnce();
             touchListener.OnTouchesMoved = OnTouchesMoved;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
         }
 
         #endregion Setup content
