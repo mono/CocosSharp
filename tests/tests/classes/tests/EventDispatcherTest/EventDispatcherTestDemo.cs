@@ -657,7 +657,7 @@ namespace tests
 				{
 					++count;
 					var userData = string.Format("{0}", count);
-					EventDispatcher.DispatchEvent("game_custom_event1",userData);
+					DispatchEvent("game_custom_event1",userData);
 			});
 
 			sendItem.Position = origin + size.Center;
@@ -678,7 +678,7 @@ namespace tests
 				{
 					var customEvent = new CCEventCustom("game_custom_event2");
 					customEvent.UserData = ++count2;
-                    EventDispatcher.DispatchEvent(customEvent);
+                    DispatchEvent(customEvent);
 				});
 
 			sendItem2.Position = origin + new CCPoint(size.Width / 2, size.Height / 2 - 40);
@@ -1242,7 +1242,7 @@ namespace tests
 					AddChild(menu2);
 
 
-					EventDispatcher.DispatchEvent(CCEvent.EVENT_COME_TO_BACKGROUND);
+					DispatchEvent(CCEvent.EVENT_COME_TO_BACKGROUND);
 				});
 
 			menu = new CCMenu(removeAllTouchItem);

@@ -1100,7 +1100,7 @@ namespace CocosSharp
 			if (node == null)
 				node = this;
 
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcherIsEnabled)
 			{
 				EventDispatcher.AddEventListener(listener, node);
 			}
@@ -1123,7 +1123,7 @@ namespace CocosSharp
 		/// <param name="fixedPriority">The fixed priority of the listener.</param>
 		public void AddEventListener(CCEventListener listener, int fixedPriority)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcherIsEnabled)
 			{
 				EventDispatcher.AddEventListener(listener, fixedPriority);
 			}
@@ -1157,7 +1157,7 @@ namespace CocosSharp
 		/// <param name="listener">The specified event listener which needs to be removed.</param>
 		public void RemoveEventListener(CCEventListener listener)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcherIsEnabled)
 				EventDispatcher.RemoveEventListener(listener);
 
 			if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
@@ -1170,7 +1170,7 @@ namespace CocosSharp
 		/// <param name="listenerType"></param>
 		public void RemoveEventListeners(CCEventListenerType listenerType)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcher != null)
 				EventDispatcher.RemoveEventListeners(listenerType);
 
 			if (toBeAddedListeners != null)
@@ -1224,7 +1224,7 @@ namespace CocosSharp
 		/// <param name="recursive"></param>
 		public void RemoveEventListeners(CCNode target, bool recursive = false)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcher != null)
 				EventDispatcher.RemoveEventListeners(target, recursive);
 
 			if (toBeAddedListeners != null)
@@ -1257,7 +1257,7 @@ namespace CocosSharp
 		/// </summary>
 		public void RemoveAllListeners()
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcher != null)
 				EventDispatcher.RemoveAll();
 
 			if (toBeAddedListeners != null)
@@ -1274,7 +1274,7 @@ namespace CocosSharp
 		/// <param name="recursive"></param>
 		public void PauseListeners(CCNode target, bool recursive = false)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcher != null)
 				EventDispatcher.Pause(target, recursive);
 		}
 
@@ -1315,7 +1315,7 @@ namespace CocosSharp
 		/// <param name="fixedPriority"></param>
 		public void SetListenerPriority(CCEventListener listener, int fixedPriority)
 		{
-			if (EventDispatcher != null && EventDispatcherIsEnabled)
+			if (EventDispatcherIsEnabled)
 				EventDispatcher.SetPriority(listener, fixedPriority);
 
 			if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
@@ -1325,6 +1325,27 @@ namespace CocosSharp
 			}
 		}
 
+		/// <summary>
+		/// Convenience method to dispatch a custom event
+		/// </summary>
+		/// <param name="eventToDispatch"></param>
+		public void DispatchEvent(string customEvent, object userData = null)
+		{
+			if (EventDispatcherIsEnabled)
+				EventDispatcher.DispatchEvent(customEvent, userData);
+
+		}
+
+		/// <summary>
+		/// Dispatches the event
+		/// Also removes all EventListeners marked for deletion from the event dispatcher list.
+		/// </summary>
+		/// <param name="eventToDispatch"></param>
+		public void DispatchEvent(CCEvent eventToDispatch)
+		{
+			if (EventDispatcherIsEnabled)
+				EventDispatcher.DispatchEvent(eventToDispatch);
+		}
 
 		#endregion Events and Listeners
 
