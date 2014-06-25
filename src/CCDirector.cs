@@ -87,7 +87,7 @@ namespace CocosSharp
         public ICCDirectorDelegate ProjectionDelegate { get; set; }
         public CCScene RunningScene { get; private set; }
         public CCNode NotificationNode { get; set; }
-        public CCEventDispatcher EventDispatcher { get; private set; }
+        internal CCEventDispatcher EventDispatcher { get; private set; }
 
         protected bool IsPurgeDirectorInNextLoop { get; set; }
         protected CCStats Stats { get; private set; }

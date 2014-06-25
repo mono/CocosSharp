@@ -524,7 +524,7 @@ namespace CocosSharp
 
 		}
 
-        public CCEventDispatcher EventDispatcher 
+		internal CCEventDispatcher EventDispatcher 
         { 
             get { return Director != null ? Director.EventDispatcher : null; }
         }

@@ -20,7 +20,7 @@ namespace CocosSharp
         ALL = FIXED_PRIORITY | SCENE_GRAPH_PRIORITY
     }
 
-    public class CCEventDispatcher
+    internal class CCEventDispatcher
     {
         int inDispatch;                                             // Whether the dispatcher is dispatching event
         int nodePriorityIndex;
