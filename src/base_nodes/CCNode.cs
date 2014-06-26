@@ -18,6 +18,7 @@ namespace CocosSharp
 	- They can contain other CCNode nodes (addChild, getChildByTag, removeChild, etc)
 	- They can schedule periodic callback (schedule, unschedule, etc)
 	- They can execute actions (runAction, stopAction, etc)
+	- They can listen to and dispatch events (graph priority, fixed priority, custom)
 
 	Some CCNode nodes provide extra functionality for them or their children.
 
