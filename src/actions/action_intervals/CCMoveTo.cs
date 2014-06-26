@@ -34,7 +34,7 @@ namespace CocosSharp
 			PositionDelta = action.PositionEnd - target.Position;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target != null)
 			{

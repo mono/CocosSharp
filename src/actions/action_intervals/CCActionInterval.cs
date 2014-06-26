@@ -31,7 +31,7 @@ namespace CocosSharp
 			{
 			}
 
-			protected internal override void Update (float time)
+			public override void Update (float time)
 			{
 			}
 		}
@@ -101,7 +101,7 @@ namespace CocosSharp
 		public float Elapsed { get; private set; }
 
 
-		protected internal override bool IsDone {
+		public override bool IsDone {
 			get { return Elapsed >= Duration; }
 		}
 

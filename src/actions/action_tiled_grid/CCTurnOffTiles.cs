@@ -83,7 +83,7 @@ namespace CocosSharp
 			Shuffle (TilesOrder, TilesCount);
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, l, t;
 

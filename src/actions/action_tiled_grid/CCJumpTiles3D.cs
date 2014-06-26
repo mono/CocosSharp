@@ -65,7 +65,7 @@ namespace CocosSharp
 			NumberOfJumps = action.NumberOfJumps;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, j;
 

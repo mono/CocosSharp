@@ -91,7 +91,7 @@ namespace CocosSharp
 			}
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target != null)
 			{

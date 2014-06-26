@@ -134,7 +134,7 @@ namespace CocosSharp
 			newRadius = r / CCCamera.ZEye;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			float r = (Radius + DeltaRadius * time) * CCCamera.ZEye;
 			float za = RadZ + RadDeltaZ * time;

@@ -38,7 +38,7 @@ namespace CocosSharp
 			PreviousPosition = StartPosition = target.Position;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target == null)
 				return;

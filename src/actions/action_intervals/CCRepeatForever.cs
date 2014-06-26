@@ -63,7 +63,7 @@ namespace CocosSharp
 			}
 		}
 
-		protected internal override bool IsDone {
+		public override bool IsDone {
 			get { return false; }
 		}
 

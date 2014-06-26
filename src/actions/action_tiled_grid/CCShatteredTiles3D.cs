@@ -72,7 +72,7 @@ namespace CocosSharp
 			ShatterZ = action.ShatterZ;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, j;
 			var doubleRange = Range * 2;
