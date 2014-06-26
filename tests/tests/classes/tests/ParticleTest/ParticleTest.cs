@@ -423,6 +423,8 @@ namespace tests
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
+
+			SetEmitterPosition();
         }
 
         public override string Title
@@ -447,6 +449,8 @@ namespace tests
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire); //.pvr"];
+
+			SetEmitterPosition();
         }
 		public override string Title
 		{
@@ -472,6 +476,9 @@ namespace tests
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -494,11 +501,13 @@ namespace tests
         {
             base.RunningOnNewWindow(windowSize);
 
-            CCPoint position = new CCPoint(MidWindowPoint);
-            Emitter = new CCParticleGalaxy(position);
+            Emitter = new CCParticleGalaxy(MidWindowPoint);
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -524,6 +533,9 @@ namespace tests
             Emitter = new CCParticleFlower(MidWindowPoint);
             Background.AddChild(Emitter, 10);
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
+
+			SetEmitterPosition();
+
         }
 		public override string Title
 		{
@@ -610,6 +622,9 @@ namespace tests
 
             // additive
             Emitter.BlendAdditive = true;
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -698,6 +713,9 @@ namespace tests
 
             // additive
             Emitter.BlendAdditive = false;
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -720,6 +738,9 @@ namespace tests
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -742,6 +763,9 @@ namespace tests
             Background.AddChild(Emitter, 10);
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_fire);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -766,6 +790,9 @@ namespace tests
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_stars1);
 
             Emitter.AutoRemoveOnFinish = true;
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -790,6 +817,9 @@ namespace tests
 
             CCPoint p = Emitter.Position;
             Emitter.Position = new CCPoint(p.X, 100);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -836,6 +866,9 @@ namespace tests
             Emitter.EmissionRate = Emitter.TotalParticles / Emitter.Life;
 
             Emitter.Texture = CCApplication.SharedApplication.TextureCache.AddImage(TestResource.s_snow);
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -942,6 +975,9 @@ namespace tests
 
             // additive
             Emitter.BlendAdditive = false;
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -969,6 +1005,9 @@ namespace tests
             Emitter.Speed = (100);
             Emitter.SpeedVar = (0);
             Emitter.EmissionRate = 10000;
+
+			SetEmitterPosition();
+
         }
 
 		public override string Title
@@ -1070,6 +1109,8 @@ namespace tests
             AddChild(Emitter, 10);
 
             Emitter.BlendAdditive = true;
+
+			SetEmitterPosition();
         }
 
 		public override string Title
@@ -1713,7 +1754,7 @@ namespace tests
             base.RunningOnNewWindow(windowSize);
 
             // emitter position
-            Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
+			Position = windowSize.Center;
             PositionVar = (CCPoint.Zero);
         }
 
