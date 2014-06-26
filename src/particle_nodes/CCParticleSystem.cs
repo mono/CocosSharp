@@ -241,7 +241,7 @@ namespace CocosSharp
                             }
                         }
 
-                        if(Director != null)
+                        if(Director != null && BatchNode.Director != Director)
                             BatchNode.Director = Director;
                     }
                 }
@@ -375,7 +375,7 @@ namespace CocosSharp
             get { return base.Director; }
             internal set 
             {
-                if(Director != null && BatchNode != null) 
+                if(Director != null && BatchNode != null && BatchNode.Director != Director) 
                 {
                     BatchNode.Director = Director;
                 }
