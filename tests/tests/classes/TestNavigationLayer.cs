@@ -62,8 +62,14 @@ namespace tests
         {
             base.RunningOnNewWindow(windowSize);
 
+			if (!string.IsNullOrEmpty(Title))
+				TitleLabel.Text = Title;
+
             if(TitleLabel != null)
                 TitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 50));
+
+			if (!string.IsNullOrEmpty(Subtitle))
+				SubtitleLabel.Text = Subtitle;
 
             if(SubtitleLabel != null)
                 SubtitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 80));
