@@ -16,7 +16,7 @@ namespace CocosSharp
  @since v0.99.1
  */
 
-    public class CCProgressTimer : CCNodeRGBA
+    public class CCProgressTimer : CCNode
     {
         const int ProgressTextureCoordsCount = 4;
         const uint ProgressTextureCoords = 0x4b;    // ProgressTextureCoords holds points {0,1} {0,0} {1,0} {1,1} we can represent it as bits

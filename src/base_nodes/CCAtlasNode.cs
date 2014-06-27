@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCAtlasNode : CCNodeRGBA, ICCTexture
+    public class CCAtlasNode : CCNode, ICCTexture
     {
     
         #region Properties

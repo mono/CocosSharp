@@ -116,14 +116,14 @@ namespace CocosSharp
         public void ClearDepth(float depthValue)
         {
             Begin();
-            CCDrawManager.Clear(ClearOptions.DepthBuffer, Color.White, depthValue, 0);
+            CCDrawManager.Clear(ClearOptions.DepthBuffer, Microsoft.Xna.Framework.Color.White, depthValue, 0);
             End();
         }
 
         public void ClearStencil(int stencilValue)
         {
             Begin();
-            CCDrawManager.Clear(ClearOptions.Stencil, Color.White, 0, stencilValue);
+			CCDrawManager.Clear(ClearOptions.Stencil, Microsoft.Xna.Framework.Color.White, 0, stencilValue);
             End();
         }
 

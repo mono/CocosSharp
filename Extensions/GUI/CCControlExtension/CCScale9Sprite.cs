@@ -7,7 +7,7 @@ namespace CocosSharp
 	/// points are along the perimeter, and the 9th is the center area. This special sprite is capable of resizing
 	/// itself to arbitrary scales.
 	/// </summary>
-	public class CCScale9Sprite : CCNodeRGBA
+	public class CCScale9Sprite : CCNode
 	{
 		#region Enums
 

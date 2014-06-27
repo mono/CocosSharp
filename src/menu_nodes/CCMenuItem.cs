@@ -7,7 +7,7 @@ namespace CocosSharp
     /// @brief CCMenuItem base class
     /// Subclass CCMenuItem (or any subclass) to create your custom CCMenuItem objects.
     /// </summary>
-    public class CCMenuItem : CCNodeRGBA
+    public class CCMenuItem : CCNode
     {
         #region Properties
 
