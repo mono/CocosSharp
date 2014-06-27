@@ -11,12 +11,24 @@ namespace tests
         int kTagLayer = 1;
         int kCCMenuTouchPriority = -128;
 
+		const float waitTime = 3f;
+		const float runTime = 12f;
+
+		CCHide hide = new CCHide();
+		CCScaleTo scaleTo1 = new CCScaleTo(0.0f, 0.0f);
+		CCShow show = new CCShow();
+		CCDelayTime delay = new CCDelayTime (waitTime);
+		CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 1.2f);
+		CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 0.95f);
+		CCScaleTo scaleTo4 = new CCScaleTo(runTime * 0.25f, 1.1f);
+		CCScaleTo scaleTo5 = new CCScaleTo(runTime * 0.25f, 1.0f);
+
         public override void OnEnter()
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            var s = Director.WindowSizeInPoints;
+            var layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
 
             layer.IgnoreAnchorPointForPosition = false;
             layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
@@ -24,37 +36,28 @@ namespace tests
             //
             // Add two labels using BM label class
             // CCLabelBMFont
-            CCLabelBMFont label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
+            var label1 = new CCLabelBMFont("LABEL1", "fonts/konqa32.fnt");
             layer.AddChild(label1);
             label1.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.75f);
-            CCLabelBMFont label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
+            var label2 = new CCLabelBMFont("LABEL2", "fonts/konqa32.fnt");
             layer.AddChild(label2);
             label2.Position = new CCPoint(layer.ContentSize.Width / 2, layer.ContentSize.Height * 0.25f);
+
+
             //
             // Do the sequence of actions in the bug report
-            float waitTime = 3f;
-            float runTime = 12f;
             layer.Visible = false;
-            CCHide hide = new CCHide();
-            CCScaleTo scaleTo1 = new CCScaleTo(0.0f, 0.0f);
-            CCShow show = new CCShow();
-            CCDelayTime delay = new CCDelayTime (waitTime);
-            CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 1.2f);
-            CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 0.95f);
-            CCScaleTo scaleTo4 = new CCScaleTo(runTime * 0.25f, 1.1f);
-            CCScaleTo scaleTo5 = new CCScaleTo(runTime * 0.25f, 1.0f);
-
-            CCFiniteTimeAction seq = new CCSequence(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
-
-            layer.RunAction(seq);
-
+			layer.RunActions(hide, scaleTo1, show, delay, scaleTo2, scaleTo3, scaleTo4, scaleTo5);
 
         }
 
-        public override string title()
-        {
-            return "Layer Scale With BM Font";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Layer Scale With BM Font";
+			}
+		}
 
     }
 
@@ -62,13 +65,17 @@ namespace tests
     {
         protected CCLayer m_pInnerLayer;
 
+		const float runTime = 12f;
+		CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 3.0f);
+		CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 1.0f);
+
         public override void OnEnter()
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Director.WindowSizeInPoints;
 
-            CCLayerColor layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            var layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
             layer1.IgnoreAnchorPointForPosition = false;
             layer1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             layer1.ChildClippingMode = CCClipMode.Bounds;
@@ -94,18 +101,9 @@ namespace tests
             label2.Position = new CCPoint(0, m_pInnerLayer.ContentSize.Height * 0.25f);
             m_pInnerLayer.AddChild(label2);
 
-            float runTime = 12f;
+            m_pInnerLayer.RepeatForever(scaleTo2, scaleTo3);
 
-            CCScaleTo scaleTo2 = new CCScaleTo(runTime * 0.25f, 3.0f);
-            CCScaleTo scaleTo3 = new CCScaleTo(runTime * 0.25f, 1.0f);
-
-            CCFiniteTimeAction seq = new CCRepeatForever(
-                new CCSequence(scaleTo2, scaleTo3)
-                );
-
-            m_pInnerLayer.RunAction(seq);
-
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Director.WindowSizeInPoints;
 
             var move1 = new CCMoveTo(2, new CCPoint(size.Width / 2, size.Height));
             var move2 = new CCMoveTo(2, new CCPoint(size.Width, size.Height / 2));
@@ -116,28 +114,35 @@ namespace tests
 
         }
 
-        public override string title()
-        {
-            return "Layer Clipping With Scissor";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Layer Clipping With Scissor";
+			}
+		}
     }
 
     public class LayerClippingTexture : LayerClipScissor
     {
+
+		CCRotateBy rotateBy = new CCRotateBy(3, 90);
+
         public override void OnEnter()
         {
             base.OnEnter();
 
             m_pInnerLayer.ChildClippingMode = CCClipMode.BoundsWithRenderTarget;
 
-            var rotateBy = new CCRotateBy(3, 90);
-
-            m_pInnerLayer.RunAction(new CCRepeatForever(rotateBy));
+            m_pInnerLayer.RepeatForever(rotateBy);
         }
 
-        public override string title()
-        {
-            return "Layer Clipping With Texture";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Layer Clipping With Texture";
+			}
+		}
     }
 }

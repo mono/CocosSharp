@@ -12,7 +12,7 @@ namespace tests
         {
             CCLayer pLayer = nextTestAction();
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         static int sceneIdx = -1;

@@ -11,23 +11,33 @@ namespace tests
         int kTagLayer = 1;
         string s_pPathSister1 = "Images/grossinis_sister1";
         string s_pPathSister2 = "Images/grossinis_sister2";
+
+		CCSprite sister1;
+		CCSprite sister2;
+
         public LayerTestBlend()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
             CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 255, 255, 80));
 
-            CCSprite sister1 = new CCSprite(s_pPathSister1);
-            CCSprite sister2 = new CCSprite(s_pPathSister2);
+            sister1 = new CCSprite(s_pPathSister1);
+            sister2 = new CCSprite(s_pPathSister2);
 
             AddChild(sister1);
             AddChild(sister2);
             AddChild(layer1, 100, kTagLayer);
 
-            sister1.Position = new CCPoint(160, s.Height / 2);
-            sister2.Position = new CCPoint(320, s.Height / 2);
-
             Schedule(newBlend, 1.0f);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var s = windowSize;
+			sister1.Position = new CCPoint(160, s.Height / 2);
+			sister2.Position = new CCPoint(320, s.Height / 2);
+
+		}
 
         public void newBlend(float dt)
         {
@@ -50,9 +60,12 @@ namespace tests
             layer.BlendFunc = new CCBlendFunc(src, dst);
         }
 
-        public override string title()
-        {
-            return "ColorLayer: blend";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "ColorLayer: blend";
+			}
+		}
     }
 }
