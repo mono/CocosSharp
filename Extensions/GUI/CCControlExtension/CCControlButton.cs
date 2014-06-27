@@ -57,7 +57,7 @@ namespace CocosSharp
 			set
 			{
 				base.Opacity = value;
-				foreach (ICCColorable item in _backgroundSpriteDispatchTable.Values)
+				foreach (var item in _backgroundSpriteDispatchTable.Values)
 				{
 					if (item != null)
 					{
@@ -73,7 +73,7 @@ namespace CocosSharp
 			set
 			{
 				base.Color = value;
-				foreach (ICCColorable item in _backgroundSpriteDispatchTable.Values)
+				foreach (var item in _backgroundSpriteDispatchTable.Values)
 				{
 					if (item != null)
 					{
@@ -208,7 +208,7 @@ namespace CocosSharp
 		{
 			Debug.Assert(node != null, "Label must not be nil.");
 			var label = node as ICCTextContainer;
-			var rgbaLabel = node as ICCColorable;
+			var rgbaLabel = node;
 			Debug.Assert(backgroundSprite != null, "Background sprite must not be nil.");
 			Debug.Assert(label != null || rgbaLabel != null || backgroundSprite != null);
 
@@ -303,7 +303,7 @@ namespace CocosSharp
 				label.Text = (_currentTitle);
 			}
 
-			var rgbaLabel = (ICCColorable)_titleLabel;
+			var rgbaLabel = _titleLabel;
 			if (rgbaLabel != null)
 			{
 				rgbaLabel.Color = _currentTitleColor;

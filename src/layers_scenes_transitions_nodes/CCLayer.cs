@@ -40,7 +40,6 @@ namespace CocosSharp
         CCRect saveScissorRect;
         CCClipMode childClippingMode;
 
-
         #region Properties
 
         /// <summary>

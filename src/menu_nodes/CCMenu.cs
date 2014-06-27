@@ -54,7 +54,7 @@ namespace CocosSharp
     ///  You can add MenuItem objects in runtime using addChild:
     ///  But the only accecpted children are MenuItem objects
     /// </summary>
-    public class CCMenu : CCLayerRGBA
+    public class CCMenu : CCLayer
     {
         public const float DefaultPadding = 5;
         public const int DefaultMenuHandlerPriority = -128;

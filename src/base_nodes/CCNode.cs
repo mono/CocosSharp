@@ -67,7 +67,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, ICCColorable, IComparer<CCNode>, IComparable<CCNode>
+    public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
     {
         public const int TagInvalid = -1;                           // Use this to determine if a tag has been set on the node.
         static uint globalOrderOfArrival = 1;
@@ -108,9 +108,11 @@ namespace CocosSharp
 
         CCGridBase grid;
 
-		// ICCColorable
+		// opacity controls
 		byte displayedOpacity;
 		CCColor3B displayedColor;
+
+
 
         #region Properties
 
@@ -574,7 +576,7 @@ namespace CocosSharp
 
             IsSerializable = true;
 
-			// ICCColorable
+			// color and opacity
 			displayedOpacity = 255;
 			RealOpacity = 255;
 			displayedColor = CCColor3B.White;
@@ -1473,22 +1475,109 @@ namespace CocosSharp
             }
         }
 
-		#region ICCColorable
+		#region Color and Opacity
 
-		public virtual bool IsColorCascaded { get; set; }
-		public virtual bool IsOpacityCascaded { get; set; }
 
 		protected CCColor3B RealColor { get; set; }
 		protected byte RealOpacity { get; set; }
 
-		public CCColor3B DisplayedColor 
-		{ 
-			get { return displayedColor; } 
+		public virtual byte Opacity
+		{
+			get { return RealOpacity; }
+			set
+			{
+				displayedOpacity = RealOpacity = value;
+
+				UpdateCascadeOpacity();
+			}
 		}
+
 
 		public byte DisplayedOpacity 
 		{ 
-			get { return displayedOpacity; } 
+			get { return displayedOpacity; }
+			protected set 
+			{
+				displayedOpacity = value;
+			}
+		}
+
+		protected internal virtual void UpdateDisplayedOpacity(byte parentOpacity)
+		{
+			displayedOpacity = (byte) (RealOpacity * parentOpacity / 255.0f);
+
+			UpdateColor();
+
+			if (IsOpacityCascaded && Children != null)
+			{
+				foreach(CCNode node in Children)
+				{
+					node.UpdateDisplayedOpacity(DisplayedOpacity);
+				}
+			}
+		}
+
+		protected internal virtual void UpdateCascadeOpacity ()
+		{
+			byte parentOpacity = 255;
+			var pParent = Parent;
+			if (pParent != null && pParent.IsOpacityCascaded)
+			{
+				parentOpacity = pParent.DisplayedOpacity;
+			}
+			UpdateDisplayedOpacity(parentOpacity);
+
+		}
+
+		protected virtual void DisableCascadeOpacity()
+		{
+			DisplayedOpacity = RealOpacity;
+
+			foreach(CCNode node in Children.Elements)
+			{
+				node.UpdateDisplayedOpacity(255);
+			}
+		}
+
+
+		bool isOpacityCascaded;
+
+		public virtual bool IsOpacityCascaded 
+		{ 
+			get { return isOpacityCascaded; }
+			set 
+			{
+				if (isOpacityCascaded == value)
+					return;
+
+				isOpacityCascaded = value;
+
+				if (isOpacityCascaded)
+				{
+					UpdateCascadeOpacity();
+				}
+				else
+				{
+					DisableCascadeOpacity();
+				}
+
+			}
+		}
+
+
+		protected virtual void UpdateColor()
+		{
+			// Override the opdate of color here
+		}
+
+
+		public CCColor3B DisplayedColor 
+		{ 
+			get { return displayedColor; } 
+			protected set 
+			{ 
+				displayedColor = value;
+			}
 		}
 
 		public virtual CCColor3B Color
@@ -1498,37 +1587,78 @@ namespace CocosSharp
 			{
 				displayedColor = RealColor = value;
 
-				if (IsColorCascaded)
-				{
-					var parentColor = CCColor3B.White;
-					var parent = Parent as ICCColorable;
-					if (parent != null && parent.IsColorCascaded)
-					{
-						parentColor = parent.DisplayedColor;
-					}
+				UpdateCascadeColor();
+			}
+		}
 
-					UpdateDisplayedColor(parentColor);
+		public virtual void UpdateDisplayedColor(CCColor3B parentColor)
+		{
+			displayedColor.R = (byte)(RealColor.R * parentColor.R / 255.0f);
+			displayedColor.G = (byte)(RealColor.G * parentColor.G / 255.0f);
+			displayedColor.B = (byte)(RealColor.B * parentColor.B / 255.0f);
+
+			UpdateColor();
+
+			if (IsColorCascaded)
+			{
+				if (IsOpacityCascaded && Children != null)
+				{
+					foreach(CCNode node in Children)
+					{
+						if (node != null)
+						{
+							node.UpdateDisplayedColor(DisplayedColor);
+						}
+					}
 				}
 			}
 		}
 
-		public virtual byte Opacity
-		{
-			get { return RealOpacity; }
-			set
-			{
-				displayedOpacity = RealOpacity = value;
 
-				if (IsOpacityCascaded)
+		bool isColorCascaded;
+
+		public virtual bool IsColorCascaded 
+		{ 
+			get { return isColorCascaded; }
+			set 
+			{
+				if (isColorCascaded == value)
+					return;
+
+				isColorCascaded = value;
+
+				if (isColorCascaded)
 				{
-					byte parentOpacity = 255;
-					var pParent = Parent as ICCColorable;
-					if (pParent != null && pParent.IsOpacityCascaded)
-					{
-						parentOpacity = pParent.DisplayedOpacity;
-					}
-					UpdateDisplayedOpacity(parentOpacity);
+					UpdateCascadeColor();
 				}
+				else
+				{
+					DisableCascadeColor();
+				}
+
+
+			}
+		}
+
+		protected internal void UpdateCascadeColor()
+		{
+			var parentColor = CCColor3B.White;
+			if (Parent != null && Parent.IsColorCascaded)
+			{
+				parentColor = Parent.DisplayedColor;
+			}
+
+			UpdateDisplayedColor(parentColor);
+		}
+
+		protected internal void DisableCascadeColor()
+		{
+			if (Children == null)
+				return;
+
+			foreach (var child in Children)
+			{
+				child.UpdateDisplayedColor(CCColor3B.White);
 			}
 		}
 
@@ -1538,45 +1668,7 @@ namespace CocosSharp
 			set { }
 		}
 
-		public virtual void UpdateDisplayedColor(CCColor3B parentColor)
-		{
-			displayedColor = RealColor * (parentColor / 255.0f);
-
-			if (IsColorCascaded)
-			{
-				if (IsOpacityCascaded && Children != null)
-				{
-					foreach(CCNode node in Children.Elements)
-					{
-						var item = node as ICCColorable;
-						if (item != null)
-						{
-							item.UpdateDisplayedColor(DisplayedColor);
-						}
-					}
-				}
-			}
-		}
-
-		public virtual void UpdateDisplayedOpacity(byte parentOpacity)
-		{
-			displayedOpacity = (byte) (RealOpacity * parentOpacity / 255.0f);
-
-			if (IsOpacityCascaded && Children != null)
-			{
-				foreach(CCNode node in Children.Elements)
-				{
-					var item = node as ICCColorable;
-					if (item != null)
-					{
-						item.UpdateDisplayedOpacity(DisplayedOpacity);
-					}
-				}
-			}
-		}
-
-
-		#endregion ICCColorable
+		#endregion Color and Opacity
 
         #region Entering and exiting
 

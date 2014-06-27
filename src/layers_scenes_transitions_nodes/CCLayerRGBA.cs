@@ -54,10 +54,10 @@ namespace CocosSharp
                 {
                     byte parentOpacity = 255;
                     var pParent = Parent as ICCColorable;
-                    if (pParent != null && pParent.IsOpacityCascaded)
-                    {
-                        parentOpacity = pParent.DisplayedOpacity;
-                    }
+//                    if (pParent != null && pParent.IsOpacityCascaded)
+//                    {
+//                        parentOpacity = pParent.DisplayedOpacity;
+//                    }
                     UpdateDisplayedOpacity(parentOpacity);
                 }
             }
@@ -110,7 +110,7 @@ namespace CocosSharp
                     ICCColorable colorChild = child as ICCColorable;
                     if (colorChild != null)
                     {
-                        colorChild.UpdateDisplayedOpacity(DisplayedOpacity);
+                        //colorChild.UpdateDisplayedOpacity(DisplayedOpacity);
                     }
                 }
             }

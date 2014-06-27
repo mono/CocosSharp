@@ -70,12 +70,12 @@ namespace CocosSharp
         /** 
          *  whether or not opacity should be propagated to its children.
          */
-        bool IsOpacityCascaded { get; set; }
+        //bool IsOpacityCascaded { get; set; }
 
         /**
          *  recursive method that updates the displayed opacity.
          */
-        void UpdateDisplayedOpacity(byte opacity);
+        //void UpdateDisplayedOpacity(byte opacity);
     }
 
     /// <summary>

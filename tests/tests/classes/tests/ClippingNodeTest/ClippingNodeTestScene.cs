@@ -178,7 +178,7 @@ namespace tests.Clipping
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
         {
-            var rgba = node as ICCColorable;
+			var rgba = node;
 
             if (rgba != null)
             {

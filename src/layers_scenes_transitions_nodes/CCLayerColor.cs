@@ -34,9 +34,10 @@ namespace CocosSharp
     /// - opacity
     /// - RGB colors
     /// </summary>
-    public class CCLayerColor : CCLayerRGBA, ICCBlendable
+    public class CCLayerColor : CCLayer, ICCBlendable
     {
-        internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
+
+		internal VertexPositionColor[] SquareVertices = new VertexPositionColor[4];
 
         #region Properties
 
@@ -98,8 +99,7 @@ namespace CocosSharp
         /// </summary>
         public CCLayerColor (CCColor4B color, float width, float height) : base()
         {
-            DisplayedColor = new CCColor3B(color.R, color.G, color.B);
-            RealColor = DisplayedColor;
+            DisplayedColor = RealColor = new CCColor3B(color.R, color.G, color.B);
             DisplayedOpacity = RealOpacity = color.A;
             BlendFunc = CCBlendFunc.NonPremultiplied;
 
@@ -132,7 +132,7 @@ namespace CocosSharp
             CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
         }
 
-        protected virtual void UpdateColor()
+        protected override void UpdateColor()
         {
             var color = new Color(DisplayedColor.R / 255.0f, DisplayedColor.G / 255.0f, DisplayedColor.B / 255.0f, DisplayedOpacity / 255.0f);
 

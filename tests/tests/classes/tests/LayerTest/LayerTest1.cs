@@ -71,10 +71,10 @@ namespace tests
             base.OnEnter();
 
             var s = Director.WindowSizeInPoints;
-            var layer1 = new CCLayerRGBA();
+            var layer1 = new CCLayer();
 
-            var sister1 = new CCSprite("Images/grossinis_sister1.png");
-            var sister2 = new CCSprite("Images/grossinis_sister2.png");
+			var sister1 = new CCSprite("Images/grossinis_sister1.png");
+			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
     
             layer1.AddChild(sister1);
@@ -135,8 +135,8 @@ namespace tests
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 
-            var sister1 = new CCSprite("Images/grossinis_sister1.png");
-            var sister2 = new CCSprite("Images/grossinis_sister2.png");
+			var sister1 = new CCSprite("Images/grossinis_sister1.png");
+			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
@@ -174,7 +174,7 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-		public override string Title
+		public override string Subtitle
 		{
 			get
 			{
@@ -232,7 +232,7 @@ namespace tests
 			);
         }
 
-		public override string Title
+		public override string Subtitle
 		{
 			get
 			{
@@ -250,7 +250,7 @@ namespace tests
             base.OnEnter();
 
             var s = Director.WindowSizeInPoints;
-            var layer1 = new CCLayerRGBA();
+            var layer1 = new CCLayer();
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
@@ -288,11 +288,11 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-		public override string Title
+		public override string Subtitle
 		{
 			get
 			{
-				return "LayerRGBA: cascading color";
+				return "Layer: cascading color";
 			}
 		}
     }
@@ -347,7 +347,7 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-		public override string Title
+		public override string Subtitle
 		{
 			get
 			{
