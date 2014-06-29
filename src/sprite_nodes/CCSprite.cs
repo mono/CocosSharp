@@ -339,6 +339,15 @@ namespace CocosSharp
                 if (batchNode == null && texture != value)
                 {
                     texture = value;
+					if (Director != null)
+					{
+						if(textureRectInPoints == CCRect.Zero) 
+						{
+							textureRectInPoints.Size = Texture.ContentSize (Director.ContentScaleFactor);
+						}
+
+						SetTextureRect (textureRectInPoints, IsTextureRectRotated, textureRectInPoints.Size);
+					}
                     UpdateBlendFunc();
                 }
             }
