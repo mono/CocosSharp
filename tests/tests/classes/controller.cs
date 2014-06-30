@@ -13,7 +13,7 @@ namespace tests
     public class TestController : CCLayer
     {
         static int LINE_SPACE = 40;
-        static CCPoint curPos = new CCPoint(0.0f, 0.0f);
+        static CCPoint curPos = CCPoint.Zero;
 
         int currentItemIndex = 0;
         CCPoint homePosition;
@@ -110,7 +110,7 @@ namespace tests
             homePosition = new CCPoint(0f, windowSize.Height / 2f + LINE_SPACE / 2f);
             lastPosition = new CCPoint(0f, homePosition.Y - (testListMenuItems.Count - 1) * LINE_SPACE);
             #else
-            homePosition = curPos;
+			homePosition = curPos;
             #endif
 
             testListMenu.Position = homePosition;
@@ -128,8 +128,6 @@ namespace tests
             mouseListener.OnMouseScroll = OnMouseScroll;
             AddEventListener(mouseListener);
 
-            #else
-            //KeypadEnabled = true;
             #endif
 
             #if WINDOWS || WINDOWSGL || MACOS
@@ -287,7 +285,7 @@ namespace tests
             var touchLocation = touch.Location;
             float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
-            CCPoint curPos = testListMenu.Position;
+            curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
             CCSize winSize = Director.WindowSizeInPoints;
             if (nextPos.Y < 0.0f)
@@ -315,7 +313,7 @@ namespace tests
             var delta = mouseEvent.ScrollY;
 
             CCSize winSize = Director.WindowSizeInPoints;
-            var curPos = testListMenu.Position;
+            curPos = testListMenu.Position;
             var nextPos = curPos;
             nextPos.Y += (delta / Director.ContentScaleFactor) / LINE_SPACE;
 
@@ -334,8 +332,7 @@ namespace tests
             testListMenu.Position = nextPos;
             curPos   = nextPos;
         }
-
-        #endregion Event handling
+       #endregion Event handling
 
 
         public static TestScene CreateTestScene(int index)
