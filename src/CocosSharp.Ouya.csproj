@@ -178,8 +178,6 @@
     <Compile Include="effects\CCGrid3D.cs" />
     <Compile Include="effects\CCGridBase.cs" />
     <Compile Include="effects\CCTiledGrid3D.cs" />
-    <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
-    <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />

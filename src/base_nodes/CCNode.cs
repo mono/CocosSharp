@@ -67,7 +67,7 @@ namespace CocosSharp
 	- Each node has a camera. By default it points to the center of the CCNode.
 	*/
 
-    public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
+    public class CCNode : ICCUpdatable, ICCFocusable, IComparer<CCNode>, IComparable<CCNode>
     {
         public const int TagInvalid = -1;                           // Use this to determine if a tag has been set on the node.
         static uint globalOrderOfArrival = 1;
@@ -2057,14 +2057,5 @@ namespace CocosSharp
         }
 
         #endregion ConvertToSpace
-
-
-        public virtual void KeyBackClicked()
-        {
-        }
-
-        public virtual void KeyMenuClicked()
-        {
-        }
     }
 }

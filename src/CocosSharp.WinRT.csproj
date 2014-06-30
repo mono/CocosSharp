@@ -506,12 +506,6 @@
     <Compile Include=".\effects\CCTiledGrid3D.cs">
       <LogicalName>effects\CCTiledGrid3D</LogicalName>
     </Compile>
-    <Compile Include=".\keypad_dispatcher\ICCKeypadDelegate.cs">
-      <LogicalName>keypad_dispatcher\CCKeypadDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\keypad_dispatcher\CCKeypadDispatcher.cs">
-      <LogicalName>keypad_dispatcher\CCKeypadDispatcher</LogicalName>
-    </Compile>
     <Compile Include=".\label_nodes\CCBMFontConfiguration.cs">
       <LogicalName>label_nodes\CCBMFontConfiguration</LogicalName>
     </Compile>
