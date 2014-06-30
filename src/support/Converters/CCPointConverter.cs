@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCPointConverter
+    internal class CCPointConverter
     {
         public static CCPoint CCPointFromString(string content)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCSizeConverter
+    internal class CCSizeConverter
     {
         public static CCSize CCSizeFromString(string content)
         {
