@@ -66,7 +66,7 @@ namespace CocosSharp
         {
             base.RunningOnNewWindow(windowSize);
 
-            if (Director != null)
+            if (Director != null && TGAInfo != null)
             {
                 UpdateAtlasValues();
             }

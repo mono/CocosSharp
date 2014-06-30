@@ -118,7 +118,7 @@ namespace CocosSharp
             ItemHeight = tileHeight;
 
             ColorUnmodified = CCColor3B.White;
-            IsOpacityModifyRGB = true;
+            IsOpacityModifyRGB = false;
             BlendFunc = CCBlendFunc.AlphaBlend; 
 
             TextureAtlas = new CCTextureAtlas(texture, itemsToRender);
