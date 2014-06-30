@@ -30,6 +30,8 @@ namespace tests
         CCMenu closeMenu;
         CCMenuItem closeMenuItem;
 
+		const int MENU_ITEM_Z_ORDER = 10000;
+
 
         #region Constructors
 
@@ -59,8 +61,7 @@ namespace tests
                 CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 24);
                 CCMenuItem menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
 
-                menuItem.UserData = i;
-                testListMenu.AddChild(menuItem, i + 10000);
+				testListMenu.AddChild(menuItem, i + MENU_ITEM_Z_ORDER);
                 testListMenuItems.Add(menuItem);
             }
 
@@ -188,8 +189,8 @@ namespace tests
         void MenuCallback(object sender)
         {
             // get the userdata, it's the index of the menu item clicked
-            CCMenuItem menuItem = (CCMenuItem)(sender);
-            int nIdx = (int)menuItem.UserData;
+            CCMenuItem menuItem = (CCMenuItem)sender;
+			var nIdx = menuItem.LocalZOrder - MENU_ITEM_Z_ORDER;
 
             // create the test scene and run it
             TestScene scene = CreateTestScene(nIdx);
