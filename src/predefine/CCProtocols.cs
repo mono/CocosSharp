@@ -66,15 +66,4 @@ namespace CocosSharp
         string Text { get; set; }
     }
 
-    /// <summary>
-    /// OpenGL projection protocol
-    /// </summary>
-    public interface ICCProjection
-    {
-        /// <summary>
-        /// Called by CCDirector when the porjection is updated, and "custom" projection is used
-        /// @since v0.99.5
-        /// </summary>
-        void UpdateProjection();
-    }
 }
