@@ -81,7 +81,7 @@ namespace CocosSharp
         {
             base.RunningOnNewWindow(windowSize);
 
-            if (Director != null && TextureAtlas != null)
+            if (Director != null && TextureAtlas != null & (ContentSize == CCSize.Zero))
             {
                 ContentSize = TextureAtlas.Texture.ContentSize(Director.ContentScaleFactor);
             }
