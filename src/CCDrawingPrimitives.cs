@@ -8,17 +8,23 @@ namespace CocosSharp
     public partial class CCDrawingPrimitives
     {
 		static CCPrimitiveBatch batch;
-		static float pointSize = 3f;
-		public static CCColor4B DefaultColor { get; set; }
+		static float pointSize;
+		public static float PointSize { get; set; }
+		public static CCColor4B DrawColor { get; set; }
+		public static float LineWidth { get; set; }
 
         internal static void Initialize(GraphicsDevice graphics)
         {
             batch = new CCPrimitiveBatch(graphics);
+
         }
 
         public static void Begin()
         {
             batch.Begin();
+			DrawColor = CCColor4B.White;
+			LineWidth = 1;
+			PointSize = 3.0f;
         }
 
         public static void End()
@@ -26,14 +32,15 @@ namespace CocosSharp
             batch.End();
         }
 
+
         public static void DrawPoint(CCPoint point)
         {
-            DrawPoint(point, pointSize, DefaultColor);
+            DrawPoint(point, PointSize, DrawColor);
         }
 
         public static void DrawPoint(CCPoint point, float size)
         {
-            DrawPoint(point, size, DefaultColor);
+            DrawPoint(point, size, DrawColor);
         }
 
         public static void DrawPoint(CCPoint p, float size, CCColor4B color)
@@ -55,7 +62,17 @@ namespace CocosSharp
             DrawPoints(points, points.Length, size, color);
         }
 
-        public static void DrawPoints(CCPoint[] points, int numberOfPoints, float size, CCColor4B color)
+		public static void DrawPoints(CCPoint[] points, float size)
+		{
+			DrawPoints(points, points.Length, size, DrawColor);
+		}
+
+		public static void DrawPoints(CCPoint[] points)
+		{
+			DrawPoints(points, points.Length, PointSize, DrawColor);
+		}
+
+		public static void DrawPoints(CCPoint[] points, int numberOfPoints, float size, CCColor4B color)
         {
             for (int i = 0; i < numberOfPoints; i++)
             {
@@ -63,14 +80,46 @@ namespace CocosSharp
             }
         }
 
+
         public static void DrawLine(CCPoint origin, CCPoint destination, CCColor4B color)
         {
 
-			batch.AddVertex(new CCVector2(origin.X, origin.Y), color, PrimitiveType.LineList);
-			batch.AddVertex(new CCVector2(destination.X, destination.Y), color, PrimitiveType.LineList);
+			var a = origin;
+			var b = destination;
+
+			var n = CCPoint.Normalize(CCPoint.Perp(a - b));
+
+			var lww = LineWidth * 0.5f;
+			var nw = n * lww;
+			var v0 = b - nw;
+			var v1 = b + nw;
+			var v2 = a - nw;
+			var v3 = a + nw;
+
+			// Triangles from beginning to end
+			batch.AddVertex(v1, color, PrimitiveType.TriangleList);
+			batch.AddVertex(v2, color, PrimitiveType.TriangleList);
+			batch.AddVertex(v0, color, PrimitiveType.TriangleList);
+
+			batch.AddVertex(v1, color, PrimitiveType.TriangleList);
+			batch.AddVertex(v2, color, PrimitiveType.TriangleList);
+			batch.AddVertex(v3, color, PrimitiveType.TriangleList);
+
+//
+//			batch.AddVertex(new CCVector2(origin.X, origin.Y), color, PrimitiveType.LineList);
+//			batch.AddVertex(new CCVector2(destination.X, destination.Y), color, PrimitiveType.LineList);
+
+
+
         }
 
-        public static void DrawRect(CCRect rect, CCColor4B color)
+		public static void DrawLine(CCPoint origin, CCPoint destination)
+		{
+
+			DrawLine(origin, destination, DrawColor);
+		}
+
+		public static void DrawRect(CCRect rect, CCColor4B color)
         {
             float x1 = rect.MinX;
             float y1 = rect.MinY;
