@@ -8,7 +8,6 @@ namespace CocosSharp
     public partial class CCDrawingPrimitives
     {
 		static CCPrimitiveBatch batch;
-		static float pointSize;
 		public static float PointSize { get; set; }
 		public static CCColor4B DrawColor { get; set; }
 		public static float LineWidth { get; set; }
@@ -16,20 +15,25 @@ namespace CocosSharp
         internal static void Initialize(GraphicsDevice graphics)
         {
             batch = new CCPrimitiveBatch(graphics);
-
+			DrawColor = CCColor4B.White;
+			LineWidth = 1;
+			PointSize = 1.0f;
         }
 
         public static void Begin()
         {
             batch.Begin();
-			DrawColor = CCColor4B.White;
-			LineWidth = 1;
-			PointSize = 3.0f;
+
         }
 
         public static void End()
         {
             batch.End();
+
+			// Restore original values
+			DrawColor = CCColor4B.White;
+			LineWidth = 1;
+			PointSize = 1.0f;
         }
 
 
@@ -105,12 +109,6 @@ namespace CocosSharp
 			batch.AddVertex(v2, color, PrimitiveType.TriangleList);
 			batch.AddVertex(v3, color, PrimitiveType.TriangleList);
 
-//
-//			batch.AddVertex(new CCVector2(origin.X, origin.Y), color, PrimitiveType.LineList);
-//			batch.AddVertex(new CCVector2(destination.X, destination.Y), color, PrimitiveType.LineList);
-
-
-
         }
 
 		public static void DrawLine(CCPoint origin, CCPoint destination)
@@ -132,6 +130,32 @@ namespace CocosSharp
             DrawLine(new CCPoint(x1, y2), new CCPoint(x1, y1), color);
         }
 
+		/// <summary>
+		/// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
+		/// The polygon can be closed or open
+		/// </summary>
+		public static void DrawPoly(CCPoint[] vertices, int numOfVertices, bool closePolygon)
+		{
+			DrawPoly(vertices, numOfVertices, closePolygon, false, DrawColor);
+		}
+
+		/// <summary>
+		/// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
+		/// The polygon can be closed or open
+		/// </summary>
+		public static void DrawPoly(CCPoint[] vertices, CCColor4B color, bool closePolygon = false)
+		{
+			DrawPoly(vertices, vertices.Length, closePolygon, false, color);
+		}
+
+		/// <summary>
+		/// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
+		/// The polygon can be closed or open
+		/// </summary>
+		public static void DrawPoly(CCPoint[] vertices, bool closePolygon = false)
+		{
+			DrawPoly(vertices, vertices.Length, closePolygon, false, DrawColor);
+		}
 
         /// <summary>
         /// draws a poligon given a pointer to CCPoint coordiantes and the number of vertices measured in points.
@@ -163,17 +187,20 @@ namespace CocosSharp
             {
                 for (int i = 0; i < numOfVertices - 1; i++)
                 {
-					batch.AddVertex(new CCVector2(vertices[i].X, vertices[i].Y), color, PrimitiveType.LineList);
-					batch.AddVertex(new CCVector2(vertices[i + 1].X, vertices[i + 1].Y), color, PrimitiveType.LineList);
+					DrawLine(vertices[i], vertices[i + 1]);
                 }
 
                 if (closePolygon)
                 {
-					batch.AddVertex(new CCVector2(vertices[numOfVertices - 1].X, vertices[numOfVertices - 1].Y), color, PrimitiveType.LineList);
-					batch.AddVertex(new CCVector2(vertices[0].X, vertices[0].Y), color, PrimitiveType.LineList);
+					DrawLine(vertices[numOfVertices - 1], vertices[0]);
                 }
             }
         }
+
+		public static void DrawSolidPoly(CCPoint[] vertices, CCColor4B color)
+		{
+			DrawSolidPoly(vertices, vertices.Length, color, false);
+		}
 
         public static void DrawSolidPoly(CCPoint[] vertices, int count, CCColor4B color)
         {
@@ -228,7 +255,7 @@ namespace CocosSharp
         public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CCColor4B color)
         {
             float increment = MathHelper.Pi * 2.0f / segments;
-            double theta = 0.0;
+            double theta = angle;
 
             CCPoint v1;
             CCPoint v2 = CCPoint.Zero;
@@ -249,38 +276,90 @@ namespace CocosSharp
             }
         }
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="center"></param>
+		/// <param name="radius"></param>
+		/// <param name="angle">The amount of the circle to draw, in radiians</param>
+		/// <param name="segments"></param>
+		/// <param name="drawLineToCenter"></param>
+		/// <param name="color"></param>
+		public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter)
+		{
+			DrawCircle(center, radius, angle, segments, drawLineToCenter, DrawColor);
+		}
+
+		public static void DrawArc (CCRect rect, int startAngle, int sweepAngle)
+		{
+			DrawEllipticalArc(rect, startAngle, sweepAngle, false, DrawColor);
+		}
+
         public static void DrawArc (CCRect rect, int startAngle, int sweepAngle, CCColor4B color)
         {
             DrawEllipticalArc(rect, startAngle, sweepAngle, false, color);
         }
 
-        public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+        public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle)
         {
-            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,false, color);
+            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,false, DrawColor);
 
         }
 
-        public static void DrawEllipse (CCRect rect, CCColor4B color)
+		public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+		{
+			DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,false, color);
+
+		}
+
+		public static void DrawEllipse (CCRect rect)
         {
-            DrawEllipticalArc(rect, 0, 360, false, color);
+            DrawEllipticalArc(rect, 0, 360, false, DrawColor);
         }
         
-        public static void DrawEllips (int x, int y, int width, int height, CCColor4B color)
+		public static void DrawEllipse (CCRect rect, CCColor4B color)
+		{
+			DrawEllipticalArc(rect, 0, 360, false, color);
+		}
+
+		public static void DrawEllips (int x, int y, int width, int height)
+		{
+			DrawEllipticalArc(x,y,width,height,0,360,false, DrawColor);
+
+		}
+
+		public static void DrawEllips (int x, int y, int width, int height, CCColor4B color)
         {
             DrawEllipticalArc(x,y,width,height,0,360,false, color);
             
         }
 
-        public static void DrawPie (CCRect rect, int startAngle, int sweepAngle, CCColor4B color)
+		public static void DrawPie (CCRect rect, int startAngle, int sweepAngle)
+		{
+			DrawEllipticalArc(rect, startAngle, sweepAngle, true, DrawColor);
+		}
+
+		public static void DrawPie (CCRect rect, int startAngle, int sweepAngle, CCColor4B color)
         {
             DrawEllipticalArc(rect, startAngle, sweepAngle, true, color);
         }
         
-        public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+        public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle)
         {
-            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,true, color);
+            DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,true, DrawColor);
             
         }
+
+		public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle, CCColor4B color)
+		{
+			DrawEllipticalArc(x,y,width,height,startAngle,sweepAngle,true, color);
+
+		}
+
+		public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments)
+		{
+			DrawQuadBezier(origin, control, destination, segments, DrawColor);
+		}
 
         public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
         {
@@ -315,6 +394,11 @@ namespace CocosSharp
                 basicEffect.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, vertices, 0, segments);
             }
         }
+
+		public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments)
+		{
+			DrawCubicBezier(origin, control1, control2, destination, segments, DrawColor);
+		}
 
         /// <summary>
         /// draws a cubic bezier path
