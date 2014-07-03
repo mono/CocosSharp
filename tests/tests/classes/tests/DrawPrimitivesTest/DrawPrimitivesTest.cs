@@ -216,6 +216,22 @@ namespace tests
 
             CCDrawingPrimitives.End();
         }
+
+		public override string Title
+		{
+			get
+			{
+				return "Draw Primitives";
+			}
+		}
+
+		public override string Subtitle
+		{
+			get
+			{
+				return "Drawing Primitives. Use DrawNode instead";
+			}
+		}
     }
 
     public class DrawNodeTest : BaseDrawNodeTest

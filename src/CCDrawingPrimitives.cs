@@ -187,12 +187,12 @@ namespace CocosSharp
             {
                 for (int i = 0; i < numOfVertices - 1; i++)
                 {
-					DrawLine(vertices[i], vertices[i + 1]);
+					DrawLine(vertices[i], vertices[i + 1], color);
                 }
 
                 if (closePolygon)
                 {
-					DrawLine(vertices[numOfVertices - 1], vertices[0]);
+					DrawLine(vertices[numOfVertices - 1], vertices[0], color);
                 }
             }
         }
@@ -392,39 +392,26 @@ namespace CocosSharp
 			DrawQuadBezier(origin, control, destination, segments, DrawColor);
 		}
 
-        public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
-        {
-            var vertices = new VertexPositionColor[segments + 1];
+		public static void DrawQuadBezier(CCPoint origin, CCPoint control, CCPoint destination, int segments, CCColor4B color)
+		{
 
-            float t = 0.0f;
-            for (int i = 0; i < segments; i++)
-            {
-                float x = CCSplineMath.QuadBezier(origin.X, control.X, destination.X, t);
-                float y = CCSplineMath.QuadBezier(origin.Y, control.Y, destination.Y, t);
+			float t = 0;
+			float increment = 1.0f / segments;
 
-                vertices[i].Position = new Vector3(x, y, 0);
-                vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
+			var vertices = new CCPoint[segments];
 
-                t += 1.0f / segments;
-            }
-            
-            vertices[segments] = new VertexPositionColor
-                {
-                    Position = new Vector3(destination.X, destination.Y, 0),
-                    Color = new Color(color.R, color.G, color.B, color.A),
-                };
+			vertices[0] = origin;
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
+			for (int i = 1; i < segments; ++i, t+= increment)
+			{
+				vertices[i].X = CCSplineMath.QuadBezier(origin.X, control.X, destination.X, t);
+				vertices[i].Y = CCSplineMath.QuadBezier(origin.Y, control.Y, destination.Y, t);
+			}
+		
+			vertices[segments-1] = destination;
 
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                basicEffect.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, vertices, 0, segments);
-            }
-        }
+			DrawPoly(vertices, color);
+		}
 
 		public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments)
 		{
@@ -441,25 +428,18 @@ namespace CocosSharp
             float t = 0;
 			float increment = 1.0f / segments;
 
-			float x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
-			float y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
+			var vertices = new CCPoint[segments];
 
-			var from = new CCPoint(x,y);
-			var to = CCPoint.Zero;
+			vertices[0] = origin;
 
-            for (int i = 1; i < segments; ++i)
+			for (int i = 1; i < segments; ++i, t+= increment)
             {
-                x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
-                y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
-
-				to.X = x;
-				to.Y = y;
-				DrawLine(from, to, color);
-				from = to;
-				t += increment;
+				vertices[i].X = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
+				vertices[i].Y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
             }
 
-			DrawLine(from, destination, color);
+			vertices[segments - 1] = destination;
+			DrawPoly(vertices, color);
         }
 
         public static void DrawCatmullRom(List<CCPoint> points, int segments)
@@ -469,11 +449,14 @@ namespace CocosSharp
 
         public static void DrawCardinalSpline(List<CCPoint> config, float tension, int segments)
         {
-            var vertices = new VertexPositionColor[segments + 1];
 
             int p;
             float lt;
             float deltaT = 1.0f / config.Count;
+
+			int count = config.Count;
+
+			var vertices = new CCPoint[segments + 1];
 
             for (int i = 0; i < segments + 1; i++)
             {
@@ -482,7 +465,7 @@ namespace CocosSharp
                 // border
                 if (dt == 1)
                 {
-                    p = config.Count - 1;
+                    p = count - 1;
                     lt = 1;
                 }
                 else
@@ -491,7 +474,6 @@ namespace CocosSharp
                     lt = (dt - deltaT * p) / deltaT;
                 }
 
-                // Interpolate
                 // Interpolate    
                 int c = config.Count - 1;
                 CCPoint pp0 = config[Math.Min(c, Math.Max(p - 1, 0))];
@@ -499,22 +481,10 @@ namespace CocosSharp
                 CCPoint pp2 = config[Math.Min(c, Math.Max(p + 1, 0))];
                 CCPoint pp3 = config[Math.Min(c, Math.Max(p + 2, 0))];
 
-                CCPoint newPos = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
-
-                vertices[i].Position.X = newPos.X;
-                vertices[i].Position.Y = newPos.Y;
-                vertices[i].Color = Color.White;
+				vertices[i] = CCSplineMath.CCCardinalSplineAt(pp0, pp1, pp2, pp3, tension, lt);
             }
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-                basicEffect.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, vertices, 0, segments);
-            }
+			DrawPoly(vertices, DrawColor);
         }
 
     }

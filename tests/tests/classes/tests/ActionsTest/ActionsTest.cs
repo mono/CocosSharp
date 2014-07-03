@@ -1935,17 +1935,24 @@ namespace tests
         {
             base.Draw();
 
-            // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(50, 50, 0);
+			// move to 50,50 since the "by" path will start at 50,50
+			CCDrawManager.PushMatrix();
+			CCDrawManager.Translate(50, 50, 0);
+
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
+			CCDrawingPrimitives.End();
+
             CCDrawManager.PopMatrix();
 
             var s = Director.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
+
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.PopMatrix();
         }
     }
@@ -2023,10 +2030,14 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
+			CCDrawingPrimitives.End();
             CCDrawManager.PopMatrix();
 
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
+			CCDrawingPrimitives.End();
         }
     }
 
@@ -2366,10 +2377,14 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointArray, 50);
+			CCDrawingPrimitives.End();
             CCDrawManager.PopMatrix();
 
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointArray2, 50);
+			CCDrawingPrimitives.End();
         }
     }
 
@@ -2465,14 +2480,18 @@ namespace tests
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 0, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.PopMatrix();
 
             var s = Director.WindowSizeInPoints;
 
             CCDrawManager.PushMatrix();
             CCDrawManager.Translate(s.Width / 2, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 1, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.PopMatrix();
         }
     }
