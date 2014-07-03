@@ -252,27 +252,26 @@ namespace CocosSharp
         /// <param name="segments"></param>
         /// <param name="drawLineToCenter"></param>
         /// <param name="color"></param>
-        public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CCColor4B color)
+		public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CCColor4B color, float scaleX = 1.0f, float scaleY = 1.0f)
         {
             float increment = MathHelper.Pi * 2.0f / segments;
             double theta = angle;
 
-            CCPoint v1;
-            CCPoint v2 = CCPoint.Zero;
+			var vertices = new CCPoint[segments * 2];
 
-            for (int i = 0; i < segments; i++)
-            {
-                v1 = center + new CCPoint((float) Math.Cos(theta), (float) Math.Sin(theta)) * radius;
-                v2 = center + new CCPoint((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment)) * radius;
+			for (int i = 0, s=0; i < segments; i++, s += 2)
+			{
+				vertices[s] = center + new CCPoint((float) Math.Cos(theta) * scaleX, (float) Math.Sin(theta) * scaleY) * radius;
+				vertices[s + 1] = center + new CCPoint((float) Math.Cos(theta + increment) * scaleX, (float) Math.Sin(theta + increment) * scaleY) * radius;
 
-                DrawLine(v1, v2, color);
+				theta += increment;
+			}
 
-                theta += increment;
-            }
+			DrawPoly(vertices, color);
 
             if (drawLineToCenter)
             {
-                DrawLine(center, v2, color);
+                DrawLine(center, vertices[vertices.Length-1], color);
             }
         }
 
@@ -285,10 +284,42 @@ namespace CocosSharp
 		/// <param name="segments"></param>
 		/// <param name="drawLineToCenter"></param>
 		/// <param name="color"></param>
-		public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter)
+		public static void DrawCircle(CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, float scaleX = 1.0f, float scaleY = 1.0f)
 		{
-			DrawCircle(center, radius, angle, segments, drawLineToCenter, DrawColor);
+			DrawCircle(center, radius, angle, segments, drawLineToCenter, DrawColor, scaleX, scaleY);
 		}
+
+		public static void DrawSolidCircle(CCPoint center, float radius, float angle, int segments, float scaleX = 1.0f, float scaleY = 1.0f)
+		{
+			DrawSolidCircle(center, radius, angle, segments, DrawColor, scaleX, scaleY);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="center"></param>
+		/// <param name="radius"></param>
+		/// <param name="angle">The amount of the circle to draw, in radiians</param>
+		/// <param name="segments"></param>
+		/// <param name="color"></param>
+		public static void DrawSolidCircle(CCPoint center, float radius, float angle, int segments, CCColor4B color, float scaleX = 1.0f, float scaleY = 1.0f)
+		{
+			float increment = MathHelper.Pi * 2.0f / segments;
+			double theta = angle;
+
+			var vertices = new CCPoint[segments * 2];
+
+			for (int i = 0, s=0; i < segments; i++, s += 2)
+			{
+				vertices[s] = center + new CCPoint((float) Math.Cos(theta) * scaleX, (float) Math.Sin(theta) * scaleY) * radius;
+				vertices[s + 1] = center + new CCPoint((float) Math.Cos(theta + increment) * scaleX, (float) Math.Sin(theta + increment) * scaleY) * radius;
+
+				theta += increment;
+			}
+
+			DrawSolidPoly(vertices, color);
+		}
+
 
 		public static void DrawArc (CCRect rect, int startAngle, int sweepAngle)
 		{

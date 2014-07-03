@@ -145,14 +145,13 @@ namespace tests
             // draw a green circle with 50 segments with line to center
 			CCDrawingPrimitives.LineWidth = 2 / Director.ContentScaleFactor;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 255, 255, 255);
-			CCDrawingPrimitives.DrawCircle(CCVisibleRect.Center, 50, CCMacros.CCDegreesToRadians(45), 50, true);
+			CCDrawingPrimitives.DrawCircle(CCVisibleRect.Center, 50, CCMacros.CCDegreesToRadians(45), 50, true, 3);
 
 
 			// draw a pink solid circle with 50 segments
 			CCDrawingPrimitives.LineWidth = 2 / Director.ContentScaleFactor;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(255, 0, 255, 255);
-
-			//DrawPrimitives::drawSolidCircle( VisibleRect::center() + Vec2(140,0), 40, CC_DEGREES_TO_RADIANS(90), 50, 1.0f, 1.0f);
+			CCDrawingPrimitives.DrawSolidCircle(CCVisibleRect.Center + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
 
 
             // draw an arc within rectangular region
