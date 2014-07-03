@@ -437,36 +437,29 @@ namespace CocosSharp
         /// </summary>
         public static void DrawCubicBezier(CCPoint origin, CCPoint control1, CCPoint control2, CCPoint destination, int segments, CCColor4B color)
         {
-            var vertices = new VertexPositionColor[segments + 1];
 
             float t = 0;
-            for (int i = 0; i < segments; ++i)
+			float increment = 1.0f / segments;
+
+			float x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
+			float y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
+
+			var from = new CCPoint(x,y);
+			var to = CCPoint.Zero;
+
+            for (int i = 1; i < segments; ++i)
             {
-                float x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
-                float y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
+                x = CCSplineMath.CubicBezier(origin.X, control1.X, control2.X, destination.X, t);
+                y = CCSplineMath.CubicBezier(origin.Y, control1.Y, control2.Y, destination.Y, t);
 
-                vertices[i] = new VertexPositionColor();
-                vertices[i].Position = new Vector3(x, y, 0);
-                vertices[i].Color = new Color(color.R, color.G, color.B, color.A);
-                t += 1.0f / segments;
+				to.X = x;
+				to.Y = y;
+				DrawLine(from, to, color);
+				from = to;
+				t += increment;
             }
-            vertices[segments] = new VertexPositionColor
-                {
-                    Color = new Color(color.R, color.G, color.B, color.A),
-                    Position = new Vector3(destination.X, destination.Y, 0)
-                };
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
-
-            foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
-            {
-                pass.Apply();
-
-                basicEffect.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineStrip, vertices, 0, segments);
-            }
+			DrawLine(from, destination, color);
         }
 
         public static void DrawCatmullRom(List<CCPoint> points, int segments)
