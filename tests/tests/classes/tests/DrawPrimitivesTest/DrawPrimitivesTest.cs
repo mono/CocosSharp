@@ -237,17 +237,28 @@ namespace tests
     public class DrawNodeTest : BaseDrawNodeTest
     {
         #region Setup content
+		CCDrawNode draw;
+
+		public DrawNodeTest()
+		{
+			draw = new CCDrawNode();
+			draw.BlendFunc = CCBlendFunc.NonPremultiplied;
+
+			AddChild(draw, 10);
+
+		}
+
 
         protected override void RunningOnNewWindow(CCSize windowSize)
         {
             base.RunningOnNewWindow(windowSize);
-            CCDrawNode draw = new CCDrawNode();
-            AddChild(draw, 10);
+
+			var s = windowSize;
 
             // Draw 10 circles
             for (int i = 0; i < 10; i++)
             {
-                draw.DrawDot(new CCPoint(windowSize.Width / 2, windowSize.Height / 2), 10 * (10 - i),
+				draw.DrawDot(s.Center, 10 * (10 - i),
                     new CCColor4F(CCRandom.Float_0_1(), CCRandom.Float_0_1(), CCRandom.Float_0_1(), 1));
             }
 
@@ -258,21 +269,21 @@ namespace tests
                 new CCPoint(windowSize.Width, windowSize.Height / 5),
                 new CCPoint(windowSize.Width / 3 * 2, windowSize.Height)
             };
-            draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
-
+            draw.DrawPolygon(points, points.Length, new CCColor4F(1.0f, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
+			
             // star poly (triggers buggs)
-            {
-                const float o = 80;
-                const float w = 20;
-                const float h = 50;
-                CCPoint[] star = new CCPoint[]
-                {
-                    new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),                           // lower spike
-                    new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
-                };
+			{
+	            const float o = 80;
+	            const float w = 20;
+	            const float h = 50;
+	            CCPoint[] star = new CCPoint[]
+	            {
+	                new CCPoint(o + w, o - h), new CCPoint(o + w * 2, o),                           // lower spike
+	                new CCPoint(o + w * 2 + h, o + w), new CCPoint(o + w * 2, o + w * 2),           // right spike
+	            };
 
-                draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
-            }
+	            draw.DrawPolygon(star, star.Length, new CCColor4F(1, 0, 0, 0.5f), 1, new CCColor4F(0, 0, 1, 1));
+			}
 
             // star poly (doesn't trigger bug... order is important un tesselation is supported.
             {

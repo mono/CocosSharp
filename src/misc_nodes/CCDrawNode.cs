@@ -32,70 +32,90 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public void DrawDot(CCPoint pos, float radius, CCColor4F color)
-        {
-            var cl = new Color(color.R, color.G, color.B, color.A);
+		// See http://slabode.exofire.net/circle_draw.shtml
+		// An Efficient Way to Draw Approximate Circles in OpenGL
+		// Try to keep from calculating Cos and Sin of values everytime and just use
+		// add and subtract where possible to calculate the values.
+		public void DrawDot(CCPoint pos, float radius, CCColor4F color)
+		{
+			var cl = color.ToColor();
 
-            var a = new VertexPositionColor(new Vector3(pos.X - radius, pos.Y - radius, 0), cl); //{-1.0, -1.0}
-            var b = new VertexPositionColor(new Vector3(pos.X - radius, pos.Y + radius, 0), cl); //{-1.0,  1.0}
-            var c = new VertexPositionColor(new Vector3(pos.X + radius, pos.Y + radius, 0), cl); //{ 1.0,  1.0}
-            var d = new VertexPositionColor(new Vector3(pos.X + radius, pos.Y - radius, 0), cl); //{ 1.0, -1.0}
+			var segments = 10 * (float)Math.Sqrt(radius);  //<- Let's try to guess at # segments for a reasonable smoothness
 
-            vertices.Add(a);
-            vertices.Add(b);
-            vertices.Add(c);
+			float theta = MathHelper.Pi * 2.0f / segments; 
+			float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
 
-            vertices.Add(a);
-            vertices.Add(c);
-            vertices.Add(d);
+			float radial_factor = (float)Math.Cos(theta);   //calculate the radial factor 
 
-            dirty = true;
-        }
-        
+			float x = radius;  //we start at angle = 0 
+			float y = 0; 
+
+			var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
+			var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+			float tx = 0; 
+			float ty = 0; 
+
+			for (int i = 0; i < segments; i++)
+			{
+			
+				vert1.Position.X = x + pos.X;
+				vert1.Position.Y = y + pos.Y;
+				vertices.Add(vert1); // output vertex
+
+				//calculate the tangential vector 
+				//remember, the radial vector is (x, y) 
+				//to get the tangential vector we flip those coordinates and negate one of them 
+				tx = -y; 
+				ty = x; 
+
+				//add the tangential vector 
+				x += tx * tangetial_factor; 
+				y += ty * tangetial_factor; 
+
+				//correct using the radial factor 
+				x *= radial_factor; 
+				y *= radial_factor; 
+
+				vert1.Position.X = x + pos.X;
+				vert1.Position.Y = y + pos.Y;
+				vertices.Add(vert1); // output vertex
+
+				vertices.Add(verticeCenter);
+			} 
+
+			dirty = true;
+		}
+
         public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
         {
-            var cl = new Color(color.R, color.G, color.B, color.A);
+			var cl = color.ToColor();
 
-            var a = from;
-            var b = to;
+			var a = from;
+			var b = to;
 
-            var n = CCPoint.Normalize(CCPoint.Perp(a - b));
-            var t = CCPoint.Perp(n);
 
-            var nw = n * radius;
-            var tw = t * radius;
-            var v0 = b - (nw + tw);
-            var v1 = b + (nw - tw);
-            var v2 = b - nw;
-            var v3 = b + nw;
-            var v4 = a - nw;
-            var v5 = a + nw;
-            var v6 = a - (nw - tw);
-            var v7 = a + (nw + tw);
+			// Dots are causing a problem right now when being drawn.
+			//DrawDot(a, radius, color); // Draw starting line ending
+			//DrawDot(b, radius, color); // Draw ending Line ending
 
-            vertices.Add(new VertexPositionColor(v0.ToVector3(), cl)); //__t(v2fneg(v2fadd(n, t)))
-            vertices.Add(new VertexPositionColor(v1.ToVector3(), cl)); //__t(v2fsub(n, t))
-            vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))}
+			var n = CCPoint.Normalize(CCPoint.Perp(a - b));
 
-            vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v1.ToVector3(), cl)); //__t(v2fsub(n, t))
-            vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))
+			var lww = radius;
+			var nw = n * lww;
+			var v0 = b - nw;
+			var v1 = b + nw;
+			var v2 = a - nw;
+			var v3 = a + nw;
 
-            vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v2.ToVector3(), cl)); //__t(v2fneg(n))
+			// Triangles from beginning to end
+			vertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
+			vertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
+			vertices.Add(new VertexPositionColor(v0.ToVector3(), cl));
 
-            vertices.Add(new VertexPositionColor(v3.ToVector3(), cl)); //__t(n)
-            vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
+			vertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
+			vertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
+			vertices.Add(new VertexPositionColor(v3.ToVector3(), cl));
 
-            vertices.Add(new VertexPositionColor(v6.ToVector3(), cl)); //__t(v2fsub(t, n))
-            vertices.Add(new VertexPositionColor(v4.ToVector3(), cl)); //__t(v2fneg(n))
-            vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
-
-            vertices.Add(new VertexPositionColor(v6.ToVector3(), cl)); //__t(v2fsub(t, n))
-            vertices.Add(new VertexPositionColor(v7.ToVector3(), cl)); //__t(v2fadd(n, t))
-            vertices.Add(new VertexPositionColor(v5.ToVector3(), cl)); //__t(n)
 
             dirty = true;
         }
