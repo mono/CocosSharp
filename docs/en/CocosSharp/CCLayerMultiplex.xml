@@ -1,11 +1,11 @@
 <Type Name="CCLayerMultiplex" FullName="CocosSharp.CCLayerMultiplex">
-  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : CocosSharp.CCLayerRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends CocosSharp.CCLayerRGBA" />
+  <TypeSignature Language="C#" Value="public class CCLayerMultiplex : CocosSharp.CCLayer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerMultiplex extends CocosSharp.CCLayer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayer</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -121,6 +121,19 @@
       <Docs>
         <param name="layer">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

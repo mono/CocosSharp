@@ -16,23 +16,28 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSun ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
+      </Parameters>
       <Docs>
+        <param name="position">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSun (int num);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 num) cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSun (CocosSharp.CCPoint position, int num);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position, int32 num) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
         <Parameter Name="num" Type="System.Int32" />
       </Parameters>
       <Docs>
+        <param name="position">To be added.</param>
         <param name="num">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

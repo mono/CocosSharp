@@ -14,16 +14,18 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTiledGrid3D (CocosSharp.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTiledGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
+        <Parameter Name="size" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
         <param name="gridSize">To be added.</param>
-        <summary>create one Grid </summary>
-        <remarks />
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

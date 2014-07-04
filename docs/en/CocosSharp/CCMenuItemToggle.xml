@@ -68,6 +68,41 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="AddToggleMenuItems">
+      <MemberSignature Language="C#" Value="public void AddToggleMenuItems (CocosSharp.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddToggleMenuItems(class CocosSharp.CCMenuItem[] items) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="items">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Enabled">
       <MemberSignature Language="C#" Value="public override bool Enabled { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
@@ -78,6 +113,28 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveToggleMenuItems">
+      <MemberSignature Language="C#" Value="public void RemoveToggleMenuItems (CocosSharp.CCMenuItem[] items);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveToggleMenuItems(class CocosSharp.CCMenuItem[] items) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="items" Type="CocosSharp.CCMenuItem[]">
+          <Attributes>
+            <Attribute>
+              <AttributeName>System.ParamArray</AttributeName>
+            </Attribute>
+          </Attributes>
+        </Parameter>
+      </Parameters>
+      <Docs>
+        <param name="items">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -116,19 +173,6 @@
       </ReturnValue>
       <Docs>
         <summary>return the selected item </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SubItems">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt; SubItems { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class System.Collections.Generic.List`1&lt;class CocosSharp.CCMenuItem&gt; SubItems" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCMenuItem&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>setSubItems </summary>
         <value>To be added.</value>
         <remarks />
       </Docs>

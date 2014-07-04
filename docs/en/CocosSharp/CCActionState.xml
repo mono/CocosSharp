@@ -71,6 +71,19 @@
 	</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirector Director { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsDone">
       <MemberSignature Language="C#" Value="public virtual bool IsDone { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
@@ -108,8 +121,8 @@
       </Docs>
     </Member>
     <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public virtual void Step (float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Step(float32 dt) cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void Step (float dt);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void Step(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -130,8 +143,8 @@
       </Docs>
     </Member>
     <Member MemberName="Stop">
-      <MemberSignature Language="C#" Value="public virtual void Stop ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Stop() cil managed" />
+      <MemberSignature Language="C#" Value="protected virtual void Stop ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void Stop() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

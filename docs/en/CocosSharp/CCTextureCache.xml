@@ -22,6 +22,16 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCTextureCache ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="AddImage">
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D AddImage (string fileimage);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCTexture2D AddImage(string fileimage) cil managed" />
@@ -246,19 +256,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Instance">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureCache Instance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCTextureCache Instance" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTextureCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Item">
       <MemberSignature Language="C#" Value="public CocosSharp.CCTexture2D this[string key] { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTexture2D Item(string)" />
@@ -273,19 +270,6 @@
         <param name="key">To be added.</param>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeInstance">
-      <MemberSignature Language="C#" Value="public static void PurgeInstance ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeInstance() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

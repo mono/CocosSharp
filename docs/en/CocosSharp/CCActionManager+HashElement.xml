@@ -35,36 +35,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Actions">
-      <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCAction&gt; Actions;" />
-      <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class CocosSharp.CCAction&gt; Actions" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCAction&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ActionStates">
       <MemberSignature Language="C#" Value="public System.Collections.Generic.List&lt;CocosSharp.CCActionState&gt; ActionStates;" />
       <MemberSignature Language="ILAsm" Value=".field public class System.Collections.Generic.List`1&lt;class CocosSharp.CCActionState&gt; ActionStates" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>System.Collections.Generic.List&lt;CocosSharp.CCActionState&gt;</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CurrentAction">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAction CurrentAction;" />
-      <MemberSignature Language="ILAsm" Value=".field public class CocosSharp.CCAction CurrentAction" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

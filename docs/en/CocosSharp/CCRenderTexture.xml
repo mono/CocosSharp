@@ -26,44 +26,49 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, float contentScaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, float32 contentScaleFactor) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="w" Type="System.Int32" />
         <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="contentScaleFactor" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="w">To be added.</param>
         <param name="h">To be added.</param>
+        <param name="contentScaleFactor">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, CocosSharp.CCSurfaceFormat format);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype CocosSharp.CCSurfaceFormat format) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, float contentScaleFactor, CocosSharp.CCSurfaceFormat format);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, float32 contentScaleFactor, valuetype CocosSharp.CCSurfaceFormat format) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="w" Type="System.Int32" />
         <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="contentScaleFactor" Type="System.Single" />
         <Parameter Name="format" Type="CocosSharp.CCSurfaceFormat" />
       </Parameters>
       <Docs>
         <param name="w">To be added.</param>
         <param name="h">To be added.</param>
+        <param name="contentScaleFactor">To be added.</param>
         <param name="format">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, CocosSharp.CCSurfaceFormat colorFormat, CocosSharp.CCDepthFormat depthFormat, CocosSharp.CCRenderTargetUsage usage);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, valuetype CocosSharp.CCSurfaceFormat colorFormat, valuetype CocosSharp.CCDepthFormat depthFormat, valuetype CocosSharp.CCRenderTargetUsage usage) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRenderTexture (int w, int h, float contentScaleFactor, CocosSharp.CCSurfaceFormat colorFormat, CocosSharp.CCDepthFormat depthFormat, CocosSharp.CCRenderTargetUsage usage);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 w, int32 h, float32 contentScaleFactor, valuetype CocosSharp.CCSurfaceFormat colorFormat, valuetype CocosSharp.CCDepthFormat depthFormat, valuetype CocosSharp.CCRenderTargetUsage usage) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="w" Type="System.Int32" />
         <Parameter Name="h" Type="System.Int32" />
+        <Parameter Name="contentScaleFactor" Type="System.Single" />
         <Parameter Name="colorFormat" Type="CocosSharp.CCSurfaceFormat" />
         <Parameter Name="depthFormat" Type="CocosSharp.CCDepthFormat" />
         <Parameter Name="usage" Type="CocosSharp.CCRenderTargetUsage" />
@@ -71,6 +76,7 @@
       <Docs>
         <param name="w">To be added.</param>
         <param name="h">To be added.</param>
+        <param name="contentScaleFactor">To be added.</param>
         <param name="colorFormat">To be added.</param>
         <param name="depthFormat">To be added.</param>
         <param name="usage">To be added.</param>

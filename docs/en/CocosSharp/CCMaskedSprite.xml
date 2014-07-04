@@ -14,21 +14,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCSpriteFrame pSpriteFrame, byte[] mask);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame pSpriteFrame, unsigned int8[] mask) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="pSpriteFrame" Type="CocosSharp.CCSpriteFrame" />
-        <Parameter Name="mask" Type="System.Byte[]" />
-      </Parameters>
-      <Docs>
-        <param name="pSpriteFrame">To be added.</param>
-        <param name="mask">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, byte[] mask);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
