@@ -118,69 +118,73 @@ namespace CocosSharp
 
         void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
         {
-            if(Director == null)
-                return;
-
-            int x = pos.X;
-            int y = pos.Y;
-
-            float row = (float)(value.R % ItemsPerRow);
-            float col = (float)(value.R / ItemsPerRow);
-
-            float textureWide = (TextureAtlas.Texture.PixelsWide);
-            float textureHigh = (TextureAtlas.Texture.PixelsHigh);
-
-            float itemWidthInPixels = ItemWidth * Director.ContentScaleFactor;
-            float itemHeightInPixels = ItemHeight * Director.ContentScaleFactor;
-
-            #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-            float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
-            float right       = left + (itemWidthInPixels * 2 - 2) / (2 * textureWide);
-            float top         = (2 * col * itemHeightInPixels + 1) / (2 * textureHigh);
-            float bottom      = top + (itemHeightInPixels * 2 - 2) / (2 * textureHigh);
-            #else
-            float left = (row * itemWidthInPixels) / textureWide;
-            float right = left + itemWidthInPixels / textureWide;
-            float top = (col * itemHeightInPixels) / textureHigh;
-            float bottom = top + itemHeightInPixels / textureHigh;
-            #endif
-
-            CCV3F_C4B_T2F_Quad quad = new CCV3F_C4B_T2F_Quad();
-
-            quad.TopLeft.TexCoords.U = left;
-            quad.TopLeft.TexCoords.V = top;
-            quad.TopRight.TexCoords.U = right;
-            quad.TopRight.TexCoords.V = top;
-            quad.BottomLeft.TexCoords.U = left;
-            quad.BottomLeft.TexCoords.V = bottom;
-            quad.BottomRight.TexCoords.U = right;
-            quad.BottomRight.TexCoords.V = bottom;
-
-            quad.BottomLeft.Vertices.X = (x * ItemWidth);
-            quad.BottomLeft.Vertices.Y = (y * ItemHeight);
-            quad.BottomLeft.Vertices.Z = 0.0f;
-            quad.BottomRight.Vertices.X = (x * ItemWidth + ItemWidth);
-            quad.BottomRight.Vertices.Y = (y * ItemHeight);
-            quad.BottomRight.Vertices.Z = 0.0f;
-            quad.TopLeft.Vertices.X = (x * ItemWidth);
-            quad.TopLeft.Vertices.Y = (y * ItemHeight + ItemHeight);
-            quad.TopLeft.Vertices.Z = 0.0f;
-            quad.TopRight.Vertices.X = (x * ItemWidth + ItemWidth);
-            quad.TopRight.Vertices.Y = (y * ItemHeight + ItemHeight);
-            quad.TopRight.Vertices.Z = 0.0f;
-
-            var color = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
-            quad.TopRight.Colors = color;
-            quad.TopLeft.Colors = color;
-            quad.BottomRight.Colors = color;
-            quad.BottomLeft.Colors = color;
-
-            TextureAtlas.UpdateQuad(ref quad, index);
+			UpdateAtlasValueAt(pos.X, pos.Y, value, index);
         }
 
-        public override void UpdateAtlasValues()
+		void UpdateAtlasValueAt(int x, int y, Color value, int index)
+		{
+			if(Director == null)
+				return;
+
+			float row = (float)(value.R % ItemsPerRow);
+			float col = (float)(value.R / ItemsPerRow);
+
+			float textureWide = (TextureAtlas.Texture.PixelsWide);
+			float textureHigh = (TextureAtlas.Texture.PixelsHigh);
+
+			float itemWidthInPixels = ItemWidth * Director.ContentScaleFactor;
+			float itemHeightInPixels = ItemHeight * Director.ContentScaleFactor;
+
+			#if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
+			float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
+			float right       = left + (itemWidthInPixels * 2 - 2) / (2 * textureWide);
+			float top         = (2 * col * itemHeightInPixels + 1) / (2 * textureHigh);
+			float bottom      = top + (itemHeightInPixels * 2 - 2) / (2 * textureHigh);
+			#else
+			float left = (row * itemWidthInPixels) / textureWide;
+			float right = left + itemWidthInPixels / textureWide;
+			float top = (col * itemHeightInPixels) / textureHigh;
+			float bottom = top + itemHeightInPixels / textureHigh;
+			#endif
+
+			CCV3F_C4B_T2F_Quad quad = new CCV3F_C4B_T2F_Quad();
+
+			quad.TopLeft.TexCoords.U = left;
+			quad.TopLeft.TexCoords.V = top;
+			quad.TopRight.TexCoords.U = right;
+			quad.TopRight.TexCoords.V = top;
+			quad.BottomLeft.TexCoords.U = left;
+			quad.BottomLeft.TexCoords.V = bottom;
+			quad.BottomRight.TexCoords.U = right;
+			quad.BottomRight.TexCoords.V = bottom;
+
+			quad.BottomLeft.Vertices.X = (x * ItemWidth);
+			quad.BottomLeft.Vertices.Y = (y * ItemHeight);
+			quad.BottomLeft.Vertices.Z = 0.0f;
+			quad.BottomRight.Vertices.X = (x * ItemWidth + ItemWidth);
+			quad.BottomRight.Vertices.Y = (y * ItemHeight);
+			quad.BottomRight.Vertices.Z = 0.0f;
+			quad.TopLeft.Vertices.X = (x * ItemWidth);
+			quad.TopLeft.Vertices.Y = (y * ItemHeight + ItemHeight);
+			quad.TopLeft.Vertices.Z = 0.0f;
+			quad.TopRight.Vertices.X = (x * ItemWidth + ItemWidth);
+			quad.TopRight.Vertices.Y = (y * ItemHeight + ItemHeight);
+			quad.TopRight.Vertices.Z = 0.0f;
+
+			var color = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
+			quad.TopRight.Colors = color;
+			quad.TopLeft.Colors = color;
+			quad.BottomRight.Colors = color;
+			quad.BottomLeft.Colors = color;
+
+			TextureAtlas.UpdateQuad(ref quad, index);
+		}
+
+		public override void UpdateAtlasValues()
         {
-            if(Director == null)
+			// if we do not have a director yet or have already loading the atlas values
+			// we do not execut this again.
+			if(Director == null || PositionToAtlasIndex.Count > 0)
                 return;
 
             Debug.Assert(TGAInfo != null, "tgaInfo must be non-nil");
@@ -198,8 +202,8 @@ namespace CocosSharp
                         if (value.R != 0)
                         {
                             var pos = new CCGridSize(x, y);
-                            UpdateAtlasValueAt(pos, value, total);
-                            PositionToAtlasIndex.Add(pos, total);
+							UpdateAtlasValueAt(x, y, value, total);
+							PositionToAtlasIndex.Add(pos, total);
 
                             total++;
                         }
