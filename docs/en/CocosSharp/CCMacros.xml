@@ -13,20 +13,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName="CCContentScaleFactor">
-      <MemberSignature Language="C#" Value="public static float CCContentScaleFactor ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCContentScaleFactor() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CCDegreesToRadians">
       <MemberSignature Language="C#" Value="public static float CCDegreesToRadians (float angle);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig float32 CCDegreesToRadians(float32 angle) cil managed" />
@@ -41,30 +27,6 @@
         <param name="angle">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CCDirectorStatsUpdateIntervalInSeconds">
-      <MemberSignature Language="C#" Value="public static readonly float CCDirectorStatsUpdateIntervalInSeconds;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly float32 CCDirectorStatsUpdateIntervalInSeconds" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CCHiResDisplayFilenameSuffix">
-      <MemberSignature Language="C#" Value="public static readonly string CCHiResDisplayFilenameSuffix;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly string CCHiResDisplayFilenameSuffix" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -113,18 +75,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CCSpriteIndexNotInitialized">
-      <MemberSignature Language="C#" Value="public static readonly int CCSpriteIndexNotInitialized;" />
-      <MemberSignature Language="ILAsm" Value=".field public static initonly int32 CCSpriteIndexNotInitialized" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CCSwap&lt;T&gt;">
       <MemberSignature Language="C#" Value="public static void CCSwap&lt;T&gt; (ref T x, ref T y);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void CCSwap&lt;T&gt;(!!T x, !!T y) cil managed" />
@@ -148,102 +98,228 @@
       </Docs>
     </Member>
     <Member MemberName="PixelsToPoints">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p, class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
+        <param name="director">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="PixelsToPoints">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCRect</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
-      </Parameters>
-      <Docs>
-        <param name="r">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PixelsToPoints">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
-      </Parameters>
-      <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PointsToPixels">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p) cil managed" />
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p, float32 scaleFactor) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PointsToPixels">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r) cil managed" />
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r, class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
         <param name="r">To be added.</param>
+        <param name="director">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PointsToPixels">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s) cil managed" />
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r, float32 scaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s, class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
         <param name="s">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PixelsToPoints">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s, float32 scaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p, class CocosSharp.CCDirector director) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p, float32 scaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="p">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r, class CocosSharp.CCDirector director) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r, float32 scaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="r">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s, class CocosSharp.CCDirector director) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointsToPixels">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s, float scaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s, float32 scaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+        <Parameter Name="scaleFactor" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="s">To be added.</param>
+        <param name="scaleFactor">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>

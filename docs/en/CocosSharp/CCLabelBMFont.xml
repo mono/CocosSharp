@@ -1,6 +1,6 @@
 <Type Name="CCLabelBMFont" FullName="CocosSharp.CCLabelBMFont">
-  <TypeSignature Language="C#" Value="public class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCColor, CocosSharp.ICCTextContainer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends CocosSharp.CCSpriteBatchNode implements class CocosSharp.ICCColor, class CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="C#" Value="public class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCTextContainer" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLabelBMFont extends CocosSharp.CCSpriteBatchNode implements class CocosSharp.ICCTextContainer" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -8,9 +8,6 @@
     <BaseTypeName>CocosSharp.CCSpriteBatchNode</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCColor</InterfaceName>
-    </Interface>
     <Interface>
       <InterfaceName>CocosSharp.ICCTextContainer</InterfaceName>
     </Interface>
@@ -271,22 +268,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Color">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B Color { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the color with R,G,B bytes</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the color with R,G,B bytes</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="CreateFontChars">
       <MemberSignature Language="C#" Value="public void CreateFontChars ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void CreateFontChars() cil managed" />
@@ -313,69 +294,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="displayedColor">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B displayedColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B displayedColor" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DisplayedColor">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B DisplayedColor { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Returns the displayed color.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Returns the displayed color.</para>
-          <para>
-            <para>The <see cref="T:CocosSharp.CCColor3B" /> contains R,G,B bytes. </para>
-          </para>
-          <para>The <see cref="T:CocosSharp.CCColor3B" /> contains R,G,B bytes. </para>
-          <see cref="T:CocosSharp.CCColor3B" />
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="displayedOpacity">
-      <MemberSignature Language="C#" Value="protected byte displayedOpacity;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 displayedOpacity" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DisplayedOpacity">
-      <MemberSignature Language="C#" Value="public virtual byte DisplayedOpacity { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 DisplayedOpacity" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Returns the displayed opacity.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Returns the displayed opacity.</para>
-          <para>
-            <para>The opacity of sprite, from 0 ~ 255 </para>
-          </para>
-          <para>The opacity of sprite, from 0 ~ 255 </para>
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Draw">
       <MemberSignature Language="C#" Value="protected override void Draw ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
@@ -396,19 +314,6 @@
       <ReturnValue>
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="FNTConfigRemoveCache">
-      <MemberSignature Language="C#" Value="public static void FNTConfigRemoveCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void FNTConfigRemoveCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -493,84 +398,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="isColorCascaded">
-      <MemberSignature Language="C#" Value="protected bool isColorCascaded;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool isColorCascaded" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsColorCascaded">
-      <MemberSignature Language="C#" Value="public virtual bool IsColorCascaded { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorCascaded" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isColorModifiedByOpacity">
-      <MemberSignature Language="C#" Value="protected bool isColorModifiedByOpacity;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool isColorModifiedByOpacity" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsColorModifiedByOpacity">
-      <MemberSignature Language="C#" Value="public virtual bool IsColorModifiedByOpacity { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsDirty">
       <MemberSignature Language="C#" Value="protected bool IsDirty { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDirty" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="isOpacityCascaded">
-      <MemberSignature Language="C#" Value="protected bool isOpacityCascaded;" />
-      <MemberSignature Language="ILAsm" Value=".field family bool isOpacityCascaded" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="IsOpacityCascaded">
-      <MemberSignature Language="C#" Value="public virtual bool IsOpacityCascaded { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityCascaded" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
@@ -654,22 +484,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Opacity">
-      <MemberSignature Language="C#" Value="public virtual byte Opacity { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes the opacity.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes the opacity.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="PurgeCachedData">
       <MemberSignature Language="C#" Value="public static void PurgeCachedData ();" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeCachedData() cil managed" />
@@ -684,26 +498,18 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="realColor">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B realColor;" />
-      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCColor3B realColor" />
-      <MemberType>Field</MemberType>
+    <Member MemberName="RunningOnNewWindow">
+      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+      <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
+      </Parameters>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="realOpacity">
-      <MemberSignature Language="C#" Value="protected byte realOpacity;" />
-      <MemberSignature Language="ILAsm" Value=".field family unsigned int8 realOpacity" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Byte</ReturnType>
-      </ReturnValue>
-      <Docs>
+        <param name="windowSize">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -788,38 +594,6 @@
         <summary>To be added.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateDisplayedColor">
-      <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="parentColor" Type="CocosSharp.CCColor3B" />
-      </Parameters>
-      <Docs>
-        <param name="parentColor">To be added.</param>
-        <summary>recursive method that updates display color </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="UpdateDisplayedOpacity">
-      <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedOpacity (byte parentOpacity);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedOpacity(unsigned int8 parentOpacity) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="parentOpacity" Type="System.Byte" />
-      </Parameters>
-      <Docs>
-        <param name="parentOpacity">To be added.</param>
-        <summary>recursive method that updates the displayed opacity. </summary>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="UpdateLabel">

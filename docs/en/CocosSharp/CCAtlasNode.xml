@@ -1,11 +1,11 @@
 <Type Name="CCAtlasNode" FullName="CocosSharp.CCAtlasNode">
-  <TypeSignature Language="C#" Value="public class CCAtlasNode : CocosSharp.CCNodeRGBA, CocosSharp.ICCTexture" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
+  <TypeSignature Language="C#" Value="public class CCAtlasNode : CocosSharp.CCNode, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAtlasNode extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>

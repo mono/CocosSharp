@@ -26,6 +26,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="EVENT_COME_TO_BACKGROUND">
+      <MemberSignature Language="C#" Value="public static string EVENT_COME_TO_BACKGROUND;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_COME_TO_BACKGROUND" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_COME_TO_FOREGROUND">
+      <MemberSignature Language="C#" Value="public static string EVENT_COME_TO_FOREGROUND;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_COME_TO_FOREGROUND" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsStopped">
       <MemberSignature Language="C#" Value="public bool IsStopped { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsStopped" />

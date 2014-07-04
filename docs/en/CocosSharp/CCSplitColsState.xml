@@ -49,9 +49,9 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="WinSize">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize WinSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WinSize" />
+    <Member MemberName="WindowSizeInPoints">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize WindowSizeInPoints { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WindowSizeInPoints" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>

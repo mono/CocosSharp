@@ -49,13 +49,13 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAnimationFrame (CocosSharp.CCSpriteFrame spriteFrame, float delayUnits, CocosSharp.PlistDictionary userInfo);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame, float32 delayUnits, class CocosSharp.PlistDictionary userInfo) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAnimationFrame (CocosSharp.CCSpriteFrame spriteFrame, float delayUnits, object userInfo);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCSpriteFrame spriteFrame, float32 delayUnits, object userInfo) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
         <Parameter Name="delayUnits" Type="System.Single" />
-        <Parameter Name="userInfo" Type="CocosSharp.PlistDictionary" />
+        <Parameter Name="userInfo" Type="System.Object" />
       </Parameters>
       <Docs>
         <param name="spriteFrame">To be added.</param>
@@ -106,11 +106,11 @@
       </Docs>
     </Member>
     <Member MemberName="UserInfo">
-      <MemberSignature Language="C#" Value="public CocosSharp.PlistDictionary UserInfo { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.PlistDictionary UserInfo" />
+      <MemberSignature Language="C#" Value="public object UserInfo { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance object UserInfo" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.PlistDictionary</ReturnType>
+        <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>setUserInfo </summary>

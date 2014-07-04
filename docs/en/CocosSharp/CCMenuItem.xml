@@ -1,11 +1,11 @@
 <Type Name="CCMenuItem" FullName="CocosSharp.CCMenuItem">
-  <TypeSignature Language="C#" Value="public class CCMenuItem : CocosSharp.CCNodeRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItem extends CocosSharp.CCNodeRGBA" />
+  <TypeSignature Language="C#" Value="public class CCMenuItem : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMenuItem extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

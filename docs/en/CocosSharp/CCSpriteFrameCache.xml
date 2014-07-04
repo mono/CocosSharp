@@ -16,8 +16,8 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCSpriteFrameCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpriteFrameCache ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
@@ -55,24 +55,6 @@
       </Parameters>
       <Docs>
         <param name="plistFileName">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AddSpriteFrames">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrames (CocosSharp.PlistDictionary pobDictionary, CocosSharp.CCTexture2D pobTexture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrames(class CocosSharp.PlistDictionary pobDictionary, class CocosSharp.CCTexture2D pobTexture) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="pobDictionary" Type="CocosSharp.PlistDictionary" />
-        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
-      </Parameters>
-      <Docs>
-        <param name="pobDictionary">To be added.</param>
-        <param name="pobTexture">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -144,19 +126,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Instance">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCSpriteFrameCache Instance { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCSpriteFrameCache Instance" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSpriteFrameCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Item">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrame this[string name] { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteFrame Item(string)" />
@@ -171,19 +140,6 @@
         <param name="name">To be added.</param>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeSharedSpriteFrameCache">
-      <MemberSignature Language="C#" Value="public static void PurgeSharedSpriteFrameCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedSpriteFrameCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

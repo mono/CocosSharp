@@ -1,11 +1,11 @@
 <Type Name="CCLayerColor" FullName="CocosSharp.CCLayerColor">
-  <TypeSignature Language="C#" Value="public class CCLayerColor : CocosSharp.CCLayerRGBA, CocosSharp.ICCBlendable" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends CocosSharp.CCLayerRGBA implements class CocosSharp.ICCBlendable" />
+  <TypeSignature Language="C#" Value="public class CCLayerColor : CocosSharp.CCLayer, CocosSharp.ICCBlendable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCLayerColor extends CocosSharp.CCLayer implements class CocosSharp.ICCBlendable" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCLayerRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCLayer</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
@@ -218,9 +218,25 @@ v0.8 </summary>
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="RunningOnNewWindow">
+      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="windowSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpdateColor">
-      <MemberSignature Language="C#" Value="protected virtual void UpdateColor ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void UpdateColor() cil managed" />
+      <MemberSignature Language="C#" Value="protected override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateColor() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

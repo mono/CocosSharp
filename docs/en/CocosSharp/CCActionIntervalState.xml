@@ -73,8 +73,8 @@
       </Docs>
     </Member>
     <Member MemberName="Step">
-      <MemberSignature Language="C#" Value="public override void Step (float dt);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Step(float32 dt) cil managed" />
+      <MemberSignature Language="C#" Value="protected override void Step (float dt);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance void Step(float32 dt) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

@@ -36,16 +36,23 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DefaultColor">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4B DefaultColor { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCColor4B DefaultColor" />
-      <MemberType>Property</MemberType>
+    <Member MemberName="DrawArc">
+      <MemberSignature Language="C#" Value="public static void DrawArc (CocosSharp.CCRect rect, int startAngle, int sweepAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawArc(valuetype CocosSharp.CCRect rect, int32 startAngle, int32 sweepAngle) cil managed" />
+      <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+        <ReturnType>System.Void</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="startAngle" Type="System.Int32" />
+        <Parameter Name="sweepAngle" Type="System.Int32" />
+      </Parameters>
       <Docs>
+        <param name="rect">To be added.</param>
+        <param name="startAngle">To be added.</param>
+        <param name="sweepAngle">To be added.</param>
         <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -67,6 +74,32 @@
         <param name="startAngle">To be added.</param>
         <param name="sweepAngle">To be added.</param>
         <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawArc">
+      <MemberSignature Language="C#" Value="public static void DrawArc (int x, int y, int width, int height, int startAngle, int sweepAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawArc(int32 x, int32 y, int32 width, int32 height, int32 startAngle, int32 sweepAngle) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="startAngle" Type="System.Int32" />
+        <Parameter Name="sweepAngle" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <param name="startAngle">To be added.</param>
+        <param name="sweepAngle">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -138,8 +171,36 @@
       </Docs>
     </Member>
     <Member MemberName="DrawCircle">
-      <MemberSignature Language="C#" Value="public static void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, bool drawLineToCenter, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberSignature Language="C#" Value="public static void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, float scaleX = 1, float scaleY = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, bool drawLineToCenter, float32 scaleX, float32 scaleY) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+        <Parameter Name="segments" Type="System.Int32" />
+        <Parameter Name="drawLineToCenter" Type="System.Boolean" />
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="angle">To be added.</param>
+        <param name="segments">To be added.</param>
+        <param name="drawLineToCenter">To be added.</param>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawCircle">
+      <MemberSignature Language="C#" Value="public static void DrawCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color, float scaleX = 1, float scaleY = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, bool drawLineToCenter, valuetype CocosSharp.CCColor4B color, float32 scaleX, float32 scaleY) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -151,6 +212,8 @@
         <Parameter Name="segments" Type="System.Int32" />
         <Parameter Name="drawLineToCenter" Type="System.Boolean" />
         <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="center">To be added.</param>
@@ -159,6 +222,45 @@
         <param name="segments">To be added.</param>
         <param name="drawLineToCenter">To be added.</param>
         <param name="color">To be added.</param>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawColor">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4B DrawColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property valuetype CocosSharp.CCColor4B DrawColor" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawCubicBezier">
+      <MemberSignature Language="C#" Value="public static void DrawCubicBezier (CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawCubicBezier(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint control1, valuetype CocosSharp.CCPoint control2, valuetype CocosSharp.CCPoint destination, int32 segments) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="origin" Type="CocosSharp.CCPoint" />
+        <Parameter Name="control1" Type="CocosSharp.CCPoint" />
+        <Parameter Name="control2" Type="CocosSharp.CCPoint" />
+        <Parameter Name="destination" Type="CocosSharp.CCPoint" />
+        <Parameter Name="segments" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="origin">To be added.</param>
+        <param name="control1">To be added.</param>
+        <param name="control2">To be added.</param>
+        <param name="destination">To be added.</param>
+        <param name="segments">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -190,6 +292,28 @@
       </Docs>
     </Member>
     <Member MemberName="DrawEllips">
+      <MemberSignature Language="C#" Value="public static void DrawEllips (int x, int y, int width, int height);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllips(int32 x, int32 y, int32 width, int32 height) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawEllips">
       <MemberSignature Language="C#" Value="public static void DrawEllips (int x, int y, int width, int height, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllips(int32 x, int32 y, int32 width, int32 height, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
@@ -214,6 +338,22 @@
       </Docs>
     </Member>
     <Member MemberName="DrawEllipse">
+      <MemberSignature Language="C#" Value="public static void DrawEllipse (CocosSharp.CCRect rect);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllipse(valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawEllipse">
       <MemberSignature Language="C#" Value="public static void DrawEllipse (CocosSharp.CCRect rect, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawEllipse(valuetype CocosSharp.CCRect rect, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
@@ -227,6 +367,24 @@
       <Docs>
         <param name="rect">To be added.</param>
         <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawLine">
+      <MemberSignature Language="C#" Value="public static void DrawLine (CocosSharp.CCPoint origin, CocosSharp.CCPoint destination);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawLine(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint destination) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="origin" Type="CocosSharp.CCPoint" />
+        <Parameter Name="destination" Type="CocosSharp.CCPoint" />
+      </Parameters>
+      <Docs>
+        <param name="origin">To be added.</param>
+        <param name="destination">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -252,6 +410,26 @@
       </Docs>
     </Member>
     <Member MemberName="DrawPie">
+      <MemberSignature Language="C#" Value="public static void DrawPie (CocosSharp.CCRect rect, int startAngle, int sweepAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPie(valuetype CocosSharp.CCRect rect, int32 startAngle, int32 sweepAngle) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="startAngle" Type="System.Int32" />
+        <Parameter Name="sweepAngle" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="rect">To be added.</param>
+        <param name="startAngle">To be added.</param>
+        <param name="sweepAngle">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPie">
       <MemberSignature Language="C#" Value="public static void DrawPie (CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPie(valuetype CocosSharp.CCRect rect, int32 startAngle, int32 sweepAngle, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
@@ -269,6 +447,32 @@
         <param name="startAngle">To be added.</param>
         <param name="sweepAngle">To be added.</param>
         <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPie">
+      <MemberSignature Language="C#" Value="public static void DrawPie (int x, int y, int width, int height, int startAngle, int sweepAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPie(int32 x, int32 y, int32 width, int32 height, int32 startAngle, int32 sweepAngle) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="x" Type="System.Int32" />
+        <Parameter Name="y" Type="System.Int32" />
+        <Parameter Name="width" Type="System.Int32" />
+        <Parameter Name="height" Type="System.Int32" />
+        <Parameter Name="startAngle" Type="System.Int32" />
+        <Parameter Name="sweepAngle" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="x">To be added.</param>
+        <param name="y">To be added.</param>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <param name="startAngle">To be added.</param>
+        <param name="sweepAngle">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -356,6 +560,40 @@
       </Docs>
     </Member>
     <Member MemberName="DrawPoints">
+      <MemberSignature Language="C#" Value="public static void DrawPoints (CocosSharp.CCPoint[] points);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype CocosSharp.CCPoint[] points) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="points" Type="CocosSharp.CCPoint[]" />
+      </Parameters>
+      <Docs>
+        <param name="points">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPoints">
+      <MemberSignature Language="C#" Value="public static void DrawPoints (CocosSharp.CCPoint[] points, float size);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype CocosSharp.CCPoint[] points, float32 size) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="points" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="size" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="points">To be added.</param>
+        <param name="size">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPoints">
       <MemberSignature Language="C#" Value="public static void DrawPoints (CocosSharp.CCPoint[] points, float size, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoints(valuetype CocosSharp.CCPoint[] points, float32 size, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
@@ -393,6 +631,64 @@
         <param name="numberOfPoints">To be added.</param>
         <param name="size">To be added.</param>
         <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPoly">
+      <MemberSignature Language="C#" Value="public static void DrawPoly (CocosSharp.CCPoint[] vertices, bool closePolygon = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype CocosSharp.CCPoint[] vertices, bool closePolygon) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="closePolygon" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
+        <param name="closePolygon">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPoly">
+      <MemberSignature Language="C#" Value="public static void DrawPoly (CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color, bool closePolygon = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype CocosSharp.CCPoint[] vertices, valuetype CocosSharp.CCColor4B color, bool closePolygon) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="closePolygon" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="closePolygon">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawPoly">
+      <MemberSignature Language="C#" Value="public static void DrawPoly (CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawPoly(valuetype CocosSharp.CCPoint[] vertices, int32 numOfVertices, bool closePolygon) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="numOfVertices" Type="System.Int32" />
+        <Parameter Name="closePolygon" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
+        <param name="numOfVertices">To be added.</param>
+        <param name="closePolygon">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -444,6 +740,28 @@
       </Docs>
     </Member>
     <Member MemberName="DrawQuadBezier">
+      <MemberSignature Language="C#" Value="public static void DrawQuadBezier (CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuadBezier(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint control, valuetype CocosSharp.CCPoint destination, int32 segments) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="origin" Type="CocosSharp.CCPoint" />
+        <Parameter Name="control" Type="CocosSharp.CCPoint" />
+        <Parameter Name="destination" Type="CocosSharp.CCPoint" />
+        <Parameter Name="segments" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="origin">To be added.</param>
+        <param name="control">To be added.</param>
+        <param name="destination">To be added.</param>
+        <param name="segments">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawQuadBezier">
       <MemberSignature Language="C#" Value="public static void DrawQuadBezier (CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawQuadBezier(valuetype CocosSharp.CCPoint origin, valuetype CocosSharp.CCPoint control, valuetype CocosSharp.CCPoint destination, int32 segments, valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Method</MemberType>
@@ -480,6 +798,78 @@
       </Parameters>
       <Docs>
         <param name="rect">To be added.</param>
+        <param name="color">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSolidCircle">
+      <MemberSignature Language="C#" Value="public static void DrawSolidCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, float scaleX = 1, float scaleY = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, float32 scaleX, float32 scaleY) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+        <Parameter Name="segments" Type="System.Int32" />
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="angle">To be added.</param>
+        <param name="segments">To be added.</param>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSolidCircle">
+      <MemberSignature Language="C#" Value="public static void DrawSolidCircle (CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color, float scaleX = 1, float scaleY = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidCircle(valuetype CocosSharp.CCPoint center, float32 radius, float32 angle, int32 segments, valuetype CocosSharp.CCColor4B color, float32 scaleX, float32 scaleY) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="center" Type="CocosSharp.CCPoint" />
+        <Parameter Name="radius" Type="System.Single" />
+        <Parameter Name="angle" Type="System.Single" />
+        <Parameter Name="segments" Type="System.Int32" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="center">To be added.</param>
+        <param name="radius">To be added.</param>
+        <param name="angle">To be added.</param>
+        <param name="segments">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DrawSolidPoly">
+      <MemberSignature Language="C#" Value="public static void DrawSolidPoly (CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void DrawSolidPoly(valuetype CocosSharp.CCPoint[] vertices, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertices" Type="CocosSharp.CCPoint[]" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="vertices">To be added.</param>
         <param name="color">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -557,6 +947,32 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="LineWidth">
+      <MemberSignature Language="C#" Value="public static float LineWidth { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 LineWidth" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PointSize">
+      <MemberSignature Language="C#" Value="public static float PointSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property float32 PointSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

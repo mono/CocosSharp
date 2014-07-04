@@ -40,21 +40,6 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteSheet (CocosSharp.PlistDictionary dictionary, CocosSharp.CCTexture2D texture);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.PlistDictionary dictionary, class CocosSharp.CCTexture2D texture) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="dictionary" Type="CocosSharp.PlistDictionary" />
-        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
-      </Parameters>
-      <Docs>
-        <param name="dictionary">To be added.</param>
-        <param name="texture">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCSpriteSheet (System.IO.Stream stream, CocosSharp.CCTexture2D texture);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class System.IO.Stream stream, class CocosSharp.CCTexture2D texture) cil managed" />
       <MemberType>Constructor</MemberType>
