@@ -27,7 +27,7 @@ namespace tests
 
             AddChild(map, 0, kTagTileMap);
 
-            map.AnchorPoint = (new CCPoint(0, 0.5f));
+			map.AnchorPoint = CCPoint.AnchorMiddleLeft;
 
             CCScaleBy scale = new CCScaleBy(4, 0.8f);
             CCFiniteTimeAction scaleBack = scale.Reverse();
@@ -68,10 +68,16 @@ namespace tests
             Schedule(updateMap, 0.2f);
 
             AddChild(map, 0, kTagTileMap);
-
             map.AnchorPoint = (new CCPoint(0, 0));
-            map.Position = new CCPoint(-20, -200);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var map = (CCTileMapAtlas) this[kTagTileMap];
+			map.Position = new CCPoint(-20, -200);
+		}
 
         private void updateMap(float dt)
         {
@@ -79,7 +85,7 @@ namespace tests
             //   The only limitation is that you cannot change an empty, or assign an empty tile to a tile
             //   The value 0 not rendered so don't assign or change a tile with value 0
 
-            var tilemap = (CCTileMapAtlas) GetChildByTag(kTagTileMap);
+			var tilemap = (CCTileMapAtlas) this[kTagTileMap];
 
             //
             // For example you can iterate over all the tiles
@@ -206,7 +212,7 @@ namespace tests
             }
             */
 
-            map.RunAction(new CCScaleBy(2, 0.5f));
+			map.RunAction(SCALE_2X_Half );
         }
 
 		public override string Title
@@ -888,7 +894,6 @@ namespace tests
 
             CCSize s = map.ContentSize;
             CCLog.Log("ContentSize: {0}, {1}", s.Width, s.Height);
-            map.Position = new CCPoint(-s.Width / 2, 0);
 
             m_tamara = new CCSprite(pathSister1);
             map.AddChild(m_tamara, map.Children.Count);
@@ -1298,9 +1303,8 @@ namespace tests
 				var child = (CCSpriteBatchNode)mapChild;
 				child.Texture.IsAntialiased = true;
 			}
-
-            CCScaleBy action = new CCScaleBy(2, 0.5f);
-            map.RunAction(action);
+				
+			map.RunAction(SCALE_2X_Half );
         }
 
 		public override string Title
@@ -1329,9 +1333,8 @@ namespace tests
 				var child = (CCSpriteBatchNode)mapChild;
 				child.Texture.IsAntialiased = true;
 			}
-
-            CCScaleBy action = new CCScaleBy(2, 0.5f);
-            map.RunAction(action);
+				
+			map.RunAction(SCALE_2X_Half );
 
             Schedule(flipIt, 1.0f);
         }
@@ -1407,9 +1410,8 @@ namespace tests
 				var child = (CCSpriteBatchNode)mapChild;
 				child.Texture.IsAntialiased = true;
 			}
-
-            CCScaleBy action = new CCScaleBy(2, 0.5f);
-            map.RunAction(action);
+				
+			map.RunAction(SCALE_2X_Half );
         }
 
 		public override string Title
@@ -1445,10 +1447,19 @@ namespace tests
             }
             */
 
-            map.AnchorPoint = (new CCPoint(0, 0));
+			map.AnchorPoint = CCPoint.AnchorLowerLeft;
             CCTMXLayer layer = map.LayerNamed("Tile Layer 1");
-            layer.SetTileGID(3, new CCPoint(2, 2));
+			layer.SetTileGID(3, new CCPoint(2, 2));
+
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var map = (CCTMXTiledMap)this[kTagTileMap];
+			//map.Position = new CCPoint(100, 100);
+		}
 
 		public override string Title
 		{
@@ -1513,6 +1524,8 @@ namespace tests
 		protected const string pathSister1 = TestResource.s_pPathSister1;
         public const int kTagTileMap = 1;
 
+		protected CCScaleBy SCALE_2X_Half = new CCScaleBy(2, 0.5f);
+
         public TileDemo()
         {
 			// Register Touch Event
@@ -1564,9 +1577,8 @@ namespace tests
         {
 			var touch = touches [0];
             CCPoint diff = touch.Delta;
-            CCNode node = GetChildByTag(kTagTileMap);
-            CCPoint currentPos = node.Position;
-            node.Position = currentPos + diff;
+            CCNode node = this[kTagTileMap];
+            node.Position += diff;
         }
 
     }
