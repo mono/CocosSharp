@@ -228,7 +228,12 @@ namespace CocosSharp
         public void InsertQuad(ref CCV3F_C4B_T2F_Quad quad, int index)
         {
             Debug.Assert(index < Quads.Capacity, "insertQuadWithTexture: Invalid index");
-            Quads.Insert(index, quad);
+
+			var remaining = (TotalQuads-1) - index;
+			// Last object does not need to be moved
+			if (remaining > 0)
+	            Quads.Insert(index, quad);
+
             Dirty = true;
         }
 

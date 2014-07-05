@@ -673,7 +673,6 @@ namespace CocosSharp
                 reusedTile = new CCSprite();
                 reusedTile.InitWithTexture(TextureAtlas.Texture, rect, false);
                 reusedTile.BatchNode = this;
-                reusedTile.Director = Director;
             }
             else
             {
