@@ -67,7 +67,7 @@ namespace CocosSharp
 
         public CCBox2dDraw(string spriteFontName)
         {
-            primitiveBatch = new CCPrimitiveBatch(CCDrawManager.GraphicsDevice, 5000);
+            primitiveBatch = new CCPrimitiveBatch(CCDrawManager.SharedDrawManager, 5000);
             spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>(spriteFontName);
             stringData = new List<StringData>();
             stringBuilder = new StringBuilder();
@@ -235,7 +235,7 @@ namespace CocosSharp
         {
             primitiveBatch.End();
 
-            var _batch = CCDrawManager.SpriteBatch;
+            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
 
             _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
 
