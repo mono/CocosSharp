@@ -198,7 +198,7 @@ namespace CocosSharp
 			set 
 			{
 				CCSpriteBatchNode batchnode = new CCSpriteBatchNode (value.Texture, 9);
-                UpdateWithBatchNode (batchnode, value.RectInPixels, value.IsRotated, CCRect.Zero);
+                UpdateWithBatchNode (batchnode, value.TextureRectInPixels, value.IsRotated, CCRect.Zero);
 
 				// Reset insets
 				insetLeft = 0;
@@ -248,7 +248,7 @@ namespace CocosSharp
 		// Sprite frame
 
 		public CCScale9Sprite(CCSpriteFrame spriteFrame, CCRect capInsets) 
-            : this(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.RectInPixels, spriteFrame.IsRotated, capInsets)
+            : this(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.TextureRectInPixels, spriteFrame.IsRotated, capInsets)
 		{
 		}
 
@@ -287,7 +287,7 @@ namespace CocosSharp
 
 		internal void InitWithSpriteFrame(CCSpriteFrame spriteFrame)
 		{
-            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.RectInPixels, spriteFrame.IsRotated, CCRect.Zero);
+            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.TextureRectInPixels, spriteFrame.IsRotated, CCRect.Zero);
 		}
 
 		internal void InitWithSpriteFrameName(string spriteFrameName)
@@ -299,7 +299,7 @@ namespace CocosSharp
 		{
             CCSpriteFrame spriteFrame = CCApplication.SharedApplication.SpriteFrameCache[spriteFrameName];
 
-            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.RectInPixels, spriteFrame.IsRotated, capInsets);
+            InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.TextureRectInPixels, spriteFrame.IsRotated, capInsets);
 		}
 
 		#endregion Constructors

@@ -137,8 +137,8 @@ namespace CocosSharp
 
         public CCPoint LocationFromTouch(CCTouch touch)
         {
-            CCPoint touchLocation = touch.Location;
-			touchLocation = ConvertToNodeSpace(touchLocation);	
+            CCPoint touchLocation = touch.LocationOnScreen;
+            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation));	
 
             return touchLocation;
         }
@@ -268,7 +268,7 @@ namespace CocosSharp
 
 		public CCControlSwitchSprite(CCSprite maskSprite, CCSprite onSprite, CCSprite offSprite, CCSprite thumbSprite, 
 			CCLabelTtf onLabel, CCLabelTtf offLabel) 
-			: base((CCTexture2D)null, new CCRect(0.0f, 0.0f, maskSprite.TextureRect.Size.Width, maskSprite.TextureRect.Size.Height))
+			: base((CCTexture2D)null, new CCRect(0.0f, 0.0f, maskSprite.TextureRectInPixels.Size.Width, maskSprite.TextureRectInPixels.Size.Height))
         {
             OnPosition = 0;
             OffPosition = -onSprite.ContentSize.Width + thumbSprite.ContentSize.Width / 2;
@@ -297,9 +297,9 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
-            CCDrawManager.BindTexture(Texture);
-			CCDrawManager.DrawQuad(ref Quad);
+            CCDrawManager.SharedDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
+            CCDrawManager.SharedDrawManager.BindTexture(Texture);
+			CCDrawManager.SharedDrawManager.DrawQuad(ref quad);
         }
 
         public void NeedsLayout()
@@ -318,9 +318,8 @@ namespace CocosSharp
             }
 
             var rt = new CCRenderTexture(
-                (int) MaskSprite.ContentSizeInPixels.Width,
-                (int) MaskSprite.ContentSizeInPixels.Height,
-                Director.ContentScaleFactor,
+                MaskSprite.TextureRectInPixels.Size,
+                MaskSprite.TextureRectInPixels.Size,
 				CCSurfaceFormat.Color, CCDepthFormat.None, CCRenderTargetUsage.DiscardContents
                 );
 

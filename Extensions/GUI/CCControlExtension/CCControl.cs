@@ -272,8 +272,8 @@ namespace CocosSharp
 
         public virtual CCPoint GetTouchLocation(CCTouch touch)
         {
-            CCPoint touchLocation = touch.Location; // Get the touch position
-            touchLocation = ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
+            CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
+            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
 
             return touchLocation;
         }
@@ -284,14 +284,14 @@ namespace CocosSharp
         *
         * @param touch A CCTouch object that represents a touch.
         *
-        * @return YES whether a touch is inside the receiver�s rect.
+        * @return YES whether a touch is inside the receivers rect.
         */
 
         public virtual bool IsTouchInside(CCTouch touch)
         {
-            CCPoint touchLocation = touch.Location;
-            touchLocation = Parent.ConvertToNodeSpace(touchLocation);
-            CCRect bBox = BoundingBox;
+            CCPoint touchLocation = touch.LocationOnScreen;
+            touchLocation = Parent.Scene.ScreenToWorldspace(touchLocation);
+            CCRect bBox = TransformedBoundingBoxWorldspace;
             return bBox.ContainsPoint(touchLocation);
         }
 

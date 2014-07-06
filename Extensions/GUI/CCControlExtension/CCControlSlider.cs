@@ -168,8 +168,8 @@ namespace CocosSharp
 
 		protected virtual CCPoint LocationFromTouch(CCTouch touch)
 		{
-			CCPoint touchLocation = touch.Location; // Get the touch position
-			touchLocation = ConvertToNodeSpace(touchLocation); // Convert to the node space of this class
+			CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
+            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
 
 			if (touchLocation.X < 0)
 			{
@@ -184,10 +184,10 @@ namespace CocosSharp
 
 		public override bool IsTouchInside(CCTouch touch)
 		{
-			CCPoint touchLocation = touch.Location;
-			touchLocation = Parent.ConvertToNodeSpace(touchLocation);
+			CCPoint touchLocation = touch.LocationOnScreen;
+			touchLocation = Scene.ScreenToWorldspace(touchLocation);
 
-			CCRect rect = BoundingBox;
+            CCRect rect = TransformedBoundingBoxWorldspace;
 			rect.Size.Width += ThumbSprite.ContentSize.Width;
 			rect.Origin.X -= ThumbSprite.ContentSize.Width / 2;
 
@@ -257,9 +257,10 @@ namespace CocosSharp
             ThumbSprite.Position = pos;
 
             // Stretches content proportional to newLevel
-            CCRect textureRect = ProgressSprite.TextureRect;
+            CCRect textureRect = ProgressSprite.TextureRectInPixels;
             textureRect = new CCRect(textureRect.Origin.X, textureRect.Origin.Y, pos.X, textureRect.Size.Height);
-            ProgressSprite.SetTextureRect(textureRect, ProgressSprite.IsTextureRectRotated, textureRect.Size);
+            ProgressSprite.TextureRectInPixels = textureRect;
+            ProgressSprite.ContentSize = textureRect.Size;
         }
     };
 }
