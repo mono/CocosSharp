@@ -8,32 +8,32 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-	internal static class b2VecHelper
+    internal static class b2VecHelper
     {
         public static CCVector2 ToCCVector2(this b2Vec2 vec)
         {
             return new CCVector2(vec.x, vec.y);
         }
 
-		internal static Color ToColor(this b2Color color)
+        internal static Color ToColor(this b2Color color)
         {
             return new Color(color.r, color.g, color.b);
         }
 
-		internal static CCColor4B ToCCColor4B(this b2Color color)
-		{
-			return new CCColor4B (color.r, color.g, color.b, 255);
-		}
+        internal static CCColor4B ToCCColor4B(this b2Color color)
+        {
+            return new CCColor4B (color.r, color.g, color.b, 255);
+        }
     }
 
-	public class CCBox2dDraw : b2Draw
+    public class CCBox2dDraw : b2Draw
     {
-#if WINDOWS_PHONE || OUYA
+        #if WINDOWS_PHONE || OUYA
         public const int CircleSegments = 16;
-#else
+        #else
         public const int CircleSegments = 32;
-#endif
-		internal Color TextColor = Color.White;
+        #endif
+        internal Color TextColor = Color.White;
 
         CCPrimitiveBatch primitiveBatch;
         SpriteFont spriteFont;
@@ -41,29 +41,29 @@ namespace CocosSharp
         StringBuilder stringBuilder;
 
 
-		#region Structs
+        #region Structs
 
-		struct StringData
-		{
-			public object[] Args;
-			public Color Color;
-			public string S;
-			public int X, Y;
+        struct StringData
+        {
+            public object[] Args;
+            public Color Color;
+            public string S;
+            public int X, Y;
 
-			public StringData(int x, int y, string s, object[] args, Color color)
-			{
-				X = x;
-				Y = y;
-				S = s;
-				Args = args;
-				Color = color;
-			}
-		}
+            public StringData(int x, int y, string s, object[] args, Color color)
+            {
+                X = x;
+                Y = y;
+                S = s;
+                Args = args;
+                Color = color;
+            }
+        }
 
-		#endregion Structs
+        #endregion Structs
 
 
-		#region Constructors
+        #region Constructors
 
         public CCBox2dDraw(string spriteFontName)
         {
@@ -73,7 +73,7 @@ namespace CocosSharp
             stringBuilder = new StringBuilder();
         }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
         public override void DrawPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -85,12 +85,12 @@ namespace CocosSharp
 
             for (int i = 0; i < vertexCount - 1; i++)
             {
-				primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-				primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+                primitiveBatch.AddVertex(vertices[i].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+                primitiveBatch.AddVertex(vertices[i + 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
             }
 
-			primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
-			primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(vertices[vertexCount - 1].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
+            primitiveBatch.AddVertex(vertices[0].ToCCVector2(), color.ToCCColor4B(), PrimitiveType.LineList);
         }
 
         public override void DrawSolidPolygon(b2Vec2[] vertices, int vertexCount, b2Color color)
@@ -106,7 +106,7 @@ namespace CocosSharp
                 return;
             }
 
-			var colorFill = color.ToCCColor4B() * 0.5f;
+            var colorFill = color.ToCCColor4B() * 0.5f;
 
             for (int i = 1; i < vertexCount - 1; i++)
             {
@@ -134,8 +134,8 @@ namespace CocosSharp
             {
                 CCVector2 v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
                 CCVector2 v2 = centr +
-                             radius *
-                             new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+                    radius *
+                    new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
                 primitiveBatch.AddVertex(ref v1, col, PrimitiveType.LineList);
                 primitiveBatch.AddVertex(ref v2, col, PrimitiveType.LineList);
@@ -163,7 +163,7 @@ namespace CocosSharp
             {
                 var v1 = centr + radius * new CCVector2((float) Math.Cos(theta), (float) Math.Sin(theta));
                 var v2 = centr +
-                         radius * new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
+                    radius * new CCVector2((float) Math.Cos(theta + increment), (float) Math.Sin(theta + increment));
 
                 primitiveBatch.AddVertex(ref v0, colorFill, PrimitiveType.TriangleList);
                 primitiveBatch.AddVertex(ref v1, colorFill, PrimitiveType.TriangleList);
