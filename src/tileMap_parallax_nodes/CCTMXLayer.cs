@@ -34,20 +34,6 @@ namespace CocosSharp
 
         public Dictionary<string, string> Properties { get; set; }      // Properties of the tmx layer
 
-		public override CCDirector Director 
-        { 
-            get { return base.Director; }
-            internal set 
-            {
-                base.Director = value;
-
-                if(value != null && reusedTile != null)
-                {
-                    reusedTile.Director = value;
-                }
-            }
-        }
-
         #endregion Properties
 
 
@@ -673,7 +659,6 @@ namespace CocosSharp
                 reusedTile = new CCSprite();
                 reusedTile.InitWithTexture(TextureAtlas.Texture, rect, false);
                 reusedTile.BatchNode = this;
-                reusedTile.Director = Director;
             }
             else
             {

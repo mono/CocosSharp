@@ -394,6 +394,10 @@ namespace CocosSharp
         // Used externally by non-subclasses
         internal void InitWithTexture(CCTexture2D texture, CCRect? rectInPoints=null, bool rotated=false)
         {
+			// do not remove this
+			// This sets up the atlas index correctly.  If not set correctly lot of weird sprite artifacts start showing up.
+			BatchNode = null;
+
             IsTextureRectRotated = rotated;
             textureRectInPoints = rectInPoints ?? CCRect.Zero;
 
