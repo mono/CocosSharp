@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using CocosSharp;
 
@@ -14,7 +15,7 @@ namespace CocosDenshion
 {
 	public partial class CCMusicPlayer
 	{
-		static readonly string[] allowedTypes = { "m4a", "aac", "mp3", "wav" };
+
 		AVAudioPlayer music;
 
 
@@ -26,6 +27,9 @@ namespace CocosDenshion
 
 			set
 			{
+				if (music == null)
+					return;
+
 				value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 
 				if(music != null) music.Volume = value;
@@ -129,15 +133,48 @@ namespace CocosDenshion
 		{
 			base.Open(fileName, soundId);
 
-			string relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
+			var relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
 			string absFilePath = null;
-			foreach(string formatType in allowedTypes)
+
+			// First let's try loading with the file extension type if one exists
+			var ext = Path.GetExtension(fileName);
+
+			if (!string.IsNullOrEmpty(ext))
 			{
-				absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
-				if(absFilePath !=null)
-					break;
+				// trim off extension
+				fileName = fileName.Substring(0, fileName.Length - ext.Length);
+				// create 
+				relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
+				// strip off the period
+				ext = ext.Substring(1);
+				//  now try loading the resource using the extenion as the file type
+				absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, ext);
 			}
-			music = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
+
+			if (string.IsNullOrEmpty(absFilePath))
+			{
+				foreach (string formatType in CCSimpleAudioEngine.AllowedTypesMac)
+				{
+					absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
+					if (absFilePath != null)
+						break;
+				}
+			}
+
+			if (absFilePath == null)
+				CCLog.Log("CocosSharp: File Name: " + fileName + " was not found.");
+
+			if (absFilePath != null)
+			{
+				try 
+				{
+					music = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
+				}
+				catch 
+				{
+					CCLog.Log("CocosSharp: File Name: " + fileName + " could not be loaded.");
+				}
+			}
 		}
 
 		public override void Close()

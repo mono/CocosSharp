@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using CocosSharp;
 
@@ -14,7 +15,7 @@ namespace CocosDenshion
 {
 	public partial class CCEffectPlayer
 	{
-		static readonly string[] allowedTypes = { "m4a", "aac", "mp3", "wav" };
+
 		AVAudioPlayer soundEffect;
 
 
@@ -25,6 +26,9 @@ namespace CocosDenshion
 			get { return soundEffect != null ? soundEffect.Volume : 0.0f; }
 			set
 			{
+				if (soundEffect == null)
+					return;
+
 				value = CCMathHelper.Clamp(value, 0.0f, 1.0f);
 				soundEffect.Volume = value;
 			}
@@ -96,21 +100,52 @@ namespace CocosDenshion
 		#endregion Effect controls
 
 
-		public override void Open(string filename, int soundId)
+		public override void Open(string fileName, int soundId)
 		{
-			base.Open(filename, soundId);
+			base.Open(fileName, soundId);
 
-			string relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, filename);
+			string relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
 			string absFilePath = null;
-			foreach(string formatType in allowedTypes)
-			{
-				absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
-				if(absFilePath !=null)
-					break;
-			}
-			soundEffect = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
-		}
 
+			// First let's try loading with the file extension type if one exists
+			var ext = Path.GetExtension(fileName);
+
+			if (!string.IsNullOrEmpty(ext))
+			{
+				// trim off extension
+				fileName = fileName.Substring(0, fileName.Length - ext.Length);
+				// create 
+				relFilePath = Path.Combine(CCContentManager.SharedContentManager.RootDirectory, fileName);
+				// strip off the period
+				ext = ext.Substring(1);
+				//  now try loading the resource using the extenion as the file type
+				absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, ext);
+			}
+
+			if (string.IsNullOrEmpty(absFilePath))
+				foreach(string formatType in CCSimpleAudioEngine.AllowedTypesMac)
+				{
+					absFilePath = NSBundle.MainBundle.PathForResource(relFilePath, formatType);
+					if(absFilePath !=null)
+						break;
+				}
+
+			if (absFilePath == null)
+				CCLog.Log("CocosSharp: File Name: " + fileName + " was not found.");
+
+			if (absFilePath != null)
+			{
+				try 
+				{
+					soundEffect = AVAudioPlayer.FromUrl(new NSUrl(absFilePath, false));
+				}
+				catch 
+				{
+					CCLog.Log("CocosSharp: File Name: " + fileName + " could not be loaded.");
+				}
+			}
+
+		}
 
 		public override void Close()
 		{

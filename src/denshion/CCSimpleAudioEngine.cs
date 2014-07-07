@@ -15,6 +15,8 @@ namespace CocosDenshion
 
 		float effectsVolume = 1.0f;
 
+		internal static readonly string[] AllowedTypesMac = { "m4a", "aac", "mp3", "wav", "aifc", "caf" };
+
 		#region Properties
 
 		public static CCSimpleAudioEngine SharedEngine
