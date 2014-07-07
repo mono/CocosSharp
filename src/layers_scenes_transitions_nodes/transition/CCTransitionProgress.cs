@@ -139,8 +139,8 @@ namespace CocosSharp
             //    Return the radial type that we want to use
             node.ReverseDirection = true;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
