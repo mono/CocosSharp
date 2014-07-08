@@ -1177,7 +1177,7 @@ namespace CocosSharp
                     pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
                 #endif
                     lastMouseId++;
-                    touches.AddLast(new CCTouch(lastMouseId, pos.X, pos.Y));
+                    touches.AddLast(new CCTouch(lastMouseId, pos.X, pos.Y, CCApplication.SharedApplication.MainWindowDirector));
                     touchMap.Add(lastMouseId, touches.Last);
                     newTouches.Add(touches.Last.Value);
                 }
@@ -1225,7 +1225,7 @@ namespace CocosSharp
                             {
                                 pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
 
-                                touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
+								touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y, CCApplication.SharedApplication.MainWindowDirector));
                                 touchMap.Add(touch.Id, touches.Last);
                                 newTouches.Add(touches.Last.Value);
                             }
