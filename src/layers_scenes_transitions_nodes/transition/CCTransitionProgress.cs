@@ -29,9 +29,9 @@ namespace CocosSharp
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height, Director.ContentScaleFactor);
-            texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            texture.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            texture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            texture.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
+			texture.Position = size.Center;
+			texture.AnchorPoint = CCPoint.AnchorMiddle;
 
             // render outScene to its texturebuffer
             texture.Clear(0, 0, 0, 1);
@@ -108,8 +108,8 @@ namespace CocosSharp
             //    Return the radial type that we want to use
             node.ReverseDirection = false;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -170,8 +170,8 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 0);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -199,8 +199,8 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(0, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -226,8 +226,8 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 0;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -265,8 +265,8 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+			node.Position = size.Center;
+			node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }

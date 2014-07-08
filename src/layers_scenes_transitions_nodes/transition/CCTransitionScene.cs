@@ -23,7 +23,9 @@ namespace CocosSharp
             get { return InScene != null ? InScene.Director : null; }
             internal set 
             {
-                // Director is dependent on InScene
+				// Director is dependent on InScene
+				if (InScene != null && InScene.ContentSize == CCSize.Zero)
+					InScene.ContentSize = Director.WindowSizeInPoints;
             }
         }
 
