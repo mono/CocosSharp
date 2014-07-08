@@ -9,28 +9,29 @@ namespace tests
         public static int MENU_LEVEL = 99999;
         public static int TITLE_LEVEL = 99999;
 
+		CCMenu pMenu;
+		CCMenuItemLabelTTF pMenuItem;
+
         public TestScene()
         {
+			//add the menu item for back to main menu
+			var label = new CCLabelTtf("MainMenu", "arial", 20);
+			pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
+
+			pMenu = new CCMenu(pMenuItem);
+
+			pMenu.Name = "MainMenu";
+			AddChild(pMenu, MENU_LEVEL);
         }
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
+		public override void OnEnter()
+		{
+			base.OnEnter();
+			var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 50, CCVisibleRect.Bottom.Y + 25);
 
-            //add the menu item for back to main menu
-            var label = new CCLabelTtf("MainMenu", "arial", 20);
-            var pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
-
-            var pMenu = new CCMenu(pMenuItem);
-
-            pMenu.Name = "MainMenu";
-            AddChild(pMenu, MENU_LEVEL);
-
-            var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 50, CCVisibleRect.Bottom.Y + 25);
-
-            pMenu.Position = CCPoint.Zero;
-            pMenuItem.Position = visiblePoint;
-        }
+			pMenu.Position = CCPoint.Zero;
+			pMenuItem.Position = visiblePoint;
+		}
 
         private bool _bButtonWasPressed = false;
         private bool _aButtonWasPressed = false;

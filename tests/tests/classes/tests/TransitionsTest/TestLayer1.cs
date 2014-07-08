@@ -13,28 +13,29 @@ namespace tests
 		CCLabelTtf title;
 		CCLabelTtf label;
 
-        public TestLayer1()
+		public TestLayer1()
+			: base()
         {
+			bg1 = new CCSprite(TransitionsTestScene.s_back1);
+			AddChild(bg1, -1);
 
-            bg1 = new CCSprite(TransitionsTestScene.s_back1);
-            AddChild(bg1, -1);
-
-            title = new CCLabelTtf((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
-            AddChild(title);
-            title.Color = new CCColor3B(255, 32, 32);
+			title = new CCLabelTtf((TransitionsTestScene.transitions[TransitionsTestScene.s_nSceneIdx]), "arial", 32);
+			AddChild(title);
+			title.Color = new CCColor3B(255, 32, 32);
 
 
 			label = new CCLabelTtf("SCENE 1", "MarkerFelt", 38);
-            label.Color = (new CCColor3B(16, 16, 255));
-            AddChild(label);
+			label.Color = (new CCColor3B(16, 16, 255));
+			AddChild(label);
 
-			Schedule(step, 1.0f);
         }
 
 		protected override void RunningOnNewWindow(CCSize windowSize)
 		{
 			base.RunningOnNewWindow(windowSize);
 
+
+			Schedule(step, 1.0f);
             float x, y;
 
 			var size = windowSize;
@@ -61,7 +62,7 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+               Director.ReplaceScene(pScene);
             }
         }
 
@@ -79,7 +80,7 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Director.ReplaceScene(pScene);
             }
         }
 
@@ -99,9 +100,34 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+               Director.ReplaceScene(pScene);
             }
         }
+
+		public override void OnEnter()
+		{
+			base.OnEnter();
+			CCLog.Log("Scene 1: onEnter");
+		}
+
+		public override void OnEnterTransitionDidFinish()
+		{
+			base.OnEnterTransitionDidFinish();
+			CCLog.Log("Scene 1: onEnterTransitionDidFinish");
+		}
+
+		public override void OnExitTransitionDidStart()
+		{
+			base.OnExitTransitionDidStart();
+			CCLog.Log("Scene 1: onExitTransitionDidStart");
+		}
+
+
+		public override void OnExit()
+		{
+			base.OnExit();
+			CCLog.Log("Scene 1: onExit");
+		}
 
         public void step(float dt)
         {

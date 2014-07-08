@@ -13,7 +13,7 @@ namespace tests
 		CCLabelTtf title;
 		CCLabelTtf label;
 
-        public TestLayer2()
+		public TestLayer2()
         {
 
 			bg2 = new CCSprite(TransitionsTestScene.s_back2);
@@ -27,7 +27,8 @@ namespace tests
 			label = new CCLabelTtf("SCENE 2", "MarkerFelt", 38);
 			label.Color = (new CCColor3B(16, 16, 255));
 			AddChild(label);
-            Schedule(step, 1.0f);
+			Schedule(step, 1.0f);
+
         }
 
 		protected override void RunningOnNewWindow(CCSize windowSize)
@@ -100,6 +101,31 @@ namespace tests
                 Director.ReplaceScene(pScene);
             }
         }
+
+		public override void OnEnter()
+		{
+			base.OnEnter();
+			CCLog.Log("Scene 2: onEnter");
+		}
+
+		public override void OnEnterTransitionDidFinish()
+		{
+			base.OnEnterTransitionDidFinish();
+			CCLog.Log("Scene 2: onEnterTransitionDidFinish");
+		}
+
+		public override void OnExitTransitionDidStart()
+		{
+			base.OnExitTransitionDidStart();
+			CCLog.Log("Scene 2: onExitTransitionDidStart");
+		}
+
+
+		public override void OnExit()
+		{
+			base.OnExit();
+			CCLog.Log("Scene 2: onExit");
+		}
 
         public void step(float dt) { }
     }
