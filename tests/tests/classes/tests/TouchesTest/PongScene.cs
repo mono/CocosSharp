@@ -40,7 +40,7 @@ namespace tests
 
         public override void runThisTest()
         {
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         public override void MainMenuCallback(object pSender)
