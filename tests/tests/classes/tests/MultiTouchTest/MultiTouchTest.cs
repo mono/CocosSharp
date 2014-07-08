@@ -8,6 +8,9 @@ namespace tests
 {
     public class MultiTouchTestLayer : CCLayer
     {
+
+		CCLabelTtf title;
+
         public MultiTouchTestLayer()
         {
 			var listener = new CCEventListenerTouchAllAtOnce();
@@ -17,9 +20,14 @@ namespace tests
 
 			AddEventListener(listener);   
 
-			var title = new CCLabelTtf("Please touch the screen!", "", 24);
-			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);
+			title = new CCLabelTtf("Please touch the screen!", "", 24);
 			AddChild(title);
+		}
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);
 		}
 
         private CCColor3B[] s_TouchColors = new CCColor3B[] 
@@ -86,7 +94,7 @@ namespace tests
 
             AddChild(layer, 0);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         protected override void NextTestCase()
@@ -108,12 +116,13 @@ namespace tests
         protected override void Draw()
         {
             CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawLine(new CCPoint(0, _touchPoint.Y), new CCPoint(ContentSize.Width, _touchPoint.Y),
-                                         new CCColor4B(_touchColor.R, _touchColor.G, _touchColor.B, 255));
-            CCDrawingPrimitives.DrawLine(new CCPoint(_touchPoint.X, 0), new CCPoint(_touchPoint.X, ContentSize.Height),
-                                         new CCColor4B(_touchColor.R, _touchColor.G, _touchColor.B, 255));
-            CCDrawingPrimitives.DrawPoint(_touchPoint, 30,
-                                          new CCColor4B(_touchColor.R, _touchColor.G, _touchColor.B, 255));
+			CCDrawingPrimitives.DrawColor = new CCColor4B(_touchColor.R, _touchColor.G, _touchColor.B, 255);
+			CCDrawingPrimitives.LineWidth = 10;
+            CCDrawingPrimitives.DrawLine(new CCPoint(0, _touchPoint.Y), new CCPoint(ContentSize.Width, _touchPoint.Y));
+            CCDrawingPrimitives.DrawLine(new CCPoint(_touchPoint.X, 0), new CCPoint(_touchPoint.X, ContentSize.Height));
+			CCDrawingPrimitives.LineWidth = 1;
+			CCDrawingPrimitives.PointSize = 30;
+            CCDrawingPrimitives.DrawPoint(_touchPoint);
             CCDrawingPrimitives.End();
         }
 
@@ -131,7 +140,7 @@ namespace tests
         {
             TouchPoint pRet = new TouchPoint();
             pRet.ContentSize = pParent.ContentSize;
-            pRet.AnchorPoint = new CCPoint(0.0f, 0.0f);
+			pRet.AnchorPoint = CCPoint.AnchorLowerLeft;
             return pRet;
         }
 
