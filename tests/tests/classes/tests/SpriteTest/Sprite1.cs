@@ -173,11 +173,16 @@ namespace tests
 
             AddEventListener(touchListener);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-            AddNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
         }
 
         #endregion Constructors
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+			CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			AddNewSpriteWithCoords(s.Center);
+		}
 
 
         void AddNewSpriteWithCoords(CCPoint p)
