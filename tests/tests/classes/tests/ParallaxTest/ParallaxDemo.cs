@@ -153,7 +153,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Director.WindowSizeInPoints;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 1);
