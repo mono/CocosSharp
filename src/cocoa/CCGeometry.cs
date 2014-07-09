@@ -155,6 +155,11 @@ namespace CocosSharp
             return Sub(ref v2).LengthSQ;
         }
 
+		public float Angle
+		{
+			get { return (float) Math.Atan2(Y,X); }
+		}
+
         /// <summary>
         ///     Normalizes the components of this point (convert to mag 1), and returns the orignial
         ///     magnitude of the vector defined by the XY components of this point.
