@@ -26,7 +26,6 @@ namespace tests
 
             AddChild(theMenu);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 			CCSprite sprite = new CCSprite(SceneTestScene.grossini) { Tag = SceneTestScene.GROSSINI_TAG };
             AddChild(sprite);
         }
