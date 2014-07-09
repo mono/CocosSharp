@@ -180,8 +180,7 @@ namespace tests
 		protected override void RunningOnNewWindow(CCSize windowSize)
 		{
 			base.RunningOnNewWindow(windowSize);
-			CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-			AddNewSpriteWithCoords(s.Center);
+			AddNewSpriteWithCoords(windowSize.Center);
 		}
 
 
