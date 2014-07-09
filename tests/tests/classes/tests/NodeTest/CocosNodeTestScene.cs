@@ -91,7 +91,7 @@ namespace tests
 			var pLayer = nextCocosNodeAction();
             AddChild(pLayer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }

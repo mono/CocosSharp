@@ -7,46 +7,52 @@ namespace tests
     {
         public ConvertToNode()
         {
+
+        }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesEnded = onTouchesEnded;
 
 			AddEventListener(listener);    
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			CCSize s = windowSize;
 
 			var rotate = new CCRotateBy (10, 360);
 
-            for (int i = 0; i < 3; i++)
-            {
-                CCSprite sprite = new CCSprite("Images/grossini");
-                sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
+			for (int i = 0; i < 3; i++)
+			{
+				CCSprite sprite = new CCSprite("Images/grossini");
+				sprite.Position = (new CCPoint(s.Width / 4 * (i + 1), s.Height / 2));
 
-                CCSprite point = new CCSprite("Images/r1");
-                point.Scale = 0.25f;
-                point.Position = sprite.Position;
-                AddChild(point, 10, 100 + i);
+				CCSprite point = new CCSprite("Images/r1");
+				point.Scale = 0.25f;
+				point.Position = sprite.Position;
+				AddChild(point, 10, 100 + i);
 
-                switch (i)
-                {
-                    case 0:
-                        sprite.AnchorPoint = new CCPoint(0, 0);
-                        break;
-                    case 1:
-                        sprite.AnchorPoint = (new CCPoint(0.5f, 0.5f));
-                        break;
-                    case 2:
-                        sprite.AnchorPoint = (new CCPoint(1, 1));
-                        break;
-                }
+				switch (i)
+				{
+					case 0:
+						sprite.AnchorPoint = CCPoint.AnchorLowerLeft;
+						break;
+					case 1:
+						sprite.AnchorPoint = CCPoint.AnchorMiddle;
+						break;
+					case 2:
+						sprite.AnchorPoint = CCPoint.AnchorUpperRight;
+						break;
+				}
 
-                point.Position = (sprite.Position);
+				point.Position = sprite.Position;
 
 				sprite.RepeatForever(rotate);
 
-                AddChild(sprite, i);
-            }
-        }
-
+				AddChild(sprite, i);
+			}
+		}
         public override string title()
         {
             return "Convert To Node Space";
@@ -60,7 +66,7 @@ namespace tests
 
 				for( int i = 0; i < 3; i++)
 				{
-					var node = GetChildByTag(100+i);
+					var node = this[100+i];
 					CCPoint p1, p2;
 
 					p1 = node.ConvertToNodeSpaceAr(location);

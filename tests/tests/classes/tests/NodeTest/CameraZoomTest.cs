@@ -8,33 +8,40 @@ namespace tests
 
         public CameraZoomTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            CCSprite sprite;
-            CCCamera cam;
-
-            // LEFT
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0);
-            sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
-            cam = sprite.Camera;
-            cam.SetEyeXyz(0, 0, 415 / 2);
-            cam.SetCenterXyz(0, 0, 0);
-
-            // CENTER
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
-
-            // RIGHT
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0, 20);
-            sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
-
-            m_z = 0;
-
-            Schedule ();
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			CCSize s = windowSize;
+
+			CCSprite sprite;
+			CCCamera cam;
+
+			// LEFT
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0);
+			sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
+			cam = sprite.Camera;
+			cam.SetEyeXyz(0, 0, 415 / 2);
+			cam.SetCenterXyz(0, 0, 0);
+
+			// CENTER
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0, 40);
+			sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
+
+			// RIGHT
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0, 20);
+			sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
+
+			m_z = 0;
+
+			Schedule ();
+		}
 
         public override void Update(float dt)
         {
@@ -55,12 +62,12 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection3D);
+            Director.Projection = (CCDirectorProjection.Projection3D);
         }
 
         public override void OnExit()
         {
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
+            Director.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

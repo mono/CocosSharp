@@ -34,8 +34,8 @@ namespace tests
 
         public void addAndRemove(float dt)
         {
-            CCNode sp1 = GetChildByTag(CocosNodeTestStaticLibrary.kTagSprite1);
-            CCNode sp2 = GetChildByTag(CocosNodeTestStaticLibrary.kTagSprite2);
+            CCNode sp1 = this[CocosNodeTestStaticLibrary.kTagSprite1];
+            CCNode sp2 = this[CocosNodeTestStaticLibrary.kTagSprite2];
 
             RemoveChild(sp1, false);
             RemoveChild(sp2, true);
