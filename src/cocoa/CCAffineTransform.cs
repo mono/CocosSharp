@@ -119,6 +119,24 @@ namespace CocosSharp
 			}
 		}
 
+
+        internal Matrix XnaMatrix
+        {
+            get 
+            {
+                Matrix xnaMatrix = Matrix.Identity;
+                xnaMatrix.M11 = this.A;
+                xnaMatrix.M21 = this.C;
+                xnaMatrix.M12 = this.B;
+                xnaMatrix.M22 = this.D;
+                xnaMatrix.M41 = this.Tx;
+                xnaMatrix.M42 = this.Ty;
+                xnaMatrix.M43 = 1;
+
+                return xnaMatrix;
+            }
+        }
+
 		#endregion Properties
 
 
@@ -244,6 +262,22 @@ namespace CocosSharp
 			rect.Size.Height = maxY - minY;
 		}
 
+        public void Transform(ref CCV3F_C4B_T2F quadPoint)
+        {
+            CCPoint projectedPoint = Transform(new CCPoint(quadPoint.Vertices.X, quadPoint.Vertices.Y));
+
+            quadPoint.Vertices = new CCVertex3F(projectedPoint.X, projectedPoint.Y, quadPoint.Vertices.Z);
+        }
+
+        public CCV3F_C4B_T2F_Quad Transform(CCV3F_C4B_T2F_Quad quad)
+        {
+            Transform(ref quad.TopLeft);
+            Transform(ref quad.TopRight);
+            Transform(ref quad.BottomLeft);
+            Transform(ref quad.BottomRight);
+
+            return quad;
+        }
 
 		#region Equality
 

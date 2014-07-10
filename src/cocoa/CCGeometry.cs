@@ -857,6 +857,10 @@ namespace CocosSharp
             Size.Height = height;
 		}
 
+        internal CCRect(Rectangle xnaRect) : this(xnaRect.X, xnaRect.Y, xnaRect.Width, xnaRect.Height)
+        {
+        }
+
 		#endregion Constructors
 
 
