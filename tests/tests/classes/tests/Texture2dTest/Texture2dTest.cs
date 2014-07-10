@@ -167,7 +167,7 @@ namespace tests
         {
             CCLayer pLayer = nextTextureTest();
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
     }
@@ -185,7 +185,7 @@ namespace tests
             base.OnEnter();
 
             CCApplication.SharedApplication.TextureCache.DumpCachedTextureInfo();
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1, (int) (enumTag.kTagLabel));
             label.Position = new CCPoint(s.Width / 2, s.Height - 50);
@@ -223,21 +223,21 @@ namespace tests
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.restartTextureTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.nextTextureTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new TextureTestScene();
             s.AddChild(TextureTestScene.backTextureTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public virtual string title()
@@ -264,7 +264,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             CCLog.Log("Loading 512x512 image...");
             CCSprite sprite1 = new CCSprite("Images/texture512x512");
@@ -377,12 +377,12 @@ namespace tests
     //    CCTexture2D *texture1 = CCTextureCache::sharedTextureCache()->addImage("Images/grossini_dance_atlas_nomipmap.png");
 
     //    CCSprite *img0 = CCSprite::spriteWithTexture(texture0);
-    //    img0->setTextureRect(CCRectMake(85, 121, 85, 121));
+    //    img0->setTextureRectInPixels(CCRectMake(85, 121, 85, 121));
     //    img0->setPosition(ccp( s.width/3.0f, s.height/2.0f));
     //    addChild(img0);
 
     //    CCSprite *img1 = CCSprite::spriteWithTexture(texture1);
-    //    img1->setTextureRect(CCRectMake(85, 121, 85, 121));
+    //    img1->setTextureRectInPixels(CCRectMake(85, 121, 85, 121));
     //    img1->setPosition(ccp( 2*s.width/3.0f, s.height/2.0f));
     //    addChild(img1);
 
@@ -1000,7 +1000,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             //
             // Sprite 1: GL_LINEAR
@@ -1238,7 +1238,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1284,7 +1284,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1334,7 +1334,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             // The .png image MUST be power of 2 in order to create a continue effect.
             // eg: 32x64, 512x128, 256x1024, 64x64, etc..
@@ -1382,7 +1382,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCSprite sprite;
 
@@ -1441,7 +1441,7 @@ namespace tests
 
             m_nImageOffset = 0;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf("Loading...", "Marker Felt", 32);
             label.Position = size.Center;
@@ -1479,7 +1479,7 @@ namespace tests
 
         private void ImageLoaded(CCTexture2D tex)
         {
-            CCDirector director = CCApplication.SharedApplication.MainWindowDirector;
+            CCDirector director = Scene.Director;
 
             //CCAssert( [NSThread currentThread] == [director runningThread], @"FAIL. Callback should be on cocos2d thread");
 
@@ -1491,7 +1491,7 @@ namespace tests
             sprite.AnchorPoint = CCPoint.Zero;
             AddChild(sprite, -1);
 
-            CCSize size = director.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             int i = m_nImageOffset * 32;
             sprite.Position = new CCPoint(i % (int) size.Width, (i / (int) size.Width) * 32);
 

@@ -26,7 +26,7 @@ namespace tests
             IterateSpriteSheet pScene = new IterateSpriteSheetCArray();
             pScene.initWithQuantityOfNodes(kNodesIncrease);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            AppDelegate.SharedDirector.ReplaceScene(pScene);
         }
     }
 }

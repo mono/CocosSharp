@@ -59,9 +59,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             aParent.Position = (new CCPoint(windowSize.Width / 3, windowSize.Height / 2));
             aParent2.Position = (new CCPoint(2 * windowSize.Width / 3, windowSize.Height / 2));

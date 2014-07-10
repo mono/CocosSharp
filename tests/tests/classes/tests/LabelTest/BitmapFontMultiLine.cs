@@ -41,7 +41,7 @@ namespace tests
             s = label3.ContentSize;
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
 
-            s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            s = Scene.VisibleBoundsWorldspace.Size;
             label1.Position = new CCPoint();
             label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
             label3.Position = new CCPoint(s.Width, s.Height);

@@ -12,7 +12,7 @@ namespace tests
 {
     public class TestController : CCLayer
     {
-        static int LINE_SPACE = 40;
+        static int LINE_SPACE = 70;
         static CCPoint curPos = new CCPoint(0.0f, 0.0f);
 
         int currentItemIndex = 0;
@@ -45,9 +45,9 @@ namespace tests
 
             #if !PSM && !WINDOWS_PHONE
             #if NETFX_CORE
-            versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 12);
+            versionLabel = new CCLabelTtf("v" + this.GetType().GetAssemblyName().Version.ToString(), "arial", 30);
             #else
-            versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 12);
+            versionLabel = new CCLabelTtf("v" + this.GetType().Assembly.GetName().Version.ToString(), "arial", 30);
             #endif
             AddChild(versionLabel, 20000);
             #endif
@@ -56,7 +56,7 @@ namespace tests
             testListMenu = new CCMenu();
             for (int i = 0; i < (int)(TestCases.TESTS_COUNT); ++i)
             {
-                CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 24);
+                CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 50);
                 CCMenuItem menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
 
                 menuItem.UserData = i;
@@ -79,27 +79,24 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); 
+            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
 
             // Laying out content based on window size
             closeMenu.Position = CCPoint.Zero;
-            closeMenuItem.Position = new CCPoint(windowSize.Width - 30, windowSize.Height - 30);
+            closeMenuItem.Position = new CCPoint(visibleBounds.Size.Width - 40, visibleBounds.Size.Height - 40);
 
-            versionLabel.Position = new CCPoint(versionLabel.ContentSizeInPixels.Width/2f, windowSize.Height - 18f);
             versionLabel.HorizontalAlignment = CCTextAlignment.Left;
+            versionLabel.Position = new CCPoint (10.0f, visibleBounds.Size.Height - 40);
 
-            testListMenu.ContentSize = new CCSize(windowSize.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
+            testListMenu.ContentSize = new CCSize(visibleBounds.Size.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
 
             int i = 0;
             foreach (CCMenuItem testItem in testListMenuItems) 
             {
-                #if XBOX || OUYA
-                testItem.Position = new CCPoint(windowSize.Width / 2, -(i + 1) * LINE_SPACE);
-                #else
-                testItem.Position = new CCPoint(windowSize.Width / 2, (windowSize.Height - (i + 1) * LINE_SPACE));
-                #endif
+                testItem.Position = new CCPoint(visibleBounds.Size.Width /2.0f, (visibleBounds.Size.Height - (i + 1) * LINE_SPACE));
 
                 i++;
             }
@@ -138,7 +135,7 @@ namespace tests
 
             // set the first one to have the selection highlight
             currentItemIndex = 0;
-            SelectMenuItem();
+            //SelectMenuItem();
         }
 
         #endregion Setup content
@@ -154,7 +151,7 @@ namespace tests
                 if (menuIndicator != null) {
                     menuIndicator.Position = new CCPoint (
                         testListMenu.Position.X + testListMenuItems [currentItemIndex].Position.X 
-                        - testListMenuItems[currentItemIndex].ContentSizeInPixels.Width / 2f - menuIndicator.ContentSizeInPixels.Width / 2f - 5f,
+                        - testListMenuItems[currentItemIndex].ContentSize.Width / 2f - menuIndicator.ContentSize.Width / 2f - 5f,
                         testListMenu.Position.Y + testListMenuItems [currentItemIndex].Position.Y
                     );
                 }
@@ -165,7 +162,7 @@ namespace tests
         {
             testListMenuItems[currentItemIndex].Selected = false;
             currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -178,7 +175,7 @@ namespace tests
             if(currentItemIndex < 0) {
                 currentItemIndex = testListMenuItems.Count - 1;
             }
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -277,19 +274,19 @@ namespace tests
 
         bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
-            beginTouchPos = touch.Location;
+            beginTouchPos = touch.LocationOnScreen;
             return true;
         }
 
         void OnTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
 
-            var touchLocation = touch.Location;
+            var touchLocation = touch.LocationOnScreen;
             float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
             CCPoint curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             if (nextPos.Y < 0.0f)
             {
                 testListMenu.Position = new CCPoint(0, 0);
@@ -314,10 +311,10 @@ namespace tests
             // https://github.com/mono/MonoGame/issues/2276
             var delta = mouseEvent.ScrollY;
 
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             var curPos = testListMenu.Position;
             var nextPos = curPos;
-            nextPos.Y += (delta / Director.ContentScaleFactor) / LINE_SPACE;
+            nextPos.Y += (delta) / LINE_SPACE;
 
             if (nextPos.Y < 0) 
             {
@@ -435,6 +432,8 @@ namespace tests
                 default:
                     break;
             }
+
+            scene.Director = AppDelegate.SharedDirector;
 
             return scene;
         }

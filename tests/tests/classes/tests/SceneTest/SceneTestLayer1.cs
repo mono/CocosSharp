@@ -30,9 +30,13 @@ namespace tests
             
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+
+            CCLog.Log("SceneTestLayer1#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+            popMenuItem.Visible = Director.CanPopScene;
+            theMenu.AlignItemsVertically(12f);
 
 			CCLog.Log("SceneTestLayer1#RunningOnNewWindow - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
 
@@ -42,14 +46,6 @@ namespace tests
 			sprite.RepeatForever(SceneTestScene.rotate);
 
 		}
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-			CCLog.Log("SceneTestLayer1#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
-            popMenuItem.Visible = Director.CanPopScene;
-            theMenu.AlignItemsVertically(12f);
-        }
 
 		public override void OnExit()
 		{

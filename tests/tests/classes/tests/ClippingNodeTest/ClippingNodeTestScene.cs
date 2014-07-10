@@ -107,7 +107,7 @@ namespace tests.Clipping
 
         public BaseClippingNodeTest() : base()
         {
-			CCSize s = Director.WindowSizeInPoints;
+			CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
 			background = new CCSprite(TestResource.s_back3);
 			background.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -138,9 +138,9 @@ namespace tests.Clipping
 			Setup();
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			var s = windowSize;
 
 			background.Position = s.Center;
@@ -252,7 +252,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCNode stencil = Stencil();
             stencil.Tag = kTagStencilNode;
@@ -269,9 +269,9 @@ namespace tests.Clipping
             clipper.AddChild(content);
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			var s = windowSize;
 			this[kTagClipperNode].Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
@@ -447,9 +447,9 @@ namespace tests.Clipping
             }
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			foreach (var clipper in Children)
 			{
@@ -527,9 +527,9 @@ namespace tests.Clipping
             EventDispatcher.AddEventListener(listener, this);    
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 
 			m_pOuterClipper.Position = ContentSize.Center;
@@ -571,7 +571,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCPoint point =
-                m_pOuterClipper.ConvertToNodeSpace(touch.Location);
+                m_pOuterClipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
             CCRect rect = new CCRect(0, 0, m_pOuterClipper.ContentSize.Width,
                                      m_pOuterClipper.ContentSize.Height);
             if (!rect.ContainsPoint(point)) return;
@@ -596,7 +596,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
 			CCClippingNode clipper = new CCClippingNode() { Tag = kTagClipperNode };
             clipper.ContentSize = new CCSize(200, 200);
@@ -634,9 +634,9 @@ namespace tests.Clipping
             EventDispatcher.AddEventListener(touchListener, this);        
 		}
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			var clipper = this[kTagClipperNode];
 			clipper.Position = ContentSize.Center;
@@ -647,7 +647,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.ConvertToNodeSpace(touch.Location);
+            CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
             CCRect rect = new CCRect(0, 0, clipper.ContentSize.Width, clipper.ContentSize.Height);
             m_bScrolling = rect.ContainsPoint(point);
             m_lastPoint = point;
@@ -661,7 +661,7 @@ namespace tests.Clipping
             }
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.ConvertToNodeSpace(touch.Location);
+            CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
             CCPoint diff = point - m_lastPoint;
             CCNode content = clipper.GetChildByTag(kTagContentNode);
             content.Position = content.Position + diff;

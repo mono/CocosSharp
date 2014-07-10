@@ -11,21 +11,21 @@ namespace CocosSharp
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.restartTextInputTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.nextTextInputTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new TextInputTestScene();
             s.AddChild(textinputTestScene.backTextInputTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public virtual string title()
@@ -43,7 +43,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 24);
             AddChild(label);
@@ -102,7 +102,7 @@ namespace CocosSharp
 
 		bool onTouchBegan(CCTouch pTouch, CCEvent touchEvent)
         {
-            m_beginPos = pTouch.Location;
+            m_beginPos = pTouch.LocationOnScreen;
             return true;
         }
 
@@ -113,7 +113,7 @@ namespace CocosSharp
                 return;
             }
 
-            var endPos = pTouch.Location;
+            var endPos = pTouch.LocationOnScreen;
 
             if (m_pTrackNode.BoundingBox.ContainsPoint(m_beginPos) && m_pTrackNode.BoundingBox.ContainsPoint(endPos))
             {
@@ -143,13 +143,13 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var pTextField = new CCTextFieldTTF(
                 "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
                 );
 
-            pTextField.Position = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Center;
+            pTextField.Position = Scene.VisibleBoundsWorldspace.Size.Center;
 
             pTextField.AutoEdit = true;
 
@@ -213,7 +213,7 @@ namespace CocosSharp
             m_bAction = false;
 
             // add CCTextFieldTTF
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             m_pTextField = new CCTextFieldTTF("<click here for input>",
                                               TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
@@ -271,7 +271,7 @@ namespace CocosSharp
                 endPos.X += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.X, CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints.Height - inputTextSize.Height * 2);
+            CCPoint beginPos = new CCPoint(endPos.X, Scene.VisibleBoundsWorldspace.Size.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -302,7 +302,7 @@ namespace CocosSharp
             int RAND_MAX = 32767;
             CCRandom rand = new CCRandom();
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;

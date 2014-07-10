@@ -18,7 +18,7 @@ namespace tests
         {
             SpriteMainScene pScene = new SpritePerformTest1();
             pScene.initWithSubTest(1, 50);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            AppDelegate.SharedDirector.ReplaceScene(pScene);
         }
     }
 }

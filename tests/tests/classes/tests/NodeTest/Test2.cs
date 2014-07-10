@@ -8,7 +8,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
 			var sp1 = new CCSprite(TestResource.s_pPathSister1);
 			var sp2 = new CCSprite(TestResource.s_pPathSister2);

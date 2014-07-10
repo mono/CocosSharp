@@ -32,13 +32,13 @@ namespace tests
         public SpriteNilTexture()
         {
             sprite1 = new CCSprite();
-            sprite1.TextureRect = new CCRect(0, 0, 300, 300);
+            sprite1.TextureRectInPixels = new CCRect(0, 0, 300, 300);
             sprite1.Color = CCColor3B.Red;
             sprite1.Opacity = 128;
             AddChild(sprite1, 100);
 
             sprite2 = new CCSprite();
-            sprite2.TextureRect = new CCRect(0, 0, 300, 300);
+            sprite2.TextureRectInPixels = new CCRect(0, 0, 300, 300);
             sprite2.Color = CCColor3B.Blue;
             sprite2.Opacity = 128;
             AddChild(sprite2, 100);
@@ -49,9 +49,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow (windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             sprite1.Position = (new CCPoint(3 * windowSize.Width / 4, windowSize.Height / 2));
             sprite2.Position = (new CCPoint(1 * windowSize.Width / 4, windowSize.Height / 2));

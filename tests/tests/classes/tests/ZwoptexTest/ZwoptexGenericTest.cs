@@ -13,7 +13,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini-generic.plist");

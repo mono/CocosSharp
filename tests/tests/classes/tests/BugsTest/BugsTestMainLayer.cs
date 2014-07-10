@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             m_pItmeMenu = new CCMenu(null);
 
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)
@@ -38,7 +38,7 @@ namespace tests
             CCMenuItemFont pItem = (CCMenuItemFont)pSender;
             int nIndex = pItem.ZOrder - BugsTestScene.kItemTagBasic;
 
-            CCScene pScene = new CCScene();
+            CCScene pScene = new CCScene(Scene);
             CCLayer pLayer = null;
 
             switch (nIndex)
@@ -74,7 +74,7 @@ namespace tests
                     break;
             }
             pScene.AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            Scene.Director.ReplaceScene(pScene);
         }
 
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
@@ -82,7 +82,7 @@ namespace tests
 			foreach (var it in touches)
             {
                 CCTouch touch = it;
-                var m_tBeginPos = touch.Location;
+                var m_tBeginPos = touch.LocationOnScreen;
             }
 
         }
@@ -93,12 +93,12 @@ namespace tests
             {
                 CCTouch touch = it;
 
-                var touchLocation = touch.Location;
+                var touchLocation = touch.LocationOnScreen;
                 float nMoveY = touchLocation.Y - m_tBeginPos.Y;
 
                 CCPoint curPos = m_pItmeMenu.Position;
                 CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-                CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+                CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
                 if (nextPos.Y < 0.0f)
                 {
                     m_pItmeMenu.Position = new CCPoint(0, 0);

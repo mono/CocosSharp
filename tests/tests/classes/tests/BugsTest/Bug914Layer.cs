@@ -12,7 +12,7 @@ namespace tests
         public static CCScene scene()
         {
             // 'scene' is an autorelease object.
-            CCScene pScene = new CCScene();
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             // 'layer' is an autorelease object.
             //Bug914Layer layer = Bug914Layer.node();
 
@@ -36,7 +36,7 @@ namespace tests
             EventDispatcher.AddEventListener(touchListener, this);
 
             // ask director the the window size
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             CCLayerColor layer;
             for (int i = 0; i < 5; i++)
             {
@@ -77,7 +77,7 @@ namespace tests
 
         public void restart(object sender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(Bug914Layer.scene());
+            Scene.Director.ReplaceScene(Bug914Layer.scene());
         }
 
         //LAYER_NODE_FUNC(Bug914Layer);

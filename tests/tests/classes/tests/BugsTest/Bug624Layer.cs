@@ -16,7 +16,7 @@ namespace tests
 
         private void InitBug624Layer()
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             CCLabelTtf label = new CCLabelTtf("Layer1", "MarkerFelt", 22);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
@@ -29,9 +29,9 @@ namespace tests
         {
             //unschedule(Bug624Layer.switchLayer);
 
-            CCScene scene = new CCScene();
+            CCScene scene = new CCScene(Scene);
             scene.AddChild(new Bug624Layer2(), 0);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 255, B = 255 }));
+            Scene.Director.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 255, B = 255 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)
@@ -47,7 +47,7 @@ namespace tests
 
         public Bug624Layer2()
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             CCLabelTtf label = new CCLabelTtf("Layer2", "MarkerFelt", 36);
 
             label.Position = new CCPoint(size.Width / 2, size.Height / 2);
@@ -60,9 +60,9 @@ namespace tests
         {
             //unschedule(schedule_selector(Bug624Layer::switchLayer));
 
-            CCScene scene = new CCScene();
+            CCScene scene = new CCScene(Scene);
             scene.AddChild(new Bug624Layer(), 0);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 0, B = 0 }));
+            Scene.Director.ReplaceScene(new CCTransitionFade(2.0f, scene, new CCColor3B { R = 255, G = 0, B = 0 }));
         }
 
         public virtual void didAccelerate(CCAcceleration pAccelerationValue)

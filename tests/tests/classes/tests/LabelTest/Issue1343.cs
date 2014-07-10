@@ -6,7 +6,7 @@ namespace tests
     {
         public Issue1343()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             var bmFont = new CCLabelBMFont();
             bmFont.FntFile = "fonts/font-issue1343.fnt";

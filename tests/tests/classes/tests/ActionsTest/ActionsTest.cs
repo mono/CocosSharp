@@ -302,9 +302,10 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
             Tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
@@ -342,7 +343,7 @@ namespace tests
 
         protected void CenterSprites(uint numberOfSprites)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             if (numberOfSprites == 0)
             {
@@ -372,7 +373,7 @@ namespace tests
 
         protected void AlignSpritesLeft(uint numberOfSprites)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             if (numberOfSprites == 1)
             {
@@ -414,9 +415,10 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -447,9 +449,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Tamara.ScaleX = 2.5f;
             Tamara.ScaleY = -1.0f;
@@ -482,9 +484,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -527,9 +529,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -560,9 +562,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -596,9 +598,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -678,9 +680,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Tamara.RemoveFromParent(true);
             Grossini.RemoveFromParent(true);
@@ -761,9 +763,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Tamara.RemoveFromParent(true);
             Grossini.RemoveFromParent(true);
@@ -823,9 +825,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -871,9 +873,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -900,9 +902,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -968,9 +970,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1016,9 +1018,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1061,9 +1063,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1131,9 +1133,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1172,9 +1174,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1218,9 +1220,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1235,7 +1237,7 @@ namespace tests
 
         void Callback1()
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -1244,7 +1246,7 @@ namespace tests
 
         void Callback2(CCNode sender)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -1253,7 +1255,7 @@ namespace tests
 
         void Callback3(CCNode sender, object data)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
@@ -1278,9 +1280,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1310,7 +1312,7 @@ namespace tests
 
         void Callback1()
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -1319,7 +1321,7 @@ namespace tests
 
         void Callback2(CCNode sender)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -1328,7 +1330,7 @@ namespace tests
 
         void Callback3(CCNode target, object data)
         {
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
@@ -1373,9 +1375,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
 
@@ -1420,9 +1422,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1461,9 +1463,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
             Grossini.RunAction(action);
@@ -1511,9 +1513,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1557,9 +1559,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1585,9 +1587,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1629,9 +1631,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1671,9 +1673,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1722,9 +1724,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(2);
             Kathia.RunAction(action);
@@ -1763,9 +1765,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(2);
 
@@ -1821,9 +1823,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1854,9 +1856,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
 
@@ -1897,9 +1899,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1924,7 +1926,7 @@ namespace tests
             Tamara.Position = new CCPoint(50, 50);
             Tamara.RunAction(seq);
 
-            Kathia.SetPosition(windowSize.Width / 2, 50);
+            Kathia.Position = new CCPoint(windowSize.Width / 2, 50);
             Kathia.RunAction(seq2);
         }
 
@@ -1936,17 +1938,17 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(50, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(s.Width / 2, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
         }
     }
 
@@ -1974,9 +1976,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2021,10 +2023,10 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(50, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
 
             CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
         }
@@ -2070,9 +2072,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2104,9 +2106,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2148,7 +2150,7 @@ namespace tests
                 if (touch == null)
                     break;
 
-                CCPoint location = touch.Location;
+                CCPoint location = touch.LocationOnScreen;
 
                 AddNewSpriteWithCoords(location);
             }
@@ -2233,7 +2235,7 @@ namespace tests
 
         public override void RunActionsInSprite(CCSprite sprite)
         {
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // sprite 1
             CCBezierConfig bezier;
@@ -2281,9 +2283,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2364,10 +2366,10 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(50, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCatmullRom(pointArray, 50);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
 
             CCDrawingPrimitives.DrawCatmullRom(pointArray2, 50);
         }
@@ -2396,9 +2398,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2441,7 +2443,7 @@ namespace tests
 
             var seq2 = new CCSequence(action2, reverse2);
 
-            Kathia.SetPosition(windowSize.Width / 2, 50);
+            Kathia.Position = new CCPoint(windowSize.Width / 2, 50);
             Kathia.RunAction(seq2);
 
             Kathia.RunAction(
@@ -2463,17 +2465,17 @@ namespace tests
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(50, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 0, 100);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
-            CCDrawManager.PushMatrix();
-            CCDrawManager.Translate(s.Width / 2, 50, 0);
+            CCDrawManager.SharedDrawManager.PushMatrix();
+            CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 1, 100);
-            CCDrawManager.PopMatrix();
+            CCDrawManager.SharedDrawManager.PopMatrix();
         }
     }
 
@@ -2511,9 +2513,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2557,9 +2559,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2645,9 +2647,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2695,9 +2697,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2751,9 +2753,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2790,9 +2792,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2851,9 +2853,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2913,9 +2915,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 

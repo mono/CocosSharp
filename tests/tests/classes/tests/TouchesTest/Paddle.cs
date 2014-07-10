@@ -75,7 +75,7 @@ namespace tests
 
         public bool containsTouchLocation(CCTouch touch)
         {
-            return rect().ContainsPoint(ConvertTouchToNodeSpaceAr(touch));
+            return rect().ContainsPoint(Scene.ScreenToWorldspace(touch.LocationOnScreen));
         }
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)
@@ -98,7 +98,7 @@ namespace tests
 
             Debug.Assert(m_state == PaddleState.kPaddleStateGrabbed, "Paddle - Unexpected state!");
 
-            var touchPoint = touch.Location;
+            var touchPoint = touch.LocationOnScreen;
 
             base.Position = new CCPoint(touchPoint.X, base.Position.Y);
         }

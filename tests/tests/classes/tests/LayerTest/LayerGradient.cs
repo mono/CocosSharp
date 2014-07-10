@@ -28,17 +28,17 @@ namespace tests
 
             CCMenu menu = new CCMenu(item);
             AddChild(menu);
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             menu.Position = (new CCPoint(s.Width / 2, 100));
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             var it = touches.FirstOrDefault();
             CCTouch touch = (CCTouch)(it);
-            var start = touch.Location;
+            var start = touch.LocationOnScreen;
 
             CCPoint diff = new CCPoint(s.Width / 2 - start.X, s.Height / 2 - start.Y);
             diff = CCPoint.Normalize(diff);

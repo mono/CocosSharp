@@ -7,7 +7,7 @@ namespace tests
     {
         public CameraCenterTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCSprite sprite;
             CCOrbitCamera orbit;
@@ -17,7 +17,7 @@ namespace tests
             AddChild(sprite, 0);
             sprite.Position = new CCPoint(s.Width / 5 * 1, s.Height / 5 * 1);
             sprite.Color = CCColor3B.Red;
-            sprite.TextureRect = new CCRect(0, 0, 120, 50);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
@@ -27,7 +27,7 @@ namespace tests
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 1, s.Height / 5 * 4));
             sprite.Color = CCColor3B.Blue;
-            sprite.TextureRect = new CCRect(0, 0, 120, 50);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
@@ -37,7 +37,7 @@ namespace tests
             AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 1));
             sprite.Color = CCColor3B.Yellow;
-            sprite.TextureRect = new CCRect(0, 0, 120, 50);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
@@ -46,7 +46,7 @@ namespace tests
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 5 * 4, s.Height / 5 * 4));
             sprite.Color = CCColor3B.Green;
-            sprite.TextureRect = new CCRect(0, 0, 120, 50);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
 
@@ -55,7 +55,7 @@ namespace tests
             AddChild(sprite, 0, 40);
             sprite.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             sprite.Color = CCColor3B.White;
-            sprite.TextureRect = new CCRect(0, 0, 120, 50);
+            sprite.TextureRectInPixels = new CCRect(0, 0, 120, 50);
             orbit = new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0);
             sprite.RunAction(new CCRepeatForever (orbit));
         }
@@ -75,7 +75,7 @@ namespace tests
 	{
 		public CameraTest1()
 		{
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);
@@ -98,15 +98,15 @@ namespace tests
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
-			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (true);
+			//Scene.Director.Projection = CCDirectorProjection.Projection3D;
+			Scene.Window.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (false);
+			//Scene.Director.Projection = CCDirectorProjection.Projection2D;
+			Scene.Window.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()
@@ -125,7 +125,7 @@ namespace tests
 	{
 		public CameraTest2()
 		{
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new CCSprite(TestResource.s_back3);
 			AddChild (sprite1);
@@ -156,22 +156,22 @@ namespace tests
 			ct.Tx = lookAt.M41;
 			ct.Ty = lookAt.M42;
 
-			sprite1.AdditionalTransform = ct;
+			//sprite1.AdditionalTransform = ct;
 		}
 
 
 		public override void OnEnter ()
 		{
 			base.OnEnter ();
-			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (true);
+			//Scene.Director.Projection = CCDirectorProjection.Projection3D;
+			Scene.Window.IsUseDepthTesting =  (true);
 		}
 
 		public override void OnExit ()
 		{
 			base.OnExit ();
-			CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (false);
+			//Scene.Director.Projection = CCDirectorProjection.Projection2D;
+			Scene.Window.IsUseDepthTesting =  (false);
 		}
 
 		public override string title()

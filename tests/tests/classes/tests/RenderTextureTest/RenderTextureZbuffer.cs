@@ -83,9 +83,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             label.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.25f);
             label2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.5f);
@@ -126,7 +126,7 @@ namespace tests
         {
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.Location;
+                CCPoint location = touch.LocationOnScreen;
 
                 sp1.Position = location;
                 sp2.Position = location;
@@ -144,7 +144,7 @@ namespace tests
         {
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.Location;
+                CCPoint location = touch.LocationOnScreen;
 
                 sp1.Position = location;
                 sp2.Position = location;
@@ -168,8 +168,8 @@ namespace tests
 
         public void renderScreenShot()
         {
-            var size = Director.WindowSizeInPoints;
-            var texture = new CCRenderTexture((int)size.Width, (int)size.Height, Director.ContentScaleFactor);
+            var size = Scene.VisibleBoundsWorldspace.Size;
+            var texture = new CCRenderTexture(size,size);
             //var texture = new CCRenderTexture(512, 512);
 
             texture.AnchorPoint = new CCPoint(0, 0);

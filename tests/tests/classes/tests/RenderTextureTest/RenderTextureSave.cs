@@ -60,12 +60,12 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             // create a render texture, this is what we are going to draw into
-            target = new CCRenderTexture((int) windowSize.Width, (int) windowSize.Height, Director.ContentScaleFactor,
+            target = new CCRenderTexture(windowSize, windowSize,
                 CCSurfaceFormat.Color, 
                 CCDepthFormat.None, CCRenderTargetUsage.PreserveContents);
 
@@ -102,8 +102,8 @@ namespace tests
         void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
-            CCPoint start = touch.Location;
-            CCPoint end = touch.PreviousLocation;
+            CCPoint start = touch.LocationOnScreen;
+            CCPoint end = touch.PreviousLocationOnScreen;
 
             // begin drawing to the render texture
             target.Begin();

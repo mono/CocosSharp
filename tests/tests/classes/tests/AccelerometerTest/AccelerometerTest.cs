@@ -35,13 +35,18 @@ namespace tests
 
         public AccelerometerTest()
         {
-            titleLabel = new CCLabelTtf(Title, "Arial", 32);
+            titleLabel = new CCLabelTtf(Title, "Arial", 40);
+            titleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            titleLabel.VerticalAlignment = CCVerticalTextAlignment.Center;
+
             AddChild(titleLabel, 1);
 
             string subtitleStr = Subtitle;
             if (subtitleStr.Length > 0)
             {
-                subtitleLabel = new CCLabelTtf(subtitleStr, "arial", 16);
+                subtitleLabel = new CCLabelTtf(subtitleStr, "arial", 20);
+                subtitleLabel.AnchorPoint = new CCPoint(0.5f, 0.5f);
+                subtitleLabel.VerticalAlignment = CCVerticalTextAlignment.Center;
                 AddChild(subtitleLabel, 1);
             }
 
@@ -54,19 +59,19 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
-            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 50);
+            titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 80);
 
             if(subtitleLabel != null)
-                subtitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 80));
+                subtitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 120));
 
             ball.Position = windowSize.Center;
 
 
-            Director.Accelerometer.Enabled = true;
+            Window.Accelerometer.Enabled = true;
 
             // Register Touch Event
             var accelListener = new CCEventListenerAccelerometer();
@@ -81,7 +86,7 @@ namespace tests
 
         public void DidAccelerate(CCEventAccelerate accelEvent)
         {
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
 
             /*FIXME: Testing on the Nexus S sometimes ball is NULL */
             if (ball == null)
@@ -91,31 +96,34 @@ namespace tests
 
             CCSize ballSize = ball.ContentSize;
 
-            CCPoint ptNow = ball.Position;
-            CCPoint ptTemp = Director.ConvertToUi(ptNow);
+            CCPoint ptNow = ball.PositionWorldspace;
+            CCPoint ptTemp = Scene.WorldToScreenspace(ptNow);
 
             var orientation = CCApplication.SharedApplication.CurrentOrientation;
+
+            if (accelEvent.Acceleration.X == 0.0f && accelEvent.Acceleration.Y == 0.0f)
+                return;
 
             #if ANDROID || WINDOWS_PHONE8
             if (orientation == CCDisplayOrientation.LandscapeRight)
             {
-                ptTemp.X -= (float) accelerationValue.X * 9.81f;
-                ptTemp.Y -= (float) accelerationValue.Y * 9.81f;
+                ptTemp.X -= (float) accelEvent.Acceleration.X * 9.81f;
+                ptTemp.Y -= (float) accelEvent.Acceleration.Y * 9.81f;
             }
             else
             {
-                ptTemp.X += (float) accelerationValue.X * 9.81f;
-                ptTemp.Y += (float) accelerationValue.Y * 9.81f;
+                ptTemp.X += (float) accelEvent.Acceleration.X * 9.81f;
+                ptTemp.Y += (float) accelEvent.Acceleration.Y * 9.81f;
             }
             #else
             ptTemp.X += (float)accelEvent.Acceleration.X * 9.81f;
             ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
             #endif
 
-            CCPoint ptNext = Director.ConvertToGl(ptTemp);
+            CCPoint ptNext = Scene.ScreenToWorldspace(ptTemp);
             ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
             ptNext.Y = MathHelper.Clamp(ptNext.Y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
-            ball.Position = ptNext;
+            ball.Position = ball.WorldToParentspace(ptNext);
         }
     }
 

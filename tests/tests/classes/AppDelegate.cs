@@ -8,19 +8,51 @@ namespace tests
 {
     public class AppDelegate : CCApplicationDelegate
     {
+        static CCDirector sharedDirector;
+        static CCWindow sharedWindow;
+        static CCViewport sharedViewport;
+        static CCCamera sharedCamera;
+
+        public static CCDirector SharedDirector
+        {
+            get { return sharedDirector; }
+        }
+
+        public static CCWindow SharedWindow
+        {
+            get { return sharedWindow; }
+        }
+
+        public static CCViewport SharedViewport
+        {
+            get { return sharedViewport; }
+        }
+
+        public static CCCamera SharedCamera
+        {
+            get { return sharedCamera; }
+        }
+
         public override void ApplicationDidFinishLaunching(CCApplication application)
         {
-            application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
-            application.AllowUserResizing = true;
-            application.PreferMultiSampling = false;
+            //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
+            //application.AllowUserResizing = true;
+            //application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
+
+
+            CCRect boundsRect = new CCRect(0.0f, 0.0f, 960, 640);
+
+            sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
+            sharedWindow = application.MainWindow;
+            sharedCamera = new CCCamera(boundsRect, boundsRect.Center);
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
             application.PreferredBackBufferWidth = 1024;
             application.PreferredBackBufferHeight = 768;
             #elif MACOS
-            application.PreferredBackBufferWidth = 960;
-            application.PreferredBackBufferHeight = 640;
+            //application.PreferredBackBufferWidth = 960;
+            //application.PreferredBackBufferHeight = 640;
             #endif
 
             #if WINDOWS_PHONE8
@@ -38,26 +70,23 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abberancy", 26);
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
-            CCDirector director = application.MainWindowDirector;
-            director.DisplayStats = true;
-            director.AnimationInterval = 1.0 / 60;
+            sharedDirector = new CCDirector();
+            //director.DisplayStats = true;
+            //director.AnimationInterval = 1.0 / 60;
 
-            CCSize designSize = new CCSize(480, 320);
 
-            if (CCDrawManager.FrameSize.Height > 320)
+            if (sharedWindow.WindowSizeInPixels.Height > 320)
             {
-				CCSize resourceSize = new CCSize(960, 640);
-                application.ContentSearchPaths.Add("hd");
-				director.ContentScaleFactor = resourceSize.Height / designSize.Height;
+                application.ContentSearchPaths.Insert(0,"HD");
             }
 
-            CCDrawManager.SetDesignResolutionSize(designSize.Width, designSize.Height, CCResolutionPolicy.ShowAll);
+            sharedWindow.AddSceneDirector(sharedDirector);
 
-            CCScene scene = new CCScene();
+            CCScene scene = new CCScene(sharedWindow, sharedCamera, sharedViewport, sharedDirector);
             CCLayer layer = new TestController();
 
             scene.AddChild(layer);
-            director.RunWithScene(scene);
+            sharedDirector.RunWithScene(scene);
         }
 
         public override void ApplicationDidEnterBackground(CCApplication application)

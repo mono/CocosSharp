@@ -39,7 +39,7 @@ namespace tests
             {
                 CCTouch touch = (item);
                 TouchPoint touchPoint = TouchPoint.TouchPointWithParent(this);
-                CCPoint location = touch.Location;
+                CCPoint location = touch.LocationOnScreen;
 
                 touchPoint.SetTouchPos(location);
                 touchPoint.SetTouchColor(s_TouchColors[touch.Id % 5]);
@@ -55,7 +55,7 @@ namespace tests
             {
                 CCTouch touch = item;
                 TouchPoint pTP = s_dic[touch.Id];
-                CCPoint location = touch.Location;
+                CCPoint location = touch.LocationOnScreen;
                 pTP.SetTouchPos(location);
             }
         }
@@ -86,7 +86,7 @@ namespace tests
 
             AddChild(layer, 0);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

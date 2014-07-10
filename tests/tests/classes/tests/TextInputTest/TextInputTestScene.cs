@@ -24,7 +24,7 @@ namespace CocosSharp
             CCLayer pLayer = nextTextInputTest();
             AddChild(pLayer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
         public KeyboardNotificationLayer createTextInputTest(int nIndex)

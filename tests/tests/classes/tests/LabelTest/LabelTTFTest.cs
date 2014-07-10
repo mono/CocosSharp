@@ -12,7 +12,7 @@ namespace tests
         public LabelTTFTest()
         {
             var blockSize = new CCSize(200, 160);
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var colorLayer = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width, blockSize.Height);
 			colorLayer.AnchorPoint = CCPoint.Zero;
@@ -51,7 +51,7 @@ namespace tests
         private void updateAlignment()
         {
             var blockSize = new CCSize(200, 160);
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
             if (m_plabel != null)
             {

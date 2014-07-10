@@ -30,10 +30,10 @@ namespace tests
 
             if (pLayer != null)
             {
-                CCScene pScene = new CCScene();
+                CCScene pScene = new CCScene(Scene);
                 pScene.AddChild(pLayer);
 
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 
@@ -41,7 +41,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // add title
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);

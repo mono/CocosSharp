@@ -19,7 +19,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf l = new CCLabelTtf("Grossini only rotate/scale in 3 seconds", "arial", 16);
             AddChild(l);

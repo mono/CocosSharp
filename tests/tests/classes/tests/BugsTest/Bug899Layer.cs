@@ -10,7 +10,7 @@ namespace tests
     {
         public Bug899Layer()
         {
-            //CCApplication.SharedApplication.MainWindowDirector.EnableRetinaDisplay(true);
+            //Scene.Director.EnableRetinaDisplay(true);
             CCSprite bg = new CCSprite("Images/bugs/RetinaDisplay");
             AddChild(bg, 0);
             bg.AnchorPoint = new CCPoint(0, 0);

@@ -6,7 +6,7 @@ namespace tests
     {
         public TTFFontInit()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
             var font = new CCLabelTtf();
             font.FontName = "MarkerFelt";

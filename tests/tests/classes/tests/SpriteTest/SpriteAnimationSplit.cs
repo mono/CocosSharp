@@ -67,9 +67,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow (windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             sprite.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 2);
             sprite.RepeatForever(seq);

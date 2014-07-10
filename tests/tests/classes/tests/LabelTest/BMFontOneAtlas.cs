@@ -6,7 +6,7 @@ namespace tests
     {
         public BMFontOneAtlas()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelBMFont label1 = new CCLabelBMFont("This is Helvetica", "fonts/helvetica-32.fnt", CCLabelBMFont.AutomaticWidth,
                                                         CCTextAlignment.Left, CCPoint.Zero);

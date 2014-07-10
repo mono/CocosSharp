@@ -10,7 +10,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
 			var progressTo = new CCProgressTo(2, 100);
 

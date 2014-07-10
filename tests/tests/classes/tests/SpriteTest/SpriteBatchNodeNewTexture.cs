@@ -39,9 +39,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             // Register Touch Event
             var touchListener = new CCEventListenerTouchAllAtOnce();
@@ -58,7 +58,7 @@ namespace tests
 
         void AddNewSprite()
         {
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCPoint p = new CCPoint((float)(CCRandom.NextDouble() * s.Width), (float)(CCRandom.NextDouble() * s.Height));
 

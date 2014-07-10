@@ -32,9 +32,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow (windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
@@ -91,7 +91,7 @@ namespace tests
                     break;
                 }
 
-                var location = item.Location;
+                var location = item.LocationOnScreen;
 
                 AddNewSpriteWithCoords(location);
             }

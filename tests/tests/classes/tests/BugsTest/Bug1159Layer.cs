@@ -16,7 +16,7 @@ namespace tests
 
         private void InitBug1159Layer()
         {
-                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+                CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
                 CCLayerColor background = new CCLayerColor(new CCColor4B(255, 0, 255, 255));
                 AddChild(background);
@@ -46,7 +46,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = new CCScene();
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             //Bug1159Layer layer = Bug1159Layer.node();
             //pScene.addChild(layer);
 
@@ -55,7 +55,7 @@ namespace tests
 
         public void callBack(object pSender)
         {
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(new CCTransitionPageTurn(1.0f, Bug1159Layer.scene(), false));
+            Scene.Director.ReplaceScene(new CCTransitionPageTurn(1.0f, Bug1159Layer.scene(), false));
         }
 
         //LAYER_NODE_FUNC(Bug1159Layer);

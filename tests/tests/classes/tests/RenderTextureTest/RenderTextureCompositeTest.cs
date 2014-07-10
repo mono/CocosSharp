@@ -57,9 +57,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             var characterSpriteFactory = new CharacterSpriteFactory();
 
@@ -117,8 +117,10 @@ namespace tests
             const int width = 490;
             const int height = 278;
 
+            CCSize rendSize = new CCSize(width, height);
+
             var centerPoint = new CCPoint(width / 2, height / 2);
-            var characterTexture = new CCRenderTexture(width, height, director.ContentScaleFactor);
+            var characterTexture = new CCRenderTexture(rendSize, rendSize);
 
             characterTexture.BeginWithClear(100, 0, 0, 0);
 

@@ -8,7 +8,7 @@ namespace tests
 
         public CameraZoomTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCSprite sprite;
             CCCamera cam;
@@ -18,8 +18,8 @@ namespace tests
             AddChild(sprite, 0);
             sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
             cam = sprite.Camera;
-            cam.SetEyeXyz(0, 0, 415 / 2);
-            cam.SetCenterXyz(0, 0, 0);
+            //cam.SetEyeXyz(0, 0, 415 / 2);
+            //cam.SetCenterXyz(0, 0, 0);
 
             // CENTER
             sprite = new CCSprite(TestResource.s_pPathGrossini);
@@ -45,22 +45,22 @@ namespace tests
 
             sprite = GetChildByTag(20);
             cam = sprite.Camera;
-            cam.SetEyeXyz(0, 0, m_z);
+            //cam.SetEyeXyz(0, 0, m_z);
 
             sprite = GetChildByTag(40);
             cam = sprite.Camera;
-            cam.SetEyeXyz(0, 0, -m_z);
+            //cam.SetEyeXyz(0, 0, -m_z);
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection3D);
+            //Scene.Director.Projection = (CCDirectorProjection.Projection3D);
         }
 
         public override void OnExit()
         {
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection2D);
+            //Scene.Director.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

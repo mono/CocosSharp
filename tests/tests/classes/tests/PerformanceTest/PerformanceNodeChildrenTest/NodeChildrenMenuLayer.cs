@@ -43,7 +43,7 @@ namespace tests
             {
                 pScene.initWithQuantityOfNodes(nNodes);
 
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
     }

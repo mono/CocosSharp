@@ -11,7 +11,7 @@ namespace tests
 		public PageTurn3DDemo(float t)
 			: base (t, new CCGridSize(15, 10))
         {
-            //Director.IsUseDepthTesting = true;
+            //Window.IsUseDepthTesting = true;
         }
     }
 }

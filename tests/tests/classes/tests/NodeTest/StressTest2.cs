@@ -6,7 +6,7 @@ namespace tests
     {
         public StressTest2()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var sublayer = new CCLayer();
 
@@ -21,7 +21,7 @@ namespace tests
 
             sublayer.AddChild(sp1, 1);
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
 			var fire = new CCParticleFire(new CCPoint(winSize.Width / 2, 60));
             fire.Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/fire"));
             fire.Position = (new CCPoint(80, s.Height / 2 - 50));

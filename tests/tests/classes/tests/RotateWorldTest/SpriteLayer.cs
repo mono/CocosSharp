@@ -30,7 +30,7 @@ namespace tests
 
             float x, y;
 
-            CCSize size = Director.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             x = size.Width;
             y = size.Height;
 

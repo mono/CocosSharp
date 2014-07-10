@@ -12,7 +12,7 @@ namespace Box2D.TestBed
 
         public bool initWithEntryID(int entryId)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             m_entryID = entryId;
 
@@ -60,7 +60,7 @@ namespace Box2D.TestBed
             CCScene s = new Box2dTestBedScene();
             MenuLayer box = menuWithEntryID(m_entryID);
             s.AddChild(box);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object sender)
@@ -71,7 +71,7 @@ namespace Box2D.TestBed
                 next = 0;
             MenuLayer box = menuWithEntryID(next);
             s.AddChild(box);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object sender)
@@ -86,7 +86,7 @@ namespace Box2D.TestBed
             MenuLayer box = menuWithEntryID(next);
 
             s.AddChild(box);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)

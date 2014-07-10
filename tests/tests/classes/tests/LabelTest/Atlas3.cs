@@ -53,7 +53,7 @@ namespace tests
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
 
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 			label1.Position = CCPoint.Zero;
 			label2.Position = s.Center;
             label3.Position = new CCPoint(s.Width, s.Height);

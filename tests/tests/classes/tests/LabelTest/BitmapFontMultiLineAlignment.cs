@@ -45,7 +45,7 @@ namespace tests
 			EventDispatcher.AddEventListener(touchListener, this);
 
             // ask director the the window size
-			var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
             // create and initialize a Label
 			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
@@ -159,7 +159,7 @@ namespace tests
 		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches[0];
-            CCPoint location = touch.LocationInView;
+            CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
 
             if (arrows.BoundingBox.ContainsPoint(location))
             {
@@ -184,9 +184,9 @@ namespace tests
             }
 
             CCTouch touch = pTouches[0];
-            CCPoint location = touch.LocationInView;
+            CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
 
-            CCSize winSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
 
             arrows.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          arrows.Position.Y);
@@ -199,7 +199,7 @@ namespace tests
         private void snapArrowsToEdge()
         {
             arrows.Position =
-				new CCPoint(label.Position.X + label.ContentSize.PointsToPixels(Director.ContentScaleFactor).Width / 2,
+				new CCPoint(label.Position.X + label.ContentSize.Width / 2,
                             label.Position.Y);
         }
 

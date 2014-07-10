@@ -13,7 +13,7 @@ namespace tests
         string s_pPathSister2 = "Images/grossinis_sister2";
         public LayerTestBlend()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 255, 255, 80));
 
             CCSprite sister1 = new CCSprite(s_pPathSister1);

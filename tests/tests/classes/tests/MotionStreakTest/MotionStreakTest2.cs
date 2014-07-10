@@ -20,7 +20,7 @@ namespace tests
 			listener.OnTouchesMoved = onTouchesMoved;
 			EventDispatcher.AddEventListener(listener, this); 
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // create the streak object and add it to the scene
             streak = new CCMotionStreak(3, 3, 64, CCColor3B.White, s_streak);
@@ -31,7 +31,7 @@ namespace tests
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            streak.Position = touches[0].Location;
+            streak.Position = touches[0].LocationOnScreen;
         }
 
         public override string title()

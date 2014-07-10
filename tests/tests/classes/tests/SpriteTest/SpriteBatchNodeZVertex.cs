@@ -65,11 +65,14 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow (windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             float step = windowSize.Width / 12;
+
+
+            //Director.Projection = CCDirectorProjection.Projection3D;
 
             // camera uses the center of the image as the pivoting point
             batch.ContentSize = windowSize;
@@ -87,16 +90,9 @@ namespace tests
         #endregion Setup contetn
 
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            Director.Projection = CCDirectorProjection.Projection3D;
-        }
-
         public override void OnExit()
         {
-            Director.Projection = (CCDirectorProjection.Projection2D);
+            // Director.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

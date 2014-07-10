@@ -7,8 +7,8 @@ namespace tests.Extensions
 	{
         public CCControlScene()
 		{  
-			// Get the sceensize
-			CCSize screensize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			// Get the screensize
+			CCSize screensize = Scene.VisibleBoundsWorldspace.Size;
 
 			var pBackItem = new CCMenuItemFont("Back", toExtensionsMainLayer);
 			pBackItem.Position = new CCPoint(screensize.Width - 50, 25);
@@ -62,17 +62,17 @@ namespace tests.Extensions
 
 		public virtual void previousCallback(object sender)
 		{
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().previousControlScene());
 		}
 
 		public virtual void restartCallback(object sender)
 		{
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().currentControlScene());
 		}
 		
 		public virtual void nextCallback(object sender)
 		{
-			CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
+			Scene.Director.ReplaceScene(CCControlSceneManager.sharedControlSceneManager().nextControlScene());
 		}
 
 		private CCLabelTtf m_pSceneTitleLabel; 
@@ -97,9 +97,9 @@ namespace tests.Extensions
 
 
 		/** Title label of the scene. */
-		public static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title, CCScene scene)
 		{
-			var pScene = new CCScene();
+			var pScene = new CCScene(scene);
 		    var controlLayer = new CCControlScene();
 		    if (controlLayer != null)
 		    {

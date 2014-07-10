@@ -9,7 +9,7 @@ namespace tests
             CCLayer pLayer = ZwoptexTest.nextZwoptexTest();
             AddChild(pLayer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
         protected override void NextTestCase()

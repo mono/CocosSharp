@@ -8,7 +8,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_HelloVariableSize()
 		{
-			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
     
 			// Defines an array of title to create buttons dynamically
 			var stringArray = new[] {
@@ -86,9 +86,9 @@ namespace tests.Extensions
 		}
 
 
-		public new static CCScene sceneWithTitle(string title)
+        public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = new CCScene();
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
     		controlLayer.getSceneTitleLabel().Text = (title);
 			pScene.AddChild(controlLayer);
@@ -100,7 +100,7 @@ namespace tests.Extensions
     {
         public CCControlButtonTest_Inset()
         {
-            CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
 
             // Defines an array of title to create buttons dynamically
             var stringArray = new[] {
@@ -179,7 +179,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene();
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             var controlLayer = new CCControlButtonTest_Inset();
             controlLayer.getSceneTitleLabel().Text = (title);
             pScene.AddChild(controlLayer);
@@ -191,7 +191,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_Event()
 		{
-			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
 
 			// Add a label in which the button events will be displayed
 			setDisplayValueLabel(new CCLabelTtf("No Event", "Arial", 32));
@@ -282,9 +282,9 @@ namespace tests.Extensions
 			} 
 		} 
 		
-		public new static CCScene sceneWithTitle(string title)
+        public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = new CCScene();
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null)
 			{
@@ -299,7 +299,7 @@ namespace tests.Extensions
 	{
         public CCControlButtonTest_Styling()
 		{
-			CCSize screenSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
 
 			var layer = new CCNode ();
 			AddChild(layer, 1);
@@ -356,9 +356,9 @@ namespace tests.Extensions
 			return button;
 		}
 
-		public new static CCScene sceneWithTitle(string title)
+        public new static CCScene sceneWithTitle(string title)
 		{
-			var pScene = new CCScene();
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null)
 			{

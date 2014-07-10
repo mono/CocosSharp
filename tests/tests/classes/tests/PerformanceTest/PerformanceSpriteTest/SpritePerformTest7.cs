@@ -16,7 +16,7 @@ namespace tests
 
         private void performanceActions20(CCSprite pSprite)
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             if (CCRandom.Float_0_1() < 0.2f)
                 pSprite.Position = new CCPoint((CCRandom.Next() % (int) size.Width), (CCRandom.Next() % (int) size.Height));
             else

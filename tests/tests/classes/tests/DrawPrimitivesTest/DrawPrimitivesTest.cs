@@ -66,11 +66,11 @@ namespace tests
     {
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
-            CCRenderTexture text = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, Director.ContentScaleFactor);
+            CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
 
             CCDrawNode draw = new CCDrawNode();
             text.AddChild(draw, 10);
@@ -96,7 +96,7 @@ namespace tests
         {
             base.Draw();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCDrawingPrimitives.Begin();
 
@@ -186,9 +186,9 @@ namespace tests
     {
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             CCDrawNode draw = new CCDrawNode();
             AddChild(draw, 10);
 

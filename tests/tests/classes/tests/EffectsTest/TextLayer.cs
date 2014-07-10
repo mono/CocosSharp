@@ -38,9 +38,9 @@ namespace tests
 			Schedule(checkAnim);
 		}
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			BaseNode.Position = CCVisibleRect.Center;
 			var size = BaseNode.ContentSize;
@@ -61,7 +61,7 @@ namespace tests
 			// This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
 			// TransitionTests and TileTests may have set the DepthTest to true so we need
 			// to make sure we reset it.
-			Director.IsUseDepthTesting = false;
+			Window.IsUseDepthTesting = false;
 
 			switch (nIndex)
 			{
@@ -82,7 +82,7 @@ namespace tests
 				case 7:
 					return new WavesDemo(t);
 				case 8:
-					return new TwirlDemo(t, Director.WindowSizeInPoints.Center);
+					return new TwirlDemo(t, Scene.VisibleBoundsWorldspace.Size.Center);
 				case 9:
 					return new ShakyTiles3DDemo(t);
 				case 10:
@@ -108,7 +108,7 @@ namespace tests
 				case 20:                             
 					return new SplitColsDemo(t);
 				case 21:
-					Director.IsUseDepthTesting = true;
+					Window.IsUseDepthTesting = true;
 					return new PageTurn3DDemo(t);
 			}
 
@@ -130,11 +130,6 @@ namespace tests
 			if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
 				s2.Grid = null;
 			;
-		}
-
-		public override void OnEnter()
-		{
-			base.OnEnter();
 		}
 
 		public override void RestartCallback(object sender)

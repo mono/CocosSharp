@@ -26,11 +26,11 @@ namespace tests
             
         }
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
-			CCLog.Log("SceneTestLayer3#RunningOnNewWindow - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
+            CCLog.Log("SceneTestLayer3#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
 
 			var sprite = this[SceneTestScene.GROSSINI_TAG];
 			var s = windowSize;
@@ -38,12 +38,6 @@ namespace tests
 			sprite.RepeatForever(SceneTestScene.rotate);
 
 			Schedule(testDealloc);
-		}
-
-		public override void OnEnter()
-		{
-			base.OnEnter();
-			CCLog.Log("SceneTestLayer3#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
 		}
 
 		public override void OnExit()
@@ -59,7 +53,7 @@ namespace tests
 
         public void item0Clicked(object pSender)
         {
-            var newScene = new CCScene();
+            var newScene = new CCScene(Scene);
             newScene.AddChild(new SceneTestLayer3());
             Director.PushScene(new CCTransitionFade(0.5f, newScene, new CCColor3B(0, 255, 255)));
         }

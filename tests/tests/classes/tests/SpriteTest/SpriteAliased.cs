@@ -45,9 +45,12 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+
+            var sprite = (CCSprite)GetChildByTag((int)kTagSprite.kTagSprite1);
+            sprite.IsAntialiased = false;
 
             sprite1.Position = new CCPoint(windowSize.Width / 2 - 100, windowSize.Height / 2);
             sprite2.Position = new CCPoint(windowSize.Width / 2 + 100, windowSize.Height / 2);
@@ -57,20 +60,6 @@ namespace tests
         }
 
         #endregion Setup content
-
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            //
-            // IMPORTANT:
-            // This change will affect every sprite that uses the same texture
-            // So sprite1 and sprite2 will be affected by this change
-            //
-            var sprite = (CCSprite)GetChildByTag((int)kTagSprite.kTagSprite1);
-            sprite.IsAntialiased = false;
-        }
 
         public override void OnExit()
         {

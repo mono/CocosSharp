@@ -165,7 +165,7 @@ namespace tests
         {
             AddChild(NextParticleAction());
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
     };
 
@@ -223,9 +223,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public virtual void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             WindowSize = windowSize;
             MidWindowPoint = new CCPoint(windowSize.Width / 2.0f, windowSize.Height / 2.0f);
@@ -302,14 +302,14 @@ namespace tests
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.NextParticleAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         void BackCallback(object sender)
         {
             var s = new ParticleTestScene();
             s.AddChild(ParticleTestScene.BackParticleAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         void ToggleCallback(object sender)
@@ -343,12 +343,12 @@ namespace tests
         void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             var touch = touches [0];
-            var convertedLocation = touch.Location;
+            var convertedLocation = touch.LocationOnScreen;
 
             var pos = new CCPoint(0, 0);
             if (Background != null)
             {
-                pos = Background.ConvertToWorldSpace(CCPoint.Zero);
+                pos = Background.Scene.ScreenToWorldspace(CCPoint.Zero);
             }
 
             if (Emitter != null)
@@ -411,9 +411,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFirework : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFireworks(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -434,9 +434,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFire : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CCPoint emitterPos = new CCPoint(windowSize.Width / 2, 100);
             Emitter = new CCParticleFire(emitterPos);
@@ -458,9 +458,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoSun : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSun(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -481,9 +481,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoGalaxy : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CCPoint position = new CCPoint(MidWindowPoint);
             Emitter = new CCParticleGalaxy(position);
@@ -505,9 +505,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFlower : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFlower(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -527,9 +527,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoBigFlower : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(50);
             //Emitter.autorelease();
@@ -611,9 +611,9 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoRotFlower : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(300);
             //Emitter.autorelease();
@@ -691,9 +691,9 @@ namespace tests
 
     public class DemoMeteor : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleMeteor(MidWindowPoint);
 
@@ -710,9 +710,9 @@ namespace tests
 
     public class DemoSpiral : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSpiral(MidWindowPoint);
 
@@ -729,9 +729,9 @@ namespace tests
 
     public class DemoExplosion : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleExplosion(MidWindowPoint);
 
@@ -750,9 +750,9 @@ namespace tests
 
     public class DemoSmoke : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
@@ -771,9 +771,9 @@ namespace tests
 
     public class DemoSnow : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSnow(new CCPoint(windowSize.Width / 2, windowSize.Height + 10));
 
@@ -814,9 +814,9 @@ namespace tests
 
     public class DemoRain : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleRain(new CCPoint (windowSize.Width / 2.0f, windowSize.Height));
             Background.AddChild(Emitter, 10);
@@ -837,9 +837,9 @@ namespace tests
     // todo: CCParticleSystemPoint::draw() hasn't been implemented.
     public class DemoModernArt : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(1000);
             //Emitter.autorelease();
@@ -847,7 +847,7 @@ namespace tests
             Background.AddChild(Emitter, 10);
             ////Emitter.release();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // duration
             Emitter.Duration = -1;
@@ -916,9 +916,9 @@ namespace tests
 
     public class DemoRing : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFlower(MidWindowPoint);
 
@@ -940,9 +940,9 @@ namespace tests
 
     public class ParallaxParticle : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1000,9 +1000,9 @@ namespace tests
 
         }
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1042,9 +1042,9 @@ namespace tests
 
     public class RadiusMode1 : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1072,7 +1072,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1119,9 +1119,9 @@ namespace tests
 
     public class RadiusMode2 : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1150,7 +1150,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1197,9 +1197,9 @@ namespace tests
 
     public class Issue704 : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1228,7 +1228,7 @@ namespace tests
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1285,9 +1285,9 @@ namespace tests
     {
         int index;
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1329,9 +1329,9 @@ namespace tests
         int order;
         CCLabelTtf label;
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             order = 0;
             Color = CCColor3B.Black;
@@ -1381,7 +1381,7 @@ namespace tests
                 emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
 
-                CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+                CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
                 int neg = (i == 0 ? 1 : -1);
 
@@ -1450,9 +1450,9 @@ namespace tests
         CCNode parent2;
 
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1499,9 +1499,9 @@ namespace tests
 
     public class ParticleBatchMultipleEmitters : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1514,7 +1514,7 @@ namespace tests
             CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             emitter1.Position = (new CCPoint(s.Width / 1.25f, s.Height / 1.25f));
             emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2));
@@ -1598,9 +1598,9 @@ namespace tests
             Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/particles"));
         }
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             // emitter position
             Position = (new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
@@ -1616,9 +1616,9 @@ namespace tests
 
     public class Issue1201 : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1646,9 +1646,9 @@ namespace tests
 
     public class MultipleParticleSystems : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1682,9 +1682,9 @@ namespace tests
 
     public class MultipleParticleSystemsBatched : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1725,9 +1725,9 @@ namespace tests
     {
         CCParticleBatchNode batchNode;
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1795,9 +1795,9 @@ namespace tests
     {
         CCParticleBatchNode batchNode;
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1944,9 +1944,9 @@ namespace tests
 
     public class PremultipliedAlphaTest2 : ParticleDemo
     {
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);

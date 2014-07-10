@@ -50,15 +50,17 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             spritePremulti.Position = new CCPoint(16, 48);
             spriteNonpremulti.Position = new CCPoint(16, 16);
 
+            CCSize rendSize = new CCSize(32, 64);
+
             /* A2 & B2 setup */
-            CCRenderTexture rend = new CCRenderTexture(32, 64, Director.ContentScaleFactor);
+            CCRenderTexture rend = new CCRenderTexture(rendSize,rendSize);
 
             //  It's possible to modify the RenderTexture blending function by
             //  CCBlendFunc bf = new CCBlendFunc (OGLES.GL_ONE, OGLES.GL_ONE_MINUS_SRC_ALPHA);

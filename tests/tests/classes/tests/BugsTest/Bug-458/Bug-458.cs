@@ -17,7 +17,7 @@ namespace tests
         private void InitBug458Layer()
         {
             // ask director the the window size
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
 
             QuestionContainerSprite question = new QuestionContainerSprite();
             QuestionContainerSprite question2 = new QuestionContainerSprite();

@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label);
@@ -55,7 +55,7 @@ namespace tests
             CCLayer pLayer = SchedulerTestScene.backSchedulerTest();
 
             pScene.AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            Scene.Director.ReplaceScene(pScene);
         }
 
         public void nextCallback(object pSender)
@@ -64,7 +64,7 @@ namespace tests
             CCLayer pLayer = SchedulerTestScene.nextSchedulerTest();
 
             pScene.AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            Scene.Director.ReplaceScene(pScene);
         }
 
         public void restartCallback(object pSender)
@@ -73,7 +73,7 @@ namespace tests
             CCLayer pLayer = SchedulerTestScene.restartSchedulerTest();
 
             pScene.AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+            Scene.Director.ReplaceScene(pScene);
         }
     }
 }

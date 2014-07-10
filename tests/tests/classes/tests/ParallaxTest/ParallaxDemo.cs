@@ -153,7 +153,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 28);
             AddChild(label, 1);
@@ -183,21 +183,21 @@ namespace tests
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.restartParallaxAction());
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.nextParallaxAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new ParallaxTestScene();
             s.AddChild(ParallaxTestScene.backParallaxAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
     }
 }

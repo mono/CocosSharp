@@ -44,7 +44,7 @@ namespace tests
             if (pScene != null)
             {
                 pScene.initWithSubTest(nSubTest, nNodes);
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
     }

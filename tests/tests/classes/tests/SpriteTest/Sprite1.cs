@@ -40,9 +40,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             grossini.Position = new CCPoint(windowSize.Width / 3f, windowSize.Height / 2f);
             ball.Position = new CCPoint(windowSize.Width * 2f / 3f, windowSize.Height / 2f);
@@ -173,7 +173,7 @@ namespace tests
 
             EventDispatcher.AddEventListener(touchListener, this);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             AddNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
         }
 
@@ -215,7 +215,7 @@ namespace tests
         {
             foreach (CCTouch touch in touches)
             {
-                var location = touch.Location;
+                var location = touch.LocationOnScreen;
                 AddNewSpriteWithCoords(location);
             }
         }

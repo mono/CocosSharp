@@ -275,8 +275,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var statusLabel = new CCLabelTtf("No keyboard event received!", "arial", 20);
 			statusLabel.Position = origin + size.Center;
@@ -323,8 +323,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite = new CCSprite(TestResource.s_Ball);
 			sprite.Position = origin + size.Center;
@@ -396,8 +396,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
@@ -419,7 +419,7 @@ namespace tests
 			{
 				var target = (CCSprite)touchEvent.CurrentTarget;
 
-				var locationInNode = target.ConvertToNodeSpace(touch.Location);
+				var locationInNode = target.Scene.ScreenToWorldspace(touch.LocationOnScreen);
 				var s = target.ContentSize;
 				CCRect rect = new CCRect(0, 0, s.Width, s.Height);
 
@@ -463,7 +463,7 @@ namespace tests
 				var senderItem = (CCMenuItemFont)sender;
 				senderItem.LabelTTF.Text = "Only Next item could be clicked";
 
-                Director.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
+                Scene.EventDispatcher.RemoveEventListeners(CCEventListenerType.TOUCH_ONE_BY_ONE);
 
 				var nextItem = new CCMenuItemFont("Next", (senderNext) => NextCallback(senderNext));
 			
@@ -519,8 +519,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new TouchableSprite (30);
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
@@ -582,7 +582,7 @@ namespace tests
 			listener.OnTouchBegan = (CCTouch touch, CCEvent rouchEvent) => 
 			{
 
-				var locationInNode = ConvertToNodeSpace(touch.Location);
+                var locationInNode = Scene.ScreenToWorldspace(touch.LocationOnScreen);
 				var s = ContentSize;
 				var rect = new CCRect(0, 0, s.Width, s.Height);
 
@@ -633,8 +633,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -718,8 +718,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			//MenuItemFont::setFontSize(20);
 
@@ -735,7 +735,7 @@ namespace tests
 			{
 				var target = (CCSprite) touchEvent.CurrentTarget;
 
-				var locationInNode = target.ConvertToNodeSpace(touch.Location);
+				var locationInNode = target.Scene.ScreenToWorldspace(touch.LocationOnScreen);
 				var s = target.ContentSize;
 				var rect = new CCRect(0, 0, s.Width, s.Height);
 
@@ -913,8 +913,8 @@ namespace tests
 
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var s = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			label1 = new CCLabelTtf("Update: 0", "arial", 20);
 			label1.AnchorPoint = CCPoint.AnchorUpperLeft;
@@ -936,15 +936,15 @@ namespace tests
 			label4.Position = new CCPoint(30,s.Height/2 - 60);
 			AddChild(label4);
 
-			var dispatcher = Director.EventDispatcher;
+			var dispatcher = Scene.EventDispatcher;
 
-			event1 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_UPDATE, OnEvent1);
-			event2 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_VISIT, OnEvent2);
-			event3 = dispatcher.AddCustomEventListener(CCDirector.EVENT_AFTER_DRAW, (customEvent) =>
+			event1 = dispatcher.AddCustomEventListener(CCWindow.EVENT_AFTER_UPDATE, OnEvent1);
+            event2 = dispatcher.AddCustomEventListener(CCWindow.EVENT_AFTER_VISIT, OnEvent2);
+            event3 = dispatcher.AddCustomEventListener(CCWindow.EVENT_AFTER_DRAW, (customEvent) =>
 				{
 					label3.Text = string.Format("Draw: {0}", count3++);
 				});
-			event4 = dispatcher.AddCustomEventListener(CCDirector.EVENT_PROJECTION_CHANGED, (customEvent) =>
+            event4 = dispatcher.AddCustomEventListener(CCWindow.EVENT_PROJECTION_CHANGED, (customEvent) =>
 				{
 					label4.Text = string.Format("Projection: {0}", count4++);
 				});
@@ -961,7 +961,7 @@ namespace tests
 
 			time += dt;
 			if(time > 0.5) {
-				Director.Projection = CCDirectorProjection.Projection2D;
+				//Director.Projection = CCDirectorProjection.Projection2D;
 				time = 0;
 			}
 
@@ -1042,9 +1042,9 @@ namespace tests
 
 		}
 
-		protected override void RunningOnNewWindow (CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			var listener = new CCEventListenerTouchOneByOne();
 			listener.IsSwallowTouches = true;
@@ -1053,7 +1053,7 @@ namespace tests
 				{
 					var target = (CCSprite)touchEvent.CurrentTarget;
 
-					var locationInNode = target.ConvertToNodeSpace(touch.Location);
+					var locationInNode = target.Scene.ScreenToWorldspace(touch.LocationOnScreen);
 					var s = target.ContentSize;
 					var rect = new CCRect(0, 0, s.Width, s.Height);
 		
@@ -1080,7 +1080,7 @@ namespace tests
 					target.Opacity = 255;
 				};
 
-			var visibleSize = Director.VisibleSize;
+			var visibleSize = Scene.VisibleBoundsWorldspace.Size;
 			var i = 0;
 			foreach (var child in Children)
 			{
@@ -1138,8 +1138,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new TouchableSprite ();
 			var texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/CyanSquare.png");
@@ -1253,9 +1253,9 @@ namespace tests
 
 		}
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 			customlistener = EventDispatcher.AddCustomEventListener(CCEvent.EVENT_COME_TO_BACKGROUND, (customEvent) => 
 				{
@@ -1313,8 +1313,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Director.VisibleOrigin;
-			var size = Director.VisibleSize;
+			var origin = Scene.VisibleBoundsWorldspace.Origin;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
 			sprite1.Position = origin + size.Center;
@@ -1342,7 +1342,7 @@ namespace tests
 
 			if (cyanTouch != null) 
 			{
-				MoveSpriteTowardPoint (cyanTouch.Location, dt);
+				MoveSpriteTowardPoint (cyanTouch.LocationOnScreen, dt);
 			}
 
 		}
@@ -1408,13 +1408,13 @@ namespace tests
 			touchOneByOneListener.OnTouchBegan = (touch, touchEvent) =>
 			{
 				// Skip if don't touch top half screen.
-				if (!IsPointInTopHalfAreaOfScreen(touch.Location))
+				if (!IsPointInTopHalfAreaOfScreen(touch.LocationOnScreen))
 					return false;
 
 				var target = (CCSprite)touchEvent.CurrentTarget;
 				Debug.Assert (target.Tag == TAG_BLUE_SPRITE, "Yellow blocks shouldn't response event.");
 
-				if (IsPointInNode(touch.Location, target))
+				if (IsPointInNode(touch.LocationOnScreen, target))
 				{
 					target.Opacity = 180;
 					return true;
@@ -1435,13 +1435,13 @@ namespace tests
 			touchAllAtOnceListener.OnTouchesBegan = (touches, touchEvent) => 
 			{
 				// Skip if don't touch top half screen.
-				if (IsPointInTopHalfAreaOfScreen(touches[0].Location))
+				if (IsPointInTopHalfAreaOfScreen(touches[0].LocationOnScreen))
 					return;
 
 				var target = (CCSprite)touchEvent.CurrentTarget;
 				Debug.Assert(target.Tag == TAG_BLUE_SPRITE2, "Yellow blocks shouldn't response event.");
 
-				if (IsPointInNode(touches[0].Location, target))
+				if (IsPointInNode(touches[0].LocationOnScreen, target))
 				{
 					target.Opacity = 180;
 				}
@@ -1452,13 +1452,13 @@ namespace tests
 			touchAllAtOnceListener.OnTouchesEnded = (touches, touchEvent) => 
 			{
 				// Skip if don't touch top half screen.
-				if (IsPointInTopHalfAreaOfScreen(touches[0].Location))
+				if (IsPointInTopHalfAreaOfScreen(touches[0].LocationOnScreen))
 					return;
 
 				var target = (CCSprite)touchEvent.CurrentTarget;
 				Debug.Assert(target.Tag == TAG_BLUE_SPRITE2, "Yellow blocks shouldn't response event.");
 
-				if (IsPointInNode(touches[0].Location, target))
+				if (IsPointInNode(touches[0].LocationOnScreen, target))
 				{
 					target.Opacity = 255;;
 				}
@@ -1509,7 +1509,7 @@ namespace tests
 				EventDispatcher.AddEventListener(keyboardEventListener.Copy(), sprite2);
 
 
-				var visibleSize = Director.VisibleSize;
+				var visibleSize = Scene.VisibleBoundsWorldspace.Size;
 				sprite.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y + sprite2.ContentSize.Height/2 +10);
 				sprite2.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y - sprite2.ContentSize.Height/2-10);
 			}
@@ -1518,7 +1518,7 @@ namespace tests
 
 		bool IsPointInNode(CCPoint pt, CCNode node)
 		{
-			var locationInNode = node.ConvertToNodeSpace(pt);
+			var locationInNode = node.Scene.ScreenToWorldspace(pt);
 			var s = node.ContentSize;
 			var rect = new CCRect(0, 0, s.Width, s.Height);
 
@@ -1531,7 +1531,7 @@ namespace tests
 
 		bool IsPointInTopHalfAreaOfScreen(CCPoint pt)
 		{
-			var winSize = Director.WindowSizeInPoints;
+			var winSize = Scene.VisibleBoundsWorldspace.Size;
 
 			if (pt.Y >= winSize.Height/2) {
 				return true;

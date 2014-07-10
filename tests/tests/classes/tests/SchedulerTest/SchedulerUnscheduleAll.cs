@@ -63,7 +63,7 @@ namespace tests
 		{
 			base.OnEnter();
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = CCVisibleRect.Center;

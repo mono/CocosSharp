@@ -21,7 +21,7 @@ namespace tests
 
         private void performanceScale(CCSprite pSprite)
         {
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = Scene.VisibleBoundsWorldspace.Size;
             pSprite.Position = new CCPoint((CCRandom.Next() % (int)size.Width), (CCRandom.Next() % (int)size.Height));
             pSprite.Scale = CCRandom.Float_0_1() * 100 / 50;
         }

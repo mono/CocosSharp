@@ -22,7 +22,7 @@ namespace tests
             CCLayer pLayer = new IntervalLayer();
             AddChild(pLayer);
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
     }
 }

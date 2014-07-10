@@ -18,7 +18,7 @@ namespace tests
         {
             m_time0 = m_time1 = m_time2 = m_time3 = m_time4 = 0.0f;
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // sun
 			CCParticleSystem sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));

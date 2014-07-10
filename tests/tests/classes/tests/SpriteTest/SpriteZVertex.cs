@@ -66,9 +66,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow (windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             // camera uses the center of the image as the pivoting point
             node.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
@@ -94,18 +94,19 @@ namespace tests
 
         #endregion Setup content
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
+//        public override void OnEnter()
+//        {
+//            base.OnEnter();
+//
+//            // TIP: don't forget to enable Alpha test
+//            //glEnable(GL_ALPHA_TEST);
+//            //glAlphaFunc(GL_GREATER, 0.0f);
+//            Director.Projection = (CCDirectorProjection.Projection3D);
+//        }
 
-            // TIP: don't forget to enable Alpha test
-            //glEnable(GL_ALPHA_TEST);
-            //glAlphaFunc(GL_GREATER, 0.0f);
-            Director.Projection = (CCDirectorProjection.Projection3D);
-        }
         public override void OnExit()
         {
-            Director.Projection = (CCDirectorProjection.Projection2D);
+            //Director.Projection = (CCDirectorProjection.Projection2D);
             base.OnExit();
         }
 

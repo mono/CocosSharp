@@ -15,7 +15,7 @@ namespace tests
         {
             CCLayer pLayer = nextTestAction();
             AddChild(pLayer);
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
         public static CCLayer createTestLayer(int nIndex)

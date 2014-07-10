@@ -26,7 +26,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf l = new CCLabelTtf("Should not crash", "arial", 16);
             AddChild(l);

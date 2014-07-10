@@ -12,7 +12,7 @@ namespace tests
         {
             float x, y;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
             x = size.Width;
             y = size.Height;
 
@@ -59,7 +59,7 @@ namespace tests
 
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 
@@ -76,7 +76,7 @@ namespace tests
 
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 
@@ -96,7 +96,7 @@ namespace tests
             
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 

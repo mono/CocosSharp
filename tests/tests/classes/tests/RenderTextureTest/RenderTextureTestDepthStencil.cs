@@ -28,23 +28,23 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CCSprite sprite = new CCSprite("Images/fire");
             sprite.Position = new CCPoint(windowSize.Width * 0.25f, 0);
             sprite.Scale = 10;
 
-            CCRenderTexture rend = new CCRenderTexture((int)windowSize.Width, (int)windowSize.Height, Director.ContentScaleFactor,
+            CCRenderTexture rend = new CCRenderTexture(windowSize, windowSize,
                 CCSurfaceFormat.Color, 
                 CCDepthFormat.Depth24Stencil8, CCRenderTargetUsage.DiscardContents);
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
 
-            var save = CCDrawManager.DepthStencilState;
+            var save = CCDrawManager.SharedDrawManager.DepthStencilState;
 
-            CCDrawManager.DepthStencilState = new DepthStencilState()
+            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
                 {
                     ReferenceStencil = 1,
 
@@ -60,7 +60,7 @@ namespace tests
 
             sprite.Visit();
 
-            CCDrawManager.DepthStencilState = new DepthStencilState()
+            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
             {
                 DepthBufferEnable = false,
                 StencilEnable = true,
@@ -69,14 +69,14 @@ namespace tests
                 ReferenceStencil = 1
             };
 
-            CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
+            CCDrawManager.SharedDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
 
             sprite.Position = sprite.Position 
                 + new CCPoint(sprite.ContentSize.Width * sprite.ScaleX, sprite.ContentSize.Height * sprite.ScaleY) * 0.5f;
 
             sprite.Visit();
 
-            CCDrawManager.DepthStencilState = save;
+            CCDrawManager.SharedDrawManager.DepthStencilState = save;
 
             rend.End();
 

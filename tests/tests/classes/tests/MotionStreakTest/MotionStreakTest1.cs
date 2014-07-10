@@ -23,7 +23,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // the root object just rotates around
             m_root = new CCSprite(s_pPathR1);
@@ -66,7 +66,7 @@ namespace tests
 
         public void onUpdate(float delta)
         {
-            streak.Position = m_target.ConvertToWorldSpace(CCPoint.Zero);
+            streak.Position = m_target.Scene.VisibleBoundsWorldspace.Origin;
         }
 
         public override string title()

@@ -51,9 +51,9 @@ namespace tests
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
 			// modify this here to make sure we have the correct sizes when they are passed.
-			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
+			CCSprite spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
             CCMenuItemImage item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
@@ -96,7 +96,7 @@ namespace tests
             menu.AlignItemsVertically();
 
             // elastic effect
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             int i = 0;
             CCNode child;
             var pArray = menu.Children;
@@ -152,7 +152,7 @@ namespace tests
 
         public void allowTouches(float dt)
         {
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.SetPriority(touchListener,1);
+			Scene.EventDispatcher.SetPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -170,7 +170,7 @@ namespace tests
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
-			CCApplication.SharedApplication.MainWindowDirector.EventDispatcher.SetPriority(touchListener,-1);
+			Scene.EventDispatcher.SetPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
         }

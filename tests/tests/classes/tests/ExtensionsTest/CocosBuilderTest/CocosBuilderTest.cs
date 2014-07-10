@@ -31,7 +31,7 @@ namespace tests.Extensions
                 AddChild(node);
             }
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
     }
 }

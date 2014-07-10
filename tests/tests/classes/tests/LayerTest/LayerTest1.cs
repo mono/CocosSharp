@@ -22,7 +22,7 @@ namespace tests
 
 			EventDispatcher.AddEventListener(listener, this);
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
 
             layer.IgnoreAnchorPointForPosition = false;
@@ -37,7 +37,7 @@ namespace tests
 
         public void updateSize(CCPoint touchLocation)
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             CCSize newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
             CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
             l.ContentSize = newSize;
@@ -49,7 +49,7 @@ namespace tests
 		}
 		void onTouchesMoved (List<CCTouch> touches, CCEvent touchEvent)
 		{
-			var touchLocation = touches[0].Location;
+			var touchLocation = touches[0].LocationOnScreen;
 			updateSize (touchLocation);
 		}
 		void onTouchesEnded (List<CCTouch> touches, CCEvent touchEvent)
@@ -67,7 +67,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerRGBA();
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
@@ -123,7 +123,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -182,7 +182,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -237,7 +237,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerRGBA();
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
@@ -290,7 +290,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -346,7 +346,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 

@@ -47,7 +47,7 @@ namespace tests
 			//  - It tests different anchor Points
 			//  - It tests different children anchor points
 
-			var size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var size = Scene.VisibleBoundsWorldspace.Size;
 
 			var parent = new CCNode();
 			parent.ContentSize = size;

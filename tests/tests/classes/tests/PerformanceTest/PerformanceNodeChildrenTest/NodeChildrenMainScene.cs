@@ -10,6 +10,10 @@ namespace tests
     {
         long lStart;
 
+        public NodeChildrenMainScene(): base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        {
+        }
+
         protected void StartTimer()
         {
             lStart = DateTime.Now.Ticks;
@@ -25,7 +29,7 @@ namespace tests
         public virtual void initWithQuantityOfNodes(int nNodes)
         {
             //srand(time());
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             // Title
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);

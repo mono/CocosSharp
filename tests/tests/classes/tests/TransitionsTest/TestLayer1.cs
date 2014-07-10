@@ -12,7 +12,7 @@ namespace tests
         {
             float x, y;
 
-            CCSize size = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize size = AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
             x = size.Width;
             y = size.Height;
 
@@ -57,7 +57,7 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 
@@ -73,7 +73,7 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 
@@ -91,7 +91,7 @@ namespace tests
             CCScene pScene = TransitionsTestScene.createTransition(TransitionsTestScene.s_nSceneIdx, TransitionsTestScene.TRANSITION_DURATION, s);
             if (pScene != null)
             {
-                CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(pScene);
+                Scene.Director.ReplaceScene(pScene);
             }
         }
 

@@ -6,7 +6,7 @@ namespace tests
     {
         public CameraOrbitTest()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCSprite p = new CCSprite(TestResource.s_back3);
             AddChild(p, 0);
@@ -56,14 +56,14 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.MainWindowDirector.Projection = (CCDirectorProjection.Projection3D);
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (true);
+            //Scene.Director.Projection = (CCDirectorProjection.Projection3D);
+			Scene.Window.IsUseDepthTesting =  (true);
         }
 
         public override void OnExit()
         {
-			CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting =  (false);
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+			Scene.Window.IsUseDepthTesting =  (false);
+            //Scene.Director.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }
 

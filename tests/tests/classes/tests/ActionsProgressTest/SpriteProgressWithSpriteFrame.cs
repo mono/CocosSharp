@@ -8,13 +8,15 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
 			var progressTo = new CCProgressTo(6, 100);
 
             CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
 
-            CCProgressTimer left = new CCProgressTimer(new CCSprite("grossini_dance_01.png"));
+            CCSprite sprite = new CCSprite("grossini_dance_01.png");
+
+            CCProgressTimer left = new CCProgressTimer(sprite);
             left.Type = CCProgressTimerType.Bar;
             //    Setup for a bar starting from the bottom since the midpoint is 0 for the y
             left.Midpoint = new CCPoint(0.5f, 0.5f);

@@ -74,7 +74,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             var label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 0, kTagLabel);
@@ -122,21 +122,21 @@ namespace tests
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(restartMotionAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(nextMotionAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = new MotionStreakTestScene(); 
             s.AddChild(backMotionAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
     }
 }

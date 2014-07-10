@@ -30,9 +30,10 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
+            CCLabelTtf label = new CCLabelTtf(title(), "arial", 40);
+            label.AnchorPoint = new CCPoint (0.5f, 0.5f);
             AddChild(label, 1);
             label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
 
@@ -42,12 +43,17 @@ namespace tests
 
             CCMenu menu = new CCMenu(item1, item2, item3);
 
-            menu.Position = (new CCPoint(0, 0));
-            item1.Position = (new CCPoint(s.Width / 2 - 100, 30));
-            item2.Position = (new CCPoint(s.Width / 2, 30));
-            item3.Position = (new CCPoint(s.Width / 2 + 100, 30));
+            float padding = 10.0f;
+            float halfRestartWidth = item2.ContentSize.Width / 2.0f;
 
-            AddChild(menu, 1);
+            menu.Position = (new CCPoint(0, 0));
+
+            // Anchor point of menu items is 0.5, 0.5 by default
+            item1.Position = (new CCPoint(s.Width / 2 - item1.ContentSize.Width / 2.0f - halfRestartWidth - padding, item2.ContentSize.Height + padding));
+            item2.Position = (new CCPoint(s.Width / 2, item2.ContentSize.Height + padding));
+            item3.Position = (new CCPoint(s.Width / 2 + item3.ContentSize.Width / 2.0f + halfRestartWidth + padding, item2.ContentSize.Height + padding));
+
+            AddChild(menu, TestScene.MENU_LEVEL);
         }
 
         public void restartCallback(object pSender)

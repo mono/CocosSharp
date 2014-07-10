@@ -6,7 +6,7 @@ namespace tests
     {
         public LabelTTFA8Test()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
 			var layer = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
             AddChild(layer, -10);

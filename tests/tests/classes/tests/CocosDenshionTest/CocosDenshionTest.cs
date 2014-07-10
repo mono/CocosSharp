@@ -73,9 +73,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             // Layout content
             int testCount = testMenuItems.Count();
@@ -189,20 +189,19 @@ namespace tests
         {
             CCTouch touch = touches.FirstOrDefault();
 
-            var beginPos = touch.Location;
+            var beginPos = touch.LocationOnScreen;
         }
 
         void OnTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches.FirstOrDefault();
 
-            CCPoint touchLocation = touch.LocationInView;   
-            touchLocation = Director.ConvertToGl( touchLocation );
+            CCPoint touchLocation = Scene.ScreenToWorldspace(touch.LocationOnScreen);   
             float nMoveY = touchLocation.Y - beginPos.Y;
 
             CCPoint curPos  = testMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = Director.WindowSizeInPoints;
+            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
 
             if (nextPos.Y < 0.0f)
             {

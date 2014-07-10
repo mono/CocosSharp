@@ -147,19 +147,19 @@ namespace tests
             */
 
             float x, y, z;
-            map.Camera.GetEyeXyz(out x, out y, out z);
-            map.Camera.SetEyeXyz(x - 200, y, z + 300);
+            //map.Camera.GetEyeXyz(out x, out y, out z);
+            //map.Camera.SetEyeXyz(x - 200, y, z + 300);
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection3D;
+            //Scene.Director.Projection = CCDirectorProjection.Projection3D;
         }
 
         public override void OnExit()
         {
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
+            //Scene.Director.Projection = CCDirectorProjection.Projection2D;
             base.OnExit();
         }
 
@@ -680,10 +680,10 @@ namespace tests
                 var color = new CCColor4B(255, 255, 0, 255);
 
                 CCDrawingPrimitives.Begin();
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint(x, y)), this.NodeToWorldTransform.Transform(new CCPoint((x + width), y)), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint((x + width), y)), this.NodeToWorldTransform.Transform(new CCPoint((x + width), (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint((x + width), (y + height))), this.NodeToWorldTransform.Transform(new CCPoint(x, (y + height))), color);
-                CCDrawingPrimitives.DrawLine(this.NodeToWorldTransform.Transform(new CCPoint(x, (y + height))), this.NodeToWorldTransform.Transform(new CCPoint(x, y)), color);
+                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint(x, y)), this.AffineWorldTransform.Transform(new CCPoint((x + width), y)), color);
+                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint((x + width), y)), this.AffineWorldTransform.Transform(new CCPoint((x + width), (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint((x + width), (y + height))), this.AffineWorldTransform.Transform(new CCPoint(x, (y + height))), color);
+                CCDrawingPrimitives.DrawLine(this.AffineWorldTransform.Transform(new CCPoint(x, (y + height))), this.AffineWorldTransform.Transform(new CCPoint(x, y)), color);
                 CCDrawingPrimitives.End();
 
                 //glLineWidth(1);
@@ -834,7 +834,7 @@ namespace tests
             m_tamara = new CCSprite(s_pPathSister1);
             map.AddChild(m_tamara, map.Children.Count);
             float mapWidth = map.MapSize.Width * map.TileSize.Width;
-			m_tamara.Position = new CCPoint(mapWidth / 2, 0).PixelsToPoints(Director.ContentScaleFactor);
+			m_tamara.Position = new CCPoint(mapWidth / 2, 0);
             m_tamara.AnchorPoint = (new CCPoint(0.5f, 0));
 
 
@@ -854,7 +854,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-			CCPoint p = m_tamara.Position.PointsToPixels(Director.ContentScaleFactor);
+            CCPoint p = m_tamara.Position;
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -913,7 +913,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-			CCPoint p = m_tamara.Position.PointsToPixels(Director.ContentScaleFactor);
+			CCPoint p = m_tamara.Position;
             CCNode map = GetChildByTag(kTagTileMap);
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -964,14 +964,14 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CCSize s = map.ContentSize;
             map.Position = new CCPoint(-s.Width / 2, 0);
 
-            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250) * (1f / Director.ContentScaleFactor));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(300, 250));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
@@ -985,17 +985,9 @@ namespace tests
         {
             // tile height is 64x32
             // map size: 30x30
-			CCPoint p = m_tamara.Position.PointsToPixels(Director.ContentScaleFactor);
+			CCPoint p = m_tamara.Position;
             float newZ = -(p.Y + 32f) / 16f;
             m_tamara.VertexZ = newZ;
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            // TIP: 2d projection should be used
-            CCApplication.SharedApplication.MainWindowDirector.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()
@@ -1040,11 +1032,11 @@ namespace tests
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        public override void OnEnter()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
-            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450) * (1f / Director.ContentScaleFactor));
+            CCMoveBy move = new CCMoveBy (10, new CCPoint(400, 450));
             CCFiniteTimeAction back = move.Reverse();
             CCSequence seq = new CCSequence(move, back);
             m_tamara.RunAction(new CCRepeatForever (seq));
@@ -1058,16 +1050,8 @@ namespace tests
         {
             // tile height is 101x81
             // map size: 12x12
-			CCPoint p = m_tamara.Position.PointsToPixels(Director.ContentScaleFactor);
+            CCPoint p = m_tamara.Position;
             m_tamara.VertexZ = -((p.Y + 81) / 81);
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            // TIP: 2d projection should be used
-            Director.Projection = CCDirectorProjection.Projection2D;
         }
 
         public override void OnExit()
@@ -1406,7 +1390,7 @@ namespace tests
 			EventDispatcher.AddEventListener(touchListener, this);
 
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 //            _GamePadDPadDelegate = new CCGamePadDPadDelegate(MyOnGamePadDPadUpdate);
 //            _GamePadButtonDelegate = new CCGamePadButtonDelegate(MyOnGamePadButtonUpdate);
 //            _GamePadStickDelegate = new CCGamePadStickUpdateDelegate(MyOnGameStickUpdate);
@@ -1536,7 +1520,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCDirector pDirector = CCApplication.SharedApplication.MainWindowDirector;
+            CCDirector pDirector = Scene.Director;
         }
 
 
@@ -1544,21 +1528,21 @@ namespace tests
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.restartTileMapAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         private void nextCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.nextTileMapAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         void backCallback(object pSender)
         {
             CCScene s = new TileMapTestScene();
             s.AddChild(TileMapTestScene.backTileMapAction());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
@@ -1794,9 +1778,9 @@ namespace tests
             // fix bug #486, #419. 
             // "test" is not the default value in CCDirector.setGLDefaultValues()
             // but TransitionTest may setDepthTest(false), we should revert it here
-            CCApplication.SharedApplication.MainWindowDirector.IsUseDepthTesting = true;
+            Scene.Window.IsUseDepthTesting = true;
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
 
         #region Nested type: Action

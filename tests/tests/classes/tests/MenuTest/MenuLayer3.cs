@@ -48,9 +48,9 @@ namespace tests
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
 			// modify this here to make sure we have the correct sizes when they are passed.
-			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
-			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23).PixelsToPoints(Director.ContentScaleFactor));
+			var spriteNormal = new CCSprite(s_MenuItem, new CCRect(0, 23 * 2, 115, 23));
+			var spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
+			var spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
 
             var item3 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback3);
@@ -60,7 +60,7 @@ namespace tests
 			var menu = new CCMenu(item1, item2, item3);
             menu.Position = new CCPoint(0, 0);
 
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+			var s = Scene.VisibleBoundsWorldspace.Size;
 
             item1.Position = new CCPoint(s.Width / 2 - 150, s.Height / 2);
             item2.Position = new CCPoint(s.Width / 2 - 200, s.Height / 2);

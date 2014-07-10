@@ -32,13 +32,16 @@ namespace tests
 
 		}
 
-		protected override void RunningOnNewWindow(CCSize windowSize)
+		public override void OnEnter()
 		{
-			base.RunningOnNewWindow(windowSize);
+			base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
-			m_grossini.Position = new CCPoint(60, 50);
-			m_kathia.Position = new CCPoint(60, 150);
-			m_tamara.Position = new CCPoint(60, 250);
+            float spirteHalfWidth = m_grossini.ContentSize.Width / 2.0f;
+
+            m_grossini.Position = new CCPoint(spirteHalfWidth + 10.0f, windowSize.Height * 0.3f);
+            m_kathia.Position = new CCPoint(spirteHalfWidth + 10.0f, windowSize.Height * 0.6f);
+            m_tamara.Position = new CCPoint(spirteHalfWidth + 10.0f, windowSize.Height * 0.9f);
 
 		}
 
@@ -80,7 +83,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var size = Director.WindowSizeInPoints;
+            var size = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy(3, new CCPoint(size.Width - 130, 0));
             var move_back = (CCActionInterval) move.Reverse();
@@ -129,7 +132,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var size = Director.WindowSizeInPoints;
+            var size = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(size.Width - 130, 0));
 
@@ -170,7 +173,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -209,7 +212,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -243,7 +246,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -281,7 +284,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -315,7 +318,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -353,7 +356,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
 
@@ -394,7 +397,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -432,7 +435,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -466,7 +469,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -504,7 +507,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy (3, new CCPoint(s.Width - 130, 0));
             var move_back = move.Reverse();
@@ -540,7 +543,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Director.WindowSizeInPoints;
+            var s = Scene.VisibleBoundsWorldspace.Size;
 
             // rotate and jump
             var jump1 = new CCJumpBy (4, new CCPoint(-s.Width + 80, 0), 100, 4);

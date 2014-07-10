@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 26);
             AddChild(label, 1);
@@ -43,21 +43,21 @@ namespace tests
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(restartZwoptexTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void nextCallback(object pSender)
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(nextZwoptexTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public void backCallback(object pSender)
         {
             CCScene s = ZwoptexTestScene.node();
             s.AddChild(backZwoptexTest());
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(s);
+            Scene.Director.ReplaceScene(s);
         }
 
         public virtual string title()

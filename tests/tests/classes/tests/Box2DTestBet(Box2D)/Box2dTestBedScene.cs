@@ -18,7 +18,7 @@ namespace Box2D.TestBed
         {
             AddChild(MenuLayer.menuWithEntryID(0));
 
-            CCApplication.SharedApplication.MainWindowDirector.ReplaceScene(this);
+            Scene.Director.ReplaceScene(this);
         }
     }
 }
