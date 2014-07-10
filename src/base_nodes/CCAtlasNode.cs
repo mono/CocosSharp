@@ -10,9 +10,6 @@ namespace CocosSharp
 
         protected bool IsOpacityModifyRGB { get; set; }
 
-        // This varible is only used for CCLabelAtlas FPS display. So please don't modify its value.
-        protected internal bool IgnoreContentScaleFactor { get; set; }
-
         protected int ItemHeight { get; set; }
         protected int ItemWidth { get; set; }
         protected int ItemsPerColumn { get; set; }
@@ -135,19 +132,14 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            CCDrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.BlendFunc(BlendFunc);
 
             TextureAtlas.DrawNumberOfQuads(QuadsToDraw, 0);
         }
 
         void CalculateMaxItems()
         {
-            CCSize s = TextureAtlas.Texture.ContentSize(Director.ContentScaleFactor);
-
-            if (IgnoreContentScaleFactor)
-            {
-                s = TextureAtlas.Texture.ContentSizeInPixels;
-            }
+            CCSize s = TextureAtlas.Texture.ContentSizeInPixels;
 
             ItemsPerColumn = (int) (s.Height / ItemHeight);
             ItemsPerRow = (int) (s.Width / ItemWidth);
