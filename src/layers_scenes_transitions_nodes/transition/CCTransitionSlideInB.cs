@@ -34,8 +34,8 @@ namespace CocosSharp
         /// </summary>
         protected override void InitScenes()
         {
-            CCSize s = Director.WindowSizeInPoints;
-            InScene.Position = new CCPoint(0, -(s.Height - 0.5f));
+            CCRect bounds = VisibleBoundsWorldspace;
+            InScene.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y -(bounds.Size.Height - 0.5f));
         }
 
         /// <summary>
@@ -44,8 +44,8 @@ namespace CocosSharp
         /// <returns></returns>
         public override CCActionInterval Action()
         {
-            CCSize s = Director.WindowSizeInPoints;
-            return new CCMoveBy (Duration, new CCPoint(0, s.Height - 0.5f));
+            CCRect bounds = VisibleBoundsWorldspace;
+            return new CCMoveBy (Duration, new CCPoint(bounds.Origin.X, bounds.Origin.Y + bounds.Size.Height - 0.5f));
         }
 
         protected override void SceneOrder()

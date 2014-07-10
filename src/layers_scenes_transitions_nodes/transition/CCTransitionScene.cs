@@ -18,12 +18,12 @@ namespace CocosSharp
             get { return true; }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return InScene != null ? InScene.Director : null; }
+            get { return InScene; }
             internal set 
             {
-                // Director is dependent on InScene
+                // Scene is dependent on InScene
             }
         }
 
@@ -32,7 +32,8 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTransitionScene (float t, CCScene scene) : base()
+        public CCTransitionScene (float t, CCScene scene) 
+            : base(scene.Window, scene.Camera, scene.Viewport, scene.Director)
         {
             InitCCTransitionScene(t, scene);
         }
@@ -49,7 +50,7 @@ namespace CocosSharp
             if (OutScene == null)
             {
                 // Creating an empty scene.
-                OutScene = new CCScene();
+                OutScene = new CCScene(scene.Window, scene.Camera, scene.Viewport, scene.Director);
             }
 
             Debug.Assert(InScene != OutScene, "Incoming scene must be different from the outgoing scene");
@@ -124,13 +125,11 @@ namespace CocosSharp
             InScene.Position = CCPoint.Zero;
             InScene.Scale = 1.0f;
             InScene.Rotation = 0.0f;
-            InScene.Camera.Restore();
 
             OutScene.Visible = false;
             OutScene.Position = CCPoint.Zero;
             OutScene.Scale = 1.0f;
             OutScene.Rotation = 0.0f;
-            OutScene.Camera.Restore();
 
             Schedule(SetNewScene, 0);
         }
@@ -151,8 +150,8 @@ namespace CocosSharp
             Unschedule(SetNewScene);
 
             // Before replacing, save the "send cleanup to scene"
-            IsSendCleanupToScene = Director.IsSendCleanupToScene;
-            Director.ReplaceScene(InScene);
+            IsSendCleanupToScene = Scene.Director.IsSendCleanupToScene;
+            Scene.Director.ReplaceScene(InScene);
 
             // issue #267
             OutScene.Visible = true;

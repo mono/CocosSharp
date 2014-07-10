@@ -43,8 +43,8 @@ namespace CocosSharp
         /// </summary>
         protected virtual void InitScenes()
         {
-            CCSize s = Director.WindowSizeInPoints;
-            InScene.Position = new CCPoint(-(s.Width - 0.5f), 0);
+            CCRect bounds = VisibleBoundsWorldspace;
+            InScene.Position = new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y);
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace CocosSharp
         /// <returns></returns>
         public virtual CCActionInterval Action()
         {
-            CCSize s = Director.WindowSizeInPoints;
-            return new CCMoveBy (Duration, new CCPoint(s.Width - 0.5f, 0));
+            CCRect bounds = VisibleBoundsWorldspace;
+            return new CCMoveBy(Duration, new CCPoint(bounds.Size.Width, 0));
         }
 
         public override void OnEnter()

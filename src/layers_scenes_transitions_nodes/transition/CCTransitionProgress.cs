@@ -25,12 +25,13 @@ namespace CocosSharp
 
             // create a transparent color layer
             // in which we are going to add our rendertextures
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect viewportRect = Viewport.ViewportInPixels;
 
             // create the second render texture for outScene
-            CCRenderTexture texture = new CCRenderTexture((int) size.Width, (int) size.Height, Director.ContentScaleFactor);
+            CCRenderTexture texture = new CCRenderTexture(bounds.Size, viewportRect.Size);
             texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            texture.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            texture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             texture.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             // render outScene to its texturebuffer
@@ -97,7 +98,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -108,7 +109,7 @@ namespace CocosSharp
             //    Return the radial type that we want to use
             node.ReverseDirection = false;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -128,7 +129,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -139,7 +140,7 @@ namespace CocosSharp
             //    Return the radial type that we want to use
             node.ReverseDirection = true;
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -158,7 +159,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -170,7 +171,7 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 0);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -187,7 +188,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -199,7 +200,7 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(0, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -214,7 +215,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -226,7 +227,7 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 0;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;
@@ -253,7 +254,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCSize size = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -265,7 +266,7 @@ namespace CocosSharp
             node.BarChangeRate = new CCPoint(1, 1);
 
             node.Percentage = 100;
-            node.Position = new CCPoint(size.Width / 2, size.Height / 2);
+            node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             node.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             return node;

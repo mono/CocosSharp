@@ -9,14 +9,14 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize s = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
 
             InScene.Scale = 0.5f;
-            InScene.Position = new CCPoint(s.Width, 0);
+            InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
             InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval jump = new CCJumpBy (Duration / 4, new CCPoint(-s.Width, 0), s.Width / 4, 2);
+            CCActionInterval jump = new CCJumpBy (Duration / 4, new CCPoint(-bounds.Size.Width, 0), bounds.Size.Width / 4, 2);
             CCActionInterval scaleIn = new CCScaleTo(Duration / 4, 1.0f);
             CCActionInterval scaleOut = new CCScaleTo(Duration / 4, 0.5f);
 

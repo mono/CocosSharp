@@ -49,8 +49,8 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
-            float aspect = s.Width / s.Height;
+            CCRect bounds = VisibleBoundsWorldspace;
+            float aspect = bounds.Size.Width / bounds.Size.Height;
             var x = (int) (12 * aspect);
             int y = 12;
 

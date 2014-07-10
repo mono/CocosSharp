@@ -75,9 +75,9 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = Director.WindowSizeInPoints;
+            CCRect bounds = VisibleBoundsWorldspace;
             int x, y;
-            if (s.Width > s.Height)
+            if (bounds.Size.Width > bounds.Size.Height)
             {
                 x = 16;
                 y = 12;

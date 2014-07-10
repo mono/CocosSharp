@@ -31,8 +31,8 @@ namespace CocosSharp
 
         public override void InitScenes()
         {
-            CCSize s = Director.WindowSizeInPoints;
-            InScene.Position = new CCPoint(s.Width, 0);
+            CCRect bounds = VisibleBoundsWorldspace;
+            InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
         }
 
     }
