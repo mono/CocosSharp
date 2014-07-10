@@ -159,10 +159,10 @@ namespace CocosSharp
         {
             if (vertexData != null && sprite != null) 
             {
-                CCDrawManager.BindTexture(Sprite.Texture);
-                CCDrawManager.BlendFunc(Sprite.BlendFunc);
+                Window.DrawManager.BindTexture(Sprite.Texture);
+                Window.DrawManager.BlendFunc(Sprite.BlendFunc);
 
-                CCDrawManager.DrawIndexedPrimitives (PrimitiveType.TriangleList, vertexData, 0, 
+                Window.DrawManager.DrawIndexedPrimitives(PrimitiveType.TriangleList, vertexData, 0, 
                     vertexData.Length, vertexIndices, 0, vertexData.Length - 2);
             }
         }

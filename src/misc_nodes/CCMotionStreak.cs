@@ -97,10 +97,10 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            CCDrawManager.BlendFunc(BlendFunc);
-            CCDrawManager.BindTexture(Texture);
-            CCDrawManager.VertexColorEnabled = true;
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, vertices, 0, numOfPoints * 2 - 2);
+            Window.DrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.BindTexture(Texture);
+            Window.DrawManager.VertexColorEnabled = true;
+            Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleStrip, vertices, 0, numOfPoints * 2 - 2);
         }
 
         #endregion Drawing

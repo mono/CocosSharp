@@ -16,21 +16,21 @@ namespace CocosSharp
                 stencil = value;
                 if (stencil != null) 
                 {
-                    stencil.Director = Director;
+                    stencil.Window = Window;
                 }
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (stencil != null)
                 {
-                    stencil.Director = value;
+                    stencil.Scene = value;
                 }
             }
         }
@@ -102,20 +102,19 @@ namespace CocosSharp
                 return;
             }
 
-            if (CCDrawManager.BeginDrawMask(Inverted, AlphaThreshold))
+            if (Window.DrawManager.BeginDrawMask(Viewport.ViewportInPixels, Inverted, AlphaThreshold))
             {
-                CCDrawManager.PushMatrix();
-                Transform();
-                
+                Window.DrawManager.PushMatrix();
+
                 Stencil.Visit();
 
-                CCDrawManager.PopMatrix();
+                Window.DrawManager.PopMatrix();
 
-                CCDrawManager.EndDrawMask();
+                Window.DrawManager.EndDrawMask();
 
                 base.Visit();
 
-                CCDrawManager.EndMask();
+                Window.DrawManager.EndMask();
             }
             else
             {

@@ -231,9 +231,9 @@ namespace CocosSharp
                 dirty = false;
             }
 
-            CCDrawManager.TextureEnabled = false;
-            CCDrawManager.BlendFunc(BlendFunc);
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleList, vertices.Elements, 0, vertices.Count / 3);
+            Window.DrawManager.TextureEnabled = false;
+            Window.DrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleList, vertices.Elements, 0, vertices.Count / 3);
         }
     }
 }
