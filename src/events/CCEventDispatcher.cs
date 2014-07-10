@@ -40,7 +40,7 @@ namespace CocosSharp
         #region Properties
 
         public bool IsEnabled { get; set; }
-        public CCDirector Director { get; set; }
+        public CCWindow Window { get; set; }
 
         // Sets the dirty flag for a node.
         protected internal CCNode MarkDirty
@@ -60,9 +60,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCEventDispatcher(CCDirector director)
+        public CCEventDispatcher(CCWindow window)
         {
-            Director = director;
+            Window = window;
 
             toBeAddedListeners = new List<CCEventListener>(50);
 
@@ -925,26 +925,28 @@ namespace CocosSharp
             if (sceneGraphListeners == null)
                 return;
 
-            var rootNode = (CCNode)Director.RunningScene;
-            // Reset priority index
-            nodePriorityIndex = 0;
-            nodePriorityMap.Clear();
+            foreach(CCDirector director in Window.SceneDirectors)
+            {
+                var rootNode = (CCNode)director.RunningScene;
+                // Reset priority index
+                nodePriorityIndex = 0;
+                nodePriorityMap.Clear();
 
-            VisitTarget(rootNode, true);
+                VisitTarget(rootNode, true);
 
-            // After sort: priority < 0, > 0
-            sceneGraphListeners.Sort((a,b) => 
-                {
-                    if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
-                        return 0;
-                    if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority))
-                        return 1;
-                    if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
-                        return -1;
+                // After sort: priority < 0, > 0
+                sceneGraphListeners.Sort((a,b) => 
+                    {
+                        if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority) && !nodePriorityMap.ContainsKey(b.SceneGraphPriority))
+                            return 0;
+                        if (!nodePriorityMap.ContainsKey(a.SceneGraphPriority))
+                            return 1;
+                        if (!nodePriorityMap.ContainsKey(b.SceneGraphPriority))
+                            return -1;
 
-                    return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]) * -1;
-                });
-
+                        return nodePriorityMap[a.SceneGraphPriority].CompareTo(nodePriorityMap[b.SceneGraphPriority]) * -1;
+                    });
+            }
 
             #if DUMP_LISTENER_ITEM_PRIORITY_INFO
             CCLog.Log("----------------------- " + nodePriorityMap.Count + " -----------------------");
