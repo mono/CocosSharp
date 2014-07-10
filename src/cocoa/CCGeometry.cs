@@ -450,6 +450,30 @@ namespace CocosSharp
             //            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
         }
 
+		/// Clamp CCPoint p to length len.
+		public static CCPoint Clamp(CCPoint p, float len)
+		{
+			return (CCPoint.Dot(p, p) > len * len) ? CCPoint.Normalize(p) * len : p;
+		}
+
+		/// Clamp point object to the specified len.
+		public CCPoint Clamp(float len)
+		{
+			return CCPoint.Clamp(this, len);
+		}
+
+		/// Returns true if the distance between p1 and p2 is less than dist.
+		public static bool IsNear(CCPoint p1, CCPoint p2, float dist)
+		{
+			return p1.DistanceSQ(ref p2) < dist * dist;
+		}
+
+		/// Returns true if the distance between CCPoint object and p2 is less than dist.
+		public bool IsNear(CCPoint p2, float dist)
+		{
+			return this.DistanceSQ(ref p2) < dist * dist;
+		}
+
         /**
          * Allow Cast CCSize to CCPoint
          */
