@@ -29,7 +29,7 @@ namespace CocosSharp
 //        protected CCColor3B realColor = CCColor3B.White;
 //        protected bool isColorCascaded = true;
 //        protected bool isOpacityCascaded = true;
-//        protected bool isColorModifiedByOpacity = false;
+        protected bool isColorModifiedByOpacity = false;
 
         public override CCPoint AnchorPoint
         {
@@ -284,7 +284,7 @@ namespace CocosSharp
 
 //            displayedOpacity = realOpacity = 255;
 //            displayedColor = realColor = CCColor3B.White;
-//            isOpacityCascaded = true;
+            IsOpacityCascaded = true;
 //            isColorCascaded = true;
 
             ContentSize = CCSize.Zero;
@@ -317,35 +317,32 @@ namespace CocosSharp
         }
 
         #endregion Setup content
+		public override void UpdateColor()
+		{
+			base.UpdateColor();
 
+			if (Children != null)
+			{
+				for (int i = 0, count = Children.Count; i < count; i++)
+				{
+					((CCSprite)Children.Elements[i]).UpdateDisplayedColor(DisplayedColor);
+				}
+			}
 
-//		protected internal virtual void UpdateDisplayedColor(CCColor3B parentColor)
-//        {
-//            displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
-//            displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
-//            displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
-//
-//            if (Children != null)
-//            {
-//                for (int i = 0, count = Children.Count; i < count; i++)
-//                {
-//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
-//                }
-//            }
-//        }
-//
-//        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
-//        {
-//            displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
-//
-//            if (Children != null)
-//            {
-//                for (int i = 0, count = Children.Count; i < count; i++)
-//                {
-//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
-//                }
-//            }
-//        }
+		}
+
+		public override bool IsColorModifiedByOpacity
+		{
+			get { return isColorModifiedByOpacity; }
+			set
+			{
+				if (isColorModifiedByOpacity != value)
+				{
+					isColorModifiedByOpacity = value;
+					UpdateColor();
+				}
+			}
+		}
 
         private int KerningAmountForFirst(int first, int second)
         {

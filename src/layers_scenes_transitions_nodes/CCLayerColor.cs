@@ -132,7 +132,7 @@ namespace CocosSharp
             CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
         }
 
-        protected override void UpdateColor()
+        public override void UpdateColor()
         {
             var color = new Color(DisplayedColor.R / 255.0f, DisplayedColor.G / 255.0f, DisplayedColor.B / 255.0f, DisplayedOpacity / 255.0f);
 

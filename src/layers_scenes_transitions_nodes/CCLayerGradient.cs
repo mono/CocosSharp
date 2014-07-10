@@ -164,7 +164,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected override void UpdateColor()
+        public override void UpdateColor()
         {
             base.UpdateColor();
 

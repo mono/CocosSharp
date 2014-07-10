@@ -1565,7 +1565,7 @@ namespace CocosSharp
 		}
 
 
-		protected virtual void UpdateColor()
+		public virtual void UpdateColor()
 		{
 			// Override the opdate of color here
 		}
