@@ -187,9 +187,9 @@ namespace CocosSharp
             CheckTouchState();
         }
 
-        public bool TouchBegan(CCTouch pTouch)
+        public bool TouchBegan(CCTouch touch)
         {
-            var pos = ConvertTouchToNodeSpace(pTouch);
+            var pos = Scene.ScreenToWorldspace(touch.LocationOnScreen);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
                 return true;
@@ -197,14 +197,14 @@ namespace CocosSharp
             return false;
         }
 
-        public void TouchMoved(CCTouch pTouch)
+        public void TouchMoved(CCTouch touch)
         {
             //nothing
         }
 
-        public void TouchEnded(CCTouch pTouch)
+        public void TouchEnded(CCTouch touch)
         {
-            var pos = ConvertTouchToNodeSpace(pTouch);
+            var pos = Scene.ScreenToWorldspace(touch.LocationOnScreen);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
                 Edit();
