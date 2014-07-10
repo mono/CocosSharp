@@ -78,11 +78,8 @@ namespace CocosSharp
                 {
                     base.Texture = value;
 
-                    if(Director != null) 
-                    {
-                        CCSize s = value.ContentSize(Director.ContentScaleFactor);
-                        TextureRect = new CCRect (0, 0, s.Width, s.Height);
-                    }
+                    CCSize s = value.ContentSizeInPixels;
+                    TextureRect = new CCRect (0, 0, s.Width, s.Height);
                 }
             }
         }
@@ -130,9 +127,10 @@ namespace CocosSharp
                 CCRawList<CCV3F_C4B_T2F_Quad> oldQuads = quads;
                 quads = value;
 
-                if (Texture!= null && quads != null && quads != oldQuads && Director != null) 
+                if (Texture!= null && quads != null && quads != oldQuads && Window != null) 
                 {
-                    CCSize texSize = Texture.ContentSize(Director.ContentScaleFactor);
+                    CCSize texSize = Texture.ContentSizeInPixels;
+
                     // Load the quads with tex coords
                     ResetTexCoords(new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height));
                 }
@@ -164,42 +162,24 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if(Director != null && Texture != null) 
-            {
-                CCSize s = Texture.ContentSize(Director.ContentScaleFactor);
-                TextureRect = new CCRect (0, 0, s.Width, s.Height);
-            }
-        }
-
-        #endregion Setup content
-
-
         protected override void Draw()
         {
             Debug.Assert(BatchNode == null, "draw should not be called when added to a particleBatchNode");
 
-            CCDrawManager.BindTexture(Texture);
-            CCDrawManager.BlendFunc(BlendFunc);
-            CCDrawManager.DrawQuads(quads, 0, ParticleCount);
+            Window.DrawManager.BindTexture(Texture);
+            Window.DrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.DrawQuads(quads, 0, ParticleCount);
         }
 
 
         #region Updating quads
 
         // pointRect should be in Texture coordinates, not pixel coordinates
-        void ResetTexCoords(CCRect pointRect)
+        void ResetTexCoords(CCRect texRectInPixels)
         {
-            // convert to Tex coords
-            CCRect rect = pointRect.PointsToPixels(Director.ContentScaleFactor);
 
-            float wide = pointRect.Size.Width;
-            float high = pointRect.Size.Height;
+            float wide = texRectInPixels.Size.Width;
+            float high = texRectInPixels.Size.Height;
 
             if (Texture != null)
             {
@@ -208,15 +188,15 @@ namespace CocosSharp
             }
 
             #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
-            float left = (rect.Origin.X * 2 + 1) / (wide * 2);
-            float bottom = (rect.Origin.Y * 2 + 1) / (high * 2);
-            float right = left + (rect.Size.Width * 2 - 2) / (wide * 2);
-            float top = bottom + (rect.Size.Height * 2 - 2) / (high * 2);
+            float left = (texRectInPixels.Origin.X * 2 + 1) / (wide * 2);
+            float bottom = (texRectInPixels.Origin.Y * 2 + 1) / (high * 2);
+            float right = left + (texRectInPixels.Size.Width * 2 - 2) / (wide * 2);
+            float top = bottom + (texRectInPixels.Size.Height * 2 - 2) / (high * 2);
             #else
-            float left = rect.Origin.X / wide;
-            float bottom = rect.Origin.Y / high;
-            float right = left + rect.Size.Width / wide;
-            float top = bottom + rect.Size.Height / high;
+            float left = texRectInPixels.Origin.X / wide;
+            float bottom = texRectInPixels.Origin.Y / high;
+            float right = left + texRectInPixels.Size.Width / wide;
+            float top = bottom + texRectInPixels.Size.Height / high;
             #endif
             // ! CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
 
@@ -370,7 +350,7 @@ namespace CocosSharp
 
             if (PositionType == CCPositionType.Free)
             {
-                currentPosition = ConvertToWorldSpace(CCPoint.Zero);
+                currentPosition = Scene.VisibleBoundsWorldspace.Origin;
             }
             else if (PositionType == CCPositionType.Relative)
             {

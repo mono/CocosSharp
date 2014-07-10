@@ -59,12 +59,12 @@ namespace CocosSharp
             // The alternative is to have a void CCSprite#visit, but
             // although this is less mantainable, is faster
             //
-            if (!Visible || Director == null)
+            if (!Visible || Window == null)
             {
                 return;
             }
 
-            CCDrawManager.PushMatrix();
+            Window.DrawManager.PushMatrix();
 
             if (Grid != null && Grid.Active)
             {
@@ -81,7 +81,7 @@ namespace CocosSharp
                 Grid.AfterDraw(this);
             }
 
-            CCDrawManager.PopMatrix();
+            Window.DrawManager.PopMatrix();
         }
 
         protected override void Draw()
@@ -91,7 +91,7 @@ namespace CocosSharp
                 return;
             }
 
-            CCDrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.BlendFunc(BlendFunc);
 
             TextureAtlas.DrawQuads();
         }
@@ -159,8 +159,8 @@ namespace CocosSharp
                 "Can't add a ParticleSystem that uses a differnt blending function");
 
             // Set director before we call AddChildHelper
-            if(Director != null)
-                pChild.Director = Director;
+            if(Window != null)
+                pChild.Window = Window;
 
             // No lazy sorting, so don't call base AddChild, call helper instead
             int pos = AddChildHelper(pChild, zOrder, tag);

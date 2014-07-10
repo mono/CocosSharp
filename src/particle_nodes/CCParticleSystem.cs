@@ -241,8 +241,8 @@ namespace CocosSharp
                             }
                         }
 
-                        if(Director != null)
-                            BatchNode.Director = Director;
+                        if(Window != null)
+                            BatchNode.Window = Window;
                     }
                 }
             }
@@ -370,17 +370,17 @@ namespace CocosSharp
             set { radialMode.RotatePerSecondVar = value; }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                if(Director != null && BatchNode != null) 
+                if(Scene != null && BatchNode != null) 
                 {
-                    BatchNode.Director = Director;
+                    BatchNode.Scene = Scene;
                 }
 
-                base.Director = value;
+                base.Scene = value;
             }
         }
 
@@ -683,7 +683,7 @@ namespace CocosSharp
 
             if (PositionType == CCPositionType.Free)
             {
-                particleBase.StartPosition = ConvertToWorldSpace(CCPoint.Zero);
+                particleBase.StartPosition = Camera.VisibleBoundsWorldspace.Origin;
             }
             else if (PositionType == CCPositionType.Relative)
             {
