@@ -60,19 +60,19 @@ namespace CocosSharp
         #endregion Constructors 
 
 
-        #region Setup content
+        #region Scene callbacks
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        protected override void AddedToNewScene()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.AddedToNewScene();
 
-            if (Director != null)
+            if (Scene != null)
             {
                 UpdateAtlasValues();
             }
         }
 
-        #endregion Setup content
+        #endregion Scene callbacks
 
 
         public void ReleaseMap()
@@ -130,8 +130,8 @@ namespace CocosSharp
             float textureWide = (TextureAtlas.Texture.PixelsWide);
             float textureHigh = (TextureAtlas.Texture.PixelsHigh);
 
-            float itemWidthInPixels = ItemWidth * Director.ContentScaleFactor;
-            float itemHeightInPixels = ItemHeight * Director.ContentScaleFactor;
+            float itemWidthInPixels = ItemWidth;
+            float itemHeightInPixels = ItemHeight;
 
             #if CC_FIX_ARTIFACTS_BY_STRECHING_TEXEL
             float left        = (2 * row * itemWidthInPixels + 1) / (2 * textureWide);
@@ -180,7 +180,7 @@ namespace CocosSharp
 
         public override void UpdateAtlasValues()
         {
-            if(Director == null)
+            if(Scene == null)
                 return;
 
             Debug.Assert(TGAInfo != null, "tgaInfo must be non-nil");
