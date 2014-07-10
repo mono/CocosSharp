@@ -45,17 +45,12 @@ namespace CocosSharp
         protected CCVertex3F[] OriginalVertices { get; private set; }
         internal CCV3F_T2F[] Vertices { get; private set; }
 
-
         #endregion Properties
 
 
         #region Constructors
 
-        public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
-        {
-        }
-
-        public CCGrid3D(CCGridSize gridSize, CCSize size) : base(gridSize, size)
+        public CCGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped=false) : base(gridSize, texture, flipped)
         {
         }
 
@@ -102,11 +97,11 @@ namespace CocosSharp
                 vertexBuffer.UpdateBuffer();
             }
 
-            bool save = CCDrawManager.VertexColorEnabled;
+            bool save = Scene.Window.DrawManager.VertexColorEnabled;
 
-            CCDrawManager.VertexColorEnabled = false;
-            CCDrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
-            CCDrawManager.VertexColorEnabled = save;
+            Scene.Window.DrawManager.VertexColorEnabled = false;
+            Scene.Window.DrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
+            Scene.Window.DrawManager.VertexColorEnabled = save;
         }
 
         public override void Reuse()
@@ -129,9 +124,9 @@ namespace CocosSharp
 
             int numOfPoints = (GridSize.X + 1) * (GridSize.Y + 1);
 
-            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
+            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly, Scene.Window.DrawManager);
             vertexBuffer.Count = numOfPoints;
-            indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly);
+            indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly,Scene.Window.DrawManager);
             indexBuffer.Count = GridSize.X * GridSize.Y * 6;
 
             Vertices = vertexBuffer.Data.Elements;

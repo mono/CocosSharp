@@ -11,46 +11,41 @@ namespace CocosSharp
         bool active;
         bool textureFlipped;
 
-        CCDirector director;
+        CCScene scene;
 
 
         #region Properties
 
         public int ReuseGrid { get; set; }                                  // number of times that the grid will be reused 
+        public bool Active { get; set; }
         public CCGridSize GridSize { get; private set; }
         public CCPoint Step { get; private set; }                           // pixels between the grids 
 
-        protected CCDirectorProjection DirectorProjection { get; set; }
         protected CCGrabber Grabber { get; set; }
         protected CCTexture2D Texture { get; set; }
 
-        internal CCDirector Director 
+        internal CCScene Scene 
         { 
-            get { return director; }
+            get { return scene; }
             set 
             {
-                director = value;
-
-                if(director != null && Texture != null) 
+                if(scene != value) 
                 {
-                    CCSize texSize = Texture.ContentSize(director.ContentScaleFactor);
-                    Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
+                    scene = value;
 
-                    CalculateVertexPoints();
-                }
-            }
-        }
+                    if (scene != null && Texture != null) 
+                    {
+                        CCSize texSize = Texture.ContentSizeInPixels;
+                        Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
 
+                        Grabber = new CCGrabber(scene.Window.DrawManager);
+                        if (Grabber != null && Texture != null)
+                        {
+                            Grabber.Grab(Texture);
+                        }
 
-        public bool Active
-        {
-            get { return active; }
-            set
-            {
-                active = value;
-                if (!active && Director != null)
-                {
-                    Director.Projection = Director.Projection;
+                        CalculateVertexPoints();
+                    }
                 }
             }
         }
@@ -79,16 +74,6 @@ namespace CocosSharp
             Texture = texture;
             textureFlipped = flipped;
 
-            Grabber = new CCGrabber();
-            if (Grabber != null)
-            {
-                Grabber.Grab(Texture);
-            }
-        }
-
-        protected CCGridBase(CCGridSize gridSize, CCSize size) 
-            : this(gridSize, new CCTexture2D((int)size.Width, (int)size.Height, CCSurfaceFormat.Color, true, false))
-        {
         }
 
         #endregion Constructors
@@ -100,31 +85,14 @@ namespace CocosSharp
 
         public virtual void BeforeDraw()
         {
-            DirectorProjection = Director.Projection;
-
             Grabber.BeforeRender(Texture);
-
-            Set2DProjection();
         }
 
         public virtual void AfterDraw(CCNode target)
         {
             Grabber.AfterRender(Texture);
 
-            Director.Projection = DirectorProjection;
-
-            if (target.Camera.IsDirty)
-            {
-                CCPoint offset = target.AnchorPointInPoints;
-
-                CCDrawManager.Translate(offset.X, offset.Y, 0);
-                target.Camera.Locate();
-                CCDrawManager.Translate(-offset.X, -offset.Y, 0);
-            }
-
-            CCDrawManager.BindTexture(Texture);
-
-            //Blit();
+            Scene.Window.DrawManager.BindTexture(Texture);
         }
 
         public ulong NextPOT(ulong x)
@@ -136,20 +104,6 @@ namespace CocosSharp
             x = x | (x >> 8);
             x = x | (x >> 16);
             return x + 1;
-        }
-
-        public void Set2DProjection()
-        {
-            CCSize size = Texture.ContentSizeInPixels;
-
-            CCDrawManager.SetViewPort(0, 0, (int)size.Width, (int)size.Height);
-
-            CCDrawManager.ViewMatrix = Matrix.Identity;
-            CCDrawManager.ProjectionMatrix = Matrix.Identity;
-
-            Matrix projection = Matrix.CreateOrthographicOffCenter(0, size.Width, 0, size.Height, -1024.0f, 1024.0f);
-            Matrix halfPixelOffset = Matrix.CreateTranslation(-0.5f, -0.5f, 0);
-            CCDrawManager.WorldMatrix = (halfPixelOffset * projection);
         }
     }
 }

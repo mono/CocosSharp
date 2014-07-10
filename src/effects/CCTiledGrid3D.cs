@@ -46,11 +46,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped) : base(gridSize, texture, flipped)
-        {
-        }
-
-        public CCTiledGrid3D(CCGridSize gridSize, CCSize size) : base(gridSize, size)
+        public CCTiledGrid3D(CCGridSize gridSize, CCTexture2D texture, bool flipped=false) : base(gridSize, texture, flipped)
         {
         }
 
@@ -122,10 +118,11 @@ namespace CocosSharp
                 vertexBuffer.UpdateBuffer();
             }
 
-            bool save = CCDrawManager.VertexColorEnabled;
-            CCDrawManager.VertexColorEnabled = false;
-            CCDrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
-            CCDrawManager.VertexColorEnabled = save;
+            CCDrawManager drawMangager = Scene.Window.DrawManager;
+            bool save = drawMangager.VertexColorEnabled;
+            drawMangager.VertexColorEnabled = false;
+            drawMangager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
+            drawMangager.VertexColorEnabled = save;
         }
 
         public override void Reuse()
@@ -158,9 +155,9 @@ namespace CocosSharp
 
             int numQuads = GridSize.X * GridSize.Y;
 
-            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
+            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly, Scene.Window.DrawManager);
             vertexBuffer.Count = numQuads * 4;
-            indexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
+            indexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly, Scene.Window.DrawManager);
             indexBuffer.Count = numQuads * 6;
 
             Vertices = vertexBuffer.Data.Elements;

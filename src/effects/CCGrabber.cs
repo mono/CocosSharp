@@ -5,24 +5,29 @@ namespace CocosSharp
 {
     public class CCGrabber
     {
+        CCDrawManager drawManager;
         RenderTarget2D oldRenderTarget;
+
+        public CCGrabber(CCDrawManager drawManager)
+        {
+            this.drawManager = drawManager;
+        }
 
         public void Grab(CCTexture2D texture)
         {
-            CCDrawManager.CreateRenderTarget(texture, CCRenderTargetUsage.DiscardContents);
+            drawManager.CreateRenderTarget(texture, CCRenderTargetUsage.DiscardContents);
         }
 
         public void BeforeRender(CCTexture2D texture)
         {
-            oldRenderTarget = CCDrawManager.GetRenderTarget();
-            CCDrawManager.SetRenderTarget(texture);
-
-            CCDrawManager.Clear(CCColor4B.Transparent);
+            oldRenderTarget = drawManager.CurrentRenderTarget;
+            drawManager.SetRenderTarget(texture);
+            drawManager.Clear(CCColor4B.Transparent);
         }
 
         public void AfterRender(CCTexture2D texture)
         {
-            CCDrawManager.SetRenderTarget(oldRenderTarget);
+            drawManager.SetRenderTarget(oldRenderTarget);
         }
     }
 }
