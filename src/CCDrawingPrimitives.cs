@@ -7,13 +7,15 @@ namespace CocosSharp
 {
     public partial class CCDrawingPrimitives
     {
-		static CCPrimitiveBatch batch;
+        static CCDrawManager drawManager;
+        static CCPrimitiveBatch batch;
 		static float pointSize = 3f;
 		public static CCColor4B DefaultColor { get; set; }
 
-        internal static void Initialize(GraphicsDevice graphics)
+        internal static void Initialize(GraphicsDevice graphics, CCDrawManager drawManager)
         {
-            batch = new CCPrimitiveBatch(graphics);
+            batch = new CCPrimitiveBatch(drawManager);
+            CCDrawingPrimitives.drawManager = drawManager;
         }
 
         public static void Begin()
@@ -255,10 +257,10 @@ namespace CocosSharp
                     Color = new Color(color.R, color.G, color.B, color.A),
                 };
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
+            BasicEffect basicEffect = drawManager.PrimitiveEffect;
+            basicEffect.Projection = drawManager.ProjectionMatrix;
+            basicEffect.View = drawManager.ViewMatrix;
+            basicEffect.World = drawManager.WorldMatrix;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
@@ -292,10 +294,10 @@ namespace CocosSharp
                     Position = new Vector3(destination.X, destination.Y, 0)
                 };
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
+            BasicEffect basicEffect = drawManager.PrimitiveEffect;
+            basicEffect.Projection = drawManager.ProjectionMatrix;
+            basicEffect.View = drawManager.ViewMatrix;
+            basicEffect.World = drawManager.WorldMatrix;
 
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
@@ -349,10 +351,10 @@ namespace CocosSharp
                 vertices[i].Color = Color.White;
             }
 
-            BasicEffect basicEffect = CCDrawManager.PrimitiveEffect;
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
+            BasicEffect basicEffect = drawManager.PrimitiveEffect;
+            basicEffect.Projection = drawManager.ProjectionMatrix;
+            basicEffect.View = drawManager.ViewMatrix;
+            basicEffect.World = drawManager.WorldMatrix;
             foreach (EffectPass pass in basicEffect.CurrentTechnique.Passes)
             {
                 pass.Apply();
