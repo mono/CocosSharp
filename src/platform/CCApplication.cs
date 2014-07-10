@@ -29,6 +29,17 @@ namespace CocosSharp
         Unknown = 16
     }
 
+    public static class OrientationExtension
+    {
+        public static bool IsPortrait(this CCDisplayOrientation orientation)
+        {
+            orientation = orientation & CCDisplayOrientation.Portrait;
+            orientation = orientation & CCDisplayOrientation.PortraitDown;
+
+            return orientation != CCDisplayOrientation.Default;
+        }
+    }
+
     public class CCGameTime
     {
         #region Properties
@@ -66,14 +77,20 @@ namespace CocosSharp
         #endregion Constructors
     }
 
-    internal class CCGame : Game
+    public class CCGame : Game
     {
- 
+        public CCGame()
+        {
+            #if WINDOWS || WINDOWSGL || MACOS
+            this.IsMouseVisible = true;
+            #endif
+        }
+
         #if OUYA
         protected override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-            CCDrawManager.SpriteBatch.Begin();
+            Director.DrawManager.SpriteBatch.Begin();
             float y = 15;
             for (int i = 0; i < 4; ++i)
             {
@@ -85,10 +102,10 @@ namespace CocosSharp
                 gs.ThumbSticks.Right.X, gs.ThumbSticks.Right.Y,
                 gs.Triggers.Left, gs.Triggers.Right);
 
-                CCDrawManager.SpriteBatch.DrawString(CCSpriteFontCache.SharedInstance["arial-20"], textToDraw, new Vector2(16, y), Color.White);
+                Director.DrawManager.SpriteBatch.DrawString(CCSpriteFontCache.SharedInstance["arial-20"], textToDraw, new Vector2(16, y), Color.White);
                 y += 25;
             }
-            CCDrawManager.SpriteBatch.End();
+            Director.DrawManager.SpriteBatch.End();
         }
         #endif
 
@@ -120,18 +137,6 @@ namespace CocosSharp
 
     public class CCApplication : DrawableGameComponent
     {
-        struct CCWindow
-        {
-            internal CCDirector Director { get; private set; }
-            internal GameWindow XnaWindow { get; private set; }
-
-            public CCWindow(CCDirector director, GameWindow xnaWindow) : this()
-            {
-                Director = director;
-                XnaWindow = xnaWindow;
-            }
-        }
-
         static CCApplication instance;
 
         readonly List<CCTouch> endedTouches = new List<CCTouch>();
@@ -168,9 +173,13 @@ namespace CocosSharp
         CCSpriteFrameCache spriteFrameCache;
         CCTextureCache textureCache;
 
+        GraphicsDeviceManager xnaDeviceManager;
         CCGame xnaGame;
         CCGameTime GameTime;
+
         CCWindow mainWindow;
+        List<CCWindow> gameWindows;
+
 
         #region Properties
 
@@ -184,7 +193,7 @@ namespace CocosSharp
 #if WINDOWS_PHONE || NETFX_CORE
                     Debug.Assert(instance != null,"Use Create to instantiate a class of CCApplication first.");
 #else
-                    instance = new CCApplication (new CCGame());
+                    instance = new CCApplication (new CCGame(), false, new CCSize(960, 640));
 #endif
                 }
 
@@ -232,7 +241,6 @@ namespace CocosSharp
         public bool HandleMediaStateAutomatically { get; set; }
         public CCDisplayOrientation CurrentOrientation { get; private set; }
         public CCApplicationDelegate ApplicationDelegate { get; set; }
-
         public CCActionManager ActionManager { get; private set; }
         public CCScheduler Scheduler { get; private set; }
 
@@ -241,130 +249,11 @@ namespace CocosSharp
             get { return paused; }
         }
 
-        public bool AllowUserResizing
-        {
-            get { return Game.Window.AllowUserResizing; }
-            set { Game.Window.AllowUserResizing = value; }
-        }
-
-        public bool IsFullScreen 
-        { 
-            get 
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null)
-                    return manager.IsFullScreen;
-
-                return false;
-            }
-            set
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null)
-                {
-                    manager.IsFullScreen = value;
-                }
-            }
-        }
-
-        public bool PreferMultiSampling 
-        { 
-            get 
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null) 
-                    return manager.PreferMultiSampling;
-
-                return false;
-            }
-            set
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null)
-                {
-                    manager.PreferMultiSampling = value;
-                }
-            }
-        }
-
-        public int PreferredBackBufferWidth 
-        { 
-            get 
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null) 
-                    return manager.PreferredBackBufferWidth;
-
-                return 0;
-            }
-            set
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null)
-                {
-                    manager.PreferredBackBufferWidth = value;
-                    CCDrawManager.UpdatePresentationParameters();
-                }
-
-            }
-        }
-
-        public int PreferredBackBufferHeight 
-        { 
-            get 
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null) 
-                    return manager.PreferredBackBufferHeight;
-
-                return 0;
-            }
-            set
-            {
-                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
-                var manager = service as GraphicsDeviceManager;
-
-                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
-                if (manager != null)
-                {
-                    manager.PreferredBackBufferHeight = value;
-                    CCDrawManager.UpdatePresentationParameters();
-                }
-            }
-        }
-
         // The time, which expressed in seconds, between current frame and next
         public virtual double AnimationInterval
         {
             get { return Game.TargetElapsedTime.Milliseconds / 10000000f; }
             set { Game.TargetElapsedTime = TimeSpan.FromTicks((int) (value * 10000000)); }
-        }
-
-        public CCDisplayOrientation SupportedOrientations
-        {
-            get { return CCDrawManager.SupportedOrientations; }
-            set { CCDrawManager.SupportedOrientations = value; }
         }
 
         public string ContentRootDirectory
@@ -385,7 +274,21 @@ namespace CocosSharp
             set { CCContentManager.SharedContentManager.SearchResolutionsOrder = value; }
         }
 
-        public CCDirector MainWindowDirector { get { return mainWindow.Director; } }
+        // Remove once multiple window support added
+        public CCWindow MainWindow
+        {
+            get 
+            {
+                if (mainWindow == null) 
+                {
+                    CCSize windowSize 
+                        = new CCSize(xnaDeviceManager.PreferredBackBufferWidth, xnaDeviceManager.PreferredBackBufferHeight);
+                    mainWindow = AddWindow(windowSize);
+                }
+
+                return mainWindow;
+            }
+        }
 
         public CCParticleSystemCache ParticleSystemCache 
         { 
@@ -464,7 +367,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCApplication(CCGame game)
+        public CCApplication(CCGame game, bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize))
             : base(game)
         {
             GameTime = new CCGameTime();
@@ -495,7 +398,7 @@ namespace CocosSharp
                 }
             }
 
-            CCDrawManager.GraphicsDeviceService = service;
+            xnaDeviceManager = (GraphicsDeviceManager)service;
 
             Content = game.Content;
             HandleMediaStateAutomatically = true;
@@ -511,10 +414,52 @@ namespace CocosSharp
 
             game.Components.Add(this);
 
-            CCDrawManager.InitializeDisplay(game, (GraphicsDeviceManager)service);
+            gameWindows = new List<CCWindow>();
+
+            InitializeMainWindow(mainWindowSizeInPixels, isFullScreen);
         }
 
         #endregion Constructors
+
+
+        #region Game window management
+
+        void InitializeMainWindow(CCSize windowSizeInPixels=default(CCSize), bool isFullscreen=true)
+        {
+            if (isFullscreen) 
+            {
+                windowSizeInPixels.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                windowSizeInPixels.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+            }
+
+            xnaDeviceManager.IsFullScreen = isFullscreen;
+
+            if(CCDrawManager.SharedDrawManager == null) 
+            {
+                CCDrawManager.SharedDrawManager = new CCDrawManager(xnaDeviceManager, windowSizeInPixels);
+            }
+
+        }
+
+        #if !(IOS || ANDROID || WINDOWS_PHONE)
+        #endif
+
+        // Make public once multiple window support added
+        CCWindow AddWindow(CCSize screenSizeInPixels)
+        {
+            CCWindow window = new CCWindow(screenSizeInPixels, xnaGame.Window, xnaDeviceManager);
+
+            gameWindows.Add(window);
+
+            return window;
+        }
+
+        void RemoveWindow(CCWindow window)
+        {
+            // TBA once multiple window support added
+        }
+
+        #endregion Game window management
 
 
         #region Cleaning up
@@ -575,7 +520,10 @@ namespace CocosSharp
 
         public void ExitGame()
         {
-            MainWindowDirector.End();
+            foreach (CCWindow window in gameWindows) 
+            {
+                window.EndAllSceneDirectors();
+            }
 #if (WINDOWS && !WINRT) || WINDOWSGL || WINDOWSDX || MACOS
             xnaGame.Exit();
 #endif
@@ -642,7 +590,10 @@ namespace CocosSharp
 
         void GameExiting(object sender, EventArgs e)
         {
-            MainWindowDirector.End();
+            foreach (CCWindow window in gameWindows) 
+            {
+                window.EndAllSceneDirectors();
+            }
         }
 
         public void ClearTouches()
@@ -674,12 +625,6 @@ namespace CocosSharp
         {
             InitInstance();
 
-            CCDirector mainWindowDirector = new CCDisplayLinkDirector();
-            mainWindow = new CCWindow(mainWindowDirector, xnaGame.Window);
-
-			// Statistics is initialized in here and needs access to the director.
-			mainWindowDirector.SetOpenGlView();
-
             base.Initialize();
         }
 
@@ -692,40 +637,47 @@ namespace CocosSharp
             GameTime.TotalGameTime = gameTime.TotalGameTime;
 
             #if !NETFX_CORE
-            if (MainWindowDirector.Accelerometer != null 
-                && MainWindowDirector.Accelerometer.Enabled
-                && MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
+            foreach(CCWindow window in gameWindows)
             {
-                MainWindowDirector.Accelerometer.Update();
+                if (window.Accelerometer != null 
+                    && window.Accelerometer.Enabled
+                    && window.EventDispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
+                {
+                    window.Accelerometer.Update();
+                }
             }
+
             #endif
 
-            ProcessTouch();
 
-            if (MainWindowDirector.GamePadEnabled)
+            foreach(CCWindow window in gameWindows) 
             {
-                ProcessGamePad();
-            }
+                ProcessTouch(window);
 
-            ProcessKeyboard();
-
-            ProcessMouse();
-
-            if (!paused)
-            {
-                if (isNextDeltaTimeZero)
+                if(window.GamePadEnabled) 
                 {
-                    deltaTime = 0;
-                    isNextDeltaTimeZero = false;
-                }
-                else
-                {
-                    deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    ProcessGamePad(window);
                 }
 
-                Scheduler.Update(deltaTime);
+                ProcessKeyboard(window);
+                ProcessMouse(window);
 
-                MainWindowDirector.Update(deltaTime);
+                if(!paused)
+                {
+                    if (isNextDeltaTimeZero)
+                    {
+                        deltaTime = 0;
+                        isNextDeltaTimeZero = false;
+                    }
+                    else
+                    {
+                        deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    }
+
+                    Scheduler.Update(deltaTime);
+
+                    window.Update(deltaTime);
+                }
             }
 
             base.Update(gameTime);
@@ -739,13 +691,16 @@ namespace CocosSharp
             GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
             GameTime.TotalGameTime = gameTime.TotalGameTime;
 
-            CCDrawManager.BeginDraw();
+            foreach (CCWindow window in gameWindows) 
+            {
+                window.DrawManager.BeginDraw();
 
-            MainWindowDirector.MainLoop(GameTime);
+                window.MainLoop(GameTime);
+
+                window.DrawManager.EndDraw();
+            }
 
             base.Draw(gameTime);
-
-            CCDrawManager.EndDraw();
         }
 
         public void ToggleFullScreen()
@@ -768,9 +723,9 @@ namespace CocosSharp
 
         #region GamePad Support
 
-        void ProcessGamePad (GamePadState gps, PlayerIndex player)
+        void ProcessGamePad (CCWindow window, GamePadState gps, PlayerIndex player)
         {
-            var dispatcher = MainWindowDirector.EventDispatcher;
+            var dispatcher = window.EventDispatcher;
 
             var lastState = new GamePadState ();
 
@@ -778,7 +733,7 @@ namespace CocosSharp
             {
                 gamePadConnection.IsConnected = true;
                 gamePadConnection.Player = (CCPlayerIndex)player;
-                dispatcher.DispatchEvent (gamePadConnection);
+                dispatcher.DispatchEvent(gamePadConnection);
 
             }
 
@@ -790,7 +745,7 @@ namespace CocosSharp
                 {
                     gamePadConnection.IsConnected = false;
                     gamePadConnection.Player = (CCPlayerIndex)player;
-                    dispatcher.DispatchEvent (gamePadConnection);
+                    dispatcher.DispatchEvent(gamePadConnection);
 
                 }
                 // TODO: Check button pressed/released status for button tap events.
@@ -950,11 +905,11 @@ namespace CocosSharp
             priorGamePadState [player] = gps;
         }
 
-        void ProcessGamePad()
+        void ProcessGamePad(CCWindow window)
         {
 
-            if (MainWindowDirector.GamePadEnabled &&
-                MainWindowDirector.EventDispatcher.IsEventListenersFor (CCEventListenerGamePad.LISTENER_ID)) 
+            if (window.GamePadEnabled &&
+                window.EventDispatcher.IsEventListenersFor (CCEventListenerGamePad.LISTENER_ID)) 
             {
 
                 // On Android, the gamepad is always connected.
@@ -962,10 +917,10 @@ namespace CocosSharp
                 GamePadState gps2 = GamePad.GetState (PlayerIndex.Two);
                 GamePadState gps3 = GamePad.GetState (PlayerIndex.Three);
                 GamePadState gps4 = GamePad.GetState (PlayerIndex.Four);
-                ProcessGamePad (gps1, PlayerIndex.One);
-                ProcessGamePad (gps2, PlayerIndex.Two);
-                ProcessGamePad (gps3, PlayerIndex.Three);
-                ProcessGamePad (gps4, PlayerIndex.Four);
+                ProcessGamePad (window, gps1, PlayerIndex.One);
+                ProcessGamePad (window, gps2, PlayerIndex.Two);
+                ProcessGamePad (window, gps3, PlayerIndex.Three);
+                ProcessGamePad (window, gps4, PlayerIndex.Four);
             }
         }
 
@@ -974,12 +929,12 @@ namespace CocosSharp
 
         #region Keyboard support
 
-        void ProcessKeyboard()
+        void ProcessKeyboard(CCWindow window)
         {
             // Read the current keyboard state
             KeyboardState currentKeyboardState = Keyboard.GetState();
 
-            var dispatcher = MainWindowDirector.EventDispatcher;
+            var dispatcher = window.EventDispatcher;
 
             if (currentKeyboardState == priorKeyboardState || !dispatcher.IsEventListenersFor(CCEventListenerKeyboard.LISTENER_ID) )
             {
@@ -1032,12 +987,12 @@ namespace CocosSharp
 
         #region Mouse support
 
-        void ProcessMouse()
+        void ProcessMouse(CCWindow window)
         {
             // Read the current Mouse state
             MouseState currentMouseState = Mouse.GetState();
 
-            var dispatcher = MainWindowDirector.EventDispatcher;
+            var dispatcher = window.EventDispatcher;
 
             if (currentMouseState == priorMouseState || !dispatcher.IsEventListenersFor(CCEventListenerMouse.LISTENER_ID) )
             {
@@ -1046,24 +1001,11 @@ namespace CocosSharp
             }
 
 
-            CCPoint pos;
-            int posX = 0;
-            int posY = 0;
-
-            #if NETFX_CORE
-            pos = TransformPoint(priorMouseState.X, priorMouseState.Y);
-            pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
-            #else
-            pos = CCDrawManager.ScreenToWorld(priorMouseState.X, priorMouseState.Y);
-            #endif
-
-            // We will only do the cast once.
-            posX = (int)pos.X;
-            posY = (int)pos.Y;
+            CCPoint pos = new CCPoint(priorMouseState.X, priorMouseState.Y);
 
             var mouseEvent = new CCEventMouse (CCMouseEventType.MOUSE_MOVE);
-            mouseEvent.CursorX = posX;
-            mouseEvent.CursorY = posY;
+            mouseEvent.CursorX = pos.X;
+            mouseEvent.CursorY = pos.Y;
 
             dispatcher.DispatchEvent (mouseEvent);
 
@@ -1150,17 +1092,16 @@ namespace CocosSharp
             return newPoint;
         }
 
-        void ProcessTouch()
+        void ProcessTouch(CCWindow window)
         {
-            if (MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
-                || MainWindowDirector.EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
+            if (window.EventDispatcher.IsEventListenersFor(CCEventListenerTouchOneByOne.LISTENER_ID)
+                || window.EventDispatcher.IsEventListenersFor(CCEventListenerTouchAllAtOnce.LISTENER_ID))
             {
                 newTouches.Clear();
                 movedTouches.Clear();
                 endedTouches.Clear();
 
-                CCRect viewPort = CCDrawManager.ViewPortRect;
-                CCPoint pos;
+                CCPoint pos = new CCPoint(lastMouseState.X, lastMouseState.Y);
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
@@ -1170,12 +1111,6 @@ namespace CocosSharp
 
                 if (prevMouseState.LeftButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed)
                 {
-                #if NETFX_CORE
-                    pos = TransformPoint(lastMouseState.X, lastMouseState.Y);
-                    pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
-                #else
-                    pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
-                #endif
                     lastMouseId++;
                     touches.AddLast(new CCTouch(lastMouseId, pos.X, pos.Y));
                     touchMap.Add(lastMouseId, touches.Last);
@@ -1187,12 +1122,6 @@ namespace CocosSharp
                     {
                         if (prevMouseState.X != lastMouseState.X || prevMouseState.Y != lastMouseState.Y)
                         {
-                #if NETFX_CORE
-                            pos = TransformPoint(lastMouseState.X, lastMouseState.Y);
-                            pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
-                #else
-                            pos = CCDrawManager.ScreenToWorld(lastMouseState.X, lastMouseState.Y);
-                #endif
                             movedTouches.Add(touchMap[lastMouseId].Value);
                             touchMap[lastMouseId].Value.SetTouchInfo(lastMouseId, pos.X, pos.Y);
                         }
@@ -1221,22 +1150,19 @@ namespace CocosSharp
                                 break;
                             }
 
-                            if (viewPort.ContainsPoint(touch.Position.X, touch.Position.Y))
-                            {
-                                pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
+                            pos = new CCPoint(touch.Position.X, touch.Position.Y);
 
-                                touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
-                                touchMap.Add(touch.Id, touches.Last);
-                                newTouches.Add(touches.Last.Value);
-                            }
+                            touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
+                            touchMap.Add(touch.Id, touches.Last);
+                            newTouches.Add(touches.Last.Value);
                             break;
 
                         case TouchLocationState.Moved:
                             LinkedListNode<CCTouch> existingTouch;
                             if (touchMap.TryGetValue(touch.Id, out existingTouch))
                             {
-                                pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
-                                var delta = existingTouch.Value.LocationInView - pos;
+                                pos = new CCPoint(touch.Position.X, touch.Position.Y);
+                                var delta = existingTouch.Value.LocationOnScreen - pos;
                                 if (delta.LengthSQ > 1.0f)
                                 {
                                     movedTouches.Add(existingTouch.Value);
@@ -1264,21 +1190,21 @@ namespace CocosSharp
                 {
                     touchEvent.Touches = newTouches;
                     //m_pDelegate.TouchesBegan(newTouches);
-                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    window.EventDispatcher.DispatchEvent(touchEvent);
                 }
 
                 if (movedTouches.Count > 0)
                 {
                     touchEvent.EventCode = CCEventCode.MOVED;
                     touchEvent.Touches = movedTouches;
-                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    window.EventDispatcher.DispatchEvent(touchEvent);
                 }
 
                 if (endedTouches.Count > 0)
                 {
                     touchEvent.EventCode = CCEventCode.ENDED;
                     touchEvent.Touches = endedTouches;
-                    MainWindowDirector.EventDispatcher.DispatchEvent(touchEvent);
+                    window.EventDispatcher.DispatchEvent(touchEvent);
                 }
             }
         }
