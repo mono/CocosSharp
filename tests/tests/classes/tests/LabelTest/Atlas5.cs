@@ -8,16 +8,23 @@ namespace tests
 {
     public class Atlas5 : AtlasDemo
     {
+		CCLabelBMFont label;
+
         public Atlas5()
         {
-			var label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
+			label = new CCLabelBMFont("abcdefg", "fonts/bitmapFontTest4.fnt");
             AddChild(label);
-
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
-			label.Position = s.Center;
 			label.AnchorPoint = CCPoint.AnchorMiddle;
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+			var s = windowSize;
+
+			label.Position = s.Center;		
+		}
+
         public override string title()
 		{
             return "CCLabelBMFont";

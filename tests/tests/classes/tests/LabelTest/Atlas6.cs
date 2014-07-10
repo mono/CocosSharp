@@ -7,26 +7,35 @@ namespace tests
 {
     public class Atlas6 : AtlasDemo
     {
+
+		CCLabelBMFont label1, label2, label3;
+
         public Atlas6()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            label1 = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
+            AddChild(label1);
+            label1.AnchorPoint = CCPoint.AnchorMiddle;
 
-            CCLabelBMFont label = null;
-            label = new CCLabelBMFont("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
-            label.AnchorPoint = CCPoint.AnchorMiddle;
+            label2 = new CCLabelBMFont("fafefifofu", "fonts/bitmapFontTest5.fnt");
+            AddChild(label2);
+            label2.AnchorPoint = CCPoint.AnchorMiddle;
 
-            label = new CCLabelBMFont("fafefifofu", "fonts/bitmapFontTest5.fnt");
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height / 2);
-            label.AnchorPoint = CCPoint.AnchorMiddle;
-
-            label = new CCLabelBMFont("aeiou", "fonts/bitmapFontTest5.fnt");
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
-            label.AnchorPoint = CCPoint.AnchorMiddle;
+            label3 = new CCLabelBMFont("aeiou", "fonts/bitmapFontTest5.fnt");
+            AddChild(label3);
+            label3.AnchorPoint = CCPoint.AnchorMiddle;
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var s = windowSize;
+
+			label1.Position = new CCPoint(s.Width / 2, s.Height / 2 + 50);
+			label2.Position = s.Center;
+			label3.Position = new CCPoint(s.Width / 2, s.Height / 2 - 50);
+
+		}
 
         public override string title()
         {
