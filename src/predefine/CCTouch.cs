@@ -35,38 +35,21 @@ namespace CocosSharp
             m_prevPoint = new CCPoint(x, y);
         }
 
-        /** returns the start touch location in OpenGL coordinates */
-        public CCPoint StartLocation
-        {
-            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_startPoint); }
-        }
-
-        public CCPoint LocationInView
+        public CCPoint LocationOnScreen
         {
             get { return m_point; }
         }
 
         /** returns the start touch location in screen coordinates */
-        public CCPoint StartLocationInView
+        public CCPoint StartLocatiOnScreen
         {
             get { return m_startPoint; }
         }
 
-        public CCPoint PreviousLocationInView
+        public CCPoint PreviousLocationOnScreen
         {
             get { return m_prevPoint; }
         }
-
-        public CCPoint Location
-        {
-            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_point); }
-        }
-
-        public CCPoint PreviousLocation
-        {
-            get { return CCApplication.SharedApplication.MainWindowDirector.ConvertToGl(m_prevPoint); }
-        }
-
 
         public int Id
         {
@@ -75,7 +58,7 @@ namespace CocosSharp
 
         public CCPoint Delta
         {
-            get { return Location - PreviousLocation; }
+            get { return LocationOnScreen - PreviousLocationOnScreen; }
         }
 
         public void SetTouchInfo(int id, float x, float y)
