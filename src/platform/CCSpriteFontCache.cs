@@ -8,80 +8,81 @@ namespace CocosSharp
 {
     public class CCSpriteFontCache
     {
-		#region Structs
+        #region Structs
 
-		struct FontMapEntry
+        struct FontMapEntry
         {
             public string FontName;
             public float FontSize;
         }
 
-		#endregion Structs
+        #endregion Structs
 
+        public static string DefaultFont = "arial";
 
-		static CCSpriteFontCache instance = new CCSpriteFontCache();
-		static ContentManager contentManager;
+        static CCSpriteFontCache instance = new CCSpriteFontCache();
+        static ContentManager contentManager;
         public static string FontRoot = "fonts";
 
-		static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
-		static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
-
- 
-		#region Properties
-
-		public static CCSpriteFontCache SharedInstance
-		{
-			get { return instance; }
-		}
-
-		public static float FontScale { get; set; }
-
-		public SpriteFont this[string fontName]
-		{
-			get 
-			{
-				try 
-				{
-					return contentManager.Load<SpriteFont> (fontName);
-				} 
-				catch (Exception) 
-				{
-					CCLog.Log ("Can't find font known as {0}. Please check your file name.", fontName);
-					return null;
-				}
-			}
-		}
-
-		#endregion Properties
+        static Dictionary<string, int[]> registeredFonts = new Dictionary<string, int[]>(StringComparer.OrdinalIgnoreCase);
+        static Dictionary<string, FontMapEntry> loadedFontsMap = new Dictionary<string, FontMapEntry>();
 
 
-		#region Constructors
+        #region Properties
+
+        public static CCSpriteFontCache SharedInstance
+        {
+            get { return instance; }
+        }
+
+        public static float FontScale { get; set; }
+
+        public SpriteFont this[string fontName]
+        {
+            get 
+            {
+                try 
+                {
+                    return contentManager.Load<SpriteFont> (fontName);
+                } 
+                catch (Exception) 
+                {
+                    CCLog.Log ("Can't find font known as {0}. Please check your file name.", fontName);
+                    return null;
+                }
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         static CCSpriteFontCache()
         {
             var cm = CCApplication.SharedApplication.Content;
             contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
-			FontScale = 1.0f;
+            FontScale = 1.0f;
         }
 
-		CCSpriteFontCache()
-		{
-			// You don't create this, we do.
-		}
+        CCSpriteFontCache()
+        {
+            // You don't create this, we do.
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
-		public static void RegisterFont(string fontName, params int[] sizes)
-		{
-			Array.Sort(sizes);
-			registeredFonts[fontName] = sizes;
-		}
+        public static void RegisterFont(string fontName, params int[] sizes)
+        {
+            Array.Sort(sizes);
+            registeredFonts[fontName] = sizes;
+        }
 
-		public void Clear()
-		{
-			contentManager.Unload();
-			loadedFontsMap.Clear();
-		}
+        public void Clear()
+        {
+            contentManager.Unload();
+            loadedFontsMap.Clear();
+        }
 
         string FontKey(string fontName, float fontSize)
         {
@@ -92,10 +93,10 @@ namespace CocosSharp
             return String.Format("{0}-{1}", fontName, fontSize);
         }
 
-		internal SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
+        internal SpriteFont TryLoadFont(string fontName, float fontSize, out float loadedSize)
         {
             var key = FontKey(fontName, fontSize);
-            
+
             if (loadedFontsMap.ContainsKey(key))
             {
                 //Already loaded
@@ -118,10 +119,10 @@ namespace CocosSharp
             //Try Default Font
             if (result == null)
             {
-                CCLog.Log("Can't find {0}, use system default ({1})", fontName, CCDrawManager.DefaultFont);
+                CCLog.Log("Can't find {0}, use system default ({1})", fontName, DefaultFont);
                 try
                 {
-                    loadedName = CCDrawManager.DefaultFont;
+                    loadedName = DefaultFont;
                     result = InternalLoadFont(loadedName, fontSize, out loadedSize);
                 }
                 catch (ContentLoadException)

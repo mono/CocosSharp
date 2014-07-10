@@ -26,27 +26,30 @@ namespace CocosSharp
         int lineVertsCount;
         int triangleVertsCount;
 
+        #region Properties
+
+        public CCDrawManager DrawManager { get; set; }
+
+        #endregion Properties
+
 
 		#region Constructors
 
-        public CCPrimitiveBatch(GraphicsDevice graphicsDevice)
-            : this(graphicsDevice, DefaultBufferSize)
+        public CCPrimitiveBatch(CCDrawManager drawManager, int bufferSize=DefaultBufferSize)
         {
-        }
+            DrawManager = drawManager;
 
-        public CCPrimitiveBatch(GraphicsDevice graphicsDevice, int bufferSize)
-        {
-            if (graphicsDevice == null)
+            if (drawManager.XnaGraphicsDevice == null)
             {
                 throw new ArgumentNullException("graphicsDevice");
             }
-            device = graphicsDevice;
+            device = drawManager.XnaGraphicsDevice;
 
             triangleVertices = new VertexPositionColor[bufferSize - bufferSize % 3];
             lineVertices = new VertexPositionColor[bufferSize - bufferSize % 2];
 
             // set up a new basic effect, and enable vertex colors.
-            basicEffect = new BasicEffect(graphicsDevice);
+            basicEffect = new BasicEffect(drawManager.XnaGraphicsDevice);
             basicEffect.VertexColorEnabled = true;
         }
 
@@ -99,9 +102,9 @@ namespace CocosSharp
 
         public void UpdateMatrix()
         {
-            basicEffect.Projection = CCDrawManager.ProjectionMatrix; ;
-            basicEffect.View = CCDrawManager.ViewMatrix;
-            basicEffect.World = CCDrawManager.WorldMatrix;
+            basicEffect.Projection = DrawManager.ProjectionMatrix; ;
+            basicEffect.View = DrawManager.ViewMatrix;
+            basicEffect.World = DrawManager.WorldMatrix;
             basicEffect.CurrentTechnique.Passes[0].Apply();
         }
 
@@ -187,7 +190,7 @@ namespace CocosSharp
                 device.DrawUserPrimitives(PrimitiveType.TriangleList, triangleVertices, 0, primitiveCount);
                 triangleVertsCount -= primitiveCount * 3;
 
-                CCDrawManager.DrawCount++;
+                DrawManager.DrawCount++;
             }
         }
 
@@ -210,7 +213,7 @@ namespace CocosSharp
                 device.DrawUserPrimitives(PrimitiveType.LineList, lineVertices, 0, primitiveCount);
                 lineVertsCount -= primitiveCount * 2;
 
-                CCDrawManager.DrawCount++;
+                DrawManager.DrawCount++;
             }
         }
     }

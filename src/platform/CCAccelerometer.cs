@@ -31,7 +31,7 @@ namespace CocosSharp
 
         #region Properties
 
-        public CCDirector Director { get; set; }
+        public CCWindow Window { get; set; }
 
         bool Active { get; set; }
         bool Emulating { get; set; }
@@ -101,9 +101,9 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCAccelerometer(CCDirector director)
+        public CCAccelerometer(CCWindow window)
         {
-            Director = director;
+            Window = window;
 
             #if !WINDOWS && !OUYA && !NETFX_CORE && !MACOS && !WINDOWSGL
             try
@@ -193,7 +193,7 @@ namespace CocosSharp
 
         public void Update()
         {
-            var dispatcher = Director.EventDispatcher;
+            var dispatcher = Window.EventDispatcher;
             if (dispatcher.IsEventListenersFor(CCEventListenerAccelerometer.LISTENER_ID))
             {
                 if (Emulating)
