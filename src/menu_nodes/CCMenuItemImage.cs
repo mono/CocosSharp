@@ -5,10 +5,10 @@ namespace CocosSharp
 {
     public class CCMenuItemImage : CCMenuItem
     {
-        // To avoid continuously checking for null when selecting/enabling, we set the CCSprites to default values
-        CCSprite disabledImage = new CCSprite();
-        CCSprite normalImage = new CCSprite();
-        CCSprite selectedImage = new CCSprite();
+        CCSprite disabledImage;
+        CCSprite normalImage;
+        CCSprite selectedImage;
+        CCSprite visibleMenuItemSprite;
 
         CCPoint originalScale;
 
@@ -20,28 +20,17 @@ namespace CocosSharp
             get { return normalImage; }
             set
             {
-                if (value == null) 
+                if (value != null && normalImage != value) 
                 {
-                    value = new CCSprite();
+                    normalImage = value;
+                    UpdateVisibleMenuItemSprite();
                 }
-
-                AddChild(value);
-                value.AnchorPoint = new CCPoint(0, 0);
-                ContentSize = value.ContentSize;
-
-                if (normalImage != null)
-                {
-                    RemoveChild(normalImage, true);
-                }
-
-                normalImage = value;
-                UpdateImagesVisibility();
             }
         }
 
         public CCSpriteFrame NormalImageSpriteFrame
         {
-            set { NormalImage = (value == null) ? new CCSprite() : new CCSprite(value); }
+            set { NormalImage = (value == null) ? new CCSprite() : new CCSprite(value.ContentSize, value); }
         }
 
         public CCSprite SelectedImage
@@ -49,27 +38,17 @@ namespace CocosSharp
             get { return selectedImage; }
             set
             {
-                if (value == null) 
+                if (value != null && selectedImage != value) 
                 {
-                    value = new CCSprite(NormalImage.Texture);
+                    selectedImage = value;
+                    UpdateVisibleMenuItemSprite();
                 }
-
-                AddChild(value);
-                value.AnchorPoint = new CCPoint(0, 0);
-
-                if (selectedImage != null)
-                {
-                    RemoveChild(selectedImage, true);
-                }
-
-                selectedImage = value;
-                UpdateImagesVisibility();
             }
         }
 
         public CCSpriteFrame SelectedImageSpriteFrame
         {
-            set { SelectedImage = (value == null) ? new CCSprite() : new CCSprite(value); }
+            set { SelectedImage = (value == null) ? new CCSprite() : new CCSprite(value.ContentSize, value); }
         }
 
         public CCSprite DisabledImage
@@ -77,27 +56,17 @@ namespace CocosSharp
             get { return disabledImage; }
             set
             {
-                if (value == null) 
+                if (value != null && disabledImage != value) 
                 {
-                    value = new CCSprite(NormalImage.Texture);
+                    disabledImage = value;
+                    UpdateVisibleMenuItemSprite();
                 }
-
-                AddChild(value);
-                value.AnchorPoint = new CCPoint(0, 0);
-
-                if (disabledImage != null)
-                {
-                    RemoveChild(disabledImage, true);
-                }
-
-                disabledImage = value;
-                UpdateImagesVisibility();
             }
         }
 
         public CCSpriteFrame DisabledImageSpriteFrame
         {
-            set { DisabledImage = (value == null) ? new CCSprite() : new CCSprite(value); }
+            set { DisabledImage = (value == null) ? new CCSprite() : new CCSprite(value.ContentSize, value); }
         }
 
         public override bool Enabled
@@ -106,7 +75,7 @@ namespace CocosSharp
             set
             {
                 base.Enabled = value;
-                UpdateImagesVisibility();
+                UpdateVisibleMenuItemSprite();
             }
         }
 
@@ -120,7 +89,7 @@ namespace CocosSharp
             set 
             {
                 base.Selected = value;
-                UpdateImagesVisibility();
+                UpdateVisibleMenuItemSprite();
 
                 if (Selected && (ZoomActionState == null || ZoomActionState.IsDone)) 
                 {
@@ -148,7 +117,6 @@ namespace CocosSharp
 
         #region Constructors
 
-        // Used for menu item image loader
         public CCMenuItemImage() : this(new CCSprite())
         {
         }
@@ -158,6 +126,8 @@ namespace CocosSharp
         {
             Debug.Assert(normalSprite != null, "NormalImage cannot be null");
 
+            visibleMenuItemSprite = new CCSprite();
+
             NormalImage = normalSprite;
             SelectedImage = selectedSprite;
             DisabledImage = disabledSprite;
@@ -165,11 +135,11 @@ namespace CocosSharp
             originalScale.X = ScaleX;
             originalScale.Y = ScaleY;
 
-            ContentSize = NormalImage.ContentSize;
-
             IsColorCascaded = true;
             IsOpacityCascaded = true;
             ZoomBehaviorOnTouch = true;
+
+            AddChild (visibleMenuItemSprite);
         }
 
         public CCMenuItemImage(CCSprite normalSprite, CCSprite selectedSprite, Action<object> target = null)
@@ -199,6 +169,10 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        protected override void UpdateTransform ()
+        {
+            base.UpdateTransform ();
+        }
 
         public override void Activate()
         {
@@ -214,29 +188,34 @@ namespace CocosSharp
             }
         }
 
-        void UpdateImagesVisibility()
+        void UpdateVisibleMenuItemSprite()
         {
-            if (Enabled)
-            {
-                disabledImage.Visible = false;
+            if (normalImage == null)
+                return;
 
-                if (Selected) 
-                {
-                    normalImage.Visible = false; 
-                    selectedImage.Visible = true;
-                }
-                else
-                {
-                    normalImage.Visible = true;
-                    selectedImage.Visible = false;
-                }
-            }
-            else
+            CCSprite menuItemSprite = null;
+
+            if(Selected) 
             {
-                disabledImage.Visible = true;
-                normalImage.Visible = false;
-                selectedImage.Visible = false;
+                menuItemSprite = selectedImage;
             }
+
+            if(Enabled == false && menuItemSprite == null) 
+            {
+                menuItemSprite = disabledImage;
+            }
+
+            if (menuItemSprite == null) 
+            {
+                menuItemSprite = normalImage;
+            }
+
+            visibleMenuItemSprite.ContentSize = menuItemSprite.ContentSize;
+            visibleMenuItemSprite.Texture = menuItemSprite.Texture;
+            visibleMenuItemSprite.TextureRectInPixels = menuItemSprite.TextureRectInPixels;
+            visibleMenuItemSprite.IsTextureRectRotated = menuItemSprite.IsTextureRectRotated;
+
+            ContentSize = visibleMenuItemSprite.ContentSize;
         }
     }
 }

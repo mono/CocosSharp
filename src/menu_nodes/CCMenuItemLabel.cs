@@ -100,8 +100,8 @@ namespace CocosSharp
                 LabelWillChange(label, value);
                 label = value;
 
-                if(label !=null && Director != null)
-                    label.Director = Director;
+                if(label !=null && Window != null)
+                    label.Window = Window;
             }
         }
 
@@ -126,16 +126,16 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (value != null && Label != null)
                 {
-                    Label.Director = value;
+                    Label.Scene = value;
                 }
             }
         }
@@ -169,8 +169,8 @@ namespace CocosSharp
                 LabelWillChange(labelAtlas, value);
                 labelAtlas = value;
 
-                if(labelAtlas != null && Director != null)
-                    labelAtlas.Director = Director;
+                if(labelAtlas != null && Window != null)
+                    labelAtlas.Window = Window;
             }
         }
 
@@ -195,16 +195,16 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (value != null && LabelAtlas != null)
                 {
-                    LabelAtlas.Director = value;
+                    LabelAtlas.Scene = value;
                 }
             }
         }
@@ -253,8 +253,8 @@ namespace CocosSharp
                 LabelWillChange(labelTTF, value);
                 labelTTF = value;
 
-                if(labelTTF != null && Director != null)
-                    labelTTF.Director = Director;
+                if(labelTTF != null && Window != null)
+                    labelTTF.Window = Window;
             }
         }
 
@@ -279,16 +279,16 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (value != null && LabelTTF != null)
                 {
-                    LabelTTF.Director = value;
+                    LabelTTF.Scene = value;
                 }
             }
         }
@@ -328,8 +328,8 @@ namespace CocosSharp
                 LabelWillChange(labelBMFont, value);
                 labelBMFont = value;
 
-                if(labelBMFont != null && Director != null)
-                    labelBMFont.Director = Director;
+                if(labelBMFont != null && Window != null)
+                    labelBMFont.Window = Window;
             }
         }
 
@@ -354,16 +354,16 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (value != null && LabelBMFont != null)
                 {
-                    LabelBMFont.Director = value;
+                    LabelBMFont.Scene = value;
                 }
             }
         }

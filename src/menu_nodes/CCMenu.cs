@@ -101,22 +101,12 @@ namespace CocosSharp
 
         #region Setup content
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        protected override void AddedToNewScene()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.AddedToNewScene();
 
-            if (Director != null)
+            if (Scene != null)
             {
-
-                CCSize contentSize = windowSize;
-
-				// If the position has already been set then we need to respect 
-				// that position
-				if (!IsTransformDirty)
-					Position = contentSize.Center;
-
-                ContentSize = contentSize;
-
                 var touchListener = new CCEventListenerTouchOneByOne();
                 touchListener.IsSwallowTouches = true;
 
@@ -186,7 +176,7 @@ namespace CocosSharp
         protected virtual CCMenuItem ItemForTouch(CCTouch touch)
         {
             CCMenuItem touchedMenuItem = null;
-            CCPoint touchLocation = touch.Location;
+            CCPoint touchLocation = Scene.ScreenToWorldspace(touch.LocationOnScreen);
 
             if (menuItems != null && menuItems.Count > 0)
             {
@@ -194,11 +184,9 @@ namespace CocosSharp
                 {
                     if (menuItem != null && menuItem.Visible && menuItem.Enabled)
                     {
-                        CCPoint local = menuItem.ConvertToNodeSpace(touchLocation);
-                        CCRect r = menuItem.Rectangle;
-                        r.Origin = CCPoint.Zero;
+                        CCRect r = menuItem.TransformedBoundingBoxWorldspace;
 
-                        if (r.ContainsPoint(local))
+                        if (r.ContainsPoint(touchLocation))
                         {
                             touchedMenuItem = menuItem;
                             break;

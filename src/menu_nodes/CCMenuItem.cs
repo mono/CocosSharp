@@ -15,21 +15,6 @@ namespace CocosSharp
         public virtual bool Selected { get; set; }
         public Action<object> Target { get; set; }
 
-        /// <summary>
-        /// Returns the outside box
-        /// </summary>
-        /// <returns></returns>
-        public CCRect Rectangle
-        {
-            get 
-            {
-                return new CCRect (Position.X - ContentSize.Width * AnchorPoint.X,
-                    Position.Y - ContentSize.Height * AnchorPoint.Y,
-                    ContentSize.Width,
-                    ContentSize.Height);
-            }
-        }
-
         protected CCActionState ZoomActionState { get; set; }
 
         #endregion Properties
@@ -49,7 +34,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
 
         public virtual void Activate()
         {

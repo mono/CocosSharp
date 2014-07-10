@@ -66,18 +66,18 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if(value != null && subItems !=null)
                 {
                     foreach(CCMenuItem item in subItems) 
                     {
-                        item.Director = value;
+                        item.Scene = value;
                     }
                 }
             }
@@ -122,8 +122,8 @@ namespace CocosSharp
             foreach(CCMenuItem item in items) 
             {
                 subItems.Add(item);
-                if (Director != null)
-                    item.Director = Director;
+                if (Window != null)
+                    item.Window = Window;
             }
         }
 
