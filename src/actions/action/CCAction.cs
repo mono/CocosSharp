@@ -44,7 +44,7 @@ namespace CocosSharp
 
 		public CCAction Action { get; protected set; }
 
-		protected CCDirector Director { get; private set; }
+        protected CCScene Scene { get; private set; }
 
 		public CCActionState (CCAction action, CCNode target)
 		{
@@ -52,7 +52,7 @@ namespace CocosSharp
 			this.Target = target;
 			this.OriginalTarget = target;
 			if (target != null)
-				this.Director = target.Director;
+                this.Scene = target.Scene;
 
 		}
 

@@ -57,16 +57,16 @@ namespace CocosSharp
 
 			BoundaryFullyCovered = false;
 
-			CCSize winSize = followedNode.Director.WindowSizeInPoints;
-			FullScreenSize = (CCPoint)winSize;
+            CCRect viewportBounds = followedNode.Scene.VisibleBoundsWorldspace;
+            FullScreenSize = (CCPoint)new CCPoint(viewportBounds.Size.Width, viewportBounds.Size.Height);
 			HalfScreenSize = FullScreenSize * 0.5f;
 
 			if (BoundarySet)
 			{
-				float leftBoundary = -((rect.Origin.X + rect.Size.Width) - FullScreenSize.X);
+                float leftBoundary = -((rect.Origin.X + rect.Size.Width) - FullScreenSize.X - viewportBounds.Origin.X);
 				float rightBoundary = -rect.Origin.X;
 				float topBoundary = -rect.Origin.Y;
-				float bottomBoundary = -((rect.Origin.Y + rect.Size.Height) - FullScreenSize.Y);
+                float bottomBoundary = -((rect.Origin.Y + rect.Size.Height) - FullScreenSize.Y - viewportBounds.Origin.Y);
 
 				if (rightBoundary < leftBoundary)
 				{
