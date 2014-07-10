@@ -339,12 +339,19 @@ namespace CocosSharp
 				if (isColorModifiedByOpacity != value)
 				{
 					isColorModifiedByOpacity = value;
+					if (Children != null)
+					{
+						for (int i = 0, count = Children.Count; i < count; i++)
+						{
+							Children.Elements[i].IsColorModifiedByOpacity = isColorModifiedByOpacity;
+						}
+					}
 					UpdateColor();
 				}
 			}
 		}
 
-        private int KerningAmountForFirst(int first, int second)
+		private int KerningAmountForFirst(int first, int second)
         {
             int ret = 0;
             int key = (first << 16) | (second & 0xffff);
