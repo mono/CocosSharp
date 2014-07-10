@@ -11,86 +11,27 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public interface ICCDirectorDelegate
+
+    // Class that creates that manages how and when to execute the Scenes.
+
+    public class CCDirector
     {
-        void UpdateProjection();
-    }
-
-    public enum CCDirectorProjection
-    {
-
-        Projection2D,           /// Sets a 2D projection (orthogonal projection)
-        Projection3D,           /// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-        Custom,                 /// Calls "updateProjection" on the projection delegate.
-        Default = Projection3D  /// Default projection is 3D projection
-    }
-
-    /// <summary>
-    /// Class that creates and handle the a window and manages how and when to execute the Scenes.
-    /// 
-    /// The CCDirector is also responsible for:
-    ///     - initializing the OpenGL context
-    ///     - setting the OpenGL pixel format (default on is RGB565)
-    ///     - setting the OpenGL buffer depth (default one is 0-bit)
-    ///     - setting the projection (default one is 3D)
-    ///     - setting the orientation (default one is Portrait)
-    /// 
-    /// Since the CCDirector is a singleton, the standard way to use it is by calling: _
-    /// CCDirector::sharedDirector()->methodName();
-    /// 
-    /// The CCDirector also sets the default OpenGL context:
-    ///     - GL_TEXTURE_2D is enabled
-    ///     - GL_VERTEX_ARRAY is enabled
-    ///     - GL_COLOR_ARRAY is enabled
-    ///     - GL_TEXTURE_COORD_ARRAY is enabled.  
-    /// </summary>
-
-    public abstract class CCDirector
-    {
-        public static string EVENT_PROJECTION_CHANGED = "director_projection_changed";
-        public static string EVENT_AFTER_UPDATE = "director_after_update";
-        public static string EVENT_AFTER_VISIT = "director_after_visit";
-        public static string EVENT_AFTER_DRAW = "director_after_draw";
-
         #if !NETFX_CORE
         const string storageDirName = "CocosSharpDirector";
         const string saveFileName = "SceneList.dat";
         const string sceneSaveFileName = "Scene{0}.dat";
         #endif
 
-        readonly float defaultFPS = 60f;
         readonly List<CCScene> scenesStack = new List<CCScene>();
-
-        bool isNeedsInit = true;
-        double prevAnimationInterval;
-        CCDirectorProjection directorProjection;
-
-        CCScene nextScene;
-
-        CCEventCustom eventAfterDraw;
-        CCEventCustom eventAfterVisit;
-        CCEventCustom eventAfterUpdate;
-        CCEventCustom eventProjectionChanged;
 
 
         #region Properties
 
-        #if !NETFX_CORE
-        public CCAccelerometer Accelerometer { get; set; }
-        #endif
-
-        public bool GamePadEnabled { get; set; }                            // Set to true if this platform has a game pad connected.
         public bool IsSendCleanupToScene { get; private set; }
-        public float ContentScaleFactor { get; set; }
-        public virtual double AnimationInterval { get; set; }
-        public CCSize WindowSizeInPoints { get; internal set; }
-        public ICCDirectorDelegate ProjectionDelegate { get; set; }
         public CCScene RunningScene { get; private set; }
-        public CCNode NotificationNode { get; set; }
-        public CCEventDispatcher EventDispatcher { get; private set; }
 
-        protected bool IsPurgeDirectorInNextLoop { get; set; }
-        protected CCStats Stats { get; private set; }
+        internal bool IsPurgeDirectorInNextLoop { get; set; }
+        internal CCScene NextScene { get; private set; }
 
         public bool CanPopScene
         {
@@ -101,118 +42,9 @@ namespace CocosSharp
             }
         }
 
-        // enables/disables OpenGL alpha blending 
-        public bool IsUseAlphaBlending
-        {
-            set 
-            {
-                if (value)
-                {
-                    CCDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
-                }
-                else
-                {
-                    CCDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ZERO));
-                }
-            }
-        }
-
-        // enables/disables OpenGL depth test
-        public bool IsUseDepthTesting
-        {
-            get { return CCDrawManager.DepthTest; }
-            set { CCDrawManager.DepthTest = value; }
-        }
-
-        public bool DisplayStats 
-        {
-            get { return Stats.IsEnabled; }
-            set { Stats.IsEnabled = value; }
-        }
-
         public int SceneCount
         {
             get { return scenesStack.Count; }
-        }
-
-        public float ZEye
-        {
-            get { return (WindowSizeInPoints.Height / 1.1566f); }
-        }
-
-        public CCPoint VisibleOrigin
-        {
-            get { return CCDrawManager.VisibleOrigin; }
-        }
-
-        public CCSize VisibleSize
-        {
-            get { return CCDrawManager.VisibleSize; }
-        }
-
-        public CCSize WindowSizeInPixels
-        {
-            get { return WindowSizeInPoints * ContentScaleFactor; }
-        }
-
-        public CCDirectorProjection Projection
-        {
-            get { return directorProjection; }
-            set
-            {
-                CCDrawManager.SetViewPortInPoints(0, 0, (int)WindowSizeInPoints.Width, (int)WindowSizeInPoints.Height);
-
-                CCSize size = WindowSizeInPoints;
-
-                switch (value)
-                {
-                case CCDirectorProjection.Projection2D:
-
-                    CCDrawManager.ProjectionMatrix = Matrix.CreateOrthographicOffCenter(
-                        0, size.Width,
-                        0, size.Height,
-                        -1024.0f, 1024.0f
-                    );
-
-                    CCDrawManager.ViewMatrix = Matrix.Identity;
-
-                    CCDrawManager.WorldMatrix = Matrix.Identity;
-                    break;
-
-                case CCDirectorProjection.Projection3D:
-
-                    CCDrawManager.ProjectionMatrix = Matrix.CreatePerspectiveFieldOfView(
-                        MathHelper.Pi / 3.0f,
-                        size.Width / size.Height,
-                        0.1f, 1500 //ZEye * 2f
-                    );
-
-                    CCDrawManager.ViewMatrix = Matrix.CreateLookAt(
-                        new Vector3(size.Width / 2.0f, size.Height / 2.0f, ZEye),
-                        new Vector3(size.Width / 2.0f, size.Height / 2.0f, 0f),
-                        Vector3.Up
-                    );
-
-                    CCDrawManager.WorldMatrix = Matrix.Identity;
-                    break;
-
-                case CCDirectorProjection.Custom:
-                    if (ProjectionDelegate != null)
-                    {
-                        ProjectionDelegate.UpdateProjection();
-                    }
-                    break;
-
-                default:
-                    Debug.Assert(true, "cocos2d: Director: unrecognized projection");
-                    break;
-                }
-
-                directorProjection = value;
-
-                if(EventDispatcher.IsEventListenersFor(EVENT_PROJECTION_CHANGED))
-                    EventDispatcher.DispatchEvent(eventProjectionChanged);
-            }
         }
 
         #endregion Properties
@@ -220,62 +52,11 @@ namespace CocosSharp
 
         #region Constructors
 
-        protected CCDirector()
+        public CCDirector()
         {
-            InitCCDirector();
         }
-
-        // Also called after purging the director
-        void InitCCDirector()
-        {
-            IsPurgeDirectorInNextLoop = false;
-            ContentScaleFactor = 1.0f;
-            WindowSizeInPoints = CCSize.Zero;
-
-            RunningScene = null;
-            NotificationNode = null;
-            ProjectionDelegate = null;
-
-            Stats = new CCStats();
-
-            EventDispatcher = new CCEventDispatcher(this);
-
-            #if !NETFX_CORE
-            Accelerometer = new CCAccelerometer(this);
-            #endif
-
-            isNeedsInit = false;
-            prevAnimationInterval = AnimationInterval = 1.0 / defaultFPS;
-            directorProjection = CCDirectorProjection.Default;
-            nextScene = null;
-
-            eventAfterDraw = new CCEventCustom(EVENT_AFTER_DRAW);
-            eventAfterDraw.UserData = this;
-            eventAfterVisit = new CCEventCustom(EVENT_AFTER_VISIT);
-            eventAfterVisit.UserData = this;
-            eventAfterUpdate = new CCEventCustom(EVENT_AFTER_UPDATE);
-            eventAfterUpdate.UserData = this;
-            eventProjectionChanged = new CCEventCustom(EVENT_PROJECTION_CHANGED);
-            eventProjectionChanged.UserData = this;
-        }
-
 
         #endregion Constructors
-
-        public abstract void MainLoop(CCGameTime gameTime);
-
-        public abstract void StopAnimation();
-        public abstract void StartAnimation();
-
-        public CCPoint ConvertToGl(CCPoint uiPoint)
-        {
-            return new CCPoint(uiPoint.X, WindowSizeInPoints.Height - uiPoint.Y);
-        }
-
-        public CCPoint ConvertToUi(CCPoint glPoint)
-        {
-            return new CCPoint(glPoint.X, WindowSizeInPoints.Height - glPoint.Y);
-        }
 
 
         #region Cleaning up
@@ -285,13 +66,7 @@ namespace CocosSharp
             IsPurgeDirectorInNextLoop = true;
         }
 
-        // Re Initializes the statistics.  This needs to be called for example by coming back from tombstombing.
-        internal void ReInitStats()
-        {
-            Stats = new CCStats();
-        }
-
-        protected void PurgeDirector()
+        internal void PurgeDirector()
         {
             if (RunningScene != null)
             {
@@ -301,100 +76,14 @@ namespace CocosSharp
             }
 
             RunningScene = null;
-            nextScene = null;
+            NextScene = null;
 
             // remove all objects, but don't release it.
             // runWithScene might be executed after 'end'.
             scenesStack.Clear();
-
-            StopAnimation();
-
-            isNeedsInit = true;
         }
 
         #endregion Cleaning up
-
-
-        #region Setting up and drawing/updating view
-
-        internal void SetOpenGlView()
-        {
-            // set size
-            WindowSizeInPoints = CCDrawManager.DesignResolutionSize;
-
-            // Prepare stats
-            Stats.Initialize();
-
-            SetGlDefaultValues();
-        }
-
-        internal void SetGlDefaultValues()
-        {
-            IsUseAlphaBlending = true;
-            IsUseDepthTesting = false;
-
-            Projection = directorProjection;
-        }
-
-        // Draw the scene.
-        // This method is called every frame. Don't call it manually.
-        protected void DrawScene(CCGameTime gameTime)
-        {
-            if (isNeedsInit)
-            {
-                return;
-            }
-
-            // Start stats measuring
-            Stats.UpdateStart();
-
-            CCDrawManager.PushMatrix();
-
-            // draw the scene
-            if (RunningScene != null)
-            {
-                RunningScene.Visit();
-                if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_VISIT))
-                    EventDispatcher.DispatchEvent(eventAfterVisit);
-            }
-
-            // draw the notifications node
-            if (NotificationNode != null)
-            {
-                NotificationNode.Visit();
-            }
-
-            if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_DRAW))
-                EventDispatcher.DispatchEvent(eventAfterDraw);
-
-            CCDrawManager.PopMatrix();
-
-            // Draw stats
-            Stats.Draw();
-        }
-
-        internal void Update(float deltaTime)
-        {
-            // Start stats measuring
-            Stats.UpdateStart();
-
-            if (EventDispatcher.IsEventListenersFor(EVENT_AFTER_UPDATE)) 
-            {
-                EventDispatcher.DispatchEvent(eventAfterUpdate);
-            }
-
-            /* to avoid flickr, nextScene MUST be here: after tick and before draw.
-             XXX: Which bug is this one. It seems that it can't be reproduced with v0.9 */
-            if (nextScene != null)
-            {
-                SetNextScene();
-            }
-
-            // End stats measuring
-            Stats.UpdateEnd(deltaTime);
-        }
-
-        #endregion Setting up and drawing view
 
 
         #region Scene Management
@@ -405,7 +94,7 @@ namespace CocosSharp
 
             RunningScene = null;
             scenesStack.Clear();
-            nextScene = null;
+            NextScene = null;
         }
 
         public void RunWithScene(CCScene scene)
@@ -414,7 +103,6 @@ namespace CocosSharp
             Debug.Assert(RunningScene == null, "Use runWithScene: instead to start the director");
 
             PushScene(scene);
-            StartAnimation();
         }
 
         // Replaces the current scene at the top of the stack with the given scene.
@@ -434,7 +122,7 @@ namespace CocosSharp
             {
                 scenesStack[index - 1] = scene;
             }
-            nextScene = scene;
+            NextScene = scene;
         }
 
         // Push the given scene to the top of the scene stack.
@@ -445,7 +133,7 @@ namespace CocosSharp
             IsSendCleanupToScene = false;
 
             scenesStack.Add(pScene);
-            nextScene = pScene;
+            NextScene = pScene;
         }
 
         public void PopScene(float t, CCTransitionScene s)
@@ -466,13 +154,13 @@ namespace CocosSharp
             else
             {
                 IsSendCleanupToScene = true;
-                nextScene = scenesStack[c - 1];
+                NextScene = scenesStack[c - 1];
                 if (s != null)
                 {
-                    nextScene.Visible = true;
-                    s.Reset(t, nextScene);
+                    NextScene.Visible = true;
+                    s.Reset(t, NextScene);
                     scenesStack.Add(s);
-                    nextScene = s;
+                    NextScene = s;
                 }
             }
         }
@@ -528,16 +216,16 @@ namespace CocosSharp
                 c--;
             }
 
-            nextScene = scenesStack[scenesStack.Count - 1];
+            NextScene = scenesStack[scenesStack.Count - 1];
             IsSendCleanupToScene = false;
         }
 
-        protected void SetNextScene()
+        internal void SetNextScene()
         {
             bool runningIsTransition = RunningScene != null && RunningScene.IsTransition;// is CCTransitionScene;
 
             // If it is not a transition, call onExit/cleanup
-            if (!nextScene.IsTransition)
+            if (!NextScene.IsTransition)
             {
                 if (RunningScene != null)
                 {
@@ -553,12 +241,16 @@ namespace CocosSharp
                 }
             }
 
-            RunningScene = nextScene;
-            nextScene = null;
+            if (NextScene.Director != this) 
+            {
+                NextScene.Director = this;
+            }
+
+            RunningScene = NextScene;
+            NextScene = null;
 
             if (!runningIsTransition && RunningScene != null)
             {
-                RunningScene.Director = this;
                 RunningScene.OnEnter();
                 RunningScene.OnEnterTransitionDidFinish();
             }
