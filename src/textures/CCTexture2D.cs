@@ -209,7 +209,7 @@ namespace CocosSharp
             {
                 if (texture2D != null && texture2D.IsDisposed)
                 {
-                    Reinit();
+                    ReinitResource();
                 }
                 return texture2D;
             }
@@ -229,7 +229,7 @@ namespace CocosSharp
         }
 
         public CCTexture2D (int pixelsWide, int pixelsHigh, CCSurfaceFormat pixelFormat=CCSurfaceFormat.Color, bool premultipliedAlpha=true, bool mipMap=false) 
-            : this(new Texture2D(CCDrawManager.GraphicsDevice, pixelsWide, pixelsHigh, mipMap, (SurfaceFormat)pixelFormat), pixelFormat, premultipliedAlpha)
+            : this(new Texture2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, pixelsWide, pixelsHigh, mipMap, (SurfaceFormat)pixelFormat), pixelFormat, premultipliedAlpha)
         {
             cacheInfo.CacheType = CCTextureCacheType.None;
             cacheInfo.Data = null;
@@ -496,15 +496,15 @@ namespace CocosSharp
                 }
 
                 //*  for render to texture
-                RenderTarget2D renderTarget = CCDrawManager.CreateRenderTarget(
+                RenderTarget2D renderTarget = CCDrawManager.SharedDrawManager.CreateRenderTarget(
                     (int)dimensions.Width, (int)dimensions.Height,
                     DefaultAlphaPixelFormat, CCRenderTargetUsage.DiscardContents
                 );
 
-                CCDrawManager.SetRenderTarget(renderTarget);
-                CCDrawManager.Clear(CCColor4B.Transparent);
+                CCDrawManager.SharedDrawManager.SetRenderTarget(renderTarget);
+                CCDrawManager.SharedDrawManager.Clear(CCColor4B.Transparent);
 
-                SpriteBatch sb = CCDrawManager.SpriteBatch;
+                SpriteBatch sb = CCDrawManager.SharedDrawManager.SpriteBatch;
                 sb.Begin();
 
                 float textHeight = textList.Count * font.LineSpacing * scale;
@@ -541,10 +541,10 @@ namespace CocosSharp
 
                 sb.End();
 
-                CCDrawManager.graphicsDevice.RasterizerState = RasterizerState.CullNone;
-                CCDrawManager.graphicsDevice.DepthStencilState = DepthStencilState.Default;
+                CCDrawManager.SharedDrawManager.XnaGraphicsDevice.RasterizerState = RasterizerState.CullNone;
+                CCDrawManager.SharedDrawManager.DepthStencilState = DepthStencilState.Default;
 
-                CCDrawManager.SetRenderTarget((RenderTarget2D)null);
+                CCDrawManager.SharedDrawManager.SetRenderTarget((RenderTarget2D)null);
 
                 InitWithTexture(renderTarget, (CCSurfaceFormat)renderTarget.Format, true, false);
                 cacheInfo.CacheType = CCTextureCacheType.String;
@@ -610,7 +610,7 @@ namespace CocosSharp
             HasPremultipliedAlpha = premultipliedAlpha;
         }
 
-        public override void Reinit()
+        public override void ReinitResource()
         {
             CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
 
@@ -680,11 +680,6 @@ namespace CocosSharp
         public override string ToString()
         {
             return String.Format("<CCTexture2D | Dimensions = {0} x {1})>", PixelsWide, PixelsHigh);
-        }
-
-        public CCSize ContentSize(float contentScaleFactor)
-        {
-            return ContentSizeInPixels.PixelsToPoints(contentScaleFactor);
         }
 
         #region Cleanup
@@ -771,12 +766,12 @@ namespace CocosSharp
         {
             if (!hasMipmaps)
             {
-                var target = new RenderTarget2D(CCDrawManager.GraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
+                var target = new RenderTarget2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
                     DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
-                CCDrawManager.SetRenderTarget(target);
+                CCDrawManager.SharedDrawManager.SetRenderTarget(target);
 
-                SpriteBatch sb = CCDrawManager.SpriteBatch;
+                SpriteBatch sb = CCDrawManager.SharedDrawManager.SpriteBatch;
 
                 sb.Begin();
                 sb.Draw(texture2D, Vector2.Zero, Color.White);
@@ -802,16 +797,16 @@ namespace CocosSharp
             }
 
             var renderTarget = new RenderTarget2D(
-                CCDrawManager.GraphicsDevice,
+                CCDrawManager.SharedDrawManager.XnaGraphicsDevice,
                 texture.Width, texture.Height, hasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
             );
 
-            CCDrawManager.SetRenderTarget(renderTarget);
-            CCDrawManager.SpriteBatch.Begin();
-            CCDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
-            CCDrawManager.SpriteBatch.End();
-            CCDrawManager.SetRenderTarget((CCTexture2D)null);
+            CCDrawManager.SharedDrawManager.SetRenderTarget(renderTarget);
+            CCDrawManager.SharedDrawManager.SpriteBatch.Begin();
+            CCDrawManager.SharedDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
+            CCDrawManager.SharedDrawManager.SpriteBatch.End();
+            CCDrawManager.SharedDrawManager.SetRenderTarget((CCTexture2D)null);
 
             return renderTarget;
         }
@@ -823,16 +818,16 @@ namespace CocosSharp
 
             //Setup a render target to hold our final texture which will have premulitplied alpha values
             var result = new RenderTarget2D(
-                CCDrawManager.graphicsDevice,
+                CCDrawManager.SharedDrawManager.XnaGraphicsDevice,
                 texture.Width, texture.Height, hasMipmaps, format,
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
             );
 
-            CCDrawManager.SetRenderTarget(result);
+            CCDrawManager.SharedDrawManager.SetRenderTarget(result);
 
-            CCDrawManager.Clear(CCColor4B.Transparent);
+            CCDrawManager.SharedDrawManager.Clear(CCColor4B.Transparent);
 
-            var spriteBatch = CCDrawManager.SpriteBatch;
+            var spriteBatch = CCDrawManager.SharedDrawManager.SpriteBatch;
 
             if (format != SurfaceFormat.Alpha8)
             {
@@ -868,7 +863,7 @@ namespace CocosSharp
             spriteBatch.End();
 
             //Release the GPU back to drawing to the screen
-            CCDrawManager.SetRenderTarget((CCTexture2D) null);
+            CCDrawManager.SharedDrawManager.SetRenderTarget((CCTexture2D) null);
 
             return result;
         }
@@ -929,7 +924,7 @@ namespace CocosSharp
 
         Texture2D LoadRawData<T>(T[] data, int width, int height, SurfaceFormat pixelFormat, bool mipMap) where T : struct
         {
-            var result = new Texture2D(CCDrawManager.GraphicsDevice, width, height, mipMap, pixelFormat);
+            var result = new Texture2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, width, height, mipMap, pixelFormat);
             result.SetData(data);
             return result;
         }
@@ -950,7 +945,7 @@ namespace CocosSharp
 
             if (imageFormat == CCImageFormat.Jpg || imageFormat == CCImageFormat.Png || imageFormat == CCImageFormat.Gif)
             {
-                result = Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+                result = Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, stream);
             }
 
             return result;
@@ -968,9 +963,9 @@ namespace CocosSharp
 
             if (tiff.ReadRGBAImageOriented(w, h, raster, Orientation.LEFTTOP))
             {
-            var result = new Texture2D(CCDrawManager.GraphicsDevice, w, h, false, SurfaceFormat.Color);
-            result.SetData(raster);
-            return result;
+                var result = new Texture2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, w, h, false, SurfaceFormat.Color);
+                result.SetData(raster);
+                return result;
             }
             else 
             {
@@ -978,7 +973,7 @@ namespace CocosSharp
             }
             #elif MACOS || IOS
 
-            return Texture2D.FromStream(CCDrawManager.GraphicsDevice, stream);
+            return Texture2D.FromStream(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, stream);
             #else
             return null;
             #endif

@@ -34,6 +34,8 @@ namespace CocosSharp
 
         #region Properties
 
+        public CCWindow Window { get; set; }
+
         Action ProcessingAction { get; set; }
         Action ProcessingDataAction { get; set; }
         object Task { get; set; }

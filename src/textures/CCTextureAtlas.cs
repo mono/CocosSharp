@@ -52,7 +52,7 @@ namespace CocosSharp
         #region Properties
 
         protected internal CCRawList<CCV3F_C4B_T2F_Quad> Quads { get; private set; }
-		public CCTexture2D Texture { get; set; }
+        public CCTexture2D Texture { get; set; }
 
         // Indicates whether or not the array buffer of the VBO needs to be updated
         protected internal bool Dirty { get; set; }                                 
@@ -95,7 +95,7 @@ namespace CocosSharp
                 capacity = 4;
             }
 
-            vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
+            vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly, CCDrawManager.SharedDrawManager);
             Quads = vertexBuffer.Data;
 
             Dirty = true;
@@ -131,7 +131,7 @@ namespace CocosSharp
                 return;
             }
 
-            CCDrawManager.BindTexture(Texture);
+            CCDrawManager.SharedDrawManager.BindTexture(Texture);
 
             if (Dirty)
             {
@@ -139,7 +139,7 @@ namespace CocosSharp
                 Dirty = false;
             }
 
-            CCDrawManager.DrawQuadsBuffer(vertexBuffer, start, n);
+            CCDrawManager.SharedDrawManager.DrawQuadsBuffer(vertexBuffer, start, n);
         }
 
         #endregion Drawing
