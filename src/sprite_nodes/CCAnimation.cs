@@ -92,8 +92,8 @@ namespace CocosSharp
 
         public void AddSpriteFrame(CCSprite sprite)
         {
-            CCRect textureRect = sprite.TextureRect;
-            CCSpriteFrame f = new CCSpriteFrame(sprite.Texture, new CCRect(0, 0, textureRect.Size.Width, sprite.ContentSizeInPixels.Height));
+            CCRect textureRect = sprite.TextureRectInPixels;
+            CCSpriteFrame f = new CCSpriteFrame(sprite.ContentSize, sprite.Texture, textureRect);
             AddSpriteFrame(f);
         }
 
@@ -106,17 +106,20 @@ namespace CocosSharp
             TotalDelayUnits++;
         }
 
-        public void AddSpriteFrame(string filename)
+        public void AddSpriteFrame(string filename, CCSize? contentSize=null)
         {
             var texture = CCApplication.SharedApplication.TextureCache.AddImage(filename);
             CCRect rect = CCRect.Zero;
             rect.Size = texture.ContentSizeInPixels;
-            AddSpriteFrame (new CCSpriteFrame (texture, rect));
+            AddSpriteFrame(new CCSpriteFrame ((CCSize)contentSize, texture, rect));
         }
 
-        public void AddSpriteFrame(CCTexture2D texture, CCRect rect)
+        public void AddSpriteFrame(CCTexture2D texture, CCRect textureRect, CCSize? contentSize=null)
         {
-            AddSpriteFrame(new CCSpriteFrame(texture, rect));
+            if(contentSize == null)
+                contentSize = textureRect.Size;
+
+            AddSpriteFrame(new CCSpriteFrame((CCSize)contentSize, texture, textureRect));
         }
     }
 }

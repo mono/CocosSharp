@@ -21,8 +21,8 @@ namespace CocosSharp
         #region Constructors
 
         // via texture
-        public CCMaskedSprite(CCTexture2D texture, CCRect? rect, byte[] mask)
-            : base(texture, rect)
+        public CCMaskedSprite(CCTexture2D texture, CCRect? textureRect, byte[] mask)
+            : base(texture, textureRect)
         {
             CollisionMask = mask;
         }
@@ -33,8 +33,8 @@ namespace CocosSharp
         }
 
         // via file
-        public CCMaskedSprite(string fileName, CCRect? rect, byte[] mask)
-            : base(fileName, rect)
+        public CCMaskedSprite(string fileName, CCRect? textureRect, byte[] mask)
+            : base(fileName, textureRect)
         {
             CollisionMask = mask;
         }
@@ -44,13 +44,6 @@ namespace CocosSharp
         {
         }
 
-//        // via sprite frame
-//        public CCMaskedSprite(CCSpriteFrame pSpriteFrame, byte[] mask)
-//            : base(pSpriteFrame)
-//        {
-//            CollisionMask = mask;
-//        }
-
         #endregion Constructors
 
 
@@ -59,16 +52,17 @@ namespace CocosSharp
         public virtual bool CollidesWith(CCMaskedSprite target, out CCPoint pt)
         {
             pt = CCPoint.Zero;
-            CCAffineTransform affine1 = NodeToWorldTransform;
-            CCAffineTransform affine2 = target.NodeToWorldTransform;
-            CCRect myBBInWorld = WorldBoundingBox;
-            CCRect targetBBInWorld = target.WorldBoundingBox;
+            CCAffineTransform affine1 = target.AffineLocalTransform;
+            CCAffineTransform affine2 = target.AffineLocalTransform;
+            CCRect myBBInWorld = Camera.VisibleBoundsWorldspace;
+            CCRect targetBBInWorld = target.BoundingBox;
+
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))
             {
                 return (false);
             }
             // Based upon http://www.riemers.net/eng/Tutorials/XNA/Csharp/Series2D/Putting_CD_into_practice.php
-			var affine1to2 = affine1 * CCAffineTransform.Invert (affine2);
+            var affine1to2 = affine1 * CCAffineTransform.Invert (affine2);
 
             int width2 = (int)target.ContentSize.Width;
             int height2 = (int)target.ContentSize.Height;
@@ -84,8 +78,8 @@ namespace CocosSharp
             {
                 for (int y1 = 0; y1 < height1; y1++)
                 {
-					var pos1 = new CCVector2(x1, y1);
-					var pos2 = CCVector2.Transform (pos1, affine1to2);
+                    var pos1 = new CCVector2(x1, y1);
+                    var pos2 = CCVector2.Transform (pos1, affine1to2);
 
                     int x2 = (int)pos2.X;
                     int y2 = (int)pos2.Y;
@@ -93,12 +87,12 @@ namespace CocosSharp
                     {
                         if ((y2 >= 0) && (y2 < height2))
                         {
-							int iA = x1 + (height1-y1) * width1;
-							int iB = x2 + (height2-y2) * width2;
+                            int iA = x1 + (height1-y1) * width1;
+                            int iB = x2 + (height2-y2) * width2;
                             if (iA >= maskA.Length || iB >= maskB.Length)
                                 continue;
-							if (maskA[iA] > 0){
-								if (maskB[iB] > 0){
+                            if (maskA[iA] > 0){
+                                if (maskB[iB] > 0){
                                     CCVector2 screenPos = CCVector2.Transform(pos1, affine1);
                                     pt = new CCPoint(screenPos);
                                     return (true);

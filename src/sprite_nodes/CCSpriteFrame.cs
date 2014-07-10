@@ -10,10 +10,9 @@ namespace CocosSharp
         public bool IsRotated { get; set; }
         public string TextureFilename { get; set; }
 
-        public CCSize OriginalSizeInPixels { get; private set; }
+        public CCSize ContentSize { get; private set; }
 
-        public CCRect RectInPixels { get; set; }
-        public CCPoint OffsetInPixels { get; set; }
+        public CCRect TextureRectInPixels { get; set; }
 
         public CCTexture2D Texture { get; set; }
 
@@ -28,20 +27,19 @@ namespace CocosSharp
         }
 
         protected CCSpriteFrame(CCSpriteFrame spriteFrame) 
-            : this(spriteFrame.Texture, spriteFrame.RectInPixels, spriteFrame.OriginalSizeInPixels, 
-                spriteFrame.IsRotated, spriteFrame.OffsetInPixels)
+            : this(spriteFrame.ContentSize, spriteFrame.Texture, spriteFrame.TextureRectInPixels, 
+                spriteFrame.IsRotated)
         {
         }
 
-        public CCSpriteFrame(CCTexture2D texture, CCRect rectInPxls) : this(texture, rectInPxls, rectInPxls.Size)
+        public CCSpriteFrame(CCTexture2D texture, CCRect rectInPxls) : this(rectInPxls.Size, texture, rectInPxls)
         {
         }
 
-        public CCSpriteFrame(CCTexture2D texture, CCRect rectInPxls, CCSize originalSizeInPxls, bool rotated=false, CCPoint? offsetInPxls=null)
+        public CCSpriteFrame(CCSize contentSize, CCTexture2D texture, CCRect textureRectInPxls, bool rotated=false)
         {
-            RectInPixels = rectInPxls;
-            OffsetInPixels = offsetInPxls ?? CCPoint.Zero;
-            OriginalSizeInPixels = originalSizeInPxls;
+            TextureRectInPixels = textureRectInPxls;
+            ContentSize = contentSize;
             IsRotated = rotated;
             Texture = texture;
         }

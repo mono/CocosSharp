@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -14,6 +15,12 @@ namespace CocosSharp
         public CCRawList<CCSprite> Descendants { get; private set; }
         public CCBlendFunc BlendFunc { get; set; }
 
+        public bool IsAntialiased
+        {
+            get { return Texture.IsAntialiased; }
+            set { Texture.IsAntialiased = value; }
+        }
+
         public virtual CCTexture2D Texture
         {
             get { return TextureAtlas.Texture; }
@@ -21,17 +28,16 @@ namespace CocosSharp
             {
                 TextureAtlas.Texture = value;
                 UpdateBlendFunc();
-                if (value != null && Director != null)
-                {
-                    ContentSize = value.ContentSize(Director.ContentScaleFactor);
-                }
             }
         }
 
-        public bool IsAntialiased
+        // Size of batch node in world space makes no sense
+        public override CCSize ContentSize
         {
-            get { return Texture.IsAntialiased; }
-            set { Texture.IsAntialiased = value; }
+            get { return CCSize.Zero; }
+            set
+            {
+            }
         }
 
         #endregion Properties
@@ -75,21 +81,6 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if (Director != null && TextureAtlas != null)
-            {
-                ContentSize = TextureAtlas.Texture.ContentSize(Director.ContentScaleFactor);
-            }
-        }
-
-        #endregion Setup content
-
-
         public override void Visit()
         {
             // CAREFUL:
@@ -104,8 +95,7 @@ namespace CocosSharp
                 return;
             }
 
-            //kmGLPushMatrix();
-            CCDrawManager.PushMatrix();
+            Window.DrawManager.PushMatrix();
 
             if (Grid != null && Grid.Active)
             {
@@ -115,6 +105,7 @@ namespace CocosSharp
 
             SortAllChildren();
             Transform();
+            Window.DrawManager.WorldMatrix = Matrix.Identity;
 
             Draw();
 
@@ -123,7 +114,7 @@ namespace CocosSharp
                 Grid.AfterDraw(this);
             }
 
-            CCDrawManager.PopMatrix();
+            Window.DrawManager.PopMatrix();
         }
 
         protected override void Draw()
@@ -134,16 +125,7 @@ namespace CocosSharp
                 return;
             }
 
-            if (Children != null && Children.Count > 0)
-            {
-                CCNode[] elements = Children.Elements;
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    ((CCSprite) elements[i]).UpdateTransform();
-                }
-            }
-
-            CCDrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.BlendFunc(BlendFunc);
 
             TextureAtlas.DrawQuads();
         }
@@ -246,20 +228,19 @@ namespace CocosSharp
             }
         }
 
-        public void InsertChild(CCSprite pobSprite, int uIndex)
+        public void InsertChild(CCSprite sprite, int uIndex)
         {
-            pobSprite.BatchNode = this;
-            pobSprite.AtlasIndex = uIndex;
-            pobSprite.Dirty = true;
+            sprite.BatchNode = this;
+            sprite.AtlasIndex = uIndex;
 
             if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
             {
                 IncreaseAtlasCapacity();
             }
 
-            TextureAtlas.InsertQuad(ref pobSprite.Quad, uIndex);
+            TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
 
-            Descendants.Insert(uIndex, pobSprite);
+            Descendants.Insert(uIndex, sprite);
 
             // update indices
             CCSprite[] delements = Descendants.Elements;
@@ -269,16 +250,16 @@ namespace CocosSharp
             }
 
             // add children recursively
-            CCRawList<CCNode> pChildren = pobSprite.Children;
+            CCRawList<CCNode> children = sprite.Children;
 
-            if (pChildren != null && pChildren.Count > 0)
+            if (children != null && children.Count > 0)
             {
-                CCNode[] elements = pChildren.Elements;
-                for (int j = 0, count = pChildren.Count; j < count; j++)
+                CCNode[] elements = children.Elements;
+                for (int j = 0, count = children.Count; j < count; j++)
                 {
-                    var pChild = (CCSprite) elements[j];
-                    uIndex = AtlasIndexForChild(pChild, pChild.ZOrder);
-                    InsertChild(pChild, uIndex);
+                    var child = (CCSprite) elements[j];
+                    uIndex = AtlasIndexForChild(child, child.ZOrder);
+                    InsertChild(child, uIndex);
                 }
             }
         }
@@ -288,7 +269,6 @@ namespace CocosSharp
         {
             IsReorderChildDirty = true;
             sprite.BatchNode = this;
-            sprite.Dirty = true;
 
             if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
             {
@@ -301,7 +281,7 @@ namespace CocosSharp
 
             sprite.AtlasIndex = index;
 
-            TextureAtlas.InsertQuad(ref sprite.Quad, index);
+            TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;
@@ -557,15 +537,15 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveSpriteFromAtlas(CCSprite pobSprite)
+        public void RemoveSpriteFromAtlas(CCSprite sprite)
         {
             // remove from TextureAtlas
-            TextureAtlas.RemoveQuadAtIndex(pobSprite.AtlasIndex);
+            TextureAtlas.RemoveQuadAtIndex(sprite.AtlasIndex);
 
             // Cleanup sprite. It might be reused (issue #569)
-            pobSprite.BatchNode = null;
+            sprite.BatchNode = null;
 
-            int uIndex = Descendants.IndexOf(pobSprite);
+            int uIndex = Descendants.IndexOf(sprite);
 
             if (uIndex >= 0)
             {
@@ -582,7 +562,7 @@ namespace CocosSharp
             }
 
             // remove children recursively
-            CCRawList<CCNode> pChildren = pobSprite.Children;
+            CCRawList<CCNode> pChildren = sprite.Children;
 
             if (pChildren != null && pChildren.Count > 0)
             {
@@ -618,12 +598,11 @@ namespace CocosSharp
             sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            TextureAtlas.InsertQuad(ref sprite.Quad, index);
+            TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
 
             // XXX: updateTransform will update the textureAtlas too using updateQuad.
             // XXX: so, it should be AFTER the insertQuad
-            sprite.Dirty = true;
-            sprite.UpdateTransform();
+            sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected void UpdateQuadFromSprite(CCSprite sprite, int index)
@@ -640,10 +619,8 @@ namespace CocosSharp
             sprite.BatchNode = this;
             sprite.AtlasIndex = index;
 
-            sprite.Dirty = true;
-
             // UpdateTransform updates the textureAtlas quad
-            sprite.UpdateTransform();
+            sprite.UpdateTransformedSpriteTextureQuads();
         }
 
         protected CCSpriteBatchNode AddSpriteWithoutQuad(CCSprite child, int z, int aTag)
