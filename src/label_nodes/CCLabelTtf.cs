@@ -136,21 +136,6 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if (Director != null)
-            {
-                updateTexture();
-            }
-        }
-
-        #endregion Setup content
-
-
         internal void Refresh()
         {
             //
@@ -159,7 +144,6 @@ namespace CocosSharp
             try
             {
                 updateTexture();
-                Dirty = false;
             }
             catch (Exception)
             {
@@ -192,9 +176,7 @@ namespace CocosSharp
                 {
                     m_pString = value;
                     updateTexture();
-                    Dirty = false;
                 }
-                //            Dirty = true;
             }
         }
 
@@ -207,8 +189,6 @@ namespace CocosSharp
 
         private void updateTexture()
         {
-            if(Director == null)
-                return;
 
             CCTexture2D tex;
 
@@ -222,11 +202,11 @@ namespace CocosSharp
             // refer to cocos2d-x issue #1430
             tex = new CCTexture2D(
                 m_pString,
-				m_tDimensions.PointsToPixels(Director.ContentScaleFactor),
+				m_tDimensions,
                 m_hAlignment,
                 m_vAlignment,
                 m_pFontName,
-                m_fFontSize * Director.ContentScaleFactor);
+                m_fFontSize);
 
 //#if MACOS || IPHONE || IOS
 //			// There was a problem loading the text for some reason or another if result is not true
@@ -246,8 +226,11 @@ namespace CocosSharp
             Texture = tex;
 
             CCRect rect = CCRect.Zero;
-            rect.Size = Texture.ContentSize(Director.ContentScaleFactor);
-            SetTextureRect(rect);
+            rect.Size = Texture.ContentSizeInPixels;
+            TextureRectInPixels = rect;
+
+            if (ContentSize == CCSize.Zero)
+                ContentSize = rect.Size;
         }
     }
 }

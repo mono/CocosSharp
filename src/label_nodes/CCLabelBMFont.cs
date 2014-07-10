@@ -383,8 +383,8 @@ namespace CocosSharp
 
             ImageOffset = imageOffset;
 
-            m_pReusedChar = new CCSprite();
-            m_pReusedChar.InitWithTexture(TextureAtlas.Texture, CCRect.Zero, false);
+            m_pReusedChar = new CCSprite(TextureAtlas.Texture);
+            m_pReusedChar.ContentSize = dimensions;
             m_pReusedChar.BatchNode = this;
 
             SetString(theString, true);
@@ -393,19 +393,19 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
+        #region Scene handling
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        protected override void AddedToNewScene()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.AddedToNewScene();
 
-            if (Director != null)
+            if (Scene != null)
             {
                 CreateFontChars();
             }
         }
 
-        #endregion Setup content
+        #endregion Scene handling
 
 
         public virtual void UpdateDisplayedColor(CCColor3B parentColor)
@@ -454,7 +454,7 @@ namespace CocosSharp
 
         public void CreateFontChars()
         {
-            if(Director == null)
+            if(Scene == null)
                 return;
 
             int nextFontPositionX = 0;
@@ -498,7 +498,8 @@ namespace CocosSharp
                 (commonHeight - commonHeight * quantityOfLines);
 
             CCBMFontConfiguration.CCBMGlyphDef fontDef = null;
-            CCRect rect;
+            CCRect fontCharTextureRect;
+            CCSize fontCharContentSize;
 
             for (int i = 0; i < stringLen; i++)
             {
@@ -527,11 +528,11 @@ namespace CocosSharp
                     continue;
                 }
 
-                rect = fontDef.Subrect;
-				rect = rect.PixelsToPoints(Director.ContentScaleFactor);
+                fontCharTextureRect = fontDef.Subrect;
+                fontCharTextureRect.Origin.X += ImageOffset.X;
+                fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                rect.Origin.X += ImageOffset.X;
-                rect.Origin.Y += ImageOffset.Y;
+                fontCharContentSize = Scene.ScreenToWorldspace(fontCharTextureRect.Size);
 
                 CCSprite fontChar;
 
@@ -541,6 +542,11 @@ namespace CocosSharp
                 {
                     // Reusing previous Sprite
                     fontChar.Visible = true;
+
+                    // updating previous sprite
+                    fontChar.IsTextureRectRotated = false;
+                    fontChar.ContentSize = fontCharContentSize;
+                    fontChar.TextureRectInPixels = fontCharTextureRect;
                 }
                 else
                 {
@@ -557,7 +563,8 @@ namespace CocosSharp
                     //}
                     //else
                     {
-                        fontChar = new CCSprite(TextureAtlas.Texture, rect);
+                        fontChar = new CCSprite(TextureAtlas.Texture, fontCharTextureRect);
+                        fontChar.ContentSize = fontCharContentSize;
                         AddChild(fontChar, i, i);
                     }
 
@@ -569,18 +576,15 @@ namespace CocosSharp
                     fontChar.UpdateDisplayedOpacity(displayedOpacity);
                 }
 
-                // updating previous sprite
-                fontChar.SetTextureRect(rect, false, rect.Size);
-
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)
                 int yOffset = FontConfiguration.CommonHeight - fontDef.YOffset;
 
                 var fontPos =
                     new CCPoint(
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
-                        (float) nextFontPositionY + yOffset - rect.Size.Height * 0.5f * Director.ContentScaleFactor);
+                        (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
 
-				fontChar.Position = fontPos.PixelsToPoints(Director.ContentScaleFactor);
+                fontChar.Position = Scene.ScreenToWorldspace(fontPos);
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;
@@ -590,11 +594,6 @@ namespace CocosSharp
                 {
                     longestLine = nextFontPositionX;
                 }
-
-                //if (! hasSprite)
-                //{
-                //  UpdateQuadFromSprite(fontChar, i);
-                //}
             }
 
             // If the last character processed has an xAdvance which is less that the width of the characters image, then we need
@@ -610,13 +609,6 @@ namespace CocosSharp
             }
             tmpSize.Height = totalHeight;
             var tmpDimensions = labelDimensions;
-
-            tmpSize = new CCSize(
-                tmpDimensions.Width > 0 ? tmpDimensions.Width : tmpSize.Width,
-                tmpDimensions.Height > 0 ? tmpDimensions.Height : tmpSize.Height
-            );
-
-			ContentSize = tmpSize.PixelsToPoints(Director.ContentScaleFactor);
         }
 
         public virtual void SetString(string newString, bool needUpdateLabel)

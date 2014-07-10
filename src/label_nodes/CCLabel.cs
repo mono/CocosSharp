@@ -127,19 +127,19 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
+        #region Scene callback
 
-        protected override void RunningOnNewWindow(CCSize windowSize)
+        protected override void AddedToNewScene()
         {
-            base.RunningOnNewWindow(windowSize);
+            base.AddedToNewScene();
 
-            if (Director != null)
+            if (Scene != null)
             {
                 m_bFontDirty = true;
             }
         }
 
-        #endregion Setup content
+        #endregion Scene callback
 
 
         private CCBMFontConfiguration InitializeFont(string fontName, float fontSize, string charset)
@@ -183,7 +183,7 @@ namespace CocosSharp
                 return fontConfig;
             }
 
-            CreateFont(fontName, fontSize * Director.ContentScaleFactor, chars);
+            CreateFont(fontName, fontSize, chars);
 
             fontConfig.CommonHeight = (int)Math.Ceiling(GetFontHeight());
 

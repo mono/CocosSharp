@@ -41,7 +41,6 @@ namespace CocosSharp
 
         internal CCLabelAtlas()
         {
-            IgnoreContentScaleFactor = true;
         }
 
         public CCLabelAtlas(string label, string fntFile) : this(label, new PlistDocument(CCFileUtils.GetFileData(fntFile)).Root as PlistDictionary)
@@ -72,31 +71,15 @@ namespace CocosSharp
             Debug.Assert(label != null);
             m_cMapStartChar = startCharMap;
             Text = (label);
+            UpdateAtlasValues();
         }
 
         #endregion Constructors
 
 
-
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if (Director != null)
-            {
-                UpdateAtlasValues();
-            }
-        }
-
-        #endregion Setup content
-
-
-
         public override void UpdateAtlasValues()
         {
-            if(Director == null)
+            if(Scene == null)
                 return;
 
             int n = m_sString.Length;
@@ -107,15 +90,8 @@ namespace CocosSharp
             float textureHigh = texture.PixelsHigh;
             float scaleFactor = 1.0f;
 
-            if(!IgnoreContentScaleFactor)
-            {
-                scaleFactor = Director.ContentScaleFactor;
-            }
-
             float itemWidthInPixels = ItemWidth * scaleFactor;
             float itemHeightInPixels = ItemHeight * scaleFactor;
-
-
 
             for (int i = 0; i < n; i++)
             {
