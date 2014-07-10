@@ -134,23 +134,17 @@ namespace CocosSharp
                     texture.IsAntialiased = false; // disable antialiasing so the labels are always sharp
 
                     fpsLabel = new CCLabelAtlas ("00.0", texture, 4, 8, '.');
-                    fpsLabel.IgnoreContentScaleFactor = true;
 
                     updateTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-                    updateTimeLabel.IgnoreContentScaleFactor = true;
 
                     drawTimeLabel = new CCLabelAtlas ("0.000", texture, 4, 8, '.');
-                    drawTimeLabel.IgnoreContentScaleFactor = true;
 
                     drawCallLabel = new CCLabelAtlas ("000", texture, 4, 8, '.');
-                    drawCallLabel.IgnoreContentScaleFactor = true;
 
                     memoryLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-                    memoryLabel.IgnoreContentScaleFactor = true;
                     memoryLabel.Color = new CCColor3B (35, 185, 255);
 
                     gcLabel = new CCLabelAtlas ("0", texture, 4, 8, '.');
-                    gcLabel.IgnoreContentScaleFactor = true;
                     gcLabel.Color = new CCColor3B (255, 196, 54);
                 } catch (Exception ex) {
                     CCLog.Log ("CCStats: Failed to create stats labels:");
@@ -161,8 +155,8 @@ namespace CocosSharp
                 }
             }
 
-			var factor = CCApplication.SharedApplication.MainWindowDirector.ContentScaleFactor;
-			var pos = CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
+            var factor = 1.0f;
+            var pos = CCPoint.Zero; //CCApplication.SharedApplication.MainWindowDirector.VisibleOrigin;
 
             fpsLabel.Scale = factor;
             updateTimeLabel.Scale = factor;
@@ -199,7 +193,7 @@ namespace CocosSharp
             }
         }
 
-        public void Draw ()
+        public void Draw (CCWindow window)
         {
             if (isEnabled) {
                 totalFrames++;
@@ -216,7 +210,7 @@ namespace CocosSharp
                         fpsLabel.Text = (String.Format ("{0:00.0}", totalDrawCount / deltaAll));
                         updateTimeLabel.Text = (String.Format ("{0:0.000}", totalUpdateTime / updateCount));
                         drawTimeLabel.Text = (String.Format ("{0:0.000}", totalDrawTime / totalDrawCount));
-                        drawCallLabel.Text = (String.Format ("{0:000}", CCDrawManager.DrawCount));
+                        drawCallLabel.Text = (String.Format ("{0:000}", window.DrawManager.DrawCount));
                         
                         deltaAll = totalDrawTime = totalUpdateTime = 0;
                         totalDrawCount = updateCount = 0;
