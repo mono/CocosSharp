@@ -185,7 +185,11 @@ namespace CocosSharp
         private bool _jsControlled;
 
         private static readonly UTF8Encoding utf8Encoder = new UTF8Encoding(false);
-         
+
+        public CCWindow Window { get; set; }
+        public CCViewport Viewport { get; set; }
+        public CCCamera Camera { get; set; }
+        public CCDirector Director { get; set; }
 
         public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary)
             : this(nodeLoaderLibrary, null, null, null)
@@ -301,9 +305,9 @@ namespace CocosSharp
             // Setup action manager
             CCBAnimationManager pActionManager = new CCBAnimationManager();
             AnimationManager = pActionManager;
-            
+
             // Setup resolution scale and container size
-            _actionManager.RootContainerSize = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            _actionManager.RootContainerSize = Camera.VisibleBoundsWorldspace.Size;
 
 			HasScriptingOwner = false;
 
@@ -317,7 +321,7 @@ namespace CocosSharp
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner)
         {
-            return ReadNodeGraphFromFile(fileName, owner, CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints);
+            return ReadNodeGraphFromFile(fileName, owner, Camera.VisibleBoundsWorldspace.Size);
         }
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
@@ -395,13 +399,13 @@ namespace CocosSharp
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner)
         {
-            return CreateSceneWithNodeGraphFromFile(fileName, owner, CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints);
+            return CreateSceneWithNodeGraphFromFile(fileName, owner, Camera.VisibleBoundsWorldspace.Size);
         }
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
         {
             CCNode pNode = ReadNodeGraphFromFile(fileName, owner, parentSize);
-            CCScene pScene = new CCScene();
+            CCScene pScene = new CCScene(Window, Camera, Viewport, Director);
             pScene.AddChild(pNode);
 
             return pScene;

@@ -145,16 +145,15 @@ namespace CocosSharp
 					if (touchLength == 0.0f)
 					{
 						center = new CCPoint(viewSize.Width * 0.5f, viewSize.Height * 0.5f);
-						center = ConvertToWorldSpace(center);
 					}
 					else
 					{
 						center = touchPoint;
 					}
 
-					CCPoint oldCenter = container.ConvertToNodeSpace(center);
+					CCPoint oldCenter = container.Scene.ScreenToWorldspace(center);
 					container.Scale = Math.Max(minScale, Math.Min(maxScale, value));
-					CCPoint newCenter = container.ConvertToWorldSpace(oldCenter);
+					CCPoint newCenter = oldCenter;
 
 					CCPoint offset = center - newCenter;
 					if (Delegate != null)
@@ -220,7 +219,7 @@ namespace CocosSharp
 			get 
 			{
 				var rect = new CCRect (0, 0, viewSize.Width, viewSize.Height);
-				return CCAffineTransform.Transform (rect, NodeToWorldTransform);
+                return CCAffineTransform.Transform (rect, AffineWorldTransform);
 			}
 		}
 
@@ -292,7 +291,7 @@ namespace CocosSharp
 
 		static float ConvertDistanceFromPointToInch(float pointDis)
 		{
-			float factor = (CCDrawManager.ScaleX + CCDrawManager.ScaleY) / 2;
+            float factor = 1.0f; //(CCDrawManager.SharedDrawManager.ScaleX + CCDrawManager.SharedDrawManager.ScaleY) / 2;
 			return pointDis * factor / CCDevice.DPI;
 		}
 
@@ -451,7 +450,7 @@ namespace CocosSharp
             //dispatcher does not know about clipping. reject touches outside visible bounds.
             if (touches.Count > 2 ||
                 IsTouchMoved ||
-                !frame.ContainsPoint(container.ConvertToWorldSpace(container.ConvertTouchToNodeSpace(pTouch))))
+                !frame.ContainsPoint(container.Scene.ScreenToWorldspace(pTouch.LocationOnScreen)))
             {
                 return false;
             }
@@ -464,7 +463,7 @@ namespace CocosSharp
             if (touches.Count == 1)
             {
                 // scrolling
-                touchPoint = ConvertTouchToNodeSpace(pTouch);
+                touchPoint = Scene.ScreenToWorldspace(pTouch.LocationOnScreen);
                 IsTouchMoved = false;
                 Dragging = true; //Dragging started
                 scrollDistance = CCPoint.Zero;
@@ -472,8 +471,8 @@ namespace CocosSharp
             }
             else if (touches.Count == 2)
             {
-				touchPoint = CCPoint.Midpoint(ConvertTouchToNodeSpace(touches[0]), ConvertTouchToNodeSpace(touches[1]));
-				touchLength = CCPoint.Distance(container.ConvertTouchToNodeSpace(touches[0]), container.ConvertTouchToNodeSpace(touches[1]));
+                touchPoint = CCPoint.Midpoint(Scene.ScreenToWorldspace(touches[0].LocationOnScreen), Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
+                touchLength = CCPoint.Distance(container.Scene.ScreenToWorldspace(touches[0].LocationOnScreen), container.Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
                 Dragging = false;
             }
             return true;
@@ -495,7 +494,7 @@ namespace CocosSharp
 
 					var frame = ViewRect;
 
-                    newPoint = ConvertTouchToNodeSpace(touches[0]);
+                    newPoint = Scene.ScreenToWorldspace(touches[0].LocationOnScreen);
                     moveDistance = newPoint - touchPoint;
 
                     float dis = 0.0f;
@@ -526,7 +525,7 @@ namespace CocosSharp
                     touchPoint = newPoint;
                     IsTouchMoved = true;
 
-                    if (frame.ContainsPoint(ConvertToWorldSpace(newPoint)))
+                    if (frame.ContainsPoint(touchPoint))
                     {
                         switch (Direction)
                         {
@@ -549,8 +548,8 @@ namespace CocosSharp
                 }
                 else if (touches.Count == 2 && !Dragging)
                 {
-                    float len = CCPoint.Distance(container.ConvertTouchToNodeSpace(touches[0]),
-                                                             container.ConvertTouchToNodeSpace(touches[1]));
+                    float len = CCPoint.Distance(Scene.ScreenToWorldspace(touches[0].LocationOnScreen),
+                        Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
                     ZoomScale = ZoomScale * len / touchLength;
                 }
             }

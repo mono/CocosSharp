@@ -611,9 +611,8 @@ namespace CocosSharp
             if (touchedCell != null)
             {
                 CCRect bb = BoundingBox;
-                bb.Origin = Parent.ConvertToWorldSpace(bb.Origin);
 
-                if (bb.ContainsPoint(pTouch.Location) && Delegate != null)
+                if (bb.ContainsPoint(Scene.ScreenToWorldspace(pTouch.LocationOnScreen)) && Delegate != null)
                 {
                     Delegate.TableCellUnhighlight(this, touchedCell);
                     Delegate.TableCellTouched(this, touchedCell);
