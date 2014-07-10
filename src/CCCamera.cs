@@ -27,187 +27,143 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
+    enum CCCameraProjection
+    {
+        Projection2D,           /// Sets a 2D projection (orthogonal projection)
+        Projection3D,           /// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
+        Custom,                 /// Calls "updateProjection" on the projection delegate.
+        Default = Projection3D  /// Default projection is 3D projection
+    }
+
     /// <summary>
     /// A CCCamera is used in every CCNode.
     /// Useful to look at the object from different views.
     /// The OpenGL gluLookAt() function is used to locate the camera.
     ///
-    ///	If the object is transformed by any of the scale, rotation or
+    /// If the object is transformed by any of the scale, rotation or
     /// position attributes, then they will override the camera.
     /// IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both.
     /// World coordinates won't work if you use the camera.
     ///
     /// Limitations:
-    ///	 - Some nodes, like CCParallaxNode, CCParticle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors)
+    ///  - Some nodes, like CCParallaxNode, CCParticle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors)
     /// using the camera.
     /// - It doesn't work on batched nodes like CCSprite objects when they are parented to a CCSpriteBatchNode object.
     /// - It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action CCFollow or position/scale/rotate.
     /// </summary>
     public class CCCamera
     {
-		protected float CenterX { get; set; }
-		protected float CenterY { get; set; }
-		protected float CenterZ { get; set; }
-		protected float EyeX { get; set; }
-		protected float EyeY { get; set; }
-		protected float EyeZ { get; set; }
+        internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
 
-		protected float UpX { get; set; }
-		protected float UpY { get; set; }
-		protected float UpZ { get; set; }
-		private Matrix lookupMatrix;
+        CCRect visibleBoundsWorldspace;
+        CCPoint targetInWorldspace;
+        CCPoint upDirection;
+
+        Matrix viewMatrix;
+        Matrix projectionMatrix;
 
 
-        /// <summary>
-        ///  sets \ get the dirty value
-        /// </summary>
-		public bool IsDirty { get; protected set; }
+        #region Properties
+
+        internal static float ZEye
+        {
+            get { return 1.192092896e-07F; }
+        }
+
+        public CCRect VisibleBoundsWorldspace
+        {
+            get { return visibleBoundsWorldspace; }
+            set 
+            {
+                if(visibleBoundsWorldspace != value) 
+                {
+                    visibleBoundsWorldspace = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint CenterInWorldspace
+        {
+            get { return visibleBoundsWorldspace.Center; }
+            set 
+            {
+                if(visibleBoundsWorldspace.Center != value) 
+                {
+                    visibleBoundsWorldspace.Origin = new CCPoint(
+                        value.X - (float)Math.Floor(visibleBoundsWorldspace.Size.Width / 2.0f),
+                        value.Y - (float)Math.Floor(visibleBoundsWorldspace.Size.Height / 2.0f)
+                    );
+
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint TargetInWorldspace
+        {
+            get { return targetInWorldspace; }
+            set 
+            {
+                if(targetInWorldspace != value) 
+                {
+                    targetInWorldspace = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint UpDirection
+        {
+            get { return upDirection; }
+            set 
+            {
+                if(upDirection != value) 
+                {
+                    upDirection = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        internal Matrix ViewMatrix
+        {
+            get { return viewMatrix; }
+        }
+
+        internal Matrix ProjectionMatrix
+        {
+            get { return projectionMatrix; }
+        }
+
+        #endregion Properties
 
 
         #region Constructors
 
-        public CCCamera()
+        public CCCamera(CCRect visibleBoundsWorldspaceIn, CCPoint targetInWorldspaceIn)
         {
-            Restore();
+            visibleBoundsWorldspace = visibleBoundsWorldspaceIn;
+            targetInWorldspace = targetInWorldspaceIn;
+            UpdateCameraMatrices();
         }
 
         #endregion Constructors
 
 
-        public override string ToString()
+        void UpdateCameraMatrices()
         {
-            return String.Format("<CCCamera | center = ({0},{1},{2})>", CenterX, CenterY, CenterZ);
-        }
+            projectionMatrix = Matrix.CreateOrthographic(
+                visibleBoundsWorldspace.Size.Width, visibleBoundsWorldspace.Size.Height, 1024.0f, -1024.0f);
 
-        /// <summary>
-        /// sets the camera in the default position
-        /// </summary>
-        public void Restore()
-        {
-            EyeX = EyeY = 0.0f;
-            EyeZ = ZEye;
+            CCPoint cameraCenter = CenterInWorldspace;
+            Vector3 xnaCameraCenter = new Vector3(cameraCenter.X, cameraCenter.Y, 100.0f);
+            Vector3 xnaCameraTarget = new Vector3(targetInWorldspace.X, targetInWorldspace.Y, 0.0f);
+            Vector3 xnaCameraUpDirection = new Vector3(upDirection.X, upDirection.Y, 0.0f);
 
-            CenterX = CenterY = CenterZ = 0.0f;
+            viewMatrix = Matrix.CreateLookAt(xnaCameraCenter, xnaCameraTarget, Vector3.Up);
 
-            UpX = 0.0f;
-            UpY = 1.0f;
-            UpZ = 0.0f;
-
-            lookupMatrix = Matrix.Identity;
-
-            IsDirty = false;
-        }
-
-        /// <summary>
-        ///  Sets the camera using gluLookAt using its eye, center and up_vector
-        /// </summary>
-        public void Locate()
-        {
-            if (IsDirty)
-            {
-                lookupMatrix = Matrix.CreateLookAt(new Vector3(EyeX, EyeY, EyeZ),
-                                                     new Vector3(CenterX, CenterY, CenterZ),
-                                                     new Vector3(UpX, UpY, UpZ));
-                IsDirty = false;
-            }
-
-            CCDrawManager.MultMatrix(ref lookupMatrix);
-        }
-
-        /// <summary>
-        /// sets the eye values in points
-        /// </summary>
-        /// <param name="fEyeX"></param>
-        /// <param name="fEyeY"></param>
-        /// <param name="fEyeZ"></param>
-        public void SetEyeXyz(float eyeX, float eyeY, float eyeZ)
-        {
-            EyeX = eyeX;
-            EyeY = eyeY;
-            EyeZ = eyeZ;
-
-            IsDirty = true;
-        }
-
-        /// <summary>
-        /// sets the center values in points
-        /// </summary>
-        /// <param name="fCenterX"></param>
-        /// <param name="fCenterY"></param>
-        /// <param name="fCenterZ"></param>
-        public void SetCenterXyz(float centerX, float centerY, float centerZ)
-        {
-            CenterX = centerX;
-            CenterY = centerY;
-            CenterZ = centerZ;
-
-            IsDirty = true;
-        }
-
-        /// <summary>
-        ///  sets the up values
-        /// </summary>
-        /// <param name="fUpX"></param>
-        /// <param name="fUpY"></param>
-        /// <param name="fUpZ"></param>
-        public void SetUpXyz(float upX, float upY, float upZ)
-        {
-            UpX = upX;
-            UpY = upY;
-            UpZ = upZ;
-
-            IsDirty = true;
-        }
-
-        /// <summary>
-        ///  get the eye vector values in points
-        /// </summary>
-        /// <param name="pEyeX"></param>
-        /// <param name="pEyeY"></param>
-        /// <param name="pEyeZ"></param>
-        public void GetEyeXyz(out float eyeX, out float eyeY, out float eyeZ)
-        {
-            eyeX = EyeX;
-            eyeY = EyeY;
-            eyeZ = EyeZ;
-        }
-
-        /// <summary>
-        ///  get the center vector values int points 
-        /// </summary>
-        /// <param name="pCenterX"></param>
-        /// <param name="pCenterY"></param>
-        /// <param name="pCenterZ"></param>
-        public void GetCenterXyz(out float centerX, out float centerY, out float centerZ)
-        {
-            centerX = CenterX;
-            centerY = CenterY;
-            centerZ = CenterZ;
-        }
-
-        /// <summary>
-        ///  get the up vector values
-        /// </summary>
-        /// <param name="pUpX"></param>
-        /// <param name="pUpY"></param>
-        /// <param name="pUpZ"></param>
-        public void GetUpXyz(out float upX, out float upY, out float upZ)
-        {
-            upX = UpX;
-            upY = UpY;
-            upZ = UpZ;
-        }
-
-        /// <summary>
-        /// returns the Z eye
-        /// </summary>
-        /// <returns></returns>
-        public static float ZEye
-        {
-			get 
-			{
-				return 1.192092896e-07F;
-			}
+            OnCameraVisibleBoundsChanged(this, null);
         }
     }
 }
