@@ -37,9 +37,10 @@ namespace CocosSharp
         bool noDrawChildren;
 
         CCRenderTexture renderTexture;
-        CCRect saveScissorRect;
         CCClipMode childClippingMode;
 
+        CCRect cachedViewportRect;
+        CCRect cachedVisibleBoundsRect;
 
         #region Properties
 
@@ -54,7 +55,7 @@ namespace CocosSharp
                 if (childClippingMode != value)
                 {
                     childClippingMode = value;
-                    InitClipping();
+                    UpdateClipping();
                 }
             }
         }
@@ -65,7 +66,7 @@ namespace CocosSharp
             set
             {
                 base.ContentSize = value;
-                InitClipping();
+                UpdateClipping();
             }
         }
 
@@ -77,25 +78,23 @@ namespace CocosSharp
         public CCLayer(CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
             IgnoreAnchorPointForPosition = true;
+            AnchorPoint = new CCPoint(0.5f, 0.5f);
         }
 
         public CCLayer() : this(CCClipMode.None)
         {
         }
 
-        void InitClipping()
+        void UpdateClipping()
         {
-            if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget && Director !=null)
+            if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget && Scene !=null)
             {
-                if (renderTexture == null || renderTexture.ContentSize.Width < ContentSize.Width 
-                    || renderTexture.ContentSize.Height < ContentSize.Height)
-                {
-                    renderTexture = new CCRenderTexture((int)ContentSize.Width, (int)ContentSize.Height, Director.ContentScaleFactor);
-                    renderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
-                }
-                renderTexture.Sprite.TextureRect = new CCRect(0, 0, ContentSize.Width, ContentSize.Height);
+                CCRect bounds = Camera.VisibleBoundsWorldspace;
+                CCRect viewportRect = Viewport.ViewportInPixels;
+
+                renderTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
+                renderTexture.Sprite.AnchorPoint = new CCPoint(0, 0);
             }
             else
             {
@@ -104,21 +103,6 @@ namespace CocosSharp
         }
 
         #endregion Constructors
-
-
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if (Director != null)
-            {
-                ContentSize = Director.WindowSizeInPoints;
-            }
-        }
-
-        #endregion Setup content
 
 
         public override void OnEnter()
@@ -132,11 +116,39 @@ namespace CocosSharp
             base.OnExit();
         }
 
+
+        #region CCNode - scene layout callbacks
+
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            if(ContentSize == CCSize.Zero)
+                ContentSize = Scene.VisibleBoundsWorldspace.Size;
+        }
+
+        protected override void VisibleBoundsChanged()
+        {
+            base.VisibleBoundsChanged();
+
+            UpdateClipping();
+        }
+
+        protected override void ViewportChanged()
+        {
+            base.ViewportChanged();
+
+            UpdateClipping();
+        }
+
+        #endregion CCNode - scene layout callbacks
+
+
         #region Visiting and drawing
 
         public override void Visit()
         {
-            if (!Visible || Director == null)
+            if (!Visible || Window == null)
             {
                 return;
             }
@@ -146,7 +158,7 @@ namespace CocosSharp
                 return;
             }
 
-            CCDrawManager.PushMatrix();
+            Window.DrawManager.PushMatrix();
 
             if (Grid != null && Grid.Active)
             {
@@ -154,7 +166,7 @@ namespace CocosSharp
                 TransformAncestors();
             }
 
-            Transform();
+            Transform ();
 
             BeforeDraw();
 
@@ -200,65 +212,36 @@ namespace CocosSharp
                 Grid.AfterDraw(this);
             }
 
-            CCDrawManager.PopMatrix();
+            Window.DrawManager.PopMatrix();
         }
 
         void BeforeDraw()
         {
             noDrawChildren = false;
+            CCRect visibleBounds = Camera.VisibleBoundsWorldspace;
+            CCRect viewportRect = Viewport.ViewportInPixels;
+            CCDrawManager drawManager = Window.DrawManager;
 
-            if (ChildClippingMode == CCClipMode.Bounds && Director != null)
+            if(cachedViewportRect != viewportRect || cachedVisibleBoundsRect != visibleBounds) 
             {
-                // We always clip to the bounding box
-                CCSize contentSize = ContentSize;
-                var rect = new CCRect(0, 0, contentSize.Width, contentSize.Height);
-                var bounds = CCAffineTransform.Transform(rect, NodeToWorldTransform);
-
-                var winSize = Director.WindowSizeInPoints;
-
-                CCRect prevScissorRect;
-                if (CCDrawManager.ScissorRectEnabled)
-                {
-                    prevScissorRect = CCDrawManager.ScissorRect;
-                }
-                else
-                {
-                    prevScissorRect = new CCRect(0, 0, winSize.Width, winSize.Height);
-                }
-
-                if (!bounds.IntersectsRect(prevScissorRect))
-                {
-                    noDrawChildren = true;
-                    return;
-                }
-
-                float minX = Math.Max(bounds.MinX, prevScissorRect.MinX);
-                float minY = Math.Max(bounds.MinY, prevScissorRect.MinY);
-                float maxX = Math.Min(bounds.MaxX, prevScissorRect.MaxX);
-                float maxY = Math.Min(bounds.MaxY, prevScissorRect.MaxY);
-
-                if (CCDrawManager.ScissorRectEnabled)
-                {
-                    restoreScissor = true;
-                }
-                else
-                {
-                    CCDrawManager.ScissorRectEnabled = true;
-                }
-
-                saveScissorRect = prevScissorRect;
-
-                CCDrawManager.SetScissorInPoints(minX, minY, maxX - minX, maxY - minY);
+                UpdateClipping();
+                cachedViewportRect = viewportRect;
+                cachedVisibleBoundsRect = visibleBounds;
             }
+
+            if (ChildClippingMode == CCClipMode.Bounds && Window != null)
+            {
+                drawManager.ScissorRectInPixels = viewportRect;
+            }
+
             else if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)
             {
-                saveScissorRect = CCDrawManager.ScissorRect;
-                restoreScissor = CCDrawManager.ScissorRectEnabled;
+                restoreScissor = Window.DrawManager.ScissorRectEnabled;
 
-                CCDrawManager.ScissorRectEnabled = false;
+                Window.DrawManager.ScissorRectEnabled = false;
 
-                CCDrawManager.PushMatrix();
-                CCDrawManager.SetIdentityMatrix();
+                Window.DrawManager.PushMatrix();
+                Window.DrawManager.WorldMatrix = Matrix.Identity;
 
                 renderTexture.BeginWithClear(0, 0, 0, 0);
             }
@@ -272,22 +255,17 @@ namespace CocosSharp
                 {
                     renderTexture.End();
 
-                    CCDrawManager.PopMatrix();
+                    Window.DrawManager.PopMatrix();
                 }
 
                 if (restoreScissor)
                 {
-                    CCDrawManager.SetScissorInPoints(
-                        saveScissorRect.Origin.X, saveScissorRect.Origin.Y,
-                        saveScissorRect.Size.Width, saveScissorRect.Size.Height);
-
-                    CCDrawManager.ScissorRectEnabled = true;
-
+                    Window.DrawManager.ScissorRectEnabled = true;
                     restoreScissor = false;
                 }
                 else
                 {
-                    CCDrawManager.ScissorRectEnabled = false;
+                    Window.DrawManager.ScissorRectEnabled = false;
                 }
 
                 if (ChildClippingMode == CCClipMode.BoundsWithRenderTarget)

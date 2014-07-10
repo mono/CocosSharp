@@ -42,18 +42,18 @@ namespace CocosSharp
             }
         }
 
-        public override CCDirector Director 
+        public override CCScene Scene 
         { 
-            get { return base.Director; }
+            get { return base.Scene; }
             internal set 
             {
-                base.Director = value;
+                base.Scene = value;
 
                 if (value != null && Layers != null)
                 {
                     foreach (CCLayer layer in Layers.Values) 
                     {
-                        layer.Director = value;
+                        layer.Scene = value;
                     }
                 }
             }
@@ -116,8 +116,8 @@ namespace CocosSharp
             {
                 Layers[layer.Tag + TagOffsetForUniqueness] = layer;
 
-                if(Director != null)
-                    layer.Director = Director;
+                if(Window != null)
+                    layer.Window = Window;
             }
         }
 

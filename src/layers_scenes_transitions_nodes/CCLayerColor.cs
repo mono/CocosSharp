@@ -42,21 +42,6 @@ namespace CocosSharp
 
         public virtual CCBlendFunc BlendFunc { get; set; }
 
-        public override CCSize ContentSize
-        {
-            get { return base.ContentSize; }
-            set
-            {
-                //1, 2, 3, 3
-                SquareVertices[1].Position.X = value.Width;
-                SquareVertices[2].Position.Y = value.Height;
-                SquareVertices[3].Position.X = value.Width;
-                SquareVertices[3].Position.Y = value.Height;
-
-                base.ContentSize = value;
-            }
-        }
-
         public override CCColor3B Color
         {
             get { return base.Color; }
@@ -77,18 +62,29 @@ namespace CocosSharp
             }
         }
 
+        public override CCSize ContentSize
+        {
+            get { return base.ContentSize; }
+            set
+            {
+                if (ContentSize != value) 
+                {
+                    base.ContentSize = value;
+                    UpdateVerticesPosition();
+                }
+            }
+        }
+
+
         #endregion Properties
 
 
         #region Constructors
 
-        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0), 0.0f, 0.0f)
+        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0))
         {
         }
 
-        /// <summary>
-        /// creates a CCLayer with color. Width and height are the window size. 
-        /// </summary>
         public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
         {
         }
@@ -96,7 +92,7 @@ namespace CocosSharp
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public CCLayerColor (CCColor4B color, float width, float height) : base()
+        public CCLayerColor (CCColor4B color,float width, float height) : base()
         {
             DisplayedColor = new CCColor3B(color.R, color.G, color.B);
             RealColor = DisplayedColor;
@@ -110,26 +106,11 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        #region Setup content
-
-        protected override void RunningOnNewWindow(CCSize windowSize)
-        {
-            base.RunningOnNewWindow(windowSize);
-
-            if(Director != null && (ContentSize.Width == 0.0f || ContentSize.Height == 0.0f))
-            {
-                ContentSize = Director.WindowSizeInPoints;
-            }
-        }
-
-        #endregion Setup content
-
-
         protected override void Draw()
         {
-            CCDrawManager.TextureEnabled = false;
-            CCDrawManager.BlendFunc(BlendFunc);
-            CCDrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
+            Window.DrawManager.TextureEnabled = false;
+            Window.DrawManager.BlendFunc(BlendFunc);
+            Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
         }
 
         protected virtual void UpdateColor()
@@ -142,39 +123,16 @@ namespace CocosSharp
             SquareVertices[3].Color = color;
         }
 
-
-        #region Change size
-
-        /// <summary>
-        /// change width in Points
-        /// </summary>
-        /// <param name="w"></param>
-        public void ChangeWidth(float w)
+        void UpdateVerticesPosition()
         {
-            ContentSize = new CCSize(w, ContentSize.Height);
-        }
+            CCSize contentSize = ContentSize;
 
-        /// <summary>
-        /// change height in Points
-        /// </summary>
-        /// <param name="h"></param>
-        public void ChangeHeight(float h)
-        {
-            ContentSize = new CCSize(ContentSize.Width, h);
+            //1, 2, 3, 3
+            SquareVertices[1].Position.X = contentSize.Width;
+            SquareVertices[2].Position.Y = contentSize.Height;
+            SquareVertices[3].Position.X = contentSize.Width;
+            SquareVertices[3].Position.Y = contentSize.Height;
         }
-
-        /// <summary>
-        ///  change width and height in Points
-        ///  @since v0.8
-        /// </summary>
-        /// <param name="w"></param>
-        /// <param name="h"></param>
-        public void ChangeWidthAndHeight(float w, float h)
-        {
-            ContentSize = new CCSize(w, h);
-        }
-
-        #endregion Change size
     }
 
 }
