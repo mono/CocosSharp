@@ -28,7 +28,7 @@ namespace tests
         {
             base.OnEnter();
             CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
-            var visiblePoint = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - 50, visibleBounds.Origin.Y + 25);
+            var visiblePoint = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - pMenuItem.ContentSize.Width - 10.0f, visibleBounds.Origin.Y + 25);
 
             pMenu.Position = CCPoint.Zero;
             pMenuItem.Position = visiblePoint;
