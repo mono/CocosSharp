@@ -8,19 +8,26 @@ namespace tests
 {
     public class LabelGlyphDesigner : AtlasDemo
     {
+
+		CCLabelBMFont label1;
+
         public LabelGlyphDesigner()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
 			var layer = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
             AddChild(layer, -10);
 
             // CCLabelBMFont
-			var label1 = new CCLabelBMFont("Testing Glyph Designer", "fonts/futura-48.fnt");
+			label1 = new CCLabelBMFont("Testing Glyph Designer", "fonts/futura-48.fnt");
             AddChild(label1);
-			label1.Position = s.Center;
         }
 
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			label1.Position = windowSize.Center;
+
+		}
         public override string title()
         {
             return "Testing Glyph Designer";

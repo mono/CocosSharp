@@ -13,11 +13,19 @@ namespace tests
 
         public GitHubIssue5()
         {
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
+            
             _TestLabel = new CCLabelTtf("", "Arial", 10);
             AddChild(_TestLabel);
-            _TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var s = windowSize;
+			_TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
+
+		}
 
         public override void OnEnter()
         {

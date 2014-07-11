@@ -17,8 +17,6 @@ namespace tests
             string japanese = strings["japanese"].AsString;
             string spanish = strings["spanish"].AsString;
 
-            CCSize s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
             label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.Left);
             AddChild(label1);
 

@@ -4,17 +4,25 @@ namespace tests
 {
     internal class TTFFontInit : AtlasDemo
     {
+
+		CCLabelTtf font;
+
         public TTFFontInit()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
-            var font = new CCLabelTtf();
+            font = new CCLabelTtf();
             font.FontName = "MarkerFelt";
             font.FontSize = 38;
             font.Text = ("It is working!");
             AddChild(font);
-            font.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			font.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 4 * 2);
+		}
 
         public override string title()
         {

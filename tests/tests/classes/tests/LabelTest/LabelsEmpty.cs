@@ -8,35 +8,48 @@ namespace tests
 {
     public class LabelsEmpty : AtlasDemo
     {
+
+		CCLabelBMFont label1;
+		CCLabelTtf label2;
+		CCLabelAtlas label3;
+
         public LabelsEmpty()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
 
             // CCLabelBMFont
-			var label1 = new CCLabelBMFont("", "fonts/bitmapFontTest3.fnt");
+			label1 = new CCLabelBMFont("", "fonts/bitmapFontTest3.fnt");
             AddChild(label1, 0, (int)TagSprite.kTagBitmapAtlas1);
-            label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
-
+            
             // CCLabelTTF
-			var label2 = new CCLabelTtf("", "arial", 24);
+			label2 = new CCLabelTtf("", "arial", 24);
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
-            label2.Position = new CCPoint(s.Width / 2, s.Height / 2);
 
             // CCLabelAtlas
-			var label3 = new CCLabelAtlas("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
+			label3 = new CCLabelAtlas("", "fonts/tuffy_bold_italic-charmap", 48, 64, ' ');
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
-            label3.Position = new CCPoint(s.Width / 2, 0 + 100);
 
             base.Schedule(updateStrings, 1.0f);
 
             setEmpty = false;
         }
 
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			var s = windowSize;
+
+			label1.Position = new CCPoint(s.Width / 2, s.Height - 100);
+			label2.Position = s.Center;
+			label3.Position = new CCPoint(s.Width / 2, 0 + 100);
+		}
+
+
         public void updateStrings(float dt)
         {
-			var label1 = (CCLabelBMFont)GetChildByTag((int)TagSprite.kTagBitmapAtlas1);
-			var label2 = (CCLabelTtf)GetChildByTag((int)TagSprite.kTagBitmapAtlas2);
-			var label3 = (CCLabelAtlas)GetChildByTag((int)TagSprite.kTagBitmapAtlas3);
+			var label1 = (CCLabelBMFont)this[(int)TagSprite.kTagBitmapAtlas1];
+			var label2 = (CCLabelTtf)this[(int)TagSprite.kTagBitmapAtlas2];
+			var label3 = (CCLabelAtlas)this[(int)TagSprite.kTagBitmapAtlas3];
 
             if (!setEmpty)
             {
@@ -48,9 +61,9 @@ namespace tests
             }
             else
             {
-                label1.Text = ("");
-                label2.Text = ("");
-                label3.Text = ("");
+				label1.Text = string.Empty;
+				label2.Text = string.Empty;
+				label3.Text = string.Empty;
 
                 setEmpty = false;
             }

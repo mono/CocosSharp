@@ -51,7 +51,7 @@ namespace tests
 		{
 			base.RunningOnNewWindow(windowSize);
 
-			label1.Position = CCVisibleRect.Left;
+			label1.Position = CCVisibleRect.LeftBottom;
 			label2.Position = CCVisibleRect.Center;
 			label3.Position = CCVisibleRect.RightTop;
 
