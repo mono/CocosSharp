@@ -13,8 +13,6 @@ namespace tests
 
         public AtlasBitmapColor()
         {
-			var s = CCApplication.SharedApplication.MainWindowDirector.WindowSizeInPoints;
-
 			label1 = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
 			label1.Color = CCColor3B.Blue;
             AddChild(label1);
