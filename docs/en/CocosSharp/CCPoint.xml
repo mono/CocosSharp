@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines a point vector with two components.</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -21,9 +21,8 @@
         <Parameter Name="pt" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="pt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="pt">Value to initialze the point components too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -34,9 +33,9 @@
         <Parameter Name="v" Type="CocosSharp.CCVector2" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="v">Value to initialize the point componets too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -48,10 +47,10 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="x">Value to initialize the X component too.</param>
+        <param name="y">Value to initialize the Y component too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorLowerLeft">
@@ -62,8 +61,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorLowerRight">
@@ -74,8 +73,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddle">
@@ -86,8 +85,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleBottom">
@@ -98,8 +97,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleLeft">
@@ -110,8 +109,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleRight">
@@ -122,8 +121,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleTop">
@@ -134,8 +133,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorUpperLeft">
@@ -146,8 +145,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorUpperRight">
@@ -158,8 +157,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AngleSigned">
@@ -1143,8 +1142,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Returns a CCPoint with all of its components set to zero.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>
