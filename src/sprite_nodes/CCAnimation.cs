@@ -111,6 +111,10 @@ namespace CocosSharp
             var texture = CCApplication.SharedApplication.TextureCache.AddImage(filename);
             CCRect rect = CCRect.Zero;
             rect.Size = texture.ContentSizeInPixels;
+
+            if(contentSize == null)
+                contentSize = rect.Size;
+
             AddSpriteFrame(new CCSpriteFrame ((CCSize)contentSize, texture, rect));
         }
 

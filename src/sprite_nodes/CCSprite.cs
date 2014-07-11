@@ -10,7 +10,9 @@ namespace CocosSharp
         bool flipY;
         bool isTextureRectRotated;
         bool opacityModifyRGB;
-        bool shouldBeHidden;            // should not be drawn because one of the ancestors is not visible
+
+        CCPoint unflippedOffsetPositionFromCenter;
+        CCSize untrimmedSizeInPixels;
 
         CCRect textureRectInPixels;
 
@@ -195,6 +197,10 @@ namespace CocosSharp
             set
             {
                 base.ContentSize = value;
+
+                if(untrimmedSizeInPixels == CCSize.Zero)
+                    untrimmedSizeInPixels = value;
+
                 UpdateSpriteTextureQuads();
             }
         }
@@ -230,26 +236,33 @@ namespace CocosSharp
                     ContentSize,
                     texture,
                     textureRectInPixels,
-                    IsTextureRectRotated
+                    untrimmedSizeInPixels,
+                    IsTextureRectRotated,
+                    unflippedOffsetPositionFromCenter
                 );
             }
             set
             {
-                CCTexture2D newTexture = value.Texture;
-                // update texture before updating texture rect
-                if (newTexture != texture)
+                if (value != null) 
                 {
-                    Texture = newTexture;
+                    CCTexture2D newTexture = value.Texture;
+
+                    // update texture before updating texture rect
+                    if (newTexture != texture) 
+                    {
+                        Texture = newTexture;
+                    }
+
+                    // update rect
+                    IsTextureRectRotated = value.IsRotated;
+                    textureRectInPixels = value.TextureRectInPixels;
+                    unflippedOffsetPositionFromCenter = value.OffsetInPixels;
+                    untrimmedSizeInPixels = value.OriginalSizeInPixels;
+
+                    ContentSize = untrimmedSizeInPixels;
+
+                    UpdateSpriteTextureQuads();
                 }
-
-                // update rect
-                IsTextureRectRotated = value.IsRotated;
-                textureRectInPixels = value.TextureRectInPixels;
-
-                if(ContentSize == CCSize.Zero)
-                    ContentSize = textureRectInPixels.Size;
-
-                UpdateSpriteTextureQuads();
             }
         }
 
@@ -550,11 +563,33 @@ namespace CocosSharp
             {
                 // self rendering
 
+                CCPoint relativeOffset = unflippedOffsetPositionFromCenter;
+
+                if (flipX)
+                {
+                    relativeOffset.X = -relativeOffset.X;
+                }
+                if (flipY)
+                {
+                    relativeOffset.Y = -relativeOffset.Y;
+                }
+
+                CCPoint centerPoint = untrimmedSizeInPixels.Center + relativeOffset;
+                CCPoint subRectOrigin;
+                subRectOrigin.X = centerPoint.X - textureRectInPixels.Size.Width / 2.0f;
+                subRectOrigin.Y = centerPoint.Y - textureRectInPixels.Size.Height / 2.0f;
+
+                CCRect subRectRatio = new CCRect (
+                    subRectOrigin.X / untrimmedSizeInPixels.Width, 
+                    subRectOrigin.Y / untrimmedSizeInPixels.Height,
+                    textureRectInPixels.Size.Width / untrimmedSizeInPixels.Width,
+                    textureRectInPixels.Size.Height / untrimmedSizeInPixels.Height);
+
                 // Atlas: Vertex
-                float x1 = 0.0f;
-                float y1 = 0.0f;
-                float x2 = ContentSize.Width;
-                float y2 = ContentSize.Height;
+                float x1 = subRectRatio.Origin.X * ContentSize.Width;
+                float y1 = subRectRatio.Origin.Y * ContentSize.Height;
+                float x2 = x1 + (subRectRatio.Size.Width * ContentSize.Width);
+                float y2 = y1 + (subRectRatio.Size.Height * ContentSize.Height);
 
                 // Don't update Z.
                 quad.BottomLeft.Vertices = new CCVertex3F(x1, y1, 0);
