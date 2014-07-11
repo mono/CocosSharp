@@ -1085,7 +1085,7 @@ namespace CocosSharp
         public void Translate(float x, float y, int z)
         {
             tmpMatrix = Matrix.CreateTranslation(x, y, z);
-            Matrix.Multiply(ref tmpMatrix, ref worldMatrix, out worldMatrix);
+            Matrix.Multiply(ref tmpMatrix, ref matrix, out matrix);
             worldMatrixChanged = true;
         }
 
