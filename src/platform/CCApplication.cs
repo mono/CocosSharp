@@ -322,6 +322,7 @@ namespace CocosSharp
                 {
                     manager.PreferredBackBufferWidth = value;
                     CCDrawManager.UpdatePresentationParameters();
+                    manager.ApplyChanges();
                 }
 
             }
@@ -350,6 +351,7 @@ namespace CocosSharp
                 {
                     manager.PreferredBackBufferHeight = value;
                     CCDrawManager.UpdatePresentationParameters();
+                    manager.ApplyChanges();
                 }
             }
         }
