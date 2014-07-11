@@ -100,7 +100,7 @@ namespace CocosSharp
                 if (ZoomBehaviorOnTouch) 
                 {
                     CCPoint zoomScale = (Selected) ? originalScale * 1.2f : originalScale;
-                    CCAction zoomAction = new CCScaleTo(0.1f, zoomScale.X, zoomScale.Y); 
+					CCAction zoomAction = new CCScaleTo(0.1f, zoomScale.X, zoomScale.Y); 
 
                     if(ZoomActionState !=null)
                     { 
@@ -180,7 +180,12 @@ namespace CocosSharp
             {
                 if (ZoomBehaviorOnTouch)
                 {
-                    StopAllActions();
+					if(ZoomActionState !=null)
+					{ 
+						ZoomActionState.Stop(); 
+						ZoomActionState = null;
+					}
+
                     ScaleX = originalScale.X;
                     ScaleY = originalScale.Y;
                 }

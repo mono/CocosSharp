@@ -40,7 +40,7 @@ namespace CocosSharp
 			Range = action.Range;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, j;
 

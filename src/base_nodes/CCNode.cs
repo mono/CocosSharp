@@ -67,13 +67,16 @@ namespace CocosSharp
         - Each node has a camera. By default it points to the center of the CCNode.
         */
 
-    public class CCNode : ICCUpdatable, ICCFocusable, ICCKeypadDelegate, IComparer<CCNode>, IComparable<CCNode>
+    public class CCNode : ICCUpdatable, ICCFocusable, IComparer<CCNode>, IComparable<CCNode>
     {
-        public const int TagInvalid = -1;                           // Use this to determine if a tag has been set on the node.
+        public const int TagInvalid = -1;                               // Use this to determine if a tag has been set on the node.
         static uint globalOrderOfArrival = 1;
 
         bool ignoreAnchorPointForPosition;
         bool isCleaned = false;
+        bool isOpacityCascaded;
+        bool isColorCascaded;
+
 
         int tag;
         int zOrder;
@@ -86,6 +89,10 @@ namespace CocosSharp
         float scaleY;
         float skewX;
         float skewY;
+
+        // opacity controls
+        byte displayedOpacity;
+        CCColor3B displayedColor;
 
         CCPoint anchorPoint;
         CCPoint anchorPointInPoints;
@@ -102,6 +109,9 @@ namespace CocosSharp
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
+        List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when a EventDispatcher is not yet available
+
+
         #region Properties
 
         // Auto-implemented properties
@@ -109,7 +119,7 @@ namespace CocosSharp
         public bool IsRunning { get; protected set; }
         public virtual bool HasFocus { get; set; }
         public virtual bool Visible { get; set; }
-        public virtual bool IsSerializable { get; protected set; }                  // If this is true, the screen will be recorded into the director's state
+        public virtual bool IsSerializable { get; protected set; }      // If this is true, the screen will be recorded into the director's state
 
         public virtual float VertexZ { get; set; }
         public object UserData { get; set; }
@@ -121,6 +131,8 @@ namespace CocosSharp
         internal protected uint OrderOfArrival { get; internal set; }
 
         protected bool IsReorderChildDirty { get; set; }
+        protected byte RealOpacity { get; set; }
+        protected CCColor3B RealColor { get; set; }
         protected Matrix XnaWorldMatrix { get; private set; }
 
 
@@ -141,6 +153,77 @@ namespace CocosSharp
                     ignoreAnchorPointForPosition = value;
                     UpdateTransform();
                 }
+            }
+        }
+
+        public virtual bool IsOpacityCascaded 
+        { 
+            get { return isOpacityCascaded; }
+            set 
+            {
+                if (isOpacityCascaded == value)
+                    return;
+
+                isOpacityCascaded = value;
+
+                if (isOpacityCascaded)
+                {
+                    UpdateCascadeOpacity();
+                }
+                else
+                {
+                    DisableCascadeOpacity();
+                }
+
+            }
+        }
+
+        public virtual bool IsColorCascaded 
+        { 
+            get { return isColorCascaded; }
+            set 
+            {
+                if (isColorCascaded == value)
+                    return;
+
+                isColorCascaded = value;
+
+                if (isColorCascaded)
+                {
+                    UpdateCascadeColor();
+                }
+                else
+                {
+                    DisableCascadeColor();
+                }
+
+
+            }
+        }
+
+        public virtual bool IsColorModifiedByOpacity
+        {
+            get { return false; }
+            set { }
+        }
+
+        public virtual byte Opacity
+        {
+            get { return RealOpacity; }
+            set
+            {
+                displayedOpacity = RealOpacity = value;
+
+                UpdateCascadeOpacity();
+            }
+        }
+
+        public byte DisplayedOpacity 
+        { 
+            get { return displayedOpacity; }
+            protected set 
+            {
+                displayedOpacity = value;
             }
         }
 
@@ -198,6 +281,11 @@ namespace CocosSharp
             }
         }
 
+        public int NumberOfRunningActions
+        {
+            get { return ActionManager.NumberOfRunningActionsInTarget (this); }
+        }
+
         public float GlobalZOrder 
         { 
             get { return globalZOrder; }
@@ -210,11 +298,6 @@ namespace CocosSharp
                 }
 
             }
-        }
-
-        public int NumberOfRunningActions
-        {
-            get { return ActionManager.NumberOfRunningActionsInTarget (this); }
         }
 
         public virtual float SkewX
@@ -309,6 +392,26 @@ namespace CocosSharp
             set { Position = new CCPoint(position.X, value); }
         }
 
+        public CCColor3B DisplayedColor 
+        { 
+            get { return displayedColor; } 
+            protected set 
+            { 
+                displayedColor = value;
+            }
+        }
+
+        public virtual CCColor3B Color
+        {
+            get { return RealColor; }
+            set
+            {
+                displayedColor = RealColor = value;
+
+                UpdateCascadeColor();
+            }
+        }
+
         public virtual CCPoint Position
         {
             get { return position; }
@@ -327,7 +430,7 @@ namespace CocosSharp
             get 
             {
                 CCAffineTransform parentWorldTransform 
-                    = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
+                = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
 
                 return parentWorldTransform.Transform(Position);
             }
@@ -502,11 +605,13 @@ namespace CocosSharp
                         OnSceneViewportChanged(this, null);
                         OnSceneVisibleBoundsChanged(this, null);
                     }
+
+                    AttachEvents();
                 }
             }
         }
 
-        public virtual CCDirector Director 
+        public virtual CCDirector Director
         { 
             get { return Scene.Director; }
             set { Scene.Director = value; }
@@ -530,7 +635,7 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
-        public virtual CCEventDispatcher EventDispatcher 
+        internal virtual CCEventDispatcher EventDispatcher 
         { 
             get { return Scene != null ? Scene.EventDispatcher : null; }
         }
@@ -569,11 +674,40 @@ namespace CocosSharp
             tag = TagInvalid;
 
             HasFocus = false;
-
             IsSerializable = true;
+            IsColorCascaded = false;
+            IsOpacityCascaded = false;
+
+            displayedOpacity = 255;
+            RealOpacity = 255;
+            displayedColor = CCColor3B.White;
+            RealColor = CCColor3B.White;
         }
 
         #endregion Constructors
+
+
+        #region Event dispatcher handling
+
+        void AttachEvents()
+        {
+            if (toBeAddedListeners != null && toBeAddedListeners.Count > 0) 
+            {
+                var eventDispatcher = EventDispatcher;
+                foreach (var listener in toBeAddedListeners) 
+                {
+                    if (listener.SceneGraphPriority != null)
+                        eventDispatcher.AddEventListener (listener, listener.SceneGraphPriority);
+                    else
+                        eventDispatcher.AddEventListener (listener, listener.FixedPriority);
+                }
+
+                toBeAddedListeners.Clear ();
+                toBeAddedListeners = null;
+            }
+        }
+
+        #endregion Event dispatcher handling
 
 
         #region Scene callbacks
@@ -701,7 +835,7 @@ namespace CocosSharp
         public CCPoint WorldToParentspace(CCPoint point)
         {
             CCAffineTransform parentWorldTransform 
-                = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
+            = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
 
             return parentWorldTransform.Transform(point);
         }
@@ -1070,6 +1204,271 @@ namespace CocosSharp
         #endregion Child Sorting
 
 
+        #region Events and Listeners
+
+        /// <summary>
+        /// Adds a event listener for a specified event with the priority of scene graph.
+        /// The priority of scene graph will be fixed value 0. So the order of listener item
+        /// in the vector will be ' <0, scene graph (0 priority), >0'.
+        /// </summary>
+        /// <param name="listener">The listener of a specified event.</param>
+        /// <param name="node">The priority of the listener is based on the draw order of this node.</param>
+        public void AddEventListener(CCEventListener listener, CCNode node = null)
+        {
+
+            if (node == null)
+                node = this;
+
+            if (EventDispatcherIsEnabled)
+            {
+                EventDispatcher.AddEventListener(listener, node);
+            }
+            else
+            {
+                if (toBeAddedListeners == null)
+                    toBeAddedListeners = new List<CCEventListener>();
+
+                listener.SceneGraphPriority = node;
+                toBeAddedListeners.Add(listener);
+            }
+        }
+
+        /// <summary>
+        /// Adds a event listener for a specified event with the fixed priority.
+        /// A lower priority will be called before the ones that have a higher value.
+        /// 0 priority is not allowed for fixed priority since it's used for scene graph based priority.
+        /// </summary>
+        /// <param name="listener">The listener of a specified event.</param>
+        /// <param name="fixedPriority">The fixed priority of the listener.</param>
+        public void AddEventListener(CCEventListener listener, int fixedPriority)
+        {
+            if (EventDispatcherIsEnabled)
+            {
+                EventDispatcher.AddEventListener(listener, fixedPriority);
+            }
+            else
+            {
+                if (toBeAddedListeners == null)
+                    toBeAddedListeners = new List<CCEventListener>();
+
+                listener.FixedPriority = fixedPriority;
+                toBeAddedListeners.Add(listener);
+            }
+        }
+
+        /// <summary>
+        /// Adds a Custom event listener.
+        /// It will use a fixed priority of 1.
+        /// </summary>
+        /// <returns>The generated event. Needed in order to remove the event from the dispather.</returns>
+        /// <param name="eventName">Event name.</param>
+        /// <param name="callback">Callback.</param>
+        public CCEventListenerCustom AddCustomEventListener(string eventName, Action<CCEventCustom> callback)
+        {
+            var listener = new CCEventListenerCustom(eventName, callback);
+            AddEventListener(listener, 1);
+            return listener;
+        }
+
+        /// <summary>
+        /// Remove a listener
+        /// </summary>
+        /// <param name="listener">The specified event listener which needs to be removed.</param>
+        public void RemoveEventListener(CCEventListener listener)
+        {
+            if (EventDispatcherIsEnabled)
+                EventDispatcher.RemoveEventListener(listener);
+
+            if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
+                toBeAddedListeners.Remove(listener);
+        }
+
+        /// <summary>
+        /// Removes all listeners with the same event listener type
+        /// </summary>
+        /// <param name="listenerType"></param>
+        public void RemoveEventListeners(CCEventListenerType listenerType)
+        {
+            if (EventDispatcher != null)
+                EventDispatcher.RemoveEventListeners(listenerType);
+
+            if (toBeAddedListeners != null)
+            {
+
+                var listenerID = string.Empty;
+                switch (listenerType) 
+                {
+                case CCEventListenerType.TOUCH_ONE_BY_ONE:
+                    listenerID = CCEventListenerTouchOneByOne.LISTENER_ID;
+                    break;
+                case CCEventListenerType.TOUCH_ALL_AT_ONCE:
+                    listenerID = CCEventListenerTouchAllAtOnce.LISTENER_ID;
+                    break;
+                case CCEventListenerType.MOUSE:
+                    listenerID = CCEventListenerMouse.LISTENER_ID;
+                    break;
+                case CCEventListenerType.ACCELEROMETER:
+                    listenerID = CCEventListenerAccelerometer.LISTENER_ID;
+                    break;
+                case CCEventListenerType.KEYBOARD:
+                    listenerID = CCEventListenerKeyboard.LISTENER_ID;
+                    break;
+                case CCEventListenerType.GAMEPAD:
+                    listenerID = CCEventListenerGamePad.LISTENER_ID;
+                    break;
+
+                default:
+                    Debug.Assert (false, "Invalid listener type!");
+                    break;
+                }
+
+                for (int i = 0; i < toBeAddedListeners.Count; i++)
+                {
+                    if (toBeAddedListeners[i].ListenerID == listenerID)
+                    {
+                        toBeAddedListeners.RemoveAt(i);
+                    }
+                }
+
+                if (toBeAddedListeners.Count == 0)
+                    toBeAddedListeners = null;
+
+            }
+        }
+
+        /// <summary>
+        /// Removes all listeners which are associated with the specified target.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="recursive"></param>
+        public void RemoveEventListeners(CCNode target, bool recursive = false)
+        {
+            if (EventDispatcher != null)
+                EventDispatcher.RemoveEventListeners(target, recursive);
+
+            if (toBeAddedListeners != null)
+            {
+                for (int i = 0; i < toBeAddedListeners.Count; i++)
+                {
+                    if (toBeAddedListeners[i].SceneGraphPriority == target)
+                    {
+                        toBeAddedListeners.RemoveAt(i);
+                    }
+                }
+
+                if (toBeAddedListeners.Count == 0)
+                    toBeAddedListeners = null;
+
+            }
+        }
+
+        /// <summary>
+        /// Removes all listeners which are associated with this node.
+        /// </summary>
+        /// <param name="recursive"></param>
+        public void RemoveEventListeners(bool recursive = false)
+        {
+            RemoveEventListeners(this, recursive);
+        }
+
+        /// <summary>
+        /// Removes all listeners
+        /// </summary>
+        public void RemoveAllListeners()
+        {
+            if (EventDispatcher != null)
+                EventDispatcher.RemoveAll();
+
+            if (toBeAddedListeners != null)
+            {
+                toBeAddedListeners.Clear();
+                toBeAddedListeners = null;
+            }
+        }
+
+        /// <summary>
+        /// Pauses all listeners which are associated the specified target.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="recursive"></param>
+        public void PauseListeners(CCNode target, bool recursive = false)
+        {
+            if (EventDispatcher != null)
+                EventDispatcher.Pause(target, recursive);
+        }
+
+        /// <summary>
+        /// Pauses all listeners which are associated the specified this node.
+        /// </summary>
+        /// <param name="recursive"></param>
+        public void PauseListeners(bool recursive = false)
+        {
+            PauseListeners(this, recursive);
+        }
+
+        /// <summary>
+        /// Resumes all listeners which are associated the specified target.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <param name="recursive"></param>
+        public void ResumeListeners(CCNode target, bool recursive = false)
+        {
+            if (EventDispatcher != null)
+                EventDispatcher.Resume(target, recursive);
+
+        }
+
+        /// <summary>
+        /// Resumes all listeners which are associated the this node.
+        /// </summary>
+        /// <param name="recursive"></param>
+        public void ResumeListeners(bool recursive = false)
+        {
+            ResumeListeners(this, recursive);
+        }
+
+        /// <summary>
+        /// Sets listener's priority with fixed value.
+        /// </summary>
+        /// <param name="listener"></param>
+        /// <param name="fixedPriority"></param>
+        public void SetListenerPriority(CCEventListener listener, int fixedPriority)
+        {
+            if (EventDispatcherIsEnabled)
+                EventDispatcher.SetPriority(listener, fixedPriority);
+
+            if (toBeAddedListeners != null && toBeAddedListeners.Contains(listener))
+            {
+                var found = toBeAddedListeners.IndexOf(listener);
+                toBeAddedListeners[found].FixedPriority = fixedPriority;
+            }
+        }
+
+        /// <summary>
+        /// Convenience method to dispatch a custom event
+        /// </summary>
+        /// <param name="eventToDispatch"></param>
+        public void DispatchEvent(string customEvent, object userData = null)
+        {
+            if (EventDispatcherIsEnabled)
+                EventDispatcher.DispatchEvent(customEvent, userData);
+
+        }
+
+        /// <summary>
+        /// Dispatches the event
+        /// Also removes all EventListeners marked for deletion from the event dispatcher list.
+        /// </summary>
+        /// <param name="eventToDispatch"></param>
+        public void DispatchEvent(CCEvent eventToDispatch)
+        {
+            if (EventDispatcherIsEnabled)
+                EventDispatcher.DispatchEvent(eventToDispatch);
+        }
+
+
+        #endregion Events and Listeners
+
         public virtual void Update(float dt)
         {
         }
@@ -1160,6 +1559,98 @@ namespace CocosSharp
                 Parent.Transform();
             }
         }
+
+
+        #region Color and Opacity
+
+        protected internal virtual void UpdateDisplayedOpacity(byte parentOpacity)
+        {
+            displayedOpacity = (byte) (RealOpacity * parentOpacity / 255.0f);
+
+            UpdateColor();
+
+            if (IsOpacityCascaded && Children != null)
+            {
+                foreach(CCNode node in Children)
+                {
+                    node.UpdateDisplayedOpacity(DisplayedOpacity);
+                }
+            }
+        }
+
+        protected internal virtual void UpdateCascadeOpacity ()
+        {
+            byte parentOpacity = 255;
+            var pParent = Parent;
+            if (pParent != null && pParent.IsOpacityCascaded)
+            {
+                parentOpacity = pParent.DisplayedOpacity;
+            }
+            UpdateDisplayedOpacity(parentOpacity);
+
+        }
+
+        protected virtual void DisableCascadeOpacity()
+        {
+            DisplayedOpacity = RealOpacity;
+
+            foreach(CCNode node in Children.Elements)
+            {
+                node.UpdateDisplayedOpacity(255);
+            }
+        }
+
+        protected virtual void UpdateColor()
+        {
+            // Override the opdate of color here
+        }
+
+        public virtual void UpdateDisplayedColor(CCColor3B parentColor)
+        {
+            displayedColor.R = (byte)(RealColor.R * parentColor.R / 255.0f);
+            displayedColor.G = (byte)(RealColor.G * parentColor.G / 255.0f);
+            displayedColor.B = (byte)(RealColor.B * parentColor.B / 255.0f);
+
+            UpdateColor();
+
+            if (IsColorCascaded)
+            {
+                if (IsOpacityCascaded && Children != null)
+                {
+                    foreach(CCNode node in Children)
+                    {
+                        if (node != null)
+                        {
+                            node.UpdateDisplayedColor(DisplayedColor);
+                        }
+                    }
+                }
+            }
+        }
+
+        protected internal void UpdateCascadeColor()
+        {
+            var parentColor = CCColor3B.White;
+            if (Parent != null && Parent.IsColorCascaded)
+            {
+                parentColor = Parent.DisplayedColor;
+            }
+
+            UpdateDisplayedColor(parentColor);
+        }
+
+        protected internal void DisableCascadeColor()
+        {
+            if (Children == null)
+                return;
+
+            foreach (var child in Children)
+            {
+                child.UpdateDisplayedColor(CCColor3B.White);
+            }
+        }
+
+        #endregion Color and Opacity
 
 
         #region Entering and exiting

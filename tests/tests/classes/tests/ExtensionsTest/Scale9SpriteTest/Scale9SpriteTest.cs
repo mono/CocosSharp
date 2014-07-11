@@ -569,7 +569,7 @@ namespace tests.Extensions
             CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
             float x = winSize.Width / 2;
             float y = 0 + (winSize.Height / 2);
-            var rgba = new CCLayerRGBA();
+            var rgba = new CCLayer();
             rgba.IsColorCascaded = true;
             rgba.IsOpacityCascaded = true;
             AddChild(rgba);

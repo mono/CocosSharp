@@ -61,6 +61,19 @@ namespace CocosSharp
         #endregion Constructors
 
 
+        #region Scene callbacks
+
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            if (InScene != null && InScene.ContentSize == CCSize.Zero)
+                InScene.ContentSize = Scene.VisibleBoundsWorldspace.Size;
+        }
+
+        #endregion Scene callbacks
+
+
         protected override void Draw()
         {
             base.Draw();

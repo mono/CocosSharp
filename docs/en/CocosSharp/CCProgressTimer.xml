@@ -1,11 +1,11 @@
 <Type Name="CCProgressTimer" FullName="CocosSharp.CCProgressTimer">
-  <TypeSignature Language="C#" Value="public class CCProgressTimer : CocosSharp.CCNodeRGBA" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTimer extends CocosSharp.CCNodeRGBA" />
+  <TypeSignature Language="C#" Value="public class CCProgressTimer : CocosSharp.CCNode" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCProgressTimer extends CocosSharp.CCNode" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -197,6 +197,19 @@
       <Docs>
         <summary>Change the percentage to change progress. </summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="protected override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

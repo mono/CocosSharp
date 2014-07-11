@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CocosSharp
 {
-    public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer, ICCColorable
+    public class CCLabelBMFont : CCSpriteBatchNode, ICCTextContainer
     {
         public const int AutomaticWidth = -1;
 
@@ -23,13 +23,13 @@ namespace CocosSharp
         protected CCSprite m_pReusedChar;
         protected bool IsDirty { get; set; }
 
-        protected byte displayedOpacity = 255;
-        protected byte realOpacity = 255;
-        protected CCColor3B displayedColor = CCColor3B.White;
-        protected CCColor3B realColor = CCColor3B.White;
-        protected bool isColorCascaded = true;
-        protected bool isOpacityCascaded = true;
-        protected bool isColorModifiedByOpacity = false;
+//        protected byte displayedOpacity = 255;
+//        protected byte realOpacity = 255;
+//        protected CCColor3B displayedColor = CCColor3B.White;
+//        protected CCColor3B realColor = CCColor3B.White;
+//        protected bool isColorCascaded = true;
+//        protected bool isOpacityCascaded = true;
+//        protected bool isColorModifiedByOpacity = false;
 
         public override CCPoint AnchorPoint
         {
@@ -166,95 +166,6 @@ namespace CocosSharp
             }
         }
 
-
-        #region ICCRGBAProtocol properties
-
-        public virtual CCColor3B Color
-        {
-            get { return realColor; }
-            set
-            {
-                displayedColor = realColor = value;
-
-                if (isColorCascaded)
-                {
-                    var parentColor = CCColor3B.White;
-                    var parent = Parent as ICCColorable;
-                    if (parent != null && parent.IsColorCascaded)
-                    {
-                        parentColor = parent.DisplayedColor;
-                    }
-
-                    UpdateDisplayedColor(parentColor);
-                }
-            }
-        }
-
-        public virtual CCColor3B DisplayedColor
-        {
-            get { return displayedColor; }
-        }
-
-        public virtual byte Opacity
-        {
-            get { return realOpacity; }
-            set
-            {
-                displayedOpacity = realOpacity = value;
-
-                if (isOpacityCascaded)
-                {
-                    byte parentOpacity = 255;
-                    var pParent = Parent as ICCColorable;
-                    if (pParent != null && pParent.IsOpacityCascaded)
-                    {
-                        parentOpacity = pParent.DisplayedOpacity;
-                    }
-                    UpdateDisplayedOpacity(parentOpacity);
-                }
-            }
-        }
-
-        public virtual byte DisplayedOpacity
-        {
-            get { return displayedOpacity; }
-        }
-
-        public virtual bool IsColorModifiedByOpacity
-        {
-            get { return isColorModifiedByOpacity; }
-            set
-            {
-                isColorModifiedByOpacity = value;
-                if (Children != null && Children.Count > 0)
-                {
-                    for (int i = 0, count = Children.Count; i < count; i++)
-                    {
-                        var item = Children.Elements[i] as ICCColorable;
-                        if (item != null)
-                        {
-                            item.IsColorModifiedByOpacity = value;
-                        }
-                    }
-                }
-            }
-        }
-
-        public virtual bool IsColorCascaded
-        {
-            get { return false; }
-            set { isColorCascaded = value; }
-        }
-
-        public virtual bool IsOpacityCascaded
-        {
-            get { return false; }
-            set { isOpacityCascaded = value; }
-        }
-
-        #endregion
-
-
         public static void PurgeCachedData()
         {
             if (fontConfigurations != null)
@@ -371,14 +282,14 @@ namespace CocosSharp
             horzAlignment = hAlignment;
             vertAlignment = vAlignment;
 
-            displayedOpacity = realOpacity = 255;
-            displayedColor = realColor = CCColor3B.White;
-            isOpacityCascaded = true;
-            isColorCascaded = true;
+//            displayedOpacity = realOpacity = 255;
+//            displayedColor = realColor = CCColor3B.White;
+//            isOpacityCascaded = true;
+//            isColorCascaded = true;
 
             ContentSize = CCSize.Zero;
 
-            isColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
+            IsColorModifiedByOpacity = TextureAtlas.Texture.HasPremultipliedAlpha;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             ImageOffset = imageOffset;
@@ -408,33 +319,33 @@ namespace CocosSharp
         #endregion Scene handling
 
 
-        public virtual void UpdateDisplayedColor(CCColor3B parentColor)
-        {
-            displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
-            displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
-            displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
-
-            if (Children != null)
-            {
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
-                }
-            }
-        }
-
-        public virtual void UpdateDisplayedOpacity(byte parentOpacity)
-        {
-            displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
-
-            if (Children != null)
-            {
-                for (int i = 0, count = Children.Count; i < count; i++)
-                {
-                    ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
-                }
-            }
-        }
+//		protected internal virtual void UpdateDisplayedColor(CCColor3B parentColor)
+//        {
+//            displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
+//            displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
+//            displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
+//
+//            if (Children != null)
+//            {
+//                for (int i = 0, count = Children.Count; i < count; i++)
+//                {
+//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
+//                }
+//            }
+//        }
+//
+//        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
+//        {
+//            displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
+//
+//            if (Children != null)
+//            {
+//                for (int i = 0, count = Children.Count; i < count; i++)
+//                {
+//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
+//                }
+//            }
+//        }
 
         private int KerningAmountForFirst(int first, int second)
         {
@@ -569,11 +480,11 @@ namespace CocosSharp
                     }
 
                     // Apply label properties
-                    fontChar.IsColorModifiedByOpacity = isColorModifiedByOpacity;
+                    fontChar.IsColorModifiedByOpacity = IsColorModifiedByOpacity;
 
                     // Color MUST be set before opacity, since opacity might change color if OpacityModifyRGB is on
-                    fontChar.UpdateDisplayedColor(displayedColor);
-                    fontChar.UpdateDisplayedOpacity(displayedOpacity);
+                    fontChar.UpdateDisplayedColor(DisplayedColor);
+                    fontChar.UpdateDisplayedOpacity(DisplayedOpacity);
                 }
 
                 // See issue 1343. cast( signed short + unsigned integer ) == unsigned integer (sign is lost!)

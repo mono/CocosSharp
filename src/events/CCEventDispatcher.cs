@@ -20,12 +20,12 @@ namespace CocosSharp
         ALL = FIXED_PRIORITY | SCENE_GRAPH_PRIORITY
     }
 
-    public class CCEventDispatcher
+    internal class CCEventDispatcher
     {
         int inDispatch;                                             // Whether the dispatcher is dispatching event
         int nodePriorityIndex;
 
-        List<CCEventListener> toBeAddedListeners;                   // The listeners to be added after dispatching event
+        internal List<CCEventListener> toBeAddedListeners;          // The listeners to be added after dispatching event
 
         SortedSet<CCNode> dirtyNodes;                               // The nodes were associated with scene graph based priority listeners
         SortedSet<string> internalCustomListenerIDs;
@@ -422,6 +422,26 @@ namespace CocosSharp
             if (listener == null)
                 return;
 
+			foreach (var l in listenerMap)
+			{
+				var fixedPriorityListeners = l.Value.FixedPriorityListeners;
+
+				if (fixedPriorityListeners != null && fixedPriorityListeners.Count > 0)
+				{
+					var found = fixedPriorityListeners.IndexOf(listener);
+
+					if (found >= 0)
+					{
+						//Debug.Assert(listener.)
+						if (listener.FixedPriority != fixedPriority)
+						{
+							listener.FixedPriority = fixedPriority;
+							SetDirty(listener.ListenerID, DirtyFlag.FIXED_PRIORITY);
+						}
+						return;
+					}
+				}
+			}
         }
 
         /// <summary>

@@ -107,7 +107,7 @@ namespace tests
             CCLayer pLayer = new TestLayer1();
             AddChild(pLayer);
 
-            Scene.Director.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
 
         public static CCTransitionScene createTransition(int nIndex, float t, CCScene s)

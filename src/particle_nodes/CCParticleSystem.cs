@@ -241,8 +241,8 @@ namespace CocosSharp
                             }
                         }
 
-                        if(Window != null)
-                            BatchNode.Window = Window;
+                        if(Scene != null && BatchNode.Scene != Scene)
+                            BatchNode.Scene = Scene;
                     }
                 }
             }
@@ -375,7 +375,7 @@ namespace CocosSharp
             get { return base.Scene; }
             internal set 
             {
-                if(Scene != null && BatchNode != null) 
+                if(Scene != null && BatchNode != null && BatchNode.Scene != Scene)
                 {
                     BatchNode.Scene = Scene;
                 }

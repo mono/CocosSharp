@@ -14,14 +14,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCDirector director = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCDirector director) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="director" Type="CocosSharp.CCDirector" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="director">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -36,6 +33,22 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunningOnNewWindow">
+      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="windowSize">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-    public class CCSprite : CCNodeRGBA, ICCTexture
+    public class CCSprite : CCNode, ICCTexture
     {
         bool flipX;
         bool flipY;
@@ -338,6 +338,10 @@ namespace CocosSharp
         // Used externally by non-subclasses
         internal void InitWithTexture(CCTexture2D texture, CCRect? texRectInPixels=null, bool rotated=false)
         {
+            // do not remove this
+            // This sets up the atlas index correctly.  If not set correctly lot of weird sprite artifacts start showing up.
+            BatchNode = null;
+
             IsTextureRectRotated = rotated;
             CCSize texSize = texture.ContentSizeInPixels;
             textureRectInPixels = texRectInPixels ?? new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height);
@@ -479,13 +483,15 @@ namespace CocosSharp
 
         #region Color managment
 
-        void UpdateColor()
+        protected override void UpdateColor()
         {
             var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
 
             if (opacityModifyRGB)
             {
-                color4 *= (DisplayedOpacity / 255.0f);
+                color4.R = (byte)(color4.R * DisplayedOpacity / 255.0f);
+                color4.G = (byte)(color4.G * DisplayedOpacity / 255.0f);
+                color4.B = (byte)(color4.B * DisplayedOpacity / 255.0f);
             }
 
             quad.BottomLeft.Colors = color4;
@@ -503,17 +509,17 @@ namespace CocosSharp
             }
         }
 
-        public override void UpdateDisplayedColor(CCColor3B parentColor)
-        {
-            base.UpdateDisplayedColor(parentColor);
-            UpdateColor();
-        }
-
-        public override void UpdateDisplayedOpacity(byte parentOpacity)
-        {
-            base.UpdateDisplayedOpacity(parentOpacity);
-            UpdateColor();
-        }
+        //        public override void UpdateDisplayedColor(CCColor3B parentColor)
+        //        {
+        //            base.UpdateDisplayedColor(parentColor);
+        //            UpdateColor();
+        //        }
+        //
+        //        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
+        //        {
+        //            base.UpdateDisplayedOpacity(parentOpacity);
+        //            UpdateColor();
+        //        }
 
         protected void UpdateBlendFunc()
         {

@@ -12,13 +12,49 @@ namespace CocosSharp
         Focused
     };
 
+    enum Alignment
+    {
+        None,
+        Vertical,
+        Horizontal,
+        Column,
+        Row
+    }
+
+    struct AlignmentState 
+    {
+
+        public Alignment Alignment { get; set; }
+        public float Padding { get; set; }
+        public uint[] NumberOfItemsPer { get; set; }
+
+        public AlignmentState (Alignment alignment, float padding, uint[] numberOfItems)
+            : this()
+        {
+            Alignment = alignment;
+            Padding = padding;
+            NumberOfItemsPer = numberOfItems;
+        }
+
+        public AlignmentState (Alignment alignment, float padding)
+            : this(alignment, padding, null)
+        {       }
+
+        public AlignmentState (Alignment alignment, uint[] numberOfItems)
+            : this(alignment, 0, numberOfItems)
+        {       }
+
+    }
+
+
+
     /// <summary>
     /// A CCMenu
     /// Features and Limitation:
     ///  You can add MenuItem objects in runtime using addChild:
     ///  But the only accecpted children are MenuItem objects
     /// </summary>
-    public class CCMenu : CCLayerRGBA
+    public class CCMenu : CCLayer
     {
         public const float DefaultPadding = 5;
         public const int DefaultMenuHandlerPriority = -128;
@@ -31,6 +67,8 @@ namespace CocosSharp
         public bool Enabled { get; set; }
         protected CCMenuState MenuState { get; set; }
         protected CCMenuItem SelectedMenuItem { get; set; }
+
+        AlignmentState alignmentState;
 
         // Note that this only has a value if the GamePad or Keyboard is enabled.
         // Touch devices do not have a "focus" concept.
@@ -73,6 +111,8 @@ namespace CocosSharp
 
         public CCMenu(params CCMenuItem[] items) : base()
         {
+            alignmentState = new AlignmentState(Alignment.None, DefaultPadding);
+
             Enabled = true;
 
             SelectedMenuItem = null;
@@ -94,6 +134,8 @@ namespace CocosSharp
                 }
             }
 
+            // We will set the position as being not set
+            Position = CCPoint.NegativeInfinity;
         }
 
         #endregion Constructors
@@ -107,6 +149,16 @@ namespace CocosSharp
 
             if (Scene != null)
             {
+                CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+
+                // If the position has already been set then we need to respect 
+                // that position
+                if (Position == CCPoint.NegativeInfinity)
+                    Position = visibleBounds.Center;
+
+                if(ContentSize == CCSize.Zero)
+                    ContentSize = visibleBounds.Size;
+
                 var touchListener = new CCEventListenerTouchOneByOne();
                 touchListener.IsSwallowTouches = true;
 
@@ -115,7 +167,23 @@ namespace CocosSharp
                 touchListener.OnTouchEnded = TouchEnded;
                 touchListener.OnTouchCancelled = TouchCancelled;
 
-                EventDispatcher.AddEventListener(touchListener, this);
+                AddEventListener(touchListener);
+
+                switch(alignmentState.Alignment)
+                {
+                    case Alignment.Vertical:
+                        AlignItemsVertically(alignmentState.Padding);
+                        break;
+                    case Alignment.Horizontal:
+                        AlignItemsHorizontally(alignmentState.Padding);
+                        break;
+                    case Alignment.Column:
+                        AlignItemsInColumns(alignmentState.NumberOfItemsPer);
+                        break;
+                    case Alignment.Row:
+                        AlignItemsInRows(alignmentState.NumberOfItemsPer);
+                        break;
+                }
             }
         }
 
@@ -273,6 +341,10 @@ namespace CocosSharp
 
         public void AlignItemsVertically(float padding = DefaultPadding)
         {
+
+            alignmentState.Alignment = Alignment.Vertical;
+            alignmentState.Padding = padding;
+
             float width = 0f;
             float height = -padding;
 
@@ -306,6 +378,10 @@ namespace CocosSharp
 
         public void AlignItemsHorizontally(float padding = DefaultPadding)
         {
+
+            alignmentState.Alignment = Alignment.Horizontal;
+            alignmentState.Padding = padding;
+
             float height = 0f;
             float width = -padding;
 
@@ -339,6 +415,10 @@ namespace CocosSharp
 
         public void AlignItemsInColumns(params uint[] numOfItemsPerRow)
         {
+
+            alignmentState.Alignment = Alignment.Column;
+            alignmentState.NumberOfItemsPer = numOfItemsPerRow;
+
             float height = -DefaultPadding;
             int row = 0;
             int rowHeight = 0;
@@ -424,6 +504,10 @@ namespace CocosSharp
 
         public void AlignItemsInRows(params uint[] numOfItemsPerColumn)
         {
+
+            alignmentState.Alignment = Alignment.Row;
+            alignmentState.NumberOfItemsPer = numOfItemsPerColumn;
+
             List<float> columnWidths = new List<float>();
             List<float> columnHeights = new List<float>();
 

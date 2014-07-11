@@ -14,19 +14,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-      </Parameters>
-      <Docs>
-        <param name="gridSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
       <MemberType>Constructor</MemberType>

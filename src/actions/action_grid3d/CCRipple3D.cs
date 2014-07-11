@@ -55,7 +55,7 @@ namespace CocosSharp
 			Waves = action.Waves;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, j;
 

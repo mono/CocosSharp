@@ -6,7 +6,7 @@ using CocosSharp;
 
 namespace tests
 {
-    public class LayerTest : CCLayer
+    public class LayerTest : TestNavigationLayer
     {
         private string s_pPathB1 = "Images/b1";
         private string s_pPathB2 = "Images/b2";
@@ -22,27 +22,17 @@ namespace tests
 
         }
 
-        public virtual string title()
-        {
-            return "No title";
-        }
-
-        public virtual string subtitle()
-        {
-            return "";
-        }
-
         public override void OnEnter()
         {
             base.OnEnter();
 
             CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
-            CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);
+            CCLabelTtf label = new CCLabelTtf(Title, "arial", 32);
             AddChild(label, 1);
             label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
 
-            string subtitle_ = subtitle();
+            string subtitle_ = Subtitle;
             if (subtitle_.Length > 0)
             {
                 CCLabelTtf l = new CCLabelTtf(subtitle_, "arial", 16);
@@ -50,9 +40,9 @@ namespace tests
                 l.Position = (new CCPoint(s.Width / 2, s.Height - 80));
             }
 
-            CCMenuItemImage item1 = new CCMenuItemImage(s_pPathB1, s_pPathB2, (backCallback));
-            CCMenuItemImage item2 = new CCMenuItemImage(s_pPathR1, s_pPathR2, (restartCallback));
-            CCMenuItemImage item3 = new CCMenuItemImage(s_pPathF1, s_pPathF2, (nextCallback));
+            CCMenuItemImage item1 = new CCMenuItemImage(s_pPathB1, s_pPathB2, (BackCallback));
+            CCMenuItemImage item2 = new CCMenuItemImage(s_pPathR1, s_pPathR2, (RestartCallback));
+            CCMenuItemImage item3 = new CCMenuItemImage(s_pPathF1, s_pPathF2, (NextCallback));
 
             CCMenu menu = new CCMenu(item1, item2, item3);
 
@@ -64,36 +54,49 @@ namespace tests
             AddChild(menu, 1);
         }
 
-        public void restartCallback(object pSender)
-        {
+		public override string Title
+		{
+			get
+			{
+				return "Layer Test";
+			}
+		}
+
+		public override string Subtitle
+		{
+			get
+			{
+				return string.Empty;
+			}
+		}
+
+		public override void RestartCallback(object sender)
+		{
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.restartTestAction());
-            Scene.Director.ReplaceScene(s);
+            Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
-        {
+		public override void NextCallback(object sender)
+		{
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.nextTestAction());
-            Scene.Director.ReplaceScene(s);
+
+            Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
-        {
+		public override void BackCallback(object sender)
+		{
             CCScene s = new LayerTestScene();
             s.AddChild(LayerTestScene.backTestAction());
-            Scene.Director.ReplaceScene(s);
+
+            Director.ReplaceScene(s);
         }
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
         {
-            var rgba = node as ICCColorable;
-            
-            if (rgba != null)
-            {
-                rgba.IsColorCascaded = true;
-                rgba.IsOpacityCascaded = enable;
-            }
+            node.IsColorCascaded = true;
+            node.IsOpacityCascaded = enable;
 
             if (node.ChildrenCount > 0)
             {
@@ -104,6 +107,7 @@ namespace tests
             }
         }
     }
+
     public class LayerMultiplexTest : LayerTest
     {
         CCLayerMultiplex child = new CCLayerMultiplex();
@@ -137,15 +141,21 @@ namespace tests
 			Schedule(new Action<float>(AutoMultiplex), 3f);
         }
 
-        public override string title()
-        {
-            return "Layer Multiplex Test";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "Layer Multiplex Test";
+			}
+		}
 
-        public override string subtitle()
-        {
-            return "Three layers switch every 3 seconds";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Three layers switch every 3 seconds";
+			}
+		}
 
         private Random rand = new Random();
 		private int lastRandom = 0;

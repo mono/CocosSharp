@@ -61,7 +61,7 @@ namespace CocosSharp
             VisibleBounds = Scene.VisibleBoundsWorldspace;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int j;
 

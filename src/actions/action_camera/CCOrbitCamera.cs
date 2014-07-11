@@ -132,7 +132,7 @@ namespace CocosSharp
                 s = float.Epsilon;
             if (r == 0.0f)
                 r = float.Epsilon;
-
+                
             zenith = (float)Math.Acos (z / r);
             if (x < 0)
                 azimuth = (float)Math.PI - (float)Math.Sin (y / s);
@@ -142,7 +142,7 @@ namespace CocosSharp
             newRadius = r / CCCamera.ZEye;
         }
 
-        protected internal override void Update (float time)
+        public override void Update (float time)
         {
             float r = (Radius + DeltaRadius * time) * CCCamera.ZEye;
             float za = RadZ + RadDeltaZ * time;

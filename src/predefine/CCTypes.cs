@@ -317,10 +317,15 @@ namespace CocosSharp
 
         #region Operators
 
-//		public static implicit operator Color(CCColor4F point)
-//        {
-//            return new Color(point.R, point.G, point.B, point.A);
-//        }
+		public static implicit operator Color(CCColor4F color4F)
+        {
+            return new Color(color4F.R, color4F.G, color4F.B, color4F.A);
+        }
+
+		public static implicit operator CCColor4B(CCColor4F point)
+		{
+			return new CCColor4B(point.R, point.G, point.B, point.A);
+		}
 
         public static bool operator ==(CCColor4F a, CCColor4F b)
         {

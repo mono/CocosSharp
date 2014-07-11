@@ -111,7 +111,8 @@ namespace CocosSharp
 			get { return Action as CCFollow; }
 		}
 
-		protected internal override bool IsDone {
+		public override bool IsDone 
+		{
 			get { return !FollowAction.FollowedNode.IsRunning; }
 		}
 

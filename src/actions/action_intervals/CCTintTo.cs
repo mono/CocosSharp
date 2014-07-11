@@ -32,16 +32,16 @@ namespace CocosSharp
 			: base (action, target)
 		{	
 			ColorTo = action.ColorTo;
-			var protocol = Target as ICCColorable;
+			var protocol = Target;
 			if (protocol != null)
 			{
 				ColorFrom = protocol.Color;
 			}
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
-			var protocol = Target as ICCColorable;
+			var protocol = Target;
 			if (protocol != null)
 			{
 				protocol.Color = new CCColor3B ((byte)(ColorFrom.R + (ColorTo.R - ColorFrom.R) * time),

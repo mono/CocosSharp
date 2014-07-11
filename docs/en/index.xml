@@ -63,8 +63,6 @@
       <Type Name="CCSimpleAudioEngine" Kind="Class" />
     </Namespace>
     <Namespace Name="CocosSharp">
-      <Type Name="BlockCCControlData" Kind="Class" />
-      <Type Name="BlockData" Kind="Class" />
       <Type Name="CCAccelAmplitude" Kind="Class" />
       <Type Name="CCAccelAmplitudeState" Kind="Class" />
       <Type Name="CCAccelDeccelAmplitude" Kind="Class" />
@@ -95,40 +93,18 @@
       <Type Name="CCAnimationCache" Kind="Class" />
       <Type Name="CCAnimationFrame" Kind="Class" />
       <Type Name="CCApplication" Kind="Class" />
-      <Type Name="CCArrayForObjectSorting" Kind="Class" />
+      <Type Name="CCApplicationDelegate" Kind="Class" />
       <Type Name="CCAtlasNode" Kind="Class" />
-      <Type Name="CCBAnimationManager" Kind="Class" />
-      <Type Name="CCBAnimationManagerDelegate" Kind="Delegate" />
-      <Type Name="CCBEasingType" Kind="Enumeration" />
       <Type Name="CCBezierBy" Kind="Class" />
       <Type Name="CCBezierByState" Kind="Class" />
       <Type Name="CCBezierConfig" Kind="Structure" />
       <Type Name="CCBezierTo" Kind="Class" />
       <Type Name="CCBezierToState" Kind="Class" />
-      <Type Name="CCBFile" Kind="Class" />
-      <Type Name="CCBHelper" Kind="Class" />
-      <Type Name="CCBKeyframe" Kind="Class" />
       <Type Name="CCBlendFunc" Kind="Structure" />
       <Type Name="CCBlink" Kind="Class" />
       <Type Name="CCBlinkState" Kind="Class" />
       <Type Name="CCBoundingBoxI" Kind="Structure" />
-      <Type Name="CCBox2dDraw" Kind="Class" />
-      <Type Name="CCBPositionType" Kind="Enumeration" />
-      <Type Name="CCBPropertyType" Kind="Enumeration" />
-      <Type Name="CCBReader" Kind="Class" />
-      <Type Name="CCBRotateTo" Kind="Class" />
-      <Type Name="CCBRotateXTo" Kind="Class" />
-      <Type Name="CCBRotateYTo" Kind="Class" />
-      <Type Name="CCBScaleType" Kind="Enumeration" />
-      <Type Name="CCBSequence" Kind="Class" />
-      <Type Name="CCBSequenceProperty" Kind="Class" />
-      <Type Name="CCBSetSpriteFrame" Kind="Class" />
-      <Type Name="CCBSoundEffect" Kind="Class" />
-      <Type Name="CCBTargetType" Kind="Enumeration" />
       <Type Name="CCBufferUsage" Kind="Enumeration" />
-      <Type Name="CCButtonTapDelegate" Kind="Delegate" />
-      <Type Name="CCBValue" Kind="Class" />
-      <Type Name="CCBValueType" Kind="Enumeration" />
       <Type Name="CCCallFunc" Kind="Class" />
       <Type Name="CCCallFuncN" Kind="Class" />
       <Type Name="CCCallFuncND" Kind="Class" />
@@ -147,24 +123,10 @@
       <Type Name="CCClipMode" Kind="Enumeration" />
       <Type Name="CCClippingNode" Kind="Class" />
       <Type Name="CCColor3B" Kind="Structure" />
-      <Type Name="CCColor3BWapper" Kind="Class" />
       <Type Name="CCColor4B" Kind="Structure" />
       <Type Name="CCColor4F" Kind="Structure" />
       <Type Name="CCConfiguration" Kind="Class" />
       <Type Name="CCContentManager" Kind="Class" />
-      <Type Name="CCControl" Kind="Class" />
-      <Type Name="CCControlButton" Kind="Class" />
-      <Type Name="CCControlColourPicker" Kind="Class" />
-      <Type Name="CCControlEvent" Kind="Enumeration" />
-      <Type Name="CCControlHuePicker" Kind="Class" />
-      <Type Name="CCControlPotentiometer" Kind="Class" />
-      <Type Name="CCControlSaturationBrightnessPicker" Kind="Class" />
-      <Type Name="CCControlSlider" Kind="Class" />
-      <Type Name="CCControlState" Kind="Enumeration" />
-      <Type Name="CCControlStepper" Kind="Class" />
-      <Type Name="CCControlStepperPart" Kind="Enumeration" />
-      <Type Name="CCControlSwitch" Kind="Class" />
-      <Type Name="CCControlSwitchSprite" Kind="Class" />
       <Type Name="CCDeccelAmplitude" Kind="Class" />
       <Type Name="CCDeccelAmplitudeState" Kind="Class" />
       <Type Name="CCDelayTime" Kind="Class" />
@@ -225,7 +187,6 @@
       <Type Name="CCEventAccelerate" Kind="Class" />
       <Type Name="CCEventCode" Kind="Enumeration" />
       <Type Name="CCEventCustom" Kind="Class" />
-      <Type Name="CCEventDispatcher" Kind="Class" />
       <Type Name="CCEventGamePad" Kind="Class" />
       <Type Name="CCEventGamePadButton" Kind="Class" />
       <Type Name="CCEventGamePadConnection" Kind="Class" />
@@ -294,7 +255,7 @@
       <Type Name="CCHideState" Kind="Class" />
       <Type Name="CCImageFormat" Kind="Enumeration" />
       <Type Name="CCIMEKeyboardNotificationInfo" Kind="Class" />
-      <Type Name="CCInvocation" Kind="Class" />
+      <Type Name="CCIndexBuffer`1" DisplayName="CCIndexBuffer&lt;T&gt;" Kind="Class" />
       <Type Name="CCJumpBy" Kind="Class" />
       <Type Name="CCJumpByState" Kind="Class" />
       <Type Name="CCJumpTiles3D" Kind="Class" />
@@ -303,9 +264,6 @@
       <Type Name="CCJumpToState" Kind="Class" />
       <Type Name="CCKeyboardEventType" Kind="Enumeration" />
       <Type Name="CCKeyboardState" Kind="Structure" />
-      <Type Name="CCKeypadDispatcher" Kind="Class" />
-      <Type Name="CCKeypadHandler" Kind="Class" />
-      <Type Name="CCKeypadMSGType" Kind="Enumeration" />
       <Type Name="CCKeys" Kind="Enumeration" />
       <Type Name="CCKeyState" Kind="Enumeration" />
       <Type Name="CCLabel" Kind="Class" />
@@ -316,9 +274,7 @@
       <Type Name="CCLayer" Kind="Class" />
       <Type Name="CCLayerColor" Kind="Class" />
       <Type Name="CCLayerGradient" Kind="Class" />
-      <Type Name="CCLayerLoader" Kind="Class" />
       <Type Name="CCLayerMultiplex" Kind="Class" />
-      <Type Name="CCLayerRGBA" Kind="Class" />
       <Type Name="CCLens3D" Kind="Class" />
       <Type Name="CCLens3DState" Kind="Class" />
       <Type Name="CCLiquid" Kind="Class" />
@@ -331,15 +287,12 @@
       <Type Name="CCMenuItem" Kind="Class" />
       <Type Name="CCMenuItemFont" Kind="Class" />
       <Type Name="CCMenuItemImage" Kind="Class" />
-      <Type Name="CCMenuItemImageLoader" Kind="Class" />
       <Type Name="CCMenuItemLabel" Kind="Class" />
       <Type Name="CCMenuItemLabelAtlas" Kind="Class" />
       <Type Name="CCMenuItemLabelBase" Kind="Class" />
       <Type Name="CCMenuItemLabelBMFont" Kind="Class" />
       <Type Name="CCMenuItemLabelTTF" Kind="Class" />
-      <Type Name="CCMenuItemLoader" Kind="Class" />
       <Type Name="CCMenuItemToggle" Kind="Class" />
-      <Type Name="CCMenuLoader" Kind="Class" />
       <Type Name="CCMenuState" Kind="Enumeration" />
       <Type Name="CCMotionStreak" Kind="Class" />
       <Type Name="CCMouseButton" Kind="Enumeration" />
@@ -349,9 +302,6 @@
       <Type Name="CCMoveTo" Kind="Class" />
       <Type Name="CCMoveToState" Kind="Class" />
       <Type Name="CCNode" Kind="Class" />
-      <Type Name="CCNodeLoader" Kind="Class" />
-      <Type Name="CCNodeLoaderLibrary" Kind="Class" />
-      <Type Name="CCNodeRGBA" Kind="Class" />
       <Type Name="CCOGLES" Kind="Class" />
       <Type Name="CCOrbitCamera" Kind="Class" />
       <Type Name="CCOrbitCameraState" Kind="Class" />
@@ -387,11 +337,11 @@
       <Type Name="CCPlayerIndex" Kind="Enumeration" />
       <Type Name="CCPoint" Kind="Structure" />
       <Type Name="CCPoint+ComputationOperationDelegate" Kind="Delegate" />
-      <Type Name="CCPointConverter" Kind="Class" />
       <Type Name="CCPointI" Kind="Structure" />
       <Type Name="CCPointObject" Kind="Class" />
       <Type Name="CCPointSprite" Kind="Class" />
       <Type Name="CCPositionType" Kind="Enumeration" />
+      <Type Name="CCPrimitiveBatch" Kind="Class" />
       <Type Name="CCProgressFromTo" Kind="Class" />
       <Type Name="CCProgressFromToState" Kind="Class" />
       <Type Name="CCProgressTimer" Kind="Class" />
@@ -399,11 +349,11 @@
       <Type Name="CCProgressTo" Kind="Class" />
       <Type Name="CCProgressToState" Kind="Class" />
       <Type Name="CCQuad3" Kind="Structure" />
+      <Type Name="CCQuadVertexBuffer" Kind="Class" />
       <Type Name="CCRandom" Kind="Class" />
       <Type Name="CCRawList`1" DisplayName="CCRawList&lt;T&gt;" Kind="Class" />
       <Type Name="CCRawList`1+Enumerator" DisplayName="CCRawList&lt;T&gt;+Enumerator" Kind="Structure" />
       <Type Name="CCRect" Kind="Structure" />
-      <Type Name="CCRectConverter" Kind="Class" />
       <Type Name="CCRemoveSelf" Kind="Class" />
       <Type Name="CCRemoveSelfState" Kind="Class" />
       <Type Name="CCRenderTargetUsage" Kind="Enumeration" />
@@ -424,9 +374,6 @@
       <Type Name="CCRotateByState" Kind="Class" />
       <Type Name="CCRotateTo" Kind="Class" />
       <Type Name="CCRotateToState" Kind="Class" />
-      <Type Name="CCScale9Sprite" Kind="Class" />
-      <Type Name="CCScale9SpriteFile" Kind="Class" />
-      <Type Name="CCScale9SpriteFrame" Kind="Class" />
       <Type Name="CCScaleBy" Kind="Class" />
       <Type Name="CCScaleByState" Kind="Class" />
       <Type Name="CCScaleTo" Kind="Class" />
@@ -435,9 +382,6 @@
       <Type Name="CCSchedulePriority" Kind="Class" />
       <Type Name="CCScheduler" Kind="Class" />
       <Type Name="CCScriptEngineManager" Kind="Class" />
-      <Type Name="CCScrollView" Kind="Class" />
-      <Type Name="CCScrollViewDirection" Kind="Enumeration" />
-      <Type Name="CCScrollViewLoader" Kind="Class" />
       <Type Name="CCSequence" Kind="Class" />
       <Type Name="CCSequenceState" Kind="Class" />
       <Type Name="CCSerialization" Kind="Class" />
@@ -452,7 +396,6 @@
       <Type Name="CCShuffleTiles" Kind="Class" />
       <Type Name="CCShuffleTilesState" Kind="Class" />
       <Type Name="CCSize" Kind="Structure" />
-      <Type Name="CCSizeConverter" Kind="Class" />
       <Type Name="CCSizeI" Kind="Structure" />
       <Type Name="CCSkewBy" Kind="Class" />
       <Type Name="CCSkewByState" Kind="Class" />
@@ -477,10 +420,6 @@
       <Type Name="CCStopGrid" Kind="Class" />
       <Type Name="CCStopGridState" Kind="Class" />
       <Type Name="CCSurfaceFormat" Kind="Enumeration" />
-      <Type Name="CCSwitchValueChangedDelegate" Kind="Delegate" />
-      <Type Name="CCTableView" Kind="Class" />
-      <Type Name="CCTableViewCell" Kind="Class" />
-      <Type Name="CCTableViewVerticalFillOrder" Kind="Enumeration" />
       <Type Name="CCTargetedAction" Kind="Class" />
       <Type Name="CCTargetedActionState" Kind="Class" />
       <Type Name="CCTask" Kind="Class" />
@@ -555,7 +494,6 @@
       <Type Name="CCTwirl" Kind="Class" />
       <Type Name="CCTwirlState" Kind="Class" />
       <Type Name="CCUserDefault" Kind="Class" />
-      <Type Name="CCUtils" Kind="Class" />
       <Type Name="CCV2F_C4B_T2F" Kind="Class" />
       <Type Name="CCV2F_C4B_T2F_Quad" Kind="Class" />
       <Type Name="CCV2F_C4F_T2F" Kind="Class" />
@@ -565,6 +503,7 @@
       <Type Name="CCVector2" Kind="Structure" />
       <Type Name="CCVertex2F" Kind="Structure" />
       <Type Name="CCVertex3F" Kind="Structure" />
+      <Type Name="CCVertexBuffer`1" DisplayName="CCVertexBuffer&lt;T&gt;" Kind="Class" />
       <Type Name="CCVerticalTextAlignment" Kind="Enumeration" />
       <Type Name="CCWaves" Kind="Class" />
       <Type Name="CCWaves3D" Kind="Class" />
@@ -572,25 +511,12 @@
       <Type Name="CCWavesState" Kind="Class" />
       <Type Name="CCWavesTiles3D" Kind="Class" />
       <Type Name="CCWavesTiles3DState" Kind="Class" />
-      <Type Name="HSV" Kind="Structure" />
       <Type Name="ICCActionTweenDelegate" Kind="Interface" />
       <Type Name="ICCBlendable" Kind="Interface" />
-      <Type Name="ICCBMemberVariableAssigner" Kind="Interface" />
-      <Type Name="ICCBScriptOwner" Kind="Interface" />
-      <Type Name="ICCBSelectorResolver" Kind="Interface" />
-      <Type Name="ICCColor" Kind="Interface" />
       <Type Name="ICCDirectorDelegate" Kind="Interface" />
       <Type Name="ICCFocusable" Kind="Interface" />
       <Type Name="ICCIMEDelegate" Kind="Interface" />
-      <Type Name="ICCKeypadDelegate" Kind="Interface" />
-      <Type Name="ICCNodeLoaderListener" Kind="Interface" />
-      <Type Name="ICCProjection" Kind="Interface" />
-      <Type Name="ICCSAXDelegator" Kind="Interface" />
       <Type Name="ICCScriptingEngine" Kind="Class" />
-      <Type Name="ICCScrollViewDelegate" Kind="Interface" />
-      <Type Name="ICCSortableObject" Kind="Interface" />
-      <Type Name="ICCTableViewDataSource" Kind="Interface" />
-      <Type Name="ICCTableViewDelegate" Kind="Interface" />
       <Type Name="ICCTextContainer" Kind="Interface" />
       <Type Name="ICCTextFieldDelegate" Kind="Interface" />
       <Type Name="ICCTexture" Kind="Interface" />
@@ -610,8 +536,6 @@
       <Type Name="PlistString" Kind="Class" />
     </Namespace>
     <Namespace Name="CocosSharp">
-      <Type Name="BlockCCControlData" Kind="Class" />
-      <Type Name="BlockData" Kind="Class" />
       <Type Name="CCAccelAmplitude" Kind="Class" />
       <Type Name="CCAccelAmplitudeState" Kind="Class" />
       <Type Name="CCAccelDeccelAmplitude" Kind="Class" />
@@ -642,40 +566,17 @@
       <Type Name="CCAnimationCache" Kind="Class" />
       <Type Name="CCAnimationFrame" Kind="Class" />
       <Type Name="CCApplication" Kind="Class" />
-      <Type Name="CCArrayForObjectSorting" Kind="Class" />
       <Type Name="CCAtlasNode" Kind="Class" />
-      <Type Name="CCBAnimationManager" Kind="Class" />
-      <Type Name="CCBAnimationManagerDelegate" Kind="Delegate" />
-      <Type Name="CCBEasingType" Kind="Enumeration" />
       <Type Name="CCBezierBy" Kind="Class" />
       <Type Name="CCBezierByState" Kind="Class" />
       <Type Name="CCBezierConfig" Kind="Structure" />
       <Type Name="CCBezierTo" Kind="Class" />
       <Type Name="CCBezierToState" Kind="Class" />
-      <Type Name="CCBFile" Kind="Class" />
-      <Type Name="CCBHelper" Kind="Class" />
-      <Type Name="CCBKeyframe" Kind="Class" />
       <Type Name="CCBlendFunc" Kind="Structure" />
       <Type Name="CCBlink" Kind="Class" />
       <Type Name="CCBlinkState" Kind="Class" />
       <Type Name="CCBoundingBoxI" Kind="Structure" />
-      <Type Name="CCBox2dDraw" Kind="Class" />
-      <Type Name="CCBPositionType" Kind="Enumeration" />
-      <Type Name="CCBPropertyType" Kind="Enumeration" />
-      <Type Name="CCBReader" Kind="Class" />
-      <Type Name="CCBRotateTo" Kind="Class" />
-      <Type Name="CCBRotateXTo" Kind="Class" />
-      <Type Name="CCBRotateYTo" Kind="Class" />
-      <Type Name="CCBScaleType" Kind="Enumeration" />
-      <Type Name="CCBSequence" Kind="Class" />
-      <Type Name="CCBSequenceProperty" Kind="Class" />
-      <Type Name="CCBSetSpriteFrame" Kind="Class" />
-      <Type Name="CCBSoundEffect" Kind="Class" />
-      <Type Name="CCBTargetType" Kind="Enumeration" />
       <Type Name="CCBufferUsage" Kind="Enumeration" />
-      <Type Name="CCButtonTapDelegate" Kind="Delegate" />
-      <Type Name="CCBValue" Kind="Class" />
-      <Type Name="CCBValueType" Kind="Enumeration" />
       <Type Name="CCCallFunc" Kind="Class" />
       <Type Name="CCCallFuncN" Kind="Class" />
       <Type Name="CCCallFuncND" Kind="Class" />
@@ -694,24 +595,10 @@
       <Type Name="CCClipMode" Kind="Enumeration" />
       <Type Name="CCClippingNode" Kind="Class" />
       <Type Name="CCColor3B" Kind="Structure" />
-      <Type Name="CCColor3BWapper" Kind="Class" />
       <Type Name="CCColor4B" Kind="Structure" />
       <Type Name="CCColor4F" Kind="Structure" />
       <Type Name="CCConfiguration" Kind="Class" />
       <Type Name="CCContentManager" Kind="Class" />
-      <Type Name="CCControl" Kind="Class" />
-      <Type Name="CCControlButton" Kind="Class" />
-      <Type Name="CCControlColourPicker" Kind="Class" />
-      <Type Name="CCControlEvent" Kind="Enumeration" />
-      <Type Name="CCControlHuePicker" Kind="Class" />
-      <Type Name="CCControlPotentiometer" Kind="Class" />
-      <Type Name="CCControlSaturationBrightnessPicker" Kind="Class" />
-      <Type Name="CCControlSlider" Kind="Class" />
-      <Type Name="CCControlState" Kind="Enumeration" />
-      <Type Name="CCControlStepper" Kind="Class" />
-      <Type Name="CCControlStepperPart" Kind="Enumeration" />
-      <Type Name="CCControlSwitch" Kind="Class" />
-      <Type Name="CCControlSwitchSprite" Kind="Class" />
       <Type Name="CCDeccelAmplitude" Kind="Class" />
       <Type Name="CCDeccelAmplitudeState" Kind="Class" />
       <Type Name="CCDelayTime" Kind="Class" />
@@ -772,7 +659,6 @@
       <Type Name="CCEventAccelerate" Kind="Class" />
       <Type Name="CCEventCode" Kind="Enumeration" />
       <Type Name="CCEventCustom" Kind="Class" />
-      <Type Name="CCEventDispatcher" Kind="Class" />
       <Type Name="CCEventGamePad" Kind="Class" />
       <Type Name="CCEventGamePadButton" Kind="Class" />
       <Type Name="CCEventGamePadConnection" Kind="Class" />
@@ -841,7 +727,6 @@
       <Type Name="CCHideState" Kind="Class" />
       <Type Name="CCImageFormat" Kind="Enumeration" />
       <Type Name="CCIMEKeyboardNotificationInfo" Kind="Class" />
-      <Type Name="CCInvocation" Kind="Class" />
       <Type Name="CCJumpBy" Kind="Class" />
       <Type Name="CCJumpByState" Kind="Class" />
       <Type Name="CCJumpTiles3D" Kind="Class" />
@@ -850,9 +735,6 @@
       <Type Name="CCJumpToState" Kind="Class" />
       <Type Name="CCKeyboardEventType" Kind="Enumeration" />
       <Type Name="CCKeyboardState" Kind="Structure" />
-      <Type Name="CCKeypadDispatcher" Kind="Class" />
-      <Type Name="CCKeypadHandler" Kind="Class" />
-      <Type Name="CCKeypadMSGType" Kind="Enumeration" />
       <Type Name="CCKeys" Kind="Enumeration" />
       <Type Name="CCKeyState" Kind="Enumeration" />
       <Type Name="CCLabel" Kind="Class" />
@@ -863,9 +745,7 @@
       <Type Name="CCLayer" Kind="Class" />
       <Type Name="CCLayerColor" Kind="Class" />
       <Type Name="CCLayerGradient" Kind="Class" />
-      <Type Name="CCLayerLoader" Kind="Class" />
       <Type Name="CCLayerMultiplex" Kind="Class" />
-      <Type Name="CCLayerRGBA" Kind="Class" />
       <Type Name="CCLens3D" Kind="Class" />
       <Type Name="CCLens3DState" Kind="Class" />
       <Type Name="CCLiquid" Kind="Class" />
@@ -878,15 +758,12 @@
       <Type Name="CCMenuItem" Kind="Class" />
       <Type Name="CCMenuItemFont" Kind="Class" />
       <Type Name="CCMenuItemImage" Kind="Class" />
-      <Type Name="CCMenuItemImageLoader" Kind="Class" />
       <Type Name="CCMenuItemLabel" Kind="Class" />
       <Type Name="CCMenuItemLabelAtlas" Kind="Class" />
       <Type Name="CCMenuItemLabelBase" Kind="Class" />
       <Type Name="CCMenuItemLabelBMFont" Kind="Class" />
       <Type Name="CCMenuItemLabelTTF" Kind="Class" />
-      <Type Name="CCMenuItemLoader" Kind="Class" />
       <Type Name="CCMenuItemToggle" Kind="Class" />
-      <Type Name="CCMenuLoader" Kind="Class" />
       <Type Name="CCMenuState" Kind="Enumeration" />
       <Type Name="CCMotionStreak" Kind="Class" />
       <Type Name="CCMouseButton" Kind="Enumeration" />
@@ -896,9 +773,6 @@
       <Type Name="CCMoveTo" Kind="Class" />
       <Type Name="CCMoveToState" Kind="Class" />
       <Type Name="CCNode" Kind="Class" />
-      <Type Name="CCNodeLoader" Kind="Class" />
-      <Type Name="CCNodeLoaderLibrary" Kind="Class" />
-      <Type Name="CCNodeRGBA" Kind="Class" />
       <Type Name="CCOGLES" Kind="Class" />
       <Type Name="CCOrbitCamera" Kind="Class" />
       <Type Name="CCOrbitCameraState" Kind="Class" />
@@ -934,7 +808,6 @@
       <Type Name="CCPlayerIndex" Kind="Enumeration" />
       <Type Name="CCPoint" Kind="Structure" />
       <Type Name="CCPoint+ComputationOperationDelegate" Kind="Delegate" />
-      <Type Name="CCPointConverter" Kind="Class" />
       <Type Name="CCPointI" Kind="Structure" />
       <Type Name="CCPointObject" Kind="Class" />
       <Type Name="CCPointSprite" Kind="Class" />
@@ -950,7 +823,6 @@
       <Type Name="CCRawList`1" DisplayName="CCRawList&lt;T&gt;" Kind="Class" />
       <Type Name="CCRawList`1+Enumerator" DisplayName="CCRawList&lt;T&gt;+Enumerator" Kind="Structure" />
       <Type Name="CCRect" Kind="Structure" />
-      <Type Name="CCRectConverter" Kind="Class" />
       <Type Name="CCRemoveSelf" Kind="Class" />
       <Type Name="CCRemoveSelfState" Kind="Class" />
       <Type Name="CCRenderTargetUsage" Kind="Enumeration" />
@@ -971,9 +843,6 @@
       <Type Name="CCRotateByState" Kind="Class" />
       <Type Name="CCRotateTo" Kind="Class" />
       <Type Name="CCRotateToState" Kind="Class" />
-      <Type Name="CCScale9Sprite" Kind="Class" />
-      <Type Name="CCScale9SpriteFile" Kind="Class" />
-      <Type Name="CCScale9SpriteFrame" Kind="Class" />
       <Type Name="CCScaleBy" Kind="Class" />
       <Type Name="CCScaleByState" Kind="Class" />
       <Type Name="CCScaleTo" Kind="Class" />
@@ -982,9 +851,6 @@
       <Type Name="CCSchedulePriority" Kind="Class" />
       <Type Name="CCScheduler" Kind="Class" />
       <Type Name="CCScriptEngineManager" Kind="Class" />
-      <Type Name="CCScrollView" Kind="Class" />
-      <Type Name="CCScrollViewDirection" Kind="Enumeration" />
-      <Type Name="CCScrollViewLoader" Kind="Class" />
       <Type Name="CCSequence" Kind="Class" />
       <Type Name="CCSequenceState" Kind="Class" />
       <Type Name="CCSerialization" Kind="Class" />
@@ -999,7 +865,6 @@
       <Type Name="CCShuffleTiles" Kind="Class" />
       <Type Name="CCShuffleTilesState" Kind="Class" />
       <Type Name="CCSize" Kind="Structure" />
-      <Type Name="CCSizeConverter" Kind="Class" />
       <Type Name="CCSizeI" Kind="Structure" />
       <Type Name="CCSkewBy" Kind="Class" />
       <Type Name="CCSkewByState" Kind="Class" />
@@ -1024,10 +889,6 @@
       <Type Name="CCStopGrid" Kind="Class" />
       <Type Name="CCStopGridState" Kind="Class" />
       <Type Name="CCSurfaceFormat" Kind="Enumeration" />
-      <Type Name="CCSwitchValueChangedDelegate" Kind="Delegate" />
-      <Type Name="CCTableView" Kind="Class" />
-      <Type Name="CCTableViewCell" Kind="Class" />
-      <Type Name="CCTableViewVerticalFillOrder" Kind="Enumeration" />
       <Type Name="CCTargetedAction" Kind="Class" />
       <Type Name="CCTargetedActionState" Kind="Class" />
       <Type Name="CCTask" Kind="Class" />
@@ -1102,7 +963,6 @@
       <Type Name="CCTwirl" Kind="Class" />
       <Type Name="CCTwirlState" Kind="Class" />
       <Type Name="CCUserDefault" Kind="Class" />
-      <Type Name="CCUtils" Kind="Class" />
       <Type Name="CCV2F_C4B_T2F" Kind="Class" />
       <Type Name="CCV2F_C4B_T2F_Quad" Kind="Class" />
       <Type Name="CCV2F_C4F_T2F" Kind="Class" />
@@ -1119,25 +979,12 @@
       <Type Name="CCWavesState" Kind="Class" />
       <Type Name="CCWavesTiles3D" Kind="Class" />
       <Type Name="CCWavesTiles3DState" Kind="Class" />
-      <Type Name="HSV" Kind="Structure" />
       <Type Name="ICCActionTweenDelegate" Kind="Interface" />
       <Type Name="ICCBlendable" Kind="Interface" />
-      <Type Name="ICCBMemberVariableAssigner" Kind="Interface" />
-      <Type Name="ICCBScriptOwner" Kind="Interface" />
-      <Type Name="ICCBSelectorResolver" Kind="Interface" />
-      <Type Name="ICCColor" Kind="Interface" />
       <Type Name="ICCDirectorDelegate" Kind="Interface" />
       <Type Name="ICCFocusable" Kind="Interface" />
       <Type Name="ICCIMEDelegate" Kind="Interface" />
-      <Type Name="ICCKeypadDelegate" Kind="Interface" />
-      <Type Name="ICCNodeLoaderListener" Kind="Interface" />
-      <Type Name="ICCProjection" Kind="Interface" />
-      <Type Name="ICCSAXDelegator" Kind="Interface" />
       <Type Name="ICCScriptingEngine" Kind="Class" />
-      <Type Name="ICCScrollViewDelegate" Kind="Interface" />
-      <Type Name="ICCSortableObject" Kind="Interface" />
-      <Type Name="ICCTableViewDataSource" Kind="Interface" />
-      <Type Name="ICCTableViewDelegate" Kind="Interface" />
       <Type Name="ICCTextContainer" Kind="Interface" />
       <Type Name="ICCTextFieldDelegate" Kind="Interface" />
       <Type Name="ICCTexture" Kind="Interface" />
@@ -1164,20 +1011,45 @@
         <Target Type="T:CocosSharp.CCPoint" />
       </Targets>
       <Member MemberName="PixelsToPoints">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCPoint</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="p">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCPoint)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCPoint,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCPoint" />
+      </Targets>
+      <Member MemberName="PixelsToPoints">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PixelsToPoints (this CocosSharp.CCPoint p, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PixelsToPoints(valuetype CocosSharp.CCPoint p, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCPoint</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="p">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCPoint,System.Single)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>
@@ -1185,20 +1057,45 @@
         <Target Type="T:CocosSharp.CCRect" />
       </Targets>
       <Member MemberName="PixelsToPoints">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCRect</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="r">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCRect)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCRect,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCRect" />
+      </Targets>
+      <Member MemberName="PixelsToPoints">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PixelsToPoints (this CocosSharp.CCRect r, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PixelsToPoints(valuetype CocosSharp.CCRect r, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCRect</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="r">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCRect,System.Single)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>
@@ -1206,20 +1103,45 @@
         <Target Type="T:CocosSharp.CCSize" />
       </Targets>
       <Member MemberName="PixelsToPoints">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCSize</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="s">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCSize)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCSize,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCSize" />
+      </Targets>
+      <Member MemberName="PixelsToPoints">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PixelsToPoints (this CocosSharp.CCSize s, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PixelsToPoints(valuetype CocosSharp.CCSize s, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCSize</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="s">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PixelsToPoints(CocosSharp.CCSize,System.Single)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>
@@ -1227,20 +1149,45 @@
         <Target Type="T:CocosSharp.CCPoint" />
       </Targets>
       <Member MemberName="PointsToPixels">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCPoint</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="p">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCPoint)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCPoint,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCPoint" />
+      </Targets>
+      <Member MemberName="PointsToPixels">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCPoint PointsToPixels (this CocosSharp.CCPoint p, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCPoint PointsToPixels(valuetype CocosSharp.CCPoint p, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCPoint</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="p" Type="CocosSharp.CCPoint" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="p">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCPoint,System.Single)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>
@@ -1248,20 +1195,45 @@
         <Target Type="T:CocosSharp.CCRect" />
       </Targets>
       <Member MemberName="PointsToPixels">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCRect</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="r">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCRect)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCRect,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCRect" />
+      </Targets>
+      <Member MemberName="PointsToPixels">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCRect PointsToPixels (this CocosSharp.CCRect r, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect PointsToPixels(valuetype CocosSharp.CCRect r, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCRect</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="r" Type="CocosSharp.CCRect" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="r">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCRect,System.Single)" />
       </Member>
     </ExtensionMethod>
     <ExtensionMethod>
@@ -1269,20 +1241,45 @@
         <Target Type="T:CocosSharp.CCSize" />
       </Targets>
       <Member MemberName="PointsToPixels">
-        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s);" />
-        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s) cil managed" />
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s, CocosSharp.CCDirector director);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s, class CocosSharp.CCDirector director) cil managed" />
         <MemberType>ExtensionMethod</MemberType>
         <ReturnValue>
           <ReturnType>CocosSharp.CCSize</ReturnType>
         </ReturnValue>
         <Parameters>
           <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+          <Parameter Name="director" Type="CocosSharp.CCDirector" />
         </Parameters>
         <Docs>
           <param name="s">To be added.</param>
+          <param name="director">To be added.</param>
           <summary>To be added.</summary>
         </Docs>
-        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCSize)" />
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCSize,CocosSharp.CCDirector)" />
+      </Member>
+    </ExtensionMethod>
+    <ExtensionMethod>
+      <Targets>
+        <Target Type="T:CocosSharp.CCSize" />
+      </Targets>
+      <Member MemberName="PointsToPixels">
+        <MemberSignature Language="C#" Value="public static CocosSharp.CCSize PointsToPixels (this CocosSharp.CCSize s, float scaleFactor);" />
+        <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCSize PointsToPixels(valuetype CocosSharp.CCSize s, float32 scaleFactor) cil managed" />
+        <MemberType>ExtensionMethod</MemberType>
+        <ReturnValue>
+          <ReturnType>CocosSharp.CCSize</ReturnType>
+        </ReturnValue>
+        <Parameters>
+          <Parameter Name="s" Type="CocosSharp.CCSize" RefType="this" />
+          <Parameter Name="scaleFactor" Type="System.Single" />
+        </Parameters>
+        <Docs>
+          <param name="s">To be added.</param>
+          <param name="scaleFactor">To be added.</param>
+          <summary>To be added.</summary>
+        </Docs>
+        <Link Type="CocosSharp.CCMacros" Member="M:CocosSharp.CCMacros.PointsToPixels(CocosSharp.CCSize,System.Single)" />
       </Member>
     </ExtensionMethod>
   </ExtensionMethods>

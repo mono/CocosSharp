@@ -171,14 +171,18 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             var touchListener = new CCEventListenerTouchAllAtOnce();
             touchListener.OnTouchesEnded = OnTouchesEnded;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
-            AddNewSpriteWithCoords(new CCPoint(s.Width / 2, s.Height / 2));
         }
 
         #endregion Constructors
 
+
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+            AddNewSpriteWithCoords(Scene.VisibleBoundsWorldspace.Center);
+        }
 
         void AddNewSpriteWithCoords(CCPoint p)
         {

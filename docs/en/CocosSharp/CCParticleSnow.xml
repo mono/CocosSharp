@@ -16,11 +16,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCParticleSnow ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCParticleSnow (CocosSharp.CCPoint position);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCPoint position) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="position" Type="CocosSharp.CCPoint" />
+      </Parameters>
       <Docs>
+        <param name="position">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

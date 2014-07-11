@@ -9,16 +9,19 @@ namespace tests
     public class LayerGradient : LayerTest
     {
         int kTagLayer = 1;
+		CCMenu menu;
+		CCLayerGradient gradientLayer;
+
         public LayerGradient()
         {
-            CCLayerGradient layer1 = new CCLayerGradient(new CCColor4B(255, 0, 0, 255), new CCColor4B(0, 255, 0, 255), new CCPoint(0.9f, 0.9f));
+            gradientLayer = new CCLayerGradient(new CCColor4B(255, 0, 0, 255), new CCColor4B(0, 255, 0, 255), new CCPoint(0.9f, 0.9f));
 
-            AddChild(layer1, 0, kTagLayer);
+            AddChild(gradientLayer, 0, kTagLayer);
 
 			// Register Touch Event
 			var touchListener = new CCEventListenerTouchAllAtOnce();
 			touchListener.OnTouchesMoved = onTouchesMoved;
-			EventDispatcher.AddEventListener(touchListener, this);
+			AddEventListener(touchListener);
 
             CCLabelTtf label1 = new CCLabelTtf("Compressed Interpolation: Enabled", "arial", 26);
             CCLabelTtf label2 = new CCLabelTtf("Compressed Interpolation: Disabled", "arial", 26);
@@ -26,11 +29,17 @@ namespace tests
             CCMenuItemLabelTTF item2 = new CCMenuItemLabelTTF(label2);
             CCMenuItemToggle item = new CCMenuItemToggle((toggleItem), item1, item2);
 
-            CCMenu menu = new CCMenu(item);
+            menu = new CCMenu(item);
             AddChild(menu);
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
-            menu.Position = (new CCPoint(s.Width / 2, 100));
         }
+
+        protected override void AddedToNewScene()
+		{
+            base.AddedToNewScene();
+
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+			menu.Position = (new CCPoint(s.Width / 2, 100));
+		}
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
@@ -43,25 +52,29 @@ namespace tests
             CCPoint diff = new CCPoint(s.Width / 2 - start.X, s.Height / 2 - start.Y);
             diff = CCPoint.Normalize(diff);
 
-            CCLayerGradient gradient = (CCLayerGradient)GetChildByTag(1);
-            gradient.Vector = diff;
+            gradientLayer.Vector = diff;
         }
 
+		public override string Title
+		{
+			get
+			{
+				return "LayerGradient";
+			}
+		}
 
-        public override string title()
-        {
-            return "LayerGradient";
-        }
-
-        public override string subtitle()
-        {
-            return "Touch the screen and move your finger";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Touch the screen and move your finger";
+			}
+		}
 
         public void toggleItem(object sender)
         {
-            CCLayerGradient gradient = (CCLayerGradient)GetChildByTag(kTagLayer);
-            gradient.IsCompressedInterpolation = !gradient.IsCompressedInterpolation;
+            
+            gradientLayer.IsCompressedInterpolation = !gradientLayer.IsCompressedInterpolation;
         }
     }
 }

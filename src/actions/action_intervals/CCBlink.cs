@@ -41,7 +41,7 @@
 			OriginalState = target.Visible;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target != null && !IsDone)
 			{

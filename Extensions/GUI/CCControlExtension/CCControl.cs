@@ -72,7 +72,7 @@ namespace CocosSharp
      * To use the CCControl you have to subclass it.
      */
 
-    public class CCControl : CCLayerRGBA
+    public class CCControl : CCLayer
     {
         const int ControlEventTotalNumber = 9; 			// Number of different possible control events.
 
@@ -99,7 +99,7 @@ namespace CocosSharp
                 {
                     foreach (CCNode child in Children.Elements) 
                     {
-                        var item = child as ICCColorable;
+                        var item = child;
                         if (item != null) {
                             item.IsColorModifiedByOpacity = value;
                         }

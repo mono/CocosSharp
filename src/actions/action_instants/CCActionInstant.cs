@@ -36,7 +36,7 @@ namespace CocosSharp
 		{
 		}
 
-		protected internal override bool IsDone {
+		public override bool IsDone {
 			get { return true; }
 		}
 
@@ -45,7 +45,7 @@ namespace CocosSharp
 			Update (1);
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			// ignore
 		}

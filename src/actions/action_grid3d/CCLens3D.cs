@@ -59,7 +59,7 @@ namespace CocosSharp
 			Concave = action.Concave;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			int i, j;
 

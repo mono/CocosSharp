@@ -58,37 +58,37 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D pobTexture, CocosSharp.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D pobTexture, valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rectInPxls);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rectInPxls) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="rectInPxls" Type="CocosSharp.CCRect" />
       </Parameters>
       <Docs>
-        <param name="pobTexture">To be added.</param>
-        <param name="rect">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="rectInPxls">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D pobTexture, CocosSharp.CCRect rectIn, CocosSharp.CCSize originalSize, bool rotated = false, Nullable&lt;CocosSharp.CCPoint&gt; offsetIn = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D pobTexture, valuetype CocosSharp.CCRect rectIn, valuetype CocosSharp.CCSize originalSize, bool rotated, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCPoint&gt; offsetIn) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpriteFrame (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rectInPxls, CocosSharp.CCSize originalSizeInPxls, bool rotated = false, Nullable&lt;CocosSharp.CCPoint&gt; offsetInPxls = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rectInPxls, valuetype CocosSharp.CCSize originalSizeInPxls, bool rotated, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCPoint&gt; offsetInPxls) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pobTexture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rectIn" Type="CocosSharp.CCRect" />
-        <Parameter Name="originalSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
+        <Parameter Name="rectInPxls" Type="CocosSharp.CCRect" />
+        <Parameter Name="originalSizeInPxls" Type="CocosSharp.CCSize" />
         <Parameter Name="rotated" Type="System.Boolean" />
-        <Parameter Name="offsetIn" Type="System.Nullable&lt;CocosSharp.CCPoint&gt;" />
+        <Parameter Name="offsetInPxls" Type="System.Nullable&lt;CocosSharp.CCPoint&gt;" />
       </Parameters>
       <Docs>
-        <param name="pobTexture">To be added.</param>
-        <param name="rectIn">To be added.</param>
-        <param name="originalSize">To be added.</param>
+        <param name="texture">To be added.</param>
+        <param name="rectInPxls">To be added.</param>
+        <param name="originalSizeInPxls">To be added.</param>
         <param name="rotated">To be added.</param>
-        <param name="offsetIn">To be added.</param>
+        <param name="offsetInPxls">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -99,19 +99,6 @@
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Offset">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Offset { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Offset" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -132,19 +119,6 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="OriginalSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize OriginalSize" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>set original size of the trimmed image </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
     <Member MemberName="OriginalSizeInPixels">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize OriginalSizeInPixels { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize OriginalSizeInPixels" />
@@ -154,19 +128,6 @@
       </ReturnValue>
       <Docs>
         <summary>set original size of the trimmed image </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Rect">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCRect Rect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect Rect" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCRect</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>set rect of the frame </summary>
         <value>To be added.</value>
         <remarks />
       </Docs>

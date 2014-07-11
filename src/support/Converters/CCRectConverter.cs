@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-    public class CCRectConverter
+    internal class CCRectConverter
     {
         public static CCRect CCRectFromString(string rectSpec)
         {

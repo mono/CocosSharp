@@ -450,9 +450,6 @@
     <Compile Include=".\base_nodes\CCNode.cs">
       <LogicalName>base_nodes\CCNode</LogicalName>
     </Compile>
-    <Compile Include=".\base_nodes\CCNodeRGBA.cs">
-      <LogicalName>base_nodes\CCNodeRGBA</LogicalName>
-    </Compile>
     <Compile Include=".\CCCamera.cs">
       <LogicalName>CCCamera</LogicalName>
     </Compile>
@@ -509,12 +506,6 @@
     <Compile Include=".\effects\CCTiledGrid3D.cs">
       <LogicalName>effects\CCTiledGrid3D</LogicalName>
     </Compile>
-    <Compile Include=".\keypad_dispatcher\ICCKeypadDelegate.cs">
-      <LogicalName>keypad_dispatcher\CCKeypadDelegate</LogicalName>
-    </Compile>
-    <Compile Include=".\keypad_dispatcher\CCKeypadDispatcher.cs">
-      <LogicalName>keypad_dispatcher\CCKeypadDispatcher</LogicalName>
-    </Compile>
     <Compile Include=".\label_nodes\CCBMFontConfiguration.cs">
       <LogicalName>label_nodes\CCBMFontConfiguration</LogicalName>
     </Compile>
@@ -541,9 +532,6 @@
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\CCScene.cs">
       <LogicalName>layers_scenes_transitions_nodes\CCScene</LogicalName>
-    </Compile>
-    <Compile Include=".\layers_scenes_transitions_nodes\CCLayerRGBA.cs">
-      <LogicalName>layers_scenes_transitions_nodes\CCLayerRGBA</LogicalName>
     </Compile>
     <Compile Include=".\layers_scenes_transitions_nodes\transition\CCTransitionCrossFade.cs">
       <LogicalName>layers_scenes_transitions_nodes\transition\CCTransitionCrossFade</LogicalName>

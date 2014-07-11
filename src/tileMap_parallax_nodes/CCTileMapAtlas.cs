@@ -66,7 +66,7 @@ namespace CocosSharp
         {
             base.AddedToNewScene();
 
-            if (Scene != null)
+            if (Scene != null && TGAInfo != null)
             {
                 UpdateAtlasValues();
             }
@@ -108,7 +108,7 @@ namespace CocosSharp
                 TGAInfo.ImageData[position.X + position.Y * TGAInfo.Width] = new Color(tile.R, tile.G, tile.B, tile.A);
 
                 // XXX: this method consumes a lot of memory
-                // XXX: a tree of something like that shall be impolemented
+                // XXX: a tree of something like that shall be implemented
                 int num = PositionToAtlasIndex[position];
                 UpdateAtlasValueAt(position, tile.ToColor(), num);
             }
@@ -118,12 +118,11 @@ namespace CocosSharp
 
         void UpdateAtlasValueAt(CCGridSize pos, Color value, int index)
         {
-            if(Director == null)
-                return;
+            UpdateAtlasValueAt(pos.X, pos.Y, value, index);
+        }
 
-            int x = pos.X;
-            int y = pos.Y;
-
+        void UpdateAtlasValueAt(int x, int y, Color value, int index)
+        {
             float row = (float)(value.R % ItemsPerRow);
             float col = (float)(value.R / ItemsPerRow);
 
@@ -180,7 +179,7 @@ namespace CocosSharp
 
         public override void UpdateAtlasValues()
         {
-            if(Scene == null)
+            if(PositionToAtlasIndex.Count > 0)
                 return;
 
             Debug.Assert(TGAInfo != null, "tgaInfo must be non-nil");
@@ -198,7 +197,7 @@ namespace CocosSharp
                         if (value.R != 0)
                         {
                             var pos = new CCGridSize(x, y);
-                            UpdateAtlasValueAt(pos, value, total);
+                            UpdateAtlasValueAt(x, y, value, total);
                             PositionToAtlasIndex.Add(pos, total);
 
                             total++;

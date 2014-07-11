@@ -119,7 +119,7 @@ namespace CocosSharp
 			base.Stop();
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			// if t==1, ignore. Animation should finish with t==1
 			if (time < 1.0f)

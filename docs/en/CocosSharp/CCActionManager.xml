@@ -144,9 +144,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetActionByTag">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetActionByTag (int tag, CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
+    <Member MemberName="GetAction">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetAction (int tag, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetAction(int32 tag, class CocosSharp.CCNode target) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAction</ReturnType>
@@ -158,9 +158,28 @@
       <Docs>
         <param name="tag">To be added.</param>
         <param name="target">To be added.</param>
-        <summary>Gets an action given its tag an a target the  the with the given tag </summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActionState">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState GetActionState (int tag, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState GetActionState(int32 tag, class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <param name="target">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActionsInTarget">
@@ -222,22 +241,6 @@
       </Docs>
     </Member>
     <Member MemberName="RemoveAction">
-      <MemberSignature Language="C#" Value="public void RemoveAction (CocosSharp.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class CocosSharp.CCAction action) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCAction" />
-      </Parameters>
-      <Docs>
-        <param name="action">To be added.</param>
-        <summary>Removes an action given an action reference. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveAction">
       <MemberSignature Language="C#" Value="public void RemoveAction (CocosSharp.CCActionState actionState);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(class CocosSharp.CCActionState actionState) cil managed" />
       <MemberType>Method</MemberType>
@@ -249,6 +252,24 @@
       </Parameters>
       <Docs>
         <param name="actionState">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAction">
+      <MemberSignature Language="C#" Value="public void RemoveAction (int tag, CocosSharp.CCNode target);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAction(int32 tag, class CocosSharp.CCNode target) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <param name="target">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -269,24 +290,6 @@
         <param name="element">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveActionByTag">
-      <MemberSignature Language="C#" Value="public void RemoveActionByTag (int tag, CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveActionByTag(int32 tag, class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="tag" Type="System.Int32" />
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="tag">To be added.</param>
-        <param name="target">To be added.</param>
-        <summary>Removes an action given its tag and the target </summary>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="RemoveAllActions">

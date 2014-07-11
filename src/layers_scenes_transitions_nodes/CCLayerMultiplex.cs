@@ -9,7 +9,7 @@ namespace CocosSharp
     /// - It supports one or more children
     /// - Only one children will be active a time
     /// </summary>
-    public class CCLayerMultiplex : CCLayerRGBA
+    public class CCLayerMultiplex : CCLayer
     {
         public const int NoLayer = -1;
 

@@ -49,7 +49,7 @@ namespace tests
 
         public CCRect rect()
         {
-            CCSize s = Texture.ContentSizeInPixels;
+			CCSize s = Texture.ContentSizeInPixels;
             return new CCRect(-s.Width / 2, -s.Height / 2, s.Width, s.Height);
         }
 
@@ -65,7 +65,7 @@ namespace tests
 			listener.OnTouchMoved = onTouchMoved;
 			listener.OnTouchEnded = onTouchEnded;
 
-			EventDispatcher.AddEventListener(listener, this);
+			AddEventListener(listener);
         }
 
         public override void OnExit()

@@ -192,7 +192,6 @@
     <Compile Include="actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
-    <Compile Include="base_nodes\CCNodeRGBA.cs" />
     <Compile Include="CCCamera.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCDirector.cs" />
@@ -237,10 +236,6 @@
     <Compile Include="extentions\GUI\CCScrollView\CCSorting.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableView.cs" />
     <Compile Include="extentions\GUI\CCScrollView\CCTableViewCell.cs" />
-    <Compile Include="keypad_dispatcher\ICCKeypadDelegate.cs" />
-    <Compile Include="keypad_dispatcher\CCKeypadDispatcher.cs" />
-    <Compile Include="keyboard_dispatcher\ICCKeyboardDelegate.cs" />
-    <Compile Include="keyboard_dispatcher\CCKeyboardDispatcher.cs" />
     <Compile Include="label_nodes\CCBMFontConfiguration.cs" />
     <Compile Include="label_nodes\CCLabelAtlas.cs" />
     <Compile Include="label_nodes\CCLabelBMFont.cs" />
@@ -250,7 +245,6 @@
     <Compile Include="layers_scenes_transitions_nodes\CCLayerGradient.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCLayerMultiplex.cs" />
     <Compile Include="layers_scenes_transitions_nodes\CCScene.cs" />
-    <Compile Include="layers_scenes_transitions_nodes\CCLayerRGBA.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeDown.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFadeUp.cs" />
     <Compile Include="layers_scenes_transitions_nodes\transition\CCTransitionFlipAngular.cs" />

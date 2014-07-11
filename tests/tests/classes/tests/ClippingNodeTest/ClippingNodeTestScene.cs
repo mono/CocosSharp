@@ -178,7 +178,7 @@ namespace tests.Clipping
 
         protected static void SetEnableRecursiveCascading(CCNode node, bool enable)
         {
-            var rgba = node as ICCColorable;
+			var rgba = node;
 
             if (rgba != null)
             {
@@ -524,7 +524,7 @@ namespace tests.Clipping
 			var listener = new CCEventListenerTouchAllAtOnce();
 			listener.OnTouchesBegan = onTouchesBegan;
 
-            EventDispatcher.AddEventListener(listener, this);    
+            AddEventListener(listener);    
         }
 
 		public void OnEnter()
@@ -631,7 +631,7 @@ namespace tests.Clipping
 			touchListener.OnTouchesMoved = onTouchesMoved;
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
-            EventDispatcher.AddEventListener(touchListener, this);        
+            AddEventListener(touchListener);        
 		}
 
 		public void OnEnter()

@@ -26,57 +26,6 @@ using System;
 
 namespace CocosSharp
 {
-    public interface ICCColorable
-    {
-        /// <summary>
-        /// Gets or sets the color
-        /// </summary>
-        CCColor3B Color { get; set; }
-
-        CCColor3B DisplayedColor { get; }
-
-        /// <summary>
-        /// Gets or sets the Opacity
-        /// @warning If the the texture has premultiplied alpha then, the R, G and B channels will be modifed.
-        /// Values goes from 0 to 255, where 255 means fully opaque.
-        /// </summary>
-        byte Opacity { get; set; }
-
-        byte DisplayedOpacity { get; }
-
-        /** sets the premultipliedAlphaOpacity property.
-	     If set to NO then opacity will be applied as: glColor(R,G,B,opacity);
-	     If set to YES then oapcity will be applied as: glColor(opacity, opacity, opacity, opacity );
-	     Textures with premultiplied alpha will have this property by default on YES. Otherwise the default value is NO
-	     @since v0.8
-	     */
-
-        bool IsColorModifiedByOpacity { get; set; }
-
-        /** returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity);
-	     @since v0.8
-	     */
-
-        /**
-         *  whether or not color should be propagated to its children.
-         */
-        bool IsColorCascaded { get; set; }
-
-        /** 
-        *  recursive method that updates display color 
-        */
-        void UpdateDisplayedColor(CCColor3B color);
-
-        /** 
-         *  whether or not opacity should be propagated to its children.
-         */
-        bool IsOpacityCascaded { get; set; }
-
-        /**
-         *  recursive method that updates the displayed opacity.
-         */
-        void UpdateDisplayedOpacity(byte opacity);
-    }
 
     /// <summary>
     /// You can specify the blending fuction.
@@ -117,15 +66,4 @@ namespace CocosSharp
         string Text { get; set; }
     }
 
-    /// <summary>
-    /// OpenGL projection protocol
-    /// </summary>
-    public interface ICCProjection
-    {
-        /// <summary>
-        /// Called by CCDirector when the porjection is updated, and "custom" projection is used
-        /// @since v0.99.5
-        /// </summary>
-        void UpdateProjection();
-    }
 }

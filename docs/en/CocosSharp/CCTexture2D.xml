@@ -178,16 +178,20 @@
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize ContentSize { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
-      <MemberType>Property</MemberType>
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize ContentSize (float contentScaleFactor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCSize ContentSize(float32 contentScaleFactor) cil managed" />
+      <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
+      <Parameters>
+        <Parameter Name="contentScaleFactor" Type="System.Single" />
+      </Parameters>
       <Docs>
-        <summary>getContentSize </summary>
-        <value>To be added.</value>
-        <remarks />
+        <param name="contentScaleFactor">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSizeInPixels">

@@ -18,7 +18,7 @@ namespace tests
 
         public override string Title
         {
-            get { return "Sprite/BatchNode + child + scale + rot"; }
+			get { return "SpriteBatchNode Children Z"; }
         }
 
         #endregion Properties
@@ -50,7 +50,7 @@ namespace tests
             sprite5 = new CCSprite("grossini_dance_02.png");
             sprite6 = new CCSprite("grossini_dance_03.png");
 
-            batch.AddChild(sprite1);
+            batch.AddChild(sprite4);
             sprite4.AddChild(sprite5, -2);
             sprite4.AddChild(sprite6, 2);
 

@@ -12,8 +12,10 @@ namespace tests
 {
     public class TestController : CCLayer
     {
+        const int MENU_ITEM_Z_ORDER = 10000;
+
         static int LINE_SPACE = 70;
-        static CCPoint curPos = new CCPoint(0.0f, 0.0f);
+        static CCPoint curPos = CCPoint.Zero;
 
         int currentItemIndex = 0;
         CCPoint homePosition;
@@ -59,8 +61,7 @@ namespace tests
                 CCLabelTtf label = new CCLabelTtf(Tests.g_aTestNames[i], "arial", 50);
                 CCMenuItem menuItem = new CCMenuItemLabelTTF(label, MenuCallback);
 
-                menuItem.UserData = i;
-                testListMenu.AddChild(menuItem, i + 10000);
+				testListMenu.AddChild(menuItem, i + MENU_ITEM_Z_ORDER);
                 testListMenuItems.Add(menuItem);
             }
 
@@ -107,7 +108,7 @@ namespace tests
             homePosition = new CCPoint(0f, windowSize.Height / 2f + LINE_SPACE / 2f);
             lastPosition = new CCPoint(0f, homePosition.Y - (testListMenuItems.Count - 1) * LINE_SPACE);
             #else
-            homePosition = curPos;
+			homePosition = curPos;
             #endif
 
             testListMenu.Position = homePosition;
@@ -119,14 +120,12 @@ namespace tests
             touchListener.OnTouchBegan = OnTouchBegan;
             touchListener.OnTouchMoved = OnTouchMoved;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
 
             var mouseListener = new CCEventListenerMouse ();
             mouseListener.OnMouseScroll = OnMouseScroll;
-            EventDispatcher.AddEventListener(mouseListener, this);
+            AddEventListener(mouseListener);
 
-            #else
-            //KeypadEnabled = true;
             #endif
 
             #if WINDOWS || WINDOWSGL || MACOS
@@ -187,8 +186,8 @@ namespace tests
         void MenuCallback(object sender)
         {
             // get the userdata, it's the index of the menu item clicked
-            CCMenuItem menuItem = (CCMenuItem)(sender);
-            int nIdx = (int)menuItem.UserData;
+            CCMenuItem menuItem = (CCMenuItem)sender;
+			var nIdx = menuItem.LocalZOrder - MENU_ITEM_Z_ORDER;
 
             // create the test scene and run it
             TestScene scene = CreateTestScene(nIdx);
@@ -266,7 +265,7 @@ namespace tests
                 CCLog.Log("Player {0} is connected {1}", connectionStatus.Player, connectionStatus.IsConnected);
             };
 
-            EventDispatcher.AddEventListener(gamePadListener, this);
+            AddEventListener(gamePadListener);
         }
 
 
@@ -284,18 +283,18 @@ namespace tests
             var touchLocation = touch.LocationOnScreen;
             float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
-            CCPoint curPos = testListMenu.Position;
+            curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
             if (nextPos.Y < 0.0f)
             {
                 testListMenu.Position = new CCPoint(0, 0);
                 return;
             }
 
-            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height))
             {
-                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height)));
                 return;
             }
 
@@ -311,8 +310,9 @@ namespace tests
             // https://github.com/mono/MonoGame/issues/2276
             var delta = mouseEvent.ScrollY;
 
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
             var curPos = testListMenu.Position;
+
             var nextPos = curPos;
             nextPos.Y += (delta) / LINE_SPACE;
 
@@ -322,9 +322,9 @@ namespace tests
                 return;
             }
 
-            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height))
+            if (nextPos.Y > (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height))
             {
-                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - CCVisibleRect.VisibleRect.Size.Height)));
+                testListMenu.Position = (new CCPoint(0, (((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE - visibleBounds.Size.Height)));
                 return;
             }
 

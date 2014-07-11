@@ -395,7 +395,7 @@ namespace CocosSharp
 					else if (pPropName == "opacity")
 					{
 						byte opacity = ((CCBValue)pValue).GetByteValue();
-						((ICCColorable)node).Opacity = opacity;
+						node.Opacity = opacity;
 					}
 					else if (pPropName == "displayFrame")
 					{
@@ -404,7 +404,7 @@ namespace CocosSharp
 					else if (pPropName == "color")
 					{
 						var color = (CCColor3BWapper)pValue;
-						((ICCColorable)node).Color = color.Color;
+						node.Color = color.Color;
 					}
 					else if (pPropName == "visible")
 					{
@@ -848,7 +848,7 @@ namespace CocosSharp
 			SpriteFrame = action.SpriteFrame;
 		}
 
-		protected override void Update(float time)
+		public override void Update(float time)
 		{
             ((CCSprite)Target).SpriteFrame = SpriteFrame;
 		}
@@ -907,7 +907,7 @@ namespace CocosSharp
 				Gain = action.Gain;
 			}
 
-			protected override void Update(float time)
+			public override void Update (float time)
 			{
 				CCSimpleAudioEngine.SharedEngine.PlayEffect(SoundFile);
 			}
@@ -962,7 +962,7 @@ namespace CocosSharp
 				diffAngle = new CCPoint(DstAngle - startAngle.X, DstAngle - startAngle.Y);
 			}
 
-			protected override void Update(float time)
+			public override void Update (float time)
 			{
 				Target.RotationX = startAngle.X + (diffAngle.X * time);
 				Target.RotationY = startAngle.Y + (diffAngle.Y * time);
@@ -1020,7 +1020,7 @@ namespace CocosSharp
 				diffAngle = DstAngle - startAngle;
 			}
 
-			protected override void Update(float time)
+			public override void Update (float time)
 			{
 				Target.RotationX = startAngle + (diffAngle * time);
 			}
@@ -1075,7 +1075,7 @@ namespace CocosSharp
 				diffAngle = DstAngle - startAngle;
 			}
 
-			protected override void Update(float time)
+			public override void Update (float time)
 			{
 				Target.RotationY = startAngle + (diffAngle * time);
 			}
@@ -1117,15 +1117,15 @@ namespace CocosSharp
 			{
 			}
 
-			protected override void Update(float time)
+			public override void Update (float time)
 			{
 				if (time < 0)
 				{
-					((CCBEaseInstantState)InnerActionState).Update(0);
+					InnerActionState.Update(0);
 				}
 				else
 				{
-					((CCBEaseInstantState)InnerActionState).Update(1);
+					InnerActionState.Update(1);
 				}
 			}
 		}

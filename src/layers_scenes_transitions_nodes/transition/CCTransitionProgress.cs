@@ -30,9 +30,9 @@ namespace CocosSharp
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-            texture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            texture.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
             texture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            texture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            texture.AnchorPoint = CCPoint.AnchorMiddle;
 
             // render outScene to its texturebuffer
             texture.Clear(0, 0, 0, 1);
@@ -110,7 +110,7 @@ namespace CocosSharp
             node.ReverseDirection = false;
             node.Percentage = 100;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -141,7 +141,7 @@ namespace CocosSharp
             node.ReverseDirection = true;
             node.Percentage = 100;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -172,7 +172,7 @@ namespace CocosSharp
 
             node.Percentage = 100;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -201,7 +201,7 @@ namespace CocosSharp
 
             node.Percentage = 100;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -228,7 +228,7 @@ namespace CocosSharp
 
             node.Percentage = 0;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }
@@ -267,7 +267,7 @@ namespace CocosSharp
 
             node.Percentage = 100;
             node.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
-            node.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            node.AnchorPoint = CCPoint.AnchorMiddle;
 
             return node;
         }

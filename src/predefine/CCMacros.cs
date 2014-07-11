@@ -103,12 +103,11 @@ namespace CocosSharp
         /*
          * Macros defined in ccConfig.h
          */
-        public static readonly string CCHiResDisplayFilenameSuffix = "-hd";
-        public static readonly float CCDirectorStatsUpdateIntervalInSeconds = 0.5f;
+        internal static readonly float CCDirectorStatsUpdateIntervalInSeconds = 0.5f;
 
         /*
          * Macros defined in CCSprite.h
          */
-        public static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
+        internal static readonly int CCSpriteIndexNotInitialized = 320000000; // 0xffffffff; // CCSprite invalid index on the CCSpriteBatchode
     }
 }

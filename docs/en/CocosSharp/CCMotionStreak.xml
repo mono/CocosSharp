@@ -1,11 +1,11 @@
 <Type Name="CCMotionStreak" FullName="CocosSharp.CCMotionStreak">
-  <TypeSignature Language="C#" Value="public class CCMotionStreak : CocosSharp.CCNodeRGBA, CocosSharp.ICCTexture" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends CocosSharp.CCNodeRGBA implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
+  <TypeSignature Language="C#" Value="public class CCMotionStreak : CocosSharp.CCNode, CocosSharp.ICCTexture" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCMotionStreak extends CocosSharp.CCNode implements class CocosSharp.ICCBlendable, class CocosSharp.ICCTexture" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCNodeRGBA</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCNode</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>

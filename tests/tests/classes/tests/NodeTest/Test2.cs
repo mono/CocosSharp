@@ -4,6 +4,7 @@ namespace tests
 {
     public class Test2 : TestCocosNodeDemo
     {
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -15,8 +16,9 @@ namespace tests
 			var sp3 = new CCSprite(TestResource.s_pPathSister1);
 			var sp4 = new CCSprite(TestResource.s_pPathSister2);
 
-            sp1.Position = (new CCPoint(100, s.Height / 2));
-            sp2.Position = (new CCPoint(380, s.Height / 2));
+			sp1.Position = (new CCPoint(100, s.Height / 2));
+			sp2.Position = (new CCPoint(380, s.Height / 2));
+
             AddChild(sp1);
             AddChild(sp2);
 

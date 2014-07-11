@@ -89,7 +89,7 @@ namespace CocosSharp
 
 		}
 
-		protected internal override bool IsDone {
+		public override bool IsDone {
 			get {
 				if (hasInfiniteAction && actionSequences [last] is CCRepeatForever)
 				{
@@ -121,7 +121,7 @@ namespace CocosSharp
 			}
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			bool bRestart = false;
 			int found;

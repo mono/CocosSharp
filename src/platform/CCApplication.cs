@@ -1155,6 +1155,7 @@ namespace CocosSharp
                             touches.AddLast(new CCTouch(touch.Id, pos.X, pos.Y));
                             touchMap.Add(touch.Id, touches.Last);
                             newTouches.Add(touches.Last.Value);
+
                             break;
 
                         case TouchLocationState.Moved:

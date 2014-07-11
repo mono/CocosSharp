@@ -102,22 +102,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LoadFilenameLookupDictionaryFromFile">
-      <MemberSignature Language="C#" Value="public virtual void LoadFilenameLookupDictionaryFromFile (string filename);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void LoadFilenameLookupDictionaryFromFile(string filename) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="filename" Type="System.String" />
-      </Parameters>
-      <Docs>
-        <param name="filename">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ReloadGraphicsAssets">
       <MemberSignature Language="C#" Value="protected override void ReloadGraphicsAssets ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ReloadGraphicsAssets() cil managed" />
@@ -154,22 +138,6 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetFilenameLookupDictionary">
-      <MemberSignature Language="C#" Value="public virtual void SetFilenameLookupDictionary (CocosSharp.PlistDictionary filenameLookupDict);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetFilenameLookupDictionary(class CocosSharp.PlistDictionary filenameLookupDict) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="filenameLookupDict" Type="CocosSharp.PlistDictionary" />
-      </Parameters>
-      <Docs>
-        <param name="filenameLookupDict">To be added.</param>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

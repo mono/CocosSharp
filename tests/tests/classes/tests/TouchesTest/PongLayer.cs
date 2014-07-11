@@ -32,10 +32,12 @@ namespace tests
 {
     public class PongLayer : CCLayer
     {
+
+		float kStatusBarHeight = 0.0f;
         string s_Ball = "Images/ball";
         string s_Paddle = "Images/paddle";
         Ball m_ball;
-        List<object> m_paddles;
+        List<Paddle> paddles;
         CCPoint m_ballStartingVelocity;
 
         public PongLayer()
@@ -49,10 +51,9 @@ namespace tests
 
             CCTexture2D paddleTexture = CCApplication.SharedApplication.TextureCache.AddImage(s_Paddle);
 
-            List<object> paddlesM = new List<object>(4);
+            var paddlesM = new List<Paddle>(4);
 
             Paddle paddle = new Paddle(paddleTexture);
-            paddle.Position = new CCPoint(160, 15);
             paddlesM.Add(paddle);
 
             paddle = new Paddle(paddleTexture);
@@ -67,11 +68,11 @@ namespace tests
             paddle.Position = new CCPoint(160, 480 - 20.0f - 100);
             paddlesM.Add(paddle);
 
-            m_paddles = paddlesM;
+			paddles = paddlesM;
 
-            for (int i = 0; i < m_paddles.Count; i++)
+            for (int i = 0; i < paddles.Count; i++)
             {
-                paddle = (Paddle)m_paddles[i];
+                paddle = paddles[i];
 
                 if (paddle == null) break;
 
@@ -79,6 +80,17 @@ namespace tests
             }
             Schedule(this.doStep);
         }
+
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+			paddles[0].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + 15);
+			paddles[1].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - kStatusBarHeight - 15);
+			paddles[2].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + 100);
+			paddles[3].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - kStatusBarHeight - 100);
+
+		}
 
 
         public void resetAndScoreBallForPlayer(int player)
@@ -94,9 +106,9 @@ namespace tests
             m_ball.move(delta);
 
             Paddle paddle;
-            for (int i = 0; i < m_paddles.Count; i++)
+            for (int i = 0; i < paddles.Count; i++)
             {
-                paddle = (Paddle)m_paddles[i];
+                paddle = (Paddle)paddles[i];
                 if (paddle == null) break;
                 m_ball.collideWithPaddle(paddle);
             }

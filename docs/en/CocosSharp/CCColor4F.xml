@@ -165,6 +165,40 @@ v3.0 </summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCColor4B op_Implicit (CocosSharp.CCColor4F point);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype CocosSharp.CCColor4B op_Implicit(valuetype CocosSharp.CCColor4F point) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor4B</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="point" Type="CocosSharp.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="point">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="op_Implicit">
+      <MemberSignature Language="C#" Value="public static Microsoft.Xna.Framework.Color op_Implicit (CocosSharp.CCColor4F color4F);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname valuetype Microsoft.Xna.Framework.Color op_Implicit(valuetype CocosSharp.CCColor4F color4F) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Microsoft.Xna.Framework.Color</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="color4F" Type="CocosSharp.CCColor4F" />
+      </Parameters>
+      <Docs>
+        <param name="color4F">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="op_Inequality">
       <MemberSignature Language="C#" Value="public static bool op_Inequality (CocosSharp.CCColor4F a, CocosSharp.CCColor4F b);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig specialname bool op_Inequality(valuetype CocosSharp.CCColor4F a, valuetype CocosSharp.CCColor4F b) cil managed" />

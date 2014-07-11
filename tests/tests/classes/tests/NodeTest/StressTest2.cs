@@ -4,14 +4,13 @@ namespace tests
 {
     public class StressTest2 : TestCocosNodeDemo
     {
+
         public StressTest2()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
 			var sublayer = new CCLayer();
 
 			var sp1 = new CCSprite(TestResource.s_pPathSister1);
-            sp1.Position = (new CCPoint(80, s.Height / 2));
+            
 
 			var move = new CCMoveBy (3, new CCPoint(350, 0));
 			var move_ease_inout3 = new CCEaseInOut(move, 2.0f);
@@ -19,12 +18,10 @@ namespace tests
 			var seq3 = new CCSequence(move_ease_inout3, move_ease_inout_back3);
 			sp1.RepeatForever(seq3);
 
-            sublayer.AddChild(sp1, 1);
+            sublayer.AddChild(sp1, 1, CocosNodeTestStaticLibrary.kTagSprite2);
 
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
-			var fire = new CCParticleFire(new CCPoint(winSize.Width / 2, 60));
+			var fire = new CCParticleFire(CCPoint.Zero) { Tag = CocosNodeTestStaticLibrary.kTagSprite3 };
             fire.Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/fire"));
-            fire.Position = (new CCPoint(80, s.Height / 2 - 50));
 
 			fire.RepeatForever(seq3);
             sublayer.AddChild(fire, 2);
@@ -34,10 +31,22 @@ namespace tests
             AddChild(sublayer, 0, CocosNodeTestStaticLibrary.kTagSprite1);
         }
 
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+			var sublayer = this[CocosNodeTestStaticLibrary.kTagSprite1];
+			sublayer[CocosNodeTestStaticLibrary.kTagSprite2].Position = (new CCPoint(80, s.Height / 2));
+			var fire = sublayer[CocosNodeTestStaticLibrary.kTagSprite3];
+			fire.Position = new CCPoint(80, s.Height / 2 - 50);
+		}
+
         private void shouldNotLeak(float dt)
         {
             Unschedule((shouldNotLeak));
-            var sublayer = (CCLayer) GetChildByTag(CocosNodeTestStaticLibrary.kTagSprite1);
+            var sublayer = (CCLayer) this[CocosNodeTestStaticLibrary.kTagSprite1];
             sublayer.RemoveAllChildren(true);
         }
 

@@ -48,7 +48,7 @@ using RenderbufferStorage = OpenTK.Graphics.ES20.All;
 
 namespace CocosSharp
 {
-    public class CCUtils
+    internal class CCUtils
     {
         #if !WINDOWS_PHONE
         #if OPENGL

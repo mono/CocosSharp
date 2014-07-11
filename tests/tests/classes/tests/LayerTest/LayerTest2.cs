@@ -13,6 +13,7 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
+
             var layer1 = new CCLayerColor(new CCColor4B(255, 255, 0, 80), 100, s.Height - 50);
             layer1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             layer1.IgnoreAnchorPointForPosition = false;
@@ -34,9 +35,12 @@ namespace tests
             layer2.RunAction(seq2);
         }
 
-        public override string title()
-        {
-            return "ColorLayer: fade and tint";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "ColorLayer: fade and tint";
+			}
+		}
     }
 }

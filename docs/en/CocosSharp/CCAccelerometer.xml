@@ -1,6 +1,6 @@
 <Type Name="CCAccelerometer" FullName="CocosSharp.CCAccelerometer">
   <TypeSignature Language="C#" Value="public class CCAccelerometer" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi CCAccelerometer extends System.Object" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAccelerometer extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -14,12 +14,41 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAccelerometer ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCAccelerometer (CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCDirector director) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCDirector Director { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Enabled">
+      <MemberSignature Language="C#" Value="public bool Enabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool Enabled" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

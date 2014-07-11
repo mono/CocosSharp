@@ -28,15 +28,18 @@ namespace tests
 {
     public class MenuLayer1 : CCLayer
     {
-        protected CCMenuItemLabelAtlas m_disabledItem;
+        protected CCMenuItemLabelAtlas disabledItem;
         private string s_SendScore = "Images/SendScoreButton";
         private string s_MenuItem = "Images/menuitemsprite";
         private string s_PressSendScore = "Images/SendScoreButtonPressed";
+		private CCTintBy color_action = new CCTintBy(0.5f, 0, -255, -255); 
 
 		CCEventListenerTouchOneByOne touchListener;
+		CCMenu menu;
 
         public MenuLayer1()
         {
+
 			// Register Touch Event
 			touchListener = new CCEventListenerTouchOneByOne();
 			touchListener.IsSwallowTouches = true;
@@ -46,7 +49,7 @@ namespace tests
 			touchListener.OnTouchEnded = onTouchEnded;
 			touchListener.OnTouchCancelled = onTouchCancelled;
 
-            EventDispatcher.AddEventListener(touchListener, 1);
+			AddEventListener(touchListener, 1);
 
 			// We do not have an HD version of the menuitemsprite so internally CocosSharp tries to convert our
 			// rectangle coordinates passed to work with HD images so the coordinates are off.  We will just 
@@ -55,22 +58,24 @@ namespace tests
 			CCSprite spriteSelected = new CCSprite(s_MenuItem, new CCRect(0, 23 * 1, 115, 23));
 			CCSprite spriteDisabled = new CCSprite(s_MenuItem, new CCRect(0, 23 * 0, 115, 23));
 
-            CCMenuItemImage item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
+
+            var item1 = new CCMenuItemImage(spriteNormal, spriteSelected, spriteDisabled, this.menuCallback);
 
             // Image Item
-            CCMenuItem item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
+            var item2 = new CCMenuItemImage(s_SendScore, s_PressSendScore, this.menuCallback2);
 
             // Label Item (LabelAtlas)
-            CCLabelAtlas labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
-            CCMenuItemLabelAtlas item3 = new CCMenuItemLabelAtlas(labelAtlas, this.menuCallbackDisabled);
+            var labelAtlas = new CCLabelAtlas("0123456789", "Images/fps_Images.png", 12, 32, '.');
+            var item3 = new CCMenuItemLabelAtlas(labelAtlas, this.menuCallbackDisabled);
             item3.DisabledColor = new CCColor3B(32, 32, 64);
             item3.Color = new CCColor3B(200, 200, 255);
 
-			CCMenuItemFont.FontSize = 20;
-			CCMenuItemFont.FontName = "arial";
-
             // Font Item
-			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", this.menuCallbackEnable);
+			CCMenuItemFont item4 = new CCMenuItemFont("I toggle enable items", (sender) => 
+				{
+					disabledItem.Enabled = !disabledItem.Enabled;
+
+				});
 
             // Label Item (CCLabelBMFont)
             CCLabelBMFont label = new CCLabelBMFont("configuration", "fonts/bitmapFontTest3.fnt");
@@ -85,48 +90,52 @@ namespace tests
             CCMenuItemFont item6 = new CCMenuItemFont("Priority Test", menuCallbackPriorityTest);
 
             // Font Item
-            CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+			CCMenuItemFont item7 = new CCMenuItemFont("Quit", this.onQuit);
+			item7.RepeatForever(color_action, color_action.Reverse());
 
-            CCActionInterval color_action = new CCTintBy(0.5f, 0, -255, -255);
-            CCActionInterval color_back = (CCActionInterval) color_action.Reverse();
-            CCFiniteTimeAction seq = new CCSequence(color_action, color_back);
-            item7.RunAction(new CCRepeatForever((CCActionInterval) seq));
+			menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
+			menu.AlignItemsVertically();
 
-            CCMenu menu = new CCMenu(item1, item2, item3, item4, item5, item6, item7);
-            menu.AlignItemsVertically();
-
-            // elastic effect
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
-            int i = 0;
-            CCNode child;
-            var pArray = menu.Children;
-            object pObject = null;
-            if (pArray.Count > 0)
-            {
-                for (int j = 0; j < pArray.Count; j++)
-                {
-                    pObject = pArray[j];
-                    if (pObject == null)
-
-                        break;
-                    child = (CCNode) pObject;
-                    CCPoint dstPoint = child.Position;
-                    int offset = (int) (s.Width / 2 + 50);
-                    if (i % 2 == 0)
-                        offset = -offset;
-
-                    child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
-                    child.RunAction(new CCEaseElasticOut(new CCMoveBy(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
-                    i++;
-
-                }
-            }
-            m_disabledItem = item3;
-            m_disabledItem.Enabled = false;
+            disabledItem = item3;
+            disabledItem.Enabled = false;
 
             AddChild(menu);
+			menu.Scale = 0;
+			menu.RunAction(new CCScaleTo(1, 1));
         }
 
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+			// elastic effect
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+
+			int i = 0;
+			CCNode child;
+			var pArray = menu.Children;
+			object pObject = null;
+			if (pArray.Count > 0)
+			{
+				for (int j = 0; j < pArray.Count; j++)
+				{
+					pObject = pArray[j];
+					if (pObject == null)
+						break;
+
+					child = (CCNode) pObject;
+					CCPoint dstPoint = child.Position;
+					int offset = (int) (s.Width / 2 + 50);
+					if (i % 2 == 0)
+						offset = -offset;
+
+					child.Position = new CCPoint(dstPoint.X + offset, dstPoint.Y);
+					child.RunAction(new CCEaseElasticOut(new CCMoveBy(2, new CCPoint(dstPoint.X - offset, 0)), 0.35f));
+					i++;
+
+				}
+			}
+		}
 
         private void menuCallbackPriorityTest(object pSender)
         {
@@ -152,7 +161,7 @@ namespace tests
 
         public void allowTouches(float dt)
         {
-			Scene.EventDispatcher.SetPriority(touchListener,1);
+			SetListenerPriority(touchListener,1);
             base.UnscheduleAll();
             CCLog.Log("TOUCHES ALLOWED AGAIN");
         }
@@ -170,14 +179,9 @@ namespace tests
         public void menuCallbackDisabled(object pSender)
         {
             // hijack all touch events for 5 seconds
-			Scene.EventDispatcher.SetPriority(touchListener,-1);
+			SetListenerPriority(touchListener,-1);
             base.Schedule(this.allowTouches, 5.0f);
             CCLog.Log("TOUCHES DISABLED FOR 5 SECONDS");
-        }
-
-        public void menuCallbackEnable(object pSender)
-        {
-            m_disabledItem.Enabled = !m_disabledItem.Enabled;
         }
 
         public void menuCallback2(object pSender)

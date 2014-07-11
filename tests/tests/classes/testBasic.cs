@@ -5,29 +5,30 @@ namespace tests
 {
     public abstract class TestScene : CCScene
     {
-
         public static int MENU_LEVEL = 99999;
         public static int TITLE_LEVEL = 99999;
+
+        CCMenu pMenu;
+        CCMenuItemLabelTTF pMenuItem;
 
         public TestScene()
             : base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
         {
+            //add the menu item for back to main menu
+            var label = new CCLabelTtf("MainMenu", "arial", 30);
+            pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
+
+            pMenu = new CCMenu(pMenuItem);
+
+            pMenu.Name = "MainMenu";
+            AddChild(pMenu, MENU_LEVEL);
         }
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
-
-            //add the menu item for back to main menu
-            var label = new CCLabelTtf("MainMenu", "arial", 30);
-            var pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
-
-            var pMenu = new CCMenu(pMenuItem);
-
-            pMenu.Name = "MainMenu";
-            AddChild(pMenu, MENU_LEVEL);
-
-            var visiblePoint = new CCPoint (CCVisibleRect.Right.X - 80, CCVisibleRect.Bottom.Y + 25);
+            base.OnEnter();
+            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+            var visiblePoint = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - 50, visibleBounds.Origin.Y + 25);
 
             pMenu.Position = CCPoint.Zero;
             pMenuItem.Position = visiblePoint;

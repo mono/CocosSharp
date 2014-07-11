@@ -26,7 +26,6 @@ namespace tests
 
             AddChild(theMenu);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
 			CCSprite sprite = new CCSprite(SceneTestScene.grossini) { Tag = SceneTestScene.GROSSINI_TAG };
             AddChild(sprite);
         }

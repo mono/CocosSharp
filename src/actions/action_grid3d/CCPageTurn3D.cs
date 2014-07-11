@@ -29,7 +29,7 @@ namespace CocosSharp
 		{
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			float tt = Math.Max (0, time - 0.25f);
 			float deltaAy = (tt * tt * 500);

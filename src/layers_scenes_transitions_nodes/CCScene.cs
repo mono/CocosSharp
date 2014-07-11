@@ -97,7 +97,7 @@ namespace CocosSharp
             }
         }
 
-        public override CCEventDispatcher EventDispatcher 
+        internal override CCEventDispatcher EventDispatcher 
         { 
             get { return Window != null ? Window.EventDispatcher : null; }
         }

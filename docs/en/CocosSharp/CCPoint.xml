@@ -601,6 +601,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="NegativeInfinity">
+      <MemberSignature Language="C#" Value="public static readonly CocosSharp.CCPoint NegativeInfinity;" />
+      <MemberSignature Language="ILAsm" Value=".field public static initonly valuetype CocosSharp.CCPoint NegativeInfinity" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Normalize">
       <MemberSignature Language="C#" Value="public float Normalize ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance float32 Normalize() cil managed" />

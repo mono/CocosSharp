@@ -46,7 +46,7 @@ namespace CocosSharp
 			DeltaY = EndScaleY - StartScaleY;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target != null)
 			{

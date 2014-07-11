@@ -33,7 +33,7 @@ namespace tests
 			touchListener.OnTouchesBegan = onTouchesBegan;
 			touchListener.OnTouchesMoved = onTouchesMoved;
 
-            EventDispatcher.AddEventListener(touchListener, this);
+            AddEventListener(touchListener);
 
             // ask director the the window size
             CCSize size = Scene.VisibleBoundsWorldspace.Size;

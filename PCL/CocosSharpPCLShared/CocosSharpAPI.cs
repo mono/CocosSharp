@@ -103,7 +103,7 @@ namespace CocosSharp {
 		public CCAccelAmplitudeState(CocosSharp.CCAccelAmplitude action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCAmplitudeActionState OtherActionState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAmplitudeActionState); } }
 		public float Rate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCAccelDeccelAmplitude : CocosSharp.CCAccelAmplitude {
 		public CCAccelDeccelAmplitude(CocosSharp.CCAmplitudeAction pAction, float duration, float accDeccRate=1f) : base (default(CocosSharp.CCAmplitudeAction), default(float), default(float)) { }
@@ -112,7 +112,7 @@ namespace CocosSharp {
 	}
 	public partial class CCAccelDeccelAmplitudeState : CocosSharp.CCAccelAmplitudeState {
 		public CCAccelDeccelAmplitudeState(CocosSharp.CCAccelDeccelAmplitude action, CocosSharp.CCNode target) : base (default(CocosSharp.CCAccelAmplitude), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCAcceleration {
 		public double TimeStamp;
@@ -160,7 +160,7 @@ namespace CocosSharp {
 		public CCActionEaseState(CocosSharp.CCActionEase action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCActionIntervalState InnerActionState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionIntervalState); } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCActionInstant : CocosSharp.CCFiniteTimeAction {
 		protected CCActionInstant() { }
@@ -170,9 +170,9 @@ namespace CocosSharp {
 	}
 	public partial class CCActionInstantState : CocosSharp.CCFiniteTimeActionState {
 		public CCActionInstantState(CocosSharp.CCActionInstant action, CocosSharp.CCNode target) : base (default(CocosSharp.CCFiniteTimeAction), default(CocosSharp.CCNode)) { }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected internal override void Step(float dt) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCActionInterval : CocosSharp.CCFiniteTimeAction {
 		protected bool FirstTick;
@@ -187,7 +187,7 @@ namespace CocosSharp {
 		public CCActionIntervalState(CocosSharp.CCActionInterval action, CocosSharp.CCNode target) : base (default(CocosSharp.CCFiniteTimeAction), default(CocosSharp.CCNode)) { }
 		public float Elapsed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
 		protected bool FirstTick { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected internal override void Step(float dt) { }
 	}
 	public partial class CCActionManager : CocosSharp.ICCUpdatable, System.IDisposable {
@@ -225,12 +225,12 @@ namespace CocosSharp {
 		public CCActionState(CocosSharp.CCAction action, CocosSharp.CCNode target) { }
 		public CocosSharp.CCAction Action { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		protected CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } }
-		protected internal virtual bool IsDone { get { return default(bool); } }
+		public virtual bool IsDone { get { return default(bool); } }
 		public CocosSharp.CCNode OriginalTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		public CocosSharp.CCNode Target { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		protected internal virtual void Step(float dt) { }
 		protected internal virtual void Stop() { }
-		protected internal virtual void Update(float time) { }
+		public virtual void Update(float time) { }
 	}
 	public enum CCActionTag {
 		Invalid = -1,
@@ -252,7 +252,7 @@ namespace CocosSharp {
 		protected string Key { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
 		protected float To { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
 		protected System.Action<System.Single, System.String> TweenAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Action<System.Single, System.String>); } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
 	public partial struct CCAffineTransform {
@@ -326,7 +326,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCAnimation Animation { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAnimation); } }
 		protected System.Collections.Generic.List<System.Single> SplitTimes { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.Generic.List<System.Single>); } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCAnimation {
 		public CCAnimation() { }
@@ -410,7 +410,7 @@ namespace CocosSharp {
 		public virtual void ApplicationDidFinishLaunching(CocosSharp.CCApplication application) { }
 		public virtual void ApplicationWillEnterForeground(CocosSharp.CCApplication application) { }
 	}
-	public partial class CCAtlasNode : CocosSharp.CCNodeRGBA, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
+	public partial class CCAtlasNode : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
 		public CCAtlasNode(CocosSharp.CCTexture2D texture, int tileWidth, int tileHeight, int itemsToRender) { }
 		public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender) { }
 		public CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -443,7 +443,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCBezierConfig BezierConfig { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBezierConfig); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCPoint PreviousPosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCPoint StartPosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
 	public partial struct CCBezierConfig {
@@ -484,7 +484,7 @@ namespace CocosSharp {
 		protected bool OriginalState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected uint Times { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
 	public partial struct CCBoundingBoxI {
@@ -558,7 +558,7 @@ namespace CocosSharp {
 		protected System.Action CallFunction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Action); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected string ScriptFuncName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public virtual void Execute() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCCamera {
 		public CCCamera() { }
@@ -607,7 +607,7 @@ namespace CocosSharp {
 		protected System.Collections.Generic.List<CocosSharp.CCPoint> Points { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.Generic.List<CocosSharp.CCPoint>); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCPoint PreviousPosition { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float Tension { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 		public virtual void UpdatePosition(CocosSharp.CCPoint newPos) { }
 	}
 	public partial class CCCatmullRomBy : CocosSharp.CCCardinalSplineBy {
@@ -707,6 +707,8 @@ namespace CocosSharp {
 		public override bool Equals(object obj) { return default(bool); }
 		public override int GetHashCode() { return default(int); }
 		public static bool operator ==(CocosSharp.CCColor4F a, CocosSharp.CCColor4F b) { return default(bool); }
+		public static implicit operator CocosSharp.CCColor4B (CocosSharp.CCColor4F point) { return default(CocosSharp.CCColor4B); }
+		public static implicit operator Microsoft.Xna.Framework.Color (CocosSharp.CCColor4F color4F) { return default(Microsoft.Xna.Framework.Color); }
 		public static bool operator !=(CocosSharp.CCColor4F a, CocosSharp.CCColor4F b) { return default(bool); }
 		public static CocosSharp.CCColor4F Parse(string s) { return default(CocosSharp.CCColor4F); }
 		public override string ToString() { return default(string); }
@@ -745,7 +747,7 @@ namespace CocosSharp {
 	}
 	public partial class CCDeccelAmplitudeState : CocosSharp.CCAccelAmplitudeState {
 		public CCDeccelAmplitudeState(CocosSharp.CCDeccelAmplitude action, CocosSharp.CCNode target) : base (default(CocosSharp.CCAccelAmplitude), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCDelayTime : CocosSharp.CCActionInterval {
 		public CCDelayTime(float d) { }
@@ -754,7 +756,7 @@ namespace CocosSharp {
 	}
 	public partial class CCDelayTimeState : CocosSharp.CCActionIntervalState {
 		public CCDelayTimeState(CocosSharp.CCDelayTime action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public enum CCDepthFormat {
 		Depth16 = 54,
@@ -776,7 +778,6 @@ namespace CocosSharp {
 		public bool CanPopScene { get { return default(bool); } }
 		public float ContentScaleFactor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool DisplayStats { get { return default(bool); } set { } }
-		public CocosSharp.CCEventDispatcher EventDispatcher { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCEventDispatcher); } }
 		public bool GamePadEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected bool IsPurgeDirectorInNextLoop { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool IsSendCleanupToScene { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
@@ -836,28 +837,48 @@ namespace CocosSharp {
 	}
 	public partial class CCDrawingPrimitives {
 		public CCDrawingPrimitives() { }
-		public static CocosSharp.CCColor4B DefaultColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor4B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public static CocosSharp.CCColor4B DrawColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor4B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public static float LineWidth { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public static float PointSize { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public static void Begin() { }
+		public static void DrawArc(CocosSharp.CCRect rect, int startAngle, int sweepAngle) { }
 		public static void DrawArc(CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
+		public static void DrawArc(int x, int y, int width, int height, int startAngle, int sweepAngle) { }
 		public static void DrawArc(int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
 		public static void DrawCardinalSpline(System.Collections.Generic.List<CocosSharp.CCPoint> config, float tension, int segments) { }
 		public static void DrawCatmullRom(System.Collections.Generic.List<CocosSharp.CCPoint> points, int segments) { }
-		public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color) { }
+		public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, CocosSharp.CCColor4B color, float scaleX=1f, float scaleY=1f) { }
+		public static void DrawCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, bool drawLineToCenter, float scaleX=1f, float scaleY=1f) { }
+		public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments) { }
 		public static void DrawCubicBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control1, CocosSharp.CCPoint control2, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color) { }
+		public static void DrawEllips(int x, int y, int width, int height) { }
 		public static void DrawEllips(int x, int y, int width, int height, CocosSharp.CCColor4B color) { }
+		public static void DrawEllipse(CocosSharp.CCRect rect) { }
 		public static void DrawEllipse(CocosSharp.CCRect rect, CocosSharp.CCColor4B color) { }
+		public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination) { }
 		public static void DrawLine(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color) { }
+		public static void DrawPie(CocosSharp.CCRect rect, int startAngle, int sweepAngle) { }
 		public static void DrawPie(CocosSharp.CCRect rect, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
+		public static void DrawPie(int x, int y, int width, int height, int startAngle, int sweepAngle) { }
 		public static void DrawPie(int x, int y, int width, int height, int startAngle, int sweepAngle, CocosSharp.CCColor4B color) { }
 		public static void DrawPoint(CocosSharp.CCPoint point) { }
 		public static void DrawPoint(CocosSharp.CCPoint point, float size) { }
 		public static void DrawPoint(CocosSharp.CCPoint p, float size, CocosSharp.CCColor4B color) { }
+		public static void DrawPoints(CocosSharp.CCPoint[] points) { }
 		public static void DrawPoints(CocosSharp.CCPoint[] points, int numberOfPoints, float size, CocosSharp.CCColor4B color) { }
+		public static void DrawPoints(CocosSharp.CCPoint[] points, float size) { }
 		public static void DrawPoints(CocosSharp.CCPoint[] points, float size, CocosSharp.CCColor4B color) { }
+		public static void DrawPoly(CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color, bool closePolygon=false) { }
+		public static void DrawPoly(CocosSharp.CCPoint[] vertices, bool closePolygon=false) { }
+		public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon) { }
 		public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, CocosSharp.CCColor4B color) { }
 		public static void DrawPoly(CocosSharp.CCPoint[] vertices, int numOfVertices, bool closePolygon, bool fill, CocosSharp.CCColor4B color) { }
+		public static void DrawQuadBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments) { }
 		public static void DrawQuadBezier(CocosSharp.CCPoint origin, CocosSharp.CCPoint control, CocosSharp.CCPoint destination, int segments, CocosSharp.CCColor4B color) { }
 		public static void DrawRect(CocosSharp.CCRect rect, CocosSharp.CCColor4B color) { }
+		public static void DrawSolidCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, CocosSharp.CCColor4B color, float scaleX=1f, float scaleY=1f) { }
+		public static void DrawSolidCircle(CocosSharp.CCPoint center, float radius, float angle, int segments, float scaleX=1f, float scaleY=1f) { }
+		public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, CocosSharp.CCColor4B color) { }
 		public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color) { }
 		public static void DrawSolidPoly(CocosSharp.CCPoint[] vertices, int count, CocosSharp.CCColor4B color, bool outline) { }
 		public static void DrawSolidRect(CocosSharp.CCPoint origin, CocosSharp.CCPoint destination, CocosSharp.CCColor4B color) { }
@@ -947,11 +968,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseBackInOutState : CocosSharp.CCActionEaseState {
 		public CCEaseBackInOutState(CocosSharp.CCEaseBackInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseBackInState : CocosSharp.CCActionEaseState {
 		public CCEaseBackInState(CocosSharp.CCEaseBackIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseBackOut : CocosSharp.CCActionEase {
 		public CCEaseBackOut(CocosSharp.CCActionInterval pAction) { }
@@ -960,7 +981,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseBackOutState : CocosSharp.CCActionEaseState {
 		public CCEaseBackOutState(CocosSharp.CCEaseBackOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseBounceIn : CocosSharp.CCActionEase {
 		public CCEaseBounceIn(CocosSharp.CCActionInterval pAction) { }
@@ -974,11 +995,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseBounceInOutState : CocosSharp.CCActionEaseState {
 		public CCEaseBounceInOutState(CocosSharp.CCEaseBounceInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseBounceInState : CocosSharp.CCActionEaseState {
 		public CCEaseBounceInState(CocosSharp.CCEaseBounceIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseBounceOut : CocosSharp.CCActionEase {
 		public CCEaseBounceOut(CocosSharp.CCActionInterval pAction) { }
@@ -987,7 +1008,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseBounceOutState : CocosSharp.CCActionEaseState {
 		public CCEaseBounceOutState(CocosSharp.CCEaseBounceOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseCustom : CocosSharp.CCActionEase {
 		public CCEaseCustom(CocosSharp.CCActionInterval pAction, System.Func<System.Single, System.Single> easeFunc) { }
@@ -998,7 +1019,7 @@ namespace CocosSharp {
 	public partial class CCEaseCustomState : CocosSharp.CCActionEaseState {
 		public CCEaseCustomState(CocosSharp.CCEaseCustom action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
 		protected System.Func<System.Single, System.Single> EaseFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Func<System.Single, System.Single>); } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseElastic : CocosSharp.CCActionEase {
 		public CCEaseElastic(CocosSharp.CCActionInterval pAction) { }
@@ -1021,11 +1042,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseElasticInOutState : CocosSharp.CCEaseElasticState {
 		public CCEaseElasticInOutState(CocosSharp.CCEaseElasticInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseElastic), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseElasticInState : CocosSharp.CCEaseElasticState {
 		public CCEaseElasticInState(CocosSharp.CCEaseElasticIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseElastic), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseElasticOut : CocosSharp.CCEaseElastic {
 		public CCEaseElasticOut(CocosSharp.CCActionInterval pAction) : base (default(CocosSharp.CCActionInterval), default(float)) { }
@@ -1035,7 +1056,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseElasticOutState : CocosSharp.CCEaseElasticState {
 		public CCEaseElasticOutState(CocosSharp.CCEaseElasticOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseElastic), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseElasticState : CocosSharp.CCActionEaseState {
 		public CCEaseElasticState(CocosSharp.CCEaseElastic action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
@@ -1053,11 +1074,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseExponentialInOutState : CocosSharp.CCActionEaseState {
 		public CCEaseExponentialInOutState(CocosSharp.CCEaseExponentialInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseExponentialInState : CocosSharp.CCActionEaseState {
 		public CCEaseExponentialInState(CocosSharp.CCEaseExponentialIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseExponentialOut : CocosSharp.CCActionEase {
 		public CCEaseExponentialOut(CocosSharp.CCActionInterval pAction) { }
@@ -1066,7 +1087,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseExponentialOutState : CocosSharp.CCActionEaseState {
 		public CCEaseExponentialOutState(CocosSharp.CCEaseExponentialOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseIn : CocosSharp.CCEaseRateAction {
 		public CCEaseIn(CocosSharp.CCActionInterval pAction, float fRate) : base (default(CocosSharp.CCActionInterval), default(float)) { }
@@ -1080,11 +1101,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseInOutState : CocosSharp.CCEaseRateActionState {
 		public CCEaseInOutState(CocosSharp.CCEaseInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseRateAction), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseInState : CocosSharp.CCEaseRateActionState {
 		public CCEaseInState(CocosSharp.CCEaseIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseRateAction), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseOut : CocosSharp.CCEaseRateAction {
 		public CCEaseOut(CocosSharp.CCActionInterval pAction, float fRate) : base (default(CocosSharp.CCActionInterval), default(float)) { }
@@ -1093,7 +1114,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseOutState : CocosSharp.CCEaseRateActionState {
 		public CCEaseOutState(CocosSharp.CCEaseOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCEaseRateAction), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseRateAction : CocosSharp.CCActionEase {
 		public CCEaseRateAction(CocosSharp.CCActionInterval pAction, float fRate) { }
@@ -1104,7 +1125,7 @@ namespace CocosSharp {
 	public partial class CCEaseRateActionState : CocosSharp.CCActionEaseState {
 		public CCEaseRateActionState(CocosSharp.CCEaseRateAction action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
 		protected float Rate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseSineIn : CocosSharp.CCActionEase {
 		public CCEaseSineIn(CocosSharp.CCActionInterval pAction) { }
@@ -1118,11 +1139,11 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseSineInOutState : CocosSharp.CCActionEaseState {
 		public CCEaseSineInOutState(CocosSharp.CCEaseSineInOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseSineInState : CocosSharp.CCActionEaseState {
 		public CCEaseSineInState(CocosSharp.CCEaseSineIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCEaseSineOut : CocosSharp.CCActionEase {
 		public CCEaseSineOut(CocosSharp.CCActionInterval pAction) { }
@@ -1131,7 +1152,7 @@ namespace CocosSharp {
 	}
 	public partial class CCEaseSineOutState : CocosSharp.CCActionEaseState {
 		public CCEaseSineOutState(CocosSharp.CCEaseSineOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionEase), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public enum CCEmitterMode {
 		Gravity = 0,
@@ -1139,6 +1160,8 @@ namespace CocosSharp {
 	}
 	public partial class CCEvent {
 		internal CCEvent() { }
+		public static string EVENT_COME_TO_BACKGROUND;
+		public static string EVENT_COME_TO_FOREGROUND;
 		public CocosSharp.CCNode CurrentTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } }
 		public bool IsStopped { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public void StopPropogation() { }
@@ -1154,27 +1177,9 @@ namespace CocosSharp {
 		MOVED = 1,
 	}
 	public partial class CCEventCustom : CocosSharp.CCEvent {
-		public CCEventCustom(string eventName) { }
-		public CCEventCustom(string eventName, object userData) { }
+		public CCEventCustom(string eventName, object userData=null) { }
 		public string EventName { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } }
 		public object UserData { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(object); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-	}
-	public partial class CCEventDispatcher {
-		public CCEventDispatcher(CocosSharp.CCDirector director) { }
-		public CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public bool IsEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected CocosSharp.CCNode MarkDirty { set { } }
-		public CocosSharp.CCEventListenerCustom AddCustomEventListener(string eventName, System.Action<CocosSharp.CCEventCustom> callback) { return default(CocosSharp.CCEventListenerCustom); }
-		public void AddEventListener(CocosSharp.CCEventListener listener, CocosSharp.CCNode node) { }
-		public void AddEventListener(CocosSharp.CCEventListener listener, int fixedPriority) { }
-		public void DispatchEvent(CocosSharp.CCEvent eventToDispatch) { }
-		public void Pause(CocosSharp.CCNode target, bool recursive=false) { }
-		public void RemoveAll() { }
-		public void RemoveEventListener(CocosSharp.CCEventListener listener) { }
-		public void RemoveEventListeners(CocosSharp.CCEventListenerType listenerType) { }
-		public void RemoveEventListeners(CocosSharp.CCNode target, bool recursive=false) { }
-		public void Resume(CocosSharp.CCNode target, bool recursive=false) { }
-		public void SetPriority(CocosSharp.CCEventListener listener, int fixedPriority) { }
 	}
 	public partial class CCEventGamePad : CocosSharp.CCEvent {
 		internal CCEventGamePad() { }
@@ -1339,7 +1344,7 @@ namespace CocosSharp {
 		public CCFadeInState(CocosSharp.CCFadeIn action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected bool OriginalState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected uint Times { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFadeOut : CocosSharp.CCActionInterval {
 		public CCFadeOut(float d) { }
@@ -1364,7 +1369,7 @@ namespace CocosSharp {
 	}
 	public partial class CCFadeOutState : CocosSharp.CCActionIntervalState {
 		public CCFadeOutState(CocosSharp.CCFadeOut action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFadeOutTRTiles : CocosSharp.CCTiledGrid3DAction {
 		public CCFadeOutTRTiles(float duration) : base (default(float)) { }
@@ -1377,7 +1382,7 @@ namespace CocosSharp {
 		public virtual void TransformTile(CocosSharp.CCGridSize pos, float distance) { }
 		public void TurnOffTile(CocosSharp.CCGridSize pos) { }
 		public void TurnOnTile(CocosSharp.CCGridSize pos) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFadeOutUpTiles : CocosSharp.CCFadeOutTRTiles {
 		public CCFadeOutUpTiles(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -1397,7 +1402,7 @@ namespace CocosSharp {
 		public CCFadeToState(CocosSharp.CCFadeTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected byte FromOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected byte ToOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFastRandom {
 		public CCFastRandom() { }
@@ -1453,7 +1458,7 @@ namespace CocosSharp {
 	}
 	public partial class CCFlipX3DState : CocosSharp.CCGrid3DActionState {
 		public CCFlipX3DState(CocosSharp.CCFlipX3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCGrid3DAction), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFlipXState : CocosSharp.CCActionInstantState {
 		public CCFlipXState(CocosSharp.CCFlipX action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInstant), default(CocosSharp.CCNode)) { }
@@ -1470,7 +1475,7 @@ namespace CocosSharp {
 	}
 	public partial class CCFlipY3DState : CocosSharp.CCFlipX3DState {
 		public CCFlipY3DState(CocosSharp.CCFlipY3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCFlipX3D), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCFlipYState : CocosSharp.CCActionInstantState {
 		public CCFlipYState(CocosSharp.CCFlipY action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInstant), default(CocosSharp.CCNode)) { }
@@ -1498,7 +1503,7 @@ namespace CocosSharp {
 	public partial class CCFollowState : CocosSharp.CCActionState {
 		public CCFollowState(CocosSharp.CCFollow action, CocosSharp.CCNode target) : base (default(CocosSharp.CCAction), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCFollow FollowAction { get { return default(CocosSharp.CCFollow); } }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected internal override void Step(float dt) { }
 		protected internal override void Stop() { }
 	}
@@ -1670,7 +1675,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCPoint P;
 		protected CocosSharp.CCPoint StartPosition;
 		public CCJumpByState(CocosSharp.CCJumpBy action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCJumpTiles3D : CocosSharp.CCTiledGrid3DAction {
 		public CCJumpTiles3D(float duration, CocosSharp.CCGridSize gridSize, int numberOfJumps=0, float amplitude=0f) : base (default(float)) { }
@@ -1680,7 +1685,7 @@ namespace CocosSharp {
 	public partial class CCJumpTiles3DState : CocosSharp.CCTiledGrid3DActionState {
 		public CCJumpTiles3DState(CocosSharp.CCJumpTiles3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		protected int NumberOfJumps { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCJumpTo : CocosSharp.CCJumpBy {
 		public CCJumpTo(float duration, CocosSharp.CCPoint position, float height, uint jumps) : base (default(float), default(CocosSharp.CCPoint), default(float), default(uint)) { }
@@ -1705,31 +1710,6 @@ namespace CocosSharp {
 		public bool IsKeyUp(CocosSharp.CCKeys key) { return default(bool); }
 		public static bool operator ==(CocosSharp.CCKeyboardState a, CocosSharp.CCKeyboardState b) { return default(bool); }
 		public static bool operator !=(CocosSharp.CCKeyboardState a, CocosSharp.CCKeyboardState b) { return default(bool); }
-	}
-	public partial class CCKeypadDispatcher {
-		protected System.Collections.Generic.List<CocosSharp.CCKeypadHandler> delegates;
-		protected System.Collections.Generic.List<CocosSharp.ICCKeypadDelegate> handlersToAdd;
-		protected System.Collections.Generic.List<CocosSharp.ICCKeypadDelegate> handlersToRemove;
-		protected bool isLocked;
-		protected bool isToAdd;
-		protected bool isToRemove;
-		public CCKeypadDispatcher() { }
-		public void AddDelegate(CocosSharp.ICCKeypadDelegate keyPadDelegate) { }
-		public bool DispatchKeypadMsg(CocosSharp.CCKeypadMSGType keypadMsgType) { return default(bool); }
-		public void ForceAddDelegate(CocosSharp.ICCKeypadDelegate keypadDelegate) { }
-		public void ForceRemoveDelegate(CocosSharp.ICCKeypadDelegate pDelegate) { }
-		public void RemoveDelegate(CocosSharp.ICCKeypadDelegate keypadDelegate) { }
-	}
-	public partial class CCKeypadHandler {
-		protected CocosSharp.ICCKeypadDelegate m_pDelegate;
-		public CCKeypadHandler() { }
-		public CocosSharp.ICCKeypadDelegate Delegate { get { return default(CocosSharp.ICCKeypadDelegate); } set { } }
-		public static CocosSharp.CCKeypadHandler HandlerWithDelegate(CocosSharp.ICCKeypadDelegate pDelegate) { return default(CocosSharp.CCKeypadHandler); }
-		public virtual bool InitWithDelegate(CocosSharp.ICCKeypadDelegate pDelegate) { return default(bool); }
-	}
-	public enum CCKeypadMSGType {
-		BackClicked = 1,
-		MenuClicked = 2,
 	}
 	public enum CCKeys {
 		A = 65,
@@ -1931,22 +1911,15 @@ namespace CocosSharp {
 		protected override void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
 		public override void UpdateAtlasValues() { }
 	}
-	public partial class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCColor, CocosSharp.ICCTextContainer {
+	public partial class CCLabelBMFont : CocosSharp.CCSpriteBatchNode, CocosSharp.ICCTextContainer {
 		public const int AutomaticWidth = -1;
-		protected CocosSharp.CCColor3B displayedColor;
-		protected byte displayedOpacity;
 		protected string fntConfigFile;
 		protected CocosSharp.CCTextAlignment horzAlignment;
-		protected bool isColorCascaded;
-		protected bool isColorModifiedByOpacity;
-		protected bool isOpacityCascaded;
 		protected CocosSharp.CCSize labelDimensions;
 		protected string labelInitialText;
 		protected string labelText;
 		protected bool lineBreakWithoutSpaces;
 		protected CocosSharp.CCSprite m_pReusedChar;
-		protected CocosSharp.CCColor3B realColor;
-		protected byte realOpacity;
 		protected CocosSharp.CCVerticalTextAlignment vertAlignment;
 		public CCLabelBMFont() { }
 		public CCLabelBMFont(string str, string fntFile) { }
@@ -1957,19 +1930,12 @@ namespace CocosSharp {
 		public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment alignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
 		public CCLabelBMFont(string str, string fntFile, float width, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
 		public override CocosSharp.CCPoint AnchorPoint { get { return default(CocosSharp.CCPoint); } set { } }
-		public virtual CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
 		public CocosSharp.CCSize Dimensions { get { return default(CocosSharp.CCSize); } set { } }
-		public virtual CocosSharp.CCColor3B DisplayedColor { get { return default(CocosSharp.CCColor3B); } }
-		public virtual byte DisplayedOpacity { get { return default(byte); } }
 		public string FntFile { get { return default(string); } set { } }
 		public CocosSharp.CCTextAlignment HorizontalAlignment { get { return default(CocosSharp.CCTextAlignment); } set { } }
 		protected CocosSharp.CCPoint ImageOffset { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual bool IsColorCascaded { get { return default(bool); } set { } }
-		public virtual bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
 		protected bool IsDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual bool IsOpacityCascaded { get { return default(bool); } set { } }
 		public bool LineBreakWithoutSpace { get { return default(bool); } set { } }
-		public virtual byte Opacity { get { return default(byte); } set { } }
 		public override float Scale { set { } }
 		public override float ScaleX { get { return default(float); } set { } }
 		public override float ScaleY { get { return default(float); } set { } }
@@ -1981,8 +1947,6 @@ namespace CocosSharp {
 		public static void PurgeCachedData() { }
 		protected override void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
 		public virtual void SetString(string newString, bool needUpdateLabel) { }
-		public virtual void UpdateDisplayedColor(CocosSharp.CCColor3B parentColor) { }
-		public virtual void UpdateDisplayedOpacity(byte parentOpacity) { }
 		protected void UpdateLabel() { }
 	}
 	public partial class CCLabelTtf : CocosSharp.CCSprite, CocosSharp.ICCTextContainer {
@@ -2010,7 +1974,7 @@ namespace CocosSharp {
 		protected override void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
 		public override void Visit() { }
 	}
-	public partial class CCLayerColor : CocosSharp.CCLayerRGBA, CocosSharp.ICCBlendable {
+	public partial class CCLayerColor : CocosSharp.CCLayer, CocosSharp.ICCBlendable {
 		public CCLayerColor() { }
 		public CCLayerColor(CocosSharp.CCColor4B color) { }
 		public CCLayerColor(CocosSharp.CCColor4B color, float width, float height) { }
@@ -2023,7 +1987,7 @@ namespace CocosSharp {
 		public void ChangeWidthAndHeight(float w, float h) { }
 		protected override void Draw() { }
 		protected override void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
-		protected virtual void UpdateColor() { }
+		protected override void UpdateColor() { }
 	}
 	public partial class CCLayerGradient : CocosSharp.CCLayerColor {
 		public CCLayerGradient() { }
@@ -2038,7 +2002,7 @@ namespace CocosSharp {
 		public CocosSharp.CCPoint Vector { get { return default(CocosSharp.CCPoint); } set { } }
 		protected override void UpdateColor() { }
 	}
-	public partial class CCLayerMultiplex : CocosSharp.CCLayerRGBA {
+	public partial class CCLayerMultiplex : CocosSharp.CCLayer {
 		public const int NoLayer = -1;
 		public CCLayerMultiplex() { }
 		public CCLayerMultiplex(CocosSharp.CCAction inAction, CocosSharp.CCAction outAction) { }
@@ -2060,20 +2024,6 @@ namespace CocosSharp {
 		public void SwitchToNone() { }
 		public CocosSharp.CCLayer SwitchToPreviousLayer() { return default(CocosSharp.CCLayer); }
 	}
-	public partial class CCLayerRGBA : CocosSharp.CCLayer, CocosSharp.ICCColor {
-		public CCLayerRGBA() { }
-		public virtual CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
-		public virtual CocosSharp.CCColor3B DisplayedColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
-		public virtual byte DisplayedOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
-		public virtual bool IsColorCascaded { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
-		public virtual bool IsOpacityCascaded { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual byte Opacity { get { return default(byte); } set { } }
-		protected CocosSharp.CCColor3B RealColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected byte RealOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual void UpdateDisplayedColor(CocosSharp.CCColor3B parentColor) { }
-		public virtual void UpdateDisplayedOpacity(byte parentOpacity) { }
-	}
 	public partial class CCLens3D : CocosSharp.CCGrid3DAction {
 		public CCLens3D(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
 		public CCLens3D(float duration, CocosSharp.CCGridSize gridSize, CocosSharp.CCPoint position, float radius) : base (default(float)) { }
@@ -2089,7 +2039,7 @@ namespace CocosSharp {
 		public float LensEffect { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public CocosSharp.CCPoint Position { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public float Radius { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCLiquid : CocosSharp.CCGrid3DAction {
 		public CCLiquid(float duration, CocosSharp.CCGridSize gridSize, int waves=0, float amplitude=0f) : base (default(float)) { }
@@ -2099,7 +2049,7 @@ namespace CocosSharp {
 	public partial class CCLiquidState : CocosSharp.CCGrid3DActionState {
 		public CCLiquidState(CocosSharp.CCLiquid action, CocosSharp.CCNode target) : base (default(CocosSharp.CCGrid3DAction), default(CocosSharp.CCNode)) { }
 		public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCLog {
 		public CCLog() { }
@@ -2107,9 +2057,6 @@ namespace CocosSharp {
 		public static void Log(string format, params System.Object[] args) { }
 	}
 	public static partial class CCMacros {
-		public static readonly float CCDirectorStatsUpdateIntervalInSeconds;
-		public static readonly string CCHiResDisplayFilenameSuffix;
-		public static readonly int CCSpriteIndexNotInitialized;
 		public static float CCDegreesToRadians(float angle) { return default(float); }
 		public static float CCRadiansToDegrees(float angle) { return default(float); }
 		public static float CCRandomBetween0And1() { return default(float); }
@@ -2147,7 +2094,7 @@ namespace CocosSharp {
 		public static float ToDegrees(float radians) { return default(float); }
 		public static float ToRadians(float degrees) { return default(float); }
 	}
-	public partial class CCMenu : CocosSharp.CCLayerRGBA {
+	public partial class CCMenu : CocosSharp.CCLayer {
 		public const int DefaultMenuHandlerPriority = -128;
 		public const float DefaultPadding = 5f;
 		public CCMenu(params CocosSharp.CCMenuItem[] items) { }
@@ -2168,7 +2115,7 @@ namespace CocosSharp {
 		public void RemoveChild(CocosSharp.CCMenuItem menuItem, bool cleanup) { }
 		protected override void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
 	}
-	public partial class CCMenuItem : CocosSharp.CCNodeRGBA {
+	public partial class CCMenuItem : CocosSharp.CCNode {
 		public CCMenuItem() { }
 		public CCMenuItem(System.Action<System.Object> target) { }
 		public virtual bool Enabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -2256,7 +2203,7 @@ namespace CocosSharp {
 		TrackingTouch = 1,
 		Waiting = 0,
 	}
-	public partial class CCMotionStreak : CocosSharp.CCNodeRGBA, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
+	public partial class CCMotionStreak : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
 		public CCMotionStreak() { }
 		public CCMotionStreak(float fade, float minSegIn, float strokeIn, CocosSharp.CCColor3B color, CocosSharp.CCTexture2D texture) { }
 		public CCMotionStreak(float fade, float minSeg, float stroke, CocosSharp.CCColor3B color, string path) { }
@@ -2299,7 +2246,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCPoint PreviousPosition;
 		protected CocosSharp.CCPoint StartPosition;
 		public CCMoveByState(CocosSharp.CCMoveBy action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCMoveTo : CocosSharp.CCMoveBy {
 		protected CocosSharp.CCPoint EndPosition;
@@ -2309,9 +2256,9 @@ namespace CocosSharp {
 	}
 	public partial class CCMoveToState : CocosSharp.CCMoveByState {
 		public CCMoveToState(CocosSharp.CCMoveTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCMoveBy), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
-	public partial class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCKeypadDelegate, CocosSharp.ICCUpdatable, System.Collections.Generic.IComparer<CocosSharp.CCNode>, System.IComparable<CocosSharp.CCNode> {
+	public partial class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCUpdatable, System.Collections.Generic.IComparer<CocosSharp.CCNode>, System.IComparable<CocosSharp.CCNode> {
 		public CocosSharp.CCAffineTransform AffineTransform;
 		public const int TagInvalid = -1;
 		public CCNode() { }
@@ -2324,29 +2271,37 @@ namespace CocosSharp {
 		public virtual bool CanReceiveFocus { get { return default(bool); } }
 		public CocosSharp.CCRawList<CocosSharp.CCNode> Children { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCRawList<CocosSharp.CCNode>); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		public int ChildrenCount { get { return default(int); } }
+		public virtual CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
 		public virtual CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
 		public virtual CocosSharp.CCSize ContentSizeInPixels { get { return default(CocosSharp.CCSize); } }
 		public virtual CocosSharp.CCDirector Director { get { return default(CocosSharp.CCDirector); } }
-		public CocosSharp.CCEventDispatcher EventDispatcher { get { return default(CocosSharp.CCEventDispatcher); } }
-		public float GlobalZOrder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public CocosSharp.CCColor3B DisplayedColor { get { return default(CocosSharp.CCColor3B); } protected set { } }
+		public byte DisplayedOpacity { get { return default(byte); } protected set { } }
+		public float GlobalZOrder { get { return default(float); } set { } }
 		public CocosSharp.CCGridBase Grid { get { return default(CocosSharp.CCGridBase); } set { } }
 		public virtual bool HasFocus { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public virtual bool IgnoreAnchorPointForPosition { get { return default(bool); } set { } }
+		public virtual bool IsColorCascaded { get { return default(bool); } set { } }
+		public virtual bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
+		public virtual bool IsOpacityCascaded { get { return default(bool); } set { } }
 		protected bool IsReorderChildDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool IsRunning { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		public virtual bool IsSerializable { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]protected set { } }
 		protected bool IsTransformDirty { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public CocosSharp.CCNode this[int tag] { get { return default(CocosSharp.CCNode); } }
-		public int LocalZOrder { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		public int LocalZOrder { get { return default(int); } set { } }
 		public string Name { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(string); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public CocosSharp.CCAffineTransform NodeToWorldTransform { get { return default(CocosSharp.CCAffineTransform); } }
 		public int NumberOfRunningActions { get { return default(int); } }
+		public virtual byte Opacity { get { return default(byte); } set { } }
 		protected internal uint OrderOfArrival { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } }
 		public CocosSharp.CCNode Parent { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public CocosSharp.CCAffineTransform ParentToNodeTransform { get { return default(CocosSharp.CCAffineTransform); } }
 		public virtual CocosSharp.CCPoint Position { get { return default(CocosSharp.CCPoint); } set { } }
 		public float PositionX { get { return default(float); } set { } }
 		public float PositionY { get { return default(float); } set { } }
+		protected CocosSharp.CCColor3B RealColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
+		protected byte RealOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public virtual float Rotation { set { } }
 		public virtual float RotationX { get { return default(float); } set { } }
 		public virtual float RotationY { get { return default(float); } set { } }
@@ -2368,6 +2323,9 @@ namespace CocosSharp {
 		public void AddChild(CocosSharp.CCNode child) { }
 		public void AddChild(CocosSharp.CCNode child, int zOrder) { }
 		public virtual void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
+		public CocosSharp.CCEventListenerCustom AddCustomEventListener(string eventName, System.Action<CocosSharp.CCEventCustom> callback) { return default(CocosSharp.CCEventListenerCustom); }
+		public void AddEventListener(CocosSharp.CCEventListener listener, CocosSharp.CCNode node=null) { }
+		public void AddEventListener(CocosSharp.CCEventListener listener, int fixedPriority) { }
 		public virtual void Cleanup() { }
 		public int CompareTo(CocosSharp.CCNode that) { return default(int); }
 		public CocosSharp.CCPoint ConvertPointTo(ref CocosSharp.CCPoint ptInNode, CocosSharp.CCNode target) { return default(CocosSharp.CCPoint); }
@@ -2379,6 +2337,10 @@ namespace CocosSharp {
 		public CocosSharp.CCPoint ConvertToWorldSpace(CocosSharp.CCPoint nodePoint) { return default(CocosSharp.CCPoint); }
 		public CocosSharp.CCPoint ConvertToWorldSpaceAr(CocosSharp.CCPoint nodePoint) { return default(CocosSharp.CCPoint); }
 		public virtual void Deserialize(System.IO.Stream stream) { }
+		protected internal void DisableCascadeColor() { }
+		protected virtual void DisableCascadeOpacity() { }
+		public void DispatchEvent(CocosSharp.CCEvent eventToDispatch) { }
+		public void DispatchEvent(string customEvent, object userData=null) { }
 		public void Dispose() { }
 		protected virtual void Dispose(bool disposing) { }
 		protected virtual void Draw() { }
@@ -2389,18 +2351,23 @@ namespace CocosSharp {
 		public CocosSharp.CCRect GetBoundingBox(CocosSharp.CCNode target) { return default(CocosSharp.CCRect); }
 		public CocosSharp.CCNode GetChildByTag(int tag) { return default(CocosSharp.CCNode); }
 		public void GetPosition(out float x, out float y) { x = default(float); y = default(float); }
-		public virtual void KeyBackClicked() { }
-		public virtual void KeyMenuClicked() { }
 		public virtual CocosSharp.CCAffineTransform NodeToParentTransform() { return default(CocosSharp.CCAffineTransform); }
 		public virtual void OnEnter() { }
 		public virtual void OnEnterTransitionDidFinish() { }
 		public virtual void OnExit() { }
 		public virtual void OnExitTransitionDidStart() { }
 		public void Pause() { }
+		public void PauseListeners(CocosSharp.CCNode target, bool recursive=false) { }
+		public void PauseListeners(bool recursive=false) { }
 		public virtual void RemoveAllChildren(bool cleanup=true) { }
 		public virtual void RemoveAllChildrenByTag(int tag, bool cleanup=true) { }
+		public void RemoveAllListeners() { }
 		public virtual void RemoveChild(CocosSharp.CCNode child, bool cleanup=true) { }
 		public void RemoveChildByTag(int tag, bool cleanup=true) { }
+		public void RemoveEventListener(CocosSharp.CCEventListener listener) { }
+		public void RemoveEventListeners(CocosSharp.CCEventListenerType listenerType) { }
+		public void RemoveEventListeners(CocosSharp.CCNode target, bool recursive=false) { }
+		public void RemoveEventListeners(bool recursive=false) { }
 		public void RemoveFromParent(bool cleanup=true) { }
 		public virtual void ReorderChild(CocosSharp.CCNode child, int zOrder) { }
 		public CocosSharp.CCActionState Repeat(uint times, CocosSharp.CCActionInterval action) { return default(CocosSharp.CCActionState); }
@@ -2409,6 +2376,8 @@ namespace CocosSharp {
 		public CocosSharp.CCActionState RepeatForever(params CocosSharp.CCFiniteTimeAction[] actions) { return default(CocosSharp.CCActionState); }
 		protected virtual void ResetCleanState() { }
 		public void Resume() { }
+		public void ResumeListeners(CocosSharp.CCNode target, bool recursive=false) { }
+		public void ResumeListeners(bool recursive=false) { }
 		public CocosSharp.CCActionState RunAction(CocosSharp.CCAction action) { return default(CocosSharp.CCActionState); }
 		public CocosSharp.CCActionState RunActions(params CocosSharp.CCFiniteTimeAction[] actions) { return default(CocosSharp.CCActionState); }
 		protected virtual void RunningOnNewWindow(CocosSharp.CCSize windowSize) { }
@@ -2419,6 +2388,7 @@ namespace CocosSharp {
 		public void Schedule(int priority) { }
 		public void ScheduleOnce(System.Action<System.Single> selector, float delay) { }
 		public virtual void Serialize(System.IO.Stream stream) { }
+		public void SetListenerPriority(CocosSharp.CCEventListener listener, int fixedPriority) { }
 		public void SetPosition(float x, float y) { }
 		protected virtual void SetTransformIsDirty() { }
 		protected virtual void SetWorldTransformIsDirty() { }
@@ -2433,22 +2403,13 @@ namespace CocosSharp {
 		public void Unschedule(System.Action<System.Single> selector) { }
 		public void UnscheduleAll() { }
 		public virtual void Update(float dt) { }
+		protected internal void UpdateCascadeColor() { }
+		protected internal virtual void UpdateCascadeOpacity() { }
+		protected virtual void UpdateColor() { }
+		public virtual void UpdateDisplayedColor(CocosSharp.CCColor3B parentColor) { }
+		protected internal virtual void UpdateDisplayedOpacity(byte parentOpacity) { }
 		public virtual void UpdateTransform() { }
 		public virtual void Visit() { }
-	}
-	public partial class CCNodeRGBA : CocosSharp.CCNode, CocosSharp.ICCColor {
-		public CCNodeRGBA() { }
-		public virtual CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
-		public CocosSharp.CCColor3B DisplayedColor { get { return default(CocosSharp.CCColor3B); } }
-		public byte DisplayedOpacity { get { return default(byte); } }
-		public virtual bool IsColorCascaded { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual bool IsColorModifiedByOpacity { get { return default(bool); } set { } }
-		public virtual bool IsOpacityCascaded { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual byte Opacity { get { return default(byte); } set { } }
-		protected CocosSharp.CCColor3B RealColor { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected byte RealOpacity { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(byte); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		public virtual void UpdateDisplayedColor(CocosSharp.CCColor3B parentColor) { }
-		public virtual void UpdateDisplayedOpacity(byte parentOpacity) { }
 	}
 	public partial class CCOGLES {
 		public static readonly int GL_ALWAYS;
@@ -2494,7 +2455,7 @@ namespace CocosSharp {
 		protected float Radius { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float RadX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float RadZ { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCPageTurn3D : CocosSharp.CCGrid3DAction {
 		public CCPageTurn3D(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -2502,7 +2463,7 @@ namespace CocosSharp {
 	}
 	public partial class CCPageTurn3DState : CocosSharp.CCGrid3DActionState {
 		public CCPageTurn3DState(CocosSharp.CCPageTurn3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCGrid3DAction), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCParallaxNode : CocosSharp.CCNode {
 		public CCParallaxNode() { }
@@ -2523,7 +2484,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCFiniteTimeAction[] Actions { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction[]); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeActionState[] ActionStates { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeActionState[]); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCParticleBatchNode : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
 		public const int ParticleDefaultCapacity = 500;
@@ -2771,6 +2732,7 @@ namespace CocosSharp {
 		public static readonly CocosSharp.CCPoint AnchorMiddleTop;
 		public static readonly CocosSharp.CCPoint AnchorUpperLeft;
 		public static readonly CocosSharp.CCPoint AnchorUpperRight;
+		public static readonly CocosSharp.CCPoint NegativeInfinity;
 		public float X;
 		public float Y;
 		public static readonly CocosSharp.CCPoint Zero;
@@ -2831,10 +2793,6 @@ namespace CocosSharp {
 		public static CocosSharp.CCPoint Unrotate(CocosSharp.CCPoint v1, CocosSharp.CCPoint v2) { return default(CocosSharp.CCPoint); }
 		public delegate float ComputationOperationDelegate(float a);
 	}
-	public partial class CCPointConverter {
-		public CCPointConverter() { }
-		public static CocosSharp.CCPoint CCPointFromString(string content) { return default(CocosSharp.CCPoint); }
-	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
 	public partial struct CCPointI {
 		public int X;
@@ -2893,9 +2851,9 @@ namespace CocosSharp {
 		public CCProgressFromToState(CocosSharp.CCProgressFromTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected float PercentFrom { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float PercentTo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
-	public partial class CCProgressTimer : CocosSharp.CCNodeRGBA {
+	public partial class CCProgressTimer : CocosSharp.CCNode {
 		public CCProgressTimer(CocosSharp.CCSprite sp) { }
 		public CCProgressTimer(string fileName) { }
 		public CocosSharp.CCPoint BarChangeRate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -2908,6 +2866,7 @@ namespace CocosSharp {
 		public CocosSharp.CCSprite Sprite { get { return default(CocosSharp.CCSprite); } set { } }
 		public CocosSharp.CCProgressTimerType Type { get { return default(CocosSharp.CCProgressTimerType); } set { } }
 		protected override void Draw() { }
+		protected override void UpdateColor() { }
 	}
 	public enum CCProgressTimerType {
 		Bar = 1,
@@ -3032,10 +2991,6 @@ namespace CocosSharp {
 		public static CocosSharp.CCRect Parse(string s) { return default(CocosSharp.CCRect); }
 		public override string ToString() { return default(string); }
 	}
-	public partial class CCRectConverter {
-		public CCRectConverter() { }
-		public static CocosSharp.CCRect CCRectFromString(string rectSpec) { return default(CocosSharp.CCRect); }
-	}
 	public partial class CCRemoveSelf : CocosSharp.CCActionInstant {
 		public CCRemoveSelf() { }
 		public CCRemoveSelf(bool isNeedCleanUp) { }
@@ -3046,7 +3001,7 @@ namespace CocosSharp {
 	public partial class CCRemoveSelfState : CocosSharp.CCActionInstantState {
 		public CCRemoveSelfState(CocosSharp.CCRemoveSelf action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInstant), default(CocosSharp.CCNode)) { }
 		protected bool IsNeedCleanUp { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public enum CCRenderTargetUsage {
 		DiscardContents = 0,
@@ -3089,7 +3044,7 @@ namespace CocosSharp {
 	}
 	public partial class CCRepeatForeverState : CocosSharp.CCActionIntervalState {
 		public CCRepeatForeverState(CocosSharp.CCRepeatForever action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected internal override void Step(float dt) { }
 	}
 	public partial class CCRepeatState : CocosSharp.CCActionIntervalState {
@@ -3097,12 +3052,12 @@ namespace CocosSharp {
 		protected bool ActionInstant { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeAction InnerAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeActionState InnerActionState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeActionState); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected float NextDt { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected uint Times { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected uint Total { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(uint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public enum CCResolutionPolicy {
 		ExactFit = 1,
@@ -3138,7 +3093,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCFiniteTimeAction Other { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeActionState OtherState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeActionState); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCRipple3D : CocosSharp.CCGrid3DAction {
 		public CCRipple3D(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -3153,7 +3108,7 @@ namespace CocosSharp {
 		public CocosSharp.CCPoint Position { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public float Radius { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCRotateBy : CocosSharp.CCActionInterval {
 		public CCRotateBy(float duration, float fDeltaAngle) { }
@@ -3169,7 +3124,7 @@ namespace CocosSharp {
 		protected float AngleY { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float StartAngleX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float StartAngleY { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCRotateTo : CocosSharp.CCActionInterval {
 		public CCRotateTo(float duration, float fDeltaAngle) { }
@@ -3186,7 +3141,7 @@ namespace CocosSharp {
 		public CCRotateToState(CocosSharp.CCRotateTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected float DistanceAngleX { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected float DistanceAngleY { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCScaleBy : CocosSharp.CCScaleTo {
 		public CCScaleBy(float duration, float s) : base (default(float), default(float)) { }
@@ -3212,7 +3167,7 @@ namespace CocosSharp {
 		protected float StartScaleX;
 		protected float StartScaleY;
 		public CCScaleToState(CocosSharp.CCScaleTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCScene : CocosSharp.CCNode {
 		public CCScene() { }
@@ -3262,10 +3217,10 @@ namespace CocosSharp {
 		protected int last;
 		protected float split;
 		public CCSequenceState(CocosSharp.CCSequence action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		protected internal override void Step(float dt) { }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public static partial class CCSerialization {
 	}
@@ -3279,7 +3234,7 @@ namespace CocosSharp {
 		public CCShaky3DState(CocosSharp.CCShaky3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCGrid3DAction), default(CocosSharp.CCNode)) { }
 		public int Range { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool Shake { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCShakyTiles3D : CocosSharp.CCTiledGrid3DAction {
 		public CCShakyTiles3D(float duration, CocosSharp.CCGridSize gridSize, int range=0, bool shakeZ=true) : base (default(float)) { }
@@ -3291,7 +3246,7 @@ namespace CocosSharp {
 		public CCShakyTiles3DState(CocosSharp.CCShakyTiles3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		public int Range { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool ShakeZ { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCShatteredTiles3D : CocosSharp.CCTiledGrid3DAction {
 		public CCShatteredTiles3D(float duration, CocosSharp.CCGridSize gridSize, int range=0, bool shatterZ=true) : base (default(float)) { }
@@ -3304,7 +3259,7 @@ namespace CocosSharp {
 		public int Range { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
 		protected bool ShatterOnce { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } }
 		public bool ShatterZ { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCShow : CocosSharp.CCActionInstant {
 		public CCShow() { }
@@ -3330,7 +3285,7 @@ namespace CocosSharp {
 		protected void PlaceTile(CocosSharp.CCGridSize pos, CocosSharp.CCTile tile) { }
 		protected void PlaceTile(int x, int y, CocosSharp.CCTile tile) { }
 		public void Shuffle(ref System.Int32[] pArray, int nLen) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
 	public partial struct CCSize {
@@ -3353,10 +3308,6 @@ namespace CocosSharp {
 		public static CocosSharp.CCSize operator -(CocosSharp.CCSize p, float f) { return default(CocosSharp.CCSize); }
 		public static CocosSharp.CCSize Parse(string s) { return default(CocosSharp.CCSize); }
 		public override string ToString() { return default(string); }
-	}
-	public partial class CCSizeConverter {
-		public CCSizeConverter() { }
-		public static CocosSharp.CCSize CCSizeFromString(string content) { return default(CocosSharp.CCSize); }
 	}
 	[System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential, Size=1)]
 	public partial struct CCSizeI {
@@ -3397,7 +3348,7 @@ namespace CocosSharp {
 		protected float StartSkewX;
 		protected float StartSkewY;
 		public CCSkewToState(CocosSharp.CCSkewTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCSpawn : CocosSharp.CCActionInterval {
 		protected CCSpawn(CocosSharp.CCFiniteTimeAction action1, CocosSharp.CCFiniteTimeAction action2) { }
@@ -3412,7 +3363,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCFiniteTimeAction ActionOne { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeAction ActionTwo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCSpeed : CocosSharp.CCAction {
 		public CCSpeed(CocosSharp.CCActionInterval action, float fRate) { }
@@ -3424,7 +3375,7 @@ namespace CocosSharp {
 	public partial class CCSpeedState : CocosSharp.CCActionState {
 		public CCSpeedState(CocosSharp.CCSpeed action, CocosSharp.CCNode target) : base (default(CocosSharp.CCAction), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCActionIntervalState InnerActionState { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionIntervalState); } }
-		protected internal override bool IsDone { get { return default(bool); } }
+		public override bool IsDone { get { return default(bool); } }
 		public float Speed { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(float); } }
 		protected internal override void Step(float dt) { }
 		protected internal override void Stop() { }
@@ -3437,7 +3388,7 @@ namespace CocosSharp {
 	public partial class CCSplitColsState : CocosSharp.CCTiledGrid3DActionState {
 		public CCSplitColsState(CocosSharp.CCSplitCols action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCSize WindowSizeInPoints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCSplitRows : CocosSharp.CCTiledGrid3DAction {
 		public CCSplitRows(float duration, int nRows) : base (default(float)) { }
@@ -3447,9 +3398,9 @@ namespace CocosSharp {
 	public partial class CCSplitRowsState : CocosSharp.CCTiledGrid3DActionState {
 		public CCSplitRowsState(CocosSharp.CCSplitRows action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCSize WindowSizeInPoints { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCSize); } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
-	public partial class CCSprite : CocosSharp.CCNodeRGBA, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
+	public partial class CCSprite : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
 		public CocosSharp.CCV3F_C4B_T2F_Quad Quad;
 		public CCSprite(CocosSharp.CCSize size) { }
 		public CCSprite(CocosSharp.CCSpriteFrame spriteFrame) { }
@@ -3502,8 +3453,7 @@ namespace CocosSharp {
 		protected virtual void SetVertexRect(CocosSharp.CCRect rectInPoints) { }
 		public override void SortAllChildren() { }
 		protected void UpdateBlendFunc() { }
-		public override void UpdateDisplayedColor(CocosSharp.CCColor3B parentColor) { }
-		public override void UpdateDisplayedOpacity(byte parentOpacity) { }
+		protected override void UpdateColor() { }
 		public override void UpdateTransform() { }
 	}
 	public partial class CCSpriteBatchNode : CocosSharp.CCNode, CocosSharp.ICCBlendable, CocosSharp.ICCTexture {
@@ -3657,7 +3607,7 @@ namespace CocosSharp {
 		protected CocosSharp.CCNode ForcedTarget { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCNode); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCFiniteTimeAction TargetedAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected internal override void Stop() { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public static partial class CCTask {
 		public static object RunAsync(System.Action action) { return default(object); }
@@ -3838,7 +3788,7 @@ namespace CocosSharp {
 		protected short FromB { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(short); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected short FromG { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(short); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected short FromR { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(short); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCTintTo : CocosSharp.CCActionInterval {
 		public CCTintTo(float duration, byte red, byte green, byte blue) { }
@@ -3849,7 +3799,7 @@ namespace CocosSharp {
 		public CCTintToState(CocosSharp.CCTintTo action, CocosSharp.CCNode target) : base (default(CocosSharp.CCActionInterval), default(CocosSharp.CCNode)) { }
 		protected CocosSharp.CCColor3B ColorFrom { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		protected CocosSharp.CCColor3B ColorTo { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCColor3B); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCTMXLayer : CocosSharp.CCSpriteBatchNode {
 		public CCTMXLayer(CocosSharp.CCTMXTilesetInfo tileSetInfo, CocosSharp.CCTMXLayerInfo layerInfo, CocosSharp.CCTMXMapInfo mapInfo) { }
@@ -3864,6 +3814,7 @@ namespace CocosSharp {
 		public override void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
 		protected override void Draw() { }
 		public virtual CocosSharp.CCPoint PositionAt(CocosSharp.CCPoint tileCoord) { return default(CocosSharp.CCPoint); }
+		public virtual CocosSharp.CCPoint PositionAt(float x, float y) { return default(CocosSharp.CCPoint); }
 		public virtual string PropertyNamed(string propertyName) { return default(string); }
 		public virtual void ReleaseMap() { }
 		public override void RemoveChild(CocosSharp.CCNode node, bool cleanup) { }
@@ -3871,8 +3822,11 @@ namespace CocosSharp {
 		public virtual void SetTileGID(uint gid, CocosSharp.CCPoint pos) { }
 		public virtual void SetTileGID(uint gid, CocosSharp.CCPoint pos, uint flags) { }
 		public virtual CocosSharp.CCSprite TileAt(CocosSharp.CCPoint pos) { return default(CocosSharp.CCSprite); }
+		public virtual CocosSharp.CCSprite TileAt(float x, float y) { return default(CocosSharp.CCSprite); }
 		public virtual uint TileGIDAt(CocosSharp.CCPoint pos) { return default(uint); }
 		public virtual uint TileGIDAt(CocosSharp.CCPoint pos, out uint flags) { flags = default(uint); return default(uint); }
+		public virtual uint TileGIDAt(float x, float y) { return default(uint); }
+		public virtual uint TileGIDAt(float x, float y, out uint flags) { flags = default(uint); return default(uint); }
 	}
 	public enum CCTMXLayerAttrib {
 		Base64 = 2,
@@ -4193,7 +4147,7 @@ namespace CocosSharp {
 		public void Shuffle(System.Int32[] pArray, int nLen) { }
 		public void TurnOffTile(CocosSharp.CCGridSize pos) { }
 		public void TurnOnTile(CocosSharp.CCGridSize pos) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCTwirl : CocosSharp.CCGrid3DAction {
 		public CCTwirl(float duration, CocosSharp.CCGridSize gridSize) : base (default(float)) { }
@@ -4206,7 +4160,7 @@ namespace CocosSharp {
 		public CCTwirlState(CocosSharp.CCTwirl action, CocosSharp.CCNode target) : base (default(CocosSharp.CCGrid3DAction), default(CocosSharp.CCNode)) { }
 		public CocosSharp.CCPoint PositionInPixels { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCPoint); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public int Twirls { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCUserDefault {
 		internal CCUserDefault() { }
@@ -4223,20 +4177,6 @@ namespace CocosSharp {
 		public void SetFloatForKey(string key, float value) { }
 		public void SetIntegerForKey(string key, int value) { }
 		public void SetStringForKey(string key, string value) { }
-	}
-	public partial class CCUtils {
-		public CCUtils() { }
-		public static CocosSharp.CCPoint CCCardinalSplineAt(CocosSharp.CCPoint p0, CocosSharp.CCPoint p1, CocosSharp.CCPoint p2, CocosSharp.CCPoint p3, float tension, float t) { return default(CocosSharp.CCPoint); }
-		public static int CCNextPOT(int x) { return default(int); }
-		public static long CCNextPOT(long x) { return default(long); }
-		public static float CCParseFloat(string toParse) { return default(float); }
-		public static float CCParseFloat(string toParse, System.Globalization.NumberStyles ns) { return default(float); }
-		public static int CCParseInt(string toParse) { return default(int); }
-		public static int CCParseInt(string toParse, System.Globalization.NumberStyles ns) { return default(int); }
-		public static void CheckGLError() { }
-		public static System.Collections.Generic.List<System.String> GetGLExtensions() { return default(System.Collections.Generic.List<System.String>); }
-		public static void Split(string src, string token, System.Collections.Generic.List<System.String> vect) { }
-		public static bool SplitWithForm(string pStr, System.Collections.Generic.List<System.String> strs) { return default(bool); }
 	}
 	public partial class CCV2F_C4B_T2F {
 		public CocosSharp.CCColor4B Colors;
@@ -4403,13 +4343,13 @@ namespace CocosSharp {
 	}
 	public partial class CCWaves3DState : CocosSharp.CCLiquidState {
 		public CCWaves3DState(CocosSharp.CCWaves3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCLiquid), default(CocosSharp.CCNode)) { }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCWavesState : CocosSharp.CCLiquidState {
 		public CCWavesState(CocosSharp.CCWaves action, CocosSharp.CCNode target) : base (default(CocosSharp.CCLiquid), default(CocosSharp.CCNode)) { }
 		public bool Horizontal { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
 		public bool Vertical { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial class CCWavesTiles3D : CocosSharp.CCTiledGrid3DAction {
 		public CCWavesTiles3D(float duration, CocosSharp.CCGridSize gridSize, int waves=0, float amplitude=0f) : base (default(float)) { }
@@ -4419,24 +4359,13 @@ namespace CocosSharp {
 	public partial class CCWavesTiles3DState : CocosSharp.CCTiledGrid3DActionState {
 		public CCWavesTiles3DState(CocosSharp.CCWavesTiles3D action, CocosSharp.CCNode target) : base (default(CocosSharp.CCTiledGrid3DAction), default(CocosSharp.CCNode)) { }
 		public int Waves { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-		protected internal override void Update(float time) { }
+		public override void Update(float time) { }
 	}
 	public partial interface ICCActionTweenDelegate {
 		void UpdateTweenAction(float value, string key);
 	}
 	public partial interface ICCBlendable {
 		CocosSharp.CCBlendFunc BlendFunc { get; set; }
-	}
-	public partial interface ICCColor {
-		CocosSharp.CCColor3B Color { get; set; }
-		CocosSharp.CCColor3B DisplayedColor { get; }
-		byte DisplayedOpacity { get; }
-		bool IsColorCascaded { get; set; }
-		bool IsColorModifiedByOpacity { get; set; }
-		bool IsOpacityCascaded { get; set; }
-		byte Opacity { get; set; }
-		void UpdateDisplayedColor(CocosSharp.CCColor3B color);
-		void UpdateDisplayedOpacity(byte opacity);
 	}
 	public partial interface ICCDirectorDelegate {
 		void UpdateProjection();
@@ -4459,13 +4388,6 @@ namespace CocosSharp {
 		void KeyboardDidShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
 		void KeyboardWillHide(CocosSharp.CCIMEKeyboardNotificationInfo info);
 		void KeyboardWillShow(CocosSharp.CCIMEKeyboardNotificationInfo info);
-	}
-	public partial interface ICCKeypadDelegate {
-		void KeyBackClicked();
-		void KeyMenuClicked();
-	}
-	public partial interface ICCProjection {
-		void UpdateProjection();
 	}
 	public partial class ICCScriptingEngine {
 		public ICCScriptingEngine() { }

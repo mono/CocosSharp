@@ -8,52 +8,31 @@ namespace CocosSharp
 
     public class CCTouch
     {
-        private int m_nId;
+        bool startPointCaptured;
 
-        /// <summary>
-        /// Point of action
-        /// </summary>
-        private CCPoint m_point;
+        CCPoint point;
+        CCPoint prevPoint;
+        CCPoint startPoint;
 
-        /// <summary>
-        /// Previous point in the action
-        /// </summary>
-        private CCPoint m_prevPoint;
 
-        private CCPoint m_startPoint;
-        private bool m_startPointCaptured;
+        #region Properties
 
-        public CCTouch()
-            : this(0, 0, 0)
-        {
-        }
-
-        public CCTouch(int id, float x, float y)
-        {
-            m_nId = id;
-            m_point = new CCPoint(x, y);
-            m_prevPoint = new CCPoint(x, y);
-        }
+        public int Id { get; private set; }
 
         public CCPoint LocationOnScreen
         {
-            get { return m_point; }
+            get { return point; }
         }
 
         /** returns the start touch location in screen coordinates */
         public CCPoint StartLocatiOnScreen
         {
-            get { return m_startPoint; }
+            get { return startPoint; }
         }
 
         public CCPoint PreviousLocationOnScreen
         {
-            get { return m_prevPoint; }
-        }
-
-        public int Id
-        {
-            get { return m_nId; }
+            get { return prevPoint; }
         }
 
         public CCPoint Delta
@@ -61,16 +40,31 @@ namespace CocosSharp
             get { return LocationOnScreen - PreviousLocationOnScreen; }
         }
 
-        public void SetTouchInfo(int id, float x, float y)
+        #endregion Properties
+
+
+        #region Constructors
+
+		internal CCTouch(int id=0, float x=0.0f, float y=0.0f)
         {
-            m_nId = id;
-            m_prevPoint = m_point;
-            m_point.X = x;
-            m_point.Y = y;
-            if (!m_startPointCaptured)
+            Id = id;
+            point = new CCPoint(x, y);
+            prevPoint = new CCPoint(x, y);
+        }
+
+        #endregion Constructors
+
+
+        internal void SetTouchInfo(int id, float x, float y)
+        {
+            Id = id;
+            prevPoint = point;
+            point.X = x;
+            point.Y = y;
+            if (!startPointCaptured)
             {
-                m_startPoint = m_point;
-                m_startPointCaptured = true;
+                startPoint = point;
+                startPointCaptured = true;
             }
         }
     }

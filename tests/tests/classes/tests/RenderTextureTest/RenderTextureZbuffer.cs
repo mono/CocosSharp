@@ -114,7 +114,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             touchListener.OnTouchesMoved = onTouchesMoved;
             touchListener.OnTouchesEnded = onTouchesEnded;
 
-            EventDispatcher.AddEventListener(touchListener, this); 
+            AddEventListener(touchListener); 
         }
 
         #endregion Setup content

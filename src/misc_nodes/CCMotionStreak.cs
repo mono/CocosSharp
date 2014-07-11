@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace CocosSharp
 {
-    public class CCMotionStreak : CCNodeRGBA, ICCTexture
+    public class CCMotionStreak : CCNode, ICCTexture
     {
         // ivars
         int maxPoints;

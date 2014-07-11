@@ -38,7 +38,7 @@ namespace tests
 
         public float radius()
         {
-            return Texture.ContentSizeInPixels.Width / 2;
+			return Texture.ContentSizeInPixels.Width / 2;
         }
 
         //BOOL initWithTexture(CCTexture2D* aTexture);
@@ -47,14 +47,14 @@ namespace tests
         {
             this.Position = Position + (m_velocity * delta);
 
-            if (Position.X > 320 - radius())
+            if (Position.X > CCVisibleRect.Right.X - radius())
             {
-                Position = new CCPoint(320 - radius(), Position.Y);
+				Position = new CCPoint(CCVisibleRect.Right.X - radius(), Position.Y);
                 m_velocity.X *= -1;
             }
-            else if (Position.X < radius())
+			else if (Position.X < CCVisibleRect.Left.X + radius())
             {
-                Position = new CCPoint(radius(), Position.Y);
+				Position = new CCPoint(CCVisibleRect.Left.X + radius(), Position.Y);
                 m_velocity.X *= -1;
             }
         }
@@ -93,12 +93,11 @@ namespace tests
 
                 if (hit)
                 {
-                    float hitAngle = (float)Math.Atan2(new CCPoint(paddle.Position.X - Position.X, paddle.Position.Y - Position.Y).Y, new CCPoint(paddle.Position.X - Position.X, paddle.Position.Y - Position.Y).X) + angleOffset;
+					float hitAngle = (paddle.Position - Position).Angle + angleOffset;
+                    float scalarVelocity = m_velocity.Length * 1.05f;
+                    float velocityAngle = -m_velocity.Angle + 0.5f * hitAngle;
 
-                    float scalarVelocity = (float)Math.Sqrt((double)(m_velocity.X * m_velocity.X + m_velocity.Y * m_velocity.Y)) * 1.05f;
-                    float velocityAngle = -(float)Math.Atan2(m_velocity.Y, m_velocity.X) + 0.5f * hitAngle;
-
-                    m_velocity = new CCPoint(new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).X * scalarVelocity, new CCPoint((float)Math.Cos(velocityAngle), (float)Math.Sin(velocityAngle)).Y * scalarVelocity);
+					m_velocity = CCPoint.ForAngle(velocityAngle) * scalarVelocity;
                 }
             }
         }

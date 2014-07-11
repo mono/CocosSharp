@@ -33,7 +33,7 @@ namespace CocosSharp
 		{
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			InnerActionState.Update ((float)(Math.Pow (time, 1 / Rate)));      
 		}

@@ -219,6 +219,22 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RunningOnNewWindow">
+      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="windowSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SetRegionData">
       <MemberSignature Language="C#" Value="public static void SetRegionData (CocosSharp.CCLabel.ivec4 region, int[] data, int stride);" />
       <MemberSignature Language="ILAsm" Value=".method public static hidebysig void SetRegionData(valuetype CocosSharp.CCLabel/ivec4 region, int32[] data, int32 stride) cil managed" />

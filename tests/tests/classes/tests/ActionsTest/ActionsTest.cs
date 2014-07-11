@@ -1937,17 +1937,24 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         {
             base.Draw();
 
-            // move to 50,50 since the "by" path will start at 50,50
-            CCDrawManager.SharedDrawManager.PushMatrix();
+			// move to 50,50 since the "by" path will start at 50,50
+			CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
+
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 0, 100);
+			CCDrawingPrimitives.End();
+
             CCDrawManager.SharedDrawManager.PopMatrix();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
 
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
+
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
         }
     }
@@ -1978,7 +1985,8 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2025,10 +2033,10 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
+			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
-
-            CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
         }
     }
 
@@ -2074,7 +2082,8 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2108,14 +2117,15 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
             var listener = new CCEventListenerTouchAllAtOnce();
             listener.OnTouchesEnded = OnTouchesEnded;
 
-            EventDispatcher.AddEventListener(listener, this);    
+            AddEventListener(listener);    
 
             AddNewSpriteWithCoords(new CCPoint(windowSize.Width/2, windowSize.Height/2));
         }
@@ -2366,12 +2376,17 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
+
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointArray, 50);
+			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
 
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointArray2, 50);
+			CCDrawingPrimitives.End();
         }
     }
 
@@ -2400,7 +2415,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2465,16 +2480,21 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             base.Draw();
 
             // move to 50,50 since the "by" path will start at 50,50
+
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 0, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
 
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
+			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointArray, 1, 100);
+			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
         }
     }

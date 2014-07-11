@@ -87,7 +87,7 @@ namespace tests
                           item1, item2,
                           title3, title4,
                           item3, item4,
-                          back); // 9 items.
+				back) { Tag = 36 }; // 9 items.
 
             menu.AlignItemsInColumns(2, 2, 2, 2, 1);
 

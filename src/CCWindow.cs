@@ -29,7 +29,7 @@ namespace CocosSharp
         public bool GamePadEnabled { get; set; }
         public virtual double AnimationInterval { get; set; }
         public CCNode NotificationNode { get; set; }
-        public CCEventDispatcher EventDispatcher { get; private set; }
+        internal CCEventDispatcher EventDispatcher { get; private set; }
 
         internal List<CCDirector> SceneDirectors { get { return sceneDirectors; } }
         internal CCDrawManager DrawManager { get { return CCDrawManager.SharedDrawManager; } }

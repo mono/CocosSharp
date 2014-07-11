@@ -47,7 +47,7 @@ namespace CocosSharp
 			P = StartPosition = target.Position;
 		}
 
-		protected internal override void Update (float time)
+		public override void Update (float time)
 		{
 			if (Target != null)
 			{

@@ -91,7 +91,7 @@ namespace tests
 			var pLayer = nextCocosNodeAction();
             AddChild(pLayer);
 
-            Scene.Director.ReplaceScene(this);
+            Director.ReplaceScene(this);
         }
     }
 }

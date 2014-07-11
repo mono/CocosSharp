@@ -20,24 +20,29 @@ namespace tests
 			listener.OnTouchesMoved = onTouchesMoved;
 			listener.OnTouchesEnded = onTouchesEnded;
 
-			EventDispatcher.AddEventListener(listener, this);
+			AddEventListener(listener);
 
             CCSize s = Scene.VisibleBoundsWorldspace.Size;
+
             CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
 
             layer.IgnoreAnchorPointForPosition = false;
-            layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
+			layer.Position = s.Center;
             AddChild(layer, 1, kTagLayer);
         }
 
-        public override string title()
-        {
-            return "ColorLayer resize (tap & move)";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "ColorLayer resize (tap & move)";
+			}
+		}
 
         public void updateSize(CCPoint touchLocation)
         {
             CCSize s = Scene.VisibleBoundsWorldspace.Size;
+
             CCSize newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
             CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
             l.ContentSize = newSize;
@@ -68,10 +73,11 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
-            var layer1 = new CCLayerRGBA();
+            var layer1 = new CCLayer();
 
-            var sister1 = new CCSprite("Images/grossinis_sister1.png");
-            var sister2 = new CCSprite("Images/grossinis_sister2.png");
+
+			var sister1 = new CCSprite("Images/grossinis_sister1.png");
+			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
     
             layer1.AddChild(sister1);
@@ -109,10 +115,13 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-        public override string title()
-        {
-            return "LayerRGBA: cascading opacity";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Layer: cascading opacity";
+			}
+		}
     }
 
     public class LayerTestCascadingOpacityB : LayerTest
@@ -124,13 +133,14 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
+
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
 
-            var sister1 = new CCSprite("Images/grossinis_sister1.png");
-            var sister2 = new CCSprite("Images/grossinis_sister2.png");
+			var sister1 = new CCSprite("Images/grossinis_sister1.png");
+			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
 
             layer1.AddChild(sister1);
@@ -168,10 +178,13 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-        public override string title()
-        {
-            return "CCLayerColor: cascading opacity";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "CCLayerColor: cascading opacity";
+			}
+		}
     }
 
     public class LayerTestCascadingOpacityC : LayerTest
@@ -183,6 +196,7 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
+
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -223,10 +237,13 @@ namespace tests
 			);
         }
 
-        public override string title()
-        {
-            return "CCLayerColor: non-cascading opacity";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "CCLayerColor: non-cascading opacity";
+			}
+		}
     }
 
     public class LayerTestCascadingColorA : LayerTest
@@ -238,7 +255,7 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
-            var layer1 = new CCLayerRGBA();
+            var layer1 = new CCLayer();
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
             var sister2 = new CCSprite("Images/grossinis_sister2.png");
@@ -276,10 +293,13 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-        public override string title()
-        {
-            return "LayerRGBA: cascading color";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "Layer: cascading color";
+			}
+		}
     }
 
     public class LayerTestCascadingColorB : LayerTest
@@ -291,6 +311,7 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
+
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -332,10 +353,13 @@ namespace tests
             SetEnableRecursiveCascading(this, true);
         }
 
-        public override string title()
-        {
-            return "CCLayerColor: cascading color";
-        }
+		public override string Subtitle
+		{
+			get
+			{
+				return "CCLayerColor: cascading color";
+			}
+		}
     }
 
     public class LayerTestCascadingColorC : LayerTest
@@ -347,6 +371,7 @@ namespace tests
             base.OnEnter();
 
             var s = Scene.VisibleBoundsWorldspace.Size;
+
             var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
             layer1.IsColorCascaded = false;
 
@@ -385,9 +410,12 @@ namespace tests
                 );
         }
 
-        public override string title()
-        {
-            return "CCLayerColor: non-cascading color";
-        }
+		public override string Title
+		{
+			get
+			{
+				return "CCLayerColor: non-cascading color";
+			}
+		}
     }
 }

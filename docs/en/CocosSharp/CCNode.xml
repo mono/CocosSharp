@@ -1,6 +1,6 @@
 <Type Name="CCNode" FullName="CocosSharp.CCNode">
-  <TypeSignature Language="C#" Value="public class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCKeypadDelegate, CocosSharp.ICCUpdatable, IComparable&lt;CocosSharp.CCNode&gt;, System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class CocosSharp.ICCFocusable, class CocosSharp.ICCKeypadDelegate, class CocosSharp.ICCUpdatable, class System.Collections.Generic.IComparer`1&lt;class CocosSharp.CCNode&gt;, class System.IComparable`1&lt;class CocosSharp.CCNode&gt;" />
+  <TypeSignature Language="C#" Value="public class CCNode : CocosSharp.ICCFocusable, CocosSharp.ICCUpdatable, IComparable&lt;CocosSharp.CCNode&gt;, System.Collections.Generic.IComparer&lt;CocosSharp.CCNode&gt;" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCNode extends System.Object implements class CocosSharp.ICCFocusable, class CocosSharp.ICCUpdatable, class System.Collections.Generic.IComparer`1&lt;class CocosSharp.CCNode&gt;, class System.IComparable`1&lt;class CocosSharp.CCNode&gt;" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -10,9 +10,6 @@
   <Interfaces>
     <Interface>
       <InterfaceName>CocosSharp.ICCFocusable</InterfaceName>
-    </Interface>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCKeypadDelegate</InterfaceName>
     </Interface>
     <Interface>
       <InterfaceName>CocosSharp.ICCUpdatable</InterfaceName>
@@ -45,30 +42,13 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCNode (CocosSharp.CCDirector director = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCDirector director) cil managed" />
+      <MemberSignature Language="C#" Value="public CCNode ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="director" Type="CocosSharp.CCDirector" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="director">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ActionManager">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCActionManager ActionManager { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionManager ActionManager" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCActionManager</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets the  object that is used by all actions.</summary>
-        <value>
-        </value>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="AddAction">
@@ -167,6 +147,61 @@
         <param name="child">To be added.</param>
         <param name="zOrder">To be added.</param>
         <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddCustomEventListener">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCEventListenerCustom AddCustomEventListener (string eventName, Action&lt;CocosSharp.CCEventCustom&gt; callback);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCEventListenerCustom AddCustomEventListener(string eventName, class System.Action`1&lt;class CocosSharp.CCEventCustom&gt; callback) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCEventListenerCustom</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="eventName" Type="System.String" />
+        <Parameter Name="callback" Type="System.Action&lt;CocosSharp.CCEventCustom&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="eventName">To be added.</param>
+        <param name="callback">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddEventListener">
+      <MemberSignature Language="C#" Value="public void AddEventListener (CocosSharp.CCEventListener listener, CocosSharp.CCNode node = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddEventListener(class CocosSharp.CCEventListener listener, class CocosSharp.CCNode node) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="listener" Type="CocosSharp.CCEventListener" />
+        <Parameter Name="node" Type="CocosSharp.CCNode" />
+      </Parameters>
+      <Docs>
+        <param name="listener">To be added.</param>
+        <param name="node">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddEventListener">
+      <MemberSignature Language="C#" Value="public void AddEventListener (CocosSharp.CCEventListener listener, int fixedPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddEventListener(class CocosSharp.CCEventListener listener, int32 fixedPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="listener" Type="CocosSharp.CCEventListener" />
+        <Parameter Name="fixedPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="listener">To be added.</param>
+        <param name="fixedPriority">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1085,6 +1120,19 @@
         <remarks />
       </Docs>
     </Member>
+    <Member MemberName="Color">
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCColor3B Color { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B Color" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="CompareTo">
       <MemberSignature Language="C#" Value="public int CompareTo (CocosSharp.CCNode that);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance int32 CompareTo(class CocosSharp.CCNode that) cil managed" />
@@ -1298,11 +1346,97 @@
       </Docs>
     </Member>
     <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirector Director { get; }" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCDirector Director { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableCascadeColor">
+      <MemberSignature Language="C#" Value="protected void DisableCascadeColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig instance void DisableCascadeColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisableCascadeOpacity">
+      <MemberSignature Language="C#" Value="protected virtual void DisableCascadeOpacity ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void DisableCascadeOpacity() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DispatchEvent">
+      <MemberSignature Language="C#" Value="public void DispatchEvent (CocosSharp.CCEvent eventToDispatch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DispatchEvent(class CocosSharp.CCEvent eventToDispatch) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="eventToDispatch" Type="CocosSharp.CCEvent" />
+      </Parameters>
+      <Docs>
+        <param name="eventToDispatch">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DispatchEvent">
+      <MemberSignature Language="C#" Value="public void DispatchEvent (string customEvent, object userData = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void DispatchEvent(string customEvent, object userData) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="customEvent" Type="System.String" />
+        <Parameter Name="userData" Type="System.Object" />
+      </Parameters>
+      <Docs>
+        <param name="customEvent">To be added.</param>
+        <param name="userData">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayedColor">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCColor3B DisplayedColor { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B DisplayedColor" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayedOpacity">
+      <MemberSignature Language="C#" Value="public byte DisplayedOpacity { get; protected set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 DisplayedOpacity" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1371,19 +1505,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="EventDispatcher">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCEventDispatcher EventDispatcher { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCEventDispatcher EventDispatcher" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCEventDispatcher</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Finalize">
       <MemberSignature Language="C#" Value="~CCNode ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Finalize() cil managed" />
@@ -1410,9 +1531,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetActionByTag">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetActionByTag (int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetActionByTag(int32 tag) cil managed" />
+    <Member MemberName="GetAction">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAction GetAction (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCAction GetAction(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCAction</ReturnType>
@@ -1422,21 +1543,26 @@
       </Parameters>
       <Docs>
         <param name="tag">To be added.</param>
-        <summary>Gets an action from the running action list by its tag.</summary>
+        <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>
-          <para>Gets an action from the running action list by its tag.</para>
-          <para>
-            <para>
-              <ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member">setTag(int)</ref>, <ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member">getTag()</ref>.</para>
-            <para>The action object with the given tag. </para>
-          </para>
-          <para>
-            <ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member">setTag(int)</ref>, <ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member">getTag()</ref>.</para>
-          <ref refid="group__base__nodes_1ga259d0d8f26ad66e966b275c559b2cfee" kindref="member">setTag(int)</ref>
-          <ref refid="group__base__nodes_1ga79da575d4c240206a788d996300ec967" kindref="member">getTag()</ref>
-          <para>The action object with the given tag. </para>
-        </remarks>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GetActionState">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCActionState GetActionState (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState GetActionState(int32 tag) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCActionState</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="tag" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="GetBoundingBox">
@@ -1572,6 +1698,45 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="IsColorCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorCascaded" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsColorModifiedByOpacity">
+      <MemberSignature Language="C#" Value="public virtual bool IsColorModifiedByOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsColorModifiedByOpacity" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsOpacityCascaded">
+      <MemberSignature Language="C#" Value="public virtual bool IsOpacityCascaded { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsOpacityCascaded" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="IsReorderChildDirty">
       <MemberSignature Language="C#" Value="protected bool IsReorderChildDirty { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsReorderChildDirty" />
@@ -1650,45 +1815,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="KeyBackClicked">
-      <MemberSignature Language="C#" Value="public virtual void KeyBackClicked ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyBackClicked() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeyMenuClicked">
-      <MemberSignature Language="C#" Value="public virtual void KeyMenuClicked ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void KeyMenuClicked() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="KeypadEnabled">
-      <MemberSignature Language="C#" Value="public virtual bool KeypadEnabled { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool KeypadEnabled" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="LocalZOrder">
       <MemberSignature Language="C#" Value="public int LocalZOrder { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 LocalZOrder" />
@@ -1743,25 +1869,16 @@
       </Docs>
     </Member>
     <Member MemberName="NumberOfRunningActions">
-      <MemberSignature Language="C#" Value="public int NumberOfRunningActions ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance int32 NumberOfRunningActions() cil managed" />
-      <MemberType>Method</MemberType>
+      <MemberSignature Language="C#" Value="public int NumberOfRunningActions { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 NumberOfRunningActions" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
-        <summary>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).</summary>
-        <returns>To be added.</returns>
-        <remarks>
-          <para>Returns the numbers of actions that are running plus the ones that are schedule to run (actions in actionsToAdd and actions arrays).</para>
-          <para>Composable actions are counted as 1 action. Example: If you are running 1 <see cref="T:CocosSharp.CCSequence" /> of 7 actions, it will return 1. If you are running 7 Sequences of 2 actions, it will return 7. </para>
-          <see cref="T:CocosSharp.CCSequence" />
-          <para>
-            <para>The number of actions that are running plus the ones that are schedule to run </para>
-          </para>
-          <para>The number of actions that are running plus the ones that are schedule to run </para>
-        </remarks>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OnEnter">
@@ -1814,6 +1931,19 @@
       <Docs>
         <summary>Event callback that is called every time the  leaves the 'stage'. If the  leaves the 'stage' with a transition, this callback is called when the transition starts. </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Opacity">
+      <MemberSignature Language="C#" Value="public virtual byte Opacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 Opacity" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="OrderOfArrival">
@@ -1894,6 +2024,40 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PauseListeners">
+      <MemberSignature Language="C#" Value="public void PauseListeners (bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseListeners(bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="recursive">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PauseListeners">
+      <MemberSignature Language="C#" Value="public void PauseListeners (CocosSharp.CCNode target, bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PauseListeners(class CocosSharp.CCNode target, bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="recursive">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Position">
       <MemberSignature Language="C#" Value="public virtual CocosSharp.CCPoint Position { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Position" />
@@ -1926,6 +2090,32 @@
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RealColor">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCColor3B RealColor { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCColor3B RealColor" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCColor3B</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RealOpacity">
+      <MemberSignature Language="C#" Value="protected byte RealOpacity { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance unsigned int8 RealOpacity" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Byte</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -1967,6 +2157,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="RemoveAllListeners">
+      <MemberSignature Language="C#" Value="public void RemoveAllListeners ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllListeners() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RemoveChild">
       <MemberSignature Language="C#" Value="public virtual void RemoveChild (CocosSharp.CCNode child, bool cleanup = true);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void RemoveChild(class CocosSharp.CCNode child, bool cleanup) cil managed" />
@@ -1999,6 +2202,72 @@
       <Docs>
         <param name="tag">To be added.</param>
         <param name="cleanup">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveEventListener">
+      <MemberSignature Language="C#" Value="public void RemoveEventListener (CocosSharp.CCEventListener listener);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveEventListener(class CocosSharp.CCEventListener listener) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="listener" Type="CocosSharp.CCEventListener" />
+      </Parameters>
+      <Docs>
+        <param name="listener">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveEventListeners">
+      <MemberSignature Language="C#" Value="public void RemoveEventListeners (CocosSharp.CCEventListenerType listenerType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveEventListeners(valuetype CocosSharp.CCEventListenerType listenerType) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="listenerType" Type="CocosSharp.CCEventListenerType" />
+      </Parameters>
+      <Docs>
+        <param name="listenerType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveEventListeners">
+      <MemberSignature Language="C#" Value="public void RemoveEventListeners (bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveEventListeners(bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="recursive">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveEventListeners">
+      <MemberSignature Language="C#" Value="public void RemoveEventListeners (CocosSharp.CCNode target, bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveEventListeners(class CocosSharp.CCNode target, bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="recursive">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -2150,6 +2419,40 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="ResumeListeners">
+      <MemberSignature Language="C#" Value="public void ResumeListeners (bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeListeners(bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="recursive">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ResumeListeners">
+      <MemberSignature Language="C#" Value="public void ResumeListeners (CocosSharp.CCNode target, bool recursive = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ResumeListeners(class CocosSharp.CCNode target, bool recursive) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="target" Type="CocosSharp.CCNode" />
+        <Parameter Name="recursive" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="target">To be added.</param>
+        <param name="recursive">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Rotation">
       <MemberSignature Language="C#" Value="public virtual float Rotation { set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Rotation" />
@@ -2254,6 +2557,22 @@
         <param name="actions">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunningOnNewWindow">
+      <MemberSignature Language="C#" Value="protected virtual void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
+      </Parameters>
+      <Docs>
+        <param name="windowSize">To be added.</param>
+        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -2440,33 +2759,6 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Scheduler">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCScheduler Scheduler { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScheduler Scheduler" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScheduler</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets a Sheduler object.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Gets a Sheduler object.</para>
-          <para>
-            <para>
-              <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
-            </para>
-            <para>A <see cref="T:CocosSharp.CCScheduler" /> object. </para>
-          </para>
-          <para>
-            <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
-          </para>
-          <ref refid="classcocos2d_1_1_node_1af298cb47edf3f8dcd53d1476e5f9ba8b" kindref="member">setScheduler(Scheduler*)</ref>
-          <para>A <see cref="T:CocosSharp.CCScheduler" /> object. </para>
-          <see cref="T:CocosSharp.CCScheduler" />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Serialize">
       <MemberSignature Language="C#" Value="public virtual void Serialize (System.IO.Stream stream);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Serialize(class System.IO.Stream stream) cil managed" />
@@ -2479,6 +2771,24 @@
       </Parameters>
       <Docs>
         <param name="stream">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetListenerPriority">
+      <MemberSignature Language="C#" Value="public void SetListenerPriority (CocosSharp.CCEventListener listener, int fixedPriority);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetListenerPriority(class CocosSharp.CCEventListener listener, int32 fixedPriority) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="listener" Type="CocosSharp.CCEventListener" />
+        <Parameter Name="fixedPriority" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="listener">To be added.</param>
+        <param name="fixedPriority">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -2688,27 +2998,24 @@
       </Docs>
     </Member>
     <Member MemberName="StopAction">
-      <MemberSignature Language="C#" Value="public void StopAction (CocosSharp.CCAction action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(class CocosSharp.CCAction action) cil managed" />
+      <MemberSignature Language="C#" Value="public void StopAction (CocosSharp.CCActionState actionState);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(class CocosSharp.CCActionState actionState) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCAction" />
+        <Parameter Name="actionState" Type="CocosSharp.CCActionState" />
       </Parameters>
       <Docs>
-        <param name="action">action object to be removed. </param>
-        <summary>Stops and removes an action from the running action list.</summary>
-        <remarks>
-          <para>Stops and removes an action from the running action list.</para>
-          <para />
-        </remarks>
+        <param name="actionState">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StopActionByTag">
-      <MemberSignature Language="C#" Value="public void StopActionByTag (int tag);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopActionByTag(int32 tag) cil managed" />
+    <Member MemberName="StopAction">
+      <MemberSignature Language="C#" Value="public void StopAction (int tag);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StopAction(int32 tag) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -2717,12 +3024,9 @@
         <Parameter Name="tag" Type="System.Int32" />
       </Parameters>
       <Docs>
-        <param name="tag">tag that indicates the action to be removed. </param>
-        <summary>Removes an action from the running action list by its tag.</summary>
-        <remarks>
-          <para>Removes an action from the running action list by its tag.</para>
-          <para />
-        </remarks>
+        <param name="tag">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="StopAllActions">
@@ -2867,6 +3171,77 @@
       </Parameters>
       <Docs>
         <param name="dt">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateCascadeColor">
+      <MemberSignature Language="C#" Value="protected void UpdateCascadeColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig instance void UpdateCascadeColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateCascadeOpacity">
+      <MemberSignature Language="C#" Value="protected virtual void UpdateCascadeOpacity ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void UpdateCascadeOpacity() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="protected virtual void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void UpdateColor() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedColor">
+      <MemberSignature Language="C#" Value="public virtual void UpdateDisplayedColor (CocosSharp.CCColor3B parentColor);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void UpdateDisplayedColor(valuetype CocosSharp.CCColor3B parentColor) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentColor" Type="CocosSharp.CCColor3B" />
+      </Parameters>
+      <Docs>
+        <param name="parentColor">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateDisplayedOpacity">
+      <MemberSignature Language="C#" Value="protected virtual void UpdateDisplayedOpacity (byte parentOpacity);" />
+      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig newslot virtual instance void UpdateDisplayedOpacity(unsigned int8 parentOpacity) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="parentOpacity" Type="System.Byte" />
+      </Parameters>
+      <Docs>
+        <param name="parentOpacity">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

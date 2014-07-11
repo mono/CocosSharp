@@ -39,8 +39,6 @@ namespace CocosSharp
         CCRenderTexture renderTexture;
         CCClipMode childClippingMode;
 
-        CCRect cachedViewportRect;
-        CCRect cachedVisibleBoundsRect;
 
         #region Properties
 
@@ -105,21 +103,9 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-        }
-
-        public override void OnExit()
-        {
-
-            base.OnExit();
-        }
-
-
         #region CCNode - scene layout callbacks
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 
@@ -221,13 +207,6 @@ namespace CocosSharp
             CCRect visibleBounds = Camera.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
             CCDrawManager drawManager = Window.DrawManager;
-
-            if(cachedViewportRect != viewportRect || cachedVisibleBoundsRect != visibleBounds) 
-            {
-                UpdateClipping();
-                cachedViewportRect = viewportRect;
-                cachedVisibleBoundsRect = visibleBounds;
-            }
 
             if (ChildClippingMode == CCClipMode.Bounds && Window != null)
             {

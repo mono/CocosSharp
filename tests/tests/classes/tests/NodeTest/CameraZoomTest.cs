@@ -8,33 +8,39 @@ namespace tests
 
         public CameraZoomTest()
         {
+        }
+
+        protected virtual void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
             CCSize s = Scene.VisibleBoundsWorldspace.Size;
 
-            CCSprite sprite;
-            CCCamera cam;
+			CCSprite sprite;
+			CCCamera cam;
 
-            // LEFT
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0);
-            sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
-            cam = sprite.Camera;
-            //cam.SetEyeXyz(0, 0, 415 / 2);
-            //cam.SetCenterXyz(0, 0, 0);
+			// LEFT
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0);
+			sprite.Position = (new CCPoint(s.Width / 4 * 1, s.Height / 2));
+			cam = sprite.Camera;
+//			cam.SetEyeXyz(0, 0, 415 / 2);
+//			cam.SetCenterXyz(0, 0, 0);
 
-            // CENTER
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0, 40);
-            sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
+			// CENTER
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0, 40);
+			sprite.Position = (new CCPoint(s.Width / 4 * 2, s.Height / 2));
 
-            // RIGHT
-            sprite = new CCSprite(TestResource.s_pPathGrossini);
-            AddChild(sprite, 0, 20);
-            sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
+			// RIGHT
+			sprite = new CCSprite(TestResource.s_pPathGrossini);
+			AddChild(sprite, 0, 20);
+			sprite.Position = (new CCPoint(s.Width / 4 * 3, s.Height / 2));
 
-            m_z = 0;
+			m_z = 0;
 
-            Schedule ();
-        }
+			Schedule ();
+		}
 
         public override void Update(float dt)
         {
