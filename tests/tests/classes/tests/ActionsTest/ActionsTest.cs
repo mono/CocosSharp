@@ -682,13 +682,13 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Tamara.RemoveFromParent(true);
             Grossini.RemoveFromParent(true);
             Kathia.RemoveFromParent(true);
 
-            CCSize boxSize = new CCSize(100.0f, 100.0f);
+            CCSize boxSize = Scene.ScreenToWorldspace(new CCSize(200.0f, 200.0f));
 
             box1.ContentSize = boxSize;
             box1.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 100 - box1.ContentSize.Height / 2);
@@ -904,7 +904,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1135,7 +1135,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1901,7 +1901,8 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1955,6 +1956,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCardinalSpline(pointList, 1, 100);
 			CCDrawingPrimitives.End();
+
             CCDrawManager.SharedDrawManager.PopMatrix();
         }
     }
@@ -2033,10 +2035,14 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             // move to 50,50 since the "by" path will start at 50,50
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(50, 50, 0);
-			CCDrawingPrimitives.Begin();
+            CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawCatmullRom(pointList, 50);
-			CCDrawingPrimitives.End();
+            CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
+
+            CCDrawingPrimitives.Begin();
+            CCDrawingPrimitives.DrawCatmullRom(pointList2, 50);
+            CCDrawingPrimitives.End();
         }
     }
 
@@ -2160,7 +2166,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
                 if (touch == null)
                     break;
 
-                CCPoint location = touch.LocationOnScreen;
+                CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
 
                 AddNewSpriteWithCoords(location);
             }
