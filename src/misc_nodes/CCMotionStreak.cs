@@ -315,8 +315,8 @@ namespace CocosSharp
 
             else if (numOfPoints > 0)
             {
-                bool a1 = pointVertexes[numOfPoints - 1].DistanceSQ(ref positionR) < minSeg;
-                bool a2 = (numOfPoints != 1) && (pointVertexes[numOfPoints - 2].DistanceSQ(ref positionR) < (minSeg * 2.0f));
+                bool a1 = pointVertexes[numOfPoints - 1].DistanceSquared(ref positionR) < minSeg;
+                bool a2 = (numOfPoints != 1) && (pointVertexes[numOfPoints - 2].DistanceSquared(ref positionR) < (minSeg * 2.0f));
 
                 if (a1 || a2)
                 {

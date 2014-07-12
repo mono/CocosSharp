@@ -1239,7 +1239,7 @@ namespace CocosSharp
                             {
                                 pos = CCDrawManager.ScreenToWorld(touch.Position.X, touch.Position.Y);
                                 var delta = existingTouch.Value.LocationInView - pos;
-                                if (delta.LengthSQ > 1.0f)
+                                if (delta.LengthSquared > 1.0f)
                                 {
                                     movedTouches.Add(existingTouch.Value);
                                     existingTouch.Value.SetTouchInfo(touch.Id, pos.X, pos.Y);
