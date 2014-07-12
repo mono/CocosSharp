@@ -75,10 +75,10 @@ namespace tests
             //director.AnimationInterval = 1.0 / 60;
 
 
-            if (sharedWindow.WindowSizeInPixels.Height > 320)
-            {
-                application.ContentSearchPaths.Insert(0,"HD");
-            }
+//            if (sharedWindow.WindowSizeInPixels.Height > 320)
+//            {
+//                application.ContentSearchPaths.Insert(0,"HD");
+//            }
 
             sharedWindow.AddSceneDirector(sharedDirector);
 
