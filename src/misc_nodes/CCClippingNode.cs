@@ -14,9 +14,9 @@ namespace CocosSharp
             set 
             {
                 stencil = value;
-                if (stencil != null) 
+                if (stencil != null && Scene != null) 
                 {
-                    stencil.Window = Window;
+                    stencil.Scene = Scene;
                 }
             }
         }
