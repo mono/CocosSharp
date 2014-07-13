@@ -32,9 +32,10 @@ namespace tests
 
         #region Setup content
 
-        public void OnEnter()
+        protected override void AddedToNewScene()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.AddedToNewScene(); 
+            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
@@ -58,9 +59,9 @@ namespace tests
 
 
             CCSprite sprite = new CCSprite(BatchNode.Texture, new CCRect(x, y, 85, 121));
+            sprite.Position = (new CCPoint(p.X, p.Y));
             BatchNode.AddChild(sprite);
 
-            sprite.Position = (new CCPoint(p.X, p.Y));
 
             CCActionInterval action = null;
             float random = (float)CCRandom.NextDouble();
@@ -91,7 +92,7 @@ namespace tests
                     break;
                 }
 
-                var location = item.LocationOnScreen;
+                var location = Scene.ScreenToWorldspace(item.LocationOnScreen);
 
                 AddNewSpriteWithCoords(location);
             }

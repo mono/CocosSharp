@@ -198,13 +198,11 @@ namespace tests
             particleMenu = new CCMenu(toggleParticleMovMenuItem);
             AddChild(particleMenu, 100);
 
-            particleCounter = new CCLabelAtlas("0000", "Images/fps_Images", 12, 32, '.');
+            particleCounter = new CCLabelAtlas("0000", "Images/fps_Images", 16, 64, '.');
             AddChild(particleCounter, 100, ParticleTestScene.TagLabelAtlas);
 
             Background = new CCSprite(TestResource.s_back3);
             AddChild(Background, 5);
-
-			Schedule(Step);
 
 			// Add event listeners
 
@@ -228,7 +226,7 @@ namespace tests
 		static CCMoveBy move = new CCMoveBy (4, new CCPoint(300, 0));
 		static CCFiniteTimeAction move_back = move.Reverse();
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 
@@ -240,10 +238,10 @@ namespace tests
             // Laying out content based on window size
 
 			particleMenu.Position = CCPoint.Zero;
-            toggleParticleMovMenuItem.Position = new CCPoint(0, 100);
+            toggleParticleMovMenuItem.Position = new CCPoint(10, 100);
 			toggleParticleMovMenuItem.AnchorPoint = CCPoint.AnchorLowerLeft;
 
-            particleCounter.Position = new CCPoint(windowSize.Width - 66, 50);
+            particleCounter.Position = new CCPoint(windowSize.Width - 70, 50);
 
 			// Background could have been removed by overriding class
 			if (Background != null)
@@ -254,13 +252,16 @@ namespace tests
 				Background.RepeatForever(move, move_back);
 			}
 
+
+            Schedule(Step);
+
         }
 
         #endregion Setup content
 
 		#region Properties
 
-		protected CCColor3B Color
+		public override CCColor3B Color
 		{
 			get { return coloredBackground.Color; }
 
@@ -420,7 +421,7 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFirework : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
             base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -445,7 +446,7 @@ namespace tests
     //------------------------------------------------------------------
     public class DemoFire : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -473,7 +474,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     //------------------------------------------------------------------
     public class DemoSun : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -502,7 +503,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     //------------------------------------------------------------------
     public class DemoGalaxy : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -531,7 +532,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     //------------------------------------------------------------------
     public class DemoFlower : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -558,7 +559,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     //------------------------------------------------------------------
     public class DemoBigFlower : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -648,7 +649,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     //------------------------------------------------------------------
     public class DemoRotFlower : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -734,7 +735,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoMeteor : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -759,7 +760,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoSpiral : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -784,7 +785,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoExplosion : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -811,7 +812,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoSmoke : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -838,7 +839,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoSnow : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -887,7 +888,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoRain : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -913,7 +914,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     // todo: CCParticleSystemPoint::draw() hasn't been implemented.
     public class DemoModernArt : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
             base.OnEnter(); 
             CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
@@ -997,7 +998,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class DemoRing : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1027,9 +1028,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class ParallaxParticle : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1090,9 +1091,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         }
 
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1137,7 +1138,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class RadiusMode1 : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
             base.OnEnter(); 
             CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
@@ -1219,9 +1220,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class RadiusMode2 : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1301,9 +1302,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class Issue704 : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1395,9 +1396,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         int index;
 
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1452,7 +1453,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			Visible = false;
 		}
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
             Position = Scene.VisibleBoundsWorldspace.Center;
@@ -1481,9 +1482,9 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			AddChild(label, 10);
 		}
 
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             label.Position = windowSize.Center;
 
@@ -1504,6 +1505,8 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             //ignore.TotalParticles = 200;
             CCNode parent1 = new CCNode ();
             CCParticleBatchNode parent2 = new CCParticleBatchNode (ignore.Texture);
+
+            parent1.ContentSize = new CCSize (300.0f, 300.0f);
 
             for (int i = 0; i < 2; i++) {
                 CCNode parent = (i == 0 ? parent1 : parent2);
@@ -1598,7 +1601,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
 		const int NODE_ZORDER = 10;
 
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1653,7 +1656,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class ParticleBatchMultipleEmitters : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
             base.OnEnter();
             CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
@@ -1760,7 +1763,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/particles"));
         }
 
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1778,7 +1781,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class Issue1201 : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1814,7 +1817,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class MultipleParticleSystems : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1856,7 +1859,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class MultipleParticleSystemsBatched : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1905,7 +1908,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         CCParticleBatchNode batchNode;
 
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -1980,7 +1983,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         CCParticleBatchNode batchNode;
 
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -2141,7 +2144,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
     public class PremultipliedAlphaTest2 : ParticleDemo
     {
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 

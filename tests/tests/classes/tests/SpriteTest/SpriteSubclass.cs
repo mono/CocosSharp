@@ -77,7 +77,7 @@ namespace tests
 
         #region Setup content
 
-        public void OnEnter()
+        public override void OnEnter()
         {
             base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
             sprite.Position = (new CCPoint(windowSize.Width / 4 * 1, windowSize.Height / 2));

@@ -40,9 +40,9 @@ namespace tests
 
         #region Setup content
 
-        public void OnEnter()
+        public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             grossini.Position = new CCPoint(windowSize.Width / 3f, windowSize.Height / 2f);
             ball.Position = new CCPoint(windowSize.Width * 2f / 3f, windowSize.Height / 2f);
@@ -219,7 +219,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         {
             foreach (CCTouch touch in touches)
             {
-                var location = touch.LocationOnScreen;
+                var location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
                 AddNewSpriteWithCoords(location);
             }
         }

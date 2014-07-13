@@ -84,7 +84,7 @@ namespace tests
 
         #region Setup content
 
-        public void OnEnter()
+        public override void OnEnter()
         {
 base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 

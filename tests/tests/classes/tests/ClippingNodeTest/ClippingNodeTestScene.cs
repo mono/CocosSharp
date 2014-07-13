@@ -107,8 +107,6 @@ namespace tests.Clipping
 
         public BaseClippingNodeTest() : base()
         {
-			CCSize s = Scene.VisibleBoundsWorldspace.Size;
-
 			background = new CCSprite(TestResource.s_back3);
 			background.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			AddChild(background, -1);
@@ -134,13 +132,13 @@ namespace tests.Clipping
 			menu.Position = new CCPoint(0, 0);
 
 			AddChild(menu, 1);
-
-			Setup();
         }
 
-		public void OnEnter()
+		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            Setup();
+
+            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			var s = windowSize;
 
 			background.Position = s.Center;
@@ -269,7 +267,7 @@ namespace tests.Clipping
             clipper.AddChild(content);
         }
 
-		public void OnEnter()
+		public override void OnEnter()
 		{
 			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -447,7 +445,7 @@ namespace tests.Clipping
             }
         }
 
-		public void OnEnter()
+		public override void OnEnter()
 		{
 			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -527,7 +525,7 @@ namespace tests.Clipping
             AddEventListener(listener);    
         }
 
-		public void OnEnter()
+		public override void OnEnter()
 		{
 			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
@@ -596,8 +594,6 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
-
 			CCClippingNode clipper = new CCClippingNode() { Tag = kTagClipperNode };
             clipper.ContentSize = new CCSize(200, 200);
             clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -613,7 +609,7 @@ namespace tests.Clipping
                     new CCPoint(0, clipper.ContentSize.Height),
                 };
 
-            CCColor4F white = new CCColor4F(1, 1, 1, 1);
+            CCColor4F white = new CCColor4F(0, 0, 0, 1);
             stencil.DrawPolygon(rectangle, 4, white, 0, white);
             clipper.Stencil = stencil;
 
@@ -634,9 +630,9 @@ namespace tests.Clipping
             AddEventListener(touchListener);        
 		}
 
-		public void OnEnter()
+		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); 
 
 			var clipper = this[kTagClipperNode];
 			clipper.Position = ContentSize.Center;
@@ -648,8 +644,7 @@ namespace tests.Clipping
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
             CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
-            CCRect rect = new CCRect(0, 0, clipper.ContentSize.Width, clipper.ContentSize.Height);
-            m_bScrolling = rect.ContainsPoint(point);
+            m_bScrolling = clipper.TransformedBoundingBoxWorldspace.ContainsPoint(point);
             m_lastPoint = point;
         }
 
@@ -664,7 +659,7 @@ namespace tests.Clipping
             CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
             CCPoint diff = point - m_lastPoint;
             CCNode content = clipper.GetChildByTag(kTagContentNode);
-            content.Position = content.Position + diff;
+            clipper.Position = clipper.Position + diff;
             m_lastPoint = point;
         }
 
