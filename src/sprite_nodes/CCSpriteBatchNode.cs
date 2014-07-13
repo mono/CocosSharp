@@ -40,6 +40,11 @@ namespace CocosSharp
             }
         }
 
+        public override CCAffineTransform AffineLocalTransform
+        {
+            get { return CCAffineTransform.Identity; }
+        }
+
         #endregion Properties
 
 
@@ -104,8 +109,7 @@ namespace CocosSharp
             }
 
             SortAllChildren();
-            Transform();
-            Window.DrawManager.WorldMatrix = Matrix.Identity;
+            CCDrawManager.SharedDrawManager.SetIdentityMatrix();
 
             Draw();
 
@@ -133,7 +137,7 @@ namespace CocosSharp
 
         #region Child management
 
-        public override void AddChild(CCNode child, int zOrder, int tag)
+        public override void AddChild(CCNode child, int zOrder = 0, int tag = CCNode.TagInvalid)
         {
             Debug.Assert(child != null, "child should not be null");
 
@@ -230,15 +234,14 @@ namespace CocosSharp
 
         public void InsertChild(CCSprite sprite, int uIndex)
         {
-            sprite.BatchNode = this;
-            sprite.AtlasIndex = uIndex;
-
             if (TextureAtlas.TotalQuads == TextureAtlas.Capacity)
             {
                 IncreaseAtlasCapacity();
             }
 
             TextureAtlas.InsertQuad(ref sprite.transformedQuad, uIndex);
+            sprite.BatchNode = this;
+            sprite.AtlasIndex = uIndex;
 
             Descendants.Insert(uIndex, sprite);
 
@@ -281,7 +284,7 @@ namespace CocosSharp
 
             sprite.AtlasIndex = index;
 
-            TextureAtlas.InsertQuad(ref sprite.transformedQuad, index);
+            TextureAtlas.UpdateQuad(ref sprite.transformedQuad, index);
 
             // add children recursively
             CCRawList<CCNode> children = sprite.Children;

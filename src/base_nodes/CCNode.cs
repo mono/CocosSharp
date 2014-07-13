@@ -499,25 +499,23 @@ namespace CocosSharp
             get 
             { 
                 CCAffineTransform localTransform = AffineLocalTransform;
-                localTransform.Tx = 0;
-                localTransform.Ty = 0;
-                CCRect transformedBounds = localTransform.Transform(BoundingBox);
+                CCRect transformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, contentSize.Width, contentSize.Height));
                 return transformedBounds; 
             }
         }
 
-        // Bounding box after scale/rotation/skew in parent space
+        // Bounding box after scale/rotation/skew in world space
         public CCRect TransformedBoundingBoxWorldspace
         {
             get 
             { 
                 CCAffineTransform localTransform = AffineWorldTransform;
-                CCRect worldtransformedBounds = localTransform.Transform(TransformedBoundingBox);
+                CCRect worldtransformedBounds = localTransform.Transform(new CCRect(0.0f, 0.0f, contentSize.Width, contentSize.Height));
                 return worldtransformedBounds; 
             }
         }
 
-        public CCAffineTransform AffineLocalTransform
+        public virtual CCAffineTransform AffineLocalTransform
         {
             get { return affineLocalTransform; }
         }
@@ -528,10 +526,9 @@ namespace CocosSharp
             {
                 CCAffineTransform worldTransform = CCAffineTransform.Identity;
                 CCNode parent = this.Parent;
-                while (parent != null) 
+                if (parent != null) 
                 {
-                    worldTransform.Concat(parent.AffineLocalTransform);
-                    parent = parent.Parent;
+                    worldTransform = CCAffineTransform.Concat(AffineLocalTransform, parent.AffineWorldTransform);
                 }
 
                 return worldTransform;
@@ -835,7 +832,7 @@ namespace CocosSharp
         public CCPoint WorldToParentspace(CCPoint point)
         {
             CCAffineTransform parentWorldTransform 
-            = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
+                = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
 
             return parentWorldTransform.Transform(point);
         }
