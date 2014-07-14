@@ -30,6 +30,20 @@ namespace CocosSharp
             }
         }
 
+        // Size of batch node in world space makes no sense
+        public override CCSize ContentSize
+        {
+            get { return CCSize.Zero; }
+            set
+            {
+            }
+        }
+
+        public override CCAffineTransform AffineLocalTransform
+        {
+            get { return CCAffineTransform.Identity; }
+        }
+
         #endregion Properties
 
 
@@ -159,8 +173,8 @@ namespace CocosSharp
                 "Can't add a ParticleSystem that uses a differnt blending function");
 
             // Set director before we call AddChildHelper
-            if(Window != null)
-                pChild.Window = Window;
+            if(Scene != null)
+                pChild.Scene = Scene;
 
             // No lazy sorting, so don't call base AddChild, call helper instead
             int pos = AddChildHelper(pChild, zOrder, tag);
