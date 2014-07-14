@@ -98,7 +98,7 @@ namespace CocosSharp
 			//DrawDot(a, radius, color); // Draw starting line ending
 			//DrawDot(b, radius, color); // Draw ending Line ending
 
-			var n = CCPoint.Normalize(CCPoint.Perp(a - b));
+			var n = CCPoint.Normalize(CCPoint.PerpindicularCCW(a - b));
 
 			var lww = radius;
 			var nw = n * lww;
@@ -170,8 +170,8 @@ namespace CocosSharp
                 var v1 = verts[i];
                 var v2 = verts[(i + 1) % count];
 
-                var n1 = CCPoint.Normalize(CCPoint.Perp(v1 - v0));
-                var n2 = CCPoint.Normalize(CCPoint.Perp(v2 - v1));
+                var n1 = CCPoint.Normalize(CCPoint.PerpindicularCCW(v1 - v0));
+                var n2 = CCPoint.Normalize(CCPoint.PerpindicularCCW(v2 - v1));
 
                 var offset = (n1 + n2) * (1.0f / (CCPoint.Dot(n1, n2) + 1.0f));
                 extrude[i] = new ExtrudeVerts() {offset = offset, n = n2};

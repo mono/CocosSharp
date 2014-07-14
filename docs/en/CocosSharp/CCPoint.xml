@@ -560,7 +560,7 @@
         <summary>A general line-line intersection test.</summary>
         <returns>Whether the lines intersect or not.</returns>
         <remarks>note that to truly test intersection for segments we have to make 
-            sure that s &gt t lie within [0..1] and for rays, make sure s &gt t > 0
+            sure that s &gt; t lie within [0..1] and for rays, make sure s &gt; t > 0
             the hit point is		C + t * (D - C);
             the hit point also is	A + s * (B - A);
         </remarks>
@@ -578,10 +578,10 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>Calculates midpoint between two points. Point v3.0 </summary>
-        <returns>To be added.</returns>
+        <param name="p1">Source Point.</param>
+        <param name="p2">Source Point.</param>
+        <summary>Calculates midpoint between two points.</summary>
+        <returns>The midpoint.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -597,9 +597,9 @@
         <Parameter Name="b" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="a">To be added.</param>
-        <param name="b">To be added.</param>
-        <summary>Multiplies a nd b components, a.X*b.X, a.Y*b.Y.</summary>
+        <param name="a">Source Point.</param>
+        <param name="b">Source Point.</param>
+        <summary>Multiplies a and b components, a.X*b.X, a.Y*b.Y.</summary>
         <returns>A component-wise multiplication.</returns>
         <remarks></remarks>
       </Docs>
@@ -625,7 +625,7 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Returns point multiplied to a length of 1. If the point is 0, it returns (1, 0) Point v2.1.4 </summary>
+        <summary>Returns point multiplied to a length of 1. If the point is 0, it returns (1, 0).</summary>
         <returns>To be added.</returns>
         <remarks />
       </Docs>
@@ -641,7 +641,7 @@
         <Parameter Name="p" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p">To be added.</param>
+        <param name="p">Source Point.</param>
         <summary>Normalizes the components of this point (convert to mag 1), and returns the orignial magnitude of the vector defined by the XY components of this point.</summary>
         <returns></returns>
         <remarks></remarks>
@@ -659,8 +659,8 @@
         <Parameter Name="dy" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="dx">To be added.</param>
-        <param name="dy">To be added.</param>
+        <param name="dx">X value offset.</param>
+        <param name="dy">Y value offset.</param>
         <summary>Calculates the point offset by delta components dx and dy.</summary>
         <returns>Point offset by delta components dx and dy.</returns>
         <remarks></remarks>
@@ -843,11 +843,11 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <param name="p2">Source point.</param>
+        <summary>Subtracts a point from a point.</summary>
+        <returns>Result of the subtraction.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_UnaryNegation">
@@ -861,10 +861,10 @@
         <Parameter Name="p1" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <summary>Returns a point pointing in the opposite direction.</summary>
+        <returns>Point pointing in the opposite direction.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_UnaryPlus">
@@ -878,10 +878,10 @@
         <Parameter Name="p1" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <summary>Returns an extended point.</summary>
+        <returns>Extended point.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Parse">
@@ -895,10 +895,10 @@
         <Parameter Name="s" Type="System.String" />
       </Parameters>
       <Docs>
-        <param name="s">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="s">Source string to parse.</param>
+        <summary>Creates a point from a string representation. "x=0, y=0"</summary>
+        <returns>Returns new point or null if it can not be parsed.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Perp">
@@ -912,9 +912,9 @@
         <Parameter Name="p" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p">To be added.</param>
-        <summary>Calculates perpendicular of v, rotated 90 degrees counter-clockwise  cross(v, perp(v)) &gt;= 0 Point v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <param name="p">Source point.</param>
+        <summary>Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpindicularCCW(v)) &gt;= 0</summary>
+        <returns></returns>
         <remarks />
       </Docs>
     </Member>
@@ -929,10 +929,10 @@
         <Parameter Name="v" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="v">Source point.</param>
+        <summary>Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpindicularCW(v)) &lt;= 0 </summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="PerpendicularCounterClockwise">
@@ -946,8 +946,8 @@
         <Parameter Name="v" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="v">Source point</param>
+        <summary>Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpindicularCCW(v)) &gt;= 0</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
@@ -964,10 +964,10 @@
         <Parameter Name="v2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v1">To be added.</param>
-        <param name="v2">To be added.</param>
-        <summary>Calculates the projection of this over other. Point v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <param name="v1">Source point.</param>
+        <param name="v2">Source point.</param>
+        <summary>Calculates the projection of this over other.</summary>
+        <returns>The projected point.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -996,10 +996,10 @@
         <Parameter Name="v2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v1">To be added.</param>
-        <param name="v2">To be added.</param>
+        <param name="v1">Source point.</param>
+        <param name="v2">Source point.</param>
         <summary>Complex multiplication of two points ("rotates" two points). Point vector with an angle of this.getAngle() + other.getAngle(), and a length of this.getLength() * other.getLength(). v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <returns>Returns point rotated by other.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -1020,7 +1020,7 @@
         <param name="pivot">is the angle of rotation ccw in radians </param>
         <param name="angle">To be added.</param>
         <summary>Rotates a point counter clockwise by the angle around a pivot the rotated point v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <returns>Rotated point.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -1038,13 +1038,13 @@
         <Parameter Name="D" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="A">To be added.</param>
-        <param name="B">To be added.</param>
-        <param name="C">To be added.</param>
-        <param name="D">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="A">First point of segment A-B.</param>
+        <param name="B">Second pont of segment A-B.</param>
+        <param name="C">First point of segment C-D.</param>
+        <param name="D">Second point of segment C-D.</param>
+        <summary>Tests if segment A-B instersects with segment C-D</summary>
+        <returns>true if segment A-B intersects with segment C-D; otherwise false.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Sub">
@@ -1058,10 +1058,10 @@
         <Parameter Name="v2" Type="CocosSharp.CCPoint&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="v2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="v2">Source point.</param>
+        <summary>Subtracts source point from this point.</summary>
+        <returns>The result of the subtraction.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ToAngle">
@@ -1075,10 +1075,10 @@
         <Parameter Name="v" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="v">Source point.</param>
+        <summary>Converts a point to radians.</summary>
+        <returns>Radians of the point.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ToString">
@@ -1090,9 +1090,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>String representation of the point.</summary>
+        <returns>A string representation.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Unrotate">
@@ -1107,10 +1107,10 @@
         <Parameter Name="v2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v1">To be added.</param>
-        <param name="v2">To be added.</param>
+        <param name="v1">Source point.</param>
+        <param name="v2">Source point.</param>
         <summary>Unrotates two points. Point vector with an angle of this.getAngle() - other.getAngle(), and a length of this.getLength() * other.getLength(). v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <returns>Unrotated value.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -1122,8 +1122,8 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The X component.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Y">
@@ -1134,8 +1134,8 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The Y component.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Zero">
