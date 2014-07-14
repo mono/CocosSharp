@@ -7,7 +7,7 @@ namespace tests.Extensions
         public override void OnEnter()
         {
             base.OnEnter();
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/blocks9ss.plist");
             getSceneTitleLabel().Text = Title();
             getSceneSubtitleLabel().Text = Subtitle();
         }
@@ -436,7 +436,7 @@ namespace tests.Extensions
         {
             base.OnEnter();
             CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("Images/ui.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/ui.plist");
 
             float x = winSize.Width / 4;
             float y = 0 + (winSize.Height / 2);

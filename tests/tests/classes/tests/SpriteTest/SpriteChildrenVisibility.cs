@@ -26,7 +26,7 @@ namespace tests
 
         public SpriteChildrenVisibility()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             // SpriteBatchNode
             aParent = new CCSpriteBatchNode("animations/grossini", 50);
@@ -83,7 +83,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
     }
 }

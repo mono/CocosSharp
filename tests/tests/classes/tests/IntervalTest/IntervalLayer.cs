@@ -22,7 +22,7 @@ namespace tests
 
             // sun
 			CCParticleSystem sun = new CCParticleSun(new CCPoint(s.Width / 2, s.Height / 2));
-            sun.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
+            sun.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             sun.Position = (new CCPoint(s.Width - 32, s.Height - 32));
 
             sun.TotalParticles = 130;
@@ -76,10 +76,10 @@ namespace tests
 
         public void onPause(object pSender)
         {
-            if (CCApplication.SharedApplication.Paused)
-                CCApplication.SharedApplication.ResumeGame();
+            if (Application.Paused)
+                Application.ResumeGame();
             else
-                CCApplication.SharedApplication.PauseGame();
+                Application.PauseGame();
         }
 
         public void step1(float dt)

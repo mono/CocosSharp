@@ -28,7 +28,7 @@ namespace tests
 
         public SpriteBatchNodeChildrenZ()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             // test 1
             batch = new CCSpriteBatchNode("animations/grossini", 50);
@@ -108,7 +108,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
     }
 }

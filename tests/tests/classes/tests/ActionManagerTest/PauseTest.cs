@@ -49,7 +49,7 @@ namespace tests
         {
             Unschedule(unpause);
             CCNode node = GetChildByTag(kTagGrossini);
-            CCApplication.SharedApplication.ActionManager.ResumeTarget(node);
+            Application.ActionManager.ResumeTarget(node);
         }
     }
 }

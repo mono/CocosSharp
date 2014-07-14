@@ -31,7 +31,7 @@ namespace tests
 
         public SpriteBatchNodeReorderIssue767()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/ghosts.plist", "animations/ghosts");
 
             // SpriteBatchNode: 3 levels of children
             aParent = new CCSpriteBatchNode("animations/ghosts");

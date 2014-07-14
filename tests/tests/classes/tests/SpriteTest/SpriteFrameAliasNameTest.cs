@@ -30,7 +30,7 @@ namespace tests
 
         public SpriteFrameAliasNameTest()
         {
-            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini-aliases.plist", "animations/grossini-aliases");
 
             var animFrames = new List<CCSpriteFrame>(15);

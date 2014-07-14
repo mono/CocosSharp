@@ -199,7 +199,7 @@ namespace tests
 
         void CloseCallback(object sender)
         {
-            CCApplication.SharedApplication.ExitGame();
+            Application.ExitGame();
         }
 
         void EnableGamePad()
@@ -337,7 +337,7 @@ namespace tests
 
         public static TestScene CreateTestScene(int index)
         {
-            CCApplication.SharedApplication.PurgeAllCachedData();
+            //Application.PurgeAllCachedData();
 
             TestScene scene = null;
 

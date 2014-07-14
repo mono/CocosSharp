@@ -63,10 +63,9 @@ namespace tests
 
         void ClearCaches()
         {
-            CCApplication sharedApp = CCApplication.SharedApplication;
 
-            sharedApp.PurgeSpriteFrameCache();
-            sharedApp.PurgeTextureCache();
+            CCSpriteFrameCache.PurgeSharedSpriteFrameCache();
+            CCTextureCache.PurgeSharedTextureCache();
         }
     }
 }

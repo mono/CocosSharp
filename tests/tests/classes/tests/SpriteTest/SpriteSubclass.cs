@@ -17,7 +17,7 @@ namespace tests
 
         public static MySprite1 Create(string spriteFrameName)
         {
-            CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[spriteFrameName];
+            CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache[spriteFrameName];
             MySprite1 sprite = new MySprite1(frame);
 
             return sprite;
@@ -59,7 +59,7 @@ namespace tests
 
         public SpriteSubclass()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
             CCSpriteBatchNode aParent = new CCSpriteBatchNode("animations/ghosts");
 
             // MySprite1

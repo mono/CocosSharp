@@ -30,7 +30,7 @@ namespace tests
 
         public SpriteChildrenVisibilityIssue665()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
 
             aParent = new CCSpriteBatchNode("animations/grossini", 50);

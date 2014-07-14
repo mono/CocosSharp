@@ -31,7 +31,7 @@ namespace tests
 
             // if the node has timers, it crashes
 			CCParticleSun explosion = new CCParticleSun(s.Center);
-            explosion.Texture = CCApplication.SharedApplication.TextureCache.AddImage("Images/fire");
+            explosion.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
 
             // if it doesn't, it works Ok.
             //	CocosNode *explosion = [Sprite create:@"grossinis_sister2.png");

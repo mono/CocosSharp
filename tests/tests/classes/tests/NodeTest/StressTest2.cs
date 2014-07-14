@@ -21,7 +21,7 @@ namespace tests
             sublayer.AddChild(sp1, 1, CocosNodeTestStaticLibrary.kTagSprite2);
 
 			var fire = new CCParticleFire(CCPoint.Zero) { Tag = CocosNodeTestStaticLibrary.kTagSprite3 };
-            fire.Texture = (CCApplication.SharedApplication.TextureCache.AddImage("Images/fire"));
+            fire.Texture = (CCTextureCache.SharedTextureCache.AddImage("Images/fire"));
 
 			fire.RepeatForever(seq3);
             sublayer.AddChild(fire, 2);

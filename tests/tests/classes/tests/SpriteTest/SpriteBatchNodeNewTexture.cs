@@ -31,7 +31,7 @@ namespace tests
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
             texture1 = batch.Texture;
-            texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
+            texture2 = CCTextureCache.SharedTextureCache.AddImage("Images/grossini_dance_atlas-mono");
         }
 
         #endregion Constructors

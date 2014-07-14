@@ -137,7 +137,7 @@ namespace tests
             */
 
             // purge textures
-            CCTextureCache mgr = CCApplication.SharedApplication.TextureCache;
+            CCTextureCache mgr = CCTextureCache.SharedTextureCache;
             mgr.RemoveTexture(mgr.AddImage("Images/grossinis_sister1"));
             mgr.RemoveTexture(mgr.AddImage("Images/grossini_dance_atlas"));
             mgr.RemoveTexture(mgr.AddImage("Images/spritesheet1"));

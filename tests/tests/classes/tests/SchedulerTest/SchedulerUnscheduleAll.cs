@@ -109,7 +109,7 @@ namespace tests
 
 		public void unscheduleAll(float dt)
 		{
-			CCApplication.SharedApplication.Scheduler.UnscheduleAll (CCSchedulePriority.User);
+            Application.Scheduler.UnscheduleAll (CCSchedulePriority.User);
 		}
 	}
 

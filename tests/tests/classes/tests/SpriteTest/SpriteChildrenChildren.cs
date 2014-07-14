@@ -29,7 +29,7 @@ namespace tests
 
         public SpriteChildrenChildren()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/ghosts.plist");
 
             var rot = new CCRotateBy (10, 360);
             seq = new CCRepeatForever (rot);

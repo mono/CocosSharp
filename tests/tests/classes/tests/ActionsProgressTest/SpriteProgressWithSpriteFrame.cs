@@ -12,7 +12,7 @@ namespace tests
 
 			var progressTo = new CCProgressTo(6, 100);
 
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
 
             CCSprite sprite = new CCSprite("grossini_dance_01.png");
 

@@ -31,7 +31,7 @@ namespace tests
 
         public SpriteOffsetAnchorScale()
         {
-            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini.plist");
             cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 
@@ -113,7 +113,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
             cache.RemoveSpriteFrames("animations/grossini.plist");
             cache.RemoveSpriteFrames("animations/grossini_gray.plist");
         }

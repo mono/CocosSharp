@@ -31,7 +31,7 @@ namespace tests
 
             pGrossini.RunAction(new CCScaleBy(2, 2));
 
-            CCApplication.SharedApplication.ActionManager.PauseTarget(pGrossini);
+            Application.ActionManager.PauseTarget(pGrossini);
             pGrossini.RunAction(new CCRotateBy (2, 360));
 
             this.Schedule(resumeGrossini, 3.0f);
@@ -42,7 +42,7 @@ namespace tests
             this.Unschedule(resumeGrossini);
 
             CCNode pGrossini = GetChildByTag((int)KTag.kTagGrossini);
-            CCApplication.SharedApplication.ActionManager.ResumeTarget(pGrossini);
+            Application.ActionManager.ResumeTarget(pGrossini);
         }
     }
 }

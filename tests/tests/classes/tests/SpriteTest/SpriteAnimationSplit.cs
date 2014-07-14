@@ -27,7 +27,7 @@ namespace tests
 
         public SpriteAnimationSplit()
         {
-            var texture = CCApplication.SharedApplication.TextureCache.AddImage("animations/dragon_animation");
+            var texture = CCTextureCache.SharedTextureCache.AddImage("animations/dragon_animation");
             CCSize contentSizeInPixels = texture.ContentSizeInPixels;
             float height = contentSizeInPixels.Height / 4.0f;
             float heightOffset = height / 2.0f;
@@ -81,7 +81,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
     }

@@ -44,12 +44,12 @@ namespace tests
         {
             m_ballStartingVelocity = new CCPoint(20.0f, -100.0f);
 
-            m_ball = Ball.ballWithTexture(CCApplication.SharedApplication.TextureCache.AddImage(s_Ball));
+            m_ball = Ball.ballWithTexture(CCTextureCache.SharedTextureCache.AddImage(s_Ball));
             m_ball.Position = new CCPoint(160.0f, 240.0f);
             m_ball.Velocity = m_ballStartingVelocity;
             AddChild(m_ball);
 
-            CCTexture2D paddleTexture = CCApplication.SharedApplication.TextureCache.AddImage(s_Paddle);
+            CCTexture2D paddleTexture = CCTextureCache.SharedTextureCache.AddImage(s_Paddle);
 
             var paddlesM = new List<Paddle>(4);
 

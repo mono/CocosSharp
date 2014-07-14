@@ -37,7 +37,7 @@ namespace tests
 
             sprites = new CCSprite[numOfSprites];
 
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             // create 250 sprites
             // only show 80% of them
@@ -55,7 +55,7 @@ namespace tests
                     temp = (spriteIdx+1).ToString();
                 }
                 str = string.Format("grossini_dance_{0}.png", temp);
-                CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
+                CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache[str];
                 sprites[i] = new CCSprite(frame);
                 parent1.AddChild(sprites[i], i, i);
             }
@@ -141,7 +141,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveSpriteFrames("animations/grossini.plist");
         }
     }
 }

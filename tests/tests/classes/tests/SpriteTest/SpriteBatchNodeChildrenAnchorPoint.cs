@@ -26,7 +26,7 @@ namespace tests
 
         public SpriteBatchNodeChildrenAnchorPoint()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             CCNode aParent;
 
@@ -120,7 +120,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
     }

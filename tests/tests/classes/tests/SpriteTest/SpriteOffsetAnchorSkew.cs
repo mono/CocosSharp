@@ -31,7 +31,7 @@ namespace tests
 
         public SpriteOffsetAnchorSkew()
         {
-            CCSpriteFrameCache cache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache cache = CCSpriteFrameCache.SharedSpriteFrameCache;
             cache.AddSpriteFrames("animations/grossini.plist");
             cache.AddSpriteFrames("animations/grossini_gray.plist", "animations/grossini_gray");
 

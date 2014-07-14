@@ -27,7 +27,7 @@ namespace tests
 
         public SpriteChildrenAnchorPoint()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             aParent = new CCNode();
             AddChild(aParent, 0);
@@ -119,7 +119,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
     }
 }

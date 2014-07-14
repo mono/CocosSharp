@@ -33,11 +33,11 @@ namespace tests
 		public override void OnExit ()
 		{
 
-			var actionManagerActive = CCApplication.SharedApplication.Scheduler.IsActionManagerActive;
+            var actionManagerActive = Application.Scheduler.IsActionManagerActive;
 
 			if(!actionManagerActive) {
 				// Restore the director's action manager.
-                CCApplication.SharedApplication.Scheduler.StartActionManager ();
+                Application.Scheduler.StartActionManager ();
 			}
 
 			base.OnExit ();
@@ -75,7 +75,7 @@ namespace tests
 
         public void unscheduleAll(float dt)
         {
-             CCApplication.SharedApplication.Scheduler.UnscheduleAll();
+            Application.Scheduler.UnscheduleAll();
         }
     }
 }

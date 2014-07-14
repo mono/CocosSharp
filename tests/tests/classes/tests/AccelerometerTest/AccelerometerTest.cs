@@ -99,7 +99,7 @@ namespace tests
             CCPoint ptNow = ball.PositionWorldspace;
             CCPoint ptTemp = Scene.WorldToScreenspace(ptNow);
 
-            var orientation = CCApplication.SharedApplication.CurrentOrientation;
+            var orientation = Application.CurrentOrientation;
 
             if (accelEvent.Acceleration.X == 0.0f && accelEvent.Acceleration.Y == 0.0f)
                 return;

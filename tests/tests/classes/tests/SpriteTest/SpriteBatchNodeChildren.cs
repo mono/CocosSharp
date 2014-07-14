@@ -37,7 +37,7 @@ namespace tests
             CCSpriteBatchNode batch = new CCSpriteBatchNode("animations/grossini", 50);
             AddChild(batch, 0, (int)kTags.kTagSpriteBatchNode);
 
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini.plist");
 
             sprite1 = new CCSprite("grossini_dance_01.png");
             sprite2 = new CCSprite("grossini_dance_02.png");
@@ -61,7 +61,7 @@ namespace tests
                     temp = i.ToString();
                 }
                 str = string.Format("grossini_dance_{0}.png", temp);
-                CCSpriteFrame frame = CCApplication.SharedApplication.SpriteFrameCache[str];
+                CCSpriteFrame frame = CCSpriteFrameCache.SharedSpriteFrameCache[str];
                 animFrames.Add(frame);
             }
 
@@ -103,7 +103,7 @@ namespace tests
         public override void OnExit()
         {
             base.OnExit();
-            CCApplication.SharedApplication.SpriteFrameCache.RemoveUnusedSpriteFrames();
+            CCSpriteFrameCache.SharedSpriteFrameCache.RemoveUnusedSpriteFrames();
         }
 
     }

@@ -1116,7 +1116,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             action = new CCAnimate(animation);
 
-            var cache = CCApplication.SharedApplication.AnimationCache;
+            var cache = CCAnimationCache.SharedAnimationCache;
             cache.AddAnimations("animations/animations-2.plist");
             var animation2 = cache["dance_1"];
 
@@ -2900,13 +2900,13 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         {
             CCLog.Log("Pausing");
 
-            pausedTargets = CCApplication.SharedApplication.ActionManager.PauseAllRunningActions();
+            pausedTargets = Application.ActionManager.PauseAllRunningActions();
         }
 
         void Resume(float dt)
         {
             CCLog.Log("Resuming");
-            CCApplication.SharedApplication.ActionManager.ResumeTargets(pausedTargets);
+            Application.ActionManager.ResumeTargets(pausedTargets);
         }
     }
 

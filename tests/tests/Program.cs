@@ -53,10 +53,10 @@ namespace tests
     {
         public override void FinishedLaunching(MonoMac.Foundation.NSObject notification)
         {
-            CCApplication sharedApp = CCApplication.SharedApplication;
-            sharedApp.ApplicationDelegate = new AppDelegate();
+            CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
+            application.ApplicationDelegate = new AppDelegate();
 
-            CCApplication.SharedApplication.StartGame();
+            application.StartGame();
         }
 
         public override bool ApplicationShouldTerminateAfterLastWindowClosed(NSApplication sender)

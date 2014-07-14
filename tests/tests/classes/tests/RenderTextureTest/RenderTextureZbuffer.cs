@@ -50,7 +50,7 @@ namespace tests
             label3 = new CCLabelTtf("vertexZ = -50", "Marker Felt", 32);
             AddChild(label3);
 
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("Images/bugs/circle.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("Images/bugs/circle.plist");
 
             mgr = new CCSpriteBatchNode("Images/bugs/circle", 9);
             AddChild(mgr);

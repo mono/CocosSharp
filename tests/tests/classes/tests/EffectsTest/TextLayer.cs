@@ -15,8 +15,6 @@ namespace tests
 			BaseNode = bg;
 			AddChild(bg, 0, EffectTestScene.kTagBackground);
 
-			BaseNode.RunAction(CurrentAction);
-
 			var Kathia = new CCSprite(TestResource.s_pPathSister2);
 			BaseNode.AddChild(Kathia, 1, EffectTestScene.kTagKathia);
 
@@ -35,17 +33,21 @@ namespace tests
 			var colorBackground = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
 			AddChild(colorBackground, -1);
 
-			Schedule(checkAnim);
 		}
 
 		public override void OnEnter()
 		{
 			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
+            Schedule(checkAnim);
+
 			BaseNode.Position = CCVisibleRect.Center;
 			var size = BaseNode.ContentSize;
 			BaseNode[EffectTestScene.kTagKathia].Position = new CCPoint(size.Width / 3, size.Center.Y);
 			BaseNode[EffectTestScene.kTagTamara].Position = new CCPoint(2 * size.Width / 3,size.Center.Y);
+
+
+            BaseNode.RunAction(CurrentAction);
 		}
 
 		public override string Title

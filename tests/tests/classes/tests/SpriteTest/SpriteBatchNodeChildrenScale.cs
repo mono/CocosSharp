@@ -30,7 +30,7 @@ namespace tests
 
         public SpriteBatchNodeChildrenScale()
         {
-            CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames("animations/grossini_family.plist");
+            CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("animations/grossini_family.plist");
 
             var rot = new CCRotateBy (10, 360);
 

@@ -31,8 +31,8 @@ namespace tests
             CCNode node = new CCNode();
             AddChild(node, 0, (int)kTags.kTagSpriteBatchNode);
 
-            texture1 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas");
-            texture2 = CCApplication.SharedApplication.TextureCache.AddImage("Images/grossini_dance_atlas-mono");
+            texture1 = CCTextureCache.SharedTextureCache.AddImage("Images/grossini_dance_atlas");
+            texture2 = CCTextureCache.SharedTextureCache.AddImage("Images/grossini_dance_atlas-mono");
 
             usingTexture1 = true;
         }
