@@ -71,7 +71,7 @@ namespace tests
             map.AnchorPoint = (new CCPoint(0, 0));
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 
@@ -1419,7 +1419,7 @@ namespace tests
 
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 

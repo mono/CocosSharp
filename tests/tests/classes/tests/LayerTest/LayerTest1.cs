@@ -79,6 +79,10 @@ namespace tests
 			var sister1 = new CCSprite("Images/grossinis_sister1.png");
 			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+			// by default a CCLabelBMFont has IsColorModifiedByOpacity on by default if the 
+			// texture atlas is PreMultipliedAlpha.  Label as used by Cocos2d-x by default has
+			// this set to false.  Maybe this is a bug in Cocos2d-x?
+			label.IsColorModifiedByOpacity = false;
     
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);
@@ -142,6 +146,10 @@ namespace tests
 			var sister1 = new CCSprite("Images/grossinis_sister1.png");
 			var sister2 = new CCSprite("Images/grossinis_sister2.png");
             var label = new CCLabelBMFont("Test", "fonts/bitmapFontTest.fnt");
+			// by default a CCLabelBMFont has IsColorModifiedByOpacity on by default if the 
+			// texture atlas is PreMultipliedAlpha.  Label as used by Cocos2d-x by default has
+			// this set to false.  Maybe this is a bug in Cocos2d-x?
+			label.IsColorModifiedByOpacity = false;
 
             layer1.AddChild(sister1);
             layer1.AddChild(sister2);

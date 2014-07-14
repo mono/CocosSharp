@@ -4,23 +4,32 @@ namespace tests
 {
     internal class LabelTTFA8Test : AtlasDemo
     {
+		CCLabelTtf label1;
+
         public LabelTTFA8Test()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
 			var layer = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
             AddChild(layer, -10);
 
             // CCLabelBMFont
-			var label1 = new CCLabelTtf("Testing A8 Format", "MarkerFelt", 38);
+			label1 = new CCLabelTtf("Testing A8 Format", "MarkerFelt", 38);
             AddChild(label1);
             label1.Color = CCColor3B.Red;
-			label1.Position = s.Center;
+
 
 			var fadeOut = new CCFadeOut  (2);
 			var fadeIn = new CCFadeIn  (2);
 			label1.RepeatForever(fadeIn, fadeOut);
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+			label1.Position = s.Center;
+		}
 
         public override string title()
         {

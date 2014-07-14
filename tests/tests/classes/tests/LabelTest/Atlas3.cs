@@ -9,12 +9,8 @@ namespace tests
     public class Atlas3 : AtlasDemo
     {
         float m_time;
-        CCColor3B ccRED = new CCColor3B
-        {
-            R = 255,
-            G = 0,
-            B = 0
-        };
+
+		CCLabelBMFont label1, label2, label3;
 
         public Atlas3()
         {
@@ -24,7 +20,7 @@ namespace tests
 			//var col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
             AddChild(col, -10);
 
-			var label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
 
             // testing anchors
 			label1.AnchorPoint = CCPoint.AnchorLowerLeft;
@@ -39,27 +35,33 @@ namespace tests
             // color and opacity work OK because bitmapFontAltas2 loads a BMP image (not a PNG image)
             // If you want to use both opacity and color, it is recommended to use NON premultiplied images like BMP images
             // Of course, you can also tell XCode not to compress PNG images, but I think it doesn't work as expected
-			var label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			label2 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
 			label2.AnchorPoint = CCPoint.AnchorMiddle;
-            label2.Color = ccRED;
+            label2.Color = CCColor3B.Red;
             AddChild(label2, 0, (int)TagSprite.kTagBitmapAtlas2);
 
 			label2.RepeatForever( new CCTintTo (1, 255, 0, 0), new CCTintTo (1, 0, 255, 0), new CCTintTo (1, 0, 0, 255));
 
-			var label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
+			label3 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
             // testing anchors
 			label3.AnchorPoint = CCPoint.AnchorUpperRight;
             AddChild(label3, 0, (int)TagSprite.kTagBitmapAtlas3);
 
-
-			var s = Scene.VisibleBoundsWorldspace.Size;
-			label1.Position = CCPoint.Zero;
-			label2.Position = s.Center;
-            label3.Position = new CCPoint(s.Width, s.Height);
-
             base.Schedule(step);
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;;
+
+			label1.Position = CCVisibleRect.LeftBottom;
+			label2.Position = CCVisibleRect.Center;
+			label3.Position = CCVisibleRect.RightTop;
+		}
+
 
         public virtual void step(float dt)
         {

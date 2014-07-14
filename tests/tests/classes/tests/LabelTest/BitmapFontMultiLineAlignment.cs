@@ -26,9 +26,9 @@ namespace tests
         private static float alignmentItemPadding = 50f;
         private static float menuItemPaddingCenter = 50f;
 
-		private readonly CCSprite arrowsBar;
-		private readonly CCSprite arrows;
-		private readonly CCLabelBMFont label;
+		private CCSprite arrowsBar;
+		private CCSprite arrows;
+		private CCLabelBMFont label;
 		private bool drag;
         private CCMenuItemFont m_pLastAlignmentItem;
 		private CCMenuItemFont lastSentenceItem;
@@ -43,16 +43,21 @@ namespace tests
 			touchListener.OnTouchesEnded = onTouchesEnded;
 
 			AddEventListener(touchListener);
+        }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
 
             // ask director the the window size
-			var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Scene.VisibleBoundsWorldspace.Size;
 
-            // create and initialize a Label
+			// create and initialize a Label
 			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
-                                                        CCTextAlignment.Center);
+				CCTextAlignment.Center);
 
-            arrowsBar = new CCSprite("Images/arrowsBar");
-            arrows = new CCSprite("Images/arrows");
+			arrowsBar = new CCSprite("Images/arrowsBar");
+			arrows = new CCSprite("Images/arrows");
 
 			CCMenuItemFont.FontSize = 20;
 			CCMenuItemFont.FontName = "arial";
@@ -60,13 +65,13 @@ namespace tests
 			var lineBreaks = new CCMenuItemFont("Short Sentences With Intentional Line Breaks", stringChanged);
 			var mixed = new CCMenuItemFont("Long Sentences Mixed With Intentional Line Breaks", stringChanged);
 			var stringMenu = new CCMenu(longSentences, lineBreaks, mixed);
-            stringMenu.AlignItemsVertically();
+			stringMenu.AlignItemsVertically();
 
-            longSentences.Color = CCColor3B.Red;
-            lastSentenceItem = longSentences;
-            longSentences.Tag = LongSentences;
-            lineBreaks.Tag = LineBreaks;
-            mixed.Tag = Mixed;
+			longSentences.Color = CCColor3B.Red;
+			lastSentenceItem = longSentences;
+			longSentences.Tag = LongSentences;
+			lineBreaks.Tag = LineBreaks;
+			mixed.Tag = Mixed;
 
 			CCMenuItemFont.FontSize = 30;
 
@@ -75,34 +80,35 @@ namespace tests
 			var right = new CCMenuItemFont("Right", alignmentChanged);
 
 			var alignmentMenu = new CCMenu(left, center, right);
-            alignmentMenu.AlignItemsHorizontally(alignmentItemPadding);
+			alignmentMenu.AlignItemsHorizontally(alignmentItemPadding);
 
-            center.Color = CCColor3B.Red;
-            m_pLastAlignmentItem = center;
-            left.Tag = LeftAlign;
-            center.Tag = CenterAlign;
-            right.Tag = RightAlign;
+			center.Color = CCColor3B.Red;
+			m_pLastAlignmentItem = center;
+			left.Tag = LeftAlign;
+			center.Tag = CenterAlign;
+			right.Tag = RightAlign;
 
-            // position the label on the center of the screen
+			// position the label on the center of the screen
 			label.Position = size.Center;
 
-            arrowsBar.Visible = false;
+			arrowsBar.Visible = false;
 
-            float arrowsWidth = (ArrowsMax - ArrowsMin) * size.Width;
+			float arrowsWidth = (ArrowsMax - ArrowsMin) * size.Width;
 			arrowsBar.ScaleX = (arrowsWidth / arrowsBar.ContentSize.Width);
 			arrowsBar.Position = new CCPoint(((ArrowsMax + ArrowsMin) / 2) * size.Width, label.Position.Y);
 
-            snapArrowsToEdge();
+			snapArrowsToEdge();
 
-            stringMenu.Position = new CCPoint(size.Width / 2, size.Height - menuItemPaddingCenter);
-            alignmentMenu.Position = new CCPoint(size.Width / 2, menuItemPaddingCenter + 15);
+			stringMenu.Position = new CCPoint(size.Width / 2, size.Height - menuItemPaddingCenter);
+			alignmentMenu.Position = new CCPoint(size.Width / 2, menuItemPaddingCenter + 15);
 
-            AddChild(label);
-            AddChild(arrowsBar);
-            AddChild(arrows);
-            AddChild(stringMenu);
-            AddChild(alignmentMenu);
-        }
+			AddChild(label);
+			AddChild(arrowsBar);
+			AddChild(arrows);
+			AddChild(stringMenu);
+			AddChild(alignmentMenu);
+		}
+
 
         private void stringChanged(object sender)
         {

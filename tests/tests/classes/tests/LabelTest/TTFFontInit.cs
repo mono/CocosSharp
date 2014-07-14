@@ -4,17 +4,26 @@ namespace tests
 {
     internal class TTFFontInit : AtlasDemo
     {
+
+		CCLabelTtf font;
+
         public TTFFontInit()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
-            var font = new CCLabelTtf();
+            font = new CCLabelTtf();
             font.FontName = "MarkerFelt";
             font.FontSize = 38;
             font.Text = ("It is working!");
             AddChild(font);
-            font.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+            font.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
+		}
 
         public override string title()
         {

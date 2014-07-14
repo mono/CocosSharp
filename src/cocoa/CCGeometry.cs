@@ -55,14 +55,9 @@ namespace CocosSharp
 
 		#region Properties
 
-		public float LengthSQ
+		public float LengthSquared
 		{
 			get { return X * X + Y * Y; }
-		}
-
-		public float LengthSquare
-		{
-			get { return LengthSQ; }
 		}
 
 		// Computes the length of this point as if it were a vector with XY components relative to the
@@ -85,6 +80,17 @@ namespace CocosSharp
 				CCPoint pt;
 				pt.X = X;
 				pt.Y = -Y;
+				return pt;
+			}
+		}
+
+		public CCPoint InvertX
+		{
+			get
+			{
+				CCPoint pt;
+				pt.X = -X;
+				pt.Y = Y;
 				return pt;
 			}
 		}
@@ -150,9 +156,9 @@ namespace CocosSharp
             return String.Format("CCPoint : (x={0}, y={1})", X, Y);
         }
 
-        public float DistanceSQ(ref CCPoint v2)
+        public float DistanceSquared(ref CCPoint v2)
         {
-            return Sub(ref v2).LengthSQ;
+            return Sub(ref v2).LengthSquared;
         }
 
 		public float Angle
@@ -263,7 +269,7 @@ namespace CocosSharp
         {
             CCPoint a2 = Normalize(a);
             CCPoint b2 = Normalize(b);
-            var angle = (float) Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, DotProduct(a2, b2));
+            var angle = (float) Math.Atan2(a2.X * b2.Y - a2.Y * b2.X, Dot(a2, b2));
 
             if (Math.Abs(angle) < float.Epsilon)
             {
@@ -450,6 +456,30 @@ namespace CocosSharp
             //            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
         }
 
+		/// Clamp CCPoint p to length len.
+		public static CCPoint Clamp(CCPoint p, float len)
+		{
+			return (CCPoint.Dot(p, p) > len * len) ? CCPoint.Normalize(p) * len : p;
+		}
+
+		/// Clamp point object to the specified len.
+		public CCPoint Clamp(float len)
+		{
+			return CCPoint.Clamp(this, len);
+		}
+
+		/// Returns true if the distance between p1 and p2 is less than dist.
+		public static bool IsNear(CCPoint p1, CCPoint p2, float dist)
+		{
+			return p1.DistanceSquared(ref p2) < dist * dist;
+		}
+
+		/// Returns true if the distance between CCPoint object and p2 is less than dist.
+		public bool IsNear(CCPoint p2, float dist)
+		{
+			return this.DistanceSquared(ref p2) < dist * dist;
+		}
+
         /**
          * Allow Cast CCSize to CCPoint
          */
@@ -499,11 +529,6 @@ namespace CocosSharp
             return pt;
         }
 
-        public static float DotProduct(CCPoint v1, CCPoint v2)
-        {
-            return v1.X * v2.X + v1.Y * v2.Y;
-        }
-
         /** Calculates cross product of two points.
             @return CGFloat
             @since v0.7.2
@@ -548,7 +573,7 @@ namespace CocosSharp
         public static CCPoint Project(CCPoint v1, CCPoint v2)
         {
             float dp1 = v1.X * v2.X + v1.Y * v2.Y;
-            float dp2 = v2.LengthSQ;
+            float dp2 = v2.LengthSquared;
             float f = dp1 / dp2;
             CCPoint pt;
             pt.X = v2.X * f;

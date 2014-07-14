@@ -10,7 +10,7 @@ namespace tests
         {
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 

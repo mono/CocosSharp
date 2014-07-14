@@ -24,7 +24,7 @@ namespace tests
 			AddChild(title);
 		}
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);

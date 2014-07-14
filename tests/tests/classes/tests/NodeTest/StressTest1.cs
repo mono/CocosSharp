@@ -12,7 +12,7 @@ namespace tests
             Schedule(shouldNotCrash, 1.0f);
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 

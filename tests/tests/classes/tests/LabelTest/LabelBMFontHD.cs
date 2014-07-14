@@ -8,15 +8,22 @@ namespace tests
 {
     public class LabelBMFontHD : AtlasDemo
     {
+		CCLabelBMFont label1;
+
         public LabelBMFontHD()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
             // CCLabelBMFont
-			var label1 = new CCLabelBMFont("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
+			label1 = new CCLabelBMFont("TESTING RETINA DISPLAY", "fonts/konqa32.fnt");
             AddChild(label1);
-			label1.Position = s.Center;
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+            label1.Position = s.Center;
+		}
 
         public override string title()
         {

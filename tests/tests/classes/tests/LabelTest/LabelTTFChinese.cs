@@ -8,14 +8,25 @@ namespace tests
 {
     public class LabelTTFChinese : AtlasDemo
     {
+
+		CCLabelTtf pLable;
+
         public LabelTTFChinese()
         {
-			var size = Scene.VisibleBoundsWorldspace.Size;
-			var pLable = new CCLabelTtf("中国", "Marker Felt", 30);
-			pLable.Position = size.Center;
+			pLable = new CCLabelTtf("中国", "Marker Felt", 30);
             AddChild(pLable);
         }
 
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var size = Scene.VisibleBoundsWorldspace.Size;
+
+
+            pLable.Position = size.Center;
+
+		}
         public override string title()
         {
             return "Testing CCLabelTTF with Chinese character";
@@ -29,15 +40,25 @@ namespace tests
 
     public class LabelBMFontChinese : AtlasDemo
     {
+		CCLabelBMFont pLable;
+
         public LabelBMFontChinese()
         {
-			var size = Scene.VisibleBoundsWorldspace.Size;
-            var pLable = new CCLabelBMFont("中国", "fonts/bitmapFontChinese.fnt");
-			pLable.Position = size.Center;
+            pLable = new CCLabelBMFont("中国", "fonts/bitmapFontChinese.fnt");
             AddChild(pLable);
         }
 
-        public override string title()
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var size = Scene.VisibleBoundsWorldspace.Size;
+
+            pLable.Position = size.Center;
+
+		}
+
+		public override string title()
         {
             return "Testing CCLabelBMFont with Chinese character";
         }

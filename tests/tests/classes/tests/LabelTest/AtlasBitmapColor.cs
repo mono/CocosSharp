@@ -8,50 +8,39 @@ namespace tests
 {
     public class AtlasBitmapColor : AtlasDemo
     {
-        CCColor3B ccBLUE = new CCColor3B
-        {
-            R = 0,
-            G = 0,
-            B = 255
-        };
 
-        CCColor3B ccRED = new CCColor3B
-        {
-            R = 255,
-            G = 0,
-            B = 0
-        };
-
-        CCColor3B ccGREEN = new CCColor3B
-        {
-            R = 0,
-            G = 255,
-            B = 0
-        };
+		CCLabelBMFont label1, label2, label3;
 
         public AtlasBitmapColor()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
+			label1 = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
+			label1.Color = CCColor3B.Blue;
+            AddChild(label1);
+			label1.AnchorPoint = CCPoint.AnchorMiddle;
 
-			var label = new CCLabelBMFont("Blue", "fonts/bitmapFontTest5.fnt");
-            label.Color = ccBLUE;
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, s.Height / 4);
-			label.AnchorPoint = CCPoint.AnchorMiddle;
+            label2 = new CCLabelBMFont("Red", "fonts/bitmapFontTest5.fnt");
+            AddChild(label2);
+			label2.AnchorPoint = CCPoint.AnchorMiddle;
+			label2.Color = CCColor3B.Red;
 
-            label = new CCLabelBMFont("Red", "fonts/bitmapFontTest5.fnt");
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
-			label.AnchorPoint = CCPoint.AnchorMiddle;
-            label.Color = ccRED;
-
-            label = new CCLabelBMFont("G", "fonts/bitmapFontTest5.fnt");
-            AddChild(label);
-            label.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
-			label.AnchorPoint = CCPoint.AnchorMiddle;
-            label.Color = ccGREEN;
-            label.Text = "Green";
+            label3 = new CCLabelBMFont("G", "fonts/bitmapFontTest5.fnt");
+            AddChild(label3);
+			label3.AnchorPoint = CCPoint.AnchorMiddle;
+			label3.Color = CCColor3B.Green;
+            label3.Text = "Green";
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+			label1.Position = new CCPoint(s.Width / 2, s.Height / 4);
+			label2.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);
+			label3.Position = new CCPoint(s.Width / 2, 3 * s.Height / 4);
+
+		}
 
         public override string title()
         {

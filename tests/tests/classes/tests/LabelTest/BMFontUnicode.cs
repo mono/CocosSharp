@@ -4,6 +4,9 @@ namespace tests
 {
     internal class BMFontUnicode : AtlasDemo
     {
+
+		CCLabelBMFont label1, label2, label3;
+
         public BMFontUnicode()
         {
             var data = CCFileUtils.GetFileData("fonts/strings.plist");
@@ -14,20 +17,27 @@ namespace tests
             string japanese = strings["japanese"].AsString;
             string spanish = strings["spanish"].AsString;
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
-
-            CCLabelBMFont label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.Left);
+            label1 = new CCLabelBMFont(spanish, "fonts/arial-unicode-26.fnt", 200, CCTextAlignment.Left);
             AddChild(label1);
-            label1.Position = new CCPoint(s.Width / 2, s.Height / 4 * 3);
 
-            CCLabelBMFont label2 = new CCLabelBMFont(chinese, "fonts/arial-unicode-26.fnt");
+            label2 = new CCLabelBMFont(chinese, "fonts/arial-unicode-26.fnt");
             AddChild(label2);
-            label2.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
 
-            CCLabelBMFont label3 = new CCLabelBMFont(japanese, "fonts/arial-unicode-26.fnt");
+            label3 = new CCLabelBMFont(japanese, "fonts/arial-unicode-26.fnt");
             AddChild(label3);
-            label3.Position = new CCPoint(s.Width / 2, s.Height / 4 * 1);
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+			label1.Position = new CCPoint(s.Width / 2, s.Height / 4 * 3);
+			label2.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
+			label3.Position = new CCPoint(s.Width / 2, s.Height / 4 * 1);
+
+		}
 
         public override string title()
         {

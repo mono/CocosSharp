@@ -8,17 +8,24 @@ namespace tests
 {
     public class LabelAtlasHD : AtlasDemo
     {
+		CCLabelAtlas label1;
+
         public LabelAtlasHD()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
             // CCLabelBMFont
-			var label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
+			label1 = new CCLabelAtlas("TESTING RETINA DISPLAY", "fonts/larabie-16", 10, 20, 'A');
 			label1.AnchorPoint = CCPoint.AnchorMiddle;
 
             AddChild(label1);
-			label1.Position = s.Center;
+
         }
+
+        protected override void AddedToNewScene()
+        {
+            var s = Scene.VisibleBoundsWorldspace.Size;
+            base.AddedToNewScene();
+            label1.Position = s.Center;
+		}
 
         public override string title()
         {

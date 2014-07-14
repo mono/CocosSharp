@@ -95,6 +95,7 @@ namespace tests
         {
             CCLayer pLayer = nextAtlasAction();
             AddChild(pLayer);
+
             Scene.Director.ReplaceScene(this);
         }
     }

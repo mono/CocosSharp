@@ -17,17 +17,26 @@ namespace tests
                 string str;
                 //sprintf(str, "-%d-", i);
                 str = string.Format("-{0}-", i);
-				var label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt");
+				var label = new CCLabelBMFont(str, "fonts/bitmapFontTest.fnt") { Tag = i + 100};
                 AddChild(label);
 
-				var s = Scene.VisibleBoundsWorldspace.Size;
-
-				var p = new CCPoint(CCMacros.CCRandomBetween0And1() * s.Width, CCMacros.CCRandomBetween0And1() * s.Height);
-                label.Position = p;
                 label.AnchorPoint = CCPoint.AnchorMiddle;
             }
         }
 
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+			for (int i = 0; i < 100; i++)
+			{
+				var p = new CCPoint(CCMacros.CCRandomBetween0And1() * s.Width, CCMacros.CCRandomBetween0And1() * s.Height);
+				this[i+100].Position = p;
+			}
+
+		}
         public override string title()
         {
             return "CCLabelBMFont";

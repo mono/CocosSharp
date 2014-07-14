@@ -178,7 +178,7 @@ namespace tests
         #endregion Constructors
 
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
             AddNewSpriteWithCoords(Scene.VisibleBoundsWorldspace.Center);

@@ -249,6 +249,32 @@ namespace CocosSharp
             get { return paused; }
         }
 
+        public bool PreferMultiSampling 
+        { 
+            get 
+            {
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var manager = service as GraphicsDeviceManager;
+
+                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+                if (manager != null) 
+                    return manager.PreferMultiSampling;
+
+                return false;
+            }
+            set
+            {
+                var service = Game.Services.GetService (typeof(IGraphicsDeviceService));
+                var manager = service as GraphicsDeviceManager;
+
+                Debug.Assert (manager != null, "CCApplication: GraphicsManager is not setup");
+                if (manager != null)
+                {
+                    manager.PreferMultiSampling = value;
+                }
+            }
+        }
+
         // The time, which expressed in seconds, between current frame and next
         public virtual double AnimationInterval
         {
@@ -1164,7 +1190,7 @@ namespace CocosSharp
                             {
                                 pos = new CCPoint(touch.Position.X, touch.Position.Y);
                                 var delta = existingTouch.Value.LocationOnScreen - pos;
-                                if (delta.LengthSQ > 1.0f)
+                                if (delta.LengthSquared > 1.0f)
                                 {
                                     movedTouches.Add(existingTouch.Value);
                                     existingTouch.Value.SetTouchInfo(touch.Id, pos.X, pos.Y);

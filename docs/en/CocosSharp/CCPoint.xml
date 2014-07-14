@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines a point vector with two components.</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -21,9 +21,8 @@
         <Parameter Name="pt" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="pt">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="pt">Value to initialze the point components too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -34,9 +33,9 @@
         <Parameter Name="v" Type="CocosSharp.CCVector2" />
       </Parameters>
       <Docs>
-        <param name="v">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="v">Value to initialize the point componets too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -48,10 +47,10 @@
         <Parameter Name="y" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="x">Value to initialize the X component too.</param>
+        <param name="y">Value to initialize the Y component too.</param>
+        <summary>Creates a new instance of CCPoint.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorLowerLeft">
@@ -62,8 +61,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorLowerRight">
@@ -74,8 +73,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddle">
@@ -86,8 +85,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleBottom">
@@ -98,8 +97,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 0).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleLeft">
@@ -110,8 +109,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleRight">
@@ -122,8 +121,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 0.5f).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorMiddleTop">
@@ -134,8 +133,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0.5f, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorUpperLeft">
@@ -146,8 +145,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(0, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AnchorUpperRight">
@@ -158,8 +157,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Equals to CCPoint(1, 1).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AngleSigned">
@@ -176,9 +175,9 @@
       <Docs>
         <param name="a">To be added.</param>
         <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns the signed angle in radians between two vector directions.</summary>
+        <returns>A float value.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Clamp">
@@ -197,9 +196,9 @@
         <param name="p">To be added.</param>
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Clamp a point between from and to.</summary>
+        <returns>A new CCPoint value.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Clamp">
@@ -218,9 +217,9 @@
         <param name="value">To be added.</param>
         <param name="min_inclusive">To be added.</param>
         <param name="max_inclusive">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Clamp a value between from and to.</summary>
+        <returns>New float value inclusively between from and to.</returns>
+        <remarks>The is an inclusive clamp.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ComputationOperation">
@@ -237,9 +236,9 @@
       <Docs>
         <param name="p">To be added.</param>
         <param name="del">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Run a math operation function on each point component Abs, Floor, Ceiling, Round.</summary>
+        <returns>The calculated float value of the function.</returns>
+        <remarks>Must have the signature float Function(float).</remarks>
       </Docs>
     </Member>
     <Member MemberName="CrossProduct">
@@ -254,11 +253,11 @@
         <Parameter Name="v2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="v1">To be added.</param>
-        <param name="v2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="v1">First point.</param>
+        <param name="v2">Second point.</param>
+        <summary>Calculates cross product of two points.</summary>
+        <returns>Float value of cross product.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Distance">
@@ -276,7 +275,7 @@
         <param name="v1">To be added.</param>
         <param name="v2">To be added.</param>
         <summary>Calculates the distance between two points float v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <returns></returns>
         <remarks />
       </Docs>
     </Member>
@@ -292,9 +291,9 @@
       </Parameters>
       <Docs>
         <param name="v2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Calculates the distance between two points squared.</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Dot">
@@ -311,8 +310,8 @@
       <Docs>
         <param name="p1">To be added.</param>
         <param name="p2">To be added.</param>
-        <summary>Calculates dot product of two points. float v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <summary>Calculates dot product of two points.</summary>
+        <returns></returns>
         <remarks />
       </Docs>
     </Member>
@@ -349,9 +348,9 @@
       <Docs>
         <param name="point1">To be added.</param>
         <param name="point2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a value that indicates whether the current point instance is equal to another point instance.</summary>
+        <returns>true or false if they are equal.</returns>
+        <remarks>Compares the two points X and Y component values.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -366,9 +365,9 @@
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a value that indicates whether the current point instance is equal to another point instance.</summary>
+        <returns>true or false if they are equal.</returns>
+        <remarks>Compares the two points X and Y component values.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Equals">
@@ -383,9 +382,9 @@
       </Parameters>
       <Docs>
         <param name="obj">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns a value that indicates whether the current point instance is equal to an object instance.</summary>
+        <returns>true or false if they are equal.</returns>
+        <remarks>Compares the two points X and Y component values.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ForAngle">
@@ -400,9 +399,9 @@
       </Parameters>
       <Docs>
         <param name="a">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Converts radians to a normalized vector.</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="FuzzyEqual">
@@ -421,9 +420,9 @@
         <param name="a">To be added.</param>
         <param name="b">To be added.</param>
         <param name="variance">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Returns if points are equal with some degree of variance.</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="GetHashCode">
@@ -435,9 +434,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Gets the hash code of the point object.</summary>
+        <returns>Hash code of the point object.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="IntersectPoint">
@@ -454,13 +453,13 @@
         <Parameter Name="D" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="A">To be added.</param>
-        <param name="B">To be added.</param>
-        <param name="C">To be added.</param>
-        <param name="D">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="A">Starting point of line A-B.</param>
+        <param name="B">Ending point of line A-B.</param>
+        <param name="C">Starting point of line C-D.</param>
+        <param name="D">Ending point of line C-D.</param>
+        <summary>Returns the intersection point of line A-B, C-D</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="InvertY">
@@ -471,9 +470,9 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Inverts the Y component of the component.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Length">
@@ -484,8 +483,8 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Calculates distance between point an origin float v2.1.4 </summary>
-        <value>To be added.</value>
+        <summary>Calculates the length of the vector.</summary>
+        <value>Length of the point.</value>
         <remarks />
       </Docs>
     </Member>
@@ -497,12 +496,12 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Calculates the length of the vector squared.</summary>
+        <value>Length of the point squared.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
-    <Member MemberName="LengthSquare">
+    <Member MemberName="LengthSquared">
       <MemberSignature Language="C#" Value="public float LengthSquare { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 LengthSquare" />
       <MemberType>Property</MemberType>
@@ -510,9 +509,9 @@
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Calculates the length of the vector squared.</summary>
+        <value>Length of the point squared.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Lerp">
@@ -532,7 +531,7 @@
         <param name="b">To be added.</param>
         <param name="alpha">To be added.</param>
         <summary>Linear Interpolation between two points a and b alpha == 0 ? a alpha == 1 ? b otherwise a value between a..b v2.1.4 </summary>
-        <returns>To be added.</returns>
+        <returns>The linear interpolation of the two points.</returns>
         <remarks />
       </Docs>
     </Member>
@@ -552,15 +551,19 @@
         <Parameter Name="T" Type="System.Single&amp;" RefType="ref" />
       </Parameters>
       <Docs>
-        <param name="A">To be added.</param>
-        <param name="B">To be added.</param>
-        <param name="C">To be added.</param>
-        <param name="D">To be added.</param>
-        <param name="S">To be added.</param>
-        <param name="T">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="A">Starting point of line A-B.</param>
+        <param name="B">Ending point of line A-B.</param>
+        <param name="C">Starting point of line C-D.</param>
+        <param name="D">Ending point of line C-D.</param>
+        <param name="S">Range for hitpoint of line A-B</param>
+        <param name="T">Range for hitpoint of line C-D</param>
+        <summary>A general line-line intersection test.</summary>
+        <returns>Whether the lines intersect or not.</returns>
+        <remarks>note that to truly test intersection for segments we have to make 
+            sure that s &gt t lie within [0..1] and for rays, make sure s &gt t > 0
+            the hit point is		C + t * (D - C);
+            the hit point also is	A + s * (B - A);
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Midpoint">
@@ -596,9 +599,9 @@
       <Docs>
         <param name="a">To be added.</param>
         <param name="b">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Multiplies a nd b components, a.X*b.X, a.Y*b.Y.</summary>
+        <returns>A component-wise multiplication.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="NegativeInfinity">
@@ -609,8 +612,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>A point represented by CCPoint(float.NegativeInfinity, float.NegativeInfinity).</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Normalize">
@@ -639,9 +642,9 @@
       </Parameters>
       <Docs>
         <param name="p">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Normalizes the components of this point (convert to mag 1), and returns the orignial magnitude of the vector defined by the XY components of this point.</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Offset">
@@ -658,9 +661,9 @@
       <Docs>
         <param name="dx">To be added.</param>
         <param name="dy">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Calculates the point offset by delta components dx and dy.</summary>
+        <returns>Point offset by delta components dx and dy.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Addition">
@@ -675,11 +678,11 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <param name="p2">Source point.</param>
+        <summary>Adds two Points.</summary>
+        <returns>Sum of the source points.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Division">
@@ -694,11 +697,11 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="p">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p">Source point.</param>
+        <param name="value">The divisor.</param>
+        <summary>Divide a point by a float value.</summary>
+        <returns>The source point divided by value.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Equality">
@@ -713,11 +716,11 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <param name="p2">Source point.</param>
+        <summary>Tests points for equality.</summary>
+        <returns>true if the points are equal; false otherwise.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Explicit">
@@ -731,10 +734,10 @@
         <Parameter Name="size" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="size">Source size object.</param>
+        <summary>Allow cast from CCSize to CCPoint.</summary>
+        <returns>CCPoint with X component equal to source object Width and Y component equal to source object Height.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
@@ -748,10 +751,10 @@
         <Parameter Name="point" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="point">Source point.</param>
+        <summary>Allows cast from Point to CCVector2.</summary>
+        <returns>CCVector2 with components initilized from CCPoint.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Implicit">
@@ -765,10 +768,10 @@
         <Parameter Name="point" Type="CocosSharp.CCVector2" />
       </Parameters>
       <Docs>
-        <param name="point">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="point">Source CCVector2.</param>
+       <summary>Allows cast from CCVector2 to CCPoint.</summary>
+        <returns>CCPoint with components initilized from CCVector2.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Inequality">
@@ -783,11 +786,11 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <param name="p2">Source point.</param>
+        <summary>Tests points for inequality.</summary>
+        <returns>true if the points are not equal; false otherwise.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Multiply">
@@ -802,11 +805,11 @@
         <Parameter Name="p2" Type="CocosSharp.CCPoint" />
       </Parameters>
       <Docs>
-        <param name="p1">To be added.</param>
-        <param name="p2">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p1">Source point.</param>
+        <param name="p2">Source point.</param>
+        <summary>Multiplies a point another vector.</summary>
+        <returns>Result of the multiplication.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Multiply">
@@ -821,11 +824,11 @@
         <Parameter Name="value" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="p">To be added.</param>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <param name="p">Source point.</param>
+        <param name="value">Value to multiply by.</param>
+         <summary>Multiplies a point by a value.</summary>
+        <returns>Result of the multiplication.</returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="op_Subtraction">
@@ -1143,8 +1146,8 @@
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Returns a CCPoint with all of its components set to zero.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

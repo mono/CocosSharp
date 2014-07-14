@@ -499,10 +499,11 @@ namespace CocosSharp
 
         #region Color managment
 
-        protected override void UpdateColor()
+
+		public override void UpdateColor()
         {
             var color4 = new CCColor4B(DisplayedColor.R, DisplayedColor.G, DisplayedColor.B, DisplayedOpacity);
-
+			//opacityModifyRGB = true;
             if (opacityModifyRGB)
             {
                 color4.R = (byte)(color4.R * DisplayedOpacity / 255.0f);
@@ -517,18 +518,6 @@ namespace CocosSharp
 
             UpdateTransformedSpriteTextureQuads();
         }
-
-        //        public override void UpdateDisplayedColor(CCColor3B parentColor)
-        //        {
-        //            base.UpdateDisplayedColor(parentColor);
-        //            UpdateColor();
-        //        }
-        //
-        //        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
-        //        {
-        //            base.UpdateDisplayedOpacity(parentOpacity);
-        //            UpdateColor();
-        //        }
 
         protected void UpdateBlendFunc()
         {

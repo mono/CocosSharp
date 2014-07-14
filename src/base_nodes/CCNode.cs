@@ -77,7 +77,6 @@ namespace CocosSharp
         bool isOpacityCascaded;
         bool isColorCascaded;
 
-
         int tag;
         int zOrder;
         int localZOrder;
@@ -832,7 +831,7 @@ namespace CocosSharp
         public CCPoint WorldToParentspace(CCPoint point)
         {
             CCAffineTransform parentWorldTransform 
-                = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
+            = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
 
             return parentWorldTransform.Transform(point);
         }
@@ -1597,7 +1596,7 @@ namespace CocosSharp
             }
         }
 
-        protected virtual void UpdateColor()
+        public virtual void UpdateColor()
         {
             // Override the opdate of color here
         }

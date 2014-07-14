@@ -31,7 +31,7 @@ namespace tests
             AddChild(sublayer, 0, CocosNodeTestStaticLibrary.kTagSprite1);
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 

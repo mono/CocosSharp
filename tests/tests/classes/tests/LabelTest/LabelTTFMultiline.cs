@@ -8,19 +8,29 @@ namespace tests
 {
     public class LabelTTFMultiline : AtlasDemo
     {
+		CCLabelTtf center;
+
         public LabelTTFMultiline()
         {
-			var s = Scene.VisibleBoundsWorldspace.Size;
-
             // CCLabelBMFont
-			var center = new CCLabelTtf("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
+			center = new CCLabelTtf("word wrap \"testing\" (bla0) bla1 'bla2' [bla3] (bla4) {bla5} {bla6} [bla7] (bla8) [bla9] 'bla0' \"bla1\"",
                 "Paint Boy", 32, 
-                new CCSize(s.Width / 2, 200), 
+                CCSize.Zero, 
                 CCTextAlignment.Center);
-            center.Position = new CCPoint(s.Width / 2, 150);
+            
 
             AddChild(center);
         }
+
+        protected override void AddedToNewScene()
+        {
+            var s = Scene.VisibleBoundsWorldspace.Size;
+
+            base.AddedToNewScene();
+
+            center.Position = new CCPoint(s.Width / 2, 150);
+            center.Dimensions = new CCSize(s.Width / 2, 200);
+		}
 
         public override string title()
         {

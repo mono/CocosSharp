@@ -23,13 +23,13 @@ namespace CocosSharp
         protected CCSprite m_pReusedChar;
         protected bool IsDirty { get; set; }
 
-//        protected byte displayedOpacity = 255;
-//        protected byte realOpacity = 255;
-//        protected CCColor3B displayedColor = CCColor3B.White;
-//        protected CCColor3B realColor = CCColor3B.White;
-//        protected bool isColorCascaded = true;
-//        protected bool isOpacityCascaded = true;
-//        protected bool isColorModifiedByOpacity = false;
+        //        protected byte displayedOpacity = 255;
+        //        protected byte realOpacity = 255;
+        //        protected CCColor3B displayedColor = CCColor3B.White;
+        //        protected CCColor3B realColor = CCColor3B.White;
+        //        protected bool isColorCascaded = true;
+        //        protected bool isOpacityCascaded = true;
+        protected bool isColorModifiedByOpacity = false;
 
         public override CCPoint AnchorPoint
         {
@@ -282,10 +282,10 @@ namespace CocosSharp
             horzAlignment = hAlignment;
             vertAlignment = vAlignment;
 
-//            displayedOpacity = realOpacity = 255;
-//            displayedColor = realColor = CCColor3B.White;
-//            isOpacityCascaded = true;
-//            isColorCascaded = true;
+            //            displayedOpacity = realOpacity = 255;
+            //            displayedColor = realColor = CCColor3B.White;
+            IsOpacityCascaded = true;
+            //            isColorCascaded = true;
 
             ContentSize = CCSize.Zero;
 
@@ -319,33 +319,39 @@ namespace CocosSharp
         #endregion Scene handling
 
 
-//		protected internal virtual void UpdateDisplayedColor(CCColor3B parentColor)
-//        {
-//            displayedColor.R = (byte) (realColor.R * parentColor.R / 255.0f);
-//            displayedColor.G = (byte) (realColor.G * parentColor.G / 255.0f);
-//            displayedColor.B = (byte) (realColor.B * parentColor.B / 255.0f);
-//
-//            if (Children != null)
-//            {
-//                for (int i = 0, count = Children.Count; i < count; i++)
-//                {
-//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedColor(displayedColor);
-//                }
-//            }
-//        }
-//
-//        protected internal override void UpdateDisplayedOpacity(byte parentOpacity)
-//        {
-//            displayedOpacity = (byte) (realOpacity * parentOpacity / 255.0f);
-//
-//            if (Children != null)
-//            {
-//                for (int i = 0, count = Children.Count; i < count; i++)
-//                {
-//                    ((CCSprite) Children.Elements[i]).UpdateDisplayedOpacity(displayedOpacity);
-//                }
-//            }
-//        }
+        public override void UpdateColor()
+        {
+            base.UpdateColor();
+
+            if (Children != null)
+            {
+                for (int i = 0, count = Children.Count; i < count; i++)
+                {
+                    ((CCSprite)Children.Elements[i]).UpdateDisplayedColor(DisplayedColor);
+                }
+            }
+
+        }
+
+        public override bool IsColorModifiedByOpacity
+        {
+            get { return isColorModifiedByOpacity; }
+            set
+            {
+                if (isColorModifiedByOpacity != value)
+                {
+                    isColorModifiedByOpacity = value;
+                    if (Children != null)
+                    {
+                        for (int i = 0, count = Children.Count; i < count; i++)
+                        {
+                            Children.Elements[i].IsColorModifiedByOpacity = isColorModifiedByOpacity;
+                        }
+                    }
+                    UpdateColor();
+                }
+            }
+        }
 
         private int KerningAmountForFirst(int first, int second)
         {

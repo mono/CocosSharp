@@ -13,11 +13,18 @@ namespace tests
 
         public GitHubIssue5()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
             _TestLabel = new CCLabelTtf("", "Arial", 10);
             AddChild(_TestLabel);
-            _TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
         }
+
+        protected override void AddedToNewScene()
+        {
+            base.AddedToNewScene();
+
+            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+			_TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
+
+		}
 
         public override void OnEnter()
         {

@@ -81,7 +81,7 @@ namespace tests
             Schedule(this.doStep);
         }
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 

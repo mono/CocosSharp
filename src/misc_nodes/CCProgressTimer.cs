@@ -282,7 +282,7 @@ namespace CocosSharp
             }
         }
 
-        protected override void UpdateColor()
+        public override void UpdateColor()
         {
             if (Sprite != null && vertexData != null)
             {
