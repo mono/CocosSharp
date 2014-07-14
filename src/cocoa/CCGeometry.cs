@@ -68,11 +68,6 @@ namespace CocosSharp
 			get { return (float) Math.Sqrt(X * X + Y * Y); }
 		}
 
-		public CCPoint Reverse
-		{
-			get { return new CCPoint(-X, -Y); }
-		}
-
 		public CCPoint InvertY
 		{
 			get
@@ -413,7 +408,6 @@ namespace CocosSharp
             pt.X = (float) Math.Cos(a);
             pt.Y = (float) Math.Sin(a);
             return pt;
-            //            return CreatePoint((float)Math.Cos(a), (float)Math.Sin(a));
         }
 
         /** Converts a vector to radians.
@@ -453,7 +447,7 @@ namespace CocosSharp
             pt.X = Clamp(p.X, from.X, to.X);
             pt.Y = Clamp(p.Y, from.Y, to.Y);
             return pt;
-            //            return CreatePoint(Clamp(p.X, from.X, to.X), Clamp(p.Y, from.Y, to.Y));
+            
         }
 
 		/// Clamp CCPoint p to length len.
@@ -489,14 +483,6 @@ namespace CocosSharp
             CCPoint pt;
             pt.X = size.Width;
             pt.Y = size.Height;
-            return pt;
-        }
-
-        public static CCPoint Perp(CCPoint p)
-        {
-            CCPoint pt;
-            pt.X = -p.Y;
-            pt.Y = p.X;
             return pt;
         }
 
@@ -539,29 +525,29 @@ namespace CocosSharp
             return v1.X * v2.Y - v1.Y * v2.X;
         }
 
-        /** Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, perp(v)) >= 0
-            @return CCPoint
-            @since v0.7.2
-        */
+		/// <summary>
+		/// Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpindicularCCW(v)) >= 0
+		/// </summary>
+		/// <returns>A perpindicular point to source point</returns>
+		/// <param name="p">Source point.</param>
+		public static CCPoint PerpindicularCCW(CCPoint p)
+		{
+			CCPoint pt;
+			pt.X = -p.Y;
+			pt.Y = p.X;
+			return pt;
+		}
 
-        public static CCPoint PerpendicularCounterClockwise(CCPoint v)
+		/// <summary>
+		/// Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, PerpindicularCW(v)) <= 0
+		/// </summary>
+		/// <returns>A perpindicular point to source point</returns>
+		/// <param name="p">Source point.</param>
+        public static CCPoint PerpendicularCW(CCPoint p)
         {
             CCPoint pt;
-            pt.X = -v.Y;
-            pt.Y = v.X;
-            return pt;
-        }
-
-        /** Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, rperp(v)) <= 0
-            @return CCPoint
-            @since v0.7.2
-        */
-
-        public static CCPoint PerpendicularClockwise(CCPoint v)
-        {
-            CCPoint pt;
-            pt.X = v.Y;
-            pt.Y = -v.X;
+            pt.X = p.Y;
+            pt.Y = -p.X;
             return pt;
         }
 

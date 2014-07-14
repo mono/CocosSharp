@@ -170,11 +170,11 @@ namespace CocosSharp
 
                 if (i == 0)
                 {
-                    perpVector = CCPoint.Perp(CCPoint.Normalize(p1 - points[i + 1]));
+                    perpVector = CCPoint.PerpindicularCCW(CCPoint.Normalize(p1 - points[i + 1]));
                 }
                 else if (i == nuPointsMinus)
                 {
-                    perpVector = CCPoint.Perp(CCPoint.Normalize(points[i - 1] - p1));
+                    perpVector = CCPoint.PerpindicularCCW(CCPoint.Normalize(points[i - 1] - p1));
                 }
                 else
                 {
@@ -189,7 +189,7 @@ namespace CocosSharp
 
                     if (angle < rad70)
                     {
-                        perpVector = CCPoint.Perp(CCPoint.Normalize(CCPoint.Midpoint(p2p1, p0p1)));
+                        perpVector = CCPoint.PerpindicularCCW(CCPoint.Normalize(CCPoint.Midpoint(p2p1, p0p1)));
                     }
                     else if (angle < rad170)
                     {
@@ -197,7 +197,7 @@ namespace CocosSharp
                     }
                     else
                     {
-                        perpVector = CCPoint.Perp(CCPoint.Normalize(p2 - p0));
+                        perpVector = CCPoint.PerpindicularCCW(CCPoint.Normalize(p2 - p0));
                     }
                 }
 
