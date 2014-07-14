@@ -60,7 +60,7 @@ namespace CocosSharp
 
         static CCSpriteFontCache()
         {
-            var cm = CCApplication.SharedApplication.Content;
+            var cm = CCContentManager.SharedContentManager;
             contentManager = new ContentManager(cm.ServiceProvider, Path.Combine(cm.RootDirectory, FontRoot));
             FontScale = 1.0f;
         }

@@ -5,10 +5,25 @@ namespace CocosSharp
 {
     public class CCAnimationCache 
     {
+        static CCAnimationCache sharedAnimationCache;
+
         Dictionary<string, CCAnimation> animations;
 
 
         #region Properties
+
+        public static CCAnimationCache SharedAnimationCache
+        {
+            get
+            {
+                if (sharedAnimationCache == null)
+                {
+                    sharedAnimationCache = new CCAnimationCache();
+                }
+
+                return sharedAnimationCache;
+            }
+        }
 
         public CCAnimation this[string index]
         {
@@ -35,6 +50,16 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        public static void PurgeSharedAnimationCached()
+        {
+            sharedAnimationCache = null;
+        }
+
+        #endregion Cleaning up
 
 
         public void AddAnimation(CCAnimation animation, string name)
@@ -74,7 +99,7 @@ namespace CocosSharp
                 foreach (PlistObjectBase pObj in spritesheets)
                 {
                     string name = pObj.AsString;
-                    CCApplication.SharedApplication.SpriteFrameCache.AddSpriteFrames(name);
+                    CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames(name);
                 }
 
                 switch (version)
@@ -111,7 +136,7 @@ namespace CocosSharp
 
         void ParseVersion1(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
 
             foreach (var pElement in animations)
             {
@@ -169,7 +194,7 @@ namespace CocosSharp
 
         void ParseVersion2(PlistDictionary animations)
         {
-            CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
+            CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
 
             foreach (var pElement in animations)
             {

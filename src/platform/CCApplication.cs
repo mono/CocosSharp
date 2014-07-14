@@ -137,8 +137,6 @@ namespace CocosSharp
 
     public class CCApplication : DrawableGameComponent
     {
-        static CCApplication instance;
-
         readonly List<CCTouch> endedTouches = new List<CCTouch>();
         readonly Dictionary<int, LinkedListNode<CCTouch>> touchMap = new Dictionary<int, LinkedListNode<CCTouch>>();
         readonly LinkedList<CCTouch> touches = new LinkedList<CCTouch>();
@@ -168,11 +166,6 @@ namespace CocosSharp
         CCEventGamePadStick gamePadStick;
         CCEventGamePadTrigger gamePadTrigger;
 
-        CCParticleSystemCache particleSystemCache;
-        CCAnimationCache animationCache;
-        CCSpriteFrameCache spriteFrameCache;
-        CCTextureCache textureCache;
-
         GraphicsDeviceManager xnaDeviceManager;
         CCGame xnaGame;
         CCGameTime GameTime;
@@ -182,24 +175,6 @@ namespace CocosSharp
 
 
         #region Properties
-
-        // Static properties
-        public static CCApplication SharedApplication 
-        { 
-            get 
-            { 
-                if (instance == null) 
-                {
-#if WINDOWS_PHONE || NETFX_CORE
-                    Debug.Assert(instance != null,"Use Create to instantiate a class of CCApplication first.");
-#else
-                    instance = new CCApplication (new CCGame(), false, new CCSize(960, 640));
-#endif
-                }
-
-                return instance;
-            }
-        }
 
 #if NETFX_CORE
 
@@ -316,51 +291,9 @@ namespace CocosSharp
             }
         }
 
-        public CCParticleSystemCache ParticleSystemCache 
-        { 
-            get 
-            { 
-                if(particleSystemCache == null) 
-                    particleSystemCache = new CCParticleSystemCache();
-
-                return particleSystemCache; 
-            } 
-        }
-
-        public CCAnimationCache AnimationCache
-        {
-            get
-            {
-                if (animationCache == null)
-                {
-                    animationCache = new CCAnimationCache();
-                }
-
-                return animationCache;
-            }
-        }
-
-        public CCSpriteFrameCache SpriteFrameCache
-        {
-            get
-            {
-                if (spriteFrameCache == null)
-                    spriteFrameCache = new CCSpriteFrameCache();
-
-                return spriteFrameCache;
-            }
-        }
-
-        public CCTextureCache TextureCache
-        {
-            get 
-            {
-                if (textureCache == null)
-                {
-                    textureCache = new CCTextureCache();
-                }
-                return textureCache;
-            }
+        ContentManager Content 
+        {   get { return (CCContentManager.SharedContentManager); }
+            set { }
         }
 
 		#if ANDROID
@@ -377,12 +310,6 @@ namespace CocosSharp
 		}
 		#endif
 
-
-		public ContentManager Content 
-        {   get { return(CCContentManager.SharedContentManager); } 
-            private set { } 
-        }
-
         internal GraphicsDeviceManager GraphicsDeviceManager
         {
             get { return Game.Services.GetService (typeof(IGraphicsDeviceService)) as GraphicsDeviceManager; }
@@ -393,7 +320,12 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCApplication(CCGame game, bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize))
+        public CCApplication(bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize)) 
+            : this(new CCGame(), isFullScreen, mainWindowSizeInPixels)
+        {
+        }
+
+        CCApplication(CCGame game, bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize))
             : base(game)
         {
             GameTime = new CCGameTime();
@@ -473,7 +405,7 @@ namespace CocosSharp
         // Make public once multiple window support added
         CCWindow AddWindow(CCSize screenSizeInPixels)
         {
-            CCWindow window = new CCWindow(screenSizeInPixels, xnaGame.Window, xnaDeviceManager);
+            CCWindow window = new CCWindow(this, screenSizeInPixels, xnaGame.Window, xnaDeviceManager);
 
             gameWindows.Add(window);
 
@@ -490,41 +422,8 @@ namespace CocosSharp
 
         #region Cleaning up
 
-        public void PurgeParticleSystemCache()
-        {
-            if(particleSystemCache != null) 
-            {
-                particleSystemCache.Dispose();
-                particleSystemCache = null;
-            }
-        }
-
-        public void PurgeAnimationCached()
-        {
-            animationCache = null;
-        }
-
-        public void PurgeSpriteFrameCache()
-        {
-            spriteFrameCache = null;
-        }
-
-        public void PurgeTextureCache()
-        {
-            if(textureCache != null) 
-            {
-                textureCache.Dispose();
-                textureCache = null;
-            }
-        }
-
         public void PurgeAllCachedData()
         {
-            PurgeParticleSystemCache();
-            PurgeAnimationCached();
-            PurgeSpriteFrameCache();
-            PurgeTextureCache();
-
             CCLabelBMFont.PurgeCachedData();
         }
 

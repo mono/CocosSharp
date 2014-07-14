@@ -110,6 +110,8 @@ namespace CocosSharp
             set { DrawManager.CurrentDisplayOrientation = value; }
         }
 
+        public CCApplication Application { get; private set; }
+
         internal CCSize LandscapeWindowSizeInPixels
         {
             get { return CurrentDisplayOrientation.IsPortrait() ? WindowSizeInPixels.Inverted : WindowSizeInPixels; }
@@ -120,7 +122,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCWindow(CCSize screenSizeInPixels, GameWindow xnaWindow, GraphicsDeviceManager deviceManager)
+        internal CCWindow(CCApplication application, CCSize screenSizeInPixels, GameWindow xnaWindow, GraphicsDeviceManager deviceManager)
         {
             sceneDirectors = new List<CCDirector>();
 
@@ -149,6 +151,7 @@ namespace CocosSharp
 
             WindowSizeInPixels = screenSizeInPixels;
 
+            Application = application;
 
 
             //Stats.Initialize();

@@ -15,6 +15,7 @@ namespace CocosSharp
         CCCamera camera;
         CCViewport viewport;
         CCWindow window;
+        CCApplication application;
 
         internal event EventHandler SceneVisibleBoundsChanged = delegate {};
         internal event EventHandler SceneViewportChanged = delegate {};

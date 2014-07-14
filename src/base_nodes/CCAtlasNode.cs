@@ -105,7 +105,7 @@ namespace CocosSharp
         }
 
         public CCAtlasNode(string tile, int tileWidth, int tileHeight, int itemsToRender) 
-            : this(CCApplication.SharedApplication.TextureCache.AddImage(tile), tileWidth, tileHeight, itemsToRender)
+            : this(CCTextureCache.SharedTextureCache.AddImage(tile), tileWidth, tileHeight, itemsToRender)
         {
         }
 

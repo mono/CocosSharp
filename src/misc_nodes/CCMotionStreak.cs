@@ -61,7 +61,7 @@ namespace CocosSharp
         }
 
         public CCMotionStreak(float fade, float minSeg, float stroke, CCColor3B color, string path) 
-            : this(fade, minSeg, stroke, color, CCApplication.SharedApplication.TextureCache.AddImage(path))
+            : this(fade, minSeg, stroke, color, CCTextureCache.SharedTextureCache.AddImage(path))
         {
         }
 

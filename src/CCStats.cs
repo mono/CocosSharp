@@ -108,7 +108,7 @@ namespace CocosSharp
                 #endif
 
                 CCTexture2D texture;
-                CCTextureCache textureCache = CCApplication.SharedApplication.TextureCache;
+                CCTextureCache textureCache = CCTextureCache.SharedTextureCache;
 
                 stopwatch = new Stopwatch();
 

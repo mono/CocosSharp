@@ -50,7 +50,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCParticleBatchNode (string imageFile, int capacity = ParticleDefaultCapacity) 
-            : this(CCApplication.SharedApplication.TextureCache.AddImage(imageFile), capacity)
+            : this(CCTextureCache.SharedTextureCache.AddImage(imageFile), capacity)
         {
         }
 

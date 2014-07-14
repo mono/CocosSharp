@@ -237,7 +237,7 @@ namespace CocosSharp
 
                     try
                     {
-                        tex = CCApplication.SharedApplication.TextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
+                        tex = CCTextureCache.SharedTextureCache.AddImage(imageBytes, textureName, CCSurfaceFormat.Color);
                     }
                     catch (Exception ex)
                     {
@@ -254,7 +254,7 @@ namespace CocosSharp
                             CCFileUtils.IsPopupNotify = false;
                             try
                             {
-                                tex = CCApplication.SharedApplication.TextureCache.AddImage(textureName);
+                                tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
                             }
                             catch (Exception)
                             {
@@ -279,7 +279,7 @@ namespace CocosSharp
                     CCFileUtils.IsPopupNotify = false;
                     try
                     {
-                        tex = CCApplication.SharedApplication.TextureCache.AddImage(textureName);
+                        tex = CCTextureCache.SharedTextureCache.AddImage(textureName);
                     }
                     catch (Exception)
                     {

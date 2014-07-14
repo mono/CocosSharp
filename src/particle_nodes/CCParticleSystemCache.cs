@@ -15,14 +15,29 @@ namespace CocosSharp
             public Action<CCParticleSystemConfig> Action { get; set; }
         };
 
+        static CCParticleSystemCache sharedParticleSystemCache;
+
         readonly object dictLock = new object();
 
         List<AsyncStruct> asyncLoadedConfigs = new List<AsyncStruct>();
         Dictionary<string, CCParticleSystemConfig> configs;
         Action ProcessingAction { get; set; }
 
+        CCScheduler Scheduler { get; set; }
 
         #region Properties
+
+        public static CCParticleSystemCache SharedParticleSystemCache 
+        { 
+            get 
+            { 
+                if(sharedParticleSystemCache == null) 
+                    sharedParticleSystemCache = new CCParticleSystemCache(new CCScheduler());
+
+                return sharedParticleSystemCache; 
+            } 
+        }
+
 
         object Task { get; set; }
 
@@ -39,6 +54,15 @@ namespace CocosSharp
 
 
         #region Cleaning up
+
+        public static void PurgeSharedParticleSystemCache()
+        {
+            if(sharedParticleSystemCache != null) 
+            {
+                sharedParticleSystemCache.Dispose();
+                sharedParticleSystemCache = null;
+            }
+        }
 
         // No unmanaged resources, so no need for finalizer
 
@@ -67,8 +91,14 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCParticleSystemCache()
+        public CCParticleSystemCache(CCApplication application) : this(application.Scheduler)
         {
+        }
+
+        CCParticleSystemCache(CCScheduler scheduler)
+        {
+            Scheduler = scheduler;
+
             configs = new Dictionary<string, CCParticleSystemConfig>();
 
             ProcessingAction = new Action(
@@ -95,7 +125,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded particle system: {0}", psConfig.FileName);
                             if (psConfig.OnLoad != null)
                             {
-                                CCApplication.SharedApplication.Scheduler.Schedule (
+                                Scheduler.Schedule (
                                     f => psConfig.OnLoad(config, psConfig.Action), this, 0, 0, 0, false
                                 );
                             }
@@ -138,7 +168,7 @@ namespace CocosSharp
 
             if (Task == null)
             {
-                Task = CCTask.RunAsync(ProcessingAction);
+                Task = CCTask.RunAsync(Scheduler, ProcessingAction);
             }
         }
 

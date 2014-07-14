@@ -25,6 +25,8 @@ namespace CocosSharp
 
         #endregion Structs
 
+        static CCTextureCache sharedTextureCache;
+
         List<AsyncStruct> asyncLoadedImages = new List<AsyncStruct>();
         List<DataAsyncStruct> dataAsyncLoadedImages = new List<DataAsyncStruct>();
 
@@ -34,11 +36,24 @@ namespace CocosSharp
 
         #region Properties
 
-        public CCWindow Window { get; set; }
+        public static CCTextureCache SharedTextureCache
+        {
+            get 
+            {
+                if (sharedTextureCache == null) 
+                {
+                    sharedTextureCache = new CCTextureCache(new CCScheduler ());
+                }
+
+                return sharedTextureCache;
+            }
+        }
 
         Action ProcessingAction { get; set; }
         Action ProcessingDataAction { get; set; }
         object Task { get; set; }
+
+        CCScheduler Scheduler { get; set; }
 
         public CCTexture2D this[string key]
         {
@@ -68,8 +83,14 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCTextureCache()
+        public CCTextureCache(CCApplication application) : this(application.Scheduler)
         {
+        }
+
+        CCTextureCache(CCScheduler scheduler)
+        {
+            Scheduler = scheduler;
+
             ProcessingAction = new Action(
                 () =>
                 {
@@ -95,7 +116,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", image.FileName);
                             if (image.Action != null)
                             {
-                                CCApplication.SharedApplication.Scheduler.Schedule (
+                                scheduler.Schedule (
                                     f => image.Action(texture), this, 0, 0, 0, false
                                 );
                             }
@@ -133,7 +154,7 @@ namespace CocosSharp
                             CCLog.Log("Loaded texture: {0}", imageData.AssetName);
                             if (imageData.Action != null)
                             {
-                                CCApplication.SharedApplication.Scheduler.Schedule (
+                                scheduler.Schedule (
                                     f => imageData.Action(texture), this, 0, 0, 0, false
                                 );
                             }
@@ -161,6 +182,15 @@ namespace CocosSharp
 
 
         #region Cleaning up
+
+        public static void PurgeSharedTextureCache()
+        {
+            if(sharedTextureCache != null) 
+            {
+                sharedTextureCache.Dispose();
+                sharedTextureCache = null;
+            }
+        }
 
         // No unmanaged resources, so no need for finalizer
         public void Dispose()
@@ -294,7 +324,7 @@ namespace CocosSharp
 
             if (Task == null)
             {
-                Task = CCTask.RunAsync(ProcessingDataAction);
+                Task = CCTask.RunAsync(Scheduler, ProcessingDataAction);
             }
         }
 
@@ -309,7 +339,7 @@ namespace CocosSharp
 
             if (Task == null)
             {
-                Task = CCTask.RunAsync(ProcessingAction);
+                Task = CCTask.RunAsync(Scheduler, ProcessingAction);
             }
         }
 

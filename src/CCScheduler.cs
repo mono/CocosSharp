@@ -173,6 +173,7 @@ namespace CocosSharp
 		bool isCurrentTargetSalvaged;
 		bool isUpdateHashLocked;
 
+        CCActionManager actionManager;
 
 		#region Properties
 
@@ -184,18 +185,20 @@ namespace CocosSharp
 		{
 			get {
 
-				var target = CCApplication.SharedApplication.ActionManager;
+                if (actionManager != null) 
+                {
+                    var target = actionManager;
 
-				LinkedListNode<ListEntry> next;
+                    LinkedListNode<ListEntry> next;
 
-				for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next)
-				{
-					next = node.Next;
-					if (node.Value.Target == target && !node.Value.MarkedForDeletion)
-					{
-						return true;
-					}
-				}
+                    for (LinkedListNode<ListEntry> node = updatesNegList.First; node != null; node = next) 
+                    {
+                        next = node.Next;
+                        if (node.Value.Target == target && !node.Value.MarkedForDeletion) {
+                            return true;
+                        }
+                    }
+                }
 
 				return false;
 			}
@@ -206,9 +209,10 @@ namespace CocosSharp
 
 		#region Constructors
 
-		internal CCScheduler()
+        internal CCScheduler(CCActionManager actionManager = null)
 		{
 			TimeScale = 1.0f;
+            this.actionManager = actionManager;
 		}
 
 		#endregion Constructors
@@ -565,8 +569,8 @@ namespace CocosSharp
 		/// </summary>
 		public void StartActionManager()
 		{
-			if (!IsActionManagerActive)
-				Schedule  (CCApplication.SharedApplication.ActionManager, CCSchedulePriority.System, false);
+            if (!IsActionManagerActive && actionManager != null)
+                Schedule(actionManager, CCSchedulePriority.System, false);
 		}
 
 		public void UnscheduleAll ()

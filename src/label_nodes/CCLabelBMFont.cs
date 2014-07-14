@@ -146,7 +146,7 @@ namespace CocosSharp
 
                     FontConfiguration = newConf;
 
-                    Texture = CCApplication.SharedApplication.TextureCache.AddImage(FontConfiguration.AtlasName);
+                    Texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
 
                     IsDirty = true;
                 }
@@ -242,7 +242,7 @@ namespace CocosSharp
                 {
                     try
                     {
-                        texture = CCApplication.SharedApplication.TextureCache.AddImage(FontConfiguration.AtlasName);
+                        texture = CCTextureCache.SharedTextureCache.AddImage(FontConfiguration.AtlasName);
                     }
                     catch (Exception)
                     {
@@ -250,7 +250,7 @@ namespace CocosSharp
                         try
                         {
                             texture =
-                                CCApplication.SharedApplication.TextureCache.AddImage(System.IO.Path.Combine("images",
+                                CCTextureCache.SharedTextureCache.AddImage(System.IO.Path.Combine("images",
                                     FontConfiguration
                                     .AtlasName));
                         }
@@ -260,7 +260,7 @@ namespace CocosSharp
                             string dir = System.IO.Path.GetDirectoryName(FontConfiguration.AtlasName);
                             string fname = System.IO.Path.GetFileName(FontConfiguration.AtlasName);
                             string newName = System.IO.Path.Combine(System.IO.Path.Combine(dir, "images"), fname);
-                            texture = CCApplication.SharedApplication.TextureCache.AddImage(newName);
+                            texture = CCTextureCache.SharedTextureCache.AddImage(newName);
                         }
                     }
                 }

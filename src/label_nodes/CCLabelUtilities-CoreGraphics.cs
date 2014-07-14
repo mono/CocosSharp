@@ -392,7 +392,7 @@ namespace CocosSharp
 			if (!String.IsNullOrEmpty(ext) && ext.ToLower() == ".ttf")
 			{
 				var fontName = familyName.Substring (0, familyName.Length - ext.Length);
-				var path = CCApplication.SharedApplication.Game.Content.RootDirectory + Path.DirectorySeparatorChar + fontName;
+                var path = CCContentManager.SharedContentManager.RootDirectory + Path.DirectorySeparatorChar + fontName;
 				var pathForResource = NSBundle.MainBundle.PathForResource (path, ext.Substring(1));
 
 				try {

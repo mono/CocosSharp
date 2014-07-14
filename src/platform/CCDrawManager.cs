@@ -611,7 +611,7 @@ namespace CocosSharp
             {
                 graphicsDevice.SetRenderTarget(null);
 
-                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend);
+                SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, DepthStencilState, null, AlphaTestEffect);
                 SpriteBatch.Draw(renderTarget, new Vector2(0, 0), Color.White);
                 SpriteBatch.End();
             }
@@ -1133,7 +1133,7 @@ namespace CocosSharp
 
         public void SetDrawMaskedState(int layer, bool depth)
         {
-            DepthStencilState = maskStatesCache[layer].GetDrawContentState(layer, depth, maskSavedStencilStates);
+            DepthStencilState = maskStatesCache[layer].GetDrawContentState(layer, depth, maskSavedStencilStates, this.maskLayer);
         }
 
         public bool BeginDrawMask(CCRect screenRect, bool inverted=false, float alphaTreshold=1f)
@@ -1167,14 +1167,7 @@ namespace CocosSharp
 
             // draw a fullscreen solid rectangle to clear the stencil buffer
 
-            PushMatrix();
-            SetIdentityMatrix();
-
-            CCDrawingPrimitives.Begin();
-            CCDrawingPrimitives.DrawSolidRect(screenRect.Origin, new CCPoint(screenRect.Size.Width, screenRect.Size.Height), new CCColor4B(255, 255, 255, 255));
-            CCDrawingPrimitives.End();
-
-            PopMatrix();
+            XnaGraphicsDevice.Clear (ClearOptions.Target | ClearOptions.Stencil, Color.Transparent, 0, 0);
 
             ///////////////////////////////////
             // PREPARE TO DRAW MASK
@@ -1308,7 +1301,7 @@ namespace CocosSharp
             return result;
         }
 
-        public DepthStencilState GetDrawContentState(int layer, bool depth, DepthStencilState[] maskSavedStencilStates)
+        public DepthStencilState GetDrawContentState(int layer, bool depth, DepthStencilState[] maskSavedStencilStates, int currentMaskLayer)
         {
             DepthStencilState result = depth ? DrawContentDepth : DrawContent;
 
@@ -1320,7 +1313,7 @@ namespace CocosSharp
 
                 result = new DepthStencilState()
                 {
-                    DepthBufferEnable = maskSavedStencilStates[maskLayer].DepthBufferEnable,
+                    DepthBufferEnable = maskSavedStencilStates[currentMaskLayer].DepthBufferEnable,
                     StencilEnable = true,
 
                     StencilMask = maskLayerLe,
@@ -1329,8 +1322,8 @@ namespace CocosSharp
 
                     StencilFunction = CompareFunction.Equal,
 
-                    StencilPass = StencilOperation.Keep,
-                    StencilFail = StencilOperation.Keep,
+                    StencilPass = StencilOperation.Zero,
+                    StencilFail = StencilOperation.Zero,
                 };
 
                 if (depth)

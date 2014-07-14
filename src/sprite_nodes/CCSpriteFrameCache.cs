@@ -8,11 +8,24 @@ namespace CocosSharp
 {
     public class CCSpriteFrameCache
     {
+        static CCSpriteFrameCache sharedSpriteFrameCache;
+
         Dictionary<string, CCSpriteFrame> spriteFrames;
         Dictionary<string, string> spriteFramesAliases;
 
 
         #region Properties
+
+        public static CCSpriteFrameCache SharedSpriteFrameCache 
+        {
+            get 
+            {
+                if (sharedSpriteFrameCache == null)
+                    sharedSpriteFrameCache = new CCSpriteFrameCache();
+
+                return sharedSpriteFrameCache;
+            }
+        }
 
         // When false, an exception is thrown if an animation frame is overwritten.
         public bool AllowFrameOverwrite { get; set; }
@@ -53,6 +66,16 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+        #region Cleaning up
+
+        public static void PurgeSharedSpriteFrameCache()
+        {
+            sharedSpriteFrameCache = null;
+        }
+
+        #endregion Cleaning up
 
 
         #region Adding frames
@@ -251,7 +274,7 @@ namespace CocosSharp
                 CCLog.Log("CocosSharp: CCSpriteFrameCache: Trying to use file {0} as texture", texturePath);
             }
 
-            CCTexture2D pTexture = CCApplication.SharedApplication.TextureCache.AddImage(texturePath);
+            CCTexture2D pTexture = CCTextureCache.SharedTextureCache.AddImage(texturePath);
 
             if (pTexture != null)
             {
@@ -267,7 +290,7 @@ namespace CocosSharp
         {
             Debug.Assert(textureFileName != null);
 
-            CCTexture2D texture = CCApplication.SharedApplication.TextureCache.AddImage(textureFileName);
+            CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(textureFileName);
 
             if (texture != null)
             {

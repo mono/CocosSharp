@@ -607,6 +607,11 @@ namespace CocosSharp
             }
         }
 
+        public virtual CCApplication Application
+        {
+            get { return Window != null ? Window.Application : null; }
+        }
+
         public virtual CCDirector Director
         { 
             get { return Scene.Director; }
@@ -648,12 +653,12 @@ namespace CocosSharp
 
         CCScheduler Scheduler
         {
-            get { return CCApplication.SharedApplication.Scheduler; }
+            get { return Application != null ? Application.Scheduler : null; }
         }
 
         CCActionManager ActionManager
         {
-            get { return CCApplication.SharedApplication.ActionManager; }
+            get { return Application != null ? Application.ActionManager : null; }
         }
 
         #endregion Properties

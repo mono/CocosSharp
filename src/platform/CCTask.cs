@@ -17,13 +17,8 @@ namespace CocosSharp
         }
 
         static ICCUpdatable taskSelector = new TaskSelector();
-
-        public static object RunAsync(Action action)
-        {
-            return RunAsync(action, null);
-        }
 		
-        public static object RunAsync(Action action, Action<object> taskCompleted)
+        public static object RunAsync(CCScheduler scheduler, Action action, Action<object> taskCompleted = null)
         {
 #if WINDOWS_PHONE
             var worker = new BackgroundWorker();
@@ -55,7 +50,6 @@ namespace CocosSharp
 
                     if (taskCompleted != null)
                     {
-                        var scheduler = CCApplication.SharedApplication.Scheduler;
                         scheduler.Schedule (f => taskCompleted(null), taskSelector, 0, 0, 0, false);
                     }
                 }

@@ -22,7 +22,7 @@ namespace CocosSharp
             string content = null;
             try
             {
-                content = CCApplication.SharedApplication.Content.Load<string>(file);
+                content = CCContentManager.SharedContentManager.Load<string>(file);
             }
             catch (Exception)
             {
@@ -32,7 +32,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    var data = CCApplication.SharedApplication.Content.Load<CCContent>(file);
+                    var data = CCContentManager.SharedContentManager.Load<CCContent>(file);
                     if (data != null && data.Content != null)
                     {
                         content = data.Content;
@@ -46,7 +46,7 @@ namespace CocosSharp
             {
                 try
                 {
-                    var dx = CCApplication.SharedApplication.Content.Load<CCContent>(file);
+                    var dx = CCContentManager.SharedContentManager.Load<CCContent>(file);
                     if (dx == null || dx.Content == null)
                     {
                         throw (new ContentLoadException("Could not load the contents of " + file + " as raw text."));
