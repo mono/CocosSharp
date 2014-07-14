@@ -1053,14 +1053,20 @@ namespace CocosSharp
             int posY = 0;
 
             #if NETFX_CORE
-            pos = TransformPoint(priorMouseState.X, priorMouseState.Y);
+			//Because MonoGame and CocosSharp uses different Y axis, we need to convert the coordinate here
+			pos = TransformPoint(priorMouseState.X, Game.Window.ClientBounds.Height - priorMouseState.Y);
             pos = CCDrawManager.ScreenToWorld(pos.X, pos.Y);
             #else
-            pos = CCDrawManager.ScreenToWorld(priorMouseState.X, priorMouseState.Y);
+			//Because MonoGame and CocosSharp uses different Y axis, we need to convert the coordinate here
+			pos = CCDrawManager.ScreenToWorld(priorMouseState.X, Game.Window.ClientBounds.Height - priorMouseState.Y);
+
             #endif
 
+			// We need to convert to pixels so that the position elements are reported correctly.
+			pos = pos.PointsToPixels(MainWindowDirector);
+
             // We will only do the cast once.
-            posX = (int)pos.X;
+			posX = (int)pos.X;
             posY = (int)pos.Y;
 
             var mouseEvent = new CCEventMouse (CCMouseEventType.MOUSE_MOVE);
