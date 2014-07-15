@@ -526,11 +526,11 @@ namespace CocosSharp
         }
 
 		/// <summary>
-		/// Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpindicularCCW(v)) >= 0
+		/// Calculates perpendicular of v, rotated 90 degrees counter-clockwise -- cross(v, PerpendicularCCW(v)) >= 0
 		/// </summary>
-		/// <returns>A perpindicular point to source point</returns>
+		/// <returns>A perpendicular point to source point</returns>
 		/// <param name="p">Source point.</param>
-		public static CCPoint PerpindicularCCW(CCPoint p)
+		public static CCPoint PerpendicularCCW(CCPoint p)
 		{
 			CCPoint pt;
 			pt.X = -p.Y;
@@ -539,9 +539,9 @@ namespace CocosSharp
 		}
 
 		/// <summary>
-		/// Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, PerpindicularCW(v)) <= 0
+		/// Calculates perpendicular of v, rotated 90 degrees clockwise -- cross(v, PerpendicularCW(v)) <= 0
 		/// </summary>
-		/// <returns>A perpindicular point to source point</returns>
+		/// <returns>A perpendicular point to source point</returns>
 		/// <param name="p">Source point.</param>
         public static CCPoint PerpendicularCW(CCPoint p)
         {
