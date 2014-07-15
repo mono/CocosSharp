@@ -1011,7 +1011,7 @@ namespace CocosSharp
 
                 if (quadsIndexBuffer == null)
                 {
-                    quadsIndexBuffer = new CCIndexBuffer<short>(capacity * 6, BufferUsage.WriteOnly, this);
+                    quadsIndexBuffer = new CCIndexBuffer<short>(capacity * 6, BufferUsage.WriteOnly);
                     quadsIndexBuffer.Count = quadsIndexBuffer.Capacity;
                 }
 
@@ -1052,7 +1052,7 @@ namespace CocosSharp
 
                 if (quadsBuffer == null)
                 {
-                    quadsBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly, this);
+                    quadsBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
                 }
                 else
                 {
@@ -1344,8 +1344,6 @@ namespace CocosSharp
     {
         bool isDisposed;
 
-        protected CCDrawManager LastUsedDrawManager { get; set; }
-
         public bool IsDisposed
         {
             get { return isDisposed; }
@@ -1397,8 +1395,6 @@ namespace CocosSharp
         protected CCBufferUsage usage;
         protected CCRawList<T> data;
 
-        protected CCDrawManager drawManager;
-
 
         #region Properties
 
@@ -1440,11 +1436,10 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCVertexBuffer(int vertexCount, CCBufferUsage usage, CCDrawManager drawManager)
+        public CCVertexBuffer(int vertexCount, CCBufferUsage usage)
         {
             data = new CCRawList<T>(vertexCount);
             this.usage = usage;
-            this.drawManager = drawManager;
             ReinitResource();
         }
 
@@ -1458,7 +1453,7 @@ namespace CocosSharp
                 vertexBuffer.Dispose();
             }
 
-            vertexBuffer = new VertexBuffer(drawManager.XnaGraphicsDevice, typeof(T), data.Capacity, (BufferUsage)usage);
+            vertexBuffer = new VertexBuffer(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, typeof(T), data.Capacity, (BufferUsage)usage);
         }
 
         public void UpdateBuffer()
@@ -1477,8 +1472,8 @@ namespace CocosSharp
 
     public class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
     {
-        public CCQuadVertexBuffer(int vertexCount, CCBufferUsage usage, CCDrawManager drawManager)
-            : base(vertexCount, usage, drawManager)
+        public CCQuadVertexBuffer(int vertexCount, CCBufferUsage usage)
+            : base(vertexCount, usage)
         {
         }
 
@@ -1501,7 +1496,7 @@ namespace CocosSharp
             }
 
             var quads = data.Elements;
-            var tmp = drawManager.TmpVertices;
+            var tmp = CCDrawManager.SharedDrawManager.TmpVertices;
 
             while (tmp.Capacity < elementCount)
             {
@@ -1532,7 +1527,7 @@ namespace CocosSharp
                 vertexBuffer.Dispose();
             }
 
-            vertexBuffer = new VertexBuffer(drawManager.XnaGraphicsDevice, typeof(CCV3F_C4B_T2F), data.Capacity * 4, (BufferUsage)usage);
+            vertexBuffer = new VertexBuffer(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, typeof(CCV3F_C4B_T2F), data.Capacity * 4, (BufferUsage)usage);
 
             UpdateBuffer();
         }
@@ -1555,8 +1550,6 @@ namespace CocosSharp
         IndexBuffer indexBuffer;
         BufferUsage usage;
         CCRawList<T> data;
-
-        CCDrawManager drawManager;
 
         #region Properties
 
@@ -1597,11 +1590,10 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCIndexBuffer(int indexCount, BufferUsage usage, CCDrawManager drawManager)
+        public CCIndexBuffer(int indexCount, BufferUsage usage)
         {
             data = new CCRawList<T>(indexCount);
             this.usage = usage;
-            this.drawManager = drawManager;
             ReinitResource();
         }
 
@@ -1614,7 +1606,7 @@ namespace CocosSharp
                 indexBuffer.Dispose();
             }
 
-            indexBuffer = new IndexBuffer(drawManager.XnaGraphicsDevice, typeof(T), data.Capacity, usage);
+            indexBuffer = new IndexBuffer(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, typeof(T), data.Capacity, usage);
 
             UpdateBuffer();
         }

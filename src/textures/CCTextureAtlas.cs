@@ -95,7 +95,7 @@ namespace CocosSharp
                 capacity = 4;
             }
 
-            vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly, CCDrawManager.SharedDrawManager);
+            vertexBuffer = new CCQuadVertexBuffer(capacity, CCBufferUsage.WriteOnly);
             Quads = vertexBuffer.Data;
 
             Dirty = true;

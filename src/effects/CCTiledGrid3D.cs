@@ -155,9 +155,9 @@ namespace CocosSharp
 
             int numQuads = GridSize.X * GridSize.Y;
 
-            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly, Scene.Window.DrawManager);
+            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numQuads * 4, CCBufferUsage.WriteOnly);
             vertexBuffer.Count = numQuads * 4;
-            indexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly, Scene.Window.DrawManager);
+            indexBuffer = new CCIndexBuffer<short>(numQuads * 6, BufferUsage.WriteOnly);
             indexBuffer.Count = numQuads * 6;
 
             Vertices = vertexBuffer.Data.Elements;

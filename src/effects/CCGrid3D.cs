@@ -124,9 +124,9 @@ namespace CocosSharp
 
             int numOfPoints = (GridSize.X + 1) * (GridSize.Y + 1);
 
-            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly, Scene.Window.DrawManager);
+            vertexBuffer = new CCVertexBuffer<CCV3F_T2F>(numOfPoints, CCBufferUsage.WriteOnly);
             vertexBuffer.Count = numOfPoints;
-            indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly,Scene.Window.DrawManager);
+            indexBuffer = new CCIndexBuffer<ushort>(GridSize.X * GridSize.Y * 6, BufferUsage.WriteOnly);
             indexBuffer.Count = GridSize.X * GridSize.Y * 6;
 
             Vertices = vertexBuffer.Data.Elements;
