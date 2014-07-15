@@ -68,7 +68,7 @@ namespace CocosSharp
         public CCBox2dDraw(string spriteFontName)
         {
             primitiveBatch = new CCPrimitiveBatch(CCDrawManager.SharedDrawManager, 5000);
-            spriteFont = CCApplication.SharedApplication.Content.Load<SpriteFont>(spriteFontName);
+            spriteFont = CCContentManager.SharedContentManager.Load<SpriteFont>(spriteFontName);
             stringData = new List<StringData>();
             stringBuilder = new StringBuilder();
         }

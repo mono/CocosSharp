@@ -590,13 +590,13 @@ namespace CocosSharp
                 if (spriteSheet.Length == 0)
                 {
                     spriteFile = reader.CCBRootPath + spriteFile;
-                    CCTexture2D texture = CCApplication.SharedApplication.TextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                    CCTexture2D texture = CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
                     var bounds = new CCRect(0, 0, texture.ContentSizeInPixels.Width, texture.ContentSizeInPixels.Height);
                     spriteFrame = new CCSpriteFrame(texture, bounds);
                 }
                 else
                 {
-                    CCSpriteFrameCache frameCache = CCApplication.SharedApplication.SpriteFrameCache;
+                    CCSpriteFrameCache frameCache = CCSpriteFrameCache.SharedSpriteFrameCache;
                     spriteSheet = reader.CCBRootPath + spriteSheet;
 
                     // Load the sprite sheet only if it is not loaded
@@ -635,7 +635,7 @@ namespace CocosSharp
 
             if (!String.IsNullOrEmpty(animation))
             {
-                CCAnimationCache animationCache = CCApplication.SharedApplication.AnimationCache;
+                CCAnimationCache animationCache = CCAnimationCache.SharedAnimationCache;
                 animationCache.AddAnimations(animationFile);
 
                 ccAnimation = animationCache[animation];
@@ -649,7 +649,7 @@ namespace CocosSharp
 
             if (!String.IsNullOrEmpty(spriteFile))
             {
-                return CCApplication.SharedApplication.TextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
+                return CCTextureCache.SharedTextureCache.AddImage(CCFileUtils.RemoveExtension(spriteFile));
             }
             return null;
         }

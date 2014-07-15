@@ -297,7 +297,7 @@ namespace CocosSharp
 
 		internal void InitWithSpriteFrameName(string spriteFrameName, CCRect capInsets)
 		{
-            CCSpriteFrame spriteFrame = CCApplication.SharedApplication.SpriteFrameCache[spriteFrameName];
+            CCSpriteFrame spriteFrame = CCSpriteFrameCache.SharedSpriteFrameCache[spriteFrameName];
 
             InitCCScale9Sprite(new CCSpriteBatchNode(spriteFrame.Texture, 9), spriteFrame.TextureRectInPixels, spriteFrame.IsRotated, capInsets);
 		}
