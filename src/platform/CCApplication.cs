@@ -925,8 +925,16 @@ namespace CocosSharp
                 return;
             }
 
+            CCPoint pos;
 
-            CCPoint pos = new CCPoint(priorMouseState.X, priorMouseState.Y);
+            #if NETFX_CORE
+            //Because MonoGame and CocosSharp uses different Y axis, we need to convert the coordinate here
+            pos = TransformPoint(priorMouseState.X, Game.Window.ClientBounds.Height - priorMouseState.Y);
+            #else
+            //Because MonoGame and CocosSharp uses different Y axis, we need to convert the coordinate here
+            pos = new CCPoint(priorMouseState.X, Game.Window.ClientBounds.Height - priorMouseState.Y);
+            #endif
+
 
             var mouseEvent = new CCEventMouse (CCMouseEventType.MOUSE_MOVE);
             mouseEvent.CursorX = pos.X;
@@ -991,9 +999,11 @@ namespace CocosSharp
                 dispatcher.DispatchEvent (mouseEvent);
             }
 
-            if (priorMouseState.ScrollWheelValue != currentMouseState.ScrollWheelValue) {
+            if (priorMouseState.ScrollWheelValue != currentMouseState.ScrollWheelValue) 
+            {
                 var delta = priorMouseState.ScrollWheelValue - currentMouseState.ScrollWheelValue;
-                if (delta != 0) {
+                if (delta != 0) 
+                {
                     mouseEvent.MouseEventType = CCMouseEventType.MOUSE_SCROLL;
                     mouseEvent.ScrollX = 0;
                     mouseEvent.ScrollY = delta;
@@ -1002,8 +1012,7 @@ namespace CocosSharp
                 }
             }
             // Store the state for the next loop
-            priorMouseState = currentMouseState;
-
+            priorMouseState =currentMouseState;
         }
 
         #endregion Mouse support
