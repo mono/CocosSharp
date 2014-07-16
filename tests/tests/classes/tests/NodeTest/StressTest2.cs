@@ -35,7 +35,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			var sublayer = this[CocosNodeTestStaticLibrary.kTagSprite1];
 			sublayer[CocosNodeTestStaticLibrary.kTagSprite2].Position = (new CCPoint(80, s.Height / 2));

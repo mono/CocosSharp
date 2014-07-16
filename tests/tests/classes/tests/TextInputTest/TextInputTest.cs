@@ -43,7 +43,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 24);
             AddChild(label);
@@ -143,13 +143,13 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             var pTextField = new CCTextFieldTTF(
                 "<click here for input>", TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE
                 );
 
-            pTextField.Position = Scene.VisibleBoundsWorldspace.Size.Center;
+            pTextField.Position = Layer.VisibleBoundsWorldspace.Size.Center;
 
             pTextField.AutoEdit = true;
 
@@ -213,7 +213,7 @@ namespace CocosSharp
             m_bAction = false;
 
             // add CCTextFieldTTF
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             m_pTextField = new CCTextFieldTTF("<click here for input>",
                                               TextInputTestScene.FONT_NAME, TextInputTestScene.FONT_SIZE);
@@ -271,7 +271,7 @@ namespace CocosSharp
                 endPos.X += pSender.ContentSize.Width / 2;
             }
             CCSize inputTextSize = label.ContentSize;
-            CCPoint beginPos = new CCPoint(endPos.X, Scene.VisibleBoundsWorldspace.Size.Height - inputTextSize.Height * 2);
+            CCPoint beginPos = new CCPoint(endPos.X, Layer.VisibleBoundsWorldspace.Size.Height - inputTextSize.Height * 2);
 
             float duration = 0.5f;
             label.Position = beginPos;
@@ -302,7 +302,7 @@ namespace CocosSharp
             int RAND_MAX = 32767;
             CCRandom rand = new CCRandom();
 
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
             CCPoint endPos = new CCPoint(-winSize.Width / 4.0f, winSize.Height * (0.5f + (float)CCRandom.Next() / (2.0f * RAND_MAX)));
             float duration = 1;
             float rotateDuration = 0.2f;

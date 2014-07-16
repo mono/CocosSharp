@@ -109,7 +109,7 @@ namespace tests
             base.AddedToNewScene();
 
 			// elastic effect
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			int i = 0;
 			CCNode child;

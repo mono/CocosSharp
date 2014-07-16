@@ -19,7 +19,7 @@ namespace tests
         }
         public override void doTest()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
             CCParticleSystem particleSystem = (CCParticleSystem)GetChildByTag(PerformanceParticleTest.kTagParticleSystem);
 
             // duration

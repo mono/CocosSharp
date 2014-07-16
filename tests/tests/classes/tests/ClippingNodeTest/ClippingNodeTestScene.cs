@@ -138,7 +138,7 @@ namespace tests.Clipping
 		{
             Setup();
 
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 			var s = windowSize;
 
 			background.Position = s.Center;
@@ -250,7 +250,7 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCNode stencil = Stencil();
             stencil.Tag = kTagStencilNode;
@@ -269,7 +269,7 @@ namespace tests.Clipping
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			var s = windowSize;
 			this[kTagClipperNode].Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
@@ -447,7 +447,7 @@ namespace tests.Clipping
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			foreach (var clipper in Children)
 			{
@@ -527,7 +527,7 @@ namespace tests.Clipping
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 
 			m_pOuterClipper.Position = ContentSize.Center;
@@ -569,7 +569,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCPoint point =
-                m_pOuterClipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
+                m_pOuterClipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
             CCRect rect = new CCRect(0, 0, m_pOuterClipper.ContentSize.Width,
                                      m_pOuterClipper.ContentSize.Height);
             if (!rect.ContainsPoint(point)) return;
@@ -643,7 +643,7 @@ namespace tests.Clipping
         {
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
             m_bScrolling = clipper.TransformedBoundingBoxWorldspace.ContainsPoint(point);
             m_lastPoint = point;
         }
@@ -656,7 +656,7 @@ namespace tests.Clipping
             }
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
-            CCPoint point = clipper.Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
             CCPoint diff = point - m_lastPoint;
             CCNode content = clipper.GetChildByTag(kTagContentNode);
             clipper.Position = clipper.Position + diff;

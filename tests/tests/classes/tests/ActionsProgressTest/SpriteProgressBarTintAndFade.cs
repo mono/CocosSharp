@@ -11,7 +11,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			var progressTo = new CCProgressTo(6, 100);
 			var tint = new CCSequence(new CCTintTo (1, 255, 0, 0),

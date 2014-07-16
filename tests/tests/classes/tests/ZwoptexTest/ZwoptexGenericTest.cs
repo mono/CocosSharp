@@ -13,12 +13,12 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("zwoptex/grossini.plist");
             CCSpriteFrameCache.SharedSpriteFrameCache.AddSpriteFrames("zwoptex/grossini-generic.plist");
 
-            CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 85, 121);
+            CCLayerColor layer1 = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
             layer1.Position = new CCPoint(s.Width / 2 - 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer1);
 
@@ -29,7 +29,7 @@ namespace tests
             sprite1.FlipX = false;
             sprite1.FlipY = false;
 
-            CCLayerColor layer2 = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 85, 121);
+            CCLayerColor layer2 = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
             layer2.Position = new CCPoint(s.Width / 2 + 80 - (85.0f * 0.5f), s.Height / 2 - (121.0f * 0.5f));
             AddChild(layer2);
 

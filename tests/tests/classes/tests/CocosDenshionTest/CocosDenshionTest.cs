@@ -75,7 +75,7 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             // Layout content
             int testCount = testMenuItems.Count();
@@ -196,12 +196,12 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         {
             CCTouch touch = touches.FirstOrDefault();
 
-            CCPoint touchLocation = Scene.ScreenToWorldspace(touch.LocationOnScreen);   
+            CCPoint touchLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);   
             float nMoveY = touchLocation.Y - beginPos.Y;
 
             CCPoint curPos  = testMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
 
             if (nextPos.Y < 0.0f)
             {

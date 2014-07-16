@@ -27,8 +27,8 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+            CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80));
 
             layer.IgnoreAnchorPointForPosition = false;
             layer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
@@ -73,9 +73,9 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80), s.Width * 0.75f, s.Height * 0.75f);
+            var layer1 = new CCLayerColor(new CCColor4B(0xFF, 0xFF, 0x00, 0x80));
             layer1.IgnoreAnchorPointForPosition = false;
             layer1.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             layer1.ChildClippingMode = CCClipMode.Bounds;
@@ -83,7 +83,7 @@ namespace tests
 
             s = layer1.ContentSize;
 
-            m_pInnerLayer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), s.Width * 0.5f, s.Height * 0.5f);
+            m_pInnerLayer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80));
             m_pInnerLayer.IgnoreAnchorPointForPosition = false;
             m_pInnerLayer.Position = (new CCPoint(s.Width / 2, s.Height / 2));
             m_pInnerLayer.ChildClippingMode = CCClipMode.Bounds;
@@ -114,7 +114,7 @@ namespace tests
 
             m_pInnerLayer.RunAction(seq);
 
-            CCSize size = Scene.VisibleBoundsWorldspace.Size;
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
 
             var move1 = new CCMoveTo(2, new CCPoint(size.Width / 2, size.Height));
             var move2 = new CCMoveTo(2, new CCPoint(size.Width, size.Height / 2));

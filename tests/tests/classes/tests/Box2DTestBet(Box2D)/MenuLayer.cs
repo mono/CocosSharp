@@ -12,7 +12,7 @@ namespace Box2D.TestBed
 
         public bool initWithEntryID(int entryId)
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             m_entryID = entryId;
 

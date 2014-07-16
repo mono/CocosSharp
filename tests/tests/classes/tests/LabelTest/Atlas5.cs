@@ -21,7 +21,7 @@ namespace tests
         protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			label.Position = s.Center;		
 		}

@@ -33,7 +33,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sister1.Position = new CCPoint(160, s.Height / 2);
 			sister2.Position = new CCPoint(320, s.Height / 2);
 		}

@@ -20,7 +20,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 			bmFont.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);
 
 		}

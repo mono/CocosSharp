@@ -88,7 +88,7 @@ namespace tests.Extensions
 
         public CCScene currentControlScene()
         {
-            var scene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var scene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             switch (m_nCurrentControlSceneId)
             {
                 case kS9BatchNodeBasic:

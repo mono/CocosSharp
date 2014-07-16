@@ -93,7 +93,7 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             for (int i = 0; i < numOfSprites; i++) 
             {

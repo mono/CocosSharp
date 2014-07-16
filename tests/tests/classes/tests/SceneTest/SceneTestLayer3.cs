@@ -28,7 +28,7 @@ namespace tests
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCLog.Log("SceneTestLayer3#OnEnter - Can Pop Scene = {0} - {1}", Director.CanPopScene, Director.SceneCount);
 

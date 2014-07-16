@@ -68,7 +68,9 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            Camera.Projection = CCCameraProjection.Projection3D;
 
             // camera uses the center of the image as the pivoting point
             node.ContentSize = (new CCSize(windowSize.Width, windowSize.Height));
@@ -80,16 +82,16 @@ namespace tests
             for (int i = 0; i < 5; i++)
             {
                 sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
-                sprites[i].VertexZ = (10 + i * 40);
+                //sprites[i].VertexZ = (10 + i * 40);
             }
 
             for (int i = 5; i < 11; i++)
             {
                 sprites[i].Position = (new CCPoint((i + 1) * step, windowSize.Height / 2));
-                sprites[i].VertexZ = 10 + (10 - i) * 40;
+                //sprites[i].VertexZ = 10 + (10 - i) * 40;
             }
 
-            node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
+            //node.RunAction(new CCOrbitCamera(10, 1, 0, 0, 360, 0, 0));
         }
 
         #endregion Setup content
@@ -106,7 +108,8 @@ namespace tests
 
         public override void OnExit()
         {
-            //Director.Projection = (CCDirectorProjection.Projection2D);
+            Camera.Projection = CCCameraProjection.Projection2D;
+
             base.OnExit();
         }
 

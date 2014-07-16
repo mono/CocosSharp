@@ -22,7 +22,7 @@ namespace tests
 
         private void performancePosition(CCSprite pSprite)
         {
-            CCSize size = Scene.VisibleBoundsWorldspace.Size;
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
             pSprite.Position = new CCPoint((CCRandom.Next() % (int)size.Width), (CCRandom.Next() % (int)size.Height));
         }
     }

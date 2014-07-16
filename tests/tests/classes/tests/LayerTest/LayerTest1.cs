@@ -22,9 +22,9 @@ namespace tests
 
 			AddEventListener(listener);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80), 200, 200);
+            CCLayerColor layer = new CCLayerColor(new CCColor4B(0xFF, 0x00, 0x00, 0x80));
 
             layer.IgnoreAnchorPointForPosition = false;
 			layer.Position = s.Center;
@@ -41,7 +41,7 @@ namespace tests
 
         public void updateSize(CCPoint touchLocation)
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCSize newSize = new CCSize(Math.Abs(touchLocation.X - s.Width / 2) * 2, Math.Abs(touchLocation.Y - s.Height / 2) * 2);
             CCLayerColor l = (CCLayerColor)GetChildByTag(kTagLayer);
@@ -72,7 +72,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayer();
 
 
@@ -136,9 +136,9 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
+            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255));
             layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
@@ -203,9 +203,9 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
+            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255));
             layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
@@ -262,7 +262,7 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var layer1 = new CCLayer();
 
             var sister1 = new CCSprite("Images/grossinis_sister1.png");
@@ -318,9 +318,9 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
+            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255));
             layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);
@@ -378,9 +378,9 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255), s.Width, s.Height / 2);
+            var layer1 = new CCLayerColor(new CCColor4B(192, 0, 0, 255));
             layer1.IsColorCascaded = false;
 
             layer1.Position = new CCPoint(0, s.Height / 2);

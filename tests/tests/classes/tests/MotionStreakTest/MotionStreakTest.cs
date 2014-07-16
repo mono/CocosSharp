@@ -74,7 +74,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             var label = new CCLabelTtf(title(), "arial", 32);
             AddChild(label, 0, kTagLabel);

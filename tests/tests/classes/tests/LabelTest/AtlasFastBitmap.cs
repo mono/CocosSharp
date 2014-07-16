@@ -28,7 +28,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			for (int i = 0; i < 100; i++)
 			{

@@ -24,7 +24,7 @@ namespace tests
             //
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCLabelTtf l = new CCLabelTtf("After 5 seconds grossini should move", "arial", 16);
             AddChild(l);

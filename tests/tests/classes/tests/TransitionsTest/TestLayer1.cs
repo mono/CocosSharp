@@ -38,7 +38,7 @@ namespace tests
 			Schedule(step, 1.0f);
             float x, y;
 
-            CCSize size = AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
             x = size.Width;
             y = size.Height;
 

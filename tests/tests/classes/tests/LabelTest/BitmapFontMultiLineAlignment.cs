@@ -50,7 +50,7 @@ namespace tests
             base.AddedToNewScene();
 
             // ask director the the window size
-            var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
 			// create and initialize a Label
 			label = new CCLabelBMFont(LongSentencesExample, "fonts/markerFelt.fnt", size.Width / 1.5f,
@@ -165,7 +165,7 @@ namespace tests
 		void onTouchesBegan(List<CCTouch> pTouches, CCEvent touchEvent)
         {
             CCTouch touch = pTouches[0];
-            CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
             if (arrows.BoundingBox.ContainsPoint(location))
             {
@@ -190,9 +190,9 @@ namespace tests
             }
 
             CCTouch touch = pTouches[0];
-            CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
 
             arrows.Position = new CCPoint(Math.Max(Math.Min(location.X, ArrowsMax * winSize.Width), ArrowsMin * winSize.Width),
                                                          arrows.Position.Y);

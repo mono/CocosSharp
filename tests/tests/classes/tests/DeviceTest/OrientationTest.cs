@@ -61,7 +61,7 @@ namespace tests
             do
             {
 
-                CCSize s = Scene.VisibleBoundsWorldspace.Size;
+                CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
                 CCLabelTtf label = new CCLabelTtf(title(), "Arial", 26);
                 AddChild(label, 1);
@@ -143,7 +143,7 @@ namespace tests
 
 				AddEventListener(touchListener);
 
-                CCSize s = Scene.VisibleBoundsWorldspace.Size;
+                CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
                 CCMenuItem item = new CCMenuItemFont("Rotate Device", RotateDevice);
                 CCMenu menu = new CCMenu(item);

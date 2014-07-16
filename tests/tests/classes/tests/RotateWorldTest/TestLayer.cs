@@ -15,7 +15,7 @@ namespace tests
         {
             base.OnEnter();
             float x, y;
-            CCSize size = Scene.VisibleBoundsWorldspace.Size;
+            CCSize size = Layer.VisibleBoundsWorldspace.Size;
             x = size.Width;
             y = size.Height;
             //CCMutableArray *array = [UIFont familyNames];

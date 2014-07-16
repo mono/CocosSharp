@@ -67,7 +67,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			label.Position = s.Center;
 			label2.Position = new CCPoint(s.Width / 2.0f, 80);
@@ -84,7 +84,7 @@ namespace tests
 
         protected override void Draw()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCDrawingPrimitives.Begin();
             CCDrawingPrimitives.DrawLine(new CCPoint(0, s.Height / 2), new CCPoint(s.Width, s.Height / 2));

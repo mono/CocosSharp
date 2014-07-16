@@ -61,7 +61,7 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             aParent.Position = (new CCPoint(windowSize.Width / 3, windowSize.Height / 2));
             aParent2.Position = (new CCPoint(2 * windowSize.Width / 3, windowSize.Height / 2));

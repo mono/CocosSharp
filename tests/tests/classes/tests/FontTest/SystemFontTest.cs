@@ -150,7 +150,7 @@ namespace tests.FontTest
 
 		public SystemFontTest()
 		{
-			size = Scene.VisibleBoundsWorldspace.Size;
+			size = Layer.VisibleBoundsWorldspace.Size;
 
 			CCMenuItemImage item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback);
 			CCMenuItemImage item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback);
@@ -165,12 +165,9 @@ namespace tests.FontTest
 
 			blockSize = new CCSize(size.Width / 3, 200);
 
-			var leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255), blockSize.Width,
-				blockSize.Height);
-			var centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255), blockSize.Width,
-				blockSize.Height);
-			var rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255), blockSize.Width,
-				blockSize.Height);
+			var leftColor = new CCLayerColor(new CCColor4B(100, 100, 100, 255));
+			var centerColor = new CCLayerColor(new CCColor4B(200, 100, 100, 255));
+			var rightColor = new CCLayerColor(new CCColor4B(100, 100, 200, 255));
 
 			leftColor.IgnoreAnchorPointForPosition = false;
 			centerColor.IgnoreAnchorPointForPosition = false;

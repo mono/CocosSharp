@@ -15,7 +15,7 @@ namespace tests.Extensions
 
         public CCControlStepperTest()
         {
-            CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             var layer = new CCNode();
             layer.Position = screenSize.Center;
@@ -73,7 +73,7 @@ namespace tests.Extensions
 
         public static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow,AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             var controlLayer = new CCControlStepperTest();
             if (controlLayer != null)
             {

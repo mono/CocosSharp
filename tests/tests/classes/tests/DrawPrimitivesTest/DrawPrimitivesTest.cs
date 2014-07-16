@@ -68,7 +68,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
 
@@ -96,7 +96,7 @@ namespace tests
         {
             base.Draw();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCDrawingPrimitives.Begin();
 
@@ -252,7 +252,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             CCDrawNode draw = new CCDrawNode();
             AddChild(draw, 10);
 

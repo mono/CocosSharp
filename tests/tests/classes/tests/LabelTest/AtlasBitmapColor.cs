@@ -34,7 +34,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			label1.Position = new CCPoint(s.Width / 2, s.Height / 4);
 			label2.Position = new CCPoint(s.Width / 2, 2 * s.Height / 4);

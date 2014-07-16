@@ -12,7 +12,7 @@ namespace tests
 
         public override void updateQuantityOfNodes()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // increase nodes
             if (currentQuantityOfNodes < quantityOfNodes)

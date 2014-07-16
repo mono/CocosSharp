@@ -230,7 +230,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             WindowSize = windowSize;
 			MidWindowPoint = windowSize.Center;
@@ -358,7 +358,7 @@ namespace tests
             var pos = new CCPoint(0, 0);
             if (Background != null)
             {
-                pos = Background.Scene.ScreenToWorldspace(CCPoint.Zero);
+                pos = Background.Layer.ScreenToWorldspace(CCPoint.Zero);
             }
 
             if (Emitter != null)
@@ -423,7 +423,7 @@ namespace tests
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFireworks(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -448,7 +448,7 @@ namespace tests
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCPoint emitterPos = new CCPoint(windowSize.Width / 2, 100);
             Emitter = new CCParticleFire(emitterPos);
@@ -476,7 +476,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSun(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -505,7 +505,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleGalaxy(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -534,7 +534,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFlower(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -561,7 +561,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(50);
             //Emitter.autorelease();
@@ -651,7 +651,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(300);
             //Emitter.autorelease();
@@ -737,7 +737,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleMeteor(MidWindowPoint);
 
@@ -762,7 +762,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSpiral(MidWindowPoint);
 
@@ -787,7 +787,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleExplosion(MidWindowPoint);
 
@@ -814,7 +814,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
@@ -841,7 +841,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSnow(new CCPoint(windowSize.Width / 2, windowSize.Height + 10));
 
@@ -890,7 +890,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleRain(new CCPoint (windowSize.Width / 2.0f, windowSize.Height));
             Background.AddChild(Emitter, 10);
@@ -917,7 +917,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(1000);
 
@@ -1000,7 +1000,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFlower(MidWindowPoint);
 
@@ -1030,7 +1030,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1093,7 +1093,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1141,7 +1141,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1222,7 +1222,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1304,7 +1304,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1398,7 +1398,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1456,7 +1456,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
-            Position = Scene.VisibleBoundsWorldspace.Center;
+            Position = Layer.VisibleBoundsWorldspace.Center;
 
 			RunActions (delayedShow);
 			RepeatForever (textThrob);
@@ -1484,7 +1484,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             label.Position = windowSize.Center;
 
@@ -1524,7 +1524,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
                 emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
 
-                CCSize s = Scene.VisibleBoundsWorldspace.Size;
+                CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 
                 int neg = (i == 0 ? 1 : -1);
@@ -1603,7 +1603,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1659,7 +1659,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1765,7 +1765,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             // emitter position
 			Position = windowSize.Center;
@@ -1783,7 +1783,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1819,7 +1819,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1861,7 +1861,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1910,7 +1910,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1985,7 +1985,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -2146,7 +2146,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);

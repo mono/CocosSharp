@@ -8,7 +8,7 @@ namespace tests
 {
     public class SpriteMainScene : CCScene
     {
-        public SpriteMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        public SpriteMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
         {
         }
 
@@ -25,7 +25,7 @@ namespace tests
             m_pSubTest = new SubTest();
             m_pSubTest.initWithSubTest(asubtest, this);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             lastRenderedCount = 0;
             quantityNodes = 0;

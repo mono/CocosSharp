@@ -95,7 +95,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-			CCSize s = Scene.VisibleBoundsWorldspace.Size;
+			CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			// init physics
 			initPhysics();
 			// create reset button
@@ -113,7 +113,7 @@ namespace tests
 
         private void initPhysics()
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             var gravity = new b2Vec2(0.0f, -10.0f);
             _world = new b2World(gravity);
@@ -185,7 +185,7 @@ namespace tests
 
             CCMenu menu = new CCMenu(res);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             menu.Position = new CCPoint(s.Width / 2, 30);
             AddChild(menu, -1);

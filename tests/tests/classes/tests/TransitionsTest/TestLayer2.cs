@@ -37,7 +37,7 @@ namespace tests
 
 			float x, y;
 
-            var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
 			x = size.Width;
 			y = size.Height;
 

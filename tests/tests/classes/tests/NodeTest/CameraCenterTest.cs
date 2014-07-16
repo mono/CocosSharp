@@ -58,7 +58,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			// Top Left
 			this[100].Position = new CCPoint(s.Width / 5 * 1, s.Height / 5 * 1);
@@ -128,7 +128,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);
 			sprite2.Position = new CCPoint (3 * s.Width / 4, s.Height / 2);
 		}
@@ -205,7 +205,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);
 			sprite2.Position = new CCPoint (3 * s.Width / 4, s.Height / 2);
 		}

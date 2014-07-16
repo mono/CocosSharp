@@ -61,7 +61,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             titleLabel.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 80);
 
@@ -86,7 +86,7 @@ namespace tests
 
         public void DidAccelerate(CCEventAccelerate accelEvent)
         {
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
 
             /*FIXME: Testing on the Nexus S sometimes ball is NULL */
             if (ball == null)
@@ -97,7 +97,7 @@ namespace tests
             CCSize ballSize = ball.ContentSize;
 
             CCPoint ptNow = ball.PositionWorldspace;
-            CCPoint ptTemp = Scene.WorldToScreenspace(ptNow);
+            CCPoint ptTemp = Layer.WorldToScreenspace(ptNow);
 
             var orientation = Application.CurrentOrientation;
 
@@ -120,7 +120,7 @@ namespace tests
             ptTemp.Y += (float)accelEvent.Acceleration.Y * 9.81f;
             #endif
 
-            CCPoint ptNext = Scene.ScreenToWorldspace(ptTemp);
+            CCPoint ptNext = Layer.ScreenToWorldspace(ptTemp);
             ptNext.X = MathHelper.Clamp(ptNext.X, (ballSize.Width / 2.0f), (winSize.Width - ballSize.Width / 2.0f));
             ptNext.Y = MathHelper.Clamp(ptNext.Y, (ballSize.Height / 2.0f), (winSize.Height - ballSize.Height / 2.0f));
             ball.Position = ball.WorldToParentspace(ptNext);

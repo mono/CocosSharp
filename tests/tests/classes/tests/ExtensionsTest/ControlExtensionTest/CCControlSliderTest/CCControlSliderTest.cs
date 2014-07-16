@@ -10,7 +10,7 @@ namespace tests.Extensions
 
         public CCControlSliderTest()
         {
-            CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             // Add a label in which the slider value will be displayed
             m_pDisplayValueLabel = new CCLabelTtf("Move the slider thumb!\nThe lower slider is restricted.", "Arial", 32);
@@ -61,7 +61,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             var controlLayer = new CCControlSliderTest();
             if (controlLayer != null)
             {

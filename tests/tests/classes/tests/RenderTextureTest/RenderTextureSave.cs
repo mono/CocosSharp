@@ -62,7 +62,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             // create a render texture, this is what we are going to draw into
             target = new CCRenderTexture(windowSize, windowSize,

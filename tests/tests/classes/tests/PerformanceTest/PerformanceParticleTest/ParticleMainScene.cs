@@ -10,7 +10,7 @@ namespace tests
 {
     public class ParticleMainScene : CCScene
     {
-        public ParticleMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        public ParticleMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
         {
         }
 
@@ -19,7 +19,7 @@ namespace tests
             //srandom(0);
 
             subtestNumber = asubtest;
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             lastRenderedCount = 0;
             quantityParticles = particles;

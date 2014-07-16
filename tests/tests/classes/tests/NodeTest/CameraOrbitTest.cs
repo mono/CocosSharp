@@ -12,7 +12,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			CCSprite p = new CCSprite(TestResource.s_back3);
 			AddChild(p, 0);

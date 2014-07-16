@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             CCMenuItemFont pMainItem = new CCMenuItemFont("Back", backCallback);
             pMainItem.Position = new CCPoint(s.Width - 50, 25);

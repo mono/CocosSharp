@@ -8,7 +8,7 @@ namespace tests.Extensions
 		{
 			base.OnEnter();
 
-			var	s = Scene.VisibleBoundsWorldspace.Size;
+			var	s = Layer.VisibleBoundsWorldspace.Size;
 
 			var pMenu = new CCMenu();
 			pMenu.Position = CCPoint.Zero;

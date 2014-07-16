@@ -16,12 +16,12 @@ namespace tests
 
         private void InitBug1159Layer()
         {
-                CCSize s = Scene.VisibleBoundsWorldspace.Size;
+                CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
                 CCLayerColor background = new CCLayerColor(new CCColor4B(255, 0, 255, 255));
                 AddChild(background);
 
-                CCLayerColor sprite_a = new CCLayerColor(new CCColor4B(255, 0, 0, 255), 700, 700);
+                CCLayerColor sprite_a = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
                 sprite_a.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_a.IgnoreAnchorPointForPosition = true;
                 sprite_a.Position = new CCPoint(0.0f, s.Height / 2);
@@ -31,7 +31,7 @@ namespace tests
                                                                        new CCMoveTo (1.0f, new CCPoint(1024.0f, 384.0f)),
                                                                        new CCMoveTo (1.0f, new CCPoint(0.0f, 384.0f)))));
 
-                CCLayerColor sprite_b = new CCLayerColor(new CCColor4B(0, 0, 255, 255), 400, 400);
+                CCLayerColor sprite_b = new CCLayerColor(new CCColor4B(0, 0, 255, 255));
                 sprite_b.AnchorPoint = new CCPoint(0.5f, 0.5f);
                 sprite_b.IgnoreAnchorPointForPosition = true;
                 sprite_b.Position = new CCPoint(s.Width / 2, s.Height / 2);
@@ -46,7 +46,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             //Bug1159Layer layer = Bug1159Layer.node();
             //pScene.addChild(layer);
 

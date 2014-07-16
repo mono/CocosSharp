@@ -42,7 +42,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             grossini.Position = new CCPoint(windowSize.Width / 3f, windowSize.Height / 2f);
             ball.Position = new CCPoint(windowSize.Width * 2f / 3f, windowSize.Height / 2f);
@@ -178,10 +178,10 @@ namespace tests
         #endregion Constructors
 
 
-        protected override void AddedToNewScene()
+        protected override void VisibleBoundsChanged()
         {
-            base.AddedToNewScene();
-            AddNewSpriteWithCoords(Scene.VisibleBoundsWorldspace.Center);
+            base.VisibleBoundsChanged();
+            AddNewSpriteWithCoords(Layer.VisibleBoundsWorldspace.Center);
         }
 
         void AddNewSpriteWithCoords(CCPoint p)
@@ -219,7 +219,7 @@ namespace tests
         {
             foreach (CCTouch touch in touches)
             {
-                var location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+                var location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
                 AddNewSpriteWithCoords(location);
             }
         }

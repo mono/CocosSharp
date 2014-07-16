@@ -15,7 +15,7 @@ namespace tests.Extensions
 
         public CCControlPotentiometerTest()
         {
-            CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             var layer = new CCNode();
             layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
@@ -65,9 +65,9 @@ namespace tests.Extensions
             _displayValueLabel.Text = string.Format("{0:0.00}", pControl.Value);
         }
 
-        public new static CCScene sceneWithTitle(string title)
+        public static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             var controlLayer = new CCControlPotentiometerTest();
             if (controlLayer != null)
             {

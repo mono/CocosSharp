@@ -305,7 +305,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Grossini.Position = new CCPoint(windowSize.Width / 2, windowSize.Height / 3);
             Tamara.Position = new CCPoint(windowSize.Width / 2, 2 * windowSize.Height / 3);
@@ -343,7 +343,7 @@ namespace tests
 
         protected void CenterSprites(uint numberOfSprites)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             if (numberOfSprites == 0)
             {
@@ -373,7 +373,7 @@ namespace tests
 
         protected void AlignSpritesLeft(uint numberOfSprites)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             if (numberOfSprites == 1)
             {
@@ -418,7 +418,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -451,7 +451,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Tamara.ScaleX = 2.5f;
             Tamara.ScaleY = -1.0f;
@@ -486,7 +486,7 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -531,7 +531,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -564,7 +564,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -600,7 +600,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -682,13 +682,13 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Tamara.RemoveFromParent(true);
             Grossini.RemoveFromParent(true);
             Kathia.RemoveFromParent(true);
 
-            CCSize boxSize = Scene.ScreenToWorldspace(new CCSize(200.0f, 200.0f));
+            CCSize boxSize = Layer.ScreenToWorldspace(new CCSize(200.0f, 200.0f));
 
             box1.ContentSize = boxSize;
             box1.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 100 - box1.ContentSize.Height / 2);
@@ -765,7 +765,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Tamara.RemoveFromParent(true);
             Grossini.RemoveFromParent(true);
@@ -827,7 +827,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -875,7 +875,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -904,7 +904,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -972,7 +972,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1020,7 +1020,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1065,7 +1065,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1135,7 +1135,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1176,7 +1176,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1222,7 +1222,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1237,7 +1237,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback1()
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -1246,7 +1246,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback2(CCNode sender)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -1255,7 +1255,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback3(CCNode sender, object data)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
 
@@ -1282,7 +1282,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1312,7 +1312,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback1()
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 1 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 1, s.Height / 2);
 
@@ -1321,7 +1321,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback2(CCNode sender)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 2 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 2, s.Height / 2);
 
@@ -1330,7 +1330,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         void Callback3(CCNode target, object data)
         {
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
             var label = new CCLabelTtf("callback 3 called", "arial", 16);
             label.Position = new CCPoint(s.Width / 4 * 3, s.Height / 2);
             AddChild(label);
@@ -1377,7 +1377,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
 
@@ -1424,7 +1424,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1465,7 +1465,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
             Grossini.RunAction(action);
@@ -1515,7 +1515,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1561,7 +1561,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1589,7 +1589,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 
@@ -1633,7 +1633,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1675,7 +1675,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
             Grossini.RunAction(action);
@@ -1726,7 +1726,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(2);
             Kathia.RunAction(action);
@@ -1767,7 +1767,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(2);
 
@@ -1825,7 +1825,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
@@ -1858,7 +1858,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(1);
 
@@ -1902,7 +1902,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -1948,7 +1948,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
             CCDrawManager.SharedDrawManager.PopMatrix();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
@@ -1988,7 +1988,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2089,7 +2089,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2124,7 +2124,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2166,7 +2166,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
                 if (touch == null)
                     break;
 
-                CCPoint location = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+                CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
                 AddNewSpriteWithCoords(location);
             }
@@ -2251,7 +2251,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void RunActionsInSprite(CCSprite sprite)
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // sprite 1
             CCBezierConfig bezier;
@@ -2301,7 +2301,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2421,7 +2421,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2494,7 +2494,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 			CCDrawingPrimitives.End();
             CCDrawManager.SharedDrawManager.PopMatrix();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
             CCDrawManager.SharedDrawManager.PushMatrix();
             CCDrawManager.SharedDrawManager.Translate(s.Width / 2, 50, 0);
@@ -2541,7 +2541,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2587,7 +2587,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2675,7 +2675,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2725,7 +2725,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2781,7 +2781,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2820,7 +2820,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(0);
 
@@ -2881,7 +2881,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(2);
 
@@ -2943,7 +2943,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AlignSpritesLeft(1);
 

@@ -79,7 +79,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             sprite.Position = (new CCPoint(windowSize.Width / 4 * 1, windowSize.Height / 2));
             sprite2.Position = (new CCPoint(windowSize.Width / 4 * 3, windowSize.Height / 2));
         }

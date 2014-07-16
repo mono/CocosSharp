@@ -85,7 +85,7 @@ namespace tests
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             label.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.25f);
             label2.Position = new CCPoint(windowSize.Width / 2, windowSize.Height * 0.5f);
@@ -168,7 +168,7 @@ base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
 
         public void renderScreenShot()
         {
-            var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
             var texture = new CCRenderTexture(size,size);
             //var texture = new CCRenderTexture(512, 512);
 

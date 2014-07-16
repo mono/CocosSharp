@@ -45,7 +45,7 @@ namespace tests
 
             sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
             sharedWindow = application.MainWindow;
-            sharedCamera = new CCCamera(boundsRect, boundsRect.Center);
+            sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
             application.PreferredBackBufferWidth = 1024;
@@ -82,8 +82,9 @@ namespace tests
 
             sharedWindow.AddSceneDirector(sharedDirector);
 
-            CCScene scene = new CCScene(sharedWindow, sharedCamera, sharedViewport, sharedDirector);
+            CCScene scene = new CCScene(sharedWindow, sharedViewport, sharedDirector);
             CCLayer layer = new TestController();
+            layer.Camera = sharedCamera;
 
             scene.AddChild(layer);
             sharedDirector.RunWithScene(scene);

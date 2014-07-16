@@ -12,7 +12,7 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
             m_pItmeMenu = new CCMenu(null);
 
             for (int i = 0; i < BugsTestScene.MAX_COUNT; ++i)
@@ -98,7 +98,7 @@ namespace tests
 
                 CCPoint curPos = m_pItmeMenu.Position;
                 CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-                CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+                CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
                 if (nextPos.Y < 0.0f)
                 {
                     m_pItmeMenu.Position = new CCPoint(0, 0);

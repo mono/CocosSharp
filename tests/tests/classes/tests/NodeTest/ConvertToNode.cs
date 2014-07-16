@@ -19,7 +19,7 @@ namespace tests
 
 			AddEventListener(listener);    
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			var rotate = new CCRotateBy (10, 360);
 
@@ -69,8 +69,8 @@ namespace tests
 					var node = this[100+i];
 					CCPoint p1, p2;
 
-                    p1 = node.Scene.ScreenToWorldspace(location);
-					p2 = node.Scene.ScreenToWorldspace(location);
+                    p1 = node.Layer.ScreenToWorldspace(location);
+					p2 = node.Layer.ScreenToWorldspace(location);
 
 					CCLog.Log("AR: x={0:f2}, y={1:f2} -- Not AR: x={2:f2}, y={3:f2}", p1.X, p1.Y, p2.X, p2.Y);
 				}

@@ -69,7 +69,7 @@ namespace Box2D.TestBed
         {
             CCPoint touchLocation = touch.LocationOnScreen;
 
-            CCPoint nodePosition = Scene.ScreenToWorldspace(touchLocation);
+            CCPoint nodePosition = Layer.ScreenToWorldspace(touchLocation);
             //    NSLog(@"pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
 
 			return m_test.MouseDown(new b2Vec2(nodePosition.X, nodePosition.Y));
@@ -79,7 +79,7 @@ namespace Box2D.TestBed
 		void onTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.LocationOnScreen;
-            CCPoint nodePosition = Scene.ScreenToWorldspace(touchLocation);
+            CCPoint nodePosition = Layer.ScreenToWorldspace(touchLocation);
 
             m_test.MouseMove(new b2Vec2(nodePosition.X, nodePosition.Y));
         }
@@ -87,7 +87,7 @@ namespace Box2D.TestBed
 		void onTouchEnded(CCTouch touch, CCEvent touchEvent)
         {
             CCPoint touchLocation = touch.LocationOnScreen;
-            CCPoint nodePosition = Scene.ScreenToWorldspace(touchLocation);
+            CCPoint nodePosition = Layer.ScreenToWorldspace(touchLocation);
 
             m_test.MouseUp(new b2Vec2(nodePosition.X, nodePosition.Y));
         }

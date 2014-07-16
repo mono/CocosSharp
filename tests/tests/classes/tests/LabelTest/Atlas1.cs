@@ -20,7 +20,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
 			//
 			// Notice: u,v tex coordinates are inverted

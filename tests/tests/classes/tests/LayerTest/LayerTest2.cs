@@ -12,14 +12,14 @@ namespace tests
         {
             base.OnEnter();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
-            var layer1 = new CCLayerColor(new CCColor4B(255, 255, 0, 80), 100, s.Height - 50);
+            var layer1 = new CCLayerColor(new CCColor4B(255, 255, 0, 80));
             layer1.Position = (new CCPoint(s.Width / 3, s.Height / 2));
             layer1.IgnoreAnchorPointForPosition = false;
             AddChild(layer1, 1);
 
-            var layer2 = new CCLayerColor(new CCColor4B(0, 0, 255, 255), 100, s.Height - 50);
+            var layer2 = new CCLayerColor(new CCColor4B(0, 0, 255, 255));
             layer2.Position = (new CCPoint((s.Width / 3) * 2, s.Height / 2));
             layer2.IgnoreAnchorPointForPosition = false;
             AddChild(layer2, 1);

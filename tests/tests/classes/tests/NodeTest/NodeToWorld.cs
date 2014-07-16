@@ -35,7 +35,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			var backSize = back.ContentSize;
 			menu.Position = backSize.Center;
@@ -89,7 +89,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			parent.ContentSize = windowSize;
 			parent.Position = windowSize.Center;

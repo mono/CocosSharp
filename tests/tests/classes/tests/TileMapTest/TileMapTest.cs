@@ -915,7 +915,7 @@ namespace tests
 			map.Position = new CCPoint(-s.Width / 2, 0);
 
 			float mapWidth = map.MapSize.Width * map.TileSize.Width;
-            m_tamara.Position = Scene.ScreenToWorldspace(new CCPoint (mapWidth / 2, 0));
+            m_tamara.Position = Layer.ScreenToWorldspace(new CCPoint (mapWidth / 2, 0));
 		}
 
 
@@ -927,7 +927,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = Scene.WorldToScreenspace(m_tamara.Position);
+            CCPoint p = Layer.WorldToScreenspace(m_tamara.Position);
             CCNode map = this[kTagTileMap];
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -990,7 +990,7 @@ namespace tests
 
         private void repositionSprite(float dt)
         {
-            CCPoint p = Scene.WorldToScreenspace(m_tamara.Position);
+            CCPoint p = Layer.WorldToScreenspace(m_tamara.Position);
 			CCNode map = this[kTagTileMap];
 
             // there are only 4 layers. (grass and 3 trees layers)
@@ -1049,7 +1049,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCSize s = map.ContentSize;
             map.Position = new CCPoint(-s.Width / 2, 0);
@@ -1117,9 +1117,9 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
-            var move = new CCMoveBy (10, Scene.ScreenToWorldspace(new CCPoint(400, 450)));
+            var move = new CCMoveBy (10, Layer.ScreenToWorldspace(new CCPoint(400, 450)));
             var back = move.Reverse();
 			m_tamara.RepeatForever(move, back);
 

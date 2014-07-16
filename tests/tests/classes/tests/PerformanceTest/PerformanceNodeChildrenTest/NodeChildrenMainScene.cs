@@ -10,7 +10,7 @@ namespace tests
     {
         long lStart;
 
-        public NodeChildrenMainScene(): base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        public NodeChildrenMainScene(): base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
         {
         }
 
@@ -29,7 +29,7 @@ namespace tests
         public virtual void initWithQuantityOfNodes(int nNodes)
         {
             //srand(time());
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // Title
             CCLabelTtf label = new CCLabelTtf(title(), "arial", 32);

@@ -21,7 +21,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
 
             pLable.Position = size.Center;
@@ -52,7 +52,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var size = Scene.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
             pLable.Position = size.Center;
 

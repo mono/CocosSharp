@@ -47,7 +47,7 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             var sprite = (CCSprite)GetChildByTag((int)kTagSprite.kTagSprite1);
             sprite.IsAntialiased = false;

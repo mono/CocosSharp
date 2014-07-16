@@ -16,7 +16,7 @@ namespace tests
         {
             base.AddedToNewScene();
 
-            var s = Scene.VisibleBoundsWorldspace.Size;
+            var s = Layer.VisibleBoundsWorldspace.Size;
 
 			this[CocosNodeTestStaticLibrary.kTagSprite1].Position = s.Center;
 
@@ -27,7 +27,7 @@ namespace tests
         {
             Unschedule(shouldNotCrash);
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             // if the node has timers, it crashes
 			CCParticleSun explosion = new CCParticleSun(s.Center);

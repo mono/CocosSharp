@@ -10,10 +10,15 @@ namespace tests
 
         CCMenu pMenu;
         CCMenuItemLabelTTF pMenuItem;
+        CCLayer contentLayer;
 
         public TestScene()
-            : base(AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+            : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
         {
+            contentLayer = new CCLayer();
+            contentLayer.Camera = AppDelegate.SharedCamera;
+            AddChild(contentLayer, MENU_LEVEL);
+
             //add the menu item for back to main menu
             var label = new CCLabelTtf("MainMenu", "arial", 30);
             pMenuItem = new CCMenuItemLabelTTF(label, MainMenuCallback);
@@ -21,13 +26,13 @@ namespace tests
             pMenu = new CCMenu(pMenuItem);
 
             pMenu.Name = "MainMenu";
-            AddChild(pMenu, MENU_LEVEL);
+            contentLayer.AddChild(pMenu, MENU_LEVEL);
         }
 
         public override void OnEnter()
         {
             base.OnEnter();
-            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+            CCRect visibleBounds = contentLayer.VisibleBoundsWorldspace;
             var visiblePoint = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - pMenuItem.ContentSize.Width - 10.0f, visibleBounds.Origin.Y + 25);
 
             pMenu.Position = CCPoint.Zero;
@@ -123,8 +128,8 @@ namespace tests
         {
             if (visibleRect.Size.Width == 0.0f && visibleRect.Size.Height == 0.0f)
             {
-                visibleRect.Origin = AppDelegate.SharedCamera.VisibleBoundsWorldspace.Origin;
-                visibleRect.Size = AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
+                visibleRect.Origin = CCPoint.Zero; //AppDelegate.SharedCamera.VisibleBoundsWorldspace.Origin;
+                visibleRect.Size = new CCSize (100.0f, 100.0f);//AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
             }
         }
 

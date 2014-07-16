@@ -67,12 +67,12 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             float step = windowSize.Width / 12;
 
 
-            //Director.Projection = CCDirectorProjection.Projection3D;
+            Camera.Projection = CCCameraProjection.Projection3D;
 
             // camera uses the center of the image as the pivoting point
             batch.ContentSize = windowSize;
@@ -92,7 +92,7 @@ namespace tests
 
         public override void OnExit()
         {
-            // Director.Projection = (CCDirectorProjection.Projection2D);
+            Camera.Projection = CCCameraProjection.Projection2D;
             base.OnExit();
         }
 

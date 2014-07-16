@@ -8,7 +8,7 @@ namespace tests.Extensions
 
         public CCControlSwitchTest()
         {
-            CCSize screenSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize screenSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCNode layer = new CCNode ();
             layer.Position = new CCPoint(screenSize.Width / 2, screenSize.Height / 2);
@@ -70,7 +70,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedCamera, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
             var controlLayer = new CCControlSwitchTest();
             if (controlLayer != null)
             {

@@ -35,7 +35,7 @@ namespace tests
         protected override void AddedToNewScene()
         {
             base.AddedToNewScene(); 
-            CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
 
@@ -92,7 +92,7 @@ namespace tests
                     break;
                 }
 
-                var location = Scene.ScreenToWorldspace(item.LocationOnScreen);
+                var location = Layer.ScreenToWorldspace(item.LocationOnScreen);
 
                 AddNewSpriteWithCoords(location);
             }

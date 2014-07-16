@@ -37,7 +37,7 @@ namespace tests
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Scene.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Schedule(checkAnim);
 
@@ -84,7 +84,7 @@ namespace tests
 				case 7:
 					return new WavesDemo(t);
 				case 8:
-					return new TwirlDemo(t, Scene.VisibleBoundsWorldspace.Size.Center);
+					return new TwirlDemo(t, Layer.VisibleBoundsWorldspace.Size.Center);
 				case 9:
 					return new ShakyTiles3DDemo(t);
 				case 10:

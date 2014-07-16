@@ -83,7 +83,7 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
             // Laying out content based on window size
             closeMenu.Position = CCPoint.Zero;
@@ -161,7 +161,7 @@ namespace tests
         {
             testListMenuItems[currentItemIndex].Selected = false;
             currentItemIndex = (currentItemIndex + 1) % testListMenuItems.Count;
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -174,7 +174,7 @@ namespace tests
             if(currentItemIndex < 0) {
                 currentItemIndex = testListMenuItems.Count - 1;
             }
-            CCSize winSize = Scene.VisibleBoundsWorldspace.Size;
+            CCSize winSize = Layer.VisibleBoundsWorldspace.Size;
             testListMenu.Position = (new CCPoint(0, homePosition.Y + currentItemIndex * LINE_SPACE));
             curPos = testListMenu.Position;
             SelectMenuItem();
@@ -285,7 +285,7 @@ namespace tests
 
             curPos = testListMenu.Position;
             CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
-            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             if (nextPos.Y < 0.0f)
             {
                 testListMenu.Position = new CCPoint(0, 0);
@@ -310,7 +310,7 @@ namespace tests
             // https://github.com/mono/MonoGame/issues/2276
             var delta = mouseEvent.ScrollY;
 
-            CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             var curPos = testListMenu.Position;
 
             var nextPos = curPos;

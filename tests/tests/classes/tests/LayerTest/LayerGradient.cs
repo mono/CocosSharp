@@ -37,13 +37,13 @@ namespace tests
 		{
             base.AddedToNewScene();
 
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			menu.Position = (new CCPoint(s.Width / 2, 100));
 		}
 
 		void onTouchesMoved(List<CCTouch> touches, CCEvent touchEvent)
         {
-            CCSize s = Scene.VisibleBoundsWorldspace.Size;
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             var it = touches.FirstOrDefault();
             CCTouch touch = (CCTouch)(it);

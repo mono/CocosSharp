@@ -75,7 +75,7 @@ namespace tests
 
         public bool containsTouchLocation(CCTouch touch)
         {
-            return rect().ContainsPoint(Scene.ScreenToWorldspace(touch.LocationOnScreen));
+            return rect().ContainsPoint(Layer.ScreenToWorldspace(touch.LocationOnScreen));
         }
 
 		bool onTouchBegan(CCTouch touch, CCEvent touchEvent)

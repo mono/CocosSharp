@@ -16,7 +16,7 @@ namespace tests
         {
             base.OnEnter();
 
-			var s = Scene.VisibleBoundsWorldspace.Size;
+			var s = Layer.VisibleBoundsWorldspace.Size;
 
 			var sprite = new CCSprite("Images/grossinis_sister1.png");
 			sprite.Position = s.Center;
