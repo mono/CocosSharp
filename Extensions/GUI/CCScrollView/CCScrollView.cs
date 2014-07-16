@@ -151,7 +151,7 @@ namespace CocosSharp
 						center = touchPoint;
 					}
 
-					CCPoint oldCenter = container.Scene.ScreenToWorldspace(center);
+					CCPoint oldCenter = container.Layer.ScreenToWorldspace(center);
 					container.Scale = Math.Max(minScale, Math.Min(maxScale, value));
 					CCPoint newCenter = oldCenter;
 
@@ -450,7 +450,7 @@ namespace CocosSharp
             //dispatcher does not know about clipping. reject touches outside visible bounds.
             if (touches.Count > 2 ||
                 IsTouchMoved ||
-                !frame.ContainsPoint(container.Scene.ScreenToWorldspace(pTouch.LocationOnScreen)))
+                !frame.ContainsPoint(container.Layer.ScreenToWorldspace(pTouch.LocationOnScreen)))
             {
                 return false;
             }
@@ -463,7 +463,7 @@ namespace CocosSharp
             if (touches.Count == 1)
             {
                 // scrolling
-                touchPoint = Scene.ScreenToWorldspace(pTouch.LocationOnScreen);
+                touchPoint = Layer.ScreenToWorldspace(pTouch.LocationOnScreen);
                 IsTouchMoved = false;
                 Dragging = true; //Dragging started
                 scrollDistance = CCPoint.Zero;
@@ -471,8 +471,8 @@ namespace CocosSharp
             }
             else if (touches.Count == 2)
             {
-                touchPoint = CCPoint.Midpoint(Scene.ScreenToWorldspace(touches[0].LocationOnScreen), Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
-                touchLength = CCPoint.Distance(container.Scene.ScreenToWorldspace(touches[0].LocationOnScreen), container.Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
+                touchPoint = CCPoint.Midpoint(Layer.ScreenToWorldspace(touches[0].LocationOnScreen), Layer.ScreenToWorldspace(touches[1].LocationOnScreen));
+                touchLength = CCPoint.Distance(container.Layer.ScreenToWorldspace(touches[0].LocationOnScreen), container.Layer.ScreenToWorldspace(touches[1].LocationOnScreen));
                 Dragging = false;
             }
             return true;
@@ -494,7 +494,7 @@ namespace CocosSharp
 
 					var frame = ViewRect;
 
-                    newPoint = Scene.ScreenToWorldspace(touches[0].LocationOnScreen);
+                    newPoint = Layer.ScreenToWorldspace(touches[0].LocationOnScreen);
                     moveDistance = newPoint - touchPoint;
 
                     float dis = 0.0f;
@@ -548,8 +548,8 @@ namespace CocosSharp
                 }
                 else if (touches.Count == 2 && !Dragging)
                 {
-                    float len = CCPoint.Distance(Scene.ScreenToWorldspace(touches[0].LocationOnScreen),
-                        Scene.ScreenToWorldspace(touches[1].LocationOnScreen));
+                    float len = CCPoint.Distance(Layer.ScreenToWorldspace(touches[0].LocationOnScreen),
+                        Layer.ScreenToWorldspace(touches[1].LocationOnScreen));
                     ZoomScale = ZoomScale * len / touchLength;
                 }
             }

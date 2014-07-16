@@ -189,7 +189,7 @@ namespace CocosSharp
 
         public bool TouchBegan(CCTouch touch)
         {
-            var pos = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            var pos = Layer.ScreenToWorldspace(touch.LocationOnScreen);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
                 return true;
@@ -204,7 +204,7 @@ namespace CocosSharp
 
         public void TouchEnded(CCTouch touch)
         {
-            var pos = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            var pos = Layer.ScreenToWorldspace(touch.LocationOnScreen);
             if (pos.X >= 0 && pos.X < ContentSize.Width && pos.Y >= 0 && pos.Y <= ContentSize.Height)
             {
                 Edit();

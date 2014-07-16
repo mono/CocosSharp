@@ -449,7 +449,7 @@ namespace CocosSharp
                 fontCharTextureRect.Origin.X += ImageOffset.X;
                 fontCharTextureRect.Origin.Y += ImageOffset.Y;
 
-                fontCharContentSize = Scene.ScreenToWorldspace(fontCharTextureRect.Size);
+                fontCharContentSize = Layer.ScreenToWorldspace(fontCharTextureRect.Size);
 
                 CCSprite fontChar;
 
@@ -501,7 +501,7 @@ namespace CocosSharp
                         (float) nextFontPositionX + fontDef.XOffset + fontDef.Subrect.Size.Width * 0.5f + kerningAmount,
                         (float) nextFontPositionY + yOffset - fontCharTextureRect.Size.Height * 0.5f);
 
-                fontChar.Position = Scene.ScreenToWorldspace(fontPos);
+                fontChar.Position = Layer.ScreenToWorldspace(fontPos);
 
                 // update kerning
                 nextFontPositionX += fontDef.XAdvance + kerningAmount;

@@ -54,7 +54,7 @@ namespace CocosSharp
     ///  You can add MenuItem objects in runtime using addChild:
     ///  But the only accecpted children are MenuItem objects
     /// </summary>
-    public class CCMenu : CCLayer
+    public class CCMenu : CCNode
     {
         public const float DefaultPadding = 5;
         public const int DefaultMenuHandlerPriority = -128;
@@ -147,18 +147,8 @@ namespace CocosSharp
         {
             base.AddedToNewScene();
 
-            if (Scene != null)
+            if (Scene != null) 
             {
-                CCRect visibleBounds = Scene.VisibleBoundsWorldspace;
-
-                // If the position has already been set then we need to respect 
-                // that position
-                if (Position == CCPoint.NegativeInfinity)
-                    Position = visibleBounds.Center;
-
-                if(ContentSize == CCSize.Zero)
-                    ContentSize = visibleBounds.Size;
-
                 var touchListener = new CCEventListenerTouchOneByOne();
                 touchListener.IsSwallowTouches = true;
 
@@ -184,6 +174,24 @@ namespace CocosSharp
                         AlignItemsInRows(alignmentState.NumberOfItemsPer);
                         break;
                 }
+            }
+        }
+
+        protected override void VisibleBoundsChanged()
+        {
+            base.VisibleBoundsChanged();
+
+            if (Camera != null)
+            {
+                CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
+
+                // If the position has already been set then we need to respect 
+                // that position
+                if (Position == CCPoint.NegativeInfinity)
+                    Position = visibleBounds.Center;
+
+                if(ContentSize == CCSize.Zero)
+                    ContentSize = visibleBounds.Size;
             }
         }
 
@@ -244,7 +252,7 @@ namespace CocosSharp
         protected virtual CCMenuItem ItemForTouch(CCTouch touch)
         {
             CCMenuItem touchedMenuItem = null;
-            CCPoint touchLocation = Scene.ScreenToWorldspace(touch.LocationOnScreen);
+            CCPoint touchLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
             if (menuItems != null && menuItems.Count > 0)
             {

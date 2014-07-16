@@ -350,7 +350,7 @@ namespace CocosSharp
 
             if (PositionType == CCPositionType.Free)
             {
-                currentPosition = Scene.VisibleBoundsWorldspace.Origin;
+                currentPosition = Layer.VisibleBoundsWorldspace.Origin;
             }
             else if (PositionType == CCPositionType.Relative)
             {

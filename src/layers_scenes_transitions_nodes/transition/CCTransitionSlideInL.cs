@@ -43,7 +43,7 @@ namespace CocosSharp
         /// </summary>
         protected virtual void InitScenes()
         {
-            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect bounds = Layer.VisibleBoundsWorldspace;
             InScene.Position = new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y);
         }
 
@@ -53,7 +53,7 @@ namespace CocosSharp
         /// <returns></returns>
         public virtual CCActionInterval Action()
         {
-            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect bounds = Layer.VisibleBoundsWorldspace;
             return new CCMoveBy(Duration, new CCPoint(bounds.Size.Width, 0));
         }
 

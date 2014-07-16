@@ -295,8 +295,8 @@ namespace CocosSharp
                     {
                         textureAtlas = batchNode.TextureAtlas;
 
-                        if (Scene != null && batchNode.Scene != Scene) {
-                            batchNode.Scene = Scene;
+                        if (Layer != null && batchNode.Layer != Layer) {
+                            batchNode.Layer = Layer;
                         }
                     }
 

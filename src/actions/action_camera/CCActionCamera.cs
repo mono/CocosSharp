@@ -29,9 +29,9 @@ namespace CocosSharp
 
     public class CCActionCameraState : CCActionIntervalState
     {
-        protected CCPoint CameraCenter;
-        protected CCPoint CameraTarget;
-        protected CCPoint CameraUpDirection;
+        protected CCPoint3 CameraCenter;
+        protected CCPoint3 CameraTarget;
+        protected CCPoint3 CameraUpDirection;
 
         public CCActionCameraState (CCActionCamera action, CCNode target)
             : base (action, target)

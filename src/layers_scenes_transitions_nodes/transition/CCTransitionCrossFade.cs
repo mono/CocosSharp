@@ -51,7 +51,7 @@ namespace CocosSharp
             // create a transparent color layer
             // in which we are going to add our rendertextures
             var color = new CCColor4B(0, 0, 0, 0);
-            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect bounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
             CCLayerColor layer = new CCLayerColor(color);
 

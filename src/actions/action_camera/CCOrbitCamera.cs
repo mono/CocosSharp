@@ -111,16 +111,16 @@ namespace CocosSharp
             float s;
 
             CCCamera camera = Target.Camera;
-            CCPoint cameraCenter = camera.CenterInWorldspace;
-            CCPoint cameraTarget = camera.TargetInWorldspace;
+            CCPoint3 cameraCenter = camera.CenterInWorldspace;
+            CCPoint3 cameraTarget = camera.TargetInWorldspace;
 
-            ex = cameraCenter.X;
-            ey = cameraCenter.Y;
-            ez = 0.0f;
+            ex = cameraTarget.X;
+            ey = cameraTarget.Y;
+            ez = cameraTarget.Z;
 
             cx = cameraCenter.X;
             cy = cameraCenter.Y;
-            cz = 0.0f;
+            cz = cameraCenter.Z;
 
             x = ex - cx;
             y = ey - cy;
@@ -150,8 +150,9 @@ namespace CocosSharp
 
             float i = (float)Math.Sin (za) * (float)Math.Cos (xa) * r + CameraCenter.X;
             float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraCenter.Y;
+            float k = (float)Math.Cos (za) * r + CameraCenter.Z;
 
-            Target.Camera.TargetInWorldspace = new CCPoint(i, j);
+            Target.Camera.TargetInWorldspace = new CCPoint3(i, j, k);
         }
     }
 }

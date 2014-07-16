@@ -57,7 +57,7 @@ namespace CocosSharp
 
 			BoundaryFullyCovered = false;
 
-            CCRect viewportBounds = followedNode.Scene.VisibleBoundsWorldspace;
+            CCRect viewportBounds = followedNode.Layer.VisibleBoundsWorldspace;
             FullScreenSize = (CCPoint)new CCPoint(viewportBounds.Size.Width, viewportBounds.Size.Height);
 			HalfScreenSize = FullScreenSize * 0.5f;
 

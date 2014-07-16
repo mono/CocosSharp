@@ -681,6 +681,41 @@ namespace CocosSharp
 
     }
 
+    #if !WINDOWS_PHONE && !NETFX_CORE
+    [Serializable, StructLayout(LayoutKind.Sequential)]
+    #endif
+    public struct CCPoint3
+    {
+        public float X;
+        public float Y;
+        public float Z;
+
+        public CCPoint3(float x, float y, float z)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
+        public CCPoint3(CCPoint xy, float z) : this(xy.X, xy.Y, z)
+        {
+        }
+
+        #region Operators
+
+        public static bool operator ==(CCPoint3 p1, CCPoint3 p2)
+        {
+            return p1.X == p2.X && p1.Y == p2.Y && p1.Z == p2.Z;
+        }
+
+        public static bool operator !=(CCPoint3 p1, CCPoint3 p2)
+        {
+            return p1.X != p2.X || p1.Y != p2.Y || p1.Z != p2.Z;
+        }
+
+        #endregion Operators
+    }
+
 #if !WINDOWS_PHONE && !NETFX_CORE
     [Serializable, StructLayout(LayoutKind.Sequential)]
 #endif

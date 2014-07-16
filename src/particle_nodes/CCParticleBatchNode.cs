@@ -172,9 +172,9 @@ namespace CocosSharp
             Debug.Assert(BlendFunc.Source == pChild.BlendFunc.Source && BlendFunc.Destination == pChild.BlendFunc.Destination, 
                 "Can't add a ParticleSystem that uses a differnt blending function");
 
-            // Set director before we call AddChildHelper
-            if(Scene != null)
-                pChild.Scene = Scene;
+            // Set layer before we call AddChildHelper
+            if(Layer != null)
+                pChild.Layer = Layer;
 
             // No lazy sorting, so don't call base AddChild, call helper instead
             int pos = AddChildHelper(pChild, zOrder, tag);

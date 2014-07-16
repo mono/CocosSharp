@@ -47,7 +47,7 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            CCRect bounds = VisibleBoundsWorldspace;
+            CCRect bounds = Layer.VisibleBoundsWorldspace;
             float aspect = bounds.Size.Width / bounds.Size.Height;
             var x = (int) (12 * aspect);
             int y = 12;

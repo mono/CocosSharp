@@ -45,6 +45,7 @@ namespace CocosSharp
 		public CCAction Action { get; protected set; }
 
         protected CCScene Scene { get; private set; }
+        protected CCLayer Layer { get; private set; }
 
 		public CCActionState (CCAction action, CCNode target)
 		{
@@ -52,7 +53,7 @@ namespace CocosSharp
 			this.Target = target;
 			this.OriginalTarget = target;
 			if (target != null)
-                this.Scene = target.Scene;
+                this.Layer = target.Layer;
 
 		}
 

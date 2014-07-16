@@ -27,37 +27,44 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
-    enum CCCameraProjection
+    public enum CCCameraProjection
     {
-        Projection2D,           /// Sets a 2D projection (orthogonal projection)
-        Projection3D,           /// Sets a 3D projection with a fovy=60, znear=0.5f and zfar=1500.
-        Custom,                 /// Calls "updateProjection" on the projection delegate.
-        Default = Projection3D  /// Default projection is 3D projection
+        Projection2D,           // Sets a 2D projection (orthogonal projection)
+        Projection3D,           // Sets a 3D projection
+        Default = Projection2D  // Default projection is 3D projection
     }
 
     /// <summary>
     /// A CCCamera is used in every CCNode.
     /// Useful to look at the object from different views.
-    /// The OpenGL gluLookAt() function is used to locate the camera.
     ///
     /// If the object is transformed by any of the scale, rotation or
     /// position attributes, then they will override the camera.
     /// IMPORTANT: Either your use the camera or the rotation/scale/position properties. You can't use both.
     /// World coordinates won't work if you use the camera.
-    ///
-    /// Limitations:
-    ///  - Some nodes, like CCParallaxNode, CCParticle uses world node coordinates, and they won't work properly if you move them (or any of their ancestors)
-    /// using the camera.
-    /// - It doesn't work on batched nodes like CCSprite objects when they are parented to a CCSpriteBatchNode object.
-    /// - It is recommended to use it ONLY if you are going to create 3D effects. For 2D effects, use the action CCFollow or position/scale/rotate.
     /// </summary>
     public class CCCamera
     {
+        static float defaultFieldOfView = (float)Math.PI / 4.0f;
+        static float defaultAspectRatio = 1.0f;
+        static CCPoint defaultNearAndFarOrthoClipping = new CCPoint (1024f, -1024f);
+        static CCPoint defaultNearAndFarPerspClipping = new CCPoint (0.1f, 1000f);
+
         internal event EventHandler OnCameraVisibleBoundsChanged = delegate {};
 
-        CCRect visibleBoundsWorldspace;
-        CCPoint targetInWorldspace;
-        CCPoint upDirection;
+        CCCameraProjection cameraProjection;
+
+        float aspectRatio;
+        float fieldOfView;
+
+        CCSize orthographicViewSizeWorldspace;
+
+        CCPoint3 centerInWorldspace;
+        CCPoint3 targetInWorldspace;
+        CCPoint3 upDirection;
+
+        CCPoint nearAndFarOrthographicZClipping;
+        CCPoint nearAndFarPerspectiveClipping;
 
         Matrix viewMatrix;
         Matrix projectionMatrix;
@@ -70,37 +77,99 @@ namespace CocosSharp
             get { return 1.192092896e-07F; }
         }
 
-        public CCRect VisibleBoundsWorldspace
+        public CCCameraProjection Projection
         {
-            get { return visibleBoundsWorldspace; }
+            get { return cameraProjection; }
             set 
             {
-                if(visibleBoundsWorldspace != value) 
+                if (cameraProjection != value) 
                 {
-                    visibleBoundsWorldspace = value;
+                    cameraProjection = value;
                     UpdateCameraMatrices();
                 }
             }
         }
 
-        public CCPoint CenterInWorldspace
+        public float PerspectiveAspectRatio
         {
-            get { return visibleBoundsWorldspace.Center; }
+            get { return aspectRatio; }
             set 
             {
-                if(visibleBoundsWorldspace.Center != value) 
+                if (aspectRatio != value)
                 {
-                    visibleBoundsWorldspace.Origin = new CCPoint(
-                        value.X - (float)Math.Floor(visibleBoundsWorldspace.Size.Width / 2.0f),
-                        value.Y - (float)Math.Floor(visibleBoundsWorldspace.Size.Height / 2.0f)
-                    );
-
+                    aspectRatio = value;
                     UpdateCameraMatrices();
                 }
             }
         }
 
-        public CCPoint TargetInWorldspace
+        public float PerspectiveFieldOfView
+        {
+            get { return fieldOfView; }
+            set 
+            {
+                if (fieldOfView != value)
+                {
+                    fieldOfView = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint NearAndFarOrthographicZClipping
+        {
+            get { return nearAndFarOrthographicZClipping; }
+            set 
+            {
+                if (nearAndFarOrthographicZClipping != value) 
+                {
+                    nearAndFarOrthographicZClipping = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint NearAndFarPerspectiveClipping
+        {
+            get { return nearAndFarPerspectiveClipping; }
+            set 
+            {
+                if (nearAndFarPerspectiveClipping != value) 
+                {
+                    nearAndFarPerspectiveClipping = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+
+        public CCSize OrthographicViewSizeWorldspace
+        {
+            get { return orthographicViewSizeWorldspace; }
+            set
+            {
+                if (orthographicViewSizeWorldspace != value) 
+                {
+                    orthographicViewSizeWorldspace = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint3 CenterInWorldspace
+        {
+            get { return centerInWorldspace; }
+            set 
+            {
+                if(centerInWorldspace != value) 
+                {
+                    centerInWorldspace = value;
+                    UpdateCameraMatrices();
+                }
+            }
+        }
+
+        public CCPoint3 TargetInWorldspace
         {
             get { return targetInWorldspace; }
             set 
@@ -113,7 +182,7 @@ namespace CocosSharp
             }
         }
 
-        public CCPoint UpDirection
+        public CCPoint3 UpDirection
         {
             get { return upDirection; }
             set 
@@ -141,10 +210,37 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCCamera(CCRect visibleBoundsWorldspaceIn, CCPoint targetInWorldspaceIn)
+        CCCamera(CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
         {
-            visibleBoundsWorldspace = visibleBoundsWorldspaceIn;
             targetInWorldspace = targetInWorldspaceIn;
+            centerInWorldspace = cameraCenterPositionWorldspaceIn;
+
+            nearAndFarOrthographicZClipping = defaultNearAndFarOrthoClipping;
+            nearAndFarPerspectiveClipping = defaultNearAndFarPerspClipping;
+            upDirection = new CCPoint3 (Vector3.Up.X, Vector3.Up.Y, Vector3.Up.Z);
+
+            fieldOfView = defaultFieldOfView;
+            aspectRatio = defaultAspectRatio;
+        }
+
+        public CCCamera(CCSize orthographicViewSizeWorldspaceIn, CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
+            : this(cameraCenterPositionWorldspaceIn, targetInWorldspaceIn)
+        {
+            cameraProjection = CCCameraProjection.Projection2D;
+
+            orthographicViewSizeWorldspace = orthographicViewSizeWorldspaceIn;
+
+            UpdateCameraMatrices();
+        }
+
+        public CCCamera(float perspectiveFieldOfViewIn, float perspectiveAspectRatioIn, CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
+            : this(cameraCenterPositionWorldspaceIn, targetInWorldspaceIn)
+        {
+            cameraProjection = CCCameraProjection.Projection3D;
+
+            fieldOfView = perspectiveFieldOfViewIn;
+            aspectRatio = perspectiveAspectRatioIn;
+
             UpdateCameraMatrices();
         }
 
@@ -153,15 +249,26 @@ namespace CocosSharp
 
         void UpdateCameraMatrices()
         {
-            projectionMatrix = Matrix.CreateOrthographic(
-                visibleBoundsWorldspace.Size.Width, visibleBoundsWorldspace.Size.Height, 1024.0f, -1024.0f);
+            Vector3 xnaCameraCenter = new Vector3(centerInWorldspace.X, centerInWorldspace.Y, centerInWorldspace.Z);
+            Vector3 xnaCameraTarget = new Vector3(targetInWorldspace.X, targetInWorldspace.Y, targetInWorldspace.Z);
+            Vector3 xnaCameraUpDirection = new Vector3(upDirection.X, upDirection.Y, upDirection.Z);
 
-            CCPoint cameraCenter = CenterInWorldspace;
-            Vector3 xnaCameraCenter = new Vector3(cameraCenter.X, cameraCenter.Y, 100.0f);
-            Vector3 xnaCameraTarget = new Vector3(targetInWorldspace.X, targetInWorldspace.Y, 0.0f);
-            Vector3 xnaCameraUpDirection = new Vector3(upDirection.X, upDirection.Y, 0.0f);
+            if (Projection == CCCameraProjection.Projection2D) 
+            {
+                projectionMatrix = Matrix.CreateOrthographic (
+                    orthographicViewSizeWorldspace.Width, orthographicViewSizeWorldspace.Height, 
+                    nearAndFarOrthographicZClipping.X, nearAndFarOrthographicZClipping.Y);
+            } 
+            else if (Projection == CCCameraProjection.Projection3D) 
+            {
+                projectionMatrix = Matrix.CreatePerspective(
+                    fieldOfView,
+                    aspectRatio,
+                    nearAndFarPerspectiveClipping.X, nearAndFarPerspectiveClipping.Y
+                );
+            }
 
-            viewMatrix = Matrix.CreateLookAt(xnaCameraCenter, xnaCameraTarget, Vector3.Up);
+            viewMatrix = Matrix.CreateLookAt(xnaCameraCenter, xnaCameraTarget, xnaCameraUpDirection);
 
             OnCameraVisibleBoundsChanged(this, null);
         }

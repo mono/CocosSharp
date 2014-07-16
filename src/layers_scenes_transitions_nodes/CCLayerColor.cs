@@ -86,20 +86,14 @@ namespace CocosSharp
         {
         }
 
-        public CCLayerColor (CCColor4B color) : this(color, 0.0f, 0.0f)
-        {
-        }
-
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public CCLayerColor (CCColor4B color,float width, float height) : base()
+        public CCLayerColor (CCColor4B color) : base()
         {
             DisplayedColor = RealColor = new CCColor3B(color.R, color.G, color.B);
             DisplayedOpacity = RealOpacity = color.A;
             BlendFunc = CCBlendFunc.NonPremultiplied;
-
-            ContentSize = new CCSize(width, height);
             UpdateColor();
         }
 

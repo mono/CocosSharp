@@ -273,7 +273,7 @@ namespace CocosSharp
         public virtual CCPoint GetTouchLocation(CCTouch touch)
         {
             CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
-            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
+            touchLocation = WorldToParentspace(Layer.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
 
             return touchLocation;
         }
@@ -290,7 +290,7 @@ namespace CocosSharp
         public virtual bool IsTouchInside(CCTouch touch)
         {
             CCPoint touchLocation = touch.LocationOnScreen;
-            touchLocation = Parent.Scene.ScreenToWorldspace(touchLocation);
+            touchLocation = Parent.Layer.ScreenToWorldspace(touchLocation);
             CCRect bBox = TransformedBoundingBoxWorldspace;
             return bBox.ContainsPoint(touchLocation);
         }

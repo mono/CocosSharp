@@ -138,7 +138,7 @@ namespace CocosSharp
         public CCPoint LocationFromTouch(CCTouch touch)
         {
             CCPoint touchLocation = touch.LocationOnScreen;
-            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation));	
+            touchLocation = WorldToParentspace(Layer.ScreenToWorldspace(touchLocation));	
 
             return touchLocation;
         }

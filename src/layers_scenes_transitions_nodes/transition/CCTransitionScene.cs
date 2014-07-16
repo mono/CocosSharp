@@ -33,7 +33,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCTransitionScene (float t, CCScene scene) 
-            : base(scene.Window, scene.Camera, scene.Viewport, scene.Director)
+            : base(scene.Window, scene.Viewport, scene.Director)
         {
             InitCCTransitionScene(t, scene);
         }
@@ -50,7 +50,7 @@ namespace CocosSharp
             if (OutScene == null)
             {
                 // Creating an empty scene.
-                OutScene = new CCScene(scene.Window, scene.Camera, scene.Viewport, scene.Director);
+                OutScene = new CCScene(scene.Window, scene.Viewport, scene.Director);
             }
 
             Debug.Assert(InScene != OutScene, "Incoming scene must be different from the outgoing scene");
@@ -63,12 +63,12 @@ namespace CocosSharp
 
         #region Scene callbacks
 
-        protected virtual void AddedToNewScene()
+        protected override void AddedToNewScene()
         {
             base.AddedToNewScene();
 
             if (InScene != null && InScene.ContentSize == CCSize.Zero)
-                InScene.ContentSize = Scene.VisibleBoundsWorldspace.Size;
+                InScene.ContentSize = Layer.VisibleBoundsWorldspace.Size;
         }
 
         #endregion Scene callbacks

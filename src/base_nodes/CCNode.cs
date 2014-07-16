@@ -104,6 +104,7 @@ namespace CocosSharp
         CCGridBase grid;
 
         CCScene scene;
+        CCLayer layer;
 
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
@@ -575,7 +576,6 @@ namespace CocosSharp
                     if(scene != null) 
                     {
                         scene.SceneViewportChanged -= OnSceneViewportChanged;
-                        scene.SceneVisibleBoundsChanged -= OnSceneVisibleBoundsChanged;
                     }
 
                     scene = value;
@@ -596,16 +596,42 @@ namespace CocosSharp
                     {
                         AddedToNewScene();
                         scene.SceneViewportChanged += OnSceneViewportChanged;
-                        scene.SceneVisibleBoundsChanged += OnSceneVisibleBoundsChanged;
 
                         OnSceneViewportChanged(this, null);
-                        OnSceneVisibleBoundsChanged(this, null);
                     }
 
                     AttachEvents();
                 }
             }
         }
+
+        public virtual CCLayer Layer 
+        {
+            get { return layer; }
+            internal set 
+            {
+                if (layer != value) 
+                {
+                    if (layer != null) 
+                    {
+                        layer.LayerVisibleBoundsChanged -= OnLayerVisibleBoundsChanged;
+                    }
+
+                    layer = value;
+
+                    if (layer != null) 
+                    {
+                        layer.LayerVisibleBoundsChanged += OnLayerVisibleBoundsChanged;
+
+                        OnLayerVisibleBoundsChanged(this, null);
+                    }
+
+                    if (layer.Scene != null)
+                        this.Scene = layer.Scene;
+                }
+            }
+        }
+
 
         public virtual CCApplication Application
         {
@@ -620,8 +646,8 @@ namespace CocosSharp
 
         public virtual CCCamera Camera
         {
-            get { return Scene.Camera; }
-            set { Scene.Camera = value; }
+            get { return Layer.Camera; }
+            set { Layer.Camera = value; }
         }
 
         public virtual CCWindow Window 
@@ -720,7 +746,7 @@ namespace CocosSharp
             ViewportChanged();
         }
 
-        void OnSceneVisibleBoundsChanged (object sender, EventArgs e)
+        void OnLayerVisibleBoundsChanged (object sender, EventArgs e)
         {
             VisibleBoundsChanged();
         }
@@ -977,8 +1003,9 @@ namespace CocosSharp
                 child.ResetCleanState();
             }
 
-            // We want all our children to have the same scene as us
+            // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
+            child.Layer = this.Layer;
             child.Scene = this.Scene;
 
             if (IsRunning)

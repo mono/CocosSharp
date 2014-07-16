@@ -54,7 +54,7 @@ namespace CocosSharp
             pt = CCPoint.Zero;
             CCAffineTransform affine1 = target.AffineLocalTransform;
             CCAffineTransform affine2 = target.AffineLocalTransform;
-            CCRect myBBInWorld = Camera.VisibleBoundsWorldspace;
+            CCRect myBBInWorld = Layer.VisibleBoundsWorldspace;
             CCRect targetBBInWorld = target.BoundingBox;
 
             if (!myBBInWorld.IntersectsRect(targetBBInWorld))

@@ -612,7 +612,7 @@ namespace CocosSharp
             {
                 CCRect bb = BoundingBox;
 
-                if (bb.ContainsPoint(Scene.ScreenToWorldspace(pTouch.LocationOnScreen)) && Delegate != null)
+                if (bb.ContainsPoint(Layer.ScreenToWorldspace(pTouch.LocationOnScreen)) && Delegate != null)
                 {
                     Delegate.TableCellUnhighlight(this, touchedCell);
                     Delegate.TableCellTouched(this, touchedCell);

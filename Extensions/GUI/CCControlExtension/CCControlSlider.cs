@@ -169,7 +169,7 @@ namespace CocosSharp
 		protected virtual CCPoint LocationFromTouch(CCTouch touch)
 		{
 			CCPoint touchLocation = touch.LocationOnScreen; // Get the touch position
-            touchLocation = WorldToParentspace(Scene.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
+            touchLocation = WorldToParentspace(Layer.ScreenToWorldspace(touchLocation)); // Convert to the node space of this class
 
 			if (touchLocation.X < 0)
 			{
@@ -185,7 +185,7 @@ namespace CocosSharp
 		public override bool IsTouchInside(CCTouch touch)
 		{
 			CCPoint touchLocation = touch.LocationOnScreen;
-			touchLocation = Scene.ScreenToWorldspace(touchLocation);
+			touchLocation = Layer.ScreenToWorldspace(touchLocation);
 
             CCRect rect = TransformedBoundingBoxWorldspace;
 			rect.Size.Width += ThumbSprite.ContentSize.Width;

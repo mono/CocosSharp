@@ -189,6 +189,7 @@ namespace CocosSharp
         public CCWindow Window { get; set; }
         public CCViewport Viewport { get; set; }
         public CCCamera Camera { get; set; }
+        public CCLayer Layer { get; set; }
         public CCDirector Director { get; set; }
 
         public CCBReader(CCNodeLoaderLibrary nodeLoaderLibrary)
@@ -307,7 +308,7 @@ namespace CocosSharp
             AnimationManager = pActionManager;
 
             // Setup resolution scale and container size
-            _actionManager.RootContainerSize = Camera.VisibleBoundsWorldspace.Size;
+            _actionManager.RootContainerSize = Layer.VisibleBoundsWorldspace.Size;
 
 			HasScriptingOwner = false;
 
@@ -321,7 +322,7 @@ namespace CocosSharp
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner)
         {
-            return ReadNodeGraphFromFile(fileName, owner, Camera.VisibleBoundsWorldspace.Size);
+            return ReadNodeGraphFromFile(fileName, owner, Layer.VisibleBoundsWorldspace.Size);
         }
 
         public CCNode ReadNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
@@ -399,13 +400,13 @@ namespace CocosSharp
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner)
         {
-            return CreateSceneWithNodeGraphFromFile(fileName, owner, Camera.VisibleBoundsWorldspace.Size);
+            return CreateSceneWithNodeGraphFromFile(fileName, owner, Layer.VisibleBoundsWorldspace.Size);
         }
 
         public CCScene CreateSceneWithNodeGraphFromFile(string fileName, object owner, CCSize parentSize)
         {
             CCNode pNode = ReadNodeGraphFromFile(fileName, owner, parentSize);
-            CCScene pScene = new CCScene(Window, Camera, Viewport, Director);
+            CCScene pScene = new CCScene(Window, Viewport, Director);
             pScene.AddChild(pNode);
 
             return pScene;

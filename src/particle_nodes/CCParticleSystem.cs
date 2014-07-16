@@ -241,8 +241,8 @@ namespace CocosSharp
                             }
                         }
 
-                        if(Scene != null && BatchNode.Scene != Scene)
-                            BatchNode.Scene = Scene;
+                        if(Layer != null && BatchNode.Layer != Layer)
+                            BatchNode.Layer = Layer;
                     }
                 }
             }
@@ -381,6 +381,20 @@ namespace CocosSharp
                 }
 
                 base.Scene = value;
+            }
+        }
+
+        public override CCLayer Layer 
+        { 
+            get { return base.Layer; }
+            internal set 
+            {
+                if(Layer != null && BatchNode != null && BatchNode.Layer != Layer)
+                {
+                    BatchNode.Layer = Layer;
+                }
+
+                base.Layer = value;
             }
         }
 
@@ -683,7 +697,7 @@ namespace CocosSharp
 
             if (PositionType == CCPositionType.Free)
             {
-                particleBase.StartPosition = Camera.VisibleBoundsWorldspace.Origin;
+                particleBase.StartPosition = Layer.VisibleBoundsWorldspace.Origin;
             }
             else if (PositionType == CCPositionType.Relative)
             {

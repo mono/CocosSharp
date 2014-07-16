@@ -58,7 +58,7 @@ namespace CocosSharp
 
 		public CCSplitRowsState (CCSplitRows action, CCNode target) : base (action, target)
 		{
-            VisibleBounds = Scene.VisibleBoundsWorldspace;
+            VisibleBounds = Layer.VisibleBoundsWorldspace;
 		}
 
 		public override void Update (float time)

@@ -48,6 +48,20 @@ namespace CocosSharp
             }
         }
 
+        public override CCLayer Layer 
+        { 
+            get { return base.Layer; }
+            internal set 
+            {
+                base.Layer = value;
+
+                if(value != null && reusedTile != null)
+                {
+                    reusedTile.Layer = value;
+                }
+            }
+        }
+
         #endregion Properties
 
 
