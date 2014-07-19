@@ -70,7 +70,7 @@ namespace CocosSharp
 
                     camera.OnCameraVisibleBoundsChanged += OnCameraVisibleBoundsChanged;
 
-                    OnCameraVisibleBoundsChanged(this, null);
+                    OnCameraVisibleBoundsChanged(camera, null);
                 }
             }
         }
@@ -148,6 +148,7 @@ namespace CocosSharp
             if(camera != null && camera == Camera) 
             {
                 LayerVisibleBoundsChanged(this, null);
+                VisibleBoundsChanged();
             }
         }
 
@@ -169,6 +170,9 @@ namespace CocosSharp
 
         void UpdateVisibleBoundsRect()
         {
+            if(Viewport == null)
+                return;
+
             CCRect viewportRect = Viewport.ViewportInPixels;
 
             // Want to determine worldspace bounds relative to camera target

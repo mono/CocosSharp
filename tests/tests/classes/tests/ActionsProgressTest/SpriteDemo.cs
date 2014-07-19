@@ -18,6 +18,7 @@ namespace tests
 		{
 			base.OnEnter();
             CCLayerColor background = new CCLayerColor(new CCColor4B(255,0,0,255));
+            background.Camera = AppDelegate.SharedCamera;
             AddChild(background, -10);
 		}
 

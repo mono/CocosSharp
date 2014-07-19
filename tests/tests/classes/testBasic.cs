@@ -111,6 +111,7 @@ namespace tests
         {
             CCScene pScene = new CCScene(Scene);
             CCLayer pLayer = new TestController();
+            pLayer.Camera = AppDelegate.SharedCamera;
 
             pScene.AddChild(pLayer);
             Director.ReplaceScene(pScene);

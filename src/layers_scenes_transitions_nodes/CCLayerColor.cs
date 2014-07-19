@@ -99,6 +99,19 @@ namespace CocosSharp
 
         #endregion Constructors
 
+        protected override void VisibleBoundsChanged()
+        {
+            base.VisibleBoundsChanged();
+
+            UpdateVerticesPosition();
+        }
+
+        protected override void ViewportChanged()
+        {
+            base.VisibleBoundsChanged();
+
+            UpdateVerticesPosition();
+        }
 
         protected override void Draw()
         {

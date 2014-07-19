@@ -658,7 +658,7 @@ namespace CocosSharp
 
         public virtual CCViewport Viewport
         {
-            get { return Scene.Viewport; }
+            get { return Scene != null ? Scene.Viewport : null; }
             set { Scene.Viewport = value; }
         }
 
