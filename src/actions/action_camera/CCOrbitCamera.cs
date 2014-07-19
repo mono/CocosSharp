@@ -2,23 +2,19 @@ using System;
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// CCOrbitCamera action
-    /// Orbits the camera around the center of the screen using spherical coordinates
-    /// </summary>
+    // Orbits the camera around the center of the screen using spherical coordinates
     public class CCOrbitCamera : CCActionCamera
     {
+        #region Properties
+
         public float AngleX { get; private set; }
-
         public float AngleZ { get; private set; }
-
         public float DeltaAngleX { get; private set; }
-
         public float DeltaAngleZ { get; private set; }
-
         public float DeltaRadius { get; private set; }
-
         public float Radius { get; private set; }
+
+        #endregion Properties
 
 
         #region Constructors
@@ -36,40 +32,33 @@ namespace CocosSharp
 
         #endregion Constructors
 
-        /// <summary>
-        /// Start the Orbit Camera operation on the given target.
-        /// </summary>
-        /// <param name="target"></param>
+
         protected internal override CCActionState StartAction (CCNode target)
         {
             return new CCOrbitCameraState (this, target);
-
         }
 
     }
 
     public class CCOrbitCameraState : CCActionCameraState
     {
+        #region Properties
 
         protected float AngleX { get; set; }
-
         protected float AngleZ { get; set; }
-
         protected float DeltaAngleX { get; set; }
-
         protected float DeltaAngleZ { get; set; }
-
         protected float DeltaRadius { get; set; }
-
         protected float RadDeltaX  { get; set; }
-
         protected float RadDeltaZ { get; set; }
-
         protected float RadX { get; set; }
-
         protected float RadZ { get; set; }
-
         protected float Radius { get; set; }
+
+        #endregion Properties
+
+
+        #region Constructors
 
         public CCOrbitCameraState (CCOrbitCamera action, CCNode target)
             : base (action, target)
@@ -103,6 +92,9 @@ namespace CocosSharp
             RadZ = CCMacros.CCDegreesToRadians (AngleZ);
             RadX = CCMacros.CCDegreesToRadians (AngleX);
         }
+
+        #endregion Constructors
+
 
         void SphericalRadius (out float newRadius, out float zenith, out float azimuth)
         {
@@ -142,15 +134,15 @@ namespace CocosSharp
             newRadius = r / CCCamera.ZEye;
         }
 
-        public override void Update (float time)
+        public override void Update(float time)
         {
             float r = (Radius + DeltaRadius * time) * CCCamera.ZEye;
             float za = RadZ + RadDeltaZ * time;
             float xa = RadX + RadDeltaX * time;
 
-            float i = (float)Math.Sin (za) * (float)Math.Cos (xa) * r + CameraCenter.X;
-            float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraCenter.Y;
-            float k = (float)Math.Cos (za) * r + CameraCenter.Z;
+            float i = (float)Math.Sin (za) * (float)Math.Cos (xa) * r + CameraTarget.X;
+            float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraTarget.Y;
+            float k = (float)Math.Cos (za) * r + CameraTarget.Z;
 
             Target.Camera.TargetInWorldspace = new CCPoint3(i, j, k);
         }

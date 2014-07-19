@@ -170,7 +170,7 @@ namespace CocosSharp
 
         void UpdateVisibleBoundsRect()
         {
-            if(Viewport == null)
+            if(Viewport == null || Camera == null)
                 return;
 
             CCRect viewportRect = Viewport.ViewportInPixels;

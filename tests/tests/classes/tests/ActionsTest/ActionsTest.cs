@@ -211,6 +211,8 @@ namespace tests
                     break;
             }
 
+            layer.Camera = AppDelegate.SharedCamera;
+
             return layer;
         }
 
@@ -1825,7 +1827,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CenterSprites(3);
 
