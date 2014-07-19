@@ -67,6 +67,7 @@ namespace tests
         public void nextCallback(object pSender)
         {
             CCScene s = new ActionManagerTestScene();
+
             s.AddChild(nextActionManagerAction());
             Director.ReplaceScene(s);
         }
@@ -113,6 +114,7 @@ namespace tests
             sceneIdx = sceneIdx % MAX_LAYER;
 
             CCLayer pLayer = createActionManagerLayer(sceneIdx);
+            pLayer.Camera = AppDelegate.SharedCamera;
 
             return pLayer;
         }
@@ -120,6 +122,7 @@ namespace tests
         public static CCLayer restartActionManagerAction()
         {
             CCLayer pLayer = createActionManagerLayer(sceneIdx);
+            pLayer.Camera = AppDelegate.SharedCamera;
 
             return pLayer;
         }
