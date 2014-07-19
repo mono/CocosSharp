@@ -1,43 +1,45 @@
 namespace CocosSharp
 {
-	public class CCFiniteTimeAction : CCAction
-	{
-		public virtual float Duration { get; set; }
+    public class CCFiniteTimeAction : CCAction
+    {
+        public virtual float Duration { get; set; }
 
-		#region Constructors
 
-		protected CCFiniteTimeAction ()
-		{
-		}
+        #region Constructors
 
-		protected CCFiniteTimeAction (float d)
-		{
-			Duration = d;
-		}
+        protected CCFiniteTimeAction()
+        {
+        }
 
-		#endregion Constructors
+        protected CCFiniteTimeAction (float d)
+        {
+            Duration = d;
+        }
 
-		protected internal override CCActionState StartAction (CCNode target)
-		{
-			return new CCFiniteTimeActionState (this, target);
+        #endregion Constructors
 
-		}
 
-		public virtual CCFiniteTimeAction Reverse ()
-		{
-			CCLog.Log ("CocosSharp: FiniteTimeAction#reverse: Implement me");
-			return null;
-		}
-	}
+        protected internal override CCActionState StartAction (CCNode target)
+        {
+            return new CCFiniteTimeActionState (this, target);
 
-	public class CCFiniteTimeActionState : CCActionState
-	{
-		public CCFiniteTimeActionState (CCFiniteTimeAction action, CCNode target)
-			: base (action, target)
-		{ 
-			Duration = action.Duration;
-		}
+        }
 
-		public virtual float Duration { get; set; }
-	}
+        public virtual CCFiniteTimeAction Reverse ()
+        {
+            CCLog.Log ("CocosSharp: FiniteTimeAction#reverse: Implement me");
+            return null;
+        }
+    }
+
+    public class CCFiniteTimeActionState : CCActionState
+    {
+        public CCFiniteTimeActionState (CCFiniteTimeAction action, CCNode target)
+            : base (action, target)
+        { 
+            Duration = action.Duration;
+        }
+
+        public virtual float Duration { get; set; }
+    }
 }
