@@ -33,11 +33,9 @@ namespace CocosSharp
         public CCActionCameraState (CCActionCamera action, CCNode target)
             : base (action, target)
         {       
-            CCCamera camera = target.Camera;
-
-            CameraCenter = camera.CenterInWorldspace;
-            CameraTarget = camera.TargetInWorldspace;
-            CameraUpDirection = camera.UpDirection;
+            CameraCenter = target.FauxLocalCameraCenter;
+            CameraTarget = target.FauxLocalCameraTarget;
+            CameraUpDirection = target.FauxLocalCameraUpDirection;
         }
 
     }

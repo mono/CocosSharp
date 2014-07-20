@@ -1811,7 +1811,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             var orbit2 = new CCOrbitCamera(2, 1, 0, 0, 180, -45, 0);
             action2 = new CCSequence(orbit2, orbit2.Reverse());
 
-            var orbit3 = new CCOrbitCamera(2, 1, 0, 0, 180, 90, 0);
+            var orbit3 = new CCOrbitCamera(2, 1, 0, 0, 90, 90, 0);
             action3 = new CCSequence(orbit3, orbit3.Reverse());
 
             var move = new CCMoveBy (3, new CCPoint(100, -100));
@@ -1829,6 +1829,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
+            //Camera.Projection = CCCameraProjection.Projection3D;
+
             CenterSprites(3);
 
             Kathia.RunAction(new CCRepeatForever (action1));
@@ -1838,6 +1840,13 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             Kathia.RunAction(rfe);
             Tamara.RunAction(rfe);
             Grossini.RunAction(rfe);
+        }
+
+        public override void OnExit ()
+        {
+            base.OnExit();
+
+            //Camera.Projection = CCCameraProjection.Projection2D;
         }
 
         #endregion Setup content

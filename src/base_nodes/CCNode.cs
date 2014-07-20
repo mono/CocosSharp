@@ -99,6 +99,10 @@ namespace CocosSharp
 
         CCSize contentSize;
 
+        CCPoint3 fauxLocalCameraCenter;
+        CCPoint3 fauxLocalCameraTarget;
+        CCPoint3 fauxLocalCameraUpDirection;
+
         Dictionary<int, List<CCNode>> childrenByTag;
 
         CCGridBase grid;
@@ -472,6 +476,10 @@ namespace CocosSharp
                 {
                     contentSize = value;
                     anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X, contentSize.Height * anchorPoint.Y);
+
+                    if(grid != null)
+                        grid.ContentSize = contentSize;
+
                     UpdateTransform();
                 }
             }
@@ -562,6 +570,7 @@ namespace CocosSharp
                 if(value != null && Scene != null) 
                 {
                     grid.Scene = Scene;
+                    grid.ContentSize = ContentSize;
                 }
             }
         }
@@ -677,6 +686,45 @@ namespace CocosSharp
             }
         }
 
+        internal CCPoint3 FauxLocalCameraCenter 
+        { 
+            get { return fauxLocalCameraCenter; }
+            set 
+            {
+                if (fauxLocalCameraCenter != value) 
+                {
+                    fauxLocalCameraCenter = value;
+                    UpdateTransform();
+                }
+            }
+        }
+
+        internal CCPoint3 FauxLocalCameraTarget
+        { 
+            get { return fauxLocalCameraTarget; }
+            set 
+            {
+                if (fauxLocalCameraTarget != value) 
+                {
+                    fauxLocalCameraTarget = value;
+                    UpdateTransform();
+                }
+            }
+        }
+
+        internal CCPoint3 FauxLocalCameraUpDirection
+        { 
+            get { return fauxLocalCameraUpDirection; }
+            set 
+            {
+                if (fauxLocalCameraUpDirection != value) 
+                {
+                    fauxLocalCameraUpDirection = value;
+                    UpdateTransform();
+                }
+            }
+        }
+
         CCScheduler Scheduler
         {
             get { return Application != null ? Application.Scheduler : null; }
@@ -709,6 +757,8 @@ namespace CocosSharp
             RealOpacity = 255;
             displayedColor = CCColor3B.White;
             RealColor = CCColor3B.White;
+
+            FauxLocalCameraUpDirection = new CCPoint3(0.0f, 1.0f, 0.0f);
         }
 
         #endregion Constructors
@@ -1905,6 +1955,8 @@ namespace CocosSharp
             float x = position.X;
             float y = position.Y;
 
+            affineLocalTransform = CCAffineTransform.Identity;
+
             if (ignoreAnchorPointForPosition)
             {
                 x += anchorPointInPoints.X;
@@ -1964,7 +2016,19 @@ namespace CocosSharp
                 }
             }
 
-            affineLocalTransform.Concat(additionalTransform);
+            affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
+
+            Matrix fauxLocalCameraTransform = Matrix.Identity;
+
+            if(FauxLocalCameraCenter != FauxLocalCameraTarget)
+            {
+                fauxLocalCameraTransform =  Matrix.CreateLookAt(
+                    new Vector3(FauxLocalCameraCenter.X, FauxLocalCameraCenter.Y, FauxLocalCameraCenter.Z),
+                    new Vector3(FauxLocalCameraTarget.X, FauxLocalCameraTarget.Y, FauxLocalCameraTarget.Z),
+                new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
+            }
+
+            affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
 
             XnaWorldMatrix = affineLocalTransform.XnaMatrix;
         }

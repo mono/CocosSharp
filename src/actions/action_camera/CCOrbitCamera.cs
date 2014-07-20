@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -42,6 +43,7 @@ namespace CocosSharp
 
     public class CCOrbitCameraState : CCActionCameraState
     {
+
         #region Properties
 
         protected float AngleX { get; set; }
@@ -102,9 +104,8 @@ namespace CocosSharp
             float r; // radius
             float s;
 
-            CCCamera camera = Target.Camera;
-            CCPoint3 cameraCenter = camera.CenterInWorldspace;
-            CCPoint3 cameraTarget = camera.TargetInWorldspace;
+            CCPoint3 cameraCenter = CameraCenter;
+            CCPoint3 cameraTarget = CameraTarget;
 
             ex = cameraTarget.X;
             ey = cameraTarget.Y;
@@ -140,11 +141,11 @@ namespace CocosSharp
             float za = RadZ + RadDeltaZ * time;
             float xa = RadX + RadDeltaX * time;
 
-            float i = (float)Math.Sin (za) * (float)Math.Cos (xa) * r + CameraTarget.X;
-            float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraTarget.Y;
-            float k = (float)Math.Cos (za) * r + CameraTarget.Z;
+            float i = (float)Math.Sin (za) * (float)Math.Cos (xa) * r + CameraCenter.X;
+            float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraCenter.Y;
+            float k = (float)Math.Cos (za) * r + CameraCenter.Z;
 
-            Target.Camera.TargetInWorldspace = new CCPoint3(i, j, k);
+            Target.FauxLocalCameraTarget = new CCPoint3(i, j, k);
         }
     }
 }
