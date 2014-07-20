@@ -44,7 +44,7 @@ namespace CocosSharp.Spine
         ATTACHMENT_REGION = 1, ATTACHMENT_REGION_SEQUENCE = 2, ATTACHMENT_BOUNDING_BOX = 3
     }
 
-    public class CCSkeleton : CCNodeRGBA
+    public class CCSkeleton : CCNode
     {
 
         public float FLT_MAX = 3.402823466e+38F;     /* max value */

@@ -14,38 +14,32 @@ namespace spine_cocossharp
         CCSequence skeletonMoveAction;
         bool isMoving;
 
+		CCLabelTtf labelBones, labelSlots, labelTimeScale, labelSkin, labelScene, labelJump, labelAction;
+
         public GoblinLayer()
         {
 
-			CCSize windowSize = Director.WindowSizeInPoints;
-
-            var labelBones = new CCLabelTtf("B = Toggle Debug Bones", "arial", 12);
-            labelBones.Position = new CCPoint(15, windowSize.Height - 10);
+            labelBones = new CCLabelTtf("B = Toggle Debug Bones", "arial", 12);
             labelBones.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelBones);
 
-            var labelSlots = new CCLabelTtf("M = Toggle Debug Slots", "arial", 12);
-            labelSlots.Position = new CCPoint(15, windowSize.Height - 25);
+            labelSlots = new CCLabelTtf("M = Toggle Debug Slots", "arial", 12);
             labelSlots.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelSlots);
 
-            var labelSkin = new CCLabelTtf("S = Toggle Skin", "arial", 12);
-            labelSkin.Position = new CCPoint(15, windowSize.Height - 40);
+            labelSkin = new CCLabelTtf("S = Toggle Skin", "arial", 12);
             labelSkin.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelSkin);
 
-            var labelTimeScale = new CCLabelTtf("Up/Down = TimeScale +/-", "arial", 12);
-            labelTimeScale.Position = new CCPoint(15, windowSize.Height - 70);
+            labelTimeScale = new CCLabelTtf("Up/Down = TimeScale +/-", "arial", 12);
             labelTimeScale.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelTimeScale);
 
-            var labelAction = new CCLabelTtf("A = Toggle Move Action", "arial", 12);
-            labelAction.Position = new CCPoint(15, windowSize.Height - 55);
+            labelAction = new CCLabelTtf("A = Toggle Move Action", "arial", 12);
             labelAction.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelAction);
 
-            var labelScene = new CCLabelTtf("P = SpineBoy", "arial", 12);
-            labelScene.Position = new CCPoint(15, windowSize.Height - 85);
+            labelScene = new CCLabelTtf("P = SpineBoy", "arial", 12);
             labelScene.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelScene);
 
@@ -70,12 +64,6 @@ namespace spine_cocossharp
 
             //skeletonNode.RepeatForever(new CCFadeOut(1), new CCFadeIn(1));
 
-            skeletonMoveAction = new CCSequence(new CCMoveTo(5, new CCPoint(windowSize.Width, 10)), new CCMoveTo(5, new CCPoint(10, 10)));
-
-            skeletonActionState = skeletonNode.RepeatForever(skeletonMoveAction);
-            isMoving = true;
-
-            skeletonNode.Position = new CCPoint(windowSize.Center.X, skeletonNode.ContentSize.Height / 2);
             AddChild(skeletonNode);
 
             var listener = new CCEventListenerTouchOneByOne();
@@ -92,7 +80,7 @@ namespace spine_cocossharp
                     return true;
                 };
 
-			Director.EventDispatcher.AddEventListener(listener, this);
+			AddEventListener(listener, this);
 
             var keyListener = new CCEventListenerKeyboard();
             keyListener.OnKeyPressed = (keyEvent) =>
@@ -135,8 +123,29 @@ namespace spine_cocossharp
                     }
 
                 };
-			Director.EventDispatcher.AddEventListener(keyListener, this);
+			AddEventListener(keyListener, this);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			labelBones.Position = new CCPoint(15, windowSize.Height - 10);
+			labelSlots.Position = new CCPoint(15, windowSize.Height - 25);
+			labelSkin.Position = new CCPoint(15, windowSize.Height - 40);
+			labelTimeScale.Position = new CCPoint(15, windowSize.Height - 70);
+			labelAction.Position = new CCPoint(15, windowSize.Height - 55);
+			labelScene.Position = new CCPoint(15, windowSize.Height - 85);
+
+			skeletonNode.Position = new CCPoint(windowSize.Center.X, skeletonNode.ContentSize.Height / 2);
+
+			skeletonMoveAction = new CCSequence(new CCMoveTo(5, new CCPoint(windowSize.Width, 10)), new CCMoveTo(5, new CCPoint(10, 10)));
+
+			skeletonActionState = skeletonNode.RepeatForever(skeletonMoveAction);
+			isMoving = true;
+
+
+		}
 
         public void Start(AnimationState state, int trackIndex)
         {

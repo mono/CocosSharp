@@ -11,33 +11,28 @@ namespace spine_cocossharp
 
         CCSkeletonAnimation skeletonNode;
 
+		CCLabelTtf labelBones, labelSlots, labelTimeScale, labelScene, labelJump;
+
         public SpineBoyLayer()
         {
 
-			CCSize windowSize = Director.WindowSizeInPoints;
-
-            var labelBones = new CCLabelTtf("B = Toggle Debug Bones", "arial", 12);
-            labelBones.Position = new CCPoint(15, windowSize.Height - 10);
+            labelBones = new CCLabelTtf("B = Toggle Debug Bones", "arial", 12);
             labelBones.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelBones);
 
-            var labelSlots = new CCLabelTtf("M = Toggle Debug Slots", "arial", 12);
-            labelSlots.Position = new CCPoint(15, windowSize.Height - 25);
+            labelSlots = new CCLabelTtf("M = Toggle Debug Slots", "arial", 12);
             labelSlots.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelSlots);
 
-            var labelTimeScale = new CCLabelTtf("Up/Down = TimeScale +/-", "arial", 12);
-            labelTimeScale.Position = new CCPoint(15, windowSize.Height - 40);
+            labelTimeScale = new CCLabelTtf("Up/Down = TimeScale +/-", "arial", 12);
             labelTimeScale.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelTimeScale);
 
-            var labelScene = new CCLabelTtf("G = Goblins", "arial", 12);
-            labelScene.Position = new CCPoint(15, windowSize.Height - 55);
+            labelScene = new CCLabelTtf("G = Goblins", "arial", 12);
             labelScene.AnchorPoint = CCPoint.AnchorMiddleLeft;
             AddChild(labelScene);
 
-			var labelJump = new CCLabelTtf("J = Jump", "arial", 12);
-			labelJump.Position = new CCPoint(15, windowSize.Height - 70);
+			labelJump = new CCLabelTtf("J = Jump", "arial", 12);
 			labelJump.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild(labelJump);
 
@@ -55,7 +50,6 @@ namespace spine_cocossharp
             skeletonNode.Complete += Complete;
             skeletonNode.Event += Event;
 
-            skeletonNode.Position = new CCPoint(windowSize.Center.X, 10);
             AddChild(skeletonNode);
 
             var listener = new CCEventListenerTouchOneByOne();
@@ -69,7 +63,7 @@ namespace spine_cocossharp
                         skeletonNode.TimeScale = 0.3f;
                     return true;
                 };
-			Director.EventDispatcher.AddEventListener(listener, this);
+			AddEventListener(listener, this);
 
             var keyListener = new CCEventListenerKeyboard();
             keyListener.OnKeyPressed = (keyEvent) =>
@@ -99,8 +93,23 @@ namespace spine_cocossharp
                     }
 
                 };
-			Director.EventDispatcher.AddEventListener(keyListener, this);
+			AddEventListener(keyListener, this);
         }
+
+		protected override void RunningOnNewWindow(CCSize windowSize)
+		{
+			base.RunningOnNewWindow(windowSize);
+
+			labelBones.Position = new CCPoint(15, windowSize.Height - 10);
+			labelSlots.Position = new CCPoint(15, windowSize.Height - 25);
+			labelTimeScale.Position = new CCPoint(15, windowSize.Height - 40);
+			labelScene.Position = new CCPoint(15, windowSize.Height - 55);
+			labelJump.Position = new CCPoint(15, windowSize.Height - 70);
+
+			skeletonNode.Position = new CCPoint(windowSize.Center.X, 10);
+
+		}
+
 
         public void Start(AnimationState state, int trackIndex)
         {
