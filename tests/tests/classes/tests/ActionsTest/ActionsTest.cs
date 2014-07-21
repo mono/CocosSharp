@@ -625,8 +625,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
     public class ActionRotationalSkewVSStandardSkew : ActionsDemo
     {
-        CCLayerColor box1;
-        CCLayerColor box2;
+        CCDrawNode box1;
+        CCDrawNode box2;
 
         CCLabelTtf boxLabel1;
         CCLabelTtf boxLabel2;
@@ -652,13 +652,16 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public ActionRotationalSkewVSStandardSkew()
         {
-            box1 = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box1 = new CCDrawNode ();
+            box1.DrawRect(new CCRect (0.0f, 0.0f, 200.0f, 200.0f), new CCColor4B(255, 255, 0, 255));
+            //new CCLayerColor();
             this.AddChild(box1);
 
             box1.AnchorPoint = new CCPoint(0.5f, 0.5f);
             box1.IgnoreAnchorPointForPosition = false;
 
-            box2 = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box2 = new CCDrawNode ();
+            box2.DrawRect(new CCRect (0.0f, 0.0f, 200.0f, 200.0f), new CCColor4B(255, 255, 0, 255));
             this.AddChild(box2);
 
             box2.AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -712,9 +715,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         const float markrside = 10.0f;
 
-        CCLayerColor box;
-        CCLayerColor uL;
-        CCLayerColor uR;
+        CCDrawNode box;
+        CCDrawNode uL;
+        CCDrawNode uR;
 
         CCSkewTo actionTo;
         CCRotateTo rotateTo;
@@ -738,14 +741,17 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public ActionSkewRotateScale()
         {
-            box = new CCLayerColor(new CCColor4B(255, 255, 0, 255));
+            box = new CCDrawNode();
+            box.DrawRect(new CCRect (0.0f, 0.0f, 100.0f, 100.0f), new CCColor4B(255, 255, 0, 255));
             box.AnchorPoint = new CCPoint(0, 0);
 
-            uL = new CCLayerColor(new CCColor4B(255, 0, 0, 255));
+            uL = new CCDrawNode();
+            uL.DrawRect(new CCRect (0.0f, 0.0f, markrside, markrside), new CCColor4B(255, 0, 0, 255));
             uL.AnchorPoint = new CCPoint(0, 0);
             box.AddChild(uL);
 
-            uR = new CCLayerColor(new CCColor4B(0, 0, 255, 255));
+            uR = new CCDrawNode();
+            uR.DrawRect(new CCRect (0.0f, 0.0f, markrside, markrside), new CCColor4B(0, 0, 255, 255));
             uR.AnchorPoint = new CCPoint(0, 0);
             box.AddChild(uR);
 
