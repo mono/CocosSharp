@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Defines a custom event that can be dispatched and listened for.</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -22,10 +22,10 @@
         <Parameter Name="userData" Type="System.Object" />
       </Parameters>
       <Docs>
-        <param name="eventName">To be added.</param>
-        <param name="userData">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="eventName">The name of the custom event.</param>
+        <param name="userData">User defined data that will be associated with the event.</param>
+        <summary>Defines a custom event with the given EventName and UserData.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="EventName">
@@ -36,9 +36,9 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The name of the event.</summary>
+        <value>String value representing the name.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="UserData">
@@ -49,9 +49,9 @@
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>User defined data that is associated with the custom event.</summary>
+        <value>Object that can represent any type of information associated with the event.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>
