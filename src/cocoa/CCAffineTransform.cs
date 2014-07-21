@@ -152,6 +152,11 @@ namespace CocosSharp
 			this.Ty = ty;
         }
 
+        internal CCAffineTransform(Matrix xnaMatrix) 
+            : this(xnaMatrix.M11, xnaMatrix.M12, xnaMatrix.M21, xnaMatrix.M22, xnaMatrix.M41, xnaMatrix.M42)
+        {
+        }
+
 		#endregion Constructors
 
 
