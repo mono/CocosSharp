@@ -14,6 +14,7 @@ namespace tests
         public override void runThisTest()
         {
             CCLayer pLayer = new MainLayer();
+            pLayer.Camera = AppDelegate.SharedCamera;
             //pLayer->autorelease();
 
             AddChild(pLayer);
@@ -63,7 +64,7 @@ namespace tests
             object it = touches.First();
             CCTouch touch = (CCTouch)(it);
 
-            var convertedLocation = touch.LocationOnScreen;
+            var convertedLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
             CCNode s = GetChildByTag(ClickAndMoveTest.kTagSprite);
             s.StopAllActions();
