@@ -23,37 +23,41 @@ namespace tests
 
         public b2Body PhysicsBody { get { return (m_pBody); } set { m_pBody = value; } }
 
-//        public override CCAffineTransform NodeToParentTransform()
-//        {
-//            b2Vec2 pos = m_pBody.Position;
-//
-//            float x = pos.x * Box2DTestLayer.PTM_RATIO;
-//            float y = pos.y * Box2DTestLayer.PTM_RATIO;
-//
-//            if (IgnoreAnchorPointForPosition)
-//            {
-//				x += AnchorPointInPoints.X;
-//				y += AnchorPointInPoints.Y;
-//            }
-//
-//            // Make matrix
-//            float radians = m_pBody.Angle;
-//            var c = (float)Math.Cos(radians);
-//            var s = (float)Math.Sin(radians);
-//
-//			if (!AnchorPointInPoints.Equals(CCPoint.Zero))
-//            {
-//				x += c * -AnchorPointInPoints.X + -s * -AnchorPointInPoints.Y;
-//				y += s * -AnchorPointInPoints.X + c * -AnchorPointInPoints.Y;
-//            }
-//
-//            // Rot, Translate Matrix
-//			var m_sTransform = new CCAffineTransform(c, s,
-//                                                 -s, c,
-//                                                 x, y);
-//
-//            return m_sTransform;
-//        }
+        public override CCAffineTransform AffineLocalTransform
+        {
+            get 
+            {
+                if (m_pBody == null)
+                    return base.AffineLocalTransform;
+
+                b2Vec2 pos = m_pBody.Position;
+
+                float x = pos.x * Box2DTestLayer.PTM_RATIO;
+                float y = pos.y * Box2DTestLayer.PTM_RATIO;
+
+                if (IgnoreAnchorPointForPosition) {
+                    x += AnchorPointInPoints.X;
+                    y += AnchorPointInPoints.Y;
+                }
+
+                // Make matrix
+                float radians = m_pBody.Angle;
+                var c = (float)Math.Cos (radians);
+                var s = (float)Math.Sin (radians);
+
+                if (!AnchorPointInPoints.Equals (CCPoint.Zero)) {
+                    x += c * -AnchorPointInPoints.X + -s * -AnchorPointInPoints.Y;
+                    y += s * -AnchorPointInPoints.X + c * -AnchorPointInPoints.Y;
+                }
+
+                // Rot, Translate Matrix
+                var m_sTransform = new CCAffineTransform (c, s,
+                          -s, c,
+                          x, y);
+
+                return m_sTransform;
+            }
+        }
     }
 
     public class Box2DTestLayer : CCLayer
@@ -84,6 +88,8 @@ namespace tests
 			_batch = new CCSpriteBatchNode("Images/blocks", 100);
 			m_pSpriteTexture = _batch.Texture;
 			AddChild(_batch, 0, kTagParentNode);
+
+            Camera = AppDelegate.SharedCamera;
 		}
 
 		public override void OnEnter()
@@ -269,10 +275,11 @@ namespace tests
 
             foreach (CCPhysicsSprite sprite in _batch.Children)
             {
-                if (sprite.Visible && sprite.PhysicsBody.Position.y < 0f)
-                {
-                    _world.DestroyBody(sprite.PhysicsBody);
+                if (sprite.Visible && sprite.PhysicsBody.Position.y < 0f) {
+                    _world.DestroyBody (sprite.PhysicsBody);
                     sprite.Visible = false;
+                } else {
+                    sprite.UpdateTransformedSpriteTextureQuads();
                 }
             }
 
@@ -313,7 +320,7 @@ namespace tests
             //Add a new body/atlas sprite at the touched location
             foreach (CCTouch touch in touches)
             {
-                CCPoint location = touch.LocationOnScreen;
+                CCPoint location = Layer.ScreenToWorldspace(touch.LocationOnScreen);
                 addNewSpriteAtPosition(location);
             }
         }
