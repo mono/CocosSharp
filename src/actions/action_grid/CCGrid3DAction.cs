@@ -43,14 +43,7 @@ namespace CocosSharp
         {
             get 
             {
-                if (Target != null && !Target.ContentSize.Equals (CCSize.Zero))
-                {
-                    gridTextureSizeInPixels = Layer.WorldToScreenspace(Target.ContentSize);
-                } 
-                else 
-                {
-                    gridTextureSizeInPixels = Scene.VisibleBoundsScreenspace.Size;
-                }
+                gridTextureSizeInPixels = Target.Scene.VisibleBoundsScreenspace.Size;
 
                 gridTexture = new CCTexture2D(
                     (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);

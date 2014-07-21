@@ -11,6 +11,9 @@ namespace CocosSharp
         bool active;
         bool textureFlipped;
 
+        CCPoint step;
+        CCSize contentSize;
+
         CCScene scene;
 
 
@@ -19,8 +22,6 @@ namespace CocosSharp
         public int ReuseGrid { get; set; }                                  // number of times that the grid will be reused 
         public bool Active { get; set; }
         public CCGridSize GridSize { get; private set; }
-        public CCPoint Step { get; private set; }                           // pixels between the grids 
-
         protected CCGrabber Grabber { get; set; }
         protected CCTexture2D Texture { get; set; }
 
@@ -35,9 +36,6 @@ namespace CocosSharp
 
                     if (scene != null && Texture != null) 
                     {
-                        CCSize texSize = Texture.ContentSizeInPixels;
-                        Step = new CCPoint(texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
-
                         Grabber = new CCGrabber(scene.Window.DrawManager);
                         if (Grabber != null && Texture != null)
                         {
@@ -59,6 +57,33 @@ namespace CocosSharp
                 {
                     textureFlipped = value;
                     CalculateVertexPoints();
+                }
+            }
+        }
+
+        // pixels between the grids 
+        public CCPoint Step 
+        { 
+            get { return step; }
+            private set 
+            {
+                if (step != value) 
+                {
+                    step = value;
+                    CalculateVertexPoints();
+                }
+            }
+        }
+
+        public CCSize ContentSize
+        {
+            get { return contentSize; }
+            set 
+            {
+                if (contentSize != value) 
+                {
+                    contentSize = value;
+                    Step = new CCPoint (contentSize.Width / GridSize.X, contentSize.Height / GridSize.Y);
                 }
             }
         }
