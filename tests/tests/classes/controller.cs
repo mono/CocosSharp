@@ -311,7 +311,7 @@ namespace tests
             var delta = mouseEvent.ScrollY;
 
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
-            var curPos = testListMenu.Position;
+            curPos = testListMenu.Position;
 
             var nextPos = curPos;
             nextPos.Y += (delta) / LINE_SPACE;
