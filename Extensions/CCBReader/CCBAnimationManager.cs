@@ -820,7 +820,7 @@ namespace CocosSharp
 		/// Start the show operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBSetSpriteFrameState(this, target);
 
@@ -877,7 +877,7 @@ namespace CocosSharp
 		/// Start the CCBRotateTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBSoundEffectState(this, target);
 
@@ -935,7 +935,7 @@ namespace CocosSharp
 		/// Start the CCBRotateTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateToState(this, target);
 
@@ -993,7 +993,7 @@ namespace CocosSharp
 		/// Start the CCBRotateXTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateXToState(this, target);
 
@@ -1047,7 +1047,7 @@ namespace CocosSharp
 		/// Start the CCBRotateYTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateYToState(this, target);
 
@@ -1098,7 +1098,7 @@ namespace CocosSharp
 		/// Start the EaseInstant operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBEaseInstantState(this, target);
 

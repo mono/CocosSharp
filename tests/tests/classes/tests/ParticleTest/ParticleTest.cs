@@ -1107,7 +1107,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
                 config = particleConfigManager [filename];
             else
             {
-                config = new CCParticleSystemConfig (filename);
+                config = new CCParticleSystemConfig(filename, null);
                 particleConfigManager.Add (filename, config);
             }
 
