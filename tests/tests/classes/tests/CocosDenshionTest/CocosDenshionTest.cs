@@ -66,6 +66,8 @@ namespace tests
             // set default volume
             CCSimpleAudioEngine.SharedEngine.EffectsVolume = 0.5f;
             CCSimpleAudioEngine.SharedEngine.BackgroundMusicVolume = 0.5f;
+
+            Camera = AppDelegate.SharedCamera;
         }
 
         #endregion Constructors
