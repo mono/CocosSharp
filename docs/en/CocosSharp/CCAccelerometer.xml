@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Class that processes the accelerometer events.</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -47,9 +47,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Whether or not to generate accelerometer events or not.</summary>
+        <value>true to process events, otherwise false.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Update">
@@ -61,8 +61,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Update the accelerometer and generate corresponding events.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>
