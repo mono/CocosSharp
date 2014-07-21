@@ -686,6 +686,8 @@ namespace CocosSharp
     #endif
     public struct CCPoint3
     {
+        public static readonly CCPoint3 Zero = new CCPoint3(0, 0, 0);
+
         public float X;
         public float Y;
         public float Z;
@@ -711,6 +713,15 @@ namespace CocosSharp
         public static bool operator !=(CCPoint3 p1, CCPoint3 p2)
         {
             return p1.X != p2.X || p1.Y != p2.Y || p1.Z != p2.Z;
+        }
+
+        public static CCPoint3 operator -(CCPoint3 p1, CCPoint3 p2)
+        {
+            CCPoint3 pt;
+            pt.X = p1.X - p2.X;
+            pt.Y = p1.Y - p2.Y;
+            pt.Z = p1.Z - p2.Z;
+            return pt;
         }
 
         #endregion Operators
