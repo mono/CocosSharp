@@ -316,6 +316,13 @@ namespace CocosSharp
             }
         }
 
+        protected override void VisibleBoundsChanged ()
+        {
+            base.VisibleBoundsChanged();
+
+            CreateFontChars();
+        }
+
         #endregion Scene handling
 
 
@@ -371,7 +378,7 @@ namespace CocosSharp
 
         public void CreateFontChars()
         {
-            if(Scene == null)
+            if(Scene == null || Layer == null)
                 return;
 
             int nextFontPositionX = 0;
