@@ -8,7 +8,7 @@ namespace CocosSharp
         CCDrawManager drawManager;
         RenderTarget2D oldRenderTarget;
 
-        public CCGrabber(CCDrawManager drawManager)
+        internal CCGrabber(CCDrawManager drawManager)
         {
             this.drawManager = drawManager;
         }

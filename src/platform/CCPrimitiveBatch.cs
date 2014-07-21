@@ -28,14 +28,14 @@ namespace CocosSharp
 
         #region Properties
 
-        public CCDrawManager DrawManager { get; set; }
+        internal CCDrawManager DrawManager { get; set; }
 
         #endregion Properties
 
 
 		#region Constructors
 
-        public CCPrimitiveBatch(CCDrawManager drawManager, int bufferSize=DefaultBufferSize)
+        internal CCPrimitiveBatch(CCDrawManager drawManager, int bufferSize=DefaultBufferSize)
         {
             DrawManager = drawManager;
 

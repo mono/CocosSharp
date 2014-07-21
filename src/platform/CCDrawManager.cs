@@ -34,7 +34,7 @@ namespace CocosSharp
     #endregion Enums
 
 
-    public class CCDrawManager
+    internal class CCDrawManager
     {
         const int DefaultQuadBufferSize = 1024 * 4;
 
@@ -1390,8 +1390,7 @@ namespace CocosSharp
         }
     }
 
-
-    public class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
+    internal class CCVertexBuffer<T> : CCGraphicsResource where T : struct, IVertexType
     {
         protected VertexBuffer vertexBuffer;
         protected CCBufferUsage usage;
@@ -1472,7 +1471,7 @@ namespace CocosSharp
         }
     }
 
-    public class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
+    internal class CCQuadVertexBuffer : CCVertexBuffer<CCV3F_C4B_T2F_Quad>
     {
         public CCQuadVertexBuffer(int vertexCount, CCBufferUsage usage)
             : base(vertexCount, usage)
@@ -1547,7 +1546,7 @@ namespace CocosSharp
         }
     }
 
-	public class CCIndexBuffer<T> : CCGraphicsResource where T : struct
+	internal class CCIndexBuffer<T> : CCGraphicsResource where T : struct
     {
         IndexBuffer indexBuffer;
         BufferUsage usage;
