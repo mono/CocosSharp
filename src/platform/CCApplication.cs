@@ -325,7 +325,8 @@ namespace CocosSharp
         {
         }
 
-        CCApplication(CCGame game, bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize))
+        CCApplication(CCGame game, bool isFullScreen=true, CCSize mainWindowSizeInPixels=default(CCSize), 
+            CCDisplayOrientation supportedOrientations=CCDisplayOrientation.Default)
             : base(game)
         {
             GameTime = new CCGameTime();
@@ -374,7 +375,7 @@ namespace CocosSharp
 
             gameWindows = new List<CCWindow>();
 
-            InitializeMainWindow(mainWindowSizeInPixels, isFullScreen);
+            InitializeMainWindow(mainWindowSizeInPixels, isFullScreen, supportedOrientations);
         }
 
         #endregion Constructors
@@ -382,7 +383,8 @@ namespace CocosSharp
 
         #region Game window management
 
-        void InitializeMainWindow(CCSize windowSizeInPixels=default(CCSize), bool isFullscreen=true)
+        void InitializeMainWindow(CCSize windowSizeInPixels=default(CCSize), bool isFullscreen=false, 
+            CCDisplayOrientation supportedOrientations=CCDisplayOrientation.Default)
         {
             if (isFullscreen) 
             {
@@ -394,7 +396,7 @@ namespace CocosSharp
 
             if(CCDrawManager.SharedDrawManager == null) 
             {
-                CCDrawManager.SharedDrawManager = new CCDrawManager(xnaDeviceManager, windowSizeInPixels);
+                CCDrawManager.SharedDrawManager = new CCDrawManager(xnaDeviceManager, windowSizeInPixels, supportedOrientations);
             }
 
         }

@@ -263,7 +263,8 @@ namespace CocosSharp
 
         #region Constructors
 
-        internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize)
+        internal CCDrawManager(GraphicsDeviceManager deviceManager, CCSize proposedScreenSize, 
+            CCDisplayOrientation supportedOrientations)
         {
             graphicsDeviceMgr = deviceManager;
 
@@ -289,6 +290,7 @@ namespace CocosSharp
                 initialProposedScreenSizeInPixels = proposedScreenSize;
                 graphicsDeviceMgr.PreferredBackBufferWidth = (int)initialProposedScreenSizeInPixels.Width;
                 graphicsDeviceMgr.PreferredBackBufferHeight = (int)initialProposedScreenSizeInPixels.Height;
+                graphicsDeviceMgr.SupportedOrientations = (DisplayOrientation)supportedOrientations;
                 graphicsDeviceMgr.DeviceCreated += GraphicsDeviceCreated;
                 graphicsDeviceMgr.PreparingDeviceSettings += PreparingDeviceSettings;
             }
