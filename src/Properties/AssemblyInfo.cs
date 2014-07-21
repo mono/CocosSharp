@@ -61,5 +61,7 @@ using System.Resources;
 [assembly: AssemblyVersion("2.2.4.0")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]
 
+#if DEBUG
 // Friendly assemblies - SHOULD MAKE THESE SIGNED
 [assembly: InternalsVisibleTo("tests.MacOS")]
+#endif
