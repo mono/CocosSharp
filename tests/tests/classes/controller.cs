@@ -314,7 +314,7 @@ namespace tests
             var curPos = testListMenu.Position;
 
             var nextPos = curPos;
-            nextPos.Y += (delta) / LINE_SPACE;
+            nextPos.Y -= (delta) / LINE_SPACE;
 
             if (nextPos.Y < 0) 
             {
