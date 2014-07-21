@@ -90,12 +90,6 @@ namespace CocosSharp
                 Rectangle winBounds = XnaWindow.ClientBounds;
                 return new CCSize(winBounds.Width, winBounds.Height); 
             }
-            set 
-            {
-//                DrawManager.XnaGraphicsDeviceManager.PreferredBackBufferWidth = (int)value.Width;
-//                DrawManager.XnaGraphicsDeviceManager.PreferredBackBufferHeight = (int)value.Height;
-//                DrawManager.XnaGraphicsDeviceManager.ApplyChanges ();
-            }
         }
 
         public CCDisplayOrientation SupportedDisplayOrientations
@@ -148,8 +142,6 @@ namespace CocosSharp
             xnaWindow.OrientationChanged += OnOrientationChanged;
             xnaWindow.ClientSizeChanged += OnWindowSizeChanged;
             xnaWindow.AllowUserResizing = true;
-
-            WindowSizeInPixels = screenSizeInPixels;
 
             Application = application;
 
