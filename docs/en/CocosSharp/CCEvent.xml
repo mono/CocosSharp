@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>The base class that is extended for all CCEvents</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName="CurrentTarget">
@@ -21,9 +21,9 @@
         <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The current target that this event is working on</summary>
+        <value>The CCNode that is the target of the event.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="EVENT_COME_TO_BACKGROUND">
@@ -34,8 +34,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The application will come to foreground.</summary>
+        <remarks>This message is used for reloading resources before come to foreground on Android.  Not generated right now.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EVENT_COME_TO_FOREGROUND">
@@ -46,8 +46,8 @@
         <ReturnType>System.String</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>The application will come to background.</summary>
+        <remarks>This message is used for doing something before coming to background, such as save RenderTexture.  Not generated right now.</remarks>
       </Docs>
     </Member>
     <Member MemberName="IsStopped">
@@ -58,8 +58,8 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
+        <summary>Returns or sets whether propogation for the event is stopped or not</summary>
+        <value>true if stopped, otherwise false.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -72,8 +72,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Stops propagation for current event.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>
