@@ -71,6 +71,7 @@ namespace tests
             base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
+            text.Scene = Scene;
 
             CCDrawNode draw = new CCDrawNode();
             text.AddChild(draw, 10);
