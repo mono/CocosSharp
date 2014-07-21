@@ -2747,7 +2747,6 @@ namespace CocosSharp {
 		public CocosSharp.CCPoint InvertY { get { return default(CocosSharp.CCPoint); } }
 		public float Length { get { return default(float); } }
 		public float LengthSquared { get { return default(float); } }
-		public CocosSharp.CCPoint Reverse { get { return default(CocosSharp.CCPoint); } }
 		public static float AngleSigned(CocosSharp.CCPoint a, CocosSharp.CCPoint b) { return default(float); }
 		public static CocosSharp.CCPoint Clamp(CocosSharp.CCPoint p, CocosSharp.CCPoint from, CocosSharp.CCPoint to) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint Clamp(CocosSharp.CCPoint p, float len) { return default(CocosSharp.CCPoint); }
@@ -2787,9 +2786,8 @@ namespace CocosSharp {
 		public static CocosSharp.CCPoint operator -(CocosSharp.CCPoint p1) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint operator +(CocosSharp.CCPoint p1) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint Parse(string s) { return default(CocosSharp.CCPoint); }
-		public static CocosSharp.CCPoint Perp(CocosSharp.CCPoint p) { return default(CocosSharp.CCPoint); }
-		public static CocosSharp.CCPoint PerpendicularClockwise(CocosSharp.CCPoint v) { return default(CocosSharp.CCPoint); }
-		public static CocosSharp.CCPoint PerpendicularCounterClockwise(CocosSharp.CCPoint v) { return default(CocosSharp.CCPoint); }
+		public static CocosSharp.CCPoint PerpendicularCCW(CocosSharp.CCPoint p) { return default(CocosSharp.CCPoint); }
+		public static CocosSharp.CCPoint PerpendicularCW(CocosSharp.CCPoint p) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint Project(CocosSharp.CCPoint v1, CocosSharp.CCPoint v2) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint Rotate(CocosSharp.CCPoint v1, CocosSharp.CCPoint v2) { return default(CocosSharp.CCPoint); }
 		public static CocosSharp.CCPoint RotateByAngle(CocosSharp.CCPoint v, CocosSharp.CCPoint pivot, float angle) { return default(CocosSharp.CCPoint); }

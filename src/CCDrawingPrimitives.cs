@@ -93,7 +93,7 @@ namespace CocosSharp
 			var a = origin;
 			var b = destination;
 
-			var n = CCPoint.Normalize(CCPoint.PerpindicularCCW(a - b));
+			var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
 
 			var lww = LineWidth * 0.5f;
 			var nw = n * lww;
