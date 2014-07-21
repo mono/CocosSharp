@@ -25,7 +25,7 @@ using Microsoft.Xna.Framework.Content;
 
 namespace tests
 {
-    #if IPHONE || IOS
+#if IPHONE || IOS
     [Register ("AppDelegate")]
     class Program : UIApplicationDelegate 
     {
@@ -46,9 +46,9 @@ namespace tests
             UIApplication.Main (args, null, "AppDelegate");
         }
     }
-    #endif
+#endif
 
-    #if MACOS
+#if MACOS
     class Program : NSApplicationDelegate 
     {
         public override void FinishedLaunching(MonoMac.Foundation.NSObject notification)
@@ -76,26 +76,26 @@ namespace tests
             }
         }
     }
-    #endif
+#endif
 
-    #if WINDOWS || WINDOWSGL
+#if WINDOWS || WINDOWSGL
 
-    #if !NETFX_CORE
-    static class Program
-    {
-        [STAThread]
-        static void Main(string[] args)
-        {
-            CCApplication sharedApp = CCApplication.SharedApplication;
-            sharedApp.ApplicationDelegate = new AppDelegate();
+#if !NETFX_CORE
+	static class Program
+	{
+		[STAThread]
+		static void Main(string[] args)
+		{
+			CCApplication application = new CCApplication(false, new CCSize(1024f, 768f));
+			application.ApplicationDelegate = new AppDelegate();
 
-            CCApplication.SharedApplication.StartGame();
-        }
-    }
-    #endif
-    #endif
+			application.StartGame();
+		}
+	}
+#endif
+#endif
 
-    #if ANDROID
+#if ANDROID
     [Activity(
     Label = "Tests",
     AlwaysRetainTaskState = true,
@@ -106,17 +106,17 @@ namespace tests
     MainLauncher = true,
     ConfigurationChanges = ConfigChanges.Orientation | ConfigChanges.Keyboard | ConfigChanges.KeyboardHidden)
     ]
-    #if OUYA
+#if OUYA
     [IntentFilter(new[] { Intent.ActionMain }, Categories = new[] { Intent.CategoryLauncher, "ouya.intent.category.GAME" })]
-    #endif
+#endif
     public class Activity1 : AndroidGameActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-		    #if OUYA
+#if OUYA
 		    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
-		    #endif
+#endif
 
 			CCApplication sharedApp = CCApplication.SharedApplication;
 			sharedApp.ApplicationDelegate = new AppDelegate();
@@ -126,9 +126,9 @@ namespace tests
 			CCApplication.SharedApplication.StartGame();
         }
     }
-    #endif
+#endif
 
-    #if NETFX_CORE 
+#if NETFX_CORE 
     public static class Program 
     {
         static void Main() 
@@ -136,6 +136,6 @@ namespace tests
             CCApplication.Create(new AppDelegate());
         }
     }
-    #endif
+#endif
 }
 

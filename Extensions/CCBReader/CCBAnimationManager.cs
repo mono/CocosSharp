@@ -29,10 +29,10 @@ namespace CocosSharp
 		private readonly List<CCNode> _documentCallbackNodes = new List<CCNode>();
 		private readonly List<string> _keyframeCallbacks = new List<string>();
 		private readonly Dictionary<string, CCAction> _keyframeCallFuncs = new Dictionary<string, CCAction>();
-    
+
 		private string _documentControllerName;
 		private string _lastCompletedSequenceName;
-    
+
 		private Action _animationCompleteCallbackFunc;
 
 		public bool JSControlled { get; set; }
@@ -307,7 +307,7 @@ namespace CocosSharp
 						var value = (List<CCBValue>)pKeyframe1.Value;
 						float x = value[0].GetFloatValue();
 						float y = value[1].GetFloatValue();
-        
+
 						return new CCSkewTo(duration, x, y);
 					}
 				default:
@@ -399,7 +399,7 @@ namespace CocosSharp
 					}
 					else if (pPropName == "displayFrame")
 					{
-                        ((CCSprite)node).SpriteFrame = (CCSpriteFrame)pValue;
+						((CCSprite)node).SpriteFrame = (CCSpriteFrame)pValue;
 					}
 					else if (pPropName == "color")
 					{
@@ -715,9 +715,9 @@ namespace CocosSharp
 			// Make callback at end of sequence
 			CCBSequence seq = GetSequence(nSeqId);
 			CCAction completeAction = new CCSequence(
-				                                   new CCDelayTime(seq.Duration + fTweenDuration),
-				                                   new CCCallFunc(SequenceCompleted)
-			                                   );
+												   new CCDelayTime(seq.Duration + fTweenDuration),
+												   new CCCallFunc(SequenceCompleted)
+											   );
 
 			_rootNode.RunAction(completeAction);
 
@@ -820,7 +820,7 @@ namespace CocosSharp
 		/// Start the show operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBSetSpriteFrameState(this, target);
 
@@ -844,13 +844,13 @@ namespace CocosSharp
 
 		public CCBSetSpriteFrameState(CCBSetSpriteFrame action, CCNode target)
 			: base(action, target)
-		{	
+		{
 			SpriteFrame = action.SpriteFrame;
 		}
 
 		public override void Update(float time)
 		{
-            ((CCSprite)Target).SpriteFrame = SpriteFrame;
+			((CCSprite)Target).SpriteFrame = SpriteFrame;
 		}
 	}
 
@@ -877,7 +877,7 @@ namespace CocosSharp
 		/// Start the CCBRotateTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBSoundEffectState(this, target);
 
@@ -900,14 +900,14 @@ namespace CocosSharp
 
 			public CCBSoundEffectState(CCBSoundEffect action, CCNode target)
 				: base(action, target)
-			{	
+			{
 				SoundFile = action.SoundFile;
 				Pitch = action.Pitch;
 				Pan = action.Pan;
 				Gain = action.Gain;
 			}
 
-			public override void Update (float time)
+			public override void Update(float time)
 			{
 				CCSimpleAudioEngine.SharedEngine.PlayEffect(SoundFile);
 			}
@@ -935,7 +935,7 @@ namespace CocosSharp
 		/// Start the CCBRotateTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateToState(this, target);
 
@@ -956,13 +956,13 @@ namespace CocosSharp
 
 			public CCBRotateToState(CCBRotateTo action, CCNode target)
 				: base(action, target)
-			{	
+			{
 				DstAngle = action.DstAngle;
 				startAngle = new CCPoint(Target.RotationX, Target.RotationY);
 				diffAngle = new CCPoint(DstAngle - startAngle.X, DstAngle - startAngle.Y);
 			}
 
-			public override void Update (float time)
+			public override void Update(float time)
 			{
 				Target.RotationX = startAngle.X + (diffAngle.X * time);
 				Target.RotationY = startAngle.Y + (diffAngle.Y * time);
@@ -993,7 +993,7 @@ namespace CocosSharp
 		/// Start the CCBRotateXTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateXToState(this, target);
 
@@ -1014,13 +1014,13 @@ namespace CocosSharp
 
 			public CCBRotateXToState(CCBRotateXTo action, CCNode target)
 				: base(action, target)
-			{	
+			{
 				DstAngle = action.DstAngle;
 				startAngle = Target.RotationX;
 				diffAngle = DstAngle - startAngle;
 			}
 
-			public override void Update (float time)
+			public override void Update(float time)
 			{
 				Target.RotationX = startAngle + (diffAngle * time);
 			}
@@ -1047,7 +1047,7 @@ namespace CocosSharp
 		/// Start the CCBRotateYTo operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBRotateYToState(this, target);
 
@@ -1069,13 +1069,13 @@ namespace CocosSharp
 
 			public CCBRotateYToState(CCBRotateYTo action, CCNode target)
 				: base(action, target)
-			{	
+			{
 				DstAngle = action.DstAngle;
 				startAngle = Target.RotationY;
 				diffAngle = DstAngle - startAngle;
 			}
 
-			public override void Update (float time)
+			public override void Update(float time)
 			{
 				Target.RotationY = startAngle + (diffAngle * time);
 			}
@@ -1098,7 +1098,7 @@ namespace CocosSharp
 		/// Start the EaseInstant operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-        protected internal override CCActionState StartAction(CCNode target)
+		protected override CCActionState StartAction(CCNode target)
 		{
 			return new CCBEaseInstantState(this, target);
 
@@ -1117,7 +1117,7 @@ namespace CocosSharp
 			{
 			}
 
-			public override void Update (float time)
+			public override void Update(float time)
 			{
 				if (time < 0)
 				{

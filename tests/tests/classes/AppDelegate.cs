@@ -48,8 +48,8 @@ namespace tests
             sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
-            application.PreferredBackBufferWidth = 1024;
-            application.PreferredBackBufferHeight = 768;
+			//application.PreferredBackBufferWidth = 1024;
+			//application.PreferredBackBufferHeight = 768;
             #elif MACOS
             //application.PreferredBackBufferWidth = 960;
             //application.PreferredBackBufferHeight = 640;
