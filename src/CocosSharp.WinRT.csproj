@@ -453,6 +453,12 @@
     <Compile Include=".\CCCamera.cs">
       <LogicalName>CCCamera</LogicalName>
     </Compile>
+    <Compile Include=".\CCWindow.cs">
+      <LogicalName>CCWindow</LogicalName>		
+	</Compile>
+    <Compile Include=".\CCViewport.cs">
+      <LogicalName>CCViewport</LogicalName>
+	</Compile>
     <Compile Include=".\CCConfiguration.cs">
       <LogicalName>CCConfiguration</LogicalName>
     </Compile>

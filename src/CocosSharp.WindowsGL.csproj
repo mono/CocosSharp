@@ -227,6 +227,8 @@
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />
     <Compile Include="CCCamera.cs" />
+    <Compile Include="CCWindow.cs" />
+    <Compile Include="CCViewport.cs" />
     <Compile Include="CCConfiguration.cs" />
     <Compile Include="CCDirector.cs" />
     <Compile Include="CCScheduler.cs" />
