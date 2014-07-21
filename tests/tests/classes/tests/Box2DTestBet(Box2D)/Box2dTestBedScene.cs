@@ -16,7 +16,11 @@ namespace Box2D.TestBed
         }
         public override void runThisTest()
         {
-            AddChild(MenuLayer.menuWithEntryID(0));
+            CCLayer layer = MenuLayer.menuWithEntryID (0);
+
+            layer.Camera = AppDelegate.SharedCamera;
+
+            AddChild(layer);
 
             Scene.Director.ReplaceScene(this);
         }

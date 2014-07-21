@@ -1,4 +1,5 @@
 using CocosSharp;
+using tests;
 
 namespace Box2D.TestBed
 {
@@ -12,8 +13,6 @@ namespace Box2D.TestBed
 
         public bool initWithEntryID(int entryId)
         {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
             m_entryID = entryId;
 
 			// Register Touch Event
@@ -25,7 +24,17 @@ namespace Box2D.TestBed
 
 			AddEventListener(touchListener);
 
-            Box2DView view = Box2DView.viewWithEntryID(entryId);
+            return true;
+        }
+
+        public override void OnEnter ()
+        {
+            base.OnEnter ();
+
+            CCSize s = Layer.VisibleBoundsWorldspace.Size;
+
+            Box2DView view = Box2DView.viewWithEntryID(m_entryID);
+            view.Camera = AppDelegate.SharedCamera;
             AddChild(view, 0, kTagBox2DNode);
             view.Scale = 8;
             view.AnchorPoint = new CCPoint(0, 0);
@@ -51,14 +60,13 @@ namespace Box2D.TestBed
             item3.Position = new CCPoint(s.Width / 2 + 100, 30);
 
             AddChild(menu, 1);
-
-            return true;
         }
 
         public void restartCallback(object sender)
         {
             CCScene s = new Box2dTestBedScene();
             MenuLayer box = menuWithEntryID(m_entryID);
+            box.Camera = AppDelegate.SharedCamera;
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);
         }
@@ -70,6 +78,7 @@ namespace Box2D.TestBed
             if (next >= g_totalEntries)
                 next = 0;
             MenuLayer box = menuWithEntryID(next);
+            box.Camera = AppDelegate.SharedCamera;
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);
         }
@@ -84,6 +93,7 @@ namespace Box2D.TestBed
             }
 
             MenuLayer box = menuWithEntryID(next);
+            box.Camera = AppDelegate.SharedCamera;
 
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);

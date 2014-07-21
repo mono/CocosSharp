@@ -31,12 +31,19 @@ namespace Box2D.TestBed
 
             AddEventListener(keyboardListener);
 
-            Schedule ();
+
 
             m_entry = TestEntries.TestList[entryId];
             m_test = m_entry.CreateFcn();
 
             return true;
+        }
+
+        protected override void AddedToNewScene ()
+        {
+            base.AddedToNewScene ();
+
+            Schedule ();
         }
 
         public string title()
