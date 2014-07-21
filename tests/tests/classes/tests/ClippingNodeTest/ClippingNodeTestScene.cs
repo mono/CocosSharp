@@ -13,6 +13,7 @@ namespace tests.Clipping
         public override void runThisTest()
         {
             CCLayer pLayer = nextTestAction();
+            pLayer.Camera = AppDelegate.SharedCamera;
             AddChild(pLayer);
             Director.ReplaceScene(this);
         }
@@ -61,6 +62,7 @@ namespace tests.Clipping
             sceneIdx++;
             sceneIdx = sceneIdx % MAX_LAYER;
             CCLayer pLayer = createTestLayer(sceneIdx);
+            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
 
@@ -71,12 +73,14 @@ namespace tests.Clipping
             if (sceneIdx < 0)
                 sceneIdx += total;
             CCLayer pLayer = createTestLayer(sceneIdx);
+            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
 
         public static CCLayer restartTestAction()
         {
             CCLayer pLayer = createTestLayer(sceneIdx);
+            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
     }
@@ -196,6 +200,9 @@ namespace tests.Clipping
 
     public class BasicTest : BaseClippingNodeTest
     {
+        CCNode stencil;
+        CCClippingNode clipper;
+        CCNode content;
 
         protected virtual CCAction ActionRotate()
         {
@@ -250,9 +257,8 @@ namespace tests.Clipping
 
         public override void Setup()
         {
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
-            CCNode stencil = Stencil();
+            stencil = Stencil();
             stencil.Tag = kTagStencilNode;
             stencil.Position = new CCPoint(50, 50);
 
@@ -261,7 +267,7 @@ namespace tests.Clipping
             clipper.Stencil = stencil;
             AddChild(clipper);
 
-			CCNode content = Content();
+			content = Content();
 			content.Tag = kTagContentNode;
             content.Position = new CCPoint(50, 50);
             clipper.AddChild(content);
@@ -271,9 +277,11 @@ namespace tests.Clipping
 		{
 			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
+            stencil.RunAction(this.ActionRotate());
+            content.RunAction (this.ActionScale());
+
 			var s = windowSize;
 			this[kTagClipperNode].Position = new CCPoint(s.Width / 2 - 50, s.Height / 2 - 50);
-
 
 		}
     }
@@ -293,14 +301,12 @@ namespace tests.Clipping
         protected override CCNode Stencil()
         {
             CCNode node = Shape();
-            node.RunAction(this.ActionRotate());
             return node;
         }
 
         protected override CCNode Content()
         {
             CCNode node = Grossini();
-            node.RunAction(ActionScale());
             return node;
         }
     }
@@ -527,8 +533,7 @@ namespace tests.Clipping
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
-
+			base.OnEnter();
 
 			m_pOuterClipper.Position = ContentSize.Center;
 
@@ -549,14 +554,14 @@ namespace tests.Clipping
             float rotation = CCRandom.Float_0_1() * 360f;
 
             CCSprite hole = new CCSprite("Images/hole_effect.png");
-            hole.Position = point;
+            hole.Position = point - m_pHoles.TransformedBoundingBoxWorldspace.Origin;
             hole.Rotation = rotation;
             hole.Scale = scale;
 
             m_pHoles.AddChild(hole);
 
             CCSprite holeStencil = new CCSprite("Images/hole_stencil.png");
-            holeStencil.Position = point;
+            holeStencil.Position = point - m_pHoles.TransformedBoundingBoxWorldspace.Origin;
             holeStencil.Rotation = rotation;
             holeStencil.Scale = scale;
 
@@ -570,8 +575,7 @@ namespace tests.Clipping
             CCTouch touch = touches[0];
             CCPoint point =
                 m_pOuterClipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
-            CCRect rect = new CCRect(0, 0, m_pOuterClipper.ContentSize.Width,
-                                     m_pOuterClipper.ContentSize.Height);
+            CCRect rect = m_pOuterClipper.TransformedBoundingBoxWorldspace;
             if (!rect.ContainsPoint(point)) return;
             this.pokeHoleAtPoint(point);
         }
@@ -597,7 +601,6 @@ namespace tests.Clipping
 			CCClippingNode clipper = new CCClippingNode() { Tag = kTagClipperNode };
             clipper.ContentSize = new CCSize(200, 200);
             clipper.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            clipper.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
             AddChild(clipper);
 
             CCDrawNode stencil = new CCDrawNode();
@@ -617,6 +620,9 @@ namespace tests.Clipping
             content.Tag = kTagContentNode;
             content.AnchorPoint = new CCPoint(0.5f, 0.5f);
             clipper.AddChild(content);
+
+            content.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
+
 
             m_bScrolling = false;
 

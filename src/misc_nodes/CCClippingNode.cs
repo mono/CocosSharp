@@ -106,6 +106,8 @@ namespace CocosSharp
             {
                 Window.DrawManager.PushMatrix();
 
+                Transform();
+
                 Stencil.Visit();
 
                 Window.DrawManager.PopMatrix();
