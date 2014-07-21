@@ -41,7 +41,7 @@ namespace tests
 
             Schedule(checkAnim);
 
-			BaseNode.Position = CCVisibleRect.Center;
+            BaseNode.Position = windowSize.Center;
 			var size = BaseNode.ContentSize;
 			BaseNode[EffectTestScene.kTagKathia].Position = new CCPoint(size.Width / 3, size.Center.Y);
 			BaseNode[EffectTestScene.kTagTamara].Position = new CCPoint(2 * size.Width / 3,size.Center.Y);
@@ -162,7 +162,8 @@ namespace tests
 		public void NewScene()
 		{
 			CCScene s = new EffectTestScene();
-			CCNode child = new TextLayer();
+			CCLayer child = new TextLayer();
+            child.Camera = AppDelegate.SharedCamera;
 			s.AddChild(child);
 			Director.ReplaceScene(s);
 		}
