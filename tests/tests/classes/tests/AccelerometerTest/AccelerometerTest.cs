@@ -70,9 +70,9 @@ namespace tests
 
             ball.Position = windowSize.Center;
 
-
+#if !NETFX_CORE
             Window.Accelerometer.Enabled = true;
-
+#endif
             // Register Touch Event
             var accelListener = new CCEventListenerAccelerometer();
 

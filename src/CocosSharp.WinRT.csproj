@@ -454,11 +454,11 @@
       <LogicalName>CCCamera</LogicalName>
     </Compile>
     <Compile Include=".\CCWindow.cs">
-      <LogicalName>CCWindow</LogicalName>		
-	</Compile>
+      <LogicalName>CCWindow</LogicalName>
+    </Compile>
     <Compile Include=".\CCViewport.cs">
       <LogicalName>CCViewport</LogicalName>
-	</Compile>
+    </Compile>
     <Compile Include=".\CCConfiguration.cs">
       <LogicalName>CCConfiguration</LogicalName>
     </Compile>
@@ -986,7 +986,6 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Windows8.csproj">
       <Project>{0518563c-acca-4a14-8c5d-ddbe93e2605f}</Project>
       <Name>MonoGame.Framework.Windows8</Name>
-      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

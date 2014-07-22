@@ -8,7 +8,7 @@
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestWin8Store</RootNamespace>
-    <AssemblyName>TestWin8Store</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BC8A1FFA-BEE3-4634-8014-F334798102B3};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -126,6 +126,9 @@
     </Compile>
     <Compile Include="..\tests\tests\classes\testBasic.cs">
       <Link>classes\testBasic</Link>
+    </Compile>
+    <Compile Include="..\tests\tests\classes\TestNavigationLayer.cs">
+      <Link>classes\TestNavigationLayer.cs</Link>
     </Compile>
     <Compile Include="..\tests\tests\classes\testResource.cs">
       <Link>classes\testResource</Link>
@@ -1256,13 +1259,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\Extensions\**\*.*">
-			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-
-	<PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+  <ItemGroup>
+    <Compile Include="..\Extensions\**\*.*">
+      <Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
