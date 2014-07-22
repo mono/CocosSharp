@@ -9,7 +9,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <OutputType>Exe</OutputType>
     <RootNamespace>tests</RootNamespace>
-    <AssemblyName>tests.MacOS</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>True</DebugSymbols>

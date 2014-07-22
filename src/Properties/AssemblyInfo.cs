@@ -63,5 +63,5 @@ using System.Resources;
 
 #if DEBUG
 // Friendly assemblies - SHOULD MAKE THESE SIGNED
-[assembly: InternalsVisibleTo("tests.MacOS")]
+[assembly: InternalsVisibleTo("CocosSharpTests")]
 #endif

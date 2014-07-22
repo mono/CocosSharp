@@ -31,10 +31,10 @@ namespace tests
     {
         public override void FinishedLaunching(UIApplication app)
         {
-            CCApplication sharedApp = CCApplication.SharedApplication;
-            sharedApp.ApplicationDelegate = new AppDelegate();
+            CCApplication application = new CCApplication();
+            application.ApplicationDelegate = new AppDelegate();
 
-            CCApplication.SharedApplication.StartGame();
+            application.StartGame();
         }
 
         // This is the main entry point of the application.
