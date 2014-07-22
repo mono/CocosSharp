@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tests</RootNamespace>
-    <AssemblyName>tests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
@@ -46,7 +46,7 @@
     <Compile Include="classes\test.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
-	<Compile Include="classes\TestNavigationLayer.cs" />
+    <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
@@ -411,6 +411,7 @@
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexGenericTest.cs" />
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexTest.cs" />
     <Compile Include="classes\tests\ZwoptexTest\ZwoptexTestScene.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="ball-hd.mask" />
     <EmbeddedResource Include="grossini.mask" />
     <Compile Include="Game1.cs" />
@@ -420,12 +421,12 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\..\Extensions\**\*.*">
-			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Extensions\**\*.*">
+      <Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Assets\Content\**\*.*">
       <Link>Content\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -472,8 +473,7 @@
     <Folder Include="Content\TileMaps\" />
     <Folder Include="Content\zwoptex\" />
   </ItemGroup>
-
-	<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
