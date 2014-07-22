@@ -88,6 +88,8 @@ namespace tests
 				break;
 			}
 
+            testLayer.Camera = AppDelegate.SharedCamera;
+
 			return testLayer;
 		}
 
@@ -200,27 +202,29 @@ namespace tests
 
 		public override void OnEnter ()
 		{
-			base.OnEnter ();
+            CCRect visibleBounds = VisibleBoundsWorldspace;
 
-			int line = (int)(CCVisibleRect.VisibleRect.Size.Height / 2);
+            base.OnEnter ();
+
+            int line = (int)(visibleBounds.Size.Height / 2);
 
 			mousePosition = new CCLabelTtf ("Mouse Position: ", "arial", 20);
-			mousePosition.Position = new CCPoint (30, line + 60);
+            mousePosition.Position = new CCPoint (130, line + 60);
 			mousePosition.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mousePosition);
 
 			mouseButtonDown = new CCLabelTtf ("Mouse Button Down: ", "arial", 20);
-			mouseButtonDown.Position = new CCPoint (30, line + 20);
+            mouseButtonDown.Position = new CCPoint (130, line + 20);
 			mouseButtonDown.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mouseButtonDown);
 
 			mouseButtonUp = new CCLabelTtf ("Mouse Button Up: ", "arial", 20);
-			mouseButtonUp.Position = new CCPoint (30, line - 20);
+            mouseButtonUp.Position = new CCPoint (130, line - 20);
 			mouseButtonUp.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (mouseButtonUp);
 
 			scrollWheel = new CCLabelTtf ("Scroll Wheel Delta: ", "arial", 20);
-			scrollWheel.Position = new CCPoint (30, line - 60);
+            scrollWheel.Position = new CCPoint (130, line - 60);
 			scrollWheel.AnchorPoint = CCPoint.AnchorMiddleLeft;
 			AddChild (scrollWheel);
 
@@ -323,6 +327,8 @@ namespace tests
 		{
 			base.OnEnter ();
 
+            CCRect visibleBounds = VisibleBoundsWorldspace;
+
 			var origin = Layer.VisibleBoundsWorldspace.Origin;
 			var size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -357,8 +363,8 @@ namespace tests
 				ptNow.X += (float)acc.X * 9.81f;
 				ptNow.Y += (float)acc.Y * 9.81f;
 				#endif
-				ptNow.X = MathHelper.Clamp(ptNow.X, (float)(CCVisibleRect.Left.X+ballSize.Width / 2.0), (float)(CCVisibleRect.Right.X - ballSize.Width / 2.0));
-				ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(CCVisibleRect.Bottom.Y+ballSize.Height / 2.0), (float)(CCVisibleRect.Top.Y - ballSize.Height / 2.0));
+                ptNow.X = MathHelper.Clamp(ptNow.X, (float)(visibleBounds.Origin.X+ballSize.Width / 2.0), (float)(visibleBounds.Origin.X + visibleBounds.Size.Width - ballSize.Width / 2.0));
+                ptNow.Y = MathHelper.Clamp(ptNow.Y, (float)(visibleBounds.Origin.Y+ballSize.Height / 2.0), (float)(visibleBounds.Origin.Y + visibleBounds.Size.Height - ballSize.Height / 2.0));
 				sprite.Position = ptNow;
 			};
 
@@ -396,6 +402,7 @@ namespace tests
 		{
 			base.OnEnter ();
 
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 			var origin = Layer.VisibleBoundsWorldspace.Origin;
 			var size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -421,7 +428,7 @@ namespace tests
 
 				var locationInNode = target.Layer.ScreenToWorldspace(touch.LocationOnScreen);
 				var s = target.ContentSize;
-				CCRect rect = new CCRect(0, 0, s.Width, s.Height);
+                CCRect rect = target.TransformedBoundingBoxWorldspace;
 
 				if (rect.ContainsPoint(locationInNode))
 				{
@@ -435,7 +442,8 @@ namespace tests
 			listener1.OnTouchMoved = (touch, touchEvent) => 
 			{
 				var target = (CCSprite)touchEvent.CurrentTarget;
-				target.Position += touch.Delta;
+                CCPoint pt = touch.PreviousLocationOnScreen + touch.Delta;
+                target.Position = target.WorldToParentspace(Layer.ScreenToWorldspace(pt));
 			};
 
 			listener1.OnTouchEnded = (touch, touchEvent) => 
@@ -469,7 +477,7 @@ namespace tests
 			
 
 				CCMenuItemFont.FontSize = 16;
-				nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
+                nextItem.Position =  new CCPoint(visibleBounds.Origin.X + visibleBounds.Size.Width -100, 100);
 
 				var menu2 = new CCMenu(nextItem);
 				menu2.Position = CCPoint.Zero;
@@ -478,7 +486,7 @@ namespace tests
 			});
 
 			CCMenuItemFont.FontSize = 16;
-			removeAllTouchItem.Position = CCVisibleRect.Right + new CCPoint(-100, 0);
+            removeAllTouchItem.Position = new CCPoint(visibleBounds.Origin.X + visibleBounds.Size.Width -100, 80);
 
 			var menu = new CCMenu(removeAllTouchItem);
 			menu.Position = CCPoint.Zero;
@@ -537,7 +545,7 @@ namespace tests
 			var sprite3 = new TouchableSprite (10);
 			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
-			sprite3.Position = CCPoint.Zero;
+            sprite3.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-120, 120) ;
 			sprite2.AddChild(sprite3, 1);
 
 		}
@@ -811,6 +819,7 @@ namespace tests
 
 		public override void OnEnter ()
 		{
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
 			base.OnEnter ();
 
@@ -827,7 +836,7 @@ namespace tests
                     RemoveEventListener(listener);
 			});
 
-			item1.Position = CCVisibleRect.Center + new CCPoint(0, 80);
+            item1.Position = visibleBounds.Center + new CCPoint(0, 80);
 
 			var addNextButton = new Action( () =>
 			{
@@ -835,10 +844,10 @@ namespace tests
 				{
 						RestartCallback(null);
 				});
-				next.Position = CCVisibleRect.Center + new CCPoint(0, -40);
+                next.Position = visibleBounds.Center + new CCPoint(0, -40);
 
 				var menuNext = new CCMenu(next);
-				menuNext.Position = CCVisibleRect.LeftBottom;
+                menuNext.Position = visibleBounds.Origin;
 				menuNext.AnchorPoint = CCPoint.Zero;
 				AddChild(menuNext);
 				});
@@ -857,7 +866,7 @@ namespace tests
 					addNextButton ();
 			});
 
-			item2.Position = CCVisibleRect.Center + new CCPoint(0, 40);
+            item2.Position = visibleBounds.Center + new CCPoint(0, 40);
 
 			var item3 = new CCMenuItemFont("Click Me 3", (sender) => 
 				{
@@ -873,10 +882,10 @@ namespace tests
 					addNextButton();
 			});
 
-			item3.Position = CCVisibleRect.Center;
+            item3.Position = visibleBounds.Center;
 
 			var menu = new CCMenu(item1, item2, item3);
-			menu.Position = CCVisibleRect.LeftBottom;
+            menu.Position = visibleBounds.Origin;
 			menu.AnchorPoint = CCPoint.Zero;
 
 			AddChild(menu);
@@ -1015,34 +1024,40 @@ namespace tests
 		public GlobalZTouchTest() : base()
 		{
 
-			for (int i = 0; i < SPRITE_COUNT; i++)
-			{
-				CCSprite sprite;
-
-				if(i==4)
-				{
-					sprite = new CCSprite("Images/CyanSquare.png") { Tag = TAG_SPRITE + i};
-					blueSprite = sprite;
-					blueSprite.GlobalZOrder = -1;
-
-				}
-				else
-				{
-					sprite = new CCSprite("Images/YellowSquare.png") { Tag = TAG_SPRITE + i};
-				}
-
-				// For right now since we do not draw by GlobalZOrder we will move a value to the
-				// Local z-order so we can fake this.  It is a Hack for now for the foreground
-				// to background movement.
-				AddChild(sprite, 2);
-
-			}
 
 		}
 
 		public override void OnEnter()
 		{
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            int i;
+
+            for (i = 0; i < SPRITE_COUNT; i++)
+            {
+                CCSprite sprite;
+
+                if(i==4)
+                {
+                    sprite = new CCSprite("Images/CyanSquare.png") { Tag = TAG_SPRITE + i};
+                    blueSprite = sprite;
+                    blueSprite.Scene = Scene;
+                    blueSprite.GlobalZOrder = -1;
+
+                }
+                else
+                {
+                    sprite = new CCSprite("Images/YellowSquare.png") { Tag = TAG_SPRITE + i};
+                }
+
+                // For right now since we do not draw by GlobalZOrder we will move a value to the
+                // Local z-order so we can fake this.  It is a Hack for now for the foreground
+                // to background movement.
+                AddChild(sprite, 2);
+
+            }
+
+            CCRect visibleRect = Layer.VisibleBoundsWorldspace;
 
 			var listener = new CCEventListenerTouchOneByOne();
 			listener.IsSwallowTouches = true;
@@ -1053,7 +1068,7 @@ namespace tests
 
 					var locationInNode = target.Layer.ScreenToWorldspace(touch.LocationOnScreen);
 					var s = target.ContentSize;
-					var rect = new CCRect(0, 0, s.Width, s.Height);
+                    var rect = target.TransformedBoundingBoxWorldspace;
 		
 					if (rect.ContainsPoint(locationInNode))
 					{
@@ -1078,13 +1093,12 @@ namespace tests
 					target.Opacity = 255;
 				};
 
-			var visibleSize = Layer.VisibleBoundsWorldspace.Size;
-			var i = 0;
+			i = 0;
 			foreach (var child in Children)
 			{
 				if (child.Tag >= TAG_SPRITE && child.Tag <= TAG_SPRITE_END)
 				{
-					child.Position = new CCPoint(CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y);
+                    child.Position = new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / (SPRITE_COUNT - 1) * i, visibleRect.Center.Y);
 					i++;
 					child.AddEventListener(listener.Copy());
 				}
@@ -1136,6 +1150,7 @@ namespace tests
 		{
 			base.OnEnter ();
 
+            CCRect visibleBounds = VisibleBoundsWorldspace;
 			var origin = Layer.VisibleBoundsWorldspace.Origin;
 			var size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -1174,7 +1189,7 @@ namespace tests
                             this.ResumeListeners(true);
 				});
 
-					closeItem.Position = CCVisibleRect.Center;
+                    closeItem.Position = visibleBounds.Center;
 
 					var closeMenu = new CCMenu(closeItem);
 					closeMenu.AnchorPoint = CCPoint.AnchorLowerLeft;
@@ -1184,7 +1199,8 @@ namespace tests
 			});
 
 			popup.AnchorPoint = CCPoint.AnchorMiddleRight;
-			popup.Position = CCVisibleRect.Right;
+            popup.Position = new CCPoint(visibleBounds.Origin.X + visibleBounds.Size.Width,
+                visibleBounds.Origin.Y + visibleBounds.Size.Height / 2);
 
 			var menu = new CCMenu(popup);
 			menu.AnchorPoint = CCPoint.AnchorLowerLeft;
@@ -1216,6 +1232,7 @@ namespace tests
 
 		public RemoveAllTest ()
 		{
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
 			CCMenuItemFont.FontSize = 16;
 
@@ -1235,10 +1252,11 @@ namespace tests
 					);
 
 					CCMenuItemFont.FontSize = 16;
-					nextItem.Position = CCVisibleRect.Right + new CCPoint(-100, -30);
+                    nextItem.Position = new CCPoint(visibleBounds.Origin.X + visibleBounds.Size.Width,
+                        visibleBounds.Origin.Y + visibleBounds.Size.Height / 2) + new CCPoint(-100, -30);
 					var menu2 = new CCMenu(nextItem);
 					menu2.AnchorPoint = CCPoint.AnchorLowerLeft;
-					menu2.Position = CCPoint.Zero;
+                    menu2.Position = visibleBounds.Center;
 					AddChild(menu2);
 
 
@@ -1253,14 +1271,15 @@ namespace tests
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); 
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
 
 			customlistener = AddCustomEventListener(CCEvent.EVENT_COME_TO_BACKGROUND, (customEvent) => 
 				{
 
 					var label = new CCLabelTtf("Yeah, this issue was fixed.", "", 20);
 					label.AnchorPoint = CCPoint.AnchorMiddleLeft;
-					label.Position = CCVisibleRect.Left;
+                    label.Position = new CCPoint(visibleBounds.Origin.X, visibleBounds.Origin.Y + visibleBounds.Size.Height / 2);
 
 					AddChild(label);
 
@@ -1271,7 +1290,8 @@ namespace tests
 					bugFixed = true;
 				});
 
-			removeAllTouchItem.Position = new CCPoint(CCVisibleRect.Right + new CCPoint(-100, 0));
+            removeAllTouchItem.Position = new CCPoint (visibleBounds.Origin.X + visibleBounds.Size.Width - 100,
+                visibleBounds.Origin.Y + visibleBounds.Size.Height / 2);
 			menu.Position = CCPoint.Zero;
 
 		}
@@ -1340,7 +1360,7 @@ namespace tests
 
 			if (cyanTouch != null) 
 			{
-				MoveSpriteTowardPoint (cyanTouch.LocationOnScreen, dt);
+                MoveSpriteTowardPoint (Layer.ScreenToWorldspace(cyanTouch.LocationOnScreen), dt);
 			}
 
 		}
@@ -1507,9 +1527,9 @@ namespace tests
 				sprite2.AddEventListener(keyboardEventListener.Copy());
 
 
-				var visibleSize = Layer.VisibleBoundsWorldspace.Size;
-				sprite.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y + sprite2.ContentSize.Height/2 +10);
-				sprite2.Position = new CCPoint( CCVisibleRect.Left.X + visibleSize.Width / (SPRITE_COUNT - 1) * i, CCVisibleRect.Center.Y - sprite2.ContentSize.Height/2-10);
+				var visibleBounds = Layer.VisibleBoundsWorldspace;
+                sprite.Position = new CCPoint( visibleBounds.Origin.X + visibleBounds.Size.Width / (SPRITE_COUNT - 1) * i, visibleBounds.Center.Y + sprite2.ContentSize.Height/2 +10);
+                sprite2.Position = new CCPoint( visibleBounds.Origin.X + visibleBounds.Size.Width / (SPRITE_COUNT - 1) * i, visibleBounds.Center.Y - sprite2.ContentSize.Height/2-10);
 			}
 
 		}
