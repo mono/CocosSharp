@@ -1037,11 +1037,12 @@ namespace CocosSharp
                 movedTouches.Clear();
                 endedTouches.Clear();
 
-                CCPoint pos = new CCPoint(lastMouseState.X, lastMouseState.Y);
+                CCPoint pos = CCPoint.Zero;
 
                 // TODO: allow configuration to treat the game pad as a touch device.
 
                 #if WINDOWS || WINDOWSGL || MACOS
+                pos = new CCPoint(lastMouseState.X, lastMouseState.Y);
                 prevMouseState = lastMouseState;
                 lastMouseState = Mouse.GetState();
 
