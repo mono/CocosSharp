@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{4EF34363-1190-4444-9F4B-7A262B397EE8}</ProjectGuid>
@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tests</RootNamespace>
-    <AssemblyName>tests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <XnaFrameworkVersion>v4.0</XnaFrameworkVersion>
@@ -89,7 +89,7 @@
     <Compile Include="classes\test.cs" />
     <Compile Include="classes\testBasic.cs" />
     <Compile Include="classes\testResource.cs" />
-	<Compile Include="classes\TestNavigationLayer.cs" />
+    <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTest.cs" />
     <Compile Include="classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
@@ -448,14 +448,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game1.cs" />
-	<Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
+    <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
   </ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\..\Extensions\**\*.*">
-			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>	
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Extensions\**\*.*">
+      <Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestScene.cs" />
     <Compile Include="classes\tests\ExtensionsTest\ExtensionsTestMainLayer.cs" />
     <Compile Include="classes\tests\ExtensionsTest\TableViewTest\CustomTableViewCell.cs" />
