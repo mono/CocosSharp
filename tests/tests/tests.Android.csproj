@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>tests</RootNamespace>
-    <AssemblyName>Tests</AssemblyName>
+    <AssemblyName>CocosSharpTests</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -62,7 +62,7 @@
     <Compile Include="Classes\test.cs" />
     <Compile Include="Classes\testBasic.cs" />
     <Compile Include="Classes\testResource.cs" />
-	<Compile Include="classes\TestNavigationLayer.cs" />
+    <Compile Include="classes\TestNavigationLayer.cs" />
     <Compile Include="Classes\tests\AccelerometerTest\AccelerometerTest.cs" />
     <Compile Include="Classes\tests\ActionManagerTest\ActionManagerTest.cs" />
     <Compile Include="Classes\tests\ActionManagerTest\ActionManagerTestScene.cs" />
@@ -431,6 +431,138 @@
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Tests\CircleStress.cs" />
     <Compile Include="Classes\tests\Box2DTestBet%28Box2D%29\Tests\LiquidTest.cs" />
     <Compile Include="classes\tests\EventDispatcherTest\EventDispatcherTestDemo.cs" />
+    <Compile Include="..\..\Extensions\Box2D\CCDraw.cs">
+      <Link>Extensions\Box2D\CCDraw.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBAnimationManager.cs">
+      <Link>Extensions\CCBReader\CCBAnimationManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBFileLoader.cs">
+      <Link>Extensions\CCBReader\CCBFileLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBKeyframe.cs">
+      <Link>Extensions\CCBReader\CCBKeyframe.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBPosition.cs">
+      <Link>Extensions\CCBReader\CCBPosition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBReader.cs">
+      <Link>Extensions\CCBReader\CCBReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBSequence.cs">
+      <Link>Extensions\CCBReader\CCBSequence.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBSequenceProperty.cs">
+      <Link>Extensions\CCBReader\CCBSequenceProperty.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCBValue.cs">
+      <Link>Extensions\CCBReader\CCBValue.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCControlButtonLoader.cs">
+      <Link>Extensions\CCBReader\CCControlButtonLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCControlLoader.cs">
+      <Link>Extensions\CCBReader\CCControlLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCLabelBMFontLoader.cs">
+      <Link>Extensions\CCBReader\CCLabelBMFontLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCLabelTTFLoader.cs">
+      <Link>Extensions\CCBReader\CCLabelTTFLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCLayerColorLoader.cs">
+      <Link>Extensions\CCBReader\CCLayerColorLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCLayerGradientLoader.cs">
+      <Link>Extensions\CCBReader\CCLayerGradientLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCLayerLoader.cs">
+      <Link>Extensions\CCBReader\CCLayerLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCMenuItemImageLoader.cs">
+      <Link>Extensions\CCBReader\CCMenuItemImageLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCMenuItemLoader.cs">
+      <Link>Extensions\CCBReader\CCMenuItemLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCMenuLoader.cs">
+      <Link>Extensions\CCBReader\CCMenuLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCNodeLoader.cs">
+      <Link>Extensions\CCBReader\CCNodeLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCNodeLoaderLibrary.cs">
+      <Link>Extensions\CCBReader\CCNodeLoaderLibrary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCParticleSystemQuadLoader.cs">
+      <Link>Extensions\CCBReader\CCParticleSystemQuadLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCScale9SpriteLoader.cs">
+      <Link>Extensions\CCBReader\CCScale9SpriteLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCScrollViewLoader.cs">
+      <Link>Extensions\CCBReader\CCScrollViewLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\CCSpriteLoader.cs">
+      <Link>Extensions\CCBReader\CCSpriteLoader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\CCBReader\ICCBMemberVariableAssigner.cs">
+      <Link>Extensions\CCBReader\ICCBMemberVariableAssigner.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControl.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControl.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlButton.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlButton.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlColourPicker.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlColourPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlHuePicker.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlHuePicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlPotentiometer.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlPotentiometer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlSaturationPicker.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlSaturationPicker.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlSlider.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlSlider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlStepper.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlStepper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlSwitch.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlSwitch.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCControlUtils.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCControlUtils.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCInvocation.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCInvocation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCScale9Sprite.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCScale9Sprite.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCScale9SpriteFile.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCScale9SpriteFile.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCControlExtension\CCScale9SpriteFrame.cs">
+      <Link>Extensions\GUI\CCControlExtension\CCScale9SpriteFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCScrollView\CCScrollView.cs">
+      <Link>Extensions\GUI\CCScrollView\CCScrollView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCScrollView\CCSorting.cs">
+      <Link>Extensions\GUI\CCScrollView\CCSorting.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableView.cs">
+      <Link>Extensions\GUI\CCScrollView\CCTableView.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Extensions\GUI\CCScrollView\CCTableViewCell.cs">
+      <Link>Extensions\GUI\CCScrollView\CCTableViewCell.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Content\animations\animations-2.plist.xnb">
@@ -1966,11 +2098,11 @@
   <ItemGroup />
   <ItemGroup>
     <Folder Include="Classes\tests\EventDispatcherTest\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\..\Extensions\**\*.*">
-			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-
+  <ItemGroup>
+    <Compile Include="..\..\Extensions\**\*.*">
+      <Link>Extensions\CocosSharp\%25%28RecursiveDir%29%25%28FileName%29%25%28Extension%29</Link>
+    </Compile>
+  </ItemGroup>
 </Project>

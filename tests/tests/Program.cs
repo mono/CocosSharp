@@ -117,13 +117,13 @@ namespace tests
 #if OUYA
 		    Ouya.Console.Api.OuyaFacade.Instance.Init(this, "f3366755-190b-4b95-af21-ca4a01a99478"); // Our UUID dev ID
 #endif
+			CCApplication application = new CCApplication();
+			application.ApplicationDelegate = new AppDelegate();
 
-			CCApplication sharedApp = CCApplication.SharedApplication;
-			sharedApp.ApplicationDelegate = new AppDelegate();
+			this.SetContentView(application.AndroidContentView);
 
-			this.SetContentView(sharedApp.AndroidContentView);
+			application.StartGame();
 
-			CCApplication.SharedApplication.StartGame();
         }
     }
 #endif
