@@ -120,7 +120,7 @@ namespace CocosSharp
         {
             ChildClippingMode = clipMode;
             IgnoreAnchorPointForPosition = true;
-            AnchorPoint = new CCPoint(0.5f, 0.5f);
+			AnchorPoint = CCPoint.AnchorMiddle;
         }
 
         public CCLayer() : this(CCClipMode.None)

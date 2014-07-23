@@ -82,7 +82,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor() : this(new CCColor4B(0, 0, 0, 0))
+        public CCLayerColor() : this(CCColor4B.Transparent)
         {
         }
 
@@ -115,9 +115,18 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            Window.DrawManager.TextureEnabled = false;
-            Window.DrawManager.BlendFunc(BlendFunc);
-            Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
+			if(Camera != null)
+			{
+				var drawManager = Window.DrawManager;
+
+				drawManager.TextureEnabled = false;
+				drawManager.BlendFunc(BlendFunc);
+				drawManager.DrawPrimitives(PrimitiveType.TriangleStrip,  SquareVertices, 0, 2);
+
+				drawManager.ViewMatrix = Camera.ViewMatrix;
+				drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+			}
+
         }
 
         public override void UpdateColor()
