@@ -90,22 +90,24 @@ namespace CocosSharp
         protected override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
-            Director.DrawManager.SpriteBatch.Begin();
-            float y = 15;
-            for (int i = 0; i < 4; ++i)
-            {
-                GamePadState gs = GamePad.GetState((PlayerIndex)i, GamePadDeadZone.Circular);
-                string textToDraw = string.Format(
-                "Pad: {0} Connected: {1} LS: ({2:F2}, {3:F2}) RS: ({4:F2}, {5:F2}) LT: {6:F2} RT: {7:F2}",
-                i, gs.IsConnected,
-                gs.ThumbSticks.Left.X, gs.ThumbSticks.Left.Y,
-                gs.ThumbSticks.Right.X, gs.ThumbSticks.Right.Y,
-                gs.Triggers.Left, gs.Triggers.Right);
 
-                Director.DrawManager.SpriteBatch.DrawString(CCSpriteFontCache.SharedInstance["arial-20"], textToDraw, new Vector2(16, y), Color.White);
-                y += 25;
-            }
-            Director.DrawManager.SpriteBatch.End();
+			// We will comment this out until Director and DrawManager are sorted out.
+//            Director.DrawManager.SpriteBatch.Begin();
+//            float y = 15;
+//            for (int i = 0; i < 4; ++i)
+//            {
+//                GamePadState gs = GamePad.GetState((PlayerIndex)i, GamePadDeadZone.Circular);
+//                string textToDraw = string.Format(
+//                "Pad: {0} Connected: {1} LS: ({2:F2}, {3:F2}) RS: ({4:F2}, {5:F2}) LT: {6:F2} RT: {7:F2}",
+//                i, gs.IsConnected,
+//                gs.ThumbSticks.Left.X, gs.ThumbSticks.Left.Y,
+//                gs.ThumbSticks.Right.X, gs.ThumbSticks.Right.Y,
+//                gs.Triggers.Left, gs.Triggers.Right);
+//
+//                Director.DrawManager.SpriteBatch.DrawString(CCSpriteFontCache.SharedInstance["arial-20"], textToDraw, new Vector2(16, y), Color.White);
+//                y += 25;
+//            }
+//            Director.DrawManager.SpriteBatch.End();
         }
 #endif
 
