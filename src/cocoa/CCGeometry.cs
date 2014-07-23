@@ -692,6 +692,16 @@ namespace CocosSharp
         public float Y;
         public float Z;
 
+        #region Properties
+
+        internal Vector3 XnaVector
+        {
+            get { return new Vector3 (X, Y, Z); }
+        }
+
+        #endregion Properties
+
+
         public CCPoint3(float x, float y, float z)
         {
             X = x;
@@ -725,6 +735,11 @@ namespace CocosSharp
         }
 
         #endregion Operators
+
+        public float Length
+        {
+            get { return (float) Math.Sqrt(X * X + Y * Y + Z * Z); }
+        }
     }
 
 #if !WINDOWS_PHONE && !NETFX_CORE
