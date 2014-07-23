@@ -317,6 +317,16 @@ namespace CocosSharp
                 if (batchNode == null && texture != value)
                 {
                     texture = value;
+
+                    if(TextureRectInPixels == CCRect.Zero) 
+                    {
+                        CCSize texSize = texture.ContentSizeInPixels;
+                        TextureRectInPixels = new CCRect(0.0f, 0.0f, texSize.Width, texSize.Height);
+                    }
+
+                    if(ContentSize == CCSize.Zero)
+                        ContentSize = textureRectInPixels.Size;
+
                     UpdateBlendFunc();
                 }
             }
