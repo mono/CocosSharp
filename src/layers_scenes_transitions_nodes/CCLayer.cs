@@ -104,6 +104,13 @@ namespace CocosSharp
             }
         }
 
+        public override CCAffineTransform AffineLocalTransform {
+            get 
+            {
+                return CCAffineTransform.Identity;
+            }
+        }
+
         #endregion Properties
 
 
