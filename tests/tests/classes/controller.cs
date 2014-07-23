@@ -105,7 +105,7 @@ namespace tests
             #if XBOX || OUYA
             // Center the menu on the first item so that it is 
             // in the center of the screen
-            homePosition = new CCPoint(0f, windowSize.Height / 2f + LINE_SPACE / 2f);
+            homePosition = new CCPoint(0f, visibleBounds.Size.Height / 2f + LINE_SPACE / 2f);
             lastPosition = new CCPoint(0f, homePosition.Y - (testListMenuItems.Count - 1) * LINE_SPACE);
             #else
 			homePosition = curPos;
