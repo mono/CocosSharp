@@ -1,4 +1,3 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests.WindowsDX", "tests\tests.WindowsDX.csproj", "{4EF34363-1190-4444-9F4B-7A262B397EE8}"
@@ -10,6 +9,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsDX", "..\box2d\box2d.WindowsDX.csproj", "{B81B6701-7A78-4846-BF6F-04E0591F0F38}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocosSharp.WindowsDX", "..\src\CocosSharp.WindowsDX.csproj", "{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Windows", "..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj", "{87A71215-7CAC-4B80-9D43-1700DECFB828}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -98,6 +99,20 @@ Global
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Release|x86.ActiveCfg = Release|x86
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Release|x86.Build.0 = Release|x86
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Release|Xbox 360.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Windows Phone.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Debug|Xbox 360.ActiveCfg = Debug|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Windows Phone.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|x86.ActiveCfg = Release|Any CPU
+		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Xbox 360.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
