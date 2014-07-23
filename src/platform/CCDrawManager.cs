@@ -58,7 +58,6 @@ namespace CocosSharp
 
         CCSize initialProposedScreenSizeInPixels;
 
-        Viewport savedViewport;
 
         CCBlendFunc currBlend;
         CCDepthFormat platformDepthFormat;
@@ -87,7 +86,13 @@ namespace CocosSharp
         BasicEffect defaultEffect;
         Effect currentEffect;
 
-        RenderTarget2D renderTarget;
+        RenderTarget2D currentRenderTarget;
+        RenderTarget2D previousRenderTarget;
+
+        Matrix previousViewMatrix;
+        Matrix previousProjectionMatrix;
+
+        Viewport previousViewport;
 
         Texture2D currentTexture;
 
@@ -106,7 +111,6 @@ namespace CocosSharp
         internal int DrawCount { get; set; }
         internal BasicEffect PrimitiveEffect { get; private set; }
         internal AlphaTestEffect AlphaTestEffect { get; private set; }
-        internal RenderTarget2D CurrentRenderTarget { get; private set; }
         internal CCRawList<CCV3F_C4B_T2F> TmpVertices { get; private set; }
 
         public bool VertexColorEnabled
@@ -213,6 +217,7 @@ namespace CocosSharp
             get { return graphicsDevice.Viewport; } 
             set 
             {
+                previousViewport = Viewport;
                 graphicsDevice.Viewport = value;
             }
         }
@@ -222,6 +227,7 @@ namespace CocosSharp
             get { return viewMatrix; }
             set
             {
+                previousViewMatrix = viewMatrix;
                 viewMatrix = value;
                 viewMatrixChanged = true;
             }
@@ -232,6 +238,7 @@ namespace CocosSharp
             get { return projectionMatrix; }
             set
             {
+                previousProjectionMatrix = projectionMatrix;
                 projectionMatrix = value;
                 projectionMatrixChanged = true;
             }
@@ -256,6 +263,21 @@ namespace CocosSharp
         internal GraphicsDeviceManager XnaGraphicsDeviceManager
         {
             get { return graphicsDeviceMgr; }
+        }
+
+        internal RenderTarget2D CurrentRenderTarget 
+        { 
+            get { return currentRenderTarget; }
+            set 
+            {
+                previousRenderTarget = currentRenderTarget;
+                currentRenderTarget = value;
+
+                if (graphicsDevice != null && graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal) 
+                {
+                    graphicsDevice.SetRenderTarget(currentRenderTarget);
+                }
+            }
         }
 
         #endregion Properties
@@ -491,8 +513,7 @@ namespace CocosSharp
             defaultEffect = null;
             currentEffect = null;
 
-            renderTarget = null;
-            CurrentRenderTarget = null;
+            currentRenderTarget = null;
 
             quadsBuffer = null;
             quadsIndexBuffer = null;
@@ -533,7 +554,7 @@ namespace CocosSharp
             graphicsDevice.RasterizerState = RasterizerState.CullNone;
             graphicsDevice.BlendState = BlendState.AlphaBlend;
             graphicsDevice.SetVertexBuffer(null);
-            graphicsDevice.SetRenderTarget(renderTarget);
+            graphicsDevice.SetRenderTarget(null);
             graphicsDevice.Indices = null;
             graphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
         }
@@ -609,12 +630,12 @@ namespace CocosSharp
 
             Debug.Assert(stackIndex == 0);
 
-            if (renderTarget != null)
+            if (currentRenderTarget != null)
             {
                 graphicsDevice.SetRenderTarget(null);
 
                 SpriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, null, DepthStencilState, null, AlphaTestEffect);
-                SpriteBatch.Draw(renderTarget, new Vector2(0, 0), Color.White);
+                SpriteBatch.Draw(currentRenderTarget, new Vector2(0, 0), Color.White);
                 SpriteBatch.End();
             }
 
@@ -965,41 +986,34 @@ namespace CocosSharp
             return new RenderTarget2D(graphicsDevice, width, height, false, (SurfaceFormat)colorFormat, (DepthFormat)depthFormat, 0, (RenderTargetUsage)usage);
         }
 
-
         public void SetRenderTarget(CCTexture2D texture)
         {
-            if (texture == null)
+            RenderTarget2D target = null;
+
+            if (texture != null)
             {
-                SetRenderTarget((RenderTarget2D)null);
+                CCSize texSize = texture.ContentSizeInPixels;
+                CCRect texRect = new CCRect (0.0f, 0.0f, texSize.Width, texSize.Height);
+                CCPoint texCenter = texRect.Center;
+
+                ProjectionMatrix = Matrix.CreateOrthographic (
+                    texSize.Width, texSize.Height, 
+                    1024f, -1024);
+                ViewMatrix = Matrix.CreateLookAt(new CCPoint3(texCenter, 100.0f).XnaVector, new CCPoint3(texCenter, 0.0f).XnaVector, Vector3.Up);
+
+                Viewport = new Viewport(0, 0, (int)texSize.Width, (int)texSize.Height);
+                target = texture.XNATexture as RenderTarget2D;
             }
-            else
-            {
-                Debug.Assert(texture.XNATexture is RenderTarget2D);
-                SetRenderTarget((RenderTarget2D)texture.XNATexture);
-            }
+
+            CurrentRenderTarget = target;
         }
 
-        internal void SetRenderTargetViewport(int x, int y, int width, int height)
+        public void RestoreRenderTarget()
         {
-            graphicsDevice.Viewport = new Viewport(x, y, width, height);
-        }
-
-        internal void SetRenderTarget(RenderTarget2D renderTarget)
-        {
-            if (graphicsDevice.GraphicsDeviceStatus == GraphicsDeviceStatus.Normal)
-            {
-                if (renderTarget == null)
-                {
-                    graphicsDevice.SetRenderTarget(renderTarget);
-                    graphicsDevice.Viewport = savedViewport;
-                }
-                else
-                {
-                    savedViewport = graphicsDevice.Viewport;
-                    graphicsDevice.SetRenderTarget(renderTarget);
-                }
-            }
-            CurrentRenderTarget = renderTarget;
+            ViewMatrix = previousViewMatrix;
+            ProjectionMatrix = previousProjectionMatrix;
+            Viewport = previousViewport;
+            CurrentRenderTarget = previousRenderTarget;
         }
 
         #endregion Render target management

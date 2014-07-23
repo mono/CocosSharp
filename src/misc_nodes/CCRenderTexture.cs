@@ -71,8 +71,6 @@ namespace CocosSharp
             float widthRatio = size.Width / texSize.Width;
             float heightRatio = size.Height / texSize.Height;
 
-            drawManager.SetRenderTargetViewport(0, 0, (int) texSize.Width, (int) texSize.Height);
-
             Matrix projection = Matrix.CreateOrthographicOffCenter(
                 -1.0f / widthRatio, 1.0f / widthRatio,
                 -1.0f / heightRatio, 1.0f / heightRatio,

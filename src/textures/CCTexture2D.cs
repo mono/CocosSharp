@@ -501,7 +501,7 @@ namespace CocosSharp
                     DefaultAlphaPixelFormat, CCRenderTargetUsage.DiscardContents
                 );
 
-                CCDrawManager.SharedDrawManager.SetRenderTarget(renderTarget);
+                CCDrawManager.SharedDrawManager.CurrentRenderTarget = renderTarget;
                 CCDrawManager.SharedDrawManager.Clear(CCColor4B.Transparent);
 
                 SpriteBatch sb = CCDrawManager.SharedDrawManager.SpriteBatch;
@@ -544,7 +544,7 @@ namespace CocosSharp
                 CCDrawManager.SharedDrawManager.XnaGraphicsDevice.RasterizerState = RasterizerState.CullNone;
                 CCDrawManager.SharedDrawManager.DepthStencilState = DepthStencilState.Default;
 
-                CCDrawManager.SharedDrawManager.SetRenderTarget((RenderTarget2D)null);
+                CCDrawManager.SharedDrawManager.CurrentRenderTarget = (RenderTarget2D)null;
 
                 InitWithTexture(renderTarget, (CCSurfaceFormat)renderTarget.Format, true, false);
                 cacheInfo.CacheType = CCTextureCacheType.String;
@@ -769,7 +769,7 @@ namespace CocosSharp
                 var target = new RenderTarget2D(CCDrawManager.SharedDrawManager.XnaGraphicsDevice, PixelsWide, PixelsHigh, true, (SurfaceFormat)PixelFormat,
                     DepthFormat.None, 0, RenderTargetUsage.DiscardContents);
 
-                CCDrawManager.SharedDrawManager.SetRenderTarget(target);
+                CCDrawManager.SharedDrawManager.CurrentRenderTarget = target;
 
                 SpriteBatch sb = CCDrawManager.SharedDrawManager.SpriteBatch;
 
@@ -802,7 +802,7 @@ namespace CocosSharp
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
             );
 
-            CCDrawManager.SharedDrawManager.SetRenderTarget(renderTarget);
+            CCDrawManager.SharedDrawManager.CurrentRenderTarget = renderTarget;
             CCDrawManager.SharedDrawManager.SpriteBatch.Begin();
             CCDrawManager.SharedDrawManager.SpriteBatch.Draw(texture, Vector2.Zero, Color.White);
             CCDrawManager.SharedDrawManager.SpriteBatch.End();
@@ -823,7 +823,7 @@ namespace CocosSharp
                 DepthFormat.None, 0, RenderTargetUsage.DiscardContents
             );
 
-            CCDrawManager.SharedDrawManager.SetRenderTarget(result);
+            CCDrawManager.SharedDrawManager.CurrentRenderTarget = result;
 
             CCDrawManager.SharedDrawManager.Clear(CCColor4B.Transparent);
 

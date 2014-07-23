@@ -74,19 +74,19 @@ namespace CocosSharp
                 }
             }
         }
-
-        public CCSize ContentSize
-        {
-            get { return contentSize; }
-            set 
-            {
-                if (contentSize != value) 
-                {
-                    contentSize = value;
-                    Step = new CCPoint (contentSize.Width / GridSize.X, contentSize.Height / GridSize.Y);
-                }
-            }
-        }
+//
+//        public CCSize ContentSize
+//        {
+//            get { return contentSize; }
+//            set 
+//            {
+//                if (contentSize != value) 
+//                {
+//                    contentSize = value;
+//                    Step = new CCPoint (contentSize.Width / GridSize.X, contentSize.Height / GridSize.Y);
+//                }
+//            }
+//        }
 
         #endregion Properties
 
@@ -98,7 +98,8 @@ namespace CocosSharp
             GridSize = gridSize;
             Texture = texture;
             textureFlipped = flipped;
-
+            CCSize texSize = texture.ContentSizeInPixels;
+            Step = new CCPoint (texSize.Width / GridSize.X, texSize.Height / GridSize.Y);
         }
 
         #endregion Constructors
