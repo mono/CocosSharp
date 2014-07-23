@@ -1,4 +1,5 @@
 using CocosSharp;
+using System;
 
 namespace tests
 {
@@ -8,8 +9,25 @@ namespace tests
         {
             base.OnEnter();
 
-			var lens = new CCLens3D(10, new CCGridSize(32, 24), new CCPoint(100, 180), 150);
-			var move = new CCJumpBy (5, new CCPoint(380, 0), 100, 4);
+            CCRect visibleBounds = VisibleBoundsWorldspace;
+
+            CCCamera contentCamera = contentLayer.Camera;
+
+            contentCamera.Projection = CCCameraProjection.Projection3D;
+            contentCamera.PerspectiveAspectRatio = 1.0f;
+
+            CCPoint3 cameraCenter = contentCamera.CenterInWorldspace;
+            CCPoint3 cameraTarget = contentCamera.TargetInWorldspace;
+
+            float targeCenterLength = (cameraTarget - cameraCenter).Length;
+
+
+            contentCamera.NearAndFarPerspectiveClipping = new CCPoint (0.15f, 100.0f);
+
+            contentCamera.PerspectiveFieldOfView = (float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
+
+			var lens = new CCLens3D(10, new CCGridSize(64, 48), new CCPoint(100, 180), 80);
+			var move = new CCJumpBy (5, new CCPoint(600, 0), 100, 5);
             var move_back = move.Reverse();
 
             CCLens3DState lensState = bgNode.RunAction(lens) as CCLens3DState;
@@ -20,6 +38,13 @@ namespace tests
             AddChild(target);
 
             target.AddActions(false, move, move_back);
+        }
+
+        public override void OnExit()
+        {
+            contentLayer.Camera.Projection = CCCameraProjection.Projection2D;
+
+            base.OnExit();
         }
 
 		public override string Title

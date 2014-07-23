@@ -12,54 +12,63 @@ namespace tests
 		protected CCTextureAtlas m_atlas;
 		protected string m_strTitle;
 		protected CCNode bgNode;
-		protected CCNode target1;
-		protected CCNode target2;
+
+        protected CCLayer contentLayer;
 
 		public EffectAdvanceTextLayer()
 		{
-
+            Camera = AppDelegate.SharedCamera;
+            contentLayer = new CCLayer();
+            CCCamera contentCamera = new CCCamera(Camera.OrthographicViewSizeWorldspace, Camera.CenterInWorldspace, Camera.TargetInWorldspace);
+            contentLayer.Camera = contentCamera;
 		}
 
 		protected CCSprite grossini;
 		protected CCSprite tamara;
 
+        protected override void AddedToNewScene ()
+        {
+            base.AddedToNewScene();
+            Scene.AddChild(contentLayer);
+        }
+
 		public override void OnEnter()
 		{
-			base.OnEnter();
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
+
+            base.OnEnter();
 
 			bgNode = new CCNode ();
 			bgNode.AnchorPoint = CCPoint.AnchorMiddle;
-			AddChild (bgNode);
+            contentLayer.AddChild (bgNode);
+            bgNode.Position = visibleBounds.Center;
 
 			var bg = new CCSprite("Images/background3");
-			bg.Position = CCVisibleRect.Center;
+            bg.AnchorPoint = CCPoint.Zero;
+            bg.Position = CCPoint.Zero;
+
+            bgNode.ContentSize = bg.ContentSize;
 
 			bgNode.AddChild (bg, 0, EffectAdvanceScene.kTagBackground);
 
-			target1 = new CCNode ();
-			target1.AnchorPoint = CCPoint.AnchorMiddle;
 			grossini = new CCSprite("Images/grossinis_sister2");
 
-			target1.AddChild (grossini);
-			bgNode.AddChild (target1);
+            bgNode.AddChild (grossini);
 
-			grossini.Position = new CCPoint(CCVisibleRect.Left.X + CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+            grossini.Position = bg.BoundingBox.Center + new CCPoint(-100.0f, 0.0f);
 
 			var sc = new CCScaleBy(2, 5);
 			var sc_back = sc.Reverse();
-			grossini.RepeatForever (sc, sc_back);
-
-			target2 = new CCNode ();
-			target2.AnchorPoint = CCPoint.AnchorMiddle;
 
 			tamara = new CCSprite("Images/grossinis_sister1");
 
-			target2.AddChild (tamara);
-			bgNode.AddChild (target2);
-			tamara.Position = new CCPoint (CCVisibleRect.Left.X + 2 * CCVisibleRect.VisibleRect.Size.Width / 3, CCVisibleRect.Bottom.Y + 200);
+            bgNode.AddChild (tamara);
+            tamara.Position = bg.BoundingBox.Center + new CCPoint(100.0f, 0.0f);
 
 			var sc2 = new CCScaleBy(2, 5);
 			var sc2_back = sc2.Reverse();
+
+            grossini.RepeatForever (sc, sc_back);
 			tamara.RepeatForever(sc2, sc2_back);
 
 		}

@@ -25,7 +25,7 @@ namespace tests
             // moving background. Testing issue #244
 			var move = new CCMoveBy (3, new CCPoint(200, 0));
 
-			bgNode.RepeatForever(move, move.Reverse());
+            bgNode.RepeatForever(move, move.Reverse());
         }
 
 		public override string Title
