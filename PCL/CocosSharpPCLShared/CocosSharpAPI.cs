@@ -362,7 +362,7 @@ namespace CocosSharp {
 		public CocosSharp.CCAnimationFrame Copy() { return default(CocosSharp.CCAnimationFrame); }
 	}
 	public partial class CCApplication : Microsoft.Xna.Framework.DrawableGameComponent {
-		public CCApplication(bool isFullScreen=true, CocosSharp.CCSize mainWindowSizeInPixels=null) : base (default(Microsoft.Xna.Framework.Game)) { }
+		public CCApplication(bool isFullScreen=true, System.Nullable<CocosSharp.CCSize> mainWindowSizeInPixels=null) : base (default(Microsoft.Xna.Framework.Game)) { }
 		public CocosSharp.CCActionManager ActionManager { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCActionManager); } }
 		public virtual double AnimationInterval { get { return default(double); } set { } }
 		public CocosSharp.CCApplicationDelegate ApplicationDelegate { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCApplicationDelegate); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -4180,7 +4180,8 @@ namespace CocosSharp {
 		Top = 0,
 	}
 	public partial class CCViewport {
-		public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCRect exactFitPortraitRatioIn=null, CocosSharp.CCViewportResolutionPolicy resolutionPolicyIn=(CocosSharp.CCViewportResolutionPolicy)(2), CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
+		public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCRect exactFitPortraitRatioIn, CocosSharp.CCViewportResolutionPolicy resolutionPolicyIn=(CocosSharp.CCViewportResolutionPolicy)(2), CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
+		public CCViewport(CocosSharp.CCRect exactFitLandscapeRatioIn, CocosSharp.CCViewportResolutionPolicy resolutionPolicyIn=(CocosSharp.CCViewportResolutionPolicy)(2), CocosSharp.CCDisplayOrientation displayOrientationIn=(CocosSharp.CCDisplayOrientation)(1)) { }
 		public CocosSharp.CCRect ExactFitLandscapeRatio { get { return default(CocosSharp.CCRect); } set { } }
 		public CocosSharp.CCRect ExactFitPortraitRatio { get { return default(CocosSharp.CCRect); } set { } }
 		public CocosSharp.CCViewportResolutionPolicy ResolutionPolicy { get { return default(CocosSharp.CCViewportResolutionPolicy); } set { } }

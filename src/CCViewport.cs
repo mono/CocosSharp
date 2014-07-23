@@ -139,7 +139,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCViewport(
-            CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn = default(CCRect), 
+			CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn, 
             CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFit, 
             CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
         {
@@ -153,6 +153,13 @@ namespace CocosSharp
             exactFitLandscapeRatio = exactFitLandscapeRatioIn;
             exactFitPortraitRatio = exactFitPortraitRatioIn;
         }
+
+		public CCViewport(
+			CCRect exactFitLandscapeRatioIn, 
+			CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFit, 
+			CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
+			: this (exactFitLandscapeRatioIn, exactFitLandscapeRatioIn, resolutionPolicyIn, displayOrientationIn)
+		{	}
 
         #endregion Constructors
 

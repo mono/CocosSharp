@@ -320,12 +320,12 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCApplication(bool isFullScreen = true, CCSize mainWindowSizeInPixels = default(CCSize))
+		public CCApplication(bool isFullScreen = true, CCSize? mainWindowSizeInPixels = null)
 			: this(new CCGame(), isFullScreen, mainWindowSizeInPixels)
 		{
 		}
 
-		CCApplication(CCGame game, bool isFullScreen = true, CCSize mainWindowSizeInPixels = default(CCSize),
+		CCApplication(CCGame game, bool isFullScreen = true, CCSize? mainWindowSizeInPixels = null,
 			CCDisplayOrientation supportedOrientations = CCDisplayOrientation.Default)
 			: base(game)
 		{
@@ -375,7 +375,8 @@ namespace CocosSharp
 
 			gameWindows = new List<CCWindow>();
 
-			InitializeMainWindow(mainWindowSizeInPixels, isFullScreen, supportedOrientations);
+			InitializeMainWindow((mainWindowSizeInPixels.HasValue) ? mainWindowSizeInPixels.Value : CCSize.Zero, 
+				isFullScreen, supportedOrientations);
 		}
 
 		#endregion Constructors
@@ -383,7 +384,7 @@ namespace CocosSharp
 
 		#region Game window management
 
-		void InitializeMainWindow(CCSize windowSizeInPixels = default(CCSize), bool isFullscreen = false,
+		void InitializeMainWindow(CCSize windowSizeInPixels, bool isFullscreen = false,
 			CCDisplayOrientation supportedOrientations = CCDisplayOrientation.Default)
 		{
 			if (isFullscreen)
