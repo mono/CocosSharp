@@ -477,9 +477,6 @@ namespace CocosSharp
                     contentSize = value;
                     anchorPointInPoints = new CCPoint(contentSize.Width * anchorPoint.X, contentSize.Height * anchorPoint.Y);
 
-                    if(grid != null)
-                        grid.ContentSize = contentSize;
-
                     UpdateTransform();
                 }
             }
@@ -570,7 +567,6 @@ namespace CocosSharp
                 if(value != null && Scene != null) 
                 {
                     grid.Scene = Scene;
-                    grid.ContentSize = ContentSize;
                 }
             }
         }
@@ -627,6 +623,15 @@ namespace CocosSharp
                     }
 
                     layer = value;
+
+                    // All the children should belong to same layer
+                    if (Children != null) 
+                    {
+                        foreach (CCNode child in Children) 
+                        {
+                            child.Layer = layer;
+                        }
+                    }
 
                     if (layer != null) 
                     {
@@ -1567,6 +1572,7 @@ namespace CocosSharp
 
             if (Grid != null && Grid.Active)
             {
+                Window.DrawManager.SetIdentityMatrix();
                 Grid.BeforeDraw();
             }
             else
@@ -1617,7 +1623,7 @@ namespace CocosSharp
             if (Grid != null && Grid.Active)
             {
                 Grid.AfterDraw(this);
-                Transform();
+                Window.DrawManager.MultMatrix(AffineWorldTransform, VertexZ);
                 Grid.Blit();
             }
 
@@ -2018,6 +2024,7 @@ namespace CocosSharp
 
             affineLocalTransform = CCAffineTransform.Concat(additionalTransform, affineLocalTransform);
 
+
             Matrix fauxLocalCameraTransform = Matrix.Identity;
 
             if(FauxLocalCameraCenter != FauxLocalCameraTarget)
@@ -2025,10 +2032,12 @@ namespace CocosSharp
                 fauxLocalCameraTransform =  Matrix.CreateLookAt(
                     new Vector3(FauxLocalCameraCenter.X, FauxLocalCameraCenter.Y, FauxLocalCameraCenter.Z),
                     new Vector3(FauxLocalCameraTarget.X, FauxLocalCameraTarget.Y, FauxLocalCameraTarget.Z),
-                new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
+                    new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
+                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0.0f));
             }
 
             affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
+
 
             XnaWorldMatrix = affineLocalTransform.XnaMatrix;
         }

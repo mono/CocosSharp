@@ -72,6 +72,14 @@ namespace CocosSharp
             DeltaRadius = action.DeltaRadius;
             Radius = action.Radius;
 
+            // We are assuming the local camera will be centered directly at the target
+            // => Add radius to the z position of local camera
+            CCPoint3 fauxLocalCameraCenter = target.FauxLocalCameraCenter;
+            fauxLocalCameraCenter.Z += Radius;
+            target.FauxLocalCameraCenter = fauxLocalCameraCenter;
+
+            //CameraCenter = fauxLocalCameraCenter;
+
             RadDeltaZ = CCMacros.CCDegreesToRadians (DeltaAngleZ);
             RadDeltaX = CCMacros.CCDegreesToRadians (DeltaAngleX);
 
@@ -132,12 +140,12 @@ namespace CocosSharp
             else
                 azimuth = (float)Math.Sin (y / s);
 
-            newRadius = r / CCCamera.ZEye;
+            newRadius = r;
         }
 
         public override void Update(float time)
         {
-            float r = (Radius + DeltaRadius * time) * CCCamera.ZEye;
+            float r = (Radius + DeltaRadius * time);
             float za = RadZ + RadDeltaZ * time;
             float xa = RadX + RadDeltaX * time;
 
@@ -145,7 +153,7 @@ namespace CocosSharp
             float j = (float)Math.Sin (za) * (float)Math.Sin (xa) * r + CameraCenter.Y;
             float k = (float)Math.Cos (za) * r + CameraCenter.Z;
 
-            Target.FauxLocalCameraTarget = new CCPoint3(i, j, k);
+            Target.FauxLocalCameraCenter = new CCPoint3(i, j, k);
         }
     }
 }

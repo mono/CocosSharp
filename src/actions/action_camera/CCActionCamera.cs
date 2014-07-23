@@ -32,7 +32,10 @@ namespace CocosSharp
 
         public CCActionCameraState (CCActionCamera action, CCNode target)
             : base (action, target)
-        {       
+        {
+            target.FauxLocalCameraCenter = new CCPoint3(target.AnchorPointInPoints, 0.0f);
+            target.FauxLocalCameraTarget = new CCPoint3(target.AnchorPointInPoints, 0.0f);
+
             CameraCenter = target.FauxLocalCameraCenter;
             CameraTarget = target.FauxLocalCameraTarget;
             CameraUpDirection = target.FauxLocalCameraUpDirection;
