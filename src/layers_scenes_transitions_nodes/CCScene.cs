@@ -51,10 +51,9 @@ namespace CocosSharp
 
         public override CCDirector Director { get; set; }
 
-        public override CCCamera Camera
-        {
-            get { return null; }
-        }
+
+
+		public override CCCamera Camera { get; set; }
 
         public override CCViewport Viewport 
         {
