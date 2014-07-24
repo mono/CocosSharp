@@ -599,10 +599,12 @@ namespace CocosSharp
 
                     if (scene != null) 
                     {
-                        AddedToNewScene();
                         scene.SceneViewportChanged += OnSceneViewportChanged;
 
                         OnSceneViewportChanged(this, null);
+
+						AddedToNewScene();
+
                     }
 
                     AttachEvents();
@@ -1061,6 +1063,8 @@ namespace CocosSharp
             // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
             child.Layer = this.Layer;
+			if (this.Layer != null && this.Scene != null && child.Camera == null)
+				child.Camera = this.Scene.Camera;
             child.Scene = this.Scene;
 
             if (IsRunning)
