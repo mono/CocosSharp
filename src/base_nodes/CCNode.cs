@@ -1082,6 +1082,8 @@ namespace CocosSharp
             child.Layer = this.Layer;
 			if (this.Layer != null && this.Scene != null && child.Camera == null)
 				child.Camera = this.Scene.Camera;
+			if (this is CCScene && child is CCLayer && child.Camera == null)
+				child.Camera = this.Camera;
             child.Scene = this.Scene;
 
             if (IsRunning)
