@@ -52,8 +52,43 @@ namespace CocosSharp
         public override CCDirector Director { get; set; }
 
 
+		CCCamera camera;
 
-		public override CCCamera Camera { get; set; }
+		public override CCCamera Camera 
+		{ 
+			get { return camera; }
+			set 
+			{
+				if (camera != value)
+				{
+					camera = value;
+					PropogateCameraToChildren(Children);
+				}
+			}
+		}
+
+		void PropogateCameraToChildren (CCRawList<CCNode> children)
+		{
+			if (children != null)
+			{
+				foreach (var child in children)
+				{
+					if (child != null)
+					{
+						if (child is CCLayer)
+						{
+							if (child.Camera == null)
+								child.Camera = camera;
+							PropogateCameraToChildren(child.Children);
+						}
+						else
+						{
+							child.Camera = camera;
+						}
+					}
+				}
+			}
+		}
 
         public override CCViewport Viewport 
         {
