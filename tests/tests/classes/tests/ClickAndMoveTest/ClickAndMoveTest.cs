@@ -14,8 +14,6 @@ namespace tests
         public override void runThisTest()
         {
             CCLayer pLayer = new MainLayer();
-            pLayer.Camera = AppDelegate.SharedCamera;
-            //pLayer->autorelease();
 
             AddChild(pLayer);
             Director.ReplaceScene(this);
