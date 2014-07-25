@@ -50,12 +50,7 @@ namespace tests
             sprite.Position = new CCPoint(20, 150);
 
             sprite.RunAction(new CCJumpTo (4, new CCPoint(300, 48), 100, 4));
-
-            layer.RunAction(new CCRepeatForever (
-                                                                (CCActionInterval)(new CCSequence(
-                                                                                    new CCFadeIn  (1),
-                                                                                    new CCFadeOut  (1)))
-                                                                ));
+			layer.RepeatForever(new CCFadeIn(1), new CCFadeOut(1));
         }
 
 		void onTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
@@ -66,7 +61,7 @@ namespace tests
 
             var convertedLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);
 
-            CCNode s = GetChildByTag(ClickAndMoveTest.kTagSprite);
+            CCNode s = this[ClickAndMoveTest.kTagSprite];
             s.StopAllActions();
             s.RunAction(new CCMoveTo (1, new CCPoint(convertedLocation.X, convertedLocation.Y)));
             float o = convertedLocation.X - s.Position.X;
