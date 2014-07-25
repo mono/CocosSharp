@@ -1892,7 +1892,8 @@ namespace CocosSharp
         public CCActionState RunActions(params CCFiniteTimeAction[] actions)
         {
             Debug.Assert(actions != null, "Argument must be non-nil");
-            var action = new CCSequence(actions);
+			Debug.Assert(actions.Length > 0, "Paremeter: actions has length of zero. At least one action must be set to run.");
+			var action = actions.Length > 1 ? new CCSequence(actions) : actions[0];
 			return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
