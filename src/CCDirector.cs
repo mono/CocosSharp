@@ -246,7 +246,7 @@ namespace CocosSharp
                 NextScene.Director = this;
             }
 
-			if (NextScene.Camera == null)
+			if (RunningScene != null && NextScene.Camera == null)
 				NextScene.Camera = RunningScene.Camera;
 
             RunningScene = NextScene;
