@@ -38,6 +38,8 @@ namespace CocosSharp
 
         protected CCStats Stats { get; private set; }
 
+		internal CCDirector activeDirector;
+
         public bool IsUseAlphaBlending
         {
             set 
@@ -154,23 +156,48 @@ namespace CocosSharp
 
         #region Scene director management
 
-        internal void AddSceneDirector(CCDirector sceneDirector)
+        public void AddSceneDirector(CCDirector sceneDirector)
         {
             if (sceneDirector != null && !sceneDirectors.Contains(sceneDirector)) 
             {
                 sceneDirectors.Add(sceneDirector);
             }
+
+			if (sceneDirectors.Count == 1)
+				activeDirector = sceneDirector;
+
         }
 
         internal void RemoveSceneDirector(CCDirector sceneDirector)
         {
             sceneDirectors.Remove(sceneDirector);
+			if (activeDirector == sceneDirector)
+				activeDirector = null;
+
+			// TODO: make this smarter
+			if (sceneDirectors.Count > 0)
+				activeDirector = sceneDirectors[0];
+
         }
 
         public void RemoveAllSceneDirectors()
         {
             sceneDirectors.Clear();
+			activeDirector = null;
         }
+
+		public void SetActiveDirector(int index)
+		{
+			// TODO: add some sanity checks here
+			activeDirector = sceneDirectors[index];
+		}
+
+		public void RunWithScene(CCScene scene)
+		{
+			scene.Window = this;
+			activeDirector.RunWithScene(scene);
+		}
+
 
         #endregion Scene director management
 

@@ -102,7 +102,8 @@ namespace CocosSharp
             Window = window;
             Director = director;
 
-            window.AddSceneDirector(director);
+			if (window != null && director != null)
+            	window.AddSceneDirector(director);
         }
 
         public CCScene(CCWindow window, CCDirector director) 
@@ -110,8 +111,8 @@ namespace CocosSharp
         {
         }
 
-        public CCScene(CCWindow window) 
-            : this(window, new CCDirector())
+        public CCScene(CCWindow window = null) 
+            : this(window, null)
         {
         }
 

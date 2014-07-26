@@ -43,7 +43,8 @@ namespace tests
 
             CCRect boundsRect = new CCRect(0.0f, 0.0f, 960, 640);
 
-            sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
+			sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
+
             sharedWindow = application.MainWindow;
             sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
