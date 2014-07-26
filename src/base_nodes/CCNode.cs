@@ -825,7 +825,7 @@ namespace CocosSharp
 
         void OnSceneViewportChanged (object sender, EventArgs e)
         {
-            if (Scene != null && Viewport != null && Camera != null) 
+            if (Scene != null && Window != null && Viewport != null && Camera != null) 
             {
                 ViewportChanged ();
                 VisibleBoundsChanged ();
