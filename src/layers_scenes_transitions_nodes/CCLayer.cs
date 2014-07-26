@@ -100,10 +100,7 @@ namespace CocosSharp
         {
             get { return VisibleBoundsWorldspace.Size; }
             set
-            {
-				visibleBoundsWorldspace.Size = value;
-			
-            }
+            { }
         }
 
         public override CCAffineTransform AffineLocalTransform {
