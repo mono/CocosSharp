@@ -101,6 +101,8 @@ namespace CocosSharp
             get { return VisibleBoundsWorldspace.Size; }
             set
             {
+				visibleBoundsWorldspace.Size = value;
+			
             }
         }
 

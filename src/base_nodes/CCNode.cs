@@ -114,8 +114,23 @@ namespace CocosSharp
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
-        List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when a EventDispatcher is not yet available
+        List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when an EventDispatcher is not yet available
 
+		struct lazyAction
+		{
+			public CCAction Action;
+			public CCNode Target;
+			public bool Paused;
+
+			public lazyAction(CCAction action, CCNode target, bool paused = false)
+			{
+				Action = action;
+				Target = target;
+				Paused = paused;
+			}
+		}
+
+		List<lazyAction> toBeAddedActions;                       // The Actions to be added lazily when an ActionManager is not yet available
 
         #region Properties
 
@@ -598,10 +613,14 @@ namespace CocosSharp
 
                     if (scene != null) 
                     {
-                        AddedToNewScene();
                         scene.SceneViewportChanged += OnSceneViewportChanged;
 
                         OnSceneViewportChanged(this, null);
+
+						AttachActions();
+
+						AddedToNewScene();
+
                     }
 
                     AttachEvents();
@@ -1070,6 +1089,10 @@ namespace CocosSharp
             // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
             child.Layer = this.Layer;
+			if (this.Layer != null && this.Scene != null && child.Camera == null)
+				child.Camera = this.Scene.Camera;
+			if (this is CCScene && child is CCLayer && child.Camera == null)
+				child.Camera = this.Camera;
             child.Scene = this.Scene;
 
             if (IsRunning)
@@ -1811,16 +1834,44 @@ namespace CocosSharp
 
         #region Actions
 
+		void AttachActions()
+		{
+			if (toBeAddedActions != null && toBeAddedActions.Count > 0) 
+			{
+				var actionManger = ActionManager;
+				foreach (var action in toBeAddedActions) 
+				{
+					ActionManager.AddAction(action.Action, action.Target, action.Paused);
+				}
+
+				toBeAddedActions.Clear ();
+				toBeAddedActions = null;
+			}
+		}
+
+		CCActionState AddLazyAction (CCAction action, CCNode target, bool paused = false)
+		{
+			if (toBeAddedActions == null)
+				toBeAddedActions = new List<lazyAction>();
+
+			toBeAddedActions.Add(new lazyAction(action, target, paused));
+			return null;
+		}
+
         public void AddAction(CCAction action, bool paused = false)
         {
-            if(ActionManager != null)
-                ActionManager.AddAction(action, this, paused);
+			if (ActionManager != null)
+				ActionManager.AddAction(action, this, paused);
+			else
+				AddLazyAction(action, this, paused);
         }
 
         public void AddActions(bool paused, params CCFiniteTimeAction[] actions)
         {
-            if(ActionManager != null) 
-                ActionManager.AddAction(new CCSequence(actions), this, paused);
+			if (ActionManager != null)
+				ActionManager.AddAction(new CCSequence(actions), this, paused);
+			else
+				AddLazyAction(new CCSequence(actions), this, paused);
         }
 
         public CCActionState Repeat(uint times, params CCFiniteTimeAction[] actions)
@@ -1846,14 +1897,15 @@ namespace CocosSharp
         public CCActionState RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-            return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : null;
+			return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
         public CCActionState RunActions(params CCFiniteTimeAction[] actions)
         {
             Debug.Assert(actions != null, "Argument must be non-nil");
-            var action = new CCSequence(actions);
-            return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : null;
+			Debug.Assert(actions.Length > 0, "Paremeter: actions has length of zero. At least one action must be set to run.");
+			var action = actions.Length > 1 ? new CCSequence(actions) : actions[0];
+			return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
         public void StopAllActions()

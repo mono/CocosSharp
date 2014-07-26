@@ -83,8 +83,9 @@ namespace tests
             sharedWindow.AddSceneDirector(sharedDirector);
 
             CCScene scene = new CCScene(sharedWindow, sharedViewport, sharedDirector);
+			scene.Camera = sharedCamera;
+
             CCLayer layer = new TestController();
-            layer.Camera = sharedCamera;
 
             scene.AddChild(layer);
             sharedDirector.RunWithScene(scene);
