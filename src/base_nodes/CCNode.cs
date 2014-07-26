@@ -110,6 +110,7 @@ namespace CocosSharp
         CCScene scene;
         CCLayer layer;
 
+        Matrix xnaWorldMatrix;
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
 
@@ -137,8 +138,6 @@ namespace CocosSharp
         protected bool IsReorderChildDirty { get; set; }
         protected byte RealOpacity { get; set; }
         protected CCColor3B RealColor { get; set; }
-        protected Matrix XnaWorldMatrix { get; private set; }
-
 
         // Manually implemented properties
 
@@ -676,6 +675,15 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
+        protected Matrix XnaWorldMatrix 
+        { 
+            get { return xnaWorldMatrix; }
+            private set 
+            {
+                xnaWorldMatrix = value;
+            }
+        }
+
         internal virtual CCEventDispatcher EventDispatcher 
         { 
             get { return Scene != null ? Scene.EventDispatcher : null; }
@@ -748,6 +756,7 @@ namespace CocosSharp
         public CCNode()
         {
             additionalTransform = CCAffineTransform.Identity;
+            xnaWorldMatrix = Matrix.Identity;
             scaleX = 1.0f;
             scaleY = 1.0f;
             Visible = true;
@@ -1632,7 +1641,7 @@ namespace CocosSharp
 
         public void Transform()
         {
-            Window.DrawManager.MultMatrix(AffineLocalTransform, VertexZ);
+            Window.DrawManager.MultMatrix(ref xnaWorldMatrix);
         }
 
         public void TransformAncestors()
@@ -2033,7 +2042,7 @@ namespace CocosSharp
                     new Vector3(FauxLocalCameraCenter.X, FauxLocalCameraCenter.Y, FauxLocalCameraCenter.Z),
                     new Vector3(FauxLocalCameraTarget.X, FauxLocalCameraTarget.Y, FauxLocalCameraTarget.Z),
                     new Vector3(FauxLocalCameraUpDirection.X, FauxLocalCameraUpDirection.Y, FauxLocalCameraUpDirection.Z));
-                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, 0.0f));
+                fauxLocalCameraTransform *= Matrix.CreateTranslation(new Vector3 (AnchorPointInPoints.X, AnchorPointInPoints.Y, VertexZ));
             }
 
             affineLocalTransform = CCAffineTransform.Concat(new CCAffineTransform(fauxLocalCameraTransform), affineLocalTransform);
