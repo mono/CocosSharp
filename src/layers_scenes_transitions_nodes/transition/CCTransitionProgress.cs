@@ -19,6 +19,9 @@ namespace CocosSharp
 
         public override void OnEnter()
         {
+            if (Layer == null || Viewport == null)
+                return;
+
             base.OnEnter();
 
             SetupTransition();

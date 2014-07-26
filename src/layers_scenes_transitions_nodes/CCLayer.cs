@@ -96,17 +96,17 @@ namespace CocosSharp
             get { return visibleBoundsWorldspace; }
         }
 
+        // Layer should have fixed size of content
         public override CCSize ContentSize
         {
             get { return VisibleBoundsWorldspace.Size; }
             set
             {
-				visibleBoundsWorldspace.Size = value;
-			
             }
         }
 
-        public override CCAffineTransform AffineLocalTransform {
+        public override CCAffineTransform AffineLocalTransform 
+        {
             get 
             {
                 return CCAffineTransform.Identity;
@@ -118,14 +118,15 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayer(CCClipMode clipMode) : base()
+        public CCLayer(CCCamera camera, CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
             IgnoreAnchorPointForPosition = true;
 			AnchorPoint = CCPoint.AnchorMiddle;
+            Camera = camera;
         }
 
-        public CCLayer() : this(CCClipMode.None)
+        public CCLayer(CCCamera camera) : this(camera, CCClipMode.None)
         {
         }
 

@@ -64,22 +64,23 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerMultiplex() : base()
+        public CCLayerMultiplex(CCCamera camera) : base(camera)
         {
             ShowFirstLayerOnEnter = true;
             EnabledLayer = NoLayer;
             Layers = new Dictionary<int, CCLayer>();
         }
 
-        public CCLayerMultiplex (params CCLayer[] layers) : this(null, null, layers)
+        public CCLayerMultiplex (CCCamera camera, params CCLayer[] layers) : this(camera, null, null, layers)
         {
         }
 
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction) : this(inAction, outAction, null)
+        public CCLayerMultiplex(CCCamera camera, CCAction inAction, CCAction outAction) : this(camera, inAction, outAction, null)
         {
         }
 
-        public CCLayerMultiplex(CCAction inAction, CCAction outAction, params CCLayer[] layers) : this()
+        public CCLayerMultiplex(CCCamera camera, CCAction inAction, CCAction outAction, params CCLayer[] layers) 
+            : this(camera)
         {
             InAction = inAction;
             OutAction = outAction;
@@ -118,6 +119,9 @@ namespace CocosSharp
 
                 if(Window != null)
                     layer.Window = Window;
+
+                if (Camera != null)
+                    layer.Camera = Camera;
             }
         }
 

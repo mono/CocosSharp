@@ -125,7 +125,7 @@ namespace CocosSharp
 
 	public class CCApplicationDelegate
 	{
-		public virtual void ApplicationDidFinishLaunching(CCApplication application) { }
+		public virtual void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow) { }
 
 		// Called when the game enters the background. This happens when the 'windows' button is pressed
 		// on a WP phone. On Android, it happens when the device is ide or the power button is pressed.
@@ -539,7 +539,7 @@ namespace CocosSharp
 				base.LoadContent();
 
 				if (ApplicationDelegate != null)
-					ApplicationDelegate.ApplicationDidFinishLaunching(this);
+                    ApplicationDelegate.ApplicationDidFinishLaunching(this, this.MainWindow);
 
 				initialized = true;
 			}

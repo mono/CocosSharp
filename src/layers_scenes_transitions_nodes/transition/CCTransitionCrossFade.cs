@@ -53,7 +53,7 @@ namespace CocosSharp
             var color = new CCColor4B(0, 0, 0, 0);
             CCRect bounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
-            CCLayerColor layer = new CCLayerColor(color);
+            CCLayerColor layer = new CCLayerColor(Camera, color);
 
             // create the first render texture for inScene
             CCRenderTexture inTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);

@@ -154,7 +154,7 @@ namespace CocosSharp
 
         #region Scene director management
 
-        public void AddSceneDirector(CCDirector sceneDirector)
+        internal void AddSceneDirector(CCDirector sceneDirector)
         {
             if (sceneDirector != null && !sceneDirectors.Contains(sceneDirector)) 
             {
@@ -162,7 +162,7 @@ namespace CocosSharp
             }
         }
 
-        public void RemoveSceneDirector(CCDirector sceneDirector)
+        internal void RemoveSceneDirector(CCDirector sceneDirector)
         {
             sceneDirectors.Remove(sceneDirector);
         }

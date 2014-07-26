@@ -233,6 +233,16 @@ namespace CocosSharp
             UpdateCameraMatrices();
         }
 
+        public CCCamera(CCSize orthographicViewSizeWorldspaceIn)
+            : this(new CCPoint3(orthographicViewSizeWorldspaceIn.Center , 100.0f), new CCPoint3(orthographicViewSizeWorldspaceIn.Center, 0.0f))
+        {
+            cameraProjection = CCCameraProjection.Projection2D;
+
+            orthographicViewSizeWorldspace = orthographicViewSizeWorldspaceIn;
+
+            UpdateCameraMatrices();
+        }
+
         public CCCamera(float perspectiveFieldOfViewIn, float perspectiveAspectRatioIn, CCPoint3 cameraCenterPositionWorldspaceIn, CCPoint3 targetInWorldspaceIn)
             : this(cameraCenterPositionWorldspaceIn, targetInWorldspaceIn)
         {

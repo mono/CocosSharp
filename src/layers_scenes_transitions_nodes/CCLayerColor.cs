@@ -82,14 +82,14 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor() : this(CCColor4B.Transparent)
+        public CCLayerColor(CCCamera camera) : this(camera, CCColor4B.Transparent)
         {
         }
 
         /// <summary>
         /// creates a CCLayer with color, width and height in Points
         /// </summary>
-        public CCLayerColor (CCColor4B color) : base()
+        public CCLayerColor (CCCamera camera, CCColor4B color) : base(camera)
         {
             DisplayedColor = RealColor = new CCColor3B(color.R, color.G, color.B);
             DisplayedOpacity = RealOpacity = color.A;

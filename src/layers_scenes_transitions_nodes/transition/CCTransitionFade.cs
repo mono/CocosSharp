@@ -56,7 +56,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCLayerColor l = new CCLayerColor(Color);
+            CCLayerColor l = new CCLayerColor(Camera, Color);
             InScene.Visible = false;
 
             AddChild(l, 2, SceneFade);

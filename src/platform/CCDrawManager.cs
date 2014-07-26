@@ -999,7 +999,7 @@ namespace CocosSharp
                 ProjectionMatrix = Matrix.CreateOrthographic (
                     texSize.Width, texSize.Height, 
                     1024f, -1024);
-                ViewMatrix = Matrix.CreateLookAt(new CCPoint3(texCenter, 100.0f).XnaVector, new CCPoint3(texCenter, 0.0f).XnaVector, Vector3.Up);
+                ViewMatrix = Matrix.CreateLookAt(new CCPoint3(texCenter, 300.0f).XnaVector, new CCPoint3(texCenter, 0.0f).XnaVector, Vector3.Up);
 
                 Viewport = new Viewport(0, 0, (int)texSize.Width, (int)texSize.Height);
                 target = texture.XNATexture as RenderTarget2D;
@@ -1105,9 +1105,9 @@ namespace CocosSharp
             worldMatrixChanged = true;
         }
 
-        internal void MultMatrix(ref Matrix matrix)
+        public void MultMatrix(ref Matrix matrixIn)
         {
-            Matrix.Multiply(ref matrix, ref matrix, out matrix);
+            Matrix.Multiply(ref matrixIn, ref matrix, out matrix);
             worldMatrixChanged = true;
         }
       

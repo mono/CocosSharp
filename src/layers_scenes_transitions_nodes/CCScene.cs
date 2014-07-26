@@ -14,7 +14,6 @@ namespace CocosSharp
     {
         CCViewport viewport;
         CCWindow window;
-        CCApplication application;
 
         internal event EventHandler SceneViewportChanged = delegate {};
 
@@ -51,44 +50,13 @@ namespace CocosSharp
 
         public override CCDirector Director { get; set; }
 
-
-		CCCamera camera;
-
-		public override CCCamera Camera 
-		{ 
-			get { return camera; }
-			set 
-			{
-				if (camera != value)
-				{
-					camera = value;
-					PropogateCameraToChildren(Children);
-				}
-			}
-		}
-
-		void PropogateCameraToChildren (CCRawList<CCNode> children)
-		{
-			if (children != null)
-			{
-				foreach (var child in children)
-				{
-					if (child != null)
-					{
-						if (child is CCLayer)
-						{
-							if (child.Camera == null)
-								child.Camera = camera;
-							PropogateCameraToChildren(child.Children);
-						}
-						else
-						{
-							child.Camera = camera;
-						}
-					}
-				}
-			}
-		}
+        public override CCCamera Camera 
+        { 
+            get { return null; }
+            set 
+            {
+            }
+        }
 
         public override CCViewport Viewport 
         {
@@ -133,6 +101,18 @@ namespace CocosSharp
             Viewport = viewport;
             Window = window;
             Director = director;
+
+            window.AddSceneDirector(director);
+        }
+
+        public CCScene(CCWindow window, CCDirector director) 
+            : this(window, new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f)), director)
+        {
+        }
+
+        public CCScene(CCWindow window) 
+            : this(window, new CCDirector())
+        {
         }
 
         public CCScene(CCScene scene): this(scene.Window, scene.Viewport, scene.Director)
@@ -155,6 +135,15 @@ namespace CocosSharp
         }
 
         #endregion Viewport handling
+
+
+        public void RunScene()
+        {
+            if (Director != null && IsRunning == false) 
+            {
+                Director.RunWithScene(this);
+            }
+        }
 
         protected override void Draw()
         {
