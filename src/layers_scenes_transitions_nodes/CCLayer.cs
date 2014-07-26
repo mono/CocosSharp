@@ -154,7 +154,7 @@ namespace CocosSharp
         {
             CCCamera camera = sender as CCCamera;
 
-            if(camera != null && camera == Camera) 
+            if(camera != null && camera == Camera && Scene != null) 
             {
                 LayerVisibleBoundsChanged(this, null);
                 VisibleBoundsChanged();
@@ -177,7 +177,7 @@ namespace CocosSharp
             UpdateClipping();
         }
 
-        void UpdateVisibleBoundsRect()
+        internal void UpdateVisibleBoundsRect()
         {
             if(Viewport == null || Camera == null)
                 return;

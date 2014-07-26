@@ -108,7 +108,7 @@ namespace CocosSharp
 
         protected override void ViewportChanged()
         {
-            base.VisibleBoundsChanged();
+            base.ViewportChanged();
 
             UpdateVerticesPosition();
         }

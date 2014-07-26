@@ -615,12 +615,11 @@ namespace CocosSharp
                     {
                         scene.SceneViewportChanged += OnSceneViewportChanged;
 
+                        AddedToNewScene();
+
                         OnSceneViewportChanged(this, null);
 
-						AttachActions();
-
-						AddedToNewScene();
-
+                        AttachActions();
                     }
 
                     AttachEvents();
@@ -826,12 +825,17 @@ namespace CocosSharp
 
         void OnSceneViewportChanged (object sender, EventArgs e)
         {
-            ViewportChanged();
+            if (Scene != null && Viewport != null && Camera != null) 
+            {
+                ViewportChanged ();
+                VisibleBoundsChanged ();
+            }
         }
 
         void OnLayerVisibleBoundsChanged (object sender, EventArgs e)
         {
-            VisibleBoundsChanged();
+            if (Scene != null && Viewport != null && Camera != null)
+                VisibleBoundsChanged();
         }
 
         // Users override methods below to listen to changes to scene
@@ -1089,10 +1093,6 @@ namespace CocosSharp
             // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
             child.Layer = this.Layer;
-			if (this.Layer != null && this.Scene != null && child.Camera == null)
-				child.Camera = this.Scene.Camera;
-			if (this is CCScene && child is CCLayer && child.Camera == null)
-				child.Camera = this.Camera;
             child.Scene = this.Scene;
 
             if (IsRunning)
