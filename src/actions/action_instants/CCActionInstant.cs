@@ -16,7 +16,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCActionInstantState (this, target);
 
@@ -28,7 +28,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCActionInstantState : CCFiniteTimeActionState
+	internal class CCActionInstantState : CCFiniteTimeActionState
 	{
 
 		public CCActionInstantState (CCActionInstant action, CCNode target)

@@ -45,7 +45,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFadeOutDownTilesState (this, target);
 		}
@@ -54,7 +54,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCFadeOutDownTilesState : CCFadeOutUpTilesState
+	internal class CCFadeOutDownTilesState : CCFadeOutUpTilesState
 	{
 		public CCFadeOutDownTilesState (CCFadeOutDownTiles action, CCNode target) : base (action, target)
 		{

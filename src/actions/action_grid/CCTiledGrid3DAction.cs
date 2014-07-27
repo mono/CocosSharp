@@ -22,7 +22,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected internal override CCActionState StartAction (CCNode target)
+        internal override CCActionState StartAction(CCNode target)
         {
             return new CCTiledGrid3DActionState (this, target);
         }
@@ -31,7 +31,7 @@ namespace CocosSharp
 
     #region Action state
 
-    public class CCTiledGrid3DActionState : CCGridActionState
+    internal class CCTiledGrid3DActionState : CCGridActionState
     {
         private CCTiledGrid3D tiledGrid3D;
 

@@ -10,7 +10,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCJumpToState (this, target);
 
@@ -18,7 +18,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCJumpToState : CCJumpByState
+	internal class CCJumpToState : CCJumpByState
 	{
 
 		public CCJumpToState (CCJumpBy action, CCNode target)

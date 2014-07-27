@@ -19,7 +19,7 @@
 		/// Start the flip operation on the given target which must be a CCSprite.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFlipYState (this, target);
 
@@ -32,7 +32,7 @@
 
 	}
 
-	public class CCFlipYState : CCActionInstantState
+	internal class CCFlipYState : CCActionInstantState
 	{
 
 		public CCFlipYState (CCFlipY action, CCNode target)

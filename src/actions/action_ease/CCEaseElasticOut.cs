@@ -18,7 +18,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCEaseElasticOutState (this, target);
 		}
@@ -32,7 +32,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCEaseElasticOutState : CCEaseElasticState
+	internal class CCEaseElasticOutState : CCEaseElasticState
 	{
 		public CCEaseElasticOutState (CCEaseElasticOut action, CCNode target) : base (action, target)
 		{

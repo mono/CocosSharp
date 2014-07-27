@@ -20,7 +20,7 @@ namespace CocosSharp
 
     #region Action state
 
-    public abstract class CCAmplitudeActionState : CCActionIntervalState
+    internal abstract class CCAmplitudeActionState : CCActionIntervalState
     {
         protected float Amplitude { get; private set; }
         protected internal float AmplitudeRate { get; set; }

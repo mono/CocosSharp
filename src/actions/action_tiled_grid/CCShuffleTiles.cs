@@ -49,7 +49,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCShuffleTilesState (this, target);
 		}
@@ -58,7 +58,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCShuffleTilesState : CCTiledGrid3DActionState
+	internal class CCShuffleTilesState : CCTiledGrid3DActionState
 	{
 		protected int TilesCount { get; private set; }
 

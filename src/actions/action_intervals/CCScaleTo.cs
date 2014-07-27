@@ -20,13 +20,13 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCScaleToState (this, target);
 		}
 	}
 
-	public class CCScaleToState : CCActionIntervalState
+	internal class CCScaleToState : CCActionIntervalState
 	{
 		protected float DeltaX;
 		protected float DeltaY;

@@ -11,7 +11,7 @@ namespace CocosSharp
 			return new CCExtraAction ();
 		}
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCExtraActionState (this, target);
 
@@ -82,7 +82,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCActionIntervalState (this, target);
 
@@ -94,7 +94,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCActionIntervalState : CCFiniteTimeActionState
+	internal class CCActionIntervalState : CCFiniteTimeActionState
 	{
 		protected bool FirstTick { get; private set; }
 

@@ -49,7 +49,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCShatteredTiles3DState (this, target);
 		}
@@ -58,7 +58,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCShatteredTiles3DState : CCTiledGrid3DActionState
+	internal class CCShatteredTiles3DState : CCTiledGrid3DActionState
 	{
 		public bool ShatterZ { get; set; }
 

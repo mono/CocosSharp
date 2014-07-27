@@ -22,7 +22,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCTintByState (this, target);
 		}
@@ -34,7 +34,7 @@ namespace CocosSharp
 	}
 
 
-	public class CCTintByState : CCActionIntervalState
+	internal class CCTintByState : CCActionIntervalState
 	{
 		protected short DeltaB { get; set; }
 

@@ -34,14 +34,14 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected internal override CCActionState StartAction (CCNode target)
+        internal override CCActionState StartAction(CCNode target)
         {
             return new CCOrbitCameraState (this, target);
         }
 
     }
 
-    public class CCOrbitCameraState : CCActionCameraState
+    internal class CCOrbitCameraState : CCActionCameraState
     {
 
         #region Properties

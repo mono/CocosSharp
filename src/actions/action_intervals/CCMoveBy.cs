@@ -13,7 +13,7 @@ namespace CocosSharp
 
 		public CCPoint PositionDelta { get; private set; }
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCMoveByState (this, target);
 		}
@@ -24,7 +24,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCMoveByState : CCActionIntervalState
+	internal class CCMoveByState : CCActionIntervalState
 	{
 		protected CCPoint PositionDelta;
 		protected CCPoint EndPosition;

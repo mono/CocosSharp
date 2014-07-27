@@ -15,7 +15,7 @@ namespace CocosSharp
         public virtual bool Selected { get; set; }
         public Action<object> Target { get; set; }
 
-        protected CCActionState ZoomActionState { get; set; }
+        internal CCActionState ZoomActionState { get; set; }
 
         #endregion Properties
 

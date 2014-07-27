@@ -15,14 +15,14 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCProgressToState (this, target);
 		}
 
 	}
 
-	public class CCProgressToState : CCProgressFromToState
+	internal class CCProgressToState : CCProgressFromToState
 	{
 
 		public CCProgressToState (CCProgressTo action, CCNode target)

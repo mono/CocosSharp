@@ -11,7 +11,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCEaseBackOutState (this, target);
 		}
@@ -25,7 +25,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCEaseBackOutState : CCActionEaseState
+	internal class CCEaseBackOutState : CCActionEaseState
 	{
 		public CCEaseBackOutState (CCEaseBackOut action, CCNode target) : base (action, target)
 		{

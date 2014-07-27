@@ -43,7 +43,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCSplitRowsState (this, target);
 		}
@@ -52,7 +52,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCSplitRowsState : CCTiledGrid3DActionState
+	internal class CCSplitRowsState : CCTiledGrid3DActionState
 	{
 		protected CCRect VisibleBounds { get; private set; }
 

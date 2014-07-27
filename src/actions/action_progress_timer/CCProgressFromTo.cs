@@ -20,13 +20,13 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCProgressFromToState (this, target);
 		}
 	}
 
-	public class CCProgressFromToState : CCActionIntervalState
+	internal class CCProgressFromToState : CCActionIntervalState
 	{
 		protected float PercentFrom { get; set; }
 

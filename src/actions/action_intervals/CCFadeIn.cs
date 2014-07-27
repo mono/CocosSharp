@@ -11,7 +11,7 @@
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFadeInState (this, target);
 
@@ -23,7 +23,7 @@
 		}
 	}
 
-	public class CCFadeInState : CCActionIntervalState
+	internal class CCFadeInState : CCActionIntervalState
 	{
 
 		protected uint Times { get; set; }

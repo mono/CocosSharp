@@ -6,14 +6,14 @@ namespace CocosSharp
         Invalid = -1,
     }
 
-    public class CCAction
+    public abstract class CCAction
     {
         public int Tag { get; set; }
 
 
         #region Constructors
 
-        public CCAction ()
+        protected CCAction()
         {
             Tag = (int)CCActionTag.Invalid;
         }
@@ -21,14 +21,14 @@ namespace CocosSharp
         #endregion Constructor
 
 
-        protected internal virtual CCActionState StartAction (CCNode target)
+        internal virtual CCActionState StartAction (CCNode target)
         {
             return new CCActionState (this, target);
 
         }
     }
 
-    public class CCActionState
+    internal class CCActionState
     {
         /// <summary>
         /// Gets or sets the target.

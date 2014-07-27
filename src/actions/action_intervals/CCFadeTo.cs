@@ -15,14 +15,14 @@
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFadeToState (this, target);
 
 		}
 	}
 
-	public class CCFadeToState : CCActionIntervalState
+	internal class CCFadeToState : CCActionIntervalState
 	{
 		protected byte FromOpacity { get; set; }
 

@@ -24,7 +24,7 @@ namespace CocosSharp
 
 		public float Tension { get; protected set; }
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCCardinalSplineToState (this, target);
 
@@ -40,7 +40,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCCardinalSplineToState : CCActionIntervalState
+	internal class CCCardinalSplineToState : CCActionIntervalState
 	{
 		protected float DeltaT { get; set; }
 
@@ -128,7 +128,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCCardinalSplineByState (this, target);
 
@@ -179,7 +179,7 @@ namespace CocosSharp
 	}
 
 
-	public class CCCardinalSplineByState : CCCardinalSplineToState
+	internal class CCCardinalSplineByState : CCCardinalSplineToState
 	{
 		protected CCPoint StartPosition { get; set; }
 

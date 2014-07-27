@@ -25,7 +25,7 @@ namespace CocosSharp
 		/// Start the hide operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCRemoveSelfState (this, target);
 
@@ -38,7 +38,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCRemoveSelfState : CCActionInstantState
+	internal class CCRemoveSelfState : CCActionInstantState
 	{
 		protected bool IsNeedCleanUp { get; set; }
 

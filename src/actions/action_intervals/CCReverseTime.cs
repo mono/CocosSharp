@@ -17,7 +17,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCReverseTimeState (this, target);
 
@@ -29,7 +29,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCReverseTimeState : CCActionIntervalState
+	internal class CCReverseTimeState : CCActionIntervalState
 	{
 
 		protected CCFiniteTimeAction Other { get; set; }

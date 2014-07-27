@@ -20,7 +20,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCAccelAmplitudeState (this, target);
 		}
@@ -35,7 +35,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCAccelAmplitudeState : CCActionIntervalState
+	internal class CCAccelAmplitudeState : CCActionIntervalState
 	{
 		public float Rate { get; set; }
 

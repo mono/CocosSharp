@@ -19,14 +19,14 @@
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCPlaceState (this, target);
 
 		}
 	}
 
-	public class CCPlaceState : CCActionInstantState
+	internal class CCPlaceState : CCActionInstantState
 	{
 
 		public CCPlaceState (CCPlace action, CCNode target)

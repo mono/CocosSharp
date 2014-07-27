@@ -15,7 +15,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCScaleByState (this, target);
 
@@ -28,7 +28,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCScaleByState : CCScaleToState
+	internal class CCScaleByState : CCScaleToState
 	{
 
 		public CCScaleByState (CCScaleTo action, CCNode target)

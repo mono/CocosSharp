@@ -14,7 +14,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCWaves3DState (this, target);
 		}
@@ -23,7 +23,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCWaves3DState : CCLiquidState
+	internal class CCWaves3DState : CCLiquidState
 	{
 		public CCWaves3DState (CCWaves3D action, CCNode target) : base (action, target)
 		{

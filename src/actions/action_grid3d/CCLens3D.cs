@@ -32,7 +32,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction (CCNode target)
 		{
 			return new CCLens3DState (this, target);
 		}
@@ -41,13 +41,13 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCLens3DState : CCGrid3DActionState
+	internal class CCLens3DState : CCGrid3DActionState
 	{
 		public CCPoint Position { get; set; }
 
 		public float Radius { get; set; }
 
-		public float LensEffect { get; set; }
+        public float LensEffect { get; set; }
 
 		public bool Concave { get; set; }
 

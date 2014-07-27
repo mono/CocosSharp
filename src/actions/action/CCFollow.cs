@@ -95,7 +95,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected internal override CCActionState StartAction(CCNode target)
+        internal override CCActionState StartAction(CCNode target)
         {
             return new CCFollowState (this, target);
         }
@@ -104,7 +104,7 @@ namespace CocosSharp
 
     #region Action state
 
-    public class CCFollowState : CCActionState
+    internal class CCFollowState : CCActionState
     {
         CCFollow.CCFollowBoundary cachedBoundary;
         CCPoint cachedHalfScreenSize;

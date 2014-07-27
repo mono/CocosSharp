@@ -10,7 +10,7 @@
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCDelayTimeState (this, target);
 
@@ -22,7 +22,7 @@
 		}
 	}
 
-	public class CCDelayTimeState : CCActionIntervalState
+	internal class CCDelayTimeState : CCActionIntervalState
 	{
 
 		public CCDelayTimeState (CCDelayTime action, CCNode target)

@@ -45,7 +45,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCTurnOffTilesState (this, target);
 		}
@@ -54,7 +54,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCTurnOffTilesState : CCTiledGrid3DActionState
+	internal class CCTurnOffTilesState : CCTiledGrid3DActionState
 	{
 		protected int TilesCount { get; private set; }
 

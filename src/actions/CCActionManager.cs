@@ -6,7 +6,7 @@ namespace CocosSharp
 {
 	public class CCActionManager : ICCUpdatable, IDisposable
 	{
-		protected class HashElement
+		internal class HashElement
 		{
 			public int ActionIndex;
 			public List<CCActionState> ActionStates;
@@ -83,7 +83,7 @@ namespace CocosSharp
 			return null;
 		}
 
-		public CCActionState GetActionState(int tag, CCNode target)
+		internal CCActionState GetActionState(int tag, CCNode target)
 		{
 			Debug.Assert(tag != (int)CCActionTag.Invalid);
 
@@ -197,14 +197,14 @@ namespace CocosSharp
 			currentTarget = null;
 		}
 
-		protected void DeleteHashElement(HashElement element)
+		internal void DeleteHashElement(HashElement element)
 		{
 			element.ActionStates.Clear();
 			targets.Remove(element.Target);
 			element.Target = null;
 		}
 
-		protected void ActionAllocWithHashElement(HashElement element)
+		internal void ActionAllocWithHashElement(HashElement element)
 		{
 			if (element.ActionStates == null)
 			{
@@ -262,7 +262,7 @@ namespace CocosSharp
 
 		#region Adding/removing actions
 
-		public CCActionState AddAction(CCAction action, CCNode target, bool paused = false)
+		internal CCActionState AddAction(CCAction action, CCNode target, bool paused = false)
 		{
 			Debug.Assert(action != null);
 			Debug.Assert(target != null);
@@ -337,7 +337,7 @@ namespace CocosSharp
 			}
 		}
 
-		public void RemoveAction(CCActionState actionState)
+		internal void RemoveAction(CCActionState actionState)
 		{
 			if (actionState == null || actionState.OriginalTarget == null)
 			{
@@ -365,7 +365,7 @@ namespace CocosSharp
 			}
 		}
 
-		protected void RemoveActionAtIndex(int index, HashElement element)
+		internal void RemoveActionAtIndex(int index, HashElement element)
 		{
 			var action = element.ActionStates[index];
 
@@ -394,6 +394,39 @@ namespace CocosSharp
 				}
 			}
 		}
+
+        internal void RemoveAction(CCAction action, CCNode target)
+        {
+            if (action == null || target == null)
+                return;
+
+            HashElement element;
+            if (targets.TryGetValue(target, out element))
+            {
+                int limit = element.ActionStates.Count;
+                bool actionFound = false;
+
+                for (int i = 0; i < limit; i++)
+                {
+                    var actionState = element.ActionStates[i];
+
+                    if (actionState.Action == action && actionState.OriginalTarget == target)
+                    {
+                        RemoveActionAtIndex(i, element);
+                        actionFound = true;
+                        break;
+                    }
+                }
+
+                if (!actionFound)
+                    CCLog.Log("CocosSharp : RemoveAction: Action not found");
+            }
+            else
+            {
+                CCLog.Log("CocosSharp : RemoveAction: Target not found");
+            }
+
+        }
 
 		public void RemoveAction(int tag, CCNode target)
 		{

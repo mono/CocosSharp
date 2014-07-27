@@ -19,7 +19,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCJumpByState (this, target);
 		}
@@ -30,7 +30,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCJumpByState : CCActionIntervalState
+	internal class CCJumpByState : CCActionIntervalState
 	{
 		protected CCPoint Delta;
 		protected float Height;

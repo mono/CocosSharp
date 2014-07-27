@@ -21,14 +21,14 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCRotateToState (this, target);
 		}
 	}
 
 
-	public class CCRotateToState : CCActionIntervalState
+	internal class CCRotateToState : CCActionIntervalState
 	{
 		protected float DiffAngleY;
 		protected float DiffAngleX;

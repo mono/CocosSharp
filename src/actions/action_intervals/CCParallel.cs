@@ -37,7 +37,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCParallelState (this, target);
 
@@ -60,7 +60,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCParallelState : CCActionIntervalState
+	internal class CCParallelState : CCActionIntervalState
 	{
 
 		protected CCFiniteTimeAction[] Actions { get; set; }

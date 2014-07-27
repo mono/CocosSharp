@@ -21,7 +21,7 @@
 		/// Start the reuse grid operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCReuseGridState (this, target);
 
@@ -29,7 +29,7 @@
 
 	}
 
-	public class CCReuseGridState : CCActionInstantState
+	internal class CCReuseGridState : CCActionInstantState
 	{
 		public CCReuseGridState (CCReuseGrid action, CCNode target)
 			: base (action, target)

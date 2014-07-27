@@ -14,7 +14,7 @@
 		/// Start the show operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCShowState (this, target);
 
@@ -27,7 +27,7 @@
 
 	}
 
-	public class CCShowState : CCActionInstantState
+	internal class CCShowState : CCActionInstantState
 	{
 
 		public CCShowState (CCShow action, CCNode target)

@@ -14,7 +14,7 @@
 		/// Start the hide operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCHideState (this, target);
 
@@ -27,7 +27,7 @@
 
 	}
 
-	public class CCHideState : CCActionInstantState
+	internal class CCHideState : CCActionInstantState
 	{
 
 		public CCHideState (CCHide action, CCNode target)

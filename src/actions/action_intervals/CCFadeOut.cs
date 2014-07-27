@@ -10,7 +10,7 @@
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFadeOutState (this, target);
 
@@ -22,7 +22,7 @@
 		}
 	}
 
-	public class CCFadeOutState : CCActionIntervalState
+	internal class CCFadeOutState : CCActionIntervalState
 	{
 
 		public CCFadeOutState (CCFadeOut action, CCNode target)

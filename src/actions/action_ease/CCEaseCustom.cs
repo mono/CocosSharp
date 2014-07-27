@@ -16,7 +16,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCEaseCustomState (this, target);
 		}
@@ -30,7 +30,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCEaseCustomState : CCActionEaseState
+	internal class CCEaseCustomState : CCActionEaseState
 	{
 		protected Func<float, float> EaseFunc { get; private set; }
 

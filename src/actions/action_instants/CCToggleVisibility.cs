@@ -14,7 +14,7 @@
 		/// Start the hide operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCToggleVisibilityState (this, target);
 
@@ -22,7 +22,7 @@
 
 	}
 
-	public class CCToggleVisibilityState : CCActionInstantState
+	internal class CCToggleVisibilityState : CCActionInstantState
 	{
 
 		public CCToggleVisibilityState (CCToggleVisibility action, CCNode target)

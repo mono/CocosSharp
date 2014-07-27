@@ -25,7 +25,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCGridActionState (this, target);
 		}
@@ -39,7 +39,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCGridActionState : CCAmplitudeActionState
+	internal class CCGridActionState : CCAmplitudeActionState
 	{
 		protected CCGridSize GridSize { get; private set; }
 

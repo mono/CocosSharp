@@ -27,7 +27,7 @@ namespace CocosSharp
 		/// Start the Call Function operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCCallFuncOState (this, target);
 
@@ -35,7 +35,7 @@ namespace CocosSharp
 
     }
 
-	public class CCCallFuncOState : CCCallFuncState
+	internal class CCCallFuncOState : CCCallFuncState
 	{
 		protected Action<object> CallFunctionO { get; set; }
 		protected object Object { get; set; }

@@ -12,7 +12,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBezierToState (this, target);
 
@@ -20,7 +20,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCBezierToState : CCBezierByState
+	internal class CCBezierToState : CCBezierByState
 	{
 
 		public CCBezierToState (CCBezierBy action, CCNode target)

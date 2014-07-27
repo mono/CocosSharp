@@ -46,7 +46,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCWavesTiles3DState (this, target);
 		}
@@ -55,7 +55,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCWavesTiles3DState : CCTiledGrid3DActionState
+	internal class CCWavesTiles3DState : CCTiledGrid3DActionState
 	{
 		public int Waves { get; set; }
 

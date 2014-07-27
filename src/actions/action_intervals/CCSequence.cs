@@ -59,7 +59,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCSequenceState (this, target);
 
@@ -71,7 +71,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCSequenceState : CCActionIntervalState
+	internal class CCSequenceState : CCActionIntervalState
 	{
 		protected int last;
 		protected CCFiniteTimeAction[] actionSequences = new CCFiniteTimeAction[2];

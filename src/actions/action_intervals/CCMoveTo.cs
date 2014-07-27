@@ -17,14 +17,14 @@ namespace CocosSharp
 			get { return EndPosition; }
 		}
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCMoveToState (this, target);
 
 		}
 	}
 
-	public class CCMoveToState : CCMoveByState
+	internal class CCMoveToState : CCMoveByState
 	{
 
 		public CCMoveToState (CCMoveTo action, CCNode target)

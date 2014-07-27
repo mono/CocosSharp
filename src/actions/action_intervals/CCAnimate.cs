@@ -45,7 +45,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCAnimateState (this, target);
 
@@ -78,7 +78,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCAnimateState : CCActionIntervalState
+	internal class CCAnimateState : CCActionIntervalState
 	{
 
 		protected CCAnimation Animation { get; private set; }

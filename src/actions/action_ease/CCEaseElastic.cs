@@ -19,7 +19,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCEaseElasticState (this, target);
 		}
@@ -34,7 +34,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCEaseElasticState : CCActionEaseState
+	internal class CCEaseElasticState : CCActionEaseState
 	{
 		protected float Period { get; private set; }
 

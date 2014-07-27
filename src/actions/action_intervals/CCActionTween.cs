@@ -36,7 +36,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCActionTweenState (this, target);
 
@@ -48,7 +48,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCActionTweenState : CCActionIntervalState
+	internal class CCActionTweenState : CCActionIntervalState
 	{
 		protected float Delta;
 

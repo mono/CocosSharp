@@ -46,7 +46,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCJumpTiles3DState (this, target);
 		}
@@ -55,7 +55,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCJumpTiles3DState : CCTiledGrid3DActionState
+	internal class CCJumpTiles3DState : CCTiledGrid3DActionState
 	{
 		protected int NumberOfJumps { get; set; }
 

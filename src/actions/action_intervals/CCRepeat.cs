@@ -29,7 +29,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCRepeatState (this, target);
 
@@ -41,7 +41,7 @@ namespace CocosSharp
 		}
 	}
 
-	public class CCRepeatState : CCActionIntervalState
+	internal class CCRepeatState : CCActionIntervalState
 	{
 
 		protected bool ActionInstant { get; set; }

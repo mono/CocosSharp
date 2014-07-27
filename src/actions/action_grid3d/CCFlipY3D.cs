@@ -13,7 +13,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCFlipY3DState (this, target);
 		}
@@ -22,7 +22,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCFlipY3DState : CCFlipX3DState
+	internal class CCFlipY3DState : CCFlipX3DState
 	{
 		public CCFlipY3DState (CCFlipY3D action, CCNode target) : base (action, target)
 		{

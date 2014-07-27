@@ -20,7 +20,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected internal override CCActionState StartAction (CCNode target)
+        internal override CCActionState StartAction(CCNode target)
         {
             return new CCSpeedState (this, target);
         }
@@ -34,7 +34,7 @@ namespace CocosSharp
 
     #region Action state
 
-    public class CCSpeedState : CCActionState
+    internal class CCSpeedState : CCActionState
     {
         #region Properties
 

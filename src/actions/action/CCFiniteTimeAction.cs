@@ -19,7 +19,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        protected internal override CCActionState StartAction (CCNode target)
+        internal override CCActionState StartAction(CCNode target)
         {
             return new CCFiniteTimeActionState (this, target);
 
@@ -32,7 +32,7 @@ namespace CocosSharp
         }
     }
 
-    public class CCFiniteTimeActionState : CCActionState
+    internal class CCFiniteTimeActionState : CCActionState
     {
         public CCFiniteTimeActionState (CCFiniteTimeAction action, CCNode target)
             : base (action, target)

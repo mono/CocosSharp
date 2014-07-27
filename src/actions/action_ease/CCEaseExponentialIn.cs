@@ -13,7 +13,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCEaseExponentialInState (this, target);
 		}
@@ -27,7 +27,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	public class CCEaseExponentialInState : CCActionEaseState
+	internal class CCEaseExponentialInState : CCActionEaseState
 	{
 		public CCEaseExponentialInState (CCEaseExponentialIn action, CCNode target) : base (action, target)
 		{

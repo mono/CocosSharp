@@ -29,13 +29,13 @@ namespace CocosSharp
 			get { return EndSkewY; }
 		}
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCSkewToState (this, target);
 		}
 	}
 
-	public class CCSkewToState : CCActionIntervalState
+	internal class CCSkewToState : CCActionIntervalState
 	{
 
 		protected float DeltaX;

@@ -15,7 +15,7 @@
 		#endregion Constructors
 
 
-		protected internal override CCActionState StartAction (CCNode target)
+		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCBlinkState (this, target);
 
@@ -27,7 +27,7 @@
 		}
 	}
 
-	public class CCBlinkState : CCActionIntervalState
+	internal class CCBlinkState : CCActionIntervalState
 	{
 
 		protected uint Times { get; set; }
