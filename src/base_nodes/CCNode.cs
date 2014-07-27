@@ -798,8 +798,11 @@ namespace CocosSharp
 
         #region Event dispatcher handling
 
-        void AttachEvents()
+        internal void AttachEvents()
         {
+			if (EventDispatcher == null)
+				return;
+
             if (toBeAddedListeners != null && toBeAddedListeners.Count > 0) 
             {
                 var eventDispatcher = EventDispatcher;
@@ -1834,7 +1837,7 @@ namespace CocosSharp
 
         #region Actions
 
-		void AttachActions()
+		internal void AttachActions()
 		{
 			if (toBeAddedActions != null && toBeAddedActions.Count > 0) 
 			{
