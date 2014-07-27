@@ -62,6 +62,7 @@ namespace CocosSharp
 				if (child != null)
 				{
 					child.AttachEvents();
+					child.AttachActions();
 					InitializeLazySceneGraph(child.Children);
 				}
 			}

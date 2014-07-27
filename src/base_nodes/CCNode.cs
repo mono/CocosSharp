@@ -1837,7 +1837,7 @@ namespace CocosSharp
 
         #region Actions
 
-		void AttachActions()
+		internal void AttachActions()
 		{
 			if (toBeAddedActions != null && toBeAddedActions.Count > 0) 
 			{
