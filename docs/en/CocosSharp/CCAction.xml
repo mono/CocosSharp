@@ -14,7 +14,7 @@
     <summary>The base abstract class for Action objects.</summary>
     <remarks>
       <para>
-Actions are orders that can be run on a target <see cref="T:CococSharp.CCNode" /> object, 			altering the attributes of a node (e.g. position, rotation, scale, color, opacity, etc.).
+Actions are orders that can be run on a target <see cref="T:CocosSharp.CCNode" /> object, 			altering the attributes of a node (e.g. position, rotation, scale, color, opacity, etc.).
 Actions that derive from <see cref="T:CocosSharp.CCActionInterval" /> alter the properties of
 a node over a period of time, while actions that derive from <see cref="T:CocosSharp.CCActionInstant" /> apply the changes immediately.
 </para>
@@ -61,7 +61,7 @@ node2.RunAction(action);
       <Docs>
         <summary>An identifier for the <see langword="CCAction" /> object.</summary>
         <value>The tag value.</value>
-        <remarks>Allows a target <see cref="T:CococSharp.CCNode" /> object to fetch <see cref="M:CocosSharp.CCNode.GetAction(System.Int32)" />, stop <see cref="M:CocosSharp.CCNode.StopAction(System.Int32)" /> or remove <see cref="M:CocosSharp.CCNode.RemoveChildByTag(System.Int32,System.Boolean)" /> a running action by passing in the tag identifier. Note, however that tag values do not have to be unique across different actions, and thus such methods will only apply to the first action instance found to have the corresponding tag. For the particular case of removing multiple actions with the same tag, use <see cref="M:CocosSharp.CCNode.RemoveAllChildrenByTag(System.Int32,System.Boolean)" />.  </remarks>
+        <remarks>Allows a target <see cref="T:CocosSharp.CCNode" /> object to fetch <see cref="M:CocosSharp.CCNode.GetAction(System.Int32)" />, stop <see cref="M:CocosSharp.CCNode.StopAction(System.Int32)" /> or remove <see cref="M:CocosSharp.CCNode.RemoveChildByTag(System.Int32,System.Boolean)" /> a running action by passing in the tag identifier. Note, however that tag values do not have to be unique across different actions, and thus such methods will only apply to the first action instance found to have the corresponding tag. For the particular case of removing multiple actions with the same tag, use <see cref="M:CocosSharp.CCNode.RemoveAllChildrenByTag(System.Int32,System.Boolean)" />.  </remarks>
       </Docs>
     </Member>
   </Members>
