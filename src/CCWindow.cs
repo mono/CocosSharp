@@ -196,7 +196,9 @@ namespace CocosSharp
 
 		public void RunWithScene(CCScene scene)
 		{
-			scene.Window = this;
+			if (scene.Window == null)
+				scene.Window = this;
+
 			ActiveDirector.RunWithScene(scene);
 		}
 
@@ -326,6 +328,8 @@ namespace CocosSharp
                 {
                     director.NextScene.Viewport.DisplayOrientation = orientation;
                     director.NextScene.Viewport.LandscapeScreenSizeInPixels = landscapeWindowSize;
+					if (director.NextScene.Window == null)
+						director.NextScene.Window = this;
                     director.SetNextScene();
                 }
             }
