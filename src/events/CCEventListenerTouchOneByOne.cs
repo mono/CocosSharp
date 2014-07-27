@@ -25,7 +25,7 @@ namespace CocosSharp
 			get {
 				if (OnTouchBegan == null)
 				{
-					Debug.Assert(false, "Invalid EventListenerTouchOneByOne!");
+					Debug.Assert(false, "Invalid EventListenerTouchOneByOne!.  OnTouchBegan is not defined.");
 					return false;
 				}
 
