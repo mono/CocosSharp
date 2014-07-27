@@ -42,14 +42,14 @@ namespace CocosSharp
 
         #region ICCTransitionEaseScene Members
 
-        public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseInOut(action, 3.0f);
         }
 
         #endregion
 
-        public virtual CCActionInterval Action()
+        public virtual CCFiniteTimeAction Action()
         {
             return new CCSplitCols(Duration / 2.0f, 3);
         }
@@ -59,8 +59,8 @@ namespace CocosSharp
             base.OnEnter();
             InScene.Visible = false;
 
-            CCActionInterval split = Action();
-            CCActionInterval seq = new CCSequence(
+            CCFiniteTimeAction split = Action();
+            CCFiniteTimeAction seq = new CCSequence(
                 split,
                 new CCCallFunc((HideOutShowIn)),
                 split.Reverse()

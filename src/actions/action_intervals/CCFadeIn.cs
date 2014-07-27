@@ -1,6 +1,6 @@
 ﻿namespace CocosSharp
 {
-	public class CCFadeIn : CCActionInterval
+	public class CCFadeIn : CCFiniteTimeAction
 	{
 		#region Constructors
 
@@ -23,7 +23,7 @@
 		}
 	}
 
-	internal class CCFadeInState : CCActionIntervalState
+	internal class CCFadeInState : CCFiniteTimeActionState
 	{
 
 		protected uint Times { get; set; }

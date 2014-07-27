@@ -33,14 +33,14 @@ namespace CocosSharp
     {
         #region ICCTransitionEaseScene Members
 
-        public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return action;
         }
 
         #endregion
 
-        public virtual CCActionInterval CreateAction(CCGridSize size)
+        public virtual CCFiniteTimeAction CreateAction(CCGridSize size)
         {
             return new CCFadeOutTRTiles(Duration, size);
         }
@@ -54,7 +54,7 @@ namespace CocosSharp
             var x = (int) (12 * aspect);
             int y = 12;
 
-            CCActionInterval action = CreateAction(new CCGridSize(x, y));
+            CCFiniteTimeAction action = CreateAction(new CCGridSize(x, y));
 
             OutScene.RunAction
                 (

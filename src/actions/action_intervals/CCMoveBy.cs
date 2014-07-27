@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-	public class CCMoveBy : CCActionInterval
+	public class CCMoveBy : CCFiniteTimeAction
 	{
 		#region Constructors
 
@@ -24,7 +24,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCMoveByState : CCActionIntervalState
+	internal class CCMoveByState : CCFiniteTimeActionState
 	{
 		protected CCPoint PositionDelta;
 		protected CCPoint EndPosition;

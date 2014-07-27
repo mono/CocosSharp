@@ -7,11 +7,11 @@ namespace CocosSharp
 	{
 		#region Constructors
 
-		public CCEaseElasticInOut (CCActionInterval pAction) : this (pAction, 0.3f)
+        public CCEaseElasticInOut (CCFiniteTimeAction pAction) : this (pAction, 0.3f)
 		{
 		}
 
-		public CCEaseElasticInOut (CCActionInterval pAction, float fPeriod) : base (pAction, fPeriod)
+        public CCEaseElasticInOut (CCFiniteTimeAction pAction, float fPeriod) : base (pAction, fPeriod)
 		{
 		}
 
@@ -25,7 +25,7 @@ namespace CocosSharp
 
 		public override CCFiniteTimeAction Reverse ()
 		{
-			return new CCEaseElasticInOut ((CCActionInterval)InnerAction.Reverse (), Period);
+            return new CCEaseElasticInOut ((CCFiniteTimeAction)InnerAction.Reverse (), Period);
 		}
 	}
 

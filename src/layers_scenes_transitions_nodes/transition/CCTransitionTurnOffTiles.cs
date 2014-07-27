@@ -37,7 +37,7 @@ namespace CocosSharp
 
         #region ICCTransitionEaseScene Members
 
-        public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return action;
         }

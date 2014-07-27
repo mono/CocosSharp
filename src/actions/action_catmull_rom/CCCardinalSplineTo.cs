@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCCardinalSplineTo : CCActionInterval
+    public class CCCardinalSplineTo : CCFiniteTimeAction
 	{
 
 		#region Constructors
@@ -40,7 +40,7 @@ namespace CocosSharp
 
 	}
 
-	internal class CCCardinalSplineToState : CCActionIntervalState
+	internal class CCCardinalSplineToState : CCFiniteTimeActionState
 	{
 		protected float DeltaT { get; set; }
 

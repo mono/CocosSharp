@@ -1,7 +1,6 @@
 namespace CocosSharp
 {
-
-	public class CCTintTo : CCActionInterval
+    public class CCTintTo : CCFiniteTimeAction
 	{
 		public CCColor3B ColorTo { get; private set; }
 
@@ -15,14 +14,18 @@ namespace CocosSharp
 
 		#endregion Constructors
 
+        public override CCFiniteTimeAction Reverse()
+        {
+            throw new System.NotImplementedException ();
+        }
+
 		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCTintToState (this, target);
-
 		}
 	}
 
-	internal class CCTintToState : CCActionIntervalState
+	internal class CCTintToState : CCFiniteTimeActionState
 	{
 		protected CCColor3B ColorFrom { get; set; }
 

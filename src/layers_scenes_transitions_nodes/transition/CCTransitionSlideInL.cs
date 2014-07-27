@@ -31,7 +31,7 @@ namespace CocosSharp
         
         #region ICCTransitionEaseScene Members
 
-        public virtual CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
         }
@@ -51,7 +51,7 @@ namespace CocosSharp
         /// returns the action that will be performed by the incomming and outgoing scene
         /// </summary>
         /// <returns></returns>
-        public virtual CCActionInterval Action()
+        public virtual CCFiniteTimeAction Action()
         {
             CCRect bounds = Layer.VisibleBoundsWorldspace;
             return new CCMoveBy(Duration, new CCPoint(bounds.Size.Width, 0));
@@ -62,11 +62,11 @@ namespace CocosSharp
             base.OnEnter();
             InitScenes();
 
-            CCActionInterval incAction = Action();
-            CCActionInterval outcAction = Action();
+            CCFiniteTimeAction incAction = Action();
+            CCFiniteTimeAction outcAction = Action();
 
             CCFiniteTimeAction inAction = EaseAction(incAction);
-            CCActionInterval outAction = new CCSequence
+            CCFiniteTimeAction outAction = new CCSequence
                 (
                     EaseAction(outcAction),
                     new CCCallFunc((Finish))

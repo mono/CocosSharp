@@ -31,7 +31,7 @@ namespace CocosSharp
     /// </summary>
     public class CCTransitionSplitRows : CCTransitionSplitCols
     {
-        public override CCActionInterval Action()
+        public override CCFiniteTimeAction Action()
         {
             return new CCSplitRows(Duration / 2.0f, 3);
         }

@@ -2,7 +2,7 @@ using System;
 
 namespace CocosSharp
 {
-	public class CCBezierBy : CCActionInterval
+	public class CCBezierBy : CCFiniteTimeAction
 	{
 		public CCBezierConfig BezierConfig { get; private set; }
 
@@ -36,7 +36,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCBezierByState : CCActionIntervalState
+	internal class CCBezierByState : CCFiniteTimeActionState
 	{
 		protected CCBezierConfig BezierConfig { get; set; }
 

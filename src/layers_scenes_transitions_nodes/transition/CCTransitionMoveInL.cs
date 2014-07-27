@@ -31,7 +31,7 @@ namespace CocosSharp
 
         #region ICCTransitionEaseScene Members
 
-        public CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
         }
@@ -51,7 +51,7 @@ namespace CocosSharp
         /// returns the action that will be performed
         /// </summary>
         /// <returns></returns>
-        public virtual CCActionInterval Action()
+        public virtual CCFiniteTimeAction Action()
         {
             return new CCMoveTo (Duration, new CCPoint(0, 0));
         }
@@ -61,7 +61,7 @@ namespace CocosSharp
             base.OnEnter();
             InitScenes();
 
-            CCActionInterval a = Action();
+            CCFiniteTimeAction a = Action();
 
             InScene.RunAction
                 (

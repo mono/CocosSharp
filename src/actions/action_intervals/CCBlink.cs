@@ -1,6 +1,6 @@
 ﻿namespace CocosSharp
 {
-	public class CCBlink : CCActionInterval
+	public class CCBlink : CCFiniteTimeAction
 	{
 		public uint Times { get; private set; }
 
@@ -27,7 +27,7 @@
 		}
 	}
 
-	internal class CCBlinkState : CCActionIntervalState
+	internal class CCBlinkState : CCFiniteTimeActionState
 	{
 
 		protected uint Times { get; set; }

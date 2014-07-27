@@ -8,7 +8,7 @@ namespace CocosSharp
 		void UpdateTweenAction (float value, string key);
 	}
 
-	public class CCActionTween : CCActionInterval
+	public class CCActionTween : CCFiniteTimeAction
 	{
 		public float From { get; private set; }
 
@@ -48,7 +48,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCActionTweenState : CCActionIntervalState
+	internal class CCActionTweenState : CCFiniteTimeActionState
 	{
 		protected float Delta;
 

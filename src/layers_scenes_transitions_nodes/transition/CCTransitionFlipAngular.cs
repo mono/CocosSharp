@@ -39,7 +39,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCActionInterval inA, outA;
+            CCFiniteTimeAction inA, outA;
             InScene.Visible = false;
 
             float inDeltaZ, inAngleZ;

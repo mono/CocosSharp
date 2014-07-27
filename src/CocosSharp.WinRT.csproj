@@ -309,8 +309,8 @@
     <Compile Include=".\actions\action_instants\CCToggleVisibility.cs">
       <LogicalName>actions\action_instants\CCToggleVisibility</LogicalName>
     </Compile>
-    <Compile Include=".\actions\action_intervals\CCActionInterval.cs">
-      <LogicalName>actions\action_intervals\CCActionInterval</LogicalName>
+    <Compile Include=".\actions\action_intervals\CCExtraAction.cs">
+      <LogicalName>actions\action_intervals\CCExtraAction</LogicalName>
     </Compile>
     <Compile Include=".\actions\action_intervals\CCActionTween.cs">
       <LogicalName>actions\action_intervals\CCActionTween</LogicalName>

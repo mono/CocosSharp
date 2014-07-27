@@ -1,11 +1,27 @@
 namespace CocosSharp
 {
-	public class CCSkewTo : CCActionInterval
+    public class CCSkewTo : CCFiniteTimeAction
 	{
 		protected float EndSkewX;
 		protected float EndSkewY;
 		protected float SkewX;
 		protected float SkewY;
+
+
+        #region Properties
+
+        public float SkewToX 
+        {
+            get { return EndSkewX; }
+        }
+
+        public float SkewToY 
+        {
+            get { return EndSkewY; }
+        }
+
+        #endregion Properties
+
 
 		#region Constructors
 
@@ -21,13 +37,11 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		public float SkewToX {
-			get { return EndSkewX; }
-		}
 
-		public float SkewToY {
-			get { return EndSkewY; }
-		}
+        public override CCFiniteTimeAction Reverse ()
+        {
+            throw new System.NotImplementedException();
+        }
 
 		internal override CCActionState StartAction(CCNode target)
 		{
@@ -35,7 +49,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCSkewToState : CCActionIntervalState
+	internal class CCSkewToState : CCFiniteTimeActionState
 	{
 
 		protected float DeltaX;

@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-	public class CCRotateBy : CCActionInterval
+	public class CCRotateBy : CCFiniteTimeAction
 	{
 		public float AngleX { get; private set; }
 
@@ -32,7 +32,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCRotateByState : CCActionIntervalState
+	internal class CCRotateByState : CCFiniteTimeActionState
 	{
 
 		protected float AngleX { get; set; }

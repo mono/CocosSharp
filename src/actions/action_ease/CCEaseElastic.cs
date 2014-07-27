@@ -7,12 +7,12 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCEaseElastic (CCActionInterval pAction, float fPeriod) : base (pAction)
+        public CCEaseElastic (CCFiniteTimeAction pAction, float fPeriod) : base (pAction)
 		{
 			Period = fPeriod;
 		}
 
-		public CCEaseElastic (CCActionInterval pAction) : this (pAction, 0.3f)
+        public CCEaseElastic (CCFiniteTimeAction pAction) : this (pAction, 0.3f)
 		{
 		}
 

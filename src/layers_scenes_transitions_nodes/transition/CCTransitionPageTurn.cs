@@ -54,7 +54,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public CCActionInterval ActionWithSize(CCGridSize vector)
+        public CCFiniteTimeAction ActionWithSize(CCGridSize vector)
         {
             if (Back)
             {
@@ -88,7 +88,7 @@ namespace CocosSharp
                 y = 16;
             }
 
-            CCActionInterval action = ActionWithSize(new CCGridSize(x, y));
+            CCFiniteTimeAction action = ActionWithSize(new CCGridSize(x, y));
 
             if (!Back)
             {

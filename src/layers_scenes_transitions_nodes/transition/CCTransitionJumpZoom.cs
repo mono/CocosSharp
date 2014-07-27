@@ -16,14 +16,14 @@ namespace CocosSharp
             InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval jump = new CCJumpBy (Duration / 4, new CCPoint(-bounds.Size.Width, 0), bounds.Size.Width / 4, 2);
-            CCActionInterval scaleIn = new CCScaleTo(Duration / 4, 1.0f);
-            CCActionInterval scaleOut = new CCScaleTo(Duration / 4, 0.5f);
+            CCFiniteTimeAction jump = new CCJumpBy (Duration / 4, new CCPoint(-bounds.Size.Width, 0), bounds.Size.Width / 4, 2);
+            CCFiniteTimeAction scaleIn = new CCScaleTo(Duration / 4, 1.0f);
+            CCFiniteTimeAction scaleOut = new CCScaleTo(Duration / 4, 0.5f);
 
             CCSequence jumpZoomOut = (new CCSequence(scaleOut, jump));
             CCSequence jumpZoomIn = (new CCSequence(jump, scaleIn));
 
-            CCActionInterval delay = new CCDelayTime (Duration / 2);
+            CCFiniteTimeAction delay = new CCDelayTime (Duration / 2);
 
             OutScene.RunAction(jumpZoomOut);
             InScene.RunAction

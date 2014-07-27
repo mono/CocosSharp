@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-	public class CCProgressFromTo : CCActionInterval
+	public class CCProgressFromTo : CCFiniteTimeAction
 	{
 		public float PercentFrom { get; protected set; }
 
@@ -24,9 +24,14 @@ namespace CocosSharp
 		{
 			return new CCProgressFromToState (this, target);
 		}
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            return new CCProgressFromTo(Duration, PercentTo, PercentFrom);
+        }
 	}
 
-	internal class CCProgressFromToState : CCActionIntervalState
+	internal class CCProgressFromToState : CCFiniteTimeActionState
 	{
 		protected float PercentFrom { get; set; }
 

@@ -1,14 +1,14 @@
 namespace CocosSharp
 {
-	public class CCTargetedAction : CCActionInterval
+	public class CCTargetedAction : CCFiniteTimeAction
 	{
-		public CCFiniteTimeAction TargetedAction { get; private set; }
+        public CCFiniteTimeAction TargetedAction { get; private set; }
 
 		public CCNode ForcedTarget { get; private set; }
 
 		#region Constructors
 
-		public CCTargetedAction (CCNode target, CCFiniteTimeAction pAction) : base (pAction.Duration)
+        public CCTargetedAction (CCNode target, CCFiniteTimeAction pAction) : base (pAction.Duration)
 		{
 			ForcedTarget = target;
 			TargetedAction = pAction;
@@ -21,13 +21,13 @@ namespace CocosSharp
 			return new CCTargetedActionState (this, target);
 		}
 
-		public override CCFiniteTimeAction Reverse ()
+		public override CCFiniteTimeAction Reverse()
 		{
 			return new CCTargetedAction (ForcedTarget, TargetedAction.Reverse ());
 		}
 	}
 
-	internal class CCTargetedActionState : CCActionIntervalState
+	internal class CCTargetedActionState : CCFiniteTimeActionState
 	{
 		protected CCFiniteTimeAction TargetedAction { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace CocosSharp
 {
-	public class CCDelayTime : CCActionInterval
+	public class CCDelayTime : CCFiniteTimeAction
 	{
 		#region Constructors
 
@@ -22,7 +22,7 @@
 		}
 	}
 
-	internal class CCDelayTimeState : CCActionIntervalState
+	internal class CCDelayTimeState : CCFiniteTimeActionState
 	{
 
 		public CCDelayTimeState (CCDelayTime action, CCNode target)

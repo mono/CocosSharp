@@ -8,7 +8,7 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCEaseCustom (CCActionInterval pAction, Func<float, float> easeFunc) : base (pAction)
+        public CCEaseCustom (CCFiniteTimeAction pAction, Func<float, float> easeFunc) : base (pAction)
 		{
 			EaseFunc = easeFunc;
 		}

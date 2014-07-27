@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-	public class CCParallel : CCActionInterval
+	public class CCParallel : CCFiniteTimeAction
 	{
-		public CCFiniteTimeAction[] Actions { get; private set; }
+        public CCFiniteTimeAction[] Actions { get; private set; }
 
 		#region Constructors
 
-		public CCParallel (params CCFiniteTimeAction[] actions) : base ()
+        public CCParallel (params CCFiniteTimeAction[] actions) : base ()
 		{
 			// Can't call base(duration) because max action duration needs to be determined here
 			float maxDuration = 0.0f;
-			foreach (CCFiniteTimeAction action in actions)
+            foreach (CCFiniteTimeAction action in actions)
 			{
 				if (action.Duration > maxDuration)
 				{
@@ -49,7 +49,7 @@ namespace CocosSharp
 		/// <returns></returns>
 		public override CCFiniteTimeAction Reverse ()
 		{
-			CCFiniteTimeAction[] rev = new CCFiniteTimeAction[Actions.Length];
+            CCFiniteTimeAction[] rev = new CCFiniteTimeAction[Actions.Length];
 			for (int i = 0; i < Actions.Length; i++)
 			{
 				rev [i] = Actions [i].Reverse ();
@@ -60,7 +60,7 @@ namespace CocosSharp
 
 	}
 
-	internal class CCParallelState : CCActionIntervalState
+	internal class CCParallelState : CCFiniteTimeActionState
 	{
 
 		protected CCFiniteTimeAction[] Actions { get; set; }

@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-	public class CCScaleTo : CCActionInterval
+    public class CCScaleTo : CCFiniteTimeAction
 	{
 		public float EndScaleX { get; private set; }
 
@@ -20,13 +20,18 @@ namespace CocosSharp
 
 		#endregion Constructors
 
+        public override CCFiniteTimeAction Reverse()
+        {
+            throw new System.NotImplementedException ();
+        }
+
 		internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCScaleToState (this, target);
 		}
 	}
 
-	internal class CCScaleToState : CCActionIntervalState
+	internal class CCScaleToState : CCFiniteTimeActionState
 	{
 		protected float DeltaX;
 		protected float DeltaY;

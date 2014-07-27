@@ -2,28 +2,28 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCSequence : CCActionInterval
+	public class CCSequence : CCFiniteTimeAction
 	{
-		public CCFiniteTimeAction[] Actions { get; private set; }
+        public CCFiniteTimeAction[] Actions { get; private set; }
 
 		#region Constructors
 
-		public CCSequence (CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base (action1.Duration + action2.Duration)
+        public CCSequence (CCFiniteTimeAction action1, CCFiniteTimeAction action2) : base (action1.Duration + action2.Duration)
 		{
-			Actions = new CCFiniteTimeAction[2];
+            Actions = new CCFiniteTimeAction[2];
 			InitCCSequence (action1, action2);
 		}
 
-		public CCSequence (params CCFiniteTimeAction[] actions) : base ()
+        public CCSequence (params CCFiniteTimeAction[] actions) : base ()
 		{
 
-			Actions = new CCFiniteTimeAction[2];
+            Actions = new CCFiniteTimeAction[2];
 
 			var prev = actions [0];
 
 			// Can't call base(duration) because we need to calculate duration here
 			float combinedDuration = 0.0f;
-			foreach (CCFiniteTimeAction action in actions)
+            foreach (CCFiniteTimeAction action in actions)
 			{
 				combinedDuration += action.Duration;
 			}
@@ -47,14 +47,13 @@ namespace CocosSharp
 
 		}
 
-		private void InitCCSequence (CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
+        void InitCCSequence (CCFiniteTimeAction actionOne, CCFiniteTimeAction actionTwo)
 		{
 			Debug.Assert (actionOne != null);
 			Debug.Assert (actionTwo != null);
 
 			Actions [0] = actionOne;
 			Actions [1] = actionTwo;
-
 		}
 
 		#endregion Constructors
@@ -71,7 +70,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCSequenceState : CCActionIntervalState
+	internal class CCSequenceState : CCFiniteTimeActionState
 	{
 		protected int last;
 		protected CCFiniteTimeAction[] actionSequences = new CCFiniteTimeAction[2];

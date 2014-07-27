@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCAnimate : CCActionInterval
+	public class CCAnimate : CCFiniteTimeAction
 	{
 		public CCAnimation Animation { get; private set; }
 
@@ -78,7 +78,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCAnimateState : CCActionIntervalState
+	internal class CCAnimateState : CCFiniteTimeActionState
 	{
 
 		protected CCAnimation Animation { get; private set; }

@@ -62,7 +62,7 @@ namespace CocosSharp
             AddChild(l, 2, SceneFade);
             CCNode f = this[SceneFade];
 
-            var a = (CCActionInterval) new CCSequence
+            var a = (CCFiniteTimeAction) new CCSequence
                                            (
                                                new CCFadeIn (Duration / 2),
                                                new CCCallFunc((HideOutShowIn)),

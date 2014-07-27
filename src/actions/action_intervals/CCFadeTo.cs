@@ -1,6 +1,8 @@
-﻿namespace CocosSharp
+﻿using System;
+
+namespace CocosSharp
 {
-	public class CCFadeTo : CCActionInterval
+	public class CCFadeTo : CCFiniteTimeAction
 	{
 		public byte ToOpacity { get; private set; }
 
@@ -20,9 +22,14 @@
 			return new CCFadeToState (this, target);
 
 		}
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            throw new NotImplementedException();
+        }
 	}
 
-	internal class CCFadeToState : CCActionIntervalState
+	internal class CCFadeToState : CCFiniteTimeActionState
 	{
 		protected byte FromOpacity { get; set; }
 

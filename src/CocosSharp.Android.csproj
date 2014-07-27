@@ -109,7 +109,7 @@
     <Compile Include="Actions\action_instants\CCShow.cs" />
     <Compile Include="Actions\action_instants\CCStopGrid.cs" />
     <Compile Include="Actions\action_instants\CCToggleVisibility.cs" />
-    <Compile Include="Actions\action_intervals\CCActionInterval.cs" />
+    <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
     <Compile Include="Actions\action_intervals\CCActionTween.cs" />
     <Compile Include="Actions\action_intervals\CCAnimate.cs" />
     <Compile Include="Actions\action_intervals\CCBezierBy.cs" />

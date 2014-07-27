@@ -208,7 +208,7 @@
     <Compile Include="effects\CCTiledGrid3D.cs" />
     <Compile Include="effects\CCGrabber.cs" />
     <Compile Include="actions\action_instants\CCActionInstant.cs" />
-    <Compile Include="actions\action_intervals\CCActionInterval.cs" />
+    <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
     <Compile Include="actions\CCActionManager.cs" />
     <Compile Include="base_nodes\CCAtlasNode.cs" />
     <Compile Include="base_nodes\CCNode.cs" />

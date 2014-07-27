@@ -3,25 +3,25 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCSpawn : CCActionInterval
+	public class CCSpawn : CCFiniteTimeAction
 	{
-		public CCFiniteTimeAction ActionOne { get; protected set; }
+        public CCFiniteTimeAction ActionOne { get; protected set; }
 
-		public CCFiniteTimeAction ActionTwo { get; protected set; }
+        public CCFiniteTimeAction ActionTwo { get; protected set; }
 
 
 		#region Constructors
 
-		protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        protected CCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
 			: base (Math.Max (action1.Duration, action2.Duration))
 		{
 			InitCCSpawn (action1, action2);
 		}
 
-		public CCSpawn (params CCFiniteTimeAction[] actions)
+        public CCSpawn (params CCFiniteTimeAction[] actions)
 		{
-			CCFiniteTimeAction prev = actions [0];
-			CCFiniteTimeAction next = null;
+            CCFiniteTimeAction prev = actions [0];
+            CCFiniteTimeAction next = null;
 
 			if (actions.Length == 1)
 			{
@@ -47,7 +47,7 @@ namespace CocosSharp
 			}
 		}
 
-		private void InitCCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
+        private void InitCCSpawn (CCFiniteTimeAction action1, CCFiniteTimeAction action2)
 		{
 			Debug.Assert (action1 != null);
 			Debug.Assert (action2 != null);
@@ -83,7 +83,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCSpawnState : CCActionIntervalState
+	internal class CCSpawnState : CCFiniteTimeActionState
 	{
 
 		protected CCFiniteTimeAction ActionOne { get; set; }

@@ -1,10 +1,10 @@
 namespace CocosSharp
 {
-	public class CCRepeat : CCActionInterval
+	public class CCRepeat : CCFiniteTimeAction
 	{
 		public bool ActionInstant { get; private set; }
 
-		public CCFiniteTimeAction InnerAction { get; private set; }
+        public CCFiniteTimeAction InnerAction { get; private set; }
 
 		public uint Times { get; private set; }
 
@@ -12,7 +12,7 @@ namespace CocosSharp
 
 		#region Constructors
 
-		public CCRepeat (CCFiniteTimeAction action, uint times) : base (action.Duration * times)
+        public CCRepeat (CCFiniteTimeAction action, uint times) : base (action.Duration * times)
 		{
 
 			Times = times;
@@ -37,11 +37,11 @@ namespace CocosSharp
 
 		public override CCFiniteTimeAction Reverse ()
 		{
-			return new CCRepeat (InnerAction.Reverse (), Times);
+			return new CCRepeat (InnerAction.Reverse(), Times);
 		}
 	}
 
-	internal class CCRepeatState : CCActionIntervalState
+	internal class CCRepeatState : CCFiniteTimeActionState
 	{
 
 		protected bool ActionInstant { get; set; }

@@ -1,7 +1,7 @@
 namespace CocosSharp
 {
 
-	public class CCTintBy : CCActionInterval
+	public class CCTintBy : CCFiniteTimeAction
 	{
 		public short DeltaB { get; private set; }
 
@@ -34,7 +34,7 @@ namespace CocosSharp
 	}
 
 
-	internal class CCTintByState : CCActionIntervalState
+	internal class CCTintByState : CCFiniteTimeActionState
 	{
 		protected short DeltaB { get; set; }
 

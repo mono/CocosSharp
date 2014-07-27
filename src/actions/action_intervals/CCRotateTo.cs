@@ -1,6 +1,8 @@
+using System;
+
 namespace CocosSharp
 {
-	public class CCRotateTo : CCActionInterval
+	public class CCRotateTo : CCFiniteTimeAction
 	{
 		public float DistanceAngleX { get; private set; }
 
@@ -25,10 +27,15 @@ namespace CocosSharp
 		{
 			return new CCRotateToState (this, target);
 		}
+
+        public override CCFiniteTimeAction Reverse()
+        {
+            throw new NotImplementedException();
+        }
 	}
 
 
-	internal class CCRotateToState : CCActionIntervalState
+	internal class CCRotateToState : CCFiniteTimeActionState
 	{
 		protected float DiffAngleY;
 		protected float DiffAngleX;

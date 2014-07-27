@@ -1,8 +1,8 @@
 namespace CocosSharp
 {
-	public class CCActionEase : CCActionInterval
+	public class CCActionEase : CCFiniteTimeAction
 	{
-		protected internal CCActionInterval InnerAction { get; private set; }
+        protected internal CCFiniteTimeAction InnerAction { get; private set; }
 
 		#region Constructors
 
@@ -11,7 +11,7 @@ namespace CocosSharp
 		{
 		}
 
-		public CCActionEase (CCActionInterval pAction) : base (pAction.Duration)
+        public CCActionEase (CCFiniteTimeAction pAction) : base (pAction.Duration)
 		{
 			InnerAction = pAction;
 		}
@@ -24,22 +24,22 @@ namespace CocosSharp
 			return new CCActionEaseState (this, target);
 		}
 
-		public override CCFiniteTimeAction Reverse ()
+		public override CCFiniteTimeAction Reverse()
 		{
-			return new CCActionEase ((CCActionInterval)InnerAction.Reverse ());
+            return new CCActionEase ((CCFiniteTimeAction)InnerAction.Reverse ());
 		}
 	}
 
 
 	#region Action state
 
-	internal class CCActionEaseState : CCActionIntervalState
+	internal class CCActionEaseState : CCFiniteTimeActionState
 	{
-		protected CCActionIntervalState InnerActionState { get; private set; }
+		protected CCFiniteTimeActionState InnerActionState { get; private set; }
 
 		public CCActionEaseState (CCActionEase action, CCNode target) : base (action, target)
 		{
-			InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction (target);
+			InnerActionState = (CCFiniteTimeActionState)action.InnerAction.StartAction (target);
 		}
 
 		protected internal override void Stop ()

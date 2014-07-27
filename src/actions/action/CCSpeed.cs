@@ -6,12 +6,12 @@ namespace CocosSharp
     {
         public float Speed { get; private set; }
 
-        protected internal CCActionInterval InnerAction { get; private set; }
+        protected internal CCFiniteTimeAction InnerAction { get; private set; }
 
 
         #region Constructors
 
-        public CCSpeed (CCActionInterval action, float fRate)
+        public CCSpeed (CCFiniteTimeAction action, float fRate)
         {
             InnerAction = action;
             Speed = fRate;
@@ -25,9 +25,9 @@ namespace CocosSharp
             return new CCSpeedState (this, target);
         }
 
-        public virtual CCActionInterval Reverse ()
+        public virtual CCFiniteTimeAction Reverse ()
         {
-            return (CCActionInterval)(CCAction)new CCSpeed ((CCActionInterval)InnerAction.Reverse (), Speed);
+            return (CCFiniteTimeAction)(CCAction)new CCSpeed ((CCFiniteTimeAction)InnerAction.Reverse(), Speed);
         }
     }
 
@@ -40,7 +40,7 @@ namespace CocosSharp
 
         public float Speed { get; private set; }
 
-        protected CCActionIntervalState InnerActionState { get; private set; }
+        protected CCFiniteTimeActionState InnerActionState { get; private set; }
 
         public override bool IsDone 
         {
@@ -52,7 +52,7 @@ namespace CocosSharp
 
         public CCSpeedState (CCSpeed action, CCNode target) : base (action, target)
         {
-            InnerActionState = (CCActionIntervalState)action.InnerAction.StartAction (target);
+            InnerActionState = (CCFiniteTimeActionState)action.InnerAction.StartAction (target);
             Speed = action.Speed;
         }
 

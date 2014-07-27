@@ -42,7 +42,7 @@ namespace CocosSharp
         /// returns the action that will be performed by the incomming and outgoing scene
         /// </summary>
         /// <returns></returns>
-        public override CCActionInterval Action()
+        public override CCFiniteTimeAction Action()
         {
             CCRect bounds = Layer.VisibleBoundsWorldspace;
             return new CCMoveBy (Duration, new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y));

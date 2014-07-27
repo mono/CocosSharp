@@ -1879,7 +1879,7 @@ namespace CocosSharp
             RunAction (new CCRepeat (new CCSequence(actions), times));
         }
 
-        public void Repeat (uint times, CCActionInterval action)
+        public void Repeat (uint times, CCFiniteTimeAction action)
         {
             RunAction (new CCRepeat (action, times));
         }
@@ -1889,7 +1889,7 @@ namespace CocosSharp
             RunAction(new CCRepeatForever (actions));
         }
 
-        public void RepeatForever(CCActionInterval action)
+        public void RepeatForever(CCFiniteTimeAction action)
         {
             RunAction(new CCRepeatForever (action) { Tag = action.Tag });
         }

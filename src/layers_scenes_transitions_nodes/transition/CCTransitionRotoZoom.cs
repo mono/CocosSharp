@@ -40,7 +40,7 @@ namespace CocosSharp
             InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
             OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCActionInterval rotozoom = new CCSequence(
+            CCFiniteTimeAction rotozoom = new CCSequence(
                 new CCSpawn(
                     new CCScaleBy(Duration / 2, 0.001f),
                     new CCRotateBy(Duration / 2, 360 * 2)

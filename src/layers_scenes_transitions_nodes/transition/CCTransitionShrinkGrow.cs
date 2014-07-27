@@ -33,7 +33,7 @@ namespace CocosSharp
 
         #region ICCTransitionEaseScene Members
 
-        public CCFiniteTimeAction EaseAction(CCActionInterval action)
+        public CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
         }
@@ -50,8 +50,8 @@ namespace CocosSharp
             InScene.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
             OutScene.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
 
-            CCActionInterval scaleOut = new CCScaleTo(Duration, 0.01f);
-            CCActionInterval scaleIn = new CCScaleTo(Duration, 1.0f);
+            CCFiniteTimeAction scaleOut = new CCScaleTo(Duration, 0.01f);
+            CCFiniteTimeAction scaleIn = new CCScaleTo(Duration, 1.0f);
 
             InScene.RunAction(EaseAction(scaleIn));
             OutScene.RunAction

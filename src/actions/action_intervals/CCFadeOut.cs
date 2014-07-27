@@ -1,6 +1,6 @@
 ﻿namespace CocosSharp
 {
-	public class CCFadeOut : CCActionInterval
+	public class CCFadeOut : CCFiniteTimeAction
 	{
 		#region Constructors
 
@@ -22,7 +22,7 @@
 		}
 	}
 
-	internal class CCFadeOutState : CCActionIntervalState
+	internal class CCFadeOutState : CCFiniteTimeActionState
 	{
 
 		public CCFadeOutState (CCFadeOut action, CCNode target)

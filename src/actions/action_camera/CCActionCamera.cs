@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-    public class CCActionCamera : CCActionInterval
+    public class CCActionCamera : CCFiniteTimeAction
     {
 
         #region Constructors
@@ -24,7 +24,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCActionCameraState : CCActionIntervalState
+    internal class CCActionCameraState : CCFiniteTimeActionState
     {
         protected CCPoint3 CameraCenter;
         protected CCPoint3 CameraTarget;

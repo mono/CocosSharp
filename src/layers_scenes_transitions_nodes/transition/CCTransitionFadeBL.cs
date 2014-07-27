@@ -31,7 +31,7 @@ namespace CocosSharp
     /// </summary>
     public class CCTransitionFadeBL : CCTransitionFadeTR
     {
-        public override CCActionInterval CreateAction(CCGridSize size)
+        public override CCFiniteTimeAction CreateAction(CCGridSize size)
         {
             return new CCFadeOutBLTiles(Duration, size);
         }

@@ -2,7 +2,7 @@ using System;
 
 namespace CocosSharp
 {
-	public class CCAccelAmplitude : CCActionInterval
+	public class CCAccelAmplitude : CCFiniteTimeAction
 	{
 		public float Rate { get; private set; }
 
@@ -35,7 +35,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	internal class CCAccelAmplitudeState : CCActionIntervalState
+	internal class CCAccelAmplitudeState : CCFiniteTimeActionState
 	{
 		public float Rate { get; set; }
 

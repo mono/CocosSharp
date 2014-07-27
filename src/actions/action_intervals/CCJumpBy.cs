@@ -1,6 +1,6 @@
 namespace CocosSharp
 {
-	public class CCJumpBy : CCActionInterval
+	public class CCJumpBy : CCFiniteTimeAction
 	{
 		public CCPoint Position { get; protected set; }
 
@@ -30,7 +30,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCJumpByState : CCActionIntervalState
+	internal class CCJumpByState : CCFiniteTimeActionState
 	{
 		protected CCPoint Delta;
 		protected float Height;

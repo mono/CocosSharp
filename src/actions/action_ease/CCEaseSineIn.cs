@@ -7,7 +7,7 @@ namespace CocosSharp
 	{
 		#region Constructors
 
-		public CCEaseSineIn (CCActionInterval pAction) : base (pAction)
+        public CCEaseSineIn (CCFiniteTimeAction pAction) : base (pAction)
 		{
 		}
 
@@ -21,7 +21,7 @@ namespace CocosSharp
 
 		public override CCFiniteTimeAction Reverse ()
 		{
-			return new CCEaseSineOut ((CCActionInterval)InnerAction.Reverse ());
+            return new CCEaseSineOut ((CCFiniteTimeAction)InnerAction.Reverse ());
 		}
 	}
 

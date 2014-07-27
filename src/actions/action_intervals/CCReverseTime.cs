@@ -2,14 +2,14 @@ using System.Diagnostics;
 
 namespace CocosSharp
 {
-	public class CCReverseTime : CCActionInterval
+	public class CCReverseTime : CCFiniteTimeAction
 	{
-		public CCFiniteTimeAction Other { get; private set; }
+        public CCFiniteTimeAction Other { get; private set; }
 
 
 		#region Constructors
 
-		public CCReverseTime (CCFiniteTimeAction action) : base (action.Duration)
+        public CCReverseTime (CCFiniteTimeAction action) : base (action.Duration)
 		{
 			Other = action;
 		}
@@ -29,7 +29,7 @@ namespace CocosSharp
 		}
 	}
 
-	internal class CCReverseTimeState : CCActionIntervalState
+	internal class CCReverseTimeState : CCFiniteTimeActionState
 	{
 
 		protected CCFiniteTimeAction Other { get; set; }
