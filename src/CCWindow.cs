@@ -38,7 +38,7 @@ namespace CocosSharp
 
         protected CCStats Stats { get; private set; }
 
-		internal CCDirector activeDirector;
+		public CCDirector ActiveDirector { get; internal set; }
 
         public bool IsUseAlphaBlending
         {
@@ -122,6 +122,8 @@ namespace CocosSharp
         {
             sceneDirectors = new List<CCDirector>();
 
+			AddSceneDirector(new CCDirector());
+
             EventDispatcher = new CCEventDispatcher(this);
             //Stats = new CCStats();
 
@@ -164,38 +166,38 @@ namespace CocosSharp
             }
 
 			if (sceneDirectors.Count == 1)
-				activeDirector = sceneDirector;
+				ActiveDirector = sceneDirector;
 
         }
 
-        internal void RemoveSceneDirector(CCDirector sceneDirector)
+        public void RemoveSceneDirector(CCDirector sceneDirector)
         {
             sceneDirectors.Remove(sceneDirector);
-			if (activeDirector == sceneDirector)
-				activeDirector = null;
+			if (ActiveDirector == sceneDirector)
+				ActiveDirector = null;
 
 			// TODO: make this smarter
 			if (sceneDirectors.Count > 0)
-				activeDirector = sceneDirectors[0];
+				ActiveDirector = sceneDirectors[0];
 
         }
 
         public void RemoveAllSceneDirectors()
         {
             sceneDirectors.Clear();
-			activeDirector = null;
+			ActiveDirector = null;
         }
 
 		public void SetActiveDirector(int index)
 		{
-			// TODO: add some sanity checks here
-			activeDirector = sceneDirectors[index];
+			Debug.Assert(sceneDirectors.Count < index, "CococsSharp CCWindow: index out of range.");
+			ActiveDirector = sceneDirectors[index];
 		}
 
 		public void RunWithScene(CCScene scene)
 		{
 			scene.Window = this;
-			activeDirector.RunWithScene(scene);
+			ActiveDirector.RunWithScene(scene);
 		}
 
 
