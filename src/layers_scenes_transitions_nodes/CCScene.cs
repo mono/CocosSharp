@@ -45,8 +45,27 @@ namespace CocosSharp
                     window = value;
                     viewport.LandscapeScreenSizeInPixels = Window.LandscapeWindowSizeInPixels;
                 }
+				if (window != null)
+				{
+					InitializeLazySceneGraph(Children);
+				}
             }
         }
+
+		void InitializeLazySceneGraph(CCRawList<CCNode> children)
+		{
+			if (children == null)
+				return;
+
+			foreach (var child in children)
+			{
+				if (child != null)
+				{
+					child.AttachEvents();
+					InitializeLazySceneGraph(child.Children);
+				}
+			}
+		}
 
         public override CCDirector Director { get; set; }
 
@@ -136,15 +155,6 @@ namespace CocosSharp
         }
 
         #endregion Viewport handling
-
-
-        public void RunScene()
-        {
-            if (Director != null && IsRunning == false) 
-            {
-                Director.RunWithScene(this);
-            }
-        }
 
         protected override void Draw()
         {
