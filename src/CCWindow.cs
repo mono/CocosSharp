@@ -190,7 +190,7 @@ namespace CocosSharp
 
 		public void SetActiveDirector(int index)
 		{
-			Debug.Assert(sceneDirectors.Count < index, "CococsSharp CCWindow: index out of range.");
+			Debug.Assert(index < sceneDirectors.Count, "CococsSharp CCWindow: index out of range.");
 			ActiveDirector = sceneDirectors[index];
 		}
 
