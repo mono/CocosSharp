@@ -34,7 +34,7 @@ namespace CocosSharp
                         ZoomActionState.Stop(); 
                     }
 
-                    ZoomActionState = RunActionState(zoomAction);
+                    ZoomActionState = RunAction(zoomAction);
                 }   
             }
         }
