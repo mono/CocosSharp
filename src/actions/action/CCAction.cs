@@ -28,7 +28,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCActionState
+    public class CCActionState
     {
         /// <summary>
         /// Gets or sets the target.

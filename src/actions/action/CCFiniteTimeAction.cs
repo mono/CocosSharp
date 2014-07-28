@@ -54,7 +54,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCFiniteTimeActionState : CCActionState
+    public class CCFiniteTimeActionState : CCActionState
     {
         bool firstTick;
 

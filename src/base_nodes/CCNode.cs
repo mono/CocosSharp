@@ -1877,53 +1877,40 @@ namespace CocosSharp
 				AddLazyAction(new CCSequence(actions), this, paused);
         }
 
-        public void Repeat(uint times, params CCFiniteTimeAction[] actions)
+        public CCActionState Repeat(uint times, params CCFiniteTimeAction[] actions)
         {
-            RunAction (new CCRepeat (new CCSequence(actions), times));
+            return RunAction (new CCRepeat (new CCSequence(actions), times));
         }
 
-        public void Repeat (uint times, CCFiniteTimeAction action)
+        public CCActionState Repeat (uint times, CCFiniteTimeAction action)
         {
-            RunAction (new CCRepeat (action, times));
+            return RunAction (new CCRepeat (action, times));
         }
 
-        public void RepeatForever(params CCFiniteTimeAction[] actions)
+        public CCActionState RepeatForever(params CCFiniteTimeAction[] actions)
         {
-            RunAction(new CCRepeatForever (actions));
+            return RunAction(new CCRepeatForever (actions));
         }
 
-        public void RepeatForever(CCFiniteTimeAction action)
+        public CCActionState RepeatForever(CCFiniteTimeAction action)
         {
-            RunAction(new CCRepeatForever (action) { Tag = action.Tag });
+            return RunAction(new CCRepeatForever (action) { Tag = action.Tag });
         }
 
-        internal CCActionState RunActionState(CCAction action)
+        public CCActionState RunAction(CCAction action)
         {
             Debug.Assert(action != null, "Argument must be non-nil");
-
-            CCActionState outActionState = null;
 
             return ActionManager != null ? ActionManager.AddAction(action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
-        public void RunAction(CCAction action)
-        {
-            RunActionState(action);
-        }
-
-        public void RunActions(params CCFiniteTimeAction[] actions)
+        public CCActionState RunActions(params CCFiniteTimeAction[] actions)
         {
             Debug.Assert(actions != null, "Argument must be non-nil");
 			Debug.Assert(actions.Length > 0, "Paremeter: actions has length of zero. At least one action must be set to run.");
 			var action = actions.Length > 1 ? new CCSequence(actions) : actions[0];
-            if(ActionManager != null)
-            {
-                ActionManager.AddAction (action, this, !IsRunning);
-            } 
-            else
-            {
-                AddLazyAction(action, this, !IsRunning);
-            }
+
+            return ActionManager != null ? ActionManager.AddAction (action, this, !IsRunning) : AddLazyAction(action, this, !IsRunning);
         }
 
         public void StopAllActions()
@@ -1932,15 +1919,10 @@ namespace CocosSharp
                 ActionManager.RemoveAllActionsFromTarget(this);
         }
 
-        internal void StopAction(CCActionState actionState)
+        public void StopAction(CCActionState actionState)
         {
             if(ActionManager != null)
                 ActionManager.RemoveAction(actionState);
-        }
-
-        public void StopAction(CCAction action)
-        {
-            ActionManager.RemoveAction(action, this);
         }
 
         public void StopAction(int tag)
@@ -1955,7 +1937,7 @@ namespace CocosSharp
             return ActionManager.GetAction(tag, this);
         }
 
-        internal CCActionState GetActionState(int tag)
+        public CCActionState GetActionState(int tag)
         {
             Debug.Assert(tag != (int) CCNodeTag.Invalid, "Invalid tag");
             return ActionManager.GetActionState(tag, this);
