@@ -211,8 +211,8 @@ namespace CocosSharp
 
             visibleBoundsWorldspace = new CCRect(
                 bottomLeftPoint.X, bottomLeftPoint.Y, 
-                bottomRightPoint.X - bottomLeftPoint.X, 
-                topLeftPoint.Y - bottomLeftPoint.Y);
+                (int)((bottomRightPoint.X - bottomLeftPoint.X) + 0.5f), 
+                (int)((topLeftPoint.Y - bottomLeftPoint.Y)+0.5f));
         }
 
         #endregion Content layout
