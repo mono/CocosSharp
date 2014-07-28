@@ -131,7 +131,7 @@ namespace CocosSharp
         {
         }
 
-        public CCScene(CCWindow window = null) 
+        public CCScene(CCWindow window) 
             : this(window, null)
         {
         }
