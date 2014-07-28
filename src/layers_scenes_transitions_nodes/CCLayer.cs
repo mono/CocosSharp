@@ -117,6 +117,10 @@ namespace CocosSharp
 
         #region Constructors
 
+        public CCLayer(CCSize size, CCClipMode clipMode = CCClipMode.None)
+            : this(new CCCamera(size), clipMode)
+        {  }
+
         public CCLayer(CCCamera camera, CCClipMode clipMode) : base()
         {
             ChildClippingMode = clipMode;
