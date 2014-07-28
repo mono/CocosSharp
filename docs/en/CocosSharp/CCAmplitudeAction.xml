@@ -1,17 +1,18 @@
 <Type Name="CCAmplitudeAction" FullName="CocosSharp.CCAmplitudeAction">
-  <TypeSignature Language="C#" Value="public abstract class CCAmplitudeAction : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCAmplitudeAction extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public abstract class CCAmplitudeAction : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCAmplitudeAction extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
+    <summary>An abstract class for defining actions with periodic behavior.</summary>
     <remarks>
-      <para kind="tool">When this action is added to a CCNode, the action will run over a period of time.</para>
+      <para>Extends the base class <see cref="T:CocosSharp.CCFiniteTimeAction" /> with the inclusion of the <see cref="P:CocosSharp.CCAmplitudeAction.Amplitude" /> property.  </para>
     </remarks>
   </Docs>
   <Members>
@@ -19,14 +20,17 @@
       <MemberSignature Language="C#" Value="public CCAmplitudeAction (float duration, float amplitude = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="amplitude" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="duration">To be added.</param>
-        <param name="amplitude">To be added.</param>
-        <summary>To be added.</summary>
+        <param name="duration">The length of the action in seconds.</param>
+        <param name="amplitude">The amplitude amount.</param>
+        <summary />
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -34,13 +38,32 @@
       <MemberSignature Language="C#" Value="public float Amplitude { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Amplitude" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The amplitude value.</summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <remarks>Concrete subclasses such as <see cref="T:CocosSharp.CCWaves" /> or <see cref="T:CocosSharp.CCTwirl" /> require an amplitude when defining the periodic behavior of the action. Loosely, the higher the amplitude, the greater the variation on the particular attributes of the target node.
+
+<example><code lang="C#">
+var action = new CCWaves(2.0f, new CCGridSize(10, 10));
+action.Waves = 10;
+action.Amplitude = 10.0f;
+
+// Over 2 seconds periodically change vertex positions of node grid
+// This gives us a wave-like effect
+node1.RunAction(action);
+
+action.Amplitude = 50.0f;
+
+// Increasing the amplitude increases the variation in vertex positions.
+// This gives us a more vigorous wave effect
+node2.RunAction(action);
+</code></example></remarks>
       </Docs>
     </Member>
   </Members>
