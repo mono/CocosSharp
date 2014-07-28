@@ -10,7 +10,7 @@
 		/// Start the stop grid operation on the given target.
 		/// </summary>
 		/// <param name="target"></param>
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCStopGridState (this, target);
 

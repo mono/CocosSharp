@@ -11,7 +11,7 @@ namespace CocosSharp
             return new CCExtraAction ();
         }
 
-        internal override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
         {
             return new CCExtraActionState (this, target);
 

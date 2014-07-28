@@ -14,7 +14,7 @@ namespace CocosSharp
 		#endregion Constructors
 
 
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCAccelDeccelAmplitudeState (this, target);
 		}

@@ -19,7 +19,7 @@ namespace CocosSharp
             throw new System.NotImplementedException ();
         }
 
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCTintToState (this, target);
 		}

@@ -48,7 +48,7 @@ namespace CocosSharp
 
         public abstract CCFiniteTimeAction Reverse();
 
-        internal override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
         {
             return new CCFiniteTimeActionState (this, target);
         }

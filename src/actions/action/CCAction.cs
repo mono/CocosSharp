@@ -21,7 +21,7 @@ namespace CocosSharp
         #endregion Constructor
 
 
-        internal virtual CCActionState StartAction (CCNode target)
+        protected internal virtual CCActionState StartAction (CCNode target)
         {
             return new CCActionState (this, target);
 

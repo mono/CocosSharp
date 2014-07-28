@@ -24,7 +24,7 @@ namespace CocosSharp
 			get { return SkewY; }
 		}
 
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCSkewByState (this, target);
 

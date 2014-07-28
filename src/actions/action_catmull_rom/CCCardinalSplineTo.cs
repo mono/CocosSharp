@@ -24,7 +24,7 @@ namespace CocosSharp
 
 		public float Tension { get; protected set; }
 
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCCardinalSplineToState (this, target);
 
@@ -128,7 +128,7 @@ namespace CocosSharp
 
 		#endregion Constructors
 
-		internal override CCActionState StartAction(CCNode target)
+		protected internal override CCActionState StartAction(CCNode target)
 		{
 			return new CCCardinalSplineByState (this, target);
 

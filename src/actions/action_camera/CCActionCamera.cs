@@ -12,7 +12,7 @@ namespace CocosSharp
         #endregion Constructors
 
         // Start the Camera operation on the given target.
-        internal override CCActionState StartAction(CCNode target)
+        protected internal override CCActionState StartAction(CCNode target)
         {
             return new CCActionCameraState (this, target);
 
