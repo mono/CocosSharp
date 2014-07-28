@@ -3,6 +3,7 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpeed extends CocosSharp.CCAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
+    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCAction</BaseTypeName>
@@ -10,50 +11,59 @@
   <Interfaces />
   <Docs>
     <summary>
-      <para>Changes the speed of an action, making it take longer (speed&gt;1) or less (speed1) time. Useful to simulate 'slow motion' or 'fast forward' effect. </para>
+      <para>A container action modifier to alter the running speed of another predefined action.</para>
     </summary>
     <remarks />
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSpeed (CocosSharp.CCActionInterval action, float fRate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval action, float32 fRate) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSpeed (CocosSharp.CCFiniteTimeAction action, float speed);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action, float32 speed) cil managed" />
       <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
-        <Parameter Name="fRate" Type="System.Single" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="speed" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <param name="fRate">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">The original <see cref="T:CocosSharp.CCFiniteTimeAction" /> action.</param>
+        <param name="speed">To speed modifier.</param>
+        <summary />
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="InnerAction">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCActionInterval InnerAction { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionInterval InnerAction" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeAction InnerAction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction InnerAction" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The original action whose running speed will be modified</summary>
+        <value>A <see cref="T:CocosSharp.CCFiniteTimeAction" /> action.</value>
+        <remarks>Note, the action instance itself will be unaltered.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Reverse">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCActionInterval Reverse ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCActionInterval Reverse() cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
       <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>returns a new action that performs the exactly the reverse action </summary>
-        <returns>To be added.</returns>
+        <summary>Return the speed modified reverse <see cref="P:CocosSharp.CCSpeed.InnerAction" /> action.</summary>
+        <returns>The reverse <see cref="T:CocosSharp.CCSpeed" /> action. </returns>
         <remarks />
       </Docs>
     </Member>
@@ -61,36 +71,27 @@
       <MemberSignature Language="C#" Value="public float Speed { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Speed" />
       <MemberType>Property</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>2.2.4.0</AssemblyVersion>
+      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>alter the speed of the inner function in runtime </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="StartAction">
-      <MemberSignature Language="C#" Value="protected override CocosSharp.CCActionState StartAction (CocosSharp.CCNode target);" />
-      <MemberSignature Language="ILAsm" Value=".method familyorassemblyhidebysig virtual instance class CocosSharp.CCActionState StartAction(class CocosSharp.CCNode target) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCActionState</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="target" Type="CocosSharp.CCNode" />
-      </Parameters>
-      <Docs>
-        <param name="target">Target object on which the action will be performed.</param>
-        <summary>
-          <para kind="tool">Starts the action on the specified target</para>
-        </summary>
-        <returns>
-        </returns>
-        <remarks>
-          <para kind="tool">This creates a new state object of type <see cref="T:CocosSharp.CCActionState" /> that will track the state of the action.</para>
-          <para kind="tool">This method is typically invoked by implementations of CCActions or by the CocosSharp runtime, when you invoke the <see cref="M:CocosSharp.CCNode.AddAction" /> method.</para>
-        </remarks>
+        <summary>The modified running speed multiplier relative to the original <see cref="P:CocosSharp.CCSpeed.InnerAction" /> running time.</summary>
+        <value>A positive <see langword="float" />.</value>
+        <remarks>Note, that a speed of <see langword="1.0f" /> means that the <see cref="T:CocosSharp.CCSpeed" /> action will run at the same speed as the original <see cref="P:CocosSharp.CCSpeed.InnerAction" />.
+<example><code lang="C#">
+var action = new CCMoveBy(2.0f, new CCPoint(100, 0));
+var speedyAction = new CCSpeed(action, 2.0f);
+
+// Action will take 2 seconds to complete
+node1.RunAction(action);
+
+// Speedy action has a speed multiplier of 2.0
+// Therefore, action will take 1 second to complete
+node2.RunAction(speedyAction);
+</code></example></remarks>
       </Docs>
     </Member>
   </Members>

@@ -31,7 +31,7 @@
         <param name="duration">The length of the action in seconds.</param>
         <param name="amplitude">The amplitude amount.</param>
         <summary />
-        <remarks>To be added.</remarks>
+        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Amplitude">
@@ -46,7 +46,7 @@
       </ReturnValue>
       <Docs>
         <summary>The amplitude value.</summary>
-        <value>To be added.</value>
+        <value />
         <remarks>Concrete subclasses such as <see cref="T:CocosSharp.CCWaves" /> or <see cref="T:CocosSharp.CCTwirl" /> require an amplitude when defining the periodic behavior of the action. Loosely, the higher the amplitude, the greater the variation on the particular attributes of the target node.
 
 <example><code lang="C#">
