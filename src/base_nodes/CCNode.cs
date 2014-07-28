@@ -615,9 +615,9 @@ namespace CocosSharp
                     {
                         scene.SceneViewportChanged += OnSceneViewportChanged;
 
-                        AddedToNewScene();
-
                         OnSceneViewportChanged(this, null);
+
+                        AddedToNewScene();
 
                         AttachActions();
                     }
