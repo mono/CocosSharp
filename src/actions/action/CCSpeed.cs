@@ -11,10 +11,10 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCSpeed (CCFiniteTimeAction action, float fRate)
+        public CCSpeed (CCFiniteTimeAction action, float speed)
         {
             InnerAction = action;
-            Speed = fRate;
+            Speed = speed;
         }
 
         #endregion Constructors
