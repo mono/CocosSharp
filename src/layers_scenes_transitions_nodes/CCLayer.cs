@@ -25,7 +25,7 @@ THE SOFTWARE.
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -181,21 +181,26 @@ namespace CocosSharp
         protected override void ViewportChanged()
         {
             base.ViewportChanged();
-            // Calculate viewport ratios
+
+            // Calculate viewport ratios if not set to custom
 
             var resolutionPolicy = Scene.ResolutionPolicy;
 
-            // Calculate Landscape Ratio
-            var viewportRect = CalculateResolutionRatio(VisibleBoundsWorldspace, resolutionPolicy);
-            Scene.Viewport.exactFitLandscapeRatio = viewportRect;
+            if (resolutionPolicy != CCResolutionPolicy.Custom)
+            {
+                // Calculate Landscape Ratio
+                var viewportRect = CalculateResolutionRatio(VisibleBoundsWorldspace, resolutionPolicy);
+                Scene.Viewport.exactFitLandscapeRatio = viewportRect;
 
-            // Calculate Portrait Ratio
-            var portraitBounds = VisibleBoundsWorldspace.InvertedSize;
-            viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
-            Scene.Viewport.exactFitPortraitRatio = viewportRect;
+                // Calculate Portrait Ratio
+                var portraitBounds = VisibleBoundsWorldspace.InvertedSize;
+                viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
+                Scene.Viewport.exactFitPortraitRatio = viewportRect;
 
-            Scene.Viewport.UpdateViewport(false);
-            // End Calculate viewport ratios
+                Scene.Viewport.UpdateViewport(false);
+                // End Calculate viewport ratios
+
+            }
 
             UpdateVisibleBoundsRect();
             UpdateClipping();
@@ -243,7 +248,6 @@ namespace CocosSharp
 
         CCRect CalculateResolutionRatio(CCRect resolutionRect, CCResolutionPolicy resolutionPolicy)
         {
-            Debug.Assert(resolutionPolicy != CCResolutionPolicy.UnKnown, "should set resolutionPolicy");
 
             var width = resolutionRect.Size.Width;
             var height = resolutionRect.Size.Height;

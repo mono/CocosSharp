@@ -7,7 +7,9 @@ namespace CocosSharp
 
     public enum CCResolutionPolicy
     {
-        UnKnown,
+        // The Viewport is not automatically calculated and it is up to the developer to take care of setting
+        // the values correctly.
+        Custom,
 
         // The entire application is visible in the specified area without trying to preserve the original aspect ratio. 
         // Distortion can occur, and the application may appear stretched or compressed.
@@ -45,7 +47,7 @@ namespace CocosSharp
         CCWindow window;
 
         internal event EventHandler SceneViewportChanged = delegate {};
-        CCResolutionPolicy resolutionPolicy = CCResolutionPolicy.UnKnown;
+        CCResolutionPolicy resolutionPolicy = CCResolutionPolicy.ExactFit;
 
         #region Properties
 
