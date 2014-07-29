@@ -140,7 +140,7 @@ namespace CocosSharp
 
         public CCViewport(
 			CCRect exactFitLandscapeRatioIn, CCRect exactFitPortraitRatioIn, 
-            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFit, 
+            CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.ExactFit, 
             CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
         {
             if(exactFitPortraitRatioIn == default(CCRect))
@@ -156,7 +156,7 @@ namespace CocosSharp
 
 		public CCViewport(
 			CCRect exactFitLandscapeRatioIn, 
-			CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.AspectFit, 
+			CCViewportResolutionPolicy resolutionPolicyIn=CCViewportResolutionPolicy.ExactFit, 
 			CCDisplayOrientation displayOrientationIn=CCDisplayOrientation.LandscapeLeft)
 			: this (exactFitLandscapeRatioIn, exactFitLandscapeRatioIn, resolutionPolicyIn, displayOrientationIn)
 		{	}
