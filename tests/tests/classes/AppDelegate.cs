@@ -33,7 +33,7 @@ namespace tests
             get { return sharedCamera; }
         }
 
-        public override void ApplicationDidFinishLaunching(CCApplication application)
+        public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
         {
             //application.SupportedOrientations = CCDisplayOrientation.LandscapeRight | CCDisplayOrientation.LandscapeLeft;
             //application.AllowUserResizing = true;
@@ -45,7 +45,7 @@ namespace tests
 
 			sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
 
-            sharedWindow = application.MainWindow;
+            sharedWindow = mainWindow;
             sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
