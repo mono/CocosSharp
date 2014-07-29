@@ -96,6 +96,11 @@ namespace CocosSharp
             get { return visibleBoundsWorldspace; }
         }
 
+        public CCSize LayerSizeInPixels
+        {
+            get { return Viewport != null ? Viewport.ViewportInPixels.Size : CCSize.Zero; }
+        }
+
         // Layer should have fixed size of content
         public override CCSize ContentSize
         {
@@ -226,6 +231,14 @@ namespace CocosSharp
             {
                 return;
             }
+
+            // Set camera view/proj matrix even if ChildClippingMode is None
+            if(Camera != null)
+            {
+                Window.DrawManager.ViewMatrix = Camera.ViewMatrix;
+                Window.DrawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+            }
+
             if (ChildClippingMode == CCClipMode.None)
             {
                 base.Visit();
@@ -240,7 +253,7 @@ namespace CocosSharp
                 TransformAncestors();
             }
 
-            Transform ();
+            Window.DrawManager.SetIdentityMatrix();
 
             BeforeDraw();
 
@@ -339,19 +352,6 @@ namespace CocosSharp
                 {
                     renderTexture.Sprite.Visit();
                 }
-            }
-        }
-
-        protected override void Draw()
-        {
-            if(Camera != null)
-            {
-                CCDrawManager drawManager = Window.DrawManager;
-
-                base.Draw();
-
-                drawManager.ViewMatrix = Camera.ViewMatrix;
-                drawManager.ProjectionMatrix = Camera.ProjectionMatrix;
             }
         }
 
