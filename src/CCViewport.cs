@@ -164,7 +164,7 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        void UpdateViewport()
+        internal void UpdateViewport(bool dispatchChange = true)
         {
             if(landscapeScreenSizeInPixels == CCSize.Zero)
                 return;
@@ -221,7 +221,8 @@ namespace CocosSharp
             viewportInPixels = new CCRect(xnaViewportRect);
             xnaViewport = new Viewport(xnaViewportRect);
 
-            OnViewportChanged(this, null);
+            if (dispatchChange)
+                OnViewportChanged(this, null);
         }
     }
 }

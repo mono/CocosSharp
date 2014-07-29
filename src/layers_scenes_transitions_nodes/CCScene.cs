@@ -57,7 +57,7 @@ namespace CocosSharp
                 if (value != resolutionPolicy)
                 {
                     resolutionPolicy = value;
-                    OnViewportChanged(this, null);
+                    Viewport.UpdateViewport();
                 }
             }
         }

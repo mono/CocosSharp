@@ -194,6 +194,7 @@ namespace CocosSharp
             viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
             Scene.Viewport.exactFitPortraitRatio = viewportRect;
 
+            Scene.Viewport.UpdateViewport(false);
             // End Calculate viewport ratios
 
             UpdateVisibleBoundsRect();
