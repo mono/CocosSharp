@@ -31,8 +31,8 @@ namespace CocosSharp
         CCViewportResolutionPolicy resolutionPolicy;
         CCDisplayOrientation displayOrientation;
 
-        CCRect exactFitLandscapeRatio;
-        CCRect exactFitPortraitRatio;
+        internal CCRect exactFitLandscapeRatio;
+        internal CCRect exactFitPortraitRatio;
         CCRect viewportInPixels;
 
         CCSize landscapeScreenSizeInPixels;

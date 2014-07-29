@@ -181,6 +181,20 @@ namespace CocosSharp
         protected override void ViewportChanged()
         {
             base.ViewportChanged();
+            // Calculate viewport ratios
+
+            var resolutionPolicy = Scene.ResolutionPolicy;
+
+            // Calculate Landscape Ratio
+            var viewportRect = CalculateResolutionRatio(VisibleBoundsWorldspace, resolutionPolicy);
+            Scene.Viewport.exactFitLandscapeRatio = viewportRect;
+
+            // Calculate Portrait Ratio
+            var portraitBounds = VisibleBoundsWorldspace.InvertedSize;
+            viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
+            Scene.Viewport.exactFitPortraitRatio = viewportRect;
+
+            // End Calculate viewport ratios
 
             UpdateVisibleBoundsRect();
             UpdateClipping();
@@ -191,7 +205,7 @@ namespace CocosSharp
 			if(Viewport == null || Camera == null || Viewport.ViewportInPixels == CCRect.Zero)
                 return;
 
-            CCRect viewportRect = Viewport.ViewportInPixels;
+            var viewportRectInPixels = Viewport.ViewportInPixels;
 
             // Want to determine worldspace bounds relative to camera target
             // Need to first find z screenspace coord of target
@@ -199,10 +213,10 @@ namespace CocosSharp
             Vector3 targetVec = new Vector3(0.0f, 0.0f, target.Z);
             targetVec = Viewport.XnaViewport.Project(targetVec, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
 
-            Vector3 topLeft = new Vector3(viewportRect.Origin.X, viewportRect.Origin.Y, targetVec.Z);
-            Vector3 topRight = new Vector3(viewportRect.Origin.X + viewportRect.Size.Width, viewportRect.Origin.Y, targetVec.Z);
-            Vector3 bottomLeft = new Vector3(viewportRect.Origin.X, viewportRect.Origin.Y + viewportRect.Size.Height, targetVec.Z);
-            Vector3 bottomRight = new Vector3(viewportRect.Origin.X + viewportRect.Size.Width, viewportRect.Origin.Y + viewportRect.Size.Height, targetVec.Z);
+            Vector3 topLeft = new Vector3(viewportRectInPixels.Origin.X, viewportRectInPixels.Origin.Y, targetVec.Z);
+            Vector3 topRight = new Vector3(viewportRectInPixels.Origin.X + viewportRectInPixels.Size.Width, viewportRectInPixels.Origin.Y, targetVec.Z);
+            Vector3 bottomLeft = new Vector3(viewportRectInPixels.Origin.X, viewportRectInPixels.Origin.Y + viewportRectInPixels.Size.Height, targetVec.Z);
+            Vector3 bottomRight = new Vector3(viewportRectInPixels.Origin.X + viewportRectInPixels.Size.Width, viewportRectInPixels.Origin.Y + viewportRectInPixels.Size.Height, targetVec.Z);
 
             // Convert screen space to worldspace. Note screenspace origin is in topleft part of viewport
             topLeft = Viewport.XnaViewport.Unproject(topLeft, Camera.ProjectionMatrix, Camera.ViewMatrix, Matrix.Identity);
@@ -222,6 +236,78 @@ namespace CocosSharp
 
         #endregion Content layout
 
+        #region Resolution Policy
+
+        static CCRect exactFitRatio = new CCRect(0,0,1,1);
+
+        CCRect CalculateResolutionRatio(CCRect resolutionRect, CCResolutionPolicy resolutionPolicy)
+        {
+            Debug.Assert(resolutionPolicy != CCResolutionPolicy.UnKnown, "should set resolutionPolicy");
+
+            var width = resolutionRect.Size.Width;
+            var height = resolutionRect.Size.Height;
+
+            if (width == 0.0f || height == 0.0f)
+            {
+                return exactFitRatio;
+            }
+
+            var x = resolutionRect.Origin.X;
+            var y = resolutionRect.Origin.Y;
+
+            var designResolutionSize = resolutionRect.Size;
+            var viewPortRect = CCRect.Zero;
+            float resolutionScaleX, resolutionScaleY;
+
+            // Not set anywhere right now.
+            var frameZoomFactor = 1;
+
+            var screenSize = Scene.Window.WindowSizeInPixels;
+
+            resolutionScaleX = screenSize.Width / designResolutionSize.Width;
+            resolutionScaleY = screenSize.Height / designResolutionSize.Height;
+
+            if (resolutionPolicy == CCResolutionPolicy.NoBorder)
+            {
+                resolutionScaleX = resolutionScaleY = Math.Max(resolutionScaleX, resolutionScaleY);
+            }
+
+            if (resolutionPolicy == CCResolutionPolicy.ShowAll)
+            {
+                resolutionScaleX = resolutionScaleY = Math.Min(resolutionScaleX, resolutionScaleY);
+            }
+
+
+            if (resolutionPolicy == CCResolutionPolicy.FixedHeight)
+            {
+                resolutionScaleX = resolutionScaleY;
+                designResolutionSize.Width = (float)Math.Ceiling(screenSize.Width / resolutionScaleX);
+            }
+
+            if (resolutionPolicy == CCResolutionPolicy.FixedWidth)
+            {
+                resolutionScaleY = resolutionScaleX;
+                designResolutionSize.Height = (float)Math.Ceiling(screenSize.Height / resolutionScaleY);
+            }
+
+            // calculate the rect of viewport    
+            float viewPortW = designResolutionSize.Width * resolutionScaleX;
+            float viewPortH = designResolutionSize.Height * resolutionScaleY;
+
+            viewPortRect = new CCRect((screenSize.Width - viewPortW) / 2, (screenSize.Height - viewPortH) / 2, viewPortW, viewPortH);
+
+            var viewportRatio = new CCRect(
+                ((x * resolutionScaleX * frameZoomFactor + viewPortRect.Origin.X * frameZoomFactor) / screenSize.Width),
+                ((y * resolutionScaleY * frameZoomFactor + viewPortRect.Origin.Y * frameZoomFactor) / screenSize.Height),
+                ((width * resolutionScaleX * frameZoomFactor) / screenSize.Width),
+                ((height * resolutionScaleY * frameZoomFactor) / screenSize.Height)
+            );
+
+            return viewportRatio;
+
+        }
+
+        #endregion
 
         #region Visiting and drawing
 
