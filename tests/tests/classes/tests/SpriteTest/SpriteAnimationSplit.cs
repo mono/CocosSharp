@@ -10,7 +10,7 @@ namespace tests
     {
         CCSprite sprite;
 
-        CCActionInterval seq;
+        CCFiniteTimeAction seq;
 
 
         #region Properties

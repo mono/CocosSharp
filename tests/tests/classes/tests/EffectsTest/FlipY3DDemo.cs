@@ -4,7 +4,7 @@ namespace tests
 {
 	public class FlipY3DDemo
     {
-		public static CCActionInterval ActionWithDuration(float t)
+		public static CCFiniteTimeAction ActionWithDuration(float t)
         {
             var flipY = new CCFlipY3D (t);
             var flipY_Reverse = flipY.Reverse();

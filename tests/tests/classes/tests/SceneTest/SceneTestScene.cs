@@ -9,7 +9,7 @@ namespace tests
     public class SceneTestScene : TestScene
     {
 		public const int GROSSINI_TAG = 1;
-		public static CCActionInterval rotate = new CCRotateBy (2, 360);
+		public static CCRotateBy rotate = new CCRotateBy (2, 360);
 		public static string grossini = "Images/grossini";
 
         protected override void NextTestCase()

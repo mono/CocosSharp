@@ -220,7 +220,7 @@ namespace CocosSharp
 			}
 		}
 
-		private CCActionInterval GetAction(CCBKeyframe pKeyframe0, CCBKeyframe pKeyframe1, string pPropName, CCNode node)
+		private CCFiniteTimeAction GetAction(CCBKeyframe pKeyframe0, CCBKeyframe pKeyframe1, string pPropName, CCNode node)
 		{
 			float duration = pKeyframe1.Time - (pKeyframe0 != null ? pKeyframe0.Time : 0);
 
@@ -329,7 +329,7 @@ namespace CocosSharp
 				kf1.EasingType = CCBEasingType.Linear;
 
 				// Animate
-				CCActionInterval tweenAction = GetAction(null, kf1, pPropName, node);
+				CCFiniteTimeAction tweenAction = GetAction(null, kf1, pPropName, node);
 				node.RunAction(tweenAction);
 			}
 			else
@@ -439,7 +439,7 @@ namespace CocosSharp
 			}
 		}
 
-		private CCActionInterval GetEaseAction(CCActionInterval pAction, CCBEasingType nEasingTypeType, float fEasingOpt)
+		private CCFiniteTimeAction GetEaseAction(CCFiniteTimeAction pAction, CCBEasingType nEasingTypeType, float fEasingOpt)
 		{
 			if (pAction is CCSequence)
 			{
@@ -625,7 +625,7 @@ namespace CocosSharp
 					CCBKeyframe kf0 = keyframes[i];
 					CCBKeyframe kf1 = keyframes[i + 1];
 
-					CCActionInterval action = GetAction(kf0, kf1, pSeqProp.Name, node);
+					CCFiniteTimeAction action = GetAction(kf0, kf1, pSeqProp.Name, node);
 					if (action != null)
 					{
 						// Apply easing
@@ -917,7 +917,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCBRotateTo : CCActionInterval
+	public class CCBRotateTo : CCFiniteTimeAction
 	{
 		internal float DstAngle { get; private set; }
 
@@ -947,7 +947,7 @@ namespace CocosSharp
 			return null;
 		}
 
-		private class CCBRotateToState : CCActionIntervalState
+		private class CCBRotateToState : CCFiniteTimeActionState
 		{
 			float DstAngle { get; set; }
 
@@ -973,7 +973,7 @@ namespace CocosSharp
 	}
 
 
-	public class CCBRotateXTo : CCActionInterval
+	public class CCBRotateXTo : CCFiniteTimeAction
 	{
 
 		internal float DstAngle { get; set; }
@@ -1005,7 +1005,7 @@ namespace CocosSharp
 			return null;
 		}
 
-		private class CCBRotateXToState : CCActionIntervalState
+		private class CCBRotateXToState : CCFiniteTimeActionState
 		{
 			private float DstAngle { get; set; }
 
@@ -1028,7 +1028,7 @@ namespace CocosSharp
 
 	}
 
-	public class CCBRotateYTo : CCActionInterval
+	public class CCBRotateYTo : CCFiniteTimeAction
 	{
 
 		internal float DstAngle { get; set; }
@@ -1060,7 +1060,7 @@ namespace CocosSharp
 		}
 
 
-		private class CCBRotateYToState : CCActionIntervalState
+		private class CCBRotateYToState : CCFiniteTimeActionState
 		{
 			private float DstAngle { get; set; }
 
@@ -1087,7 +1087,7 @@ namespace CocosSharp
 	{
 		#region Constructors
 
-		public CCBEaseInstant(CCActionInterval action)
+		public CCBEaseInstant(CCFiniteTimeAction action)
 			: base(action)
 		{
 		}
@@ -1106,7 +1106,7 @@ namespace CocosSharp
 
 		public override CCFiniteTimeAction Reverse()
 		{
-			return new CCBEaseInstant((CCActionInterval)InnerAction.Reverse());
+			return new CCBEaseInstant((CCFiniteTimeAction)InnerAction.Reverse());
 		}
 
 		private class CCBEaseInstantState : CCActionEaseState

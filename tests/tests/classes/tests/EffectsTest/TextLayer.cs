@@ -58,7 +58,7 @@ namespace tests
 			}
 		}
 
-		public CCActionInterval createEffect(int nIndex, float t)
+		public CCFiniteTimeAction createEffect(int nIndex, float t)
 		{
 			// This fixes issue https://github.com/totallyevil/cocos2d-xna/issues/148
 			// TransitionTests and TileTests may have set the DepthTest to true so we need
@@ -117,7 +117,7 @@ namespace tests
 			return null;
 		}
 
-		public CCActionInterval CurrentAction
+		public CCFiniteTimeAction CurrentAction
 		{
 			get
 			{

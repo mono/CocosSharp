@@ -8,7 +8,7 @@ namespace tests
 {
 	public class ShuffleTilesDemo
     {
-		public static CCActionInterval ActionWithDuration(float t)
+		public static CCFiniteTimeAction ActionWithDuration(float t)
         {
             var shuffle = new CCShuffleTiles(new CCGridSize(16, 12), t, 25);
             var shuffle_back = shuffle.Reverse();

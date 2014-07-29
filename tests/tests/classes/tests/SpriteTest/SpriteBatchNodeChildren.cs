@@ -13,12 +13,12 @@ namespace tests
         CCSprite sprite3;
 
         CCAnimation animation;
-        CCActionInterval seq2;
-        CCActionInterval action_rot;
-        CCActionInterval action_back;
-        CCActionInterval action_s;
-        CCActionInterval action;
-        CCActionInterval action_s_back;
+        CCFiniteTimeAction seq2;
+        CCFiniteTimeAction action_rot;
+        CCFiniteTimeAction action_back;
+        CCFiniteTimeAction action_s;
+        CCFiniteTimeAction action;
+        CCFiniteTimeAction action_s_back;
 
         #region Properties
 
@@ -68,12 +68,12 @@ namespace tests
             animation = new CCAnimation(animFrames, 0.2f);
 
             action = new CCMoveBy (2, new CCPoint(200, 0));
-            action_back = (CCActionInterval)action.Reverse();
+            action_back = (CCFiniteTimeAction)action.Reverse();
             action_rot = new CCRotateBy (2, 360);
             action_s = new CCScaleBy(2, 2);
-            action_s_back = (CCActionInterval)action_s.Reverse();
+            action_s_back = (CCFiniteTimeAction)action_s.Reverse();
 
-            seq2 = (CCActionInterval)action_rot.Reverse();
+            seq2 = (CCFiniteTimeAction)action_rot.Reverse();
         }
 
         #endregion Constructors
@@ -93,8 +93,8 @@ namespace tests
             sprite2.RunAction(new CCRepeatForever (seq2));
 
             sprite1.RunAction((CCAction)(new CCRepeatForever (action_rot)));
-            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(new CCSequence(action, action_back)))));
-            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCActionInterval)(new CCSequence(action_s, action_s_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(action, action_back)))));
+            sprite1.RunAction((CCAction)(new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(action_s, action_s_back)))));
         }
 
         #endregion Setup content
