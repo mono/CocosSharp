@@ -872,14 +872,21 @@ namespace CocosSharp
 
 		#region Properties
 
+        // Returns the x-coordinate of the left side of the rectangle.
 		public float MinX { get { return Origin.X; } }
+        // Returns the x-coordinate of the right side of the rectangle.
 		public float MaxX { get { return Origin.X + Size.Width; } }
+        // Returns the x-coordinate of the midpoint of MaxX.
 		public float MidX { get { return Origin.X + Size.Width / 2.0f; } }
 
+        // Returns the y-coordinate of the top of the rectangle.
 		public float MinY { get { return Origin.Y; } }
+        // Returns the y-coordinate of the bottom of the rectangle.
 		public float MaxY { get { return Origin.Y + Size.Height; } }
+        // Returns the y-coordinate of the midpoint of MaxY.
 		public float MidY { get { return Origin.Y + Size.Height / 2.0f; } }
 
+        // Gets the Point that specifies the center of the rectangle.
 		public CCPoint Center
 		{
 			get
@@ -965,7 +972,6 @@ namespace CocosSharp
 		}
 
 		#endregion Equality
-
 
         public CCRect Intersection(CCRect rect)
         {
@@ -1073,6 +1079,23 @@ namespace CocosSharp
             return
                 !(rectA.MaxX < rectB.MinX || rectB.MaxX < rectA.MinX || rectA.MaxY < rectB.MinY ||
                   rectB.MaxY < rectA.MinY);
+        }
+
+        public static CCRect Union(CCRect value1, CCRect value2)
+        {
+            var x = Math.Min (value1.Origin.X, value2.Origin.X);
+            var y = Math.Min (value1.Origin.Y, value2.Origin.Y);
+            return new CCRect(x, y,
+                Math.Max (value1.MaxX, value2.MaxX) - x,
+                Math.Max (value1.MaxY, value2.MaxY) - y);
+        }
+
+        public static void Union(ref CCRect value1, ref CCRect value2, out CCRect result)
+        {
+            result.Origin.X = Math.Min (value1.Origin.X, value2.Origin.X);
+            result.Origin.Y = Math.Min (value1.Origin.Y, value2.Origin.Y);
+            result.Size.Width = Math.Max (value1.MaxX, value2.MaxX) - result.Origin.X;
+            result.Size.Height = Math.Max (value1.MaxY, value2.MaxY) - result.Origin.Y;
         }
 
         public static bool operator ==(CCRect p1, CCRect p2)
