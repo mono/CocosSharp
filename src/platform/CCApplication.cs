@@ -200,14 +200,14 @@ namespace CocosSharp
 
         public static CCApplication Create(string launchParameters, PhoneApplicationPage page)
         {
-            if (instance == null)
-            {
+            //if (instance == null)
+            //{
                 var game = XamlGame<CCGame>.Create(launchParameters, page);
-                instance = new CCApplication(game);
-            }
+            //    instance = new CCApplication(game);
+            //}
 
-            return instance;
-
+            //return instance;
+                return null;
         }
 
 #endif
