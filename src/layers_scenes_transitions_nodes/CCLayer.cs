@@ -182,26 +182,6 @@ namespace CocosSharp
         {
             base.ViewportChanged();
 
-            // Calculate viewport ratios if not set to custom
-
-            var resolutionPolicy = Scene.SceneResolutionPolicy;
-
-            if (resolutionPolicy != CCSceneResolutionPolicy.Custom)
-            {
-                // Calculate Landscape Ratio
-                var viewportRect = CalculateResolutionRatio(VisibleBoundsWorldspace, resolutionPolicy);
-                Scene.Viewport.exactFitLandscapeRatio = viewportRect;
-
-                // Calculate Portrait Ratio
-                var portraitBounds = VisibleBoundsWorldspace.InvertedSize;
-                viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
-                Scene.Viewport.exactFitPortraitRatio = viewportRect;
-
-                Scene.Viewport.UpdateViewport(false);
-                // End Calculate viewport ratios
-
-            }
-
             UpdateVisibleBoundsRect();
             UpdateClipping();
         }
@@ -242,77 +222,6 @@ namespace CocosSharp
 
         #endregion Content layout
 
-        #region Resolution Policy
-
-        static CCRect exactFitRatio = new CCRect(0,0,1,1);
-
-        CCRect CalculateResolutionRatio(CCRect resolutionRect, CCSceneResolutionPolicy resolutionPolicy)
-        {
-
-            var width = resolutionRect.Size.Width;
-            var height = resolutionRect.Size.Height;
-
-            if (width == 0.0f || height == 0.0f)
-            {
-                return exactFitRatio;
-            }
-
-            var x = resolutionRect.Origin.X;
-            var y = resolutionRect.Origin.Y;
-
-            var designResolutionSize = resolutionRect.Size;
-            var viewPortRect = CCRect.Zero;
-            float resolutionScaleX, resolutionScaleY;
-
-            // Not set anywhere right now.
-            var frameZoomFactor = 1;
-
-            var screenSize = Scene.Window.WindowSizeInPixels;
-
-            resolutionScaleX = screenSize.Width / designResolutionSize.Width;
-            resolutionScaleY = screenSize.Height / designResolutionSize.Height;
-
-            if (resolutionPolicy == CCSceneResolutionPolicy.NoBorder)
-            {
-                resolutionScaleX = resolutionScaleY = Math.Max(resolutionScaleX, resolutionScaleY);
-            }
-
-            if (resolutionPolicy == CCSceneResolutionPolicy.ShowAll)
-            {
-                resolutionScaleX = resolutionScaleY = Math.Min(resolutionScaleX, resolutionScaleY);
-            }
-
-
-            if (resolutionPolicy == CCSceneResolutionPolicy.FixedHeight)
-            {
-                resolutionScaleX = resolutionScaleY;
-                designResolutionSize.Width = (float)Math.Ceiling(screenSize.Width / resolutionScaleX);
-            }
-
-            if (resolutionPolicy == CCSceneResolutionPolicy.FixedWidth)
-            {
-                resolutionScaleY = resolutionScaleX;
-                designResolutionSize.Height = (float)Math.Ceiling(screenSize.Height / resolutionScaleY);
-            }
-
-            // calculate the rect of viewport    
-            float viewPortW = designResolutionSize.Width * resolutionScaleX;
-            float viewPortH = designResolutionSize.Height * resolutionScaleY;
-
-            viewPortRect = new CCRect((screenSize.Width - viewPortW) / 2, (screenSize.Height - viewPortH) / 2, viewPortW, viewPortH);
-
-            var viewportRatio = new CCRect(
-                ((x * resolutionScaleX * frameZoomFactor + viewPortRect.Origin.X * frameZoomFactor) / screenSize.Width),
-                ((y * resolutionScaleY * frameZoomFactor + viewPortRect.Origin.Y * frameZoomFactor) / screenSize.Height),
-                ((width * resolutionScaleX * frameZoomFactor) / screenSize.Width),
-                ((height * resolutionScaleY * frameZoomFactor) / screenSize.Height)
-            );
-
-            return viewportRatio;
-
-        }
-
-        #endregion
 
         #region Visiting and drawing
 
