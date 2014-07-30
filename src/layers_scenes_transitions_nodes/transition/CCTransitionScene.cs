@@ -63,9 +63,9 @@ namespace CocosSharp
 
         #region Scene callbacks
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             if (InScene != null && InScene.ContentSize == CCSize.Zero)
                 InScene.ContentSize = Layer.VisibleBoundsWorldspace.Size;

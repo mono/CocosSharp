@@ -62,9 +62,9 @@ namespace CocosSharp
 
         #region Scene callbacks
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             if (Scene != null && TGAInfo != null)
             {

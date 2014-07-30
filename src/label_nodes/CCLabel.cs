@@ -129,9 +129,9 @@ namespace CocosSharp
 
         #region Scene callback
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             if (Scene != null)
             {

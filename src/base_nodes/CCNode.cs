@@ -617,7 +617,7 @@ namespace CocosSharp
 
                         OnSceneViewportChanged(this, null);
 
-                        AddedToNewScene();
+                        AddedToScene();
 
                         AttachActions();
                     }
@@ -851,7 +851,7 @@ namespace CocosSharp
         {
         }
 
-        protected virtual void AddedToNewScene()
+        protected virtual void AddedToScene()
         {
         }
 
