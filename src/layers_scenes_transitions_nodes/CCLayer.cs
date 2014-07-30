@@ -184,9 +184,9 @@ namespace CocosSharp
 
             // Calculate viewport ratios if not set to custom
 
-            var resolutionPolicy = Scene.ResolutionPolicy;
+            var resolutionPolicy = Scene.SceneResolutionPolicy;
 
-            if (resolutionPolicy != CCResolutionPolicy.Custom)
+            if (resolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
                 // Calculate Landscape Ratio
                 var viewportRect = CalculateResolutionRatio(VisibleBoundsWorldspace, resolutionPolicy);
@@ -246,7 +246,7 @@ namespace CocosSharp
 
         static CCRect exactFitRatio = new CCRect(0,0,1,1);
 
-        CCRect CalculateResolutionRatio(CCRect resolutionRect, CCResolutionPolicy resolutionPolicy)
+        CCRect CalculateResolutionRatio(CCRect resolutionRect, CCSceneResolutionPolicy resolutionPolicy)
         {
 
             var width = resolutionRect.Size.Width;
@@ -272,24 +272,24 @@ namespace CocosSharp
             resolutionScaleX = screenSize.Width / designResolutionSize.Width;
             resolutionScaleY = screenSize.Height / designResolutionSize.Height;
 
-            if (resolutionPolicy == CCResolutionPolicy.NoBorder)
+            if (resolutionPolicy == CCSceneResolutionPolicy.NoBorder)
             {
                 resolutionScaleX = resolutionScaleY = Math.Max(resolutionScaleX, resolutionScaleY);
             }
 
-            if (resolutionPolicy == CCResolutionPolicy.ShowAll)
+            if (resolutionPolicy == CCSceneResolutionPolicy.ShowAll)
             {
                 resolutionScaleX = resolutionScaleY = Math.Min(resolutionScaleX, resolutionScaleY);
             }
 
 
-            if (resolutionPolicy == CCResolutionPolicy.FixedHeight)
+            if (resolutionPolicy == CCSceneResolutionPolicy.FixedHeight)
             {
                 resolutionScaleX = resolutionScaleY;
                 designResolutionSize.Width = (float)Math.Ceiling(screenSize.Width / resolutionScaleX);
             }
 
-            if (resolutionPolicy == CCResolutionPolicy.FixedWidth)
+            if (resolutionPolicy == CCSceneResolutionPolicy.FixedWidth)
             {
                 resolutionScaleY = resolutionScaleX;
                 designResolutionSize.Height = (float)Math.Ceiling(screenSize.Height / resolutionScaleY);

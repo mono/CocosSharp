@@ -5,7 +5,7 @@ using System.Diagnostics;
 namespace CocosSharp
 {
 
-    public enum CCResolutionPolicy
+    public enum CCSceneResolutionPolicy
     {
         // The Viewport is not automatically calculated and it is up to the developer to take care of setting
         // the values correctly.
@@ -47,11 +47,11 @@ namespace CocosSharp
         CCWindow window;
 
         internal event EventHandler SceneViewportChanged = delegate {};
-        CCResolutionPolicy resolutionPolicy = CCResolutionPolicy.ExactFit;
+        CCSceneResolutionPolicy resolutionPolicy = CCSceneResolutionPolicy.ExactFit;
 
         #region Properties
 
-        public CCResolutionPolicy ResolutionPolicy 
+        public CCSceneResolutionPolicy SceneResolutionPolicy 
         { 
             get { return resolutionPolicy; }
             set 
@@ -169,7 +169,7 @@ namespace CocosSharp
 			if (window != null && director != null)
             	window.AddSceneDirector(director);
 
-            ResolutionPolicy = CCResolutionPolicy.ExactFit;
+            SceneResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         }
 
         public CCScene(CCWindow window, CCDirector director) 
