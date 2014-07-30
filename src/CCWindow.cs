@@ -38,7 +38,7 @@ namespace CocosSharp
 
         protected CCStats Stats { get; private set; }
 
-		public CCDirector ActiveDirector { get; internal set; }
+        public CCDirector DefaultDirector { get; internal set; }
 
         public bool IsUseAlphaBlending
         {
@@ -122,7 +122,7 @@ namespace CocosSharp
         {
             sceneDirectors = new List<CCDirector>();
 
-			AddSceneDirector(new CCDirector());
+            AddSceneDirector(new CCDirector());
 
             EventDispatcher = new CCEventDispatcher(this);
             //Stats = new CCStats();
@@ -165,42 +165,53 @@ namespace CocosSharp
                 sceneDirectors.Add(sceneDirector);
             }
 
-			if (sceneDirectors.Count == 1)
-				ActiveDirector = sceneDirector;
+            if (sceneDirectors.Count == 1)
+                DefaultDirector = sceneDirector;
 
         }
 
         public void RemoveSceneDirector(CCDirector sceneDirector)
         {
             sceneDirectors.Remove(sceneDirector);
-			if (ActiveDirector == sceneDirector)
-				ActiveDirector = null;
+            if (DefaultDirector == sceneDirector)
+                DefaultDirector = null;
 
-			// TODO: make this smarter
-			if (sceneDirectors.Count > 0)
-				ActiveDirector = sceneDirectors[0];
+            // TODO: make this smarter
+            if (sceneDirectors.Count > 0)
+                DefaultDirector = sceneDirectors[0];
 
         }
 
         public void RemoveAllSceneDirectors()
         {
             sceneDirectors.Clear();
-			ActiveDirector = null;
+            DefaultDirector = null;
         }
 
-		public void SetActiveDirector(int index)
-		{
-			Debug.Assert(index < sceneDirectors.Count, "CococsSharp CCWindow: index out of range.");
-			ActiveDirector = sceneDirectors[index];
-		}
+        public void SetDefaultDirector(int index)
+        {
+            Debug.Assert(index < sceneDirectors.Count, "CococsSharp CCWindow: index out of range.");
+            DefaultDirector = sceneDirectors[index];
+        }
 
-		public void RunWithScene(CCScene scene)
-		{
-			if (scene.Window == null)
-				scene.Window = this;
+        public void RunWithScene(CCScene scene)
+        {
+            if (scene.Window == null)
+                scene.Window = this;
 
-			ActiveDirector.RunWithScene(scene);
-		}
+            CCDirector sceneDirector = scene.Director;
+
+            if (sceneDirector != null)
+            {
+                AddSceneDirector(sceneDirector);
+            }
+            else
+            {
+                sceneDirector = DefaultDirector;
+            }
+
+            sceneDirector.RunWithScene(scene);
+        }
 
 
         #endregion Scene director management
@@ -328,8 +339,8 @@ namespace CocosSharp
                 {
                     director.NextScene.Viewport.DisplayOrientation = orientation;
                     director.NextScene.Viewport.LandscapeScreenSizeInPixels = landscapeWindowSize;
-					if (director.NextScene.Window == null)
-						director.NextScene.Window = this;
+                    if (director.NextScene.Window == null)
+                        director.NextScene.Window = this;
                     director.SetNextScene();
                 }
             }
