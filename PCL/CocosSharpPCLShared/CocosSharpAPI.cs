@@ -1442,7 +1442,7 @@ namespace CocosSharp {
         public string FontName { get { return default(string); } set { } }
         public float FontSize { get { return default(float); } set { } }
         public override string Text { get { return default(string); } set { } }
-        protected override void AddedToNewScene() { }
+        protected override void AddedToScene() { }
         public static CocosSharp.CCLabel.ivec4 AllocateRegion(int width, int height) { return default(CocosSharp.CCLabel.ivec4); }
         protected override void Draw() { }
         public static void InitializeTTFAtlas(int width, int height) { }
@@ -1496,7 +1496,7 @@ namespace CocosSharp {
         public override float ScaleY { get { return default(float); } set { } }
         public virtual string Text { get { return default(string); } set { } }
         public CocosSharp.CCVerticalTextAlignment VerticalAlignment { get { return default(CocosSharp.CCVerticalTextAlignment); } set { } }
-        protected override void AddedToNewScene() { }
+        protected override void AddedToScene() { }
         public void CreateFontChars() { }
         protected override void Draw() { }
         protected void InitCCLabelBMFont(string theString, string fntFile, CocosSharp.CCSize dimensions, CocosSharp.CCTextAlignment hAlignment, CocosSharp.CCVerticalTextAlignment vAlignment, CocosSharp.CCPoint imageOffset, CocosSharp.CCTexture2D texture) { }
@@ -1644,7 +1644,7 @@ namespace CocosSharp {
         protected CocosSharp.CCMenuItem SelectedMenuItem { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCMenuItem); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public void AddChild(CocosSharp.CCMenuItem menuItem) { }
         public void AddChild(CocosSharp.CCMenuItem menuItem, int zOrder, int tag=0) { }
-        protected override void AddedToNewScene() { }
+        protected override void AddedToScene() { }
         public void AlignItemsHorizontally(float padding=5f) { }
         public void AlignItemsInColumns(params System.UInt32[] numOfItemsPerRow) { }
         public void AlignItemsInRows(params System.UInt32[] numOfItemsPerColumn) { }
@@ -1855,7 +1855,7 @@ namespace CocosSharp {
         public void AddChild(CocosSharp.CCNode child, int zOrder) { }
         public virtual void AddChild(CocosSharp.CCNode child, int zOrder, int tag) { }
         public CocosSharp.CCEventListenerCustom AddCustomEventListener(string eventName, System.Action<CocosSharp.CCEventCustom> callback) { return default(CocosSharp.CCEventListenerCustom); }
-        protected virtual void AddedToNewScene() { }
+        protected virtual void AddedToScene() { }
         public void AddEventListener(CocosSharp.CCEventListener listener, CocosSharp.CCNode node=null) { }
         public void AddEventListener(CocosSharp.CCEventListener listener, int fixedPriority) { }
         public virtual void Cleanup() { }
@@ -2486,6 +2486,8 @@ namespace CocosSharp {
         public static bool operator !=(CocosSharp.CCRect p1, CocosSharp.CCRect p2) { return default(bool); }
         public static CocosSharp.CCRect Parse(string s) { return default(CocosSharp.CCRect); }
         public override string ToString() { return default(string); }
+        public static CocosSharp.CCRect Union(CocosSharp.CCRect value1, CocosSharp.CCRect value2) { return default(CocosSharp.CCRect); }
+        public static void Union(ref CocosSharp.CCRect value1, ref CocosSharp.CCRect value2, out CocosSharp.CCRect result) { result = default(CocosSharp.CCRect); }
     }
     public partial class CCRemoveSelf : CocosSharp.CCActionInstant {
         public CCRemoveSelf() { }
@@ -2530,14 +2532,6 @@ namespace CocosSharp {
         public CocosSharp.CCFiniteTimeAction InnerAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCFiniteTimeAction); } }
         public override CocosSharp.CCFiniteTimeAction Reverse() { return default(CocosSharp.CCFiniteTimeAction); }
         protected internal override CocosSharp.CCActionState StartAction(CocosSharp.CCNode target) { return default(CocosSharp.CCActionState); }
-    }
-    public enum CCResolutionPolicy {
-        Custom = 0,
-        ExactFit = 1,
-        FixedHeight = 4,
-        FixedWidth = 5,
-        NoBorder = 2,
-        ShowAll = 3,
     }
     public abstract partial class CCReusedObject<T> where T : CocosSharp.CCReusedObject<T>, new() {
         protected CCReusedObject() { }
@@ -2604,12 +2598,20 @@ namespace CocosSharp {
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
         public override CocosSharp.CCDirector Director { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public virtual bool IsTransition { get { return default(bool); } }
-        public CocosSharp.CCResolutionPolicy ResolutionPolicy { get { return default(CocosSharp.CCResolutionPolicy); } set { } }
         public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
+        public CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy { get { return default(CocosSharp.CCSceneResolutionPolicy); } set { } }
         public override CocosSharp.CCViewport Viewport { get { return default(CocosSharp.CCViewport); } set { } }
         public CocosSharp.CCRect VisibleBoundsScreenspace { get { return default(CocosSharp.CCRect); } }
         public override CocosSharp.CCWindow Window { get { return default(CocosSharp.CCWindow); } set { } }
         protected override void Draw() { }
+    }
+    public enum CCSceneResolutionPolicy {
+        Custom = 0,
+        ExactFit = 1,
+        FixedHeight = 4,
+        FixedWidth = 5,
+        NoBorder = 2,
+        ShowAll = 3,
     }
     public static partial class CCSchedulePriority {
         public const uint RepeatForever = (uint)4294967294;
@@ -3093,7 +3095,7 @@ namespace CocosSharp {
         public CCTileMapAtlas(string tile, string mapFile, int tileWidth, int tileHeight) : base (default(string), default(int), default(int), default(int)) { }
         protected int NumOfItemsToRender { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } }
         protected System.Collections.Generic.Dictionary<CocosSharp.CCGridSize, System.Int32> PositionToAtlasIndex { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(System.Collections.Generic.Dictionary<CocosSharp.CCGridSize, System.Int32>); } }
-        protected override void AddedToNewScene() { }
+        protected override void AddedToScene() { }
         public void ReleaseMap() { }
         public void SetTile(CocosSharp.CCColor4B tile, CocosSharp.CCGridSize position) { }
         public CocosSharp.CCColor4B TileAt(CocosSharp.CCGridSize position) { return default(CocosSharp.CCColor4B); }
@@ -3369,7 +3371,7 @@ namespace CocosSharp {
         public override bool IsTransition { get { return default(bool); } }
         protected CocosSharp.CCScene OutScene { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCScene); } }
         public override CocosSharp.CCScene Scene { get { return default(CocosSharp.CCScene); } }
-        protected override void AddedToNewScene() { }
+        protected override void AddedToScene() { }
         public override void Cleanup() { }
         protected override void Draw() { }
         public void Finish() { }
@@ -3644,11 +3646,11 @@ namespace CocosSharp {
         public static string EVENT_AFTER_VISIT;
         public static string EVENT_PROJECTION_CHANGED;
         public CocosSharp.CCAccelerometer Accelerometer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAccelerometer); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
-        public CocosSharp.CCDirector ActiveDirector { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } }
         public bool AllowUserResizing { get { return default(bool); } set { } }
         public virtual double AnimationInterval { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(double); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCApplication Application { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCApplication); } }
         public CocosSharp.CCDisplayOrientation CurrentDisplayOrientation { get { return default(CocosSharp.CCDisplayOrientation); } set { } }
+        public CocosSharp.CCDirector DefaultDirector { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCDirector); } }
         public bool DisplayStats { get { return default(bool); } set { } }
         public bool FullScreen { get { return default(bool); } set { } }
         public bool GamePadEnabled { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(bool); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
@@ -3666,7 +3668,7 @@ namespace CocosSharp {
         public void RemoveAllSceneDirectors() { }
         public void RemoveSceneDirector(CocosSharp.CCDirector sceneDirector) { }
         public void RunWithScene(CocosSharp.CCScene scene) { }
-        public void SetActiveDirector(int index) { }
+        public void SetDefaultDirector(int index) { }
     }
     public partial interface ICCActionTweenDelegate {
         void UpdateTweenAction(float value, string key);
