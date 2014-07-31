@@ -122,6 +122,10 @@ namespace CocosSharp
 
         #region Constructors
 
+        public CCLayer()
+            : this(null)
+        {  }
+
         public CCLayer(CCSize visibleBoundsDimensions, CCClipMode clipMode = CCClipMode.None)
             : this(new CCCamera(visibleBoundsDimensions), clipMode)
         {  }

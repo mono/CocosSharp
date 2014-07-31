@@ -82,12 +82,16 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCLayerColor(CCSize size) 
-            : this(new CCCamera(size), CCColor4B.Transparent)
+        public CCLayerColor() 
+            : this(null, CCColor4B.Transparent)
         { }
 
-        public CCLayerColor(CCSize size, CCColor4B color) 
-            : this(new CCCamera(size), color)
+        public CCLayerColor(CCSize visibleBoundsDimensions) 
+            : this(new CCCamera(visibleBoundsDimensions), CCColor4B.Transparent)
+        { }
+
+        public CCLayerColor(CCSize visibleBoundsDimensions, CCColor4B color) 
+            : this(new CCCamera(visibleBoundsDimensions), color)
         { }
 
         public CCLayerColor(CCCamera camera) : this(camera, CCColor4B.Transparent)
