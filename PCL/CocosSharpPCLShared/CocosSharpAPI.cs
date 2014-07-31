@@ -1521,6 +1521,7 @@ namespace CocosSharp {
         public override string ToString() { return default(string); }
     }
     public partial class CCLayer : CocosSharp.CCNode {
+        public CCLayer() { }
         public CCLayer(CocosSharp.CCCamera camera) { }
         public CCLayer(CocosSharp.CCCamera camera, CocosSharp.CCClipMode clipMode) { }
         public CCLayer(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCClipMode clipMode=(CocosSharp.CCClipMode)(0)) { }
@@ -1540,10 +1541,11 @@ namespace CocosSharp {
         public CocosSharp.CCSize WorldToScreenspace(CocosSharp.CCSize size) { return default(CocosSharp.CCSize); }
     }
     public partial class CCLayerColor : CocosSharp.CCLayer, CocosSharp.ICCBlendable {
-        public CCLayerColor(CocosSharp.CCCamera camera) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerColor(CocosSharp.CCCamera camera, CocosSharp.CCColor4B color) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerColor(CocosSharp.CCSize size) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerColor(CocosSharp.CCSize size, CocosSharp.CCColor4B color) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
+        public CCLayerColor() { }
+        public CCLayerColor(CocosSharp.CCCamera camera) { }
+        public CCLayerColor(CocosSharp.CCCamera camera, CocosSharp.CCColor4B color) { }
+        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions) { }
+        public CCLayerColor(CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCColor4B color) { }
         public virtual CocosSharp.CCBlendFunc BlendFunc { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCBlendFunc); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public override CocosSharp.CCColor3B Color { get { return default(CocosSharp.CCColor3B); } set { } }
         public override CocosSharp.CCSize ContentSize { get { return default(CocosSharp.CCSize); } set { } }
@@ -1554,10 +1556,10 @@ namespace CocosSharp {
         protected override void VisibleBoundsChanged() { }
     }
     public partial class CCLayerGradient : CocosSharp.CCLayerColor {
-        public CCLayerGradient(CocosSharp.CCCamera camera) : base (default(CocosSharp.CCSize)) { }
-        public CCLayerGradient(CocosSharp.CCCamera camera, CocosSharp.CCColor4B start, CocosSharp.CCColor4B end) : base (default(CocosSharp.CCSize)) { }
-        public CCLayerGradient(CocosSharp.CCCamera camera, CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint gradientDirection) : base (default(CocosSharp.CCSize)) { }
-        public CCLayerGradient(CocosSharp.CCCamera camera, byte startOpacity, byte endOpacity) : base (default(CocosSharp.CCSize)) { }
+        public CCLayerGradient(CocosSharp.CCCamera camera) { }
+        public CCLayerGradient(CocosSharp.CCCamera camera, CocosSharp.CCColor4B start, CocosSharp.CCColor4B end) { }
+        public CCLayerGradient(CocosSharp.CCCamera camera, CocosSharp.CCColor4B start, CocosSharp.CCColor4B end, CocosSharp.CCPoint gradientDirection) { }
+        public CCLayerGradient(CocosSharp.CCCamera camera, byte startOpacity, byte endOpacity) { }
         public CocosSharp.CCColor3B EndColor { get { return default(CocosSharp.CCColor3B); } set { } }
         public byte EndOpacity { get { return default(byte); } set { } }
         public bool IsCompressedInterpolation { get { return default(bool); } set { } }
@@ -1568,10 +1570,10 @@ namespace CocosSharp {
     }
     public partial class CCLayerMultiplex : CocosSharp.CCLayer {
         public const int NoLayer = -1;
-        public CCLayerMultiplex(CocosSharp.CCCamera camera) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerMultiplex(CocosSharp.CCCamera camera, CocosSharp.CCAction inAction, CocosSharp.CCAction outAction) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerMultiplex(CocosSharp.CCCamera camera, CocosSharp.CCAction inAction, CocosSharp.CCAction outAction, params CocosSharp.CCLayer[] layers) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
-        public CCLayerMultiplex(CocosSharp.CCCamera camera, params CocosSharp.CCLayer[] layers) : base (default(CocosSharp.CCSize), default(CocosSharp.CCClipMode)) { }
+        public CCLayerMultiplex(CocosSharp.CCCamera camera) { }
+        public CCLayerMultiplex(CocosSharp.CCCamera camera, CocosSharp.CCAction inAction, CocosSharp.CCAction outAction) { }
+        public CCLayerMultiplex(CocosSharp.CCCamera camera, CocosSharp.CCAction inAction, CocosSharp.CCAction outAction, params CocosSharp.CCLayer[] layers) { }
+        public CCLayerMultiplex(CocosSharp.CCCamera camera, params CocosSharp.CCLayer[] layers) { }
         public virtual CocosSharp.CCLayer ActiveLayer { get { return default(CocosSharp.CCLayer); } }
         protected int EnabledLayer { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(int); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
         public CocosSharp.CCAction InAction { [System.Runtime.CompilerServices.CompilerGeneratedAttribute]get { return default(CocosSharp.CCAction); } [System.Runtime.CompilerServices.CompilerGeneratedAttribute]set { } }
