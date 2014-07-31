@@ -1094,8 +1094,8 @@ namespace CocosSharp
             }
 
             // Try to setup defaults if need be
-            if (this is CCLayer && this.Camera == null && Parent is CCScene)
-                this.Camera = new CCCamera(Parent.Window.WindowSizeInPixels);
+            if (child is CCLayer && child.Camera == null && this is CCScene) 
+                child.Camera = new CCCamera (this.Window.WindowSizeInPixels);
 
             // We want all our children to have the same layer as us
             // Set this before we call child.OnEnter
