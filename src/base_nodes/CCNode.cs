@@ -132,6 +132,46 @@ namespace CocosSharp
 
 		List<lazyAction> toBeAddedActions;                       // The Actions to be added lazily when an ActionManager is not yet available
 
+        struct lazySchedule
+        {
+            public Action<float> Selector;
+            public ICCUpdatable Target;
+            public float Interval;
+            public uint Repeat;
+            public float Delay;
+            public bool Paused;
+            public int Priority;
+            public bool IsPriority;
+
+            public lazySchedule(Action<float> selector, ICCUpdatable target, float interval, uint repeat, float delay, bool paused)
+            {
+                Selector = selector;
+                Target = target;
+                Interval = interval;
+                Repeat = repeat;
+                Delay = delay;
+                Paused = paused;
+                Priority = 0;
+                IsPriority = false;
+            }
+
+            public lazySchedule(ICCUpdatable target, int priority, bool paused)
+            {
+                Selector = null;
+                Target = target;
+                Interval = 0;
+                Repeat = 0;
+                Delay = 0;
+                Paused = paused;
+                Priority = priority;
+                IsPriority = true;
+            }
+
+        }
+
+        List<lazySchedule> toBeAddedSchedules;                       // The Schedules to be added lazily when an ScheduleManager is not yet available 
+
+
         #region Properties
 
         // Auto-implemented properties
@@ -620,6 +660,7 @@ namespace CocosSharp
                         AddedToScene();
 
                         AttachActions();
+                        AttachSchedules ();
                     }
 
                     AttachEvents();
@@ -1952,6 +1993,40 @@ namespace CocosSharp
 
         #region Scheduling
 
+        internal void AttachSchedules()
+        {
+            if (toBeAddedSchedules != null && toBeAddedSchedules.Count > 0) 
+            {
+                var scheduler = Scheduler;
+                foreach (var schedule in toBeAddedSchedules) 
+                {
+                    if (schedule.IsPriority)
+                        scheduler.Schedule (schedule.Target, schedule.Priority, schedule.Paused);
+                    else
+                        scheduler.Schedule(schedule.Selector, schedule.Target, schedule.Interval, schedule.Repeat, schedule.Delay, schedule.Paused);
+                }
+
+                toBeAddedSchedules.Clear ();
+                toBeAddedSchedules = null;
+            }
+        }
+
+        void AddLazySchedule (Action<float> selector, ICCUpdatable target, float interval, uint repeat, float delay, bool paused)
+        {
+            if (toBeAddedSchedules == null)
+                toBeAddedSchedules = new List<lazySchedule>();
+
+            toBeAddedSchedules.Add(new lazySchedule(selector, target, interval, repeat, delay, paused));
+        }
+
+        void AddLazySchedule (ICCUpdatable target, int priority, bool paused)
+        {
+            if (toBeAddedSchedules == null)
+                toBeAddedSchedules = new List<lazySchedule>();
+
+            toBeAddedSchedules.Add(new lazySchedule(target, priority, paused));
+        }
+
         public void Schedule()
         {
             Schedule(0);
@@ -1959,7 +2034,10 @@ namespace CocosSharp
 
         public void Schedule(int priority)
         {
-            Scheduler.Schedule(this, priority, !IsRunning);
+            if (Scheduler != null)
+                Scheduler.Schedule (this, priority, !IsRunning);
+            else
+                AddLazySchedule (this, priority, !IsRunning);
         }
 
         public void Unschedule ()
@@ -1982,7 +2060,10 @@ namespace CocosSharp
             Debug.Assert (selector != null, "Argument must be non-nil");
             Debug.Assert (interval >= 0, "Argument must be positive");
 
-            Scheduler.Schedule (selector, this, interval, repeat, delay, !IsRunning);
+            if (Scheduler != null)
+                Scheduler.Schedule (selector, this, interval, repeat, delay, !IsRunning);
+            else
+                AddLazySchedule (selector, this, interval, repeat, delay, !IsRunning);
         }
 
         public void ScheduleOnce (Action<float> selector, float delay)
