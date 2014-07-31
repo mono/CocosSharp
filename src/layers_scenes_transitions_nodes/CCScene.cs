@@ -179,7 +179,7 @@ namespace CocosSharp
         }
 
         public CCScene(CCWindow window) 
-            : this(window, null)
+            : this(window, window.DefaultDirector)
         {
         }
 
