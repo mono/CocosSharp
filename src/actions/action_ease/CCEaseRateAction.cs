@@ -1,48 +1,48 @@
 namespace CocosSharp
 {
-	public class CCEaseRateAction : CCActionEase
-	{
-		public float Rate { get; private set; }
+    public class CCEaseRateAction : CCActionEase
+    {
+        public float Rate { get; private set; }
 
 
-		#region Constructors
+        #region Constructors
 
-        public CCEaseRateAction (CCFiniteTimeAction pAction, float fRate) : base (pAction)
-		{
-			Rate = fRate;
-		}
+        public CCEaseRateAction (CCFiniteTimeAction action, float rate) : base (action)
+        {
+            Rate = rate;
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCEaseRateActionState (this, target);
-		}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCEaseRateActionState (this, target);
+        }
 
-		public override CCFiniteTimeAction Reverse ()
-		{
+        public override CCFiniteTimeAction Reverse ()
+        {
             return new CCEaseRateAction ((CCFiniteTimeAction)InnerAction.Reverse (), 1 / Rate);
-		}
-	}
+        }
+    }
 
 
-	#region Action state
+    #region Action state
 
-	internal class CCEaseRateActionState : CCActionEaseState
-	{
-		protected float Rate { get; private set; }
+    internal class CCEaseRateActionState : CCActionEaseState
+    {
+        protected float Rate { get; private set; }
 
-		public CCEaseRateActionState (CCEaseRateAction action, CCNode target) : base (action, target)
-		{
-			Rate = action.Rate;
-		}
+        public CCEaseRateActionState (CCEaseRateAction action, CCNode target) : base (action, target)
+        {
+            Rate = action.Rate;
+        }
 
-		public override void Update (float time)
-		{
-			InnerActionState.Update (CCEaseMath.ExponentialOut (time));
-		}
-	}
+        public override void Update (float time)
+        {
+            InnerActionState.Update (CCEaseMath.ExponentialOut (time));
+        }
+    }
 
-	#endregion Action state
+    #endregion Action state
 }

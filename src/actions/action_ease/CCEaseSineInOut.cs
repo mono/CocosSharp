@@ -2,42 +2,42 @@ using System;
 
 namespace CocosSharp
 {
-	public class CCEaseSineInOut : CCActionEase
-	{
-		#region Constructors
+    public class CCEaseSineInOut : CCActionEase
+    {
+        #region Constructors
 
-        public CCEaseSineInOut (CCFiniteTimeAction pAction) : base (pAction)
-		{
-		}
+        public CCEaseSineInOut (CCFiniteTimeAction action) : base (action)
+        {
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCEaseSineInOutState (this, target);
-		}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCEaseSineInOutState (this, target);
+        }
 
-		public override CCFiniteTimeAction Reverse ()
-		{
+        public override CCFiniteTimeAction Reverse ()
+        {
             return new CCEaseSineInOut ((CCFiniteTimeAction)InnerAction.Reverse ());
-		}
-	}
+        }
+    }
 
 
-	#region Action state
+    #region Action state
 
-	internal class CCEaseSineInOutState : CCActionEaseState
-	{
-		public CCEaseSineInOutState (CCEaseSineInOut action, CCNode target) : base (action, target)
-		{
-		}
+    internal class CCEaseSineInOutState : CCActionEaseState
+    {
+        public CCEaseSineInOutState (CCEaseSineInOut action, CCNode target) : base (action, target)
+        {
+        }
 
-		public override void Update (float time)
-		{
-			InnerActionState.Update (CCEaseMath.SineInOut (time));
-		}
-	}
+        public override void Update (float time)
+        {
+            InnerActionState.Update (CCEaseMath.SineInOut (time));
+        }
+    }
 
-	#endregion Action state
+    #endregion Action state
 }

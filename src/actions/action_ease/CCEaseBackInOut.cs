@@ -1,41 +1,41 @@
 namespace CocosSharp
 {
-	public class CCEaseBackInOut : CCActionEase
-	{
-		#region Constructors
+    public class CCEaseBackInOut : CCActionEase
+    {
+        #region Constructors
 
-        public CCEaseBackInOut (CCFiniteTimeAction pAction) : base (pAction)
-		{
-		}
+        public CCEaseBackInOut(CCFiniteTimeAction action) : base (action)
+        {
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCEaseBackInOutState (this, target);
-		}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCEaseBackInOutState (this, target);
+        }
 
-		public override CCFiniteTimeAction Reverse ()
-		{
+        public override CCFiniteTimeAction Reverse()
+        {
             return new CCEaseBackInOut ((CCFiniteTimeAction)InnerAction.Reverse ());
-		}
-	}
+        }
+    }
 
 
-	#region Action state
+    #region Action state
 
-	internal class CCEaseBackInOutState : CCActionEaseState
-	{
-		public CCEaseBackInOutState (CCEaseBackInOut action, CCNode target) : base (action, target)
-		{
-		}
+    internal class CCEaseBackInOutState : CCActionEaseState
+    {
+        public CCEaseBackInOutState (CCEaseBackInOut action, CCNode target) : base (action, target)
+        {
+        }
 
-		public override void Update (float time)
-		{
-			InnerActionState.Update (CCEaseMath.BackInOut (time));
-		}
-	}
+        public override void Update (float time)
+        {
+            InnerActionState.Update (CCEaseMath.BackInOut (time));
+        }
+    }
 
-	#endregion Action state
+    #endregion Action state
 }

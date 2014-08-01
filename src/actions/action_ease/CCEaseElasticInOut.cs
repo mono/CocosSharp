@@ -3,46 +3,46 @@ using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
-	public class CCEaseElasticInOut : CCEaseElastic
-	{
-		#region Constructors
+    public class CCEaseElasticInOut : CCEaseElastic
+    {
+        #region Constructors
 
-        public CCEaseElasticInOut (CCFiniteTimeAction pAction) : this (pAction, 0.3f)
-		{
-		}
+        public CCEaseElasticInOut (CCFiniteTimeAction action) : this (action, 0.3f)
+        {
+        }
 
-        public CCEaseElasticInOut (CCFiniteTimeAction pAction, float fPeriod) : base (pAction, fPeriod)
-		{
-		}
+        public CCEaseElasticInOut (CCFiniteTimeAction action, float period) : base (action, period)
+        {
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCEaseElasticInOutState (this, target);
-		}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCEaseElasticInOutState (this, target);
+        }
 
-		public override CCFiniteTimeAction Reverse ()
-		{
+        public override CCFiniteTimeAction Reverse ()
+        {
             return new CCEaseElasticInOut ((CCFiniteTimeAction)InnerAction.Reverse (), Period);
-		}
-	}
+        }
+    }
 
 
-	#region Action state
+    #region Action state
 
-	internal class CCEaseElasticInOutState : CCEaseElasticState
-	{
-		public CCEaseElasticInOutState (CCEaseElasticInOut action, CCNode target) : base (action, target)
-		{
-		}
+    internal class CCEaseElasticInOutState : CCEaseElasticState
+    {
+        public CCEaseElasticInOutState (CCEaseElasticInOut action, CCNode target) : base (action, target)
+        {
+        }
 
-		public override void Update (float time)
-		{
-			InnerActionState.Update (CCEaseMath.ElasticInOut (time, Period));
-		}
-	}
+        public override void Update (float time)
+        {
+            InnerActionState.Update (CCEaseMath.ElasticInOut (time, Period));
+        }
+    }
 
-	#endregion Action state
+    #endregion Action state
 }

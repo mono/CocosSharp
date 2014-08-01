@@ -7,7 +7,7 @@ namespace CocosSharp
 	{
 		#region Constructors
 
-        public CCEaseSineIn (CCFiniteTimeAction pAction) : base (pAction)
+        public CCEaseSineIn (CCFiniteTimeAction action) : base (action)
 		{
 		}
 

@@ -2,48 +2,49 @@ using System;
 
 namespace CocosSharp
 {
-	public partial class CCEaseCustom : CCActionEase
-	{
-		public Func<float, float> EaseFunc { get; private set; }
-
-		#region Constructors
-
-        public CCEaseCustom (CCFiniteTimeAction pAction, Func<float, float> easeFunc) : base (pAction)
-		{
-			EaseFunc = easeFunc;
-		}
-
-		#endregion Constructors
+    public partial class CCEaseCustom : CCActionEase
+    {
+        public Func<float, float> EaseFunc { get; private set; }
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCEaseCustomState (this, target);
-		}
+        #region Constructors
 
-		public override CCFiniteTimeAction Reverse ()
-		{
-			return new CCReverseTime (this);
-		}
-	}
+        public CCEaseCustom (CCFiniteTimeAction action, Func<float, float> easeFunc) : base (action)
+        {
+            EaseFunc = easeFunc;
+        }
+
+        #endregion Constructors
 
 
-	#region Action state
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCEaseCustomState (this, target);
+        }
 
-	internal class CCEaseCustomState : CCActionEaseState
-	{
-		protected Func<float, float> EaseFunc { get; private set; }
+        public override CCFiniteTimeAction Reverse ()
+        {
+            return new CCReverseTime (this);
+        }
+    }
 
-		public CCEaseCustomState (CCEaseCustom action, CCNode target) : base (action, target)
-		{
-			EaseFunc = action.EaseFunc;
-		}
 
-		public override void Update (float time)
-		{
-			InnerActionState.Update (EaseFunc (time));
-		}
-	}
+    #region Action state
 
-	#endregion Action state
+    internal class CCEaseCustomState : CCActionEaseState
+    {
+        protected Func<float, float> EaseFunc { get; private set; }
+
+        public CCEaseCustomState (CCEaseCustom action, CCNode target) : base (action, target)
+        {
+            EaseFunc = action.EaseFunc;
+        }
+
+        public override void Update (float time)
+        {
+            InnerActionState.Update (EaseFunc (time));
+        }
+    }
+
+    #endregion Action state
 }
