@@ -71,7 +71,7 @@ namespace tests
             base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
-            text.Scene = Scene;
+            AddChild(text, 24);
 
             CCDrawNode draw = new CCDrawNode();
             text.AddChild(draw, 10);
@@ -85,7 +85,7 @@ namespace tests
             };
             draw.DrawPolygon(points, points.Length, new CCColor4F(1, 0, 0, 0.5f), 4, new CCColor4F(0, 0, 1, 1));
             text.End();
-            AddChild(text, 24);
+
         }
 
         #endregion Setup content
