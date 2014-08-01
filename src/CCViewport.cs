@@ -93,7 +93,7 @@ namespace CocosSharp
             }
         }
 
-        internal float AspectRatio
+        public float AspectRatio
         {
             get { return viewportInPixels.Size.Width / viewportInPixels.Size.Height; }
         }

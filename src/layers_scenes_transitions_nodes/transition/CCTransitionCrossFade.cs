@@ -57,6 +57,8 @@ namespace CocosSharp
 
             // create the first render texture for inScene
             CCRenderTexture inTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
+            inTexture.Scene = Scene;
+            inTexture.Layer = Layer;
 
             if (null == inTexture)
             {
@@ -77,6 +79,8 @@ namespace CocosSharp
             outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             outTexture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             outTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            outTexture.Scene = Scene;
+            outTexture.Layer = Layer;
 
             //  render outScene to its texturebuffer
             outTexture.Begin();

@@ -49,8 +49,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            var bounds = Scene.VisibleBoundsScreenspace;
-            float aspect = bounds.Size.Width / bounds.Size.Height;
+            float aspect = Scene.Viewport.AspectRatio;
             var x = (int) (12 * aspect);
             int y = 12;
 

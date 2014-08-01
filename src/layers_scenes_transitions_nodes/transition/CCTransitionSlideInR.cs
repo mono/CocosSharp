@@ -34,7 +34,7 @@ namespace CocosSharp
         /// </summary>
         protected override void InitScenes()
         {
-            var bounds = Scene.VisibleBoundsScreenspace;
+            var bounds = Layer.VisibleBoundsWorldspace;
             InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
         }
 
@@ -44,7 +44,7 @@ namespace CocosSharp
         /// <returns></returns>
         public override CCFiniteTimeAction Action()
         {
-            var bounds = Scene.VisibleBoundsScreenspace;
+            var bounds = Layer.VisibleBoundsWorldspace;
             return new CCMoveBy (Duration, new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y));
         }
 

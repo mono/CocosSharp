@@ -61,10 +61,11 @@ namespace CocosSharp
 
             CCFiniteTimeAction split = Action();
             CCFiniteTimeAction seq = new CCSequence(
-                split,
                 new CCCallFunc((HideOutShowIn)),
                 split.Reverse()
                 );
+
+            TransitionSceneContainerLayer.RunAction(split);
 
             RunAction(
                     new CCSequence(

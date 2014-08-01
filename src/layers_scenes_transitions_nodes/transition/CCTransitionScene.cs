@@ -27,6 +27,23 @@ namespace CocosSharp
             }
         }
 
+        internal CCLayer TransitionSceneContainerLayer
+        {
+            get;
+            set;
+        }
+
+        public override CCLayer Layer
+        {
+            get
+            {
+                return TransitionSceneContainerLayer;
+            }
+            internal set
+            {
+            }
+        }
+
         #endregion Properties
 
 
@@ -44,6 +61,21 @@ namespace CocosSharp
 
             Duration = t;
 
+
+            TransitionSceneContainerLayer = new CCLayer();
+            CCCamera containerCamera = null;
+
+            // Look for InScene's first layer and use its camera
+            foreach(CCNode node in scene.Children)
+            {
+                CCLayer nodeLayer = node.Layer;
+                if (nodeLayer != null && nodeLayer.Camera != null)
+                {
+                    containerCamera = nodeLayer.Camera;
+                    TransitionSceneContainerLayer.Camera = containerCamera;
+                }
+            }
+
             // retain
             InScene = scene;
             OutScene = Director.RunningScene;
@@ -52,6 +84,10 @@ namespace CocosSharp
                 // Creating an empty scene.
                 OutScene = new CCScene(scene.Window, scene.Viewport, scene.Director);
             }
+
+            TransitionSceneContainerLayer.Scene = Scene;
+            TransitionSceneContainerLayer.AddChild(InScene);
+            TransitionSceneContainerLayer.AddChild(OutScene);
 
             Debug.Assert(InScene != OutScene, "Incoming scene must be different from the outgoing scene");
 
