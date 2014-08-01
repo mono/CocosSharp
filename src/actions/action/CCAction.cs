@@ -23,12 +23,12 @@ namespace CocosSharp
 
         protected internal virtual CCActionState StartAction (CCNode target)
         {
-            return new CCActionState (this, target);
+            return null;
 
         }
     }
 
-    public class CCActionState
+    public abstract class CCActionState
     {
         /// <summary>
         /// Gets or sets the target.

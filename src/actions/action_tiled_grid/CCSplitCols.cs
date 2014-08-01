@@ -25,67 +25,67 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-	public class CCSplitCols : CCTiledGrid3DAction
-	{
-		protected internal int Columns { get; private set; }
+    public class CCSplitCols : CCTiledGrid3DAction
+    {
+        protected internal int Columns { get; private set; }
 
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary>
-		/// creates the action with the number of columns to split and the duration
-		/// </summary>
-		public CCSplitCols (float duration, int nCols) : base (duration, new CCGridSize (nCols, 1))
-		{
-			Columns = nCols;
-		}
+        /// <summary>
+        /// creates the action with the number of columns to split and the duration
+        /// </summary>
+        public CCSplitCols (float duration, int nCols) : base (duration, new CCGridSize (nCols, 1))
+        {
+            Columns = nCols;
+        }
 
-		#endregion Constructors
-
-
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCSplitColsState (this, target);
-		}
-	}
+        #endregion Constructors
 
 
-	#region Action state
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCSplitColsState (this, target);
+        }
+    }
 
-	internal class CCSplitColsState : CCTiledGrid3DActionState
-	{
-		protected CCRect VisibleBounds { get; private set; }
+
+    #region Action state
+
+    internal class CCSplitColsState : CCTiledGrid3DActionState
+    {
+        protected CCRect VisibleBounds { get; private set; }
 
 
-		public CCSplitColsState (CCSplitCols action, CCNode target) : base (action, target)
-		{
+        public CCSplitColsState (CCSplitCols action, CCNode target) : base (action, target)
+        {
             VisibleBounds = Layer.VisibleBoundsWorldspace;
-		}
+        }
 
-		public override void Update (float time)
-		{
-			int i;
+        public override void Update (float time)
+        {
+            int i;
 
-			for (i = 0; i < GridSize.X; ++i)
-			{
-				CCQuad3 coords = OriginalTile (i, 0);
-				float direction = 1;
+            for (i = 0; i < GridSize.X; ++i)
+            {
+                CCQuad3 coords = OriginalTile (i, 0);
+                float direction = 1;
 
-				if ((i % 2) == 0)
-				{
-					direction = -1;
-				}
+                if ((i % 2) == 0)
+                {
+                    direction = -1;
+                }
 
                 coords.BottomLeft.Y += direction * VisibleBounds.Size.Height * time;
                 coords.BottomRight.Y += direction * VisibleBounds.Size.Height * time;
                 coords.TopLeft.Y += direction * VisibleBounds.Size.Height * time;
                 coords.TopRight.Y += direction * VisibleBounds.Size.Height * time;
 
-				SetTile (i, 0, ref coords);
-			}
-		}
-            
-	}
+                SetTile (i, 0, ref coords);
+            }
+        }
 
-	#endregion Action state
+    }
+
+    #endregion Action state
 }

@@ -24,10 +24,10 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-	public class CCTile
-	{
-		public CCGridSize Delta;
-		public CCPoint Position;
-		public CCPoint StartPosition;
-	}
+    public class CCTile
+    {
+        public CCGridSize Delta;
+        public CCPoint Position;
+        public CCPoint StartPosition;
+    }
 }
