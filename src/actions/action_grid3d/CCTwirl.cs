@@ -5,7 +5,6 @@ namespace CocosSharp
     public class CCTwirl : CCGrid3DAction
     {
         public int Twirls { get; private set; }
-
         public CCPoint Position { get; private set; }
 
 

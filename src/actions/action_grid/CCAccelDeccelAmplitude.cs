@@ -6,8 +6,8 @@ namespace CocosSharp
 	{
 		#region Constructors
 
-		public CCAccelDeccelAmplitude (CCAmplitudeAction pAction, float duration, float accDeccRate = 1.0f)
-			: base (pAction, duration, accDeccRate)
+		public CCAccelDeccelAmplitude (CCAmplitudeAction action, float duration, float accDeccRate = 1.0f)
+            : base (action, duration, accDeccRate)
 		{
 		}
 

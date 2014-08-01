@@ -2,58 +2,58 @@ using System;
 
 namespace CocosSharp
 {
-	public class CCAccelAmplitude : CCFiniteTimeAction
-	{
-		public float Rate { get; private set; }
+    public class CCAccelAmplitude : CCFiniteTimeAction
+    {
+        public float Rate { get; private set; }
 
-		protected internal CCAmplitudeAction OtherAction { get; private set; }
-
-
-		#region Constructors
-
-		public CCAccelAmplitude (CCAmplitudeAction pAction, float duration, float accelRate = 1.0f) : base (duration)
-		{
-			Rate = accelRate;
-			OtherAction = pAction;
-		}
-
-		#endregion Constructors
+        protected internal CCAmplitudeAction OtherAction { get; private set; }
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCAccelAmplitudeState (this, target);
-		}
+        #region Constructors
 
-		public override CCFiniteTimeAction Reverse ()
-		{
-			return new CCAccelAmplitude ((CCAmplitudeAction)OtherAction.Reverse (), Duration, Rate);
-		}
+        public CCAccelAmplitude (CCAmplitudeAction pAction, float duration, float accelRate = 1.0f) : base (duration)
+        {
+            Rate = accelRate;
+            OtherAction = pAction;
+        }
 
-	}
+        #endregion Constructors
 
 
-	#region Action state
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCAccelAmplitudeState (this, target);
+        }
 
-	internal class CCAccelAmplitudeState : CCFiniteTimeActionState
-	{
-		public float Rate { get; set; }
+        public override CCFiniteTimeAction Reverse ()
+        {
+            return new CCAccelAmplitude ((CCAmplitudeAction)OtherAction.Reverse (), Duration, Rate);
+        }
 
-		protected CCAmplitudeActionState OtherActionState { get; private set; }
+    }
 
 
-		public CCAccelAmplitudeState (CCAccelAmplitude action, CCNode target) : base (action, target)
-		{
-			Rate = action.Rate;
-			OtherActionState = (CCAmplitudeActionState)action.OtherAction.StartAction (target);
-		}
+    #region Action state
 
-		public override void Update (float time)
-		{
-			OtherActionState.AmplitudeRate = (float)Math.Pow (time, Rate);
-			OtherActionState.Update (time);
-		}
-	}
+    internal class CCAccelAmplitudeState : CCFiniteTimeActionState
+    {
+        public float Rate { get; set; }
 
-	#endregion Action state
+        protected CCAmplitudeActionState OtherActionState { get; private set; }
+
+
+        public CCAccelAmplitudeState (CCAccelAmplitude action, CCNode target) : base (action, target)
+        {
+            Rate = action.Rate;
+            OtherActionState = (CCAmplitudeActionState)action.OtherAction.StartAction (target);
+        }
+
+        public override void Update (float time)
+        {
+            OtherActionState.AmplitudeRate = (float)Math.Pow (time, Rate);
+            OtherActionState.Update (time);
+        }
+    }
+
+    #endregion Action state
 }
