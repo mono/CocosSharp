@@ -32,7 +32,7 @@ namespace CocosSharp
 
         public override void InitScenes()
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
             InScene.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y + bounds.Size.Height);
         }
 

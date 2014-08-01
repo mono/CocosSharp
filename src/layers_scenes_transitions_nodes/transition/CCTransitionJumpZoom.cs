@@ -9,7 +9,7 @@ namespace CocosSharp
         public override void OnEnter()
         {
             base.OnEnter();
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             InScene.Scale = 0.5f;
             InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);

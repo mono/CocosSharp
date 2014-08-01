@@ -75,7 +75,7 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
             int x, y;
             if (bounds.Size.Width > bounds.Size.Height)
             {

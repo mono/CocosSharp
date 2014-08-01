@@ -28,7 +28,7 @@ namespace CocosSharp
 
             // create a transparent color layer
             // in which we are going to add our rendertextures
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
 
             // create the second render texture for outScene
@@ -101,7 +101,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -132,7 +132,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -162,7 +162,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -191,7 +191,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -218,7 +218,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
@@ -257,7 +257,7 @@ namespace CocosSharp
 
         protected override CCProgressTimer ProgressTimerNodeWithRenderTexture(CCRenderTexture texture)
         {
-            CCRect bounds = Layer.VisibleBoundsWorldspace;
+            var bounds = Scene.VisibleBoundsScreenspace;
 
             CCProgressTimer node = new CCProgressTimer(texture.Sprite);
 
