@@ -29,8 +29,8 @@ namespace CocosSharp
 
         #region Properties
 
-        public bool BoundarySet { get; private set; }                   // whether camera should be limited to certain area
-        public bool BoundaryFullyCovered { get; private set; }
+        internal bool UsingBoundary { get; private set; }                                   // whether camera should be limited to certain area
+        internal bool BoundaryFullyCovered { get; private set; }
 
         internal CCFollowBoundary Boundary { get; private set; }
         internal CCPoint FullScreenSize { get; private set; }
@@ -50,11 +50,11 @@ namespace CocosSharp
             FollowedNode = followedNode;
             if (rect.Equals (CCRect.Zero))
             {
-                BoundarySet = false;
+                UsingBoundary = false;
             }
             else
             {
-                BoundarySet = true;
+                UsingBoundary = true;
             }
 
             BoundaryFullyCovered = false;
@@ -63,7 +63,7 @@ namespace CocosSharp
             FullScreenSize = (CCPoint)new CCPoint(viewportBounds.Size.Width, viewportBounds.Size.Height);
             HalfScreenSize = FullScreenSize * 0.5f;
 
-            if (BoundarySet)
+            if (UsingBoundary)
             {
                 float leftBoundary = -((rect.Origin.X + rect.Size.Width) - FullScreenSize.X - viewportBounds.Origin.X);
                 float rightBoundary = -rect.Origin.X;
@@ -143,7 +143,7 @@ namespace CocosSharp
             CCFollow followAction = FollowAction;
             CCPoint followedNodePos = followAction.FollowedNode.Position;
 
-            if (followAction.BoundarySet)
+            if (followAction.UsingBoundary)
             {
                 // whole map fits inside a single screen, no need to modify the position - unless map boundaries are increased
                 if (followAction.BoundaryFullyCovered)
