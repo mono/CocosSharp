@@ -554,14 +554,14 @@ namespace tests.Clipping
             float rotation = CCRandom.Float_0_1() * 360f;
 
             CCSprite hole = new CCSprite("Images/hole_effect.png");
-            hole.Position = point - m_pHoles.TransformedBoundingBoxWorldspace.Origin;
+            hole.Position = point - m_pHoles.BoundingBoxTransformedToWorld.Origin;
             hole.Rotation = rotation;
             hole.Scale = scale;
 
             m_pHoles.AddChild(hole);
 
             CCSprite holeStencil = new CCSprite("Images/hole_stencil.png");
-            holeStencil.Position = point - m_pHoles.TransformedBoundingBoxWorldspace.Origin;
+            holeStencil.Position = point - m_pHoles.BoundingBoxTransformedToWorld.Origin;
             holeStencil.Rotation = rotation;
             holeStencil.Scale = scale;
 
@@ -575,7 +575,7 @@ namespace tests.Clipping
             CCTouch touch = touches[0];
             CCPoint point =
                 m_pOuterClipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
-            CCRect rect = m_pOuterClipper.TransformedBoundingBoxWorldspace;
+            CCRect rect = m_pOuterClipper.BoundingBoxTransformedToWorld;
             if (!rect.ContainsPoint(point)) return;
             this.pokeHoleAtPoint(point);
         }
@@ -650,7 +650,7 @@ namespace tests.Clipping
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
             CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
-            m_bScrolling = clipper.TransformedBoundingBoxWorldspace.ContainsPoint(point);
+            m_bScrolling = clipper.BoundingBoxTransformedToWorld.ContainsPoint(point);
             m_lastPoint = point;
         }
 

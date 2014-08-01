@@ -187,7 +187,7 @@ namespace CocosSharp
 			CCPoint touchLocation = touch.LocationOnScreen;
 			touchLocation = Layer.ScreenToWorldspace(touchLocation);
 
-            CCRect rect = TransformedBoundingBoxWorldspace;
+            CCRect rect = BoundingBoxTransformedToWorld;
 			rect.Size.Width += ThumbSprite.ContentSize.Width;
 			rect.Origin.X -= ThumbSprite.ContentSize.Width / 2;
 

@@ -553,7 +553,7 @@ namespace CocosSharp
         }
 
         // Bounding box after scale/rotation/skew in parent space
-        public CCRect TransformedBoundingBox
+        public CCRect BoundingBoxTransformedToParent
         {
             get 
             { 
@@ -564,7 +564,7 @@ namespace CocosSharp
         }
 
         // Bounding box after scale/rotation/skew in world space
-        public CCRect TransformedBoundingBoxWorldspace
+        public CCRect BoundingBoxTransformedToWorld
         {
             get 
             { 

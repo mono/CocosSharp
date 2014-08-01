@@ -260,7 +260,7 @@ namespace CocosSharp
                 {
                     if (menuItem != null && menuItem.Visible && menuItem.Enabled)
                     {
-                        CCRect r = menuItem.TransformedBoundingBoxWorldspace;
+                        CCRect r = menuItem.BoundingBoxTransformedToWorld;
 
                         if (r.ContainsPoint(touchLocation))
                         {

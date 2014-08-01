@@ -291,7 +291,7 @@ namespace CocosSharp
         {
             CCPoint touchLocation = touch.LocationOnScreen;
             touchLocation = Parent.Layer.ScreenToWorldspace(touchLocation);
-            CCRect bBox = TransformedBoundingBoxWorldspace;
+            CCRect bBox = BoundingBoxTransformedToWorld;
             return bBox.ContainsPoint(touchLocation);
         }
 

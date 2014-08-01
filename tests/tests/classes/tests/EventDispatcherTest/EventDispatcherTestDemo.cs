@@ -428,7 +428,7 @@ namespace tests
 
 				var locationInNode = target.Layer.ScreenToWorldspace(touch.LocationOnScreen);
 				var s = target.ContentSize;
-                CCRect rect = target.TransformedBoundingBoxWorldspace;
+                CCRect rect = target.BoundingBoxTransformedToWorld;
 
 				if (rect.ContainsPoint(locationInNode))
 				{
@@ -1068,7 +1068,7 @@ namespace tests
 
 					var locationInNode = target.Layer.ScreenToWorldspace(touch.LocationOnScreen);
 					var s = target.ContentSize;
-                    var rect = target.TransformedBoundingBoxWorldspace;
+                    var rect = target.BoundingBoxTransformedToWorld;
 		
 					if (rect.ContainsPoint(locationInNode))
 					{
