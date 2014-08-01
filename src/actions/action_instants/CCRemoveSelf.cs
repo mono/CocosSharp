@@ -3,56 +3,53 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-	public class CCRemoveSelf : CCActionInstant
-	{
-		public bool IsNeedCleanUp { get; private set; }
+    public class CCRemoveSelf : CCActionInstant
+    {
+        public bool IsNeedCleanUp { get; private set; }
 
-		#region Constructors
+        #region Constructors
 
-		public CCRemoveSelf ()
-			: this (true)
-		{
-		}
+        public CCRemoveSelf ()
+            : this (true)
+        {
+        }
 
-		public CCRemoveSelf (bool isNeedCleanUp)
-		{
-			IsNeedCleanUp = isNeedCleanUp;
-		}
+        public CCRemoveSelf (bool isNeedCleanUp)
+        {
+            IsNeedCleanUp = isNeedCleanUp;
+        }
 
-		#endregion Constructors
-
-		/// <summary>
-		/// Start the hide operation on the given target.
-		/// </summary>
-		/// <param name="target"></param>
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCRemoveSelfState (this, target);
-
-		}
+        #endregion Constructors
 
 
-		public override CCFiniteTimeAction Reverse ()
-		{
-			return new CCRemoveSelf (IsNeedCleanUp);
-		}
-	}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCRemoveSelfState (this, target);
 
-	internal class CCRemoveSelfState : CCActionInstantState
-	{
-		protected bool IsNeedCleanUp { get; set; }
+        }
 
-		public CCRemoveSelfState (CCRemoveSelf action, CCNode target)
-			: base (action, target)
-		{	
-			IsNeedCleanUp = action.IsNeedCleanUp;
-		}
 
-		public override void Update (float time)
-		{
-			Target.RemoveFromParent (IsNeedCleanUp);
-		}
+        public override CCFiniteTimeAction Reverse ()
+        {
+            return new CCRemoveSelf (IsNeedCleanUp);
+        }
+    }
 
-	}
+    internal class CCRemoveSelfState : CCActionInstantState
+    {
+        protected bool IsNeedCleanUp { get; set; }
+
+        public CCRemoveSelfState (CCRemoveSelf action, CCNode target)
+            : base (action, target)
+        {   
+            IsNeedCleanUp = action.IsNeedCleanUp;
+        }
+
+        public override void Update (float time)
+        {
+            Target.RemoveFromParent (IsNeedCleanUp);
+        }
+
+    }
 
 }
