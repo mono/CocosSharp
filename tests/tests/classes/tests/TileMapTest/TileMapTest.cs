@@ -34,7 +34,7 @@ namespace tests
 
             var seq = new CCSequence(scale, scaleBack);
 
-            map.RunAction(new CCRepeatForever ((CCActionInterval)seq));
+            map.RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq));
         }
 
 		public override string Title
@@ -71,9 +71,9 @@ namespace tests
             map.AnchorPoint = (new CCPoint(0, 0));
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			var map = (CCTileMapAtlas) this[kTagTileMap];
 			map.Position = new CCPoint(-20, -200);
@@ -905,9 +905,9 @@ namespace tests
             Schedule(repositionSprite);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			var map = (CCTMXTiledMap)this[kTagTileMap];
 			CCSize s = map.ContentSize;
@@ -1419,9 +1419,9 @@ namespace tests
 
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			var map = (CCTMXTiledMap)this[kTagTileMap];
 			//map.Position = new CCPoint(100, 100);

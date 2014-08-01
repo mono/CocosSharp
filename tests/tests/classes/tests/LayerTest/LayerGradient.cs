@@ -33,9 +33,9 @@ namespace tests
             AddChild(menu);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
 		{
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			menu.Position = (new CCPoint(s.Width / 2, 100));

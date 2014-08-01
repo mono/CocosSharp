@@ -25,9 +25,9 @@ namespace tests
             label3.AnchorPoint = CCPoint.AnchorMiddle;
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             var s = Layer.VisibleBoundsWorldspace.Size;
 

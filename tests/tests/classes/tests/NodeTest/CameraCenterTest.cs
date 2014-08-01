@@ -54,9 +54,9 @@ namespace tests
 			sprite.RepeatForever(orbit);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
@@ -124,9 +124,9 @@ namespace tests
 
 		}
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);
@@ -201,9 +201,9 @@ namespace tests
 			//sprite1.AdditionalTransform = ct;
 		}
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sprite1.Position = new CCPoint (1 * s.Width / 4, s.Height / 2);

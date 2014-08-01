@@ -17,9 +17,9 @@ namespace tests
             AddChild(pLable);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             var size = Layer.VisibleBoundsWorldspace.Size;
 
@@ -48,9 +48,9 @@ namespace tests
             AddChild(pLable);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             var size = Layer.VisibleBoundsWorldspace.Size;
 

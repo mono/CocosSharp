@@ -81,9 +81,9 @@ namespace tests
             Schedule(this.doStep);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			paddles[0].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Bottom.Y + 15);
 			paddles[1].Position = new CCPoint(CCVisibleRect.Center.X, CCVisibleRect.Top.Y - kStatusBarHeight - 15);

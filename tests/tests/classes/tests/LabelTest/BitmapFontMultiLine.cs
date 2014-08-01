@@ -45,9 +45,9 @@ namespace tests
             //CCLOG("content size: %.2fx%.2f", s.width, s.height);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			label1.Position = CCVisibleRect.LeftBottom;
 			label2.Position = CCVisibleRect.Center;

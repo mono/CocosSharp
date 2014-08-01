@@ -12,9 +12,9 @@ namespace tests
             Schedule(shouldNotCrash, 1.0f);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             var s = Layer.VisibleBoundsWorldspace.Size;
 

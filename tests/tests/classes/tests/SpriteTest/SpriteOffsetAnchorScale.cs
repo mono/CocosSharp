@@ -68,9 +68,9 @@ namespace tests
                 AddChild(pointSprites[i], 1);
 
 
-                CCActionInterval scale = new CCScaleBy(2, 2);
-                CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
-                seq_scale = (CCActionInterval)(new CCSequence(scale, scale_back));
+                CCFiniteTimeAction scale = new CCScaleBy(2, 2);
+                CCFiniteTimeAction scale_back = (CCFiniteTimeAction)scale.Reverse();
+                seq_scale = (CCFiniteTimeAction)(new CCSequence(scale, scale_back));
             }
         }
 
@@ -103,7 +103,7 @@ namespace tests
                 }
 
                 sprites[i].RunAction(new CCRepeatForever(new CCAnimate(animation)));
-                sprites[i].RunAction(new CCRepeatForever ((CCActionInterval)seq_scale));
+                sprites[i].RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq_scale));
             }
         }
 

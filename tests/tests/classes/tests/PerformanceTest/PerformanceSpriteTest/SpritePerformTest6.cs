@@ -26,7 +26,7 @@ namespace tests
             pSprite.RunAction(permanentRotation);
 
             float growDuration = 0.5f + (CCRandom.Next() % 1000) / 500.0f;
-            CCActionInterval grow = new CCScaleBy(growDuration, 0.5f, 0.5f);
+            CCFiniteTimeAction grow = new CCScaleBy(growDuration, 0.5f, 0.5f);
             CCAction permanentScaleLoop = new CCRepeatForever (new CCSequence (grow, grow.Reverse()));
             pSprite.RunAction(permanentScaleLoop);
         }

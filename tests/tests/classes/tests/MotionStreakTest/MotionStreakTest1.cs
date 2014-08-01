@@ -46,10 +46,10 @@ namespace tests
 
             var action1 = new CCRepeatForever (a1);
             var motion = new CCMoveBy (2, new CCPoint(100, 0));
-            m_root.RunAction(new CCRepeatForever ((CCActionInterval)new CCSequence(motion, motion.Reverse())));
+            m_root.RunAction(new CCRepeatForever ((CCFiniteTimeAction)new CCSequence(motion, motion.Reverse())));
             m_root.RunAction(action1);
 
-            var colorAction = new CCRepeatForever ((CCActionInterval)
+            var colorAction = new CCRepeatForever ((CCFiniteTimeAction)
                 new CCSequence(
                     new CCTintTo (0.2f, 255, 0, 0),
                     new CCTintTo (0.2f, 0, 255, 0),

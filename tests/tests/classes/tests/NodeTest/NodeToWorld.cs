@@ -31,9 +31,9 @@ namespace tests
         }
 
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
@@ -85,9 +85,9 @@ namespace tests
 		}
 
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 

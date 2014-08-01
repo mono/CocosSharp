@@ -195,7 +195,7 @@ namespace tests
 
             sprite.Position = p;
 
-            CCActionInterval action;
+            CCFiniteTimeAction action;
             float random = CCMacros.CCRandomBetween0And1();
 
             if (random < 0.20)
@@ -209,8 +209,8 @@ namespace tests
             else
                 action = new CCFadeOut  (2);
             object obj = action.Reverse();
-            CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCActionInterval seq = (CCActionInterval)(new CCSequence(action, action_back));
+            CCFiniteTimeAction action_back = (CCFiniteTimeAction)action.Reverse();
+            CCFiniteTimeAction seq = (CCFiniteTimeAction)(new CCSequence(action, action_back));
 
             sprite.RunAction(new CCRepeatForever (seq));
         }

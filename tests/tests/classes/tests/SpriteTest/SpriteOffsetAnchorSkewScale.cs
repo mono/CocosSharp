@@ -52,15 +52,15 @@ namespace tests
 
             // Skew
             CCSkewBy skewX = new CCSkewBy (2, 45, 0);
-            CCActionInterval skewX_back = (CCActionInterval)skewX.Reverse();
+            CCFiniteTimeAction skewX_back = (CCFiniteTimeAction)skewX.Reverse();
             CCSkewBy skewY = new CCSkewBy (2, 0, 45);
-            CCActionInterval skewY_back = (CCActionInterval)skewY.Reverse();
+            CCFiniteTimeAction skewY_back = (CCFiniteTimeAction)skewY.Reverse();
 
             seq_skew = new CCSequence(skewX, skewX_back, skewY, skewY_back);
 
             // Scale
             CCScaleBy scale = new CCScaleBy(2, 2);
-            CCActionInterval scale_back = (CCActionInterval)scale.Reverse();
+            CCFiniteTimeAction scale_back = (CCFiniteTimeAction)scale.Reverse();
 
             seq_scale = new CCSequence(scale, scale_back);
 
@@ -105,8 +105,8 @@ namespace tests
                 }
 
                 sprites[i].RunAction(new CCRepeatForever(new CCAnimate(animation)));
-                sprites[i].RunAction(new CCRepeatForever ((CCActionInterval)seq_skew));
-                sprites[i].RunAction(new CCRepeatForever ((CCActionInterval)seq_scale));
+                sprites[i].RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq_skew));
+                sprites[i].RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq_scale));
             }
         }
 

@@ -86,7 +86,7 @@ namespace tests
             var size = Layer.VisibleBoundsWorldspace.Size;
 
             var move = new CCMoveBy(3, new CCPoint(size.Width - 130, 0));
-            var move_back = (CCActionInterval) move.Reverse();
+            var move_back = (CCFiniteTimeAction) move.Reverse();
 
             var move_ease_in = new CCEaseIn(move, 2.5f);
             var move_ease_in_back = move_ease_in.Reverse();
@@ -143,7 +143,7 @@ namespace tests
             var move_ease_inout_back2 = move_ease_inout2.Reverse();
 
             var move_ease_inout3 = new CCEaseInOut(move, 1.0f);
-            var move_ease_inout_back3 = move_ease_inout3.Reverse() as CCActionInterval;
+            var move_ease_inout_back3 = move_ease_inout3.Reverse() as CCFiniteTimeAction;
 
             var delay = new CCDelayTime (0.25f);
 
@@ -153,9 +153,9 @@ namespace tests
             var seq3 = new CCSequence(move_ease_inout3, delay, move_ease_inout_back3,
                                                 delay);
 
-            m_tamara.RunAction(new CCRepeatForever ((CCActionInterval)seq1));
-            m_kathia.RunAction(new CCRepeatForever ((CCActionInterval)seq2));
-            m_grossini.RunAction(new CCRepeatForever ((CCActionInterval)seq3));
+            m_tamara.RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq1));
+            m_kathia.RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq2));
+            m_grossini.RunAction(new CCRepeatForever ((CCFiniteTimeAction)seq3));
         }
 
 		public override string Title
@@ -513,7 +513,7 @@ namespace tests
             var move_back = move.Reverse();
 
             var move_ease = new CCEaseBackInOut(move);
-            var move_ease_back = move_ease.Reverse() as CCActionInterval;
+            var move_ease_back = move_ease.Reverse() as CCFiniteTimeAction;
 
             var delay = new CCDelayTime (0.25f);
 

@@ -26,9 +26,9 @@ namespace tests
 		protected CCSprite grossini;
 		protected CCSprite tamara;
 
-        protected override void AddedToNewScene ()
+        protected override void AddedToScene ()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
             Scene.AddChild(contentLayer);
         }
 

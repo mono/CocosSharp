@@ -30,9 +30,9 @@ namespace tests
 
             contentCamera.NearAndFarPerspectiveClipping = new CCPoint (0.1f, 100.0f);
 
-            contentCamera.PerspectiveFieldOfView = (float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
+            contentCamera.PerspectiveFieldOfView = (float)Math.PI / 3.0f; //(float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
 
-            var lens = new CCLens3D(0.0f, new CCGridSize(30, 20), bgNode.ContentSize.Center, 120);
+            var lens = new CCLens3D(0.0f, new CCGridSize(15, 10), bgNode.ContentSize.Center, 90);
 			var waves = new CCWaves3D(10, new CCGridSize(15, 10), 18, 15);
 
 
@@ -40,7 +40,7 @@ namespace tests
 			var delay = new CCDelayTime (8);
 
             bgNode.AnchorPoint = CCPoint.AnchorMiddle;
-            var orbit = new CCOrbitCamera(5, 1, 2, 0, 180, 0, -90);
+            var orbit = new CCOrbitCamera(5, 30.0f, 2, 20, 180, 0, -90);
 			var orbit_back = orbit.Reverse();
 
 			bgNode.RepeatForever(orbit, orbit_back);

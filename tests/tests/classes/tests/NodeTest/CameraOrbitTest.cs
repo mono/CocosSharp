@@ -8,9 +8,9 @@ namespace tests
         {
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 

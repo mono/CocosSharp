@@ -61,7 +61,7 @@ namespace tests
             CCFiniteTimeAction goBack = go.Reverse();
             CCFiniteTimeAction seq = new CCSequence(goUp, go, goDown, goBack);
 
-            voidNode.RunAction(new CCRepeatForever ((CCActionInterval) seq));
+            voidNode.RunAction(new CCRepeatForever ((CCFiniteTimeAction) seq));
 
             AddChild(voidNode, -1, kTagTileMap);
         }

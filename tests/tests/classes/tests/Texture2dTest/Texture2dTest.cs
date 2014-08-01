@@ -388,14 +388,14 @@ namespace tests
 
 
     //    CCEaseOut* scale1 = CCEaseOut::actionWithAction(CCScaleBy::actionWithDuration(4, 0.01f), 3);
-    //    CCActionInterval* sc_back = scale1->reverse();
+    //    CCFiniteTimeAction* sc_back = scale1->reverse();
 
     //    CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //    scale2->autorelease();
-    //    CCActionInterval* sc_back2 = scale2->reverse();
+    //    CCFiniteTimeAction* sc_back2 = scale2->reverse();
 
-    //    img0->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale1, sc_back, NULL))));
-    //    img1->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale2, sc_back2, NULL))));
+    //    img0->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale1, sc_back, NULL))));
+    //    img1->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale2, sc_back2, NULL))));
     //    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     //}
 
@@ -439,14 +439,14 @@ namespace tests
     //        addChild(img);
 
     //        CCEaseOut* scale1 = CCEaseOut::actionWithAction(CCScaleBy::actionWithDuration(4, 0.01f), 3);
-    //        CCActionInterval* sc_back = scale1->reverse();
+    //        CCFiniteTimeAction* sc_back = scale1->reverse();
 
     //        CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //        scale2->autorelease();
-    //        CCActionInterval* sc_back2 = scale2->reverse();
+    //        CCFiniteTimeAction* sc_back2 = scale2->reverse();
 
-    //        imgMipMap->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale1, sc_back, NULL))));
-    //        img->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale2, sc_back2, NULL))));
+    //        imgMipMap->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale1, sc_back, NULL))));
+    //        img->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale2, sc_back2, NULL))));
     //    }
     //    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     //}
@@ -483,14 +483,14 @@ namespace tests
     //    addChild(img);
 
     //    CCEaseOut* scale1 = CCEaseOut::actionWithAction(CCScaleBy::actionWithDuration(4, 0.01f), 3);
-    //    CCActionInterval* sc_back = scale1->reverse();
+    //    CCFiniteTimeAction* sc_back = scale1->reverse();
 
     //    CCEaseOut* scale2 = (CCEaseOut*) (scale1->copy());
     //    scale2->autorelease();
-    //    CCActionInterval* sc_back2 = scale2->reverse();
+    //    CCFiniteTimeAction* sc_back2 = scale2->reverse();
 
-    //    imgMipMap->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale1, sc_back, NULL))));
-    //    img->runAction(CCRepeatForever::actionWithAction((CCActionInterval*)(CCSequence::actions(scale2, sc_back2, NULL))));
+    //    imgMipMap->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale1, sc_back, NULL))));
+    //    img->runAction(CCRepeatForever::actionWithAction((CCFiniteTimeAction*)(CCSequence::actions(scale2, sc_back2, NULL))));
     //    CCTextureCache::sharedTextureCache()->dumpCachedTextureInfo();
     //}
 
@@ -1118,7 +1118,7 @@ namespace tests
     //    CCFadeOut* fadeout = CCFadeOut::actionWithDuration(2);
     //    CCFadeIn*  fadein  = CCFadeIn::actionWithDuration(2);
     //    CCFiniteTimeAction* seq = CCSequence::actions(CCDelayTime::actionWithDuration(2), fadeout, fadein, NULL);
-    //    CCRepeatForever* seq_4ever = CCRepeatForever::actionWithAction((CCActionInterval*) seq);
+    //    CCRepeatForever* seq_4ever = CCRepeatForever::actionWithAction((CCFiniteTimeAction*) seq);
     //    CCRepeatForever* seq_4ever2 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever2->autorelease();
     //    CCRepeatForever* seq_4ever3 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever3->autorelease();
     //    CCRepeatForever* seq_4ever4 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever4->autorelease();

@@ -39,9 +39,9 @@ namespace Box2D.TestBed
             return true;
         }
 
-        protected override void AddedToNewScene ()
+        protected override void AddedToScene ()
         {
-            base.AddedToNewScene ();
+            base.AddedToScene ();
 
             Schedule ();
         }

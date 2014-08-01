@@ -63,7 +63,7 @@ namespace tests
 
             AddChild(sprite);
             sprite.RunAction(new CCRepeatForever (
-                (CCActionInterval) (new CCSequence(jump, jump.Reverse())))
+                (CCFiniteTimeAction) (new CCSequence(jump, jump.Reverse())))
                 );
 
             // pause button

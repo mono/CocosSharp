@@ -45,9 +45,9 @@ namespace tests
 			AddEventListener(touchListener);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             // ask director the the window size
             var size = Layer.VisibleBoundsWorldspace.Size;

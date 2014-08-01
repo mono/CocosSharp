@@ -17,9 +17,9 @@ namespace tests
             AddChild(_TestLabel);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			_TestLabel.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);

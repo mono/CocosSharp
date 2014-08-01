@@ -29,9 +29,9 @@ namespace tests
             Schedule(newBlend, 1.0f);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 			sister1.Position = new CCPoint(160, s.Height / 2);

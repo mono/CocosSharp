@@ -15,7 +15,7 @@ namespace tests
             sp1.Position = (new CCPoint(100, 160));
             sp2.Position = (new CCPoint(380, 160));
 
-            CCActionInterval rot = new CCRotateBy (2, 360);
+            CCFiniteTimeAction rot = new CCRotateBy (2, 360);
             var rot_back = rot.Reverse();
 			var forever1 = new CCRepeatForever (rot, rot_back);
 

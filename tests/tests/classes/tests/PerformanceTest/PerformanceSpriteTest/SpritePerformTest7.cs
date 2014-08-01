@@ -24,12 +24,12 @@ namespace tests
 
             float period = 0.5f + (CCRandom.Next() % 1000) / 500.0f;
             CCRotateBy rot = new CCRotateBy (period, 360.0f * CCRandom.Float_0_1());
-            var rot_back = (CCActionInterval) rot.Reverse();
+            var rot_back = (CCFiniteTimeAction) rot.Reverse();
             CCAction permanentRotation = new CCRepeatForever (new CCSequence(rot, rot_back));
             pSprite.RunAction(permanentRotation);
 
             float growDuration = 0.5f + (CCRandom.Next() % 1000) / 500.0f;
-            CCActionInterval grow = new CCScaleBy(growDuration, 0.5f, 0.5f);
+            CCFiniteTimeAction grow = new CCScaleBy(growDuration, 0.5f, 0.5f);
             CCAction permanentScaleLoop = new CCRepeatForever (new CCSequence (grow, grow.Reverse()));
             pSprite.RunAction(permanentScaleLoop);
         }

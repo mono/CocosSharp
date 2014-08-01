@@ -37,7 +37,7 @@ namespace tests
             batch.AddChild(sprite2, 0, (int)kTagSprite.kTagSprite2);
 
             var scale = new CCScaleBy(2, 5);
-            var scale_back = (CCActionInterval)scale.Reverse();
+            var scale_back = (CCFiniteTimeAction)scale.Reverse();
 
             repeat = new CCRepeatForever (scale, scale_back);
         }

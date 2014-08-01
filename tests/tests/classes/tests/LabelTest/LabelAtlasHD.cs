@@ -20,10 +20,10 @@ namespace tests
 
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
             var s = Layer.VisibleBoundsWorldspace.Size;
-            base.AddedToNewScene();
+            base.AddedToScene();
             label1.Position = s.Center;
 		}
 

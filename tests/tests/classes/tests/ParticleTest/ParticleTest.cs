@@ -226,9 +226,9 @@ namespace tests
 		static CCMoveBy move = new CCMoveBy (4, new CCPoint(300, 0));
 		static CCFiniteTimeAction move_back = move.Reverse();
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
@@ -1055,10 +1055,10 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             p2.AddChild(par, 10);
             par.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_fire);
 
-            CCActionInterval move = new CCMoveBy (4, new CCPoint(300, 0));
+            CCFiniteTimeAction move = new CCMoveBy (4, new CCPoint(300, 0));
             CCFiniteTimeAction move_back = move.Reverse();
             CCFiniteTimeAction seq = new CCSequence(move, move_back);
-            p.RunAction(new CCRepeatForever ((CCActionInterval) seq));
+            p.RunAction(new CCRepeatForever ((CCFiniteTimeAction) seq));
         }
 
 		public override string Title
@@ -1453,9 +1453,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 			Visible = false;
 		}
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
             Position = Layer.VisibleBoundsWorldspace.Center;
 
 			RunActions (delayedShow);

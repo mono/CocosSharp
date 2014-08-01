@@ -32,9 +32,9 @@ namespace tests
 
         #region Setup content
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene(); 
+            base.AddedToScene(); 
             CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             AddNewSpriteWithCoords(new CCPoint(windowSize.Width / 2, windowSize.Height / 2));
@@ -63,7 +63,7 @@ namespace tests
             BatchNode.AddChild(sprite);
 
 
-            CCActionInterval action = null;
+            CCFiniteTimeAction action = null;
             float random = (float)CCRandom.NextDouble();
 
             if (random < 0.20)
@@ -77,8 +77,8 @@ namespace tests
             else
                 action = new CCFadeOut  (2);
 
-            CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCActionInterval seq = (CCActionInterval)(new CCSequence(action, action_back));
+            CCFiniteTimeAction action_back = (CCFiniteTimeAction)action.Reverse();
+            CCFiniteTimeAction seq = (CCFiniteTimeAction)(new CCSequence(action, action_back));
 
             sprite.RunAction(new CCRepeatForever (seq));
         }

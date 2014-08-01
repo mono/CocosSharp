@@ -104,9 +104,9 @@ namespace tests
 			menu.RunAction(new CCScaleTo(1, 1));
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
 			// elastic effect
             CCSize s = Layer.VisibleBoundsWorldspace.Size;

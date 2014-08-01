@@ -22,11 +22,11 @@ namespace tests
             AddChild(center);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
             var s = Layer.VisibleBoundsWorldspace.Size;
 
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             center.Position = new CCPoint(s.Width / 2, 150);
             center.Dimensions = new CCSize(s.Width / 2, 200);

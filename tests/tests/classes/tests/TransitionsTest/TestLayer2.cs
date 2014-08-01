@@ -27,13 +27,15 @@ namespace tests
 			label = new CCLabelTtf("SCENE 2", "MarkerFelt", 38);
 			label.Color = (new CCColor3B(16, 16, 255));
 			AddChild(label);
-			Schedule(step, 1.0f);
 
+            Camera = AppDelegate.SharedCamera;
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
+
+            Schedule(step, 1.0f);
 
 			float x, y;
 

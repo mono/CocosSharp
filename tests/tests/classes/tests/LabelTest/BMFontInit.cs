@@ -16,9 +16,9 @@ namespace tests
             AddChild(bmFont);
         }
 
-        protected override void AddedToNewScene()
+        protected override void AddedToScene()
         {
-            base.AddedToNewScene();
+            base.AddedToScene();
 
             var s = Layer.VisibleBoundsWorldspace.Size;
 			bmFont.Position = new CCPoint(s.Width / 2, s.Height / 4 * 2);

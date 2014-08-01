@@ -72,7 +72,7 @@ namespace tests
         {
 base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
-            CCActionInterval action = new CCRotateBy(4, 360);
+            CCFiniteTimeAction action = new CCRotateBy(4, 360);
 
             for(int i = 0; i < numOfSprites; i++) 
             {

@@ -206,7 +206,7 @@ namespace CocosSharp
             m_nCharLimit = 12;
 
             m_pTextFieldAction = new CCRepeatForever(
-                (CCActionInterval) new CCSequence(
+                (CCFiniteTimeAction) new CCSequence(
                                        new CCFadeOut(0.25f),
                                        new CCFadeIn(0.25f)));
             //m_pTextFieldAction->retain();

@@ -77,7 +77,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             sprite.Position = (new CCPoint(p.X, p.Y));
 
-            CCActionInterval action;
+            CCFiniteTimeAction action;
             float random = (float)CCRandom.NextDouble();
 
             if (random < 0.20)
@@ -91,8 +91,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             else
                 action = new CCFadeOut  (2);
 
-            CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            CCActionInterval seq = (CCActionInterval)(new CCSequence(action, action_back));
+            CCFiniteTimeAction action_back = (CCFiniteTimeAction)action.Reverse();
+            CCFiniteTimeAction seq = (CCFiniteTimeAction)(new CCSequence(action, action_back));
 
             sprite.RunAction(new CCRepeatForever (seq));
         }

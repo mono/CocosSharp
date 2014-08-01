@@ -29,10 +29,10 @@ namespace tests
             label2.Position = new CCPoint(10, 200);
             label2.Color = ccRED;
 
-            CCActionInterval fade = new CCFadeOut  (1.0f);
+            CCFiniteTimeAction fade = new CCFadeOut  (1.0f);
             CCFiniteTimeAction fade_in = fade.Reverse();
             CCFiniteTimeAction seq = new CCSequence(fade, fade_in);
-            CCAction repeat = new CCRepeatForever ((CCActionInterval)seq);
+            CCAction repeat = new CCRepeatForever ((CCFiniteTimeAction)seq);
             label2.RunAction(repeat);
 
             m_time = 0;

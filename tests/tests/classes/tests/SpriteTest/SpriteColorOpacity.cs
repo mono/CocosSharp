@@ -57,21 +57,21 @@ namespace tests
             AddChild(sprite8, 0, (int)kTagSprite.kTagSprite8);
 
 
-            CCActionInterval action = new CCFadeIn  (2);
-            CCActionInterval action_back = (CCActionInterval)action.Reverse();
-            fade = new CCRepeatForever ((CCActionInterval)(new CCSequence(action, action_back)));
+            CCFiniteTimeAction action = new CCFadeIn  (2);
+            CCFiniteTimeAction action_back = (CCFiniteTimeAction)action.Reverse();
+            fade = new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(action, action_back)));
 
-            CCActionInterval tintred = new CCTintBy (2, 0, -255, -255);
-            CCActionInterval tintred_back = (CCActionInterval)tintred.Reverse();
-            red = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintred, tintred_back)));
+            CCFiniteTimeAction tintred = new CCTintBy (2, 0, -255, -255);
+            CCFiniteTimeAction tintred_back = (CCFiniteTimeAction)tintred.Reverse();
+            red = new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(tintred, tintred_back)));
 
-            CCActionInterval tintgreen = new CCTintBy (2, -255, 0, -255);
-            CCActionInterval tintgreen_back = (CCActionInterval)tintgreen.Reverse();
-            green = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintgreen, tintgreen_back)));
+            CCFiniteTimeAction tintgreen = new CCTintBy (2, -255, 0, -255);
+            CCFiniteTimeAction tintgreen_back = (CCFiniteTimeAction)tintgreen.Reverse();
+            green = new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(tintgreen, tintgreen_back)));
 
-            CCActionInterval tintblue = new CCTintBy (2, -255, -255, 0);
-            CCActionInterval tintblue_back = (CCActionInterval)tintblue.Reverse();
-            blue = new CCRepeatForever ((CCActionInterval)(new CCSequence(tintblue, tintblue_back)));
+            CCFiniteTimeAction tintblue = new CCTintBy (2, -255, -255, 0);
+            CCFiniteTimeAction tintblue_back = (CCFiniteTimeAction)tintblue.Reverse();
+            blue = new CCRepeatForever ((CCFiniteTimeAction)(new CCSequence(tintblue, tintblue_back)));
         }
 
         #endregion Constructors
