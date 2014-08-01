@@ -3,97 +3,93 @@ using System.Collections.Generic;
 
 namespace CocosSharp
 {
-	public class CCParallel : CCFiniteTimeAction
-	{
+    public class CCParallel : CCFiniteTimeAction
+    {
         public CCFiniteTimeAction[] Actions { get; private set; }
 
-		#region Constructors
+        #region Constructors
 
         public CCParallel (params CCFiniteTimeAction[] actions) : base ()
-		{
-			// Can't call base(duration) because max action duration needs to be determined here
-			float maxDuration = 0.0f;
+        {
+            // Can't call base(duration) because max action duration needs to be determined here
+            float maxDuration = 0.0f;
             foreach (CCFiniteTimeAction action in actions)
-			{
-				if (action.Duration > maxDuration)
-				{
-					maxDuration = action.Duration;
-				}
-			}
-			Duration = maxDuration;
+            {
+                if (action.Duration > maxDuration)
+                {
+                    maxDuration = action.Duration;
+                }
+            }
+            Duration = maxDuration;
 
-			Actions = actions;
+            Actions = actions;
 
-			for (int i = 0; i < Actions.Length; i++)
-			{
-				var actionDuration = Actions [i].Duration;
-				if (actionDuration < Duration)
-				{
-					Actions [i] = new CCSequence (Actions [i], new CCDelayTime (Duration - actionDuration));
-				}
-			}
-		}
+            for (int i = 0; i < Actions.Length; i++)
+            {
+                var actionDuration = Actions [i].Duration;
+                if (actionDuration < Duration)
+                {
+                    Actions [i] = new CCSequence (Actions [i], new CCDelayTime (Duration - actionDuration));
+                }
+            }
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCParallelState (this, target);
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCParallelState (this, target);
 
-		}
+        }
 
-		/// <summary>
-		/// Reverses the current parallel sequence.
-		/// </summary>
-		/// <returns></returns>
-		public override CCFiniteTimeAction Reverse ()
-		{
+        public override CCFiniteTimeAction Reverse ()
+        {
             CCFiniteTimeAction[] rev = new CCFiniteTimeAction[Actions.Length];
-			for (int i = 0; i < Actions.Length; i++)
-			{
-				rev [i] = Actions [i].Reverse ();
-			}
+            for (int i = 0; i < Actions.Length; i++)
+            {
+                rev [i] = Actions [i].Reverse ();
+            }
 
-			return new CCParallel (rev);
-		}
+            return new CCParallel (rev);
+        }
 
-	}
+    }
 
-	internal class CCParallelState : CCFiniteTimeActionState
-	{
+    internal class CCParallelState : CCFiniteTimeActionState
+    {
 
-		protected CCFiniteTimeAction[] Actions { get; set; }
+        protected CCFiniteTimeAction[] Actions { get; set; }
 
-		protected CCFiniteTimeActionState[] ActionStates { get; set; }
+        protected CCFiniteTimeActionState[] ActionStates { get; set; }
 
-		public CCParallelState (CCParallel action, CCNode target)
-			: base (action, target)
-		{	
-			Actions = action.Actions;
-			ActionStates = new CCFiniteTimeActionState[Actions.Length];
+        public CCParallelState (CCParallel action, CCNode target)
+            : base (action, target)
+        {   
+            Actions = action.Actions;
+            ActionStates = new CCFiniteTimeActionState[Actions.Length];
 
-			for (int i = 0; i < Actions.Length; i++)
-			{
-				ActionStates [i] = (CCFiniteTimeActionState)Actions [i].StartAction (target);
-			}
-		}
+            for (int i = 0; i < Actions.Length; i++)
+            {
+                ActionStates [i] = (CCFiniteTimeActionState)Actions [i].StartAction (target);
+            }
+        }
 
-		protected internal override void Stop ()
-		{
-			for (int i = 0; i < Actions.Length; i++)
-			{
-				ActionStates [i].Stop ();
-			}
-			base.Stop ();
-		}
+        protected internal override void Stop ()
+        {
+            for (int i = 0; i < Actions.Length; i++)
+            {
+                ActionStates [i].Stop ();
+            }
+            base.Stop ();
+        }
 
-		public override void Update (float time)
-		{
-			for (int i = 0; i < Actions.Length; i++)
-			{
-				ActionStates [i].Update (time);
-			}
-		}
-	}
+        public override void Update (float time)
+        {
+            for (int i = 0; i < Actions.Length; i++)
+            {
+                ActionStates [i].Update (time);
+            }
+        }
+    }
 }

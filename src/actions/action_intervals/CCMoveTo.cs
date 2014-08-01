@@ -1,50 +1,50 @@
 namespace CocosSharp
 {
-	public class CCMoveTo : CCMoveBy
-	{
-		protected CCPoint EndPosition;
+    public class CCMoveTo : CCMoveBy
+    {
+        protected CCPoint EndPosition;
 
-		#region Constructors
+        #region Constructors
 
-		public CCMoveTo (float duration, CCPoint position) : base (duration, position)
-		{
-			EndPosition = position;
-		}
+        public CCMoveTo (float duration, CCPoint position) : base (duration, position)
+        {
+            EndPosition = position;
+        }
 
-		#endregion Constructors
+        #endregion Constructors
 
-		public CCPoint PositionEnd {
-			get { return EndPosition; }
-		}
+        public CCPoint PositionEnd {
+            get { return EndPosition; }
+        }
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCMoveToState (this, target);
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCMoveToState (this, target);
 
-		}
-	}
+        }
+    }
 
-	internal class CCMoveToState : CCMoveByState
-	{
+    internal class CCMoveToState : CCMoveByState
+    {
 
-		public CCMoveToState (CCMoveTo action, CCNode target)
-			: base (action, target)
-		{ 
-			StartPosition = target.Position;
-			PositionDelta = action.PositionEnd - target.Position;
-		}
+        public CCMoveToState (CCMoveTo action, CCNode target)
+            : base (action, target)
+        { 
+            StartPosition = target.Position;
+            PositionDelta = action.PositionEnd - target.Position;
+        }
 
-		public override void Update (float time)
-		{
-			if (Target != null)
-			{
-				CCPoint currentPos = Target.Position;
+        public override void Update (float time)
+        {
+            if (Target != null)
+            {
+                CCPoint currentPos = Target.Position;
 
-				CCPoint newPos = StartPosition + PositionDelta * time;
-				Target.Position = newPos;
-				PreviousPosition = newPos;
-			}
-		}
-	}
+                CCPoint newPos = StartPosition + PositionDelta * time;
+                Target.Position = newPos;
+                PreviousPosition = newPos;
+            }
+        }
+    }
 
 }

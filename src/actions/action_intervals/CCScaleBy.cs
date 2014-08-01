@@ -5,11 +5,11 @@ namespace CocosSharp
 		#region Constructors
 
 
-		public CCScaleBy (float duration, float s) : base (duration, s)
+        public CCScaleBy (float duration, float scale) : base (duration, scale)
 		{
 		}
 
-		public CCScaleBy (float duration, float sx, float sy) : base (duration, sx, sy)
+        public CCScaleBy (float duration, float scaleX, float scaleY) : base (duration, scaleX, scaleY)
 		{
 		}
 

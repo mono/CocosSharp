@@ -1,73 +1,76 @@
 namespace CocosSharp
 {
-	public class CCJumpBy : CCFiniteTimeAction
-	{
-		public CCPoint Position { get; protected set; }
+    public class CCJumpBy : CCFiniteTimeAction
+    {   
+        #region Properties
 
-		public float Height { get; protected set; }
+        public uint Jumps { get; protected set; }
+        public float Height { get; protected set; }
+        public CCPoint Position { get; protected set; }
 
-		public uint Jumps { get; protected set; }
+        #endregion Properties
 
-		#region Constructors
 
-		public CCJumpBy (float duration, CCPoint position, float height, uint jumps) : base (duration)
-		{
-			Position = position;
-			Height = height;
-			Jumps = jumps;
-		}
+        #region Constructors
 
-		#endregion Constructors
+        public CCJumpBy (float duration, CCPoint position, float height, uint jumps) : base (duration)
+        {
+            Position = position;
+            Height = height;
+            Jumps = jumps;
+        }
 
-		protected internal override CCActionState StartAction(CCNode target)
-		{
-			return new CCJumpByState (this, target);
-		}
+        #endregion Constructors
 
-		public override CCFiniteTimeAction Reverse ()
-		{
-			return new CCJumpBy (Duration, new CCPoint (-Position.X, -Position.Y), Height, Jumps);
-		}
-	}
+        protected internal override CCActionState StartAction(CCNode target)
+        {
+            return new CCJumpByState (this, target);
+        }
 
-	internal class CCJumpByState : CCFiniteTimeActionState
-	{
-		protected CCPoint Delta;
-		protected float Height;
-		protected uint Jumps;
-		protected CCPoint StartPosition;
-		protected CCPoint P;
+        public override CCFiniteTimeAction Reverse ()
+        {
+            return new CCJumpBy (Duration, new CCPoint (-Position.X, -Position.Y), Height, Jumps);
+        }
+    }
 
-		public CCJumpByState (CCJumpBy action, CCNode target)
-			: base (action, target)
-		{ 
-			Delta = action.Position;
-			Height = action.Height;
-			Jumps = action.Jumps;
-			P = StartPosition = target.Position;
-		}
+    internal class CCJumpByState : CCFiniteTimeActionState
+    {
+        protected CCPoint Delta;
+        protected float Height;
+        protected uint Jumps;
+        protected CCPoint StartPosition;
+        protected CCPoint P;
 
-		public override void Update (float time)
-		{
-			if (Target != null)
-			{
-				// Is % equal to fmodf()???
-				float frac = (time * Jumps) % 1f;
-				float y = Height * 4f * frac * (1f - frac);
-				y += Delta.Y * time;
-				float x = Delta.X * time;
+        public CCJumpByState (CCJumpBy action, CCNode target)
+            : base (action, target)
+        { 
+            Delta = action.Position;
+            Height = action.Height;
+            Jumps = action.Jumps;
+            P = StartPosition = target.Position;
+        }
 
-				CCPoint currentPos = Target.Position;
+        public override void Update (float time)
+        {
+            if (Target != null)
+            {
+                // Is % equal to fmodf()???
+                float frac = (time * Jumps) % 1f;
+                float y = Height * 4f * frac * (1f - frac);
+                y += Delta.Y * time;
+                float x = Delta.X * time;
 
-				CCPoint diff = currentPos - P;
-				StartPosition = diff + StartPosition;
+                CCPoint currentPos = Target.Position;
 
-				CCPoint newPos = StartPosition + new CCPoint (x, y);
-				Target.Position = newPos;
+                CCPoint diff = currentPos - P;
+                StartPosition = diff + StartPosition;
 
-				P = newPos;
-			}
-		}
-	}
+                CCPoint newPos = StartPosition + new CCPoint (x, y);
+                Target.Position = newPos;
+
+                P = newPos;
+            }
+        }
+    }
 
 }
