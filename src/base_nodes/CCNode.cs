@@ -718,7 +718,7 @@ namespace CocosSharp
 
         public virtual CCCamera Camera
         {
-            get { return Layer.Camera; }
+            get { return (Layer == null) ? null : Layer.Camera; }
             set { Layer.Camera = value; }
         }
 
