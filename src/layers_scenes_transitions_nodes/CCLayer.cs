@@ -123,7 +123,7 @@ namespace CocosSharp
         #region Constructors
 
         public CCLayer()
-            : this(null)
+            : this(CCSize.Zero)
         {  }
 
         public CCLayer(CCSize visibleBoundsDimensions, CCClipMode clipMode = CCClipMode.None)
@@ -163,6 +163,23 @@ namespace CocosSharp
 
         #region Content layout
 
+        protected override void AddedToScene()
+        {
+            base.AddedToScene();
+
+            // If the visible bounds size is zero then that use the visible screenspace in pixels
+            // i.e. the visible worldspace bounds rect will be (0,0, pixelWidth, pixelHeight)
+            if(VisibleBoundsWorldspace.Size == CCSize.Zero)
+            {
+                CCRect visibleBoundsScreenspace = Scene.VisibleBoundsScreenspace;
+                CCPoint centerInScreenspace = visibleBoundsScreenspace.Center;
+
+                Camera.OrthographicViewSizeWorldspace = visibleBoundsScreenspace.Size;
+                Camera.TargetInWorldspace = new CCPoint3(centerInScreenspace, Layer.VertexZ);
+                Camera.CenterInWorldspace = new CCPoint3(centerInScreenspace, Camera.NearAndFarOrthographicZClipping.X);
+            }
+        }
+
         void OnCameraVisibleBoundsChanged(object sender, EventArgs e)
         {
             CCCamera camera = sender as CCCamera;
@@ -192,7 +209,10 @@ namespace CocosSharp
 
         internal void UpdateVisibleBoundsRect()
         {
-			if(Viewport == null || Camera == null || Viewport.ViewportInPixels == CCRect.Zero)
+            if(Viewport == null || Camera == null || Viewport.ViewportInPixels == CCRect.Zero)
+                return;
+
+            if (Camera.Projection == CCCameraProjection.Projection2D && Camera.OrthographicViewSizeWorldspace == CCSize.Zero)
                 return;
 
             var viewportRectInPixels = Viewport.ViewportInPixels;

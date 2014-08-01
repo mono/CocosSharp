@@ -133,15 +133,15 @@ namespace CocosSharp
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end.
         /// </summary>
-        public CCLayerGradient (CCCamera camera, CCColor4B start, CCColor4B end) : this(camera, start, end, new CCPoint(0, -1))
+        public CCLayerGradient (CCColor4B start, CCColor4B end) : this(start, end, new CCPoint(0, -1))
         {
         }
 
-        public CCLayerGradient(CCCamera camera) : this(camera, new CCColor4B(0, 0, 0, 255), new CCColor4B(0, 0, 0, 255))
+        public CCLayerGradient() : this(new CCColor4B(0, 0, 0, 255), new CCColor4B(0, 0, 0, 255))
         {
         }
 
-        public CCLayerGradient(CCCamera camera, byte startOpacity, byte endOpacity) : base(camera)
+        public CCLayerGradient(byte startOpacity, byte endOpacity) : base()
         {
             StartOpacity = startOpacity;
             EndOpacity = endOpacity;
@@ -150,8 +150,8 @@ namespace CocosSharp
         /// <summary>
         /// Creates a full-screen CCLayer with a gradient between start and end in the direction of v. 
         /// </summary>
-        public CCLayerGradient (CCCamera camera, CCColor4B start, CCColor4B end, CCPoint gradientDirection) 
-            : base(camera, new CCColor4B(start.R, start.G, start.B, 255))
+        public CCLayerGradient (CCColor4B start, CCColor4B end, CCPoint gradientDirection) 
+            : base(new CCColor4B(start.R, start.G, start.B, 255))
         {
             EndColor = new CCColor3B(end.R, end.G, end.B);
             StartOpacity = start.A;
