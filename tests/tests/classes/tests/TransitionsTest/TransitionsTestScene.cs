@@ -117,7 +117,8 @@ namespace tests
 
             switch (nIndex)
             {
-                case 0: return new CCTransitionJumpZoom(t, s);
+                case 0:
+                    return new CCTransitionJumpZoom(t, s);
 
                 case 1: return new CCTransitionProgressRadialCCW(t, s);
                 case 2: return new CCTransitionProgressRadialCW(t, s);

@@ -1,4 +1,5 @@
 using CocosSharp;
+using System;
 
 namespace tests
 {
@@ -8,36 +9,65 @@ namespace tests
 		private static int MAX_LAYER = 22;
 		public static CCNode BaseNode;
 
+        protected CCLayer contentLayer;
+
 		public TextLayer() : base()
 		{
 
-			var bg = new CCSprite(TestResource.s_back3);
-			BaseNode = bg;
-			AddChild(bg, 0, EffectTestScene.kTagBackground);
+            Camera = AppDelegate.SharedCamera;
+            contentLayer = new CCLayer();
+            CCCamera contentCamera = new CCCamera(Camera.OrthographicViewSizeWorldspace, Camera.CenterInWorldspace, Camera.TargetInWorldspace);
+            contentLayer.Camera = contentCamera;
 
-			var Kathia = new CCSprite(TestResource.s_pPathSister2);
-			BaseNode.AddChild(Kathia, 1, EffectTestScene.kTagKathia);
+            var bg = new CCSprite(TestResource.s_back3);
+            BaseNode = bg;
+            contentLayer.AddChild(bg, 0, EffectTestScene.kTagBackground);
 
-			var sc = new CCScaleBy(2, 5);
-			var sc_back = sc.Reverse();
-			Kathia.RunAction(new CCRepeatForever(sc, sc_back));
+            var Kathia = new CCSprite(TestResource.s_pPathSister2);
+            BaseNode.AddChild(Kathia, 1, EffectTestScene.kTagKathia);
 
-			var Tamara = new CCSprite(TestResource.s_pPathSister1);
-			BaseNode.AddChild(Tamara, 1, EffectTestScene.kTagTamara);
+            var sc = new CCScaleBy(2, 5);
+            var sc_back = sc.Reverse();
+            Kathia.RunAction(new CCRepeatForever(sc, sc_back));
 
 
-			var sc2 = new CCScaleBy(2, 5);
-			var sc2_back = sc2.Reverse();
-			Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
+            var Tamara = new CCSprite(TestResource.s_pPathSister1);
+            BaseNode.AddChild(Tamara, 1, EffectTestScene.kTagTamara);
 
-			var colorBackground = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
-			AddChild(colorBackground, -1);
+            var sc2 = new CCScaleBy(2, 5);
+            var sc2_back = sc2.Reverse();
+            Tamara.RunAction(new CCRepeatForever(sc2, sc2_back));
 
+            var colorBackground = new CCLayerColor(new CCColor4B(32, 128, 32, 255));
+            contentLayer.AddChild(colorBackground, -1);
 		}
+
+        protected override void AddedToScene ()
+        {
+            base.AddedToScene();
+            Scene.AddChild(contentLayer, -1);
+        }
 
 		public override void OnEnter()
 		{
 			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
+
+            CCCamera contentCamera = contentLayer.Camera;
+
+            contentCamera.Projection = CCCameraProjection.Projection3D;
+            contentCamera.PerspectiveAspectRatio = 3.0f;
+
+            CCPoint3 cameraCenter = contentCamera.CenterInWorldspace;
+            CCPoint3 cameraTarget = contentCamera.TargetInWorldspace;
+
+            float targeCenterLength = (cameraTarget - cameraCenter).Length;
+
+
+            contentCamera.NearAndFarPerspectiveClipping = new CCPoint (0.15f, 100.0f);
+
+            contentCamera.PerspectiveFieldOfView = (float)Math.Atan(visibleBounds.Size.Height / (2.0f * targeCenterLength));
 
             Schedule(checkAnim);
 
@@ -45,7 +75,6 @@ namespace tests
 			var size = BaseNode.ContentSize;
 			BaseNode[EffectTestScene.kTagKathia].Position = new CCPoint(size.Width / 3, size.Center.Y);
 			BaseNode[EffectTestScene.kTagTamara].Position = new CCPoint(2 * size.Width / 3,size.Center.Y);
-
 
             BaseNode.RunAction(CurrentAction);
 		}
@@ -68,7 +97,7 @@ namespace tests
 			switch (nIndex)
 			{
 				case 0:
-					return new Shaky3DDemo(t);
+                    return new Shaky3DDemo(t);
 				case 1:
 					return new Waves3DDemo(t);
 				case 2:
@@ -128,7 +157,7 @@ namespace tests
 
 		public void checkAnim(float dt)
 		{
-			var s2 = this[EffectTestScene.kTagBackground];
+			var s2 = contentLayer[EffectTestScene.kTagBackground];
 			if (s2.NumberOfRunningActions == 0 && s2.Grid != null)
 				s2.Grid = null;
 			;

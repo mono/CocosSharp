@@ -11,8 +11,8 @@ namespace tests
 		public Shaky3DDemo (float t) : base (t, new CCGridSize(15, 10), 5, true)
 		{
 			// Testing of Properties
-			//Range = 5;
-			//Shake = true;
+//			Range = 5;
+//			Shake = true;
         }
     }
 }
