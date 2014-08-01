@@ -15,12 +15,12 @@ namespace tests
         public static void runTouchesTest()
         {
             s_nTouchCurCase = 0;
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             CCLayer pLayer = new TouchesPerformTest1(true, TEST_COUNT, s_nTouchCurCase);
 
             pScene.AddChild(pLayer);
 
-            AppDelegate.SharedDirector.ReplaceScene(pScene);
+            AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
         }
     }
 }

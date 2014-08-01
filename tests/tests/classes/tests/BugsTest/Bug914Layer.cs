@@ -12,7 +12,7 @@ namespace tests
         public static CCScene scene()
         {
             // 'scene' is an autorelease object.
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             // 'layer' is an autorelease object.
             //Bug914Layer layer = Bug914Layer.node();
 

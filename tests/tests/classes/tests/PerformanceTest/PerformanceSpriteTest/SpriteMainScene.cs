@@ -8,7 +8,7 @@ namespace tests
 {
     public class SpriteMainScene : CCScene
     {
-        public SpriteMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        public SpriteMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport)
         {
         }
 

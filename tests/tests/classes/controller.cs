@@ -433,8 +433,6 @@ namespace tests
                     break;
             }
 
-            scene.Director = AppDelegate.SharedDirector;
-
             return scene;
         }
     }

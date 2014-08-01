@@ -70,7 +70,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             var controlLayer = new CCControlSwitchTest();
             if (controlLayer != null)
             {

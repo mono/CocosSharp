@@ -10,7 +10,7 @@ namespace tests
 {
     public class ParticleMainScene : CCScene
     {
-        public ParticleMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector)
+        public ParticleMainScene() : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport)
         {
         }
 

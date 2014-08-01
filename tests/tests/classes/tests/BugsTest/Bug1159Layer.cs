@@ -46,7 +46,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             //Bug1159Layer layer = Bug1159Layer.node();
             //pScene.addChild(layer);
 

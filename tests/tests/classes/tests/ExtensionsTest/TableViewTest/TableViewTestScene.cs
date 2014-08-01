@@ -14,10 +14,10 @@ namespace tests.Extensions
 
         public static void runTableViewTest()
         {
-            var pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             var pLayer = new TableViewTestLayer();
             pScene.AddChild(pLayer);
-            AppDelegate.SharedDirector.ReplaceScene(pScene);
+            AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
         }
 
         private bool InitTableViewTestLayer()

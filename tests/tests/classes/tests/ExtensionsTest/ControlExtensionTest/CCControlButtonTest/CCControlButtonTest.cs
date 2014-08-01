@@ -88,7 +88,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
 		{
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
 			var controlLayer = new CCControlButtonTest_HelloVariableSize();
     		controlLayer.getSceneTitleLabel().Text = (title);
 			pScene.AddChild(controlLayer);
@@ -179,7 +179,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
             var controlLayer = new CCControlButtonTest_Inset();
             controlLayer.getSceneTitleLabel().Text = (title);
             pScene.AddChild(controlLayer);
@@ -284,7 +284,7 @@ namespace tests.Extensions
 		
         public new static CCScene sceneWithTitle(string title)
 		{
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
 			var controlLayer = new CCControlButtonTest_Event();
 			if (controlLayer != null)
 			{
@@ -358,7 +358,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
 		{
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedDirector);
+            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
 			var controlLayer = new CCControlButtonTest_Styling();
 			if (controlLayer != null)
 			{

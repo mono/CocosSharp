@@ -8,15 +8,9 @@ namespace tests
 {
     public class AppDelegate : CCApplicationDelegate
     {
-        static CCDirector sharedDirector;
         static CCWindow sharedWindow;
         static CCViewport sharedViewport;
         static CCCamera sharedCamera;
-
-        public static CCDirector SharedDirector
-        {
-            get { return sharedDirector; }
-        }
 
         public static CCWindow SharedWindow
         {
@@ -71,7 +65,7 @@ namespace tests
             CCSpriteFontCache.RegisterFont("Abberancy", 26);
             CCSpriteFontCache.RegisterFont("Abduction", 26);
 
-            sharedDirector = new CCDirector();
+            //sharedDirector = new CCDirector();
             //director.DisplayStats = true;
             //director.AnimationInterval = 1.0 / 60;
 
@@ -81,15 +75,15 @@ namespace tests
 //                application.ContentSearchPaths.Insert(0,"HD");
 //            }
 
-            sharedWindow.AddSceneDirector(sharedDirector);
+            //sharedWindow.AddSceneDirector(sharedDirector);
 
-            CCScene scene = new CCScene(sharedWindow, sharedViewport, sharedDirector);
+            CCScene scene = new CCScene(sharedWindow);
 			scene.Camera = sharedCamera;
 
             CCLayer layer = new TestController();
 
             scene.AddChild(layer);
-            sharedDirector.RunWithScene(scene);
+            sharedWindow.RunWithScene(scene);
         }
 
         public override void ApplicationDidEnterBackground(CCApplication application)

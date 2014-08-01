@@ -160,13 +160,13 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCScene(CCWindow window, CCViewport viewport, CCDirector director)
+        public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null)
         {
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
             Viewport = viewport;
             Window = window;
-            Director = director;
+            Director = (director == null) ? window.DefaultDirector : director;
 
 			if (window != null && director != null)
             	window.AddSceneDirector(director);

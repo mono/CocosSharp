@@ -26,7 +26,7 @@ namespace tests
         {
             s_nTexCurCase = 0;
             CCScene pScene = TextureTest.scene();
-            AppDelegate.SharedDirector.ReplaceScene(pScene);
+            AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
         }
     }
 }
