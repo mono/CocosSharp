@@ -13,7 +13,6 @@ namespace tests.Clipping
         public override void runThisTest()
         {
             CCLayer pLayer = nextTestAction();
-            pLayer.Camera = AppDelegate.SharedCamera;
             AddChild(pLayer);
             Director.ReplaceScene(this);
         }
@@ -62,7 +61,6 @@ namespace tests.Clipping
             sceneIdx++;
             sceneIdx = sceneIdx % MAX_LAYER;
             CCLayer pLayer = createTestLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
 
@@ -73,40 +71,42 @@ namespace tests.Clipping
             if (sceneIdx < 0)
                 sceneIdx += total;
             CCLayer pLayer = createTestLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
 
         public static CCLayer restartTestAction()
         {
             CCLayer pLayer = createTestLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
             return pLayer;
         }
     }
 
-    public class BaseClippingNodeTest : CCLayer
+    public class BaseClippingNodeTest : TestNavigationLayer
     {
         protected const int kTagStencilNode = 1;
         protected const int kTagClipperNode = 2;
         protected const int kTagContentNode = 3;
 
 		CCSprite background;
-		CCLabelTtf label;
-		CCLabelTtf subtitleLabel;
 
         public virtual void Setup()
         {
         }
 
-        public virtual string title()
+        public override string Title
         {
-            return "Clipping Demo";
+            get
+            {
+                return "Clipping Demo";
+            }
         }
 
-        public virtual string subtitle()
+        public override string Subtitle
         {
-            return "";
+            get
+            {
+                return base.Subtitle;
+            }
         }
 
         public BaseClippingNodeTest() : base()
@@ -115,64 +115,41 @@ namespace tests.Clipping
 			background.AnchorPoint = new CCPoint(0.5f, 0.5f);
 			AddChild(background, -1);
 
-			label = new CCLabelTtf(title(), "arial", 32);
-			AddChild(label, 1);
-
-
-			string subtitle_ = subtitle();
-			if (subtitle_.Length > 0)
-			{
-				subtitleLabel = new CCLabelTtf(subtitle_, "arial", 16);
-				AddChild(subtitleLabel, 1);
-
-			}
-
-			var item1 = new CCMenuItemImage(TestResource.s_pPathB1, TestResource.s_pPathB2, backCallback) { Tag = 51 };
-			var item2 = new CCMenuItemImage(TestResource.s_pPathR1, TestResource.s_pPathR2, restartCallback) { Tag = 52 };
-			var item3 = new CCMenuItemImage(TestResource.s_pPathF1, TestResource.s_pPathF2, nextCallback) { Tag = 53 };
-
-			var menu = new CCMenu(item1, item2, item3) { Tag = 50};
-
-			menu.Position = new CCPoint(0, 0);
-
-			AddChild(menu, 1);
         }
 
 		public override void OnEnter()
 		{
             Setup();
 
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+            var windowSize = Layer.VisibleBoundsWorldspace.Size;
 			var s = windowSize;
 
 			background.Position = s.Center;
-			label.Position = (new CCPoint(s.Width / 2, s.Height - 50));
-			subtitleLabel.Position = (new CCPoint(s.Width / 2, s.Height - 80));
-
-			var menu = this[50];
-
-			menu[51].Position = new CCPoint(s.Width / 2 - 100, 30);
-			menu[52].Position = new CCPoint(s.Width / 2, 30);
-			menu[53].Position = new CCPoint(s.Width / 2 + 100, 30);
-		
 		}
 
-        public void restartCallback(object pSender)
+        public override void RestartCallback(object sender)
         {
+            base.RestartCallback(sender);
+
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.restartTestAction());
             Director.ReplaceScene(s);
         }
 
-        public void nextCallback(object pSender)
+        public override void NextCallback(object sender)
         {
+            base.BackCallback(sender);
+
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.nextTestAction());
             Director.ReplaceScene(s);
         }
 
-        public void backCallback(object pSender)
+        public override void BackCallback(object sender)
         {
+            base.BackCallback(sender);
+
             CCScene s = new ClippingNodeTestScene();
             s.AddChild(ClippingNodeTestScene.backTestAction());
             Director.ReplaceScene(s);
@@ -250,9 +227,12 @@ namespace tests.Clipping
             return null;
         }
 
-        public override string title()
+        public override string Title
         {
-            return "Basic Test";
+            get 
+            {
+                return "Basic Test";
+            }
         }
 
         public override void Setup()
@@ -288,14 +268,20 @@ namespace tests.Clipping
 
     internal class ShapeTest : BasicTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Shape Basic Test";
+            get
+            {
+                return "Shape Basic Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "A DrawNode as stencil and Sprite as content";
+            get
+            {
+                return "A DrawNode as stencil and Sprite as content";
+            }
         }
 
         protected override CCNode Stencil()
@@ -313,14 +299,20 @@ namespace tests.Clipping
 
     internal class ShapeInvertedTest : ShapeTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Shape Inverted Basic Test";
+            get
+            {
+                return "Shape Inverted Basic Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "A DrawNode as stencil and Sprite as content, inverted";
+            get
+            {
+                return "A DrawNode as stencil and Sprite as content, inverted";
+            }
         }
 
         protected override CCClippingNode Clipper()
@@ -333,14 +325,20 @@ namespace tests.Clipping
 
     internal class SpriteTest : ShapeTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Sprite Basic Test";
+            get
+            {
+                return "Sprite Basic Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "A Sprite as stencil and DrawNode as content";
+            get
+            {
+                return "A Sprite as stencil and DrawNode as content";
+            }
         }
 
         protected override CCNode Stencil()
@@ -367,14 +365,20 @@ namespace tests.Clipping
 
     internal class SpriteNoAlphaTest : SpriteTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Sprite No Alpha Basic Test";
+            get
+            {
+                return "Sprite No Alpha Basic Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "A Sprite as stencil and DrawNode as content, no alpha";
+            get
+            {
+                return "A Sprite as stencil and DrawNode as content, no alpha";
+            }
         }
 
         protected override CCClippingNode Clipper()
@@ -387,14 +391,20 @@ namespace tests.Clipping
 
     internal class SpriteInvertedTest : SpriteTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Sprite Inverted Basic Test";
+            get
+            {
+                return "Sprite Inverted Basic Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "A Sprite as stencil and DrawNode as content, inverted";
+            get
+            {
+                return "A Sprite as stencil and DrawNode as content, inverted";
+            }
         }
 
         protected override CCClippingNode Clipper()
@@ -408,14 +418,20 @@ namespace tests.Clipping
 
     internal class NestedTest : BaseClippingNodeTest
     {
-        public override string title()
+        public override string Title
         {
-            return "Nested Test";
+            get
+            {
+                return "Nested Test";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Nest 9 Clipping Nodes, max is usually 8";
+            get
+            {
+                return "Nest 9 Clipping Nodes, max is usually 8";
+            }
         }
 
         public override void Setup()
@@ -453,7 +469,9 @@ namespace tests.Clipping
 
 		public override void OnEnter()
 		{
-			base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+			base.OnEnter(); 
+
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			foreach (var clipper in Children)
 			{
@@ -538,14 +556,20 @@ namespace tests.Clipping
 			m_pOuterClipper.Position = ContentSize.Center;
 
 		}
-        public override string title()
+        public override string Title
         {
-            return "Hole Demo";
+            get
+            {
+                return "Hole Demo";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Touch/click to poke holes";
+            get
+            {
+                return "Touch/click to poke holes";
+            }
         }
 
         private void pokeHoleAtPoint(CCPoint point)
@@ -576,7 +600,9 @@ namespace tests.Clipping
             CCPoint point =
                 m_pOuterClipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
             CCRect rect = m_pOuterClipper.BoundingBoxTransformedToWorld;
-            if (!rect.ContainsPoint(point)) return;
+            if (!rect.ContainsPoint(point)) 
+                return;
+
             this.pokeHoleAtPoint(point);
         }
     }
@@ -586,14 +612,20 @@ namespace tests.Clipping
         private bool m_bScrolling;
         private CCPoint m_lastPoint;
 
-        public override string title()
+        public override string Title
         {
-            return "Scroll View Demo";
+            get
+            {
+                return "Scroll View Demo";
+            }
         }
 
-        public override string subtitle()
+        public override string Subtitle
         {
-            return "Move/drag to scroll the content";
+            get
+            {
+                return "Move/drag to scroll the content";
+            }
         }
 
         public override void Setup()
@@ -623,7 +655,6 @@ namespace tests.Clipping
 
             content.RunAction(new CCRepeatForever(new CCRotateBy(1, 45)));
 
-
             m_bScrolling = false;
 
 			// Register Touch Event
@@ -650,7 +681,9 @@ namespace tests.Clipping
             CCTouch touch = touches[0];
             CCNode clipper = this.GetChildByTag(kTagClipperNode);
             CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
+
             m_bScrolling = clipper.BoundingBoxTransformedToWorld.ContainsPoint(point);
+            Console.WriteLine("Touched: " + point + "clipper.BB: " + clipper.BoundingBoxTransformedToWorld + " scrolling: " + m_bScrolling );
             m_lastPoint = point;
         }
 
@@ -661,10 +694,11 @@ namespace tests.Clipping
                 return;
             }
             CCTouch touch = touches[0];
-            CCNode clipper = this.GetChildByTag(kTagClipperNode);
+            CCNode clipper = this[kTagClipperNode];
             CCPoint point = clipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
+
             CCPoint diff = point - m_lastPoint;
-            CCNode content = clipper.GetChildByTag(kTagContentNode);
+            CCNode content = clipper[kTagContentNode];
             clipper.Position = clipper.Position + diff;
             m_lastPoint = point;
         }
