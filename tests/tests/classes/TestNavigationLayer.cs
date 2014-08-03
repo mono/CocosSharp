@@ -4,7 +4,7 @@ using CocosSharp;
 namespace tests
 {
     // Subclass this for test cases with a back/restart/next navigation bar as well as a title/subtitle labels
-    public abstract class TestNavigationLayer : CCLayer
+    public abstract class TestNavigationLayer : CCLayerColor
     {
         CCMenu navigationMenu;
         CCMenuItem backMenuItem;
