@@ -79,17 +79,37 @@ namespace CocosSharp
 
 	public class CCGame : Game
 	{
+
 		public CCGame()
 		{
+
+#if WINDOWS_PHONE
+            // This is needed for Windows Phone 8 to initialize correctly
+            var graphics = new GraphicsDeviceManager(this);
+#endif
+
 #if WINDOWS || WINDOWSGL || MACOS
             this.IsMouseVisible = true;
 #endif
 		}
 
-#if OUYA
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            // TODO: Add your initialization logic here
+
+            base.Initialize();
+        }
+
         protected override void Draw(GameTime gameTime)
         {
             base.Draw(gameTime);
+#if OUYA
 
 			// We will comment this out until Director and DrawManager are sorted out.
 //            Director.DrawManager.SpriteBatch.Begin();
@@ -108,8 +128,9 @@ namespace CocosSharp
 //                y += 25;
 //            }
 //            Director.DrawManager.SpriteBatch.End();
-        }
 #endif
+
+        }
 
 		protected override void Update(GameTime gameTime)
 		{
@@ -198,16 +219,11 @@ namespace CocosSharp
 
 #if WINDOWS_PHONE
 
-        public static CCApplication Create(string launchParameters, PhoneApplicationPage page)
+        public static void Create(CCApplicationDelegate appDelegate, string launchParameters, PhoneApplicationPage page)
         {
-            //if (instance == null)
-            //{
-                var game = XamlGame<CCGame>.Create(launchParameters, page);
-            //    instance = new CCApplication(game);
-            //}
-
-            //return instance;
-                return null;
+            var game = XamlGame<CCGame>.Create(launchParameters, page);
+            var instance = new CCApplication(game);
+            instance.ApplicationDelegate = appDelegate;
         }
 
 #endif
@@ -559,7 +575,6 @@ namespace CocosSharp
 		public override void Update(GameTime gameTime)
 		{
 			XnaGameTime = gameTime;
-
 			GameTime.ElapsedGameTime = gameTime.ElapsedGameTime;
 			GameTime.IsRunningSlowly = gameTime.IsRunningSlowly;
 			GameTime.TotalGameTime = gameTime.TotalGameTime;

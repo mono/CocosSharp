@@ -7,23 +7,21 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Microsoft.Xna.Framework;
-using MonoGame.Framework.WindowsPhone;
+using CocosSharp;
 using TestWin8Phone.Resources;
 
 namespace TestWin8Phone
 {
     public partial class GamePage : PhoneApplicationPage
     {
-        private Game1 _game;
 
         // Constructor
         public GamePage()
         {
             InitializeComponent();
 
-            _game = XamlGame<Game1>.Create("", this);
-
+            CocosSharp.CCApplication.Create(new tests.AppDelegate(), "", this);
+            
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
