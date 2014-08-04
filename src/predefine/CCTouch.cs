@@ -25,7 +25,7 @@ namespace CocosSharp
         }
 
         /** returns the start touch location in screen coordinates */
-        public CCPoint StartLocatiOnScreen
+        public CCPoint StartLocationOnScreen
         {
             get { return startPoint; }
         }
