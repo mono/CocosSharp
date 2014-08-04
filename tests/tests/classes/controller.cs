@@ -89,9 +89,11 @@ namespace tests
             closeMenu.Position = CCPoint.Zero;
             closeMenuItem.Position = new CCPoint(visibleBounds.Size.Width - 40, visibleBounds.Size.Height - 40);
 
+#if !PSM && !WINDOWS_PHONE
+
             versionLabel.HorizontalAlignment = CCTextAlignment.Left;
             versionLabel.Position = new CCPoint (10.0f, visibleBounds.Size.Height - 40);
-
+#endif
             testListMenu.ContentSize = new CCSize(visibleBounds.Size.Width, ((int)TestCases.TESTS_COUNT + 1) * LINE_SPACE);
 
             int i = 0;

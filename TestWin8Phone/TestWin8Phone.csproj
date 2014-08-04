@@ -84,6 +84,9 @@
     <Compile Include="..\tests\tests\classes\testBasic.cs">
       <Link>classes\testBasic</Link>
     </Compile>
+    <Compile Include="..\tests\tests\classes\TestNavigationLayer.cs">
+      <Link>classes\TestNavigationLayer.cs</Link>
+    </Compile>
     <Compile Include="..\tests\tests\classes\testResource.cs">
       <Link>classes\testResource</Link>
     </Compile>
@@ -1200,7 +1203,6 @@
     <Compile Include="GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Game1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1232,13 +1234,12 @@
     <Content Include="Icon.png" />
     <Content Include="powered.png" />
   </ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\Extensions\**\*.*">
-			<Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Extensions\**\*.*">
+      <Link>Extensions\CocosSharp\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

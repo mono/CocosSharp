@@ -64,4 +64,5 @@ using System.Resources;
 #if DEBUG
 // Friendly assemblies - SHOULD MAKE THESE SIGNED
 [assembly: InternalsVisibleTo("CocosSharpTests")]
+[assembly: InternalsVisibleTo("TestWin8Phone")]
 #endif
