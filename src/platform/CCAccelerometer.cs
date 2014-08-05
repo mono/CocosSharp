@@ -173,8 +173,8 @@ namespace CocosSharp
             accelerationValue.Z = float.Parse(temp[3]);
             
             #else
-            accelerationValue.Y = -float.Parse(temp[1].Substring(0, temp[1].Length - 1));
-            accelerationValue.X = -float.Parse(temp[2].Substring(0, temp[2].Length - 1));
+            accelerationValue.Y = float.Parse(temp[1].Substring(0, temp[1].Length - 1));
+            accelerationValue.X = float.Parse(temp[2].Substring(0, temp[2].Length - 1));
             accelerationValue.Z = float.Parse(temp[3]);
             #endif
         }
