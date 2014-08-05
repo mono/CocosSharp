@@ -43,6 +43,8 @@ namespace CocosSharp
     /// </summary>
     public class CCScene : CCNode
     {
+        static readonly CCRect exactFitRatio = new CCRect(0,0,1,1);
+
         CCViewport viewport;
         CCWindow window;
 
@@ -90,29 +92,29 @@ namespace CocosSharp
                     window = value;
                     viewport.LandscapeScreenSizeInPixels = Window.LandscapeWindowSizeInPixels;
                 }
-				if (window != null)
-				{
-					InitializeLazySceneGraph(Children);
-				}
+                if (window != null)
+                {
+                    InitializeLazySceneGraph(Children);
+                }
             }
         }
 
-		void InitializeLazySceneGraph(CCRawList<CCNode> children)
-		{
-			if (children == null)
-				return;
+        void InitializeLazySceneGraph(CCRawList<CCNode> children)
+        {
+            if (children == null)
+                return;
 
-			foreach (var child in children)
-			{
-				if (child != null)
-				{
-					child.AttachEvents();
-					child.AttachActions();
+            foreach (var child in children)
+            {
+                if (child != null)
+                {
+                    child.AttachEvents();
+                    child.AttachActions();
                     child.AttachSchedules ();
-					InitializeLazySceneGraph(child.Children);
-				}
-			}
-		}
+                    InitializeLazySceneGraph(child.Children);
+                }
+            }
+        }
 
         public override CCDirector Director { get; set; }
 
@@ -155,6 +157,14 @@ namespace CocosSharp
             set {}
         }
 
+        public override CCAffineTransform AffineLocalTransform
+        {
+            get
+            {
+                return CCAffineTransform.Identity;
+            }
+        }
+
         #endregion Properties
 
 
@@ -168,8 +178,8 @@ namespace CocosSharp
             Window = window;
             Director = (director == null) ? window.DefaultDirector : director;
 
-			if (window != null && director != null)
-            	window.AddSceneDirector(director);
+            if (window != null && director != null)
+                window.AddSceneDirector(director);
 
             SceneResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
         }
@@ -199,7 +209,7 @@ namespace CocosSharp
 
             if(viewport != null && viewport == Viewport) 
             {
- 
+
                 UpdateResolutionRatios();
                 SceneViewportChanged(this, null);
 
@@ -250,8 +260,6 @@ namespace CocosSharp
             }
         }
 
-
-        static CCRect exactFitRatio = new CCRect(0,0,1,1);
 
         CCRect CalculateResolutionRatio(CCRect resolutionRect, CCSceneResolutionPolicy resolutionPolicy)
         {
