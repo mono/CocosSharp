@@ -286,7 +286,7 @@ namespace tests
             float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
             curPos = testListMenu.Position;
-            CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
+            CCPoint nextPos = new CCPoint(curPos.X, curPos.Y - nMoveY);
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             if (nextPos.Y < 0.0f)
             {
@@ -316,7 +316,7 @@ namespace tests
             curPos = testListMenu.Position;
 
             var nextPos = curPos;
-            nextPos.Y += (delta) / LINE_SPACE;
+            nextPos.Y -= (delta) / LINE_SPACE;
 
             if (nextPos.Y < 0) 
             {
