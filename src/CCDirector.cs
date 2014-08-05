@@ -246,6 +246,11 @@ namespace CocosSharp
                 NextScene.Director = this;
             }
 
+            if (RunningScene != null && NextScene.Window != RunningScene.Window)
+            {
+                NextScene.Window = RunningScene.Window;
+            }
+
             RunningScene = NextScene;
             NextScene = null;
 
