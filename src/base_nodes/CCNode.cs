@@ -812,6 +812,11 @@ namespace CocosSharp
 
         #region Constructors
 
+        public CCNode(CCSize contentSize) : this()
+        {
+            ContentSize = contentSize;
+        }
+
         public CCNode()
         {
             additionalTransform = CCAffineTransform.Identity;
