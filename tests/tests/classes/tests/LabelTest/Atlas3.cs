@@ -16,9 +16,8 @@ namespace tests
         {
             m_time = 0;
 
-			var col = new CCLayerColor(new CCColor4B(128, 128, 128, 255));
-			//var col = new CCLayerColor(new CCColor4B(Microsoft.Xna.Framework.Color.Black));
-            AddChild(col, -10);
+            Color = new CCColor3B(128, 128, 128);
+            Opacity = 255;
 
 			label1 = new CCLabelBMFont("Test", "fonts/bitmapFontTest2.fnt");
 

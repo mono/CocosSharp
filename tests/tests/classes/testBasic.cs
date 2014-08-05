@@ -13,7 +13,7 @@ namespace tests
         CCLayer contentLayer;
 
         public TestScene()
-            : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport, AppDelegate.SharedWindow.DefaultDirector)
+            : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport)
         {
             contentLayer = new CCLayer();
             contentLayer.Camera = AppDelegate.SharedCamera;

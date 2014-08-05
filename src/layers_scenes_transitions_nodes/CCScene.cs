@@ -227,10 +227,11 @@ namespace CocosSharp
             {
                 var unionedBounds = CCRect.Zero;
 
-                foreach (CCLayer layer in Children)
+                foreach (var child in Children)
                 {
-                    if (layer != null)
+                    if (child != null && child is CCLayer)
                     {
+                        var layer = child as CCLayer;
                         unionedBounds.Origin.X = Math.Min (unionedBounds.Origin.X, layer.VisibleBoundsWorldspace.Origin.X);
                         unionedBounds.Origin.Y = Math.Min (unionedBounds.Origin.Y, layer.VisibleBoundsWorldspace.Origin.Y);
                         unionedBounds.Size.Width = Math.Max (unionedBounds.MaxX, layer.VisibleBoundsWorldspace.MaxX) - unionedBounds.Origin.X;
