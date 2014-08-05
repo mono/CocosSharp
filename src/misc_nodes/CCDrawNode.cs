@@ -397,6 +397,7 @@ namespace CocosSharp
         public void Clear()
         {
             triangleVertices.Clear();
+            lineVertices.Clear();
         }
 
         protected override void Draw()
@@ -421,7 +422,6 @@ namespace CocosSharp
                 int primitiveCount = triangleVertsCount / 3;
                 // submit the draw call to the graphics card
                 Window.DrawManager.DrawPrimitives(PrimitiveType.TriangleList, triangleVertices.Elements, 0, primitiveCount);
-                triangleVertices.Clear();
                 //DrawManager.DrawCount++;
             }
         }
@@ -434,7 +434,6 @@ namespace CocosSharp
                 int primitiveCount = lineVertsCount / 2;
                 // submit the draw call to the graphics card
                  Window.DrawManager.DrawPrimitives(PrimitiveType.LineList, lineVertices.Elements, 0, primitiveCount);
-                 lineVertices.Clear();
                 //DrawManager.DrawCount++;
             }
         }
