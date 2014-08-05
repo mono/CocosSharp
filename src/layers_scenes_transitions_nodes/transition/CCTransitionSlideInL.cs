@@ -24,55 +24,50 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public class CCTransitionSlideInL : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionSlideInL : CCTransitionScene
     {
+        #region Properties
+
+        protected virtual CCFiniteTimeAction Action
+        {
+            get
+            {
+                var bounds = Layer.VisibleBoundsWorldspace;
+                return new CCMoveBy(Duration, new CCPoint(bounds.Size.Width, 0));
+            }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get { return EaseAction(Action); }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get { return EaseAction(Action); }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
         public CCTransitionSlideInL (float t, CCScene scene) : base (t, scene)
-        { }
-        
-        #region ICCTransitionEaseScene Members
+        { 
+        }
+
+        #endregion Constructors
+
+
+        protected override void InitialiseScenes()
+        {
+            var bounds = Layer.VisibleBoundsWorldspace;
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y);
+        }
 
         public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
-        }
-
-        #endregion
-
-        /// <summary>
-        /// initializes the scenes
-        /// </summary>
-        protected virtual void InitScenes()
-        {
-            var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y);
-        }
-
-        /// <summary>
-        /// returns the action that will be performed by the incomming and outgoing scene
-        /// </summary>
-        /// <returns></returns>
-        public virtual CCFiniteTimeAction Action()
-        {
-            var bounds = Layer.VisibleBoundsWorldspace;
-            return new CCMoveBy(Duration, new CCPoint(bounds.Size.Width, 0));
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            InitScenes();
-
-            CCFiniteTimeAction incAction = Action();
-            CCFiniteTimeAction outcAction = Action();
-
-            CCFiniteTimeAction inAction = EaseAction(incAction);
-            CCFiniteTimeAction outAction = new CCSequence
-                (
-                    EaseAction(outcAction),
-                    new CCCallFunc((Finish))
-                );
-            InScene.RunAction(inAction);
-            OutScene.RunAction(outAction);
         }
 
         protected override void SceneOrder()

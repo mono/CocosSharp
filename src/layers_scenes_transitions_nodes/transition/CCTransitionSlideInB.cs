@@ -26,32 +26,38 @@ namespace CocosSharp
 {
     public class CCTransitionSlideInB : CCTransitionSlideInL
     {
-        public CCTransitionSlideInB (float t, CCScene scene) : base (t, scene)
-        { }
+        #region Properties
 
-        /// <summary>
-        ///  initializes the scenes 
-        /// </summary>
-        protected override void InitScenes()
+        protected override CCFiniteTimeAction Action
         {
-            var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y -(bounds.Size.Height - 0.5f));
+            get
+            {
+                var bounds = Layer.VisibleBoundsWorldspace;
+                return new CCMoveBy(Duration, new CCPoint(bounds.Origin.X, bounds.Origin.Y + bounds.Size.Height - 0.5f));
+            }
         }
 
-        /// <summary>
-        ///  returns the action that will be performed by the incomming and outgoing scene 
-        /// </summary>
-        /// <returns></returns>
-        public override CCFiniteTimeAction Action()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTransitionSlideInB (float duration, CCScene scene) : base (duration, scene)
+        { 
+        }
+
+        #endregion Constructors
+
+
+        protected override void InitialiseScenes()
         {
             var bounds = Layer.VisibleBoundsWorldspace;
-            return new CCMoveBy (Duration, new CCPoint(bounds.Origin.X, bounds.Origin.Y + bounds.Size.Height - 0.5f));
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y -(bounds.Size.Height - 0.5f));
         }
 
         protected override void SceneOrder()
         {
             IsInSceneOnTop = true;
         }
-
     }
 }

@@ -26,13 +26,14 @@ namespace CocosSharp
 {
     public class CCTransitionMoveInB : CCTransitionMoveInL
     {
-        public CCTransitionMoveInB (float t, CCScene scene) : base (t, scene)
-        { }
+        public CCTransitionMoveInB (float duration, CCScene scene) : base (duration, scene)
+        { 
+        }
 
-        public override void InitScenes()
+        protected override void InitialiseScenes()
         {
             var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y -bounds.Size.Height);
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X, bounds.Origin.Y -bounds.Size.Height);
         }
 
     }

@@ -32,51 +32,43 @@ namespace CocosSharp
         const int SceneFade = 2147483647;
         protected CCColor4B Color;
 
+        CCLayerColor fadeLayer;
+
 
         #region Constructors
 
-        /// <summary>
-        /// creates the transition with a duration and with an RGB color
-        /// Example: FadeTransition::create(2, scene, ccc3(255,0,0); // red color
-        /// </summary>
         public CCTransitionFade (float duration, CCScene scene, CCColor3B color) : base (duration, scene)
         {
             Color = new CCColor4B {R = color.R, G = color.G, B = color.B, A = 0};
 
         }
 
-        public CCTransitionFade (float t, CCScene scene) : this (t, scene, CCColor3B.Black)
+        public CCTransitionFade (float duration, CCScene scene) : this (duration, scene, CCColor3B.Black)
         {
         }
 
         #endregion Constructors
 
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
-            CCLayerColor l = new CCLayerColor(Camera, Color);
-            InScene.Visible = false;
+            fadeLayer = new CCLayerColor(Color);
+            fadeLayer.Visible = false;
+            InSceneNodeContainer.Visible = false;
 
-            AddChild(l, 2, SceneFade);
-            CCNode f = this[SceneFade];
+            AddChild(fadeLayer, 20, SceneFade);
 
             var a = (CCFiniteTimeAction) new CCSequence
                                            (
+                                               new CCShow(),
                                                new CCFadeIn (Duration / 2),
                                                new CCCallFunc((HideOutShowIn)),
-                                               new CCFadeOut  (Duration / 2),
-                                               new CCCallFunc((Finish))
+                                               new CCFadeOut  (Duration / 2)
                                            );
 
-            f.RunAction(a);
-        }
-
-        public override void OnExit()
-        {
-            base.OnExit();
-            RemoveChildByTag(SceneFade, false);
+            fadeLayer.RunAction(a);
         }
     }
 }

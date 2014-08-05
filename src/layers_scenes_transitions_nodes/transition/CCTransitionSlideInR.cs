@@ -26,26 +26,33 @@ namespace CocosSharp
 {
     public class CCTransitionSlideInR : CCTransitionSlideInL
     {
-        public CCTransitionSlideInR (float t, CCScene scene) : base (t, scene)
-        { }
+        #region Properties
 
-        /// <summary>
-        /// initializes the scenes 
-        /// </summary>
-        protected override void InitScenes()
+        protected override CCFiniteTimeAction Action
         {
-            var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
+            get
+            {
+                var bounds = Layer.VisibleBoundsWorldspace;
+                return new CCMoveBy(Duration, new CCPoint(bounds.Origin.X - (bounds.Size.Width), bounds.Origin.Y));
+            }
         }
 
-        /// <summary>
-        /// returns the action that will be performed by the incomming and outgoing scene
-        /// </summary>
-        /// <returns></returns>
-        public override CCFiniteTimeAction Action()
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTransitionSlideInR (float t, CCScene scene) : base (t, scene)
+        { 
+        }
+
+        #endregion Constructors
+
+
+        protected override void InitialiseScenes()
         {
             var bounds = Layer.VisibleBoundsWorldspace;
-            return new CCMoveBy (Duration, new CCPoint(bounds.Origin.X -(bounds.Size.Width), bounds.Origin.Y));
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
         }
 
         protected override void SceneOrder()

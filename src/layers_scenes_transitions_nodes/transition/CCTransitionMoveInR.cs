@@ -29,10 +29,10 @@ namespace CocosSharp
         public CCTransitionMoveInR (float t, CCScene scene) : base (t, scene)
         { }
 
-        public override void InitScenes()
+        protected override void InitialiseScenes()
         {
             var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
         }
 
     }

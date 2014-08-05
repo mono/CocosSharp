@@ -24,53 +24,46 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    public class CCTransitionMoveInL : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionMoveInL : CCTransitionScene
     {
+        #region Properties
+
+        public virtual CCFiniteTimeAction Action
+        {
+            get { return new CCMoveTo(Duration, new CCPoint(0, 0)); }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get { return EaseAction(Action); }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get { return EaseAction(Action); }
+        }
+
+        #endregion Properties
+
+        #region Constructors
+
         public CCTransitionMoveInL (float t, CCScene scene) : base (t, scene)
         { }
 
-        #region ICCTransitionEaseScene Members
+        #endregion Constructors
 
-        public CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
+
+        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
         }
 
-        #endregion
-
-        /// <summary>
-        /// initializes the scenes
-        /// </summary>
-        public virtual void InitScenes()
+        protected override void InitialiseScenes()
         {
+            base.InitialiseScenes();
+
             var bounds = Layer.VisibleBoundsWorldspace;
-            InScene.Position = new CCPoint(bounds.Origin.X - bounds.Size.Width, bounds.Origin.Y);
-        }
-
-        /// <summary>
-        /// returns the action that will be performed
-        /// </summary>
-        /// <returns></returns>
-        public virtual CCFiniteTimeAction Action()
-        {
-            return new CCMoveTo (Duration, new CCPoint(0, 0));
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            InitScenes();
-
-            CCFiniteTimeAction a = Action();
-
-            InScene.RunAction
-                (
-                    new CCSequence
-                        (
-                            EaseAction(a),
-                            new CCCallFunc(Finish)
-                        )
-                );
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X - bounds.Size.Width, bounds.Origin.Y);
         }
 
     }

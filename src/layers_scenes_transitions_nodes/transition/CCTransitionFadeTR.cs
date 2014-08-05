@@ -29,51 +29,52 @@ namespace CocosSharp
     /// @brief CCTransitionFadeTR:
     /// Fade the tiles of the outgoing scene from the left-bottom corner the to top-right corner.
     /// </summary>
-    public class CCTransitionFadeTR : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionFadeTR : CCTransitionScene
     {
-        #region ICCTransitionEaseScene Members
+        CCFiniteTimeAction action;
 
-        public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
+        #region Properties
+
+        protected override CCFiniteTimeAction OutSceneAction
         {
-            return action;
+            get
+            {
+                return EaseAction(action);
+            }
         }
 
-        #endregion
+        #endregion Properties
 
-        public virtual CCFiniteTimeAction CreateAction(CCGridSize size)
-        {
-            return new CCFadeOutTRTiles(Duration, size);
-        }
-
-        public override void OnEnter()
-        {
-            base.OnEnter();
-
-            float aspect = Scene.Viewport.AspectRatio;
-            var x = (int) (12 * aspect);
-            int y = 12;
-
-            CCFiniteTimeAction action = CreateAction(new CCGridSize(x, y));
-
-            OutScene.RunAction
-                (
-                        new CCSequence
-                        (
-                            EaseAction(action),
-                            new CCCallFunc(Finish),
-                            new CCStopGrid()
-                        )
-                );
-        }
 
         #region Constructors
 
-        public CCTransitionFadeTR(float t, CCScene scene) : base(t, scene)
+        public CCTransitionFadeTR(float duration, CCScene scene) : base(duration, scene)
         {
         }
 
         #endregion Constructors
 
+
+        protected virtual CCFiniteTimeAction CreateAction(CCGridSize size)
+        {
+            return new CCFadeOutTRTiles(Duration, size);
+        }
+
+        protected virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
+        {
+            return action;
+        }
+
+        protected override void InitialiseScenes()
+        {
+            base.InitialiseScenes();
+
+            float aspect = Scene.Viewport.AspectRatio;
+            var x = (int) (12 * aspect);
+            int y = 12;
+
+            action = CreateAction(new CCGridSize(x, y));
+        }
 
         protected override void SceneOrder()
         {

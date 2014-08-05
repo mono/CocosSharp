@@ -26,9 +26,52 @@ namespace CocosSharp
 {
     public class CCTransitionZoomFlipX : CCTransitionSceneOriented
     {
+        float inDeltaZ, inAngleZ;
+        float outDeltaZ, outAngleZ;
+
+
+        #region Properties
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get 
+            { 
+                return new CCSequence
+                    (
+                        new CCDelayTime (Duration / 2),
+                        new CCSpawn
+                        (
+                            new CCOrbitCamera(Duration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
+                            new CCScaleTo(Duration / 2, 1),
+                            new CCShow()
+                        )
+                    );
+            }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get 
+            { 
+                return new CCSequence(
+                    new CCSpawn
+                    (
+                        new CCOrbitCamera(Duration / 2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
+                        new CCScaleTo(Duration / 2, 0.5f)
+                    ),
+                    new CCHide(),
+                    new CCDelayTime (Duration / 2)
+                );
+            }
+        }
+
+        #endregion Properties
+
+
         #region Constructors
 
-        public CCTransitionZoomFlipX (float t, CCScene s, CCTransitionOrientation o) : base(t, s, o)
+        public CCTransitionZoomFlipX (float duration, CCScene scene, CCTransitionOrientation orientation) 
+            : base(duration, scene, orientation)
         {
         }
 
@@ -39,11 +82,14 @@ namespace CocosSharp
         {
             base.OnEnter();
 
-            CCFiniteTimeAction inA, outA;
-            InScene.Visible = false;
+            InSceneNodeContainer.Visible = false;
+            InSceneNodeContainer.Scale = 0.5f;
 
-            float inDeltaZ, inAngleZ;
-            float outDeltaZ, outAngleZ;
+            InSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+            OutSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+
+            InSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            OutSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
             if (Orientation == CCTransitionOrientation.RightOver)
             {
@@ -59,30 +105,6 @@ namespace CocosSharp
                 outDeltaZ = -90;
                 outAngleZ = 0;
             }
-            inA = new CCSequence
-                (
-                    new CCDelayTime (Duration / 2),
-                    new CCSpawn
-                        (
-                            new CCOrbitCamera(Duration / 2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
-                            new CCScaleTo(Duration / 2, 1),
-                            new CCShow()
-                        ),
-                    new CCCallFunc(Finish)
-                );
-            outA = new CCSequence(
-                    new CCSpawn
-                        (
-                            new CCOrbitCamera(Duration / 2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
-                            new CCScaleTo(Duration / 2, 0.5f)
-                        ),
-                    new CCHide(),
-                    new CCDelayTime (Duration / 2)
-                );
-
-            InScene.Scale = 0.5f;
-            InScene.RunAction(inA);
-            OutScene.RunAction(outA);
         }
 
     }

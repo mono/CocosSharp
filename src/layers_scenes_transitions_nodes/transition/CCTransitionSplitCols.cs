@@ -25,12 +25,36 @@ THE SOFTWARE.
 
 namespace CocosSharp
 {
-    /// <summary>
-    /// @brief CCTransitionSplitCols:
-    /// The odd columns goes upwards while the even columns goes downwards.
-    /// </summary>
-    public class CCTransitionSplitCols : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionSplitCols : CCTransitionScene
     {
+        protected virtual CCFiniteTimeAction Action
+        {
+            get { return new CCSplitCols(Duration / 2.0f, 3); }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get
+            {
+                return new CCSequence(
+                    Action,
+                    new CCCallFunc((HideOutShowIn)),
+                    new CCDelayTime(Duration / 2.0f)
+                );
+            }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get
+            {
+                return new CCSequence(
+                    new CCDelayTime(Duration / 2.0f),
+                    Action.Reverse()
+                );
+            }
+        }
+
         #region Constructors
 
         public CCTransitionSplitCols(float t, CCScene scene) : base(t, scene)
@@ -39,41 +63,17 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-        #region ICCTransitionEaseScene Members
-
         public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseInOut(action, 3.0f);
         }
 
-        #endregion
 
-        public virtual CCFiniteTimeAction Action()
+        protected override void InitialiseScenes()
         {
-            return new CCSplitCols(Duration / 2.0f, 3);
-        }
+            base.InitialiseScenes();
 
-        public override void OnEnter()
-        {
-            base.OnEnter();
-            InScene.Visible = false;
-
-            CCFiniteTimeAction split = Action();
-            CCFiniteTimeAction seq = new CCSequence(
-                new CCCallFunc((HideOutShowIn)),
-                split.Reverse()
-                );
-
-            TransitionSceneContainerLayer.RunAction(split);
-
-            RunAction(
-                    new CCSequence(
-                    EaseAction(seq),
-                    new CCCallFunc(Finish),
-                    new CCStopGrid()
-                    )
-                );
+            InSceneNodeContainer.Visible = false;
         }
     }
 }

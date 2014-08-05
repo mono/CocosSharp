@@ -5,7 +5,7 @@ namespace CocosSharp
         const int SceneRadial = 0xc001;
         protected float From;
         protected float To;
-        protected CCScene SceneToBeModified;
+        protected CCNode SceneNodeContainerToBeModified;
 
 
         #region Constructors
@@ -17,12 +17,12 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
             if (Layer == null || Viewport == null)
                 return;
 
-            base.OnEnter();
+            base.InitialiseScenes();
 
             SetupTransition();
 
@@ -42,11 +42,11 @@ namespace CocosSharp
             // render outScene to its texturebuffer
             texture.Clear(0, 0, 0, 1);
             texture.Begin();
-            SceneToBeModified.Visit();
+            SceneNodeContainerToBeModified.Visit();
             texture.End();
 
             //    Since we've passed the outScene to the texture we don't need it.
-            if (SceneToBeModified == OutScene)
+            if (SceneNodeContainerToBeModified == OutSceneNodeContainer)
             {
                 HideOutShowIn();
             }
@@ -55,16 +55,13 @@ namespace CocosSharp
             CCProgressTimer node = ProgressTimerNodeWithRenderTexture(texture);
 
             // create the blend action
-            CCSequence layerAction = new CCSequence(
-                new CCProgressFromTo(Duration, From, To),
-                new CCCallFunc(Finish)
-                );
-
-            // run the blend action
-            node.RunAction(layerAction);
+            var layerAction = new CCProgressFromTo(Duration, From, To);
 
             // add the layer (which contains our two rendertextures) to the scene
             AddChild(node, 2, SceneRadial);
+
+            // run the blend action
+            node.RunAction(layerAction);
         }
 
         // clean up on exit
@@ -79,7 +76,7 @@ namespace CocosSharp
 
         protected virtual void SetupTransition()
         {
-            SceneToBeModified = OutScene;
+            SceneNodeContainerToBeModified = OutSceneNodeContainer;
             From = 100;
             To = 0;
         }
@@ -245,7 +242,7 @@ namespace CocosSharp
 
         protected override void SetupTransition()
         {
-            SceneToBeModified = InScene;
+            SceneNodeContainerToBeModified = InSceneNodeContainer;
             From = 0;
             To = 100;
         }

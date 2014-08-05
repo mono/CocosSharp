@@ -26,6 +26,41 @@ namespace CocosSharp
 {
     public class CCTransitionFlipAngular : CCTransitionSceneOriented
     {
+        float inDeltaZ, inAngleZ;
+        float outDeltaZ, outAngleZ;
+
+
+        #region Properties
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get
+            {
+                return new CCSequence
+                    (
+                        new CCOrbitCamera(Duration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
+                        new CCHide(),
+                        new CCDelayTime (Duration / 2)
+                    );
+            }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get
+            {
+                return new CCSequence
+                    (
+                        new CCDelayTime (Duration / 2),
+                        new CCShow(),
+                        new CCOrbitCamera(Duration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0)                    
+                    );
+            }
+        }
+
+        #endregion Properties
+
+
         #region Constructors
 
         public CCTransitionFlipAngular(float t, CCScene s, CCTransitionOrientation o) : base(t, s, o)
@@ -35,15 +70,11 @@ namespace CocosSharp
         #endregion Constructors
 
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
-            CCFiniteTimeAction inA, outA;
-            InScene.Visible = false;
-
-            float inDeltaZ, inAngleZ;
-            float outDeltaZ, outAngleZ;
+            InSceneNodeContainer.Visible = false;
 
             if (Orientation == CCTransitionOrientation.RightOver)
             {
@@ -59,23 +90,6 @@ namespace CocosSharp
                 outDeltaZ = -90;
                 outAngleZ = 0;
             }
-
-            inA = new CCSequence
-                (
-                    new CCDelayTime (Duration / 2),
-                    new CCShow(),
-                    new CCOrbitCamera(Duration / 2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
-                    new CCCallFunc(Finish)
-                );
-            outA = new CCSequence
-                (
-                    new CCOrbitCamera(Duration / 2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
-                    new CCHide(),
-                    new CCDelayTime (Duration / 2)
-                );
-
-            InScene.RunAction(inA);
-            OutScene.RunAction(outA);
         }
 
     }

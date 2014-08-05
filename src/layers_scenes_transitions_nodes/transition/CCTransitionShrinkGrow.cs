@@ -26,42 +26,51 @@ using System;
 
 namespace CocosSharp
 {
-    public class CCTransitionShrinkGrow : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionShrinkGrow : CCTransitionScene
     {
-        public CCTransitionShrinkGrow (float t, CCScene scene) : base (t, scene)
-        { }
+        #region Properties
 
-        #region ICCTransitionEaseScene Members
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get { return EaseAction(new CCScaleTo(Duration, 1.0f)); }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get { return EaseAction(new CCScaleTo(Duration, 0.01f)); }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTransitionShrinkGrow (float t, CCScene scene) : base (t, scene)
+        { 
+        }
+
+        #endregion Constructors
+
 
         public CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return new CCEaseOut(action, 2.0f);
         }
 
-        #endregion
-
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
-            InScene.Scale = 0.001f;
-            OutScene.Scale = (1.0f);
+            var bounds = Layer.VisibleBoundsWorldspace;
 
-            InScene.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
-            OutScene.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
+            InSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+            OutSceneNodeContainer.IgnoreAnchorPointForPosition = true;
 
-            CCFiniteTimeAction scaleOut = new CCScaleTo(Duration, 0.01f);
-            CCFiniteTimeAction scaleIn = new CCScaleTo(Duration, 1.0f);
+            InSceneNodeContainer.Scale = 0.001f;
+            OutSceneNodeContainer.Scale = 1.0f;
 
-            InScene.RunAction(EaseAction(scaleIn));
-            OutScene.RunAction
-                (
-                    new CCSequence
-                        (
-                            EaseAction(scaleOut),
-                            new CCCallFunc((Finish))
-                        )
-                );
+            InSceneNodeContainer.AnchorPoint = new CCPoint(2 / 3.0f, 0.5f);
+            OutSceneNodeContainer.AnchorPoint = new CCPoint(1 / 3.0f, 0.5f);
         }
 
     }

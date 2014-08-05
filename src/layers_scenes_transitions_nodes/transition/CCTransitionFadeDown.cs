@@ -27,7 +27,7 @@ namespace CocosSharp
 {
     public class CCTransitionFadeDown : CCTransitionFadeTR
     {
-        public override CCFiniteTimeAction CreateAction(CCGridSize size)
+        protected override CCFiniteTimeAction CreateAction(CCGridSize size)
         {
             return new CCFadeOutDownTiles(Duration, size);
         }

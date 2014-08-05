@@ -29,8 +29,8 @@ namespace CocosSharp
     {
         LeftOver = 0,           // A horizontal orientation where the Left is nearer
         RightOver = 1,          // A horizontal orientation where the Right is nearer
-        UpOver = 0,             // A vertical orientation where the Up is nearer
-        DownOver = 1,           // A vertical orientation where the Bottom is nearer
+        UpOver = 2,             // A vertical orientation where the Up is nearer
+        DownOver = 3,           // A vertical orientation where the Bottom is nearer
 
     }
 
@@ -40,10 +40,7 @@ namespace CocosSharp
 
         #region Constructors
 
-        /// <summary>
-        /// creates a base transition with duration and incoming scene
-        /// </summary>
-        public CCTransitionSceneOriented (float t, CCScene scene, CCTransitionOrientation orientation) : base (t, scene)
+        public CCTransitionSceneOriented (float duration, CCScene scene, CCTransitionOrientation orientation) : base (duration, scene)
         {
             Orientation = orientation;
         }

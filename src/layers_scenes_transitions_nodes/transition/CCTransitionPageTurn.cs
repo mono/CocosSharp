@@ -35,7 +35,43 @@ namespace CocosSharp
     /// </summary>
     public class CCTransitionPageTurn : CCTransitionScene
     {
+        CCFiniteTimeAction action;
+
         protected bool Back;
+
+        #region Properties
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get
+            {
+                CCFiniteTimeAction outSceneAction = null;
+
+                if(!Back)
+                {
+                    outSceneAction = action;
+                }
+
+                return outSceneAction;
+            }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get
+            {
+                CCFiniteTimeAction inSceneAction = null;
+
+                if(Back)
+                {
+                    inSceneAction = new CCSpawn(new CCShow(), action);
+                }
+
+                return inSceneAction;
+            }
+        }
+
+        #endregion Properties
 
 
         #region Contructors
@@ -71,12 +107,13 @@ namespace CocosSharp
             }
         }
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
             var bounds = Layer.VisibleBoundsWorldspace;
             int x, y;
+
             if (bounds.Size.Width > bounds.Size.Height)
             {
                 x = 16;
@@ -88,26 +125,13 @@ namespace CocosSharp
                 y = 16;
             }
 
-            CCFiniteTimeAction action = ActionWithSize(new CCGridSize(x, y));
+            action = ActionWithSize(new CCGridSize(x, y));
 
-            if (!Back)
-            {
-                OutScene.RunAction(new CCSequence
-                                          (
-                                              action,
-                                              new CCCallFunc(Finish),
-                                              new CCStopGrid()));
-            }
-            else
+            if (Back)
             {
                 // to prevent initial flicker
-                InScene.Visible = false;
-                InScene.RunAction(new CCSequence
-                                         (
-                                             new CCShow(),
-                                             action,
-                                             new CCCallFunc(Finish),
-                                             new CCStopGrid()));
+                InSceneNodeContainer.Visible = false;
+
             }
         }
 

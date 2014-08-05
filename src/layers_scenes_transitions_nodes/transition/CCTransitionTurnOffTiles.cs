@@ -29,40 +29,47 @@ namespace CocosSharp
     /// @brief CCTransitionTurnOffTiles:
     /// Turn off the tiles of the outgoing scene in random order
     /// </summary>
-    public class CCTransitionTurnOffTiles : CCTransitionScene, ICCTransitionEaseScene
+    public class CCTransitionTurnOffTiles : CCTransitionScene
     {
-        public CCTransitionTurnOffTiles (float t, CCScene scene) : base (t, scene)
-        { }
-        
+        CCTurnOffTiles toff;
 
-        #region ICCTransitionEaseScene Members
+        #region Properties
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get
+            {
+                return EaseAction(toff);
+            }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTransitionTurnOffTiles (float duration, CCScene scene) : base (duration, scene)
+        { 
+        }
+
+        #endregion Constructors
+
 
         public virtual CCFiniteTimeAction EaseAction(CCFiniteTimeAction action)
         {
             return action;
         }
 
-        #endregion
-
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
+
             var bounds = Layer.VisibleBoundsWorldspace;
             float aspect = bounds.Size.Width / bounds.Size.Height;
             var x = (int) (12 * aspect);
             int y = 12;
 
-            CCTurnOffTiles toff = new CCTurnOffTiles(Duration, new CCGridSize(x, y));
-            CCFiniteTimeAction action = EaseAction(toff);
-            OutScene.RunAction
-                (
-                        new CCSequence
-                        (
-                            action,
-                            new CCCallFunc((Finish)),
-                            new CCStopGrid()
-                        )
-                );
+            toff = new CCTurnOffTiles(Duration, new CCGridSize(x, y));
         }
 
         protected override void SceneOrder()

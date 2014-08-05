@@ -3,38 +3,58 @@ namespace CocosSharp
 {
     public class CCTransitionJumpZoom : CCTransitionScene
     {
-        public CCTransitionJumpZoom (float t, CCScene scene) : base (t, scene)
-        { }
+        CCSequence jumpZoomOut;
+        CCSequence jumpZoomIn;
+        CCFiniteTimeAction delay;
 
-        public override void OnEnter()
+        #region Properties
+
+        protected override CCFiniteTimeAction OutSceneAction
         {
-            base.OnEnter();
+            get
+            {
+                return new CCSequence(jumpZoomOut, delay);
+            }
+        }
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get { return new CCSequence(delay, jumpZoomIn); }
+        }
+
+        #endregion Properties
+
+
+        #region Constructors
+
+        public CCTransitionJumpZoom (float t, CCScene scene) : base (t, scene)
+        { 
+        }
+
+        #endregion Constructors
+
+
+        protected override void InitialiseScenes()
+        {
+            base.InitialiseScenes();
             var bounds = Layer.VisibleBoundsWorldspace;
 
-            InScene.Scale = 0.5f;
-            InScene.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
-            InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            InSceneNodeContainer.Scale = 0.5f;
+            InSceneNodeContainer.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width, bounds.Origin.Y);
+            InSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            OutSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
 
-            CCFiniteTimeAction jump = new CCJumpBy (Duration / 4, new CCPoint(-bounds.Size.Width, 0), bounds.Size.Width / 4, 2);
+            InSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+            OutSceneNodeContainer.IgnoreAnchorPointForPosition = true;
+
+            CCJumpBy jump = new CCJumpBy (Duration / 4, new CCPoint(-bounds.Size.Width, 0), bounds.Size.Width / 4, 2);
             CCFiniteTimeAction scaleIn = new CCScaleTo(Duration / 4, 1.0f);
             CCFiniteTimeAction scaleOut = new CCScaleTo(Duration / 4, 0.5f);
 
-            CCSequence jumpZoomOut = (new CCSequence(scaleOut, jump));
-            CCSequence jumpZoomIn = (new CCSequence(jump, scaleIn));
+            jumpZoomOut = (new CCSequence(scaleOut, jump));
+            jumpZoomIn = (new CCSequence(jump, scaleIn));
 
-            CCFiniteTimeAction delay = new CCDelayTime (Duration / 2);
-
-            OutScene.RunAction(jumpZoomOut);
-            InScene.RunAction
-                (
-                        new CCSequence
-                        (
-                            delay,
-                            jumpZoomIn,
-                            new CCCallFunc(Finish)
-                        )
-                );
+            delay = new CCDelayTime (Duration / 2);
         }
 
     }

@@ -26,35 +26,49 @@ namespace CocosSharp
 {
     public class CCTransitionRotoZoom : CCTransitionScene
     {
-        public CCTransitionRotoZoom(float t, CCScene scene) : base(t, scene)
+        CCFiniteTimeAction rotozoom;
+
+        #region Properties
+
+        protected override CCFiniteTimeAction InSceneAction
+        {
+            get { return rotozoom.Reverse(); }
+        }
+
+        protected override CCFiniteTimeAction OutSceneAction
+        {
+            get { return rotozoom; }
+        }
+
+        #endregion Properties
+
+        public CCTransitionRotoZoom(float duration, CCScene scene) : base(duration, scene)
         {
         }
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
-            InScene.Scale = 0.001f;
-            OutScene.Scale = 1.0f;
+            InSceneNodeContainer.Scale = 0.001f;
+            OutSceneNodeContainer.Scale = 1.0f;
 
-            InScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            OutScene.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            var bounds = Layer.VisibleBoundsWorldspace;
 
-            CCFiniteTimeAction rotozoom = new CCSequence(
+            InSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+            OutSceneNodeContainer.AnchorPoint = new CCPoint(0.5f, 0.5f);
+
+            InSceneNodeContainer.Position = bounds.Center;
+            OutSceneNodeContainer.Position = bounds.Center;
+
+            rotozoom = new CCSequence(
                 new CCSpawn(
                     new CCScaleBy(Duration / 2, 0.001f),
                     new CCRotateBy(Duration / 2, 360 * 2)
-                    ),
+                ),
                 new CCDelayTime(Duration / 2)
-                );
+            );
 
-            OutScene.RunAction(rotozoom);
-            InScene.RunAction(
-                new CCSequence(
-                    rotozoom.Reverse(),
-                    new CCCallFunc((Finish))
-                    )
-                );
         }
     }
 }

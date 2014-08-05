@@ -44,9 +44,9 @@ namespace CocosSharp
             // override draw since both scenes (textures) are rendered in 1 scene
         }
 
-        public override void OnEnter()
+        protected override void InitialiseScenes()
         {
-            base.OnEnter();
+            base.InitialiseScenes();
 
             // create a transparent color layer
             // in which we are going to add our rendertextures
@@ -71,7 +71,7 @@ namespace CocosSharp
 
             //  render inScene to its texturebuffer
             inTexture.Begin();
-            InScene.Visit();
+            InSceneNodeContainer.Visit();
             inTexture.End();
 
             // create the second render texture for outScene
@@ -84,7 +84,7 @@ namespace CocosSharp
 
             //  render outScene to its texturebuffer
             outTexture.Begin();
-            OutScene.Visit();
+            OutSceneNodeContainer.Visit();
             outTexture.End();
 
             // create blend functions
@@ -108,7 +108,6 @@ namespace CocosSharp
             CCAction layerAction = new CCSequence
                 (
                     new CCFadeTo (Duration, 0),
-                    new CCCallFunc((HideOutShowIn)),
                     new CCCallFunc((Finish))
                 );
 
@@ -118,6 +117,9 @@ namespace CocosSharp
 
             // add the layer (which contains our two rendertextures) to the scene
             AddChild(layer, 2, SceneFade);
+
+            InSceneNodeContainer.Visible = false;
+            OutSceneNodeContainer.Visible = false;
         }
 
         public override void OnExit()
