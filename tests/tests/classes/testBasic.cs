@@ -13,10 +13,9 @@ namespace tests
         CCLayer contentLayer;
 
         public TestScene()
-            : base(AppDelegate.SharedWindow, AppDelegate.SharedViewport)
+            : base(AppDelegate.SharedWindow)
         {
             contentLayer = new CCLayer();
-            contentLayer.Camera = AppDelegate.SharedCamera;
             AddChild(contentLayer, MENU_LEVEL);
 
             //add the menu item for back to main menu

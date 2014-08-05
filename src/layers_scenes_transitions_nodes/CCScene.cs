@@ -181,7 +181,7 @@ namespace CocosSharp
             if (window != null && director != null)
                 window.AddSceneDirector(director);
 
-            SceneResolutionPolicy = CCSceneResolutionPolicy.ExactFit;
+            SceneResolutionPolicy = window.DesignResolutionPolicy;
         }
 
         public CCScene(CCWindow window, CCDirector director) 

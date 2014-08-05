@@ -42,6 +42,8 @@ namespace tests
             sharedWindow = mainWindow;
             sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
+            mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
+
             #if WINDOWS || WINDOWSGL || WINDOWSDX 
 			//application.PreferredBackBufferWidth = 1024;
 			//application.PreferredBackBufferHeight = 768;
