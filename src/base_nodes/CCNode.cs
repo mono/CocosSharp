@@ -2082,7 +2082,24 @@ namespace CocosSharp
             if (selector == null)
                 return;
 
-            Scheduler.Unschedule (selector, this);
+            if (Scheduler == null)
+            {
+                if (toBeAddedSchedules != null && toBeAddedSchedules.Count > 0)
+                {
+                    var safeDelete = new List<lazySchedule>();
+                    foreach (var schedule in toBeAddedSchedules)
+                    {
+                        if (schedule.Selector == selector && schedule.Target == this)
+                            safeDelete.Add(schedule);
+                    }
+                    foreach (var safeSchedule in safeDelete)
+                    {
+                        toBeAddedSchedules.Remove(safeSchedule);
+                    }
+                }
+            }
+            else
+                Scheduler.Unschedule (selector, this);
         }
 
         public void UnscheduleAll ()
