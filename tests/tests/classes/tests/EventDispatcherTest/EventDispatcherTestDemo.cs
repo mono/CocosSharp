@@ -1041,7 +1041,7 @@ namespace tests
                 {
                     sprite = new CCSprite("Images/CyanSquare.png") { Tag = TAG_SPRITE + i};
                     blueSprite = sprite;
-                    blueSprite.Scene = Scene;
+                    //blueSprite.Scene = Scene;
                     blueSprite.GlobalZOrder = -1;
 
                 }

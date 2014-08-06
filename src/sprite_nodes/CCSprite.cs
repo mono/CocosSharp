@@ -671,7 +671,7 @@ namespace CocosSharp
 
         // For when using a batch node
         // In this instance, drawing will not make use of node's world matrix
-        internal void UpdateTransformedSpriteTextureQuads()
+        public void UpdateTransformedSpriteTextureQuads()
         {
             if(batchNode == null || AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
                 return;

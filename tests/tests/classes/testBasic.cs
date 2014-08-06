@@ -128,8 +128,14 @@ namespace tests
         {
             if (visibleRect.Size.Width == 0.0f && visibleRect.Size.Height == 0.0f)
             {
-                visibleRect.Origin = CCPoint.Zero; //AppDelegate.SharedCamera.VisibleBoundsWorldspace.Origin;
-                visibleRect.Size = new CCSize (100.0f, 100.0f);//AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
+
+                // This needs to be looked at.
+                var scene = AppDelegate.SharedWindow.DefaultDirector.RunningScene;
+                if (scene != null)
+                {
+                    visibleRect.Origin = scene.VisibleBoundsScreenspace.Origin;    //AppDelegate.SharedCamera.VisibleBoundsWorldspace.Origin;
+                    visibleRect.Size = scene.VisibleBoundsScreenspace.Size; //AppDelegate.SharedCamera.VisibleBoundsWorldspace.Size;
+                }
             }
         }
 

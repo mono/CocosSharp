@@ -297,9 +297,9 @@ namespace CocosSharp
 
         protected override void Draw()
         {
-            CCDrawManager.SharedDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
-            CCDrawManager.SharedDrawManager.BindTexture(Texture);
-			CCDrawManager.SharedDrawManager.DrawQuad(ref quad);
+//            CCDrawManager.SharedDrawManager.BlendFunc(CCBlendFunc.AlphaBlend);
+//            CCDrawManager.SharedDrawManager.BindTexture(Texture);
+//			CCDrawManager.SharedDrawManager.DrawQuad(ref quad);
         }
 
         public void NeedsLayout()

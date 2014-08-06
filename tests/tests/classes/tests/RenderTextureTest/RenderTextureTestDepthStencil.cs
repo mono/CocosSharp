@@ -42,41 +42,41 @@ namespace tests
 
             rend.BeginWithClear(0, 0, 0, 0, 0);
 
-            var save = CCDrawManager.SharedDrawManager.DepthStencilState;
-
-            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
-                {
-                    ReferenceStencil = 1,
-
-                    DepthBufferEnable = false,
-                    StencilEnable = true,
-                    StencilFunction = CompareFunction.Always,
-                    StencilPass = StencilOperation.Replace,
-                    
-                    TwoSidedStencilMode = true,
-                    CounterClockwiseStencilFunction = CompareFunction.Always,
-                    CounterClockwiseStencilPass = StencilOperation.Replace,
-                };
+//            var save = CCDrawManager.SharedDrawManager.DepthStencilState;
+//
+//            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
+//                {
+//                    ReferenceStencil = 1,
+//
+//                    DepthBufferEnable = false,
+//                    StencilEnable = true,
+//                    StencilFunction = CompareFunction.Always,
+//                    StencilPass = StencilOperation.Replace,
+//                    
+//                    TwoSidedStencilMode = true,
+//                    CounterClockwiseStencilFunction = CompareFunction.Always,
+//                    CounterClockwiseStencilPass = StencilOperation.Replace,
+//                };
 
             sprite.Visit();
 
-            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
-            {
-                DepthBufferEnable = false,
-                StencilEnable = true,
-                StencilFunction = CompareFunction.NotEqual,
-                StencilPass = StencilOperation.Keep,
-                ReferenceStencil = 1
-            };
+//            CCDrawManager.SharedDrawManager.DepthStencilState = new DepthStencilState()
+//            {
+//                DepthBufferEnable = false,
+//                StencilEnable = true,
+//                StencilFunction = CompareFunction.NotEqual,
+//                StencilPass = StencilOperation.Keep,
+//                ReferenceStencil = 1
+//            };
 
-            CCDrawManager.SharedDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
+//            CCDrawManager.SharedDrawManager.BlendFunc(new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE_MINUS_SRC_ALPHA));
 
             sprite.Position = sprite.Position 
                 + new CCPoint(sprite.ContentSize.Width * sprite.ScaleX, sprite.ContentSize.Height * sprite.ScaleY) * 0.5f;
 
             sprite.Visit();
 
-            CCDrawManager.SharedDrawManager.DepthStencilState = save;
+//            CCDrawManager.SharedDrawManager.DepthStencilState = save;
 
             rend.End();
 

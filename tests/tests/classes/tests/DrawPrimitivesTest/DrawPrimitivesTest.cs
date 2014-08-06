@@ -68,7 +68,9 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             CCRenderTexture text = new CCRenderTexture(windowSize,windowSize);
             AddChild(text, 24);

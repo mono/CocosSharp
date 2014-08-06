@@ -67,7 +67,7 @@ namespace CocosSharp
 
         public CCBox2dDraw(string spriteFontName)
         {
-            primitiveBatch = new CCPrimitiveBatch(CCDrawManager.SharedDrawManager, 5000);
+            primitiveBatch = new CCPrimitiveBatch(5000);
             spriteFont = CCContentManager.SharedContentManager.Load<SpriteFont>(spriteFontName);
             stringData = new List<StringData>();
             stringBuilder = new StringBuilder();
@@ -235,19 +235,19 @@ namespace CocosSharp
         {
             primitiveBatch.End();
 
-            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
-
-            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
-
-            for (int i = 0; i < stringData.Count; i++)
-            {
-                stringBuilder.Length = 0;
-                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
-                _batch.DrawString(spriteFont, stringBuilder, new Vector2(stringData[i].X, stringData[i].Y),
-                    stringData[i].Color);
-            }
-
-            _batch.End();
+//            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+//
+//            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+//
+//            for (int i = 0; i < stringData.Count; i++)
+//            {
+//                stringBuilder.Length = 0;
+//                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
+//                _batch.DrawString(spriteFont, stringBuilder, new Vector2(stringData[i].X, stringData[i].Y),
+//                    stringData[i].Color);
+//            }
+//
+//            _batch.End();
 
             stringData.Clear();
         }
