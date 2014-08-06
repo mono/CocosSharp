@@ -38,6 +38,20 @@ namespace CocosSharp
 			PointSize = 1.0f;
         }
 
+        public static void PushMatrix()
+        {
+            drawManager.PushMatrix();
+        }
+
+        public static void PopMatrix()
+        {
+            drawManager.PopMatrix();
+        }
+
+        public static void Translate(float x, float y, int z)
+        {
+            drawManager.Translate(x, y, z);
+        }
 
         public static void DrawPoint(CCPoint point)
         {
