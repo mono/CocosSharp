@@ -110,7 +110,6 @@ namespace CocosSharp
         public override void OnExit()
         {
             // remove our layer and release all containing objects 
-            RemoveChildByTag(SceneFade, false);
             base.OnExit();
         }
 
