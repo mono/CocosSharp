@@ -33,25 +33,26 @@ namespace CocosSharp
 
             // create the second render texture for outScene
             CCRenderTexture texture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-            texture.Scene = Scene;
-            texture.Layer = Layer;
-            texture.Sprite.AnchorPoint = CCPoint.AnchorMiddle;
-            texture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
+            texture.Position = bounds.Center;
             texture.AnchorPoint = CCPoint.AnchorMiddle;
 
-            // render outScene to its texturebuffer
-            texture.Clear(0, 0, 0, 1);
-            texture.Begin();
+            // Temporarily add render texture to get layer/scene properties
+            AddChild(texture);
+
+            // Render outScene to its texturebuffer
+            texture.BeginWithClear(0, 0, 0, 1);
             SceneNodeContainerToBeModified.Visit();
             texture.End();
 
-            //    Since we've passed the outScene to the texture we don't need it.
+            // No longer want to render texture
+            RemoveChild(texture);
+
+            // Since we've passed the outScene to the texture we don't need it.
             if (SceneNodeContainerToBeModified == OutSceneNodeContainer)
             {
                 HideOutShowIn();
             }
 
-            //    We need the texture in RenderTexture.
             CCProgressTimer node = ProgressTimerNodeWithRenderTexture(texture);
 
             // create the blend action
@@ -62,6 +63,7 @@ namespace CocosSharp
 
             // run the blend action
             node.RunAction(layerAction);
+
         }
 
         // clean up on exit
