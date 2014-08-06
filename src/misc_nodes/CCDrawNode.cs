@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,6 +12,10 @@ namespace CocosSharp
         const int DefaultBufferSize = 512;
         CCRawList<VertexPositionColor> triangleVertices;
         CCRawList<VertexPositionColor> lineVertices;
+        SpriteFont spriteFont;
+        List<StringData> stringData;
+        StringBuilder stringBuilder;
+        string spriteFontName;
 
         bool dirty;
 
@@ -24,6 +29,26 @@ namespace CocosSharp
 
         public CCBlendFunc BlendFunc { get; set; }
 
+        #region Structs
+
+        struct StringData
+        {
+            public object[] Args;
+            public Color Color;
+            public string S;
+            public int X, Y;
+
+            public StringData(int x, int y, string s, object[] args, Color color)
+            {
+                X = x;
+                Y = y;
+                S = s;
+                Args = args;
+                Color = color;
+            }
+        }
+
+        #endregion Structs
 
         #region Constructors
 
@@ -35,6 +60,37 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+        public void SelectFont (string fontName, float fontSize)
+        {
+            if (spriteFontName != fontName)
+            {
+                spriteFontName = fontName;
+                float loadedSize;
+
+                spriteFont = CCSpriteFontCache.SharedInstance.TryLoadFont(fontName, fontSize, out loadedSize);
+
+                if (spriteFont == null)
+                {
+                    CCLog.Log("Failed to load default font. No font supported.");
+                    return;
+                }
+
+                stringData = new List<StringData>();
+                stringBuilder = new StringBuilder();
+            }
+        }
+
+        public void DrawString(int x, int y, string format, params object[] objects)
+        {
+            System.Diagnostics.Debug.Assert(spriteFont != null, "CocosSharp: A font must be set before");
+
+            if (spriteFont != null)
+            {
+                var color = new CCColor4B(Color.R, Color.G, Color.B, Opacity);
+                stringData.Add(new StringData(x, y, format, objects, color));
+            }
+        }
 
 
 		// See http://slabode.exofire.net/circle_draw.shtml
@@ -368,6 +424,8 @@ namespace CocosSharp
         {
             triangleVertices.Clear();
             lineVertices.Clear();
+            if (stringData != null)
+                stringData.Clear();
         }
 
         protected override void Draw()
@@ -382,6 +440,7 @@ namespace CocosSharp
             Window.DrawManager.BlendFunc(BlendFunc);
             FlushTriangles();
             FlushLines();
+            DrawStrings();
         }
 
         void FlushTriangles()
@@ -406,6 +465,31 @@ namespace CocosSharp
                  Window.DrawManager.DrawPrimitives(PrimitiveType.LineList, lineVertices.Elements, 0, primitiveCount);
                 //DrawManager.DrawCount++;
             }
+        }
+
+        void DrawStrings()
+        {
+
+            if (spriteFont == null || stringData == null || stringData.Count == 0)
+                return; 
+
+            var _batch = CCDrawManager.SharedDrawManager.SpriteBatch;
+
+            _batch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+
+            for (int i = 0; i < stringData.Count; i++)
+            {
+                stringBuilder.Length = 0;
+                stringBuilder.AppendFormat(stringData[i].S, stringData[i].Args);
+
+                _batch.DrawString(spriteFont,
+                    stringBuilder,
+                    new Vector2(stringData[i].X, stringData[i].Y),
+                    stringData[i].Color);
+            }
+
+            _batch.End();
+
         }
 
     }
