@@ -53,7 +53,11 @@ namespace CocosSharp
             basicEffect.VertexColorEnabled = true;
         }
 
-		#endregion Constructors
+        public CCPrimitiveBatch(int bufferSize=DefaultBufferSize)
+            : this (CCDrawManager.SharedDrawManager, bufferSize)
+        {  }
+
+        #endregion Constructors
 
 
 		#region Cleaning up
