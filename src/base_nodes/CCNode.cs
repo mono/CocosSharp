@@ -1653,6 +1653,14 @@ namespace CocosSharp
                 return;
             }
 
+            // Set camera view/proj matrix even if ChildClippingMode is None
+            if(Camera != null)
+            {
+                Window.DrawManager.ViewMatrix = Camera.ViewMatrix;
+                Window.DrawManager.ProjectionMatrix = Camera.ProjectionMatrix;
+            }
+
+
             Window.DrawManager.PushMatrix();
 
             if (Grid != null && Grid.Active)
