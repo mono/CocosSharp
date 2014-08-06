@@ -27,7 +27,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCShaky3DState : CCGrid3DActionState
+    public class CCShaky3DState : CCGrid3DActionState
     {
         public bool Shake { get; set; }
 

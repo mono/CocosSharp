@@ -55,7 +55,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCWavesTiles3DState : CCTiledGrid3DActionState
+    public class CCWavesTiles3DState : CCTiledGrid3DActionState
     {
         public int Waves { get; set; }
 

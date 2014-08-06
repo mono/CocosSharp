@@ -31,7 +31,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCCallFuncState : CCActionInstantState
+    public class CCCallFuncState : CCActionInstantState
     {
 
         protected Action CallFunction { get; set;}

@@ -31,7 +31,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCScaleToState : CCFiniteTimeActionState
+    public class CCScaleToState : CCFiniteTimeActionState
     {
         protected float DeltaX;
         protected float DeltaY;

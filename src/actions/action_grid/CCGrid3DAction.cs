@@ -33,7 +33,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCGrid3DActionState : CCGridActionState
+    public class CCGrid3DActionState : CCGridActionState
     {
         CCTexture2D gridTexture;
         CCGrid3D grid3D;

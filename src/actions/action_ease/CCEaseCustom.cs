@@ -31,7 +31,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseCustomState : CCActionEaseState
+    public class CCEaseCustomState : CCActionEaseState
     {
         protected Func<float, float> EaseFunc { get; private set; }
 

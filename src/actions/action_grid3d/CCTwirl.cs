@@ -34,7 +34,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCTwirlState : CCGrid3DActionState
+    public class CCTwirlState : CCGrid3DActionState
     {
         public int Twirls { get; set; }
 

@@ -52,7 +52,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCSplitColsState : CCTiledGrid3DActionState
+    public class CCSplitColsState : CCTiledGrid3DActionState
     {
         protected CCRect VisibleBounds { get; private set; }
 

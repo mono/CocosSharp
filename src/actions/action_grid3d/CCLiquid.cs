@@ -27,7 +27,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCLiquidState : CCGrid3DActionState
+    public class CCLiquidState : CCGrid3DActionState
     {
         public int Waves { get; set; }
 

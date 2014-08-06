@@ -32,7 +32,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCFlipX3DState : CCGrid3DActionState
+    public class CCFlipX3DState : CCGrid3DActionState
     {
         public CCFlipX3DState (CCFlipX3D action, CCNode target) : base (action, target)
         {

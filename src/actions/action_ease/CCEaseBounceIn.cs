@@ -25,7 +25,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseBounceInState : CCActionEaseState
+    public class CCEaseBounceInState : CCActionEaseState
     {
         public CCEaseBounceInState (CCEaseBounceIn action, CCNode target) : base (action, target)
         {

@@ -27,7 +27,7 @@
         }
     }
 
-    internal class CCBlinkState : CCFiniteTimeActionState
+    public class CCBlinkState : CCFiniteTimeActionState
     {
 
         protected uint Times { get; set; }

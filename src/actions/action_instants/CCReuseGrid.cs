@@ -25,7 +25,7 @@
 
     }
 
-    internal class CCReuseGridState : CCActionInstantState
+    public class CCReuseGridState : CCActionInstantState
     {
         public CCReuseGridState (CCReuseGrid action, CCNode target)
             : base (action, target)

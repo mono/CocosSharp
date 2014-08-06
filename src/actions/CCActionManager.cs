@@ -83,7 +83,7 @@ namespace CocosSharp
             return null;
         }
 
-        internal CCActionState GetActionState(int tag, CCNode target)
+        public CCActionState GetActionState(int tag, CCNode target)
         {
             Debug.Assert(tag != (int)CCActionTag.Invalid);
 
@@ -262,7 +262,7 @@ namespace CocosSharp
 
         #region Adding/removing actions
 
-        internal CCActionState AddAction(CCAction action, CCNode target, bool paused = false)
+        public CCActionState AddAction(CCAction action, CCNode target, bool paused = false)
         {
             Debug.Assert(action != null);
             Debug.Assert(target != null);
@@ -337,7 +337,7 @@ namespace CocosSharp
             }
         }
 
-        internal void RemoveAction(CCActionState actionState)
+        public void RemoveAction(CCActionState actionState)
         {
             if (actionState == null || actionState.OriginalTarget == null)
             {

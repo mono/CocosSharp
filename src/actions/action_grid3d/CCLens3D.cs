@@ -42,7 +42,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCLens3DState : CCGrid3DActionState
+    public class CCLens3DState : CCGrid3DActionState
     {
         public CCPoint Position { get; set; }
 

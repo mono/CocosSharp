@@ -35,7 +35,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCRemoveSelfState : CCActionInstantState
+    public class CCRemoveSelfState : CCActionInstantState
     {
         protected bool IsNeedCleanUp { get; set; }
 

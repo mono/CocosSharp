@@ -57,7 +57,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCShatteredTiles3DState : CCTiledGrid3DActionState
+    public class CCShatteredTiles3DState : CCTiledGrid3DActionState
     {
         public bool ShatterZ { get; set; }
 

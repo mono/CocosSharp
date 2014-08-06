@@ -31,7 +31,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCCallFuncOState : CCCallFuncState
+    public class CCCallFuncOState : CCCallFuncState
     {
         protected Action<object> CallFunctionO { get; set; }
         protected object Object { get; set; }

@@ -29,7 +29,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCFadeToState : CCFiniteTimeActionState
+    public class CCFadeToState : CCFiniteTimeActionState
     {
         protected byte FromOpacity { get; set; }
 

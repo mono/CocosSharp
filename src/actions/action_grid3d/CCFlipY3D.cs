@@ -22,7 +22,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCFlipY3DState : CCFlipX3DState
+    public class CCFlipY3DState : CCFlipX3DState
     {
         public CCFlipY3DState (CCFlipY3D action, CCNode target) : base (action, target)
         {

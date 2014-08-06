@@ -55,7 +55,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCJumpTiles3DState : CCTiledGrid3DActionState
+    public class CCJumpTiles3DState : CCTiledGrid3DActionState
     {
         protected int NumberOfJumps { get; set; }
 

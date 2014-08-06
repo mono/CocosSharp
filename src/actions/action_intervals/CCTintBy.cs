@@ -32,7 +32,7 @@ namespace CocosSharp
     }
 
 
-    internal class CCTintByState : CCFiniteTimeActionState
+    public class CCTintByState : CCFiniteTimeActionState
     {
         protected short DeltaB { get; set; }
 

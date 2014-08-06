@@ -28,7 +28,7 @@ namespace CocosSharp
 
 	}
 
-	internal class CCScaleByState : CCScaleToState
+    public class CCScaleByState : CCScaleToState
 	{
 
 		public CCScaleByState (CCScaleTo action, CCNode target)

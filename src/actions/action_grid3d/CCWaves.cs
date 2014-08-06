@@ -29,7 +29,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCWavesState : CCLiquidState
+    public class CCWavesState : CCLiquidState
     {
         public bool Vertical { get; set; }
 

@@ -55,7 +55,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCFadeOutTRTilesState : CCTiledGrid3DActionState
+    public class CCFadeOutTRTilesState : CCTiledGrid3DActionState
     {
         public CCFadeOutTRTilesState (CCFadeOutTRTiles action, CCNode target) : base (action, target)
         {

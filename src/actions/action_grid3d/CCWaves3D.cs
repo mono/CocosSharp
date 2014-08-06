@@ -23,7 +23,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCWaves3DState : CCLiquidState
+    public class CCWaves3DState : CCLiquidState
     {
         public CCWaves3DState (CCWaves3D action, CCNode target) : base (action, target)
         {

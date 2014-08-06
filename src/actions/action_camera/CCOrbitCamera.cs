@@ -41,7 +41,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCOrbitCameraState : CCActionCameraState
+    public class CCOrbitCameraState : CCActionCameraState
     {
 
         #region Properties

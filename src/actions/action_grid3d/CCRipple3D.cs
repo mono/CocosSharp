@@ -41,7 +41,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCRipple3DState : CCGrid3DActionState
+    public class CCRipple3DState : CCGrid3DActionState
     {
         public CCPoint Position { get; set; }
 

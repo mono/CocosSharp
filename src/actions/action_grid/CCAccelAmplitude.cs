@@ -35,7 +35,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCAccelAmplitudeState : CCFiniteTimeActionState
+    public class CCAccelAmplitudeState : CCFiniteTimeActionState
     {
         public float Rate { get; set; }
 

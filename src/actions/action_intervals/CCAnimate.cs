@@ -78,7 +78,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCAnimateState : CCFiniteTimeActionState
+    public class CCAnimateState : CCFiniteTimeActionState
     {
 
         protected CCAnimation Animation { get; private set; }

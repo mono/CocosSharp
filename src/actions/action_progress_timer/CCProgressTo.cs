@@ -19,7 +19,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCProgressToState : CCProgressFromToState
+    public class CCProgressToState : CCProgressFromToState
     {
 
         public CCProgressToState (CCProgressTo action, CCNode target)

@@ -28,7 +28,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCProgressFromToState : CCFiniteTimeActionState
+    public class CCProgressFromToState : CCFiniteTimeActionState
     {
         protected float PercentFrom { get; set; }
 

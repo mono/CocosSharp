@@ -28,7 +28,7 @@
 
     }
 
-    internal class CCFlipYState : CCActionInstantState
+    public class CCFlipYState : CCActionInstantState
     {
 
         public CCFlipYState (CCFlipY action, CCNode target)

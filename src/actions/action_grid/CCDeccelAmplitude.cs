@@ -28,7 +28,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCDeccelAmplitudeState : CCAccelAmplitudeState
+    public class CCDeccelAmplitudeState : CCAccelAmplitudeState
     {
         public CCDeccelAmplitudeState (CCDeccelAmplitude action, CCNode target) : base (action, target)
         {

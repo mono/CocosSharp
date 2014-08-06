@@ -13,7 +13,7 @@
         }
     }
 
-    internal class CCStopGridState : CCActionInstantState
+    public class CCStopGridState : CCActionInstantState
     {
 
         public CCStopGridState (CCStopGrid action, CCNode target)

@@ -39,7 +39,7 @@ namespace CocosSharp
 
 	#region Action state
 
-	internal class CCGridActionState : CCAmplitudeActionState
+    public class CCGridActionState : CCAmplitudeActionState
 	{
 		protected CCGridSize GridSize { get; private set; }
 

@@ -31,7 +31,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCTiledGrid3DActionState : CCGridActionState
+    public class CCTiledGrid3DActionState : CCGridActionState
     {
         private CCTiledGrid3D tiledGrid3D;
 

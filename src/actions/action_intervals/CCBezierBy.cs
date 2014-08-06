@@ -36,7 +36,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCBezierByState : CCFiniteTimeActionState
+    public class CCBezierByState : CCFiniteTimeActionState
     {
         protected CCBezierConfig BezierConfig { get; set; }
 

@@ -47,7 +47,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCFadeOutBLTilesState : CCFadeOutTRTilesState
+    public class CCFadeOutBLTilesState : CCFadeOutTRTilesState
     {
         public CCFadeOutBLTilesState (CCFadeOutBLTiles action, CCNode target) : base (action, target)
         {

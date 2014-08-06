@@ -25,7 +25,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCTintToState : CCFiniteTimeActionState
+    public class CCTintToState : CCFiniteTimeActionState
     {
         protected CCColor3B ColorFrom { get; set; }
 

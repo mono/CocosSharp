@@ -26,7 +26,7 @@
         }
     }
 
-    internal class CCPlaceState : CCActionInstantState
+    public class CCPlaceState : CCActionInstantState
     {
 
         public CCPlaceState (CCPlace action, CCNode target)

@@ -29,7 +29,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseRateActionState : CCActionEaseState
+    public class CCEaseRateActionState : CCActionEaseState
     {
         protected float Rate { get; private set; }
 

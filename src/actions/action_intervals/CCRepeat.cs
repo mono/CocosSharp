@@ -43,7 +43,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCRepeatState : CCFiniteTimeActionState
+    public class CCRepeatState : CCFiniteTimeActionState
     {
 
         protected bool ActionInstant { get; set; }

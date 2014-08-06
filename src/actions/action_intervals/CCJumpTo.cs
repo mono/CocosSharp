@@ -19,7 +19,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCJumpToState : CCJumpByState
+    public class CCJumpToState : CCJumpByState
     {
 
         public CCJumpToState (CCJumpBy action, CCNode target)

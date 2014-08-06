@@ -71,7 +71,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCSequenceState : CCFiniteTimeActionState
+    public class CCSequenceState : CCFiniteTimeActionState
     {
         protected int last;
         protected CCFiniteTimeAction[] actionSequences = new CCFiniteTimeAction[2];

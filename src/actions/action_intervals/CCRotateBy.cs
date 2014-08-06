@@ -32,7 +32,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCRotateByState : CCFiniteTimeActionState
+    public class CCRotateByState : CCFiniteTimeActionState
     {
 
         protected float AngleX { get; set; }

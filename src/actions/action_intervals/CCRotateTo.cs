@@ -34,7 +34,7 @@ namespace CocosSharp
     }
 
 
-    internal class CCRotateToState : CCFiniteTimeActionState
+    public class CCRotateToState : CCFiniteTimeActionState
     {
         protected float DiffAngleY;
         protected float DiffAngleX;

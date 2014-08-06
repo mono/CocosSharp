@@ -23,7 +23,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCPageTurn3DState : CCGrid3DActionState
+    public class CCPageTurn3DState : CCGrid3DActionState
     {
         public CCPageTurn3DState (CCPageTurn3D action, CCNode target) : base (action, target)
         {

@@ -24,7 +24,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCActionCameraState : CCFiniteTimeActionState
+    public class CCActionCameraState : CCFiniteTimeActionState
     {
         protected CCPoint3 CameraCenter;
         protected CCPoint3 CameraTarget;

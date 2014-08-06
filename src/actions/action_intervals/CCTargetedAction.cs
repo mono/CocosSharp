@@ -28,7 +28,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCTargetedActionState : CCFiniteTimeActionState
+    public class CCTargetedActionState : CCFiniteTimeActionState
     {
         protected CCFiniteTimeAction TargetedAction { get; set; }
 

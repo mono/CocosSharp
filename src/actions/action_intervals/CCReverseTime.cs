@@ -29,7 +29,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCReverseTimeState : CCFiniteTimeActionState
+    public class CCReverseTimeState : CCFiniteTimeActionState
     {
 
         protected CCFiniteTimeAction Other { get; set; }

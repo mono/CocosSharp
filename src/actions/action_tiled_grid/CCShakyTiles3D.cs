@@ -54,7 +54,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCShakyTiles3DState : CCTiledGrid3DActionState
+    public class CCShakyTiles3DState : CCTiledGrid3DActionState
     {
         public bool ShakeZ { get; set; }
 

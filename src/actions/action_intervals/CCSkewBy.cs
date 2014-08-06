@@ -36,7 +36,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCSkewByState : CCSkewToState
+    public class CCSkewByState : CCSkewToState
     {
 
         public CCSkewByState (CCSkewBy action, CCNode target)

@@ -82,7 +82,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCSpawnState : CCFiniteTimeActionState
+    public class CCSpawnState : CCFiniteTimeActionState
     {
 
         protected CCFiniteTimeAction ActionOne { get; set; }

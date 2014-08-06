@@ -29,7 +29,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCActionEaseState : CCFiniteTimeActionState
+    public class CCActionEaseState : CCFiniteTimeActionState
     {
         protected CCFiniteTimeActionState InnerActionState { get; private set; }
 

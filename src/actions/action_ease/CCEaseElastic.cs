@@ -33,7 +33,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseElasticState : CCActionEaseState
+    public class CCEaseElasticState : CCActionEaseState
     {
         protected float Period { get; private set; }
 

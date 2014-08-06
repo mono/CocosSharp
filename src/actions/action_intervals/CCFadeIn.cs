@@ -23,7 +23,7 @@
         }
     }
 
-    internal class CCFadeInState : CCFiniteTimeActionState
+    public class CCFadeInState : CCFiniteTimeActionState
     {
 
         protected uint Times { get; set; }

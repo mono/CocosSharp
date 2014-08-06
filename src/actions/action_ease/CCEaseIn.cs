@@ -27,7 +27,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseInState : CCEaseRateActionState
+    public class CCEaseInState : CCEaseRateActionState
     {
         public CCEaseInState (CCEaseIn action, CCNode target) : base (action, target)
         {

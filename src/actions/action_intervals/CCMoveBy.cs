@@ -24,7 +24,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCMoveByState : CCFiniteTimeActionState
+    public class CCMoveByState : CCFiniteTimeActionState
     {
         protected CCPoint PositionDelta;
         protected CCPoint EndPosition;

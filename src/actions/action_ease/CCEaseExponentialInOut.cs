@@ -27,7 +27,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseExponentialInOutState : CCActionEaseState
+    public class CCEaseExponentialInOutState : CCActionEaseState
     {
         public CCEaseExponentialInOutState (CCEaseExponentialInOut action, CCNode target) : base (action, target)
         {

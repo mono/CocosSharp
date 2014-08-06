@@ -33,7 +33,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCJumpByState : CCFiniteTimeActionState
+    public class CCJumpByState : CCFiniteTimeActionState
     {
         protected CCPoint Delta;
         protected float Height;

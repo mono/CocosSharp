@@ -54,7 +54,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCTurnOffTilesState : CCTiledGrid3DActionState
+    public class CCTurnOffTilesState : CCTiledGrid3DActionState
     {
         protected int TilesCount { get; private set; }
 

@@ -24,7 +24,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCMoveToState : CCMoveByState
+    public class CCMoveToState : CCMoveByState
     {
 
         public CCMoveToState (CCMoveTo action, CCNode target)

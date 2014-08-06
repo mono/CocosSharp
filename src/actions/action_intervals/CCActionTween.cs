@@ -49,7 +49,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCActionTweenState : CCFiniteTimeActionState
+    public class CCActionTweenState : CCFiniteTimeActionState
     {
         protected float Delta;
 

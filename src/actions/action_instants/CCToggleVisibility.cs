@@ -18,7 +18,7 @@
         }
     }
 
-    internal class CCToggleVisibilityState : CCActionInstantState
+    public class CCToggleVisibilityState : CCActionInstantState
     {
 
         public CCToggleVisibilityState (CCToggleVisibility action, CCNode target)

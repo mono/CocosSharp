@@ -27,7 +27,7 @@
 
     }
 
-    internal class CCFlipXState : CCActionInstantState
+    public class CCFlipXState : CCActionInstantState
     {
 
         public CCFlipXState (CCFlipX action, CCNode target)

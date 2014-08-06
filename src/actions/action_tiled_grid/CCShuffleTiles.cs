@@ -58,7 +58,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCShuffleTilesState : CCTiledGrid3DActionState
+    public class CCShuffleTilesState : CCTiledGrid3DActionState
     {
         protected int TilesCount { get; private set; }
 

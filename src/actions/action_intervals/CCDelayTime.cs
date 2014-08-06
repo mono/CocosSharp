@@ -22,7 +22,7 @@
         }
     }
 
-    internal class CCDelayTimeState : CCFiniteTimeActionState
+    public class CCDelayTimeState : CCFiniteTimeActionState
     {
 
         public CCDelayTimeState (CCDelayTime action, CCNode target)

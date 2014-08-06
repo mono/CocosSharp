@@ -23,7 +23,7 @@
 
     }
 
-    internal class CCShowState : CCActionInstantState
+    public class CCShowState : CCActionInstantState
     {
 
         public CCShowState (CCShow action, CCNode target)

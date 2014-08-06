@@ -43,7 +43,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCCardinalSplineToState : CCFiniteTimeActionState
+    public class CCCardinalSplineToState : CCFiniteTimeActionState
     {
         protected float DeltaT { get; set; }
 

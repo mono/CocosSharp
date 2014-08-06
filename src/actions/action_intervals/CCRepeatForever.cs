@@ -36,7 +36,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCRepeatForeverState : CCFiniteTimeActionState
+    public class CCRepeatForeverState : CCFiniteTimeActionState
     {
 
         private CCFiniteTimeAction InnerAction { get; set; }

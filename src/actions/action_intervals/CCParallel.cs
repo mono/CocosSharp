@@ -56,7 +56,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCParallelState : CCFiniteTimeActionState
+    public class CCParallelState : CCFiniteTimeActionState
     {
 
         protected CCFiniteTimeAction[] Actions { get; set; }

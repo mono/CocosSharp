@@ -20,7 +20,7 @@ namespace CocosSharp
 
     }
 
-    internal class CCBezierToState : CCBezierByState
+    public class CCBezierToState : CCBezierByState
     {
 
         public CCBezierToState (CCBezierBy action, CCNode target)

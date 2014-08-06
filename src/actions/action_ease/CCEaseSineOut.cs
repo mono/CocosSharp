@@ -27,7 +27,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseSineOutState : CCActionEaseState
+    public class CCEaseSineOutState : CCActionEaseState
     {
         public CCEaseSineOutState (CCEaseSineOut action, CCNode target) : base (action, target)
         {

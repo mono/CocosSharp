@@ -49,7 +49,7 @@ namespace CocosSharp
         }
     }
 
-    internal class CCSkewToState : CCFiniteTimeActionState
+    public class CCSkewToState : CCFiniteTimeActionState
     {
 
         protected float DeltaX;

@@ -24,7 +24,7 @@
 
     }
 
-    internal class CCHideState : CCActionInstantState
+    public class CCHideState : CCActionInstantState
     {
 
         public CCHideState (CCHide action, CCNode target)

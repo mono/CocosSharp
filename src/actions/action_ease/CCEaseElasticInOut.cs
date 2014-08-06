@@ -32,7 +32,7 @@ namespace CocosSharp
 
     #region Action state
 
-    internal class CCEaseElasticInOutState : CCEaseElasticState
+    public class CCEaseElasticInOutState : CCEaseElasticState
     {
         public CCEaseElasticInOutState (CCEaseElasticInOut action, CCNode target) : base (action, target)
         {

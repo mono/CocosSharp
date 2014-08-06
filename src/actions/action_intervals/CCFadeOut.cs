@@ -22,7 +22,7 @@
         }
     }
 
-    internal class CCFadeOutState : CCFiniteTimeActionState
+    public class CCFadeOutState : CCFiniteTimeActionState
     {
 
         public CCFadeOutState (CCFadeOut action, CCNode target)
