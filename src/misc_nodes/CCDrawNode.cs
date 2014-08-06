@@ -207,40 +207,6 @@ namespace CocosSharp
             dirty = true;
         }
 
-        //public override void DrawCircle(CCPoint center, float radius, CCColor4B color)
-        //{
-        //    const float increment = Math.PI * 2.0f / CircleSegments;
-        //    float theta = 0.0f;
-
-        //    var col = color;
-        //    var colorOutline = col.ToCCColor4B();
-
-        //    CCVector2 centr = center.ToCCVector2();
-        //    CCVector2 thetaV = CCVector2.Zero;
-
-
-        //    for (int i = 0, count = CircleSegments; i < count; i++)
-        //    {
-
-        //        thetaV.X = cp.cpfcos(theta);
-        //        thetaV.Y = cp.cpfsin(theta);
-        //        CCVector2 v1 = centr + Convert.ToSingle(radius) * thetaV;
-
-        //        thetaV.X = cp.cpfcos(theta + increment);
-        //        thetaV.Y = cp.cpfsin(theta + increment);
-        //        CCVector2 v2 = centr +
-        //                     Convert.ToSingle(radius) *
-        //                     thetaV;
-
-        //        primitiveBatch.AddVertex(ref v1, colorOutline, PrimitiveType.LineList);
-        //        primitiveBatch.AddVertex(ref v2, colorOutline, PrimitiveType.LineList);
-
-        //        theta += increment;
-        //    }
-        //}
-
-
-
         public void DrawSegment(CCPoint from, CCPoint to, float radius, CCColor4F color)
         {
 			var cl = color.ToColor();
@@ -274,11 +240,6 @@ namespace CocosSharp
 
             dirty = true;
         }
-
-        //public void DrawCircle(CCPoint center, float radius, CCColor4B color)
-        //{
-        //    DrawCircle(center, radius, CCMacros.CCDegreesToRadians(360f), 360, color);
-        //}
 
         public void DrawCircle(CCPoint center, float radius, float angle, int segments, CCColor4B color)
         {
@@ -315,6 +276,12 @@ namespace CocosSharp
             DrawPolygon(pt, 4, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
         }
 
+        public void DrawPolygon(CCPoint[] verts, int count, CCColor4B fillColor, float borderWidth,
+                        CCColor4B borderColor)
+        {
+            DrawPolygon(verts, count, new CCColor4F(fillColor), borderWidth, new CCColor4F(borderColor));
+        }
+
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4F fillColor, float borderWidth,
                                 CCColor4F borderColor)
         {
@@ -333,8 +300,11 @@ namespace CocosSharp
                 extrude[i] = new ExtrudeVerts() {offset = offset, n = n2};
             }
 
-            bool outline = (fillColor.A > 0.0f && borderWidth > 0.0f);
+            bool outline = (borderColor.A > 0.0f && borderWidth > 0.0f);
 
+            var colorFill = fillColor.ToColor();
+            var borderFill = borderColor.ToColor();
+            
             float inset = (!outline ? 0.5f : 0.0f);
             
             for (int i = 0; i < count - 2; i++)
@@ -343,9 +313,9 @@ namespace CocosSharp
                 var v1 = verts[i + 1] - (extrude[i + 1].offset * inset);
                 var v2 = verts[i + 2] - (extrude[i + 2].offset * inset);
 
-                triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
-                triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
-                triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
+                triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), colorFill)); //__t(v2fzero)
+                triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), colorFill)); //__t(v2fzero)
+                triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), colorFill)); //__t(v2fzero)
             }
 
             for (int i = 0; i < count; i++)
@@ -366,13 +336,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * borderWidth));
                     var outer1 = (v1 + (offset1 * borderWidth));
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderColor.ToColor())); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderFill)); //__t(n0)
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderColor.ToColor())); //__t(v2fneg(n0))
-                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), borderColor.ToColor())); //__t(n0)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderColor.ToColor())); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), borderFill)); //__t(v2fneg(n0))
+                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), borderFill)); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), borderFill)); //__t(n0)
                 }
                 else
                 {
@@ -381,13 +351,13 @@ namespace CocosSharp
                     var outer0 = (v0 + (offset0 * 0.5f));
                     var outer1 = (v1 + (offset1 * 0.5f));
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), fillColor.ToColor())); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new VertexPositionColor(inner1.ToVector3(), colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), colorFill)); //__t(n0)
 
-                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), fillColor.ToColor())); //__t(v2fzero)
-                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), fillColor.ToColor())); //__t(n0)
-                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), fillColor.ToColor())); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(inner0.ToVector3(), colorFill)); //__t(v2fzero)
+                    triangleVertices.Add(new VertexPositionColor(outer0.ToVector3(), colorFill)); //__t(n0)
+                    triangleVertices.Add(new VertexPositionColor(outer1.ToVector3(), colorFill)); //__t(n0)
                 }
             }
 
