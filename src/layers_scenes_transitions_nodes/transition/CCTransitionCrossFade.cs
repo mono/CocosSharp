@@ -27,8 +27,6 @@ namespace CocosSharp
 {
     public class CCTransitionCrossFade : CCTransitionScene
     {
-        const int SceneFade = int.MaxValue;
-
 
         #region Constructors
 
@@ -51,14 +49,11 @@ namespace CocosSharp
             // create a transparent color layer
             // in which we are going to add our rendertextures
             var color = new CCColor4B(0, 0, 0, 0);
-            var bounds = Scene.VisibleBoundsScreenspace;
+            var bounds = Layer.VisibleBoundsWorldspace;
             CCRect viewportRect = Viewport.ViewportInPixels;
-            CCLayerColor layer = new CCLayerColor(Camera, color);
 
             // create the first render texture for inScene
             CCRenderTexture inTexture = new CCRenderTexture(bounds.Size, viewportRect.Size);
-            inTexture.Scene = Scene;
-            inTexture.Layer = Layer;
 
             if (null == inTexture)
             {
@@ -68,6 +63,8 @@ namespace CocosSharp
             inTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             inTexture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             inTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
+
+            AddChild(inTexture);
 
             //  render inScene to its texturebuffer
             inTexture.Begin();
@@ -79,8 +76,8 @@ namespace CocosSharp
             outTexture.Sprite.AnchorPoint = new CCPoint(0.5f, 0.5f);
             outTexture.Position = new CCPoint(bounds.Origin.X + bounds.Size.Width / 2, bounds.Size.Height / 2);
             outTexture.AnchorPoint = new CCPoint(0.5f, 0.5f);
-            outTexture.Scene = Scene;
-            outTexture.Layer = Layer;
+
+            AddChild(outTexture);
 
             //  render outScene to its texturebuffer
             outTexture.Begin();
@@ -92,31 +89,19 @@ namespace CocosSharp
             var blend1 = new CCBlendFunc(CCOGLES.GL_ONE, CCOGLES.GL_ONE); // inScene will lay on background and will not be used with alpha
             var blend2 = CCBlendFunc.NonPremultiplied; // we are going to blend outScene via alpha 
 
-            // set blendfunctions
             inTexture.Sprite.BlendFunc = blend1;
             outTexture.Sprite.BlendFunc = blend2;
 
-            // add render textures to the layer
-            layer.AddChild(inTexture);
-            layer.AddChild(outTexture);
-
-            // initial opacity:
             inTexture.Sprite.Opacity = 255;
             outTexture.Sprite.Opacity = 255;
 
-            // create the blend action
             CCAction layerAction = new CCSequence
                 (
                     new CCFadeTo (Duration, 0),
                     new CCCallFunc((Finish))
                 );
 
-
-            //// run the blend action
             outTexture.Sprite.RunAction(layerAction);
-
-            // add the layer (which contains our two rendertextures) to the scene
-            AddChild(layer, 2, SceneFade);
 
             InSceneNodeContainer.Visible = false;
             OutSceneNodeContainer.Visible = false;
