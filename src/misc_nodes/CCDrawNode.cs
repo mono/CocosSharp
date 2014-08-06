@@ -274,7 +274,7 @@ namespace CocosSharp
             float tx = 0;
             float ty = 0;
 
-            for (int i = 0; i < segments; i++)
+            for (int i = 0; i < segments - 1; i++)
             {
                 triangleVertices.Add(verticeCenter);
 
