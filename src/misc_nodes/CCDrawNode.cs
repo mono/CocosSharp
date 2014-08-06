@@ -155,7 +155,7 @@ namespace CocosSharp
         {
             var cl = color.ToColor();
 
-            var segments = 10 * (float)Math.Sqrt(radius);  //<- Let's try to guess at # segments for a reasonable smoothness
+            int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
             float theta = MathHelper.Pi * 2.0f / segments;
             float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
@@ -207,8 +207,8 @@ namespace CocosSharp
         public void DrawSolidCircle(CCPoint pos, float radius, CCColor4B color)
         {
             var cl = color.ToColor();
-            //radius = 53;
-            var segments = 10 * (float)Math.Sqrt(radius);  //<- Let's try to guess at # segments for a reasonable smoothness
+
+            int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
 
             float theta = MathHelper.Pi * 2.0f / segments;
             float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
@@ -223,11 +223,7 @@ namespace CocosSharp
             float tx = 0;
             float ty = 0;
 
-            var first = new VertexPositionColor(Vector3.Zero, cl);
-            first.Position.X = x + pos.X;
-            first.Position.Y = y + pos.Y;
-
-            for (int i = 1; i < segments; i++)
+            for (int i = 0; i < segments; i++)
             {
                 triangleVertices.Add(verticeCenter);
 
@@ -254,11 +250,56 @@ namespace CocosSharp
                 triangleVertices.Add(vert1); // output vertex
             }
 
-            // adjust our offset so that we do not have any drawing overlapp.
-            triangleVertices.Add(first);
-            vert1.Position.X -= 0.1f;
-            triangleVertices.Add(vert1);
-            triangleVertices.Add(verticeCenter);
+            dirty = true;
+        }
+
+
+        // Used for drawing line caps
+        public void DrawSolidArc(CCPoint pos, float radius, float startAngle, float sweepAngle, CCColor4B color)
+        {
+            var cl = color.ToColor();
+
+            int segments = (int)(10 * (float)Math.Sqrt(radius));  //<- Let's try to guess at # segments for a reasonable smoothness
+
+            float theta = sweepAngle / (segments - 1);// MathHelper.Pi * 2.0f / segments;
+            float tangetial_factor = (float)Math.Tan(theta);   //calculate the tangential factor 
+
+            float radial_factor = (float)Math.Cos(theta);   //calculate the radial factor 
+
+            float x = radius * (float)Math.Cos(startAngle);   //we now start at the start angle
+            float y = radius * (float)Math.Sin(startAngle); 
+
+            var verticeCenter = new VertexPositionColor(new Vector3(pos.X, pos.Y, 0), cl);
+            var vert1 = new VertexPositionColor(Vector3.Zero, cl);
+            float tx = 0;
+            float ty = 0;
+
+            for (int i = 0; i < segments; i++)
+            {
+                triangleVertices.Add(verticeCenter);
+
+                vert1.Position.X = x + pos.X;
+                vert1.Position.Y = y + pos.Y;
+                triangleVertices.Add(vert1); // output vertex
+
+                //calculate the tangential vector 
+                //remember, the radial vector is (x, y) 
+                //to get the tangential vector we flip those coordinates and negate one of them 
+                tx = -y;
+                ty = x;
+
+                //add the tangential vector 
+                x += tx * tangetial_factor;
+                y += ty * tangetial_factor;
+
+                //correct using the radial factor 
+                x *= radial_factor;
+                y *= radial_factor;
+
+                vert1.Position.X = x + pos.X;
+                vert1.Position.Y = y + pos.Y;
+                triangleVertices.Add(vert1); // output vertex
+            }
 
             dirty = true;
         }
@@ -270,11 +311,6 @@ namespace CocosSharp
 			var a = from;
 			var b = to;
 
-
-			// Dots are causing a problem right now when being drawn.
-			//DrawDot(a, radius, color); // Draw starting line ending
-			//DrawDot(b, radius, color); // Draw ending Line ending
-
 			var n = CCPoint.Normalize(CCPoint.PerpendicularCCW(a - b));
 
 			var lww = radius;
@@ -285,14 +321,20 @@ namespace CocosSharp
 			var v3 = a + nw;
 
 			// Triangles from beginning to end
-			triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
-			triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
-			triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v0.ToVector3(), cl));
 
-			triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
-			triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
-			triangleVertices.Add(new VertexPositionColor(v3.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v1.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v2.ToVector3(), cl));
+            triangleVertices.Add(new VertexPositionColor(v3.ToVector3(), cl));
 
+            var mb = (float)Math.Atan2(v1.Y - b.Y, v1.X - b.X);
+            var ma = (float)Math.Atan2(v2.Y - a.Y, v2.X - a.X);
+
+            // Draw rounded line caps
+            DrawSolidArc(a, radius, ma, MathHelper.Pi, color);
+            DrawSolidArc(b, radius, mb, MathHelper.Pi, color);
 
             dirty = true;
         }
