@@ -209,10 +209,8 @@ namespace CocosSharp
 
             if(viewport != null && viewport == Viewport) 
             {
-
                 UpdateResolutionRatios();
                 SceneViewportChanged(this, null);
-
             }
         }
 
@@ -220,11 +218,12 @@ namespace CocosSharp
 
         #region Resolution Policy
 
-
         void UpdateResolutionRatios ()
         {
+
             if (Children != null && SceneResolutionPolicy != CCSceneResolutionPolicy.Custom)
             {
+                bool dirtyViewport = false;
                 var unionedBounds = CCRect.Zero;
 
                 foreach (var child in Children)
@@ -247,17 +246,21 @@ namespace CocosSharp
                 {
                     // Calculate Landscape Ratio
                     var viewportRect = CalculateResolutionRatio(unionedBounds, resolutionPolicy);
+                    dirtyViewport = Viewport.exactFitLandscapeRatio != viewportRect;
                     Viewport.exactFitLandscapeRatio = viewportRect;
 
                     // Calculate Portrait Ratio
                     var portraitBounds = unionedBounds.InvertedSize;
                     viewportRect = CalculateResolutionRatio(portraitBounds, resolutionPolicy);
+                    dirtyViewport = Viewport.exactFitPortraitRatio != viewportRect;
                     Viewport.exactFitPortraitRatio = viewportRect;
 
                     // End Calculate viewport ratios
 
                 }
 
+                if (dirtyViewport)
+                    Viewport.UpdateViewport(false);
             }
         }
 
