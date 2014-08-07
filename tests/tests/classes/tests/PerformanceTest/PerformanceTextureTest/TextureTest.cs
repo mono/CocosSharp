@@ -283,7 +283,7 @@ namespace tests
 
         public static CCScene scene()
         {
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow);
             TextureTest layer = new TextureTest(false, PerformanceTextureTest.TEST_COUNT, PerformanceTextureTest.s_nTexCurCase);
             pScene.AddChild(layer);
 

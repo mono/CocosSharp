@@ -15,7 +15,7 @@ namespace tests
         public static void runTouchesTest()
         {
             s_nTouchCurCase = 0;
-            CCScene pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
+            CCScene pScene = new CCScene(AppDelegate.SharedWindow);
             CCLayer pLayer = new TouchesPerformTest1(true, TEST_COUNT, s_nTouchCurCase);
 
             pScene.AddChild(pLayer);

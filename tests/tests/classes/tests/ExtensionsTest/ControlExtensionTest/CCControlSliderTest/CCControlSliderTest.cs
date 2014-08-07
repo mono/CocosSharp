@@ -61,7 +61,7 @@ namespace tests.Extensions
 
         public new static CCScene sceneWithTitle(string title)
         {
-            var pScene = new CCScene (AppDelegate.SharedWindow, AppDelegate.SharedViewport);
+            var pScene = new CCScene (AppDelegate.SharedWindow);
             var controlLayer = new CCControlSliderTest();
             if (controlLayer != null)
             {

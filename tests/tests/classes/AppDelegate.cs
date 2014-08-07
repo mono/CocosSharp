@@ -9,16 +9,10 @@ namespace tests
     public class AppDelegate : CCApplicationDelegate
     {
         static CCWindow sharedWindow;
-        static CCViewport sharedViewport;
 
         public static CCWindow SharedWindow
         {
             get { return sharedWindow; }
-        }
-
-        public static CCViewport SharedViewport
-        {
-            get { return sharedViewport; }
         }
 
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
@@ -27,11 +21,6 @@ namespace tests
             //application.AllowUserResizing = true;
             //application.PreferMultiSampling = false;
             application.ContentRootDirectory = "Content";
-
-
-            CCRect boundsRect = new CCRect(0.0f, 0.0f, 960, 640);
-
-			sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
 
             sharedWindow = mainWindow;
 

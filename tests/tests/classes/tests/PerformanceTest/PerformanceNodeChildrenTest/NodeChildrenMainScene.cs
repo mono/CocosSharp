@@ -10,7 +10,7 @@ namespace tests
     {
         long lStart;
 
-        public NodeChildrenMainScene(): base(AppDelegate.SharedWindow, AppDelegate.SharedViewport)
+        public NodeChildrenMainScene(): base(AppDelegate.SharedWindow)
         {
         }
 

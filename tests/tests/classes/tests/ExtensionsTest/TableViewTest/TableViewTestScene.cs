@@ -14,7 +14,7 @@ namespace tests.Extensions
 
         public static void runTableViewTest()
         {
-            var pScene = new CCScene(AppDelegate.SharedWindow, AppDelegate.SharedViewport);
+            var pScene = new CCScene(AppDelegate.SharedWindow);
             var pLayer = new TableViewTestLayer();
             pScene.AddChild(pLayer);
             AppDelegate.SharedWindow.DefaultDirector.ReplaceScene(pScene);
