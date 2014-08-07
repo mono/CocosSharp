@@ -70,6 +70,19 @@ namespace CocosSharp
                 outSceneNodeContainer.Visit();
             }
         }
+
+        public override void OnExit()
+        {
+            base.OnExit();
+            outSceneNodeContainer.InnerScene.OnExit();
+        }
+
+        public override void OnExitTransitionDidStart()
+        {
+            base.OnExitTransitionDidStart();
+            outSceneNodeContainer.InnerScene.OnExitTransitionDidStart();
+        }
+ 
     }
 
     public class CCTransitionScene : CCScene
