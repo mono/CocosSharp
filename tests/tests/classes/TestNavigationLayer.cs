@@ -53,7 +53,6 @@ namespace tests
             navigationMenu = new CCMenu(backMenuItem, restartMenuItem, nextMenuItem);
 
             AddChild(navigationMenu, TestScene.MENU_LEVEL);
-            Camera = AppDelegate.SharedCamera;
         }
 
         #endregion Constructors
@@ -63,13 +62,14 @@ namespace tests
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
 			if (!string.IsNullOrEmpty(Title))
 				TitleLabel.Text = Title;
 
-            if(TitleLabel != null)
-                TitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 50));
+            TitleLabel.Position = (new CCPoint(windowSize.Width / 2, windowSize.Height - 50));
 
 			if (!string.IsNullOrEmpty(Subtitle))
 				SubtitleLabel.Text = Subtitle;

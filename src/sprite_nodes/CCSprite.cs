@@ -570,11 +570,16 @@ namespace CocosSharp
             subRectOrigin.X = centerPoint.X - textureRectInPixels.Size.Width / 2.0f;
             subRectOrigin.Y = centerPoint.Y - textureRectInPixels.Size.Height / 2.0f;
 
-            CCRect subRectRatio = new CCRect (
-                subRectOrigin.X / untrimmedSizeInPixels.Width, 
-                subRectOrigin.Y / untrimmedSizeInPixels.Height,
-                textureRectInPixels.Size.Width / untrimmedSizeInPixels.Width,
-                textureRectInPixels.Size.Height / untrimmedSizeInPixels.Height);
+            CCRect subRectRatio = new CCRect(0, 0, 1, 1);
+
+            if (TextureRectInPixels.Size != CCSize.Zero)
+            {
+                subRectRatio = new CCRect(
+                    subRectOrigin.X / untrimmedSizeInPixels.Width, 
+                    subRectOrigin.Y / untrimmedSizeInPixels.Height,
+                    textureRectInPixels.Size.Width / untrimmedSizeInPixels.Width,
+                    textureRectInPixels.Size.Height / untrimmedSizeInPixels.Height);
+            }
 
             // Atlas: Vertex
             float x1 = subRectRatio.Origin.X * ContentSize.Width;
