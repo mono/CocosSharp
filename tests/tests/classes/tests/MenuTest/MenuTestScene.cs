@@ -40,14 +40,7 @@ namespace tests
             CCLayer pLayer4 = new MenuLayer4();
             CCLayer pLayer5 = new MenuLayerPriorityTest();
 
-            pLayer1.Camera = AppDelegate.SharedCamera;
-            pLayer2.Camera = AppDelegate.SharedCamera;
-            pLayer3.Camera = AppDelegate.SharedCamera;
-            pLayer4.Camera = AppDelegate.SharedCamera;
-            pLayer5.Camera = AppDelegate.SharedCamera;
-
             CCLayerMultiplex layer = new CCLayerMultiplex(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5);
-            layer.Camera = AppDelegate.SharedCamera;
             AddChild(layer, 0);
 
             Director.ReplaceScene(this);

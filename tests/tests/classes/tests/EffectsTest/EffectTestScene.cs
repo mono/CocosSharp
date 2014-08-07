@@ -11,7 +11,6 @@ namespace tests
         public override void runThisTest()
         {
             CCLayer layer = new TextLayer ();
-            layer.Camera = AppDelegate.SharedCamera;
 
             AddChild(layer);
             Director.ReplaceScene(this);

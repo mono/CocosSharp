@@ -17,10 +17,7 @@ namespace tests
 
 		public EffectAdvanceTextLayer()
 		{
-            Camera = AppDelegate.SharedCamera;
             contentLayer = new CCLayer();
-            CCCamera contentCamera = new CCCamera(Camera.OrthographicViewSizeWorldspace, Camera.CenterInWorldspace, Camera.TargetInWorldspace);
-            contentLayer.Camera = contentCamera;
 		}
 
 		protected CCSprite grossini;

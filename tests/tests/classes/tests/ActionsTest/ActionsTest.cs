@@ -211,8 +211,6 @@ namespace tests
                     break;
             }
 
-            layer.Camera = AppDelegate.SharedCamera;
-
             return layer;
         }
 
@@ -357,7 +355,7 @@ namespace tests
             {
                 Tamara.Visible = false;
                 Kathia.Visible = false;
-                Grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                Grossini.Position = s.Center;
             }
             else if (numberOfSprites == 2)
             {
@@ -367,7 +365,7 @@ namespace tests
             }
             else if (numberOfSprites == 3)
             {
-                Grossini.Position = new CCPoint(s.Width / 2, s.Height / 2);
+                Grossini.Position = s.Center;
                 Tamara.Position = new CCPoint(s.Width / 4, s.Height / 2);
                 Kathia.Position = new CCPoint(3 * s.Width / 4, s.Height / 2);
             }

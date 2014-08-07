@@ -570,7 +570,7 @@ namespace CocosSharp
             subRectOrigin.X = centerPoint.X - textureRectInPixels.Size.Width / 2.0f;
             subRectOrigin.Y = centerPoint.Y - textureRectInPixels.Size.Height / 2.0f;
 
-            CCRect subRectRatio = new CCRect(0, 0, 1, 1);
+            CCRect subRectRatio = CCRect.Zero;
 
             if (TextureRectInPixels.Size != CCSize.Zero)
             {

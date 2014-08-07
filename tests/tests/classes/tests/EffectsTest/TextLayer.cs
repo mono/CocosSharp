@@ -14,7 +14,6 @@ namespace tests
 		public TextLayer() : base()
 		{
 
-            Camera = AppDelegate.SharedCamera;
             contentLayer = new CCLayer();
             CCCamera contentCamera = new CCCamera(Camera.OrthographicViewSizeWorldspace, Camera.CenterInWorldspace, Camera.TargetInWorldspace);
             contentLayer.Camera = contentCamera;
@@ -192,7 +191,6 @@ namespace tests
 		{
 			CCScene s = new EffectTestScene();
 			CCLayer child = new TextLayer();
-            child.Camera = AppDelegate.SharedCamera;
 			s.AddChild(child);
 			Director.ReplaceScene(s);
 		}

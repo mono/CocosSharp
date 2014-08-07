@@ -55,7 +55,6 @@ namespace tests
             sceneIdx = sceneIdx % MAX_LAYER;
 
 			var pLayer = createEffectAdvanceLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
 
             return pLayer;
         }
@@ -68,7 +67,6 @@ namespace tests
                 sceneIdx += total;
 
 			var pLayer = createEffectAdvanceLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
 
             return pLayer;
         }
@@ -76,7 +74,6 @@ namespace tests
         public static CCLayer restartEffectAdvanceAction()
         {
 			var pLayer = createEffectAdvanceLayer(sceneIdx);
-            pLayer.Camera = AppDelegate.SharedCamera;
 
             return pLayer;
         }
@@ -84,7 +81,6 @@ namespace tests
         public override void runThisTest()
         {
 			var pLayer = nextEffectAdvanceAction();
-            pLayer.Camera = AppDelegate.SharedCamera;
 
             AddChild(pLayer);
             Director.ReplaceScene(this);

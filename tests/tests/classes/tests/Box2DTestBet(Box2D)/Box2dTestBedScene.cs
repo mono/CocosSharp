@@ -18,8 +18,6 @@ namespace Box2D.TestBed
         {
             CCLayer layer = MenuLayer.menuWithEntryID (0);
 
-            layer.Camera = AppDelegate.SharedCamera;
-
             AddChild(layer);
 
             Scene.Director.ReplaceScene(this);

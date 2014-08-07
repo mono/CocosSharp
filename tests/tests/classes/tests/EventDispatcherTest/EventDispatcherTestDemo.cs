@@ -88,8 +88,6 @@ namespace tests
 				break;
 			}
 
-            testLayer.Camera = AppDelegate.SharedCamera;
-
 			return testLayer;
 		}
 

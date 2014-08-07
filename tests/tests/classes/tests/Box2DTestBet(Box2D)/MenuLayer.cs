@@ -34,7 +34,6 @@ namespace Box2D.TestBed
             CCSize s = Layer.VisibleBoundsWorldspace.Size;
 
             Box2DView view = Box2DView.viewWithEntryID(m_entryID);
-            view.Camera = AppDelegate.SharedCamera;
             AddChild(view, 0, kTagBox2DNode);
             view.Scale = 8;
             view.AnchorPoint = new CCPoint(0, 0);
@@ -66,7 +65,6 @@ namespace Box2D.TestBed
         {
             CCScene s = new Box2dTestBedScene();
             MenuLayer box = menuWithEntryID(m_entryID);
-            box.Camera = AppDelegate.SharedCamera;
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);
         }
@@ -78,7 +76,6 @@ namespace Box2D.TestBed
             if (next >= g_totalEntries)
                 next = 0;
             MenuLayer box = menuWithEntryID(next);
-            box.Camera = AppDelegate.SharedCamera;
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);
         }
@@ -93,7 +90,6 @@ namespace Box2D.TestBed
             }
 
             MenuLayer box = menuWithEntryID(next);
-            box.Camera = AppDelegate.SharedCamera;
 
             s.AddChild(box);
             Scene.Director.ReplaceScene(s);

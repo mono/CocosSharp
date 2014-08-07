@@ -10,7 +10,6 @@ namespace tests
     {
         static CCWindow sharedWindow;
         static CCViewport sharedViewport;
-        static CCCamera sharedCamera;
 
         public static CCWindow SharedWindow
         {
@@ -20,11 +19,6 @@ namespace tests
         public static CCViewport SharedViewport
         {
             get { return sharedViewport; }
-        }
-
-        public static CCCamera SharedCamera
-        {
-            get { return sharedCamera; }
         }
 
         public override void ApplicationDidFinishLaunching(CCApplication application, CCWindow mainWindow)
@@ -40,7 +34,6 @@ namespace tests
 			sharedViewport = new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f));
 
             sharedWindow = mainWindow;
-            sharedCamera = new CCCamera(boundsRect.Size, new CCPoint3(boundsRect.Center, 100.0f), new CCPoint3(boundsRect.Center, 0.0f));
 
             mainWindow.SetDesignResolutionSize(960, 640, CCSceneResolutionPolicy.ShowAll);
 
@@ -80,8 +73,6 @@ namespace tests
             //sharedWindow.AddSceneDirector(sharedDirector);
 
             CCScene scene = new CCScene(sharedWindow);
-			scene.Camera = sharedCamera;
-
             CCLayer layer = new TestController();
 
             scene.AddChild(layer);

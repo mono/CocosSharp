@@ -89,7 +89,6 @@ namespace tests
 			m_pSpriteTexture = _batch.Texture;
 			AddChild(_batch, 0, kTagParentNode);
 
-            Camera = AppDelegate.SharedCamera;
 		}
 
 		public override void OnEnter()

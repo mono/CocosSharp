@@ -20,7 +20,6 @@ namespace tests
         public override void runThisTest()
         {
             CCLayer pLayer = ActionManagerTest.nextActionManagerAction();
-            pLayer.Camera = AppDelegate.SharedCamera;
             AddChild(pLayer);
 
             Director.ReplaceScene(this);
