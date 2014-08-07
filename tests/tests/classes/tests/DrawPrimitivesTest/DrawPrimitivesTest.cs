@@ -114,12 +114,12 @@ namespace tests
 			// Anti-Aliased
 			//  glEnable(GL_LINE_SMOOTH);
 			CCDrawingPrimitives.LineWidth = 1 ;
-			CCDrawingPrimitives.DrawLine(CCVisibleRect.LeftBottom, CCVisibleRect.RightTop);
+            CCDrawingPrimitives.DrawLine(Layer.VisibleBoundsWorldspace.LeftBottom(), Layer.VisibleBoundsWorldspace.RightTop());
 
 			// line: color, width, aliased
 			CCDrawingPrimitives.LineWidth = 5 ;
 			CCDrawingPrimitives.DrawColor = CCColor4B.Red;
-			CCDrawingPrimitives.DrawLine(CCVisibleRect.LeftTop, CCVisibleRect.RightBottom);
+            CCDrawingPrimitives.DrawLine(Layer.VisibleBoundsWorldspace.LeftTop(), Layer.VisibleBoundsWorldspace.RightBottom());
 
 			// TIP:
 			// If you are going to use always thde same color or width, you don't
@@ -130,7 +130,7 @@ namespace tests
 			// draw big point in the center
 			CCDrawingPrimitives.PointSize = 64 ;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(0, 0, 255, 128);
-			CCDrawingPrimitives.DrawPoint(CCVisibleRect.Center);
+            CCDrawingPrimitives.DrawPoint(Layer.VisibleBoundsWorldspace.Center());
 
             // draw 4 small points
 			CCPoint[] points = {new CCPoint(60, 60), new CCPoint(70, 70), new CCPoint(60, 70), new CCPoint(70, 60)};
@@ -142,7 +142,7 @@ namespace tests
             // draw a green circle with 10 segments
 			CCDrawingPrimitives.LineWidth = 16 ;
 			CCDrawingPrimitives.DrawColor = CCColor4B.Green;
-			CCDrawingPrimitives.DrawCircle(CCVisibleRect.Center, 100, 0, 10, false);
+            CCDrawingPrimitives.DrawCircle(Layer.VisibleBoundsWorldspace.Center(), 100, 0, 10, false);
 
 
             // draw a green circle with 50 segments with line to center
@@ -154,7 +154,7 @@ namespace tests
 			// draw a pink solid circle with 50 segments
 			CCDrawingPrimitives.LineWidth = 2 ;
 			CCDrawingPrimitives.DrawColor = new CCColor4B(255, 0, 255, 255);
-			CCDrawingPrimitives.DrawSolidCircle(CCVisibleRect.Center + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
+            CCDrawingPrimitives.DrawSolidCircle(Layer.VisibleBoundsWorldspace.Center() + new CCPoint(140, 0), 40, CCMacros.CCDegreesToRadians(90), 50);
 
 
             // draw an arc within rectangular region

@@ -234,4 +234,57 @@ namespace tests
             }
         }
     }
+
+    public static class GeometryExtensionHelpers
+    {
+        public static CCPoint Left (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X, visibleRect.Origin.Y + visibleRect.Size.Height / 2);
+        }
+
+        public static CCPoint Right (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width,
+                visibleRect.Origin.Y + visibleRect.Size.Height / 2);
+        }
+
+        public static CCPoint Top (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / 2,
+                visibleRect.Origin.Y + visibleRect.Size.Height);
+        }
+
+        public static CCPoint Bottom (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / 2, visibleRect.Origin.Y);
+        }
+
+        public static CCPoint Center (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width / 2,
+                visibleRect.Origin.Y + visibleRect.Size.Height / 2);
+        }
+
+        public static CCPoint LeftTop (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X, visibleRect.Origin.Y + visibleRect.Size.Height);
+        }
+
+        public static CCPoint RightTop (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width,
+                visibleRect.Origin.Y + visibleRect.Size.Height);
+        }
+
+        public static CCPoint LeftBottom (this CCRect visibleRect)
+        {
+            return visibleRect.Origin;
+        }
+
+        public static CCPoint RightBottom (this CCRect visibleRect)
+        {
+            return new CCPoint(visibleRect.Origin.X + visibleRect.Size.Width, visibleRect.Origin.Y);
+        }
+    }
+
 }
