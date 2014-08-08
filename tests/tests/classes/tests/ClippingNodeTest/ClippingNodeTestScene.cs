@@ -531,11 +531,11 @@ namespace tests.Clipping
 
             holesClipper.AddChild(target);
 
-            m_pHoles = new CCNode();
+            m_pHoles = new CCNode(m_pOuterClipper.ContentSize);
 
             holesClipper.AddChild(m_pHoles);
 
-            m_pHolesStencil = new CCNode();
+            m_pHolesStencil = new CCNode(m_pOuterClipper.ContentSize);
 
             holesClipper.Stencil = m_pHolesStencil;
 
@@ -578,14 +578,14 @@ namespace tests.Clipping
             float rotation = CCRandom.Float_0_1() * 360f;
 
             CCSprite hole = new CCSprite("Images/hole_effect.png");
-            hole.Position = point - m_pHoles.BoundingBoxTransformedToWorld.Origin;
             hole.Rotation = rotation;
             hole.Scale = scale;
+            hole.Position = point;
 
             m_pHoles.AddChild(hole);
 
             CCSprite holeStencil = new CCSprite("Images/hole_stencil.png");
-            holeStencil.Position = point - m_pHoles.BoundingBoxTransformedToWorld.Origin;
+            holeStencil.Position = point;
             holeStencil.Rotation = rotation;
             holeStencil.Scale = scale;
 
@@ -597,13 +597,17 @@ namespace tests.Clipping
 		void onTouchesBegan(List<CCTouch> touches, CCEvent touchEvent)
         {
             CCTouch touch = touches[0];
-            CCPoint point =
-                m_pOuterClipper.Layer.ScreenToWorldspace(touch.LocationOnScreen);
-            CCRect rect = m_pOuterClipper.BoundingBoxTransformedToWorld;
+
+            CCPoint point = m_pOuterClipper.WorldToParentspace(
+                Layer.ScreenToWorldspace(touch.LocationOnScreen));
+
+
+            CCRect rect = m_pOuterClipper.BoundingBox;
+
             if (!rect.ContainsPoint(point)) 
                 return;
 
-            this.pokeHoleAtPoint(point);
+            this.pokeHoleAtPoint(point - rect.Origin);
         }
     }
 
