@@ -1,0 +1,82 @@
+<Type Name="CCSceneResolutionPolicy" FullName="CocosSharp.CCSceneResolutionPolicy">
+  <TypeSignature Language="C#" Value="public enum CCSceneResolutionPolicy" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi sealed CCSceneResolutionPolicy extends System.Enum" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Enum</BaseTypeName>
+  </Base>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Custom">
+      <MemberSignature Language="C#" Value="Custom" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy Custom = int32(0)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ExactFit">
+      <MemberSignature Language="C#" Value="ExactFit" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy ExactFit = int32(1)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FixedHeight">
+      <MemberSignature Language="C#" Value="FixedHeight" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy FixedHeight = int32(4)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="FixedWidth">
+      <MemberSignature Language="C#" Value="FixedWidth" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy FixedWidth = int32(5)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="NoBorder">
+      <MemberSignature Language="C#" Value="NoBorder" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy NoBorder = int32(2)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+    <Member MemberName="ShowAll">
+      <MemberSignature Language="C#" Value="ShowAll" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCSceneResolutionPolicy ShowAll = int32(3)" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

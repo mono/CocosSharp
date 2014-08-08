@@ -13,16 +13,6 @@
     <remarks />
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrabber ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AfterRender">
       <MemberSignature Language="C#" Value="public void AfterRender (CocosSharp.CCTexture2D texture);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AfterRender(class CocosSharp.CCTexture2D texture) cil managed" />

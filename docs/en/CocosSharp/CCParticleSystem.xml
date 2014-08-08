@@ -316,19 +316,6 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDirector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Duration">
       <MemberSignature Language="C#" Value="public float Duration { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Duration" />
@@ -556,6 +543,19 @@
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Layer">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCLayer Layer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer Layer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -820,6 +820,19 @@
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scene">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCScene Scene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene Scene" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

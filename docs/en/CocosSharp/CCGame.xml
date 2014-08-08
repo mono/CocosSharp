@@ -1,0 +1,72 @@
+<Type Name="CCGame" FullName="CocosSharp.CCGame">
+  <TypeSignature Language="C#" Value="public class CCGame : Microsoft.Xna.Framework.Game" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCGame extends Microsoft.Xna.Framework.Game" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>Microsoft.Xna.Framework.Game</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCGame ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected override void Draw (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Initialize">
+      <MemberSignature Language="C#" Value="protected override void Initialize ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Initialize() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Update">
+      <MemberSignature Language="C#" Value="protected override void Update (Microsoft.Xna.Framework.GameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Update(class Microsoft.Xna.Framework.GameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="Microsoft.Xna.Framework.GameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -80,14 +80,11 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSprite (CocosSharp.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize size) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSprite ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="size" Type="CocosSharp.CCSize" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="size">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -106,32 +103,47 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; rectInPoints = null);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rectInPoints) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSprite (CocosSharp.CCSize contentSize, CocosSharp.CCSpriteFrame spriteFrame);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize contentSize, class CocosSharp.CCSpriteFrame spriteFrame) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="fileName" Type="System.String" />
-        <Parameter Name="rectInPoints" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="contentSize" Type="CocosSharp.CCSize" />
+        <Parameter Name="spriteFrame" Type="CocosSharp.CCSpriteFrame" />
       </Parameters>
       <Docs>
-        <param name="fileName">To be added.</param>
-        <param name="rectInPoints">To be added.</param>
+        <param name="contentSize">To be added.</param>
+        <param name="spriteFrame">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSprite (CocosSharp.CCTexture2D texture = null, Nullable&lt;CocosSharp.CCRect&gt; rectInPoints = null, bool rotated = false);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rectInPoints, bool rotated) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; texRectInPixels = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; texRectInPixels) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="fileName" Type="System.String" />
+        <Parameter Name="texRectInPixels" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="fileName">To be added.</param>
+        <param name="texRectInPixels">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCSprite (CocosSharp.CCTexture2D texture = null, Nullable&lt;CocosSharp.CCRect&gt; texRectInPixels = null, bool rotated = false);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; texRectInPixels, bool rotated) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rectInPoints" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="texRectInPixels" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
         <Parameter Name="rotated" Type="System.Boolean" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
-        <param name="rectInPoints">To be added.</param>
+        <param name="texRectInPixels">To be added.</param>
         <param name="rotated">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
@@ -161,25 +173,8 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="AnchorPoint">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCPoint AnchorPoint { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint AnchorPoint" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the anchor point in percent.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets the anchor point in percent.</para>
-          <para>anchorPoint is the point around which all transformations and positioning manipulations take place. It's like a pin in the node where it is "attached" to its parent. The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner. But you can use values higher than (1,1) and lower than (0,0) too. The default anchorPoint is (0.5,0.5), so it starts in the center of the node.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AtlasIndex">
-      <MemberSignature Language="C#" Value="public int AtlasIndex { get; set; }" />
+      <MemberSignature Language="C#" Value="public int AtlasIndex { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 AtlasIndex" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -240,6 +235,19 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="ContentSize">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="Deserialize">
       <MemberSignature Language="C#" Value="public override void Deserialize (System.IO.Stream stream);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Deserialize(class System.IO.Stream stream) cil managed" />
@@ -254,32 +262,6 @@
         <param name="stream">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDirector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Dirty">
-      <MemberSignature Language="C#" Value="public virtual bool Dirty { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Dirty" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Makes the  to be updated in the Atlas. </summary>
-        <value>To be added.</value>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -346,27 +328,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="IgnoreAnchorPointForPosition">
-      <MemberSignature Language="C#" Value="public override bool IgnoreAnchorPointForPosition { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IgnoreAnchorPointForPosition" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets whether the anchor point will be (0,0) when you position this node.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets whether the anchor point will be (0,0) when you position this node.</para>
-          <para>This is an internal method, only used by <see cref="T:CocosSharp.CCLayer" /> and <see cref="T:CocosSharp.CCScene" />. Don't call it outside framework. The default value is false, while in <see cref="T:CocosSharp.CCLayer" /> and <see cref="T:CocosSharp.CCScene" /> are true</para>
-          <see cref="T:CocosSharp.CCLayer" />
-          <see cref="T:CocosSharp.CCScene" />
-          <see cref="T:CocosSharp.CCLayer" />
-          <see cref="T:CocosSharp.CCScene" />
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsAntialiased">
       <MemberSignature Language="C#" Value="public bool IsAntialiased { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsAntialiased" />
@@ -411,7 +372,7 @@
       </Docs>
     </Member>
     <Member MemberName="IsTextureRectRotated">
-      <MemberSignature Language="C#" Value="public bool IsTextureRectRotated { get; }" />
+      <MemberSignature Language="C#" Value="public bool IsTextureRectRotated { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsTextureRectRotated" />
       <MemberType>Property</MemberType>
       <ReturnValue>
@@ -419,19 +380,6 @@
       </ReturnValue>
       <Docs>
         <summary>Returns whether or not the texture rectangle is rotated. </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="OffsetPosition">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint OffsetPosition { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint OffsetPosition" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Gets the offset position of the sprite. Calculated automatically by editors like Zwoptex. </summary>
         <value>To be added.</value>
         <remarks />
       </Docs>
@@ -450,6 +398,19 @@
           <para>Changes the opacity.</para>
           <para />
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ParentUpdatedTransform">
+      <MemberSignature Language="C#" Value="protected override void ParentUpdatedTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ParentUpdatedTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Position">
@@ -493,15 +454,28 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="Quad">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCV3F_C4B_T2F_Quad Quad;" />
-      <MemberSignature Language="ILAsm" Value=".field public valuetype CocosSharp.CCV3F_C4B_T2F_Quad Quad" />
+    <Member MemberName="quad">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad quad;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCV3F_C4B_T2F_Quad quad" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCV3F_C4B_T2F_Quad</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Quad">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad Quad { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCV3F_C4B_T2F_Quad Quad" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCV3F_C4B_T2F_Quad</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -614,39 +588,6 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="RunningOnNewWindow">
-      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="windowSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Scale">
-      <MemberSignature Language="C#" Value="public override float Scale { set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 Scale" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Changes both X and Y scale factor of the node.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Changes both X and Y scale factor of the node.</para>
-          <para>1.0 is the default scale factor. It modifies the X and Y scale at the same time.</para>
-          <para />
-        </remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ScaleTo">
       <MemberSignature Language="C#" Value="public virtual void ScaleTo (CocosSharp.CCSize size);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ScaleTo(valuetype CocosSharp.CCSize size) cil managed" />
@@ -713,22 +654,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetDirtyRecursively">
-      <MemberSignature Language="C#" Value="public virtual void SetDirtyRecursively (bool value);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetDirtyRecursively(bool value) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="value" Type="System.Boolean" />
-      </Parameters>
-      <Docs>
-        <param name="value">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="SetReorderChildDirtyRecursively">
       <MemberSignature Language="C#" Value="public virtual void SetReorderChildDirtyRecursively ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void SetReorderChildDirtyRecursively() cil managed" />
@@ -758,58 +683,6 @@
         <param name="frameIndex">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetTextureRect">
-      <MemberSignature Language="C#" Value="public void SetTextureRect (CocosSharp.CCRect rectInPoints);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTextureRect(valuetype CocosSharp.CCRect rectInPoints) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="rectInPoints" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="rectInPoints">To be added.</param>
-        <summary>Sets the texture rect, rectRotated and untrimmed size of the  in points. It will update the texture coordinates and the vertex rectangle. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SetTextureRect">
-      <MemberSignature Language="C#" Value="public void SetTextureRect (CocosSharp.CCRect rectInPoints, bool rotated, CocosSharp.CCSize sizeInPoints);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTextureRect(valuetype CocosSharp.CCRect rectInPoints, bool rotated, valuetype CocosSharp.CCSize sizeInPoints) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="rectInPoints" Type="CocosSharp.CCRect" />
-        <Parameter Name="rotated" Type="System.Boolean" />
-        <Parameter Name="sizeInPoints" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="rectInPoints">To be added.</param>
-        <param name="rotated">To be added.</param>
-        <param name="sizeInPoints">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SetVertexRect">
-      <MemberSignature Language="C#" Value="protected virtual void SetVertexRect (CocosSharp.CCRect rectInPoints);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void SetVertexRect(valuetype CocosSharp.CCRect rectInPoints) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="rectInPoints" Type="CocosSharp.CCRect" />
-      </Parameters>
-      <Docs>
-        <param name="rectInPoints">To be added.</param>
-        <summary>Sets the vertex rect. It will be called internally by setTextureRect. Useful if you want to create 2x images from SD images in Retina Display. Do not call it manually. Use setTextureRect instead. </summary>
-        <remarks />
       </Docs>
     </Member>
     <Member MemberName="SkewX">
@@ -891,17 +764,30 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="TextureRect">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCRect TextureRect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect TextureRect" />
+    <Member MemberName="TextureRectInPixels">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect TextureRectInPixels { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect TextureRectInPixels" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Returns the rect of the  in points </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="TransformedQuad">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCV3F_C4B_T2F_Quad TransformedQuad { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCV3F_C4B_T2F_Quad TransformedQuad" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCV3F_C4B_T2F_Quad</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="UpdateBlendFunc">
@@ -918,8 +804,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
-      <MemberSignature Language="C#" Value="protected override void UpdateColor ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateColor() cil managed" />
+      <MemberSignature Language="C#" Value="public override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateColor() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -930,69 +816,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UpdateTransform">
-      <MemberSignature Language="C#" Value="public override void UpdateTransform ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateTransform() cil managed" />
+    <Member MemberName="UpdateTransformedSpriteTextureQuads">
+      <MemberSignature Language="C#" Value="public void UpdateTransformedSpriteTextureQuads ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateTransformedSpriteTextureQuads() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Updates the quad according the rotation, position, scale values. </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="VertexZ">
-      <MemberSignature Language="C#" Value="public override float VertexZ { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 VertexZ" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets the real OpenGL Z vertex.</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets the real OpenGL Z vertex.</para>
-          <para>Differences between openGL Z vertex and <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> Z order:<list type="bullet" /></para>
-          <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
-          <list type="bullet" />
-          <para>
-            <para>Use it at your own risk since it might break the <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> parent-children z order</para>
-          </para>
-          <para>Use it at your own risk since it might break the <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref> parent-children z order</para>
-          <ref refid="namespacecocos2d" kindref="compound">cocos2d</ref>
-          <item>
-            <description>OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children</description>
-          </item>
-          <description>OpenGL Z modifies the Z vertex, and not the Z order in the relation between parent-children</description>
-          <item>
-            <description>OpenGL Z might require to set 2D projection</description>
-          </item>
-          <description>OpenGL Z might require to set 2D projection</description>
-          <item>
-            <description>cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0</description>
-          </item>
-          <description>cocos2d Z order works OK if all the nodes uses the same openGL Z vertex. eg: vertexZ = 0</description>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Visible">
-      <MemberSignature Language="C#" Value="public override bool Visible { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool Visible" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Sets whether the node is visible</summary>
-        <value>To be added.</value>
-        <remarks>
-          <para>Sets whether the node is visible</para>
-          <para>The default value is true, a node is default to visible</para>
-          <para />
-        </remarks>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

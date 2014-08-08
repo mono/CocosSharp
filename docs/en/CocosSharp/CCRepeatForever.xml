@@ -1,11 +1,11 @@
 <Type Name="CCRepeatForever" FullName="CocosSharp.CCRepeatForever">
-  <TypeSignature Language="C#" Value="public class CCRepeatForever : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRepeatForever extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCRepeatForever : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRepeatForever extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,16 +18,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRepeatForever (CocosSharp.CCActionInterval action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval action) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRepeatForever (CocosSharp.CCFiniteTimeAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
-        <summary>creates the action </summary>
-        <remarks />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -50,11 +50,11 @@
       </Docs>
     </Member>
     <Member MemberName="InnerAction">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCActionInterval InnerAction { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionInterval InnerAction" />
+      <MemberSignature Language="C#" Value="public CocosSharp.CCFiniteTimeAction InnerAction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction InnerAction" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

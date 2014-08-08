@@ -18,16 +18,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSplitRows (float duration, int nRows);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, int32 nRows) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSplitRows (float duration, int numOfRows);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, int32 numOfRows) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="nRows" Type="System.Int32" />
+        <Parameter Name="numOfRows" Type="System.Int32" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <param name="nRows">To be added.</param>
+        <param name="numOfRows">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

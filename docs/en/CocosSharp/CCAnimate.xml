@@ -1,11 +1,11 @@
 <Type Name="CCAnimate" FullName="CocosSharp.CCAnimate">
-  <TypeSignature Language="C#" Value="public class CCAnimate : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimate extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCAnimate : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAnimate extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAnimate (CocosSharp.CCAnimation pAnimation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimation pAnimation) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAnimate (CocosSharp.CCAnimation animation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAnimation animation) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAnimation" Type="CocosSharp.CCAnimation" />
+        <Parameter Name="animation" Type="CocosSharp.CCAnimation" />
       </Parameters>
       <Docs>
-        <param name="pAnimation">To be added.</param>
+        <param name="animation">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

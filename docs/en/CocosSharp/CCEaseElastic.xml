@@ -18,29 +18,29 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseElastic (CocosSharp.CCActionInterval pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseElastic (CocosSharp.CCFiniteTimeAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
-        <param name="pAction">To be added.</param>
+        <param name="action">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseElastic (CocosSharp.CCActionInterval pAction, float fPeriod);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction, float32 fPeriod) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseElastic (CocosSharp.CCFiniteTimeAction action, float period);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action, float32 period) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
-        <Parameter Name="fPeriod" Type="System.Single" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="period" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pAction">To be added.</param>
-        <param name="fPeriod">To be added.</param>
+        <param name="action">To be added.</param>
+        <param name="period">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

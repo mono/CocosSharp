@@ -13,38 +13,27 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCApplication (bool isFullScreen = true, Nullable&lt;CocosSharp.CCSize&gt; mainWindowSizeInPixels = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(bool isFullScreen, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCSize&gt; mainWindowSizeInPixels) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="isFullScreen" Type="System.Boolean" />
+        <Parameter Name="mainWindowSizeInPixels" Type="System.Nullable&lt;CocosSharp.CCSize&gt;" />
+      </Parameters>
+      <Docs>
+        <param name="isFullScreen">To be added.</param>
+        <param name="mainWindowSizeInPixels">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ActionManager">
       <MemberSignature Language="C#" Value="public CocosSharp.CCActionManager ActionManager { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionManager ActionManager" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCActionManager</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AllowUserResizing">
-      <MemberSignature Language="C#" Value="public bool AllowUserResizing { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool AllowUserResizing" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="AnimationCache">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCAnimationCache AnimationCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAnimationCache AnimationCache" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCAnimationCache</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -90,19 +79,6 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Content">
-      <MemberSignature Language="C#" Value="public Microsoft.Xna.Framework.Content.ContentManager Content { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class Microsoft.Xna.Framework.Content.ContentManager Content" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Microsoft.Xna.Framework.Content.ContentManager</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -227,19 +203,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsFullScreen">
-      <MemberSignature Language="C#" Value="public bool IsFullScreen { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsFullScreen" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="LoadContent">
       <MemberSignature Language="C#" Value="protected override void LoadContent ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void LoadContent() cil managed" />
@@ -253,25 +216,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="MainWindowDirector">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCDirector MainWindowDirector { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector MainWindowDirector" />
+    <Member MemberName="MainWindow">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCWindow MainWindow { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCWindow MainWindow" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCDirector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ParticleSystemCache">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCParticleSystemCache ParticleSystemCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCParticleSystemCache ParticleSystemCache" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCParticleSystemCache</ReturnType>
+        <ReturnType>CocosSharp.CCWindow</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -318,87 +268,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="PreferredBackBufferHeight">
-      <MemberSignature Language="C#" Value="public int PreferredBackBufferHeight { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 PreferredBackBufferHeight" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PreferredBackBufferWidth">
-      <MemberSignature Language="C#" Value="public int PreferredBackBufferWidth { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 PreferredBackBufferWidth" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int32</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="PurgeAllCachedData">
       <MemberSignature Language="C#" Value="public void PurgeAllCachedData ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeAllCachedData() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeAnimationCached">
-      <MemberSignature Language="C#" Value="public void PurgeAnimationCached ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeAnimationCached() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeParticleSystemCache">
-      <MemberSignature Language="C#" Value="public void PurgeParticleSystemCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeParticleSystemCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeSpriteFrameCache">
-      <MemberSignature Language="C#" Value="public void PurgeSpriteFrameCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeSpriteFrameCache() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="PurgeTextureCache">
-      <MemberSignature Language="C#" Value="public void PurgeTextureCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PurgeTextureCache() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -435,32 +307,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SharedApplication">
-      <MemberSignature Language="C#" Value="public static CocosSharp.CCApplication SharedApplication { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCApplication SharedApplication" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCApplication</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SpriteFrameCache">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSpriteFrameCache SpriteFrameCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCSpriteFrameCache SpriteFrameCache" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSpriteFrameCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="StartGame">
       <MemberSignature Language="C#" Value="public void StartGame ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void StartGame() cil managed" />
@@ -471,32 +317,6 @@
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SupportedOrientations">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCDisplayOrientation SupportedOrientations { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCDisplayOrientation SupportedOrientations" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TextureCache">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCTextureCache TextureCache { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCTextureCache TextureCache" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCTextureCache</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

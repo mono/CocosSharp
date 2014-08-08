@@ -17,31 +17,31 @@ v1.0 </summary>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSkewBy (float t, float deltaSkewXY);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 deltaSkewXY) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSkewBy (float duration, float deltaSkewXY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 deltaSkewXY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="deltaSkewXY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="deltaSkewXY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSkewBy (float t, float deltaSkewX, float deltaSkewY);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 deltaSkewX, float32 deltaSkewY) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSkewBy (float duration, float deltaSkewX, float deltaSkewY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 deltaSkewX, float32 deltaSkewY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="deltaSkewX" Type="System.Single" />
         <Parameter Name="deltaSkewY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="deltaSkewX">To be added.</param>
         <param name="deltaSkewY">To be added.</param>
         <summary>To be added.</summary>

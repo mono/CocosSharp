@@ -14,34 +14,19 @@
   </Docs>
   <Members>
     <Member MemberName="RunAsync">
-      <MemberSignature Language="C#" Value="public static object RunAsync (Action action);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig object RunAsync(class System.Action action) cil managed" />
+      <MemberSignature Language="C#" Value="public static object RunAsync (CocosSharp.CCScheduler scheduler, Action action, Action&lt;object&gt; taskCompleted = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig object RunAsync(class CocosSharp.CCScheduler scheduler, class System.Action action, class System.Action`1&lt;object&gt; taskCompleted) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Object</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="System.Action" />
-      </Parameters>
-      <Docs>
-        <param name="action">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RunAsync">
-      <MemberSignature Language="C#" Value="public static object RunAsync (Action action, Action&lt;object&gt; taskCompleted);" />
-      <MemberSignature Language="ILAsm" Value=".method public static hidebysig object RunAsync(class System.Action action, class System.Action`1&lt;object&gt; taskCompleted) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Object</ReturnType>
-      </ReturnValue>
-      <Parameters>
+        <Parameter Name="scheduler" Type="CocosSharp.CCScheduler" />
         <Parameter Name="action" Type="System.Action" />
         <Parameter Name="taskCompleted" Type="System.Action&lt;System.Object&gt;" />
       </Parameters>
       <Docs>
+        <param name="scheduler">To be added.</param>
         <param name="action">To be added.</param>
         <param name="taskCompleted">To be added.</param>
         <summary>To be added.</summary>

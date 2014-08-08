@@ -49,12 +49,12 @@
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="WindowSizeInPoints">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCSize WindowSizeInPoints { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WindowSizeInPoints" />
+    <Member MemberName="VisibleBounds">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCRect VisibleBounds { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect VisibleBounds" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

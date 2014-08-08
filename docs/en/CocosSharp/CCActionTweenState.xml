@@ -1,11 +1,11 @@
 <Type Name="CCActionTweenState" FullName="CocosSharp.CCActionTweenState">
-  <TypeSignature Language="C#" Value="public class CCActionTweenState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTweenState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCActionTweenState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTweenState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

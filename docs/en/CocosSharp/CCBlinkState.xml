@@ -1,11 +1,11 @@
 <Type Name="CCBlinkState" FullName="CocosSharp.CCBlinkState">
-  <TypeSignature Language="C#" Value="public class CCBlinkState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBlinkState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCBlinkState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBlinkState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

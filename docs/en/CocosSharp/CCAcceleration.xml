@@ -12,7 +12,8 @@
     <summary>
       <para>The device accelerometer reports values for each axis in units of g-force. </para>
     </summary>
-    <remarks></remarks>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -34,7 +35,8 @@
       </ReturnValue>
       <Docs>
         <summary>Timestamp that the event is associated too.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="X">
@@ -46,7 +48,8 @@
       </ReturnValue>
       <Docs>
         <summary>X axis.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Y">
@@ -58,7 +61,8 @@
       </ReturnValue>
       <Docs>
         <summary>Y axis.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Z">
@@ -70,7 +74,8 @@
       </ReturnValue>
       <Docs>
         <summary>Z axis.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

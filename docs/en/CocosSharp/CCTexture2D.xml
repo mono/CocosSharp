@@ -177,23 +177,6 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="ContentSize">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCSize ContentSize (float contentScaleFactor);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance valuetype CocosSharp.CCSize ContentSize(float32 contentScaleFactor) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCSize</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="contentScaleFactor" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="contentScaleFactor">To be added.</param>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="ContentSizeInPixels">
       <MemberSignature Language="C#" Value="public CocosSharp.CCSize ContentSizeInPixels { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSizeInPixels" />
@@ -381,9 +364,9 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="Reinit">
-      <MemberSignature Language="C#" Value="public override void Reinit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Reinit() cil managed" />
+    <Member MemberName="ReinitResource">
+      <MemberSignature Language="C#" Value="public override void ReinitResource ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void ReinitResource() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

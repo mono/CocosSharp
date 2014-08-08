@@ -34,159 +34,60 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCCamera ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCSize orthographicViewSizeWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize orthographicViewSizeWorldspaceIn) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CenterX">
-      <MemberSignature Language="C#" Value="protected float CenterX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CenterX" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CenterY">
-      <MemberSignature Language="C#" Value="protected float CenterY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CenterY" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="CenterZ">
-      <MemberSignature Language="C#" Value="protected float CenterZ { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 CenterZ" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeX">
-      <MemberSignature Language="C#" Value="protected float EyeX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 EyeX" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeY">
-      <MemberSignature Language="C#" Value="protected float EyeY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 EyeY" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeZ">
-      <MemberSignature Language="C#" Value="protected float EyeZ { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 EyeZ" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="GetCenterXyz">
-      <MemberSignature Language="C#" Value="public void GetCenterXyz (out float centerX, out float centerY, out float centerZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetCenterXyz(float32 centerX, float32 centerY, float32 centerZ) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
       <Parameters>
-        <Parameter Name="centerX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="centerY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="centerZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="orthographicViewSizeWorldspaceIn" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
-        <param name="centerX">To be added.</param>
-        <param name="centerY">To be added.</param>
-        <param name="centerZ">To be added.</param>
+        <param name="orthographicViewSizeWorldspaceIn">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetEyeXyz">
-      <MemberSignature Language="C#" Value="public void GetEyeXyz (out float eyeX, out float eyeY, out float eyeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetEyeXyz(float32 eyeX, float32 eyeY, float32 eyeZ) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera (CocosSharp.CCSize orthographicViewSizeWorldspaceIn, CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, CocosSharp.CCPoint3 targetInWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize orthographicViewSizeWorldspaceIn, valuetype CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, valuetype CocosSharp.CCPoint3 targetInWorldspaceIn) cil managed" />
+      <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="eyeX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="eyeY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="eyeZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="orthographicViewSizeWorldspaceIn" Type="CocosSharp.CCSize" />
+        <Parameter Name="cameraCenterPositionWorldspaceIn" Type="CocosSharp.CCPoint3" />
+        <Parameter Name="targetInWorldspaceIn" Type="CocosSharp.CCPoint3" />
       </Parameters>
       <Docs>
-        <param name="eyeX">To be added.</param>
-        <param name="eyeY">To be added.</param>
-        <param name="eyeZ">To be added.</param>
+        <param name="orthographicViewSizeWorldspaceIn">To be added.</param>
+        <param name="cameraCenterPositionWorldspaceIn">To be added.</param>
+        <param name="targetInWorldspaceIn">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="GetUpXyz">
-      <MemberSignature Language="C#" Value="public void GetUpXyz (out float upX, out float upY, out float upZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void GetUpXyz(float32 upX, float32 upY, float32 upZ) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCCamera (float perspectiveFieldOfViewIn, float perspectiveAspectRatioIn, CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, CocosSharp.CCPoint3 targetInWorldspaceIn);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 perspectiveFieldOfViewIn, float32 perspectiveAspectRatioIn, valuetype CocosSharp.CCPoint3 cameraCenterPositionWorldspaceIn, valuetype CocosSharp.CCPoint3 targetInWorldspaceIn) cil managed" />
+      <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="upX" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="upY" Type="System.Single&amp;" RefType="out" />
-        <Parameter Name="upZ" Type="System.Single&amp;" RefType="out" />
+        <Parameter Name="perspectiveFieldOfViewIn" Type="System.Single" />
+        <Parameter Name="perspectiveAspectRatioIn" Type="System.Single" />
+        <Parameter Name="cameraCenterPositionWorldspaceIn" Type="CocosSharp.CCPoint3" />
+        <Parameter Name="targetInWorldspaceIn" Type="CocosSharp.CCPoint3" />
       </Parameters>
       <Docs>
-        <param name="upX">To be added.</param>
-        <param name="upY">To be added.</param>
-        <param name="upZ">To be added.</param>
+        <param name="perspectiveFieldOfViewIn">To be added.</param>
+        <param name="perspectiveAspectRatioIn">To be added.</param>
+        <param name="cameraCenterPositionWorldspaceIn">To be added.</param>
+        <param name="targetInWorldspaceIn">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="IsDirty">
-      <MemberSignature Language="C#" Value="public bool IsDirty { get; protected set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance bool IsDirty" />
+    <Member MemberName="CenterInWorldspace">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint3 CenterInWorldspace { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint3 CenterInWorldspace" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Boolean</ReturnType>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -194,109 +95,48 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Locate">
-      <MemberSignature Language="C#" Value="public void Locate ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Locate() cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="NearAndFarOrthographicZClipping">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint NearAndFarOrthographicZClipping { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint NearAndFarOrthographicZClipping" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
-      <Parameters />
       <Docs>
-        <summary>Sets the camera using gluLookAt using its eye, center and up_vector </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Restore">
-      <MemberSignature Language="C#" Value="public void Restore ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Restore() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>sets the camera in the default position </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SetCenterXyz">
-      <MemberSignature Language="C#" Value="public void SetCenterXyz (float centerX, float centerY, float centerZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetCenterXyz(float32 centerX, float32 centerY, float32 centerZ) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="centerX" Type="System.Single" />
-        <Parameter Name="centerY" Type="System.Single" />
-        <Parameter Name="centerZ" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="centerX">To be added.</param>
-        <param name="centerY">To be added.</param>
-        <param name="centerZ">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetEyeXyz">
-      <MemberSignature Language="C#" Value="public void SetEyeXyz (float eyeX, float eyeY, float eyeZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetEyeXyz(float32 eyeX, float32 eyeY, float32 eyeZ) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="NearAndFarPerspectiveClipping">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint NearAndFarPerspectiveClipping { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint NearAndFarPerspectiveClipping" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="eyeX" Type="System.Single" />
-        <Parameter Name="eyeY" Type="System.Single" />
-        <Parameter Name="eyeZ" Type="System.Single" />
-      </Parameters>
       <Docs>
-        <param name="eyeX">To be added.</param>
-        <param name="eyeY">To be added.</param>
-        <param name="eyeZ">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="SetUpXyz">
-      <MemberSignature Language="C#" Value="public void SetUpXyz (float upX, float upY, float upZ);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetUpXyz(float32 upX, float32 upY, float32 upZ) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="OrthographicViewSizeWorldspace">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize OrthographicViewSizeWorldspace { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize OrthographicViewSizeWorldspace" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="upX" Type="System.Single" />
-        <Parameter Name="upY" Type="System.Single" />
-        <Parameter Name="upZ" Type="System.Single" />
-      </Parameters>
       <Docs>
-        <param name="upX">To be added.</param>
-        <param name="upY">To be added.</param>
-        <param name="upZ">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ToString">
-      <MemberSignature Language="C#" Value="public override string ToString ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance string ToString() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpX">
-      <MemberSignature Language="C#" Value="protected float UpX { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 UpX" />
+    <Member MemberName="PerspectiveAspectRatio">
+      <MemberSignature Language="C#" Value="public float PerspectiveAspectRatio { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PerspectiveAspectRatio" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -307,9 +147,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UpY">
-      <MemberSignature Language="C#" Value="protected float UpY { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 UpY" />
+    <Member MemberName="PerspectiveFieldOfView">
+      <MemberSignature Language="C#" Value="public float PerspectiveFieldOfView { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 PerspectiveFieldOfView" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
@@ -320,12 +160,12 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UpZ">
-      <MemberSignature Language="C#" Value="protected float UpZ { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 UpZ" />
+    <Member MemberName="Projection">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCCameraProjection Projection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCCameraProjection Projection" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCCameraProjection</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -333,12 +173,25 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ZEye">
-      <MemberSignature Language="C#" Value="public static float ZEye { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property float32 ZEye" />
+    <Member MemberName="TargetInWorldspace">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint3 TargetInWorldspace { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint3 TargetInWorldspace" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpDirection">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint3 UpDirection { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint3 UpDirection" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

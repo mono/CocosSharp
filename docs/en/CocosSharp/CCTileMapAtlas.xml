@@ -43,6 +43,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="AddedToScene">
+      <MemberSignature Language="C#" Value="protected override void AddedToScene ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void AddedToScene() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="NumOfItemsToRender">
       <MemberSignature Language="C#" Value="protected int NumOfItemsToRender { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance int32 NumOfItemsToRender" />
@@ -80,22 +93,6 @@
       <Docs>
         <summary>dealloc the map from memory </summary>
         <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="RunningOnNewWindow">
-      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="windowSize">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SetTile">

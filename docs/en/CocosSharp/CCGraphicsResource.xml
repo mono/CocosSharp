@@ -82,9 +82,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Reinit">
-      <MemberSignature Language="C#" Value="public virtual void Reinit ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Reinit() cil managed" />
+    <Member MemberName="ReinitResource">
+      <MemberSignature Language="C#" Value="public virtual void ReinitResource ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void ReinitResource() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

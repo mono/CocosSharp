@@ -30,17 +30,17 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitScenes">
-      <MemberSignature Language="C#" Value="public override void InitScenes ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void InitScenes() cil managed" />
+    <Member MemberName="InitialiseScenes">
+      <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>initializes the scenes </summary>
-        <remarks />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

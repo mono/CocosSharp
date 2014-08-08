@@ -3,7 +3,6 @@
   <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCAmplitudeAction extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
-    <AssemblyVersion>2.2.4.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
@@ -20,9 +19,6 @@
       <MemberSignature Language="C#" Value="public CCAmplitudeAction (float duration, float amplitude = 0);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 amplitude) cil managed" />
       <MemberType>Constructor</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="amplitude" Type="System.Single" />
@@ -38,9 +34,6 @@
       <MemberSignature Language="C#" Value="public float Amplitude { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance float32 Amplitude" />
       <MemberType>Property</MemberType>
-      <AssemblyInfo>
-        <AssemblyVersion>2.2.4.0</AssemblyVersion>
-      </AssemblyInfo>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>

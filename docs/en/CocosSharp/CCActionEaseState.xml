@@ -1,11 +1,11 @@
 <Type Name="CCActionEaseState" FullName="CocosSharp.CCActionEaseState">
-  <TypeSignature Language="C#" Value="public class CCActionEaseState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionEaseState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCActionEaseState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionEaseState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -29,11 +29,11 @@
       </Docs>
     </Member>
     <Member MemberName="InnerActionState">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCActionIntervalState InnerActionState { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCActionIntervalState InnerActionState" />
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCFiniteTimeActionState InnerActionState { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeActionState InnerActionState" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCActionIntervalState</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeActionState</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

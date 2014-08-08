@@ -266,6 +266,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="UpdateTransform">
+      <MemberSignature Language="C#" Value="protected override void UpdateTransform ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateTransform() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="ZoomBehaviorOnTouch">
       <MemberSignature Language="C#" Value="public bool ZoomBehaviorOnTouch { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool ZoomBehaviorOnTouch" />

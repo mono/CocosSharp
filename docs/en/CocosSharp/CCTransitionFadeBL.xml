@@ -31,11 +31,11 @@
       </Docs>
     </Member>
     <Member MemberName="CreateAction">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCActionInterval CreateAction (CocosSharp.CCGridSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCActionInterval CreateAction(valuetype CocosSharp.CCGridSize size) cil managed" />
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCFiniteTimeAction CreateAction (CocosSharp.CCGridSize size);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance class CocosSharp.CCFiniteTimeAction CreateAction(valuetype CocosSharp.CCGridSize size) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCActionInterval</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="size" Type="CocosSharp.CCGridSize" />

@@ -1,11 +1,11 @@
 <Type Name="CCReverseTimeState" FullName="CocosSharp.CCReverseTimeState">
-  <TypeSignature Language="C#" Value="public class CCReverseTimeState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCReverseTimeState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCReverseTimeState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCReverseTimeState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

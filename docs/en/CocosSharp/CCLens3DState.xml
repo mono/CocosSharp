@@ -41,9 +41,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="LensEffect">
-      <MemberSignature Language="C#" Value="public float LensEffect { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 LensEffect" />
+    <Member MemberName="LensScale">
+      <MemberSignature Language="C#" Value="public float LensScale { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LensScale" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>

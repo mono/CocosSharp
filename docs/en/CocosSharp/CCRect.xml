@@ -446,6 +446,45 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Union">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCRect Union (CocosSharp.CCRect value1, CocosSharp.CCRect value2);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig valuetype CocosSharp.CCRect Union(valuetype CocosSharp.CCRect value1, valuetype CocosSharp.CCRect value2) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value1" Type="CocosSharp.CCRect" />
+        <Parameter Name="value2" Type="CocosSharp.CCRect" />
+      </Parameters>
+      <Docs>
+        <param name="value1">To be added.</param>
+        <param name="value2">To be added.</param>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Union">
+      <MemberSignature Language="C#" Value="public static void Union (ref CocosSharp.CCRect value1, ref CocosSharp.CCRect value2, out CocosSharp.CCRect result);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Union(valuetype CocosSharp.CCRect value1, valuetype CocosSharp.CCRect value2, valuetype CocosSharp.CCRect result) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="value1" Type="CocosSharp.CCRect&amp;" RefType="ref" />
+        <Parameter Name="value2" Type="CocosSharp.CCRect&amp;" RefType="ref" />
+        <Parameter Name="result" Type="CocosSharp.CCRect&amp;" RefType="out" />
+      </Parameters>
+      <Docs>
+        <param name="value1">To be added.</param>
+        <param name="value2">To be added.</param>
+        <param name="result">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="UpperRight">
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint UpperRight { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint UpperRight" />

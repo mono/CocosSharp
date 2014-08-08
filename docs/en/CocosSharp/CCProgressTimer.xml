@@ -201,8 +201,8 @@
       </Docs>
     </Member>
     <Member MemberName="UpdateColor">
-      <MemberSignature Language="C#" Value="protected override void UpdateColor ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateColor() cil managed" />
+      <MemberSignature Language="C#" Value="public override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateColor() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

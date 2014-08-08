@@ -40,9 +40,9 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnEnter">
-      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+    <Member MemberName="InitialiseScenes">
+      <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
@@ -83,6 +83,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="SceneNodeContainerToBeModified">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode SceneNodeContainerToBeModified;" />
+      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCNode SceneNodeContainerToBeModified" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="SceneOrder">
       <MemberSignature Language="C#" Value="protected override void SceneOrder ();" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void SceneOrder() cil managed" />
@@ -91,18 +103,6 @@
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="SceneToBeModified">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene SceneToBeModified;" />
-      <MemberSignature Language="ILAsm" Value=".field family class CocosSharp.CCScene SceneToBeModified" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
-      </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

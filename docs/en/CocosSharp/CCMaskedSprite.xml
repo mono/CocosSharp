@@ -44,34 +44,34 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (CocosSharp.CCTexture2D texture, Nullable&lt;CocosSharp.CCRect&gt; textureRect, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCTexture2D texture, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; textureRect, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="textureRect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
         <Parameter Name="mask" Type="System.Byte[]" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
-        <param name="rect">To be added.</param>
+        <param name="textureRect">To be added.</param>
         <param name="mask">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; rect, byte[] mask);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; rect, unsigned int8[] mask) cil managed" />
+      <MemberSignature Language="C#" Value="public CCMaskedSprite (string fileName, Nullable&lt;CocosSharp.CCRect&gt; textureRect, byte[] mask);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(string fileName, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCRect&gt; textureRect, unsigned int8[] mask) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="fileName" Type="System.String" />
-        <Parameter Name="rect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
+        <Parameter Name="textureRect" Type="System.Nullable&lt;CocosSharp.CCRect&gt;" />
         <Parameter Name="mask" Type="System.Byte[]" />
       </Parameters>
       <Docs>
         <param name="fileName">To be added.</param>
-        <param name="rect">To be added.</param>
+        <param name="textureRect">To be added.</param>
         <param name="mask">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

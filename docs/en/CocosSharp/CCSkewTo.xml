@@ -1,11 +1,11 @@
 <Type Name="CCSkewTo" FullName="CocosSharp.CCSkewTo">
-  <TypeSignature Language="C#" Value="public class CCSkewTo : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewTo extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCSkewTo : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewTo extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -17,33 +17,33 @@ v1.0 </summary>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSkewTo (float t, float skewXY);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 skewXY) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSkewTo (float duration, float skewXY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 skewXY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="skewXY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="skewXY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCSkewTo (float t, float sx, float sy);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, float32 sx, float32 sy) cil managed" />
+      <MemberSignature Language="C#" Value="public CCSkewTo (float duration, float skewX, float skewY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 skewX, float32 skewY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
-        <Parameter Name="sx" Type="System.Single" />
-        <Parameter Name="sy" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
+        <Parameter Name="skewX" Type="System.Single" />
+        <Parameter Name="skewY" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
-        <param name="sx">To be added.</param>
-        <param name="sy">To be added.</param>
+        <param name="duration">To be added.</param>
+        <param name="skewX">To be added.</param>
+        <param name="skewY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -69,6 +69,20 @@ v1.0 </summary>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reverse">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

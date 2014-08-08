@@ -64,17 +64,17 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="LensEffect">
-      <MemberSignature Language="C#" Value="public float LensEffect { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance float32 LensEffect" />
+    <Member MemberName="LensScale">
+      <MemberSignature Language="C#" Value="public float LensScale { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float32 LensScale" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>System.Single</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Set lens center position </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Position">

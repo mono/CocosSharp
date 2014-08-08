@@ -16,15 +16,15 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseCustom (CocosSharp.CCActionInterval pAction, Func&lt;float,float&gt; easeFunc);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction, class System.Func`2&lt;float32, float32&gt; easeFunc) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseCustom (CocosSharp.CCFiniteTimeAction action, Func&lt;float,float&gt; easeFunc);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action, class System.Func`2&lt;float32, float32&gt; easeFunc) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
         <Parameter Name="easeFunc" Type="System.Func&lt;System.Single,System.Single&gt;" />
       </Parameters>
       <Docs>
-        <param name="pAction">To be added.</param>
+        <param name="action">To be added.</param>
         <param name="easeFunc">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>

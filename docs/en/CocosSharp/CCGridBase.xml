@@ -14,21 +14,6 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="size" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="gridSize">To be added.</param>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="protected CCGridBase (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped = false);" />
       <MemberSignature Language="ILAsm" Value=".method familyhidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -113,19 +98,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="DirectorProjection">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirectorProjection DirectorProjection { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCDirectorProjection DirectorProjection" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDirectorProjection</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Grabber">
       <MemberSignature Language="C#" Value="protected CocosSharp.CCGrabber Grabber { get; set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCGrabber Grabber" />
@@ -192,19 +164,6 @@
       <Docs>
         <summary>number of times that the grid will be reused </summary>
         <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Set2DProjection">
-      <MemberSignature Language="C#" Value="public void Set2DProjection ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Set2DProjection() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

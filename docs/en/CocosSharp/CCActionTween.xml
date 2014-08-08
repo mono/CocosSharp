@@ -1,11 +1,11 @@
 <Type Name="CCActionTween" FullName="CocosSharp.CCActionTween">
-  <TypeSignature Language="C#" Value="public class CCActionTween : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTween extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCActionTween : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionTween extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -37,17 +37,17 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCActionTween (float aDuration, string key, float from, float to);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 aDuration, string key, float32 from, float32 to) cil managed" />
+      <MemberSignature Language="C#" Value="public CCActionTween (float duration, string key, float from, float to);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, string key, float32 from, float32 to) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="aDuration" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="key" Type="System.String" />
         <Parameter Name="from" Type="System.Single" />
         <Parameter Name="to" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="aDuration">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="key">To be added.</param>
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>
@@ -56,18 +56,18 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCActionTween (float aDuration, string key, float from, float to, Action&lt;float,string&gt; tweenAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 aDuration, string key, float32 from, float32 to, class System.Action`2&lt;float32, string&gt; tweenAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCActionTween (float duration, string key, float from, float to, Action&lt;float,string&gt; tweenAction);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, string key, float32 from, float32 to, class System.Action`2&lt;float32, string&gt; tweenAction) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="aDuration" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="key" Type="System.String" />
         <Parameter Name="from" Type="System.Single" />
         <Parameter Name="to" Type="System.Single" />
         <Parameter Name="tweenAction" Type="System.Action&lt;System.Single,System.String&gt;" />
       </Parameters>
       <Docs>
-        <param name="aDuration">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="key">To be added.</param>
         <param name="from">To be added.</param>
         <param name="to">To be added.</param>

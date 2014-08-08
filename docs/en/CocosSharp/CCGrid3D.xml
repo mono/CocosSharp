@@ -14,22 +14,7 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCSize size);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, valuetype CocosSharp.CCSize size) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="gridSize" Type="CocosSharp.CCGridSize" />
-        <Parameter Name="size" Type="CocosSharp.CCSize" />
-      </Parameters>
-      <Docs>
-        <param name="gridSize">To be added.</param>
-        <param name="size">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped);" />
+      <MemberSignature Language="C#" Value="public CCGrid3D (CocosSharp.CCGridSize gridSize, CocosSharp.CCTexture2D texture, bool flipped = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCGridSize gridSize, class CocosSharp.CCTexture2D texture, bool flipped) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>

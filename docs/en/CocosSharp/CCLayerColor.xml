@@ -42,6 +42,19 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCamera camera);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCamera camera) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="camera" Type="CocosSharp.CCCamera" />
+      </Parameters>
+      <Docs>
+        <param name="camera">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCColor4B color);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color) cil managed" />
       <MemberType>Constructor</MemberType>
@@ -55,18 +68,44 @@
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCColor4B color, float width, float height);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCColor4B color, float32 width, float32 height) cil managed" />
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
-        <Parameter Name="width" Type="System.Single" />
-        <Parameter Name="height" Type="System.Single" />
+        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
       </Parameters>
       <Docs>
+        <param name="visibleBoundsDimensions">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCCamera camera, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCCamera camera, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="camera" Type="CocosSharp.CCCamera" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="camera">To be added.</param>
         <param name="color">To be added.</param>
-        <param name="width">To be added.</param>
-        <param name="height">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCLayerColor (CocosSharp.CCSize visibleBoundsDimensions, CocosSharp.CCColor4B color);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(valuetype CocosSharp.CCSize visibleBoundsDimensions, valuetype CocosSharp.CCColor4B color) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="visibleBoundsDimensions" Type="CocosSharp.CCSize" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+      </Parameters>
+      <Docs>
+        <param name="visibleBoundsDimensions">To be added.</param>
+        <param name="color">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -81,57 +120,6 @@
       <Docs>
         <summary>setBlendFunc </summary>
         <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="ChangeHeight">
-      <MemberSignature Language="C#" Value="public void ChangeHeight (float h);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeHeight(float32 h) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="h" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="h">To be added.</param>
-        <summary>change height in Points </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="ChangeWidth">
-      <MemberSignature Language="C#" Value="public void ChangeWidth (float w);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidth(float32 w) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="w" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="w">To be added.</param>
-        <summary>change width in Points </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="ChangeWidthAndHeight">
-      <MemberSignature Language="C#" Value="public void ChangeWidthAndHeight (float w, float h);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void ChangeWidthAndHeight(float32 w, float32 h) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="w" Type="System.Single" />
-        <Parameter Name="h" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="w">To be added.</param>
-        <param name="h">To be added.</param>
-        <summary>change width and height in Points
-v0.8 </summary>
         <remarks />
       </Docs>
     </Member>
@@ -218,25 +206,35 @@ v0.8 </summary>
         </remarks>
       </Docs>
     </Member>
-    <Member MemberName="RunningOnNewWindow">
-      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
+    <Member MemberName="UpdateColor">
+      <MemberSignature Language="C#" Value="public override void UpdateColor ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void UpdateColor() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
-      </Parameters>
+      <Parameters />
       <Docs>
-        <param name="windowSize">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="UpdateColor">
-      <MemberSignature Language="C#" Value="protected override void UpdateColor ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void UpdateColor() cil managed" />
+    <Member MemberName="ViewportChanged">
+      <MemberSignature Language="C#" Value="protected override void ViewportChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void ViewportChanged() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleBoundsChanged">
+      <MemberSignature Language="C#" Value="protected override void VisibleBoundsChanged ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void VisibleBoundsChanged() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>

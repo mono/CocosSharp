@@ -1,11 +1,11 @@
 <Type Name="CCRotateTo" FullName="CocosSharp.CCRotateTo">
-  <TypeSignature Language="C#" Value="public class CCRotateTo : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRotateTo extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCRotateTo : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRotateTo extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,33 +18,33 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRotateTo (float duration, float fDeltaAngle);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 fDeltaAngle) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRotateTo (float duration, float deltaAngle);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 deltaAngle) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="fDeltaAngle" Type="System.Single" />
+        <Parameter Name="deltaAngle" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <param name="fDeltaAngle">To be added.</param>
+        <param name="deltaAngle">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCRotateTo (float duration, float fDeltaAngleX, float fDeltaAngleY);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 fDeltaAngleX, float32 fDeltaAngleY) cil managed" />
+      <MemberSignature Language="C#" Value="public CCRotateTo (float duration, float deltaAngleX, float deltaAngleY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 deltaAngleX, float32 deltaAngleY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="fDeltaAngleX" Type="System.Single" />
-        <Parameter Name="fDeltaAngleY" Type="System.Single" />
+        <Parameter Name="deltaAngleX" Type="System.Single" />
+        <Parameter Name="deltaAngleY" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <param name="fDeltaAngleX">To be added.</param>
-        <param name="fDeltaAngleY">To be added.</param>
+        <param name="deltaAngleX">To be added.</param>
+        <param name="deltaAngleY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -72,6 +72,20 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reverse">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

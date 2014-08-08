@@ -24,14 +24,17 @@
       </Docs>
     </Member>
     <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="public void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Draw() cil managed" />
+      <MemberSignature Language="C#" Value="public void Draw (CocosSharp.CCWindow window);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Draw(class CocosSharp.CCWindow window) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+      </Parameters>
       <Docs>
+        <param name="window">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

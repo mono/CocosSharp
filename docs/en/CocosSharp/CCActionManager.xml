@@ -49,22 +49,6 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="ActionAllocWithHashElement">
-      <MemberSignature Language="C#" Value="protected void ActionAllocWithHashElement (CocosSharp.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void ActionAllocWithHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
-      </Parameters>
-      <Docs>
-        <param name="element">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="AddAction">
       <MemberSignature Language="C#" Value="public CocosSharp.CCActionState AddAction (CocosSharp.CCAction action, CocosSharp.CCNode target, bool paused = false);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance class CocosSharp.CCActionState AddAction(class CocosSharp.CCAction action, class CocosSharp.CCNode target, bool paused) cil managed" />
@@ -83,22 +67,6 @@
         <param name="paused">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="DeleteHashElement">
-      <MemberSignature Language="C#" Value="protected void DeleteHashElement (CocosSharp.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void DeleteHashElement(class CocosSharp.CCActionManager/HashElement element) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
-      </Parameters>
-      <Docs>
-        <param name="element">To be added.</param>
-        <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
@@ -270,24 +238,6 @@
       <Docs>
         <param name="tag">To be added.</param>
         <param name="target">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RemoveActionAtIndex">
-      <MemberSignature Language="C#" Value="protected void RemoveActionAtIndex (int index, CocosSharp.CCActionManager.HashElement element);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void RemoveActionAtIndex(int32 index, class CocosSharp.CCActionManager/HashElement element) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="index" Type="System.Int32" />
-        <Parameter Name="element" Type="CocosSharp.CCActionManager+HashElement" />
-      </Parameters>
-      <Docs>
-        <param name="index">To be added.</param>
-        <param name="element">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

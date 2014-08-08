@@ -16,31 +16,31 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionMoveInB (float t, CocosSharp.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionMoveInB (float duration, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="InitScenes">
-      <MemberSignature Language="C#" Value="public override void InitScenes ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void InitScenes() cil managed" />
+    <Member MemberName="InitialiseScenes">
+      <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>initializes the scenes </summary>
-        <remarks />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

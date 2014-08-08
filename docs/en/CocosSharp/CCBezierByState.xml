@@ -1,11 +1,11 @@
 <Type Name="CCBezierByState" FullName="CocosSharp.CCBezierByState">
-  <TypeSignature Language="C#" Value="public class CCBezierByState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierByState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCBezierByState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCBezierByState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

@@ -16,16 +16,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionSceneOriented (float t, CocosSharp.CCScene scene, CocosSharp.CCTransitionOrientation orientation);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene, valuetype CocosSharp.CCTransitionOrientation orientation) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionSceneOriented (float duration, CocosSharp.CCScene scene, CocosSharp.CCTransitionOrientation orientation);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class CocosSharp.CCScene scene, valuetype CocosSharp.CCTransitionOrientation orientation) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
         <Parameter Name="orientation" Type="CocosSharp.CCTransitionOrientation" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="scene">To be added.</param>
         <param name="orientation">To be added.</param>
         <summary>To be added.</summary>

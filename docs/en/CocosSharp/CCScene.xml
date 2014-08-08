@@ -14,9 +14,122 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScene ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="scene">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+      </Parameters>
+      <Docs>
+        <param name="window">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window, CocosSharp.CCDirector director);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window, class CocosSharp.CCDirector director) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="window">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCScene (CocosSharp.CCWindow window, CocosSharp.CCViewport viewport, CocosSharp.CCDirector director = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCWindow window, class CocosSharp.CCViewport viewport, class CocosSharp.CCDirector director) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="window" Type="CocosSharp.CCWindow" />
+        <Parameter Name="viewport" Type="CocosSharp.CCViewport" />
+        <Parameter Name="director" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="window">To be added.</param>
+        <param name="viewport">To be added.</param>
+        <param name="director">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AffineLocalTransform">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCAffineTransform AffineLocalTransform { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCAffineTransform AffineLocalTransform" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAffineTransform</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Camera">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCCamera Camera { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCCamera Camera" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCCamera</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ContentSize">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCSize ContentSize { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize ContentSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Director">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected override void Draw ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
       <Parameters />
       <Docs>
         <summary>To be added.</summary>
@@ -36,19 +149,68 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="RunningOnNewWindow">
-      <MemberSignature Language="C#" Value="protected override void RunningOnNewWindow (CocosSharp.CCSize windowSize);" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void RunningOnNewWindow(valuetype CocosSharp.CCSize windowSize) cil managed" />
-      <MemberType>Method</MemberType>
+    <Member MemberName="Scene">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCScene Scene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene Scene" />
+      <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
-      <Parameters>
-        <Parameter Name="windowSize" Type="CocosSharp.CCSize" />
-      </Parameters>
       <Docs>
-        <param name="windowSize">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SceneResolutionPolicy">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSceneResolutionPolicy SceneResolutionPolicy" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Viewport">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCViewport Viewport { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCViewport Viewport" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCViewport</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="VisibleBoundsScreenspace">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCRect VisibleBoundsScreenspace { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCRect VisibleBoundsScreenspace" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCRect</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Window">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCWindow Window { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCWindow Window" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCWindow</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,11 +1,11 @@
 <Type Name="CCSkewToState" FullName="CocosSharp.CCSkewToState">
-  <TypeSignature Language="C#" Value="public class CCSkewToState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewToState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCSkewToState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSkewToState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

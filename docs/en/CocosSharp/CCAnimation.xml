@@ -150,35 +150,39 @@ v0.99.5 </summary>
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFrame">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrame (string filename);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(string filename) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddSpriteFrame (string filename, Nullable&lt;CocosSharp.CCSize&gt; contentSize = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(string filename, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCSize&gt; contentSize) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="filename" Type="System.String" />
+        <Parameter Name="contentSize" Type="System.Nullable&lt;CocosSharp.CCSize&gt;" />
       </Parameters>
       <Docs>
         <param name="filename">To be added.</param>
+        <param name="contentSize">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddSpriteFrame">
-      <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCTexture2D texture, CocosSharp.CCRect rect);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect rect) cil managed" />
+      <MemberSignature Language="C#" Value="public void AddSpriteFrame (CocosSharp.CCTexture2D texture, CocosSharp.CCRect textureRect, Nullable&lt;CocosSharp.CCSize&gt; contentSize = null);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSpriteFrame(class CocosSharp.CCTexture2D texture, valuetype CocosSharp.CCRect textureRect, valuetype System.Nullable`1&lt;valuetype CocosSharp.CCSize&gt; contentSize) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
         <Parameter Name="texture" Type="CocosSharp.CCTexture2D" />
-        <Parameter Name="rect" Type="CocosSharp.CCRect" />
+        <Parameter Name="textureRect" Type="CocosSharp.CCRect" />
+        <Parameter Name="contentSize" Type="System.Nullable&lt;CocosSharp.CCSize&gt;" />
       </Parameters>
       <Docs>
         <param name="texture">To be added.</param>
-        <param name="rect">To be added.</param>
+        <param name="textureRect">To be added.</param>
+        <param name="contentSize">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

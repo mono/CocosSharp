@@ -87,6 +87,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PurgeSharedAnimationCached">
+      <MemberSignature Language="C#" Value="public static void PurgeSharedAnimationCached ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedAnimationCached() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RemoveAnimation">
       <MemberSignature Language="C#" Value="public void RemoveAnimation (string animationName);" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAnimation(string animationName) cil managed" />
@@ -100,6 +113,19 @@
       <Docs>
         <param name="animationName">To be added.</param>
         <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SharedAnimationCache">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCAnimationCache SharedAnimationCache { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCAnimationCache SharedAnimationCache" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAnimationCache</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

@@ -1,11 +1,11 @@
 <Type Name="CCScaleTo" FullName="CocosSharp.CCScaleTo">
-  <TypeSignature Language="C#" Value="public class CCScaleTo : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScaleTo extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCScaleTo : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCScaleTo extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,33 +18,33 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScaleTo (float duration, float s);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 s) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScaleTo (float duration, float scale);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 scale) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="s" Type="System.Single" />
+        <Parameter Name="scale" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <param name="s">To be added.</param>
+        <param name="scale">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCScaleTo (float duration, float sx, float sy);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 sx, float32 sy) cil managed" />
+      <MemberSignature Language="C#" Value="public CCScaleTo (float duration, float scaleX, float scaleY);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, float32 scaleX, float32 scaleY) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="duration" Type="System.Single" />
-        <Parameter Name="sx" Type="System.Single" />
-        <Parameter Name="sy" Type="System.Single" />
+        <Parameter Name="scaleX" Type="System.Single" />
+        <Parameter Name="scaleY" Type="System.Single" />
       </Parameters>
       <Docs>
         <param name="duration">To be added.</param>
-        <param name="sx">To be added.</param>
-        <param name="sy">To be added.</param>
+        <param name="scaleX">To be added.</param>
+        <param name="scaleY">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -72,6 +72,20 @@
       <Docs>
         <summary>To be added.</summary>
         <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Reverse">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCFiniteTimeAction Reverse ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance class CocosSharp.CCFiniteTimeAction Reverse() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>

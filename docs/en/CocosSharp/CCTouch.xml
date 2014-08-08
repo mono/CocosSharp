@@ -13,33 +13,6 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTouch ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters />
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTouch (int id, float x, float y);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 id, float32 x, float32 y) cil managed" />
-      <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="id" Type="System.Int32" />
-        <Parameter Name="x" Type="System.Single" />
-        <Parameter Name="y" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="id">To be added.</param>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="Delta">
       <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Delta { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Delta" />
@@ -66,102 +39,43 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Location">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint Location { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint Location" />
+    <Member MemberName="LocationOnScreen">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint LocationOnScreen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint LocationOnScreen" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>returns the current touch location in OpenGL coordinates </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="LocationInView">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint LocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint LocationInView" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>returns the current touch location in screen coordinates </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="PreviousLocation">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PreviousLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PreviousLocation" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>returns the previous touch location in OpenGL coordinates </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="PreviousLocationInView">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PreviousLocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PreviousLocationInView" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCPoint</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>returns the previous touch location in screen coordinates </summary>
-        <value>To be added.</value>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="SetTouchInfo">
-      <MemberSignature Language="C#" Value="public void SetTouchInfo (int id, float x, float y);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetTouchInfo(int32 id, float32 x, float32 y) cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters>
-        <Parameter Name="id" Type="System.Int32" />
-        <Parameter Name="x" Type="System.Single" />
-        <Parameter Name="y" Type="System.Single" />
-      </Parameters>
-      <Docs>
-        <param name="id">To be added.</param>
-        <param name="x">To be added.</param>
-        <param name="y">To be added.</param>
         <summary>To be added.</summary>
+        <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StartLocation">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartLocation { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartLocation" />
+    <Member MemberName="PreviousLocationOnScreen">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint PreviousLocationOnScreen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint PreviousLocationOnScreen" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>returns the start touch location in OpenGL coordinates </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="StartLocationInView">
-      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartLocationInView { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartLocationInView" />
+    <Member MemberName="StartLocationOnScreen">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCPoint StartLocationOnScreen { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCPoint StartLocationOnScreen" />
       <MemberType>Property</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCPoint</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>returns the start touch location in screen coordinates </summary>
+        <summary>To be added.</summary>
         <value>To be added.</value>
-        <remarks />
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
   </Members>

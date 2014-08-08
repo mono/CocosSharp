@@ -18,16 +18,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCEaseIn (CocosSharp.CCActionInterval pAction, float fRate);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCActionInterval pAction, float32 fRate) cil managed" />
+      <MemberSignature Language="C#" Value="public CCEaseIn (CocosSharp.CCFiniteTimeAction action, float rate);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCFiniteTimeAction action, float32 rate) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAction" Type="CocosSharp.CCActionInterval" />
-        <Parameter Name="fRate" Type="System.Single" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="rate" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pAction">To be added.</param>
-        <param name="fRate">To be added.</param>
+        <param name="action">To be added.</param>
+        <param name="rate">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

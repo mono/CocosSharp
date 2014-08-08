@@ -18,16 +18,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCAccelDeccelAmplitude (CocosSharp.CCAmplitudeAction pAction, float duration, float accDeccRate = 1);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAmplitudeAction pAction, float32 duration, float32 accDeccRate) cil managed" />
+      <MemberSignature Language="C#" Value="public CCAccelDeccelAmplitude (CocosSharp.CCAmplitudeAction action, float duration, float accDeccRate = 1);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCAmplitudeAction action, float32 duration, float32 accDeccRate) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="pAction" Type="CocosSharp.CCAmplitudeAction" />
+        <Parameter Name="action" Type="CocosSharp.CCAmplitudeAction" />
         <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="accDeccRate" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="pAction">To be added.</param>
+        <param name="action">To be added.</param>
         <param name="duration">To be added.</param>
         <param name="accDeccRate">To be added.</param>
         <summary>To be added.</summary>

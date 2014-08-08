@@ -1,0 +1,441 @@
+<Type Name="CCWindow" FullName="CocosSharp.CCWindow">
+  <TypeSignature Language="C#" Value="public class CCWindow" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCWindow extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName="Accelerometer">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCAccelerometer Accelerometer { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCAccelerometer Accelerometer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCAccelerometer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddSceneDirector">
+      <MemberSignature Language="C#" Value="public void AddSceneDirector (CocosSharp.CCDirector sceneDirector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddSceneDirector(class CocosSharp.CCDirector sceneDirector) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sceneDirector" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="sceneDirector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AllowUserResizing">
+      <MemberSignature Language="C#" Value="public bool AllowUserResizing { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool AllowUserResizing" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AnimationInterval">
+      <MemberSignature Language="C#" Value="public virtual double AnimationInterval { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance float64 AnimationInterval" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Double</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Application">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCApplication Application { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCApplication Application" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCApplication</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="CurrentDisplayOrientation">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCDisplayOrientation CurrentDisplayOrientation { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCDisplayOrientation CurrentDisplayOrientation" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DefaultDirector">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCDirector DefaultDirector { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector DefaultDirector" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDirector</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DesignResolutionPolicy">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSceneResolutionPolicy DesignResolutionPolicy { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSceneResolutionPolicy DesignResolutionPolicy" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSceneResolutionPolicy</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DesignResolutionSize">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize DesignResolutionSize { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize DesignResolutionSize" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="DisplayStats">
+      <MemberSignature Language="C#" Value="public bool DisplayStats { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool DisplayStats" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Draw">
+      <MemberSignature Language="C#" Value="protected void Draw (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig instance void Draw(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EndAllSceneDirectors">
+      <MemberSignature Language="C#" Value="public void EndAllSceneDirectors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void EndAllSceneDirectors() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_DRAW">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_DRAW;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_DRAW" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_UPDATE">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_UPDATE;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_UPDATE" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_AFTER_VISIT">
+      <MemberSignature Language="C#" Value="public static string EVENT_AFTER_VISIT;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_AFTER_VISIT" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="EVENT_PROJECTION_CHANGED">
+      <MemberSignature Language="C#" Value="public static string EVENT_PROJECTION_CHANGED;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string EVENT_PROJECTION_CHANGED" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="FullScreen">
+      <MemberSignature Language="C#" Value="public bool FullScreen { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool FullScreen" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="GamePadEnabled">
+      <MemberSignature Language="C#" Value="public bool GamePadEnabled { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool GamePadEnabled" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsUseAlphaBlending">
+      <MemberSignature Language="C#" Value="public bool IsUseAlphaBlending { set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUseAlphaBlending" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsUseDepthTesting">
+      <MemberSignature Language="C#" Value="public bool IsUseDepthTesting { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool IsUseDepthTesting" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="MainLoop">
+      <MemberSignature Language="C#" Value="public virtual void MainLoop (CocosSharp.CCGameTime gameTime);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void MainLoop(class CocosSharp.CCGameTime gameTime) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="gameTime" Type="CocosSharp.CCGameTime" />
+      </Parameters>
+      <Docs>
+        <param name="gameTime">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="NotificationNode">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCNode NotificationNode { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode NotificationNode" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="PreferMultiSampling">
+      <MemberSignature Language="C#" Value="public bool PreferMultiSampling { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance bool PreferMultiSampling" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveAllSceneDirectors">
+      <MemberSignature Language="C#" Value="public void RemoveAllSceneDirectors ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllSceneDirectors() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RemoveSceneDirector">
+      <MemberSignature Language="C#" Value="public void RemoveSceneDirector (CocosSharp.CCDirector sceneDirector);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveSceneDirector(class CocosSharp.CCDirector sceneDirector) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="sceneDirector" Type="CocosSharp.CCDirector" />
+      </Parameters>
+      <Docs>
+        <param name="sceneDirector">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="RunWithScene">
+      <MemberSignature Language="C#" Value="public void RunWithScene (CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RunWithScene(class CocosSharp.CCScene scene) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
+      </Parameters>
+      <Docs>
+        <param name="scene">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDefaultDirector">
+      <MemberSignature Language="C#" Value="public void SetDefaultDirector (int index);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDefaultDirector(int32 index) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="index" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="index">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetDesignResolutionSize">
+      <MemberSignature Language="C#" Value="public void SetDesignResolutionSize (float width, float height, CocosSharp.CCSceneResolutionPolicy resolutionPolicy);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetDesignResolutionSize(float32 width, float32 height, valuetype CocosSharp.CCSceneResolutionPolicy resolutionPolicy) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="width" Type="System.Single" />
+        <Parameter Name="height" Type="System.Single" />
+        <Parameter Name="resolutionPolicy" Type="CocosSharp.CCSceneResolutionPolicy" />
+      </Parameters>
+      <Docs>
+        <param name="width">To be added.</param>
+        <param name="height">To be added.</param>
+        <param name="resolutionPolicy">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Stats">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCStats Stats { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCStats Stats" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCStats</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SupportedDisplayOrientations">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCDisplayOrientation SupportedDisplayOrientations { get; set; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCDisplayOrientation SupportedDisplayOrientations" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCDisplayOrientation</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="WindowSizeInPixels">
+      <MemberSignature Language="C#" Value="public CocosSharp.CCSize WindowSizeInPixels { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance valuetype CocosSharp.CCSize WindowSizeInPixels" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCSize</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

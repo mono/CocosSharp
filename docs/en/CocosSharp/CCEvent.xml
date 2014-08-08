@@ -10,7 +10,8 @@
   <Interfaces />
   <Docs>
     <summary>The base class that is extended for all CCEvents</summary>
-    <remarks></remarks>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName="CurrentTarget">
@@ -23,7 +24,8 @@
       <Docs>
         <summary>The current target that this event is working on</summary>
         <value>The CCNode that is the target of the event.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EVENT_COME_TO_BACKGROUND">
@@ -73,7 +75,8 @@
       <Parameters />
       <Docs>
         <summary>Stops propagation for current event.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

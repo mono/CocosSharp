@@ -1,11 +1,11 @@
 <Type Name="CCRotateToState" FullName="CocosSharp.CCRotateToState">
-  <TypeSignature Language="C#" Value="public class CCRotateToState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRotateToState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCRotateToState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRotateToState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

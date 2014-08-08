@@ -1,11 +1,11 @@
 <Type Name="CCRepeatForeverState" FullName="CocosSharp.CCRepeatForeverState">
-  <TypeSignature Language="C#" Value="public class CCRepeatForeverState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRepeatForeverState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCRepeatForeverState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCRepeatForeverState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

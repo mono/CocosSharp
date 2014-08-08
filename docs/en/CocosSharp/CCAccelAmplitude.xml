@@ -1,11 +1,11 @@
 <Type Name="CCAccelAmplitude" FullName="CocosSharp.CCAccelAmplitude">
-  <TypeSignature Language="C#" Value="public class CCAccelAmplitude : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAccelAmplitude extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCAccelAmplitude : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCAccelAmplitude extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

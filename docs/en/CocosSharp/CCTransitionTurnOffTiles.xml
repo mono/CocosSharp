@@ -1,6 +1,6 @@
 <Type Name="CCTransitionTurnOffTiles" FullName="CocosSharp.CCTransitionTurnOffTiles">
-  <TypeSignature Language="C#" Value="public class CCTransitionTurnOffTiles : CocosSharp.CCTransitionScene, CocosSharp.ICCTransitionEaseScene" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionTurnOffTiles extends CocosSharp.CCTransitionScene implements class CocosSharp.ICCTransitionEaseScene" />
+  <TypeSignature Language="C#" Value="public class CCTransitionTurnOffTiles : CocosSharp.CCTransitionScene" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTransitionTurnOffTiles extends CocosSharp.CCTransitionScene" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -8,9 +8,6 @@
     <BaseTypeName>CocosSharp.CCTransitionScene</BaseTypeName>
   </Base>
   <Interfaces>
-    <Interface>
-      <InterfaceName>CocosSharp.ICCTransitionEaseScene</InterfaceName>
-    </Interface>
   </Interfaces>
   <Docs>
     <summary>
@@ -20,29 +17,29 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionTurnOffTiles (float t, CocosSharp.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionTurnOffTiles (float duration, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="EaseAction">
-      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCFiniteTimeAction EaseAction (CocosSharp.CCActionInterval action);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCFiniteTimeAction EaseAction(class CocosSharp.CCActionInterval action) cil managed" />
+      <MemberSignature Language="C#" Value="public virtual CocosSharp.CCFiniteTimeAction EaseAction (CocosSharp.CCFiniteTimeAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance class CocosSharp.CCFiniteTimeAction EaseAction(class CocosSharp.CCFiniteTimeAction action) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="action" Type="CocosSharp.CCActionInterval" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="action">To be added.</param>
@@ -51,17 +48,30 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="OnEnter">
-      <MemberSignature Language="C#" Value="public override void OnEnter ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
+    <Member MemberName="InitialiseScenes">
+      <MemberSignature Language="C#" Value="protected override void InitialiseScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void InitialiseScenes() cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>Event callback that is invoked every time when  enters the 'stage'. If the  enters the 'stage' with a transition, this event is called when the transition starts. During onEnter you can't access a "sister/brother" node. If you override onEnter, you shall call its parent's one, e.g., Node::onEnter(). </summary>
-        <remarks />
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutSceneAction">
+      <MemberSignature Language="C#" Value="protected override CocosSharp.CCFiniteTimeAction OutSceneAction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction OutSceneAction" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SceneOrder">

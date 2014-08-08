@@ -1,11 +1,11 @@
 <Type Name="CCActionCameraState" FullName="CocosSharp.CCActionCameraState">
-  <TypeSignature Language="C#" Value="public class CCActionCameraState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCameraState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCActionCameraState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCameraState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -28,108 +28,36 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CenterXOrig">
-      <MemberSignature Language="C#" Value="protected float CenterXOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 CenterXOrig" />
+    <Member MemberName="CameraCenter">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint3 CameraCenter;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint3 CameraCenter" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CenterYOrig">
-      <MemberSignature Language="C#" Value="protected float CenterYOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 CenterYOrig" />
+    <Member MemberName="CameraTarget">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint3 CameraTarget;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint3 CameraTarget" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
-    <Member MemberName="CenterZOrig">
-      <MemberSignature Language="C#" Value="protected float CenterZOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 CenterZOrig" />
+    <Member MemberName="CameraUpDirection">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCPoint3 CameraUpDirection;" />
+      <MemberSignature Language="ILAsm" Value=".field family valuetype CocosSharp.CCPoint3 CameraUpDirection" />
       <MemberType>Field</MemberType>
       <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeXOrig">
-      <MemberSignature Language="C#" Value="protected float EyeXOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 EyeXOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeYOrig">
-      <MemberSignature Language="C#" Value="protected float EyeYOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 EyeYOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="EyeZOrig">
-      <MemberSignature Language="C#" Value="protected float EyeZOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 EyeZOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpXOrig">
-      <MemberSignature Language="C#" Value="protected float UpXOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 UpXOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpYOrig">
-      <MemberSignature Language="C#" Value="protected float UpYOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 UpYOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="UpZOrig">
-      <MemberSignature Language="C#" Value="protected float UpZOrig;" />
-      <MemberSignature Language="ILAsm" Value=".field family float32 UpZOrig" />
-      <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Single</ReturnType>
+        <ReturnType>CocosSharp.CCPoint3</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

@@ -1,11 +1,11 @@
 <Type Name="CCActionCamera" FullName="CocosSharp.CCActionCamera">
-  <TypeSignature Language="C#" Value="public class CCActionCamera : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCamera extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCActionCamera : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionCamera extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

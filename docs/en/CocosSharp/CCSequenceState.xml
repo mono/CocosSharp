@@ -1,11 +1,11 @@
 <Type Name="CCSequenceState" FullName="CocosSharp.CCSequenceState">
-  <TypeSignature Language="C#" Value="public class CCSequenceState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSequenceState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCSequenceState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSequenceState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

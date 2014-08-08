@@ -1,6 +1,6 @@
 <Type Name="CCActionState" FullName="CocosSharp.CCActionState">
-  <TypeSignature Language="C#" Value="public class CCActionState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCActionState extends System.Object" />
+  <TypeSignature Language="C#" Value="public abstract class CCActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCActionState extends System.Object" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
@@ -71,19 +71,6 @@
 	</remarks>
       </Docs>
     </Member>
-    <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCDirector Director { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDirector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
     <Member MemberName="IsDone">
       <MemberSignature Language="C#" Value="public virtual bool IsDone { get; }" />
       <MemberSignature Language="ILAsm" Value=".property instance bool IsDone" />
@@ -102,6 +89,19 @@
         </remarks>
       </Docs>
     </Member>
+    <Member MemberName="Layer">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCLayer Layer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer Layer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OriginalTarget">
       <MemberSignature Language="C#" Value="public CocosSharp.CCNode OriginalTarget { get; protected set; }" />
       <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode OriginalTarget" />
@@ -118,6 +118,19 @@
 	    Unlike the Target property, the value of this property will not be reset when the action stops executing.
 	  </para>
         </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Scene">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene Scene { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene Scene" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCScene</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="Step">

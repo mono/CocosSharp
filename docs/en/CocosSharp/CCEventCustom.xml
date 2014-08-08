@@ -10,7 +10,8 @@
   <Interfaces />
   <Docs>
     <summary>Defines a custom event that can be dispatched and listened for.</summary>
-    <remarks></remarks>
+    <remarks>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -25,7 +26,8 @@
         <param name="eventName">The name of the custom event.</param>
         <param name="userData">User defined data that will be associated with the event.</param>
         <summary>Defines a custom event with the given EventName and UserData.</summary>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="EventName">
@@ -38,7 +40,8 @@
       <Docs>
         <summary>The name of the event.</summary>
         <value>String value representing the name.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
     <Member MemberName="UserData">
@@ -51,7 +54,8 @@
       <Docs>
         <summary>User defined data that is associated with the custom event.</summary>
         <value>Object that can represent any type of information associated with the event.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

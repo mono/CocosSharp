@@ -14,7 +14,7 @@
   <Members>
     <Member MemberName="DownOver">
       <MemberSignature Language="C#" Value="DownOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation DownOver = int32(1)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation DownOver = int32(3)" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>
@@ -47,7 +47,7 @@
     </Member>
     <Member MemberName="UpOver">
       <MemberSignature Language="C#" Value="UpOver" />
-      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation UpOver = int32(0)" />
+      <MemberSignature Language="ILAsm" Value=".field public static literal valuetype CocosSharp.CCTransitionOrientation UpOver = int32(2)" />
       <MemberType>Field</MemberType>
       <ReturnValue>
         <ReturnType>CocosSharp.CCTransitionOrientation</ReturnType>

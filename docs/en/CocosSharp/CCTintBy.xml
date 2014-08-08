@@ -1,11 +1,11 @@
 <Type Name="CCTintBy" FullName="CocosSharp.CCTintBy">
-  <TypeSignature Language="C#" Value="public class CCTintBy : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTintBy extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCTintBy : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTintBy extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

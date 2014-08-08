@@ -260,17 +260,17 @@
       </Docs>
     </Member>
     <Member MemberName="TouchBegan">
-      <MemberSignature Language="C#" Value="public bool TouchBegan (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TouchBegan(class CocosSharp.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public bool TouchBegan (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool TouchBegan(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
-        <param name="pTouch">To be added.</param>
+        <param name="touch">To be added.</param>
         <summary>To be added.</summary>
         <returns>To be added.</returns>
         <remarks>To be added.</remarks>
@@ -293,33 +293,33 @@
       </Docs>
     </Member>
     <Member MemberName="TouchEnded">
-      <MemberSignature Language="C#" Value="public void TouchEnded (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchEnded(class CocosSharp.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchEnded (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchEnded(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
-        <param name="pTouch">To be added.</param>
+        <param name="touch">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="TouchMoved">
-      <MemberSignature Language="C#" Value="public void TouchMoved (CocosSharp.CCTouch pTouch);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchMoved(class CocosSharp.CCTouch pTouch) cil managed" />
+      <MemberSignature Language="C#" Value="public void TouchMoved (CocosSharp.CCTouch touch);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void TouchMoved(class CocosSharp.CCTouch touch) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pTouch" Type="CocosSharp.CCTouch" />
+        <Parameter Name="touch" Type="CocosSharp.CCTouch" />
       </Parameters>
       <Docs>
-        <param name="pTouch">To be added.</param>
+        <param name="touch">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

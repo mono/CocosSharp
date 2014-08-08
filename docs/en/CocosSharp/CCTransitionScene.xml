@@ -16,76 +16,18 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTransitionScene (float t, CocosSharp.CCScene scene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 t, class CocosSharp.CCScene scene) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTransitionScene (float duration, CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration, class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="t" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="t">To be added.</param>
+        <param name="duration">To be added.</param>
         <param name="scene">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Cleanup">
-      <MemberSignature Language="C#" Value="public override void Cleanup ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void Cleanup() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Stops all running actions and schedulers </summary>
-        <remarks />
-      </Docs>
-    </Member>
-    <Member MemberName="Director">
-      <MemberSignature Language="C#" Value="public override CocosSharp.CCDirector Director { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCDirector Director" />
-      <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>CocosSharp.CCDirector</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Draw">
-      <MemberSignature Language="C#" Value="protected override void Draw ();" />
-      <MemberSignature Language="ILAsm" Value=".method familyhidebysig virtual instance void Draw() cil managed" />
-      <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
-      <Parameters />
-      <Docs>
-        <summary>Override this method to draw your own node. The following GL states will be enabled by default:</summary>
-        <remarks>
-          <para>Override this method to draw your own node. The following GL states will be enabled by default:<list type="bullet" /></para>
-          <list type="bullet" />
-          <item>
-            <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_VERTEX_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_COLOR_ARRAY);</description>
-          <item>
-            <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          </item>
-          <description>glEnableClientState(GL_TEXTURE_COORD_ARRAY);</description>
-          <item>
-            <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-          </item>
-          <description>glEnable(GL_TEXTURE_2D); AND YOU SHOULD NOT DISABLE THEM AFTER DRAWING YOUR NODE But if you enable any other GL state, you should disable it after drawing your node. </description>
-        </remarks>
       </Docs>
     </Member>
     <Member MemberName="Duration">
@@ -127,12 +69,38 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="InScene">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene InScene { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene InScene" />
+    <Member MemberName="InitialiseScenes">
+      <MemberSignature Language="C#" Value="protected virtual void InitialiseScenes ();" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void InitialiseScenes() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InSceneAction">
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCFiniteTimeAction InSceneAction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction InSceneAction" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="InSceneNodeContainer">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode InSceneNodeContainer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode InSceneNodeContainer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>
@@ -179,6 +147,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="Layer">
+      <MemberSignature Language="C#" Value="public override CocosSharp.CCLayer Layer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCLayer Layer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCLayer</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="OnEnter">
       <MemberSignature Language="C#" Value="public override void OnEnter ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig virtual instance void OnEnter() cil managed" />
@@ -205,12 +186,25 @@
         <remarks />
       </Docs>
     </Member>
-    <Member MemberName="OutScene">
-      <MemberSignature Language="C#" Value="protected CocosSharp.CCScene OutScene { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCScene OutScene" />
+    <Member MemberName="OutSceneAction">
+      <MemberSignature Language="C#" Value="protected virtual CocosSharp.CCFiniteTimeAction OutSceneAction { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCFiniteTimeAction OutSceneAction" />
       <MemberType>Property</MemberType>
       <ReturnValue>
-        <ReturnType>CocosSharp.CCScene</ReturnType>
+        <ReturnType>CocosSharp.CCFiniteTimeAction</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="OutSceneNodeContainer">
+      <MemberSignature Language="C#" Value="protected CocosSharp.CCNode OutSceneNodeContainer { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property instance class CocosSharp.CCNode OutSceneNodeContainer" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCNode</ReturnType>
       </ReturnValue>
       <Docs>
         <summary>To be added.</summary>

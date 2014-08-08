@@ -23,11 +23,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTextureCache ();" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="C#" Value="public CCTextureCache (CocosSharp.CCApplication application);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCApplication application) cil managed" />
       <MemberType>Constructor</MemberType>
-      <Parameters />
+      <Parameters>
+        <Parameter Name="application" Type="CocosSharp.CCApplication" />
+      </Parameters>
       <Docs>
+        <param name="application">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -273,6 +276,19 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="PurgeSharedTextureCache">
+      <MemberSignature Language="C#" Value="public static void PurgeSharedTextureCache ();" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void PurgeSharedTextureCache() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="RemoveAllTextures">
       <MemberSignature Language="C#" Value="public void RemoveAllTextures ();" />
       <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void RemoveAllTextures() cil managed" />
@@ -330,6 +346,19 @@ v0.99.4 </summary>
       <Docs>
         <summary>Removes unused textures Textures that have a retain count of 1 will be deleted It is convenient to call this method after when starting a new v0.8 </summary>
         <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="SharedTextureCache">
+      <MemberSignature Language="C#" Value="public static CocosSharp.CCTextureCache SharedTextureCache { get; }" />
+      <MemberSignature Language="ILAsm" Value=".property class CocosSharp.CCTextureCache SharedTextureCache" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>CocosSharp.CCTextureCache</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <value>To be added.</value>
+        <remarks>To be added.</remarks>
       </Docs>
     </Member>
     <Member MemberName="textures">

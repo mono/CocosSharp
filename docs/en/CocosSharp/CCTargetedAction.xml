@@ -1,11 +1,11 @@
 <Type Name="CCTargetedAction" FullName="CocosSharp.CCTargetedAction">
-  <TypeSignature Language="C#" Value="public class CCTargetedAction : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedAction extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCTargetedAction : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCTargetedAction extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -16,16 +16,16 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCTargetedAction (CocosSharp.CCNode target, CocosSharp.CCFiniteTimeAction pAction);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode target, class CocosSharp.CCFiniteTimeAction pAction) cil managed" />
+      <MemberSignature Language="C#" Value="public CCTargetedAction (CocosSharp.CCNode target, CocosSharp.CCFiniteTimeAction action);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(class CocosSharp.CCNode target, class CocosSharp.CCFiniteTimeAction action) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
         <Parameter Name="target" Type="CocosSharp.CCNode" />
-        <Parameter Name="pAction" Type="CocosSharp.CCFiniteTimeAction" />
+        <Parameter Name="action" Type="CocosSharp.CCFiniteTimeAction" />
       </Parameters>
       <Docs>
         <param name="target">To be added.</param>
-        <param name="pAction">To be added.</param>
+        <param name="action">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>

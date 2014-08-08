@@ -1,0 +1,172 @@
+<Type Name="CCPrimitiveBatch" FullName="CocosSharp.CCPrimitiveBatch">
+  <TypeSignature Language="C#" Value="public class CCPrimitiveBatch : IDisposable" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCPrimitiveBatch extends System.Object implements class System.IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>CocosSharp</AssemblyName>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public CCPrimitiveBatch (int bufferSize = 500);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(int32 bufferSize) cil managed" />
+      <MemberType>Constructor</MemberType>
+      <Parameters>
+        <Parameter Name="bufferSize" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="bufferSize">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddVertex">
+      <MemberSignature Language="C#" Value="public void AddVertex (CocosSharp.CCVector2 vertex, CocosSharp.CCColor4B color, Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddVertex(valuetype CocosSharp.CCVector2 vertex, valuetype CocosSharp.CCColor4B color, valuetype Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertex" Type="CocosSharp.CCVector2" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="primitiveType" Type="Microsoft.Xna.Framework.Graphics.PrimitiveType" />
+      </Parameters>
+      <Docs>
+        <param name="vertex">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="primitiveType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="AddVertex">
+      <MemberSignature Language="C#" Value="public void AddVertex (ref CocosSharp.CCVector2 vertex, CocosSharp.CCColor4B color, Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void AddVertex(valuetype CocosSharp.CCVector2 vertex, valuetype CocosSharp.CCColor4B color, valuetype Microsoft.Xna.Framework.Graphics.PrimitiveType primitiveType) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="vertex" Type="CocosSharp.CCVector2&amp;" RefType="ref" />
+        <Parameter Name="color" Type="CocosSharp.CCColor4B" />
+        <Parameter Name="primitiveType" Type="Microsoft.Xna.Framework.Graphics.PrimitiveType" />
+      </Parameters>
+      <Docs>
+        <param name="vertex">To be added.</param>
+        <param name="color">To be added.</param>
+        <param name="primitiveType">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Begin">
+      <MemberSignature Language="C#" Value="public void Begin ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void Begin() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="public void Dispose ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig newslot virtual instance void Dispose() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Dispose">
+      <MemberSignature Language="C#" Value="protected virtual void Dispose (bool disposing);" />
+      <MemberSignature Language="ILAsm" Value=".method familyhidebysig newslot virtual instance void Dispose(bool disposing) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="disposing" Type="System.Boolean" />
+      </Parameters>
+      <Docs>
+        <param name="disposing">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="End">
+      <MemberSignature Language="C#" Value="public void End ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void End() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="IsReady">
+      <MemberSignature Language="C#" Value="public bool IsReady ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance bool IsReady() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Boolean</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <returns>To be added.</returns>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SetProjection">
+      <MemberSignature Language="C#" Value="public void SetProjection (ref Microsoft.Xna.Framework.Matrix projection);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void SetProjection(valuetype Microsoft.Xna.Framework.Matrix projection) cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="projection" Type="Microsoft.Xna.Framework.Matrix&amp;" RefType="ref" />
+      </Parameters>
+      <Docs>
+        <param name="projection">To be added.</param>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateMatrix">
+      <MemberSignature Language="C#" Value="public void UpdateMatrix ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void UpdateMatrix() cil managed" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

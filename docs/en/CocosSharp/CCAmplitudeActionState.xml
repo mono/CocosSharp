@@ -1,11 +1,11 @@
 <Type Name="CCAmplitudeActionState" FullName="CocosSharp.CCAmplitudeActionState">
-  <TypeSignature Language="C#" Value="public abstract class CCAmplitudeActionState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCAmplitudeActionState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public abstract class CCAmplitudeActionState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi abstract beforefieldinit CCAmplitudeActionState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

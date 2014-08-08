@@ -23,7 +23,8 @@
       <Docs>
         <summary>The information of the accelerometer.</summary>
         <value>A CCAcceleration object that can be queried to obtain the information assocated with the event.</value>
-        <remarks></remarks>
+        <remarks>
+        </remarks>
       </Docs>
     </Member>
   </Members>

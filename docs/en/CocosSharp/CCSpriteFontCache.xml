@@ -26,6 +26,18 @@
         <remarks>To be added.</remarks>
       </Docs>
     </Member>
+    <Member MemberName="DefaultFont">
+      <MemberSignature Language="C#" Value="public static string DefaultFont;" />
+      <MemberSignature Language="ILAsm" Value=".field public static string DefaultFont" />
+      <MemberType>Field</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
     <Member MemberName="FontRoot">
       <MemberSignature Language="C#" Value="public static string FontRoot;" />
       <MemberSignature Language="ILAsm" Value=".field public static string FontRoot" />

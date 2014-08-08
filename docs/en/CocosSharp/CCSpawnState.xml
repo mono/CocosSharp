@@ -1,11 +1,11 @@
 <Type Name="CCSpawnState" FullName="CocosSharp.CCSpawnState">
-  <TypeSignature Language="C#" Value="public class CCSpawnState : CocosSharp.CCActionIntervalState" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpawnState extends CocosSharp.CCActionIntervalState" />
+  <TypeSignature Language="C#" Value="public class CCSpawnState : CocosSharp.CCFiniteTimeActionState" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCSpawnState extends CocosSharp.CCFiniteTimeActionState" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionIntervalState</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeActionState</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>

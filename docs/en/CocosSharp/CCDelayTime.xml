@@ -1,11 +1,11 @@
 <Type Name="CCDelayTime" FullName="CocosSharp.CCDelayTime">
-  <TypeSignature Language="C#" Value="public class CCDelayTime : CocosSharp.CCActionInterval" />
-  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDelayTime extends CocosSharp.CCActionInterval" />
+  <TypeSignature Language="C#" Value="public class CCDelayTime : CocosSharp.CCFiniteTimeAction" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit CCDelayTime extends CocosSharp.CCFiniteTimeAction" />
   <AssemblyInfo>
     <AssemblyName>CocosSharp</AssemblyName>
   </AssemblyInfo>
   <Base>
-    <BaseTypeName>CocosSharp.CCActionInterval</BaseTypeName>
+    <BaseTypeName>CocosSharp.CCFiniteTimeAction</BaseTypeName>
   </Base>
   <Interfaces />
   <Docs>
@@ -18,14 +18,14 @@
   </Docs>
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public CCDelayTime (float d);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 d) cil managed" />
+      <MemberSignature Language="C#" Value="public CCDelayTime (float duration);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor(float32 duration) cil managed" />
       <MemberType>Constructor</MemberType>
       <Parameters>
-        <Parameter Name="d" Type="System.Single" />
+        <Parameter Name="duration" Type="System.Single" />
       </Parameters>
       <Docs>
-        <param name="d">To be added.</param>
+        <param name="duration">To be added.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
