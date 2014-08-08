@@ -76,10 +76,17 @@
         <Parameter Name="paused" Type="System.Boolean" />
       </Parameters>
       <Docs>
-        <param name="action">To be added.</param>
-        <param name="paused">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="action">Action to be added to this CCNode.</param>
+        <param name="paused">Whether the action is paused or not at startup.</param>
+        <summary>Adds the specified action to the node.</summary>
+        <remarks>
+	  <para>
+	    Adds the specific action to the node.
+	  </para>
+	  <para>
+	    When the target is paused, the queued actions won't be executed.
+	  </para>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="AddActions">
@@ -100,8 +107,8 @@
         </Parameter>
       </Parameters>
       <Docs>
-        <param name="paused">To be added.</param>
-        <param name="actions">To be added.</param>
+        <param name="paused">Whether the action is paused or not at startup.</param>
+        <param name="action">Actions to be added to this CCNode.</param>
         <summary>To be added.</summary>
         <remarks>To be added.</remarks>
       </Docs>
@@ -1877,8 +1884,12 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Method invoked when local transformation has changed.</summary>
+        <remarks>
+	  <para>
+	    This is called when the transformation of the node has changed (for example Position, Scale and Skew).
+	  </para>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="Pause">
