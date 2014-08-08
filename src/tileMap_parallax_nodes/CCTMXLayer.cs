@@ -298,7 +298,6 @@ namespace CocosSharp
 
                     tile = new CCSprite(Texture, rect);
                     tile.BatchNode = this;
-                    tile.Director = Director;
                     tile.Position = PositionAt(x, y);
                     tile.VertexZ = VertexZForPos(x, y);
                     tile.AnchorPoint = CCPoint.Zero;

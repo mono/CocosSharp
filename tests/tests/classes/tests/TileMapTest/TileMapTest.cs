@@ -1736,7 +1736,7 @@ namespace tests
             // "test" is not the default value in CCDirector.setGLDefaultValues()
             // but TransitionTest may setDepthTest(false), we should revert it here
 
-            Window.IsUseDepthTesting = true;
+            //Window.IsUseDepthTesting = true;
 
             Director.ReplaceScene(this);
         }
