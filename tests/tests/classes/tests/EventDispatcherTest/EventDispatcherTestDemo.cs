@@ -400,16 +400,16 @@ namespace tests
 		{
 			base.OnEnter ();
 
-            CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
-			var origin = Layer.VisibleBoundsWorldspace.Origin;
-			var size = Layer.VisibleBoundsWorldspace.Size;
+            var visibleBounds = VisibleBoundsWorldspace;
+			var origin = VisibleBoundsWorldspace.Origin;
+			var size = VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new CCSprite("Images/CyanSquare.png");
-			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+            sprite1.Position = origin + size.Center + new CCPoint (-80, 80);
 			AddChild(sprite1, 10);
 
 			var sprite2 = new CCSprite("Images/MagentaSquare.png");
-			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+            sprite2.Position = origin + size.Center;
 			AddChild(sprite2, 20);
 
 			var sprite3 = new CCSprite("Images/YellowSquare.png");
@@ -424,7 +424,7 @@ namespace tests
 			{
 				var target = (CCSprite)touchEvent.CurrentTarget;
 
-				var locationInNode = target.Layer.ScreenToWorldspace(touch.LocationOnScreen);
+				var locationInNode = touch.Location;
 				var s = target.ContentSize;
                 CCRect rect = target.BoundingBoxTransformedToWorld;
 
@@ -525,26 +525,40 @@ namespace tests
 		{
 			base.OnEnter ();
 
-			var origin = Layer.VisibleBoundsWorldspace.Origin;
-			var size = Layer.VisibleBoundsWorldspace.Size;
+			var origin = VisibleBoundsWorldspace.Origin;
+			var size = VisibleBoundsWorldspace.Size;
 
 			var sprite1 = new TouchableSprite (30);
 			var texture = CCTextureCache.SharedTextureCache.AddImage("Images/CyanSquare.png");
 			sprite1.Texture = texture;
-			sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+            sprite1.Position = origin + size.Center + new CCPoint (-80, 80);
 			AddChild(sprite1, 10);
 
 			var sprite2 = new TouchableSprite (20);
 			texture = CCTextureCache.SharedTextureCache.AddImage("Images/MagentaSquare.png");
 			sprite2.Texture = texture;
-			sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+            sprite2.Position = origin + size.Center;
 			AddChild(sprite2, 20);
 
 			var sprite3 = new TouchableSprite (10);
 			texture = CCTextureCache.SharedTextureCache.AddImage("Images/YellowSquare.png");
 			sprite3.Texture = texture;
-            sprite3.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-120, 120) ;
+            sprite3.Position = CCPoint.Zero; //new CCPoint (-120, 120) ;
+            sprite3.AnchorPoint = CCPoint.AnchorMiddle;
 			sprite2.AddChild(sprite3, 1);
+
+//            var sprite1 = new CCSprite("Images/CyanSquare.png");
+//            sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
+//            AddChild(sprite1, 10);
+//
+//            var sprite2 = new CCSprite("Images/MagentaSquare.png");
+//            sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
+//            AddChild(sprite2, 20);
+//
+//            var sprite3 = new CCSprite("Images/YellowSquare.png");
+//            sprite3.Position = CCPoint.Zero;
+//            sprite2.AddChild(sprite3, 1);
+
 
 		}
 
@@ -585,12 +599,12 @@ namespace tests
 			var listener = new CCEventListenerTouchOneByOne();
 			listener.IsSwallowTouches = true;
 
-			listener.OnTouchBegan = (CCTouch touch, CCEvent rouchEvent) => 
+            listener.OnTouchBegan = (CCTouch touch, CCEvent touchEvent) => 
 			{
 
-                var locationInNode = Layer.ScreenToWorldspace(touch.LocationOnScreen);
-				var s = ContentSize;
-				var rect = new CCRect(0, 0, s.Width, s.Height);
+                var locationInNode = touch.Location;//     Layer.ScreenToWorldspace(touch.LocationOnScreen);
+                var s = ContentSize;
+                CCRect rect = BoundingBoxTransformedToWorld;
 
 				if (rect.ContainsPoint(locationInNode))
 				{
