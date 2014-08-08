@@ -21,13 +21,15 @@ namespace tests
 			AddEventListener(listener);   
 
 			title = new CCLabelTtf("Please touch the screen!", "", 24);
+            title.AnchorPoint = CCPoint.AnchorMiddle;
 			AddChild(title);
 		}
 
         protected override void AddedToScene()
         {
             base.AddedToScene();
-			title.Position = CCVisibleRect.Top+ new CCPoint(0, -40);
+
+            title.Position = Layer.VisibleBoundsWorldspace.Top() + new CCPoint(0, -40);
 		}
 
         private CCColor3B[] s_TouchColors = new CCColor3B[] 
@@ -48,7 +50,7 @@ namespace tests
                 CCTouch touch = (item);
                 TouchPoint touchPoint = TouchPoint.TouchPointWithParent(this);
                 CCPoint location = touch.LocationOnScreen;
-
+                location = Layer.ScreenToWorldspace(location);
                 touchPoint.SetTouchPos(location);
                 touchPoint.SetTouchColor(s_TouchColors[touch.Id % 5]);
 
@@ -64,6 +66,7 @@ namespace tests
                 CCTouch touch = item;
                 TouchPoint pTP = s_dic[touch.Id];
                 CCPoint location = touch.LocationOnScreen;
+                location = Layer.ScreenToWorldspace(location);
                 pTP.SetTouchPos(location);
             }
         }
