@@ -1016,6 +1016,19 @@ namespace CocosSharp
             return transformedPoint;
         }
 
+        public CCPoint ScreenToWorldspace (CCPoint point)
+        {
+            return Layer.ScreenToWorldspace(point);
+        }
+
+        public CCRect VisibleBoundsWorldspace
+        {
+            get 
+            {
+                return Layer.VisibleBoundsWorldspace;
+            }
+        }
+
         #endregion Unit conversion
 
 
