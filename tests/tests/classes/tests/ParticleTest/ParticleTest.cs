@@ -169,7 +169,6 @@ namespace tests
         }
     };
 
-    //public class ParticleDemo : CCLayerColor
 	public class ParticleDemo : TestNavigationLayer
     {
         const int labelTag = 9000;
@@ -183,11 +182,10 @@ namespace tests
 
         CCMenu particleMenu;
         CCMenuItemToggle toggleParticleMovMenuItem;
-		CCLayerColor coloredBackground;
 
         #region Constructors
 
-		public ParticleDemo()
+        public ParticleDemo()
         {
 
             toggleParticleMovMenuItem = new CCMenuItemToggle(ToggleCallback,
@@ -213,8 +211,8 @@ namespace tests
 
 			AddEventListener(listener);
 
-			coloredBackground = new CCLayerColor(new CCColor4B(127, 127, 127, 255));
-			AddChild(coloredBackground, 4);
+            Color = new CCColor3B(127, 127, 127);
+            Opacity = 255;
         }
 
         #endregion Constructors
@@ -230,7 +228,7 @@ namespace tests
         {
             base.AddedToScene();
 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             WindowSize = windowSize;
 			MidWindowPoint = windowSize.Center;
@@ -258,22 +256,6 @@ namespace tests
         }
 
         #endregion Setup content
-
-		#region Properties
-
-		public override CCColor3B Color
-		{
-			get { return coloredBackground.Color; }
-
-			set 
-			{
-				coloredBackground.Color = value;
-			}
-		}
-
-
-		#endregion Properties
-
 
         #region Titles
 
@@ -356,15 +338,16 @@ namespace tests
             var convertedLocation = touch.LocationOnScreen;
             convertedLocation = Layer.ScreenToWorldspace(convertedLocation);
 
-            var pos = new CCPoint(0, 0);
+            var pos = CCPoint.Zero;
             if (Background != null)
             {
-                pos = Background.Layer.ScreenToWorldspace(CCPoint.Zero);
+                pos = Background.ScreenToWorldspace(CCPoint.Zero);
+                Console.WriteLine(pos);
             }
 
             if (Emitter != null)
             {
-                Emitter.Position = Emitter.WorldToParentspace(convertedLocation);
+                Emitter.Position = Emitter.WorldToParentspace(convertedLocation - pos);
             }
         }
 
@@ -410,7 +393,7 @@ namespace tests
         {
             if (Emitter != null)
             {
-                var size = Layer.VisibleBoundsWorldspace.Size;
+                var size = VisibleBoundsWorldspace.Size;
                 Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2 - 30);
             }
         }
@@ -425,7 +408,7 @@ namespace tests
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFireworks(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -450,7 +433,7 @@ namespace tests
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             CCPoint emitterPos = new CCPoint(windowSize.Width / 2, 100);
             Emitter = new CCParticleFire(emitterPos);
@@ -478,7 +461,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSun(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -507,7 +490,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleGalaxy(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -536,7 +519,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleFlower(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -563,7 +546,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(50);
             //Emitter.autorelease();
@@ -653,7 +636,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(300);
             //Emitter.autorelease();
@@ -739,7 +722,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleMeteor(MidWindowPoint);
 
@@ -764,7 +747,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSpiral(MidWindowPoint);
 
@@ -789,7 +772,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleExplosion(MidWindowPoint);
 
@@ -816,7 +799,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
@@ -843,7 +826,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSnow(new CCPoint(windowSize.Width / 2, windowSize.Height + 10));
 
@@ -892,7 +875,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleRain(new CCPoint (windowSize.Width / 2.0f, windowSize.Height));
             Background.AddChild(Emitter, 10);
@@ -919,7 +902,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(1000);
 
@@ -1035,7 +1018,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            var windowSize = Layer.VisibleBoundsWorldspace.Size;
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1146,7 +1129,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            var size = Layer.VisibleBoundsWorldspace.Size;
+            var size = VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1228,7 +1211,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            var size = Layer.VisibleBoundsWorldspace.Size;
+            var size = VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1311,7 +1294,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            var size = Layer.VisibleBoundsWorldspace.Size;
+            var size = VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1490,11 +1473,16 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             label.Position = windowSize.Center;
 
-            ScheduleOnce(LoadParticleSystem, 0.0f);
+            //ScheduleOnce(LoadParticleSystem, 0.0f);
+            // Async not working right now.
+            var config = CCParticleSystemCache.SharedParticleSystemCache.AddParticleSystem("Particles/SmallSun");
+            ParticleSystemLoaded(config);
         }
 
         void LoadParticleSystem(float dt)
@@ -1530,7 +1518,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
                 emitter3.StartColor = (new CCColor4F (0, 0, 1, 1));
                 emitter3.BlendAdditive = (false);
 
-                CCSize s = Layer.VisibleBoundsWorldspace.Size;
+                CCSize s = VisibleBoundsWorldspace.Size;
 
 
                 int neg = (i == 0 ? 1 : -1);
@@ -1611,8 +1599,6 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
-
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
             Background = null;
@@ -1667,7 +1653,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter();
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            var size = VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1680,11 +1666,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             CCParticleSystemQuad emitter3 = new CCParticleSystemQuad("Particles/LavaFlow");
             emitter3.StartColor = (new CCColor4F(0, 0, 1, 1));
 
-            CCSize s = WindowSize;
-
-            emitter1.Position = (new CCPoint(s.Width / 1.25f, s.Height / 1.25f));
-            emitter2.Position = (new CCPoint(s.Width / 2, s.Height / 2));
-            emitter3.Position = (new CCPoint(s.Width / 4, s.Height / 4));
+            emitter1.Position = (new CCPoint(size.Width / 1.25f, size.Height / 1.25f));
+            emitter2.Position = size.Center;
+            emitter3.Position = (new CCPoint(size.Width / 4, size.Height / 4));
 
             emitter1.Texture = CCTextureCache.SharedTextureCache.AddImage("Images/fire");
             emitter2.Texture = emitter1.Texture;
@@ -1773,7 +1757,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             // emitter position
 			Position = windowSize.Center;
@@ -1791,7 +1777,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1827,7 +1813,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+
+            base.OnEnter(); 
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1869,7 +1857,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1918,7 +1907,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -1993,7 +1983,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
@@ -2154,7 +2145,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
