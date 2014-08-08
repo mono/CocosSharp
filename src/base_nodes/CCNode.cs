@@ -1010,10 +1010,10 @@ namespace CocosSharp
 
         public CCPoint WorldToParentspace(CCPoint point)
         {
-            CCAffineTransform parentWorldTransform 
-            = Parent != null ? Parent.AffineWorldTransform : CCAffineTransform.Identity;
+            CCPoint transformedPoint = AffineWorldTransform.Inverse.Transform(point);
+            transformedPoint += BoundingBox.Origin;
 
-            return parentWorldTransform.Transform(point);
+            return transformedPoint;
         }
 
         #endregion Unit conversion
@@ -2152,6 +2152,13 @@ namespace CocosSharp
 
         protected virtual void ParentUpdatedTransform()
         {
+            if (Children != null)
+            {
+                foreach (CCNode child in Children)
+                {
+                    child.ParentUpdatedTransform();
+                }
+            }
         }
 
         protected virtual void UpdateTransform()

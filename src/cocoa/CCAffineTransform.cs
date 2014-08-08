@@ -119,6 +119,10 @@ namespace CocosSharp
 			}
 		}
 
+        public CCAffineTransform Inverse
+        {
+            get { return new CCAffineTransform(Matrix.Invert(XnaMatrix)); }
+        }
 
         internal Matrix XnaMatrix
         {
