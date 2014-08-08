@@ -1008,6 +1008,13 @@ namespace CocosSharp
 
         #region Unit conversion
 
+        public CCPoint ConvertToWorldspace(CCPoint point)
+        {
+            CCPoint transformedPoint = AffineWorldTransform.Transform(point);
+            return transformedPoint;
+
+        }
+
         public CCPoint WorldToParentspace(CCPoint point)
         {
             CCPoint transformedPoint = AffineWorldTransform.Inverse.Transform(point);
