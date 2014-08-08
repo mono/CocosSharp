@@ -14,10 +14,16 @@ namespace CocosSharp
         CCPoint prevPoint;
         CCPoint startPoint;
 
-
+        internal CCNode Target { get; set; }
         #region Properties
 
         public int Id { get; private set; }
+
+        public CCPoint Location
+        {
+            get { return Target.ScreenToWorldspace(point); }
+        }
+
 
         public CCPoint LocationOnScreen
         {

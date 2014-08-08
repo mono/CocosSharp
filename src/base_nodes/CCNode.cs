@@ -870,7 +870,7 @@ namespace CocosSharp
                     if (listener.SceneGraphPriority != null)
                         eventDispatcher.AddEventListener (listener, listener.SceneGraphPriority);
                     else
-                        eventDispatcher.AddEventListener (listener, listener.FixedPriority);
+                        eventDispatcher.AddEventListener (listener, listener.FixedPriority, this);
                 }
 
                 toBeAddedListeners.Clear ();
@@ -1446,7 +1446,7 @@ namespace CocosSharp
         {
             if (EventDispatcherIsEnabled)
             {
-                EventDispatcher.AddEventListener(listener, fixedPriority);
+                EventDispatcher.AddEventListener(listener, fixedPriority, this);
             }
             else
             {

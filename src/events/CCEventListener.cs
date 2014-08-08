@@ -66,6 +66,10 @@ namespace CocosSharp
         /// </summary>
 		internal Action<CCEvent> OnEvent { get; set; }
 
+        /// <summary>
+        /// Sender of the event
+        /// </summary>
+        internal virtual CCNode Sender { get; set; }
 
 		/// <summary>
 		/// Enables or disables the listener.
@@ -77,6 +81,8 @@ namespace CocosSharp
 		/// <returns><c>true</c> if this instance is enabled the specified enabled; otherwise, <c>false</c>.</returns>
 		/// <param name="enabled">If set to <c>true</c> enabled.</param>
 		public virtual bool IsEnabled { get; set; }
+
+
 
         protected CCEventListener() 
         {

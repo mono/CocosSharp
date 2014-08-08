@@ -136,6 +136,7 @@ namespace CocosSharp
             listener.SceneGraphPriority = node;
             listener.FixedPriority = 0;
             listener.IsRegistered = true;
+            listener.Sender = node;
 
             AddEventListener(listener);
         }
@@ -148,9 +149,9 @@ namespace CocosSharp
         /// <param name="listener">The listener of a specified event.</param>
         /// <param name="fixedPriority">The fixed priority of the listener.</param>
 
-        public void AddEventListener(CCEventListener listener, int fixedPriority)
+        public void AddEventListener(CCEventListener listener, int fixedPriority, CCNode sender)
         {
-            Debug.Assert((listener != null), "Invalid parameters.");
+            Debug.Assert((listener != null && sender != null), "Invalid parameters.");
             Debug.Assert(!listener.IsRegistered, "The listener has been registered.");
             Debug.Assert(fixedPriority != 0, "0 priority is forbidden for fixed priority since it's used for scene graph based priority.");
 
@@ -161,6 +162,7 @@ namespace CocosSharp
             listener.FixedPriority = fixedPriority;
             listener.IsRegistered = true;
             listener.IsPaused = false;
+            listener.Sender = sender;
 
             AddEventListener(listener);
         }
@@ -486,7 +488,7 @@ namespace CocosSharp
                             return false;
 
                         touchEvent.CurrentTarget = listener.SceneGraphPriority;
-
+                            var sender = listener.Sender;
                         bool isClaimed = false;
                         var removed = new List<CCTouch>();
 
@@ -496,6 +498,7 @@ namespace CocosSharp
                         {
                             if (listener.OnTouchBegan != null)
                             {
+                                touchesIter.Target = sender;
                                 isClaimed = listener.OnTouchBegan(touchesIter, touchEvent);
                                 if (isClaimed && listener.IsRegistered)
                                 {
@@ -514,23 +517,27 @@ namespace CocosSharp
                             case CCEventCode.MOVED:
                                 if (listener.OnTouchMoved != null)
                                 {
+                                    touchesIter.Target = sender;
                                     listener.OnTouchMoved(touchesIter, touchEvent);
                                 }
                                 break;
                             case CCEventCode.ENDED:
                                 if (listener.OnTouchEnded != null)
                                 {
+                                    touchesIter.Target = sender;
                                     listener.OnTouchEnded(touchesIter, touchEvent);
                                 }
                                 if (listener.IsRegistered)
                                 {
 
+                                    touchesIter.Target = sender;
                                     listener.ClaimedTouches.RemoveAll(t => removed.Contains(t));
                                 }
                                 break;
                             case CCEventCode.CANCELLED:
                                 if (listener.OnTouchCancelled != null)
                                 {
+                                    touchesIter.Target = sender;
                                     listener.OnTouchCancelled(touchesIter, touchEvent);
                                 }
                                 if (listener.IsRegistered)
@@ -593,7 +600,8 @@ namespace CocosSharp
                         return false;
 
                     touchEvent.CurrentTarget = listener.SceneGraphPriority;
-
+                    // set our target
+                    mutableTouches.ForEach(t => t.Target = touchEvent.CurrentTarget );
                     switch (touchEvent.EventCode)
                     {
                     case CCEventCode.BEGAN:
@@ -710,10 +718,10 @@ namespace CocosSharp
         /// <returns>The generated event. Needed in order to remove the event from the dispather.</returns>
         /// <param name="eventName">Event name.</param>
         /// <param name="callback">Callback.</param>
-        public CCEventListenerCustom AddCustomEventListener(string eventName, Action<CCEventCustom> callback)
+        public CCEventListenerCustom AddCustomEventListener(string eventName, Action<CCEventCustom> callback, CCNode sender)
         {
             var listener = new CCEventListenerCustom(eventName, callback);
-            AddEventListener(listener, 1);
+            AddEventListener(listener, 1, sender);
             return listener;
         }
 
@@ -759,7 +767,7 @@ namespace CocosSharp
             }
             else
             {
-                listeners = listenerMap[listenerID];;
+                listeners = listenerMap[listenerID];
             }
 
             listeners.PushBack(listener);
