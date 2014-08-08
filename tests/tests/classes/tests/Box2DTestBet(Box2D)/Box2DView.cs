@@ -78,7 +78,7 @@ namespace Box2D.TestBed
 
             CCPoint nodePosition = Layer.ScreenToWorldspace(touchLocation);
             //    NSLog(@"pos: %f,%f -> %f,%f", touchLocation.x, touchLocation.y, nodePosition.x, nodePosition.y);
-
+            CCLog.Log("OnTouchBegan: " + nodePosition);
 			return m_test.MouseDown(new b2Vec2(nodePosition.X, nodePosition.Y));
 
         }
@@ -118,13 +118,6 @@ namespace Box2D.TestBed
                 m_test.KeyboardUp(result[0]);
             }
         }
-
-		//        private KeyboardState _keyboardState;
-
-//        public override void KeyboardCurrentState(KeyboardState currentState)
-//        {
-//            _keyboardState = currentState;
-//        }
 
 		public string Convert(CCEventKeyboard keyEvent)
         {

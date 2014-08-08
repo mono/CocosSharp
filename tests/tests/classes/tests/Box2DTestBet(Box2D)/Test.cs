@@ -30,8 +30,6 @@ using Box2D.Common;
 using Box2D.Dynamics;
 using Box2D.Dynamics.Contacts;
 using Box2D.Dynamics.Joints;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using CocosSharp;
 using Random = System.Random;
 

@@ -45,7 +45,7 @@ namespace Box2D.TestBed
             CCLabelTtf label = new CCLabelTtf(view.title(), "arial", 18);
             //#endif
             AddChild(label, 1);
-            label.Position = new CCPoint(s.Width / 2, s.Height - 12);
+            label.Position = new CCPoint(s.Width / 2, s.Height - 30);
 
             CCMenuItemImage item1 = new CCMenuItemImage("Images/b1", "Images/b2", backCallback);
             CCMenuItemImage item2 = new CCMenuItemImage("Images/r1", "Images/r2", restartCallback);
