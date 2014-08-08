@@ -583,7 +583,7 @@ namespace CocosSharp
         {
             get 
             {
-                CCAffineTransform worldTransform = CCAffineTransform.Identity;
+                CCAffineTransform worldTransform = AffineLocalTransform;
                 CCNode parent = this.Parent;
                 if (parent != null) 
                 {
