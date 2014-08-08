@@ -174,7 +174,6 @@ namespace tests
         const int labelTag = 9000;
 
         protected CCPoint MidWindowPoint;
-        protected CCSize WindowSize;
         protected CCParticleSystem Emitter;
         protected CCSprite Background;
 
@@ -228,9 +227,8 @@ namespace tests
         {
             base.AddedToScene();
 
-            CCSize windowSize = VisibleBoundsWorldspace.Size;
+            var windowSize = VisibleBoundsWorldspace.Size;
 
-            WindowSize = windowSize;
 			MidWindowPoint = windowSize.Center;
 
             // Laying out content based on window size
@@ -244,7 +242,7 @@ namespace tests
 			// Background could have been removed by overriding class
 			if (Background != null)
 			{
-				Background.Position = new CCPoint(windowSize.Width / 2, windowSize.Height - 180);
+                Background.Position = windowSize.Center;//      new CCPoint(windowSize.Width / 2, windowSize.Height - 180);
 
 				// Run background animation
 				Background.RepeatForever(move, move_back);
@@ -336,18 +334,17 @@ namespace tests
         {
             var touch = touches [0];
             var convertedLocation = touch.LocationOnScreen;
-            convertedLocation = Layer.ScreenToWorldspace(convertedLocation);
+            convertedLocation = ScreenToWorldspace(convertedLocation);
 
             var pos = CCPoint.Zero;
             if (Background != null)
             {
-                pos = Background.ScreenToWorldspace(CCPoint.Zero);
-                Console.WriteLine(pos);
+                pos = Background.ConvertToWorldspace(pos);
             }
 
             if (Emitter != null)
             {
-                Emitter.Position = Emitter.WorldToParentspace(convertedLocation - pos);
+                Emitter.Position = convertedLocation - pos;
             }
         }
 
@@ -408,7 +405,7 @@ namespace tests
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
 
             Emitter = new CCParticleFireworks(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -433,7 +430,10 @@ namespace tests
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
+
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             CCPoint emitterPos = new CCPoint(windowSize.Width / 2, 100);
             Emitter = new CCParticleFire(emitterPos);
@@ -461,7 +461,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleSun(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -490,7 +491,7 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
 
             Emitter = new CCParticleGalaxy(MidWindowPoint);
             Background.AddChild(Emitter, 10);
@@ -519,9 +520,10 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
-            Emitter = new CCParticleFlower(MidWindowPoint);
+            base.OnEnter();
+
+            Emitter = new CCParticleFlower(Background.ContentSize.Center);
             Background.AddChild(Emitter, 10);
             Emitter.Texture = CCTextureCache.SharedTextureCache.AddImage(TestResource.s_stars1);
 
@@ -546,7 +548,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleSystemQuad(50);
             //Emitter.autorelease();
@@ -558,7 +561,7 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
             Emitter.Duration = -1;
 
             // gravity
-            Emitter.Gravity = (new CCPoint(0, 0));
+            Emitter.Gravity = CCPoint.Zero;
 
             // angle
             Emitter.Angle = 90;
@@ -636,7 +639,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleSystemQuad(300);
             //Emitter.autorelease();
@@ -722,7 +726,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleMeteor(MidWindowPoint);
 
@@ -747,7 +752,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleSpiral(MidWindowPoint);
 
@@ -772,7 +778,8 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
 
             Emitter = new CCParticleExplosion(MidWindowPoint);
 
@@ -799,7 +806,10 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
+
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSmoke(new CCPoint(windowSize.Width / 2.0f, 0));
 
@@ -826,7 +836,9 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSnow(new CCPoint(windowSize.Width / 2, windowSize.Height + 10));
 
@@ -875,7 +887,9 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
+
+            base.OnEnter();
+            var windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleRain(new CCPoint (windowSize.Width / 2.0f, windowSize.Height));
             Background.AddChild(Emitter, 10);
@@ -902,13 +916,10 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             Emitter = new CCParticleSystemQuad(1000);
 
             Background.AddChild(Emitter, 10);
-
-            CCSize s = windowSize;
 
             // duration
             Emitter.Duration = -1;
@@ -933,7 +944,7 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
             Emitter.SpeedVar = (10);
 
             // emitter position
-            Emitter.Position = new CCPoint(s.Width / 2, s.Height / 2);
+            Emitter.Position = MidWindowPoint;
             Emitter.PositionVar = new CCPoint(0, 0);
 
             // life of particles
@@ -1017,8 +1028,6 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-
-            var windowSize = VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1475,9 +1484,7 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            var windowSize = VisibleBoundsWorldspace.Size;
-
-            label.Position = windowSize.Center;
+            label.Position = MidWindowPoint;
 
             //ScheduleOnce(LoadParticleSystem, 0.0f);
             // Async not working right now.
@@ -1759,11 +1766,9 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
         {
             base.OnEnter(); 
 
-            var windowSize = VisibleBoundsWorldspace.Size;
-
             // emitter position
-			Position = windowSize.Center;
-            PositionVar = (CCPoint.Zero);
+            Position =  VisibleBoundsWorldspace.Size.Center;
+            PositionVar = CCPoint.Zero;
         }
 
         public override void Update(float dt)
@@ -1787,7 +1792,7 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
 
             AddChild(particle);
 
-            particle.Position = (MidWindowPoint);
+            particle.Position = MidWindowPoint;
 
             Emitter = particle;
         }
@@ -1813,8 +1818,6 @@ base.OnEnter(); CCSize windowSize = VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-
-
             base.OnEnter(); 
 
             Color = CCColor3B.Black;
