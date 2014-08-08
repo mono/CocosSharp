@@ -110,6 +110,8 @@ namespace CocosSharp
         CCScene scene;
         CCLayer layer;
 
+        CCNode parent;
+
         Matrix xnaWorldMatrix;
         CCAffineTransform affineLocalTransform;
         CCAffineTransform additionalTransform;
@@ -186,7 +188,6 @@ namespace CocosSharp
         public object UserObject { get; set; }
         public string Name { get; set; }
         public CCRawList<CCNode> Children { get; protected set; }
-        public CCNode Parent { get; internal set; }
 
         internal protected uint OrderOfArrival { get; internal set; }
 
@@ -704,6 +705,18 @@ namespace CocosSharp
             }
         }
 
+        public CCNode Parent 
+        { 
+            get { return parent; } 
+            internal set
+            {
+                if (parent != value)
+                {
+                    parent = value;
+                    ParentUpdatedTransform();
+                }
+            }
+        }
 
         public virtual CCApplication Application
         {
@@ -2137,6 +2150,10 @@ namespace CocosSharp
 
         #region Transformations
 
+        protected virtual void ParentUpdatedTransform()
+        {
+        }
+
         protected virtual void UpdateTransform()
         {
             // Translate values
@@ -2222,6 +2239,14 @@ namespace CocosSharp
 
 
             XnaWorldMatrix = affineLocalTransform.XnaMatrix;
+
+            if (Children != null)
+            {
+                foreach (CCNode child in Children)
+                {
+                    child.ParentUpdatedTransform();
+                }
+            }
         }
 
         #endregion Transformations

@@ -675,7 +675,7 @@ namespace CocosSharp
         }
 
         // For when using a batch node
-        // In this instance, drawing will not make use of node's world matrix
+        // In this instance, drawing will not make use of node's local matrix
         public void UpdateTransformedSpriteTextureQuads()
         {
             if(batchNode == null || AtlasIndex == CCMacros.CCSpriteIndexNotInitialized)
@@ -686,6 +686,13 @@ namespace CocosSharp
 
             if(textureAtlas != null && textureAtlas.TotalQuads > AtlasIndex)
                 textureAtlas.UpdateQuad(ref transformedQuad, AtlasIndex);
+        }
+
+        protected override void ParentUpdatedTransform()
+        {
+            base.ParentUpdatedTransform();
+
+            UpdateTransformedSpriteTextureQuads();
         }
 
         #endregion Updating texture quads
