@@ -354,6 +354,8 @@ namespace tests
         {
             var touch = touches [0];
             var convertedLocation = touch.LocationOnScreen;
+            convertedLocation = Layer.ScreenToWorldspace(convertedLocation);
+            //convertedLocation = Layer.WorldToParentspace(convertedLocation);
 
             var pos = new CCPoint(0, 0);
             if (Background != null)
@@ -363,7 +365,7 @@ namespace tests
 
             if (Emitter != null)
             {
-                Emitter.Position = convertedLocation - pos;
+                Emitter.Position = convertedLocation;// - pos;
             }
         }
 
@@ -409,7 +411,8 @@ namespace tests
         {
             if (Emitter != null)
             {
-                Emitter.Position = new CCPoint(WindowSize.Width / 2, WindowSize.Height / 2 - 30);
+                var size = Layer.VisibleBoundsWorldspace.Size;
+                Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2 - 30);
             }
         }
     }
@@ -1000,7 +1003,8 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+
+            base.OnEnter(); 
 
             Emitter = new CCParticleFlower(MidWindowPoint);
 
@@ -1030,7 +1034,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Background.Parent.RemoveChild(Background, true);
             Background = null;
@@ -1093,7 +1099,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1141,7 +1147,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
         public override void OnEnter()
         {
             base.OnEnter(); 
-            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1170,7 +1176,6 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             // emitter position
 
-			CCSize size = WindowSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1222,7 +1227,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1252,7 +1259,6 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             // emitter position
 
-            CCSize size = WindowSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1304,7 +1310,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
     {
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            var size = Layer.VisibleBoundsWorldspace.Size;
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1333,7 +1341,6 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
             Emitter.AngleVar = 0;
 
             // emitter position
-            CCSize size = WindowSize;
             Emitter.Position = new CCPoint(size.Width / 2, size.Height / 2);
             Emitter.PositionVar = new CCPoint(0, 0);
 
@@ -1398,7 +1405,7 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-            base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
 
             Color = new CCColor3B(0, 0, 0);
             RemoveChild(Background, true);
@@ -1603,7 +1610,9 @@ base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
         public override void OnEnter()
         {
-base.OnEnter(); CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
+            base.OnEnter(); 
+
+            CCSize windowSize = Layer.VisibleBoundsWorldspace.Size;
 
             Color = CCColor3B.Black;
             RemoveChild(Background, true);
