@@ -355,7 +355,6 @@ namespace tests
             var touch = touches [0];
             var convertedLocation = touch.LocationOnScreen;
             convertedLocation = Layer.ScreenToWorldspace(convertedLocation);
-            //convertedLocation = Layer.WorldToParentspace(convertedLocation);
 
             var pos = new CCPoint(0, 0);
             if (Background != null)
@@ -365,7 +364,7 @@ namespace tests
 
             if (Emitter != null)
             {
-                Emitter.Position = convertedLocation;// - pos;
+                Emitter.Position = Emitter.WorldToParentspace(convertedLocation);
             }
         }
 
