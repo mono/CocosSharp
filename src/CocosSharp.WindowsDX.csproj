@@ -55,6 +55,46 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugPhysics|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\DebugPhysics\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS;MONOGAME;WINDOWSDX;USE_PHYSICS</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugPhysics|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugPhysics\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;WINDOWS;MONOGAME;USE_PHYSICS</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePhysics|x86'">
+    <OutputPath>bin\x86\ReleasePhysics\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS;MONOGAME;WINDOWSDX;USE_PHYSICS</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePhysics|AnyCPU'">
+    <OutputPath>bin\ReleasePhysics\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS;MONOGAME;USE_PHYSICS</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BitMiracle.LibTiff.NET">
       <HintPath>external lib\BitMiracle.LibTiff.NET.dll</HintPath>
@@ -103,19 +143,9 @@
     <Compile Include="events\CCEventCustom.cs" />
     <Compile Include="events\CCEventListenerCustom.cs" />
     <Compile Include="label_nodes\CCLabel-Windows.cs" />
-    <Compile Include="physics\CCPhysicsBody.cs" />
-    <Compile Include="physics\CCPhysicsContact.cs" />
-    <Compile Include="physics\CCPhysicsJoint.cs" />
-    <Compile Include="physics\CCPhysicsShape.cs" />
-    <Compile Include="physics\CCPhysicsWorld.cs" />
-    <Compile Include="physics\chipmunk\CCPhysicsBodyInfo.cs" />
-    <Compile Include="physics\chipmunk\CCPhysicsContactInfo.cs" />
-    <Compile Include="physics\chipmunk\CCPhysicsJointInfo.cs" />
-    <Compile Include="physics\chipmunk\CCPhysicsShapeInfo.cs" />
-    <Compile Include="physics\chipmunk\CCPhysicsWorldInfo.cs" />
-    <Compile Include="physics\chipmunk\PhysicsHelper.cs" />
-    <Compile Include="physics\extensions\CCPhysicsDebugNode .cs" />
-    <Compile Include="physics\extensions\cpExtension.cs" />
+    <Compile Include="physics\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
+    <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
+    <Compile Include="physics\extensions\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
     <Compile Include="platform\CCArrayPool.cs" />
     <Compile Include="sprite_nodes\CCMaskedSprite.cs" />
     <Compile Include="actions\action\CCAction.cs" />
