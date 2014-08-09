@@ -17,26 +17,27 @@ namespace tests
         }
 
         static int sceneIdx = -1;
-        static int MAX_LAYER = 14;
+        static int MAX_LAYER = 8;
 
         public static CCLayer createTestLayer(int nIndex)
         {
             switch (nIndex)
             {
-                case 0: return new LayerTestCascadingOpacityA();
-                case 1: return new LayerTestCascadingOpacityB();
-                case 2: return new LayerTestCascadingOpacityC();
-                case 3: return new LayerTestCascadingColorA();
-                case 4: return new LayerTestCascadingColorB();
-                case 5: return new LayerTestCascadingColorC();
-                case 6: return new LayerTest1();
-                case 7: return new LayerTest2();
-                case 8: return new LayerTestBlend();
-                case 9: return new LayerGradient();
-                case 10: return new LayerScaleTest();
-                case 11: return new LayerClipScissor();
-                case 12: return new LayerClippingTexture();
-                case 13: return new LayerMultiplexTest(); // In layertest.cs
+                // These are not applicable anymore
+//                case 0: return new LayerTestCascadingOpacityA();
+//                case 1: return new LayerTestCascadingOpacityB();
+//                case 2: return new LayerTestCascadingOpacityC();
+//                case 3: return new LayerTestCascadingColorA();
+//                case 4: return new LayerTestCascadingColorB();
+//                case 5: return new LayerTestCascadingColorC();
+                case 0: return new LayerTest1();
+                case 1: return new LayerTest2();
+                case 2: return new LayerTestBlend();
+                case 3: return new LayerGradient();
+                case 4: return new LayerScaleTest();
+                case 5: return new LayerClipScissor();
+                case 6: return new LayerClippingTexture();
+                case 7: return new LayerMultiplexTest(); // In layertest.cs
             }
             return null;
         }

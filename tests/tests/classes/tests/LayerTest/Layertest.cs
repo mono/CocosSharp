@@ -18,8 +18,6 @@ namespace tests
         {
             base.OnEnter();
 
-            CCSize s = Layer.VisibleBoundsWorldspace.Size;
-
         }
 
 		public override string Title
