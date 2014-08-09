@@ -25,6 +25,7 @@
 
   <target name="build" description="Build MonoGame Release" depends="monogame">
 
+    <call target="buildchipmunk"/>
     <call target="buildPCL"/>
     <call target="buildwindows"/>
     <call target="buildwindowsphone8"/>
@@ -33,7 +34,6 @@
     <call target="buildmac"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
-    <call target="buildchipmunk"/>
 
     <call target="buildnugets"/>
 
