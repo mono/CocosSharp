@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework.Graphics;
+
 namespace CocosSharp
 {
     public abstract class CCTransitionProgress : CCTransitionScene
@@ -37,12 +39,15 @@ namespace CocosSharp
             texture.AnchorPoint = CCPoint.AnchorMiddle;
 
             // Temporarily add render texture to get layer/scene properties
-            AddChild(texture);
+            Layer.AddChild(texture);
+            texture.Visible = false;
 
             // Render outScene to its texturebuffer
             texture.BeginWithClear(0, 0, 0, 1);
             SceneNodeContainerToBeModified.Visit();
             texture.End();
+
+            texture.Visible = true;
 
             // No longer want to render texture
             RemoveChild(texture);
@@ -63,7 +68,6 @@ namespace CocosSharp
 
             // run the blend action
             node.RunAction(layerAction);
-
         }
 
         // clean up on exit

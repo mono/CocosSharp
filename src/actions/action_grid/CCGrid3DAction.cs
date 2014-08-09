@@ -35,8 +35,10 @@ namespace CocosSharp
 
     public class CCGrid3DActionState : CCGridActionState
     {
+        CCRenderTexture gridRenderTexture;
         CCTexture2D gridTexture;
         CCGrid3D grid3D;
+        CCSize gridTextureSizeInPoints;
         CCSize gridTextureSizeInPixels;
 
         public override CCGridBase Grid 
@@ -48,14 +50,19 @@ namespace CocosSharp
                 if (spriteTarget != null && !spriteTarget.ContentSize.Equals (CCSize.Zero))
                 {
                     gridTextureSizeInPixels = spriteTarget.TextureRectInPixels.Size;
+                    gridTextureSizeInPoints = spriteTarget.ContentSize;
+
+                    gridTexture = new CCTexture2D(
+                        (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);
                 } 
                 else 
                 {
-                    gridTextureSizeInPixels = Target.Scene.VisibleBoundsScreenspace.Size;
+                    gridTextureSizeInPixels = Target.Scene.Viewport.ViewportInPixels.Size;
+                    gridTextureSizeInPoints = Target.Layer.VisibleBoundsWorldspace.Size;
                 }
 
-                gridTexture = new CCTexture2D(
-                    (int)gridTextureSizeInPixels.Width, (int)gridTextureSizeInPixels.Height, CCSurfaceFormat.Color, true, false);
+                gridRenderTexture = new CCRenderTexture(gridTextureSizeInPoints, gridTextureSizeInPixels);
+                gridTexture = gridRenderTexture.Texture;
                 grid3D = new CCGrid3D (GridSize, gridTexture);
   
                 grid3D.Scene = Scene;

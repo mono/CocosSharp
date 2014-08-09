@@ -333,15 +333,14 @@ namespace CocosSharp
 
         #endregion
 
-
-
-        protected override void Draw()
+        public override void Visit()
         {
             CCDrawManager drawManager = Window.DrawManager;
 
-            base.Draw();
+            if(drawManager.CurrentRenderTarget == null)
+                drawManager.Viewport = Viewport.XnaViewport; 
 
-            drawManager.Viewport = Viewport.XnaViewport; 
+            base.Visit();
         }
     }
 }
