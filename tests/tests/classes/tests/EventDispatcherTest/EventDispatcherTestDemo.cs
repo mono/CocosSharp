@@ -440,8 +440,8 @@ namespace tests
 			listener1.OnTouchMoved = (touch, touchEvent) => 
 			{
 				var target = (CCSprite)touchEvent.CurrentTarget;
-                CCPoint pt = touch.PreviousLocationOnScreen + touch.Delta;
-                target.Position = target.WorldToParentspace(Layer.ScreenToWorldspace(pt));
+                CCPoint pt = touch.PreviousLocation + touch.Delta;
+                target.Position = target.WorldToParentspace(pt);
 			};
 
 			listener1.OnTouchEnded = (touch, touchEvent) => 
@@ -546,19 +546,6 @@ namespace tests
             sprite3.Position = CCPoint.Zero; //new CCPoint (-120, 120) ;
             sprite3.AnchorPoint = CCPoint.AnchorMiddle;
 			sprite2.AddChild(sprite3, 1);
-
-//            var sprite1 = new CCSprite("Images/CyanSquare.png");
-//            sprite1.Position = origin + new CCPoint (size.Width / 2, size.Height / 2) + new CCPoint (-80, 80);
-//            AddChild(sprite1, 10);
-//
-//            var sprite2 = new CCSprite("Images/MagentaSquare.png");
-//            sprite2.Position = origin + new CCPoint (size.Width / 2, size.Height / 2);
-//            AddChild(sprite2, 20);
-//
-//            var sprite3 = new CCSprite("Images/YellowSquare.png");
-//            sprite3.Position = CCPoint.Zero;
-//            sprite2.AddChild(sprite3, 1);
-
 
 		}
 

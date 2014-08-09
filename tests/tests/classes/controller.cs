@@ -275,18 +275,18 @@ namespace tests
 
         bool OnTouchBegan(CCTouch touch, CCEvent touchEvent)
         {
-            beginTouchPos = touch.LocationOnScreen;
+            beginTouchPos = touch.Location;
             return true;
         }
 
         void OnTouchMoved(CCTouch touch, CCEvent touchEvent)
         {
 
-            var touchLocation = touch.LocationOnScreen;
+            var touchLocation = touch.Location;
             float nMoveY = touchLocation.Y - beginTouchPos.Y;
 
             curPos = testListMenu.Position;
-            CCPoint nextPos = new CCPoint(curPos.X, curPos.Y - nMoveY);
+            CCPoint nextPos = new CCPoint(curPos.X, curPos.Y + nMoveY);
             CCRect visibleBounds = Layer.VisibleBoundsWorldspace;
             if (nextPos.Y < 0.0f)
             {

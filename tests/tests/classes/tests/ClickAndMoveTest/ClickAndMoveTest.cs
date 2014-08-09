@@ -57,7 +57,7 @@ namespace tests
             object it = touches.First();
             CCTouch touch = (CCTouch)(it);
 
-            var convertedLocation = Layer.ScreenToWorldspace(touch.LocationOnScreen);
+            var convertedLocation = touch.Location;
 
             CCNode s = this[ClickAndMoveTest.kTagSprite];
             s.StopAllActions();
