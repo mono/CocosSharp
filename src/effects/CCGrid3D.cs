@@ -97,11 +97,14 @@ namespace CocosSharp
                 vertexBuffer.UpdateBuffer();
             }
 
-            bool save = Scene.Window.DrawManager.VertexColorEnabled;
+            CCDrawManager drawManager = Scene.Window.DrawManager;
 
-            Scene.Window.DrawManager.VertexColorEnabled = false;
-            Scene.Window.DrawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
-            Scene.Window.DrawManager.VertexColorEnabled = save;
+            bool save = drawManager.VertexColorEnabled;
+
+            drawManager.Viewport = Scene.Viewport.XnaViewport;
+            drawManager.VertexColorEnabled = false;
+            drawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
+            drawManager.VertexColorEnabled = save;
         }
 
         public override void Reuse()
