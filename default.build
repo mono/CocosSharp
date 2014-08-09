@@ -145,6 +145,13 @@
     </if>
   </target>
 
+  <target name="buildphysics" description="Build Physics solution" depends="checkos" >
+    <if test="${os == 'MacOS'}">
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release 'src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Mac.sln'" />
+        <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release 'src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Mac.sln'" />
+    </if>
+  </target>
+
   <target name="buildnugets" description="Build NuGet Packages" depends="checkos">
     <if test="${os == 'Win32NT'}">
       <property name="nuget.cmd.dir.path" value='./Tools/NuGet/NuGet.exe' overwrite="true" /> 	
@@ -179,6 +186,7 @@
 
      <property name="nuget.cmd.dir.path" value="./tools/NuGet/NuGet.exe" overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}/ProjectTemplates/NuGet/" overwrite="true" />
+	<property name="nuspec.physics.file.dir.path" value="${project::get-base-directory()}/src/external lib/ChipmunkSharp/NuGet/" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       <property name="monodir" value="/usr/bin"/>
 
@@ -196,7 +204,7 @@
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.iOS.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Android.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
       <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.file.dir.path}CocosSharp.Ouya.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath ./' />
- 
+      <exec program="mono" basedir="${monodir}" commandline=' "${nuget.cmd.dir.path}" pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Mac.nuspec" -OutputDirectory "${packages.dir.path}" -BasePath "./src/external lib/ChipmunkSharp/"' /> 
     </if>
   </target>
 
