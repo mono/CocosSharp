@@ -353,7 +353,8 @@ namespace CocosSharp
                 if (globalZOrder != value)
                 {
                     globalZOrder = value;
-                    EventDispatcher.MarkDirty = this;
+                    if (EventDispatcher != null)
+                        EventDispatcher.MarkDirty = this;
                 }
 
             }
