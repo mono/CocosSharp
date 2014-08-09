@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "box2d.WindowsDX", "box2d\bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.Net.Windows", "MonoGame\MonoGame.Framework\MonoGame.Framework.Net.Windows.csproj", "{87A71215-7CAC-4B80-9D43-1700DECFB828}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChipmunkSharp.Win32", "src\external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Win32.csproj", "{FD50437F-B756-4BD8-99BE-B723F6E1EB45}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,11 +23,11 @@ Global
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.DebugPhysics|Any CPU.ActiveCfg = DebugPhysics|x86
-		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.DebugPhysics|Any CPU.Build.0 = DebugPhysics|Any CPU
+		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.DebugPhysics|Any CPU.Build.0 = DebugPhysics|x86
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.ReleasePhysics|Any CPU.ActiveCfg = ReleasePhysics|x86
-		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.ReleasePhysics|Any CPU.Build.0 = ReleasePhysics|Any CPU
+		{2B5CA459-536C-4B8C-A8C4-B7BEC723FE7A}.ReleasePhysics|Any CPU.Build.0 = ReleasePhysics|x86
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE483C29-042E-4226-BA52-D247CE7676DA}.DebugPhysics|Any CPU.ActiveCfg = DebugPhysics|Any CPU
@@ -58,6 +60,12 @@ Global
 		{87A71215-7CAC-4B80-9D43-1700DECFB828}.Release|Any CPU.Build.0 = Release|Any CPU
 		{87A71215-7CAC-4B80-9D43-1700DECFB828}.ReleasePhysics|Any CPU.ActiveCfg = ReleasePhysics|Any CPU
 		{87A71215-7CAC-4B80-9D43-1700DECFB828}.ReleasePhysics|Any CPU.Build.0 = ReleasePhysics|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.DebugPhysics|Any CPU.Build.0 = Debug|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.ReleasePhysics|Any CPU.ActiveCfg = Release|Any CPU
+		{FD50437F-B756-4BD8-99BE-B723F6E1EB45}.ReleasePhysics|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
