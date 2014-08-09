@@ -1,3 +1,4 @@
+#if USE_PHYSICS
 using System.Collections.Generic;
 using System.Text;
 using System;
@@ -66,3 +67,4 @@ namespace ChipmunkSharp
 
 
 }
+#endif

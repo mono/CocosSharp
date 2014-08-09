@@ -1,3 +1,4 @@
+#if USE_PHYSICS
 /****************************************************************************
  Copyright (c) 2013 Chukong Technologies Inc. ported by Jose Medrano (@netonjm)
  
@@ -113,3 +114,4 @@ namespace CocosSharp
 		 * */
 	}
 }
+#endif

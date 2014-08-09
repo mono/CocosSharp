@@ -1,4 +1,5 @@
-﻿using CocosSharp;
+﻿#if USE_PHYSICS
+using CocosSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -585,3 +586,4 @@ namespace ChipmunkSharp
 	}
 }
 
+#endif
