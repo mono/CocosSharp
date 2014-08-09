@@ -601,7 +601,10 @@ namespace CocosSharp
 
                     touchEvent.CurrentTarget = listener.SceneGraphPriority;
                     // set our target
-                    mutableTouches.ForEach(t => t.Target = touchEvent.CurrentTarget );
+                    foreach (var t in mutableTouches)
+                    {
+                        t.Target = listener.Sender;
+                    }
                     switch (touchEvent.EventCode)
                     {
                     case CCEventCode.BEGAN:
