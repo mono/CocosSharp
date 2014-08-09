@@ -33,6 +33,7 @@
     <call target="buildmac"/>
     <call target="buildandroid"/>
     <call target="buildouya"/>
+    <call target="buildchipmunk"/>
 
     <call target="buildnugets"/>
 
@@ -146,6 +147,10 @@
   </target>
 
   <target name="buildphysics" description="Build Physics solution" depends="checkos" >
+    <if test="${os == 'Win32NT'}">
+      <exec program="msbuild " commandline='"src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Windows.sln" /t:Clean /p:Configuration=Release' />
+      <exec program="msbuild " commandline='"src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Windows.sln" /t:Build /p:Configuration=Release' />
+    </if>
     <if test="${os == 'MacOS'}">
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Clean -c:Release 'src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Mac.sln'" />
         <exec program="mdtool" basedir="${mdtooldir}" commandline="build -t:Build -c:Release 'src/external lib/ChipmunkSharp/src/ChipmunkSharp/ChipmunkSharp.Mac.sln'" />
@@ -156,6 +161,7 @@
     <if test="${os == 'Win32NT'}">
       <property name="nuget.cmd.dir.path" value='./Tools/NuGet/NuGet.exe' overwrite="true" /> 	
       <property name="nuspec.file.dir.path" value="${project::get-base-directory()}\ProjectTemplates\NuGet\" overwrite="true" />
+	<property name="nuspec.physics.file.dir.path" value="${project::get-base-directory()}/src/external lib/ChipmunkSharp/NuGet/" overwrite="true" />
       <property name="packages.dir.path" value="${nuspec.file.dir.path}bin" overwrite="true" />
       
                 <echo message="" />
@@ -181,6 +187,7 @@
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.Ouya.nuspec" -OutputDirectory "${packages.dir.path}"' />
       <!--exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}Cocos2D.MGCB.nuspec" -OutputDirectory "${packages.dir.path}"' /-->
       <exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.file.dir.path}CocosSharp.WindowsDX.nuspec" -OutputDirectory "${packages.dir.path}"' />
+	<exec program="${nuget.cmd.dir.path} " commandline='pack "${nuspec.physics.file.dir.path}ChipmunkSharp.Windows.nuspec" -OutputDirectory "${packages.dir.path}"  ' />
     </if>
     <if test="${os == 'MacOS'}">
 
