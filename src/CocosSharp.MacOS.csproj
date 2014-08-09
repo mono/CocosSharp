@@ -59,6 +59,39 @@
     <UseSGen>False</UseSGen>
     <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'DebugPhysics|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MacOS\Debug</OutputPath>
+    <DefineConstants>DEBUG;OPENGL;MACOS;MONOGAME;USE_PHYSICS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ConsolePause>false</ConsolePause>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+    <UseSGen>false</UseSGen>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+    <CreatePackage>false</CreatePackage>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <EnablePackageSigning>false</EnablePackageSigning>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'ReleasePhysics|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\MacOS\Release</OutputPath>
+    <DefineConstants>OPENGL;MACOS;MONOGAME:USE_PHYSICS</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <ConsolePause>false</ConsolePause>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
+    <UseSGen>false</UseSGen>
+    <EnablePackageSigning>false</EnablePackageSigning>
+    <CreatePackage>false</CreatePackage>
+    <EnableCodeSigning>false</EnableCodeSigning>
+    <IncludeMonoRuntime>false</IncludeMonoRuntime>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -382,13 +415,25 @@
     <Compile Include="CCWindow.cs" />
     <Compile Include="CCViewport.cs" />
     <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
+    <Compile Include="physics\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
+    <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
+    <Compile Include="physics\extensions\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
     <Folder Include="support\Serialization\" />
     <Folder Include="events\" />
+    <Folder Include="physics\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\box2d\box2d.MacOS.csproj">
+      <Project>{A84510D8-7AED-411E-9616-DCFEA180969E}</Project>
+      <Name>box2d.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.MacOS.csproj">
+      <Project>{5C3DC4FF-FE5A-4B94-B4A6-6F79E63F3130}</Project>
+      <Name>Lidgren.Network.MacOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.MacOS.csproj">
       <Project>{36C538E6-C32A-4A8D-A39C-566173D7118E}</Project>
       <Name>MonoGame.Framework.MacOS</Name>
@@ -396,6 +441,10 @@
     <ProjectReference Include="..\MonoGame\MonoGame.Framework\MonoGame.Framework.Net.MacOS.csproj">
       <Project>{1294038B-66C2-4359-AFE9-EA06A758CA94}</Project>
       <Name>MonoGame.Framework.Net.MacOS</Name>
+    </ProjectReference>
+    <ProjectReference Include="external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Win32.csproj">
+      <Project>{FD50437F-B756-4BD8-99BE-B723F6E1EB45}</Project>
+      <Name>ChipmunkSharp.Win32</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
