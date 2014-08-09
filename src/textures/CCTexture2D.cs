@@ -612,7 +612,7 @@ namespace CocosSharp
 
         public override void ReinitResource()
         {
-            CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
+            //CCLog.Log("reinit called on texture '{0}' {1}x{2}", Name, ContentSizeInPixels.Width, ContentSizeInPixels.Height);
 
             Texture2D textureToDispose = null;
             if (texture2D != null && !texture2D.IsDisposed && !managed)
