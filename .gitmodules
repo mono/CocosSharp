@@ -9,3 +9,6 @@
 	path = MonoGame
 	url = https://github.com/mono/MonoGame.git
 	branch = xamarin
+[submodule "src/external lib/ChipmunkSharp"]
+	path = src/external lib/ChipmunkSharp
+	url = https://github.com/netonjm/ChipmunkSharp.git
