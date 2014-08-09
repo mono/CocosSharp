@@ -342,7 +342,7 @@ namespace CocosSharp
 
         public int NumberOfRunningActions
         {
-            get { return ActionManager.NumberOfRunningActionsInTarget (this); }
+            get { return ActionManager != null ? ActionManager.NumberOfRunningActionsInTarget (this) : 0; }
         }
 
         public float GlobalZOrder 
