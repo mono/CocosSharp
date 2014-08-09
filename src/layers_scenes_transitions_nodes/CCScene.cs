@@ -72,6 +72,16 @@ namespace CocosSharp
             get { return false; }
         }
 
+#if USE_PHYSICS
+		private CCPhysicsWorld _physicsWorld;
+
+		public CCPhysicsWorld PhysicsWorld
+		{
+			get { return _physicsWorld; }
+			set { _physicsWorld = value; }
+		}
+#endif
+
         public CCRect VisibleBoundsScreenspace
         {
             get { return Viewport.ViewportInPixels; }
@@ -170,7 +180,11 @@ namespace CocosSharp
 
         #region Constructors
 
-        public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null)
+#if USE_PHYSICS
+		public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null, bool physics = false)
+#else
+		public CCScene(CCWindow window, CCViewport viewport, CCDirector director = null)
+#endif
         {
             IgnoreAnchorPointForPosition = true;
             AnchorPoint = new CCPoint(0.5f, 0.5f);
@@ -181,20 +195,40 @@ namespace CocosSharp
             if (window != null && director != null)
                 window.AddSceneDirector(director);
 
+#if USE_PHYSICS
+			_physicsWorld = physics ? new CCPhysicsWorld(this) : null;
+#endif
+
             SceneResolutionPolicy = window.DesignResolutionPolicy;
         }
 
-        public CCScene(CCWindow window, CCDirector director) 
-            : this(window, new CCViewport(new CCRect (0.0f, 0.0f, 1.0f, 1.0f)), director)
+#if USE_PHYSICS
+		public CCScene(CCWindow window, CCDirector director, bool physics = false)
+			: this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f)), director, physics)
+#else
+		public CCScene(CCWindow window, CCDirector director)
+			: this(window, new CCViewport(new CCRect(0.0f, 0.0f, 1.0f, 1.0f)), director)
+#endif
         {
         }
 
-        public CCScene(CCWindow window) 
-            : this(window, window.DefaultDirector)
+#if USE_PHYSICS
+		public CCScene(CCWindow window, bool physics = false)
+			: this(window, window.DefaultDirector, physics)
+#else
+		public CCScene(CCWindow window)
+			: this(window, window.DefaultDirector)
+#endif
         {
         }
 
-        public CCScene(CCScene scene): this(scene.Window, scene.Viewport, scene.Director)
+#if USE_PHYSICS
+		public CCScene(CCScene scene, bool physics = false)
+			: this(scene.Window, scene.Viewport, scene.Director, physics)
+#else
+		public CCScene(CCScene scene)
+			: this(scene.Window, scene.Viewport, scene.Director)
+#endif
         {
         }
 
@@ -332,6 +366,57 @@ namespace CocosSharp
         }
 
         #endregion
+
+		#region Physics
+
+
+#if USE_PHYSICS
+
+		public override void AddChild(CCNode child, int zOrder, int tag)
+		{
+			base.AddChild(child, zOrder, tag);
+			AddChildToPhysicsWorld(child);
+		}
+
+		public override void Update(float dt)
+		{
+			base.Update(dt);
+
+			if (_physicsWorld != null)
+				_physicsWorld.Update(dt);
+		}
+
+
+		protected internal virtual void AddChildToPhysicsWorld(CCNode child)
+		{
+			if (_physicsWorld != null)
+			{
+				Action<CCNode> addToPhysicsWorldFunc = null;
+
+				addToPhysicsWorldFunc = new Action<CCNode>(node =>
+				{
+					if (node.PhysicsBody != null)
+					{
+						_physicsWorld.AddBody(node.PhysicsBody);
+					}
+
+					var children = node.Children;
+					if (children != null)
+						foreach (var n in children)
+						{
+							addToPhysicsWorldFunc(n);
+						}
+
+				});
+
+				addToPhysicsWorldFunc(child);
+
+			}
+		}
+
+#endif
+		
+		#endregion
 
         public override void Visit()
         {

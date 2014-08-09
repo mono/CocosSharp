@@ -4,6 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+#if USE_PHYSICS
+using ChipmunkSharp;
+#endif
+
 
 namespace CocosSharp
 {
@@ -117,6 +121,12 @@ namespace CocosSharp
         CCAffineTransform additionalTransform;
 
         List<CCEventListener> toBeAddedListeners;                       // The listeners to be added lazily when an EventDispatcher is not yet available
+
+#if USE_PHYSICS
+		CCPhysicsBody _physicsBody;        ///< the physicsBody the node have
+		float _physicsScaleStartX;         ///< the scale x value when setPhysicsBody
+		float _physicsScaleStartY;         ///< the scale y value when setPhysicsBody
+#endif
 
 		struct lazyAction
 		{
@@ -367,6 +377,14 @@ namespace CocosSharp
             {
                 skewX = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				if (_physicsBody != null)
+				{
+					CCLog.Log("Node WARNING: PhysicsBody doesn't support setSkewX");
+				}
+#endif
+
             }
         }
 
@@ -377,6 +395,14 @@ namespace CocosSharp
             {
                 skewY = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				if (_physicsBody != null)
+				{
+					CCLog.Log("Node WARNING: PhysicsBody doesn't support setSkewY");
+				}
+#endif
+
             }
         }
 
@@ -387,6 +413,14 @@ namespace CocosSharp
             {
                 rotationX = rotationY = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				if (_physicsBody == null || !_physicsBody._rotationResetTag)
+				{
+					UpdatePhysicsBodyRotation(Scene);
+				}
+#endif
+
             }
         }
 
@@ -417,6 +451,11 @@ namespace CocosSharp
             {
                 scaleX = scaleY = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				UpdatePhysicsBodyTransform(Scene);
+#endif
+
             }
         }
 
@@ -427,6 +466,11 @@ namespace CocosSharp
             {
                 scaleX = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				UpdatePhysicsBodyTransform(Scene);
+#endif
+
             }
         }
 
@@ -437,6 +481,11 @@ namespace CocosSharp
             {
                 scaleY = value;
                 UpdateTransform();
+
+#if USE_PHYSICS
+				UpdatePhysicsBodyTransform(Scene);
+#endif
+
             }
         }
 
@@ -481,6 +530,14 @@ namespace CocosSharp
                 {
                     position = value;
                     UpdateTransform();
+
+#if USE_PHYSICS
+					if (_physicsBody == null || !_physicsBody._positionResetTag)
+					{
+						UpdatePhysicsBodyPosition(Scene);
+					}
+#endif
+
                 }
             }
         }
@@ -509,6 +566,15 @@ namespace CocosSharp
             get { return anchorPoint; }
             set
             {
+
+#if USE_PHYSICS
+				if (_physicsBody == null || !value.Equals(CCPoint.AnchorMiddle))
+				{
+					CCLog.Log("Node warning: This node has a physics body, the anchor must be in the middle, you cann't change this to other value.");
+					UpdatePhysicsBodyPosition(Scene);
+				}
+#endif
+
                 if (!value.Equals(anchorPoint))
                 {
                     anchorPoint = value;
@@ -833,6 +899,13 @@ namespace CocosSharp
 
         public CCNode()
         {
+
+#if USE_PHYSICS
+			_physicsBody = null;
+			_physicsScaleStartX = 1.0f;
+			_physicsScaleStartY = 1.0f;
+#endif
+
             additionalTransform = CCAffineTransform.Identity;
             xnaWorldMatrix = Matrix.Identity;
             scaleX = 1.0f;
@@ -854,6 +927,190 @@ namespace CocosSharp
         }
 
         #endregion Constructors
+
+
+		#region Physics
+
+#if USE_PHYSICS
+
+		void UpdatePhysicsBodyTransform(CCScene scene)
+		{
+			UpdatePhysicsBodyScale(scene);
+			UpdatePhysicsBodyPosition(scene);
+			UpdatePhysicsBodyRotation(scene);
+		}
+
+		void UpdatePhysicsBodyPosition(CCScene scene)
+		{
+			if (_physicsBody != null)
+			{
+				//_physicsBody.Position = new cpVect(PositionX, PositionY);
+
+				if (scene != null && scene.PhysicsWorld != null)
+				{
+					var pos = Parent == scene ? Position : scene.WorldToParentspace(Position);
+					_physicsBody.Position = new cpVect(PositionX, PositionY);
+				}
+				else
+				{
+					_physicsBody.Position = Position.ToCpVect();
+				}
+			}
+
+			if (Children != null)
+			{
+				foreach (var child in Children)
+				{
+					if (child != null)
+						child.UpdatePhysicsBodyPosition(scene);
+				}
+			}
+		}
+
+		void UpdatePhysicsBodyRotation(CCScene scene)
+		{
+			//if (_physicsBody != null)
+			//{
+			//	if (scene != null && scene.GetPhysicsWorld() != null)
+			//	{
+			//		float rotation = _rotationZ_X;
+			//		for (CCNode parent = Parent; parent != scene; parent = parent.Parent)
+			//		{
+			//			rotation += parent.Rotation;
+			//		}
+			//		_physicsBody.SetRotation(rotation);
+			//	}
+			//	else
+			//	{
+			//		_physicsBody.SetRotation(_rotationZ_X);
+			//	}
+			//}
+
+			//foreach (var child in Children)
+			//{
+			//	child.UpdatePhysicsBodyRotation(scene);
+			//	child.UpdatePhysicsBodyPosition(scene);
+			//}
+		}
+
+		void UpdatePhysicsBodyScale(CCScene scene)
+		{
+
+			if (_physicsBody != null)
+			{
+
+				if (scene != null && scene.PhysicsWorld != null)
+				{
+					float scaleX = this.scaleX / _physicsScaleStartX;
+					float scaleY = this.scaleY / _physicsScaleStartY;
+					for (CCNode parent = Parent; parent != scene; parent = parent.Parent)
+					{
+						scaleX *= parent.ScaleX;
+						scaleY *= parent.ScaleY;
+					}
+					_physicsBody.SetScale(scaleX, scaleY);
+				}
+				else
+				{
+					_physicsBody.SetScale(scaleX / _physicsScaleStartX, scaleY / _physicsScaleStartY);
+				}
+			}
+
+			if (Children != null)
+			{
+				foreach (var child in Children)
+				{
+					child.UpdatePhysicsBodyRotation(scene);
+					child.UpdatePhysicsBodyPosition(scene);
+				}
+
+			}
+
+
+		}
+
+		/** *   set the PhysicsBody that let the sprite effect with physics * @note This method will set anchor point to Vec2::ANCHOR_MIDDLE if body not null, and you cann't change anchor point if node has a physics body. */
+
+		public CCPhysicsBody PhysicsBody
+		{
+			get { return _physicsBody; }
+			set
+			{
+
+				var body = value;
+				if (_physicsBody == body)
+				{
+					return;
+				}
+
+				if (body != null)
+				{
+					if (body.GetNode() != null)
+					{
+						body.GetNode().PhysicsBody = null;
+					}
+
+					body._node = this;
+					//body->retain();
+
+					// physics rotation based on body position, but node rotation based on node anthor point
+					// it cann't support both of them, so I clear the anthor point to default.
+					if (AnchorPoint != CCPoint.AnchorMiddle)
+					{
+						CCLog.Log("Node warning: setPhysicsBody sets anchor point to CCPoint.AnchorMiddle.");
+						AnchorPoint = CCPoint.AnchorMiddle;
+					}
+				}
+
+				if (_physicsBody != null)
+				{
+					var world = _physicsBody.GetWorld();
+					_physicsBody.RemoveFromWorld();
+					_physicsBody._node = null;
+					//_physicsBody->release();
+
+					if (world != null && body != null)
+					{
+						world.AddBody(body);
+					}
+				}
+
+				_physicsBody = body;
+				_physicsScaleStartX = scaleX;
+				_physicsScaleStartY = scaleY;
+
+				if (body != null)
+				{
+					CCNode node;
+					CCScene scene = null;
+					for (node = this.Parent; node != null; node = node.Parent)
+					{
+						CCScene tmpScene = node as CCScene;
+						if (tmpScene != null && tmpScene.PhysicsWorld != null)
+						{
+							scene = tmpScene;
+							break;
+						}
+					}
+
+					if (scene != null)
+					{
+						scene.PhysicsWorld.AddBody(body);
+					}
+
+					UpdatePhysicsBodyTransform(scene);
+				}
+
+
+			}
+		}
+
+
+
+
+#endif
+
+		#endregion
 
 
         #region Event dispatcher handling
@@ -922,6 +1179,10 @@ namespace CocosSharp
 
         ~CCNode()
         {
+
+#if USE_PHYSICS
+			this._physicsBody = null;
+#endif
             this.Dispose(false);
         }
 
@@ -1183,6 +1444,15 @@ namespace CocosSharp
             child.Layer = this.Layer;
             child.Scene = this.Scene;
 
+#if USE_PHYSICS
+			// Recursive add children with which have physics body.
+			if (Scene != null && Scene.PhysicsWorld != null)
+			{
+				child.UpdatePhysicsBodyTransform(Scene);
+				Scene.AddChildToPhysicsWorld(child);
+			}
+#endif
+
             if (IsRunning)
             {
                 child.OnEnter();
@@ -1284,6 +1554,13 @@ namespace CocosSharp
                         node.OnExit();
                     }
 
+#if USE_PHYSICS
+					if (node._physicsBody != null)
+					{
+						node._physicsBody.RemoveFromWorld();
+					}
+#endif
+
                     if (cleanup)
                     {
                         node.Cleanup();
@@ -1307,6 +1584,15 @@ namespace CocosSharp
                 child.OnExitTransitionDidStart();
                 child.OnExit();
             }
+
+#if USE_PHYSICS
+
+			if (child._physicsBody != null)
+			{
+				child._physicsBody.RemoveFromWorld();
+			}
+
+#endif
 
             // If you don't do cleanup, the child's actions will not get removed and the
             // its scheduledSelectors_ dict will not get released!
