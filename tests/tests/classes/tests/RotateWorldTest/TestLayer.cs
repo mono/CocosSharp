@@ -6,7 +6,7 @@ using CocosSharp;
 
 namespace tests
 {
-    public class TestLayer : CCLayer
+    public class TestLayer : CCNode
     {
 		public TestLayer()
 		{}
@@ -14,15 +14,10 @@ namespace tests
         public override void OnEnter()
         {
             base.OnEnter();
-            float x, y;
             CCSize size = Layer.VisibleBoundsWorldspace.Size;
-            x = size.Width;
-            y = size.Height;
-            //CCMutableArray *array = [UIFont familyNames];
-            //for( CCString *s in array )
-            //	NSLog( s );
             CCLabelTtf label = new CCLabelTtf("cocos2d", "arial", 64);
-            label.Position = new CCPoint(x / 2, y / 2);
+            label.Position = size.Center;
+            label.AnchorPoint = CCPoint.AnchorMiddle;
             AddChild(label);
         }
 

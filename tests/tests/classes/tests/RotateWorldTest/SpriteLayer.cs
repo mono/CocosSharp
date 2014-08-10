@@ -6,7 +6,7 @@ using CocosSharp;
 
 namespace tests
 {
-    public class SpriteLayer : CCLayer
+    public class SpriteLayer : CCNode
     {
 
 		// Image paths
@@ -38,11 +38,11 @@ namespace tests
             CCSprite spriteSister1 = new CCSprite(sister1);
             CCSprite spriteSister2 = new CCSprite(sister2);
 
-            sprite.Scale = (1.5f);
-            spriteSister1.Scale = (1.5f);
-            spriteSister2.Scale = (1.5f);
+            sprite.Scale = 1.5f;
+            spriteSister1.Scale = 1.5f;
+            spriteSister2.Scale = 1.5f;
 
-            sprite.Position = (new CCPoint(x / 2, y / 2));
+            sprite.Position = size.Center;
             spriteSister1.Position = (new CCPoint(40, y / 2));
             spriteSister2.Position = (new CCPoint(x - 40, y / 2));
 
