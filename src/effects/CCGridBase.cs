@@ -25,6 +25,8 @@ namespace CocosSharp
         protected CCGrabber Grabber { get; set; }
         protected CCTexture2D Texture { get; set; }
 
+        internal CCLayer Layer { get; set; }
+
         internal CCScene Scene 
         { 
             get { return scene; }
@@ -104,10 +106,16 @@ namespace CocosSharp
 
         #endregion Constructors
 
-
-        public abstract void Blit();
         public abstract void Reuse();
         public abstract void CalculateVertexPoints();
+
+        public virtual void Blit()
+        {
+            CCDrawManager drawManager = Scene.Window.DrawManager;
+            drawManager.Viewport = Scene.Viewport.XnaViewport;
+            drawManager.ViewMatrix = Layer.Camera.ViewMatrix;
+            drawManager.ProjectionMatrix = Layer.Camera.ProjectionMatrix;
+        }
 
         public virtual void BeforeDraw()
         {

@@ -24,6 +24,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
 
 namespace CocosSharp
 {
@@ -118,10 +119,11 @@ namespace CocosSharp
                 vertexBuffer.UpdateBuffer();
             }
 
+            base.Blit();
+
             CCDrawManager drawManager = Scene.Window.DrawManager;
             bool save = drawManager.VertexColorEnabled;
 
-            drawManager.Viewport = Scene.Viewport.XnaViewport;
             drawManager.VertexColorEnabled = false;
             drawManager.DrawBuffer(vertexBuffer, indexBuffer, 0, Indices.Length / 3);
             drawManager.VertexColorEnabled = save;

@@ -686,9 +686,10 @@ namespace CocosSharp
             set 
             {
                 grid = value;
-                if(value != null && Scene != null) 
+                if(value != null) 
                 {
                     grid.Scene = Scene;
+                    grid.Layer = Layer;
                 }
             }
         }
@@ -766,6 +767,9 @@ namespace CocosSharp
                         OnLayerVisibleBoundsChanged(this, null);
                     }
 
+                    if (grid != null)
+                        grid.Scene = scene;
+
                     if (layer.Scene != null)
                         this.Scene = layer.Scene;
                 }
@@ -814,7 +818,7 @@ namespace CocosSharp
             set { Scene.Viewport = value; }
         }
 
-        protected Matrix XnaWorldMatrix 
+        protected internal Matrix XnaWorldMatrix 
         { 
             get { return xnaWorldMatrix; }
             private set 
