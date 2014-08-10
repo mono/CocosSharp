@@ -9,8 +9,8 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Toplevel node that is used to host CCNodes that share a common <see cref="T:CocosSharp.CCWindow"/> and a common <see cref="T:CocosSharp.CCViewport"/>.</summary>
+    <remarks></remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -21,9 +21,9 @@
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="scene">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="scene">Reference scene.</param>
+        <summary>Creates a scence by replicating the provided scene's Window, Viewport and Director.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -34,9 +34,9 @@
         <Parameter Name="window" Type="CocosSharp.CCWindow" />
       </Parameters>
       <Docs>
-        <param name="window">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="window">Window associated with the new scene.</param>
+        <summary>Creates a scene and sets the window associated with it.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -48,10 +48,10 @@
         <Parameter Name="director" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
-        <param name="window">To be added.</param>
-        <param name="director">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="window">Window associated with the new scene.</param>
+        <param name="director">Director associated with the new scene.</param>
+        <summary>Creates a scene and sets the window and director associated with it.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
@@ -64,11 +64,11 @@
         <Parameter Name="director" Type="CocosSharp.CCDirector" />
       </Parameters>
       <Docs>
-        <param name="window">To be added.</param>
-        <param name="viewport">To be added.</param>
-        <param name="director">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="window">Window associated with the new scene.</param>
+        <param name="viewport">Viewport associated with the new scene.</param>
+        <param name="director">Director associated with the new scene.</param>
+        <summary>Creates a scene and sets the window, viewport and director associated with it.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="AffineLocalTransform">
@@ -92,9 +92,9 @@
         <ReturnType>CocosSharp.CCCamera</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>This property always returns null for CCScene, and setting the value is ignored.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="ContentSize">
@@ -118,9 +118,9 @@
         <ReturnType>CocosSharp.CCDirector</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The director associated with this scene.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="Draw">
@@ -157,9 +157,9 @@
         <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns this instance.</summary>
+        <value></value>
+        <remarks>This is an overwritten method from CCNode that just returns this instance.</remarks>
       </Docs>
     </Member>
     <Member MemberName="SceneResolutionPolicy">
@@ -183,9 +183,9 @@
         <ReturnType>CocosSharp.CCViewport</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>The viewport associated with this scene.</summary>
+        <value></value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="VisibleBoundsScreenspace">
@@ -209,7 +209,7 @@
         <ReturnType>CocosSharp.CCWindow</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
+        <summary>The window associated with this scene.</summary>
         <value>To be added.</value>
         <remarks>To be added.</remarks>
       </Docs>

@@ -10,8 +10,24 @@
   <Interfaces>
   </Interfaces>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Node that associates a number of children with a common CCCamera.</summary>
+    <remarks>
+
+      <para> 
+	CCCamera nodes have the unique ability of having a
+	CCCamera attached to them.  This means that all of the
+	children of a given CCLayer will be rendered with the
+	transformation set for the specified camera.
+      </para>
+
+      <para>
+	This allows developers to split their game from the game
+	controllers by having each one have their own camera
+	associated with it. 
+      </para>
+
+      <para>CCLayer objects are not resizable, they take the entire viewport dimensions.</para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -20,8 +36,8 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a layer with size zero.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">

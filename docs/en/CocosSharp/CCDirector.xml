@@ -10,54 +10,12 @@
   <Interfaces />
   <Docs>
     <summary>
-      <para>Class that creates and handle the main Window and manages how and when to execute the Scenes. </para>
+      <para>This class is responsible for maintaining a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered.</para>
     </summary>
     <remarks>
-      <para>The <see cref="T:CocosSharp.CCDirector" /> is also responsible for:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCDirector" />
-      <list type="bullet" />
-      <para>Since the <see cref="T:CocosSharp.CCDirector" /> is a singleton, the standard way to use it is by calling: _ <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>-&gt;methodName();</para>
-      <see cref="T:CocosSharp.CCDirector" />
-      <ref refid="classcocos2d_1_1_director_1a84db77ae2c0d36de8ff7f7a99f6aad47" kindref="member">Director::getInstance()</ref>
-      <para>The <see cref="T:CocosSharp.CCDirector" /> also sets the default OpenGL context:<list type="bullet" /></para>
-      <see cref="T:CocosSharp.CCDirector" />
-      <list type="bullet" />
-      <item>
-        <description>initializing the OpenGL context</description>
-      </item>
-      <description>initializing the OpenGL context</description>
-      <item>
-        <description>setting the OpenGL pixel format (default on is RGB565)</description>
-      </item>
-      <description>setting the OpenGL pixel format (default on is RGB565)</description>
-      <item>
-        <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
-      </item>
-      <description>setting the OpenGL buffer depth (default one is 0-bit)</description>
-      <item>
-        <description>setting the projection (default one is 3D)</description>
-      </item>
-      <description>setting the projection (default one is 3D)</description>
-      <item>
-        <description>setting the orientation (default one is Portrait)</description>
-      </item>
-      <description>setting the orientation (default one is Portrait)</description>
-      <item>
-        <description>GL_TEXTURE_2D is enabled</description>
-      </item>
-      <description>GL_TEXTURE_2D is enabled</description>
-      <item>
-        <description>GL_VERTEX_ARRAY is enabled</description>
-      </item>
-      <description>GL_VERTEX_ARRAY is enabled</description>
-      <item>
-        <description>GL_COLOR_ARRAY is enabled</description>
-      </item>
-      <description>GL_COLOR_ARRAY is enabled</description>
-      <item>
-        <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
-      </item>
-      <description>GL_TEXTURE_COORD_ARRAY is enabled </description>
+      <para>
+	This class is responsible for maintaingin a stack of <see cref="T:CocosSharp.CCScene" /> objects to be rendered. 
+      </para>
     </remarks>
   </Docs>
   <Members>
@@ -67,8 +25,8 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Creates a new CCDirector.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="CanPopScene">
@@ -79,9 +37,9 @@
         <ReturnType>System.Boolean</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Determines if the current scene can be popped (this means, there is more than one scene in the director).</summary>
+        <value>True if the PopScene method can be invoked.</value>
+        <remarks>This returns true if there is more than one scene being managed by this director.</remarks>
       </Docs>
     </Member>
     <Member MemberName="DeserializeState">
@@ -93,9 +51,9 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <returns>To be added.</returns>
-        <remarks>To be added.</remarks>
+        <summary>Reads the serialized state of the director and all of its scenes.</summary>
+        <returns></returns>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="IsSendCleanupToScene">
@@ -172,19 +130,22 @@
       </Docs>
     </Member>
     <Member MemberName="PushScene">
-      <MemberSignature Language="C#" Value="public void PushScene (CocosSharp.CCScene pScene);" />
-      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushScene(class CocosSharp.CCScene pScene) cil managed" />
+      <MemberSignature Language="C#" Value="public void PushScene (CocosSharp.CCScene scene);" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig instance void PushScene(class CocosSharp.CCScene scene) cil managed" />
       <MemberType>Method</MemberType>
       <ReturnValue>
         <ReturnType>System.Void</ReturnType>
       </ReturnValue>
       <Parameters>
-        <Parameter Name="pScene" Type="CocosSharp.CCScene" />
+        <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="pScene">To be added.</param>
-        <summary>Suspends the execution of the running scene, pushing it on the stack of suspended scenes. The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. ONLY call it if there is a running scene. </summary>
-        <remarks />
+        <param name="scene">Scene to activate.</param>
+        <summary>Suspends the execution of the running scene, pushing it on the stack of suspended scenes.</summary>
+        <remarks>
+	  <para>The new scene will be executed. Try to avoid big stacks of pushed scenes to reduce memory allocation. </para>
+	  <para>Only call it if there is a running scene.  If you do not have a running scene, call <see cref="M:CocosSharp.CCDirector.RunWithScene"/> instead.</para>
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="ReplaceScene">
@@ -198,9 +159,11 @@
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="scene">To be added.</param>
-        <summary>Replaces the running scene with a new one. The running scene is terminated. ONLY call it if there is a running scene. </summary>
-        <remarks />
+        <param name="scene">Scene that will take the place of the current scene.</param>
+        <summary>Replaces the running scene with a new one. The running scene is terminated. </summary>
+        <remarks>
+	  Must be called only if there is a running scene. 
+	</remarks>
       </Docs>
     </Member>
     <Member MemberName="ResetSceneStack">
@@ -212,8 +175,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Clears the scene stack, stopping execution.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="RunningScene">
@@ -224,8 +187,8 @@
         <ReturnType>CocosSharp.CCScene</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>Get current running .  can only run one  at the time </summary>
-        <value>To be added.</value>
+        <summary>Get currently running scene.</summary>
+        <value></value>
         <remarks />
       </Docs>
     </Member>
@@ -240,13 +203,14 @@
         <Parameter Name="scene" Type="CocosSharp.CCScene" />
       </Parameters>
       <Docs>
-        <param name="scene">To be added.</param>
-        <summary>Enters the 's main loop with the given . Call it to run only your FIRST scene. Don't call it if there is already a running scene.</summary>
+        <param name="scene">The scene to start.</param>
+        <summary>Enters the main loop and starts your first scene.</summary>
         <remarks>
-          <para>Enters the <see cref="T:CocosSharp.CCDirector" />'s main loop with the given <see cref="T:CocosSharp.CCScene" />. Call it to run only your FIRST scene. Don't call it if there is already a running scene.</para>
-          <see cref="T:CocosSharp.CCDirector" />
-          <see cref="T:CocosSharp.CCScene" />
-          <para>It will call pushScene: and then it will call startAnimation </para>
+          <para>Enters the <see cref="T:CocosSharp.CCDirector" />'s
+          main loop with the given <see cref="T:CocosSharp.CCScene"
+          />. Call it to run only your first scene, do not call it if
+          there is already a running scene.</para>
+          <para>This will call <see cref="M:CocosSharp.CCDirectory.PushScene"/>.</para>
         </remarks>
       </Docs>
     </Member>
@@ -258,9 +222,9 @@
         <ReturnType>System.Int32</ReturnType>
       </ReturnValue>
       <Docs>
-        <summary>To be added.</summary>
-        <value>To be added.</value>
-        <remarks>To be added.</remarks>
+        <summary>Returns the number of scenes on the stack.</summary>
+        <value>Scene count.</value>
+        <remarks></remarks>
       </Docs>
     </Member>
     <Member MemberName="SerializeState">
@@ -272,8 +236,8 @@
       </ReturnValue>
       <Parameters />
       <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <summary>Write out the current state of the director and all of its scenes.</summary>
+        <remarks></remarks>
       </Docs>
     </Member>
   </Members>

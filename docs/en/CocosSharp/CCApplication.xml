@@ -9,8 +9,18 @@
   </Base>
   <Interfaces />
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Initializes game and handles input events.</summary>
+    <remarks>
+      <para>
+	Instances of this class are in charge of handling input
+	events.
+      </para>
+      <para>
+	The design allows for multiple instances to be
+	created, but currently is limited to a single instance, due to
+	the underlying MonoGame substrate that powers this.
+      </para>
+    </remarks>
   </Docs>
   <Members>
     <Member MemberName=".ctor">
@@ -22,10 +32,10 @@
         <Parameter Name="mainWindowSizeInPixels" Type="System.Nullable&lt;CocosSharp.CCSize&gt;" />
       </Parameters>
       <Docs>
-        <param name="isFullScreen">To be added.</param>
-        <param name="mainWindowSizeInPixels">To be added.</param>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
+        <param name="isFullScreen">Whether this should take over the entire screen.</param>
+        <param name="mainWindowSizeInPixels">The size in pixels for the main window.</param>
+        <summary>Initializes the application.</summary>
+        <remarks>.</remarks>
       </Docs>
     </Member>
     <Member MemberName="ActionManager">
