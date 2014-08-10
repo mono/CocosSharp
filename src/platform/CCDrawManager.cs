@@ -89,10 +89,9 @@ namespace CocosSharp
         RenderTarget2D currentRenderTarget;
         RenderTarget2D previousRenderTarget;
 
-        Matrix previousViewMatrix;
-        Matrix previousProjectionMatrix;
-
-        Viewport previousViewport;
+        Matrix savedViewMatrix;
+        Matrix savedProjectionMatrix;
+        Viewport savedViewport;
 
         Texture2D currentTexture;
 
@@ -217,7 +216,6 @@ namespace CocosSharp
             get { return graphicsDevice.Viewport; } 
             set 
             {
-                previousViewport = Viewport;
                 graphicsDevice.Viewport = value;
             }
         }
@@ -227,7 +225,6 @@ namespace CocosSharp
             get { return viewMatrix; }
             set
             {
-                previousViewMatrix = viewMatrix;
                 viewMatrix = value;
                 viewMatrixChanged = true;
             }
@@ -238,7 +235,6 @@ namespace CocosSharp
             get { return projectionMatrix; }
             set
             {
-                previousProjectionMatrix = projectionMatrix;
                 projectionMatrix = value;
                 projectionMatrixChanged = true;
             }
@@ -996,6 +992,10 @@ namespace CocosSharp
                 CCRect texRect = new CCRect (0.0f, 0.0f, texSize.Width, texSize.Height);
                 CCPoint texCenter = texRect.Center;
 
+                savedViewMatrix = ViewMatrix;
+                savedProjectionMatrix = ProjectionMatrix;
+                savedViewport = Viewport;
+
                 ProjectionMatrix = Matrix.CreateOrthographic (
                     texSize.Width, texSize.Height, 
                     1024f, -1024);
@@ -1010,9 +1010,9 @@ namespace CocosSharp
 
         public void RestoreRenderTarget()
         {
-            ViewMatrix = previousViewMatrix;
-            ProjectionMatrix = previousProjectionMatrix;
-            Viewport = previousViewport;
+            ViewMatrix = savedViewMatrix;
+            ProjectionMatrix = savedProjectionMatrix;
+            Viewport = savedViewport;
             CurrentRenderTarget = previousRenderTarget;
         }
 
