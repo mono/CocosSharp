@@ -80,7 +80,7 @@
     <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\MacOS\Release</OutputPath>
-    <DefineConstants>OPENGL;MACOS;MONOGAME:USE_PHYSICS</DefineConstants>
+    <DefineConstants>OPENGL;MACOS;MONOGAME;USE_PHYSICS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
@@ -415,9 +415,9 @@
     <Compile Include="CCWindow.cs" />
     <Compile Include="CCViewport.cs" />
     <Compile Include="Actions\action_intervals\CCExtraAction.cs" />
-    <Compile Include="physics\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
-    <Compile Include="physics\chipmunk\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
-    <Compile Include="physics\extensions\*.cs" Condition=" '$(Configuration)' == 'DebugPhysics' Or '$(Configuration)' == 'ReleasePhysics' " />
+    <Compile Include="physics\*.cs" />
+    <Compile Include="physics\chipmunk\*.cs" />
+    <Compile Include="physics\extensions\*.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="support\Converters\" />
@@ -442,9 +442,9 @@
       <Project>{1294038B-66C2-4359-AFE9-EA06A758CA94}</Project>
       <Name>MonoGame.Framework.Net.MacOS</Name>
     </ProjectReference>
-    <ProjectReference Include="external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Win32.csproj">
+    <ProjectReference Include="external lib\ChipmunkSharp\src\ChipmunkSharp\win32\ChipmunkSharp.Mac.csproj">
       <Project>{FD50437F-B756-4BD8-99BE-B723F6E1EB45}</Project>
-      <Name>ChipmunkSharp.Win32</Name>
+      <Name>ChipmunkSharp.Mac</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

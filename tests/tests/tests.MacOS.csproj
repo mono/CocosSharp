@@ -2464,6 +2464,9 @@
     <Content Include="..\testsContent\Sounds\effect1.wav">
       <Link>Content\Sounds\effect1.wav</Link>
     </Content>
+    <Content Include="Assets\Content\Images\YellowSquare.xnb">
+      <Link>Content\Images\YellowSquare.xnb</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\tests\ExtensionsTest\ControlExtensionTest\CCControlButtonTest\CCControlButtonTest.cs" />
@@ -2510,9 +2513,6 @@
     </None>
     <None Include="Assets\Content\fonts\tahoma.ttf">
       <Link>Content\fonts\tahoma.ttf</Link>
-    </None>
-    <None Include="Assets\Content\Images\YellowSquare.xnb">
-      <Link>Content\Images\YellowSquare.xnb</Link>
     </None>
   </ItemGroup>
   <ItemGroup>
