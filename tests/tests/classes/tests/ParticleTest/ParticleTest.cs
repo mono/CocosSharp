@@ -333,8 +333,7 @@ namespace tests
         void OnTouchesEnded(List<CCTouch> touches, CCEvent touchEvent)
         {
             var touch = touches [0];
-            var convertedLocation = touch.LocationOnScreen;
-            convertedLocation = ScreenToWorldspace(convertedLocation);
+            var convertedLocation = touch.Location;
 
             var pos = CCPoint.Zero;
             if (Background != null)
