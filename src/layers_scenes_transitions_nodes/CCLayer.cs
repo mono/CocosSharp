@@ -91,7 +91,7 @@ namespace CocosSharp
             }
         }
 
-        public CCRect VisibleBoundsWorldspace
+        public new CCRect VisibleBoundsWorldspace
         {
             get { return visibleBoundsWorldspace; }
         }
