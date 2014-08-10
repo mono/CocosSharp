@@ -363,7 +363,13 @@ namespace CocosSharp
             DrawRect(rect, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
         }
 
-        public void DrawRect(CCRect rect, CCColor4B color)
+        public void DrawRect(CCRect rect, CCColor4B fillColor)
+        {
+            DrawRect(rect, fillColor, 0, CCColor4B.Transparent);
+        }
+
+        public void DrawRect(CCRect rect, CCColor4B fillColor, float borderWidth,
+            CCColor4B borderColor)
         {
             float x1 = rect.MinX;
             float y1 = rect.MinY;
@@ -372,8 +378,9 @@ namespace CocosSharp
             CCPoint[] pt = new CCPoint[] { 
                 new CCPoint(x1,y1), new CCPoint(x2,y1), new CCPoint(x2,y2), new CCPoint(x1,y2)
             };
-            CCColor4F cf = new CCColor4F(color.R/255f, color.G/255f, color.B/255f, color.A/255f);
-            DrawPolygon(pt, 4, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
+            CCColor4F cf = new CCColor4F(fillColor.R/255f, fillColor.G/255f, fillColor.B/255f, fillColor.A/255f);
+            CCColor4F bc = new CCColor4F(borderColor.R/255f, borderColor.G/255f, borderColor.B/255f, borderColor.A/255f);
+            DrawPolygon(pt, 4, cf, borderWidth, bc);
         }
 
         public void DrawPolygon(CCPoint[] verts, int count, CCColor4B fillColor, float borderWidth,
