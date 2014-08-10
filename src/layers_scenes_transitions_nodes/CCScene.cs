@@ -279,7 +279,7 @@ namespace CocosSharp
 
                 // we have the calculated size of all all the bounds
                 contentSize = unionedBounds.Size;
-
+                anchorPointInPoints = new CCPoint(contentSize.Width * AnchorPoint.X, contentSize.Height * AnchorPoint.Y);
                 // Calculate viewport ratios if not set to custom
 
                 //var resolutionPolicy = Scene.SceneResolutionPolicy;
