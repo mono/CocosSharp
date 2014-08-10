@@ -345,13 +345,11 @@ namespace CocosSharp
             double theta = 0.0;
 
             CCPoint v1;
-            CCPoint v2 = CCPoint.Zero;
             List<CCPoint> verts = new List<CCPoint>();
 
             for (int i = 0; i < segments; i++)
             {
                 v1 = center + new CCPoint((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
-                v2 = center + new CCPoint((float)Math.Cos(theta + increment), (float)Math.Sin(theta + increment)) * radius;
                 verts.Add(v1);
                 theta += increment;
             }
@@ -360,6 +358,10 @@ namespace CocosSharp
             DrawPolygon(verts.ToArray(), verts.Count, cf, 0, new CCColor4F(0f, 0f, 0f, 0f));
         }
 
+        public void DrawRect(CCRect rect)
+        {
+            DrawRect(rect, new CCColor4B(Color.R, Color.G, Color.B, Opacity));
+        }
 
         public void DrawRect(CCRect rect, CCColor4B color)
         {
